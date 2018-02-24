@@ -7,12 +7,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@redux-offline/redux-offline": "2.3.2",
     "react": "16.2.0",
     "react-native": "0.53.0",
-    "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
-    "redux-offline": "^2.0.0",
-    "redux-persist": "^5.8.0"
+    "react-redux": "5.0.7",
+    "redux": "3.7.2",
+    "redux-persist": "5.8.0",
+    "redux-thunk": "2.2.0"
   },
   "devDependencies": {
     "babel-jest": "22.2.2",

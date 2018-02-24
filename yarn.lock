@@ -16,6 +16,13 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@redux-offline/redux-offline@2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@redux-offline/redux-offline/-/redux-offline-2.3.2.tgz#ecdb324e198bd4aa6b965f651ec589f66c8f2605"
+  dependencies:
+    babel-runtime "^6.26.0"
+    redux-persist "^4.5.0"
+
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -3671,7 +3678,7 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-redux@^5.0.7:
+react-redux@5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
   dependencies:
@@ -3767,11 +3774,9 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
-redux-offline@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/redux-offline/-/redux-offline-2.0.0.tgz#5896e95477417c8173e083f4f2d977466ec91808"
-  dependencies:
-    redux-persist "^4.5.0"
+redux-persist@5.8.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.8.0.tgz#f3496bcc054e54cd9fc035ba6df0bc8dcbb49577"
 
 redux-persist@^4.5.0:
   version "4.10.2"
@@ -3781,11 +3786,11 @@ redux-persist@^4.5.0:
     lodash "^4.17.4"
     lodash-es "^4.17.4"
 
-redux-persist@^5.8.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.8.0.tgz#f3496bcc054e54cd9fc035ba6df0bc8dcbb49577"
+redux-thunk@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
 
-redux@^3.7.2:
+redux@3.7.2:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:
