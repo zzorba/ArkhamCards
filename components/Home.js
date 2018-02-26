@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 const {
+  Button,
   StyleSheet,
   ListView,
   View,
@@ -12,7 +14,11 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../actions';
 
-class Home extends Component {
+class Home extends React.Component {
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  }
+
   constructor(props) {
     super(props);
 
@@ -22,11 +28,22 @@ class Home extends Component {
     this.state = {
       ds,
     };
+
+    this._deckNavClicked = this.deckNavClicked.bind(this);
   }
 
   componentDidMount() {
     this.props.getCards(); //call our action
     this.props.getPacks();
+  }
+
+  deckNavClicked() {
+    this.props.navigator.push({
+      screen: 'Deck',
+      passProps: {
+        id: 4737,
+      },
+    });
   }
 
   render() {
@@ -43,6 +60,7 @@ class Home extends Component {
     } else {
       return (
         <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
+        <Button onPress={this._deckNavClicked} title="View deck" />
           <ListView enableEmptySections={true}
             dataSource={this.state.ds.cloneWithRows(this.props.packs)}
             renderRow={this.renderCard.bind(this)} />

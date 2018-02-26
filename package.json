@@ -10,7 +10,7 @@
     "@redux-offline/redux-offline": "2.3.2",
     "react": "16.2.0",
     "react-native": "0.53.0",
-    "react-native-navigation": "^1.1.386",
+    "react-native-navigation": "1.1.386",
     "react-redux": "5.0.7",
     "redux": "3.7.2",
     "redux-persist": "5.8.0",

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { CARDS_AVAILABLE, PACKS_AVAILABLE } from "../actions/"
+import { CARDS_AVAILABLE, PACKS_AVAILABLE, DECK_AVAILABLE } from "../actions/"
 
 const allState = { all: [], loading: true };
 
@@ -34,10 +34,29 @@ const packs = (state = allState, action) => {
   }
 };
 
+const DEFAULT_DECK_STATE = { all: {} };
+
+const decks = (state = DEFAULT_DECK_STATE, action) => {
+  switch (action.type) {
+    case DECK_AVAILABLE:
+      state = Object.assign({},
+        state,
+        {
+          all: Object.assign({}, state.all, {
+            [action.id]: action.deck,
+          }),
+        });
+      return state;
+    default:
+      return state;
+  }
+};
+
 // Combine all the reducers
 const rootReducer = combineReducers({
   cards,
   packs,
+  decks,
     // ,[ANOTHER REDUCER], [ANOTHER REDUCER] ....
 });
 
