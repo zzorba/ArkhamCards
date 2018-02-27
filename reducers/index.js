@@ -7,10 +7,14 @@ const allState = { all: [], loading: true };
 const cards = (state = allState, action) => {
   switch (action.type) {
     case CARDS_AVAILABLE:
+      const cards = {};
+      action.cards.forEach(card => {
+        cards[card.code] = card;
+      });
       state = Object.assign({},
         state,
         {
-          all: action.cards,
+          all: cards,
           loading: false,
         });
       return state;

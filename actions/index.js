@@ -6,7 +6,7 @@ export const DECK_AVAILABLE = 'DECK_AVAILABLE';
 //import Data from '../instructions.json';
 export function getCards() {
   return (dispatch) => {
-    fetch('https://arkhamdb.com/api/public/cards/', { method: 'GET' })
+    fetch('https://arkhamdb.com/api/public/cards/?encounter=1', { method: 'GET' })
       .then(response => response.json())
       .then(json => dispatch({
         type: CARDS_AVAILABLE,
