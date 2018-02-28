@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@redux-offline/redux-offline": "2.3.2",
+    "lodash": "4.17.5",
     "react": "16.2.0",
     "react-native": "0.53.0",
     "react-native-navigation": "1.1.386",

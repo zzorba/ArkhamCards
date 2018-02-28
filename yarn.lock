@@ -3612,7 +3612,7 @@ react-devtools-core@3.0.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-navigation@^1.1.386:
+react-native-navigation@1.1.386:
   version "1.1.386"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.386.tgz#5e7685e461fb5d72e5c1654075ee17ec380e8ffa"
   dependencies:
