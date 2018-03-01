@@ -106,10 +106,17 @@ class DeckView extends React.Component {
   }
 
   renderCardHeader({ section }) {
-    console.log(section);
+    if (section.subTitle) {
+      return (
+        <View>
+          <Text style={styles.subTypeText}>{ section.subTitle }</Text>
+        </View>
+      );
+    }
+
     return (
       <View>
-        <Text>{section.title || section.subTitle} </Text>
+        <Text style={styles.typeText}>{ section.title } </Text>
       </View>
     );
   }
@@ -180,7 +187,7 @@ class DeckView extends React.Component {
         .concat(this.deckToSections(parsedDeck.special));
 
     return (
-      <View>
+      <View style={styles.container}>
         <Text>{ deck.name }</Text>
         <SectionList
           renderItem={this._renderCard}
@@ -219,25 +226,54 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(DeckView);
 
 var styles = StyleSheet.create({
+  container: {
+    margin: 15,
+  },
   defaultText: {
     color: '#000000',
+    fontSize: 14,
+  },
+  typeText: {
+    color: '#000000',
+    fontSize: 14,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  subTypeText: {
+    color: '#646464',
+    fontSize: 11.9,
+    fontWeight: '200',
+    borderBottomColor: '#0A0A0A',
+    borderBottomWidth: 1,
   },
   seeker: {
     color: '#ec8426',
+    fontSize: 14,
+    lineHeight: 20,
   },
   guardian: {
     color: '#2b80c5',
+    fontSize: 14,
+    lineHeight: 20,
   },
   mystic: {
     color: '#4331b9',
+    fontSize: 14,
+    lineHeight: 20,
   },
   rogue: {
     color: '#107116',
+    fontSize: 14,
+    lineHeight: 20,
   },
   survivor: {
     color: '#cc3038',
+    fontSize: 14,
+    lineHeight: 20,
   },
   neutral: {
     color: '#606060',
+    fontSize: 14,
+    lineHeight: 20,
   },
 });
