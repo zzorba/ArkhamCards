@@ -10,6 +10,18 @@ const {
   ScrollView,
   ActivityIndicator
 } = require('react-native');
+import { createIconSetFromFontello } from 'react-native-vector-icons';
+import arkhamIconsConfig from '../assets/arkhamicons-config.json';
+const ArkhamIcon = createIconSetFromFontello(arkhamIconsConfig);
+
+const CLASS_ICONS = {
+  mystic: <ArkhamIcon name="mystic" size={12} color="#4331b9" />,
+  seeker: <View style={{width: 20, height: 14}}><ArkhamIcon name="seeker" size={14} color="#ec8426" /></View>,
+  guardian: <ArkhamIcon name="guardian" size={12} color="#2b80c5" />,
+  rogue: <ArkhamIcon name="rogue" size={12} color="#107116" />,
+  survivor: <ArkhamIcon name="survivor" size={12} color="#cc3038" />,
+};
+
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -132,6 +144,7 @@ class DeckView extends React.Component {
       <View key={item.id}>
         <Text style={styles.defaultText}>
           {`${item.quantity}x `}
+          { card.faction_code !== 'neutral' && CLASS_ICONS[card.faction_code] }
           <Text style={styles[card.faction_code]}>
             {card.name}
           </Text>
