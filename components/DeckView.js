@@ -5,7 +5,9 @@ const {
   StyleSheet,
   SectionList,
   View,
+  Image,
   Text,
+  ScrollView,
   ActivityIndicator
 } = require('react-native');
 
@@ -53,7 +55,7 @@ function splitCards(cardIds, cards) {
 }
 
 function computeXp(card) {
-  return (card.exceptional ? 2 : 1) * (card.xp);
+  return card.xp ? ((card.exceptional ? 2 : 1) * (card.xp)) : 0;
 }
 
 function parseDeck(deck, cards) {
@@ -124,7 +126,6 @@ class DeckView extends React.Component {
   renderCard({ item }) {
     const card = this.props.cards[item.id];
     if (!card) {
-      console.log(`Could not find ${item.id}`);
       return null;
     }
     return (
@@ -180,22 +181,36 @@ class DeckView extends React.Component {
       );
     }
 
-    const parsedDeck = parseDeck(deck, cards);
+    const pDeck = parseDeck(deck, cards);
 
     const sections =
-      this.deckToSections(parsedDeck.normal)
-        .concat(this.deckToSections(parsedDeck.special));
+      this.deckToSections(pDeck.normal)
+        .concat(this.deckToSections(pDeck.special));
 
     return (
-      <View style={styles.container}>
-        <Text>{ deck.name }</Text>
+      <ScrollView style={styles.container}>
+        <Text style={styles.deckTitle}>{ deck.name }</Text>
+        <Image
+          style={styles.investigatorCard}
+          source={{ uri: `https://arkhamdb.com${pDeck.investigator.imagesrc}` }}
+        />
+        <Text style={styles.investigatorName}>{ pDeck.investigator.name }</Text>
+        <Text style={styles.defaultText}>
+          { `${pDeck.meta.normalCardCount} cards (${pDeck.meta.totalCardCount} total)`}
+        </Text>
+        <Text style={styles.defaultText}>
+          { `${pDeck.meta.experience} experience required.` }
+        </Text>
+        <Text style={styles.defaultText}>
+          { `${pDeck.meta.packs} packs required.` }
+        </Text>
         <SectionList
           renderItem={this._renderCard}
           keyExtractor={this._keyForCard}
           renderSectionHeader={this._renderCardHeader}
           sections={sections}
         />
-      </View>
+      </ScrollView>
     );
   }
 };
@@ -226,6 +241,20 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(DeckView);
 
 var styles = StyleSheet.create({
+  deckTitle: {
+    color: '#000000',
+    fontSize: 24,
+    fontWeight: '500',
+  },
+  investigatorCard: {
+    height: 200,
+    resizeMode: 'contain',
+  },
+  investigatorName: {
+    color: '#000000',
+    fontSize: 18,
+    fontWeight: '700',
+  },
   container: {
     margin: 15,
   },
