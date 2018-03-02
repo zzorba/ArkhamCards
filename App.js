@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import Home from './components/Home'
 import ArkhamIcon from './assets/ArkhamIcon';
 
+import { YellowBox } from 'react-native';
 export default class App {
   constructor() {
     this.populateIcons()
@@ -32,7 +33,11 @@ export default class App {
   }
 
   startApp(icons) {
-    console.log(icons);
+    YellowBox.ignoreWarnings([
+      'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
+         'Consider using `numColumns` with `FlatList` instead.',
+    ]);
+
     Navigation.startTabBasedApp({
       tabs: [
         {
