@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sum, uniqBy } from 'lodash';
+import { range, sum, uniqBy } from 'lodash';
 const {
   StyleSheet,
   SectionList,
@@ -101,6 +101,7 @@ class DeckViewTab extends React.Component {
           <Text style={styles[card.faction_code]}>
             {card.name}
           </Text>
+          { range(0, card.xp || 0).map(() => '•').join('')}
         </Text>
       </View>
     )
@@ -118,6 +119,7 @@ class DeckViewTab extends React.Component {
         investigator,
         deck,
       },
+      cards,
     } = this.props
 
     const sections = deckToSections(normalCards)

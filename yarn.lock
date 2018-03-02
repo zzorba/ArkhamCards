@@ -59,6 +59,10 @@ acorn@^5.0.0, acorn@^5.3.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.4.1.tgz#fdc58d9d17f4a4e98d102ded826a9b9759125102"
 
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+
 ajv@^4.9.1:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.8.tgz#82ffb02b29e662ae53bdc20af15947706739c536"
@@ -3728,11 +3732,23 @@ react-native-fetch-blob@^0.10.0:
     base-64 "0.1.0"
     glob "7.0.6"
 
+react-native-image-progress@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-image-progress/-/react-native-image-progress-1.1.0.tgz#737140d699fb3fb107ec70615736dfdc2eef7b35"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-navigation@1.1.386:
   version "1.1.386"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.386.tgz#5e7685e461fb5d72e5c1654075ee17ec380e8ffa"
   dependencies:
     lodash "4.x.x"
+
+react-native-progress@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.4.0.tgz#c002e6efb2f0b82dd6889510e669c492da2718ac"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-native-scrollable-tab-view@0.8.0:
   version "0.8.0"
@@ -4994,3 +5010,7 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+yarn@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.5.1.tgz#e8680360e832ac89521eb80dad3a7bc27a40bab4"

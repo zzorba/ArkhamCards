@@ -171,7 +171,7 @@
       "properties": {
         "order": 62,
         "id": 1,
-        "name": "will",
+        "name": "willpower",
         "prevSize": 32,
         "code": 59653
       },
@@ -324,7 +324,7 @@
       "properties": {
         "order": 63,
         "id": 0,
-        "name": "skill-will",
+        "name": "skill-willpower",
         "prevSize": 32,
         "code": 59658
       },
@@ -809,24 +809,28 @@
   ],
   "height": 1024,
   "metadata": {
-    "name": "icomoon"
+    "name": "arkhamicons"
   },
   "preferences": {
     "showGlyphs": true,
-    "showQuickUse": true,
+    "showQuickUse": false,
     "showQuickUse2": true,
     "showSVGs": true,
     "fontPref": {
       "prefix": "icon-",
       "metadata": {
-        "fontFamily": "icomoon"
+        "fontFamily": "arkhamicons",
+        "majorVersion": 1,
+        "minorVersion": 0
       },
       "metrics": {
         "emSize": 1024,
         "baseline": 6.25,
         "whitespace": 50
       },
-      "embed": false
+      "embed": false,
+      "showSelector": false,
+      "showMetrics": false
     },
     "imagePref": {
       "prefix": "icon-",

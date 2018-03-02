@@ -8,10 +8,13 @@
   },
   "dependencies": {
     "@redux-offline/redux-offline": "2.3.2",
+    "add": "^2.0.6",
     "lodash": "4.17.5",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-image-progress": "^1.1.0",
     "react-native-navigation": "1.1.386",
+    "react-native-progress": "^3.4.0",
     "react-native-scrollable-tab-view": "0.8.0",
     "react-native-svg": "6.2.2",
     "react-native-svg-charts": "3.0.2",
@@ -21,7 +24,8 @@
     "redux-logger": "3.0.6",
     "redux-persist": "5.9.1",
     "redux-persist-filesystem-storage": "1.1.1",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "yarn": "^1.5.1"
   },
   "devDependencies": {
     "babel-jest": "22.2.2",
