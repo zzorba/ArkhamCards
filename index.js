@@ -1,25 +1,12 @@
-import { AppRegistry } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import { registerScreens } from './app/screens';
 import configureStore from './app/store';
+import App from './App';
+
+import ArkhamIcon from './assets/ArkhamIcon';
 
 const { store, persistor } = configureStore({});
 registerScreens(store, Provider);
 
-Navigation.startTabBasedApp({
-  tabs: [
-    {
-      label: 'Home',
-      screen: 'Home', // this is a registered name for a screen
-      title: 'Home',
-      icon: require('./img/home.png'),
-    },
-    {
-      label: 'Settings',
-      screen: 'Settings',
-      title: 'Settings',
-      icon: require('./img/home.png'),
-    }
-  ]
-});
+// Get this party started!
+const app = new App();
