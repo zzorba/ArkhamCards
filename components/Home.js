@@ -33,7 +33,9 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCards(); //call our action
+    if (Object.keys(this.props.cards).length === 0) {
+      this.props.getCards(); //call our action
+    }
     this.props.getPacks();
   }
 

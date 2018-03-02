@@ -1,6 +1,6 @@
 import { Navigation } from 'react-native-navigation';
 
-import DeckView from '../components/DeckView';
+import DeckView from '../components/deck/DeckView';
 import Home from '../components/Home';
 import Settings from '../components/Settings';
 
