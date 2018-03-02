@@ -7,6 +7,7 @@ const {
   ScrollView,
   StyleSheet,
   Text,
+  SectionList,
   TouchableHighlight,
   View,
 } = require('react-native');
@@ -14,6 +15,45 @@ import { Circle as ProgressCircle } from 'react-native-progress';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
 import { DeckType } from './parseDeck';
+
+class CardItem extends React.PureComponent {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    onPressItem: PropTypes.func.isRequired,
+    card: PropTypes.object.isRequired,
+    selected: PropTypes.bool.isRequired,
+  };
+
+  _onPress = () => {
+    this.props.onPressItem(this.props.id);
+  };
+
+  render() {
+    const {
+      selected,
+      card,
+    } = this.props;
+    return (
+      <TouchableHighlight
+        onPress={this._onPress}
+        style={selected ? styles.selectedCardWrapper : styles.cardWrapper}
+      >
+        { card.code === '01000' ?
+          <View style={styles.randomBasicWeakness}>
+            <ArkhamIcon name="weakness" size={100} color="#000000" />
+          </View>
+          :
+          <Image
+            style={styles.drawnCard}
+            source={{
+              uri: `https://arkhamdb.com${card.imagesrc}`,
+            }}
+          />
+        }
+      </TouchableHighlight>
+    );
+  }
+}
 
 export default class CardDrawSimulator extends React.Component {
   static propTypes = {
@@ -29,6 +69,10 @@ export default class CardDrawSimulator extends React.Component {
       drawnCards: [],
       selectedCards: [],
     };
+
+    this._toggleSelection = this.toggleSelection.bind(this);
+    this._renderHeader = this.renderHeader.bind(this);
+    this._renderCardItem = this.renderCardItem.bind(this);
 
     this._drawOne = this.draw.bind(this, 1);
     this._drawTwo = this.draw.bind(this, 2);
@@ -153,6 +197,53 @@ export default class CardDrawSimulator extends React.Component {
     }
   }
 
+  renderHeader() {
+    const {
+      shuffledDeck,
+      drawnCards,
+      selectedCards,
+    } = this.state;
+    const deckEmpty = shuffledDeck.length === 0;
+    const noSelection = selectedCards.length === 0;
+    return (
+      <View>
+        <View style={styles.drawButtonRow}>
+          <Text>Draw: </Text>
+          <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
+          <Button title="2" disabled={deckEmpty} onPress={this._drawTwo} />
+          <Button title="5" disabled={deckEmpty} onPress={this._drawFive} />
+          <Button title="All" disabled={deckEmpty} onPress={this._drawAll} />
+        </View>
+        <View style={styles.wrapButtonRow}>
+          <Button
+            title="Redraw Selected"
+            disabled={noSelection}
+            onPress={this._redrawSelected} />
+          <Button
+            title="Reshuffle Selected"
+            disabled={noSelection}
+            onPress={this._reshuffleSelected} />
+          <Button
+            title="Reset"
+            disabled={drawnCards.length === 0}
+            onPress={this._resetDeck} />
+        </View>
+      </View>
+    );
+  }
+
+  renderCardItem({ item, index }) {
+    const card = this.props.cards[item.id];
+    return (
+      <CardItem
+        id={`${index}-${item.id}`}
+        card={card}
+        onPressItem={this._toggleSelection}
+        selected={item.selected}
+      />
+    );
+  }
+
   render() {
     const {
       cards,
@@ -162,52 +253,27 @@ export default class CardDrawSimulator extends React.Component {
       selectedCards,
     } = this.state;
 
-    const noSelection = selectedCards.length === 0;
+    const data = map(drawnCards, (cardId, idx) => {
+      const key = `${idx}-${cardId}`;
+      return {
+        key,
+        id: cardId,
+        selected: selectedCards.indexOf(key) !== -1,
+      };
+    });
     return (
-      <ScrollView>
-        <View style={styles.drawButtonRow}>
-          <Text>Draw: </Text>
-          <Button title="1" onPress={this._drawOne} />
-          <Button title="2" onPress={this._drawTwo} />
-          <Button title="5" onPress={this._drawFive} />
-          <Button title="All" onPress={this._drawAll} />
-        </View>
-        <View style={styles.wrapButtonRow}>
-          <Button title="Redraw Selected" disabled={noSelection} onPress={this._redrawSelected} />
-          <Button title="Reshuffle Selected" disabled={noSelection} onPress={this._reshuffleSelected} />
-          <Button title="Reset" disabled={drawnCards.length === 0} onPress={this._resetDeck} />
-        </View>
-        <View style={styles.deckContainer}>
-          { map(drawnCards, (cardId, idx) => {
-              const card = cards[cardId];
-              const key = `${idx}-${cardId}`;
-              const selected = selectedCards.indexOf(key) !== -1;
-              return (
-                <TouchableHighlight
-                  key={key}
-                  onPress={() => this.toggleSelection(key)}
-                  style={
-                    selected ? styles.selectedCardWrapper : styles.cardWrapper
-                  }
-                >
-                  { card.code === '01000' ?
-                    <View style={styles.randomBasicWeakness}>
-                      <ArkhamIcon name="weakness" size={100} color="#000000" />
-                    </View>
-                    :
-                    <Image
-                      style={styles.drawnCard}
-                      source={{
-                        uri: `https://arkhamdb.com${card.imagesrc}`,
-                      }}
-                    />
-                  }
-                </TouchableHighlight>
-              );
-            })
+      <SectionList
+        contentContainerStyle={styles.deckContainer}
+        sections={[
+          {
+            data,
+            title: 'na',
           }
-        </View>
-      </ScrollView>
+        ]}
+        renderItem={this._renderCardItem}
+        renderSectionHeader={this._renderHeader}
+        numColumns={3}
+      />
     );
   }
 }
