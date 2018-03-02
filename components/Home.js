@@ -36,7 +36,9 @@ class Home extends React.Component {
     if (Object.keys(this.props.cards).length === 0) {
       this.props.getCards(); //call our action
     }
-    this.props.getPacks();
+    if (this.props.packs.length === 0) {
+      this.props.getPacks();
+    }
   }
 
   deckNavClicked() {
@@ -54,7 +56,7 @@ class Home extends React.Component {
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator
             animating={true}
-            style={[{height: 80}]}
+            style={[{ height: 80 }]}
             size="small"
           />
         </View>

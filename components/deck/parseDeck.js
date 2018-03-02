@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import { sum, uniqBy } from 'lodash';
+import { mapValues, range, groupBy, sum, uniqBy } from 'lodash';
 
 import { CardType } from './types';
+import { FACTION_CODES, SKILLS } from '../../constants';
 
 function filterBy(cardIds, cards, field, value) {
   return cardIds.filter(c => cards[c.id][field] === value);
@@ -45,6 +46,31 @@ function computeXp(card) {
   return card.xp ? ((card.exceptional ? 2 : 1) * (card.xp)) : 0;
 }
 
+function factionCount(cardIds, cards, faction) {
+  return sum(cardIds.filter(c =>
+      !cards[c.id].permanent && cards[c.id].faction_code === faction)
+    .map(c => c.quantity));
+}
+
+function costHistogram(cardIds, cards) {
+  const costHisto = mapValues(
+    groupBy(
+      cardIds.filter(c => {
+        const card = cards[c.id];
+        return !card.permanent && (
+          card.type_code === 'asset' || card.type_code === 'event');
+      }),
+      c => cards[c.id].cost),
+    cs => sum(cs.map(c => c.quantity))
+  );
+  return range(0, 6).map(cost => costHisto[cost] || 0);
+}
+
+function sumSkillIcons(cardIds, cards, skill) {
+  return sum(cardIds.map(c =>
+    (cards[c.id][`skill_${skill}`] || 0) * c.quantity));
+}
+
 export function parseDeck(deck, cards) {
   if (!deck) {
     return {};
@@ -58,6 +84,14 @@ export function parseDeck(deck, cards) {
   const investigator = deck.investigator_code;
   const specialCards = cardIds.filter(c => isSpecialCard(cards[c.id]));
   const normalCards = cardIds.filter(c => !isSpecialCard(cards[c.id]));
+  const factionCounts = {};
+  FACTION_CODES.forEach(faction =>
+    factionCounts[faction] = factionCount(cardIds, cards, faction));
+  const skillIconCounts = {};
+  SKILLS.forEach(skill => {
+    skillIconCounts[skill] = sumSkillIcons(cardIds, cards, skill);
+  });
+
   return {
     investigator: cards[deck.investigator_code],
     deck: deck,
@@ -65,10 +99,24 @@ export function parseDeck(deck, cards) {
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: sum(cardIds.map(c => computeXp(cards[c.id]) * c.quantity)),
     packs: uniqBy(cardIds, c => cards[c.id].pack_code).length,
+    factionCounts: factionCounts,
+    costHistogram: costHistogram(cardIds, cards),
+    skillIconCounts: skillIconCounts,
     normalCards: splitCards(normalCards, cards, deck.slots),
     specialCards: splitCards(specialCards, cards, deck.slots),
   };
 }
+
+const DeckFactionShape = {
+  guardian: PropTypes.number,
+  seeker: PropTypes.number,
+  mystic: PropTypes.number,
+  rogue: PropTypes.number,
+  survivor: PropTypes.number,
+  neutral: PropTypes.number,
+};
+export const OptionalDeckFactionType = PropTypes.shape(DeckFactionShape);
+export const DeckFactionType = PropTypes.shape(DeckFactionShape).isRequired;
 
 const DeckSectionShape = {
   Assets: PropTypes.array,
@@ -77,7 +125,7 @@ const DeckSectionShape = {
   Treachery: PropTypes.array,
   Enemy: PropTypes.array,
 };
-export const OptioanlDeckSectionType = PropTypes.shape(DeckSectionShape);
+export const OptionalDeckSectionType = PropTypes.shape(DeckSectionShape);
 export const DeckSectionType = PropTypes.shape(DeckSectionShape).isRequired;
 
 const DeckShape = {
@@ -87,6 +135,9 @@ const DeckShape = {
   totalCardCount: PropTypes.number,
   experience: PropTypes.number,
   packs: PropTypes.number,
+  factionCounts: DeckFactionType,
+  skillIconCounts: PropTypes.object,
+  costHistogram: PropTypes.arrayOf(PropTypes.number),
   normalCards: DeckSectionType,
   specialCards: DeckSectionType,
 };

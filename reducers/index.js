@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 
 import { CARDS_AVAILABLE, PACKS_AVAILABLE, DECK_AVAILABLE } from "../actions/"
 
-const allState = { all: [], loading: true };
+const DEFAULT_CARDS_STATE = { all: {}, loading: true };
 
-const cards = (state = allState, action) => {
+const cards = (state = DEFAULT_CARDS_STATE, action) => {
   switch (action.type) {
     case CARDS_AVAILABLE:
       const cards = {};
@@ -23,7 +23,9 @@ const cards = (state = allState, action) => {
   }
 };
 
-const packs = (state = allState, action) => {
+const DEFAULT_PACKS_STATE = { all: [], loading: true };
+
+const packs = (state = DEFAULT_PACKS_STATE, action) => {
   switch (action.type) {
     case PACKS_AVAILABLE:
       state = Object.assign({},

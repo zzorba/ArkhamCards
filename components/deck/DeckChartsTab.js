@@ -10,9 +10,22 @@ const {
   ActivityIndicator
 } = require('react-native');
 
+import FactionChart from './charts/FactionChart';
+import CostChart from './charts/CostChart';
+import SkillIconChart from './charts/SkillIconChart';
+
 export default class DeckChartsTab extends React.Component {
 
   render() {
-    return <Text>Charts go here</Text>;
+    const {
+      parsedDeck,
+    } = this.props;
+    return (
+      <ScrollView>
+        <FactionChart parsedDeck={parsedDeck} />
+        <CostChart parsedDeck={parsedDeck} />
+        <SkillIconChart parsedDeck={parsedDeck} />
+      </ScrollView>
+    );
   }
 }
