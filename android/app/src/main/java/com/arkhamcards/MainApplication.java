@@ -2,6 +2,7 @@ package com.arkhamcards;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
 
 import com.facebook.react.ReactPackage;
 
@@ -18,7 +19,8 @@ public class MainApplication extends NavigationApplication {
     
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
-        new VectorIconsPackage()
+        new VectorIconsPackage(),
+        new RNFetchBlobPackage()
     );
   }
 

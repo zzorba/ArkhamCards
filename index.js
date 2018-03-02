@@ -2,8 +2,9 @@ import { AppRegistry } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import { registerScreens } from './app/screens';
-import store from './app/store';
+import configureStore from './app/store';
 
+const { store, persistor } = configureStore({});
 registerScreens(store, Provider);
 
 Navigation.startTabBasedApp({
