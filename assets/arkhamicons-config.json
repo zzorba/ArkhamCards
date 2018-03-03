@@ -192,7 +192,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "int"
+          "intellect"
         ]
       },
       "attrs": [
@@ -315,7 +315,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "willpip"
+          "skill-willpower"
         ]
       },
       "attrs": [
@@ -345,7 +345,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "intpip"
+          "skill-intellect"
         ]
       },
       "attrs": [
@@ -375,7 +375,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "fightpip"
+          "skill-combat"
         ]
       },
       "attrs": [
@@ -405,7 +405,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "agilitypip"
+          "skill-agility"
         ]
       },
       "attrs": [
@@ -435,7 +435,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "wildpip"
+          "skill-wild"
         ]
       },
       "attrs": [
@@ -469,7 +469,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "eldersign"
+          "elder_sign"
         ]
       },
       "attrs": [
@@ -480,7 +480,7 @@
       "properties": {
         "order": 42,
         "id": 21,
-        "name": "eldersign",
+        "name": "elder_sign",
         "prevSize": 32,
         "code": 59663
       },
@@ -565,7 +565,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "tablets"
+          "tablet"
         ]
       },
       "attrs": [
@@ -576,7 +576,7 @@
       "properties": {
         "order": 57,
         "id": 6,
-        "name": "tablets",
+        "name": "tablet",
         "prevSize": 32,
         "code": 59666
       },
@@ -601,7 +601,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "elderthing"
+          "elder_thing"
         ]
       },
       "attrs": [
@@ -612,7 +612,7 @@
       "properties": {
         "order": 43,
         "id": 20,
-        "name": "elderthing",
+        "name": "elder_thing",
         "prevSize": 32,
         "code": 59667
       },
@@ -639,7 +639,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "tentacles"
+          "auto_fail"
         ]
       },
       "attrs": [
@@ -651,7 +651,7 @@
       "properties": {
         "order": 58,
         "id": 5,
-        "name": "tentacles",
+        "name": "auto_fail",
         "prevSize": 32,
         "code": 59668
       },
@@ -672,7 +672,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "investigator"
+          "per_investigator"
         ]
       },
       "attrs": [
@@ -681,7 +681,7 @@
       "properties": {
         "order": 50,
         "id": 13,
-        "name": "investigator",
+        "name": "per_investigator",
         "prevSize": 32,
         "code": 59669
       },
@@ -789,7 +789,7 @@
         "isMulticolor2": false,
         "grid": 0,
         "tags": [
-          "fast"
+          "free"
         ]
       },
       "attrs": [
@@ -798,7 +798,7 @@
       "properties": {
         "order": 44,
         "id": 19,
-        "name": "fast",
+        "name": "free",
         "prevSize": 32,
         "code": 59673
       },

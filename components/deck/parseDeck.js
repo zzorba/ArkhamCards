@@ -12,6 +12,7 @@ function groupAssets(cardIds, cards) {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   return [
     { type: 'Hand', data: filterBy(assets, cards, 'slot', 'Hand') },
+    { type: 'Hand x2', data: filterBy(assets, cards, 'slot', 'Hand x2') },
     { type: 'Arcane', data: filterBy(assets, cards, 'slot', 'Arcane') },
     { type: 'Accessory', data: filterBy(assets, cards, 'slot', 'Accessory') },
     { type: 'Body', data: filterBy(assets, cards, 'slot', 'Body') },

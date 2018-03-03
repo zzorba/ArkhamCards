@@ -17,13 +17,15 @@ export default class App {
     return new Promise(function (resolve, reject) {
       Promise.all(
         [
-          ArkhamIcon.getImageSource('eldersign', 30),
-          ArkhamIcon.getImageSource('tentacles', 30),
+          ArkhamIcon.getImageSource('elder_sign', 30),
+          ArkhamIcon.getImageSource('intellect', 26),
+          ArkhamIcon.getImageSource('per_investigator', 24),
         ]
       ).then((values) => {
         resolve({
           elderSignIcon: values[0],
-          tentaclesIcon: values[1],
+          intellectIcon: values[1],
+          investigatorIcon: values[2],
         });
       }).catch((error) => {
         console.log(error);
@@ -36,21 +38,28 @@ export default class App {
     YellowBox.ignoreWarnings([
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
          'Consider using `numColumns` with `FlatList` instead.',
+         'Warning: Failed prop type: Invalid prop `rules.arkhamIcon.order` of type `number` supplied to `MarkdownView`, expected `function`.',
     ]);
 
     Navigation.startTabBasedApp({
       tabs: [
         {
-          label: 'Home',
+          label: 'Browse',
           screen: 'Home', // this is a registered name for a screen
-          title: 'Home',
+          title: 'Browse',
           icon: icons.elderSignIcon,
         },
         {
-          label: 'Settings',
+          label: 'Search',
+          screen: 'Search',
+          title: 'Search',
+          icon: icons.intellectIcon,
+        },
+        {
+          label: 'My Decks',
           screen: 'Settings',
-          title: 'Settings',
-          icon: icons.tentaclesIcon,
+          title: 'My Decks',
+          icon: icons.investigatorIcon,
         }
       ]
     });
