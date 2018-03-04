@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { range, sum, uniqBy } from 'lodash';
+import { mapValues, range, sum, uniqBy } from 'lodash';
 const {
   StyleSheet,
   SectionList,
@@ -16,7 +16,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import * as Actions from '../../actions';
 import ArkhamIcon from '../../assets/ArkhamIcon';
-import { DeckType } from './parseDeck.js';
+import { DeckType } from './parseDeck';
 
 const CLASS_ICONS = {
   mystic: <ArkhamIcon name="mystic" size={18} color="#4331b9" />,

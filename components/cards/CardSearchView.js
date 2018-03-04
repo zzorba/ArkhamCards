@@ -1,37 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { values } from 'lodash';
+import { range, values } from 'lodash';
 const {
   StyleSheet,
   FlatList,
   View,
   Image,
-  Text,
   ScrollView,
+  Text,
+  TouchableOpacity,
   ActivityIndicator
 } = require('react-native');
 import SearchInput, { createFilter } from 'react-native-search-filter';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SimpleMarkdown from 'simple-markdown'
+import { CardType } from './types';
 
 import * as Actions from '../../actions';
 import CardText from './CardText';
 
 class CardResult extends React.PureComponent {
   static propTypes = {
-    card: PropTypes.object.isRequired,
+    card: CardType,
+    onPress: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this._onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
+    this.props.onPress(this.props.card.code);
+  }
 
   render() {
     const {
       card,
     } = this.props;
-    if (!card.real_text) {
+    if (!card.name) {
       return <Text>{'No Text'}</Text>;
     }
+    const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
     return (
-      <CardText text={card.real_text} />
+      <TouchableOpacity onPress={this._onPress}>
+        <Text>{ `${card.name}${xpStr}` }</Text>
+      </TouchableOpacity>
     );
   }
 }
@@ -39,6 +54,7 @@ class CardResult extends React.PureComponent {
 class CardSearchView extends React.Component {
   static propTypes = {
     cards: PropTypes.object,
+    navigator: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -50,6 +66,7 @@ class CardSearchView extends React.Component {
 
     this._searchUpdated = this.searchUpdated.bind(this);
 
+    this._cardPressed = this.cardPressed.bind(this);
     this._cardToKey = this.cardToKey.bind(this);
     this._renderCard = this.renderCard.bind(this);
   }
@@ -58,8 +75,17 @@ class CardSearchView extends React.Component {
     return card.code;
   }
 
+  cardPressed(cardId) {
+    this.props.navigator.push({
+      screen: 'Card',
+      passProps: {
+        id: cardId,
+      },
+    });
+  }
+
   renderCard({ item }) {
-    return <CardResult card={item} />;
+    return <CardResult card={item} onPress={this._cardPressed} />;
   }
 
   searchUpdated(text) {

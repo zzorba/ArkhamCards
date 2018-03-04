@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { mapValues, range, groupBy, sum, uniqBy } from 'lodash';
 
-import { CardType } from './types';
+import { CardType } from '../cards/types';
 import { FACTION_CODES, SKILLS } from '../../constants';
 
 function filterBy(cardIds, cards, field, value) {

@@ -15,7 +15,7 @@ const CLASS_ICONS = {
   guardian: <ArkhamIcon name="guardian" size={18} color="#2b80c5" />,
   rogue: <ArkhamIcon name="rogue" size={18} color="#107116" />,
   survivor: <ArkhamIcon name="survivor" size={18} color="#cc3038" />,
-  neutral: <ArkhamIcon name="eldersign" size={18} color="#606060" />,
+  neutral: <ArkhamIcon name="elder_sign" size={18} color="#606060" />,
 };
 
 

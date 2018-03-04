@@ -32,7 +32,7 @@ const ArkhamIconRule = {
 };
 
 const BoldHtmlTagRule = {
-  match: SimpleMarkdown.anyScopeRegex(new RegExp('^<b>(.+?)<\\/b>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
   order: 1,
   parse: (capture, nestedParse, state) => {
     return { text: capture[1] };
@@ -46,7 +46,7 @@ const BoldHtmlTagRule = {
   },
 };
 const ItalicHtmlTagRule = {
-  match: SimpleMarkdown.anyScopeRegex(new RegExp('^<i>(.+?)<\\/i>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<i>(.+?)<\\/i>')),
   order: 1,
   parse: (capture, nestedParse, state) => {
     return { text: capture[1] };

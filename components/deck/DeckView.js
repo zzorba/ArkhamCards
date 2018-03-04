@@ -5,7 +5,6 @@ const {
   StyleSheet,
   SectionList,
   View,
-  Image,
   Text,
   ScrollView,
   ActivityIndicator
