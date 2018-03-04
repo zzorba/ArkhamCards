@@ -17,6 +17,7 @@ import ArkhamIcon from '../../assets/ArkhamIcon';
 import * as Actions from '../../actions';
 
 import CardText from './CardText';
+import FlippableCard from './FlippableCard';
 
 const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon
@@ -30,7 +31,53 @@ class CardDetailView extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     card: OptionalCardType,
+    showSpoilers: PropTypes.bool,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showSpoilers: false,
+      cardViewDimension: {
+        width: 0,
+        height: 0,
+      },
+    };
+
+    this._onCardViewLayout = this.onCardViewLayout.bind(this);
+    this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
+  }
+
+  toggleShowSpoilers() {
+    this.setState({
+      showSpoilers: !this.state.showSpoilers,
+    });
+  }
+
+  onCardViewLayout(event) {
+    const {
+      width,
+      height,
+    } = event.nativeEvent.layout;
+
+    if (!this.state.cardViewDimension ||
+        this.state.cardViewDimension.width !== width) {
+      this.setState({
+        cardViewDimension: {
+          width,
+          height,
+        },
+      });
+    }
+  }
+
+  shouldBlur() {
+    if (this.props.showSpoilers || this.state.showSpoilers) {
+      return false;
+    }
+    return this.props.card.spoiler;
+  }
 
   renderMetadata(card) {
     return (
@@ -150,6 +197,57 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
+  backSource(card) {
+    if (card.double_sided) {
+      return {
+        uri: `https://arkhamdb.com${card.backimagesrc}`,
+      };
+    }
+    return card.deck_limit > 0 ?
+      require('../../assets/player-back.png') :
+      require('../../assets/encounter-back.png');
+  }
+
+  renderCard(card, blur) {
+    if (!card.imagesrc) {
+      return null;
+    }
+    if (!card.spoiler) {
+      return (
+        <View style={styles.cardView} onLayout={this._onCardViewLayout}>
+          <Image
+            style={styles.cardImage}
+            source={{
+              uri: `https://arkhamdb.com${card.imagesrc}`
+            }}
+          />
+        </View>
+      );
+    }
+    return (
+      <View style={styles.cardView} onLayout={this._onCardViewLayout}>
+        <FlippableCard
+          style={{
+            width: this.state.cardViewDimension.width,
+            height: 250,
+            borderWidth: 0,
+          }}
+          flipped={!blur}
+          cardStyle={styles.cardImage}
+          backSide={
+            <Image style={styles.cardImage} source={this.backSource(card)} />
+          }
+          frontSide={
+            <Image style={styles.cardImage} source={{
+              uri: `https://arkhamdb.com${card.imagesrc}`
+            }} />
+          }
+          onFlip={this._toggleShowSpoilers}
+        />
+      </View>
+    );
+  }
+
   renderCardBack(card) {
     if (!card.double_sided) {
       return null;
@@ -182,7 +280,7 @@ class CardDetailView extends React.PureComponent {
             { !!card.back_flavor && <Text style={styles.flavorText}>{ card.back_flavor }</Text>}
           </View>
         </View>
-          { card.imagesrc &&
+          { card.backimagesrc &&
             <Image
               style={styles.cardImage}
               source={{
@@ -198,9 +296,12 @@ class CardDetailView extends React.PureComponent {
     const {
       card,
     } = this.props;
+
+    const blur = this.shouldBlur();
+
     return (
       <ScrollView>
-        { this.renderCardBack(card) }
+        { this.renderCardBack(card, blur) }
         <View style={styles.container}>
           <View style={{
             width: '50%',
@@ -210,7 +311,11 @@ class CardDetailView extends React.PureComponent {
             borderRadius: 3,
           }}>
             { this.renderTitle(card, card.name, card.subname) }
-            <View style={{ marginLeft: 5, marginTop: 5 }}>
+            <View style={{
+              marginLeft: 5,
+              marginTop: 5,
+              backgroundColor: blur ? '#000000' : '#FFFFFF',
+             }}>
               { this.renderMetadata(card) }
               { this.renderPlaydata(card) }
               { card.type_code === 'story' && <Text style={styles.flavorText}>{ card.flavor }</Text>}
@@ -227,7 +332,8 @@ class CardDetailView extends React.PureComponent {
               )}
               { ('victory' in card && card.victory !== null) &&
                 <Text style={styles.typeText}>{ `Victory: ${card.victory}.` }</Text>}
-              { !!card.flavor && card.type_code !== 'story' && <Text style={styles.flavorText}>{ card.flavor }</Text>}
+              { !!card.flavor && card.type_code !== 'story' &&
+                <Text style={styles.flavorText}>{ card.flavor }</Text>}
               { !!card.illustrator && <Text>{ card.illustrator }</Text> }
               { !!card.pack_name &&
                 <Text>
@@ -239,13 +345,7 @@ class CardDetailView extends React.PureComponent {
               }
             </View>
           </View>
-          { card.imagesrc &&
-            <Image
-              style={styles.cardImage}
-              source={{
-                uri: `https://arkhamdb.com${card.imagesrc}`,
-              }}
-            /> }
+          { this.renderCard(card, blur) }
         </View>
         { card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
       </ScrollView>
@@ -296,12 +396,20 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
   },
+  cardView: {
+    width: '50%',
+  },
   cardText: {
     width: '50%',
   },
-  cardImage: {
+  flippableCardImage: {
     height: 250,
-    width: '50%',
+    width: 250,
+    borderWidth: 0,
+  },
+  cardImage: {
+    height: '100%',
+    width: '100%',
     resizeMode: 'contain',
   },
 });
