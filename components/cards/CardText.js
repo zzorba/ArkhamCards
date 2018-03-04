@@ -19,7 +19,6 @@ const BAD_ICON_NAMES = {
 const ArkhamIconRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
   order: 1,
-  quality: () => 100,
   parse: (capture) => {
     return { name: capture[1] };
   },
@@ -35,7 +34,6 @@ const ArkhamIconRule = {
 const BoldHtmlTagRule = {
   match: SimpleMarkdown.anyScopeRegex(new RegExp('^<b>(.+?)<\\/b>')),
   order: 1,
-  quality: () => 100,
   parse: (capture, nestedParse, state) => {
     return { text: capture[1] };
   },
@@ -50,7 +48,6 @@ const BoldHtmlTagRule = {
 const ItalicHtmlTagRule = {
   match: SimpleMarkdown.anyScopeRegex(new RegExp('^<i>(.+?)<\\/i>')),
   order: 1,
-  quality: () => 100,
   parse: (capture, nestedParse, state) => {
     return { text: capture[1] };
   },
