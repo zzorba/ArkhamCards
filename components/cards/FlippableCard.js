@@ -40,7 +40,7 @@ export default class FlippableCard extends React.Component {
     return (
       <FlipCard
         style={style}
-        friction={6}
+        friction={10}
         perspective={1000}
         flipHorizontal={true}
         flipVertical={false}

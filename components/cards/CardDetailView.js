@@ -98,6 +98,16 @@ class CardDetailView extends React.PureComponent {
   }
 
   renderTestIcons(card) {
+    if (card.type_code === 'investigator') {
+      return (
+        <Text>
+          { `Willpower: ${card.skill_willpower}. ` }
+          { `Intellect: ${card.skill_intellect}. ` }
+          { `Combat: ${card.skill_combat}. ` }
+          { `Agility: ${card.skill_agility}.` }
+        </Text>
+      );
+    }
     const skills = flatMap(SKILLS, skill => {
       const count = card[`skill_${skill}`] || 0;
       return range(0, count).map(() => skill);
@@ -171,13 +181,13 @@ class CardDetailView extends React.PureComponent {
     return null;
   }
 
-  renderTitle(card, name, subname) {
+  renderTitle(card, blur, name, subname) {
     const factionColor = card.faction_code && FACTION_COLORS[card.faction_code];
     return (
       <View style={{
         paddingTop: 3,
         paddingBottom: 3,
-        backgroundColor: factionColor || '#FFFFFF',
+        backgroundColor: blur ? '#000000' : (factionColor || '#FFFFFF'),
         borderBottomWidth: 1,
         borderColor: factionColor || '#000000',
       }}>
@@ -197,8 +207,19 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
-  backSource(card) {
+  backSource(card, isHorizontal) {
     if (card.double_sided) {
+      if (isHorizontal) {
+        if (card.type_code === 'act') {
+          return require('../../assets/blur-act.jpeg');
+        }
+        if (card.type_code === 'agenda') {
+          return require('../../assets/blur-agenda.jpeg');
+        }
+        return {
+          uri: `https://arkhamdb.com${card.imagesrc}`,
+        };
+      }
       return {
         uri: `https://arkhamdb.com${card.backimagesrc}`,
       };
@@ -208,15 +229,15 @@ class CardDetailView extends React.PureComponent {
       require('../../assets/encounter-back.png');
   }
 
-  renderCard(card, blur) {
+  renderCardImage(card, blur, isHorizontal) {
     if (!card.imagesrc) {
       return null;
     }
     if (!card.spoiler) {
       return (
-        <View style={styles.cardView} onLayout={this._onCardViewLayout}>
+        <View style={isHorizontal ? styles.horizontalCard : styles.verticalCard} onLayout={this._onCardViewLayout}>
           <Image
-            style={styles.cardImage}
+            style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
             source={{
               uri: `https://arkhamdb.com${card.imagesrc}`
             }}
@@ -224,8 +245,13 @@ class CardDetailView extends React.PureComponent {
         </View>
       );
     }
+    const frontImg = `https://arkhamdb.com${card.imagesrc}`;
+    Image.prefetch(frontImg);
     return (
-      <View style={styles.cardView} onLayout={this._onCardViewLayout}>
+      <View
+        style={isHorizontal ? styles.horizontalCard : styles.verticalCard}
+        onLayout={this._onCardViewLayout}
+      >
         <FlippableCard
           style={{
             width: this.state.cardViewDimension.width,
@@ -233,14 +259,17 @@ class CardDetailView extends React.PureComponent {
             borderWidth: 0,
           }}
           flipped={!blur}
-          cardStyle={styles.cardImage}
           backSide={
-            <Image style={styles.cardImage} source={this.backSource(card)} />
+            <Image
+              style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
+              source={this.backSource(card, isHorizontal)}
+            />
           }
           frontSide={
-            <Image style={styles.cardImage} source={{
-              uri: `https://arkhamdb.com${card.imagesrc}`
-            }} />
+            <Image
+              style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
+              source={{ uri: frontImg }}
+            />
           }
           onFlip={this._toggleShowSpoilers}
         />
@@ -248,24 +277,39 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
-  renderCardBack(card) {
+  renderCardBack(card, blur, isHorizontal, flavorFirst) {
     if (!card.double_sided) {
       return null;
     }
+    const image = !blur && card.backimagesrc && (
+      <View style={isHorizontal ? styles.horizontalCard : styles.verticalCard}>
+        <Image
+          style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
+          source={{
+            uri: `https://arkhamdb.com${card.backimagesrc}`,
+          }}
+        />
+      </View>
+    );
+
     return (
       <View style={styles.container}>
+        { isHorizontal && image }
         <View style={{
-          width: '50%',
+          width: isHorizontal ? '100%' : '50%',
           marginTop: 2,
           borderColor: FACTION_COLORS[card.faction_code] || '#000000',
           borderWidth: 1,
           borderRadius: 3,
+          backgroundColor: blur ? '#000000' : '#FFFFFF',
         }}>
-          { this.renderTitle(card, card.back_name || card.name) }
+          { this.renderTitle(card, blur, card.back_name || card.name) }
           <View style={{ marginLeft: 5, marginTop: 5 }}>
             <Text style={styles.typeText}>
               { card.type_name }
             </Text>
+            { !!card.back_flavor && flavorFirst &&
+              <Text style={styles.flavorText}>{ card.back_flavor }</Text>}
             { !!card.back_text && (
               <View style={{
                 marginTop: 3,
@@ -277,17 +321,11 @@ class CardDetailView extends React.PureComponent {
                 <CardText text={card.back_text} />
               </View>
             )}
-            { !!card.back_flavor && <Text style={styles.flavorText}>{ card.back_flavor }</Text>}
+            { !!card.back_flavor && !flavorFirst &&
+              <Text style={styles.flavorText}>{ card.back_flavor }</Text>}
           </View>
         </View>
-          { card.backimagesrc &&
-            <Image
-              style={styles.cardImage}
-              source={{
-                uri: `https://arkhamdb.com${card.backimagesrc}`,
-              }}
-            />
-          }
+        { !isHorizontal && image }
       </View>
     );
   }
@@ -298,19 +336,25 @@ class CardDetailView extends React.PureComponent {
     } = this.props;
 
     const blur = this.shouldBlur();
-
+    const isHorizontal = card.type_code === 'act' ||
+      card.type_code === 'agenda' ||
+      card.type_code === 'investigator';
+    const flavorFirst = card.type_code === 'story' ||
+      card.type_code === 'act' ||
+      card.type_code === 'agenda';
     return (
-      <ScrollView>
-        { this.renderCardBack(card, blur) }
+      <ScrollView style={{ flexDirection: 'column', flexWrap: 'wrap' }}>
+        { !isHorizontal && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         <View style={styles.container}>
+          { isHorizontal && this.renderCardImage(card, blur, isHorizontal) }
           <View style={{
-            width: '50%',
+            width: isHorizontal ? '100%' : '50%',
             marginTop: 2,
             borderColor: FACTION_COLORS[card.faction_code] || '#000000',
             borderWidth: 1,
             borderRadius: 3,
           }}>
-            { this.renderTitle(card, card.name, card.subname) }
+            { this.renderTitle(card, blur, card.name, card.subname) }
             <View style={{
               marginLeft: 5,
               marginTop: 5,
@@ -318,7 +362,7 @@ class CardDetailView extends React.PureComponent {
              }}>
               { this.renderMetadata(card) }
               { this.renderPlaydata(card) }
-              { card.type_code === 'story' && <Text style={styles.flavorText}>{ card.flavor }</Text>}
+              { !!card.flavor && flavorFirst && <Text style={styles.flavorText}>{ card.flavor }</Text>}
               { !!card.real_text && (
                 <View style={{
                   marginTop: 3,
@@ -332,7 +376,7 @@ class CardDetailView extends React.PureComponent {
               )}
               { ('victory' in card && card.victory !== null) &&
                 <Text style={styles.typeText}>{ `Victory: ${card.victory}.` }</Text>}
-              { !!card.flavor && card.type_code !== 'story' &&
+              { !!card.flavor && !flavorFirst &&
                 <Text style={styles.flavorText}>{ card.flavor }</Text>}
               { !!card.illustrator && <Text>{ card.illustrator }</Text> }
               { !!card.pack_name &&
@@ -345,8 +389,9 @@ class CardDetailView extends React.PureComponent {
               }
             </View>
           </View>
-          { this.renderCard(card, blur) }
+          { !isHorizontal && this.renderCardImage(card, blur, isHorizontal) }
         </View>
+        { isHorizontal && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         { card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
       </ScrollView>
     );
@@ -375,6 +420,13 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(CardDetailView);
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 3,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   typeText: {
     fontWeight: '700',
   },
@@ -387,29 +439,39 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontStyle: 'italic',
   },
-  container: {
-    margin: 3,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
   metaContainer: {
     marginTop: 5,
     marginBottom: 5,
   },
-  cardView: {
-    width: '50%',
+  horizontalCard: {
+    width: '100%',
+    height: 200,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
-  cardText: {
+  verticalCard: {
     width: '50%',
+    height: 280,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
   flippableCardImage: {
     height: 250,
     width: 250,
     borderWidth: 0,
   },
-  cardImage: {
-    height: '100%',
+  verticalCardImage: {
+    height: 280,
     width: '100%',
     resizeMode: 'contain',
+    justifyContent: 'flex-start',
+  },
+  horizontalCardImage: {
+    height: 200,
+    width: '100%',
+    resizeMode: 'contain',
+    justifyContent: 'flex-start',
   },
 });
