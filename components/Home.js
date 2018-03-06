@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { map } from 'lodash';
 const {
   Button,
   StyleSheet,
   ListView,
+  ScrollView,
   View,
   Text,
   ActivityIndicator
@@ -13,10 +15,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from '../actions';
+import DeckListItem from './deck/DeckListItem';
 
 class Home extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    loading: PropTypes.bool,
+    cards: PropTypes.object,
+    decks: PropTypes.object,
+    packs: PropTypes.array,
+    getCards: PropTypes.func.isRequired,
+    getPacks: PropTypes.func.isRequired,
+    getDeck: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -27,6 +37,7 @@ class Home extends React.Component {
     });
     this.state = {
       ds,
+      deckIds: [101, 381, 180, 530, 2932, 294, 1179, 2381, 332],
     };
 
     this._deckNavClicked = this.deckNavClicked.bind(this);
@@ -39,13 +50,18 @@ class Home extends React.Component {
     if (this.props.packs.length === 0) {
       this.props.getPacks();
     }
+    this.state.deckIds.forEach(deckId => {
+      if (!this.props.decks[deckId]) {
+        this.props.getDeck(deckId);
+      }
+    });
   }
 
-  deckNavClicked() {
+  deckNavClicked(id) {
     this.props.navigator.push({
       screen: 'Deck',
       passProps: {
-        id: 4737,
+        id: id,
       },
     });
   }
@@ -63,12 +79,18 @@ class Home extends React.Component {
         );
     } else {
       return (
-        <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
-        <Button onPress={this._deckNavClicked} title="View deck" />
-          <ListView enableEmptySections={true}
-            dataSource={this.state.ds.cloneWithRows(this.props.packs)}
-            renderRow={this.renderCard.bind(this)} />
-        </View>
+        <ScrollView style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
+          { map(this.state.deckIds, deckId => {
+            const deck = this.props.decks[deckId];
+            return deck && <DeckListItem
+              key={deckId}
+              id={deckId}
+              deck={deck}
+              cards={this.props.cards}
+              onPress={this._deckNavClicked}
+            />
+          })}
+        </ScrollView>
       );
     }
   }
@@ -97,6 +119,7 @@ function mapStateToProps(state, props) {
     loading: state.cards.loading || state.packs.loading,
     cards: state.cards.all,
     packs: state.packs.all,
+    decks: state.decks.all,
   };
 }
 

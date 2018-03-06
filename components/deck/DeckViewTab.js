@@ -7,8 +7,8 @@ const {
   View,
   Image,
   Text,
+  TouchableOpacity,
   ScrollView,
-  ActivityIndicator
 } = require('react-native');
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -17,6 +17,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import * as Actions from '../../actions';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { DeckType } from './parseDeck';
+import { CardType } from '../cards/types';
 
 const CLASS_ICONS = {
   mystic: <ArkhamIcon name="mystic" size={18} color="#4331b9" />,
@@ -25,6 +26,43 @@ const CLASS_ICONS = {
   rogue: <ArkhamIcon name="rogue" size={18} color="#107116" />,
   survivor: <ArkhamIcon name="survivor" size={18} color="#cc3038" />,
 };
+
+
+class DeckCardResult extends React.PureComponent {
+  static propTypes = {
+    card: CardType,
+    item: PropTypes.object.isRequired,
+    onPress: PropTypes.func.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this._onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
+    this.props.onPress(this.props.card.code);
+  }
+
+  render() {
+    const {
+      card,
+      item
+    } = this.props;
+    return (
+      <TouchableOpacity onPress={this._onPress}>
+        <Text style={styles.defaultText}>
+          {`${item.quantity}x `}
+          { card.faction_code !== 'neutral' && CLASS_ICONS[card.faction_code] }
+          <Text style={styles[card.faction_code]}>
+            {card.name}
+          </Text>
+          { range(0, card.xp || 0).map(() => '•').join('')}
+        </Text>
+      </TouchableOpacity>
+    )
+  }
+}
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -58,6 +96,7 @@ class DeckViewTab extends React.Component {
   static propTypes = {
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -66,10 +105,20 @@ class DeckViewTab extends React.Component {
     this._renderCard = this.renderCard.bind(this);
     this._renderCardHeader = this.renderCardHeader.bind(this);
     this._keyForCard = this.keyForCard.bind(this);
+    this._showCard = this.showCard.bind(this);
   }
 
   keyForCard(item) {
     return item.id;
+  }
+
+  showCard(cardId) {
+    this.props.navigator.push({
+      screen: 'Card',
+      passProps: {
+        id: cardId,
+      },
+    });
   }
 
   renderCardHeader({ section }) {
@@ -94,17 +143,12 @@ class DeckViewTab extends React.Component {
       return null;
     }
     return (
-      <View key={item.id}>
-        <Text style={styles.defaultText}>
-          {`${item.quantity}x `}
-          { card.faction_code !== 'neutral' && CLASS_ICONS[card.faction_code] }
-          <Text style={styles[card.faction_code]}>
-            {card.name}
-          </Text>
-          { range(0, card.xp || 0).map(() => '•').join('')}
-        </Text>
-      </View>
-    )
+      <DeckCardResult
+        key={item.id}
+        card={card}
+        item={item}
+        onPress={this._showCard} />
+    );
   }
 
   render() {

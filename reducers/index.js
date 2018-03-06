@@ -45,12 +45,15 @@ const DEFAULT_DECK_STATE = { all: {} };
 const decks = (state = DEFAULT_DECK_STATE, action) => {
   switch (action.type) {
     case DECK_AVAILABLE:
-      state = Object.assign({},
+      state = Object.assign(
+        {},
         state,
         {
-          all: Object.assign({}, state.all, {
-            [action.id]: action.deck,
-          }),
+          all: Object.assign(
+            {},
+            state.all,
+            { [action.id]: action.deck },
+          ),
         });
       return state;
     default:

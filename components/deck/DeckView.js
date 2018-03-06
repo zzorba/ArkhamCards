@@ -23,6 +23,7 @@ import CardDrawSimulator from './CardDrawSimulator';
 
 class DeckView extends React.Component {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
     cards: PropTypes.object,
@@ -54,7 +55,7 @@ class DeckView extends React.Component {
 
     return (
       <ScrollableTabView>
-        <DeckViewTab tabLabel="Deck" parsedDeck={pDeck} />
+        <DeckViewTab tabLabel="Deck" parsedDeck={pDeck} navigator={this.props.navigator} />
         <CardDrawSimulator tabLabel="Draw" parsedDeck={pDeck} cards={cards} />
         <DeckChartsTab tabLabel="Charts" parsedDeck={pDeck} />
         <DeckEditTab tabLabel="Edit" parsedDeck={pDeck} />

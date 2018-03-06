@@ -15,7 +15,6 @@ import CostChart from './charts/CostChart';
 import SkillIconChart from './charts/SkillIconChart';
 
 export default class DeckChartsTab extends React.Component {
-
   render() {
     const {
       parsedDeck,

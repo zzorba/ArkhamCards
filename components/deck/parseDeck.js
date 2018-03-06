@@ -22,7 +22,8 @@ function groupAssets(cardIds, cards) {
 }
 
 function isSpecialCard(card) {
-  return card.subtype_code === 'weakeness' ||
+  return card.code === '01000' ||  
+    card.subtype_code === 'weakeness' ||
     card.spoiler ||
     card.restrictions;
 }

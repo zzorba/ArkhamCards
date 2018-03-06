@@ -11,6 +11,7 @@ import { MarkdownView } from 'react-native-markdown-view';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
 const BAD_ICON_NAMES = {
+  Action: 'action',
   'per investigator': 'per_investigator',
   lightning: 'free',
   'auto-fail': 'auto_fail',
