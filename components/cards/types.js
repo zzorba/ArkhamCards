@@ -11,6 +11,7 @@ const CardShape = {
   faction_name: PropTypes.string,
   position: PropTypes.number,
   exceptional: PropTypes.bool,
+  xp: PropTypes.number,
   code: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   real_name: PropTypes.string.isRequired,

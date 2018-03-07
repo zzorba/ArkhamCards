@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { range, values } from 'lodash';
+import { filter, range, values } from 'lodash';
 const {
   StyleSheet,
   FlatList,
@@ -21,6 +21,7 @@ import * as Actions from '../../actions';
 import CardText from './CardText';
 import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
+import XpChooser from './XpChooser';
 
 class CardResult extends React.PureComponent {
   static propTypes = {
@@ -64,9 +65,16 @@ class CardSearchView extends React.Component {
 
     this.state = {
       searchTerm: '',
+      factions: [],
+      types: [],
+      xpLevels: [],
     };
 
     this._searchUpdated = this.searchUpdated.bind(this);
+
+    this._selectedFactionsChanged = this.selectedFactionsChanged.bind(this);
+    this._selectedTypesChanged = this.selectedTypesChanged.bind(this);
+    this._selectedXpChanged = this.selectedXpChanged.bind(this);
 
     this._cardPressed = this.cardPressed.bind(this);
     this._cardToKey = this.cardToKey.bind(this);
@@ -75,6 +83,24 @@ class CardSearchView extends React.Component {
 
   cardToKey(card) {
     return card.code;
+  }
+
+  selectedFactionsChanged(factions) {
+    this.setState({
+      factions,
+    })
+  }
+
+  selectedTypesChanged(types) {
+    this.setState({
+      types,
+    });
+  }
+
+  selectedXpChanged(xpLevels) {
+    this.setState({
+      xpLevels,
+    });
   }
 
   cardPressed(cardId) {
@@ -96,23 +122,64 @@ class CardSearchView extends React.Component {
     });
   }
 
-  filteredCards() {
-    const {
-      cards,
-    } = this.props;
+  applyQueryFilter(cards) {
     const {
       searchTerm,
     } = this.state;
 
     if (searchTerm === '') {
-      return [];
+      return cards;
     };
 
-    return Object.keys(cards).map(id => cards[id]).filter(card => {
+    return filter(cards, card => {
       return (card.name && card.name.indexOf(searchTerm) !== -1) ||
         (card.real_text && card.real_text.indexOf(searchTerm) !== -1) ||
         (card.traits && card.traits.indexOf(searchTerm) !== -1);
     });
+  }
+
+  applyFactionFilter(cards) {
+    const {
+      factions,
+    } = this.state;
+    if (factions.length === 0) {
+      return cards;
+    }
+    return filter(cards, card => factions.indexOf(card.faction_code) !== -1);
+  }
+
+  applyTypeFilter(cards) {
+    const {
+      types,
+    } = this.state;
+    if (types.length === 0) {
+      return cards;
+    }
+    return filter(cards, card => types.indexOf(card.type_code) !== -1);
+  }
+
+  applyXpFilter(cards) {
+    const {
+      xpLevels,
+    } = this.state;
+    const {
+      types,
+    } = this.state;
+    if (xpLevels.length === 0) {
+      return cards;
+    }
+    return filter(cards, card => xpLevels.indexOf(card.xp || 0) !== -1);
+  }
+
+  filteredCards() {
+    const {
+      cards,
+    } = this.props;
+    const cardsList = Object.keys(cards).map(id => cards[id]);
+    const queryCards = this.applyQueryFilter(cardsList);
+    const factionCards = this.applyFactionFilter(queryCards);
+    const typeCards = this.applyTypeFilter(factionCards);
+    return this.applyXpFilter(typeCards);
   }
 
   render() {
@@ -124,8 +191,11 @@ class CardSearchView extends React.Component {
           style={styles.searchInput}
           placeholder="Search for a card"
         />
-        <FactionChooser />
-        <TypeChooser />
+        <FactionChooser onChange={this._selectedFactionsChanged} />
+        <View style={styles.row}>
+          <TypeChooser onChange={this._selectedTypesChanged} />
+          <XpChooser onChange={this._selectedXpChanged} />
+        </View>
         <FlatList
           data={results}
           renderItem={this._renderCard}
@@ -162,5 +232,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#CCC',
     borderWidth: 1
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
