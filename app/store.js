@@ -8,31 +8,31 @@ import FilesystemStorage from 'redux-persist-filesystem-storage';
 import reducers from '../reducers';
 
 export default function configureStore(initialState) {
- const offline = createOffline({
-   ...offlineConfig,
-   persist: false,
- });
+  const offline = createOffline({
+    ...offlineConfig,
+    persist: false,
+  });
 
- const persistConfig = {
-   key: 'persist',
-   storage: FilesystemStorage,
- };
+  const persistConfig = {
+    key: 'persist',
+    storage: FilesystemStorage,
+  };
 
- const reducer = persistReducer(
-   persistConfig,
-   offline.enhanceReducer(reducers)
- );
+  const reducer = persistReducer(
+    persistConfig,
+    offline.enhanceReducer(reducers)
+  );
 
- const store = createStore(
-   reducer,
-   initialState,
-   compose(
-     applyMiddleware(thunk, offline.middleware /*, loggerMiddleware*/),
-     offline.enhanceStore)
- );
- const persistor = persistStore(store, { debug: true }, () => {
-   console.log('PersistStore loaded.');
- });
+  const store = createStore(
+    reducer,
+    initialState,
+    compose(
+      applyMiddleware(thunk, offline.middleware, loggerMiddleware),
+      offline.enhanceStore)
+  );
+  const persistor = persistStore(store, { debug: true }, () => {
+    console.log('PersistStore loaded.');
+  });
 
- return { store, persistor };
+  return { store, persistor };
 }

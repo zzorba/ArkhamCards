@@ -1,10 +1,7 @@
 import React from 'react';
 const {
-  StyleSheet,
-  ListView,
   View,
   Text,
-  ActivityIndicator
 } = require('react-native');
 
 

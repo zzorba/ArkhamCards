@@ -1,8 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 
-import Home from './components/Home'
 import ArkhamIcon from './assets/ArkhamIcon';
 
 import { YellowBox } from 'react-native';
@@ -14,7 +11,7 @@ export default class App {
   }
 
   populateIcons() {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
       Promise.all(
         [
           ArkhamIcon.getImageSource('elder_sign', 30),
@@ -37,8 +34,8 @@ export default class App {
   startApp(icons) {
     YellowBox.ignoreWarnings([
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
-         'Consider using `numColumns` with `FlatList` instead.',
-         'Warning: Failed prop type: Invalid prop `rules.arkhamIcon.order` of type `number` supplied to `MarkdownView`, expected `function`.',
+      'Consider using `numColumns` with `FlatList` instead.',
+      'Warning: Failed prop type: Invalid prop `rules.arkhamIcon.order` of type `number` supplied to `MarkdownView`, expected `function`.',
     ]);
 
     Navigation.startTabBasedApp({
@@ -60,8 +57,8 @@ export default class App {
           screen: 'Settings',
           title: 'My Decks',
           icon: icons.investigatorIcon,
-        }
-      ]
+        },
+      ],
     });
   }
 }

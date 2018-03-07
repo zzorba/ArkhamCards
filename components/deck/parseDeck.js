@@ -22,7 +22,7 @@ function groupAssets(cardIds, cards) {
 }
 
 function isSpecialCard(card) {
-  return card.code === '01000' ||  
+  return card.code === '01000' ||
     card.subtype_code === 'weakeness' ||
     card.spoiler ||
     card.restrictions;
@@ -40,7 +40,7 @@ function splitCards(cardIds, cards) {
     if (typeCards.length > 0) {
       result[type_code] = typeCards;
     }
-  })
+  });
   return result;
 }
 
@@ -50,8 +50,8 @@ function computeXp(card) {
 
 function factionCount(cardIds, cards, faction) {
   return sum(cardIds.filter(c =>
-      !cards[c.id].permanent && cards[c.id].faction_code === faction)
-    .map(c => c.quantity));
+    !cards[c.id].permanent && cards[c.id].faction_code === faction
+  ).map(c => c.quantity));
 }
 
 function costHistogram(cardIds, cards) {
@@ -83,12 +83,12 @@ export function parseDeck(deck, cards) {
       quantity: deck.slots[id],
     };
   });
-  const investigator = deck.investigator_code;
   const specialCards = cardIds.filter(c => isSpecialCard(cards[c.id]));
   const normalCards = cardIds.filter(c => !isSpecialCard(cards[c.id]));
   const factionCounts = {};
-  FACTION_CODES.forEach(faction =>
-    factionCounts[faction] = factionCount(cardIds, cards, faction));
+  FACTION_CODES.forEach(faction => {
+    factionCounts[faction] = factionCount(cardIds, cards, faction);
+  });
   const skillIconCounts = {};
   SKILLS.forEach(skill => {
     skillIconCounts[skill] = sumSkillIcons(cardIds, cards, skill);

@@ -1,20 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sum, uniqBy } from 'lodash';
 const {
-  StyleSheet,
-  SectionList,
   View,
   Text,
-  ScrollView,
-  ActivityIndicator
 } = require('react-native');
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import * as Actions from '../../actions';
-import ArkhamIcon from '../../assets/ArkhamIcon';
 import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckChartsTab from './DeckChartsTab';
@@ -42,7 +36,8 @@ class DeckView extends React.Component {
     const {
       deck,
       cards,
-    } = this.props
+    } = this.props;
+
     if (!deck) {
       return (
         <View>
@@ -62,11 +57,8 @@ class DeckView extends React.Component {
       </ScrollableTabView>
     );
   }
-};
+}
 
-// The function takes data from the app current state,
-// // and insert/links it into the props of our component.
-// // This function makes Redux know that this component needs to be passed a piece of the state
 function mapStateToProps(state, props) {
   if (props.id in state.decks.all) {
     return {
@@ -79,18 +71,8 @@ function mapStateToProps(state, props) {
   };
 }
 
-// Doing this merges our actions into the component’s props,
-// while wrapping them in dispatch() so that they immediately dispatch an Action.
-// Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-//Connect everything
 export default connect(mapStateToProps, mapDispatchToProps)(DeckView);
-
-var styles = StyleSheet.create({
-  container: {
-    margin: 15,
-  },
-});

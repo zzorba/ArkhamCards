@@ -1,24 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, range, values } from 'lodash';
+import { filter, range } from 'lodash';
 const {
   StyleSheet,
   FlatList,
   View,
-  Image,
-  ScrollView,
   Text,
   TouchableOpacity,
-  ActivityIndicator
 } = require('react-native');
-import SearchInput, { createFilter } from 'react-native-search-filter';
+import SearchInput from 'react-native-search-filter';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { CardType } from './types';
 
 import * as Actions from '../../actions';
-import CardText from './CardText';
 import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';
@@ -43,7 +39,7 @@ class CardResult extends React.PureComponent {
       card,
     } = this.props;
     if (!card.name) {
-      return <Text>{'No Text'}</Text>;
+      return <Text>No Text</Text>;
     }
     const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
     return (
@@ -88,7 +84,7 @@ class CardSearchView extends React.Component {
   selectedFactionsChanged(factions) {
     this.setState({
       factions,
-    })
+    });
   }
 
   selectedTypesChanged(types) {
@@ -129,7 +125,7 @@ class CardSearchView extends React.Component {
 
     if (searchTerm === '') {
       return cards;
-    };
+    }
 
     return filter(cards, card => {
       return (card.name && card.name.indexOf(searchTerm) !== -1) ||
@@ -161,9 +157,6 @@ class CardSearchView extends React.Component {
   applyXpFilter(cards) {
     const {
       xpLevels,
-    } = this.state;
-    const {
-      types,
     } = this.state;
     if (xpLevels.length === 0) {
       return cards;
@@ -206,32 +199,28 @@ class CardSearchView extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
     cards: state.cards.all,
   };
 }
 
-// Doing this merges our actions into the component’s props,
-// while wrapping them in dispatch() so that they immediately dispatch an Action.
-// Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-//Connect everything
 export default connect(mapStateToProps, mapDispatchToProps)(CardSearchView);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
-  searchInput:{
+  searchInput: {
     padding: 10,
     borderColor: '#CCC',
-    borderWidth: 1
+    borderWidth: 1,
   },
   row: {
     flexDirection: 'row',

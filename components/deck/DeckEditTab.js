@@ -1,15 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 const {
   StyleSheet,
-  SectionList,
   View,
-  Image,
   Text,
-  ScrollView,
-  ActivityIndicator
 } = require('react-native');
-import SearchInput, { createFilter } from 'react-native-search-filter';
+import SearchInput from 'react-native-search-filter';
 
 export default class DeckEditTab extends React.Component {
 
@@ -23,7 +18,7 @@ export default class DeckEditTab extends React.Component {
     this._searchUpdated = this.searchUpdated.bind(this);
   }
 
-  searchUpdated(text) {
+  searchUpdated(term) {
     this.setState({
       searchTerm: term,
     });
@@ -37,7 +32,7 @@ export default class DeckEditTab extends React.Component {
           style={styles.searchInput}
           placeholder="Search for a card"
         />
-        <Text>{this.state.searchTerm}</Text>
+        <Text>{ this.state.searchTerm }</Text>
       </View>
     );
   }
@@ -47,11 +42,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
-  searchInput:{
+  searchInput: {
     padding: 10,
     borderColor: '#CCC',
-    borderWidth: 1
+    borderWidth: 1,
   },
 });

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, flatMap, map, values } from 'lodash';
+import { flatMap } from 'lodash';
 const {
   StyleSheet,
-  Text,
 } = require('react-native');
 import { ButtonGroup } from 'react-native-elements';
 
@@ -13,12 +12,13 @@ export default class XpChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
   };
-  constructor () {
-    super()
+  constructor(props) {
+    super(props);
+
     this.state = {
       selectedIndexes: [],
-    }
-    this._updateIndex = this.updateIndex.bind(this)
+    };
+    this._updateIndex = this.updateIndex.bind(this);
   }
 
   updateIndex(indexes) {
@@ -30,10 +30,10 @@ export default class XpChooser extends React.Component {
     this.props.onChange(selection);
   }
 
-  render () {
+  render() {
     const {
       selectedIndexes,
-    } = this.state
+    } = this.state;
     return (
       <ButtonGroup
         onPress={this._updateIndex}
@@ -46,7 +46,7 @@ export default class XpChooser extends React.Component {
         containerStyle={styles.container}
         selectMultiple
       />
-    )
+    );
   }
 }
 

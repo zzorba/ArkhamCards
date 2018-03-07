@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { CARDS_AVAILABLE, PACKS_AVAILABLE, DECK_AVAILABLE } from "../actions/"
+import { CARDS_AVAILABLE, PACKS_AVAILABLE, DECK_AVAILABLE } from '../actions/';
 
 const DEFAULT_CARDS_STATE = { all: {}, loading: true };
 
@@ -66,7 +66,6 @@ const rootReducer = combineReducers({
   cards,
   packs,
   decks,
-    // ,[ANOTHER REDUCER], [ANOTHER REDUCER] ....
 });
 
 export default rootReducer;

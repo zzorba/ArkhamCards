@@ -32,7 +32,7 @@ module.exports = {
     // React native specific rules
     'react-native/no-unused-styles': 'error',
     'react-native/split-platform-components': 'error',
-    'react-native/no-inline-styles': 'error',
+    // 'react-native/no-inline-styles': 'error',
     // 'react-native/no-color-literals': 'error',
 
     // Destructuring rules
@@ -70,7 +70,6 @@ module.exports = {
     'array-bracket-spacing': 'error',
     'block-spacing': 'error',
     'brace-style': 'error',
-    'camelcase': 'error',
     'comma-dangle': ['error', 'always-multiline'],
     'func-call-spacing': 'error',
     'indent': ['error', 2, {

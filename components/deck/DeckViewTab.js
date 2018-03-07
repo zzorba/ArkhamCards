@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { mapValues, range, sum, uniqBy } from 'lodash';
+import { range, sum } from 'lodash';
 const {
   StyleSheet,
   SectionList,
@@ -12,7 +12,6 @@ const {
 } = require('react-native');
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import * as Actions from '../../actions';
 import ArkhamIcon from '../../assets/ArkhamIcon';
@@ -47,20 +46,20 @@ class DeckCardResult extends React.PureComponent {
   render() {
     const {
       card,
-      item
+      item,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
         <Text style={styles.defaultText}>
-          {`${item.quantity}x `}
+          { `${item.quantity}x ` }
           { card.faction_code !== 'neutral' && CLASS_ICONS[card.faction_code] }
           <Text style={styles[card.faction_code]}>
-            {card.name}
+            { card.name }
           </Text>
-          { range(0, card.xp || 0).map(() => '•').join('')}
+          { range(0, card.xp || 0).map(() => '•').join('') }
         </Text>
       </TouchableOpacity>
-    )
+    );
   }
 }
 
@@ -68,7 +67,7 @@ function deckToSections(halfDeck) {
   const result = [];
   if (halfDeck.Assets) {
     const assetCount = sum(halfDeck.Assets.map(subAssets =>
-       sum(subAssets.data.map(c => c.quantity))))
+      sum(subAssets.data.map(c => c.quantity))));
     result.push({
       title: `Assets (${assetCount})`,
       data: [],
@@ -163,8 +162,7 @@ class DeckViewTab extends React.Component {
         investigator,
         deck,
       },
-      cards,
-    } = this.props
+    } = this.props;
 
     const sections = deckToSections(normalCards)
       .concat(deckToSections(specialCards));
@@ -182,7 +180,7 @@ class DeckViewTab extends React.Component {
           { investigator.name }
         </Text>
         <Text style={styles.defaultText}>
-          { `${normalCardCount} cards (${totalCardCount} total)`}
+          { `${normalCardCount} cards (${totalCardCount} total)` }
         </Text>
         <Text style={styles.defaultText}>
           { `${experience} experience required.` }
@@ -199,9 +197,9 @@ class DeckViewTab extends React.Component {
       </ScrollView>
     );
   }
-};
+}
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
     cards: state.cards.all,
   };
@@ -211,7 +209,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-// Connect everything
 export default connect(mapStateToProps, mapDispatchToProps)(DeckViewTab);
 
 const styles = StyleSheet.create({
@@ -249,31 +246,37 @@ const styles = StyleSheet.create({
     borderBottomColor: '#0A0A0A',
     borderBottomWidth: 1,
   },
+  /* eslint-disable react-native/no-unused-styles */
   seeker: {
     color: '#ec8426',
     fontSize: 14,
     lineHeight: 20,
   },
+  /* eslint-disable react-native/no-unused-styles */
   guardian: {
     color: '#2b80c5',
     fontSize: 14,
     lineHeight: 20,
   },
+  /* eslint-disable react-native/no-unused-styles */
   mystic: {
     color: '#4331b9',
     fontSize: 14,
     lineHeight: 20,
   },
+  /* eslint-disable react-native/no-unused-styles */
   rogue: {
     color: '#107116',
     fontSize: 14,
     lineHeight: 20,
   },
+  /* eslint-disable react-native/no-unused-styles */
   survivor: {
     color: '#cc3038',
     fontSize: 14,
     lineHeight: 20,
   },
+  /* eslint-disable react-native/no-unused-styles */
   neutral: {
     color: '#606060',
     fontSize: 14,

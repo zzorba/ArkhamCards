@@ -29,6 +29,7 @@ const PER_INVESTIGATOR_ICON = (
 
 class CardDetailView extends React.PureComponent {
   static propTypes = {
+    /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.string.isRequired,
     card: OptionalCardType,
     showSpoilers: PropTypes.bool,
@@ -132,7 +133,7 @@ class CardDetailView extends React.PureComponent {
   }
 
   renderPlaydata(card) {
-    const costString =(
+    const costString = (
       (card.type_code === 'asset' || card.type_code === 'event') &&
       `Cost: ${card.cost || '-'}`
     ) || '';
@@ -150,11 +151,11 @@ class CardDetailView extends React.PureComponent {
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
           <Text>
-            Shroud: {card.shroud}. Clues: {card.clues}
+            Shroud: { card.shroud }. Clues: { card.clues }
             { card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON }
             .
-          </Text>
-        )}
+          </Text>)
+        }
       </View>
     );
   }
@@ -165,11 +166,11 @@ class CardDetailView extends React.PureComponent {
         <Text>
           { `Fight: ${card.enemy_fight || '-'}. Health: ${card.health || '-'}` }
           { card.health_per_investigator && PER_INVESTIGATOR_ICON }
-          { `. Evade: ${card.enemy_evade || '-'}. `}
+          { `. Evade: ${card.enemy_evade || '-'}. ` }
           { '\n' }
           { `Damage: ${card.enemy_damage || '-'}. Horror: ${card.enemy_horror}. ` }
         </Text>
-      )
+      );
     }
     if (card.health > 0 || card.sanity > 0) {
       return (
@@ -239,7 +240,7 @@ class CardDetailView extends React.PureComponent {
           <Image
             style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
             source={{
-              uri: `https://arkhamdb.com${card.imagesrc}`
+              uri: `https://arkhamdb.com${card.imagesrc}`,
             }}
           />
         </View>
@@ -309,20 +310,20 @@ class CardDetailView extends React.PureComponent {
               { card.type_name }
             </Text>
             { !!card.back_flavor && flavorFirst &&
-              <Text style={styles.flavorText}>{ card.back_flavor }</Text>}
+              <Text style={styles.flavorText}>{ card.back_flavor }</Text> }
             { !!card.back_text && (
               <View style={{
                 marginTop: 3,
                 marginLeft: 3,
                 borderLeftWidth: 3,
                 paddingLeft: 5,
-                borderColor: FACTION_COLORS[card.faction_code] || '#000000'
+                borderColor: FACTION_COLORS[card.faction_code] || '#000000',
               }}>
                 <CardText text={card.back_text} />
-              </View>
-            )}
+              </View>)
+            }
             { !!card.back_flavor && !flavorFirst &&
-              <Text style={styles.flavorText}>{ card.back_flavor }</Text>}
+              <Text style={styles.flavorText}>{ card.back_flavor }</Text> }
           </View>
         </View>
         { !isHorizontal && image }
@@ -359,25 +360,32 @@ class CardDetailView extends React.PureComponent {
               marginLeft: 5,
               marginTop: 5,
               backgroundColor: blur ? '#000000' : '#FFFFFF',
-             }}>
+            }}>
               { this.renderMetadata(card) }
               { this.renderPlaydata(card) }
-              { !!card.flavor && flavorFirst && <Text style={styles.flavorText}>{ card.flavor }</Text>}
+              { !!card.flavor && flavorFirst &&
+                <Text style={styles.flavorText}>
+                  { card.flavor }
+                </Text>
+              }
               { !!card.real_text && (
                 <View style={{
                   marginTop: 3,
                   marginLeft: 3,
                   borderLeftWidth: 3,
                   paddingLeft: 5,
-                  borderColor: FACTION_COLORS[card.faction_code] || '#000000'
+                  borderColor: FACTION_COLORS[card.faction_code] || '#000000',
                 }}>
                   <CardText text={card.real_text} />
-                </View>
-              )}
+                </View>)
+              }
               { ('victory' in card && card.victory !== null) &&
-                <Text style={styles.typeText}>{ `Victory: ${card.victory}.` }</Text>}
+                <Text style={styles.typeText}>
+                  { `Victory: ${card.victory}.` }
+                </Text>
+              }
               { !!card.flavor && !flavorFirst &&
-                <Text style={styles.flavorText}>{ card.flavor }</Text>}
+                <Text style={styles.flavorText}>{ card.flavor }</Text> }
               { !!card.illustrator && <Text>{ card.illustrator }</Text> }
               { !!card.pack_name &&
                 <Text>
@@ -409,14 +417,10 @@ function mapStateToProps(state, props) {
   };
 }
 
-// Doing this merges our actions into the component’s props,
-// while wrapping them in dispatch() so that they immediately dispatch an Action.
-// Just by doing this, we will have access to the actions defined in out actions file (action/home.js)
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-//Connect everything
 export default connect(mapStateToProps, mapDispatchToProps)(CardDetailView);
 
 const styles = StyleSheet.create({
@@ -456,11 +460,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-  },
-  flippableCardImage: {
-    height: 250,
-    width: 250,
-    borderWidth: 0,
   },
   verticalCardImage: {
     height: 280,

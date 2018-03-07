@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, flatMap, map, values } from 'lodash';
+import { flatMap, map } from 'lodash';
 const {
   StyleSheet,
-  Text,
 } = require('react-native');
 import { ButtonGroup } from 'react-native-elements';
 
@@ -15,12 +14,13 @@ export default class FactionChooser extends React.Component {
     onChange: PropTypes.func.isRequired,
   };
 
-  constructor () {
-    super()
+  constructor(props) {
+    super(props);
+
     this.state = {
       selectedIndexes: [],
-    }
-    this._updateIndex = this.updateIndex.bind(this)
+    };
+    this._updateIndex = this.updateIndex.bind(this);
   }
 
   updateIndex(indexes) {
@@ -31,19 +31,22 @@ export default class FactionChooser extends React.Component {
     this.props.onChange(selection);
   }
 
-  render () {
+  render() {
     const {
       selectedIndexes,
     } = this.state;
 
     const buttons = map(FACTION_CODES, (faction, idx) => {
       const iconName = faction === 'neutral' ? 'elder_sign' : faction;
-      const selected = selectedIndexes.indexOf(idx) !== -1 ;
+      const selected = selectedIndexes.indexOf(idx) !== -1;
       return {
-        element: () => <ArkhamIcon
-          name={iconName}
-          size={28}
-          color={ selected ? FACTION_COLORS[faction] : '#bdbdbd'} />,
+        element: () => (
+          <ArkhamIcon
+            name={iconName}
+            size={28}
+            color={selected ? FACTION_COLORS[faction] : '#bdbdbd'}
+          />
+        ),
       };
     });
     return (
@@ -56,7 +59,7 @@ export default class FactionChooser extends React.Component {
         containerStyle={styles.container}
         selectMultiple
       />
-    )
+    );
   }
 }
 

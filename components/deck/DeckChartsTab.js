@@ -1,20 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 const {
-  StyleSheet,
-  SectionList,
-  View,
-  Image,
-  Text,
   ScrollView,
-  ActivityIndicator
 } = require('react-native');
+
+import { DeckType } from './parseDeck';
 
 import FactionChart from './charts/FactionChart';
 import CostChart from './charts/CostChart';
 import SkillIconChart from './charts/SkillIconChart';
 
 export default class DeckChartsTab extends React.Component {
+  static propTypes = {
+    parsedDeck: DeckType,
+  };
+
   render() {
     const {
       parsedDeck,

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 const {
-  Image,
-  Text,
   View,
 } = require('react-native');
 import FlipCard from 'react-native-flip-card';
@@ -42,15 +40,13 @@ export default class FlippableCard extends React.Component {
         style={style}
         friction={10}
         perspective={1000}
-        flipHorizontal={true}
+        flipHorizontal
         flipVertical={false}
         flip={flipped}
-        clickable={true}
+        clickable
         onFlipEnd={this._onFlip}
       >
-        {/* Face Side */}
         { backSide }
-        {/* Back Side */}
         { frontSide }
       </FlipCard>
     );

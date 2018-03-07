@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { LineChart, XAxis, YAxis } from 'react-native-svg-charts'
+import { LineChart, XAxis, YAxis } from 'react-native-svg-charts';
 const { View, Text } = require('react-native');
 
 import { DeckType } from '../parseDeck';
@@ -9,6 +8,10 @@ export default class CostChart extends React.PureComponent {
   static propTypes = {
     parsedDeck: DeckType,
   };
+
+  formatLabel(value, index) {
+    return index;
+  }
 
   render() {
     const {
@@ -27,7 +30,6 @@ export default class CostChart extends React.PureComponent {
           numberOfTicks={5}
           gridMin={0}
           svg={{ stroke: 'rgb(134, 65, 244)' }}
-          contentInset={ { top: 20, bottom: 20 } }
         />
         <YAxis
           style={{ position: 'absolute', top: 0, bottom: 0 }}
@@ -45,7 +47,7 @@ export default class CostChart extends React.PureComponent {
         <XAxis
           style={{ marginHorizontal: -10 }}
           data={costHistogram}
-          formatLabel={ (value, index) => index }
+          formatLabel={this.formatLabel}
           contentInset={{ left: 10, right: 10 }}
           svg={{ fontSize: 10 }}
         />

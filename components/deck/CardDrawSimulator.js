@@ -4,14 +4,12 @@ import { concat, flatMap, map, pullAt, shuffle, range, without } from 'lodash';
 const {
   Button,
   Image,
-  ScrollView,
   StyleSheet,
   Text,
   SectionList,
   TouchableHighlight,
   View,
 } = require('react-native');
-import { Circle as ProgressCircle } from 'react-native-progress';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
 import { DeckType } from './parseDeck';
@@ -24,9 +22,15 @@ class CardItem extends React.PureComponent {
     selected: PropTypes.bool.isRequired,
   };
 
-  _onPress = () => {
+  constructor(props) {
+    super(props);
+
+    this._onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
     this.props.onPressItem(this.props.id);
-  };
+  }
 
   render() {
     const {
@@ -92,7 +96,7 @@ export default class CardDrawSimulator extends React.Component {
     });
   }
 
-  reshuffleSelected(callback) {
+  reshuffleSelected() {
     const {
       shuffledDeck,
       selectedCards,
@@ -175,7 +179,7 @@ export default class CardDrawSimulator extends React.Component {
           if (card.permanent) {
             return [];
           }
-          return range(0, deck.slots[cardId]).map(() => cardId)
+          return range(0, deck.slots[cardId]).map(() => cardId);
         }));
   }
 
@@ -246,9 +250,6 @@ export default class CardDrawSimulator extends React.Component {
 
   render() {
     const {
-      cards,
-    } = this.props;
-    const {
       drawnCards,
       selectedCards,
     } = this.state;
@@ -268,7 +269,7 @@ export default class CardDrawSimulator extends React.Component {
           {
             data,
             title: 'na',
-          }
+          },
         ]}
         renderItem={this._renderCardItem}
         renderSectionHeader={this._renderHeader}
@@ -278,7 +279,7 @@ export default class CardDrawSimulator extends React.Component {
   }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   drawButtonRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',

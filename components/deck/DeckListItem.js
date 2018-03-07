@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 5,
   },
-  investigatorImage:{
+  investigatorImage: {
     height: 90,
     width: 126,
     marginBottom: 5,
