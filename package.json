@@ -11,6 +11,7 @@
     "lodash": "4.17.5",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-elements": "1.0.0-beta2",
     "react-native-flip-card": "3.5.2",
     "react-native-markdown-view": "1.1.4",
     "react-native-navigation": "1.1.386",

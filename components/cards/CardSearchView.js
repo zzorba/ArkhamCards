@@ -14,11 +14,13 @@ const {
 import SearchInput, { createFilter } from 'react-native-search-filter';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import SimpleMarkdown from 'simple-markdown'
+
 import { CardType } from './types';
 
 import * as Actions from '../../actions';
 import CardText from './CardText';
+import FactionChooser from './FactionChooser';
+import TypeChooser from './TypeChooser';
 
 class CardResult extends React.PureComponent {
   static propTypes = {
@@ -122,6 +124,8 @@ class CardSearchView extends React.Component {
           style={styles.searchInput}
           placeholder="Search for a card"
         />
+        <FactionChooser />
+        <TypeChooser />
         <FlatList
           data={results}
           renderItem={this._renderCard}
