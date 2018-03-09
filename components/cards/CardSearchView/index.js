@@ -10,7 +10,7 @@ import SearchInput from 'react-native-search-filter';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as Actions from '../../actions';
+import * as Actions from '../../../actions';
 import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';

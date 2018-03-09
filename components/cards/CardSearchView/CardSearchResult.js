@@ -6,7 +6,7 @@ const {
   TouchableOpacity,
 } = require('react-native');
 
-import { CardType } from './types';
+import { CardType } from '../types';
 
 export default class CardSearchResult extends React.PureComponent {
   static propTypes = {

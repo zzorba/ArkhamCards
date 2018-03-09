@@ -16,12 +16,12 @@ import {
   FACTION_COLORS,
   SKILLS,
   SKILL_COLORS,
-} from '../../constants';
-import { OptionalCardType } from './types';
-import ArkhamIcon from '../../assets/ArkhamIcon';
-import * as Actions from '../../actions';
+} from '../../../constants';
+import { OptionalCardType } from '../types';
+import ArkhamIcon from '../../../assets/ArkhamIcon';
+import * as Actions from '../../../actions';
 
-import CardText from './CardText';
+import CardText from '../CardText';
 import FlippableCard from './FlippableCard';
 
 const PER_INVESTIGATOR_ICON = (
@@ -213,10 +213,10 @@ class CardDetailView extends React.PureComponent {
     if (card.double_sided) {
       if (isHorizontal) {
         if (card.type_code === 'act') {
-          return require('../../assets/blur-act.jpeg');
+          return require('../../../assets/blur-act.jpeg');
         }
         if (card.type_code === 'agenda') {
-          return require('../../assets/blur-agenda.jpeg');
+          return require('../../../assets/blur-agenda.jpeg');
         }
         return {
           uri: `https://arkhamdb.com${card.imagesrc}`,
@@ -227,8 +227,8 @@ class CardDetailView extends React.PureComponent {
       };
     }
     return card.deck_limit > 0 ?
-      require('../../assets/player-back.png') :
-      require('../../assets/encounter-back.png');
+      require('../../../assets/player-back.png') :
+      require('../../../assets/encounter-back.png');
   }
 
   renderCardImage(card, blur, isHorizontal) {
@@ -237,7 +237,10 @@ class CardDetailView extends React.PureComponent {
     }
     if (!card.spoiler) {
       return (
-        <View style={isHorizontal ? styles.horizontalCard : styles.verticalCard} onLayout={this._onCardViewLayout}>
+        <View
+          style={isHorizontal ? styles.horizontalCard : styles.verticalCard}
+          onLayout={this._onCardViewLayout}
+        >
           <Image
             style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
             source={{
