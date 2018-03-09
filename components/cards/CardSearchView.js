@@ -1,54 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, range } from 'lodash';
+import { filter } from 'lodash';
 const {
   StyleSheet,
   FlatList,
   View,
-  Text,
-  TouchableOpacity,
 } = require('react-native');
 import SearchInput from 'react-native-search-filter';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { CardType } from './types';
-
 import * as Actions from '../../actions';
 import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';
-
-class CardResult extends React.PureComponent {
-  static propTypes = {
-    card: CardType,
-    onPress: PropTypes.func.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
-    this.props.onPress(this.props.card.code);
-  }
-
-  render() {
-    const {
-      card,
-    } = this.props;
-    if (!card.name) {
-      return <Text>No Text</Text>;
-    }
-    const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
-    return (
-      <TouchableOpacity onPress={this._onPress}>
-        <Text>{ `${card.name}${xpStr}` }</Text>
-      </TouchableOpacity>
-    );
-  }
-}
+import CardSearchResult from './CardSearchResult';
 
 class CardSearchView extends React.Component {
   static propTypes = {
@@ -109,7 +75,7 @@ class CardSearchView extends React.Component {
   }
 
   renderCard({ item }) {
-    return <CardResult card={item} onPress={this._cardPressed} />;
+    return <CardSearchResult card={item} onPress={this._cardPressed} />;
   }
 
   searchUpdated(text) {

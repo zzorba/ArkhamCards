@@ -1,20 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const {
-  StyleSheet,
-  Text,
-} = require('react-native');
 import SimpleMarkdown from 'simple-markdown';
 import { MarkdownView } from 'react-native-markdown-view';
 
-import ArkhamIcon from '../../assets/ArkhamIcon';
-
-const BAD_ICON_NAMES = {
-  Action: 'action',
-  'per investigator': 'per_investigator',
-  lightning: 'free',
-  'auto-fail': 'auto_fail',
-};
+import ArkhamIconNode from './ArkhamIconNode';
+import BoldHtmlTagNode from './BoldHtmlTagNode';
+import ItalicHtmlTagNode from './ItalicHtmlTagNode';
 
 const ArkhamIconRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
@@ -22,14 +13,7 @@ const ArkhamIconRule = {
   parse: (capture) => {
     return { name: capture[1] };
   },
-  render: (node, output, state) => (
-    <ArkhamIcon
-      key={state.key}
-      name={BAD_ICON_NAMES[node.name] || node.name}
-      size={16}
-      color="#000000"
-    />
-  ),
+  render: ArkhamIconNode,
 };
 
 const BoldHtmlTagRule = {
@@ -38,27 +22,16 @@ const BoldHtmlTagRule = {
   parse: (capture) => {
     return { text: capture[1] };
   },
-  render: (node, output, state) => {
-    return (
-      <Text key={state.key} style={styles.boldText}>
-        { node.text }
-      </Text>
-    );
-  },
+  render: BoldHtmlTagNode,
 };
+
 const ItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<i>(.+?)<\\/i>')),
   order: 1,
   parse: (capture) => {
     return { text: capture[1] };
   },
-  render: (node, output, state) => {
-    return (
-      <Text key={state.key} style={styles.italicText}>
-        { node.text }
-      </Text>
-    );
-  },
+  render: ItalicHtmlTagNode,
 };
 
 export default class CardText extends React.PureComponent {
@@ -80,13 +53,3 @@ export default class CardText extends React.PureComponent {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  boldText: {
-    fontWeight: '700',
-  },
-  italicText: {
-    fontStyle: 'italic',
-    fontWeight: '700',
-  },
-});

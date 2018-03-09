@@ -1,3 +1,8 @@
+import React from 'react';
+import { mapValues } from 'lodash';
+
+import ArkhamIcon from '../assets/ArkhamIcon';
+
 export const CORE_FACTION_CODES = [
   'mystic',
   'seeker',
@@ -44,3 +49,9 @@ export const FACTION_COLORS = {
   survivor: '#cc3038',
   neutral: '#808080',
 };
+
+export function createFactionIcons(size) {
+  return mapValues(FACTION_COLORS, (color, faction) => {
+    return <ArkhamIcon name={faction} size={size} color={color} />;
+  });
+}
