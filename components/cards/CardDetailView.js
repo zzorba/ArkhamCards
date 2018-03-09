@@ -11,7 +11,12 @@ const {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { CORE_FACTION_CODES, FACTION_COLORS, SKILLS, SKILL_COLORS } from '../../constants';
+import {
+  CORE_FACTION_CODES,
+  FACTION_COLORS,
+  SKILLS,
+  SKILL_COLORS,
+} from '../../constants';
 import { OptionalCardType } from './types';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import * as Actions from '../../actions';
@@ -20,11 +25,7 @@ import CardText from './CardText';
 import FlippableCard from './FlippableCard';
 
 const PER_INVESTIGATOR_ICON = (
-  <ArkhamIcon
-    name="per_investigator"
-    size={12}
-    color="#000000"
-  />
+  <ArkhamIcon name="per_investigator" size={12} color="#000000" />
 );
 
 class CardDetailView extends React.PureComponent {
