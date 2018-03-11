@@ -5,6 +5,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>arkhamicons.ttf</string>
+		<string>coreset.ttf</string>
+		<string>dunwich.ttf</string>
+		<string>carcosa.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

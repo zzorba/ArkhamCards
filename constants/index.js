@@ -55,3 +55,7 @@ export function createFactionIcons(size) {
     return <ArkhamIcon name={faction} size={size} color={color} />;
   });
 }
+
+export function createPackIcons(size) {
+
+}
