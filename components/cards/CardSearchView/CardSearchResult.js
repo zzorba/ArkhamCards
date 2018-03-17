@@ -11,7 +11,9 @@ import { ButtonGroup } from 'react-native-elements';
 
 import EncounterIcon from '../CardDetailView/EncounterIcon';
 import { CardType } from '../types';
-import { FACTION_COLORS } from '../../../constants';
+import { createFactionIcons, FACTION_COLORS } from '../../../constants';
+
+const FACTION_ICONS = createFactionIcons(12);
 
 const BUTTON_WIDTH = 20;
 export default class CardSearchResult extends React.PureComponent {
@@ -50,6 +52,39 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
+  renderIcon() {
+    const {
+      card,
+    } = this.props;
+    if (card.subtype_code &&
+      (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
+    ) {
+      return (
+        <ArkhamIcon name="weakness" size={12} color={FACTION_COLORS.neutral} />
+      );
+    }
+    if (card.spoiler) {
+      return (
+        <EncounterIcon
+          encounter_code={card.encounter_code}
+          size={12}
+          color="#000000"
+        />
+      );
+    }
+
+    if (card.type_code === 'scenario') {
+      return (
+        <EncounterIcon
+          encounter_code={card.pack_code}
+          size={12}
+          color="#000000"
+        />
+      );
+    }
+    return FACTION_ICONS[card.faction_code];
+  }
+
   render() {
     const {
       card,
@@ -79,15 +114,17 @@ export default class CardSearchResult extends React.PureComponent {
           </View>
         }
         <TouchableOpacity onPress={this._onPress}>
-          <Text style={[
-            styles.cardName,
-            { color: FACTION_COLORS[card.faction_code] },
-          ]}>
-            { card.spoiler &&
-              <EncounterIcon encounter_code={card.encounter_code} size={12} color="#000000" />
-            }
-            { `${card.name}${xpStr}` }
-          </Text>
+          <View style={styles.cardTextRow}>
+            <View style={styles.cardIcon}>
+              { this.renderIcon() }
+            </View>
+            <Text style={[
+              styles.cardName,
+              { color: FACTION_COLORS[card.faction_code] },
+            ]}>
+              { `${card.name}${xpStr}` }
+            </Text>
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -102,8 +139,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 22,
   },
+  cardIcon: {
+    width: 16,
+    height: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cardTextRow: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingLeft: 8,
+  },
   cardName: {
-    marginLeft: 8,
+    marginLeft: 4,
     fontSize: 16,
     height: 22,
   },

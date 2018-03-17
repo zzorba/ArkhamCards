@@ -62,6 +62,9 @@ class Home extends React.Component {
       passProps: {
         id: id,
       },
+      navigatorStyle: {
+        tabBarHidden: true,
+      },
     });
   }
 
