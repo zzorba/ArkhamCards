@@ -36,6 +36,7 @@ class DeckView extends React.Component {
     const {
       deck,
       cards,
+      navigator,
     } = this.props;
 
     if (!deck) {
@@ -50,10 +51,22 @@ class DeckView extends React.Component {
 
     return (
       <ScrollableTabView>
-        <DeckViewTab tabLabel="Deck" parsedDeck={pDeck} navigator={this.props.navigator} />
-        <CardDrawSimulator tabLabel="Draw" parsedDeck={pDeck} cards={cards} />
-        <DeckChartsTab tabLabel="Charts" parsedDeck={pDeck} />
-        <DeckEditTab tabLabel="Edit" parsedDeck={pDeck} />
+        <DeckViewTab
+          tabLabel="Deck"
+          parsedDeck={pDeck}
+          navigator={navigator} />
+        <CardDrawSimulator
+          tabLabel="Draw"
+          parsedDeck={pDeck}
+          cards={cards} />
+        <DeckChartsTab
+          tabLabel="Charts"
+          parsedDeck={pDeck} />
+        <DeckEditTab
+          tabLabel="Edit"
+          parsedDeck={pDeck}
+          cards={cards}
+          navigator={navigator} />
       </ScrollableTabView>
     );
   }

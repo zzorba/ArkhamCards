@@ -1,26 +1,30 @@
+import { React } from 'react';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 
 import coreSetIconFonfig from './core.json';
 import dunwichIconFonfig from './dunwich.json';
 import carcosaIconFonfig from './carcosa.json';
 
-const CoreSetIcon createIconSetFromIcoMoon(coreSetIconFonfig);
-const DunwichIcon createIconSetFromIcoMoon(dunwichIconFonfig);
-const CarcosaIcon createIconSetFromIcoMoon(carcosaIconFonfig);
+const CoreSetIcon = createIconSetFromIcoMoon(coreSetIconFonfig);
+const DunwichIcon = createIconSetFromIcoMoon(dunwichIconFonfig);
+const CarcosaIcon = createIconSetFromIcoMoon(carcosaIconFonfig);
 
-const function coreIcon(name, size, color) {
-  return <CoreIcon name={name} size={size} color={color} />;
-}
+/* eslint-disable react/no-multi-comp */
+const coreIcon = function(name, size, color) {
+  return <CoreSetIcon name={name} size={size} color={color} />;
+};
 
-const function dunwichIcon(name, size, color) {
+/* eslint-disable react/no-multi-comp */
+const dunwichIcon = function(name, size, color) {
   return <DunwichIcon name={name} size={size} color={color} />;
-}
+};
 
-const function carcosaIcon(name, size, color) {
+/* eslint-disable react/no-multi-comp */
+const carcosaIcon = function(name, size, color) {
   return <CarcosaIcon name={name} size={size} color={color} />;
-}
+};
 
-const function packToIcon(code, size, color) {
+const packToIcon = function(code, size, color) {
   switch(code) {
     case 'core':
       return coreIcon('core', size, color);
@@ -110,12 +114,12 @@ const function packToIcon(code, size, color) {
     case 'cotr': // CURSE OF THE ROUGAROU
     case 'tfa': // THE FORGOTTEN AGE
       return coreIcon('core', size, color);
-      break;
   }
-}
+};
 
 export default {
   CoreSetIcon,
   DunwichIcon,
   CarcosaIcon,
+  packToIcon,
 };

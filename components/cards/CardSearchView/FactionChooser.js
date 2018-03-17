@@ -7,7 +7,7 @@ const {
 import { ButtonGroup } from 'react-native-elements';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';
-import { FACTION_CODES, FACTION_COLORS } from '../../../constants';
+import { FACTION_COLORS } from '../../../constants';
 
 function factionToIconName(faction) {
   if (faction === 'neutral') {
@@ -18,10 +18,11 @@ function factionToIconName(faction) {
   }
   return faction;
 }
-const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
+
 export default class FactionChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
+    factions: PropTypes.array.isRequired,
   };
 
   constructor(props) {
@@ -38,7 +39,7 @@ export default class FactionChooser extends React.Component {
       selectedIndexes: indexes,
     });
     const selection = flatMap(indexes, idx =>
-      CARD_FACTION_CODES[idx].toLowerCase());
+      this.props.factions[idx].toLowerCase());
     this.props.onChange(selection);
   }
 
@@ -47,7 +48,7 @@ export default class FactionChooser extends React.Component {
       selectedIndexes,
     } = this.state;
 
-    const buttons = map(CARD_FACTION_CODES, (faction, idx) => {
+    const buttons = map(this.props.factions, (faction, idx) => {
       const selected = selectedIndexes.indexOf(idx) !== -1;
       return {
         element: () => (

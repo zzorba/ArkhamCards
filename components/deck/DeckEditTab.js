@@ -1,12 +1,17 @@
 import React from 'react';
-const {
-  StyleSheet,
-  View,
-  Text,
-} = require('react-native');
-import SearchInput from 'react-native-search-filter';
+import PropTypes from 'prop-types';
+import { pickBy } from 'lodash';
+
+import { DeckType } from './parseDeck';
+import CardSearchComponent from '../cards/CardSearchView/CardSearchComponent';
+import DeckValidation from '../../lib/DeckValidation';
 
 export default class DeckEditTab extends React.Component {
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+    parsedDeck: DeckType,
+    cards: PropTypes.object.isRequired,
+  };
 
   constructor(props) {
     super(props);
@@ -16,6 +21,11 @@ export default class DeckEditTab extends React.Component {
     };
 
     this._searchUpdated = this.searchUpdated.bind(this);
+    this._onDeckCountChange = this.onDeckCountChange.bind(this);
+  }
+
+  onDeckCountChange(code, count) {
+    console.log(`Set ${code} to ${count}`);
   }
 
   searchUpdated(term) {
@@ -25,28 +35,24 @@ export default class DeckEditTab extends React.Component {
   }
 
   render() {
+    const {
+      cards,
+      parsedDeck,
+      navigator,
+    } = this.props;
+
+    const validator = new DeckValidation(parsedDeck.investigator);
+    const eligibleCards = pickBy(cards, (card) => {
+      return card.deck_limit > 0 && validator.canIncludeCard(card);
+    });
+
     return (
-      <View style={styles.container}>
-        <SearchInput
-          onChangeText={this._searchUpdated}
-          style={styles.searchInput}
-          placeholder="Search for a card"
-        />
-        <Text>{ this.state.searchTerm }</Text>
-      </View>
+      <CardSearchComponent
+        cards={eligibleCards}
+        navigator={navigator}
+        deckCardCounts={parsedDeck.deck.slots}
+        onDeckCountChange={this._onDeckCountChange}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-  },
-  searchInput: {
-    padding: 10,
-    borderColor: '#CCC',
-    borderWidth: 1,
-  },
-});

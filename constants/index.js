@@ -52,10 +52,16 @@ export const FACTION_COLORS = {
 
 export function createFactionIcons(size) {
   return mapValues(FACTION_COLORS, (color, faction) => {
-    return <ArkhamIcon name={faction} size={size} color={color} />;
+    return (
+      <ArkhamIcon
+        name={faction === 'neutral' ? 'elder_sign' : faction}
+        size={size}
+        color={color}
+      />
+    );
   });
 }
 
-export function createPackIcons(size) {
+export function createPackIcons() {
 
 }

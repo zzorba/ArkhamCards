@@ -21,6 +21,8 @@ const CardShape = {
   clues_fixed: PropTypes.bool,
   health_per_investigator: PropTypes.bool,
   deck_limit: PropTypes.number,
+  deck_requirements: PropTypes.object,
+  deck_options: PropTypes.array,
   traits: PropTypes.string,
   real_traits: PropTypes.string,
   is_unique: PropTypes.bool,
