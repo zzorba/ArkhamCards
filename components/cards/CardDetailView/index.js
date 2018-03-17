@@ -19,6 +19,7 @@ import {
 } from '../../../constants';
 import { OptionalCardType } from '../types';
 import ArkhamIcon from '../../../assets/ArkhamIcon';
+import EncounterIcon from './EncounterIcon';
 import * as Actions from '../../../actions';
 
 import CardText from '../CardText';
@@ -392,12 +393,21 @@ class CardDetailView extends React.PureComponent {
                 <Text style={styles.flavorText}>{ card.flavor }</Text> }
               { !!card.illustrator && <Text>{ card.illustrator }</Text> }
               { !!card.pack_name &&
-                <Text>
-                  { `${card.pack_name} #${card.position % 1000}.` }
-                  { card.encounter_name ?
-                    ` ${card.encounter_name} #${card.encounter_position}.` :
-                    '' }
-                </Text>
+                <View>
+                  <Text>
+                    { `${card.pack_name} #${card.position % 1000}.` }
+                  </Text>
+                  { card.encounter_name &&
+                    <Text>
+                      <EncounterIcon
+                        encounter_code={card.encounter_code}
+                        size={12}
+                        color="#000000"
+                      />
+                      { `${card.encounter_name} #${card.encounter_position}.` }
+                    </Text>
+                  }
+                </View>
               }
             </View>
           </View>
