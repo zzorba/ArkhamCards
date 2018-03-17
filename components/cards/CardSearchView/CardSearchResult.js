@@ -9,6 +9,7 @@ const {
 } = require('react-native');
 import { ButtonGroup } from 'react-native-elements';
 
+import EncounterIcon from '../CardDetailView/EncounterIcon';
 import { CardType } from '../types';
 import { FACTION_COLORS } from '../../../constants';
 
@@ -82,6 +83,9 @@ export default class CardSearchResult extends React.PureComponent {
             styles.cardName,
             { color: FACTION_COLORS[card.faction_code] },
           ]}>
+            { card.spoiler &&
+              <EncounterIcon encounter_code={card.encounter_code} size={12} color="#000000" />
+            }
             { `${card.name}${xpStr}` }
           </Text>
         </TouchableOpacity>

@@ -5,6 +5,7 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import CoreSetIcon from '../../../assets/CoreSetIcon';
 import DunwichIcon from '../../../assets/DunwichIcon';
 import CarcosaIcon from '../../../assets/CarcosaIcon';
+import StandaloneIcon from '../../../assets/StandaloneIcon';
 
 export default class EncounterIcon extends React.PureComponent {
   static propTypes = {
@@ -25,6 +26,10 @@ export default class EncounterIcon extends React.PureComponent {
     return (<CarcosaIcon name={name} size={size} color={color} />);
   }
 
+  standaloneIcon(name, size, color) {
+    return (<StandaloneIcon name={name} size={size} color={color} />);
+  }
+
   render() {
     const {
       encounter_code,
@@ -37,7 +42,7 @@ export default class EncounterIcon extends React.PureComponent {
       case 'agents_of_hastur':
       case 'agents_of_yog':
       case 'agents_of_shub':
-      case 'agents_of_cthulu':
+      case 'agents_of_cthulhu':
       case 'locked_doors':
       case 'chilling_cold':
       case 'striking_fear':
@@ -62,6 +67,7 @@ export default class EncounterIcon extends React.PureComponent {
       case 'tmm':
         return this.dunwichIcon('the_miskatonic_museum', size, color);
       case 'tece':
+      case 'essex_county_express':
         return this.dunwichIcon('the_essex_county_express', size, color);
       case 'bota':
         return this.dunwichIcon('blood_on_the_altar', size, color);
@@ -71,8 +77,9 @@ export default class EncounterIcon extends React.PureComponent {
         return this.dunwichIcon('where_doom_awaits', size, color);
       case 'litas':
         return this.dunwichIcon('lost_in_time_and_space', size, color);
+      case 'extracurricular_activity':
+      case 'the_house_always_wins':
       case 'the_miskatonic_museum':
-      case 'the_essex_county_express':
       case 'blood_on_the_altar':
       case 'undimensioned_and_unseen':
       case 'where_doom_awaits':
@@ -83,7 +90,7 @@ export default class EncounterIcon extends React.PureComponent {
       case 'dunwich':
       case 'hideous_abominations':
       case 'naomis_crew':
-      case 'sourcery':
+      case 'sorcery':
       case 'the_beyond':
       case 'whippoorwills':
         return this.dunwichIcon(encounter_code, size, color);
@@ -124,8 +131,15 @@ export default class EncounterIcon extends React.PureComponent {
       case 'promo': // PROMO
       case 'books': // NOVELLAS
         return this.coreIcon('core', size, color);
-      case 'coh': // CARNEVALE OF HORRORS
-      case 'cotr': // CURSE OF THE ROUGAROU
+      case 'coh':
+        return this.standaloneIcon('carnevale', size, color);
+      case 'venice':
+        return this.standaloneIcon('carnevale', size, color);
+      case 'cotr':
+      case 'rougarou':
+        return this.standaloneIcon('curse_of_the_rougarou', size, color);
+      case 'bayou':
+        return this.standaloneIcon('the_bayou', size, color);
       case 'tfa': // THE FORGOTTEN AGE
       default:
         return this.coreIcon('core', size, color);

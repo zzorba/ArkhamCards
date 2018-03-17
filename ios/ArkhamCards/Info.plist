@@ -8,6 +8,7 @@
 		<string>coreset.ttf</string>
 		<string>dunwich.ttf</string>
 		<string>carcosa.ttf</string>
+		<string>standalone.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
