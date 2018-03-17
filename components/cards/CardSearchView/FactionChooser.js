@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
     height: 40,
   },
   button: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: 'rgb(246,246,246)',
   },
   selectedButton: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgb(221,221,221)',
   },
 });

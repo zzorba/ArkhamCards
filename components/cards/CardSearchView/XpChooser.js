@@ -41,7 +41,7 @@ export default class XpChooser extends React.Component {
         selectedIndexes={selectedIndexes}
         buttons={BUTTONS}
         textStyle={styles.text}
-        selectedTextStyle={styles.selectedText}
+        selectedTextStyle={styles.text}
         buttonStyle={styles.button}
         selectedButtonStyle={styles.selectedButton}
         containerStyle={styles.container}
@@ -57,15 +57,12 @@ const styles = StyleSheet.create({
     width: '30%',
   },
   text: {
-    color: '#bdbdbd',
+    color: 'rgb(41,41,41)',
   },
   button: {
-    backgroundColor: '#eeeeee',
-  },
-  selectedText: {
-    color: '#000000',
+    backgroundColor: 'rgb(246,246,246)',
   },
   selectedButton: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgb(221,221,221)',
   },
 });

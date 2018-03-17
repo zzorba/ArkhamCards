@@ -18,6 +18,7 @@ export default class DeckEditTab extends React.Component {
 
     this.state = {
       searchTerm: '',
+      slots: Object.assign({}, props.parsedDeck.deck.slots),
     };
 
     this._searchUpdated = this.searchUpdated.bind(this);
@@ -25,7 +26,14 @@ export default class DeckEditTab extends React.Component {
   }
 
   onDeckCountChange(code, count) {
-    console.log(`Set ${code} to ${count}`);
+    console.log(`Set ${code} to ${count}.`);
+    this.setState({
+      slots: Object.assign(
+        {},
+        this.state.slots,
+        { [code]: count },
+      ),
+    });
   }
 
   searchUpdated(term) {
@@ -50,7 +58,7 @@ export default class DeckEditTab extends React.Component {
       <CardSearchComponent
         cards={eligibleCards}
         navigator={navigator}
-        deckCardCounts={parsedDeck.deck.slots}
+        deckCardCounts={this.state.slots}
         onDeckCountChange={this._onDeckCountChange}
       />
     );

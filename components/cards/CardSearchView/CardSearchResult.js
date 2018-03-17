@@ -25,6 +25,7 @@ export default class CardSearchResult extends React.PureComponent {
     super(props);
 
     this._onPress = this.onPress.bind(this);
+    this._onDeckCountPress = this.onDeckCountPress.bind(this);
     this._renderCountButton = this.renderCountButton.bind(this);
   }
 
@@ -32,12 +33,16 @@ export default class CardSearchResult extends React.PureComponent {
     this.props.onPress(this.props.card.code);
   }
 
+  onDeckCountPress(idx) {
+    this.props.onDeckCountChange(this.props.card.code, idx);
+  }
+
   renderCountButton(count, idx) {
     const selected = (count === this.props.count);
     return (
       <Text
         key={idx}
-        style={selected ? styles.selectedCountText : styles.countText}
+        style={styles.countText}
       >
         { count }
       </Text>
@@ -60,8 +65,9 @@ export default class CardSearchResult extends React.PureComponent {
         { onDeckCountChange &&
           <View style={styles.buttonContainer}>
             <ButtonGroup
+              onPress={this._onDeckCountPress}
               buttons={buttons}
-              selectedIndex={count}
+              selectedIndex={count || 0}
               buttonStyle={styles.countButton}
               selectedButtonStyle={styles.selectedCountButton}
               containerStyle={[
@@ -108,15 +114,12 @@ const styles = StyleSheet.create({
   countButton: {
     width: BUTTON_WIDTH,
     padding: 0,
-    backgroundColor: '#eeeeee',
+    backgroundColor: 'rgb(246,246,246)',
   },
   countText: {
-    color: '#bdbdbd',
+    color: 'rgb(41,41,41)',
   },
   selectedCountButton: {
-    backgroundColor: '#666666',
-  },
-  selectedCountText: {
-    color: '#dedede',
+    backgroundColor: 'rgb(221,221,221)',
   },
 });
