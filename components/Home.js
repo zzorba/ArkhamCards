@@ -36,7 +36,7 @@ class Home extends React.Component {
     });
     this.state = {
       ds,
-      deckIds: [4519, 101, 381, 180, 530, 2932, 294, 1179, 2381, 332],
+      deckIds: [4922,4946,4950,4519, 101, 381, 180, 530, 2932, 294, 1179, 2381, 332],
     };
 
     this._deckNavClicked = this.deckNavClicked.bind(this);
