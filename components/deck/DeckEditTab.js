@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { pickBy } from 'lodash';
 
 import { DeckType } from './parseDeck';
+import { CardType } from '../cards/types';
 import CardSearchComponent from '../cards/CardSearchView/CardSearchComponent';
 import DeckValidation from '../../lib/DeckValidation';
 
 export default class DeckEditTab extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    parsedDeck: DeckType,
+    investigator: CardType,
+    slots: PropTypes.object.isRequired,
     cards: PropTypes.object.isRequired,
   };
 
@@ -18,7 +20,7 @@ export default class DeckEditTab extends React.Component {
 
     this.state = {
       searchTerm: '',
-      slots: Object.assign({}, props.parsedDeck.deck.slots),
+      slots: Object.assign({}, props.slots),
     };
 
     this._searchUpdated = this.searchUpdated.bind(this);
@@ -26,7 +28,6 @@ export default class DeckEditTab extends React.Component {
   }
 
   onDeckCountChange(code, count) {
-    console.log(`Set ${code} to ${count}.`);
     this.setState({
       slots: Object.assign(
         {},
@@ -45,11 +46,15 @@ export default class DeckEditTab extends React.Component {
   render() {
     const {
       cards,
-      parsedDeck,
+      investigator,
       navigator,
     } = this.props;
 
-    const validator = new DeckValidation(parsedDeck.investigator);
+    const {
+      slots,
+    } = this.state;
+
+    const validator = new DeckValidation(investigator);
     const eligibleCards = pickBy(cards, (card) => {
       return card.deck_limit > 0 && validator.canIncludeCard(card);
     });
@@ -58,7 +63,7 @@ export default class DeckEditTab extends React.Component {
       <CardSearchComponent
         cards={eligibleCards}
         navigator={navigator}
-        deckCardCounts={this.state.slots}
+        deckCardCounts={slots}
         onDeckCountChange={this._onDeckCountChange}
       />
     );

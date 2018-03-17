@@ -64,7 +64,8 @@ class DeckView extends React.Component {
           parsedDeck={pDeck} />
         <DeckEditTab
           tabLabel="Edit"
-          parsedDeck={pDeck}
+          investigator={pDeck.investigator}
+          slots={pDeck.deck.slots}
           cards={cards}
           navigator={navigator} />
       </ScrollableTabView>
