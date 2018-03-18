@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { pickBy } from 'lodash';
 
-import { DeckType } from './parseDeck';
 import { CardType } from '../cards/types';
 import CardSearchComponent from '../cards/CardSearchView/CardSearchComponent';
 import DeckValidation from '../../lib/DeckValidation';
@@ -15,7 +14,7 @@ export default class DeckEditTab extends React.Component {
     cards: PropTypes.object.isRequired,
     slotChanged: PropTypes.func.isRequired,
   };
-  
+
   render() {
     const {
       cards,

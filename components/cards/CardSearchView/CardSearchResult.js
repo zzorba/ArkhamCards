@@ -9,6 +9,7 @@ const {
 } = require('react-native');
 import { ButtonGroup } from 'react-native-elements';
 
+import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from '../CardDetailView/EncounterIcon';
 import { CardType } from '../types';
 import { createFactionIcons, FACTION_COLORS } from '../../../constants';
@@ -41,7 +42,6 @@ export default class CardSearchResult extends React.PureComponent {
   }
 
   renderCountButton(count, idx) {
-    const selected = (count === this.props.count);
     return (
       <Text
         key={idx}

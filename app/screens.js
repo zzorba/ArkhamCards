@@ -1,6 +1,5 @@
 import { Navigation } from 'react-native-navigation';
 
-import DeckNavHeader from '../components/deck/DeckNavHeader';
 import DeckView from '../components/deck/DeckView';
 import CardSearchView from '../components/cards/CardSearchView';
 import CardDetailView from '../components/cards/CardDetailView';

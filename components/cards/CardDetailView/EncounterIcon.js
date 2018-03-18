@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 
 import CoreSetIcon from '../../../assets/CoreSetIcon';
 import DunwichIcon from '../../../assets/DunwichIcon';

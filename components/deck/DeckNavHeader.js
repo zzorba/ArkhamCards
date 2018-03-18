@@ -8,16 +8,17 @@ const {
   StyleSheet,
 } = require('react-native');
 import { Button } from 'react-native-elements';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-import * as Actions from '../../actions';
 import AppIcon from '../../assets/AppIcon';
 import { COLORS } from '../../styles/colors';
 
 export default class DeckNavHeader extends React.Component {
   static propTypes = {
     navigator: PropTypes.object,
+    hasEdits: PropTypes.bool,
+    saving: PropTypes.bool,
+    clearEdits: PropTypes.func.isRequired,
+    saveEdits: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -31,31 +32,47 @@ export default class DeckNavHeader extends React.Component {
   }
 
   render() {
+    const {
+      saving,
+    } = this.props;
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this._backPressed}>
+        { this.props.hasEdits ?
           <View style={styles.row}>
-            <View style={styles.backArrow}>
-              <AppIcon name="arrow_back" size={24} color={COLORS.lightBlue} />
-            </View>
-            <Text style={styles.backButton}>
-              Back
-            </Text>
+            <Button
+              loading={saving}
+              loadingStyle={{ width: 88 }}
+              loadingProps={{ size: 'small', color: COLORS.green }}
+              icon={<AppIcon name="check_circle" size={18} color={COLORS.green} />}
+              iconContainerStyle={styles.icon}
+              textStyle={[styles.text, styles.saveText]}
+              buttonStyle={[styles.button, styles.saveEditsButton]}
+              onPress={this.props.saveEdits}
+              text="Save"
+            />
+            { !saving &&
+              <Button
+                icon={<AppIcon name="cancel" size={18} color={COLORS.red} />}
+                iconContainerStyle={styles.icon}
+                textStyle={[styles.text, styles.cancelText]}
+                buttonStyle={[styles.button, styles.cancelEditsButton]}
+                onPress={this.props.clearEdits}
+                text="Discard Changes"
+              />
+            }
           </View>
-        </TouchableOpacity>
-        { /*
-        <Button
-          textStyle={styles.backButtonText}
-          buttonStyle={[styles.button, styles.cancelEditsButton]}
-          onPress={this._backPressed}
-          text="Cancel"
-        />
-        <Button
-          textStyle={styles.backButtonText}
-          buttonStyle={[styles.button, styles.saveEditsButton]}
-          onPress={this._backPressed}
-          text="Save"
-        />*/ }
+          :
+          <TouchableOpacity onPress={this._backPressed}>
+            <View style={styles.row}>
+              <View style={styles.backArrow}>
+                <AppIcon name="arrow_back" size={24} color={COLORS.lightBlue} />
+              </View>
+              <Text style={styles.backButton}>
+                Back
+              </Text>
+            </View>
+          </TouchableOpacity>
+        }
       </View>
     );
   }
@@ -70,15 +87,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 8,
   },
-  icon: {
-    width: 28,
-    height: 28,
-  },
   row: {
     marginLeft: 8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  icon: {
+    width: 18,
+    margin: 0,
   },
   backArrow: {
     width: 18,
@@ -90,12 +107,16 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontWeight: '700',
   },
-  text: {
-    marginLeft: 2,
-    color: '#000000',
+  cancelText: {
+    color: COLORS.red,
   },
-  backButtonText: {
-    color: '#212121',
+  saveText: {
+    color: COLORS.green,
+  },
+  text: {
+    fontSize: 18,
+    fontFamily: 'System',
+    fontWeight: '700',
   },
   button: {
     marginLeft: 8,
@@ -103,13 +124,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   cancelEditsButton: {
-    backgroundColor: COLORS.red,
-    borderColor: 'transparent',
-    borderWidth: 0,
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.red,
+    borderWidth: 1,
   },
   saveEditsButton: {
-    backgroundColor: COLORS.green,
-    borderColor: 'transparent',
-    borderWidth: 0,
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.green,
+    borderWidth: 1,
   },
 });

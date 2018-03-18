@@ -140,9 +140,9 @@ class DeckViewTab extends React.Component {
         </Text>
         { problem.problems.map(problem => (
           <Text key={problem} style={styles.problemText}>
-            { '\u2022 ' + problem }
+            { `\u2022 ${problem}` }
           </Text>
-        ))}
+        )) }
       </View>
     );
   }
