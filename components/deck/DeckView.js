@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import * as Actions from '../../actions';
+import { COLORS } from '../../styles/colors';
 import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckChartsTab from './DeckChartsTab';
@@ -133,7 +134,11 @@ class DeckView extends React.Component {
           clearEdits={this._clearEdits}
           saveEdits={this._saveEdits}
         />
-        <ScrollableTabView>
+        <ScrollableTabView
+          tabBarActiveTextColor={COLORS.lightBlue}
+          tabBarInactiveTextColor={COLORS.darkBlue}
+          tabBarUnderlineStyle={{ borderColor: COLORS.darkBlue }}
+        >
           <DeckViewTab
             tabLabel="Deck"
             parsedDeck={pDeck}
