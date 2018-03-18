@@ -39,6 +39,7 @@
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
+		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		65CBE5BF2049B8C900B47AB4 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5522049096B00B47AB4 /* libRNFetchBlob.a */; };
 		65CBE5C12049B8D200B47AB4 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5BC2049B07500B47AB4 /* libRNSVG.a */; };
 		65CBE5CB2049E9AB00B47AB4 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5C82049E99400B47AB4 /* libART.a */; };
@@ -404,6 +405,7 @@
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
 		65522688205D68D70065A1F7 /* standalone.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = standalone.ttf; path = ../assets/standalone.ttf; sourceTree = "<group>"; };
+		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
 		65CBE5C22049E99400B47AB4 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		65EB590D2047B36E00CC5820 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		65EB59142047B67600CC5820 /* arkhamicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamicons.ttf; path = ../assets/arkhamicons.ttf; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				655226C7205EEAF00065A1F7 /* app.ttf */,
 				65522688205D68D70065A1F7 /* standalone.ttf */,
 				652421242054954F00FF6DB9 /* dunwich.ttf */,
 				652421222054951A00FF6DB9 /* coreset.ttf */,
@@ -1261,6 +1264,7 @@
 				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
+				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
 				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,

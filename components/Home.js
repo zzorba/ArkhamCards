@@ -63,6 +63,7 @@ class Home extends React.Component {
         id: id,
       },
       navigatorStyle: {
+        navBarHidden: true,
         tabBarHidden: true,
       },
     });

@@ -73,14 +73,14 @@ function sumSkillIcons(cardIds, cards, skill) {
     (cards[c.id][`skill_${skill}`] || 0) * c.quantity));
 }
 
-export function parseDeck(deck, cards) {
+export function parseDeck(deck, slots, cards) {
   if (!deck) {
     return {};
   }
-  const cardIds = Object.keys(deck.slots).map(id => {
+  const cardIds = Object.keys(slots).map(id => {
     return {
       id,
-      quantity: deck.slots[id],
+      quantity: slots[id],
     };
   });
   const specialCards = cardIds.filter(c => isSpecialCard(cards[c.id]));
@@ -97,6 +97,7 @@ export function parseDeck(deck, cards) {
   return {
     investigator: cards[deck.investigator_code],
     deck: deck,
+    slots: slots,
     normalCardCount: sum(normalCards.map(c => c.quantity)),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: sum(cardIds.map(c => computeXp(cards[c.id]) * c.quantity)),
@@ -104,8 +105,8 @@ export function parseDeck(deck, cards) {
     factionCounts: factionCounts,
     costHistogram: costHistogram(cardIds, cards),
     skillIconCounts: skillIconCounts,
-    normalCards: splitCards(normalCards, cards, deck.slots),
-    specialCards: splitCards(specialCards, cards, deck.slots),
+    normalCards: splitCards(normalCards, cards, slots),
+    specialCards: splitCards(specialCards, cards, slots),
   };
 }
 

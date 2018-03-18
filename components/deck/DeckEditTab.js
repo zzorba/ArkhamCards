@@ -13,46 +13,17 @@ export default class DeckEditTab extends React.Component {
     investigator: CardType,
     slots: PropTypes.object.isRequired,
     cards: PropTypes.object.isRequired,
+    slotChanged: PropTypes.func.isRequired,
   };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchTerm: '',
-      slots: Object.assign({}, props.slots),
-    };
-
-    this._searchUpdated = this.searchUpdated.bind(this);
-    this._onDeckCountChange = this.onDeckCountChange.bind(this);
-  }
-
-  onDeckCountChange(code, count) {
-    this.setState({
-      slots: Object.assign(
-        {},
-        this.state.slots,
-        { [code]: count },
-      ),
-    });
-  }
-
-  searchUpdated(term) {
-    this.setState({
-      searchTerm: term,
-    });
-  }
-
+  
   render() {
     const {
       cards,
       investigator,
       navigator,
-    } = this.props;
-
-    const {
       slots,
-    } = this.state;
+      slotChanged,
+    } = this.props;
 
     const validator = new DeckValidation(investigator);
     const eligibleCards = pickBy(cards, (card) => {
@@ -64,7 +35,7 @@ export default class DeckEditTab extends React.Component {
         cards={eligibleCards}
         navigator={navigator}
         deckCardCounts={slots}
-        onDeckCountChange={this._onDeckCountChange}
+        onDeckCountChange={slotChanged}
       />
     );
   }

@@ -25,6 +25,15 @@ const BoldHtmlTagRule = {
   render: BoldHtmlTagNode,
 };
 
+const EmphasisHtmlTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<em>(.+?)<\\/em>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: ItalicHtmlTagNode,
+};
+
 const ItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<i>(.+?)<\\/i>')),
   order: 1,
@@ -45,6 +54,7 @@ export default class CardText extends React.PureComponent {
         rules={{
           arkhamIcon: ArkhamIconRule,
           bTag: BoldHtmlTagRule,
+          emTag: EmphasisHtmlTagRule,
           iTag: ItalicHtmlTagRule,
         }}
       >
