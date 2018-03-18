@@ -49,9 +49,12 @@ function computeXp(card) {
 }
 
 function factionCount(cardIds, cards, faction) {
-  return sum(cardIds.filter(c =>
-    !cards[c.id].permanent && cards[c.id].faction_code === faction
-  ).map(c => c.quantity));
+  return sum(cardIds.filter(c => (
+    !cards[c.id].permanent &&
+    !cards[c.id].double_sided &&
+    cards[c.id].code !== '02014' &&
+    cards[c.id].faction_code === faction
+  )).map(c => c.quantity));
 }
 
 function costHistogram(cardIds, cards) {
@@ -59,7 +62,9 @@ function costHistogram(cardIds, cards) {
     groupBy(
       cardIds.filter(c => {
         const card = cards[c.id];
-        return !card.permanent && (
+        return !card.permanent &&
+          !card.double_sided &&
+          card.code !== '02014' && (
           card.type_code === 'asset' || card.type_code === 'event');
       }),
       c => cards[c.id].cost),

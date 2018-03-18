@@ -61,7 +61,3 @@ export function createFactionIcons(size) {
     );
   });
 }
-
-export function createPackIcons() {
-
-}

@@ -8,6 +8,7 @@ const {
   View,
 } = require('react-native');
 
+import ArkhamIcon from '../../assets/ArkhamIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { CardType } from '../cards/types';
 
@@ -29,6 +30,32 @@ export default class DeckViewCardItem extends React.PureComponent {
     this.props.onPress(this.props.card.code);
   }
 
+  renderIcon() {
+    const {
+      card,
+    } = this.props;
+
+    if (card.faction_code !== 'neutral') {
+      return (
+        <View style={styles.cardIcon}>
+          { CLASS_ICONS[card.faction_code] }
+        </View>
+      );
+    }
+
+    if (card.subtype_code && (
+      card.subtype_code === 'weakness' ||
+      card.subtype_code === 'basicweakness')) {
+      return (
+        <View style={styles.cardIcon}>
+          <ArkhamIcon name="weakness" size={14} color={FACTION_COLORS.neutral} />
+        </View>
+      );
+    }
+
+    return null;
+  }
+
   render() {
     const {
       card,
@@ -42,17 +69,14 @@ export default class DeckViewCardItem extends React.PureComponent {
               { `${item.quantity}x ` }
             </Text>
           </View>
-
-            { card.faction_code !== 'neutral' && (
-              <View style={styles.cardIcon}>
-                { CLASS_ICONS[card.faction_code] }
-              </View>
-            ) }
+          { this.renderIcon() }
           <Text style={[
-            styles.cardName,
+            styles.defaultText,
             { color: FACTION_COLORS[card.faction_code] },
           ]}>
             { card.name }
+          </Text>
+          <Text style={styles.defaultText}>
             { range(0, card.xp || 0).map(() => '•').join('') }
           </Text>
         </View>
@@ -67,18 +91,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
+    height: 24,
   },
   quantity: {
     width: 20,
   },
   defaultText: {
     color: '#000000',
-    fontSize: 14,
-    lineHeight: 20,
-  },
-  cardName: {
-    fontSize: 14,
-    lineHeight: 20,
+    fontFamily: 'System',
+    fontSize: 16,
+    lineHeight: 24,
   },
   cardIcon: {
     width: 18,

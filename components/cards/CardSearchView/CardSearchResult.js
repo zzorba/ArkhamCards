@@ -13,10 +13,11 @@ import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from '../CardDetailView/EncounterIcon';
 import { CardType } from '../types';
 import { createFactionIcons, FACTION_COLORS } from '../../../constants';
+import { COLORS } from '../../../styles/colors';
 
 const FACTION_ICONS = createFactionIcons(12);
 
-const BUTTON_WIDTH = 20;
+const BUTTON_WIDTH = 40;
 export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
     card: CardType,
@@ -97,35 +98,40 @@ export default class CardSearchResult extends React.PureComponent {
     const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
     const buttons = map(range(0, card.deck_limit + 1), this._renderCountButton);
     return (
-      <View style={styles.row}>
-        { onDeckCountChange &&
-          <View style={styles.buttonContainer}>
-            <ButtonGroup
-              onPress={this._onDeckCountPress}
-              buttons={buttons}
-              selectedIndex={count || 0}
-              buttonStyle={styles.countButton}
-              selectedButtonStyle={styles.selectedCountButton}
-              containerStyle={[
-                styles.buttonGroup,
-                { width: BUTTON_WIDTH * (card.deck_limit + 1) },
-              ]}
-            />
-          </View>
-        }
-        <TouchableOpacity onPress={this._onPress}>
-          <View style={styles.cardTextRow}>
-            <View style={styles.cardIcon}>
-              { this.renderIcon() }
+      <View style={styles.stack}>
+        <View style={styles.row}>
+          <TouchableOpacity onPress={this._onPress}>
+            <View style={styles.cardTextRow}>
+              <View style={styles.cardIcon}>
+                { this.renderIcon() }
+              </View>
+              <Text style={[
+                styles.cardName,
+                { color: FACTION_COLORS[card.faction_code] },
+              ]}>
+                { card.name }
+              </Text>
+              <Text style={styles.cardName}>
+                { xpStr }
+              </Text>
             </View>
-            <Text style={[
-              styles.cardName,
-              { color: FACTION_COLORS[card.faction_code] },
-            ]}>
-              { `${card.name}${xpStr}` }
-            </Text>
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+          { onDeckCountChange &&
+            <View style={styles.buttonContainer}>
+              <ButtonGroup
+                onPress={this._onDeckCountPress}
+                buttons={buttons}
+                selectedIndex={count || 0}
+                buttonStyle={styles.countButton}
+                selectedButtonStyle={styles.selectedCountButton}
+                containerStyle={[
+                  styles.buttonGroup,
+                  { width: BUTTON_WIDTH * (card.deck_limit + 1) },
+                ]}
+              />
+            </View>
+          }
+        </View>
       </View>
     );
   }
@@ -133,11 +139,21 @@ export default class CardSearchResult extends React.PureComponent {
 
 
 const styles = StyleSheet.create({
+  stack: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    paddingTop: 6,
+    paddingBottom: 6,
+    borderBottomWidth: 1,
+    borderColor: COLORS.gray,
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 22,
+    width: '100%',
+    height: 26,
   },
   cardIcon: {
     width: 16,
@@ -153,13 +169,16 @@ const styles = StyleSheet.create({
   },
   cardName: {
     marginLeft: 4,
+    fontFamily: 'System',
     fontSize: 16,
-    height: 22,
+    lineHeight: 22,
   },
   buttonContainer: {
-    width: (3 * BUTTON_WIDTH),
     padding: 0,
     marginRight: 8,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
   buttonGroup: {
     height: 22,

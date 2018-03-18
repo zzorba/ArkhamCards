@@ -129,7 +129,8 @@ export default class CardDrawSimulator extends React.Component {
         Object.keys(deck.slots),
         cardId => {
           const card = cards[cardId];
-          if (card.permanent) {
+          // DUKE=02014
+          if (card.permanent || card.double_sided || card.code === '02014') {
             return [];
           }
           return range(0, deck.slots[cardId]).map(() => cardId);

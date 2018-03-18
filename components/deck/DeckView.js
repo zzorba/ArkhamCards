@@ -82,12 +82,16 @@ class DeckView extends React.Component {
   }
 
   slotChanged(code, count) {
+    const newSlots = Object.assign(
+      {},
+      this.state.slots,
+      { [code]: count },
+    );
+    if (count === 0) {
+      delete newSlots[code];
+    }
     this.setState({
-      slots: Object.assign(
-        {},
-        this.state.slots,
-        { [code]: count },
-      ),
+      slots: newSlots,
     });
   }
 
@@ -135,9 +139,9 @@ class DeckView extends React.Component {
           saveEdits={this._saveEdits}
         />
         <ScrollableTabView
-          tabBarActiveTextColor={COLORS.lightBlue}
-          tabBarInactiveTextColor={COLORS.darkBlue}
-          tabBarUnderlineStyle={{ borderColor: COLORS.darkBlue }}
+          tabBarActiveTextColor={COLORS.darkBlue}
+          tabBarInactiveTextColor={COLORS.lightBlue}
+          tabBarUnderlineStyle={{ backgroundColor: COLORS.darkBlue }}
         >
           <DeckViewTab
             tabLabel="Deck"
