@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { flatMap } from 'lodash';
-const {
+import {
   StyleSheet,
-} = require('react-native');
+} from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 
 const BUTTONS = ['0 XP', '2+ XP'];

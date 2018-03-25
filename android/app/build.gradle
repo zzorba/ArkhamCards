@@ -141,6 +141,7 @@ android {
 }
 
 dependencies {
+    compile project(':realm')
     compile project(':react-native-svg')
     compile project(':react-native-fetch-blob')
     compile fileTree(dir: "libs", include: ["*.jar"])

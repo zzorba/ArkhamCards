@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { map, range } from 'lodash';
-const {
+import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-} = require('react-native');
+} from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';

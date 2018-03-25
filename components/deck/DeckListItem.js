@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const {
+import {
   StyleSheet,
   TouchableOpacity,
   Image,
   Text,
   View,
-} = require('react-native');
+} from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 

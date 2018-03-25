@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { flatMap, map } from 'lodash';
-const {
+import {
   StyleSheet,
-} = require('react-native');
+} from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';

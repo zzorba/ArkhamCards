@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, groupBy, values } from 'lodash';
-const {
+import {
   StyleSheet,
   FlatList,
   View,
-} = require('react-native');
+} from 'react-native';
 import SearchInput from 'react-native-search-filter';
 
 import FactionChooser from './FactionChooser';

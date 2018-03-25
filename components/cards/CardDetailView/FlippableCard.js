@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const {
+import {
   View,
-} = require('react-native');
+} from 'react-native';
 import FlipCard from 'react-native-flip-card';
 
 export default class FlippableCard extends React.Component {

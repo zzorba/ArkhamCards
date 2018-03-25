@@ -1,6 +1,7 @@
 import React from 'react';
 import { BarChart } from 'react-native-svg-charts';
-const { View, Text } = require('react-native');
+import { View, Text } from 'react-native';
+
 
 import { DeckType } from '../parseDeck';
 import { FACTION_COLORS } from '../../../styles/colors';

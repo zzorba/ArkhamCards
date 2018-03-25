@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { range } from 'lodash';
-const {
+import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-} = require('react-native');
+} from 'react-native';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';

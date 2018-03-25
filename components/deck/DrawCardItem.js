@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const {
+import {
   Image,
   StyleSheet,
   TouchableHighlight,
   View,
-} = require('react-native');
+} from 'react-native';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
 export default class DrawCardItem extends React.PureComponent {

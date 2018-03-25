@@ -1,7 +1,7 @@
 import React from 'react';
-const {
+import {
   ScrollView,
-} = require('react-native');
+} from 'react-native';
 
 import { DeckType } from './parseDeck';
 

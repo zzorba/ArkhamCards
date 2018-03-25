@@ -1,8 +1,8 @@
 import React from 'react';
-const {
+import {
   StyleSheet,
   Text,
-} = require('react-native');
+} from 'react-native';
 
 export default function ItalicHtmlTagNode(node, output, state) {
   return (

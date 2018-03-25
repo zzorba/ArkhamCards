@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
-const {
+import {
   StyleSheet,
   ListView,
   ScrollView,
   View,
   Text,
   ActivityIndicator,
-} = require('react-native');
+} from 'react-native';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

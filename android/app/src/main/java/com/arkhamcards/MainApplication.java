@@ -4,6 +4,7 @@ import com.reactnativenavigation.NavigationApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.horcrux.svg.SvgPackage;
+import io.realm.react.RealmReactPackage;
 
 import com.facebook.react.ReactPackage;
 
@@ -22,7 +23,8 @@ public class MainApplication extends NavigationApplication {
     return Arrays.<ReactPackage>asList(
         new VectorIconsPackage(),
         new RNFetchBlobPackage(),
-        new SvgPackage()
+        new SvgPackage(),
+        new RealmReactPackage()
     );
   }
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { concat, flatMap, map, pullAt, shuffle, range, without } from 'lodash';
-const {
+import {
   Button,
   StyleSheet,
   Text,
   SectionList,
   View,
-} = require('react-native');
-
+} from 'react-native';
+  
 import { DeckType } from './parseDeck';
 import DrawCardItem from './DrawCardItem';
 

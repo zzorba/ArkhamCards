@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const {
+import {
   Platform,
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
-} = require('react-native');
+} from 'react-native';
 import { Button } from 'react-native-elements';
 
 import AppIcon from '../../assets/AppIcon';

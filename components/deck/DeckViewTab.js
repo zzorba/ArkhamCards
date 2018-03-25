@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { keys, flatMap, map, range, sum } from 'lodash';
-const {
+import {
   StyleSheet,
   SectionList,
   View,
   Image,
   Text,
   ScrollView,
-} = require('react-native');
+} from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 

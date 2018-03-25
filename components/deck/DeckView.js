@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { delay, forEach, keys } from 'lodash';
-const {
+import {
   StyleSheet,
   Text,
   View,
-} = require('react-native');
+} from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
