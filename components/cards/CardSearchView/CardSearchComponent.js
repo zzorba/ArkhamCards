@@ -1,25 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, groupBy, values } from 'lodash';
+import { filter, find } from 'lodash';
 import {
   StyleSheet,
   FlatList,
   View,
 } from 'react-native';
 import SearchInput from 'react-native-search-filter';
+import RealmQuery from 'realm-query';
+import { connectRealm } from 'react-native-realm';
 
 import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';
 import CardSearchResult from './CardSearchResult';
-import { FACTION_CODES } from '../../../constants';
 
+import { FACTION_CODES } from '../../../constants';
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
-export default class CardSearchComponent extends React.Component {
+class CardSearchComponent extends React.Component {
   static propTypes = {
-    cards: PropTypes.object,
+    realm: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
+    // Function that takes 'realm' and gives back a base query.
+    baseQuery: PropTypes.string,
+
     // Keyed by code, count of current deck.
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
@@ -29,6 +34,7 @@ export default class CardSearchComponent extends React.Component {
     super(props);
 
     this.state = {
+      factionCodes: CARD_FACTION_CODES,
       searchTerm: '',
       factions: [],
       types: [],
@@ -46,8 +52,29 @@ export default class CardSearchComponent extends React.Component {
     this._renderCard = this.renderCard.bind(this);
   }
 
+  componentDidMount() {
+    const {
+      baseQuery,
+      cards,
+    } = this.props;
+    if (baseQuery) {
+      this.setState({
+        factionCodes: filter(
+          FACTION_CODES,
+          faction_code =>
+            cards.filtered(`faction_code == '${faction_code}'`).length > 0),
+      });
+    }
+  }
+
   cardToKey(card) {
     return card.code;
+  }
+
+  searchUpdated(text) {
+    this.setState({
+      searchTerm: text,
+    });
   }
 
   selectedFactionsChanged(factions) {
@@ -92,12 +119,6 @@ export default class CardSearchComponent extends React.Component {
     );
   }
 
-  searchUpdated(text) {
-    this.setState({
-      searchTerm: text,
-    });
-  }
-
   applyQueryFilter(cards) {
     const {
       searchTerm,
@@ -107,11 +128,13 @@ export default class CardSearchComponent extends React.Component {
       return cards;
     }
 
-    return filter(cards, card => {
-      return (card.name && card.name.indexOf(searchTerm) !== -1) ||
-        (card.real_text && card.real_text.indexOf(searchTerm) !== -1) ||
-        (card.traits && card.traits.indexOf(searchTerm) !== -1);
-    });
+    return cards.beginGroup()
+      .contains('name', searchTerm, true)
+      .or()
+      .contains('real_text', searchTerm, true)
+      .or()
+      .contains('traits', searchTerm, true)
+      .endGroup();
   }
 
   applyFactionFilter(cards) {
@@ -121,7 +144,7 @@ export default class CardSearchComponent extends React.Component {
     if (factions.length === 0) {
       return cards;
     }
-    return filter(cards, card => factions.indexOf(card.faction_code) !== -1);
+    return cards.in('faction_code', factions);
   }
 
   applyTypeFilter(cards) {
@@ -131,7 +154,7 @@ export default class CardSearchComponent extends React.Component {
     if (types.length === 0) {
       return cards;
     }
-    return filter(cards, card => types.indexOf(card.type_code) !== -1);
+    return cards.in('type_code', types);
   }
 
   applyXpFilter(cards) {
@@ -141,32 +164,23 @@ export default class CardSearchComponent extends React.Component {
     if (xpLevels.length === 0) {
       return cards;
     }
-    return filter(cards, card => xpLevels.indexOf(card.xp || 0) !== -1);
+    return cards.in('xp', xpLevels);
   }
 
   filteredCards() {
     const {
       cards,
     } = this.props;
-    const cardsList = Object.keys(cards).map(id => cards[id]);
-    const queryCards = this.applyQueryFilter(cardsList);
-    const factionCards = this.applyFactionFilter(queryCards);
+    const query = RealmQuery.where(cards);
+    const textCards = this.applyQueryFilter(query);
+    const factionCards = this.applyFactionFilter(textCards);
     const typeCards = this.applyTypeFilter(factionCards);
-    return this.applyXpFilter(typeCards);
+    const result = this.applyXpFilter(typeCards);
+    return result.findAll();
   }
 
   render() {
     const results = this.filteredCards();
-    const eligibleFactionCounts = groupBy(
-      filter(
-        values(this.props.cards),
-        card => card.faction_code),
-      card => card.faction_code
-    );
-    const factions = filter(
-      CARD_FACTION_CODES,
-      faction_code => eligibleFactionCounts[faction_code]);
-
     return (
       <View style={styles.container}>
         <SearchInput
@@ -176,7 +190,7 @@ export default class CardSearchComponent extends React.Component {
         />
         <FactionChooser
           onChange={this._selectedFactionsChanged}
-          factions={factions}
+          factions={this.state.factionCodes}
         />
         <View style={styles.row}>
           <TypeChooser onChange={this._selectedTypesChanged} />
@@ -191,6 +205,16 @@ export default class CardSearchComponent extends React.Component {
     );
   }
 }
+
+export default connectRealm(CardSearchComponent, {
+  schemas: ['Card'],
+  mapToProps(results, realm, props) {
+    return {
+      realm,
+      cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
+    };
+  },
+});
 
 const styles = StyleSheet.create({
   container: {

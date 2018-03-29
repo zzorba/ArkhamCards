@@ -1,40 +1,51 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
   Button,
   View,
   Text,
 } from 'react-native';
+import { connectRealm } from 'react-native-realm';
 
-import { read, write } from '../data';
 import Card from '../data/Card';
 
-export default class Settings extends React.Component {
+class Settings extends React.Component {
+  static propTypes = {
+    realm: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
       error: null,
-      cardCount: '???',
+      cardCount: props.realm.objects('Card').length,
     };
 
     this._syncCards = this.syncCards.bind(this);
+    this._clearCache = this.clearCache.bind(this);
   }
 
-  componentDidMount() {
-    read(realm => {
-      this.setState({
-        cardCount: realm.objects('Card').length,
-      });
+  clearCache() {
+    const {
+      realm,
+    } = this.props;
+    realm.write(() => {
+      realm.delete(realm.objects('Card'));
     });
   }
 
   syncCards() {
+    const {
+      realm,
+    } = this.props;
+
     fetch('https://arkhamdb.com/api/public/cards/?encounter=1',
       { method: 'GET' })
       .then(response => response.json())
       .then(json => {
-        write(realm => {
+        realm.write(() => {
           forEach(json, card => {
             try {
               realm.create('Card', Card.fromJson(card), true);
@@ -44,12 +55,8 @@ export default class Settings extends React.Component {
             }
           });
         });
-      })
-      .then(() => {
-        read(realm => {
-          this.setState({
-            cardCount: realm.objects('Card').length,
-          });
+        this.setState({
+          cardCount: realm.objects('Card').length,
         });
       })
       .catch(err => this.setState(err.message || err));
@@ -59,9 +66,21 @@ export default class Settings extends React.Component {
     return (
       <View>
         <Text>Settings</Text>
-        <Text>We have {this.state.cardCount} cards in database</Text>
+        <Text>We have { this.state.cardCount } cards in database</Text>
         <Button onPress={this._syncCards} title="Check for card updates" />
+        <Button onPress={this._clearCache} title="Clear cache" />
       </View>
     );
   }
 }
+
+
+export default connectRealm(Settings, {
+  schemas: ['Card'],
+  mapToProps(results, realm) {
+    return {
+      realm,
+      cards: results.cards,
+    };
+  },
+});

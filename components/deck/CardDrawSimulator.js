@@ -8,7 +8,7 @@ import {
   SectionList,
   View,
 } from 'react-native';
-  
+
 import { DeckType } from './parseDeck';
 import DrawCardItem from './DrawCardItem';
 

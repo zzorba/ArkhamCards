@@ -9,6 +9,8 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import RealmQuery from 'realm-query';
+import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../../actions';
 import { COLORS } from '../../styles/colors';
@@ -21,10 +23,10 @@ import CardDrawSimulator from './CardDrawSimulator';
 
 class DeckView extends React.Component {
   static propTypes = {
+    realm: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
-    cards: PropTypes.object,
     getDeck: PropTypes.func.isRequired,
   };
 
@@ -32,7 +34,8 @@ class DeckView extends React.Component {
     super(props);
 
     this.state = {
-      slots: props.deck ? props.deck.slots : {},
+      slots: {},
+      loaded: false,
       saving: false,
     };
 
@@ -95,26 +98,45 @@ class DeckView extends React.Component {
     });
   }
 
+  loadCards(deck) {
+    const {
+      realm,
+    } = this.props;
+    const cards = {};
+    const toFetch = [...keys(deck.slots), deck.investigator_code];
+    forEach(
+      RealmQuery.where(realm.objects('Card')).in('code', toFetch).findAll(),
+      card => {
+        cards[card.code] = card;
+      }
+    );
+    this.setState({
+      slots: deck.slots,
+      cards,
+      loaded: true,
+    });
+  }
+
   componentDidMount() {
     this.props.getDeck(this.props.id);
+    if (this.props.deck && this.props.deck.investigator_code) {
+      this.loadCards(this.props.deck);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.deck !== this.props.deck) {
-      this.setState({
-        slots: nextProps.deck.slots,
-      });
+      this.loadCards(nextProps.deck);
     }
   }
 
   render() {
     const {
       deck,
-      cards,
       navigator,
     } = this.props;
 
-    if (!deck) {
+    if (!deck || !this.state.loaded) {
       return (
         <View>
           <Text>Loading: { this.props.id }</Text>
@@ -124,6 +146,7 @@ class DeckView extends React.Component {
 
     const {
       slots,
+      cards,
       saving,
     } = this.state;
 
@@ -158,7 +181,6 @@ class DeckView extends React.Component {
             tabLabel="Edit"
             investigator={pDeck.investigator}
             slots={pDeck.slots}
-            cards={cards}
             navigator={navigator}
             slotChanged={this._slotChanged}
           />
@@ -172,7 +194,6 @@ function mapStateToProps(state, props) {
   if (props.id in state.decks.all) {
     return {
       deck: state.decks.all[props.id],
-      cards: state.cards.all,
     };
   }
   return {
@@ -184,7 +205,17 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckView);
+export default connectRealm(
+  connect(mapStateToProps, mapDispatchToProps)(DeckView),
+  {
+    schemas: ['Card'],
+    mapToProps(results, realm) {
+      return {
+        realm,
+      };
+    },
+  },
+);
 
 const styles = StyleSheet.create({
   container: {

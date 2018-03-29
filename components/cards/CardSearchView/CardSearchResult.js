@@ -11,7 +11,6 @@ import { ButtonGroup } from 'react-native-elements';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from '../CardDetailView/EncounterIcon';
-import { CardType } from '../types';
 import { createFactionIcons, FACTION_COLORS } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
 
@@ -20,7 +19,7 @@ const FACTION_ICONS = createFactionIcons(12);
 const BUTTON_WIDTH = 40;
 export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
-    card: CardType,
+    card: PropTypes.object,
     count: PropTypes.number,
     onPress: PropTypes.func.isRequired,
     onDeckCountChange: PropTypes.func,

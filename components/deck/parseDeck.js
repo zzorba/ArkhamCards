@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { mapValues, range, groupBy, sum, uniqBy } from 'lodash';
 
-import { CardType } from '../cards/types';
 import { FACTION_CODES, SKILLS } from '../../constants';
 
 function filterBy(cardIds, cards, field, value) {
@@ -137,7 +136,7 @@ export const OptionalDeckSectionType = PropTypes.shape(DeckSectionShape);
 export const DeckSectionType = PropTypes.shape(DeckSectionShape).isRequired;
 
 const DeckShape = {
-  investigator: CardType,
+  investigator: PropTypes.object.isRequired,
   deck: PropTypes.object.isRequired,
   normalCardCount: PropTypes.number,
   totalCardCount: PropTypes.number,

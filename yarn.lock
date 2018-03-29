@@ -1167,13 +1167,13 @@ callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
 
+camelcase@4.1.0, camelcase@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
+
 camelcase@^1.0.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
-
-camelcase@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caseless@~0.11.0:
   version "0.11.0"
@@ -2582,6 +2582,10 @@ hoek@2.x.x:
 hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
+
+hoist-non-react-statics@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
 hoist-non-react-statics@^2.5.0:
   version "2.5.0"
@@ -4203,6 +4207,10 @@ plist@^1.2.0:
     xmlbuilder "4.0.0"
     xmldom "0.1.x"
 
+pluralize@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-5.0.0.tgz#e8b9073af9a0cb02e4c2efa95b55bebbdbf01299"
+
 pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
@@ -4251,6 +4259,13 @@ promise@^7.1.1:
   resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
   dependencies:
     asap "~2.0.3"
+
+prop-types@15.5.10:
+  version "15.5.10"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
 
 prop-types@^15.5.10:
   version "15.6.1"
@@ -4384,6 +4399,15 @@ react-native-progress@3.4.0:
   resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.4.0.tgz#c002e6efb2f0b82dd6889510e669c492da2718ac"
   dependencies:
     prop-types "^15.5.8"
+
+react-native-realm@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-realm/-/react-native-realm-0.1.2.tgz#7e9b4b9c633373c7c3bcdb728daa4390e6c73aeb"
+  dependencies:
+    camelcase "4.1.0"
+    hoist-non-react-statics "1.2.0"
+    pluralize "5.0.0"
+    prop-types "15.5.10"
 
 react-native-scrollable-tab-view@0.8.0:
   version "0.8.0"
@@ -4601,9 +4625,15 @@ readable-stream@~1.1.8, readable-stream@~1.1.9:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-realm@^2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-2.3.3.tgz#dd9dc0137f95b1701654ba9193928d52eac4239d"
+realm-query@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/realm-query/-/realm-query-0.0.7.tgz#1540cadc2bc06bb1df1352f46b301b80dd59eb38"
+  dependencies:
+    lodash "^4.17.4"
+
+realm@2.2.15:
+  version "2.2.15"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-2.2.15.tgz#f599d52b3a2cc904c056b8d183f8bafe634769c9"
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"
@@ -4617,7 +4647,7 @@ realm@^2.3.3:
     request "^2.78.0"
     stream-counter "^1.0.0"
     sync-request "^3.0.1"
-    url-parse "^1.2.0"
+    url-parse "^1.1.7"
 
 realpath-native@^1.0.0:
   version "1.0.0"
@@ -5524,7 +5554,7 @@ unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
 
-url-parse@^1.2.0:
+url-parse@^1.1.7:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.2.0.tgz#3a19e8aaa6d023ddd27dcc44cb4fc8f7fec23986"
   dependencies:

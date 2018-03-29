@@ -7,6 +7,7 @@ import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import DeckAtLeastOption from './DeckAtLeastOption';
 
+const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 export default class Card {
   static parseDeckRequirements(json) {
     const dr = new DeckRequirement();
@@ -68,6 +69,13 @@ export default class Card {
 
     const linked_card = json.linked_card ? Card.fromJson(json.linked_card) : null;
 
+    const traits_normalized = json.traits &&
+      map(json.traits.split('.'),
+        trait => `#${trait.toLowerCase().trim()}#`
+      ).join(',');
+
+    const uses_match = json.text && json.text.match(USES_REGEX);
+    const uses = uses_match ? uses_match[1].toLowerCase() : null;
     return Object.assign(
       {},
       json,
@@ -76,6 +84,8 @@ export default class Card {
         deck_options,
         linked_card,
         spoiler: !!json.spoiler,
+        traits_normalized,
+        uses,
       },
     );
   }
@@ -95,6 +105,8 @@ Card.schema = {
     faction_code: 'string?',
     faction_name: 'string?',
     position: 'int',
+    encounter_code: 'string?',
+    encounter_name: 'string?',
     encounter_position: 'int?',
     exceptional: 'bool?',
     xp: 'int?',
@@ -119,8 +131,6 @@ Card.schema = {
     health_per_investigator: 'bool?',
     sanity: 'int?',
     deck_limit: 'int?',
-    deck_requirements: 'DeckRequirement?',
-    deck_options: 'DeckOption[]',
     traits: 'string?',
     real_traits: 'string?',
     is_unique: 'bool?',
@@ -139,6 +149,14 @@ Card.schema = {
     skill_wild: 'int?',
     linked_to_code: 'string?',
     linked_to_name: 'string?',
+
+    // Parsed data (from original)
+    deck_requirements: 'DeckRequirement?',
+    deck_options: 'DeckOption[]',
     linked_card: 'Card',
+
+    // Derived data.
+    traits_normalized: 'string?',
+    uses: 'string?',
   },
 };
