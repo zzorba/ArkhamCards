@@ -114,8 +114,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    loading: state.cards.loading || state.packs.loading,
-    cards: state.cards.all,
+    loading: state.packs.loading,
     packs: state.packs.all,
     decks: state.decks.all,
   };

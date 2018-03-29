@@ -27,7 +27,7 @@ export default function configureStore(initialState) {
     reducer,
     initialState,
     compose(
-      applyMiddleware(thunk, offline.middleware, loggerMiddleware),
+      applyMiddleware(thunk, offline.middleware/*, loggerMiddleware*/),
       offline.enhanceStore)
   );
   const persistor = persistStore(store, { debug: true }, () => {

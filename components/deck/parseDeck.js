@@ -16,7 +16,7 @@ function groupAssets(cardIds, cards) {
     { type: 'Accessory', data: filterBy(assets, cards, 'slot', 'Accessory') },
     { type: 'Body', data: filterBy(assets, cards, 'slot', 'Body') },
     { type: 'Ally', data: filterBy(assets, cards, 'slot', 'Ally') },
-    { type: 'Other', data: filterBy(assets, cards, 'slot', undefined) },
+    { type: 'Other', data: filterBy(assets, cards, 'slot', null) },
   ].filter(asset => asset.data.length > 0);
 }
 

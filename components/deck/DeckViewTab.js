@@ -9,8 +9,6 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 import * as Actions from '../../actions';
 import { DeckType } from './parseDeck';
@@ -55,7 +53,7 @@ const DECK_PROBLEM_MESSAGES = {
   investigator: 'Doesn\'t comply with the Investigator requirements',
 };
 
-class DeckViewTab extends React.Component {
+export default class DeckViewTab extends React.Component {
   static propTypes = {
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
@@ -200,18 +198,6 @@ class DeckViewTab extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    cards: state.cards.all,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeckViewTab);
 
 const styles = StyleSheet.create({
   deckTitle: {

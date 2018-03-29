@@ -1,6 +1,7 @@
 import { filter, keys, map } from 'lodash';
 
 import CardRequirement from './CardRequirement';
+import CardRestrictions from './CardRestrictions';
 import DeckRequirement from './DeckRequirement';
 import RandomRequirement from './RandomRequirement';
 import DeckOption from './DeckOption';
@@ -59,6 +60,12 @@ export default class Card {
     });
   }
 
+  static parseRestrictions(json) {
+    const result = new CardRestrictions();
+    result.investigator = json.investigator;
+    return result;
+  }
+
   static fromJson(json) {
     const deck_requirements = json.deck_requirements ?
       Card.parseDeckRequirements(json.deck_requirements) :
@@ -73,6 +80,9 @@ export default class Card {
       map(json.traits.split('.'),
         trait => `#${trait.toLowerCase().trim()}#`
       ).join(',');
+    const restrictions = json.restrictions ?
+      Card.parseRestrictions(json.restrictions) :
+      null;
 
     const uses_match = json.text && json.text.match(USES_REGEX);
     const uses = uses_match ? uses_match[1].toLowerCase() : null;
@@ -86,6 +96,7 @@ export default class Card {
         spoiler: !!json.spoiler,
         traits_normalized,
         uses,
+        restrictions,
       },
     );
   }
@@ -102,14 +113,15 @@ Card.schema = {
     type_name: 'string',
     subtype_code: 'string?',
     subtype_name: 'string?',
-    faction_code: 'string?',
+    slot: 'string?',
+    faction_code: { type: 'string', optional: true, indexed: true},
     faction_name: 'string?',
     position: 'int',
     encounter_code: 'string?',
     encounter_name: 'string?',
     encounter_position: 'int?',
     exceptional: 'bool?',
-    xp: 'int?',
+    xp: { type: 'int', optional: true, indexed: true},
     victory: 'int?',
     name: 'string',
     real_name: 'string',
@@ -151,6 +163,7 @@ Card.schema = {
     linked_to_name: 'string?',
 
     // Parsed data (from original)
+    restrictions: 'CardRestrictions?',
     deck_requirements: 'DeckRequirement?',
     deck_options: 'DeckOption[]',
     linked_card: 'Card',

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, map, range } from 'lodash';
+import { head, flatMap, map, range } from 'lodash';
 import {
   Image,
   ScrollView,
@@ -8,8 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connectRealm } from 'react-native-realm';
 
 import {
   CORE_FACTION_CODES,
@@ -33,7 +32,7 @@ class CardDetailView extends React.PureComponent {
   static propTypes = {
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.string.isRequired,
-    card: OptionalCardType,
+    card: PropTypes.object,
     showSpoilers: PropTypes.bool,
   };
 
@@ -420,22 +419,15 @@ class CardDetailView extends React.PureComponent {
   }
 }
 
-function mapStateToProps(state, props) {
-  if (props.id in state.cards.all) {
+export default connectRealm(CardDetailView, {
+  schemas: ['Card'],
+  mapToProps(results, realm, props) {
     return {
-      card: state.cards.all[props.id],
+      realm,
+      card: head(results.cards.filtered(`code == '${props.id}'`)),
     };
-  }
-  return {
-    card: null,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardDetailView);
+  },
+});
 
 const styles = StyleSheet.create({
   container: {

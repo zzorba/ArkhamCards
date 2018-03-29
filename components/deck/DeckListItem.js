@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import head from 'lodash';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -7,16 +8,12 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-import * as Actions from '../../actions';
+import { connectRealm } from 'react-native-realm';
 
 class DeckListItem extends React.Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
-    cards: PropTypes.object,
     onPress: PropTypes.func,
   };
 
@@ -37,10 +34,10 @@ class DeckListItem extends React.Component {
   render() {
     const {
       deck,
-      cards,
+      card,
     } = this.props;
 
-    const investigator = cards[deck.investigator_code];
+    const investigator = card;
 
     return (
       <TouchableOpacity onPress={this._onPress}>
@@ -59,24 +56,15 @@ class DeckListItem extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  if (props.id in state.decks.all) {
+export default connectRealm(DeckListItem, {
+  schemas: ['Card'],
+  mapToProps(results, realm, props) {
     return {
-      deck: state.decks.all[props.id],
-      cards: state.cards.all,
+      realm,
+      card: head(results.cards.filtered(`code == '${props.id}'`)),
     };
-  }
-  return {
-    deck: null,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeckListItem);
-
+  },
+});
 
 const styles = StyleSheet.create({
   row: {

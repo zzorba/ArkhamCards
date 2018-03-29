@@ -16,7 +16,7 @@ const CLASS_ICONS = createFactionIcons(14);
 
 export default class DeckViewCardItem extends React.PureComponent {
   static propTypes = {
-    card: CardType,
+    card: PropTypes.object.isRequired,
     item: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
   };

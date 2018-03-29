@@ -26,6 +26,9 @@ class DeckView extends React.Component {
     realm: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
+    // From realm.
+    cards: PropTypes.object,
+    // From redux.
     deck: PropTypes.object,
     getDeck: PropTypes.func.isRequired,
   };
@@ -99,20 +102,8 @@ class DeckView extends React.Component {
   }
 
   loadCards(deck) {
-    const {
-      realm,
-    } = this.props;
-    const cards = {};
-    const toFetch = [...keys(deck.slots), deck.investigator_code];
-    forEach(
-      RealmQuery.where(realm.objects('Card')).in('code', toFetch).findAll(),
-      card => {
-        cards[card.code] = card;
-      }
-    );
     this.setState({
       slots: deck.slots,
-      cards,
       loaded: true,
     });
   }
@@ -133,6 +124,7 @@ class DeckView extends React.Component {
   render() {
     const {
       deck,
+      cards,
       navigator,
     } = this.props;
 
@@ -146,11 +138,16 @@ class DeckView extends React.Component {
 
     const {
       slots,
-      cards,
       saving,
     } = this.state;
+    const cardsInDeck = {};
+    cards.forEach(card => {
+      if (slots[card.code] || deck.investigator_code === card.code) {
+        cardsInDeck[card.code] = card;
+      }
+    });
 
-    const pDeck = parseDeck(deck, slots, cards);
+    const pDeck = parseDeck(deck, slots, cardsInDeck);
 
     return (
       <View style={styles.container}>
@@ -168,12 +165,13 @@ class DeckView extends React.Component {
         >
           <DeckViewTab
             tabLabel="Deck"
+            cards={cardsInDeck}
             parsedDeck={pDeck}
             navigator={navigator} />
           <CardDrawSimulator
             tabLabel="Draw"
             parsedDeck={pDeck}
-            cards={cards} />
+            cards={cardsInDeck} />
           <DeckChartsTab
             tabLabel="Charts"
             parsedDeck={pDeck} />
@@ -212,6 +210,7 @@ export default connectRealm(
     mapToProps(results, realm) {
       return {
         realm,
+        cards: results.cards,
       };
     },
   },
