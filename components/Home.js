@@ -20,10 +20,8 @@ class Home extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     loading: PropTypes.bool,
-    cards: PropTypes.object,
     decks: PropTypes.object,
     packs: PropTypes.array,
-    getCards: PropTypes.func.isRequired,
     getPacks: PropTypes.func.isRequired,
     getDeck: PropTypes.func.isRequired,
   }
@@ -43,9 +41,6 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    if (Object.keys(this.props.cards).length === 0) {
-      this.props.getCards();
-    }
     if (this.props.packs.length === 0) {
       this.props.getPacks();
     }
