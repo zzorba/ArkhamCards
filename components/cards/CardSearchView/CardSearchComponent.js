@@ -15,6 +15,7 @@ import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';
 import CardSearchResult from './CardSearchResult';
+import CardResultList from './CardResultList';
 
 import { FACTION_CODES } from '../../../constants';
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
@@ -43,17 +44,9 @@ class CardSearchComponent extends React.Component {
     };
 
     this._searchUpdated = this.searchUpdated.bind(this);
-
     this._selectedFactionsChanged = this.selectedFactionsChanged.bind(this);
     this._selectedTypesChanged = this.selectedTypesChanged.bind(this);
     this._selectedXpChanged = this.selectedXpChanged.bind(this);
-
-    this._getItem = this.getItem.bind(this);
-    this._getItemLayout = this.getItemLayout.bind(this);
-    this._getItemCount = this.getItemCount.bind(this);
-    this._cardPressed = this.cardPressed.bind(this);
-    this._cardToKey = this.cardToKey.bind(this);
-    this._renderCard = this.renderCard.bind(this);
   }
 
   componentDidMount() {
@@ -69,10 +62,6 @@ class CardSearchComponent extends React.Component {
             cards.filtered(`faction_code == '${faction_code}'`).length > 0),
       });
     }
-  }
-
-  cardToKey(card) {
-    return card.code;
   }
 
   searchUpdated(text) {
@@ -99,113 +88,83 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  cardPressed(cardId) {
-    this.props.navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: cardId,
-      },
-    });
-  }
-
-  renderCard({ item }) {
-    const {
-      deckCardCounts = {},
-      onDeckCountChange,
-    } = this.props;
-    return (
-      <CardSearchResult
-        card={item}
-        count={deckCardCounts[item.code]}
-        onDeckCountChange={onDeckCountChange}
-        onPress={this._cardPressed}
-      />
-    );
-  }
-
-  getItemLayout(data, index) {
-    return {
-      length: 26,
-      offset: 26 * index,
-      index,
-    };
-  }
-
-  getItem(data, index) {
-    return data[index];
-  }
-
-  getItemCount(data) {
-    return data.length;
-  }
-
-  applyQueryFilter(cards) {
+  applyQueryFilter(query) {
     const {
       searchTerm,
     } = this.state;
 
-    if (searchTerm === '') {
-      return cards;
-    }
-
-    return cards.filtered(
-      [
+    if (searchTerm !== '') {
+      query.push([
+        '(',
         `name contains[c] '${searchTerm}' or `,
         `real_text contains[c] '${searchTerm}' or `,
         `traits contains[c] '${searchTerm}'`,
-      ].join('')
-    );
+        ')',
+      ].join(''));
+    }
   }
 
-  applyFactionFilter(cards) {
+  applyFactionFilter(query) {
     const {
       factions,
     } = this.state;
-    if (factions.length === 0) {
-      return cards;
+    if (factions.length) {
+      query.push([
+        '(',
+        factions.map(fc => `faction_code == '${fc}'`).join(' or '),
+        ')',
+      ].join(''));
     }
-    return cards.filtered(
-      factions.map(fc => `faction_code == '${fc}'`).join(' or '),
-    );
   }
 
-  applyTypeFilter(cards) {
+  applyTypeFilter(query) {
     const {
       types,
     } = this.state;
-    if (types.length === 0) {
-      return cards;
+    if (types.length) {
+      return query.push([
+        '(',
+        types.map(tc => `type_code == '${tc}'`).join(' or '),
+        ')',
+      ].join(''));
     }
-    return cards.filtered(
-      types.map(tc => `type_code == '${tc}'`).join(' or '),
-    );
   }
 
-  applyXpFilter(cards) {
+  applyXpFilter(query) {
     const {
       xpLevels,
     } = this.state;
-    if (xpLevels.length === 0) {
-      return cards;
+    if (xpLevels.length) {
+      query.push([
+        '(',
+        xpLevels.map(xp => `xp == '${xp}'`).join(' or '),
+        ')',
+      ].join(''));
     }
-    return cards.filtered(
-      xpLevels.map(xp => `xp == '${xp}'`).join(' or '),
-    );
   }
 
-  filteredCards() {
+  query() {
     const {
-      cards,
+      baseQuery,
     } = this.props;
-    const textCards = this.applyQueryFilter(cards);
-    const factionCards = this.applyFactionFilter(textCards);
-    const typeCards = this.applyTypeFilter(factionCards);
-    const result = this.applyXpFilter(typeCards);
-    return result;
+    const queryParts = [];
+    if (baseQuery) {
+      queryParts.push(baseQuery);
+    }
+    this.applyQueryFilter(queryParts);
+    this.applyFactionFilter(queryParts);
+    this.applyTypeFilter(queryParts);
+    this.applyXpFilter(queryParts);
+    return queryParts.join(' and ');
   }
 
   render() {
-    const results = this.filteredCards();
+    const {
+      navigator,
+      deckCardCounts,
+      onDeckCountChange,
+    } = this.props;
+    const query = this.query();
     return (
       <View style={styles.container}>
         <SearchInput
@@ -221,14 +180,11 @@ class CardSearchComponent extends React.Component {
           <TypeChooser onChange={this._selectedTypesChanged} />
           <XpChooser onChange={this._selectedXpChanged} />
         </View>
-        <VirtualizedList
-          data={results}
-          getItem={this._getItem}
-          getItemLayout={this._getItemLayout}
-          getItemCount={this._getItemCount}
-          renderItem={this._renderCard}
-          keyExtractor={this._cardToKey}
-          windowSize={20}
+        <CardResultList
+          navigator={navigator}
+          query={query}
+          deckCardCounts={deckCardCounts}
+          onDeckCountChange={onDeckCountChange}
         />
       </View>
     );
