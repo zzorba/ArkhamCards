@@ -8,12 +8,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
+import InvestigatorImage from '../cards/InvestigatorImage';
 
-class DeckListItem extends React.Component {
+export default class DeckListItem extends React.Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
+    investigator: PropTypes.object,
     onPress: PropTypes.func,
   };
 
@@ -34,19 +35,15 @@ class DeckListItem extends React.Component {
   render() {
     const {
       deck,
-      card,
+      investigator,
     } = this.props;
-
-    const investigator = card;
-
+    console.log(investigator);
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.row} >
-          <Image
-            style={styles.investigatorImage}
-            source={{ uri: `https://arkhamdb.com${investigator.imagesrc}` }} />
+          <InvestigatorImage source={investigator.imagesrc} />
           <View style={styles.titleColumn}>
-            <Text style={styles.title}>
+            <Text style={styles.title} numLines={2}>
               { deck.name }
             </Text>
           </View>
@@ -56,32 +53,23 @@ class DeckListItem extends React.Component {
   }
 }
 
-export default connectRealm(DeckListItem, {
-  schemas: ['Card'],
-  mapToProps(results, realm, props) {
-    return {
-      realm,
-      card: head(results.cards.filtered(`code == '${props.id}'`)),
-    };
-  },
-});
-
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     borderBottomWidth: 2,
     margin: 5,
+    height: 100,
   },
   titleColumn: {
+    paddingLeft: 5,
+    flex: 1,
     flexDirection: 'column',
     marginLeft: 5,
   },
-  investigatorImage: {
-    height: 90,
-    width: 126,
-    marginBottom: 5,
-  },
   title: {
+    fontFamily: 'System',
     fontSize: 22,
   },
 });

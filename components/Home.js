@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import { forEach, map } from 'lodash';
 import {
   StyleSheet,
   ListView,
@@ -12,6 +12,7 @@ import {
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../actions';
 import DeckListItem from './deck/DeckListItem';
@@ -89,7 +90,7 @@ class Home extends React.Component {
               key={deckId}
               id={deckId}
               deck={deck}
-              cards={this.props.cards}
+              investigator={this.props.investigators[deck.investigator_code]}
               onPress={this._deckNavClicked}
             />);
           })
@@ -124,7 +125,24 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connectRealm(
+  connect(mapStateToProps, mapDispatchToProps)(Home),
+  {
+    schemas: ['Card'],
+    mapToProps(results, realm, props) {
+      const investigators = {};
+      forEach(
+        results.cards.filtered('type_code == "investigator"'),
+        investigator => {
+          investigators[investigator.code] = investigator;
+        });
+      return {
+        realm,
+        investigators,
+      };
+    },
+  },
+);
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
