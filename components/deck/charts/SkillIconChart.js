@@ -15,15 +15,14 @@ export default class SkillIconChart extends React.PureComponent {
   }
 
   render() {
-    const data = [{
-      values: SKILLS.map(skill => this.props.parsedDeck.skillIconCounts[skill]),
-      positive: {
-        fill: '#606060',
-      },
-      negative: {
-        fill: '#606060',
-      },
-    }];
+    const data = SKILLS.map(skill => {
+      return {
+        value: this.props.parsedDeck.skillIconCounts[skill],
+        svg: {
+          fill: '#606060',
+        },
+      };
+    });
     return (
       <View>
         <Text>Card Skill Icons</Text>
@@ -33,10 +32,11 @@ export default class SkillIconChart extends React.PureComponent {
           numberOfTicks={4}
           contentInset={{ top: 30, bottom: 30 }}
           data={data}
+          yAccessor={({ item }) => item.value}
         />
         <XAxis
           style={{ marginHorizontal: -10 }}
-          data={data[0].values}
+          data={data}
           formatLabel={this.formatLabel}
           contentInset={{ left: 10, right: 10 }}
           svg={{ fontSize: 10 }}

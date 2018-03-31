@@ -14,11 +14,8 @@ export default class FactionChart extends React.PureComponent {
 
   getFactionData(faction) {
     return {
-      values: [this.props.parsedDeck.factionCounts[faction]],
-      positive: {
-        fill: FACTION_COLORS[faction],
-      },
-      negative: {
+      value: this.props.parsedDeck.factionCounts[faction],
+      svg: {
         fill: FACTION_COLORS[faction],
       },
     };
@@ -35,6 +32,8 @@ export default class FactionChart extends React.PureComponent {
           spacing={0.1}
           numberOfTicks={4}
           contentInset={{ top: 30, bottom: 30 }}
+          yAccessor={({ item }) => item.value}
+          gridMin={0}
           data={barData}
         />
       </View>

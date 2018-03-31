@@ -4,6 +4,7 @@ import { filter, find } from 'lodash';
 import {
   StyleSheet,
   FlatList,
+  VirtualizedList,
   View,
 } from 'react-native';
 import SearchInput from 'react-native-search-filter';
@@ -47,6 +48,9 @@ class CardSearchComponent extends React.Component {
     this._selectedTypesChanged = this.selectedTypesChanged.bind(this);
     this._selectedXpChanged = this.selectedXpChanged.bind(this);
 
+    this._getItem = this.getItem.bind(this);
+    this._getItemLayout = this.getItemLayout.bind(this);
+    this._getItemCount = this.getItemCount.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
     this._cardToKey = this.cardToKey.bind(this);
     this._renderCard = this.renderCard.bind(this);
@@ -119,6 +123,22 @@ class CardSearchComponent extends React.Component {
     );
   }
 
+  getItemLayout(data, index) {
+    return {
+      length: 26,
+      offset: 26 * index,
+      index,
+    };
+  }
+
+  getItem(data, index) {
+    return data[index];
+  }
+
+  getItemCount(data) {
+    return data.length;
+  }
+
   applyQueryFilter(cards) {
     const {
       searchTerm,
@@ -128,13 +148,13 @@ class CardSearchComponent extends React.Component {
       return cards;
     }
 
-    return cards.beginGroup()
-      .contains('name', searchTerm, true)
-      .or()
-      .contains('real_text', searchTerm, true)
-      .or()
-      .contains('traits', searchTerm, true)
-      .endGroup();
+    return cards.filtered(
+      [
+        `name contains[c] '${searchTerm}' or `,
+        `real_text contains[c] '${searchTerm}' or `,
+        `traits contains[c] '${searchTerm}'`,
+      ].join('')
+    );
   }
 
   applyFactionFilter(cards) {
@@ -144,7 +164,9 @@ class CardSearchComponent extends React.Component {
     if (factions.length === 0) {
       return cards;
     }
-    return cards.in('faction_code', factions);
+    return cards.filtered(
+      factions.map(fc => `faction_code == '${fc}'`).join(' or '),
+    );
   }
 
   applyTypeFilter(cards) {
@@ -154,7 +176,9 @@ class CardSearchComponent extends React.Component {
     if (types.length === 0) {
       return cards;
     }
-    return cards.in('type_code', types);
+    return cards.filtered(
+      types.map(tc => `type_code == '${tc}'`).join(' or '),
+    );
   }
 
   applyXpFilter(cards) {
@@ -164,19 +188,20 @@ class CardSearchComponent extends React.Component {
     if (xpLevels.length === 0) {
       return cards;
     }
-    return cards.in('xp', xpLevels);
+    return cards.filtered(
+      xpLevels.map(xp => `xp == '${xp}'`).join(' or '),
+    );
   }
 
   filteredCards() {
     const {
       cards,
     } = this.props;
-    const query = RealmQuery.where(cards);
-    const textCards = this.applyQueryFilter(query);
+    const textCards = this.applyQueryFilter(cards);
     const factionCards = this.applyFactionFilter(textCards);
     const typeCards = this.applyTypeFilter(factionCards);
     const result = this.applyXpFilter(typeCards);
-    return result.findAll();
+    return result;
   }
 
   render() {
@@ -196,10 +221,14 @@ class CardSearchComponent extends React.Component {
           <TypeChooser onChange={this._selectedTypesChanged} />
           <XpChooser onChange={this._selectedXpChanged} />
         </View>
-        <FlatList
+        <VirtualizedList
           data={results}
+          getItem={this._getItem}
+          getItemLayout={this._getItemLayout}
+          getItemCount={this._getItemCount}
           renderItem={this._renderCard}
           keyExtractor={this._cardToKey}
+          windowSize={20}
         />
       </View>
     );
