@@ -17,7 +17,7 @@ import {
   SKILL_COLORS,
 } from '../../../constants';
 import ArkhamIcon from '../../../assets/ArkhamIcon';
-import EncounterIcon from './EncounterIcon';
+import EncounterIcon from '../../../assets/EncounterIcon';
 
 import CardText from '../CardText';
 import FlippableCard from './FlippableCard';

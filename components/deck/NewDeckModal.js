@@ -12,7 +12,7 @@ export default class NewDeckModal extends React.Component {
 
   render() {
     return (
-      
+      null
     );
   }
 }

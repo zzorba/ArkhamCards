@@ -29,6 +29,6 @@ export function setInCollection(code, value) {
   return {
     type: SET_IN_COLLECTION,
     code,
-    value
+    value,
   };
 }

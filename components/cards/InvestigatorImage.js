@@ -6,14 +6,9 @@ import {
   View,
 } from 'react-native';
 
-const adjustments = {
-
-};
-
 export default class InvestigatorImage extends React.Component {
   static propTypes = {
     source: PropTypes.string.isRequired,
-    code: PropTypes.string.isRequired,
   };
 
   render() {
@@ -43,11 +38,5 @@ const styles = StyleSheet.create({
     left: -10,
     width: 166 + 44,
     height: 136 + 34,
-  },
-  right: {
-
-  },
-  left: {
-
   },
 });

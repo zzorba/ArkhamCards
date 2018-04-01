@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CoreSetIcon from '../../../assets/CoreSetIcon';
-import DunwichIcon from '../../../assets/DunwichIcon';
-import CarcosaIcon from '../../../assets/CarcosaIcon';
-import StandaloneIcon from '../../../assets/StandaloneIcon';
+import CoreSetIcon from './CoreSetIcon';
+import DunwichIcon from './DunwichIcon';
+import CarcosaIcon from './CarcosaIcon';
+import StandaloneIcon from './StandaloneIcon';
 
 export default class EncounterIcon extends React.PureComponent {
   static propTypes = {

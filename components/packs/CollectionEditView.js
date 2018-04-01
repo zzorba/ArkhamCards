@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import { sortBy } from 'lodash';
 import {
   FlatList,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { CheckBox } from 'react-native-elements'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from '../../actions';
 import PackRow from './PackRow';
-import EncounterIcon from '../cards/CardDetailView/EncounterIcon';
 
 class CollectionEditView extends React.Component {
   static propTypes = {
@@ -37,6 +34,7 @@ class CollectionEditView extends React.Component {
   renderItem({ item }) {
     return (
       <PackRow
+        navigator={this.props.navigator}
         pack={item}
         setInCollection={this.props.setInCollection}
         checked={this.props.in_collection[item.code]}
@@ -54,7 +52,7 @@ class CollectionEditView extends React.Component {
         <View>
           <Text>Loading</Text>
         </View>
-      )
+      );
     }
     return (
       <View>

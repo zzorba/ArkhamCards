@@ -10,7 +10,7 @@ import {
 import { ButtonGroup } from 'react-native-elements';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';
-import EncounterIcon from '../CardDetailView/EncounterIcon';
+import EncounterIcon from '../../../assets/EncounterIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
 
