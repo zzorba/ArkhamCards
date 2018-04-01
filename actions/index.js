@@ -1,5 +1,6 @@
 export const PACKS_AVAILABLE = 'PACKS_AVAILABLE';
 export const DECK_AVAILABLE = 'DECK_AVAILABLE';
+export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 
 export function getPacks() {
   return (dispatch) => {
@@ -21,5 +22,13 @@ export function getDeck(id) {
         id,
         deck: json,
       })).catch(err => console.log(err));
+  };
+}
+
+export function setInCollection(code, value) {
+  return {
+    type: SET_IN_COLLECTION,
+    code,
+    value
   };
 }

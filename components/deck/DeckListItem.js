@@ -39,7 +39,12 @@ export default class DeckListItem extends React.Component {
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.row} >
-          <InvestigatorImage source={investigator.imagesrc} />
+          <View style={styles.image}>
+            <InvestigatorImage
+              source={investigator.imagesrc}
+              code={investigator.code}
+            />
+          </View>
           <View style={styles.titleColumn}>
             <Text style={styles.title} numLines={2}>
               { deck.name }
@@ -57,13 +62,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     borderBottomWidth: 2,
-    margin: 5,
     height: 100,
   },
+  image: {
+    marginLeft: 10,
+    marginRight: 8,
+  },
   titleColumn: {
-    paddingLeft: 5,
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     marginLeft: 5,
   },
   title: {

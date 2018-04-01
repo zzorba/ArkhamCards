@@ -6,16 +6,21 @@ import {
   View,
 } from 'react-native';
 
+const adjustments = {
+
+};
+
 export default class InvestigatorImage extends React.Component {
   static propTypes = {
     source: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
   };
 
   render() {
     return (
       <View style={styles.container}>
         <Image
-          style={styles.image}
+          style={[styles.image]}
           source={{ uri: `https://arkhamdb.com/${this.props.source}` }}
           resizeMode="contain"
         />
@@ -28,17 +33,21 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
     position: 'relative',
-    borderRadius: 45,
-    borderWidth: 2,
-    borderColor: '#000000',
-    width: 90,
-    height: 90,
+    borderRadius: 6,
+    width: 80,
+    height: 80,
   },
   image: {
     position: 'absolute',
-    top: -40,
+    top: -34,
     left: -10,
-    width: 166 + 88,
-    height: 136 + 68,
+    width: 166 + 44,
+    height: 136 + 34,
+  },
+  right: {
+
+  },
+  left: {
+
   },
 });

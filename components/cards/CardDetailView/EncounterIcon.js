@@ -111,6 +111,9 @@ export default class EncounterIcon extends React.PureComponent {
       case 'bsr':
       case 'black_stars_rise':
         return this.carcosaIcon('black_stars_rise', size, color);
+      case 'dca':
+      case 'dim_carcosa':
+        return this.carcosaIcon('dim_carcosa', size, color);
       case 'byakhee':
       case 'cult_of_the_yellow_sign':
       case 'hauntings':
@@ -125,8 +128,6 @@ export default class EncounterIcon extends React.PureComponent {
         return this.carcosaIcon('decay_and_filth', size, color);
       case 'stranger':
         return this.carcosaIcon('the_stranger', size, color);
-      case 'dca': // DIM CARCOSA
-        return this.carcosaIcon('carcosa', size, color);
       case 'promo': // PROMO
       case 'books': // NOVELLAS
         return this.coreIcon('core', size, color);

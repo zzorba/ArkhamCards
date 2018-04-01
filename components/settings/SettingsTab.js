@@ -8,11 +8,12 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import Card from '../data/Card';
+import Card from '../../data/Card';
 
 class Settings extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -23,8 +24,15 @@ class Settings extends React.Component {
       cardCount: props.realm.objects('Card').length,
     };
 
+    this._myCollectionPressed = this.myCollectionPressed.bind(this);
     this._syncCards = this.syncCards.bind(this);
     this._clearCache = this.clearCache.bind(this);
+  }
+
+  myCollectionPressed() {
+    this.props.navigator.push({
+      screen: 'CollectionEdit',
+    });
   }
 
   clearCache() {
@@ -66,6 +74,7 @@ class Settings extends React.Component {
     return (
       <View>
         <Text>Settings</Text>
+        <Button onPress={this._myCollectionPressed} title="My Collection" />
         <Text>We have { this.state.cardCount } cards in database</Text>
         <Button onPress={this._syncCards} title="Check for card updates" />
         <Button onPress={this._clearCache} title="Clear cache" />
