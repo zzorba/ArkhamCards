@@ -10,7 +10,6 @@ import {
   ScrollView,
 } from 'react-native';
 
-import * as Actions from '../../actions';
 import { DeckType } from './parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckViewCardItem from './DeckViewCardItem';

@@ -14,7 +14,7 @@ export default class CardSearchView extends React.Component {
     } = this.props;
 
     return (
-      <CardSearchComponent navigator={navigator}/>
+      <CardSearchComponent navigator={navigator} />
     );
   }
 }

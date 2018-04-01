@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { map, partition } from 'lodash';
 
 import CardSearchComponent from '../cards/CardSearchView/CardSearchComponent';
-import DeckValidation from '../../lib/DeckValidation';
 
 export default class DeckEditTab extends React.Component {
   static propTypes = {
@@ -38,17 +37,10 @@ export default class DeckEditTab extends React.Component {
 
   render() {
     const {
-      investigator,
       navigator,
       slots,
       slotChanged,
     } = this.props;
-
-    const validator = new DeckValidation(investigator);
-    // const eligibleCards = pickBy(cards, (card) => {
-    //  return card.deck_limit > 0 && validator.canIncludeCard(card);
-    // });
-
 
     return (
       <CardSearchComponent

@@ -14,6 +14,10 @@ export default class SkillIconChart extends React.PureComponent {
     return SKILLS[index];
   }
 
+  getValue({ item }) {
+    return item.value;
+  }
+
   render() {
     const data = SKILLS.map(skill => {
       return {
@@ -32,7 +36,7 @@ export default class SkillIconChart extends React.PureComponent {
           numberOfTicks={4}
           contentInset={{ top: 30, bottom: 30 }}
           data={data}
-          yAccessor={({ item }) => item.value}
+          yAccessor={this.getValue}
         />
         <XAxis
           style={{ marginHorizontal: -10 }}

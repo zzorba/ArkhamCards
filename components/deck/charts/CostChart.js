@@ -9,6 +9,14 @@ export default class CostChart extends React.PureComponent {
     parsedDeck: DeckType,
   };
 
+  constructor(props) {
+    super(props);
+  }
+
+  getValue({ item }) {
+    return item.value;
+  }
+
   formatLabel(value, index) {
     return index;
   }
@@ -26,7 +34,7 @@ export default class CostChart extends React.PureComponent {
           fill: '#000000',
         },
       };
-    })
+    });
     return (
       <View style={{ margin: 10 }}>
         <Text>Card Cost</Text>
@@ -35,7 +43,7 @@ export default class CostChart extends React.PureComponent {
           contentInset={{ top: 10, left: 10, right: 10, bottom: 10 }}
           style={{ height: 200 }}
           data={data}
-          yAccessor={({ item }) => item.value}
+          yAccessor={this.getValue}
           numberOfTicks={5}
           gridMin={0}
         />

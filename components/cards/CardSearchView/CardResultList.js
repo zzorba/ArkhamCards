@@ -1,23 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, find, map } from 'lodash';
+import { map } from 'lodash';
 import {
-  StyleSheet,
-  FlatList,
   VirtualizedList,
-  View,
 } from 'react-native';
-import SearchInput from 'react-native-search-filter';
-import RealmQuery from 'realm-query';
 import { connectRealm } from 'react-native-realm';
 
-import FactionChooser from './FactionChooser';
-import TypeChooser from './TypeChooser';
-import XpChooser from './XpChooser';
 import CardSearchResult from './CardSearchResult';
-
-import { FACTION_CODES } from '../../../constants';
-const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
 class CardResultList extends React.Component {
   static propTypes = {
@@ -58,10 +47,6 @@ class CardResultList extends React.Component {
   }
 
   componentDidMount() {
-    const {
-      realm,
-      query,
-    } = this.props;
     setTimeout(() => this.updateResults(), 0);
   }
 
@@ -73,7 +58,6 @@ class CardResultList extends React.Component {
       setTimeout(() => this.updateResults(), 50);
     }
   }
-
 
   cardToKey(card) {
     return card.code;
@@ -143,7 +127,7 @@ class CardResultList extends React.Component {
 }
 
 export default connectRealm(CardResultList, {
-  mapToProps(results, realm, props) {
+  mapToProps(results, realm) {
     return {
       realm,
     };

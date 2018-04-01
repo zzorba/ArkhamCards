@@ -10,7 +10,6 @@ import {
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
-import { CardType } from '../cards/types';
 
 const CLASS_ICONS = createFactionIcons(14);
 

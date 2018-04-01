@@ -4605,7 +4605,7 @@ react-native-progress@3.4.0:
   dependencies:
     prop-types "^15.5.8"
 
-react-native-realm@^0.1.2:
+react-native-realm@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/react-native-realm/-/react-native-realm-0.1.2.tgz#7e9b4b9c633373c7c3bcdb728daa4390e6c73aeb"
   dependencies:

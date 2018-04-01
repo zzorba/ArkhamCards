@@ -16,10 +16,8 @@ import {
   SKILLS,
   SKILL_COLORS,
 } from '../../../constants';
-import { OptionalCardType } from '../types';
 import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from './EncounterIcon';
-import * as Actions from '../../../actions';
 
 import CardText from '../CardText';
 import FlippableCard from './FlippableCard';

@@ -1,5 +1,5 @@
 export default class CardRequirement {
-  
+
 }
 
 CardRequirement.schema = {

@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, find } from 'lodash';
+import { filter } from 'lodash';
 import {
   StyleSheet,
-  FlatList,
-  VirtualizedList,
   View,
 } from 'react-native';
 import SearchInput from 'react-native-search-filter';
-import RealmQuery from 'realm-query';
 import { connectRealm } from 'react-native-realm';
 
 import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';
-import CardSearchResult from './CardSearchResult';
 import CardResultList from './CardResultList';
 
 import { FACTION_CODES } from '../../../constants';
@@ -22,10 +18,10 @@ const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
 class CardSearchComponent extends React.Component {
   static propTypes = {
-    realm: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
     // Function that takes 'realm' and gives back a base query.
     baseQuery: PropTypes.string,
+    cards: PropTypes.object,
 
     // Keyed by code, count of current deck.
     deckCardCounts: PropTypes.object,
@@ -55,12 +51,14 @@ class CardSearchComponent extends React.Component {
       cards,
     } = this.props;
     if (baseQuery) {
-      this.setState({
-        factionCodes: filter(
-          FACTION_CODES,
-          faction_code =>
-            cards.filtered(`faction_code == '${faction_code}'`).length > 0),
-      });
+      setTimeout(() => {
+        this.setState({
+          factionCodes: filter(
+            FACTION_CODES,
+            faction_code =>
+              cards.filtered(`faction_code == '${faction_code}'`).length > 0),
+        });
+      }, 0);
     }
   }
 
@@ -195,7 +193,6 @@ export default connectRealm(CardSearchComponent, {
   schemas: ['Card'],
   mapToProps(results, realm, props) {
     return {
-      realm,
       cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
     };
   },

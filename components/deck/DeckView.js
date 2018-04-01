@@ -9,7 +9,6 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import RealmQuery from 'realm-query';
 import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../../actions';
@@ -23,7 +22,6 @@ import CardDrawSimulator from './CardDrawSimulator';
 
 class DeckView extends React.Component {
   static propTypes = {
-    realm: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     // From realm.

@@ -21,6 +21,10 @@ export default class FactionChart extends React.PureComponent {
     };
   }
 
+  getValue({ item }) {
+    return item.value;
+  }
+
   render() {
     const barData = FACTION_CODES.map(code => this.getFactionData(code));
     return (
@@ -32,7 +36,7 @@ export default class FactionChart extends React.PureComponent {
           spacing={0.1}
           numberOfTicks={4}
           contentInset={{ top: 30, bottom: 30 }}
-          yAccessor={({ item }) => item.value}
+          yAccessor={this.getValue}
           gridMin={0}
           data={barData}
         />

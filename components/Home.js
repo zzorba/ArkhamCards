@@ -22,6 +22,7 @@ class Home extends React.Component {
     navigator: PropTypes.object.isRequired,
     loading: PropTypes.bool,
     decks: PropTypes.object,
+    investigators: PropTypes.object,
     packs: PropTypes.array,
     getPacks: PropTypes.func.isRequired,
     getDeck: PropTypes.func.isRequired,
@@ -129,7 +130,7 @@ export default connectRealm(
   connect(mapStateToProps, mapDispatchToProps)(Home),
   {
     schemas: ['Card'],
-    mapToProps(results, realm, props) {
+    mapToProps(results, realm) {
       const investigators = {};
       forEach(
         results.cards.filtered('type_code == "investigator"'),
