@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from '../../actions';
-import PackRow from './PackRow';
+import PackListView from './PackListView';
 
 class CollectionEditView extends React.Component {
   static propTypes = {
@@ -20,32 +20,12 @@ class CollectionEditView extends React.Component {
     setInCollection: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-
-    this._renderItem = this.renderItem.bind(this);
-    this._keyExtractor = this.keyExtractor.bind(this);
-  }
-
-  keyExtractor(item) {
-    return item.code;
-  }
-
-  renderItem({ item }) {
-    return (
-      <PackRow
-        navigator={this.props.navigator}
-        pack={item}
-        setInCollection={this.props.setInCollection}
-        checked={this.props.in_collection[item.code]}
-      />
-    );
-  }
-
   render() {
     const {
+      navigator,
       packs,
       in_collection,
+      setInCollection,
     } = this.props;
     if (!packs.length) {
       return (
@@ -55,14 +35,12 @@ class CollectionEditView extends React.Component {
       );
     }
     return (
-      <View>
-        <FlatList
-          data={packs}
-          renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}
-          extraData={in_collection}
-        />
-      </View>
+      <PackListView
+        navigator={navigator}
+        packs={packs}
+        checkState={in_collection}
+        setChecked={setInCollection}
+      />
     );
   }
 }

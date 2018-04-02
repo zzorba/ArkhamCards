@@ -1,10 +1,16 @@
 import { combineReducers } from 'redux';
 
-import { PACKS_AVAILABLE, DECK_AVAILABLE, SET_IN_COLLECTION } from '../actions/';
+import {
+  PACKS_AVAILABLE,
+  DECK_AVAILABLE,
+  SET_IN_COLLECTION,
+  SET_PACK_SPOILER,
+} from '../actions/';
 
 const DEFAULT_PACKS_STATE = {
   all: [],
   in_collection: {},
+  show_spoilers: {},
   loading: true,
 };
 
@@ -27,6 +33,19 @@ const packs = (state = DEFAULT_PACKS_STATE, action) => {
       state,
       {
         in_collection: new_collection,
+      },
+    );
+  } else if (action.type === SET_PACK_SPOILER) {
+    const new_spoilers = Object.assign({}, state.show_spoilers);
+    if (action.value) {
+      new_spoilers[action.code] = true;
+    } else {
+      delete new_spoilers[action.code];
+    }
+    return Object.assign({},
+      state,
+      {
+        show_spoilers: new_spoilers,
       },
     );
   }

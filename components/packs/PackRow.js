@@ -14,7 +14,7 @@ export default class PackRow extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     pack: PropTypes.object,
-    setInCollection: PropTypes.func.isRequired,
+    setChecked: PropTypes.func,
     checked: PropTypes.bool,
   };
 
@@ -43,15 +43,16 @@ export default class PackRow extends React.Component {
     const {
       pack,
       checked,
-      setInCollection,
+      setChecked,
     } = this.props;
-    setInCollection(pack.code, !checked);
+    setChecked && setChecked(pack.code, !checked);
   }
 
   render() {
     const {
       pack,
       checked,
+      setChecked,
     } = this.props;
 
     return (
@@ -71,13 +72,15 @@ export default class PackRow extends React.Component {
             <Text style={styles.title}>{ pack.name }</Text>
           </View>
         </TouchableOpacity>
-        <View style={styles.checkbox}>
-          <CheckBox
-            checked={checked}
-            onPress={this._onCheckPress}
-            onIconPress={this._onPress}
-          />
-        </View>
+        { setChecked && (
+          <View style={styles.checkbox}>
+            <CheckBox
+              checked={checked}
+              onPress={this._onCheckPress}
+              onIconPress={this._onCheckPress}
+            />
+          </View>
+        ) }
       </View>
     );
   }

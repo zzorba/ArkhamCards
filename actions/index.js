@@ -1,6 +1,7 @@
 export const PACKS_AVAILABLE = 'PACKS_AVAILABLE';
 export const DECK_AVAILABLE = 'DECK_AVAILABLE';
 export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
+export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
 
 export function getPacks() {
   return (dispatch) => {
@@ -31,4 +32,12 @@ export function setInCollection(code, value) {
     code,
     value,
   };
+}
+
+export function setPackSpoiler(code, value) {
+  return {
+    type: SET_PACK_SPOILER,
+    code,
+    value,
+  }; 
 }
