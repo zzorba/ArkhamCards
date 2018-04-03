@@ -16,13 +16,16 @@ import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../actions';
 import DeckListItem from './deck/DeckListItem';
+import { syncCards } from '../lib/api';
 
 class Home extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    realm: PropTypes.object.isRequired,
     loading: PropTypes.bool,
     decks: PropTypes.object,
     investigators: PropTypes.object,
+    cardCount: PropTypes.number,
     packs: PropTypes.array,
     getPacks: PropTypes.func.isRequired,
     getDeck: PropTypes.func.isRequired,
@@ -36,22 +39,64 @@ class Home extends React.Component {
     });
     this.state = {
       ds,
-      deckIds: [4922,4946,4950,4519, 101, 381, 180, 530, 2932, 294, 1179, 2381, 332],
+      loadingCards: false,
+      deckIds: [
+        4922,
+        4946,
+        4950,
+        4519,
+        101,
+        381,
+        180,
+        530,
+        2932,
+        294,
+        1179,
+        2381,
+        332,
+      ],
     };
 
     this._deckNavClicked = this.deckNavClicked.bind(this);
   }
 
   componentDidMount() {
-    if (this.props.packs.length === 0) {
-      this.props.getPacks();
+    const {
+      packs,
+      getPacks,
+      decks,
+      getDeck,
+      cardCount,
+      realm,
+    } = this.props;
+
+    if (cardCount === 0) {
+      setTimeout(() => this.setState({
+        loadingCards: true,
+      }), 0);
+      syncCards(realm).then(cardCount => {
+        this.setState({
+          loadingCards: false,
+        });
+      }).catch(err => {
+        this.setState({
+          loadingCards: false,
+          error: err.message || err,
+        });
+      });
     }
+
+    if (packs.length === 0) {
+      getPacks();
+    }
+
     this.state.deckIds.forEach(deckId => {
-      if (!this.props.decks[deckId]) {
-        this.props.getDeck(deckId);
+      if (!decks[deckId]) {
+        getDeck(deckId);
       }
     });
   }
+
 
   deckNavClicked(id) {
     this.props.navigator.push({
@@ -70,6 +115,18 @@ class Home extends React.Component {
     if (this.props.loading) {
       return (
         <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator
+            style={[{ height: 80 }]}
+            size="small"
+            animating
+          />
+        </View>
+      );
+    }
+    if (this.state.loadingCards) {
+      return (
+        <View style={styles.activityIndicatorContainer}>
+          <Text>Loading latest cards...</Text>
           <ActivityIndicator
             style={[{ height: 80 }]}
             size="small"
@@ -139,6 +196,7 @@ export default connectRealm(
         });
       return {
         realm,
+        cardCount: results.cards.length,
         investigators,
       };
     },

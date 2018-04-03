@@ -9,6 +9,7 @@ import {
 import { connectRealm } from 'react-native-realm';
 
 import Card from '../../data/Card';
+import { syncCards } from '../../lib/api';
 
 class Settings extends React.Component {
   static propTypes = {
@@ -21,11 +22,10 @@ class Settings extends React.Component {
 
     this.state = {
       error: null,
-      cardCount: props.realm.objects('Card').length,
     };
 
     this._myCollectionPressed = this.myCollectionPressed.bind(this);
-    this._syncCards = this.syncCards.bind(this);
+    this._doSyncCards = this.doSyncCards.bind(this);
     this._clearCache = this.clearCache.bind(this);
   }
 
@@ -44,30 +44,16 @@ class Settings extends React.Component {
     });
   }
 
-  syncCards() {
+  doSyncCards() {
     const {
       realm,
     } = this.props;
 
-    fetch('https://arkhamdb.com/api/public/cards/?encounter=1',
-      { method: 'GET' })
-      .then(response => response.json())
-      .then(json => {
-        realm.write(() => {
-          forEach(json, card => {
-            try {
-              realm.create('Card', Card.fromJson(card), true);
-            } catch (e) {
-              console.log(e);
-              console.log(card);
-            }
-          });
-        });
-        this.setState({
-          cardCount: realm.objects('Card').length,
-        });
-      })
-      .catch(err => this.setState(err.message || err));
+    syncCards(realm).catch(err => {
+      this.setState({
+        error: err.message || err,
+      });
+    });
   }
 
   render() {
@@ -75,8 +61,8 @@ class Settings extends React.Component {
       <View>
         <Text>Settings</Text>
         <Button onPress={this._myCollectionPressed} title="My Collection" />
-        <Text>We have { this.state.cardCount } cards in database</Text>
-        <Button onPress={this._syncCards} title="Check for card updates" />
+        <Text>We have { this.props.cardCount } cards in database</Text>
+        <Button onPress={this._doSyncCards} title="Check for card updates" />
         <Button onPress={this._clearCache} title="Clear cache" />
       </View>
     );
@@ -90,6 +76,7 @@ export default connectRealm(Settings, {
     return {
       realm,
       cards: results.cards,
+      cardCount: results.cards.length,
     };
   },
 });

@@ -35,15 +35,16 @@ export default class DeckListItem extends React.Component {
       deck,
       investigator,
     } = this.props;
-    console.log(investigator);
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.row} >
           <View style={styles.image}>
-            <InvestigatorImage
-              source={investigator.imagesrc}
-              code={investigator.code}
-            />
+            { investigator && (
+              <InvestigatorImage
+                source={investigator.imagesrc}
+                code={investigator.code}
+              />
+            ) }
           </View>
           <View style={styles.titleColumn}>
             <Text style={styles.title} numLines={2}>
