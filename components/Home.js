@@ -74,7 +74,7 @@ class Home extends React.Component {
       setTimeout(() => this.setState({
         loadingCards: true,
       }), 0);
-      syncCards(realm).then(cardCount => {
+      syncCards(realm).then(() => {
         this.setState({
           loadingCards: false,
         });

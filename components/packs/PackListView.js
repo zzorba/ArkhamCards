@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sortBy } from 'lodash';
 import {
   FlatList,
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-import * as Actions from '../../actions';
 import PackRow from './PackRow';
 
 export default class PackListView extends React.Component {

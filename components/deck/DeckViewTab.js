@@ -5,15 +5,17 @@ import {
   StyleSheet,
   SectionList,
   View,
-  Image,
+  TouchableOpacity,
   Text,
   ScrollView,
 } from 'react-native';
 
+import AppIcon from '../../assets/AppIcon';
 import { DeckType } from './parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckViewCardItem from './DeckViewCardItem';
 import DeckValidation from '../../lib/DeckValidation';
+import InvestigatorImage from '../cards/InvestigatorImage';
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -66,10 +68,20 @@ export default class DeckViewTab extends React.Component {
     this._renderCardHeader = this.renderCardHeader.bind(this);
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
+    this._showInvestigator = this.showInvestigator.bind(this);
   }
 
   keyForCard(item) {
     return item.id;
+  }
+
+  showInvestigator() {
+    const {
+      parsedDeck: {
+        investigator,
+      },
+    } = this.props;
+    this.showCard(investigator);
   }
 
   showCard(card) {
@@ -134,6 +146,7 @@ export default class DeckViewTab extends React.Component {
     return (
       <View>
         <Text style={styles.problemText}>
+          <AppIcon name="warning" size={14} color={COLORS.red} />
           { DECK_PROBLEM_MESSAGES[problem.reason] }
         </Text>
         { problem.problems.map(problem => (
@@ -164,28 +177,31 @@ export default class DeckViewTab extends React.Component {
 
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.deckTitle}>{ deck.name }</Text>
         <View style={styles.rowWrap}>
-          <Image
-            style={styles.investigatorCard}
-            source={{
-              uri: `https://arkhamdb.com${investigator.imagesrc}`,
-            }}
-          />
-          <View>
-            <Text style={styles.investigatorName}>
-              { investigator.name }
-            </Text>
-            <Text style={styles.defaultText}>
-              { `${normalCardCount} cards (${totalCardCount} total)` }
-            </Text>
-            <Text style={styles.defaultText}>
-              { `${experience} experience required.` }
-            </Text>
-            <Text style={styles.defaultText}>
-              { `${packs} packs required.` }
-            </Text>
-            { this.renderProblem() }
+          <Text style={styles.deckTitle}>{ deck.name }</Text>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={this._showInvestigator}>
+              <View style={styles.image}>
+                <InvestigatorImage source={investigator.imagesrc} />
+              </View>
+            </TouchableOpacity>
+            <View style={styles.metadata}>
+              <TouchableOpacity onPress={this._showInvestigator}>
+                <Text style={styles.investigatorName}>
+                  { investigator.name }
+                </Text>
+              </TouchableOpacity>
+              <Text style={styles.defaultText}>
+                { `${normalCardCount} cards (${totalCardCount} total)` }
+              </Text>
+              <Text style={styles.defaultText}>
+                { `${experience} experience required.` }
+              </Text>
+              <Text style={styles.defaultText}>
+                { `${packs} packs required.` }
+              </Text>
+              { this.renderProblem() }
+            </View>
           </View>
         </View>
         <SectionList
@@ -200,17 +216,23 @@ export default class DeckViewTab extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  metadata: {
+    flexDirection: 'column',
+  },
+  image: {
+    width: 80,
+    height: 80,
+    marginRight: 16,
+  },
   deckTitle: {
     color: '#000000',
     fontSize: 24,
     fontWeight: '500',
     marginBottom: 8,
-  },
-  investigatorCard: {
-    height: 200,
-    width: 280,
-    resizeMode: 'contain',
-    marginRight: 16,
   },
   investigatorName: {
     color: '#000000',
@@ -240,9 +262,5 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     borderBottomColor: '#0A0A0A',
     borderBottomWidth: 1,
-  },
-  rowWrap: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
   },
 });

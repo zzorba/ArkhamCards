@@ -188,13 +188,13 @@ class CardSearchComponent extends React.Component {
 }
 
 export default connectRealm(CardSearchComponent, {
-    schemas: ['Card'],
-    mapToProps(results, realm, props) {
-      return {
-        cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
-      };
-    },
-  });
+  schemas: ['Card'],
+  mapToProps(results, realm, props) {
+    return {
+      cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
+    };
+  },
+});
 
 const styles = StyleSheet.create({
   container: {

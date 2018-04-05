@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach } from 'lodash';
 import {
   Button,
   View,
@@ -8,12 +7,12 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import Card from '../../data/Card';
 import { syncCards } from '../../lib/api';
 
 class Settings extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
+    cardCount: PropTypes.number,
     navigator: PropTypes.object.isRequired,
   };
 

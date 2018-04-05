@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { concat, map, partition } from 'lodash';
 import {
   Button,
-  Text,
   VirtualizedList,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
@@ -196,7 +195,7 @@ class CardResultList extends React.Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
     show_spoilers: state.packs.show_spoilers || {},
   };
