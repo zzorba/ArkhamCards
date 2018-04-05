@@ -41,6 +41,8 @@ class Home extends React.Component {
       ds,
       loadingCards: false,
       deckIds: [
+        5168,
+        5167,
         4922,
         4946,
         4950,

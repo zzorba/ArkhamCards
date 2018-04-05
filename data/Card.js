@@ -9,6 +9,7 @@ import DeckOptionLevel from './DeckOptionLevel';
 import DeckAtLeastOption from './DeckAtLeastOption';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror');
 export default class Card {
   static parseDeckRequirements(json) {
     const dr = new DeckRequirement();
@@ -37,6 +38,7 @@ export default class Card {
       const deck_option = new DeckOption();
       deck_option.faction = json.faction || [];
       deck_option.uses = json.uses || [];
+      deck_option.text = json.text || [];
       deck_option.trait = json.trait || [];
       deck_option.limit = json.limit;
       deck_option.error = json.error;
@@ -86,6 +88,9 @@ export default class Card {
 
     const uses_match = json.text && json.text.match(USES_REGEX);
     const uses = uses_match ? uses_match[1].toLowerCase() : null;
+
+    const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
+    const heals_horror = heals_horror_match ? true : null;
     return Object.assign(
       {},
       json,
@@ -97,6 +102,7 @@ export default class Card {
         traits_normalized,
         uses,
         restrictions,
+        heals_horror,
       },
     );
   }
@@ -171,5 +177,6 @@ Card.schema = {
     // Derived data.
     traits_normalized: 'string?',
     uses: 'string?',
+    heals_horror: 'bool?',
   },
 };

@@ -16,7 +16,7 @@ export function getPacks() {
 
 export function getDeck(id) {
   return (dispatch) => {
-    fetch(`https://arkhamdb.com/api/public/deck/${id}`, { method: 'GET' })
+    fetch(`https://arkhamdb.com/api/public/decklist/${id}`, { method: 'GET' })
       .then(response => response.json())
       .then(json => dispatch({
         type: DECK_AVAILABLE,

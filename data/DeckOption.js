@@ -26,6 +26,13 @@ export default class DeckOption {
       query += ' )';
       dirty = true;
     }
+    if (this.text && this.text.length) {
+      // No regex so we have to pre-bake these unfortunately.
+      if (this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror') {
+        query += ' heals_horror == true '
+        dirty = true;
+      }
+    }
     if (this.trait && this.trait.length) {
       if (dirty) {
         query += ' AND';
@@ -55,6 +62,7 @@ DeckOption.schema = {
     faction: 'string[]',
     uses: 'string[]',
     trait: 'string[]',
+    text: 'string[]',
     atleast: 'DeckAtLeastOption?',
     level: 'DeckOptionLevel?',
     limit: 'int?',
