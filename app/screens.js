@@ -4,6 +4,7 @@ import DeckView from '../components/deck/DeckView';
 import CardSearchView from '../components/cards/CardSearchView';
 import CardDetailView from '../components/cards/CardDetailView';
 import Home from '../components/Home';
+import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsTab from '../components/settings/SettingsTab';
 import PackCardsView from '../components/packs/PackCardsView';
 import SpoilersView from '../components/settings/SpoilersView';
@@ -19,4 +20,5 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('CollectionEdit', () => CollectionEditView, store, Provider);
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);
+  Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
 }

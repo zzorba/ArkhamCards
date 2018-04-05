@@ -35,7 +35,7 @@ export default class App {
     YellowBox.ignoreWarnings([
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
       'Consider using `numColumns` with `FlatList` instead.',
-      'Warning: Failed prop type: Invalid prop `rules.arkhamIcon.order` of type `number` supplied to `MarkdownView`, expected `function`.',
+      'Warning: Failed prop type: Invalid prop `rules.arkhamIconSpan.order` of type `number` supplied to `MarkdownView`, expected `function`.',
     ]);
 
     Navigation.startTabBasedApp({

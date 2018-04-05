@@ -24,6 +24,7 @@ import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from '../../../assets/EncounterIcon';
 import CardText from '../CardText';
 import FlippableCard from './FlippableCard';
+import FaqComponent from './FaqComponent';
 
 const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={12} color="#000000" />
@@ -349,6 +350,7 @@ class CardDetailView extends React.PureComponent {
 
   render() {
     const {
+      navigator,
       card,
     } = this.props;
 
@@ -431,11 +433,11 @@ class CardDetailView extends React.PureComponent {
         </View>
         { isHorizontal && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         { card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
+        <FaqComponent navigator={navigator} id={card.code} />
       </ScrollView>
     );
   }
 }
-
 
 function mapStateToProps(state, props) {
   const show_spoilers = state.packs.show_spoilers || {};

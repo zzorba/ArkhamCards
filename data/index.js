@@ -8,6 +8,7 @@ import RandomRequirement from './RandomRequirement';
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
+import FaqEntry from './FaqEntry';
 
 export default new Realm({
   schema: [
@@ -19,8 +20,9 @@ export default new Realm({
     DeckAtLeastOption,
     DeckOption,
     DeckOptionLevel,
+    FaqEntry,
   ],
-  schemaVersion: 3,
+  schemaVersion: 4,
   /* eslint-disable no-unused-vars */
   migration: (oldRealm, newRealm) => {
   },
