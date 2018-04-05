@@ -53,7 +53,7 @@ class Home extends React.Component {
         294,
         1179,
         2381,
-        332,
+        132081,
       ],
     };
 

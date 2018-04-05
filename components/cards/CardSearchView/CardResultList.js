@@ -66,7 +66,7 @@ class CardResultList extends React.Component {
     const cards = query ? realm.objects('Card').filtered(query) : realm.objects('Card');
     const splitCards = partition(
       map(cards, card => Object.assign({}, card)),
-      card => !(card.spoiler || (card.linked_card && card.linked_card.spoiler)) || 
+      card => !(card.spoiler || (card.linked_card && card.linked_card.spoiler)) ||
         show_spoilers[card.pack_code]
     );
     this.setState({
@@ -99,6 +99,7 @@ class CardResultList extends React.Component {
       passProps: {
         id: card.code,
         pack_code: card.pack_code,
+        showSpoilers: true,
       },
     });
   }

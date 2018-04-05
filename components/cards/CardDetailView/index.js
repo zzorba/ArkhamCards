@@ -440,7 +440,7 @@ class CardDetailView extends React.PureComponent {
 function mapStateToProps(state, props) {
   const show_spoilers = state.packs.show_spoilers || {};
   return {
-    showSpoilers: show_spoilers[props.pack_code],
+    showSpoilers: props.showSpoilers || show_spoilers[props.pack_code],
   };
 }
 
