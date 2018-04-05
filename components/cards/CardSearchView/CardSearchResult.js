@@ -15,8 +15,8 @@ import { createFactionIcons, FACTION_COLORS } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
 
 const FACTION_ICONS = createFactionIcons(12);
-
 const BUTTON_WIDTH = 40;
+
 export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
     card: PropTypes.object,
@@ -34,7 +34,7 @@ export default class CardSearchResult extends React.PureComponent {
   }
 
   onPress() {
-    this.props.onPress(this.props.card.code);
+    this.props.onPress(this.props.card);
   }
 
   onDeckCountPress(idx) {
@@ -135,7 +135,6 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   stack: {

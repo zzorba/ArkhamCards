@@ -9,6 +9,8 @@ import {
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import {
   CORE_FACTION_CODES,
@@ -16,9 +18,10 @@ import {
   SKILLS,
   SKILL_COLORS,
 } from '../../../constants';
+import * as Actions from '../../../actions';
+import AppIcon from '../../../assets/AppIcon';
 import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from '../../../assets/EncounterIcon';
-
 import CardText from '../CardText';
 import FlippableCard from './FlippableCard';
 
@@ -30,6 +33,7 @@ class CardDetailView extends React.PureComponent {
   static propTypes = {
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.string.isRequired,
+    pack_code: PropTypes.string.isRequired,
     card: PropTypes.object,
     showSpoilers: PropTypes.bool,
   };
@@ -38,7 +42,7 @@ class CardDetailView extends React.PureComponent {
     super(props);
 
     this.state = {
-      showSpoilers: false,
+      showSpoilers: props.showSpoilers,
       cardViewDimension: {
         width: 0,
         height: 0,
@@ -61,8 +65,11 @@ class CardDetailView extends React.PureComponent {
       height,
     } = event.nativeEvent.layout;
 
-    if (!this.state.cardViewDimension ||
-        this.state.cardViewDimension.width !== width) {
+    const {
+      cardViewDimension,
+    } = this.state;
+
+    if (!cardViewDimension || cardViewDimension.width !== width) {
       this.setState({
         cardViewDimension: {
           width,
@@ -255,27 +262,34 @@ class CardDetailView extends React.PureComponent {
         style={isHorizontal ? styles.horizontalCard : styles.verticalCard}
         onLayout={this._onCardViewLayout}
       >
-        <FlippableCard
-          style={{
-            width: this.state.cardViewDimension.width,
-            height: 250,
-            borderWidth: 0,
-          }}
-          flipped={!blur}
-          backSide={
-            <Image
-              style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
-              source={this.backSource(card, isHorizontal)}
-            />
-          }
-          frontSide={
-            <Image
-              style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
-              source={{ uri: frontImg }}
-            />
-          }
-          onFlip={this._toggleShowSpoilers}
-        />
+        { this.props.showSpoilers ?
+          <Image
+            style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
+            source={{ uri: frontImg }}
+          />
+          :
+          <FlippableCard
+            style={{
+              width: this.state.cardViewDimension.width,
+              height: 250,
+              borderWidth: 0,
+            }}
+            flipped={!blur}
+            backSide={
+              <Image
+                style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
+                source={this.backSource(card, isHorizontal)}
+              />
+            }
+            frontSide={
+              <Image
+                style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
+                source={{ uri: frontImg }}
+              />
+            }
+            onFlip={this._toggleShowSpoilers}
+          />
+        }
       </View>
     );
   }
@@ -388,7 +402,12 @@ class CardDetailView extends React.PureComponent {
               }
               { !!card.flavor && !flavorFirst &&
                 <Text style={styles.flavorText}>{ card.flavor }</Text> }
-              { !!card.illustrator && <Text>{ card.illustrator }</Text> }
+              { !!card.illustrator && (
+                <Text>
+                  <AppIcon name="palette" size={16} color="#000000" />
+                  { card.illustrator }
+                </Text>
+              ) }
               { !!card.pack_name &&
                 <View>
                   <Text>
@@ -417,15 +436,28 @@ class CardDetailView extends React.PureComponent {
   }
 }
 
-export default connectRealm(CardDetailView, {
-  schemas: ['Card'],
-  mapToProps(results, realm, props) {
-    return {
-      realm,
-      card: head(results.cards.filtered(`code == '${props.id}'`)),
-    };
-  },
-});
+
+function mapStateToProps(state, props) {
+  const show_spoilers = state.packs.show_spoilers || {};
+  return {
+    showSpoilers: show_spoilers[props.pack_code],
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connectRealm(
+  connect(mapStateToProps, mapDispatchToProps)(CardDetailView), {
+    schemas: ['Card'],
+    mapToProps(results, realm, props) {
+      return {
+        realm,
+        card: head(results.cards.filtered(`code == '${props.id}'`)),
+      };
+    },
+  });
 
 const styles = StyleSheet.create({
   container: {

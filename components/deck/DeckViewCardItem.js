@@ -26,7 +26,7 @@ export default class DeckViewCardItem extends React.PureComponent {
   }
 
   onPress() {
-    this.props.onPress(this.props.card.code);
+    this.props.onPress(this.props.card);
   }
 
   renderIcon() {

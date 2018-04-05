@@ -25,6 +25,7 @@ class Settings extends React.Component {
     };
 
     this._myCollectionPressed = this.myCollectionPressed.bind(this);
+    this._editSpoilersPressed = this.editSpoilersPressed.bind(this);
     this._doSyncCards = this.doSyncCards.bind(this);
     this._clearCache = this.clearCache.bind(this);
   }
@@ -32,6 +33,13 @@ class Settings extends React.Component {
   myCollectionPressed() {
     this.props.navigator.push({
       screen: 'CollectionEdit',
+    });
+  }
+
+  editSpoilersPressed() {
+    this.props.navigator.push({
+      screen: 'EditSpoilers',
+      title: 'Spoiler Settings',
     });
   }
 
@@ -61,6 +69,7 @@ class Settings extends React.Component {
       <View>
         <Text>Settings</Text>
         <Button onPress={this._myCollectionPressed} title="My Collection" />
+        <Button onPress={this._editSpoilersPressed} title="Edit Spoilers" />
         <Text>We have { this.props.cardCount } cards in database</Text>
         <Button onPress={this._doSyncCards} title="Check for card updates" />
         <Button onPress={this._clearCache} title="Clear cache" />

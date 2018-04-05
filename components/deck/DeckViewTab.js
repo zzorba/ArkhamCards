@@ -72,11 +72,12 @@ export default class DeckViewTab extends React.Component {
     return item.id;
   }
 
-  showCard(cardId) {
+  showCard(card) {
     this.props.navigator.push({
       screen: 'Card',
       passProps: {
-        id: cardId,
+        id: card.code,
+        pack_code: card.pack_code,
       },
     });
   }

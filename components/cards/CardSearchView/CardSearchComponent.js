@@ -8,12 +8,12 @@ import {
 import SearchInput from 'react-native-search-filter';
 import { connectRealm } from 'react-native-realm';
 
+import { FACTION_CODES } from '../../../constants';
 import FactionChooser from './FactionChooser';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';
 import CardResultList from './CardResultList';
 
-import { FACTION_CODES } from '../../../constants';
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
 class CardSearchComponent extends React.Component {
@@ -53,10 +53,8 @@ class CardSearchComponent extends React.Component {
     if (baseQuery) {
       setTimeout(() => {
         this.setState({
-          factionCodes: filter(
-            FACTION_CODES,
-            faction_code =>
-              cards.filtered(`faction_code == '${faction_code}'`).length > 0),
+          factionCodes: filter(FACTION_CODES, faction_code =>
+            cards.filtered(`faction_code == '${faction_code}'`).length > 0),
         });
       }, 0);
     }
@@ -190,13 +188,13 @@ class CardSearchComponent extends React.Component {
 }
 
 export default connectRealm(CardSearchComponent, {
-  schemas: ['Card'],
-  mapToProps(results, realm, props) {
-    return {
-      cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
-    };
-  },
-});
+    schemas: ['Card'],
+    mapToProps(results, realm, props) {
+      return {
+        cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
+      };
+    },
+  });
 
 const styles = StyleSheet.create({
   container: {

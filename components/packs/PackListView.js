@@ -18,6 +18,7 @@ export default class PackListView extends React.Component {
     packs: PropTypes.array,
     checkState: PropTypes.object,
     setChecked: PropTypes.func,
+    renderHeader: PropTypes.func,
   };
 
   constructor(props) {
@@ -50,6 +51,7 @@ export default class PackListView extends React.Component {
     const {
       packs,
       checkState,
+      renderHeader,
     } = this.props;
     if (!packs.length) {
       return (
@@ -61,6 +63,7 @@ export default class PackListView extends React.Component {
     return (
       <View>
         <FlatList
+          ListHeaderComponent={renderHeader}
           data={packs}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
