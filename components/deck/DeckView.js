@@ -100,6 +100,7 @@ class DeckView extends React.Component {
   }
 
   loadCards(deck) {
+    console.log('Loading cards');
     this.setState({
       slots: deck.slots,
       loaded: true,
@@ -176,7 +177,7 @@ class DeckView extends React.Component {
           <DeckEditTab
             tabLabel="Edit"
             investigator={pDeck.investigator}
-            slots={pDeck.slots}
+            slots={slots}
             navigator={navigator}
             slotChanged={this._slotChanged}
           />

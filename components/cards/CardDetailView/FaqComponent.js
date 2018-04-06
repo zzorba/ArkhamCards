@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head, flatMap, map, range } from 'lodash';
 import {
-  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -13,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { MarkdownView } from 'react-native-markdown-view';
 import { Bar } from 'react-native-progress';
+import { Button } from 'react-native-elements';
 
 import CardText from '../CardText';
 import { getFaqEntry } from '../../../lib/api';
@@ -117,7 +117,7 @@ class FaqComponent extends React.Component {
     return (
       <View>
         { faqError && <Text>{ faqError }</Text> }
-        <Button onPress={this._loadFaq} title="Check for FAQ" />
+        <Button onPress={this._loadFaq} text="Check for FAQ Entries" />
       </View>
     );
 

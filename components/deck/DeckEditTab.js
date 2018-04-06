@@ -23,8 +23,8 @@ export default class DeckEditTab extends React.Component {
       investigator,
     } = this.props;
     const [inverted, normal] = partition(
-      investigator.deck_options,
-      option => option.not);
+      investigator.deck_options, 
+      opt => opt.not);
     // We assume that there is always at least one normalClause.
     const invertedClause = inverted.length ?
       `${map(inverted, option => option.toQuery()).join(' AND')} AND ` :

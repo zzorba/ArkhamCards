@@ -182,6 +182,7 @@ class CardResultList extends React.Component {
     return (
       <VirtualizedList
         data={this.getData()}
+        extraData={this.props.deckCardCounts}
         getItem={this._getItem}
         getItemLayout={this._getItemLayout}
         getItemCount={this._getItemCount}

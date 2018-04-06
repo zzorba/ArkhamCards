@@ -19,7 +19,7 @@ const BUTTON_WIDTH = 40;
 
 export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
-    card: PropTypes.object,
+    card: PropTypes.object.isRequired,
     count: PropTypes.number,
     onPress: PropTypes.func.isRequired,
     onDeckCountChange: PropTypes.func,
@@ -42,14 +42,7 @@ export default class CardSearchResult extends React.PureComponent {
   }
 
   renderCountButton(count, idx) {
-    return (
-      <Text
-        key={idx}
-        style={styles.countText}
-      >
-        { count }
-      </Text>
-    );
+    return count;
   }
 
   renderIcon() {
