@@ -1,40 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap } from 'lodash';
+import { flatMap, map } from 'lodash';
 import {
   StyleSheet,
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 
-const BUTTONS = ['0 XP', '2+ XP'];
-const XP_LEVELS = [[0], [1, 2, 3, 4, 5]];
+const BUTTONS = ['Assets', 'Events', 'Skills'];
+const TYPE_CODES = ['asset', 'event', 'skill'];
 
-export default class XpChooser extends React.Component {
+export default class TypeChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
+    selection: PropTypes.array.isRequired,
   };
+
   constructor(props) {
     super(props);
 
-    this.state = {
-      selectedIndexes: [],
-    };
     this._updateIndex = this.updateIndex.bind(this);
+
   }
 
   updateIndex(indexes) {
-    this.setState({
-      selectedIndexes: indexes,
-    });
-    const selection = flatMap(indexes, idx => XP_LEVELS[idx]);
-    console.log(selection);
+    const selection = map(indexes, idx => TYPE_CODES[idx]);
     this.props.onChange(selection);
   }
 
   render() {
     const {
-      selectedIndexes,
-    } = this.state;
+      selection,
+    } = this.props;
+    const selectedIndexes = map(selection, type => TYPE_CODES.indexOf(type));
     return (
       <ButtonGroup
         onPress={this._updateIndex}
@@ -54,7 +51,7 @@ export default class XpChooser extends React.Component {
 const styles = StyleSheet.create({
   container: {
     height: 40,
-    width: '30%',
+    width: '60%',
   },
   text: {
     color: 'rgb(41,41,41)',

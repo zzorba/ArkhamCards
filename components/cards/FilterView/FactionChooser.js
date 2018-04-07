@@ -23,33 +23,36 @@ export default class FactionChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     factions: PropTypes.array.isRequired,
+    selection: PropTypes.array.isRequired,
   };
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      selectedIndexes: [],
-    };
     this._updateIndex = this.updateIndex.bind(this);
   }
 
   updateIndex(indexes) {
-    this.setState({
-      selectedIndexes: indexes,
-    });
-    const selection = flatMap(indexes, idx =>
-      this.props.factions[idx].toLowerCase());
-    this.props.onChange(selection);
+    const {
+      factions,
+      onChange,
+    } = this.props;
+    const selection = flatMap(indexes, idx => factions[idx].toLowerCase());
+    onChange(selection);
   }
 
   render() {
     const {
-      selectedIndexes,
-    } = this.state;
+      factions,
+      selection,
+    } = this.props;
 
-    const buttons = map(this.props.factions, (faction, idx) => {
-      const selected = selectedIndexes.indexOf(idx) !== -1;
+    const selectedIndexes = [];
+    const buttons = map(factions, (faction, idx) => {
+      const selected = selection.indexOf(faction) !== -1;
+      if (selected) {
+        selectedIndexes.push(idx);
+      }
       return {
         element: () => (
           <ArkhamIcon

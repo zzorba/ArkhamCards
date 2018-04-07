@@ -27,11 +27,13 @@ class CardResultList extends React.Component {
 
     this.state = {
       cards: [],
+      deckCardCounts: props.deckCardCounts || {},
       spoilerCards: [],
       loading: true,
       showSpoilerCards: false,
     };
 
+    this._onDeckCountChange = this.onDeckCountChange.bind(this);
     this._getItem = this.getItem.bind(this);
     this._getItemLayout = this.getItemLayout.bind(this);
     this._getItemCount = this.getItemCount.bind(this);
@@ -41,6 +43,20 @@ class CardResultList extends React.Component {
     this._enableSpoilers = this.enableSpoilers.bind(this);
     this._renderCard = this.renderCard.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
+  }
+
+  onDeckCountChange(code, count) {
+    const newSlots = Object.assign(
+      {},
+      this.state.deckCardCounts,
+      { [code]: count },
+    );
+    if (count === 0) {
+      delete newSlots[code];
+    }
+    this.setState({
+      deckCardCounts: newSlots,
+    });
   }
 
   enableSpoilers() {
@@ -86,6 +102,11 @@ class CardResultList extends React.Component {
       });
       setTimeout(() => this.updateResults(), 50);
     }
+    if (nextProps.deckCardCounts !== this.props.deckCardCounts) {
+      this.setState({
+        deckCardCounts: nextProps.deckCardCounts,
+      });
+    }
   }
 
   cardToKey(card) {
@@ -120,15 +141,11 @@ class CardResultList extends React.Component {
   }
 
   renderCard({ item }) {
-    const {
-      deckCardCounts = {},
-      onDeckCountChange,
-    } = this.props;
     return (
       <CardSearchResult
         card={item}
-        count={deckCardCounts[item.code]}
-        onDeckCountChange={onDeckCountChange}
+        count={this.state.deckCardCounts[item.code]}
+        onDeckCountChange={this._onDeckCountChange}
         onPress={this._cardPressed}
       />
     );
@@ -182,7 +199,8 @@ class CardResultList extends React.Component {
     return (
       <VirtualizedList
         data={this.getData()}
-        extraData={this.props.deckCardCounts}
+        initialNumToRender={20}
+        extraData={this.state.deckCardCounts}
         getItem={this._getItem}
         getItemLayout={this._getItemLayout}
         getItemCount={this._getItemCount}

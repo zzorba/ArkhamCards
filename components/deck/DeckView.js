@@ -150,13 +150,6 @@ class DeckView extends React.Component {
 
     return (
       <View style={styles.container}>
-        <DeckNavHeader
-          navigator={navigator}
-          saving={saving}
-          hasEdits={this.hasPendingEdits()}
-          clearEdits={this._clearEdits}
-          saveEdits={this._saveEdits}
-        />
         <ScrollableTabView
           tabBarActiveTextColor={COLORS.darkBlue}
           tabBarInactiveTextColor={COLORS.lightBlue}

@@ -205,6 +205,7 @@ export default class DeckViewTab extends React.Component {
           </View>
         </View>
         <SectionList
+          initialNumToRender={20}
           renderItem={this._renderCard}
           keyExtractor={this._keyForCard}
           renderSectionHeader={this._renderCardHeader}

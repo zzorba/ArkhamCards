@@ -8,6 +8,10 @@ export default class CardSearchView extends React.Component {
     navigator: PropTypes.object.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const {
       navigator,

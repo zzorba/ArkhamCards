@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter } from 'lodash';
+import { forEach, filter } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -9,10 +9,10 @@ import SearchInput from 'react-native-search-filter';
 import { connectRealm } from 'react-native-realm';
 
 import { FACTION_CODES } from '../../../constants';
-import FactionChooser from './FactionChooser';
-import TypeChooser from './TypeChooser';
-import XpChooser from './XpChooser';
 import CardResultList from './CardResultList';
+import { iconsMap } from '../../../app/NavIcons';
+import { applyFilters } from '../../../lib/filters';
+import DefaultFilterState from '../FilterView/DefaultFilterState';
 
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
@@ -34,15 +34,45 @@ class CardSearchComponent extends React.Component {
     this.state = {
       factionCodes: CARD_FACTION_CODES,
       searchTerm: '',
-      factions: [],
-      types: [],
-      xpLevels: [],
+      filters: DefaultFilterState,
     };
 
     this._searchUpdated = this.searchUpdated.bind(this);
-    this._selectedFactionsChanged = this.selectedFactionsChanged.bind(this);
-    this._selectedTypesChanged = this.selectedTypesChanged.bind(this);
-    this._selectedXpChanged = this.selectedXpChanged.bind(this);
+    this._applyFilters = this.applyFilters.bind(this);
+
+    props.navigator.setButtons({
+      rightButtons: [
+        {
+          icon: iconsMap.tune,
+          id: 'filter',
+        },
+      ],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  applyFilters(filters) {
+    this.setState({
+      filters,
+    });
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'filter') {
+        this.props.navigator.push({
+          screen: 'SearchFilters',
+          animationType: 'slide-down',
+          backButtonTitle: 'Apply',
+          passProps: {
+            factions: this.state.factionCodes,
+            applyFilters: this._applyFilters,
+            currentFilters: this.state.filters,
+            baseQuery: this.props.baseQuery,
+          },
+        });
+      }
+    }
   }
 
   componentDidMount() {
@@ -66,24 +96,6 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  selectedFactionsChanged(factions) {
-    this.setState({
-      factions,
-    });
-  }
-
-  selectedTypesChanged(types) {
-    this.setState({
-      types,
-    });
-  }
-
-  selectedXpChanged(xpLevels) {
-    this.setState({
-      xpLevels,
-    });
-  }
-
   applyQueryFilter(query) {
     const {
       searchTerm,
@@ -100,45 +112,6 @@ class CardSearchComponent extends React.Component {
     }
   }
 
-  applyFactionFilter(query) {
-    const {
-      factions,
-    } = this.state;
-    if (factions.length) {
-      query.push([
-        '(',
-        factions.map(fc => `faction_code == '${fc}'`).join(' or '),
-        ')',
-      ].join(''));
-    }
-  }
-
-  applyTypeFilter(query) {
-    const {
-      types,
-    } = this.state;
-    if (types.length) {
-      return query.push([
-        '(',
-        types.map(tc => `type_code == '${tc}'`).join(' or '),
-        ')',
-      ].join(''));
-    }
-  }
-
-  applyXpFilter(query) {
-    const {
-      xpLevels,
-    } = this.state;
-    if (xpLevels.length) {
-      query.push([
-        '(',
-        xpLevels.map(xp => `xp == '${xp}'`).join(' or '),
-        ')',
-      ].join(''));
-    }
-  }
-
   query() {
     const {
       baseQuery,
@@ -148,9 +121,9 @@ class CardSearchComponent extends React.Component {
       queryParts.push(baseQuery);
     }
     this.applyQueryFilter(queryParts);
-    this.applyFactionFilter(queryParts);
-    this.applyTypeFilter(queryParts);
-    this.applyXpFilter(queryParts);
+    forEach(
+      applyFilters(this.state.filters),
+      clause => queryParts.push(clause));
     return queryParts.join(' and ');
   }
 
@@ -168,14 +141,6 @@ class CardSearchComponent extends React.Component {
           style={styles.searchInput}
           placeholder="Search for a card"
         />
-        <FactionChooser
-          onChange={this._selectedFactionsChanged}
-          factions={this.state.factionCodes}
-        />
-        <View style={styles.row}>
-          <TypeChooser onChange={this._selectedTypesChanged} />
-          <XpChooser onChange={this._selectedXpChanged} />
-        </View>
         <CardResultList
           navigator={navigator}
           query={query}

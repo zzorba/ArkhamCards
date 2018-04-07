@@ -6,15 +6,17 @@ import {
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 
-const BUTTONS = ['Assets', 'Events', 'Skills'];
-const TYPE_CODES = ['asset', 'event', 'skill'];
-export default class TypeChooser extends React.Component {
+const BUTTONS = ['0 XP', '1+ XP'];
+const XP_LEVELS = [[0], [1, 2, 3, 4, 5]];
+
+export default class XpChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
   };
-
+  
   constructor(props) {
     super(props);
+
     this.state = {
       selectedIndexes: [],
     };
@@ -25,7 +27,7 @@ export default class TypeChooser extends React.Component {
     this.setState({
       selectedIndexes: indexes,
     });
-    const selection = flatMap(indexes, idx => TYPE_CODES[idx]);
+    const selection = flatMap(indexes, idx => XP_LEVELS[idx]);
     this.props.onChange(selection);
   }
 
@@ -52,7 +54,7 @@ export default class TypeChooser extends React.Component {
 const styles = StyleSheet.create({
   container: {
     height: 40,
-    width: '60%',
+    width: '30%',
   },
   text: {
     color: 'rgb(41,41,41)',
