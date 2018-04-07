@@ -17,7 +17,6 @@ import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckChartsTab from './DeckChartsTab';
 import DeckEditTab from './DeckEditTab';
-import DeckNavHeader from './DeckNavHeader';
 import CardDrawSimulator from './CardDrawSimulator';
 
 class DeckView extends React.Component {
@@ -137,7 +136,6 @@ class DeckView extends React.Component {
 
     const {
       slots,
-      saving,
     } = this.state;
     const cardsInDeck = {};
     cards.forEach(card => {

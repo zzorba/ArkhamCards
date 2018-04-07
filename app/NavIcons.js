@@ -1,3 +1,5 @@
+import { forEach, keys } from 'lodash';
+
 import ArkhamIcon from '../assets/ArkhamIcon';
 import AppIcon from '../assets/AppIcon';
 
@@ -9,20 +11,22 @@ const icons = {
   per_investigator: [24, '#bbb'],
   tune: [30, '#bbb', AppIcon],
   arrow_back: [30, '#bbb', AppIcon],
-}
+  sort_by_alpha: [30, '#bbb', AppIcon],
+};
 
 const defaultIconProvider = ArkhamIcon;
 
 const iconsMap = {};
-const iconsLoaded = new Promise((resolve, reject) => {
+const iconsLoaded = new Promise((resolve) => {
   new Promise.all(Object.keys(icons).map(iconName => {
     const Provider = icons[iconName][2] || defaultIconProvider;
     const size = icons[iconName][0];
     const color = icons[iconName][1];
     return Provider.getImageSource(iconName, size, color);
   })).then(sources => {
-    Object.keys(icons)
-      .forEach((iconName, idx) => iconsMap[iconName] = sources[idx])
+    forEach(keys(icons), (iconName, idx) => {
+      iconsMap[iconName] = sources[idx];
+    });
 
     // Call resolve (and we are done)
     resolve(true);
@@ -31,5 +35,5 @@ const iconsLoaded = new Promise((resolve, reject) => {
 
 export {
   iconsMap,
-  iconsLoaded
+  iconsLoaded,
 };

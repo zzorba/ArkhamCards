@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, flatMap, map, range } from 'lodash';
+import { head } from 'lodash';
 import {
-  ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { MarkdownView } from 'react-native-markdown-view';
 import { Bar } from 'react-native-progress';
 import { Button } from 'react-native-elements';
 
@@ -84,7 +80,7 @@ class FaqComponent extends React.Component {
       }).catch(() => {
         this.setState({
           faqLoading: false,
-          faqError: 'Problem loading FAQ, please try again later.'
+          faqError: 'Problem loading FAQ, please try again later.',
         });
       });
     }
@@ -111,7 +107,7 @@ class FaqComponent extends React.Component {
       return <Text>No FAQ entries at this time</Text>;
     }
     if (faqLoading) {
-      return <Bar indeterminate />
+      return <Bar indeterminate />;
     }
 
     return (

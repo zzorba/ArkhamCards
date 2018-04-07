@@ -16,7 +16,7 @@ const ArkhamIconRule = {
   render: ArkhamIconNode,
 };
 
-const ArkahmIconSpanRule =  {
+const ArkahmIconSpanRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"></span>')),
   order: 1,
   parse: (capture) => {
@@ -71,8 +71,9 @@ export default class CardText extends React.PureComponent {
             bTag: BoldHtmlTagRule,
             emTag: EmphasisHtmlTagRule,
             iTag: ItalicHtmlTagRule,
-          }, onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })}
-          onLinkPress={onLinkPress}
+          }, onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })
+        }
+        onLinkPress={onLinkPress}
       >
         { this.props.text }
       </MarkdownView>

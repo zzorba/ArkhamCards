@@ -32,6 +32,7 @@ const PER_INVESTIGATOR_ICON = (
 
 class CardDetailView extends React.PureComponent {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.string.isRequired,
     pack_code: PropTypes.string.isRequired,

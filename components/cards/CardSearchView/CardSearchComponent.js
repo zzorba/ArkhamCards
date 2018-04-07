@@ -1,27 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, filter } from 'lodash';
+import { forEach } from 'lodash';
 import {
+  Dimensions,
   StyleSheet,
   View,
 } from 'react-native';
 import SearchInput from 'react-native-search-filter';
 import { connectRealm } from 'react-native-realm';
 
-import { FACTION_CODES } from '../../../constants';
+import {
+  SORT_BY_TYPE,
+  SORT_BY_COST,
+  SORT_BY_PACK,
+  SORT_BY_TITLE,
+} from './constants';
 import CardResultList from './CardResultList';
 import { iconsMap } from '../../../app/NavIcons';
 import { applyFilters } from '../../../lib/filters';
 import DefaultFilterState from '../FilterView/DefaultFilterState';
 
-const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
-
-class CardSearchComponent extends React.Component {
+export default class CardSearchComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     // Function that takes 'realm' and gives back a base query.
     baseQuery: PropTypes.string,
-    cards: PropTypes.object,
 
     // Keyed by code, count of current deck.
     deckCardCounts: PropTypes.object,
@@ -31,20 +34,31 @@ class CardSearchComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    const {
+      height,
+      width,
+    } = Dimensions.get('window');
+
     this.state = {
-      factionCodes: CARD_FACTION_CODES,
+      width,
+      height,
       searchTerm: '',
+      selectedSort: SORT_BY_TYPE,
       filters: DefaultFilterState,
     };
 
+    this._sortChanged = this.sortChanged.bind(this);
     this._searchUpdated = this.searchUpdated.bind(this);
     this._applyFilters = this.applyFilters.bind(this);
-
     props.navigator.setButtons({
       rightButtons: [
         {
           icon: iconsMap.tune,
           id: 'filter',
+        },
+        {
+          icon: iconsMap.sort_by_alpha,
+          id: 'sort',
         },
       ],
     });
@@ -57,36 +71,41 @@ class CardSearchComponent extends React.Component {
     });
   }
 
+  sortChanged(selectedSort) {
+    this.setState({
+      selectedSort,
+    });
+  }
+
   onNavigatorEvent(event) {
+    const {
+      navigator,
+      baseQuery,
+    } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'filter') {
-        this.props.navigator.push({
+        navigator.push({
           screen: 'SearchFilters',
           animationType: 'slide-down',
           backButtonTitle: 'Apply',
           passProps: {
-            factions: this.state.factionCodes,
             applyFilters: this._applyFilters,
             currentFilters: this.state.filters,
-            baseQuery: this.props.baseQuery,
+            baseQuery: baseQuery,
+          },
+        });
+      } else if (event.id === 'sort') {
+        navigator.showLightBox({
+          screen: 'Dialog.Sort',
+          passProps: {
+            sortChanged: this._sortChanged,
+            selectedSort: this.state.selectedSort,
+          },
+          style: {
+            backgroundBlur: 'light',
           },
         });
       }
-    }
-  }
-
-  componentDidMount() {
-    const {
-      baseQuery,
-      cards,
-    } = this.props;
-    if (baseQuery) {
-      setTimeout(() => {
-        this.setState({
-          factionCodes: filter(FACTION_CODES, faction_code =>
-            cards.filtered(`faction_code == '${faction_code}'`).length > 0),
-        });
-      }, 0);
     }
   }
 
@@ -133,36 +152,41 @@ class CardSearchComponent extends React.Component {
       deckCardCounts,
       onDeckCountChange,
     } = this.props;
+    const {
+      width,
+      height,
+    } = this.state;
     const query = this.query();
     return (
-      <View style={styles.container}>
-        <SearchInput
-          onChangeText={this._searchUpdated}
-          style={styles.searchInput}
-          placeholder="Search for a card"
-        />
-        <CardResultList
-          navigator={navigator}
-          query={query}
-          deckCardCounts={deckCardCounts}
-          onDeckCountChange={onDeckCountChange}
-        />
+      <View style={[styles.wrapper, { width, height }]}>
+        <View style={[styles.container, { width, height }]}>
+          <SearchInput
+            onChangeText={this._searchUpdated}
+            style={styles.searchInput}
+            placeholder="Search for a card"
+          />
+          <CardResultList
+            navigator={navigator}
+            query={query}
+            deckCardCounts={deckCardCounts}
+            onDeckCountChange={onDeckCountChange}
+          />
+        </View>
       </View>
     );
   }
 }
 
-export default connectRealm(CardSearchComponent, {
-  schemas: ['Card'],
-  mapToProps(results, realm, props) {
-    return {
-      cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
-    };
-  },
-});
-
 const styles = StyleSheet.create({
+  wrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
   container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, map } from 'lodash';
+import { map } from 'lodash';
 import {
   StyleSheet,
 } from 'react-native';

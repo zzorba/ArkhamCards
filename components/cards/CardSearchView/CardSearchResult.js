@@ -41,7 +41,7 @@ export default class CardSearchResult extends React.PureComponent {
     this.props.onDeckCountChange(this.props.card.code, idx);
   }
 
-  renderCountButton(count, idx) {
+  renderCountButton(count) {
     return count;
   }
 
@@ -178,9 +178,6 @@ const styles = StyleSheet.create({
     width: BUTTON_WIDTH,
     padding: 0,
     backgroundColor: 'rgb(246,246,246)',
-  },
-  countText: {
-    color: 'rgb(41,41,41)',
   },
   selectedCountButton: {
     backgroundColor: 'rgb(221,221,221)',

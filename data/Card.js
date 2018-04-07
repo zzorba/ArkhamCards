@@ -79,7 +79,7 @@ export default class Card {
     const linked_card = json.linked_card ? Card.fromJson(json.linked_card) : null;
 
     const traits_normalized = json.traits &&
-      map(json.traits.split('.'),
+      map(json.traits.split('\\.'),
         trait => `#${trait.toLowerCase().trim()}#`
       ).join(',');
     const restrictions = json.restrictions ?
