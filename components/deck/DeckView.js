@@ -99,7 +99,6 @@ class DeckView extends React.Component {
   }
 
   loadCards(deck) {
-    console.log('Loading cards');
     this.setState({
       slots: deck.slots,
       loaded: true,

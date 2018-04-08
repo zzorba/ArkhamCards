@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { concat, map, partition } from 'lodash';
 import {
   Button,
-  FlatList,
+  SectionList,
   StyleSheet,
   View,
 } from 'react-native';
@@ -12,7 +12,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from '../../../actions';
+import Card from '../../../data/Card';
 import CardSearchResult from './CardSearchResult';
+import CardSectionHeader from './CardSectionHeader';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -39,14 +41,14 @@ class CardResultList extends React.Component {
       cards: [],
       deckCardCounts: props.deckCardCounts || {},
       spoilerCards: [],
-      loading: true,
+      spoilerCardsCount: 0,
       showSpoilerCards: false,
+      loading: true,
     };
 
     this._onDeckCountChange = this.onDeckCountChange.bind(this);
     this._getItem = this.getItem.bind(this);
-    this._getItemLayout = this.getItemLayout.bind(this);
-    this._getItemCount = this.getItemCount.bind(this);
+    this._renderSectionHeader = this.renderSectionHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
     this._cardToKey = this.cardToKey.bind(this);
     this._editSpoilerSettings = this.editSpoilerSettings.bind(this);
@@ -116,6 +118,41 @@ class CardResultList extends React.Component {
     }
   }
 
+  headerForCard(card) {
+    switch(this.props.sort) {
+      case SORT_BY_TYPE:
+        return Card.typeSortHeader(card);
+      case SORT_BY_FACTION:
+        return Card.factionSortHeader(card);
+      case SORT_BY_COST:
+        if (card.cost === null) {
+          return 'Cost: None';
+        }
+        return `Cost: ${card.cost}`;
+      case SORT_BY_PACK:
+        return card.pack_code;
+      case SORT_BY_TITLE:
+        return 'All Cards';
+    }
+  }
+
+  bucketCards(cards) {
+    const results = [];
+    let currentBucket = null;
+    cards.forEach(card => {
+      const header = this.headerForCard(card);
+      if (!currentBucket || currentBucket.title !== header) {
+        currentBucket = {
+          title: header,
+          data: [],
+        };
+        results.push(currentBucket);
+      }
+      currentBucket.data.push(card);
+    });
+    return results;
+  }
+
   updateResults() {
     const {
       realm,
@@ -130,8 +167,9 @@ class CardResultList extends React.Component {
         !(card.spoiler || (card.linked_card && card.linked_card.spoiler))
     );
     this.setState({
-      cards: splitCards[0],
-      spoilerCards: splitCards[1],
+      cards: this.bucketCards(splitCards[0]),
+      spoilerCards: this.bucketCards(splitCards[1]),
+      spoilerCardCount: splitCards[1].length,
       loading: false,
     });
   }
@@ -151,20 +189,12 @@ class CardResultList extends React.Component {
     });
   }
 
-  getItemLayout(data, index) {
-    return {
-      length: 26,
-      offset: 26 * index,
-      index,
-    };
-  }
-
   getItem(data, index) {
     return data[index];
   }
 
-  getItemCount(data) {
-    return data.length;
+  renderSectionHeader({ section }) {
+    return <CardSectionHeader title={section.title} />;
   }
 
   renderCard({ item }) {
@@ -180,10 +210,10 @@ class CardResultList extends React.Component {
 
   renderFooter() {
     const {
-      spoilerCards,
+      spoilerCardsCount,
       showSpoilerCards,
     } = this.state;
-    if (!spoilerCards.length) {
+    if (!spoilerCardsCount) {
       return <View style={styles.footer} />;
     }
     if (showSpoilerCards) {
@@ -196,8 +226,8 @@ class CardResultList extends React.Component {
         </View>
       );
     }
-    const spoilerCount = spoilerCards.length > 1 ?
-      `Show ${spoilerCards.length} Spoilers` :
+    const spoilerCount = spoilerCardsCount > 1 ?
+      `Show ${spoilerCardsCount} Spoilers` :
       'Show Spoiler';
 
     return (
@@ -228,14 +258,12 @@ class CardResultList extends React.Component {
       return null;
     }
     return (
-      <FlatList
-        data={this.getData()}
-        initialNumToRender={20}
-        extraData={this.state.deckCardCounts}
-        getItemLayout={this._getItemLayout}
-        renderItem={this._renderCard}
+      <SectionList
+        sections={this.getData()}
+        renderSectionHeader={this._renderSectionHeader}
         keyExtractor={this._cardToKey}
-        windowSize={20}
+        renderItem={this._renderCard}
+        extraData={this.state.deckCardCounts}
         ListFooterComponent={this._renderFooter}
       />
     );

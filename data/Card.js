@@ -150,11 +150,7 @@ export default class Card {
           default:
             return 'Scenario';
         }
-      }
-  }
-
-  static typeSortPosition(json) {
-
+    }
   }
 
   static fromJson(json) {
