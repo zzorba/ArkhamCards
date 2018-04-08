@@ -54,7 +54,7 @@ export default class CardSearchComponent extends React.Component {
           id: 'filter',
         },
         {
-          icon: iconsMap.sort_by_alpha,
+          icon: iconsMap['sort-by-alpha'],
           id: 'sort',
         },
       ],

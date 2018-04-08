@@ -1,6 +1,7 @@
 import { Navigation } from 'react-native-navigation';
 
 import DeckView from '../components/deck/DeckView';
+import DeckEditView from '../components/deck/DeckEditView';
 import CardSearchView from '../components/cards/CardSearchView';
 import CardDetailView from '../components/cards/CardDetailView';
 import FilterView from '../components/cards/FilterView';
@@ -17,6 +18,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Home', () => Home, store, Provider);
   Navigation.registerComponent('Card', () => CardDetailView, store, Provider);
   Navigation.registerComponent('Deck', () => DeckView, store, Provider);
+  Navigation.registerComponent('Deck.Edit', () => DeckEditView, store, Provider);
   Navigation.registerComponent('Search', () => CardSearchView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsTab, store, Provider);
   Navigation.registerComponent('SearchFilters', () => FilterView, store, Provider);

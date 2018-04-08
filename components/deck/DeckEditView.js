@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { map, partition } from 'lodash';
+import { head, map, partition } from 'lodash';
+import { connectRealm } from 'react-native-realm';
 
 import CardSearchComponent from '../cards/CardSearchView/CardSearchComponent';
 
-export default class DeckEditTab extends React.Component {
+class DeckEditView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    investigator: PropTypes.object.isRequired,
+    deck: PropTypes.object.isRequired,
+    investigator: PropTypes.object,
     slots: PropTypes.object.isRequired,
     slotChanged: PropTypes.func.isRequired,
   };
@@ -52,3 +54,16 @@ export default class DeckEditTab extends React.Component {
     );
   }
 }
+
+export default connectRealm(
+  DeckEditView,
+  {
+    schemas: ['Card'],
+    mapToProps(results, realm, props) {
+      return {
+        realm,
+        investigator: head(results.cards.filtered(`code == "${props.deck.investigator_code}"`)),
+      };
+    },
+  },
+);

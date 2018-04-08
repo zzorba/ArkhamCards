@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { delay, forEach, keys } from 'lodash';
+import { delay, forEach, head, keys } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -11,12 +11,12 @@ import { connect } from 'react-redux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { connectRealm } from 'react-native-realm';
 
+import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import { COLORS } from '../../styles/colors';
 import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckChartsTab from './DeckChartsTab';
-import DeckEditTab from './DeckEditTab';
 import CardDrawSimulator from './CardDrawSimulator';
 
 class DeckView extends React.Component {
@@ -42,6 +42,36 @@ class DeckView extends React.Component {
     this._slotChanged = this.slotChanged.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
+
+    props.navigator.setButtons({
+      rightButtons: [
+        {
+          icon: iconsMap.edit,
+          id: 'edit',
+        },
+      ],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    const {
+      navigator,
+      deck,
+    } = this.props;
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'edit') {
+        navigator.push({
+          screen: 'Deck.Edit',
+          backButtonTitle: 'Save',
+          passProps: {
+            deck: deck,
+            slots: this.state.slots,
+            slotChanged: this._slotChanged,
+          },
+        });
+      }
+    }
   }
 
   saveEdits() {
@@ -164,13 +194,6 @@ class DeckView extends React.Component {
           <DeckChartsTab
             tabLabel="Charts"
             parsedDeck={pDeck} />
-          <DeckEditTab
-            tabLabel="Edit"
-            investigator={pDeck.investigator}
-            slots={slots}
-            navigator={navigator}
-            slotChanged={this._slotChanged}
-          />
         </ScrollableTabView>
       </View>
     );
@@ -196,7 +219,7 @@ export default connectRealm(
   connect(mapStateToProps, mapDispatchToProps)(DeckView),
   {
     schemas: ['Card'],
-    mapToProps(results, realm) {
+    mapToProps(results, realm, props) {
       return {
         realm,
         cards: results.cards,

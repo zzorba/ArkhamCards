@@ -2,19 +2,21 @@ import { forEach, keys } from 'lodash';
 
 import ArkhamIcon from '../assets/ArkhamIcon';
 import AppIcon from '../assets/AppIcon';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
 const icons = {
-  elder_sign: [30, '#bbb'],
-  intellect: [26, '#bbb'],
-  per_investigator: [24, '#bbb'],
-  tune: [30, '#bbb', AppIcon],
-  arrow_back: [30, '#bbb', AppIcon],
-  sort_by_alpha: [30, '#bbb', AppIcon],
+  elder_sign: [30, '#bbb', ArkhamIcon],
+  intellect: [26, '#bbb', ArkhamIcon],
+  per_investigator: [24, '#bbb', ArkhamIcon],
+  edit: [26, '#bbb'],
+  tune: [28, '#bbb'],
+  arrow_back: [30, '#bbb'],
+  'sort-by-alpha': [28, '#bbb'],
 };
 
-const defaultIconProvider = ArkhamIcon;
+const defaultIconProvider = MaterialIcons;
 
 const iconsMap = {};
 const iconsLoaded = new Promise((resolve) => {
