@@ -68,6 +68,95 @@ export default class Card {
     return result;
   }
 
+  static FACTION_HEADER_ORDER = [
+    'Guardian',
+    'Seeker',
+    'Mystic',
+    'Rogue',
+    'Survivor',
+    'Neutral',
+    'Weakness',
+    'Mythos',
+  ];
+
+  static factionSortHeader(json) {
+    if (json.spoiler) {
+      return 'Mythos';
+    }
+    switch(json.subtype_code) {
+      case 'basicweakness':
+      case 'weakness':
+        return 'Weakness';
+      default:
+        return json.faction_name;
+    }
+  }
+
+  static TYPE_HEADER_ORDER = [
+    'Investigator',
+    'Asset: Hand',
+    'Asset: Hand x2',
+    'Asset: Accessory',
+    'Asset: Ally',
+    'Asset: Arcane',
+    'Asset: Arcane x2',
+    'Asset: Body',
+    'Asset: Permanent',
+    'Asset: Other',
+    'Event',
+    'Skill',
+    'Basic Weakness',
+    'Weakness',
+    'Scenario',
+  ];
+
+  static typeSortHeader(json) {
+    switch(json.subtype_code) {
+      case 'basicweakness':
+        return 'Basic Weakness';
+      case 'weakness':
+        return 'Weakness';
+      default:
+        switch(json.type_code) {
+          case 'asset':
+            if (json.spoiler) {
+              return 'Story';
+            }
+            if (json.permanent || json.double_sided) {
+              return 'Asset: Permanent';
+            }
+            switch(json.slot) {
+              case 'Hand': return 'Asset: Hand';
+              case 'Hand x2': return 'Asset: Hand x2';
+              case 'Accessory': return 'Asset: Accessory';
+              case 'Ally': return 'Asset: Ally';
+              case 'Arcane': return 'Asset: Arcane';
+              case 'Arcane x2': return 'Asset: Arcane x2';
+              case 'Body': return 'Asset: Body';
+              default: return 'Asset: Other';
+            }
+          case 'event':
+            if (json.spoiler) {
+              return 'Story';
+            }
+            return 'Event';
+          case 'skill':
+            if (json.spoiler) {
+              return 'Story';
+            }
+            return 'Skill';
+          case 'investigator':
+            return 'Investigator';
+          default:
+            return 'Scenario';
+        }
+      }
+  }
+
+  static typeSortPosition(json) {
+
+  }
+
   static fromJson(json) {
     const deck_requirements = json.deck_requirements ?
       Card.parseDeckRequirements(json.deck_requirements) :
@@ -91,6 +180,9 @@ export default class Card {
 
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
+
+    const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json));
+    const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json));
     return Object.assign(
       {},
       json,
@@ -103,6 +195,8 @@ export default class Card {
         uses,
         restrictions,
         heals_horror,
+        sort_by_type,
+        sort_by_faction,
       },
     );
   }
@@ -179,5 +273,7 @@ Card.schema = {
     traits_normalized: 'string?',
     uses: 'string?',
     heals_horror: 'bool?',
+    sort_by_type: 'int',
+    sort_by_faction: 'int',
   },
 };
