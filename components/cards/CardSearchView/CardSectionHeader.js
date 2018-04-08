@@ -8,22 +8,17 @@ import {
 
 import { COLORS } from '../../../styles/colors';
 
-export default class CardSectionHeader extends React.PureComponent {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-  };
-
-  render() {
-    const {
-      title,
-    } = this.props;
-    return (
-      <View style={styles.row}>
-        <Text style={styles.headerText}>{ title }</Text>
-      </View>
-    );
-  }
+export default function CardSectionHeader({ title }) {
+  return (
+    <View style={styles.row}>
+      <Text style={styles.headerText}>{ title }</Text>
+    </View>
+  );
 }
+
+CardSectionHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 const styles = StyleSheet.create({
   row: {
