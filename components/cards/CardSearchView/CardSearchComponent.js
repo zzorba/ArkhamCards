@@ -99,7 +99,7 @@ export default class CardSearchComponent extends React.Component {
             selectedSort: this.state.selectedSort,
           },
           style: {
-            backgroundBlur: 'light',
+            backgroundColor: 'rgba(128,128,128,.75)',
           },
         });
       }

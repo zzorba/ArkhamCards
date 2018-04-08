@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
   Dimensions,
+  Platform,
   Text,
   TouchableOpacity,
   StyleSheet,
@@ -105,11 +106,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     flexDirection: 'column',
     alignItems: 'center',
     width: '90%',
-    borderRadius: 25,
+    borderRadius: Platform.OS === 'ios' ? 25 : 0,
     borderWidth: 1,
     borderColor: '#dedede',
   },
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   cancel: {
-    height: 50,
+    height: 55,
     width: '100%',
   },
   cancelText: {
