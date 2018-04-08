@@ -28,6 +28,7 @@ class CardResultList extends React.Component {
     navigator: PropTypes.object.isRequired,
     realm: PropTypes.object.isRequired,
     query: PropTypes.string,
+    searchTerm: PropTypes.string,
     sort: PropTypes.string,
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
@@ -63,7 +64,8 @@ class CardResultList extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.query !== this.props.query ||
-        nextProps.sort !== this.props.sort) {
+        nextProps.sort !== this.props.sort ||
+        nextProps.searchTerm !== this.props.searchTerm) {
       this.setState({
         loading: true,
       });
@@ -157,9 +159,10 @@ class CardResultList extends React.Component {
     const {
       realm,
       query,
+      searchTerm,
       show_spoilers,
     } = this.props;
-    const cards = (query ? realm.objects('Card').filtered(query) :
+    const cards = (query ? realm.objects('Card').filtered(query, searchTerm) :
       realm.objects('Card')).sorted(this.getSort());
     const splitCards = partition(
       map(cards, card => Object.assign({}, card)),
@@ -169,7 +172,7 @@ class CardResultList extends React.Component {
     this.setState({
       cards: this.bucketCards(splitCards[0]),
       spoilerCards: this.bucketCards(splitCards[1]),
-      spoilerCardCount: splitCards[1].length,
+      spoilerCardsCount: splitCards[1].length,
       loading: false,
     });
   }

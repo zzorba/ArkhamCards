@@ -120,9 +120,9 @@ export default class CardSearchComponent extends React.Component {
     if (searchTerm !== '') {
       query.push([
         '(',
-        `name contains[c] '${searchTerm}' or `,
-        `real_text contains[c] '${searchTerm}' or `,
-        `traits contains[c] '${searchTerm}'`,
+        `name contains[c] $0 or `,
+        `real_text contains[c] $0 or `,
+        `traits contains[c] $0`,
         ')',
       ].join(''));
     }
@@ -153,6 +153,7 @@ export default class CardSearchComponent extends React.Component {
       width,
       height,
       selectedSort,
+      searchTerm,
     } = this.state;
     const query = this.query();
     return (
@@ -166,6 +167,7 @@ export default class CardSearchComponent extends React.Component {
           <CardResultList
             navigator={navigator}
             query={query}
+            searchTerm={searchTerm}
             sort={selectedSort}
             deckCardCounts={deckCardCounts}
             onDeckCountChange={onDeckCountChange}
