@@ -13,7 +13,7 @@ export default class XpChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
   };
-  
+
   constructor(props) {
     super(props);
 

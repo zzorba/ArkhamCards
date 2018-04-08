@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import DialogPicker from '../../core/DialogPicker';
-
 import {
   SORT_BY_TYPE,
+  SORT_BY_FACTION,
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
@@ -12,6 +12,7 @@ import {
 
 const SORTS = [
   SORT_BY_TYPE,
+  SORT_BY_FACTION,
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,

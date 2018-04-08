@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { concat, map, partition } from 'lodash';
 import {
   Button,
-  VirtualizedList,
+  FlatList,
+  StyleSheet,
+  View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
@@ -11,12 +13,20 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../../../actions';
 import CardSearchResult from './CardSearchResult';
+import {
+  SORT_BY_TYPE,
+  SORT_BY_FACTION,
+  SORT_BY_COST,
+  SORT_BY_PACK,
+  SORT_BY_TITLE,
+} from './constants';
 
 class CardResultList extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     realm: PropTypes.object.isRequired,
     query: PropTypes.string,
+    sort: PropTypes.string,
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
     show_spoilers: PropTypes.object,
@@ -43,6 +53,25 @@ class CardResultList extends React.Component {
     this._enableSpoilers = this.enableSpoilers.bind(this);
     this._renderCard = this.renderCard.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.updateResults(), 0);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.query !== this.props.query ||
+        nextProps.sort !== this.props.sort) {
+      this.setState({
+        loading: true,
+      });
+      setTimeout(() => this.updateResults(), 50);
+    }
+    if (nextProps.deckCardCounts !== this.props.deckCardCounts) {
+      this.setState({
+        deckCardCounts: nextProps.deckCardCounts,
+      });
+    }
   }
 
   onDeckCountChange(code, count) {
@@ -72,41 +101,39 @@ class CardResultList extends React.Component {
     });
   }
 
+  getSort() {
+    switch(this.props.sort) {
+      case SORT_BY_TYPE:
+        return [['type_code', false], ['slot', false], ['name', false]];
+      case SORT_BY_FACTION:
+        return [['faction_code', false], ['name', false]];
+      case SORT_BY_COST:
+        return [['cost', false], ['name', false]];
+      case SORT_BY_PACK:
+        return [['pack_code', false], ['name', false]];
+      case SORT_BY_TITLE:
+        return [['name', false]];
+    }
+  }
+
   updateResults() {
     const {
       realm,
       query,
       show_spoilers,
     } = this.props;
-    const cards = query ? realm.objects('Card').filtered(query) : realm.objects('Card');
+    const cards = (query ? realm.objects('Card').filtered(query) :
+      realm.objects('Card')).sorted(this.getSort());
     const splitCards = partition(
       map(cards, card => Object.assign({}, card)),
-      card => !(card.spoiler || (card.linked_card && card.linked_card.spoiler)) ||
-        show_spoilers[card.pack_code]
+      card => show_spoilers[card.pack_code] ||
+        !(card.spoiler || (card.linked_card && card.linked_card.spoiler))
     );
     this.setState({
       cards: splitCards[0],
       spoilerCards: splitCards[1],
       loading: false,
     });
-  }
-
-  componentDidMount() {
-    setTimeout(() => this.updateResults(), 0);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.query !== this.props.query) {
-      this.setState({
-        loading: true,
-      });
-      setTimeout(() => this.updateResults(), 50);
-    }
-    if (nextProps.deckCardCounts !== this.props.deckCardCounts) {
-      this.setState({
-        deckCardCounts: nextProps.deckCardCounts,
-      });
-    }
   }
 
   cardToKey(card) {
@@ -157,14 +184,16 @@ class CardResultList extends React.Component {
       showSpoilerCards,
     } = this.state;
     if (!spoilerCards.length) {
-      return null;
+      return <View style={styles.footer} />;
     }
     if (showSpoilerCards) {
       return (
-        <Button
-          onPress={this._editSpoilerSettings}
-          title="Edit Spoiler Settings"
-        />
+        <View style={styles.footer}>
+          <Button
+            onPress={this._editSpoilerSettings}
+            title="Edit Spoiler Settings"
+          />
+        </View>
       );
     }
     const spoilerCount = spoilerCards.length > 1 ?
@@ -172,7 +201,9 @@ class CardResultList extends React.Component {
       'Show Spoiler';
 
     return (
-      <Button onPress={this._enableSpoilers} title={spoilerCount} />
+      <View style={styles.footer}>
+        <Button onPress={this._enableSpoilers} title={spoilerCount} />
+      </View>
     );
   }
 
@@ -197,13 +228,11 @@ class CardResultList extends React.Component {
       return null;
     }
     return (
-      <VirtualizedList
+      <FlatList
         data={this.getData()}
         initialNumToRender={20}
         extraData={this.state.deckCardCounts}
-        getItem={this._getItem}
         getItemLayout={this._getItemLayout}
-        getItemCount={this._getItemCount}
         renderItem={this._renderCard}
         keyExtractor={this._cardToKey}
         windowSize={20}
@@ -232,3 +261,9 @@ export default connectRealm(
       };
     },
   });
+
+const styles = StyleSheet.create({
+  footer: {
+    height: 300,
+  },
+});

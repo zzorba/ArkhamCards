@@ -7,13 +7,9 @@ import {
   View,
 } from 'react-native';
 import SearchInput from 'react-native-search-filter';
-import { connectRealm } from 'react-native-realm';
 
 import {
   SORT_BY_TYPE,
-  SORT_BY_COST,
-  SORT_BY_PACK,
-  SORT_BY_TITLE,
 } from './constants';
 import CardResultList from './CardResultList';
 import { iconsMap } from '../../../app/NavIcons';
@@ -50,6 +46,7 @@ export default class CardSearchComponent extends React.Component {
     this._sortChanged = this.sortChanged.bind(this);
     this._searchUpdated = this.searchUpdated.bind(this);
     this._applyFilters = this.applyFilters.bind(this);
+
     props.navigator.setButtons({
       rightButtons: [
         {
@@ -155,6 +152,7 @@ export default class CardSearchComponent extends React.Component {
     const {
       width,
       height,
+      selectedSort,
     } = this.state;
     const query = this.query();
     return (
@@ -168,6 +166,7 @@ export default class CardSearchComponent extends React.Component {
           <CardResultList
             navigator={navigator}
             query={query}
+            sort={selectedSort}
             deckCardCounts={deckCardCounts}
             onDeckCountChange={onDeckCountChange}
           />
@@ -195,9 +194,5 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#CCC',
     borderWidth: 1,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
 });
