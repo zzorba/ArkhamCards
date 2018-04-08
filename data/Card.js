@@ -135,6 +135,7 @@ Card.schema = {
     illustrator: 'string?',
     text: 'string?',
     flavor: 'string?',
+    cost: 'int?',
     real_text: 'string?',
     back_name: 'string?',
     back_text: 'string?',
