@@ -1,5 +1,6 @@
 export const PACKS_AVAILABLE = 'PACKS_AVAILABLE';
 export const DECK_AVAILABLE = 'DECK_AVAILABLE';
+export const NEW_DECK = 'NEW_DECK';
 export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
 
@@ -11,6 +12,13 @@ export function getPacks() {
         type: PACKS_AVAILABLE,
         packs: json,
       })).catch(err => console.log(err));
+  };
+}
+
+export function newDeck(investigator) {
+  const slot = {};
+  return {
+    type: NEW_DECK,
   };
 }
 
@@ -41,3 +49,11 @@ export function setPackSpoiler(code, value) {
     value,
   };
 }
+
+export default {
+  getPacks,
+  newDeck,
+  getDeck,
+  setInCollection,
+  setPackSpoiler,
+};

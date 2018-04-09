@@ -15,7 +15,7 @@ import { DeckType } from './parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckViewCardItem from './DeckViewCardItem';
 import DeckValidation from '../../lib/DeckValidation';
-import InvestigatorImage from '../cards/InvestigatorImage';
+import InvestigatorImage from '../core/InvestigatorImage';
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -182,7 +182,7 @@ export default class DeckViewTab extends React.Component {
           <View style={styles.header}>
             <TouchableOpacity onPress={this._showInvestigator}>
               <View style={styles.image}>
-                <InvestigatorImage source={investigator.imagesrc} />
+                <InvestigatorImage card={investigator} />
               </View>
             </TouchableOpacity>
             <View style={styles.metadata}>

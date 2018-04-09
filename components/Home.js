@@ -9,11 +9,11 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import { iconsMap } from '../app/NavIcons';
 import * as Actions from '../actions';
 import DeckListItem from './deck/DeckListItem';
 import { syncCards } from '../lib/api';
@@ -60,6 +60,28 @@ class Home extends React.Component {
     };
 
     this._deckNavClicked = this.deckNavClicked.bind(this);
+    props.navigator.setButtons({
+      rightButtons: [
+        {
+          icon: iconsMap.add,
+          id: 'add',
+        },
+      ],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    const {
+      navigator,
+    } = this.props;
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'add') {
+        navigator.push({
+          screen: 'Deck.New',
+        });
+      }
+    }
   }
 
   componentDidMount() {

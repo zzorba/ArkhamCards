@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import InvestigatorImage from '../cards/InvestigatorImage';
+import InvestigatorImage from '../core/InvestigatorImage';
 
 export default class DeckListItem extends React.Component {
   static propTypes = {
@@ -40,10 +40,7 @@ export default class DeckListItem extends React.Component {
         <View style={styles.row} >
           <View style={styles.image}>
             { investigator && (
-              <InvestigatorImage
-                source={investigator.imagesrc}
-                code={investigator.code}
-              />
+              <InvestigatorImage card={investigator} />
             ) }
           </View>
           <View style={styles.titleColumn}>

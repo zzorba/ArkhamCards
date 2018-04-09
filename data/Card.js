@@ -189,6 +189,7 @@ export default class Card {
         spoiler: !!json.spoiler,
         traits_normalized,
         uses,
+        has_restrictions: !!restrictions,
         restrictions,
         heals_horror,
         sort_by_type,
@@ -266,6 +267,7 @@ Card.schema = {
     linked_card: 'Card',
 
     // Derived data.
+    has_restrictions: 'bool',
     traits_normalized: 'string?',
     uses: 'string?',
     heals_horror: 'bool?',

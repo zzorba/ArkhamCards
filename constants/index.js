@@ -50,13 +50,13 @@ export const FACTION_COLORS = {
   neutral: '#808080',
 };
 
-export function createFactionIcons(size) {
+export function createFactionIcons(size, defaultColor) {
   return mapValues(FACTION_COLORS, (color, faction) => {
     return (
       <ArkhamIcon
         name={faction === 'neutral' ? 'elder_sign' : faction}
         size={size}
-        color={color}
+        color={defaultColor || color}
       />
     );
   });

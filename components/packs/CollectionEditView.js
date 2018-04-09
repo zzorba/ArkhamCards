@@ -19,6 +19,12 @@ class CollectionEditView extends React.Component {
     setInCollection: PropTypes.func.isRequired,
   };
 
+  componentDidMount() {
+    this.props.navigator.setTitle({
+      title: 'Edit Collection',
+    });
+  }
+
   render() {
     const {
       navigator,

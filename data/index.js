@@ -22,7 +22,7 @@ export default new Realm({
     DeckOptionLevel,
     FaqEntry,
   ],
-  schemaVersion: 7,
+  schemaVersion: 8,
   /* eslint-disable no-unused-vars */
   migration: (oldRealm, newRealm) => {
   },

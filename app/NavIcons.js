@@ -14,6 +14,7 @@ const icons = {
   tune: [28, '#bbb'],
   arrow_back: [30, '#bbb'],
   'sort-by-alpha': [28, '#bbb'],
+  add: [28, '#bbb'],
 };
 
 const defaultIconProvider = MaterialIcons;
