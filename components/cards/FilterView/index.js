@@ -10,9 +10,11 @@ import { connectRealm } from 'react-native-realm';
 import { FACTION_CODES } from '../../../constants';
 import { applyFilters } from '../../../lib/filters';
 import FactionChooser from './FactionChooser';
+import TraitChooserButton from './TraitChooserButton';
 import TypeChooser from './TypeChooser';
 import XpChooser from './XpChooser';
 import DefaultFilterState from './DefaultFilterState';
+
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
 class FilterView extends React.Component {
@@ -30,13 +32,14 @@ class FilterView extends React.Component {
 
     this.state = {
       filters: props.currentFilters,
-      factionCodes: CARD_FACTION_CODES,
-      traits: [],
-      types: [],
+      allFactions: CARD_FACTION_CODES,
+      allTraits: [],
+      allTypes: [],
     };
 
     this._onFactionChange = this.onFactionChange.bind(this);
     this._onTypeChange = this.onTypeChange.bind(this);
+    this._onTraitChange = this.onTraitChange.bind(this);
     this._applyFilters = this.applyFilters.bind(this);
 
     props.navigator.setTitle({
@@ -58,7 +61,7 @@ class FilterView extends React.Component {
       cards,
     } = this.props;
     setTimeout(() => {
-      const factionCodes = filter(FACTION_CODES, faction_code =>
+      const allFactions = filter(FACTION_CODES, faction_code =>
         cards.filtered(`faction_code == '${faction_code}'`).length > 0);
       const typesMap = {};
       const traitsMap = {};
@@ -74,9 +77,9 @@ class FilterView extends React.Component {
       });
 
       this.setState({
-        factionCodes,
-        traits: keys(traitsMap).sort(),
-        types: keys(typesMap).sort(),
+        allFactions,
+        allTraits: keys(traitsMap).sort(),
+        allTypes: keys(typesMap).sort(),
       });
     }, 0);
   }
@@ -107,6 +110,12 @@ class FilterView extends React.Component {
     }, this._applyFilters);
   }
 
+  onTraitChange(selection) {
+    this.setState({
+      filters: Object.assign({}, this.state.filters, { traits: selection }),
+    }, this._applyFilters);
+  }
+
   cardCount() {
     const {
       cards,
@@ -120,17 +129,22 @@ class FilterView extends React.Component {
 
   render() {
     const {
+      navigator,
+    } = this.props;
+    const {
       filters: {
         factions,
         types,
+        traits,
       },
-      factionCodes,
+      allFactions,
+      allTraits,
     } = this.state;
 
     return (
       <View>
         <FactionChooser
-          factions={factionCodes}
+          factions={allFactions}
           selection={factions}
           onChange={this._onFactionChange}
         />
@@ -138,8 +152,13 @@ class FilterView extends React.Component {
           onChange={this._onTypeChange}
           selection={types}
         />
+        <TraitChooserButton
+          navigator={navigator}
+          traits={allTraits}
+          selection={traits}
+          onChange={this._onTraitChange}
+        />
         <Text>{ this.cardCount() } Cards Matched</Text>
-        <Text> { this.state.types.join(',') }</Text>
       </View>
     );
   }

@@ -163,10 +163,10 @@ export default class Card {
 
     const linked_card = json.linked_card ? Card.fromJson(json.linked_card) : null;
 
-    const traits_normalized = json.traits &&
+    const traits_normalized = json.traits ?
       map(json.traits.split('\\.'),
         trait => `#${trait.toLowerCase().trim()}#`
-      ).join(',');
+      ).join(',') : null;
     const restrictions = json.restrictions ?
       Card.parseRestrictions(json.restrictions) :
       null;

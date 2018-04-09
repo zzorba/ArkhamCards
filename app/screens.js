@@ -6,6 +6,7 @@ import CardSearchView from '../components/cards/CardSearchView';
 import CardDetailView from '../components/cards/CardDetailView';
 import NewDeckView from '../components/deck/NewDeckView';
 import FilterView from '../components/cards/FilterView';
+import TraitModal from '../components/cards/FilterView/TraitModal';
 import Home from '../components/Home';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsTab from '../components/settings/SettingsTab';
@@ -24,6 +25,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Search', () => CardSearchView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsTab, store, Provider);
   Navigation.registerComponent('SearchFilters', () => FilterView, store, Provider);
+  Navigation.registerComponent('SearchFilters.Trait', () => TraitModal, store, Provider);
   Navigation.registerComponent('CollectionEdit', () => CollectionEditView, store, Provider);
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);
