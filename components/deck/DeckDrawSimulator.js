@@ -12,7 +12,7 @@ import {
 import { DeckType } from './parseDeck';
 import DrawCardItem from './DrawCardItem';
 
-export default class CardDrawSimulator extends React.Component {
+export default class DeckDrawSimulator extends React.Component {
   static propTypes = {
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,

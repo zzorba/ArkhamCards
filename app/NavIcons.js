@@ -3,18 +3,21 @@ import { forEach, keys } from 'lodash';
 import ArkhamIcon from '../assets/ArkhamIcon';
 import AppIcon from '../assets/AppIcon';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import { COLORS } from '../styles/colors';
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
 const icons = {
-  elder_sign: [30, '#bbb', ArkhamIcon],
-  intellect: [26, '#bbb', ArkhamIcon],
-  per_investigator: [24, '#bbb', ArkhamIcon],
-  edit: [26, '#bbb'],
-  tune: [28, '#bbb'],
-  arrow_back: [30, '#bbb'],
-  'sort-by-alpha': [28, '#bbb'],
-  add: [28, '#bbb'],
+  elder_sign: [30, COLORS.button, ArkhamIcon],
+  intellect: [26, COLORS.button, ArkhamIcon],
+  per_investigator: [24, COLORS.button, ArkhamIcon],
+  edit: [26, COLORS.button],
+  tune: [28, COLORS.button],
+  'arrow-left': [30, COLORS.button, MaterialCommunityIcons],
+  'chevron-left': [30, COLORS.button, MaterialCommunityIcons],
+  'sort-by-alpha': [28, COLORS.button],
+  add: [28, COLORS.button],
 };
 
 const defaultIconProvider = MaterialIcons;

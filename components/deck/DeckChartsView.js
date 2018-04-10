@@ -9,7 +9,7 @@ import FactionChart from './charts/FactionChart';
 import CostChart from './charts/CostChart';
 import SkillIconChart from './charts/SkillIconChart';
 
-export default class DeckChartsTab extends React.Component {
+export default class DeckChartsView extends React.Component {
   static propTypes = {
     parsedDeck: DeckType,
   };

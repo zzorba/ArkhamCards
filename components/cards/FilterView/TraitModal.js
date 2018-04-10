@@ -31,7 +31,7 @@ export default class TraitModal extends React.Component {
           selected={selection}
           search={true}
           multiple={true}
-          placeholder="Search"
+          placeholder="Search Traits"
           placeholderTextColor="#757575"
           returnValue="label"
           callback={onChange}

@@ -4,6 +4,7 @@ import { head, map, partition } from 'lodash';
 import { connectRealm } from 'react-native-realm';
 
 import CardSearchComponent from '../cards/CardSearchView/CardSearchComponent';
+import { iconsMap } from '../../app/NavIcons';
 
 class DeckEditView extends React.Component {
   static propTypes = {
@@ -11,13 +12,45 @@ class DeckEditView extends React.Component {
     deck: PropTypes.object.isRequired,
     investigator: PropTypes.object,
     slots: PropTypes.object.isRequired,
-    slotChanged: PropTypes.func.isRequired,
+    updateSlots: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
+    this.state = {
+      deckCardCounts: props.slots || {},
+    };
+
+    this._backPressed = this.backPressed.bind(this);
     this._queryForInvestigator = this.queryForInvestigator.bind(this);
+    this._onDeckCountChange = this.onDeckCountChange.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.slots !== this.props.slots) {
+      this.setState({
+        deckCardCounts: nextProps.slots,
+      });
+    }
+  }
+
+  backPressed() {
+    this.props.updateSlots(this.state.deckCardCounts)
+  }
+
+  onDeckCountChange(code, count) {
+    const newSlots = Object.assign(
+      {},
+      this.state.deckCardCounts,
+      { [code]: count },
+    );
+    if (count === 0) {
+      delete newSlots[code];
+    }
+    this.setState({
+      deckCardCounts: newSlots,
+    });
   }
 
   queryForInvestigator() {
@@ -40,16 +73,19 @@ class DeckEditView extends React.Component {
   render() {
     const {
       navigator,
-      slots,
-      slotChanged,
     } = this.props;
+
+    const {
+      deckCardCounts,
+    } = this.state;
 
     return (
       <CardSearchComponent
         navigator={navigator}
         baseQuery={this.queryForInvestigator()}
-        deckCardCounts={slots}
-        onDeckCountChange={slotChanged}
+        deckCardCounts={deckCardCounts}
+        onDeckCountChange={this._onDeckCountChange}
+        backPressed={this._backPressed}
       />
     );
   }

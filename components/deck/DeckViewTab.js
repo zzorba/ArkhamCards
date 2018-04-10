@@ -56,9 +56,9 @@ const DECK_PROBLEM_MESSAGES = {
 
 export default class DeckViewTab extends React.Component {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
-    navigator: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -69,6 +69,16 @@ export default class DeckViewTab extends React.Component {
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      navigator,
+      parsedDeck,
+    } = this.props;
+    navigator.setTitle({
+      title: parsedDeck.deck.name,
+    });
   }
 
   keyForCard(item) {
@@ -178,7 +188,6 @@ export default class DeckViewTab extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.rowWrap}>
-          <Text style={styles.deckTitle}>{ deck.name }</Text>
           <View style={styles.header}>
             <TouchableOpacity onPress={this._showInvestigator}>
               <View style={styles.image}>
@@ -218,6 +227,7 @@ export default class DeckViewTab extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
+    marginTop: 16,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -229,19 +239,14 @@ const styles = StyleSheet.create({
     height: 80,
     marginRight: 16,
   },
-  deckTitle: {
-    color: '#000000',
-    fontSize: 24,
-    fontWeight: '500',
-    marginBottom: 8,
-  },
   investigatorName: {
     color: '#000000',
     fontSize: 18,
     fontWeight: '700',
   },
   container: {
-    margin: 16,
+    marginLeft: 16,
+    marginRight: 16,
   },
   defaultText: {
     color: '#000000',

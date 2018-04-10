@@ -16,8 +16,7 @@ import * as Actions from '../../actions';
 import { COLORS } from '../../styles/colors';
 import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
-import DeckChartsTab from './DeckChartsTab';
-import CardDrawSimulator from './CardDrawSimulator';
+import DeckNavFooter from './DeckNavFooter';
 
 class DeckView extends React.Component {
   static propTypes = {
@@ -39,7 +38,7 @@ class DeckView extends React.Component {
       saving: false,
     };
 
-    this._slotChanged = this.slotChanged.bind(this);
+    this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
 
@@ -52,6 +51,19 @@ class DeckView extends React.Component {
       ],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  componentDidMount() {
+    this.props.getDeck(this.props.id);
+    if (this.props.deck && this.props.deck.investigator_code) {
+      this.loadCards(this.props.deck);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.deck !== this.props.deck) {
+      this.loadCards(nextProps.deck);
+    }
   }
 
   onNavigatorEvent(event) {
@@ -67,7 +79,10 @@ class DeckView extends React.Component {
           passProps: {
             deck: deck,
             slots: this.state.slots,
-            slotChanged: this._slotChanged,
+            updateSlots: this._updateSlots,
+          },
+          navigatorStyle: {
+            tabBarHidden: true,
           },
         });
       }
@@ -114,15 +129,7 @@ class DeckView extends React.Component {
     return (keys(removals).length > 0 || keys(additions).length > 0);
   }
 
-  slotChanged(code, count) {
-    const newSlots = Object.assign(
-      {},
-      this.state.slots,
-      { [code]: count },
-    );
-    if (count === 0) {
-      delete newSlots[code];
-    }
+  updateSlots(newSlots) {
     this.setState({
       slots: newSlots,
     });
@@ -133,19 +140,6 @@ class DeckView extends React.Component {
       slots: deck.slots,
       loaded: true,
     });
-  }
-
-  componentDidMount() {
-    this.props.getDeck(this.props.id);
-    if (this.props.deck && this.props.deck.investigator_code) {
-      this.loadCards(this.props.deck);
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.deck !== this.props.deck) {
-      this.loadCards(nextProps.deck);
-    }
   }
 
   render() {
@@ -177,24 +171,16 @@ class DeckView extends React.Component {
 
     return (
       <View style={styles.container}>
-        <ScrollableTabView
-          tabBarActiveTextColor={COLORS.darkBlue}
-          tabBarInactiveTextColor={COLORS.lightBlue}
-          tabBarUnderlineStyle={{ backgroundColor: COLORS.darkBlue }}
-        >
-          <DeckViewTab
-            tabLabel="Deck"
-            cards={cardsInDeck}
-            parsedDeck={pDeck}
-            navigator={navigator} />
-          <CardDrawSimulator
-            tabLabel="Draw"
-            parsedDeck={pDeck}
-            cards={cardsInDeck} />
-          <DeckChartsTab
-            tabLabel="Charts"
-            parsedDeck={pDeck} />
-        </ScrollableTabView>
+        <DeckViewTab
+          tabLabel="Deck"
+          cards={cardsInDeck}
+          parsedDeck={pDeck}
+          navigator={navigator} />
+        <DeckNavFooter
+          navigator={navigator}
+          parsedDeck={pDeck}
+          cards={cardsInDeck}
+        />
       </View>
     );
   }

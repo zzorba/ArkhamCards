@@ -1,3 +1,6 @@
+import {
+  Platform,
+} from 'react-native';
 
 export const FACTION_COLORS = {
   mystic: '#4331b9',
@@ -16,4 +19,5 @@ export const COLORS = {
   gray: 'rgb(201, 201, 201)',
   lightGreen: 'rgb(114, 221, 82)',
   green: '#498D35',
+  button: Platform.OS === 'ios' ? '#bbb' : '#000',
 };

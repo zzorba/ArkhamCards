@@ -47,7 +47,6 @@ class CardResultList extends React.Component {
       loading: true,
     };
 
-    this._onDeckCountChange = this.onDeckCountChange.bind(this);
     this._getItem = this.getItem.bind(this);
     this._renderSectionHeader = this.renderSectionHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
@@ -76,20 +75,6 @@ class CardResultList extends React.Component {
         deckCardCounts: nextProps.deckCardCounts,
       });
     }
-  }
-
-  onDeckCountChange(code, count) {
-    const newSlots = Object.assign(
-      {},
-      this.state.deckCardCounts,
-      { [code]: count },
-    );
-    if (count === 0) {
-      delete newSlots[code];
-    }
-    this.setState({
-      deckCardCounts: newSlots,
-    });
   }
 
   enableSpoilers() {
@@ -205,7 +190,7 @@ class CardResultList extends React.Component {
       <CardSearchResult
         card={item}
         count={this.state.deckCardCounts[item.code]}
-        onDeckCountChange={this._onDeckCountChange}
+        onDeckCountChange={this.props.onDeckCountChange}
         onPress={this._cardPressed}
       />
     );

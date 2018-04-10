@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
+  BackHandler,
   Dimensions,
+  Platform,
   StyleSheet,
   View,
 } from 'react-native';
@@ -25,6 +27,7 @@ export default class CardSearchComponent extends React.Component {
     // Keyed by code, count of current deck.
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
+    backPressed: PropTypes.func,
   };
 
   constructor(props) {
@@ -47,7 +50,15 @@ export default class CardSearchComponent extends React.Component {
     this._searchUpdated = this.searchUpdated.bind(this);
     this._applyFilters = this.applyFilters.bind(this);
 
+    const leftButton = Platform.OS === 'ios' ? {
+      id: 'save',
+      title: 'Save',
+    } : {
+      icon: iconsMap['arrow-left'],
+      id: 'save',
+    };    
     props.navigator.setButtons({
+      leftButtons: props.backPressed ? [leftButton] : [],
       rightButtons: [
         {
           icon: iconsMap.tune,
@@ -102,8 +113,23 @@ export default class CardSearchComponent extends React.Component {
             backgroundColor: 'rgba(128,128,128,.75)',
           },
         });
+      } else if (event.id === 'save') {
+        this.handleBackPress();
       }
+    } else if (event.id === 'willAppear') {
+      this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress.bind(this));
+    } else if (event.id === 'willDisappear') {
+      this.backHandler.remove();
     }
+  }
+
+  handleBackPress() {
+    const {
+      backPressed,
+    } = this.props;
+    backPressed && backPressed();
+    this.props.navigator.pop();
+    return true;
   }
 
   searchUpdated(text) {
