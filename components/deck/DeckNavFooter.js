@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, keys, map, range } from 'lodash';
+import { flatMap, head, keys, map, range } from 'lodash';
 import {
   View,
   Text,
@@ -15,9 +15,9 @@ import { COLORS } from '../../styles/colors';
 import DeckValidation from '../../lib/DeckValidation';
 
 const DECK_PROBLEM_MESSAGES = {
-  too_few_cards: 'Contains too few cards',
-  too_many_cards: 'Contains too many cards',
-  too_many_copies: 'Contains too many copies of a card (by title)',
+  too_few_cards: 'Not enough cards',
+  too_many_cards: 'Too many cards',
+  too_many_copies: 'Too many copies of a card (by title)',
   invalid_cards: 'Contains forbidden cards (cards no permitted by Faction)',
   deck_options_limit: 'Contains too many limited cards',
   investigator: 'Doesn\'t comply with the Investigator requirements',
@@ -92,17 +92,9 @@ export default class DeckNavFooter extends React.Component {
     }
 
     return (
-      <View>
-        <Text style={styles.problemText}>
-          <AppIcon name="warning" size={14} color={COLORS.red} />
-          { DECK_PROBLEM_MESSAGES[problem.reason] }
-        </Text>
-        { problem.problems.map(problem => (
-          <Text key={problem} style={styles.problemText}>
-            { `\u2022 ${problem}` }
-          </Text>
-        )) }
-      </View>
+      <Text style={styles.problemText} numberOfLines={2}>
+        { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
+      </Text>
     );
   }
 
@@ -110,6 +102,7 @@ export default class DeckNavFooter extends React.Component {
     return (
       <View style={styles.wrapper}>
         <View style={styles.left}>
+          <Text>{ this.props.parsedDeck.normalCardCount }</Text>
           { this.renderProblem() }
         </View>
         <View style={styles.right}>
@@ -143,15 +136,22 @@ const styles = StyleSheet.create({
     paddingRight: 5,
   },
   left: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    flex: 1,
   },
   right: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   button: {
+    width: 40,
     paddingLeft: 5,
     paddingRight: 5,
+  },
+  problemText: {
+    flex: 1,
+    color: COLORS.red,
   },
 });

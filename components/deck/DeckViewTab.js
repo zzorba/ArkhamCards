@@ -226,7 +226,7 @@ export default class DeckViewTab extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 16,
+    marginTop: 8,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 80,
-    marginRight: 16,
+    marginRight: 8,
   },
   investigatorName: {
     color: '#000000',
@@ -244,8 +244,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   container: {
-    marginLeft: 16,
-    marginRight: 16,
+    marginLeft: 8,
+    marginRight: 8,
   },
   defaultText: {
     color: '#000000',
