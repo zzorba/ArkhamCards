@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { flatMap, keys, map, range } from 'lodash';
 import {
-  Platform,
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { Button } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import AppIcon from '../../assets/AppIcon';

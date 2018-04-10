@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { delay, forEach, head, keys } from 'lodash';
+import { delay, forEach, keys } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -8,12 +8,10 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { connectRealm } from 'react-native-realm';
 
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
-import { COLORS } from '../../styles/colors';
 import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from './DeckNavFooter';
@@ -77,7 +75,7 @@ class DeckView extends React.Component {
           screen: 'Deck.Edit',
           backButtonTitle: 'Save',
           passProps: {
-            deck: deck,
+            deck,
             slots: this.state.slots,
             updateSlots: this._updateSlots,
           },
@@ -205,7 +203,7 @@ export default connectRealm(
   connect(mapStateToProps, mapDispatchToProps)(DeckView),
   {
     schemas: ['Card'],
-    mapToProps(results, realm, props) {
+    mapToProps(results, realm) {
       return {
         realm,
         cards: results.cards,

@@ -4,13 +4,13 @@ import { head, map, partition } from 'lodash';
 import { connectRealm } from 'react-native-realm';
 
 import CardSearchComponent from '../cards/CardSearchView/CardSearchComponent';
-import { iconsMap } from '../../app/NavIcons';
 
 class DeckEditView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    deck: PropTypes.object.isRequired,
     investigator: PropTypes.object,
+    /* eslint-disable react/no-unused-prop-types */
+    deck: PropTypes.object.isRequired,
     slots: PropTypes.object.isRequired,
     updateSlots: PropTypes.func.isRequired,
   };
@@ -24,7 +24,7 @@ class DeckEditView extends React.Component {
 
     this._backPressed = this.backPressed.bind(this);
     this._queryForInvestigator = this.queryForInvestigator.bind(this);
-    this._onDeckCountChange = this.onDeckCountChange.bind(this)
+    this._onDeckCountChange = this.onDeckCountChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,7 +36,7 @@ class DeckEditView extends React.Component {
   }
 
   backPressed() {
-    this.props.updateSlots(this.state.deckCardCounts)
+    this.props.updateSlots(this.state.deckCardCounts);
   }
 
   onDeckCountChange(code, count) {

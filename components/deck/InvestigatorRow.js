@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, partition } from 'lodash';
+import { map } from 'lodash';
 import {
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
 import InvestigatorImage from '../core/InvestigatorImage';
 
@@ -65,10 +61,10 @@ export default class InvestigatorRow extends React.Component {
               }
               return (
                 <Text key={req.code}>
-                  { card.quantity }x {card.name}
+                  { card.quantity }x { card.name }
                 </Text>
               );
-            })}
+            }) }
           </View>
         </View>
       </TouchableOpacity>

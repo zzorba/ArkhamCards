@@ -1,7 +1,6 @@
 import { forEach, keys } from 'lodash';
 
 import ArkhamIcon from '../assets/ArkhamIcon';
-import AppIcon from '../assets/AppIcon';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { COLORS } from '../styles/colors';

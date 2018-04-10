@@ -178,7 +178,6 @@ export default class DeckViewTab extends React.Component {
         experience,
         packs,
         investigator,
-        deck,
       },
     } = this.props;
 

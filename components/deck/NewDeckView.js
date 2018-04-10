@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -37,7 +36,7 @@ class NewDeckModal extends React.Component {
     });
   }
 
-  onPress(investigator) {
+  onPress() {
     this.props.navigator.pop();
   }
 
@@ -66,7 +65,7 @@ class NewDeckModal extends React.Component {
 
     const partitionedInvestigators = partition(
       investigators,
-      investigator => in_collection[investigator.pack_code])
+      investigator => in_collection[investigator.pack_code]);
     const myInvestigators = partitionedInvestigators[0];
     const otherInvestigators = partitionedInvestigators[1];
 
@@ -107,7 +106,7 @@ export default connectRealm(
   {
     schemas: ['Card'],
     mapToProps(results) {
-      const investigators =  [];
+      const investigators = [];
       const names = {};
       forEach(
         results.cards.filtered('type_code == "investigator"')

@@ -18,7 +18,6 @@ export default class InvestigatorImage extends React.Component {
 
   render() {
     const {
-      source,
       card,
     } = this.props;
     return (

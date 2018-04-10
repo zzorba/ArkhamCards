@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map } from 'lodash';
+import { forEach } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -29,8 +29,6 @@ export default class TraitModal extends React.Component {
         <MultipleSelect
           options={options}
           selected={selection}
-          search={true}
-          multiple={true}
           placeholder="Search Traits"
           placeholderTextColor="#757575"
           returnValue="label"
@@ -43,6 +41,8 @@ export default class TraitModal extends React.Component {
           selectedIconName="checkbox-marked-circle-outline"
           unselectedIconName="circle-outline"
           scrollViewHeight="100%"
+          search
+          multiple
         />
       </View>
     );
