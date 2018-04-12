@@ -20,6 +20,7 @@ class DeckView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
+    isPrivate: PropTypes.bool,
     // From realm.
     cards: PropTypes.object,
     // From redux.
@@ -52,7 +53,7 @@ class DeckView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getDeck(this.props.id);
+    this.props.getDeck(this.props.id, this.props.isPrivate);
     if (this.props.deck && this.props.deck.investigator_code) {
       this.loadCards(this.props.deck);
     }

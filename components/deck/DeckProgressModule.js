@@ -15,10 +15,6 @@ class PreviousDeckModule extends React.PureComponent {
     getDeck: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const {
       deck,
@@ -30,25 +26,28 @@ class PreviousDeckModule extends React.PureComponent {
     }
   }
 
-  render() {
+
+  exiledCards() {
     const {
-      navigator,
+      deck,
+    } = this.props;
+    return deck.exile_string ? mapValues(
+      groupBy(deck.exile_string.split(',')),
+      items => items.length) : {};
+  }
+
+  changedCards(exiledCards) {
+    const {
       deck,
       previousDeck,
     } = this.props;
-
     if (!deck.previous_deck) {
-      return null;
+      return {};
     }
     if (!previousDeck) {
-      // loading
-      return null;
+      // Loading.
+      return {};
     }
-    // Actually compute the diffs.
-    const exiledCards = deck.exile_string ? mapValues(
-      groupBy(deck.exile_string.split(',')),
-      items => items.length) : {};
-
     const changedCards = {};
     forEach(
       uniqBy(concat(keys(deck.slots), keys(previousDeck.slots))),
@@ -61,12 +60,27 @@ class PreviousDeckModule extends React.PureComponent {
           changedCards[code] = delta;
         }
       });
+    return changedCards;
+  }
 
+  render() {
+    const {
+      navigator,
+      deck,
+    } = this.props;
+
+    if (!deck.previous_deck && !deck.next_deck) {
+      return null;
+    }
+
+    // Actually compute the diffs.
+    const exiledCards = this.exiledCards();
     return (
       <DeckDelta
         navigator={navigator}
-        changedCards={changedCards}
+        deck={deck}
         exiledCards={exiledCards}
+        changedCards={this.changedCards(exiledCards)}
       />
     );
   }
