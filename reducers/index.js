@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import {
+  CLEAR_DECKS,
   PACKS_AVAILABLE,
   DECK_AVAILABLE,
   SET_IN_COLLECTION,
@@ -65,6 +66,8 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
           { [action.id]: action.deck },
         ),
       });
+  } else if (action.type === CLEAR_DECKS) {
+    return DEFAULT_DECK_STATE;
   }
   return state;
 };

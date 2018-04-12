@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import AppIcon from '../../assets/AppIcon';
 import { DeckType } from './parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckValidation from '../../lib/DeckValidation';

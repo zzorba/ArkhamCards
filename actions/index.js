@@ -1,5 +1,6 @@
 export const PACKS_AVAILABLE = 'PACKS_AVAILABLE';
 export const DECK_AVAILABLE = 'DECK_AVAILABLE';
+export const CLEAR_DECKS = 'CLEAR_DECKS';
 export const NEW_DECK = 'NEW_DECK';
 export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
@@ -22,15 +23,24 @@ export function newDeck(investigator) {
   };
 }
 
-export function getDeck(id) {
+export function clearDecks() {
+  return {
+    type: CLEAR_DECKS,
+  };
+}
+
+export function getDeck(id, useDeckEndpoint) {
   return (dispatch) => {
-    fetch(`https://arkhamdb.com/api/public/decklist/${id}`, { method: 'GET' })
+    const uri = `https://arkhamdb.com/api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
+    fetch(uri, { method: 'GET' })
       .then(response => response.json())
       .then(json => dispatch({
         type: DECK_AVAILABLE,
         id,
         deck: json,
-      })).catch(err => console.log(err));
+      })).catch(err => {
+        console.log(err);
+      });
   };
 }
 

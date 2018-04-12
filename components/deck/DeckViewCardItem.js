@@ -18,6 +18,7 @@ export default class DeckViewCardItem extends React.PureComponent {
     card: PropTypes.object.isRequired,
     item: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
+    deltaMode: PropTypes.bool,
   };
 
   constructor(props) {
@@ -32,7 +33,11 @@ export default class DeckViewCardItem extends React.PureComponent {
   renderIcon() {
     const {
       card,
+      deltaMode,
     } = this.props;
+    if (deltaMode) {
+      return <View style={styles.deltaSpace} />;
+    }
 
     if (card.faction_code !== 'neutral') {
       return (
@@ -59,13 +64,16 @@ export default class DeckViewCardItem extends React.PureComponent {
     const {
       card,
       item,
+      deltaMode,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.row}>
           <View style={styles.quantity}>
-            <Text style={styles.defaultText}>
-              { `${item.quantity}x ` }
+            <Text style={styles.numberText}>
+              { deltaMode ?
+                `${item.quantity > 0 ? '+' : ''}${item.quantity} ` :
+                `${item.quantity}x ` }
             </Text>
           </View>
           { this.renderIcon() }
@@ -94,6 +102,17 @@ const styles = StyleSheet.create({
   },
   quantity: {
     width: 20,
+    paddingRight: 2,
+  },
+  deltaSpace: {
+    width: 5,
+  },
+  numberText: {
+    textAlign: 'right',
+    color: '#000000',
+    fontFamily: 'System',
+    fontSize: 16,
+    lineHeight: 24,
   },
   defaultText: {
     color: '#000000',

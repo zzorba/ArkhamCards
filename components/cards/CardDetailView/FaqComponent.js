@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';

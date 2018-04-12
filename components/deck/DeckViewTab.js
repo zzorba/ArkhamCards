@@ -16,6 +16,7 @@ import { COLORS } from '../../styles/colors';
 import DeckViewCardItem from './DeckViewCardItem';
 import DeckValidation from '../../lib/DeckValidation';
 import InvestigatorImage from '../core/InvestigatorImage';
+import PreviousDeckModule from './PreviousDeckModule';
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -170,7 +171,9 @@ export default class DeckViewTab extends React.Component {
 
   render() {
     const {
+      navigator,
       parsedDeck: {
+        deck,
         normalCards,
         specialCards,
         normalCardCount,
@@ -219,6 +222,7 @@ export default class DeckViewTab extends React.Component {
           renderSectionHeader={this._renderCardHeader}
           sections={sections}
         />
+        <PreviousDeckModule navigator={navigator} deck={deck} />
       </ScrollView>
     );
   }

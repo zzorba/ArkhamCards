@@ -170,10 +170,10 @@ class DeckView extends React.Component {
     return (
       <View style={styles.container}>
         <DeckViewTab
-          tabLabel="Deck"
-          cards={cardsInDeck}
+          navigator={navigator}
           parsedDeck={pDeck}
-          navigator={navigator} />
+          cards={cardsInDeck}
+        />
         <DeckNavFooter
           navigator={navigator}
           parsedDeck={pDeck}

@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { keys } from 'lodash';
 import {
   Button,
   View,
   Text,
 } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import * as Actions from '../../actions';
 import { syncCards } from '../../lib/api';
 
 class Settings extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
+    deckCount: PropTypes.number,
     cardCount: PropTypes.number,
     navigator: PropTypes.object.isRequired,
+    clearDecks: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -45,7 +51,9 @@ class Settings extends React.Component {
   clearCache() {
     const {
       realm,
+      clearDecks,
     } = this.props;
+    clearDecks();
     realm.write(() => {
       realm.delete(realm.objects('Card'));
     });
@@ -70,6 +78,7 @@ class Settings extends React.Component {
         <Button onPress={this._myCollectionPressed} title="My Collection" />
         <Button onPress={this._editSpoilersPressed} title="Edit Spoilers" />
         <Text>We have { this.props.cardCount } cards in database</Text>
+        <Text>We have { this.props.deckCount } decks in database</Text>
         <Button onPress={this._doSyncCards} title="Check for card updates" />
         <Button onPress={this._clearCache} title="Clear cache" />
       </View>
@@ -77,14 +86,24 @@ class Settings extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    deckCount: keys(state.decks.all || {}).length,
+  };
+}
 
-export default connectRealm(Settings, {
-  schemas: ['Card'],
-  mapToProps(results, realm) {
-    return {
-      realm,
-      cards: results.cards,
-      cardCount: results.cards.length,
-    };
-  },
-});
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connectRealm(
+  connect(mapStateToProps, mapDispatchToProps)(Settings), {
+    schemas: ['Card'],
+    mapToProps(results, realm) {
+      return {
+        realm,
+        cards: results.cards,
+        cardCount: results.cards.length,
+      };
+    },
+  });
