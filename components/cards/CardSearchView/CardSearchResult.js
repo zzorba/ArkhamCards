@@ -178,7 +178,7 @@ export default class CardSearchResult extends React.PureComponent {
             <View style={styles.buttonContainer}>
               { count > 0 ?
                 <TouchableOpacity onPress={this._decrement}>
-                  <MaterialCommunityIcons name="minus-box" size={36} color="#666" /> :
+                  <MaterialCommunityIcons name="minus-box" size={36} color={COLORS.red} /> :
                 </TouchableOpacity>
                 :
                 <MaterialCommunityIcons name="minus-box-outline" size={36} color="#ddd" />
@@ -186,7 +186,7 @@ export default class CardSearchResult extends React.PureComponent {
               { count === null || atLimit ?
                 <MaterialCommunityIcons name="plus-box-outline" size={36} color="#ddd" /> :
                 <TouchableOpacity onPress={this._increment}>
-                  <MaterialCommunityIcons name="plus-box" size={36} color="#666" /> :
+                  <MaterialCommunityIcons name="plus-box" size={36} color={COLORS.green} /> :
                 </TouchableOpacity>
               }
             </View>
