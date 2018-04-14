@@ -14,7 +14,7 @@ import EncounterIcon from '../../../assets/EncounterIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
 
-const FACTION_ICONS = createFactionIcons(12);
+const FACTION_ICONS = createFactionIcons(18);
 const BUTTON_WIDTH = 40;
 
 export default class CardSearchResult extends React.PureComponent {
@@ -45,7 +45,7 @@ export default class CardSearchResult extends React.PureComponent {
     return count;
   }
 
-  renderIcon() {
+  renderFactionIcon() {
     const {
       card,
     } = this.props;
@@ -53,14 +53,14 @@ export default class CardSearchResult extends React.PureComponent {
       (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
     ) {
       return (
-        <ArkhamIcon name="weakness" size={12} color={FACTION_COLORS.neutral} />
+        <ArkhamIcon name="weakness" size={18} color={FACTION_COLORS.neutral} />
       );
     }
     if (card.spoiler) {
       return (
         <EncounterIcon
           encounter_code={card.encounter_code}
-          size={12}
+          size={18}
           color="#000000"
         />
       );
@@ -70,12 +70,50 @@ export default class CardSearchResult extends React.PureComponent {
       return (
         <EncounterIcon
           encounter_code={card.pack_code}
-          size={12}
+          size={18}
           color="#000000"
         />
       );
     }
     return FACTION_ICONS[card.faction_code];
+  }
+
+  static skillIcon(iconName, count) {
+    if (count === 0) {
+      return null;
+    }
+    return range(0, count).map(key => (
+      <View style={styles.cardIcon} key={`${iconName}-${key}`}>
+        <ArkhamIcon
+          name={iconName}
+          size={14}
+          color="#000"
+        />
+      </View>
+    ));
+  }
+
+  renderSkillIcons() {
+    const {
+      card,
+    } = this.props;
+    if (card.type_code == 'investigator' || (
+      card.skill_willpower == null &&
+      card.skill_intellect == null &&
+      card.skill_combat == null &&
+      card.skill_agility == null &&
+      card.skill_wild == null)) {
+      return null;
+    }
+    return (
+      <View style={styles.skillIcons}>
+        { CardSearchResult.skillIcon('willpower', card.skill_willpower) }
+        { CardSearchResult.skillIcon('intellect', card.skill_intellect) }
+        { CardSearchResult.skillIcon('combat', card.skill_combat) }
+        { CardSearchResult.skillIcon('agility', card.skill_agility) }
+        { CardSearchResult.skillIcon('wild', card.skill_wild) }
+      </View>
+    );
   }
 
   render() {
@@ -95,7 +133,7 @@ export default class CardSearchResult extends React.PureComponent {
           <TouchableOpacity onPress={this._onPress}>
             <View style={styles.cardTextRow}>
               <View style={styles.cardIcon}>
-                { this.renderIcon() }
+                { this.renderFactionIcon() }
               </View>
               <Text style={[
                 styles.cardName,
@@ -144,10 +182,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    height: 26,
+    height: 24,
+  },
+  skillIcons: {
+    flex: 1,
+    flexDirection: 'row',
   },
   cardIcon: {
-    width: 16,
+    width: 22,
     height: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -161,8 +203,8 @@ const styles = StyleSheet.create({
   cardName: {
     marginLeft: 4,
     fontFamily: 'System',
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: 18,
+    lineHeight: 24,
   },
   buttonContainer: {
     padding: 0,
