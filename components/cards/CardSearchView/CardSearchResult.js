@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { ButtonGroup } from 'react-native-elements';
+import { Button } from 'react-native-elements';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from '../../../assets/EncounterIcon';
@@ -29,12 +30,36 @@ export default class CardSearchResult extends React.PureComponent {
     super(props);
 
     this._onPress = this.onPress.bind(this);
+    this._increment = this.increment.bind(this);
+    this._decrement = this.decrement.bind(this);
     this._onDeckCountPress = this.onDeckCountPress.bind(this);
     this._renderCountButton = this.renderCountButton.bind(this);
   }
 
   onPress() {
     this.props.onPress(this.props.card);
+  }
+
+  increment() {
+    const {
+      card,
+      count,
+    } = this.props;
+    if (count === undefined) {
+      this.props.onDeckCountChange(card.code, 1);
+    } else if (count < card.deck_limit) {
+      this.props.onDeckCountChange(card.code, count + 1);
+    }
+  }
+
+  decrement() {
+    const {
+      card,
+      count,
+    } = this.props;
+    if (0 < count) {
+      this.props.onDeckCountChange(card.code, count - 1);
+    }
   }
 
   onDeckCountPress(idx) {
@@ -126,12 +151,17 @@ export default class CardSearchResult extends React.PureComponent {
       return <Text>No Text</Text>;
     }
     const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
-    const buttons = map(range(0, card.deck_limit + 1), this._renderCountButton);
+    const atLimit = (count === card.deck_limit);
     return (
       <View style={styles.stack}>
         <View style={styles.row}>
           <TouchableOpacity onPress={this._onPress}>
             <View style={styles.cardTextRow}>
+              { onDeckCountChange && count > 0 && (
+                <Text style={styles.cardCount}>
+                  { count }x
+                </Text>
+              ) }
               <View style={styles.cardIcon}>
                 { this.renderFactionIcon() }
               </View>
@@ -148,17 +178,19 @@ export default class CardSearchResult extends React.PureComponent {
           </TouchableOpacity>
           { onDeckCountChange &&
             <View style={styles.buttonContainer}>
-              <ButtonGroup
-                onPress={this._onDeckCountPress}
-                buttons={buttons}
-                selectedIndex={count || 0}
-                buttonStyle={styles.countButton}
-                selectedButtonStyle={styles.selectedCountButton}
-                containerStyle={[
-                  styles.buttonGroup,
-                  { width: BUTTON_WIDTH * (card.deck_limit + 1) },
-                ]}
-              />
+              { count > 0 ?
+                <TouchableOpacity onPress={this._decrement}>
+                  <MaterialCommunityIcons name="minus-box" size={36} color="#666" /> :
+                </TouchableOpacity>
+                :
+                <MaterialCommunityIcons name="minus-box-outline" size={36} color="#ddd" />
+              }
+              { count === null || atLimit ?
+                <MaterialCommunityIcons name="plus-box-outline" size={36} color="#ddd" /> :
+                <TouchableOpacity onPress={this._increment}>
+                  <MaterialCommunityIcons name="plus-box" size={36} color="#666" /> :
+                </TouchableOpacity>
+              }
             </View>
           }
         </View>
@@ -172,8 +204,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    paddingTop: 6,
-    paddingBottom: 6,
     borderBottomWidth: 1,
     borderColor: COLORS.gray,
   },
@@ -182,7 +212,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    height: 24,
+    height: 40,
   },
   skillIcons: {
     flex: 1,
@@ -200,14 +230,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: 8,
   },
+  cardCount: {
+    fontFamily: 'System',
+    fontSize: 18,
+    lineHeight: 40,
+    fontWeight: '600',
+    marginRight: 4,
+  },
   cardName: {
     marginLeft: 4,
     fontFamily: 'System',
     fontSize: 18,
-    lineHeight: 24,
+    lineHeight: 40,
   },
   buttonContainer: {
-    padding: 0,
+    paddingTop: 2,
+    paddingBottom: 2,
     marginRight: 8,
     flex: 1,
     flexDirection: 'row',
