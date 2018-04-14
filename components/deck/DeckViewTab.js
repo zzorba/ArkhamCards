@@ -261,13 +261,14 @@ const styles = StyleSheet.create({
   },
   typeText: {
     color: '#000000',
-    fontSize: 14,
-    marginTop: 10,
-    marginBottom: 10,
+    fontSize: 16,
+    marginTop: 16,
+    marginBottom: 6,
   },
   subTypeText: {
+    marginTop: 4,
     color: '#646464',
-    fontSize: 11.9,
+    fontSize: 14,
     fontWeight: '200',
     borderBottomColor: '#0A0A0A',
     borderBottomWidth: 1,

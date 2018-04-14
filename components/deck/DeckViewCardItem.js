@@ -57,7 +57,7 @@ export default class DeckViewCardItem extends React.PureComponent {
       );
     }
 
-    return null;
+    return <View style={styles.smallSpace} />;
   }
 
   render() {
@@ -98,11 +98,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
-    height: 24,
+    height: 28,
   },
   quantity: {
     width: 20,
     paddingRight: 2,
+  },
+  smallSpace: {
+    width: 2,
   },
   deltaSpace: {
     width: 5,
@@ -111,17 +114,17 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     color: '#000000',
     fontFamily: 'System',
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 18,
+    lineHeight: 28,
   },
   defaultText: {
     color: '#000000',
     fontFamily: 'System',
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 18,
+    lineHeight: 28,
   },
   cardIcon: {
-    width: 18,
+    width: 22,
     height: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
