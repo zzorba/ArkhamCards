@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { map, range } from 'lodash';
+import { range } from 'lodash';
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Button } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';
@@ -16,7 +15,6 @@ import { createFactionIcons, FACTION_COLORS } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
 
 const FACTION_ICONS = createFactionIcons(18);
-const BUTTON_WIDTH = 40;
 
 export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
@@ -57,7 +55,7 @@ export default class CardSearchResult extends React.PureComponent {
       card,
       count,
     } = this.props;
-    if (0 < count) {
+    if (count > 0) {
       this.props.onDeckCountChange(card.code, count - 1);
     }
   }
@@ -122,12 +120,12 @@ export default class CardSearchResult extends React.PureComponent {
     const {
       card,
     } = this.props;
-    if (card.type_code == 'investigator' || (
-      card.skill_willpower == null &&
-      card.skill_intellect == null &&
-      card.skill_combat == null &&
-      card.skill_agility == null &&
-      card.skill_wild == null)) {
+    if (card.type_code === 'investigator' || (
+      card.skill_willpower === null &&
+      card.skill_intellect === null &&
+      card.skill_combat === null &&
+      card.skill_agility === null &&
+      card.skill_wild === null)) {
       return null;
     }
     return (
@@ -250,16 +248,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-  },
-  buttonGroup: {
-    height: 22,
-  },
-  countButton: {
-    width: BUTTON_WIDTH,
-    padding: 0,
-    backgroundColor: 'rgb(246,246,246)',
-  },
-  selectedCountButton: {
-    backgroundColor: 'rgb(221,221,221)',
   },
 });
