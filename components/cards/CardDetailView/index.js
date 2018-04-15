@@ -194,25 +194,22 @@ class CardDetailView extends React.PureComponent {
   renderTitle(card, blur, name, subname) {
     const factionColor = card.faction_code && FACTION_COLORS[card.faction_code];
     return (
-      <View style={{
-        paddingTop: 3,
-        paddingBottom: 3,
+      <View style={[styles.cardTitle, {
         backgroundColor: blur ? '#000000' : (factionColor || '#FFFFFF'),
-        borderBottomWidth: 1,
         borderColor: factionColor || '#000000',
-      }}>
-        <Text style={{
-          marginLeft: 5,
+      }]}>
+        <Text style={[styles.cardTitleText, {
           color: factionColor ? '#FFFFFF' : '#000000',
-          fontSize: 18,
-        }}>
+        }]}>
           { `${card.is_unique ? '* ' : ''}${name}` }
         </Text>
-        { subname && <Text style={{
-          marginLeft: 15,
-          color: factionColor ? '#FFFFFF' : '#000000',
-          fontSize: 11,
-        }}>{ subname }</Text> }
+        { subname && (
+          <Text style={[styles.cardTitleSubtitle, {
+            color: factionColor ? '#FFFFFF' : '#000000',
+          }]}>
+            { subname }
+          </Text>
+        ) }
       </View>
     );
   }
@@ -315,29 +312,21 @@ class CardDetailView extends React.PureComponent {
     return (
       <View style={styles.container}>
         { isHorizontal && image }
-        <View style={{
-          width: isHorizontal ? '100%' : '50%',
-          marginTop: 2,
-          borderColor: FACTION_COLORS[card.faction_code] || '#000000',
-          borderWidth: 1,
-          borderRadius: 3,
+        <View style={[styles.card, {
           backgroundColor: blur ? '#000000' : '#FFFFFF',
-        }}>
+          borderColor: FACTION_COLORS[card.faction_code] || '#000000',
+        }]}>
           { this.renderTitle(card, blur, card.back_name || card.name) }
-          <View style={{ marginLeft: 5, marginTop: 5 }}>
+          <View style={styles.typeBlock}>
             <Text style={styles.typeText}>
               { card.type_name }
             </Text>
             { !!card.back_flavor && flavorFirst &&
               <Text style={styles.flavorText}>{ card.back_flavor }</Text> }
             { !!card.back_text && (
-              <View style={{
-                marginTop: 3,
-                marginLeft: 3,
-                borderLeftWidth: 3,
-                paddingLeft: 5,
+              <View style={[styles.cardTextBlock, {
                 borderColor: FACTION_COLORS[card.faction_code] || '#000000',
-              }}>
+              }]}>
                 <CardText text={card.back_text} />
               </View>)
             }
@@ -367,19 +356,14 @@ class CardDetailView extends React.PureComponent {
       <ScrollView style={{ flexDirection: 'column', flexWrap: 'wrap' }}>
         { !isHorizontal && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         <View style={styles.container}>
-          <View style={{
-            width: '100%',
-            marginTop: 2,
-            borderColor: FACTION_COLORS[card.faction_code] || '#000000',
-            borderWidth: 1,
-            borderRadius: 3,
-          }}>
+          <View style={[
+            styles.card,
+            { borderColor: FACTION_COLORS[card.faction_code] || '#000000' },
+          ]}>
             { this.renderTitle(card, blur, card.name, card.subname) }
-            <View style={{
-              marginLeft: 5,
-              marginTop: 5,
+            <View style={[styles.typeBlock, {
               backgroundColor: blur ? '#000000' : '#FFFFFF',
-            }}>
+            }]}>
               <View style={styles.row}>
                 <View style={styles.column}>
                   { this.renderMetadata(card) }
@@ -397,13 +381,9 @@ class CardDetailView extends React.PureComponent {
                 </Text>
               }
               { !!card.real_text && (
-                <View style={{
-                  marginTop: 3,
-                  marginLeft: 3,
-                  borderLeftWidth: 3,
-                  paddingLeft: 5,
+                <View style={[styles.cardTextBlock, {
                   borderColor: FACTION_COLORS[card.faction_code] || '#000000',
-                }}>
+                }]}>
                   <CardText text={card.real_text} />
                 </View>)
               }
@@ -491,6 +471,34 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+  },
+  card: {
+    width: '100%',
+    marginTop: 2,
+    borderWidth: 1,
+    borderRadius: 3,
+  },
+  cardTitle: {
+    paddingTop: 3,
+    paddingBottom: 3,
+    borderBottomWidth: 1,
+  },
+  cardTitleText: {
+    marginLeft: 5,
+    fontSize: 18,
+  },
+  cardTitleSubtitle: {
+    marginLeft: 15,
+    fontSize: 11,
+  },
+  cardTextBlock: {
+    marginTop: 3,
+    marginLeft: 3,
+    borderLeftWidth: 3,
+    paddingLeft: 5,
+  },
+  typeBlock: {
+    marginLeft: 5, marginTop: 5,
   },
   typeText: {
     fontWeight: '700',
