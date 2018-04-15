@@ -19,11 +19,12 @@ import {
   SKILL_COLORS,
 } from '../../../constants';
 import * as Actions from '../../../actions';
+import PlayerCardImage from '../../core/PlayerCardImage';
 import AppIcon from '../../../assets/AppIcon';
 import ArkhamIcon from '../../../assets/ArkhamIcon';
 import EncounterIcon from '../../../assets/EncounterIcon';
 import CardText from '../CardText';
-import FlippableCard from './FlippableCard';
+import FlippableCard from '../../core/FlippableCard';
 import FaqComponent from './FaqComponent';
 
 const PER_INVESTIGATOR_ICON = (
@@ -366,9 +367,8 @@ class CardDetailView extends React.PureComponent {
       <ScrollView style={{ flexDirection: 'column', flexWrap: 'wrap' }}>
         { !isHorizontal && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         <View style={styles.container}>
-          { isHorizontal && this.renderCardImage(card, blur, isHorizontal) }
           <View style={{
-            width: isHorizontal ? '100%' : '50%',
+            width: '100%',
             marginTop: 2,
             borderColor: FACTION_COLORS[card.faction_code] || '#000000',
             borderWidth: 1,
@@ -380,8 +380,17 @@ class CardDetailView extends React.PureComponent {
               marginTop: 5,
               backgroundColor: blur ? '#000000' : '#FFFFFF',
             }}>
-              { this.renderMetadata(card) }
-              { this.renderPlaydata(card) }
+              <View style={styles.row}>
+                <View style={styles.column}>
+                  { this.renderMetadata(card) }
+                  { this.renderPlaydata(card) }
+                </View>
+                <View style={styles.column}>
+                  <View style={styles.playerImage}>
+                    <PlayerCardImage card={card} />
+                  </View>
+                </View>
+              </View>
               { !!card.flavor && flavorFirst &&
                 <Text style={styles.flavorText}>
                   { card.flavor }
@@ -463,8 +472,21 @@ export default connectRealm(
   });
 
 const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  column: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  playerImage: {
+    marginRight: 10,
+  },
   container: {
-    margin: 3,
+    margin: 8,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
@@ -494,7 +516,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   verticalCard: {
-    width: '50%',
+    width: '100%',
     height: 280,
     flexDirection: 'column',
     alignItems: 'flex-start',

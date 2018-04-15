@@ -14,6 +14,7 @@
     "react-native": "0.54.4",
     "react-native-elements": "1.0.0-beta2",
     "react-native-flip-card": "3.5.2",
+    "react-native-lightbox": "0.7.0",
     "react-native-markdown-view": "1.1.4",
     "react-native-navigation": "1.1.436",
     "react-native-progress": "3.4.0",
