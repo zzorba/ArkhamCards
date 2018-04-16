@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -91,8 +92,8 @@ class FaqComponent extends React.Component {
     } = this.props;
     if (faqEntry) {
       return (
-        <View>
-          <Text>FAQ</Text>
+        <View style={styles.container}>
+          <Text style={styles.title}>FAQ</Text>
           <CardText text={faqEntry.text} onLinkPress={this._linkPressed} />
         </View>
       );
@@ -103,19 +104,26 @@ class FaqComponent extends React.Component {
       faqError,
     } = this.state;
     if (noFaqEntry) {
-      return <Text>No FAQ entries at this time</Text>;
+      return (
+        <View style={styles.container}>
+          <Text>No FAQ entries at this time</Text>
+        </View>
+      );
     }
     if (faqLoading) {
-      return <Bar indeterminate />;
+      return (
+        <View style={styles.container}>
+          <Bar indeterminate />
+        </View>
+      );
     }
 
     return (
-      <View>
+      <View style={styles.container}>
         { faqError && <Text>{ faqError }</Text> }
         <Button onPress={this._loadFaq} text="Check for FAQ Entries" />
       </View>
     );
-
   }
 }
 
@@ -127,5 +135,15 @@ export default connectRealm(FaqComponent, {
       cards: results.cards,
       faqEntry: head(results.faqEntries.filtered(`code == '${props.id}'`)),
     };
+  },
+});
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 10,
+  },
+  title: {
+    fontSize: 18,
+    fontFamily: 'System',
   },
 });

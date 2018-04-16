@@ -421,6 +421,7 @@ class CardDetailView extends React.PureComponent {
         { (isHorizontal || !card.spoiler) && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         { card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
         <FaqComponent navigator={navigator} id={card.code} />
+        <View style={styles.footerPadding} />
       </ScrollView>
     );
   }
@@ -545,5 +546,8 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'contain',
     justifyContent: 'flex-start',
+  },
+  footerPadding: {
+    height: 250,
   },
 });
