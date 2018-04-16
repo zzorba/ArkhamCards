@@ -32,7 +32,10 @@ export default class PlayerCardImage extends React.Component {
     } = Dimensions.get('window');
 
     this.state = {
-      flipped: props.card.type_code === 'investigator' || (props.card.double_sided && !props.card.spoiler),
+      flipped: props.card.type_code === 'investigator' ||
+        props.card.type_code === 'act' ||
+        props.card.type_code === 'agenda' ||
+        (props.card.double_sided && !props.card.spoiler),
       width,
       height,
     };
@@ -70,6 +73,7 @@ export default class PlayerCardImage extends React.Component {
       </View>
     );
   }
+
   renderFullsize() {
     const {
       card,
@@ -121,15 +125,40 @@ export default class PlayerCardImage extends React.Component {
     );
   }
 
+  containerStyle() {
+    const {
+      card,
+    } = this.props;
+    switch (card.type_code) {
+      case 'investigator': return styles.investigatorContainer;
+      default: return {};
+    }
+  }
+
+  imageStyle() {
+    const {
+      card,
+    } = this.props;
+    switch (card.type_code) {
+      case 'investigator': return styles.investigatorImage;
+      case 'agenda': return styles.agendaImage;
+      case 'act': return styles.actImage;
+      case 'location': return styles.locationImage;
+      default: return {};
+    }
+  }
+
   render() {
     const {
       card,
     } = this.props;
     const isInvestigator = card.type_code === 'investigator';
+    const filename = (card.type_code === 'location' && card.double_sided) ?
+      card.backimagesrc :
+      card.imagesrc;
+
     return (
-      <View style={[styles.container,
-        isInvestigator ? styles.investigatorContainer : {}
-      ]}>
+      <View style={[styles.container, this.containerStyle()]}>
         { !card.imagesrc ?
           <View style={[
             styles.placeholder,
@@ -147,10 +176,8 @@ export default class PlayerCardImage extends React.Component {
             renderContent={this._renderFullsize}
           >
             <Image
-              style={[styles.image,
-                isInvestigator ? styles.investigatorImage : {}
-              ]}
-              source={{ uri: `https://arkhamdb.com/${card.imagesrc}` }}
+              style={[styles.image, this.imageStyle()]}
+              source={{ uri: `https://arkhamdb.com/${filename}` }}
               resizeMode="contain"
             />
           </Lightbox>
@@ -174,16 +201,35 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    top: -22,
-    left: -26,
-    width: 142,
-    height: 198,
+    top: -25,
+    left: -30,
+    width: 142 * 1.1,
+    height: 198 * 1.1,
+  },
+  locationImage: {
+    position: 'absolute',
+    top: -35,
+    left: -45,
+    width: 142 * 1.4,
+    height: 198 * 1.4,
   },
   investigatorImage: {
     top: -34,
     left: -10,
     width: 166 + 44,
     height: 136 + 34,
+  },
+  agendaImage: {
+    top: -35,
+    left: 0,
+    height: 136 * 1.35,
+    width: 166 * 1.35,
+  },
+  actImage: {
+    top: -35,
+    left: -130,
+    height: 136 * 1.35,
+    width: 166 * 1.35,
   },
   placeholder: {
     width: 80,

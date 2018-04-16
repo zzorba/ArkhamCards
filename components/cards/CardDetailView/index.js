@@ -468,6 +468,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   playerImage: {
+    marginTop: 2,
     marginRight: 10,
   },
   container: {
