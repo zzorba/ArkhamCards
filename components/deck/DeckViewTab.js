@@ -193,7 +193,7 @@ export default class DeckViewTab extends React.Component {
           <View style={styles.header}>
             <TouchableOpacity onPress={this._showInvestigator}>
               <View style={styles.image}>
-                <InvestigatorImage card={investigator} />
+                <InvestigatorImage card={investigator} navigator={navigator} />
               </View>
             </TouchableOpacity>
             <View style={styles.metadata}>

@@ -8,15 +8,38 @@ import {
 } from 'react-native';
 
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
+import PlayerCardImage from './PlayerCardImage';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
 
 export default class InvestigatorImage extends React.Component {
   static propTypes = {
     card: PropTypes.object.isRequired,
+    navigator: PropTypes.object,
   };
 
-  render() {
+  constructor(props) {
+    super(props);
+
+    this._onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
+    const {
+      card,
+      navigator,
+    } = this.props;
+    navigator.push({
+      screen: 'Card',
+      passProps: {
+        id: card.code,
+        pack_code: card.pack_code,
+        showSpoilers: true,
+      },
+    });
+  }
+
+  renderImage() {
     const {
       card,
     } = this.props;
@@ -40,6 +63,21 @@ export default class InvestigatorImage extends React.Component {
         }
       </View>
     );
+  }
+
+  render() {
+    const {
+      card,
+      clickable,
+    } = this.props;
+    if (clickable) {
+      return (
+        <TouchableOpacity onPress={this._onPress}>
+          { this.renderImage() }
+        </TouchableOpacity>
+      );
+    }
+    return this.renderImage();
   }
 }
 

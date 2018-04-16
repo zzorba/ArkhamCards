@@ -32,7 +32,7 @@ export default class PlayerCardImage extends React.Component {
     } = Dimensions.get('window');
 
     this.state = {
-      flipped: false,
+      flipped: props.card.type_code === 'investigator' || (props.card.double_sided && !props.card.spoiler),
       width,
       height,
     };
@@ -125,8 +125,11 @@ export default class PlayerCardImage extends React.Component {
     const {
       card,
     } = this.props;
+    const isInvestigator = card.type_code === 'investigator';
     return (
-      <View style={styles.container}>
+      <View style={[styles.container,
+        isInvestigator ? styles.investigatorContainer : {}
+      ]}>
         { !card.imagesrc ?
           <View style={[
             styles.placeholder,
@@ -144,7 +147,9 @@ export default class PlayerCardImage extends React.Component {
             renderContent={this._renderFullsize}
           >
             <Image
-              style={styles.image}
+              style={[styles.image,
+                isInvestigator ? styles.investigatorImage : {}
+              ]}
               source={{ uri: `https://arkhamdb.com/${card.imagesrc}` }}
               resizeMode="contain"
             />
@@ -163,12 +168,22 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
   },
+  investigatorContainer: {
+    width: 80,
+    height: 80,
+  },
   image: {
     position: 'absolute',
     top: -22,
     left: -26,
     width: 142,
     height: 198,
+  },
+  investigatorImage: {
+    top: -34,
+    left: -10,
+    width: 166 + 44,
+    height: 136 + 34,
   },
   placeholder: {
     width: 80,

@@ -111,10 +111,10 @@ class CardDetailView extends React.PureComponent {
     if (card.type_code === 'investigator') {
       return (
         <Text>
-          { `Willpower: ${card.skill_willpower}. ` }
-          { `Intellect: ${card.skill_intellect}. ` }
-          { `Combat: ${card.skill_combat}. ` }
-          { `Agility: ${card.skill_agility}.` }
+          <ArkhamIcon name="willpower" size={14} color="#000" />{ `${card.skill_willpower}  ` }
+          <ArkhamIcon name="intellect" size={14} color="#000" />{ `${card.skill_intellect}  ` }
+          <ArkhamIcon name="combat" size={14} color="#000" />{ `${card.skill_combat}  ` }
+          <ArkhamIcon name="agility" size={14} color="#000" />{ `${card.skill_agility}  ` }
         </Text>
       );
     }
@@ -311,7 +311,6 @@ class CardDetailView extends React.PureComponent {
 
     return (
       <View style={styles.container}>
-        { isHorizontal && image }
         <View style={[styles.card, {
           backgroundColor: blur ? '#000000' : '#FFFFFF',
           borderColor: FACTION_COLORS[card.faction_code] || '#000000',
@@ -334,7 +333,6 @@ class CardDetailView extends React.PureComponent {
               <Text style={styles.flavorText}>{ card.back_flavor }</Text> }
           </View>
         </View>
-        { !isHorizontal && image }
       </View>
     );
   }
@@ -354,7 +352,7 @@ class CardDetailView extends React.PureComponent {
       card.type_code === 'agenda';
     return (
       <ScrollView style={{ flexDirection: 'column', flexWrap: 'wrap' }}>
-        { !isHorizontal && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
+        { !(isHorizontal || !card.spoiler) && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         <View style={styles.container}>
           <View style={[
             styles.card,
@@ -365,7 +363,7 @@ class CardDetailView extends React.PureComponent {
               backgroundColor: blur ? '#000000' : '#FFFFFF',
             }]}>
               <View style={styles.row}>
-                <View style={styles.column}>
+                <View style={styles.mainColumn}>
                   { this.renderMetadata(card) }
                   { this.renderPlaydata(card) }
                 </View>
@@ -419,9 +417,8 @@ class CardDetailView extends React.PureComponent {
               }
             </View>
           </View>
-          { !isHorizontal && this.renderCardImage(card, blur, isHorizontal) }
         </View>
-        { isHorizontal && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
+        { (isHorizontal || !card.spoiler) && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         { card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
         <FaqComponent navigator={navigator} id={card.code} />
       </ScrollView>
@@ -453,14 +450,21 @@ export default connectRealm(
 
 const styles = StyleSheet.create({
   row: {
+    width: '100%',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
   },
   column: {
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
+  },
+  mainColumn: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    flex: 1,
   },
   playerImage: {
     marginRight: 10,
