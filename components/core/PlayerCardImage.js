@@ -159,16 +159,15 @@ export default class PlayerCardImage extends React.Component {
 
     return (
       <View style={[styles.container, this.containerStyle()]}>
-        { !card.imagesrc ?
-          <View style={[
-            styles.placeholder,
-            { backgroundColor: FACTION_COLORS[card.faction_code] },
-          ]}>
-            <Text style={styles.placeholderIcon}>
-              { FACTION_ICONS[card.faction_code] }
-            </Text>
-          </View>
-          :
+        <View style={[
+          styles.placeholder,
+          { backgroundColor: FACTION_COLORS[card.faction_code] },
+        ]}>
+          <Text style={styles.placeholderIcon}>
+            { FACTION_ICONS[card.faction_code] }
+          </Text>
+        </View>
+        { card.imagesrc && (
           <Lightbox
             swipeToDismiss
             backgroundColor="white"
@@ -181,7 +180,7 @@ export default class PlayerCardImage extends React.Component {
               resizeMode="contain"
             />
           </Lightbox>
-        }
+        ) }
       </View>
     );
   }
@@ -196,8 +195,8 @@ const styles = StyleSheet.create({
     height: 90,
   },
   investigatorContainer: {
-    width: 80,
-    height: 80,
+    width: 90,
+    height: 90,
   },
   image: {
     position: 'absolute',
@@ -214,7 +213,7 @@ const styles = StyleSheet.create({
     height: 198 * 1.4,
   },
   investigatorImage: {
-    top: -34,
+    top: -32,
     left: -10,
     width: 166 + 44,
     height: 136 + 34,
@@ -232,8 +231,11 @@ const styles = StyleSheet.create({
     width: 166 * 1.35,
   },
   placeholder: {
-    width: 80,
-    height: 80,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 90,
+    height: 90,
     borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',

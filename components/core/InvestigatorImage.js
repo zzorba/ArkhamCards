@@ -45,22 +45,21 @@ export default class InvestigatorImage extends React.Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        { !card.imagesrc ?
-          <View style={[
-            styles.placeholder,
-            { backgroundColor: FACTION_COLORS[card.faction_code] },
-          ]}>
-            <Text style={styles.placeholderIcon}>
-              { FACTION_ICONS[card.faction_code] }
-            </Text>
-          </View>
-          :
+        <View style={[
+          styles.placeholder,
+          { backgroundColor: FACTION_COLORS[card.faction_code] },
+        ]}>
+          <Text style={styles.placeholderIcon}>
+            { FACTION_ICONS[card.faction_code] }
+          </Text>
+        </View>
+        { card.imagesrc && (
           <Image
             style={styles.image}
             source={{ uri: `https://arkhamdb.com/${card.imagesrc}` }}
             resizeMode="contain"
           />
-        }
+        ) }
       </View>
     );
   }
@@ -97,6 +96,9 @@ const styles = StyleSheet.create({
     height: 136 + 34,
   },
   placeholder: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: 80,
     height: 80,
     borderRadius: 6,
