@@ -141,6 +141,9 @@ android {
 }
 
 dependencies {
+    compile project(':appcenter-crashes')
+    compile project(':appcenter-analytics')
+    compile project(':appcenter')
     compile project(':realm')
     compile project(':react-native-svg')
     compile project(':react-native-fetch-blob')

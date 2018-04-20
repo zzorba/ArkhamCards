@@ -1,0 +1,32 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'ArkhamCards' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for ArkhamCards
+  pod 'AppCenter/Crashes', '~> 1.5.0'
+  pod 'AppCenter/Analytics', '~> 1.5.0'
+  pod 'AppCenterReactNativeShared', '~> 1.4.0'
+
+  platform :ios, '9.0'
+  target 'ArkhamCardsTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'ArkhamCards-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for ArkhamCards-tvOS
+
+  target 'ArkhamCards-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
