@@ -36,6 +36,10 @@
     @com.facebook.common.internal.DoNotStrip *;
 }
 
+# Don't strip out stuff from react-native-svg
+# see https://github.com/react-native-community/react-native-svg/issues/481
+-keep public class com.horcrux.svg.** {*;}
+
 -keepclassmembers @com.facebook.proguard.annotations.KeepGettersAndSetters class * {
   void set*(***);
   *** get*();
