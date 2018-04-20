@@ -63,7 +63,7 @@ export default class PlayerCardImage extends React.Component {
         <TouchableOpacity onPress={close}>
           <MaterialCommunityIcons name="close" size={32} color="#888" />
         </TouchableOpacity>
-        { card.double_sided &&
+        { card.double_sided && card.backimagesrc &&
           <Button
             style={{ marginRight: 4 }}
             onPress={this._flip}
