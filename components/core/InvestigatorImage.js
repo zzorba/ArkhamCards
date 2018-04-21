@@ -53,7 +53,7 @@ export default class InvestigatorImage extends React.Component {
             { FACTION_ICONS[card.faction_code] }
           </Text>
         </View>
-        { card.imagesrc && (
+        { !!card.imagesrc && (
           <Image
             style={styles.image}
             source={{ uri: `https://arkhamdb.com/${card.imagesrc}` }}

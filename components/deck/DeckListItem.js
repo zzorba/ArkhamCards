@@ -39,9 +39,7 @@ export default class DeckListItem extends React.Component {
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.row} >
           <View style={styles.image}>
-            { investigator && (
-              <InvestigatorImage card={investigator} />
-            ) }
+            { !!investigator && <InvestigatorImage card={investigator} /> }
           </View>
           <View style={styles.titleColumn}>
             <Text style={styles.title} numLines={2}>

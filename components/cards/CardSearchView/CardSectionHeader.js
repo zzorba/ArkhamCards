@@ -11,7 +11,9 @@ import { COLORS } from '../../../styles/colors';
 export default function CardSectionHeader({ title }) {
   return (
     <View style={styles.row}>
-      <Text style={styles.headerText}>{ title }</Text>
+      <Text style={styles.headerText}>
+        { title }
+      </Text>
     </View>
   );
 }

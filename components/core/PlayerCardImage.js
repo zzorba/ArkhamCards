@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import {
   Dimensions,
   Image,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import Lightbox from 'react-native-lightbox';
-import FlipCard from 'react-native-flip-card';
 import { Button } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
@@ -63,7 +63,7 @@ export default class PlayerCardImage extends React.Component {
         <TouchableOpacity onPress={close}>
           <MaterialCommunityIcons name="close" size={32} color="#888" />
         </TouchableOpacity>
-        { card.double_sided && card.backimagesrc &&
+        { !!card.double_sided && !!card.backimagesrc &&
           <Button
             style={{ marginRight: 4 }}
             onPress={this._flip}
@@ -81,46 +81,33 @@ export default class PlayerCardImage extends React.Component {
     const {
       flipped,
       height,
+      width,
     } = this.state;
     const cardRatio = 68.0 / 88;
     const cardHeight = height * cardRatio;
-    const cardMarginTop = (height + HEADER_SIZE - cardHeight) / 2;
+    const cardWidth = width - 16;
+    const cardMarginTop = Platform.OS === 'ios' ? 0 : HEADER_SIZE;
     if (card.double_sided) {
+      if (flipped) {
+        return (
+          <Image
+            style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+            source={{ uri: `https://arkhamdb.com${card.imagesrc}` }}
+          />
+        );
+      }
       return (
-        <View style={[styles.flipCardLightbox, { height }]}>
-          <FlipCard
-            friction={10}
-            perspective={1000}
-            flipHorizontal
-            flipVertical={false}
-            flip={flipped}
-          >
-            <Image
-              style={{
-                marginTop: cardMarginTop,
-                height: cardHeight,
-              }}
-              resizeMode="contain"
-              source={{ uri: `https://arkhamdb.com/${card.backimagesrc}` }}
-            />
-            <Image
-              style={{
-                marginTop: cardMarginTop,
-                height: cardHeight,
-              }}
-              resizeMode="contain"
-              source={{ uri: `https://arkhamdb.com/${card.imagesrc}` }}
-            />
-          </FlipCard>
-        </View>
+        <Image
+          style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+          source={{ uri: `https://arkhamdb.com${card.backimagesrc}` }}
+        />
       );
     }
 
     return (
       <Image
-        style={{ height: '100%' }}
-        resizeMode="contain"
-        source={{ uri: `https://arkhamdb.com/${card.imagesrc}` }}
+        style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+        source={{ uri: `https://arkhamdb.com${card.imagesrc}` }}
       />
     );
   }
@@ -148,6 +135,23 @@ export default class PlayerCardImage extends React.Component {
     }
   }
 
+  renderPlaceholder() {
+    const {
+      card,
+    } = this.props;
+
+    return (
+      <View style={[
+        styles.placeholder,
+        { backgroundColor: FACTION_COLORS[card.faction_code] },
+      ]}>
+        <Text style={styles.placeholderIcon}>
+          { FACTION_ICONS[card.faction_code] }
+        </Text>
+      </View>
+    );
+  }
+
   render() {
     const {
       card,
@@ -157,31 +161,32 @@ export default class PlayerCardImage extends React.Component {
       card.backimagesrc :
       card.imagesrc;
 
-    return (
-      <View style={[styles.container, this.containerStyle()]}>
-        <View style={[
-          styles.placeholder,
-          { backgroundColor: FACTION_COLORS[card.faction_code] },
-        ]}>
-          <Text style={styles.placeholderIcon}>
-            { FACTION_ICONS[card.faction_code] }
-          </Text>
+    if (!card.imagesrc) {
+      return (
+        <View style={[styles.container, this.containerStyle()]}>
+          { this.renderPlaceholder() }
         </View>
-        { card.imagesrc && (
-          <Lightbox
-            swipeToDismiss
-            backgroundColor="white"
-            renderHeader={this._renderLightboxHeader}
-            renderContent={this._renderFullsize}
-          >
+      );
+    }
+
+    return (
+      <Lightbox
+        swipeToDismiss
+        backgroundColor="white"
+        renderHeader={this._renderLightboxHeader}
+        renderContent={this._renderFullsize}
+      >
+        <View style={[styles.container, this.containerStyle()]}>
+          { this.renderPlaceholder() }
+          <View style={[styles.container, this.containerStyle()]}>
             <Image
               style={[styles.image, this.imageStyle()]}
-              source={{ uri: `https://arkhamdb.com/${filename}` }}
+              source={{ uri: `https://arkhamdb.com${filename}` }}
               resizeMode="contain"
             />
-          </Lightbox>
-        ) }
-      </View>
+          </View>
+        </View>
+      </Lightbox>
     );
   }
 }
@@ -245,6 +250,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   flipCardLightbox: {
+    position: 'absolute',
+    left: 0,
+    top: HEADER_SIZE,
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
@@ -254,5 +262,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  bigCard: {
+    marginTop: Platform.OS === 'ios' ? 0 : HEADER_SIZE,
+    resizeMode: 'contain',
+    marginLeft: 8,
+    marginRight: 8,
   },
 });

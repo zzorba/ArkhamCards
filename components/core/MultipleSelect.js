@@ -114,7 +114,7 @@ export default class MultipleSelect extends React.Component {
     const values = Object.keys(list);
     return(
       <View onLayout={(evt) => { this.getNewDimensions(evt) }}>
-        { this.props.search && <View style={{ flexDirection: 'row', height: 55 }}>
+        { !!this.props.search && <View style={{ flexDirection: 'row', height: 55 }}>
           <View style={{ marginTop: 15, marginLeft: 15, backgroundColor: 'transparent' }}>
             <Icon name="magnify" color={this.props.iconColor} size={25} />
           </View>

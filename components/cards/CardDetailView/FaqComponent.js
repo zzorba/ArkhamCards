@@ -120,7 +120,7 @@ class FaqComponent extends React.Component {
 
     return (
       <View style={styles.container}>
-        { faqError && <Text>{ faqError }</Text> }
+        { !!faqError && <Text>{ faqError }</Text> }
         <Button onPress={this._loadFaq} text="Check for FAQ Entries" />
       </View>
     );

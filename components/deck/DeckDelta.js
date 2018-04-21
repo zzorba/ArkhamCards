@@ -190,17 +190,17 @@ class DeckDelta extends React.Component {
       <View>
         <Text style={styles.title}>Progress</Text>
         { this.renderXp() }
-        { deck.previous_deck && (
+        { !!deck.previous_deck && (
           <TouchableOpacity onPress={this._showPreviousDeck}>
             <Text>View Previous Deck</Text>
           </TouchableOpacity>
         ) }
-        { deck.next_deck && (
+        { !!deck.next_deck && (
           <TouchableOpacity onPress={this._showNextDeck}>
             <Text>View Next Deck</Text>
           </TouchableOpacity>
         ) }
-        { keys(changedCards).length && (
+        { !!keys(changedCards).length && (
           <View>
             <Text style={styles.title}>Changes</Text>
             { map(keys(changedCards), code => (
@@ -214,7 +214,7 @@ class DeckDelta extends React.Component {
             )) }
           </View>
         ) }
-        { keys(exiledCards).length && (
+        { !!keys(exiledCards).length && (
           <View>
             <Text style={styles.title}>Exiled Cards</Text>
             { map(keys(exiledCards), code => (

@@ -72,7 +72,7 @@ export default class PackRow extends React.Component {
             <Text style={styles.title}>{ pack.name }</Text>
           </View>
         </TouchableOpacity>
-        { setChecked && (
+        { !!setChecked && (
           <View style={styles.checkbox}>
             <CheckBox
               checked={checked}

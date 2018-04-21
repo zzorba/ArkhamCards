@@ -139,6 +139,41 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
+  renderPlusButton() {
+    const {
+      count,
+      card,
+    } = this.props;
+    const atLimit = (count === card.deck_limit);
+    if (count === null || atLimit) {
+      return (
+        <MaterialCommunityIcons name="plus-box-outline" size={36} color="#ddd" />
+      );
+    }
+    return (
+      <TouchableOpacity onPress={this._increment}>
+        <MaterialCommunityIcons name="plus-box" size={36} color={COLORS.green} />
+      </TouchableOpacity>
+    );
+  }
+
+  renderMinusButton() {
+    if (this.props.count > 0) {
+      return (
+        <TouchableOpacity onPress={this._decrement}>
+          <MaterialCommunityIcons name="minus-box" size={36} color={COLORS.red} />
+        </TouchableOpacity>
+      );
+    }
+    return (
+      <MaterialCommunityIcons
+        name="minus-box-outline"
+        size={36}
+        color="#ddd"
+      />
+    );
+  }
+
   render() {
     const {
       card,
@@ -149,15 +184,14 @@ export default class CardSearchResult extends React.PureComponent {
       return <Text>No Text</Text>;
     }
     const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
-    const atLimit = (count === card.deck_limit);
     return (
       <View style={styles.stack}>
         <View style={styles.row}>
           <TouchableOpacity onPress={this._onPress}>
             <View style={styles.cardTextRow}>
-              { onDeckCountChange && count > 0 && (
+              { !!onDeckCountChange && (count > 0) && (
                 <Text style={styles.cardCount}>
-                  { count }x
+                  { `${count}x` }
                 </Text>
               ) }
               <View style={styles.cardIcon}>
@@ -174,23 +208,12 @@ export default class CardSearchResult extends React.PureComponent {
               </Text>
             </View>
           </TouchableOpacity>
-          { onDeckCountChange &&
+          { !!onDeckCountChange && (
             <View style={styles.buttonContainer}>
-              { count > 0 ?
-                <TouchableOpacity onPress={this._decrement}>
-                  <MaterialCommunityIcons name="minus-box" size={36} color={COLORS.red} /> :
-                </TouchableOpacity>
-                :
-                <MaterialCommunityIcons name="minus-box-outline" size={36} color="#ddd" />
-              }
-              { count === null || atLimit ?
-                <MaterialCommunityIcons name="plus-box-outline" size={36} color="#ddd" /> :
-                <TouchableOpacity onPress={this._increment}>
-                  <MaterialCommunityIcons name="plus-box" size={36} color={COLORS.green} /> :
-                </TouchableOpacity>
-              }
+              { this.renderMinusButton() }
+              { this.renderPlusButton() }
             </View>
-          }
+          ) }
         </View>
       </View>
     );

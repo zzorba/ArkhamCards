@@ -174,7 +174,7 @@ class CardDetailView extends React.PureComponent {
       return (
         <Text>
           { `Fight: ${card.enemy_fight || '-'}. Health: ${card.health || '-'}` }
-          { card.health_per_investigator && PER_INVESTIGATOR_ICON }
+          { !!card.health_per_investigator && PER_INVESTIGATOR_ICON }
           { `. Evade: ${card.enemy_evade || '-'}. ` }
           { '\n' }
           { `Damage: ${card.enemy_damage || '-'}. Horror: ${card.enemy_horror}. ` }
@@ -203,7 +203,7 @@ class CardDetailView extends React.PureComponent {
         }]}>
           { `${card.is_unique ? '* ' : ''}${name}` }
         </Text>
-        { subname && (
+        { !!subname && (
           <Text style={[styles.cardTitleSubtitle, {
             color: factionColor ? '#FFFFFF' : '#000000',
           }]}>
@@ -403,7 +403,7 @@ class CardDetailView extends React.PureComponent {
                   <Text>
                     { `${card.pack_name} #${card.position % 1000}.` }
                   </Text>
-                  { card.encounter_name &&
+                  { !!card.encounter_name &&
                     <Text>
                       <EncounterIcon
                         encounter_code={card.encounter_code}
@@ -419,7 +419,7 @@ class CardDetailView extends React.PureComponent {
           </View>
         </View>
         { (isHorizontal || !card.spoiler) && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
-        { card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
+        { !!card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
         <FaqComponent navigator={navigator} id={card.code} />
         <View style={styles.footerPadding} />
       </ScrollView>
