@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
+  ViewPropTypes,
 } from 'react-native';
 import FlipCard from 'react-native-flip-card';
 
 export default class FlippableCard extends React.Component {
   static propTypes = {
-    style: View.propTypes.style,
+    style: ViewPropTypes.style,
     backSide: PropTypes.node.isRequired,
     frontSide: PropTypes.node.isRequired,
     flipped: PropTypes.bool,
