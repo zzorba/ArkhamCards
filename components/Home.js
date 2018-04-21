@@ -94,7 +94,6 @@ class Home extends React.Component {
       cardCount,
       realm,
     } = this.props;
-
     if (cardCount === 0) {
       setTimeout(() => this.setState({
         loadingCards: true,

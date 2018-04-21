@@ -86,7 +86,6 @@ export default class PlayerCardImage extends React.Component {
     const cardRatio = 68.0 / 88;
     const cardHeight = height * cardRatio;
     const cardWidth = width - 16;
-    const cardMarginTop = Platform.OS === 'ios' ? 0 : HEADER_SIZE;
     if (card.double_sided) {
       if (flipped) {
         return (
@@ -156,7 +155,6 @@ export default class PlayerCardImage extends React.Component {
     const {
       card,
     } = this.props;
-    const isInvestigator = card.type_code === 'investigator';
     const filename = (card.type_code === 'location' && card.double_sided) ?
       card.backimagesrc :
       card.imagesrc;
@@ -248,13 +246,6 @@ const styles = StyleSheet.create({
   },
   placeholderIcon: {
     textAlign: 'center',
-  },
-  flipCardLightbox: {
-    position: 'absolute',
-    left: 0,
-    top: HEADER_SIZE,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
   },
   buttonRow: {
     width: '100%',

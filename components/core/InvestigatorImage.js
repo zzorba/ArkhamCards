@@ -4,11 +4,11 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
-import PlayerCardImage from './PlayerCardImage';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
 
@@ -66,10 +66,9 @@ export default class InvestigatorImage extends React.Component {
 
   render() {
     const {
-      card,
-      clickable,
+      navigator,
     } = this.props;
-    if (clickable) {
+    if (navigator) {
       return (
         <TouchableOpacity onPress={this._onPress}>
           { this.renderImage() }
