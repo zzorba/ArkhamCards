@@ -6,6 +6,8 @@ import {
   DECK_AVAILABLE,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
+  NEW_CAMPAIGN,
+  ADD_CAMPAIGN_MISSION_RESULT,
 } from '../actions/';
 
 const DEFAULT_PACKS_STATE = {
@@ -72,10 +74,58 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
   return state;
 };
 
+
+// Campaign: {
+//   id: '',
+//   name: '',
+//   lastUpdated: Date,
+//   missionResults: [{
+//     deckIds: [], who participated in mission
+//     mission: '',
+//     campaignNotes: [],
+//     mentalTrauma: {}, keyed by investigator.code
+//     physicalTrauma: {}, keyed by investigator.code
+//   }],
+// }
+const DEFAULT_CAMPAIGNS_STATE = {
+  all: {},
+};
+const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
+  if (action.type === NEW_CAMPAIGN) {
+    const newCampaign = {
+      id: action.id,
+      name: action.name,
+      lastUpdated: action.now,
+      missionResults: [],
+    };
+    return Object.assign({},
+      state,
+      { all: Object.assign({}, state.all, { [action.id]: newCampaign }) },
+    );
+  } else if (action.type === ADD_CAMPAIGN_MISSION_RESULT) {
+    const campaign = state.all[action.id];
+    const missionResults = [
+      ...campaign.missionResults,
+      Object.assign({}, action.missionResult),
+    ];
+    const updatedCampaign = Object.assign(
+      {},
+      campaign,
+      { missionResults, lastModified: action.now },
+    );
+    return Object.assign({},
+      state,
+      { all: Object.assign({}, state.all, { [action.id]: updatedCampaign }) },
+    );
+  }
+  return state;
+};
+
 // Combine all the reducers
 const rootReducer = combineReducers({
   packs,
   decks,
+  campaigns,
 });
 
 export default rootReducer;

@@ -4,6 +4,8 @@ export const CLEAR_DECKS = 'CLEAR_DECKS';
 export const NEW_DECK = 'NEW_DECK';
 export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
+export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
+export const ADD_CAMPAIGN_MISSION_RESULT = 'ADD_CAMPAIGN_MISSION_RESULT';
 
 export function getPacks() {
   return (dispatch) => {
@@ -60,10 +62,30 @@ export function setPackSpoiler(code, value) {
   };
 }
 
+export function newCampaign(id, name) {
+  return {
+    type: NEW_CAMPAIGN,
+    id,
+    name,
+    now: new Date(),
+  };
+}
+
+export function addMissionResult(id, missionResult) {
+  return {
+    type: ADD_CAMPAIGN_MISSION_RESULT,
+    id,
+    missionResult,
+    now: new Date(),
+  };
+}
+
 export default {
   getPacks,
   newDeck,
   getDeck,
   setInCollection,
   setPackSpoiler,
+  newCampaign,
+  addMissionResult,
 };

@@ -4,6 +4,7 @@ import DeckDetailView from '../components/DeckDetailView';
 import DeckEditView from '../components/DeckEditView';
 import CardSearchView from '../components/CardSearchView';
 import CardDetailView from '../components/CardDetailView';
+import CampaignsView from '../components/CampaignsView';
 import NewDeckView from '../components/NewDeckView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
 import DeckChartsView from '../components/DeckChartsView';
@@ -29,6 +30,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Deck.Edit', () => DeckEditView, store, Provider);
   Navigation.registerComponent('Deck.New', () => NewDeckView, store, Provider);
   Navigation.registerComponent('Card', () => CardDetailView, store, Provider);
+  Navigation.registerComponent('Campaigns', () => CampaignsView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsTab, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
   Navigation.registerComponent('SearchFilters.Trait', () => CardTraitModal, store, Provider);
