@@ -13,12 +13,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import { iconsMap } from '../app/NavIcons';
-import * as Actions from '../actions';
-import DeckListItem from './DeckListItem';
-import { syncCards } from '../lib/api';
+import { iconsMap } from '../../app/NavIcons';
+import * as Actions from '../../actions';
+import { syncCards } from '../../lib/api';
+import DeckListItem from '../DeckListItem';
 
-class Home extends React.Component {
+class BrowseDecksView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     realm: PropTypes.object.isRequired,
@@ -207,7 +207,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(Home),
+  connect(mapStateToProps, mapDispatchToProps)(BrowseDecksView),
   {
     schemas: ['Card'],
     mapToProps(results, realm) {
