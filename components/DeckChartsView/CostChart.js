@@ -2,7 +2,7 @@ import React from 'react';
 import { BarChart, XAxis, YAxis } from 'react-native-svg-charts';
 import { View, Text } from 'react-native';
 
-import { DeckType } from '../parseDeck';
+import { DeckType } from '../DeckDetailView/parseDeck';
 
 export default class CostChart extends React.PureComponent {
   static propTypes = {

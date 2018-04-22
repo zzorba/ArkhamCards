@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import { COLORS } from '../../../styles/colors';
+import { COLORS } from '../../styles/colors';
 
 export default function CardSectionHeader({ title }) {
   return (

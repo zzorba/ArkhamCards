@@ -3,11 +3,11 @@ import {
   ScrollView,
 } from 'react-native';
 
-import { DeckType } from './parseDeck';
+import { DeckType } from '../DeckDetailView/parseDeck';
 
-import FactionChart from './charts/FactionChart';
-import CostChart from './charts/CostChart';
-import SkillIconChart from './charts/SkillIconChart';
+import FactionChart from './FactionChart';
+import CostChart from './CostChart';
+import SkillIconChart from './SkillIconChart';
 
 export default class DeckChartsView extends React.Component {
   static propTypes = {

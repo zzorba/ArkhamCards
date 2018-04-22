@@ -9,10 +9,10 @@ import {
   View,
 } from 'react-native';
 
-import { DeckType } from './parseDeck';
+import { DeckType } from '../DeckDetailView/parseDeck';
 import DrawCardItem from './DrawCardItem';
 
-export default class DeckDrawSimulator extends React.Component {
+export default class DrawSimulatorView extends React.Component {
   static propTypes = {
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,

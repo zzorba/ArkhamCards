@@ -10,8 +10,8 @@ import { connectRealm } from 'react-native-realm';
 import { Bar } from 'react-native-progress';
 import { Button } from 'react-native-elements';
 
-import CardText from '../CardText';
-import { getFaqEntry } from '../../../lib/api';
+import CardTextComponent from '../CardTextComponent';
+import { getFaqEntry } from '../../lib/api';
 
 class FaqComponent extends React.Component {
   static propTypes = {
@@ -94,7 +94,10 @@ class FaqComponent extends React.Component {
       return (
         <View style={styles.container}>
           <Text style={styles.title}>FAQ</Text>
-          <CardText text={faqEntry.text} onLinkPress={this._linkPressed} />
+          <CardTextComponent 
+            text={faqEntry.text}
+            onLinkPress={this._linkPressed}
+          />
         </View>
       );
     }

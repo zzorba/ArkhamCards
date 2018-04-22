@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import InvestigatorImage from '../core/InvestigatorImage';
+import InvestigatorImage from './core/InvestigatorImage';
 
 export default class DeckListItem extends React.Component {
   static propTypes = {

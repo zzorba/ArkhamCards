@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import ArkhamIcon from '../../../assets/ArkhamIcon';
-import EncounterIcon from '../../../assets/EncounterIcon';
-import { createFactionIcons, FACTION_COLORS } from '../../../constants';
-import { COLORS } from '../../../styles/colors';
+import ArkhamIcon from '../../assets/ArkhamIcon';
+import EncounterIcon from '../../assets/EncounterIcon';
+import { createFactionIcons, FACTION_COLORS } from '../../constants';
+import { COLORS } from '../../styles/colors';
 
 const FACTION_ICONS = createFactionIcons(18);
 

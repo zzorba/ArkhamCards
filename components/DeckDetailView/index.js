@@ -16,7 +16,7 @@ import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from './DeckNavFooter';
 
-class DeckView extends React.Component {
+class DeckDetailView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
@@ -201,7 +201,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(DeckView),
+  connect(mapStateToProps, mapDispatchToProps)(DeckDetailView),
   {
     schemas: ['Card'],
     mapToProps(results, realm) {

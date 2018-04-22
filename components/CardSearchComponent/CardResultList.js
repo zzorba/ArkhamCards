@@ -11,8 +11,8 @@ import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../../../actions';
-import Card from '../../../data/Card';
+import * as Actions from '../../actions';
+import Card from '../../data/Card';
 import CardSearchResult from './CardSearchResult';
 import CardSectionHeader from './CardSectionHeader';
 import {
@@ -21,7 +21,7 @@ import {
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
-} from './constants';
+} from '../CardSortDialog/constants';
 
 class CardResultList extends React.Component {
   static propTypes = {

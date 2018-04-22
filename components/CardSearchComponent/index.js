@@ -12,11 +12,11 @@ import SearchInput from 'react-native-search-filter';
 
 import {
   SORT_BY_TYPE,
-} from './constants';
+} from '../CardSortDialog/constants';
 import CardResultList from './CardResultList';
-import { iconsMap } from '../../../app/NavIcons';
-import { applyFilters } from '../../../lib/filters';
-import DefaultFilterState from '../FilterView/DefaultFilterState';
+import { iconsMap } from '../../app/NavIcons';
+import { applyFilters } from '../../lib/filters';
+import DefaultFilterState from '../CardFilterView/DefaultFilterState';
 
 export default class CardSearchComponent extends React.Component {
   static propTypes = {

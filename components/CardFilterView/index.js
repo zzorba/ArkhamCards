@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import { FACTION_CODES } from '../../../constants';
-import { applyFilters } from '../../../lib/filters';
+import { FACTION_CODES } from '../../constants';
+import { applyFilters } from '../../lib/filters';
 import FactionChooser from './FactionChooser';
 import TraitChooserButton from './TraitChooserButton';
 import TypeChooser from './TypeChooser';

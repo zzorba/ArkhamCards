@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import MultipleSelect from '../../core/MultipleSelect';
+import MultipleSelect from '../core/MultipleSelect';
 
 export default class TraitModal extends React.Component {
   static propTypes = {

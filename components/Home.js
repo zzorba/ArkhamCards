@@ -15,7 +15,7 @@ import { connectRealm } from 'react-native-realm';
 
 import { iconsMap } from '../app/NavIcons';
 import * as Actions from '../actions';
-import DeckListItem from './deck/DeckListItem';
+import DeckListItem from './DeckListItem';
 import { syncCards } from '../lib/api';
 
 class Home extends React.Component {

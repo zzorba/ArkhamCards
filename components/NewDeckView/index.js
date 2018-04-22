@@ -15,7 +15,7 @@ import { Button } from 'react-native-elements';
 import InvestigatorRow from './InvestigatorRow';
 import * as Actions from '../../actions';
 
-class NewDeckModal extends React.Component {
+class NewDeckView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     investigators: PropTypes.array.isRequired,
@@ -102,7 +102,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(NewDeckModal),
+  connect(mapStateToProps, mapDispatchToProps)(NewDeckView),
   {
     schemas: ['Card'],
     mapToProps(results) {

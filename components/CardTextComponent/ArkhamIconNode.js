@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ArkhamIcon from '../../../assets/ArkhamIcon';
+import ArkhamIcon from '../../assets/ArkhamIcon';
 
 const BAD_ICON_NAMES = {
   Action: 'action',

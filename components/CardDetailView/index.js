@@ -17,16 +17,20 @@ import {
   FACTION_COLORS,
   SKILLS,
   SKILL_COLORS,
-} from '../../../constants';
-import * as Actions from '../../../actions';
-import PlayerCardImage from '../../core/PlayerCardImage';
-import AppIcon from '../../../assets/AppIcon';
-import ArkhamIcon from '../../../assets/ArkhamIcon';
-import EncounterIcon from '../../../assets/EncounterIcon';
-import CardText from '../CardText';
-import FlippableCard from '../../core/FlippableCard';
+} from '../../constants';
+import * as Actions from '../../actions';
+import PlayerCardImage from '../core/PlayerCardImage';
+import AppIcon from '../../assets/AppIcon';
+import ArkhamIcon from '../../assets/ArkhamIcon';
+import EncounterIcon from '../../assets/EncounterIcon';
+import CardTextComponent from '../CardTextComponent';
+import FlippableCard from '../core/FlippableCard';
 import FaqComponent from './FaqComponent';
 
+const BLURRED_ACT = require('../../assets/blur-act.jpeg');
+const BLURRED_AGENDA = require('../../assets/blur-agenda.jpeg');
+const PLAYER_BACK = require('../../assets/player-back.png');
+const ENCOUNTER_BACK = require('../../assets/encounter-back.png');
 const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={12} color="#000000" />
 );
@@ -218,10 +222,10 @@ class CardDetailView extends React.PureComponent {
     if (card.double_sided) {
       if (isHorizontal) {
         if (card.type_code === 'act') {
-          return require('../../../assets/blur-act.jpeg');
+          return BLURRED_ACT;
         }
         if (card.type_code === 'agenda') {
-          return require('../../../assets/blur-agenda.jpeg');
+          return BLURRED_AGENDA;
         }
         return {
           uri: `https://arkhamdb.com${card.imagesrc}`,
@@ -231,9 +235,7 @@ class CardDetailView extends React.PureComponent {
         uri: `https://arkhamdb.com${card.backimagesrc}`,
       };
     }
-    return card.deck_limit > 0 ?
-      require('../../../assets/player-back.png') :
-      require('../../../assets/encounter-back.png');
+    return card.deck_limit > 0 ? PLAYER_BACK : ENCOUNTER_BACK;
   }
 
   renderCardImage(card, blur, isHorizontal) {
@@ -326,7 +328,7 @@ class CardDetailView extends React.PureComponent {
               <View style={[styles.cardTextBlock, {
                 borderColor: FACTION_COLORS[card.faction_code] || '#000000',
               }]}>
-                <CardText text={card.back_text} />
+                <CardTextComponent text={card.back_text} />
               </View>)
             }
             { !!card.back_flavor && !flavorFirst &&
@@ -382,7 +384,7 @@ class CardDetailView extends React.PureComponent {
                 <View style={[styles.cardTextBlock, {
                   borderColor: FACTION_COLORS[card.faction_code] || '#000000',
                 }]}>
-                  <CardText text={card.real_text} />
+                  <CardTextComponent text={card.real_text} />
                 </View>)
               }
               { ('victory' in card && card.victory !== null) &&
