@@ -8,29 +8,40 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../../actions';
-import PackListView from './PackListView';
+import * as Actions from '../actions';
+import PackListComponent from './PackListComponent';
 
-class CollectionEditView extends React.Component {
+class SpoilersView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object,
     packs: PropTypes.array,
-    in_collection: PropTypes.object,
-    setInCollection: PropTypes.func.isRequired,
+    show_spoilers: PropTypes.object,
+    setPackSpoiler: PropTypes.func.isRequired,
   };
 
-  componentDidMount() {
-    this.props.navigator.setTitle({
-      title: 'Edit Collection',
-    });
+  constructor(props) {
+    super(props);
+
+    this._renderHeader = this.renderHeader.bind(this);
+  }
+
+  renderHeader() {
+    return (
+      <View>
+        <Text>
+          Mark the scenarios you've played through to make the results start
+          showing up in search results.
+        </Text>
+      </View>
+    );
   }
 
   render() {
     const {
       navigator,
       packs,
-      in_collection,
-      setInCollection,
+      show_spoilers,
+      setPackSpoiler,
     } = this.props;
     if (!packs.length) {
       return (
@@ -40,11 +51,12 @@ class CollectionEditView extends React.Component {
       );
     }
     return (
-      <PackListView
+      <PackListComponent
         navigator={navigator}
         packs={packs}
-        checkState={in_collection}
-        setChecked={setInCollection}
+        renderHeader={this._renderHeader}
+        checkState={show_spoilers}
+        setChecked={setPackSpoiler}
       />
     );
   }
@@ -55,7 +67,7 @@ function mapStateToProps(state) {
     packs: sortBy(
       sortBy(state.packs.all, pack => pack.position),
       pack => pack.cycle_position),
-    in_collection: state.packs.in_collection || {},
+    show_spoilers: state.packs.show_spoilers || {},
   };
 }
 
@@ -63,4 +75,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CollectionEditView);
+export default connect(mapStateToProps, mapDispatchToProps)(SpoilersView);

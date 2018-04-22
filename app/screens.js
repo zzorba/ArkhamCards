@@ -11,10 +11,10 @@ import CardFilterView from '../components/CardFilterView';
 import CardTraitModal from '../components/CardTraitModal';
 import Home from '../components/Home';
 import WebViewWrapper from '../components/WebViewWrapper';
-import SettingsTab from '../components/settings/SettingsTab';
-import PackCardsView from '../components/packs/PackCardsView';
-import SpoilersView from '../components/settings/SpoilersView';
-import CollectionEditView from '../components/packs/CollectionEditView';
+import SettingsTab from '../components/SettingsTab';
+import PackCardsView from '../components/PackCardsView';
+import SpoilersView from '../components/SpoilersView';
+import CollectionEditView from '../components/CollectionEditView';
 import CardSortDialog from '../components/CardSortDialog';
 
 // register all screens of the app (including internal ones)

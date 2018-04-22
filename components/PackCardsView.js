@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CardSearchComponent from '../CardSearchComponent';
+import CardSearchComponent from './CardSearchComponent';
 
 export default class PackCardsView extends React.Component {
   static propTypes = {

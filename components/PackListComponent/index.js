@@ -8,7 +8,7 @@ import {
 
 import PackRow from './PackRow';
 
-export default class PackListView extends React.Component {
+export default class PackListComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object,
     packs: PropTypes.array,
