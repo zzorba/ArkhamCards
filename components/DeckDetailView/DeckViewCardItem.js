@@ -71,7 +71,7 @@ export default class DeckViewCardItem extends React.PureComponent {
         <View style={styles.row}>
           <View style={styles.quantity}>
             <Text style={styles.numberText}>
-              { deltaMode && (item.quantity >  0 ? '+' : '')}
+              { deltaMode && (item.quantity > 0 ? '+' : '') }
               { item.quantity.toString() }
               { !deltaMode && 'x' }
             </Text>

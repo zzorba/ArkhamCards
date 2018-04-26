@@ -62,11 +62,11 @@ export function setPackSpoiler(code, value) {
   };
 }
 
-export function newCampaign(id, name) {
+export function newCampaign(pack_code, name) {
   return {
     type: NEW_CAMPAIGN,
-    id,
-    name,
+    name: name,
+    packCode: pack_code,
     now: new Date(),
   };
 }

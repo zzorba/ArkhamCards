@@ -74,7 +74,6 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
   return state;
 };
 
-
 // Campaign: {
 //   id: '',
 //   name: '',
@@ -90,17 +89,23 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 const DEFAULT_CAMPAIGNS_STATE = {
   all: {},
 };
+
 const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
   if (action.type === NEW_CAMPAIGN) {
+    let id = Math.floor(Math.random() * 100000);
+    while(state.all[id]) {
+      id = Math.floor(Math.random() * 100000);
+    }
     const newCampaign = {
-      id: action.id,
+      id,
       name: action.name,
+      packCode: action.packCode,
       lastUpdated: action.now,
       missionResults: [],
     };
     return Object.assign({},
       state,
-      { all: Object.assign({}, state.all, { [action.id]: newCampaign }) },
+      { all: Object.assign({}, state.all, { [id]: newCampaign }) },
     );
   } else if (action.type === ADD_CAMPAIGN_MISSION_RESULT) {
     const campaign = state.all[action.id];
