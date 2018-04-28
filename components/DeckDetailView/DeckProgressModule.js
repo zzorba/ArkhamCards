@@ -6,23 +6,24 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../../actions';
 import DeckDelta from './DeckDelta';
+import { getDeck } from '../../reducers';
 
 class PreviousDeckModule extends React.PureComponent {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     deck: PropTypes.object.isRequired,
     previousDeck: PropTypes.object,
-    getDeck: PropTypes.func.isRequired,
+    fetchDeck: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     const {
       deck,
       previousDeck,
-      getDeck,
+      fetchDeck,
     } = this.props;
     if (deck.previous_deck && !previousDeck) {
-      getDeck(deck.previous_deck, true);
+      fetchDeck(deck.previous_deck, true);
     }
   }
 
@@ -87,11 +88,9 @@ class PreviousDeckModule extends React.PureComponent {
 }
 
 function mapStateToProps(state, props) {
-  if (props.deck &&
-    props.deck.previous_deck &&
-    props.deck.previous_deck in state.decks.all) {
+  if (props.deck && props.deck.previous_deck) {
     return {
-      previousDeck: state.decks.all[props.deck.previous_deck],
+      previousDeck: getDeck(state, props.deck.previous_deck),
     };
   }
   return {

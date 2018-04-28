@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, last, sortBy, values } from 'lodash';
+import { flatMap, forEach, map, last, sortBy, values } from 'lodash';
 import {
   Alert,
   ScrollView,
+  Text,
+  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Button } from 'react-native-elements';
 
 import * as Actions from '../../actions';
 import { iconsMap } from '../../app/NavIcons';
+import { getCampaign, getAllDecks } from '../../reducers';
 
 class CampaignDetailView extends React.Component {
   static propTypes = {
@@ -24,9 +28,16 @@ class CampaignDetailView extends React.Component {
     super(props);
 
     this._delete = this.delete.bind(this);
-
+    this._addScenarioResult = this.addScenarioResult.bind(this);
+    if (props.campaign)  {
+      props.navigator.setSubTitle({ subtitle: props.campaign.name });
+    }
     props.navigator.setButtons({
       rightButtons: [
+        {
+          icon: iconsMap.edit,
+          id: 'edit',
+        },
         {
           icon: iconsMap.delete,
           id: 'delete',
@@ -34,6 +45,16 @@ class CampaignDetailView extends React.Component {
       ],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      campaign,
+      navigator,
+    } = this.props;
+    if (campaign && prevProps.campaign && campaign.name !== prevProps.campaign.name) {
+      navigator.setSubTitle({ subtitle: campaign.name });
+    }
   }
 
   delete() {
@@ -44,6 +65,19 @@ class CampaignDetailView extends React.Component {
     } = this.props;
     deleteCampaign(id);
     navigator.pop();
+  }
+
+  addScenarioResult() {
+    const {
+      campaign,
+      navigator,
+    } = this.props;
+    navigator.push({
+      screen: 'Campaign.AddResult',
+      passProps: {
+        campaign,
+      },
+    });
   }
 
   onNavigatorEvent(event) {
@@ -65,6 +99,28 @@ class CampaignDetailView extends React.Component {
     }
   }
 
+  renderScenarioResults() {
+    return null;
+  }
+
+  renderCampaignNotes() {
+    const {
+      campaign,
+    } = this.props;
+    const notes = flatMap(
+      campaign.scenarioResults,
+      scenario => scenario.campaignNotes);
+    if (!notes.length) {
+      return <View><Text>None</Text></View>;
+    }
+
+    return (
+      <View>
+        { map(notes, (note, idx) => <Text key={idx}>-{ note }</Text>) }
+      </View>
+    )
+  }
+
   render() {
     const {
       campaign,
@@ -75,17 +131,20 @@ class CampaignDetailView extends React.Component {
     }
     return (
       <ScrollView>
-        { campaign.title }
+        <Text>{ campaign.name }</Text>
+        { this.renderScenarioResults() }
+        <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
+        <Text>Notes:</Text>
+        { this.renderCampaignNotes() }
       </ScrollView>
     );
   }
 }
 
 function mapStateToProps(state, props) {
-  const campaign = state.campaigns.all[props.id];
   return {
-    campaign,
-    decks: state.decks.all,
+    campaign: getCampaign(state, props.id),
+    decks: getAllDecks(state),
   };
 }
 

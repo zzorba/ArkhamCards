@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../actions';
 import PackListComponent from './PackListComponent';
+import { getPacks, getPackSpoilers } from '../reducers';
 
 class SpoilersView extends React.Component {
   static propTypes = {
@@ -64,10 +65,8 @@ class SpoilersView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    packs: sortBy(
-      sortBy(state.packs.all, pack => pack.position),
-      pack => pack.cycle_position),
-    show_spoilers: state.packs.show_spoilers || {},
+    packs: getPacks(state),
+    show_spoilers: getPackSpoilers(state),
   };
 }
 

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { forEach, sortBy, values } from 'lodash';
 
 import {
   CLEAR_DECKS,
@@ -147,3 +148,56 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+export function getCampaigns(state) {
+  return sortBy(
+    values(state.campaigns.all),
+    campaign => campaign.lastModified);
+}
+export function getShowSpoilers(state, packCode) {
+  const show_spoilers = state.packs.show_spoilers || {};
+  return !!show_spoilers[packCode];
+}
+
+export function getPacks(state) {
+  return sortBy(
+    sortBy(state.packs.all || [], pack => pack.position),
+    pack => pack.cycle_position);
+}
+
+export function getPackSpoilers(state) {
+  return state.packs.show_spoilers || {};
+}
+
+export function getPacksInCollection(state) {
+  return state.packs.in_collection || {};
+}
+
+export function getAllDecks(state) {
+  return state.decks.all || {};
+}
+
+export function getDeck(state, id) {
+  if (id in state.decks.all) {
+    return state.decks.all[id];
+  }
+  return null;
+}
+
+export function getDecks(state, deckIds) {
+  const decks = [];
+  forEach(deckIds, deckId => {
+    const deck = getDeck(state, deckId);
+    if (deck) {
+      decks.push(deck);
+    }
+  });
+  return decks;
+}
+
+export function getCampaign(state, id) {
+  if (id in state.campaigns.all) {
+    return state.campaigns.all[id];
+  }
+  return null;
+}

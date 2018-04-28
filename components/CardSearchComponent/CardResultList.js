@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from '../../actions';
+import { getPackSpoilers } from '../../reducers';
 import Card from '../../data/Card';
 import CardSearchResult from './CardSearchResult';
 import CardSectionHeader from './CardSectionHeader';
@@ -261,7 +262,7 @@ class CardResultList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    show_spoilers: state.packs.show_spoilers || {},
+    show_spoilers: getPackSpoilers(state),
   };
 }
 

@@ -15,6 +15,7 @@ import * as Actions from '../../actions';
 import { parseDeck } from './parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from './DeckNavFooter';
+import { getDeck } from '../../reducers';
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -25,7 +26,7 @@ class DeckDetailView extends React.Component {
     cards: PropTypes.object,
     // From redux.
     deck: PropTypes.object,
-    getDeck: PropTypes.func.isRequired,
+    fetchDeck: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -53,7 +54,7 @@ class DeckDetailView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getDeck(this.props.id, this.props.isPrivate);
+    this.props.fetchDeck(this.props.id, this.props.isPrivate);
     if (this.props.deck && this.props.deck.investigator_code) {
       this.loadCards(this.props.deck);
     }
@@ -186,13 +187,8 @@ class DeckDetailView extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  if (props.id in state.decks.all) {
-    return {
-      deck: state.decks.all[props.id],
-    };
-  }
   return {
-    deck: null,
+    deck: getDeck(state, props.id),
   };
 }
 

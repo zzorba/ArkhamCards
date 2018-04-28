@@ -14,6 +14,7 @@ import { Button } from 'react-native-elements';
 
 import InvestigatorRow from './InvestigatorRow';
 import * as Actions from '../../actions';
+import { getPacksInCollection } from '../../reducers';
 
 class NewDeckView extends React.Component {
   static propTypes = {
@@ -93,7 +94,7 @@ class NewDeckView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    in_collection: state.packs.in_collection || {},
+    in_collection: getPacksInCollection(state),
   };
 }
 

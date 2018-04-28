@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from '../../actions';
+import { getAllDecks, getCampaigns } from '../../reducers';
 import { iconsMap } from '../../app/NavIcons';
 import CampaignItem from './CampaignItem';
 
@@ -39,6 +40,7 @@ class MyCampaignsView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign',
+      title: 'Campaign',
       passProps: {
         id,
       },
@@ -95,12 +97,9 @@ class MyCampaignsView extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const campaigns = sortBy(
-    values(state.campaigns.all),
-    campaign => campaign.lastModified);
   return {
-    campaigns,
-    decks: state.decks.all,
+    campaigns: getCampaigns(state),
+    decks: getAllDecks(state),
   };
 }
 

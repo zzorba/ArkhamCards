@@ -1,5 +1,6 @@
 import { Navigation } from 'react-native-navigation';
 
+import AddScenarioResultView from '../components/AddScenarioResultView';
 import DeckDetailView from '../components/DeckDetailView';
 import DeckEditView from '../components/DeckEditView';
 import CardSearchView from '../components/CardSearchView';
@@ -35,6 +36,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('My.Campaigns', () => MyCampaignsView, store, Provider);
   Navigation.registerComponent('Campaign', () => CampaignDetailView, store, Provider);
   Navigation.registerComponent('Campaign.New', () => NewCampaignView, store, Provider);
+  Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsTab, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
   Navigation.registerComponent('SearchFilters.Trait', () => CardTraitModal, store, Provider);

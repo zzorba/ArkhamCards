@@ -12,6 +12,7 @@ import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../actions';
 import { syncCards } from '../lib/api';
+import { getAllDecks } from '../reducers';
 
 class Settings extends React.Component {
   static propTypes = {
@@ -88,7 +89,7 @@ class Settings extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    deckCount: keys(state.decks.all || {}).length,
+    deckCount: keys(getAllDecks(state)).length,
   };
 }
 

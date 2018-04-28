@@ -13,6 +13,7 @@ import { Button } from 'react-native-elements';
 
 import * as Actions from '../../actions';
 import CampaignItem from './CampaignItem';
+import { getPacksInCollection } from '../../reducers';
 
 const CAMPAIGNS = {
   core: 'Night of the Zealot',
@@ -104,7 +105,7 @@ class NewCampaignView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    in_collection: state.packs.in_collection || {},
+    in_collection: getPacksInCollection(state),
   };
 }
 

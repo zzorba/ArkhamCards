@@ -26,6 +26,7 @@ import EncounterIcon from '../../assets/EncounterIcon';
 import CardTextComponent from '../CardTextComponent';
 import FlippableCard from '../core/FlippableCard';
 import FaqComponent from './FaqComponent';
+import { getShowSpoilers } from '../../reducers';
 
 const BLURRED_ACT = require('../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../assets/blur-agenda.jpeg');
@@ -430,9 +431,8 @@ class CardDetailView extends React.PureComponent {
 }
 
 function mapStateToProps(state, props) {
-  const show_spoilers = state.packs.show_spoilers || {};
   return {
-    showSpoilers: props.showSpoilers || show_spoilers[props.pack_code],
+    showSpoilers: props.showSpoilers || getShowSpoilers(state, props.pack_code),
   };
 }
 

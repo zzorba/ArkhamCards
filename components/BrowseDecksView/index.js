@@ -17,6 +17,7 @@ import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import { syncCards } from '../../lib/api';
 import DeckListItem from '../DeckListItem';
+import { getAllDecks } from '../../reducers';
 
 class BrowseDecksView extends React.Component {
   static propTypes = {
@@ -27,8 +28,8 @@ class BrowseDecksView extends React.Component {
     investigators: PropTypes.object,
     cardCount: PropTypes.number,
     packs: PropTypes.array,
-    getPacks: PropTypes.func.isRequired,
-    getDeck: PropTypes.func.isRequired,
+    fetchPacks: PropTypes.func.isRequired,
+    fetchDeck: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -88,9 +89,9 @@ class BrowseDecksView extends React.Component {
   componentDidMount() {
     const {
       packs,
-      getPacks,
+      fetchPacks,
       decks,
-      getDeck,
+      fetchDeck,
       cardCount,
       realm,
     } = this.props;
@@ -111,12 +112,12 @@ class BrowseDecksView extends React.Component {
     }
 
     if (packs.length === 0) {
-      getPacks();
+      fetchPacks();
     }
 
     this.state.deckIds.forEach(deckId => {
       if (!decks[deckId]) {
-        getDeck(deckId);
+        fetchDeck(deckId);
       }
     });
   }
@@ -198,7 +199,7 @@ function mapStateToProps(state) {
   return {
     loading: state.packs.loading,
     packs: state.packs.all,
-    decks: state.decks.all,
+    decks: getAllDecks(state),
   };
 }
 

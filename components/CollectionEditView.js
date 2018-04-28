@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../actions';
 import PackListComponent from './PackListComponent';
+import { getPacks, getPacksInCollection } from '../reducers';
 
 class CollectionEditView extends React.Component {
   static propTypes = {
@@ -52,10 +53,8 @@ class CollectionEditView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    packs: sortBy(
-      sortBy(state.packs.all, pack => pack.position),
-      pack => pack.cycle_position),
-    in_collection: state.packs.in_collection || {},
+    packs: getPacks(state),
+    in_collection: getPacksInCollection(state),
   };
 }
 

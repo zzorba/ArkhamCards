@@ -8,7 +8,7 @@ export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 
-export function getPacks() {
+export function fetchPacks() {
   return (dispatch) => {
     fetch('https://arkhamdb.com/api/public/packs/', { method: 'GET' })
       .then(response => response.json())
@@ -32,7 +32,7 @@ export function clearDecks() {
   };
 }
 
-export function getDeck(id, useDeckEndpoint) {
+export function fetchDeck(id, useDeckEndpoint) {
   return (dispatch) => {
     const uri = `https://arkhamdb.com/api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
     fetch(uri, { method: 'GET' })
@@ -89,9 +89,9 @@ export function addScenarioResult(id, scenarioResult) {
 }
 
 export default {
-  getPacks,
+  fetchPacks,
   newDeck,
-  getDeck,
+  fetchDeck,
   setInCollection,
   setPackSpoiler,
   newCampaign,

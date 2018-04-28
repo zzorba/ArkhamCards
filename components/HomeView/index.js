@@ -17,7 +17,7 @@ import { syncCards } from '../../lib/api';
 class HomeView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    getPacks: PropTypes.func.isRequired,
+    fetchPacks: PropTypes.func.isRequired,
     cardCount: PropTypes.number,
     packs: PropTypes.array,
     realm: PropTypes.object,
@@ -36,7 +36,7 @@ class HomeView extends React.Component {
   componentDidMount() {
     const {
       packs,
-      getPacks,
+      fetchPacks,
       cardCount,
       realm,
     } = this.props;
@@ -53,7 +53,7 @@ class HomeView extends React.Component {
       });
     }
     if (packs.length === 0) {
-      getPacks();
+      fetchPacks();
     }
   }
 

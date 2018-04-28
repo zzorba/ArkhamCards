@@ -13,6 +13,7 @@ import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../../actions';
 import InvestigatorImage from '../core/InvestigatorImage';
+import { getDecks } from '../../reducers';
 
 class CampaignItem extends React.Component {
   static propTypes = {
@@ -64,16 +65,9 @@ function mapStateToProps(state, props) {
   const decks = [];
   const latestScenario = last(props.campaign.scenarioResults);
   const deckIds = latestScenario ? latestScenario.deckIds : [];
-  forEach(deckIds, deckId => {
-    const deck = state.decks.all[deckId];
-    if (deck) {
-      decks.push(deck);
-    }
-  });
-
   return {
     latestScenario,
-    decks,
+    decks: getDecks(state, deckIds),
   };
 }
 
