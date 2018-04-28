@@ -58,7 +58,7 @@ export default class CardSearchComponent extends React.Component {
       id: 'save',
     };
     props.navigator.setButtons({
-      leftButtons: props.backPressed ? [leftButton] : [],
+      leftButtons: props.backPressed ? [leftButton] : (Platform.OS === 'ios' ? [] : null),
       rightButtons: [
         {
           icon: iconsMap.tune,
