@@ -5,7 +5,8 @@ export const NEW_DECK = 'NEW_DECK';
 export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
-export const ADD_CAMPAIGN_MISSION_RESULT = 'ADD_CAMPAIGN_MISSION_RESULT';
+export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
+export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 
 export function getPacks() {
   return (dispatch) => {
@@ -71,11 +72,18 @@ export function newCampaign(pack_code, name) {
   };
 }
 
-export function addMissionResult(id, missionResult) {
+export function deleteCampaign(id) {
   return {
-    type: ADD_CAMPAIGN_MISSION_RESULT,
+    type: DELETE_CAMPAIGN,
     id,
-    missionResult,
+  };
+}
+
+export function addScenarioResult(id, scenarioResult) {
+  return {
+    type: ADD_CAMPAIGN_SCENARIO_RESULT,
+    id,
+    scenarioResult,
     now: new Date(),
   };
 }
@@ -87,5 +95,6 @@ export default {
   setInCollection,
   setPackSpoiler,
   newCampaign,
-  addMissionResult,
+  deleteCampaign,
+  addScenarioResult,
 };

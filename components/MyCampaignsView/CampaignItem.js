@@ -4,6 +4,7 @@ import { forEach, map, last } from 'lodash';
 import {
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -16,36 +17,53 @@ import InvestigatorImage from '../core/InvestigatorImage';
 class CampaignItem extends React.Component {
   static propTypes = {
     campaign: PropTypes.object.isRequired,
-    latestMission: PropTypes.object,
+    onPress: PropTypes.func.isRequired,
+    latestScenario: PropTypes.object,
     decks: PropTypes.array,
     investigators: PropTypes.array,
   };
 
+  constructor(props) {
+    super(props);
+
+    this._onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
+    const {
+      campaign,
+      onPress,
+    } = this.props;
+    onPress(campaign.id);
+  }
+
   render() {
     const {
       campaign,
-      latestMission,
+      latestScenario,
       investigators,
     } = this.props;
     return (
-      <View style={styles.container}>
-        <Text>{ campaign.name }</Text>
-        <Text>{ `Missions Completed: ${campaign.missionResults.length}` }</Text>
-        { !!latestMission && <Text>{ latestMission.name }</Text> }
-        <View style={styles.row}>
-          { map(investigators, card => (
-            <InvestigatorImage key={card.id} card={card} />
-          )) }
+      <TouchableOpacity onPress={this._onPress}>
+        <View style={styles.container}>
+          <Text>{ campaign.name }</Text>
+          <Text>{ `Scenarios Completed: ${campaign.scenarioResults.length}` }</Text>
+          { !!latestScenario && <Text>{ latestScenario.name }</Text> }
+          <View style={styles.row}>
+            { map(investigators, card => (
+              <InvestigatorImage key={card.id} card={card} />
+            )) }
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
 
 function mapStateToProps(state, props) {
   const decks = [];
-  const latestMission = last(props.campaign.missionResults);
-  const deckIds = latestMission ? latestMission.deckIds : [];
+  const latestScenario = last(props.campaign.scenarioResults);
+  const deckIds = latestScenario ? latestScenario.deckIds : [];
   forEach(deckIds, deckId => {
     const deck = state.decks.all[deckId];
     if (deck) {
@@ -54,7 +72,7 @@ function mapStateToProps(state, props) {
   });
 
   return {
-    latestMission,
+    latestScenario,
     decks,
   };
 }

@@ -49,7 +49,7 @@ class CampaignsView extends React.Component {
     const {
       decks,
     } = this.props;
-    const latestMission = last(campaign.missionResults);
+    const latestMission = last(campaign.scenarioResults);
     const deckIds = latestMission ? latestMission.deckIds : [];
     const missionDecks = [];
     forEach(deckIds, deckId => {

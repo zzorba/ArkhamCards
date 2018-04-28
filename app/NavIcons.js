@@ -13,6 +13,7 @@ const icons = {
   per_investigator: [24, COLORS.button, ArkhamIcon],
   edit: [26, COLORS.button],
   tune: [28, COLORS.button],
+  delete: [30, COLORS.button, MaterialCommunityIcons],
   'arrow-left': [30, COLORS.button, MaterialCommunityIcons],
   'chevron-left': [30, COLORS.button, MaterialCommunityIcons],
   'sort-by-alpha': [28, COLORS.button],

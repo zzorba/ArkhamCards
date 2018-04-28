@@ -7,7 +7,8 @@ import {
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
   NEW_CAMPAIGN,
-  ADD_CAMPAIGN_MISSION_RESULT,
+  DELETE_CAMPAIGN,
+  ADD_CAMPAIGN_SCENARIO_RESULT,
 } from '../actions/';
 
 const DEFAULT_PACKS_STATE = {
@@ -78,9 +79,9 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 //   id: '',
 //   name: '',
 //   lastUpdated: Date,
-//   missionResults: [{
-//     deckIds: [], who participated in mission
-//     mission: '',
+//   scenarioResults: [{
+//     deckIds: [], // who participated in mission / interlude
+//     scenario: '',
 //     campaignNotes: [],
 //     mentalTrauma: {}, keyed by investigator.code
 //     physicalTrauma: {}, keyed by investigator.code
@@ -91,6 +92,14 @@ const DEFAULT_CAMPAIGNS_STATE = {
 };
 
 const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
+  if (action.type === DELETE_CAMPAIGN) {
+    const newCampaigns = Object.assign({}, state.all);
+    delete newCampaigns[action.id];
+    return Object.assign({},
+      state,
+      { all: newCampaigns },
+    );
+  }
   if (action.type === NEW_CAMPAIGN) {
     let id = Math.floor(Math.random() * 100000);
     while(state.all[id]) {
@@ -101,22 +110,26 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
       name: action.name,
       packCode: action.packCode,
       lastUpdated: action.now,
-      missionResults: [],
+      scenarioResults: [],
     };
     return Object.assign({},
       state,
       { all: Object.assign({}, state.all, { [id]: newCampaign }) },
     );
-  } else if (action.type === ADD_CAMPAIGN_MISSION_RESULT) {
+  }
+  if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {
     const campaign = state.all[action.id];
-    const missionResults = [
-      ...campaign.missionResults,
-      Object.assign({}, action.missionResult),
+    const scenarioResults = [
+      ...campaign.scenarioResults,
+      Object.assign({}, action.scenarioResult),
     ];
     const updatedCampaign = Object.assign(
       {},
       campaign,
-      { missionResults, lastModified: action.now },
+      {
+        scenarioResults,
+        lastModified: action.now,
+      },
     );
     return Object.assign({},
       state,
