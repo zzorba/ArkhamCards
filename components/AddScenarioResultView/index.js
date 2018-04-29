@@ -9,10 +9,11 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Button, Input } from 'react-native-elements';
+import { Input } from 'react-native-elements';
 
 import * as Actions from '../../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../reducers';
+import AddDeckRow from './AddDeckRow';
 import DeckRow from './DeckRow';
 
 const CUSTOM = 'Custom';
@@ -39,7 +40,6 @@ class AddScenarioResultView extends React.Component {
       deckIds: [],
     };
 
-    this._showDeckSelector = this.showDeckSelector.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
     this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
@@ -57,16 +57,6 @@ class AddScenarioResultView extends React.Component {
   deckRemoved(id) {
     this.setState({
       deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
-    });
-  }
-
-  showDeckSelector() {
-    this.props.navigator.push({
-      screen: 'Dialog.DeckSelector',
-      passProps: {
-        onDeckSelect: this._deckAdded,
-        selectedDeckIds: this.state.deckIds,
-      },
     });
   }
 
@@ -140,15 +130,23 @@ class AddScenarioResultView extends React.Component {
 
   renderInvestigators() {
     const {
+      navigator,
+    } = this.props;
+    const {
       deckIds,
     } = this.state;
     return (
       <View>
         { map(deckIds, deckId => (
-            <DeckRow key={deckId} id={deckId} remove={this._deckRemoved} />
-          )
+          <DeckRow key={deckId} id={deckId} remove={this._deckRemoved} />
+        )) }
+        { deckIds.length < 4 && (
+          <AddDeckRow
+            navigator={navigator}
+            deckAdded={this._deckAdded}
+            selectedDeckIds={deckIds}
+          />
         ) }
-        <Button text="Add" onPress={this._showDeckSelector} />
       </View>
     );
   }

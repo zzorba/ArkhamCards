@@ -193,6 +193,9 @@ export function getAllDecks(state) {
 }
 
 export function getDeck(state, id) {
+  if (!id) {
+    return null;
+  }
   if (id in state.decks.all) {
     return state.decks.all[id];
   }

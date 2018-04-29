@@ -1,19 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { filter } from 'lodash';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
-
-import { iconsMap } from '../app/NavIcons';
-import * as Actions from '../actions';
-import { syncCards } from '../lib/api';
 
 import DeckListComponent from './DeckListComponent';
 

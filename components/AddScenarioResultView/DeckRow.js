@@ -9,7 +9,6 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Button } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import * as Actions from '../../actions';
@@ -22,7 +21,8 @@ class DeckRow extends React.Component {
     deck: PropTypes.object,
     investigator: PropTypes.object,
 
-    remove: PropTypes.func,
+    remove: PropTypes.func.isRequired,
+    fetchDeck: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -52,7 +52,6 @@ class DeckRow extends React.Component {
 
   render() {
     const {
-      deck,
       investigator,
     } = this.props;
     return (
@@ -64,7 +63,7 @@ class DeckRow extends React.Component {
         </View>
         <InvestigatorImage card={investigator} />
       </View>
-    )
+    );
   }
 }
 
