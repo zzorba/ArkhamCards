@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
+  TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
@@ -9,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import { Button } from 'react-native-elements';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
@@ -55,8 +57,12 @@ class DeckRow extends React.Component {
     } = this.props;
     return (
       <View style={styles.row}>
+        <View style={styles.deleteIcon}>
+          <TouchableOpacity onPress={this._onRemove}>
+            <MaterialCommunityIcons name="close" size={24} color="#444" />
+          </TouchableOpacity>
+        </View>
         <InvestigatorImage card={investigator} />
-        <Button text="X" onPress={this._onRemove} />
       </View>
     )
   }
@@ -91,11 +97,20 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 
 const styles = StyleSheet.create({
   row: {
+    position: 'relative',
     height: 100,
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
     borderBottomWidth: 1,
     borderColor: '#000000',
+  },
+  deleteIcon: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: 24,
+    height: 24,
   },
 });
