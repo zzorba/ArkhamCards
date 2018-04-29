@@ -277,6 +277,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderColor: '#000000',
+    paddingLeft: 8,
+    paddingRight: 8,
   },
   investigatorImage: {
     marginRight: 8,
@@ -284,14 +286,16 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
     flex: 1,
+    height: '100%',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    marginTop: 8,
     marginRight: 8,
   },
   deleteIcon: {
     position: 'absolute',
-    top: 0,
-    right: 0,
+    top: 4,
+    right: 4,
     width: 24,
     height: 24,
   },

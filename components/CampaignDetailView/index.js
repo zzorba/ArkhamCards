@@ -74,6 +74,7 @@ class CampaignDetailView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign.AddResult',
+      backButtonTitle: 'Cancel',
       passProps: {
         campaign,
       },

@@ -41,7 +41,7 @@ export default class AddDeckRow extends React.Component {
       <TouchableOpacity onPress={this._showDeckSelector}>
         <View style={styles.row}>
           <MaterialCommunityIcons name="plus-box-outline" size={80} color="#444" />
-          <Text style={styles.text}>Add</Text>
+          <Text style={styles.text}>Add Another</Text>
         </View>
       </TouchableOpacity>
     );
@@ -58,6 +58,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderColor: '#000000',
+    backgroundColor: '#ccc',
+    paddingLeft: 8,
+    paddingRight: 8,
   },
   text: {
     fontSize: 36,

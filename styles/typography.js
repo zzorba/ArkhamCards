@@ -6,6 +6,11 @@ export default StyleSheet.create({
     fontSize: 16,
     marginRight: 8,
   },
+  bigLabel: {
+    fontFamily: 'System',
+    fontSize: 22,
+    lineHeight: 28,
+  },
   bold: {
     fontWeight: '700',
   },

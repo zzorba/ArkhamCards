@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { concat, filter, flatMap, forEach, head, map, mapValues } from 'lodash';
 import {
+  ScrollView,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -16,6 +18,7 @@ import LabeledTextBox from '../core/LabeledTextBox';
 import AddDeckRow from './AddDeckRow';
 import DeckRow from './DeckRow';
 import XpController from './XpController';
+import typography from '../../styles/typography';
 
 const CUSTOM = 'Custom';
 
@@ -49,8 +52,12 @@ class AddScenarioResultView extends React.Component {
       customScenario: null,
       deckIds: [],
       deckUpdates: {},
+      campaignNotes: [],
       xp: 0,
     };
+
+    this.updateNavigatorButtons();
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
     this._xpChanged = this.xpChanged.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
@@ -59,6 +66,29 @@ class AddScenarioResultView extends React.Component {
     this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
     this._scenarioPressed = this.scenarioPressed.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
+    this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
+  }
+
+  updateNavigatorButtons(){
+    this.props.navigator.setButtons({
+      rightButtons: [
+        {
+          title: 'Done',
+          id: 'save',
+          showAsAction: 'ifRoom',
+          disabled: this.state.deckIds.length === 0,
+        },
+      ],
+    });
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'save') {
+        // TODO: push it into redux.
+        this.props.navigator.pop();
+      }
+    }
   }
 
   xpChanged(xp) {
@@ -89,7 +119,7 @@ class AddScenarioResultView extends React.Component {
         deckUpdates,
         { [id]: Object.assign({}, DEFAULT_SETTINGS, { xp }) },
       ),
-    });
+    }, this._updateNavigatorButtons);
   }
 
   deckUpdatesChanged(id, updates) {
@@ -112,7 +142,7 @@ class AddScenarioResultView extends React.Component {
     this.setState({
       deckIds: filter([...deckIds], deckId => deckId !== id),
       deckUpdates: newDeckUpdates,
-    });
+    }, this._updateNavigatorButtons);
   }
 
   scenarioPressed() {
@@ -166,8 +196,11 @@ class AddScenarioResultView extends React.Component {
           label="Scenario"
           onPress={this._scenarioPressed}
           value={selectedScenario}
+          style={styles.margin}
         />
-        <XpController xp={xp} onChange={this._xpChanged} />
+        <View style={[styles.row, styles.margin]}>
+          <XpController xp={xp} onChange={this._xpChanged} />
+        </View>
         { selectedScenario === CUSTOM && (
           <View style={styles.row}>
             <Input
@@ -191,6 +224,11 @@ class AddScenarioResultView extends React.Component {
     } = this.state;
     return (
       <View>
+        <View style={styles.underline}>
+          <Text style={[typography.bigLabel, styles.margin]}>
+            Investigators
+          </Text>
+        </View>
         { map(deckIds, deckId => (
           <DeckRow
             key={deckId}
@@ -214,10 +252,10 @@ class AddScenarioResultView extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         { this.renderScenarios() }
         { this.renderInvestigators() }
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -278,10 +316,20 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 
 const styles = StyleSheet.create({
   container: {
-    margin: 8,
+    marginTop: 8,
+    marginBottom: 8,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    width: '100%',
+  },
+  margin: {
+    marginLeft: 8,
+    marginRight: 8,
+  },
+  underline: {
+    borderBottomWidth: 1,
+    borderColor: '#000000',
   },
 });

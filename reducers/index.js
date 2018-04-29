@@ -88,11 +88,14 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 //     campaignNotes: [],
 //     investigatorUpdates: {
 //      investigator_code: {
-//        mentalTrauma: #,
-//        physicalTrauma: #,
+//        trauma: {
+//          physical,
+//          mental,
+//        },
 //        xp: #,
 //        killed: bool,
 //        insane: bool,
+//        exiled: {},
 //     },
 //   }],
 // }
