@@ -24,6 +24,7 @@ import SpoilersView from '../components/SpoilersView';
 import CollectionEditView from '../components/CollectionEditView';
 import CardSortDialog from '../components/CardSortDialog';
 import ScenarioDialog from '../components/ScenarioDialog';
+import ExileCardDialog from '../components/ExileCardDialog';
 import HomeView from '../components/HomeView';
 
 // register all screens of the app (including internal ones)
@@ -51,6 +52,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
   Navigation.registerComponent('Dialog.DeckSelector', () => MyDecksSelectorDialog, store, Provider);
   Navigation.registerComponent('Dialog.EditTrauma', () => EditTraumaDialog, store, Provider);
+  Navigation.registerComponent('Dialog.ExileCards', () => ExileCardDialog, store, Provider);
   Navigation.registerComponent('Dialog.Sort', () => CardSortDialog, store, Provider);
   Navigation.registerComponent('Dialog.Scenario', () => ScenarioDialog, store, Provider);
 }

@@ -28,6 +28,8 @@ export default class CardSearchComponent extends React.Component {
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
     backPressed: PropTypes.func,
+    backButtonText: PropTypes.string,
+    limits: PropTypes.object,
   };
 
   constructor(props) {
@@ -51,11 +53,11 @@ export default class CardSearchComponent extends React.Component {
     this._applyFilters = this.applyFilters.bind(this);
 
     const leftButton = Platform.OS === 'ios' ? {
-      id: 'save',
-      title: 'Save',
+      id: 'back',
+      title: props.backButtonText,
     } : {
+      id: 'back',
       icon: iconsMap['arrow-left'],
-      id: 'save',
     };
     const defaultButton = Platform.OS === 'ios' ? [] : null;
     props.navigator.setButtons({
@@ -114,11 +116,13 @@ export default class CardSearchComponent extends React.Component {
             backgroundColor: 'rgba(128,128,128,.75)',
           },
         });
-      } else if (event.id === 'save') {
+      } else if (event.id === 'back') {
         this.handleBackPress();
       }
     } else if (event.id === 'willAppear') {
-      this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress.bind(this));
+      this.backHandler = BackHandler.addEventListener(
+        'hardwareBackPress',
+        this.handleBackPress.bind(this));
     } else if (event.id === 'willDisappear') {
       this.backHandler.remove();
     }
@@ -175,6 +179,7 @@ export default class CardSearchComponent extends React.Component {
       navigator,
       deckCardCounts,
       onDeckCountChange,
+      limits,
     } = this.props;
     const {
       width,
@@ -198,6 +203,7 @@ export default class CardSearchComponent extends React.Component {
             sort={selectedSort}
             deckCardCounts={deckCardCounts}
             onDeckCountChange={onDeckCountChange}
+            limits={limits}
           />
         </View>
       </View>

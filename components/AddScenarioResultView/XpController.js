@@ -22,7 +22,7 @@ export default class XpController extends React.Component {
     } = this.props;
     return (
       <View style={styles.row}>
-        <Text style={typography.label}>XP:</Text>
+        <Text style={typography.label}>Experience:</Text>
         <Text style={[typography.label, { fontWeight: '900' }]}>{ xp }</Text>
         <PlusMinusButtons count={xp} onChange={onChange} size={28} />
       </View>
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 4,
     paddingBottom: 4,
   },
 });

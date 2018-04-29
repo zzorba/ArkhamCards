@@ -25,6 +25,7 @@ const DEFAULT_SETTINGS = {
     mental: 0,
     physical: 0,
   },
+  exile: {},
 };
 
 class AddScenarioResultView extends React.Component {

@@ -22,6 +22,7 @@ export default class CardSearchResult extends React.PureComponent {
     count: PropTypes.number,
     onPress: PropTypes.func.isRequired,
     onDeckCountChange: PropTypes.func,
+    limit: PropTypes.number,
   };
 
   constructor(props) {
@@ -120,6 +121,7 @@ export default class CardSearchResult extends React.PureComponent {
       card,
       count = 0,
       onDeckCountChange,
+      limit,
     } = this.props;
     if (!card.name) {
       return <Text>No Text</Text>;
@@ -153,7 +155,7 @@ export default class CardSearchResult extends React.PureComponent {
             <PlusMinusButtons
               style={styles.buttonContainer}
               count={count || 0}
-              limit={card.deck_limit}
+              limit={limit !== null ? limit : card.deck_limit}
               onChange={this._onDeckCountChange}
             />
           ) }

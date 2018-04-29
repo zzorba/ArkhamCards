@@ -34,6 +34,7 @@ class CardResultList extends React.Component {
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
     show_spoilers: PropTypes.object,
+    limits: PropTypes.object,
   };
 
   constructor(props) {
@@ -187,12 +188,16 @@ class CardResultList extends React.Component {
   }
 
   renderCard({ item }) {
+    const {
+      limits,
+    } = this.props;
     return (
       <CardSearchResult
         card={item}
         count={this.state.deckCardCounts[item.code]}
         onDeckCountChange={this.props.onDeckCountChange}
         onPress={this._cardPressed}
+        limit={limits ? limits[item.code] : null}
       />
     );
   }

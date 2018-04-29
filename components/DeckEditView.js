@@ -86,6 +86,7 @@ class DeckEditView extends React.Component {
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
         backPressed={this._backPressed}
+        backButtonText="Save"
       />
     );
   }

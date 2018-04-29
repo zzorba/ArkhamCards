@@ -62,7 +62,7 @@ export default class PlusMinusButtons extends React.Component {
   renderMinusButton() {
     const {
       count,
-      size,
+      size = 36,
     } = this.props;
     if (count > 0) {
       return (

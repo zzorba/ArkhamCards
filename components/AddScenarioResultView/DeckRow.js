@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatten, head } from 'lodash';
+import { find, flatten, forEach, keys, map, head, sum, values } from 'lodash';
 import {
-  Text,
   TouchableOpacity,
   StyleSheet,
   View,
@@ -17,27 +16,47 @@ import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
 import InvestigatorImage from '../core/InvestigatorImage';
 import LabeledTextBox from '../core/LabeledTextBox';
-import typography from '../../styles/typography';
 
 class DeckRow extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
-    investigator: PropTypes.object,
     updates: PropTypes.object,
     remove: PropTypes.func.isRequired,
     updatesChanged: PropTypes.func.isRequired,
     fetchDeck: PropTypes.func.isRequired,
+    // From realm
+    investigator: PropTypes.object,
+    exileCards: PropTypes.object,
+    hasExile: PropTypes.bool,
   };
 
   constructor(props) {
     super(props);
 
+    this._updateExiles = this.updateExiles.bind(this);
     this._updateXp = this.updateXp.bind(this);
     this._updateTrauma = this.updateTrauma.bind(this);
     this._onRemove = this.onRemove.bind(this);
     this._showTraumaDialog = this.showTraumaDialog.bind(this);
+    this._showExileDialog = this.showExileDialog.bind(this);
+  }
+
+  showExileDialog() {
+    const {
+      navigator,
+      id,
+      updates,
+    } = this.props;
+    navigator.push({
+      screen: 'Dialog.ExileCards',
+      passProps: {
+        id,
+        updateExiles: this._updateExiles,
+        exiles: updates.exiles,
+      },
+    });
   }
 
   showTraumaDialog() {
@@ -55,6 +74,15 @@ class DeckRow extends React.Component {
         backgroundColor: 'rgba(128,128,128,.75)',
       },
     });
+  }
+
+  updateExiles(exiles) {
+    const {
+      id,
+      updatesChanged,
+      updates,
+    } = this.props;
+    updatesChanged(id, Object.assign({}, updates, { exiles }));
   }
 
   updateXp(xp) {
@@ -94,6 +122,15 @@ class DeckRow extends React.Component {
     }
   }
 
+  renderXp() {
+    const {
+      updates: {
+        xp,
+      },
+    } = this.props;
+    return <XpController xp={xp} onChange={this._updateXp} />;
+  }
+
   traumaText() {
     const {
       updates: {
@@ -114,21 +151,56 @@ class DeckRow extends React.Component {
 
   renderTrauma() {
     return (
-      <LabeledTextBox
-        label="Trauma"
-        onPress={this._showTraumaDialog}
-        value={this.traumaText()}
-      />
+      <View style={styles.row}>
+        <LabeledTextBox
+          label="Trauma"
+          onPress={this._showTraumaDialog}
+          value={this.traumaText()}
+        />
+      </View>
     );
   }
 
-  renderXp() {
+  exileText() {
     const {
+      exileCards,
       updates: {
-        xp,
+        exiles,
       },
     } = this.props;
-    return <XpController xp={xp} onChange={this._updateXp} />;
+    const numCards = keys(exiles).length;
+    switch (numCards) {
+      case 0: return 'None';
+      case 1:
+        return map(keys(exiles), code => {
+          const count = exiles[code];
+          const card = exileCards[code];
+          if (count === 1) {
+            return card.name;
+          }
+          return `${count}x ${card.name}`;
+        }).join(', ');
+      default: {
+        // No room to print more than one card name, so just sum it
+        const totalCount = sum(values(exiles));
+        return `${totalCount} cards`;
+      }
+    }
+  }
+
+  renderExile() {
+    if (!this.props.hasExile) {
+      return null;
+    }
+    return (
+      <View style={styles.row}>
+        <LabeledTextBox
+          label="Exiled Cards"
+          onPress={this._showExileDialog}
+          value={this.exileText()}
+        />
+      </View>
+    );
   }
 
   render() {
@@ -146,11 +218,9 @@ class DeckRow extends React.Component {
           <InvestigatorImage card={investigator} />
         </View>
         <View style={styles.column}>
-          <Text style={[typography.label, typography.bold]}>
-            { investigator.name }
-          </Text>
           { this.renderXp() }
           { this.renderTrauma() }
+          { this.renderExile() }
         </View>
       </View>
     );
@@ -171,14 +241,27 @@ export default connect(mapStateToProps, mapDispatchToProps)(
   connectRealm(DeckRow, {
     schemas: ['Card'],
     mapToProps(results, realm, props) {
-      if (!props.deck || !props.deck.investigator_code) {
+      const {
+        deck,
+      } = props;
+      const exileCards = {};
+      forEach(results.cards.filtered('exile == true'), card => {
+        exileCards[card.code] = card;
+      });
+      if (!deck || !deck.investigator_code) {
         return {
+          exileCards,
           investigator: null,
+          hasExile: false,
         };
       }
-      const query = `code == "${props.deck.investigator_code}"`;
+      const allExileCards = new Set(keys(exileCards));
+      const hasExile = !!find(keys(deck.slots), code => allExileCards.has(code));
+      const query = `code == "${deck.investigator_code}"`;
       return {
+        exileCards,
         investigator: head(results.cards.filtered(query)),
+        hasExile,
       };
     },
   }),
@@ -211,5 +294,9 @@ const styles = StyleSheet.create({
     right: 0,
     width: 24,
     height: 24,
+  },
+  row: {
+    paddingBottom: 4,
+    width: '100%',
   },
 });
