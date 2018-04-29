@@ -7,12 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { COLORS } from '../../styles/colors';
+import PlusMinusButtons from '../core/PlusMinusButtons';
 
 const FACTION_ICONS = createFactionIcons(18);
 
@@ -28,9 +28,7 @@ export default class CardSearchResult extends React.PureComponent {
     super(props);
 
     this._onPress = this.onPress.bind(this);
-    this._increment = this.increment.bind(this);
-    this._decrement = this.decrement.bind(this);
-    this._onDeckCountPress = this.onDeckCountPress.bind(this);
+    this._onDeckCountChange = this.onDeckCountChange.bind(this);
     this._renderCountButton = this.renderCountButton.bind(this);
   }
 
@@ -38,30 +36,8 @@ export default class CardSearchResult extends React.PureComponent {
     this.props.onPress(this.props.card);
   }
 
-  increment() {
-    const {
-      card,
-      count,
-    } = this.props;
-    if (count === undefined) {
-      this.props.onDeckCountChange(card.code, 1);
-    } else if (count < card.deck_limit) {
-      this.props.onDeckCountChange(card.code, count + 1);
-    }
-  }
-
-  decrement() {
-    const {
-      card,
-      count,
-    } = this.props;
-    if (count > 0) {
-      this.props.onDeckCountChange(card.code, count - 1);
-    }
-  }
-
-  onDeckCountPress(idx) {
-    this.props.onDeckCountChange(this.props.card.code, idx);
+  onDeckCountChange(count) {
+    this.props.onDeckCountChange(this.props.card.code, count);
   }
 
   renderCountButton(count) {
@@ -139,45 +115,10 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
-  renderPlusButton() {
-    const {
-      count,
-      card,
-    } = this.props;
-    const atLimit = (count === card.deck_limit);
-    if (count === null || atLimit) {
-      return (
-        <MaterialCommunityIcons name="plus-box-outline" size={36} color="#ddd" />
-      );
-    }
-    return (
-      <TouchableOpacity onPress={this._increment}>
-        <MaterialCommunityIcons name="plus-box" size={36} color={COLORS.green} />
-      </TouchableOpacity>
-    );
-  }
-
-  renderMinusButton() {
-    if (this.props.count > 0) {
-      return (
-        <TouchableOpacity onPress={this._decrement}>
-          <MaterialCommunityIcons name="minus-box" size={36} color={COLORS.red} />
-        </TouchableOpacity>
-      );
-    }
-    return (
-      <MaterialCommunityIcons
-        name="minus-box-outline"
-        size={36}
-        color="#ddd"
-      />
-    );
-  }
-
   render() {
     const {
       card,
-      count,
+      count = 0,
       onDeckCountChange,
     } = this.props;
     if (!card.name) {
@@ -209,10 +150,12 @@ export default class CardSearchResult extends React.PureComponent {
             </View>
           </TouchableOpacity>
           { !!onDeckCountChange && (
-            <View style={styles.buttonContainer}>
-              { this.renderMinusButton() }
-              { this.renderPlusButton() }
-            </View>
+            <PlusMinusButtons
+              style={styles.buttonContainer}
+              count={count || 0}
+              limit={card.deck_limit}
+              onChange={this._onDeckCountChange}
+            />
           ) }
         </View>
       </View>

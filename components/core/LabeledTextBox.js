@@ -8,10 +8,12 @@ import {
   View,
 } from 'react-native';
 
+import typography from '../../styles/typography';
+
 export default function LabeledTextBox({ label, onPress, value }) {
   return (
     <View style={styles.row}>
-      <Text style={styles.label}>{ `${label}:` }</Text>
+      <Text style={typography.label}>{ `${label}:` }</Text>
       <View style={styles.grow}>
         <TouchableOpacity onPress={onPress}>
           <View style={styles.textBox}>
@@ -39,10 +41,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-  },
-  label: {
-    fontSize: 16,
-    marginRight: 8,
   },
   grow: {
     flex: 1,

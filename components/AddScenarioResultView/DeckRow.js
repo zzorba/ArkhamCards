@@ -12,10 +12,12 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import XpController from './XpController';
 import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
 import InvestigatorImage from '../core/InvestigatorImage';
 import LabeledTextBox from '../core/LabeledTextBox';
+import typography from '../../styles/typography';
 
 class DeckRow extends React.Component {
   static propTypes = {
@@ -32,6 +34,7 @@ class DeckRow extends React.Component {
   constructor(props) {
     super(props);
 
+    this._updateXp = this.updateXp.bind(this);
     this._updateTrauma = this.updateTrauma.bind(this);
     this._onRemove = this.onRemove.bind(this);
     this._showTraumaDialog = this.showTraumaDialog.bind(this);
@@ -52,6 +55,15 @@ class DeckRow extends React.Component {
         backgroundColor: 'rgba(128,128,128,.75)',
       },
     });
+  }
+
+  updateXp(xp) {
+    const {
+      id,
+      updatesChanged,
+      updates,
+    } = this.props;
+    updatesChanged(id, Object.assign({}, updates, { xp }));
   }
 
   updateTrauma(trauma) {
@@ -110,9 +122,17 @@ class DeckRow extends React.Component {
     );
   }
 
+  renderXp() {
+    const {
+      updates: {
+        xp,
+      },
+    } = this.props;
+    return <XpController xp={xp} onChange={this._updateXp} />;
+  }
+
   render() {
     const {
-      deck,
       investigator,
     } = this.props;
     return (
@@ -126,7 +146,10 @@ class DeckRow extends React.Component {
           <InvestigatorImage card={investigator} />
         </View>
         <View style={styles.column}>
-          <Text>{ deck.name }</Text>
+          <Text style={[typography.label, typography.bold]}>
+            { investigator.name }
+          </Text>
+          { this.renderXp() }
           { this.renderTrauma() }
         </View>
       </View>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, flatMap, forEach, head, map } from 'lodash';
+import { concat, filter, flatMap, forEach, head, map, mapValues } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -15,10 +15,12 @@ import { getAllDecks, getAllPacks, getPack } from '../../reducers';
 import LabeledTextBox from '../core/LabeledTextBox';
 import AddDeckRow from './AddDeckRow';
 import DeckRow from './DeckRow';
+import XpController from './XpController';
 
 const CUSTOM = 'Custom';
 
 const DEFAULT_SETTINGS = {
+  xp: 0,
   trauma: {
     mental: 0,
     physical: 0,
@@ -46,8 +48,10 @@ class AddScenarioResultView extends React.Component {
       customScenario: null,
       deckIds: [],
       deckUpdates: {},
+      xp: 0,
     };
 
+    this._xpChanged = this.xpChanged.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
     this._deckUpdatesChanged = this.deckUpdatesChanged.bind(this);
@@ -56,15 +60,34 @@ class AddScenarioResultView extends React.Component {
     this._scenarioChanged = this.scenarioChanged.bind(this);
   }
 
+  xpChanged(xp) {
+    const delta = xp - this.state.xp;
+    const deckUpdates = mapValues(
+      this.state.deckUpdates,
+      updates => Object.assign(
+        {},
+        updates,
+        { xp: Math.max(0, updates.xp + delta) }));
+    this.setState({
+      xp,
+      deckUpdates,
+    });
+  }
+
   deckAdded(id) {
     const {
       deckIds,
       deckUpdates,
+      xp,
     } = this.state;
     this.props.navigator.pop();
     this.setState({
       deckIds: [...deckIds, id],
-      deckUpdates: Object.assign({}, deckUpdates, { [id]: DEFAULT_SETTINGS }),
+      deckUpdates: Object.assign(
+        {},
+        deckUpdates,
+        { [id]: Object.assign({}, DEFAULT_SETTINGS, { xp }) },
+      ),
     });
   }
 
@@ -133,6 +156,7 @@ class AddScenarioResultView extends React.Component {
     const {
       selectedScenario,
       customScenario,
+      xp,
     } = this.state;
 
     return (
@@ -142,6 +166,7 @@ class AddScenarioResultView extends React.Component {
           onPress={this._scenarioPressed}
           value={selectedScenario}
         />
+        <XpController xp={xp} onChange={this._xpChanged} />
         { selectedScenario === CUSTOM && (
           <View style={styles.row}>
             <Input
