@@ -7,6 +7,8 @@ import CardSearchView from '../components/CardSearchView';
 import CardDetailView from '../components/CardDetailView';
 import CampaignDetailView from '../components/CampaignDetailView';
 import MyCampaignsView from '../components/MyCampaignsView';
+import MyDecksView from '../components/MyDecksView';
+import MyDecksSelectorDialog from '../components/MyDecksSelectorDialog';
 import NewDeckView from '../components/NewDeckView';
 import NewCampaignView from '../components/NewCampaignView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
@@ -35,6 +37,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Deck.New', () => NewDeckView, store, Provider);
   Navigation.registerComponent('Card', () => CardDetailView, store, Provider);
   Navigation.registerComponent('My.Campaigns', () => MyCampaignsView, store, Provider);
+  Navigation.registerComponent('My.Decks', () => MyDecksView, store, Provider);
   Navigation.registerComponent('Campaign', () => CampaignDetailView, store, Provider);
   Navigation.registerComponent('Campaign.New', () => NewCampaignView, store, Provider);
   Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
@@ -45,6 +48,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
+  Navigation.registerComponent('Dialog.DeckSelector', () => MyDecksSelectorDialog, store, Provider);
   Navigation.registerComponent('Dialog.Sort', () => CardSortDialog, store, Provider);
   Navigation.registerComponent('Dialog.Scenario', () => ScenarioDialog, store, Provider);
 }

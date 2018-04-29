@@ -77,7 +77,8 @@ class HomeView extends React.Component {
       <ScrollView>
         <MenuItem navigator={navigator} text="Popular Decks" screen="Browse.Decks" />
         <MenuItem navigator={navigator} text="All Cards" screen="Browse.Cards" />
-        <MenuItem navigator={navigator} text="Campaigns" screen="My.Campaigns" />
+        <MenuItem navigator={navigator} text="My Campaigns" screen="My.Campaigns" />
+        <MenuItem navigator={navigator} text="My Decks" screen="My.Decks" />
         <MenuItem navigator={navigator} text="Settings" screen="Settings" />
       </ScrollView>
     );

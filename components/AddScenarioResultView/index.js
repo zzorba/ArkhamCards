@@ -9,10 +9,11 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Input } from 'react-native-elements';
+import { Button, Input } from 'react-native-elements';
 
 import * as Actions from '../../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../reducers';
+import DeckRow from './DeckRow';
 
 const CUSTOM = 'Custom';
 
@@ -35,11 +36,31 @@ class AddScenarioResultView extends React.Component {
     this.state = {
       selectedScenario: nextScenario ? nextScenario.name : null,
       customScenario: null,
+      deckIds: [],
     };
 
+    this._showDeckSelector = this.showDeckSelector.bind(this);
+    this._deckAdded = this.deckAdded.bind(this);
     this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
     this._scenarioPressed = this.scenarioPressed.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
+  }
+
+  deckAdded(id) {
+    this.props.navigator.pop();
+    this.setState({
+      deckIds: [...this.state.deckIds, id],
+    });
+  }
+
+  showDeckSelector() {
+    this.props.navigator.push({
+      screen: 'Dialog.DeckSelector',
+      passProps: {
+        onDeckSelect: this._deckAdded,
+        selectedDeckIds: this.state.deckIds,
+      },
+    });
   }
 
   scenarioPressed() {
@@ -111,7 +132,15 @@ class AddScenarioResultView extends React.Component {
   }
 
   renderInvestigators() {
-    return null;
+    const {
+      deckIds,
+    } = this.state;
+    return (
+      <View>
+        { map(deckIds, deckId => <DeckRow key={deckId} id={deckId} />) }
+        <Button text="Add" onPress={this._showDeckSelector} />
+      </View>
+    );
   }
 
   render() {

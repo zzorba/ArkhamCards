@@ -16,15 +16,19 @@ import { syncCards } from '../lib/api';
 
 import MyDecksComponent from './MyDecksComponent';
 
-export default class MyDecksView extends React.Component {
+export default class MyDecksSelectorDialog extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-  }
+    onDeckSelect: PropTypes.func.isRequired,
+    selectedDeckIds: PropTypes.array,
+  };
 
   constructor(props) {
     super(props);
 
-    this._deckNavClicked = this.deckNavClicked.bind(this);
+    this.props.navigator.setTitle({
+      title: 'Choose a Deck',
+    });
     props.navigator.setButtons({
       rightButtons: [
         {
@@ -49,23 +53,17 @@ export default class MyDecksView extends React.Component {
     }
   }
 
-  deckNavClicked(id) {
-    this.props.navigator.push({
-      screen: 'Deck',
-      passProps: {
-        id: id,
-      },
-      navigatorStyle: {
-        tabBarHidden: true,
-      },
-    });
-  }
-
   render() {
+    const {
+      navigator,
+      onDeckSelect,
+      selectedDeckIds,
+    } = this.props;
     return (
       <MyDecksComponent
-        navigator={this.props.navigator}
-        deckClicked={this._deckNavClicked}
+        navigator={navigator}
+        deckClicked={onDeckSelect}
+        filterDeckIds={selectedDeckIds}
       />
     );
   }
