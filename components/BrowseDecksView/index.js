@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map } from 'lodash';
 import {
   StyleSheet,
-  ListView,
-  ScrollView,
   View,
   Text,
   ActivityIndicator,
@@ -16,30 +13,22 @@ import { connectRealm } from 'react-native-realm';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import { syncCards } from '../../lib/api';
-import DeckListItem from '../DeckListItem';
-import { getAllDecks } from '../../reducers';
+import DeckListComponent from '../DeckListComponent';
 
 class BrowseDecksView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     realm: PropTypes.object.isRequired,
     loading: PropTypes.bool,
-    decks: PropTypes.object,
-    investigators: PropTypes.object,
     cardCount: PropTypes.number,
     packs: PropTypes.array,
     fetchPacks: PropTypes.func.isRequired,
-    fetchDeck: PropTypes.func.isRequired,
   }
 
   constructor(props) {
     super(props);
 
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    });
     this.state = {
-      ds,
       loadingCards: false,
       deckIds: [
         5168,
@@ -90,8 +79,6 @@ class BrowseDecksView extends React.Component {
     const {
       packs,
       fetchPacks,
-      decks,
-      fetchDeck,
       cardCount,
       realm,
     } = this.props;
@@ -114,12 +101,6 @@ class BrowseDecksView extends React.Component {
     if (packs.length === 0) {
       fetchPacks();
     }
-
-    this.state.deckIds.forEach(deckId => {
-      if (!decks[deckId]) {
-        fetchDeck(deckId);
-      }
-    });
   }
 
 
@@ -136,7 +117,15 @@ class BrowseDecksView extends React.Component {
   }
 
   render() {
-    if (this.props.loading) {
+    const {
+      loading,
+      navigator,
+    } = this.props;
+    const {
+      loadingCards,
+      deckIds,
+    } = this.state;
+    if (loading) {
       return (
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator
@@ -147,7 +136,7 @@ class BrowseDecksView extends React.Component {
         </View>
       );
     }
-    if (this.state.loadingCards) {
+    if (loadingCards) {
       return (
         <View style={styles.activityIndicatorContainer}>
           <Text>Loading latest cards...</Text>
@@ -160,37 +149,11 @@ class BrowseDecksView extends React.Component {
       );
     }
     return (
-      <ScrollView style={{
-        flex: 1,
-        backgroundColor: '#F5F5F5',
-        paddingTop: 20,
-      }}>
-        {
-          map(this.state.deckIds, deckId => {
-            const deck = this.props.decks[deckId];
-            return deck && (<DeckListItem
-              key={deckId}
-              id={deckId}
-              deck={deck}
-              investigator={this.props.investigators[deck.investigator_code]}
-              onPress={this._deckNavClicked}
-            />);
-          })
-        }
-      </ScrollView>
-    );
-  }
-
-  renderCard(rowData, sectionID, rowID) {
-    return (
-      <View style={styles.row}>
-        <Text style={styles.title}>
-          { (parseInt(rowID, 10) + 1) }{ '. ' }{ rowData.name }
-        </Text>
-        <Text style={styles.description}>
-          { rowData.description }
-        </Text>
-      </View>
+      <DeckListComponent
+        navigator={navigator}
+        deckIds={deckIds}
+        deckClicked={this._deckNavClicked}
+      />
     );
   }
 }
@@ -199,7 +162,6 @@ function mapStateToProps(state) {
   return {
     loading: state.packs.loading,
     packs: state.packs.all,
-    decks: getAllDecks(state),
   };
 }
 
@@ -212,16 +174,9 @@ export default connectRealm(
   {
     schemas: ['Card'],
     mapToProps(results, realm) {
-      const investigators = {};
-      forEach(
-        results.cards.filtered('type_code == "investigator"'),
-        investigator => {
-          investigators[investigator.code] = investigator;
-        });
       return {
         realm,
         cardCount: results.cards.length,
-        investigators,
       };
     },
   },
@@ -233,18 +188,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-  },
-  row: {
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-  },
-  title: {
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  description: {
-    marginTop: 5,
-    fontSize: 14,
   },
 });

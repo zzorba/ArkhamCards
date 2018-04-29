@@ -1,39 +1,137 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, last, sortBy, values } from 'lodash';
+import { concat, filter, flatMap, forEach, head, map } from 'lodash';
 import {
-  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { Input } from 'react-native-elements';
 
 import * as Actions from '../../actions';
-import { iconsMap } from '../../app/NavIcons';
-import { getAllDecks } from '../../reducers';
+import { getAllDecks, getAllPacks, getPack } from '../../reducers';
+
+const CUSTOM = 'Custom';
 
 class AddScenarioResultView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaign: PropTypes.object.isRequired,
     decks: PropTypes.object,
+    cyclePacks: PropTypes.array,
+    standalonePacks: PropTypes.array,
+    cycleScenarios: PropTypes.array,
+    standaloneScenarios: PropTypes.array,
   };
 
   constructor(props) {
     super(props);
+
+    const nextScenario = head(props.cycleScenarios);
+
+    this.state = {
+      selectedScenario: nextScenario ? nextScenario.name : null,
+      customScenario: null,
+    };
+
+    this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
+    this._scenarioPressed = this.scenarioPressed.bind(this);
+    this._scenarioChanged = this.scenarioChanged.bind(this);
+  }
+
+  scenarioPressed() {
+    this.props.navigator.showLightBox({
+      screen: 'Dialog.Scenario',
+      passProps: {
+        scenarioChanged: this._scenarioChanged,
+        scenarios: this.possibleScenarios(),
+        selected: this.state.selectedScenario,
+      },
+      style: {
+        backgroundColor: 'rgba(128,128,128,.75)',
+      },
+    });
+  }
+
+  scenarioChanged(value) {
+    this.setState({
+      selectedScenario: value,
+    });
+  }
+
+  customScenarioTextChanged(value) {
+    this.setState({
+      customScenario: value,
+    });
+  }
+
+  possibleScenarios() {
+    const {
+      cycleScenarios,
+      standaloneScenarios,
+    } = this.props;
+    const scenarios = map(
+      concat(cycleScenarios, standaloneScenarios),
+      card => card.name);
+    scenarios.push(CUSTOM);
+    return scenarios;
+  }
+
+  renderScenarios() {
+    const {
+      selectedScenario,
+      customScenario,
+    } = this.state;
+
+    return (
+      <View>
+        <TouchableOpacity onPress={this._scenarioPressed}>
+          <View style={styles.row}>
+            <Input
+              value={selectedScenario}
+              editable={false}
+              pointerEvents="none"
+            />
+          </View>
+        </TouchableOpacity>
+        { selectedScenario === CUSTOM && (
+          <View style={styles.row}>
+            <Input
+              placeholder="Custom Scenario Name"
+              onChangeText={this._customScenarioTextChanged}
+              value={customScenario}
+            />
+          </View>
+        ) }
+      </View>
+    );
+  }
+
+  renderInvestigators() {
+    return null;
   }
 
   render() {
-    const {
-      campaign,
-      decks,
-    } = this.props;
-    return null;
+    return (
+      <View style={styles.container}>
+        { this.renderScenarios() }
+        { this.renderInvestigators() }
+      </View>
+    );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
+  const cyclePack = getPack(state, props.campaign.cycleCode);
+  const allPacks = getAllPacks(state);
+  const cyclePacks = !cyclePack ? [] : filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
+  const standalonePacks = filter(allPacks, pack => pack.cycle_position === 70);
   return {
+    cyclePacks,
+    standalonePacks,
     decks: getAllDecks(state),
   };
 }
@@ -42,14 +140,51 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(AddScenarioResultView),
-  {
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectRealm(AddScenarioResultView, {
     schemas: ['Card'],
-    mapToProps(results, realm) {
+    mapToProps(results, realm, props) {
+      const finishedScenarios = new Set(flatMap(
+        props.campaign.scenarioResults,
+        scenarioResult => {
+          if (scenarioResult.scenarioCode) {
+            return scenarioResult.scenarioCode;
+          }
+          return null;
+        }));
+      const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));
+      const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
+
+      const allScenarioCards = results.cards
+        .filtered('type_code == "scenario"')
+        .sorted('position');
+
+      const cycleScenarios = [];
+      const standaloneScenarios = [];
+      forEach(allScenarioCards, card => {
+        if (cyclePackCodes.has(card.pack_code) && !finishedScenarios.has(card.code)) {
+          cycleScenarios.push(card);
+        }
+        if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.code)) {
+          standaloneScenarios.push(card);
+        }
+      });
       return {
         realm,
+        cycleScenarios,
+        standaloneScenarios,
       };
     },
-  },
+  }),
 );
+
+const styles = StyleSheet.create({
+  container: {
+    marginLeft: 8,
+    marginRight: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+});

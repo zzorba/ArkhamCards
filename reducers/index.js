@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { forEach, sortBy, values } from 'lodash';
+import { find, forEach, sortBy, values } from 'lodash';
 
 import {
   CLEAR_DECKS,
@@ -79,13 +79,21 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 // Campaign: {
 //   id: '',
 //   name: '',
+//   cycleCode: '',
 //   lastUpdated: Date,
 //   scenarioResults: [{
-//     deckIds: [], // who participated in mission / interlude
+//     deckIds: [],
 //     scenario: '',
+//     scenarioCode: '',
 //     campaignNotes: [],
-//     mentalTrauma: {}, keyed by investigator.code
-//     physicalTrauma: {}, keyed by investigator.code
+//     investigatorUpdates: {
+//      investigator_code: {
+//        mentalTrauma: #,
+//        physicalTrauma: #,
+//        xp: #,
+//        killed: bool,
+//        insane: bool,
+//     },
 //   }],
 // }
 const DEFAULT_CAMPAIGNS_STATE = {
@@ -109,7 +117,7 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
     const newCampaign = {
       id,
       name: action.name,
-      packCode: action.packCode,
+      cycleCode: action.cycleCode,
       lastUpdated: action.now,
       scenarioResults: [],
     };
@@ -159,10 +167,17 @@ export function getShowSpoilers(state, packCode) {
   return !!show_spoilers[packCode];
 }
 
-export function getPacks(state) {
+export function getAllPacks(state) {
   return sortBy(
     sortBy(state.packs.all || [], pack => pack.position),
     pack => pack.cycle_position);
+}
+
+export function getPack(state, packCode) {
+  if (packCode) {
+    return find(state.packs.all || [], pack => pack.code === packCode);
+  }
+  return null;
 }
 
 export function getPackSpoilers(state) {

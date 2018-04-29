@@ -57,8 +57,9 @@ export default class CardSearchComponent extends React.Component {
       icon: iconsMap['arrow-left'],
       id: 'save',
     };
+    const defaultButton = Platform.OS === 'ios' ? [] : null;
     props.navigator.setButtons({
-      leftButtons: props.backPressed ? [leftButton] : (Platform.OS === 'ios' ? [] : null),
+      leftButtons: props.backPressed ? [leftButton] : defaultButton,
       rightButtons: [
         {
           icon: iconsMap.tune,

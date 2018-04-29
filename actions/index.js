@@ -36,12 +36,20 @@ export function fetchDeck(id, useDeckEndpoint) {
   return (dispatch) => {
     const uri = `https://arkhamdb.com/api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
     fetch(uri, { method: 'GET' })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error(`Unexpected status: ${response.status}`);
+      })
       .then(json => dispatch({
         type: DECK_AVAILABLE,
         id,
         deck: json,
       })).catch(err => {
+        if (!useDeckEndpoint) {
+          return fetchDeck(id, true)(dispatch);
+        }
         console.log(err);
       });
   };
@@ -67,7 +75,7 @@ export function newCampaign(pack_code, name) {
   return {
     type: NEW_CAMPAIGN,
     name: name,
-    packCode: pack_code,
+    cycleCode: pack_code,
     now: new Date(),
   };
 }

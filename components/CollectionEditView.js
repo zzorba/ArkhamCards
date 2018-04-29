@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sortBy } from 'lodash';
 import {
   Text,
   View,
@@ -10,7 +9,7 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../actions';
 import PackListComponent from './PackListComponent';
-import { getPacks, getPacksInCollection } from '../reducers';
+import { getAllPacks, getPacksInCollection } from '../reducers';
 
 class CollectionEditView extends React.Component {
   static propTypes = {
@@ -53,7 +52,7 @@ class CollectionEditView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    packs: getPacks(state),
+    packs: getAllPacks(state),
     in_collection: getPacksInCollection(state),
   };
 }

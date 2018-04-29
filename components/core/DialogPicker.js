@@ -6,17 +6,19 @@ import {
   Platform,
   Text,
   TouchableOpacity,
+  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
+
 import DialogOption from './DialogOption';
 
 export default class DialogPicker extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    onSelectionChanged: PropTypes.func.isRequired,
     options: PropTypes.array.isRequired,
     selectedOption: PropTypes.string.isRequired,
+    onSelectionChanged: PropTypes.func.isRequired,
     header: PropTypes.string.isRequired,
   };
 
@@ -84,7 +86,13 @@ export default class DialogPicker extends React.Component {
           <View style={styles.header}>
             <Text style={styles.headerText}>{ header }:</Text>
           </View>
-          { this.renderOptions() }
+          <ScrollView
+            style={styles.scrollOptions}
+            overScrollMode="never"
+            scrollIndicatorInsets={{ right: -10 }}
+          >
+            { this.renderOptions() }
+          </ScrollView>
           <View style={styles.cancel}>
             <TouchableOpacity onPress={this._hide}>
               <Text style={styles.cancelText}>Cancel</Text>
@@ -143,5 +151,8 @@ const styles = StyleSheet.create({
     lineHeight: 50,
     fontSize: 23,
     fontWeight: '700',
+  },
+  scrollOptions: {
+    maxHeight: 50 * 6 + 25,
   },
 });

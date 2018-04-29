@@ -20,6 +20,7 @@ import PackCardsView from '../components/PackCardsView';
 import SpoilersView from '../components/SpoilersView';
 import CollectionEditView from '../components/CollectionEditView';
 import CardSortDialog from '../components/CardSortDialog';
+import ScenarioDialog from '../components/ScenarioDialog';
 import HomeView from '../components/HomeView';
 
 // register all screens of the app (including internal ones)
@@ -45,4 +46,5 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
   Navigation.registerComponent('Dialog.Sort', () => CardSortDialog, store, Provider);
+  Navigation.registerComponent('Dialog.Scenario', () => ScenarioDialog, store, Provider);
 }

@@ -62,7 +62,6 @@ class CampaignItem extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  const decks = [];
   const latestScenario = last(props.campaign.scenarioResults);
   const deckIds = latestScenario ? latestScenario.deckIds : [];
   return {
@@ -79,7 +78,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
   connectRealm(CampaignItem, {
     schemas: ['Card'],
     mapToProps(results, realm, props) {
-      console.log('Doing realm mapping');
       const decks = props.decks || [];
       const query = map(decks,
         deck => `code == '${deck.investigator_code}'`).join(' or ');

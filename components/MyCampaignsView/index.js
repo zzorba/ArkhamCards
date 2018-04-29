@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, last, sortBy, values } from 'lodash';
+import { forEach, map, last } from 'lodash';
 import {
   ScrollView,
 } from 'react-native';
@@ -86,7 +86,6 @@ class MyCampaignsView extends React.Component {
   render() {
     const {
       campaigns,
-      decks,
     } = this.props;
     return (
       <ScrollView>

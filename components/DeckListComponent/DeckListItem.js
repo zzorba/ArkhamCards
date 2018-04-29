@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  ActivityIndicator,
   StyleSheet,
-  TouchableOpacity,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import InvestigatorImage from './core/InvestigatorImage';
+import InvestigatorImage from '../core/InvestigatorImage';
 
 export default class DeckListItem extends React.Component {
   static propTypes = {
@@ -35,9 +36,20 @@ export default class DeckListItem extends React.Component {
       deck,
       investigator,
     } = this.props;
+    if (!deck) {
+      return (
+        <View style={styles.row}>
+          <ActivityIndicator
+            style={styles.loading}
+            size="large"
+            color="#000000"
+          />
+        </View>
+      );
+    }
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.row} >
+        <View style={styles.row}>
           <View style={styles.image}>
             { !!investigator && <InvestigatorImage card={investigator} /> }
           </View>
@@ -59,6 +71,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     borderBottomWidth: 2,
     height: 100,
+  },
+  loading: {
+    marginLeft: 10,
   },
   image: {
     marginLeft: 10,

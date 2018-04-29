@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, forEach, map, last, sortBy, values } from 'lodash';
+import { flatMap, map } from 'lodash';
 import {
   Alert,
   ScrollView,
@@ -29,7 +29,7 @@ class CampaignDetailView extends React.Component {
 
     this._delete = this.delete.bind(this);
     this._addScenarioResult = this.addScenarioResult.bind(this);
-    if (props.campaign)  {
+    if (props.campaign) {
       props.navigator.setSubTitle({ subtitle: props.campaign.name });
     }
     props.navigator.setButtons({
@@ -82,7 +82,6 @@ class CampaignDetailView extends React.Component {
 
   onNavigatorEvent(event) {
     const {
-      navigator,
       campaign,
     } = this.props;
     if (event.type === 'NavBarButtonPress') {
@@ -118,13 +117,12 @@ class CampaignDetailView extends React.Component {
       <View>
         { map(notes, (note, idx) => <Text key={idx}>-{ note }</Text>) }
       </View>
-    )
+    );
   }
 
   render() {
     const {
       campaign,
-      decks,
     } = this.props;
     if (!campaign) {
       return null;
