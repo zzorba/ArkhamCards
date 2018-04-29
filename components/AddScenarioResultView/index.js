@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { concat, filter, flatMap, forEach, head, map } from 'lodash';
 import {
   StyleSheet,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -13,10 +12,18 @@ import { Input } from 'react-native-elements';
 
 import * as Actions from '../../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../reducers';
+import LabeledTextBox from '../core/LabeledTextBox';
 import AddDeckRow from './AddDeckRow';
 import DeckRow from './DeckRow';
 
 const CUSTOM = 'Custom';
+
+const DEFAULT_SETTINGS = {
+  trauma: {
+    mental: 0,
+    physical: 0,
+  },
+};
 
 class AddScenarioResultView extends React.Component {
   static propTypes = {
@@ -38,25 +45,49 @@ class AddScenarioResultView extends React.Component {
       selectedScenario: nextScenario ? nextScenario.name : null,
       customScenario: null,
       deckIds: [],
+      deckUpdates: {},
     };
 
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
+    this._deckUpdatesChanged = this.deckUpdatesChanged.bind(this);
     this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
     this._scenarioPressed = this.scenarioPressed.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
   }
 
   deckAdded(id) {
+    const {
+      deckIds,
+      deckUpdates,
+    } = this.state;
     this.props.navigator.pop();
     this.setState({
-      deckIds: [...this.state.deckIds, id],
+      deckIds: [...deckIds, id],
+      deckUpdates: Object.assign({}, deckUpdates, { [id]: DEFAULT_SETTINGS }),
+    });
+  }
+
+  deckUpdatesChanged(id, updates) {
+    const deckUpdates = Object.assign({},
+      this.state.deckUpdates,
+      { [id]: updates },
+    );
+    this.setState({
+      deckUpdates,
     });
   }
 
   deckRemoved(id) {
+    const {
+      deckIds,
+      deckUpdates,
+    } = this.state;
+    const newDeckUpdates = Object.assign({}, deckUpdates);
+    delete newDeckUpdates[id];
     this.setState({
-      deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
+      deckIds: filter([...deckIds], deckId => deckId !== id),
+      deckUpdates: newDeckUpdates,
     });
   }
 
@@ -106,15 +137,11 @@ class AddScenarioResultView extends React.Component {
 
     return (
       <View>
-        <TouchableOpacity onPress={this._scenarioPressed}>
-          <View style={styles.row}>
-            <Input
-              value={selectedScenario}
-              editable={false}
-              pointerEvents="none"
-            />
-          </View>
-        </TouchableOpacity>
+        <LabeledTextBox
+          label="Scenario"
+          onPress={this._scenarioPressed}
+          value={selectedScenario}
+        />
         { selectedScenario === CUSTOM && (
           <View style={styles.row}>
             <Input
@@ -134,11 +161,19 @@ class AddScenarioResultView extends React.Component {
     } = this.props;
     const {
       deckIds,
+      deckUpdates,
     } = this.state;
     return (
       <View>
         { map(deckIds, deckId => (
-          <DeckRow key={deckId} id={deckId} remove={this._deckRemoved} />
+          <DeckRow
+            key={deckId}
+            id={deckId}
+            navigator={navigator}
+            updatesChanged={this._deckUpdatesChanged}
+            remove={this._deckRemoved}
+            updates={deckUpdates[deckId]}
+          />
         )) }
         { deckIds.length < 4 && (
           <AddDeckRow
@@ -217,8 +252,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 8,
-    marginRight: 8,
+    margin: 8,
   },
   row: {
     flexDirection: 'row',

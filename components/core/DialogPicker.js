@@ -17,7 +17,7 @@ export default class DialogPicker extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     options: PropTypes.array.isRequired,
-    selectedOption: PropTypes.string.isRequired,
+    selectedOption: PropTypes.string,
     onSelectionChanged: PropTypes.func.isRequired,
     header: PropTypes.string.isRequired,
   };

@@ -6,6 +6,7 @@ import DeckEditView from '../components/DeckEditView';
 import CardSearchView from '../components/CardSearchView';
 import CardDetailView from '../components/CardDetailView';
 import CampaignDetailView from '../components/CampaignDetailView';
+import EditTraumaDialog from '../components/EditTraumaDialog';
 import MyCampaignsView from '../components/MyCampaignsView';
 import MyDecksView from '../components/MyDecksView';
 import MyDecksSelectorDialog from '../components/MyDecksSelectorDialog';
@@ -49,6 +50,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
   Navigation.registerComponent('Dialog.DeckSelector', () => MyDecksSelectorDialog, store, Provider);
+  Navigation.registerComponent('Dialog.EditTrauma', () => EditTraumaDialog, store, Provider);
   Navigation.registerComponent('Dialog.Sort', () => CardSortDialog, store, Provider);
   Navigation.registerComponent('Dialog.Scenario', () => ScenarioDialog, store, Provider);
 }

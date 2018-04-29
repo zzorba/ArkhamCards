@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head } from 'lodash';
+import { flatten, head } from 'lodash';
 import {
+  Text,
   TouchableOpacity,
   StyleSheet,
   View,
@@ -14,21 +15,52 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
 import InvestigatorImage from '../core/InvestigatorImage';
+import LabeledTextBox from '../core/LabeledTextBox';
 
 class DeckRow extends React.Component {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
     investigator: PropTypes.object,
-
+    updates: PropTypes.object,
     remove: PropTypes.func.isRequired,
+    updatesChanged: PropTypes.func.isRequired,
     fetchDeck: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
+    this._updateTrauma = this.updateTrauma.bind(this);
     this._onRemove = this.onRemove.bind(this);
+    this._showTraumaDialog = this.showTraumaDialog.bind(this);
+  }
+
+  showTraumaDialog() {
+    const {
+      navigator,
+      updates,
+    } = this.props;
+    navigator.showLightBox({
+      screen: 'Dialog.EditTrauma',
+      passProps: {
+        updateTrauma: this._updateTrauma,
+        trauma: updates.trauma,
+      },
+      style: {
+        backgroundColor: 'rgba(128,128,128,.75)',
+      },
+    });
+  }
+
+  updateTrauma(trauma) {
+    const {
+      id,
+      updatesChanged,
+      updates,
+    } = this.props;
+    updatesChanged(id, Object.assign({}, updates, { trauma }));
   }
 
   onRemove() {
@@ -50,18 +82,53 @@ class DeckRow extends React.Component {
     }
   }
 
+  traumaText() {
+    const {
+      updates: {
+        trauma: {
+          physical = 0,
+          mental = 0,
+        },
+      },
+    } = this.props;
+    if (mental === 0 && physical === 0) {
+      return 'None';
+    }
+    return flatten([
+      (physical === 0 ? [] : [`Physical: ${physical}`]),
+      (mental === 0 ? [] : [`Mental: ${mental}`]),
+    ]).join(', ');
+  }
+
+  renderTrauma() {
+    return (
+      <LabeledTextBox
+        label="Trauma"
+        onPress={this._showTraumaDialog}
+        value={this.traumaText()}
+      />
+    );
+  }
+
   render() {
     const {
+      deck,
       investigator,
     } = this.props;
     return (
-      <View style={styles.row}>
+      <View style={styles.container}>
         <View style={styles.deleteIcon}>
           <TouchableOpacity onPress={this._onRemove}>
             <MaterialCommunityIcons name="close" size={24} color="#444" />
           </TouchableOpacity>
         </View>
-        <InvestigatorImage card={investigator} />
+        <View style={styles.investigatorImage}>
+          <InvestigatorImage card={investigator} />
+        </View>
+        <View style={styles.column}>
+          <Text>{ deck.name }</Text>
+          { this.renderTrauma() }
+        </View>
       </View>
     );
   }
@@ -95,7 +162,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 );
 
 const styles = StyleSheet.create({
-  row: {
+  container: {
     position: 'relative',
     height: 100,
     width: '100%',
@@ -104,6 +171,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderColor: '#000000',
+  },
+  investigatorImage: {
+    marginRight: 8,
+  },
+  column: {
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginRight: 8,
   },
   deleteIcon: {
     position: 'absolute',
