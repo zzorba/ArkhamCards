@@ -8,6 +8,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { Button } from 'react-native-elements';
 
 import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
@@ -18,7 +19,23 @@ class DeckRow extends React.Component {
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
     investigator: PropTypes.object,
+
+    remove: PropTypes.func,
   };
+
+  constructor(props) {
+    super(props);
+
+    this._onRemove = this.onRemove.bind(this);
+  }
+
+  onRemove() {
+    const {
+      remove,
+      id,
+    } = this.props;
+    remove(id);
+  }
 
   componentDidMount() {
     const {
@@ -39,6 +56,7 @@ class DeckRow extends React.Component {
     return (
       <View style={styles.row}>
         <InvestigatorImage card={investigator} />
+        <Button text="X" onPress={this._onRemove} />
       </View>
     )
   }
@@ -63,10 +81,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(
           investigator: null,
         };
       }
-      const investigator = head(
-        results.cards.filtered(`code == "${props.deck.investigator_code}"`));
+      const query = `code == "${props.deck.investigator_code}"`;
       return {
-        investigator,
+        investigator: head(results.cards.filtered(query)),
       };
     },
   }),

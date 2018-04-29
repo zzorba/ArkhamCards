@@ -41,6 +41,7 @@ class AddScenarioResultView extends React.Component {
 
     this._showDeckSelector = this.showDeckSelector.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
+    this._deckRemoved = this.deckRemoved.bind(this);
     this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
     this._scenarioPressed = this.scenarioPressed.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
@@ -50,6 +51,12 @@ class AddScenarioResultView extends React.Component {
     this.props.navigator.pop();
     this.setState({
       deckIds: [...this.state.deckIds, id],
+    });
+  }
+
+  deckRemoved(id) {
+    this.setState({
+      deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
     });
   }
 
@@ -137,7 +144,10 @@ class AddScenarioResultView extends React.Component {
     } = this.state;
     return (
       <View>
-        { map(deckIds, deckId => <DeckRow key={deckId} id={deckId} />) }
+        { map(deckIds, deckId => (
+            <DeckRow key={deckId} id={deckId} remove={this._deckRemoved} />
+          )
+        ) }
         <Button text="Add" onPress={this._showDeckSelector} />
       </View>
     );
