@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { head, map, partition } from 'lodash';
 import { connectRealm } from 'react-native-realm';
 
-import CardSearchComponent from '../CardSearchComponent';
+import CardSearchComponent from './CardSearchComponent';
 
 class DeckEditView extends React.Component {
   static propTypes = {

@@ -10,10 +10,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import { iconsMap } from '../../app/NavIcons';
-import * as Actions from '../../actions';
-import { syncCards } from '../../lib/api';
-import DeckListComponent from '../DeckListComponent';
+import { iconsMap } from '../app/NavIcons';
+import * as Actions from '../actions';
+import { syncCards } from '../lib/api';
+import DeckListComponent from './DeckListComponent';
 
 class BrowseDecksView extends React.Component {
   static propTypes = {
