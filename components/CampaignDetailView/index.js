@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, map } from 'lodash';
+import { flatMap, keys, map } from 'lodash';
 import {
   Alert,
   ScrollView,
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -11,9 +12,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 
+import InvestigatorStatusRow from './InvestigatorStatusRow';
 import * as Actions from '../../actions';
 import { iconsMap } from '../../app/NavIcons';
 import { getCampaign, getAllDecks } from '../../reducers';
+import typography from '../../styles/typography';
 
 class CampaignDetailView extends React.Component {
   static propTypes = {
@@ -100,7 +103,22 @@ class CampaignDetailView extends React.Component {
   }
 
   renderScenarioResults() {
-    return null;
+    const {
+      campaign: {
+        investigatorStatus,
+      },
+    } = this.props;
+    return (
+      <View>
+        { map(keys(investigatorStatus), code => (
+          <InvestigatorStatusRow
+            key={code}
+            investigatorCode={code}
+            status={investigatorStatus[code]}
+          />
+        )) }
+      </View>
+    );
   }
 
   renderCampaignNotes() {
@@ -111,12 +129,26 @@ class CampaignDetailView extends React.Component {
       campaign.scenarioResults,
       scenario => scenario.campaignNotes);
     if (!notes.length) {
-      return <View><Text>None</Text></View>;
+      return (
+        <View style={styles.column}>
+          <Text style={typography.bigLabel}>
+            Campaign Log:
+          </Text>
+          <Text>
+            None
+          </Text>
+        </View>
+      );
     }
 
     return (
-      <View>
-        { map(notes, (note, idx) => <Text key={idx}>-{ note }</Text>) }
+      <View style={styles.column}>
+        <Text style={typography.bigLabel}>
+          Campaign Log:
+        </Text>
+        { map(notes, (note, idx) => (
+          <Text key={idx}>-{ note }</Text>
+        )) }
       </View>
     );
   }
@@ -129,11 +161,12 @@ class CampaignDetailView extends React.Component {
       return null;
     }
     return (
-      <ScrollView>
-        <Text>{ campaign.name }</Text>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={typography.bigLabel}>
+          { campaign.name }
+        </Text>
         { this.renderScenarioResults() }
         <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
-        <Text>Campaign Log:</Text>
         { this.renderCampaignNotes() }
       </ScrollView>
     );
@@ -152,3 +185,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CampaignDetailView);
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 8,
+  },
+  column: {
+    flexDirection: 'column',
+  },
+});

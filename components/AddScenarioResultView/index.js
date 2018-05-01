@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, flatMap, forEach, map, mapValues } from 'lodash';
+import { concat, filter, forEach, map, mapValues } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -243,14 +243,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(
   connectRealm(AddScenarioResultView, {
     schemas: ['Card'],
     mapToProps(results, realm, props) {
-      const finishedScenarios = new Set(flatMap(
-        props.campaign.scenarioResults,
-        scenarioResult => {
-          if (scenarioResult.scenarioCode) {
-            return scenarioResult.scenarioCode;
-          }
-          return null;
-        }));
+      const finishedScenarios = new Set(props.campaign.finishedScenarios);
       const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));
       const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
 

@@ -49,7 +49,7 @@ export default class ScenarioSection extends React.Component {
 
     this.props.scenarioChanged({
       scenario: scenarioCard ? selectedScenario : customScenario,
-      scenarioCode: scenarioCard || CUSTOM,
+      scenarioCode: scenarioCard ? scenarioCard.code : CUSTOM,
     });
   }
 

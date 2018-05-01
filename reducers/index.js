@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, forEach, sortBy, values } from 'lodash';
+import { find, flatMap, forEach, keys, last, sortBy, values } from 'lodash';
 
 import {
   CLEAR_DECKS,
@@ -216,9 +216,54 @@ export function getDecks(state, deckIds) {
   return decks;
 }
 
+function mergeStatus(oldStatus, newStatus) {
+  const oldTrauma = (oldStatus && oldStatus.trauma) || {};
+  const newTrauma = (newStatus && newStatus.trauma) || {};
+  return {
+    trauma: {
+      physical: (oldTrauma.physical || 0) + (newTrauma.physical || 0),
+      mental: (oldTrauma.mental || 0) + (newTrauma.mental || 0),
+    },
+    xp: (oldStatus.xp || 0) + (newStatus.xp || 0),
+    killed: oldStatus.killed || newStatus.killed || false,
+    insane: oldStatus.insane || newStatus.insane || false,
+    missionCount: (oldStatus.missionCount || 0) + 1,
+  };
+}
+
+function processCampaign(campaign) {
+  const latestScenario = last(campaign.scenarioResults);
+  const finishedScenarios = flatMap(campaign.scenarioResults,
+    scenarioResult => {
+      if (scenarioResult.scenarioCode) {
+        return scenarioResult.scenarioCode;
+      }
+      return null;
+    });
+  const investigatorStatus = {};
+  forEach(campaign.scenarioResults, scenarioResult => {
+    forEach(keys(scenarioResult.investigatorUpdates), investigator_code => {
+      const status = investigatorStatus[investigator_code] || {};
+      investigatorStatus[investigator_code] = mergeStatus(
+        status,
+        scenarioResult.investigatorUpdates[investigator_code]);
+    });
+  });
+  return Object.assign(
+    {},
+    campaign,
+    {
+      latestScenario,
+      finishedScenarios,
+      investigatorStatus,
+    },
+  );
+}
+
 export function getCampaign(state, id) {
   if (id in state.campaigns.all) {
-    return state.campaigns.all[id];
+    const campaign = state.campaigns.all[id];
+    return campaign ? processCampaign(campaign) : null;
   }
   return null;
 }
