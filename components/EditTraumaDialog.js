@@ -8,6 +8,10 @@ const ADD_MENTAL = 'Add Mental';
 const REMOVE_MENTAL = 'Remove Mental';
 const ADD_PHYSICAL = 'Add Physical';
 const REMOVE_PHYSICAL = 'Remove Physical';
+const SET_KILLED = 'Killed';
+const REMOVE_KILLED = 'Undo Killed';
+const SET_INSANE = 'Insane';
+const REMOVE_INSANE = 'Undo Insane';
 
 export default class EditTraumaDialog extends React.Component {
   static propTypes = {
@@ -26,7 +30,15 @@ export default class EditTraumaDialog extends React.Component {
     const {
       trauma,
     } = this.props;
-    const options = [ADD_MENTAL];
+    if (trauma.killed) {
+      return [REMOVE_KILLED];
+    }
+    if (trauma.insane) {
+      return [REMOVE_INSANE];
+    }
+
+    const options = [];
+    options.push(ADD_MENTAL);
     if (trauma.mental > 0) {
       options.push(REMOVE_MENTAL);
     }
@@ -34,6 +46,8 @@ export default class EditTraumaDialog extends React.Component {
     if (trauma.physical > 0) {
       options.push(REMOVE_PHYSICAL);
     }
+    options.push(SET_KILLED);
+    options.push(SET_INSANE);
     return options;
   }
 
@@ -44,6 +58,8 @@ export default class EditTraumaDialog extends React.Component {
     } = this.props;
     let mental = trauma.mental || 0;
     let physical = trauma.physical || 0;
+    let killed = trauma.killed || false;
+    let insane = trauma.insane || false;
     switch (value) {
       case ADD_MENTAL:
         mental++;
@@ -57,11 +73,25 @@ export default class EditTraumaDialog extends React.Component {
       case REMOVE_PHYSICAL:
         physical--;
         break;
+      case SET_KILLED:
+        killed = true;
+        break;
+      case REMOVE_KILLED:
+        killed = false;
+        break;
+      case SET_INSANE:
+        insane = true;
+        break;
+      case REMOVE_INSANE:
+        insane = false;
+        break;
       default: break;
     }
     updateTrauma({
       mental,
       physical,
+      killed,
+      insane,
     });
   }
 

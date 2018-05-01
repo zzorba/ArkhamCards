@@ -25,9 +25,17 @@ class InvestigatorStatusRow extends React.Component {
         trauma: {
           physical = 0,
           mental = 0,
+          killed = false,
+          insane = false,
         },
       },
     } = this.props;
+    if (killed) {
+      return 'Killed';
+    }
+    if (insane) {
+      return 'Insane';
+    }
     if (physical === 0 && mental === 0) {
       return 'None';
     }

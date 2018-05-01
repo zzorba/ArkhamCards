@@ -91,10 +91,10 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 //        trauma: {
 //          physical,
 //          mental,
+//          killed: bool,
+//          insane: bool,
 //        },
 //        xp: #,
-//        killed: bool,
-//        insane: bool,
 //        exiled: {},
 //     },
 //   }],
@@ -223,10 +223,10 @@ function mergeStatus(oldStatus, newStatus) {
     trauma: {
       physical: (oldTrauma.physical || 0) + (newTrauma.physical || 0),
       mental: (oldTrauma.mental || 0) + (newTrauma.mental || 0),
+      killed: oldTrauma.killed || newTrauma.killed || false,
+      insane: oldTrauma.insane || newTrauma.insane || false,
     },
     xp: (oldStatus.xp || 0) + (newStatus.xp || 0),
-    killed: oldStatus.killed || newStatus.killed || false,
-    insane: oldStatus.insane || newStatus.insane || false,
     missionCount: (oldStatus.missionCount || 0) + 1,
   };
 }

@@ -137,9 +137,17 @@ class DeckRow extends React.Component {
         trauma: {
           physical = 0,
           mental = 0,
+          killed = false,
+          insane = false,
         },
       },
     } = this.props;
+    if (killed) {
+      return 'Killed';
+    }
+    if (insane) {
+      return 'Insane';
+    }
     if (mental === 0 && physical === 0) {
       return 'None';
     }

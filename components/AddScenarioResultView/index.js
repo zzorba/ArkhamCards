@@ -22,6 +22,8 @@ const DEFAULT_SETTINGS = {
   trauma: {
     mental: 0,
     physical: 0,
+    killed: false,
+    insane: false,
   },
   exile: {},
 };
