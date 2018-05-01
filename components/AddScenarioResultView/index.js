@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, flatMap, forEach, head, map, mapValues } from 'lodash';
+import { concat, filter, flatMap, forEach, map, mapValues } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Input } from 'react-native-elements';
 
 import * as Actions from '../../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../reducers';
-import LabeledTextBox from '../core/LabeledTextBox';
-import AddDeckRow from './AddDeckRow';
-import DeckRow from './DeckRow';
 import XpController from './XpController';
-import typography from '../../styles/typography';
-
-const CUSTOM = 'Custom';
+import InvestigatorSection from './InvestigatorSection';
+import ScenarioSection from './ScenarioSection';
 
 const DEFAULT_SETTINGS = {
   xp: 0,
@@ -34,10 +28,11 @@ const DEFAULT_SETTINGS = {
 class AddScenarioResultView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    /* eslint-disable react/no-unused-prop-types */
     campaign: PropTypes.object.isRequired,
+    // from redux/realm
+    /* eslint-disable react/no-unused-prop-types */
     decks: PropTypes.object,
-    cyclePacks: PropTypes.array,
-    standalonePacks: PropTypes.array,
     cycleScenarios: PropTypes.array,
     standaloneScenarios: PropTypes.array,
   };
@@ -45,27 +40,22 @@ class AddScenarioResultView extends React.Component {
   constructor(props) {
     super(props);
 
-    const nextScenario = head(props.cycleScenarios);
-
     this.state = {
-      selectedScenario: nextScenario ? nextScenario.name : null,
-      customScenario: null,
       deckIds: [],
       deckUpdates: {},
       campaignNotes: [],
+      scenario: '',
       xp: 0,
     };
 
     this.updateNavigatorButtons();
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
+    this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
     this._deckUpdatesChanged = this.deckUpdatesChanged.bind(this);
-    this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
-    this._scenarioPressed = this.scenarioPressed.bind(this);
-    this._scenarioChanged = this.scenarioChanged.bind(this);
     this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
   }
 
@@ -89,6 +79,12 @@ class AddScenarioResultView extends React.Component {
         this.props.navigator.pop();
       }
     }
+  }
+
+  scenarioChanged(scenario) {
+    this.setState({
+      scenario,
+    });
   }
 
   xpChanged(xp) {
@@ -145,72 +141,18 @@ class AddScenarioResultView extends React.Component {
     }, this._updateNavigatorButtons);
   }
 
-  scenarioPressed() {
-    this.props.navigator.showLightBox({
-      screen: 'Dialog.Scenario',
-      passProps: {
-        scenarioChanged: this._scenarioChanged,
-        scenarios: this.possibleScenarios(),
-        selected: this.state.selectedScenario,
-      },
-      style: {
-        backgroundColor: 'rgba(128,128,128,.75)',
-      },
-    });
-  }
-
-  scenarioChanged(value) {
-    this.setState({
-      selectedScenario: value,
-    });
-  }
-
-  customScenarioTextChanged(value) {
-    this.setState({
-      customScenario: value,
-    });
-  }
-
-  possibleScenarios() {
+  renderScenarios() {
     const {
+      navigator,
       cycleScenarios,
       standaloneScenarios,
     } = this.props;
-    const scenarios = map(
-      concat(cycleScenarios, standaloneScenarios),
-      card => card.name);
-    scenarios.push(CUSTOM);
-    return scenarios;
-  }
-
-  renderScenarios() {
-    const {
-      selectedScenario,
-      customScenario,
-      xp,
-    } = this.state;
-
     return (
-      <View>
-        <LabeledTextBox
-          label="Scenario"
-          onPress={this._scenarioPressed}
-          value={selectedScenario}
-          style={styles.margin}
-        />
-        <View style={[styles.row, styles.margin]}>
-          <XpController xp={xp} onChange={this._xpChanged} />
-        </View>
-        { selectedScenario === CUSTOM && (
-          <View style={styles.row}>
-            <Input
-              placeholder="Custom Scenario Name"
-              onChangeText={this._customScenarioTextChanged}
-              value={customScenario}
-            />
-          </View>
-        ) }
-      </View>
+      <ScenarioSection
+        navigator={navigator}
+        scenarioChanged={this._scenarioChanged}
+        allScenarios={concat(cycleScenarios, standaloneScenarios)}
+      />
     );
   }
 
@@ -223,37 +165,27 @@ class AddScenarioResultView extends React.Component {
       deckUpdates,
     } = this.state;
     return (
-      <View>
-        <View style={styles.underline}>
-          <Text style={[typography.bigLabel, styles.margin]}>
-            Investigators
-          </Text>
-        </View>
-        { map(deckIds, deckId => (
-          <DeckRow
-            key={deckId}
-            id={deckId}
-            navigator={navigator}
-            updatesChanged={this._deckUpdatesChanged}
-            remove={this._deckRemoved}
-            updates={deckUpdates[deckId]}
-          />
-        )) }
-        { deckIds.length < 4 && (
-          <AddDeckRow
-            navigator={navigator}
-            deckAdded={this._deckAdded}
-            selectedDeckIds={deckIds}
-          />
-        ) }
-      </View>
+      <InvestigatorSection
+        navigator={navigator}
+        deckIds={deckIds}
+        deckUpdates={deckUpdates}
+        deckUpdatesChanged={this._deckUpdatesChanged}
+        deckAdded={this._deckAdded}
+        deckRemoved={this._deckRemoved}
+      />
     );
   }
 
   render() {
+    const {
+      xp,
+    } = this.state;
     return (
       <ScrollView contentContainerStyle={styles.container}>
         { this.renderScenarios() }
+        <View style={[styles.row, styles.margin]}>
+          <XpController xp={xp} onChange={this._xpChanged} />
+        </View>
         { this.renderInvestigators() }
       </ScrollView>
     );
@@ -327,9 +259,5 @@ const styles = StyleSheet.create({
   margin: {
     marginLeft: 8,
     marginRight: 8,
-  },
-  underline: {
-    borderBottomWidth: 1,
-    borderColor: '#000000',
   },
 });
