@@ -48,11 +48,12 @@ class CampaignItem extends React.Component {
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.container}>
           <Text>{ campaign.name }</Text>
-          <Text>{ `Scenarios Completed: ${campaign.scenarioResults.length}` }</Text>
-          { !!latestScenario && <Text>{ latestScenario.name }</Text> }
+          { !!(latestScenario && latestScenario.scenario) && (
+            <Text>{ `Latest Mission: ${latestScenario.scenario}` }</Text>
+          ) }
           <View style={styles.row}>
             { map(investigators, card => (
-              <InvestigatorImage key={card.id} card={card} />
+              <InvestigatorImage key={card.code} card={card} />
             )) }
           </View>
         </View>

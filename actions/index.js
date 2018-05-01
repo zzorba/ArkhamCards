@@ -87,11 +87,43 @@ export function deleteCampaign(id) {
   };
 }
 
-export function addScenarioResult(id, scenarioResult) {
+
+// deckIds: [],
+// scenario: '',
+// scenarioCode: '',
+// campaignNotes: [],
+// investigatorUpdates: {
+//   investigator_code: {
+//     trauma: {
+//       physical,
+//       mental,
+//     },
+//     xp: #,
+//     killed: bool,
+//     insane: bool,
+//     exile: {},
+//   },
+//   investigator_code: {
+//     ...
+//   }
+// }],
+export function addScenarioResult(
+  id,
+  deckIds,
+  { scenario, scenarioCode },
+  campaignNotes,
+  investigatorUpdates,
+) {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
     id,
-    scenarioResult,
+    scenarioResult: {
+      deckIds,
+      scenario,
+      scenarioCode,
+      campaignNotes,
+      investigatorUpdates,
+    },
     now: new Date(),
   };
 }

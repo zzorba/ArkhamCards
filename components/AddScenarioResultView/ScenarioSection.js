@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, map } from 'lodash';
+import { find, head, map } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -39,12 +39,18 @@ export default class ScenarioSection extends React.Component {
 
   updateManagedScenario() {
     const {
+      allScenarios,
+    } = this.props;
+    const {
       selectedScenario,
       customScenario,
     } = this.state;
+    const scenarioCard = find(allScenarios, s => s.name === selectedScenario);
 
-    this.props.scenarioChanged(
-      selectedScenario === CUSTOM ? customScenario : selectedScenario);
+    this.props.scenarioChanged({
+      scenario: scenarioCard ? selectedScenario : customScenario,
+      scenarioCode: scenarioCard || CUSTOM,
+    });
   }
 
   scenarioChanged(value) {

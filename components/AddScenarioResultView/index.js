@@ -29,10 +29,9 @@ const DEFAULT_SETTINGS = {
 class AddScenarioResultView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
     campaign: PropTypes.object.isRequired,
     // from redux/realm
-    /* eslint-disable react/no-unused-prop-types */
+    addScenarioResult: PropTypes.func.isRequired,
     decks: PropTypes.object,
     cycleScenarios: PropTypes.array,
     standaloneScenarios: PropTypes.array,
@@ -77,7 +76,30 @@ class AddScenarioResultView extends React.Component {
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
-        // TODO: push it into redux.
+        const {
+          campaign,
+          decks,
+          addScenarioResult,
+        } = this.props;
+        const {
+          deckIds,
+          campaignNotes,
+          scenario,
+          deckUpdates,
+        } = this.state;
+        const investigatorUpdates = {};
+        forEach(deckIds, deckId => {
+          const investigatorId = decks[deckId].investigator_code;
+          investigatorUpdates[investigatorId] = deckUpdates[deckId];
+        });
+
+        addScenarioResult(
+          campaign.id,
+          deckIds,
+          scenario,
+          campaignNotes,
+          investigatorUpdates,
+        );
         this.props.navigator.pop();
       }
     }
@@ -85,7 +107,7 @@ class AddScenarioResultView extends React.Component {
 
   notesChanged(notes) {
     this.setState({
-      notes,
+      campaignNotes: notes,
     });
   }
 

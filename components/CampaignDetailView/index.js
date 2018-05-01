@@ -133,7 +133,7 @@ class CampaignDetailView extends React.Component {
         <Text>{ campaign.name }</Text>
         { this.renderScenarioResults() }
         <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
-        <Text>Notes:</Text>
+        <Text>Campaign Log:</Text>
         { this.renderCampaignNotes() }
       </ScrollView>
     );
