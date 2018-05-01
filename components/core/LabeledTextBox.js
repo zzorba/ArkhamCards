@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
   ViewPropTypes,
 } from 'react-native';
 
+import TextBox from './TextBox';
 import typography from '../../styles/typography';
 
 export default function LabeledTextBox({ label, onPress, value, style = {} }) {
@@ -17,14 +17,7 @@ export default function LabeledTextBox({ label, onPress, value, style = {} }) {
       <Text style={typography.label}>{ `${label}:` }</Text>
       <View style={styles.grow}>
         <TouchableOpacity onPress={onPress}>
-          <View style={styles.textBox}>
-            <TextInput
-              style={styles.input}
-              value={value}
-              editable={false}
-              pointerEvents="none"
-            />
-          </View>
+          <TextBox value={value} editable={false} pointerEvents="none" />
         </TouchableOpacity>
       </View>
     </View>
@@ -46,19 +39,5 @@ const styles = StyleSheet.create({
   },
   grow: {
     flex: 1,
-  },
-  textBox: {
-    height: 24,
-    width: '100%',
-    backgroundColor: 'white',
-    borderWidth: 2,
-    borderRadius: 4,
-    borderColor: '#444',
-    paddingLeft: 4,
-    paddingRight: 4,
-  },
-  input: {
-    fontSize: 16,
-    width: '100%',
   },
 });

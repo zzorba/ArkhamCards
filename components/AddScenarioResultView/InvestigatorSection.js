@@ -56,7 +56,6 @@ InvestigatorSection.propTypes = {
   deckUpdates: PropTypes.object,
 };
 
-
 const styles = StyleSheet.create({
   margin: {
     marginLeft: 8,

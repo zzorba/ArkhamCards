@@ -15,6 +15,7 @@ import { getAllDecks, getAllPacks, getPack } from '../../reducers';
 import XpController from './XpController';
 import InvestigatorSection from './InvestigatorSection';
 import ScenarioSection from './ScenarioSection';
+import NotesSection from './NotesSection';
 
 const DEFAULT_SETTINGS = {
   xp: 0,
@@ -51,6 +52,7 @@ class AddScenarioResultView extends React.Component {
     this.updateNavigatorButtons();
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
+    this._notesChanged = this.notesChanged.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
@@ -79,6 +81,12 @@ class AddScenarioResultView extends React.Component {
         this.props.navigator.pop();
       }
     }
+  }
+
+  notesChanged(notes) {
+    this.setState({
+      notes,
+    });
   }
 
   scenarioChanged(scenario) {
@@ -187,6 +195,7 @@ class AddScenarioResultView extends React.Component {
           <XpController xp={xp} onChange={this._xpChanged} />
         </View>
         { this.renderInvestigators() }
+        <NotesSection notesChanged={this._notesChanged} />
       </ScrollView>
     );
   }
