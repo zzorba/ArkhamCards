@@ -49,7 +49,7 @@ class CampaignItem extends React.Component {
         <View style={styles.container}>
           <Text>{ campaign.name }</Text>
           { !!(latestScenario && latestScenario.scenario) && (
-            <Text>{ `Latest Mission: ${latestScenario.scenario}` }</Text>
+            <Text>{ `Last Scenario: ${latestScenario.scenario}` }</Text>
           ) }
           <View style={styles.row}>
             { map(investigators, card => (
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    margin: 8,
   },
   row: {
     flexDirection: 'row',
