@@ -26,6 +26,7 @@ import CardSortDialog from '../components/CardSortDialog';
 import ScenarioDialog from '../components/ScenarioDialog';
 import ExileCardDialog from '../components/ExileCardDialog';
 import SelectCampaignDialog from '../components/SelectCampaignDialog';
+import CampaignDifficultyDialog from '../components/CampaignDifficultyDialog';
 import HomeView from '../components/HomeView';
 
 // register all screens of the app (including internal ones)
@@ -57,4 +58,5 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Dialog.Sort', () => CardSortDialog, store, Provider);
   Navigation.registerComponent('Dialog.Scenario', () => ScenarioDialog, store, Provider);
   Navigation.registerComponent('Dialog.Campaign', () => SelectCampaignDialog, store, Provider);
+  Navigation.registerComponent('Dialog.CampaignDifficulty', () => CampaignDifficultyDialog, store, Provider);
 }

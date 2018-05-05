@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import DialogPicker from './core/DialogPicker';
 
-
 const ADD_MENTAL = 'Add Mental';
 const REMOVE_MENTAL = 'Remove Mental';
 const ADD_PHYSICAL = 'Add Physical';

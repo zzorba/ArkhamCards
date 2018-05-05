@@ -55,6 +55,7 @@ class MyCampaignsView extends React.Component {
       if (event.id === 'add') {
         navigator.push({
           screen: 'Campaign.New',
+          backButtonTitle: 'Cancel',
         });
       }
     }

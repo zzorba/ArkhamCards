@@ -124,6 +124,7 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
       id,
       name: action.name,
       cycleCode: action.cycleCode,
+      difficulty: action.difficulty,
       lastUpdated: action.now,
       scenarioResults: [],
     };
