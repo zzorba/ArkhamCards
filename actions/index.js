@@ -26,6 +26,10 @@ export function newDeck(investigator) {
   };
 }
 
+export function upgradeDeck(deck, xp, exiles) {
+
+}
+
 export function clearDecks() {
   return {
     type: CLEAR_DECKS,

@@ -81,11 +81,14 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 //   name: '',
 //   cycleCode: '',
 //   lastUpdated: Date,
+//   latestDeckIds: [],
+//   chaosBag: {},
 //   scenarioResults: [{
 //     deckIds: [],
 //     scenario: '',
 //     scenarioCode: '',
 //     campaignNotes: [],
+//     chaosBagChanges: [],
 //     investigatorUpdates: {
 //      investigator_code: {
 //        trauma: {
