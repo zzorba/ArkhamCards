@@ -21,11 +21,9 @@ export default function SelectedDeckListComponent({
 }) {
   return (
     <View>
-      <View style={styles.underline}>
-        <Text style={[typography.bigLabel, styles.margin]}>
-          Investigators
-        </Text>
-      </View>
+      <Text style={[typography.bigLabel, styles.margin]}>
+        Investigators
+      </Text>
       { map(deckIds, deckId => (
         <DeckRow
           key={deckId}

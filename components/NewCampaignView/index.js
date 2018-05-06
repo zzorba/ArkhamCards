@@ -75,7 +75,6 @@ class NewCampaignView extends React.Component {
       campaign,
       campaignCode,
     } = this.state;
-    console.log(`campaign(${campaign}), campaignCode(${campaignCode})`);
     navigator.setButtons({
       rightButtons: [
         {
@@ -96,7 +95,7 @@ class NewCampaignView extends React.Component {
     } = this.state;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
-        this.props.newCampaign(campaignCode, campaign, difficulty);
+        this.props.newCampaign(campaignCode, campaign, difficulty, this.getChaosBag());
         this.props.navigator.pop();
       }
     }

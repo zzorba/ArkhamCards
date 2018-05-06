@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Platform,
   StyleSheet,
   TextInput,
   View,
@@ -33,16 +34,16 @@ const styles = StyleSheet.create({
     borderColor: '#444',
     paddingLeft: 4,
     paddingRight: 4,
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: Platform.OS === 'ios' ? 4 : 2,
+    paddingBottom: Platform.OS === 'ios' ? 4 : 2,
     flexDirection: 'row',
     alignItems: 'center',
   },
   input: {
+    padding: 0,
     fontFamily: 'System',
     fontSize: 16,
     color: '#222',
     width: '100%',
-    padding: 0,
   },
 });

@@ -75,12 +75,13 @@ export function setPackSpoiler(code, value) {
   };
 }
 
-export function newCampaign(pack_code, name, difficulty) {
+export function newCampaign(pack_code, name, difficulty, chaosBag) {
   return {
     type: NEW_CAMPAIGN,
     name: name,
     cycleCode: pack_code,
     difficulty,
+    chaosBag,
     now: new Date(),
   };
 }
