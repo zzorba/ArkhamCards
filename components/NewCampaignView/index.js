@@ -118,9 +118,6 @@ class NewCampaignView extends React.Component {
     const {
       navigator,
     } = this.props;
-    if (this.hasDefinedChaosBag()) {
-      return;
-    }
     navigator.push({
       screen: 'Dialog.EditChaosBag',
       passProps: {
@@ -187,23 +184,32 @@ class NewCampaignView extends React.Component {
         <View style={styles.chaosBagLabelRow}>
           <Text style={typography.bigLabel}>Chaos Bag</Text>
         </View>
-        <TouchableOpacity onPress={this._showChaosBagDialog}>
-          <View style={styles.chaosBag}>
-            { map(bagKeys, (token, tokenIdx) =>
-              map(range(0, chaosBag[token]), idx => {
-                const isLast = (idx === (chaosBag[token] - 1)) &&
-                  (tokenIdx === (bagKeys.length - 1));
-                return (
-                  <View key={`${token}-${idx}`} style={styles.commaView}>
-                    <ChaosTokenIcon id={token} size={18} />
-                    { !isLast && <Text style={styles.comma}>,</Text> }
-                  </View>
-                );
-              }))
-            }
-          </View>
-        </TouchableOpacity>
+        <View style={styles.chaosBag}>
+          { map(bagKeys, (token, tokenIdx) =>
+            map(range(0, chaosBag[token]), idx => {
+              const isLast = (idx === (chaosBag[token] - 1)) &&
+                (tokenIdx === (bagKeys.length - 1));
+              return (
+                <View key={`${token}-${idx}`} style={styles.commaView}>
+                  <ChaosTokenIcon id={token} size={18} />
+                  { !isLast && <Text style={styles.comma}>,</Text> }
+                </View>
+              );
+            }))
+          }
+        </View>
       </View>
+    );
+  }
+
+  renderChaosBagSection() {
+    if (this.hasDefinedChaosBag()) {
+      return this.renderChaosBag();
+    }
+    return (
+      <TouchableOpacity onPress={this._showChaosBagDialog}>
+        { this.renderChaosBag() }
+      </TouchableOpacity>
     );
   }
 
@@ -219,18 +225,22 @@ class NewCampaignView extends React.Component {
 
     return (
       <ScrollView contentContainerStyle={styles.topPadding}>
-        <CampaignSelector
-          navigator={navigator}
-          campaignChanged={this._campaignChanged}
-        />
-        <View style={[styles.margin, styles.topPadding]}>
-          <LabeledTextBox
-            label="Difficulty"
-            onPress={this._showDifficultyDialog}
-            value={capitalize(difficulty)}
+        <View style={styles.underline}>
+          <CampaignSelector
+            navigator={navigator}
+            campaignChanged={this._campaignChanged}
           />
+          <View style={[styles.margin, styles.topPadding]}>
+            <LabeledTextBox
+              label="Difficulty"
+              onPress={this._showDifficultyDialog}
+              value={capitalize(difficulty)}
+            />
+          </View>
         </View>
-        { this.renderChaosBag() }
+        <View style={styles.underline}>
+          { this.renderChaosBagSection() }
+        </View>
         <SelectedDeckListComponent
           navigator={navigator}
           deckIds={deckIds}
@@ -276,5 +286,11 @@ const styles = StyleSheet.create({
   },
   comma: {
     fontSize: 18,
+  },
+  underline: {
+    paddingBottom: 8,
+    marginBottom: 4,
+    borderBottomWidth: 1,
+    borderColor: '#000000',
   },
 });
