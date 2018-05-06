@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter } from 'lodash';
 import {
+  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
@@ -131,7 +132,7 @@ class NewCampaignView extends React.Component {
     } = this.state;
 
     return (
-      <View style={styles.topPadding}>
+      <ScrollView contentContainerStyle={styles.topPadding}>
         <CampaignSelector
           navigator={navigator}
           campaignChanged={this._campaignChanged}
@@ -149,7 +150,7 @@ class NewCampaignView extends React.Component {
           deckAdded={this._deckAdded}
           deckRemoved={this._deckRemoved}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
