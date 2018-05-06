@@ -12,6 +12,7 @@ export default class NoteRow extends React.Component {
     index: PropTypes.number.isRequired,
     note: PropTypes.string.isRequired,
     updateNote: PropTypes.func.isRequired,
+    last: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -31,10 +32,15 @@ export default class NoteRow extends React.Component {
   render() {
     const {
       note,
+      last,
     } = this.props;
     return (
       <View style={styles.row}>
-        <TextBox value={note} onChangeText={this._onChange} />
+        <TextBox
+          value={note}
+          onChangeText={this._onChange}
+          placeholder={last ? 'Add a campaign note' : null}
+        />
       </View>
     );
   }

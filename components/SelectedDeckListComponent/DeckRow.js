@@ -4,6 +4,7 @@ import { find, flatten, forEach, keys, map, head, sum, values } from 'lodash';
 import {
   TouchableOpacity,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -16,6 +17,7 @@ import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
 import InvestigatorImage from '../core/InvestigatorImage';
 import LabeledTextBox from '../core/LabeledTextBox';
+import typography from '../../styles/typography';
 
 class DeckRow extends React.Component {
   static propTypes = {
@@ -218,6 +220,19 @@ class DeckRow extends React.Component {
     );
   }
 
+  renderTitle() {
+    const {
+      deck,
+    } = this.props;
+    return (
+      <View style={styles.row}>
+        <Text numberOfLines={1} ellipsizeMode="tail" style={typography.bigLabel}>
+          { deck.name }
+        </Text>
+      </View>
+    );
+  }
+
   render() {
     const {
       investigator,
@@ -233,6 +248,7 @@ class DeckRow extends React.Component {
           <InvestigatorImage card={investigator} />
         </View>
         <View style={styles.column}>
+          { this.renderTitle() }
           { this.renderXp() }
           { this.renderTrauma() }
           { this.renderExile() }
@@ -285,7 +301,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    height: 100,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -296,7 +311,12 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
   investigatorImage: {
-    marginRight: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingRight: 8,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    height: '100%',
   },
   column: {
     flexDirection: 'column',

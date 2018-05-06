@@ -60,6 +60,7 @@ export default class NotesSection extends React.Component {
               index={idx}
               note={note}
               updateNote={this._updateNote}
+              last={idx === (this.state.notes.length - 1)}
             />)
           ) }
         </View>
