@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { keys } from 'lodash';
 
 import DialogPicker from './core/DialogPicker';
+import { DIFFICULTY } from '../constants';
 
-const EASY = 'Easy';
-const STANDARD = 'Standard';
-const HARD = 'Hard';
-const EXPERT = 'Expert';
-
-const OPTIONS = [EASY, STANDARD, HARD, EXPERT];
+const OPTIONS = keys(DIFFICULTY);
 
 export default class CampaignDifficultyDialog extends React.Component {
   static propTypes = {

@@ -7,8 +7,7 @@ import {
 import { Input } from 'react-native-elements';
 
 import LabeledTextBox from '../core/LabeledTextBox';
-
-const CUSTOM = 'Custom';
+import { CUSTOM } from './constants';
 
 export default class CampaignSelector extends React.Component {
   static propTypes = {
@@ -22,7 +21,7 @@ export default class CampaignSelector extends React.Component {
     this.state = {
       selectedCampaign: 'The Night of the Zealot',
       selectedCampaignCode: 'core',
-      customCampaign: null,
+      customCampaign: '',
     };
 
     this._updateManagedCampaign = this.updateManagedCampaign.bind(this);
@@ -41,11 +40,10 @@ export default class CampaignSelector extends React.Component {
       selectedCampaignCode,
       customCampaign,
     } = this.state;
-
-    this.props.campaignChanged({
-      campaignCode: selectedCampaignCode,
-      campaign: selectedCampaign === CUSTOM ? customCampaign : selectedCampaign,
-    });
+    this.props.campaignChanged(
+      selectedCampaignCode,
+      selectedCampaignCode === CUSTOM ? customCampaign : selectedCampaign,
+    );
   }
 
   campaignChanged(code, text) {
@@ -80,6 +78,7 @@ export default class CampaignSelector extends React.Component {
   render() {
     const {
       selectedCampaign,
+      selectedCampaignCode,
       customCampaign,
     } = this.state;
 
@@ -91,7 +90,7 @@ export default class CampaignSelector extends React.Component {
           value={selectedCampaign}
           style={styles.margin}
         />
-        { selectedCampaign === CUSTOM && (
+        { selectedCampaignCode === CUSTOM && (
           <View style={styles.row}>
             <Input
               placeholder="Custom Campaign Name"

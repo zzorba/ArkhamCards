@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { capitalize } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -37,7 +38,7 @@ export default class DialogOption extends React.Component {
       <View style={styles.item}>
         <TouchableOpacity onPress={this._onPress}>
           <Text style={styles.itemText}>
-            { `${text}${selected ? ' ✓' : ''}` }
+            { `${capitalize(text)}${selected ? ' ✓' : ''}` }
           </Text>
         </TouchableOpacity>
       </View>

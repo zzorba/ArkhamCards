@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
 export default class DrawCardItem extends React.PureComponent {
