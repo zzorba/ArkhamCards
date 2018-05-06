@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import XpController from './XpController';
+import XpComponent from '../XpComponent';
 import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
 import InvestigatorImage from '../core/InvestigatorImage';
@@ -24,7 +24,7 @@ class DeckRow extends React.Component {
     deck: PropTypes.object,
     updates: PropTypes.object,
     remove: PropTypes.func.isRequired,
-    updatesChanged: PropTypes.func.isRequired,
+    updatesChanged: PropTypes.func,
     fetchDeck: PropTypes.func.isRequired,
     // From realm
     investigator: PropTypes.object,
@@ -124,11 +124,15 @@ class DeckRow extends React.Component {
 
   renderXp() {
     const {
+      updatesChanged,
       updates: {
         xp,
       },
     } = this.props;
-    return <XpController xp={xp} onChange={this._updateXp} />;
+    if (!updatesChanged) {
+      return null;
+    }
+    return <XpComponent xp={xp} onChange={this._updateXp} />;
   }
 
   traumaText() {
@@ -158,6 +162,9 @@ class DeckRow extends React.Component {
   }
 
   renderTrauma() {
+    if (!this.props.updatesChanged) {
+      return null;
+    }
     return (
       <View style={styles.row}>
         <LabeledTextBox
@@ -197,7 +204,7 @@ class DeckRow extends React.Component {
   }
 
   renderExile() {
-    if (!this.props.hasExile) {
+    if (!this.props.updatesChanged || !this.props.hasExile) {
       return null;
     }
     return (

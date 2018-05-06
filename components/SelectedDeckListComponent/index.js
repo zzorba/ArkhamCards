@@ -11,10 +11,10 @@ import AddDeckRow from './AddDeckRow';
 import DeckRow from './DeckRow';
 import typography from '../../styles/typography';
 
-export default function InvestigatorSection({
+export default function SelectedDeckListComponent({
   navigator,
   deckIds,
-  deckUpdates,
+  deckUpdates = {},
   deckUpdatesChanged,
   deckAdded,
   deckRemoved,
@@ -33,7 +33,7 @@ export default function InvestigatorSection({
           navigator={navigator}
           updatesChanged={deckUpdatesChanged}
           remove={deckRemoved}
-          updates={deckUpdates[deckId]}
+          updates={deckUpdates[deckId] || {}}
         />
       )) }
       { deckIds.length < 4 && (
@@ -47,9 +47,9 @@ export default function InvestigatorSection({
   );
 }
 
-InvestigatorSection.propTypes = {
+SelectedDeckListComponent.propTypes = {
   navigator: PropTypes.object.isRequired,
-  deckUpdatesChanged: PropTypes.func.isRequired,
+  deckUpdatesChanged: PropTypes.func,
   deckRemoved: PropTypes.func.isRequired,
   deckAdded: PropTypes.func.isRequired,
   deckIds: PropTypes.array.isRequired,

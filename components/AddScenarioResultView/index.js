@@ -12,8 +12,8 @@ import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../reducers';
-import XpController from './XpController';
-import InvestigatorSection from './InvestigatorSection';
+import XpComponent from '../XpComponent';
+import SelectedDeckListComponent from '../SelectedDeckListComponent';
 import ScenarioSection from './ScenarioSection';
 import NotesSection from './NotesSection';
 
@@ -139,7 +139,6 @@ class AddScenarioResultView extends React.Component {
       deckUpdates,
       xp,
     } = this.state;
-    this.props.navigator.pop();
     this.setState({
       deckIds: [...deckIds, id],
       deckUpdates: Object.assign(
@@ -197,7 +196,7 @@ class AddScenarioResultView extends React.Component {
       deckUpdates,
     } = this.state;
     return (
-      <InvestigatorSection
+      <SelectedDeckListComponent
         navigator={navigator}
         deckIds={deckIds}
         deckUpdates={deckUpdates}
@@ -216,7 +215,7 @@ class AddScenarioResultView extends React.Component {
       <ScrollView contentContainerStyle={styles.container}>
         { this.renderScenarios() }
         <View style={[styles.row, styles.margin]}>
-          <XpController xp={xp} onChange={this._xpChanged} />
+          <XpComponent xp={xp} onChange={this._xpChanged} />
         </View>
         { this.renderInvestigators() }
         <NotesSection notesChanged={this._notesChanged} />

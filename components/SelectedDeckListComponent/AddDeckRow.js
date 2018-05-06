@@ -19,18 +19,27 @@ export default class AddDeckRow extends React.Component {
     super(props);
 
     this._showDeckSelector = this.showDeckSelector.bind(this);
+    this._onDeckSelect = this.onDeckSelect.bind(this);
+  }
+
+  onDeckSelect(id) {
+    const {
+      navigator,
+      deckAdded,
+    } = this.props;
+    deckAdded(id);
+    navigator.pop();
   }
 
   showDeckSelector() {
     const {
       navigator,
-      deckAdded,
       selectedDeckIds,
     } = this.props;
     navigator.push({
       screen: 'Dialog.DeckSelector',
       passProps: {
-        onDeckSelect: deckAdded,
+        onDeckSelect: this._onDeckSelect,
         selectedDeckIds: selectedDeckIds,
       },
     });

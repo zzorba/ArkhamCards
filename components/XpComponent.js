@@ -6,8 +6,8 @@ import {
   View,
 } from 'react-native';
 
-import PlusMinusButtons from '../core/PlusMinusButtons';
-import typography from '../../styles/typography';
+import PlusMinusButtons from './core/PlusMinusButtons';
+import typography from '../styles/typography';
 
 export default class XpController extends React.Component {
   static propTypes = {

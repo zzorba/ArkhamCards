@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { filter } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -11,6 +12,7 @@ import * as Actions from '../../actions';
 import { getPacksInCollection } from '../../reducers';
 import CampaignSelector from './CampaignSelector';
 import LabeledTextBox from '../core/LabeledTextBox';
+import SelectedDeckListComponent from '../SelectedDeckListComponent';
 
 class NewCampaignView extends React.Component {
   static propTypes = {
@@ -29,6 +31,7 @@ class NewCampaignView extends React.Component {
       campaign: null,
       campaignCode: null,
       difficulty: 'Standard',
+      deckIds: [],
     };
 
     this.updateNavigatorButtons();
@@ -38,6 +41,20 @@ class NewCampaignView extends React.Component {
     this._showDifficultyDialog = this.showDifficultyDialog.bind(this);
     this._campaignChanged = this.campaignChanged.bind(this);
     this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
+    this._deckAdded = this.deckAdded.bind(this);
+    this._deckRemoved = this.deckRemoved.bind(this);
+  }
+
+  deckAdded(id) {
+    this.setState({
+      deckIds: [...this.state.deckIds, id],
+    });
+  }
+
+  deckRemoved(id) {
+    this.setState({
+      deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
+    });
   }
 
   updateNavigatorButtons() {
@@ -110,6 +127,7 @@ class NewCampaignView extends React.Component {
 
     const {
       difficulty,
+      deckIds,
     } = this.state;
 
     return (
@@ -125,6 +143,12 @@ class NewCampaignView extends React.Component {
             value={difficulty}
           />
         </View>
+        <SelectedDeckListComponent
+          navigator={navigator}
+          deckIds={deckIds}
+          deckAdded={this._deckAdded}
+          deckRemoved={this._deckRemoved}
+        />
       </View>
     );
   }
