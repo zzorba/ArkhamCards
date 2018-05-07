@@ -75,13 +75,14 @@ export function setPackSpoiler(code, value) {
   };
 }
 
-export function newCampaign(pack_code, name, difficulty, chaosBag) {
+export function newCampaign(pack_code, name, difficulty, deckIds, chaosBag) {
   return {
     type: NEW_CAMPAIGN,
     name: name,
     cycleCode: pack_code,
     difficulty,
     chaosBag,
+    deckIds,
     now: new Date(),
   };
 }
@@ -119,6 +120,7 @@ export function addScenarioResult(
   { scenario, scenarioCode },
   campaignNotes,
   investigatorUpdates,
+  chaosBag,
 ) {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
@@ -129,6 +131,7 @@ export function addScenarioResult(
       scenarioCode,
       campaignNotes,
       investigatorUpdates,
+      chaosBag,
     },
     now: new Date(),
   };

@@ -11,8 +11,10 @@ import ChaosTokenRow from './ChaosTokenRow';
 export default class EditChaosBagDialog extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    originalChaosBag: PropTypes.object,
     chaosBag: PropTypes.object.isRequired,
     updateChaosBag: PropTypes.func.isRequired,
+    trackDeltas: PropTypes.bool,
   };
 
   constructor(props) {
@@ -53,20 +55,28 @@ export default class EditChaosBagDialog extends React.Component {
 
   render() {
     const {
+      trackDeltas,
+      originalChaosBag,
+    } = this.props;
+    const {
       chaosBag,
     } = this.state;
+    const ogChaosBag = originalChaosBag || this.props.chaosBag;
     return (
       <ScrollView>
-        { map(keys(CHAOS_BAG_TOKEN_COUNTS), id => (
-          <ChaosTokenRow
-            key={id}
-            id={id}
-            originalCount={this.props.chaosBag[id] || 0}
-            count={chaosBag[id] || 0}
-            limit={CHAOS_BAG_TOKEN_COUNTS[id]}
-            onCountChange={this._onCountChange}
-          />
-        )) }
+        { map(keys(CHAOS_BAG_TOKEN_COUNTS), id => {
+          const originalCount = trackDeltas ? ogChaosBag[id] : chaosBag[id];
+          return (
+            <ChaosTokenRow
+              key={id}
+              id={id}
+              originalCount={originalCount || 0}
+              count={chaosBag[id] || 0}
+              limit={CHAOS_BAG_TOKEN_COUNTS[id]}
+              onCountChange={this._onCountChange}
+            />
+          );
+        }) }
       </ScrollView>
     );
   }

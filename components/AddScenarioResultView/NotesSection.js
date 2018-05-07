@@ -47,12 +47,10 @@ export default class NotesSection extends React.Component {
 
   render() {
     return (
-      <View>
-        <View style={styles.underline}>
-          <Text style={[typography.bigLabel, styles.margin]}>
-            Campaign Notes
-          </Text>
-        </View>
+      <View style={styles.underline}>
+        <Text style={[typography.bigLabel, styles.margin]}>
+          Campaign Notes
+        </Text>
         <View style={styles.margin}>
           { map(this.state.notes, (note, idx) => (
             <NoteRow

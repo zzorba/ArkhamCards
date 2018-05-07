@@ -59,8 +59,4 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
   },
-  underline: {
-    borderBottomWidth: 1,
-    borderColor: '#000000',
-  },
 });

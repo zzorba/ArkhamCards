@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize, filter, keys, map, range, sortBy } from 'lodash';
+import { capitalize, filter } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -16,9 +16,9 @@ import { getPacksInCollection } from '../../reducers';
 import CampaignSelector from './CampaignSelector';
 import { CUSTOM } from './constants';
 import LabeledTextBox from '../core/LabeledTextBox';
-import ChaosTokenIcon from '../core/ChaosTokenIcon';
+import ChaosBagLine from '../core/ChaosBagLine';
 import SelectedDeckListComponent from '../SelectedDeckListComponent';
-import { CAMPAIGN_CHAOS_BAGS, CHAOS_TOKEN_ORDER, DIFFICULTY } from '../../constants';
+import { CAMPAIGN_CHAOS_BAGS, DIFFICULTY } from '../../constants';
 import typography from '../../styles/typography';
 
 class NewCampaignView extends React.Component {
@@ -92,10 +92,11 @@ class NewCampaignView extends React.Component {
       campaign,
       campaignCode,
       difficulty,
+      deckIds,
     } = this.state;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
-        this.props.newCampaign(campaignCode, campaign, difficulty, this.getChaosBag());
+        this.props.newCampaign(campaignCode, campaign, difficulty, deckIds, this.getChaosBag());
         this.props.navigator.pop();
       }
     }
@@ -177,26 +178,12 @@ class NewCampaignView extends React.Component {
 
   renderChaosBag() {
     const chaosBag = this.getChaosBag();
-    const bagKeys = sortBy(keys(chaosBag), token => CHAOS_TOKEN_ORDER[token]);
     return (
       <View style={styles.margin}>
         <View style={styles.chaosBagLabelRow}>
           <Text style={typography.bigLabel}>Chaos Bag</Text>
         </View>
-        <View style={styles.chaosBag}>
-          { map(bagKeys, (token, tokenIdx) =>
-            map(range(0, chaosBag[token]), idx => {
-              const isLast = (idx === (chaosBag[token] - 1)) &&
-                (tokenIdx === (bagKeys.length - 1));
-              return (
-                <View key={`${token}-${idx}`} style={styles.commaView}>
-                  <ChaosTokenIcon id={token} size={18} />
-                  { !isLast && <Text style={styles.comma}>,</Text> }
-                </View>
-              );
-            }))
-          }
-        </View>
+        <ChaosBagLine chaosBag={chaosBag} />
       </View>
     );
   }
@@ -272,19 +259,9 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
   },
-  chaosBag: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
   chaosBagLabelRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  commaView: {
-    flexDirection: 'row',
-  },
-  comma: {
-    fontSize: 18,
   },
   underline: {
     paddingBottom: 8,

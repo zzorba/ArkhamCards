@@ -36,13 +36,16 @@ export default class ChaosTokenRow extends React.PureComponent {
     const {
       id,
       count,
+      originalCount,
       limit,
     } = this.props;
+    const delta = (count - originalCount);
+    const deltaString = (delta !== 0) ? ` (${delta > 0 ? '+' : ''}${delta})` : '';
     return (
       <View style={styles.row}>
         <ChaosToken id={id} />
         <View style={styles.count}>
-          { count > 0 && <Text style={styles.countText}>{ ` x ${count}` }</Text> }
+          { count > 0 && <Text style={styles.countText}>{ ` x ${count}${deltaString}` }</Text> }
         </View>
         <PlusMinusButtons
           count={count}
@@ -61,6 +64,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: 60,
+    marginLeft: 8,
+    marginRight: 8,
   },
   count: {
     width: 40,

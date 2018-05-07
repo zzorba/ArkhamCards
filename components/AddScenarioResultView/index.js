@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, forEach, map, mapValues } from 'lodash';
+import { concat, filter, forEach, last, map, mapValues } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -13,9 +13,10 @@ import { connectRealm } from 'react-native-realm';
 import * as Actions from '../../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../reducers';
 import XpComponent from '../XpComponent';
-import SelectedDeckListComponent from '../SelectedDeckListComponent';
-import ScenarioSection from './ScenarioSection';
+import ChaosBagSection from './ChaosBagSection';
 import NotesSection from './NotesSection';
+import ScenarioSection from './ScenarioSection';
+import SelectedDeckListComponent from '../SelectedDeckListComponent';
 
 const DEFAULT_SETTINGS = {
   xp: 0,
@@ -32,6 +33,7 @@ class AddScenarioResultView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaign: PropTypes.object.isRequired,
+    latestChaosBag: PropTypes.object,
     // from redux/realm
     addScenarioResult: PropTypes.func.isRequired,
     decks: PropTypes.object,
@@ -42,9 +44,15 @@ class AddScenarioResultView extends React.Component {
   constructor(props) {
     super(props);
 
+    const deckIds = props.campaign.latestDeckIds || [];
+    const deckUpdates = {};
+    forEach(deckIds, deckId => {
+      deckUpdates[deckId] = Object.assign({}, DEFAULT_SETTINGS);
+    });
     this.state = {
-      deckIds: [],
-      deckUpdates: {},
+      deckIds,
+      deckUpdates,
+      chaosBag: Object.assign({}, props.latestChaosBag),
       campaignNotes: [],
       scenario: '',
       xp: 0,
@@ -53,6 +61,7 @@ class AddScenarioResultView extends React.Component {
     this.updateNavigatorButtons();
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
+    this._chaosBagChanged = this.chaosBagChanged.bind(this);
     this._notesChanged = this.notesChanged.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
@@ -88,6 +97,7 @@ class AddScenarioResultView extends React.Component {
           campaignNotes,
           scenario,
           deckUpdates,
+          chaosBag,
         } = this.state;
         const investigatorUpdates = {};
         forEach(deckIds, deckId => {
@@ -101,15 +111,22 @@ class AddScenarioResultView extends React.Component {
           scenario,
           campaignNotes,
           investigatorUpdates,
+          chaosBag,
         );
         this.props.navigator.pop();
       }
     }
   }
 
+  chaosBagChanged(chaosBag) {
+    this.setState({
+      chaosBag: Object.assign({}, chaosBag),
+    });
+  }
+
   notesChanged(notes) {
     this.setState({
-      campaignNotes: notes,
+      campaignNotes: [...notes],
     });
   }
 
@@ -207,6 +224,21 @@ class AddScenarioResultView extends React.Component {
     );
   }
 
+  renderChaosBag() {
+    const {
+      navigator,
+      latestChaosBag,
+    } = this.props;
+    return (
+      <ChaosBagSection
+        navigator={navigator}
+        chaosBag={this.state.chaosBag}
+        originalChaosBag={latestChaosBag}
+        updateChaosBag={this._chaosBagChanged}
+      />
+    );
+  }
+
   render() {
     const {
       xp,
@@ -218,6 +250,7 @@ class AddScenarioResultView extends React.Component {
           <XpComponent xp={xp} onChange={this._xpChanged} />
         </View>
         { this.renderInvestigators() }
+        { this.renderChaosBag() }
         <NotesSection notesChanged={this._notesChanged} />
       </ScrollView>
     );
@@ -225,6 +258,7 @@ class AddScenarioResultView extends React.Component {
 }
 
 function mapStateToProps(state, props) {
+  const latestScenario = last(props.campaign.scenarioResults);
   const cyclePack = getPack(state, props.campaign.cycleCode);
   const allPacks = getAllPacks(state);
   const cyclePacks = !cyclePack ? [] : filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
@@ -233,6 +267,7 @@ function mapStateToProps(state, props) {
     cyclePacks,
     standalonePacks,
     decks: getAllDecks(state),
+    latestChaosBag: (latestScenario && latestScenario.chaosBag) || props.campaign.chaosBag,
   };
 }
 
