@@ -25,6 +25,15 @@ const ArkahmIconSpanRule = {
   render: ArkhamIconNode,
 };
 
+const BreakTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: '\n' };
+  },
+  render: BoldHtmlTagNode,
+};
+
 const BoldHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
   order: 1,
@@ -68,6 +77,7 @@ export default class CardText extends React.PureComponent {
         rules={
           Object.assign({
             arkhamIconSpan: ArkahmIconSpanRule,
+            brTag: BreakTagRule,
             bTag: BoldHtmlTagRule,
             emTag: EmphasisHtmlTagRule,
             iTag: ItalicHtmlTagRule,

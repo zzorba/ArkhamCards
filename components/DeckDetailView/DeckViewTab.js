@@ -157,11 +157,11 @@ export default class DeckViewTab extends React.Component {
     return (
       <View>
         <Text style={styles.problemText}>
-          <AppIcon name="warning" size={14} color={COLORS.red} />
+          <AppIcon name="warning" size={14} color={COLORS.red} numberOfLines={2} />
           { DECK_PROBLEM_MESSAGES[problem.reason] }
         </Text>
         { problem.problems.map(problem => (
-          <Text key={problem} style={styles.problemText}>
+          <Text key={problem} style={styles.problemText} numberOfLines={2}>
             { `\u2022 ${problem}` }
           </Text>
         )) }
@@ -258,6 +258,7 @@ const styles = StyleSheet.create({
   problemText: {
     color: COLORS.red,
     fontSize: 14,
+    width: '100%',
   },
   typeText: {
     color: '#000000',
