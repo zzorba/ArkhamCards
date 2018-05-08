@@ -57,6 +57,17 @@ class CardDetailView extends React.PureComponent {
       },
     };
 
+    if (props.card && !props.linked) {
+      props.navigator.setTitle({
+        title: `${props.card.is_unique ? '*' : ''}${props.card.name}`,
+      });
+      if (props.card.subname) {
+        props.navigator.setSubTitle({
+          subtitle: props.card.subname,
+        });
+      }
+    }
+
     this._onCardViewLayout = this.onCardViewLayout.bind(this);
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
   }
@@ -155,10 +166,9 @@ class CardDetailView extends React.PureComponent {
     return (
       <View>
         <Text>
-          {
-            card.xp ?
-              (`${costString}${costString ? '. ' : ''}XP: ${card.xp}.`) :
-              costString
+          { card.xp ?
+            (`${costString}${costString ? '. ' : ''}XP: ${card.xp}.`) :
+            costString
           }
         </Text>
         { this.renderTestIcons(card) }
@@ -344,6 +354,9 @@ class CardDetailView extends React.PureComponent {
     const {
       navigator,
       card,
+      pack_code,
+      showSpoilers,
+      linked,
     } = this.props;
 
     const blur = this.shouldBlur();
@@ -370,11 +383,13 @@ class CardDetailView extends React.PureComponent {
                   { this.renderMetadata(card) }
                   { this.renderPlaydata(card) }
                 </View>
-                <View style={styles.column}>
-                  <View style={styles.playerImage}>
-                    <PlayerCardImage card={card} />
+                { card.type_code !== 'story' && (
+                  <View style={styles.column}>
+                    <View style={styles.playerImage}>
+                      <PlayerCardImage card={card} />
+                    </View>
                   </View>
-                </View>
+                ) }
               </View>
               { !!card.flavor && flavorFirst &&
                 <Text style={styles.flavorText}>
@@ -422,8 +437,17 @@ class CardDetailView extends React.PureComponent {
           </View>
         </View>
         { (isHorizontal || !card.spoiler) && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
-        { !!card.linked_card && <CardDetailView id={card.code} card={card.linked_card} /> }
-        <FaqComponent navigator={navigator} id={card.code} />
+        { !!card.linked_card && (
+          <CardDetailView
+            navigator={navigator}
+            id={card.code}
+            card={card.linked_card}
+            pack_code={pack_code}
+            showSpoilers={showSpoilers}
+            linked
+          />
+        ) }
+        { !linked && <FaqComponent navigator={navigator} id={card.code} /> }
         <View style={styles.footerPadding} />
       </ScrollView>
     );

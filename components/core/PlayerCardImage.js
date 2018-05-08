@@ -126,6 +126,7 @@ export default class PlayerCardImage extends React.Component {
       card,
     } = this.props;
     switch (card.type_code) {
+      case 'enemy': return styles.enemyImage;
       case 'investigator': return styles.investigatorImage;
       case 'agenda': return styles.agendaImage;
       case 'act': return styles.actImage;
@@ -168,23 +169,23 @@ export default class PlayerCardImage extends React.Component {
     }
 
     return (
-      <Lightbox
-        swipeToDismiss
-        backgroundColor="white"
-        renderHeader={this._renderLightboxHeader}
-        renderContent={this._renderFullsize}
-      >
+      <View style={[styles.container, this.containerStyle()]}>
+        { this.renderPlaceholder() }
         <View style={[styles.container, this.containerStyle()]}>
-          { this.renderPlaceholder() }
-          <View style={[styles.container, this.containerStyle()]}>
+          <Lightbox
+            swipeToDismiss
+            backgroundColor="white"
+            renderHeader={this._renderLightboxHeader}
+            renderContent={this._renderFullsize}
+          >
             <Image
               style={[styles.image, this.imageStyle()]}
               source={{ uri: `https://arkhamdb.com${filename}` }}
               resizeMode="contain"
             />
-          </View>
+          </Lightbox>
         </View>
-      </Lightbox>
+      </View>
     );
   }
 }
@@ -207,6 +208,13 @@ const styles = StyleSheet.create({
     left: -30,
     width: 142 * 1.1,
     height: 198 * 1.1,
+  },
+  enemyImage: {
+    position: 'absolute',
+    top: -180,
+    left: -45,
+    width: 142 * 1.4,
+    height: 198 * 1.4,
   },
   locationImage: {
     position: 'absolute',

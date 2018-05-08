@@ -66,7 +66,7 @@ export default class CardSearchResult extends React.PureComponent {
       );
     }
 
-    if (card.type_code === 'scenario') {
+    if (card.type_code === 'scenario' || card.type_code === 'story') {
       return (
         <EncounterIcon
           encounter_code={card.pack_code}
