@@ -504,6 +504,7 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     borderLeftWidth: 3,
     paddingLeft: 5,
+    marginRight: 3,
   },
   typeBlock: {
     marginLeft: 5, marginTop: 5,
