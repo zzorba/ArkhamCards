@@ -11,6 +11,7 @@ import {
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Button } from 'react-native-elements';
 
 import {
   CORE_FACTION_CODES,
@@ -70,6 +71,21 @@ class CardDetailView extends React.PureComponent {
 
     this._onCardViewLayout = this.onCardViewLayout.bind(this);
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
+    this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
+  }
+
+  showInvestigatorCards() {
+    const {
+      navigator,
+      card,
+    } = this.props;
+
+    navigator.push({
+      screen: 'Browse.InvestigatorCards',
+      passProps: {
+        investigator: card,
+      },
+    });
   }
 
   toggleShowSpoilers() {
@@ -107,7 +123,7 @@ class CardDetailView extends React.PureComponent {
 
   renderMetadata(card) {
     return (
-      <View style={styles.metaContainer}>
+      <View>
         <Text>
           { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
             <ArkhamIcon name={card.faction_code} size={18} color="#000000" /> }
@@ -164,7 +180,7 @@ class CardDetailView extends React.PureComponent {
     ) || '';
 
     return (
-      <View>
+      <View style={styles.statsBlock}>
         <Text>
           { card.xp ?
             (`${costString}${costString ? '. ' : ''}XP: ${card.xp}.`) :
@@ -329,14 +345,16 @@ class CardDetailView extends React.PureComponent {
           borderColor: FACTION_COLORS[card.faction_code] || '#000000',
         }]}>
           { this.renderTitle(card, blur, card.back_name || card.name) }
-          <View style={styles.typeBlock}>
-            <Text style={styles.typeText}>
-              { card.type_name }
-            </Text>
+          <View style={styles.cardBody}>
+            <View style={styles.typeBlock}>
+              <Text style={styles.typeText}>
+                { card.type_name }
+              </Text>
+            </View>
             { !!card.back_flavor && flavorFirst &&
               <Text style={styles.flavorText}>{ card.back_flavor }</Text> }
             { !!card.back_text && (
-              <View style={[styles.cardTextBlock, {
+              <View style={[styles.gameTextBlock, {
                 borderColor: FACTION_COLORS[card.faction_code] || '#000000',
               }]}>
                 <CardTextComponent text={card.back_text} />
@@ -347,6 +365,21 @@ class CardDetailView extends React.PureComponent {
           </View>
         </View>
       </View>
+    );
+  }
+
+  renderInvestigatorCardsLink() {
+    const {
+      card,
+    } = this.props;
+    if (card.type_code !== 'investigator') {
+      return null;
+    }
+    return (
+      <Button
+        onPress={this._showInvestigatorCards}
+        text="Browse Eligible Cards"
+      />
     );
   }
 
@@ -375,64 +408,66 @@ class CardDetailView extends React.PureComponent {
             { borderColor: FACTION_COLORS[card.faction_code] || '#000000' },
           ]}>
             { this.renderTitle(card, blur, card.name, card.subname) }
-            <View style={[styles.typeBlock, {
-              backgroundColor: blur ? '#000000' : '#FFFFFF',
-            }]}>
-              <View style={styles.row}>
-                <View style={styles.mainColumn}>
-                  { this.renderMetadata(card) }
-                  { this.renderPlaydata(card) }
-                </View>
-                { card.type_code !== 'story' && (
-                  <View style={styles.column}>
-                    <View style={styles.playerImage}>
-                      <PlayerCardImage card={card} />
-                    </View>
+            <View style={styles.cardBody}>
+              <View style={[styles.typeBlock, {
+                backgroundColor: blur ? '#000000' : '#FFFFFF',
+              }]}>
+                <View style={styles.row}>
+                  <View style={styles.mainColumn}>
+                    { this.renderMetadata(card) }
+                    { this.renderPlaydata(card) }
                   </View>
-                ) }
-              </View>
-              { !!card.flavor && flavorFirst &&
-                <Text style={styles.flavorText}>
-                  { card.flavor }
-                </Text>
-              }
-              { !!card.real_text && (
-                <View style={[styles.cardTextBlock, {
-                  borderColor: FACTION_COLORS[card.faction_code] || '#000000',
-                }]}>
-                  <CardTextComponent text={card.real_text} />
-                </View>)
-              }
-              { ('victory' in card && card.victory !== null) &&
-                <Text style={styles.typeText}>
-                  { `Victory: ${card.victory}.` }
-                </Text>
-              }
-              { !!card.flavor && !flavorFirst &&
-                <Text style={styles.flavorText}>{ card.flavor }</Text> }
-              { !!card.illustrator && (
-                <Text>
-                  <AppIcon name="palette" size={16} color="#000000" />
-                  { card.illustrator }
-                </Text>
-              ) }
-              { !!card.pack_name &&
-                <View>
-                  <Text>
-                    { `${card.pack_name} #${card.position % 1000}.` }
-                  </Text>
-                  { !!card.encounter_name &&
-                    <Text>
-                      <EncounterIcon
-                        encounter_code={card.encounter_code}
-                        size={12}
-                        color="#000000"
-                      />
-                      { `${card.encounter_name} #${card.encounter_position}.` }
-                    </Text>
-                  }
+                  { card.type_code !== 'story' && (
+                    <View style={styles.column}>
+                      <View style={styles.playerImage}>
+                        <PlayerCardImage card={card} />
+                      </View>
+                    </View>
+                  ) }
                 </View>
-              }
+                { !!card.flavor && flavorFirst &&
+                  <Text style={styles.flavorText}>
+                    { card.flavor }
+                  </Text>
+                }
+                { !!card.real_text && (
+                  <View style={[styles.gameTextBlock, {
+                    borderColor: FACTION_COLORS[card.faction_code] || '#000000',
+                  }]}>
+                    <CardTextComponent text={card.real_text} />
+                  </View>)
+                }
+                { ('victory' in card && card.victory !== null) &&
+                  <Text style={styles.typeText}>
+                    { `Victory: ${card.victory}.` }
+                  </Text>
+                }
+                { !!card.flavor && !flavorFirst &&
+                  <Text style={styles.flavorText}>{ card.flavor }</Text> }
+                { !!card.illustrator && (
+                  <Text style={styles.illustratorText}>
+                    <AppIcon name="palette" size={16} color="#000000" />
+                    { card.illustrator }
+                  </Text>
+                ) }
+                { !!card.pack_name &&
+                  <View style={styles.setRow}>
+                    <Text>
+                      { `${card.pack_name} #${card.position % 1000}.` }
+                    </Text>
+                    { !!card.encounter_name &&
+                      <Text>
+                        <EncounterIcon
+                          encounter_code={card.encounter_code}
+                          size={12}
+                          color="#000000"
+                        />
+                        { `${card.encounter_name} #${card.encounter_position}.` }
+                      </Text>
+                    }
+                  </View>
+                }
+              </View>
             </View>
           </View>
         </View>
@@ -447,6 +482,7 @@ class CardDetailView extends React.PureComponent {
             linked
           />
         ) }
+        { this.renderInvestigatorCardsLink() }
         { !linked && <FaqComponent navigator={navigator} id={card.code} /> }
         <View style={styles.footerPadding} />
       </ScrollView>
@@ -495,7 +531,6 @@ const styles = StyleSheet.create({
   },
   playerImage: {
     marginTop: 2,
-    marginRight: 10,
   },
   container: {
     margin: 8,
@@ -508,30 +543,41 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 2,
     borderWidth: 1,
-    borderRadius: 3,
+    borderRadius: 4,
+  },
+  cardBody: {
+    paddingTop: 4,
+    paddingLeft: 8,
+    paddingRight: 9,
+    paddingBottom: 4,
   },
   cardTitle: {
-    paddingTop: 3,
-    paddingBottom: 3,
+    paddingTop: 4,
+    paddingBottom: 4,
     borderBottomWidth: 1,
   },
   cardTitleText: {
-    marginLeft: 5,
+    marginLeft: 4,
     fontSize: 18,
   },
   cardTitleSubtitle: {
     marginLeft: 15,
     fontSize: 11,
   },
-  cardTextBlock: {
-    marginTop: 3,
-    marginLeft: 3,
-    borderLeftWidth: 3,
-    paddingLeft: 5,
-    marginRight: 3,
+  gameTextBlock: {
+    borderLeftWidth: 4,
+    paddingLeft: 8,
+    marginBottom: 8,
+  },
+  statsBlock: {
+    marginBottom: 8,
+  },
+  setRow: {
+    marginBottom: 4,
   },
   typeBlock: {
-    marginLeft: 5, marginTop: 5,
+    marginTop: 4,
+    marginBottom: 8,
   },
   typeText: {
     fontWeight: '700',
@@ -544,10 +590,11 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '600',
     fontStyle: 'italic',
+    marginBottom: 4,
   },
-  metaContainer: {
-    marginTop: 5,
-    marginBottom: 5,
+  illustratorText: {
+    fontSize: 14,
+    marginBottom: 4,
   },
   horizontalCard: {
     width: '100%',
@@ -576,6 +623,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   footerPadding: {
-    height: 250,
+    height: 150,
   },
 });

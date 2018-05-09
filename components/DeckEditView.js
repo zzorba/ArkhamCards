@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { head, map, partition } from 'lodash';
 import { connectRealm } from 'react-native-realm';
 
+import { queryForInvestigator } from '../lib/InvestigatorRequirements';
 import CardSearchComponent from './CardSearchComponent';
 
 class DeckEditView extends React.Component {
@@ -23,7 +24,6 @@ class DeckEditView extends React.Component {
     };
 
     this._backPressed = this.backPressed.bind(this);
-    this._queryForInvestigator = this.queryForInvestigator.bind(this);
     this._onDeckCountChange = this.onDeckCountChange.bind(this);
   }
 
@@ -53,26 +53,10 @@ class DeckEditView extends React.Component {
     });
   }
 
-  queryForInvestigator() {
-    const {
-      investigator,
-    } = this.props;
-    const [inverted, normal] = partition(
-      investigator.deck_options,
-      opt => opt.not);
-    // We assume that there is always at least one normalClause.
-    const invertedClause = inverted.length ?
-      `${map(inverted, option => option.toQuery()).join(' AND')} AND ` :
-      '';
-    const normalClause = map(normal, option => option.toQuery()).join(' OR');
-
-    // Combine the two clauses with an AND to satisfy the logic here.
-    return `${invertedClause}(${normalClause})`;
-  }
-
   render() {
     const {
       navigator,
+      investigator,
     } = this.props;
 
     const {
@@ -82,7 +66,7 @@ class DeckEditView extends React.Component {
     return (
       <CardSearchComponent
         navigator={navigator}
-        baseQuery={this.queryForInvestigator()}
+        baseQuery={investigator ? queryForInvestigator(investigator) : null}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
         backPressed={this._backPressed}

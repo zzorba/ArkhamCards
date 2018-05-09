@@ -8,6 +8,7 @@ import CardDetailView from '../components/CardDetailView';
 import CampaignDetailView from '../components/CampaignDetailView';
 import EditTraumaDialog from '../components/EditTraumaDialog';
 import EditChaosBagDialog from '../components/EditChaosBagDialog';
+import InvestigatorCardsView from '../components/InvestigatorCardsView';
 import MyCampaignsView from '../components/MyCampaignsView';
 import MyDecksView from '../components/MyDecksView';
 import MyDecksSelectorDialog from '../components/MyDecksSelectorDialog';
@@ -35,6 +36,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Home', () => HomeView, store, Provider);
   Navigation.registerComponent('Browse.Cards', () => CardSearchView, store, Provider);
   Navigation.registerComponent('Browse.Decks', () => BrowseDecksView, store, Provider);
+  Navigation.registerComponent('Browse.InvestigatorCards', () => InvestigatorCardsView, store, Provider);
   Navigation.registerComponent('Deck', () => DeckDetailView, store, Provider);
   Navigation.registerComponent('Deck.Charts', () => DeckChartsView, store, Provider);
   Navigation.registerComponent('Deck.DrawSimulator', () => DrawSimulatorView, store, Provider);
