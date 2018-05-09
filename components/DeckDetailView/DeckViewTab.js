@@ -102,6 +102,9 @@ export default class DeckViewTab extends React.Component {
         id: card.code,
         pack_code: card.pack_code,
       },
+      title: `${card.is_unique ? '*' : ''}${card.name}`,
+      subtitle: card.subname,
+      backButtonTitle: 'Back',
     });
   }
 

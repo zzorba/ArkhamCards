@@ -36,6 +36,9 @@ export default class InvestigatorImage extends React.Component {
         pack_code: card.pack_code,
         showSpoilers: true,
       },
+      title: `${card.is_unique ? '*' : ''}${card.name}`,
+      subtitle: card.subname,
+      backButtonTitle: 'Back',
     });
   }
 

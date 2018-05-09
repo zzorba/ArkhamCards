@@ -85,6 +85,7 @@ class CardDetailView extends React.PureComponent {
       passProps: {
         investigator: card,
       },
+      backButtonTitle: 'Back',
     });
   }
 
