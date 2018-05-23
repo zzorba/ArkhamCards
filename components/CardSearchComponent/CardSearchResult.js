@@ -45,10 +45,10 @@ export default class CardSearchResult extends React.PureComponent {
     return count;
   }
 
-  renderFactionIcon() {
-    const {
-      card,
-    } = this.props;
+  renderFactionIcon(card) {
+    if (!card.encounter_code && card.linked_card) {
+      return this.renderFactionIcon(card.linked_card);
+    }
     if (card.subtype_code &&
       (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
     ) {
@@ -66,7 +66,8 @@ export default class CardSearchResult extends React.PureComponent {
       );
     }
 
-    if (card.type_code === 'scenario' || card.type_code === 'story') {
+    if (card.type_code === 'scenario' ||
+      card.type_code === 'story') {
       return (
         <EncounterIcon
           encounter_code={card.pack_code}
@@ -138,7 +139,7 @@ export default class CardSearchResult extends React.PureComponent {
                 </Text>
               ) }
               <View style={styles.cardIcon}>
-                { this.renderFactionIcon() }
+                { this.renderFactionIcon(card) }
               </View>
               <Text style={[
                 styles.cardName,

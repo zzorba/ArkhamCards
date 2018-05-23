@@ -5,7 +5,9 @@ import { MarkdownView } from 'react-native-markdown-view';
 
 import ArkhamIconNode from './ArkhamIconNode';
 import BoldHtmlTagNode from './BoldHtmlTagNode';
+import BoldItalicHtmlTagNode from './BoldItalicHtmlTagNode';
 import ItalicHtmlTagNode from './ItalicHtmlTagNode';
+import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 
 const ArkhamIconRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
@@ -34,13 +36,31 @@ const BreakTagRule = {
   render: BoldHtmlTagNode,
 };
 
-const BoldHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
+const BoldItalicHtmlTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>(.+?)<\\/i><\\/b>')),
   order: 1,
   parse: (capture) => {
     return { text: capture[1] };
   },
+  render: BoldItalicHtmlTagNode,
+};
+
+const BoldHtmlTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
+  order: 2,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
   render: BoldHtmlTagNode,
+};
+
+const UnderlineHtmlTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<u>(.+?)<\\/u>')),
+  order: 2,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: UnderlineHtmlTagNode,
 };
 
 const EmphasisHtmlTagRule = {
@@ -54,7 +74,7 @@ const EmphasisHtmlTagRule = {
 
 const ItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<i>(.+?)<\\/i>')),
-  order: 1,
+  order: 2,
   parse: (capture) => {
     return { text: capture[1] };
   },
@@ -78,7 +98,9 @@ export default class CardText extends React.PureComponent {
           Object.assign({
             arkhamIconSpan: ArkahmIconSpanRule,
             brTag: BreakTagRule,
+            biTag: BoldItalicHtmlTagRule,
             bTag: BoldHtmlTagRule,
+            uTag: UnderlineHtmlTagRule,
             emTag: EmphasisHtmlTagRule,
             iTag: ItalicHtmlTagRule,
           }, onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })

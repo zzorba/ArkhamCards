@@ -64,10 +64,9 @@ class CampaignItem extends React.Component {
 
 function mapStateToProps(state, props) {
   const latestScenario = last(props.campaign.scenarioResults);
-  const deckIds = latestScenario ? latestScenario.deckIds : [];
   return {
     latestScenario,
-    decks: getDecks(state, deckIds),
+    decks: getDecks(state, props.campaign.latestDeckIds),
   };
 }
 

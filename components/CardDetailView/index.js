@@ -28,6 +28,7 @@ import CardTextComponent from '../CardTextComponent';
 import FlippableCard from '../core/FlippableCard';
 import FaqComponent from './FaqComponent';
 import { getShowSpoilers } from '../../reducers';
+import FlavorTextComponent from './FlavorTextComponent';
 
 const BLURRED_ACT = require('../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../assets/blur-agenda.jpeg');
@@ -124,17 +125,23 @@ class CardDetailView extends React.PureComponent {
 
   renderMetadata(card) {
     return (
-      <View>
-        <Text>
-          { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-            <ArkhamIcon name={card.faction_code} size={18} color="#000000" /> }
-          { card.faction_name }
-        </Text>
-        <Text style={styles.typeText}>
-          { card.subtype_name ?
-            `${card.type_name}. ${card.subtype_name}` :
-            card.type_name }
-        </Text>
+      <View style={styles.metadataBlock}>
+        { card.type_code !== 'scenario' && card.type_code !== 'location' &&
+          card.type_code !== 'act' && card.type_code !== 'agenda' && (
+          <Text>
+            { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
+              <ArkhamIcon name={card.faction_code} size={18} color="#000000" /> }
+            { card.faction_name }
+          </Text>
+        ) }
+        { !!(card.subtype_name || card.type_name) && (
+          <Text style={styles.typeText}>
+            { card.subtype_name ?
+              `${card.type_name}. ${card.subtype_name}` :
+              card.type_name }
+            { (card.type_code === 'agenda' || card.type_code === 'act') ? ` ${card.stage}` : '' }
+          </Text>
+        ) }
         { !!card.traits && <Text style={styles.traitsText}>{ card.traits }</Text> }
       </View>
     );
@@ -175,19 +182,31 @@ class CardDetailView extends React.PureComponent {
   }
 
   renderPlaydata(card) {
+    if (card.type_code === 'scenario') {
+      return null;
+    }
     const costString = (
       (card.type_code === 'asset' || card.type_code === 'event') &&
-      `Cost: ${card.cost || '-'}`
+      `Cost: ${card.cost !== null ? card.cost : '-'}`
     ) || '';
 
     return (
       <View style={styles.statsBlock}>
-        <Text>
-          { card.xp ?
-            (`${costString}${costString ? '. ' : ''}XP: ${card.xp}.`) :
-            costString
-          }
-        </Text>
+        { !!(card.xp || costString) && (
+          <Text>
+            { card.xp ?
+              (`${costString}${costString ? '. ' : ''}XP: ${card.xp}.`) :
+              costString
+            }
+          </Text>
+        ) }
+        { card.type_code === 'agenda' && <Text>Doom: {card.doom}</Text> }
+        { card.type_code === 'act' && card.clues > 0 && (
+          <Text>
+            Clues: {card.clues}
+            { !card.clues_fixed && PER_INVESTIGATOR_ICON }
+          </Text>
+        ) }
         { this.renderTestIcons(card) }
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
@@ -348,21 +367,27 @@ class CardDetailView extends React.PureComponent {
           { this.renderTitle(card, blur, card.back_name || card.name) }
           <View style={styles.cardBody}>
             <View style={styles.typeBlock}>
-              <Text style={styles.typeText}>
-                { card.type_name }
-              </Text>
+              <View style={styles.metadataBlock}>
+                <Text style={styles.typeText}>
+                  { card.type_name }
+                  { (card.type_code === 'act' || card.type_code === 'agenda') ? ` ${card.stage}` : '' }
+                </Text>
+                { !!card.traits && <Text style={styles.traitsText}>{ card.traits }</Text> }
+              </View>
+              { !!card.back_flavor && flavorFirst &&
+                <FlavorTextComponent text={card.back_flavor} />
+              }
+              { !!card.back_text && (
+                <View style={[styles.gameTextBlock, {
+                  borderColor: FACTION_COLORS[card.faction_code] || '#000000',
+                }]}>
+                  <CardTextComponent text={card.back_text} />
+                </View>)
+              }
+              { !!card.back_flavor && !flavorFirst &&
+                <FlavorTextComponent text={card.back_flavor} />
+              }
             </View>
-            { !!card.back_flavor && flavorFirst &&
-              <Text style={styles.flavorText}>{ card.back_flavor }</Text> }
-            { !!card.back_text && (
-              <View style={[styles.gameTextBlock, {
-                borderColor: FACTION_COLORS[card.faction_code] || '#000000',
-              }]}>
-                <CardTextComponent text={card.back_text} />
-              </View>)
-            }
-            { !!card.back_flavor && !flavorFirst &&
-              <Text style={styles.flavorText}>{ card.back_flavor }</Text> }
           </View>
         </View>
       </View>
@@ -400,9 +425,10 @@ class CardDetailView extends React.PureComponent {
     const flavorFirst = card.type_code === 'story' ||
       card.type_code === 'act' ||
       card.type_code === 'agenda';
+    const backFirst = !(isHorizontal || !card.spoiler) && card.type_code !== 'scenario';
     return (
       <ScrollView style={{ flexDirection: 'column', flexWrap: 'wrap' }}>
-        { !(isHorizontal || !card.spoiler) && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
+        { backFirst && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         <View style={styles.container}>
           <View style={[
             styles.card,
@@ -417,8 +443,11 @@ class CardDetailView extends React.PureComponent {
                   <View style={styles.mainColumn}>
                     { this.renderMetadata(card) }
                     { this.renderPlaydata(card) }
+                    { !!(card.flavor && flavorFirst) &&
+                      <FlavorTextComponent text={card.flavor} />
+                    }
                   </View>
-                  { card.type_code !== 'story' && (
+                  { card.type_code !== 'story' && card.type_code !== 'scenario' && (
                     <View style={styles.column}>
                       <View style={styles.playerImage}>
                         <PlayerCardImage card={card} />
@@ -426,16 +455,11 @@ class CardDetailView extends React.PureComponent {
                     </View>
                   ) }
                 </View>
-                { !!card.flavor && flavorFirst &&
-                  <Text style={styles.flavorText}>
-                    { card.flavor }
-                  </Text>
-                }
-                { !!card.real_text && (
+                { !!card.text && (
                   <View style={[styles.gameTextBlock, {
                     borderColor: FACTION_COLORS[card.faction_code] || '#000000',
                   }]}>
-                    <CardTextComponent text={card.real_text} />
+                    <CardTextComponent text={card.text} />
                   </View>)
                 }
                 { ('victory' in card && card.victory !== null) &&
@@ -444,7 +468,8 @@ class CardDetailView extends React.PureComponent {
                   </Text>
                 }
                 { !!card.flavor && !flavorFirst &&
-                  <Text style={styles.flavorText}>{ card.flavor }</Text> }
+                  <FlavorTextComponent text={card.flavor} />
+                }
                 { !!card.illustrator && (
                   <Text style={styles.illustratorText}>
                     <AppIcon name="palette" size={16} color="#000000" />
@@ -472,7 +497,7 @@ class CardDetailView extends React.PureComponent {
             </View>
           </View>
         </View>
-        { (isHorizontal || !card.spoiler) && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
+        { !backFirst && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
         { !!card.linked_card && (
           <CardDetailView
             navigator={navigator}
@@ -533,6 +558,9 @@ const styles = StyleSheet.create({
   playerImage: {
     marginTop: 2,
   },
+  metadataBlock: {
+    marginBottom: 8,
+  },
   container: {
     margin: 8,
     flexDirection: 'row',
@@ -586,12 +614,6 @@ const styles = StyleSheet.create({
   traitsText: {
     fontWeight: '700',
     fontStyle: 'italic',
-  },
-  flavorText: {
-    fontSize: 11,
-    fontWeight: '600',
-    fontStyle: 'italic',
-    marginBottom: 4,
   },
   illustratorText: {
     fontSize: 14,
