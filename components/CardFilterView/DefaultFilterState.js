@@ -1,6 +1,5 @@
 export default {
   factions: [],
-  basicTypes: [],
   types: [],
   subTypes: [],
   xpLevels: [],

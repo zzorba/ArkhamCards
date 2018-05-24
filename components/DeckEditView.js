@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, map, partition } from 'lodash';
+import { head } from 'lodash';
 import { connectRealm } from 'react-native-realm';
 
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';

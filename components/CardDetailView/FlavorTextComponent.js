@@ -9,7 +9,7 @@ import CiteTagNode from './CiteTagNode';
 const BreakTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),
   order: 1,
-  parse: (capture) => {
+  parse: () => {
     return { text: '\n' };
   },
   render: FlavorUnderlineNode,

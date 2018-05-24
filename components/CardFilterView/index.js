@@ -44,13 +44,13 @@ class CardFilterView extends React.Component {
     };
 
     this._onFactionChange = this.onFilterChange.bind(this, 'factions');
-    this._onBasicTypeChange = this.onFilterChange.bind(this, 'basicTypes');
     this._onTypeChange = this.onFilterChange.bind(this, 'types');
     this._onSubTypeChange = this.onFilterChange.bind(this, 'subTypes');
     this._onTraitChange = this.onFilterChange.bind(this, 'traits');
     this._onPacksChange = this.onFilterChange.bind(this, 'packs');
     this._onSlotsChange = this.onFilterChange.bind(this, 'slots');
     this._onEncountersChange = this.onFilterChange.bind(this, 'encounters');
+    this._onIllustratorsChange = this.onFilterChange.bind(this, 'illustrators');
     this._applyFilters = this.applyFilters.bind(this);
 
     props.navigator.setTitle({
@@ -158,7 +158,6 @@ class CardFilterView extends React.Component {
     const {
       filters: {
         factions,
-        basicTypes,
         traits,
         types,
         subTypes,
@@ -184,20 +183,7 @@ class CardFilterView extends React.Component {
           selection={factions}
           onChange={this._onFactionChange}
         />
-        <BasicTypeChooser
-          selection={basicTypes}
-          onChange={this._onBasicTypeChange}
-        />
         <View style={styles.chooserStack}>
-          { (traits.length > 0 || allTraits.length > 0) && (
-            <ChooserButton
-              title="Traits"
-              navigator={navigator}
-              values={allTraits}
-              selection={traits}
-              onChange={this._onTraitChange}
-            />
-          ) }
           { (types.length > 0 || allTypes.length > 0) && (
             <ChooserButton
               navigator={navigator}
@@ -205,6 +191,15 @@ class CardFilterView extends React.Component {
               values={allTypes}
               selection={types}
               onChange={this._onTypeChange}
+            />
+          ) }
+          { (traits.length > 0 || allTraits.length > 0) && (
+            <ChooserButton
+              title="Traits"
+              navigator={navigator}
+              values={allTraits}
+              selection={traits}
+              onChange={this._onTraitChange}
             />
           ) }
           { (subTypes.length > 0 || allSubTypes.length > 0) && (
@@ -249,7 +244,7 @@ class CardFilterView extends React.Component {
               title="Illustrators"
               values={allIllustrators}
               selection={illustrators}
-              onChange={this._onEncountersChange}
+              onChange={this._onIllustratorsChange}
             />
           ) }
         </View>

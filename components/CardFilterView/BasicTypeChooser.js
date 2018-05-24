@@ -7,7 +7,6 @@ import {
 import { ButtonGroup } from 'react-native-elements';
 
 const BUTTONS = ['Assets', 'Events', 'Skills'];
-const TYPE_CODES = ['asset', 'event', 'skill'];
 
 export default class BasicTypeChooser extends React.Component {
   static propTypes = {
@@ -23,7 +22,7 @@ export default class BasicTypeChooser extends React.Component {
   }
 
   updateIndex(indexes) {
-    const selection = map(indexes, idx => TYPE_CODES[idx]);
+    const selection = map(indexes, idx => BUTTONS[idx]);
     this.props.onChange(selection);
   }
 
@@ -31,7 +30,7 @@ export default class BasicTypeChooser extends React.Component {
     const {
       selection,
     } = this.props;
-    const selectedIndexes = map(selection, type => TYPE_CODES.indexOf(type));
+    const selectedIndexes = map(selection, type => BUTTONS.indexOf(type));
     return (
       <ButtonGroup
         onPress={this._updateIndex}
