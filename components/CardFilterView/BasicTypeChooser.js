@@ -9,7 +9,7 @@ import { ButtonGroup } from 'react-native-elements';
 const BUTTONS = ['Assets', 'Events', 'Skills'];
 const TYPE_CODES = ['asset', 'event', 'skill'];
 
-export default class TypeChooser extends React.Component {
+export default class BasicTypeChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     selection: PropTypes.array.isRequired,

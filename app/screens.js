@@ -1,5 +1,6 @@
 import { Navigation } from 'react-native-navigation';
 
+import SearchMultiSelect from '../components/core/SearchMultiSelect';
 import AddScenarioResultView from '../components/AddScenarioResultView';
 import DeckDetailView from '../components/DeckDetailView';
 import DeckEditView from '../components/DeckEditView';
@@ -17,7 +18,6 @@ import NewCampaignView from '../components/NewCampaignView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
 import DeckChartsView from '../components/DeckChartsView';
 import CardFilterView from '../components/CardFilterView';
-import CardTraitModal from '../components/CardTraitModal';
 import BrowseDecksView from '../components/BrowseDecksView';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsTab from '../components/SettingsTab';
@@ -50,7 +50,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsTab, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
-  Navigation.registerComponent('SearchFilters.Trait', () => CardTraitModal, store, Provider);
+  Navigation.registerComponent('SearchFilters.Chooser', () => SearchMultiSelect, store, Provider);
   Navigation.registerComponent('CollectionEdit', () => CollectionEditView, store, Provider);
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);

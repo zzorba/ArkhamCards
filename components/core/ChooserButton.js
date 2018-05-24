@@ -8,10 +8,11 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-export default class TraitChooserButton extends React.Component {
+export default class ChooserButton extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    traits: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    values: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
     selection: PropTypes.array,
   };
@@ -25,15 +26,17 @@ export default class TraitChooserButton extends React.Component {
   onPress() {
     const {
       navigator,
-      traits,
+      title,
+      values,
       onChange,
       selection,
     } = this.props;
     navigator.push({
-      screen: 'SearchFilters.Trait',
-      title: 'Select Traits',
+      screen: 'SearchFilters.Chooser',
+      title: `Select ${title}`,
       passProps: {
-        traits,
+        placeholder: `Search ${title}`,
+        values,
         onChange,
         selection,
       },
@@ -42,13 +45,14 @@ export default class TraitChooserButton extends React.Component {
 
   render() {
     const {
+      title,
       selection,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.container}>
           <Text style={styles.text} numberOfLines={1}>
-            { `Traits: ${selection.length ? selection.join(', ') : 'All'}` }
+            { `${title}: ${selection.length ? selection.join(', ') : 'All'}` }
           </Text>
           <View style={styles.icon}>
             <MaterialIcons
@@ -69,7 +73,6 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#bdbdbd',
     paddingTop: 6,

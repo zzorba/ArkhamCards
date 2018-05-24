@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys, forEach, filter, map } from 'lodash';
 import {
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -10,14 +11,14 @@ import { connectRealm } from 'react-native-realm';
 import { FACTION_CODES } from '../../constants';
 import { applyFilters } from '../../lib/filters';
 import FactionChooser from './FactionChooser';
-import TraitChooserButton from './TraitChooserButton';
-import TypeChooser from './TypeChooser';
+import BasicTypeChooser from './BasicTypeChooser';
 import XpChooser from './XpChooser';
 import DefaultFilterState from './DefaultFilterState';
+import ChooserButton from '../core/ChooserButton';
 
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
-class FilterView extends React.Component {
+class CardFilterView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     applyFilters: PropTypes.func.isRequired,
@@ -35,11 +36,21 @@ class FilterView extends React.Component {
       allFactions: CARD_FACTION_CODES,
       allTraits: [],
       allTypes: [],
+      allSubTypes: [],
+      allPacks: [],
+      allSlots: [],
+      allEncounters: [],
+      allIllustrators: [],
     };
 
-    this._onFactionChange = this.onFactionChange.bind(this);
-    this._onTypeChange = this.onTypeChange.bind(this);
-    this._onTraitChange = this.onTraitChange.bind(this);
+    this._onFactionChange = this.onFilterChange.bind(this, 'factions');
+    this._onBasicTypeChange = this.onFilterChange.bind(this, 'basicTypes');
+    this._onTypeChange = this.onFilterChange.bind(this, 'types');
+    this._onSubTypeChange = this.onFilterChange.bind(this, 'subTypes');
+    this._onTraitChange = this.onFilterChange.bind(this, 'traits');
+    this._onPacksChange = this.onFilterChange.bind(this, 'packs');
+    this._onSlotsChange = this.onFilterChange.bind(this, 'slots');
+    this._onEncountersChange = this.onFilterChange.bind(this, 'encounters');
     this._applyFilters = this.applyFilters.bind(this);
 
     props.navigator.setTitle({
@@ -64,7 +75,12 @@ class FilterView extends React.Component {
       const allFactions = filter(FACTION_CODES, faction_code =>
         cards.filtered(`faction_code == '${faction_code}'`).length > 0);
       const typesMap = {};
+      const subTypesMap = {};
       const traitsMap = {};
+      const packsMap = {};
+      const slotsMap = {};
+      const encountersMap = {};
+      const illustratorsMap = {};
       forEach(cards, card => {
         if (card.traits) {
           forEach(
@@ -73,6 +89,21 @@ class FilterView extends React.Component {
               traitsMap[t] = 1;
             });
         }
+        if (card.subtype_name) {
+          subTypesMap[card.subtype_name] = 1;
+        }
+        if (card.pack_name) {
+          packsMap[card.pack_name] = 1;
+        }
+        if (card.slot) {
+          slotsMap[card.slot] = 1;
+        }
+        if (card.encounter_name) {
+          encountersMap[card.encounter_name] = 1;
+        }
+        if (card.illustrator) {
+          illustratorsMap[card.illustrator] = 1;
+        }
         typesMap[card.type_name] = 1;
       });
 
@@ -80,6 +111,11 @@ class FilterView extends React.Component {
         allFactions,
         allTraits: keys(traitsMap).sort(),
         allTypes: keys(typesMap).sort(),
+        allSubTypes: keys(subTypesMap).sort(),
+        allPacks: keys(packsMap).sort(),
+        allSlots: keys(slotsMap).sort(),
+        allEncounters: keys(encountersMap).sort(),
+        allIllustrators: keys(illustratorsMap).sort(),
       });
     }, 0);
   }
@@ -98,21 +134,9 @@ class FilterView extends React.Component {
     }
   }
 
-  onFactionChange(selection) {
+  onFilterChange(key, selection) {
     this.setState({
-      filters: Object.assign({}, this.state.filters, { factions: selection }),
-    }, this._applyFilters);
-  }
-
-  onTypeChange(selection) {
-    this.setState({
-      filters: Object.assign({}, this.state.filters, { types: selection }),
-    }, this._applyFilters);
-  }
-
-  onTraitChange(selection) {
-    this.setState({
-      filters: Object.assign({}, this.state.filters, { traits: selection }),
+      filters: Object.assign({}, this.state.filters, { [key]: selection }),
     }, this._applyFilters);
   }
 
@@ -134,11 +158,23 @@ class FilterView extends React.Component {
     const {
       filters: {
         factions,
-        types,
+        basicTypes,
         traits,
+        types,
+        subTypes,
+        packs,
+        slots,
+        encounters,
+        illustrators,
       },
       allFactions,
       allTraits,
+      allTypes,
+      allSubTypes,
+      allPacks,
+      allSlots,
+      allEncounters,
+      allIllustrators,
     } = this.state;
 
     return (
@@ -148,27 +184,93 @@ class FilterView extends React.Component {
           selection={factions}
           onChange={this._onFactionChange}
         />
-        <TypeChooser
-          onChange={this._onTypeChange}
-          selection={types}
+        <BasicTypeChooser
+          selection={basicTypes}
+          onChange={this._onBasicTypeChange}
         />
-        <TraitChooserButton
-          navigator={navigator}
-          traits={allTraits}
-          selection={traits}
-          onChange={this._onTraitChange}
-        />
+        <View style={styles.chooserStack}>
+          { (traits.length > 0 || allTraits.length > 0) && (
+            <ChooserButton
+              title="Traits"
+              navigator={navigator}
+              values={allTraits}
+              selection={traits}
+              onChange={this._onTraitChange}
+            />
+          ) }
+          { (types.length > 0 || allTypes.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Types"
+              values={allTypes}
+              selection={types}
+              onChange={this._onTypeChange}
+            />
+          ) }
+          { (subTypes.length > 0 || allSubTypes.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="SubTypes"
+              values={allSubTypes}
+              selection={subTypes}
+              onChange={this._onSubTypeChange}
+            />
+          ) }
+          { (slots.length > 0 || allSlots.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Slots"
+              values={allSlots}
+              selection={slots}
+              onChange={this._onSlotsChange}
+            />
+          ) }
+          { (packs.length > 0 || allPacks.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Sets"
+              values={allPacks}
+              selection={packs}
+              onChange={this._onPacksChange}
+            />
+          ) }
+          { (encounters.length > 0 || allEncounters.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Encounter Sets"
+              values={allEncounters}
+              selection={encounters}
+              onChange={this._onEncountersChange}
+            />
+          ) }
+          { (illustrators.length > 0 || allIllustrators.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Illustrators"
+              values={allIllustrators}
+              selection={illustrators}
+              onChange={this._onEncountersChange}
+            />
+          ) }
+        </View>
         <Text>{ this.cardCount() } Cards Matched</Text>
       </View>
     );
   }
 }
 
-export default connectRealm(FilterView, {
+export default connectRealm(CardFilterView, {
   schemas: ['Card'],
   mapToProps(results, realm, props) {
     return {
       cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
     };
+  },
+});
+
+const styles = StyleSheet.create({
+  chooserStack: {
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
   },
 });

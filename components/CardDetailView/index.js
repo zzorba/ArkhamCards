@@ -562,7 +562,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   container: {
-    margin: 8,
+    marginTop: 8,
+    marginLeft: 8,
+    marginRight: 8,
+    marginBottom: 0,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
@@ -606,7 +609,6 @@ const styles = StyleSheet.create({
   },
   typeBlock: {
     marginTop: 4,
-    marginBottom: 8,
   },
   typeText: {
     fontWeight: '700',

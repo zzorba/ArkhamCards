@@ -6,31 +6,33 @@ import {
   View,
 } from 'react-native';
 
-import MultipleSelect from './core/MultipleSelect';
+import MultipleSelect from './MultipleSelect';
 
-export default class TraitModal extends React.Component {
+export default class SearchMultiSelect extends React.Component {
   static propTypes = {
-    traits: PropTypes.array.isRequired,
+    placeholder: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    values: PropTypes.array.isRequired,
     selection: PropTypes.array,
   };
 
   render() {
     const {
-      traits,
+      placeholder,
+      values,
       selection,
       onChange,
     } = this.props;
     const options = {};
-    forEach(traits, trait => {
-      options[trait] = trait;
+    forEach(values, value => {
+      options[value] = value;
     });
     return (
       <View style={styles.flex}>
         <MultipleSelect
           options={options}
           selected={selection}
-          placeholder="Search Traits"
+          placeholder={placeholder}
           placeholderTextColor="#757575"
           returnValue="label"
           callback={onChange}
