@@ -4869,9 +4869,9 @@ react-native-markdown-view@1.1.4:
     react-native-tabular-grid-markdown-view "0.1.x"
     simple-markdown "0.3.x"
 
-react-native-navigation@1.1.444:
-  version "1.1.444"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.444.tgz#afd58ee2f18278613ce42477484ae3e00266efa6"
+react-native-navigation@1.1.463:
+  version "1.1.463"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.463.tgz#6f06e1057665e7618810c051d9b94b01e4f27e13"
   dependencies:
     lodash "4.x.x"
 

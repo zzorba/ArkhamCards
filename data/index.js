@@ -10,6 +10,7 @@ import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import FaqEntry from './FaqEntry';
 
+const SCHEMA_VERSION = 11;
 export default new Realm({
   schema: [
     Card,
@@ -22,8 +23,11 @@ export default new Realm({
     DeckOptionLevel,
     FaqEntry,
   ],
-  schemaVersion: 10,
-  /* eslint-disable no-unused-vars */
+  schemaVersion: SCHEMA_VERSION,
   migration: (oldRealm, newRealm) => {
+    if (oldRealm.schemaVersion < SCHEMA_VERSION) {
+      newRealm.delete(newRealm.objects('Card'));
+      newRealm.delete(newRealm.objects('FaqEntry'));
+    }
   },
 });
