@@ -30,10 +30,12 @@ import ExileCardDialog from '../components/ExileCardDialog';
 import SelectCampaignDialog from '../components/SelectCampaignDialog';
 import CampaignDifficultyDialog from '../components/CampaignDifficultyDialog';
 import HomeView from '../components/HomeView';
+import AboutView from '../components/AboutView';
 
 // register all screens of the app (including internal ones)
 export function registerScreens(store, Provider) {
   Navigation.registerComponent('Home', () => HomeView, store, Provider);
+  Navigation.registerComponent('About', () => AboutView, store, Provider);
   Navigation.registerComponent('Browse.Cards', () => CardSearchView, store, Provider);
   Navigation.registerComponent('Browse.Decks', () => BrowseDecksView, store, Provider);
   Navigation.registerComponent('Browse.InvestigatorCards', () => InvestigatorCardsView, store, Provider);

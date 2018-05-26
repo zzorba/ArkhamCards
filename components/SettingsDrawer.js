@@ -32,24 +32,16 @@ class SettingsDrawer extends React.Component {
       error: null,
     };
 
-    this._myCollectionPressed = this.myCollectionPressed.bind(this);
-    this._editSpoilersPressed = this.editSpoilersPressed.bind(this);
+    this._myCollectionPressed = this.navButtonPressed.bind(this, '/collection');
+    this._editSpoilersPressed = this.navButtonPressed.bind(this, '/spoilers');
+    this._aboutPressed = this.navButtonPressed.bind(this, '/about');
     this._doSyncCards = this.doSyncCards.bind(this);
     this._clearCache = this.clearCache.bind(this);
   }
 
-  myCollectionPressed() {
+  navButtonPressed(link) {
     this.props.navigator.handleDeepLink({
-      link: '/collection',
-      payload: {
-        closeDrawer: true,
-      },
-    });
-  }
-
-  editSpoilersPressed() {
-    this.props.navigator.handleDeepLink({
-      link: '/spoilers',
+      link,
       payload: {
         closeDrawer: true,
       },
@@ -84,11 +76,11 @@ class SettingsDrawer extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.list}>
-          <Text>Settings</Text>
           <Button onPress={this._myCollectionPressed} title="Edit Collection" />
           <Button onPress={this._editSpoilersPressed} title="Edit Spoilers" />
           <Button onPress={this._doSyncCards} title="Check for card updates" />
           <Button onPress={this._clearCache} title="Clear cache" />
+          <Button onPress={this._aboutPressed} title="About this app" />
         </View>
       </SafeAreaView>
     );

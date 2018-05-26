@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import FetchCardsGate from '../FetchCardsGate';
-import MenuItem from './MenuItem';
+import FullMenu from './FullMenu';
 import { iconsMap } from '../../app/NavIcons';
 
 export default class HomeView extends React.Component {
@@ -47,6 +47,10 @@ export default class HomeView extends React.Component {
         navigator.push({
           screen: 'EditSpoilers',
         });
+      } else if (event.link === '/about') {
+        navigator.push({
+          screen: 'About',
+        });
       }
 
       if (event.payload && event.payload.closeDrawer) {
@@ -82,12 +86,7 @@ export default class HomeView extends React.Component {
     } = this.props;
     return (
       <FetchCardsGate>
-        <ScrollView>
-          <MenuItem navigator={navigator} text="Popular Decks" screen="Browse.Decks" />
-          <MenuItem navigator={navigator} text="All Cards" screen="Browse.Cards" />
-          <MenuItem navigator={navigator} text="My Campaigns" screen="My.Campaigns" />
-          <MenuItem navigator={navigator} text="My Decks" screen="My.Decks" />
-        </ScrollView>
+        <FullMenu navigator={navigator} />
       </FetchCardsGate>
     );
   }
