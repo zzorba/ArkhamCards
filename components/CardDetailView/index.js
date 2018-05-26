@@ -46,6 +46,7 @@ class CardDetailView extends React.PureComponent {
     pack_code: PropTypes.string.isRequired,
     card: PropTypes.object,
     showSpoilers: PropTypes.bool,
+    linked: PropTypes.bool,
   };
 
   constructor(props) {
@@ -200,10 +201,10 @@ class CardDetailView extends React.PureComponent {
             }
           </Text>
         ) }
-        { card.type_code === 'agenda' && <Text>Doom: {card.doom}</Text> }
+        { card.type_code === 'agenda' && <Text>Doom: { card.doom }</Text> }
         { card.type_code === 'act' && card.clues > 0 && (
           <Text>
-            Clues: {card.clues}
+            Clues: { card.clues }
             { !card.clues_fixed && PER_INVESTIGATOR_ICON }
           </Text>
         ) }

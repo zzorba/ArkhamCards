@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  ActivityIndicator,
   ScrollView,
-  StyleSheet,
-  View,
 } from 'react-native';
 
 import MenuItem from './MenuItem';

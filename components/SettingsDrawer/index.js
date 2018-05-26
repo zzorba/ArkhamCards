@@ -4,7 +4,6 @@ import { keys } from 'lodash';
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -19,8 +18,6 @@ import DrawerItem from './DrawerItem';
 class SettingsDrawer extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
-    deckCount: PropTypes.number,
-    cardCount: PropTypes.number,
     navigator: PropTypes.object.isRequired,
     clearDecks: PropTypes.func.isRequired,
   };

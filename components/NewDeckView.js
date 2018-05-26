@@ -1,16 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, partition } from 'lodash';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
-import { Button } from 'react-native-elements';
 
 import InvestigatorsListComponent from './InvestigatorsListComponent';
 

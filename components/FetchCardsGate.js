@@ -68,7 +68,6 @@ class FetchCardsGate extends React.Component {
     } = this.props;
     const {
       loadingCards,
-      deckIds,
     } = this.state;
     if (loading || loadingCards) {
       return (

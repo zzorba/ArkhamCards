@@ -36,6 +36,7 @@ const UnderlineHtmlTagRule = {
 export default class FlavorTextComponent extends React.PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
+    onLinkPress: PropTypes.func,
   };
 
   render() {

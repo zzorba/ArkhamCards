@@ -1,11 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  View,
-} from 'react-native';
 
 import FetchCardsGate from '../FetchCardsGate';
 import FullMenu from './FullMenu';
@@ -91,12 +85,3 @@ export default class HomeView extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  activityIndicatorContainer: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-});

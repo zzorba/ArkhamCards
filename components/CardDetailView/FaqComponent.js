@@ -71,7 +71,7 @@ class FaqComponent extends React.Component {
         faqLoading: true,
       });
 
-      getFaqEntry(realm, id).then((result) => {
+      getFaqEntry(realm, id).then(() => {
         this.setState({
           faqLoading: false,
           faqError: null,
@@ -101,7 +101,7 @@ class FaqComponent extends React.Component {
         <View style={styles.container}>
           <Text style={styles.title}>FAQ</Text>
           { !!faqError && <Text>{ faqError }</Text> }
-          <Text>Last Updated: {date}</Text>
+          <Text>Last Updated: { date }</Text>
           { faqEntry.text ?
             <CardTextComponent
               text={faqEntry.text}

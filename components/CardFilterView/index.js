@@ -11,7 +11,6 @@ import { connectRealm } from 'react-native-realm';
 import { FACTION_CODES } from '../../constants';
 import { applyFilters } from '../../lib/filters';
 import FactionChooser from './FactionChooser';
-import BasicTypeChooser from './BasicTypeChooser';
 import XpChooser from './XpChooser';
 import DefaultFilterState from './DefaultFilterState';
 import ChooserButton from '../core/ChooserButton';
