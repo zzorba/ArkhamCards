@@ -29,6 +29,7 @@ import ScenarioDialog from '../components/ScenarioDialog';
 import ExileCardDialog from '../components/ExileCardDialog';
 import SelectCampaignDialog from '../components/SelectCampaignDialog';
 import CampaignDifficultyDialog from '../components/CampaignDifficultyDialog';
+import BrowseInvestigatorsView from '../components/BrowseInvestigatorsView';
 import HomeView from '../components/HomeView';
 import AboutView from '../components/AboutView';
 
@@ -38,6 +39,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('About', () => AboutView, store, Provider);
   Navigation.registerComponent('Browse.Cards', () => CardSearchView, store, Provider);
   Navigation.registerComponent('Browse.Decks', () => BrowseDecksView, store, Provider);
+  Navigation.registerComponent('Browse.Investigators', () => BrowseInvestigatorsView, store, Provider);
   Navigation.registerComponent('Browse.InvestigatorCards', () => InvestigatorCardsView, store, Provider);
   Navigation.registerComponent('Deck', () => DeckDetailView, store, Provider);
   Navigation.registerComponent('Deck.Charts', () => DeckChartsView, store, Provider);

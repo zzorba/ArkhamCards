@@ -1,11 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
 
 import FetchCardsGate from './FetchCardsGate';
 import { iconsMap } from '../app/NavIcons';
@@ -96,12 +90,3 @@ export default class BrowseDecksView extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  activityIndicatorContainer: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-});

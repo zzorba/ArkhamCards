@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys } from 'lodash';
 import {
-  Button,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -12,9 +11,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import * as Actions from '../actions';
-import { syncCards } from '../lib/api';
-import { getAllDecks } from '../reducers';
+import * as Actions from '../../actions';
+import { syncCards } from '../../lib/api';
+import { getAllDecks } from '../../reducers';
+import DrawerItem from './DrawerItem';
 
 class SettingsDrawer extends React.Component {
   static propTypes = {
@@ -76,11 +76,11 @@ class SettingsDrawer extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.list}>
-          <Button onPress={this._myCollectionPressed} title="Edit Collection" />
-          <Button onPress={this._editSpoilersPressed} title="Edit Spoilers" />
-          <Button onPress={this._doSyncCards} title="Check for card updates" />
-          <Button onPress={this._clearCache} title="Clear cache" />
-          <Button onPress={this._aboutPressed} title="About this app" />
+          <DrawerItem onPress={this._myCollectionPressed} text="Edit Collection" />
+          <DrawerItem onPress={this._editSpoilersPressed} text="Edit Spoilers" />
+          <DrawerItem onPress={this._doSyncCards} text="Check for card updates" />
+          <DrawerItem onPress={this._clearCache} text="Clear cache" />
+          <DrawerItem onPress={this._aboutPressed} text="About this app" />
         </View>
       </SafeAreaView>
     );

@@ -36,6 +36,15 @@ const BreakTagRule = {
   render: BoldHtmlTagNode,
 };
 
+const EmphasisMarkdownTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^\\[\\[(.+?)\\]\\]')),
+  order: 0,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: BoldItalicHtmlTagNode,
+};
+
 const BoldItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>(.+?)<\\/i><\\/b>')),
   order: 1,
@@ -96,6 +105,7 @@ export default class CardText extends React.PureComponent {
       <MarkdownView
         rules={
           Object.assign({
+            emMarkdown: EmphasisMarkdownTagRule,
             arkhamIconSpan: ArkahmIconSpanRule,
             brTag: BreakTagRule,
             biTag: BoldItalicHtmlTagRule,
