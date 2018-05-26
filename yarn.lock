@@ -4833,6 +4833,10 @@ react-is@^16.3.0:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
 
+react-native-clean-project@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-clean-project/-/react-native-clean-project-2.0.0.tgz#66f18d477e1f555c6736768aa0fe8655d22b42af"
+
 react-native-elements@1.0.0-beta2:
   version "1.0.0-beta2"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.0.0-beta2.tgz#39f1f98e9cb6e05facd71a955bcf8796705fe520"

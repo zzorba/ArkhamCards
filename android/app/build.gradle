@@ -79,7 +79,7 @@ project.ext.react = [
 apply from: "../../node_modules/react-native/react.gradle"
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'arkhamicons.ttf', 'coreset.ttf', 'dunwich.ttf', 'carcosa.ttf' ]
+    iconFontNames: [ 'arkhamicons.ttf', 'coreset.ttf', 'dunwich.ttf', 'carcosa.ttf', 'forgotten.ttf' ]
 ]
 
 /**

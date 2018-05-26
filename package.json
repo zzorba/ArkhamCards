@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint index.js './**/*.js'",
+    "clean": "react-native-clean-project",
     "test": "jest"
   },
   "dependencies": {
@@ -48,6 +49,7 @@
     "eslint-plugin-react": "7.7.0",
     "eslint-plugin-react-native": "3.2.1",
     "jest": "22.4.3",
+    "react-native-clean-project": "^2.0.0",
     "react-test-renderer": "16.3.0"
   },
   "jest": {

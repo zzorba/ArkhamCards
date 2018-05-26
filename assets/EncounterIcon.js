@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CoreSetIcon from './CoreSetIcon';
 import DunwichIcon from './DunwichIcon';
 import CarcosaIcon from './CarcosaIcon';
+import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
 
 export default class EncounterIcon extends React.PureComponent {
@@ -23,6 +24,10 @@ export default class EncounterIcon extends React.PureComponent {
 
   carcosaIcon(name, size, color) {
     return (<CarcosaIcon name={name} size={size} color={color} />);
+  }
+
+  forgottenIcon(name, size, color) {
+    return (<ForgottenIcon name={name} size={size} color={color} />);
   }
 
   standaloneIcon(name, size, color) {
@@ -78,6 +83,7 @@ export default class EncounterIcon extends React.PureComponent {
         return this.dunwichIcon('lost_in_time_and_space', size, color);
       case 'extracurricular_activity':
       case 'the_house_always_wins':
+      case 'armitages_fate':
       case 'the_miskatonic_museum':
       case 'blood_on_the_altar':
       case 'undimensioned_and_unseen':
@@ -140,7 +146,31 @@ export default class EncounterIcon extends React.PureComponent {
         return this.standaloneIcon('curse_of_the_rougarou', size, color);
       case 'bayou':
         return this.standaloneIcon('the_bayou', size, color);
-      case 'tfa': // THE FORGOTTEN AGE
+      case 'tfa':
+      case 'tof': // THREADS OF FATE
+      case 'tbb': // THE BOUNDARY BEYOND
+      case 'hote': // HEART OF THE ELDERS
+        return this.forgottenIcon('the_forgotten_age', size, color);
+      case 'wilds':
+        return this.forgottenIcon('the_untamed_wilds', size, color);
+      case 'eztli':
+        return this.forgottenIcon('the_doom_of_eztli', size, color);
+      case 'traps':
+        return this.forgottenIcon('deadly_traps', size, color);
+      case 'flux':
+        return this.forgottenIcon('temporal_flux', size, color);
+      case 'ruins':
+        return this.forgottenIcon('forgotten_ruins', size, color);
+      case 'venom':
+        return this.forgottenIcon('yigs_venom', size, color);
+      case 'rainforest':
+      case 'serpents':
+      case 'expedition':
+      case 'agents_of_yig':
+      case 'guardians_of_time':
+      case 'pnakotic_brotherhood':
+      case 'poison':
+        return this.forgottenIcon(encounter_code, size, color);
       default:
         return this.coreIcon('core', size, color);
     }
