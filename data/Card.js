@@ -108,6 +108,7 @@ export default class Card {
     'Basic Weakness',
     'Weakness',
     'Scenario',
+    'Story',
   ];
 
   static typeSortHeader(json) {

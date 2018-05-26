@@ -12,7 +12,7 @@
     "appcenter": "^1.4.0",
     "appcenter-analytics": "^1.4.0",
     "appcenter-crashes": "^1.4.0",
-    "lodash": "4.17.5",
+    "lodash": "4.17.10",
     "react": "16.3.1",
     "react-native": "0.55.3",
     "react-native-elements": "1.0.0-beta2",
@@ -35,8 +35,8 @@
     "redux-persist": "5.9.1",
     "redux-persist-filesystem-storage": "1.2.0",
     "redux-thunk": "2.2.0",
-    "simple-markdown": "0.3.3",
-    "yarn": "1.5.1"
+    "simple-markdown": "0.4.1",
+    "yarn": "1.7.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.2",

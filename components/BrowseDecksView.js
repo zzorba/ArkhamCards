@@ -6,30 +6,20 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
+import FetchCardsGate from './FetchCardsGate';
 import { iconsMap } from '../app/NavIcons';
-import * as Actions from '../actions';
-import { syncCards } from '../lib/api';
 import DeckListComponent from './DeckListComponent';
 
-class BrowseDecksView extends React.Component {
+export default class BrowseDecksView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    realm: PropTypes.object.isRequired,
-    loading: PropTypes.bool,
-    cardCount: PropTypes.number,
-    packs: PropTypes.array,
-    fetchPacks: PropTypes.func.isRequired,
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      loadingCards: false,
       deckIds: [
         5168,
         5167,
@@ -75,35 +65,6 @@ class BrowseDecksView extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const {
-      packs,
-      fetchPacks,
-      cardCount,
-      realm,
-    } = this.props;
-    if (cardCount === 0) {
-      setTimeout(() => this.setState({
-        loadingCards: true,
-      }), 0);
-      syncCards(realm).then(() => {
-        this.setState({
-          loadingCards: false,
-        });
-      }).catch(err => {
-        this.setState({
-          loadingCards: false,
-          error: err.message || err,
-        });
-      });
-    }
-
-    if (packs.length === 0) {
-      fetchPacks();
-    }
-  }
-
-
   deckNavClicked(id) {
     this.props.navigator.push({
       screen: 'Deck',
@@ -118,69 +79,23 @@ class BrowseDecksView extends React.Component {
 
   render() {
     const {
-      loading,
       navigator,
     } = this.props;
     const {
-      loadingCards,
       deckIds,
     } = this.state;
-    if (loading) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <ActivityIndicator
-            style={[{ height: 80 }]}
-            size="small"
-            animating
-          />
-        </View>
-      );
-    }
-    if (loadingCards) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <Text>Loading latest cards...</Text>
-          <ActivityIndicator
-            style={[{ height: 80 }]}
-            size="small"
-            animating
-          />
-        </View>
-      );
-    }
+
     return (
-      <DeckListComponent
-        navigator={navigator}
-        deckIds={deckIds}
-        deckClicked={this._deckNavClicked}
-      />
+      <FetchCardsGate navigator={navigator}>
+        <DeckListComponent
+          navigator={navigator}
+          deckIds={deckIds}
+          deckClicked={this._deckNavClicked}
+        />
+      </FetchCardsGate>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    loading: state.packs.loading,
-    packs: state.packs.all,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(BrowseDecksView),
-  {
-    schemas: ['Card'],
-    mapToProps(results, realm) {
-      return {
-        realm,
-        cardCount: results.cards.length,
-      };
-    },
-  },
-);
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
