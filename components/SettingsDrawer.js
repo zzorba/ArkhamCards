@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { keys } from 'lodash';
 import {
   Button,
-  View,
+  SafeAreaView,
+  StyleSheet,
   Text,
+  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,7 +16,7 @@ import * as Actions from '../actions';
 import { syncCards } from '../lib/api';
 import { getAllDecks } from '../reducers';
 
-class Settings extends React.Component {
+class SettingsDrawer extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
     deckCount: PropTypes.number,
@@ -37,15 +39,20 @@ class Settings extends React.Component {
   }
 
   myCollectionPressed() {
-    this.props.navigator.push({
-      screen: 'CollectionEdit',
+    this.props.navigator.handleDeepLink({
+      link: '/collection',
+      payload: {
+        closeDrawer: true,
+      },
     });
   }
 
   editSpoilersPressed() {
-    this.props.navigator.push({
-      screen: 'EditSpoilers',
-      title: 'Spoiler Settings',
+    this.props.navigator.handleDeepLink({
+      link: '/spoilers',
+      payload: {
+        closeDrawer: true,
+      },
     });
   }
 
@@ -58,6 +65,7 @@ class Settings extends React.Component {
     realm.write(() => {
       realm.delete(realm.objects('Card'));
     });
+    this.doSyncCards();
   }
 
   doSyncCards() {
@@ -74,15 +82,15 @@ class Settings extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>Settings</Text>
-        <Button onPress={this._myCollectionPressed} title="My Collection" />
-        <Button onPress={this._editSpoilersPressed} title="Edit Spoilers" />
-        <Text>We have { this.props.cardCount } cards in database</Text>
-        <Text>We have { this.props.deckCount } decks in database</Text>
-        <Button onPress={this._doSyncCards} title="Check for card updates" />
-        <Button onPress={this._clearCache} title="Clear cache" />
-      </View>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.list}>
+          <Text>Settings</Text>
+          <Button onPress={this._myCollectionPressed} title="Edit Collection" />
+          <Button onPress={this._editSpoilersPressed} title="Edit Spoilers" />
+          <Button onPress={this._doSyncCards} title="Check for card updates" />
+          <Button onPress={this._clearCache} title="Clear cache" />
+        </View>
+      </SafeAreaView>
     );
   }
 }
@@ -98,7 +106,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(Settings), {
+  connect(mapStateToProps, mapDispatchToProps)(SettingsDrawer), {
     schemas: ['Card'],
     mapToProps(results, realm) {
       return {
@@ -108,3 +116,13 @@ export default connectRealm(
       };
     },
   });
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    flex: 1,
+  },
+  list: {
+    padding: 8,
+  },
+});

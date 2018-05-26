@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CardSearchComponent from './CardSearchComponent';
+import FetchCardsGate from './FetchCardsGate';
 
 export default class CardSearchView extends React.Component {
   static propTypes = {
@@ -18,7 +19,9 @@ export default class CardSearchView extends React.Component {
     } = this.props;
 
     return (
-      <CardSearchComponent navigator={navigator} />
+      <FetchCardsGate>
+        <CardSearchComponent navigator={navigator} />
+      </FetchCardsGate>
     );
   }
 }

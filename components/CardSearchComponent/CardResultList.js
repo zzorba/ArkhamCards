@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { concat, map, partition } from 'lodash';
 import {
+  ActivityIndicator,
   Button,
   SectionList,
   StyleSheet,
@@ -249,12 +250,19 @@ class CardResultList extends React.Component {
       loading,
     } = this.state;
     if (loading) {
-      return null;
+      return (
+        <ActivityIndicator
+          style={[{ height: 80 }]}
+          size="small"
+          animating
+        />
+      );
     }
     return (
       <SectionList
         sections={this.getData()}
         renderSectionHeader={this._renderSectionHeader}
+        initialNumToRender={30}
         keyExtractor={this._cardToKey}
         renderItem={this._renderCard}
         extraData={this.state.deckCardCounts}

@@ -20,7 +20,7 @@ import DeckChartsView from '../components/DeckChartsView';
 import CardFilterView from '../components/CardFilterView';
 import BrowseDecksView from '../components/BrowseDecksView';
 import WebViewWrapper from '../components/WebViewWrapper';
-import SettingsTab from '../components/SettingsTab';
+import SettingsDrawer from '../components/SettingsDrawer';
 import PackCardsView from '../components/PackCardsView';
 import SpoilersView from '../components/SpoilersView';
 import CollectionEditView from '../components/CollectionEditView';
@@ -48,7 +48,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Campaign', () => CampaignDetailView, store, Provider);
   Navigation.registerComponent('Campaign.New', () => NewCampaignView, store, Provider);
   Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
-  Navigation.registerComponent('Settings', () => SettingsTab, store, Provider);
+  Navigation.registerComponent('Settings', () => SettingsDrawer, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
   Navigation.registerComponent('SearchFilters.Chooser', () => SearchMultiSelect, store, Provider);
   Navigation.registerComponent('CollectionEdit', () => CollectionEditView, store, Provider);

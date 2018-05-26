@@ -17,6 +17,7 @@ const icons = {
   'arrow-left': [30, COLORS.button, MaterialCommunityIcons],
   'chevron-left': [30, COLORS.button, MaterialCommunityIcons],
   'sort-by-alpha': [28, COLORS.button],
+  settings: [28, COLORS.button, MaterialCommunityIcons],
   add: [28, COLORS.button],
 };
 

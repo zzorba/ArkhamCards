@@ -24,6 +24,13 @@ export default class App {
         screen: 'Home',
         title: 'Home',
       },
+      drawer: {
+        right: {
+          screen: 'Settings',
+        },
+        left: null,
+        disableOpenGesture: true,
+      },
     });
   }
 }
