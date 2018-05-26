@@ -150,6 +150,9 @@ export default class EncounterIcon extends React.PureComponent {
       case 'tof': // THREADS OF FATE
       case 'tbb': // THE BOUNDARY BEYOND
       case 'hote': // HEART OF THE ELDERS
+      case 'tcoa': // THE CITY OF ARCHIVES
+      case 'tdoy': // THE DEPTHS OF YOTH
+      case 'sha': // SHATTERED AEONS
         return this.forgottenIcon('the_forgotten_age', size, color);
       case 'wilds':
         return this.forgottenIcon('the_untamed_wilds', size, color);
