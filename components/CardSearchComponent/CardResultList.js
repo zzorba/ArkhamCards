@@ -67,7 +67,8 @@ class CardResultList extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.query !== this.props.query ||
         nextProps.sort !== this.props.sort ||
-        nextProps.searchTerm !== this.props.searchTerm) {
+        nextProps.searchTerm !== this.props.searchTerm ||
+        nextProps.show_spoilers !== this.props.show_spoilers) {
       this.setState({
         loading: true,
       });
@@ -120,7 +121,7 @@ class CardResultList extends React.Component {
         }
         return `Cost: ${card.cost}`;
       case SORT_BY_PACK:
-        return card.pack_code;
+        return card.pack_name;
       case SORT_BY_TITLE:
         return 'All Cards';
     }
@@ -176,6 +177,7 @@ class CardResultList extends React.Component {
         id: card.code,
         pack_code: card.pack_code,
         showSpoilers: true,
+        backButtonTitle: 'Back',
       },
     });
   }
@@ -227,6 +229,10 @@ class CardResultList extends React.Component {
 
     return (
       <View style={styles.footer}>
+        <Button
+          onPress={this._editSpoilerSettings}
+          title="Edit Spoiler Settings"
+        />
         <Button onPress={this._enableSpoilers} title={spoilerCount} />
       </View>
     );

@@ -7,6 +7,7 @@ import FetchCardsGate from './FetchCardsGate';
 export default class CardSearchView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    baseQuery: PropTypes.string,
   };
 
   constructor(props) {
@@ -16,11 +17,12 @@ export default class CardSearchView extends React.Component {
   render() {
     const {
       navigator,
+      baseQuery,
     } = this.props;
 
     return (
       <FetchCardsGate>
-        <CardSearchComponent navigator={navigator} />
+        <CardSearchComponent navigator={navigator} baseQuery={baseQuery} />
       </FetchCardsGate>
     );
   }

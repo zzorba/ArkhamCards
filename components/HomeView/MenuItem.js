@@ -6,13 +6,17 @@ import {
   View,
   Text,
 } from 'react-native';
+
 import { COLORS } from '../../styles/colors';
+import ArkhamIcon from '../../assets/ArkhamIcon';
 
 export default class MenuItem extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     text: PropTypes.string.isRequired,
     screen: PropTypes.string.isRequired,
+    icon: PropTypes.string,
+    passProps: PropTypes.object,
   };
 
   constructor(props) {
@@ -26,24 +30,29 @@ export default class MenuItem extends React.Component {
       text,
       navigator,
       screen,
+      passProps,
     } = this.props;
 
     navigator.push({
       screen,
       title: text,
-      navigatorStyle: {
-        tabBarHidden: true,
-      },
+      passProps,
     });
   }
 
   render() {
     const {
       text,
+      icon,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.row}>
+          { !!icon && (
+            <View style={styles.icon}>
+              <ArkhamIcon name={icon} size={18} color="#000000" />
+            </View>
+          ) }
           <Text style={styles.text}>
             { text }
           </Text>
@@ -61,6 +70,11 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     borderBottomWidth: 1,
     borderColor: COLORS.gray,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    marginRight: 8,
   },
   text: {
     fontFamily: 'System',

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import FetchCardsGate from '../FetchCardsGate';
 import FullMenu from './FullMenu';
+import CardMenu from './CardMenu';
 import { iconsMap } from '../../app/NavIcons';
+
+const CARD_MODE = true;
 
 export default class HomeView extends React.Component {
   static propTypes = {
@@ -80,7 +83,11 @@ export default class HomeView extends React.Component {
     } = this.props;
     return (
       <FetchCardsGate>
-        <FullMenu navigator={navigator} />
+        { CARD_MODE ?
+          <CardMenu navigator={navigator} />
+          :
+          <FullMenu navigator={navigator} />
+        }
       </FetchCardsGate>
     );
   }

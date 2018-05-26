@@ -456,11 +456,11 @@ class CardDetailView extends React.PureComponent {
                     </View>
                   ) }
                 </View>
-                { !!card.text && (
+                { !!card.real_text && (
                   <View style={[styles.gameTextBlock, {
                     borderColor: FACTION_COLORS[card.faction_code] || '#000000',
                   }]}>
-                    <CardTextComponent text={card.text} />
+                    <CardTextComponent text={card.real_text} />
                   </View>)
                 }
                 { ('victory' in card && card.victory !== null) &&

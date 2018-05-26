@@ -247,7 +247,9 @@ class CardFilterView extends React.Component {
             />
           ) }
         </View>
-        <Text>{ this.cardCount() } Cards Matched</Text>
+        <Text style={styles.matchText}>
+          { this.cardCount() } Cards Matched
+        </Text>
       </View>
     );
   }
@@ -266,5 +268,10 @@ const styles = StyleSheet.create({
   chooserStack: {
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
+  },
+  matchText: {
+    fontSize: 18,
+    fontFamily: 'System',
+    padding: 8,
   },
 });

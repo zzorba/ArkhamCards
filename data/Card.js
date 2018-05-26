@@ -181,6 +181,7 @@ export default class Card {
 
     const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json));
     const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json));
+    const spoiler = !!json.spoiler || (linked_card && linked_card.spoiler);
     return Object.assign(
       {},
       json,
@@ -188,7 +189,7 @@ export default class Card {
         deck_requirements,
         deck_options,
         linked_card,
-        spoiler: !!json.spoiler,
+        spoiler,
         traits_normalized,
         uses,
         has_restrictions: !!restrictions,

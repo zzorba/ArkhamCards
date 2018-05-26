@@ -47,6 +47,10 @@ export default class FactionChooser extends React.Component {
       selection,
     } = this.props;
 
+    if (factions.length <= 1) {
+      return null;
+    }
+
     const selectedIndexes = [];
     const buttons = map(factions, (faction, idx) => {
       const selected = selection.indexOf(faction) !== -1;
