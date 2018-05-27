@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -27,8 +28,8 @@ class SpoilersView extends React.Component {
 
   renderHeader() {
     return (
-      <View>
-        <Text>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>
           Mark the scenarios you've played through to make the results start
           showing up in search results.
         </Text>
@@ -74,3 +75,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpoilersView);
+
+const styles = StyleSheet.create({
+  header: {
+    padding: 8,
+  },
+  headerText: {
+    fontFamily: 'System',
+    fontSize: 14,
+  },
+});
