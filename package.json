@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@redux-offline/redux-offline": "2.3.3",
-    "appcenter": "^1.4.0",
-    "appcenter-analytics": "^1.4.0",
-    "appcenter-crashes": "^1.4.0",
+    "appcenter": "1.5.1",
+    "appcenter-analytics": "1.5.1",
+    "appcenter-crashes": "1.5.1",
     "lodash": "4.17.10",
     "react": "16.3.1",
     "react-native": "0.55.3",
