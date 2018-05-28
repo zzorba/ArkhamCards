@@ -115,6 +115,15 @@ export default class CardText extends React.PureComponent {
             iTag: ItalicHtmlTagRule,
           }, onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })
         }
+        styles={{
+          list: {
+            marginLeft: 4,
+          },
+          listItemBullet: {
+            minWidth: 12,
+            marginRight: 4,
+          },
+        }}
         onLinkPress={onLinkPress}
       >
         { this.props.text }
