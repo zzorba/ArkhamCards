@@ -73,13 +73,13 @@ class InvestigatorsListComponent extends React.Component {
           </Text>
         </View>
         { map(myInvestigators, card => this.renderItem(card)) }
+        <View style={styles.editCollectionButton}>
+          <Button onPress={this._editCollection} text="Manage Collection" />
+        </View>
         <View style={styles.headerRow}>
           <Text style={styles.header}>
             Other Investigators
           </Text>
-          <View style={styles.editCollectionButton}>
-            <Button onPress={this._editCollection} text="Edit Collection" />
-          </View>
         </View>
         { map(otherInvestigators, card => this.renderItem(card)) }
       </ScrollView>
@@ -142,6 +142,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   editCollectionButton: {
-    marginRight: 10,
+    marginTop: 8,
+    marginBottom: 8,
   },
 });
