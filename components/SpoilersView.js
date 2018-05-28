@@ -17,13 +17,34 @@ class SpoilersView extends React.Component {
     navigator: PropTypes.object,
     packs: PropTypes.array,
     show_spoilers: PropTypes.object,
-    setPackSpoiler: PropTypes.func.isRequired,
+    setAllPackSpoilers: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
+    this.state = {
+      spoilers: Object.assign({}, props.show_spoilers),
+    };
+
     this._renderHeader = this.renderHeader.bind(this);
+    this._setPackSpoiler = this.setPackSpoiler.bind(this);
+  }
+
+  setPackSpoiler(pack, value) {
+    const newSpoilers = Object.assign({}, this.state.spoilers);
+    if (value) {
+      newSpoilers[pack] = true;
+    } else {
+      delete newSpoilers[pack];
+    }
+    this.setState({
+      spoilers: newSpoilers,
+    });
+  }
+
+  componentWillUnmount() {
+    this.props.setAllPackSpoilers(this.state.spoilers);
   }
 
   renderHeader() {
@@ -41,8 +62,6 @@ class SpoilersView extends React.Component {
     const {
       navigator,
       packs,
-      show_spoilers,
-      setPackSpoiler,
     } = this.props;
     if (!packs.length) {
       return (
@@ -56,8 +75,8 @@ class SpoilersView extends React.Component {
         navigator={navigator}
         packs={packs}
         renderHeader={this._renderHeader}
-        checkState={show_spoilers}
-        setChecked={setPackSpoiler}
+        checkState={this.state.spoilers}
+        setChecked={this._setPackSpoiler}
       />
     );
   }

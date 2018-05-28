@@ -4,6 +4,7 @@ export const CLEAR_DECKS = 'CLEAR_DECKS';
 export const NEW_DECK = 'NEW_DECK';
 export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
+export const SET_ALL_PACK_SPOILERS = 'SET_ALL_PACK_SPOILERS';
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
@@ -72,6 +73,13 @@ export function setPackSpoiler(code, value) {
     type: SET_PACK_SPOILER,
     code,
     value,
+  };
+}
+
+export function setAllPackSpoilers(spoilers) {
+  return {
+    type: SET_ALL_PACK_SPOILERS,
+    spoilers,
   };
 }
 

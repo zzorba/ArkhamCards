@@ -7,6 +7,7 @@ import {
   DECK_AVAILABLE,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
+  SET_ALL_PACK_SPOILERS,
   NEW_CAMPAIGN,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
@@ -38,6 +39,13 @@ const packs = (state = DEFAULT_PACKS_STATE, action) => {
       state,
       {
         in_collection: new_collection,
+      },
+    );
+  } else if (action.type == SET_ALL_PACK_SPOILERS) {
+    return Object.assign({},
+      state,
+      {
+        show_spoilers: Object.assign({}, action.spoilers),
       },
     );
   } else if (action.type === SET_PACK_SPOILER) {
