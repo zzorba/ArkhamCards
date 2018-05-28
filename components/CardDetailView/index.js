@@ -29,6 +29,7 @@ import FlippableCard from '../core/FlippableCard';
 import FaqComponent from './FaqComponent';
 import { getShowSpoilers } from '../../reducers';
 import FlavorTextComponent from './FlavorTextComponent';
+import SignatureCardsComponent from './SignatureCardsComponent';
 
 const BLURRED_ACT = require('../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../assets/blur-agenda.jpeg');
@@ -397,16 +398,20 @@ class CardDetailView extends React.PureComponent {
 
   renderInvestigatorCardsLink() {
     const {
+      navigator,
       card,
     } = this.props;
     if (card.type_code !== 'investigator') {
       return null;
     }
     return (
-      <Button
-        onPress={this._showInvestigatorCards}
-        text="Browse Eligible Cards"
-      />
+      <View>
+        <SignatureCardsComponent navigator={navigator} investigator={card} />
+        <Button
+          onPress={this._showInvestigatorCards}
+          text="Browse Eligible Cards"
+        />
+      </View>
     );
   }
 

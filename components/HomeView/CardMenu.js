@@ -26,7 +26,7 @@ export default function CardMenu({ navigator }) {
         screen="Browse.Cards"
         icon="elder_sign"
         passProps={{
-          baseQuery: 'type_code != \'investigator\' && spoiler != true && type_code != \'story\''
+          baseQuery: 'type_code != \'investigator\' && spoiler != true && type_code != \'story\'',
         }}
       />
       <MenuItem
@@ -35,7 +35,7 @@ export default function CardMenu({ navigator }) {
         screen="Browse.Cards"
         icon="auto_fail"
         passProps={{
-          baseQuery: 'spoiler == true'
+          baseQuery: 'spoiler == true',
         }}
       />
     </ScrollView>
