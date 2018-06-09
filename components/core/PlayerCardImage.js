@@ -4,6 +4,7 @@ import {
   Dimensions,
   Image,
   Platform,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -59,18 +60,20 @@ export default class PlayerCardImage extends React.Component {
     } = this.state;
 
     return (
-      <View style={styles.buttonRow}>
-        <TouchableOpacity onPress={close}>
-          <MaterialCommunityIcons name="close" size={32} color="#888" />
-        </TouchableOpacity>
-        { !!card.double_sided && !!card.backimagesrc &&
-          <Button
-            style={{ marginRight: 4 }}
-            onPress={this._flip}
-            text={flipped ? 'Show Back' : 'Show Front'}
-          />
-        }
-      </View>
+      <SafeAreaView>
+        <View style={styles.buttonRow}>
+          <TouchableOpacity onPress={close}>
+            <MaterialCommunityIcons name="close" size={32} color="#888" />
+          </TouchableOpacity>
+          { !!card.double_sided && !!card.backimagesrc &&
+            <Button
+              style={{ marginRight: 4 }}
+              onPress={this._flip}
+              text={flipped ? 'Show Back' : 'Show Front'}
+            />
+          }
+        </View>
+      </SafeAreaView>
     );
   }
 

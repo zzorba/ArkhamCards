@@ -183,15 +183,6 @@ class CardFilterView extends React.Component {
           onChange={this._onFactionChange}
         />
         <View style={styles.chooserStack}>
-          { (types.length > 0 || allTypes.length > 0) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Types"
-              values={allTypes}
-              selection={types}
-              onChange={this._onTypeChange}
-            />
-          ) }
           { (traits.length > 0 || allTraits.length > 0) && (
             <ChooserButton
               title="Traits"
@@ -199,6 +190,15 @@ class CardFilterView extends React.Component {
               values={allTraits}
               selection={traits}
               onChange={this._onTraitChange}
+            />
+          ) }
+          { (types.length > 0 || allTypes.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Types"
+              values={allTypes}
+              selection={types}
+              onChange={this._onTypeChange}
             />
           ) }
           { (subTypes.length > 0 || allSubTypes.length > 0) && (
