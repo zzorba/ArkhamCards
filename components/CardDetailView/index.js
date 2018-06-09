@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { head, flatMap, map, range } from 'lodash';
 import {
   Image,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -19,6 +20,7 @@ import {
   SKILLS,
   SKILL_COLORS,
 } from '../../constants';
+import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import PlayerCardImage from '../core/PlayerCardImage';
 import AppIcon from '../../assets/AppIcon';
@@ -61,15 +63,43 @@ class CardDetailView extends React.PureComponent {
       },
     };
 
-    if (props.card && !props.linked) {
-      props.navigator.setTitle({
-        title: `${props.card.is_unique ? '*' : ''}${props.card.name}`,
-      });
-    }
-
     this._onCardViewLayout = this.onCardViewLayout.bind(this);
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
     this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
+
+    const backButton = Platform.OS === 'ios' ? {
+      id: 'back',
+    } : {
+      id: 'back',
+      icon: iconsMap['arrow-left'],
+    };
+    const defaultButton = Platform.OS === 'ios' ? [] : null;
+    props.navigator.setButtons({
+      leftButtons: [
+        backButton,
+      ],
+      rightButtons: [
+        {
+          icon: iconsMap.deck,
+          id: 'deck',
+        },
+      ],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+
+  onNavigatorEvent(event) {
+    const {
+      navigator,
+    } = this.props;
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'deck') {
+        this.showInvestigatorCards();
+      } else if (event.id === 'back') {
+        navigator.pop();
+      }
+    }
   }
 
   showInvestigatorCards() {
@@ -123,14 +153,6 @@ class CardDetailView extends React.PureComponent {
   renderMetadata(card) {
     return (
       <View style={styles.metadataBlock}>
-        { card.type_code !== 'scenario' && card.type_code !== 'location' &&
-          card.type_code !== 'act' && card.type_code !== 'agenda' && (
-          <Text>
-            { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-              <ArkhamIcon name={card.faction_code} size={18} color="#000000" /> }
-            { card.faction_name }
-          </Text>
-        ) }
         { !!(card.subtype_name || card.type_name) && (
           <Text style={styles.typeText}>
             { card.subtype_name ?
@@ -246,16 +268,25 @@ class CardDetailView extends React.PureComponent {
         backgroundColor: blur ? '#000000' : (factionColor || '#FFFFFF'),
         borderColor: factionColor || '#000000',
       }]}>
-        <Text style={[styles.cardTitleText, {
-          color: factionColor ? '#FFFFFF' : '#000000',
-        }]}>
-          { `${card.is_unique ? '* ' : ''}${name}` }
-        </Text>
-        { !!subname && (
-          <Text style={[styles.cardTitleSubtitle, {
+        <View style={styles.column}>
+          <Text style={[styles.cardTitleText, {
             color: factionColor ? '#FFFFFF' : '#000000',
           }]}>
-            { subname }
+            { `${name}${card.is_unique ? ' ✷' : ''}` }
+          </Text>
+          { !!subname && (
+            <Text style={[styles.cardTitleSubtitle, {
+              color: factionColor ? '#FFFFFF' : '#000000',
+            }]}>
+              { subname }
+            </Text>
+          ) }
+        </View>
+        { card.type_code !== 'scenario' && card.type_code !== 'location' &&
+          card.type_code !== 'act' && card.type_code !== 'agenda' && (
+          <Text style={styles.factionIcon}>
+            { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
+              <ArkhamIcon name={card.faction_code} size={28} color="#FFFFFF" /> }
           </Text>
         ) }
       </View>
@@ -404,7 +435,7 @@ class CardDetailView extends React.PureComponent {
         <SignatureCardsComponent navigator={navigator} investigator={card} />
         <Button
           onPress={this._showInvestigatorCards}
-          text="Browse Eligible Cards"
+          text="Deckbuilding"
         />
       </View>
     );
@@ -585,16 +616,20 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   cardTitle: {
+    paddingRight: 8,
     paddingTop: 4,
     paddingBottom: 4,
     borderBottomWidth: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   cardTitleText: {
-    marginLeft: 4,
+    marginLeft: 8,
     fontSize: 18,
   },
   cardTitleSubtitle: {
-    marginLeft: 15,
+    marginLeft: 8,
     fontSize: 11,
   },
   gameTextBlock: {

@@ -11,6 +11,7 @@ const icons = {
   elder_sign: [30, COLORS.button, ArkhamIcon],
   intellect: [26, COLORS.button, ArkhamIcon],
   per_investigator: [24, COLORS.button, ArkhamIcon],
+  deck: [28, COLORS.button, ArkhamIcon],
   edit: [26, COLORS.button],
   tune: [28, COLORS.button],
   delete: [30, COLORS.button, MaterialCommunityIcons],

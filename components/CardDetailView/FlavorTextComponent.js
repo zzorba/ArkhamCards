@@ -57,8 +57,8 @@ export default class FlavorTextComponent extends React.PureComponent {
         onLinkPress={onLinkPress}
         styles={{
           paragraph: {
-            fontSize: 11,
-            fontWeight: '600',
+            fontSize: 14,
+            fontWeight: '100',
             fontStyle: 'italic',
           },
         }}

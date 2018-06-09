@@ -102,18 +102,22 @@ class FaqComponent extends React.Component {
           <Text style={styles.title}>FAQ</Text>
           { !!faqError && <Text>{ faqError }</Text> }
           <Text>Last Updated: { date }</Text>
-          { faqEntry.text ?
-            <CardTextComponent
-              text={faqEntry.text}
-              onLinkPress={this._linkPressed}
-            />
-            :
-            <Text>No entries at this time.</Text>
-          }
+          <View>
+            { faqEntry.text ?
+              <CardTextComponent
+                text={faqEntry.text}
+                onLinkPress={this._linkPressed}
+              />
+              :
+              <Text>No entries at this time.</Text>
+            }
+          </View>
           { faqLoading ?
             <View style={styles.bar}><Bar indeterminate /></View>
             :
-            <Button onPress={this._loadFaq} text="Check for FAQ Updates" />
+            <View style={styles.buttonContainer}>
+              <Button onPress={this._loadFaq} text="Check for FAQ Updates" />
+            </View>
           }
         </View>
       );
@@ -121,6 +125,7 @@ class FaqComponent extends React.Component {
     if (faqLoading) {
       return (
         <View style={styles.container}>
+          <Text style={styles.title}>FAQ</Text>
           <View style={styles.bar}><Bar indeterminate /></View>
         </View>
       );
@@ -128,8 +133,11 @@ class FaqComponent extends React.Component {
 
     return (
       <View style={styles.container}>
+        <Text style={styles.title}>FAQ</Text>
         { !!faqError && <Text>{ faqError }</Text> }
-        <Button onPress={this._loadFaq} text="Check for FAQ Entries" />
+        <View style={styles.buttonContainer}>
+          <Button onPress={this._loadFaq} text="Check for FAQ Entries" />
+        </View>
       </View>
     );
   }
@@ -157,5 +165,11 @@ const styles = StyleSheet.create({
   bar: {
     marginTop: 4,
     marginBottom: 4,
+  },
+  buttonContainer: {
+    marginTop: 4,
+    marginBottom: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
 });
