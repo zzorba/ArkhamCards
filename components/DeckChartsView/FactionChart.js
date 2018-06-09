@@ -4,8 +4,7 @@ import { View, Text } from 'react-native';
 
 
 import { DeckType } from '../DeckDetailView/parseDeck';
-import { FACTION_COLORS } from '../../styles/colors';
-import { FACTION_CODES } from '../../constants';
+import { FACTION_CODES, FACTION_COLORS } from '../../constants';
 
 export default class FactionChart extends React.PureComponent {
   static propTypes = {
