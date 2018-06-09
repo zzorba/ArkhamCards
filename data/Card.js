@@ -154,7 +154,7 @@ export default class Card {
     }
   }
 
-  static fromJson(json) {
+  static fromJson(json, packsByCode) {
     const deck_requirements = json.deck_requirements ?
       Card.parseDeckRequirements(json.deck_requirements) :
       null;
@@ -162,7 +162,9 @@ export default class Card {
       Card.parseDeckOptions(json.deck_options) :
       [];
 
-    const linked_card = json.linked_card ? Card.fromJson(json.linked_card) : null;
+    const linked_card = json.linked_card ?
+      Card.fromJson(json.linked_card, packsByCode) :
+      null;
 
     const traits_normalized = json.traits ? map(
       filter(
@@ -181,6 +183,8 @@ export default class Card {
 
     const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json));
     const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json));
+    const pack = packsByCode[json.pack_code] || null;
+    const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const spoiler = !!json.spoiler || (linked_card && linked_card.spoiler);
     return Object.assign(
       {},
@@ -197,6 +201,7 @@ export default class Card {
         heals_horror,
         sort_by_type,
         sort_by_faction,
+        sort_by_pack,
       },
     );
   }
@@ -280,5 +285,6 @@ Card.schema = {
     heals_horror: 'bool?',
     sort_by_type: 'int',
     sort_by_faction: 'int',
+    sort_by_pack: 'int',
   },
 };

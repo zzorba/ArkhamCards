@@ -119,7 +119,7 @@ class FetchCardsGate extends React.Component {
         [
           { text: 'Ask me later', onPress: this._ignoreUpdate },
           { text: 'OK', onPress: this._doFetch },
-        ]
+        ],
       );
     }
   }

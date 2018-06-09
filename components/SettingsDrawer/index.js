@@ -18,6 +18,7 @@ import DrawerItem from './DrawerItem';
 class SettingsDrawer extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
+    packs: PropTypes.array.isRequired,
     navigator: PropTypes.object.isRequired,
     clearDecks: PropTypes.func.isRequired,
   };
@@ -60,9 +61,10 @@ class SettingsDrawer extends React.Component {
   doSyncCards() {
     const {
       realm,
+      packs,
     } = this.props;
 
-    syncCards(realm).catch(err => {
+    syncCards(realm, packs).catch(err => {
       this.setState({
         error: err.message || err,
       });
@@ -87,6 +89,7 @@ class SettingsDrawer extends React.Component {
 function mapStateToProps(state) {
   return {
     deckCount: keys(getAllDecks(state)).length,
+    packs: state.packs.all,
   };
 }
 

@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
   Text,
 } from 'react-native';
 
-export default function AboutView({ navigator }) {
+export default function AboutView() {
   return (
     <View style={styles.container}>
       <Text>
@@ -22,10 +21,6 @@ export default function AboutView({ navigator }) {
     </View>
   );
 }
-
-AboutView.propTypes = {
-  navigator: PropTypes.object.isRequired,
-};
 
 const styles = StyleSheet.create({
   container: {

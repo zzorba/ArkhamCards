@@ -103,7 +103,7 @@ class CardResultList extends React.Component {
       case SORT_BY_COST:
         return [['cost', false], ['name', false]];
       case SORT_BY_PACK:
-        return [['pack_code', false], ['name', false]];
+        return [['sort_by_pack', false], ['position', false]];
       case SORT_BY_TITLE:
         return [['name', false]];
     }
