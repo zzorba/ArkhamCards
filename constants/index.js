@@ -47,7 +47,7 @@ export const FACTION_COLORS = {
   guardian: '#2b80c5',
   rogue: '#107116',
   survivor: '#cc3038',
-  neutral: '#808080',
+  neutral: '#222222',
 };
 
 export const DIFFICULTY = {

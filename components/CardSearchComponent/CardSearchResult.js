@@ -14,7 +14,9 @@ import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { COLORS } from '../../styles/colors';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 
-const FACTION_ICONS = createFactionIcons(18);
+const ROW_HEIGHT = 44;
+const ICON_SIZE = 28;
+const FACTION_ICONS = createFactionIcons(ICON_SIZE);
 
 export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
@@ -53,14 +55,14 @@ export default class CardSearchResult extends React.PureComponent {
       (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
     ) {
       return (
-        <ArkhamIcon name="weakness" size={18} color={FACTION_COLORS.neutral} />
+        <ArkhamIcon name="weakness" size={ICON_SIZE} color={FACTION_COLORS.neutral} />
       );
     }
     if (card.spoiler) {
       return (
         <EncounterIcon
           encounter_code={card.encounter_code}
-          size={18}
+          size={ICON_SIZE}
           color="#000000"
         />
       );
@@ -71,7 +73,7 @@ export default class CardSearchResult extends React.PureComponent {
       return (
         <EncounterIcon
           encounter_code={card.pack_code}
-          size={18}
+          size={ICON_SIZE}
           color="#000000"
         />
       );
@@ -130,55 +132,60 @@ export default class CardSearchResult extends React.PureComponent {
     const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
     return (
       <View style={styles.stack}>
-        <View style={styles.row}>
-          <TouchableOpacity onPress={this._onPress}>
-            <View style={styles.cardTextRow}>
-              { !!onDeckCountChange && (count > 0) && (
-                <Text style={styles.cardCount}>
-                  { `${count}x` }
-                </Text>
-              ) }
-              <View style={styles.cardIcon}>
-                { this.renderFactionIcon(card) }
-              </View>
-              { card.subname ? (
-                <View style={styles.cardNameBlock}>
+        <TouchableOpacity onPress={this._onPress} style={[styles.row, styles.fullHeight]}>
+          <View style={styles.cardTextRow}>
+            { !!onDeckCountChange && (count > 0) && (
+              <Text style={styles.cardCount}>
+                { `${count}x` }
+              </Text>
+            ) }
+            <View style={styles.cardIcon}>
+              { this.renderFactionIcon(card) }
+            </View>
+            { card.subname ? (
+              <View style={styles.cardNameBlock}>
+                <View style={styles.row}>
                   <Text style={[
                     styles.cardName,
                     { color: FACTION_COLORS[card.faction_code] },
                   ]}>
                     { card.name }
                   </Text>
-                  <Text style={[
-                    styles.cardSubName,
-                    { color: FACTION_COLORS[card.faction_code] },
-                  ]}>
-                    { card.subname }
+                  <Text style={[styles.cardName, styles.xp]}>
+                    { xpStr }
                   </Text>
                 </View>
+                <Text style={[
+                  styles.cardSubName,
+                  { color: FACTION_COLORS[card.faction_code] },
+                ]}>
+                  { card.subname }
+                </Text>
+              </View>
 
-              ) : (
+            ) : (
+              <View style={styles.row}>
                 <Text style={[
                   styles.cardNameOnly,
                   { color: FACTION_COLORS[card.faction_code] },
                 ]}>
                   { card.name }
                 </Text>
-              ) }
-              <Text style={styles.cardName}>
-                { xpStr }
-              </Text>
-            </View>
-          </TouchableOpacity>
-          { !!onDeckCountChange && (
-            <PlusMinusButtons
-              style={styles.buttonContainer}
-              count={count || 0}
-              limit={limit !== null ? limit : card.deck_limit}
-              onChange={this._onDeckCountChange}
-            />
-          ) }
-        </View>
+                <Text style={[styles.cardName, styles.xp]}>
+                  { xpStr }
+                </Text>
+              </View>
+            ) }
+          </View>
+        { !!onDeckCountChange && (
+          <PlusMinusButtons
+            style={styles.buttonContainer}
+            count={count || 0}
+            limit={limit !== null ? limit : card.deck_limit}
+            onChange={this._onDeckCountChange}
+          />
+        ) }
+        </TouchableOpacity>
       </View>
     );
   }
@@ -196,15 +203,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  fullHeight: {
+    height: ROW_HEIGHT,
     width: '100%',
-    height: 40,
   },
   skillIcons: {
     flex: 1,
     flexDirection: 'row',
   },
   cardIcon: {
-    width: 22,
+    width: ROW_HEIGHT,
     height: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -214,11 +223,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     paddingLeft: 8,
+    alignItems: 'center',
   },
   cardCount: {
     fontFamily: 'System',
     fontSize: 18,
-    lineHeight: 40,
+    lineHeight: ROW_HEIGHT,
     fontWeight: '600',
     marginRight: 4,
   },
@@ -226,7 +236,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     fontFamily: 'System',
     fontSize: 18,
-    lineHeight: 40,
+    lineHeight: ROW_HEIGHT,
   },
   cardNameBlock: {
     marginLeft: 4,
@@ -235,6 +245,9 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 18,
     lineHeight: 22,
+  },
+  xp: {
+    marginLeft: 4,
   },
   cardSubName: {
     fontFamily: 'System',

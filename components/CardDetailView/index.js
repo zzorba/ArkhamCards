@@ -65,11 +65,6 @@ class CardDetailView extends React.PureComponent {
       props.navigator.setTitle({
         title: `${props.card.is_unique ? '*' : ''}${props.card.name}`,
       });
-      if (props.card.subname) {
-        props.navigator.setSubTitle({
-          subtitle: props.card.subname,
-        });
-      }
     }
 
     this._onCardViewLayout = this.onCardViewLayout.bind(this);
