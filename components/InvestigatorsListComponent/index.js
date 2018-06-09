@@ -53,6 +53,22 @@ class InvestigatorsListComponent extends React.Component {
     );
   }
 
+  renderInvestigators(header, investigators) {
+    if (investigators.length === 0) {
+      return null;
+    }
+    return (
+      <View>
+        <View style={styles.headerRow}>
+          <Text style={styles.header}>
+            { header }
+          </Text>
+        </View>
+        { map(investigators, card => this.renderItem(card)) }
+      </View>
+    )
+  }
+
   render() {
     const {
       investigators,
@@ -67,21 +83,12 @@ class InvestigatorsListComponent extends React.Component {
 
     return (
       <ScrollView>
-        <View style={styles.headerRow}>
-          <Text style={styles.header}>
-            My Investigators
-          </Text>
-        </View>
-        { map(myInvestigators, card => this.renderItem(card)) }
+        { this.renderInvestigators('My Investigators', myInvestigators) }
         <View style={styles.editCollectionButton}>
           <Button onPress={this._editCollection} text="Manage Collection" />
         </View>
-        <View style={styles.headerRow}>
-          <Text style={styles.header}>
-            Other Investigators
-          </Text>
-        </View>
-        { map(otherInvestigators, card => this.renderItem(card)) }
+        { this.renderInvestigators('Other Investigators', otherInvestigators) }
+        <View style={styles.footer} />
       </ScrollView>
     );
   }
@@ -144,5 +151,8 @@ const styles = StyleSheet.create({
   editCollectionButton: {
     marginTop: 8,
     marginBottom: 8,
+  },
+  footer: {
+    height: 100,
   },
 });
