@@ -141,12 +141,30 @@ export default class CardSearchResult extends React.PureComponent {
               <View style={styles.cardIcon}>
                 { this.renderFactionIcon(card) }
               </View>
-              <Text style={[
-                styles.cardName,
-                { color: FACTION_COLORS[card.faction_code] },
-              ]}>
-                { card.name }
-              </Text>
+              { card.subname ? (
+                <View style={styles.cardNameBlock}>
+                  <Text style={[
+                    styles.cardName,
+                    { color: FACTION_COLORS[card.faction_code] },
+                  ]}>
+                    { card.name }
+                  </Text>
+                  <Text style={[
+                    styles.cardSubName,
+                    { color: FACTION_COLORS[card.faction_code] },
+                  ]}>
+                    { card.subname }
+                  </Text>
+                </View>
+
+              ) : (
+                <Text style={[
+                  styles.cardNameOnly,
+                  { color: FACTION_COLORS[card.faction_code] },
+                ]}>
+                  { card.name }
+                </Text>
+              ) }
               <Text style={styles.cardName}>
                 { xpStr }
               </Text>
@@ -204,11 +222,24 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginRight: 4,
   },
-  cardName: {
+  cardNameOnly: {
     marginLeft: 4,
     fontFamily: 'System',
     fontSize: 18,
     lineHeight: 40,
+  },
+  cardNameBlock: {
+    marginLeft: 4,
+  },
+  cardName: {
+    fontFamily: 'System',
+    fontSize: 18,
+    lineHeight: 22,
+  },
+  cardSubName: {
+    fontFamily: 'System',
+    fontSize: 12,
+    lineHeight: 18,
   },
   buttonContainer: {
     paddingTop: 2,

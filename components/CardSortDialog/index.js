@@ -8,6 +8,7 @@ import {
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
+  SORT_BY_ENCOUNTER_SET,
 } from './constants';
 
 const SORTS = [
@@ -16,6 +17,7 @@ const SORTS = [
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
+  SORT_BY_ENCOUNTER_SET,
 ];
 
 export default class CardSortDialog extends React.Component {

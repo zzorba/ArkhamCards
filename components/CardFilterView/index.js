@@ -222,7 +222,7 @@ class CardFilterView extends React.Component {
           { (packs.length > 0 || allPacks.length > 0) && (
             <ChooserButton
               navigator={navigator}
-              title="Sets"
+              title="Packs"
               values={allPacks}
               selection={packs}
               onChange={this._onPacksChange}

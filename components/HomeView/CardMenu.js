@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import MenuItem from './MenuItem';
+import { SORT_BY_ENCOUNTER_SET } from '../CardSortDialog/constants';
 
 export default function CardMenu({ navigator }) {
   return (
@@ -36,6 +37,7 @@ export default function CardMenu({ navigator }) {
         icon="auto_fail"
         passProps={{
           baseQuery: 'spoiler == true',
+          sort: SORT_BY_ENCOUNTER_SET,
         }}
       />
     </ScrollView>

@@ -494,7 +494,7 @@ class CardDetailView extends React.PureComponent {
                           size={12}
                           color="#000000"
                         />
-                        { `${card.encounter_name} #${card.encounter_position}.` }
+                        { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
                       </Text>
                     }
                   </View>

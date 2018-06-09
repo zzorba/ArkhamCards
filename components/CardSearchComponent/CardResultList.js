@@ -23,6 +23,7 @@ import {
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
+  SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
 
 class CardResultList extends React.Component {
@@ -106,6 +107,8 @@ class CardResultList extends React.Component {
         return [['sort_by_pack', false], ['position', false]];
       case SORT_BY_TITLE:
         return [['name', false]];
+      case SORT_BY_ENCOUNTER_SET:
+        return [['sort_by_pack', false], ['position', false]];
     }
   }
 
@@ -124,6 +127,8 @@ class CardResultList extends React.Component {
         return card.pack_name;
       case SORT_BY_TITLE:
         return 'All Cards';
+      case SORT_BY_ENCOUNTER_SET:
+        return card.encounter_name || 'N/A';
     }
   }
 

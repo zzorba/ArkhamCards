@@ -23,6 +23,7 @@ export default class CardSearchComponent extends React.Component {
     navigator: PropTypes.object.isRequired,
     // Function that takes 'realm' and gives back a base query.
     baseQuery: PropTypes.string,
+    sort: PropTypes.string,
 
     // Keyed by code, count of current deck.
     deckCardCounts: PropTypes.object,
@@ -44,7 +45,7 @@ export default class CardSearchComponent extends React.Component {
       width,
       height,
       searchTerm: '',
-      selectedSort: SORT_BY_TYPE,
+      selectedSort: props.sort || SORT_BY_TYPE,
       filters: DefaultFilterState,
     };
 
