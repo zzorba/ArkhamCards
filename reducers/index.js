@@ -4,6 +4,7 @@ import { find, flatMap, forEach, keys, last, sortBy, values } from 'lodash';
 import {
   CLEAR_DECKS,
   PACKS_AVAILABLE,
+  UPDATE_PROMPT_DISMISSED,
   DECK_AVAILABLE,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
@@ -15,18 +16,29 @@ import {
 
 const DEFAULT_PACKS_STATE = {
   all: [],
+  dateFetched: null,
+  dateUpdatePrompt: null,
   in_collection: {},
   show_spoilers: {},
   loading: true,
 };
 
 const packs = (state = DEFAULT_PACKS_STATE, action) => {
+  if (action.type === UPDATE_PROMPT_DISMISSED) {
+    return Object.assign({},
+      state,
+      {
+        dateUpdatePrompt: action.timestamp.getTime() / 1000,
+      });
+  }
   if (action.type === PACKS_AVAILABLE) {
     return Object.assign({},
       state,
       {
         all: action.packs,
         loading: false,
+        dateFetched: action.timestamp.getTime() / 1000,
+        dateUpdatePrompt: action.timestamp.getTime() / 1000,
       });
   } else if (action.type === SET_IN_COLLECTION) {
     const new_collection = Object.assign({}, state.in_collection);
@@ -41,7 +53,7 @@ const packs = (state = DEFAULT_PACKS_STATE, action) => {
         in_collection: new_collection,
       },
     );
-  } else if (action.type == SET_ALL_PACK_SPOILERS) {
+  } else if (action.type === SET_ALL_PACK_SPOILERS) {
     return Object.assign({},
       state,
       {
@@ -182,6 +194,10 @@ export function getCampaigns(state) {
 export function getShowSpoilers(state, packCode) {
   const show_spoilers = state.packs.show_spoilers || {};
   return !!show_spoilers[packCode];
+}
+
+export function getPackFetchDate(state) {
+  return state.pack.dateFetched;
 }
 
 export function getAllPacks(state) {

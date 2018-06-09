@@ -1,4 +1,5 @@
 export const PACKS_AVAILABLE = 'PACKS_AVAILABLE';
+export const UPDATE_PROMPT_DISMISSED = 'UPDATE_PROMPT_DISMISSED';
 export const DECK_AVAILABLE = 'DECK_AVAILABLE';
 export const CLEAR_DECKS = 'CLEAR_DECKS';
 export const NEW_DECK = 'NEW_DECK';
@@ -9,14 +10,30 @@ export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 
-export function fetchPacks() {
+export function dismissUpdatePrompt() {
+  return {
+    type: UPDATE_PROMPT_DISMISSED,
+    timestamp: new Date(),
+  };
+}
+
+export function fetchPacks(callback) {
   return (dispatch) => {
     fetch('https://arkhamdb.com/api/public/packs/', { method: 'GET' })
       .then(response => response.json())
-      .then(json => dispatch({
-        type: PACKS_AVAILABLE,
-        packs: json,
-      })).catch(err => console.log(err));
+      .then(
+        json => {
+          dispatch({
+            type: PACKS_AVAILABLE,
+            packs: json,
+            timestamp: new Date(),
+          });
+          callback && callback(json);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   };
 }
 
@@ -146,6 +163,7 @@ export function addScenarioResult(
 }
 
 export default {
+  dismissUpdatePrompt,
   fetchPacks,
   newDeck,
   fetchDeck,
