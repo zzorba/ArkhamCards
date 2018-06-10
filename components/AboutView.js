@@ -17,6 +17,10 @@ export default function AboutView() {
         { '\n\n' }
         Many thanks to arkhamdb.com for providing data and images, without which
         this project would not have been possible.
+        { '\n\n' }
+        Attribution:
+        { '\n' }
+        • 'deck of cards' icon by Daniel Solis from the Noun Project.
       </Text>
     </View>
   );

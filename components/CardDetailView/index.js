@@ -73,7 +73,6 @@ class CardDetailView extends React.PureComponent {
       id: 'back',
       icon: iconsMap['arrow-left'],
     };
-    const defaultButton = Platform.OS === 'ios' ? [] : null;
     props.navigator.setButtons({
       leftButtons: [
         backButton,
@@ -200,6 +199,19 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
+  renderSlot(card) {
+    if (!card.slot) {
+      return null;
+    }
+    return (
+      <View style={styles.slotBlock}>
+        <Text>
+          Slot: { card.slot }
+        </Text>
+      </View>
+    );
+  }
+
   renderPlaydata(card) {
     if (card.type_code === 'scenario') {
       return null;
@@ -227,6 +239,7 @@ class CardDetailView extends React.PureComponent {
           </Text>
         ) }
         { this.renderTestIcons(card) }
+        { this.renderSlot(card) }
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
           <Text>
@@ -375,17 +388,6 @@ class CardDetailView extends React.PureComponent {
     if (!card.double_sided) {
       return null;
     }
-    const image = !blur && card.backimagesrc && (
-      <View style={isHorizontal ? styles.horizontalCard : styles.verticalCard}>
-        <Image
-          style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
-          source={{
-            uri: `https://arkhamdb.com${card.backimagesrc}`,
-          }}
-        />
-      </View>
-    );
-
     return (
       <View style={styles.container}>
         <View style={[styles.card, {
@@ -638,6 +640,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   statsBlock: {
+    marginBottom: 8,
+  },
+  slotBlock: {
     marginBottom: 8,
   },
   setRow: {

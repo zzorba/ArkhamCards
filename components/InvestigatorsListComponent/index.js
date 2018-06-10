@@ -66,7 +66,7 @@ class InvestigatorsListComponent extends React.Component {
         </View>
         { map(investigators, card => this.renderItem(card)) }
       </View>
-    )
+    );
   }
 
   render() {

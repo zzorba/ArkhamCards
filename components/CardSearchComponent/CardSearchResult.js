@@ -177,14 +177,14 @@ export default class CardSearchResult extends React.PureComponent {
               </View>
             ) }
           </View>
-        { !!onDeckCountChange && (
-          <PlusMinusButtons
-            style={styles.buttonContainer}
-            count={count || 0}
-            limit={limit !== null ? limit : card.deck_limit}
-            onChange={this._onDeckCountChange}
-          />
-        ) }
+          { !!onDeckCountChange && (
+            <PlusMinusButtons
+              style={styles.buttonContainer}
+              count={count || 0}
+              limit={limit !== null ? limit : card.deck_limit}
+              onChange={this._onDeckCountChange}
+            />
+          ) }
         </TouchableOpacity>
       </View>
     );
