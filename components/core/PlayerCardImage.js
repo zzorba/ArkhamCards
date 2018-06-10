@@ -63,7 +63,9 @@ export default class PlayerCardImage extends React.Component {
       <SafeAreaView>
         <View style={styles.buttonRow}>
           <TouchableOpacity onPress={close}>
-            <MaterialCommunityIcons name="close" size={32} color="#888" />
+            <View style={styles.closeButton}>
+              <MaterialCommunityIcons name="close" size={32} color="#888" />
+            </View>
           </TouchableOpacity>
           { !!card.double_sided && !!card.backimagesrc &&
             <Button
@@ -270,5 +272,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginLeft: 8,
     marginRight: 8,
+  },
+  closeButton: {
+    marginLeft: 4,
   },
 });
