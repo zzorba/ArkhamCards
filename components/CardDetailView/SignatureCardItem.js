@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+
+import CardDetailView from './index';
 
 export default class SignatureCardItem extends React.Component {
   static propTypes = {
@@ -35,21 +32,17 @@ export default class SignatureCardItem extends React.Component {
   render() {
     const {
       card,
+      navigator,
     } = this.props;
+
     return (
-      <TouchableOpacity onPress={this._onPress}>
-        <Text style={styles.text}>{ card.quantity }x { card.name }</Text>
-      </TouchableOpacity>
+      <CardDetailView
+        navigator={navigator}
+        id={card.code}
+        card={card}
+        pack_code={card.pack_code}
+        linked
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  text: {
-    paddingLeft: 16,
-    fontSize: 16,
-    lineHeight: 22,
-    fontFamily: 'System',
-    textDecorationLine: 'underline',
-  },
-});

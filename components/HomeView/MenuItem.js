@@ -50,7 +50,7 @@ export default class MenuItem extends React.Component {
         <View style={styles.row}>
           { !!icon && (
             <View style={styles.icon}>
-              <ArkhamIcon name={icon} size={18} color="#000000" />
+              <ArkhamIcon name={icon} size={28} color="#000000" />
             </View>
           ) }
           <Text style={styles.text}>
@@ -65,7 +65,7 @@ export default class MenuItem extends React.Component {
 const styles = StyleSheet.create({
   row: {
     width: '100%',
-    height: 40,
+    height: 60,
     paddingLeft: 16,
     paddingRight: 16,
     borderBottomWidth: 1,
@@ -74,11 +74,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    marginRight: 8,
+    marginRight: 16,
   },
   text: {
     fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 40,
+    fontSize: 24,
+    lineHeight: 60,
   },
 });

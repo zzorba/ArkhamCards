@@ -50,6 +50,11 @@ export const FACTION_COLORS = {
   neutral: '#222222',
 };
 
+export const FACTION_BACKGROUND_COLORS = Object.assign(
+  FACTION_COLORS,
+  { neutral: '#444444' },
+);
+
 export const DIFFICULTY = {
   easy: 0,
   standard: 1,

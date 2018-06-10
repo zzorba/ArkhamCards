@@ -17,6 +17,7 @@ import { Button } from 'react-native-elements';
 import {
   CORE_FACTION_CODES,
   FACTION_COLORS,
+  FACTION_BACKGROUND_COLORS,
   SKILLS,
   SKILL_COLORS,
 } from '../../constants';
@@ -67,24 +68,26 @@ class CardDetailView extends React.PureComponent {
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
     this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
 
-    const backButton = Platform.OS === 'ios' ? {
-      id: 'back',
-    } : {
-      id: 'back',
-      icon: iconsMap['arrow-left'],
-    };
-    props.navigator.setButtons({
-      leftButtons: [
-        backButton,
-      ],
-      rightButtons: props.card && props.card.type_code === 'investigator' ? [
-        {
-          icon: iconsMap.deck,
-          id: 'deck',
-        },
-      ] : [],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    if (!props.linked) {
+      const backButton = Platform.OS === 'ios' ? {
+        id: 'back',
+      } : {
+        id: 'back',
+        icon: iconsMap['arrow-left'],
+      };
+      props.navigator.setButtons({
+        leftButtons: [
+          backButton,
+        ],
+        rightButtons: props.card && props.card.type_code === 'investigator' ? [
+          {
+            icon: iconsMap.deck,
+            id: 'deck',
+          },
+        ] : [],
+      });
+      props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    }
   }
 
 
@@ -276,7 +279,7 @@ class CardDetailView extends React.PureComponent {
   }
 
   renderTitle(card, blur, name, subname) {
-    const factionColor = card.faction_code && FACTION_COLORS[card.faction_code];
+    const factionColor = card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code];
     return (
       <View style={[styles.cardTitle, {
         backgroundColor: blur ? '#000000' : (factionColor || '#FFFFFF'),
@@ -435,11 +438,16 @@ class CardDetailView extends React.PureComponent {
     }
     return (
       <View>
+        <Text style={styles.sectionHeader}>
+          Deckbuilding
+        </Text>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._showInvestigatorCards}
+            text={`Browse ${card.name} Cards`}
+          />
+        </View>
         <SignatureCardsComponent navigator={navigator} investigator={card} />
-        <Button
-          onPress={this._showInvestigatorCards}
-          text="Deckbuilding"
-        />
       </View>
     );
   }
@@ -543,9 +551,9 @@ class CardDetailView extends React.PureComponent {
             linked
           />
         ) }
-        { this.renderInvestigatorCardsLink() }
         { !linked && <FaqComponent navigator={navigator} id={card.code} /> }
-        <View style={styles.footerPadding} />
+        { this.renderInvestigatorCardsLink() }
+        { !linked && <View style={styles.footerPadding} /> }
       </ScrollView>
     );
   }
@@ -692,4 +700,19 @@ const styles = StyleSheet.create({
   footerPadding: {
     height: 150,
   },
+  buttonContainer: {
+    marginLeft: 8,
+    marginTop: 4,
+    marginBottom: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  sectionHeader: {
+    marginTop: 24,
+    paddingLeft: 8,
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: '600',
+    fontFamily: 'System',
+  }
 });

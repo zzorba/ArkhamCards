@@ -32,13 +32,13 @@ class SignatureCardsComponent extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Required Cards:</Text>
+        <Text style={styles.header}>Required Cards</Text>
         { map(requiredCards, card => (
           <SignatureCardItem key={card.code} navigator={navigator} card={card} />
         )) }
         { !!(alternateCards && alternateCards.length) && (
           <View>
-            <Text style={styles.header}>Alternate Cards:</Text>
+            <Text style={styles.header}>Alternate Cards</Text>
             { map(alternateCards, card => (
               <SignatureCardItem key={card.code} navigator={navigator} card={card} />
             )) }
@@ -70,9 +70,10 @@ export default connectRealm(SignatureCardsComponent, {
 
 const styles = StyleSheet.create({
   header: {
+    marginTop: 24,
     paddingLeft: 8,
-    fontSize: 18,
-    lineHeight: 26,
+    fontSize: 24,
+    lineHeight: 32,
     fontWeight: '600',
     fontFamily: 'System',
   },

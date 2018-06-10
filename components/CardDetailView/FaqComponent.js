@@ -159,8 +159,10 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   title: {
-    fontSize: 18,
+    fontSize: 24,
+    lineHeight: 32,
     fontFamily: 'System',
+    fontWeight: '600',
   },
   bar: {
     marginTop: 4,

@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Switch,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
@@ -55,29 +56,32 @@ export default class PackRow extends React.Component {
       setChecked,
     } = this.props;
 
+    const mythosPack = (pack.position > 1 && pack.cycle_position < 70);
+    const backgroundColor = mythosPack ? '#FFFFFF' : '#f0f0f0';
+    const textColor = mythosPack ? '#222222' : '#222222';
+    const iconSize = mythosPack ? 24 : 28;
+    const fontSize = mythosPack ? 16 : 24;
+    const rowHeight = mythosPack ? 50 : 60;
     return (
-      <View style={styles.row}>
+      <View style={[styles.row, { backgroundColor, height: rowHeight }]}>
         <TouchableOpacity style={styles.touchable} onPress={this._onPress}>
           <View style={styles.touchableContent}>
-            { (pack.position > 1 && pack.cycle_position < 70) && (
-              <Text style={styles.bullet}>•</Text>
-            ) }
             <View style={styles.icon}>
               <EncounterIcon
                 encounter_code={pack.code}
-                size={28}
+                size={iconSize}
                 color="#000000"
               />
             </View>
-            <Text style={styles.title}>{ pack.name }</Text>
+            <Text style={[styles.title, { color: textColor, fontSize }]}>{ pack.name }</Text>
           </View>
         </TouchableOpacity>
         { !!setChecked && (
-          <View style={styles.checkbox}>
-            <CheckBox
-              checked={checked}
-              onPress={this._onCheckPress}
-              onIconPress={this._onCheckPress}
+          <View style={[styles.checkbox, { height: rowHeight }]}>
+            <Switch
+              value={checked}
+              onValueChange={this._onCheckPress}
+              onTintColor="#222222"
             />
           </View>
         ) }
@@ -124,5 +128,7 @@ const styles = StyleSheet.create({
   },
   checkbox: {
     width: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
