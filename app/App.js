@@ -22,7 +22,7 @@ export default class App {
     Navigation.startSingleScreenApp({
       screen: {
         screen: 'Home',
-        title: 'Home',
+        title: 'Browse',
       },
       drawer: {
         right: {

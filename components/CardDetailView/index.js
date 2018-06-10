@@ -77,12 +77,12 @@ class CardDetailView extends React.PureComponent {
       leftButtons: [
         backButton,
       ],
-      rightButtons: [
+      rightButtons: props.card && props.card.type_code === 'investigator' ? [
         {
           icon: iconsMap.deck,
           id: 'deck',
         },
-      ],
+      ] : [],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -109,6 +109,7 @@ class CardDetailView extends React.PureComponent {
 
     navigator.push({
       screen: 'Browse.InvestigatorCards',
+      title: `${card.name} Cards`,
       passProps: {
         investigator: card,
       },
