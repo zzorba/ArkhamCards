@@ -6,6 +6,7 @@ const BAD_ICON_NAMES = {
   Action: 'action',
   'per investigator': 'per_investigator',
   lightning: 'free',
+  lighting: 'free',
   fast: 'free',
   'auto-fail': 'auto_fail',
 };

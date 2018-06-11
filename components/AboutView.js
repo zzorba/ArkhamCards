@@ -21,6 +21,8 @@ export default function AboutView() {
         Attribution:
         { '\n' }
         • 'deck of cards' icon by Daniel Solis from the Noun Project.
+        { '\n' }
+        • 'FAQ' icon by Gregor Cresnar from the Noun Project.
       </Text>
     </View>
   );

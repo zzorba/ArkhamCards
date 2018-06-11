@@ -10,10 +10,10 @@ import { connectRealm } from 'react-native-realm';
 import { Bar } from 'react-native-progress';
 import { Button } from 'react-native-elements';
 
-import CardTextComponent from '../CardTextComponent';
-import { getFaqEntry } from '../../lib/api';
+import CardTextComponent from './CardTextComponent';
+import { getFaqEntry } from '../lib/api';
 
-class FaqComponent extends React.Component {
+class CardFaqView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
@@ -31,6 +31,12 @@ class FaqComponent extends React.Component {
 
     this._linkPressed = this.linkPressed.bind(this);
     this._loadFaq = this.loadFaq.bind(this);
+  }
+
+  componentDidMount() {
+    if (!head(this.props.faqEntries)) {
+      this.loadFaq();
+    }
   }
 
   linkPressed(url) {
@@ -56,6 +62,14 @@ class FaqComponent extends React.Component {
         title: 'ArkhamDB',
         passProps: {
           uri: url,
+        },
+      });
+    } else if (url.startsWith('/')) {
+      navigator.push({
+        screen: 'WebView',
+        title: 'ArkhamDB',
+        passProps: {
+          uri: `https://arkhamdb.com${url}`,
         },
       });
     }
@@ -99,7 +113,6 @@ class FaqComponent extends React.Component {
       const date = faqEntry.fetched.toISOString().slice(0, 10);
       return (
         <View style={styles.container}>
-          <Text style={styles.title}>FAQ</Text>
           { !!faqError && <Text>{ faqError }</Text> }
           <Text>Last Updated: { date }</Text>
           <View>
@@ -116,7 +129,7 @@ class FaqComponent extends React.Component {
             <View style={styles.bar}><Bar indeterminate /></View>
             :
             <View style={styles.buttonContainer}>
-              <Button onPress={this._loadFaq} text="Check for FAQ Updates" />
+              <Button onPress={this._loadFaq} text="Check for Updates" />
             </View>
           }
         </View>
@@ -125,7 +138,6 @@ class FaqComponent extends React.Component {
     if (faqLoading) {
       return (
         <View style={styles.container}>
-          <Text style={styles.title}>FAQ</Text>
           <View style={styles.bar}><Bar indeterminate /></View>
         </View>
       );
@@ -133,17 +145,16 @@ class FaqComponent extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>FAQ</Text>
         { !!faqError && <Text>{ faqError }</Text> }
         <View style={styles.buttonContainer}>
-          <Button onPress={this._loadFaq} text="Check for FAQ Entries" />
+          <Button onPress={this._loadFaq} text="Check for Entries" />
         </View>
       </View>
     );
   }
 }
 
-export default connectRealm(FaqComponent, {
+export default connectRealm(CardFaqView, {
   schemas: ['Card', 'FaqEntry'],
   mapToProps(results, realm, props) {
     return {
@@ -157,12 +168,6 @@ export default connectRealm(FaqComponent, {
 const styles = StyleSheet.create({
   container: {
     margin: 10,
-  },
-  title: {
-    fontSize: 24,
-    lineHeight: 32,
-    fontFamily: 'System',
-    fontWeight: '600',
   },
   bar: {
     marginTop: 4,

@@ -42,6 +42,7 @@ export default class SignatureCardItem extends React.Component {
         card={card}
         pack_code={card.pack_code}
         linked
+        signatureCard
       />
     );
   }

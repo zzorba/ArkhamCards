@@ -29,7 +29,6 @@ import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardTextComponent from '../CardTextComponent';
 import FlippableCard from '../core/FlippableCard';
-import FaqComponent from './FaqComponent';
 import { getShowSpoilers } from '../../reducers';
 import FlavorTextComponent from './FlavorTextComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
@@ -51,6 +50,7 @@ class CardDetailView extends React.PureComponent {
     card: PropTypes.object,
     showSpoilers: PropTypes.bool,
     linked: PropTypes.bool,
+    signatureCard: PropTypes.bool,
   };
 
   constructor(props) {
@@ -67,6 +67,7 @@ class CardDetailView extends React.PureComponent {
     this._onCardViewLayout = this.onCardViewLayout.bind(this);
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
     this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
+    this._showFaq = this.showFaq.bind(this);
 
     if (!props.linked) {
       const backButton = Platform.OS === 'ios' ? {
@@ -75,16 +76,21 @@ class CardDetailView extends React.PureComponent {
         id: 'back',
         icon: iconsMap['arrow-left'],
       };
+      const rightButtons = [{
+        icon: iconsMap.faq,
+        id: 'faq',
+      }];
+      if (props.card && props.card.type_code === 'investigator') {
+        rightButtons.push({
+          icon: iconsMap.deck,
+          id: 'deck',
+        });
+      }
       props.navigator.setButtons({
         leftButtons: [
           backButton,
         ],
-        rightButtons: props.card && props.card.type_code === 'investigator' ? [
-          {
-            icon: iconsMap.deck,
-            id: 'deck',
-          },
-        ] : [],
+        rightButtons,
       });
       props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
@@ -98,10 +104,27 @@ class CardDetailView extends React.PureComponent {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'deck') {
         this.showInvestigatorCards();
+      } else if (event.id === 'faq') {
+        this.showFaq();
       } else if (event.id === 'back') {
         navigator.pop();
       }
     }
+  }
+
+  showFaq() {
+    const {
+      navigator,
+      card,
+    } = this.props;
+    navigator.push({
+      screen: 'Card.Faq',
+      title: 'FAQ',
+      subtitle: card.name,
+      passProps: {
+        id: card.code,
+      },
+    });
   }
 
   showInvestigatorCards() {
@@ -112,7 +135,8 @@ class CardDetailView extends React.PureComponent {
 
     navigator.push({
       screen: 'Browse.InvestigatorCards',
-      title: `${card.name} Cards`,
+      title: 'Allowed Cards',
+      subtitle: card.name,
       passProps: {
         investigator: card,
       },
@@ -445,9 +469,30 @@ class CardDetailView extends React.PureComponent {
           <Button
             onPress={this._showInvestigatorCards}
             text={`Browse ${card.name} Cards`}
+            icon={<ArkhamIcon name="deck" size={18} color="white" />}
           />
         </View>
         <SignatureCardsComponent navigator={navigator} investigator={card} />
+      </View>
+    );
+  }
+
+  renderFaqButton() {
+    const {
+      linked,
+      signatureCard,
+      card,
+    } = this.props;
+    if (linked && !signatureCard) {
+      return null;
+    }
+    return (
+      <View style={styles.buttonContainer}>
+        <Button
+          text={`FAQ for ${card.name}`}
+          onPress={this._showFaq}
+          icon={<ArkhamIcon name="faq" size={18} color="white" />}
+        />
       </View>
     );
   }
@@ -551,7 +596,7 @@ class CardDetailView extends React.PureComponent {
             linked
           />
         ) }
-        { !linked && <FaqComponent navigator={navigator} id={card.code} /> }
+        { this.renderFaqButton() }
         { this.renderInvestigatorCardsLink() }
         { !linked && <View style={styles.footerPadding} /> }
       </ScrollView>
@@ -714,5 +759,5 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: '600',
     fontFamily: 'System',
-  }
+  },
 });

@@ -45,6 +45,15 @@ const EmphasisMarkdownTagRule = {
   render: BoldItalicHtmlTagNode,
 };
 
+const MalformedBoldItalicHtmlTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>(.+?)<\\/b><\\/i>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: BoldItalicHtmlTagNode,
+};
+
 const BoldItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>(.+?)<\\/i><\\/b>')),
   order: 1,
@@ -109,6 +118,7 @@ export default class CardText extends React.PureComponent {
             arkhamIconSpan: ArkahmIconSpanRule,
             brTag: BreakTagRule,
             biTag: BoldItalicHtmlTagRule,
+            badBiTag: MalformedBoldItalicHtmlTagRule,
             bTag: BoldHtmlTagRule,
             uTag: UnderlineHtmlTagRule,
             emTag: EmphasisHtmlTagRule,

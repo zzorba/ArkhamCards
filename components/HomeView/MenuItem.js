@@ -37,6 +37,7 @@ export default class MenuItem extends React.Component {
       screen,
       title: text,
       passProps,
+      backButtonTitle: 'Back',
     });
   }
 
