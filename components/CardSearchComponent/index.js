@@ -8,8 +8,8 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import SearchInput from 'react-native-search-filter';
 
+import SearchBox from '../SearchBox';
 import {
   SORT_BY_TYPE,
 } from '../CardSortDialog/constants';
@@ -192,9 +192,8 @@ export default class CardSearchComponent extends React.Component {
     return (
       <View style={[styles.wrapper, { width, height }]}>
         <View style={[styles.container, { width, height }]}>
-          <SearchInput
+          <SearchBox
             onChangeText={this._searchUpdated}
-            style={styles.searchInput}
             placeholder="Search for a card"
           />
           <CardResultList
@@ -225,10 +224,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
-  },
-  searchInput: {
-    padding: 10,
-    borderColor: '#CCC',
-    borderWidth: 1,
   },
 });

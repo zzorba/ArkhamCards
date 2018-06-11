@@ -1,6 +1,6 @@
 import { Navigation } from 'react-native-navigation';
 
-import SearchMultiSelect from '../components/core/SearchMultiSelect';
+import SearchMultiSelectView from '../components/SearchMultiSelectView';
 import AddScenarioResultView from '../components/AddScenarioResultView';
 import DeckDetailView from '../components/DeckDetailView';
 import DeckEditView from '../components/DeckEditView';
@@ -54,7 +54,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsDrawer, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
-  Navigation.registerComponent('SearchFilters.Chooser', () => SearchMultiSelect, store, Provider);
+  Navigation.registerComponent('SearchFilters.Chooser', () => SearchMultiSelectView, store, Provider);
   Navigation.registerComponent('CollectionEdit', () => CollectionEditView, store, Provider);
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);

@@ -7,7 +7,6 @@ import {
   View,
   Switch,
 } from 'react-native';
-import { CheckBox } from 'react-native-elements';
 
 import EncounterIcon from '../../assets/EncounterIcon';
 
@@ -106,12 +105,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  bullet: {
-    marginLeft: 16,
-    marginRight: 8,
-    fontSize: 24,
-    fontWeight: '900',
   },
   icon: {
     marginLeft: 8,
