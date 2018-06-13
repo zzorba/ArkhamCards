@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head, flatMap, map, range } from 'lodash';
 import {
-  Image,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { CachedImage } from 'react-native-cached-image';
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -345,10 +345,12 @@ class CardDetailView extends React.PureComponent {
         }
         return {
           uri: `https://arkhamdb.com${card.imagesrc}`,
+          cache: 'force-cache',
         };
       }
       return {
         uri: `https://arkhamdb.com${card.backimagesrc}`,
+        cache: 'force-cache',
       };
     }
     return card.deck_limit > 0 ? PLAYER_BACK : ENCOUNTER_BACK;
@@ -364,10 +366,11 @@ class CardDetailView extends React.PureComponent {
           style={isHorizontal ? styles.horizontalCard : styles.verticalCard}
           onLayout={this._onCardViewLayout}
         >
-          <Image
+          <CachedImage
             style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
             source={{
               uri: `https://arkhamdb.com${card.imagesrc}`,
+              cache: 'force-cache',
             }}
           />
         </View>
@@ -381,9 +384,12 @@ class CardDetailView extends React.PureComponent {
         onLayout={this._onCardViewLayout}
       >
         { this.props.showSpoilers ?
-          <Image
+          <CachedImage
             style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
-            source={{ uri: frontImg }}
+            source={{
+              uri: frontImg,
+              cache: 'force-cache',
+            }}
           />
           :
           <FlippableCard
@@ -394,15 +400,18 @@ class CardDetailView extends React.PureComponent {
             }}
             flipped={!blur}
             backSide={
-              <Image
+              <CachedImage
                 style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
                 source={this.backSource(card, isHorizontal)}
               />
             }
             frontSide={
-              <Image
+              <CachedImage
                 style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
-                source={{ uri: frontImg }}
+                source={{
+                  uri: frontImg,
+                  cache: 'force-cache',
+                }}
               />
             }
             onFlip={this._toggleShowSpoilers}

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Image,
   StyleSheet,
   TouchableHighlight,
   View,
 } from 'react-native';
+import { CachedImage } from 'react-native-cached-image';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
@@ -42,10 +42,11 @@ export default class DrawCardItem extends React.PureComponent {
             <ArkhamIcon name="weakness" size={100} color="#000000" />
           </View>
           :
-          <Image
+          <CachedImage
             style={styles.drawnCard}
             source={{
               uri: `https://arkhamdb.com${card.imagesrc}`,
+              cache: 'force-cache',
             }}
           />
         }

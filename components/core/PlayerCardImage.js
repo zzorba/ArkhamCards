@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Dimensions,
-  Image,
   Platform,
   SafeAreaView,
   StyleSheet,
@@ -10,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { CachedImage } from 'react-native-cached-image';
 import Lightbox from 'react-native-lightbox';
 import { Button } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
@@ -94,36 +94,35 @@ export default class PlayerCardImage extends React.Component {
     if (card.double_sided) {
       if (flipped) {
         return (
-          <Image
+          <CachedImage
             style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-            source={{ uri: `https://arkhamdb.com${card.imagesrc}` }}
+            resizeMode="contain"
+            source={{
+              uri: `https://arkhamdb.com${card.imagesrc}`,
+            }}
           />
         );
       }
       return (
-        <Image
+        <CachedImage
           style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-          source={{ uri: `https://arkhamdb.com${card.backimagesrc}` }}
+          resizeMode="contain"
+          source={{
+            uri: `https://arkhamdb.com${card.backimagesrc}`,
+          }}
         />
       );
     }
 
     return (
-      <Image
+      <CachedImage
         style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-        source={{ uri: `https://arkhamdb.com${card.imagesrc}` }}
+        resizeMode="contain"
+        source={{
+          uri: `https://arkhamdb.com${card.imagesrc}`,
+        }}
       />
     );
-  }
-
-  containerStyle() {
-    const {
-      card,
-    } = this.props;
-    switch (card.type_code) {
-      case 'investigator': return styles.investigatorContainer;
-      default: return {};
-    }
   }
 
   imageStyle() {
@@ -167,25 +166,27 @@ export default class PlayerCardImage extends React.Component {
 
     if (!card.imagesrc) {
       return (
-        <View style={[styles.container, this.containerStyle()]}>
+        <View style={styles.container}>
           { this.renderPlaceholder() }
         </View>
       );
     }
 
     return (
-      <View style={[styles.container, this.containerStyle()]}>
+      <View style={styles.container}>
         { this.renderPlaceholder() }
-        <View style={[styles.container, this.containerStyle()]}>
+        <View style={styles.container}>
           <Lightbox
             swipeToDismiss
             backgroundColor="white"
             renderHeader={this._renderLightboxHeader}
             renderContent={this._renderFullsize}
           >
-            <Image
+            <CachedImage
               style={[styles.image, this.imageStyle()]}
-              source={{ uri: `https://arkhamdb.com${filename}` }}
+              source={{
+                uri: `https://arkhamdb.com${filename}`,
+              }}
               resizeMode="contain"
             />
           </Lightbox>
@@ -203,33 +204,29 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
   },
-  investigatorContainer: {
-    width: 90,
-    height: 90,
-  },
   image: {
     position: 'absolute',
-    top: -25,
-    left: -30,
+    top: -14,
+    left: -18,
     width: 142 * 1.1,
     height: 198 * 1.1,
   },
   enemyImage: {
     position: 'absolute',
-    top: -180,
-    left: -45,
+    top: -90,
+    left: -25,
     width: 142 * 1.4,
     height: 198 * 1.4,
   },
   locationImage: {
     position: 'absolute',
-    top: -35,
-    left: -45,
+    top: -17,
+    left: -25,
     width: 142 * 1.4,
     height: 198 * 1.4,
   },
   investigatorImage: {
-    top: -32,
+    top: -17,
     left: -10,
     width: 166 + 44,
     height: 136 + 34,
@@ -241,8 +238,8 @@ const styles = StyleSheet.create({
     width: 166 * 1.35,
   },
   actImage: {
-    top: -35,
-    left: -130,
+    top: -17,
+    left: -65,
     height: 136 * 1.35,
     width: 166 * 1.35,
   },
@@ -269,7 +266,6 @@ const styles = StyleSheet.create({
   },
   bigCard: {
     marginTop: Platform.OS === 'ios' ? 0 : HEADER_SIZE,
-    resizeMode: 'contain',
     marginLeft: 8,
     marginRight: 8,
   },

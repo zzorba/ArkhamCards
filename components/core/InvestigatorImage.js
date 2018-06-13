@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { CachedImage } from 'react-native-cached-image';
 
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 
@@ -48,20 +48,27 @@ export default class InvestigatorImage extends React.Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        <View style={[
-          styles.placeholder,
-          { backgroundColor: FACTION_COLORS[card.faction_code] },
-        ]}>
-          <Text style={styles.placeholderIcon}>
-            { FACTION_ICONS[card.faction_code] }
-          </Text>
+        <View style={styles.relative}>
+          <View style={[
+            styles.placeholder,
+            { backgroundColor: FACTION_COLORS[card.faction_code] },
+          ]}>
+            <Text style={styles.placeholderIcon}>
+              { FACTION_ICONS[card.faction_code] }
+            </Text>
+          </View>
         </View>
+
         { !!card.imagesrc && (
-          <Image
-            style={styles.image}
-            source={{ uri: `https://arkhamdb.com/${card.imagesrc}` }}
-            resizeMode="contain"
-          />
+          <View style={styles.relative}>
+            <CachedImage
+              style={styles.image}
+              source={{
+                uri: `https://arkhamdb.com/${card.imagesrc}`,
+              }}
+              resizeMode="contain"
+            />
+          </View>
         ) }
       </View>
     );
@@ -84,15 +91,18 @@ export default class InvestigatorImage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    overflow: 'hidden',
     position: 'relative',
+    overflow: 'hidden',
     borderRadius: 6,
     width: 80,
     height: 80,
   },
+  relative: {
+    position: 'relative',
+  },
   image: {
     position: 'absolute',
-    top: -34,
+    top: -17,
     left: -10,
     width: 166 + 44,
     height: 136 + 34,
