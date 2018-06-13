@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Alert,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -15,6 +16,7 @@ export default class PackRow extends React.Component {
     navigator: PropTypes.object.isRequired,
     pack: PropTypes.object,
     setChecked: PropTypes.func,
+    setCycleChecked: PropTypes.func,
     checked: PropTypes.bool,
   };
 
@@ -43,9 +45,33 @@ export default class PackRow extends React.Component {
     const {
       pack,
       checked,
+      setCycleChecked,
       setChecked,
     } = this.props;
-    setChecked && setChecked(pack.code, !checked);
+    const value = !checked;
+    setChecked && setChecked(pack.code, value);
+
+    if (setCycleChecked &&
+      pack.position === 1 &&
+      pack.cycle_position < 70 &&
+      pack.cycle_position > 1
+    ) {
+      // This is the lead pack in a cycle.
+      Alert.alert(
+        `${value ? 'Mark' : 'Clear'} entire cycle?`,
+        `${value ? 'Mark' : 'Clear'} all packs in the ${pack.name} cycle?`,
+        [
+          {
+            text: 'No',
+          },
+          { text: 'Yes',
+            onPress: () => {
+              setCycleChecked(pack.cycle_position, value);
+            },
+          },
+        ],
+      );
+    }
   }
 
   render() {

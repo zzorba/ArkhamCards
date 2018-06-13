@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { forEach } from 'lodash';
 import {
   FlatList,
   Text,
@@ -22,6 +23,7 @@ export default class PackListComponent extends React.Component {
 
     this._renderItem = this.renderItem.bind(this);
     this._keyExtractor = this.keyExtractor.bind(this);
+    this._setCycleChecked = this.setCycleChecked.bind(this);
   }
 
   keyExtractor(item) {
@@ -30,17 +32,30 @@ export default class PackListComponent extends React.Component {
 
   renderItem({ item }) {
     const {
-      setChecked,
       checkState,
+      setChecked,
     } = this.props;
     return (
       <PackRow
         navigator={this.props.navigator}
         pack={item}
         setChecked={setChecked}
+        setCycleChecked={this._setCycleChecked}
         checked={checkState && checkState[item.code]}
       />
     );
+  }
+
+  setCycleChecked(cyclePosition, value) {
+    const {
+      packs,
+      setChecked,
+    } = this.props;
+    forEach(packs, pack => {
+      if (pack.cycle_position === cyclePosition) {
+        setChecked(pack.code, value);
+      }
+    });
   }
 
   render() {
