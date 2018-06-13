@@ -113,6 +113,7 @@ export default class CardSearchComponent extends React.Component {
           passProps: {
             sortChanged: this._sortChanged,
             selectedSort: this.state.selectedSort,
+            query: this.query(),
           },
           style: {
             backgroundColor: 'rgba(128,128,128,.75)',
