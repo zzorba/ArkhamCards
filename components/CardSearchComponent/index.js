@@ -12,6 +12,7 @@ import {
 import SearchBox from '../SearchBox';
 import {
   SORT_BY_TYPE,
+  SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
 import CardResultList from './CardResultList';
 import { iconsMap } from '../../app/NavIcons';
@@ -164,6 +165,9 @@ export default class CardSearchComponent extends React.Component {
     const {
       baseQuery,
     } = this.props;
+    const {
+      selectedSort,
+    } = this.state;
     const queryParts = [];
     if (baseQuery) {
       queryParts.push(baseQuery);
@@ -172,6 +176,10 @@ export default class CardSearchComponent extends React.Component {
     forEach(
       applyFilters(this.state.filters),
       clause => queryParts.push(clause));
+
+    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
+      queryParts.push(`(encounter_code != null)`);
+    }
     return queryParts.join(' and ');
   }
 

@@ -156,8 +156,10 @@ class CardResultList extends React.Component {
       searchTerm,
       show_spoilers,
     } = this.props;
-    const cards = (query ? realm.objects('Card').filtered(query, searchTerm) :
-      realm.objects('Card')).sorted(this.getSort());
+    const cards = (query ?
+      realm.objects('Card').filtered(query, searchTerm) :
+      realm.objects('Card')
+    ).sorted(this.getSort());
     const splitCards = partition(
       map(cards, card => Object.assign({}, card)),
       card => show_spoilers[card.pack_code] ||
