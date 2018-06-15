@@ -4845,6 +4845,10 @@ react-is@^16.3.0:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
 
+react-native-app-auth@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-2.4.1.tgz#80d38b9d2fcae67a5184d2fa4e7a3bc64a1b6507"
+
 react-native-cached-image@1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/react-native-cached-image/-/react-native-cached-image-1.4.3.tgz#0942e2cd078284a1f0438de8dfe17f2b36a89752"
@@ -4865,6 +4869,14 @@ react-native-clcasher@1.0.0:
 react-native-clean-project@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-native-clean-project/-/react-native-clean-project-2.0.0.tgz#66f18d477e1f555c6736768aa0fe8655d22b42af"
+
+react-native-config@0.11.5:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
+
+react-native-deep-linking@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.1.0.tgz#fcba2f5265fa1e218738e3af4102125158f0686d"
 
 react-native-elements@1.0.0-beta2:
   version "1.0.0-beta2"
@@ -4887,6 +4899,10 @@ react-native-flip-card@3.5.2:
   resolved "https://registry.yarnpkg.com/react-native-flip-card/-/react-native-flip-card-3.5.2.tgz#6563f4a6d95b999c21e82deec9b2f502175847d6"
   dependencies:
     prop-types "^15.5.10"
+
+react-native-keychain@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-2.0.0.tgz#5e6ae75d66d2737a0b38a95c903b6d6f966dd475"
 
 react-native-lightbox@0.7.0:
   version "0.7.0"

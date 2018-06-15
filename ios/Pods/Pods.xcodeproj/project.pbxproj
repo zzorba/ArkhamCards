@@ -7,71 +7,166 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1614E3460EABC3EF24EE303D5444239A /* Pods-ArkhamCards-tvOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F21FB9279364626B6229B8C69E3F0 /* Pods-ArkhamCards-tvOSTests-dummy.m */; };
-		B0D71F0AD081F53F8E8BCE9C0D5D9E65 /* Pods-ArkhamCards-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F214C401DCA71ABA935CA87826E5E28B /* Pods-ArkhamCards-dummy.m */; };
-		C1D5F561358D89935D3F4EEAF8978416 /* Pods-ArkhamCards-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B44BF84D70CF18AB3BE79991F4CC7855 /* Pods-ArkhamCards-tvOS-dummy.m */; };
-		D9847154A6668D8B6C2F6AA0C5C781C8 /* Pods-ArkhamCardsTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDC823C82AD5A9EC921BB286390C65A /* Pods-ArkhamCardsTests-dummy.m */; };
+		01149DB4EE35539CEC6D3C6609BFFCFF /* OIDURLQueryComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6557BD774A18C388CACF3CD910CE61EB /* OIDURLQueryComponent.m */; };
+		05CF094A769745EE81F5FFB831353D63 /* OIDErrorUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C4EC853F91593ABFA0407ED262F4F5 /* OIDErrorUtilities.m */; };
+		0BAA8F2E9487FE5D93216D56BE106249 /* OIDRegistrationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A65DEC0B13FDAA6B20B763DF8DBB09BD /* OIDRegistrationResponse.m */; };
+		0C8F31F526F7AB5A4657B51D396A62BC /* OIDURLQueryComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FF8E1B6B97823BAC9CF524E7888CE88 /* OIDURLQueryComponent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		109D47D8A6FA87D84C77DF6A08D00B31 /* OIDTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA516FD61F85C4BB20E7548EEC9C5B26 /* OIDTokenRequest.m */; };
+		10F88574C6CD7E858242AC34F7DF1438 /* OIDResponseTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D570DC608A5B7B7E2A0C6B0B827343 /* OIDResponseTypes.m */; };
+		113E0B2D641A22B1A13828F3AB948D99 /* OIDAuthorizationService.h in Headers */ = {isa = PBXBuildFile; fileRef = 90767A34F7526BD0E194E3217106B03D /* OIDAuthorizationService.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1646E0684F7B08552B2968B78AC65D72 /* OIDAuthorizationUICoordinator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C7E233CBB1C105BE68DDB64459DAD81 /* OIDAuthorizationUICoordinator.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1A641B4D593512344A28A0BD5089049B /* OIDURLSessionProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = CD74BED450EC88E696E3ED7DF38E3FB9 /* OIDURLSessionProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1DE1A0BF65AFC178B61BEE98995921D2 /* OIDResponseTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D2ECD4412FF6AE779C9E950CF1AFEDC /* OIDResponseTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1F0C1423AB525ADF45446BBE478FC691 /* OIDRegistrationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = DA54A9DB352644E1D4D8E8164DF5D50A /* OIDRegistrationResponse.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1F7615E2A9BB25750F5C99BA9B0FDD4D /* OIDError.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B289E5DB7F13062F9EF0409FB00CE71 /* OIDError.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2115BB79611E106F8B9AEA1E176AF90B /* OIDScopes.h in Headers */ = {isa = PBXBuildFile; fileRef = E6F4E7D5131038DA873083EDD4783BDA /* OIDScopes.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		22F83D54EDF558A5AB730B0B201CC43C /* OIDAuthorizationUICoordinatorIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = D1110B2BCF1B98720DB38004EA2CF658 /* OIDAuthorizationUICoordinatorIOS.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2A23279C2ADC0A990C7D4AFA1D000A17 /* OIDGrantTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B2BCF82CCAC34A9822C3C88DA7848B /* OIDGrantTypes.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2D7C877FE4363DA63B3457B4638BDECE /* OIDAuthState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C804B56312C7CEEAAE66C8C97DC1A08 /* OIDAuthState.m */; };
+		36E53015CB7EAAE552C2D773F490276F /* OIDURLSessionProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBE6C40E3941E972C023B542213620C /* OIDURLSessionProvider.m */; };
+		4128AF072F103A7FC4744CFEBE5C3697 /* OIDServiceDiscovery.h in Headers */ = {isa = PBXBuildFile; fileRef = 968F6B4D971EC641BF93C15E8296CD41 /* OIDServiceDiscovery.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		48FC7F07E891CB0A77BF73FF10A2DCE1 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3593031FCD622C869C9AEC14AF8FDA24 /* SafariServices.framework */; };
+		4CAF5E227661F7A02C6805AF30EA15BF /* OIDFieldMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 59E6A4A6A48D0A51B15B55E09D451C68 /* OIDFieldMapping.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4DFF6CA11CA8D4BB0580EE39D0CFB122 /* OIDAuthorizationService+IOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FCEF9C243BC127F94F6DB5350A065587 /* OIDAuthorizationService+IOS.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		584A37F03EDAF250B3920951DFCD6D50 /* OIDRegistrationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2828F90F8729ACAA16558FBE2B1B66B0 /* OIDRegistrationRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5C7F561E1D19674BB773CBB7044D9E46 /* OIDAuthStateErrorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = FC812E3DA0AA8B6E04C991E6C575C833 /* OIDAuthStateErrorDelegate.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5EA34D3ABB718763B4B740F79A104E92 /* OIDAuthStateChangeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 7730889DAC6584564967A15C637374DB /* OIDAuthStateChangeDelegate.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5F7C66277CD033955796F35A31685FF1 /* OIDTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A571AE4855D63E2DBA3492EF044C682B /* OIDTokenRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5FE52C3B1EB860B64378A4F5EF1BE5B3 /* OIDAuthorizationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 23D5F742973E6614AA8C00EC120CE40D /* OIDAuthorizationRequest.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		61CC67C5284ED25BF6C131B5058DCAF4 /* OIDServiceConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 23812845E63D4A3BB7CF3C6B64D2FC9B /* OIDServiceConfiguration.m */; };
+		681AA704482D48819BB1688B629996DF /* OIDScopeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986737BAFF0BFFCCCDE47F08F2073E3 /* OIDScopeUtilities.m */; };
+		73ED835573B0A475A7CA9A6A00ADD09E /* OIDFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D74524F4D014C882A31272106E6289 /* OIDFieldMapping.m */; };
+		76C7BC81C788C24A501ECB70802AA314 /* OIDClientMetadataParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = D64196CB4B67B7AA607DBC63F3E03603 /* OIDClientMetadataParameters.m */; };
+		7B04534AA521E21F2BEAC77DE935D95B /* OIDAuthorizationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = CDC2E6674435BDEA977945AC5A86CC34 /* OIDAuthorizationResponse.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7C2DEE6A12ED49956C524C7C7E7942D5 /* OIDAuthState+IOS.m in Sources */ = {isa = PBXBuildFile; fileRef = B942E18FDF812B1861ADCA4EA89030DA /* OIDAuthState+IOS.m */; };
+		83A5B18B87B89475D8DDE4A780FBA5D1 /* OIDScopeUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 291DEB5A7C44953AF2F82DD4F470B3BD /* OIDScopeUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		86797FE6F3199FB007685AA9ED7EE499 /* OIDClientMetadataParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = EF8CC390741A1C6748A25620416553F3 /* OIDClientMetadataParameters.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8E1C41DC5171EC86D73FA59687134493 /* OIDAuthState+IOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E0469D2F0B7E97E4354919E78569F30 /* OIDAuthState+IOS.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8EB2C1AE543C4F9249F852C579701093 /* OIDAuthorizationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A7546C124E5881BEA9E9360E7B37AB /* OIDAuthorizationService.m */; };
+		924520AFCC22CE2DEC98A555EC91D68B /* Pods-ArkhamCards-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC91FBD66E1421FBF127B1BBB4BEC6D /* Pods-ArkhamCards-dummy.m */; };
+		948C3BB2C2282E1FC75322C6CD8333F5 /* OIDAuthState.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B3444CF31E0C9EF9D2AAF90722082C2 /* OIDAuthState.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9787356654D3C44216E03323A275A2B1 /* OIDAuthorizationUICoordinatorIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FFB99BA1392DBBF013ABBD8D7AA0AA /* OIDAuthorizationUICoordinatorIOS.m */; };
+		A887A0C3E482974AD93894DE27ED20BD /* OIDErrorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 52AD0F16CCAF89BD8997D3FF0A9D5484 /* OIDErrorUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B086F5CD1ACE3A77A6DEFF4BCD7F5859 /* OIDAuthorizationService+IOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E4F6D7E99265490FD150545CCF1614 /* OIDAuthorizationService+IOS.m */; };
+		B1ADCA4A358F79EE285F2D5C5F8B0702 /* OIDAuthorizationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C54E541E2A93D16644DC713789277EB /* OIDAuthorizationRequest.m */; };
+		C2ABE5C841C48FEA46C9D2EBB0F65423 /* OIDServiceDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = CB672E5A3B10564EE64431DF8069726B /* OIDServiceDiscovery.m */; };
+		C64C3BB97182FEBFDAD9992E47BDA72C /* OIDTokenUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A82242456361D85A6FB9D935C0265DFD /* OIDTokenUtilities.m */; };
+		C8CE4205ABB05998D8D6459F196CB0F1 /* OIDRegistrationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3CB0815E8715B93F87873B6377BCD52 /* OIDRegistrationRequest.m */; };
+		CB0A5095603A5CE896F3395E195C0EF6 /* OIDError.m in Sources */ = {isa = PBXBuildFile; fileRef = D213A3AE268B43F607F635F30B443CCB /* OIDError.m */; };
+		CB7E92E719BEC7502FCB190B6A385A63 /* OIDGrantTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 155D88E017866D47EF0FBF065CBC46A5 /* OIDGrantTypes.m */; };
+		CE1EF5FEF70D18E1D05B41957666698B /* OIDTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A097109868F8B5DF7526DB3488688EB0 /* OIDTokenResponse.m */; };
+		D0198C22316D7B093034025209D0889F /* AppAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E62E1900F850366E79E1C3E7E68AEC0 /* AppAuth.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D9847154A6668D8B6C2F6AA0C5C781C8 /* Pods-ArkhamCardsTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 669C7072453532D8EEAB53E4ADE10E7F /* Pods-ArkhamCardsTests-dummy.m */; };
+		DD51041ECFD63D59274755D7D4A3DE9D /* OIDTokenResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D448E889090B08A1DFEA9A67A2B79B7C /* OIDTokenResponse.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E6154E9B20E2D7474753687F406C2702 /* OIDDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C211F11C514696A23A2F1B81860B9A /* OIDDefines.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		EC34F215D0F73A508F3A8C288A6B040A /* OIDTokenUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D6E781BDD46870AF58D08E306BFF1D7 /* OIDTokenUtilities.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		EE636863452E334B5EE0F62E6F0C1862 /* OIDServiceConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3057DE05DEEA3E63BD755DCD196CE7C2 /* OIDServiceConfiguration.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F350B7E84C3CE3A78A416D525077717D /* AppAuth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 674EC949CCDC63B6597D5183F2F49041 /* AppAuth-dummy.m */; };
+		F4D53B4CEB46265EC1289923E71A025B /* OIDAuthorizationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 744974094CB44786FE7A62C45C48722D /* OIDAuthorizationResponse.m */; };
+		FFC5EA55D0AD5933877FCB424B0266F9 /* OIDScopes.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B217DB126470AF7545C4B1B2A72855 /* OIDScopes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		46D9A430977A031B07D62A6B48089F73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DB52EF2ED12898FD43CF97D2C291724;
+			remoteInfo = AppAuth;
+		};
 		6AC580E4630F9EC401BD6B7FB1F5792B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E36C435EF29423033E65305C4972F5FD;
+			remoteGlobalIDString = 2049DB8808B654BBE47A6C84E1E6FF29;
 			remoteInfo = "Pods-ArkhamCards";
-		};
-		D0BC98D58C08EB481A36599F7B6E8374 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1BA3913A892B5569D8D54341BCCEC4E1;
-			remoteInfo = "Pods-ArkhamCards-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		005BC76B375D987D32CF31A97650DEEF /* Pods-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
-		03925BF3840E866644241A99F02749C0 /* Pods-ArkhamCardsTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCardsTests-resources.sh"; sourceTree = "<group>"; };
-		0B4A43F5FADAE6A3101A77C73F830247 /* Pods-ArkhamCards-tvOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArkhamCards-tvOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		1F2821BF08D3A7F8D2167A26524E79AA /* libPods-ArkhamCards-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ArkhamCards-tvOSTests.a"; path = "libPods-ArkhamCards-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FF8CBE3D70C3B5EE02BF7F1402952A2 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterCrashes.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterCrashes.framework"; sourceTree = "<group>"; };
-		22E2899711BFFC029F42597BA23C06FB /* Pods-ArkhamCardsTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCardsTests-frameworks.sh"; sourceTree = "<group>"; };
-		2A876755B4CB509D502F2D531097BA3E /* Pods-ArkhamCards-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2E280B58529AEBA76B5F11C0705D0856 /* AppCenterReactNativeShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterReactNativeShared.framework; path = AppCenterReactNativeShared/AppCenterReactNativeShared.framework; sourceTree = "<group>"; };
-		3A8A1E4E1AE474D16E2D0BB263C357C4 /* Pods-ArkhamCards-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		4109E7851EA842DF6D0ACA9831E03E25 /* Pods-ArkhamCards-tvOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArkhamCards-tvOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		48ACAF04D96FABFD2FC58218B383FF84 /* Pods-ArkhamCards-tvOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArkhamCards-tvOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		4E0703F37ADDF4C94401B34E8EBC6BA0 /* Pods-ArkhamCards-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArkhamCards-acknowledgements.markdown"; sourceTree = "<group>"; };
-		697057EB6F6A315777E7EA941A2AAF3B /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterAnalytics.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterAnalytics.framework"; sourceTree = "<group>"; };
-		7110DD0E7990EAB4736D77174E3804D8 /* Pods-ArkhamCards-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		7B10E758215A8E33091C2D1890E391B6 /* Pods-ArkhamCards-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		84574E503DEA393F845EC9B1753B3C61 /* Pods-ArkhamCards-tvOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-tvOS-frameworks.sh"; sourceTree = "<group>"; };
-		8C371761E6B0BB0EE871D8014014D749 /* Pods-ArkhamCards-tvOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArkhamCards-tvOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		91318E5C827CB03BC2E03D46B2DD422A /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
-		916AF8DAB1D8359C8456C23726E2046D /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ArkhamCards.a"; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04B2E0F3547AB8D31817E82E2A3709ED /* Pods-ArkhamCardsTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCardsTests-resources.sh"; sourceTree = "<group>"; };
+		155D88E017866D47EF0FBF065CBC46A5 /* OIDGrantTypes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDGrantTypes.m; path = Source/OIDGrantTypes.m; sourceTree = "<group>"; };
+		17E4F6D7E99265490FD150545CCF1614 /* OIDAuthorizationService+IOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OIDAuthorizationService+IOS.m"; path = "Source/iOS/OIDAuthorizationService+IOS.m"; sourceTree = "<group>"; };
+		23812845E63D4A3BB7CF3C6B64D2FC9B /* OIDServiceConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDServiceConfiguration.m; path = Source/OIDServiceConfiguration.m; sourceTree = "<group>"; };
+		23D5F742973E6614AA8C00EC120CE40D /* OIDAuthorizationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationRequest.h; path = Source/OIDAuthorizationRequest.h; sourceTree = "<group>"; };
+		23D74524F4D014C882A31272106E6289 /* OIDFieldMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDFieldMapping.m; path = Source/OIDFieldMapping.m; sourceTree = "<group>"; };
+		25B313D68A7DE8F6FE6C9AC3DE84B0BD /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterAnalytics.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterAnalytics.framework"; sourceTree = "<group>"; };
+		2828F90F8729ACAA16558FBE2B1B66B0 /* OIDRegistrationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDRegistrationRequest.h; path = Source/OIDRegistrationRequest.h; sourceTree = "<group>"; };
+		291DEB5A7C44953AF2F82DD4F470B3BD /* OIDScopeUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDScopeUtilities.h; path = Source/OIDScopeUtilities.h; sourceTree = "<group>"; };
+		2D2ECD4412FF6AE779C9E950CF1AFEDC /* OIDResponseTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDResponseTypes.h; path = Source/OIDResponseTypes.h; sourceTree = "<group>"; };
+		3057DE05DEEA3E63BD755DCD196CE7C2 /* OIDServiceConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDServiceConfiguration.h; path = Source/OIDServiceConfiguration.h; sourceTree = "<group>"; };
+		31A7546C124E5881BEA9E9360E7B37AB /* OIDAuthorizationService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthorizationService.m; path = Source/OIDAuthorizationService.m; sourceTree = "<group>"; };
+		32C4EC853F91593ABFA0407ED262F4F5 /* OIDErrorUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDErrorUtilities.m; path = Source/OIDErrorUtilities.m; sourceTree = "<group>"; };
+		3593031FCD622C869C9AEC14AF8FDA24 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
+		3D234443D2E2D79286C820A0E8CE1BD4 /* AppAuth-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AppAuth-prefix.pch"; sourceTree = "<group>"; };
+		3E0469D2F0B7E97E4354919E78569F30 /* OIDAuthState+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthState+IOS.h"; path = "Source/iOS/OIDAuthState+IOS.h"; sourceTree = "<group>"; };
+		3E62E1900F850366E79E1C3E7E68AEC0 /* AppAuth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AppAuth.h; path = Source/AppAuth.h; sourceTree = "<group>"; };
+		4A6819C5635CF9F62710B8D7CF8D8BBF /* Pods-ArkhamCardsTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArkhamCardsTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		52AD0F16CCAF89BD8997D3FF0A9D5484 /* OIDErrorUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDErrorUtilities.h; path = Source/OIDErrorUtilities.h; sourceTree = "<group>"; };
+		59E6A4A6A48D0A51B15B55E09D451C68 /* OIDFieldMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDFieldMapping.h; path = Source/OIDFieldMapping.h; sourceTree = "<group>"; };
+		5B3444CF31E0C9EF9D2AAF90722082C2 /* OIDAuthState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthState.h; path = Source/OIDAuthState.h; sourceTree = "<group>"; };
+		5D27EC36DA70E7690CF7B51F901CA929 /* Pods-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		5FBE6C40E3941E972C023B542213620C /* OIDURLSessionProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDURLSessionProvider.m; path = Source/OIDURLSessionProvider.m; sourceTree = "<group>"; };
+		62BCC9C81D3429DB89674169DCD3E1D4 /* libPods-ArkhamCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ArkhamCardsTests.a"; path = "libPods-ArkhamCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6557BD774A18C388CACF3CD910CE61EB /* OIDURLQueryComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDURLQueryComponent.m; path = Source/OIDURLQueryComponent.m; sourceTree = "<group>"; };
+		669C7072453532D8EEAB53E4ADE10E7F /* Pods-ArkhamCardsTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArkhamCardsTests-dummy.m"; sourceTree = "<group>"; };
+		674EC949CCDC63B6597D5183F2F49041 /* AppAuth-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AppAuth-dummy.m"; sourceTree = "<group>"; };
+		699C62453498CC7985B24D1289B60C8E /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
+		6C54E541E2A93D16644DC713789277EB /* OIDAuthorizationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthorizationRequest.m; path = Source/OIDAuthorizationRequest.m; sourceTree = "<group>"; };
+		6C804B56312C7CEEAAE66C8C97DC1A08 /* OIDAuthState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthState.m; path = Source/OIDAuthState.m; sourceTree = "<group>"; };
+		6F83B99B48B8C186EEB721281E9B2F36 /* AppAuth.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppAuth.xcconfig; sourceTree = "<group>"; };
+		6FF8E1B6B97823BAC9CF524E7888CE88 /* OIDURLQueryComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDURLQueryComponent.h; path = Source/OIDURLQueryComponent.h; sourceTree = "<group>"; };
+		7396314390723FBA2980574500DC9373 /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenter.framework; path = "AppCenter-SDK-Apple/iOS/AppCenter.framework"; sourceTree = "<group>"; };
+		744974094CB44786FE7A62C45C48722D /* OIDAuthorizationResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthorizationResponse.m; path = Source/OIDAuthorizationResponse.m; sourceTree = "<group>"; };
+		7730889DAC6584564967A15C637374DB /* OIDAuthStateChangeDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthStateChangeDelegate.h; path = Source/OIDAuthStateChangeDelegate.h; sourceTree = "<group>"; };
+		77D570DC608A5B7B7E2A0C6B0B827343 /* OIDResponseTypes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDResponseTypes.m; path = Source/OIDResponseTypes.m; sourceTree = "<group>"; };
+		793BD36815264655144CEB52B319E0AB /* libAppAuth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAppAuth.a; path = libAppAuth.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7986737BAFF0BFFCCCDE47F08F2073E3 /* OIDScopeUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDScopeUtilities.m; path = Source/OIDScopeUtilities.m; sourceTree = "<group>"; };
+		7C7E233CBB1C105BE68DDB64459DAD81 /* OIDAuthorizationUICoordinator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationUICoordinator.h; path = Source/OIDAuthorizationUICoordinator.h; sourceTree = "<group>"; };
+		7DC91FBD66E1421FBF127B1BBB4BEC6D /* Pods-ArkhamCards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArkhamCards-dummy.m"; sourceTree = "<group>"; };
+		85ADF4908D5A9262179EBBF360E4C496 /* Pods-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		87C211F11C514696A23A2F1B81860B9A /* OIDDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDDefines.h; path = Source/OIDDefines.h; sourceTree = "<group>"; };
+		8D6E781BDD46870AF58D08E306BFF1D7 /* OIDTokenUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenUtilities.h; path = Source/OIDTokenUtilities.h; sourceTree = "<group>"; };
+		90767A34F7526BD0E194E3217106B03D /* OIDAuthorizationService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationService.h; path = Source/OIDAuthorizationService.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A52664610E8A20684B01D5EDF695260F /* Pods-ArkhamCardsTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArkhamCardsTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		AB7FCB6604CBD16D2764B6958F5D9F92 /* libPods-ArkhamCards-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ArkhamCards-tvOS.a"; path = "libPods-ArkhamCards-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B23F21FB9279364626B6229B8C69E3F0 /* Pods-ArkhamCards-tvOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArkhamCards-tvOSTests-dummy.m"; sourceTree = "<group>"; };
-		B44BF84D70CF18AB3BE79991F4CC7855 /* Pods-ArkhamCards-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArkhamCards-tvOS-dummy.m"; sourceTree = "<group>"; };
-		B5D4870C4B205AF484032DF22E258267 /* Pods-ArkhamCards-tvOSTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-tvOSTests-resources.sh"; sourceTree = "<group>"; };
-		D14B04184102A82F58FED30A89D378E1 /* libPods-ArkhamCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ArkhamCardsTests.a"; path = "libPods-ArkhamCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D85DAF7929C01E9284AB6C14D766D6FE /* Pods-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DC65AFFB7964130E42157D207BE3A6DE /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenter.framework; path = "AppCenter-SDK-Apple/iOS/AppCenter.framework"; sourceTree = "<group>"; };
-		DD528AEFAF7BBEE943215527DFE82FFC /* Pods-ArkhamCards-tvOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-tvOS-resources.sh"; sourceTree = "<group>"; };
-		DD993CDC0EFDF164D8CF00B0CE277C54 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
-		E4378873FF9AF7AF1B76C15C6EDB8E68 /* Pods-ArkhamCards-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArkhamCards-acknowledgements.plist"; sourceTree = "<group>"; };
-		E69BA29D94665C0EDD573755D62460BC /* Pods-ArkhamCards-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-frameworks.sh"; sourceTree = "<group>"; };
-		EA54995AF5DB7736976E3A522DEC3B74 /* Pods-ArkhamCardsTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArkhamCardsTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EDDC823C82AD5A9EC921BB286390C65A /* Pods-ArkhamCardsTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArkhamCardsTests-dummy.m"; sourceTree = "<group>"; };
-		EFCFB29D5C0E086C2DA24746A2FE99B3 /* Pods-ArkhamCards-tvOSTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-tvOSTests-frameworks.sh"; sourceTree = "<group>"; };
-		F214C401DCA71ABA935CA87826E5E28B /* Pods-ArkhamCards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ArkhamCards-dummy.m"; sourceTree = "<group>"; };
-		F94EB4956B763709C5607365D88D5A23 /* Pods-ArkhamCards-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-resources.sh"; sourceTree = "<group>"; };
+		95700DC8F9C366F7C47F0B6729DC43AC /* AppCenterReactNativeShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterReactNativeShared.framework; path = AppCenterReactNativeShared/AppCenterReactNativeShared.framework; sourceTree = "<group>"; };
+		968F6B4D971EC641BF93C15E8296CD41 /* OIDServiceDiscovery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDServiceDiscovery.h; path = Source/OIDServiceDiscovery.h; sourceTree = "<group>"; };
+		9B289E5DB7F13062F9EF0409FB00CE71 /* OIDError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDError.h; path = Source/OIDError.h; sourceTree = "<group>"; };
+		9D7D5FBADC382413EBD233F83B413F46 /* Pods-ArkhamCardsTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCardsTests-frameworks.sh"; sourceTree = "<group>"; };
+		A097109868F8B5DF7526DB3488688EB0 /* OIDTokenResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDTokenResponse.m; path = Source/OIDTokenResponse.m; sourceTree = "<group>"; };
+		A1E974ED6D5EC6F4C464E55958C24DE4 /* Pods-ArkhamCardsTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArkhamCardsTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A571AE4855D63E2DBA3492EF044C682B /* OIDTokenRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenRequest.h; path = Source/OIDTokenRequest.h; sourceTree = "<group>"; };
+		A65DEC0B13FDAA6B20B763DF8DBB09BD /* OIDRegistrationResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDRegistrationResponse.m; path = Source/OIDRegistrationResponse.m; sourceTree = "<group>"; };
+		A82242456361D85A6FB9D935C0265DFD /* OIDTokenUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDTokenUtilities.m; path = Source/OIDTokenUtilities.m; sourceTree = "<group>"; };
+		ACD020480F03E913971E866FB0E70C83 /* Pods-ArkhamCards-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-resources.sh"; sourceTree = "<group>"; };
+		B942E18FDF812B1861ADCA4EA89030DA /* OIDAuthState+IOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OIDAuthState+IOS.m"; path = "Source/iOS/OIDAuthState+IOS.m"; sourceTree = "<group>"; };
+		C4DC002C448DE8997847C8BE4B0A7023 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterCrashes.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterCrashes.framework"; sourceTree = "<group>"; };
+		C9B2BCF82CCAC34A9822C3C88DA7848B /* OIDGrantTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDGrantTypes.h; path = Source/OIDGrantTypes.h; sourceTree = "<group>"; };
+		CB672E5A3B10564EE64431DF8069726B /* OIDServiceDiscovery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDServiceDiscovery.m; path = Source/OIDServiceDiscovery.m; sourceTree = "<group>"; };
+		CD74BED450EC88E696E3ED7DF38E3FB9 /* OIDURLSessionProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDURLSessionProvider.h; path = Source/OIDURLSessionProvider.h; sourceTree = "<group>"; };
+		CDC2E6674435BDEA977945AC5A86CC34 /* OIDAuthorizationResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationResponse.h; path = Source/OIDAuthorizationResponse.h; sourceTree = "<group>"; };
+		CFF8C303AF0FAE76611E6F9E6B7417EF /* Pods-ArkhamCards-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ArkhamCards-acknowledgements.plist"; sourceTree = "<group>"; };
+		D1110B2BCF1B98720DB38004EA2CF658 /* OIDAuthorizationUICoordinatorIOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationUICoordinatorIOS.h; path = Source/iOS/OIDAuthorizationUICoordinatorIOS.h; sourceTree = "<group>"; };
+		D213A3AE268B43F607F635F30B443CCB /* OIDError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDError.m; path = Source/OIDError.m; sourceTree = "<group>"; };
+		D2B0F72B0110150F75CB2746F0D4F602 /* Pods-ArkhamCards-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ArkhamCards-frameworks.sh"; sourceTree = "<group>"; };
+		D448E889090B08A1DFEA9A67A2B79B7C /* OIDTokenResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenResponse.h; path = Source/OIDTokenResponse.h; sourceTree = "<group>"; };
+		D64196CB4B67B7AA607DBC63F3E03603 /* OIDClientMetadataParameters.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDClientMetadataParameters.m; path = Source/OIDClientMetadataParameters.m; sourceTree = "<group>"; };
+		DA516FD61F85C4BB20E7548EEC9C5B26 /* OIDTokenRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDTokenRequest.m; path = Source/OIDTokenRequest.m; sourceTree = "<group>"; };
+		DA54A9DB352644E1D4D8E8164DF5D50A /* OIDRegistrationResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDRegistrationResponse.h; path = Source/OIDRegistrationResponse.h; sourceTree = "<group>"; };
+		E1D7A38BAF45211A261F7A10879A1753 /* Pods-ArkhamCards-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ArkhamCards-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E6F4E7D5131038DA873083EDD4783BDA /* OIDScopes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDScopes.h; path = Source/OIDScopes.h; sourceTree = "<group>"; };
+		EEB57B0BD6F423D56826320950039864 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ArkhamCards.a"; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF8CC390741A1C6748A25620416553F3 /* OIDClientMetadataParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDClientMetadataParameters.h; path = Source/OIDClientMetadataParameters.h; sourceTree = "<group>"; };
+		F0FFB99BA1392DBBF013ABBD8D7AA0AA /* OIDAuthorizationUICoordinatorIOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDAuthorizationUICoordinatorIOS.m; path = Source/iOS/OIDAuthorizationUICoordinatorIOS.m; sourceTree = "<group>"; };
+		F1664FB0B445C093CC1E20712F4A0A2F /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
+		F3CB0815E8715B93F87873B6377BCD52 /* OIDRegistrationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDRegistrationRequest.m; path = Source/OIDRegistrationRequest.m; sourceTree = "<group>"; };
+		F7B217DB126470AF7545C4B1B2A72855 /* OIDScopes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDScopes.m; path = Source/OIDScopes.m; sourceTree = "<group>"; };
+		FC812E3DA0AA8B6E04C991E6C575C833 /* OIDAuthStateErrorDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthStateErrorDelegate.h; path = Source/OIDAuthStateErrorDelegate.h; sourceTree = "<group>"; };
+		FCEF9C243BC127F94F6DB5350A065587 /* OIDAuthorizationService+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthorizationService+IOS.h"; path = "Source/iOS/OIDAuthorizationService+IOS.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		275B5A81DA1AB4FE420E09D71C682CAF /* Frameworks */ = {
+		0162CAEDACFB0DC7D9A66C047A2B6E38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,209 +180,292 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		629FFB11CF71F601B614E75B3C8D4AB2 /* Frameworks */ = {
+		9970E245B349B4F3CC81FAF2E9D19AB2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E1A62A26A42A498AEE1E15A4BF12B56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				48FC7F07E891CB0A77BF73FF10A2DCE1 /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C0416FA3744ECAB6C76E95960896084 /* Frameworks */ = {
+		0DB6ECCE313A55C12C3C7A6A78E15AC8 /* AppAuth */ = {
 			isa = PBXGroup;
 			children = (
-				DC65AFFB7964130E42157D207BE3A6DE /* AppCenter.framework */,
+				3E62E1900F850366E79E1C3E7E68AEC0 /* AppAuth.h */,
+				23D5F742973E6614AA8C00EC120CE40D /* OIDAuthorizationRequest.h */,
+				6C54E541E2A93D16644DC713789277EB /* OIDAuthorizationRequest.m */,
+				CDC2E6674435BDEA977945AC5A86CC34 /* OIDAuthorizationResponse.h */,
+				744974094CB44786FE7A62C45C48722D /* OIDAuthorizationResponse.m */,
+				90767A34F7526BD0E194E3217106B03D /* OIDAuthorizationService.h */,
+				31A7546C124E5881BEA9E9360E7B37AB /* OIDAuthorizationService.m */,
+				FCEF9C243BC127F94F6DB5350A065587 /* OIDAuthorizationService+IOS.h */,
+				17E4F6D7E99265490FD150545CCF1614 /* OIDAuthorizationService+IOS.m */,
+				7C7E233CBB1C105BE68DDB64459DAD81 /* OIDAuthorizationUICoordinator.h */,
+				D1110B2BCF1B98720DB38004EA2CF658 /* OIDAuthorizationUICoordinatorIOS.h */,
+				F0FFB99BA1392DBBF013ABBD8D7AA0AA /* OIDAuthorizationUICoordinatorIOS.m */,
+				5B3444CF31E0C9EF9D2AAF90722082C2 /* OIDAuthState.h */,
+				6C804B56312C7CEEAAE66C8C97DC1A08 /* OIDAuthState.m */,
+				3E0469D2F0B7E97E4354919E78569F30 /* OIDAuthState+IOS.h */,
+				B942E18FDF812B1861ADCA4EA89030DA /* OIDAuthState+IOS.m */,
+				7730889DAC6584564967A15C637374DB /* OIDAuthStateChangeDelegate.h */,
+				FC812E3DA0AA8B6E04C991E6C575C833 /* OIDAuthStateErrorDelegate.h */,
+				EF8CC390741A1C6748A25620416553F3 /* OIDClientMetadataParameters.h */,
+				D64196CB4B67B7AA607DBC63F3E03603 /* OIDClientMetadataParameters.m */,
+				87C211F11C514696A23A2F1B81860B9A /* OIDDefines.h */,
+				9B289E5DB7F13062F9EF0409FB00CE71 /* OIDError.h */,
+				D213A3AE268B43F607F635F30B443CCB /* OIDError.m */,
+				52AD0F16CCAF89BD8997D3FF0A9D5484 /* OIDErrorUtilities.h */,
+				32C4EC853F91593ABFA0407ED262F4F5 /* OIDErrorUtilities.m */,
+				59E6A4A6A48D0A51B15B55E09D451C68 /* OIDFieldMapping.h */,
+				23D74524F4D014C882A31272106E6289 /* OIDFieldMapping.m */,
+				C9B2BCF82CCAC34A9822C3C88DA7848B /* OIDGrantTypes.h */,
+				155D88E017866D47EF0FBF065CBC46A5 /* OIDGrantTypes.m */,
+				2828F90F8729ACAA16558FBE2B1B66B0 /* OIDRegistrationRequest.h */,
+				F3CB0815E8715B93F87873B6377BCD52 /* OIDRegistrationRequest.m */,
+				DA54A9DB352644E1D4D8E8164DF5D50A /* OIDRegistrationResponse.h */,
+				A65DEC0B13FDAA6B20B763DF8DBB09BD /* OIDRegistrationResponse.m */,
+				2D2ECD4412FF6AE779C9E950CF1AFEDC /* OIDResponseTypes.h */,
+				77D570DC608A5B7B7E2A0C6B0B827343 /* OIDResponseTypes.m */,
+				E6F4E7D5131038DA873083EDD4783BDA /* OIDScopes.h */,
+				F7B217DB126470AF7545C4B1B2A72855 /* OIDScopes.m */,
+				291DEB5A7C44953AF2F82DD4F470B3BD /* OIDScopeUtilities.h */,
+				7986737BAFF0BFFCCCDE47F08F2073E3 /* OIDScopeUtilities.m */,
+				3057DE05DEEA3E63BD755DCD196CE7C2 /* OIDServiceConfiguration.h */,
+				23812845E63D4A3BB7CF3C6B64D2FC9B /* OIDServiceConfiguration.m */,
+				968F6B4D971EC641BF93C15E8296CD41 /* OIDServiceDiscovery.h */,
+				CB672E5A3B10564EE64431DF8069726B /* OIDServiceDiscovery.m */,
+				A571AE4855D63E2DBA3492EF044C682B /* OIDTokenRequest.h */,
+				DA516FD61F85C4BB20E7548EEC9C5B26 /* OIDTokenRequest.m */,
+				D448E889090B08A1DFEA9A67A2B79B7C /* OIDTokenResponse.h */,
+				A097109868F8B5DF7526DB3488688EB0 /* OIDTokenResponse.m */,
+				8D6E781BDD46870AF58D08E306BFF1D7 /* OIDTokenUtilities.h */,
+				A82242456361D85A6FB9D935C0265DFD /* OIDTokenUtilities.m */,
+				6FF8E1B6B97823BAC9CF524E7888CE88 /* OIDURLQueryComponent.h */,
+				6557BD774A18C388CACF3CD910CE61EB /* OIDURLQueryComponent.m */,
+				CD74BED450EC88E696E3ED7DF38E3FB9 /* OIDURLSessionProvider.h */,
+				5FBE6C40E3941E972C023B542213620C /* OIDURLSessionProvider.m */,
+				D89E12A7C174D97F0E3932370582D19A /* Support Files */,
+			);
+			name = AppAuth;
+			path = AppAuth;
+			sourceTree = "<group>";
+		};
+		111BF98C7EABED0F27773E7BB2A52376 /* Pods-ArkhamCards */ = {
+			isa = PBXGroup;
+			children = (
+				E1D7A38BAF45211A261F7A10879A1753 /* Pods-ArkhamCards-acknowledgements.markdown */,
+				CFF8C303AF0FAE76611E6F9E6B7417EF /* Pods-ArkhamCards-acknowledgements.plist */,
+				7DC91FBD66E1421FBF127B1BBB4BEC6D /* Pods-ArkhamCards-dummy.m */,
+				D2B0F72B0110150F75CB2746F0D4F602 /* Pods-ArkhamCards-frameworks.sh */,
+				ACD020480F03E913971E866FB0E70C83 /* Pods-ArkhamCards-resources.sh */,
+				699C62453498CC7985B24D1289B60C8E /* Pods-ArkhamCards.debug.xcconfig */,
+				F1664FB0B445C093CC1E20712F4A0A2F /* Pods-ArkhamCards.release.xcconfig */,
+			);
+			name = "Pods-ArkhamCards";
+			path = "Target Support Files/Pods-ArkhamCards";
+			sourceTree = "<group>";
+		};
+		1406C8DC68BDECFA36DBDC4E6D0C01E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25B313D68A7DE8F6FE6C9AC3DE84B0BD /* AppCenterAnalytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+		197D8FC75C4CCB9A0EF23EA8C4BB5AB2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				0DB6ECCE313A55C12C3C7A6A78E15AC8 /* AppAuth */,
+				A4B20EC2520F29717280947492A5780B /* AppCenter */,
+				48078BC0AB4620AD02F40AE73FA21F78 /* AppCenterReactNativeShared */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		2299AF501E253B95F2AE1FAD00A3B182 /* Crashes */ = {
+		2D21AE7555B29D5BE35B1016960ABEA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4789B2888C9F3A64D9BB98A64504484B /* Frameworks */,
+				793BD36815264655144CEB52B319E0AB /* libAppAuth.a */,
+				EEB57B0BD6F423D56826320950039864 /* libPods-ArkhamCards.a */,
+				62BCC9C81D3429DB89674169DCD3E1D4 /* libPods-ArkhamCardsTests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3BB9F147C6909FEEB375886026F6AFD0 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				111BF98C7EABED0F27773E7BB2A52376 /* Pods-ArkhamCards */,
+				66448D18CC4167FD1482E495ACB64E5B /* Pods-ArkhamCardsTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		45386DFAF6A7F35E3EB3BA12CC17A92B /* Crashes */ = {
+			isa = PBXGroup;
+			children = (
+				EFA64188A593F21E26C4E6EB8CCBDF47 /* Frameworks */,
 			);
 			name = Crashes;
 			sourceTree = "<group>";
 		};
-		260E672E181DB8BDAC7A2999772A7AE4 /* Analytics */ = {
+		48078BC0AB4620AD02F40AE73FA21F78 /* AppCenterReactNativeShared */ = {
 			isa = PBXGroup;
 			children = (
-				8E2C96EA6162ABA11EBE8E8817909062 /* Frameworks */,
+				9467AFC639BE7AE83BDF08F53FB2BC0D /* Frameworks */,
+			);
+			name = AppCenterReactNativeShared;
+			path = AppCenterReactNativeShared;
+			sourceTree = "<group>";
+		};
+		504DC043AEEDE02B9B82E3038AEA351E /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				1406C8DC68BDECFA36DBDC4E6D0C01E8 /* Frameworks */,
 			);
 			name = Analytics;
 			sourceTree = "<group>";
 		};
-		2D20FC01AE47C04E62202F456C8DC21D /* Core */ = {
+		5A7BA3B467C4EB42E6C8B3C97D84918B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0C0416FA3744ECAB6C76E95960896084 /* Frameworks */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		4789B2888C9F3A64D9BB98A64504484B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1FF8CBE3D70C3B5EE02BF7F1402952A2 /* AppCenterCrashes.framework */,
+				7396314390723FBA2980574500DC9373 /* AppCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6930E476529EAD00E9DCAE34E50E6AA6 /* Pods-ArkhamCards */ = {
+		66448D18CC4167FD1482E495ACB64E5B /* Pods-ArkhamCardsTests */ = {
 			isa = PBXGroup;
 			children = (
-				4E0703F37ADDF4C94401B34E8EBC6BA0 /* Pods-ArkhamCards-acknowledgements.markdown */,
-				E4378873FF9AF7AF1B76C15C6EDB8E68 /* Pods-ArkhamCards-acknowledgements.plist */,
-				F214C401DCA71ABA935CA87826E5E28B /* Pods-ArkhamCards-dummy.m */,
-				E69BA29D94665C0EDD573755D62460BC /* Pods-ArkhamCards-frameworks.sh */,
-				F94EB4956B763709C5607365D88D5A23 /* Pods-ArkhamCards-resources.sh */,
-				DD993CDC0EFDF164D8CF00B0CE277C54 /* Pods-ArkhamCards.debug.xcconfig */,
-				91318E5C827CB03BC2E03D46B2DD422A /* Pods-ArkhamCards.release.xcconfig */,
+				4A6819C5635CF9F62710B8D7CF8D8BBF /* Pods-ArkhamCardsTests-acknowledgements.markdown */,
+				A1E974ED6D5EC6F4C464E55958C24DE4 /* Pods-ArkhamCardsTests-acknowledgements.plist */,
+				669C7072453532D8EEAB53E4ADE10E7F /* Pods-ArkhamCardsTests-dummy.m */,
+				9D7D5FBADC382413EBD233F83B413F46 /* Pods-ArkhamCardsTests-frameworks.sh */,
+				04B2E0F3547AB8D31817E82E2A3709ED /* Pods-ArkhamCardsTests-resources.sh */,
+				85ADF4908D5A9262179EBBF360E4C496 /* Pods-ArkhamCardsTests.debug.xcconfig */,
+				5D27EC36DA70E7690CF7B51F901CA929 /* Pods-ArkhamCardsTests.release.xcconfig */,
 			);
-			name = "Pods-ArkhamCards";
-			path = "Target Support Files/Pods-ArkhamCards";
+			name = "Pods-ArkhamCardsTests";
+			path = "Target Support Files/Pods-ArkhamCardsTests";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
-				B1C0FD4C526B54B6F7B5EA76C32A7B4C /* Pods */,
-				D1CD5B23EF57367AE289F01E919122BE /* Products */,
-				815D78EDAFBC16CBC29A9088B34D1A42 /* Targets Support Files */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				197D8FC75C4CCB9A0EF23EA8C4BB5AB2 /* Pods */,
+				2D21AE7555B29D5BE35B1016960ABEA9 /* Products */,
+				3BB9F147C6909FEEB375886026F6AFD0 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		815D78EDAFBC16CBC29A9088B34D1A42 /* Targets Support Files */ = {
+		9467AFC639BE7AE83BDF08F53FB2BC0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6930E476529EAD00E9DCAE34E50E6AA6 /* Pods-ArkhamCards */,
-				888C7CA511A4DB4EC06E2BDFD4D6455A /* Pods-ArkhamCards-tvOS */,
-				852B5E86002C88EFBA7252600794F30E /* Pods-ArkhamCards-tvOSTests */,
-				AB7C1913C7D574F0EDE2778C1ED98E95 /* Pods-ArkhamCardsTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		852B5E86002C88EFBA7252600794F30E /* Pods-ArkhamCards-tvOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				4109E7851EA842DF6D0ACA9831E03E25 /* Pods-ArkhamCards-tvOSTests-acknowledgements.markdown */,
-				0B4A43F5FADAE6A3101A77C73F830247 /* Pods-ArkhamCards-tvOSTests-acknowledgements.plist */,
-				B23F21FB9279364626B6229B8C69E3F0 /* Pods-ArkhamCards-tvOSTests-dummy.m */,
-				EFCFB29D5C0E086C2DA24746A2FE99B3 /* Pods-ArkhamCards-tvOSTests-frameworks.sh */,
-				B5D4870C4B205AF484032DF22E258267 /* Pods-ArkhamCards-tvOSTests-resources.sh */,
-				2A876755B4CB509D502F2D531097BA3E /* Pods-ArkhamCards-tvOSTests.debug.xcconfig */,
-				7B10E758215A8E33091C2D1890E391B6 /* Pods-ArkhamCards-tvOSTests.release.xcconfig */,
-			);
-			name = "Pods-ArkhamCards-tvOSTests";
-			path = "Target Support Files/Pods-ArkhamCards-tvOSTests";
-			sourceTree = "<group>";
-		};
-		888C7CA511A4DB4EC06E2BDFD4D6455A /* Pods-ArkhamCards-tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				8C371761E6B0BB0EE871D8014014D749 /* Pods-ArkhamCards-tvOS-acknowledgements.markdown */,
-				48ACAF04D96FABFD2FC58218B383FF84 /* Pods-ArkhamCards-tvOS-acknowledgements.plist */,
-				B44BF84D70CF18AB3BE79991F4CC7855 /* Pods-ArkhamCards-tvOS-dummy.m */,
-				84574E503DEA393F845EC9B1753B3C61 /* Pods-ArkhamCards-tvOS-frameworks.sh */,
-				DD528AEFAF7BBEE943215527DFE82FFC /* Pods-ArkhamCards-tvOS-resources.sh */,
-				3A8A1E4E1AE474D16E2D0BB263C357C4 /* Pods-ArkhamCards-tvOS.debug.xcconfig */,
-				7110DD0E7990EAB4736D77174E3804D8 /* Pods-ArkhamCards-tvOS.release.xcconfig */,
-			);
-			name = "Pods-ArkhamCards-tvOS";
-			path = "Target Support Files/Pods-ArkhamCards-tvOS";
-			sourceTree = "<group>";
-		};
-		8E2C96EA6162ABA11EBE8E8817909062 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				697057EB6F6A315777E7EA941A2AAF3B /* AppCenterAnalytics.framework */,
+				95700DC8F9C366F7C47F0B6729DC43AC /* AppCenterReactNativeShared.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AB7C1913C7D574F0EDE2778C1ED98E95 /* Pods-ArkhamCardsTests */ = {
+		960FB1AE2465457D0814764F52E6B2ED /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EA54995AF5DB7736976E3A522DEC3B74 /* Pods-ArkhamCardsTests-acknowledgements.markdown */,
-				A52664610E8A20684B01D5EDF695260F /* Pods-ArkhamCardsTests-acknowledgements.plist */,
-				EDDC823C82AD5A9EC921BB286390C65A /* Pods-ArkhamCardsTests-dummy.m */,
-				22E2899711BFFC029F42597BA23C06FB /* Pods-ArkhamCardsTests-frameworks.sh */,
-				03925BF3840E866644241A99F02749C0 /* Pods-ArkhamCardsTests-resources.sh */,
-				D85DAF7929C01E9284AB6C14D766D6FE /* Pods-ArkhamCardsTests.debug.xcconfig */,
-				005BC76B375D987D32CF31A97650DEEF /* Pods-ArkhamCardsTests.release.xcconfig */,
+				3593031FCD622C869C9AEC14AF8FDA24 /* SafariServices.framework */,
 			);
-			name = "Pods-ArkhamCardsTests";
-			path = "Target Support Files/Pods-ArkhamCardsTests";
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		B1C0FD4C526B54B6F7B5EA76C32A7B4C /* Pods */ = {
+		A4B20EC2520F29717280947492A5780B /* AppCenter */ = {
 			isa = PBXGroup;
 			children = (
-				D6F4E16E170AFF42D929EF8FFF92078F /* AppCenter */,
-				FDE42022E7C36FE2A980950DD051F732 /* AppCenterReactNativeShared */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D1CD5B23EF57367AE289F01E919122BE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				916AF8DAB1D8359C8456C23726E2046D /* libPods-ArkhamCards.a */,
-				AB7FCB6604CBD16D2764B6958F5D9F92 /* libPods-ArkhamCards-tvOS.a */,
-				1F2821BF08D3A7F8D2167A26524E79AA /* libPods-ArkhamCards-tvOSTests.a */,
-				D14B04184102A82F58FED30A89D378E1 /* libPods-ArkhamCardsTests.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		D6F4E16E170AFF42D929EF8FFF92078F /* AppCenter */ = {
-			isa = PBXGroup;
-			children = (
-				260E672E181DB8BDAC7A2999772A7AE4 /* Analytics */,
-				2D20FC01AE47C04E62202F456C8DC21D /* Core */,
-				2299AF501E253B95F2AE1FAD00A3B182 /* Crashes */,
+				504DC043AEEDE02B9B82E3038AEA351E /* Analytics */,
+				F406BC2A3A31838A8B2C7C7B8E5F8E80 /* Core */,
+				45386DFAF6A7F35E3EB3BA12CC17A92B /* Crashes */,
 			);
 			name = AppCenter;
 			path = AppCenter;
 			sourceTree = "<group>";
 		};
-		F84ACEF4E4D3666C3A595115D01D3868 /* Frameworks */ = {
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2E280B58529AEBA76B5F11C0705D0856 /* AppCenterReactNativeShared.framework */,
+				960FB1AE2465457D0814764F52E6B2ED /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FDE42022E7C36FE2A980950DD051F732 /* AppCenterReactNativeShared */ = {
+		D89E12A7C174D97F0E3932370582D19A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F84ACEF4E4D3666C3A595115D01D3868 /* Frameworks */,
+				6F83B99B48B8C186EEB721281E9B2F36 /* AppAuth.xcconfig */,
+				674EC949CCDC63B6597D5183F2F49041 /* AppAuth-dummy.m */,
+				3D234443D2E2D79286C820A0E8CE1BD4 /* AppAuth-prefix.pch */,
 			);
-			name = AppCenterReactNativeShared;
-			path = AppCenterReactNativeShared;
+			name = "Support Files";
+			path = "../Target Support Files/AppAuth";
+			sourceTree = "<group>";
+		};
+		EFA64188A593F21E26C4E6EB8CCBDF47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4DC002C448DE8997847C8BE4B0A7023 /* AppCenterCrashes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F406BC2A3A31838A8B2C7C7B8E5F8E80 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5A7BA3B467C4EB42E6C8B3C97D84918B /* Frameworks */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3E27C6EEB5282C891D5C487FE6B71B78 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0198C22316D7B093034025209D0889F /* AppAuth.h in Headers */,
+				5FE52C3B1EB860B64378A4F5EF1BE5B3 /* OIDAuthorizationRequest.h in Headers */,
+				7B04534AA521E21F2BEAC77DE935D95B /* OIDAuthorizationResponse.h in Headers */,
+				4DFF6CA11CA8D4BB0580EE39D0CFB122 /* OIDAuthorizationService+IOS.h in Headers */,
+				113E0B2D641A22B1A13828F3AB948D99 /* OIDAuthorizationService.h in Headers */,
+				1646E0684F7B08552B2968B78AC65D72 /* OIDAuthorizationUICoordinator.h in Headers */,
+				22F83D54EDF558A5AB730B0B201CC43C /* OIDAuthorizationUICoordinatorIOS.h in Headers */,
+				8E1C41DC5171EC86D73FA59687134493 /* OIDAuthState+IOS.h in Headers */,
+				948C3BB2C2282E1FC75322C6CD8333F5 /* OIDAuthState.h in Headers */,
+				5EA34D3ABB718763B4B740F79A104E92 /* OIDAuthStateChangeDelegate.h in Headers */,
+				5C7F561E1D19674BB773CBB7044D9E46 /* OIDAuthStateErrorDelegate.h in Headers */,
+				86797FE6F3199FB007685AA9ED7EE499 /* OIDClientMetadataParameters.h in Headers */,
+				E6154E9B20E2D7474753687F406C2702 /* OIDDefines.h in Headers */,
+				1F7615E2A9BB25750F5C99BA9B0FDD4D /* OIDError.h in Headers */,
+				A887A0C3E482974AD93894DE27ED20BD /* OIDErrorUtilities.h in Headers */,
+				4CAF5E227661F7A02C6805AF30EA15BF /* OIDFieldMapping.h in Headers */,
+				2A23279C2ADC0A990C7D4AFA1D000A17 /* OIDGrantTypes.h in Headers */,
+				584A37F03EDAF250B3920951DFCD6D50 /* OIDRegistrationRequest.h in Headers */,
+				1F0C1423AB525ADF45446BBE478FC691 /* OIDRegistrationResponse.h in Headers */,
+				1DE1A0BF65AFC178B61BEE98995921D2 /* OIDResponseTypes.h in Headers */,
+				2115BB79611E106F8B9AEA1E176AF90B /* OIDScopes.h in Headers */,
+				83A5B18B87B89475D8DDE4A780FBA5D1 /* OIDScopeUtilities.h in Headers */,
+				EE636863452E334B5EE0F62E6F0C1862 /* OIDServiceConfiguration.h in Headers */,
+				4128AF072F103A7FC4744CFEBE5C3697 /* OIDServiceDiscovery.h in Headers */,
+				5F7C66277CD033955796F35A31685FF1 /* OIDTokenRequest.h in Headers */,
+				DD51041ECFD63D59274755D7D4A3DE9D /* OIDTokenResponse.h in Headers */,
+				EC34F215D0F73A508F3A8C288A6B040A /* OIDTokenUtilities.h in Headers */,
+				0C8F31F526F7AB5A4657B51D396A62BC /* OIDURLQueryComponent.h in Headers */,
+				1A641B4D593512344A28A0BD5089049B /* OIDURLSessionProvider.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		0BBBE9F3971B399CB7EF84D2C932A2D4 /* Pods-ArkhamCardsTests */ = {
@@ -304,56 +482,41 @@
 			);
 			name = "Pods-ArkhamCardsTests";
 			productName = "Pods-ArkhamCardsTests";
-			productReference = D14B04184102A82F58FED30A89D378E1 /* libPods-ArkhamCardsTests.a */;
+			productReference = 62BCC9C81D3429DB89674169DCD3E1D4 /* libPods-ArkhamCardsTests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		1BA3913A892B5569D8D54341BCCEC4E1 /* Pods-ArkhamCards-tvOS */ = {
+		2049DB8808B654BBE47A6C84E1E6FF29 /* Pods-ArkhamCards */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5BE3AF58A5B349F6957C1598E35C961 /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards-tvOS" */;
+			buildConfigurationList = 0137D9581848E60E4C066ED9E70D34F2 /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards" */;
 			buildPhases = (
-				4A9A7EDB00EA887AD16E4D28D8EBC7C5 /* Sources */,
-				275B5A81DA1AB4FE420E09D71C682CAF /* Frameworks */,
+				DD4D1ABF8272A1C5851DD09F7DAFE548 /* Sources */,
+				0162CAEDACFB0DC7D9A66C047A2B6E38 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = "Pods-ArkhamCards-tvOS";
-			productName = "Pods-ArkhamCards-tvOS";
-			productReference = AB7FCB6604CBD16D2764B6958F5D9F92 /* libPods-ArkhamCards-tvOS.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		E36C435EF29423033E65305C4972F5FD /* Pods-ArkhamCards */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9AD61DCC624E25BEC195BCE67C5D5ECD /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards" */;
-			buildPhases = (
-				C9546723391A3E73BC5360AC3F795304 /* Sources */,
-				7E1A62A26A42A498AEE1E15A4BF12B56 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
+				DC4769E923F2D253443CF2542B97317B /* PBXTargetDependency */,
 			);
 			name = "Pods-ArkhamCards";
 			productName = "Pods-ArkhamCards";
-			productReference = 916AF8DAB1D8359C8456C23726E2046D /* libPods-ArkhamCards.a */;
+			productReference = EEB57B0BD6F423D56826320950039864 /* libPods-ArkhamCards.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F8A89D55F96E4B2057AAB09763980530 /* Pods-ArkhamCards-tvOSTests */ = {
+		3DB52EF2ED12898FD43CF97D2C291724 /* AppAuth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3977C54AECD22DCD3D50E6DD1D70BEB3 /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards-tvOSTests" */;
+			buildConfigurationList = E1911459194803BE9675108DD875C988 /* Build configuration list for PBXNativeTarget "AppAuth" */;
 			buildPhases = (
-				26B64E73B65F295A6889958250409D15 /* Sources */,
-				629FFB11CF71F601B614E75B3C8D4AB2 /* Frameworks */,
+				A11BFCC9EFF84B553D7C7F3CDBA010E9 /* Sources */,
+				9970E245B349B4F3CC81FAF2E9D19AB2 /* Frameworks */,
+				3E27C6EEB5282C891D5C487FE6B71B78 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				343F07FF48E09B84B0BE1B77C4F45F38 /* PBXTargetDependency */,
 			);
-			name = "Pods-ArkhamCards-tvOSTests";
-			productName = "Pods-ArkhamCards-tvOSTests";
-			productReference = 1F2821BF08D3A7F8D2167A26524E79AA /* libPods-ArkhamCards-tvOSTests.a */;
+			name = AppAuth;
+			productName = AppAuth;
+			productReference = 793BD36815264655144CEB52B319E0AB /* libAppAuth.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -373,40 +536,47 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = D1CD5B23EF57367AE289F01E919122BE /* Products */;
+			productRefGroup = 2D21AE7555B29D5BE35B1016960ABEA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E36C435EF29423033E65305C4972F5FD /* Pods-ArkhamCards */,
-				1BA3913A892B5569D8D54341BCCEC4E1 /* Pods-ArkhamCards-tvOS */,
-				F8A89D55F96E4B2057AAB09763980530 /* Pods-ArkhamCards-tvOSTests */,
+				3DB52EF2ED12898FD43CF97D2C291724 /* AppAuth */,
+				2049DB8808B654BBE47A6C84E1E6FF29 /* Pods-ArkhamCards */,
 				0BBBE9F3971B399CB7EF84D2C932A2D4 /* Pods-ArkhamCardsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		26B64E73B65F295A6889958250409D15 /* Sources */ = {
+		A11BFCC9EFF84B553D7C7F3CDBA010E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1614E3460EABC3EF24EE303D5444239A /* Pods-ArkhamCards-tvOSTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4A9A7EDB00EA887AD16E4D28D8EBC7C5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C1D5F561358D89935D3F4EEAF8978416 /* Pods-ArkhamCards-tvOS-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C9546723391A3E73BC5360AC3F795304 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B0D71F0AD081F53F8E8BCE9C0D5D9E65 /* Pods-ArkhamCards-dummy.m in Sources */,
+				F350B7E84C3CE3A78A416D525077717D /* AppAuth-dummy.m in Sources */,
+				B1ADCA4A358F79EE285F2D5C5F8B0702 /* OIDAuthorizationRequest.m in Sources */,
+				F4D53B4CEB46265EC1289923E71A025B /* OIDAuthorizationResponse.m in Sources */,
+				B086F5CD1ACE3A77A6DEFF4BCD7F5859 /* OIDAuthorizationService+IOS.m in Sources */,
+				8EB2C1AE543C4F9249F852C579701093 /* OIDAuthorizationService.m in Sources */,
+				9787356654D3C44216E03323A275A2B1 /* OIDAuthorizationUICoordinatorIOS.m in Sources */,
+				7C2DEE6A12ED49956C524C7C7E7942D5 /* OIDAuthState+IOS.m in Sources */,
+				2D7C877FE4363DA63B3457B4638BDECE /* OIDAuthState.m in Sources */,
+				76C7BC81C788C24A501ECB70802AA314 /* OIDClientMetadataParameters.m in Sources */,
+				CB0A5095603A5CE896F3395E195C0EF6 /* OIDError.m in Sources */,
+				05CF094A769745EE81F5FFB831353D63 /* OIDErrorUtilities.m in Sources */,
+				73ED835573B0A475A7CA9A6A00ADD09E /* OIDFieldMapping.m in Sources */,
+				CB7E92E719BEC7502FCB190B6A385A63 /* OIDGrantTypes.m in Sources */,
+				C8CE4205ABB05998D8D6459F196CB0F1 /* OIDRegistrationRequest.m in Sources */,
+				0BAA8F2E9487FE5D93216D56BE106249 /* OIDRegistrationResponse.m in Sources */,
+				10F88574C6CD7E858242AC34F7DF1438 /* OIDResponseTypes.m in Sources */,
+				FFC5EA55D0AD5933877FCB424B0266F9 /* OIDScopes.m in Sources */,
+				681AA704482D48819BB1688B629996DF /* OIDScopeUtilities.m in Sources */,
+				61CC67C5284ED25BF6C131B5058DCAF4 /* OIDServiceConfiguration.m in Sources */,
+				C2ABE5C841C48FEA46C9D2EBB0F65423 /* OIDServiceDiscovery.m in Sources */,
+				109D47D8A6FA87D84C77DF6A08D00B31 /* OIDTokenRequest.m in Sources */,
+				CE1EF5FEF70D18E1D05B41957666698B /* OIDTokenResponse.m in Sources */,
+				C64C3BB97182FEBFDAD9992E47BDA72C /* OIDTokenUtilities.m in Sources */,
+				01149DB4EE35539CEC6D3C6609BFFCFF /* OIDURLQueryComponent.m in Sources */,
+				36E53015CB7EAAE552C2D773F490276F /* OIDURLSessionProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,25 +588,100 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD4D1ABF8272A1C5851DD09F7DAFE548 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				924520AFCC22CE2DEC98A555EC91D68B /* Pods-ArkhamCards-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		343F07FF48E09B84B0BE1B77C4F45F38 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-ArkhamCards-tvOS";
-			target = 1BA3913A892B5569D8D54341BCCEC4E1 /* Pods-ArkhamCards-tvOS */;
-			targetProxy = D0BC98D58C08EB481A36599F7B6E8374 /* PBXContainerItemProxy */;
-		};
 		400DDDAA366083AB8E0A5B062D0354FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-ArkhamCards";
-			target = E36C435EF29423033E65305C4972F5FD /* Pods-ArkhamCards */;
+			target = 2049DB8808B654BBE47A6C84E1E6FF29 /* Pods-ArkhamCards */;
 			targetProxy = 6AC580E4630F9EC401BD6B7FB1F5792B /* PBXContainerItemProxy */;
+		};
+		DC4769E923F2D253443CF2542B97317B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AppAuth;
+			target = 3DB52EF2ED12898FD43CF97D2C291724 /* AppAuth */;
+			targetProxy = 46D9A430977A031B07D62A6B48089F73 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1EA8CDCA49D5A280A3417B7878BFF5DD /* Debug */ = {
+		013CBF0ED1B139DBE8644E516F7D03C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 699C62453498CC7985B24D1289B60C8E /* Pods-ArkhamCards.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0BF1A341267367A968D1ABF3A723D54D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F83B99B48B8C186EEB721281E9B2F36 /* AppAuth.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/AppAuth/AppAuth-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AppAuth;
+				PRODUCT_NAME = AppAuth;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10FBC3090BCC10C87F208842BE6AB133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1664FB0B445C093CC1E20712F4A0A2F /* Pods-ArkhamCards.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		199D972A13F2B4C56847F7A89CCA83BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -496,75 +741,12 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
-				TVOS_DEPLOYMENT_TARGET = 9.2;
-			};
-			name = Debug;
-		};
-		207E2A6811F7F5EF627526A77A5C0492 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B10E758215A8E33091C2D1890E391B6 /* Pods-ArkhamCards-tvOSTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		224565D0824FADA1A2CC935D2E6F4261 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD993CDC0EFDF164D8CF00B0CE277C54 /* Pods-ArkhamCards.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		3BA584AB81460B6D30E946C6E102F6A8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A8A1E4E1AE474D16E2D0BB263C357C4 /* Pods-ArkhamCards-tvOS.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Debug;
 		};
 		73373D55776E6386EBEC4438CFF1BBF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D85DAF7929C01E9284AB6C14D766D6FE /* Pods-ArkhamCardsTests.debug.xcconfig */;
+			baseConfigurationReference = 85ADF4908D5A9262179EBBF360E4C496 /* Pods-ArkhamCardsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -583,7 +765,52 @@
 			};
 			name = Debug;
 		};
-		78CCF2F8575642B0F9526268F670DF6D /* Release */ = {
+		B73840CFB983773F3FFBF1E018BB124D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D27EC36DA70E7690CF7B51F901CA929 /* Pods-ArkhamCardsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9DF6429E2BB91245ABAAFD53019CDF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F83B99B48B8C186EEB721281E9B2F36 /* AppAuth.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/AppAuth/AppAuth-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AppAuth;
+				PRODUCT_NAME = AppAuth;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FDB2FC4A1E5891381CD9D922145497F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -638,130 +865,26 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
-				TVOS_DEPLOYMENT_TARGET = 9.2;
-			};
-			name = Release;
-		};
-		B3EDEDC65B45CFF83A8153F18EA7F146 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91318E5C827CB03BC2E03D46B2DD422A /* Pods-ArkhamCards.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B73840CFB983773F3FFBF1E018BB124D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 005BC76B375D987D32CF31A97650DEEF /* Pods-ArkhamCardsTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		BBAC612D57797A288E09850E648C665C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A876755B4CB509D502F2D531097BA3E /* Pods-ArkhamCards-tvOSTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
-			};
-			name = Debug;
-		};
-		EFCF7C1F40F7961A1DA60885DB8CAFE5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7110DD0E7990EAB4736D77174E3804D8 /* Pods-ArkhamCards-tvOS.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0137D9581848E60E4C066ED9E70D34F2 /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				013CBF0ED1B139DBE8644E516F7D03C3 /* Debug */,
+				10FBC3090BCC10C87F208842BE6AB133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EA8CDCA49D5A280A3417B7878BFF5DD /* Debug */,
-				78CCF2F8575642B0F9526268F670DF6D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3977C54AECD22DCD3D50E6DD1D70BEB3 /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards-tvOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BBAC612D57797A288E09850E648C665C /* Debug */,
-				207E2A6811F7F5EF627526A77A5C0492 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AD61DCC624E25BEC195BCE67C5D5ECD /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				224565D0824FADA1A2CC935D2E6F4261 /* Debug */,
-				B3EDEDC65B45CFF83A8153F18EA7F146 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A5BE3AF58A5B349F6957C1598E35C961 /* Build configuration list for PBXNativeTarget "Pods-ArkhamCards-tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3BA584AB81460B6D30E946C6E102F6A8 /* Debug */,
-				EFCF7C1F40F7961A1DA60885DB8CAFE5 /* Release */,
+				199D972A13F2B4C56847F7A89CCA83BC /* Debug */,
+				FDB2FC4A1E5891381CD9D922145497F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -771,6 +894,15 @@
 			buildConfigurations = (
 				73373D55776E6386EBEC4438CFF1BBF5 /* Debug */,
 				B73840CFB983773F3FFBF1E018BB124D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1911459194803BE9675108DD875C988 /* Build configuration list for PBXNativeTarget "AppAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9DF6429E2BB91245ABAAFD53019CDF0 /* Debug */,
+				0BF1A341267367A968D1ABF3A723D54D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -6,8 +6,10 @@
  */
 
 #import <UIKit/UIKit.h>
+@protocol OIDAuthorizationFlowSession;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+@property(nonatomic, strong, nullable) id<OIDAuthorizationFlowSession> currentAuthorizationFlow;
 
 @property (nonatomic, strong) UIWindow *window;
 

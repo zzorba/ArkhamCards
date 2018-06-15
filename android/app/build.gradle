@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -110,6 +111,9 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [
+            appAuthRedirectScheme: 'arkhamcards'
+        ]
     }
     splits {
         abi {
@@ -141,6 +145,9 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-config')
+    compile project(':react-native-keychain')
+    compile project(':react-native-app-auth')
     compile project(':appcenter-crashes')
     compile project(':appcenter-analytics')
     compile project(':appcenter')
@@ -148,7 +155,7 @@ dependencies {
     compile project(':react-native-svg')
     compile project(':react-native-fetch-blob')
     compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:23.0.1"
+    compile "com.android.support:appcompat-v7:25.3.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':react-native-navigation')
     compile project(':react-native-vector-icons')

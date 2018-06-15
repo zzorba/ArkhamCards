@@ -13,6 +13,8 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import "RCCManager.h"
+#import <React/RCTLinkingManager.h>
+#import <AppAuth/AppAuth.h>
 
 @implementation AppDelegate
 
@@ -38,4 +40,22 @@
   
   return YES;
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+  return [RCTLinkingManager application:application openURL:url
+                      sourceApplication:sourceApplication annotation:annotation];
+}
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+  if ([_currentAuthorizationFlow resumeAuthorizationFlowWithURL:url]) {
+    _currentAuthorizationFlow = nil;
+    return YES;
+  }
+  return NO;
+}
+
 @end
