@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { iconsMap } from '../app/NavIcons';
-
+import withLoginGate from './withLoginGate';
 import MyDecksComponent from './MyDecksComponent';
 
-export default class MyDecksView extends React.Component {
+class MyDecksView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
   }
@@ -59,3 +59,5 @@ export default class MyDecksView extends React.Component {
     );
   }
 }
+
+export default withLoginGate(MyDecksView);

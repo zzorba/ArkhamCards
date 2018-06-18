@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../actions';
-import { syncCards } from '../lib/api';
+import { syncCards } from '../lib/publicApi';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;

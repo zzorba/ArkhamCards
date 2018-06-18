@@ -11,7 +11,7 @@ import { Bar } from 'react-native-progress';
 import { Button } from 'react-native-elements';
 
 import CardTextComponent from './CardTextComponent';
-import { getFaqEntry } from '../lib/api';
+import { getFaqEntry } from '../lib/publicApi';
 
 class CardFaqView extends React.Component {
   static propTypes = {

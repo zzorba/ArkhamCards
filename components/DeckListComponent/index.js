@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach, map } from 'lodash';
 import {
+  FlatList,
   StyleSheet,
   ScrollView,
 } from 'react-native';
@@ -17,10 +18,18 @@ class DeckListComponent extends React.Component {
   static propTypes = {
     deckIds: PropTypes.array.isRequired,
     deckClicked: PropTypes.func.isRequired,
-
+    onRefresh: PropTypes.func.isRequired,
+    refreshing: PropTypes.bool,
+    error: PropTypes.string,
     investigators: PropTypes.object,
     decks: PropTypes.object,
     fetchDeck: PropTypes.func.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+
+    this._renderItem = this.renderItem.bind(this);
   }
 
   componentDidMount() {
@@ -36,7 +45,7 @@ class DeckListComponent extends React.Component {
     });
   }
 
-  renderItem(deckId) {
+  renderItem({ item: { deckId } }) {
     const {
       investigators,
       decks,
@@ -56,10 +65,26 @@ class DeckListComponent extends React.Component {
   }
 
   render() {
+    const {
+      deckIds,
+      onRefresh,
+      refreshing,
+    } = this.props;
+    const data = map(deckIds, deckId => {
+      return {
+        key: `${deckId}`,
+        deckId,
+      };
+    });
     return (
-      <ScrollView style={styles.container}>
-        { map(this.props.deckIds, deckId => this.renderItem(deckId)) }
-      </ScrollView>
+      <FlatList
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+        style={styles.container}
+        data={data}
+        renderItem={this._renderItem}
+        extraData={this.props.decks}
+      />
     );
   }
 }

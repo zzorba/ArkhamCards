@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
 import * as Actions from '../../actions';
-import { syncCards } from '../../lib/api';
+import { syncCards } from '../../lib/publicApi';
 import { signIn } from '../../lib/auth';
 import { getAllDecks } from '../../reducers';
 import DrawerItem from './DrawerItem';

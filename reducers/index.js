@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
-import { find, flatMap, forEach, keys, last, sortBy, values } from 'lodash';
+import { find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
+import { persistReducer } from 'redux-persist';
+import FilesystemStorage from 'redux-persist-filesystem-storage';
 
 import {
   CLEAR_DECKS,
@@ -12,6 +14,9 @@ import {
   NEW_CAMPAIGN,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
+  SET_MY_DECKS,
+  MY_DECKS_START_REFRESH,
+  MY_DECKS_ERROR,
 } from '../actions/';
 
 const DEFAULT_PACKS_STATE = {
@@ -77,9 +82,49 @@ const packs = (state = DEFAULT_PACKS_STATE, action) => {
   return state;
 };
 
-const DEFAULT_DECK_STATE = { all: {} };
+const DEFAULT_DECK_STATE = {
+  all: {},
+  myDecks: [],
+  dateUpdated: null,
+  refreshing: false,
+  error: null,
+};
 
 const decks = (state = DEFAULT_DECK_STATE, action) => {
+  if (action.type === MY_DECKS_START_REFRESH) {
+    return Object.assign({},
+      state,
+      {
+        refreshing: true,
+        error: null,
+      },
+    );
+  }
+  if (action.type === MY_DECKS_ERROR) {
+    return Object.assign({},
+      state,
+      {
+        refreshing: false,
+        error: action.error,
+      },
+    );
+  }
+  if (action.type === SET_MY_DECKS) {
+    const allDecks = Object.assign({}, state.all);
+    forEach(action.decks, deck => {
+      allDecks[deck.id] = deck;
+    });
+    return Object.assign({},
+      state,
+      {
+        all: allDecks,
+        myDecks: reverse(map(action.decks, deck => deck.id)),
+        dateUpdated: (new Date()).getTime(),
+        refreshing: false,
+        error: null,
+      },
+    );
+  }
   if (action.type === DECK_AVAILABLE) {
     return Object.assign({},
       state,
@@ -177,10 +222,16 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
   return state;
 };
 
+const decksPersistConfig = {
+  key: 'decks',
+  storage: FilesystemStorage,
+  blacklist: ['refreshing', 'error'],
+};
+
 // Combine all the reducers
 const rootReducer = combineReducers({
   packs,
-  decks,
+  decks: persistReducer(decksPersistConfig, decks),
   campaigns,
 });
 

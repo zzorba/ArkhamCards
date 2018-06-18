@@ -3,12 +3,17 @@ export const UPDATE_PROMPT_DISMISSED = 'UPDATE_PROMPT_DISMISSED';
 export const DECK_AVAILABLE = 'DECK_AVAILABLE';
 export const CLEAR_DECKS = 'CLEAR_DECKS';
 export const NEW_DECK = 'NEW_DECK';
+export const SET_MY_DECKS = 'SET_MY_DECKS';
+export const MY_DECKS_START_REFRESH = 'MY_DECKS_START_REFRESH';
+export const MY_DECKS_ERROR = 'MY_DECKS_ERROR';
 export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
 export const SET_ALL_PACK_SPOILERS = 'SET_ALL_PACK_SPOILERS';
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
+
+import { decks } from '../lib/authApi';
 
 export function dismissUpdatePrompt() {
   return {
@@ -51,6 +56,36 @@ export function upgradeDeck(deck, xp, exiles) {
 export function clearDecks() {
   return {
     type: CLEAR_DECKS,
+  };
+}
+
+export function refreshMyDecks() {
+  return (dispatch) => {
+    dispatch({
+      type: MY_DECKS_START_REFRESH,
+    });
+    decks().then(
+      response => {
+        console.log(JSON.stringify(response));
+        dispatch({
+          type: SET_MY_DECKS,
+          decks: response,
+        });
+      },
+      error => {
+        dispatch({
+          type: MY_DECKS_ERROR,
+          error: error.message || error,
+        });
+      }
+    );
+  }
+}
+
+export function setMyDecks(decks) {
+  return {
+    type: SET_MY_DECKS,
+    decks,
   };
 }
 
@@ -164,6 +199,7 @@ export function addScenarioResult(
 
 export default {
   dismissUpdatePrompt,
+  refreshMyDecks,
   fetchPacks,
   newDeck,
   fetchDeck,

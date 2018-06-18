@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+
 import InvestigatorImage from '../core/InvestigatorImage';
+import { toRelativeDateString } from '../../lib/datetime';
 
 export default class DeckListItem extends React.Component {
   static propTypes = {
@@ -57,6 +59,11 @@ export default class DeckListItem extends React.Component {
             <Text style={styles.title} numLines={2}>
               { deck.name }
             </Text>
+            { !!deck.date_update && (
+              <Text style={styles.date} >
+                Updated: { toRelativeDateString(Date.parse(deck.date_update)) }
+              </Text>
+            ) }
           </View>
         </View>
       </TouchableOpacity>
