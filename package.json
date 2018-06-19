@@ -18,7 +18,7 @@
     "lodash": "4.17.10",
     "react": "16.3.1",
     "react-native": "0.55.3",
-    "react-native-app-auth": "2.4.1",
+    "react-native-app-auth": "formidablelabs/react-native-app-auth#feature/support-no-scopes",
     "react-native-cached-image": "1.4.3",
     "react-native-config": "0.11.5",
     "react-native-deep-linking": "2.1.0",

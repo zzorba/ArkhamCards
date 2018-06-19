@@ -134,11 +134,6 @@ export default class CardSearchResult extends React.PureComponent {
       <View style={styles.stack}>
         <TouchableOpacity onPress={this._onPress} style={[styles.row, styles.fullHeight]}>
           <View style={styles.cardTextRow}>
-            { !!onDeckCountChange && (count > 0) && (
-              <Text style={styles.cardCount}>
-                { `${count}x` }
-              </Text>
-            ) }
             <View style={styles.cardIcon}>
               { this.renderFactionIcon(card) }
             </View>
@@ -162,7 +157,6 @@ export default class CardSearchResult extends React.PureComponent {
                   { card.subname }
                 </Text>
               </View>
-
             ) : (
               <View style={styles.row}>
                 <Text style={[
@@ -178,12 +172,19 @@ export default class CardSearchResult extends React.PureComponent {
             ) }
           </View>
           { !!onDeckCountChange && (
-            <PlusMinusButtons
-              style={styles.buttonContainer}
-              count={count || 0}
-              limit={limit !== null ? limit : card.deck_limit}
-              onChange={this._onDeckCountChange}
-            />
+            <View style={styles.countEditContainer}>
+              { (count > 0) && (
+                <Text style={styles.cardCount}>
+                  { `${count}x` }
+                </Text>
+              ) }
+              <PlusMinusButtons
+                style={styles.buttonContainer}
+                count={count || 0}
+                limit={limit !== null ? limit : card.deck_limit}
+                onChange={this._onDeckCountChange}
+              />
+            </View>
           ) }
         </TouchableOpacity>
       </View>
@@ -220,17 +221,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cardTextRow: {
-    flex: 1,
+    flex: 2,
     flexDirection: 'row',
     paddingLeft: 8,
     alignItems: 'center',
-  },
-  cardCount: {
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: ROW_HEIGHT,
-    fontWeight: '600',
-    marginRight: 4,
   },
   cardNameOnly: {
     marginLeft: 4,
@@ -258,8 +252,21 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     paddingBottom: 2,
     marginRight: 8,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  cardCount: {
+    fontFamily: 'System',
+    fontSize: 18,
+    lineHeight: ROW_HEIGHT,
+    fontWeight: '600',
+    marginRight: 4,
+  },
+  countEditContainer: {
     flex: 1,
     flexDirection: 'row',
+    height: ROW_HEIGHT,
+    alignItems: 'center',
     justifyContent: 'flex-end',
   },
 });

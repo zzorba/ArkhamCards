@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
+import { filter, find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import FilesystemStorage from 'redux-persist-filesystem-storage';
 
@@ -118,7 +118,7 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
       state,
       {
         all: allDecks,
-        myDecks: reverse(map(action.decks, deck => deck.id)),
+        myDecks: reverse(map(filter(action.decks, deck => !deck.next_deck), deck => deck.id)),
         dateUpdated: (new Date()).getTime(),
         refreshing: false,
         error: null,

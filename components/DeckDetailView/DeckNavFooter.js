@@ -60,6 +60,7 @@ export default class DeckNavFooter extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Deck.DrawSimulator',
+      title: 'Draw',
       backButtonTitle: 'Deck',
       passProps: {
         parsedDeck,

@@ -9,12 +9,15 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { ImageCacheManager } from 'react-native-cached-image';
 
 import * as Actions from '../../actions';
 import { syncCards } from '../../lib/publicApi';
-import { signIn } from '../../lib/auth';
 import { getAllDecks } from '../../reducers';
 import DrawerItem from './DrawerItem';
+import LoginButton from '../LoginButton';
+
+const defaultImageCacheManager = ImageCacheManager();
 
 class SettingsDrawer extends React.Component {
   static propTypes = {
@@ -34,8 +37,8 @@ class SettingsDrawer extends React.Component {
     this._myCollectionPressed = this.navButtonPressed.bind(this, '/collection');
     this._editSpoilersPressed = this.navButtonPressed.bind(this, '/spoilers');
     this._aboutPressed = this.navButtonPressed.bind(this, '/about');
-    this._doSignIn = this.doSignIn.bind(this);
     this._doSyncCards = this.doSyncCards.bind(this);
+    this._clearImageCache = this.clearImageCache.bind(this);
     this._clearCache = this.clearCache.bind(this);
   }
 
@@ -48,6 +51,10 @@ class SettingsDrawer extends React.Component {
     });
   }
 
+  clearImageCache() {
+    defaultImageCacheManager.clearCache({});
+  }
+
   clearCache() {
     const {
       realm,
@@ -58,10 +65,6 @@ class SettingsDrawer extends React.Component {
       realm.delete(realm.objects('Card'));
     });
     this.doSyncCards();
-  }
-
-  doSignIn() {
-    signIn();
   }
 
   doSyncCards() {
@@ -83,8 +86,9 @@ class SettingsDrawer extends React.Component {
         <View style={styles.list}>
           <DrawerItem onPress={this._myCollectionPressed} text="Edit Collection" />
           <DrawerItem onPress={this._editSpoilersPressed} text="Edit Spoilers" />
-          <DrawerItem onPress={this._doSignIn} text="Sign in" />
+          <LoginButton />
           <DrawerItem onPress={this._doSyncCards} text="Check for card updates" />
+          <DrawerItem onPress={this._clearImageCache} text="Clear image cache" />
           <DrawerItem onPress={this._clearCache} text="Clear cache" />
           <DrawerItem onPress={this._aboutPressed} text="About this app" />
         </View>

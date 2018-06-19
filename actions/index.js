@@ -66,7 +66,6 @@ export function refreshMyDecks() {
     });
     decks().then(
       response => {
-        console.log(JSON.stringify(response));
         dispatch({
           type: SET_MY_DECKS,
           decks: response,

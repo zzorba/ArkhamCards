@@ -5,6 +5,7 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
+  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -29,6 +30,7 @@ class DeckListComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this._renderFooter = this.renderFooter.bind(this);
     this._renderItem = this.renderItem.bind(this);
   }
 
@@ -64,6 +66,12 @@ class DeckListComponent extends React.Component {
     );
   }
 
+  renderFooter() {
+    return (
+      <View style={styles.footer} />
+    );
+  }
+
   render() {
     const {
       deckIds,
@@ -84,6 +92,7 @@ class DeckListComponent extends React.Component {
         data={data}
         renderItem={this._renderItem}
         extraData={this.props.decks}
+        ListFooterComponent={this._renderFooter}
       />
     );
   }
@@ -122,5 +131,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F5F5',
     paddingTop: 20,
+  },
+  footer: {
+    height: 100,
   },
 });

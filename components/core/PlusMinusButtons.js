@@ -54,7 +54,7 @@ export default class PlusMinusButtons extends React.Component {
     }
     return (
       <TouchableOpacity onPress={this._increment}>
-        <MaterialCommunityIcons name="plus-box" size={size} color={COLORS.green} />
+        <MaterialCommunityIcons name="plus-box" size={size} color={COLORS.darkBlue} />
       </TouchableOpacity>
     );
   }
@@ -67,7 +67,7 @@ export default class PlusMinusButtons extends React.Component {
     if (count > 0) {
       return (
         <TouchableOpacity onPress={this._decrement}>
-          <MaterialCommunityIcons name="minus-box" size={size} color={COLORS.red} />
+          <MaterialCommunityIcons name="minus-box" size={size} color={COLORS.darkBlue} />
         </TouchableOpacity>
       );
     }

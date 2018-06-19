@@ -60,4 +60,7 @@ class MyDecksView extends React.Component {
   }
 }
 
-export default withLoginGate(MyDecksView);
+export default withLoginGate(
+  MyDecksView,
+  'You can sign in with your ArkhamDB account to manage your decks.'
+);

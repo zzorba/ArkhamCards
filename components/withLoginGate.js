@@ -14,7 +14,7 @@ import { signIn, getAccessToken } from '../lib/auth';
 /**
  * Simple component to block children rendering until a login flow is completed.
  */
-export default function withLoginGate(WrappedComponent) {
+export default function withLoginGate(WrappedComponent, message) {
   class ConnectedLoginGateComponent extends React.Component {
     constructor(props) {
       super(props);
@@ -76,6 +76,7 @@ export default function withLoginGate(WrappedComponent) {
       if (!loggedIn) {
         return (
           <View style={styles.signInContainer}>
+            { !!message && <Text style={styles.messageText}>{ message }</Text> }
             <Button text="Sign in to ArkhamDB" onPress={this._signInPressed} />
           </View>
         );
@@ -100,9 +101,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   signInContainer: {
+    margin: 16,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+  },
+  messageText: {
+    fontSize: 18,
+    fontFamily: 'System',
+    marginBottom: 32,
   },
 });

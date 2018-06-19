@@ -6,7 +6,7 @@ import FullMenu from './FullMenu';
 import CardMenu from './CardMenu';
 import { iconsMap } from '../../app/NavIcons';
 
-const CARD_MODE = false;
+const CARD_MODE = true;
 
 export default class HomeView extends React.Component {
   static propTypes = {
