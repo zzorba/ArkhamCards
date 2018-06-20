@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { delay, forEach, keys } from 'lodash';
 import {
+  ActivityIndicator,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -42,14 +42,6 @@ class DeckDetailView extends React.Component {
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
 
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          icon: iconsMap.edit,
-          id: 'edit',
-        },
-      ],
-    });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
@@ -136,6 +128,16 @@ class DeckDetailView extends React.Component {
   }
 
   loadCards(deck) {
+    if (!deck.next_deck) {
+      this.props.navigator.setButtons({
+        rightButtons: [
+          {
+            icon: iconsMap.edit,
+            id: 'edit',
+          },
+        ],
+      });
+    }
     this.setState({
       slots: deck.slots,
       loaded: true,
@@ -151,8 +153,12 @@ class DeckDetailView extends React.Component {
 
     if (!deck || !this.state.loaded) {
       return (
-        <View>
-          <Text>Loading: { this.props.id }</Text>
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator
+            style={[{ height: 80 }]}
+            size="small"
+            animating
+          />
         </View>
       );
     }
@@ -213,5 +219,11 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
+  },
+  activityIndicatorContainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
   },
 });

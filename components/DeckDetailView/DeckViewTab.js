@@ -265,9 +265,8 @@ const styles = StyleSheet.create({
   },
   typeText: {
     color: '#000000',
-    fontSize: 16,
+    fontSize: 18,
     marginTop: 16,
-    marginBottom: 6,
   },
   subTypeText: {
     marginTop: 4,

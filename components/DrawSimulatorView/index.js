@@ -166,7 +166,7 @@ export default class DrawSimulatorView extends React.Component {
     return (
       <View>
         <View style={styles.drawButtonRow}>
-          <Text>Draw: </Text>
+          <Text style={styles.text}>Draw: </Text>
           <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
           <Button title="2" disabled={deckEmpty} onPress={this._drawTwo} />
           <Button title="5" disabled={deckEmpty} onPress={this._drawFive} />
@@ -236,6 +236,7 @@ export default class DrawSimulatorView extends React.Component {
 const styles = StyleSheet.create({
   drawButtonRow: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#f6f6f6',
   },
@@ -248,5 +249,10 @@ const styles = StyleSheet.create({
   deckContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  text: {
+    fontFamily: 'System',
+    fontSize: 18,
+    lineHeight: 22,
   },
 });

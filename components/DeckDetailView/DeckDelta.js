@@ -4,11 +4,12 @@ import { filter, forEach, keys, map, pullAt, sum, sortBy } from 'lodash';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Button } from 'react-native-elements';
 
+import ArkhamIcon from '../../assets/ArkhamIcon';
 import DeckViewCardItem from './DeckViewCardItem';
 
 class DeckDelta extends React.Component {
@@ -171,11 +172,14 @@ class DeckDelta extends React.Component {
     ));
 
     return (
-      <Text>
-        { `Available Experience: ${xp}. Spent Experience: ${spentXp}` }
-      </Text>
+      <View style={styles.xp}>
+        <Text style={styles.text}>
+          { `Available Experience: ${xp}\nSpent Experience: ${spentXp}` }
+        </Text>
+      </View>
     );
   }
+
   render() {
     const {
       cards,
@@ -188,18 +192,26 @@ class DeckDelta extends React.Component {
     }
     return (
       <View>
-        <Text style={styles.title}>Progress</Text>
+        <Text style={styles.title}>Campaign Progress</Text>
         { this.renderXp() }
-        { !!deck.previous_deck && (
-          <TouchableOpacity onPress={this._showPreviousDeck}>
-            <Text>View Previous Deck</Text>
-          </TouchableOpacity>
-        ) }
-        { !!deck.next_deck && (
-          <TouchableOpacity onPress={this._showNextDeck}>
-            <Text>View Next Deck</Text>
-          </TouchableOpacity>
-        ) }
+        <View style={styles.buttonContainer}>
+          { !!deck.previous_deck && (
+            <Button
+              style={styles.button}
+              onPress={this._showPreviousDeck}
+              text="Previous Deck"
+              icon={<ArkhamIcon name="deck" size={18} color="white" />}
+            />
+          ) }
+          { !!deck.next_deck && (
+            <Button
+              style={styles.button}
+              onPress={this._showNextDeck}
+              text="Next Deck"
+              icon={<ArkhamIcon name="deck" size={18} color="white" />}
+            />
+          ) }
+        </View>
         { !!keys(changedCards).length && (
           <View>
             <Text style={styles.title}>Changes</Text>
@@ -250,7 +262,25 @@ export default connectRealm(DeckDelta, {
 
 const styles = StyleSheet.create({
   title: {
+    marginTop: 16,
     fontSize: 18,
+    lineHeight: 22,
+    fontFamily: 'System',
     fontWeight: '900',
+  },
+  text: {
+    fontFamily: 'System',
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  xp: {
+    marginBottom: 8,
+  },
+  buttonContainer: {
+    flexDirection: 'column',
+  },
+  button: {
+    marginBottom: 8,
+    width: '100%',
   },
 });

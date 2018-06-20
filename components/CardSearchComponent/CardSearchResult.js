@@ -16,6 +16,8 @@ import PlusMinusButtons from '../core/PlusMinusButtons';
 
 const ROW_HEIGHT = 44;
 const ICON_SIZE = 28;
+const SMALL_ICON_SIZE = 26;
+const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
 
 export default class CardSearchResult extends React.PureComponent {
@@ -47,22 +49,22 @@ export default class CardSearchResult extends React.PureComponent {
     return count;
   }
 
-  renderFactionIcon(card) {
+  renderFactionIcon(card, size) {
     if (!card.encounter_code && card.linked_card) {
-      return this.renderFactionIcon(card.linked_card);
+      return this.renderFactionIcon(card.linked_card, size);
     }
     if (card.subtype_code &&
       (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
     ) {
       return (
-        <ArkhamIcon name="weakness" size={ICON_SIZE} color={FACTION_COLORS.neutral} />
+        <ArkhamIcon name="weakness" size={size} color={FACTION_COLORS.neutral} />
       );
     }
     if (card.spoiler) {
       return (
         <EncounterIcon
           encounter_code={card.encounter_code}
-          size={ICON_SIZE}
+          size={size}
           color="#000000"
         />
       );
@@ -78,7 +80,15 @@ export default class CardSearchResult extends React.PureComponent {
         />
       );
     }
-    return FACTION_ICONS[card.faction_code];
+    return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS)[card.faction_code];
+  }
+
+  renderIcon(card) {
+    return (
+      <View style={styles.cardIcon}>
+        { this.renderFactionIcon(card, ICON_SIZE) }
+      </View>
+    );
   }
 
   static skillIcon(iconName, count) {
@@ -119,6 +129,46 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
+  renderCardName(card) {
+    const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
+    if (card.subname) {
+      return (
+        <View style={styles.cardNameBlock}>
+          <View style={styles.row}>
+            <Text style={[
+              styles.cardName,
+              { color: FACTION_COLORS[card.faction_code] },
+            ]} ellipsizeMode="tail">
+              { card.name }
+            </Text>
+            <Text style={[styles.cardName, styles.xp]}>
+              { xpStr }
+            </Text>
+          </View>
+          <Text style={[
+            styles.cardSubName,
+            { color: FACTION_COLORS[card.faction_code] },
+          ]}>
+            { card.subname }
+          </Text>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.row}>
+        <Text style={[
+          styles.cardNameOnly,
+          { color: FACTION_COLORS[card.faction_code] },
+        ]}>
+          { card.name }
+        </Text>
+        <Text style={[styles.cardName, styles.xp]}>
+          { xpStr }
+        </Text>
+      </View>
+    );
+  }
+
   render() {
     const {
       card,
@@ -129,47 +179,12 @@ export default class CardSearchResult extends React.PureComponent {
     if (!card.name) {
       return <Text>No Text</Text>;
     }
-    const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
     return (
       <View style={styles.stack}>
         <TouchableOpacity onPress={this._onPress} style={[styles.row, styles.fullHeight]}>
           <View style={styles.cardTextRow}>
-            <View style={styles.cardIcon}>
-              { this.renderFactionIcon(card) }
-            </View>
-            { card.subname ? (
-              <View style={styles.cardNameBlock}>
-                <View style={styles.row}>
-                  <Text style={[
-                    styles.cardName,
-                    { color: FACTION_COLORS[card.faction_code] },
-                  ]}>
-                    { card.name }
-                  </Text>
-                  <Text style={[styles.cardName, styles.xp]}>
-                    { xpStr }
-                  </Text>
-                </View>
-                <Text style={[
-                  styles.cardSubName,
-                  { color: FACTION_COLORS[card.faction_code] },
-                ]}>
-                  { card.subname }
-                </Text>
-              </View>
-            ) : (
-              <View style={styles.row}>
-                <Text style={[
-                  styles.cardNameOnly,
-                  { color: FACTION_COLORS[card.faction_code] },
-                ]}>
-                  { card.name }
-                </Text>
-                <Text style={[styles.cardName, styles.xp]}>
-                  { xpStr }
-                </Text>
-              </View>
-            ) }
+            { this.renderIcon(card) }
+            { this.renderCardName(card) }
           </View>
           { !!onDeckCountChange && (
             <View style={styles.countEditContainer}>
@@ -216,7 +231,7 @@ const styles = StyleSheet.create({
   cardIcon: {
     width: ROW_HEIGHT,
     height: '100%',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -263,7 +278,6 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   countEditContainer: {
-    flex: 1,
     flexDirection: 'row',
     height: ROW_HEIGHT,
     alignItems: 'center',

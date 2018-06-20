@@ -99,10 +99,13 @@ export default class DeckNavFooter extends React.Component {
   }
 
   render() {
+    const {
+      parsedDeck,
+    } = this.props;
     return (
       <View style={styles.wrapper}>
         <View style={styles.left}>
-          <Text>{ this.props.parsedDeck.normalCardCount }</Text>
+          <Text>{ `${parsedDeck.normalCardCount} Cards (${parsedDeck.totalCardCount} Total)` }</Text>
           { this.renderProblem() }
         </View>
         <View style={styles.right}>
