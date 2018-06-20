@@ -14,7 +14,7 @@ export default function BasicMenuItems({ navigator }) {
         navigator={navigator}
         text="All Cards"
         screen="Browse.Cards"
-        icon="deck"
+        icon="cards"
       />
       <MenuItem
         navigator={navigator}

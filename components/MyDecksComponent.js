@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, reverse } from 'lodash';
+import { filter } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as Actions from '../actions';
 import DeckListComponent from './DeckListComponent';
-import { decks } from '../lib/authApi';
 
 class MyDecksComponent extends React.Component {
   static propTypes = {
@@ -40,7 +39,6 @@ class MyDecksComponent extends React.Component {
   componentDidMount() {
     const {
       myDecksUpdated,
-      refreshMyDecks,
       myDecks,
     } = this.props;
 

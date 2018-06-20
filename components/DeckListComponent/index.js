@@ -4,7 +4,6 @@ import { forEach, map } from 'lodash';
 import {
   FlatList,
   StyleSheet,
-  ScrollView,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';

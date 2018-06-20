@@ -14,6 +14,7 @@ function LoggedInMenu({ navigator }) {
         navigator={navigator}
         text="My Decks"
         screen="My.Decks"
+        icon="deck"
       />
     </View>
   );

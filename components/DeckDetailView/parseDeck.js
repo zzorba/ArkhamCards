@@ -24,7 +24,7 @@ function isSpecialCard(card) {
   return card.code === '01000' ||
     card.permanent ||
     card.subtype_code === 'weakness' ||
-    card.subtype_code === 'basicweakness' || 
+    card.subtype_code === 'basicweakness' ||
     card.spoiler ||
     card.restrictions;
 }

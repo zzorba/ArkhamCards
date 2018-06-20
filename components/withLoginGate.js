@@ -2,65 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ActivityIndicator,
-  Alert,
   StyleSheet,
   View,
   Text,
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import hoistNonReactStatics from 'hoist-non-react-statics';
-import { signIn, getAccessToken } from '../lib/auth';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as Actions from '../actions';
 
 /**
  * Simple component to block children rendering until a login flow is completed.
  */
 export default function withLoginGate(WrappedComponent, message) {
   class ConnectedLoginGateComponent extends React.Component {
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        loading: true,
-        signingIn: false,
-        loggedIn: false,
-      };
-
-      this._signInPressed = this.signInPressed.bind(this);
-    }
-
-    signInPressed() {
-      this.setState({
-        signingIn: true,
-      }, () => {
-        signIn().then(result => {
-          if (result.success) {
-            this.setState({
-              signingIn: false,
-              loggedIn: true,
-            });
-          } else {
-            this.setState({
-              signInError: result.error,
-            });
-          }
-        })
-      });
-    }
-
-    componentDidMount() {
-      getAccessToken().then(accessToken => {
-        this.setState({
-          loading: false,
-          loggedIn: !!accessToken,
-        });
-      });
-    }
+    static propTypes = {
+      loading: PropTypes.bool,
+      error: PropTypes.string,
+      signedIn: PropTypes.bool.isRequired,
+      login: PropTypes.func.isRequired,
+    };
 
     render() {
       const {
         loading,
-        loggedIn,
-      } = this.state;
+        signedIn,
+        login,
+      } = this.props;
       if (loading) {
         return (
           <View style={styles.activityIndicatorContainer}>
@@ -73,11 +43,11 @@ export default function withLoginGate(WrappedComponent, message) {
         );
       }
 
-      if (!loggedIn) {
+      if (!signedIn) {
         return (
           <View style={styles.signInContainer}>
             { !!message && <Text style={styles.messageText}>{ message }</Text> }
-            <Button text="Sign in to ArkhamDB" onPress={this._signInPressed} />
+            <Button text="Sign in to ArkhamDB" onPress={login} />
           </View>
         );
       }
@@ -90,7 +60,19 @@ export default function withLoginGate(WrappedComponent, message) {
 
   hoistNonReactStatics(ConnectedLoginGateComponent, WrappedComponent);
 
-  return ConnectedLoginGateComponent;
+  function mapStateToProps(state) {
+    return {
+      signedIn: state.signedIn.status,
+      error: state.signedIn.error,
+      loading: state.signedIn.loading,
+    };
+  }
+
+  function mapDispatchToProps(dispatch) {
+    return bindActionCreators(Actions, dispatch);
+  }
+
+  return connect(mapStateToProps, mapDispatchToProps)(ConnectedLoginGateComponent);
 }
 
 const styles = StyleSheet.create({

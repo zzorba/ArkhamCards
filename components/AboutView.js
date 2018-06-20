@@ -23,6 +23,8 @@ export default function AboutView() {
         • 'deck of cards' icon by Daniel Solis from the Noun Project.
         { '\n' }
         • 'FAQ' icon by Gregor Cresnar from the Noun Project.
+        { '\n' }
+        • 'Cards' icon by Dmitriy Ivanov from the Noun Project.
       </Text>
     </View>
   );

@@ -12,8 +12,57 @@ export const SET_ALL_PACK_SPOILERS = 'SET_ALL_PACK_SPOILERS';
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
+export const LOGIN_STARTED = 'LOGIN_STARTED';
+export const LOGIN = 'LOGIN';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const LOGOUT = 'LOGOUT';
 
+import { getAccessToken, signInFlow, signOutFlow } from '../lib/auth';
 import { decks } from '../lib/authApi';
+
+export function login() {
+  return (dispatch) => {
+    dispatch({ type: LOGIN_STARTED });
+    signInFlow().then(response => {
+      if (response.success) {
+        dispatch({ type: LOGIN });
+      } else {
+        dispatch({
+          type: LOGIN_ERROR,
+          error: response.error,
+        });
+      }
+    });
+  };
+}
+
+export function logout() {
+  return (dispatch) => {
+    dispatch({ type: LOGIN_STARTED });
+    signOutFlow().then(() => {
+      dispatch({
+        type: LOGOUT,
+      });
+      dispatch(clearDecks());
+    });
+  };
+}
+
+export function verifyLogin() {
+  return (dispatch) => {
+    getAccessToken().then(accessToken => {
+      if (accessToken) {
+        dispatch({
+          type: LOGIN,
+        });
+      } else {
+        dispatch({
+          type: LOGOUT,
+        });
+      }
+    });
+  };
+}
 
 export function dismissUpdatePrompt() {
   return {
@@ -26,19 +75,17 @@ export function fetchPacks(callback) {
   return (dispatch) => {
     fetch('https://arkhamdb.com/api/public/packs/', { method: 'GET' })
       .then(response => response.json())
-      .then(
-        json => {
-          dispatch({
-            type: PACKS_AVAILABLE,
-            packs: json,
-            timestamp: new Date(),
-          });
-          callback && callback(json);
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      .then(json => {
+        dispatch({
+          type: PACKS_AVAILABLE,
+          packs: json,
+          timestamp: new Date(),
+        });
+        callback && callback(json);
+      },
+      err => {
+        console.log(err);
+      });
   };
 }
 
@@ -78,7 +125,7 @@ export function refreshMyDecks() {
         });
       }
     );
-  }
+  };
 }
 
 export function setMyDecks(decks) {
@@ -197,6 +244,9 @@ export function addScenarioResult(
 }
 
 export default {
+  login,
+  logout,
+  verifyLogin,
   dismissUpdatePrompt,
   refreshMyDecks,
   fetchPacks,

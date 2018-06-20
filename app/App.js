@@ -4,22 +4,12 @@ import DeepLinking from 'react-native-deep-linking';
 
 import { iconsLoaded } from './NavIcons';
 
-const LINK_PATHS = [
-  '/redirect/auth\\?code=:code&state=:state',
-  '/redirect/auth/\\?code=:code&state=:state',
-];
-
 export default class App {
   constructor() {
-    this._handleAuthResponse = this.handleAuthResponse.bind(this);
     this._handleUrl = this.handleUrl.bind(this);
     iconsLoaded.then(() => {
       this.startApp();
     }).catch(error => console.log(error));
-  }
-
-  handleAuthResponse({ code, state }) {
-
   }
 
   handleUrl({ url }) {
@@ -57,7 +47,6 @@ export default class App {
 
     // We handle scrollapp and https (universal) links
     DeepLinking.addScheme('arkhamcards://');
-    DeepLinking.addRoute('/scroll/auth/:code', this._handleAuthResponse);
 
     Linking.getInitialURL().then((url) => {
       if (url) {
