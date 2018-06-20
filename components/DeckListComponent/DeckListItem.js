@@ -10,6 +10,10 @@ import {
 
 import InvestigatorImage from '../core/InvestigatorImage';
 import { toRelativeDateString } from '../../lib/datetime';
+import { FACTION_BACKGROUND_COLORS } from '../../constants';
+import ArkhamIcon from '../../assets/ArkhamIcon';
+
+const ROW_HEIGHT = 100;
 
 export default class DeckListItem extends React.Component {
   static propTypes = {
@@ -33,6 +37,30 @@ export default class DeckListItem extends React.Component {
     onPress && onPress(id);
   }
 
+  renderTitleBar() {
+    const {
+      deck,
+      investigator,
+    } = this.props;
+    const factionColor = investigator &&
+      investigator.faction_code &&
+      FACTION_BACKGROUND_COLORS[investigator.faction_code];
+    const iconName = investigator &&
+      (investigator.faction_code === 'neutral' ? 'elder_sign' : investigator.faction_code);
+    return (
+      <View style={[styles.titleBar, { backgroundColor: factionColor || '#FFFFFF' }]}>
+        <Text
+          style={[styles.title, { color: factionColor ? '#FFFFFF' : '#000000' }]}
+          numberOfLines={1}
+          ellipsizeMode="tail"
+        >
+          { deck.name }
+        </Text>
+        { !!iconName && <ArkhamIcon name={iconName} size={28} color="#FFFFFF" /> }
+      </View>
+    );
+  }
+
   render() {
     const {
       deck,
@@ -51,19 +79,19 @@ export default class DeckListItem extends React.Component {
     }
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.row}>
-          <View style={styles.image}>
-            { !!investigator && <InvestigatorImage card={investigator} /> }
-          </View>
-          <View style={styles.titleColumn}>
-            <Text style={styles.title} numLines={2}>
-              { deck.name }
-            </Text>
-            { !!deck.date_update && (
-              <Text style={styles.date} >
-                Updated: { toRelativeDateString(Date.parse(deck.date_update)) }
-              </Text>
-            ) }
+        <View style={styles.column}>
+          { this.renderTitleBar() }
+          <View style={styles.row}>
+            <View style={styles.image}>
+              { !!investigator && <InvestigatorImage card={investigator} /> }
+            </View>
+            <View style={[styles.column, styles.titleColumn]}>
+              { !!deck.date_update && (
+                <Text style={styles.text} >
+                  Updated: { toRelativeDateString(Date.parse(deck.date_update)) }
+                </Text>
+              ) }
+            </View>
           </View>
         </View>
       </TouchableOpacity>
@@ -72,12 +100,37 @@ export default class DeckListItem extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  column: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    borderBottomWidth: 2,
-    height: 100,
+    height: ROW_HEIGHT,
+  },
+  titleBar: {
+    width: '100%',
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 4,
+    paddingBottom: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  title: {
+    fontFamily: 'System',
+    fontSize: 18,
+    lineHeight: 22,
+    flex: 1,
+  },
+  text: {
+    fontFamily: 'System',
+    fontSize: 14,
+    lineHeight: 18,
   },
   loading: {
     marginLeft: 10,
@@ -87,14 +140,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   titleColumn: {
+    paddingTop: 8,
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    marginLeft: 5,
-  },
-  title: {
-    fontFamily: 'System',
-    fontSize: 22,
+    height: '100%',
   },
 });
