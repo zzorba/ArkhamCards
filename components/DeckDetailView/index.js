@@ -12,9 +12,9 @@ import { connectRealm } from 'react-native-realm';
 
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
-import { parseDeck } from './parseDeck';
+import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
-import DeckNavFooter from './DeckNavFooter';
+import DeckNavFooter from '../DeckNavFooter';
 import { getDeck } from '../../reducers';
 
 class DeckDetailView extends React.Component {

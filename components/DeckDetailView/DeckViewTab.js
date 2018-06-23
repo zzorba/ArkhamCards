@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import AppIcon from '../../assets/AppIcon';
-import { DeckType } from './parseDeck';
+import { DeckType } from '../parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckViewCardItem from './DeckViewCardItem';
 import DeckValidation from '../../lib/DeckValidation';

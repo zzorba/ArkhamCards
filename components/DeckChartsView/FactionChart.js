@@ -3,7 +3,7 @@ import { BarChart } from 'react-native-svg-charts';
 import { View, Text } from 'react-native';
 
 
-import { DeckType } from '../DeckDetailView/parseDeck';
+import { DeckType } from '../parseDeck';
 import { FACTION_CODES, FACTION_COLORS } from '../../constants';
 
 export default class FactionChart extends React.PureComponent {

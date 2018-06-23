@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import { DeckType } from './parseDeck';
+import { DeckType } from '../parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckValidation from '../../lib/DeckValidation';
+import { FOOTER_HEIGHT } from './constants';
 
 const DECK_PROBLEM_MESSAGES = {
   too_few_cards: 'Not enough cards',
@@ -28,6 +29,7 @@ export default class DeckNavFooter extends React.Component {
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
   };
+
   constructor(props) {
     super(props);
 
@@ -128,7 +130,7 @@ export default class DeckNavFooter extends React.Component {
 const styles = StyleSheet.create({
   wrapper: {
     width: '100%',
-    height: 46,
+    height: FOOTER_HEIGHT,
     backgroundColor: '#fafafa',
     borderTopWidth: 1,
     borderColor: '#cdcdcd',

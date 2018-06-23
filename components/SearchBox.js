@@ -99,6 +99,7 @@ export default class SearchBox extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white',
     overflow: 'hidden',
     flexDirection: 'column',
   },

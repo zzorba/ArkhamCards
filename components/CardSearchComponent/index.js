@@ -264,6 +264,7 @@ export default class CardSearchComponent extends React.Component {
       deckCardCounts,
       onDeckCountChange,
       limits,
+      footer,
     } = this.props;
     const {
       width,
@@ -273,8 +274,8 @@ export default class CardSearchComponent extends React.Component {
     } = this.state;
     const query = this.query();
     return (
-      <View style={[styles.wrapper, { width, height }]}>
-        <View style={[styles.container, { width, height }]}>
+      <View style={styles.wrapper}>
+        <View style={styles.container}>
           <SearchBox
             onChangeText={this._searchUpdated}
             placeholder="Search for a card"
@@ -291,6 +292,9 @@ export default class CardSearchComponent extends React.Component {
             limits={limits}
           />
         </View>
+        { !!footer && <View style={[
+          styles.footer,
+        ]}>{ footer }</View> }
       </View>
     );
   }
@@ -298,14 +302,10 @@ export default class CardSearchComponent extends React.Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
+    position: 'relative',
+    flex: 1,
   },
   container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
     flex: 1,
     backgroundColor: '#fff',
     flexDirection: 'column',
@@ -324,5 +324,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginLeft: 10,
     marginRight: 2,
+  },
+  footer: {
+    position: 'absolute',
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    backgroundColor: 'red',
   },
 });

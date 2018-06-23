@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map } from 'lodash';
+import { filter, findIndex, forEach, map } from 'lodash';
 import {
   FlatList,
   StyleSheet,
@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import SearchBox from '../SearchBox';
 import DeckListItem from './DeckListItem';
 import * as Actions from '../../actions';
 import { getAllDecks } from '../../reducers';
@@ -29,8 +30,20 @@ class DeckListComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      searchTerm: '',
+    };
+
+    this._searchChanged = this.searchChanged.bind(this);
+    this._renderHeader = this.renderHeader.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
     this._renderItem = this.renderItem.bind(this);
+  }
+
+  searchChanged(searchTerm) {
+    this.setState({
+      searchTerm,
+    });
   }
 
   componentDidMount() {
@@ -65,6 +78,15 @@ class DeckListComponent extends React.Component {
     );
   }
 
+  renderHeader() {
+    return (
+      <SearchBox
+        onChangeText={this._searchChanged}
+        placeholder="Search decks"
+      />
+    );
+  }
+
   renderFooter() {
     return (
       <View style={styles.footer} />
@@ -76,13 +98,33 @@ class DeckListComponent extends React.Component {
       deckIds,
       onRefresh,
       refreshing,
+      decks,
+      investigators,
     } = this.props;
-    const data = map(deckIds, deckId => {
-      return {
-        key: `${deckId}`,
-        deckId,
-      };
-    });
+
+    const {
+      searchTerm,
+    } = this.state;
+    const data = map(
+      filter(deckIds, deckId => {
+        const deck = decks[deckId];
+        const investigator = deck && investigators[deck.investigator_code];
+        if (!deck || !searchTerm || !investigator) {
+          return true;
+        }
+        const terms = searchTerm.toLowerCase().split(' ');
+        const name = deck.name.toLowerCase();
+        const investigatorName = investigator.name.toLowerCase();
+        return (findIndex(terms, term => {
+          return name.indexOf(term) === -1 && investigatorName.indexOf(term) === -1;
+        }) === -1);
+      }), deckId => {
+        return {
+          key: `${deckId}`,
+          deckId,
+        };
+      });
+
     return (
       <FlatList
         refreshing={refreshing}
@@ -91,6 +133,7 @@ class DeckListComponent extends React.Component {
         data={data}
         renderItem={this._renderItem}
         extraData={this.props.decks}
+        ListHeaderComponent={this._renderHeader}
         ListFooterComponent={this._renderFooter}
       />
     );
@@ -129,7 +172,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F5F5',
-    paddingTop: 20,
   },
   footer: {
     height: 100,

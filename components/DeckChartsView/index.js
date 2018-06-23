@@ -3,7 +3,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-import { DeckType } from '../DeckDetailView/parseDeck';
+import { DeckType } from '../parseDeck';
 
 import FactionChart from './FactionChart';
 import CostChart from './CostChart';

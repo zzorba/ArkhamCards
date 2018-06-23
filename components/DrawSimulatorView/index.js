@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { DeckType } from '../DeckDetailView/parseDeck';
+import { DeckType } from '../parseDeck';
 import DrawCardItem from './DrawCardItem';
 
 export default class DrawSimulatorView extends React.Component {

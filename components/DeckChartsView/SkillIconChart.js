@@ -2,7 +2,7 @@ import React from 'react';
 import { BarChart, XAxis } from 'react-native-svg-charts';
 import { View, Text } from 'react-native';
 
-import { DeckType } from '../DeckDetailView/parseDeck';
+import { DeckType } from '../parseDeck';
 import { SKILLS } from '../../constants';
 
 export default class SkillIconChart extends React.PureComponent {

@@ -5,6 +5,8 @@ import { connectRealm } from 'react-native-realm';
 
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';
 import CardSearchComponent from './CardSearchComponent';
+import { parseDeck } from './parseDeck';
+import DeckNavFooter from './DeckNavFooter';
 
 class DeckEditView extends React.Component {
   static propTypes = {
@@ -53,6 +55,33 @@ class DeckEditView extends React.Component {
     });
   }
 
+  renderFooter() {
+    const {
+      navigator,
+      deck,
+      cards,
+    } = this.props;
+    const {
+      deckCardCounts,
+    } = this.state;
+    const cardsInDeck = {};
+    cards.forEach(card => {
+      if (deckCardCounts[card.code] || deck.investigator_code === card.code) {
+        cardsInDeck[card.code] = card;
+      }
+    });
+    const pDeck = parseDeck(deck, deckCardCounts, cardsInDeck);
+
+
+    return (
+      <DeckNavFooter
+        navigator={navigator}
+        parsedDeck={pDeck}
+        cards={cardsInDeck}
+      />
+    );
+  }
+
   render() {
     const {
       navigator,
@@ -71,6 +100,7 @@ class DeckEditView extends React.Component {
         onDeckCountChange={this._onDeckCountChange}
         backPressed={this._backPressed}
         backButtonText="Save"
+        footer={this.renderFooter()}
       />
     );
   }
@@ -84,6 +114,7 @@ export default connectRealm(
       return {
         realm,
         investigator: head(results.cards.filtered(`code == "${props.deck.investigator_code}"`)),
+        cards: results.cards,
       };
     },
   },
