@@ -5,7 +5,9 @@ import {
   BackHandler,
   Dimensions,
   Platform,
+  Text,
   StyleSheet,
+  Switch,
   View,
 } from 'react-native';
 
@@ -18,6 +20,8 @@ import CardResultList from './CardResultList';
 import { iconsMap } from '../../app/NavIcons';
 import { applyFilters } from '../../lib/filters';
 import DefaultFilterState from '../CardFilterView/DefaultFilterState';
+
+const SEARCH_OPTIONS_HEIGHT = 44;
 
 export default class CardSearchComponent extends React.Component {
   static propTypes = {
@@ -46,11 +50,17 @@ export default class CardSearchComponent extends React.Component {
     this.state = {
       width,
       height,
+      searchText: false,
+      searchFlavor: false,
+      searchBack: false,
       searchTerm: '',
       selectedSort: props.sort || SORT_BY_TYPE,
       filters: DefaultFilterState,
     };
 
+    this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
+    this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
+    this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
     this._sortChanged = this.sortChanged.bind(this);
     this._searchUpdated = this.searchUpdated.bind(this);
     this._applyFilters = this.applyFilters.bind(this);
@@ -77,6 +87,12 @@ export default class CardSearchComponent extends React.Component {
       ],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  toggleSearchMode(mode) {
+    this.setState({
+      [mode]: !this.state[mode],
+    });
   }
 
   applyFilters(filters) {
@@ -151,21 +167,41 @@ export default class CardSearchComponent extends React.Component {
   applyQueryFilter(query) {
     const {
       searchTerm,
+      searchText,
+      searchFlavor,
+      searchBack,
     } = this.state;
 
     if (searchTerm !== '') {
-      query.push([
-        '(',
-        `name contains[c] $0 or `,
-        `real_text contains[c] $0 or `,
-        `traits contains[c] $0 or`,
-        '(linked_card != null && (',
-        `linked_card.name contains[c] $0 or `,
-        `linked_card.real_text contains[c] $0 or `,
-        `linked_card.traits contains[c] $0`,
-        '))',
-        ')',
-      ].join(''));
+      const parts = searchBack ? [
+        'name contains[c] $0',
+        'linked_card.name contains[c] $0',
+        'back_name contains[c] $0',
+        'linked_card.back_name contains[c] $0',
+        'subname contains[c] $0',
+        'linked_card.subname contains[c] $0',
+      ] : [
+        'renderName contains[c] $0',
+        'renderSubname contains[c] $0',
+      ];
+      if (searchText) {
+        parts.push('real_text contains[c] $0');
+        parts.push('linked_card.real_text contains[c] $0');
+        if (searchBack) {
+          parts.push('back_text contains[c] $0');
+          parts.push('linked_card.back_text contains[c] $0');
+        }
+      }
+
+      if (searchFlavor) {
+        parts.push('flavor contains[c] $0');
+        parts.push('linked_card.flavor contains[c] $0');
+        if (searchBack) {
+          parts.push('back_flavor contains[c] $0');
+          parts.push('linked_card.back_flavor contains[c] $0');
+        }
+      }
+      query.push(`(${parts.join(' or ')})`);
     }
   }
 
@@ -192,6 +228,36 @@ export default class CardSearchComponent extends React.Component {
     return queryParts.join(' and ');
   }
 
+  renderTextSearchOptions() {
+    const {
+      searchText,
+      searchFlavor,
+      searchBack,
+    } = this.state;
+    return (
+      <View style={styles.textSearchOptions}>
+        <Text style={styles.searchOption}>{ 'Game\nText' }</Text>
+        <Switch
+          value={searchText}
+          onValueChange={this._toggleSearchText}
+          onTintColor="#222222"
+        />
+        <Text style={styles.searchOption}>{ 'Flavor\nText' }</Text>
+        <Switch
+          value={searchFlavor}
+          onValueChange={this._toggleSearchFlavor}
+          onTintColor="#222222"
+        />
+        <Text style={styles.searchOption}>{ 'Card\nBacks' }</Text>
+        <Switch
+          value={searchBack}
+          onValueChange={this._toggleSearchBack}
+          onTintColor="#222222"
+        />
+      </View>
+    );
+  }
+
   render() {
     const {
       navigator,
@@ -212,6 +278,8 @@ export default class CardSearchComponent extends React.Component {
           <SearchBox
             onChangeText={this._searchUpdated}
             placeholder="Search for a card"
+            focusComponent={this.renderTextSearchOptions()}
+            focusComponentHeight={SEARCH_OPTIONS_HEIGHT}
           />
           <CardResultList
             navigator={navigator}
@@ -240,6 +308,21 @@ const styles = StyleSheet.create({
     left: 0,
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'column',
     justifyContent: 'flex-start',
+  },
+  textSearchOptions: {
+    paddingLeft: 4,
+    paddingRight: 8,
+    paddingBottom: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: SEARCH_OPTIONS_HEIGHT,
+  },
+  searchOption: {
+    fontFamily: 'System',
+    fontSize: 12,
+    marginLeft: 10,
+    marginRight: 2,
   },
 });

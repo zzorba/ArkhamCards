@@ -546,10 +546,13 @@ class CardDetailView extends React.PureComponent {
   }
 
   renderCardFront(card, backFirst, isHorizontal, flavorFirst) {
-    if ((card.hidden || backFirst) && card.spoiler && !this.state.showBack) {
+    if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack) {
       return (
         <View style={styles.buttonContainer}>
-          <Button text={backFirst ? 'Show back' : 'Show front'} onPress={this._toggleShowBack} />
+          <Button
+            text={(card.hidden || backFirst) ? 'Show back' : 'Show front'}
+            onPress={this._toggleShowBack}
+          />
         </View>
       );
     }
@@ -655,7 +658,7 @@ class CardDetailView extends React.PureComponent {
       card.type_code === 'act' ||
       card.type_code === 'agenda';
     const backFirst = !linked &&
-      (card.double_sided || card.linked_card) &&
+      (card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
       !(isHorizontal || !card.spoiler) &&
       card.type_code !== 'scenario';
     return (
