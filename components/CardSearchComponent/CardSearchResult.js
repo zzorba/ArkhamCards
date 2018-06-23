@@ -12,10 +12,9 @@ import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { COLORS } from '../../styles/colors';
-import PlusMinusButtons from '../core/PlusMinusButtons';
+import { ROW_HEIGHT, ICON_SIZE } from './constants';
+import CardQuantityComponent from './CardQuantityComponent';
 
-const ROW_HEIGHT = 44;
-const ICON_SIZE = 28;
 const SMALL_ICON_SIZE = 26;
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
@@ -186,22 +185,14 @@ export default class CardSearchResult extends React.PureComponent {
             { this.renderIcon(card) }
             { this.renderCardName(card) }
           </View>
-          { !!onDeckCountChange && (
-            <View style={styles.countEditContainer}>
-              { (count > 0) && (
-                <Text style={styles.cardCount}>
-                  { `${count}x` }
-                </Text>
-              ) }
-              <PlusMinusButtons
-                style={styles.buttonContainer}
-                count={count || 0}
-                limit={limit !== null ? limit : card.deck_limit}
-                onChange={this._onDeckCountChange}
-              />
-            </View>
-          ) }
         </TouchableOpacity>
+        { !!onDeckCountChange && (
+          <CardQuantityComponent
+            count={count || 0}
+            limit={limit !== null ? limit : card.deck_limit}
+            countChanged={this._onDeckCountChange}
+          />
+        ) }
       </View>
     );
   }
@@ -209,9 +200,9 @@ export default class CardSearchResult extends React.PureComponent {
 
 const styles = StyleSheet.create({
   stack: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    position: 'relative',
+    width: '100%',
+    height: ROW_HEIGHT,
     borderBottomWidth: 1,
     borderColor: COLORS.gray,
   },
@@ -262,25 +253,5 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 12,
     lineHeight: 18,
-  },
-  buttonContainer: {
-    paddingTop: 2,
-    paddingBottom: 2,
-    marginRight: 8,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-  cardCount: {
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: ROW_HEIGHT,
-    fontWeight: '600',
-    marginRight: 4,
-  },
-  countEditContainer: {
-    flexDirection: 'row',
-    height: ROW_HEIGHT,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
   },
 });
