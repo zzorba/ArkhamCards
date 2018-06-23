@@ -58,6 +58,7 @@ class CardDetailView extends React.PureComponent {
 
     this.state = {
       showSpoilers: props.showSpoilers,
+      showBack: false,
       cardViewDimension: {
         width: 0,
         height: 0,
@@ -65,7 +66,9 @@ class CardDetailView extends React.PureComponent {
     };
 
     this._onCardViewLayout = this.onCardViewLayout.bind(this);
+    this._editSpoilersPressed = this.editSpoilersPressed.bind(this);
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
+    this._toggleShowBack = this.toggleShowBack.bind(this);
     this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
     this._showFaq = this.showFaq.bind(this);
 
@@ -96,6 +99,11 @@ class CardDetailView extends React.PureComponent {
     }
   }
 
+  editSpoilersPressed() {
+    this.props.navigator.push({
+      screen: 'EditSpoilers',
+    });
+  }
 
   onNavigatorEvent(event) {
     const {
@@ -141,6 +149,12 @@ class CardDetailView extends React.PureComponent {
         investigator: card,
       },
       backButtonTitle: 'Back',
+    });
+  }
+
+  toggleShowBack() {
+    this.setState({
+      showBack: !this.state.showBack,
     });
   }
 
@@ -302,11 +316,11 @@ class CardDetailView extends React.PureComponent {
     return null;
   }
 
-  renderTitle(card, blur, name, subname) {
+  renderTitle(card, name, subname) {
     const factionColor = card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code];
     return (
       <View style={[styles.cardTitle, {
-        backgroundColor: blur ? '#000000' : (factionColor || '#FFFFFF'),
+        backgroundColor: factionColor || '#FFFFFF',
         borderColor: factionColor || '#000000',
       }]}>
         <View style={styles.column}>
@@ -356,7 +370,7 @@ class CardDetailView extends React.PureComponent {
     return card.deck_limit > 0 ? PLAYER_BACK : ENCOUNTER_BACK;
   }
 
-  renderCardImage(card, blur, isHorizontal) {
+  renderCardImage(card, isHorizontal) {
     if (!card.imagesrc) {
       return null;
     }
@@ -398,7 +412,7 @@ class CardDetailView extends React.PureComponent {
               height: 250,
               borderWidth: 0,
             }}
-            flipped={!blur}
+            flipped
             backSide={
               <CachedImage
                 style={isHorizontal ? styles.horizontalCardImage : styles.verticalCardImage}
@@ -421,17 +435,42 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
-  renderCardBack(card, blur, isHorizontal, flavorFirst) {
+  renderCardBack(card, backFirst, isHorizontal, flavorFirst) {
+    const {
+      showSpoilers,
+      pack_code,
+    } = this.props;
+    if (card.linked_card) {
+      return (
+        <CardDetailView
+          navigator={navigator}
+          id={card.code}
+          card={card.linked_card}
+          pack_code={pack_code}
+          showSpoilers={showSpoilers}
+          linked
+        />
+      );
+    }
     if (!card.double_sided) {
       return null;
     }
+
+    if (!backFirst && card.spoiler && !this.state.showBack && card.type_code !== 'scenario') {
+      return (
+        <View style={styles.buttonContainer}>
+          <Button text="Show back" onPress={this._toggleShowBack} />
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <View style={[styles.card, {
-          backgroundColor: blur ? '#000000' : '#FFFFFF',
+          backgroundColor: '#FFFFFF',
           borderColor: FACTION_COLORS[card.faction_code] || '#000000',
         }]}>
-          { this.renderTitle(card, blur, card.back_name || card.name) }
+          { this.renderTitle(card, card.back_name || card.name) }
           <View style={styles.cardBody}>
             <View style={styles.typeBlock}>
               <View style={styles.metadataBlock}>
@@ -506,105 +545,124 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
+  renderCardFront(card, backFirst, isHorizontal, flavorFirst) {
+    if ((card.hidden || backFirst) && card.spoiler && !this.state.showBack) {
+      return (
+        <View style={styles.buttonContainer}>
+          <Button text={backFirst ? 'Show back' : 'Show front'} onPress={this._toggleShowBack} />
+        </View>
+      );
+    }
+
+    return (
+      <View style={styles.container}>
+        <View style={[
+          styles.card,
+          { borderColor: FACTION_COLORS[card.faction_code] || '#000000' },
+        ]}>
+          { this.renderTitle(card, card.name, card.subname) }
+          <View style={styles.cardBody}>
+            <View style={[styles.typeBlock, {
+              backgroundColor: '#FFFFFF',
+            }]}>
+              <View style={styles.row}>
+                <View style={styles.mainColumn}>
+                  { this.renderMetadata(card) }
+                  { this.renderPlaydata(card) }
+                  { !!(card.flavor && flavorFirst) &&
+                    <FlavorTextComponent text={card.flavor} />
+                  }
+                </View>
+                { card.type_code !== 'story' && card.type_code !== 'scenario' && (
+                  <View style={styles.column}>
+                    <View style={styles.playerImage}>
+                      <PlayerCardImage card={card} />
+                    </View>
+                  </View>
+                ) }
+              </View>
+              { !!card.real_text && (
+                <View style={[styles.gameTextBlock, {
+                  borderColor: FACTION_COLORS[card.faction_code] || '#000000',
+                }]}>
+                  <CardTextComponent text={card.real_text} />
+                </View>)
+              }
+              { ('victory' in card && card.victory !== null) &&
+                <Text style={styles.typeText}>
+                  { `Victory: ${card.victory}.` }
+                </Text>
+              }
+              { !!card.flavor && !flavorFirst &&
+                <FlavorTextComponent text={card.flavor} />
+              }
+              { !!card.illustrator && (
+                <Text style={styles.illustratorText}>
+                  <AppIcon name="palette" size={16} color="#000000" />
+                  { card.illustrator }
+                </Text>
+              ) }
+              { !!card.pack_name &&
+                <View style={styles.setRow}>
+                  <Text>
+                    { `${card.pack_name} #${card.position % 1000}.` }
+                  </Text>
+                  { !!card.encounter_name &&
+                    <Text>
+                      <EncounterIcon
+                        encounter_code={card.encounter_code}
+                        size={12}
+                        color="#000000"
+                      />
+                      { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
+                    </Text>
+                  }
+                </View>
+              }
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+
   render() {
     const {
-      navigator,
       card,
-      pack_code,
-      showSpoilers,
       linked,
     } = this.props;
 
-    const blur = this.shouldBlur();
+    if (this.shouldBlur()) {
+      return (
+        <ScrollView style={styles.viewContainer}>
+          <Text style={styles.spoilerText}>
+            Warning: this card contains possible spoilers for '{ card.pack_name }'.
+          </Text>
+          <View style={styles.buttonContainer}>
+            <Button onPress={this._toggleShowSpoilers} text="Show card" />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button onPress={this._editSpoilersPressed} text="Edit my spoiler settings" />
+          </View>
+        </ScrollView>
+      );
+    }
+
     const isHorizontal = card.type_code === 'act' ||
       card.type_code === 'agenda' ||
       card.type_code === 'investigator';
     const flavorFirst = card.type_code === 'story' ||
       card.type_code === 'act' ||
       card.type_code === 'agenda';
-    const backFirst = !(isHorizontal || !card.spoiler) && card.type_code !== 'scenario';
+    const backFirst = !linked &&
+      (card.double_sided || card.linked_card) &&
+      !(isHorizontal || !card.spoiler) &&
+      card.type_code !== 'scenario';
     return (
-      <ScrollView style={{ flexDirection: 'column', flexWrap: 'wrap' }}>
-        { backFirst && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
-        <View style={styles.container}>
-          <View style={[
-            styles.card,
-            { borderColor: FACTION_COLORS[card.faction_code] || '#000000' },
-          ]}>
-            { this.renderTitle(card, blur, card.name, card.subname) }
-            <View style={styles.cardBody}>
-              <View style={[styles.typeBlock, {
-                backgroundColor: blur ? '#000000' : '#FFFFFF',
-              }]}>
-                <View style={styles.row}>
-                  <View style={styles.mainColumn}>
-                    { this.renderMetadata(card) }
-                    { this.renderPlaydata(card) }
-                    { !!(card.flavor && flavorFirst) &&
-                      <FlavorTextComponent text={card.flavor} />
-                    }
-                  </View>
-                  { card.type_code !== 'story' && card.type_code !== 'scenario' && (
-                    <View style={styles.column}>
-                      <View style={styles.playerImage}>
-                        <PlayerCardImage card={card} />
-                      </View>
-                    </View>
-                  ) }
-                </View>
-                { !!card.real_text && (
-                  <View style={[styles.gameTextBlock, {
-                    borderColor: FACTION_COLORS[card.faction_code] || '#000000',
-                  }]}>
-                    <CardTextComponent text={card.real_text} />
-                  </View>)
-                }
-                { ('victory' in card && card.victory !== null) &&
-                  <Text style={styles.typeText}>
-                    { `Victory: ${card.victory}.` }
-                  </Text>
-                }
-                { !!card.flavor && !flavorFirst &&
-                  <FlavorTextComponent text={card.flavor} />
-                }
-                { !!card.illustrator && (
-                  <Text style={styles.illustratorText}>
-                    <AppIcon name="palette" size={16} color="#000000" />
-                    { card.illustrator }
-                  </Text>
-                ) }
-                { !!card.pack_name &&
-                  <View style={styles.setRow}>
-                    <Text>
-                      { `${card.pack_name} #${card.position % 1000}.` }
-                    </Text>
-                    { !!card.encounter_name &&
-                      <Text>
-                        <EncounterIcon
-                          encounter_code={card.encounter_code}
-                          size={12}
-                          color="#000000"
-                        />
-                        { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
-                      </Text>
-                    }
-                  </View>
-                }
-              </View>
-            </View>
-          </View>
-        </View>
-        { !backFirst && this.renderCardBack(card, blur, isHorizontal, flavorFirst) }
-        { !!card.linked_card && (
-          <CardDetailView
-            navigator={navigator}
-            id={card.code}
-            card={card.linked_card}
-            pack_code={pack_code}
-            showSpoilers={showSpoilers}
-            linked
-          />
-        ) }
+      <ScrollView style={styles.viewContainer}>
+        { backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst) }
+        { this.renderCardFront(card, backFirst, isHorizontal, flavorFirst) }
+        { !backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst) }
         { this.renderFaqButton() }
         { this.renderInvestigatorCardsLink() }
         { !linked && <View style={styles.footerPadding} /> }
@@ -635,6 +693,10 @@ export default connectRealm(
   });
 
 const styles = StyleSheet.create({
+  viewContainer: {
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+  },
   row: {
     width: '100%',
     flexDirection: 'row',
@@ -768,5 +830,8 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: '600',
     fontFamily: 'System',
+  },
+  spoilerText: {
+    margin: 8,
   },
 });

@@ -130,7 +130,7 @@ export default class CardSearchResult extends React.PureComponent {
 
   renderCardName(card) {
     const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
-    if (card.subname) {
+    if (card.renderSubname) {
       return (
         <View style={styles.cardNameBlock}>
           <View style={styles.row}>
@@ -138,7 +138,7 @@ export default class CardSearchResult extends React.PureComponent {
               styles.cardName,
               { color: FACTION_COLORS[card.faction_code] },
             ]} ellipsizeMode="tail">
-              { card.name }
+              { card.renderName }
             </Text>
             <Text style={[styles.cardName, styles.xp]}>
               { xpStr }
@@ -148,7 +148,7 @@ export default class CardSearchResult extends React.PureComponent {
             styles.cardSubName,
             { color: FACTION_COLORS[card.faction_code] },
           ]}>
-            { card.subname }
+            { card.renderSubname }
           </Text>
         </View>
       );
@@ -159,7 +159,7 @@ export default class CardSearchResult extends React.PureComponent {
           styles.cardNameOnly,
           { color: FACTION_COLORS[card.faction_code] },
         ]}>
-          { card.name }
+          { card.renderName }
         </Text>
         <Text style={[styles.cardName, styles.xp]}>
           { xpStr }

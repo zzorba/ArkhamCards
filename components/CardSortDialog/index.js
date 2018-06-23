@@ -19,6 +19,7 @@ class CardSortDialog extends React.Component {
     selectedSort: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     query: PropTypes.string,
+    searchTerm: PropTypes.string,
     hasEncounterCards: PropTypes.bool.isRequired,
   };
 
@@ -61,8 +62,9 @@ export default connectRealm(CardSortDialog, {
         hasEncounterCards: true,
       };
     }
+    const encounterQuery = `(${props.query}) and (encounter_code != null or (linked_card != null && linked_card.encounter_code != null))`;
     return {
-      hasEncounterCards: results.cards.filtered(`${props.query} and (encounter_code != null)`).length > 0,
+      hasEncounterCards: results.cards.filtered(encounterQuery, props.searchTerm).length > 0,
     };
   },
 });

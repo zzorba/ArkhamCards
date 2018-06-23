@@ -32,6 +32,7 @@ export default class CardSearchComponent extends React.Component {
     backPressed: PropTypes.func,
     backButtonText: PropTypes.string,
     limits: PropTypes.object,
+    footer: PropTypes.node,
   };
 
   constructor(props) {
@@ -114,6 +115,7 @@ export default class CardSearchComponent extends React.Component {
             sortChanged: this._sortChanged,
             selectedSort: this.state.selectedSort,
             query: this.query(),
+            searchTerm: this.state.searchTerm,
           },
           style: {
             backgroundColor: 'rgba(128,128,128,.75)',
@@ -156,7 +158,12 @@ export default class CardSearchComponent extends React.Component {
         '(',
         `name contains[c] $0 or `,
         `real_text contains[c] $0 or `,
-        `traits contains[c] $0`,
+        `traits contains[c] $0 or`,
+        '(linked_card != null && (',
+        `linked_card.name contains[c] $0 or `,
+        `linked_card.real_text contains[c] $0 or `,
+        `linked_card.traits contains[c] $0`,
+        '))',
         ')',
       ].join(''));
     }
@@ -173,13 +180,14 @@ export default class CardSearchComponent extends React.Component {
     if (baseQuery) {
       queryParts.push(baseQuery);
     }
+    queryParts.push('back_linked != true');
     this.applyQueryFilter(queryParts);
     forEach(
       applyFilters(this.state.filters),
       clause => queryParts.push(clause));
 
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      queryParts.push(`(encounter_code != null)`);
+      queryParts.push(`(encounter_code != null OR linked_card.encounter_code != null)`);
     }
     return queryParts.join(' and ');
   }

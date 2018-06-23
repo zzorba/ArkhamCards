@@ -162,9 +162,18 @@ export default class Card {
       Card.parseDeckOptions(json.deck_options) :
       [];
 
+    let renderName = json.name;
+    let renderSubname = json.subname;
     const linked_card = json.linked_card ?
       Card.fromJson(json.linked_card, packsByCode) :
       null;
+    if (linked_card) {
+      linked_card.back_linked = true;
+      if (json.hidden && !linked_card.hidden) {
+        renderName = linked_card.name;
+        renderSubname = linked_card.subname;
+      }
+    }
 
     const traits_normalized = json.traits ? map(
       filter(
@@ -185,11 +194,13 @@ export default class Card {
     const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json));
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
-    const spoiler = !!json.spoiler || (linked_card && linked_card.spoiler);
+    const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
     return Object.assign(
       {},
       json,
       {
+        renderName,
+        renderSubname,
         deck_requirements,
         deck_options,
         linked_card,
@@ -232,6 +243,8 @@ Card.schema = {
     exceptional: 'bool?',
     xp: { type: 'int', optional: true, indexed: true },
     victory: 'int?',
+    renderName: 'string',
+    renderSubname: 'string?',
     name: 'string',
     real_name: 'string',
     subname: 'string?',
@@ -277,6 +290,7 @@ Card.schema = {
     deck_requirements: 'DeckRequirement?',
     deck_options: 'DeckOption[]',
     linked_card: 'Card',
+    back_linked: 'bool?',
 
     // Derived data.
     has_restrictions: 'bool',

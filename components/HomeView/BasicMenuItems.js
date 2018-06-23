@@ -28,7 +28,7 @@ export default function BasicMenuItems({ navigator }) {
         screen="Browse.Cards"
         icon="elder_sign"
         passProps={{
-          baseQuery: 'type_code != \'investigator\' && spoiler != true && type_code != \'story\'',
+          baseQuery: '(type_code != \'investigator\' && spoiler != true && type_code != \'story\')',
         }}
       />
       <MenuItem

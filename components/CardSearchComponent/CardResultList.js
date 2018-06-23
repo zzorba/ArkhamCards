@@ -128,7 +128,9 @@ class CardResultList extends React.Component {
       case SORT_BY_TITLE:
         return 'All Cards';
       case SORT_BY_ENCOUNTER_SET:
-        return card.encounter_name || 'N/A';
+        return card.encounter_name ||
+          (card.linked_card && card.linked_card.encounter_name) ||
+          'N/A';
     }
   }
 
