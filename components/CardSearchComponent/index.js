@@ -276,9 +276,9 @@ export default class CardSearchComponent extends React.Component {
     const query = this.query();
     return (
       <View style={styles.wrapper}>
+        { this.renderHeader() }
         <View style={styles.container}>
           <CardResultList
-            header={this.renderHeader()}
             navigator={navigator}
             query={query}
             searchTerm={searchTerm}

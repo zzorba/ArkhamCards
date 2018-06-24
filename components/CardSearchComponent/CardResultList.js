@@ -37,7 +37,6 @@ class CardResultList extends React.Component {
     onDeckCountChange: PropTypes.func,
     show_spoilers: PropTypes.object,
     limits: PropTypes.object,
-    header: PropTypes.node,
   };
 
   constructor(props) {
@@ -59,7 +58,6 @@ class CardResultList extends React.Component {
     this._editSpoilerSettings = this.editSpoilerSettings.bind(this);
     this._enableSpoilers = this.enableSpoilers.bind(this);
     this._renderCard = this.renderCard.bind(this);
-    this._renderHeader = this.renderHeader.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
   }
 
@@ -216,10 +214,6 @@ class CardResultList extends React.Component {
     );
   }
 
-  renderHeader() {
-    return this.props.header;
-  }
-
   renderFooter() {
     const {
       spoilerCardsCount,
@@ -287,7 +281,6 @@ class CardResultList extends React.Component {
         keyExtractor={this._cardToKey}
         renderItem={this._renderCard}
         extraData={this.state.deckCardCounts}
-        ListHeaderComponent={this._renderHeader}
         ListFooterComponent={this._renderFooter}
       />
     );

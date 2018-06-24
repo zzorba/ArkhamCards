@@ -164,6 +164,13 @@ export default class Card {
 
     let renderName = json.name;
     let renderSubname = json.subname;
+    if (json.type_code === 'act' && json.stage) {
+      renderSubname = `Act ${json.stage}`;
+    } else if (json.type_code === 'agenda' && json.stage) {
+      renderSubname = `Agenda ${json.stage}`;
+    } else if (json.type_code === 'scenario') {
+      renderSubname = 'Scenario';
+    }
     const linked_card = json.linked_card ?
       Card.fromJson(json.linked_card, packsByCode) :
       null;
@@ -171,7 +178,13 @@ export default class Card {
       linked_card.back_linked = true;
       if (json.hidden && !linked_card.hidden) {
         renderName = linked_card.name;
-        renderSubname = linked_card.subname;
+        if (linked_card.type_code === 'act' && linked_card.stage) {
+          renderSubname = `Act ${linked_card.stage}`;
+        } else if (linked_card.type_code === 'agenda' && linked_card.stage) {
+          renderSubname = `Agenda ${linked_card.stage}`;
+        } else {
+          renderSubname = linked_card.subname;
+        }
       }
     }
 
