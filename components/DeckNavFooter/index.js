@@ -19,7 +19,7 @@ const DECK_PROBLEM_MESSAGES = {
   too_few_cards: 'Not enough cards',
   too_many_cards: 'Too many cards',
   too_many_copies: 'Too many copies of a card (by title)',
-  invalid_cards: 'Contains forbidden cards (cards no permitted by Faction)',
+  invalid_cards: 'Contains forbidden cards (cards not permitted by Faction)',
   deck_options_limit: 'Contains too many limited cards',
   investigator: 'Doesn\'t comply with the Investigator requirements',
 };

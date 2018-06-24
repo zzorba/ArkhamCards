@@ -37,7 +37,7 @@ const BreakTagRule = {
 };
 
 const EmphasisMarkdownTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^\\[\\[(.+?)\\]\\]')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^\\[\\[([\\s\\S]+?)\\]\\]')),
   order: 0,
   parse: (capture) => {
     return { text: capture[1] };
@@ -46,7 +46,7 @@ const EmphasisMarkdownTagRule = {
 };
 
 const MalformedBoldItalicHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>(.+?)<\\/b><\\/i>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/b><\\/i>')),
   order: 1,
   parse: (capture) => {
     return { text: capture[1] };
@@ -55,7 +55,7 @@ const MalformedBoldItalicHtmlTagRule = {
 };
 
 const BoldItalicHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>(.+?)<\\/i><\\/b>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/i><\\/b>')),
   order: 1,
   parse: (capture) => {
     return { text: capture[1] };
@@ -64,7 +64,7 @@ const BoldItalicHtmlTagRule = {
 };
 
 const BoldHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b>([\\s\\S]+?)<\\/b>')),
   order: 2,
   parse: (capture) => {
     return { text: capture[1] };
@@ -73,7 +73,7 @@ const BoldHtmlTagRule = {
 };
 
 const UnderlineHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<u>(.+?)<\\/u>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
   order: 2,
   parse: (capture) => {
     return { text: capture[1] };
@@ -82,7 +82,7 @@ const UnderlineHtmlTagRule = {
 };
 
 const EmphasisHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<em>(.+?)<\\/em>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<em>([\\s\\S]+?)<\\/em>')),
   order: 1,
   parse: (capture) => {
     return { text: capture[1] };
@@ -91,7 +91,7 @@ const EmphasisHtmlTagRule = {
 };
 
 const ItalicHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<i>(.+?)<\\/i>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
   order: 2,
   parse: (capture) => {
     return { text: capture[1] };
