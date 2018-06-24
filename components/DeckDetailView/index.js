@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { delay, forEach, keys } from 'lodash';
+import { forEach, keys } from 'lodash';
 import {
   ActivityIndicator,
   StyleSheet,
@@ -9,7 +9,6 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Button } from 'react-native-elements';
 
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
@@ -182,7 +181,6 @@ class DeckDetailView extends React.Component {
     });
 
     const pDeck = parseDeck(deck, slots, cardsInDeck);
-    const pendingEdits = this.hasPendingEdits();
     return (
       <View style={styles.container}>
         <DeckViewTab

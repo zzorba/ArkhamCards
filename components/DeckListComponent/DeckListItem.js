@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 
 import InvestigatorImage from '../core/InvestigatorImage';
+import DeckTitleBarComponent from '../DeckTitleBarComponent';
 import { toRelativeDateString } from '../../lib/datetime';
-import { FACTION_BACKGROUND_COLORS } from '../../constants';
-import ArkhamIcon from '../../assets/ArkhamIcon';
+import { parseDeck } from '../parseDeck';
 
 const ROW_HEIGHT = 100;
 
@@ -19,6 +19,7 @@ export default class DeckListItem extends React.Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
+    cards: PropTypes.object,
     investigator: PropTypes.object,
     onPress: PropTypes.func,
   };
@@ -37,34 +38,11 @@ export default class DeckListItem extends React.Component {
     onPress && onPress(id);
   }
 
-  renderTitleBar() {
-    const {
-      deck,
-      investigator,
-    } = this.props;
-    const factionColor = investigator &&
-      investigator.faction_code &&
-      FACTION_BACKGROUND_COLORS[investigator.faction_code];
-    const iconName = investigator &&
-      (investigator.faction_code === 'neutral' ? 'elder_sign' : investigator.faction_code);
-    return (
-      <View style={[styles.titleBar, { backgroundColor: factionColor || '#FFFFFF' }]}>
-        <Text
-          style={[styles.title, { color: factionColor ? '#FFFFFF' : '#000000' }]}
-          numberOfLines={1}
-          ellipsizeMode="tail"
-        >
-          { deck.name }
-        </Text>
-        { !!iconName && <ArkhamIcon name={iconName} size={28} color="#FFFFFF" /> }
-      </View>
-    );
-  }
-
   render() {
     const {
       deck,
       investigator,
+      cards,
     } = this.props;
     if (!deck) {
       return (
@@ -77,18 +55,28 @@ export default class DeckListItem extends React.Component {
         </View>
       );
     }
+    const parsedDeck = parseDeck(deck, deck.slots, cards);
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.column}>
-          { this.renderTitleBar() }
+          <DeckTitleBarComponent name={deck.name} investigator={investigator} />
           <View style={styles.row}>
             <View style={styles.image}>
               { !!investigator && <InvestigatorImage card={investigator} /> }
             </View>
             <View style={[styles.column, styles.titleColumn]}>
+              <Text style={styles.text}>
+                { investigator.name }
+              </Text>
+              <Text style={styles.text}>
+                { `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed.` }
+              </Text>
+              <Text style={styles.text}>
+                { `${parsedDeck.experience} experience required.` }
+              </Text>
               { !!deck.date_update && (
                 <Text style={styles.text} >
-                  Updated: { toRelativeDateString(Date.parse(deck.date_update)) }
+                  Updated { toRelativeDateString(Date.parse(deck.date_update)) }
                 </Text>
               ) }
             </View>
@@ -111,22 +99,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     height: ROW_HEIGHT,
   },
-  titleBar: {
-    width: '100%',
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingTop: 4,
-    paddingBottom: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  title: {
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 22,
-    flex: 1,
-  },
   text: {
     fontFamily: 'System',
     fontSize: 14,
@@ -140,7 +112,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   titleColumn: {
-    paddingTop: 8,
+    paddingTop: 12,
     flex: 1,
     height: '100%',
   },

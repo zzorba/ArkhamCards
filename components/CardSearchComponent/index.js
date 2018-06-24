@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
   BackHandler,
-  Dimensions,
   Platform,
   Text,
   StyleSheet,
@@ -42,14 +41,7 @@ export default class CardSearchComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    const {
-      height,
-      width,
-    } = Dimensions.get('window');
-
     this.state = {
-      width,
-      height,
       searchText: false,
       searchFlavor: false,
       searchBack: false,
@@ -278,8 +270,6 @@ export default class CardSearchComponent extends React.Component {
       footer,
     } = this.props;
     const {
-      width,
-      height,
       selectedSort,
       searchTerm,
     } = this.state;

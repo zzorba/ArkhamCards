@@ -46,7 +46,7 @@ class MyDecksComponent extends React.Component {
     if (!myDecks ||
       myDecks.length === 0 ||
       !myDecksUpdated ||
-      (myDecksUpdated.getTime() / 1000 + 120) < (now.getTime() / 1000)
+      (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)
     ) {
       this.onRefresh();
     }

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import AppIcon from '../../assets/AppIcon';
+import DeckTitleBarComponent from '../DeckTitleBarComponent';
 import { DeckType } from '../parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckViewCardItem from './DeckViewCardItem';
@@ -70,13 +71,6 @@ export default class DeckViewTab extends React.Component {
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
-  }
-
-  componentDidMount() {
-    const {
-      navigator,
-      parsedDeck,
-    } = this.props;
   }
 
   keyForCard(item) {
@@ -188,41 +182,44 @@ export default class DeckViewTab extends React.Component {
       .concat(deckToSections(specialCards));
 
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.rowWrap}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={this._showInvestigator}>
-              <View style={styles.image}>
-                <InvestigatorImage card={investigator} navigator={navigator} />
-              </View>
-            </TouchableOpacity>
-            <View style={styles.metadata}>
+      <ScrollView>
+        <DeckTitleBarComponent name={deck.name} investigator={investigator} />
+        <View style={styles.container}>
+          <View style={styles.rowWrap}>
+            <View style={styles.header}>
               <TouchableOpacity onPress={this._showInvestigator}>
-                <Text style={styles.investigatorName}>
-                  { investigator.name }
-                </Text>
+                <View style={styles.image}>
+                  <InvestigatorImage card={investigator} navigator={navigator} />
+                </View>
               </TouchableOpacity>
-              <Text style={styles.defaultText}>
-                { `${normalCardCount} cards (${totalCardCount} total)` }
-              </Text>
-              <Text style={styles.defaultText}>
-                { `${experience} experience required.` }
-              </Text>
-              <Text style={styles.defaultText}>
-                { `${packs} packs required.` }
-              </Text>
-              { this.renderProblem() }
+              <View style={styles.metadata}>
+                <TouchableOpacity onPress={this._showInvestigator}>
+                  <Text style={styles.investigatorName}>
+                    { investigator.name }
+                  </Text>
+                </TouchableOpacity>
+                <Text style={styles.defaultText}>
+                  { `${normalCardCount} cards (${totalCardCount} total)` }
+                </Text>
+                <Text style={styles.defaultText}>
+                  { `${experience} experience required.` }
+                </Text>
+                <Text style={styles.defaultText}>
+                  { `${packs} packs required.` }
+                </Text>
+                { this.renderProblem() }
+              </View>
             </View>
           </View>
+          <SectionList
+            initialNumToRender={20}
+            renderItem={this._renderCard}
+            keyExtractor={this._keyForCard}
+            renderSectionHeader={this._renderCardHeader}
+            sections={sections}
+          />
+          <DeckProgressModule navigator={navigator} deck={deck} />
         </View>
-        <SectionList
-          initialNumToRender={20}
-          renderItem={this._renderCard}
-          keyExtractor={this._keyForCard}
-          renderSectionHeader={this._renderCardHeader}
-          sections={sections}
-        />
-        <DeckProgressModule navigator={navigator} deck={deck} />
       </ScrollView>
     );
   }

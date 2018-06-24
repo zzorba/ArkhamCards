@@ -153,6 +153,15 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
     forEach(action.decks, deck => {
       allDecks[deck.id] = deck;
     });
+    forEach(action.decks, deck => {
+      let scenarioCount = 0;
+      let currentDeck = deck;
+      while (currentDeck && currentDeck.previous_deck) {
+        scenarioCount ++;
+        currentDeck = allDecks[currentDeck.previous_deck];
+      }
+      deck.scenarioCount = scenarioCount;
+    })
     return Object.assign({},
       state,
       {

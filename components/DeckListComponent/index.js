@@ -23,6 +23,7 @@ class DeckListComponent extends React.Component {
     refreshing: PropTypes.bool,
     error: PropTypes.string,
     investigators: PropTypes.object,
+    cards: PropTypes.object,
     decks: PropTypes.object,
     fetchDeck: PropTypes.func.isRequired,
   }
@@ -64,6 +65,7 @@ class DeckListComponent extends React.Component {
       investigators,
       decks,
       deckClicked,
+      cards,
     } = this.props;
 
     const deck = decks[deckId];
@@ -72,6 +74,7 @@ class DeckListComponent extends React.Component {
         key={deckId}
         id={deckId}
         deck={deck}
+        cards={cards}
         investigator={deck ? investigators[deck.investigator_code] : null}
         onPress={deckClicked}
       />
@@ -155,13 +158,18 @@ export default connectRealm(
   {
     schemas: ['Card'],
     mapToProps(results) {
+      const investigatorCards =
+        results.cards.filtered('type_code == "investigator"');
       const investigators = {};
-      forEach(
-        results.cards.filtered('type_code == "investigator"'),
-        investigator => {
-          investigators[investigator.code] = investigator;
-        });
+      const cards = {};
+      forEach(results.cards, card => {
+        cards[card.code] = card;
+        if (card.type_code === 'investigator') {
+          investigators[card.code] = card;
+        }
+      });
       return {
+        cards,
         investigators,
       };
     },

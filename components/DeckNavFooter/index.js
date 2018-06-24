@@ -14,6 +14,7 @@ import { COLORS } from '../../styles/colors';
 import DeckValidation from '../../lib/DeckValidation';
 import { FOOTER_HEIGHT } from './constants';
 
+const SHOW_CHARTS_BUTTON = false;
 const DECK_PROBLEM_MESSAGES = {
   too_few_cards: 'Not enough cards',
   too_many_cards: 'Too many cards',
@@ -111,11 +112,13 @@ export default class DeckNavFooter extends React.Component {
           { this.renderProblem() }
         </View>
         <View style={styles.right}>
-          <TouchableOpacity onPress={this._showCardCharts}>
-            <View style={styles.button}>
-              <MaterialCommunityIcons name="chart-bar" size={28} color="#bbb" />
-            </View>
-          </TouchableOpacity>
+          { SHOW_CHARTS_BUTTON && (
+            <TouchableOpacity onPress={this._showCardCharts}>
+              <View style={styles.button}>
+                <MaterialCommunityIcons name="chart-bar" size={28} color="#bbb" />
+              </View>
+            </TouchableOpacity>
+          ) }
           <TouchableOpacity onPress={this._showCardSimulator}>
             <View style={styles.button}>
               <MaterialCommunityIcons name="cards-outline" size={28} color="#bbb" />
