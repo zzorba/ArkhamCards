@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { concat, flatMap, map, pullAt, shuffle, range, without } from 'lodash';
 import {
   Button,
+  FlatList,
   StyleSheet,
   Text,
-  SectionList,
   View,
 } from 'react-native';
 
@@ -164,7 +164,7 @@ export default class DrawSimulatorView extends React.Component {
     const deckEmpty = shuffledDeck.length === 0;
     const noSelection = selectedCards.length === 0;
     return (
-      <View>
+      <View style={styles.controlsContainer}>
         <View style={styles.drawButtonRow}>
           <Text style={styles.text}>Draw: </Text>
           <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
@@ -174,11 +174,11 @@ export default class DrawSimulatorView extends React.Component {
         </View>
         <View style={styles.wrapButtonRow}>
           <Button
-            title="Redraw Selected"
+            title="Redraw"
             disabled={noSelection}
             onPress={this._redrawSelected} />
           <Button
-            title="Reshuffle Selected"
+            title="Reshuffle"
             disabled={noSelection}
             onPress={this._reshuffleSelected} />
           <Button
@@ -207,7 +207,6 @@ export default class DrawSimulatorView extends React.Component {
       drawnCards,
       selectedCards,
     } = this.state;
-
     const data = map(drawnCards, (cardId, idx) => {
       const key = `${idx}-${cardId}`;
       return {
@@ -217,24 +216,30 @@ export default class DrawSimulatorView extends React.Component {
       };
     });
     return (
-      <SectionList
-        contentContainerStyle={styles.deckContainer}
-        sections={[
-          {
-            data,
-            title: 'na',
-          },
-        ]}
-        renderItem={this._renderCardItem}
-        renderSectionHeader={this._renderHeader}
-        numColumns={3}
-      />
+      <View style={styles.container}>
+        { this.renderHeader() }
+        <FlatList
+          contentContainerStyle={styles.deckContainer}
+          data={data}
+          renderItem={this._renderCardItem}
+          numColumns={3}
+        />
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  controlsContainer: {
+    flexDirection: 'column',
+  },
   drawButtonRow: {
+    width: '100%',
+    padding: 4,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -247,6 +252,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   deckContainer: {
+    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },

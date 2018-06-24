@@ -7,7 +7,11 @@ import {
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
 
+import { COLORS } from '../../styles/colors';
 import ArkhamIcon from '../../assets/ArkhamIcon';
+
+const CARD_WIDTH = 98;
+const CARD_HEIGHT = 136;
 
 export default class DrawCardItem extends React.PureComponent {
   static propTypes = {
@@ -58,24 +62,29 @@ export default class DrawCardItem extends React.PureComponent {
 
 const styles = StyleSheet.create({
   cardWrapper: {
-    margin: 1,
+    padding: 3,
+    marginRight: 3,
+    marginBottom: 3,
   },
   randomBasicWeakness: {
-    width: 98,
-    height: 136,
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT,
     backgroundColor: '#D6D6D6',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 3,
   },
   selectedCardWrapper: {
-    backgroundColor: 'red',
-    margin: 1,
+    backgroundColor: COLORS.lightBlue,
+    padding: 3,
+    marginRight: 3,
+    marginBottom: 3,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   drawnCard: {
-    width: 98,
-    height: 136,
-    margin: 3,
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT,
   },
 });
