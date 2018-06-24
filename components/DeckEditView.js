@@ -71,8 +71,6 @@ class DeckEditView extends React.Component {
       }
     });
     const pDeck = parseDeck(deck, deckCardCounts, cardsInDeck);
-
-
     return (
       <DeckNavFooter
         navigator={navigator}

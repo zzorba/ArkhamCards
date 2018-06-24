@@ -69,8 +69,7 @@ export default class CardSearchResult extends React.PureComponent {
       );
     }
 
-    if (card.type_code === 'scenario' ||
-      card.type_code === 'story') {
+    if (card.type_code === 'scenario' || card.type_code === 'story') {
       return (
         <EncounterIcon
           encounter_code={card.pack_code}
@@ -221,7 +220,7 @@ const styles = StyleSheet.create({
   },
   cardIcon: {
     width: ROW_HEIGHT,
-    height: '100%',
+    height: ROW_HEIGHT,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',

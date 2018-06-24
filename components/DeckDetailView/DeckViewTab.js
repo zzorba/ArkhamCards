@@ -77,9 +77,6 @@ export default class DeckViewTab extends React.Component {
       navigator,
       parsedDeck,
     } = this.props;
-    navigator.setTitle({
-      title: parsedDeck.deck.name,
-    });
   }
 
   keyForCard(item) {

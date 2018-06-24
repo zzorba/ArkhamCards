@@ -9,13 +9,17 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { Button } from 'react-native-elements';
 
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
+import { saveDeck } from '../../lib/authApi';
 import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
 import { getDeck } from '../../reducers';
+
+const SHOW_EDIT_BUTTON = false;
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -82,10 +86,13 @@ class DeckDetailView extends React.Component {
   }
 
   saveEdits() {
-    this.setState({
-      saving: true,
-    });
-    delay(() => this.props.navigator.pop(), 3000);
+    const {
+      deck,
+    } = this.props;
+    const {
+      slots,
+    } = this.state;
+    saveDeck(deck.id, deck.name, slots);
   }
 
   clearEdits() {
@@ -129,13 +136,14 @@ class DeckDetailView extends React.Component {
 
   loadCards(deck) {
     if (!deck.next_deck) {
+      const rightButtons = SHOW_EDIT_BUTTON ? [
+        {
+          icon: iconsMap.edit,
+          id: 'edit',
+        },
+      ] : [];
       this.props.navigator.setButtons({
-        rightButtons: [
-          {
-            icon: iconsMap.edit,
-            id: 'edit',
-          },
-        ],
+        rightButtons,
       });
     }
     this.setState({
@@ -174,7 +182,7 @@ class DeckDetailView extends React.Component {
     });
 
     const pDeck = parseDeck(deck, slots, cardsInDeck);
-
+    const pendingEdits = this.hasPendingEdits();
     return (
       <View style={styles.container}>
         <DeckViewTab
