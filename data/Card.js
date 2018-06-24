@@ -273,6 +273,7 @@ Card.schema = {
     spoiler: 'bool?',
     stage: 'int?', // Act/Agenda deck
     clues: 'int?',
+    shroud: 'int?',
     clues_fixed: 'bool?',
     doom: 'int?',
     health: 'int?',
