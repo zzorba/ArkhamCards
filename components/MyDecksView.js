@@ -5,6 +5,8 @@ import { iconsMap } from '../app/NavIcons';
 import withLoginGate from './withLoginGate';
 import MyDecksComponent from './MyDecksComponent';
 
+const HIDE_ADD_DECK_BUTTON = true;
+
 class MyDecksView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -14,14 +16,16 @@ class MyDecksView extends React.Component {
     super(props);
 
     this._deckNavClicked = this.deckNavClicked.bind(this);
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          icon: iconsMap.add,
-          id: 'add',
-        },
-      ],
-    });
+    if (!HIDE_ADD_DECK_BUTTON) {
+      props.navigator.setButtons({
+        rightButtons: [
+          {
+            icon: iconsMap.add,
+            id: 'add',
+          },
+        ],
+      });
+    }
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
