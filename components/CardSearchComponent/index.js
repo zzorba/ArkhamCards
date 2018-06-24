@@ -258,6 +258,17 @@ export default class CardSearchComponent extends React.Component {
     );
   }
 
+  renderHeader() {
+    return (
+      <SearchBox
+        onChangeText={this._searchUpdated}
+        placeholder="Search for a card"
+        focusComponent={this.renderTextSearchOptions()}
+        focusComponentHeight={SEARCH_OPTIONS_HEIGHT}
+      />
+    );
+  }
+
   render() {
     const {
       navigator,
@@ -276,13 +287,8 @@ export default class CardSearchComponent extends React.Component {
     return (
       <View style={styles.wrapper}>
         <View style={styles.container}>
-          <SearchBox
-            onChangeText={this._searchUpdated}
-            placeholder="Search for a card"
-            focusComponent={this.renderTextSearchOptions()}
-            focusComponentHeight={SEARCH_OPTIONS_HEIGHT}
-          />
           <CardResultList
+            header={this.renderHeader()}
             navigator={navigator}
             query={query}
             searchTerm={searchTerm}
