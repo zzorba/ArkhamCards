@@ -276,12 +276,18 @@ const decksPersistConfig = {
   blacklist: ['refreshing', 'error'],
 };
 
+const signedInPersistConfig = {
+  key: 'signedIn',
+  storage: FilesystemStorage,
+  blacklist: ['loading', 'error'],
+};
+
 // Combine all the reducers
 const rootReducer = combineReducers({
   packs,
   decks: persistReducer(decksPersistConfig, decks),
   campaigns,
-  signedIn,
+  signedIn: persistReducer(signedInPersistConfig, signedIn),
 });
 
 export default rootReducer;

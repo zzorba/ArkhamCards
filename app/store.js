@@ -17,7 +17,7 @@ export default function configureStore(initialState) {
     key: 'persist',
     storage: FilesystemStorage,
     // decks are handled separately.
-    blacklist: ['decks'],
+    blacklist: ['decks', 'signedIn'],
   };
 
   const reducer = persistReducer(
