@@ -135,7 +135,7 @@ export default class CardSearchResult extends React.PureComponent {
           <View style={styles.row}>
             <Text style={[
               styles.cardName,
-              { color: FACTION_COLORS[card.faction_code] },
+              { color: FACTION_COLORS[card.faction_code] || '#000000' },
             ]} ellipsizeMode="tail">
               { card.renderName }
             </Text>
@@ -145,7 +145,7 @@ export default class CardSearchResult extends React.PureComponent {
           </View>
           <Text style={[
             styles.cardSubName,
-            { color: FACTION_COLORS[card.faction_code] },
+            { color: FACTION_COLORS[card.faction_code] || '#000000' },
           ]}>
             { card.renderSubname }
           </Text>
@@ -156,7 +156,7 @@ export default class CardSearchResult extends React.PureComponent {
       <View style={styles.row}>
         <Text style={[
           styles.cardNameOnly,
-          { color: FACTION_COLORS[card.faction_code] },
+          { color: FACTION_COLORS[card.faction_code] || '#000000' },
         ]}>
           { card.renderName }
         </Text>

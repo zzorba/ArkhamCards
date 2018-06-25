@@ -4,8 +4,10 @@ import SimpleMarkdown from 'simple-markdown';
 import { MarkdownView } from 'react-native-markdown-view';
 
 import ArkhamIconNode from './ArkhamIconNode';
+import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';
 import BoldHtmlTagNode from './BoldHtmlTagNode';
 import BoldItalicHtmlTagNode from './BoldItalicHtmlTagNode';
+import HrTagNode from './HrTagNode';
 import ItalicHtmlTagNode from './ItalicHtmlTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 
@@ -33,7 +35,7 @@ const BreakTagRule = {
   parse: () => {
     return { text: '\n' };
   },
-  render: BoldHtmlTagNode,
+  render: BoldItalicHtmlTagNode,
 };
 
 const EmphasisMarkdownTagRule = {
@@ -49,9 +51,29 @@ const MalformedBoldItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/b><\\/i>')),
   order: 1,
   parse: (capture) => {
-    return { text: capture[1] };
+    return { text: '' };
   },
   render: BoldItalicHtmlTagNode,
+};
+
+const HrTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<hr>')),
+  order: 1,
+  parse: (capture, nestedParse, state) => {
+    return { children: nestedParse(capture[1], state) };
+  },
+  render: HrTagNode,
+};
+
+const BlockquoteHtmlTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<blockquote>([\\s\\S]+?)<\\/blockquote>')),
+  order: 1,
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: BlockquoteHtmlTagNode,
 };
 
 const BoldItalicHtmlTagRule = {
@@ -66,8 +88,10 @@ const BoldItalicHtmlTagRule = {
 const BoldHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b>([\\s\\S]+?)<\\/b>')),
   order: 2,
-  parse: (capture) => {
-    return { text: capture[1] };
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
   render: BoldHtmlTagNode,
 };
@@ -116,6 +140,8 @@ export default class CardText extends React.PureComponent {
           Object.assign({
             emMarkdown: EmphasisMarkdownTagRule,
             arkhamIconSpan: ArkahmIconSpanRule,
+            hrTag: HrTagRule,
+            blockquoteTag: BlockquoteHtmlTagRule,
             brTag: BreakTagRule,
             biTag: BoldItalicHtmlTagRule,
             badBiTag: MalformedBoldItalicHtmlTagRule,
@@ -136,7 +162,7 @@ export default class CardText extends React.PureComponent {
         }}
         onLinkPress={onLinkPress}
       >
-        { this.props.text }
+        { this.props.text.replace('&rarr;', '→').replace(/\/n/g,'\\n') }
       </MarkdownView>
     );
   }

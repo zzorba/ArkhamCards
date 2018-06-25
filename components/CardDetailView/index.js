@@ -302,7 +302,7 @@ class CardDetailView extends React.PureComponent {
           { !!card.health_per_investigator && PER_INVESTIGATOR_ICON }
           { `. Evade: ${card.enemy_evade || '-'}. ` }
           { '\n' }
-          { `Damage: ${card.enemy_damage || '-'}. Horror: ${card.enemy_horror}. ` }
+          { `Damage: ${card.enemy_damage || '-'}. Horror: ${card.enemy_horror || '-'}. ` }
         </Text>
       );
     }

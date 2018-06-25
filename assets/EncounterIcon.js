@@ -146,6 +146,8 @@ export default class EncounterIcon extends React.PureComponent {
         return this.standaloneIcon('curse_of_the_rougarou', size, color);
       case 'bayou':
         return this.standaloneIcon('the_bayou', size, color);
+      case 'lol':
+        return this.standaloneIcon('lol', size, color);
       case 'tfa':
       case 'tof': // THREADS OF FATE
       case 'tbb': // THE BOUNDARY BEYOND

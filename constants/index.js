@@ -47,10 +47,11 @@ export const FACTION_COLORS = {
   guardian: '#2b80c5',
   rogue: '#107116',
   survivor: '#cc3038',
-  neutral: '#222222',
+  neutral: '#000000',
 };
 
 export const FACTION_BACKGROUND_COLORS = Object.assign(
+  {},
   FACTION_COLORS,
   { neutral: '#444444' },
 );

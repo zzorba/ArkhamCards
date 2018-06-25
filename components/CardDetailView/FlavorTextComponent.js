@@ -63,7 +63,7 @@ export default class FlavorTextComponent extends React.PureComponent {
           },
         }}
       >
-        { this.props.text }
+        { this.props.text.replace(/\/n/g,'\n') }
       </MarkdownView>
     );
   }

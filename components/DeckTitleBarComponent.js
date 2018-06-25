@@ -13,12 +13,14 @@ export default class DeckTitleBarComponent extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     investigator: PropTypes.object,
+    compact: PropTypes.bool,
   };
 
   render() {
     const {
       name,
       investigator,
+      compact,
     } = this.props;
 
     const factionColor = investigator &&
@@ -30,7 +32,7 @@ export default class DeckTitleBarComponent extends React.Component {
       <View style={[styles.titleBar, { backgroundColor: factionColor || '#FFFFFF' }]}>
         <Text
           style={[styles.title, { color: factionColor ? '#FFFFFF' : '#000000' }]}
-          numberOfLines={1}
+          numberOfLines={compact ? 1 : 2}
           ellipsizeMode="tail"
         >
           { name }

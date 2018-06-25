@@ -15,7 +15,7 @@ export default function FlavorUnderlineNode(node, output, state) {
 const styles = StyleSheet.create({
   text: {
     fontSize: 14,
-    fontWeight: '800',
+    fontWeight: '400',
     fontStyle: 'normal',
   },
 });

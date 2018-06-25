@@ -5,16 +5,24 @@ import {
 } from 'react-native';
 
 export default function ItalicHtmlTagNode(node, output, state) {
+  console.log(JSON.stringify(state));
   return (
-    <Text key={state.key} style={styles.italicText}>
+    <Text
+      key={state.key}
+      style={state.blockquote ? styles.italicText : styles.boldItalicText}
+    >
       { node.text }
     </Text>
   );
 }
 
 const styles = StyleSheet.create({
-  italicText: {
+  boldItalicText: {
     fontStyle: 'italic',
     fontWeight: '700',
+  },
+  italicText: {
+    fontStyle: 'italic',
+    fontWeight: '200',
   },
 });

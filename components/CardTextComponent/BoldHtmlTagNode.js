@@ -7,7 +7,7 @@ import {
 export default function BoldHtmlTagNode(node, output, state) {
   return (
     <Text key={state.key} style={styles.boldText}>
-      { node.text }
+      { output(node.children, state) }
     </Text>
   );
 }

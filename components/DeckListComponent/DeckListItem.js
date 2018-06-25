@@ -59,7 +59,7 @@ export default class DeckListItem extends React.Component {
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.column}>
-          <DeckTitleBarComponent name={deck.name} investigator={investigator} />
+          <DeckTitleBarComponent name={deck.name} investigator={investigator} compact />
           <View style={styles.row}>
             <View style={styles.image}>
               { !!investigator && <InvestigatorImage card={investigator} /> }

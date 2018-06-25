@@ -83,7 +83,7 @@ export default class PackRow extends React.Component {
 
     const mythosPack = (pack.position > 1 && pack.cycle_position < 70);
     const backgroundColor = mythosPack ? '#FFFFFF' : '#f0f0f0';
-    const textColor = mythosPack ? '#222222' : '#222222';
+    const textColor = '#222222';
     const iconSize = mythosPack ? 24 : 28;
     const fontSize = mythosPack ? 16 : 24;
     const rowHeight = mythosPack ? 50 : 60;
