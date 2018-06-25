@@ -23,13 +23,14 @@ import {
 } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
-import PlayerCardImage from '../core/PlayerCardImage';
 import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardTextComponent from '../CardTextComponent';
 import FlippableCard from '../core/FlippableCard';
 import { getShowSpoilers } from '../../reducers';
+
+import PlayerCardImage from './PlayerCardImage';
 import FlavorTextComponent from './FlavorTextComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 
@@ -579,7 +580,7 @@ class CardDetailView extends React.PureComponent {
                 { card.type_code !== 'story' && card.type_code !== 'scenario' && (
                   <View style={styles.column}>
                     <View style={styles.playerImage}>
-                      <PlayerCardImage card={card} />
+                      <PlayerCardImage card={card} navigator={this.props.navigator} />
                     </View>
                   </View>
                 ) }

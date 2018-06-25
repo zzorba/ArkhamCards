@@ -21,6 +21,7 @@ const icons = {
   'sort-by-alpha': [28, COLORS.button],
   settings: [28, COLORS.button, MaterialCommunityIcons],
   add: [28, COLORS.button],
+  flip_card: [28, COLORS.button, ArkhamIcon],
 };
 
 const defaultIconProvider = MaterialIcons;

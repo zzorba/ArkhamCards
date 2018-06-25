@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Dimensions,
-  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -10,7 +8,6 @@ import {
   View,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
-import Lightbox from 'react-native-lightbox';
 import { Button } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
@@ -21,33 +18,28 @@ const HEADER_SIZE = 48;
 
 export default class PlayerCardImage extends React.Component {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
     card: PropTypes.object.isRequired,
   };
 
   constructor(props) {
     super(props);
 
-    const {
-      height,
-      width,
-    } = Dimensions.get('window');
-
-    this.state = {
-      flipped: props.card.type_code === 'investigator' ||
-        props.card.type_code === 'act' ||
-        props.card.type_code === 'agenda' ||
-        (props.card.double_sided && !props.card.spoiler),
-      width,
-      height,
-    };
-    this._flip = this.flip.bind(this);
+    this._onPress = this.onPress.bind(this);
     this._renderLightboxHeader = this.renderLightboxHeader.bind(this);
     this._renderFullsize = this.renderFullsize.bind(this);
   }
 
-  flip() {
-    this.setState({
-      flipped: !this.state.flipped,
+  onPress() {
+    const {
+      navigator,
+      card,
+    } = this.props;
+    navigator.push({
+      screen: 'Card.Image',
+      passProps: {
+        card,
+      },
     });
   }
 
@@ -80,49 +72,7 @@ export default class PlayerCardImage extends React.Component {
   }
 
   renderFullsize() {
-    const {
-      card,
-    } = this.props;
-    const {
-      flipped,
-      height,
-      width,
-    } = this.state;
-    const cardRatio = 68.0 / 88;
-    const cardHeight = height * cardRatio;
-    const cardWidth = width - 16;
-    if (card.double_sided) {
-      if (flipped) {
-        return (
-          <CachedImage
-            style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-            resizeMode="contain"
-            source={{
-              uri: `https://arkhamdb.com${card.imagesrc}`,
-            }}
-          />
-        );
-      }
-      return (
-        <CachedImage
-          style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-          resizeMode="contain"
-          source={{
-            uri: `https://arkhamdb.com${card.backimagesrc}`,
-          }}
-        />
-      );
-    }
 
-    return (
-      <CachedImage
-        style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-        resizeMode="contain"
-        source={{
-          uri: `https://arkhamdb.com${card.imagesrc}`,
-        }}
-      />
-    );
   }
 
   imageStyle() {
@@ -173,15 +123,10 @@ export default class PlayerCardImage extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
-        { this.renderPlaceholder() }
+      <TouchableOpacity onPress={this._onPress}>
         <View style={styles.container}>
-          <Lightbox
-            swipeToDismiss
-            backgroundColor="white"
-            renderHeader={this._renderLightboxHeader}
-            renderContent={this._renderFullsize}
-          >
+          { this.renderPlaceholder() }
+          <View style={styles.container}>
             <CachedImage
               style={[styles.image, this.imageStyle()]}
               source={{
@@ -189,9 +134,9 @@ export default class PlayerCardImage extends React.Component {
               }}
               resizeMode="contain"
             />
-          </Lightbox>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -263,11 +208,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  bigCard: {
-    marginTop: Platform.OS === 'ios' ? 0 : HEADER_SIZE,
-    marginLeft: 8,
-    marginRight: 8,
   },
   closeButton: {
     marginLeft: 4,

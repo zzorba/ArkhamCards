@@ -7,6 +7,7 @@ import DeckEditView from '../components/DeckEditView';
 import CardSearchView from '../components/CardSearchView';
 import CardDetailView from '../components/CardDetailView';
 import CardFaqView from '../components/CardFaqView';
+import CardImageView from '../components/CardImageView';
 import CampaignDetailView from '../components/CampaignDetailView';
 import EditTraumaDialog from '../components/EditTraumaDialog';
 import EditChaosBagDialog from '../components/EditChaosBagDialog';
@@ -49,6 +50,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Deck.New', () => NewDeckView, store, Provider);
   Navigation.registerComponent('Card', () => CardDetailView, store, Provider);
   Navigation.registerComponent('Card.Faq', () => CardFaqView, store, Provider);
+  Navigation.registerComponent('Card.Image', () => CardImageView, store, Provider);
   Navigation.registerComponent('My.Campaigns', () => MyCampaignsView, store, Provider);
   Navigation.registerComponent('My.Decks', () => MyDecksView, store, Provider);
   Navigation.registerComponent('Campaign', () => CampaignDetailView, store, Provider);

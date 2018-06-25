@@ -51,7 +51,7 @@ const MalformedBoldItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/b><\\/i>')),
   order: 1,
   parse: (capture) => {
-    return { text: '' };
+    return { text: capture[1] };
   },
   render: BoldItalicHtmlTagNode,
 };

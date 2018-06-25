@@ -14,6 +14,7 @@ class DeckEditView extends React.Component {
     investigator: PropTypes.object,
     /* eslint-disable react/no-unused-prop-types */
     deck: PropTypes.object.isRequired,
+    cards: PropTypes.object.isRequired,
     slots: PropTypes.object.isRequired,
     updateSlots: PropTypes.func.isRequired,
   };

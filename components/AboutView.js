@@ -25,6 +25,8 @@ export default function AboutView() {
         • 'FAQ' icon by Gregor Cresnar from the Noun Project.
         { '\n' }
         • 'Cards' icon by Dmitriy Ivanov from the Noun Project.
+        { '\n' }
+        • 'flip over' icon by Nathan Smith from the Noun Project.
       </Text>
     </View>
   );

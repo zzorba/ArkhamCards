@@ -4908,12 +4908,6 @@ react-native-keychain@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-2.0.0.tgz#5e6ae75d66d2737a0b38a95c903b6d6f966dd475"
 
-react-native-lightbox@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-lightbox/-/react-native-lightbox-0.7.0.tgz#e52b4d7fcc141f59d7b23f0180de535e35b20ec9"
-  dependencies:
-    prop-types "^15.5.10"
-
 react-native-markdown-view@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-native-markdown-view/-/react-native-markdown-view-1.1.4.tgz#390fdbe2ececa92505572efe1911ec2c7fe8bc13"
@@ -4927,6 +4921,12 @@ react-native-navigation@1.1.463:
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.463.tgz#6f06e1057665e7618810c051d9b94b01e4f27e13"
   dependencies:
     lodash "4.x.x"
+
+react-native-pinch-zoom-view@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-native-pinch-zoom-view/-/react-native-pinch-zoom-view-0.1.6.tgz#abb70f164abd5d8a72aeedecae660aa9edb21b69"
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-progress@3.4.0:
   version "3.4.0"
