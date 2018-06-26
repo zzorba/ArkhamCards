@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
-import PinchZoomView from 'react-native-pinch-zoom-view';
+import ViewControl from 'react-native-zoom-view'
 
 import { iconsMap } from '../../app/NavIcons';
 
@@ -64,7 +64,7 @@ export default class CardImageView extends React.Component {
     });
   }
 
-  renderImage() {
+  render() {
     const {
       card,
     } = this.props;
@@ -79,42 +79,40 @@ export default class CardImageView extends React.Component {
     if (card.double_sided) {
       if (flipped) {
         return (
+          <ViewControl cropWidth={width} cropHeight={height} imageWidth={cardWidth} imageHeight={cardHeight}>
+            <CachedImage
+              style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+              resizeMode="contain"
+              source={{
+                uri: `https://arkhamdb.com${card.imagesrc}`,
+              }}
+            />
+          </ViewControl>
+        );
+      }
+      return (
+        <ViewControl cropWidth={width} cropHeight={height} imageWidth={cardWidth} imageHeight={cardHeight}>
           <CachedImage
             style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
             resizeMode="contain"
             source={{
-              uri: `https://arkhamdb.com${card.imagesrc}`,
+              uri: `https://arkhamdb.com${card.backimagesrc}`,
             }}
           />
-        );
-      }
-      return (
-        <CachedImage
-          style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-          resizeMode="contain"
-          source={{
-            uri: `https://arkhamdb.com${card.backimagesrc}`,
-          }}
-        />
+        </ViewControl>
       );
     }
 
     return (
-      <CachedImage
-        style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
-        resizeMode="contain"
-        source={{
-          uri: `https://arkhamdb.com${card.imagesrc}`,
-        }}
-      />
-    );
-  }
-
-  render() {
-    return (
-      <PinchZoomView>
-        { this.renderImage() }
-      </PinchZoomView>
+      <ViewControl cropWidth={width} cropHeight={height} imageWidth={cardWidth} imageHeight={cardHeight}>
+        <CachedImage
+          style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+          resizeMode="contain"
+          source={{
+            uri: `https://arkhamdb.com${card.imagesrc}`,
+          }}
+        />
+      </ViewControl>
     );
   }
 }
@@ -123,7 +121,5 @@ export default class CardImageView extends React.Component {
 const styles = StyleSheet.create({
   bigCard: {
     marginTop: Platform.OS === 'ios' ? 0 : HEADER_SIZE,
-    marginLeft: 8,
-    marginRight: 8,
   },
 });
