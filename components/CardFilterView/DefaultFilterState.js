@@ -8,4 +8,13 @@ export default {
   slots: [],
   encounters: [],
   illustrators: [],
+  nonElite: false,
+  victory: false,
+  vengeance: false,
+  willpower: false,
+  intellect: false,
+  combat: false,
+  agility: false,
+  wild: false,
+  doubleIcons: false,
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys, forEach, filter, map } from 'lodash';
 import {
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -14,6 +15,7 @@ import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import DefaultFilterState from './DefaultFilterState';
 import ChooserButton from '../core/ChooserButton';
+import ToggleFilter from './ToggleFilter';
 
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
@@ -42,6 +44,7 @@ class CardFilterView extends React.Component {
       allIllustrators: [],
     };
 
+    this._onToggleChange = this.onToggleChange.bind(this);
     this._onFactionChange = this.onFilterChange.bind(this, 'factions');
     this._onTypeChange = this.onFilterChange.bind(this, 'types');
     this._onSubTypeChange = this.onFilterChange.bind(this, 'subTypes');
@@ -133,6 +136,15 @@ class CardFilterView extends React.Component {
     }
   }
 
+  onToggleChange(key) {
+    const {
+      filters,
+    } = this.state;
+    this.setState({
+      filters: Object.assign({}, filters, { [key]: !filters[key] }),
+    }, this._applyFilters);
+  }
+
   onFilterChange(key, selection) {
     this.setState({
       filters: Object.assign({}, this.state.filters, { [key]: selection }),
@@ -164,6 +176,15 @@ class CardFilterView extends React.Component {
         slots,
         encounters,
         illustrators,
+        nonElite,
+        victory,
+        // vengeance,
+        willpower,
+        intellect,
+        combat,
+        agility,
+        wild,
+        doubleIcons,
       },
       allFactions,
       allTraits,
@@ -176,7 +197,7 @@ class CardFilterView extends React.Component {
     } = this.state;
 
     return (
-      <View>
+      <ScrollView>
         <FactionChooser
           factions={allFactions}
           selection={factions}
@@ -247,10 +268,71 @@ class CardFilterView extends React.Component {
             />
           ) }
         </View>
+        <View style={styles.toggleStack}>
+          <Text style={styles.sectionTitle}>
+            Skill Icons
+          </Text>
+          <View style={styles.toggleRow}>
+            <ToggleFilter
+              icon="willpower"
+              setting="willpower"
+              value={willpower}
+              onChange={this._onToggleChange}
+            />
+            <ToggleFilter
+              icon="intellect"
+              setting="intellect"
+              value={intellect}
+              onChange={this._onToggleChange}
+            />
+            <ToggleFilter
+              label="2+"
+              setting="doubleIcons"
+              value={doubleIcons}
+              onChange={this._onToggleChange}
+            />
+          </View>
+          <View style={styles.toggleRow}>
+            <ToggleFilter
+              icon="combat"
+              setting="combat"
+              value={combat}
+              onChange={this._onToggleChange}
+            />
+            <ToggleFilter
+              icon="agility"
+              setting="agility"
+              value={agility}
+              onChange={this._onToggleChange}
+            />
+            <ToggleFilter
+              icon="wild"
+              setting="wild"
+              value={wild}
+              onChange={this._onToggleChange}
+            />
+          </View>
+        </View>
+        <View style={styles.toggleStack}>
+          <View style={styles.toggleRow}>
+            <ToggleFilter
+              label="Non-Elite"
+              setting="nonElite"
+              value={nonElite}
+              onChange={this._onToggleChange}
+            />
+            <ToggleFilter
+              label="Victory"
+              setting="victory"
+              value={victory}
+              onChange={this._onToggleChange}
+            />
+          </View>
+        </View>
         <Text style={styles.matchText}>
           { this.cardCount() } Cards Matched
         </Text>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -269,9 +351,25 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
+  toggleStack: {
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+    paddingBottom: 8,
+  },
   matchText: {
     fontSize: 18,
     fontFamily: 'System',
     padding: 8,
+  },
+  toggleRow: {
+    marginTop: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  sectionTitle: {
+    marginTop: 8,
+    marginLeft: 8,
+    fontFamily: 'System',
+    fontSize: 18,
   },
 });

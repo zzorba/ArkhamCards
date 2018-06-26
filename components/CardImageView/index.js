@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
-import ViewControl from 'react-native-zoom-view'
+import ViewControl from 'react-native-zoom-view';
 
 import { iconsMap } from '../../app/NavIcons';
 

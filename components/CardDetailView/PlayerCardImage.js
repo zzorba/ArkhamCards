@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
-import { Button } from 'react-native-elements';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
-const HEADER_SIZE = 48;
 
 export default class PlayerCardImage extends React.Component {
   static propTypes = {
@@ -167,15 +163,5 @@ const styles = StyleSheet.create({
   },
   placeholderIcon: {
     textAlign: 'center',
-  },
-  buttonRow: {
-    width: '100%',
-    height: HEADER_SIZE,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  closeButton: {
-    marginLeft: 4,
   },
 });
