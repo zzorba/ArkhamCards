@@ -26,8 +26,6 @@ export default class PlayerCardImage extends React.Component {
     super(props);
 
     this._onPress = this.onPress.bind(this);
-    this._renderLightboxHeader = this.renderLightboxHeader.bind(this);
-    this._renderFullsize = this.renderFullsize.bind(this);
   }
 
   onPress() {
@@ -41,38 +39,6 @@ export default class PlayerCardImage extends React.Component {
         card,
       },
     });
-  }
-
-  renderLightboxHeader(close) {
-    const {
-      card,
-    } = this.props;
-    const {
-      flipped,
-    } = this.state;
-
-    return (
-      <SafeAreaView>
-        <View style={styles.buttonRow}>
-          <TouchableOpacity onPress={close}>
-            <View style={styles.closeButton}>
-              <MaterialCommunityIcons name="close" size={32} color="#888" />
-            </View>
-          </TouchableOpacity>
-          { !!card.double_sided && !!card.backimagesrc &&
-            <Button
-              style={{ marginRight: 4 }}
-              onPress={this._flip}
-              text={flipped ? 'Show Back' : 'Show Front'}
-            />
-          }
-        </View>
-      </SafeAreaView>
-    );
-  }
-
-  renderFullsize() {
-
   }
 
   imageStyle() {

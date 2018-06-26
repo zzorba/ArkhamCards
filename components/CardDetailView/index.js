@@ -438,6 +438,7 @@ class CardDetailView extends React.PureComponent {
 
   renderCardBack(card, backFirst, isHorizontal, flavorFirst) {
     const {
+      navigator,
       showSpoilers,
       pack_code,
     } = this.props;
@@ -547,6 +548,9 @@ class CardDetailView extends React.PureComponent {
   }
 
   renderCardFront(card, backFirst, isHorizontal, flavorFirst) {
+    const {
+      navigator,
+    } = this.props;
     if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack) {
       return (
         <View style={styles.buttonContainer}>
@@ -580,7 +584,7 @@ class CardDetailView extends React.PureComponent {
                 { card.type_code !== 'story' && card.type_code !== 'scenario' && (
                   <View style={styles.column}>
                     <View style={styles.playerImage}>
-                      <PlayerCardImage card={card} navigator={this.props.navigator} />
+                      <PlayerCardImage card={card} navigator={navigator} />
                     </View>
                   </View>
                 ) }

@@ -26,18 +26,21 @@ export default class CardImageView extends React.Component {
       width,
     } = Dimensions.get('window');
 
+    const doubleCard = props.card.double_sided ||
+      (props.card.linked_card && props.card.linked_card.imagesrc);
+
     this.state = {
       flipped: props.card.type_code === 'investigator' ||
         props.card.type_code === 'act' ||
         props.card.type_code === 'agenda' ||
-        (props.card.double_sided && !props.card.spoiler),
+        (doubleCard && props.card.hidden),
       width,
       height,
     };
 
     this._flip = this.flip.bind(this);
 
-    if (props.card.double_sided) {
+    if (doubleCard) {
       props.navigator.setButtons({
         rightButtons: [
           {
@@ -76,10 +79,15 @@ export default class CardImageView extends React.Component {
     const cardRatio = 68.0 / 88;
     const cardHeight = height * cardRatio;
     const cardWidth = width - 16;
-    if (card.double_sided) {
+    if (card.double_sided || (card.linked_card && card.linked_card.imagesrc)) {
       if (flipped) {
         return (
-          <ViewControl cropWidth={width} cropHeight={height} imageWidth={cardWidth} imageHeight={cardHeight}>
+          <ViewControl
+            cropWidth={width}
+            cropHeight={height}
+            imageWidth={cardWidth}
+            imageHeight={cardHeight}
+          >
             <CachedImage
               style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
               resizeMode="contain"
@@ -91,12 +99,17 @@ export default class CardImageView extends React.Component {
         );
       }
       return (
-        <ViewControl cropWidth={width} cropHeight={height} imageWidth={cardWidth} imageHeight={cardHeight}>
+        <ViewControl
+          cropWidth={width}
+          cropHeight={height}
+          imageWidth={cardWidth}
+          imageHeight={cardHeight}
+        >
           <CachedImage
             style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
             resizeMode="contain"
             source={{
-              uri: `https://arkhamdb.com${card.backimagesrc}`,
+              uri: `https://arkhamdb.com${card.double_sided ? card.backimagesrc : card.linked_card.imagesrc}`,
             }}
           />
         </ViewControl>
@@ -104,7 +117,12 @@ export default class CardImageView extends React.Component {
     }
 
     return (
-      <ViewControl cropWidth={width} cropHeight={height} imageWidth={cardWidth} imageHeight={cardHeight}>
+      <ViewControl
+        cropWidth={width}
+        cropHeight={height}
+        imageWidth={cardWidth}
+        imageHeight={cardHeight}
+      >
         <CachedImage
           style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
           resizeMode="contain"
@@ -116,7 +134,6 @@ export default class CardImageView extends React.Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   bigCard: {
