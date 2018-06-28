@@ -149,13 +149,15 @@ export default class EncounterIcon extends React.PureComponent {
       case 'lol':
         return this.standaloneIcon('lol', size, color);
       case 'tfa':
-      case 'tof': // THREADS OF FATE
       case 'tbb': // THE BOUNDARY BEYOND
       case 'hote': // HEART OF THE ELDERS
       case 'tcoa': // THE CITY OF ARCHIVES
       case 'tdoy': // THE DEPTHS OF YOTH
       case 'sha': // SHATTERED AEONS
         return this.forgottenIcon('the_forgotten_age', size, color);
+      case 'tof':
+      case 'threads_of_fate':
+        return this.forgottenIcon('threads_of_fate', size, color);
       case 'wilds':
         return this.forgottenIcon('the_untamed_wilds', size, color);
       case 'eztli':
