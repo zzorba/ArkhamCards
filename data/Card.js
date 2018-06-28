@@ -1,4 +1,4 @@
-import { filter, keys, map } from 'lodash';
+import { forEach, filter, keys, map } from 'lodash';
 
 import CardRequirement from './CardRequirement';
 import CardRestrictions from './CardRestrictions';
@@ -7,6 +7,7 @@ import RandomRequirement from './RandomRequirement';
 import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import DeckAtLeastOption from './DeckAtLeastOption';
+import { BASIC_SKILLS } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror');
@@ -162,6 +163,17 @@ export default class Card {
       Card.parseDeckOptions(json.deck_options) :
       [];
 
+    const wild = json.skill_wild || 0;
+    const eskills = {};
+    if (json.type_code !== 'investigator' && wild > 0) {
+      forEach(BASIC_SKILLS, skill => {
+        const value = json[`skill_${skill}`] || 0;
+        if (value > 0) {
+          eskills[`eskill_${skill}`] = value + wild;
+        }
+      });
+    }
+
     let renderName = json.name;
     let renderSubname = json.subname;
     if (json.type_code === 'act' && json.stage) {
@@ -211,6 +223,7 @@ export default class Card {
     return Object.assign(
       {},
       json,
+      eskills,
       {
         renderName,
         renderSubname,
@@ -296,6 +309,11 @@ Card.schema = {
     skill_combat: 'int?',
     skill_agility: 'int?',
     skill_wild: 'int?',
+    // Effective skills (add wilds to them)
+    eskill_willpower: 'int?',
+    eskill_intellect: 'int?',
+    eskill_combat: 'int?',
+    eskill_agility: 'int?',
     linked_to_code: 'string?',
     linked_to_name: 'string?',
 

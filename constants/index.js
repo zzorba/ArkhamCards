@@ -25,11 +25,15 @@ export const FACTION_CODE_TO_STRING = {
   neutral: 'Neutral',
 };
 
-export const SKILLS = [
+export const BASIC_SKILLS = [
   'willpower',
   'intellect',
   'combat',
   'agility',
+];
+
+export const SKILLS = [
+  ...BASIC_SKILLS,
   'wild',
 ];
 
