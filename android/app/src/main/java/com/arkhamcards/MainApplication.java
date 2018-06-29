@@ -1,11 +1,14 @@
 package com.arkhamcards;
 
+import com.reactlibrary.RNAppAuthPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.horcrux.svg.SvgPackage;
 import io.realm.react.RealmReactPackage;
-
+import com.oblador.keychain.KeychainPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.react.ReactPackage;
 
 import java.util.Arrays;
@@ -21,10 +24,14 @@ public class MainApplication extends NavigationApplication {
     
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
+        new ReactNativeConfigPackage(),
+        new RNAppAuthPackage(),
         new VectorIconsPackage(),
         new RNFetchBlobPackage(),
         new SvgPackage(),
-        new RealmReactPackage()
+        new KeychainPackage(),
+        new RealmReactPackage(),
+        new LinearGradientPackage()
     );
   }
 
