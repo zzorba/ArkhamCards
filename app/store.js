@@ -7,6 +7,21 @@ import { persistStore, persistReducer } from 'redux-persist';
 import FilesystemStorage from 'redux-persist-filesystem-storage';
 import reducers from '../reducers';
 
+/**
+ * How to refresh discarded offline tokens properly.
+const discard = async (error, _action, _retries) => {
+  if (!status in error) return false;
+
+  if (error.status === 401) {
+    const newAccessToken = await refreshAccessToken();
+    localStorage.set('accessToken', newAccessToken);
+    return newAccessToken == null;
+  }
+
+  return 400 <= error.status && error.status < 500;
+}
+*/
+
 export default function configureStore(initialState) {
   const offline = createOffline({
     ...offlineConfig,

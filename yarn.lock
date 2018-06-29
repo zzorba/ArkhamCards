@@ -4845,9 +4845,9 @@ react-is@^16.3.0:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
 
-react-native-app-auth@2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-2.6.0.tgz#4661982e9c700c523e2107f2f7ea8015943ab802"
+react-native-app-auth@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-2.6.1.tgz#b4cb724a0004ee709ea24788d12f3af8a83d3cf5"
 
 react-native-cached-image@1.4.3:
   version "1.4.3"

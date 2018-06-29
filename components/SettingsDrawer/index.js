@@ -23,6 +23,7 @@ class SettingsDrawer extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
     packs: PropTypes.array.isRequired,
+    fetchPacks: PropTypes.func.isRequired,
     navigator: PropTypes.object.isRequired,
     clearDecks: PropTypes.func.isRequired,
   };
@@ -34,6 +35,7 @@ class SettingsDrawer extends React.Component {
       error: null,
     };
 
+    this._fetchCards = this.fetchCards.bind(this);
     this._myCollectionPressed = this.navButtonPressed.bind(this, '/collection');
     this._editSpoilersPressed = this.navButtonPressed.bind(this, '/spoilers');
     this._aboutPressed = this.navButtonPressed.bind(this, '/about');
@@ -69,10 +71,16 @@ class SettingsDrawer extends React.Component {
 
   doSyncCards() {
     const {
-      realm,
-      packs,
+      fetchPacks
     } = this.props;
 
+    fetchPacks(this._fetchCards);
+  }
+
+  fetchCards(packs) {
+    const {
+      realm,
+    } = this.props;
     syncCards(realm, packs).catch(err => {
       this.setState({
         error: err.message || err,

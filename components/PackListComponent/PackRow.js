@@ -15,6 +15,7 @@ export default class PackRow extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     pack: PropTypes.object,
+    cycle: PropTypes.array,
     setChecked: PropTypes.func,
     setCycleChecked: PropTypes.func,
     checked: PropTypes.bool,
@@ -44,6 +45,7 @@ export default class PackRow extends React.Component {
   onCheckPress() {
     const {
       pack,
+      cycle,
       checked,
       setCycleChecked,
       setChecked,
@@ -53,8 +55,9 @@ export default class PackRow extends React.Component {
 
     if (setCycleChecked &&
       pack.position === 1 &&
-      pack.cycle_position < 70 &&
-      pack.cycle_position > 1
+      pack.cycle_position < 50 &&
+      pack.cycle_position > 1 &&
+      cycle.length > 0
     ) {
       // This is the lead pack in a cycle.
       Alert.alert(
