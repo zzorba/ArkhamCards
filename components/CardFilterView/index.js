@@ -12,6 +12,7 @@ import { connectRealm } from 'react-native-realm';
 import { FACTION_CODES } from '../../constants';
 import { applyFilters } from '../../lib/filters';
 import FactionChooser from './FactionChooser';
+import SkillIconChooser from './SkillIconChooser';
 import XpChooser from './XpChooser';
 import DefaultFilterState from './DefaultFilterState';
 import ChooserButton from '../core/ChooserButton';
@@ -34,6 +35,8 @@ class CardFilterView extends React.Component {
 
     this.state = {
       filters: props.currentFilters,
+      allCycleNames: [],
+      allUses: [],
       allFactions: CARD_FACTION_CODES,
       allTraits: [],
       allTypes: [],
@@ -45,6 +48,9 @@ class CardFilterView extends React.Component {
     };
 
     this._onToggleChange = this.onToggleChange.bind(this);
+    this._onCycleNamesChange = this.onFilterChange.bind(this, 'cycleNames');
+    this._onSkillIconsChange = this.onFilterChange.bind(this, 'skillIcons');
+    this._onUsesChange = this.onFilterChange.bind(this, 'uses');
     this._onFactionChange = this.onFilterChange.bind(this, 'factions');
     this._onTypeChange = this.onFilterChange.bind(this, 'types');
     this._onSubTypeChange = this.onFilterChange.bind(this, 'subTypes');
@@ -77,7 +83,9 @@ class CardFilterView extends React.Component {
       const allFactions = filter(FACTION_CODES, faction_code =>
         cards.filtered(`faction_code == '${faction_code}'`).length > 0);
       const typesMap = {};
+      const usesMap = {};
       const subTypesMap = {};
+      const cycleNamesMap = {};
       const traitsMap = {};
       const packsMap = {};
       const slotsMap = {};
@@ -93,6 +101,12 @@ class CardFilterView extends React.Component {
         }
         if (card.subtype_name) {
           subTypesMap[card.subtype_name] = 1;
+        }
+        if (card.cycle_name) {
+          cycleNamesMap[card.cycle_name] = 1;
+        }
+        if (card.uses) {
+          usesMap[card.uses] = 1;
         }
         if (card.pack_name) {
           packsMap[card.pack_name] = 1;
@@ -111,6 +125,8 @@ class CardFilterView extends React.Component {
 
       this.setState({
         allFactions,
+        allCycleNames: keys(cycleNamesMap).sort(),
+        allUses: keys(usesMap).sort(),
         allTraits: keys(traitsMap).sort(),
         allTypes: keys(typesMap).sort(),
         allSubTypes: keys(subTypesMap).sort(),
@@ -168,29 +184,28 @@ class CardFilterView extends React.Component {
     } = this.props;
     const {
       filters: {
+        uses,
         factions,
         traits,
         types,
         subTypes,
         packs,
+        cycleNames,
         slots,
         encounters,
         illustrators,
         nonElite,
         victory,
         // vengeance,
-        willpower,
-        intellect,
-        combat,
-        agility,
-        wild,
-        doubleIcons,
+        skillIcons,
       },
+      allUses,
       allFactions,
       allTraits,
       allTypes,
       allSubTypes,
       allPacks,
+      allCycleNames,
       allSlots,
       allEncounters,
       allIllustrators,
@@ -240,7 +255,25 @@ class CardFilterView extends React.Component {
               onChange={this._onSlotsChange}
             />
           ) }
-          { (packs.length > 0 || allPacks.length > 0) && (
+          { (uses.length > 0 || allUses.length > 0) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Uses Type"
+              values={allUses}
+              selection={uses}
+              onChange={this._onUsesChange}
+            />
+          ) }
+          { (cycleNames.length > 0 || allCycleNames.length > 1) && (
+            <ChooserButton
+              navigator={navigator}
+              title="Cycles"
+              values={allCycleNames}
+              selection={cycleNames}
+              onChange={this._onCycleNamesChange}
+            />
+          ) }
+          { (packs.length > 0 || allPacks.length > 1) && (
             <ChooserButton
               navigator={navigator}
               title="Packs"
@@ -268,51 +301,10 @@ class CardFilterView extends React.Component {
             />
           ) }
         </View>
-        <View style={styles.toggleStack}>
-          <Text style={styles.sectionTitle}>
-            Skill Icons
-          </Text>
-          <View style={styles.toggleRow}>
-            <ToggleFilter
-              icon="willpower"
-              setting="willpower"
-              value={willpower}
-              onChange={this._onToggleChange}
-            />
-            <ToggleFilter
-              icon="intellect"
-              setting="intellect"
-              value={intellect}
-              onChange={this._onToggleChange}
-            />
-            <ToggleFilter
-              label="2+"
-              setting="doubleIcons"
-              value={doubleIcons}
-              onChange={this._onToggleChange}
-            />
-          </View>
-          <View style={styles.toggleRow}>
-            <ToggleFilter
-              icon="combat"
-              setting="combat"
-              value={combat}
-              onChange={this._onToggleChange}
-            />
-            <ToggleFilter
-              icon="agility"
-              setting="agility"
-              value={agility}
-              onChange={this._onToggleChange}
-            />
-            <ToggleFilter
-              icon="wild"
-              setting="wild"
-              value={wild}
-              onChange={this._onToggleChange}
-            />
-          </View>
-        </View>
+        <SkillIconChooser
+          skillIcons={skillIcons}
+          onChange={this._onSkillIconsChange}
+        />
         <View style={styles.toggleStack}>
           <View style={styles.toggleRow}>
             <ToggleFilter

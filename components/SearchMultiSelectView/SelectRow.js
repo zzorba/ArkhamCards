@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import capitalize from 'capitalize';
 
 export default class SelectRow extends React.Component {
   static propTypes = {
@@ -38,7 +39,7 @@ export default class SelectRow extends React.Component {
     return (
       <View style={styles.row}>
         <Text style={styles.title}>
-          { value }
+          { capitalize(value) }
         </Text>
         <Switch
           value={selected}

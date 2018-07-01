@@ -155,7 +155,7 @@ export default class Card {
     }
   }
 
-  static fromJson(json, packsByCode) {
+  static fromJson(json, packsByCode, cycleNames) {
     const deck_requirements = json.deck_requirements ?
       Card.parseDeckRequirements(json.deck_requirements) :
       null;
@@ -184,7 +184,7 @@ export default class Card {
       renderSubname = 'Scenario';
     }
     const linked_card = json.linked_card ?
-      Card.fromJson(json.linked_card, packsByCode) :
+      Card.fromJson(json.linked_card, packsByCode, cycleNames) :
       null;
     if (linked_card) {
       linked_card.back_linked = true;
@@ -219,6 +219,7 @@ export default class Card {
     const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json));
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
+    const cycle_name = pack ? cycleNames[pack.cycle_position] : null;
     const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
     return Object.assign(
       {},
@@ -233,6 +234,7 @@ export default class Card {
         spoiler,
         traits_normalized,
         uses,
+        cycle_name,
         has_restrictions: !!restrictions,
         restrictions,
         heals_horror,
@@ -325,6 +327,7 @@ Card.schema = {
     back_linked: 'bool?',
 
     // Derived data.
+    cycle_name: 'string?',
     has_restrictions: 'bool',
     traits_normalized: 'string?',
     uses: 'string?',
