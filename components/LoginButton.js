@@ -5,6 +5,7 @@ import {
   Alert,
   Button,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';

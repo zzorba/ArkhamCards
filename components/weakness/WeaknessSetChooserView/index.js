@@ -7,15 +7,18 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { connectRealm } from 'react-native-realm';
 
-import * as Actions from '../../actions';
-import { iconsMap } from '../../app/NavIcons';
+import { BASIC_WEAKNESS_QUERY } from '../../../data/query';
+import * as Actions from '../../../actions';
+import { iconsMap } from '../../../app/NavIcons';
 import WeaknessSetRow from './WeaknessSetRow';
 
 class WeaknessSetChooserView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     weaknesses: PropTypes.array,
+    cards: PropTypes.object,
   };
 
   constructor(props) {
@@ -54,6 +57,7 @@ class WeaknessSetChooserView extends React.Component {
         key={item.id}
         navigator={this.props.navigator}
         set={item}
+        cards={this.props.cards}
       />
     );
   }
@@ -88,4 +92,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WeaknessSetChooserView);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectRealm(WeaknessSetChooserView, {
+    schemas: ['Card'],
+    mapToProps(results) {
+      return {
+        cards: results.cards.filtered(BASIC_WEAKNESS_QUERY),
+      };
+    },
+  })
+);
