@@ -5,11 +5,12 @@ import {
   StyleSheet,
   TextInput,
   View,
+  ViewPropTypes,
 } from 'react-native';
 
-export default function TextBox({ value, ...otherProps }) {
+export default function TextBox({ value, style, ...otherProps }) {
   return (
-    <View style={styles.textBox}>
+    <View style={style ? [styles.textBox, style] : styles.textBox}>
       <TextInput
         underlineColorAndroid="transparent"
         style={styles.input}
@@ -22,6 +23,7 @@ export default function TextBox({ value, ...otherProps }) {
 
 TextBox.propTypes = {
   value: PropTypes.string.isRequired,
+  style: ViewPropTypes.style,
 };
 
 const styles = StyleSheet.create({

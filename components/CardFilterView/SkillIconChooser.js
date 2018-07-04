@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, map } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { ButtonGroup } from 'react-native-elements';
 
 import ToggleFilter from './ToggleFilter';
-import ArkhamIcon from '../../assets/ArkhamIcon';
-import { FACTION_COLORS } from '../../constants';
 
 export default class SkillIconChooser extends React.Component {
   static propTypes = {
@@ -32,7 +28,7 @@ export default class SkillIconChooser extends React.Component {
     onChange(Object.assign({}, skillIcons, { [key]: !skillIcons[key] }));
   }
 
-  render () {
+  render() {
     const {
       skillIcons: {
         willpower,
@@ -95,19 +91,10 @@ export default class SkillIconChooser extends React.Component {
 
 
 const styles = StyleSheet.create({
-  chooserStack: {
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
-  },
   toggleStack: {
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
     paddingBottom: 8,
-  },
-  matchText: {
-    fontSize: 18,
-    fontFamily: 'System',
-    padding: 8,
   },
   toggleRow: {
     marginTop: 4,

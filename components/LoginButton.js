@@ -43,6 +43,7 @@ class LoginButton extends React.Component {
       signedIn,
       loading,
       login,
+      error,
     } = this.props;
 
     if (loading) {
@@ -65,6 +66,7 @@ class LoginButton extends React.Component {
 
     return (
       <View style={styles.wrapper}>
+        { !!error && <Text style={styles.error}>{ error }</Text> }
         <Button onPress={login} title="Sign in to ArkhamDB" />
       </View>
     );
@@ -88,5 +90,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(LoginButton);
 const styles = StyleSheet.create({
   wrapper: {
     padding: 4,
+  },
+  error: {
+    color: 'red',
   },
 });

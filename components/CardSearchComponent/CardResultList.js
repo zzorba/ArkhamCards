@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import * as Actions from '../../actions';
 import { getPackSpoilers } from '../../reducers';
 import Card from '../../data/Card';
-import CardSearchResult from './CardSearchResult';
+import CardSearchResult from '../CardSearchResult';
 import CardSectionHeader from './CardSectionHeader';
 import {
   SORT_BY_TYPE,

@@ -34,6 +34,9 @@ import CampaignDifficultyDialog from '../components/CampaignDifficultyDialog';
 import BrowseInvestigatorsView from '../components/BrowseInvestigatorsView';
 import HomeView from '../components/HomeView';
 import AboutView from '../components/AboutView';
+import NewWeaknessSetDialog from '../components/NewWeaknessSetDialog';
+import WeaknessSetView from '../components/WeaknessSetView';
+import WeaknessSetChooserView from '../components/WeaknessSetChooserView';
 
 // register all screens of the app (including internal ones)
 export function registerScreens(store, Provider) {
@@ -71,4 +74,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Dialog.Scenario', () => ScenarioDialog, store, Provider);
   Navigation.registerComponent('Dialog.Campaign', () => SelectCampaignDialog, store, Provider);
   Navigation.registerComponent('Dialog.CampaignDifficulty', () => CampaignDifficultyDialog, store, Provider);
+  Navigation.registerComponent('Weakness.New', () => NewWeaknessSetDialog, store, Provider);
+  Navigation.registerComponent('Weakness.Chooser', () => WeaknessSetChooserView, store, Provider);
+  Navigation.registerComponent('Weakness.Detail', () => WeaknessSetView, store, Provider);
 }

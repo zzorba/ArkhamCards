@@ -13,7 +13,6 @@ import { FACTION_CODES } from '../../constants';
 import { applyFilters } from '../../lib/filters';
 import FactionChooser from './FactionChooser';
 import SkillIconChooser from './SkillIconChooser';
-import XpChooser from './XpChooser';
 import DefaultFilterState from './DefaultFilterState';
 import ChooserButton from '../core/ChooserButton';
 import ToggleFilter from './ToggleFilter';
@@ -357,11 +356,5 @@ const styles = StyleSheet.create({
     marginTop: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  sectionTitle: {
-    marginTop: 8,
-    marginLeft: 8,
-    fontFamily: 'System',
-    fontSize: 18,
   },
 });

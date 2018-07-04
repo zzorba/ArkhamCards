@@ -22,7 +22,6 @@ const defaultImageCacheManager = ImageCacheManager();
 class SettingsDrawer extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
-    packs: PropTypes.array.isRequired,
     fetchPacks: PropTypes.func.isRequired,
     navigator: PropTypes.object.isRequired,
     clearDecks: PropTypes.func.isRequired,
@@ -71,7 +70,7 @@ class SettingsDrawer extends React.Component {
 
   doSyncCards() {
     const {
-      fetchPacks
+      fetchPacks,
     } = this.props;
 
     fetchPacks(this._fetchCards);
@@ -108,7 +107,6 @@ class SettingsDrawer extends React.Component {
 function mapStateToProps(state) {
   return {
     deckCount: keys(getAllDecks(state)).length,
-    packs: state.packs.all,
   };
 }
 

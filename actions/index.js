@@ -12,6 +12,9 @@ export const SET_ALL_PACK_SPOILERS = 'SET_ALL_PACK_SPOILERS';
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
+export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
+export const EDIT_WEAKNESS_SET = 'EDIT_WEAKNESS_SET';
+export const DELETE_WEAKNESS_SET = 'DELETE_WEAKNESS_SET';
 export const LOGIN_STARTED = 'LOGIN_STARTED';
 export const LOGIN = 'LOGIN';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
@@ -19,6 +22,38 @@ export const LOGOUT = 'LOGOUT';
 
 import { getAccessToken, signInFlow, signOutFlow } from '../lib/auth';
 import { decks } from '../lib/authApi';
+
+export function createWeaknessSet(id, name, packCodes) {
+  return {
+    type: NEW_WEAKNESS_SET,
+    id,
+    set: {
+      id,
+      name,
+      packCodes,
+      created: new Date(),
+      assignedCards: {},
+    },
+  };
+}
+
+export function editWeaknessSet(id, name, packCodes, assignedCards) {
+  return {
+    type: EDIT_WEAKNESS_SET,
+    id: id,
+    name: name || null,
+    packCodes: packCodes || null,
+    assignedCards: assignedCards || null,
+  };
+}
+
+export function deleteWeaknessSet(id) {
+  return {
+    type: DELETE_WEAKNESS_SET,
+    id: id,
+  };
+}
+
 
 export function login() {
   return (dispatch) => {

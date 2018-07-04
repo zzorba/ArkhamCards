@@ -41,6 +41,12 @@ export default function BasicMenuItems({ navigator }) {
           sort: SORT_BY_ENCOUNTER_SET,
         }}
       />
+      <MenuItem
+        navigator={navigator}
+        text="Weakness Sets"
+        screen="Weakness.Chooser"
+        icon="weakness"
+      />
     </View>
   );
 }

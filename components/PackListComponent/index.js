@@ -16,6 +16,9 @@ export default class PackListComponent extends React.Component {
     checkState: PropTypes.object,
     setChecked: PropTypes.func,
     renderHeader: PropTypes.func,
+    renderFooter: PropTypes.func,
+    whiteBackground: PropTypes.bool,
+    baseQuery: PropTypes.string,
   };
 
   constructor(props) {
@@ -35,6 +38,8 @@ export default class PackListComponent extends React.Component {
       packs,
       checkState,
       setChecked,
+      whiteBackground,
+      baseQuery,
     } = this.props;
     const cyclePacks = item.position === 1 ? filter(packs, pack => {
       return (pack.cycle_position === item.cycle_position &&
@@ -48,6 +53,8 @@ export default class PackListComponent extends React.Component {
         setChecked={setChecked}
         setCycleChecked={this._setCycleChecked}
         checked={checkState && checkState[item.code]}
+        whiteBackground={whiteBackground}
+        baseQuery={baseQuery}
       />
     );
   }
@@ -69,6 +76,7 @@ export default class PackListComponent extends React.Component {
       packs,
       checkState,
       renderHeader,
+      renderFooter,
     } = this.props;
     if (!packs.length) {
       return (
@@ -81,6 +89,7 @@ export default class PackListComponent extends React.Component {
       <View>
         <FlatList
           ListHeaderComponent={renderHeader}
+          ListFooterComponent={renderFooter}
           data={packs}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}

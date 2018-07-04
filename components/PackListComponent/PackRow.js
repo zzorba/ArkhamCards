@@ -19,6 +19,8 @@ export default class PackRow extends React.Component {
     setChecked: PropTypes.func,
     setCycleChecked: PropTypes.func,
     checked: PropTypes.bool,
+    whiteBackground: PropTypes.bool,
+    baseQuery: PropTypes.string,
   };
 
   constructor(props) {
@@ -32,12 +34,14 @@ export default class PackRow extends React.Component {
     const {
       pack,
       navigator,
+      baseQuery,
     } = this.props;
     navigator.push({
       screen: 'Pack',
       title: pack.name,
       passProps: {
         pack_code: pack.code,
+        baseQuery,
       },
     });
   }
@@ -82,13 +86,14 @@ export default class PackRow extends React.Component {
       pack,
       checked,
       setChecked,
+      whiteBackground,
     } = this.props;
 
     const mythosPack = (pack.position > 1 && pack.cycle_position < 70);
-    const backgroundColor = mythosPack ? '#FFFFFF' : '#f0f0f0';
+    const backgroundColor = (whiteBackground || mythosPack) ? '#FFFFFF' : '#f0f0f0';
     const textColor = '#222222';
     const iconSize = mythosPack ? 24 : 28;
-    const fontSize = mythosPack ? 16 : 24;
+    const fontSize = mythosPack ? 16 : 22;
     const rowHeight = mythosPack ? 50 : 60;
     return (
       <View style={[styles.row, { backgroundColor, height: rowHeight }]}>
@@ -127,7 +132,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   touchable: {
+    height: 50,
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   touchableContent: {
     width: '100%',
