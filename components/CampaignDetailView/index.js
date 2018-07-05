@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
 
 import InvestigatorStatusRow from './InvestigatorStatusRow';
 import * as Actions from '../../actions';
 import { iconsMap } from '../../app/NavIcons';
+import Button from '../core/Button';
 import { getCampaign, getAllDecks } from '../../reducers';
 import typography from '../../styles/typography';
 

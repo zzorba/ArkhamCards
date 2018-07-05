@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 import { Bar } from 'react-native-progress';
-import { Button } from 'react-native-elements';
 
+import Button from './core/Button';
 import CardTextComponent from './CardTextComponent';
 import { getFaqEntry } from '../lib/publicApi';
 

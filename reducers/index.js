@@ -182,7 +182,7 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
     let currentDeck = deck;
     while (currentDeck && currentDeck.previous_deck) {
       scenarioCount ++;
-      currentDeck = allDecks[currentDeck.previous_deck];
+      currentDeck = state.all[currentDeck.previous_deck];
     }
     deck.scenarioCount = scenarioCount;
     return Object.assign({},

@@ -7,8 +7,8 @@ import {
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
-import { Button } from 'react-native-elements';
 
+import Button from '../core/Button';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import DeckViewCardItem from './DeckViewCardItem';
 import typography from '../../styles/typography';
@@ -199,6 +199,7 @@ class DeckDelta extends React.Component {
           { !!deck.previous_deck && (
             <Button
               style={styles.button}
+              align="left"
               onPress={this._showPreviousDeck}
               text="Previous Deck"
               icon={<ArkhamIcon name="deck" size={18} color="white" />}
@@ -207,6 +208,7 @@ class DeckDelta extends React.Component {
           { !!deck.next_deck && (
             <Button
               style={styles.button}
+              align="left"
               onPress={this._showNextDeck}
               text="Next Deck"
               icon={<ArkhamIcon name="deck" size={18} color="white" />}
@@ -274,6 +276,6 @@ const styles = StyleSheet.create({
   },
   button: {
     marginBottom: 8,
-    width: '100%',
+    marginLeft: 0,
   },
 });

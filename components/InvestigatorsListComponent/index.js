@@ -10,8 +10,8 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Button } from 'react-native-elements';
 
+import Button from '../core/Button';
 import InvestigatorRow from './InvestigatorRow';
 import * as Actions from '../../actions';
 import { getPacksInCollection } from '../../reducers';

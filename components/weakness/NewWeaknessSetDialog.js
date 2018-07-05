@@ -9,9 +9,9 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Button } from 'react-native-elements';
 
 import PackListComponent from '../PackListComponent';
+import Button from '../core/Button';
 import TextBox from '../core/TextBox';
 import { BASIC_WEAKNESS_QUERY } from '../../data/query';
 import * as Actions from '../../actions';

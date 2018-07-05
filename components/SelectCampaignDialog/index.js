@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
 
+import Button from '../core/Button';
 import * as Actions from '../../actions';
 import CampaignItem from './CampaignItem';
 import { getPacksInCollection } from '../../reducers';

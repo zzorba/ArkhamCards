@@ -12,15 +12,14 @@ import { CachedImage, ImageCacheManager } from 'react-native-cached-image';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
-import { Button } from 'react-native-elements';
 import FlipCard from 'react-native-flip-card';
 
-const PLAYER_BACK = require('../../assets/player-back.png');
 import { BASIC_WEAKNESS_QUERY } from '../../data/query';
 import * as Actions from '../../actions';
+import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
 import { CARD_RATIO } from '../../styles/sizes';
-
+const PLAYER_BACK = require('../../assets/player-back.png');
 const defaultImageCacheManager = ImageCacheManager();
 
 const PADDING = 32;

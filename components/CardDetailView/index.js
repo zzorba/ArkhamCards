@@ -12,7 +12,6 @@ import { CachedImage } from 'react-native-cached-image';
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
 
 import {
   CORE_FACTION_CODES,
@@ -29,6 +28,7 @@ import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardTextComponent from '../CardTextComponent';
+import Button from '../core/Button';
 import FlippableCard from '../core/FlippableCard';
 import { getShowSpoilers } from '../../reducers';
 

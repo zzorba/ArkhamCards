@@ -6,11 +6,11 @@ import {
   View,
   Text,
 } from 'react-native';
-import { Button } from 'react-native-elements';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import Button from './core/Button';
 import * as Actions from '../actions';
 
 /**
