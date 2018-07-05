@@ -16,8 +16,11 @@ import SkillIconChooser from './SkillIconChooser';
 import DefaultFilterState from './DefaultFilterState';
 import ChooserButton from '../core/ChooserButton';
 import ToggleFilter from './ToggleFilter';
+import typography from '../../styles/typography';
+import space from '../../styles/space';
 
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
+const FOOTER_HEIGHT = 56;
 
 class CardFilterView extends React.Component {
   static propTypes = {
@@ -211,119 +214,123 @@ class CardFilterView extends React.Component {
     } = this.state;
 
     return (
-      <ScrollView>
-        <FactionChooser
-          factions={allFactions}
-          selection={factions}
-          onChange={this._onFactionChange}
-        />
-        <View style={styles.chooserStack}>
-          { (traits.length > 0 || allTraits.length > 0) && (
-            <ChooserButton
-              title="Traits"
-              navigator={navigator}
-              values={allTraits}
-              selection={traits}
-              onChange={this._onTraitChange}
-            />
-          ) }
-          { (types.length > 0 || allTypes.length > 0) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Types"
-              values={allTypes}
-              selection={types}
-              onChange={this._onTypeChange}
-            />
-          ) }
-          { (subTypes.length > 0 || allSubTypes.length > 0) && (
-            <ChooserButton
-              navigator={navigator}
-              title="SubTypes"
-              values={allSubTypes}
-              selection={subTypes}
-              onChange={this._onSubTypeChange}
-            />
-          ) }
-          { (slots.length > 0 || allSlots.length > 0) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Slots"
-              values={allSlots}
-              selection={slots}
-              onChange={this._onSlotsChange}
-            />
-          ) }
-          { (uses.length > 0 || allUses.length > 0) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Uses Type"
-              values={allUses}
-              selection={uses}
-              onChange={this._onUsesChange}
-            />
-          ) }
-          { (cycleNames.length > 0 || allCycleNames.length > 1) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Cycles"
-              values={allCycleNames}
-              selection={cycleNames}
-              onChange={this._onCycleNamesChange}
-            />
-          ) }
-          { (packs.length > 0 || allPacks.length > 1) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Packs"
-              values={allPacks}
-              selection={packs}
-              onChange={this._onPacksChange}
-            />
-          ) }
-          { (encounters.length > 0 || allEncounters.length > 0) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Encounter Sets"
-              values={allEncounters}
-              selection={encounters}
-              onChange={this._onEncountersChange}
-            />
-          ) }
-          { (illustrators.length > 0 || allIllustrators.length > 0) && (
-            <ChooserButton
-              navigator={navigator}
-              title="Illustrators"
-              values={allIllustrators}
-              selection={illustrators}
-              onChange={this._onIllustratorsChange}
-            />
-          ) }
-        </View>
-        <SkillIconChooser
-          skillIcons={skillIcons}
-          onChange={this._onSkillIconsChange}
-        />
-        <View style={styles.toggleStack}>
-          <View style={styles.toggleRow}>
-            <ToggleFilter
-              label="Non-Elite"
-              setting="nonElite"
-              value={nonElite}
-              onChange={this._onToggleChange}
-            />
-            <ToggleFilter
-              label="Victory"
-              setting="victory"
-              value={victory}
-              onChange={this._onToggleChange}
-            />
+      <View style={styles.wrapper}>
+        <ScrollView>
+          <FactionChooser
+            factions={allFactions}
+            selection={factions}
+            onChange={this._onFactionChange}
+          />
+          <View style={styles.chooserStack}>
+            { (traits.length > 0 || allTraits.length > 0) && (
+              <ChooserButton
+                title="Traits"
+                navigator={navigator}
+                values={allTraits}
+                selection={traits}
+                onChange={this._onTraitChange}
+              />
+            ) }
+            { (types.length > 0 || allTypes.length > 0) && (
+              <ChooserButton
+                navigator={navigator}
+                title="Types"
+                values={allTypes}
+                selection={types}
+                onChange={this._onTypeChange}
+              />
+            ) }
+            { (subTypes.length > 0 || allSubTypes.length > 0) && (
+              <ChooserButton
+                navigator={navigator}
+                title="SubTypes"
+                values={allSubTypes}
+                selection={subTypes}
+                onChange={this._onSubTypeChange}
+              />
+            ) }
+            { (slots.length > 0 || allSlots.length > 0) && (
+              <ChooserButton
+                navigator={navigator}
+                title="Slots"
+                values={allSlots}
+                selection={slots}
+                onChange={this._onSlotsChange}
+              />
+            ) }
+            { (uses.length > 0 || allUses.length > 0) && (
+              <ChooserButton
+                navigator={navigator}
+                title="Uses Type"
+                values={allUses}
+                selection={uses}
+                onChange={this._onUsesChange}
+              />
+            ) }
+            { (cycleNames.length > 0 || allCycleNames.length > 1) && (
+              <ChooserButton
+                navigator={navigator}
+                title="Cycles"
+                values={allCycleNames}
+                selection={cycleNames}
+                onChange={this._onCycleNamesChange}
+              />
+            ) }
+            { (packs.length > 0 || allPacks.length > 1) && (
+              <ChooserButton
+                navigator={navigator}
+                title="Packs"
+                values={allPacks}
+                selection={packs}
+                onChange={this._onPacksChange}
+              />
+            ) }
+            { (encounters.length > 0 || allEncounters.length > 0) && (
+              <ChooserButton
+                navigator={navigator}
+                title="Encounter Sets"
+                values={allEncounters}
+                selection={encounters}
+                onChange={this._onEncountersChange}
+              />
+            ) }
+            { (illustrators.length > 0 || allIllustrators.length > 0) && (
+              <ChooserButton
+                navigator={navigator}
+                title="Illustrators"
+                values={allIllustrators}
+                selection={illustrators}
+                onChange={this._onIllustratorsChange}
+              />
+            ) }
           </View>
+          <SkillIconChooser
+            skillIcons={skillIcons}
+            onChange={this._onSkillIconsChange}
+          />
+          <View style={styles.toggleStack}>
+            <View style={styles.toggleRow}>
+              <ToggleFilter
+                label="Non-Elite"
+                setting="nonElite"
+                value={nonElite}
+                onChange={this._onToggleChange}
+              />
+              <ToggleFilter
+                label="Victory"
+                setting="victory"
+                value={victory}
+                onChange={this._onToggleChange}
+              />
+            </View>
+          </View>
+        </ScrollView>
+        <View style={styles.footerBar}>
+          <Text style={[typography.text, space.marginLeftS]}>
+            { this.cardCount() } Cards Matched
+          </Text>
         </View>
-        <Text style={styles.matchText}>
-          { this.cardCount() } Cards Matched
-        </Text>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -338,6 +345,9 @@ export default connectRealm(CardFilterView, {
 });
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   chooserStack: {
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
@@ -347,14 +357,16 @@ const styles = StyleSheet.create({
     borderColor: '#bdbdbd',
     paddingBottom: 8,
   },
-  matchText: {
-    fontSize: 18,
-    fontFamily: 'System',
-    padding: 8,
-  },
   toggleRow: {
     marginTop: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  footerBar: {
+    height: FOOTER_HEIGHT,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    borderTopWidth: 1,
+    borderColor: '#000000',
   },
 });

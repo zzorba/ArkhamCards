@@ -7,11 +7,12 @@ import {
 } from 'react-native';
 
 import { COLORS } from '../../styles/colors';
+import typography from '../../styles/typography';
 
 export default function CardSectionHeader({ title }) {
   return (
     <View style={styles.row}>
-      <Text style={styles.headerText}>
+      <Text style={[typography.text, styles.headerText]}>
         { title }
       </Text>
     </View>
@@ -35,9 +36,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     marginLeft: 8,
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 22,
     color: COLORS.black,
   },
 });

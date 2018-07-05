@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import ToggleFilter from './ToggleFilter';
+import typography from '../../styles/typography';
 
 export default class SkillIconChooser extends React.Component {
   static propTypes = {
@@ -41,7 +42,7 @@ export default class SkillIconChooser extends React.Component {
     } = this.props;
     return (
       <View style={styles.toggleStack}>
-        <Text style={styles.sectionTitle}>
+        <Text style={[styles.sectionTitle, typography.text]}>
           Skill Icons
         </Text>
         <View style={styles.toggleRow}>
@@ -104,7 +105,5 @@ const styles = StyleSheet.create({
   sectionTitle: {
     marginTop: 8,
     marginLeft: 8,
-    fontFamily: 'System',
-    fontSize: 18,
   },
 });

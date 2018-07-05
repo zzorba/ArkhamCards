@@ -1,12 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  header: {
+    fontFamily: 'System',
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: '600',
+  },
   text: {
     fontFamily: 'System',
     fontSize: 18,
     lineHeight: 22,
   },
-  small: {    
+  small: {
     fontFamily: 'System',
     fontSize: 12,
     lineHeight: 18,

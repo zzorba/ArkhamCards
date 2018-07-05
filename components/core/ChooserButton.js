@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import typography from '../../styles/typography';
+
 export default class ChooserButton extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -51,7 +53,7 @@ export default class ChooserButton extends React.Component {
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.container}>
-          <Text style={styles.text} numberOfLines={1}>
+          <Text style={[styles.text, typography.text]} numberOfLines={1}>
             { `${title}: ${selection.length ? selection.join(', ') : 'All'}` }
           </Text>
           <View style={styles.icon}>
@@ -72,6 +74,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: '100%',
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
     borderTopWidth: 1,
     borderColor: '#bdbdbd',
@@ -80,7 +83,6 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
   },
   text: {
-    fontSize: 18,
     flex: 1,
   },
   icon: {

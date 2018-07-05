@@ -11,6 +11,7 @@ import { Button } from 'react-native-elements';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import DeckViewCardItem from './DeckViewCardItem';
+import typography from '../../styles/typography';
 
 class DeckDelta extends React.Component {
   static propTypes = {
@@ -173,7 +174,7 @@ class DeckDelta extends React.Component {
 
     return (
       <View style={styles.xp}>
-        <Text style={styles.text}>
+        <Text style={typography.text}>
           { `Available Experience: ${xp}\nSpent Experience: ${spentXp}` }
         </Text>
       </View>
@@ -192,7 +193,7 @@ class DeckDelta extends React.Component {
     }
     return (
       <View>
-        <Text style={styles.title}>Campaign Progress</Text>
+        <Text style={[typography.text, styles.title]}>Campaign Progress</Text>
         { this.renderXp() }
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
@@ -214,7 +215,7 @@ class DeckDelta extends React.Component {
         </View>
         { !!keys(changedCards).length && (
           <View>
-            <Text style={styles.title}>Changes</Text>
+            <Text style={[typography.text, styles.title]}>Changes</Text>
             { map(keys(changedCards), code => (
               <DeckViewCardItem
                 key={code}
@@ -228,7 +229,7 @@ class DeckDelta extends React.Component {
         ) }
         { !!keys(exiledCards).length && (
           <View>
-            <Text style={styles.title}>Exiled Cards</Text>
+            <Text style={[typography.text, styles.title]}>Exiled Cards</Text>
             { map(keys(exiledCards), code => (
               <DeckViewCardItem
                 key={code}
@@ -263,15 +264,7 @@ export default connectRealm(DeckDelta, {
 const styles = StyleSheet.create({
   title: {
     marginTop: 16,
-    fontSize: 18,
-    lineHeight: 22,
-    fontFamily: 'System',
     fontWeight: '900',
-  },
-  text: {
-    fontFamily: 'System',
-    fontSize: 12,
-    lineHeight: 18,
   },
   xp: {
     marginBottom: 8,

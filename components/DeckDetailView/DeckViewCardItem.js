@@ -10,6 +10,7 @@ import {
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
+import typography from '../../styles/typography';
 
 const ROW_HEIGHT = 40;
 const ICON_SIZE = 28;
@@ -65,17 +66,17 @@ export default class DeckViewCardItem extends React.PureComponent {
         <View style={styles.stack}>
           <View style={styles.row}>
             <Text style={[
-              styles.cardName,
+              typography.text,
               { color: FACTION_COLORS[card.faction_code] },
             ]}>
               { card.name }
             </Text>
-            <Text style={[styles.cardName, styles.xp]}>
+            <Text style={[typography.text, styles.xp]}>
               { xpStr }
             </Text>
           </View>
           <Text style={[
-            styles.cardSubName,
+            typography.small,
             { color: FACTION_COLORS[card.faction_code] },
           ]}>
             { card.subname }
@@ -86,12 +87,18 @@ export default class DeckViewCardItem extends React.PureComponent {
     return (
       <View style={[styles.row, styles.fullHeight]}>
         <Text style={[
+          typography.text,
           styles.defaultText,
           { color: FACTION_COLORS[card.faction_code] },
         ]}>
           { card.name }
         </Text>
-        <Text style={[styles.defaultText, styles.fullHeight, styles.xp]}>
+        <Text style={[
+          typography.text,
+          styles.defaultText,
+          styles.fullHeight,
+          styles.xp,
+        ]}>
           { xpStr }
         </Text>
       </View>
@@ -108,7 +115,7 @@ export default class DeckViewCardItem extends React.PureComponent {
       <TouchableOpacity onPress={this._onPress}>
         <View style={[styles.row, styles.fullHeight]}>
           <View style={styles.quantity}>
-            <Text style={styles.numberText}>
+            <Text style={[typography.text, styles.numberText]}>
               { deltaMode && (item.quantity > 0 ? '+' : '') }
               { item.quantity.toString() }
               { !deltaMode && 'x' }
@@ -147,25 +154,11 @@ const styles = StyleSheet.create({
   numberText: {
     textAlign: 'right',
     color: '#000000',
-    fontFamily: 'System',
-    fontSize: 18,
     lineHeight: ROW_HEIGHT,
   },
   defaultText: {
     color: '#000000',
-    fontFamily: 'System',
-    fontSize: 18,
     lineHeight: ROW_HEIGHT,
-  },
-  cardName: {
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 22,
-  },
-  cardSubName: {
-    fontFamily: 'System',
-    fontSize: 12,
-    lineHeight: 18,
   },
   cardIcon: {
     width: ROW_HEIGHT,

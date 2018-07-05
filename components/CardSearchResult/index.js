@@ -14,6 +14,7 @@ import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
+import typography from '../../styles/typography';
 
 const SMALL_ICON_SIZE = 26;
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
@@ -134,7 +135,7 @@ export default class CardSearchResult extends React.PureComponent {
         <View style={styles.cardNameBlock}>
           <View style={styles.row}>
             <Text style={[
-              styles.cardName,
+              typography.text,
               { color: FACTION_COLORS[card.faction_code] || '#000000' },
             ]} ellipsizeMode="tail">
               { card.renderName }
@@ -144,7 +145,7 @@ export default class CardSearchResult extends React.PureComponent {
             </Text>
           </View>
           <Text style={[
-            styles.cardSubName,
+            typography.small,
             { color: FACTION_COLORS[card.faction_code] || '#000000' },
           ]}>
             { card.renderSubname }
@@ -155,6 +156,7 @@ export default class CardSearchResult extends React.PureComponent {
     return (
       <View style={styles.row}>
         <Text style={[
+          typography.text,
           styles.cardNameOnly,
           { color: FACTION_COLORS[card.faction_code] || '#000000' },
         ]}>
@@ -233,24 +235,12 @@ const styles = StyleSheet.create({
   },
   cardNameOnly: {
     marginLeft: 4,
-    fontFamily: 'System',
-    fontSize: 18,
     lineHeight: ROW_HEIGHT,
   },
   cardNameBlock: {
     marginLeft: 4,
   },
-  cardName: {
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 22,
-  },
   xp: {
     marginLeft: 4,
-  },
-  cardSubName: {
-    fontFamily: 'System',
-    fontSize: 12,
-    lineHeight: 18,
   },
 });

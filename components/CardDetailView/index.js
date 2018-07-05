@@ -23,6 +23,8 @@ import {
 } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
+import typography from '../../styles/typography';
+import space from '../../styles/space';
 import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
@@ -325,15 +327,19 @@ class CardDetailView extends React.PureComponent {
         borderColor: factionColor || '#000000',
       }]}>
         <View style={styles.column}>
-          <Text style={[styles.cardTitleText, {
-            color: factionColor ? '#FFFFFF' : '#000000',
-          }]}>
+          <Text style={[
+            typography.text,
+            space.marginLeftS,
+            { color: factionColor ? '#FFFFFF' : '#000000' },
+          ]}>
             { `${name}${card.is_unique ? ' ✷' : ''}` }
           </Text>
           { !!subname && (
-            <Text style={[styles.cardTitleSubtitle, {
-              color: factionColor ? '#FFFFFF' : '#000000',
-            }]}>
+            <Text style={[
+              typography.small,
+              space.marginLeftS,
+              { color: factionColor ? '#FFFFFF' : '#000000' },
+            ]}>
               { subname }
             </Text>
           ) }
@@ -512,7 +518,7 @@ class CardDetailView extends React.PureComponent {
     }
     return (
       <View>
-        <Text style={styles.sectionHeader}>
+        <Text style={[typography.header, styles.sectionHeader]}>
           Deckbuilding
         </Text>
         <View style={styles.buttonContainer}>
@@ -606,7 +612,7 @@ class CardDetailView extends React.PureComponent {
               }
               { !!card.illustrator && (
                 <Text style={styles.illustratorText}>
-                  <AppIcon name="palette" size={16} color="#000000" />
+                  <AppIcon name="palette" size={14} color="#000000" />
                   { card.illustrator }
                 </Text>
               ) }
@@ -759,14 +765,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  cardTitleText: {
-    marginLeft: 8,
-    fontSize: 18,
-  },
-  cardTitleSubtitle: {
-    marginLeft: 8,
-    fontSize: 11,
-  },
   gameTextBlock: {
     borderLeftWidth: 4,
     paddingLeft: 8,
@@ -834,10 +832,6 @@ const styles = StyleSheet.create({
   sectionHeader: {
     marginTop: 24,
     paddingLeft: 8,
-    fontSize: 24,
-    lineHeight: 32,
-    fontWeight: '600',
-    fontFamily: 'System',
   },
   spoilerText: {
     margin: 8,
