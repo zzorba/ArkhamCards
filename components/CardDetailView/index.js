@@ -54,6 +54,7 @@ class CardDetailView extends React.PureComponent {
     showSpoilers: PropTypes.bool,
     linked: PropTypes.bool,
     signatureCard: PropTypes.bool,
+    notFirst: PropTypes.bool,
   };
 
   constructor(props) {
@@ -442,7 +443,7 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
-  renderCardBack(card, backFirst, isHorizontal, flavorFirst) {
+  renderCardBack(card, backFirst, isHorizontal, flavorFirst, isFirst) {
     const {
       navigator,
       showSpoilers,
@@ -450,14 +451,17 @@ class CardDetailView extends React.PureComponent {
     } = this.props;
     if (card.linked_card) {
       return (
-        <CardDetailView
-          navigator={navigator}
-          id={card.code}
-          card={card.linked_card}
-          pack_code={pack_code}
-          showSpoilers={showSpoilers}
-          linked
-        />
+        <View>
+          <CardDetailView
+            navigator={navigator}
+            id={card.code}
+            card={card.linked_card}
+            pack_code={pack_code}
+            showSpoilers={showSpoilers}
+            linked
+            notFirst={!isFirst}
+          />
+        </View>
       );
     }
     if (!card.double_sided) {
@@ -504,6 +508,7 @@ class CardDetailView extends React.PureComponent {
             </View>
           </View>
         </View>
+        { isFirst && this.renderFaqButton() }
       </View>
     );
   }
@@ -539,13 +544,10 @@ class CardDetailView extends React.PureComponent {
       signatureCard,
       card,
     } = this.props;
-    if (linked && !signatureCard) {
-      return null;
-    }
     return (
       <View style={styles.buttonContainer}>
         <Button
-          text={`FAQ for ${card.name}`}
+          text="FAQ"
           onPress={this._showFaq}
           icon={<ArkhamIcon name="faq" size={18} color="white" />}
         />
@@ -553,7 +555,7 @@ class CardDetailView extends React.PureComponent {
     );
   }
 
-  renderCardFront(card, backFirst, isHorizontal, flavorFirst) {
+  renderCardFront(card, backFirst, isHorizontal, flavorFirst, isFirst) {
     const {
       navigator,
     } = this.props;
@@ -610,29 +612,36 @@ class CardDetailView extends React.PureComponent {
               { !!card.flavor && !flavorFirst &&
                 <FlavorTextComponent text={card.flavor} />
               }
-              { !!card.illustrator && (
-                <Text style={styles.illustratorText}>
-                  <AppIcon name="palette" size={14} color="#000000" />
-                  { card.illustrator }
-                </Text>
-              ) }
-              { !!card.pack_name &&
-                <View style={styles.setRow}>
-                  <Text>
-                    { `${card.pack_name} #${card.position % 1000}.` }
-                  </Text>
-                  { !!card.encounter_name &&
-                    <Text>
-                      <EncounterIcon
-                        encounter_code={card.encounter_code}
-                        size={12}
-                        color="#000000"
-                      />
-                      { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
+              <View style={styles.twoColumn}>
+                <View style={styles.column}>
+                  { !!card.illustrator && (
+                    <Text style={styles.illustratorText}>
+                      <AppIcon name="palette" size={14} color="#000000" />
+                      { card.illustrator }
                     </Text>
+                  ) }
+                  { !!card.pack_name &&
+                    <View style={styles.setRow}>
+                      <Text>
+                        { `${card.pack_name} #${card.position % 1000}.` }
+                      </Text>
+                      { !!card.encounter_name &&
+                        <Text>
+                          <EncounterIcon
+                            encounter_code={card.encounter_code}
+                            size={12}
+                            color="#000000"
+                          />
+                          { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
+                        </Text>
+                      }
+                    </View>
                   }
                 </View>
-              }
+                <View style={styles.column}>
+                  { isFirst && this.renderFaqButton() }
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -644,6 +653,7 @@ class CardDetailView extends React.PureComponent {
     const {
       card,
       linked,
+      notFirst,
     } = this.props;
 
     if (this.shouldBlur()) {
@@ -672,12 +682,15 @@ class CardDetailView extends React.PureComponent {
       (card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
       !(isHorizontal || !card.spoiler) &&
       card.type_code !== 'scenario';
+
+    const sideA = backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst, !notFirst);
+    const sideB = this.renderCardFront(card, backFirst, isHorizontal, flavorFirst, !notFirst && !sideA);
+    const sideC = !backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst, !notFirst && !sideA && !sideB);
     return (
       <ScrollView style={styles.viewContainer}>
-        { backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst) }
-        { this.renderCardFront(card, backFirst, isHorizontal, flavorFirst) }
-        { !backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst) }
-        { this.renderFaqButton() }
+        { sideA }
+        { sideB }
+        { sideC }
         { this.renderInvestigatorCardsLink() }
         { !linked && <View style={styles.footerPadding} /> }
       </ScrollView>
@@ -721,6 +734,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+  },
+  twoColumn: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
   mainColumn: {
     flexDirection: 'column',
