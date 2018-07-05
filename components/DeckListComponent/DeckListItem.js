@@ -7,11 +7,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckTitleBarComponent from '../DeckTitleBarComponent';
 import { toRelativeDateString } from '../../lib/datetime';
 import { parseDeck } from '../parseDeck';
+import { FACTION_LIGHT_GRADIENTS } from '../../constants';
 
 const ROW_HEIGHT = 100;
 
@@ -57,10 +59,13 @@ export default class DeckListItem extends React.Component {
     }
     const parsedDeck = parseDeck(deck, deck.slots, cards);
     return (
-      <TouchableOpacity onPress={this._onPress}>
+      <TouchableOpacity onPress={this._onPress} style={styles.container}>
         <View style={styles.column}>
           <DeckTitleBarComponent name={deck.name} investigator={investigator} compact />
-          <View style={styles.row}>
+          <LinearGradient
+            colors={FACTION_LIGHT_GRADIENTS[investigator.faction_code]}
+            style={styles.row}
+          >
             <View style={styles.image}>
               { !!investigator && <InvestigatorImage card={investigator} /> }
             </View>
@@ -80,7 +85,7 @@ export default class DeckListItem extends React.Component {
                 </Text>
               ) }
             </View>
-          </View>
+          </LinearGradient>
         </View>
       </TouchableOpacity>
     );
@@ -88,6 +93,9 @@ export default class DeckListItem extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 16,
+  },
   column: {
     flexDirection: 'column',
     alignItems: 'flex-start',

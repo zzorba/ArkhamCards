@@ -54,6 +54,24 @@ export const FACTION_COLORS = {
   neutral: '#000000',
 };
 
+export const FACTION_LIGHT_GRADIENTS = {
+  mystic: ['#d9d6f1', '#a198dc'],
+  seeker: ['#fbe6d4', '#f7cea8'],
+  guardian: ['#d5e6f3', '#aacce8'],
+  rogue: ['#cfe3d0', '#9fc6a2'],
+  survivor: ['#f5d6d7', '#ebacaf'],
+  neutral: ['#e6e6e6', '#cccccc'],
+};
+
+export const FACTION_DARK_GRADIENTS = {
+  mystic: ['#4331b9', '#2f2282'],
+  seeker: ['#ec8426', '#bd6a1e'],
+  guardian: ['#2b80c5', '#22669e'],
+  rogue: ['#107116', '#0b4f0f'],
+  survivor: ['#cc3038', '#a3262d'],
+  neutral: ['#444444', '#222222'],
+};
+
 export const FACTION_BACKGROUND_COLORS = Object.assign(
   {},
   FACTION_COLORS,

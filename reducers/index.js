@@ -177,13 +177,21 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
     );
   }
   if (action.type === DECK_AVAILABLE) {
+    const deck = Object.assign({}, action.deck);
+    let scenarioCount = 0;
+    let currentDeck = deck;
+    while (currentDeck && currentDeck.previous_deck) {
+      scenarioCount ++;
+      currentDeck = allDecks[currentDeck.previous_deck];
+    }
+    deck.scenarioCount = scenarioCount;
     return Object.assign({},
       state,
       {
         all: Object.assign(
           {},
           state.all,
-          { [action.id]: action.deck },
+          { [action.id]: deck },
         ),
       });
   } else if (action.type === CLEAR_DECKS) {
