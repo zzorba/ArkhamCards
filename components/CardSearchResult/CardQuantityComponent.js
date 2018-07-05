@@ -6,13 +6,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Button } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 
+import Button from '../core/Button';
+import CountButton from './CountButton';
 import { COLORS } from '../../styles/colors';
-import { ROW_HEIGHT } from './constants';
-
-const BUTTON_WIDTH = 40;
-const BUTTON_PADDING = 12;
+import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING } from './constants';
 
 /**
  * Simple sliding card count.
@@ -29,6 +28,7 @@ export default class CardQuantityComponent extends React.Component {
 
     this.state = {
       open: false,
+      count: props.count,
       slideAnim: new Animated.Value(0),
     };
 
@@ -39,9 +39,20 @@ export default class CardQuantityComponent extends React.Component {
     this._selectTwo = this.selectCount.bind(this, 2);
   }
 
+  static getDerivedStateFromProps(props) {
+    return {
+      count: props.count,
+    };
+  }
+
   selectCount(count) {
-    this.props.countChanged(count);
-    this.toggle();
+    this.setState({
+      count: count,
+    });
+    setTimeout(() => {
+      this.toggle();
+      this.props.countChanged(count);
+    }, 50);
   }
 
   toggle() {
@@ -64,10 +75,10 @@ export default class CardQuantityComponent extends React.Component {
 
   render() {
     const {
-      count,
       limit,
     } = this.props;
     const {
+      count,
       slideAnim,
     } = this.state;
     const drawerWidth = BUTTON_PADDING + (BUTTON_WIDTH + BUTTON_PADDING) * (limit + 1);
@@ -81,9 +92,10 @@ export default class CardQuantityComponent extends React.Component {
     return (
       <View style={styles.container} pointerEvents="box-none">
         <Button
-          containerStyle={styles.buttonContainer}
-          textStyle={styles.buttonText}
-          buttonStyle={styles.button}
+          style={styles.button}
+          size="small"
+          align="center"
+          width={BUTTON_WIDTH}
           text={count.toString()}
           onPress={this._toggle}
         />
@@ -95,28 +107,29 @@ export default class CardQuantityComponent extends React.Component {
               transform: [{ translateX: translateX }],
             },
           ]}>
-            <Button
-              text="0"
-              containerStyle={styles.buttonContainer}
-              textStyle={count === 0 ? styles.selectedButtonText : styles.buttonText}
-              buttonStyle={count === 0 ? styles.selectedButton : styles.button}
-              onPress={this._selectZero}
-            />
-            <Button text="1"
-              containerStyle={styles.buttonContainer}
-              textStyle={count === 1 ? styles.selectedButtonText : styles.buttonText}
-              buttonStyle={count === 1 ? styles.selectedButton : styles.button}
-              onPress={this._selectOne}
-            />
-            { (limit > 1) && (
-              <Button
-                text="2"
-                containerStyle={styles.buttonContainer}
-                textStyle={count === 2 ? styles.selectedButtonText : styles.buttonText}
-                buttonStyle={count === 2 ? styles.selectedButton : styles.button}
-                onPress={this._selectTwo}
+            <LinearGradient
+              style={styles.gradient}
+              colors={['#a0a0a0', '#f3f3f3']}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 1 }}
+            >
+              <CountButton
+                text="0"
+                selected={count === 0}
+                onPress={this._selectZero}
               />
-            ) }
+              <CountButton text="1"
+                selected={count === 1}
+                onPress={this._selectOne}
+              />
+              { (limit > 1) && (
+                <CountButton
+                  text="2"
+                  selected={count === 2}
+                  onPress={this._selectTwo}
+                />
+              ) }
+            </LinearGradient>
           </Animated.View>
         </View>
       </View>
@@ -137,32 +150,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     overflow: 'visible',
   },
-  buttonText: {
-    color: COLORS.black,
-    lineHeight: 32,
-    padding: 0,
-    margin: 0,
-  },
-  selectedButtonText: {
-    color: COLORS.white,
-    lineHeight: 32,
-    padding: 0,
-    margin: 0,
-  },
   button: {
-    borderColor: COLORS.black,
-    borderWidth: 1,
-    backgroundColor: COLORS.lightGray,
-    padding: 0,
-    marginRight: BUTTON_PADDING,
-    width: BUTTON_WIDTH,
-  },
-  selectedButton: {
-    borderColor: COLORS.black,
-    borderWidth: 1,
-    backgroundColor: COLORS.darkGray,
-    padding: 0,
-    marginRight: BUTTON_PADDING,
+    marginTop: 4,
+    marginBottom: 4,
+    marginRight: 4,
     width: BUTTON_WIDTH,
   },
   drawer: {
@@ -173,13 +164,16 @@ const styles = StyleSheet.create({
     overflow: 'visible',
   },
   slideDrawer: {
-    borderColor: COLORS.black,
-    borderWidth: 1,
-    backgroundColor: COLORS.gray,
+    borderColor: '#888888',
+    borderLeftWidth: 1,
+    height: ROW_HEIGHT,
+  },
+  gradient: {
+    width: '100%',
+    height: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: ROW_HEIGHT,
     paddingLeft: BUTTON_PADDING,
   },
 });
