@@ -506,9 +506,9 @@ class CardDetailView extends React.PureComponent {
                 <FlavorTextComponent text={card.back_flavor} />
               }
             </View>
+            { isFirst && this.renderCardFooter(card) }
           </View>
         </View>
-        { isFirst && this.renderFaqButton() }
       </View>
     );
   }
@@ -551,6 +551,41 @@ class CardDetailView extends React.PureComponent {
           onPress={this._showFaq}
           icon={<ArkhamIcon name="faq" size={18} color="white" />}
         />
+      </View>
+    );
+  }
+
+  renderCardFooter(card) {
+    return (
+      <View style={styles.twoColumn}>
+        <View style={styles.column}>
+          { !!card.illustrator && (
+            <Text style={styles.illustratorText}>
+              <AppIcon name="palette" size={14} color="#000000" />
+              { card.illustrator }
+            </Text>
+          ) }
+          { !!card.pack_name &&
+            <View style={styles.setRow}>
+              <Text>
+                { `${card.pack_name} #${card.position % 1000}.` }
+              </Text>
+              { !!card.encounter_name &&
+                <Text>
+                  <EncounterIcon
+                    encounter_code={card.encounter_code}
+                    size={12}
+                    color="#000000"
+                  />
+                  { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
+                </Text>
+              }
+            </View>
+          }
+        </View>
+        <View style={styles.column}>
+          { this.renderFaqButton() }
+        </View>
       </View>
     );
   }
@@ -612,36 +647,7 @@ class CardDetailView extends React.PureComponent {
               { !!card.flavor && !flavorFirst &&
                 <FlavorTextComponent text={card.flavor} />
               }
-              <View style={styles.twoColumn}>
-                <View style={styles.column}>
-                  { !!card.illustrator && (
-                    <Text style={styles.illustratorText}>
-                      <AppIcon name="palette" size={14} color="#000000" />
-                      { card.illustrator }
-                    </Text>
-                  ) }
-                  { !!card.pack_name &&
-                    <View style={styles.setRow}>
-                      <Text>
-                        { `${card.pack_name} #${card.position % 1000}.` }
-                      </Text>
-                      { !!card.encounter_name &&
-                        <Text>
-                          <EncounterIcon
-                            encounter_code={card.encounter_code}
-                            size={12}
-                            color="#000000"
-                          />
-                          { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
-                        </Text>
-                      }
-                    </View>
-                  }
-                </View>
-                <View style={styles.column}>
-                  { isFirst && this.renderFaqButton() }
-                </View>
-              </View>
+              { isFirst && this.renderCardFooter(card) }
             </View>
           </View>
         </View>
