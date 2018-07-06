@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
+import AccordionItem from './AccordionItem';
 import ToggleFilter from './ToggleFilter';
-import typography from '../../styles/typography';
 
 export default class SkillIconChooser extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     skillIcons: PropTypes.object.isRequired,
+    enabled: PropTypes.bool,
+    toggleEnabled: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -39,12 +40,16 @@ export default class SkillIconChooser extends React.Component {
         wild,
         doubleIcons,
       },
+      enabled,
+      toggleEnabled,
     } = this.props;
     return (
-      <View style={styles.toggleStack}>
-        <Text style={[styles.sectionTitle, typography.text]}>
-          Skill Icons
-        </Text>
+      <AccordionItem
+        label={enabled ? 'Skill Icons: All' : 'Skill Icons'}
+        height={120}
+        enabled={enabled}
+        toggleEnabled={toggleEnabled}
+      >
         <View style={styles.toggleRow}>
           <ToggleFilter
             icon="willpower"
@@ -85,25 +90,16 @@ export default class SkillIconChooser extends React.Component {
             onChange={this._onToggleChange}
           />
         </View>
-      </View>
+      </AccordionItem>
     );
   }
 }
 
 
 const styles = StyleSheet.create({
-  toggleStack: {
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
-    paddingBottom: 8,
-  },
   toggleRow: {
     marginTop: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  sectionTitle: {
-    marginTop: 8,
-    marginLeft: 8,
   },
 });

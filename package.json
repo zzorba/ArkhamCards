@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@ptomasroos/react-native-multi-slider": "1.0.0",
     "@redux-offline/redux-offline": "2.3.3",
     "appcenter": "1.5.1",
     "appcenter-analytics": "1.5.1",

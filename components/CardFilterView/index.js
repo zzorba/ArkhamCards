@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys, forEach, filter, map } from 'lodash';
 import {
+  ActivityIndicator,
+  Dimensions,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,6 +18,7 @@ import SkillIconChooser from './SkillIconChooser';
 import DefaultFilterState from './DefaultFilterState';
 import ChooserButton from '../core/ChooserButton';
 import ToggleFilter from './ToggleFilter';
+import SliderChooser from './SliderChooser';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
 
@@ -35,8 +38,17 @@ class CardFilterView extends React.Component {
   constructor(props) {
     super(props);
 
+    const {
+      width,
+    } = Dimensions.get('window');
+
     this.state = {
+      loading: true,
+      width,
       filters: props.currentFilters,
+      hasCost: false,
+      hasXp: false,
+      hasSkill: false,
       allCycleNames: [],
       allUses: [],
       allFactions: CARD_FACTION_CODES,
@@ -50,7 +62,12 @@ class CardFilterView extends React.Component {
     };
 
     this._onToggleChange = this.onToggleChange.bind(this);
+    this._onXpToggle = this.onToggleChange.bind(this, 'xpEnabled');
+    this._onXpChange = this.onFilterChange.bind(this, 'xp');
+    this._onCostToggle = this.onToggleChange.bind(this, 'costEnabled');
+    this._onCostChange = this.onFilterChange.bind(this, 'cost');
     this._onCycleNamesChange = this.onFilterChange.bind(this, 'cycleNames');
+    this._onSkillToggle = this.onToggleChange.bind(this, 'skillEnabled');
     this._onSkillIconsChange = this.onFilterChange.bind(this, 'skillIcons');
     this._onUsesChange = this.onFilterChange.bind(this, 'uses');
     this._onFactionChange = this.onFilterChange.bind(this, 'factions');
@@ -61,7 +78,6 @@ class CardFilterView extends React.Component {
     this._onSlotsChange = this.onFilterChange.bind(this, 'slots');
     this._onEncountersChange = this.onFilterChange.bind(this, 'encounters');
     this._onIllustratorsChange = this.onFilterChange.bind(this, 'illustrators');
-    this._applyFilters = this.applyFilters.bind(this);
 
     props.navigator.setTitle({
       title: 'Filter',
@@ -84,6 +100,9 @@ class CardFilterView extends React.Component {
     setTimeout(() => {
       const allFactions = filter(FACTION_CODES, faction_code =>
         cards.filtered(`faction_code == '${faction_code}'`).length > 0);
+      let hasCost = false;
+      let hasXp = false;
+      let hasSkill = false;
       const typesMap = {};
       const usesMap = {};
       const subTypesMap = {};
@@ -94,6 +113,21 @@ class CardFilterView extends React.Component {
       const encountersMap = {};
       const illustratorsMap = {};
       forEach(cards, card => {
+        if (card.cost !== null) {
+          hasCost = true;
+        }
+        if (card.xp !== null) {
+          hasXp = true;
+        }
+        if (!hasSkill && (
+          card.skill_willpower ||
+          card.skill_intellect ||
+          card.skill_combat ||
+          card.skill_agility ||
+          card.skill_wild
+        )) {
+          hasSkill = true;
+        }
         if (card.traits) {
           forEach(
             filter(map(card.traits.split('.'), t => t.trim()), t => t),
@@ -126,7 +160,11 @@ class CardFilterView extends React.Component {
       });
 
       this.setState({
+        loading: false,
         allFactions,
+        hasCost,
+        hasXp,
+        hasSkill,
         allCycleNames: keys(cycleNamesMap).sort(),
         allUses: keys(usesMap).sort(),
         allTraits: keys(traitsMap).sort(),
@@ -140,17 +178,16 @@ class CardFilterView extends React.Component {
     }, 0);
   }
 
-  applyFilters() {
-    this.props.applyFilters(this.state.filters);
-  }
-
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'clear') {
         this.setState({
           filters: DefaultFilterState,
-        }, this._applyFilters);
+        });
       }
+    }
+    if (event.id === 'willDisappear') {
+      this.props.applyFilters(this.state.filters);
     }
   }
 
@@ -160,13 +197,13 @@ class CardFilterView extends React.Component {
     } = this.state;
     this.setState({
       filters: Object.assign({}, filters, { [key]: !filters[key] }),
-    }, this._applyFilters);
+    });
   }
 
   onFilterChange(key, selection) {
     this.setState({
       filters: Object.assign({}, this.state.filters, { [key]: selection }),
-    }, this._applyFilters);
+    });
   }
 
   cardCount() {
@@ -185,6 +222,8 @@ class CardFilterView extends React.Component {
       navigator,
     } = this.props;
     const {
+      loading,
+      width,
       filters: {
         uses,
         factions,
@@ -200,6 +239,11 @@ class CardFilterView extends React.Component {
         victory,
         // vengeance,
         skillIcons,
+        skillEnabled,
+        xp,
+        xpEnabled,
+        cost,
+        costEnabled,
       },
       allUses,
       allFactions,
@@ -211,7 +255,22 @@ class CardFilterView extends React.Component {
       allSlots,
       allEncounters,
       allIllustrators,
+      hasCost,
+      hasXp,
+      hasSkill,
     } = this.state;
+
+    if (loading) {
+      return (
+        <View style={styles.loadingWrapper}>
+          <ActivityIndicator
+            style={[{ height: 80 }]}
+            size="small"
+            animating
+          />
+        </View>
+      );
+    }
 
     return (
       <View style={styles.wrapper}>
@@ -221,6 +280,36 @@ class CardFilterView extends React.Component {
             selection={factions}
             onChange={this._onFactionChange}
           />
+          { hasCost && (
+            <SliderChooser
+              label="Cost"
+              width={width}
+              values={cost}
+              enabled={costEnabled}
+              onChange={this._onCostChange}
+              toggleEnabled={this._onCostToggle}
+              max={6}
+            />
+          ) }
+          { hasXp && (
+            <SliderChooser
+              label="Experience"
+              width={width}
+              values={xp}
+              enabled={xpEnabled}
+              onChange={this._onXpChange}
+              toggleEnabled={this._onXpToggle}
+              max={5}
+            />
+          ) }
+          { hasSkill && (
+            <SkillIconChooser
+              skillIcons={skillIcons}
+              onChange={this._onSkillIconsChange}
+              enabled={skillEnabled}
+              toggleEnabled={this._onSkillToggle}
+            />
+          ) }
           <View style={styles.chooserStack}>
             { (traits.length > 0 || allTraits.length > 0) && (
               <ChooserButton
@@ -304,10 +393,6 @@ class CardFilterView extends React.Component {
               />
             ) }
           </View>
-          <SkillIconChooser
-            skillIcons={skillIcons}
-            onChange={this._onSkillIconsChange}
-          />
           <View style={styles.toggleStack}>
             <View style={styles.toggleRow}>
               <ToggleFilter
@@ -345,6 +430,12 @@ export default connectRealm(CardFilterView, {
 });
 
 const styles = StyleSheet.create({
+  loadingWrapper: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   wrapper: {
     flex: 1,
   },

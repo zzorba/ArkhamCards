@@ -10,7 +10,6 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Button from '../core/Button';
 import CountButton from './CountButton';
-import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING } from './constants';
 
 /**

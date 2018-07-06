@@ -539,11 +539,6 @@ class CardDetailView extends React.PureComponent {
   }
 
   renderFaqButton() {
-    const {
-      linked,
-      signatureCard,
-      card,
-    } = this.props;
     return (
       <View style={styles.buttonContainer}>
         <Button
@@ -558,7 +553,7 @@ class CardDetailView extends React.PureComponent {
   renderCardFooter(card) {
     return (
       <View style={styles.twoColumn}>
-        <View style={styles.column}>
+        <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={styles.illustratorText}>
               <AppIcon name="palette" size={14} color="#000000" />
@@ -568,7 +563,7 @@ class CardDetailView extends React.PureComponent {
           { !!card.pack_name &&
             <View style={styles.setRow}>
               <Text>
-                { `${card.pack_name} #${card.position % 1000}.` }
+                { `${card.cycle_name} #${card.position % 1000}.` }
               </Text>
               { !!card.encounter_name &&
                 <Text>
@@ -577,7 +572,7 @@ class CardDetailView extends React.PureComponent {
                     size={12}
                     color="#000000"
                   />
-                  { `${card.encounter_name} #${card.encounter_position}${card.quantity > 1 ? ` (${card.quantity} copies)` : ''}.` }
+                  { `${card.encounter_name} #${card.encounter_position}.${card.quantity > 1 ? `\n${card.quantity} copies.` : ''}` }
                 </Text>
               }
             </View>
@@ -735,6 +730,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
+  },
+  flex: {
+    flex: 1,
   },
   column: {
     flexDirection: 'column',
