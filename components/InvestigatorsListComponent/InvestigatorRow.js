@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import InvestigatorImage from '../core/InvestigatorImage';
+import { FACTION_LIGHT_GRADIENTS } from '../../constants';
 
 export default class InvestigatorRow extends React.Component {
   static propTypes = {
@@ -43,7 +45,10 @@ export default class InvestigatorRow extends React.Component {
 
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.row} >
+        <LinearGradient
+          colors={FACTION_LIGHT_GRADIENTS[investigator.faction_code]}
+          style={styles.row}
+        >
           <View style={styles.image}>
             <InvestigatorImage card={investigator} />
           </View>
@@ -66,7 +71,7 @@ export default class InvestigatorRow extends React.Component {
               );
             }) }
           </View>
-        </View>
+        </LinearGradient>
       </TouchableOpacity>
     );
   }
@@ -77,7 +82,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
+    borderColor: 'white',
     height: 100,
   },
   image: {

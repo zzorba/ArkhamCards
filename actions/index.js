@@ -201,10 +201,26 @@ export function setInCollection(code, value) {
   };
 }
 
+export function setCycleInCollection(cycle, value) {
+  return {
+    type: SET_IN_COLLECTION,
+    cycle,
+    value,
+  };
+}
+
 export function setPackSpoiler(code, value) {
   return {
     type: SET_PACK_SPOILER,
     code,
+    value,
+  };
+}
+
+export function setCyclePackSpoiler(cycle, value) {
+  return {
+    type: SET_PACK_SPOILER,
+    cycle,
     value,
   };
 }

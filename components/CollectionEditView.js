@@ -17,6 +17,7 @@ class CollectionEditView extends React.Component {
     packs: PropTypes.array,
     in_collection: PropTypes.object,
     setInCollection: PropTypes.func.isRequired,
+    setCycleInCollection: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -31,6 +32,7 @@ class CollectionEditView extends React.Component {
       packs,
       in_collection,
       setInCollection,
+      setCycleInCollection,
     } = this.props;
     if (!packs.length) {
       return (
@@ -45,6 +47,7 @@ class CollectionEditView extends React.Component {
         packs={packs}
         checkState={in_collection}
         setChecked={setInCollection}
+        setCycleChecked={setCycleInCollection}
       />
     );
   }

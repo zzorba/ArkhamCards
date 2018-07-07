@@ -89,11 +89,24 @@ const packs = (state = DEFAULT_PACKS_STATE, action) => {
       });
   } else if (action.type === SET_IN_COLLECTION) {
     const new_collection = Object.assign({}, state.in_collection);
-    if (action.value) {
-      new_collection[action.code] = true;
-    } else {
-      delete new_collection[action.code];
+    if (action.code) {
+      if (action.value) {
+        new_collection[action.code] = true;
+      } else {
+        delete new_collection[action.code];
+      }
+    } else if (action.cycle) {
+      forEach(state.all, pack => {
+        if (pack.cycle_position === action.cycle) {
+          if (action.value) {
+            new_collection[pack.code] = true;
+          } else {
+            delete new_collection[pack.code];
+          }
+        }
+      });
     }
+
     return Object.assign({},
       state,
       {
@@ -109,11 +122,24 @@ const packs = (state = DEFAULT_PACKS_STATE, action) => {
     );
   } else if (action.type === SET_PACK_SPOILER) {
     const new_spoilers = Object.assign({}, state.show_spoilers);
-    if (action.value) {
-      new_spoilers[action.code] = true;
-    } else {
-      delete new_spoilers[action.code];
+    if (action.code) {
+      if (action.value) {
+        new_spoilers[action.code] = true;
+      } else {
+        delete new_spoilers[action.code];
+      }
+    } else if (action.cycle) {
+      forEach(state.all, pack => {
+        if (pack.cycle_position === action.cycle) {
+          if (action.value) {
+            new_spoilers[pack.code] = true;
+          } else {
+            delete new_spoilers[pack.code];
+          }
+        }
+      });
     }
+
     return Object.assign({},
       state,
       {

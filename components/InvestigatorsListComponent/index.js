@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     height: 50,
   },
   editCollectionButton: {

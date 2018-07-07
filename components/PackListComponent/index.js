@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach } from 'lodash';
+import { filter } from 'lodash';
 import {
   FlatList,
   Text,
@@ -14,7 +14,8 @@ export default class PackListComponent extends React.Component {
     navigator: PropTypes.object,
     packs: PropTypes.array,
     checkState: PropTypes.object,
-    setChecked: PropTypes.func,
+    setChecked: PropTypes.func.isRequired,
+    setCycleChecked: PropTypes.func,
     renderHeader: PropTypes.func,
     renderFooter: PropTypes.func,
     whiteBackground: PropTypes.bool,
@@ -26,7 +27,6 @@ export default class PackListComponent extends React.Component {
 
     this._renderItem = this.renderItem.bind(this);
     this._keyExtractor = this.keyExtractor.bind(this);
-    this._setCycleChecked = this.setCycleChecked.bind(this);
   }
 
   keyExtractor(item) {
@@ -38,6 +38,7 @@ export default class PackListComponent extends React.Component {
       packs,
       checkState,
       setChecked,
+      setCycleChecked,
       whiteBackground,
       baseQuery,
     } = this.props;
@@ -51,24 +52,12 @@ export default class PackListComponent extends React.Component {
         pack={item}
         cycle={cyclePacks}
         setChecked={setChecked}
-        setCycleChecked={this._setCycleChecked}
+        setCycleChecked={setCycleChecked}
         checked={checkState && checkState[item.code]}
         whiteBackground={whiteBackground}
         baseQuery={baseQuery}
       />
     );
-  }
-
-  setCycleChecked(cyclePosition, value) {
-    const {
-      packs,
-      setChecked,
-    } = this.props;
-    forEach(packs, pack => {
-      if (pack.cycle_position === cyclePosition) {
-        setChecked(pack.code, value);
-      }
-    });
   }
 
   render() {

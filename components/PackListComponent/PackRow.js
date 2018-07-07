@@ -106,7 +106,13 @@ export default class PackRow extends React.Component {
                 color="#000000"
               />
             </View>
-            <Text style={[styles.title, { color: textColor, fontSize }]}>{ pack.name }</Text>
+            <Text
+              style={[styles.title, { color: textColor, fontSize }]}
+              numberOfLines={2}
+              ellipsizeMode="tail"
+            >
+              { pack.name }
+            </Text>
           </View>
         </TouchableOpacity>
         { !!setChecked && (

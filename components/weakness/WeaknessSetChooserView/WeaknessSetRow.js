@@ -43,7 +43,7 @@ export default class WeaknessSetRow extends React.Component {
     return (
       <TouchableOpacity style={styles.row} onPress={this._onPress}>
         <Text style={typography.text}>{ set.name }</Text>
-        <Text style={typography.small}>{ `${counts.assigned} / ${counts.total}` }</Text>
+        <Text style={typography.small}>{ `${counts.assigned} / ${counts.total} Weaknesses` }</Text>
       </TouchableOpacity>
     );
   }
