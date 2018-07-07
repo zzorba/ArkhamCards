@@ -18,7 +18,7 @@ import {
 import CardResultList from './CardResultList';
 import { iconsMap } from '../../app/NavIcons';
 import { applyFilters } from '../../lib/filters';
-import DefaultFilterState from '../CardFilterView/DefaultFilterState';
+import DefaultFilterState from '../filter/DefaultFilterState';
 
 const SEARCH_OPTIONS_HEIGHT = 44;
 

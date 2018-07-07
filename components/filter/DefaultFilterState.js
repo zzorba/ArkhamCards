@@ -18,6 +18,7 @@ export default {
   victory: false,
   vengeance: false,
   skillEnabled: false,
+  unique: false,
   skillIcons: {
     willpower: false,
     intellect: false,

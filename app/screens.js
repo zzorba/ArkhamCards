@@ -19,7 +19,8 @@ import NewDeckView from '../components/NewDeckView';
 import NewCampaignView from '../components/NewCampaignView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
 import DeckChartsView from '../components/DeckChartsView';
-import CardFilterView from '../components/CardFilterView';
+import CardFilterView from '../components/filter/CardFilterView';
+import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
 import BrowseDecksView from '../components/BrowseDecksView';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsDrawer from '../components/SettingsDrawer';
@@ -63,6 +64,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsDrawer, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
+  Navigation.registerComponent('SearchFilters.Enemy', () => CardEnemyFilterView, store, Provider);
   Navigation.registerComponent('SearchFilters.Chooser', () => SearchMultiSelectView, store, Provider);
   Navigation.registerComponent('CollectionEdit', () => CollectionEditView, store, Provider);
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);

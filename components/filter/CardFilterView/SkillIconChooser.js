@@ -5,8 +5,8 @@ import {
   View,
 } from 'react-native';
 
-import AccordionItem from './AccordionItem';
-import ToggleFilter from './ToggleFilter';
+import AccordionItem from '../AccordionItem';
+import ToggleFilter from '../ToggleFilter';
 
 export default class SkillIconChooser extends React.Component {
   static propTypes = {
