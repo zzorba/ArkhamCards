@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys, forEach, filter, map } from 'lodash';
+import { keys, forEach, filter, indexOf, map } from 'lodash';
 import {
   ActivityIndicator,
   ScrollView,
@@ -32,7 +32,6 @@ class CardFilterView extends React.Component {
 
   constructor(props) {
     super(props);
-
 
     this.state = {
       loading: true,
@@ -355,7 +354,9 @@ class CardFilterView extends React.Component {
             onToggleChange={onToggleChange}
           />
         ) }
-        <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
+        { indexOf(allTypes, 'Enemy') !== -1 && (
+          <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
+        ) }
         <View style={styles.chooserStack}>
           { (traits.length > 0 || allTraits.length > 0) && (
             <FilterChooserButton
