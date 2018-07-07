@@ -163,15 +163,91 @@ class CardFilterView extends React.Component {
     this.props.onFilterChange(key, selection);
   }
 
+  static rangeText(name, values) {
+    if (values[0] === values[1]) {
+      return `${name}(${values[0]})`;
+    }
+    return `${name}(${values[0]}-${values[1]})`;
+  }
+
   enemyFilterText() {
     const {
       filters: {
-        nonElite,
+        enemyKeywordsEnabled,
+        enemyElite,
+        enemyNonElite,
+        enemyHunter,
+        enemyNonHunter,
+        enemyParley,
+        enemyRetaliate,
+        enemyAlert,
+        enemySpawn,
+        enemyPrey,
+        enemyAloof,
+        enemyHealthEnabled,
+        enemyHealth,
+        enemyHealthPerInvestigator,
+        enemyDamageEnabled,
+        enemyDamage,
+        enemyHorrorEnabled,
+        enemyHorror,
+        enemyFightEnabled,
+        enemyFight,
+        enemyEvadeEnabled,
+        enemyEvade,
       },
     } = this.props;
     const parts = [];
-    if (nonElite) {
-      parts.push('Non-Elite');
+    if (enemyKeywordsEnabled) {
+      if (enemyElite) {
+        parts.push('Elite');
+      }
+      if (enemyNonElite) {
+        parts.push('Non-Elite');
+      }
+      if (enemyHunter) {
+        parts.push('Hunter');
+      }
+      if (enemyNonHunter) {
+        parts.push('Non-Hunter');
+      }
+      if (enemyParley) {
+        parts.push('Parley');
+      }
+      if (enemyRetaliate) {
+        parts.push('Retaliate');
+      }
+      if (enemyAlert) {
+        parts.push('Alert');
+      }
+      if (enemySpawn) {
+        parts.push('Spawn');
+      }
+      if (enemyPrey) {
+        parts.push('Prey');
+      }
+      if (enemyAloof) {
+        parts.push('Aloof');
+      }
+    }
+    if (enemyHealthEnabled) {
+      if (enemyHealthPerInvestigator) {
+        parts.push(CardFilterView.rangeText('HPI', enemyHealth));
+      } else {
+        parts.push(CardFilterView.rangeText('Health', enemyHealth));
+      }
+    }
+    if (enemyDamageEnabled) {
+      parts.push(CardFilterView.rangeText('Damage', enemyDamage));
+    }
+    if (enemyHorrorEnabled) {
+      parts.push(CardFilterView.rangeText('Horror', enemyHorror));
+    }
+    if (enemyFightEnabled) {
+      parts.push(CardFilterView.rangeText('Fight', enemyFight));
+    }
+    if (enemyEvadeEnabled) {
+      parts.push(CardFilterView.rangeText('Evade', enemyEvade));
     }
 
     if (parts.length === 0) {
