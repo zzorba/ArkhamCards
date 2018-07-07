@@ -17,7 +17,8 @@ export default class AccordionChooser extends React.Component {
     height: PropTypes.number.isRequired,
     children: PropTypes.node.isRequired,
     enabled: PropTypes.bool.isRequired,
-    toggleEnabled: PropTypes.func.isRequired,
+    toggleName: PropTypes.string.isRequired,
+    onToggleChange: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -26,6 +27,8 @@ export default class AccordionChooser extends React.Component {
     this.state = {
       heightAnim: new Animated.Value(props.enabled ? 1 : 0),
     };
+
+    this._togglePressed = this.togglePressed.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -46,11 +49,18 @@ export default class AccordionChooser extends React.Component {
     }
   }
 
+  togglePressed() {
+    const {
+      toggleName,
+      onToggleChange,
+    } = this.props;
+    onToggleChange(toggleName);
+  }
+
   renderLabel() {
     const {
       label,
       enabled,
-      toggleEnabled,
     } = this.props;
     return (
       <View style={styles.row}>
@@ -59,7 +69,7 @@ export default class AccordionChooser extends React.Component {
         </Text>
         <Switch
           value={enabled}
-          onValueChange={toggleEnabled}
+          onValueChange={this._togglePressed}
           onTintColor="#222222"
         />
       </View>

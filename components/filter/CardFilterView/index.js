@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 
 import FactionChooser from './FactionChooser';
+import FilterChooserButton from '../FilterChooserButton';
 import SkillIconChooser from './SkillIconChooser';
-import withFilterFunctions from '../withFilterFunctions';
 import SliderChooser from '../SliderChooser';
 import ToggleFilter from '../ToggleFilter';
-import ChooserButton from '../../core/ChooserButton';
+import withFilterFunctions from '../withFilterFunctions';
 import NavButton from '../../core/NavButton';
 import { FACTION_CODES } from '../../../constants';
 
@@ -55,25 +55,7 @@ class CardFilterView extends React.Component {
       allIllustrators: [],
     };
 
-    this._onXpToggle = this.onToggleChange.bind(this, 'xpEnabled');
-    this._onCostToggle = this.onToggleChange.bind(this, 'costEnabled');
-    this._onSkillToggle = this.onToggleChange.bind(this, 'skillEnabled');
-
-    this._renderEnemyView = this.renderEnemyView.bind(this);
     this._onEnemyPress = this.onEnemyPress.bind(this);
-    this._onXpChange = this.onFilterChange.bind(this, 'xp');
-    this._onCostChange = this.onFilterChange.bind(this, 'cost');
-    this._onCycleNamesChange = this.onFilterChange.bind(this, 'cycleNames');
-    this._onSkillIconsChange = this.onFilterChange.bind(this, 'skillIcons');
-    this._onUsesChange = this.onFilterChange.bind(this, 'uses');
-    this._onFactionChange = this.onFilterChange.bind(this, 'factions');
-    this._onTypeChange = this.onFilterChange.bind(this, 'types');
-    this._onSubTypeChange = this.onFilterChange.bind(this, 'subTypes');
-    this._onTraitChange = this.onFilterChange.bind(this, 'traits');
-    this._onPacksChange = this.onFilterChange.bind(this, 'packs');
-    this._onSlotsChange = this.onFilterChange.bind(this, 'slots');
-    this._onEncountersChange = this.onFilterChange.bind(this, 'encounters');
-    this._onIllustratorsChange = this.onFilterChange.bind(this, 'illustrators');
 
     props.navigator.setTitle({
       title: 'Filter',
@@ -227,6 +209,7 @@ class CardFilterView extends React.Component {
         unique,
       },
       onToggleChange,
+      onFilterChange,
     } = this.props;
     const {
       loading,
@@ -263,7 +246,7 @@ class CardFilterView extends React.Component {
         <FactionChooser
           factions={allFactions}
           selection={factions}
-          onChange={this._onFactionChange}
+          onFilterChange={onFilterChange}
         />
         { hasCost && (
           <SliderChooser
@@ -271,8 +254,10 @@ class CardFilterView extends React.Component {
             width={width}
             values={cost}
             enabled={costEnabled}
-            onChange={this._onCostChange}
-            toggleEnabled={this._onCostToggle}
+            setting="cost"
+            onFilterChange={onFilterChange}
+            toggleName="costEnabled"
+            onToggleChange={onToggleChange}
             max={6}
           />
         ) }
@@ -282,99 +267,111 @@ class CardFilterView extends React.Component {
             width={width}
             values={xp}
             enabled={xpEnabled}
-            onChange={this._onXpChange}
-            toggleEnabled={this._onXpToggle}
+            setting="xp"
+            onFilterChange={onFilterChange}
+            toggleName="xpEnabled"
+            onToggleChange={onToggleChange}
             max={5}
           />
         ) }
         { hasSkill && (
           <SkillIconChooser
             skillIcons={skillIcons}
-            onChange={this._onSkillIconsChange}
+            setting="skillIcons"
+            onFilterChange={onFilterChange}
             enabled={skillEnabled}
-            toggleEnabled={this._onSkillToggle}
+            onToggleChange={onToggleChange}
           />
         ) }
         <View style={styles.chooserStack}>
           { (traits.length > 0 || allTraits.length > 0) && (
-            <ChooserButton
+            <FilterChooserButton
               title="Traits"
               navigator={navigator}
               values={allTraits}
               selection={traits}
-              onChange={this._onTraitChange}
+              setting="traits"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (types.length > 0 || allTypes.length > 0) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="Types"
               values={allTypes}
               selection={types}
-              onChange={this._onTypeChange}
+              setting="types"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (subTypes.length > 0 || allSubTypes.length > 0) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="SubTypes"
               values={allSubTypes}
               selection={subTypes}
-              onChange={this._onSubTypeChange}
+              setting="subTypes"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (slots.length > 0 || allSlots.length > 0) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="Slots"
               values={allSlots}
               selection={slots}
-              onChange={this._onSlotsChange}
+              setting="slots"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (uses.length > 0 || allUses.length > 0) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="Uses Type"
               values={allUses}
               selection={uses}
-              onChange={this._onUsesChange}
+              setting="uses"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (cycleNames.length > 0 || allCycleNames.length > 1) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="Cycles"
               values={allCycleNames}
               selection={cycleNames}
-              onChange={this._onCycleNamesChange}
+              setting="cycleNames"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (packs.length > 0 || allPacks.length > 1) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="Packs"
               values={allPacks}
               selection={packs}
-              onChange={this._onPacksChange}
+              setting="packs"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (encounters.length > 0 || allEncounters.length > 0) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="Encounter Sets"
               values={allEncounters}
               selection={encounters}
-              onChange={this._onEncountersChange}
+              setting="encounters"
+              onFilterChange={onFilterChange}
             />
           ) }
           { (illustrators.length > 0 || allIllustrators.length > 0) && (
-            <ChooserButton
+            <FilterChooserButton
               navigator={navigator}
               title="Illustrators"
               values={allIllustrators}
               selection={illustrators}
-              onChange={this._onIllustratorsChange}
+              setting="illustrators"
+              onFilterChange={onFilterChange}
             />
           ) }
           <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />

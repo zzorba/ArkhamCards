@@ -21,7 +21,7 @@ function factionToIconName(faction) {
 
 export default class FactionChooser extends React.Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onFilterChange: PropTypes.func.isRequired,
     factions: PropTypes.array.isRequired,
     selection: PropTypes.array.isRequired,
   };
@@ -35,10 +35,10 @@ export default class FactionChooser extends React.Component {
   updateIndex(indexes) {
     const {
       factions,
-      onChange,
+      onFilterChange,
     } = this.props;
     const selection = flatMap(indexes, idx => factions[idx].toLowerCase());
-    onChange(selection);
+    onFilterChange('factions', selection);
   }
 
   render() {

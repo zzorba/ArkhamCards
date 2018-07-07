@@ -10,10 +10,10 @@ import ToggleFilter from '../ToggleFilter';
 
 export default class SkillIconChooser extends React.Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onFilterChange: PropTypes.func.isRequired,
     skillIcons: PropTypes.object.isRequired,
     enabled: PropTypes.bool,
-    toggleEnabled: PropTypes.func.isRequired,
+    onToggleChange: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -24,10 +24,10 @@ export default class SkillIconChooser extends React.Component {
 
   onToggleChange(key) {
     const {
-      onChange,
+      onFilterChange,
       skillIcons,
     } = this.props;
-    onChange(Object.assign({}, skillIcons, { [key]: !skillIcons[key] }));
+    onFilterChange('skillIcons', Object.assign({}, skillIcons, { [key]: !skillIcons[key] }));
   }
 
   render() {
@@ -41,14 +41,15 @@ export default class SkillIconChooser extends React.Component {
         doubleIcons,
       },
       enabled,
-      toggleEnabled,
+      onToggleChange,
     } = this.props;
     return (
       <AccordionItem
         label={enabled ? 'Skill Icons: All' : 'Skill Icons'}
         height={120}
         enabled={enabled}
-        toggleEnabled={toggleEnabled}
+        toggleName="skillEnabled"
+        onToggleChange={onToggleChange}
       >
         <View style={styles.toggleRow}>
           <ToggleFilter

@@ -13,10 +13,26 @@ export default class SliderChooser extends React.Component {
     width: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
     values: PropTypes.array.isRequired,
-    onChange: PropTypes.func.isRequired,
     enabled: PropTypes.bool.isRequired,
-    toggleEnabled: PropTypes.func.isRequired,
+    setting: PropTypes.string.isRequired,
+    onFilterChange: PropTypes.func.isRequired,
+    toggleName: PropTypes.string.isRequired,
+    onToggleChange: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+
+    this._onChange = this.onChange.bind(this);
+  }
+
+  onChange(values) {
+    const {
+      onFilterChange,
+      setting,
+    } = this.props;
+    onFilterChange(setting, values);
+  }
 
   label() {
     const {
@@ -36,9 +52,9 @@ export default class SliderChooser extends React.Component {
       width,
       max,
       values,
-      onChange,
       enabled,
-      toggleEnabled,
+      onToggleChange,
+      toggleName,
     } = this.props;
 
     return (
@@ -46,7 +62,8 @@ export default class SliderChooser extends React.Component {
         label={this.label()}
         height={80}
         enabled={enabled}
-        toggleEnabled={toggleEnabled}
+        toggleName={toggleName}
+        onToggleChange={onToggleChange}
       >
         { enabled && (
           <MultiSlider
@@ -55,7 +72,7 @@ export default class SliderChooser extends React.Component {
             containerStyle={styles.slider}
             min={0}
             max={max}
-            onValuesChange={onChange}
+            onValuesChange={this._onChange}
             sliderLength={width - 64}
             snapped
             allowOverlap

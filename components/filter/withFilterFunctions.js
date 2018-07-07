@@ -28,11 +28,10 @@ export default function withFilterFunctions(WrappedComponent) {
         filters: props.currentFilters,
       };
 
+      this._pushFilterView = this.pushFilterView.bind(this);
       this._updateFilters = this.updateFilters.bind(this);
       this._onToggleChange = this.onToggleChange.bind(this);
       this._onFilterChange = this.onFilterChange.bind(this);
-      this._pushFilterView = this.pushFilterView.bind(this);
-
       props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
 
