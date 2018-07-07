@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connectRealm } from 'react-native-realm';
 import {
+  Dimensions,
   StyleSheet,
   View,
 } from 'react-native';
@@ -24,7 +25,12 @@ export default function withFilterFunctions(WrappedComponent) {
     constructor(props) {
       super(props);
 
+      const {
+        width,
+      } = Dimensions.get('window');
+
       this.state = {
+        width,
         filters: props.currentFilters,
       };
 
@@ -92,12 +98,14 @@ export default function withFilterFunctions(WrappedComponent) {
       } = this.props;
       const {
         filters,
+        width,
       } = this.state;
       return (
         <View style={styles.wrapper}>
           <WrappedComponent
             cards={cards}
             filters={filters}
+            width={width}
             pushFilterView={this._pushFilterView}
             onToggleChange={this._onToggleChange}
             onFilterChange={this._onFilterChange}

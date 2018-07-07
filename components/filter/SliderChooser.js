@@ -18,6 +18,7 @@ export default class SliderChooser extends React.Component {
     onFilterChange: PropTypes.func.isRequired,
     toggleName: PropTypes.string.isRequired,
     onToggleChange: PropTypes.func.isRequired,
+    children: PropTypes.node,
   };
 
   constructor(props) {
@@ -55,12 +56,13 @@ export default class SliderChooser extends React.Component {
       enabled,
       onToggleChange,
       toggleName,
+      children,
     } = this.props;
 
     return (
       <AccordionItem
         label={this.label()}
-        height={80}
+        height={80 + (children ? 50 : 0)}
         enabled={enabled}
         toggleName={toggleName}
         onToggleChange={onToggleChange}
@@ -78,6 +80,7 @@ export default class SliderChooser extends React.Component {
             allowOverlap
           />
         ) }
+        { enabled && children }
       </AccordionItem>
     );
   }

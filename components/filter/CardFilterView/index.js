@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { keys, forEach, filter, map } from 'lodash';
 import {
   ActivityIndicator,
-  Dimensions,
   ScrollView,
   StyleSheet,
   View,
@@ -25,6 +24,7 @@ class CardFilterView extends React.Component {
     navigator: PropTypes.object.isRequired,
     cards: PropTypes.object,
     filters: PropTypes.object,
+    width: PropTypes.number,
     pushFilterView: PropTypes.func.isRequired,
     onToggleChange: PropTypes.func.isRequired,
     onFilterChange: PropTypes.func.isRequired,
@@ -33,13 +33,9 @@ class CardFilterView extends React.Component {
   constructor(props) {
     super(props);
 
-    const {
-      width,
-    } = Dimensions.get('window');
 
     this.state = {
       loading: true,
-      width,
       hasCost: false,
       hasXp: false,
       hasSkill: false,
@@ -187,6 +183,7 @@ class CardFilterView extends React.Component {
   render() {
     const {
       navigator,
+      width,
       filters: {
         uses,
         factions,
@@ -213,7 +210,6 @@ class CardFilterView extends React.Component {
     } = this.props;
     const {
       loading,
-      width,
       allUses,
       allFactions,
       allTraits,
@@ -283,6 +279,7 @@ class CardFilterView extends React.Component {
             onToggleChange={onToggleChange}
           />
         ) }
+        <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
         <View style={styles.chooserStack}>
           { (traits.length > 0 || allTraits.length > 0) && (
             <FilterChooserButton
@@ -374,7 +371,6 @@ class CardFilterView extends React.Component {
               onFilterChange={onFilterChange}
             />
           ) }
-          <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
         </View>
         <View style={styles.toggleStack}>
           <View style={styles.toggleRow}>
@@ -405,10 +401,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  chooserStack: {
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
   },
   toggleStack: {
     borderBottomWidth: 1,

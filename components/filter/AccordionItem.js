@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     overflow: 'hidden',
-    borderTopWidth: 1,
+    borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
   row: {

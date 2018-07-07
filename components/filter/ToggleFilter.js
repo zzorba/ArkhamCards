@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     paddingRight: 12,
+    paddingBottom: 4,
   },
   icon: {
     width: 28,
