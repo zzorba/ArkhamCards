@@ -325,4 +325,5 @@ export default {
   addScenarioResult,
   setMyDecks,
   setNewDeck,
+  updateDeck,
 };

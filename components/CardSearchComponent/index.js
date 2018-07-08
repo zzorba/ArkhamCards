@@ -66,7 +66,7 @@ export default class CardSearchComponent extends React.Component {
     };
     const defaultButton = Platform.OS === 'ios' ? [] : null;
     props.navigator.setButtons({
-      leftButtons: props.backPressed ? [leftButton] : defaultButton,
+      leftButtons: props.backButtonText ? [leftButton] : defaultButton,
       rightButtons: [
         {
           icon: iconsMap.tune,
@@ -129,15 +129,9 @@ export default class CardSearchComponent extends React.Component {
             backgroundColor: 'rgba(128,128,128,.75)',
           },
         });
-      } else if (event.id === 'back') {
-        this.handleBackPress();
       }
-    } else if (event.id === 'willAppear') {
-      this.backHandler = BackHandler.addEventListener(
-        'hardwareBackPress',
-        this.handleBackPress.bind(this));
     } else if (event.id === 'willDisappear') {
-      this.backHandler.remove();
+      this.handleBackPress();
     }
   }
 
@@ -146,7 +140,7 @@ export default class CardSearchComponent extends React.Component {
       backPressed,
     } = this.props;
     backPressed && backPressed();
-    this.props.navigator.pop();
+    //this.props.navigator.pop();
     return true;
   }
 

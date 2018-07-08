@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, keys } from 'lodash';
+import { flatMap, forEach, keys, map, range } from 'lodash';
 import {
+  Alert,
   ActivityIndicator,
   Platform,
   StyleSheet,
@@ -14,12 +15,13 @@ import { connectRealm } from 'react-native-realm';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import { saveDeck } from '../../lib/authApi';
+import DeckValidation from '../../lib/DeckValidation';
 import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
 import { getDeck } from '../../reducers';
 
-const SHOW_EDIT_BUTTON = false;
+const SHOW_EDIT_BUTTON = true;
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -31,6 +33,7 @@ class DeckDetailView extends React.Component {
     cards: PropTypes.object,
     // From redux.
     deck: PropTypes.object,
+    updateDeck: PropTypes.func.isRequired,
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
   };
@@ -49,12 +52,16 @@ class DeckDetailView extends React.Component {
     ] : [];
 
     this.state = {
+      parsedDeck: null,
+      cardsInDeck: {},
       slots: {},
       loaded: false,
       saving: false,
       leftButtons,
+      hasPendingEdits: false,
     };
 
+    this._syncNavigatorButtons = this.syncNavigatorButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
@@ -73,13 +80,14 @@ class DeckDetailView extends React.Component {
       isPrivate,
       fetchPublicDeck,
       fetchPrivateDeck,
+      deck,
     } = this.props;
     if (isPrivate) {
       fetchPrivateDeck(id);
     } else {
       fetchPublicDeck(id, false);
     }
-    if (this.props.deck && this.props.deck.investigator_code) {
+    if (deck && deck.investigator_code) {
       this.loadCards(this.props.deck);
     }
   }
@@ -87,6 +95,42 @@ class DeckDetailView extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.deck !== this.props.deck) {
       this.loadCards(nextProps.deck);
+    }
+  }
+
+  syncNavigatorButtons() {
+    const {
+      navigator,
+      deck,
+    } = this.props;
+    const {
+      leftButtons,
+      hasPendingEdits,
+    } = this.state;
+    const rightButtons = (!deck.next_deck && SHOW_EDIT_BUTTON) ? [
+      {
+        icon: iconsMap.edit,
+        id: 'edit',
+      },
+    ] : [];
+    if (hasPendingEdits) {
+      navigator.setButtons({
+        leftButtons: [
+          {
+            systemItem: 'save',
+            id: 'save',
+          }, {
+            systemItem: 'cancel',
+            id: 'cancel',
+          },
+        ],
+        rightButtons,
+      });
+    } else {
+      navigator.setButtons({
+        leftButtons: leftButtons,
+        rightButtons,
+      });
     }
   }
 
@@ -99,18 +143,18 @@ class DeckDetailView extends React.Component {
       if (event.id === 'edit') {
         navigator.push({
           screen: 'Deck.Edit',
-          backButtonTitle: 'Save',
           passProps: {
             deck,
             slots: this.state.slots,
             updateSlots: this._updateSlots,
           },
-          navigatorStyle: {
-            tabBarHidden: true,
-          },
         });
       } else if (event.id === 'back') {
         navigator.dismissAllModals();
+      } else if (event.id === 'cancel') {
+        this.clearEdits();
+      } else if (event.id === 'save') {
+        this.saveEdits();
       }
     }
   }
@@ -118,27 +162,39 @@ class DeckDetailView extends React.Component {
   saveEdits() {
     const {
       deck,
+      navigator,
+      updateDeck,
     } = this.props;
+    Alert.alert('Coming soon!', 'Sorry!\nSave functionality is coming very soon.');
+    return;
     const {
-      slots,
+      parsedDeck: {
+        slots,
+        investigator,
+      },
+      cardsInDeck,
     } = this.state;
-    saveDeck(deck.id, deck.name, slots);
-  }
-
-  clearEdits() {
-    this.setState({
-      slots: this.props.deck ? this.props.deck.slots : {},
+    const validator = new DeckValidation(investigator);
+    const problemObj = validator.getProblem(flatMap(keys(slots), code => {
+      const card = cardsInDeck[code];
+      return map(range(0, slots[code]), () => card);
+    }));
+    const problem = problemObj ? problemObj.reason : '';
+    saveDeck(deck.id, deck.name, slots, problem).then(deck => {
+      updateDeck(deck.id, deck);
+    }, err => {
+      Alert.alert('Error', err.message || err);
     });
   }
 
-  hasPendingEdits() {
+  clearEdits() {
+    this.updateSlots(this.props.deck.slots);
+  }
+
+  hasPendingEdits(slots) {
     const {
       deck,
     } = this.props;
-
-    const {
-      slots,
-    } = this.state;
 
     const removals = {};
     forEach(keys(deck.slots), code => {
@@ -158,29 +214,44 @@ class DeckDetailView extends React.Component {
     return (keys(removals).length > 0 || keys(additions).length > 0);
   }
 
+  static getCardsInDeck(deck, cards, slots) {
+    const cardsInDeck = {};
+    cards.forEach(card => {
+      if (slots[card.code] || deck.investigator_code === card.code) {
+        cardsInDeck[card.code] = card;
+      }
+    });
+    return cardsInDeck;
+  }
+
   updateSlots(newSlots) {
+    const {
+      deck,
+      cards,
+    } = this.props;
+    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, newSlots);
+    const parsedDeck = parseDeck(deck, newSlots, cardsInDeck);
     this.setState({
       slots: newSlots,
-    });
+      cardsInDeck,
+      parsedDeck,
+      hasPendingEdits: this.hasPendingEdits(newSlots),
+    }, this._syncNavigatorButtons);
   }
 
   loadCards(deck) {
-    if (!deck.next_deck) {
-      const rightButtons = SHOW_EDIT_BUTTON ? [
-        {
-          icon: iconsMap.edit,
-          id: 'edit',
-        },
-      ] : [];
-      this.props.navigator.setButtons({
-        leftButtons: this.state.leftButtons,
-        rightButtons,
-      });
-    }
+    const {
+      cards,
+    } = this.props;
+    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots);
+    const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck);
     this.setState({
       slots: deck.slots,
+      cardsInDeck,
+      parsedDeck,
+      hasPendingEdits: false,
       loaded: true,
-    });
+    }, this._syncNavigatorButtons);
   }
 
   render() {
@@ -189,8 +260,13 @@ class DeckDetailView extends React.Component {
       cards,
       navigator,
     } = this.props;
+    const {
+      loaded,
+      parsedDeck,
+      cardsInDeck,
+    } = this.state;
 
-    if (!deck || !this.state.loaded) {
+    if (!deck || !loaded || !parsedDeck) {
       return (
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator
@@ -202,27 +278,16 @@ class DeckDetailView extends React.Component {
       );
     }
 
-    const {
-      slots,
-    } = this.state;
-    const cardsInDeck = {};
-    cards.forEach(card => {
-      if (slots[card.code] || deck.investigator_code === card.code) {
-        cardsInDeck[card.code] = card;
-      }
-    });
-
-    const pDeck = parseDeck(deck, slots, cardsInDeck);
     return (
       <View style={styles.container}>
         <DeckViewTab
           navigator={navigator}
-          parsedDeck={pDeck}
+          parsedDeck={parsedDeck}
           cards={cardsInDeck}
         />
         <DeckNavFooter
           navigator={navigator}
-          parsedDeck={pDeck}
+          parsedDeck={parsedDeck}
           cards={cardsInDeck}
         />
       </View>
