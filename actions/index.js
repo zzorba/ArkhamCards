@@ -1,6 +1,7 @@
 export const PACKS_AVAILABLE = 'PACKS_AVAILABLE';
 export const UPDATE_PROMPT_DISMISSED = 'UPDATE_PROMPT_DISMISSED';
-export const DECK_AVAILABLE = 'DECK_AVAILABLE';
+export const NEW_DECK_AVAILABLE = 'NEW_DECK_AVAILABLE';
+export const UPDATE_DECK = 'UPDATE_DECK';
 export const CLEAR_DECKS = 'CLEAR_DECKS';
 export const NEW_DECK = 'NEW_DECK';
 export const SET_MY_DECKS = 'SET_MY_DECKS';
@@ -21,7 +22,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 
 import { getAccessToken, signInFlow, signOutFlow } from '../lib/auth';
-import { decks } from '../lib/authApi';
+import { decks, loadDeck } from '../lib/authApi';
 
 export function createWeaknessSet(id, name, packCodes) {
   return {
@@ -124,15 +125,7 @@ export function fetchPacks(callback) {
   };
 }
 
-export function newDeck(investigator) {
-  const slot = {};
-  return {
-    type: NEW_DECK,
-  };
-}
-
 export function upgradeDeck(deck, xp, exiles) {
-
 }
 
 export function clearDecks() {
@@ -170,7 +163,31 @@ export function setMyDecks(decks) {
   };
 }
 
-export function fetchDeck(id, useDeckEndpoint) {
+export function setNewDeck(id, deck) {
+  return {
+    type: NEW_DECK_AVAILABLE,
+    id,
+    deck,
+  };
+}
+
+export function updateDeck(id, deck) {
+  return {
+    type: UPDATE_DECK,
+    id,
+    deck,
+  };
+}
+
+export function fetchPrivateDeck(id) {
+  return (dispatch) => {
+    loadDeck(id).then(deck => {
+      dispatch(updateDeck(id, deck));
+    });
+  };
+}
+
+export function fetchPublicDeck(id, useDeckEndpoint) {
   return (dispatch) => {
     const uri = `https://arkhamdb.com/api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
     fetch(uri, { method: 'GET' })
@@ -180,13 +197,11 @@ export function fetchDeck(id, useDeckEndpoint) {
         }
         throw new Error(`Unexpected status: ${response.status}`);
       })
-      .then(json => dispatch({
-        type: DECK_AVAILABLE,
-        id,
-        deck: json,
-      })).catch(err => {
+      .then(json => {
+        dispatch(updateDeck(id, json));
+      }).catch(err => {
         if (!useDeckEndpoint) {
-          return fetchDeck(id, true)(dispatch);
+          return fetchPublicDeck(id, true)(dispatch);
         }
         console.log(err);
       });
@@ -301,11 +316,13 @@ export default {
   dismissUpdatePrompt,
   refreshMyDecks,
   fetchPacks,
-  newDeck,
-  fetchDeck,
+  fetchPrivateDeck,
+  fetchPublicDeck,
   setInCollection,
   setPackSpoiler,
   newCampaign,
   deleteCampaign,
   addScenarioResult,
+  setMyDecks,
+  setNewDeck,
 };

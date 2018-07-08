@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { filter, find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
+import { filter, find, flatMap, forEach, indexOf, keys, map, last, reverse, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import FilesystemStorage from 'redux-persist-filesystem-storage';
 
@@ -7,7 +7,8 @@ import {
   CLEAR_DECKS,
   PACKS_AVAILABLE,
   UPDATE_PROMPT_DISMISSED,
-  DECK_AVAILABLE,
+  NEW_DECK_AVAILABLE,
+  UPDATE_DECK,
   DELETE_WEAKNESS_SET,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
@@ -158,6 +159,18 @@ const DEFAULT_DECK_STATE = {
   error: null,
 };
 
+function updateDeck(state, action) {
+  const deck = Object.assign({}, action.deck);
+  let scenarioCount = 0;
+  let currentDeck = deck;
+  while (currentDeck && currentDeck.previous_deck) {
+    scenarioCount ++;
+    currentDeck = state.all[currentDeck.previous_deck];
+  }
+  deck.scenarioCount = scenarioCount;
+  return deck;
+}
+
 const decks = (state = DEFAULT_DECK_STATE, action) => {
   if (action.type === MY_DECKS_START_REFRESH) {
     return Object.assign({},
@@ -202,15 +215,8 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
       },
     );
   }
-  if (action.type === DECK_AVAILABLE) {
-    const deck = Object.assign({}, action.deck);
-    let scenarioCount = 0;
-    let currentDeck = deck;
-    while (currentDeck && currentDeck.previous_deck) {
-      scenarioCount ++;
-      currentDeck = state.all[currentDeck.previous_deck];
-    }
-    deck.scenarioCount = scenarioCount;
+  if (action.type === UPDATE_DECK) {
+    const deck = updateDeck(state, action);
     return Object.assign({},
       state,
       {
@@ -219,6 +225,23 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
           state.all,
           { [action.id]: deck },
         ),
+      });
+  }
+  if (action.type === NEW_DECK_AVAILABLE) {
+    const deck = updateDeck(state, action);
+    let myDecks = state.myDecks;
+    if (indexOf(myDecks, action.id) === -1) {
+      myDecks = [action.id, ...myDecks];
+    }
+    return Object.assign({},
+      state,
+      {
+        all: Object.assign(
+          {},
+          state.all,
+          { [action.id]: deck },
+        ),
+        myDecks,
       });
   } else if (action.type === CLEAR_DECKS) {
     return DEFAULT_DECK_STATE;

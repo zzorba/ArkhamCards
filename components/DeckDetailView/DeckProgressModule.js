@@ -13,17 +13,17 @@ class PreviousDeckModule extends React.PureComponent {
     navigator: PropTypes.object.isRequired,
     deck: PropTypes.object.isRequired,
     previousDeck: PropTypes.object,
-    fetchDeck: PropTypes.func.isRequired,
+    fetchPublicDeck: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     const {
       deck,
       previousDeck,
-      fetchDeck,
+      fetchPublicDeck,
     } = this.props;
     if (deck.previous_deck && !previousDeck) {
-      fetchDeck(deck.previous_deck, true);
+      fetchPublicDeck(deck.previous_deck, true);
     }
   }
 

@@ -25,7 +25,7 @@ class DeckListComponent extends React.Component {
     investigators: PropTypes.object,
     cards: PropTypes.object,
     decks: PropTypes.object,
-    fetchDeck: PropTypes.func.isRequired,
+    fetchPublicDeck: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -51,11 +51,11 @@ class DeckListComponent extends React.Component {
     const {
       deckIds,
       decks,
-      fetchDeck,
+      fetchPublicDeck,
     } = this.props;
     deckIds.forEach(deckId => {
       if (!decks[deckId]) {
-        fetchDeck(deckId, false);
+        fetchPublicDeck(deckId, false);
       }
     });
   }

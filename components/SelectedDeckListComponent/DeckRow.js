@@ -27,7 +27,7 @@ class DeckRow extends React.Component {
     updates: PropTypes.object,
     remove: PropTypes.func.isRequired,
     updatesChanged: PropTypes.func,
-    fetchDeck: PropTypes.func.isRequired,
+    fetchPublicDeck: PropTypes.func.isRequired,
     // From realm
     investigator: PropTypes.object,
     exileCards: PropTypes.object,
@@ -117,10 +117,10 @@ class DeckRow extends React.Component {
     const {
       id,
       deck,
-      fetchDeck,
+      fetchPublicDeck,
     } = this.props;
     if (!deck) {
-      fetchDeck(id, false);
+      fetchPublicDeck(id, false);
     }
   }
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { forEach, keys } from 'lodash';
 import {
   ActivityIndicator,
+  Platform,
   StyleSheet,
   View,
 } from 'react-native';
@@ -25,31 +26,59 @@ class DeckDetailView extends React.Component {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     isPrivate: PropTypes.bool,
+    modal: PropTypes.bool,
     // From realm.
     cards: PropTypes.object,
     // From redux.
     deck: PropTypes.object,
-    fetchDeck: PropTypes.func.isRequired,
+    fetchPublicDeck: PropTypes.func.isRequired,
+    fetchPrivateDeck: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
+    const leftButtons = props.modal ? [
+      Platform.OS === 'ios' ? {
+        systemItem: 'done',
+        id: 'back',
+      } : {
+        icon: iconsMap['chevron-left'],
+        id: 'back',
+      },
+    ] : [];
+
     this.state = {
       slots: {},
       loaded: false,
       saving: false,
+      leftButtons,
     };
 
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
 
+    if (props.modal) {
+      props.navigator.setButtons({
+        leftButtons,
+      });
+    }
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   componentDidMount() {
-    this.props.fetchDeck(this.props.id, this.props.isPrivate);
+    const {
+      id,
+      isPrivate,
+      fetchPublicDeck,
+      fetchPrivateDeck,
+    } = this.props;
+    if (isPrivate) {
+      fetchPrivateDeck(id);
+    } else {
+      fetchPublicDeck(id, false);
+    }
     if (this.props.deck && this.props.deck.investigator_code) {
       this.loadCards(this.props.deck);
     }
@@ -80,6 +109,8 @@ class DeckDetailView extends React.Component {
             tabBarHidden: true,
           },
         });
+      } else if (event.id === 'back') {
+        navigator.dismissAllModals();
       }
     }
   }
@@ -142,6 +173,7 @@ class DeckDetailView extends React.Component {
         },
       ] : [];
       this.props.navigator.setButtons({
+        leftButtons: this.state.leftButtons,
         rightButtons,
       });
     }

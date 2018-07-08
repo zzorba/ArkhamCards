@@ -5,27 +5,28 @@ import { iconsMap } from '../app/NavIcons';
 import withLoginGate from './withLoginGate';
 import MyDecksComponent from './MyDecksComponent';
 
-const HIDE_ADD_DECK_BUTTON = true;
-
 class MyDecksView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-  }
+  };
+
+  static navigatorButtons = {
+
+  };
 
   constructor(props) {
     super(props);
 
     this._deckNavClicked = this.deckNavClicked.bind(this);
-    if (!HIDE_ADD_DECK_BUTTON) {
-      props.navigator.setButtons({
-        rightButtons: [
-          {
-            icon: iconsMap.add,
-            id: 'add',
-          },
-        ],
-      });
-    }
+
+    props.navigator.setButtons({
+      rightButtons: [
+        {
+          icon: iconsMap.add,
+          id: 'add',
+        },
+      ],
+    });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
@@ -35,7 +36,7 @@ class MyDecksView extends React.Component {
     } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
-        navigator.push({
+        navigator.showModal({
           screen: 'Deck.New',
         });
       }
@@ -47,9 +48,7 @@ class MyDecksView extends React.Component {
       screen: 'Deck',
       passProps: {
         id: id,
-      },
-      navigatorStyle: {
-        tabBarHidden: true,
+        isPrivate: true,
       },
     });
   }
