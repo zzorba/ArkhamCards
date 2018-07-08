@@ -12,6 +12,7 @@ class PreviousDeckModule extends React.PureComponent {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     deck: PropTypes.object.isRequired,
+    parsedDeck: PropTypes.object.isRequired,
     previousDeck: PropTypes.object,
     fetchPublicDeck: PropTypes.func.isRequired,
   };
@@ -25,16 +26,6 @@ class PreviousDeckModule extends React.PureComponent {
     if (deck.previous_deck && !previousDeck) {
       fetchPublicDeck(deck.previous_deck, true);
     }
-  }
-
-
-  exiledCards() {
-    const {
-      deck,
-    } = this.props;
-    return deck.exile_string ? mapValues(
-      groupBy(deck.exile_string.split(',')),
-      items => items.length) : {};
   }
 
   changedCards(exiledCards) {
@@ -68,6 +59,7 @@ class PreviousDeckModule extends React.PureComponent {
     const {
       navigator,
       deck,
+      parsedDeck,
     } = this.props;
 
     if (!deck.previous_deck && !deck.next_deck) {
@@ -75,13 +67,12 @@ class PreviousDeckModule extends React.PureComponent {
     }
 
     // Actually compute the diffs.
-    const exiledCards = this.exiledCards();
     return (
       <DeckDelta
         navigator={navigator}
         deck={deck}
-        exiledCards={exiledCards}
-        changedCards={this.changedCards(exiledCards)}
+        exiledCards={parsedDeck.exiledCards}
+        changedCards={this.changedCards(parsedDeck.exiledCards)}
       />
     );
   }

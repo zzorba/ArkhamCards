@@ -91,6 +91,9 @@ export function parseDeck(deck, slots, cards) {
   });
   const specialCards = cardIds.filter(c => isSpecialCard(cards[c.id]));
   const normalCards = cardIds.filter(c => !isSpecialCard(cards[c.id]));
+  const exiledCards = deck.exile_string ? mapValues(
+    groupBy(deck.exile_string.split(',')),
+    items => items.length) : {};
   const factionCounts = {};
   FACTION_CODES.forEach(faction => {
     factionCounts[faction] = factionCount(cardIds, cards, faction);
@@ -113,6 +116,7 @@ export function parseDeck(deck, slots, cards) {
     skillIconCounts: skillIconCounts,
     normalCards: splitCards(normalCards, cards, slots),
     specialCards: splitCards(specialCards, cards, slots),
+    exiledCards,
   };
 }
 

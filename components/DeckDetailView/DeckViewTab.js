@@ -218,7 +218,11 @@ export default class DeckViewTab extends React.Component {
             renderSectionHeader={this._renderCardHeader}
             sections={sections}
           />
-          <DeckProgressModule navigator={navigator} deck={deck} />
+          <DeckProgressModule
+            navigator={navigator}
+            deck={deck}
+            parsedDeck={this.props.parsedDeck}
+          />
         </View>
       </ScrollView>
     );
