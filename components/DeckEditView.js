@@ -14,6 +14,7 @@ class DeckEditView extends React.Component {
     investigator: PropTypes.object,
     /* eslint-disable react/no-unused-prop-types */
     deck: PropTypes.object.isRequired,
+    previousDeck: PropTypes.object,
     cards: PropTypes.object.isRequired,
     slots: PropTypes.object.isRequired,
     updateSlots: PropTypes.func.isRequired,
@@ -60,6 +61,7 @@ class DeckEditView extends React.Component {
     const {
       navigator,
       deck,
+      previousDeck,
       cards,
     } = this.props;
     const {
@@ -67,11 +69,12 @@ class DeckEditView extends React.Component {
     } = this.state;
     const cardsInDeck = {};
     cards.forEach(card => {
-      if (deckCardCounts[card.code] || deck.investigator_code === card.code) {
+      if (deckCardCounts[card.code] || deck.investigator_code === card.code ||
+        (previousDeck && previousDeck.slots[card.code])) {
         cardsInDeck[card.code] = card;
       }
     });
-    const pDeck = parseDeck(deck, deckCardCounts, cardsInDeck);
+    const pDeck = parseDeck(deck, deckCardCounts, cardsInDeck, previousDeck);
     return (
       <DeckNavFooter
         navigator={navigator}

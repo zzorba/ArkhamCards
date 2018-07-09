@@ -103,12 +103,23 @@ export default class DeckNavFooter extends React.Component {
 
   render() {
     const {
-      parsedDeck,
+      parsedDeck: {
+        deck: {
+          xp,
+          previous_deck,
+        },
+        spentXp,
+        normalCardCount,
+        totalCardCount,
+      },
     } = this.props;
     return (
       <View style={styles.wrapper}>
         <View style={styles.left}>
-          <Text>{ `${parsedDeck.normalCardCount} Cards (${parsedDeck.totalCardCount} Total)` }</Text>
+          <Text>
+            { `${normalCardCount} Cards (${totalCardCount} Total)` }
+            { previous_deck ? ` XP: ${spentXp} of ${xp}` : '' }
+          </Text>
           { this.renderProblem() }
         </View>
         <View style={styles.right}>
@@ -130,6 +141,8 @@ export default class DeckNavFooter extends React.Component {
   }
 }
 
+const BUTTON_SIZE = 40;
+const BUTTON_PADDING = (FOOTER_HEIGHT - BUTTON_SIZE) / 2;
 const styles = StyleSheet.create({
   wrapper: {
     width: '100%',
@@ -139,7 +152,8 @@ const styles = StyleSheet.create({
     borderColor: '#cdcdcd',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    paddingTop: 2,
     paddingLeft: 5,
     paddingRight: 5,
   },
@@ -154,7 +168,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    width: 40,
+    paddingTop: BUTTON_PADDING,
+    paddingBottom: BUTTON_PADDING,
+    width: BUTTON_SIZE,
     paddingLeft: 5,
     paddingRight: 5,
   },

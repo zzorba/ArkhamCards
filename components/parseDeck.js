@@ -79,16 +79,16 @@ function sumSkillIcons(cardIds, cards, skill) {
     (cards[c.id][`skill_${skill}`] || 0) * c.quantity));
 }
 
-function getChangedCards(deck, previousDeck, exiledCards) {
+function getChangedCards(deck, slots, previousDeck, exiledCards) {
   if (!deck.previous_deck || !previousDeck) {
     return {};
   }
   const changedCards = {};
   forEach(
-    uniqBy(concat(keys(deck.slots), keys(previousDeck.slots))),
+    uniqBy(concat(keys(slots), keys(previousDeck.slots))),
     code => {
       const exiledCount = exiledCards[code] || 0;
-      const newCount = deck.slots[code] || 0;
+      const newCount = slots[code] || 0;
       const oldCount = previousDeck.slots[code] || 0;
       const delta = (newCount + exiledCount) - oldCount;
       if (delta !== 0) {
@@ -198,7 +198,7 @@ export function parseDeck(deck, slots, cards, previousDeck) {
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  const changedCards = getChangedCards(deck, previousDeck, exiledCards);
+  const changedCards = getChangedCards(deck, slots, previousDeck, exiledCards);
   const spentXp = calculateSpentXp(cards, slots, changedCards, exiledCards);
   const factionCounts = {};
   FACTION_CODES.forEach(faction => {

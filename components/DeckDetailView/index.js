@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   Platform,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -20,9 +21,9 @@ import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
 import { getDeck } from '../../reducers';
+import typography from '../../styles/typography';
 
 const SHOW_EDIT_BUTTON = true;
-const DO_SAVE = false;
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -165,6 +166,7 @@ class DeckDetailView extends React.Component {
     const {
       navigator,
       deck,
+      previousDeck,
     } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'edit') {
@@ -172,6 +174,7 @@ class DeckDetailView extends React.Component {
           screen: 'Deck.Edit',
           passProps: {
             deck,
+            previousDeck,
             slots: this.state.slots,
             updateSlots: this._updateSlots,
           },
@@ -191,28 +194,36 @@ class DeckDetailView extends React.Component {
       deck,
       updateDeck,
     } = this.props;
-    if (!DO_SAVE) {
-      Alert.alert('Coming soon!', 'Sorry!\nSave functionality is coming very soon.');
-    } else {
-      const {
-        parsedDeck: {
-          slots,
-          investigator,
-        },
-        cardsInDeck,
-      } = this.state;
-      const validator = new DeckValidation(investigator);
-      const problemObj = validator.getProblem(flatMap(keys(slots), code => {
-        const card = cardsInDeck[code];
-        return map(range(0, slots[code]), () => card);
-      }));
-      const problem = problemObj ? problemObj.reason : '';
-      saveDeck(deck.id, deck.name, slots, problem).then(deck => {
-        updateDeck(deck.id, deck);
-      }, err => {
-        Alert.alert('Error', err.message || err);
+    this.setState({
+      saving: true,
+    });
+    const {
+      parsedDeck,
+      cardsInDeck,
+    } = this.state;
+    const {
+      slots,
+      investigator,
+    } = parsedDeck;
+
+    const validator = new DeckValidation(investigator);
+    const problemObj = validator.getProblem(flatMap(keys(slots), code => {
+      const card = cardsInDeck[code];
+      return map(range(0, slots[code]), () => card);
+    }));
+    const problem = problemObj ? problemObj.reason : '';
+
+    saveDeck(deck.id, deck.name, slots, problem, parsedDeck.spentXp).then(deck => {
+      updateDeck(deck.id, deck);
+      this.setState({
+        saving: false,
       });
-    }
+    }, err => {
+      this.setState({
+        saving: false,
+      });
+      Alert.alert('Error', err.message || err);
+    });
   }
 
   clearEdits() {
@@ -285,6 +296,20 @@ class DeckDetailView extends React.Component {
     }, this._syncNavigatorButtons);
   }
 
+  renderSavingOverlay() {
+    return (
+      <View style={styles.savingOverlay}>
+        <Text style={[typography.header, styles.savingText]}>Saving</Text>
+        <ActivityIndicator
+          style={styles.spinner}
+          size="small"
+          color="white"
+          animating
+        />
+      </View>
+    );
+  }
+
   render() {
     const {
       deck,
@@ -295,13 +320,14 @@ class DeckDetailView extends React.Component {
       loaded,
       parsedDeck,
       cardsInDeck,
+      saving,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
       return (
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator
-            style={[{ height: 80 }]}
+            style={styles.spinner}
             size="small"
             animating
           />
@@ -322,6 +348,7 @@ class DeckDetailView extends React.Component {
           parsedDeck={parsedDeck}
           cards={cardsInDeck}
         />
+        { saving && this.renderSavingOverlay() }
       </View>
     );
   }
@@ -354,8 +381,26 @@ export default connectRealm(
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     height: '100%',
     width: '100%',
+  },
+  savingOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(128,128,128,0.8)',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  savingText: {
+    color: 'white',
+  },
+  spinner: {
+    height: 80,
   },
   activityIndicatorContainer: {
     backgroundColor: '#fff',
