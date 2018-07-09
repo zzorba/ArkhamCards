@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, keys, map, pullAt, sum, sortBy } from 'lodash';
+import { forEach, keys, map } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import { calculateSpentXp } from './util';
 import Button from '../core/Button';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import DeckViewCardItem from './DeckViewCardItem';
@@ -18,9 +17,7 @@ class DeckDelta extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     cards: PropTypes.object,
-    deck: PropTypes.object,
-    changedCards: PropTypes.object.isRequired,
-    exiledCards: PropTypes.object.isRequired,
+    parsedDeck: PropTypes.object,
   };
 
   constructor(props) {
@@ -34,7 +31,9 @@ class DeckDelta extends React.Component {
   showPreviousDeck() {
     const {
       navigator,
-      deck,
+      parsedDeck: {
+        deck,
+      },
     } = this.props;
     navigator.push({
       screen: 'Deck',
@@ -51,7 +50,9 @@ class DeckDelta extends React.Component {
   showNextDeck() {
     const {
       navigator,
-      deck,
+      parsedDeck: {
+        deck,
+      },
     } = this.props;
     navigator.push({
       screen: 'Deck',
@@ -77,21 +78,18 @@ class DeckDelta extends React.Component {
 
   renderXp() {
     const {
-      cards,
-      deck: {
-        slots,
-        xp,
-        previous_deck,
+      parsedDeck: {
+        deck: {
+          xp,
+          previous_deck,
+        },
+        spentXp,
       },
-      changedCards,
-      exiledCards,
     } = this.props;
 
     if (previous_deck === null) {
       return null;
     }
-
-    const spentXp = calculateSpentXp(cards, slots, changedCards, exiledCards);
 
     return (
       <View style={styles.xp}>
@@ -105,9 +103,11 @@ class DeckDelta extends React.Component {
   render() {
     const {
       cards,
-      deck,
-      changedCards,
-      exiledCards,
+      parsedDeck: {
+        deck,
+        changedCards,
+        exiledCards,
+      },
     } = this.props;
     if (!keys(changedCards).length && !keys(exiledCards)) {
       return null;
@@ -172,9 +172,15 @@ class DeckDelta extends React.Component {
 export default connectRealm(DeckDelta, {
   schemas: ['Card'],
   mapToProps(results, realm, props) {
+    const {
+      parsedDeck: {
+        changedCards,
+        exiledCards,
+      },
+    } = props;
     const cards = {};
     forEach(results.cards, card => {
-      if (card.code in props.changedCards || card.code in props.exiledCards) {
+      if (card.code in changedCards || card.code in exiledCards) {
         cards[card.code] = card;
       }
     });

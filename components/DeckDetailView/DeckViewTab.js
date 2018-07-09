@@ -61,6 +61,7 @@ export default class DeckViewTab extends React.Component {
     navigator: PropTypes.object.isRequired,
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
+    isPrivate: PropTypes.bool,
   };
 
   constructor(props) {
@@ -176,6 +177,7 @@ export default class DeckViewTab extends React.Component {
         packs,
         investigator,
       },
+      isPrivate,
     } = this.props;
 
     const sections = deckToSections(normalCards)
@@ -222,6 +224,7 @@ export default class DeckViewTab extends React.Component {
             navigator={navigator}
             deck={deck}
             parsedDeck={this.props.parsedDeck}
+            isPrivate={isPrivate}
           />
         </View>
       </ScrollView>

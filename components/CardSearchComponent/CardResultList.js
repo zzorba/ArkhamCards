@@ -37,6 +37,7 @@ class CardResultList extends React.Component {
     onDeckCountChange: PropTypes.func,
     show_spoilers: PropTypes.object,
     limits: PropTypes.object,
+    cardPressed: PropTypes.func,
   };
 
   constructor(props) {
@@ -180,7 +181,12 @@ class CardResultList extends React.Component {
   }
 
   cardPressed(card) {
-    this.props.navigator.push({
+    const {
+      cardPressed,
+      navigator,
+    } = this.props;
+    cardPressed && cardPressed(card);
+    navigator.push({
       screen: 'Card',
       passProps: {
         id: card.code,

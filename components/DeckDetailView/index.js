@@ -22,6 +22,7 @@ import DeckNavFooter from '../DeckNavFooter';
 import { getDeck } from '../../reducers';
 
 const SHOW_EDIT_BUTTON = true;
+const DO_SAVE = false;
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -33,6 +34,7 @@ class DeckDetailView extends React.Component {
     cards: PropTypes.object,
     // From redux.
     deck: PropTypes.object,
+    previousDeck: PropTypes.object,
     updateDeck: PropTypes.func.isRequired,
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
@@ -81,6 +83,7 @@ class DeckDetailView extends React.Component {
       fetchPublicDeck,
       fetchPrivateDeck,
       deck,
+      previousDeck,
     } = this.props;
     if (isPrivate) {
       fetchPrivateDeck(id);
@@ -88,13 +91,37 @@ class DeckDetailView extends React.Component {
       fetchPublicDeck(id, false);
     }
     if (deck && deck.investigator_code) {
-      this.loadCards(this.props.deck);
+      if (deck && deck.previous_deck && !previousDeck) {
+        if (isPrivate) {
+          fetchPrivateDeck(deck.previous_deck);
+        } else {
+          fetchPublicDeck(deck.previous_deck, false);
+        }
+      } else {
+        this.loadCards(deck, previousDeck);
+      }
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.deck !== this.props.deck) {
-      this.loadCards(nextProps.deck);
+    const {
+      deck,
+      isPrivate,
+      previousDeck,
+      fetchPrivateDeck,
+      fetchPublicDeck,
+    } = nextProps;
+    if (deck !== this.props.deck && deck.previous_deck && !previousDeck) {
+      if (isPrivate) {
+        fetchPrivateDeck(deck.previous_deck);
+      } else {
+        fetchPublicDeck(deck.previous_deck, false);
+      }
+    }
+    if (deck !== this.props.deck || previousDeck !== this.props.previousDeck) {
+      if (deck && (!deck.previous_deck || previousDeck)) {
+        this.loadCards(deck, previousDeck);
+      }
     }
   }
 
@@ -162,29 +189,30 @@ class DeckDetailView extends React.Component {
   saveEdits() {
     const {
       deck,
-      navigator,
       updateDeck,
     } = this.props;
-    Alert.alert('Coming soon!', 'Sorry!\nSave functionality is coming very soon.');
-    return;
-    const {
-      parsedDeck: {
-        slots,
-        investigator,
-      },
-      cardsInDeck,
-    } = this.state;
-    const validator = new DeckValidation(investigator);
-    const problemObj = validator.getProblem(flatMap(keys(slots), code => {
-      const card = cardsInDeck[code];
-      return map(range(0, slots[code]), () => card);
-    }));
-    const problem = problemObj ? problemObj.reason : '';
-    saveDeck(deck.id, deck.name, slots, problem).then(deck => {
-      updateDeck(deck.id, deck);
-    }, err => {
-      Alert.alert('Error', err.message || err);
-    });
+    if (!DO_SAVE) {
+      Alert.alert('Coming soon!', 'Sorry!\nSave functionality is coming very soon.');
+    } else {
+      const {
+        parsedDeck: {
+          slots,
+          investigator,
+        },
+        cardsInDeck,
+      } = this.state;
+      const validator = new DeckValidation(investigator);
+      const problemObj = validator.getProblem(flatMap(keys(slots), code => {
+        const card = cardsInDeck[code];
+        return map(range(0, slots[code]), () => card);
+      }));
+      const problem = problemObj ? problemObj.reason : '';
+      saveDeck(deck.id, deck.name, slots, problem).then(deck => {
+        updateDeck(deck.id, deck);
+      }, err => {
+        Alert.alert('Error', err.message || err);
+      });
+    }
   }
 
   clearEdits() {
@@ -214,10 +242,12 @@ class DeckDetailView extends React.Component {
     return (keys(removals).length > 0 || keys(additions).length > 0);
   }
 
-  static getCardsInDeck(deck, cards, slots) {
+  static getCardsInDeck(deck, cards, slots, previousDeck) {
     const cardsInDeck = {};
     cards.forEach(card => {
-      if (slots[card.code] || deck.investigator_code === card.code) {
+      if (slots[card.code] || deck.investigator_code === card.code ||
+        (previousDeck &&
+          (previousDeck.slots[card.code] || previousDeck.investigator_code === card.code))) {
         cardsInDeck[card.code] = card;
       }
     });
@@ -227,10 +257,11 @@ class DeckDetailView extends React.Component {
   updateSlots(newSlots) {
     const {
       deck,
+      previousDeck,
       cards,
     } = this.props;
-    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, newSlots);
-    const parsedDeck = parseDeck(deck, newSlots, cardsInDeck);
+    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, newSlots, previousDeck);
+    const parsedDeck = parseDeck(deck, newSlots, cardsInDeck, previousDeck);
     this.setState({
       slots: newSlots,
       cardsInDeck,
@@ -239,12 +270,12 @@ class DeckDetailView extends React.Component {
     }, this._syncNavigatorButtons);
   }
 
-  loadCards(deck) {
+  loadCards(deck, previousDeck) {
     const {
       cards,
     } = this.props;
-    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots);
-    const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck);
+    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots, previousDeck);
+    const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck, previousDeck);
     this.setState({
       slots: deck.slots,
       cardsInDeck,
@@ -257,8 +288,8 @@ class DeckDetailView extends React.Component {
   render() {
     const {
       deck,
-      cards,
       navigator,
+      isPrivate,
     } = this.props;
     const {
       loaded,
@@ -284,6 +315,7 @@ class DeckDetailView extends React.Component {
           navigator={navigator}
           parsedDeck={parsedDeck}
           cards={cardsInDeck}
+          isPrivate={isPrivate}
         />
         <DeckNavFooter
           navigator={navigator}
@@ -296,8 +328,10 @@ class DeckDetailView extends React.Component {
 }
 
 function mapStateToProps(state, props) {
+  const deck = getDeck(state, props.id);
   return {
-    deck: getDeck(state, props.id),
+    deck,
+    previousDeck: deck && deck.previous_deck && getDeck(state, deck.previous_deck),
   };
 }
 

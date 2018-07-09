@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
-  BackHandler,
   Platform,
   Text,
   StyleSheet,
@@ -50,6 +49,7 @@ export default class CardSearchComponent extends React.Component {
       filters: DefaultFilterState,
     };
 
+    this._cardPressed = this.cardPressed.bind(this);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
@@ -81,6 +81,10 @@ export default class CardSearchComponent extends React.Component {
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
+  cardPressed() {
+    this.isOnTop = false;
+  }
+
   toggleSearchMode(mode) {
     this.setState({
       [mode]: !this.state[mode],
@@ -106,6 +110,7 @@ export default class CardSearchComponent extends React.Component {
     } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'filter') {
+        this.isOnTop = false;
         navigator.push({
           screen: 'SearchFilters',
           animationType: 'slide-down',
@@ -117,6 +122,7 @@ export default class CardSearchComponent extends React.Component {
           },
         });
       } else if (event.id === 'sort') {
+        this.isOnTop = false;
         navigator.showLightBox({
           screen: 'Dialog.Sort',
           passProps: {
@@ -131,7 +137,12 @@ export default class CardSearchComponent extends React.Component {
         });
       }
     } else if (event.id === 'willDisappear') {
-      this.handleBackPress();
+      if (this.isOnTop) {
+        this.handleBackPress();
+        this.isOnTop = false;
+      }
+    } else if (event.id === 'willAppear') {
+      this.isOnTop = true;
     }
   }
 
@@ -140,7 +151,6 @@ export default class CardSearchComponent extends React.Component {
       backPressed,
     } = this.props;
     backPressed && backPressed();
-    //this.props.navigator.pop();
     return true;
   }
 
@@ -280,6 +290,7 @@ export default class CardSearchComponent extends React.Component {
             deckCardCounts={deckCardCounts}
             onDeckCountChange={onDeckCountChange}
             limits={limits}
+            cardPressed={this._cardPressed}
           />
         </View>
         { !!footer && <View style={[
