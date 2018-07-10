@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, forEach, keys, map, range } from 'lodash';
+import { findIndex, flatMap, forEach, keys, map, range } from 'lodash';
 import {
   Alert,
   ActivityIndicator,
@@ -139,9 +139,10 @@ class DeckDetailView extends React.Component {
       leftButtons,
       hasPendingEdits,
     } = this.state;
+
     if (hasPendingEdits) {
       navigator.setButtons({
-        leftButtons: [
+        rightButtons: [
           {
             systemItem: 'save',
             id: 'save',
@@ -150,7 +151,7 @@ class DeckDetailView extends React.Component {
       });
     } else {
       navigator.setButtons({
-        leftButtons: leftButtons,
+        rightButtons: [],
       });
     }
   }
@@ -178,9 +179,6 @@ class DeckDetailView extends React.Component {
       deck,
       previousDeck,
     } = this.props;
-    this.setState({
-      hasPendingEdits: true,
-    });
     navigator.push({
       screen: 'Deck.Edit',
       passProps: {
@@ -303,6 +301,14 @@ class DeckDetailView extends React.Component {
     const {
       cards,
     } = this.props;
+    const {
+      slots,
+    } = this.state;
+    if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) === -1 ||
+      findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) === -1) {
+      // No change.
+    }
+
     const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots, previousDeck);
     const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck, previousDeck);
     this.setState({

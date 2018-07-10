@@ -59,7 +59,7 @@ export default function Button({
 Button.propTypes = {
   text: PropTypes.string,
   icon: PropTypes.node,
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func,
   align: PropTypes.oneOf(['left', 'center', 'right']),
   size: PropTypes.oneOf(['small', 'normal']),
   style: ViewPropTypes.style,
