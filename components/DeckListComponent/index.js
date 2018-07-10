@@ -158,8 +158,6 @@ export default connectRealm(
   {
     schemas: ['Card'],
     mapToProps(results) {
-      const investigatorCards =
-        results.cards.filtered('type_code == "investigator"');
       const investigators = {};
       const cards = {};
       forEach(results.cards, card => {
