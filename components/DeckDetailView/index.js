@@ -26,8 +26,6 @@ import DeckNavFooter from '../DeckNavFooter';
 import { getDeck } from '../../reducers';
 import typography from '../../styles/typography';
 
-const SHOW_EDIT_BUTTON = true;
-
 class DeckDetailView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -70,7 +68,7 @@ class DeckDetailView extends React.Component {
     this._onEditPressed = this.onEditPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
-    this._clearEdits =  this.clearEdits.bind(this);
+    this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigatorButtons = this.syncNavigatorButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
@@ -136,18 +134,11 @@ class DeckDetailView extends React.Component {
   syncNavigatorButtons() {
     const {
       navigator,
-      deck,
     } = this.props;
     const {
       leftButtons,
       hasPendingEdits,
     } = this.state;
-    const rightButtons = (!deck.next_deck && SHOW_EDIT_BUTTON) ? [
-      {
-        icon: iconsMap.edit,
-        id: 'edit',
-      },
-    ] : [];
     if (hasPendingEdits) {
       navigator.setButtons({
         leftButtons: [
@@ -156,12 +147,10 @@ class DeckDetailView extends React.Component {
             id: 'save',
           },
         ],
-        rightButtons,
       });
     } else {
       navigator.setButtons({
         leftButtons: leftButtons,
-        rightButtons,
       });
     }
   }
@@ -201,7 +190,17 @@ class DeckDetailView extends React.Component {
   }
 
   onUpgradePressed() {
-
+    const {
+      navigator,
+      deck,
+    } = this.props;
+    navigator.push({
+      screen: 'Deck.Upgrade',
+      backButtonTitle: 'Cancel',
+      passProps: {
+        id: deck.id,
+      },
+    });
   }
 
   saveEdits() {
@@ -368,9 +367,9 @@ class DeckDetailView extends React.Component {
               onPress={this._clearEdits}
             />
           </View>
-        )}
+        ) }
       </View>
-    )
+    );
   }
 
   render() {

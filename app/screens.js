@@ -19,6 +19,7 @@ import NewDeckView from '../components/NewDeckView';
 import NewCampaignView from '../components/NewCampaignView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
 import DeckChartsView from '../components/DeckChartsView';
+import DeckUpgradeDialog from '../components/DeckUpgradeDialog';
 import CardFilterView from '../components/filter/CardFilterView';
 import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
 import WebViewWrapper from '../components/WebViewWrapper';
@@ -51,6 +52,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Deck.Charts', () => DeckChartsView, store, Provider);
   Navigation.registerComponent('Deck.DrawSimulator', () => DrawSimulatorView, store, Provider);
   Navigation.registerComponent('Deck.Edit', () => DeckEditView, store, Provider);
+  Navigation.registerComponent('Deck.Upgrade', () => DeckUpgradeDialog, store, Provider);
   Navigation.registerComponent('Deck.New', () => NewDeckView, store, Provider);
   Navigation.registerComponent('Card', () => CardDetailView, store, Provider);
   Navigation.registerComponent('Card.Faq', () => CardFaqView, store, Provider);

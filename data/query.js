@@ -3,3 +3,7 @@ export const BASIC_WEAKNESS_QUERY = [
   'subtype_code == "basicweakness"',
   'code != "01000"',
 ].join(' and ');
+
+export const EXILE_CARDS_QUERY = [
+
+];

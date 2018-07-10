@@ -98,16 +98,18 @@ function getChangedCards(deck, slots, previousDeck, exiledCards) {
   return changedCards;
 }
 
+const ARCANE_RESEARCH_CODE = '04109';
+const ADAPTABLE_CODE = '02110';
 function calculateSpentXp(cards, slots, changedCards, exiledCards) {
-  const exiledSlots = {};
+  const exiledSlots = [];
   forEach(keys(exiledCards), code => {
-    const card = cards[code];
-    for (let i = exiledCards[code]; i < 0; i++) {
-      exiledSlots.push(card);
+    if (exiledCards[code] > 0) {
+      const card = cards[code];
+      forEach(range(0, exiledCards[code]), () => exiledSlots.push(card));
     }
   });
-  let adaptableUses = (slots['02110'] || 0) * 2;
-  let arcaneResearchUses = (slots['04109'] || 0);
+  let adaptableUses = (slots[ADAPTABLE_CODE] || 0) * 2;
+  let arcaneResearchUses = (slots[ARCANE_RESEARCH_CODE] || 0);
 
   const addedCards = [];
   const removedCards = [];
@@ -120,6 +122,11 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
     } else {
       for (let i = 0; i < changedCards[code]; i++) {
         addedCards.push(card);
+        if (card.code === ARCANE_RESEARCH_CODE) {
+          // Per FAQ, you do not get the arcane research bonus if you just
+          // added this card to your deck.
+          arcaneResearchUses--;
+        }
       }
     }
   });
@@ -132,16 +139,16 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
     ),
     addedCard => {
       // We visit cards from high XP to low XP, so if there's 0 XP card,
-      // we've found matches for all the other cards already.
-      // Only 0 XP cards are left.
       if (addedCard.xp === 0) {
+        // We've found matches for all the other cards already.
+        // Only 0 XP cards are left, so it's safe to apply adaptable changes.
         if (exiledSlots.length > 0) {
           // Every exiled card gives you one free '0' cost insert.
           pullAt(exiledSlots, [0]);
           return 0;
         }
         // You can use adaptable to swap in to level 0s.
-        // Technically you have to take
+        // It is okay even if you just took adaptable this time.
         if (adaptableUses > 0) {
           for (let i = 0; i < removedCards.length; i++) {
             const removedCard = removedCards[i];
@@ -151,15 +158,18 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
               return 0;
             }
           }
-          // Couldn't find a 0 cost card to remove, that's weird.
+          // Couldn't find a 0 cost card to remove, it's weird that you
+          // chose to take away an XP card?
           return 1;
         }
-        // But if there's no slots it costs you a minimum of 1 xp.
+        // But if there's no slots it costs you a minimum of 1 xp to swap
+        // 0 for 0.
         return 1;
       }
+
       // XP higher than 0.
       // See if there's a lower version card that counts as an upgrade.
-      // TODO: handle card 04109 (Arcane Research) and 04106 (Shrewd Analysis)
+      // TODO(daniel): handle card 04106 (Shrewd Analysis)
       for (let i = 0; i < removedCards.length; i++) {
         const removedCard = removedCards[i];
         if (addedCard.name === removedCard.name &&
@@ -168,8 +178,10 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
           pullAt(removedCards, [i]);
 
           // If you have unspent uses of arcaneResearchUses,
-          // and its a spell, you get a 1 XP discount on first spell.
+          // and its a spell, you get a 1 XP discount on upgrade of
+          // a spell to a spell.
           if (arcaneResearchUses > 0 &&
+            removedCard.traits_normalized.indexOf('#spell#') !== -1 &&
             addedCard.traits_normalized.indexOf('#spell#') !== -1) {
             arcaneResearchUses--;
             return (addedCard.xp - removedCard.xp) - 1;

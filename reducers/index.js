@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { filter, find, flatMap, forEach, indexOf, keys, map, last, reverse, sortBy, values } from 'lodash';
+import { filter, find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import FilesystemStorage from 'redux-persist-filesystem-storage';
 
@@ -217,6 +217,7 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
+    const myDecks = filter(state.myDecks, deckId => deckId !== action.id);
     return Object.assign({},
       state,
       {
@@ -225,14 +226,14 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
           state.all,
           { [action.id]: deck },
         ),
+        myDecks: [action.id, ...myDecks],
       });
   }
   if (action.type === NEW_DECK_AVAILABLE) {
     const deck = updateDeck(state, action);
-    let myDecks = state.myDecks;
-    if (indexOf(myDecks, action.id) === -1) {
-      myDecks = [action.id, ...myDecks];
-    }
+    const myDecks = filter(state.myDecks,
+      deckId => (deckId !== action.id && deck.previous_deck !== deckId)
+    );
     return Object.assign({},
       state,
       {
@@ -241,7 +242,7 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
           state.all,
           { [action.id]: deck },
         ),
-        myDecks,
+        myDecks: [action.id, ...myDecks],
       });
   } else if (action.type === CLEAR_DECKS) {
     return DEFAULT_DECK_STATE;

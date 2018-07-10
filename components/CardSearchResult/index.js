@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { range } from 'lodash';
 import {
   StyleSheet,
+  Switch,
   Text,
   TouchableOpacity,
   View,
@@ -27,6 +28,8 @@ export default class CardSearchResult extends React.PureComponent {
     onPress: PropTypes.func.isRequired,
     onDeckCountChange: PropTypes.func,
     limit: PropTypes.number,
+    onToggleChange: PropTypes.func,
+    toggleValue: PropTypes.bool,
   };
 
   constructor(props) {
@@ -175,6 +178,8 @@ export default class CardSearchResult extends React.PureComponent {
       count = 0,
       onDeckCountChange,
       limit,
+      onToggleChange,
+      toggleValue,
     } = this.props;
     if (!card.name) {
       return <Text>No Text</Text>;
@@ -194,6 +199,15 @@ export default class CardSearchResult extends React.PureComponent {
             countChanged={this._onDeckCountChange}
           />
         ) }
+        { !!onToggleChange && (
+          <View style={styles.switchButton}>
+            <Switch
+              value={toggleValue}
+              onValueChange={onToggleChange}
+              onTintColor="#222222"
+            />
+          </View>
+        ) }
       </View>
     );
   }
@@ -203,18 +217,19 @@ const styles = StyleSheet.create({
   stack: {
     position: 'relative',
     width: '100%',
+    flexDirection: 'row',
     height: ROW_HEIGHT,
     borderBottomWidth: 1,
     borderColor: COLORS.gray,
   },
   row: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   fullHeight: {
     height: ROW_HEIGHT,
-    width: '100%',
   },
   skillIcons: {
     flex: 1,
@@ -242,5 +257,9 @@ const styles = StyleSheet.create({
   },
   xp: {
     marginLeft: 4,
+  },
+  switchButton: {
+    marginTop: 6,
+    marginRight: 6,
   },
 });

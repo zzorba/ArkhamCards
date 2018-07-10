@@ -64,7 +64,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['small', 'normal']),
   style: ViewPropTypes.style,
   width: PropTypes.number,
-  colors: PropTypes.array, 
+  colors: PropTypes.array,
 };
 
 const styles = StyleSheet.create({
