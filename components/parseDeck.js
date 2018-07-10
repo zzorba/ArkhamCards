@@ -98,6 +98,13 @@ function getChangedCards(deck, slots, previousDeck, exiledCards) {
   return changedCards;
 }
 
+function calculateTotalXp(cards, slots) {
+  return sum(map(keys(slots), code => {
+    const card = cards[code];
+    return (card.xp || 0) * slots[code];
+  }));
+}
+
 const ARCANE_RESEARCH_CODE = '04109';
 const ADAPTABLE_CODE = '02110';
 function calculateSpentXp(cards, slots, changedCards, exiledCards) {
@@ -212,6 +219,8 @@ export function parseDeck(deck, slots, cards, previousDeck) {
     items => items.length) : {};
   const changedCards = getChangedCards(deck, slots, previousDeck, exiledCards);
   const spentXp = calculateSpentXp(cards, slots, changedCards, exiledCards);
+  const totalXp = calculateTotalXp(cards, slots);
+
   const factionCounts = {};
   FACTION_CODES.forEach(faction => {
     factionCounts[faction] = factionCount(cardIds, cards, faction);
@@ -237,6 +246,7 @@ export function parseDeck(deck, slots, cards, previousDeck) {
     exiledCards,
     changedCards,
     spentXp,
+    totalXp,
   };
 }
 

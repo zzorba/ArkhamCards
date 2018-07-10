@@ -48,12 +48,12 @@ function deckToSections(halfDeck) {
 }
 
 const DECK_PROBLEM_MESSAGES = {
-  too_few_cards: 'Contains too few cards',
-  too_many_cards: 'Contains too many cards',
-  too_many_copies: 'Contains too many copies of a card (by title)',
+  too_few_cards: 'Not enough cards.',
+  too_many_cards: 'Too many cards.',
+  too_many_copies: 'Too many copies of a card with the same name.',
   invalid_cards: 'Contains forbidden cards (cards not permitted by Faction)',
-  deck_options_limit: 'Contains too many limited cards',
-  investigator: 'Doesn\'t comply with the Investigator requirements',
+  deck_options_limit: 'Contains too many limited cards.',
+  investigator: 'Doesn\'t comply with the Investigator requirements.',
 };
 
 export default class DeckViewTab extends React.Component {

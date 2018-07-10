@@ -217,8 +217,7 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
-    const myDecks = filter(state.myDecks, deckId => deckId !== action.id);
-    return Object.assign({},
+    const newState = Object.assign({},
       state,
       {
         all: Object.assign(
@@ -226,15 +225,20 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
           state.all,
           { [action.id]: deck },
         ),
-        myDecks: [action.id, ...myDecks],
-      });
+      },
+    );
+    if (action.isWrite) {
+      // Writes get moved to the head of the list.
+      newState.myDecks = [
+        action.id,
+        ...filter(state.myDecks, deckId => deckId !== action.id),
+      ];
+    }
+    return newState;
   }
   if (action.type === NEW_DECK_AVAILABLE) {
     const deck = updateDeck(state, action);
-    const myDecks = filter(state.myDecks,
-      deckId => (deckId !== action.id && deck.previous_deck !== deckId)
-    );
-    return Object.assign({},
+    const newState = Object.assign({},
       state,
       {
         all: Object.assign(
@@ -242,8 +246,12 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
           state.all,
           { [action.id]: deck },
         ),
-        myDecks: [action.id, ...myDecks],
       });
+    newState.myDecks = [
+      action.id,
+      ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
+    ];
+    return newState;
   } else if (action.type === CLEAR_DECKS) {
     return DEFAULT_DECK_STATE;
   }

@@ -178,6 +178,9 @@ class DeckDetailView extends React.Component {
       deck,
       previousDeck,
     } = this.props;
+    this.setState({
+      hasPendingEdits: true,
+    });
     navigator.push({
       screen: 'Deck.Edit',
       passProps: {
@@ -196,6 +199,7 @@ class DeckDetailView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Deck.Upgrade',
+      title: 'Upgrade',
       backButtonTitle: 'Cancel',
       passProps: {
         id: deck.id,
@@ -228,7 +232,7 @@ class DeckDetailView extends React.Component {
     const problem = problemObj ? problemObj.reason : '';
 
     saveDeck(deck.id, deck.name, slots, problem, parsedDeck.spentXp).then(deck => {
-      updateDeck(deck.id, deck);
+      updateDeck(deck.id, deck, true);
       this.setState({
         saving: false,
       });
@@ -313,13 +317,16 @@ class DeckDetailView extends React.Component {
   renderSavingOverlay() {
     return (
       <View style={styles.savingOverlay}>
-        <Text style={[typography.header, styles.savingText]}>Saving</Text>
-        <ActivityIndicator
-          style={styles.spinner}
-          size="small"
-          color="white"
-          animating
-        />
+        <View style={styles.savingBox}>
+          <Text style={[typography.header, styles.savingText]}>
+            Saving
+          </Text>
+          <ActivityIndicator
+            style={styles.spinner}
+            size="large"
+            animating
+          />
+        </View>
       </View>
     );
   }
@@ -459,8 +466,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  savingBox: {
+    width: '75%',
+    padding: 32,
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: '#222222',
+    backgroundColor: 'white',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   savingText: {
-    color: 'white',
+    marginBottom: 16,
   },
   spinner: {
     height: 80,

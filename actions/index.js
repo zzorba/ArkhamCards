@@ -171,18 +171,19 @@ export function setNewDeck(id, deck) {
   };
 }
 
-export function updateDeck(id, deck) {
+export function updateDeck(id, deck, isWrite) {
   return {
     type: UPDATE_DECK,
     id,
     deck,
+    isWrite,
   };
 }
 
 export function fetchPrivateDeck(id) {
   return (dispatch) => {
     loadDeck(id).then(deck => {
-      dispatch(updateDeck(id, deck));
+      dispatch(updateDeck(id, deck, false));
     });
   };
 }
@@ -198,7 +199,7 @@ export function fetchPublicDeck(id, useDeckEndpoint) {
         throw new Error(`Unexpected status: ${response.status}`);
       })
       .then(json => {
-        dispatch(updateDeck(id, json));
+        dispatch(updateDeck(id, json, false));
       }).catch(err => {
         if (!useDeckEndpoint) {
           return fetchPublicDeck(id, true)(dispatch);

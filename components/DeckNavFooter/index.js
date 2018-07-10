@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import AppIcon from '../../assets/AppIcon';
 import { DeckType } from '../parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckValidation from '../../lib/DeckValidation';
@@ -95,9 +96,14 @@ export default class DeckNavFooter extends React.Component {
     }
 
     return (
-      <Text style={styles.problemText} numberOfLines={2}>
-        { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
-      </Text>
+      <View style={styles.problemRow}>
+        <View style={styles.warningIcon}>
+          <AppIcon name="warning" size={14} color={COLORS.red} numberOfLines={2} />
+        </View>
+        <Text style={styles.problemText} numberOfLines={2}>
+          { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
+        </Text>
+      </View>
     );
   }
 
@@ -109,6 +115,7 @@ export default class DeckNavFooter extends React.Component {
           previous_deck,
         },
         spentXp,
+        totalXp,
         normalCardCount,
         totalCardCount,
       },
@@ -118,7 +125,7 @@ export default class DeckNavFooter extends React.Component {
         <View style={styles.left}>
           <Text>
             { `${normalCardCount} Cards (${totalCardCount} Total)` }
-            { previous_deck ? ` XP: ${spentXp} of ${xp}` : '' }
+            { previous_deck ? ` - XP: ${spentXp} of ${xp}` : ` - XP: ${totalXp}` }
           </Text>
           { this.renderProblem() }
         </View>
@@ -177,5 +184,12 @@ const styles = StyleSheet.create({
   problemText: {
     flex: 1,
     color: COLORS.red,
+  },
+  problemRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  warningIcon: {
+    marginRight: 2,
   },
 });
