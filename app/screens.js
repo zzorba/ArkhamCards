@@ -21,7 +21,6 @@ import DrawSimulatorView from '../components/DrawSimulatorView';
 import DeckChartsView from '../components/DeckChartsView';
 import CardFilterView from '../components/filter/CardFilterView';
 import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
-import BrowseDecksView from '../components/BrowseDecksView';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsDrawer from '../components/SettingsDrawer';
 import PackCardsView from '../components/PackCardsView';
@@ -46,7 +45,6 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Home', () => HomeView, store, Provider);
   Navigation.registerComponent('About', () => AboutView, store, Provider);
   Navigation.registerComponent('Browse.Cards', () => CardSearchView, store, Provider);
-  Navigation.registerComponent('Browse.Decks', () => BrowseDecksView, store, Provider);
   Navigation.registerComponent('Browse.Investigators', () => BrowseInvestigatorsView, store, Provider);
   Navigation.registerComponent('Browse.InvestigatorCards', () => InvestigatorCardsView, store, Provider);
   Navigation.registerComponent('Deck', () => DeckDetailView, store, Provider);

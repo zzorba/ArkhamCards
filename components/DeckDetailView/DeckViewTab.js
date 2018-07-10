@@ -62,6 +62,7 @@ export default class DeckViewTab extends React.Component {
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
+    buttons: PropTypes.node,
   };
 
   constructor(props) {
@@ -178,6 +179,7 @@ export default class DeckViewTab extends React.Component {
         investigator,
       },
       isPrivate,
+      buttons,
     } = this.props;
 
     const sections = deckToSections(normalCards)
@@ -213,6 +215,7 @@ export default class DeckViewTab extends React.Component {
               </View>
             </View>
           </View>
+          { buttons }
           <SectionList
             initialNumToRender={20}
             renderItem={this._renderCard}

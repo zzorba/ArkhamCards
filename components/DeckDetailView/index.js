@@ -12,7 +12,10 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import { saveDeck } from '../../lib/authApi';
@@ -64,6 +67,10 @@ class DeckDetailView extends React.Component {
       hasPendingEdits: false,
     };
 
+    this._onEditPressed = this.onEditPressed.bind(this);
+    this._onUpgradePressed = this.onUpgradePressed.bind(this);
+    this._saveEdits = this.saveEdits.bind(this);
+    this._clearEdits =  this.clearEdits.bind(this);
     this._syncNavigatorButtons = this.syncNavigatorButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
@@ -147,9 +154,6 @@ class DeckDetailView extends React.Component {
           {
             systemItem: 'save',
             id: 'save',
-          }, {
-            systemItem: 'cancel',
-            id: 'cancel',
           },
         ],
         rightButtons,
@@ -165,20 +169,10 @@ class DeckDetailView extends React.Component {
   onNavigatorEvent(event) {
     const {
       navigator,
-      deck,
-      previousDeck,
     } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'edit') {
-        navigator.push({
-          screen: 'Deck.Edit',
-          passProps: {
-            deck,
-            previousDeck,
-            slots: this.state.slots,
-            updateSlots: this._updateSlots,
-          },
-        });
+        this.onEditPressed();
       } else if (event.id === 'back') {
         navigator.dismissAllModals();
       } else if (event.id === 'cancel') {
@@ -187,6 +181,27 @@ class DeckDetailView extends React.Component {
         this.saveEdits();
       }
     }
+  }
+
+  onEditPressed() {
+    const {
+      navigator,
+      deck,
+      previousDeck,
+    } = this.props;
+    navigator.push({
+      screen: 'Deck.Edit',
+      passProps: {
+        deck,
+        previousDeck,
+        slots: this.state.slots,
+        updateSlots: this._updateSlots,
+      },
+    });
+  }
+
+  onUpgradePressed() {
+
   }
 
   saveEdits() {
@@ -310,6 +325,54 @@ class DeckDetailView extends React.Component {
     );
   }
 
+  renderButtons() {
+    const {
+      deck,
+    } = this.props;
+    const {
+      hasPendingEdits,
+    } = this.state;
+    if (!deck || deck.next_deck) {
+      return null;
+    }
+    return (
+      <View>
+        <View style={styles.buttonRow}>
+          <Button
+            style={styles.button}
+            icon={<MaterialIcons size={20} color="#FFFFFF" name="edit" />}
+            colors={['#4331b9', '#2f2282']}
+            text="Edit"
+            onPress={this._onEditPressed}
+          />
+          { !hasPendingEdits && (
+            <Button
+              colors={['#ec8426', '#bd6a1e']}
+              icon={<MaterialCommunityIcons size={20} color="#FFFFFF" name="arrow-up-bold" />}
+              text="Upgrade Deck"
+              onPress={this._onUpgradePressed}
+            />
+          ) }
+        </View>
+        { hasPendingEdits && (
+          <View style={styles.buttonRow}>
+            <Button
+              style={styles.button}
+              colors={['#107116', '#0b4f0f']}
+              text="Save"
+              onPress={this._saveEdits}
+            />
+            <Button
+              colors={['#cc3038', '#a3262d']}
+              text="Cancel Edits"
+              onPress={this._clearEdits}
+            />
+          </View>
+        )}
+      </View>
+    )
+  }
+
   render() {
     const {
       deck,
@@ -342,6 +405,7 @@ class DeckDetailView extends React.Component {
           parsedDeck={parsedDeck}
           cards={cardsInDeck}
           isPrivate={isPrivate}
+          buttons={this.renderButtons()}
         />
         <DeckNavFooter
           navigator={navigator}
@@ -407,5 +471,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+  },
+  buttonRow: {
+    paddingTop: 8,
+    flexDirection: 'row',
+  },
+  button: {
+    marginRight: 8,
   },
 });

@@ -11,7 +11,16 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
 
-export default function Button({ text, icon, align = 'center', size = 'normal', width, onPress, style }) {
+export default function Button({
+  text,
+  icon,
+  align = 'center',
+  size = 'normal',
+  width,
+  onPress,
+  style,
+  colors = ['#3093c7', '#1c5a85'],
+}) {
   let containerStyle = styles.centerContainer;
   switch (align) {
     case 'left': containerStyle = styles.leftContainer; break;
@@ -26,7 +35,7 @@ export default function Button({ text, icon, align = 'center', size = 'normal', 
   return (
     <View style={[containerStyle, style]}>
       <TouchableOpacity onPress={onPress}>
-        <LinearGradient colors={['#3093c7', '#1c5a85']} style={[
+        <LinearGradient colors={colors} style={[
           styles.button,
           width ? { width } : {},
           { paddingLeft: padding, paddingRight: padding },
@@ -55,6 +64,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['small', 'normal']),
   style: ViewPropTypes.style,
   width: PropTypes.number,
+  colors: PropTypes.array, 
 };
 
 const styles = StyleSheet.create({

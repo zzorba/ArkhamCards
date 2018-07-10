@@ -44,11 +44,12 @@ class MyDecksView extends React.Component {
   }
 
   deckNavClicked(id) {
-    this.props.navigator.push({
+    this.props.navigator.showModal({
       screen: 'Deck',
       passProps: {
         id: id,
         isPrivate: true,
+        modal: true,
       },
     });
   }
