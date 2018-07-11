@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { filter, find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
-import FilesystemStorage from 'redux-persist-filesystem-storage';
+import storage from 'redux-persist/lib/storage'
 
 import {
   CLEAR_DECKS,
@@ -381,13 +381,13 @@ const weaknesses = (state = DEFAULT_WEAKNESS_SET_STATE, action) => {
 
 const decksPersistConfig = {
   key: 'decks',
-  storage: FilesystemStorage,
+  storage,
   blacklist: ['refreshing', 'error'],
 };
 
 const signedInPersistConfig = {
   key: 'signedIn',
-  storage: FilesystemStorage,
+  storage,
   blacklist: ['loading', 'error'],
 };
 

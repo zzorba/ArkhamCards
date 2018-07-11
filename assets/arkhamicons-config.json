@@ -21,7 +21,7 @@
         {}
       ],
       "properties": {
-        "order": 1312,
+        "order": 1381,
         "id": 16,
         "name": "guardian",
         "prevSize": 32,
@@ -51,7 +51,7 @@
         {}
       ],
       "properties": {
-        "order": 1313,
+        "order": 1358,
         "id": 9,
         "name": "seeker",
         "prevSize": 32,
@@ -81,7 +81,7 @@
         {}
       ],
       "properties": {
-        "order": 1314,
+        "order": 1359,
         "id": 26,
         "name": "mystic",
         "prevSize": 32,
@@ -111,7 +111,7 @@
         {}
       ],
       "properties": {
-        "order": 1315,
+        "order": 1360,
         "id": 10,
         "name": "rogue",
         "prevSize": 32,
@@ -141,7 +141,7 @@
         {}
       ],
       "properties": {
-        "order": 1316,
+        "order": 1361,
         "id": 7,
         "name": "survivor",
         "prevSize": 32,
@@ -171,7 +171,7 @@
         {}
       ],
       "properties": {
-        "order": 1317,
+        "order": 1362,
         "id": 1,
         "name": "willpower",
         "prevSize": 32,
@@ -201,7 +201,7 @@
         {}
       ],
       "properties": {
-        "order": 1318,
+        "order": 1363,
         "id": 15,
         "name": "intellect",
         "prevSize": 32,
@@ -231,7 +231,7 @@
         {}
       ],
       "properties": {
-        "order": 1319,
+        "order": 1364,
         "id": 18,
         "name": "combat",
         "prevSize": 32,
@@ -261,7 +261,7 @@
         {}
       ],
       "properties": {
-        "order": 1320,
+        "order": 1365,
         "id": 24,
         "name": "agility",
         "prevSize": 32,
@@ -294,7 +294,7 @@
         {}
       ],
       "properties": {
-        "order": 1321,
+        "order": 1366,
         "id": 3,
         "name": "wild",
         "prevSize": 32,
@@ -324,7 +324,7 @@
         {}
       ],
       "properties": {
-        "order": 1322,
+        "order": 1367,
         "id": 0,
         "name": "skill_willpower",
         "prevSize": 32,
@@ -354,7 +354,7 @@
         {}
       ],
       "properties": {
-        "order": 1323,
+        "order": 1368,
         "id": 14,
         "name": "skill_intellect",
         "prevSize": 32,
@@ -384,7 +384,7 @@
         {}
       ],
       "properties": {
-        "order": 1324,
+        "order": 1369,
         "id": 17,
         "name": "skill_combat",
         "prevSize": 32,
@@ -414,7 +414,7 @@
         {}
       ],
       "properties": {
-        "order": 1325,
+        "order": 1370,
         "id": 23,
         "name": "skill_agility",
         "prevSize": 32,
@@ -444,7 +444,7 @@
         {}
       ],
       "properties": {
-        "order": 1326,
+        "order": 1371,
         "id": 2,
         "name": "skill_wild",
         "prevSize": 32,
@@ -480,7 +480,7 @@
         {}
       ],
       "properties": {
-        "order": 1327,
+        "order": 1372,
         "id": 21,
         "name": "elder_sign",
         "prevSize": 32,
@@ -510,7 +510,7 @@
         {}
       ],
       "properties": {
-        "order": 1328,
+        "order": 1373,
         "id": 8,
         "name": "skull",
         "prevSize": 32,
@@ -540,7 +540,7 @@
         {}
       ],
       "properties": {
-        "order": 1329,
+        "order": 1374,
         "id": 22,
         "name": "cultist",
         "prevSize": 32,
@@ -576,7 +576,7 @@
         {}
       ],
       "properties": {
-        "order": 1330,
+        "order": 1375,
         "id": 6,
         "name": "tablet",
         "prevSize": 32,
@@ -612,7 +612,7 @@
         {}
       ],
       "properties": {
-        "order": 1331,
+        "order": 1376,
         "id": 20,
         "name": "elder_thing",
         "prevSize": 32,
@@ -651,7 +651,7 @@
         {}
       ],
       "properties": {
-        "order": 1332,
+        "order": 1377,
         "id": 5,
         "name": "auto_fail",
         "prevSize": 32,
@@ -681,7 +681,7 @@
         {}
       ],
       "properties": {
-        "order": 1333,
+        "order": 1378,
         "id": 13,
         "name": "per_investigator",
         "prevSize": 32,
@@ -711,7 +711,7 @@
         {}
       ],
       "properties": {
-        "order": 1334,
+        "order": 1379,
         "id": 4,
         "name": "weakness",
         "prevSize": 32,
@@ -741,7 +741,7 @@
         {}
       ],
       "properties": {
-        "order": 1335,
+        "order": 1380,
         "id": 25,
         "name": "action",
         "prevSize": 32,
@@ -771,7 +771,7 @@
         {}
       ],
       "properties": {
-        "order": 1336,
+        "order": 1382,
         "id": 27,
         "name": "reaction",
         "prevSize": 32,
@@ -801,7 +801,7 @@
         {}
       ],
       "properties": {
-        "order": 1337,
+        "order": 1383,
         "id": 19,
         "name": "free",
         "prevSize": 32,
@@ -831,7 +831,7 @@
         {}
       ],
       "properties": {
-        "order": 1338,
+        "order": 1384,
         "id": 28,
         "name": "deck",
         "prevSize": 32,
@@ -864,7 +864,7 @@
         {}
       ],
       "properties": {
-        "order": 1339,
+        "order": 1385,
         "id": 29,
         "name": "faq",
         "prevSize": 32,
@@ -900,7 +900,7 @@
         {}
       ],
       "properties": {
-        "order": 1340,
+        "order": 1386,
         "id": 30,
         "name": "cards",
         "prevSize": 32,
@@ -930,7 +930,7 @@
         {}
       ],
       "properties": {
-        "order": 1341,
+        "order": 1387,
         "id": 31,
         "name": "flip_card",
         "prevSize": 32,
@@ -951,7 +951,7 @@
     "showQuickUse2": true,
     "showSVGs": true,
     "fontPref": {
-      "prefix": "arhamicons-",
+      "prefix": "arkhamicons-",
       "metadata": {
         "fontFamily": "arkhamicons",
         "majorVersion": 1,
@@ -964,7 +964,9 @@
       },
       "embed": false,
       "showSelector": false,
-      "showMetrics": false
+      "showMetrics": false,
+      "noie8": false,
+      "ie7": false
     },
     "imagePref": {
       "prefix": "icon-",

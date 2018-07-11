@@ -11,21 +11,20 @@
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "1.0.0",
     "@redux-offline/redux-offline": "2.3.3",
-    "appcenter": "1.5.1",
-    "appcenter-analytics": "1.5.1",
-    "appcenter-crashes": "1.5.1",
+    "appcenter": "1.6.0",
+    "appcenter-analytics": "1.6.0",
+    "appcenter-crashes": "1.6.0",
     "capitalize": "1.0.0",
     "date-fns": "1.29.0",
     "hoist-non-react-statics": "2.5.4",
     "lodash": "4.17.10",
-    "react": "16.3.1",
-    "react-native": "0.55.3",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
     "react-native-app-auth": "2.6.1",
-    "react-native-cached-image": "1.4.3",
+    "react-native-cached-image": "fungilation/react-native-cached-image#master",
     "react-native-config": "0.11.5",
     "react-native-deep-linking": "2.1.0",
     "react-native-elements": "1.0.0-beta2",
-    "react-native-fetch-blob": "0.10.8",
     "react-native-flip-card": "3.5.2",
     "react-native-keychain": "2.0.0",
     "react-native-linear-gradient": "2.4.0",
@@ -39,20 +38,20 @@
     "react-native-vector-icons": "4.6.0",
     "react-native-zoom-view": "1.0.2",
     "react-redux": "5.0.7",
-    "realm": "2.2.20",
+    "realm": "2.12.0",
     "realm-query": "0.0.7",
     "redux": "4.0.0",
     "redux-logger": "3.0.6",
     "redux-persist": "5.9.1",
-    "redux-persist-filesystem-storage": "1.2.0",
     "redux-thunk": "2.2.0",
+    "rn-fetch-blob": "0.10.11",
     "simple-markdown": "0.4.1",
     "yarn": "1.7.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.2",
     "babel-jest": "22.2.2",
-    "babel-preset-react-native": "4.0.0",
+    "babel-preset-react-native": "5.0.1",
     "eslint": "4.19.1",
     "eslint-config-google": "0.9.1",
     "eslint-plugin-destructuring": "2.1.0",
@@ -63,6 +62,11 @@
     "react-test-renderer": "16.3.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "./node_modules/appcenter/test/AppCenterMock.js",
+      "./node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
+      "./node_modules/appcenter-crashes/test/AppCenterCrashesMock.js"
+    ]
   }
 }

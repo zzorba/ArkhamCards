@@ -148,9 +148,8 @@ class CardDetailView extends React.PureComponent {
     navigator.push({
       screen: 'Browse.InvestigatorCards',
       title: 'Allowed Cards',
-      subtitle: card.name,
       passProps: {
-        investigator: card,
+        investigatorCode: card.code,
       },
       backButtonTitle: 'Back',
     });

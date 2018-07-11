@@ -32,7 +32,7 @@ export default class PlayerCardImage extends React.Component {
     navigator.push({
       screen: 'Card.Image',
       passProps: {
-        card,
+        id: card.code,
       },
     });
   }

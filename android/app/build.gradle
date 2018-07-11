@@ -105,13 +105,13 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.arkhamcards"
-        minSdkVersion 16
-        targetSdkVersion 22
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         ndk {
@@ -160,9 +160,9 @@ dependencies {
     compile project(':appcenter')
     compile project(':realm')
     compile project(':react-native-svg')
-    compile project(':react-native-fetch-blob')
+    compile project(':rn-fetch-blob')
     compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:25.3.1"
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':react-native-navigation')
     compile project(':react-native-vector-icons')

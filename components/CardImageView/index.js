@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { head } from 'lodash';
 import {
   Dimensions,
   Platform,
   StyleSheet,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
+import { connectRealm } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
 
 import { iconsMap } from '../../app/NavIcons';
 
 const HEADER_SIZE = 48;
 
-export default class CardImageView extends React.Component {
+class CardImageView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,
     card: PropTypes.object,
   };
 
@@ -45,7 +48,7 @@ export default class CardImageView extends React.Component {
         rightButtons: [
           {
             id: 'flip',
-            icon: iconsMap.flip_card,
+            icon: iconsMap['flip_card'],
           },
         ],
       });
@@ -134,6 +137,17 @@ export default class CardImageView extends React.Component {
     );
   }
 }
+
+export default connectRealm(CardImageView, {
+  schemas: ['Card'],
+  mapToProps(results, realm, props) {
+    const card =
+      head(results.cards.filtered(`code == "${props.id}"`));
+    return {
+      card,
+    };
+  },
+});
 
 const styles = StyleSheet.create({
   bigCard: {

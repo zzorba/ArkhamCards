@@ -4,7 +4,7 @@ import { createOffline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import loggerMiddleware from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist';
-import FilesystemStorage from 'redux-persist-filesystem-storage';
+import storage from 'redux-persist/lib/storage'
 import reducers from '../reducers';
 
 /**
@@ -30,7 +30,7 @@ export default function configureStore(initialState) {
 
   const persistConfig = {
     key: 'persist',
-    storage: FilesystemStorage,
+    storage,
     // decks are handled separately.
     blacklist: ['decks', 'signedIn'],
   };
