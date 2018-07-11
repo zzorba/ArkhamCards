@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -112,7 +113,7 @@ class CardFaqView extends React.Component {
     if (faqEntry) {
       const date = faqEntry.fetched.toISOString().slice(0, 10);
       return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           { !!faqError && <Text>{ faqError }</Text> }
           <Text>Last Updated: { date }</Text>
           <View>
@@ -132,24 +133,24 @@ class CardFaqView extends React.Component {
               <Button onPress={this._loadFaq} text="Check for Updates" />
             </View>
           }
-        </View>
+        </ScrollView>
       );
     }
     if (faqLoading) {
       return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <View style={styles.bar}><Bar indeterminate /></View>
-        </View>
+        </ScrollView>
       );
     }
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         { !!faqError && <Text>{ faqError }</Text> }
         <View style={styles.buttonContainer}>
           <Button onPress={this._loadFaq} text="Check for Entries" />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

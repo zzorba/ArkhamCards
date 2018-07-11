@@ -190,8 +190,12 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
           if (arcaneResearchUses > 0 &&
             removedCard.traits_normalized.indexOf('#spell#') !== -1 &&
             addedCard.traits_normalized.indexOf('#spell#') !== -1) {
-            arcaneResearchUses--;
-            return (addedCard.xp - removedCard.xp) - 1;
+            let xpCost = (addedCard.xp - removedCard.xp);
+            while (xpCost > 0 && arcaneResearchUses > 0) {
+              xpCost--;
+              arcaneResearchUses--;
+            }
+            return xpCost;
           }
           // Upgrade of the same name, so you only pay the delta.
           return (addedCard.xp - removedCard.xp);
