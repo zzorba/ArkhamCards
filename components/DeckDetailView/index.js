@@ -132,7 +132,7 @@ class DeckDetailView extends React.Component {
   }
 
   syncNavigatorButtons() {
-    const {
+    /*const {
       navigator,
     } = this.props;
     const {
@@ -153,7 +153,7 @@ class DeckDetailView extends React.Component {
       navigator.setButtons({
         rightButtons: [],
       });
-    }
+    }*/
   }
 
   onNavigatorEvent(event) {

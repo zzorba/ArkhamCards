@@ -151,9 +151,9 @@ export default class DeckViewTab extends React.Component {
     }
 
     return (
-      <View>
-        <Text style={styles.problemText}>
-          <AppIcon name="warning" size={14} color={COLORS.red} numberOfLines={2} />
+      <View style={styles.problemBox}>
+        <Text style={styles.problemText} numberOfLines={2}>
+          <AppIcon name="warning" size={14} color={COLORS.red} />
           { DECK_PROBLEM_MESSAGES[problem.reason] }
         </Text>
         { problem.problems.map(problem => (
@@ -243,6 +243,7 @@ const styles = StyleSheet.create({
   },
   metadata: {
     flexDirection: 'column',
+    flex: 1,
   },
   image: {
     width: 80,
@@ -262,10 +263,14 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontSize: 14,
   },
+  problemBox: {
+    flex: 1,
+    paddingRight: 8,
+  },
   problemText: {
     color: COLORS.red,
     fontSize: 14,
-    width: '100%',
+    flex: 1,
   },
   typeText: {
     color: '#000000',
