@@ -10,6 +10,7 @@ import BoldItalicHtmlTagNode from './BoldItalicHtmlTagNode';
 import HrTagNode from './HrTagNode';
 import ItalicHtmlTagNode from './ItalicHtmlTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
+import StrikethroughTextNode from './StrikethroughTextNode';
 
 const ArkhamIconRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
@@ -54,6 +55,15 @@ const MalformedBoldItalicHtmlTagRule = {
     return { text: capture[1] };
   },
   render: BoldItalicHtmlTagNode,
+};
+
+const DelHtmlTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<del>([\\s\\S]+?)<\\/del>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: StrikethroughTextNode,
 };
 
 const HrTagRule = {
@@ -142,6 +152,7 @@ export default class CardText extends React.PureComponent {
             arkhamIconSpan: ArkahmIconSpanRule,
             hrTag: HrTagRule,
             blockquoteTag: BlockquoteHtmlTagRule,
+            delTag: DelHtmlTagRule,
             brTag: BreakTagRule,
             biTag: BoldItalicHtmlTagRule,
             badBiTag: MalformedBoldItalicHtmlTagRule,

@@ -62,7 +62,7 @@ export default class CardQuantityComponent extends React.Component {
     slideAnim.stopAnimation(() => {
       Animated.timing(slideAnim, {
         toValue: open ? 0 : 1,
-        duration: 250,
+        duration: 150,
         useNativeDriver: true,
         easing: Easing.easeIn,
       }).start();

@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 
 export default function ItalicHtmlTagNode(node, output, state) {
-  console.log(JSON.stringify(state));
   return (
     <Text
       key={state.key}
