@@ -51,6 +51,7 @@ class CardFilterView extends React.Component {
     };
 
     this._onEnemyPress = this.onEnemyPress.bind(this);
+    this._onLocationPress = this.onLocationPress.bind(this);
 
     props.navigator.setTitle({
       title: 'Filter',
@@ -154,6 +155,10 @@ class CardFilterView extends React.Component {
     this.props.pushFilterView('SearchFilters.Enemy');
   }
 
+  onLocationPress() {
+    this.props.pushFilterView('SearchFilters.Location');
+  }
+
   onToggleChange(key) {
     this.props.onToggleChange(key);
   }
@@ -253,6 +258,34 @@ class CardFilterView extends React.Component {
       return 'Enemies: All';
     }
     return `Enemies: ${parts.join(', ')}`;
+  }
+
+  locationFilterText() {
+    const {
+      filters: {
+        shroud,
+        shroudEnabled,
+        clues,
+        cluesEnabled,
+        cluesFixed,
+      },
+    } = this.props;
+    const parts = [];
+    if (cluesEnabled) {
+      if (cluesFixed) {
+        parts.push(CardFilterView.rangeText('Fixed Clues', clues));
+      } else {
+        parts.push(CardFilterView.rangeText('Clues', clues));
+      }
+    }
+    if (shroudEnabled) {
+      parts.push(CardFilterView.rangeText('Shroud', shroud));
+    }
+
+    if (parts.length === 0) {
+      return 'Locations: All';
+    }
+    return `Locations: ${parts.join(', ')}`;
   }
 
   render() {
@@ -356,6 +389,9 @@ class CardFilterView extends React.Component {
         ) }
         { indexOf(allTypes, 'Enemy') !== -1 && (
           <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
+        ) }
+        { indexOf(allTypes, 'Location') !== -1 && (
+          <NavButton text={this.locationFilterText()} onPress={this._onLocationPress} />
         ) }
         <View style={styles.chooserStack}>
           { (traits.length > 0 || allTraits.length > 0) && (

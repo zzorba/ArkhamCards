@@ -22,6 +22,7 @@ import DeckChartsView from '../components/DeckChartsView';
 import DeckUpgradeDialog from '../components/DeckUpgradeDialog';
 import CardFilterView from '../components/filter/CardFilterView';
 import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
+import CardLocationFilterView from '../components/filter/CardLocationFilterView';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsDrawer from '../components/SettingsDrawer';
 import PackCardsView from '../components/PackCardsView';
@@ -65,6 +66,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Settings', () => SettingsDrawer, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
   Navigation.registerComponent('SearchFilters.Enemy', () => CardEnemyFilterView, store, Provider);
+  Navigation.registerComponent('SearchFilters.Location', () => CardLocationFilterView, store, Provider);
   Navigation.registerComponent('SearchFilters.Chooser', () => SearchMultiSelectView, store, Provider);
   Navigation.registerComponent('CollectionEdit', () => CollectionEditView, store, Provider);
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);

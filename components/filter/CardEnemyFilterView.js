@@ -6,10 +6,10 @@ import {
   View,
 } from 'react-native';
 
-import AccordionItem from '../AccordionItem';
-import SliderChooser from '../SliderChooser';
-import ToggleFilter from '../ToggleFilter';
-import withFilterFunctions from '../withFilterFunctions';
+import AccordionItem from './AccordionItem';
+import SliderChooser from './SliderChooser';
+import ToggleFilter from './ToggleFilter';
+import withFilterFunctions from './withFilterFunctions';
 
 class CardEnemyFilterView extends React.Component {
   static propTypes = {
