@@ -8,14 +8,16 @@ import {
   StyleSheet,
   Text,
   View,
+  findNodeHandle,
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 import { BlurView } from 'react-native-blur';
 
-export default function Dialog({ title, visible, children }) {
+export default function Dialog({ title, visible, viewRef, children }) {
   const blurComponentIOS = (
     <BlurView
       style={StyleSheet.absoluteFill}
+      viewRef={findNodeHandle(viewRef)}
       blurType="xlight"
       blurAmount={50}
     />

@@ -67,8 +67,10 @@ class DeckDetailView extends React.Component {
       nameChange: null,
       editNameDialogVisible: false,
       hasPendingEdits: false,
+      viewRef: null,
     };
 
+    this._captureViewRef = this.captureViewRef.bind(this);
     this._onEditPressed = this.onEditPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
@@ -136,6 +138,12 @@ class DeckDetailView extends React.Component {
         this.loadCards(deck, previousDeck);
       }
     }
+  }
+
+  captureViewRef(ref) {
+    this.setState({
+      viewRef: ref,
+    });
   }
 
   syncNavigatorButtons() {
@@ -359,11 +367,19 @@ class DeckDetailView extends React.Component {
       name,
       loaded,
       editNameDialogVisible,
+      viewRef,
     } = this.state;
+    if (!viewRef) {
+      return null;
+    }
 
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
-      <Dialog title="Edit Deck Name" visible={editNameDialogVisible}>
+      <Dialog
+        title="Edit Deck Name"
+        visible={editNameDialogVisible}
+        viewRef={viewRef}
+      >
         <DialogComponent.Input
           value={name}
           onChangeText={this._onNameChange}
@@ -385,9 +401,13 @@ class DeckDetailView extends React.Component {
   renderSavingDialog() {
     const {
       saving,
+      viewRef,
     } = this.state;
+    if (!viewRef) {
+      return null;
+    }
     return (
-      <Dialog title="Saving" visible={saving}>
+      <Dialog title="Saving" visible={saving} viewRef={viewRef}>
         <ActivityIndicator
           style={styles.spinner}
           size="large"
@@ -472,21 +492,23 @@ class DeckDetailView extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
-        <DeckViewTab
-          navigator={navigator}
-          parsedDeck={parsedDeck}
-          cards={cardsInDeck}
-          isPrivate={isPrivate}
-          buttons={this.renderButtons()}
-          name={nameChange || parsedDeck.deck.name}
-          onEditNamePress={isPrivate ? this._toggleEditNameDialog : null}
-        />
-        <DeckNavFooter
-          navigator={navigator}
-          parsedDeck={parsedDeck}
-          cards={cardsInDeck}
-        />
+      <View>
+        <View style={styles.container} ref={this._captureViewRef}>
+          <DeckViewTab
+            navigator={navigator}
+            parsedDeck={parsedDeck}
+            cards={cardsInDeck}
+            isPrivate={isPrivate}
+            buttons={this.renderButtons()}
+            name={nameChange || parsedDeck.deck.name}
+            onEditNamePress={isPrivate ? this._toggleEditNameDialog : null}
+          />
+          <DeckNavFooter
+            navigator={navigator}
+            parsedDeck={parsedDeck}
+            cards={cardsInDeck}
+          />
+        </View>
         { this.renderSavingDialog() }
         { this.renderEditNameDialog() }
       </View>
@@ -524,6 +546,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: '100%',
     width: '100%',
+    backgroundColor: 'white',
   },
   savingOverlay: {
     position: 'absolute',
@@ -558,6 +581,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+    backgroundColor: 'white',
   },
   buttonRow: {
     paddingTop: 8,

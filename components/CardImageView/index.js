@@ -5,6 +5,7 @@ import {
   Dimensions,
   Platform,
   StyleSheet,
+  View,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
 import { connectRealm } from 'react-native-realm';
@@ -70,7 +71,7 @@ class CardImageView extends React.Component {
     });
   }
 
-  render() {
+  renderContent() {
     const {
       card,
     } = this.props;
@@ -90,6 +91,7 @@ class CardImageView extends React.Component {
             cropHeight={height}
             imageWidth={cardWidth}
             imageHeight={cardHeight}
+            style={styles.pinchZoom}
           >
             <CachedImage
               style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
@@ -107,6 +109,7 @@ class CardImageView extends React.Component {
           cropHeight={height}
           imageWidth={cardWidth}
           imageHeight={cardHeight}
+          style={styles.pinchZoom}
         >
           <CachedImage
             style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
@@ -125,6 +128,7 @@ class CardImageView extends React.Component {
         cropHeight={height}
         imageWidth={cardWidth}
         imageHeight={cardHeight}
+        style={styles.pinchZoom}
       >
         <CachedImage
           style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
@@ -135,6 +139,14 @@ class CardImageView extends React.Component {
         />
       </ViewControl>
     );
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        { this.renderContent() }
+      </View>
+    )
   }
 }
 
@@ -150,6 +162,10 @@ export default connectRealm(CardImageView, {
 });
 
 const styles = StyleSheet.create({
+  pinchZoom: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   bigCard: {
     marginTop: Platform.OS === 'ios' ? 0 : HEADER_SIZE,
   },

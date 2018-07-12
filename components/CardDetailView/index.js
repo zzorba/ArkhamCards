@@ -723,6 +723,8 @@ const styles = StyleSheet.create({
   viewContainer: {
     flexDirection: 'column',
     flexWrap: 'wrap',
+    flex: 1,
+    backgroundColor: 'white',
   },
   row: {
     width: '100%',
