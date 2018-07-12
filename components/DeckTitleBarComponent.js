@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
+  TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import ArkhamIcon from '../assets/ArkhamIcon';
@@ -14,6 +16,7 @@ export default class DeckTitleBarComponent extends React.Component {
     name: PropTypes.string.isRequired,
     investigator: PropTypes.object,
     compact: PropTypes.bool,
+    onEditPress: PropTypes.func,
   };
 
   render() {
@@ -21,6 +24,7 @@ export default class DeckTitleBarComponent extends React.Component {
       name,
       investigator,
       compact,
+      onEditPress,
     } = this.props;
 
     const hasFactionColor = !!(investigator &&
@@ -33,6 +37,7 @@ export default class DeckTitleBarComponent extends React.Component {
         colors={FACTION_DARK_GRADIENTS[investigator.faction_code]}
         style={styles.titleBar}
       >
+        { !!iconName && <ArkhamIcon name={iconName} size={28} color="#FFFFFF" /> }
         <Text
           style={[styles.title, { color: hasFactionColor ? '#FFFFFF' : '#000000' }]}
           numberOfLines={compact ? 1 : 2}
@@ -40,7 +45,11 @@ export default class DeckTitleBarComponent extends React.Component {
         >
           { name }
         </Text>
-        { !!iconName && <ArkhamIcon name={iconName} size={28} color="#FFFFFF" /> }
+        { !!onEditPress && (
+          <TouchableOpacity onPress={onEditPress}>
+            <MaterialIcons name="edit" size={28} color="#FFFFFF" />
+          </TouchableOpacity>
+        ) }
       </LinearGradient>
     );
   }
@@ -59,6 +68,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
+    marginLeft: 8,
     fontFamily: 'System',
     fontSize: 18,
     lineHeight: 22,

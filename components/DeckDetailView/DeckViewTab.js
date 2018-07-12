@@ -63,6 +63,8 @@ export default class DeckViewTab extends React.Component {
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
+    name: PropTypes.string,
+    onEditNamePress: PropTypes.func,
   };
 
   constructor(props) {
@@ -180,6 +182,8 @@ export default class DeckViewTab extends React.Component {
       },
       isPrivate,
       buttons,
+      name,
+      onEditNamePress,
     } = this.props;
 
     const sections = deckToSections(normalCards)
@@ -187,7 +191,11 @@ export default class DeckViewTab extends React.Component {
 
     return (
       <ScrollView>
-        <DeckTitleBarComponent name={deck.name} investigator={investigator} />
+        <DeckTitleBarComponent
+          name={name}
+          investigator={investigator}
+          onEditPress={onEditNamePress}
+        />
         <View style={styles.container}>
           <View style={styles.rowWrap}>
             <View style={styles.header}>

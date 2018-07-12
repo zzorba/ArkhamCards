@@ -10,6 +10,7 @@ import com.oblador.keychain.KeychainPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.react.ReactPackage;
+import com.cmcewen.blurview.BlurViewPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +32,8 @@ public class MainApplication extends NavigationApplication {
         new SvgPackage(),
         new KeychainPackage(),
         new RealmReactPackage(),
-        new LinearGradientPackage()
+        new LinearGradientPackage(),
+        new BlurViewPackage()
     );
   }
 

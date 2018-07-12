@@ -38,6 +38,7 @@
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
+		6553072F20F6D2D100FDDFC4 /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6553072620F6D2C600FDDFC4 /* libRNBlur.a */; };
 		655F3D3F20F5AC9F0029A762 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 655F3D3E20F5AC930029A762 /* libRNFetchBlob.a */; };
 		65626F5C20D3F162004F4190 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626F5920D3F14D004F4190 /* libRNKeychain.a */; };
 		65626FAE20D4220B004F4190 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626FAD20D421FB004F4190 /* libReactNativeConfig.a */; };
@@ -316,6 +317,20 @@
 			remoteGlobalIDString = F60690131CA2766F0003FB26;
 			remoteInfo = RealmReact;
 		};
+		6553072520F6D2C600FDDFC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A68BD7BC1BC31318005F02DF;
+			remoteInfo = RNBlur;
+		};
+		6553072720F6D2C600FDDFC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64D1BD361EEFE88700F3F219;
+			remoteInfo = "RNBlur-tvOS";
+		};
 		655F3D3D20F5AC930029A762 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */;
@@ -487,6 +502,7 @@
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
 		65522688205D68D70065A1F7 /* standalone.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = standalone.ttf; path = ../assets/standalone.ttf; sourceTree = "<group>"; };
 		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
+		655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 		6556782820BA144600C18EC4 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
 		655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/rn-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		65626F5320D3F14D004F4190 /* RNKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNKeychain.xcodeproj; path = "../node_modules/react-native-keychain/RNKeychain.xcodeproj"; sourceTree = "<group>"; };
@@ -547,6 +563,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6553072F20F6D2D100FDDFC4 /* libRNBlur.a in Frameworks */,
 				655F3D3F20F5AC9F0029A762 /* libRNFetchBlob.a in Frameworks */,
 				6589F16920E484CB00B556CE /* libBVLinearGradient.a in Frameworks */,
 				65626FAE20D4220B004F4190 /* libReactNativeConfig.a in Frameworks */,
@@ -736,6 +753,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		655306F120F6D2C600FDDFC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6553072620F6D2C600FDDFC4 /* libRNBlur.a */,
+				6553072820F6D2C600FDDFC4 /* libRNBlur.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		655F3D3A20F5AC930029A762 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +890,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */,
 				655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */,
 				6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */,
 				65626FA820D421FB004F4190 /* ReactNativeConfig.xcodeproj */,
@@ -1126,6 +1153,10 @@
 				{
 					ProductGroup = 65626ED220D3EA22004F4190 /* Products */;
 					ProjectRef = CC11378FE5E749598109D5BC /* RNAppAuth.xcodeproj */;
+				},
+				{
+					ProductGroup = 655306F120F6D2C600FDDFC4 /* Products */;
+					ProjectRef = 655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */;
 				},
 				{
 					ProductGroup = 655F3D3A20F5AC930029A762 /* Products */;
@@ -1396,6 +1427,20 @@
 			fileType = archive.ar;
 			path = libRealmReact.a;
 			remoteRef = 6520D0C0206F2F1600440C6C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6553072620F6D2C600FDDFC4 /* libRNBlur.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBlur.a;
+			remoteRef = 6553072520F6D2C600FDDFC4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6553072820F6D2C600FDDFC4 /* libRNBlur.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNBlur.a;
+			remoteRef = 6553072720F6D2C600FDDFC4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		655F3D3E20F5AC930029A762 /* libRNFetchBlob.a */ = {

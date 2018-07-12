@@ -112,6 +112,8 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        renderscriptTargetApi rootProject.ext.compileSdkVersion
+        renderscriptSupportModeEnabled true
         versionCode 1
         versionName "1.0"
         ndk {
@@ -151,6 +153,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-blur')
     compile project(':react-native-config')
     compile project(':react-native-linear-gradient')
     compile project(':react-native-keychain')

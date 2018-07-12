@@ -14,7 +14,9 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import DialogComponent from 'react-native-dialog';
 
+import Dialog from '../core/Dialog';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
@@ -62,6 +64,8 @@ class DeckDetailView extends React.Component {
       loaded: false,
       saving: false,
       leftButtons,
+      nameChange: null,
+      editNameDialogVisible: false,
       hasPendingEdits: false,
     };
 
@@ -73,6 +77,9 @@ class DeckDetailView extends React.Component {
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
+    this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
+    this._onNameChange = this.onNameChange.bind(this);
+    this._saveName = this.saveName.bind(this);
 
     if (props.modal) {
       props.navigator.setButtons({
@@ -173,6 +180,26 @@ class DeckDetailView extends React.Component {
     }
   }
 
+  toggleEditNameDialog() {
+    this.setState({
+      editNameDialogVisible: !this.state.editNameDialogVisible,
+    });
+  }
+
+  onNameChange(value) {
+    this.setState({
+      name: value,
+    });
+  }
+
+  saveName() {
+    this.setState({
+      nameChange: this.state.name,
+      hasPendingEdits: true,
+      editNameDialogVisible: false,
+    });
+  }
+
   onEditPressed() {
     const {
       navigator,
@@ -216,6 +243,7 @@ class DeckDetailView extends React.Component {
     const {
       parsedDeck,
       cardsInDeck,
+      nameChange,
     } = this.state;
     const {
       slots,
@@ -229,7 +257,7 @@ class DeckDetailView extends React.Component {
     }));
     const problem = problemObj ? problemObj.reason : '';
 
-    saveDeck(deck.id, deck.name, slots, problem, parsedDeck.spentXp).then(deck => {
+    saveDeck(deck.id, nameChange || deck.name, slots, problem, parsedDeck.spentXp).then(deck => {
       updateDeck(deck.id, deck, true);
       this.setState({
         saving: false,
@@ -250,6 +278,9 @@ class DeckDetailView extends React.Component {
     const {
       deck,
     } = this.props;
+    const {
+      nameChange,
+    } = this.state;
 
     const removals = {};
     forEach(keys(deck.slots), code => {
@@ -266,7 +297,8 @@ class DeckDetailView extends React.Component {
       }
     });
 
-    return (keys(removals).length > 0 || keys(additions).length > 0);
+    return (deck.name !== nameChange) ||
+      (keys(removals).length > 0 || keys(additions).length > 0);
   }
 
   static getCardsInDeck(deck, cards, slots, previousDeck) {
@@ -304,37 +336,65 @@ class DeckDetailView extends React.Component {
     const {
       slots,
     } = this.state;
-    if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) === -1 ||
-      findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) === -1) {
-      // No change.
+    if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1 ||
+      findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1) {
+      const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots, previousDeck);
+      const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck, previousDeck);
+      this.setState({
+        name: deck.name,
+        slots: deck.slots,
+        cardsInDeck,
+        parsedDeck,
+        hasPendingEdits: false,
+        loaded: true,
+      }, this._syncNavigatorButtons);
     }
-
-    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots, previousDeck);
-    const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck, previousDeck);
-    this.setState({
-      slots: deck.slots,
-      cardsInDeck,
-      parsedDeck,
-      hasPendingEdits: false,
-      loaded: true,
-    }, this._syncNavigatorButtons);
   }
 
-  renderSavingOverlay() {
+  renderEditNameDialog() {
+    const {
+      deck,
+    } = this.props;
+    const {
+      name,
+      loaded,
+      editNameDialogVisible,
+    } = this.state;
+
+    const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
-      <View style={styles.savingOverlay}>
-        <View style={styles.savingBox}>
-          <Text style={[typography.header, styles.savingText]}>
-            Saving
-          </Text>
-          <ActivityIndicator
-            style={styles.spinner}
-            size="large"
-            animating
-          />
-        </View>
-      </View>
+      <Dialog title="Edit Deck Name" visible={editNameDialogVisible}>
+        <DialogComponent.Input
+          value={name}
+          onChangeText={this._onNameChange}
+        />
+        <DialogComponent.Button
+          label="Cancel"
+          onPress={this._toggleEditNameDialog}
+        />
+        <DialogComponent.Button
+          label="Done"
+          color={deck.name === name ? '#666666' : buttonColor}
+          disabled={deck.name === name}
+          onPress={this._saveName}
+        />
+      </Dialog>
     );
+  }
+
+  renderSavingDialog() {
+    const {
+      saving,
+    } = this.state;
+    return (
+      <Dialog title="Saving" visible={saving}>
+        <ActivityIndicator
+          style={styles.spinner}
+          size="large"
+          animating
+        />
+      </Dialog>
+    )
   }
 
   renderButtons() {
@@ -396,6 +456,7 @@ class DeckDetailView extends React.Component {
       parsedDeck,
       cardsInDeck,
       saving,
+      nameChange,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -418,13 +479,16 @@ class DeckDetailView extends React.Component {
           cards={cardsInDeck}
           isPrivate={isPrivate}
           buttons={this.renderButtons()}
+          name={nameChange || parsedDeck.deck.name}
+          onEditNamePress={isPrivate ? this._toggleEditNameDialog : null}
         />
         <DeckNavFooter
           navigator={navigator}
           parsedDeck={parsedDeck}
           cards={cardsInDeck}
         />
-        { saving && this.renderSavingOverlay() }
+        { this.renderSavingDialog() }
+        { this.renderEditNameDialog() }
       </View>
     );
   }
