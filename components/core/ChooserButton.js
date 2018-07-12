@@ -10,6 +10,7 @@ export default class ChooserButton extends React.Component {
     values: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
     selection: PropTypes.array,
+    indent: PropTypes.bool,
   };
 
   constructor(props) {
@@ -42,11 +43,13 @@ export default class ChooserButton extends React.Component {
     const {
       title,
       selection,
+      indent,
     } = this.props;
     return (
       <NavButton
         text={`${title}: ${selection.length ? selection.join(', ') : 'All'}`}
         onPress={this._onPress}
+        indent={indent}
       />
     );
   }

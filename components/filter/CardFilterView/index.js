@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 
 import FactionChooser from './FactionChooser';
-import FilterChooserButton from '../FilterChooserButton';
 import SkillIconChooser from './SkillIconChooser';
+import AccordionItem from '../AccordionItem';
+import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
 import ToggleFilter from '../ToggleFilter';
 import withFilterFunctions from '../withFilterFunctions';
@@ -300,6 +301,7 @@ class CardFilterView extends React.Component {
         subTypes,
         packs,
         cycleNames,
+        assetTraitsEnabled,
         slots,
         encounters,
         illustrators,
@@ -352,6 +354,28 @@ class CardFilterView extends React.Component {
           selection={factions}
           onFilterChange={onFilterChange}
         />
+        <View>
+          { (types.length > 0 || allTypes.length > 0) && (
+            <FilterChooserButton
+              navigator={navigator}
+              title="Types"
+              values={allTypes}
+              selection={types}
+              setting="types"
+              onFilterChange={onFilterChange}
+            />
+          ) }
+          { (subTypes.length > 0 || allSubTypes.length > 0) && (
+            <FilterChooserButton
+              navigator={navigator}
+              title="SubTypes"
+              values={allSubTypes}
+              selection={subTypes}
+              setting="subTypes"
+              onFilterChange={onFilterChange}
+            />
+          ) }
+        </View>
         { hasCost && (
           <SliderChooser
             label="Cost"
@@ -387,13 +411,7 @@ class CardFilterView extends React.Component {
             onToggleChange={onToggleChange}
           />
         ) }
-        { indexOf(allTypes, 'Enemy') !== -1 && (
-          <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
-        ) }
-        { indexOf(allTypes, 'Location') !== -1 && (
-          <NavButton text={this.locationFilterText()} onPress={this._onLocationPress} />
-        ) }
-        <View style={styles.chooserStack}>
+        <View>
           { (traits.length > 0 || allTraits.length > 0) && (
             <FilterChooserButton
               title="Traits"
@@ -404,45 +422,44 @@ class CardFilterView extends React.Component {
               onFilterChange={onFilterChange}
             />
           ) }
-          { (types.length > 0 || allTypes.length > 0) && (
-            <FilterChooserButton
-              navigator={navigator}
-              title="Types"
-              values={allTypes}
-              selection={types}
-              setting="types"
-              onFilterChange={onFilterChange}
-            />
+          { indexOf(allTypes, 'Enemy') !== -1 && (
+            <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
           ) }
-          { (subTypes.length > 0 || allSubTypes.length > 0) && (
-            <FilterChooserButton
-              navigator={navigator}
-              title="SubTypes"
-              values={allSubTypes}
-              selection={subTypes}
-              setting="subTypes"
-              onFilterChange={onFilterChange}
-            />
+          { indexOf(allTypes, 'Location') !== -1 && (
+            <NavButton text={this.locationFilterText()} onPress={this._onLocationPress} />
           ) }
-          { (slots.length > 0 || allSlots.length > 0) && (
-            <FilterChooserButton
-              navigator={navigator}
-              title="Slots"
-              values={allSlots}
-              selection={slots}
-              setting="slots"
-              onFilterChange={onFilterChange}
-            />
-          ) }
-          { (uses.length > 0 || allUses.length > 0) && (
-            <FilterChooserButton
-              navigator={navigator}
-              title="Uses Type"
-              values={allUses}
-              selection={uses}
-              setting="uses"
-              onFilterChange={onFilterChange}
-            />
+          { ((slots.length > 0 || allSlots.length > 0) ||
+            (uses.length > 0 || allUses.length > 0)) && (
+            <AccordionItem
+              label={assetTraitsEnabled ? 'Assets' : 'Assets: All'}
+              height={115}
+              enabled={assetTraitsEnabled}
+              toggleName="assetTraitsEnabled"
+              onToggleChange={onToggleChange}
+            >
+              { (slots.length > 0 || allSlots.length > 0) && (
+                <FilterChooserButton
+                  navigator={navigator}
+                  title="Slots"
+                  values={allSlots}
+                  selection={slots}
+                  setting="slots"
+                  onFilterChange={onFilterChange}
+                  indent
+                />
+              ) }
+              { (uses.length > 0 || allUses.length > 0) && (
+                <FilterChooserButton
+                  navigator={navigator}
+                  title="Uses"
+                  values={allUses}
+                  selection={uses}
+                  setting="uses"
+                  onFilterChange={onFilterChange}
+                  indent
+                />
+              ) }
+            </AccordionItem>
           ) }
           { (cycleNames.length > 0 || allCycleNames.length > 1) && (
             <FilterChooserButton

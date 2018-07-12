@@ -11,6 +11,7 @@ export default class FilterChooserButton extends React.Component {
     selection: PropTypes.array,
     setting: PropTypes.string.isRequired,
     onFilterChange: PropTypes.func.isRequired,
+    indent: PropTypes.bool,
   };
 
   constructor(props) {
@@ -33,6 +34,7 @@ export default class FilterChooserButton extends React.Component {
       title,
       values,
       selection,
+      indent,
     } = this.props;
     return (
       <ChooserButton
@@ -41,6 +43,7 @@ export default class FilterChooserButton extends React.Component {
         values={values}
         selection={selection}
         onChange={this._onChange}
+        indent={indent}
       />
     );
   }

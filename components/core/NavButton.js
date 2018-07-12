@@ -10,10 +10,13 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import typography from '../../styles/typography';
 
-export default function NavButton({ text, onPress }) {
+export default function NavButton({ text, onPress, indent }) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.container}>
+      <View style={[
+        styles.container,
+        indent ? styles.indentedContainer : styles.bottomBorder,
+      ]}>
         <Text style={[styles.text, typography.text]} numberOfLines={1}>
           { text }
         </Text>
@@ -32,6 +35,7 @@ export default function NavButton({ text, onPress }) {
 NavButton.propTypes = {
   text: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
+  indent: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
@@ -41,11 +45,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
     paddingTop: 6,
     paddingBottom: 6,
     paddingLeft: 6,
+  },
+  bottomBorder: {
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+  },
+  indentedContainer: {
+    paddingLeft: 18,
   },
   text: {
     flex: 1,

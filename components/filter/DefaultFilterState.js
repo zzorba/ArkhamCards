@@ -7,6 +7,7 @@ export default {
   traits: [],
   packs: [],
   cycleNames: [],
+  assetTraitsEnabled: false,
   slots: [],
   encounters: [],
   illustrators: [],
