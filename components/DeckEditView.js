@@ -102,6 +102,7 @@ class DeckEditView extends React.Component {
         onDeckCountChange={this._onDeckCountChange}
         backPressed={this._backPressed}
         footer={this.renderFooter()}
+        storyToggle
       />
     );
   }

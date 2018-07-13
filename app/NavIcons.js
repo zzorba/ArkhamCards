@@ -23,6 +23,7 @@ const icons = {
   settings: [28, COLORS.button, MaterialCommunityIcons],
   add: [28, COLORS.button],
   flip_card: [28, COLORS.button, ArkhamIcon],
+  book: [26, COLORS.button, ArkhamIcon],
 };
 
 const defaultIconProvider = MaterialIcons;

@@ -35,6 +35,7 @@ export default class CardSearchComponent extends React.Component {
     backButtonText: PropTypes.string,
     limits: PropTypes.object,
     footer: PropTypes.node,
+    storyToggle: PropTypes.bool,
   };
 
   constructor(props) {
@@ -47,6 +48,7 @@ export default class CardSearchComponent extends React.Component {
       searchTerm: '',
       selectedSort: props.sort || SORT_BY_TYPE,
       filters: DefaultFilterState,
+      storyMode: false,
     };
 
     this._cardPressed = this.cardPressed.bind(this);
@@ -65,18 +67,26 @@ export default class CardSearchComponent extends React.Component {
       icon: iconsMap['arrow-left'],
     };
     const defaultButton = Platform.OS === 'ios' ? [] : null;
+    const rightButtons = [
+      {
+        icon: iconsMap.tune,
+        id: 'filter',
+      },
+      {
+        icon: iconsMap['sort-by-alpha'],
+        id: 'sort',
+      },
+    ];
+    if (props.storyToggle) {
+      rightButtons.push({
+        icon: iconsMap.book,
+        id: 'story',
+      });
+    }
+
     props.navigator.setButtons({
       leftButtons: props.backButtonText ? [leftButton] : defaultButton,
-      rightButtons: [
-        {
-          icon: iconsMap.tune,
-          id: 'filter',
-        },
-        {
-          icon: iconsMap['sort-by-alpha'],
-          id: 'sort',
-        },
-      ],
+      rightButtons,
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -134,6 +144,34 @@ export default class CardSearchComponent extends React.Component {
           style: {
             backgroundColor: 'rgba(128,128,128,.75)',
           },
+        });
+      } else if (event.id === 'story') {
+        const {
+          storyMode,
+        } = this.state;
+        this.setState({
+          storyMode: !storyMode,
+        });
+
+        const rightButtons = [
+          {
+            icon: iconsMap.tune,
+            id: 'filter',
+          },
+          {
+            icon: iconsMap['sort-by-alpha'],
+            id: 'sort',
+          },
+          {
+            icon: storyMode ? iconsMap.book : iconsMap.deck,
+            id: 'story',
+          },
+        ];
+        navigator.setButtons({
+          rightButtons,
+        });
+        navigator.setTitle({
+          title: storyMode ? '' : 'Special',
         });
       }
     } else if (event.id === 'willDisappear') {
@@ -276,8 +314,11 @@ export default class CardSearchComponent extends React.Component {
     const {
       selectedSort,
       searchTerm,
+      storyMode
     } = this.state;
-    const query = this.query();
+    const query = storyMode ?
+      'deck_limit > 0 && (spoiler == true || (subtype_code != null && restrictions == null))' :
+      this.query();
     return (
       <View style={styles.wrapper}>
         { this.renderHeader() }
