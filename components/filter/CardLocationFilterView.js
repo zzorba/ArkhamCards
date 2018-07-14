@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native';
 
-import AccordionItem from './AccordionItem';
 import SliderChooser from './SliderChooser';
 import ToggleFilter from './ToggleFilter';
 import withFilterFunctions from './withFilterFunctions';
@@ -82,11 +81,6 @@ class CardLocationFilterView extends React.Component {
 export default withFilterFunctions(CardLocationFilterView);
 
 const styles = StyleSheet.create({
-  toggleColumn: {
-    width: '50%',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-  },
   toggleRow: {
     marginTop: 4,
     flexDirection: 'row',

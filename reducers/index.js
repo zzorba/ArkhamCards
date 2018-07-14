@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { filter, find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'
+import storage from 'redux-persist/lib/storage';
 
 import {
   CLEAR_DECKS,

@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { findIndex, flatMap, forEach, keys, map, range } from 'lodash';
 import {
-  Alert,
-  ActivityIndicator,
-  Platform,
   StyleSheet,
-  Text,
   View,
   findNodeHandle,
 } from 'react-native';
@@ -36,3 +31,10 @@ export default function Dialog({ title, visible, viewRef, children }) {
     </View>
   );
 }
+
+Dialog.propTypes = {
+  title: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
+  viewRef: PropTypes.object.isRequired,
+  children: PropTypes.node,
+};

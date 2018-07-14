@@ -6,7 +6,6 @@ import {
   ActivityIndicator,
   Platform,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -26,7 +25,6 @@ import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
 import { getDeck } from '../../reducers';
-import typography from '../../styles/typography';
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -118,22 +116,22 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const {
       deck,
       isPrivate,
       previousDeck,
       fetchPrivateDeck,
       fetchPublicDeck,
-    } = nextProps;
-    if (deck !== this.props.deck && deck.previous_deck && !previousDeck) {
+    } = this.props;
+    if (deck !== prevProps.deck && deck.previous_deck && !previousDeck) {
       if (isPrivate) {
         fetchPrivateDeck(deck.previous_deck);
       } else {
         fetchPublicDeck(deck.previous_deck, false);
       }
     }
-    if (deck !== this.props.deck || previousDeck !== this.props.previousDeck) {
+    if (deck !== prevProps.deck || previousDeck !== prevProps.previousDeck) {
       if (deck && (!deck.previous_deck || previousDeck)) {
         this.loadCards(deck, previousDeck);
       }
@@ -147,7 +145,7 @@ class DeckDetailView extends React.Component {
   }
 
   syncNavigatorButtons() {
-    /*const {
+    /* const {
       navigator,
     } = this.props;
     const {
@@ -168,7 +166,7 @@ class DeckDetailView extends React.Component {
       navigator.setButtons({
         rightButtons: [],
       });
-    }*/
+    } */
   }
 
   onNavigatorEvent(event) {
@@ -201,9 +199,14 @@ class DeckDetailView extends React.Component {
   }
 
   saveName() {
+    const {
+      name,
+      slots,
+    } = this.state;
+    const pendingEdits = this.hasPendingEdits(name, slots);
     this.setState({
-      nameChange: this.state.name,
-      hasPendingEdits: true,
+      nameChange: name,
+      hasPendingEdits: pendingEdits,
       editNameDialogVisible: false,
     });
   }
@@ -279,16 +282,17 @@ class DeckDetailView extends React.Component {
   }
 
   clearEdits() {
-    this.updateSlots(this.props.deck.slots);
+    this.setState({
+      nameChange: null,
+    }, () => {
+      this.updateSlots(this.props.deck.slots);
+    });
   }
 
-  hasPendingEdits(slots) {
+  hasPendingEdits(nameChange, slots) {
     const {
       deck,
     } = this.props;
-    const {
-      nameChange,
-    } = this.state;
 
     const removals = {};
     forEach(keys(deck.slots), code => {
@@ -305,8 +309,9 @@ class DeckDetailView extends React.Component {
       }
     });
 
-    return (deck.name !== nameChange) ||
-      (keys(removals).length > 0 || keys(additions).length > 0);
+    return (nameChange && deck.name !== nameChange) ||
+      keys(removals).length > 0 ||
+      keys(additions).length > 0;
   }
 
   static getCardsInDeck(deck, cards, slots, previousDeck) {
@@ -333,7 +338,7 @@ class DeckDetailView extends React.Component {
       slots: newSlots,
       cardsInDeck,
       parsedDeck,
-      hasPendingEdits: this.hasPendingEdits(newSlots),
+      hasPendingEdits: this.hasPendingEdits(this.state.nameChange, newSlots),
     }, this._syncNavigatorButtons);
   }
 
@@ -365,7 +370,6 @@ class DeckDetailView extends React.Component {
     } = this.props;
     const {
       name,
-      loaded,
       editNameDialogVisible,
       viewRef,
     } = this.state;
@@ -414,7 +418,7 @@ class DeckDetailView extends React.Component {
           animating
         />
       </Dialog>
-    )
+    );
   }
 
   renderButtons() {
@@ -475,7 +479,6 @@ class DeckDetailView extends React.Component {
       loaded,
       parsedDeck,
       cardsInDeck,
-      saving,
       nameChange,
     } = this.state;
 
@@ -548,36 +551,10 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'white',
   },
-  savingOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(128,128,128,0.8)',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  savingBox: {
-    width: '75%',
-    padding: 32,
-    borderRadius: 8,
-    borderWidth: 2,
-    borderColor: '#222222',
-    backgroundColor: 'white',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  savingText: {
-    marginBottom: 16,
-  },
   spinner: {
     height: 80,
   },
   activityIndicatorContainer: {
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

@@ -66,19 +66,27 @@ class CardResultList extends React.Component {
     setTimeout(() => this.updateResults(), 0);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.query !== this.props.query ||
-        nextProps.sort !== this.props.sort ||
-        nextProps.searchTerm !== this.props.searchTerm ||
-        nextProps.show_spoilers !== this.props.show_spoilers) {
+  componentDidUpdate(prevProps) {
+    const {
+      deckCardCounts,
+    } = this.props;
+    const updateDeckCardCounts = (prevProps.deckCardCounts !== deckCardCounts);
+
+    if (prevProps.query !== this.props.query ||
+        prevProps.sort !== this.props.sort ||
+        prevProps.searchTerm !== this.props.searchTerm ||
+        prevProps.show_spoilers !== this.props.show_spoilers) {
+      /* eslint-disable react/no-did-update-set-state */
       this.setState({
         loading: true,
+        deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
+      }, () => {
+        setTimeout(() => this.updateResults(), 0);
       });
-      setTimeout(() => this.updateResults(), 50);
-    }
-    if (nextProps.deckCardCounts !== this.props.deckCardCounts) {
+    } else if (updateDeckCardCounts) {
+      /* eslint-disable react/no-did-update-set-state */
       this.setState({
-        deckCardCounts: nextProps.deckCardCounts,
+        deckCardCounts: deckCardCounts,
       });
     }
   }

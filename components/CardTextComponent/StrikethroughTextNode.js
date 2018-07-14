@@ -16,7 +16,7 @@ export default function StrikethroughTextNode(node, output, state) {
   );
 }
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   strikeText: {
     textDecorationLine: 'line-through',
   },

@@ -25,16 +25,21 @@ class DeckEditView extends React.Component {
 
     this.state = {
       deckCardCounts: props.slots || {},
+      slots: props.slots,
     };
 
     this._backPressed = this.backPressed.bind(this);
     this._onDeckCountChange = this.onDeckCountChange.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.slots !== this.props.slots) {
+  componentDidUpdate(prevProps) {
+    const {
+      slots,
+    } = this.props;
+    if (slots !== prevProps.slots) {
+      /* eslint-disable react/no-did-update-set-state */
       this.setState({
-        deckCardCounts: nextProps.slots,
+        deckCardCounts: slots,
       });
     }
   }

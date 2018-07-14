@@ -163,7 +163,7 @@ export default class CardSearchComponent extends React.Component {
             id: 'sort',
           },
           {
-            icon: storyMode ? iconsMap.book : iconsMap.deck,
+            icon: storyMode ? iconsMap.book : iconsMap.per_investigator,
             id: 'story',
           },
         ];
@@ -314,7 +314,7 @@ export default class CardSearchComponent extends React.Component {
     const {
       selectedSort,
       searchTerm,
-      storyMode
+      storyMode,
     } = this.state;
     const query = storyMode ?
       'deck_limit > 0 && (spoiler == true || (subtype_code != null && restrictions == null))' :

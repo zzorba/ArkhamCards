@@ -18,6 +18,7 @@ const HEADER_SIZE = 48;
 class CardImageView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.string.isRequired,
     card: PropTypes.object,
   };
@@ -49,7 +50,7 @@ class CardImageView extends React.Component {
         rightButtons: [
           {
             id: 'flip',
-            icon: iconsMap['flip_card'],
+            icon: iconsMap.flip_card,
           },
         ],
       });
@@ -146,7 +147,7 @@ class CardImageView extends React.Component {
       <View style={styles.container}>
         { this.renderContent() }
       </View>
-    )
+    );
   }
 }
 

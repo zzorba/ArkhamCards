@@ -9,6 +9,7 @@ import CardSearchComponent from './CardSearchComponent';
 class InvestigatorCardsView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    /* eslint-disable react/no-unused-prop-types */
     investigatorCode: PropTypes.string.isRequired,
     investigator: PropTypes.object.isRequired,
   };
