@@ -272,6 +272,8 @@ class DeckDetailView extends React.Component {
       updateDeck(deck.id, deck, true);
       this.setState({
         saving: false,
+        nameChange: null,
+        hasPendingEdits: false,
       });
     }, err => {
       this.setState({

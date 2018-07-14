@@ -15,6 +15,7 @@ class NewDeckView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     setNewDeck: PropTypes.func.isRequired,
+    onCreateDeck: PropTypes.func,
   };
 
   constructor(props) {
@@ -53,9 +54,11 @@ class NewDeckView extends React.Component {
     const {
       navigator,
       setNewDeck,
+      onCreateDeck,
     } = this.props;
     newDeck(investigator.code).then(deck => {
       setNewDeck(deck.id, deck);
+      onCreateDeck && onCreateDeck(deck.id);
       navigator.showModal({
         screen: 'Deck',
         passProps: {

@@ -19,27 +19,18 @@ export default class AddDeckRow extends React.Component {
     super(props);
 
     this._showDeckSelector = this.showDeckSelector.bind(this);
-    this._onDeckSelect = this.onDeckSelect.bind(this);
-  }
-
-  onDeckSelect(id) {
-    const {
-      navigator,
-      deckAdded,
-    } = this.props;
-    deckAdded(id);
-    navigator.pop();
   }
 
   showDeckSelector() {
     const {
       navigator,
       selectedDeckIds,
+      deckAdded,
     } = this.props;
-    navigator.push({
+    navigator.showModal({
       screen: 'Dialog.DeckSelector',
       passProps: {
-        onDeckSelect: this._onDeckSelect,
+        onDeckSelect: deckAdded,
         selectedDeckIds: selectedDeckIds,
       },
     });
@@ -49,8 +40,14 @@ export default class AddDeckRow extends React.Component {
     return (
       <TouchableOpacity onPress={this._showDeckSelector}>
         <View style={styles.row}>
-          <MaterialCommunityIcons name="plus-box-outline" size={80} color="#444" />
-          <Text style={styles.text}>Add Another</Text>
+          <MaterialCommunityIcons
+            name="plus-box-outline"
+            size={80}
+            color="#444"
+          />
+          <Text style={styles.text}>
+            Add Another
+          </Text>
         </View>
       </TouchableOpacity>
     );

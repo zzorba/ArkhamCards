@@ -226,7 +226,7 @@ class DeckRow extends React.Component {
     } = this.props;
     return (
       <View style={styles.row}>
-        <Text numberOfLines={1} ellipsizeMode="tail" style={typography.bigLabel}>
+        <Text numberOfLines={2} ellipsizeMode="tail" style={typography.bigLabel}>
           { deck.name }
         </Text>
       </View>

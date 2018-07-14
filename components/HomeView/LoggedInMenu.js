@@ -7,6 +7,8 @@ import {
 import withLoginGate from '../withLoginGate';
 import MenuItem from './MenuItem';
 
+const SHOW_CAMPAIGN_BUTTON = false;
+
 function LoggedInMenu({ navigator }) {
   return (
     <View>
@@ -16,6 +18,14 @@ function LoggedInMenu({ navigator }) {
         screen="My.Decks"
         icon="deck"
       />
+      { SHOW_CAMPAIGN_BUTTON && (
+        <MenuItem
+          navigator={navigator}
+          text="My Campaigns"
+          screen="My.Campaigns"
+          icon="book"
+        />
+      ) }
     </View>
   );
 }

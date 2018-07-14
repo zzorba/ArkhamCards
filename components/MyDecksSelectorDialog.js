@@ -19,6 +19,12 @@ export default class MyDecksSelectorDialog extends React.Component {
       title: 'Choose a Deck',
     });
     props.navigator.setButtons({
+      leftButtons: [
+        {
+          icon: iconsMap.close,
+          id: 'close',
+        },
+      ],
       rightButtons: [
         {
           icon: iconsMap.add,
@@ -27,31 +33,47 @@ export default class MyDecksSelectorDialog extends React.Component {
       ],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+    this._deckSelected = this.deckSelected.bind(this);
   }
 
   onNavigatorEvent(event) {
     const {
       navigator,
+      onDeckSelect,
     } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
         navigator.push({
           screen: 'Deck.New',
+          passProps: {
+            onCreateDeck: onDeckSelect,
+          },
         });
+      } else if (event.id === 'close') {
+        navigator.dismissModal();
       }
     }
+  }
+
+  deckSelected(id) {
+    const {
+      onDeckSelect,
+      navigator,
+    } = this.props;
+    onDeckSelect(id);
+    navigator.dismissModal();
   }
 
   render() {
     const {
       navigator,
-      onDeckSelect,
       selectedDeckIds,
     } = this.props;
     return (
       <MyDecksComponent
         navigator={navigator}
-        deckClicked={onDeckSelect}
+        deckClicked={this._deckSelected}
         filterDeckIds={selectedDeckIds}
       />
     );
