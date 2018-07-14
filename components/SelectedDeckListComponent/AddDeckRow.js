@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import typography from '../../styles/typography';
+
 export default class AddDeckRow extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -45,9 +47,14 @@ export default class AddDeckRow extends React.Component {
             size={80}
             color="#444"
           />
-          <Text style={styles.text}>
-            Add Another
-          </Text>
+          <View style={styles.column}>
+            <Text style={styles.text}>
+              Add Another
+            </Text>
+            <Text style={typography.small}>
+              Investigators can be added later
+            </Text>
+          </View>
         </View>
       </TouchableOpacity>
     );
@@ -66,6 +73,12 @@ const styles = StyleSheet.create({
     borderColor: '#000000',
     paddingLeft: 8,
     paddingRight: 8,
+  },
+  column: {
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontSize: 36,

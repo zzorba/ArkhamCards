@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize, filter } from 'lodash';
+import { capitalize, filter, map } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -11,14 +11,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import CampaignSelector from './CampaignSelector';
+import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { CUSTOM } from './constants';
+import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import Button from '../../core/Button';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import EditNameDialog from '../../core/EditNameDialog';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import SelectedDeckListComponent from '../../SelectedDeckListComponent';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
-import { CAMPAIGN_CHAOS_BAGS, DIFFICULTY } from '../../../constants';
+import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';
 import typography from '../../../styles/typography';
 import * as Actions from '../../../actions';
@@ -48,6 +50,8 @@ class NewCampaignView extends React.Component {
       customChaosBag: Object.assign({}, CAMPAIGN_CHAOS_BAGS.core[1]),
       viewRef: null,
       editNameDialogVisible: false,
+      customCampaignLog: { sections: ['Campaign Notes'] },
+      campaignLogDialogVisible: false,
     };
 
     this.updateNavigatorButtons();
@@ -55,6 +59,9 @@ class NewCampaignView extends React.Component {
 
     this._onSave = this.onSave.bind(this);
     this._onWeaknessPackChange = this.onWeaknessPackChange.bind(this);
+    this._addCampaignNoteSection = this.addCampaignNoteSection.bind(this);
+    this._deleteCampaignNoteSection = this.deleteCampaignNoteSection.bind(this);
+    this._toggleCampaignLogDialog = this.toggleCampaignLogDialog.bind(this);
     this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
     this._onNameChange = this.onNameChange.bind(this);
     this._captureViewRef = this.captureViewRef.bind(this);
@@ -74,9 +81,50 @@ class NewCampaignView extends React.Component {
     });
   }
 
+  static getKeyName(isCount, perInvestigator) {
+    if (perInvestigator) {
+      if (isCount) {
+        return 'investigatorCounts';
+      }
+      return 'investigatorSections';
+    }
+    if (isCount) {
+      return 'counts';
+    }
+    return 'sections';
+  }
+
+  addCampaignNoteSection(name, isCount, perInvestigator) {
+    const customCampaignLog = Object.assign({}, this.state.customCampaignLog);
+    const keyName = NewCampaignView.getKeyName(isCount, perInvestigator);
+    customCampaignLog[keyName] = (customCampaignLog[keyName] || []).slice();
+    customCampaignLog[keyName].push(name);
+    this.setState({
+      customCampaignLog,
+    });
+  }
+
+  deleteCampaignNoteSection(name, isCount, perInvestigator) {
+    const customCampaignLog = Object.assign({}, this.state.customCampaignLog);
+    const keyName = NewCampaignView.getKeyName(isCount, perInvestigator);
+    customCampaignLog[keyName] = filter(
+      customCampaignLog[keyName] || [],
+      sectionName => name !== sectionName);
+
+    this.setState({
+      customCampaignLog,
+    });
+  }
+
   toggleEditNameDialog() {
     this.setState({
       editNameDialogVisible: !this.state.editNameDialogVisible,
+    });
+  }
+
+  toggleCampaignLogDialog() {
+    this.setState({
+      campaignLogDialogVisible: !this.state.campaignLogDialogVisible,
     });
   }
 
@@ -143,11 +191,12 @@ class NewCampaignView extends React.Component {
     // Save to redux.
     newCampaign(
       nextId,
-      name || `My ${campaign}`,
+      name || `My ${campaign} Campaign`,
       campaignCode,
       difficulty,
       deckIds,
       this.getChaosBag(),
+      this.getCampaignLog(),
       weaknessPacks,
     );
     onCreateCampaign(nextId);
@@ -228,6 +277,24 @@ class NewCampaignView extends React.Component {
     return customChaosBag;
   }
 
+  hasDefinedCampaignLog() {
+    const {
+      campaignCode,
+    } = this.state;
+    return (campaignCode !== CUSTOM && CAMPAIGN_LOGS[campaignCode]);
+  }
+
+  getCampaignLog() {
+    const {
+      campaignCode,
+      customCampaignLog,
+    } = this.state;
+    if (this.hasDefinedCampaignLog()) {
+      return CAMPAIGN_LOGS[campaignCode];
+    }
+    return customCampaignLog;
+  }
+
   captureViewRef(ref) {
     this.setState({
       viewRef: ref,
@@ -288,12 +355,62 @@ class NewCampaignView extends React.Component {
     return (
       <View style={styles.margin}>
         <Text style={typography.bigLabel}>Weakness Set</Text>
+        <Text style={typography.small}>
+          Include all basic weaknesses from these expansions
+        </Text>
         <WeaknessSetPackChooserComponent
           navigator={navigator}
           compact
           onSelectedPacksChanged={this._onWeaknessPackChange}
         />
       </View>
+    );
+  }
+
+  renderCampaignLogSection() {
+    const campaignLog = this.getCampaignLog();
+    const onPress = this.hasDefinedCampaignLog() ?
+      null :
+      this._deleteCampaignNoteSection;
+
+    return (
+      <View style={styles.margin}>
+        <Text style={typography.bigLabel}>
+          Campaign Log Sections
+        </Text>
+        <View style={styles.margin}>
+          { map(campaignLog.sections || [], section => (
+            <CampaignNoteSectionRow key={section} name={section} onPress={onPress} />
+          )) }
+          { map(campaignLog.counts || [], section => (
+            <CampaignNoteSectionRow key={section} name={section} isCount onPress={onPress} />
+          )) }
+          { map(campaignLog.investigatorSections || [], section => (
+            <CampaignNoteSectionRow key={section} name={section} perInvestigator onPress={onPress} />
+          )) }
+          { map(campaignLog.investigatorCounts || [], section => (
+            <CampaignNoteSectionRow key={section} name={section} perInvestigator isCount onPress={onPress} />
+          )) }
+        </View>
+        { !this.hasDefinedChaosBag() && (
+          <Button text="Add Section" onPress={this._toggleCampaignLogDialog} />
+        ) }
+      </View>
+    );
+  }
+
+  renderCampaignSectionDialog() {
+    const {
+      viewRef,
+      campaignLogDialogVisible,
+    } = this.state;
+    return (
+      <AddCampaignNoteSectionDialog
+        viewRef={viewRef}
+        visible={campaignLogDialogVisible}
+        addSection={this._addCampaignNoteSection}
+        toggleVisible={this._toggleCampaignLogDialog}
+      />
     );
   }
 
@@ -309,14 +426,17 @@ class NewCampaignView extends React.Component {
     } = this.state;
 
     return (
-      <View ref={this._captureViewRef}>
-        <ScrollView contentContainerStyle={styles.topPadding}>
+      <View>
+        <ScrollView
+          contentContainerStyle={styles.topPadding}
+          ref={this._captureViewRef}
+        >
           <View style={styles.underline}>
             <View style={[styles.margin, styles.topPadding]}>
               <LabeledTextBox
                 label="Name"
                 onPress={this._toggleEditNameDialog}
-                placeholder={`My ${campaign}`}
+                placeholder={`My ${campaign} Campaign`}
                 value={name}
               />
             </View>
@@ -333,6 +453,9 @@ class NewCampaignView extends React.Component {
           <View style={styles.underline}>
             { this.renderWeaknessSetSection() }
           </View>
+          <View style={styles.underline}>
+            { this.renderCampaignLogSection() }
+          </View>
           <SelectedDeckListComponent
             navigator={navigator}
             deckIds={deckIds}
@@ -348,6 +471,7 @@ class NewCampaignView extends React.Component {
           <View style={styles.footer} />
         </ScrollView>
         { this.renderNameDialog() }
+        { this.renderCampaignSectionDialog() }
       </View>
     );
   }

@@ -255,6 +255,7 @@ export function newCampaign(
   difficulty,
   deckIds,
   chaosBag,
+  campaignLog,
   weaknessPacks
 ) {
   return {
@@ -264,9 +265,10 @@ export function newCampaign(
     cycleCode: pack_code,
     difficulty,
     chaosBag,
+    campaignLog,
+    weaknessPacks,
     deckIds,
     now: new Date(),
-    weaknessPacks,
   };
 }
 

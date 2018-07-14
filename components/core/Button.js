@@ -48,7 +48,7 @@ export default function Button({
           { paddingLeft: padding, paddingRight: padding },
         ]}>
           { !!icon && (
-            <View style={styles.icon}>
+            <View style={text ? styles.icon : {}}>
               { icon }
             </View>
           ) }

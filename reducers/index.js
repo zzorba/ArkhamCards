@@ -264,24 +264,43 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 //   cycleCode: '',
 //   lastUpdated: Date,
 //   latestDeckIds: [],
+//   investigatorData: {
+//     investigator_code: {
+//       physical: #,
+//       mental: #,
+//       killed: bool,
+//       insane: bool,
+//       campaignNotes: {
+//         sections: [
+//           { title: 'Supplies', notes: [] },
+//         ],
+//       }
+//     },
+//   },
 //   chaosBag: {},
-//   scenarioResults: [{
-//     deckIds: [],
+//   weaknessSet: {
+//     packCodes: [],
+//     assignedCards: {},
+//   },
+//   campaignNotes: {
+//     sections: [
+//       { title: 'Campaign Notes', notes: [] },
+//       { title: 'Section Title', notes: [] },
+//     ],
+//     counts: [
+//       { title: 'Doubt', count: 2 },
+//     ],
+//     // Not the data, just the config.
+//     investigatorLogs: {
+//
+//     },
+//   },
+//   completedScenarios: [{
 //     scenario: '',
 //     scenarioCode: '',
-//     campaignNotes: [],
-//     chaosBagChanges: [],
-//     investigatorUpdates: {
-//      investigator_code: {
-//        trauma: {
-//          physical,
-//          mental,
-//          killed: bool,
-//          insane: bool,
-//        },
-//        xp: #,
-//        exiled: {},
-//     },
+//   },{
+//     scenario: '',
+//     scenarioCode: '',
 //   }],
 // }
 const DEFAULT_CAMPAIGNS_STATE = {
@@ -304,9 +323,13 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
       chaosBag: action.chaosBag,
+      weaknessSet: {
+        packCodes: action.weaknessPacks,
+        assignedCards: {},
+      },
       latestDeckIds: action.deckIds,
       lastUpdated: action.now,
-      scenarioResults: [],
+      investigatorData: {},
     };
     return Object.assign({},
       state,

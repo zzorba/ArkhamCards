@@ -143,6 +143,28 @@ export const CAMPAIGN_CHAOS_BAGS = {
   ],
 };
 
+const CORE_CAMPAIGN_LOG = {
+  sections: ['Campaign Notes', 'Cultists We Interrogated', 'Cultists Who Got Away'],
+};
+
+export const CAMPAIGN_LOGS = {
+  'core': CORE_CAMPAIGN_LOG,
+  'rtnotz': CORE_CAMPAIGN_LOG,
+  'dwl': {
+    sections: ['Campaign Notes', 'Sacrificed to Yog-Sothoth'],
+  },
+  'ptc': {
+    sections: ['Campaign Notes', 'VIPs Interviewed', 'VIPs Slain'],
+    counts: ['Doubt', 'Conviction', 'Chasing the Stranger'],
+  },
+  'tfa': {
+    sections: ['Campaign Notes'],
+    counts: ['Yig\'s Fury'],
+    investigatorSections: ['Supplies'],
+    // investigatorCounts
+  },
+};
+
 export const CHAOS_BAG_TOKEN_COUNTS = {
   '+1': 3,
   '0': 4,

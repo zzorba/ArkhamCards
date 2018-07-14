@@ -65,7 +65,7 @@ class SelectCampaignDialog extends React.Component {
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}
-        text={packCode === 'custom' ? 'Custom Campaign' : CAMPAIGNS[packCode]}
+        text={packCode === 'custom' ? 'Custom' : CAMPAIGNS[packCode]}
       />
     );
   }
