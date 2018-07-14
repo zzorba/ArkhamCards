@@ -42,6 +42,7 @@ class CardEnemyFilterView extends React.Component {
         enemySpawn,
         enemyPrey,
         enemyAloof,
+        enemyMassive,
       },
       onToggleChange,
     } = this.props;
@@ -49,7 +50,7 @@ class CardEnemyFilterView extends React.Component {
     return (
       <AccordionItem
         label="Keywords"
-        height={215}
+        height={250}
         enabled={enemyKeywordsEnabled}
         toggleName="enemyKeywordsEnabled"
         onToggleChange={onToggleChange}
@@ -84,6 +85,12 @@ class CardEnemyFilterView extends React.Component {
               label="Aloof"
               setting="enemyAloof"
               value={enemyAloof}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label="Massive"
+              setting="enemyMassive"
+              value={enemyMassive}
               onChange={onToggleChange}
             />
           </View>
@@ -167,8 +174,9 @@ class CardEnemyFilterView extends React.Component {
           enabled={enemyHealthEnabled}
           toggleName="enemyHealthEnabled"
           onToggleChange={onToggleChange}
+          height={1}
         >
-          <View style={styles.toggleRow}>
+          <View>
             <ToggleFilter
               label="Per Investigator"
               setting="enemyHealthPerInvestigator"

@@ -59,16 +59,16 @@ export default class DeckNavFooter extends React.Component {
   showCardSimulator() {
     const {
       navigator,
-      parsedDeck,
-      cards,
+      parsedDeck: {
+        deck,
+      },
     } = this.props;
     navigator.push({
       screen: 'Deck.DrawSimulator',
       title: 'Draw',
       backButtonTitle: 'Deck',
       passProps: {
-        parsedDeck,
-        cards,
+        slots: deck.slots,
       },
       navigatorStyle: {
         tabBarHidden: true,

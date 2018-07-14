@@ -189,6 +189,7 @@ class CardFilterView extends React.Component {
         enemySpawn,
         enemyPrey,
         enemyAloof,
+        enemyMassive,
         enemyHealthEnabled,
         enemyHealth,
         enemyHealthPerInvestigator,
@@ -233,6 +234,9 @@ class CardFilterView extends React.Component {
       }
       if (enemyAloof) {
         parts.push('Aloof');
+      }
+      if (enemyMassive) {
+        parts.push('Massive');
       }
     }
     if (enemyHealthEnabled) {
@@ -301,7 +305,7 @@ class CardFilterView extends React.Component {
         subTypes,
         packs,
         cycleNames,
-        assetTraitsEnabled,
+        playerFiltersEnabled,
         slots,
         encounters,
         illustrators,
@@ -309,11 +313,16 @@ class CardFilterView extends React.Component {
         // vengeance,
         skillIcons,
         skillEnabled,
-        xp,
-        xpEnabled,
+        level,
+        levelEnabled,
+        exceptional,
+        nonExceptional,
         cost,
         costEnabled,
         unique,
+        permanent,
+        fast,
+        exile,
       },
       onToggleChange,
       onFilterChange,
@@ -391,16 +400,32 @@ class CardFilterView extends React.Component {
         ) }
         { hasXp && (
           <SliderChooser
-            label="Experience"
+            label="Level"
             width={width}
-            values={xp}
-            enabled={xpEnabled}
-            setting="xp"
+            values={level}
+            enabled={levelEnabled}
+            setting="level"
             onFilterChange={onFilterChange}
-            toggleName="xpEnabled"
+            toggleName="levelEnabled"
             onToggleChange={onToggleChange}
             max={5}
-          />
+            height={2}
+          >
+            <View>
+              <ToggleFilter
+                label="Exceptional"
+                setting="exceptional"
+                value={exceptional}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label="Non-Exceptional"
+                setting="nonExceptional"
+                value={nonExceptional}
+                onChange={onToggleChange}
+              />
+            </View>
+          </SliderChooser>
         ) }
         { hasSkill && (
           <SkillIconChooser
@@ -422,19 +447,13 @@ class CardFilterView extends React.Component {
               onFilterChange={onFilterChange}
             />
           ) }
-          { indexOf(allTypes, 'Enemy') !== -1 && (
-            <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
-          ) }
-          { indexOf(allTypes, 'Location') !== -1 && (
-            <NavButton text={this.locationFilterText()} onPress={this._onLocationPress} />
-          ) }
           { ((slots.length > 0 || allSlots.length > 0) ||
             (uses.length > 0 || allUses.length > 0)) && (
             <AccordionItem
-              label={assetTraitsEnabled ? 'Assets' : 'Assets: All'}
-              height={115}
-              enabled={assetTraitsEnabled}
-              toggleName="assetTraitsEnabled"
+              label={playerFiltersEnabled ? 'Player Cards' : 'Player Cards: All'}
+              height={195}
+              enabled={playerFiltersEnabled}
+              toggleName="playerFiltersEnabled"
               onToggleChange={onToggleChange}
             >
               { (slots.length > 0 || allSlots.length > 0) && (
@@ -459,7 +478,43 @@ class CardFilterView extends React.Component {
                   indent
                 />
               ) }
+              <View style={styles.toggleRow}>
+                <View style={styles.toggleColumn}>
+                  <ToggleFilter
+                    label="Fast"
+                    setting="fast"
+                    value={fast}
+                    onChange={onToggleChange}
+                  />
+                  <ToggleFilter
+                    label="Permanent"
+                    setting="permanent"
+                    value={permanent}
+                    onChange={onToggleChange}
+                  />
+                </View>
+                <View style={styles.toggleColumn}>
+                  <ToggleFilter
+                    label="Exile"
+                    setting="exile"
+                    value={exile}
+                    onChange={onToggleChange}
+                  />
+                  <ToggleFilter
+                    label="Unique"
+                    setting="unique"
+                    value={unique}
+                    onChange={onToggleChange}
+                  />
+                </View>
+              </View>
             </AccordionItem>
+          ) }
+          { indexOf(allTypes, 'Enemy') !== -1 && (
+            <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
+          ) }
+          { indexOf(allTypes, 'Location') !== -1 && (
+            <NavButton text={this.locationFilterText()} onPress={this._onLocationPress} />
           ) }
           { (cycleNames.length > 0 || allCycleNames.length > 1) && (
             <FilterChooserButton
@@ -505,12 +560,6 @@ class CardFilterView extends React.Component {
         <View style={styles.toggleStack}>
           <View style={styles.toggleRow}>
             <ToggleFilter
-              label="Unique"
-              setting="unique"
-              value={unique}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
               label="Victory"
               setting="victory"
               value={victory}
@@ -541,5 +590,10 @@ const styles = StyleSheet.create({
     marginTop: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  toggleColumn: {
+    width: '50%',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
   },
 });

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ScrollView,
-  StyleSheet,
   View,
 } from 'react-native';
 
@@ -63,8 +62,9 @@ class CardLocationFilterView extends React.Component {
           enabled={cluesEnabled}
           toggleName="cluesEnabled"
           onToggleChange={onToggleChange}
+          height={1}
         >
-          <View style={styles.toggleRow}>
+          <View>
             <ToggleFilter
               label="Per Investigator"
               setting="cluesFixed"
@@ -79,11 +79,3 @@ class CardLocationFilterView extends React.Component {
 }
 
 export default withFilterFunctions(CardLocationFilterView);
-
-const styles = StyleSheet.create({
-  toggleRow: {
-    marginTop: 4,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-});

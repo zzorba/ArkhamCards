@@ -19,6 +19,7 @@ export default class SliderChooser extends React.Component {
     toggleName: PropTypes.string.isRequired,
     onToggleChange: PropTypes.func.isRequired,
     children: PropTypes.node,
+    height: PropTypes.number,
   };
 
   constructor(props) {
@@ -57,12 +58,13 @@ export default class SliderChooser extends React.Component {
       onToggleChange,
       toggleName,
       children,
+      height,
     } = this.props;
 
     return (
       <AccordionItem
         label={this.label()}
-        height={80 + (children ? 50 : 0)}
+        height={80 + (children ? (height * 40) : 0)}
         enabled={enabled}
         toggleName={toggleName}
         onToggleChange={onToggleChange}

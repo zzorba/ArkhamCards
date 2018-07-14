@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, flatMap, map, pullAt, shuffle, range, without } from 'lodash';
+import { concat, flatMap, forEach, map, pullAt, shuffle, range, without } from 'lodash';
 import {
   Button,
   FlatList,
@@ -8,14 +8,14 @@ import {
   Text,
   View,
 } from 'react-native';
+import { connectRealm } from 'react-native-realm';
 
-import { DeckType } from '../parseDeck';
 import DrawCardItem from './DrawCardItem';
 
-export default class DrawSimulatorView extends React.Component {
+class DrawSimulatorView extends React.Component {
   static propTypes = {
-    parsedDeck: DeckType,
-    cards: PropTypes.object.isRequired,
+    slots: PropTypes.object,
+    cardsInDeck: PropTypes.object,
   };
 
   constructor(props) {
@@ -119,21 +119,19 @@ export default class DrawSimulatorView extends React.Component {
 
   shuffleFreshDeck() {
     const {
-      cards,
-      parsedDeck: {
-        deck,
-      },
+      cardsInDeck,
+      slots,
     } = this.props;
     return shuffle(
       flatMap(
-        Object.keys(deck.slots),
+        Object.keys(slots),
         cardId => {
-          const card = cards[cardId];
+          const card = cardsInDeck[cardId];
           // DUKE=02014
           if (card.permanent || card.double_sided || card.code === '02014') {
             return [];
           }
-          return range(0, deck.slots[cardId]).map(() => cardId);
+          return range(0, slots[cardId]).map(() => cardId);
         }));
   }
 
@@ -191,7 +189,7 @@ export default class DrawSimulatorView extends React.Component {
   }
 
   renderCardItem({ item, index }) {
-    const card = this.props.cards[item.id];
+    const card = this.props.cardsInDeck[item.id];
     return (
       <DrawCardItem
         id={`${index}-${item.id}`}
@@ -228,6 +226,24 @@ export default class DrawSimulatorView extends React.Component {
     );
   }
 }
+
+export default connectRealm(
+  DrawSimulatorView,
+  {
+    schemas: ['Card'],
+    mapToProps(results, realm, props) {
+      const cardsInDeck = {};
+      forEach(results.cards, card => {
+        if (props.slots[card.code]) {
+          cardsInDeck[card.code] = card;
+        }
+      });
+      return {
+        cardsInDeck,
+      };
+    },
+  },
+);
 
 const styles = StyleSheet.create({
   container: {

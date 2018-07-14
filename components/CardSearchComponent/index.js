@@ -18,6 +18,7 @@ import CardResultList from './CardResultList';
 import { iconsMap } from '../../app/NavIcons';
 import { applyFilters } from '../../lib/filters';
 import DefaultFilterState from '../filter/DefaultFilterState';
+import { STORY_CARDS_QUERY } from '../../data/query';
 
 const SEARCH_OPTIONS_HEIGHT = 44;
 
@@ -48,6 +49,7 @@ export default class CardSearchComponent extends React.Component {
       searchTerm: '',
       selectedSort: props.sort || SORT_BY_TYPE,
       filters: DefaultFilterState,
+      storyFilters: DefaultFilterState,
       storyMode: false,
     };
 
@@ -102,9 +104,15 @@ export default class CardSearchComponent extends React.Component {
   }
 
   applyFilters(filters) {
-    this.setState({
-      filters,
-    });
+    if (this.state.storyMode) {
+      this.setState({
+        storyFilters: filters,
+      });
+    } else {
+      this.setState({
+        filters: filters,
+      });
+    }
   }
 
   sortChanged(selectedSort) {
@@ -118,6 +126,9 @@ export default class CardSearchComponent extends React.Component {
       navigator,
       baseQuery,
     } = this.props;
+    const {
+      storyMode,
+    } = this.state;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'filter') {
         this.isOnTop = false;
@@ -127,8 +138,8 @@ export default class CardSearchComponent extends React.Component {
           backButtonTitle: 'Apply',
           passProps: {
             applyFilters: this._applyFilters,
-            currentFilters: this.state.filters,
-            baseQuery: baseQuery,
+            currentFilters: storyMode ? this.state.storyFilters : this.state.filters,
+            baseQuery: storyMode ? STORY_CARDS_QUERY : baseQuery,
           },
         });
       } else if (event.id === 'sort') {
@@ -245,15 +256,20 @@ export default class CardSearchComponent extends React.Component {
     } = this.props;
     const {
       selectedSort,
+      storyMode,
+      filters,
+      storyFilters,
     } = this.state;
     const queryParts = [];
-    if (baseQuery) {
+    if (storyMode) {
+      queryParts.push(STORY_CARDS_QUERY);
+    } else if (baseQuery) {
       queryParts.push(baseQuery);
     }
-    queryParts.push('back_linked != true');
+    queryParts.push('(back_linked != true)');
     this.applyQueryFilter(queryParts);
     forEach(
-      applyFilters(this.state.filters),
+      applyFilters(storyMode ? storyFilters : filters),
       clause => queryParts.push(clause));
 
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
@@ -314,11 +330,8 @@ export default class CardSearchComponent extends React.Component {
     const {
       selectedSort,
       searchTerm,
-      storyMode,
     } = this.state;
-    const query = storyMode ?
-      'deck_limit > 0 && (spoiler == true || (subtype_code != null && restrictions == null))' :
-      this.query();
+    const query = this.query();
     return (
       <View style={styles.wrapper}>
         { this.renderHeader() }

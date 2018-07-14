@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'System',
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '400',
     minWidth: 28,
   },
 });
