@@ -4,7 +4,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Input } from 'react-native-elements';
 
 import LabeledTextBox from '../core/LabeledTextBox';
 import { CUSTOM } from './constants';
@@ -21,12 +20,10 @@ export default class CampaignSelector extends React.Component {
     this.state = {
       selectedCampaign: 'The Night of the Zealot',
       selectedCampaignCode: 'core',
-      customCampaign: '',
     };
 
     this._updateManagedCampaign = this.updateManagedCampaign.bind(this);
     this._campaignPressed = this.campaignPressed.bind(this);
-    this._customCampaignTextChanged = this.customCampaignTextChanged.bind(this);
     this._campaignChanged = this.campaignChanged.bind(this);
   }
 
@@ -53,12 +50,6 @@ export default class CampaignSelector extends React.Component {
     }, this._updateManagedCampaign);
   }
 
-  customCampaignTextChanged(value) {
-    this.setState({
-      customCampaign: value,
-    }, this._updateManagedCampaign);
-  }
-
   campaignPressed() {
     const {
       navigator,
@@ -78,8 +69,6 @@ export default class CampaignSelector extends React.Component {
   render() {
     const {
       selectedCampaign,
-      selectedCampaignCode,
-      customCampaign,
     } = this.state;
 
     return (
@@ -90,26 +79,12 @@ export default class CampaignSelector extends React.Component {
           value={selectedCampaign}
           style={styles.margin}
         />
-        { selectedCampaignCode === CUSTOM && (
-          <View style={styles.row}>
-            <Input
-              placeholder="Custom Campaign Name"
-              onChangeText={this._customCampaignTextChanged}
-              value={customCampaign}
-            />
-          </View>
-        ) }
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    width: '100%',
-  },
   margin: {
     marginLeft: 8,
     marginRight: 8,

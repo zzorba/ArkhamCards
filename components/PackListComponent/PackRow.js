@@ -21,6 +21,7 @@ export default class PackRow extends React.Component {
     checked: PropTypes.bool,
     whiteBackground: PropTypes.bool,
     baseQuery: PropTypes.string,
+    compact: PropTypes.bool,
   };
 
   constructor(props) {
@@ -87,16 +88,20 @@ export default class PackRow extends React.Component {
       checked,
       setChecked,
       whiteBackground,
+      compact,
     } = this.props;
 
     const mythosPack = (pack.position > 1 && pack.cycle_position < 70);
     const backgroundColor = (whiteBackground || mythosPack) ? '#FFFFFF' : '#f0f0f0';
     const textColor = '#222222';
-    const iconSize = mythosPack ? 24 : 28;
-    const fontSize = mythosPack ? 16 : 22;
+    const iconSize = (mythosPack || compact) ? 24 : 28;
+    const fontSize = (mythosPack || compact) ? 16 : 22;
     const rowHeight = mythosPack ? 50 : 60;
     return (
-      <View style={[styles.row, { backgroundColor, height: rowHeight }]}>
+      <View style={[styles.row,
+        { backgroundColor, height: rowHeight },
+        compact ? { height: 40 } : styles.bottomBorder,
+      ]}>
         <TouchableOpacity style={styles.touchable} onPress={this._onPress}>
           <View style={styles.touchableContent}>
             <View style={styles.icon}>
@@ -135,7 +140,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+  },
+  bottomBorder: {
     borderBottomWidth: 1,
+
   },
   touchable: {
     height: 50,

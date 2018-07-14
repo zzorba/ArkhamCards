@@ -7,7 +7,7 @@ import {
 import withLoginGate from '../withLoginGate';
 import MenuItem from './MenuItem';
 
-const SHOW_CAMPAIGN_BUTTON = false;
+const SHOW_CAMPAIGN_BUTTON = true;
 
 function LoggedInMenu({ navigator }) {
   return (

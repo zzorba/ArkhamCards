@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, max, uniqBy, values } from 'lodash';
+import { map, max, values } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -8,12 +8,11 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
-import PackListComponent from '../PackListComponent';
+import WeaknessSetPackChooserComponent from './WeaknessSetPackChooserComponent';
 import Button from '../core/Button';
-import TextBox from '../core/TextBox';
-import { BASIC_WEAKNESS_QUERY } from '../../data/query';
+import EditNameDialog from '../core/EditNameDialog';
+import LabeledTextBox from '../core/LabeledTextBox';
 import * as Actions from '../../actions';
 
 class NewWeaknessSetDialog extends React.Component {
@@ -21,24 +20,41 @@ class NewWeaknessSetDialog extends React.Component {
     navigator: PropTypes.object,
     nextId: PropTypes.number.isRequired,
     createWeaknessSet: PropTypes.func.isRequired,
-    in_collection: PropTypes.object.isRequired,
-    cards: PropTypes.object,
-    packs: PropTypes.array,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
+      packs: [],
       name: `Set ${props.nextId}`,
-      override: {},
+      editNameDialogVisible: false,
+      viewRef: null,
     };
 
-    this._renderHeader = this.renderHeader.bind(this);
-    this._renderFooter = this.renderFooter.bind(this);
+    this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
+    this._captureViewRef = this.captureViewRef.bind(this);
     this._onNameChange = this.onNameChange.bind(this);
     this._onSavePressed = this.onSavePressed.bind(this);
-    this._onPackCheck = this.onPackCheck.bind(this);
+    this._onSelectedPacksChanged = this.onSelectedPacksChanged.bind(this);
+  }
+
+  toggleEditNameDialog() {
+    this.setState({
+      editNameDialogVisible: !this.state.editNameDialogVisible,
+    });
+  }
+
+  onSelectedPacksChanged(packs) {
+    this.setState({
+      packs: packs,
+    });
+  }
+
+  captureViewRef(ref) {
+    this.setState({
+      viewRef: ref,
+    });
   }
 
   onPackCheck(pack, value) {
@@ -58,20 +74,12 @@ class NewWeaknessSetDialog extends React.Component {
       navigator,
       createWeaknessSet,
       nextId,
-      in_collection,
     } = this.props;
 
     const {
       name,
-      override,
+      packs,
     } = this.state;
-    const includePack = Object.assign({}, in_collection, override);
-    const packs = [];
-    forEach(this.weaknessPacks(), pack => {
-      if (includePack[pack.code]) {
-        packs.push(pack.code);
-      }
-    });
     createWeaknessSet(nextId, name, packs);
     navigator.pop();
   }
@@ -84,15 +92,40 @@ class NewWeaknessSetDialog extends React.Component {
     );
   }
 
+  renderEditNameDialog() {
+    const {
+      name,
+      editNameDialogVisible,
+      viewRef,
+    } = this.state;
+    if (!viewRef) {
+      return null;
+    }
+
+    return (
+      <EditNameDialog
+        title="Edit Name"
+        visible={editNameDialogVisible}
+        name={name}
+        viewRef={viewRef}
+        onNameChange={this._onNameChange}
+        toggleVisible={this._toggleEditNameDialog}
+      />
+    );
+  }
+
   renderHeader() {
     const {
       name,
     } = this.state;
     return (
-      <View>
+      <View >
         <View style={styles.row}>
-          <Text style={styles.name}>Name:</Text>
-          <TextBox value={name} onChangeText={this._onNameChange} style={styles.grow} />
+          <LabeledTextBox
+            label="Name"
+            value={name}
+            onPress={this._toggleEditNameDialog}
+          />
         </View>
         <View style={styles.textBlock}>
           <Text style={styles.text}>Include Weaknesses From These Sets</Text>
@@ -101,36 +134,21 @@ class NewWeaknessSetDialog extends React.Component {
     );
   }
 
-  weaknessPacks() {
-    const {
-      cards,
-      packs,
-    } = this.props;
-    const weaknessPackSet = new Set(uniqBy(map(values(cards), card => card.pack_code)));
-    return filter(packs, pack => weaknessPackSet.has(pack.code));
-  }
-
   render() {
     const {
       navigator,
-      in_collection,
     } = this.props;
-    const {
-      override,
-    } = this.state;
-    const weaknessPacks = this.weaknessPacks();
     return (
-      <View>
-        <PackListComponent
-          navigator={navigator}
-          packs={weaknessPacks}
-          checkState={Object.assign({}, in_collection, override)}
-          setChecked={this._onPackCheck}
-          renderHeader={this._renderHeader}
-          renderFooter={this._renderFooter}
-          baseQuery={'subtype_code == "basicweakness" and code != "01000"'}
-          whiteBackground
-        />
+      <View style={styles.container}>
+        <View style={styles.container} ref={this._captureViewRef}>
+          { this.renderHeader() }
+          <WeaknessSetPackChooserComponent
+            navigator={navigator}
+            onSelectedPacksChanged={this._onSelectedPacksChanged}
+          />
+          { this.renderFooter() }
+        </View>
+        { this.renderEditNameDialog() }
       </View>
     );
   }
@@ -138,8 +156,6 @@ class NewWeaknessSetDialog extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    packs: state.packs.all,
-    in_collection: state.packs.in_collection || {},
     nextId: 1 + (max(map(values(state.weaknesses.all), set => set.id)) || 0),
   };
 }
@@ -148,18 +164,12 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(NewWeaknessSetDialog, {
-    schemas: ['Card'],
-    mapToProps(results) {
-      return {
-        cards: results.cards.filtered(BASIC_WEAKNESS_QUERY),
-      };
-    },
-  })
-);
+export default connect(mapStateToProps, mapDispatchToProps)(NewWeaknessSetDialog);
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   row: {
     padding: 16,
     flexDirection: 'row',
@@ -175,11 +185,5 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 16,
-  },
-  name: {
-    marginRight: 8,
-  },
-  grow: {
-    flex: 1,
   },
 });

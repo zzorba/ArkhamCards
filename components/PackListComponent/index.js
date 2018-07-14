@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { filter } from 'lodash';
 import {
   FlatList,
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -20,6 +21,7 @@ export default class PackListComponent extends React.Component {
     renderFooter: PropTypes.func,
     whiteBackground: PropTypes.bool,
     baseQuery: PropTypes.string,
+    compact: PropTypes.bool,
   };
 
   constructor(props) {
@@ -41,6 +43,7 @@ export default class PackListComponent extends React.Component {
       setCycleChecked,
       whiteBackground,
       baseQuery,
+      compact,
     } = this.props;
     const cyclePacks = item.position === 1 ? filter(packs, pack => {
       return (pack.cycle_position === item.cycle_position &&
@@ -56,6 +59,7 @@ export default class PackListComponent extends React.Component {
         checked={checkState && checkState[item.code]}
         whiteBackground={whiteBackground}
         baseQuery={baseQuery}
+        compact={compact}
       />
     );
   }
@@ -75,7 +79,7 @@ export default class PackListComponent extends React.Component {
       );
     }
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}
@@ -88,3 +92,9 @@ export default class PackListComponent extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

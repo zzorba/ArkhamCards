@@ -13,9 +13,9 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import DialogComponent from 'react-native-dialog';
 
 import Dialog from '../core/Dialog';
+import EditNameDialog from '../core/EditNameDialog';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
@@ -371,7 +371,7 @@ class DeckDetailView extends React.Component {
       deck,
     } = this.props;
     const {
-      name,
+      nameChange,
       editNameDialogVisible,
       viewRef,
     } = this.state;
@@ -379,28 +379,15 @@ class DeckDetailView extends React.Component {
       return null;
     }
 
-    const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
-      <Dialog
+      <EditNameDialog
         title="Edit Deck Name"
         visible={editNameDialogVisible}
+        name={nameChange || deck.name}
         viewRef={viewRef}
-      >
-        <DialogComponent.Input
-          value={name}
-          onChangeText={this._onNameChange}
-        />
-        <DialogComponent.Button
-          label="Cancel"
-          onPress={this._toggleEditNameDialog}
-        />
-        <DialogComponent.Button
-          label="Done"
-          color={deck.name === name ? '#666666' : buttonColor}
-          disabled={deck.name === name}
-          onPress={this._saveName}
-        />
-      </Dialog>
+        onNameChange={this._onNameChange}
+        toggleVisible={this._toggleEditNameDialog}
+      />
     );
   }
 

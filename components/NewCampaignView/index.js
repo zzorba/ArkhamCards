@@ -5,18 +5,20 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from '../../actions';
+import WeaknessSetPackChooserComponent from '../weakness/WeaknessSetPackChooserComponent';
 import { getPacksInCollection } from '../../reducers';
 import CampaignSelector from './CampaignSelector';
 import { CUSTOM } from './constants';
 import LabeledTextBox from '../core/LabeledTextBox';
 import ChaosBagLine from '../core/ChaosBagLine';
+import Button from '../core/Button';
+import EditNameDialog from '../core/EditNameDialog';
 import SelectedDeckListComponent from '../SelectedDeckListComponent';
 import { CAMPAIGN_CHAOS_BAGS, DIFFICULTY } from '../../constants';
 import typography from '../../styles/typography';
@@ -35,16 +37,24 @@ class NewCampaignView extends React.Component {
     });
 
     this.state = {
-      campaign: null,
-      campaignCode: null,
+      name: '',
+      campaign: '',
+      campaignCode: '',
       difficulty: 'standard',
       deckIds: [],
+      weaknessPacks: [],
       customChaosBag: Object.assign({}, CAMPAIGN_CHAOS_BAGS.core[1]),
+      viewRef: null,
+      editNameDialogVisible: false,
     };
 
     this.updateNavigatorButtons();
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
+    this._onWeaknessPackChange = this.onWeaknessPackChange.bind(this);
+    this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
+    this._onNameChange = this.onNameChange.bind(this);
+    this._captureViewRef = this.captureViewRef.bind(this);
     this._updateChaosBag = this.updateChaosBag.bind(this);
     this._updateDifficulty = this.updateDifficulty.bind(this);
     this._showChaosBagDialog = this.showChaosBagDialog.bind(this);
@@ -53,6 +63,24 @@ class NewCampaignView extends React.Component {
     this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
+  }
+
+  onWeaknessPackChange(packs) {
+    this.setState({
+      weaknessPacks: packs,
+    });
+  }
+
+  toggleEditNameDialog() {
+    this.setState({
+      editNameDialogVisible: !this.state.editNameDialogVisible,
+    });
+  }
+
+  onNameChange(name) {
+    this.setState({
+      name: name,
+    });
   }
 
   deckAdded(id) {
@@ -160,7 +188,8 @@ class NewCampaignView extends React.Component {
     return (
       campaignCode !== CUSTOM &&
       CAMPAIGN_CHAOS_BAGS[campaignCode] &&
-      CAMPAIGN_CHAOS_BAGS[campaignCode][DIFFICULTY[difficulty]]);
+      CAMPAIGN_CHAOS_BAGS[campaignCode][DIFFICULTY[difficulty]]
+    );
   }
 
   getChaosBag() {
@@ -176,26 +205,72 @@ class NewCampaignView extends React.Component {
     return customChaosBag;
   }
 
-  renderChaosBag() {
+  captureViewRef(ref) {
+    this.setState({
+      viewRef: ref,
+    });
+  }
+
+  renderChaosBagSection() {
+    const {
+      difficulty,
+    } = this.state;
     const chaosBag = this.getChaosBag();
     return (
       <View style={styles.margin}>
-        <View style={styles.chaosBagLabelRow}>
-          <Text style={typography.bigLabel}>Chaos Bag</Text>
+        <Text style={typography.bigLabel}>Chaos Bag</Text>
+        <View style={styles.topPadding}>
+          { this.hasDefinedChaosBag() ?
+            <LabeledTextBox
+              label="Difficulty"
+              onPress={this._showDifficultyDialog}
+              value={capitalize(difficulty)}
+            /> :
+            <Button
+              text="Customize Bag"
+              onPress={this._showChaosBagDialog}
+            />
+          }
         </View>
-        <ChaosBagLine chaosBag={chaosBag} />
+        <View style={styles.topPadding}>
+          <ChaosBagLine chaosBag={chaosBag} />
+        </View>
       </View>
     );
   }
 
-  renderChaosBagSection() {
-    if (this.hasDefinedChaosBag()) {
-      return this.renderChaosBag();
-    }
+  renderNameDialog() {
+    const {
+      name,
+      viewRef,
+      editNameDialogVisible,
+    } = this.state;
+
     return (
-      <TouchableOpacity onPress={this._showChaosBagDialog}>
-        { this.renderChaosBag() }
-      </TouchableOpacity>
+      <EditNameDialog
+        title="Campaign Name"
+        visible={editNameDialogVisible}
+        name={name}
+        viewRef={viewRef}
+        onNameChange={this._onNameChange}
+        toggleVisible={this._toggleEditNameDialog}
+      />
+    );
+  }
+
+  renderWeaknessSetSection() {
+    const {
+      navigator,
+    } = this.props;
+    return (
+      <View style={styles.margin}>
+        <Text style={typography.bigLabel}>Weakness Set</Text>
+        <WeaknessSetPackChooserComponent
+          navigator={navigator}
+          compact
+          onSelectedPacksChanged={this._onWeaknessPackChange}
+        />
+      </View>
     );
   }
 
@@ -205,35 +280,45 @@ class NewCampaignView extends React.Component {
     } = this.props;
 
     const {
-      difficulty,
       deckIds,
+      name,
+      campaign,
     } = this.state;
 
     return (
-      <ScrollView contentContainerStyle={styles.topPadding}>
-        <View style={styles.underline}>
-          <CampaignSelector
-            navigator={navigator}
-            campaignChanged={this._campaignChanged}
-          />
-          <View style={[styles.margin, styles.topPadding]}>
-            <LabeledTextBox
-              label="Difficulty"
-              onPress={this._showDifficultyDialog}
-              value={capitalize(difficulty)}
-            />
+      <View ref={this._captureViewRef}>
+        <ScrollView contentContainerStyle={styles.topPadding}>
+          <View style={styles.underline}>
+            <View style={[styles.margin, styles.topPadding]}>
+              <LabeledTextBox
+                label="Name"
+                onPress={this._toggleEditNameDialog}
+                placeholder={`My ${campaign}`}
+                value={name}
+              />
+            </View>
+            <View style={styles.topPadding}>
+              <CampaignSelector
+                navigator={navigator}
+                campaignChanged={this._campaignChanged}
+              />
+            </View>
           </View>
-        </View>
-        <View style={styles.underline}>
-          { this.renderChaosBagSection() }
-        </View>
-        <SelectedDeckListComponent
-          navigator={navigator}
-          deckIds={deckIds}
-          deckAdded={this._deckAdded}
-          deckRemoved={this._deckRemoved}
-        />
-      </ScrollView>
+          <View style={styles.underline}>
+            { this.renderChaosBagSection() }
+          </View>
+          <View style={styles.underline}>
+            { this.renderWeaknessSetSection() }
+          </View>
+          <SelectedDeckListComponent
+            navigator={navigator}
+            deckIds={deckIds}
+            deckAdded={this._deckAdded}
+            deckRemoved={this._deckRemoved}
+          />
+        </ScrollView>
+        { this.renderNameDialog() }
+      </View>
     );
   }
 }
@@ -258,10 +343,6 @@ const styles = StyleSheet.create({
   margin: {
     marginLeft: 8,
     marginRight: 8,
-  },
-  chaosBagLabelRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   underline: {
     paddingBottom: 8,

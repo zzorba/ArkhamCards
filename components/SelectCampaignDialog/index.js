@@ -17,6 +17,7 @@ import { getPacksInCollection } from '../../reducers';
 
 const CAMPAIGNS = {
   core: 'Night of the Zealot',
+  rtnotz: 'Return to the Night of the Zealot',
   dwl: 'The Dunwich Legacy',
   ptc: 'The Path To Carcosa',
   tfa: 'The Forgotten Age',
@@ -64,7 +65,7 @@ class SelectCampaignDialog extends React.Component {
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}
-        text={packCode === 'custom' ? 'Custom' : CAMPAIGNS[packCode]}
+        text={packCode === 'custom' ? 'Custom Campaign' : CAMPAIGNS[packCode]}
       />
     );
   }
@@ -81,22 +82,26 @@ class SelectCampaignDialog extends React.Component {
     const otherCampaigns = partitionedCampaigns[1];
 
     return (
-      <ScrollView>
-        <View style={styles.headerRow}>
-          <Text style={styles.header}>
-            My Campaigns
-          </Text>
-        </View>
+      <ScrollView style={styles.flex}>
+        { myCampaigns.length > 0 && (
+          <View style={styles.headerRow}>
+            <Text style={styles.header}>
+              My Campaigns
+            </Text>
+          </View>
+        ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
         { this.renderCampaign('custom') }
-        <View style={styles.headerRow}>
-          <Text style={styles.header}>
-            Other Campaigns
-          </Text>
-          <View style={styles.editCollectionButton}>
-            <Button onPress={this._editCollection} text="Edit Collection" />
-          </View>
+        <View style={styles.button}>
+          <Button onPress={this._editCollection} text="Edit Collection" />
         </View>
+        { otherCampaigns.length > 0 && (
+          <View style={styles.headerRow}>
+            <Text style={styles.header}>
+              Other Campaigns
+            </Text>
+          </View>
+        ) }
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
       </ScrollView>
     );
@@ -116,6 +121,9 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(SelectCampaignDialog);
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   header: {
     fontFamily: 'System',
     fontSize: 22,
@@ -128,7 +136,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     height: 50,
   },
-  editCollectionButton: {
-    marginRight: 10,
+  button: {
+    marginTop: 8,
   },
 });

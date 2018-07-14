@@ -28,7 +28,7 @@ TextBox.propTypes = {
 
 const styles = StyleSheet.create({
   textBox: {
-    height: 26,
+    height: 30,
     width: '100%',
     backgroundColor: 'white',
     borderWidth: 2,
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     padding: 0,
     fontFamily: 'System',
     fontSize: 16,
+    lineHeight: 20,
     color: '#222',
     width: '100%',
   },
