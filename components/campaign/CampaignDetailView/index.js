@@ -12,11 +12,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import InvestigatorStatusRow from './InvestigatorStatusRow';
-import * as Actions from '../../actions';
-import { iconsMap } from '../../app/NavIcons';
-import Button from '../core/Button';
-import { getCampaign, getAllDecks } from '../../reducers';
-import typography from '../../styles/typography';
+import * as Actions from '../../../actions';
+import { iconsMap } from '../../../app/NavIcons';
+import Button from '../../core/Button';
+import { getCampaign, getAllDecks } from '../../../reducers';
+import typography from '../../../styles/typography';
 
 class CampaignDetailView extends React.Component {
   static propTypes = {

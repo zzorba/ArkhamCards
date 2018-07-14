@@ -10,10 +10,10 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Button from '../core/Button';
-import * as Actions from '../../actions';
 import CampaignItem from './CampaignItem';
-import { getPacksInCollection } from '../../reducers';
+import Button from '../../core/Button';
+import * as Actions from '../../../actions';
+import { getPacksInCollection } from '../../../reducers';
 
 const CAMPAIGNS = {
   core: 'Night of the Zealot',

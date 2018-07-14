@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import InvestigatorImage from '../core/InvestigatorImage';
-import typography from '../../styles/typography';
+import InvestigatorImage from '../../core/InvestigatorImage';
+import typography from '../../../styles/typography';
 
 class InvestigatorStatusRow extends React.Component {
   static propTypes = {

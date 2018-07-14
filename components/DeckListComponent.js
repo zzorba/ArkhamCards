@@ -10,10 +10,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import SearchBox from '../SearchBox';
-import DeckListItem from './DeckListItem';
-import * as Actions from '../../actions';
-import { getAllDecks } from '../../reducers';
+import SearchBox from './SearchBox';
+import DeckListRow from './DeckListRow';
+import { getAllDecks } from '../reducers';
+import * as Actions from '../actions';
 
 class DeckListComponent extends React.Component {
   static propTypes = {
@@ -21,7 +21,6 @@ class DeckListComponent extends React.Component {
     deckClicked: PropTypes.func.isRequired,
     onRefresh: PropTypes.func.isRequired,
     refreshing: PropTypes.bool,
-    error: PropTypes.string,
     investigators: PropTypes.object,
     cards: PropTypes.object,
     decks: PropTypes.object,
@@ -70,7 +69,7 @@ class DeckListComponent extends React.Component {
 
     const deck = decks[deckId];
     return (
-      <DeckListItem
+      <DeckListRow
         key={deckId}
         id={deckId}
         deck={deck}

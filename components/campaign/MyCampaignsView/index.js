@@ -7,9 +7,9 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../../actions';
-import { getAllDecks, getCampaigns } from '../../reducers';
-import { iconsMap } from '../../app/NavIcons';
+import * as Actions from '../../../actions';
+import { getAllDecks, getCampaigns } from '../../../reducers';
+import { iconsMap } from '../../../app/NavIcons';
 import CampaignItem from './CampaignItem';
 
 class MyCampaignsView extends React.Component {
@@ -22,6 +22,7 @@ class MyCampaignsView extends React.Component {
   constructor(props) {
     super(props);
 
+    this._onCreateCampaign = this.onCreateCampaign.bind(this);
     this._onPress = this.onPress.bind(this);
     props.navigator.setButtons({
       rightButtons: [
@@ -56,9 +57,20 @@ class MyCampaignsView extends React.Component {
         navigator.push({
           screen: 'Campaign.New',
           backButtonTitle: 'Cancel',
+          passProps: {
+            onCreateCampaign: this._onCreateCampaign,
+          },
         });
       }
     }
+  }
+
+  onCreateCampaign(id) {
+    const {
+      navigator,
+    } = this.props;
+    navigator.pop();
+    this.onPress(id);
   }
 
   renderItem(campaign) {

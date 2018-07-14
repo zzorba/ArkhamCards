@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { filter, find, flatMap, forEach, keys, map, last, reverse, sortBy, values } from 'lodash';
+import { filter, find, flatMap, forEach, keys, map, max, last, reverse, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -298,12 +298,8 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
     );
   }
   if (action.type === NEW_CAMPAIGN) {
-    let id = Math.floor(Math.random() * 100000);
-    while(state.all[id]) {
-      id = Math.floor(Math.random() * 100000);
-    }
     const newCampaign = {
-      id,
+      id: action.id,
       name: action.name,
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
@@ -314,7 +310,7 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
     };
     return Object.assign({},
       state,
-      { all: Object.assign({}, state.all, { [id]: newCampaign }) },
+      { all: Object.assign({}, state.all, { [action.id]: newCampaign }) },
     );
   }
   if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {
@@ -505,6 +501,15 @@ function processCampaign(campaign) {
     },
   );
 }
+
+export function getNextCampaignId(state) {
+  return 1 + (max(map(keys(state.campaigns.all), id => parseInt(id, 10))) || 0);
+}
+
+export function getNextWeaknessId(state) {
+  return 1 + (max(map(values(state.weaknesses.all), set => set.id)) || 0);
+}
+
 
 export function getCampaign(state, id) {
   if (id in state.campaigns.all) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { map, max, values } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -14,6 +13,7 @@ import Button from '../core/Button';
 import EditNameDialog from '../core/EditNameDialog';
 import LabeledTextBox from '../core/LabeledTextBox';
 import * as Actions from '../../actions';
+import { getNextWeaknessId } from '../../reducers';
 
 class NewWeaknessSetDialog extends React.Component {
   static propTypes = {
@@ -156,7 +156,7 @@ class NewWeaknessSetDialog extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    nextId: 1 + (max(map(values(state.weaknesses.all), set => set.id)) || 0),
+    nextId: getNextWeaknessId(state),
   };
 }
 

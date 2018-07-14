@@ -248,15 +248,25 @@ export function setAllPackSpoilers(spoilers) {
   };
 }
 
-export function newCampaign(pack_code, name, difficulty, deckIds, chaosBag) {
+export function newCampaign(
+  id,
+  name,
+  pack_code,
+  difficulty,
+  deckIds,
+  chaosBag,
+  weaknessPacks
+) {
   return {
     type: NEW_CAMPAIGN,
+    id,
     name: name,
     cycleCode: pack_code,
     difficulty,
     chaosBag,
     deckIds,
     now: new Date(),
+    weaknessPacks,
   };
 }
 

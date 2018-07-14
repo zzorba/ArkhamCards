@@ -11,9 +11,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import * as Actions from '../../actions';
-import InvestigatorImage from '../core/InvestigatorImage';
-import { getDecks } from '../../reducers';
+import * as Actions from '../../../actions';
+import InvestigatorImage from '../../core/InvestigatorImage';
+import { getDecks } from '../../../reducers';
 
 class CampaignItem extends React.Component {
   static propTypes = {

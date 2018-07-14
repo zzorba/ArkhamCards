@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys } from 'lodash';
 
-import DialogPicker from './core/DialogPicker';
-import { DIFFICULTY } from '../constants';
+import DialogPicker from '../core/DialogPicker';
+import { DIFFICULTY } from '../../constants';
 
 const OPTIONS = keys(DIFFICULTY);
 

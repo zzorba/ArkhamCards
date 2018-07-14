@@ -9,6 +9,7 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import AppIcon from '../../assets/AppIcon';
 import DeckTitleBarComponent from '../DeckTitleBarComponent';
@@ -194,7 +195,11 @@ export default class DeckViewTab extends React.Component {
         <DeckTitleBarComponent
           name={name}
           investigator={investigator}
-          onEditPress={onEditNamePress}
+          button={
+            <TouchableOpacity onPress={onEditNamePress}>
+              <MaterialIcons name="edit" size={28} color="#FFFFFF" />
+            </TouchableOpacity>
+          }
         />
         <View style={styles.container}>
           <View style={styles.rowWrap}>

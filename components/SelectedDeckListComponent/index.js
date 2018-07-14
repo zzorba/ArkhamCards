@@ -1,23 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import { forEach, map } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { connectRealm } from 'react-native-realm';
 
 import AddDeckRow from './AddDeckRow';
 import DeckRow from './DeckRow';
 import typography from '../../styles/typography';
 
-export default function SelectedDeckListComponent({
+function SelectedDeckListComponent({
   navigator,
   deckIds,
   deckUpdates = {},
   deckUpdatesChanged,
   deckAdded,
   deckRemoved,
+  cards,
+  investigators,
 }) {
   return (
     <View>
@@ -28,6 +31,8 @@ export default function SelectedDeckListComponent({
         <DeckRow
           key={deckId}
           id={deckId}
+          cards={cards}
+          investigators={investigators}
           navigator={navigator}
           updatesChanged={deckUpdatesChanged}
           remove={deckRemoved}
@@ -52,7 +57,27 @@ SelectedDeckListComponent.propTypes = {
   deckAdded: PropTypes.func.isRequired,
   deckIds: PropTypes.array.isRequired,
   deckUpdates: PropTypes.object,
+  cards: PropTypes.object,
+  investigators: PropTypes.object,
 };
+
+export default connectRealm(SelectedDeckListComponent, {
+  schemas: ['Card'],
+  mapToProps(results) {
+    const investigators = {};
+    const cards = {};
+    forEach(results.cards, card => {
+      cards[card.code] = card;
+      if (card.type_code === 'investigator') {
+        investigators[card.code] = card;
+      }
+    });
+    return {
+      cards,
+      investigators,
+    };
+  },
+});
 
 const styles = StyleSheet.create({
   margin: {

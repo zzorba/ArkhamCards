@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import ArkhamIcon from '../assets/ArkhamIcon';
@@ -16,7 +14,7 @@ export default class DeckTitleBarComponent extends React.Component {
     name: PropTypes.string.isRequired,
     investigator: PropTypes.object,
     compact: PropTypes.bool,
-    onEditPress: PropTypes.func,
+    button: PropTypes.node,
   };
 
   render() {
@@ -24,7 +22,7 @@ export default class DeckTitleBarComponent extends React.Component {
       name,
       investigator,
       compact,
-      onEditPress,
+      button,
     } = this.props;
 
     const hasFactionColor = !!(investigator &&
@@ -45,11 +43,7 @@ export default class DeckTitleBarComponent extends React.Component {
         >
           { name }
         </Text>
-        { !!onEditPress && (
-          <TouchableOpacity onPress={onEditPress}>
-            <MaterialIcons name="edit" size={28} color="#FFFFFF" />
-          </TouchableOpacity>
-        ) }
+        { !!button && button }
       </LinearGradient>
     );
   }

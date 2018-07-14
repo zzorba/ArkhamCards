@@ -425,16 +425,16 @@ class DeckDetailView extends React.Component {
         <View style={styles.buttonRow}>
           <Button
             style={styles.button}
-            icon={<MaterialIcons size={20} color="#FFFFFF" name="edit" />}
-            colors={['#4331b9', '#2f2282']}
             text="Edit"
+            color="purple"
+            icon={<MaterialIcons size={20} color="#FFFFFF" name="edit" />}
             onPress={this._onEditPressed}
           />
           { !hasPendingEdits && (
             <Button
-              colors={['#ec8426', '#bd6a1e']}
-              icon={<MaterialCommunityIcons size={20} color="#FFFFFF" name="arrow-up-bold" />}
               text="Upgrade Deck"
+              color="yellow"
+              icon={<MaterialCommunityIcons size={20} color="#FFFFFF" name="arrow-up-bold" />}
               onPress={this._onUpgradePressed}
             />
           ) }
@@ -443,13 +443,13 @@ class DeckDetailView extends React.Component {
           <View style={styles.buttonRow}>
             <Button
               style={styles.button}
-              colors={['#107116', '#0b4f0f']}
               text="Save"
+              color="green"
               onPress={this._saveEdits}
             />
             <Button
-              colors={['#cc3038', '#a3262d']}
               text="Cancel Edits"
+              color="red"
               onPress={this._clearEdits}
             />
           </View>

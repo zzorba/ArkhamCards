@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter } from 'lodash';
+import { filter, flatMap, uniqBy } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -13,6 +13,7 @@ class MyDecksComponent extends React.Component {
     deckClicked: PropTypes.func.isRequired,
     filterDeckIds: PropTypes.array,
     refreshMyDecks: PropTypes.func.isRequired,
+    decks: PropTypes.object,
     myDecks: PropTypes.array,
     myDecksUpdated: PropTypes.instanceOf(Date),
     refreshing: PropTypes.bool,
@@ -58,16 +59,30 @@ class MyDecksComponent extends React.Component {
       deckClicked,
       filterDeckIds = [],
       myDecks,
+      decks,
       refreshing,
       error,
     } = this.props;
 
     const filterDeckIdsSet = new Set(filterDeckIds);
+    const filterInvestigators = new Set(
+      uniqBy(flatMap(filterDeckIds, deckId => {
+        const deck = decks[deckId];
+        if (deck) {
+          return deck.investigator_code;
+        }
+        return null;
+      })));
 
     return (
       <DeckListComponent
         navigator={navigator}
-        deckIds={filter(myDecks, deckId => !filterDeckIdsSet.has(deckId))}
+        deckIds={filter(myDecks, deckId => {
+          const deck = decks[deckId];
+          return !filterDeckIdsSet.has(deckId) && (
+            !deck || !filterInvestigators.has(deck.investigator_code)
+          );
+        })}
         deckClicked={deckClicked}
         onRefresh={this._onRefresh}
         refreshing={refreshing}
@@ -79,6 +94,7 @@ class MyDecksComponent extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    decks: state.decks.all,
     myDecksUpdated: state.decks.dateUpdated ? new Date(state.decks.dateUpdated) : null,
     myDecks: state.decks.myDecks || [],
     refreshing: state.decks.refreshing,

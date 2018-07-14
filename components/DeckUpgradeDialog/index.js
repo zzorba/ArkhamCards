@@ -150,7 +150,7 @@ class DeckUpgradeDialog extends React.Component {
         <View style={styles.buttonRow}>
           <Button
             style={styles.button}
-            colors={['#107116', '#0b4f0f']}
+            color="green"
             text="Save"
             onPress={this._saveUpgrade}
           />

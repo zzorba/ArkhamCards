@@ -9,21 +9,21 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import InvestigatorImage from '../core/InvestigatorImage';
-import DeckTitleBarComponent from '../DeckTitleBarComponent';
-import { toRelativeDateString } from '../../lib/datetime';
-import { parseDeck } from '../parseDeck';
-import { FACTION_LIGHT_GRADIENTS } from '../../constants';
+import InvestigatorImage from './core/InvestigatorImage';
+import DeckTitleBarComponent from './DeckTitleBarComponent';
+import { toRelativeDateString } from '../lib/datetime';
+import { parseDeck } from './parseDeck';
+import { FACTION_LIGHT_GRADIENTS } from '../constants';
 
-const ROW_HEIGHT = 100;
-
-export default class DeckListItem extends React.Component {
+export default class DeckListRow extends React.Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
     cards: PropTypes.object,
     investigator: PropTypes.object,
     onPress: PropTypes.func,
+    details: PropTypes.node,
+    titleButton: PropTypes.node,
   };
 
   constructor(props) {
@@ -40,11 +40,39 @@ export default class DeckListItem extends React.Component {
     onPress && onPress(id);
   }
 
+  renderDeckDetails() {
+    const {
+      deck,
+      cards,
+    } = this.props;
+
+    if (!deck) {
+      return null;
+    }
+    const parsedDeck = parseDeck(deck, deck.slots, cards);
+    return (
+      <View>
+        <Text style={styles.text}>
+          { `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed.` }
+        </Text>
+        <Text style={styles.text}>
+          { `${parsedDeck.experience} experience required.` }
+        </Text>
+        { !!deck.date_update && (
+          <Text style={styles.text} >
+            Updated { toRelativeDateString(Date.parse(deck.date_update)) }
+          </Text>
+        ) }
+      </View>
+    );
+  }
+
   render() {
     const {
       deck,
       investigator,
-      cards,
+      titleButton,
+      details,
     } = this.props;
     if (!deck) {
       return (
@@ -57,11 +85,15 @@ export default class DeckListItem extends React.Component {
         </View>
       );
     }
-    const parsedDeck = parseDeck(deck, deck.slots, cards);
     return (
       <TouchableOpacity onPress={this._onPress} style={styles.container}>
         <View style={styles.column}>
-          <DeckTitleBarComponent name={deck.name} investigator={investigator} compact />
+          <DeckTitleBarComponent
+            name={deck.name}
+            investigator={investigator}
+            button={titleButton}
+            compact
+          />
           <LinearGradient
             colors={FACTION_LIGHT_GRADIENTS[investigator.faction_code]}
             style={styles.row}
@@ -73,17 +105,7 @@ export default class DeckListItem extends React.Component {
               <Text style={styles.text}>
                 { investigator.name }
               </Text>
-              <Text style={styles.text}>
-                { `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed.` }
-              </Text>
-              <Text style={styles.text}>
-                { `${parsedDeck.experience} experience required.` }
-              </Text>
-              { !!deck.date_update && (
-                <Text style={styles.text} >
-                  Updated { toRelativeDateString(Date.parse(deck.date_update)) }
-                </Text>
-              ) }
+              { details || this.renderDeckDetails() }
             </View>
           </LinearGradient>
         </View>
@@ -102,10 +124,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   row: {
+    paddingTop: 8,
+    paddingBottom: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: ROW_HEIGHT,
   },
   text: {
     fontFamily: 'System',
@@ -120,7 +143,6 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   titleColumn: {
-    paddingTop: 12,
     flex: 1,
     height: '100%',
   },

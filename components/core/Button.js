@@ -19,7 +19,7 @@ export default function Button({
   width,
   onPress,
   style,
-  colors = ['#3093c7', '#1c5a85'],
+  color,
 }) {
   let containerStyle = styles.centerContainer;
   switch (align) {
@@ -31,6 +31,13 @@ export default function Button({
   switch(size) {
     case 'small': padding = 8; break;
     default: padding = 16; break;
+  }
+  let colors = ['#3093c7', '#1c5a85'];
+  switch(color) {
+    case 'green': colors = ['#107116', '#0b4f0f']; break;
+    case 'red': colors = ['#cc3038', '#a3262d']; break;
+    case 'purple': colors = ['#4331b9', '#2f2282']; break;
+    case 'yellow': colors = ['#ec8426', '#bd6a1e']; break;
   }
   return (
     <View style={[containerStyle, style]}>
@@ -64,7 +71,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['small', 'normal']),
   style: ViewPropTypes.style,
   width: PropTypes.number,
-  colors: PropTypes.array,
+  color: PropTypes.oneOf(['default', 'green', 'purple', 'red', 'yellow']),
 };
 
 const styles = StyleSheet.create({

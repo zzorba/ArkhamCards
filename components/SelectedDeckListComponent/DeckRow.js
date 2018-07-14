@@ -1,23 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find, flatten, forEach, keys, map, head, sum, values } from 'lodash';
+import { find, flatten, keys, map, sum, values } from 'lodash';
 import {
   TouchableOpacity,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import DeckListRow from '../DeckListRow';
 import XpComponent from '../XpComponent';
 import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
-import InvestigatorImage from '../core/InvestigatorImage';
 import LabeledTextBox from '../core/LabeledTextBox';
-import typography from '../../styles/typography';
 
 class DeckRow extends React.Component {
   static propTypes = {
@@ -29,9 +26,8 @@ class DeckRow extends React.Component {
     updatesChanged: PropTypes.func,
     fetchPublicDeck: PropTypes.func.isRequired,
     // From realm
-    investigator: PropTypes.object,
-    exileCards: PropTypes.object,
-    hasExile: PropTypes.bool,
+    investigators: PropTypes.object,
+    cards: PropTypes.object,
   };
 
   constructor(props) {
@@ -41,8 +37,24 @@ class DeckRow extends React.Component {
     this._updateXp = this.updateXp.bind(this);
     this._updateTrauma = this.updateTrauma.bind(this);
     this._onRemove = this.onRemove.bind(this);
+    this._onDeckPress = this.onDeckPress.bind(this);
     this._showTraumaDialog = this.showTraumaDialog.bind(this);
     this._showExileDialog = this.showExileDialog.bind(this);
+  }
+
+  onDeckPress() {
+    const {
+      navigator,
+      id,
+    } = this.props;
+    navigator.showModal({
+      screen: 'Deck',
+      passProps: {
+        id: id,
+        isPrivate: true,
+        modal: true,
+      },
+    });
   }
 
   showExileDialog() {
@@ -180,7 +192,7 @@ class DeckRow extends React.Component {
 
   exileText() {
     const {
-      exileCards,
+      cards,
       updates: {
         exiles,
       },
@@ -191,7 +203,7 @@ class DeckRow extends React.Component {
       case 1:
         return map(keys(exiles), code => {
           const count = exiles[code];
-          const card = exileCards[code];
+          const card = cards[code];
           if (count === 1) {
             return card.name;
           }
@@ -205,8 +217,16 @@ class DeckRow extends React.Component {
     }
   }
 
+  hasExile() {
+    const {
+      deck,
+      cards,
+    } = this.props;
+    return !!find(keys(deck.slots), code => cards[code].exile);
+  }
+
   renderExile() {
-    if (!this.props.updatesChanged || !this.props.hasExile) {
+    if (!this.props.updatesChanged || !this.hasExile()) {
       return null;
     }
     return (
@@ -220,39 +240,42 @@ class DeckRow extends React.Component {
     );
   }
 
-  renderTitle() {
-    const {
-      deck,
-    } = this.props;
+  renderDetails() {
+    if (!this.props.updatesChanged) {
+      return null;
+    }
     return (
-      <View style={styles.row}>
-        <Text numberOfLines={2} ellipsizeMode="tail" style={typography.bigLabel}>
-          { deck.name }
-        </Text>
+      <View>
+        { this.renderXp() }
+        { this.renderTrauma() }
+        { this.renderExile() }
       </View>
     );
   }
 
   render() {
     const {
-      investigator,
+      id,
+      deck,
+      cards,
+      investigators,
     } = this.props;
     return (
-      <View style={styles.container}>
-        <View style={styles.deleteIcon}>
-          <TouchableOpacity onPress={this._onRemove}>
-            <MaterialCommunityIcons name="close" size={24} color="#444" />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.investigatorImage}>
-          <InvestigatorImage card={investigator} />
-        </View>
-        <View style={styles.column}>
-          { this.renderTitle() }
-          { this.renderXp() }
-          { this.renderTrauma() }
-          { this.renderExile() }
-        </View>
+      <View style={styles.card}>
+        <DeckListRow
+          id={id}
+          deck={deck}
+          cards={cards}
+          investigators={investigators}
+          onPress={this._onDeckPress}
+          investigator={deck ? cards[deck.investigator_code] : null}
+          titleButton={
+            <TouchableOpacity onPress={this._onRemove}>
+              <MaterialCommunityIcons name="close" size={28} color="#FFFFFF" />
+            </TouchableOpacity>
+          }
+          details={this.renderDetails()}
+        />
       </View>
     );
   }
@@ -268,74 +291,17 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(DeckRow, {
-    schemas: ['Card'],
-    mapToProps(results, realm, props) {
-      const {
-        deck,
-      } = props;
-      const exileCards = {};
-      forEach(results.cards.filtered('exile == true'), card => {
-        exileCards[card.code] = card;
-      });
-      if (!deck || !deck.investigator_code) {
-        return {
-          exileCards,
-          investigator: null,
-          hasExile: false,
-        };
-      }
-      const allExileCards = new Set(keys(exileCards));
-      const hasExile = !!find(keys(deck.slots), code => allExileCards.has(code));
-      const query = `code == "${deck.investigator_code}"`;
-      return {
-        exileCards,
-        investigator: head(results.cards.filtered(query)),
-        hasExile,
-      };
-    },
-  }),
-);
+export default connect(mapStateToProps, mapDispatchToProps)(DeckRow);
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderColor: '#000000',
-    paddingLeft: 8,
-    paddingRight: 8,
-  },
-  investigatorImage: {
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingRight: 8,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    height: '100%',
-  },
-  column: {
-    flexDirection: 'column',
-    flex: 1,
-    height: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    marginTop: 8,
-    marginRight: 8,
-  },
-  deleteIcon: {
-    position: 'absolute',
-    top: 4,
-    right: 4,
-    width: 24,
-    height: 24,
-  },
   row: {
     paddingBottom: 4,
     width: '100%',
+  },
+  card: {
+    marginLeft: 8,
+    marginRight: 8,
+    borderRadius: 4,
+    overflow: 'hidden',
   },
 });

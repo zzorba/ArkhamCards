@@ -10,23 +10,25 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../../actions';
-import WeaknessSetPackChooserComponent from '../weakness/WeaknessSetPackChooserComponent';
-import { getPacksInCollection } from '../../reducers';
 import CampaignSelector from './CampaignSelector';
 import { CUSTOM } from './constants';
-import LabeledTextBox from '../core/LabeledTextBox';
-import ChaosBagLine from '../core/ChaosBagLine';
-import Button from '../core/Button';
-import EditNameDialog from '../core/EditNameDialog';
-import SelectedDeckListComponent from '../SelectedDeckListComponent';
-import { CAMPAIGN_CHAOS_BAGS, DIFFICULTY } from '../../constants';
-import typography from '../../styles/typography';
+import Button from '../../core/Button';
+import ChaosBagLine from '../../core/ChaosBagLine';
+import EditNameDialog from '../../core/EditNameDialog';
+import LabeledTextBox from '../../core/LabeledTextBox';
+import SelectedDeckListComponent from '../../SelectedDeckListComponent';
+import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
+import { CAMPAIGN_CHAOS_BAGS, DIFFICULTY } from '../../../constants';
+import { getNextCampaignId } from '../../../reducers';
+import typography from '../../../styles/typography';
+import * as Actions from '../../../actions';
 
 class NewCampaignView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     newCampaign: PropTypes.func.isRequired,
+    onCreateCampaign: PropTypes.func.isRequired,
+    nextId: PropTypes.number.isRequired,
   };
 
   constructor(props) {
@@ -51,6 +53,7 @@ class NewCampaignView extends React.Component {
     this.updateNavigatorButtons();
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
+    this._onSave = this.onSave.bind(this);
     this._onWeaknessPackChange = this.onWeaknessPackChange.bind(this);
     this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
     this._onNameChange = this.onNameChange.bind(this);
@@ -116,18 +119,38 @@ class NewCampaignView extends React.Component {
   }
 
   onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'save') {
+        this.onSave();
+      }
+    }
+  }
+
+  onSave() {
     const {
+      nextId,
+      newCampaign,
+      onCreateCampaign,
+    } = this.props;
+    const {
+      name,
       campaign,
       campaignCode,
       difficulty,
       deckIds,
+      weaknessPacks,
     } = this.state;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'save') {
-        this.props.newCampaign(campaignCode, campaign, difficulty, deckIds, this.getChaosBag());
-        this.props.navigator.pop();
-      }
-    }
+    // Save to redux.
+    newCampaign(
+      nextId,
+      name || `My ${campaign}`,
+      campaignCode,
+      difficulty,
+      deckIds,
+      this.getChaosBag(),
+      weaknessPacks,
+    );
+    onCreateCampaign(nextId);
   }
 
   updateChaosBag(chaosBag) {
@@ -316,6 +339,13 @@ class NewCampaignView extends React.Component {
             deckAdded={this._deckAdded}
             deckRemoved={this._deckRemoved}
           />
+          <Button
+            style={styles.topPadding}
+            color="green"
+            text="Save New Campaign"
+            onPress={this._onSave}
+          />
+          <View style={styles.footer} />
         </ScrollView>
         { this.renderNameDialog() }
       </View>
@@ -326,7 +356,7 @@ class NewCampaignView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    in_collection: getPacksInCollection(state),
+    nextId: getNextCampaignId(state),
   };
 }
 
@@ -349,5 +379,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     borderBottomWidth: 1,
     borderColor: '#000000',
+  },
+  footer: {
+    height: 100,
   },
 });

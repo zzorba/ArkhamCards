@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-import EncounterIcon from '../../assets/EncounterIcon';
+import EncounterIcon from '../../../assets/EncounterIcon';
 
 export default class CampaignItem extends React.Component {
   static propTypes = {
