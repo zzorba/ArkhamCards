@@ -7,13 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import InvestigatorImage from './core/InvestigatorImage';
+import FactionGradient from './core/FactionGradient';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
 import { toRelativeDateString } from '../lib/datetime';
 import { parseDeck } from './parseDeck';
-import { FACTION_LIGHT_GRADIENTS } from '../constants';
 
 export default class DeckListRow extends React.Component {
   static propTypes = {
@@ -97,10 +96,7 @@ export default class DeckListRow extends React.Component {
             button={titleButton}
             compact
           />
-          <LinearGradient
-            colors={FACTION_LIGHT_GRADIENTS[investigator.faction_code]}
-            style={styles.row}
-          >
+          <FactionGradient faction_code={investigator.faction_code} style={styles.row}>
             <View style={styles.image}>
               { !!investigator && <InvestigatorImage card={investigator} /> }
             </View>
@@ -110,7 +106,7 @@ export default class DeckListRow extends React.Component {
               </Text>
               { this.renderDeckDetails() }
             </View>
-          </LinearGradient>
+          </FactionGradient>
         </View>
       </TouchableOpacity>
     );

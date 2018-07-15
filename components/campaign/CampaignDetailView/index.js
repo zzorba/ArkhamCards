@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find, keys, map } from 'lodash';
+import { find, flatMap, keys, map } from 'lodash';
 import {
   Alert,
   ScrollView,
@@ -13,8 +13,7 @@ import { connect } from 'react-redux';
 
 import { CUSTOM } from '../constants';
 import ChaosBagSection from '../ChaosBagSection';
-import NotesSection from '../NotesSection';
-import CountSection from '../CountSection';
+import CampaignNotesSection from '../CampaignNotesSection';
 import InvestigatorSection from '../InvestigatorSection';
 import InvestigatorStatusRow from './InvestigatorStatusRow';
 import Button from '../../core/Button';
@@ -62,6 +61,7 @@ class CampaignDetailView extends React.Component {
     this._notesChanged = this.notesChanged.bind(this);
     this._countChanged = this.countChanged.bind(this);
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
+    this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
     this._delete = this.delete.bind(this);
     this._addScenarioResult = this.addScenarioResult.bind(this);
 
@@ -206,30 +206,16 @@ class CampaignDetailView extends React.Component {
     );
   }
 
-  renderCampaignNotes() {
+  investigators() {
     const {
-      campaignNotes,
-    } = this.state;
-    return (
-      <View>
-        { map(campaignNotes.sections || [], (section, idx) => (
-          <NotesSection
-            key={idx}
-            notesChanged={this._notesChanged}
-            index={idx}
-            notesSection={section}
-          />
-        )) }
-        { map(campaignNotes.counts || [], (section, idx) => (
-          <CountSection
-            key={idx}
-            countChanged={this._countChanged}
-            index={idx}
-            countSection={section}
-          />
-        )) }
-      </View>
-    );
+      decks,
+      campaign: {
+        latestDeckIds,
+      },
+    } = this.props;
+    return map(
+      flatMap(latestDeckIds, deckId => decks[deckId]),
+      deck => deck.investigator_code);
   }
 
   render() {
@@ -258,7 +244,12 @@ class CampaignDetailView extends React.Component {
           chaosBag={campaign.chaosBag}
           updateChaosBag={this._updateChaosBag}
         />
-        { this.renderCampaignNotes() }
+        <CampaignNotesSection
+          navigator={navigator}
+          campaignNotes={campaign.campaignNotes}
+          investigators={this.investigators()}
+          updateCampaignNotes={this._updateCampaignNotes}
+        />
         { this.renderLatestDecks() }
         <View style={styles.footer} />
       </ScrollView>

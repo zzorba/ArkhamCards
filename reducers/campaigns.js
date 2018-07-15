@@ -21,11 +21,6 @@ import {
 //       mental: #,
 //       killed: bool,
 //       insane: bool,
-//       campaignNotes: {
-//         sections: [
-//           { title: 'Supplies', notes: [] },
-//         ],
-//       }
 //     },
 //   },
 //   chaosBag: {},
@@ -42,8 +37,12 @@ import {
 //       { title: 'Doubt', count: 2 },
 //     ],
 //     // Not the data, just the config.
-//     investigatorSections: [],
-//     investigatorCounts: [],
+//     investigatorSections: [
+//       { title: 'Supplies', notes: { investigatorCodes: [] } },
+//     ],
+//     investigatorCounts: [
+//       { title: 'Vengeance', counts: { investigatorCodes: # } },
+//     ],
 //   },
 //   completedScenarios: [{
 //     scenario: '',
@@ -128,8 +127,12 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     campaignNotes.counts = map(action.campaignLog.counts || [], section => {
       return { title: section, count: 0 };
     });
-    campaignNotes.investigatorSections = (action.campaignLog.investigatorSections || []).slice();
-    campaignNotes.investigatorCounts = (action.campaignLog.investigatorCounts || []).slice();
+    campaignNotes.investigatorSections = map(action.campaignLog.investigatorSections || [], section => {
+      return { title: section, notes: {} };
+    });
+    campaignNotes.investigatorCounts = map(action.campaignLog.investigatorCounts || [], section => {
+      return { title: section, counts: {} };
+    });
 
     const newCampaign = {
       id: action.id,
