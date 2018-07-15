@@ -15,7 +15,7 @@ import NotesSection from '../NotesSection';
 import ScenarioSection from './ScenarioSection';
 import SelectedDeckListComponent from '../../SelectedDeckListComponent';
 import XpComponent from '../../XpComponent';
-import * as Actions from '../../../actions';
+import { addScenarioResult } from '../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
 
 const DEFAULT_SETTINGS = {
@@ -271,7 +271,9 @@ function mapStateToProps(state, props) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({
+    addScenarioResult,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

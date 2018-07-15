@@ -23,7 +23,7 @@ import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChoos
 import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';
 import typography from '../../../styles/typography';
-import * as Actions from '../../../actions';
+import { newCampaign } from '../actions';
 
 class NewCampaignView extends React.Component {
   static propTypes = {
@@ -485,7 +485,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({
+    newCampaign,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignView);

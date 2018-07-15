@@ -1,25 +1,23 @@
-export const PACKS_AVAILABLE = 'PACKS_AVAILABLE';
-export const UPDATE_PROMPT_DISMISSED = 'UPDATE_PROMPT_DISMISSED';
-export const NEW_DECK_AVAILABLE = 'NEW_DECK_AVAILABLE';
-export const UPDATE_DECK = 'UPDATE_DECK';
-export const CLEAR_DECKS = 'CLEAR_DECKS';
-export const SET_MY_DECKS = 'SET_MY_DECKS';
-export const MY_DECKS_START_REFRESH = 'MY_DECKS_START_REFRESH';
-export const MY_DECKS_ERROR = 'MY_DECKS_ERROR';
-export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
-export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
-export const SET_ALL_PACK_SPOILERS = 'SET_ALL_PACK_SPOILERS';
-export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
-export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
-export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
-export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
-export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
-export const EDIT_WEAKNESS_SET = 'EDIT_WEAKNESS_SET';
-export const DELETE_WEAKNESS_SET = 'DELETE_WEAKNESS_SET';
-export const LOGIN_STARTED = 'LOGIN_STARTED';
-export const LOGIN = 'LOGIN';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const LOGOUT = 'LOGOUT';
+import {
+  PACKS_AVAILABLE,
+  UPDATE_PROMPT_DISMISSED,
+  NEW_DECK_AVAILABLE,
+  UPDATE_DECK,
+  CLEAR_DECKS,
+  SET_MY_DECKS,
+  MY_DECKS_START_REFRESH,
+  MY_DECKS_ERROR,
+  SET_IN_COLLECTION,
+  SET_PACK_SPOILER,
+  SET_ALL_PACK_SPOILERS,
+  NEW_WEAKNESS_SET,
+  EDIT_WEAKNESS_SET,
+  DELETE_WEAKNESS_SET,
+  LOGIN_STARTED,
+  LOGIN,
+  LOGIN_ERROR,
+  LOGOUT,
+} from './types';
 
 import { getAccessToken, signInFlow, signOutFlow } from '../lib/auth';
 import { decks, loadDeck } from '../lib/authApi';
@@ -245,98 +243,6 @@ export function setAllPackSpoilers(spoilers) {
   };
 }
 
-export function newCampaign(
-  id,
-  name,
-  pack_code,
-  difficulty,
-  deckIds,
-  chaosBag,
-  campaignLog,
-  weaknessPacks
-) {
-  return {
-    type: NEW_CAMPAIGN,
-    id,
-    name: name,
-    cycleCode: pack_code,
-    difficulty,
-    chaosBag,
-    campaignLog,
-    weaknessPacks,
-    deckIds,
-    now: new Date(),
-  };
-}
-
-export function updateCampaign(
-  id,
-  chaosBag,
-  campaignNotes,
-  investigatorData,
-  latestDeckIds,
-  weaknessSet,
-) {
-  return {
-    type: UPDATE_CAMPAIGN,
-    id,
-    chaosBag,
-    campaignNotes,
-    investigatorData,
-    latestDeckIds,
-    weaknessSet,
-  };
-}
-
-export function deleteCampaign(id) {
-  return {
-    type: DELETE_CAMPAIGN,
-    id,
-  };
-}
-
-
-// deckIds: [],
-// scenario: '',
-// scenarioCode: '',
-// campaignNotes: [],
-// investigatorUpdates: {
-//   investigator_code: {
-//     trauma: {
-//       physical,
-//       mental,
-//     },
-//     xp: #,
-//     killed: bool,
-//     insane: bool,
-//     exile: {},
-//   },
-//   investigator_code: {
-//     ...
-//   }
-// }],
-export function addScenarioResult(
-  id,
-  deckIds,
-  { scenario, scenarioCode },
-  campaignNotes,
-  investigatorUpdates,
-  chaosBag,
-) {
-  return {
-    type: ADD_CAMPAIGN_SCENARIO_RESULT,
-    id,
-    scenarioResult: {
-      deckIds,
-      scenario,
-      scenarioCode,
-      campaignNotes,
-      investigatorUpdates,
-      chaosBag,
-    },
-    now: new Date(),
-  };
-}
 
 export default {
   login,
@@ -349,9 +255,6 @@ export default {
   fetchPublicDeck,
   setInCollection,
   setPackSpoiler,
-  newCampaign,
-  deleteCampaign,
-  addScenarioResult,
   setMyDecks,
   setNewDeck,
   updateDeck,

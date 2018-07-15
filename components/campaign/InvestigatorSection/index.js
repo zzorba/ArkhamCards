@@ -12,7 +12,6 @@ import { connectRealm } from 'react-native-realm';
 
 import AddDeckRow from '../../AddDeckRow';
 import DeckListRow from '../../DeckListRow';
-import * as Actions from '../../../actions';
 import { getAllDecks } from '../../../reducers';
 import typography from '../../../styles/typography';
 
@@ -186,7 +185,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(

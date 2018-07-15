@@ -18,7 +18,7 @@ import CountSection from '../CountSection';
 import InvestigatorSection from '../InvestigatorSection';
 import InvestigatorStatusRow from './InvestigatorStatusRow';
 import Button from '../../core/Button';
-import * as Actions from '../../../actions';
+import { deleteCampaign } from '../actions';
 import { iconsMap } from '../../../app/NavIcons';
 import { getCampaign, getAllDecks, getAllPacks } from '../../../reducers';
 import typography from '../../../styles/typography';
@@ -27,6 +27,7 @@ class CampaignDetailView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
+    // redux
     deleteCampaign: PropTypes.func.isRequired,
     campaign: PropTypes.object,
     decks: PropTypes.object,
@@ -273,7 +274,9 @@ function mapStateToProps(state, props) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({
+    deleteCampaign,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CampaignDetailView);

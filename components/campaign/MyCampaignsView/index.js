@@ -7,7 +7,6 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../../../actions';
 import { getAllDecks, getCampaigns } from '../../../reducers';
 import { iconsMap } from '../../../app/NavIcons';
 import CampaignItem from './CampaignItem';
@@ -115,7 +114,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyCampaignsView);

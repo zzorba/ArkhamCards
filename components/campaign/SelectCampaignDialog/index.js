@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 import CampaignItem from './CampaignItem';
 import { CUSTOM } from '../constants';
 import Button from '../../core/Button';
-import * as Actions from '../../../actions';
 import { getPacksInCollection } from '../../../reducers';
 
 const CAMPAIGNS = {
@@ -116,7 +115,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectCampaignDialog);
