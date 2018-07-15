@@ -291,9 +291,8 @@ const decks = (state = DEFAULT_DECK_STATE, action) => {
 //       { title: 'Doubt', count: 2 },
 //     ],
 //     // Not the data, just the config.
-//     investigatorLogs: {
-//
-//     },
+//     investigatorSections: [],
+//     investigatorCounts: [],
 //   },
 //   completedScenarios: [{
 //     scenario: '',
@@ -317,19 +316,31 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
     );
   }
   if (action.type === NEW_CAMPAIGN) {
+    const campaignNotes = {};
+    campaignNotes.sections = map(action.campaignLog.sections || [], section => {
+      return { title: section, notes: [] };
+    });
+    campaignNotes.counts = map(action.campaignLog.counts || [], section => {
+      return { title: section, count: 0 };
+    });
+    campaignNotes.investigatorSections = (action.campaignLog.investigatorSections || []).slice();
+    campaignNotes.investigatorCounts = (action.campaignLog.investigatorCounts || []).slice();
+
     const newCampaign = {
       id: action.id,
       name: action.name,
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
-      chaosBag: action.chaosBag,
+      chaosBag: Object.assign({}, action.chaosBag),
+      campaignNotes,
       weaknessSet: {
-        packCodes: action.weaknessPacks,
+        packCodes: action.weaknessPacks.slice(),
         assignedCards: {},
       },
       latestDeckIds: action.deckIds,
       lastUpdated: action.now,
       investigatorData: {},
+      completedScenarios: [],
     };
     return Object.assign({},
       state,
