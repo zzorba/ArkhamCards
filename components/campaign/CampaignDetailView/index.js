@@ -244,13 +244,13 @@ class CampaignDetailView extends React.Component {
           chaosBag={campaign.chaosBag}
           updateChaosBag={this._updateChaosBag}
         />
+        { this.renderLatestDecks() }
         <CampaignNotesSection
           navigator={navigator}
           campaignNotes={campaign.campaignNotes}
           investigators={this.investigators()}
           updateCampaignNotes={this._updateCampaignNotes}
         />
-        { this.renderLatestDecks() }
         <View style={styles.footer} />
       </ScrollView>
     );
