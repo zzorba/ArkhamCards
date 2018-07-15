@@ -233,7 +233,6 @@ class AddScenarioResultView extends React.Component {
       <ChaosBagSection
         navigator={navigator}
         chaosBag={this.state.chaosBag}
-        originalChaosBag={latestChaosBag}
         updateChaosBag={this._chaosBagChanged}
       />
     );

@@ -220,6 +220,7 @@ class NewCampaignView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Dialog.EditChaosBag',
+      title: 'Chaos Bag',
       passProps: {
         chaosBag: this.state.customChaosBag,
         updateChaosBag: this._updateChaosBag,

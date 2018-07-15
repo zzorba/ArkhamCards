@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { map, range } from 'lodash';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
@@ -32,27 +32,60 @@ export default class ChaosTokenRow extends React.PureComponent {
     onCountChange(id, count);
   }
 
-  render() {
+  static renderTokens(id, count, status) {
+    return (
+      <View style={styles.row}>
+        { map(range(0, count), (idx) => (
+          <ChaosToken key={`${status}-${idx}`} id={id} status={status} />
+        )) }
+      </View>
+    );
+  }
+
+  renderTokens() {
     const {
       id,
       count,
       originalCount,
+    } = this.props;
+    if (count > originalCount) {
+      return (
+        <View style={styles.row}>
+          { (originalCount > 0) && ChaosTokenRow.renderTokens(id, originalCount) }
+          { ChaosTokenRow.renderTokens(id, (count - originalCount), 'added') }
+        </View>
+      );
+    }
+    if (count < originalCount) {
+      return (
+        <View style={styles.row}>
+          { count > 0 && ChaosTokenRow.renderTokens(id, count) }
+          { ChaosTokenRow.renderTokens(id, (originalCount - count), 'removed') }
+        </View>
+      );
+    }
+    return ChaosTokenRow.renderTokens(id, count);
+
+  }
+
+  render() {
+    const {
+      id,
+      count,
       limit,
     } = this.props;
-    const delta = (count - originalCount);
-    const deltaString = (delta !== 0) ? ` (${delta > 0 ? '+' : ''}${delta})` : '';
     return (
-      <View style={styles.row}>
-        <ChaosToken id={id} />
-        <View style={styles.count}>
-          { count > 0 && <Text style={styles.countText}>{ ` x ${count}${deltaString}` }</Text> }
+      <View style={styles.mainRow}>
+        <View style={styles.row}>
+          <ChaosToken id={id} />
+          <PlusMinusButtons
+            count={count}
+            onChange={this._onChange}
+            size={28}
+            limit={limit}
+          />
         </View>
-        <PlusMinusButtons
-          count={count}
-          onChange={this._onChange}
-          size={28}
-          limit={limit}
-        />
+        { this.renderTokens() }
       </View>
     );
   }
@@ -60,17 +93,18 @@ export default class ChaosTokenRow extends React.PureComponent {
 
 
 const styles = StyleSheet.create({
+  mainRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: 8,
+    paddingRight: 8,
+    height: 60,
+    borderBottomWidth: 1,
+    borderColor: '#222222',
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 60,
-    marginLeft: 8,
-    marginRight: 8,
-  },
-  count: {
-    width: 40,
-  },
-  countText: {
-    fontSize: 18,
   },
 });

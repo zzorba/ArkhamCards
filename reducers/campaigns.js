@@ -153,11 +153,9 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     );
   }
   if (action.type === UPDATE_CAMPAIGN) {
-    const campaign = Object.assign({}, state.all[action.id], {
-      chaosBag: action.chaosBag,
-      campaignNotes: action.campaignNotes,
-      weaknessSet: action.weaknessSet,
-      investigatorData: action.investigatorData,
+    const campaign = Object.assign({}, state.all[action.id]);
+    forEach(keys(action.campaign), key => {
+      campaign[key] = Object.assign({}, action.campaign[key]);
     });
     return Object.assign({},
       state,

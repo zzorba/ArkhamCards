@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import { keys, map } from 'lodash';
 import {
   ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 import ChaosTokenRow from './ChaosTokenRow';
 import { CHAOS_BAG_TOKEN_COUNTS } from '../../../constants';
+import typography from '../../../styles/typography';
 
 export default class EditChaosBagDialog extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    originalChaosBag: PropTypes.object,
     chaosBag: PropTypes.object.isRequired,
     updateChaosBag: PropTypes.func.isRequired,
     trackDeltas: PropTypes.bool,
@@ -56,14 +59,16 @@ export default class EditChaosBagDialog extends React.Component {
   render() {
     const {
       trackDeltas,
-      originalChaosBag,
     } = this.props;
     const {
       chaosBag,
     } = this.state;
-    const ogChaosBag = originalChaosBag || this.props.chaosBag;
+    const ogChaosBag = this.props.chaosBag;
     return (
       <ScrollView>
+        <View style={styles.row}>
+          <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
+        </View>
         { map(keys(CHAOS_BAG_TOKEN_COUNTS), id => {
           const originalCount = trackDeltas ? ogChaosBag[id] : chaosBag[id];
           return (
@@ -81,3 +86,13 @@ export default class EditChaosBagDialog extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    padding: 8,
+    borderBottomWidth: 1,
+    borderColor: '#222222',
+  },
+});

@@ -14,7 +14,6 @@ export default class ChaosBagSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     chaosBag: PropTypes.object.isRequired,
-    originalChaosBag: PropTypes.object,
     updateChaosBag: PropTypes.func.isRequired,
   };
 
@@ -29,13 +28,12 @@ export default class ChaosBagSection extends React.Component {
       navigator,
       updateChaosBag,
       chaosBag,
-      originalChaosBag,
     } = this.props;
     navigator.push({
       screen: 'Dialog.EditChaosBag',
+      title: 'Chaos Bag',
       passProps: {
         chaosBag,
-        originalChaosBag,
         updateChaosBag: updateChaosBag,
         trackDeltas: true,
       },

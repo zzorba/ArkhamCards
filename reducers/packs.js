@@ -6,7 +6,6 @@ import {
   SET_IN_COLLECTION,
   SET_ALL_PACK_SPOILERS,
   SET_PACK_SPOILER,
-  CLEAR_DECKS,
 } from '../actions/types';
 
 const DEFAULT_PACKS_STATE = {

@@ -18,7 +18,7 @@ import CountSection from '../CountSection';
 import InvestigatorSection from '../InvestigatorSection';
 import InvestigatorStatusRow from './InvestigatorStatusRow';
 import Button from '../../core/Button';
-import { deleteCampaign } from '../actions';
+import { updateCampaign, deleteCampaign } from '../actions';
 import { iconsMap } from '../../../app/NavIcons';
 import { getCampaign, getAllDecks, getAllPacks } from '../../../reducers';
 import typography from '../../../styles/typography';
@@ -28,6 +28,7 @@ class CampaignDetailView extends React.Component {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     // redux
+    updateCampaign: PropTypes.func.isRequired,
     deleteCampaign: PropTypes.func.isRequired,
     campaign: PropTypes.object,
     decks: PropTypes.object,
@@ -54,14 +55,13 @@ class CampaignDetailView extends React.Component {
     });
 
     this.state = {
-      chaosBag: props.campaign.chaosBag,
       campaignNotes: props.campaign.campaignNotes,
       latestDeckIds: latestDeckIds,
     };
 
     this._notesChanged = this.notesChanged.bind(this);
     this._countChanged = this.countChanged.bind(this);
-    this._updateChaosBag = this.updateChaosBag.bind(this);
+    this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._delete = this.delete.bind(this);
     this._addScenarioResult = this.addScenarioResult.bind(this);
 
@@ -74,6 +74,14 @@ class CampaignDetailView extends React.Component {
       ],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  applyCampaignUpdate(key, value) {
+    const {
+      campaign,
+      updateCampaign,
+    } = this.props;
+    updateCampaign(campaign.id, { [key]: value });
   }
 
   notesChanged(index, notes) {
@@ -230,9 +238,6 @@ class CampaignDetailView extends React.Component {
       campaign,
       scenarioPack,
     } = this.props;
-    const {
-      chaosBag,
-    } = this.state;
     if (!campaign) {
       return null;
     }
@@ -250,8 +255,7 @@ class CampaignDetailView extends React.Component {
         <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
         <ChaosBagSection
           navigator={navigator}
-          chaosBag={chaosBag}
-          originalChaosBag={campaign.chaosBag}
+          chaosBag={campaign.chaosBag}
           updateChaosBag={this._updateChaosBag}
         />
         { this.renderCampaignNotes() }
@@ -276,6 +280,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     deleteCampaign,
+    updateCampaign,
   }, dispatch);
 }
 
