@@ -1,7 +1,6 @@
 import { Navigation } from 'react-native-navigation';
 
 import SearchMultiSelectView from '../components/SearchMultiSelectView';
-import AddScenarioResultView from '../components/AddScenarioResultView';
 import DeckDetailView from '../components/DeckDetailView';
 import DeckEditView from '../components/DeckEditView';
 import CardSearchView from '../components/CardSearchView';
@@ -9,13 +8,14 @@ import CardDetailView from '../components/CardDetailView';
 import CardFaqView from '../components/CardFaqView';
 import CardImageView from '../components/CardImageView';
 import EditTraumaDialog from '../components/EditTraumaDialog';
-import EditChaosBagDialog from '../components/EditChaosBagDialog';
 import InvestigatorCardsView from '../components/InvestigatorCardsView';
+import AddScenarioResultView from '../components/campaign/AddScenarioResultView';
 import CampaignDetailView from '../components/campaign/CampaignDetailView';
+import CampaignDifficultyDialog from '../components/campaign/CampaignDifficultyDialog';
+import EditChaosBagDialog from '../components/campaign/EditChaosBagDialog';
 import MyCampaignsView from '../components/campaign/MyCampaignsView';
 import NewCampaignView from '../components/campaign/NewCampaignView';
 import SelectCampaignDialog from '../components/campaign/SelectCampaignDialog';
-import CampaignDifficultyDialog from '../components/campaign/CampaignDifficultyDialog';
 import MyDecksView from '../components/MyDecksView';
 import MyDecksSelectorDialog from '../components/MyDecksSelectorDialog';
 import NewDeckView from '../components/NewDeckView';

@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
-import { CUSTOM } from './constants';
+import { CUSTOM } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import Button from '../../core/Button';
 import ChaosBagLine from '../../core/ChaosBagLine';

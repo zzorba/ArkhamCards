@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
+import Button from '../core/Button';
 import ChaosBagLine from '../core/ChaosBagLine';
 import typography from '../../styles/typography';
 
@@ -49,9 +49,12 @@ export default class ChaosBagSection extends React.Component {
         <Text style={[typography.bigLabel, styles.margin]}>
           Chaos Bag
         </Text>
-        <TouchableOpacity onPress={this._showChaosBagDialog}>
+        <View style={[styles.margin, styles.marginTop]}>
           <ChaosBagLine chaosBag={this.props.chaosBag} />
-        </TouchableOpacity>
+        </View>
+        <View style={styles.marginTop}>
+          <Button text="Edit" align="left" onPress={this._showChaosBagDialog} />
+        </View>
       </View>
     );
   }
@@ -65,6 +68,10 @@ const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: 1,
     borderColor: '#000000',
+    paddingBottom: 8,
     marginBottom: 4,
+  },
+  marginTop: {
+    marginTop: 8,
   },
 });

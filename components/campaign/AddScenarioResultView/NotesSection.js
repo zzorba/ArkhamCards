@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import NoteRow from './NoteRow';
-import typography from '../../styles/typography';
+import typography from '../../../styles/typography';
 
 export default class NotesSection extends React.Component {
   static propTypes = {

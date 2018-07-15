@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import TextBox from '../core/TextBox';
+import TextBox from '../../core/TextBox';
 
 export default class NoteRow extends React.Component {
   static propTypes = {

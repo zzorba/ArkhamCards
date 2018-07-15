@@ -5,8 +5,8 @@ import {
   ScrollView,
 } from 'react-native';
 
-import { CHAOS_BAG_TOKEN_COUNTS } from '../../constants';
 import ChaosTokenRow from './ChaosTokenRow';
+import { CHAOS_BAG_TOKEN_COUNTS } from '../../../constants';
 
 export default class EditChaosBagDialog extends React.Component {
   static propTypes = {

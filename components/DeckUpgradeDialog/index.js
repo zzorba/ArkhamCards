@@ -28,6 +28,7 @@ class DeckUpgradeDialog extends React.Component {
     deck: PropTypes.object,
     exileCards: PropTypes.object,
     setNewDeck: PropTypes.func.isRequired,
+    updateDeck: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -51,6 +52,7 @@ class DeckUpgradeDialog extends React.Component {
         id,
       },
       setNewDeck,
+      updateDeck,
     } = this.props;
     const {
       xp,
@@ -64,12 +66,17 @@ class DeckUpgradeDialog extends React.Component {
       }
     });
     const exiles = exileParts.join(',');
-    upgradeDeck(id, xp, exiles).then(newDeck => {
-      setNewDeck(newDeck.id, newDeck);
+    upgradeDeck(id, xp, exiles).then(decks => {
+      const {
+        deck,
+        upgradedDeck,
+      } = decks;
+      updateDeck(deck.id, deck, false);
+      setNewDeck(upgradedDeck.id, upgradedDeck);
       navigator.showModal({
         screen: 'Deck',
         passProps: {
-          id: newDeck.id,
+          id: upgradedDeck.id,
           isPrivate: true,
           modal: true,
         },

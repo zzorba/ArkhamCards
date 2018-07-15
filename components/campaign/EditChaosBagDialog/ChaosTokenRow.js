@@ -6,8 +6,8 @@ import {
   View,
 } from 'react-native';
 
-import ChaosToken from '../core/ChaosToken';
-import PlusMinusButtons from '../core/PlusMinusButtons';
+import ChaosToken from '../../core/ChaosToken';
+import PlusMinusButtons from '../../core/PlusMinusButtons';
 
 export default class ChaosTokenRow extends React.PureComponent {
   static propTypes = {

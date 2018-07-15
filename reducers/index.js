@@ -16,6 +16,7 @@ import {
   NEW_WEAKNESS_SET,
   EDIT_WEAKNESS_SET,
   NEW_CAMPAIGN,
+  UPDATE_CAMPAIGN,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
   SET_MY_DECKS,
@@ -315,6 +316,60 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
       { all: newCampaigns },
     );
   }
+  if (action.type === SET_MY_DECKS) {
+    const allDecks = {};
+    forEach(action.decks, deck => {
+      allDecks[deck.id] = deck;
+    });
+
+    const newAll = Object.assign({}, state.all);
+    forEach(keys(newAll), campaignId => {
+      const campaign = newAll[campaignId];
+      const latestDeckIds = map(campaign.latestDeckIds, deckId => {
+        let deck = allDecks[deckId];
+        while (deck && deck.next_deck && allDecks[deck.next_deck]) {
+          deck = allDecks[deck.next_deck];
+        }
+        return deck.id;
+      });
+      newAll[campaignId] = Object.assign(
+        {},
+        campaign,
+        { latestDeckIds },
+      );
+    });
+    return Object.assign(
+      {},
+      state,
+      { all: newAll },
+    );
+  }
+  if (action.type === NEW_DECK_AVAILABLE) {
+    if (!action.deck.previous_deck) {
+      // No need to search the previous_decks.
+      return state;
+    }
+    const newAll = Object.assign({}, state.all);
+    forEach(keys(newAll), campaignId => {
+      const campaign = newAll[campaignId];
+      const latestDeckIds = map(campaign.latestDeckIds, deckId => {
+        if (action.deck.previous_deck === deckId) {
+          return action.deck.id;
+        }
+        return deckId;
+      });
+      newAll[campaignId] = Object.assign(
+        {},
+        campaign,
+        { latestDeckIds },
+      );
+    });
+    return Object.assign(
+      {},
+      state,
+      { all: newAll },
+    );
+  }
   if (action.type === NEW_CAMPAIGN) {
     const campaignNotes = {};
     campaignNotes.sections = map(action.campaignLog.sections || [], section => {
@@ -345,6 +400,18 @@ const campaigns = (state = DEFAULT_CAMPAIGNS_STATE, action) => {
     return Object.assign({},
       state,
       { all: Object.assign({}, state.all, { [action.id]: newCampaign }) },
+    );
+  }
+  if (action.type === UPDATE_CAMPAIGN) {
+    const campaign = Object.assign({}, state.all[action.id], {
+      chaosBag: action.chaosBag,
+      campaignNotes: action.campaignNotes,
+      weaknessSet: action.weaknessSet,
+      investigatorData: action.investigatorData,
+    });
+    return Object.assign({},
+      state,
+      { all: Object.assign({}, state.all, { [action.id]: campaign }) },
     );
   }
   if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {

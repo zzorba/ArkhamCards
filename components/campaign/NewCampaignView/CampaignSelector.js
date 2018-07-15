@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import LabeledTextBox from '../../core/LabeledTextBox';
-import { CUSTOM } from './constants';
+import { CUSTOM } from '../constants';
 
 export default class CampaignSelector extends React.Component {
   static propTypes = {

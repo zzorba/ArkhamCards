@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import typography from '../../styles/typography';
+import typography from '../styles/typography';
 
 export default class AddDeckRow extends React.Component {
   static propTypes = {

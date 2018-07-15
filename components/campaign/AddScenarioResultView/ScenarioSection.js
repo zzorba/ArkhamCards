@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Input } from 'react-native-elements';
 
-import LabeledTextBox from '../core/LabeledTextBox';
+import LabeledTextBox from '../../core/LabeledTextBox';
 
 const CUSTOM = 'Custom';
 

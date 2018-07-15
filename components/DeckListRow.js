@@ -44,8 +44,12 @@ export default class DeckListRow extends React.Component {
     const {
       deck,
       cards,
+      details,
     } = this.props;
 
+    if (details) {
+      return details;
+    }
     if (!deck) {
       return null;
     }
@@ -72,7 +76,6 @@ export default class DeckListRow extends React.Component {
       deck,
       investigator,
       titleButton,
-      details,
     } = this.props;
     if (!deck) {
       return (
@@ -105,7 +108,7 @@ export default class DeckListRow extends React.Component {
               <Text style={styles.text}>
                 { investigator.name }
               </Text>
-              { details || this.renderDeckDetails() }
+              { this.renderDeckDetails() }
             </View>
           </LinearGradient>
         </View>

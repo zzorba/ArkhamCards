@@ -41,7 +41,6 @@ class MyCampaignsView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign',
-      title: 'Campaign',
       passProps: {
         id,
       },

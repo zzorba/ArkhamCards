@@ -10,13 +10,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import * as Actions from '../../actions';
-import { getAllDecks, getAllPacks, getPack } from '../../reducers';
-import XpComponent from '../XpComponent';
-import ChaosBagSection from './ChaosBagSection';
-import NotesSection from './NotesSection';
+import ChaosBagSection from '../ChaosBagSection';
+import NotesSection from '../NotesSection';
 import ScenarioSection from './ScenarioSection';
-import SelectedDeckListComponent from '../SelectedDeckListComponent';
+import SelectedDeckListComponent from '../../SelectedDeckListComponent';
+import XpComponent from '../../XpComponent';
+import * as Actions from '../../../actions';
+import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
 
 const DEFAULT_SETTINGS = {
   xp: 0,
@@ -251,7 +251,6 @@ class AddScenarioResultView extends React.Component {
         </View>
         { this.renderInvestigators() }
         { this.renderChaosBag() }
-        <NotesSection notesChanged={this._notesChanged} />
       </ScrollView>
     );
   }

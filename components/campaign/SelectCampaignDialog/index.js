@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import CampaignItem from './CampaignItem';
+import { CUSTOM } from '../constants';
 import Button from '../../core/Button';
 import * as Actions from '../../../actions';
 import { getPacksInCollection } from '../../../reducers';
@@ -65,7 +66,7 @@ class SelectCampaignDialog extends React.Component {
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}
-        text={packCode === 'custom' ? 'Custom' : CAMPAIGNS[packCode]}
+        text={packCode === CUSTOM ? 'Custom' : CAMPAIGNS[packCode]}
       />
     );
   }
@@ -91,7 +92,7 @@ class SelectCampaignDialog extends React.Component {
           </View>
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
-        { this.renderCampaign('custom') }
+        { this.renderCampaign(CUSTOM) }
         <View style={styles.button}>
           <Button onPress={this._editCollection} text="Edit Collection" />
         </View>

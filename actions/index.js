@@ -3,7 +3,6 @@ export const UPDATE_PROMPT_DISMISSED = 'UPDATE_PROMPT_DISMISSED';
 export const NEW_DECK_AVAILABLE = 'NEW_DECK_AVAILABLE';
 export const UPDATE_DECK = 'UPDATE_DECK';
 export const CLEAR_DECKS = 'CLEAR_DECKS';
-export const NEW_DECK = 'NEW_DECK';
 export const SET_MY_DECKS = 'SET_MY_DECKS';
 export const MY_DECKS_START_REFRESH = 'MY_DECKS_START_REFRESH';
 export const MY_DECKS_ERROR = 'MY_DECKS_ERROR';
@@ -11,6 +10,7 @@ export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
 export const SET_ALL_PACK_SPOILERS = 'SET_ALL_PACK_SPOILERS';
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
+export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
@@ -123,9 +123,6 @@ export function fetchPacks(callback) {
         console.log(err);
       });
   };
-}
-
-export function upgradeDeck(deck, xp, exiles) {
 }
 
 export function clearDecks() {
@@ -269,6 +266,25 @@ export function newCampaign(
     weaknessPacks,
     deckIds,
     now: new Date(),
+  };
+}
+
+export function updateCampaign(
+  id,
+  chaosBag,
+  campaignNotes,
+  investigatorData,
+  latestDeckIds,
+  weaknessSet,
+) {
+  return {
+    type: UPDATE_CAMPAIGN,
+    id,
+    chaosBag,
+    campaignNotes,
+    investigatorData,
+    latestDeckIds,
+    weaknessSet,
   };
 }
 
