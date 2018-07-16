@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  View,
+} from 'react-native';
 
+import EditNameDialog from '../core/EditNameDialog';
 import EditCampaignNotesComponent from './EditCampaignNotesComponent';
 
 export default class EditCampaignNotesDialog extends React.Component {
@@ -16,6 +20,12 @@ export default class EditCampaignNotesDialog extends React.Component {
 
     this.state = {
       campaignNotes: Object.assign({}, props.campaignNotes),
+      viewRef: null,
+      dialogVisible: false,
+      dialogParams: {
+        title: 'Placeholder',
+        text: '',
+      },
     };
 
     props.navigator.setButtons({
@@ -29,6 +39,9 @@ export default class EditCampaignNotesDialog extends React.Component {
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
+    this._showDialog = this.showDialog.bind(this);
+    this._toggleDialog = this.toggleDialog.bind(this);
+    this._captureViewRef = this.captureViewRef.bind(this);
     this._updateCampaignNotes = this.updateCampaignNotes.bind(this);
   }
 
@@ -41,10 +54,59 @@ export default class EditCampaignNotesDialog extends React.Component {
     }
   }
 
+  captureViewRef(ref) {
+    this.setState({
+      viewRef: ref,
+    });
+  }
+
+  toggleDialog() {
+    this.setState({
+      dialogVisible: false,
+    });
+  }
+
+  showDialog(title, text, onChange) {
+    this.setState({
+      dialogVisible: true,
+      dialogParams: {
+        title,
+        text,
+        onChange,
+      },
+    });
+  }
+
   updateCampaignNotes(campaignNotes) {
     this.setState({
       campaignNotes,
     });
+  }
+
+  renderDialog() {
+    const {
+      dialogVisible,
+      viewRef,
+      dialogParams: {
+        title,
+        text,
+        onChange,
+      },
+    } = this.state;
+    if (!viewRef) {
+      return null;
+    }
+
+    return (
+      <EditNameDialog
+        visible={dialogVisible}
+        viewRef={viewRef}
+        title={title}
+        name={text}
+        onNameChange={onChange}
+        toggleVisible={this._toggleDialog}
+      />
+    );
   }
 
   render() {
@@ -55,11 +117,17 @@ export default class EditCampaignNotesDialog extends React.Component {
       campaignNotes,
     } = this.state;
     return (
-      <EditCampaignNotesComponent
-        campaignNotes={campaignNotes}
-        investigators={investigators}
-        updateCampaignNotes={this._updateCampaignNotes}
-      />
+      <View>
+        <View ref={this._captureViewRef}>
+          <EditCampaignNotesComponent
+            campaignNotes={campaignNotes}
+            investigators={investigators}
+            updateCampaignNotes={this._updateCampaignNotes}
+            showDialog={this._showDialog}
+          />
+        </View>
+        { this.renderDialog() }
+      </View>
     );
   }
 }

@@ -14,6 +14,7 @@ import NotesSection from './NotesSection';
 class EditCampaignNotesComponent extends React.Component {
   static propTypes = {
     updateCampaignNotes: PropTypes.func.isRequired,
+    showDialog: PropTypes.func.isRequired,
     campaignNotes: PropTypes.object,
     investigators: PropTypes.array,
     investigatorCards: PropTypes.object,
@@ -65,6 +66,7 @@ class EditCampaignNotesComponent extends React.Component {
             notes={section.notes}
             index={idx}
             notesChanged={this._notesChanged}
+            showDialog={this.props.showDialog}
           />
         )) }
       </View>
@@ -94,6 +96,7 @@ class EditCampaignNotesComponent extends React.Component {
       },
       investigators,
       investigatorCards,
+      showDialog,
     } = this.props;
     if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
       return null;
@@ -107,6 +110,7 @@ class EditCampaignNotesComponent extends React.Component {
             investigator={investigatorCards[code]}
             investigatorNotes={investigatorNotes}
             updateInvestigatorNotes={this._updateInvestigatorNotes}
+            showDialog={showDialog}
           />
         )) }
       </View>

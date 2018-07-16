@@ -13,7 +13,7 @@ export default class EditNameDialog extends React.Component {
     visible: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     viewRef: PropTypes.object,
-    onNameChange: PropTypes.func.isRequired,
+    onNameChange: PropTypes.func,
     toggleVisible: PropTypes.func.isRequired,
   };
 
@@ -21,7 +21,6 @@ export default class EditNameDialog extends React.Component {
     super(props);
 
     this.state = {
-      name: props.name,
       textInputRef: null,
     };
 
@@ -29,6 +28,16 @@ export default class EditNameDialog extends React.Component {
     this._captureTextInputRef = this.captureTextInputRef.bind(this);
     this._onDonePress = this.onDonePress.bind(this);
     this._onCancelPress = this.onCancelPress.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (!state.originalName || props.name !== state.originalName) {
+      return {
+        name: props.name,
+        originalName: props.name,
+      };
+    }
+    return null;
   }
 
   onNameChange(value) {
@@ -45,18 +54,11 @@ export default class EditNameDialog extends React.Component {
 
   componentDidUpdate(prevProps) {
     const {
-      name,
       visible,
     } = this.props;
     const {
       textInputRef,
     } = this.state;
-    if (prevProps.name !== name) {
-      /* eslint-disable react/no-did-update-set-state */
-      this.setState({
-        name: name,
-      });
-    }
     if (visible && !prevProps.visible) {
       textInputRef && textInputRef.focus();
     }
@@ -78,7 +80,7 @@ export default class EditNameDialog extends React.Component {
       onNameChange,
       toggleVisible,
     } = this.props;
-    onNameChange(this.state.name);
+    onNameChange && onNameChange(this.state.name);
     toggleVisible();
   }
 
@@ -105,7 +107,7 @@ export default class EditNameDialog extends React.Component {
       >
         <DialogComponent.Input
           ref={this._captureTextInputRef}
-          value={name}
+          value={this.props.name}
           autoFocus
           onChangeText={this._onNameChange}
           onSubmitEditing={this._onDonePress}

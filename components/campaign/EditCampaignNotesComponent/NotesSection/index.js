@@ -17,6 +17,7 @@ export default class NotesSection extends React.Component {
     title: PropTypes.string.isRequired,
     notes: PropTypes.array,
     isInvestigator: PropTypes.bool,
+    showDialog: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -54,6 +55,7 @@ export default class NotesSection extends React.Component {
     const {
       title,
       isInvestigator,
+      showDialog,
     } = this.props;
     return (
       <View style={[styles.container, isInvestigator ? {} : styles.underline]}>
@@ -64,10 +66,12 @@ export default class NotesSection extends React.Component {
           { map(this.state.notes, (note, idx) => (
             <NoteRow
               key={idx}
+              title={title}
               index={idx}
               note={note}
               updateNote={this._updateNote}
               last={idx === (this.state.notes.length - 1)}
+              showDialog={showDialog}
             />)
           ) }
         </View>

@@ -18,6 +18,7 @@ export default class InvestigatorSection extends React.Component {
     investigator: PropTypes.object,
     investigatorNotes: PropTypes.object,
     updateInvestigatorNotes: PropTypes.func.isRequired,
+    showDialog: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -54,6 +55,7 @@ export default class InvestigatorSection extends React.Component {
   renderSections(sections) {
     const {
       investigator,
+      showDialog,
     } = this.props;
     return (
       <View>
@@ -65,6 +67,7 @@ export default class InvestigatorSection extends React.Component {
             notesSection={section}
             index={idx}
             notesChanged={this._notesChanged}
+            showDialog={showDialog}
             isInvestigator
           />
         )) }

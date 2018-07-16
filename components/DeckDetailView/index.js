@@ -78,7 +78,6 @@ class DeckDetailView extends React.Component {
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
     this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
-    this._onNameChange = this.onNameChange.bind(this);
     this._saveName = this.saveName.bind(this);
 
     if (props.modal) {
@@ -192,15 +191,8 @@ class DeckDetailView extends React.Component {
     });
   }
 
-  onNameChange(value) {
-    this.setState({
-      name: value,
-    });
-  }
-
-  saveName() {
+  saveName(name) {
     const {
-      name,
       slots,
     } = this.state;
     const pendingEdits = this.hasPendingEdits(name, slots);
@@ -356,7 +348,6 @@ class DeckDetailView extends React.Component {
       const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots, previousDeck);
       const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck, previousDeck);
       this.setState({
-        name: deck.name,
         slots: deck.slots,
         cardsInDeck,
         parsedDeck,
@@ -382,10 +373,10 @@ class DeckDetailView extends React.Component {
     return (
       <EditNameDialog
         title="Edit Deck Name"
-        visible={editNameDialogVisible}
         name={nameChange || deck.name}
+        visible={editNameDialogVisible}
         viewRef={viewRef}
-        onNameChange={this._onNameChange}
+        onNameChange={this._saveName}
         toggleVisible={this._toggleEditNameDialog}
       />
     );
@@ -488,11 +479,12 @@ class DeckDetailView extends React.Component {
         <View style={styles.container} ref={this._captureViewRef}>
           <DeckViewTab
             navigator={navigator}
+            deck={deck}
             parsedDeck={parsedDeck}
             cards={cardsInDeck}
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
-            name={nameChange || parsedDeck.deck.name}
+            name={nameChange || deck.name}
             onEditNamePress={isPrivate ? this._toggleEditNameDialog : null}
           />
           <DeckNavFooter

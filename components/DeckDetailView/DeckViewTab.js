@@ -60,6 +60,7 @@ const DECK_PROBLEM_MESSAGES = {
 export default class DeckViewTab extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    deck: PropTypes.object,
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
@@ -171,8 +172,8 @@ export default class DeckViewTab extends React.Component {
   render() {
     const {
       navigator,
+      deck,
       parsedDeck: {
-        deck,
         normalCards,
         specialCards,
         normalCardCount,
