@@ -19,6 +19,7 @@ class DecksSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaign: PropTypes.object,
+    updateLatestDeckIds: PropTypes.func.isRequired,
     decks: PropTypes.object,
     investigators: PropTypes.object,
     /* eslint-disable react/no-unused-prop-types */
@@ -69,8 +70,11 @@ class DecksSection extends React.Component {
   }
 
   deckAdded(deckId) {
+    const latestDeckIds = [...this.state.latestDeckIds || [], deckId];
+    this.props.updateLatestDeckIds(latestDeckIds);
+
     this.setState({
-      latestDeckIds: [...this.state.latestDeckIds || [], deckId],
+      latestDeckIds,
     });
   }
 

@@ -36,26 +36,7 @@ class CampaignDetailView extends React.Component {
   constructor(props) {
     super(props);
 
-    const latestDeckIds = map(props.campaign.latestDeckIds, deckId => {
-      let deck = props.decks[deckId];
-      if (!deck) {
-        return deckId;
-      }
-      while (deck.next_deck) {
-        const nextDeck = props.decks[deck.next_deck];
-        if (nextDeck) {
-          deck = nextDeck;
-        } else {
-          break;
-        }
-      }
-      return deck.id;
-    });
-
-    this.state = {
-      latestDeckIds: latestDeckIds,
-    };
-
+    this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
     this._deletePressed = this.deletePressed.bind(this);
@@ -150,7 +131,11 @@ class CampaignDetailView extends React.Component {
       campaign,
     } = this.props;
     return (
-      <DecksSection navigator={navigator} campaign={campaign} />
+      <DecksSection
+        navigator={navigator}
+        campaign={campaign}
+        updateLatestDeckIds={this._updateLatestDeckIds}
+      />
     );
   }
 
