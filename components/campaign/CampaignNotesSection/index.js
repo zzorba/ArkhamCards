@@ -9,12 +9,12 @@ import {
 import { connectRealm } from 'react-native-realm';
 
 import Button from '../../core/Button';
-import FactionGradient from '../../core/FactionGradient';
 import InvestigatorImage from '../../core/InvestigatorImage';
 import typography from '../../../styles/typography';
 
 class CampaignNotesSection extends React.Component {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
     updateCampaignNotes: PropTypes.func.isRequired,
     campaignNotes: PropTypes.object,
     investigators: PropTypes.array,
@@ -23,36 +23,26 @@ class CampaignNotesSection extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this._showCampaignNotesDialog = this.showCampaignNotesDialog.bind(this);
   }
 
-  investigatorNotes() {
+  showCampaignNotesDialog() {
     const {
-      campaignNotes: {
-        investigatorSections,
-        investigatorCounts,
-      },
+      navigator,
+      updateCampaignNotes,
+      campaignNotes,
       investigators,
-      investigatorCards,
     } = this.props;
-    if (investigatorSections.length === 0 && investigatorCounts.length === 0) {
-      return [];
-    }
-    return map(investigators, investigator => {
-      return {
-        investigator: investigatorCards[investigator],
-        sections: map(investigatorSections, section => {
-          return {
-            title: section.title,
-            notes: section.notes[investigator.code] || [],
-          };
-        }),
-        counts: map(investigatorCounts, section => {
-          return {
-            title: section.title,
-            count: section.counts[investigator.code] || 0,
-          };
-        }),
-      };
+    navigator.push({
+      screen: 'Dialog.EditCampaignNotes',
+      title: 'Campaign Log',
+      passProps: {
+        campaignNotes,
+        investigators,
+        updateCampaignNotes,
+      },
+      backButtonTitle: 'Cancel',
     });
   }
 
@@ -67,7 +57,7 @@ class CampaignNotesSection extends React.Component {
                 <Text style={[styles.margin, typography.text]} key={idx}>
                   { note }
                 </Text>
-              )) : <Text style={typography.text}>None</Text> }
+              )) : <Text style={typography.text}>---</Text> }
             </View>
           </View>
         )) }
@@ -89,15 +79,22 @@ class CampaignNotesSection extends React.Component {
     );
   }
 
-  static renderInvestigatorBlock({
-    investigator,
-    sections,
-    counts,
-  }) {
+  static renderInvestigatorBlock(investigator, investigatorNotes) {
+    const sections = map(investigatorNotes.sections, section => {
+      return {
+        title: section.title,
+        notes: section.notes[investigator.code] || [],
+      };
+    });
+    const counts = map(investigatorNotes.counts, section => {
+      return {
+        title: section.title,
+        count: section.counts[investigator.code] || 0,
+      };
+    });
     return (
-      <FactionGradient
+      <View
         key={investigator.code}
-        faction_code={investigator.faction_code}
         style={styles.investigatorBlock}
       >
         <InvestigatorImage card={investigator} />
@@ -105,19 +102,33 @@ class CampaignNotesSection extends React.Component {
           { CampaignNotesSection.renderSections(sections) }
           { CampaignNotesSection.renderCounts(counts) }
         </View>
-      </FactionGradient>
+      </View>
     );
   }
 
   renderInvestigatorSection() {
-    const investigatorNotes = this.investigatorNotes();
-    if (investigatorNotes.length === 0) {
+    const {
+      campaignNotes: {
+        investigatorNotes,
+      },
+      investigators,
+      investigatorCards,
+    } = this.props;
+    if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
       return null;
     }
 
     return (
       <View>
-        { map(investigatorNotes, CampaignNotesSection.renderInvestigatorBlock) }
+        <Text style={typography.bigLabel}>
+          Investigator Notes
+        </Text>
+        { map(investigators, code => (
+          CampaignNotesSection.renderInvestigatorBlock(
+            investigatorCards[code],
+            investigatorNotes
+          ))
+        ) }
       </View>
     );
   }
@@ -137,7 +148,7 @@ class CampaignNotesSection extends React.Component {
           { this.renderInvestigatorSection() }
         </View>
         <View style={styles.button}>
-          <Button text="Edit" align="left" onPress={this._showChaosBagDialog} />
+          <Button text="Edit" align="left" onPress={this._showCampaignNotesDialog} />
         </View>
       </View>
     );

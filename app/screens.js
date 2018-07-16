@@ -15,6 +15,7 @@ import CampaignDifficultyDialog from '../components/campaign/CampaignDifficultyD
 import EditChaosBagDialog from '../components/campaign/EditChaosBagDialog';
 import MyCampaignsView from '../components/campaign/MyCampaignsView';
 import NewCampaignView from '../components/campaign/NewCampaignView';
+import EditCampaignNotesDialog from '../components/campaign/EditCampaignNotesDialog';
 import SelectCampaignDialog from '../components/campaign/SelectCampaignDialog';
 import MyDecksView from '../components/MyDecksView';
 import MyDecksSelectorDialog from '../components/MyDecksSelectorDialog';
@@ -74,6 +75,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
   Navigation.registerComponent('Dialog.DeckSelector', () => MyDecksSelectorDialog, store, Provider);
   Navigation.registerComponent('Dialog.EditTrauma', () => EditTraumaDialog, store, Provider);
+  Navigation.registerComponent('Dialog.EditCampaignNotes', () => EditCampaignNotesDialog, store, Provider);
   Navigation.registerComponent('Dialog.EditChaosBag', () => EditChaosBagDialog, store, Provider);
   Navigation.registerComponent('Dialog.ExileCards', () => ExileCardDialog, store, Provider);
   Navigation.registerComponent('Dialog.Sort', () => CardSortDialog, store, Provider);

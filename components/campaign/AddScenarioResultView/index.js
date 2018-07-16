@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, forEach, last, map, mapValues } from 'lodash';
+import { concat, filter, flatMap, forEach, last, map, mapValues } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
 import ChaosBagSection from '../ChaosBagSection';
-import NotesSection from '../NotesSection';
+import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 import ScenarioSection from './ScenarioSection';
 import SelectedDeckListComponent from '../../SelectedDeckListComponent';
 import XpComponent from '../../XpComponent';
@@ -33,7 +33,6 @@ class AddScenarioResultView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaign: PropTypes.object.isRequired,
-    latestChaosBag: PropTypes.object,
     // from redux/realm
     addScenarioResult: PropTypes.func.isRequired,
     decks: PropTypes.object,
@@ -52,8 +51,8 @@ class AddScenarioResultView extends React.Component {
     this.state = {
       deckIds,
       deckUpdates,
-      chaosBag: Object.assign({}, props.latestChaosBag),
-      campaignNotes: [],
+      chaosBag: Object.assign({}, props.campaign.chaosBag),
+      campaignNotes: Object.assign({}, props.campaign.campaignNotes),
       scenario: '',
       xp: 0,
     };
@@ -75,7 +74,7 @@ class AddScenarioResultView extends React.Component {
     this.props.navigator.setButtons({
       rightButtons: [
         {
-          title: 'Done',
+          title: 'Save',
           id: 'save',
           showAsAction: 'ifRoom',
           disabled: this.state.deckIds.length === 0,
@@ -124,9 +123,9 @@ class AddScenarioResultView extends React.Component {
     });
   }
 
-  notesChanged(notes) {
+  notesChanged(campaignNotes) {
     this.setState({
-      campaignNotes: [...notes],
+      campaignNotes,
     });
   }
 
@@ -227,7 +226,6 @@ class AddScenarioResultView extends React.Component {
   renderChaosBag() {
     const {
       navigator,
-      latestChaosBag,
     } = this.props;
     return (
       <ChaosBagSection
@@ -240,7 +238,12 @@ class AddScenarioResultView extends React.Component {
 
   render() {
     const {
+      decks,
+    } = this.props;
+    const {
+      deckIds,
       xp,
+      campaignNotes,
     } = this.state;
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -250,6 +253,11 @@ class AddScenarioResultView extends React.Component {
         </View>
         { this.renderInvestigators() }
         { this.renderChaosBag() }
+        <EditCampaignNotesComponent
+          updateCampaignNotes={this._notesChanged}
+          campaignNotes={campaignNotes}
+          investigators={map(flatMap(deckIds, deckId => decks[deckId]), deck => deck.investigator_code)}
+        />
       </ScrollView>
     );
   }
@@ -265,7 +273,7 @@ function mapStateToProps(state, props) {
     cyclePacks,
     standalonePacks,
     decks: getAllDecks(state),
-    latestChaosBag: (latestScenario && latestScenario.chaosBag) || props.campaign.chaosBag,
+    latestScenario,
   };
 }
 

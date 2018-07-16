@@ -30,7 +30,7 @@ export default class EditChaosBagDialog extends React.Component {
     props.navigator.setButtons({
       rightButtons: [
         {
-          title: 'Done',
+          title: 'Save',
           id: 'save',
           showAsAction: 'ifRoom',
         },

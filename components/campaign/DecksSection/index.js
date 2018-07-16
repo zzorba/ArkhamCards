@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { findIndex, flatMap, forEach } from 'lodash';
+import { flatMap, forEach, partition } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -15,12 +15,13 @@ import DeckListRow from '../../DeckListRow';
 import { getAllDecks } from '../../../reducers';
 import typography from '../../../styles/typography';
 
-class InvestigatorSection extends React.Component {
+class DecksSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaign: PropTypes.object,
     decks: PropTypes.object,
     investigators: PropTypes.object,
+    /* eslint-disable react/no-unused-prop-types */
     cards: PropTypes.object,
   };
 
@@ -53,15 +54,7 @@ class InvestigatorSection extends React.Component {
     };
 
     this._deckNavClicked = this.deckNavClicked.bind(this);
-    this._syncInvestigatorData = this.syncInvestigatorData.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
-  }
-
-  syncInvestigatorData() {
-    const {
-      latestData,
-      investigatorData,
-    } = this.state;
   }
 
   deckNavClicked(id) {
@@ -83,41 +76,13 @@ class InvestigatorSection extends React.Component {
 
   investigatorData(investigatorId) {
     const {
-      campaign: {
-        campaignNotes: {
-          investigatorSections,
-          investigatorCounts,
-        },
-      },
-    } = this.props;
-    const {
       investigatorData,
     } = this.state;
     const data = Object.assign({},
       investigatorData[investigatorId] || {
         physical: 0,
         mental: 0,
-        campaignNotes: {
-          sections: [],
-          counts: [],
-        },
       });
-    forEach(investigatorSections, section => {
-      if (findIndex(data.campaignNotes.sections, existing => existing.title === section.title) === -1) {
-        data.campaignNotes.sections.push({
-          title: section.title,
-          notes: [],
-        });
-      }
-    });
-    forEach(investigatorCounts, section => {
-      if (findIndex(data.campaignNotes.counts, existing => existing.title === section.title) === -1) {
-        data.campaignNotes.sections.push({
-          title: section.title,
-          count: 0,
-        });
-      }
-    });
     return data;
   }
 
@@ -126,7 +91,7 @@ class InvestigatorSection extends React.Component {
     return (
       <View>
         <Text>XP: { deck.xp }</Text>
-        <Text>Trauma: { InvestigatorSection.traumaString(data) }</Text>
+        <Text>Trauma: { DecksSection.traumaString(data) }</Text>
       </View>
     );
   }
@@ -137,21 +102,26 @@ class InvestigatorSection extends React.Component {
       decks,
       investigators,
       campaign: {
-        campaignNotes: {
-          investigatorSections,
-          investigatorCounts,
-        },
+        investigatorData,
       },
     } = this.props;
     const {
       latestDeckIds,
     } = this.state;
+    const [killedOrInsaneDeckIds, deckIds] = partition(latestDeckIds, deckId => {
+      const deck = decks[deckId];
+      if (!deck) {
+        return false;
+      }
+      const data = investigatorData[deck.investigator_code];
+      return data && (data.killed || data.insane);
+    });
     return (
-      <View>
+      <View style={styles.underline}>
         <Text style={[typography.bigLabel, styles.margin]}>
-          Investigators
+          Decks
         </Text>
-        { flatMap(latestDeckIds, deckId => {
+        { flatMap(deckIds, deckId => {
           const deck = decks[deckId];
           if (!deck) {
             return null;
@@ -173,6 +143,26 @@ class InvestigatorSection extends React.Component {
           deckAdded={this._deckAdded}
           selectedDeckIds={latestDeckIds}
         />
+        { (killedOrInsaneDeckIds.length > 0) &&
+          <View>
+            <Text style={[typography.bigLabel, styles.margin]}>
+              Fallen Investigators
+            </Text>
+            { flatMap(deckIds, deckId => {
+              const deck = decks[deckId];
+              if (!deck) {
+                return null;
+              }
+              const data = investigatorData[deck.investigator_code];
+              const investigator = investigators[deck.investigator_code];
+              return (
+                <Text style={typography.text}>
+                  { `${investigator.name}: ${data.killed ? 'Killed' : 'Insane'}` }
+                </Text>
+              );
+            }) }
+          </View>
+        }
       </View>
     );
   }
@@ -189,7 +179,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(InvestigatorSection, {
+  connectRealm(DecksSection, {
     schemas: ['Card'],
     mapToProps(results) {
       const investigators = {};
@@ -217,5 +207,11 @@ const styles = StyleSheet.create({
     marginRight: 8,
     borderRadius: 4,
     overflow: 'hidden',
+  },
+  underline: {
+    paddingBottom: 8,
+    borderBottomWidth: 1,
+    borderColor: '#000000',
+    marginBottom: 8,
   },
 });

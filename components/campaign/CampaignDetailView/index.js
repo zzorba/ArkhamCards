@@ -14,11 +14,10 @@ import { connect } from 'react-redux';
 import { CUSTOM } from '../constants';
 import ChaosBagSection from '../ChaosBagSection';
 import CampaignNotesSection from '../CampaignNotesSection';
-import InvestigatorSection from '../InvestigatorSection';
+import DecksSection from '../DecksSection';
 import InvestigatorStatusRow from './InvestigatorStatusRow';
 import Button from '../../core/Button';
 import { updateCampaign, deleteCampaign } from '../actions';
-import { iconsMap } from '../../../app/NavIcons';
 import { getCampaign, getAllDecks, getAllPacks } from '../../../reducers';
 import typography from '../../../styles/typography';
 
@@ -54,26 +53,14 @@ class CampaignDetailView extends React.Component {
     });
 
     this.state = {
-      campaignNotes: props.campaign.campaignNotes,
       latestDeckIds: latestDeckIds,
     };
 
-    this._notesChanged = this.notesChanged.bind(this);
-    this._countChanged = this.countChanged.bind(this);
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
+    this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
     this._addScenarioResult = this.addScenarioResult.bind(this);
-
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          icon: iconsMap.delete,
-          id: 'delete',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   applyCampaignUpdate(key, value) {
@@ -82,38 +69,6 @@ class CampaignDetailView extends React.Component {
       updateCampaign,
     } = this.props;
     updateCampaign(campaign.id, { [key]: value });
-  }
-
-  notesChanged(index, notes) {
-    const {
-      campaignNotes,
-    } = this.state;
-    const sections = campaignNotes.sections.slice();
-    sections[index].notes = notes;
-    const newCampaignNotes = Object.assign({},
-      campaignNotes,
-      { sections: sections },
-    );
-
-    this.setState({
-      campaignNotes: newCampaignNotes,
-    });
-  }
-
-  countChanged(index, count) {
-    const {
-      campaignNotes,
-    } = this.state;
-    const counts = campaignNotes.counts.slice();
-    counts[index].count = count;
-    const newCampaignNotes = Object.assign({},
-      campaignNotes,
-      { counts: counts },
-    );
-
-    this.setState({
-      campaignNotes: newCampaignNotes,
-    });
   }
 
   componentDidUpdate(prevProps) {
@@ -130,6 +85,20 @@ class CampaignDetailView extends React.Component {
     this.setState({
       chaosBag: bag,
     });
+  }
+
+  deletePressed() {
+    const {
+      campaign,
+    } = this.props;
+    Alert.alert(
+      'Delete',
+      `Are you sure you want to delete the campaign: ${campaign.name}?`,
+      [
+        { text: 'Delete', onPress: this._delete, style: 'destructive' },
+        { text: 'Cancel', style: 'cancel' },
+      ],
+    );
   }
 
   delete() {
@@ -149,29 +118,11 @@ class CampaignDetailView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign.AddResult',
-      backButtonTitle: 'Cancel',
       passProps: {
         campaign,
       },
+      backButtonTitle: 'Cancel',
     });
-  }
-
-  onNavigatorEvent(event) {
-    const {
-      campaign,
-    } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'delete') {
-        Alert.alert(
-          'Delete',
-          `Are you sure you want to delete the campaign: ${campaign.name}?`,
-          [
-            { text: 'Delete', onPress: this._delete, style: 'destructive' },
-            { text: 'Cancel', style: 'cancel' },
-          ],
-        );
-      }
-    }
   }
 
   renderScenarioResults() {
@@ -199,10 +150,7 @@ class CampaignDetailView extends React.Component {
       campaign,
     } = this.props;
     return (
-      <InvestigatorSection
-        navigator={navigator}
-        campaign={campaign}
-      />
+      <DecksSection navigator={navigator} campaign={campaign} />
     );
   }
 
@@ -239,18 +187,21 @@ class CampaignDetailView extends React.Component {
         ) }
         { this.renderScenarioResults() }
         <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
+        { this.renderLatestDecks() }
         <ChaosBagSection
           navigator={navigator}
           chaosBag={campaign.chaosBag}
           updateChaosBag={this._updateChaosBag}
         />
-        { this.renderLatestDecks() }
         <CampaignNotesSection
           navigator={navigator}
           campaignNotes={campaign.campaignNotes}
           investigators={this.investigators()}
           updateCampaignNotes={this._updateCampaignNotes}
         />
+        <View style={styles.margin}>
+          <Button color="red" onPress={this._deletePressed} text="Delete Campaign" />
+        </View>
         <View style={styles.footer} />
       </ScrollView>
     );

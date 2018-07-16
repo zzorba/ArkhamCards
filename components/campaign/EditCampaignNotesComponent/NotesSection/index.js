@@ -8,18 +8,22 @@ import {
 } from 'react-native';
 
 import NoteRow from './NoteRow';
-import typography from '../../../styles/typography';
+import typography from '../../../../styles/typography';
 
 export default class NotesSection extends React.Component {
   static propTypes = {
     notesChanged: PropTypes.func.isRequired,
+    index: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    notes: PropTypes.array,
+    isInvestigator: PropTypes.bool,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      notes: [''],
+      notes: [...props.notes, ''],
     };
 
     this._syncNotes = this.syncNotes.bind(this);
@@ -29,8 +33,9 @@ export default class NotesSection extends React.Component {
   syncNotes() {
     const {
       notesChanged,
+      index,
     } = this.props;
-    notesChanged(filter(this.state.notes, note => note !== ''));
+    notesChanged(index, filter(this.state.notes, note => note !== ''));
   }
 
   updateNote(index, note) {
@@ -46,10 +51,14 @@ export default class NotesSection extends React.Component {
   }
 
   render() {
+    const {
+      title,
+      isInvestigator,
+    } = this.props;
     return (
-      <View style={styles.underline}>
+      <View style={[styles.container, isInvestigator ? {} : styles.underline]}>
         <Text style={[typography.bigLabel, styles.margin]}>
-          Campaign Notes
+          { title }
         </Text>
         <View style={styles.margin}>
           { map(this.state.notes, (note, idx) => (
@@ -72,9 +81,11 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
   },
+  container: {
+    marginBottom: 4,
+  },
   underline: {
     borderBottomWidth: 1,
     borderColor: '#000000',
-    marginBottom: 4,
   },
 });

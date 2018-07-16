@@ -6,21 +6,23 @@ import {
   View,
 } from 'react-native';
 
-import PlusMinusButtons from '../core/PlusMinusButtons';
-import typography from '../../styles/typography';
+import PlusMinusButtons from '../../core/PlusMinusButtons';
+import typography from '../../../styles/typography';
 
 export default class CountSection extends React.Component {
   static propTypes = {
     countChanged: PropTypes.func.isRequired,
     index: PropTypes.number,
-    countSection: PropTypes.object,
+    title: PropTypes.string.isRequired,
+    count: PropTypes.number,
+    isInvestigator: PropTypes.bool,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      count: props.countSection.count,
+      count: props.count,
     };
 
     this._syncCount = this.syncCount.bind(this);
@@ -46,15 +48,14 @@ export default class CountSection extends React.Component {
 
   render() {
     const {
-      countSection: {
-        title,
-      },
+      title,
+      isInvestigator,
     } = this.props;
     const {
       count,
     } = this.state;
     return (
-      <View style={styles.underline}>
+      <View style={[styles.container, isInvestigator ? {} : styles.underline]}>
         <Text style={[typography.bigLabel, styles.margin]}>
           { title }
         </Text>
@@ -63,6 +64,7 @@ export default class CountSection extends React.Component {
             count={count}
             onChange={this._updateCount}
             size={28}
+            dark={isInvestigator}
           />
           <Text style={[styles.margin, typography.text]}>
             { count }
@@ -78,10 +80,12 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
   },
+  container: {
+    marginBottom: 4,
+  },
   underline: {
     borderBottomWidth: 1,
     borderColor: '#000000',
-    marginBottom: 4,
   },
   row: {
     flexDirection: 'row',

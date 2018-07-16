@@ -174,6 +174,17 @@ class NewCampaignView extends React.Component {
     }
   }
 
+  placeholderName() {
+    const {
+      campaign,
+      campaignCode,
+    } = this.state;
+    if (campaignCode === CUSTOM) {
+      return 'My Custom Campaign';
+    }
+    return `My ${campaign} Campaign`;
+  }
+
   onSave() {
     const {
       nextId,
@@ -182,7 +193,6 @@ class NewCampaignView extends React.Component {
     } = this.props;
     const {
       name,
-      campaign,
       campaignCode,
       difficulty,
       deckIds,
@@ -191,7 +201,7 @@ class NewCampaignView extends React.Component {
     // Save to redux.
     newCampaign(
       nextId,
-      name || `My ${campaign} Campaign`,
+      name || this.placeholderName(),
       campaignCode,
       difficulty,
       deckIds,
@@ -423,7 +433,6 @@ class NewCampaignView extends React.Component {
     const {
       deckIds,
       name,
-      campaign,
     } = this.state;
 
     return (
@@ -437,7 +446,7 @@ class NewCampaignView extends React.Component {
               <LabeledTextBox
                 label="Name"
                 onPress={this._toggleEditNameDialog}
-                placeholder={`My ${campaign} Campaign`}
+                placeholder={this.placeholderName()}
                 value={name}
               />
             </View>

@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import TextBox from '../../core/TextBox';
+import TextBox from '../../../core/TextBox';
 
 export default class NoteRow extends React.Component {
   static propTypes = {
@@ -39,7 +39,7 @@ export default class NoteRow extends React.Component {
         <TextBox
           value={note}
           onChangeText={this._onChange}
-          placeholder={last ? 'Add a campaign note' : null}
+          placeholder={last ? 'Add note' : null}
         />
       </View>
     );
