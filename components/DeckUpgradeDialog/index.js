@@ -136,6 +136,7 @@ class DeckUpgradeDialog extends React.Component {
           <PlusMinusButtons
             count={xp}
             onChange={this._onXpChange}
+            dark
           />
         </View>
         { (matchingExileCards.length > 0) && (

@@ -5,7 +5,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Input } from 'react-native-elements';
 
 import LabeledTextBox from '../../core/LabeledTextBox';
 
@@ -16,6 +15,7 @@ export default class ScenarioSection extends React.Component {
     navigator: PropTypes.object.isRequired,
     scenarioChanged: PropTypes.func.isRequired,
     allScenarios: PropTypes.array.isRequired,
+    showTextEditDialog: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -24,9 +24,10 @@ export default class ScenarioSection extends React.Component {
     const nextScenario = head(props.allScenarios);
     this.state = {
       selectedScenario: nextScenario ? nextScenario.name : null,
-      customScenario: null,
+      customScenario: '',
     };
 
+    this._showCustomCampaignDialog = this.showCustomCampaignDialog.bind(this);
     this._updateManagedScenario = this.updateManagedScenario.bind(this);
     this._scenarioPressed = this.scenarioPressed.bind(this);
     this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
@@ -35,6 +36,17 @@ export default class ScenarioSection extends React.Component {
 
   componentDidMount() {
     this.updateManagedScenario();
+  }
+
+  showCustomCampaignDialog() {
+    const {
+      showTextEditDialog,
+    } = this.props;
+    showTextEditDialog(
+      'Custom Scenario Name',
+      this.state.customScenario,
+      this._customScenarioTextChanged
+    );
   }
 
   updateManagedScenario() {
@@ -106,13 +118,12 @@ export default class ScenarioSection extends React.Component {
           style={styles.margin}
         />
         { selectedScenario === CUSTOM && (
-          <View style={styles.row}>
-            <Input
-              placeholder="Custom Scenario Name"
-              onChangeText={this._customScenarioTextChanged}
-              value={customScenario}
-            />
-          </View>
+          <LabeledTextBox
+            label="Name"
+            onPress={this._showCustomCampaignDialog}
+            value={customScenario}
+            style={styles.margin}
+          />
         ) }
       </View>
     );
@@ -120,13 +131,9 @@ export default class ScenarioSection extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    width: '100%',
-  },
   margin: {
     marginLeft: 8,
     marginRight: 8,
+    marginBottom: 8,
   },
 });

@@ -20,6 +20,7 @@ class NewWeaknessSetDialog extends React.Component {
     navigator: PropTypes.object,
     nextId: PropTypes.number.isRequired,
     createWeaknessSet: PropTypes.func.isRequired,
+    showTextEditDialog: PropTypes.func.isRequired,
   };
 
   constructor(props) {

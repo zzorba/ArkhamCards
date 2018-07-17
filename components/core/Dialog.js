@@ -17,6 +17,9 @@ export default function Dialog({ title, visible, viewRef, children }) {
       blurAmount={50}
     />
   );
+  if (!viewRef) {
+    return null;
+  }
   return (
     <View>
       <DialogComponent.Container
@@ -35,6 +38,6 @@ export default function Dialog({ title, visible, viewRef, children }) {
 Dialog.propTypes = {
   title: PropTypes.string.isRequired,
   visible: PropTypes.bool.isRequired,
-  viewRef: PropTypes.object.isRequired,
+  viewRef: PropTypes.object,
   children: PropTypes.node,
 };

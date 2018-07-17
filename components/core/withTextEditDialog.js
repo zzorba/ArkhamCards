@@ -1,17 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connectRealm } from 'react-native-realm';
 import {
-  Dimensions,
   StyleSheet,
   View,
 } from 'react-native';
-import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import EditTextDialog from './EditTextDialog';
 
 export default function withTextEditDialog(WrappedComponent) {
-  return class extends React.Component {
+  class TextEditDialogComponent extends React.Component {
     constructor(props) {
       super(props);
 
@@ -63,7 +59,7 @@ export default function withTextEditDialog(WrappedComponent) {
         title,
         text,
         onTextChange,
-        baseViewRef
+        baseViewRef,
       } = this.state;
       if (!baseViewRef) {
         return null;
@@ -95,7 +91,9 @@ export default function withTextEditDialog(WrappedComponent) {
         </View>
       );
     }
-  };
+  }
+  
+  return TextEditDialogComponent;
 }
 
 const styles = StyleSheet.create({

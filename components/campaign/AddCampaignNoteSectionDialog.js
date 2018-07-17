@@ -11,7 +11,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
   static propTypes = {
     viewRef: PropTypes.object,
     visible: PropTypes.bool,
-    addSection: PropTypes.func.isRequired,
+    addSection: PropTypes.func,
     toggleVisible: PropTypes.func.isRequired,
   };
 
@@ -41,7 +41,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
       addSection,
       toggleVisible,
     } = this.props;
-    addSection(name, isCount, perInvestigator);
+    addSection && addSection(name, isCount, perInvestigator);
     this.resetForm();
     toggleVisible();
   }
@@ -87,10 +87,6 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
       isCount,
       perInvestigator,
     } = this.state;
-
-    if (!viewRef) {
-      return null;
-    }
 
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (

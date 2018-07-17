@@ -92,9 +92,6 @@ export default class EditTextDialog extends React.Component {
       viewRef,
       text,
     } = this.props;
-    if (!viewRef) {
-      return null;
-    }
 
     const textChanged = text !== this.state.text;
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';

@@ -17,6 +17,7 @@ class CampaignNotesSection extends React.Component {
     navigator: PropTypes.object.isRequired,
     updateCampaignNotes: PropTypes.func.isRequired,
     campaignNotes: PropTypes.object,
+    investigatorData: PropTypes.object,
     investigators: PropTypes.array,
     investigatorCards: PropTypes.object,
   };
@@ -32,6 +33,7 @@ class CampaignNotesSection extends React.Component {
       navigator,
       updateCampaignNotes,
       campaignNotes,
+      investigatorData,
       investigators,
     } = this.props;
     navigator.push({
@@ -39,6 +41,7 @@ class CampaignNotesSection extends React.Component {
       title: 'Campaign Log',
       passProps: {
         campaignNotes,
+        investigatorData,
         investigators,
         updateCampaignNotes,
       },

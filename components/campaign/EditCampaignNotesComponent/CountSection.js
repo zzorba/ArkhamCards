@@ -55,7 +55,7 @@ export default class CountSection extends React.Component {
       count,
     } = this.state;
     return (
-      <View style={[styles.container, isInvestigator ? {} : styles.underline]}>
+      <View style={isInvestigator ? {} : styles.container}>
         <Text style={[typography.bigLabel, styles.margin]}>
           { title }
         </Text>
@@ -76,16 +76,15 @@ export default class CountSection extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  margin: {
-    marginLeft: 8,
-    marginRight: 8,
-  },
   container: {
-    marginBottom: 4,
-  },
-  underline: {
+    paddingTop: 8,
+    paddingLeft: 8,
+    paddingRight: 8,
     borderBottomWidth: 1,
     borderColor: '#000000',
+  },
+  margin: {
+    marginBottom: 4,
   },
   row: {
     flexDirection: 'row',

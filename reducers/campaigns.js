@@ -31,7 +31,7 @@ import {
 //   campaignNotes: {
 //     sections: [
 //       { title: 'Campaign Notes', notes: [] },
-//       { title: 'Section Title', notes: [] },
+//       { title: 'Section Title', notes: [], custom: true },
 //     ],
 //     counts: [
 //       { title: 'Doubt', count: 2 },
@@ -40,6 +40,7 @@ import {
 //     investigatorNotes: {
 //       sections: [
 //         { title: 'Supplies', notes: { investigatorCodes: [] } },
+//         { title: 'Custom Something', notes: { investigatorCodes: [] }, custom: true },
 //       ],
 //       counts: [
 //         { title: 'Vengeance', counts: { investigatorCodes: # } },

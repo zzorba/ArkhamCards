@@ -2,13 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
+  Text,
+  TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
 
+import traumaString from '../trauma';
 import CountSection from './CountSection';
 import NotesSection from './NotesSection';
+import FactionGradient from '../../core/FactionGradient';
 import InvestigatorImage from '../../core/InvestigatorImage';
+import TextBox from '../../core/TextBox';
+import typography from '../../../styles/typography';
 
 /**
  * Fill this out for a single investigator section.
@@ -17,8 +23,10 @@ export default class InvestigatorSection extends React.Component {
   static propTypes = {
     investigator: PropTypes.object,
     investigatorNotes: PropTypes.object,
+    traumaData: PropTypes.object,
     updateInvestigatorNotes: PropTypes.func.isRequired,
     showDialog: PropTypes.func.isRequired,
+    showTraumaDialog: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -26,6 +34,16 @@ export default class InvestigatorSection extends React.Component {
 
     this._notesChanged = this.notesChanged.bind(this);
     this._countChanged = this.countChanged.bind(this);
+    this._editTraumaPressed = this.editTraumaPressed.bind(this);
+  }
+
+  editTraumaPressed() {
+    const {
+      investigator,
+      traumaData,
+      showTraumaDialog,
+    } = this.props;
+    showTraumaDialog(investigator, traumaData);
   }
 
   notesChanged(index, notes) {
@@ -95,6 +113,26 @@ export default class InvestigatorSection extends React.Component {
     );
   }
 
+  renderTrauma() {
+    const {
+      traumaData,
+    } = this.props;
+    return (
+      <View>
+        <Text style={typography.bigLabel}>
+          Trauma
+        </Text>
+        <TouchableOpacity onPress={this._editTraumaPressed}>
+          <TextBox
+            value={traumaString(traumaData)}
+            editable={false}
+            pointerEvents="none"
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   render() {
     const {
       investigator,
@@ -104,13 +142,17 @@ export default class InvestigatorSection extends React.Component {
       },
     } = this.props;
     return (
-      <View style={styles.investigatorBlock}>
+      <FactionGradient
+        faction_code={investigator.faction_code}
+        style={styles.investigatorBlock}
+      >
         <InvestigatorImage card={investigator} />
         <View style={styles.investigatorNotes}>
+          { this.renderTrauma() }
           { this.renderSections(sections) }
           { this.renderCounts(counts) }
         </View>
-      </View>
+      </FactionGradient>
     );
   }
 }
@@ -118,10 +160,10 @@ export default class InvestigatorSection extends React.Component {
 const styles = StyleSheet.create({
   investigatorBlock: {
     padding: 8,
-    borderRadius: 4,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 8,
+    borderBottomWidth: 1,
+    borderColor: '#000000',
   },
   investigatorNotes: {
     flex: 1,

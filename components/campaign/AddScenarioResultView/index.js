@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import withTextEditDialog from '../../core/withTextEditDialog';
 import ChaosBagSection from '../ChaosBagSection';
 import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 import ScenarioSection from './ScenarioSection';
@@ -38,6 +39,7 @@ class AddScenarioResultView extends React.Component {
     decks: PropTypes.object,
     cycleScenarios: PropTypes.array,
     standaloneScenarios: PropTypes.array,
+    showTextEditDialog: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -53,6 +55,7 @@ class AddScenarioResultView extends React.Component {
       deckUpdates,
       chaosBag: Object.assign({}, props.campaign.chaosBag),
       campaignNotes: Object.assign({}, props.campaign.campaignNotes),
+      investigatorData: Object.assign({}, props.campaign.investigatorData),
       scenario: '',
       xp: 0,
     };
@@ -193,12 +196,14 @@ class AddScenarioResultView extends React.Component {
       navigator,
       cycleScenarios,
       standaloneScenarios,
+      showTextEditDialog,
     } = this.props;
     return (
       <ScenarioSection
         navigator={navigator}
         scenarioChanged={this._scenarioChanged}
         allScenarios={concat(cycleScenarios, standaloneScenarios)}
+        showTextEditDialog={showTextEditDialog}
       />
     );
   }
@@ -244,6 +249,7 @@ class AddScenarioResultView extends React.Component {
       deckIds,
       xp,
       campaignNotes,
+      investigatorData,
     } = this.state;
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -256,6 +262,7 @@ class AddScenarioResultView extends React.Component {
         <EditCampaignNotesComponent
           updateCampaignNotes={this._notesChanged}
           campaignNotes={campaignNotes}
+          investigatorData={investigatorData}
           investigators={map(flatMap(deckIds, deckId => decks[deckId]), deck => deck.investigator_code)}
         />
       </ScrollView>
@@ -284,7 +291,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(AddScenarioResultView, {
+  connectRealm(withTextEditDialog(AddScenarioResultView), {
     schemas: ['Card'],
     mapToProps(results, realm, props) {
       const finishedScenarios = new Set(props.campaign.finishedScenarios);

@@ -17,6 +17,7 @@ export default class PlusMinusButtons extends React.Component {
     limit: PropTypes.number,
     style: ViewPropTypes.style,
     size: PropTypes.number,
+    disabled: PropTypes.bool,
     dark: PropTypes.bool,
   };
 
@@ -49,15 +50,18 @@ export default class PlusMinusButtons extends React.Component {
       limit,
       size = 36,
       dark,
+      disabled,
     } = this.props;
     const atLimit = limit && (count === limit);
-    if (count === null || atLimit) {
+    if (count === null || atLimit || disabled) {
       return (
-        <MaterialCommunityIcons
-          name="plus-box-outline"
-          size={size}
-          color={dark ? '#888' : '#ddd'}
-        />
+        <TouchableOpacity disabled>
+          <MaterialCommunityIcons
+            name="plus-box-outline"
+            size={size}
+            color={dark ? '#888' : '#ddd'}
+          />
+        </TouchableOpacity>
       );
     }
     return (
@@ -76,8 +80,9 @@ export default class PlusMinusButtons extends React.Component {
       count,
       size = 36,
       dark,
+      disabled,
     } = this.props;
-    if (count > 0) {
+    if (count > 0 && !disabled) {
       return (
         <TouchableOpacity onPress={this._decrement}>
           <MaterialCommunityIcons
@@ -89,11 +94,13 @@ export default class PlusMinusButtons extends React.Component {
       );
     }
     return (
-      <MaterialCommunityIcons
-        name="minus-box-outline"
-        size={size}
-        color={dark ? '#888' : '#ddd'}
-      />
+      <TouchableOpacity disabled>
+        <MaterialCommunityIcons
+          name="minus-box-outline"
+          size={size}
+          color={dark ? '#888' : '#ddd'}
+        />
+      </TouchableOpacity>
     );
   }
 

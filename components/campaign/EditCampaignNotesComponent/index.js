@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach, map } from 'lodash';
 import {
+  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
@@ -10,12 +11,23 @@ import { connectRealm } from 'react-native-realm';
 import CountSection from './CountSection';
 import InvestigatorSection from './InvestigatorSection';
 import NotesSection from './NotesSection';
+import Button from '../../core/Button';
+
+const DEFAULT_TRAUMA_DATA = {
+  mental: 0,
+  physical: 0,
+  killed: false,
+  insane: false,
+};
 
 class EditCampaignNotesComponent extends React.Component {
   static propTypes = {
     updateCampaignNotes: PropTypes.func.isRequired,
     showDialog: PropTypes.func.isRequired,
+    showTraumaDialog: PropTypes.func.isRequired,
+    showAddSectionDialog: PropTypes.func.isRequired,
     campaignNotes: PropTypes.object,
+    investigatorData: PropTypes.object,
     investigators: PropTypes.array,
     investigatorCards: PropTypes.object,
   };
@@ -23,9 +35,46 @@ class EditCampaignNotesComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this._addNotesSection = this.addNotesSection.bind(this);
     this._notesChanged = this.notesChanged.bind(this);
     this._countChanged = this.countChanged.bind(this);
     this._updateInvestigatorNotes = this.updateInvestigatorNotes.bind(this);
+    this._showAddSectionDialog = this.showAddSectionDialog.bind(this);
+  }
+
+  showAddSectionDialog() {
+    const {
+      showAddSectionDialog,
+    } = this.props;
+    showAddSectionDialog(this._addNotesSection);
+  }
+
+  addNotesSection(name, isCount, perInvestigator) {
+    const {
+      campaignNotes,
+      updateCampaignNotes,
+    } = this.props;
+    const newCampaignNotes = Object.assign({}, campaignNotes);
+    if (perInvestigator) {
+      const newInvestigatorNotes = Object.assign({}, campaignNotes.investigatorNotes);
+      if (isCount) {
+        newInvestigatorNotes.counts = (newInvestigatorNotes.counts || []).slice();
+        newInvestigatorNotes.counts.push({ title: name, counts: {}, custom: true });
+      } else {
+        newInvestigatorNotes.sections = (newInvestigatorNotes.sections || []).slice();
+        newInvestigatorNotes.sections.push({ title: name, notes: {}, custom: true });
+      }
+      newCampaignNotes.investigatorNotes = newInvestigatorNotes;
+    } else {
+      if (isCount) {
+        newCampaignNotes.counts = (campaignNotes.counts || []).slice();
+        newCampaignNotes.counts.push({ title: name, count: 0, custom: true });
+      } else {
+        newCampaignNotes.sections = (campaignNotes.sections || []).slice();
+        newCampaignNotes.sections.push({ title: name, notes: [], custom: true });
+      }
+    }
+    updateCampaignNotes(newCampaignNotes);
   }
 
   notesChanged(index, notes) {
@@ -96,12 +145,10 @@ class EditCampaignNotesComponent extends React.Component {
       },
       investigators,
       investigatorCards,
+      investigatorData,
       showDialog,
+      showTraumaDialog,
     } = this.props;
-    if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
-      return null;
-    }
-
     return (
       <View>
         { map(investigators, code => (
@@ -110,7 +157,9 @@ class EditCampaignNotesComponent extends React.Component {
             investigator={investigatorCards[code]}
             investigatorNotes={investigatorNotes}
             updateInvestigatorNotes={this._updateInvestigatorNotes}
+            traumaData={investigatorData[code] || DEFAULT_TRAUMA_DATA}
             showDialog={showDialog}
+            showTraumaDialog={showTraumaDialog}
           />
         )) }
       </View>
@@ -125,13 +174,12 @@ class EditCampaignNotesComponent extends React.Component {
       },
     } = this.props;
     return (
-      <View style={styles.underline}>
-        <View style={styles.container}>
-          { this.renderSections(sections) }
-          { this.renderCounts(counts) }
-          { this.renderInvestigatorSection() }
-        </View>
-      </View>
+      <ScrollView style={styles.underline}>
+        { this.renderSections(sections) }
+        { this.renderCounts(counts) }
+        { this.renderInvestigatorSection() }
+        <Button text="Add Log Section" onPress={this._showAddSectionDialog} />
+      </ScrollView>
     );
   }
 }
@@ -151,11 +199,8 @@ export default connectRealm(EditCampaignNotesComponent, {
 });
 
 const styles = StyleSheet.create({
-  container: {
-    paddingLeft: 8,
-    paddingRight: 8,
-  },
   underline: {
+    flex: 1,
     borderBottomWidth: 1,
     borderColor: '#000000',
     marginBottom: 4,

@@ -23,8 +23,8 @@ export default class XpController extends React.Component {
     return (
       <View style={styles.row}>
         <Text style={typography.label}>Experience:</Text>
-        <Text style={[typography.label, { fontWeight: '900' }]}>{ xp }</Text>
-        <PlusMinusButtons count={xp} onChange={onChange} size={28} />
+        <Text style={[typography.label, { fontWeight: '900', width: 30 }]}>{ xp }</Text>
+        <PlusMinusButtons count={xp} onChange={onChange} size={28} dark />
       </View>
     );
   }

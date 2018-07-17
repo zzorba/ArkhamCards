@@ -340,7 +340,7 @@ class NewCampaignView extends React.Component {
     } = this.state;
     this.props.showTextEditDialog(
       'Campaign Name',
-      this.state.name,
+      name,
       this._onNameChange
     );
   }

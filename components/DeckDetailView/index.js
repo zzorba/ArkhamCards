@@ -363,9 +363,6 @@ class DeckDetailView extends React.Component {
     const {
       saving,
     } = this.state;
-    if (!viewRef) {
-      return null;
-    }
     return (
       <Dialog title="Saving" visible={saving} viewRef={viewRef}>
         <ActivityIndicator

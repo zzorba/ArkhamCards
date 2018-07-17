@@ -39,6 +39,7 @@ class CampaignDetailView extends React.Component {
     this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
+    this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
     this._addScenarioResult = this.addScenarioResult.bind(this);
@@ -181,8 +182,10 @@ class CampaignDetailView extends React.Component {
         <CampaignNotesSection
           navigator={navigator}
           campaignNotes={campaign.campaignNotes}
+          investigatorData={campaign.investigatorData}
           investigators={this.investigators()}
           updateCampaignNotes={this._updateCampaignNotes}
+          updateInvestigatorData={this._updateInvestigatorData}
         />
         <View style={styles.margin}>
           <Button color="red" onPress={this._deletePressed} text="Delete Campaign" />
