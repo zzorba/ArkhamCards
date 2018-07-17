@@ -16,7 +16,7 @@ import { CUSTOM } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import Button from '../../core/Button';
 import ChaosBagLine from '../../core/ChaosBagLine';
-import EditNameDialog from '../../core/EditNameDialog';
+import withTextEditDialog from '../../core/withTextEditDialog';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import SelectedDeckListComponent from '../../SelectedDeckListComponent';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
@@ -31,6 +31,9 @@ class NewCampaignView extends React.Component {
     newCampaign: PropTypes.func.isRequired,
     onCreateCampaign: PropTypes.func.isRequired,
     nextId: PropTypes.number.isRequired,
+    showTextEditDialog: PropTypes.func.isRequired,
+    captureViewRef: PropTypes.func.isRequired,
+    viewRef: PropTypes.object,
   };
 
   constructor(props) {
@@ -48,8 +51,6 @@ class NewCampaignView extends React.Component {
       deckIds: [],
       weaknessPacks: [],
       customChaosBag: Object.assign({}, CAMPAIGN_CHAOS_BAGS.core[1]),
-      viewRef: null,
-      editNameDialogVisible: false,
       customCampaignLog: { sections: ['Campaign Notes'] },
       campaignLogDialogVisible: false,
     };
@@ -62,9 +63,8 @@ class NewCampaignView extends React.Component {
     this._addCampaignNoteSection = this.addCampaignNoteSection.bind(this);
     this._deleteCampaignNoteSection = this.deleteCampaignNoteSection.bind(this);
     this._toggleCampaignLogDialog = this.toggleCampaignLogDialog.bind(this);
-    this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
+    this._showCampaignNameDialog = this.showCampaignNameDialog.bind(this);
     this._onNameChange = this.onNameChange.bind(this);
-    this._captureViewRef = this.captureViewRef.bind(this);
     this._updateChaosBag = this.updateChaosBag.bind(this);
     this._updateDifficulty = this.updateDifficulty.bind(this);
     this._showChaosBagDialog = this.showChaosBagDialog.bind(this);
@@ -113,12 +113,6 @@ class NewCampaignView extends React.Component {
 
     this.setState({
       customCampaignLog,
-    });
-  }
-
-  toggleEditNameDialog() {
-    this.setState({
-      editNameDialogVisible: !this.state.editNameDialogVisible,
     });
   }
 
@@ -340,22 +334,14 @@ class NewCampaignView extends React.Component {
     );
   }
 
-  renderNameDialog() {
+  showCampaignNameDialog() {
     const {
       name,
-      viewRef,
-      editNameDialogVisible,
     } = this.state;
-
-    return (
-      <EditNameDialog
-        title="Campaign Name"
-        visible={editNameDialogVisible}
-        name={name}
-        viewRef={viewRef}
-        onNameChange={this._onNameChange}
-        toggleVisible={this._toggleEditNameDialog}
-      />
+    this.props.showTextEditDialog(
+      'Campaign Name',
+      this.state.name,
+      this._onNameChange
     );
   }
 
@@ -413,6 +399,8 @@ class NewCampaignView extends React.Component {
   renderCampaignSectionDialog() {
     const {
       viewRef,
+    } = this.props;
+    const {
       campaignLogDialogVisible,
     } = this.state;
     return (
@@ -428,6 +416,7 @@ class NewCampaignView extends React.Component {
   render() {
     const {
       navigator,
+      captureViewRef,
     } = this.props;
 
     const {
@@ -439,13 +428,13 @@ class NewCampaignView extends React.Component {
       <View>
         <ScrollView
           contentContainerStyle={styles.topPadding}
-          ref={this._captureViewRef}
+          ref={captureViewRef}
         >
           <View style={styles.underline}>
             <View style={[styles.margin, styles.topPadding]}>
               <LabeledTextBox
                 label="Name"
-                onPress={this._toggleEditNameDialog}
+                onPress={this._showCampaignNameDialog}
                 placeholder={this.placeholderName()}
                 value={name}
               />
@@ -480,7 +469,6 @@ class NewCampaignView extends React.Component {
           />
           <View style={styles.footer} />
         </ScrollView>
-        { this.renderNameDialog() }
         { this.renderCampaignSectionDialog() }
       </View>
     );
@@ -500,7 +488,9 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignView);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withTextEditDialog(NewCampaignView)
+);
 
 const styles = StyleSheet.create({
   topPadding: {

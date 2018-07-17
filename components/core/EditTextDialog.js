@@ -7,13 +7,13 @@ import DialogComponent from 'react-native-dialog';
 
 import Dialog from './Dialog';
 
-export default class EditNameDialog extends React.Component {
+export default class EditTextDialog extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     visible: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     viewRef: PropTypes.object,
-    onNameChange: PropTypes.func,
+    onTextChange: PropTypes.func,
     toggleVisible: PropTypes.func.isRequired,
   };
 
@@ -22,27 +22,28 @@ export default class EditNameDialog extends React.Component {
 
     this.state = {
       textInputRef: null,
+      originalText: null,
     };
 
-    this._onNameChange = this.onNameChange.bind(this);
+    this._onTextChange = this.onTextChange.bind(this);
     this._captureTextInputRef = this.captureTextInputRef.bind(this);
     this._onDonePress = this.onDonePress.bind(this);
     this._onCancelPress = this.onCancelPress.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (!state.originalName || props.name !== state.originalName) {
+    if (state.originalText === null || props.text !== state.originalText) {
       return {
-        name: props.name,
-        originalName: props.name,
+        text: props.text,
+        originalText: props.text,
       };
     }
     return null;
   }
 
-  onNameChange(value) {
+  onTextChange(value) {
     this.setState({
-      name: value,
+      text: value,
     });
   }
 
@@ -59,28 +60,28 @@ export default class EditNameDialog extends React.Component {
     const {
       textInputRef,
     } = this.state;
-    if (visible && !prevProps.visible) {
-      textInputRef && textInputRef.focus();
+    if (visible && !prevProps.visible && textInputRef) {
+      textInputRef.focus();
     }
   }
 
   onCancelPress() {
     const {
-      name,
+      text,
       toggleVisible,
     } = this.props;
     this.setState({
-      name: name,
+      text: text,
     });
     toggleVisible();
   }
 
   onDonePress() {
     const {
-      onNameChange,
+      onTextChange,
       toggleVisible,
     } = this.props;
-    onNameChange && onNameChange(this.state.name);
+    onTextChange && onTextChange(this.state.text);
     toggleVisible();
   }
 
@@ -89,27 +90,21 @@ export default class EditNameDialog extends React.Component {
       visible,
       title,
       viewRef,
+      text,
     } = this.props;
-    const {
-      name,
-    } = this.state;
     if (!viewRef) {
       return null;
     }
 
-    const nameChanged = this.props.name !== name;
+    const textChanged = text !== this.state.text;
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
-      <Dialog
-        title={title}
-        visible={visible}
-        viewRef={viewRef}
-      >
+      <Dialog visible={visible} title={title} viewRef={viewRef}>
         <DialogComponent.Input
           ref={this._captureTextInputRef}
-          value={this.props.name}
+          value={text}
           autoFocus
-          onChangeText={this._onNameChange}
+          onChangeText={this._onTextChange}
           onSubmitEditing={this._onDonePress}
         />
         <DialogComponent.Button
@@ -118,8 +113,8 @@ export default class EditNameDialog extends React.Component {
         />
         <DialogComponent.Button
           label="Done"
-          color={nameChanged ? buttonColor : '#666666'}
-          disabled={!nameChanged}
+          color={textChanged ? buttonColor : '#666666'}
+          disabled={!textChanged}
           onPress={this._onDonePress}
         />
       </Dialog>

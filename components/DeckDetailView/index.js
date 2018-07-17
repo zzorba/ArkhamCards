@@ -15,7 +15,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import Dialog from '../core/Dialog';
-import EditNameDialog from '../core/EditNameDialog';
+import withTextEditDialog from '../core/withTextEditDialog';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
@@ -40,6 +40,9 @@ class DeckDetailView extends React.Component {
     updateDeck: PropTypes.func.isRequired,
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
+    showTextEditDialog: PropTypes.func.isRequired,
+    captureViewRef: PropTypes.func.isRequired,
+    viewRef: PropTypes.object,
   };
 
   constructor(props) {
@@ -63,12 +66,10 @@ class DeckDetailView extends React.Component {
       saving: false,
       leftButtons,
       nameChange: null,
-      editNameDialogVisible: false,
       hasPendingEdits: false,
-      viewRef: null,
     };
-
-    this._captureViewRef = this.captureViewRef.bind(this);
+    this._saveName = this.saveName.bind(this);
+    this._showEditNameDialog = this.showEditNameDialog.bind(this);
     this._onEditPressed = this.onEditPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
@@ -77,8 +78,6 @@ class DeckDetailView extends React.Component {
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
-    this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
-    this._saveName = this.saveName.bind(this);
 
     if (props.modal) {
       props.navigator.setButtons({
@@ -137,12 +136,6 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  captureViewRef(ref) {
-    this.setState({
-      viewRef: ref,
-    });
-  }
-
   syncNavigatorButtons() {
     /* const {
       navigator,
@@ -183,12 +176,6 @@ class DeckDetailView extends React.Component {
         this.saveEdits();
       }
     }
-  }
-
-  toggleEditNameDialog() {
-    this.setState({
-      editNameDialogVisible: !this.state.editNameDialogVisible,
-    });
   }
 
   saveName(name) {
@@ -357,35 +344,24 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  renderEditNameDialog() {
+  showEditNameDialog() {
     const {
       deck,
+      showTextEditDialog,
     } = this.props;
-    const {
-      nameChange,
-      editNameDialogVisible,
-      viewRef,
-    } = this.state;
-    if (!viewRef) {
-      return null;
-    }
-
-    return (
-      <EditNameDialog
-        title="Edit Deck Name"
-        name={nameChange || deck.name}
-        visible={editNameDialogVisible}
-        viewRef={viewRef}
-        onNameChange={this._saveName}
-        toggleVisible={this._toggleEditNameDialog}
-      />
+    showTextEditDialog(
+      'Edit Deck Name',
+      this.state.nameChange || deck.name,
+      this._saveName
     );
   }
 
   renderSavingDialog() {
     const {
-      saving,
       viewRef,
+    } = this.props;
+    const {
+      saving,
     } = this.state;
     if (!viewRef) {
       return null;
@@ -454,6 +430,7 @@ class DeckDetailView extends React.Component {
       deck,
       navigator,
       isPrivate,
+      captureViewRef,
     } = this.props;
     const {
       loaded,
@@ -476,7 +453,7 @@ class DeckDetailView extends React.Component {
 
     return (
       <View>
-        <View style={styles.container} ref={this._captureViewRef}>
+        <View style={styles.container} ref={captureViewRef}>
           <DeckViewTab
             navigator={navigator}
             deck={deck}
@@ -485,7 +462,7 @@ class DeckDetailView extends React.Component {
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
             name={nameChange || deck.name}
-            onEditNamePress={isPrivate ? this._toggleEditNameDialog : null}
+            onEditNamePress={isPrivate ? this._showEditNameDialog : null}
           />
           <DeckNavFooter
             navigator={navigator}
@@ -494,7 +471,6 @@ class DeckDetailView extends React.Component {
           />
         </View>
         { this.renderSavingDialog() }
-        { this.renderEditNameDialog() }
       </View>
     );
   }
@@ -513,7 +489,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(DeckDetailView),
+  connect(mapStateToProps, mapDispatchToProps)(withTextEditDialog(DeckDetailView)),
   {
     schemas: ['Card'],
     mapToProps(results, realm) {

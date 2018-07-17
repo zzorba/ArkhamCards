@@ -13,6 +13,7 @@ export default class DialogOption extends React.Component {
     text: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired,
     selected: PropTypes.bool.isRequired,
+    noCapitalize: PropTypes.bool,
   };
 
   constructor(props) {
@@ -33,12 +34,13 @@ export default class DialogOption extends React.Component {
     const {
       text,
       selected,
+      noCapitalize,
     } = this.props;
     return (
       <View style={styles.item}>
         <TouchableOpacity onPress={this._onPress}>
           <Text style={styles.itemText}>
-            { `${capitalize(text)}${selected ? ' ✓' : ''}` }
+            { `${noCapitalize ? text : capitalize(text)}${selected ? ' ✓' : ''}` }
           </Text>
         </TouchableOpacity>
       </View>

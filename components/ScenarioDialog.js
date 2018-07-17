@@ -26,6 +26,7 @@ export default class ScenarioDialog extends React.Component {
         options={scenarios}
         onSelectionChanged={scenarioChanged}
         selectedOption={selected}
+        noCapitalize
       />
     );
   }

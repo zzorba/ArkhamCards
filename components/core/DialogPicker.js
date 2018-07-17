@@ -20,6 +20,7 @@ export default class DialogPicker extends React.Component {
     selectedOption: PropTypes.string,
     onSelectionChanged: PropTypes.func.isRequired,
     header: PropTypes.string.isRequired,
+    noCapitalize: PropTypes.bool,
   };
 
   constructor(props) {
@@ -55,6 +56,7 @@ export default class DialogPicker extends React.Component {
     const {
       options,
       selectedOption,
+      noCapitalize,
     } = this.props;
     return map(options, option => (
       <DialogOption
@@ -62,6 +64,7 @@ export default class DialogPicker extends React.Component {
         text={option}
         onPress={this._onPress}
         selected={option === selectedOption}
+        noCapitalize={noCapitalize}
       />
     ));
   }

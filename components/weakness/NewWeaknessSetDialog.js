@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 import WeaknessSetPackChooserComponent from './WeaknessSetPackChooserComponent';
 import Button from '../core/Button';
-import EditNameDialog from '../core/EditNameDialog';
+import withTextEditDialog from '../core/withTextEditDialog';
 import LabeledTextBox from '../core/LabeledTextBox';
 import * as Actions from '../../actions';
 import { getNextWeaknessId } from '../../reducers';
@@ -28,32 +28,17 @@ class NewWeaknessSetDialog extends React.Component {
     this.state = {
       packs: [],
       name: `Set ${props.nextId}`,
-      editNameDialogVisible: false,
-      viewRef: null,
     };
 
-    this._toggleEditNameDialog = this.toggleEditNameDialog.bind(this);
-    this._captureViewRef = this.captureViewRef.bind(this);
+    this._showEditNameDialog = this.showEditNameDialog.bind(this);
     this._onNameChange = this.onNameChange.bind(this);
     this._onSavePressed = this.onSavePressed.bind(this);
     this._onSelectedPacksChanged = this.onSelectedPacksChanged.bind(this);
   }
 
-  toggleEditNameDialog() {
-    this.setState({
-      editNameDialogVisible: !this.state.editNameDialogVisible,
-    });
-  }
-
   onSelectedPacksChanged(packs) {
     this.setState({
       packs: packs,
-    });
-  }
-
-  captureViewRef(ref) {
-    this.setState({
-      viewRef: ref,
     });
   }
 
@@ -92,26 +77,14 @@ class NewWeaknessSetDialog extends React.Component {
     );
   }
 
-  renderEditNameDialog() {
+  showEditNameDialog() {
+    const {
+      showTextEditDialog,
+    } = this.props;
     const {
       name,
-      editNameDialogVisible,
-      viewRef,
     } = this.state;
-    if (!viewRef) {
-      return null;
-    }
-
-    return (
-      <EditNameDialog
-        title="Edit Name"
-        visible={editNameDialogVisible}
-        name={name}
-        viewRef={viewRef}
-        onNameChange={this._onNameChange}
-        toggleVisible={this._toggleEditNameDialog}
-      />
-    );
+    showTextEditDialog('Edit Name', name, this._onNameChange);
   }
 
   renderHeader() {
@@ -124,7 +97,7 @@ class NewWeaknessSetDialog extends React.Component {
           <LabeledTextBox
             label="Name"
             value={name}
-            onPress={this._toggleEditNameDialog}
+            onPress={this._showEditNameDialog}
           />
         </View>
         <View style={styles.textBlock}>
@@ -140,15 +113,12 @@ class NewWeaknessSetDialog extends React.Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        <View style={styles.container} ref={this._captureViewRef}>
-          { this.renderHeader() }
-          <WeaknessSetPackChooserComponent
-            navigator={navigator}
-            onSelectedPacksChanged={this._onSelectedPacksChanged}
-          />
-          { this.renderFooter() }
-        </View>
-        { this.renderEditNameDialog() }
+        { this.renderHeader() }
+        <WeaknessSetPackChooserComponent
+          navigator={navigator}
+          onSelectedPacksChanged={this._onSelectedPacksChanged}
+        />
+        { this.renderFooter() }
       </View>
     );
   }
@@ -164,11 +134,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewWeaknessSetDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withTextEditDialog(NewWeaknessSetDialog));
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'flex-start',
   },
   row: {
     padding: 16,
@@ -185,5 +157,6 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 16,
+    marginBottom: 16,
   },
 });
