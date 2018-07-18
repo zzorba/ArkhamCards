@@ -7,124 +7,76 @@ import { connectRealm } from 'react-native-realm';
 
 import { getDeck } from '../reducers';
 import * as Actions from '../actions';
-import CardSearchComponent from './CardSearchComponent';
+import ExileCardSelectorComponent from './ExileCardSelectorComponent';
 
-class ExileCardDialog extends React.Component {
+export default class ExileCardDialog extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     updateExiles: PropTypes.func.isRequired,
-    deck: PropTypes.object,
-    exiles: PropTypes.object,
-    // From redux/realm.
-    eligibleExileSlots: PropTypes.object,
+    exiles: PropTypes.object.isRequired,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      deckCardCounts: props.exiles || {},
+      exileCounts: props.exiles,
     };
 
-    props.navigator.setTitle({
-      title: 'Choose Exile Cards',
+    props.navigator.setButtons({
+      rightButtons: [
+        {
+          title: 'Save',
+          id: 'save',
+          showAsAction: 'ifRoom',
+        },
+      ],
     });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
-    this._backPressed = this.backPressed.bind(this);
-    this._onDeckCountChange = this.onDeckCountChange.bind(this);
+    this._onExileCountsChange = this.onExileCountsChange.bind(this);
+  }
+
+  onNavigatorEvent(event) {
+    const {
+      updateExiles,
+      navigator,
+    } = this.props;
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'save') {
+        updateExiles(this.state.exileCounts);
+        navigator.pop();
+      }
+    }
+  }
+
+  onExileCountsChange(exileCounts) {
+    this.setState({
+      exileCounts,
+    });
   }
 
   backPressed() {
     this.props.updateExiles(this.state.deckCardCounts);
   }
 
-  onDeckCountChange(code, count) {
-    const newSlots = Object.assign(
-      {},
-      this.state.deckCardCounts,
-      { [code]: count },
-    );
-    if (count === 0) {
-      delete newSlots[code];
-    }
-    this.setState({
-      deckCardCounts: newSlots,
-    });
-  }
-
-  query() {
-    const {
-      eligibleExileSlots,
-    } = this.props;
-    return map(
-      keys(eligibleExileSlots),
-      code => `code == "${code}"`).join(' or ');
-  }
-
   render() {
     const {
       navigator,
-      deck: {
-        slots,
-      },
+      id,
     } = this.props;
 
     const {
-      deckCardCounts,
+      exileCounts,
     } = this.state;
 
     return (
-      <CardSearchComponent
-        navigator={navigator}
-        baseQuery={this.query()}
-        deckCardCounts={deckCardCounts}
-        onDeckCountChange={this._onDeckCountChange}
-        backPressed={this._backPressed}
-        backButtonText="Done"
-        limits={slots}
+      <ExileCardSelectorComponent
+        id={id}
+        exileCounts={exileCounts}
+        updateExileCounts={this._onExileCountsChange}
       />
     );
   }
 }
-
-function mapStateToProps(state, props) {
-  return {
-    deck: getDeck(state, props.id),
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(ExileCardDialog, {
-    schemas: ['Card'],
-    mapToProps(results, realm, props) {
-      const {
-        deck: {
-          slots,
-        },
-      } = props;
-      if (!slots) {
-        return {
-          eligibleExileSlots: {},
-        };
-      }
-      const exileCards = new Set(
-        map(results.cards.filtered('exile == true'), card => card.code));
-
-      const eligibleExileSlots = {};
-      forEach(keys(props.deck.slots), code => {
-        if (exileCards.has(code)) {
-          eligibleExileSlots[code] = slots[code];
-        }
-      });
-      return {
-        eligibleExileSlots,
-      };
-    },
-  }),
-);

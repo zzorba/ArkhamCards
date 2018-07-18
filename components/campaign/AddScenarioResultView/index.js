@@ -11,10 +11,8 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
 import withTextEditDialog from '../../core/withTextEditDialog';
-import ChaosBagSection from '../ChaosBagSection';
-import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 import ScenarioSection from './ScenarioSection';
-import SelectedDeckListComponent from '../../SelectedDeckListComponent';
+import SelectedDeckListComponent from '../SelectedDeckListComponent';
 import XpComponent from '../../XpComponent';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
@@ -228,19 +226,6 @@ class AddScenarioResultView extends React.Component {
     );
   }
 
-  renderChaosBag() {
-    const {
-      navigator,
-    } = this.props;
-    return (
-      <ChaosBagSection
-        navigator={navigator}
-        chaosBag={this.state.chaosBag}
-        updateChaosBag={this._chaosBagChanged}
-      />
-    );
-  }
-
   render() {
     const {
       decks,
@@ -258,13 +243,7 @@ class AddScenarioResultView extends React.Component {
           <XpComponent xp={xp} onChange={this._xpChanged} />
         </View>
         { this.renderInvestigators() }
-        { this.renderChaosBag() }
-        <EditCampaignNotesComponent
-          updateCampaignNotes={this._notesChanged}
-          campaignNotes={campaignNotes}
-          investigatorData={investigatorData}
-          investigators={map(flatMap(deckIds, deckId => decks[deckId]), deck => deck.investigator_code)}
-        />
+        <View style={styles.footer} />
       </ScrollView>
     );
   }
@@ -334,5 +313,8 @@ const styles = StyleSheet.create({
   margin: {
     marginLeft: 8,
     marginRight: 8,
+  },
+  footer: {
+    height: 100,
   },
 });

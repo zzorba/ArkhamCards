@@ -10,11 +10,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import DeckListRow from '../DeckListRow';
-import XpComponent from '../XpComponent';
-import * as Actions from '../../actions';
-import { getDeck } from '../../reducers';
-import LabeledTextBox from '../core/LabeledTextBox';
+import DeckListRow from '../../DeckListRow';
+import XpComponent from '../../XpComponent';
+import * as Actions from '../../../actions';
+import { getDeck } from '../../../reducers';
+import LabeledTextBox from '../../core/LabeledTextBox';
 
 class DeckRow extends React.Component {
   static propTypes = {
@@ -38,7 +38,6 @@ class DeckRow extends React.Component {
     this._updateTrauma = this.updateTrauma.bind(this);
     this._onRemove = this.onRemove.bind(this);
     this._onDeckPress = this.onDeckPress.bind(this);
-    this._showTraumaDialog = this.showTraumaDialog.bind(this);
     this._showExileDialog = this.showExileDialog.bind(this);
   }
 
@@ -68,24 +67,7 @@ class DeckRow extends React.Component {
       passProps: {
         id,
         updateExiles: this._updateExiles,
-        exiles: updates.exiles,
-      },
-    });
-  }
-
-  showTraumaDialog() {
-    const {
-      navigator,
-      updates,
-    } = this.props;
-    navigator.showLightBox({
-      screen: 'Dialog.EditTrauma',
-      passProps: {
-        updateTrauma: this._updateTrauma,
-        trauma: updates.trauma,
-      },
-      style: {
-        backgroundColor: 'rgba(128,128,128,.75)',
+        exiles: updates.exiles || {},
       },
     });
   }
@@ -215,7 +197,7 @@ class DeckRow extends React.Component {
       return null;
     }
     return (
-      <View style={styles.row}>
+      <View style={styles.exileRow}>
         <LabeledTextBox
           label="Exiled Cards"
           onPress={this._showExileDialog}
@@ -230,7 +212,7 @@ class DeckRow extends React.Component {
       return null;
     }
     return (
-      <View>
+      <View style={styles.flex}>
         { this.renderXp() }
         { this.renderExile() }
       </View>
@@ -287,5 +269,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
     borderRadius: 4,
     overflow: 'hidden',
+  },
+  flex: {
+    flex: 1,
   },
 });

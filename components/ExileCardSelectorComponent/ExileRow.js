@@ -9,7 +9,7 @@ import CardSearchResult from '../CardSearchResult';
 export default class ExileRow extends React.Component {
   static propTypes = {
     card: PropTypes.object.isRequired,
-    onPress: PropTypes.func.isRequired,
+    count: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
     limit: PropTypes.number.isRequired,
   };
@@ -18,8 +18,8 @@ export default class ExileRow extends React.Component {
     super(props);
 
     this.state = {
-      one: false,
-      two: false,
+      one: props.count > 0,
+      two: props.count > 1,
     };
 
     this._syncChange = this.syncChange.bind(this);
@@ -49,7 +49,6 @@ export default class ExileRow extends React.Component {
     const {
       card,
       limit,
-      onPress,
     } = this.props;
     const {
       one,
@@ -63,14 +62,12 @@ export default class ExileRow extends React.Component {
       <View>
         <CardSearchResult
           card={card}
-          onPress={onPress}
           onToggleChange={this._onCardOneToggle}
           toggleValue={one}
         />
         { (limit > 1) && (
           <CardSearchResult
             card={card}
-            onPress={onPress}
             onToggleChange={this._onCardTwoToggle}
             toggleValue={two}
           />

@@ -25,7 +25,7 @@ export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
     card: PropTypes.object.isRequired,
     count: PropTypes.number,
-    onPress: PropTypes.func.isRequired,
+    onPress: PropTypes.func,
     onDeckCountChange: PropTypes.func,
     limit: PropTypes.number,
     onToggleChange: PropTypes.func,
@@ -41,7 +41,10 @@ export default class CardSearchResult extends React.PureComponent {
   }
 
   onPress() {
-    this.props.onPress(this.props.card);
+    const {
+      onPress,
+    } = this.props;
+    onPress && onPress(this.props.card);
   }
 
   onDeckCountChange(count) {
@@ -180,13 +183,18 @@ export default class CardSearchResult extends React.PureComponent {
       limit,
       onToggleChange,
       toggleValue,
+      onPress,
     } = this.props;
     if (!card.name) {
       return <Text>No Text</Text>;
     }
     return (
       <View style={styles.stack}>
-        <TouchableOpacity onPress={this._onPress} style={[styles.row, styles.fullHeight]}>
+        <TouchableOpacity
+          onPress={this._onPress}
+          disabled={!onPress}
+          style={[styles.row, styles.fullHeight]}
+        >
           <View style={styles.cardTextRow}>
             { this.renderIcon(card) }
             { this.renderCardName(card) }

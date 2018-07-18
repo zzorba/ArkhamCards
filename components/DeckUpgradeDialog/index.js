@@ -12,13 +12,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
 import { upgradeDeck } from '../../lib/authApi';
 import * as Actions from '../../actions';
 import Button from '../core/Button';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import { getDeck } from '../../reducers';
 import typography from '../../styles/typography';
-import ExileRow from './ExileRow';
 
 class DeckUpgradeDialog extends React.Component {
   static propTypes = {
@@ -26,7 +26,6 @@ class DeckUpgradeDialog extends React.Component {
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     deck: PropTypes.object,
-    exileCards: PropTypes.object,
     setNewDeck: PropTypes.func.isRequired,
     updateDeck: PropTypes.func.isRequired,
   };
@@ -40,8 +39,7 @@ class DeckUpgradeDialog extends React.Component {
     };
 
     this._onXpChange = this.onXpChange.bind(this);
-    this._onCardPress = this.onCardPress.bind(this);
-    this._onExileChange = this.onExileChange.bind(this);
+    this._onExileCountsChange = this.onExileCountsChange.bind(this);
     this._saveUpgrade = this.saveUpgrade.bind(this);
   }
 
@@ -96,16 +94,9 @@ class DeckUpgradeDialog extends React.Component {
     });
   }
 
-  onExileChange(card, count) {
-    const {
-      exileCounts,
-    } = this.state;
+  onExileCountsChange(exileCounts) {
     this.setState({
-      exileCounts: Object.assign(
-        {},
-        exileCounts,
-        { [card.code]: count },
-      ),
+      exileCounts,
     });
   }
 
@@ -118,15 +109,14 @@ class DeckUpgradeDialog extends React.Component {
   render() {
     const {
       deck,
-      exileCards,
     } = this.props;
     const {
       xp,
+      exileCounts,
     } = this.state;
     if (!deck) {
       return null;
     }
-    const matchingExileCards = filter(exileCards, card => deck.slots[card.code]);
     return (
       <ScrollView style={styles.container}>
         <View style={styles.row}>
@@ -139,22 +129,11 @@ class DeckUpgradeDialog extends React.Component {
             dark
           />
         </View>
-        { (matchingExileCards.length > 0) && (
-          <View style={styles.exileBlock}>
-            <Text style={[typography.text, styles.exileText]}>
-              Select Cards to Exile:
-            </Text>
-            { map(matchingExileCards, card => (
-              <ExileRow
-                key={card.code}
-                card={card}
-                onPress={this._onCardPress}
-                onChange={this._onExileChange}
-                limit={deck.slots[card.code]}
-              />
-            )) }
-          </View>
-        ) }
+        <ExileCardSelectorComponent
+          id={deck.id}
+          exileCounts={exileCounts}
+          updateExileCounts={this._onExileCountsChange}
+        />
         <View style={styles.buttonRow}>
           <Button
             style={styles.button}
@@ -179,20 +158,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(DeckUpgradeDialog, {
-    schemas: ['Card'],
-    mapToProps(results) {
-      const exileCards = {};
-      forEach(results.cards.filtered('exile == true').sorted('name'), card => {
-        exileCards[card.code] = card;
-      });
-      return {
-        exileCards,
-      };
-    },
-  }),
-);
+export default connect(mapStateToProps, mapDispatchToProps)(DeckUpgradeDialog);
 
 const styles = StyleSheet.create({
   container: {

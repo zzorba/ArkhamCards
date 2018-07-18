@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import AddDeckRow from '../AddDeckRow';
+import AddDeckRow from '../../AddDeckRow';
 import DeckRow from './DeckRow';
-import typography from '../../styles/typography';
+import typography from '../../../styles/typography';
 
 function SelectedDeckListComponent({
   navigator,

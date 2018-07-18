@@ -18,7 +18,7 @@ import Button from '../../core/Button';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import LabeledTextBox from '../../core/LabeledTextBox';
-import SelectedDeckListComponent from '../../SelectedDeckListComponent';
+import SelectedDeckListComponent from '../SelectedDeckListComponent';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
 import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';

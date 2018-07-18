@@ -7,7 +7,6 @@ import CardSearchView from '../components/CardSearchView';
 import CardDetailView from '../components/CardDetailView';
 import CardFaqView from '../components/CardFaqView';
 import CardImageView from '../components/CardImageView';
-import EditTraumaDialog from '../components/EditTraumaDialog';
 import InvestigatorCardsView from '../components/InvestigatorCardsView';
 import AddScenarioResultView from '../components/campaign/AddScenarioResultView';
 import CampaignDetailView from '../components/campaign/CampaignDetailView';
@@ -74,7 +73,6 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('EditSpoilers', () => SpoilersView, store, Provider);
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
   Navigation.registerComponent('Dialog.DeckSelector', () => MyDecksSelectorDialog, store, Provider);
-  Navigation.registerComponent('Dialog.EditTrauma', () => EditTraumaDialog, store, Provider);
   Navigation.registerComponent('Dialog.EditCampaignNotes', () => EditCampaignNotesDialog, store, Provider);
   Navigation.registerComponent('Dialog.EditChaosBag', () => EditChaosBagDialog, store, Provider);
   Navigation.registerComponent('Dialog.ExileCards', () => ExileCardDialog, store, Provider);
