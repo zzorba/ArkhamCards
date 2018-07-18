@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, keys, map } from 'lodash';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
-import { getDeck } from '../reducers';
-import * as Actions from '../actions';
 import ExileCardSelectorComponent from './ExileCardSelectorComponent';
 
 export default class ExileCardDialog extends React.Component {
@@ -63,7 +57,6 @@ export default class ExileCardDialog extends React.Component {
 
   render() {
     const {
-      navigator,
       id,
     } = this.props;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, keys, map, range } from 'lodash';
+import { forEach, keys, range } from 'lodash';
 import {
   Alert,
   View,
@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
 import { upgradeDeck } from '../../lib/authApi';
@@ -172,13 +171,6 @@ const styles = StyleSheet.create({
     padding: 8,
     borderBottomWidth: 1,
     borderColor: '#000000',
-  },
-  exileBlock: {
-    flex: 1,
-    paddingTop: 8,
-  },
-  exileText: {
-    paddingLeft: 8,
   },
   buttonRow: {
     flexDirection: 'row',

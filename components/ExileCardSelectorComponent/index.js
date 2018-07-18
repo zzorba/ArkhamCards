@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, keys, map, range } from 'lodash';
+import { filter, forEach, map } from 'lodash';
 import {
-  Alert,
   View,
-  ScrollView,
   Text,
   StyleSheet,
 } from 'react-native';
@@ -12,7 +10,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import { upgradeDeck } from '../../lib/authApi';
 import { getDeck } from '../../reducers';
 import typography from '../../styles/typography';
 import ExileRow from './ExileRow';
@@ -104,30 +101,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 8,
-    borderBottomWidth: 1,
-    borderColor: '#000000',
-  },
   exileBlock: {
     flex: 1,
     paddingTop: 8,
   },
   exileText: {
     paddingLeft: 8,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    padding: 8,
-  },
-  button: {
-    marginRight: 8,
   },
 });

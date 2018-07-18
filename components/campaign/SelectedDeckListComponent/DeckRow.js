@@ -260,10 +260,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(DeckRow);
 
 const styles = StyleSheet.create({
-  row: {
-    paddingBottom: 4,
-    width: '100%',
-  },
   card: {
     marginLeft: 8,
     marginRight: 8,

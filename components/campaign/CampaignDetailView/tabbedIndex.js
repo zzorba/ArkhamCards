@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import { TabView, SceneMap } from 'react-native-tab-view';
 
 import ChaosBagSection from '../ChaosBagSection';
 import CampaignNotesSection from './CampaignNotesSection';
@@ -44,7 +44,8 @@ class CampaignDetailView extends React.Component {
         { key: 'notes', title: 'Notes' },
         { key: 'bag', title: 'Bag' },
       ],
-    }
+    };
+    this._onIndexChange = this.onIndexChange.bind(this);
     this._renderChaosBagSection = this.renderChaosBagSection.bind(this);
     this._renderInvestigatorSection = this.renderInvestigatorSection.bind(this);
     this._renderCampaignLogSection = this.renderCampaignLogSection.bind(this);
@@ -57,6 +58,11 @@ class CampaignDetailView extends React.Component {
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
     this._addScenarioResult = this.addScenarioResult.bind(this);
+  }
+  onIndexChange(index) {
+    this.setState({
+      index,
+    });
   }
 
   addDeck(deckId) {
@@ -151,7 +157,6 @@ class CampaignDetailView extends React.Component {
     const {
       navigator,
       campaign,
-      scenarioPack,
     } = this.props;
     if (!campaign) {
       return null;
@@ -169,7 +174,6 @@ class CampaignDetailView extends React.Component {
 
   renderCampaignLogSection() {
     const {
-      navigator,
       campaign,
       scenarioPack,
     } = this.props;
@@ -206,7 +210,6 @@ class CampaignDetailView extends React.Component {
     const {
       navigator,
       campaign,
-      scenarioPack,
     } = this.props;
     if (!campaign) {
       return null;
@@ -232,9 +235,7 @@ class CampaignDetailView extends React.Component {
 
   render() {
     const {
-      navigator,
       campaign,
-      scenarioPack,
     } = this.props;
     if (!campaign) {
       return null;
@@ -247,7 +248,7 @@ class CampaignDetailView extends React.Component {
           notes: this._renderCampaignLogSection,
           bag: this._renderChaosBagSection,
         })}
-        onIndexChange={index => this.setState({ index })}
+        onIndexChange={this._onIndexChange}
         initialLayout={{ width: Dimensions.get('window').width }}
       />
     );
