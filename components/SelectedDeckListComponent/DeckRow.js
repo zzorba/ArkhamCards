@@ -175,21 +175,6 @@ class DeckRow extends React.Component {
     ]).join(', ');
   }
 
-  renderTrauma() {
-    if (!this.props.updatesChanged) {
-      return null;
-    }
-    return (
-      <View style={styles.row}>
-        <LabeledTextBox
-          label="Trauma"
-          onPress={this._showTraumaDialog}
-          value={this.traumaText()}
-        />
-      </View>
-    );
-  }
-
   exileText() {
     const {
       cards,
@@ -247,7 +232,6 @@ class DeckRow extends React.Component {
     return (
       <View>
         { this.renderXp() }
-        { this.renderTrauma() }
         { this.renderExile() }
       </View>
     );

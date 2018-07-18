@@ -8,17 +8,11 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
+import { DEFAULT_TRAUMA_DATA } from '../trauma';
 import CountSection from './CountSection';
 import InvestigatorSection from './InvestigatorSection';
 import NotesSection from './NotesSection';
 import Button from '../../core/Button';
-
-const DEFAULT_TRAUMA_DATA = {
-  mental: 0,
-  physical: 0,
-  killed: false,
-  insane: false,
-};
 
 class EditCampaignNotesComponent extends React.Component {
   static propTypes = {

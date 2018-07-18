@@ -1,4 +1,11 @@
-export default function(investigatorData) {
+export const DEFAULT_TRAUMA_DATA = {
+  mental: 0,
+  physical: 0,
+  killed: false,
+  insane: false,
+};
+
+export function traumaString(investigatorData) {
   const parts = [];
   if (investigatorData.killed) {
     return 'Killed';
@@ -17,3 +24,8 @@ export default function(investigatorData) {
   }
   return parts.join(', ');
 }
+
+export default {
+  DEFAULT_TRAUMA_DATA,
+  traumaString,
+};

@@ -160,7 +160,7 @@ export const CAMPAIGN_LOGS = {
   'tfa': {
     sections: ['Campaign Notes'],
     counts: ['Yig\'s Fury'],
-    investigatorSections: ['Supplies'],
+    investigatorSections: ['Suplies'],
     // investigatorCounts
   },
 };

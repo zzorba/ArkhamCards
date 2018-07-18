@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find, flatMap, keys, map } from 'lodash';
+import { find } from 'lodash';
 import {
   Alert,
   ScrollView,
@@ -11,14 +11,14 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { CUSTOM } from '../constants';
 import ChaosBagSection from '../ChaosBagSection';
-import CampaignNotesSection from '../CampaignNotesSection';
-import DecksSection from '../DecksSection';
-import InvestigatorStatusRow from './InvestigatorStatusRow';
+import CampaignNotesSection from './CampaignNotesSection';
+import InvestigatorNotesSection from './InvestigatorNotesSection';
+import { CUSTOM } from '../constants';
+import AddDeckRow from '../../AddDeckRow';
 import Button from '../../core/Button';
 import { updateCampaign, deleteCampaign } from '../actions';
-import { getCampaign, getAllDecks, getAllPacks } from '../../../reducers';
+import { getCampaign, getAllPacks } from '../../../reducers';
 import typography from '../../../styles/typography';
 
 class CampaignDetailView extends React.Component {
@@ -29,13 +29,14 @@ class CampaignDetailView extends React.Component {
     updateCampaign: PropTypes.func.isRequired,
     deleteCampaign: PropTypes.func.isRequired,
     campaign: PropTypes.object,
-    decks: PropTypes.object,
     scenarioPack: PropTypes.object,
   };
 
   constructor(props) {
     super(props);
 
+    this._addDeck = this.addDeck.bind(this);
+    this._showCampaignNotesDialog = this.showCampaignNotesDialog.bind(this);
     this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
@@ -43,6 +44,17 @@ class CampaignDetailView extends React.Component {
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
     this._addScenarioResult = this.addScenarioResult.bind(this);
+  }
+
+  addDeck(deckId) {
+    const {
+      campaign: {
+        latestDeckIds,
+      },
+    } = this.props;
+    const newLatestDeckIds = latestDeckIds.slice();
+    newLatestDeckIds.push(deckId);
+    this._updateLatestDeckIds(newLatestDeckIds);
   }
 
   applyCampaignUpdate(key, value) {
@@ -107,49 +119,19 @@ class CampaignDetailView extends React.Component {
     });
   }
 
-  renderScenarioResults() {
-    const {
-      campaign: {
-        investigatorStatus,
-      },
-    } = this.props;
-    return (
-      <View>
-        { map(keys(investigatorStatus), code => (
-          <InvestigatorStatusRow
-            key={code}
-            investigatorCode={code}
-            status={investigatorStatus[code]}
-          />
-        )) }
-      </View>
-    );
-  }
-
-  renderLatestDecks() {
+  showCampaignNotesDialog() {
     const {
       navigator,
       campaign,
     } = this.props;
-    return (
-      <DecksSection
-        navigator={navigator}
-        campaign={campaign}
-        updateLatestDeckIds={this._updateLatestDeckIds}
-      />
-    );
-  }
-
-  investigators() {
-    const {
-      decks,
-      campaign: {
-        latestDeckIds,
+    navigator.push({
+      screen: 'Dialog.EditCampaignNotes',
+      title: 'Campaign Log',
+      passProps: {
+        campaignId: campaign.id,
       },
-    } = this.props;
-    return map(
-      flatMap(latestDeckIds, deckId => decks[deckId]),
-      deck => deck.investigator_code);
+      backButtonTitle: 'Cancel',
+    });
   }
 
   render() {
@@ -171,21 +153,30 @@ class CampaignDetailView extends React.Component {
             { scenarioPack.name }
           </Text>
         ) }
-        { this.renderScenarioResults() }
         <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
-        { this.renderLatestDecks() }
+        <View style={styles.section}>
+          <InvestigatorNotesSection
+            navigator={navigator}
+            campaign={campaign}
+          />
+          <AddDeckRow
+            navigator={navigator}
+            deckAdded={this._addDeck}
+            selectedDeckIds={campaign.latestDeckIds}
+          />
+        </View>
+        <View style={styles.section}>
+          <CampaignNotesSection
+            campaignNotes={campaign.campaignNotes}
+          />
+          <View style={styles.button}>
+            <Button text="Edit" align="left" onPress={this._showCampaignNotesDialog} />
+          </View>
+        </View>
         <ChaosBagSection
           navigator={navigator}
           chaosBag={campaign.chaosBag}
           updateChaosBag={this._updateChaosBag}
-        />
-        <CampaignNotesSection
-          navigator={navigator}
-          campaignNotes={campaign.campaignNotes}
-          investigatorData={campaign.investigatorData}
-          investigators={this.investigators()}
-          updateCampaignNotes={this._updateCampaignNotes}
-          updateInvestigatorData={this._updateInvestigatorData}
         />
         <View style={styles.margin}>
           <Button color="red" onPress={this._deletePressed} text="Delete Campaign" />
@@ -201,7 +192,6 @@ function mapStateToProps(state, props) {
   const packs = getAllPacks(state);
   return {
     campaign: campaign,
-    decks: getAllDecks(state),
     scenarioPack: campaign && find(packs, pack => pack.code === campaign.cycleCode),
     packs: packs,
   };
@@ -217,6 +207,12 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(CampaignDetailView);
 
 const styles = StyleSheet.create({
+  section: {
+    borderBottomWidth: 1,
+    borderColor: '#000000',
+    paddingBottom: 8,
+    marginBottom: 8,
+  },
   margin: {
     margin: 8,
   },

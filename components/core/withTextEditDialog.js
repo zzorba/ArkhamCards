@@ -92,7 +92,7 @@ export default function withTextEditDialog(WrappedComponent) {
       );
     }
   }
-  
+
   return TextEditDialogComponent;
 }
 

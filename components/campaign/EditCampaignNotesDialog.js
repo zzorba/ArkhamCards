@@ -4,19 +4,27 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
+import { campaignInvestigators } from './campaignUtil';
 import withTextEditDialog from '../core/withTextEditDialog';
 import AddCampaignNoteSectionDialog from './AddCampaignNoteSectionDialog';
 import EditCampaignNotesComponent from './EditCampaignNotesComponent';
 import EditTraumaDialog from './EditTraumaDialog';
+import { updateCampaign } from './actions';
+import { getCampaign, getAllDecks } from '../../reducers';
 
 class EditCampaignNotesDialog extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    updateCampaignNotes: PropTypes.func.isRequired,
+    campaignId: PropTypes.number.isRequired,
+    // From redux
+    updateCampaign: PropTypes.func.isRequired,
     campaignNotes: PropTypes.object,
     investigatorData: PropTypes.object,
     investigators: PropTypes.array,
+    // From Dialog HOC
     showTextEditDialog: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
     captureViewRef: PropTypes.func.isRequired,
@@ -55,9 +63,20 @@ class EditCampaignNotesDialog extends React.Component {
   }
 
   onNavigatorEvent(event) {
+    const {
+      campaignId,
+      updateCampaign,
+    } = this.props;
+    const {
+      campaignNotes,
+      investigatorData,
+    } = this.state;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
-        this.props.updateCampaignNotes(this.state.campaignNotes);
+        updateCampaign(campaignId, {
+          campaignNotes,
+          investigatorData,
+        });
         this.props.navigator.pop();
       }
     }
@@ -74,7 +93,7 @@ class EditCampaignNotesDialog extends React.Component {
       investigatorData,
     } = this.state;
     this.setState({
-      investigatorData: Object.assign({}, investigatorData, { [code]: data }),
+      investigatorData: Object.assign({}, investigatorData, { [code]: Object.assign({}, data) }),
     });
   }
 
@@ -176,7 +195,24 @@ class EditCampaignNotesDialog extends React.Component {
   }
 }
 
-export default withTextEditDialog(EditCampaignNotesDialog);
+function mapStateToProps(state, props) {
+  const campaign = getCampaign(state, props.campaignId);
+  const decks = getAllDecks(state);
+  return {
+    campaignNotes: campaign.campaignNotes,
+    investigatorData: campaign.investigatorData || {},
+    investigators: campaignInvestigators(campaign, decks),
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    updateCampaign,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withTextEditDialog(EditCampaignNotesDialog));
 
 const styles = StyleSheet.create({
   container: {

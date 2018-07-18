@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import traumaString from '../trauma';
+import { traumaString } from '../trauma';
 import CountSection from './CountSection';
 import NotesSection from './NotesSection';
 import FactionGradient from '../../core/FactionGradient';
