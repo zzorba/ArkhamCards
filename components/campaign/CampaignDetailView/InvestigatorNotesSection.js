@@ -70,10 +70,6 @@ class InvestigatorNotesSection extends React.Component {
       decks,
       investigatorCards,
     } = this.props;
-    if (investigatorNotes.sections.length === 0 && investigatorNotes.counts.length === 0) {
-      return null;
-    }
-
     return (
       <View style={styles.container}>
         { flatMap(latestDeckIds, deckId => {
