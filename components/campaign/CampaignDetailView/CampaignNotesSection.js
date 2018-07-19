@@ -19,9 +19,9 @@ export default class CampaignNotesSection extends React.Component {
       <View>
         { map(sections, (section, idx) => (
           <View key={idx} style={styles.section}>
-            <Text style={[typography.bigLabel, styles.sectionLabel]}>{ section.title }</Text>
+            <Text style={typography.small}>{ section.title.toUpperCase() }</Text>
             { section.notes.length ? map(section.notes, (note, idx) => (
-              <Text style={[typography.text]} key={idx}>
+              <Text style={typography.text} key={idx}>
                 { note }
               </Text>
             )) : <Text style={typography.text}>---</Text> }
@@ -36,10 +36,10 @@ export default class CampaignNotesSection extends React.Component {
       <View>
         { map(counts, (section, idx) => (
           <View key={idx} style={styles.section}>
-            <Text style={[typography.bigLabel, styles.sectionLabel]}>
-              { section.title }
+            <Text style={typography.small}>
+              { section.title.toUpperCase() }
             </Text>
-            <Text style={[typography.text]}>
+            <Text style={typography.text}>
               { section.count }
             </Text>
           </View>
@@ -71,8 +71,5 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 8,
-  },
-  sectionLabel: {
-    textDecorationLine: 'underline',
   },
 });

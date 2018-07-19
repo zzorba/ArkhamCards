@@ -8,12 +8,14 @@ import {
   ViewPropTypes,
 } from 'react-native';
 
+import typography from '../../styles/typography';
+
 export default function TextBox({ value, style, ...otherProps }) {
   return (
     <View style={style ? [styles.textBox, style] : styles.textBox}>
       <TextInput
         underlineColorAndroid="transparent"
-        style={styles.input}
+        style={[typography.text, styles.input]}
         value={value}
         {...otherProps}
       />
@@ -43,9 +45,6 @@ const styles = StyleSheet.create({
   },
   input: {
     padding: 0,
-    fontFamily: 'System',
-    fontSize: 16,
-    lineHeight: 20,
     color: '#222',
     width: '100%',
   },

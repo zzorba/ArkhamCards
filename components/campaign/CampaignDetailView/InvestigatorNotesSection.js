@@ -10,8 +10,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import InvestigatorRowWrapper from './InvestigatorRowWrapper';
 import CampaignNotesSection from './CampaignNotesSection';
+import InvestigatorRowWrapper from '../InvestigatorRowWrapper';
 import typography from '../../../styles/typography';
 
 import { getAllDecks } from '../../../reducers';
@@ -46,8 +46,8 @@ class InvestigatorNotesSection extends React.Component {
       >
         <View style={styles.investigatorNotes}>
           <View style={styles.section}>
-            <Text style={[typography.bigLabel, styles.sectionLabel]}>Trauma</Text>
-            <Text style={[typography.text]}>
+            <Text style={typography.small}>TRAUMA</Text>
+            <Text style={typography.text}>
               { traumaString(traumaData) }
             </Text>
           </View>
@@ -75,7 +75,7 @@ class InvestigatorNotesSection extends React.Component {
     }
 
     return (
-      <View>
+      <View style={styles.container}>
         { flatMap(latestDeckIds, deckId => {
           const deck = decks[deckId];
           if (!deck) {
@@ -121,14 +121,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 );
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 16,
+    marginBottom: 8,
+  },
   section: {
     marginBottom: 8,
   },
   investigatorNotes: {
     flex: 1,
     marginLeft: 8,
-  },
-  sectionLabel: {
-    textDecorationLine: 'underline',
   },
 });

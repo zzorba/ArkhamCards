@@ -59,10 +59,10 @@ export default class NotesSection extends React.Component {
     } = this.props;
     return (
       <View style={isInvestigator ? {} : styles.container}>
-        <Text style={[typography.bigLabel, styles.margin]}>
-          { title }
+        <Text style={[typography.small, styles.margin]}>
+          { title.toUpperCase() }
         </Text>
-        <View style={styles.margin}>
+        <View>
           { map(this.state.notes, (note, idx) => (
             <NoteRow
               key={idx}
@@ -85,10 +85,8 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingLeft: 8,
     paddingRight: 8,
-    borderBottomWidth: 1,
-    borderColor: '#000000',
   },
   margin: {
-    marginBottom: 4,
+    marginTop: 4,
   },
 });

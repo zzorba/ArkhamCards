@@ -227,22 +227,20 @@ class DeckRow extends React.Component {
       investigators,
     } = this.props;
     return (
-      <View style={styles.card}>
-        <DeckListRow
-          id={id}
-          deck={deck}
-          cards={cards}
-          investigators={investigators}
-          onPress={this._onDeckPress}
-          investigator={deck ? cards[deck.investigator_code] : null}
-          titleButton={
-            <TouchableOpacity onPress={this._onRemove}>
-              <MaterialCommunityIcons name="close" size={28} color="#FFFFFF" />
-            </TouchableOpacity>
-          }
-          details={this.renderDetails()}
-        />
-      </View>
+      <DeckListRow
+        id={id}
+        deck={deck}
+        cards={cards}
+        investigators={investigators}
+        onPress={this._onDeckPress}
+        investigator={deck ? cards[deck.investigator_code] : null}
+        titleButton={
+          <TouchableOpacity onPress={this._onRemove}>
+            <MaterialCommunityIcons name="close" size={28} color="#FFFFFF" />
+          </TouchableOpacity>
+        }
+        details={this.renderDetails()}
+      />
     );
   }
 }
@@ -260,12 +258,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(DeckRow);
 
 const styles = StyleSheet.create({
-  card: {
-    marginLeft: 8,
-    marginRight: 8,
-    borderRadius: 4,
-    overflow: 'hidden',
-  },
   flex: {
     flex: 1,
   },

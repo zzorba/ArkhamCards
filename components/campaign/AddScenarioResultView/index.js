@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, flatMap, forEach, last, map, mapValues } from 'lodash';
+import { filter, forEach, mapValues } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -8,14 +8,13 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
 import withTextEditDialog from '../../core/withTextEditDialog';
 import ScenarioSection from './ScenarioSection';
 import SelectedDeckListComponent from '../SelectedDeckListComponent';
 import XpComponent from '../../XpComponent';
 import { addScenarioResult } from '../actions';
-import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
+import { getAllDecks, getCampaign } from '../../../reducers';
 
 const DEFAULT_SETTINGS = {
   xp: 0,
@@ -31,12 +30,13 @@ const DEFAULT_SETTINGS = {
 class AddScenarioResultView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    campaign: PropTypes.object.isRequired,
+    /* eslint-disable react/no-unused-prop-types */
+    id: PropTypes.number.isRequired,
     // from redux/realm
+    campaign: PropTypes.object.isRequired,
     addScenarioResult: PropTypes.func.isRequired,
     decks: PropTypes.object,
-    cycleScenarios: PropTypes.array,
-    standaloneScenarios: PropTypes.array,
+    //  From HOC
     showTextEditDialog: PropTypes.func.isRequired,
   };
 
@@ -51,8 +51,6 @@ class AddScenarioResultView extends React.Component {
     this.state = {
       deckIds,
       deckUpdates,
-      chaosBag: Object.assign({}, props.campaign.chaosBag),
-      campaignNotes: Object.assign({}, props.campaign.campaignNotes),
       investigatorData: Object.assign({}, props.campaign.investigatorData),
       scenario: '',
       xp: 0,
@@ -61,8 +59,6 @@ class AddScenarioResultView extends React.Component {
     this.updateNavigatorButtons();
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
-    this._chaosBagChanged = this.chaosBagChanged.bind(this);
-    this._notesChanged = this.notesChanged.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
@@ -94,7 +90,6 @@ class AddScenarioResultView extends React.Component {
         } = this.props;
         const {
           deckIds,
-          campaignNotes,
           scenario,
           deckUpdates,
           chaosBag,
@@ -109,25 +104,12 @@ class AddScenarioResultView extends React.Component {
           campaign.id,
           deckIds,
           scenario,
-          campaignNotes,
           investigatorUpdates,
           chaosBag,
         );
         this.props.navigator.pop();
       }
     }
-  }
-
-  chaosBagChanged(chaosBag) {
-    this.setState({
-      chaosBag: Object.assign({}, chaosBag),
-    });
-  }
-
-  notesChanged(campaignNotes) {
-    this.setState({
-      campaignNotes,
-    });
   }
 
   scenarioChanged(scenario) {
@@ -192,15 +174,14 @@ class AddScenarioResultView extends React.Component {
   renderScenarios() {
     const {
       navigator,
-      cycleScenarios,
-      standaloneScenarios,
+      campaign,
       showTextEditDialog,
     } = this.props;
     return (
       <ScenarioSection
         navigator={navigator}
+        campaign={campaign}
         scenarioChanged={this._scenarioChanged}
-        allScenarios={concat(cycleScenarios, standaloneScenarios)}
         showTextEditDialog={showTextEditDialog}
       />
     );
@@ -228,13 +209,7 @@ class AddScenarioResultView extends React.Component {
 
   render() {
     const {
-      decks,
-    } = this.props;
-    const {
-      deckIds,
       xp,
-      campaignNotes,
-      investigatorData,
     } = this.state;
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -250,16 +225,10 @@ class AddScenarioResultView extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  const latestScenario = last(props.campaign.scenarioResults);
-  const cyclePack = getPack(state, props.campaign.cycleCode);
-  const allPacks = getAllPacks(state);
-  const cyclePacks = !cyclePack ? [] : filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
-  const standalonePacks = filter(allPacks, pack => pack.cycle_position === 70);
+  const campaign = getCampaign(state, props.id);
   return {
-    cyclePacks,
-    standalonePacks,
+    campaign: campaign,
     decks: getAllDecks(state),
-    latestScenario,
   };
 }
 
@@ -270,36 +239,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(withTextEditDialog(AddScenarioResultView), {
-    schemas: ['Card'],
-    mapToProps(results, realm, props) {
-      const finishedScenarios = new Set(props.campaign.finishedScenarios);
-      const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));
-      const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
-
-      const allScenarioCards = results.cards
-        .filtered('type_code == "scenario"')
-        .sorted('position');
-
-      const cycleScenarios = [];
-      const standaloneScenarios = [];
-      forEach(allScenarioCards, card => {
-        if (cyclePackCodes.has(card.pack_code) && !finishedScenarios.has(card.code)) {
-          cycleScenarios.push(card);
-        }
-        if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.code)) {
-          standaloneScenarios.push(card);
-        }
-      });
-      return {
-        realm,
-        cycleScenarios,
-        standaloneScenarios,
-      };
-    },
-  }),
+  withTextEditDialog(AddScenarioResultView)
 );
-
 const styles = StyleSheet.create({
   container: {
     marginTop: 8,

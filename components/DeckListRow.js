@@ -13,6 +13,7 @@ import FactionGradient from './core/FactionGradient';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
 import { toRelativeDateString } from '../lib/datetime';
 import { parseDeck } from './parseDeck';
+import typography from '../styles/typography';
 
 export default class DeckListRow extends React.Component {
   static propTypes = {
@@ -55,14 +56,14 @@ export default class DeckListRow extends React.Component {
     const parsedDeck = parseDeck(deck, deck.slots, cards);
     return (
       <View>
-        <Text style={styles.text}>
+        <Text style={typography.small}>
           { `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed.` }
         </Text>
-        <Text style={styles.text}>
+        <Text style={typography.small}>
           { `${parsedDeck.experience} experience required.` }
         </Text>
         { !!deck.date_update && (
-          <Text style={styles.text} >
+          <Text style={typography.small} >
             Updated { toRelativeDateString(Date.parse(deck.date_update)) }
           </Text>
         ) }
@@ -88,7 +89,7 @@ export default class DeckListRow extends React.Component {
       );
     }
     return (
-      <TouchableOpacity onPress={this._onPress} style={styles.container}>
+      <TouchableOpacity onPress={this._onPress}>
         <View style={styles.column}>
           <DeckTitleBarComponent
             name={deck.name}
@@ -101,21 +102,26 @@ export default class DeckListRow extends React.Component {
               { !!investigator && <InvestigatorImage card={investigator} /> }
             </View>
             <View style={[styles.column, styles.titleColumn]}>
-              <Text style={styles.text}>
+              <Text style={typography.bigLabel}>
                 { investigator.name }
               </Text>
               { this.renderDeckDetails() }
             </View>
           </FactionGradient>
         </View>
+        <FactionGradient
+          faction_code={investigator.faction_code}
+          style={styles.footer}
+          dark
+        />
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginBottom: 16,
+  footer: {
+    height: 16,
   },
   column: {
     flexDirection: 'column',
@@ -128,11 +134,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  text: {
-    fontFamily: 'System',
-    fontSize: 14,
-    lineHeight: 18,
   },
   loading: {
     marginLeft: 10,

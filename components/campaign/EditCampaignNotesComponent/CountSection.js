@@ -56,19 +56,19 @@ export default class CountSection extends React.Component {
     } = this.state;
     return (
       <View style={isInvestigator ? {} : styles.container}>
-        <Text style={[typography.bigLabel, styles.margin]}>
-          { title }
+        <Text style={[typography.small, styles.margin]}>
+          { title.toUpperCase() }
         </Text>
         <View style={[styles.row, styles.margin]}>
-          <PlusMinusButtons
-            count={count}
-            onChange={this._updateCount}
-            size={28}
-            dark={isInvestigator}
-          />
           <Text style={[styles.margin, typography.text]}>
             { count }
           </Text>
+          <PlusMinusButtons
+            count={count}
+            onChange={this._updateCount}
+            size={36}
+            dark={isInvestigator}
+          />
         </View>
       </View>
     );
@@ -89,5 +89,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

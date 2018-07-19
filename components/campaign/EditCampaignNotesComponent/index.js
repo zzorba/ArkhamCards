@@ -144,7 +144,7 @@ class EditCampaignNotesComponent extends React.Component {
       showTraumaDialog,
     } = this.props;
     return (
-      <View>
+      <View style={styles.investigatorSection}>
         { map(investigators, code => (
           <InvestigatorSection
             key={code}
@@ -173,6 +173,7 @@ class EditCampaignNotesComponent extends React.Component {
         { this.renderCounts(counts) }
         { this.renderInvestigatorSection() }
         <Button text="Add Log Section" onPress={this._showAddSectionDialog} />
+        <View style={styles.footer} />
       </ScrollView>
     );
   }
@@ -198,5 +199,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#000000',
     marginBottom: 4,
+  },
+  investigatorSection: {
+    marginBottom: 16,
+  },
+  footer: {
+    height: 100,
   },
 });

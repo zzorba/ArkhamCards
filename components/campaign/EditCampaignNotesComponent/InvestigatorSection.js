@@ -118,9 +118,9 @@ export default class InvestigatorSection extends React.Component {
       traumaData,
     } = this.props;
     return (
-      <View>
-        <Text style={typography.bigLabel}>
-          Trauma
+      <View style={styles.traumaBlock}>
+        <Text style={typography.small}>
+          TRAUMA
         </Text>
         <TouchableOpacity onPress={this._editTraumaPressed}>
           <TextBox
@@ -168,5 +168,8 @@ const styles = StyleSheet.create({
   investigatorNotes: {
     flex: 1,
     marginLeft: 8,
+  },
+  traumaBlock: {
+    marginBottom: 4,
   },
 });

@@ -113,7 +113,7 @@ class CampaignDetailView extends React.Component {
     navigator.push({
       screen: 'Campaign.AddResult',
       passProps: {
-        campaign,
+        id: campaign.id,
       },
       backButtonTitle: 'Cancel',
     });

@@ -6,9 +6,9 @@ import {
   View,
 } from 'react-native';
 
-import InvestigatorImage from '../../core/InvestigatorImage';
-import FactionGradient from '../../core/FactionGradient';
-import DeckTitleBarComponent from '../../DeckTitleBarComponent';
+import InvestigatorImage from '../core/InvestigatorImage';
+import FactionGradient from '../core/FactionGradient';
+import DeckTitleBarComponent from '../DeckTitleBarComponent';
 
 export default class InvestigatorRowWrapper extends React.Component {
   static propTypes = {
@@ -38,7 +38,7 @@ export default class InvestigatorRowWrapper extends React.Component {
       children,
     } = this.props;
     return (
-      <TouchableOpacity onPress={this._onPress} style={styles.container}>
+      <TouchableOpacity onPress={this._onPress}>
         <View style={styles.column}>
           <DeckTitleBarComponent
             name={investigator.name}
@@ -54,16 +54,19 @@ export default class InvestigatorRowWrapper extends React.Component {
             </View>
           </FactionGradient>
         </View>
+        <FactionGradient
+          faction_code={investigator.faction_code}
+          style={styles.footer}
+          dark
+        />
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 8,
-    borderRadius: 4,
-    overflow: 'hidden',
+  footer: {
+    height: 16,
   },
   column: {
     flexDirection: 'column',
