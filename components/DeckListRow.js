@@ -122,6 +122,8 @@ export default class DeckListRow extends React.Component {
 const styles = StyleSheet.create({
   footer: {
     height: 16,
+    borderBottomWidth: 1,
+    borderColor: '#333',
   },
   column: {
     flexDirection: 'column',
