@@ -48,16 +48,22 @@ export default class DeckListRow extends React.Component {
     } = this.props;
 
     if (details) {
-      return details;
+      return (
+        <View>
+          { details }
+        </View>
+      );
     }
     if (!deck) {
       return null;
     }
     const parsedDeck = parseDeck(deck, deck.slots, cards);
+    const completedScenarioString =
+      `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed.`;
     return (
       <View>
         <Text style={typography.small}>
-          { `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed.` }
+          { completedScenarioString }
         </Text>
         <Text style={typography.small}>
           { `${parsedDeck.experience} experience required.` }
@@ -127,12 +133,12 @@ const styles = StyleSheet.create({
   },
   column: {
     flexDirection: 'column',
-    alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   row: {
     paddingTop: 8,
     paddingBottom: 8,
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -146,6 +152,5 @@ const styles = StyleSheet.create({
   },
   titleColumn: {
     flex: 1,
-    height: '100%',
   },
 });

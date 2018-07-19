@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { traumaString } from '../trauma';
-import CountSection from './CountSection';
+import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
 import FactionGradient from '../../core/FactionGradient';
 import InvestigatorImage from '../../core/InvestigatorImage';
@@ -100,7 +100,7 @@ export default class InvestigatorSection extends React.Component {
     return (
       <View>
         { map(counts, (section, idx) => (
-          <CountSection
+          <EditCountComponent
             key={idx}
             index={idx}
             title={section.title}

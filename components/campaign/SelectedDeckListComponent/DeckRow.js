@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import DeckListRow from '../../DeckListRow';
-import XpComponent from '../../XpComponent';
+import XpComponent from '../XpComponent';
 import * as Actions from '../../../actions';
 import { getDeck } from '../../../reducers';
 import LabeledTextBox from '../../core/LabeledTextBox';
@@ -128,7 +128,7 @@ class DeckRow extends React.Component {
     if (!updatesChanged) {
       return null;
     }
-    return <XpComponent xp={xp} onChange={this._updateXp} />;
+    return <XpComponent xp={xp} onChange={this._updateXp} isInvestigator />;
   }
 
   traumaText() {
@@ -259,6 +259,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(DeckRow);
 
 const styles = StyleSheet.create({
   flex: {
-    flex: 1,
+    flexDirection: 'column',
   },
 });

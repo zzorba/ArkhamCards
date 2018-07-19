@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import ScenarioSection from './ScenarioSection';
 import SelectedDeckListComponent from '../SelectedDeckListComponent';
-import XpComponent from '../../XpComponent';
+import XpComponent from '../XpComponent';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign } from '../../../reducers';
 
@@ -214,9 +214,7 @@ class AddScenarioResultView extends React.Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         { this.renderScenarios() }
-        <View style={[styles.row, styles.margin]}>
-          <XpComponent xp={xp} onChange={this._xpChanged} />
-        </View>
+        <XpComponent xp={xp} onChange={this._xpChanged} />
         { this.renderInvestigators() }
         <View style={styles.footer} />
       </ScrollView>
@@ -244,16 +242,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 const styles = StyleSheet.create({
   container: {
     marginTop: 8,
-    marginBottom: 8,
-  },
-  row: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'flex-start',
-    width: '100%',
-  },
-  margin: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginBottom: 8,
   },
   footer: {
     height: 100,

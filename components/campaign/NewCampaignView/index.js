@@ -455,6 +455,9 @@ class NewCampaignView extends React.Component {
           <View style={styles.underline}>
             { this.renderCampaignLogSection() }
           </View>
+          <Text style={[typography.bigLabel, styles.margin]}>
+            Investigators
+          </Text>
           <SelectedDeckListComponent
             navigator={navigator}
             deckIds={deckIds}

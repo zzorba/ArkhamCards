@@ -6,10 +6,10 @@ import {
   View,
 } from 'react-native';
 
-import PlusMinusButtons from '../../core/PlusMinusButtons';
-import typography from '../../../styles/typography';
+import PlusMinusButtons from '../core/PlusMinusButtons';
+import typography from '../../styles/typography';
 
-export default class CountSection extends React.Component {
+export default class EditCountComponent extends React.Component {
   static propTypes = {
     countChanged: PropTypes.func.isRequired,
     index: PropTypes.number,
@@ -56,13 +56,15 @@ export default class CountSection extends React.Component {
     } = this.state;
     return (
       <View style={isInvestigator ? {} : styles.container}>
-        <Text style={[typography.small, styles.margin]}>
-          { title.toUpperCase() }
-        </Text>
-        <View style={[styles.row, styles.margin]}>
-          <Text style={[styles.margin, typography.text]}>
-            { count }
-          </Text>
+        <View style={styles.row}>
+          <View style={styles.textColumn}>
+            <Text style={typography.small} ellipsizeMode="tail">
+              { title.toUpperCase() }
+            </Text>
+            <Text style={[styles.margin, typography.text]}>
+              { count }
+            </Text>
+          </View>
           <PlusMinusButtons
             count={count}
             onChange={this._updateCount}
@@ -80,13 +82,16 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingLeft: 8,
     paddingRight: 8,
-    borderBottomWidth: 1,
-    borderColor: '#000000',
   },
   margin: {
     marginBottom: 4,
   },
+  textColumn: {
+    flex: 1,
+    marginRight: 8,
+  },
   row: {
+    alignSelf: 'stretch',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

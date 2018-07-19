@@ -9,7 +9,7 @@ import {
 import { connectRealm } from 'react-native-realm';
 
 import { DEFAULT_TRAUMA_DATA } from '../trauma';
-import CountSection from './CountSection';
+import EditCountComponent from '../EditCountComponent';
 import InvestigatorSection from './InvestigatorSection';
 import NotesSection from './NotesSection';
 import Button from '../../core/Button';
@@ -120,7 +120,7 @@ class EditCampaignNotesComponent extends React.Component {
     return (
       <View>
         { map(counts, (section, idx) => (
-          <CountSection
+          <EditCountComponent
             key={idx}
             index={idx}
             title={section.title}

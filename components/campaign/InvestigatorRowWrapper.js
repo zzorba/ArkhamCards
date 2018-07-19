@@ -36,9 +36,10 @@ export default class InvestigatorRowWrapper extends React.Component {
     const {
       investigator,
       children,
+      onPress,
     } = this.props;
     return (
-      <TouchableOpacity onPress={this._onPress}>
+      <TouchableOpacity onPress={this._onPress} disabled={!onPress}>
         <View style={styles.column}>
           <DeckTitleBarComponent
             name={investigator.name}

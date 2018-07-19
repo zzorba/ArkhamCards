@@ -24,9 +24,6 @@ function SelectedDeckListComponent({
 }) {
   return (
     <View>
-      <Text style={[typography.bigLabel, styles.margin]}>
-        Investigators
-      </Text>
       { map(deckIds, deckId => (
         <DeckRow
           key={deckId}
