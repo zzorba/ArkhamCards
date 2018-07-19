@@ -1,5 +1,6 @@
 import { forEach, keys } from 'lodash';
 
+import AppIcon from '../assets/AppIcon';
 import ArkhamIcon from '../assets/ArkhamIcon';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
@@ -11,8 +12,6 @@ const icons = {
   elder_sign: [30, COLORS.button, ArkhamIcon],
   intellect: [26, COLORS.button, ArkhamIcon],
   per_investigator: [24, COLORS.button, ArkhamIcon],
-  deck: [28, COLORS.button, ArkhamIcon],
-  faq: [28, COLORS.button, ArkhamIcon],
   edit: [26, COLORS.button],
   tune: [28, COLORS.button],
   delete: [30, COLORS.button, MaterialCommunityIcons],
@@ -22,8 +21,10 @@ const icons = {
   'sort-by-alpha': [28, COLORS.button],
   settings: [28, COLORS.button, MaterialCommunityIcons],
   add: [28, COLORS.button],
-  flip_card: [28, COLORS.button, ArkhamIcon],
-  book: [26, COLORS.button, ArkhamIcon],
+  deck: [28, COLORS.button, AppIcon],
+  faq: [28, COLORS.button, AppIcon],
+  flip_card: [28, COLORS.button, AppIcon],
+  book: [26, COLORS.button, AppIcon],
 };
 
 const defaultIconProvider = MaterialIcons;

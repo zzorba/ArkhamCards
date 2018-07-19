@@ -28,7 +28,7 @@ export default function AboutView() {
         { '\n' }
         • 'flip over' icon by Nathan Smith from the Noun Project.
         { '\n' }
-        • 'Book' icon by Sarah from the Noun Project.
+        • 'books'  by Mr Balind from the Noun Project.
       </Text>
     </View>
   );

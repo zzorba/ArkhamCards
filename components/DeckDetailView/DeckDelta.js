@@ -9,7 +9,7 @@ import {
 import { connectRealm } from 'react-native-realm';
 
 import Button from '../core/Button';
-import ArkhamIcon from '../../assets/ArkhamIcon';
+import AppIcon from '../../assets/AppIcon';
 import DeckViewCardItem from './DeckViewCardItem';
 import typography from '../../styles/typography';
 
@@ -123,7 +123,7 @@ class DeckDelta extends React.Component {
               align="left"
               onPress={this._showPreviousDeck}
               text="Previous Deck"
-              icon={<ArkhamIcon name="deck" size={18} color="white" />}
+              icon={<AppIcon name="deck" size={18} color="white" />}
             />
           ) }
           { !!deck.next_deck && (
@@ -132,7 +132,7 @@ class DeckDelta extends React.Component {
               align="left"
               onPress={this._showNextDeck}
               text="Next Deck"
-              icon={<ArkhamIcon name="deck" size={18} color="white" />}
+              icon={<AppIcon name="deck" size={18} color="white" />}
             />
           ) }
         </View>

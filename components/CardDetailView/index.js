@@ -529,7 +529,7 @@ class CardDetailView extends React.PureComponent {
           <Button
             onPress={this._showInvestigatorCards}
             text={`Browse ${card.name} Cards`}
-            icon={<ArkhamIcon name="deck" size={18} color="white" />}
+            icon={<AppIcon name="deck" size={18} color="white" />}
           />
         </View>
         <SignatureCardsComponent navigator={navigator} investigator={card} />
@@ -543,7 +543,7 @@ class CardDetailView extends React.PureComponent {
         <Button
           text="FAQ"
           onPress={this._showFaq}
-          icon={<ArkhamIcon name="faq" size={18} color="white" />}
+          icon={<AppIcon name="faq" size={18} color="white" />}
         />
       </View>
     );
@@ -555,7 +555,7 @@ class CardDetailView extends React.PureComponent {
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={styles.illustratorText}>
-              <AppIcon name="palette" size={14} color="#000000" />
+              <AppIcon name="paintbrush" size={14} color="#000000" />
               { card.illustrator }
             </Text>
           ) }

@@ -9,6 +9,7 @@ import {
 
 import { COLORS } from '../../styles/colors';
 import ArkhamIcon from '../../assets/ArkhamIcon';
+import AppIcon from '../../assets/AppIcon';
 
 export default class MenuItem extends React.Component {
   static propTypes = {
@@ -16,6 +17,7 @@ export default class MenuItem extends React.Component {
     text: PropTypes.string.isRequired,
     screen: PropTypes.string.isRequired,
     icon: PropTypes.string,
+    appIcon: PropTypes.string,
     passProps: PropTypes.object,
   };
 
@@ -45,6 +47,7 @@ export default class MenuItem extends React.Component {
     const {
       text,
       icon,
+      appIcon,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
@@ -54,6 +57,11 @@ export default class MenuItem extends React.Component {
               <ArkhamIcon name={icon} size={28} color="#000000" />
             </View>
           ) }
+          { !!appIcon && (
+            <View style={styles.icon}>
+              <AppIcon name={appIcon} size={28} color="#000000" />
+            </View>
+          )}
           <Text style={styles.text}>
             { text }
           </Text>

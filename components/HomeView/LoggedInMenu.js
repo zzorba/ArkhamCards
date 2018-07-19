@@ -16,14 +16,14 @@ function LoggedInMenu({ navigator }) {
         navigator={navigator}
         text="My Decks"
         screen="My.Decks"
-        icon="deck"
+        appIcon="deck"
       />
       { SHOW_CAMPAIGN_BUTTON && (
         <MenuItem
           navigator={navigator}
           text="My Campaigns"
           screen="My.Campaigns"
-          icon="book"
+          appIcon="book"
         />
       ) }
     </View>
