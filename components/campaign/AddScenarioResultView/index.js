@@ -96,7 +96,8 @@ class AddScenarioResultView extends React.Component {
         } = this.state;
         const investigatorUpdates = {};
         forEach(deckIds, deckId => {
-          const investigatorId = decks[deckId].investigator_code;
+          const deck = decks[deckId];
+          const investigatorId = deck.investigator_code;
           investigatorUpdates[investigatorId] = deckUpdates[deckId];
         });
 

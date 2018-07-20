@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import PlusMinusButtons from '../core/PlusMinusButtons';
+import TallyCount from '../core/TallyCount';
 import typography from '../../styles/typography';
 
 export default class EditCountComponent extends React.Component {
@@ -61,9 +62,7 @@ export default class EditCountComponent extends React.Component {
             <Text style={typography.small} ellipsizeMode="tail">
               { title.toUpperCase() }
             </Text>
-            <Text style={[styles.margin, typography.text]}>
-              { count }
-            </Text>
+            <TallyCount count={count} style={styles.margin} />
           </View>
           <PlusMinusButtons
             count={count}
