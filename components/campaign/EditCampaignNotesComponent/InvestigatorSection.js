@@ -107,6 +107,7 @@ export default class InvestigatorSection extends React.Component {
             count={section.counts[investigator.code] || 0}
             countChanged={this._countChanged}
             isInvestigator
+            useTally
           />
         )) }
       </View>

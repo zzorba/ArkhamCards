@@ -202,6 +202,7 @@ class DeckRow extends React.Component {
           label="Exiled Cards"
           onPress={this._showExileDialog}
           value={this.exileText()}
+          column
         />
       </View>
     );
@@ -260,5 +261,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(DeckRow);
 const styles = StyleSheet.create({
   flex: {
     flexDirection: 'column',
+  },
+  exileRow: {
+    marginRight: 8,
   },
 });

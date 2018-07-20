@@ -20,7 +20,9 @@ export default class CampaignNotesSection extends React.Component {
       <View>
         { map(sections, (section, idx) => (
           <View key={idx} style={styles.section}>
-            <Text style={typography.small}>{ section.title.toUpperCase() }</Text>
+            <Text style={typography.small}>
+              { section.title.toUpperCase() }
+            </Text>
             { section.notes.length ? map(section.notes, (note, idx) => (
               <Text style={typography.text} key={idx}>
                 { note }

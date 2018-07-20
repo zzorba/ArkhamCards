@@ -37,11 +37,13 @@ function SelectedDeckListComponent({
         />
       )) }
       { deckIds.length < 4 && (
-        <AddDeckRow
-          navigator={navigator}
-          deckAdded={deckAdded}
-          selectedDeckIds={deckIds}
-        />
+        <View style={styles.addDeckButton}>
+          <AddDeckRow
+            navigator={navigator}
+            deckAdded={deckAdded}
+            selectedDeckIds={deckIds}
+          />
+        </View>
       ) }
     </View>
   );
@@ -80,5 +82,8 @@ const styles = StyleSheet.create({
   margin: {
     marginLeft: 8,
     marginRight: 8,
+  },
+  addDeckButton: {
+    marginTop: 8,
   },
 });

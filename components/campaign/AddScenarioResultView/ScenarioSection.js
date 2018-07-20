@@ -30,13 +30,16 @@ class ScenarioSection extends React.Component {
     this.state = {
       selectedScenario: nextScenario ? nextScenario.name : null,
       customScenario: '',
+      resolution: '',
     };
 
     this._showCustomCampaignDialog = this.showCustomCampaignDialog.bind(this);
     this._updateManagedScenario = this.updateManagedScenario.bind(this);
-    this._scenarioPressed = this.scenarioPressed.bind(this);
+    this._showScenarioDialog = this.showScenarioDialog.bind(this);
+    this._showResolutionDialog = this.showResolutionDialog.bind(this);
     this._customScenarioTextChanged = this.customScenarioTextChanged.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
+    this._resolutionChanged = this.resolutionChanged.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +57,17 @@ class ScenarioSection extends React.Component {
     );
   }
 
+  showResolutionDialog() {
+    const {
+      showTextEditDialog,
+    } = this.props;
+    showTextEditDialog(
+      'Resolution',
+      this.state.resolution,
+      this._resolutionChanged
+    );
+  }
+
   updateManagedScenario() {
     const {
       allScenarios,
@@ -61,12 +75,14 @@ class ScenarioSection extends React.Component {
     const {
       selectedScenario,
       customScenario,
+      resolution,
     } = this.state;
     const scenarioCard = find(allScenarios, s => s.name === selectedScenario);
 
     this.props.scenarioChanged({
       scenario: scenarioCard ? selectedScenario : customScenario,
       scenarioCode: scenarioCard ? scenarioCard.code : CUSTOM,
+      resolution: resolution,
     });
   }
 
@@ -82,7 +98,13 @@ class ScenarioSection extends React.Component {
     }, this._updateManagedScenario);
   }
 
-  scenarioPressed() {
+  resolutionChanged(value) {
+    this.setState({
+      resolution: value,
+    }, this._updateManagedScenario);
+  }
+
+  showScenarioDialog() {
     const {
       navigator,
     } = this.props;
@@ -112,15 +134,17 @@ class ScenarioSection extends React.Component {
     const {
       selectedScenario,
       customScenario,
+      resolution,
     } = this.state;
 
     return (
       <View>
         <LabeledTextBox
           label="Scenario"
-          onPress={this._scenarioPressed}
+          onPress={this._showScenarioDialog}
           value={selectedScenario}
           style={styles.margin}
+          column
         />
         { selectedScenario === CUSTOM && (
           <LabeledTextBox
@@ -128,8 +152,16 @@ class ScenarioSection extends React.Component {
             onPress={this._showCustomCampaignDialog}
             value={customScenario}
             style={styles.margin}
+            column
           />
         ) }
+        <LabeledTextBox
+          label="Resolution"
+          onPress={this._showResolutionDialog}
+          value={resolution}
+          style={styles.margin}
+          column
+        />
       </View>
     );
   }

@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
   textBox: {
     height: 30,
     width: '100%',
-    backgroundColor: 'white',
-    borderWidth: 2,
+    backgroundColor: '#eeeeee',
+    borderWidth: 1,
     borderRadius: 4,
     borderColor: '#444',
     paddingLeft: 4,

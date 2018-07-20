@@ -17,6 +17,7 @@ export default class EditCountComponent extends React.Component {
     title: PropTypes.string.isRequired,
     count: PropTypes.number,
     isInvestigator: PropTypes.bool,
+    useTally: PropTypes.bool,
   };
 
   constructor(props) {
@@ -51,6 +52,7 @@ export default class EditCountComponent extends React.Component {
     const {
       title,
       isInvestigator,
+      useTally,
     } = this.props;
     const {
       count,
@@ -62,7 +64,11 @@ export default class EditCountComponent extends React.Component {
             <Text style={typography.small} ellipsizeMode="tail">
               { title.toUpperCase() }
             </Text>
-            <TallyCount count={count} style={styles.margin} />
+            { useTally ? <TallyCount count={count} style={styles.margin} /> : (
+              <Text style={[styles.margin, typography.text]}>
+                { count }
+              </Text>
+            ) }
           </View>
           <PlusMinusButtons
             count={count}
