@@ -61,7 +61,7 @@ export default class MenuItem extends React.Component {
             <View style={styles.icon}>
               <AppIcon name={appIcon} size={28} color="#000000" />
             </View>
-          )}
+          ) }
           <Text style={styles.text}>
             { text }
           </Text>
