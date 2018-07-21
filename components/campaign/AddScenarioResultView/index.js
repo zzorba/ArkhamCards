@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, forEach, keys, mapValues, uniqBy } from 'lodash';
+import { concat, filter, findIndex, forEach, keys, map, mapValues, range, uniqBy } from 'lodash';
 import {
+  Alert,
   ScrollView,
   StyleSheet,
   View,
@@ -15,6 +16,8 @@ import withTextEditDialog from '../../core/withTextEditDialog';
 import ScenarioSection from './ScenarioSection';
 import XpComponent from '../XpComponent';
 import EditTraumaDialog from '../EditTraumaDialog';
+import * as Actions from '../../../actions';
+import { upgradeDeck } from '../../../lib/authApi';
 import { traumaDelta, DEFAULT_TRAUMA_DATA } from '../trauma';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign } from '../../../reducers';
@@ -31,8 +34,10 @@ class AddScenarioResultView extends React.Component {
     id: PropTypes.number.isRequired,
     // from redux/realm
     campaign: PropTypes.object.isRequired,
-    addScenarioResult: PropTypes.func.isRequired,
     decks: PropTypes.object,
+    addScenarioResult: PropTypes.func.isRequired,
+    setNewDeck: PropTypes.func.isRequired,
+    updateDeck: PropTypes.func.isRequired,
     //  From HOC
     showTextEditDialog: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
@@ -160,31 +165,60 @@ class AddScenarioResultView extends React.Component {
 
   doSave() {
     const {
+      navigator,
       campaign,
-      decks,
       addScenarioResult,
+      setNewDeck,
+      updateDeck,
     } = this.props;
     const {
       scenario,
-      chaosBag,
+      investigatorData,
     } = this.state;
     const deckIds = this.deckIds();
     const deckUpdates = this.deckUpdates();
-    const investigatorUpdates = {};
-    forEach(deckIds, deckId => {
-      const deck = decks[deckId];
-      const investigatorId = deck.investigator_code;
-      investigatorUpdates[investigatorId] = deckUpdates[deckId];
+    return Promise.all(
+      map(deckIds, deckId => {
+        const {
+          exiles = {},
+          xp,
+        } = deckUpdates[deckId];
+        const exileParts = [];
+        forEach(keys(exiles), code => {
+          const count = exiles[code];
+          if (count > 0) {
+            forEach(range(0, count), () => exileParts.push(code));
+          }
+        });
+        const exilesParam = exileParts.join(',');
+        return upgradeDeck(deckId, xp, exilesParam).then(decks => {
+          const {
+            deck,
+            upgradedDeck,
+          } = decks;
+          updateDeck(deck.id, deck, false);
+          setNewDeck(upgradedDeck.id, upgradedDeck);
+          return upgradedDeck.id;
+        }, () => {
+          return null;
+        });
+      })
+    ).then(newDeckIds => {
+      if (findIndex(newDeckIds, deckId => (deckId === null)) !== -1) {
+        Alert.alert('Something went wrong when saving decks to ArkhamDB.');
+      } else {
+        addScenarioResult(
+          campaign.id,
+          newDeckIds,
+          deckIds,
+          scenario,
+          investigatorData,
+        );
+        navigator.pop();
+      }
+    }, () => {
+      Alert.alert('Something went wrong when saving decks to ArkhamDB.');
     });
-
-    addScenarioResult(
-      campaign.id,
-      deckIds,
-      scenario,
-      investigatorUpdates,
-      chaosBag,
-    );
-    this.props.navigator.pop();
   }
 
   scenarioChanged(scenario) {
@@ -371,6 +405,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     addScenarioResult,
+    ...Actions,
   }, dispatch);
 }
 

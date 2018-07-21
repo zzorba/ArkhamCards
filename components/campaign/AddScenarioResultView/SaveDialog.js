@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { flatMap, forEach, map } from 'lodash';
 import {
+  ActivityIndicator,
   StyleSheet,
   Text,
   View,
@@ -37,11 +38,27 @@ class SaveDialog extends React.Component {
     super(props);
 
     this.state = {
+      visible: false,
       saving: false,
+      deckIds: [],
     };
 
     this._onCancel = this.onCancel.bind(this);
     this._onSave = this.onSave.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      visible,
+      deckIds,
+    } = this.props;
+    if (visible && !prevProps.visible) {
+      /* eslint-disable react/no-did-update-set-state */
+      this.setState({
+        visible,
+        deckIds,
+      });
+    }
   }
 
   onCancel() {
@@ -55,11 +72,7 @@ class SaveDialog extends React.Component {
     this.setState({
       saving: true,
     });
-    this.props.onSave().then(() => {
-      this.setState({
-        saving: false,
-      });
-    });
+    this.props.onSave();
   }
 
   investigators() {
@@ -77,15 +90,14 @@ class SaveDialog extends React.Component {
     const {
       decks,
       investigators,
-      deckIds,
       deckUpdates,
       traumaDeltas,
       cards,
     } = this.props;
 
     return (
-      <View style={styles.content}>
-        { map(deckIds, deckId => {
+      <View>
+        { map(this.state.deckIds, deckId => {
           const deck = decks[deckId];
           const investigatorCode = deck.investigator_code;
           const investigator = investigators[investigatorCode];
@@ -128,13 +140,26 @@ class SaveDialog extends React.Component {
         visible={visible}
         viewRef={viewRef}
       >
-        <Text style={[typography.small, styles.content, styles.text]}>
-          Are you sure you want to save these changes to ArkhamDB?
-        </Text>
-        { this.renderInvestigatorChangeSummaries() }
-        <Text style={[typography.small, styles.content, styles.text]}>
-          Note: A network connection is required
-        </Text>
+        { saving ? (
+          <View style={styles.savingContainer}>
+            <Text style={typography.text}>Saving</Text>
+            <ActivityIndicator
+              style={[{ height: 80 }]}
+              size="small"
+              animating
+            />
+          </View>
+        ) : (
+          <View style={styles.content}>
+            <Text style={[typography.small, styles.text]}>
+              Are you sure you want to save these changes to ArkhamDB?
+            </Text>
+            { this.renderInvestigatorChangeSummaries() }
+            <Text style={[typography.small, styles.text]}>
+              Note: A network connection is required
+            </Text>
+          </View>
+        ) }
         <DialogComponent.Button disabled={saving} label="Cancel" onPress={this._onCancel} />
         <DialogComponent.Button disabled={saving} label="Save" onPress={this._onSave} />
       </Dialog>
@@ -186,5 +211,10 @@ const styles = StyleSheet.create({
   },
   text: {
     marginBottom: 16,
+  },
+  savingContainer: {
+    margin: 16,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });

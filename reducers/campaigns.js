@@ -1,4 +1,4 @@
-import { forEach, keys, map } from 'lodash';
+import { forEach, keys, map, uniqBy } from 'lodash';
 
 import {
   SET_MY_DECKS,
@@ -171,16 +171,22 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     );
   }
   if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {
-    const campaign = state.all[action.id];
+    const campaign = Object.assign({}, state.all[action.id]);
     const scenarioResults = [
-      ...campaign.scenarioResults,
+      ...campaign.scenarioResults || [],
       Object.assign({}, action.scenarioResult),
     ];
+    const latestDeckIds = uniqBy([
+      ...action.latestDeckIds,
+      ...campaign.latestDeckIds,
+    ]);
     const updatedCampaign = Object.assign(
       {},
       campaign,
       {
         scenarioResults,
+        latestDeckIds,
+        investigatorData: action.investigatorData,
         lastModified: action.now,
       },
     );

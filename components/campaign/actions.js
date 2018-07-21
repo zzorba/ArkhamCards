@@ -74,22 +74,21 @@ export function deleteCampaign(id) {
 // }],
 export function addScenarioResult(
   id,
+  latestDeckIds,
   deckIds,
-  { scenario, scenarioCode },
-  campaignNotes,
-  investigatorUpdates,
-  chaosBag,
+  { scenario, scenarioCode, resolution },
+  investigatorData,
 ) {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
     id,
+    latestDeckIds,
+    investigatorData,
     scenarioResult: {
       deckIds,
       scenario,
       scenarioCode,
-      campaignNotes,
-      investigatorUpdates,
-      chaosBag,
+      resolution,
     },
     now: new Date(),
   };
@@ -99,4 +98,5 @@ export default {
   newCampaign,
   updateCampaign,
   deleteCampaign,
+  addScenarioResult,
 };
