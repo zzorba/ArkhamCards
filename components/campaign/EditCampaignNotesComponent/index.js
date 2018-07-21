@@ -1,29 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map } from 'lodash';
+import { map } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
 
-import { DEFAULT_TRAUMA_DATA } from '../trauma';
 import EditCountComponent from '../EditCountComponent';
-import InvestigatorSection from './InvestigatorSection';
+import InvestigatorSectionList from './InvestigatorSectionList';
 import NotesSection from './NotesSection';
 import Button from '../../core/Button';
 
-class EditCampaignNotesComponent extends React.Component {
+export default class EditCampaignNotesComponent extends React.Component {
   static propTypes = {
+    navigator: PropTypes.object.isRequired,
+    // Parts of the campaign object.
+    latestDeckIds: PropTypes.array.isRequired,
+    campaignNotes: PropTypes.object,
+    investigatorData: PropTypes.object,
+    // Update function.
     updateCampaignNotes: PropTypes.func.isRequired,
     showDialog: PropTypes.func.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
     showAddSectionDialog: PropTypes.func.isRequired,
-    campaignNotes: PropTypes.object,
-    investigatorData: PropTypes.object,
-    investigators: PropTypes.array,
-    investigatorCards: PropTypes.object,
   };
 
   constructor(props) {
@@ -135,28 +135,26 @@ class EditCampaignNotesComponent extends React.Component {
 
   renderInvestigatorSection() {
     const {
+      navigator,
       campaignNotes: {
         investigatorNotes,
       },
-      investigators,
-      investigatorCards,
+      latestDeckIds,
       investigatorData,
       showDialog,
       showTraumaDialog,
     } = this.props;
     return (
       <View style={styles.investigatorSection}>
-        { map(investigators, code => (
-          <InvestigatorSection
-            key={code}
-            investigator={investigatorCards[code]}
-            investigatorNotes={investigatorNotes}
-            updateInvestigatorNotes={this._updateInvestigatorNotes}
-            traumaData={investigatorData[code] || DEFAULT_TRAUMA_DATA}
-            showDialog={showDialog}
-            showTraumaDialog={showTraumaDialog}
-          />
-        )) }
+        <InvestigatorSectionList
+          navigator={navigator}
+          deckIds={latestDeckIds}
+          investigatorNotes={investigatorNotes}
+          investigatorData={investigatorData}
+          updateInvestigatorNotes={this._updateInvestigatorNotes}
+          showDialog={showDialog}
+          showTraumaDialog={showTraumaDialog}
+        />
       </View>
     );
   }
@@ -179,20 +177,6 @@ class EditCampaignNotesComponent extends React.Component {
     );
   }
 }
-
-export default connectRealm(EditCampaignNotesComponent, {
-  schemas: ['Card'],
-  mapToProps(results) {
-    const investigatorCards = {};
-    forEach(results.cards.filtered('type_code == "investigator"'), card => {
-      investigatorCards[card.code] = card;
-    });
-
-    return {
-      investigatorCards,
-    };
-  },
-});
 
 const styles = StyleSheet.create({
   underline: {

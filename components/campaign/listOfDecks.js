@@ -15,8 +15,8 @@ export default function listOfDecks(DeckComponent) {
     static propTypes = {
       navigator: PropTypes.object.isRequired,
       deckIds: PropTypes.array.isRequired,
-      deckAdded: PropTypes.func.isRequired,
-      deckRemoved: PropTypes.func.isRequired,
+      deckAdded: PropTypes.func,
+      deckRemoved: PropTypes.func,
 
       // From realm, not passed in.
       cards: PropTypes.object,
@@ -48,7 +48,7 @@ export default function listOfDecks(DeckComponent) {
               {...otherProps}
             />
           )) }
-          { (!deckLimit || deckIds.length < deckLimit) && (
+          { !!deckAdded && (!deckLimit || deckIds.length < deckLimit) && (
             <View style={styles.addDeckButton}>
               <AddDeckRow
                 navigator={navigator}

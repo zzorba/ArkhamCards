@@ -7,13 +7,12 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { campaignInvestigators } from './campaignUtil';
 import withTextEditDialog from '../core/withTextEditDialog';
 import AddCampaignNoteSectionDialog from './AddCampaignNoteSectionDialog';
 import EditCampaignNotesComponent from './EditCampaignNotesComponent';
 import EditTraumaDialog from './EditTraumaDialog';
 import { updateCampaign } from './actions';
-import { getCampaign, getAllDecks } from '../../reducers';
+import { getCampaign } from '../../reducers';
 
 class EditCampaignNotesDialog extends React.Component {
   static propTypes = {
@@ -23,7 +22,7 @@ class EditCampaignNotesDialog extends React.Component {
     updateCampaign: PropTypes.func.isRequired,
     campaignNotes: PropTypes.object,
     investigatorData: PropTypes.object,
-    investigators: PropTypes.array,
+    latestDeckIds: PropTypes.array,
     // From Dialog HOC
     showTextEditDialog: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
@@ -167,9 +166,10 @@ class EditCampaignNotesDialog extends React.Component {
 
   render() {
     const {
-      investigators,
+      navigator,
       showTextEditDialog,
       captureViewRef,
+      latestDeckIds,
     } = this.props;
     const {
       campaignNotes,
@@ -179,9 +179,10 @@ class EditCampaignNotesDialog extends React.Component {
       <View style={styles.container}>
         <View style={styles.container} ref={captureViewRef}>
           <EditCampaignNotesComponent
+            navigator={navigator}
             campaignNotes={campaignNotes}
+            latestDeckIds={latestDeckIds}
             investigatorData={investigatorData}
-            investigators={investigators}
             updateCampaignNotes={this._updateCampaignNotes}
             showDialog={showTextEditDialog}
             showTraumaDialog={this._showTraumaDialog}
@@ -197,11 +198,10 @@ class EditCampaignNotesDialog extends React.Component {
 
 function mapStateToProps(state, props) {
   const campaign = getCampaign(state, props.campaignId);
-  const decks = getAllDecks(state);
   return {
+    latestDeckIds: campaign.latestDeckIds,
     campaignNotes: campaign.campaignNotes,
     investigatorData: campaign.investigatorData || {},
-    investigators: campaignInvestigators(campaign, decks),
   };
 }
 

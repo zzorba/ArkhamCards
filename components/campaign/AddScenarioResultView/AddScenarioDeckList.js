@@ -148,7 +148,12 @@ class DeckScenarioUpgradeDetails extends React.Component {
   }
 }
 
-export default listOfDecks(deckRowWithDetails(DeckScenarioUpgradeDetails));
+export default listOfDecks(
+  deckRowWithDetails(DeckScenarioUpgradeDetails, {
+    compact: false,
+    viewDeckButton: true,
+  })
+);
 
 const styles = StyleSheet.create({
   flex: {

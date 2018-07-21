@@ -18,7 +18,7 @@ import Button from '../../core/Button';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import LabeledTextBox from '../../core/LabeledTextBox';
-import SelectedDeckListComponent from '../SelectedDeckListComponent';
+import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
 import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';
@@ -458,7 +458,7 @@ class NewCampaignView extends React.Component {
           <Text style={[typography.bigLabel, styles.margin]}>
             Investigators
           </Text>
-          <SelectedDeckListComponent
+          <DeckSelector
             navigator={navigator}
             deckIds={deckIds}
             deckAdded={this._deckAdded}

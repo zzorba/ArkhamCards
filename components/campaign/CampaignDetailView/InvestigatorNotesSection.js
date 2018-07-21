@@ -16,7 +16,7 @@ import deckRowWithDetails from '../deckRowWithDetails';
 class InvestigatorNotesDeckDetail extends React.Component {
   static propTypes = {
     deck: PropTypes.object,
-    investigators: PropTypes.object,
+    investigator: PropTypes.object,
     campaign: PropTypes.object.isRequired,
   };
 
@@ -29,10 +29,9 @@ class InvestigatorNotesDeckDetail extends React.Component {
         investigatorData,
       },
       deck,
-      investigators,
+      investigator,
     } = this.props;
     const code = deck.investigator_code;
-    const investigator = investigators[code];
     const traumaData = investigatorData[code] || DEFAULT_TRAUMA_DATA;
     const sections = map(investigatorNotes.sections || [], section => {
       return {
@@ -61,7 +60,10 @@ class InvestigatorNotesDeckDetail extends React.Component {
   }
 }
 
-export default listOfDecks(deckRowWithDetails(InvestigatorNotesDeckDetail));
+export default listOfDecks(deckRowWithDetails(InvestigatorNotesDeckDetail, {
+  compact: true,
+  viewDeckButton: true,
+}));
 
 const styles = StyleSheet.create({
   section: {

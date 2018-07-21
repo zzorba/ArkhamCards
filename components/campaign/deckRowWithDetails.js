@@ -9,6 +9,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import DeckListRow from '../DeckListRow';
+import AppIcon from '../../assets/AppIcon';
 import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
 
@@ -22,13 +23,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default function deckRowWithDetails(DeckRowDetails, compact = false, viewDeckButton = true) {
+export default function deckRowWithDetails(DeckRowDetails, { compact, viewDeckButton }) {
   class DeckRow extends React.Component {
     static propTypes = {
       navigator: PropTypes.object.isRequired,
       id: PropTypes.number.isRequired,
       deck: PropTypes.object,
-      remove: PropTypes.func.isRequired,
+      remove: PropTypes.func,
       fetchPrivateDeck: PropTypes.func.isRequired,
       // From realm
       investigators: PropTypes.object,
@@ -91,7 +92,7 @@ export default function deckRowWithDetails(DeckRowDetails, compact = false, view
         cards,
         ...otherProps
       } = this.props;
-      if (!deck) {
+      if (!deck || !DeckRowDetails) {
         return null;
       }
       return (
@@ -99,7 +100,7 @@ export default function deckRowWithDetails(DeckRowDetails, compact = false, view
           navigator={navigator}
           id={id}
           deck={deck}
-          investigators={investigators}
+          investigator={investigators[deck.investigator_code]}
           cards={cards}
           {...otherProps}
         />
@@ -112,6 +113,7 @@ export default function deckRowWithDetails(DeckRowDetails, compact = false, view
         deck,
         cards,
         investigators,
+        remove,
       } = this.props;
       return (
         <DeckListRow
@@ -121,11 +123,15 @@ export default function deckRowWithDetails(DeckRowDetails, compact = false, view
           investigators={investigators}
           onPress={this._onDeckPress}
           investigator={deck ? cards[deck.investigator_code] : null}
-          titleButton={
+          titleButton={remove ? (
             <TouchableOpacity onPress={this._onRemove}>
               <MaterialCommunityIcons name="close" size={28} color="#FFFFFF" />
             </TouchableOpacity>
-          }
+          ) : (
+            <TouchableOpacity onPress={this._onDeckPress}>
+              <AppIcon name="deck" size={28} color="#FFFFFF" />
+            </TouchableOpacity>
+          )}
           details={this.renderDetails()}
           compact={compact}
           viewDeckButton={viewDeckButton}
@@ -135,7 +141,9 @@ export default function deckRowWithDetails(DeckRowDetails, compact = false, view
   }
   const result = connect(mapStateToProps, mapDispatchToProps)(DeckRow);
 
-  hoistNonReactStatic(result, DeckRowDetails);
+  if (DeckRowDetails) {
+    hoistNonReactStatic(result, DeckRowDetails);
+  }
 
   return result;
 }

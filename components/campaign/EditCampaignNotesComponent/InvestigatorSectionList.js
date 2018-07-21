@@ -8,23 +8,24 @@ import {
   View,
 } from 'react-native';
 
-import { traumaString } from '../trauma';
+import { traumaString, DEFAULT_TRAUMA_DATA } from '../trauma';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
-import FactionGradient from '../../core/FactionGradient';
-import InvestigatorImage from '../../core/InvestigatorImage';
 import TextBox from '../../core/TextBox';
 import typography from '../../../styles/typography';
+
+import listOfDecks from '../listOfDecks';
+import deckRowWithDetails from '../deckRowWithDetails';
 
 /**
  * Fill this out for a single investigator section.
  */
-export default class InvestigatorSection extends React.Component {
+class InvestigatorSectionDeckDetails extends React.Component {
   static propTypes = {
     investigator: PropTypes.object,
-    investigatorNotes: PropTypes.object,
-    traumaData: PropTypes.object,
     updateInvestigatorNotes: PropTypes.func.isRequired,
+    investigatorNotes: PropTypes.object.isRequired,
+    investigatorData: PropTypes.object.isRequired,
     showDialog: PropTypes.func.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
   };
@@ -37,13 +38,20 @@ export default class InvestigatorSection extends React.Component {
     this._editTraumaPressed = this.editTraumaPressed.bind(this);
   }
 
+  traumaData() {
+    const {
+      investigatorData,
+      investigator,
+    } = this.props;
+    return investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA;
+  }
+
   editTraumaPressed() {
     const {
       investigator,
-      traumaData,
       showTraumaDialog,
     } = this.props;
-    showTraumaDialog(investigator, traumaData);
+    showTraumaDialog(investigator, this.traumaData());
   }
 
   notesChanged(index, notes) {
@@ -115,9 +123,6 @@ export default class InvestigatorSection extends React.Component {
   }
 
   renderTrauma() {
-    const {
-      traumaData,
-    } = this.props;
     return (
       <View style={styles.traumaBlock}>
         <Text style={typography.small}>
@@ -125,7 +130,7 @@ export default class InvestigatorSection extends React.Component {
         </Text>
         <TouchableOpacity onPress={this._editTraumaPressed}>
           <TextBox
-            value={traumaString(traumaData)}
+            value={traumaString(this.traumaData())}
             editable={false}
             pointerEvents="none"
           />
@@ -136,39 +141,32 @@ export default class InvestigatorSection extends React.Component {
 
   render() {
     const {
-      investigator,
       investigatorNotes: {
         sections,
         counts,
       },
     } = this.props;
     return (
-      <FactionGradient
-        faction_code={investigator.faction_code}
-        style={styles.investigatorBlock}
-      >
-        <InvestigatorImage card={investigator} />
-        <View style={styles.investigatorNotes}>
-          { this.renderTrauma() }
-          { this.renderSections(sections) }
-          { this.renderCounts(counts) }
-        </View>
-      </FactionGradient>
+      <View style={styles.investigatorNotes}>
+        { this.renderTrauma() }
+        { this.renderSections(sections) }
+        { this.renderCounts(counts) }
+      </View>
     );
   }
 }
 
+export default listOfDecks(
+  deckRowWithDetails(InvestigatorSectionDeckDetails, {
+    compact: true,
+    viewDeckButton: true,
+  })
+);
+
 const styles = StyleSheet.create({
-  investigatorBlock: {
-    padding: 8,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    borderBottomWidth: 1,
-    borderColor: '#000000',
-  },
   investigatorNotes: {
     flex: 1,
-    marginLeft: 8,
+    marginRight: 8,
   },
   traumaBlock: {
     marginBottom: 4,
