@@ -137,7 +137,9 @@ export default listOfDecks(
   deckRowWithDetails(InvestigatorSectionDeckDetails, {
     compact: true,
     viewDeckButton: true,
-  })
+  }), {
+    deckLimit: null,
+  },
 );
 
 const styles = StyleSheet.create({

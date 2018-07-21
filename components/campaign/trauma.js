@@ -5,19 +5,34 @@ export const DEFAULT_TRAUMA_DATA = {
   insane: false,
 };
 
-export function traumaString(investigatorData) {
+export function traumaDelta(traumaData, originalTraumaData) {
+  const result = {};
+  if (traumaData.killed && !originalTraumaData.killed) {
+    result.killed = true;
+  }
+  if (traumaData.insane && !originalTraumaData.insane) {
+    result.insane = true;
+  }
+
+  result.physical = traumaData.physical - originalTraumaData.physical;
+  result.mental = traumaData.mental - originalTraumaData.mental;
+
+  return result;
+}
+
+export function traumaString(traumaData) {
   const parts = [];
-  if (investigatorData.killed) {
+  if (traumaData.killed) {
     return 'Killed';
   }
-  if (investigatorData.insane) {
+  if (traumaData.insane) {
     return 'Insane';
   }
-  if (investigatorData.physical > 0) {
-    parts.push(`Physical(${investigatorData.physical})`);
+  if (traumaData.physical !== 0) {
+    parts.push(`Physical(${traumaData.physical})`);
   }
-  if (investigatorData.mental > 0) {
-    parts.push(`Mental(${investigatorData.mental})`);
+  if (traumaData.mental !== 0) {
+    parts.push(`Mental(${traumaData.mental})`);
   }
   if (!parts.length) {
     return 'None';
@@ -28,4 +43,5 @@ export function traumaString(investigatorData) {
 export default {
   DEFAULT_TRAUMA_DATA,
   traumaString,
+  traumaDelta,
 };

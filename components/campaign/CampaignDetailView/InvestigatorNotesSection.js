@@ -26,7 +26,7 @@ class InvestigatorNotesDeckDetail extends React.Component {
         campaignNotes: {
           investigatorNotes,
         },
-        investigatorData,
+        investigatorData = {},
       },
       deck,
       investigator,
@@ -60,10 +60,13 @@ class InvestigatorNotesDeckDetail extends React.Component {
   }
 }
 
-export default listOfDecks(deckRowWithDetails(InvestigatorNotesDeckDetail, {
-  compact: true,
-  viewDeckButton: true,
-}));
+export default listOfDecks(
+  deckRowWithDetails(InvestigatorNotesDeckDetail, {
+    compact: true,
+    viewDeckButton: true,
+  }), {
+    deckLimit: null,
+  });
 
 const styles = StyleSheet.create({
   section: {

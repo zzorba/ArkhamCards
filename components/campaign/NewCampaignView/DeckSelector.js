@@ -5,5 +5,7 @@ export default listOfDecks(
   deckRowWithDetails(null, {
     compact: false,
     viewDeckButton: false,
-  })
+  }), {
+    deckLimit: 4,
+  },
 );

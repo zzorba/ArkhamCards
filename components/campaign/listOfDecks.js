@@ -10,7 +10,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import AddDeckRow from '../AddDeckRow';
 
-export default function listOfDecks(DeckComponent) {
+export default function listOfDecks(DeckComponent, { deckLimit }) {
   class DeckListerComponent extends React.Component {
     static propTypes = {
       navigator: PropTypes.object.isRequired,
@@ -21,7 +21,6 @@ export default function listOfDecks(DeckComponent) {
       // From realm, not passed in.
       cards: PropTypes.object,
       investigators: PropTypes.object,
-      deckLimit: PropTypes.number,
     };
 
     render() {
@@ -32,7 +31,6 @@ export default function listOfDecks(DeckComponent) {
         deckRemoved,
         cards,
         investigators,
-        deckLimit,
         ...otherProps
       } = this.props;
       return (

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find, keys, map, sum, values } from 'lodash';
+import { find, keys } from 'lodash';
 import {
   StyleSheet,
   View,
 } from 'react-native';
 
+import { exileString } from './exile';
 import listOfDecks from '../listOfDecks';
 import deckRowWithDetails from '../deckRowWithDetails';
 import EditTraumaComponent from '../EditTraumaComponent';
@@ -86,23 +87,7 @@ class DeckScenarioUpgradeDetails extends React.Component {
     const {
       exiles,
     } = this.updates();
-    const numCards = keys(exiles).length;
-    switch (numCards) {
-      case 0: return 'None';
-      case 1:
-      case 2:
-        return map(keys(exiles), code => {
-          const count = exiles[code];
-          const card = cards[code];
-          if (count === 1) {
-            return card.name;
-          }
-          return `${card.name}${count > 1 ? ` x${count}` : ''}`;
-        }).join(', ');
-      default:
-        // No room to print more than one card name, so just sum it
-        return `${sum(values(exiles))} cards`;
-    }
+    return exileString(exiles, cards);
   }
 
   hasExile() {
@@ -161,7 +146,10 @@ export default listOfDecks(
   deckRowWithDetails(DeckScenarioUpgradeDetails, {
     compact: false,
     viewDeckButton: true,
-  })
+  }),
+  {
+    deckLimit: 4,
+  },
 );
 
 const styles = StyleSheet.create({

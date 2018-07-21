@@ -140,6 +140,7 @@ class CampaignDetailView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign.AddResult',
+      title: 'Scenario Results',
       passProps: {
         id: campaign.id,
       },

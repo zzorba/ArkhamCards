@@ -90,7 +90,7 @@ export default class EditTraumaDialog extends React.Component {
       trauma,
     } = this.state;
     this.setState({
-      trauma: Object.assign({}, trauma, { killed: !trauma.insane }),
+      trauma: Object.assign({}, trauma, { insane: !trauma.insane }),
     });
   }
 
