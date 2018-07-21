@@ -40,7 +40,6 @@ class EditCampaignNotesDialog extends React.Component {
       traumaDialogVisible: false,
       traumaInvestigator: null,
       traumaData: {},
-      traumaUpdate: null,
     };
 
     props.navigator.setButtons({
@@ -92,7 +91,10 @@ class EditCampaignNotesDialog extends React.Component {
       investigatorData,
     } = this.state;
     this.setState({
-      investigatorData: Object.assign({}, investigatorData, { [code]: Object.assign({}, data) }),
+      investigatorData: Object.assign({},
+        investigatorData,
+        { [code]: Object.assign({}, data) },
+      ),
     });
   }
 

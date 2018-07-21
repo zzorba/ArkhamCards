@@ -2,17 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
-  Text,
-  TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
 
-import { traumaString, DEFAULT_TRAUMA_DATA } from '../trauma';
 import EditCountComponent from '../EditCountComponent';
+import EditTraumaComponent from '../EditTraumaComponent';
 import NotesSection from './NotesSection';
-import TextBox from '../../core/TextBox';
-import typography from '../../../styles/typography';
 
 import listOfDecks from '../listOfDecks';
 import deckRowWithDetails from '../deckRowWithDetails';
@@ -35,23 +31,6 @@ class InvestigatorSectionDeckDetails extends React.Component {
 
     this._notesChanged = this.notesChanged.bind(this);
     this._countChanged = this.countChanged.bind(this);
-    this._editTraumaPressed = this.editTraumaPressed.bind(this);
-  }
-
-  traumaData() {
-    const {
-      investigatorData,
-      investigator,
-    } = this.props;
-    return investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA;
-  }
-
-  editTraumaPressed() {
-    const {
-      investigator,
-      showTraumaDialog,
-    } = this.props;
-    showTraumaDialog(investigator, this.traumaData());
   }
 
   notesChanged(index, notes) {
@@ -123,19 +102,17 @@ class InvestigatorSectionDeckDetails extends React.Component {
   }
 
   renderTrauma() {
+    const {
+      investigator,
+      investigatorData,
+      showTraumaDialog,
+    } = this.props;
     return (
-      <View style={styles.traumaBlock}>
-        <Text style={typography.small}>
-          TRAUMA
-        </Text>
-        <TouchableOpacity onPress={this._editTraumaPressed}>
-          <TextBox
-            value={traumaString(this.traumaData())}
-            editable={false}
-            pointerEvents="none"
-          />
-        </TouchableOpacity>
-      </View>
+      <EditTraumaComponent
+        investigator={investigator}
+        investigatorData={investigatorData}
+        showTraumaDialog={showTraumaDialog}
+      />
     );
   }
 
@@ -167,8 +144,5 @@ const styles = StyleSheet.create({
   investigatorNotes: {
     flex: 1,
     marginRight: 8,
-  },
-  traumaBlock: {
-    marginBottom: 4,
   },
 });

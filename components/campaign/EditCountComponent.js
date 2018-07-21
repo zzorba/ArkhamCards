@@ -23,29 +23,15 @@ export default class EditCountComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      count: props.count,
-    };
-
-    this._syncCount = this.syncCount.bind(this);
     this._updateCount = this.updateCount.bind(this);
   }
 
-  syncCount() {
+  updateCount(count) {
     const {
       countChanged,
       index,
     } = this.props;
-    const {
-      count,
-    } = this.state;
     countChanged(index, count);
-  }
-
-  updateCount(count) {
-    this.setState({
-      count,
-    }, this._syncCount);
   }
 
   render() {
@@ -53,10 +39,8 @@ export default class EditCountComponent extends React.Component {
       title,
       isInvestigator,
       useTally,
-    } = this.props;
-    const {
       count,
-    } = this.state;
+    } = this.props;
     return (
       <View style={isInvestigator ? {} : styles.container}>
         <View style={styles.row}>

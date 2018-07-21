@@ -8,6 +8,7 @@ import {
 
 import listOfDecks from '../listOfDecks';
 import deckRowWithDetails from '../deckRowWithDetails';
+import EditTraumaComponent from '../EditTraumaComponent';
 import XpComponent from '../XpComponent';
 import LabeledTextBox from '../../core/LabeledTextBox';
 
@@ -15,12 +16,14 @@ class DeckScenarioUpgradeDetails extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
+    investigator: PropTypes.object.isRequired,
     deck: PropTypes.object,
     cards: PropTypes.object,
 
-    //
     deckUpdates: PropTypes.object,
     deckUpdatesChanged: PropTypes.func,
+    investigatorData: PropTypes.object,
+    showTraumaDialog: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -115,7 +118,7 @@ class DeckScenarioUpgradeDetails extends React.Component {
       return null;
     }
     return (
-      <View style={styles.exileRow}>
+      <View style={styles.marginRight}>
         <LabeledTextBox
           label="Exiled Cards"
           onPress={this._showExileDialog}
@@ -126,14 +129,19 @@ class DeckScenarioUpgradeDetails extends React.Component {
     );
   }
 
-  renderDetails() {
-    if (!this.props.deckUpdatesChanged) {
-      return null;
-    }
+  renderTrauma() {
+    const {
+      investigator,
+      investigatorData,
+      showTraumaDialog,
+    } = this.props;
     return (
-      <View style={styles.flex}>
-        { this.renderXp() }
-        { this.renderExile() }
+      <View style={styles.marginRight}>
+        <EditTraumaComponent
+          investigator={investigator}
+          investigatorData={investigatorData}
+          showTraumaDialog={showTraumaDialog}
+        />
       </View>
     );
   }
@@ -142,6 +150,7 @@ class DeckScenarioUpgradeDetails extends React.Component {
     return (
       <View style={styles.flex}>
         { this.renderXp() }
+        { this.renderTrauma() }
         { this.renderExile() }
       </View>
     );
@@ -159,7 +168,7 @@ const styles = StyleSheet.create({
   flex: {
     flexDirection: 'column',
   },
-  exileRow: {
+  marginRight: {
     marginRight: 8,
   },
 });
