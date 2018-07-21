@@ -16,7 +16,6 @@ import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import typography from '../../styles/typography';
 import AppIcon from '../../assets/AppIcon';
-import ArkhamIcon from '../../assets/ArkhamIcon';
 import Button from '../core/Button';
 import { getShowSpoilers } from '../../reducers';
 

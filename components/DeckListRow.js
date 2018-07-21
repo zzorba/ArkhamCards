@@ -8,6 +8,8 @@ import {
   View,
 } from 'react-native';
 
+import AppIcon from '../assets/AppIcon';
+import Button from './core/Button';
 import InvestigatorImage from './core/InvestigatorImage';
 import FactionGradient from './core/FactionGradient';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
@@ -24,6 +26,8 @@ export default class DeckListRow extends React.Component {
     onPress: PropTypes.func,
     details: PropTypes.node,
     titleButton: PropTypes.node,
+    compact: PropTypes.bool,
+    viewDeckButton: PropTypes.bool,
   };
 
   constructor(props) {
@@ -82,6 +86,8 @@ export default class DeckListRow extends React.Component {
       deck,
       investigator,
       titleButton,
+      compact,
+      viewDeckButton,
     } = this.props;
     if (!deck) {
       return (
@@ -95,22 +101,34 @@ export default class DeckListRow extends React.Component {
       );
     }
     return (
-      <TouchableOpacity onPress={this._onPress}>
+      <TouchableOpacity onPress={this._onPress} disabled={viewDeckButton}>
         <View style={styles.column}>
           <DeckTitleBarComponent
-            name={deck.name}
+            name={compact && investigator ? investigator.name : deck.name}
             investigator={investigator}
             button={titleButton}
             compact
           />
-          <FactionGradient faction_code={investigator.faction_code} style={styles.row}>
+          <FactionGradient faction_code={investigator.faction_code} style={styles.investigatorBlock}>
             <View style={styles.image}>
               { !!investigator && <InvestigatorImage card={investigator} /> }
+              { viewDeckButton && (
+                <Button
+                  style={styles.button}
+                  size="small"
+                  color="white"
+                  onPress={this._onPress}
+                  text="Deck"
+                  icon={<AppIcon name="deck" size={18} color="#222222" />}
+                />
+              ) }
             </View>
             <View style={[styles.column, styles.titleColumn]}>
-              <Text style={typography.bigLabel}>
-                { investigator.name }
-              </Text>
+              { !compact && (
+                <Text style={typography.bigLabel}>
+                  { investigator.name }
+                </Text>
+              ) }
               { this.renderDeckDetails() }
             </View>
           </FactionGradient>
@@ -135,6 +153,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
+  investigatorBlock: {
+    paddingTop: 8,
+    paddingBottom: 8,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   row: {
     paddingTop: 8,
     paddingBottom: 8,
@@ -152,5 +178,8 @@ const styles = StyleSheet.create({
   },
   titleColumn: {
     flex: 1,
+  },
+  button: {
+    marginTop: 8,
   },
 });

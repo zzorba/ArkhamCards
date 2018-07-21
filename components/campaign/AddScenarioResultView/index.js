@@ -9,9 +9,9 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import AddScenarioDeckList from './AddScenarioDeckList';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import ScenarioSection from './ScenarioSection';
-import SelectedDeckListComponent from '../SelectedDeckListComponent';
 import XpComponent from '../XpComponent';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign } from '../../../reducers';
@@ -191,7 +191,7 @@ class AddScenarioResultView extends React.Component {
       deckUpdates,
     } = this.state;
     return (
-      <SelectedDeckListComponent
+      <AddScenarioDeckList
         navigator={navigator}
         deckIds={deckIds}
         deckUpdates={deckUpdates}

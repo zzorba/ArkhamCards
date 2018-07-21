@@ -17,7 +17,7 @@ const REMAINDER = [
   'four',
 ];
 
-export default function TallyCount({ count, size = 24, color='#222222', style }) {
+export default function TallyCount({ count, size = 24, color = '#222222', style }) {
   const remainder = (count % 5);
   if (count === 0) {
     return (

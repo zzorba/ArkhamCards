@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find } from 'lodash';
+import { filter, find } from 'lodash';
 import {
   Alert,
   ScrollView,
@@ -15,7 +15,6 @@ import ChaosBagSection from '../ChaosBagSection';
 import CampaignNotesSection from './CampaignNotesSection';
 import InvestigatorNotesSection from './InvestigatorNotesSection';
 import { CUSTOM } from '../constants';
-import AddDeckRow from '../../AddDeckRow';
 import Button from '../../core/Button';
 import { updateCampaign, deleteCampaign } from '../actions';
 import { getCampaign, getAllPacks } from '../../../reducers';
@@ -36,6 +35,7 @@ class CampaignDetailView extends React.Component {
     super(props);
 
     this._addDeck = this.addDeck.bind(this);
+    this._removeDeckPrompt = this.removeDeckPrompt.bind(this);
     this._showCampaignNotesDialog = this.showCampaignNotesDialog.bind(this);
     this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
@@ -55,6 +55,34 @@ class CampaignDetailView extends React.Component {
     const newLatestDeckIds = latestDeckIds.slice();
     newLatestDeckIds.push(deckId);
     this._updateLatestDeckIds(newLatestDeckIds);
+  }
+
+  removeDeck(removedDeckId) {
+    const {
+      campaign: {
+        latestDeckIds,
+      },
+    } = this.props;
+    const newLatestDeckIds = filter(latestDeckIds, deckId => deckId !== removedDeckId);
+    this._updateLatestDeckIds(newLatestDeckIds);
+  }
+
+  removeDeckPrompt(removedDeckId, deck, investigator) {
+    Alert.alert(
+      `Remove ${investigator.name}?`,
+      `Are you sure you want to remove ${investigator.name} from this campaign?\n\nAll campaign log data associated with them will be lost (but the deck will remain on ArkhamDB).\n\nIf you are just swapping investigators for a scenario, it is okay to have more than 4 in the party.`,
+      [
+        {
+          text: 'Remove',
+          onPress: () => this.removeDeck(removedDeckId),
+          style: 'destructive',
+        },
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+      ],
+    );
   }
 
   applyCampaignUpdate(key, value) {
@@ -153,16 +181,16 @@ class CampaignDetailView extends React.Component {
             { scenarioPack.name }
           </Text>
         ) }
-        <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
+        <View style={styles.section}>
+          <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
+        </View>
         <View style={styles.section}>
           <InvestigatorNotesSection
             navigator={navigator}
             campaign={campaign}
-          />
-          <AddDeckRow
-            navigator={navigator}
+            deckIds={campaign.latestDeckIds || []}
             deckAdded={this._addDeck}
-            selectedDeckIds={campaign.latestDeckIds}
+            deckRemoved={this._removeDeckPrompt}
           />
         </View>
         <View style={styles.section}>

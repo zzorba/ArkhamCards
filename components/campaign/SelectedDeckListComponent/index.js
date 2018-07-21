@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { forEach, map } from 'lodash';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
 import AddDeckRow from '../../AddDeckRow';
 import DeckRow from './DeckRow';
-import typography from '../../../styles/typography';
 
 function SelectedDeckListComponent({
   navigator,
@@ -21,6 +19,7 @@ function SelectedDeckListComponent({
   deckRemoved,
   cards,
   investigators,
+  noLimit,
 }) {
   return (
     <View>
@@ -36,7 +35,7 @@ function SelectedDeckListComponent({
           updates={deckUpdates[deckId] || {}}
         />
       )) }
-      { deckIds.length < 4 && (
+      { (noLimit || deckIds.length < 4) && (
         <View style={styles.addDeckButton}>
           <AddDeckRow
             navigator={navigator}
@@ -58,6 +57,7 @@ SelectedDeckListComponent.propTypes = {
   deckUpdates: PropTypes.object,
   cards: PropTypes.object,
   investigators: PropTypes.object,
+  noLimit: PropTypes.bool,
 };
 
 export default connectRealm(SelectedDeckListComponent, {
@@ -79,10 +79,6 @@ export default connectRealm(SelectedDeckListComponent, {
 });
 
 const styles = StyleSheet.create({
-  margin: {
-    marginLeft: 8,
-    marginRight: 8,
-  },
   addDeckButton: {
     marginTop: 8,
   },

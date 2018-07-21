@@ -28,32 +28,58 @@ export default function Button({
     default: containerStyle = styles.centerContainer; break;
   }
   let padding = 16;
+  let fontWeight = '700';
   switch(size) {
-    case 'small': padding = 8; break;
-    default: padding = 16; break;
+    case 'small':
+      fontWeight = '400';
+      padding = 8;
+      break;
+    default:
+      padding = 16;
+      break;
   }
+  let borderWidth = 0;
+  let borderColor = null;
+  let textColor = '#FFFFFF';
   let colors = ['#3093c7', '#1c5a85'];
   switch(color) {
-    case 'green': colors = ['#107116', '#0b4f0f']; break;
-    case 'red': colors = ['#cc3038', '#a3262d']; break;
-    case 'purple': colors = ['#4331b9', '#2f2282']; break;
-    case 'yellow': colors = ['#ec8426', '#bd6a1e']; break;
+    case 'green':
+      colors = ['#107116', '#0b4f0f'];
+      break;
+    case 'red':
+      colors = ['#cc3038', '#a3262d'];
+      break;
+    case 'purple':
+      colors = ['#4331b9', '#2f2282'];
+      break;
+    case 'yellow':
+      colors = ['#ec8426', '#bd6a1e'];
+      break;
+    case 'white':
+      borderWidth = 1;
+      borderColor = '#888888';
+      textColor = '#222222';
+      colors = ['#ffffff', '#d3d3d3'];
+      break;
   }
   return (
     <View style={[containerStyle, style]}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={borderColor ? { borderRadius: 8, borderWidth, borderColor } : {}}
+      >
         <LinearGradient colors={colors} style={[
           styles.button,
           width ? { width } : {},
           { paddingLeft: padding, paddingRight: padding },
         ]}>
           { !!icon && (
-            <View style={text ? styles.icon : {}}>
+            <View style={text ? { marginRight: padding / 2 } : {}}>
               { icon }
             </View>
           ) }
           { !!text && (
-            <Text style={[typography.text, styles.buttonText]}>
+            <Text style={[typography.text, { fontWeight, color: textColor }]}>
               { text }
             </Text>
           ) }
@@ -71,7 +97,7 @@ Button.propTypes = {
   size: PropTypes.oneOf(['small', 'normal']),
   style: ViewPropTypes.style,
   width: PropTypes.number,
-  color: PropTypes.oneOf(['default', 'green', 'purple', 'red', 'yellow']),
+  color: PropTypes.oneOf(['default', 'green', 'purple', 'red', 'yellow', 'white']),
 };
 
 const styles = StyleSheet.create({
@@ -96,12 +122,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
-  },
-  icon: {
-    marginRight: 8,
-  },
-  buttonText: {
-    color: '#FFFFFF',
-    fontWeight: '700',
   },
 });
