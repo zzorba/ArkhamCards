@@ -16,6 +16,7 @@ class NewDeckView extends React.Component {
     navigator: PropTypes.object.isRequired,
     setNewDeck: PropTypes.func.isRequired,
     onCreateDeck: PropTypes.func,
+    filterInvestigators: PropTypes.array,
   };
 
   constructor(props) {
@@ -75,9 +76,14 @@ class NewDeckView extends React.Component {
   render() {
     const {
       navigator,
+      filterInvestigators,
     } = this.props;
     return (
-      <InvestigatorsListComponent navigator={navigator} onPress={this._onPress} />
+      <InvestigatorsListComponent
+        navigator={navigator}
+        filterInvestigators={filterInvestigators}
+        onPress={this._onPress}
+      />
     );
   }
 }

@@ -8,12 +8,13 @@ import {
 import { connectRealm } from 'react-native-realm';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import AddDeckRow from '../AddDeckRow';
+import Button from '../core/Button';
 
 export default function listOfDecks(DeckComponent, { deckLimit }) {
   class DeckListerComponent extends React.Component {
     static propTypes = {
       navigator: PropTypes.object.isRequired,
+      campaignId: PropTypes.number.isRequired,
       deckIds: PropTypes.array.isRequired,
       deckAdded: PropTypes.func,
       deckRemoved: PropTypes.func,
@@ -22,6 +23,28 @@ export default function listOfDecks(DeckComponent, { deckLimit }) {
       cards: PropTypes.object,
       investigators: PropTypes.object,
     };
+
+    constructor(props) {
+      super(props);
+      this._showDeckSelector = this.showDeckSelector.bind(this);
+    }
+
+    showDeckSelector() {
+      const {
+        navigator,
+        deckIds,
+        deckAdded,
+        campaignId,
+      } = this.props;
+      navigator.showModal({
+        screen: 'Dialog.DeckSelector',
+        passProps: {
+          campaignId: campaignId,
+          onDeckSelect: deckAdded,
+          selectedDeckIds: deckIds,
+        },
+      });
+    }
 
     render() {
       const {
@@ -48,10 +71,10 @@ export default function listOfDecks(DeckComponent, { deckLimit }) {
           )) }
           { !!deckAdded && (!deckLimit || deckIds.length < deckLimit) && (
             <View style={styles.addDeckButton}>
-              <AddDeckRow
-                navigator={navigator}
-                deckAdded={deckAdded}
-                selectedDeckIds={deckIds}
+              <Button
+                align="left"
+                text="Add Deck"
+                onPress={this._showDeckSelector}
               />
             </View>
           ) }

@@ -102,7 +102,7 @@ class SaveDialog extends React.Component {
           const investigatorCode = deck.investigator_code;
           const investigator = investigators[investigatorCode];
           const updates = deckUpdates[deckId] || { xp: 0 };
-          const trauma = traumaString(traumaDeltas[investigatorCode] || DEFAULT_TRAUMA_DATA);
+          const trauma = traumaString(traumaDeltas[investigatorCode] || DEFAULT_TRAUMA_DATA, investigator);
           const exile = exileString(updates.exiles || {}, cards);
           return (
             <View key={deckId} style={styles.investigatorBlock}>

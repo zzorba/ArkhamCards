@@ -41,6 +41,9 @@ export default class EditTraumaComponent extends React.Component {
   }
 
   render() {
+    const {
+      investigator,
+    } = this.props;
     return (
       <View style={styles.traumaBlock}>
         <Text style={typography.small}>
@@ -48,7 +51,7 @@ export default class EditTraumaComponent extends React.Component {
         </Text>
         <TouchableOpacity onPress={this._editTraumaPressed}>
           <TextBox
-            value={traumaString(this.traumaData())}
+            value={traumaString(this.traumaData(), investigator)}
             editable={false}
             pointerEvents="none"
           />

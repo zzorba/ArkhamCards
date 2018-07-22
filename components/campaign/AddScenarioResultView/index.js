@@ -89,7 +89,8 @@ class AddScenarioResultView extends React.Component {
 
     const removedSet = new Set(removedDeckIds);
     return uniqBy(
-      filter([...latestDeckIds, ...addedDeckIds],
+      filter(
+        concat(latestDeckIds, addedDeckIds),
         deckId => !removedSet.has(deckId)));
   }
 
@@ -191,6 +192,10 @@ class AddScenarioResultView extends React.Component {
           }
         });
         const exilesParam = exileParts.join(',');
+        if (exilesParam === '' && xp === 0) {
+          // No exile, no XP change... no need to send it to ArkhamDB?
+          return Promise.resolve(deckId);
+        }
         return upgradeDeck(deckId, xp, exilesParam).then(decks => {
           const {
             deck,
@@ -296,6 +301,7 @@ class AddScenarioResultView extends React.Component {
   renderInvestigators() {
     const {
       navigator,
+      id,
     } = this.props;
     const {
       investigatorData,
@@ -303,6 +309,7 @@ class AddScenarioResultView extends React.Component {
     return (
       <AddScenarioDeckList
         navigator={navigator}
+        campaignId={id}
         deckIds={this.deckIds()}
         deckUpdates={this.deckUpdates()}
         deckUpdatesChanged={this._deckUpdatesChanged}

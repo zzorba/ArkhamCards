@@ -44,11 +44,10 @@ export default class EditTraumaDialog extends React.Component {
           visible: props.visible,
           trauma: props.trauma,
         };
-      } else {
-        return {
-          visible: props.visible,
-        };
       }
+      return {
+        visible: props.visible,
+      };
     }
     return null;
   }

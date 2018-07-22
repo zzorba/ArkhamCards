@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, flatMap, uniqBy } from 'lodash';
+import { filter } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -11,13 +11,16 @@ class MyDecksComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     deckClicked: PropTypes.func.isRequired,
+    onlyDeckIds: PropTypes.array,
     filterDeckIds: PropTypes.array,
+    filterInvestigators: PropTypes.array,
     refreshMyDecks: PropTypes.func.isRequired,
     decks: PropTypes.object,
     myDecks: PropTypes.array,
     myDecksUpdated: PropTypes.instanceOf(Date),
     refreshing: PropTypes.bool,
     error: PropTypes.string,
+    customHeader: PropTypes.node,
   };
 
   constructor(props) {
@@ -58,31 +61,28 @@ class MyDecksComponent extends React.Component {
       navigator,
       deckClicked,
       filterDeckIds = [],
+      filterInvestigators = [],
       myDecks,
       decks,
       refreshing,
       error,
+      customHeader,
+      onlyDeckIds,
     } = this.props;
 
     const filterDeckIdsSet = new Set(filterDeckIds);
-    const filterInvestigators = new Set(
-      uniqBy(flatMap(filterDeckIds, deckId => {
-        const deck = decks[deckId];
-        if (deck) {
-          return deck.investigator_code;
-        }
-        return null;
-      })));
-
+    const filterInvestigatorsSet = new Set(filterInvestigators);
+    const deckIds = filter(onlyDeckIds || myDecks, deckId => {
+      const deck = decks[deckId];
+      return !filterDeckIdsSet.has(deckId) && (
+        !deck || !filterInvestigatorsSet.has(deck.investigator_code)
+      );
+    });
     return (
       <DeckListComponent
         navigator={navigator}
-        deckIds={filter(myDecks, deckId => {
-          const deck = decks[deckId];
-          return !filterDeckIdsSet.has(deckId) && (
-            !deck || !filterInvestigators.has(deck.investigator_code)
-          );
-        })}
+        customHeader={customHeader}
+        deckIds={deckIds}
         deckClicked={deckClicked}
         onRefresh={this._onRefresh}
         refreshing={refreshing}

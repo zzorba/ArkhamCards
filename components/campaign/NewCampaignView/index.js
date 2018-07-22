@@ -417,6 +417,7 @@ class NewCampaignView extends React.Component {
     const {
       navigator,
       captureViewRef,
+      nextId,
     } = this.props;
 
     const {
@@ -460,6 +461,7 @@ class NewCampaignView extends React.Component {
           </Text>
           <DeckSelector
             navigator={navigator}
+            campaignId={nextId}
             deckIds={deckIds}
             deckAdded={this._deckAdded}
             deckRemoved={this._deckRemoved}

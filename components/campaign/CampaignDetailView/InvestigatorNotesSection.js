@@ -50,7 +50,7 @@ class InvestigatorNotesDeckDetail extends React.Component {
         <View style={styles.section}>
           <Text style={typography.small}>TRAUMA</Text>
           <Text style={typography.text}>
-            { traumaString(traumaData) }
+            { traumaString(traumaData, investigator) }
           </Text>
         </View>
         { CampaignNotesSection.renderSections(sections) }

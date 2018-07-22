@@ -156,6 +156,10 @@ export default class Card {
   }
 
   static fromJson(json, packsByCode, cycleNames) {
+    if (json.code === '02041') {
+      json.subtype_code = null;
+      json.subtype_name = null;
+    }
     const deck_requirements = json.deck_requirements ?
       Card.parseDeckRequirements(json.deck_requirements) :
       null;

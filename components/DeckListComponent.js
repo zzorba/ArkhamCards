@@ -25,6 +25,7 @@ class DeckListComponent extends React.Component {
     cards: PropTypes.object,
     decks: PropTypes.object,
     fetchPublicDeck: PropTypes.func.isRequired,
+    customHeader: PropTypes.node,
   }
 
   constructor(props) {
@@ -81,11 +82,17 @@ class DeckListComponent extends React.Component {
   }
 
   renderHeader() {
+    const {
+      customHeader,
+    } = this.props;
     return (
-      <SearchBox
-        onChangeText={this._searchChanged}
-        placeholder="Search decks"
-      />
+      <View style={styles.header}>
+        <SearchBox
+          onChangeText={this._searchChanged}
+          placeholder="Search decks"
+        />
+        { !!customHeader && customHeader }
+      </View>
     );
   }
 

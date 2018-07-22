@@ -188,6 +188,7 @@ class CampaignDetailView extends React.Component {
         <View style={styles.section}>
           <InvestigatorNotesSection
             navigator={navigator}
+            campaignId={campaign.id}
             campaign={campaign}
             deckIds={campaign.latestDeckIds || []}
             deckAdded={this._addDeck}

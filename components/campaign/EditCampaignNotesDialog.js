@@ -172,6 +172,7 @@ class EditCampaignNotesDialog extends React.Component {
       showTextEditDialog,
       captureViewRef,
       latestDeckIds,
+      campaignId,
     } = this.props;
     const {
       campaignNotes,
@@ -182,6 +183,7 @@ class EditCampaignNotesDialog extends React.Component {
         <View style={styles.container} ref={captureViewRef}>
           <EditCampaignNotesComponent
             navigator={navigator}
+            campaignId={campaignId}
             campaignNotes={campaignNotes}
             latestDeckIds={latestDeckIds}
             investigatorData={investigatorData}

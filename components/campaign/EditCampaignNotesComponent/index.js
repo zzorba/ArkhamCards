@@ -15,6 +15,7 @@ import Button from '../../core/Button';
 export default class EditCampaignNotesComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    campaignId: PropTypes.number.isRequired,
     // Parts of the campaign object.
     latestDeckIds: PropTypes.array.isRequired,
     campaignNotes: PropTypes.object,
@@ -136,6 +137,7 @@ export default class EditCampaignNotesComponent extends React.Component {
   renderInvestigatorSection() {
     const {
       navigator,
+      campaignId,
       campaignNotes: {
         investigatorNotes,
       },
@@ -148,6 +150,7 @@ export default class EditCampaignNotesComponent extends React.Component {
       <View style={styles.investigatorSection}>
         <InvestigatorSectionList
           navigator={navigator}
+          campaignId={campaignId}
           deckIds={latestDeckIds}
           investigatorNotes={investigatorNotes}
           investigatorData={investigatorData}

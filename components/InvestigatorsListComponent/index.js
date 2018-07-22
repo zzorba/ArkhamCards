@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, partition } from 'lodash';
+import { filter, forEach, map, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -23,6 +23,7 @@ class InvestigatorsListComponent extends React.Component {
     investigators: PropTypes.array.isRequired,
     cards: PropTypes.object.isRequired,
     in_collection: PropTypes.object,
+    filterInvestigators: PropTypes.array,
   };
 
   constructor(props) {
@@ -73,10 +74,11 @@ class InvestigatorsListComponent extends React.Component {
     const {
       investigators,
       in_collection,
+      filterInvestigators = [],
     } = this.props;
-
+    const filterInvestigatorsSet = new Set(filterInvestigators);
     const partitionedInvestigators = partition(
-      investigators,
+      filter(investigators, investigator => !filterInvestigatorsSet.has(investigator.code)),
       investigator => in_collection[investigator.pack_code]);
     const myInvestigators = partitionedInvestigators[0];
     const otherInvestigators = partitionedInvestigators[1];

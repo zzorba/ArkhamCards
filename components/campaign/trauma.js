@@ -20,12 +20,23 @@ export function traumaDelta(traumaData, originalTraumaData) {
   return result;
 }
 
-export function traumaString(traumaData) {
+export function isEliminated(traumaData, investigatorCard) {
+  if (traumaData.killed || traumaData.insane) {
+    return true;
+  }
+  if (investigatorCard.health <= traumaData.physical ||
+    investigatorCard.sanity <= traumaData.mental) {
+    return true;
+  }
+  return false;
+}
+
+export function traumaString(traumaData, investigator) {
   const parts = [];
-  if (traumaData.killed) {
+  if (traumaData.killed || investigator.health <= traumaData.physical) {
     return 'Killed';
   }
-  if (traumaData.insane) {
+  if (traumaData.insane || investigator.sanity <= traumaData.mental) {
     return 'Insane';
   }
   if (traumaData.physical !== 0) {
@@ -44,4 +55,5 @@ export default {
   DEFAULT_TRAUMA_DATA,
   traumaString,
   traumaDelta,
+  isEliminated,
 };
