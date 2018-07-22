@@ -41,8 +41,8 @@ export default class EncounterIcon extends React.PureComponent {
       color,
     } = this.props;
     switch(encounter_code) {
+      case 'rtnotz':
       case 'core':
-        return this.coreIcon('core', size, color);
       case 'agents_of_hastur':
       case 'agents_of_yog':
       case 'agents_of_shub':

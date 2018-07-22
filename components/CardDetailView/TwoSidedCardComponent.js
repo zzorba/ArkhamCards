@@ -378,7 +378,7 @@ export default class TwoSidedCardComponent extends React.Component {
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={styles.illustratorText}>
-              <AppIcon name="paintbrush" size={14} color="#000000" />
+              <AppIcon name="paintbrush" size={12} color="#000000" />
               { card.illustrator }
             </Text>
           ) }
