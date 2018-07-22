@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map } from 'lodash';
+import { map } from 'lodash';
 import {
   StyleSheet,
   View,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import Button from '../core/Button';
+import withPlayerCards from '../withPlayerCards';
 
 export default function listOfDecks(DeckComponent, { deckLimit }) {
   class DeckListerComponent extends React.Component {
@@ -83,23 +83,7 @@ export default function listOfDecks(DeckComponent, { deckLimit }) {
     }
   }
 
-  const result = connectRealm(DeckListerComponent, {
-    schemas: ['Card'],
-    mapToProps(results) {
-      const investigators = {};
-      const cards = {};
-      forEach(results.cards, card => {
-        cards[card.code] = card;
-        if (card.type_code === 'investigator') {
-          investigators[card.code] = card;
-        }
-      });
-      return {
-        cards,
-        investigators,
-      };
-    },
-  });
+  const result = withPlayerCards(DeckListerComponent);
   hoistNonReactStatic(result, DeckComponent);
   return result;
 }

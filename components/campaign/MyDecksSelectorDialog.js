@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, flatMap, forEach, keys, uniqBy } from 'lodash';
+import { concat, filter, flatMap, keys, uniqBy } from 'lodash';
 import {
   StyleSheet,
   Switch,
@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
 import { isEliminated } from './trauma';
 import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
+import withPlayerCards from '../withPlayerCards';
 import { getAllDecks, getCampaign, getCampaigns } from '../../reducers';
 
 class MyDecksSelectorDialog extends React.Component {
@@ -221,20 +221,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(MyDecksSelectorDialog, {
-    schemas: ['Card'],
-    mapToProps(results) {
-      const investigators = {};
-      forEach(results.cards.filtered('type_code == "investigator"'), card => {
-        investigators[card.code] = card;
-      });
-      return {
-        investigators,
-      };
-    },
-  })
-);
+export default connect(mapStateToProps, mapDispatchToProps)(withPlayerCards(MyDecksSelectorDialog));
 
 const styles = StyleSheet.create({
   row: {

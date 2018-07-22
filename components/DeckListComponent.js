@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, findIndex, forEach, map } from 'lodash';
+import { filter, findIndex, map } from 'lodash';
 import {
   FlatList,
   StyleSheet,
@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
 import SearchBox from './SearchBox';
 import DeckListRow from './DeckListRow';
+import withPlayerCards from './withPlayerCards';
 import { getAllDecks } from '../reducers';
 import * as Actions from '../actions';
 
@@ -159,26 +159,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(DeckListComponent),
-  {
-    schemas: ['Card'],
-    mapToProps(results) {
-      const investigators = {};
-      const cards = {};
-      forEach(results.cards, card => {
-        cards[card.code] = card;
-        if (card.type_code === 'investigator') {
-          investigators[card.code] = card;
-        }
-      });
-      return {
-        cards,
-        investigators,
-      };
-    },
-  },
-);
+export default connect(mapStateToProps, mapDispatchToProps)(withPlayerCards(DeckListComponent));
 
 const styles = StyleSheet.create({
   container: {

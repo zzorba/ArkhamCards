@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, forEach, map } from 'lodash';
+import { flatMap, map } from 'lodash';
 import {
   ActivityIndicator,
   StyleSheet,
@@ -9,12 +9,12 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 import DialogComponent from 'react-native-dialog';
 
 import { exileString } from './exile';
 import { traumaString, DEFAULT_TRAUMA_DATA } from '../trauma';
 import Dialog from '../../core/Dialog';
+import withPlayerCards from '../../withPlayerCards';
 import typography from '../../../styles/typography';
 import { getAllDecks } from '../../../reducers';
 
@@ -179,25 +179,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(SaveDialog, {
-    schemas: ['Card'],
-    mapToProps(results) {
-      const investigators = {};
-      const cards = {};
-      forEach(results.cards, card => {
-        cards[card.code] = card;
-        if (card.type_code === 'investigator') {
-          investigators[card.code] = card;
-        }
-      });
-      return {
-        cards,
-        investigators,
-      };
-    },
-  })
-);
+export default connect(mapStateToProps, mapDispatchToProps)(withPlayerCards(SaveDialog));
 
 const styles = StyleSheet.create({
   investigatorBlock: {
