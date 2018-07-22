@@ -25,8 +25,8 @@ export default class EditTraumaDialog extends React.Component {
     super(props);
 
     this.state = {
-      trauma: null,
-      originalTrauma: null,
+      trauma: {},
+      visible: false,
     };
 
     this._onCancel = this.onCancel.bind(this);
@@ -38,11 +38,17 @@ export default class EditTraumaDialog extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (state.originalTrauma === null || props.trauma !== state.originalTrauma) {
-      return {
-        trauma: props.trauma,
-        originalTrauma: props.trauma,
-      };
+    if (props.visible !== state.visible) {
+      if (props.visible) {
+        return {
+          visible: props.visible,
+          trauma: props.trauma,
+        };
+      } else {
+        return {
+          visible: props.visible,
+        };
+      }
     }
     return null;
   }
@@ -58,9 +64,6 @@ export default class EditTraumaDialog extends React.Component {
   }
 
   onCancel() {
-    this.setState({
-      trauma: this.state.originalTrauma,
-    });
     this.props.hideDialog();
   }
 
@@ -96,11 +99,11 @@ export default class EditTraumaDialog extends React.Component {
 
   render() {
     const {
-      visible,
       investigator,
       viewRef,
     } = this.props;
     const {
+      visible,
       trauma: {
         killed,
         insane,
