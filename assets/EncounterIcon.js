@@ -153,7 +153,10 @@ export default class EncounterIcon extends React.PureComponent {
       case 'bayou':
         return this.standaloneIcon('the_bayou', size, color);
       case 'lol':
-        return this.standaloneIcon('lol', size, color);
+      case 'in_the_labyrinths_of_lunacy':
+      case 'epic_multiplayer':
+      case 'single_group':
+        return this.standaloneIcon(encounter_code, size, color);
       case 'tfa':
       case 'tbb': // THE BOUNDARY BEYOND
       case 'hote': // HEART OF THE ELDERS
