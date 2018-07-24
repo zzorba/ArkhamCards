@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import ChaosBagSection from '../ChaosBagSection';
 import CampaignNotesSection from './CampaignNotesSection';
 import InvestigatorNotesSection from './InvestigatorNotesSection';
+import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
 import { CUSTOM } from '../constants';
 import Button from '../../core/Button';
@@ -44,7 +45,6 @@ class CampaignDetailView extends React.Component {
     this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
-    this._addScenarioResult = this.addScenarioResult.bind(this);
   }
 
   addDeck(deckId) {
@@ -134,21 +134,6 @@ class CampaignDetailView extends React.Component {
     navigator.pop();
   }
 
-  addScenarioResult() {
-    const {
-      campaign,
-      navigator,
-    } = this.props;
-    navigator.push({
-      screen: 'Campaign.AddResult',
-      title: 'Scenario Results',
-      passProps: {
-        id: campaign.id,
-      },
-      backButtonTitle: 'Cancel',
-    });
-  }
-
   showCampaignNotesDialog() {
     const {
       navigator,
@@ -175,18 +160,15 @@ class CampaignDetailView extends React.Component {
     }
     return (
       <ScrollView>
-        <Text style={[typography.bigLabel, styles.margin]}>
-          { campaign.name }
-        </Text>
-        { campaign.cycleCode !== CUSTOM && (
-          <Text style={[typography.text, styles.margin]}>
-            { scenarioPack.name }
+        <ScenarioSection
+          navigator={navigator}
+          campaign={campaign}
+          scenarioPack={scenarioPack}
+        />
+        <View style={styles.section}>
+          <Text style={[typography.bigLabel, styles.padding]}>
+            Investigators
           </Text>
-        ) }
-        <View style={styles.section}>
-          <Button onPress={this._addScenarioResult} text="Record Scenario Result" />
-        </View>
-        <View style={styles.section}>
           <InvestigatorNotesSection
             navigator={navigator}
             campaignId={campaign.id}
@@ -251,6 +233,11 @@ const styles = StyleSheet.create({
   },
   margin: {
     margin: 8,
+  },
+  padding: {
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingBottom: 4,
   },
   footer: {
     height: 100,

@@ -51,8 +51,8 @@ class WeaknessSetSection extends React.Component {
     }
     return (
       <View style={styles.underline}>
-        <Text style={[typography.bigLabel, styles.padding]}>
-          Basic Weaknesses
+        <Text style={[typography.small, styles.padding]}>
+          BASIC WEAKNESSES
         </Text>
         <Text style={[typography.small, styles.padding]}>
           { `${counts.assigned} / ${counts.total} have been drawn.` }

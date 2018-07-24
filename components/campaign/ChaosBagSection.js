@@ -44,8 +44,8 @@ export default class ChaosBagSection extends React.Component {
   render() {
     return (
       <View style={styles.underline}>
-        <Text style={[typography.bigLabel, styles.margin]}>
-          Chaos Bag
+        <Text style={[typography.small, styles.margin]}>
+          CHAOS BAG
         </Text>
         <View style={[styles.margin, styles.marginTop]}>
           <ChaosBagLine chaosBag={this.props.chaosBag} />
