@@ -9,7 +9,7 @@ import {
 
 import EncounterIcon from '../../../assets/EncounterIcon';
 
-export default class CampaignItem extends React.Component {
+export default class CycleItem extends React.Component {
   static propTypes = {
     packCode: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,

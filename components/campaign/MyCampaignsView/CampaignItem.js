@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, last } from 'lodash';
+import { flatMap, forEach, map, last } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -13,6 +13,7 @@ import { connectRealm } from 'react-native-realm';
 
 import InvestigatorImage from '../../core/InvestigatorImage';
 import { getDecks } from '../../../reducers';
+import typography from '../../../styles/typography';
 
 class CampaignItem extends React.Component {
   static propTypes = {
@@ -20,7 +21,7 @@ class CampaignItem extends React.Component {
     onPress: PropTypes.func.isRequired,
     latestScenario: PropTypes.object,
     decks: PropTypes.array,
-    investigators: PropTypes.array,
+    investigators: PropTypes.object,
   };
 
   constructor(props) {
@@ -37,24 +38,57 @@ class CampaignItem extends React.Component {
     onPress(campaign.id);
   }
 
+  renderLastScenario() {
+    const {
+      latestScenario,
+    } = this.props;
+    if (latestScenario && latestScenario.scenario) {
+      return (
+        <View>
+          <Text style={typography.small}>
+            LAST SCENARIO
+          </Text>
+          <Text style={typography.text}>
+            { latestScenario.scenario }
+          </Text>
+        </View>
+      );
+    }
+    return (
+      <View>
+        <Text style={typography.small}>
+          LAST SCENARIO
+        </Text>
+        <Text style={typography.text}>
+          ---
+        </Text>
+      </View>
+    );
+  }
+
   render() {
     const {
       campaign,
       latestScenario,
       investigators,
+      decks,
     } = this.props;
+    const latestInvestigators = flatMap(decks,
+      deck => investigators[deck.investigator_code]);
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.container}>
-          <Text>{ campaign.name }</Text>
-          { !!(latestScenario && latestScenario.scenario) && (
-            <Text>{ `Last Scenario: ${latestScenario.scenario}` }</Text>
-          ) }
+          <Text style={typography.text}>
+            { campaign.name }
+          </Text>
           <View style={styles.row}>
-            { map(investigators, card => (
-              <InvestigatorImage key={card.code} card={card} />
+            { map(latestInvestigators, card => (
+              <View key={card.code} style={styles.investigator}>
+                <InvestigatorImage card={card} />
+              </View>
             )) }
           </View>
+          { this.renderLastScenario() }
         </View>
       </TouchableOpacity>
     );
@@ -73,41 +107,23 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(CampaignItem, {
-    schemas: ['Card'],
-    mapToProps(results, realm, props) {
-      const decks = props.decks || [];
-      const query = map(decks,
-        deck => `code == '${deck.investigator_code}'`).join(' or ');
-      const investigatorsMap = {};
-      if (query) {
-        forEach(results.cards.filtered(query), card => {
-          investigatorsMap[card.code] = card;
-        });
-      }
-      const investigators = [];
-      forEach(decks, deck => {
-        const card = investigatorsMap[deck.investigator_code];
-        if (card) {
-          investigators.push(card);
-        }
-      });
-      return {
-        investigators,
-      };
-    },
-  })
-);
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignItem);
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    margin: 8,
+    padding: 8,
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
   },
   row: {
+    marginTop: 8,
+    marginBottom: 8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  investigator: {
+    marginRight: 8,
   },
 });

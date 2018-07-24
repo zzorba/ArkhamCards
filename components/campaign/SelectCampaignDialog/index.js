@@ -10,7 +10,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import CampaignItem from './CampaignItem';
+import CycleItem from './CycleItem';
 import { CUSTOM } from '../constants';
 import Button from '../../core/Button';
 import { getPacksInCollection } from '../../../reducers';
@@ -61,7 +61,7 @@ class SelectCampaignDialog extends React.Component {
 
   renderCampaign(packCode) {
     return (
-      <CampaignItem
+      <CycleItem
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}

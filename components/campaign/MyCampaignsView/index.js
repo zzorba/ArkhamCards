@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 
 import { getAllDecks, getCampaigns } from '../../../reducers';
 import { iconsMap } from '../../../app/NavIcons';
+import withPlayerCards from '../../withPlayerCards';
 import CampaignItem from './CampaignItem';
 
 class MyCampaignsView extends React.Component {
@@ -16,6 +17,8 @@ class MyCampaignsView extends React.Component {
     navigator: PropTypes.object.isRequired,
     campaigns: PropTypes.array,
     decks: PropTypes.object,
+    // From realm
+    investigators: PropTypes.object,
   };
 
   constructor(props) {
@@ -74,6 +77,7 @@ class MyCampaignsView extends React.Component {
   renderItem(campaign) {
     const {
       decks,
+      investigators,
     } = this.props;
     const latestScenario = last(campaign.scenarioResults);
     const deckIds = latestScenario ? latestScenario.deckIds : [];
@@ -89,6 +93,7 @@ class MyCampaignsView extends React.Component {
       <CampaignItem
         key={campaign.id}
         campaign={campaign}
+        investigators={investigators}
         onPress={this._onPress}
       />
     );
@@ -117,4 +122,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyCampaignsView);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withPlayerCards(MyCampaignsView)
+);

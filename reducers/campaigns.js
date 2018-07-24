@@ -153,7 +153,7 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
       latestDeckIds: action.deckIds,
       lastUpdated: action.now,
       investigatorData: {},
-      completedScenarios: [],
+      scenarioResults: [],
     };
     return Object.assign({},
       state,

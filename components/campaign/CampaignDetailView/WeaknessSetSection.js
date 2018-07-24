@@ -58,7 +58,7 @@ class WeaknessSetSection extends React.Component {
           { `${counts.assigned} / ${counts.total} have been drawn.` }
         </Text>
         <View style={styles.marginTop}>
-          <Button text="Edit Cards" align="left" onPress={this._showEditDialog} />
+          <Button text="Edit Available Cards" align="left" onPress={this._showEditDialog} />
         </View>
         <View style={styles.marginTop}>
           <Button text="Draw Weaknesses" align="left" onPress={this._showDrawDialog} />
