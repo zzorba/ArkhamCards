@@ -11,11 +11,13 @@ import { CachedImage } from 'react-native-cached-image';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
+const SMALL_FACTION_ICONS = createFactionIcons(40, '#FFF');
 
 export default class InvestigatorImage extends React.Component {
   static propTypes = {
     card: PropTypes.object.isRequired,
     navigator: PropTypes.object,
+    small: PropTypes.bool,
   };
 
   constructor(props) {
@@ -45,16 +47,22 @@ export default class InvestigatorImage extends React.Component {
   renderImage() {
     const {
       card,
+      small,
     } = this.props;
+    const size = small ? 65 : 80;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { width: size, height: size }]}>
         <View style={styles.relative}>
           <View style={[
             styles.placeholder,
-            { backgroundColor: FACTION_COLORS[card.faction_code] },
+            {
+              width: size,
+              height: size,
+              backgroundColor: FACTION_COLORS[card.faction_code],
+            },
           ]}>
             <Text style={styles.placeholderIcon}>
-              { FACTION_ICONS[card.faction_code] }
+              { (small ? SMALL_FACTION_ICONS : FACTION_ICONS)[card.faction_code] }
             </Text>
           </View>
         </View>
@@ -94,8 +102,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     overflow: 'hidden',
     borderRadius: 6,
-    width: 80,
-    height: 80,
   },
   relative: {
     position: 'relative',
@@ -111,8 +117,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    width: 80,
-    height: 80,
     borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',

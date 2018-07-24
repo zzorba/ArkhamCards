@@ -9,8 +9,6 @@ import {
 
 import { CUSTOM } from '../constants';
 import Button from '../../core/Button';
-import WeaknessSetView from '../../weakness/WeaknessSetView';
-import withWeaknessCards from '../../weakness/withWeaknessCards';
 import typography from '../../../styles/typography';
 
 export default class ScenarioSection extends React.Component {
@@ -71,11 +69,9 @@ export default class ScenarioSection extends React.Component {
   render() {
     const {
       campaign: {
-        campaignId,
         name,
         cycleCode,
         difficulty,
-        completedScenarios,
       },
       scenarioPack,
     } = this.props;
@@ -103,7 +99,7 @@ export default class ScenarioSection extends React.Component {
               { capitalize(difficulty) }
             </Text>
           </View>
-        )  }
+        ) }
         <View style={[styles.marginTop, styles.padding]}>
           <Text style={typography.small}>
             SCENARIOS
@@ -111,7 +107,11 @@ export default class ScenarioSection extends React.Component {
           { this.renderCompletedScenarios() }
         </View>
         <View style={styles.button}>
-          <Button align="left" text="Add Scenario Result" onPress={this._addScenarioResult}/>
+          <Button
+            align="left"
+            text="Add Scenario Result"
+            onPress={this._addScenarioResult}
+          />
         </View>
       </View>
     );

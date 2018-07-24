@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, forEach, map, last } from 'lodash';
+import { flatMap, map, last } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
+import LinearGradient from 'react-native-linear-gradient';
 
+import { CUSTOM } from '../constants';
 import InvestigatorImage from '../../core/InvestigatorImage';
 import { getDecks } from '../../../reducers';
 import typography from '../../../styles/typography';
@@ -20,6 +21,7 @@ class CampaignItem extends React.Component {
     campaign: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
     latestScenario: PropTypes.object,
+    scenarioPack: PropTypes.object,
     decks: PropTypes.array,
     investigators: PropTypes.object,
   };
@@ -38,13 +40,35 @@ class CampaignItem extends React.Component {
     onPress(campaign.id);
   }
 
+  renderCampaign() {
+    const {
+      campaign: {
+        cycleCode,
+      },
+      scenarioPack,
+    } = this.props;
+    if (cycleCode === CUSTOM) {
+      return null;
+    }
+    return (
+      <View style={styles.marginTop}>
+        <Text style={typography.small}>
+          CAMPAIGN
+        </Text>
+        <Text style={typography.text}>
+          { scenarioPack.name }
+        </Text>
+      </View>
+    );
+  }
+
   renderLastScenario() {
     const {
       latestScenario,
     } = this.props;
     if (latestScenario && latestScenario.scenario) {
       return (
-        <View>
+        <View style={styles.marginTop}>
           <Text style={typography.small}>
             LAST SCENARIO
           </Text>
@@ -55,7 +79,7 @@ class CampaignItem extends React.Component {
       );
     }
     return (
-      <View>
+      <View style={styles.marginTop}>
         <Text style={typography.small}>
           LAST SCENARIO
         </Text>
@@ -69,7 +93,6 @@ class CampaignItem extends React.Component {
   render() {
     const {
       campaign,
-      latestScenario,
       investigators,
       decks,
     } = this.props;
@@ -77,19 +100,20 @@ class CampaignItem extends React.Component {
       deck => investigators[deck.investigator_code]);
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.container}>
+        <LinearGradient colors={['#ffffff', '#dddddd']} style={styles.container}>
           <Text style={typography.text}>
             { campaign.name }
           </Text>
+          { this.renderCampaign() }
+          { this.renderLastScenario() }
           <View style={styles.row}>
             { map(latestInvestigators, card => (
               <View key={card.code} style={styles.investigator}>
-                <InvestigatorImage card={card} />
+                <InvestigatorImage card={card} small />
               </View>
             )) }
           </View>
-          { this.renderLastScenario() }
-        </View>
+        </LinearGradient>
       </TouchableOpacity>
     );
   }
@@ -99,7 +123,7 @@ function mapStateToProps(state, props) {
   const latestScenario = last(props.campaign.scenarioResults);
   return {
     latestScenario,
-    decks: getDecks(state, props.campaign.latestDeckIds),
+    decks: getDecks(state, props.campaign.latestDeckIds || []),
   };
 }
 
@@ -119,11 +143,13 @@ const styles = StyleSheet.create({
   },
   row: {
     marginTop: 8,
-    marginBottom: 8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
   investigator: {
     marginRight: 8,
+  },
+  marginTop: {
+    marginTop: 4,
   },
 });

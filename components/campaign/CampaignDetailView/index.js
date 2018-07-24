@@ -16,7 +16,6 @@ import CampaignNotesSection from './CampaignNotesSection';
 import InvestigatorNotesSection from './InvestigatorNotesSection';
 import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
-import { CUSTOM } from '../constants';
 import Button from '../../core/Button';
 import { updateCampaign, deleteCampaign } from '../actions';
 import { getCampaign, getAllPacks } from '../../../reducers';

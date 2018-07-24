@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, map, last } from 'lodash';
+import { find, forEach, map, last } from 'lodash';
 import {
   ScrollView,
+  StyleSheet,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getAllDecks, getCampaigns } from '../../../reducers';
+import { getAllDecks, getAllPacks, getCampaigns } from '../../../reducers';
 import { iconsMap } from '../../../app/NavIcons';
 import withPlayerCards from '../../withPlayerCards';
 import CampaignItem from './CampaignItem';
@@ -17,6 +18,7 @@ class MyCampaignsView extends React.Component {
     navigator: PropTypes.object.isRequired,
     campaigns: PropTypes.array,
     decks: PropTypes.object,
+    packs: PropTypes.array,
     // From realm
     investigators: PropTypes.object,
   };
@@ -77,6 +79,7 @@ class MyCampaignsView extends React.Component {
   renderItem(campaign) {
     const {
       decks,
+      packs,
       investigators,
     } = this.props;
     const latestScenario = last(campaign.scenarioResults);
@@ -93,6 +96,7 @@ class MyCampaignsView extends React.Component {
       <CampaignItem
         key={campaign.id}
         campaign={campaign}
+        scenarioPack={find(packs, pack => pack.code === campaign.cycleCode)}
         investigators={investigators}
         onPress={this._onPress}
       />
@@ -104,7 +108,7 @@ class MyCampaignsView extends React.Component {
       campaigns,
     } = this.props;
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
         { map(campaigns, campaign => this.renderItem(campaign)) }
       </ScrollView>
     );
@@ -115,6 +119,7 @@ function mapStateToProps(state) {
   return {
     campaigns: getCampaigns(state),
     decks: getAllDecks(state),
+    packs: getAllPacks(state),
   };
 }
 
@@ -125,3 +130,9 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(
   withPlayerCards(MyCampaignsView)
 );
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
