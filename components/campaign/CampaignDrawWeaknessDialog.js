@@ -42,6 +42,10 @@ class CampaignDrawWeaknessDialog extends React.Component {
       saving: false,
     };
 
+    props.navigator.setTitle({
+      title: 'Draw Basic Weaknesses',
+    });
+
     this._selectDeck = this.selectDeck.bind(this);
     this._updateDrawnCard = this.updateDrawnCard.bind(this);
     this._onPressInvestigator = this.onPressInvestigator.bind(this);
