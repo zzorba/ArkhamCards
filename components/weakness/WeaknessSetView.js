@@ -9,10 +9,9 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 
+import withWeaknessCards from './withWeaknessCards';
 import Button from '../core/Button';
-import { BASIC_WEAKNESS_QUERY } from '../../data/query';
 import * as Actions from '../../actions';
 import typography from '../../styles/typography';
 
@@ -106,7 +105,7 @@ class WeaknessSetView extends React.Component {
     return (
       <ScrollView>
         <Text style={[typography.text, styles.text]}>
-          { `Consists of ${set.packCodes.length} ${set.packCodes.length === 1 ? 'set' : 'sets:'}` }
+          { `Contains all weaknesses from ${set.packCodes.length} ${set.packCodes.length === 1 ? 'set' : 'sets:'}` }
         </Text>
         <Text style={[typography.small, styles.smallText]}>
           { `${map(set.packCodes, packCode => packsByCode[packCode].name).join('\n')}` }
@@ -144,22 +143,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(WeaknessSetView, {
-    schemas: ['Card'],
-    mapToProps(results) {
-      const cards = results.cards
-        .filtered(BASIC_WEAKNESS_QUERY)
-        .sorted([['name', false]]);
-      const cardsMap = {};
-      forEach(cards, card => {
-        cardsMap[card.code] = card;
-      });
-      return {
-        cards,
-        cardsMap,
-      };
-    },
-  })
+  withWeaknessCards(WeaknessSetView)
 );
 
 const styles = StyleSheet.create({
@@ -171,7 +155,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   smallText: {
-    paddingLeft: 16,
+    paddingLeft: 8,
     paddingRight: 8,
   },
 });

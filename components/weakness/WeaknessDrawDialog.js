@@ -11,8 +11,6 @@ class WeaknessDrawDialog extends React.Component {
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     set: PropTypes.object,
-    cards: PropTypes.object, // Realm array
-    cardsMap: PropTypes.object,
     editWeaknessSet: PropTypes.func.isRequired,
   };
 

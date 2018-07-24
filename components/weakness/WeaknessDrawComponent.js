@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, find, flatMap, forEach, head, keys, map, range, shuffle } from 'lodash';
 import {
+  ActivityIndicator,
   Dimensions,
   StyleSheet,
   Text,
@@ -9,13 +10,13 @@ import {
   View,
 } from 'react-native';
 import { CachedImage, ImageCacheManager } from 'react-native-cached-image';
-import { connectRealm } from 'react-native-realm';
 import FlipCard from 'react-native-flip-card';
 
-import { BASIC_WEAKNESS_QUERY } from '../../data/query';
+import withWeaknessCards from './withWeaknessCards';
 import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
 import { CARD_RATIO } from '../../styles/sizes';
+import typography from '../../styles/typography';
 const PLAYER_BACK = require('../../assets/player-back.png');
 const defaultImageCacheManager = ImageCacheManager();
 
@@ -26,6 +27,8 @@ class WeaknessDrawComponent extends React.Component {
     navigator: PropTypes.object.isRequired,
     weaknessSet: PropTypes.object,
     updateDrawnCard: PropTypes.func.isRequired,
+    customHeader: PropTypes.node,
+    saving: PropTypes.bool,
     // From realm, actually an 'array'.
     cards: PropTypes.object,
   };
@@ -41,6 +44,7 @@ class WeaknessDrawComponent extends React.Component {
     const cardHeight = Math.round(cardWidth * CARD_RATIO);
 
     this.state = {
+      headerHeight: 32,
       cardWidth,
       cardHeight,
       selectedTraits: [],
@@ -49,11 +53,18 @@ class WeaknessDrawComponent extends React.Component {
       drawNewCard: false,
     };
 
+    this._onHeaderLayout = this.onHeaderLayout.bind(this);
     this._drawAnother = this.drawAnother.bind(this);
     this._flipCard = this.flipCard.bind(this);
     this._onFlipEnd = this.onFlipEnd.bind(this);
     this._onTraitsChange = this.onTraitsChange.bind(this);
     this._selectNextCard = this.selectNextCard.bind(this);
+  }
+
+  onHeaderLayout(event) {
+    this.setState({
+      headerHeight: event.nativeEvent.layout.height,
+    });
   }
 
   drawAnother() {
@@ -171,24 +182,51 @@ class WeaknessDrawComponent extends React.Component {
     return keys(traitsMap).sort();
   }
 
-  renderNoWeaknessMessage() {
+  renderHeaderContent() {
+    const {
+      navigator,
+      customHeader,
+      saving,
+    } = this.props;
     const {
       selectedTraits,
+      flipped,
+      headerHeight,
     } = this.state;
-    if (selectedTraits.length) {
+    if (saving) {
       return (
-        <Text>No Matching Weaknesses, try adjusting Trait filter.</Text>
+        <View style={[styles.buttonWrapper, { height: headerHeight }]}>
+          <Text style={typography.text}>Saving</Text>
+          <ActivityIndicator
+            style={[{ height: 80 }]}
+            size="small"
+            animating
+          />
+        </View>
+      );
+    }
+    if (flipped) {
+      return (
+        <View style={[styles.buttonWrapper, { height: headerHeight }]}>
+          <Button text="Draw another" onPress={this._drawAnother} />
+        </View>
       );
     }
     return (
-      <Text>All weaknesses have been drawn.</Text>
+      <View onLayout={this._onHeaderLayout}>
+        { customHeader }
+        <ChooserButton
+          navigator={navigator}
+          title="Traits"
+          values={this.allTraits()}
+          selection={selectedTraits}
+          onChange={this._onTraitsChange}
+        />
+      </View>
     );
   }
 
-  render() {
-    const {
-      navigator,
-    } = this.props;
+  renderCard() {
     const {
       selectedTraits,
       nextCard,
@@ -196,74 +234,69 @@ class WeaknessDrawComponent extends React.Component {
       cardWidth,
       cardHeight,
     } = this.state;
+    if (nextCard) {
+      return (
+        <View style={styles.cardWrapper}>
+          <TouchableWithoutFeedback onPress={this._flipCard}>
+            <FlipCard
+              style={[styles.flipCard, {
+                width: cardWidth,
+                height: cardHeight,
+              }]}
+              friction={6}
+              perspective={1000}
+              flipHorizontal
+              flipVertical={false}
+              flip={flipped}
+              clickable={false}
+              onFlipEnd={this._onFlipEnd}
+            >
+              <CachedImage
+                style={styles.verticalCardImage}
+                source={PLAYER_BACK}
+                resizeMode="contain"
+              />
+              { nextCard && (
+                <CachedImage
+                  style={styles.verticalCardImage}
+                  source={{
+                    uri: `https://arkhamdb.com/${nextCard.imagesrc}`,
+                  }}
+                  resizeMode="contain"
+                />
+              ) }
+            </FlipCard>
+          </TouchableWithoutFeedback>
+        </View>
+      );
+    }
+    if (selectedTraits.length) {
+      return (
+        <Text style={[typography.text, styles.errorText]}>
+          No Matching Weaknesses, try adjusting Trait filter.
+        </Text>
+      );
+    }
+    return (
+      <Text style={[typography.text, styles.errorText]}>
+        All weaknesses have been drawn.
+      </Text>
+    );
+  }
+
+  render() {
     return (
       <View style={styles.container}>
         <View style={styles.headerContainer}>
-          { flipped ? (
-            <View style={styles.buttonWrapper}>
-              <Button text="Draw another" onPress={this._drawAnother} />
-            </View>
-          ) : (
-            <ChooserButton
-              navigator={navigator}
-              title="Traits"
-              values={this.allTraits()}
-              selection={selectedTraits}
-              onChange={this._onTraitsChange}
-            />
-          ) }
+          { this.renderHeaderContent() }
         </View>
-        { nextCard ? (
-          <View styles={styles.cardWrapper}>
-            <TouchableWithoutFeedback onPress={this._flipCard}>
-              <FlipCard
-                style={[styles.flipCard, {
-                  width: cardWidth,
-                  height: cardHeight,
-                }]}
-                friction={6}
-                perspective={1000}
-                flipHorizontal
-                flipVertical={false}
-                flip={flipped}
-                clickable={false}
-                onFlipEnd={this._onFlipEnd}
-              >
-                <CachedImage
-                  style={styles.verticalCardImage}
-                  source={PLAYER_BACK}
-                  resizeMode="contain"
-                />
-                { nextCard && (
-                  <CachedImage
-                    style={styles.verticalCardImage}
-                    source={{
-                      uri: `https://arkhamdb.com/${nextCard.imagesrc}`,
-                    }}
-                    resizeMode="contain"
-                  />
-                ) }
-              </FlipCard>
-            </TouchableWithoutFeedback>
-          </View>
-        ) : this.renderNoWeaknessMessage() }
-        <View style={styles.bottomPadding} />
+        { this.renderCard() }
       </View>
     );
   }
 }
 
-export default connectRealm(WeaknessDrawComponent, {
-  schemas: ['Card'],
-  mapToProps(results) {
-    const cards = results.cards
-      .filtered(BASIC_WEAKNESS_QUERY)
-      .sorted([['name', false]]);
-    return {
-      cards,
-    };
-  },
-});
+export default withWeaknessCards(WeaknessDrawComponent);
 
 const styles = StyleSheet.create({
   container: {
@@ -271,29 +304,34 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   headerContainer: {
     flexDirection: 'column',
     width: '100%',
   },
   buttonWrapper: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     paddingTop: 8,
+  },
+  verticalCardImage: {
+    width: '100%',
+    height: '100%',
   },
   cardWrapper: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  verticalCardImage: {
-    height: '100%',
-    width: '100%',
-    justifyContent: 'flex-start',
-  },
-  bottomPadding: {
-    height: PADDING,
+    justifyContent: 'center',
   },
   flipCard: {
     borderWidth: 0,
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
+  errorText: {
+    marginTop: 8,
   },
 });

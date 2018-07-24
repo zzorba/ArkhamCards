@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import ChaosBagSection from '../ChaosBagSection';
 import CampaignNotesSection from './CampaignNotesSection';
 import InvestigatorNotesSection from './InvestigatorNotesSection';
+import WeaknessSetSection from './WeaknessSetSection';
 import { CUSTOM } from '../constants';
 import Button from '../../core/Button';
 import { updateCampaign, deleteCampaign } from '../actions';
@@ -207,6 +208,11 @@ class CampaignDetailView extends React.Component {
           navigator={navigator}
           chaosBag={campaign.chaosBag}
           updateChaosBag={this._updateChaosBag}
+        />
+        <WeaknessSetSection
+          navigator={navigator}
+          campaignId={campaign.id}
+          weaknessSet={campaign.weaknessSet}
         />
         <View style={styles.margin}>
           <Button color="red" onPress={this._deletePressed} text="Delete Campaign" />

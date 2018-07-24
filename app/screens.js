@@ -10,6 +10,8 @@ import CardImageView from '../components/CardImageView';
 import InvestigatorCardsView from '../components/InvestigatorCardsView';
 import AddScenarioResultView from '../components/campaign/AddScenarioResultView';
 import CampaignDetailView from '../components/campaign/CampaignDetailView';
+import CampaignEditWeaknessDialog from '../components/campaign/CampaignEditWeaknessDialog';
+import CampaignDrawWeaknessDialog from '../components/campaign/CampaignDrawWeaknessDialog';
 import CampaignDifficultyDialog from '../components/campaign/CampaignDifficultyDialog';
 import EditChaosBagDialog from '../components/campaign/EditChaosBagDialog';
 import MyCampaignsView from '../components/campaign/MyCampaignsView';
@@ -80,6 +82,8 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Dialog.Scenario', () => ScenarioDialog, store, Provider);
   Navigation.registerComponent('Dialog.Campaign', () => SelectCampaignDialog, store, Provider);
   Navigation.registerComponent('Dialog.CampaignDifficulty', () => CampaignDifficultyDialog, store, Provider);
+  Navigation.registerComponent('Dialog.CampaignDrawWeakness', () => CampaignDrawWeaknessDialog, store, Provider);
+  Navigation.registerComponent('Dialog.CampaignEditWeakness', () => CampaignEditWeaknessDialog, store, Provider);
   Navigation.registerComponent('Weakness.New', () => NewWeaknessSetDialog, store, Provider);
   Navigation.registerComponent('Weakness.Chooser', () => WeaknessSetChooserView, store, Provider);
   Navigation.registerComponent('Weakness.Detail', () => WeaknessSetView, store, Provider);

@@ -8,7 +8,7 @@ import {
 
 import AccordionItem from './AccordionItem';
 import SliderChooser from './SliderChooser';
-import ToggleFilter from './ToggleFilter';
+import ToggleFilter from '../core/ToggleFilter';
 import withFilterFunctions from './withFilterFunctions';
 
 class CardEnemyFilterView extends React.Component {

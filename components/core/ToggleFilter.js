@@ -5,6 +5,7 @@ import {
   Switch,
   Text,
   View,
+  ViewPropTypes,
 } from 'react-native';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
@@ -18,6 +19,7 @@ export default class ToggleFilter extends React.Component {
     setting: PropTypes.string.isRequired,
     value: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
+    style: ViewPropTypes.style,
   };
 
   constructor(props) {
@@ -52,8 +54,11 @@ export default class ToggleFilter extends React.Component {
   }
 
   render() {
+    const {
+      style,
+    } = this.props;
     return (
-      <View style={styles.row}>
+      <View style={[styles.row, style]}>
         <View style={styles.label}>
           { this.renderLabel() }
         </View>

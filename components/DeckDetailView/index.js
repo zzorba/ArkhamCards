@@ -247,7 +247,13 @@ class DeckDetailView extends React.Component {
     }));
     const problem = problemObj ? problemObj.reason : '';
 
-    saveDeck(deck.id, nameChange || deck.name, slots, problem, parsedDeck.spentXp).then(deck => {
+    saveDeck(
+      deck.id,
+      nameChange || deck.name,
+      slots,
+      problem,
+      parsedDeck.spentXp
+    ).then(deck => {
       updateDeck(deck.id, deck, true);
       this.setState({
         saving: false,

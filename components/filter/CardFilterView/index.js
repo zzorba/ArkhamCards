@@ -13,7 +13,7 @@ import SkillIconChooser from './SkillIconChooser';
 import AccordionItem from '../AccordionItem';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
-import ToggleFilter from '../ToggleFilter';
+import ToggleFilter from '../../core/ToggleFilter';
 import withFilterFunctions from '../withFilterFunctions';
 import NavButton from '../../core/NavButton';
 import { FACTION_CODES } from '../../../constants';

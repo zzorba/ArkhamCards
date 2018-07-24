@@ -5,8 +5,8 @@ import {
   View,
 } from 'react-native';
 
+import ToggleFilter from '../core/ToggleFilter';
 import SliderChooser from './SliderChooser';
-import ToggleFilter from './ToggleFilter';
 import withFilterFunctions from './withFilterFunctions';
 
 class CardLocationFilterView extends React.Component {

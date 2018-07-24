@@ -23,6 +23,7 @@ class MyDecksSelectorDialog extends React.Component {
     campaignId: PropTypes.number.isRequired,
     onDeckSelect: PropTypes.func.isRequired,
     selectedDeckIds: PropTypes.array,
+    showOnlySelectedDeckIds: PropTypes.bool,
     //  From redux
     otherCampaignDeckIds: PropTypes.array,
     decks: PropTypes.object,
@@ -50,7 +51,7 @@ class MyDecksSelectorDialog extends React.Component {
           id: 'close',
         },
       ],
-      rightButtons: [
+      rightButtons: props.showOnlySelectedDeckIds ? [] : [
         {
           icon: iconsMap.add,
           id: 'add',
@@ -60,9 +61,12 @@ class MyDecksSelectorDialog extends React.Component {
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
     this._deckSelected = this.deckSelected.bind(this);
-    this._toggleHideOtherCampaignInvestigators = this.toggleValue.bind(this, 'hideOtherCampaignInvestigators');
-    this._toggleOnlyShowPreviousCampaignMembers = this.toggleValue.bind(this, 'onlyShowPreviousCampaignMembers');
-    this._toggleHideEliminatedInvestigators = this.toggleValue.bind(this, 'hideEliminatedInvestigators');
+    this._toggleHideOtherCampaignInvestigators =
+      this.toggleValue.bind(this, 'hideOtherCampaignInvestigators');
+    this._toggleOnlyShowPreviousCampaignMembers =
+      this.toggleValue.bind(this, 'onlyShowPreviousCampaignMembers');
+    this._toggleHideEliminatedInvestigators =
+      this.toggleValue.bind(this, 'hideEliminatedInvestigators');
   }
 
   toggleValue(key) {
@@ -103,12 +107,16 @@ class MyDecksSelectorDialog extends React.Component {
   renderCustomHeader() {
     const {
       campaign,
+      showOnlySelectedDeckIds,
     } = this.props;
     const {
       hideOtherCampaignInvestigators,
       hideEliminatedInvestigators,
       onlyShowPreviousCampaignMembers,
     } = this.state;
+    if (showOnlySelectedDeckIds) {
+      return null;
+    }
     return (
       <View>
         <View style={styles.row}>
@@ -155,10 +163,14 @@ class MyDecksSelectorDialog extends React.Component {
       decks,
       campaign,
       investigators,
+      showOnlySelectedDeckIds,
     } = this.props;
     const {
       hideEliminatedInvestigators,
     } = this.state;
+    if (showOnlySelectedDeckIds) {
+      return [];
+    }
 
     const eliminatedInvestigators = !campaign ? [] :
       filter(
@@ -176,29 +188,54 @@ class MyDecksSelectorDialog extends React.Component {
     ));
   }
 
-  render() {
+  onlyDeckIds() {
     const {
-      navigator,
+      selectedDeckIds,
+      campaign,
+      showOnlySelectedDeckIds,
+    } = this.props;
+    const {
+      onlyShowPreviousCampaignMembers,
+    } = this.state;
+    if (showOnlySelectedDeckIds) {
+      return selectedDeckIds;
+    }
+    if (onlyShowPreviousCampaignMembers && campaign) {
+      return campaign.latestDeckIds;
+    }
+    return null;
+  }
+
+  filterDeckIds() {
+    const {
       selectedDeckIds,
       otherCampaignDeckIds,
-      campaign,
+      showOnlySelectedDeckIds,
     } = this.props;
     const {
       hideOtherCampaignInvestigators,
-      onlyShowPreviousCampaignMembers,
     } = this.state;
+    if (showOnlySelectedDeckIds) {
+      return [];
+    }
+    if (hideOtherCampaignInvestigators) {
+      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds));
+    }
+    return selectedDeckIds;
+  }
 
-    const filterDeckIds = hideOtherCampaignInvestigators ?
-      uniqBy(concat(otherCampaignDeckIds, selectedDeckIds)) :
-      selectedDeckIds;
+  render() {
+    const {
+      navigator,
+    } = this.props;
 
     return (
       <MyDecksComponent
         navigator={navigator}
         customHeader={this.renderCustomHeader()}
         deckClicked={this._deckSelected}
-        onlyDeckIds={onlyShowPreviousCampaignMembers && campaign ? campaign.latestDeckIds : null}
-        filterDeckIds={filterDeckIds}
+        onlyDeckIds={this.onlyDeckIds()}
+        filterDeckIds={this.filterDeckIds()}
         filterInvestigators={this.filterInvestigators()}
       />
     );
