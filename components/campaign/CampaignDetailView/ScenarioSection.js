@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { CUSTOM } from '../constants';
-import Button from '../../core/Button';
+import NavButton from '../../core/NavButton';
 import typography from '../../../styles/typography';
 
 export default class ScenarioSection extends React.Component {
@@ -31,7 +31,7 @@ export default class ScenarioSection extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign.AddResult',
-      title: 'Scenario Results',
+      title: 'Scenario Result',
       passProps: {
         id: campaign.id,
       },
@@ -76,43 +76,42 @@ export default class ScenarioSection extends React.Component {
       scenarioPack,
     } = this.props;
     return (
-      <View style={styles.underline}>
-        <Text style={[typography.bigLabel, styles.padding]}>
-          { name }
-        </Text>
-        { cycleCode !== CUSTOM && (
-          <View style={[styles.marginTop, styles.padding]}>
-            <Text style={typography.small}>
-              CAMPAIGN
-            </Text>
-            <Text style={typography.text}>
-              { scenarioPack.name }
-            </Text>
-          </View>
-        ) }
-        { !!difficulty && (
-          <View style={[styles.marginTop, styles.padding]}>
-            <Text style={typography.small}>
-              DIFFICULTY
-            </Text>
-            <Text style={typography.text}>
-              { capitalize(difficulty) }
-            </Text>
-          </View>
-        ) }
-        <View style={[styles.marginTop, styles.padding]}>
-          <Text style={typography.small}>
-            SCENARIOS
+      <View>
+        <View style={styles.underline}>
+          <Text style={[typography.bigLabel, styles.padding]}>
+            { name }
           </Text>
-          { this.renderCompletedScenarios() }
+          { cycleCode !== CUSTOM && (
+            <View style={[styles.marginTop, styles.padding]}>
+              <Text style={typography.small}>
+                CAMPAIGN
+              </Text>
+              <Text style={typography.text}>
+                { scenarioPack.name }
+              </Text>
+            </View>
+          ) }
+          { !!difficulty && (
+            <View style={[styles.marginTop, styles.padding]}>
+              <Text style={typography.small}>
+                DIFFICULTY
+              </Text>
+              <Text style={typography.text}>
+                { capitalize(difficulty) }
+              </Text>
+            </View>
+          ) }
+          <View style={[styles.marginTop, styles.padding]}>
+            <Text style={typography.small}>
+              SCENARIOS
+            </Text>
+            { this.renderCompletedScenarios() }
+          </View>
         </View>
-        <View style={styles.button}>
-          <Button
-            align="left"
-            text="Add Scenario Result"
-            onPress={this._addScenarioResult}
-          />
-        </View>
+        <NavButton
+          text="Add Scenario Result"
+          onPress={this._addScenarioResult}
+        />
       </View>
     );
   }
@@ -125,14 +124,10 @@ const styles = StyleSheet.create({
   },
   underline: {
     paddingBottom: 8,
-    marginBottom: 4,
     borderBottomWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#bdbdbd',
   },
   marginTop: {
     marginTop: 8,
-  },
-  button: {
-    marginTop: 4,
   },
 });

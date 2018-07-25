@@ -81,7 +81,7 @@ export default class ChaosTokenRow extends React.PureComponent {
           <PlusMinusButtons
             count={count}
             onChange={this._onChange}
-            size={28}
+            size={36}
             limit={limit}
           />
         </View>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     height: 60,
     borderBottomWidth: 1,
-    borderColor: '#222222',
+    borderColor: '#bdbdbd',
   },
   row: {
     flexDirection: 'row',

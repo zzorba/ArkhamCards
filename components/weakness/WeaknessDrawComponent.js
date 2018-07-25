@@ -61,6 +61,15 @@ class WeaknessDrawComponent extends React.Component {
     this._selectNextCard = this.selectNextCard.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.weaknessSet !== prevProps.weaknessSet && !this.state.flipped) {
+      /* eslint-disable react/no-did-update-set-state */
+      this.setState({
+        nextCard: this.nextCard(this.state.selectedTraits),
+      });
+    }
+  }
+
   onHeaderLayout(event) {
     this.setState({
       headerHeight: event.nativeEvent.layout.height,
@@ -92,9 +101,10 @@ class WeaknessDrawComponent extends React.Component {
       }
       newAssignedCards[nextCard.code]++;
 
-      updateDrawnCard(nextCard.code, newAssignedCards);
       this.setState({
         flipped: true,
+      }, () => {
+        updateDrawnCard(nextCard.code, newAssignedCards);
       });
     }
   }

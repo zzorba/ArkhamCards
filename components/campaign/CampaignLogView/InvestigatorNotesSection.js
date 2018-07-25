@@ -63,7 +63,7 @@ class InvestigatorNotesDeckDetail extends React.Component {
 export default listOfDecks(
   deckRowWithDetails(InvestigatorNotesDeckDetail, {
     compact: true,
-    viewDeckButton: true,
+    viewDeckButton: false,
   }), {
     deckLimit: null,
   });

@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, find } from 'lodash';
+import { find } from 'lodash';
 import {
   Alert,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ChaosBagSection from '../ChaosBagSection';
-import CampaignNotesSection from './CampaignNotesSection';
-import InvestigatorNotesSection from './InvestigatorNotesSection';
+import ChaosBagSection from './ChaosBagSection';
+import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
 import Button from '../../core/Button';
+import NavButton from '../../core/NavButton';
 import { updateCampaign, deleteCampaign } from '../actions';
 import { getCampaign, getAllPacks } from '../../../reducers';
-import typography from '../../../styles/typography';
 
 class CampaignDetailView extends React.Component {
   static propTypes = {
@@ -35,54 +33,24 @@ class CampaignDetailView extends React.Component {
   constructor(props) {
     super(props);
 
-    this._addDeck = this.addDeck.bind(this);
-    this._removeDeckPrompt = this.removeDeckPrompt.bind(this);
-    this._showCampaignNotesDialog = this.showCampaignNotesDialog.bind(this);
-    this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
+    this._viewCampaignLog = this.viewCampaignLog.bind(this);
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
-    this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
-    this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
   }
 
-  addDeck(deckId) {
+  viewCampaignLog() {
     const {
-      campaign: {
-        latestDeckIds,
-      },
+      navigator,
+      id,
     } = this.props;
-    const newLatestDeckIds = latestDeckIds.slice();
-    newLatestDeckIds.push(deckId);
-    this._updateLatestDeckIds(newLatestDeckIds);
-  }
-
-  removeDeck(removedDeckId) {
-    const {
-      campaign: {
-        latestDeckIds,
+    navigator.push({
+      screen: 'Campaign.Log',
+      title: 'Campaign Log',
+      passProps: {
+        id,
       },
-    } = this.props;
-    const newLatestDeckIds = filter(latestDeckIds, deckId => deckId !== removedDeckId);
-    this._updateLatestDeckIds(newLatestDeckIds);
-  }
-
-  removeDeckPrompt(removedDeckId, deck, investigator) {
-    Alert.alert(
-      `Remove ${investigator.name}?`,
-      `Are you sure you want to remove ${investigator.name} from this campaign?\n\nAll campaign log data associated with them will be lost (but the deck will remain on ArkhamDB).\n\nIf you are just swapping investigators for a scenario, it is okay to have more than 4 in the party.`,
-      [
-        {
-          text: 'Remove',
-          onPress: () => this.removeDeck(removedDeckId),
-          style: 'destructive',
-        },
-        {
-          text: 'Cancel',
-          style: 'cancel',
-        },
-      ],
-    );
+    });
   }
 
   applyCampaignUpdate(key, value) {
@@ -164,27 +132,11 @@ class CampaignDetailView extends React.Component {
           campaign={campaign}
           scenarioPack={scenarioPack}
         />
-        <View style={styles.section}>
-          <Text style={[typography.bigLabel, styles.padding]}>
-            Investigators
-          </Text>
-          <InvestigatorNotesSection
-            navigator={navigator}
-            campaignId={campaign.id}
-            campaign={campaign}
-            deckIds={campaign.latestDeckIds || []}
-            deckAdded={this._addDeck}
-            deckRemoved={this._removeDeckPrompt}
-          />
-        </View>
-        <View style={styles.section}>
-          <CampaignNotesSection
-            campaignNotes={campaign.campaignNotes}
-          />
-          <View style={styles.button}>
-            <Button text="Edit" align="left" onPress={this._showCampaignNotesDialog} />
-          </View>
-        </View>
+        <DecksSection
+          navigator={navigator}
+          campaign={campaign}
+        />
+        <NavButton text="Campaign Log" onPress={this._viewCampaignLog} />
         <ChaosBagSection
           navigator={navigator}
           chaosBag={campaign.chaosBag}
@@ -224,19 +176,8 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(CampaignDetailView);
 
 const styles = StyleSheet.create({
-  section: {
-    borderBottomWidth: 1,
-    borderColor: '#000000',
-    paddingBottom: 8,
-    marginBottom: 8,
-  },
   margin: {
     margin: 8,
-  },
-  padding: {
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingBottom: 4,
   },
   footer: {
     height: 100,

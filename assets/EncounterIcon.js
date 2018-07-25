@@ -158,7 +158,6 @@ export default class EncounterIcon extends React.PureComponent {
       case 'single_group':
         return this.standaloneIcon(encounter_code, size, color);
       case 'tfa':
-      case 'tbb': // THE BOUNDARY BEYOND
       case 'hote': // HEART OF THE ELDERS
       case 'tcoa': // THE CITY OF ARCHIVES
       case 'tdoy': // THE DEPTHS OF YOTH
@@ -167,6 +166,9 @@ export default class EncounterIcon extends React.PureComponent {
       case 'tof':
       case 'threads_of_fate':
         return this.forgottenIcon('threads_of_fate', size, color);
+      case 'tbb':
+      case 'the_boundary_beyond':
+        return this.forgottenIcon('the_boundary_beyond', size, color);
       case 'wilds':
         return this.forgottenIcon('the_untamed_wilds', size, color);
       case 'eztli':

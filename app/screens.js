@@ -10,6 +10,8 @@ import CardImageView from '../components/CardImageView';
 import InvestigatorCardsView from '../components/InvestigatorCardsView';
 import AddScenarioResultView from '../components/campaign/AddScenarioResultView';
 import CampaignDetailView from '../components/campaign/CampaignDetailView';
+import CampaignLogView from '../components/campaign/CampaignLogView';
+import CampaignDecksView from '../components/campaign/CampaignDecksView';
 import CampaignEditWeaknessDialog from '../components/campaign/CampaignEditWeaknessDialog';
 import CampaignDrawWeaknessDialog from '../components/campaign/CampaignDrawWeaknessDialog';
 import CampaignDifficultyDialog from '../components/campaign/CampaignDifficultyDialog';
@@ -63,6 +65,8 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('My.Campaigns', () => MyCampaignsView, store, Provider);
   Navigation.registerComponent('My.Decks', () => MyDecksView, store, Provider);
   Navigation.registerComponent('Campaign', () => CampaignDetailView, store, Provider);
+  Navigation.registerComponent('Campaign.Decks', () => CampaignDecksView, store, Provider);
+  Navigation.registerComponent('Campaign.Log', () => CampaignLogView, store, Provider);
   Navigation.registerComponent('Campaign.New', () => NewCampaignView, store, Provider);
   Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsDrawer, store, Provider);

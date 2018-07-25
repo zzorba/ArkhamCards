@@ -10,16 +10,20 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import typography from '../../styles/typography';
 
-export default function NavButton({ text, onPress, indent }) {
+export default function NavButton({ text, onPress, indent, children }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[
         styles.container,
         indent ? styles.indentedContainer : styles.bottomBorder,
       ]}>
-        <Text style={[styles.text, typography.text]} numberOfLines={1}>
-          { text }
-        </Text>
+        { text ? (
+          <View style={styles.text}>
+            <Text style={typography.text} numberOfLines={1}>
+              { text }
+            </Text>
+          </View>
+        ) : <View style={styles.flex}>{ children }</View> }
         <View style={styles.icon}>
           <MaterialIcons
             name="keyboard-arrow-right"
@@ -33,21 +37,18 @@ export default function NavButton({ text, onPress, indent }) {
 }
 
 NavButton.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   onPress: PropTypes.func.isRequired,
   indent: PropTypes.bool,
+  children: PropTypes.node,
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: 40,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 6,
-    paddingBottom: 6,
-    paddingLeft: 6,
   },
   bottomBorder: {
     borderBottomWidth: 1,
@@ -57,9 +58,16 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
   },
   text: {
+    paddingLeft: 6,
     flex: 1,
+    height: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
     width: 40,
+  },
+  flex: {
+    flex: 1,
   },
 });

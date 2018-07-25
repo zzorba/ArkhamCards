@@ -6,9 +6,9 @@ import {
   View,
 } from 'react-native';
 
-import Button from '../core/Button';
-import ChaosBagLine from '../core/ChaosBagLine';
-import typography from '../../styles/typography';
+import NavButton from '../../core/NavButton';
+import ChaosBagLine from '../../core/ChaosBagLine';
+import typography from '../../../styles/typography';
 
 export default class ChaosBagSection extends React.Component {
   static propTypes = {
@@ -43,31 +43,23 @@ export default class ChaosBagSection extends React.Component {
 
   render() {
     return (
-      <View style={styles.underline}>
-        <Text style={[typography.small, styles.margin]}>
-          CHAOS BAG
-        </Text>
-        <View style={[styles.margin, styles.marginTop]}>
-          <ChaosBagLine chaosBag={this.props.chaosBag} />
+      <NavButton onPress={this._showChaosBagDialog}>
+        <View style={styles.padding}>
+          <Text style={typography.text}>
+            Chaos Bag
+          </Text>
+          <View style={styles.marginTop}>
+            <ChaosBagLine chaosBag={this.props.chaosBag} />
+          </View>
         </View>
-        <View style={styles.marginTop}>
-          <Button text="Edit" align="left" onPress={this._showChaosBagDialog} />
-        </View>
-      </View>
+      </NavButton>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  margin: {
-    marginLeft: 8,
-    marginRight: 8,
-  },
-  underline: {
-    borderBottomWidth: 1,
-    borderColor: '#000000',
-    paddingBottom: 8,
-    marginBottom: 4,
+  padding: {
+    padding: 8,
   },
   marginTop: {
     marginTop: 8,

@@ -189,6 +189,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   investigatorSection: {
+    marginTop: 8,
     marginBottom: 16,
   },
   footer: {

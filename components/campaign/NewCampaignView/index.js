@@ -311,25 +311,33 @@ class NewCampaignView extends React.Component {
       difficulty,
     } = this.state;
     const chaosBag = this.getChaosBag();
+    const hasDefinedChaosBag = this.hasDefinedChaosBag();
     return (
-      <View style={styles.margin}>
-        <Text style={typography.bigLabel}>Chaos Bag</Text>
-        <View style={styles.topPadding}>
-          { this.hasDefinedChaosBag() ?
+      <View>
+        <Text style={[typography.bigLabel, styles.margin]}>
+          Chaos Bag
+        </Text>
+        { hasDefinedChaosBag && (
+          <View style={[styles.topPadding, styles.margin]}>
             <LabeledTextBox
               label="Difficulty"
               onPress={this._showDifficultyDialog}
               value={capitalize(difficulty)}
-            /> :
+            />
+          </View>
+        ) }
+        <View style={[styles.topPadding, styles.margin]}>
+          <ChaosBagLine chaosBag={chaosBag} />
+        </View>
+        { !hasDefinedChaosBag && (
+          <View style={styles.topPadding}>
             <Button
+              align="left"
               text="Customize Bag"
               onPress={this._showChaosBagDialog}
             />
-          }
-        </View>
-        <View style={styles.topPadding}>
-          <ChaosBagLine chaosBag={chaosBag} />
-        </View>
+          </View>
+        ) }
       </View>
     );
   }
@@ -371,8 +379,8 @@ class NewCampaignView extends React.Component {
       this._deleteCampaignNoteSection;
 
     return (
-      <View style={styles.margin}>
-        <Text style={typography.bigLabel}>
+      <View>
+        <Text style={[typography.bigLabel, styles.margin]}>
           Campaign Log Sections
         </Text>
         <View style={styles.margin}>
@@ -390,7 +398,9 @@ class NewCampaignView extends React.Component {
           )) }
         </View>
         { !this.hasDefinedChaosBag() && (
-          <Button text="Add Section" onPress={this._toggleCampaignLogDialog} />
+          <View style={styles.topPadding}>
+            <Button align="left" text="Add Section" onPress={this._toggleCampaignLogDialog} />
+          </View>
         ) }
       </View>
     );
@@ -509,7 +519,7 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     marginBottom: 4,
     borderBottomWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#bdbdbd',
   },
   footer: {
     height: 100,

@@ -10,6 +10,7 @@ import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
 import { parseDeck } from '../parseDeck';
 import * as Actions from '../../actions';
+import { iconsMap } from '../../app/NavIcons';
 import { saveDeck } from '../../lib/authApi';
 import DeckValidation from '../../lib/DeckValidation';
 import { getCampaign, getAllDecks } from '../../reducers';
@@ -42,14 +43,34 @@ class CampaignDrawWeaknessDialog extends React.Component {
       saving: false,
     };
 
-    props.navigator.setTitle({
-      title: 'Draw Basic Weaknesses',
-    });
-
     this._selectDeck = this.selectDeck.bind(this);
     this._updateDrawnCard = this.updateDrawnCard.bind(this);
     this._onPressInvestigator = this.onPressInvestigator.bind(this);
     this._toggleReplaceRandomBasicWeakness = this.toggleReplaceRandomBasicWeakness.bind(this);
+    props.navigator.setButtons({
+      rightButtons: [{
+        icon: iconsMap.edit,
+        id: 'edit',
+      }],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    const {
+      navigator,
+      campaignId,
+    } = this.props;
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'edit') {
+        navigator.push({
+          screen: 'Dialog.CampaignEditWeakness',
+          passProps: {
+            campaignId: campaignId,
+          },
+        });
+      }
+    }
   }
 
   toggleReplaceRandomBasicWeakness() {

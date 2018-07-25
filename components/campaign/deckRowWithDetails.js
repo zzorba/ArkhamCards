@@ -14,8 +14,11 @@ import * as Actions from '../../actions';
 import { getDeck } from '../../reducers';
 
 function mapStateToProps(state, props) {
+  const deck = getDeck(state, props.id);
+  const previousDeck = deck && deck.previous_deck && getDeck(state, deck.previous_deck);
   return {
-    deck: getDeck(state, props.id),
+    deck,
+    previousDeck,
   };
 }
 

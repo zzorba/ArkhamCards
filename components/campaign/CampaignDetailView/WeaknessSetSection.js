@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import Button from '../../core/Button';
+import NavButton from '../../core/NavButton';
 import WeaknessSetView from '../../weakness/WeaknessSetView';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
 import typography from '../../../styles/typography';
@@ -23,17 +23,17 @@ class WeaknessSetSection extends React.Component {
   constructor(props) {
     super(props);
 
-    this._showEditDialog = this.pushScreen.bind(this, 'Dialog.CampaignEditWeakness');
-    this._showDrawDialog = this.pushScreen.bind(this, 'Dialog.CampaignDrawWeakness');
+    this._showDrawDialog = this.showDrawDialog.bind(this);
   }
 
-  pushScreen(screen) {
+  showDrawDialog() {
     const {
       navigator,
       campaignId,
     } = this.props;
     navigator.push({
-      screen,
+      screen: 'Dialog.CampaignDrawWeakness',
+      title: 'Draw Weaknesses',
       passProps: {
         campaignId,
       },
@@ -50,20 +50,16 @@ class WeaknessSetSection extends React.Component {
       return null;
     }
     return (
-      <View style={styles.underline}>
-        <Text style={[typography.small, styles.padding]}>
-          BASIC WEAKNESSES
-        </Text>
-        <Text style={[typography.small, styles.padding]}>
-          { `${counts.assigned} / ${counts.total} have been drawn.` }
-        </Text>
-        <View style={styles.marginTop}>
-          <Button text="Edit Available Cards" align="left" onPress={this._showEditDialog} />
+      <NavButton onPress={this._showDrawDialog}>
+        <View style={styles.padding}>
+          <Text style={typography.text}>
+            Basic Weakness Set
+          </Text>
+          <Text style={typography.small}>
+            { `${counts.assigned} / ${counts.total} have been drawn.` }
+          </Text>
         </View>
-        <View style={styles.marginTop}>
-          <Button text="Draw Weaknesses" align="left" onPress={this._showDrawDialog} />
-        </View>
-      </View>
+      </NavButton>
     );
   }
 }
@@ -72,16 +68,6 @@ export default withWeaknessCards(WeaknessSetSection);
 
 const styles = StyleSheet.create({
   padding: {
-    paddingLeft: 8,
-    paddingRight: 8,
-  },
-  underline: {
-    paddingBottom: 8,
-    marginBottom: 4,
-    borderBottomWidth: 1,
-    borderColor: '#000000',
-  },
-  marginTop: {
-    marginTop: 8,
+    padding: 6,
   },
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, map, last } from 'lodash';
+import { last } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -11,9 +11,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 
+import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { CUSTOM } from '../constants';
-import InvestigatorImage from '../../core/InvestigatorImage';
-import { getDecks } from '../../../reducers';
 import typography from '../../../styles/typography';
 
 class CampaignItem extends React.Component {
@@ -22,7 +21,6 @@ class CampaignItem extends React.Component {
     onPress: PropTypes.func.isRequired,
     latestScenario: PropTypes.object,
     scenarioPack: PropTypes.object,
-    decks: PropTypes.array,
     investigators: PropTypes.object,
   };
 
@@ -94,10 +92,7 @@ class CampaignItem extends React.Component {
     const {
       campaign,
       investigators,
-      decks,
     } = this.props;
-    const latestInvestigators = flatMap(decks,
-      deck => investigators[deck.investigator_code]);
     return (
       <TouchableOpacity onPress={this._onPress}>
         <LinearGradient colors={['#ffffff', '#dddddd']} style={styles.container}>
@@ -106,13 +101,10 @@ class CampaignItem extends React.Component {
           </Text>
           { this.renderCampaign() }
           { this.renderLastScenario() }
-          <View style={styles.row}>
-            { map(latestInvestigators, card => (
-              <View key={card.code} style={styles.investigator}>
-                <InvestigatorImage card={card} small />
-              </View>
-            )) }
-          </View>
+          <CampaignInvestigatorRow
+            campaign={campaign}
+            investigators={investigators}
+          />
         </LinearGradient>
       </TouchableOpacity>
     );
@@ -123,7 +115,6 @@ function mapStateToProps(state, props) {
   const latestScenario = last(props.campaign.scenarioResults);
   return {
     latestScenario,
-    decks: getDecks(state, props.campaign.latestDeckIds || []),
   };
 }
 
@@ -137,17 +128,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    padding: 8,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 8,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
-  },
-  row: {
-    marginTop: 8,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  investigator: {
-    marginRight: 8,
   },
   marginTop: {
     marginTop: 4,
