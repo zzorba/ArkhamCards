@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 import { values } from 'lodash';
 import {
   FlatList,
+  Text,
+  StyleSheet,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import WeaknessSetRow from './WeaknessSetRow';
 import { BASIC_WEAKNESS_QUERY } from '../../../data/query';
 import * as Actions from '../../../actions';
 import { iconsMap } from '../../../app/NavIcons';
-import WeaknessSetRow from './WeaknessSetRow';
+import typography from '../../../styles/typography';
 
 class WeaknessSetChooserView extends React.Component {
   static propTypes = {
@@ -26,7 +29,7 @@ class WeaknessSetChooserView extends React.Component {
 
     this._extractKey = this.extractKey.bind(this);
     this._renderItem = this.renderItem.bind(this);
-
+    this._renderFooter = this.renderFooter.bind(this);
     props.navigator.setButtons({
       rightButtons: [
         {
@@ -66,6 +69,16 @@ class WeaknessSetChooserView extends React.Component {
     return `${item.id}`;
   }
 
+  renderFooter() {
+    return (
+      <Text style={[typography.small, styles.margin]}>
+        Note: This weakness set chooser will probably go away in a future
+        version of the app. It's functionality has been folded into the campaign
+        tracker.
+      </Text>
+    );
+  }
+
   render() {
     const {
       weaknesses,
@@ -76,6 +89,7 @@ class WeaknessSetChooserView extends React.Component {
           data={weaknesses}
           keyExtractor={this._extractKey}
           renderItem={this._renderItem}
+          ListFooterComponent={this._renderFooter}
         />
       </View>
     );
@@ -102,3 +116,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(
     },
   })
 );
+
+const styles = StyleSheet.create({
+  margin: {
+    margin: 8,
+  },
+});

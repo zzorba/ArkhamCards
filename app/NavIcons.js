@@ -25,6 +25,7 @@ const icons = {
   faq: [28, COLORS.button, AppIcon],
   flip_card: [28, COLORS.button, AppIcon],
   book: [26, COLORS.button, AppIcon],
+  share: [28, COLORS.button, AppIcon],
 };
 
 const defaultIconProvider = MaterialIcons;

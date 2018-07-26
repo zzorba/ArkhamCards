@@ -175,6 +175,7 @@ class AddScenarioResultView extends React.Component {
     const {
       scenario,
       investigatorData,
+      xp,
     } = this.state;
     const deckIds = this.deckIds();
     const deckUpdates = this.deckUpdates();
@@ -218,6 +219,7 @@ class AddScenarioResultView extends React.Component {
           deckIds,
           scenario,
           investigatorData,
+          xp
         );
         navigator.pop();
       }

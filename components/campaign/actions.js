@@ -78,6 +78,7 @@ export function addScenarioResult(
   deckIds,
   { scenario, scenarioCode, resolution },
   investigatorData,
+  xp,
 ) {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
@@ -89,6 +90,7 @@ export function addScenarioResult(
       scenario,
       scenarioCode,
       resolution,
+      xp,
     },
     now: new Date(),
   };

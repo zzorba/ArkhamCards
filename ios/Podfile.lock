@@ -9,7 +9,7 @@ PODS:
     - AppCenter/Core (= 1.6.1)
 
 DEPENDENCIES:
-  - AppAuth (>= 0.91)
+  - AppAuth (~> 0.91)
   - AppCenter/Analytics (~> 1.6.1)
   - AppCenter/Crashes (~> 1.6.1)
   - AppCenterReactNativeShared (~> 1.5.1)
@@ -25,6 +25,6 @@ SPEC CHECKSUMS:
   AppCenter: f9eb653a45cece34549232f295aec05260dfc24f
   AppCenterReactNativeShared: 5b40dc5bbaf891697d1982e0ae0e9b1120dd4274
 
-PODFILE CHECKSUM: b849d3d33f0fe40b355c3debe1d2dd2bc951a1e0
+PODFILE CHECKSUM: 038a2cead7be05da6b0bbb0e5ac90a4af682fed0
 
 COCOAPODS: 1.5.2

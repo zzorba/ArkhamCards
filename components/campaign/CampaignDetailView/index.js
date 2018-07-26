@@ -4,6 +4,7 @@ import { find } from 'lodash';
 import {
   Alert,
   ScrollView,
+  Share,
   StyleSheet,
   View,
 } from 'react-native';
@@ -14,10 +15,13 @@ import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
+import { campaignToText } from '../campaignUtil';
+import withPlayerCards from '../../withPlayerCards';
 import Button from '../../core/Button';
 import NavButton from '../../core/NavButton';
+import { iconsMap } from '../../../app/NavIcons';
 import { updateCampaign, deleteCampaign } from '../actions';
-import { getCampaign, getAllPacks } from '../../../reducers';
+import { getCampaign, getAllPacks, getAllDecks } from '../../../reducers';
 
 class CampaignDetailView extends React.Component {
   static propTypes = {
@@ -28,6 +32,8 @@ class CampaignDetailView extends React.Component {
     deleteCampaign: PropTypes.func.isRequired,
     campaign: PropTypes.object,
     scenarioPack: PropTypes.object,
+    decks: PropTypes.object,
+    investigators: PropTypes.object,
   };
 
   constructor(props) {
@@ -37,6 +43,34 @@ class CampaignDetailView extends React.Component {
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
+
+    props.navigator.setButtons({
+      rightButtons: [{
+        icon: iconsMap.share,
+        id: 'share',
+      }],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    const {
+      navigator,
+      campaign,
+      scenarioPack,
+      decks,
+      investigators,
+    } = this.props;
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'share') {
+        Share.share({
+          text: campaign.name,
+          message: campaignToText(campaign, scenarioPack, decks, investigators),
+        }, {
+          subject: campaign.name,
+        });
+      }
+    }
   }
 
   viewCampaignLog() {
@@ -163,6 +197,7 @@ function mapStateToProps(state, props) {
     campaign: campaign,
     scenarioPack: campaign && find(packs, pack => pack.code === campaign.cycleCode),
     packs: packs,
+    decks: getAllDecks(state),
   };
 }
 
@@ -173,7 +208,9 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampaignDetailView);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withPlayerCards(CampaignDetailView)
+);
 
 const styles = StyleSheet.create({
   margin: {
