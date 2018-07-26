@@ -30,13 +30,15 @@
 #import "OIDTokenRequest.h"
 #import "OIDTokenResponse.h"
 #import "OIDURLQueryComponent.h"
-#import "OIDURLSessionProvider.h"
 
 /*! @brief Path appended to an OpenID Connect issuer for discovery
     @see https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig
  */
 static NSString *const kOpenIDConfigurationWellKnownPath = @".well-known/openid-configuration";
 
+/*! @brief The state authorization parameter.
+ */
+static NSString *const kStateParameter = @"state";
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -124,25 +126,25 @@ NS_ASSUME_NONNULL_BEGIN
                                     underlyingError:nil];
   }
 
+  // verifies that the state in the response matches the state in the request, or both are nil
+  if (!OIDIsEqualIncludingNil(_request.state, query.dictionaryValue[kStateParameter])) {
+    NSMutableDictionary *userInfo = [query.dictionaryValue mutableCopy];
+    userInfo[NSLocalizedDescriptionKey] =
+        [NSString stringWithFormat:@"State mismatch, expecting %@ but got %@ in authorization "
+                                    "response %@",
+                                   _request.state,
+                                   response.state,
+                                   response];
+    response = nil;
+    error = [NSError errorWithDomain:OIDOAuthAuthorizationErrorDomain
+                                code:OIDErrorCodeOAuthAuthorizationClientError
+                            userInfo:userInfo];
+  }
+
   // no error, should be a valid OAuth 2.0 response
   if (!error) {
     response = [[OIDAuthorizationResponse alloc] initWithRequest:_request
                                                       parameters:query.dictionaryValue];
-      
-    // verifies that the state in the response matches the state in the request, or both are nil
-    if (!OIDIsEqualIncludingNil(_request.state, response.state)) {
-      NSMutableDictionary *userInfo = [query.dictionaryValue mutableCopy];
-      userInfo[NSLocalizedDescriptionKey] =
-        [NSString stringWithFormat:@"State mismatch, expecting %@ but got %@ in authorization "
-                                   "response %@",
-                                   _request.state,
-                                   response.state,
-                                   response];
-      response = nil;
-      error = [NSError errorWithDomain:OIDOAuthAuthorizationErrorDomain
-                                  code:OIDErrorCodeOAuthAuthorizationClientError
-                              userInfo:userInfo];
-      }
   }
 
   [_UICoordinator dismissAuthorizationAnimated:YES
@@ -189,7 +191,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)discoverServiceConfigurationForDiscoveryURL:(NSURL *)discoveryURL
     completion:(OIDDiscoveryCallback)completion {
 
-  NSURLSession *session = [OIDURLSessionProvider session];
+  NSURLSession *session = [NSURLSession sharedSession];
   NSURLSessionDataTask *task =
       [session dataTaskWithURL:discoveryURL
              completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -259,7 +261,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)performTokenRequest:(OIDTokenRequest *)request callback:(OIDTokenCallback)callback {
   NSURLRequest *URLRequest = [request URLRequest];
-  NSURLSession *session = [OIDURLSessionProvider session];
+  NSURLSession *session = [NSURLSession sharedSession];
   [[session dataTaskWithRequest:URLRequest
               completionHandler:^(NSData *_Nullable data,
                                   NSURLResponse *_Nullable response,
@@ -370,7 +372,7 @@ NS_ASSUME_NONNULL_BEGIN
     return;
   }
 
-  NSURLSession *session = [OIDURLSessionProvider session];
+  NSURLSession *session = [NSURLSession sharedSession];
   [[session dataTaskWithRequest:URLRequest
               completionHandler:^(NSData *_Nullable data,
                                   NSURLResponse *_Nullable response,

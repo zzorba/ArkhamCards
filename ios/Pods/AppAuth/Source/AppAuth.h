@@ -36,7 +36,6 @@
 #import "OIDTokenRequest.h"
 #import "OIDTokenResponse.h"
 #import "OIDTokenUtilities.h"
-#import "OIDURLSessionProvider.h"
 
 #if TARGET_OS_TV
 #elif TARGET_OS_WATCH
