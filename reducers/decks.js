@@ -1,6 +1,7 @@
 import { filter, forEach, map, reverse } from 'lodash';
 
 import {
+  LOGOUT,
   MY_DECKS_START_REFRESH,
   MY_DECKS_ERROR,
   SET_MY_DECKS,
@@ -30,6 +31,9 @@ function updateDeck(state, action) {
 }
 
 export default function(state = DEFAULT_DECK_STATE, action) {
+  if (action.type === LOGOUT) {
+    return DEFAULT_DECK_STATE;
+  }
   if (action.type === MY_DECKS_START_REFRESH) {
     return Object.assign({},
       state,

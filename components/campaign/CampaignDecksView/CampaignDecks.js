@@ -43,7 +43,7 @@ class CampaignDeckDetail extends React.Component {
               EXPERIENCE
             </Text>
             <Text style={typography.text}>
-              { `${deck.xp || 0} available. ${parsedDeck.spentXP || 0} spent` }
+              { `${deck.xp || 0} available. ${parsedDeck.spentXp || 0} spent` }
             </Text>
           </View>
         ) }

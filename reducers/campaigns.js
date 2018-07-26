@@ -1,6 +1,7 @@
 import { forEach, keys, map, uniqBy } from 'lodash';
 
 import {
+  LOGOUT,
   SET_MY_DECKS,
   NEW_DECK_AVAILABLE,
   NEW_CAMPAIGN,
@@ -60,6 +61,9 @@ const DEFAULT_CAMPAIGNS_STATE = {
 };
 
 export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
+  if (action.type === LOGOUT) {
+    return DEFAULT_CAMPAIGNS_STATE;
+  }
   if (action.type === DELETE_CAMPAIGN) {
     const newCampaigns = Object.assign({}, state.all);
     delete newCampaigns[action.id];
