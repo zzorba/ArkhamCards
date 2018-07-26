@@ -1022,21 +1022,21 @@ anymatch@^1.3.0:
     micromatch "^2.1.5"
     normalize-path "^2.0.0"
 
-appcenter-analytics@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-1.6.0.tgz#c000e6b5fc12fafcd90f019e9321e30cf369e377"
+appcenter-analytics@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-1.7.1.tgz#8d8b72dca11f320933de015e9e32570f07991e0d"
   dependencies:
-    appcenter "1.6.0"
+    appcenter "1.7.1"
 
-appcenter-crashes@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-1.6.0.tgz#de385b858c310a24a61d46e7efd234ce5cea0a94"
+appcenter-crashes@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-1.7.1.tgz#b414fb92b2c4c9be78c9f254a9967b9ca49ca225"
   dependencies:
-    appcenter "1.6.0"
+    appcenter "1.7.1"
 
-appcenter-link-scripts@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-1.6.0.tgz#75d7364de953661f43e3792f8d3cefeea0359254"
+appcenter-link-scripts@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-1.7.1.tgz#ba0ea093a4af1ab4b9b8b6ceeeaa1da4730ace45"
   dependencies:
     debug "^2.2.0"
     glob "^5.0.15"
@@ -1046,11 +1046,11 @@ appcenter-link-scripts@1.6.0:
     which "^1.2.11"
     xcode "^1.0.0"
 
-appcenter@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-1.6.0.tgz#07bbc5d20d8b48064ce3a359aac360b0d5e079e8"
+appcenter@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-1.7.1.tgz#76a4e801d5172c318423bc439b61a5dfdabc0afd"
   dependencies:
-    appcenter-link-scripts "1.6.0"
+    appcenter-link-scripts "1.7.1"
 
 append-transform@^1.0.0:
   version "1.0.0"
@@ -1248,15 +1248,15 @@ babel-core@^6.0.0, babel-core@^6.24.1, babel-core@^6.26.0, babel-core@^6.7.2:
     slash "^1.0.0"
     source-map "^0.5.6"
 
-babel-eslint@8.2.5:
-  version "8.2.5"
-  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-8.2.5.tgz#dc2331c259d36782aa189da510c43dedd5adc7a3"
+babel-eslint@8.2.6:
+  version "8.2.6"
+  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-8.2.6.tgz#6270d0c73205628067c0f7ae1693a9e797acefd9"
   dependencies:
     "@babel/code-frame" "7.0.0-beta.44"
     "@babel/traverse" "7.0.0-beta.44"
     "@babel/types" "7.0.0-beta.44"
     babylon "7.0.0-beta.44"
-    eslint-scope "~3.7.1"
+    eslint-scope "3.7.1"
     eslint-visitor-keys "^1.0.0"
 
 babel-generator@^6.18.0, babel-generator@^6.26.0:
@@ -2732,16 +2732,16 @@ eslint-plugin-react@7.10.0:
     jsx-ast-utils "^2.0.1"
     prop-types "^15.6.2"
 
-eslint-scope@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.0.tgz#50bf3071e9338bcdc43331794a0cb533f0136172"
+eslint-scope@3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-3.7.1.tgz#3d63c3edfda02e06e01a452ad88caacc7cdcb6e8"
   dependencies:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-scope@~3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-3.7.1.tgz#3d63c3edfda02e06e01a452ad88caacc7cdcb6e8"
+eslint-scope@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.0.tgz#50bf3071e9338bcdc43331794a0cb533f0136172"
   dependencies:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
@@ -2754,9 +2754,9 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.1.0.tgz#2ed611f1ce163c0fb99e1e0cda5af8f662dff645"
+eslint@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-5.2.0.tgz#3901ae249195d473e633c4acbc370068b1c964dc"
   dependencies:
     ajv "^6.5.0"
     babel-code-frame "^6.26.0"
@@ -2774,7 +2774,7 @@ eslint@5.1.0:
     functional-red-black-tree "^1.0.1"
     glob "^7.1.2"
     globals "^11.7.0"
-    ignore "^3.3.3"
+    ignore "^4.0.2"
     imurmurhash "^0.1.4"
     inquirer "^5.2.0"
     is-resolvable "^1.1.0"
@@ -3615,9 +3615,9 @@ ieee754@^1.1.4:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.11.tgz#c16384ffe00f5b7835824e67b6f2bd44a5229455"
 
-ignore@^3.3.3:
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.7.tgz#612289bfb3c220e186a58118618d5be8c1bab021"
+ignore@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.2.tgz#0a8dd228947ec78c2d7f736b1642a9f7317c1905"
 
 image-size@^0.6.0:
   version "0.6.2"
@@ -5696,9 +5696,9 @@ react-native-flip-card@3.5.2:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-keychain@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-2.0.0.tgz#5e6ae75d66d2737a0b38a95c903b6d6f966dd475"
+react-native-keychain@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-3.0.0.tgz#29da1dfa43c2581f76bf9420914fd38a1558cf18"
 
 react-native-linear-gradient@2.4.0:
   version "2.4.0"
@@ -5721,9 +5721,9 @@ react-native-modal@^6.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-react-native-navigation@1.1.463:
-  version "1.1.463"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.463.tgz#6f06e1057665e7618810c051d9b94b01e4f27e13"
+react-native-navigation@1.1.478:
+  version "1.1.478"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.478.tgz#70430c60cafb36f306f8a9558092bdd854cc6d17"
   dependencies:
     lodash "4.x.x"
 
@@ -5956,9 +5956,9 @@ realm-query@0.0.7:
   dependencies:
     lodash "^4.17.4"
 
-realm@2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-2.12.0.tgz#69eb4491f648864ea5be6e874881a938fa448d76"
+realm@2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-2.14.0.tgz#47c4b4459c6bac3e5965da44fc4b51617cc34d66"
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"
@@ -6298,7 +6298,14 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
 
-rn-fetch-blob@0.10.11, rn-fetch-blob@^0.10.11:
+rn-fetch-blob@0.10.12:
+  version "0.10.12"
+  resolved "https://registry.yarnpkg.com/rn-fetch-blob/-/rn-fetch-blob-0.10.12.tgz#7b9a309149eb136a1b063b282a1847a205297924"
+  dependencies:
+    base-64 "0.1.0"
+    glob "7.0.6"
+
+rn-fetch-blob@^0.10.11:
   version "0.10.11"
   resolved "https://registry.yarnpkg.com/rn-fetch-blob/-/rn-fetch-blob-0.10.11.tgz#5c55c90c59eb7d064770416a980eedecc909594d"
   dependencies:

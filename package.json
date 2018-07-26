@@ -11,9 +11,9 @@
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "1.0.0",
     "@redux-offline/redux-offline": "2.4.0",
-    "appcenter": "1.6.0",
-    "appcenter-analytics": "1.6.0",
-    "appcenter-crashes": "1.6.0",
+    "appcenter": "1.7.1",
+    "appcenter-analytics": "1.7.1",
+    "appcenter-crashes": "1.7.1",
     "capitalize": "1.0.0",
     "date-fns": "1.29.0",
     "hoist-non-react-statics": "2.5.5",
@@ -28,10 +28,10 @@
     "react-native-dialog": "5.1.0",
     "react-native-elements": "1.0.0-beta2",
     "react-native-flip-card": "3.5.2",
-    "react-native-keychain": "2.0.0",
+    "react-native-keychain": "3.0.0",
     "react-native-linear-gradient": "2.4.0",
     "react-native-markdown-view": "1.1.4",
-    "react-native-navigation": "1.1.463",
+    "react-native-navigation": "1.1.478",
     "react-native-progress": "3.5.0",
     "react-native-realm": "0.1.2",
     "react-native-svg": "6.4.1",
@@ -40,35 +40,38 @@
     "react-native-vector-icons": "4.6.0",
     "react-native-zoom-view": "1.0.2",
     "react-redux": "5.0.7",
-    "realm": "2.12.0",
+    "realm": "2.14.0",
     "realm-query": "0.0.7",
     "redux": "4.0.0",
     "redux-logger": "3.0.6",
     "redux-persist": "5.10.0",
     "redux-thunk": "2.3.0",
-    "rn-fetch-blob": "0.10.11",
+    "rn-fetch-blob": "0.10.12",
     "simple-markdown": "0.4.1",
     "yarn": "1.7.0"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.5",
-    "babel-jest": "23.4.0",
+    "babel-eslint": "8.2.6",
+    "babel-jest": "23.4.1",
     "babel-preset-react-native": "5.0.1",
-    "eslint": "5.1.0",
+    "eslint": "5.2.0",
     "eslint-config-google": "0.9.1",
     "eslint-plugin-destructuring": "2.1.0",
     "eslint-plugin-react": "7.10.0",
     "eslint-plugin-react-native": "3.2.1",
     "jest": "23.4.0",
     "react-native-clean-project": "2.0.0",
-    "react-test-renderer": "16.3.0"
+    "react-test-renderer": "16.4.1"
   },
   "jest": {
     "preset": "react-native",
     "setupFiles": [
       "./node_modules/appcenter/test/AppCenterMock.js",
       "./node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
-      "./node_modules/appcenter-crashes/test/AppCenterCrashesMock.js"
+      "./node_modules/appcenter-crashes/test/AppCenterCrashesMock.js",
+      "<rootDir>/node_modules/appcenter/test/AppCenterMock.js",
+      "<rootDir>/node_modules/appcenter-crashes/test/AppCenterCrashesMock.js",
+      "<rootDir>/node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js"
     ]
   }
 }
