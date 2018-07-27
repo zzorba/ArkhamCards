@@ -1,4 +1,5 @@
-export default {
+import { concat, forEach } from 'lodash';
+const defaultFilterState = {
   factions: [],
   uses: [],
   types: [],
@@ -12,11 +13,9 @@ export default {
   encounters: [],
   illustrators: [],
   levelEnabled: false,
-  level: [0, 5],
   exceptional: false,
   nonExceptional: false,
   costEnabled: false,
-  cost: [0, 6],
   victory: false,
   vengeance: false,
   skillEnabled: false,
@@ -33,22 +32,15 @@ export default {
     doubleIcons: false,
   },
   shroudEnabled: false,
-  shroud: [0, 6],
   cluesEnabled: false,
-  clues: [0, 6],
   cluesFixed: false,
   enemyKeywordsEnabled: false,
   enemyHealthEnabled: false,
-  enemyHealth: [0, 10],
   enemyHealthPerInvestigator: false,
   enemyDamageEnabled: false,
-  enemyDamage: [0, 5],
   enemyHorrorEnabled: false,
-  enemyHorror: [0, 5],
   enemyFightEnabled: false,
-  enemyFight: [0, 6],
   enemyEvadeEnabled: false,
-  enemyEvade: [0, 6],
   // Misc traits
   enemyElite: false,
   enemyNonElite: false,
@@ -61,4 +53,93 @@ export default {
   enemyPrey: false,
   enemyAloof: false,
   enemyMassive: false,
+  // Slider controls that are dynamically sized
+  level: [0, 5],
+  cost: [0, 6],
+  shroud: [0, 6],
+  clues: [0, 6],
+  enemyHealth: [0, 10],
+  enemyDamage: [0, 5],
+  enemyHorror: [0, 5],
+  enemyFight: [0, 6],
+  enemyEvade: [0, 6],
 };
+
+function update(value, minMax) {
+  if (value === null || value < 0) {
+    return minMax;
+  }
+  return [
+    Math.min(value, minMax[0]),
+    Math.max(value, minMax[1]),
+  ];
+}
+
+export default function calculateDefaultFilterState(cards) {
+  const fields = [
+    'xp',
+    'cost',
+  ];
+  const locationFields = [
+    'shroud',
+    'clues',
+  ];
+  const enemyFields = [
+    'health',
+    'enemy_damage',
+    'enemy_horror',
+    'enemy_fight',
+    'enemy_evade',
+  ];
+
+  const result = {};
+  forEach(concat(fields, concat(locationFields, enemyFields)), field => {
+    result[field] = [10, 0];
+  });
+  forEach(cards, card => {
+    forEach(fields, field => {
+      result[field] = update(card[field], result[field]);
+      if (card.linked_card) {
+        result[field] = update(card.linked_card[field], result[field]);
+      }
+    });
+    if (card.type_code === 'location') {
+      forEach(locationFields, field => {
+        result[field] = update(card[field], result[field]);
+      });
+    }
+    if (card.type_code === 'enemy') {
+      forEach(enemyFields, field => {
+        result[field] = update(card[field], result[field]);
+      });
+    }
+    if (card.linked_card) {
+      if (card.linked_card.type_code === 'location') {
+        forEach(locationFields, field => {
+          result[field] = update(card.linked_card[field], result[field]);
+        });
+      }
+      if (card.linked_card.type_code === 'enemy') {
+        forEach(enemyFields, field => {
+          result[field] = update(card.linked_card[field], result[field]);
+        });
+      }
+    }
+  });
+
+  return Object.assign(
+    {},
+    defaultFilterState,
+    {
+      level: result.xp,
+      cost: result.cost,
+      shroud: result.shroud,
+      clues: result.clues,
+      enemyHealth: result.health,
+      enemyDamage: result.enemy_damage,
+      enemyHorror: result.enemy_horror,
+      enemyFight: result.enemy_fight,
+      enemyEvade: result.enemy_evade,
+    },
+  );
+}

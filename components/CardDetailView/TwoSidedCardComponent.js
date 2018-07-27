@@ -33,6 +33,16 @@ const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={12} color="#000000" />
 );
 
+function num(value) {
+  if (value === null) {
+    return '-';
+  }
+  if (value < 0) {
+    return 'X';
+  }
+  return value;
+}
+
 export default class TwoSidedCardComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -217,18 +227,18 @@ export default class TwoSidedCardComponent extends React.Component {
     if (card.type_code === 'enemy') {
       return (
         <Text>
-          { `Fight: ${card.enemy_fight || '-'}. Health: ${card.health || '-'}` }
+          { `Fight: ${num(card.enemy_fight)}. Health: ${num(card.health)}` }
           { !!card.health_per_investigator && PER_INVESTIGATOR_ICON }
-          { `. Evade: ${card.enemy_evade || '-'}. ` }
+          { `. Evade: ${num(card.enemy_evade)}. ` }
           { '\n' }
-          { `Damage: ${card.enemy_damage || '-'}. Horror: ${card.enemy_horror || '-'}. ` }
+          { `Damage: ${num(card.enemy_damage)}. Horror: ${num(card.enemy_horror)}. ` }
         </Text>
       );
     }
     if (card.health > 0 || card.sanity > 0) {
       return (
         <Text>
-          { `Health: ${card.health || '-'}. Sanity: ${card.sanity || '-'}.` }
+          { `Health: ${num(card.health)}. Sanity: ${num(card.sanity)}.` }
         </Text>
       );
     }

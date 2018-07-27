@@ -15,6 +15,7 @@ class CardEnemyFilterView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     filters: PropTypes.object,
+    defaultFilterState: PropTypes.object.isRequired,
     width: PropTypes.number,
     onToggleChange: PropTypes.func.isRequired,
     onFilterChange: PropTypes.func.isRequired,
@@ -133,6 +134,7 @@ class CardEnemyFilterView extends React.Component {
 
   render() {
     const {
+      defaultFilterState,
       filters: {
         enemyHealth,
         enemyHealthEnabled,
@@ -156,7 +158,7 @@ class CardEnemyFilterView extends React.Component {
         <SliderChooser
           label="Fight"
           width={width}
-          max={5}
+          max={defaultFilterState.enemyFight[1]}
           values={enemyFight}
           setting="enemyFight"
           onFilterChange={onFilterChange}
@@ -167,7 +169,7 @@ class CardEnemyFilterView extends React.Component {
         <SliderChooser
           label="Health"
           width={width}
-          max={10}
+          max={defaultFilterState.enemyHealth[1]}
           values={enemyHealth}
           setting="enemyHealth"
           onFilterChange={onFilterChange}
@@ -188,7 +190,7 @@ class CardEnemyFilterView extends React.Component {
         <SliderChooser
           label="Evade"
           width={width}
-          max={5}
+          max={defaultFilterState.enemyEvade[1]}
           values={enemyEvade}
           setting="enemyEvade"
           onFilterChange={onFilterChange}
@@ -199,7 +201,7 @@ class CardEnemyFilterView extends React.Component {
         <SliderChooser
           label="Damage"
           width={width}
-          max={5}
+          max={defaultFilterState.enemyDamage[1]}
           values={enemyDamage}
           setting="enemyDamage"
           onFilterChange={onFilterChange}
@@ -210,7 +212,7 @@ class CardEnemyFilterView extends React.Component {
         <SliderChooser
           label="Horror"
           width={width}
-          max={5}
+          max={defaultFilterState.enemyHorror[1]}
           values={enemyHorror}
           setting="enemyHorror"
           onFilterChange={onFilterChange}

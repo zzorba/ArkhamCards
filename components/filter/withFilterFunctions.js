@@ -9,13 +9,13 @@ import {
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import FilterFooterComponent from './FilterFooterComponent';
-import DefaultFilterState from './DefaultFilterState';
 
 export default function withFilterFunctions(WrappedComponent) {
   class WrappedFilterComponent extends React.Component {
     static propTypes = {
       navigator: PropTypes.object.isRequired,
       currentFilters: PropTypes.object.isRequired,
+      defaultFilterState:  PropTypes.object.isRequired,
       applyFilters: PropTypes.func.isRequired,
       /* eslint-disable  react/no-unused-prop-types */
       baseQuery: PropTypes.string,
@@ -45,7 +45,7 @@ export default function withFilterFunctions(WrappedComponent) {
       if (event.type === 'NavBarButtonPress') {
         if (event.id === 'clear') {
           this.setState({
-            filters: DefaultFilterState,
+            filters: this.props.defaultFilterState,
           });
         }
       }
@@ -58,13 +58,15 @@ export default function withFilterFunctions(WrappedComponent) {
       const {
         navigator,
         baseQuery,
+        defaultFilterState,
       } = this.props;
       navigator.push({
         screen: screenName,
         passProps: {
           applyFilters: this._updateFilters,
           currentFilters: this.state.filters,
-          baseQuery: baseQuery,
+          defaultFilterState,
+          baseQuery,
         },
       });
     }
@@ -94,6 +96,7 @@ export default function withFilterFunctions(WrappedComponent) {
       const {
         cards,
         baseQuery,
+        defaultFilterState,
         ...otherProps
       } = this.props;
       const {
@@ -105,6 +108,7 @@ export default function withFilterFunctions(WrappedComponent) {
           <WrappedComponent
             cards={cards}
             filters={filters}
+            defaultFilterState={defaultFilterState}
             width={width}
             pushFilterView={this._pushFilterView}
             onToggleChange={this._onToggleChange}

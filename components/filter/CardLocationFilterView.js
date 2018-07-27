@@ -13,6 +13,7 @@ class CardLocationFilterView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     filters: PropTypes.object,
+    defaultFilterState: PropTypes.object,
     width: PropTypes.number,
     onToggleChange: PropTypes.func.isRequired,
     onFilterChange: PropTypes.func.isRequired,
@@ -28,6 +29,7 @@ class CardLocationFilterView extends React.Component {
 
   render() {
     const {
+      defaultFilterState,
       filters: {
         shroud,
         shroudEnabled,
@@ -44,7 +46,7 @@ class CardLocationFilterView extends React.Component {
         <SliderChooser
           label="Shroud"
           width={width}
-          max={6}
+          max={defaultFilterState.shroud[1]}
           values={shroud}
           setting="shroud"
           onFilterChange={onFilterChange}
@@ -55,7 +57,7 @@ class CardLocationFilterView extends React.Component {
         <SliderChooser
           label="Clues"
           width={width}
-          max={6}
+          max={defaultFilterState.clues[1]}
           values={clues}
           setting="clues"
           onFilterChange={onFilterChange}

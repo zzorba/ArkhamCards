@@ -8,6 +8,7 @@ import {
   Switch,
   View,
 } from 'react-native';
+import { connectRealm } from 'react-native-realm';
 
 import SearchBox from '../SearchBox';
 import {
@@ -17,15 +18,17 @@ import {
 import CardResultList from './CardResultList';
 import { iconsMap } from '../../app/NavIcons';
 import { applyFilters } from '../../lib/filters';
-import DefaultFilterState from '../filter/DefaultFilterState';
+import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { STORY_CARDS_QUERY } from '../../data/query';
 
 const SEARCH_OPTIONS_HEIGHT = 44;
 
-export default class CardSearchComponent extends React.Component {
+class CardSearchComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     // Function that takes 'realm' and gives back a base query.
+    defaultFilterState: PropTypes.object,
+    defaultStoryFilterState: PropTypes.object,
     baseQuery: PropTypes.string,
     sort: PropTypes.string,
 
@@ -48,8 +51,8 @@ export default class CardSearchComponent extends React.Component {
       searchBack: false,
       searchTerm: '',
       selectedSort: props.sort || SORT_BY_TYPE,
-      filters: DefaultFilterState,
-      storyFilters: DefaultFilterState,
+      filters: props.defaultFilterState,
+      storyFilters: props.defaultStoryFilterState,
       storyMode: false,
     };
 
@@ -125,6 +128,8 @@ export default class CardSearchComponent extends React.Component {
     const {
       navigator,
       baseQuery,
+      defaultFilterState,
+      defaultStoryFilterState,
     } = this.props;
     const {
       storyMode,
@@ -138,6 +143,7 @@ export default class CardSearchComponent extends React.Component {
           backButtonTitle: 'Apply',
           passProps: {
             applyFilters: this._applyFilters,
+            defaultFilterState: storyMode ? defaultStoryFilterState : defaultFilterState,
             currentFilters: storyMode ? this.state.storyFilters : this.state.filters,
             baseQuery: storyMode ? STORY_CARDS_QUERY : baseQuery,
           },
@@ -354,6 +360,21 @@ export default class CardSearchComponent extends React.Component {
     );
   }
 }
+
+export default connectRealm(CardSearchComponent, {
+  schemas: ['Card'],
+  mapToProps(results, realm, props) {
+    const cards = props.baseQuery ?
+      results.cards.filtered(props.baseQuery) :
+      results.cards;
+
+    const storyCards = results.cards.filtered(STORY_CARDS_QUERY);
+    return {
+      defaultFilterState: calculateDefaultFilterState(cards),
+      defaultStoryFilterState: calculateDefaultFilterState(storyCards),
+    };
+  },
+});
 
 const styles = StyleSheet.create({
   wrapper: {

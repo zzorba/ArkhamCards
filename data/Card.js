@@ -225,6 +225,8 @@ export default class Card {
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const cycle_name = pack ? cycleNames[pack.cycle_position] : null;
     const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
+    const enemy_horror = json.type_code === 'enemy' ? (json.enemy_horror || 0) : null;
+    const enemy_damage = json.type_code === 'enemy' ? (json.enemy_damage || 0) : null;
     return Object.assign(
       {},
       json,
@@ -245,6 +247,8 @@ export default class Card {
         sort_by_type,
         sort_by_faction,
         sort_by_pack,
+        enemy_horror,
+        enemy_damage,
       },
     );
   }

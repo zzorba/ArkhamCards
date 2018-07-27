@@ -25,6 +25,7 @@ class CardFilterView extends React.Component {
     navigator: PropTypes.object.isRequired,
     cards: PropTypes.object,
     filters: PropTypes.object,
+    defaultFilterState: PropTypes.object,
     width: PropTypes.number,
     pushFilterView: PropTypes.func.isRequired,
     onToggleChange: PropTypes.func.isRequired,
@@ -297,6 +298,7 @@ class CardFilterView extends React.Component {
     const {
       navigator,
       width,
+      defaultFilterState,
       filters: {
         uses,
         factions,
@@ -395,7 +397,7 @@ class CardFilterView extends React.Component {
             onFilterChange={onFilterChange}
             toggleName="costEnabled"
             onToggleChange={onToggleChange}
-            max={6}
+            max={defaultFilterState.cost[1]}
           />
         ) }
         { hasXp && (
@@ -408,7 +410,7 @@ class CardFilterView extends React.Component {
             onFilterChange={onFilterChange}
             toggleName="levelEnabled"
             onToggleChange={onToggleChange}
-            max={5}
+            max={defaultFilterState.level[1]}
             height={2}
           >
             <View>
