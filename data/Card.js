@@ -17,7 +17,7 @@ export default class Card {
     if (this.type_code !== 'asset' && this.type_code !== 'event') {
       return '';
     }
-    if (this.permanent) {
+    if (this.permanent || this.double_sided) {
       return 'Cost: -';
     }
     return `Cost: ${this.cost !== null ? this.cost : 'X'}`;

@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 
+import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
@@ -88,9 +89,41 @@ export default class CardSearchResult extends React.PureComponent {
     return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS)[card.faction_code];
   }
 
+  static cardCost(card) {
+    if (card.type_code === 'skill') {
+      return '';
+    }
+    if (card.permanent || card.double_sided) {
+      return '-';
+    }
+    return `${card.cost !== null ? card.cost : 'X'}`;
+  }
+
   renderIcon(card) {
+    const showCost = card.type_code === 'asset' ||
+      card.type_code === 'event' ||
+      card.type_code === 'skill';
+
+    if (showCost) {
+      return (
+        <View style={styles.level}>
+          <View style={styles.levelIcon}>
+            <AppIcon
+              name={`level_${card.xp || 0}`}
+              size={32}
+              color={FACTION_COLORS[card.faction_code]}
+            />
+          </View>
+          <View style={[styles.levelIcon, styles.cost]}>
+            <Text style={[typography.text, styles.costText]}>
+              { CardSearchResult.cardCost(card) }
+            </Text>
+          </View>
+        </View>
+      );
+    }
     return (
-      <View style={styles.cardIcon}>
+      <View style={styles.factionIcon}>
         { this.renderFactionIcon(card, ICON_SIZE) }
       </View>
     );
@@ -101,11 +134,11 @@ export default class CardSearchResult extends React.PureComponent {
       return null;
     }
     return range(0, count).map(key => (
-      <View style={styles.cardIcon} key={`${iconName}-${key}`}>
+      <View key={`${iconName}-${key}`} style={styles.skillIcon}>
         <ArkhamIcon
           name={iconName}
           size={14}
-          color="#000"
+          color="#222"
         />
       </View>
     ));
@@ -125,52 +158,38 @@ export default class CardSearchResult extends React.PureComponent {
     }
     return (
       <View style={styles.skillIcons}>
-        { CardSearchResult.skillIcon('willpower', card.skill_willpower) }
-        { CardSearchResult.skillIcon('intellect', card.skill_intellect) }
-        { CardSearchResult.skillIcon('combat', card.skill_combat) }
-        { CardSearchResult.skillIcon('agility', card.skill_agility) }
-        { CardSearchResult.skillIcon('wild', card.skill_wild) }
+        { CardSearchResult.skillIcon('skill_willpower', card.skill_willpower) }
+        { CardSearchResult.skillIcon('skill_intellect', card.skill_intellect) }
+        { CardSearchResult.skillIcon('skill_combat', card.skill_combat) }
+        { CardSearchResult.skillIcon('skill_agility', card.skill_agility) }
+        { CardSearchResult.skillIcon('skill_wild', card.skill_wild) }
       </View>
     );
   }
 
   renderCardName(card) {
-    const xpStr = (card.xp && range(0, card.xp).map(() => '•').join('')) || '';
-    if (card.renderSubname) {
-      return (
-        <View style={styles.cardNameBlock}>
-          <View style={styles.row}>
-            <Text style={[
-              typography.text,
-              { color: FACTION_COLORS[card.faction_code] || '#000000' },
-            ]} ellipsizeMode="tail">
-              { card.renderName }
-            </Text>
-            <Text style={[styles.cardName, styles.xp]}>
-              { xpStr }
-            </Text>
-          </View>
+    return (
+      <View style={styles.cardNameBlock}>
+        <View style={styles.row}>
           <Text style={[
-            typography.small,
+            typography.text,
             { color: FACTION_COLORS[card.faction_code] || '#000000' },
-          ]}>
-            { card.renderSubname }
+          ]} ellipsizeMode="tail">
+            { card.renderName }
           </Text>
         </View>
-      );
-    }
-    return (
-      <View style={styles.row}>
-        <Text style={[
-          typography.text,
-          styles.cardNameOnly,
-          { color: FACTION_COLORS[card.faction_code] || '#000000' },
-        ]}>
-          { card.renderName }
-        </Text>
-        <Text style={[styles.cardName, styles.xp]}>
-          { xpStr }
-        </Text>
+        <View style={styles.row}>
+          { this.renderSkillIcons() }
+          { !!card.renderSubname && (
+            <Text style={[
+              typography.small,
+              styles.subname,
+              { color: FACTION_COLORS[card.faction_code] || '#000000' },
+            ]}>
+              { card.renderSubname }
+            </Text>
+          ) }
+        </View>
       </View>
     );
   }
@@ -189,7 +208,7 @@ export default class CardSearchResult extends React.PureComponent {
       return <Text>No Text</Text>;
     }
     return (
-      <View style={styles.stack}>
+      <View style={styles.rowContainer}>
         <TouchableOpacity
           onPress={this._onPress}
           disabled={!onPress}
@@ -222,13 +241,20 @@ export default class CardSearchResult extends React.PureComponent {
 }
 
 const styles = StyleSheet.create({
-  stack: {
+  rowContainer: {
     position: 'relative',
     width: '100%',
+    minHeight: ROW_HEIGHT,
     flexDirection: 'row',
-    height: ROW_HEIGHT,
     borderBottomWidth: 1,
     borderColor: COLORS.gray,
+  },
+  cardNameBlock: {
+    marginLeft: 4,
+    marginTop: 4,
+    marginBottom: 4,
+    flexDirection: 'column',
+    flex: 1,
   },
   row: {
     flex: 1,
@@ -237,18 +263,40 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   fullHeight: {
-    height: ROW_HEIGHT,
   },
   skillIcons: {
-    flex: 1,
     flexDirection: 'row',
   },
-  cardIcon: {
+  skillIcon: {
+    marginRight: 2,
+  },
+  level: {
+    position: 'relative',
+    width: ROW_HEIGHT,
+    height: ROW_HEIGHT,
+  },
+  levelIcon: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: ROW_HEIGHT,
     height: ROW_HEIGHT,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  subname: {
+    marginRight: 8,
+  },
+  cost: {
+    paddingBottom: 6,
+  },
+  factionIcon: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: ROW_HEIGHT,
+    width: ROW_HEIGHT,
   },
   cardTextRow: {
     flex: 2,
@@ -256,18 +304,11 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     alignItems: 'center',
   },
-  cardNameOnly: {
-    marginLeft: 4,
-    lineHeight: ROW_HEIGHT,
-  },
-  cardNameBlock: {
-    marginLeft: 4,
-  },
-  xp: {
-    marginLeft: 4,
-  },
   switchButton: {
     marginTop: 6,
     marginRight: 6,
+  },
+  costText: {
+    color: '#FFF',
   },
 });
