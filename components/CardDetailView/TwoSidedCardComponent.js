@@ -183,15 +183,12 @@ export default class TwoSidedCardComponent extends React.Component {
     );
   }
 
+
   renderPlaydata(card) {
     if (card.type_code === 'scenario') {
       return null;
     }
-    const costString = (
-      (card.type_code === 'asset' || card.type_code === 'event') &&
-      `Cost: ${card.cost !== null ? card.cost : '-'}`
-    ) || '';
-
+    const costString = card.costString();
     return (
       <View style={styles.statsBlock}>
         { !!(card.xp || costString) && (

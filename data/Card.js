@@ -12,6 +12,17 @@ import { BASIC_SKILLS } from '../constants';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror');
 export default class Card {
+
+  costString() {
+    if (this.type_code !== 'asset' && this.type_code !== 'event') {
+      return '';
+    }
+    if (this.permanent) {
+      return 'Cost: -';
+    }
+    return `Cost: ${this.cost !== null ? this.cost : 'X'}`;
+  }
+
   static parseDeckRequirements(json) {
     const dr = new DeckRequirement();
     dr.card = map(keys(json.card), code => {
