@@ -13,6 +13,7 @@ export function showDeckModal(navigator, deck, investigator) {
       navBarBackgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0],
       navBarTextColor: '#FFFFFF',
       navBarButtonColor: '#FFFFFF',
+      statusBarTextColorScheme: 'light',
     },
   });
 }
