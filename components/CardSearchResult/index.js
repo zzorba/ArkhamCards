@@ -60,13 +60,7 @@ export default class CardSearchResult extends React.PureComponent {
     if (!card.encounter_code && card.linked_card) {
       return this.renderFactionIcon(card.linked_card, size);
     }
-    if (card.subtype_code &&
-      (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
-    ) {
-      return (
-        <ArkhamIcon name="weakness" size={size} color={FACTION_COLORS.neutral} />
-      );
-    }
+
     if (card.spoiler) {
       return (
         <EncounterIcon
@@ -76,7 +70,13 @@ export default class CardSearchResult extends React.PureComponent {
         />
       );
     }
-
+    if (card.subtype_code &&
+      (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
+    ) {
+      return (
+        <ArkhamIcon name="weakness" size={size} color={FACTION_COLORS.neutral} />
+      );
+    }
     if (card.type_code === 'scenario' || card.type_code === 'story') {
       return (
         <EncounterIcon
@@ -100,13 +100,19 @@ export default class CardSearchResult extends React.PureComponent {
   }
 
   renderIcon(card) {
+    if (card.hidden && card.linked_card) {
+      return this.renderIcon(card.linked_card);
+    }
+
     const showCost = card.type_code === 'asset' ||
       card.type_code === 'event' ||
       card.type_code === 'skill';
 
     if (showCost) {
       return (
-        <CardCostIcon card={card} />
+        <View style={styles.factionIcon}>
+          <CardCostIcon card={card} />
+        </View>
       );
     }
     return (

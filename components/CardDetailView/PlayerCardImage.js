@@ -34,6 +34,9 @@ export default class PlayerCardImage extends React.Component {
       passProps: {
         id: card.code,
       },
+      navigatorStyle: {
+        tabBarHidden: true,
+      },
     });
   }
 

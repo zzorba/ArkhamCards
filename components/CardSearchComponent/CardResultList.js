@@ -107,15 +107,15 @@ class CardResultList extends React.Component {
   getSort() {
     switch(this.props.sort) {
       case SORT_BY_TYPE:
-        return [['sort_by_type', false], ['name', false]];
+        return [['sort_by_type', false], ['renderName', false]];
       case SORT_BY_FACTION:
-        return [['sort_by_faction', false], ['name', false]];
+        return [['sort_by_faction', false], ['renderName', false]];
       case SORT_BY_COST:
-        return [['cost', false], ['name', false]];
+        return [['cost', false], ['renderName', false]];
       case SORT_BY_PACK:
         return [['sort_by_pack', false], ['position', false]];
       case SORT_BY_TITLE:
-        return [['name', false]];
+        return [['renderName', false]];
       case SORT_BY_ENCOUNTER_SET:
         return [['sort_by_pack', false], ['position', false]];
     }

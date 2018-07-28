@@ -124,6 +124,9 @@ export default class Card {
   ];
 
   static typeSortHeader(json) {
+    if (json.hidden && json.linked_card) {
+      return Card.typeSortHeader(json.linked_card);
+    }
     switch(json.subtype_code) {
       case 'basicweakness':
         return 'Basic Weakness';

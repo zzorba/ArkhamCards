@@ -40,7 +40,7 @@ class CardImageView extends React.Component {
         props.card.type_code === 'agenda' ||
         (doubleCard && props.card.hidden),
       width,
-      height,
+      height: height - HEADER_SIZE,
     };
 
     this._flip = this.flip.bind(this);
@@ -163,6 +163,9 @@ export default connectRealm(CardImageView, {
 });
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   pinchZoom: {
     flex: 1,
     backgroundColor: 'white',

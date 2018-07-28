@@ -255,6 +255,18 @@ export default class TwoSidedCardComponent extends React.Component {
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness'
     ) ? '#FFF' : '#222';
+
+    if (card.spoiler) {
+      return (
+        <View style={styles.factionIcon}>
+          <EncounterIcon
+            encounter_code={card.encounter_code || (card.linked_card && card.linked_card.encounter_code)}
+            size={28}
+            color={color}
+          />
+        </View>
+      );
+    }
     if (card.subtype_code &&
       (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
     ) {
@@ -265,17 +277,6 @@ export default class TwoSidedCardComponent extends React.Component {
       );
     }
 
-    if (card.spoiler) {
-      return (
-        <View style={styles.factionIcon}>
-          <EncounterIcon
-            encounter_code={card.encounter_code}
-            size={28}
-            color={color}
-          />
-        </View>
-      );
-    }
     if (card.type_code !== 'scenario' && card.type_code !== 'location' &&
       card.type_code !== 'act' && card.type_code !== 'agenda') {
       return (

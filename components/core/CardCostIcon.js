@@ -25,7 +25,13 @@ export default class CardCostIcon extends React.Component {
     if (card.type_code === 'skill') {
       return '';
     }
-    if (card.permanent || card.double_sided || linked) {
+    if (card.permanent || card.double_sided || linked || card.linked_card) {
+      return '-';
+    }
+    if (card.cost === null && (
+      card.subtype_code === 'weakness' ||
+      card.subtype_code === 'basicweakness')
+    ) {
       return '-';
     }
     return `${card.cost !== null ? card.cost : 'X'}`;

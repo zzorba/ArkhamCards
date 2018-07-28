@@ -123,6 +123,10 @@ export default class EncounterIcon extends React.PureComponent {
       case 'bsr':
       case 'black_stars_rise':
         return this.carcosaIcon('black_stars_rise', size, color);
+      case 'flood':
+        return this.carcosaIcon('the_flood_below', size, color);
+      case 'vortex':
+        return this.carcosaIcon('the_vortex_above', size, color);
       case 'dca':
       case 'dim_carcosa':
         return this.carcosaIcon('dim_carcosa', size, color);
