@@ -9,9 +9,9 @@ import {
   View,
 } from 'react-native';
 
-import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
+import CardCostIcon from '../core/CardCostIcon';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE } from './constants';
@@ -106,20 +106,7 @@ export default class CardSearchResult extends React.PureComponent {
 
     if (showCost) {
       return (
-        <View style={styles.level}>
-          <View style={styles.levelIcon}>
-            <AppIcon
-              name={`level_${card.xp || 0}`}
-              size={32}
-              color={FACTION_COLORS[card.faction_code]}
-            />
-          </View>
-          <View style={[styles.levelIcon, styles.cost]}>
-            <Text style={[typography.text, styles.costText]}>
-              { CardSearchResult.cardCost(card) }
-            </Text>
-          </View>
-        </View>
+        <CardCostIcon card={card} />
       );
     }
     return (
@@ -129,14 +116,14 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
-  static skillIcon(iconName, count) {
+  static skillIcon(skill, count) {
     if (count === 0) {
       return null;
     }
     return range(0, count).map(key => (
-      <View key={`${iconName}-${key}`} style={styles.skillIcon}>
+      <View key={`${skill}-${key}`} style={styles.skillIcon}>
         <ArkhamIcon
-          name={iconName}
+          name={`skill_${skill}`}
           size={14}
           color="#222"
         />
@@ -158,11 +145,11 @@ export default class CardSearchResult extends React.PureComponent {
     }
     return (
       <View style={styles.skillIcons}>
-        { CardSearchResult.skillIcon('skill_willpower', card.skill_willpower) }
-        { CardSearchResult.skillIcon('skill_intellect', card.skill_intellect) }
-        { CardSearchResult.skillIcon('skill_combat', card.skill_combat) }
-        { CardSearchResult.skillIcon('skill_agility', card.skill_agility) }
-        { CardSearchResult.skillIcon('skill_wild', card.skill_wild) }
+        { CardSearchResult.skillIcon('willpower', card.skill_willpower) }
+        { CardSearchResult.skillIcon('intellect', card.skill_intellect) }
+        { CardSearchResult.skillIcon('combat', card.skill_combat) }
+        { CardSearchResult.skillIcon('agility', card.skill_agility) }
+        { CardSearchResult.skillIcon('wild', card.skill_wild) }
       </View>
     );
   }
@@ -270,26 +257,8 @@ const styles = StyleSheet.create({
   skillIcon: {
     marginRight: 2,
   },
-  level: {
-    position: 'relative',
-    width: ROW_HEIGHT,
-    height: ROW_HEIGHT,
-  },
-  levelIcon: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: ROW_HEIGHT,
-    height: ROW_HEIGHT,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   subname: {
     marginRight: 8,
-  },
-  cost: {
-    paddingBottom: 6,
   },
   factionIcon: {
     flexDirection: 'column',
@@ -307,8 +276,5 @@ const styles = StyleSheet.create({
   switchButton: {
     marginTop: 6,
     marginRight: 6,
-  },
-  costText: {
-    color: '#FFF',
   },
 });

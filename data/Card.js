@@ -13,11 +13,11 @@ const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror');
 export default class Card {
 
-  costString() {
+  costString(linked) {
     if (this.type_code !== 'asset' && this.type_code !== 'event') {
       return '';
     }
-    if (this.permanent || this.double_sided) {
+    if (this.permanent || this.double_sided || linked) {
       return 'Cost: -';
     }
     return `Cost: ${this.cost !== null ? this.cost : 'X'}`;

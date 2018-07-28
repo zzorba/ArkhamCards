@@ -21,6 +21,7 @@ import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardTextComponent from '../CardTextComponent';
 import Button from '../core/Button';
+import CardCostIcon from '../core/CardCostIcon';
 
 import PlayerCardImage from './PlayerCardImage';
 import FlavorTextComponent from './FlavorTextComponent';
@@ -156,17 +157,20 @@ export default class TwoSidedCardComponent extends React.Component {
       return null;
     }
     return (
-      <Text>
-        { 'Test Icons:' }
+      <View style={styles.testIconRow}>
+        <Text>
+          { 'Test Icons: ' }
+        </Text>
         { map(skills, (skill, idx) => (
           <ArkhamIcon
+            style={styles.testIcon}
             key={idx}
-            name={skill}
+            name={`skill_${skill}`}
             size={16}
             color={SKILL_COLORS[skill]}
           />))
         }
-      </Text>
+      </View>
     );
   }
 
@@ -188,7 +192,7 @@ export default class TwoSidedCardComponent extends React.Component {
     if (card.type_code === 'scenario') {
       return null;
     }
-    const costString = card.costString();
+    const costString = card.costString(this.props.linked);
     return (
       <View style={styles.statsBlock}>
         { !!(card.xp || costString) && (
@@ -242,6 +246,48 @@ export default class TwoSidedCardComponent extends React.Component {
     return null;
   }
 
+  renderFactionIcon(card) {
+    const color = (
+      card.type_code === 'asset' ||
+      card.type_code === 'event' ||
+      card.type_code === 'skill' ||
+      card.type_code === 'investigator' ||
+      card.subtype_code === 'weakness' ||
+      card.subtype_code === 'basicweakness'
+    ) ? '#FFF' : '#222';
+    if (card.subtype_code &&
+      (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
+    ) {
+      return (
+        <View style={styles.factionIcon}>
+          <ArkhamIcon name="weakness" size={28} color={color} />
+        </View>
+      );
+    }
+
+    if (card.spoiler) {
+      return (
+        <View style={styles.factionIcon}>
+          <EncounterIcon
+            encounter_code={card.encounter_code}
+            size={28}
+            color={color}
+          />
+        </View>
+      );
+    }
+    if (card.type_code !== 'scenario' && card.type_code !== 'location' &&
+      card.type_code !== 'act' && card.type_code !== 'agenda') {
+      return (
+        <View style={styles.factionIcon}>
+          { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
+            <ArkhamIcon name={card.faction_code} size={28} color={color} /> }
+        </View>
+      );
+    }
+    return null;
+  }
+
   renderTitle(card, name, subname) {
     const factionColor = card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code];
     return (
@@ -249,31 +295,32 @@ export default class TwoSidedCardComponent extends React.Component {
         backgroundColor: factionColor || '#FFFFFF',
         borderColor: factionColor || '#000000',
       }]}>
-        <View style={styles.column}>
-          <Text style={[
-            typography.text,
-            space.marginLeftS,
-            { color: factionColor ? '#FFFFFF' : '#000000' },
-          ]}>
-            { `${name}${card.is_unique ? ' ✷' : ''}` }
-          </Text>
-          { !!subname && (
+        <View style={styles.titleRow}>
+          { (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') && (
+            <View style={styles.costIcon}>
+              <CardCostIcon card={card} inverted linked={this.props.linked} />
+            </View>
+          ) }
+          <View style={styles.column}>
             <Text style={[
-              typography.small,
+              typography.text,
               space.marginLeftS,
               { color: factionColor ? '#FFFFFF' : '#000000' },
             ]}>
-              { subname }
+              { `${name}${card.is_unique ? ' ✷' : ''}` }
             </Text>
-          ) }
+            { !!subname && (
+              <Text style={[
+                typography.small,
+                space.marginLeftS,
+                { color: factionColor ? '#FFFFFF' : '#000000' },
+              ]}>
+                { subname }
+              </Text>
+            ) }
+          </View>
         </View>
-        { card.type_code !== 'scenario' && card.type_code !== 'location' &&
-          card.type_code !== 'act' && card.type_code !== 'agenda' && (
-          <Text style={styles.factionIcon}>
-            { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-              <ArkhamIcon name={card.faction_code} size={28} color="#FFFFFF" /> }
-          </Text>
-        ) }
+        { this.renderFactionIcon(card) }
       </View>
     );
   }
@@ -396,11 +443,6 @@ export default class TwoSidedCardComponent extends React.Component {
               </Text>
               { !!card.encounter_name &&
                 <Text>
-                  <EncounterIcon
-                    encounter_code={card.encounter_code}
-                    size={12}
-                    color="#000000"
-                  />
                   { `${card.encounter_name} #${card.encounter_position}.${card.quantity > 1 ? `\n${card.quantity} copies.` : ''}` }
                 </Text>
               }
@@ -511,6 +553,12 @@ export default class TwoSidedCardComponent extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  titleRow: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
   row: {
     width: '100%',
     flexDirection: 'row',
@@ -607,5 +655,14 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  costIcon: {
+    marginLeft: 4,
+  },
+  testIconRow: {
+    flexDirection: 'row',
+  },
+  testIcon: {
+    marginLeft: 2,
   },
 });
