@@ -165,7 +165,7 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     );
   }
   if (action.type === UPDATE_CAMPAIGN) {
-    const campaign = Object.assign({}, state.all[action.id]);
+    const campaign = Object.assign({}, state.all[action.id], { lastUpdated: action.now });
     forEach(keys(action.campaign), key => {
       campaign[key] = action.campaign[key];
     });
@@ -191,7 +191,7 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
         scenarioResults,
         latestDeckIds,
         investigatorData: action.investigatorData,
-        lastModified: action.now,
+        lastUpdated: action.now,
       },
     );
     return Object.assign({},

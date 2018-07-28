@@ -64,7 +64,7 @@ export default class TwoSidedCardComponent extends React.Component {
 
   editSpoilersPressed() {
     this.props.navigator.push({
-      screen: 'EditSpoilers',
+      screen: 'My.Spoilers',
     });
   }
 

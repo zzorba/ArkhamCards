@@ -99,7 +99,7 @@ class CardResultList extends React.Component {
 
   editSpoilerSettings() {
     this.props.navigator.push({
-      screen: 'EditSpoilers',
+      screen: 'My.Spoilers',
       title: 'Spoiler Settings',
     });
   }

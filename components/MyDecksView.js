@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 
 import { iconsMap } from '../app/NavIcons';
 import withLoginGate from './withLoginGate';
+import withFetchCardsGate from './cards/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
 
 class MyDecksView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-  };
-
-  static navigatorButtons = {
-
   };
 
   constructor(props) {
@@ -64,7 +61,9 @@ class MyDecksView extends React.Component {
   }
 }
 
-export default withLoginGate(
-  MyDecksView,
-  'You can sign in with your ArkhamDB account to manage your decks.'
+export default withFetchCardsGate(
+  withLoginGate(
+    MyDecksView,
+    'This app will let you edit and upgrade decks stored on ArkhamDB.com\n\nPlease sign in with your account to enable this feature.'
+  )
 );

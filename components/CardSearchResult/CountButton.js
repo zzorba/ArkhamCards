@@ -12,7 +12,7 @@ import {
 import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING } from './constants';
 import typography from '../../styles/typography';
 
-const DEPRESS_HEIGHT = 4;
+const DEPRESS_HEIGHT = 6;
 
 export default class CountButton extends React.Component {
   static propTypes = {
@@ -81,8 +81,8 @@ export default class CountButton extends React.Component {
           <View style={styles.shadow} />
           <Animated.View style={[
             styles.button,
-            { borderColor: selected ? '#1b526f' : '#26769f' },
-            { backgroundColor: selected ? '#22678b' : '#3093c7' },
+            { borderColor: selected ? '#1b526f' : '#5191b2' },
+            { backgroundColor: selected ? '#22678b' : '#59a9d2' },
             { transform: [{ translateY: translateY }] },
           ]}>
             { !!text && (

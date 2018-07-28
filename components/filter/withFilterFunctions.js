@@ -15,7 +15,7 @@ export default function withFilterFunctions(WrappedComponent) {
     static propTypes = {
       navigator: PropTypes.object.isRequired,
       currentFilters: PropTypes.object.isRequired,
-      defaultFilterState:  PropTypes.object.isRequired,
+      defaultFilterState: PropTypes.object.isRequired,
       applyFilters: PropTypes.func.isRequired,
       /* eslint-disable  react/no-unused-prop-types */
       baseQuery: PropTypes.string,

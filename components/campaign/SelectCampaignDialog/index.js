@@ -55,7 +55,7 @@ class SelectCampaignDialog extends React.Component {
 
   editCollection() {
     this.props.navigator.push({
-      screen: 'CollectionEdit',
+      screen: 'My.Collection',
     });
   }
 

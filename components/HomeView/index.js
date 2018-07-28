@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FetchCardsGate from '../FetchCardsGate';
 import FullMenu from './FullMenu';
 import CardMenu from './CardMenu';
 import { iconsMap } from '../../app/NavIcons';
@@ -38,11 +37,11 @@ export default class HomeView extends React.Component {
     if (event.type === 'DeepLink') {
       if (event.link === '/collection') {
         navigator.push({
-          screen: 'CollectionEdit',
+          screen: 'My.Collection',
         });
       } else if (event.link === '/spoilers') {
         navigator.push({
-          screen: 'EditSpoilers',
+          screen: 'My.Spoilers',
         });
       } else if (event.link === '/about') {
         navigator.push({
@@ -82,13 +81,9 @@ export default class HomeView extends React.Component {
       navigator,
     } = this.props;
     return (
-      <FetchCardsGate>
-        { CARD_MODE ?
-          <CardMenu navigator={navigator} />
-          :
-          <FullMenu navigator={navigator} />
-        }
-      </FetchCardsGate>
+      CARD_MODE ?
+        <CardMenu navigator={navigator} /> :
+        <FullMenu navigator={navigator} />
     );
   }
 }

@@ -11,8 +11,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
-import * as Actions from '../actions';
-import { syncCards } from '../lib/publicApi';
+import Button from '../core/Button';
+import { fetchCards, dismissUpdatePrompt } from './actions';
+import typography from '../../styles/typography';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -23,11 +24,16 @@ const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
  */
 class FetchCardsGate extends React.Component {
   static propTypes = {
+    // from redux/realm.
     realm: PropTypes.object.isRequired,
     loading: PropTypes.bool,
+    error: PropTypes.string,
+    /* eslint-disable react/no-unused-prop-types */
     cardCount: PropTypes.number,
-    packs: PropTypes.array,
-    fetchPacks: PropTypes.func.isRequired,
+    /* eslint-disable react/no-unused-prop-types */
+    fetchNeeded: PropTypes.bool,
+    // From redux
+    fetchCards: PropTypes.func.isRequired,
     dismissUpdatePrompt: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
     dateFetched: PropTypes.number,
@@ -37,21 +43,20 @@ class FetchCardsGate extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      loadingCards: this.fetchNeeded(),
-    };
+    this.state = {};
 
     this._doFetch = this.doFetch.bind(this);
     this._ignoreUpdate = this.ignoreUpdate.bind(this);
-    this._fetchCards = this.fetchCards.bind(this);
   }
 
-  fetchNeeded() {
-    const {
-      packs,
-      cardCount,
-    } = this.props;
-    return (cardCount === 0 || packs.length === 0);
+  fetchNeeded(props) {
+    return props.fetchNeeded || props.cardCount === 0;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.fetchNeeded(this.props) && !this.fetchNeeded(prevProps)) {
+      this.doFetch();
+    }
   }
 
   updateNeeded() {
@@ -69,26 +74,6 @@ class FetchCardsGate extends React.Component {
     );
   }
 
-  fetchCards(packs) {
-    const {
-      realm,
-    } = this.props;
-
-    syncCards(realm, packs).then(
-      () => {
-        this.setState({
-          loadingCards: false,
-        });
-      },
-      err => {
-        this.setState({
-          loadingCards: false,
-          error: err.message || err,
-        });
-      }
-    );
-  }
-
   ignoreUpdate() {
     const {
       dismissUpdatePrompt,
@@ -98,19 +83,14 @@ class FetchCardsGate extends React.Component {
 
   doFetch() {
     const {
-      fetchPacks,
+      realm,
+      fetchCards,
     } = this.props;
-    if (!this.state.loadingCards) {
-      this.setState({
-        loadingCards: true,
-        error: null,
-      });
-    }
-    fetchPacks(this._fetchCards);
+    fetchCards(realm);
   }
 
   componentDidMount() {
-    if (this.fetchNeeded()) {
+    if (this.fetchNeeded(this.props)) {
       this.doFetch();
     } else if (this.updateNeeded()) {
       Alert.alert(
@@ -127,17 +107,31 @@ class FetchCardsGate extends React.Component {
   render() {
     const {
       loading,
+      error,
       children,
     } = this.props;
-    const {
-      loadingCards,
-    } = this.state;
-    if (loading || loadingCards) {
+    if (error) {
       return (
         <View style={styles.activityIndicatorContainer}>
-          <Text>Loading latest cards...</Text>
+          <Text style={[typography.text, styles.error]}>
+            Error loading cards, make sure your network is working.
+          </Text>
+          <Text style={[typography.text, styles.error]}>
+            { error }
+          </Text>
+          <Button onPress={this._doFetch} text="Try Again" />
+        </View>
+      );
+    }
+    const fetchNeeded = this.fetchNeeded(this.props);
+    if (loading || fetchNeeded) {
+      return (
+        <View style={styles.activityIndicatorContainer}>
+          <Text style={typography.text}>
+            Loading latest cards...
+          </Text>
           <ActivityIndicator
-            style={[{ height: 80 }]}
+            style={styles.spinner}
             size="small"
             animating
           />
@@ -151,28 +145,33 @@ class FetchCardsGate extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    loading: state.packs.loading,
-    packs: state.packs.all,
+    fetchNeeded: state.packs.all.length === 0,
+    loading: state.packs.loading || state.cards.loading,
+    error: state.cards.error,
     dateFetched: state.packs.dateFetched,
     dateUpdatePrompt: state.packs.dateUpdatePrompt,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({
+    fetchCards,
+    dismissUpdatePrompt,
+  }, dispatch);
 }
 
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(FetchCardsGate),
-  {
-    schemas: ['Card'],
-    mapToProps(results, realm) {
-      return {
-        realm,
-        cardCount: results.cards.length,
-      };
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectRealm(FetchCardsGate,
+    {
+      schemas: ['Card'],
+      mapToProps(results, realm) {
+        return {
+          realm,
+          cardCount: results.cards.length,
+        };
+      },
     },
-  },
+  )
 );
 
 const styles = StyleSheet.create({
@@ -181,5 +180,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+  },
+  spinner: {
+    height: 80,
+  },
+  error: {
+    color: 'red',
   },
 });

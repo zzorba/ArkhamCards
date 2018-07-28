@@ -72,7 +72,7 @@ class CardDetailView extends React.Component {
 
   editSpoilersPressed() {
     this.props.navigator.push({
-      screen: 'EditSpoilers',
+      screen: 'My.Spoilers',
     });
   }
 

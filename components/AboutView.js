@@ -1,24 +1,37 @@
 import React from 'react';
 import {
   StyleSheet,
-  View,
+  ScrollView,
   Text,
+  View,
 } from 'react-native';
+
+import typography from '../styles/typography';
 
 export default function AboutView() {
   return (
-    <View style={styles.container}>
-      <Text>
-        All 'Arkham Horror: The Card Game' card text and images are
-        copyright Fantasy Flight Games.
+    <ScrollView style={styles.container}>
+      <Text style={typography.text}>
+        The information presented in this app about Arkham Horror: The Card
+        Game, both literal and graphical, is copyrighted by Fantasy Flight
+        Games. This app is not produced, endorsed, supported, or affiliated
+        with Fantasy Flight Games.
         { '\n\n' }
         This application was created by Daniel Salinas as a fan project to
-        help support the Arkham Horror: The Card Game community.
+        help support the Arkham Horror: The Card Game community. If you find
+        yourself managing lots of decks and campaigns, I'm hoping it proves
+        useful.
         { '\n\n' }
-        Many thanks to arkhamdb.com for providing data and images, without which
-        this project would not have been possible.
+        Feedback and bug reports are welcome by email at arkhamcards@gmail.com
+        or via Twitter @ArkhamCards
         { '\n\n' }
-        Attribution:
+        Many thanks to ArkhamDB.com for providing the structured data, API
+        access and access to card images. Without their continued support, this
+        project would not have been possible.
+        { '\n\n' }
+      </Text>
+      <Text style={typography.small}>
+        Icon Attribution:
         { '\n' }
         • 'deck of cards' icon by Daniel Solis from the Noun Project.
         { '\n' }
@@ -30,12 +43,16 @@ export default function AboutView() {
         { '\n' }
         • 'books'  by Mr Balind from the Noun Project.
       </Text>
-    </View>
+      <View style={styles.footer} />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     padding: 8,
+  },
+  footer: {
+    height: 100,
   },
 });

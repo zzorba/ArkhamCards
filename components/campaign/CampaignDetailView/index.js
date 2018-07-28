@@ -44,18 +44,11 @@ class CampaignDetailView extends React.Component {
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
 
-    props.navigator.setButtons({
-      rightButtons: [{
-        icon: iconsMap.share,
-        id: 'share',
-      }],
-    });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   onNavigatorEvent(event) {
     const {
-      navigator,
       campaign,
       scenarioPack,
       decks,
@@ -93,6 +86,15 @@ class CampaignDetailView extends React.Component {
       updateCampaign,
     } = this.props;
     updateCampaign(campaign.id, { [key]: value });
+  }
+
+  componentDidMount() {
+    this.props.navigator.setButtons({
+      rightButtons: [{
+        icon: iconsMap.share,
+        id: 'share',
+      }],
+    });
   }
 
   componentDidUpdate(prevProps) {

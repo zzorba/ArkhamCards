@@ -19,6 +19,7 @@ const icons = {
   'arrow-left': [30, COLORS.button, MaterialCommunityIcons],
   'chevron-left': [40, COLORS.button, MaterialCommunityIcons],
   'sort-by-alpha': [28, COLORS.button],
+  cards: [28, COLORS.button, AppIcon],
   settings: [28, COLORS.button, MaterialCommunityIcons],
   add: [28, COLORS.button],
   deck: [28, COLORS.button, AppIcon],

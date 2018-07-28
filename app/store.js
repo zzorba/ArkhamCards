@@ -31,8 +31,9 @@ export default function configureStore(initialState) {
   const persistConfig = {
     key: 'persist',
     storage,
-    // decks are handled separately.
-    blacklist: ['decks', 'signedIn'],
+    // decks and signIn are handled separately.
+    // cards is transient.
+    blacklist: ['cards', 'decks', 'signedIn'],
   };
 
   const reducer = persistReducer(

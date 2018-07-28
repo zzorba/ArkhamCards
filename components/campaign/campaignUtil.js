@@ -2,9 +2,7 @@ import { capitalize, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
 import { CUSTOM } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
-import { CHAOS_TOKEN_ORDER, SPECIAL_TOKENS } from '../../constants';
-
-const SPECIAL_TOKENS_SET = new Set(SPECIAL_TOKENS);
+import { CHAOS_TOKEN_ORDER } from '../../constants';
 
 export function campaignInvestigators(campaign, decks) {
   return map(
@@ -36,7 +34,7 @@ export function campaignToText(campaign, scenarioPack, decks, investigators) {
   } = campaign;
 
   const latestDecks = flatMap(campaign.latestDeckIds || [], deckId => decks[deckId]);
-  lines.push('Investigators:')
+  lines.push('Investigators:');
   forEach(latestDecks, deck => {
     const investigator = investigators[deck.investigator_code];
     lines.push(`${investigator.name}:`);

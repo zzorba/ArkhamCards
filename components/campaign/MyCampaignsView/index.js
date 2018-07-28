@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { find, forEach, map, last } from 'lodash';
 import {
-  Text,
   ScrollView,
   StyleSheet,
 } from 'react-native';
@@ -12,8 +11,9 @@ import { connect } from 'react-redux';
 import { getAllDecks, getAllPacks, getCampaigns } from '../../../reducers';
 import { iconsMap } from '../../../app/NavIcons';
 import withPlayerCards from '../../withPlayerCards';
+import withLoginGate from '../../withLoginGate';
+import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import CampaignItem from './CampaignItem';
-import typography from '../../../styles/typography';
 
 class MyCampaignsView extends React.Component {
   static propTypes = {
@@ -28,7 +28,6 @@ class MyCampaignsView extends React.Component {
   constructor(props) {
     super(props);
 
-    this._onCreateCampaign = this.onCreateCampaign.bind(this);
     this._onPress = this.onPress.bind(this);
     props.navigator.setButtons({
       rightButtons: [
@@ -62,20 +61,9 @@ class MyCampaignsView extends React.Component {
         navigator.push({
           screen: 'Campaign.New',
           backButtonTitle: 'Cancel',
-          passProps: {
-            onCreateCampaign: this._onCreateCampaign,
-          },
         });
       }
     }
-  }
-
-  onCreateCampaign(id) {
-    const {
-      navigator,
-    } = this.props;
-    navigator.pop();
-    this.onPress(id);
   }
 
   renderItem(campaign) {
@@ -112,12 +100,6 @@ class MyCampaignsView extends React.Component {
     return (
       <ScrollView style={styles.container}>
         { map(campaigns, campaign => this.renderItem(campaign)) }
-        <Text style={[typography.small, styles.margin]}>
-          Note: The new campaign tracker is a beta experience. All deck changes
-          you make will be saved to ArkhamDB, but while the app is in Beta
-          please make use of the 'share' function to backup your logs after
-          play sessions.
-        </Text>
       </ScrollView>
     );
   }
@@ -135,15 +117,17 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withPlayerCards(MyCampaignsView)
+export default withFetchCardsGate(
+  withLoginGate(
+    connect(mapStateToProps, mapDispatchToProps)(
+      withPlayerCards(MyCampaignsView)
+    ),
+    'This app features a full campaign log tracking system that helps you manage your ArkhamDB decks.\n\nIn order to use this feature, please sign in with your ArkhamDB account.'
+  )
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  margin: {
-    margin: 8,
   },
 });

@@ -42,6 +42,7 @@ export function updateCampaign(
     type: UPDATE_CAMPAIGN,
     id,
     campaign: sparseCampaign,
+    now: new Date(),
   };
 }
 

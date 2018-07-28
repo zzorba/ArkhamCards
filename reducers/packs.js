@@ -14,7 +14,7 @@ const DEFAULT_PACKS_STATE = {
   dateUpdatePrompt: null,
   in_collection: {},
   show_spoilers: {},
-  loading: true,
+  loading: false,
 };
 
 export default function(state = DEFAULT_PACKS_STATE, action) {

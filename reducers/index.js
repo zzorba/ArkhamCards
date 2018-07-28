@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 
 import signedIn from './signedIn';
 import campaigns from './campaigns';
+import cards from './cards';
 import decks from './decks';
 import packs from './packs';
 import weaknesses from './weaknesses';
@@ -24,6 +25,7 @@ const signedInPersistConfig = {
 // Combine all the reducers
 const rootReducer = combineReducers({
   packs,
+  cards,
   decks: persistReducer(decksPersistConfig, decks),
   campaigns,
   weaknesses,
@@ -35,7 +37,7 @@ export default rootReducer;
 export function getCampaigns(state) {
   return sortBy(
     values(state.campaigns.all),
-    campaign => campaign.lastModified);
+    campaign => campaign.lastUpdated ? -new Date(campaign.lastUpdated).getTime() : 0);
 }
 export function getShowSpoilers(state, packCode) {
   const show_spoilers = state.packs.show_spoilers || {};

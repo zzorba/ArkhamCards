@@ -11,7 +11,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../actions';
+import * as Actions from '../../actions';
 
 class LoginButton extends React.Component {
   static propTypes = {
@@ -91,6 +91,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(LoginButton);
 
 const styles = StyleSheet.create({
   wrapper: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    height: 40,
     padding: 4,
   },
   error: {

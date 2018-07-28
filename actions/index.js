@@ -1,6 +1,4 @@
 import {
-  PACKS_AVAILABLE,
-  UPDATE_PROMPT_DISMISSED,
   NEW_DECK_AVAILABLE,
   UPDATE_DECK,
   CLEAR_DECKS,
@@ -95,31 +93,6 @@ export function verifyLogin() {
         });
       }
     });
-  };
-}
-
-export function dismissUpdatePrompt() {
-  return {
-    type: UPDATE_PROMPT_DISMISSED,
-    timestamp: new Date(),
-  };
-}
-
-export function fetchPacks(callback) {
-  return (dispatch) => {
-    fetch('https://arkhamdb.com/api/public/packs/', { method: 'GET' })
-      .then(response => response.json())
-      .then(json => {
-        dispatch({
-          type: PACKS_AVAILABLE,
-          packs: json,
-          timestamp: new Date(),
-        });
-        callback && callback(json);
-      },
-      err => {
-        console.log(err);
-      });
   };
 }
 
@@ -248,9 +221,7 @@ export default {
   login,
   logout,
   verifyLogin,
-  dismissUpdatePrompt,
   refreshMyDecks,
-  fetchPacks,
   fetchPrivateDeck,
   fetchPublicDeck,
   setInCollection,

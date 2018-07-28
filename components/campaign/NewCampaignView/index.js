@@ -29,7 +29,6 @@ class NewCampaignView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     newCampaign: PropTypes.func.isRequired,
-    onCreateCampaign: PropTypes.func.isRequired,
     nextId: PropTypes.number.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
     captureViewRef: PropTypes.func.isRequired,
@@ -183,7 +182,7 @@ class NewCampaignView extends React.Component {
     const {
       nextId,
       newCampaign,
-      onCreateCampaign,
+      navigator,
     } = this.props;
     const {
       name,
@@ -203,7 +202,7 @@ class NewCampaignView extends React.Component {
       this.getCampaignLog(),
       weaknessPacks,
     );
-    onCreateCampaign(nextId);
+    navigator.pop();
   }
 
   updateChaosBag(chaosBag) {

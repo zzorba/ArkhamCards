@@ -92,6 +92,7 @@ export default class CardQuantityComponent extends React.Component {
       <View style={styles.container} pointerEvents="box-none">
         <Button
           style={styles.button}
+          color={count === 0 ? 'white' : null}
           size="small"
           align="center"
           width={BUTTON_WIDTH}
@@ -154,6 +155,9 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     marginRight: 4,
     width: BUTTON_WIDTH,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   drawer: {
     zIndex: 1,

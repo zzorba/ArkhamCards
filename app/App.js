@@ -2,7 +2,7 @@ import { Navigation } from 'react-native-navigation';
 import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 
-import { iconsLoaded } from './NavIcons';
+import { iconsLoaded, iconsMap } from './NavIcons';
 
 export default class App {
   constructor() {
@@ -29,20 +29,31 @@ export default class App {
       'Warning: isMounted(...) is deprecated',
     ]);
 
-    Navigation.startSingleScreenApp({
-      screen: {
-        screen: 'Home',
-        title: 'Browse',
-      },
-      drawer: {
-        right: {
+    Navigation.startTabBasedApp({
+      tabs: [
+        {
+          label: 'Cards',
+          title: 'Cards',
+          icon: iconsMap.cards,
+          screen: 'Browse.Cards',
+        }, {
+          label: 'Decks',
+          title: 'Decks',
+          icon: iconsMap.deck,
+          screen: 'My.Decks',
+        }, {
+          label: 'Campaigns',
+          title: 'Campaigns',
+          icon: iconsMap.book,
+          screen: 'My.Campaigns',
+        }, {
+          label: 'Settings',
+          title: 'Settings',
+          icon: iconsMap.settings,
           screen: 'Settings',
         },
-        left: null,
-        disableOpenGesture: true,
-      },
+      ],
     });
-
     Linking.addEventListener('url', this._handleUrl);
 
     // We handle scrollapp and https (universal) links
