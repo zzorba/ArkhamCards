@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { iconsMap } from '../app/NavIcons';
+import { showDeckModal } from './navHelper';
 import withLoginGate from './withLoginGate';
 import withFetchCardsGate from './cards/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
@@ -40,15 +41,8 @@ class MyDecksView extends React.Component {
     }
   }
 
-  deckNavClicked(id) {
-    this.props.navigator.showModal({
-      screen: 'Deck',
-      passProps: {
-        id: id,
-        isPrivate: true,
-        modal: true,
-      },
-    });
+  deckNavClicked(deck, investigator) {
+    showDeckModal(this.props.navigator, deck, investigator);
   }
 
   render() {

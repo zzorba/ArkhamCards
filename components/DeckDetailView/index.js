@@ -57,6 +57,12 @@ class DeckDetailView extends React.Component {
         id: 'back',
       },
     ] : [];
+    const rightButtons = props.isPrivate && props.modal && !props.deck.next_deck ? [
+      {
+        id: 'editName',
+        icon: iconsMap.edit,
+      },
+    ] : [];
 
     this.state = {
       parsedDeck: null,
@@ -69,7 +75,6 @@ class DeckDetailView extends React.Component {
       hasPendingEdits: false,
     };
     this._saveName = this.saveName.bind(this);
-    this._showEditNameDialog = this.showEditNameDialog.bind(this);
     this._onEditPressed = this.onEditPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._saveEdits = this.saveEdits.bind(this);
@@ -82,6 +87,7 @@ class DeckDetailView extends React.Component {
     if (props.modal) {
       props.navigator.setButtons({
         leftButtons,
+        rightButtons,
       });
     }
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -166,7 +172,9 @@ class DeckDetailView extends React.Component {
       navigator,
     } = this.props;
     if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'edit') {
+      if (event.id === 'editName') {
+        this.showEditNameDialog();
+      } else if (event.id === 'edit') {
         this.onEditPressed();
       } else if (event.id === 'back') {
         navigator.dismissAllModals();
@@ -188,6 +196,7 @@ class DeckDetailView extends React.Component {
       hasPendingEdits: pendingEdits,
       editNameDialogVisible: false,
     });
+    this.props.navigator.setTitle({ title: name });
   }
 
   onEditPressed() {
@@ -269,10 +278,15 @@ class DeckDetailView extends React.Component {
   }
 
   clearEdits() {
+    const {
+      deck,
+      navigator,
+    } = this.props;
     this.setState({
       nameChange: null,
     }, () => {
-      this.updateSlots(this.props.deck.slots);
+      navigator.setTitle({ title: deck.name });
+      this.updateSlots(deck.slots);
     });
   }
 
@@ -439,7 +453,6 @@ class DeckDetailView extends React.Component {
       loaded,
       parsedDeck,
       cardsInDeck,
-      nameChange,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -464,8 +477,6 @@ class DeckDetailView extends React.Component {
             cards={cardsInDeck}
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
-            name={nameChange || deck.name}
-            onEditNamePress={isPrivate ? this._showEditNameDialog : null}
           />
           <DeckNavFooter
             navigator={navigator}

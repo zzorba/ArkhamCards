@@ -6,6 +6,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { showDeckModal } from './navHelper';
 import InvestigatorsListComponent from './InvestigatorsListComponent';
 import { iconsMap } from '../app/NavIcons';
 import * as Actions from '../actions';
@@ -60,14 +61,7 @@ class NewDeckView extends React.Component {
     newDeck(investigator.code).then(deck => {
       setNewDeck(deck.id, deck);
       onCreateDeck && onCreateDeck(deck.id);
-      navigator.showModal({
-        screen: 'Deck',
-        passProps: {
-          id: deck.id,
-          isPrivate: true,
-          modal: true,
-        },
-      });
+      showDeckModal(navigator, deck, investigator);
     }, error => {
       Alert.alert('Error', error.message);
     });

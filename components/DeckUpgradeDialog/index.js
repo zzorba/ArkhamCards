@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, keys, range } from 'lodash';
+import { forEach, head, keys, range } from 'lodash';
 import {
   Alert,
   View,
@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { connectRealm } from 'react-native-realm';
 
+import { showDeckModal } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
 import { upgradeDeck } from '../../lib/authApi';
 import * as Actions from '../../actions';
@@ -27,6 +29,7 @@ class DeckUpgradeDialog extends React.Component {
     deck: PropTypes.object,
     setNewDeck: PropTypes.func.isRequired,
     updateDeck: PropTypes.func.isRequired,
+    investigator: PropTypes.object,
   };
 
   constructor(props) {
@@ -45,6 +48,7 @@ class DeckUpgradeDialog extends React.Component {
   saveUpgrade() {
     const {
       navigator,
+      investigator,
       deck: {
         id,
       },
@@ -70,14 +74,7 @@ class DeckUpgradeDialog extends React.Component {
       } = decks;
       updateDeck(deck.id, deck, false);
       setNewDeck(upgradedDeck.id, upgradedDeck);
-      navigator.showModal({
-        screen: 'Deck',
-        passProps: {
-          id: upgradedDeck.id,
-          isPrivate: true,
-          modal: true,
-        },
-      });
+      showDeckModal(navigator, upgradedDeck, investigator);
     }, err => {
       Alert.alert(err.message || err);
     });
@@ -157,7 +154,16 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckUpgradeDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  connectRealm(DeckUpgradeDialog, {
+    schemas: ['Card'],
+    mapToProps(results, realm, props) {
+      return {
+        investigator: head(results.cards.filtered(`code == '${props.deck.investigator_code}'`)),
+      };
+    },
+  })
+);
 
 const styles = StyleSheet.create({
   container: {

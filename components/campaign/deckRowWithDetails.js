@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import { showDeckModal } from '../navHelper';
 import DeckListRow from '../DeckListRow';
 import AppIcon from '../../assets/AppIcon';
 import * as Actions from '../../actions';
@@ -49,16 +50,10 @@ export default function deckRowWithDetails(DeckRowDetails, { compact, viewDeckBu
     onDeckPress() {
       const {
         navigator,
-        id,
+        deck,
+        investigators,
       } = this.props;
-      navigator.showModal({
-        screen: 'Deck',
-        passProps: {
-          id: id,
-          isPrivate: true,
-          modal: true,
-        },
-      });
+      showDeckModal(navigator, deck, investigators[deck.investigator_code]);
     }
 
     onRemove() {

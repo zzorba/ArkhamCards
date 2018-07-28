@@ -8,12 +8,15 @@ import {
   StyleSheet,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 
 import AppIcon from '../../assets/AppIcon';
 import { DeckType } from '../parseDeck';
 import { COLORS } from '../../styles/colors';
+import typography from '../../styles/typography';
 import DeckValidation from '../../lib/DeckValidation';
 import { FOOTER_HEIGHT } from './constants';
+import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SHOW_CHARTS_BUTTON = false;
 const DECK_PROBLEM_MESSAGES = {
@@ -98,9 +101,13 @@ export default class DeckNavFooter extends React.Component {
     return (
       <View style={styles.problemRow}>
         <View style={styles.warningIcon}>
-          <AppIcon name="warning" size={14} color={COLORS.red} numberOfLines={2} />
+          <AppIcon name="warning" size={14} color={COLORS.white} />
         </View>
-        <Text style={styles.problemText} numberOfLines={2}>
+        <Text
+          style={[typography.small, styles.whiteText, styles.problemText]}
+          numberOfLines={2}
+          ellipsizeMode="tail"
+        >
           { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
         </Text>
       </View>
@@ -114,6 +121,7 @@ export default class DeckNavFooter extends React.Component {
           xp,
           previous_deck,
         },
+        investigator,
         spentXp,
         totalXp,
         normalCardCount,
@@ -121,9 +129,12 @@ export default class DeckNavFooter extends React.Component {
       },
     } = this.props;
     return (
-      <View style={styles.wrapper}>
+      <LinearGradient
+        style={styles.wrapper}
+        colors={FACTION_DARK_GRADIENTS[investigator.faction_code]}
+      >
         <View style={styles.left}>
-          <Text>
+          <Text style={[typography.text, styles.whiteText]}>
             { `${normalCardCount} Cards (${totalCardCount} Total)` }
             { previous_deck ? ` - XP: ${spentXp} of ${xp}` : ` - XP: ${totalXp}` }
           </Text>
@@ -133,36 +144,32 @@ export default class DeckNavFooter extends React.Component {
           { SHOW_CHARTS_BUTTON && (
             <TouchableOpacity onPress={this._showCardCharts}>
               <View style={styles.button}>
-                <MaterialCommunityIcons name="chart-bar" size={28} color="#bbb" />
+                <MaterialCommunityIcons name="chart-bar" size={28} color="#FFFFFF" />
               </View>
             </TouchableOpacity>
           ) }
           <TouchableOpacity onPress={this._showCardSimulator}>
             <View style={styles.button}>
-              <MaterialCommunityIcons name="cards-outline" size={28} color="#bbb" />
+              <AppIcon name="cards" size={28} color="#FFFFFF" />
             </View>
           </TouchableOpacity>
         </View>
-      </View>
+      </LinearGradient>
     );
   }
 }
 
-const BUTTON_SIZE = 40;
-const BUTTON_PADDING = (FOOTER_HEIGHT - BUTTON_SIZE) / 2;
+const BUTTON_SIZE = 44;
 const styles = StyleSheet.create({
   wrapper: {
     width: '100%',
     height: FOOTER_HEIGHT,
-    backgroundColor: '#fafafa',
-    borderTopWidth: 1,
-    borderColor: '#cdcdcd',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingTop: 2,
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingTop: 4,
+    paddingLeft: 8,
+    paddingRight: 4,
   },
   left: {
     flexDirection: 'column',
@@ -172,24 +179,25 @@ const styles = StyleSheet.create({
   },
   right: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
   },
   button: {
-    paddingTop: BUTTON_PADDING,
-    paddingBottom: BUTTON_PADDING,
+    padding: 4,
     width: BUTTON_SIZE,
-    paddingLeft: 5,
-    paddingRight: 5,
   },
   problemText: {
     flex: 1,
-    color: COLORS.red,
   },
   problemRow: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
   warningIcon: {
     marginRight: 2,
+  },
+  whiteText: {
+    color: '#FFFFFF',
   },
 });

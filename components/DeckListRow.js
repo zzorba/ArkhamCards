@@ -19,8 +19,7 @@ import typography from '../styles/typography';
 
 export default class DeckListRow extends React.Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
-    deck: PropTypes.object,
+    deck: PropTypes.object.isRequired,
     cards: PropTypes.object,
     investigator: PropTypes.object,
     onPress: PropTypes.func,
@@ -38,10 +37,11 @@ export default class DeckListRow extends React.Component {
 
   onPress() {
     const {
-      id,
+      deck,
+      investigator,
       onPress,
     } = this.props;
-    onPress && onPress(id);
+    onPress && onPress(deck, investigator);
   }
 
   renderDeckDetails() {

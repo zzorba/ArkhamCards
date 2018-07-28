@@ -39,7 +39,6 @@ import CardSortDialog from '../components/CardSortDialog';
 import ScenarioDialog from '../components/ScenarioDialog';
 import ExileCardDialog from '../components/ExileCardDialog';
 import BrowseInvestigatorsView from '../components/BrowseInvestigatorsView';
-import HomeView from '../components/HomeView';
 import AboutView from '../components/AboutView';
 import NewWeaknessSetDialog from '../components/weakness/NewWeaknessSetDialog';
 import WeaknessSetView from '../components/weakness/WeaknessSetView';
@@ -49,7 +48,6 @@ import EditAssignedWeaknessDialog from '../components/weakness/EditAssignedWeakn
 
 // register all screens of the app (including internal ones)
 export function registerScreens(store, Provider) {
-  Navigation.registerComponent('Home', () => HomeView, store, Provider);
   Navigation.registerComponent('About', () => AboutView, store, Provider);
   Navigation.registerComponent('Browse.Cards', () => CardSearchView, store, Provider);
   Navigation.registerComponent('Browse.Investigators', () => BrowseInvestigatorsView, store, Provider);

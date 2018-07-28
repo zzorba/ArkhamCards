@@ -9,10 +9,8 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import AppIcon from '../../assets/AppIcon';
-import DeckTitleBarComponent from '../DeckTitleBarComponent';
 import { DeckType } from '../parseDeck';
 import { COLORS } from '../../styles/colors';
 import DeckViewCardItem from './DeckViewCardItem';
@@ -65,8 +63,6 @@ export default class DeckViewTab extends React.Component {
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
-    name: PropTypes.string,
-    onEditNamePress: PropTypes.func,
   };
 
   constructor(props) {
@@ -99,8 +95,6 @@ export default class DeckViewTab extends React.Component {
         id: card.code,
         pack_code: card.pack_code,
       },
-      title: `${card.is_unique ? '✷ ' : ''}${card.name}`,
-      subtitle: card.subname,
       backButtonTitle: 'Back',
     });
   }
@@ -184,8 +178,6 @@ export default class DeckViewTab extends React.Component {
       },
       isPrivate,
       buttons,
-      name,
-      onEditNamePress,
     } = this.props;
 
     const sections = deckToSections(normalCards)
@@ -193,15 +185,6 @@ export default class DeckViewTab extends React.Component {
 
     return (
       <ScrollView>
-        <DeckTitleBarComponent
-          name={name}
-          investigator={investigator}
-          button={
-            <TouchableOpacity onPress={onEditNamePress}>
-              <MaterialIcons name="edit" size={28} color="#FFFFFF" />
-            </TouchableOpacity>
-          }
-        />
         <View style={styles.container}>
           <View style={styles.rowWrap}>
             <View style={styles.header}>
