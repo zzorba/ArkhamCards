@@ -170,10 +170,14 @@ export default class CardText extends React.PureComponent {
             minWidth: 12,
             marginRight: 4,
           },
+          paragraph: {
+            marginTop: 4,
+            marginBottom: 4,
+          },
         }}
         onLinkPress={onLinkPress}
       >
-        { this.props.text.replace('&rarr;', '→').replace(/\/n/g,'\\n') }
+        { this.props.text.replace('&rarr;', '→').replace(/\/n/g, '\n') }
       </MarkdownView>
     );
   }
