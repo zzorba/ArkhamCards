@@ -117,7 +117,7 @@ class CardResultList extends React.Component {
       case SORT_BY_TITLE:
         return [['renderName', false]];
       case SORT_BY_ENCOUNTER_SET:
-        return [['sort_by_pack', false], ['position', false]];
+        return [['sort_by_pack', false], ['encounter_code', false], ['encounter_position', false]];
     }
   }
 

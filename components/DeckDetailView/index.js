@@ -77,11 +77,10 @@ class DeckDetailView extends React.Component {
     this._saveName = this.saveName.bind(this);
     this._onEditPressed = this.onEditPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
-    this._saveEdits = this.saveEdits.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigatorButtons = this.syncNavigatorButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
-    this._saveEdits = this.saveEdits.bind(this);
+    this._saveEdits = this.saveEdits.bind(this, false);
     this._clearEdits = this.clearEdits.bind(this);
 
     if (props.modal) {
@@ -177,11 +176,29 @@ class DeckDetailView extends React.Component {
       } else if (event.id === 'edit') {
         this.onEditPressed();
       } else if (event.id === 'back') {
-        navigator.dismissAllModals();
-      } else if (event.id === 'cancel') {
-        this.clearEdits();
-      } else if (event.id === 'save') {
-        this.saveEdits();
+        if (this.state.hasPendingEdits) {
+          Alert.alert(
+            'Save deck changes?',
+            'Looks like you have made some changes that have not been saved.',
+            [{
+              text: 'Save Changes',
+              onPress: () => {
+                this.saveEdits(true);
+              },
+            }, {
+              text: 'Discard Changes',
+              style: 'destructive',
+              onPress: () => {
+                navigator.dismissAllModals();
+              }
+            }, {
+              text: 'Cancel',
+              style: 'cancel',
+            }],
+          );
+        } else {
+          navigator.dismissAllModals();
+        }
       }
     }
   }
@@ -231,8 +248,9 @@ class DeckDetailView extends React.Component {
     });
   }
 
-  saveEdits() {
+  saveEdits(dismissAfterSave) {
     const {
+      navigator,
       deck,
       updateDeck,
     } = this.props;
@@ -264,11 +282,15 @@ class DeckDetailView extends React.Component {
       parsedDeck.spentXp
     ).then(deck => {
       updateDeck(deck.id, deck, true);
-      this.setState({
-        saving: false,
-        nameChange: null,
-        hasPendingEdits: false,
-      });
+      if (dismissAfterSave) {
+        navigator.dismissAllModals();
+      } else {
+        this.setState({
+          saving: false,
+          nameChange: null,
+          hasPendingEdits: false,
+        });
+      }
     }, err => {
       this.setState({
         saving: false,

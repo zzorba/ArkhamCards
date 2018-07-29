@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { updateCampaign } from './actions';
+import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
 import { parseDeck } from '../parseDeck';
@@ -16,6 +17,7 @@ import DeckValidation from '../../lib/DeckValidation';
 import { getCampaign, getAllDecks } from '../../reducers';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards from '../withPlayerCards';
+import typography from '../../styles/typography';
 
 const RANDOM_BASIC_WEAKNESS = '01000';
 
@@ -41,8 +43,11 @@ class CampaignDrawWeaknessDialog extends React.Component {
       selectedDeckId: head(props.latestDeckIds),
       replaceRandomBasicWeakness: true,
       saving: false,
+      pendingNextCard: null,
+      pendingAssignedCards: null,
     };
 
+    this._saveDrawnCard = this.saveDrawnCard.bind(this);
     this._selectDeck = this.selectDeck.bind(this);
     this._updateDrawnCard = this.updateDrawnCard.bind(this);
     this._onPressInvestigator = this.onPressInvestigator.bind(this);
@@ -103,6 +108,17 @@ class CampaignDrawWeaknessDialog extends React.Component {
   }
 
   updateDrawnCard(nextCard, assignedCards) {
+    this.setState({
+      pendingNextCard: nextCard,
+      pendingAssignedCards: assignedCards,
+    });
+  }
+
+  saveDrawnCard() {
+    const {
+      pendingNextCard,
+      pendingAssignedCards,
+    } = this.state;
     const {
       campaignId,
       weaknessSet,
@@ -124,10 +140,10 @@ class CampaignDrawWeaknessDialog extends React.Component {
       const previousDeck = decks[deck.previous_deck];
       const investigator = investigators[deck.investigator_code];
       const newSlots = Object.assign({}, deck.slots);
-      if (!newSlots[nextCard]) {
-        newSlots[nextCard] = 0;
+      if (!newSlots[pendingNextCard]) {
+        newSlots[pendingNextCard] = 0;
       }
-      newSlots[nextCard]++;
+      newSlots[pendingNextCard]++;
       if (replaceRandomBasicWeakness && newSlots[RANDOM_BASIC_WEAKNESS] > 0) {
         newSlots[RANDOM_BASIC_WEAKNESS]--;
         if (!newSlots[RANDOM_BASIC_WEAKNESS]) {
@@ -152,13 +168,17 @@ class CampaignDrawWeaknessDialog extends React.Component {
         updateDeck(deck.id, deck, true);
         this.setState({
           saving: false,
+          pendingAssignedCards: null,
+          pendingNextCard: null,
         });
       });
     }
-    updateCampaign(
-      campaignId,
-      { weaknessSet: Object.assign({}, weaknessSet, { assignedCards }) }
+    const newWeaknessSet = Object.assign(
+      {},
+      weaknessSet,
+      { assignedCards: pendingAssignedCards },
     );
+    updateCampaign(campaignId, { weaknessSet: newWeaknessSet });
   }
 
   renderInvestigatorChooser() {
@@ -193,6 +213,32 @@ class CampaignDrawWeaknessDialog extends React.Component {
     );
   }
 
+  renderFlippedHeader() {
+    const {
+      decks,
+      investigators,
+    } = this.props;
+    const {
+      pendingNextCard,
+      selectedDeckId,
+    } = this.state;
+    const deck = selectedDeckId && decks[selectedDeckId];
+    const investigator = deck && investigators[deck.investigator_code];
+    if (!pendingNextCard || !investigator) {
+      return null;
+    }
+
+    return (
+      <View style={styles.button}>
+        <Button
+          color="green"
+          onPress={this._saveDrawnCard}
+          text={`Save to ${investigator.name}\'s Deck`}
+        />
+      </View>
+    );
+  }
+
   render() {
     const {
       navigator,
@@ -211,6 +257,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
       <WeaknessDrawComponent
         navigator={navigator}
         customHeader={this.renderInvestigatorChooser()}
+        customFlippedHeader={this.renderFlippedHeader()}
         weaknessSet={weaknessSet}
         updateDrawnCard={this._updateDrawnCard}
         saving={saving}
@@ -245,5 +292,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
+  },
+  button: {
+    marginTop: 8,
   },
 });

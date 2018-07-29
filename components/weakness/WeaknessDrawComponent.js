@@ -15,7 +15,7 @@ import FlipCard from 'react-native-flip-card';
 import withWeaknessCards from './withWeaknessCards';
 import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
-import { CARD_RATIO } from '../../styles/sizes';
+import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '../../styles/sizes';
 import typography from '../../styles/typography';
 const PLAYER_BACK = require('../../assets/player-back.png');
 const defaultImageCacheManager = ImageCacheManager();
@@ -28,6 +28,7 @@ class WeaknessDrawComponent extends React.Component {
     weaknessSet: PropTypes.object,
     updateDrawnCard: PropTypes.func.isRequired,
     customHeader: PropTypes.node,
+    customFlippedHeader: PropTypes.node,
     saving: PropTypes.bool,
     // From realm, actually an 'array'.
     cards: PropTypes.object,
@@ -38,15 +39,13 @@ class WeaknessDrawComponent extends React.Component {
 
     const {
       width,
+      height,
     } = Dimensions.get('window');
 
-    const cardWidth = width - PADDING * 2;
-    const cardHeight = Math.round(cardWidth * CARD_RATIO);
-
     this.state = {
+      width,
+      height,
       headerHeight: 32,
-      cardWidth,
-      cardHeight,
       selectedTraits: [],
       nextCard: this.nextCard([]),
       flipped: false,
@@ -68,6 +67,31 @@ class WeaknessDrawComponent extends React.Component {
         nextCard: this.nextCard(this.state.selectedTraits),
       });
     }
+  }
+
+  calculateCardDimensions() {
+    const {
+      width,
+      height,
+      headerHeight,
+    } = this.state;
+
+    const wBasedWidth = width - PADDING * 2;
+    const wBasedHeight = Math.round(wBasedWidth * CARD_RATIO);
+
+    const hBasedHeight = height - HEADER_HEIGHT - TABBAR_HEIGHT - PADDING * 2 - headerHeight;
+    const hBasedWidth = Math.round(hBasedHeight / CARD_RATIO);
+
+    if (hBasedHeight < wBasedHeight) {
+      return {
+        cardWidth: hBasedWidth,
+        cardHeight: hBasedHeight,
+      };
+    }
+    return {
+      cardWidth: wBasedWidth,
+      cardHeight: wBasedHeight,
+    };
   }
 
   onHeaderLayout(event) {
@@ -196,6 +220,7 @@ class WeaknessDrawComponent extends React.Component {
     const {
       navigator,
       customHeader,
+      customFlippedHeader,
       saving,
     } = this.props;
     const {
@@ -219,6 +244,7 @@ class WeaknessDrawComponent extends React.Component {
       return (
         <View style={[styles.buttonWrapper, { height: headerHeight }]}>
           <Button text="Draw another" onPress={this._drawAnother} />
+          { customFlippedHeader }
         </View>
       );
     }
@@ -241,9 +267,11 @@ class WeaknessDrawComponent extends React.Component {
       selectedTraits,
       nextCard,
       flipped,
+    } = this.state;
+    const {
       cardWidth,
       cardHeight,
-    } = this.state;
+    } = this.calculateCardDimensions();
     if (nextCard) {
       return (
         <View style={styles.cardWrapper}>

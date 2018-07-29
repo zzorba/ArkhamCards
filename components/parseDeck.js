@@ -101,7 +101,7 @@ function getChangedCards(deck, slots, previousDeck, exiledCards) {
 function calculateTotalXp(cards, slots) {
   return sum(map(keys(slots), code => {
     const card = cards[code];
-    return (card.xp || 0) * slots[code];
+    return (computeXp(card) || 0) * slots[code];
   }));
 }
 
@@ -190,7 +190,7 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
           if (arcaneResearchUses > 0 &&
             removedCard.traits_normalized.indexOf('#spell#') !== -1 &&
             addedCard.traits_normalized.indexOf('#spell#') !== -1) {
-            let xpCost = (addedCard.xp - removedCard.xp);
+            let xpCost = (computeXp(addedCard) - computeXp(removedCard));
             while (xpCost > 0 && arcaneResearchUses > 0) {
               xpCost--;
               arcaneResearchUses--;
@@ -198,10 +198,10 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
             return xpCost;
           }
           // Upgrade of the same name, so you only pay the delta.
-          return (addedCard.xp - removedCard.xp);
+          return (computeXp(addedCard) - computeXp(removedCard));
         }
       }
-      return addedCard.xp;
+      return computeXp(addedCard);
     }
   ));
 }
