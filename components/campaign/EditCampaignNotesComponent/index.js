@@ -127,7 +127,6 @@ export default class EditCampaignNotesComponent extends React.Component {
             title={section.title}
             count={section.count}
             countChanged={this._countChanged}
-            useTally
           />
         )) }
       </View>

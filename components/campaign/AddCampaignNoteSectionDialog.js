@@ -102,7 +102,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
           onChangeText={this._onNameChange}
         />
         <DialogComponent.Switch
-          label="Tally Count"
+          label="Count"
           value={isCount}
           onValueChange={this._toggleCount}
           onTintColor="#222222"

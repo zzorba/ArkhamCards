@@ -7,7 +7,6 @@ import {
   View,
 } from 'react-native';
 
-import TallyCount from '../../core/TallyCount';
 import typography from '../../../styles/typography';
 
 export default class CampaignNotesSection extends React.Component {
@@ -42,7 +41,9 @@ export default class CampaignNotesSection extends React.Component {
             <Text style={typography.small}>
               { section.title.toUpperCase() }
             </Text>
-            <TallyCount count={section.count} />
+            <Text style={typography.text}>
+              { section.count || 0 }
+            </Text>
           </View>
         )) }
       </View>
