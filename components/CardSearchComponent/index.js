@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
+  Keyboard,
   Platform,
-  Text,
   StyleSheet,
-  Switch,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import SearchBox from '../SearchBox';
+import CardSearchBox from './CardSearchBox';
 import {
   SORT_BY_TYPE,
   SORT_BY_ENCOUNTER_SET,
@@ -21,7 +20,6 @@ import { applyFilters } from '../../lib/filters';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { STORY_CARDS_QUERY } from '../../data/query';
 
-const SEARCH_OPTIONS_HEIGHT = 44;
 
 class CardSearchComponent extends React.Component {
   static propTypes = {
@@ -46,6 +44,7 @@ class CardSearchComponent extends React.Component {
     super(props);
 
     this.state = {
+      headerVisible: true,
       searchText: false,
       searchFlavor: false,
       searchBack: false,
@@ -56,6 +55,8 @@ class CardSearchComponent extends React.Component {
       storyMode: false,
     };
 
+    this._showHeader = this.showHeader.bind(this);
+    this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
@@ -94,6 +95,26 @@ class CardSearchComponent extends React.Component {
       rightButtons,
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  showHeader() {
+    if (!this.state.headerVisible) {
+      this.setState({
+        headerVisible: true,
+      });
+    }
+  }
+
+  hideHeader() {
+    const {
+      headerVisible,
+      searchTerm,
+    } = this.state;
+    if (headerVisible && searchTerm === '') {
+      this.setState({
+        headerVisible: false,
+      });
+    }
   }
 
   cardPressed() {
@@ -150,6 +171,7 @@ class CardSearchComponent extends React.Component {
         });
       } else if (event.id === 'sort') {
         this.isOnTop = false;
+        Keyboard.dismiss();
         navigator.showLightBox({
           screen: 'Dialog.Sort',
           passProps: {
@@ -284,43 +306,22 @@ class CardSearchComponent extends React.Component {
     return queryParts.join(' and ');
   }
 
-  renderTextSearchOptions() {
+  renderHeader() {
     const {
       searchText,
       searchFlavor,
       searchBack,
     } = this.state;
     return (
-      <View style={styles.textSearchOptions}>
-        <Text style={styles.searchOption}>{ 'Game\nText' }</Text>
-        <Switch
-          value={searchText}
-          onValueChange={this._toggleSearchText}
-          onTintColor="#222222"
-        />
-        <Text style={styles.searchOption}>{ 'Flavor\nText' }</Text>
-        <Switch
-          value={searchFlavor}
-          onValueChange={this._toggleSearchFlavor}
-          onTintColor="#222222"
-        />
-        <Text style={styles.searchOption}>{ 'Card\nBacks' }</Text>
-        <Switch
-          value={searchBack}
-          onValueChange={this._toggleSearchBack}
-          onTintColor="#222222"
-        />
-      </View>
-    );
-  }
-
-  renderHeader() {
-    return (
-      <SearchBox
+      <CardSearchBox
+        visible={this.state.headerVisible}
         onChangeText={this._searchUpdated}
-        placeholder="Search for a card"
-        focusComponent={this.renderTextSearchOptions()}
-        focusComponentHeight={SEARCH_OPTIONS_HEIGHT}
+        searchText={searchText}
+        searchFlavor={searchFlavor}
+        searchBack={searchBack}
+        toggleSearchText={this._toggleSearchText}
+        toggleSearchFlavor={this._toggleSearchFlavor}
+        toggleSearchBack={this._toggleSearchBack}
       />
     );
   }
@@ -351,6 +352,8 @@ class CardSearchComponent extends React.Component {
             onDeckCountChange={onDeckCountChange}
             limits={limits}
             cardPressed={this._cardPressed}
+            showHeader={this._showHeader}
+            hideHeader={this._hideHeader}
           />
         </View>
         { !!footer && <View style={[
@@ -379,6 +382,7 @@ export default connectRealm(CardSearchComponent, {
 const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
+    backgroundColor: 'white',
     flex: 1,
   },
   container: {
@@ -386,20 +390,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-  },
-  textSearchOptions: {
-    paddingLeft: 4,
-    paddingRight: 8,
-    paddingBottom: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: SEARCH_OPTIONS_HEIGHT,
-  },
-  searchOption: {
-    fontFamily: 'System',
-    fontSize: 12,
-    marginLeft: 10,
-    marginRight: 2,
+    borderTopWidth: 1,
+    borderColor: '#bbb',
   },
   footer: {
     position: 'absolute',

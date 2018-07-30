@@ -190,7 +190,7 @@ class DeckDetailView extends React.Component {
               style: 'destructive',
               onPress: () => {
                 navigator.dismissAllModals();
-              }
+              },
             }, {
               text: 'Cancel',
               style: 'cancel',

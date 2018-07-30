@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, map, partition } from 'lodash';
+import { concat, map, partition, throttle } from 'lodash';
 import {
   ActivityIndicator,
+  Animated,
   Button,
+  Keyboard,
   SectionList,
   StyleSheet,
   View,
@@ -26,6 +28,8 @@ import {
   SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
 
+const SCROLL_DISTANCE_BUFFER = 25;
+
 class CardResultList extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -38,6 +42,8 @@ class CardResultList extends React.Component {
     show_spoilers: PropTypes.object,
     limits: PropTypes.object,
     cardPressed: PropTypes.func,
+    showHeader: PropTypes.func.isRequired,
+    hideHeader: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -50,8 +56,23 @@ class CardResultList extends React.Component {
       spoilerCardsCount: 0,
       showSpoilerCards: false,
       loading: true,
+      scrollY: new Animated.Value(0),
     };
 
+    this.lastOffsetY = 0;
+    this._onScroll = this.onScroll.bind(this);
+    this._throttledScroll = throttle(
+      this.throttledScroll.bind(this),
+      100,
+      { trailing: true },
+    );
+    this._handleScroll = Animated.event(
+      [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
+      {
+        listener: this._onScroll,
+      },
+    );
+    this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
     this._getItem = this.getItem.bind(this);
     this._renderSectionHeader = this.renderSectionHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
@@ -60,6 +81,47 @@ class CardResultList extends React.Component {
     this._enableSpoilers = this.enableSpoilers.bind(this);
     this._renderCard = this.renderCard.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
+  }
+
+  onScroll(event) {
+    const offsetY = event.nativeEvent.contentOffset.y;
+
+    if (offsetY <= 0) {
+      this.props.showHeader();
+    }
+
+    // Dispatch the throttle event to handle hiding/showing stuff on transition.
+    this._throttledScroll(offsetY);
+  }
+
+  /**
+   * This is the throttle scrollEvent, throttled so we check it slightly
+   * less often and are able to make decisions about whether we update
+   * the stored scrollY or not.
+   */
+  throttledScroll(offsetY) {
+    const delta = Math.abs(offsetY - this.lastOffsetY);
+    if (delta < SCROLL_DISTANCE_BUFFER) {
+      // Not a long enough scroll, don't update scrollY and don't take any
+      // action at all.
+      return;
+    }
+
+    // We have a decent sized scroll so we will make a direction based
+    // show/hide decision UNLESS we are near the top/bottom of the content.
+    const scrollingUp = offsetY < this.lastOffsetY;
+
+    if (scrollingUp) {
+      this.props.showHeader();
+    } else {
+      this.props.hideHeader();
+    }
+
+    this.lastOffsetY = offsetY;
+  }
+
+  handleScrollBeginDrag() {
+    Keyboard.dismiss();
   }
 
   componentDidMount() {
@@ -276,6 +338,9 @@ class CardResultList extends React.Component {
 
   render() {
     const {
+      sort,
+    } = this.props;
+    const {
       loading,
     } = this.state;
     if (loading) {
@@ -287,8 +352,11 @@ class CardResultList extends React.Component {
         />
       );
     }
+    const stickyHeaders = sort === SORT_BY_PACK || sort === SORT_BY_ENCOUNTER_SET;
     return (
       <SectionList
+        onScroll={this._handleScroll}
+        onScrollBeginDrag={this._handleScrollBeginDrag}
         sections={this.getData()}
         renderSectionHeader={this._renderSectionHeader}
         initialNumToRender={30}
@@ -296,6 +364,7 @@ class CardResultList extends React.Component {
         renderItem={this._renderCard}
         extraData={this.state.deckCardCounts}
         ListFooterComponent={this._renderFooter}
+        stickySectionHeadersEnabled={stickyHeaders}
       />
     );
   }

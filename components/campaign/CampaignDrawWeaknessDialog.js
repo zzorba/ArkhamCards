@@ -17,7 +17,6 @@ import DeckValidation from '../../lib/DeckValidation';
 import { getCampaign, getAllDecks } from '../../reducers';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards from '../withPlayerCards';
-import typography from '../../styles/typography';
 
 const RANDOM_BASIC_WEAKNESS = '01000';
 
@@ -233,7 +232,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
         <Button
           color="green"
           onPress={this._saveDrawnCard}
-          text={`Save to ${investigator.name}\'s Deck`}
+          text={`Save to ${investigator.name}'s Deck`}
         />
       </View>
     );
