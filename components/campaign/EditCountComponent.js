@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 
 import PlusMinusButtons from '../core/PlusMinusButtons';
-import TallyCount from '../core/TallyCount';
 import typography from '../../styles/typography';
 
 export default class EditCountComponent extends React.Component {

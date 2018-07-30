@@ -18,6 +18,7 @@ export default function withTextEditDialog(WrappedComponent) {
         title: '',
         text: '',
         onTextChange: null,
+        showDelete: false,
       };
 
       this._captureViewRef = this.captureViewRef.bind(this);
@@ -38,12 +39,13 @@ export default function withTextEditDialog(WrappedComponent) {
       });
     }
 
-    showDialog(title, text, onTextChange) {
+    showDialog(title, text, onTextChange, showDelete) {
       this.setState({
         visible: true,
         title,
         text,
         onTextChange,
+        showDelete: !!showDelete,
       });
     }
 
@@ -60,6 +62,7 @@ export default function withTextEditDialog(WrappedComponent) {
         text,
         onTextChange,
         baseViewRef,
+        showDelete,
       } = this.state;
       if (!baseViewRef) {
         return null;
@@ -72,6 +75,7 @@ export default function withTextEditDialog(WrappedComponent) {
           text={text}
           onTextChange={onTextChange}
           toggleVisible={this._hideDialog}
+          showDelete={showDelete}
         />
       );
     }

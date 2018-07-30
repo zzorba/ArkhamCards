@@ -36,13 +36,19 @@ export default class NotesSection extends React.Component {
       notesChanged,
       index,
     } = this.props;
-    notesChanged(index, filter(this.state.notes, note => note !== ''));
+    const {
+      notes,
+    } = this.state;
+    notesChanged(index, filter(notes, note => note !== ''));
   }
 
   updateNote(index, note) {
-    const notes = [...this.state.notes];
+    let notes = this.state.notes.slice();
     notes[index] = note;
-    if (index === (notes.length - 1) && note !== '') {
+    if (note === '') {
+      notes = filter(notes, note => note !== '');
+      notes.push('');
+    } else if (index === (notes.length - 1)) {
       // If they add something to last one, grow it.
       notes.push('');
     }
@@ -57,15 +63,18 @@ export default class NotesSection extends React.Component {
       isInvestigator,
       showDialog,
     } = this.props;
+    const {
+      notes,
+    } = this.state;
     return (
       <View style={isInvestigator ? {} : styles.container}>
         <Text style={[typography.small, styles.margin]}>
           { title.toUpperCase() }
         </Text>
         <View>
-          { map(this.state.notes, (note, idx) => (
+          { map(notes, (note, idx) => (
             <NoteRow
-              key={idx}
+              key={`${idx}-${note}`}
               title={title}
               index={idx}
               note={note}

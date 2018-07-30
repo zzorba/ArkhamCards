@@ -39,7 +39,7 @@ export default class NoteRow extends React.Component {
       note,
       showDialog,
     } = this.props;
-    showDialog(title, note, this._onChange);
+    showDialog(title, note, this._onChange, note !== '');
   }
 
   render() {

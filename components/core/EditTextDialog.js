@@ -15,6 +15,7 @@ export default class EditTextDialog extends React.Component {
     viewRef: PropTypes.object,
     onTextChange: PropTypes.func,
     toggleVisible: PropTypes.func.isRequired,
+    showDelete: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -29,6 +30,7 @@ export default class EditTextDialog extends React.Component {
     this._captureTextInputRef = this.captureTextInputRef.bind(this);
     this._onDonePress = this.onDonePress.bind(this);
     this._onCancelPress = this.onCancelPress.bind(this);
+    this._onDeletePress = this.onDeletePress.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -76,6 +78,15 @@ export default class EditTextDialog extends React.Component {
     toggleVisible();
   }
 
+  onDeletePress() {
+    const {
+      onTextChange,
+      toggleVisible,
+    } = this.props;
+    onTextChange && onTextChange('');
+    toggleVisible();
+  }
+
   onDonePress() {
     const {
       onTextChange,
@@ -91,6 +102,7 @@ export default class EditTextDialog extends React.Component {
       title,
       viewRef,
       text,
+      showDelete,
     } = this.props;
 
     const textChanged = text !== this.state.text;
@@ -108,6 +120,13 @@ export default class EditTextDialog extends React.Component {
           label="Cancel"
           onPress={this._onCancelPress}
         />
+        { showDelete && (
+          <DialogComponent.Button
+            label="Delete"
+            color="#ff3b30"
+            onPress={this._onDeletePress}
+          />
+        ) }
         <DialogComponent.Button
           label="Done"
           color={textChanged ? buttonColor : '#666666'}
