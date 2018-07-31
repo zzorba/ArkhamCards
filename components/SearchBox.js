@@ -22,7 +22,7 @@ export default class SearchBox extends React.Component {
     } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, !sideButton ? styles.underline : {}]}>
         <View style={styles.searchInputWrapper}>
           <TextInput
             style={styles.searchInput}
@@ -39,6 +39,10 @@ export default class SearchBox extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  underline: {
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
   container: {
     backgroundColor: 'white',
     width: '100%',

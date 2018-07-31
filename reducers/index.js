@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, findBy, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
+import { find, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 

@@ -9,13 +9,13 @@ import {
 
 import { CUSTOM } from '../constants';
 import NavButton from '../../core/NavButton';
+import { CAMPAIGN_NAMES } from '../../../constants';
 import typography from '../../../styles/typography';
 
 export default class ScenarioSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaign: PropTypes.object.isRequired,
-    scenarioPack: PropTypes.object,
   };
 
   constructor(props) {
@@ -73,7 +73,6 @@ export default class ScenarioSection extends React.Component {
         cycleCode,
         difficulty,
       },
-      scenarioPack,
     } = this.props;
     return (
       <View>
@@ -87,7 +86,7 @@ export default class ScenarioSection extends React.Component {
                 CAMPAIGN
               </Text>
               <Text style={typography.text}>
-                { scenarioPack.name }
+                { CAMPAIGN_NAMES[cycleCode] }
               </Text>
             </View>
           ) }

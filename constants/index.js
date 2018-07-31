@@ -147,6 +147,22 @@ const CORE_CAMPAIGN_LOG = {
   sections: ['Campaign Notes', 'Cultists We Interrogated', 'Cultists Who Got Away'],
 };
 
+export const CAMPAIGN_NAMES = {
+  core: 'The Night of the Zealot',
+  rtnotz: 'Return to the Night of the Zealot',
+  dwl: 'The Dunwich Legacy',
+  ptc: 'The Path to Carcosa',
+  tfa: 'The Forgotten Age',
+};
+
+export const CAMPAIGN_COLORS = {
+  core: '#00408033',
+  rtnotz: '#00006622',
+  dwl: '#00666633',
+  ptc: '#cc990033',
+  tfa: '#33660033',
+};
+
 export const CAMPAIGN_LOGS = {
   'core': CORE_CAMPAIGN_LOG,
   'rtnotz': CORE_CAMPAIGN_LOG,

@@ -11,8 +11,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 
+import EncounterIcon from '../../../assets/EncounterIcon';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { CUSTOM } from '../constants';
+import { CAMPAIGN_NAMES, CAMPAIGN_COLORS } from '../../../constants';
 import typography from '../../../styles/typography';
 
 class CampaignItem extends React.Component {
@@ -20,7 +22,6 @@ class CampaignItem extends React.Component {
     campaign: PropTypes.object.isRequired,
     onPress: PropTypes.func.isRequired,
     latestScenario: PropTypes.object,
-    scenarioPack: PropTypes.object,
     investigators: PropTypes.object,
   };
 
@@ -43,7 +44,6 @@ class CampaignItem extends React.Component {
       campaign: {
         cycleCode,
       },
-      scenarioPack,
     } = this.props;
     if (cycleCode === CUSTOM) {
       return null;
@@ -54,7 +54,7 @@ class CampaignItem extends React.Component {
           CAMPAIGN
         </Text>
         <Text style={typography.text}>
-          { scenarioPack.name }
+          { CAMPAIGN_NAMES[cycleCode] }
         </Text>
       </View>
     );
@@ -95,12 +95,28 @@ class CampaignItem extends React.Component {
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <LinearGradient colors={['#ffffff', '#dddddd']} style={styles.container}>
+        <LinearGradient
+          colors={['#ffffff', '#dddddd']}
+          style={styles.container}
+        >
           <Text style={typography.text}>
             { campaign.name }
           </Text>
-          { this.renderCampaign() }
-          { this.renderLastScenario() }
+          <View style={styles.row}>
+            { campaign.cycleCode !== CUSTOM && (
+              <View style={styles.backgroundIcon}>
+                <EncounterIcon
+                  encounter_code={campaign.cycleCode}
+                  size={84}
+                  color={CAMPAIGN_COLORS[campaign.cycleCode]}
+                />
+              </View>
+            ) }
+            <View>
+              { this.renderCampaign() }
+              { this.renderLastScenario() }
+            </View>
+          </View>
           <CampaignInvestigatorRow
             campaign={campaign}
             investigators={investigators}
@@ -126,15 +142,29 @@ export default connect(mapStateToProps, mapDispatchToProps)(CampaignItem);
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
     paddingLeft: 8,
     paddingRight: 8,
     paddingTop: 8,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    position: 'relative',
   },
   marginTop: {
     marginTop: 4,
+  },
+  backgroundIcon: {
+    position: 'absolute',
+    right: 22,
+    top: 0,
+    width: 84,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+    width: '100%',
+    position: 'relative',
   },
 });

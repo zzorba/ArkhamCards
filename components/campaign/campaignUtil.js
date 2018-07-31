@@ -2,7 +2,7 @@ import { capitalize, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
 import { CUSTOM } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
-import { CHAOS_TOKEN_ORDER } from '../../constants';
+import { CAMPAIGN_NAMES, CHAOS_TOKEN_ORDER } from '../../constants';
 
 export function campaignInvestigators(campaign, decks) {
   return map(
@@ -10,15 +10,15 @@ export function campaignInvestigators(campaign, decks) {
     deck => deck.investigator_code);
 }
 
-export function campaignToText(campaign, scenarioPack, decks, investigators) {
+export function campaignToText(campaign, decks, investigators) {
   const lines = [];
   lines.push(campaign.name);
   lines.push('');
   if (campaign.cycleCode === CUSTOM) {
     lines.push('Custom Campaign');
   } else {
-    lines.push(`Campaign: ${scenarioPack.name}`);
-    lines.push(`Difficulty: ${capitalize(scenarioPack.difficulty)}`);
+    lines.push(`Campaign: ${CAMPAIGN_NAMES[campaign.cycleCode]}`);
+    lines.push(`Difficulty: ${capitalize(campaign.difficulty)}`);
   }
   lines.push('');
 

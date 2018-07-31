@@ -8,7 +8,6 @@ import {
 
 import AppIcon from '../../assets/AppIcon';
 import { FACTION_COLORS } from '../../constants';
-import typography from '../../styles/typography';
 
 export default class CardCostIcon extends React.Component {
   static propTypes = {

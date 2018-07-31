@@ -5,7 +5,6 @@ import {
   Alert,
   Button,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -92,8 +91,5 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     minHeight: 40,
     padding: 4,
-  },
-  error: {
-    color: 'red',
   },
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find, forEach, map, last } from 'lodash';
+import { filter, forEach, map, last } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -8,19 +8,22 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getAllDecks, getAllPacks, getCampaigns } from '../../../reducers';
-import { iconsMap } from '../../../app/NavIcons';
+import CampaignItem from './CampaignItem';
+import { CUSTOM } from '../constants';
+import SearchBox from '../../SearchBox';
 import withPlayerCards from '../../withPlayerCards';
 import withLoginGate from '../../withLoginGate';
+import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
-import CampaignItem from './CampaignItem';
+import { iconsMap } from '../../../app/NavIcons';
+import { CAMPAIGN_NAMES } from '../../../constants';
+import { getAllDecks, getCampaigns } from '../../../reducers';
 
 class MyCampaignsView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaigns: PropTypes.array,
     decks: PropTypes.object,
-    packs: PropTypes.array,
     // From realm
     investigators: PropTypes.object,
   };
@@ -28,7 +31,12 @@ class MyCampaignsView extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      search: '',
+    };
+
     this._onPress = this.onPress.bind(this);
+    this._searchChanged = this.searchChanged.bind(this);
     props.navigator.setButtons({
       rightButtons: [
         {
@@ -38,6 +46,12 @@ class MyCampaignsView extends React.Component {
       ],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  searchChanged(text) {
+    this.setState({
+      search: text,
+    });
   }
 
   onPress(id) {
@@ -69,7 +83,6 @@ class MyCampaignsView extends React.Component {
   renderItem(campaign) {
     const {
       decks,
-      packs,
       investigators,
     } = this.props;
     const latestScenario = last(campaign.scenarioResults);
@@ -86,20 +99,37 @@ class MyCampaignsView extends React.Component {
       <CampaignItem
         key={campaign.id}
         campaign={campaign}
-        scenarioPack={find(packs, pack => pack.code === campaign.cycleCode)}
         investigators={investigators}
         onPress={this._onPress}
       />
     );
   }
 
-  render() {
+  filteredCampaigns() {
     const {
       campaigns,
     } = this.props;
+    const {
+      search,
+    } = this.state;
+
+    return filter(campaigns, campaign => {
+      const parts = [campaign.name];
+      if (campaign.cycleCode !== CUSTOM) {
+        parts.push(CAMPAIGN_NAMES[campaign.cycleCode]);
+      }
+      return searchMatchesText(search, parts);
+    });
+  }
+
+  render() {
     return (
       <ScrollView style={styles.container}>
-        { map(campaigns, campaign => this.renderItem(campaign)) }
+        <SearchBox
+          onChangeText={this._searchChanged}
+          placeholder="Search campaigns"
+        />
+        { map(this.filteredCampaigns(), campaign => this.renderItem(campaign)) }
       </ScrollView>
     );
   }
@@ -109,7 +139,6 @@ function mapStateToProps(state) {
   return {
     campaigns: getCampaigns(state),
     decks: getAllDecks(state),
-    packs: getAllPacks(state),
   };
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { find } from 'lodash';
 import {
   Alert,
   ScrollView,
@@ -31,7 +30,6 @@ class CampaignDetailView extends React.Component {
     updateCampaign: PropTypes.func.isRequired,
     deleteCampaign: PropTypes.func.isRequired,
     campaign: PropTypes.object,
-    scenarioPack: PropTypes.object,
     decks: PropTypes.object,
     investigators: PropTypes.object,
   };
@@ -50,7 +48,6 @@ class CampaignDetailView extends React.Component {
   onNavigatorEvent(event) {
     const {
       campaign,
-      scenarioPack,
       decks,
       investigators,
     } = this.props;
@@ -58,7 +55,7 @@ class CampaignDetailView extends React.Component {
       if (event.id === 'share') {
         Share.share({
           text: campaign.name,
-          message: campaignToText(campaign, scenarioPack, decks, investigators),
+          message: campaignToText(campaign, decks, investigators),
         }, {
           subject: campaign.name,
         });
@@ -156,7 +153,6 @@ class CampaignDetailView extends React.Component {
     const {
       navigator,
       campaign,
-      scenarioPack,
     } = this.props;
     if (!campaign) {
       return null;
@@ -166,7 +162,6 @@ class CampaignDetailView extends React.Component {
         <ScenarioSection
           navigator={navigator}
           campaign={campaign}
-          scenarioPack={scenarioPack}
         />
         <DecksSection
           navigator={navigator}
@@ -197,7 +192,6 @@ function mapStateToProps(state, props) {
   const packs = getAllPacks(state);
   return {
     campaign: campaign,
-    scenarioPack: campaign && find(packs, pack => pack.code === campaign.cycleCode),
     packs: packs,
     decks: getAllDecks(state),
   };

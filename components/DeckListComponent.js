@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, findIndex, map } from 'lodash';
+import { filter, map } from 'lodash';
 import {
   FlatList,
   StyleSheet,
@@ -9,6 +9,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { searchMatchesText } from './searchHelpers';
 import SearchBox from './SearchBox';
 import DeckListRow from './DeckListRow';
 import withPlayerCards from './withPlayerCards';
@@ -118,15 +119,10 @@ class DeckListComponent extends React.Component {
       filter(deckIds, deckId => {
         const deck = decks[deckId];
         const investigator = deck && investigators[deck.investigator_code];
-        if (!deck || !searchTerm || !investigator) {
+        if (!deck || !investigator) {
           return true;
         }
-        const terms = searchTerm.toLowerCase().split(' ');
-        const name = deck.name.toLowerCase();
-        const investigatorName = investigator.name.toLowerCase();
-        return (findIndex(terms, term => {
-          return name.indexOf(term) === -1 && investigatorName.indexOf(term) === -1;
-        }) === -1);
+        return searchMatchesText(searchTerm, [deck.name, investigator.name]);
       }), deckId => {
         return {
           key: `${deckId}`,
