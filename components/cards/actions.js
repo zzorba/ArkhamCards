@@ -20,7 +20,12 @@ export function fetchCards(realm) {
       dispatch(fetchPacks()).then(packs => {
         return syncCards(realm, packs).then(
           () => dispatch({ type: CARD_FETCH_SUCCESS }),
-          (err) => dispatch({ type: CARD_FETCH_ERROR, error: err.message || err })
+          (err) => {
+            dispatch({
+              type: CARD_FETCH_ERROR,
+              error: err.message || err,
+            });
+          },
         );
       });
     }

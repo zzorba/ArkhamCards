@@ -16,7 +16,6 @@ import * as Actions from '../../actions';
 class LoginButton extends React.Component {
   static propTypes = {
     signedIn: PropTypes.bool.isRequired,
-    error: PropTypes.string,
     loading: PropTypes.bool,
     login: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
@@ -45,7 +44,6 @@ class LoginButton extends React.Component {
       signedIn,
       loading,
       login,
-      error,
     } = this.props;
 
     if (loading) {
@@ -68,7 +66,6 @@ class LoginButton extends React.Component {
 
     return (
       <View style={styles.wrapper}>
-        { !!error && <Text style={styles.error}>{ error }</Text> }
         <Button onPress={login} title="Sign in to ArkhamDB" />
       </View>
     );
@@ -78,7 +75,6 @@ class LoginButton extends React.Component {
 function mapStateToProps(state) {
   return {
     signedIn: state.signedIn.status,
-    error: state.signedIn.error,
     loading: state.signedIn.loading,
   };
 }
@@ -91,9 +87,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(LoginButton);
 
 const styles = StyleSheet.create({
   wrapper: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'flex-start',
-    height: 40,
+    alignItems: 'flex-start',
+    minHeight: 40,
     padding: 4,
   },
   error: {
