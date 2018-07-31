@@ -53,10 +53,7 @@ export default class CardCostIcon extends React.Component {
           />
         </View>
         <View style={[styles.levelIcon, styles.cost]}>
-          <Text style={[
-            typography.text,
-            { color: '#FFF' },
-          ]}>
+          <Text style={styles.costNumber}>
             { this.cardCost() }
           </Text>
         </View>
@@ -83,5 +80,11 @@ const styles = StyleSheet.create({
   },
   cost: {
     paddingBottom: 6,
+  },
+  costNumber: {
+    paddingTop: 3,
+    fontFamily: 'Teutonic',
+    fontSize: 25,
+    color: '#FFF',
   },
 });

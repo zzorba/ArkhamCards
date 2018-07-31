@@ -56,6 +56,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Teutonic.ttf</string>
 		<string>forgotten.ttf</string>
 		<string>arkhamicons.ttf</string>
 		<string>coreset.ttf</string>

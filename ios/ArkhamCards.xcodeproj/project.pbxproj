@@ -46,6 +46,7 @@
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
 		65CBE5C12049B8D200B47AB4 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5BC2049B07500B47AB4 /* libRNSVG.a */; };
 		65CBE5CB2049E9AB00B47AB4 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5C82049E99400B47AB4 /* libART.a */; };
+		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
 		65EB590A20478C5200CC5820 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EB59092047898B00CC5820 /* libReactNativeNavigation.a */; };
 		65EB59132047B39900CC5820 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EB59122047B36E00CC5820 /* libRNVectorIcons.a */; };
 		65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65EB59142047B67600CC5820 /* arkhamicons.ttf */; };
@@ -509,6 +510,7 @@
 		65626FA820D421FB004F4190 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		65CBE5C22049E99400B47AB4 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
+		65D3FA05210FF315000F8B9D /* Teutonic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Teutonic.ttf; path = ../assets/Teutonic.ttf; sourceTree = "<group>"; };
 		65EB590D2047B36E00CC5820 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		65EB59142047B67600CC5820 /* arkhamicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamicons.ttf; path = ../assets/arkhamicons.ttf; sourceTree = "<group>"; };
 		667564EAFB0A48B2BE4D4ABD /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
@@ -681,6 +683,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65D3FA05210FF315000F8B9D /* Teutonic.ttf */,
 				6556782820BA144600C18EC4 /* forgotten.ttf */,
 				655226C7205EEAF00065A1F7 /* app.ttf */,
 				65522688205D68D70065A1F7 /* standalone.ttf */,
@@ -1605,6 +1608,7 @@
 				907C0B4DBE9F42299042C155 /* FontAwesome.ttf in Resources */,
 				B3C703B75F81407AA8D03E02 /* Foundation.ttf in Resources */,
 				46581F38D9CD4038BA5C1529 /* Ionicons.ttf in Resources */,
+				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
 				F607A526C444481AAEA01704 /* MaterialCommunityIcons.ttf in Resources */,
 				31D495278C154F3F8F3C04EF /* MaterialIcons.ttf in Resources */,
 				27B162F7698343E38E60B063 /* Octicons.ttf in Resources */,
