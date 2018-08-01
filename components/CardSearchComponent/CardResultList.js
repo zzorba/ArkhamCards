@@ -44,6 +44,7 @@ class CardResultList extends React.Component {
     cardPressed: PropTypes.func,
     showHeader: PropTypes.func.isRequired,
     hideHeader: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -56,6 +57,7 @@ class CardResultList extends React.Component {
       spoilerCardsCount: 0,
       showSpoilerCards: false,
       loading: true,
+      dirty: false,
       scrollY: new Animated.Value(0),
     };
 
@@ -134,17 +136,26 @@ class CardResultList extends React.Component {
     } = this.props;
     const updateDeckCardCounts = (prevProps.deckCardCounts !== deckCardCounts);
 
-    if (prevProps.query !== this.props.query ||
+    if ((this.props.visible && !prevProps.visible && this.state.dirty) ||
+        prevProps.query !== this.props.query ||
         prevProps.sort !== this.props.sort ||
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers) {
-      /* eslint-disable react/no-did-update-set-state */
-      this.setState({
-        loading: true,
-        deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
-      }, () => {
-        setTimeout(() => this.updateResults(), 0);
-      });
+      if (this.props.visible) {
+        /* eslint-disable react/no-did-update-set-state */
+        this.setState({
+          loading: true,
+          dirty: false,
+          deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
+        }, () => {
+          setTimeout(() => this.updateResults(), 0);
+        });
+      } else {
+        this.setState({
+          dirty: true,
+          deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
+        });
+      }
     } else if (updateDeckCardCounts) {
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
@@ -369,7 +380,6 @@ class CardResultList extends React.Component {
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return {

@@ -53,6 +53,7 @@ class CardSearchComponent extends React.Component {
       filters: props.defaultFilterState,
       storyFilters: props.defaultStoryFilterState,
       storyMode: false,
+      visible: true,
     };
 
     this._showHeader = this.showHeader.bind(this);
@@ -214,12 +215,18 @@ class CardSearchComponent extends React.Component {
         });
       }
     } else if (event.id === 'willDisappear') {
+      this.setState({
+        visible: false,
+      });
       if (this.isOnTop) {
         this.handleBackPress();
         this.isOnTop = false;
       }
     } else if (event.id === 'willAppear') {
       this.isOnTop = true;
+      this.setState({
+        visible: true,
+      });
     }
   }
 
@@ -337,6 +344,7 @@ class CardSearchComponent extends React.Component {
     const {
       selectedSort,
       searchTerm,
+      visible,
     } = this.state;
     const query = this.query();
     return (
@@ -354,6 +362,7 @@ class CardSearchComponent extends React.Component {
             cardPressed={this._cardPressed}
             showHeader={this._showHeader}
             hideHeader={this._hideHeader}
+            visible={visible}
           />
         </View>
         { !!footer && <View style={[
