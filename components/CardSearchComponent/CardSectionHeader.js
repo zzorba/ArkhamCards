@@ -26,7 +26,7 @@ CardSectionHeader.propTypes = {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    backgroundColor: COLORS.gray,
+    backgroundColor: COLORS.lightGray,
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
