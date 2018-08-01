@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    fontSize: 25,
+    fontSize: 23,
     color: '#FFF',
   },
 });

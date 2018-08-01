@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 22,
     top: 0,
-    width: 84,
+    width: 100,
     flexDirection: 'row',
     justifyContent: 'center',
   },
