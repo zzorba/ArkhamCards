@@ -7,10 +7,10 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import withTraumaDialog from './withTraumaDialog';
 import withTextEditDialog from '../core/withTextEditDialog';
 import AddCampaignNoteSectionDialog from './AddCampaignNoteSectionDialog';
 import EditCampaignNotesComponent from './EditCampaignNotesComponent';
-import EditTraumaDialog from './EditTraumaDialog';
 import { updateCampaign } from './actions';
 import { getCampaign } from '../../reducers';
 
@@ -23,6 +23,9 @@ class EditCampaignNotesDialog extends React.Component {
     campaignNotes: PropTypes.object,
     investigatorData: PropTypes.object,
     latestDeckIds: PropTypes.array,
+    // From trauma HOC
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object.isRequired,
     // From Dialog HOC
     showTextEditDialog: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
@@ -34,12 +37,8 @@ class EditCampaignNotesDialog extends React.Component {
 
     this.state = {
       campaignNotes: Object.assign({}, props.campaignNotes),
-      investigatorData: Object.assign({}, props.investigatorData),
       addSectionVisible: false,
       addSectionFunction: null,
-      traumaDialogVisible: false,
-      traumaInvestigator: null,
-      traumaData: {},
     };
 
     props.navigator.setButtons({
@@ -54,10 +53,8 @@ class EditCampaignNotesDialog extends React.Component {
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this._toggleAddSectionDialog = this.toggleAddSectionDialog.bind(this);
     this._hideTraumaDialog = this.hideTraumaDialog.bind(this);
-    this._showTraumaDialog = this.showTraumaDialog.bind(this);
     this._showAddSectionDialog = this.showAddSectionDialog.bind(this);
     this._updateCampaignNotes = this.updateCampaignNotes.bind(this);
-    this._updateTraumaData = this.updateTraumaData.bind(this);
   }
 
   onNavigatorEvent(event) {
@@ -67,34 +64,29 @@ class EditCampaignNotesDialog extends React.Component {
     } = this.props;
     const {
       campaignNotes,
-      investigatorData,
     } = this.state;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
         updateCampaign(campaignId, {
           campaignNotes,
-          investigatorData,
+          investigatorData: this.investigatorData(),
         });
         this.props.navigator.pop();
       }
     }
   }
 
+  investigatorData() {
+    const {
+      investigatorData,
+      investigatorDataUpdates,
+    } = this.props;
+    return Object.assign({}, investigatorData, investigatorDataUpdates);
+  }
+
   updateCampaignNotes(campaignNotes) {
     this.setState({
       campaignNotes,
-    });
-  }
-
-  updateTraumaData(code, data) {
-    const {
-      investigatorData,
-    } = this.state;
-    this.setState({
-      investigatorData: Object.assign({},
-        investigatorData,
-        { [code]: Object.assign({}, data) },
-      ),
     });
   }
 
@@ -117,14 +109,6 @@ class EditCampaignNotesDialog extends React.Component {
     });
   }
 
-  showTraumaDialog(investigator, traumaData) {
-    this.setState({
-      traumaDialogVisible: true,
-      traumaInvestigator: investigator,
-      traumaData,
-    });
-  }
-
   renderAddSectionDialog() {
     const {
       viewRef,
@@ -144,28 +128,6 @@ class EditCampaignNotesDialog extends React.Component {
     );
   }
 
-  renderTraumaDialog() {
-    const {
-      viewRef,
-    } = this.props;
-    const {
-      traumaDialogVisible,
-      traumaInvestigator,
-      traumaData,
-    } = this.state;
-
-    return (
-      <EditTraumaDialog
-        visible={traumaDialogVisible}
-        investigator={traumaInvestigator}
-        trauma={traumaData}
-        updateTrauma={this._updateTraumaData}
-        hideDialog={this._hideTraumaDialog}
-        viewRef={viewRef}
-      />
-    );
-  }
-
   render() {
     const {
       navigator,
@@ -173,10 +135,10 @@ class EditCampaignNotesDialog extends React.Component {
       captureViewRef,
       latestDeckIds,
       campaignId,
+      showTraumaDialog,
     } = this.props;
     const {
       campaignNotes,
-      investigatorData,
     } = this.state;
     return (
       <View style={styles.container}>
@@ -186,14 +148,13 @@ class EditCampaignNotesDialog extends React.Component {
             campaignId={campaignId}
             campaignNotes={campaignNotes}
             latestDeckIds={latestDeckIds}
-            investigatorData={investigatorData}
+            investigatorData={this.investigatorData()}
             updateCampaignNotes={this._updateCampaignNotes}
             showDialog={showTextEditDialog}
-            showTraumaDialog={this._showTraumaDialog}
+            showTraumaDialog={showTraumaDialog}
             showAddSectionDialog={this._showAddSectionDialog}
           />
         </View>
-        { this.renderTraumaDialog() }
         { this.renderAddSectionDialog() }
       </View>
     );
@@ -216,7 +177,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withTextEditDialog(EditCampaignNotesDialog));
+  withTraumaDialog(
+    withTextEditDialog(EditCampaignNotesDialog)
+  )
+);
 
 const styles = StyleSheet.create({
   container: {

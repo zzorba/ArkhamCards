@@ -14,8 +14,8 @@ import AddScenarioDeckList from './AddScenarioDeckList';
 import SaveDialog from './SaveDialog';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import ScenarioSection from './ScenarioSection';
+import withTraumaDialog from '../withTraumaDialog';
 import XpComponent from '../XpComponent';
-import EditTraumaDialog from '../EditTraumaDialog';
 import * as Actions from '../../../actions';
 import { upgradeDeck } from '../../../lib/authApi';
 import { traumaDelta, DEFAULT_TRAUMA_DATA } from '../trauma';
@@ -39,6 +39,8 @@ class AddScenarioResultView extends React.Component {
     setNewDeck: PropTypes.func.isRequired,
     updateDeck: PropTypes.func.isRequired,
     //  From HOC
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
     captureViewRef: PropTypes.func.isRequired,
@@ -51,7 +53,6 @@ class AddScenarioResultView extends React.Component {
       addedDeckIds: [],
       removedDeckIds: [],
       deckUpdates: {},
-      investigatorData: Object.assign({}, props.campaign.investigatorData),
       scenario: '',
       xp: 0,
       traumaDialogVisible: false,
@@ -70,10 +71,17 @@ class AddScenarioResultView extends React.Component {
     this._deckRemoved = this.deckRemoved.bind(this);
     this._deckUpdatesChanged = this.deckUpdatesChanged.bind(this);
     this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
-    this._hideTraumaDialog = this.hideTraumaDialog.bind(this);
-    this._showTraumaDialog = this.showTraumaDialog.bind(this);
-    this._updateTraumaData = this.updateTraumaData.bind(this);
     this._toggleSaveDialog = this.toggleSaveDialog.bind(this);
+  }
+
+  investigatorData() {
+    const {
+      campaign: {
+        investigatorData,
+      },
+      investigatorDataUpdates,
+    } = this.props;
+    return Object.assign({}, investigatorData, investigatorDataUpdates);
   }
 
   deckIds() {
@@ -123,26 +131,6 @@ class AddScenarioResultView extends React.Component {
     });
   }
 
-  showTraumaDialog(investigator, traumaData) {
-    this.setState({
-      traumaDialogVisible: true,
-      traumaInvestigator: investigator,
-      traumaData,
-    });
-  }
-
-  updateTraumaData(code, data) {
-    const {
-      investigatorData,
-    } = this.state;
-    this.setState({
-      investigatorData: Object.assign({},
-        investigatorData,
-        { [code]: Object.assign({}, data) },
-      ),
-    });
-  }
-
   updateNavigatorButtons(){
     this.props.navigator.setButtons({
       rightButtons: [
@@ -174,7 +162,6 @@ class AddScenarioResultView extends React.Component {
     } = this.props;
     const {
       scenario,
-      investigatorData,
       xp,
     } = this.state;
     const deckIds = this.deckIds();
@@ -218,7 +205,7 @@ class AddScenarioResultView extends React.Component {
           newDeckIds,
           deckIds,
           scenario,
-          investigatorData,
+          this.investigatorData(),
           xp
         );
         navigator.pop();
@@ -304,10 +291,8 @@ class AddScenarioResultView extends React.Component {
     const {
       navigator,
       id,
+      showTraumaDialog,
     } = this.props;
-    const {
-      investigatorData,
-    } = this.state;
     return (
       <AddScenarioDeckList
         navigator={navigator}
@@ -317,8 +302,8 @@ class AddScenarioResultView extends React.Component {
         deckUpdatesChanged={this._deckUpdatesChanged}
         deckAdded={this._deckAdded}
         deckRemoved={this._deckRemoved}
-        investigatorData={investigatorData}
-        showTraumaDialog={this._showTraumaDialog}
+        investigatorData={this.investigatorData()}
+        showTraumaDialog={showTraumaDialog}
       />
     );
   }
@@ -337,11 +322,12 @@ class AddScenarioResultView extends React.Component {
 
     const deckIds = this.deckIds();
     const traumaDeltas = {};
+    const newInvestigatorData = this.investigatorData();
     forEach(
-      uniqBy(concat(keys(this.state.investigatorData), keys(investigatorData))),
+      uniqBy(concat(keys(newInvestigatorData), keys(investigatorData))),
       investigatorCode => {
         traumaDeltas[investigatorCode] = traumaDelta(
-          this.state.investigatorData[investigatorCode] || DEFAULT_TRAUMA_DATA,
+          newInvestigatorData[investigatorCode] || DEFAULT_TRAUMA_DATA,
           investigatorData[investigatorCode] || DEFAULT_TRAUMA_DATA
         );
       });
@@ -354,28 +340,6 @@ class AddScenarioResultView extends React.Component {
         onSave={this._doSave}
         onToggleDialog={this._toggleSaveDialog}
         visible={saveDialogVisible}
-        viewRef={viewRef}
-      />
-    );
-  }
-
-  renderTraumaDialog() {
-    const {
-      viewRef,
-    } = this.props;
-    const {
-      traumaDialogVisible,
-      traumaInvestigator,
-      traumaData,
-    } = this.state;
-
-    return (
-      <EditTraumaDialog
-        visible={traumaDialogVisible}
-        investigator={traumaInvestigator}
-        trauma={traumaData}
-        updateTrauma={this._updateTraumaData}
-        hideDialog={this._hideTraumaDialog}
         viewRef={viewRef}
       />
     );
@@ -396,7 +360,6 @@ class AddScenarioResultView extends React.Component {
           { this.renderInvestigators() }
           <View style={styles.footer} />
         </ScrollView>
-        { this.renderTraumaDialog() }
         { this.renderUpdateSaveDialog() }
       </View>
     );
@@ -419,7 +382,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withTextEditDialog(AddScenarioResultView)
+  withTraumaDialog(
+    withTextEditDialog(AddScenarioResultView)
+  )
 );
 const styles = StyleSheet.create({
   wrapper: {

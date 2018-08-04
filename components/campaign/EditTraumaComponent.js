@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text,
-  TouchableOpacity,
   StyleSheet,
   View,
 } from 'react-native';
 
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
-import TextBox from '../core/TextBox';
-import typography from '../../styles/typography';
+import LabeledTextBox from '../core/LabeledTextBox';
 
 export default class EditTraumaComponent extends React.Component {
   static propTypes = {
@@ -46,16 +43,12 @@ export default class EditTraumaComponent extends React.Component {
     } = this.props;
     return (
       <View style={styles.traumaBlock}>
-        <Text style={typography.small}>
-          TRAUMA
-        </Text>
-        <TouchableOpacity onPress={this._editTraumaPressed}>
-          <TextBox
-            value={traumaString(this.traumaData(), investigator)}
-            editable={false}
-            pointerEvents="none"
-          />
-        </TouchableOpacity>
+        <LabeledTextBox
+          column
+          label="Trauma"
+          onPress={this._editTraumaPressed}
+          value={traumaString(this.traumaData(), investigator)}
+        />
       </View>
     );
   }

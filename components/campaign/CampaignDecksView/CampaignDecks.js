@@ -6,10 +6,10 @@ import {
   View,
 } from 'react-native';
 
-import { traumaString, DEFAULT_TRAUMA_DATA } from '../trauma';
 import { parseDeck } from '../../parseDeck';
 import typography from '../../../styles/typography';
 import listOfDecks from '../listOfDecks';
+import EditTraumaComponent from '../EditTraumaComponent';
 import deckRowWithDetails from '../deckRowWithDetails';
 
 class CampaignDeckDetail extends React.Component {
@@ -18,6 +18,7 @@ class CampaignDeckDetail extends React.Component {
     previousDeck: PropTypes.object,
     investigator: PropTypes.object,
     campaign: PropTypes.object.isRequired,
+    showTraumaDialog: PropTypes.func.isRequired,
     // From the realm HOC
     cards: PropTypes.object.isRequired,
   };
@@ -31,10 +32,9 @@ class CampaignDeckDetail extends React.Component {
       previousDeck,
       investigator,
       cards,
+      showTraumaDialog,
     } = this.props;
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
-    const code = deck.investigator_code;
-    const traumaData = investigatorData[code] || DEFAULT_TRAUMA_DATA;
     return (
       <View style={styles.investigatorNotes}>
         { (deck.xp > 0 || deck.spentXp > 0) && (
@@ -47,13 +47,12 @@ class CampaignDeckDetail extends React.Component {
             </Text>
           </View>
         ) }
-        <View style={styles.section}>
-          <Text style={typography.small}>
-            TRAUMA
-          </Text>
-          <Text style={typography.text}>
-            { traumaString(traumaData, investigator) }
-          </Text>
+        <View style={[styles.section, styles.traumaSection]}>
+          <EditTraumaComponent
+            investigator={investigator}
+            investigatorData={investigatorData}
+            showTraumaDialog={showTraumaDialog}
+          />
         </View>
       </View>
     );
@@ -75,5 +74,8 @@ const styles = StyleSheet.create({
   investigatorNotes: {
     flex: 1,
     marginTop: 4,
+  },
+  traumaSection: {
+    marginRight: 8,
   },
 });

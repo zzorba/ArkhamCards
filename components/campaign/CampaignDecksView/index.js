@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import CampaignDecks from './CampaignDecks';
+import withTraumaDialog from '../withTraumaDialog';
 import { updateCampaign } from '../actions';
 import { iconsMap } from '../../../app/NavIcons';
 import { getCampaign } from '../../../reducers';
@@ -23,6 +24,9 @@ class CampaignDetailView extends React.Component {
     // redux
     updateCampaign: PropTypes.func.isRequired,
     campaign: PropTypes.object,
+    // from HOC
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -43,10 +47,6 @@ class CampaignDetailView extends React.Component {
   }
 
   onNavigatorEvent(event) {
-    const {
-      navigator,
-      campaignId,
-    } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'add') {
         this.showDeckSelector();
@@ -105,9 +105,17 @@ class CampaignDetailView extends React.Component {
     const {
       campaign,
       navigator,
+      investigatorDataUpdates,
     } = this.props;
     if (campaign && prevProps.campaign && campaign.name !== prevProps.campaign.name) {
       navigator.setSubTitle({ subtitle: campaign.name });
+    }
+    if (investigatorDataUpdates !== prevProps.investigatorDataUpdates) {
+      this._updateInvestigatorData(Object.assign(
+        {},
+        campaign.investigatorData || {},
+        investigatorDataUpdates
+      ));
     }
   }
 
@@ -151,6 +159,7 @@ class CampaignDetailView extends React.Component {
     const {
       navigator,
       campaign,
+      showTraumaDialog,
     } = this.props;
     if (!campaign) {
       return null;
@@ -163,6 +172,7 @@ class CampaignDetailView extends React.Component {
           campaign={campaign}
           deckIds={campaign.latestDeckIds || []}
           deckRemoved={this._removeDeckPrompt}
+          showTraumaDialog={showTraumaDialog}
         />
         <View style={styles.footer} />
       </ScrollView>
@@ -183,7 +193,9 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampaignDetailView);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withTraumaDialog(CampaignDetailView)
+);
 
 const styles = StyleSheet.create({
   footer: {
