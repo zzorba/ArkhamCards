@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
-import { Bar } from 'react-native-progress';
 
-import Button from './core/Button';
 import CardTextComponent from './CardTextComponent';
 import { getFaqEntry } from '../lib/publicApi';
+import typography from '../styles/typography';
 
 class CardFaqView extends React.Component {
   static propTypes = {
@@ -100,7 +100,7 @@ class CardFaqView extends React.Component {
     }
   }
 
-  render() {
+  renderFaqContent() {
     const {
       faqEntries,
     } = this.props;
@@ -110,46 +110,46 @@ class CardFaqView extends React.Component {
     } = this.state;
 
     const faqEntry = head(faqEntries);
-    if (faqEntry) {
-      const date = faqEntry.fetched.toISOString().slice(0, 10);
-      return (
-        <ScrollView style={styles.container}>
-          { !!faqError && <Text>{ faqError }</Text> }
-          <Text>Last Updated: { date }</Text>
-          <View>
-            { faqEntry.text ?
-              <CardTextComponent
-                text={faqEntry.text}
-                onLinkPress={this._linkPressed}
-              />
-              :
-              <Text>No entries at this time.</Text>
-            }
-          </View>
-          { faqLoading ?
-            <View style={styles.bar}><Bar indeterminate /></View>
-            :
-            <View style={styles.buttonContainer}>
-              <Button onPress={this._loadFaq} text="Check for Updates" />
-            </View>
-          }
-        </ScrollView>
-      );
-    }
-    if (faqLoading) {
-      return (
-        <ScrollView style={styles.container}>
-          <View style={styles.bar}><Bar indeterminate /></View>
-        </ScrollView>
-      );
-    }
-
     return (
-      <ScrollView style={styles.container}>
-        { !!faqError && <Text>{ faqError }</Text> }
-        <View style={styles.buttonContainer}>
-          <Button onPress={this._loadFaq} text="Check for Entries" />
+      <View>
+        { !!faqError && (
+          <Text style={[typography.text, styles.error]}>
+            { faqError }
+          </Text>
+        ) }
+        <View>
+          { (faqEntry && faqEntry.text) ? (
+            <CardTextComponent
+              text={faqEntry.text}
+              onLinkPress={this._linkPressed}
+            />
+          ) : (
+            <Text style={typography.text}>
+              { faqLoading ? 'Checking for FAQ' : 'No entries at this time.' }
+            </Text>
+          ) }
         </View>
+        { !!faqEntry && (
+          <Text style={typography.small}>
+            Last Updated: { faqEntry.fetched.toISOString().slice(0, 10) }
+          </Text>
+        ) }
+      </View>
+    );
+  }
+
+  render() {
+    return (
+      <ScrollView
+        style={styles.container}
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.faqLoading}
+            onRefresh={this._loadFaq}
+          />
+        }
+      >
+        { this.renderFaqContent() }
       </ScrollView>
     );
   }
@@ -170,14 +170,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 10,
   },
-  bar: {
-    marginTop: 4,
-    marginBottom: 4,
-  },
-  buttonContainer: {
-    marginTop: 4,
-    marginBottom: 4,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+  error: {
+    color: 'red',
   },
 });
