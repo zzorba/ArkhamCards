@@ -1,19 +1,21 @@
 export default class FaqEntry {
-  static fromJson(json) {
+  static fromJson(json, lastModified) {
     return {
       fetched: new Date(),
       code: json.code,
       text: json.text,
       updated: json.updated.date,
+      lastModified,
     };
   }
 
-  static empty(code) {
+  static empty(code, lastModified) {
     return {
       fetched: new Date(),
       code: code,
       text: '',
       updated: '',
+      lastModified,
     };
   }
 }
@@ -26,5 +28,6 @@ FaqEntry.schema = {
     'text': 'string?',
     'updated': 'string?',
     'fetched': 'date',
+    'lastModified': 'string?',
   },
 };
