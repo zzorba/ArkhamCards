@@ -8,7 +8,7 @@ import {
 import ChaosTokenIcon from './ChaosTokenIcon';
 
 export default function ChaosToken({ id, status }) {
-  let color = '#dddddd';
+  let color = '#eeeeee';
   switch (status) {
     case 'added': color = '#cfe3d0'; break;
     case 'removed': color = '#f5d6d7'; break;

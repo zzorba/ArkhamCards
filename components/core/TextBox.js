@@ -14,6 +14,7 @@ export default function TextBox({ value, style, ...otherProps }) {
   return (
     <View style={style ? [styles.textBox, style] : styles.textBox}>
       <TextInput
+        autoCorrect={false}
         underlineColorAndroid="transparent"
         style={[typography.text, styles.input]}
         value={value}
@@ -32,10 +33,10 @@ const styles = StyleSheet.create({
   textBox: {
     height: 30,
     width: '100%',
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#fafafa',
     borderWidth: 1,
     borderRadius: 4,
-    borderColor: '#444',
+    borderColor: '#bdbdbd',
     paddingLeft: 4,
     paddingRight: 4,
     paddingTop: Platform.OS === 'ios' ? 4 : 2,

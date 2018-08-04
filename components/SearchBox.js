@@ -28,6 +28,7 @@ export default class SearchBox extends React.Component {
             style={styles.searchInput}
             clearButtonMode="always"
             autoCorrect={false}
+            autoCapitalize="none"
             onChangeText={onChangeText}
             placeholder={placeholder}
           />

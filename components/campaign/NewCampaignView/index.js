@@ -15,6 +15,7 @@ import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { CUSTOM } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import Button from '../../core/Button';
+import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import LabeledTextBox from '../../core/LabeledTextBox';
@@ -144,7 +145,7 @@ class NewCampaignView extends React.Component {
       navigator,
     } = this.props;
     const {
-      campaign,
+      name,
       campaignCode,
     } = this.state;
     navigator.setButtons({
@@ -153,7 +154,7 @@ class NewCampaignView extends React.Component {
           title: 'Done',
           id: 'save',
           showAsAction: 'ifRoom',
-          disabled: campaignCode === CUSTOM && !campaign,
+          disabled: campaignCode === CUSTOM && !name,
         },
       ],
     });
@@ -173,7 +174,7 @@ class NewCampaignView extends React.Component {
       campaignCode,
     } = this.state;
     if (campaignCode === CUSTOM) {
-      return 'My Custom Campaign';
+      return '(required)';
     }
     return `My ${campaign} Campaign`;
   }
@@ -310,33 +311,14 @@ class NewCampaignView extends React.Component {
       difficulty,
     } = this.state;
     const chaosBag = this.getChaosBag();
-    const hasDefinedChaosBag = this.hasDefinedChaosBag();
     return (
       <View>
-        <Text style={[typography.bigLabel, styles.margin]}>
-          Chaos Bag
+        <Text style={[typography.small, styles.margin]}>
+          CHAOS BAG
         </Text>
-        { hasDefinedChaosBag && (
-          <View style={[styles.topPadding, styles.margin]}>
-            <LabeledTextBox
-              label="Difficulty"
-              onPress={this._showDifficultyDialog}
-              value={capitalize(difficulty)}
-            />
-          </View>
-        ) }
         <View style={[styles.topPadding, styles.margin]}>
           <ChaosBagLine chaosBag={chaosBag} />
         </View>
-        { !hasDefinedChaosBag && (
-          <View style={styles.topPadding}>
-            <Button
-              align="left"
-              text="Customize Bag"
-              onPress={this._showChaosBagDialog}
-            />
-          </View>
-        ) }
       </View>
     );
   }
@@ -358,7 +340,7 @@ class NewCampaignView extends React.Component {
     } = this.props;
     return (
       <View style={styles.margin}>
-        <Text style={typography.bigLabel}>Weakness Set</Text>
+        <Text style={typography.small}>WEAKNESS SET</Text>
         <Text style={typography.small}>
           Include all basic weaknesses from these expansions
         </Text>
@@ -379,8 +361,8 @@ class NewCampaignView extends React.Component {
 
     return (
       <View>
-        <Text style={[typography.bigLabel, styles.margin]}>
-          Campaign Log Sections
+        <Text style={[typography.small, styles.margin]}>
+          CAMPAIGN LOG
         </Text>
         <View style={styles.margin}>
           { map(campaignLog.sections || [], section => (
@@ -398,7 +380,7 @@ class NewCampaignView extends React.Component {
         </View>
         { !this.hasDefinedChaosBag() && (
           <View style={styles.topPadding}>
-            <Button align="left" text="Add Section" onPress={this._toggleCampaignLogDialog} />
+            <Button align="left" text="Add Log Section" onPress={this._toggleCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -432,7 +414,9 @@ class NewCampaignView extends React.Component {
     const {
       deckIds,
       name,
+      difficulty,
     } = this.state;
+    const hasDefinedChaosBag = this.hasDefinedChaosBag();
 
     return (
       <View>
@@ -441,40 +425,56 @@ class NewCampaignView extends React.Component {
           ref={captureViewRef}
         >
           <View style={styles.underline}>
-            <View style={[styles.margin, styles.topPadding]}>
-              <LabeledTextBox
-                label="Name"
-                onPress={this._showCampaignNameDialog}
-                placeholder={this.placeholderName()}
-                value={name}
-              />
-            </View>
             <View style={styles.topPadding}>
               <CampaignSelector
                 navigator={navigator}
                 campaignChanged={this._campaignChanged}
               />
             </View>
+            <View style={[styles.margin, styles.topPadding]}>
+              <LabeledTextBox
+                column
+                label="Campaign Name"
+                onPress={this._showCampaignNameDialog}
+                placeholder={this.placeholderName()}
+                required
+                value={name}
+              />
+            </View>
+            <View style={[styles.topPadding, styles.margin]}>
+              <LabeledTextBox
+                column
+                label="Difficulty"
+                onPress={this._showDifficultyDialog}
+                value={capitalize(difficulty)}
+              />
+            </View>
           </View>
-          <View style={styles.underline}>
-            { this.renderChaosBagSection() }
-          </View>
+          { hasDefinedChaosBag ? (
+             <View style={styles.underline}>
+              { this.renderChaosBagSection() }
+            </View>
+          ) : (
+            <NavButton onPress={this._showChaosBagDialog}>
+              { this.renderChaosBagSection() }
+            </NavButton>
+          ) }
           <View style={styles.underline}>
             { this.renderWeaknessSetSection() }
           </View>
           <View style={styles.underline}>
             { this.renderCampaignLogSection() }
           </View>
-          <Text style={[typography.bigLabel, styles.margin]}>
-            Investigators
-          </Text>
-          <DeckSelector
-            navigator={navigator}
-            campaignId={nextId}
-            deckIds={deckIds}
-            deckAdded={this._deckAdded}
-            deckRemoved={this._deckRemoved}
-          />
+          <View style={styles.underline}>
+            <DeckSelector
+              label="Decks"
+              navigator={navigator}
+              campaignId={nextId}
+              deckIds={deckIds}
+              deckAdded={this._deckAdded}
+              deckRemoved={this._deckRemoved}
+            />
+          </View>
           <Button
             style={styles.topPadding}
             color="green"
@@ -522,5 +522,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
+  },
+  bottomMargin: {
+    marginBottom: 16,
   },
 });

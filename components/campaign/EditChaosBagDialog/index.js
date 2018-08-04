@@ -93,6 +93,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     padding: 8,
     borderBottomWidth: 1,
-    borderColor: '#222222',
+    borderColor: '#bdbdbd',
   },
 });

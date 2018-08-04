@@ -56,6 +56,7 @@ export default class CampaignSelector extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Dialog.Campaign',
+      backButtonTitle: 'Back',
       passProps: {
         campaignChanged: this._campaignChanged,
         selected: this.state.selectedCampaign,
@@ -74,6 +75,7 @@ export default class CampaignSelector extends React.Component {
     return (
       <View>
         <LabeledTextBox
+          column
           label="Campaign"
           onPress={this._campaignPressed}
           value={selectedCampaign}
