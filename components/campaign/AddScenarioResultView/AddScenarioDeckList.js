@@ -51,6 +51,8 @@ class DeckScenarioUpgradeDetails extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Dialog.ExileCards',
+      backButtonTitle: 'Cancel',
+      title: 'Select Cards to Exile',
       passProps: {
         id,
         updateExiles: this._updateExiles,
