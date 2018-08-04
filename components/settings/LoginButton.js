@@ -30,10 +30,12 @@ class LoginButton extends React.Component {
     Alert.alert(
       'Are you sure you want to sign out?',
       'Data on ArkhamDB will be preserved, but all Campaign data and any edits ' +
-      'made without internet might be lost.',
+      'made without internet might be lost.\n\n' +
+      'If you are having trouble with your account you can also reconnect.',
       [
+        { text: 'Sign Out', style: 'destructive', onPress: this.props.logout },
+        { text: 'Reconnect Account', onPress: this.props.login },
         { text: 'Cancel' },
-        { text: 'Sign Out', onPress: this.props.logout },
       ],
     );
   }

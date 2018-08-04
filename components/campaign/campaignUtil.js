@@ -22,6 +22,12 @@ export function campaignToText(campaign, decks, investigators) {
   }
   lines.push('');
 
+  lines.push('Campaign Progress')
+  forEach(campaign.scenarioResults, result => {
+    lines.push(`${result.scenario}: ${result.resolution}, XP: ${result.xp}`);
+  });
+  lines.push('');
+
   lines.push('Chaos Bag:');
   const tokens = sortBy(keys(campaign.chaosBag), token => CHAOS_TOKEN_ORDER[token]);
   const tokenParts = flatMap(tokens, token => map(range(0, campaign.chaosBag[token]), () => token));
