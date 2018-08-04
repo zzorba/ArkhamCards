@@ -4,6 +4,7 @@ import {
   CLEAR_DECKS,
   SET_MY_DECKS,
   MY_DECKS_START_REFRESH,
+  MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
@@ -102,32 +103,34 @@ export function clearDecks() {
   };
 }
 
+function getDecksLastModified(state) {
+  return state.decks.myDecks.length ? state.decks.lastModified : null;
+}
+
 export function refreshMyDecks() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch({
       type: MY_DECKS_START_REFRESH,
     });
-    decks().then(
-      response => {
+    decks(getDecksLastModified(getState())).then(response => {
+      if (response.cacheHit) {
+        dispatch({
+          type: MY_DECKS_CACHE_HIT,
+        });
+      } else {
         dispatch({
           type: SET_MY_DECKS,
-          decks: response,
-        });
-      },
-      error => {
-        dispatch({
-          type: MY_DECKS_ERROR,
-          error: error.message || error,
+          decks: response.decks,
+          lastModified: response.lastModified,
         });
       }
-    );
-  };
-}
-
-export function setMyDecks(decks) {
-  return {
-    type: SET_MY_DECKS,
-    decks,
+    },
+    error => {
+      dispatch({
+        type: MY_DECKS_ERROR,
+        error: error.message || error,
+      });
+    });
   };
 }
 
@@ -226,7 +229,6 @@ export default {
   fetchPublicDeck,
   setInCollection,
   setPackSpoiler,
-  setMyDecks,
   setNewDeck,
   updateDeck,
 };

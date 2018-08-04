@@ -4,6 +4,7 @@ import {
   LOGIN,
   LOGOUT,
   MY_DECKS_START_REFRESH,
+  MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
   SET_MY_DECKS,
   NEW_DECK_AVAILABLE,
@@ -17,6 +18,7 @@ const DEFAULT_DECK_STATE = {
   dateUpdated: null,
   refreshing: false,
   error: null,
+  lastModified: null,
 };
 
 function updateDeck(state, action) {
@@ -44,12 +46,21 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       },
     );
   }
+  if (action.type === MY_DECKS_CACHE_HIT) {
+    return Object.assign({},
+      state,
+      {
+        refreshing: false,
+      },
+    );
+  }
   if (action.type === MY_DECKS_ERROR) {
     return Object.assign({},
       state,
       {
         refreshing: false,
         error: action.error,
+        lastModified: null,
       },
     );
   }
@@ -73,6 +84,7 @@ export default function(state = DEFAULT_DECK_STATE, action) {
         all: allDecks,
         myDecks: reverse(map(filter(action.decks, deck => !deck.next_deck), deck => deck.id)),
         dateUpdated: (new Date()).getTime(),
+        lastModified: action.lastModified,
         refreshing: false,
         error: null,
       },
