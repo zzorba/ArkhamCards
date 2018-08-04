@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 
 import CampaignDecks from './CampaignDecks';
 import { updateCampaign } from '../actions';
+import { iconsMap } from '../../../app/NavIcons';
 import { getCampaign } from '../../../reducers';
 
 class CampaignDetailView extends React.Component {
@@ -31,6 +32,26 @@ class CampaignDetailView extends React.Component {
     this._removeDeckPrompt = this.removeDeckPrompt.bind(this);
     this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
+
+    props.navigator.setButtons({
+      rightButtons: [{
+        icon: iconsMap.add,
+        id: 'add',
+      }],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    const {
+      navigator,
+      campaignId,
+    } = this.props;
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'add') {
+        this.showDeckSelector();
+      }
+    }
   }
 
   addDeck(deckId) {
@@ -96,6 +117,21 @@ class CampaignDetailView extends React.Component {
     });
   }
 
+  showDeckSelector() {
+    const {
+      navigator,
+      campaign,
+    } = this.props;
+    navigator.showModal({
+      screen: 'Dialog.DeckSelector',
+      passProps: {
+        campaignId: campaign.id,
+        onDeckSelect: this._addDeck,
+        selectedDeckIds: campaign.latestDeckIds,
+      },
+    });
+  }
+
   showCampaignNotesDialog() {
     const {
       navigator,
@@ -126,7 +162,6 @@ class CampaignDetailView extends React.Component {
           campaignId={campaign.id}
           campaign={campaign}
           deckIds={campaign.latestDeckIds || []}
-          deckAdded={this._addDeck}
           deckRemoved={this._removeDeckPrompt}
         />
         <View style={styles.footer} />
