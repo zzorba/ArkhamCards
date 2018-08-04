@@ -307,9 +307,6 @@ class NewCampaignView extends React.Component {
   }
 
   renderChaosBagSection() {
-    const {
-      difficulty,
-    } = this.state;
     const chaosBag = this.getChaosBag();
     return (
       <View>
@@ -451,7 +448,7 @@ class NewCampaignView extends React.Component {
             </View>
           </View>
           { hasDefinedChaosBag ? (
-             <View style={styles.underline}>
+            <View style={styles.underline}>
               { this.renderChaosBagSection() }
             </View>
           ) : (
@@ -522,8 +519,5 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
-  },
-  bottomMargin: {
-    marginBottom: 16,
   },
 });

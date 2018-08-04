@@ -58,7 +58,7 @@ export function fetchPacks() {
     return fetch('https://arkhamdb.com/api/public/packs/', {
       method: 'GET',
       headers: headers,
-  }).then(response => {
+    }).then(response => {
       if (response.status === 304) {
         // Cache hit, no change needed.
         dispatch({

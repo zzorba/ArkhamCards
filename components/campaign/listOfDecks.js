@@ -76,12 +76,12 @@ export default function listOfDecks(DeckComponent, { deckLimit }) {
                 <Text style={[typography.small, styles.label]}>
                   { label.toUpperCase() }
                 </Text>
-              { showAddDeck && (
-                <MaterialIcons color={COLORS.lightBlue} name="add" size={28} />
-              ) }
+                { showAddDeck && (
+                  <MaterialIcons color={COLORS.lightBlue} name="add" size={28} />
+                ) }
               </View>
             </TouchableOpacity>
-          )}
+          ) }
           { map(deckIds, deckId => (
             <DeckComponent
               key={deckId}
