@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
+import EditTraumaDialogContent from './EditTraumaDialogContent';
 import Dialog from '../core/Dialog';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 
@@ -31,10 +32,7 @@ export default class EditTraumaDialog extends React.Component {
 
     this._onCancel = this.onCancel.bind(this);
     this._onSubmit = this.onSubmit.bind(this);
-    this._onPhysicalChange = this.onPhysicalChange.bind(this);
-    this._onMentalChange = this.onMentalChange.bind(this);
-    this._toggleKilled = this.toggleKilled.bind(this);
-    this._toggleInsane = this.toggleInsane.bind(this);
+    this._onTraumaChange = this.onTraumaChange.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -66,33 +64,9 @@ export default class EditTraumaDialog extends React.Component {
     this.props.hideDialog();
   }
 
-  onPhysicalChange(count) {
+  onTraumaChange(trauma) {
     this.setState({
-      trauma: Object.assign({}, this.state.trauma, { physical: count }),
-    });
-  }
-
-  onMentalChange(count) {
-    this.setState({
-      trauma: Object.assign({}, this.state.trauma, { mental: count }),
-    });
-  }
-
-  toggleKilled() {
-    const {
       trauma,
-    } = this.state;
-    this.setState({
-      trauma: Object.assign({}, trauma, { killed: !trauma.killed }),
-    });
-  }
-
-  toggleInsane() {
-    const {
-      trauma,
-    } = this.state;
-    this.setState({
-      trauma: Object.assign({}, trauma, { insane: !trauma.insane }),
     });
   }
 
@@ -103,71 +77,18 @@ export default class EditTraumaDialog extends React.Component {
     } = this.props;
     const {
       visible,
-      trauma: {
-        killed,
-        insane,
-        physical,
-        mental,
-      },
+      trauma,
     } = this.state;
-    const health = investigator ? investigator.health : 0;
-    const sanity = investigator ? investigator.sanity : 0;
-
-    const impliedKilled = (physical === health);
-    const impliedInsane = (mental === sanity);
     return (
       <Dialog
-        title={investigator ? `${investigator.name}'s Trauma` : 'Trauma'}
+        title={investigator ? `${investigator.name}\'s Trauma` : 'Trauma'}
         visible={visible}
         viewRef={viewRef}
       >
-        <View style={styles.counterRow}>
-          <Text style={styles.label}>Physical Trauma</Text>
-          <View style={styles.row}>
-            <Text style={[styles.label, styles.traumaText]}>
-              { physical || 0 }
-            </Text>
-            <PlusMinusButtons
-              count={physical || 0}
-              limit={health}
-              onChange={this._onPhysicalChange}
-              size={36}
-              disabled={killed || insane}
-              dark
-            />
-          </View>
-        </View>
-        <View style={styles.counterRow}>
-          <Text style={styles.label}>Mental Trauma</Text>
-          <View style={styles.row}>
-            <Text style={[styles.label, styles.traumaText]}>
-              { mental || 0 }
-            </Text>
-            <PlusMinusButtons
-              count={mental || 0}
-              limit={sanity}
-              onChange={this._onMentalChange}
-              size={36}
-              disabled={killed || insane}
-              dark
-            />
-          </View>
-        </View>
-        <DialogComponent.Switch
-          label="Killed"
-          value={killed || impliedKilled}
-          disabled={impliedKilled}
-          onValueChange={this._toggleKilled}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
-        />
-        <DialogComponent.Switch
-          label="Insane"
-          value={insane || impliedInsane}
-          disabled={impliedInsane}
-          onValueChange={this._toggleInsane}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+        <EditTraumaDialogContent
+          investigator={investigator}
+          trauma={trauma}
+          onTraumaChange={this._onTraumaChange}
         />
         <DialogComponent.Button label="Cancel" onPress={this._onCancel} />
         <DialogComponent.Button label="Save" onPress={this._onSubmit} />
