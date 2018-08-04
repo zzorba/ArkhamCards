@@ -3,6 +3,7 @@ import { forEach } from 'lodash';
 import {
   UPDATE_PROMPT_DISMISSED,
   PACKS_AVAILABLE,
+  PACKS_CACHE_HIT,
   SET_IN_COLLECTION,
   SET_ALL_PACK_SPOILERS,
   SET_PACK_SPOILER,
@@ -15,6 +16,7 @@ const DEFAULT_PACKS_STATE = {
   in_collection: {},
   show_spoilers: {},
   loading: false,
+  lastModified: null,
 };
 
 export default function(state = DEFAULT_PACKS_STATE, action) {
@@ -25,6 +27,9 @@ export default function(state = DEFAULT_PACKS_STATE, action) {
         dateUpdatePrompt: action.timestamp.getTime() / 1000,
       });
   }
+  if (action.type === PACKS_CACHE_HIT) {
+    return Object.assign({}, state, { loading: false });
+  }
   if (action.type === PACKS_AVAILABLE) {
     return Object.assign({},
       state,
@@ -33,6 +38,7 @@ export default function(state = DEFAULT_PACKS_STATE, action) {
         loading: false,
         dateFetched: action.timestamp.getTime() / 1000,
         dateUpdatePrompt: action.timestamp.getTime() / 1000,
+        lastModified: action.lastModified,
       });
   } else if (action.type === SET_IN_COLLECTION) {
     const new_collection = Object.assign({}, state.in_collection);
