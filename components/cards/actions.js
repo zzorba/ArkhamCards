@@ -11,6 +11,10 @@ function shouldFetchCards(state) {
   return !state.cards.loading;
 }
 
+function cardsCache(state) {
+  return state.cards.cache;
+}
+
 export function fetchCards(realm) {
   return (dispatch, getState) => {
     if (shouldFetchCards(getState())) {
@@ -18,8 +22,13 @@ export function fetchCards(realm) {
         type: CARD_FETCH_START,
       });
       dispatch(fetchPacks()).then(packs => {
-        return syncCards(realm, packs).then(
-          () => dispatch({ type: CARD_FETCH_SUCCESS }),
+        return syncCards(realm, packs, cardsCache(getState())).then(
+          (cache) => {
+            dispatch({
+              type: CARD_FETCH_SUCCESS,
+              cache: cache,
+            });
+          },
           (err) => {
             dispatch({
               type: CARD_FETCH_ERROR,

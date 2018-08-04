@@ -31,8 +31,7 @@ export default function configureStore(initialState) {
   const persistConfig = {
     key: 'persist',
     storage,
-    // decks and signIn are handled separately.
-    // cards is transient.
+    // These three have some transient fields and are handled separately.
     blacklist: ['cards', 'decks', 'signedIn'],
   };
 

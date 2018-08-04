@@ -22,7 +22,7 @@ export function campaignToText(campaign, decks, investigators) {
   }
   lines.push('');
 
-  lines.push('Campaign Progress')
+  lines.push('Campaign Progress');
   forEach(campaign.scenarioResults, result => {
     lines.push(`${result.scenario}: ${result.resolution}, XP: ${result.xp}`);
   });
