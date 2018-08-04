@@ -151,8 +151,9 @@ export default withFetchCardsGate(
     connect(mapStateToProps, mapDispatchToProps)(
       withPlayerCards(MyCampaignsView)
     ),
-    'This app features a full campaign log tracking system that helps you manage your ArkhamDB decks.\n\nIn order to use this feature, please sign in with your ArkhamDB account.'
-  )
+    'This app features a full campaign log tracking system that helps you manage your ArkhamDB decks.\n\nIn order to use this feature, please sign in with your ArkhamDB account.',
+  ),
+  { promptForUpdate: false },
 );
 
 const styles = StyleSheet.create({

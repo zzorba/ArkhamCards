@@ -10,6 +10,12 @@ import decks from './decks';
 import packs from './packs';
 import weaknesses from './weaknesses';
 
+const packsPersistConfig = {
+  key: 'packs',
+  storage,
+  blacklist: ['loading', 'error'],
+};
+
 const cardsPersistConfig = {
   key: 'cards',
   storage,
@@ -30,7 +36,7 @@ const signedInPersistConfig = {
 
 // Combine all the reducers
 const rootReducer = combineReducers({
-  packs,
+  packs: persistReducer(packsPersistConfig, packs),
   cards: persistReducer(cardsPersistConfig, cards),
   decks: persistReducer(decksPersistConfig, decks),
   campaigns,

@@ -1,6 +1,8 @@
-import Reactotron, { networking } from 'reactotron-react-native';
+import Reactotron from 'reactotron-react-native';
+import { reactotronRedux } from 'reactotron-redux';
 
 Reactotron
   .configure()
-  .use(networking())
+  .useReactNative()
+  .use(reactotronRedux())
   .connect();

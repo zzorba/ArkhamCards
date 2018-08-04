@@ -1,5 +1,7 @@
 import {
   PACKS_AVAILABLE,
+  PACKS_FETCH_START,
+  PACKS_FETCH_ERROR,
   PACKS_CACHE_HIT,
   CARD_FETCH_START,
   CARD_FETCH_SUCCESS,
@@ -44,6 +46,9 @@ export function fetchCards(realm) {
 
 export function fetchPacks() {
   return (dispatch, getState) => {
+    dispatch({
+      type: PACKS_FETCH_START,
+    });
     const lastModified = getState().packs.lastModified;
     const packs = getState().packs.all;
     const headers = {};
@@ -53,11 +58,13 @@ export function fetchPacks() {
     return fetch('https://arkhamdb.com/api/public/packs/', {
       method: 'GET',
       headers: headers,
-   }).then(response => {
-      const lastModified = response.headers.get('Last-Modified');
+  }).then(response => {
       if (response.status === 304) {
         // Cache hit, no change needed.
-        dispatch({ type: PACKS_CACHE_HIT });
+        dispatch({
+          type: PACKS_CACHE_HIT,
+          timestamp: new Date(),
+        });
         return Promise.resolve(packs);
       }
       const newLastModified = response.headers.get('Last-Modified');
@@ -72,6 +79,10 @@ export function fetchPacks() {
       });
     }).catch(err => {
       console.log(err);
+      dispatch({
+        type: PACKS_FETCH_ERROR,
+        error: err.message || err,
+      });
       return [];
     });
   };

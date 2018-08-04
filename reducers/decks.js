@@ -51,6 +51,7 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       state,
       {
         refreshing: false,
+        dateUpdated: action.timestamp.getTime(),
       },
     );
   }
@@ -83,7 +84,7 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       {
         all: allDecks,
         myDecks: reverse(map(filter(action.decks, deck => !deck.next_deck), deck => deck.id)),
-        dateUpdated: (new Date()).getTime(),
+        dateUpdated: action.timestamp.getTime(),
         lastModified: action.lastModified,
         refreshing: false,
         error: null,

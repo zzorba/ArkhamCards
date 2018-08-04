@@ -32,4 +32,4 @@ class CardSearchView extends React.Component {
   }
 }
 
-export default withFetchCardsGate(CardSearchView);
+export default withFetchCardsGate(CardSearchView, { promptForUpdate: true });

@@ -26,6 +26,7 @@ class FetchCardsGate extends React.Component {
   static propTypes = {
     // from redux/realm.
     realm: PropTypes.object.isRequired,
+    promptForUpdate: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     error: PropTypes.string,
     /* eslint-disable react/no-unused-prop-types */
@@ -92,13 +93,13 @@ class FetchCardsGate extends React.Component {
   componentDidMount() {
     if (this.fetchNeeded(this.props)) {
       this.doFetch();
-    } else if (this.updateNeeded()) {
+    } else if (this.props.promptForUpdate && this.updateNeeded()) {
       Alert.alert(
         'Check for updated cards?',
-        'It has been more than a week since you checked for new cards.\nShould we check for updates?',
+        'It has been more than a week since you checked for new cards.\nCheck for new cards from ArkhamDB?',
         [
           { text: 'Ask me later', onPress: this._ignoreUpdate },
-          { text: 'OK', onPress: this._doFetch },
+          { text: 'Check for updates', onPress: this._doFetch },
         ],
       );
     }
@@ -147,7 +148,7 @@ function mapStateToProps(state) {
   return {
     fetchNeeded: state.packs.all.length === 0,
     loading: state.packs.loading || state.cards.loading,
-    error: state.cards.error,
+    error: state.packs.error || state.cards.error,
     dateFetched: state.packs.dateFetched,
     dateUpdatePrompt: state.packs.dateUpdatePrompt,
   };

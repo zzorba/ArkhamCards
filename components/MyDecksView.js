@@ -59,5 +59,6 @@ export default withFetchCardsGate(
   withLoginGate(
     MyDecksView,
     'This app will let you edit and upgrade decks stored on ArkhamDB.com\n\nPlease sign in with your account to enable this feature.'
-  )
+  ),
+  { promptForUpdate: false },
 );

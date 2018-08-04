@@ -116,12 +116,14 @@ export function refreshMyDecks() {
       if (response.cacheHit) {
         dispatch({
           type: MY_DECKS_CACHE_HIT,
+          timestamp: new Date(),
         });
       } else {
         dispatch({
           type: SET_MY_DECKS,
           decks: response.decks,
           lastModified: response.lastModified,
+          timestamp: new Date(),
         });
       }
     },

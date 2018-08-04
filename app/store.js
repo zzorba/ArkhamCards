@@ -32,7 +32,7 @@ export default function configureStore(initialState) {
     key: 'persist',
     storage,
     // These three have some transient fields and are handled separately.
-    blacklist: ['cards', 'decks', 'signedIn'],
+    blacklist: ['cards', 'decks', 'packs', 'signedIn'],
   };
 
   const reducer = persistReducer(

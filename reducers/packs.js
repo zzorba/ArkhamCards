@@ -2,6 +2,8 @@ import { forEach } from 'lodash';
 
 import {
   UPDATE_PROMPT_DISMISSED,
+  PACKS_FETCH_START,
+  PACKS_FETCH_ERROR,
   PACKS_AVAILABLE,
   PACKS_CACHE_HIT,
   SET_IN_COLLECTION,
@@ -16,6 +18,7 @@ const DEFAULT_PACKS_STATE = {
   in_collection: {},
   show_spoilers: {},
   loading: false,
+  error: null,
   lastModified: null,
 };
 
@@ -27,8 +30,24 @@ export default function(state = DEFAULT_PACKS_STATE, action) {
         dateUpdatePrompt: action.timestamp.getTime() / 1000,
       });
   }
+  if (action.type === PACKS_FETCH_START) {
+    return Object.assign({}, state, {
+      loading: true,
+      error: null,
+    });
+  }
+  if (action.type === PACKS_FETCH_ERROR) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error,
+    });
+  }
   if (action.type === PACKS_CACHE_HIT) {
-    return Object.assign({}, state, { loading: false });
+    return Object.assign({}, state, {
+      loading: false,
+      dateFetched: action.timestamp.getTime() / 1000,
+      dateUpdatePrompt: action.timestamp.getTime() / 1000,
+    });
   }
   if (action.type === PACKS_AVAILABLE) {
     return Object.assign({},
