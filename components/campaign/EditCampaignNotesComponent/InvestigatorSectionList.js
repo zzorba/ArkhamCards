@@ -5,145 +5,84 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import EditCountComponent from '../EditCountComponent';
-import EditTraumaComponent from '../EditTraumaComponent';
-import NotesSection from './NotesSection';
+import InvestigatorSectionRow from './InvestigatorSectionRow';
+import withPlayerCards from '../../withPlayerCards';
+import { getAllDecks } from '../../../reducers';
 
-import listOfDecks from '../listOfDecks';
-import deckRowWithDetails from '../deckRowWithDetails';
-
-/**
- * Fill this out for a single investigator section.
- */
-class InvestigatorSectionDeckDetails extends React.Component {
+class InvestigatorSectionList extends React.Component {
   static propTypes = {
-    investigator: PropTypes.object,
+    deckIds: PropTypes.array.isRequired,
     updateInvestigatorNotes: PropTypes.func.isRequired,
     investigatorNotes: PropTypes.object.isRequired,
-    investigatorData: PropTypes.object.isRequired,
     showDialog: PropTypes.func.isRequired,
-    showTraumaDialog: PropTypes.func.isRequired,
+    // from Redux
+    decks: PropTypes.object.isRequired,
+    // from withPlayerCards
+    investigators: PropTypes.object,
   };
 
-  constructor(props) {
-    super(props);
-
-    this._notesChanged = this.notesChanged.bind(this);
-    this._countChanged = this.countChanged.bind(this);
-  }
-
-  notesChanged(index, notes) {
+  renderDeckRow(deckId) {
     const {
-      investigator,
-      updateInvestigatorNotes,
+      decks,
+      investigators,
       investigatorNotes,
-    } = this.props;
-    const sections = (investigatorNotes.sections || []).slice();
-    const newNotes = Object.assign({}, sections[index].notes, { [investigator.code]: notes });
-    sections[index] = Object.assign({}, sections[index], { notes: newNotes });
-    updateInvestigatorNotes(Object.assign({}, investigatorNotes, { sections }));
-  }
-
-  countChanged(index, count) {
-    const {
-      investigator,
       updateInvestigatorNotes,
-      investigatorNotes,
-    } = this.props;
-    const counts = (investigatorNotes.counts || []).slice();
-    const newCounts = Object.assign({}, counts[index].counts, { [investigator.code]: count });
-    counts[index] = Object.assign({}, counts[index], { counts: newCounts });
-    updateInvestigatorNotes(Object.assign({}, investigatorNotes, { counts }));
-  }
-
-  renderSections(sections) {
-    const {
-      investigator,
       showDialog,
     } = this.props;
-    return (
-      <View>
-        { map(sections, (section, idx) => (
-          <NotesSection
-            key={idx}
-            title={section.title}
-            notes={section.notes[investigator.code] || []}
-            notesSection={section}
-            index={idx}
-            notesChanged={this._notesChanged}
-            showDialog={showDialog}
-            isInvestigator
-          />
-        )) }
-      </View>
-    );
-  }
+    const deck = decks[deckId];
+    if (!deck) {
+      return null;
+    }
+    const investigator = investigators[deck.investigator_code];
+    if (!investigator) {
+      return null;
+    }
 
-  renderCounts(counts) {
-    const {
-      investigator,
-    } = this.props;
     return (
-      <View>
-        { map(counts, (section, idx) => (
-          <EditCountComponent
-            key={idx}
-            index={idx}
-            title={section.title}
-            count={section.counts[investigator.code] || 0}
-            countChanged={this._countChanged}
-            isInvestigator
-          />
-        )) }
-      </View>
-    );
-  }
-
-  renderTrauma() {
-    const {
-      investigator,
-      investigatorData,
-      showTraumaDialog,
-    } = this.props;
-    return (
-      <EditTraumaComponent
+      <InvestigatorSectionRow
+        key={investigator.code}
         investigator={investigator}
-        investigatorData={investigatorData}
-        showTraumaDialog={showTraumaDialog}
+        investigatorNotes={investigatorNotes}
+        updateInvestigatorNotes={updateInvestigatorNotes}
+        showDialog={showDialog}
       />
     );
   }
 
   render() {
     const {
-      investigatorNotes: {
-        sections,
-        counts,
-      },
+      deckIds,
     } = this.props;
     return (
       <View style={styles.investigatorNotes}>
-        { this.renderTrauma() }
-        { this.renderSections(sections) }
-        { this.renderCounts(counts) }
+        { map(deckIds, deckId => this.renderDeckRow(deckId)) }
       </View>
     );
   }
 }
 
-export default listOfDecks(
-  deckRowWithDetails(InvestigatorSectionDeckDetails, {
-    compact: true,
-    viewDeckButton: true,
-  }), {
-    deckLimit: null,
-  },
+
+function mapStateToProps(state) {
+  return {
+    decks: getAllDecks(state),
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({}, dispatch);
+}
+
+export default withPlayerCards(
+  connect(mapStateToProps, mapDispatchToProps)(InvestigatorSectionList)
 );
 
 const styles = StyleSheet.create({
   investigatorNotes: {
     flex: 1,
+    marginLeft: 8,
     marginRight: 8,
   },
 });

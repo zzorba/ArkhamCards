@@ -51,7 +51,8 @@ export default class NoteRow extends React.Component {
       <View style={styles.row}>
         <TouchableOpacity onPress={this._onPress}>
           <TextBox
-            value={note}
+            textStyle={note.startsWith('~') ? { textDecorationLine: 'line-through' } : {}}
+            value={note.startsWith('~') ? note.substring(1) : note}
             editable={false}
             placeholder={last ? 'Add note' : null}
             pointerEvents="none"

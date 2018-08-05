@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize, map } from 'lodash';
+import { map } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
-import { CUSTOM } from '../constants';
-import NavButton from '../../core/NavButton';
-import { CAMPAIGN_NAMES } from '../../../constants';
+import CampaignSummaryComponent from '../CampaignSummaryComponent';
+import Button from '../../core/Button';
 import typography from '../../../styles/typography';
 
 export default class ScenarioSection extends React.Component {
@@ -57,7 +56,7 @@ export default class ScenarioSection extends React.Component {
       <View>
         { map(scenarioResults, ({ scenarioCode, scenario, resolution }) => {
           return (
-            <Text key={scenarioCode} style={typography.text}>
+            <Text key={scenarioCode} style={typography.gameFont}>
               { `${scenario}${resolution ? ` (${resolution})` : ''}` }
             </Text>
           );
@@ -68,47 +67,17 @@ export default class ScenarioSection extends React.Component {
 
   render() {
     const {
-      campaign: {
-        name,
-        cycleCode,
-        difficulty,
-      },
+      campaign,
     } = this.props;
     return (
-      <View>
-        <View style={styles.underline}>
-          <Text style={[typography.bigLabel, styles.padding]}>
-            { name }
-          </Text>
-          { cycleCode !== CUSTOM && (
-            <View style={[styles.marginTop, styles.padding]}>
-              <Text style={typography.small}>
-                CAMPAIGN
-              </Text>
-              <Text style={typography.text}>
-                { CAMPAIGN_NAMES[cycleCode] }
-              </Text>
-            </View>
-          ) }
-          { !!difficulty && (
-            <View style={[styles.marginTop, styles.padding]}>
-              <Text style={typography.small}>
-                DIFFICULTY
-              </Text>
-              <Text style={typography.text}>
-                { capitalize(difficulty) }
-              </Text>
-            </View>
-          ) }
-          <View style={[styles.marginTop, styles.padding]}>
-            <Text style={typography.small}>
-              SCENARIOS
-            </Text>
-            { this.renderCompletedScenarios() }
-          </View>
+      <View style={styles.underline}>
+        <View style={[styles.padding, styles.marginTop]}>
+          <CampaignSummaryComponent campaign={campaign} />
         </View>
-        <NavButton
-          text="Add Scenario Result"
+        <Button
+          align="left"
+          size="small"
+          text="Record Scenario Results"
           onPress={this._addScenarioResult}
         />
       </View>

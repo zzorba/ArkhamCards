@@ -20,6 +20,7 @@ class ExileCardSelectorComponent extends React.Component {
     id: PropTypes.number.isRequired,
     exileCounts: PropTypes.object.isRequired,
     updateExileCounts: PropTypes.func.isRequired,
+    showLabel: PropTypes.bool,
     // From redux.
     deck: PropTypes.object,
     // From realm.
@@ -45,6 +46,7 @@ class ExileCardSelectorComponent extends React.Component {
       deck,
       exileCards,
       exileCounts,
+      showLabel,
     } = this.props;
     if (!deck) {
       return null;
@@ -56,9 +58,11 @@ class ExileCardSelectorComponent extends React.Component {
 
     return (
       <View style={styles.exileBlock}>
-        <Text style={[typography.text, styles.exileText]}>
-          Select Cards to Exile:
-        </Text>
+        { !!showLabel && (
+          <Text style={[typography.small, styles.exileText]}>
+            EXILE CARDS
+          </Text>
+        ) }
         { map(matchingExileCards, card => (
           <ExileRow
             key={card.code}
@@ -102,7 +106,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 
 const styles = StyleSheet.create({
   exileBlock: {
-    flex: 1,
     paddingTop: 8,
   },
   exileText: {

@@ -40,10 +40,10 @@ export function traumaString(traumaData, investigator) {
     return 'Insane';
   }
   if (traumaData.physical !== 0) {
-    parts.push(`Physical(${traumaData.physical})`);
+    parts.push(`${traumaData.physical} Physical`);
   }
   if (traumaData.mental !== 0) {
-    parts.push(`Mental(${traumaData.mental})`);
+    parts.push(`${traumaData.mental} Mental`);
   }
   if (!parts.length) {
     return 'None';

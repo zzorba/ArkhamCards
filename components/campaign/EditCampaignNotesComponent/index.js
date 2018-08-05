@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
-  ScrollView,
+  Button,
   StyleSheet,
   View,
 } from 'react-native';
@@ -10,20 +10,16 @@ import {
 import EditCountComponent from '../EditCountComponent';
 import InvestigatorSectionList from './InvestigatorSectionList';
 import NotesSection from './NotesSection';
-import Button from '../../core/Button';
 
 export default class EditCampaignNotesComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    campaignId: PropTypes.number.isRequired,
     // Parts of the campaign object.
     latestDeckIds: PropTypes.array.isRequired,
     campaignNotes: PropTypes.object,
-    investigatorData: PropTypes.object,
     // Update function.
     updateCampaignNotes: PropTypes.func.isRequired,
     showDialog: PropTypes.func.isRequired,
-    showTraumaDialog: PropTypes.func.isRequired,
     showAddSectionDialog: PropTypes.func.isRequired,
   };
 
@@ -136,26 +132,20 @@ export default class EditCampaignNotesComponent extends React.Component {
   renderInvestigatorSection() {
     const {
       navigator,
-      campaignId,
       campaignNotes: {
         investigatorNotes,
       },
       latestDeckIds,
-      investigatorData,
       showDialog,
-      showTraumaDialog,
     } = this.props;
     return (
       <View style={styles.investigatorSection}>
         <InvestigatorSectionList
           navigator={navigator}
-          campaignId={campaignId}
           deckIds={latestDeckIds}
           investigatorNotes={investigatorNotes}
-          investigatorData={investigatorData}
           updateInvestigatorNotes={this._updateInvestigatorNotes}
           showDialog={showDialog}
-          showTraumaDialog={showTraumaDialog}
         />
       </View>
     );
@@ -169,13 +159,12 @@ export default class EditCampaignNotesComponent extends React.Component {
       },
     } = this.props;
     return (
-      <ScrollView style={styles.underline}>
+      <View style={styles.underline}>
         { this.renderSections(sections) }
         { this.renderCounts(counts) }
         { this.renderInvestigatorSection() }
-        <Button text="Add Log Section" onPress={this._showAddSectionDialog} />
-        <View style={styles.footer} />
-      </ScrollView>
+        <Button title="Add Log Section" onPress={this._showAddSectionDialog} />
+      </View>
     );
   }
 }
@@ -183,15 +172,12 @@ export default class EditCampaignNotesComponent extends React.Component {
 const styles = StyleSheet.create({
   underline: {
     flex: 1,
+    paddingBottom: 8,
     borderBottomWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#bdbdbd',
     marginBottom: 4,
   },
   investigatorSection: {
     marginTop: 8,
-    marginBottom: 16,
-  },
-  footer: {
-    height: 100,
   },
 });

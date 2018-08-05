@@ -11,11 +11,11 @@ export default class EditTextDialog extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     visible: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     viewRef: PropTypes.object,
     onTextChange: PropTypes.func,
     toggleVisible: PropTypes.func.isRequired,
-    showDelete: PropTypes.bool.isRequired,
+    showCrossOut: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -23,24 +23,17 @@ export default class EditTextDialog extends React.Component {
 
     this.state = {
       textInputRef: null,
+      text: null,
       originalText: null,
+      isCrossedOut: false,
+      submitting: false,
     };
 
     this._onTextChange = this.onTextChange.bind(this);
     this._captureTextInputRef = this.captureTextInputRef.bind(this);
     this._onDonePress = this.onDonePress.bind(this);
     this._onCancelPress = this.onCancelPress.bind(this);
-    this._onDeletePress = this.onDeletePress.bind(this);
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (state.originalText === null || props.text !== state.originalText) {
-      return {
-        text: props.text,
-        originalText: props.text,
-      };
-    }
-    return null;
+    this._onCrossOutPress = this.onCrossOutPress.bind(this);
   }
 
   onTextChange(value) {
@@ -58,33 +51,44 @@ export default class EditTextDialog extends React.Component {
   componentDidUpdate(prevProps) {
     const {
       visible,
+      text,
+      showCrossOut,
     } = this.props;
     const {
       textInputRef,
     } = this.state;
-    if (visible && !prevProps.visible && textInputRef) {
-      textInputRef.focus();
+    if (visible && !prevProps.visible) {
+      const isCrossedOut = showCrossOut && text && text.startsWith('~');
+      /* eslint-disable react/no-did-update-set-state */
+      this.setState({
+        text: isCrossedOut ? text.substring(1) : text,
+        originalText: text,
+        isCrossedOut,
+      }, () => {
+        textInputRef && textInputRef.focus();
+      });
     }
   }
 
   onCancelPress() {
     const {
-      text,
       toggleVisible,
     } = this.props;
-    this.setState({
-      text: text,
-    });
     toggleVisible();
   }
 
-  onDeletePress() {
+  onCrossOutPress() {
     const {
       onTextChange,
       toggleVisible,
     } = this.props;
-    onTextChange && onTextChange('');
+    const {
+      isCrossedOut,
+      text,
+    } = this.state;
+    const result = isCrossedOut ? text : `~${text}`;
     toggleVisible();
+    onTextChange && onTextChange(result);
   }
 
   onDonePress() {
@@ -92,7 +96,12 @@ export default class EditTextDialog extends React.Component {
       onTextChange,
       toggleVisible,
     } = this.props;
-    onTextChange && onTextChange(this.state.text);
+    const {
+      text,
+      isCrossedOut,
+    } = this.state;
+    const result = isCrossedOut ? `~${text}` : text;
+    onTextChange && onTextChange(result);
     toggleVisible();
   }
 
@@ -101,18 +110,26 @@ export default class EditTextDialog extends React.Component {
       visible,
       title,
       viewRef,
-      text,
-      showDelete,
+      showCrossOut,
     } = this.props;
+    const {
+      isCrossedOut,
+      originalText,
+      text,
+    } = this.state;
 
-    const textChanged = text !== this.state.text;
+    const textChanged = isCrossedOut ?
+      text !== originalText.substring(1) :
+      text !== originalText;
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
       <Dialog visible={visible} title={title} viewRef={viewRef}>
         <DialogComponent.Input
+          style={isCrossedOut ? { textDecorationLine: 'line-through' } : {}}
           ref={this._captureTextInputRef}
           value={text}
           autoFocus
+          editable={!isCrossedOut}
           onChangeText={this._onTextChange}
           onSubmitEditing={this._onDonePress}
         />
@@ -120,19 +137,21 @@ export default class EditTextDialog extends React.Component {
           label="Cancel"
           onPress={this._onCancelPress}
         />
-        { showDelete && (
+        { showCrossOut && (
           <DialogComponent.Button
-            label="Delete"
+            label={isCrossedOut ? 'Uncross Out' : 'Cross Out'}
             color="#ff3b30"
-            onPress={this._onDeletePress}
+            onPress={this._onCrossOutPress}
           />
         ) }
-        <DialogComponent.Button
-          label="Done"
-          color={textChanged ? buttonColor : '#666666'}
-          disabled={!textChanged}
-          onPress={this._onDonePress}
-        />
+        { !isCrossedOut && (
+          <DialogComponent.Button
+            label="Done"
+            color={textChanged ? buttonColor : '#666666'}
+            disabled={!textChanged}
+            onPress={this._onDonePress}
+          />
+        ) }
       </Dialog>
     );
   }

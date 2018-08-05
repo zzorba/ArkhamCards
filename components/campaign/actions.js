@@ -75,19 +75,13 @@ export function deleteCampaign(id) {
 // }],
 export function addScenarioResult(
   id,
-  latestDeckIds,
-  deckIds,
   { scenario, scenarioCode, resolution },
-  investigatorData,
   xp,
 ) {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
     id,
-    latestDeckIds,
-    investigatorData,
     scenarioResult: {
-      deckIds,
       scenario,
       scenarioCode,
       resolution,

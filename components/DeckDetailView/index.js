@@ -238,9 +238,13 @@ class DeckDetailView extends React.Component {
       navigator,
       deck,
     } = this.props;
+    const {
+      parsedDeck,
+    } = this.state;
     navigator.push({
       screen: 'Deck.Upgrade',
       title: 'Upgrade',
+      subtitle: parsedDeck ? parsedDeck.investigator.name : '',
       backButtonTitle: 'Cancel',
       passProps: {
         id: deck.id,

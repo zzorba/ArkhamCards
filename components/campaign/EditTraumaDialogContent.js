@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
-import Dialog from '../core/Dialog';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 
 export default class EditTraumaDialogContent extends React.Component {

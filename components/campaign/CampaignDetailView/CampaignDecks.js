@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
 import { parseDeck } from '../../parseDeck';
-import typography from '../../../styles/typography';
 import listOfDecks from '../listOfDecks';
+import LabeledTextBox from '../../core/LabeledTextBox';
 import EditTraumaComponent from '../EditTraumaComponent';
 import deckRowWithDetails from '../deckRowWithDetails';
 
@@ -19,9 +18,26 @@ class CampaignDeckDetail extends React.Component {
     investigator: PropTypes.object,
     campaign: PropTypes.object.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
+    showDeckUpgradeDialog: PropTypes.func.isRequired,
     // From the realm HOC
     cards: PropTypes.object.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+
+    this._upgradeDeckPressed = this.upgradeDeckPressed.bind(this);
+  }
+
+  upgradeDeckPressed() {
+    const {
+      showDeckUpgradeDialog,
+      deck,
+      investigator,
+    } = this.props;
+
+    showDeckUpgradeDialog(deck, investigator);
+  }
 
   render() {
     const {
@@ -37,17 +53,19 @@ class CampaignDeckDetail extends React.Component {
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
     return (
       <View style={styles.investigatorNotes}>
-        { (deck.xp > 0 || deck.spentXp > 0) && (
-          <View style={styles.section}>
-            <Text style={typography.small}>
-              EXPERIENCE
-            </Text>
-            <Text style={typography.text}>
-              { `${deck.xp || 0} available. ${parsedDeck.spentXp || 0} spent` }
-            </Text>
-          </View>
-        ) }
-        <View style={[styles.section, styles.traumaSection]}>
+        <View style={styles.section}>
+          <LabeledTextBox
+            column
+            onPress={this._upgradeDeckPressed}
+            label="Experience"
+            value={
+              (deck.xp > 0 || parsedDeck.spentXp > 0) ?
+                `${deck.xp || 0} available${parsedDeck.spentXp > 0 ? ` (${parsedDeck.spentXp} spent)` : ''}` :
+                `${parsedDeck.totalXp || 0} total`
+            }
+          />
+        </View>
+        <View style={styles.section}>
           <EditTraumaComponent
             investigator={investigator}
             investigatorData={investigatorData}
@@ -70,12 +88,10 @@ export default listOfDecks(
 const styles = StyleSheet.create({
   section: {
     marginBottom: 8,
+    marginRight: 8,
   },
   investigatorNotes: {
     flex: 1,
     marginTop: 4,
-  },
-  traumaSection: {
-    marginRight: 8,
   },
 });

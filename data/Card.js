@@ -241,11 +241,16 @@ export default class Card {
     const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
     const enemy_horror = json.type_code === 'enemy' ? (json.enemy_horror || 0) : null;
     const enemy_damage = json.type_code === 'enemy' ? (json.enemy_damage || 0) : null;
+    const firstName = json.type_code === 'investigator' && json.name.indexOf(' ') !== -1 ?
+      json.name.substring(0, json.name.indexOf(' ')).replace(/"/g, '') :
+      json.name;
+
     return Object.assign(
       {},
       json,
       eskills,
       {
+        firstName,
         renderName,
         renderSubname,
         deck_requirements,
@@ -298,6 +303,7 @@ Card.schema = {
     name: 'string',
     real_name: 'string',
     subname: 'string?',
+    firstName: 'string?',
     illustrator: 'string?',
     text: 'string?',
     flavor: 'string?',

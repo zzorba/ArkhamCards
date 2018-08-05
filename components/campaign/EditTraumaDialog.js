@@ -1,16 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
 import Dialog from '../core/Dialog';
-import PlusMinusButtons from '../core/PlusMinusButtons';
 
 export default class EditTraumaDialog extends React.Component {
   static propTypes = {
@@ -81,7 +74,7 @@ export default class EditTraumaDialog extends React.Component {
     } = this.state;
     return (
       <Dialog
-        title={investigator ? `${investigator.name}\'s Trauma` : 'Trauma'}
+        title={investigator ? `${investigator.firstName}’s Trauma` : 'Trauma'}
         visible={visible}
         viewRef={viewRef}
       >
@@ -96,31 +89,3 @@ export default class EditTraumaDialog extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  counterRow: {
-    marginLeft: 28,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginRight: 28,
-  },
-  traumaText: {
-    fontWeight: '900',
-    width: 30,
-  },
-  label: Platform.select({
-    ios: {
-      fontSize: 13,
-      color: 'black',
-    },
-    android: {
-      fontSize: 16,
-      color: '#33383D',
-    },
-  }),
-});

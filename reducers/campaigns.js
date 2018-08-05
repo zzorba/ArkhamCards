@@ -1,4 +1,4 @@
-import { forEach, keys, map, uniqBy } from 'lodash';
+import { forEach, keys, map } from 'lodash';
 
 import {
   LOGOUT,
@@ -180,17 +180,11 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
       ...campaign.scenarioResults || [],
       Object.assign({}, action.scenarioResult),
     ];
-    const latestDeckIds = uniqBy([
-      ...action.latestDeckIds,
-      ...campaign.latestDeckIds,
-    ]);
     const updatedCampaign = Object.assign(
       {},
       campaign,
       {
         scenarioResults,
-        latestDeckIds,
-        investigatorData: action.investigatorData,
         lastUpdated: action.now,
       },
     );

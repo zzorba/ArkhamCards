@@ -66,7 +66,7 @@ export default function Button({
     <View style={[containerStyle, style]}>
       <TouchableOpacity
         onPress={onPress}
-        style={borderColor ? { borderRadius: 8, borderWidth, borderColor } : {}}
+        style={borderColor ? { borderRadius: 4, borderWidth, borderColor } : {}}
       >
         <LinearGradient colors={colors} style={[
           styles.button,
@@ -121,6 +121,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 8,
+    borderRadius: 4,
   },
 });

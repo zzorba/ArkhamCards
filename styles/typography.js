@@ -17,6 +17,13 @@ export default StyleSheet.create({
     fontSize: 12,
     lineHeight: 18,
   },
+  smallLabel: {
+    fontFamily: 'System',
+    fontSize: 12,
+    lineHeight: 18,
+    letterSpacing: 0.3,
+    color: '#444',
+  },
   label: {
     fontFamily: 'System',
     fontSize: 16,
@@ -29,5 +36,15 @@ export default StyleSheet.create({
   },
   bold: {
     fontWeight: '700',
+  },
+  gameFont: {
+    fontFamily: 'Teutonic',
+    fontSize: 18,
+    lineHeight: 26,
+  },
+  bigGameFont: {
+    fontFamily: 'Teutonic',
+    fontSize: 28,
+    lineHeight: 36,
   },
 });

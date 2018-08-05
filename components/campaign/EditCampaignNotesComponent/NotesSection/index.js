@@ -68,7 +68,7 @@ export default class NotesSection extends React.Component {
     } = this.state;
     return (
       <View style={isInvestigator ? {} : styles.container}>
-        <Text style={[typography.small, styles.margin]}>
+        <Text style={[typography.smallLabel, styles.margin]}>
           { title.toUpperCase() }
         </Text>
         <View>

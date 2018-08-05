@@ -14,11 +14,14 @@ import { connectRealm } from 'react-native-realm';
 
 import { showDeckModal } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
+import { updateCampaign } from '../campaign/actions';
+import withTraumaDialog from '../campaign/withTraumaDialog';
+import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import { upgradeDeck } from '../../lib/authApi';
 import * as Actions from '../../actions';
 import Button from '../core/Button';
 import PlusMinusButtons from '../core/PlusMinusButtons';
-import { getDeck } from '../../reducers';
+import { getDeck, getCampaign } from '../../reducers';
 import typography from '../../styles/typography';
 
 class DeckUpgradeDialog extends React.Component {
@@ -26,10 +29,17 @@ class DeckUpgradeDialog extends React.Component {
     navigator: PropTypes.object.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
+    // Optional campaignId
+    campaignId: PropTypes.number,
+    // From redux, maybe
+    updateCampaign: PropTypes.func.isRequired,
     deck: PropTypes.object,
+    campaign: PropTypes.object,
     setNewDeck: PropTypes.func.isRequired,
     updateDeck: PropTypes.func.isRequired,
     investigator: PropTypes.object,
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -43,6 +53,25 @@ class DeckUpgradeDialog extends React.Component {
     this._onXpChange = this.onXpChange.bind(this);
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
     this._saveUpgrade = this.saveUpgrade.bind(this);
+
+    props.navigator.setButtons({
+      rightButtons: [
+        {
+          title: 'Save',
+          id: 'save',
+          showAsAction: 'ifRoom',
+        },
+      ],
+    });
+    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'save') {
+        this.saveUpgrade();
+      }
+    }
   }
 
   saveUpgrade() {
@@ -54,7 +83,12 @@ class DeckUpgradeDialog extends React.Component {
       },
       setNewDeck,
       updateDeck,
+      campaign,
+      updateCampaign,
     } = this.props;
+    if (campaign) {
+      updateCampaign(campaign.id, { investigatorData: this.investigatorData() });
+    }
     const {
       xp,
       exileCounts,
@@ -102,6 +136,37 @@ class DeckUpgradeDialog extends React.Component {
     });
   }
 
+  investigatorData() {
+    const {
+      campaign,
+      investigatorDataUpdates,
+    } = this.props;
+    if (!campaign) {
+      return null;
+    }
+    return Object.assign({}, campaign.investigatorData || {}, investigatorDataUpdates);
+  }
+
+  renderCampaignSection() {
+    const {
+      campaign,
+      investigator,
+      showTraumaDialog,
+    } = this.props;
+    if (!campaign) {
+      return null;
+    }
+    return (
+      <View style={styles.labeledRow}>
+        <EditTraumaComponent
+          investigator={investigator}
+          investigatorData={this.investigatorData()}
+          showTraumaDialog={showTraumaDialog}
+        />
+      </View>
+    );
+  }
+
   render() {
     const {
       deck,
@@ -115,18 +180,24 @@ class DeckUpgradeDialog extends React.Component {
     }
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.row}>
-          <Text style={typography.text}>
-            { `XP: ${xp}` }
+        <View style={styles.labeledRow}>
+          <Text style={typography.small}>
+            EXPERIENCE
           </Text>
-          <PlusMinusButtons
-            count={xp}
-            onChange={this._onXpChange}
-            dark
-          />
+          <View style={styles.row}>
+            <Text style={typography.text}>
+              { xp }
+            </Text>
+            <PlusMinusButtons
+              count={xp}
+              onChange={this._onXpChange}
+            />
+          </View>
         </View>
+        { this.renderCampaignSection() }
         <ExileCardSelectorComponent
           id={deck.id}
+          showLabel
           exileCounts={exileCounts}
           updateExileCounts={this._onExileCountsChange}
         />
@@ -147,22 +218,28 @@ class DeckUpgradeDialog extends React.Component {
 function mapStateToProps(state, props) {
   return {
     deck: getDeck(state, props.id),
+    campaign: props.campaignId && getCampaign(state, props.campaignId),
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators(
+    Object.assign({}, Actions, { updateCampaign }),
+    dispatch
+  );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(DeckUpgradeDialog, {
-    schemas: ['Card'],
-    mapToProps(results, realm, props) {
-      return {
-        investigator: head(results.cards.filtered(`code == '${props.deck.investigator_code}'`)),
-      };
-    },
-  })
+export default withTraumaDialog(
+  connect(mapStateToProps, mapDispatchToProps)(
+    connectRealm(DeckUpgradeDialog, {
+      schemas: ['Card'],
+      mapToProps(results, realm, props) {
+        return {
+          investigator: head(results.cards.filtered(`code == '${props.deck.investigator_code}'`)),
+        };
+      },
+    })
+  )
 );
 
 const styles = StyleSheet.create({
@@ -170,13 +247,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
+  labeledRow: {
+    flexDirection: 'column',
+    padding: 8,
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 8,
-    borderBottomWidth: 1,
-    borderColor: '#000000',
   },
   buttonRow: {
     flexDirection: 'row',

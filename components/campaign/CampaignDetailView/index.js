@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Alert,
+  Button,
   ScrollView,
   Share,
   StyleSheet,
@@ -10,22 +11,31 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
+import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import { campaignToText } from '../campaignUtil';
+import withTraumaDialog from '../withTraumaDialog';
 import withPlayerCards from '../../withPlayerCards';
-import Button from '../../core/Button';
-import NavButton from '../../core/NavButton';
+import withTextEditDialog from '../../core/withTextEditDialog';
 import { iconsMap } from '../../../app/NavIcons';
 import { updateCampaign, deleteCampaign } from '../actions';
 import { getCampaign, getAllPacks, getAllDecks } from '../../../reducers';
+import { COLORS } from '../../../styles/colors';
 
 class CampaignDetailView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
+    // from HOC
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object.isRequired,
+    showTextEditDialog: PropTypes.func.isRequired,
+    viewRef: PropTypes.object,
+    captureViewRef: PropTypes.func.isRequired,
     // redux
     updateCampaign: PropTypes.func.isRequired,
     deleteCampaign: PropTypes.func.isRequired,
@@ -37,12 +47,37 @@ class CampaignDetailView extends React.Component {
   constructor(props) {
     super(props);
 
-    this._viewCampaignLog = this.viewCampaignLog.bind(this);
+    this.state = {
+      addSectionVisible: false,
+      addSectionFunction: null,
+    };
+
+    this._toggleAddSectionDialog = this.toggleAddSectionDialog.bind(this);
+    this._showAddSectionDialog = this.showAddSectionDialog.bind(this);
+    this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
+    this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
 
+    props.navigator.setTitle({
+      title: props.campaign.name,
+    });
+
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+  }
+
+  showAddSectionDialog(addSectionFunction) {
+    this.setState({
+      addSectionVisible: true,
+      addSectionFunction,
+    });
+  }
+
+  toggleAddSectionDialog() {
+    this.setState({
+      addSectionVisible: !this.state.addSectionVisible,
+    });
   }
 
   onNavigatorEvent(event) {
@@ -61,20 +96,6 @@ class CampaignDetailView extends React.Component {
         });
       }
     }
-  }
-
-  viewCampaignLog() {
-    const {
-      navigator,
-      id,
-    } = this.props;
-    navigator.push({
-      screen: 'Campaign.Log',
-      title: 'Campaign Log',
-      passProps: {
-        id,
-      },
-    });
   }
 
   applyCampaignUpdate(key, value) {
@@ -98,9 +119,18 @@ class CampaignDetailView extends React.Component {
     const {
       campaign,
       navigator,
+      investigatorDataUpdates,
     } = this.props;
     if (campaign && prevProps.campaign && campaign.name !== prevProps.campaign.name) {
       navigator.setSubTitle({ subtitle: campaign.name });
+    }
+
+    if (investigatorDataUpdates !== prevProps.investigatorDataUpdates) {
+      this._updateInvestigatorData(Object.assign(
+        {},
+        campaign.investigatorData || {},
+        investigatorDataUpdates
+      ));
     }
   }
 
@@ -149,40 +179,73 @@ class CampaignDetailView extends React.Component {
     });
   }
 
+  renderAddSectionDialog() {
+    const {
+      viewRef,
+    } = this.props;
+    const {
+      addSectionVisible,
+      addSectionFunction,
+    } = this.state;
+
+    return (
+      <AddCampaignNoteSectionDialog
+        viewRef={viewRef}
+        visible={addSectionVisible}
+        addSection={addSectionFunction}
+        toggleVisible={this._toggleAddSectionDialog}
+      />
+    );
+  }
+
   render() {
     const {
       navigator,
       campaign,
+      showTraumaDialog,
+      updateCampaign,
+      captureViewRef,
+      showTextEditDialog,
     } = this.props;
     if (!campaign) {
       return null;
     }
     return (
-      <ScrollView>
-        <ScenarioSection
-          navigator={navigator}
-          campaign={campaign}
-        />
-        <DecksSection
-          navigator={navigator}
-          campaign={campaign}
-        />
-        <NavButton text="Campaign Log" onPress={this._viewCampaignLog} />
-        <ChaosBagSection
-          navigator={navigator}
-          chaosBag={campaign.chaosBag}
-          updateChaosBag={this._updateChaosBag}
-        />
-        <WeaknessSetSection
-          navigator={navigator}
-          campaignId={campaign.id}
-          weaknessSet={campaign.weaknessSet}
-        />
-        <View style={styles.margin}>
-          <Button color="red" onPress={this._deletePressed} text="Delete Campaign" />
-        </View>
-        <View style={styles.footer} />
-      </ScrollView>
+      <View style={styles.flex}>
+        <ScrollView style={styles.flex} ref={captureViewRef}>
+          <ScenarioSection
+            navigator={navigator}
+            campaign={campaign}
+          />
+          <ChaosBagSection
+            navigator={navigator}
+            chaosBag={campaign.chaosBag}
+            updateChaosBag={this._updateChaosBag}
+          />
+          <WeaknessSetSection
+            navigator={navigator}
+            campaignId={campaign.id}
+            weaknessSet={campaign.weaknessSet}
+          />
+          <DecksSection
+            navigator={navigator}
+            campaign={campaign}
+            showTraumaDialog={showTraumaDialog}
+            updateCampaign={updateCampaign}
+          />
+          <CampaignLogSection navigator={navigator}
+            campaign={campaign}
+            updateCampaignNotes={this._updateCampaignNotes}
+            showTextEditDialog={showTextEditDialog}
+            showAddSectionDialog={this._showAddSectionDialog}
+          />
+          <View style={styles.margin}>
+            <Button color={COLORS.red} onPress={this._deletePressed} title="Delete Campaign" />
+          </View>
+          <View style={styles.footer} />
+        </ScrollView>
+        { this.renderAddSectionDialog() }
+      </View>
     );
   }
 }
@@ -205,10 +268,17 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withPlayerCards(CampaignDetailView)
+  withPlayerCards(
+    withTraumaDialog(
+      withTextEditDialog(CampaignDetailView)
+    )
+  )
 );
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   margin: {
     margin: 8,
   },

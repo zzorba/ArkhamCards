@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, findIndex, forEach, keys, map, mapValues, range, uniqBy } from 'lodash';
+import { concat, filter, forEach, mapValues, uniqBy } from 'lodash';
 import {
-  Alert,
   ScrollView,
   StyleSheet,
   View,
@@ -10,15 +9,10 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import AddScenarioDeckList from './AddScenarioDeckList';
-import SaveDialog from './SaveDialog';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import ScenarioSection from './ScenarioSection';
-import withTraumaDialog from '../withTraumaDialog';
 import XpComponent from '../XpComponent';
 import * as Actions from '../../../actions';
-import { upgradeDeck } from '../../../lib/authApi';
-import { traumaDelta, DEFAULT_TRAUMA_DATA } from '../trauma';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign } from '../../../reducers';
 
@@ -39,26 +33,19 @@ class AddScenarioResultView extends React.Component {
     setNewDeck: PropTypes.func.isRequired,
     updateDeck: PropTypes.func.isRequired,
     //  From HOC
-    showTraumaDialog: PropTypes.func.isRequired,
-    investigatorDataUpdates: PropTypes.object.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
-    viewRef: PropTypes.object,
-    captureViewRef: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      addedDeckIds: [],
-      removedDeckIds: [],
-      deckUpdates: {},
-      scenario: '',
+      scenario: {
+        scenario: '',
+        scenarioCode: '',
+        resolution: '',
+      },
       xp: 0,
-      traumaDialogVisible: false,
-      traumaInvestigator: null,
-      traumaData: {},
-      saveDialogVisible: false,
     };
 
     this.updateNavigatorButtons();
@@ -67,21 +54,7 @@ class AddScenarioResultView extends React.Component {
     this._doSave = this.doSave.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
-    this._deckAdded = this.deckAdded.bind(this);
-    this._deckRemoved = this.deckRemoved.bind(this);
-    this._deckUpdatesChanged = this.deckUpdatesChanged.bind(this);
     this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
-    this._toggleSaveDialog = this.toggleSaveDialog.bind(this);
-  }
-
-  investigatorData() {
-    const {
-      campaign: {
-        investigatorData,
-      },
-      investigatorDataUpdates,
-    } = this.props;
-    return Object.assign({}, investigatorData, investigatorDataUpdates);
   }
 
   deckIds() {
@@ -119,26 +92,20 @@ class AddScenarioResultView extends React.Component {
     return result;
   }
 
-  toggleSaveDialog() {
-    this.setState({
-      saveDialogVisible: !this.state.saveDialogVisible,
-    });
-  }
-
   hideTraumaDialog() {
     this.setState({
       traumaDialogVisible: false,
     });
   }
 
-  updateNavigatorButtons(){
+  updateNavigatorButtons() {
     this.props.navigator.setButtons({
       rightButtons: [
         {
           title: 'Save',
           id: 'save',
           showAsAction: 'ifRoom',
-          disabled: this.deckIds().length === 0,
+          disabled: this.state.scenario.scenario === '' || this.state.scenario.resolution === '',
         },
       ],
     });
@@ -147,7 +114,7 @@ class AddScenarioResultView extends React.Component {
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
-        this.toggleSaveDialog();
+        this.doSave();
       }
     }
   }
@@ -157,68 +124,23 @@ class AddScenarioResultView extends React.Component {
       navigator,
       campaign,
       addScenarioResult,
-      setNewDeck,
-      updateDeck,
     } = this.props;
     const {
       scenario,
       xp,
     } = this.state;
-    const deckIds = this.deckIds();
-    const deckUpdates = this.deckUpdates();
-    return Promise.all(
-      map(deckIds, deckId => {
-        const {
-          exiles = {},
-          xp,
-        } = deckUpdates[deckId];
-        const exileParts = [];
-        forEach(keys(exiles), code => {
-          const count = exiles[code];
-          if (count > 0) {
-            forEach(range(0, count), () => exileParts.push(code));
-          }
-        });
-        const exilesParam = exileParts.join(',');
-        if (exilesParam === '' && xp === 0) {
-          // No exile, no XP change... no need to send it to ArkhamDB?
-          return Promise.resolve(deckId);
-        }
-        return upgradeDeck(deckId, xp, exilesParam).then(decks => {
-          const {
-            deck,
-            upgradedDeck,
-          } = decks;
-          updateDeck(deck.id, deck, false);
-          setNewDeck(upgradedDeck.id, upgradedDeck);
-          return upgradedDeck.id;
-        }, () => {
-          return null;
-        });
-      })
-    ).then(newDeckIds => {
-      if (findIndex(newDeckIds, deckId => (deckId === null)) !== -1) {
-        Alert.alert('Something went wrong when saving decks to ArkhamDB.');
-      } else {
-        addScenarioResult(
-          campaign.id,
-          newDeckIds,
-          deckIds,
-          scenario,
-          this.investigatorData(),
-          xp
-        );
-        navigator.pop();
-      }
-    }, () => {
-      Alert.alert('Something went wrong when saving decks to ArkhamDB.');
-    });
+    addScenarioResult(
+      campaign.id,
+      scenario,
+      xp
+    );
+    navigator.pop();
   }
 
   scenarioChanged(scenario) {
     this.setState({
       scenario,
-    });
+    }, this._updateNavigatorButtons);
   }
 
   xpChanged(xp) {
@@ -233,42 +155,6 @@ class AddScenarioResultView extends React.Component {
       xp,
       deckUpdates,
     });
-  }
-
-  deckAdded(id) {
-    const {
-      addedDeckIds,
-      removedDeckIds,
-    } = this.state;
-    this.setState({
-      addedDeckIds: uniqBy([...addedDeckIds, id]),
-      removedDeckIds: filter(removedDeckIds, deckId => deckId !== id),
-    }, this._updateNavigatorButtons);
-  }
-
-  deckUpdatesChanged(id, updates) {
-    const deckUpdates = Object.assign({},
-      this.state.deckUpdates,
-      { [id]: updates },
-    );
-    this.setState({
-      deckUpdates,
-    });
-  }
-
-  deckRemoved(id) {
-    const {
-      addedDeckIds,
-      removedDeckIds,
-      deckUpdates,
-    } = this.state;
-    const newDeckUpdates = Object.assign({}, deckUpdates);
-    delete newDeckUpdates[id];
-    this.setState({
-      addedDeckIds: filter(addedDeckIds, deckId => deckId !== id),
-      removedDeckIds: uniqBy([...removedDeckIds, id]),
-      deckUpdates: newDeckUpdates,
-    }, this._updateNavigatorButtons);
   }
 
   renderScenarios() {
@@ -287,81 +173,16 @@ class AddScenarioResultView extends React.Component {
     );
   }
 
-  renderInvestigators() {
-    const {
-      navigator,
-      id,
-      showTraumaDialog,
-    } = this.props;
-    return (
-      <AddScenarioDeckList
-        navigator={navigator}
-        campaignId={id}
-        deckIds={this.deckIds()}
-        deckUpdates={this.deckUpdates()}
-        deckUpdatesChanged={this._deckUpdatesChanged}
-        deckAdded={this._deckAdded}
-        deckRemoved={this._deckRemoved}
-        investigatorData={this.investigatorData()}
-        showTraumaDialog={showTraumaDialog}
-      />
-    );
-  }
-
-  renderUpdateSaveDialog() {
-    const {
-      viewRef,
-      campaign: {
-        investigatorData,
-      },
-    } = this.props;
-
-    const {
-      saveDialogVisible,
-    } = this.state;
-
-    const deckIds = this.deckIds();
-    const traumaDeltas = {};
-    const newInvestigatorData = this.investigatorData();
-    forEach(
-      uniqBy(concat(keys(newInvestigatorData), keys(investigatorData))),
-      investigatorCode => {
-        traumaDeltas[investigatorCode] = traumaDelta(
-          newInvestigatorData[investigatorCode] || DEFAULT_TRAUMA_DATA,
-          investigatorData[investigatorCode] || DEFAULT_TRAUMA_DATA
-        );
-      });
-
-    return (
-      <SaveDialog
-        deckIds={deckIds}
-        deckUpdates={this.deckUpdates()}
-        traumaDeltas={traumaDeltas}
-        onSave={this._doSave}
-        onToggleDialog={this._toggleSaveDialog}
-        visible={saveDialogVisible}
-        viewRef={viewRef}
-      />
-    );
-  }
-
   render() {
-    const {
-      captureViewRef,
-    } = this.props;
     const {
       xp,
     } = this.state;
     return (
-      <View style={styles.wrapper}>
-        <ScrollView contentContainerStyle={styles.container} ref={captureViewRef}>
-          { this.renderScenarios() }
-          <XpComponent xp={xp} onChange={this._xpChanged} />
-          { this.renderInvestigators() }
-          <View style={styles.footer} />
-        </ScrollView>
-        { this.renderUpdateSaveDialog() }
-      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        { this.renderScenarios() }
+        <XpComponent xp={xp} onChange={this._xpChanged} />
+        <View style={styles.footer} />
+      </ScrollView>
     );
   }
 }
@@ -382,19 +203,15 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withTraumaDialog(
-    withTextEditDialog(AddScenarioResultView)
-  )
+  withTextEditDialog(AddScenarioResultView)
 );
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
   container: {
-    marginTop: 8,
+    flex: 1,
+    paddingTop: 8,
+    paddingBottom: 8,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    marginBottom: 8,
   },
   footer: {
     height: 100,

@@ -39,7 +39,7 @@ export default class EditCountComponent extends React.Component {
       count,
     } = this.props;
     return (
-      <View style={isInvestigator ? {} : styles.container}>
+      <View style={[styles.marginTop, isInvestigator ? {} : styles.container]}>
         <View style={styles.row}>
           <View style={styles.textColumn}>
             <Text style={typography.small} ellipsizeMode="tail">
@@ -53,7 +53,6 @@ export default class EditCountComponent extends React.Component {
             count={count}
             onChange={this._updateCount}
             size={36}
-            dark={isInvestigator}
           />
         </View>
       </View>
@@ -62,6 +61,9 @@ export default class EditCountComponent extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  marginTop: {
+    marginTop: 4,
+  },
   container: {
     paddingTop: 8,
     paddingLeft: 8,

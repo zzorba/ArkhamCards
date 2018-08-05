@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Alert,
+  Platform,
+  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import withTraumaDialog from './withTraumaDialog';
+import { iconsMap } from '../../app/NavIcons';
 import withTextEditDialog from '../core/withTextEditDialog';
 import AddCampaignNoteSectionDialog from './AddCampaignNoteSectionDialog';
 import EditCampaignNotesComponent from './EditCampaignNotesComponent';
@@ -21,11 +24,7 @@ class EditCampaignNotesDialog extends React.Component {
     // From redux
     updateCampaign: PropTypes.func.isRequired,
     campaignNotes: PropTypes.object,
-    investigatorData: PropTypes.object,
     latestDeckIds: PropTypes.array,
-    // From trauma HOC
-    showTraumaDialog: PropTypes.func.isRequired,
-    investigatorDataUpdates: PropTypes.object.isRequired,
     // From Dialog HOC
     showTextEditDialog: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
@@ -39,9 +38,21 @@ class EditCampaignNotesDialog extends React.Component {
       campaignNotes: Object.assign({}, props.campaignNotes),
       addSectionVisible: false,
       addSectionFunction: null,
+      hasPendingEdits: false,
+    };
+
+    const backButton = Platform.OS === 'ios' ? {
+      systemItem: 'cancel',
+      id: 'back',
+    } : {
+      icon: iconsMap['chevron-left'],
+      id: 'back',
     };
 
     props.navigator.setButtons({
+      leftButtons: [
+        backButton,
+      ],
       rightButtons: [
         {
           title: 'Save',
@@ -61,32 +72,51 @@ class EditCampaignNotesDialog extends React.Component {
     const {
       campaignId,
       updateCampaign,
+      navigator,
     } = this.props;
     const {
       campaignNotes,
+      hasPendingEdits,
     } = this.state;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
         updateCampaign(campaignId, {
           campaignNotes,
-          investigatorData: this.investigatorData(),
         });
-        this.props.navigator.pop();
+        navigator.pop();
+      } else if (event.id === 'back') {
+        if (!hasPendingEdits) {
+          navigator.pop();
+        } else {
+          Alert.alert(
+            'Save campaign notes?',
+            'Looks like you have made some changes that have not been saved.',
+            [{
+              text: 'Save Changes',
+              onPress: () => {
+                updateCampaign(campaignId, { campaignNotes });
+                navigator.pop();
+              },
+            }, {
+              text: 'Discard Changes',
+              style: 'destructive',
+              onPress: () => {
+                navigator.pop();
+              },
+            }, {
+              text: 'Cancel',
+              style: 'cancel',
+            }],
+          );
+        }
       }
     }
-  }
-
-  investigatorData() {
-    const {
-      investigatorData,
-      investigatorDataUpdates,
-    } = this.props;
-    return Object.assign({}, investigatorData, investigatorDataUpdates);
   }
 
   updateCampaignNotes(campaignNotes) {
     this.setState({
       campaignNotes,
+      hasPendingEdits: true,
     });
   }
 
@@ -134,27 +164,23 @@ class EditCampaignNotesDialog extends React.Component {
       showTextEditDialog,
       captureViewRef,
       latestDeckIds,
-      campaignId,
-      showTraumaDialog,
     } = this.props;
     const {
       campaignNotes,
     } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.container} ref={captureViewRef}>
+        <ScrollView style={styles.container} ref={captureViewRef}>
           <EditCampaignNotesComponent
             navigator={navigator}
-            campaignId={campaignId}
             campaignNotes={campaignNotes}
             latestDeckIds={latestDeckIds}
-            investigatorData={this.investigatorData()}
             updateCampaignNotes={this._updateCampaignNotes}
             showDialog={showTextEditDialog}
-            showTraumaDialog={showTraumaDialog}
             showAddSectionDialog={this._showAddSectionDialog}
           />
-        </View>
+          <View style={styles.footer} />
+        </ScrollView>
         { this.renderAddSectionDialog() }
       </View>
     );
@@ -166,7 +192,6 @@ function mapStateToProps(state, props) {
   return {
     latestDeckIds: campaign.latestDeckIds,
     campaignNotes: campaign.campaignNotes,
-    investigatorData: campaign.investigatorData || {},
   };
 }
 
@@ -177,13 +202,14 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withTraumaDialog(
-    withTextEditDialog(EditCampaignNotesDialog)
-  )
+  withTextEditDialog(EditCampaignNotesDialog)
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  footer: {
+    height: 100,
   },
 });
