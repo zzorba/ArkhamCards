@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, head, keys, map, range } from 'lodash';
+import { flatMap, keys, map, range } from 'lodash';
 import {
   View,
   Text,
@@ -11,22 +11,15 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import LinearGradient from 'react-native-linear-gradient';
 
 import AppIcon from '../../assets/AppIcon';
+import DeckProblemRow from '../DeckProblemRow';
 import { DeckType } from '../parseDeck';
-import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
 import DeckValidation from '../../lib/DeckValidation';
 import { FOOTER_HEIGHT } from './constants';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SHOW_CHARTS_BUTTON = false;
-const DECK_PROBLEM_MESSAGES = {
-  too_few_cards: 'Not enough cards.',
-  too_many_cards: 'Too many cards.',
-  too_many_copies: 'Too many copies of a card with the same name.',
-  invalid_cards: 'Contains forbidden cards (cards not permitted by Faction)',
-  deck_options_limit: 'Contains too many limited cards.',
-  investigator: 'Doesn\'t comply with the Investigator requirements.',
-};
+
 
 export default class DeckNavFooter extends React.Component {
   static propTypes = {
@@ -99,18 +92,7 @@ export default class DeckNavFooter extends React.Component {
     }
 
     return (
-      <View style={styles.problemRow}>
-        <View style={styles.warningIcon}>
-          <AppIcon name="warning" size={14} color={COLORS.white} />
-        </View>
-        <Text
-          style={[typography.small, styles.whiteText, styles.problemText]}
-          numberOfLines={2}
-          ellipsizeMode="tail"
-        >
-          { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
-        </Text>
-      </View>
+      <DeckProblemRow problem={problem} color="#FFFFFF" />
     );
   }
 
@@ -185,17 +167,6 @@ const styles = StyleSheet.create({
   button: {
     padding: 4,
     width: BUTTON_SIZE,
-  },
-  problemText: {
-    flex: 1,
-  },
-  problemRow: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-  },
-  warningIcon: {
-    marginRight: 2,
   },
   whiteText: {
     color: '#FFFFFF',

@@ -15,6 +15,7 @@ import {
 //   name: '',
 //   cycleCode: '',
 //   lastUpdated: Date,
+//   baseDeckIds: [],
 //   latestDeckIds: [],
 //   investigatorData: {
 //     investigator_code: {
@@ -48,9 +49,11 @@ import {
 //       ],
 //     },
 //   },
-//   completedScenarios: [{
+//   scenarioResults: [{
 //     scenario: '',
 //     scenarioCode: '',
+//     resolution: '',
+//     xp: #,
 //   },{
 //     scenario: '',
 //     scenarioCode: '',
@@ -86,7 +89,7 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
         while (deck && deck.next_deck && allDecks[deck.next_deck]) {
           deck = allDecks[deck.next_deck];
         }
-        return deck.id;
+        return deck ? deck.id : deckId;
       });
       newAll[campaignId] = Object.assign(
         {},

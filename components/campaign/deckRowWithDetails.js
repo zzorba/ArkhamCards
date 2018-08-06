@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  StyleSheet,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -27,7 +29,11 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default function deckRowWithDetails(DeckRowDetails, { compact, viewDeckButton }) {
+export default function deckRowWithDetails(
+  DeckRowDetails,
+  DeckRowSubDetails,
+  { compact, viewDeckButton },
+) {
   class DeckRow extends React.Component {
     static propTypes = {
       navigator: PropTypes.object.isRequired,
@@ -77,6 +83,34 @@ export default function deckRowWithDetails(DeckRowDetails, { compact, viewDeckBu
       }
     }
 
+    renderSubDetails() {
+      const {
+        navigator,
+        id,
+        deck,
+        /* eslint-disable no-unused-vars */
+        remove,
+        /* eslint-disable no-unused-vars */
+        fetchPrivateDeck,
+        investigators,
+        cards,
+        ...otherProps
+      } = this.props;
+      if (!deck || !DeckRowSubDetails) {
+        return null;
+      }
+      return (
+        <DeckRowSubDetails
+          navigator={navigator}
+          id={id}
+          deck={deck}
+          investigator={investigators[deck.investigator_code]}
+          cards={cards}
+          {...otherProps}
+        />
+      );
+    }
+
     renderDetails() {
       const {
         navigator,
@@ -113,6 +147,9 @@ export default function deckRowWithDetails(DeckRowDetails, { compact, viewDeckBu
         investigators,
         remove,
       } = this.props;
+      if (!deck) {
+        return null;
+      }
       return (
         <DeckListRow
           id={id}
@@ -122,15 +159,18 @@ export default function deckRowWithDetails(DeckRowDetails, { compact, viewDeckBu
           onPress={this._onDeckPress}
           investigator={deck ? cards[deck.investigator_code] : null}
           titleButton={remove ? (
-            <TouchableOpacity onPress={this._onRemove}>
-              <MaterialCommunityIcons name="close" size={28} color="#FFFFFF" />
-            </TouchableOpacity>
+            <View style={styles.row}>
+              <TouchableOpacity onPress={this._onRemove}>
+                <MaterialCommunityIcons name="close" size={32} color="#FFFFFF" />
+              </TouchableOpacity>
+            </View>
           ) : (
             <TouchableOpacity onPress={this._onDeckPress}>
               <AppIcon name="deck" size={28} color="#FFFFFF" />
             </TouchableOpacity>
           )}
           details={this.renderDetails()}
+          subDetails={this.renderSubDetails()}
           compact={compact}
           viewDeckButton={viewDeckButton}
         />
@@ -145,3 +185,10 @@ export default function deckRowWithDetails(DeckRowDetails, { compact, viewDeckBu
 
   return result;
 }
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});

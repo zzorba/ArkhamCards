@@ -32,6 +32,7 @@ class DeckDetailView extends React.Component {
     id: PropTypes.number.isRequired,
     isPrivate: PropTypes.bool,
     modal: PropTypes.bool,
+    campaignId: PropTypes.number,
     // From realm.
     cards: PropTypes.object,
     // From redux.
@@ -121,17 +122,32 @@ class DeckDetailView extends React.Component {
 
   componentDidUpdate(prevProps) {
     const {
+      navigator,
       deck,
       isPrivate,
       previousDeck,
       fetchPrivateDeck,
       fetchPublicDeck,
     } = this.props;
-    if (deck !== prevProps.deck && deck.previous_deck && !previousDeck) {
-      if (isPrivate) {
-        fetchPrivateDeck(deck.previous_deck);
-      } else {
-        fetchPublicDeck(deck.previous_deck, false);
+    if (deck !== prevProps.deck) {
+      if (!deck) {
+        Alert.alert(
+          'Deck has been deleted',
+          'It looks like you deleted this deck from ArkhamDB.\n\n' +
+          'If it was part of a campaign you can add the same investigator back to restore your campaign data.',
+          [{
+            text: 'OK',
+            onPress: () => {
+              navigator.dismissAllModals();
+            },
+          }],
+        );
+      } else if (deck.previous_deck && !previousDeck) {
+        if (isPrivate) {
+          fetchPrivateDeck(deck.previous_deck);
+        } else {
+          fetchPublicDeck(deck.previous_deck, false);
+        }
       }
     }
     if (deck !== prevProps.deck || previousDeck !== prevProps.previousDeck) {
@@ -237,6 +253,7 @@ class DeckDetailView extends React.Component {
     const {
       navigator,
       deck,
+      campaignId,
     } = this.props;
     const {
       parsedDeck,
@@ -248,6 +265,8 @@ class DeckDetailView extends React.Component {
       backButtonTitle: 'Cancel',
       passProps: {
         id: deck.id,
+        showNewDeck: true,
+        campaignId,
       },
     });
   }

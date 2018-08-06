@@ -16,9 +16,9 @@ import CampaignDifficultyDialog from '../components/campaign/CampaignDifficultyD
 import EditChaosBagDialog from '../components/campaign/EditChaosBagDialog';
 import MyCampaignsView from '../components/campaign/MyCampaignsView';
 import NewCampaignView from '../components/campaign/NewCampaignView';
-import EditCampaignNotesDialog from '../components/campaign/EditCampaignNotesDialog';
 import SelectCampaignDialog from '../components/campaign/SelectCampaignDialog';
 import MyDecksSelectorDialog from '../components/campaign/MyDecksSelectorDialog';
+import CampaignScenarioView from '../components/campaign/CampaignScenarioView';
 import MyDecksView from '../components/MyDecksView';
 import NewDeckView from '../components/NewDeckView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
@@ -64,6 +64,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Campaign', () => CampaignDetailView, store, Provider);
   Navigation.registerComponent('Campaign.New', () => NewCampaignView, store, Provider);
   Navigation.registerComponent('Campaign.AddResult', () => AddScenarioResultView, store, Provider);
+  Navigation.registerComponent('Campaign.Scenarios', () => CampaignScenarioView, store, Provider);
   Navigation.registerComponent('Settings', () => SettingsView, store, Provider);
   Navigation.registerComponent('Settings.Diagnostics', () => DiagnosticsView, store, Provider);
   Navigation.registerComponent('SearchFilters', () => CardFilterView, store, Provider);
@@ -75,7 +76,6 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('My.Spoilers', () => SpoilersView, store, Provider);
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
   Navigation.registerComponent('Dialog.DeckSelector', () => MyDecksSelectorDialog, store, Provider);
-  Navigation.registerComponent('Dialog.EditCampaignNotes', () => EditCampaignNotesDialog, store, Provider);
   Navigation.registerComponent('Dialog.EditChaosBag', () => EditChaosBagDialog, store, Provider);
   Navigation.registerComponent('Dialog.ExileCards', () => ExileCardDialog, store, Provider);
   Navigation.registerComponent('Dialog.Sort', () => CardSortDialog, store, Provider);

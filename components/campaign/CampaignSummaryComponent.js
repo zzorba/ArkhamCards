@@ -15,6 +15,7 @@ import typography from '../../styles/typography';
 export default class CampaignSummaryComponent extends React.Component {
   static propTypes = {
     campaign: PropTypes.object.isRequired,
+    hideScenario: PropTypes.bool,
   };
 
   latestScenario() {
@@ -57,16 +58,22 @@ export default class CampaignSummaryComponent extends React.Component {
   }
 
   renderLastScenario() {
+    if (this.props.hideScenario) {
+      return null;
+    }
     const latestScenario = this.latestScenario();
     if (latestScenario && latestScenario.scenario) {
+      const resolution = latestScenario.resolution ?
+        `: ${latestScenario.resolution}` : '';
+      const xp = latestScenario.xp !== null ?
+        ` (${latestScenario.xp} XP)` : '';
       return (
         <View style={styles.marginTop}>
           <Text style={typography.smallLabel}>
             LATEST SCENARIO
           </Text>
           <Text style={typography.gameFont}>
-            { `${latestScenario.scenario}${latestScenario.resolution ? ` (${latestScenario.resolution})` : ''}` }
-
+            { `${latestScenario.scenario}${resolution}${xp}` }
           </Text>
         </View>
       );

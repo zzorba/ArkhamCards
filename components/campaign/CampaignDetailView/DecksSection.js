@@ -104,6 +104,7 @@ export default class DecksSection extends React.Component {
       passProps: {
         id: deck.id,
         campaignId: campaign.id,
+        showNewDeck: false,
       },
       navigatorStyle: {
         navBarBackgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0],

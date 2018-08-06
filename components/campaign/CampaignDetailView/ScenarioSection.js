@@ -9,6 +9,7 @@ import {
 
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import Button from '../../core/Button';
+import NavButton from '../../core/NavButton';
 import typography from '../../../styles/typography';
 
 export default class ScenarioSection extends React.Component {
@@ -21,6 +22,22 @@ export default class ScenarioSection extends React.Component {
     super(props);
 
     this._addScenarioResult = this.addScenarioResult.bind(this);
+    this._onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
+    const {
+      campaign,
+      navigator,
+    } = this.props;
+    navigator.push({
+      screen: 'Campaign.Scenarios',
+      title: 'Scenarios',
+      passProps: {
+        id: campaign.id,
+      },
+      backButtonTitle: 'Back',
+    });
   }
 
   addScenarioResult() {
@@ -70,17 +87,19 @@ export default class ScenarioSection extends React.Component {
       campaign,
     } = this.props;
     return (
-      <View style={styles.underline}>
-        <View style={[styles.padding, styles.marginTop]}>
-          <CampaignSummaryComponent campaign={campaign} />
+      <NavButton onPress={this._onPress}>
+        <View style={styles.section}>
+          <View style={[styles.padding, styles.marginTop]}>
+            <CampaignSummaryComponent campaign={campaign} />
+          </View>
+          <Button
+            align="left"
+            size="small"
+            text="Record Scenario Results"
+            onPress={this._addScenarioResult}
+          />
         </View>
-        <Button
-          align="left"
-          size="small"
-          text="Record Scenario Results"
-          onPress={this._addScenarioResult}
-        />
-      </View>
+      </NavButton>
     );
   }
 }
@@ -90,10 +109,8 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingRight: 8,
   },
-  underline: {
+  section: {
     paddingBottom: 8,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
   },
   marginTop: {
     marginTop: 8,

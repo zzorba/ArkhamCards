@@ -164,21 +164,6 @@ class CampaignDetailView extends React.Component {
     navigator.pop();
   }
 
-  showCampaignNotesDialog() {
-    const {
-      navigator,
-      campaign,
-    } = this.props;
-    navigator.push({
-      screen: 'Dialog.EditCampaignNotes',
-      title: 'Campaign Log',
-      passProps: {
-        campaignId: campaign.id,
-      },
-      backButtonTitle: 'Cancel',
-    });
-  }
-
   renderAddSectionDialog() {
     const {
       viewRef,
@@ -283,6 +268,6 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   footer: {
-    height: 100,
+    height: 40,
   },
 });

@@ -8,6 +8,7 @@ import {
   MY_DECKS_ERROR,
   SET_MY_DECKS,
   NEW_DECK_AVAILABLE,
+  DELETE_DECK,
   UPDATE_DECK,
   CLEAR_DECKS,
 } from '../actions/types';
@@ -88,6 +89,18 @@ export default function(state = DEFAULT_DECK_STATE, action) {
         lastModified: action.lastModified,
         refreshing: false,
         error: null,
+      },
+    );
+  }
+  if (action.type === DELETE_DECK) {
+    const all = Object.assign({}, state.all);
+    delete all[action.id];
+    const myDecks = filter(state.myDecks, deckId => deckId !== action.id);
+    return Object.assign({},
+      state,
+      {
+        all,
+        myDecks,
       },
     );
   }

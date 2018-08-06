@@ -19,7 +19,6 @@ import withTraumaDialog from '../campaign/withTraumaDialog';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import { upgradeDeck } from '../../lib/authApi';
 import * as Actions from '../../actions';
-import Button from '../core/Button';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import { getDeck, getCampaign } from '../../reducers';
 import typography from '../../styles/typography';
@@ -29,6 +28,7 @@ class DeckUpgradeDialog extends React.Component {
     navigator: PropTypes.object.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
+    showNewDeck: PropTypes.bool,
     // Optional campaignId
     campaignId: PropTypes.number,
     // From redux, maybe
@@ -85,6 +85,7 @@ class DeckUpgradeDialog extends React.Component {
       updateDeck,
       campaign,
       updateCampaign,
+      showNewDeck,
     } = this.props;
     if (campaign) {
       updateCampaign(campaign.id, { investigatorData: this.investigatorData() });
@@ -108,7 +109,11 @@ class DeckUpgradeDialog extends React.Component {
       } = decks;
       updateDeck(deck.id, deck, false);
       setNewDeck(upgradedDeck.id, upgradedDeck);
-      showDeckModal(navigator, upgradedDeck, investigator);
+      if (showNewDeck) {
+        showDeckModal(navigator, upgradedDeck, investigator);
+      } else {
+        navigator.pop();
+      }
     }, err => {
       Alert.alert(err.message || err);
     });
@@ -201,14 +206,6 @@ class DeckUpgradeDialog extends React.Component {
           exileCounts={exileCounts}
           updateExileCounts={this._onExileCountsChange}
         />
-        <View style={styles.buttonRow}>
-          <Button
-            style={styles.button}
-            color="green"
-            text="Save"
-            onPress={this._saveUpgrade}
-          />
-        </View>
       </ScrollView>
     );
   }
@@ -257,12 +254,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    padding: 8,
-  },
-  button: {
-    marginRight: 8,
   },
 });

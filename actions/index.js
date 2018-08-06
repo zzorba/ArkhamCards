@@ -1,5 +1,6 @@
 import {
   NEW_DECK_AVAILABLE,
+  DELETE_DECK,
   UPDATE_DECK,
   CLEAR_DECKS,
   SET_MY_DECKS,
@@ -153,10 +154,21 @@ export function updateDeck(id, deck, isWrite) {
   };
 }
 
+export function removeDeck(id) {
+  return {
+    type: DELETE_DECK,
+    id,
+  };
+}
+
 export function fetchPrivateDeck(id) {
   return (dispatch) => {
     loadDeck(id).then(deck => {
       dispatch(updateDeck(id, deck, false));
+    }).catch(err => {
+      if (err.message === 'Not Found') {
+        dispatch(removeDeck(id));
+      }
     });
   };
 }
@@ -233,4 +245,5 @@ export default {
   setPackSpoiler,
   setNewDeck,
   updateDeck,
+  removeDeck,
 };

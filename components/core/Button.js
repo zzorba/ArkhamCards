@@ -20,6 +20,7 @@ export default function Button({
   onPress,
   style,
   color,
+  grow,
 }) {
   let containerStyle = styles.centerContainer;
   switch (align) {
@@ -63,26 +64,34 @@ export default function Button({
       break;
   }
   return (
-    <View style={[containerStyle, style]}>
+    <View style={[containerStyle, style, grow ? { flex: 1 } : {}]}>
       <TouchableOpacity
         onPress={onPress}
-        style={borderColor ? { borderRadius: 4, borderWidth, borderColor } : {}}
+        style={[
+          borderColor ? { borderRadius: 4, borderWidth, borderColor } : {},
+          grow ? { flex: 1 } : {},
+        ]}
       >
         <LinearGradient colors={colors} style={[
           styles.button,
           width ? { width } : {},
           { paddingLeft: padding, paddingRight: padding },
         ]}>
-          { !!icon && (
-            <View style={text ? { marginRight: padding / 2 } : {}}>
-              { icon }
-            </View>
-          ) }
-          { !!text && (
-            <Text style={[typography.text, { fontWeight, color: textColor }]}>
-              { text }
-            </Text>
-          ) }
+          <View style={styles.row}>
+            { !!icon && (
+              <View style={text ? { marginRight: padding / 2 } : {}}>
+                { icon }
+              </View>
+            ) }
+            { !!text && (
+              <Text style={[
+                typography.text,
+                { fontWeight, color: textColor },
+              ]}>
+                { text }
+              </Text>
+            ) }
+          </View>
         </LinearGradient>
       </TouchableOpacity>
     </View>
@@ -98,6 +107,7 @@ Button.propTypes = {
   style: ViewPropTypes.style,
   width: PropTypes.number,
   color: PropTypes.oneOf(['default', 'green', 'purple', 'red', 'yellow', 'white']),
+  grow: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
@@ -118,9 +128,11 @@ const styles = StyleSheet.create({
   button: {
     paddingTop: 8,
     paddingBottom: 8,
+    borderRadius: 4,
+  },
+  row: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 4,
+    justifyContent: 'flex-start',
   },
 });
