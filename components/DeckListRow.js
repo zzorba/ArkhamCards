@@ -89,7 +89,7 @@ export default class DeckListRow extends React.Component {
       viewDeckButton,
       subDetails,
     } = this.props;
-    if (!deck) {
+    if (!deck || !investigator) {
       return (
         <View style={styles.row}>
           <ActivityIndicator

@@ -26,7 +26,7 @@ class CampaignInvestigatorRow extends React.Component {
       decks,
     } = this.props;
     const latestInvestigators = flatMap(decks,
-      deck => investigators[deck.investigator_code]);
+      deck => deck && deck.investigator_code && investigators[deck.investigator_code]);
     return (
       <View style={styles.row}>
         { map(latestInvestigators, card => (

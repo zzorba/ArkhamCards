@@ -105,7 +105,9 @@ export function clearDecks() {
 }
 
 function getDecksLastModified(state) {
-  return state.decks.myDecks.length ? state.decks.lastModified : null;
+  return (state.decks.myDecks && state.decks.myDecks.length) ?
+    state.decks.lastModified :
+    null;
 }
 
 export function refreshMyDecks() {

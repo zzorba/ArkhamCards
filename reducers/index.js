@@ -85,6 +85,15 @@ export function getAllDecks(state) {
   return state.decks.all || {};
 }
 
+export function getMyDecksState(state) {
+  return {
+    myDecks: state.decks.myDecks || [],
+    myDecksUpdated: state.decks.dateUpdated ? new Date(state.decks.dateUpdated) : null,
+    refreshing: state.decks.refreshing,
+    error: state.decks.error,
+  };
+}
+
 export function getDeck(state, id) {
   if (!id) {
     return null;
@@ -99,7 +108,7 @@ export function getDecks(state, deckIds) {
   const decks = [];
   forEach(deckIds, deckId => {
     const deck = getDeck(state, deckId);
-    if (deck) {
+    if (deck && deck.id) {
       decks.push(deck);
     }
   });

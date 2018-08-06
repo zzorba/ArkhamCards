@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import * as Actions from '../actions';
 import DeckListComponent from './DeckListComponent';
+import { getAllDecks, getMyDecksState } from '../reducers';
 
 class MyDecksComponent extends React.Component {
   static propTypes = {
@@ -93,13 +94,10 @@ class MyDecksComponent extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    decks: state.decks.all,
-    myDecksUpdated: state.decks.dateUpdated ? new Date(state.decks.dateUpdated) : null,
-    myDecks: state.decks.myDecks || [],
-    refreshing: state.decks.refreshing,
-    error: state.decks.error,
-  };
+  return Object.assign({},
+    { decks: getAllDecks(state) },
+    getMyDecksState(state),
+  );
 }
 
 function mapDispatchToProps(dispatch) {

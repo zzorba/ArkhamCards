@@ -64,6 +64,9 @@ class CampaignDeckDetail extends React.Component {
       previousDeck,
       investigator,
     } = this.props;
+    if (!deck) {
+      return null;
+    }
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
     const {
       slots,
@@ -148,6 +151,9 @@ class CampaignSubDeckDetail extends React.Component {
       investigator,
       showTraumaDialog,
     } = this.props;
+    if (!deck) {
+      return null;
+    }
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
     return (
       <View style={styles.investigatorSubNotes}>
