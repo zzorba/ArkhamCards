@@ -28,7 +28,7 @@ export function newCampaign(
   weaknessPacks
 ) {
   return (dispatch, getState) => {
-    return {
+    dispatch({
       type: NEW_CAMPAIGN,
       id,
       name: name,
@@ -39,7 +39,7 @@ export function newCampaign(
       weaknessPacks,
       baseDeckIds: getBaseDeckIds(getState(), deckIds),
       now: new Date(),
-    };
+    });
   };
 }
 

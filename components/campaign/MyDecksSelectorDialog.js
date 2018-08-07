@@ -101,7 +101,7 @@ class MyDecksSelectorDialog extends React.Component {
       onDeckSelect,
       navigator,
     } = this.props;
-    onDeckSelect(deck.id);
+    onDeckSelect(deck);
     navigator.dismissModal();
   }
 

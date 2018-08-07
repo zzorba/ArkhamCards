@@ -83,9 +83,9 @@ class CampaignDrawWeaknessDialog extends React.Component {
     });
   }
 
-  selectDeck(deckId) {
+  selectDeck(deck) {
     this.setState({
-      selectedDeckId: deckId,
+      selectedDeckId: deck.id,
     });
   }
 

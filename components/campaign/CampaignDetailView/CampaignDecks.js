@@ -196,9 +196,8 @@ export default listOfDecks(
   deckRowWithDetails(CampaignDeckDetail, CampaignSubDeckDetail, {
     compact: true,
     viewDeckButton: true,
-  }), {
-    deckLimit: null,
-  });
+  })
+);
 
 const styles = StyleSheet.create({
   section: {

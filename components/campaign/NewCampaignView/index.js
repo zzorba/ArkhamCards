@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { capitalize, filter, map } from 'lodash';
 import {
+  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -14,7 +15,6 @@ import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { CUSTOM } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
-import Button from '../../core/Button';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import withTextEditDialog from '../../core/withTextEditDialog';
@@ -128,9 +128,9 @@ class NewCampaignView extends React.Component {
     });
   }
 
-  deckAdded(id) {
+  deckAdded(deck) {
     this.setState({
-      deckIds: [...this.state.deckIds, id],
+      deckIds: [...this.state.deckIds, deck.id],
     });
   }
 
@@ -377,7 +377,7 @@ class NewCampaignView extends React.Component {
         </View>
         { !this.hasDefinedChaosBag() && (
           <View style={styles.topPadding}>
-            <Button align="left" text="Add Log Section" onPress={this._toggleCampaignLogDialog} />
+            <Button title="Add Log Section" onPress={this._toggleCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -474,8 +474,7 @@ class NewCampaignView extends React.Component {
           </View>
           <Button
             style={styles.topPadding}
-            color="green"
-            text="Save New Campaign"
+            title="Create Campaign"
             onPress={this._onSave}
           />
           <View style={styles.footer} />

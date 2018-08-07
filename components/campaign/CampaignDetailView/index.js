@@ -235,7 +235,11 @@ class CampaignDetailView extends React.Component {
             showAddSectionDialog={this._showAddSectionDialog}
           />
           <View style={styles.margin}>
-            <Button color={COLORS.red} onPress={this._deletePressed} title="Delete Campaign" />
+            <Button
+              title="Delete Campaign"
+              color={COLORS.red}
+              onPress={this._deletePressed}
+            />
           </View>
           <View style={styles.footer} />
         </ScrollView>

@@ -43,7 +43,7 @@ export default class CampaignItem extends React.Component {
           colors={['#fbfaf6', '#ebe6d4']}
           style={styles.container}
         >
-          <Text style={typography.text}>
+          <Text style={[typography.text, styles.bottomMargin]}>
             { campaign.name }
           </Text>
           <CampaignSummaryComponent campaign={campaign} />
@@ -67,5 +67,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',
+  },
+  bottomMargin: {
+    marginBottom: 8,
   },
 });

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { filter } from 'lodash';
 import {
   Alert,
-  Button,
   StyleSheet,
   View,
 } from 'react-native';
@@ -24,35 +23,18 @@ export default class DecksSection extends React.Component {
   constructor(props) {
     super(props);
 
-    this._showDeckSelector = this.showDeckSelector.bind(this);
     this._addDeck = this.addDeck.bind(this);
     this._showDeckUpgradeDialog = this.showDeckUpgradeDialog.bind(this);
     this._removeDeckPrompt = this.removeDeckPrompt.bind(this);
   }
 
-  showDeckSelector() {
-    const {
-      navigator,
-      campaignId,
-      latestDeckIds,
-    } = this.props;
-    navigator.showModal({
-      screen: 'Dialog.DeckSelector',
-      passProps: {
-        campaignId: campaignId,
-        onDeckSelect: this._addDeck,
-        selectedDeckIds: latestDeckIds,
-      },
-    });
-  }
-
-  addDeck(deckId) {
+  addDeck(deck) {
     const {
       latestDeckIds,
       updateLatestDeckIds,
     } = this.props;
     const newLatestDeckIds = latestDeckIds.slice();
-    newLatestDeckIds.push(deckId);
+    newLatestDeckIds.push(deck.id);
     updateLatestDeckIds(newLatestDeckIds);
   }
 
@@ -123,11 +105,11 @@ export default class DecksSection extends React.Component {
           campaignId={campaignId}
           investigatorData={investigatorData}
           deckIds={latestDeckIds}
+          deckAdded={this._addDeck}
           deckRemoved={this._removeDeckPrompt}
           showTraumaDialog={showTraumaDialog}
           showDeckUpgradeDialog={this._showDeckUpgradeDialog}
         />
-        <Button title="Add Investigator" onPress={this._showDeckSelector} />
       </View>
     );
   }

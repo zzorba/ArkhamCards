@@ -60,7 +60,7 @@ class NewDeckView extends React.Component {
     } = this.props;
     newDeck(investigator.code).then(deck => {
       setNewDeck(deck.id, deck);
-      onCreateDeck && onCreateDeck(deck.id);
+      onCreateDeck && onCreateDeck(deck);
       showDeckModal(navigator, deck, investigator);
     }, error => {
       Alert.alert('Error', error.message);

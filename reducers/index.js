@@ -86,6 +86,9 @@ export function getAllDecks(state) {
 }
 
 export function getLatestDeckIds(campaign, state) {
+  if (!campaign) {
+    return [];
+  }
   const decks = state.decks.all;
   if (campaign.baseDeckIds) {
     return flatMap(campaign.baseDeckIds, deckId => {

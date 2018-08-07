@@ -8,7 +8,5 @@ export default listOfDecks(
       compact: false,
       viewDeckButton: false,
     },
-  ), {
-    deckLimit: 4,
-  },
+  )
 );
