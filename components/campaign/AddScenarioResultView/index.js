@@ -57,41 +57,6 @@ class AddScenarioResultView extends React.Component {
     this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
   }
 
-  deckIds() {
-    const {
-      campaign: {
-        latestDeckIds,
-      },
-    } = this.props;
-    const {
-      addedDeckIds,
-      removedDeckIds,
-    } = this.state;
-
-    const removedSet = new Set(removedDeckIds);
-    return uniqBy(
-      filter(
-        concat(latestDeckIds, addedDeckIds),
-        deckId => !removedSet.has(deckId)));
-  }
-
-  deckUpdates() {
-    const {
-      xp,
-      deckUpdates,
-    } = this.state;
-    const deckIds = this.deckIds();
-    const result = {};
-    forEach(deckIds, deckId => {
-      if (deckUpdates[deckId]) {
-        result[deckId] = deckUpdates[deckId];
-      } else {
-        result[deckId] = Object.assign({}, DEFAULT_SETTINGS, { xp: xp });
-      }
-    });
-    return result;
-  }
-
   hideTraumaDialog() {
     this.setState({
       traumaDialogVisible: false,
@@ -144,16 +109,8 @@ class AddScenarioResultView extends React.Component {
   }
 
   xpChanged(xp) {
-    const delta = xp - this.state.xp;
-    const deckUpdates = mapValues(
-      this.state.deckUpdates,
-      updates => Object.assign(
-        {},
-        updates,
-        { xp: Math.max(0, updates.xp + delta) }));
     this.setState({
       xp,
-      deckUpdates,
     });
   }
 

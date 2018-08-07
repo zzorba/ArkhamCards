@@ -25,7 +25,7 @@ class CampaignDeckDetail extends React.Component {
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
     investigator: PropTypes.object,
-    campaign: PropTypes.object.isRequired,
+    campaignId: PropTypes.number.isRequired,
     showDeckUpgradeDialog: PropTypes.func.isRequired,
     // From the realm HOC
     cards: PropTypes.object.isRequired,
@@ -43,9 +43,9 @@ class CampaignDeckDetail extends React.Component {
       navigator,
       deck,
       investigator,
-      campaign,
+      campaignId,
     } = this.props;
-    showDeckModal(navigator, deck, investigator, campaign.id);
+    showDeckModal(navigator, deck, investigator, campaignId);
   }
 
   upgradeDeckPressed() {
@@ -108,7 +108,7 @@ class CampaignSubDeckDetail extends React.Component {
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
     investigator: PropTypes.object,
-    campaign: PropTypes.object.isRequired,
+    investigatorData: PropTypes.object.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
     showDeckUpgradeDialog: PropTypes.func.isRequired,
     // From the realm HOC
@@ -142,9 +142,7 @@ class CampaignSubDeckDetail extends React.Component {
 
   render() {
     const {
-      campaign: {
-        investigatorData = {},
-      },
+      investigatorData = {},
       deck,
       cards,
       previousDeck,

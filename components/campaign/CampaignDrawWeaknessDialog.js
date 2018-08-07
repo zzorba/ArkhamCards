@@ -14,7 +14,7 @@ import * as Actions from '../../actions';
 import { iconsMap } from '../../app/NavIcons';
 import { saveDeck } from '../../lib/authApi';
 import DeckValidation from '../../lib/DeckValidation';
-import { getCampaign, getAllDecks } from '../../reducers';
+import { getCampaign, getAllDecks, getLatestDeckIds } from '../../reducers';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards from '../withPlayerCards';
 
@@ -232,7 +232,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
         <Button
           color="green"
           onPress={this._saveDrawnCard}
-          text={`Save to ${investigator.name}'s Deck`}
+          text={`Save to ${investigator.name}’s Deck`}
         />
       </View>
     );
@@ -243,10 +243,6 @@ class CampaignDrawWeaknessDialog extends React.Component {
       navigator,
       weaknessSet,
     } = this.props;
-
-    const {
-      saving,
-    } = this.state;
 
     if (!weaknessSet) {
       return null;
@@ -259,7 +255,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
         customFlippedHeader={this.renderFlippedHeader()}
         weaknessSet={weaknessSet}
         updateDrawnCard={this._updateDrawnCard}
-        saving={saving}
+        saving={this.state.saving}
       />
     );
   }
@@ -269,7 +265,7 @@ function mapStateToProps(state, props) {
   const campaign = getCampaign(state, props.campaignId);
   return {
     weaknessSet: campaign.weaknessSet,
-    latestDeckIds: campaign.latestDeckIds,
+    latestDeckIds: getLatestDeckIds(campaign, state),
     decks: getAllDecks(state),
   };
 }

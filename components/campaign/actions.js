@@ -1,9 +1,14 @@
+import { flatMap } from 'lodash';
 import {
   NEW_CAMPAIGN,
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
 } from '../../actions/types';
+
+function findBaseDeckIds(state, decks) {
+
+}
 
 export function newCampaign(
   id,
@@ -31,18 +36,27 @@ export function newCampaign(
 
 /**
  * Pass only the fields that you want to update.
- *
- * chaosBag, campaignNotes, investigatorData, latestDeckIds, weaknessSet
+ * {
+ *   chaosBag,
+ *   campaignNotes,
+ *   investigatorData,
+ *   latestDeckIds,
+ *   weaknessSet,
+ * }
  */
 export function updateCampaign(
   id,
   sparseCampaign,
 ) {
-  return {
-    type: UPDATE_CAMPAIGN,
-    id,
-    campaign: sparseCampaign,
-    now: new Date(),
+  return (dispatch, getState) => {
+    const decks = getState().decks.all || {};
+    const campaign = Object.assign({}, sparseCampaign);
+    dispatch({
+      type: UPDATE_CAMPAIGN,
+      id,
+      campaign,
+      now: new Date(),
+    });
   };
 }
 
@@ -53,26 +67,6 @@ export function deleteCampaign(id) {
   };
 }
 
-
-// deckIds: [],
-// scenario: '',
-// scenarioCode: '',
-// campaignNotes: [],
-// investigatorUpdates: {
-//   investigator_code: {
-//     trauma: {
-//       physical,
-//       mental,
-//     },
-//     xp: #,
-//     killed: bool,
-//     insane: bool,
-//     exile: {},
-//   },
-//   investigator_code: {
-//     ...
-//   }
-// }],
 export function addScenarioResult(
   id,
   { scenario, scenarioCode, resolution },

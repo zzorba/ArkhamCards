@@ -12,6 +12,7 @@ export default class EditTextDialog extends React.Component {
     title: PropTypes.string.isRequired,
     visible: PropTypes.bool.isRequired,
     text: PropTypes.string,
+    numberOfLines: PropTypes.number,
     viewRef: PropTypes.object,
     onTextChange: PropTypes.func,
     toggleVisible: PropTypes.func.isRequired,
@@ -111,6 +112,7 @@ export default class EditTextDialog extends React.Component {
       title,
       viewRef,
       showCrossOut,
+      numberOfLines = 1,
     } = this.props;
     const {
       isCrossedOut,
@@ -122,16 +124,24 @@ export default class EditTextDialog extends React.Component {
       text !== originalText.substring(1) :
       text !== originalText;
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
+    const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
     return (
       <Dialog visible={visible} title={title} viewRef={viewRef}>
         <DialogComponent.Input
-          style={isCrossedOut ? { textDecorationLine: 'line-through' } : {}}
+          style={isCrossedOut ? {
+            textDecorationLine: 'line-through',
+            height,
+          } : {
+            height,
+          }}
           ref={this._captureTextInputRef}
           value={text}
           autoFocus
           editable={!isCrossedOut}
           onChangeText={this._onTextChange}
           onSubmitEditing={this._onDonePress}
+          multiline={numberOfLines > 1}
+          numberOfLines={numberOfLines}
         />
         <DialogComponent.Button
           label="Cancel"

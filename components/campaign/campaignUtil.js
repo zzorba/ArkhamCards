@@ -4,13 +4,7 @@ import { CUSTOM } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
 import { CAMPAIGN_NAMES, CHAOS_TOKEN_ORDER } from '../../constants';
 
-export function campaignInvestigators(campaign, decks) {
-  return map(
-    flatMap(campaign.latestDeckIds || [], deckId => decks[deckId]),
-    deck => deck.investigator_code);
-}
-
-export function campaignToText(campaign, decks, investigators) {
+export function campaignToText(campaign, latestDeckIds, decks, investigators) {
   const lines = [];
   lines.push(campaign.name);
   lines.push('');
@@ -39,7 +33,7 @@ export function campaignToText(campaign, decks, investigators) {
     campaignNotes,
   } = campaign;
 
-  const latestDecks = flatMap(campaign.latestDeckIds || [], deckId => decks[deckId]);
+  const latestDecks = flatMap(latestDeckIds, deckId => decks[deckId]);
   lines.push('Investigators:');
   forEach(latestDecks, deck => {
     const investigator = investigators[deck.investigator_code];
@@ -80,6 +74,5 @@ export function campaignToText(campaign, decks, investigators) {
 }
 
 export default {
-  campaignInvestigators,
   campaignToText,
 };

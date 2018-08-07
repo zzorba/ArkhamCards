@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
+import { filter, find, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -85,6 +85,10 @@ export function getAllDecks(state) {
   return state.decks.all || {};
 }
 
+export function getLatestDeckIds(campaign, state) {
+  return filter(campaign.latestDeckIds || [], deckId => deckId in state.decks.all);
+}
+
 export function getMyDecksState(state) {
   return {
     myDecks: state.decks.myDecks || [],
@@ -165,12 +169,6 @@ export function getNextCampaignId(state) {
 
 export function getNextWeaknessId(state) {
   return 1 + (max(map(values(state.weaknesses.all), set => set.id)) || 0);
-}
-
-export function getCampaignForDeck(state, deckId) {
-  return find(values(state.campaigns.all), campaign => {
-    return find(campaign.latestDeckIds, id => id === deckId);
-  });
 }
 
 export function getCampaign(state, id) {

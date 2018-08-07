@@ -39,7 +39,7 @@ export default class NoteRow extends React.Component {
       note,
       showDialog,
     } = this.props;
-    showDialog(title, note, this._onChange, note !== '');
+    showDialog(title, note, this._onChange, note !== '', 3);
   }
 
   render() {
@@ -56,6 +56,9 @@ export default class NoteRow extends React.Component {
             editable={false}
             placeholder={last ? 'Add note' : null}
             pointerEvents="none"
+            ellipsizeMode="tail"
+            multiline
+            numberOfLines={3}
           />
         </TouchableOpacity>
       </View>
@@ -65,6 +68,6 @@ export default class NoteRow extends React.Component {
 
 const styles = StyleSheet.create({
   row: {
-    marginBottom: 4,
+    marginBottom: 8,
   },
 });

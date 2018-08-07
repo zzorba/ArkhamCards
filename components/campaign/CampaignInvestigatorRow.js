@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import InvestigatorImage from '../core/InvestigatorImage';
-import { getDecks } from '../../reducers';
+import { getDecks, getLatestDeckIds } from '../../reducers';
 
 class CampaignInvestigatorRow extends React.Component {
   static propTypes = {
@@ -40,8 +40,9 @@ class CampaignInvestigatorRow extends React.Component {
 }
 
 function mapStateToProps(state, props) {
+  const latestDeckIds = getLatestDeckIds(props.campaign, state);
   return {
-    decks: getDecks(state, props.campaign.latestDeckIds || []),
+    decks: getDecks(state, latestDeckIds),
   };
 }
 

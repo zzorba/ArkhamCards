@@ -12,35 +12,20 @@ import InvestigatorSectionRow from './InvestigatorSectionRow';
 import withPlayerCards from '../../withPlayerCards';
 import { getAllDecks } from '../../../reducers';
 
-class InvestigatorSectionList extends React.Component {
+export default class InvestigatorSectionList extends React.Component {
   static propTypes = {
-    deckIds: PropTypes.array.isRequired,
+    allInvestigators: PropTypes.array,
     updateInvestigatorNotes: PropTypes.func.isRequired,
     investigatorNotes: PropTypes.object.isRequired,
     showDialog: PropTypes.func.isRequired,
-    // from Redux
-    decks: PropTypes.object.isRequired,
-    // from withPlayerCards
-    investigators: PropTypes.object,
   };
 
-  renderDeckRow(deckId) {
+  renderDeckRow(investigator) {
     const {
-      decks,
-      investigators,
       investigatorNotes,
       updateInvestigatorNotes,
       showDialog,
     } = this.props;
-    const deck = decks[deckId];
-    if (!deck) {
-      return null;
-    }
-    const investigator = investigators[deck.investigator_code];
-    if (!investigator) {
-      return null;
-    }
-
     return (
       <InvestigatorSectionRow
         key={investigator.code}
@@ -54,30 +39,15 @@ class InvestigatorSectionList extends React.Component {
 
   render() {
     const {
-      deckIds,
+      allInvestigators,
     } = this.props;
     return (
       <View style={styles.investigatorNotes}>
-        { map(deckIds, deckId => this.renderDeckRow(deckId)) }
+        { map(allInvestigators, investigator => this.renderDeckRow(investigator)) }
       </View>
     );
   }
 }
-
-
-function mapStateToProps(state) {
-  return {
-    decks: getAllDecks(state),
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default withPlayerCards(
-  connect(mapStateToProps, mapDispatchToProps)(InvestigatorSectionList)
-);
 
 const styles = StyleSheet.create({
   investigatorNotes: {

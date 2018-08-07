@@ -15,7 +15,7 @@ export default class EditCampaignNotesComponent extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     // Parts of the campaign object.
-    latestDeckIds: PropTypes.array.isRequired,
+    allInvestigators: PropTypes.array,
     campaignNotes: PropTypes.object,
     // Update function.
     updateCampaignNotes: PropTypes.func.isRequired,
@@ -135,14 +135,14 @@ export default class EditCampaignNotesComponent extends React.Component {
       campaignNotes: {
         investigatorNotes,
       },
-      latestDeckIds,
+      allInvestigators,
       showDialog,
     } = this.props;
     return (
       <View style={styles.investigatorSection}>
         <InvestigatorSectionList
           navigator={navigator}
-          deckIds={latestDeckIds}
+          allInvestigators={allInvestigators}
           investigatorNotes={investigatorNotes}
           updateInvestigatorNotes={this._updateInvestigatorNotes}
           showDialog={showDialog}

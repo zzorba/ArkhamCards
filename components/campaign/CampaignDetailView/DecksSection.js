@@ -14,8 +14,10 @@ import { FACTION_DARK_GRADIENTS } from '../../../constants';
 export default class DecksSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    campaign: PropTypes.object.isRequired,
-    updateCampaign: PropTypes.func.isRequired,
+    campaignId: PropTypes.number.isRequired,
+    latestDeckIds: PropTypes.array,
+    investigatorData: PropTypes.object.isRequired,
+    updateLatestDeckIds: PropTypes.func.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
   };
 
@@ -26,51 +28,41 @@ export default class DecksSection extends React.Component {
     this._addDeck = this.addDeck.bind(this);
     this._showDeckUpgradeDialog = this.showDeckUpgradeDialog.bind(this);
     this._removeDeckPrompt = this.removeDeckPrompt.bind(this);
-    this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
   }
 
   showDeckSelector() {
     const {
       navigator,
-      campaign,
+      campaignId,
+      latestDeckIds,
     } = this.props;
     navigator.showModal({
       screen: 'Dialog.DeckSelector',
       passProps: {
-        campaignId: campaign.id,
+        campaignId: campaignId,
         onDeckSelect: this._addDeck,
-        selectedDeckIds: campaign.latestDeckIds,
+        selectedDeckIds: latestDeckIds,
       },
     });
   }
 
-  applyCampaignUpdate(key, value) {
-    const {
-      campaign,
-      updateCampaign,
-    } = this.props;
-    updateCampaign(campaign.id, { [key]: value });
-  }
-
   addDeck(deckId) {
     const {
-      campaign: {
-        latestDeckIds,
-      },
+      latestDeckIds,
+      updateLatestDeckIds,
     } = this.props;
     const newLatestDeckIds = latestDeckIds.slice();
     newLatestDeckIds.push(deckId);
-    this._updateLatestDeckIds(newLatestDeckIds);
+    updateLatestDeckIds(newLatestDeckIds);
   }
 
   removeDeck(removedDeckId) {
     const {
-      campaign: {
-        latestDeckIds,
-      },
+      latestDeckIds,
+      updateLatestDeckIds,
     } = this.props;
     const newLatestDeckIds = filter(latestDeckIds, deckId => deckId !== removedDeckId);
-    this._updateLatestDeckIds(newLatestDeckIds);
+    updateLatestDeckIds(newLatestDeckIds);
   }
 
   removeDeckPrompt(removedDeckId, deck, investigator) {
@@ -94,7 +86,7 @@ export default class DecksSection extends React.Component {
   showDeckUpgradeDialog(deck, investigator) {
     const {
       navigator,
-      campaign,
+      campaignId,
     } = this.props;
     navigator.push({
       screen: 'Deck.Upgrade',
@@ -103,7 +95,7 @@ export default class DecksSection extends React.Component {
       backButtonTitle: 'Cancel',
       passProps: {
         id: deck.id,
-        campaignId: campaign.id,
+        campaignId: campaignId,
         showNewDeck: false,
       },
       navigatorStyle: {
@@ -119,16 +111,18 @@ export default class DecksSection extends React.Component {
   render() {
     const {
       navigator,
-      campaign,
+      campaignId,
+      latestDeckIds,
+      investigatorData,
       showTraumaDialog,
     } = this.props;
     return (
       <View style={styles.underline}>
         <CampaignDecks
           navigator={navigator}
-          campaignId={campaign.id}
-          campaign={campaign}
-          deckIds={campaign.latestDeckIds || []}
+          campaignId={campaignId}
+          investigatorData={investigatorData}
+          deckIds={latestDeckIds}
           deckRemoved={this._removeDeckPrompt}
           showTraumaDialog={showTraumaDialog}
           showDeckUpgradeDialog={this._showDeckUpgradeDialog}

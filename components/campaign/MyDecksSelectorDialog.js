@@ -14,7 +14,7 @@ import { isEliminated } from './trauma';
 import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
 import withPlayerCards from '../withPlayerCards';
-import { getAllDecks, getCampaign, getCampaigns } from '../../reducers';
+import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds } from '../../reducers';
 
 class MyDecksSelectorDialog extends React.Component {
   static propTypes = {
@@ -25,6 +25,7 @@ class MyDecksSelectorDialog extends React.Component {
     selectedDeckIds: PropTypes.array,
     showOnlySelectedDeckIds: PropTypes.bool,
     //  From redux
+    campaignLatestDeckIds: PropTypes.array,
     otherCampaignDeckIds: PropTypes.array,
     decks: PropTypes.object,
     campaign: PropTypes.object,
@@ -192,6 +193,7 @@ class MyDecksSelectorDialog extends React.Component {
     const {
       selectedDeckIds,
       campaign,
+      campaignLatestDeckIds,
       showOnlySelectedDeckIds,
     } = this.props;
     const {
@@ -201,7 +203,7 @@ class MyDecksSelectorDialog extends React.Component {
       return selectedDeckIds;
     }
     if (onlyShowPreviousCampaignMembers && campaign) {
-      return campaign.latestDeckIds;
+      return campaignLatestDeckIds;
     }
     return null;
   }
@@ -246,9 +248,11 @@ function mapStateToProps(state, props) {
   const otherCampaigns = filter(
     getCampaigns(state),
     campaign => campaign.id !== props.campaignId);
-  const otherCampaignDeckIds = flatMap(otherCampaigns, campaign => campaign.latestDeckIds || []);
+  const otherCampaignDeckIds = flatMap(otherCampaigns, c => getLatestDeckIds(c, state));
+  const campaign = getCampaign(state, props.campaignId);
   return {
-    campaign: getCampaign(state, props.campaignId),
+    campaign,
+    campaignLatestDeckIds: getLatestDeckIds(campaign, state),
     otherCampaignDeckIds,
     decks: getAllDecks(state),
   };

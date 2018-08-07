@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { filter, flatMap } from 'lodash';
 import {
   Alert,
   Button,
@@ -23,7 +24,7 @@ import withPlayerCards from '../../withPlayerCards';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import { iconsMap } from '../../../app/NavIcons';
 import { updateCampaign, deleteCampaign } from '../actions';
-import { getCampaign, getAllPacks, getAllDecks } from '../../../reducers';
+import { getCampaign, getAllPacks, getAllDecks, getLatestDeckIds } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
 class CampaignDetailView extends React.Component {
@@ -40,8 +41,10 @@ class CampaignDetailView extends React.Component {
     updateCampaign: PropTypes.func.isRequired,
     deleteCampaign: PropTypes.func.isRequired,
     campaign: PropTypes.object,
+    latestDeckIds: PropTypes.array,
     decks: PropTypes.object,
     investigators: PropTypes.object,
+    allInvestigators: PropTypes.array,
   };
 
   constructor(props) {
@@ -54,6 +57,7 @@ class CampaignDetailView extends React.Component {
 
     this._toggleAddSectionDialog = this.toggleAddSectionDialog.bind(this);
     this._showAddSectionDialog = this.showAddSectionDialog.bind(this);
+    this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
     this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
@@ -83,6 +87,7 @@ class CampaignDetailView extends React.Component {
   onNavigatorEvent(event) {
     const {
       campaign,
+      latestDeckIds,
       decks,
       investigators,
     } = this.props;
@@ -90,7 +95,7 @@ class CampaignDetailView extends React.Component {
       if (event.id === 'share') {
         Share.share({
           text: campaign.name,
-          message: campaignToText(campaign, decks, investigators),
+          message: campaignToText(campaign, latestDeckIds, decks, investigators),
         }, {
           subject: campaign.name,
         });
@@ -187,10 +192,12 @@ class CampaignDetailView extends React.Component {
     const {
       navigator,
       campaign,
+      latestDeckIds,
       showTraumaDialog,
       updateCampaign,
       captureViewRef,
       showTextEditDialog,
+      allInvestigators,
     } = this.props;
     if (!campaign) {
       return null;
@@ -214,12 +221,16 @@ class CampaignDetailView extends React.Component {
           />
           <DecksSection
             navigator={navigator}
-            campaign={campaign}
+            campaignId={campaign.id}
+            latestDeckIds={latestDeckIds || []}
+            investigatorData={campaign.investigatorData || {}}
             showTraumaDialog={showTraumaDialog}
-            updateCampaign={updateCampaign}
+            updateLatestDeckIds={this._updateLatestDeckIds}
           />
-          <CampaignLogSection navigator={navigator}
-            campaign={campaign}
+          <CampaignLogSection
+            navigator={navigator}
+            campaignNotes={campaign.campaignNotes}
+            allInvestigators={allInvestigators}
             updateCampaignNotes={this._updateCampaignNotes}
             showTextEditDialog={showTextEditDialog}
             showAddSectionDialog={this._showAddSectionDialog}
@@ -238,10 +249,16 @@ class CampaignDetailView extends React.Component {
 function mapStateToProps(state, props) {
   const campaign = getCampaign(state, props.id);
   const packs = getAllPacks(state);
+  const decks = getAllDecks(state);
+  const latestDeckIds = getLatestDeckIds(campaign, state);
   return {
-    campaign: campaign,
-    packs: packs,
-    decks: getAllDecks(state),
+    allInvestigators: flatMap(
+      filter(flatMap(latestDeckIds, deckId => decks[deckId]), deck => deck && deck.investigator_code),
+      deck => props.investigators[deck.investigator_code]),
+    latestDeckIds,
+    campaign,
+    packs,
+    decks,
   };
 }
 
@@ -252,8 +269,8 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withPlayerCards(
+export default withPlayerCards(
+  connect(mapStateToProps, mapDispatchToProps)(
     withTraumaDialog(
       withTextEditDialog(CampaignDetailView)
     )

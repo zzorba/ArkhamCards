@@ -39,12 +39,13 @@ export default function withTextEditDialog(WrappedComponent) {
       });
     }
 
-    showDialog(title, text, onTextChange, showCrossOut) {
+    showDialog(title, text, onTextChange, showCrossOut, numberOfLines) {
       this.setState({
         visible: true,
         title,
         text,
         onTextChange,
+        numberOfLines: numberOfLines || 1,
         showCrossOut: !!showCrossOut,
       });
     }
@@ -63,6 +64,7 @@ export default function withTextEditDialog(WrappedComponent) {
         onTextChange,
         baseViewRef,
         showCrossOut,
+        numberOfLines,
       } = this.state;
       if (!baseViewRef) {
         return null;
@@ -76,6 +78,7 @@ export default function withTextEditDialog(WrappedComponent) {
           onTextChange={onTextChange}
           toggleVisible={this._hideDialog}
           showCrossOut={showCrossOut}
+          numberOfLines={numberOfLines}
         />
       );
     }

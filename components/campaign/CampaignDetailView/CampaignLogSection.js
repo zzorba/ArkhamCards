@@ -6,10 +6,11 @@ import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 export default class CampaignLogSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
-    campaign: PropTypes.object.isRequired,
+    campaignNotes: PropTypes.object.isRequired,
     updateCampaignNotes: PropTypes.func.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
     showAddSectionDialog: PropTypes.func.isRequired,
+    allInvestigators: PropTypes.array,
   };
 
   constructor(props) {
@@ -27,18 +28,16 @@ export default class CampaignLogSection extends React.Component {
   render() {
     const {
       navigator,
-      campaign,
+      campaignNotes,
       showTextEditDialog,
       showAddSectionDialog,
+      allInvestigators,
     } = this.props;
-    if (!campaign) {
-      return null;
-    }
     return (
       <EditCampaignNotesComponent
         navigator={navigator}
-        campaignNotes={campaign.campaignNotes}
-        latestDeckIds={campaign.latestDeckIds}
+        campaignNotes={campaignNotes}
+        allInvestigators={allInvestigators}
         updateCampaignNotes={this._updateCampaignNotes}
         showDialog={showTextEditDialog}
         showAddSectionDialog={showAddSectionDialog}

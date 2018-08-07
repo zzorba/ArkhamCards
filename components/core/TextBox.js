@@ -11,18 +11,23 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
 
-export default function TextBox({ value, style, textStyle = {}, ...otherProps }) {
+export default function TextBox({ value, multiline, style = {}, textStyle = {}, ...otherProps }) {
   return (
     <View style={styles.container}>
       <LinearGradient
         colors={['#fff', '#eee']}
-        style={style ? [styles.textBox, style] : styles.textBox}
+        style={[
+          styles.textBox,
+          style,
+          multiline ? {} : { paddingTop: Platform.OS === 'ios' ? 4 : 2 },
+        ]}
       >
         <TextInput
           autoCorrect={false}
           underlineColorAndroid="transparent"
           style={[typography.text, styles.input, textStyle]}
           value={value}
+          multiline={multiline}
           {...otherProps}
         />
       </LinearGradient>
@@ -34,6 +39,7 @@ TextBox.propTypes = {
   value: PropTypes.string.isRequired,
   style: ViewPropTypes.style,
   textStyle: PropTypes.any,
+  multiline: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
@@ -44,11 +50,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   textBox: {
-    height: 30,
     width: '100%',
     paddingLeft: 4,
     paddingRight: 4,
-    paddingTop: Platform.OS === 'ios' ? 4 : 2,
     paddingBottom: Platform.OS === 'ios' ? 4 : 2,
     flexDirection: 'row',
     alignItems: 'center',
