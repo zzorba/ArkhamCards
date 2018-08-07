@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter } from 'lodash';
+import { filter, forEach, keys, map, sumBy } from 'lodash';
 import {
   Alert,
   StyleSheet,
@@ -8,16 +8,21 @@ import {
 } from 'react-native';
 
 import CampaignDecks from './CampaignDecks';
+import withWeaknessCards from '../../weakness/withWeaknessCards';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';
 
-export default class DecksSection extends React.Component {
+class DecksSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     campaignId: PropTypes.number.isRequired,
     latestDeckIds: PropTypes.array,
     investigatorData: PropTypes.object.isRequired,
-    updateLatestDeckIds: PropTypes.func.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
+    weaknessSet: PropTypes.object.isRequired,
+    updateLatestDeckIds: PropTypes.func.isRequired,
+    updateWeaknessSet: PropTypes.func.isRequired,
+    // From HOC
+    cardsMap: PropTypes.object,
   };
 
   constructor(props) {
@@ -28,6 +33,56 @@ export default class DecksSection extends React.Component {
     this._removeDeckPrompt = this.removeDeckPrompt.bind(this);
   }
 
+  maybeShowWeaknessPrompt(deck) {
+    const {
+      cardsMap
+    } = this.props;
+    const weaknesses = filter(keys(deck.slots), code => (code in cardsMap));
+    const count = sumBy(weaknesses, code => deck.slots[code]);
+    if (weaknesses.length) {
+      setTimeout(() => {
+        Alert.alert(
+          'Adjust Weakness Set',
+          (count > 1 ?
+            'This deck contains several basic weaknesses' :
+            'This deck contains a basic weakness') +
+          '\n\n' +
+          map(weaknesses, code => `${deck.slots[code]}x - ${cardsMap[code].name}`).join('\n') +
+          '\n\n' +
+          (count > 1 ?
+            'Do you want to remove them from the campaign’s Basic Weakness set?' :
+            'Do you want to remove it from the campaign’s Basic Weakness set?'),
+          [
+            { text: 'Not Now', style: 'cancel' },
+            {
+              text: 'Okay',
+              style: 'default',
+              onPress: () => {
+                const {
+                  weaknessSet,
+                  updateWeaknessSet,
+                } = this.props;
+                const assignedCards = Object.assign({}, weaknessSet.assignedCards);
+                forEach(weaknesses, code => {
+                  const count = deck.slots[code];
+                  if (!(code in assignedCards)) {
+                    assignedCards[code] = 0;
+                  }
+                  if ((assignedCards[code] + count) > cardsMap[code].quantity) {
+                    assignedCards[code] = cardsMap[code].quantity;
+                  } else {
+                    assignedCards[code] += count;
+                  }
+                });
+                updateWeaknessSet(Object.assign({}, weaknessSet, { assignedCards }));
+              },
+            },
+          ],
+        );
+      }, 50);
+    }
+  }
+
   addDeck(deck) {
     const {
       latestDeckIds,
@@ -36,6 +91,7 @@ export default class DecksSection extends React.Component {
     const newLatestDeckIds = latestDeckIds.slice();
     newLatestDeckIds.push(deck.id);
     updateLatestDeckIds(newLatestDeckIds);
+    this.maybeShowWeaknessPrompt(deck);
   }
 
   removeDeck(removedDeckId) {
@@ -50,7 +106,9 @@ export default class DecksSection extends React.Component {
   removeDeckPrompt(removedDeckId, deck, investigator) {
     Alert.alert(
       `Remove ${investigator.name}?`,
-      `Are you sure you want to remove ${investigator.name} from this campaign?\n\nAll campaign log data associated with them will be lost (but the deck will remain on ArkhamDB).\n\nIf you are just swapping investigators for a scenario, it is okay to have more than 4 in the party.`,
+      `Are you sure you want to remove ${investigator.name} from this campaign?` +
+      '\n\n' +
+      'Campaign log data associated with them may be lost (but the deck will remain on ArkhamDB).',
       [
         {
           text: 'Remove',
@@ -114,6 +172,8 @@ export default class DecksSection extends React.Component {
     );
   }
 }
+
+export default withWeaknessCards(DecksSection);
 
 const styles = StyleSheet.create({
   underline: {

@@ -61,6 +61,7 @@ class CampaignDetailView extends React.Component {
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
     this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
+    this._updateWeaknessSet = this.applyCampaignUpdate.bind(this, 'weaknessSet');
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
 
@@ -221,10 +222,12 @@ class CampaignDetailView extends React.Component {
           <DecksSection
             navigator={navigator}
             campaignId={campaign.id}
+            weaknessSet={campaign.weaknessSet}
             latestDeckIds={latestDeckIds || []}
             investigatorData={campaign.investigatorData || {}}
             showTraumaDialog={showTraumaDialog}
             updateLatestDeckIds={this._updateLatestDeckIds}
+            updateWeaknessSet={this._updateWeaknessSet}
           />
           <CampaignLogSection
             navigator={navigator}
