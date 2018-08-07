@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, forEach, mapValues, uniqBy } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -15,11 +14,6 @@ import XpComponent from '../XpComponent';
 import * as Actions from '../../../actions';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign } from '../../../reducers';
-
-const DEFAULT_SETTINGS = {
-  xp: 0,
-  exile: {},
-};
 
 class AddScenarioResultView extends React.Component {
   static propTypes = {

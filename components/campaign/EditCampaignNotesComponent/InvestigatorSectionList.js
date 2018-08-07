@@ -5,12 +5,8 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 import InvestigatorSectionRow from './InvestigatorSectionRow';
-import withPlayerCards from '../../withPlayerCards';
-import { getAllDecks } from '../../../reducers';
 
 export default class InvestigatorSectionList extends React.Component {
   static propTypes = {

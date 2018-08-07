@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { filter, find, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
+import { find, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -86,7 +86,23 @@ export function getAllDecks(state) {
 }
 
 export function getLatestDeckIds(campaign, state) {
-  return filter(campaign.latestDeckIds || [], deckId => deckId in state.decks.all);
+  const decks = state.decks.all;
+  if (campaign.baseDeckIds) {
+    return flatMap(campaign.baseDeckIds, deckId => {
+      let deck = decks[deckId];
+      while (deck && deck.next_deck && deck.next_deck in decks) {
+        deck = decks[deck.next_deck];
+      }
+      return deck ? [deck.id] : [];
+    });
+  }
+  return flatMap(campaign.latestDeckIds || [], deckId => {
+    let deck = decks[deckId];
+    while (deck && deck.next_deck && deck.next_deck in decks) {
+      deck = decks[deck.next_deck];
+    }
+    return deck ? [deck.id] : [];
+  });
 }
 
 export function getMyDecksState(state) {

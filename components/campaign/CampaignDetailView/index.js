@@ -194,7 +194,6 @@ class CampaignDetailView extends React.Component {
       campaign,
       latestDeckIds,
       showTraumaDialog,
-      updateCampaign,
       captureViewRef,
       showTextEditDialog,
       allInvestigators,

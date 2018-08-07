@@ -2,8 +2,6 @@ import { forEach, keys, map } from 'lodash';
 
 import {
   LOGOUT,
-  SET_MY_DECKS,
-  NEW_DECK_AVAILABLE,
   NEW_CAMPAIGN,
   UPDATE_CAMPAIGN,
   DELETE_CAMPAIGN,
@@ -16,7 +14,7 @@ import {
 //   cycleCode: '',
 //   lastUpdated: Date,
 //   baseDeckIds: [],
-//   latestDeckIds: [],
+//   latestDeckIds: [], /* deprecated */
 //   investigatorData: {
 //     investigator_code: {
 //       physical: #,
@@ -75,60 +73,6 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
       { all: newCampaigns },
     );
   }
-  if (action.type === SET_MY_DECKS) {
-    const allDecks = {};
-    forEach(action.decks, deck => {
-      allDecks[deck.id] = deck;
-    });
-
-    const newAll = Object.assign({}, state.all);
-    forEach(keys(newAll), campaignId => {
-      const campaign = newAll[campaignId];
-      const latestDeckIds = map(campaign.latestDeckIds, deckId => {
-        let deck = allDecks[deckId];
-        while (deck && deck.next_deck && allDecks[deck.next_deck]) {
-          deck = allDecks[deck.next_deck];
-        }
-        return deck ? deck.id : deckId;
-      });
-      newAll[campaignId] = Object.assign(
-        {},
-        campaign,
-        { latestDeckIds },
-      );
-    });
-    return Object.assign(
-      {},
-      state,
-      { all: newAll },
-    );
-  }
-  if (action.type === NEW_DECK_AVAILABLE) {
-    if (!action.deck.previous_deck) {
-      // No need to search the previous_decks.
-      return state;
-    }
-    const newAll = Object.assign({}, state.all);
-    forEach(keys(newAll), campaignId => {
-      const campaign = newAll[campaignId];
-      const latestDeckIds = map(campaign.latestDeckIds, deckId => {
-        if (action.deck.previous_deck === deckId) {
-          return action.deck.id;
-        }
-        return deckId;
-      });
-      newAll[campaignId] = Object.assign(
-        {},
-        campaign,
-        { latestDeckIds },
-      );
-    });
-    return Object.assign(
-      {},
-      state,
-      { all: newAll },
-    );
-  }
   if (action.type === NEW_CAMPAIGN) {
     const campaignNotes = {};
     campaignNotes.sections = map(action.campaignLog.sections || [], section => {
@@ -157,7 +101,7 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
         packCodes: action.weaknessPacks.slice(),
         assignedCards: {},
       },
-      latestDeckIds: action.deckIds,
+      baseDeckIds: action.baseDeckIds,
       lastUpdated: action.now,
       investigatorData: {},
       scenarioResults: [],

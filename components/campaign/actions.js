@@ -1,4 +1,4 @@
-import { flatMap } from 'lodash';
+import { map } from 'lodash';
 import {
   NEW_CAMPAIGN,
   DELETE_CAMPAIGN,
@@ -6,8 +6,15 @@ import {
   ADD_CAMPAIGN_SCENARIO_RESULT,
 } from '../../actions/types';
 
-function findBaseDeckIds(state, decks) {
-
+function getBaseDeckIds(state, latestDeckIds) {
+  const decks = state.decks.all || {};
+  return map(latestDeckIds, deckId => {
+    let deck = decks[deckId];
+    while (deck && deck.previous_deck && deck.previous_deck in decks) {
+      deck = decks[deck.previous_deck];
+    }
+    return deck ? deck.id : deckId;
+  });
 }
 
 export function newCampaign(
@@ -20,17 +27,19 @@ export function newCampaign(
   campaignLog,
   weaknessPacks
 ) {
-  return {
-    type: NEW_CAMPAIGN,
-    id,
-    name: name,
-    cycleCode: pack_code,
-    difficulty,
-    chaosBag,
-    campaignLog,
-    weaknessPacks,
-    deckIds,
-    now: new Date(),
+  return (dispatch, getState) => {
+    return {
+      type: NEW_CAMPAIGN,
+      id,
+      name: name,
+      cycleCode: pack_code,
+      difficulty,
+      chaosBag,
+      campaignLog,
+      weaknessPacks,
+      baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      now: new Date(),
+    };
   };
 }
 
@@ -49,8 +58,11 @@ export function updateCampaign(
   sparseCampaign,
 ) {
   return (dispatch, getState) => {
-    const decks = getState().decks.all || {};
     const campaign = Object.assign({}, sparseCampaign);
+    if (campaign.latestDeckIds) {
+      campaign.baseDeckIds = getBaseDeckIds(getState(), campaign.latestDeckIds);
+      delete campaign.latestDeckIds;
+    }
     dispatch({
       type: UPDATE_CAMPAIGN,
       id,
