@@ -35,7 +35,7 @@ class DecksSection extends React.Component {
 
   maybeShowWeaknessPrompt(deck) {
     const {
-      cardsMap
+      cardsMap,
     } = this.props;
     const weaknesses = filter(keys(deck.slots), code => (code in cardsMap));
     const count = sumBy(weaknesses, code => deck.slots[code]);
@@ -43,6 +43,7 @@ class DecksSection extends React.Component {
       setTimeout(() => {
         Alert.alert(
           'Adjust Weakness Set',
+          /* eslint-disable prefer-template */
           (count > 1 ?
             'This deck contains several basic weaknesses' :
             'This deck contains a basic weakness') +
