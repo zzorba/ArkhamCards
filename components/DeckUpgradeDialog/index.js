@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach, head, keys, range } from 'lodash';
 import {
+  ActivityIndicator,
   Alert,
   View,
   ScrollView,
@@ -48,6 +49,7 @@ class DeckUpgradeDialog extends React.Component {
     this.state = {
       xp: 0,
       exileCounts: {},
+      saving: false,
     };
 
     this._onXpChange = this.onXpChange.bind(this);
@@ -87,6 +89,9 @@ class DeckUpgradeDialog extends React.Component {
       updateCampaign,
       showNewDeck,
     } = this.props;
+    this.setState({
+      saving: true,
+    });
     if (campaign) {
       updateCampaign(campaign.id, { investigatorData: this.investigatorData() });
     }
@@ -179,9 +184,24 @@ class DeckUpgradeDialog extends React.Component {
     const {
       xp,
       exileCounts,
+      saving,
     } = this.state;
     if (!deck) {
       return null;
+    }
+    if (saving) {
+      return (
+        <View style={[styles.container, styles.saving]}>
+          <Text style={typography.text}>
+            Saving...
+          </Text>
+          <ActivityIndicator
+            style={styles.savingSpinner}
+            size="large"
+            animating
+          />
+        </View>
+      );
     }
     return (
       <ScrollView style={styles.container}>
@@ -243,6 +263,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+  },
+  saving: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  savingSpinner: {
+    marginTop: 16,
   },
   labeledRow: {
     flexDirection: 'column',

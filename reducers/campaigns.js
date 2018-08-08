@@ -97,10 +97,7 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
       difficulty: action.difficulty,
       chaosBag: Object.assign({}, action.chaosBag),
       campaignNotes,
-      weaknessSet: {
-        packCodes: action.weaknessPacks.slice(),
-        assignedCards: {},
-      },
+      weaknessSet: action.weaknessSet,
       baseDeckIds: action.baseDeckIds,
       lastUpdated: action.now,
       investigatorData: {},

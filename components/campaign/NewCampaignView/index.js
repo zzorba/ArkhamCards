@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize, filter, map } from 'lodash';
+import { capitalize, filter, forEach, keys, map, sumBy } from 'lodash';
 import {
+  Alert,
   Button,
   ScrollView,
   StyleSheet,
@@ -21,6 +22,7 @@ import withTextEditDialog from '../../core/withTextEditDialog';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
+import withWeaknessCards from '../../weakness/withWeaknessCards';
 import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';
 import typography from '../../../styles/typography';
@@ -34,6 +36,7 @@ class NewCampaignView extends React.Component {
     showTextEditDialog: PropTypes.func.isRequired,
     captureViewRef: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
+    cardsMap: PropTypes.object,
   };
 
   constructor(props) {
@@ -50,6 +53,7 @@ class NewCampaignView extends React.Component {
       difficulty: 'standard',
       deckIds: [],
       weaknessPacks: [],
+      weaknessAssignedCards: {},
       customChaosBag: Object.assign({}, CAMPAIGN_CHAOS_BAGS.core[1]),
       customCampaignLog: { sections: ['Campaign Notes'] },
       campaignLogDialogVisible: false,
@@ -128,10 +132,63 @@ class NewCampaignView extends React.Component {
     });
   }
 
+  maybeShowWeaknessPrompt(deck) {
+    const {
+      cardsMap,
+    } = this.props;
+    const weaknesses = filter(keys(deck.slots), code => (code in cardsMap));
+    const count = sumBy(weaknesses, code => deck.slots[code]);
+    if (weaknesses.length) {
+      setTimeout(() => {
+        Alert.alert(
+          'Adjust Weakness Set',
+          /* eslint-disable prefer-template */
+          (count > 1 ?
+            'This deck contains several basic weaknesses' :
+            'This deck contains a basic weakness') +
+          '\n\n' +
+          map(weaknesses, code => `${deck.slots[code]}x - ${cardsMap[code].name}`).join('\n') +
+          '\n\n' +
+          (count > 1 ?
+            'Do you want to remove them from the campaign’s Basic Weakness set?' :
+            'Do you want to remove it from the campaign’s Basic Weakness set?'),
+          [
+            { text: 'Not Now', style: 'cancel' },
+            {
+              text: 'Okay',
+              style: 'default',
+              onPress: () => {
+                const {
+                  weaknessAssignedCards,
+                } = this.state;
+                const assignedCards = Object.assign({}, weaknessAssignedCards);
+                forEach(weaknesses, code => {
+                  const count = deck.slots[code];
+                  if (!(code in assignedCards)) {
+                    assignedCards[code] = 0;
+                  }
+                  if ((assignedCards[code] + count) > cardsMap[code].quantity) {
+                    assignedCards[code] = cardsMap[code].quantity;
+                  } else {
+                    assignedCards[code] += count;
+                  }
+                });
+                this.setState({
+                  weaknessAssignedCards: assignedCards,
+                });
+              },
+            },
+          ],
+        );
+      }, 50);
+    }
+  }
+
   deckAdded(deck) {
     this.setState({
       deckIds: [...this.state.deckIds, deck.id],
     });
+    this.maybeShowWeaknessPrompt(deck);
   }
 
   deckRemoved(id) {
@@ -191,6 +248,7 @@ class NewCampaignView extends React.Component {
       difficulty,
       deckIds,
       weaknessPacks,
+      weaknessAssignedCards,
     } = this.state;
     // Save to redux.
     newCampaign(
@@ -201,7 +259,10 @@ class NewCampaignView extends React.Component {
       deckIds,
       this.getChaosBag(),
       this.getCampaignLog(),
-      weaknessPacks,
+      {
+        packCodes: weaknessPacks,
+        assignedCards: weaknessAssignedCards,
+      }
     );
     navigator.pop();
   }
@@ -499,7 +560,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withTextEditDialog(NewCampaignView)
+  withWeaknessCards(
+    withTextEditDialog(NewCampaignView)
+  )
 );
 
 const styles = StyleSheet.create({

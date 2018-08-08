@@ -25,7 +25,7 @@ export function newCampaign(
   deckIds,
   chaosBag,
   campaignLog,
-  weaknessPacks
+  weaknessSet
 ) {
   return (dispatch, getState) => {
     dispatch({
@@ -36,7 +36,7 @@ export function newCampaign(
       difficulty,
       chaosBag,
       campaignLog,
-      weaknessPacks,
+      weaknessSet,
       baseDeckIds: getBaseDeckIds(getState(), deckIds),
       now: new Date(),
     });
