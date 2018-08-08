@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import * as Actions from '../actions';
 import DeckListComponent from './DeckListComponent';
-import { getAllDecks, getMyDecksState } from '../reducers';
+import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '../reducers';
 
 class MyDecksComponent extends React.Component {
   static propTypes = {
@@ -17,6 +17,7 @@ class MyDecksComponent extends React.Component {
     filterInvestigators: PropTypes.array,
     refreshMyDecks: PropTypes.func.isRequired,
     decks: PropTypes.object,
+    deckToCampaign: PropTypes.object,
     myDecks: PropTypes.array,
     myDecksUpdated: PropTypes.instanceOf(Date),
     refreshing: PropTypes.bool,
@@ -69,6 +70,7 @@ class MyDecksComponent extends React.Component {
       error,
       customHeader,
       onlyDeckIds,
+      deckToCampaign,
     } = this.props;
 
     const filterDeckIdsSet = new Set(filterDeckIds);
@@ -85,6 +87,7 @@ class MyDecksComponent extends React.Component {
         customHeader={customHeader}
         deckIds={deckIds}
         deckClicked={deckClicked}
+        deckToCampaign={deckToCampaign}
         onRefresh={this._onRefresh}
         refreshing={refreshing}
         error={error}
@@ -95,7 +98,10 @@ class MyDecksComponent extends React.Component {
 
 function mapStateToProps(state) {
   return Object.assign({},
-    { decks: getAllDecks(state) },
+    {
+      decks: getAllDecks(state),
+      deckToCampaign: getDeckToCampaignMap(state),
+    },
     getMyDecksState(state),
   );
 }

@@ -76,7 +76,7 @@ export default class CampaignNoteSectionRow extends React.Component {
     return (
       <View style={styles.row}>
         <Text style={typography.text}>
-          • { this.text() }
+          { this.text() }
         </Text>
       </View>
     );

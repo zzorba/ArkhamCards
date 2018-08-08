@@ -26,6 +26,7 @@ class DeckListComponent extends React.Component {
     investigators: PropTypes.object,
     cards: PropTypes.object,
     decks: PropTypes.object,
+    deckToCampaign: PropTypes.object,
     fetchPublicDeck: PropTypes.func.isRequired,
     customHeader: PropTypes.node,
   }
@@ -73,6 +74,7 @@ class DeckListComponent extends React.Component {
       investigators,
       decks,
       cards,
+      deckToCampaign,
     } = this.props;
 
     const deck = decks[deckId];
@@ -81,7 +83,9 @@ class DeckListComponent extends React.Component {
         key={deckId}
         id={deckId}
         deck={deck}
+        previousDeck={deck.previous_deck ? decks[deck.previous_deck] : null}
         cards={cards}
+        deckToCampaign={deckToCampaign}
         investigator={deck ? investigators[deck.investigator_code] : null}
         onPress={this._deckClicked}
       />

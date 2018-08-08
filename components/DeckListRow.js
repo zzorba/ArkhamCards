@@ -11,6 +11,7 @@ import {
 import InvestigatorImage from './core/InvestigatorImage';
 import FactionGradient from './core/FactionGradient';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
+import DeckProblemRow from './DeckProblemRow';
 import { toRelativeDateString } from '../lib/datetime';
 import { parseDeck } from './parseDeck';
 import typography from '../styles/typography';
@@ -18,6 +19,8 @@ import typography from '../styles/typography';
 export default class DeckListRow extends React.Component {
   static propTypes = {
     deck: PropTypes.object.isRequired,
+    previousDeck: PropTypes.object,
+    deckToCampaign: PropTypes.object,
     cards: PropTypes.object,
     investigator: PropTypes.object,
     onPress: PropTypes.func,
@@ -43,11 +46,20 @@ export default class DeckListRow extends React.Component {
     onPress && onPress(deck, investigator);
   }
 
+  static xpString(parsedDeck) {
+    if (parsedDeck.deck.xp > 0 || parsedDeck.spentXp > 0) {
+      return `${parsedDeck.deck.xp || 0} available experience${parsedDeck.spentXp > 0 ? `, ${parsedDeck.spentXp} spent` : ''}`;
+    }
+    return `${parsedDeck.experience} experience required`;
+  }
+
   renderDeckDetails() {
     const {
       deck,
+      previousDeck,
       cards,
       details,
+      deckToCampaign,
     } = this.props;
 
     if (details) {
@@ -60,22 +72,25 @@ export default class DeckListRow extends React.Component {
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(deck, deck.slots, cards);
-    const completedScenarioString =
-      `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed.`;
+    const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
     return (
       <View>
         <Text style={typography.small}>
-          { completedScenarioString }
+          { deckToCampaign && deckToCampaign[deck.id] ?
+            deckToCampaign[deck.id].name :
+            `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed`
+          }
         </Text>
         <Text style={typography.small}>
-          { `${parsedDeck.experience} experience required.` }
+          { DeckListRow.xpString(parsedDeck) }
         </Text>
-        { !!deck.date_update && (
-          <Text style={typography.small} >
-            Updated { toRelativeDateString(Date.parse(deck.date_update)) }
-          </Text>
-        ) }
+        { deck.problem ?
+          <DeckProblemRow problem={{ reason: deck.problem }} color="#222" /> :
+          (!!deck.date_update && (
+            <Text style={typography.small} >
+              Updated { toRelativeDateString(Date.parse(deck.date_update)) }
+            </Text>
+          )) }
       </View>
     );
   }
