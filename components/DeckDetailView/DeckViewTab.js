@@ -13,10 +13,11 @@ import {
 import AppIcon from '../../assets/AppIcon';
 import { DeckType } from '../parseDeck';
 import { COLORS } from '../../styles/colors';
-import DeckViewCardItem from './DeckViewCardItem';
 import DeckValidation from '../../lib/DeckValidation';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
+import CardSearchResult from '../CardSearchResult';
+import typography from '../../styles/typography';
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -102,15 +103,19 @@ export default class DeckViewTab extends React.Component {
   renderCardHeader({ section }) {
     if (section.subTitle) {
       return (
-        <View>
-          <Text style={styles.subTypeText}>{ section.subTitle }</Text>
+        <View style={styles.subHeaderRow}>
+          <Text style={typography.smallLabel}>
+            { section.subTitle.toUpperCase() }
+          </Text>
         </View>
       );
     }
 
     return (
-      <View>
-        <Text style={styles.typeText}>{ section.title } </Text>
+      <View style={styles.headerRow}>
+        <Text style={typography.small}>
+          { section.title.toUpperCase() }
+        </Text>
       </View>
     );
   }
@@ -121,11 +126,12 @@ export default class DeckViewTab extends React.Component {
       return null;
     }
     return (
-      <DeckViewCardItem
+      <CardSearchResult
         key={item.id}
         card={card}
-        item={item}
-        onPress={this._showCard} />
+        onPress={this._showCard}
+        count={item.quantity}
+      />
     );
   }
 
@@ -185,8 +191,8 @@ export default class DeckViewTab extends React.Component {
 
     return (
       <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.rowWrap}>
+        <View>
+          <View style={[styles.container, styles.rowWrap]}>
             <View style={styles.header}>
               <TouchableOpacity onPress={this._showInvestigator}>
                 <View style={styles.image}>
@@ -212,14 +218,20 @@ export default class DeckViewTab extends React.Component {
               </View>
             </View>
           </View>
-          { buttons }
-          <SectionList
-            initialNumToRender={20}
-            renderItem={this._renderCard}
-            keyExtractor={this._keyForCard}
-            renderSectionHeader={this._renderCardHeader}
-            sections={sections}
-          />
+          <View style={styles.container}>
+            { buttons }
+          </View>
+          <View style={styles.cards}>
+            <SectionList
+              keyboardShouldPersistTaps="always"
+              keyboardDismissMode="on-drag"
+              initialNumToRender={20}
+              renderItem={this._renderCard}
+              keyExtractor={this._keyForCard}
+              renderSectionHeader={this._renderCardHeader}
+              sections={sections}
+            />
+          </View>
           <DeckProgressModule
             navigator={navigator}
             deck={deck}
@@ -269,17 +281,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
     flex: 1,
   },
-  typeText: {
-    color: '#000000',
-    fontSize: 18,
-    marginTop: 16,
-  },
-  subTypeText: {
-    marginTop: 4,
-    color: '#646464',
-    fontSize: 14,
-    fontWeight: '200',
-    borderBottomColor: '#0A0A0A',
+  subHeaderRow: {
+    backgroundColor: '#eee',
+    paddingLeft: 8,
+    paddingRight: 8,
     borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+  },
+  headerRow: {
+    backgroundColor: '#ccc',
+    paddingLeft: 8,
+    paddingRight: 8,
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+  },
+  cards: {
+    marginTop: 8,
+    borderTopWidth: 1,
+    borderColor: '#bdbdbd',
   },
 });

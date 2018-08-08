@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach, keys, map } from 'lodash';
 import {
+  Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
-import Button from '../core/Button';
-import AppIcon from '../../assets/AppIcon';
-import DeckViewCardItem from './DeckViewCardItem';
+import CardSearchResult from '../CardSearchResult';
 import typography from '../../styles/typography';
 
 class DeckDelta extends React.Component {
@@ -76,30 +75,6 @@ class DeckDelta extends React.Component {
     });
   }
 
-  renderXp() {
-    const {
-      parsedDeck: {
-        deck: {
-          xp,
-          previous_deck,
-        },
-        spentXp,
-      },
-    } = this.props;
-
-    if (previous_deck === null) {
-      return null;
-    }
-
-    return (
-      <View style={styles.xp}>
-        <Text style={typography.text}>
-          { `Available Experience: ${xp}\nSpent Experience: ${spentXp}` }
-        </Text>
-      </View>
-    );
-  }
-
   render() {
     const {
       cards,
@@ -114,52 +89,57 @@ class DeckDelta extends React.Component {
     }
     return (
       <View>
-        <Text style={[typography.text, styles.title]}>Campaign Progress</Text>
-        { this.renderXp() }
+        <View style={styles.title}>
+          <Text style={typography.smallLabel}>
+            CAMPAIGN PROGRESS
+          </Text>
+        </View>
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
             <Button
-              style={styles.button}
-              align="left"
               onPress={this._showPreviousDeck}
-              text="Previous Deck"
-              icon={<AppIcon name="deck" size={18} color="white" />}
+              title="Previous Deck"
             />
           ) }
           { !!deck.next_deck && (
             <Button
-              style={styles.button}
-              align="left"
               onPress={this._showNextDeck}
-              text="Next Deck"
-              icon={<AppIcon name="deck" size={18} color="white" />}
+              title="Next Deck"
             />
           ) }
         </View>
         { !!keys(changedCards).length && (
           <View>
-            <Text style={[typography.text, styles.title]}>Changes</Text>
+            <View style={styles.title}>
+              <Text style={typography.smallLabel}>
+                CHANGES
+              </Text>
+            </View>
             { map(keys(changedCards), code => (
-              <DeckViewCardItem
+              <CardSearchResult
                 key={code}
                 onPress={this._showCard}
-                item={{ quantity: changedCards[code] }}
                 card={cards[code]}
-                deltaMode
+                count={changedCards[code]}
+                deltaCountMode
               />
             )) }
           </View>
         ) }
         { !!keys(exiledCards).length && (
           <View>
-            <Text style={[typography.text, styles.title]}>Exiled Cards</Text>
+            <View style={styles.title}>
+              <Text style={typography.smallLabel}>
+                EXILED CARDS
+              </Text>
+            </View>
             { map(keys(exiledCards), code => (
-              <DeckViewCardItem
+              <CardSearchResult
                 key={code}
                 onPress={this._showCard}
-                item={{ quantity: exiledCards[code] }}
                 card={cards[code]}
-                deltaMode
+                count={exiledCards[code]}
+                deltaCountMode
               />
             )) }
           </View>
@@ -193,16 +173,14 @@ export default connectRealm(DeckDelta, {
 const styles = StyleSheet.create({
   title: {
     marginTop: 16,
-    fontWeight: '900',
-  },
-  xp: {
-    marginBottom: 8,
+    paddingLeft: 8,
+    paddingRight: 8,
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
   },
   buttonContainer: {
     flexDirection: 'column',
-  },
-  button: {
-    marginBottom: 8,
-    marginLeft: 0,
+    marginLeft: 8,
+    marginRight: 8,
   },
 });

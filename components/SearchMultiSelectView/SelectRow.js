@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
     paddingRight: 8,
   },
   title: {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { filter, map } from 'lodash';
 import {
   FlatList,
+  Keyboard,
   StyleSheet,
   View,
 } from 'react-native';
@@ -44,6 +45,7 @@ export default class SearchMultiSelectView extends React.Component {
     const {
       selection,
     } = this.state;
+    Keyboard.dismiss();
     const newSelection = selected ?
       [...selection, value] :
       filter(selection, v => v !== value);
@@ -113,6 +115,8 @@ export default class SearchMultiSelectView extends React.Component {
           data={data}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
         />
       </View>
     );

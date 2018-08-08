@@ -165,12 +165,14 @@ class CardResultList extends React.Component {
   }
 
   enableSpoilers() {
+    Keyboard.dismiss();
     this.setState({
       showSpoilerCards: true,
     });
   }
 
   editSpoilerSettings() {
+    Keyboard.dismiss();
     this.props.navigator.push({
       screen: 'My.Spoilers',
       title: 'Spoiler Settings',
@@ -376,6 +378,8 @@ class CardResultList extends React.Component {
         extraData={this.state.deckCardCounts}
         ListFooterComponent={this._renderFooter}
         stickySectionHeadersEnabled={stickyHeaders}
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag"
       />
     );
   }

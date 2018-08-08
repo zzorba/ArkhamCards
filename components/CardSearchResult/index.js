@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { range } from 'lodash';
 import {
+  Keyboard,
   StyleSheet,
   Switch,
   Text,
@@ -31,6 +32,7 @@ export default class CardSearchResult extends React.PureComponent {
     limit: PropTypes.number,
     onToggleChange: PropTypes.func,
     toggleValue: PropTypes.bool,
+    deltaCountMode: PropTypes.bool,
   };
 
   constructor(props) {
@@ -45,6 +47,7 @@ export default class CardSearchResult extends React.PureComponent {
     const {
       onPress,
     } = this.props;
+    Keyboard.dismiss();
     onPress && onPress(this.props.card);
   }
 
@@ -160,7 +163,10 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
-  renderCardName(card) {
+  renderCardName() {
+    const {
+      card,
+    } = this.props;
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
@@ -187,12 +193,51 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
-  render() {
+  countText() {
+    const {
+      count,
+      deltaCountMode,
+    } = this.props;
+    if (deltaCountMode) {
+      if (count > 0) {
+        return `+${count}`;
+      }
+      return `${count}`;
+    }
+    return `×${count}`;
+  }
+
+  renderCount() {
     const {
       card,
       count = 0,
       onDeckCountChange,
       limit,
+    } = this.props;
+    if (onDeckCountChange) {
+      return (
+        <CardQuantityComponent
+          count={count || 0}
+          limit={limit !== null ? limit : card.deck_limit}
+          countChanged={this._onDeckCountChange}
+        />
+      );
+    }
+    if (count !== 0) {
+      return (
+        <View style={styles.countText}>
+          <Text style={typography.text}>
+            { this.countText() }
+          </Text>
+        </View>
+      );
+    }
+    return null;
+  }
+
+  render() {
+    const {
+      card,
       onToggleChange,
       toggleValue,
       onPress,
@@ -209,16 +254,10 @@ export default class CardSearchResult extends React.PureComponent {
         >
           <View style={styles.cardTextRow}>
             { this.renderIcon(card) }
-            { this.renderCardName(card) }
+            { this.renderCardName() }
           </View>
         </TouchableOpacity>
-        { !!onDeckCountChange && (
-          <CardQuantityComponent
-            count={count || 0}
-            limit={limit !== null ? limit : card.deck_limit}
-            countChanged={this._onDeckCountChange}
-          />
-        ) }
+        { this.renderCount() }
         { !!onToggleChange && (
           <View style={styles.switchButton}>
             <Switch
@@ -282,5 +321,11 @@ const styles = StyleSheet.create({
   switchButton: {
     marginTop: 6,
     marginRight: 6,
+  },
+  countText: {
+    marginRight: 8,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

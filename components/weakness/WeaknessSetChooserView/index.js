@@ -86,6 +86,8 @@ class WeaknessSetChooserView extends React.Component {
     return (
       <View>
         <FlatList
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
           data={weaknesses}
           keyExtractor={this._extractKey}
           renderItem={this._renderItem}

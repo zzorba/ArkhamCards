@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, forEach, map, last } from 'lodash';
 import {
+  Keyboard,
   ScrollView,
   StyleSheet,
 } from 'react-native';
@@ -58,6 +59,7 @@ class MyCampaignsView extends React.Component {
     const {
       navigator,
     } = this.props;
+    Keyboard.dismiss();
     navigator.push({
       screen: 'Campaign',
       passProps: {
@@ -124,7 +126,11 @@ class MyCampaignsView extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag"
+      >
         <SearchBox
           onChangeText={this._searchChanged}
           placeholder="Search campaigns"

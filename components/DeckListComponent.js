@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { filter, map } from 'lodash';
 import {
   FlatList,
+  Keyboard,
   StyleSheet,
   View,
 } from 'react-native';
@@ -36,10 +37,16 @@ class DeckListComponent extends React.Component {
       searchTerm: '',
     };
 
+    this._deckClicked = this.deckClicked.bind(this);
     this._searchChanged = this.searchChanged.bind(this);
     this._renderHeader = this.renderHeader.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
     this._renderItem = this.renderItem.bind(this);
+  }
+
+  deckClicked(deck, investigator) {
+    Keyboard.dismiss();
+    this.props.deckClicked(deck, investigator);
   }
 
   searchChanged(searchTerm) {
@@ -65,7 +72,6 @@ class DeckListComponent extends React.Component {
     const {
       investigators,
       decks,
-      deckClicked,
       cards,
     } = this.props;
 
@@ -77,7 +83,7 @@ class DeckListComponent extends React.Component {
         deck={deck}
         cards={cards}
         investigator={deck ? investigators[deck.investigator_code] : null}
-        onPress={deckClicked}
+        onPress={this._deckClicked}
       />
     );
   }
@@ -132,6 +138,8 @@ class DeckListComponent extends React.Component {
 
     return (
       <FlatList
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag"
         refreshing={refreshing}
         onRefresh={onRefresh}
         style={styles.container}

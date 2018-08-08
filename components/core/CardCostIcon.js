@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import AppIcon from '../../assets/AppIcon';
+import ArkhamIcon from '../../assets/ArkhamIcon';
 import { FACTION_COLORS } from '../../constants';
 
 export default class CardCostIcon extends React.Component {
@@ -36,6 +37,16 @@ export default class CardCostIcon extends React.Component {
     return `${card.cost !== null ? card.cost : 'X'}`;
   }
 
+  static factionIcon(card) {
+    if (card.faction_code === 'neutral') {
+      if (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness') {
+        return 'weakness';
+      }
+      return 'elder_sign';
+    }
+    return card.faction_code;
+  }
+
   render() {
     const {
       card,
@@ -52,9 +63,19 @@ export default class CardCostIcon extends React.Component {
           />
         </View>
         <View style={[styles.levelIcon, styles.cost]}>
-          <Text style={styles.costNumber}>
-            { this.cardCost() }
-          </Text>
+          { card.type_code === 'skill' ? (
+            <View style={styles.factionIcon}>
+              <ArkhamIcon
+                name={CardCostIcon.factionIcon(card)}
+                color="#FFF"
+                size={17}
+              />
+            </View>
+          ) : (
+            <Text style={styles.costNumber}>
+              { this.cardCost() }
+            </Text>
+          ) }
         </View>
       </View>
     );
@@ -85,5 +106,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Teutonic',
     fontSize: 23,
     color: '#FFF',
+  },
+  factionIcon: {
   },
 });
