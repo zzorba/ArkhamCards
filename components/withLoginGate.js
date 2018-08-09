@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ActivityIndicator,
+  Button,
   StyleSheet,
   View,
   Text,
@@ -10,7 +11,6 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Button from './core/Button';
 import * as Actions from '../actions';
 
 /**
@@ -47,7 +47,7 @@ export default function withLoginGate(WrappedComponent, message) {
         return (
           <View style={styles.signInContainer}>
             { !!message && <Text style={styles.messageText}>{ message }</Text> }
-            <Button text="Sign in to ArkhamDB" onPress={login} />
+            <Button title="Sign in to ArkhamDB" onPress={login} />
           </View>
         );
       }

@@ -91,6 +91,7 @@ class MyDecksComponent extends React.Component {
         onRefresh={this._onRefresh}
         refreshing={refreshing}
         error={error}
+        isEmpty={myDecks.length === 0}
       />
     );
   }

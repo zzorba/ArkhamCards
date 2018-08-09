@@ -10,6 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import { parseDeck } from '../../parseDeck';
 import listOfDecks from '../listOfDecks';
+import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
 import { showDeckModal } from '../../navHelper';
 import Button from '../../core/Button';
 import EditTraumaComponent from '../EditTraumaComponent';
@@ -152,6 +153,9 @@ class CampaignSubDeckDetail extends React.Component {
     if (!deck) {
       return null;
     }
+    const eliminated = isEliminated(
+      investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
+      investigator);
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
     return (
       <View style={styles.investigatorSubNotes}>
@@ -162,31 +166,35 @@ class CampaignSubDeckDetail extends React.Component {
             showTraumaDialog={showTraumaDialog}
           />
         </View>
-        <View style={styles.section}>
-          <View style={styles.column}>
-            <Text style={typography.smallLabel}>
-              EXPERIENCE
-            </Text>
-            <Text style={typography.text}>
-              { (deck.xp > 0 || parsedDeck.spentXp > 0) ?
-                `${deck.xp || 0} available${parsedDeck.spentXp > 0 ? ` (${parsedDeck.spentXp} spent)` : ''}` :
-                `${parsedDeck.totalXp || 0} total`
-              }
-            </Text>
+        { !eliminated && (
+          <View style={styles.section}>
+            <View style={styles.column}>
+              <Text style={typography.smallLabel}>
+                EXPERIENCE
+              </Text>
+              <Text style={typography.text}>
+                { (deck.xp > 0 || parsedDeck.spentXp > 0) ?
+                  `${deck.xp || 0} available${parsedDeck.spentXp > 0 ? ` (${parsedDeck.spentXp} spent)` : ''}` :
+                  `${parsedDeck.totalXp || 0} total`
+                }
+              </Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.section}>
-          <Button
-            icon={<MaterialCommunityIcons size={18} color="#222" name="arrow-up-bold" />}
-            text="Upgrade Deck"
-            style={styles.button}
-            size="small"
-            align="left"
-            color="white"
-            onPress={this._upgradeDeckPressed}
-            grow
-          />
-        </View>
+        ) }
+        { !eliminated && (
+          <View style={styles.section}>
+            <Button
+              icon={<MaterialCommunityIcons size={18} color="#222" name="arrow-up-bold" />}
+              text="Upgrade Deck"
+              style={styles.button}
+              size="small"
+              align="left"
+              color="white"
+              onPress={this._upgradeDeckPressed}
+              grow
+            />
+          </View>
+        ) }
       </View>
     );
   }

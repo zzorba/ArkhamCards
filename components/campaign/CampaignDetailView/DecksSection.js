@@ -158,17 +158,19 @@ class DecksSection extends React.Component {
       showTraumaDialog,
     } = this.props;
     return (
-      <View style={styles.underline}>
-        <CampaignDecks
-          navigator={navigator}
-          campaignId={campaignId}
-          investigatorData={investigatorData}
-          deckIds={latestDeckIds}
-          deckAdded={this._addDeck}
-          deckRemoved={this._removeDeckPrompt}
-          showTraumaDialog={showTraumaDialog}
-          showDeckUpgradeDialog={this._showDeckUpgradeDialog}
-        />
+      <View>
+        <View style={styles.underline}>
+          <CampaignDecks
+            navigator={navigator}
+            campaignId={campaignId}
+            investigatorData={investigatorData}
+            deckIds={latestDeckIds}
+            deckAdded={this._addDeck}
+            deckRemoved={this._removeDeckPrompt}
+            showTraumaDialog={showTraumaDialog}
+            showDeckUpgradeDialog={this._showDeckUpgradeDialog}
+          />
+        </View>
       </View>
     );
   }

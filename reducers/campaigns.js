@@ -6,6 +6,7 @@ import {
   UPDATE_CAMPAIGN,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
+  SET_ALL_CAMPAIGNS,
 } from '../actions/types';
 
 // Campaign: {
@@ -13,6 +14,7 @@ import {
 //   name: '',
 //   cycleCode: '',
 //   lastUpdated: Date,
+//   showInterludes: true,
 //   baseDeckIds: [],
 //   latestDeckIds: [], /* deprecated */
 //   investigatorData: {
@@ -65,6 +67,15 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
   if (action.type === LOGOUT) {
     return DEFAULT_CAMPAIGNS_STATE;
   }
+  if (action.type === SET_ALL_CAMPAIGNS) {
+    const all = {};
+    forEach(action.campaigns, campaign => {
+      all[campaign.id] = campaign;
+    });
+    return {
+      all,
+    };
+  }
   if (action.type === DELETE_CAMPAIGN) {
     const newCampaigns = Object.assign({}, state.all);
     delete newCampaigns[action.id];
@@ -93,6 +104,7 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     const newCampaign = {
       id: action.id,
       name: action.name,
+      showInterludes: true,
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
       chaosBag: Object.assign({}, action.chaosBag),

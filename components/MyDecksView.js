@@ -58,7 +58,7 @@ class MyDecksView extends React.Component {
 export default withFetchCardsGate(
   withLoginGate(
     MyDecksView,
-    'This app will let you edit and upgrade decks stored on ArkhamDB.com\n\nPlease sign in with your account to enable this feature.'
+    'ArkhamDB is a popular deck building site where you can manage your decks and share them with others. If you have an account, you can use this app to create and manage your decks on the go.\n\nPlease sign in to enable this feature.'
   ),
   { promptForUpdate: false },
 );

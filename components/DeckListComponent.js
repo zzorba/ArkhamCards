@@ -5,6 +5,7 @@ import {
   FlatList,
   Keyboard,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -16,6 +17,7 @@ import DeckListRow from './DeckListRow';
 import withPlayerCards from './withPlayerCards';
 import { getAllDecks } from '../reducers';
 import * as Actions from '../actions';
+import typography from '../styles/typography';
 
 class DeckListComponent extends React.Component {
   static propTypes = {
@@ -29,6 +31,7 @@ class DeckListComponent extends React.Component {
     deckToCampaign: PropTypes.object,
     fetchPublicDeck: PropTypes.func.isRequired,
     customHeader: PropTypes.node,
+    isEmpty: PropTypes.bool,
   }
 
   constructor(props) {
@@ -108,8 +111,17 @@ class DeckListComponent extends React.Component {
   }
 
   renderFooter() {
+    const {
+      isEmpty,
+    } = this.props;
     return (
-      <View style={styles.footer} />
+      <View style={styles.footer}>
+        { !!isEmpty && (
+          <Text style={[typography.text, styles.margin]}>
+            { 'No decks yet.\n\nUse the + button to create a new one.' }
+          </Text>
+        ) }
+      </View>
     );
   }
 
@@ -176,5 +188,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
+  },
+  margin: {
+    margin: 8,
   },
 });

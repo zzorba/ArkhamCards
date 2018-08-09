@@ -2,25 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { concat, filter, find, forEach, head, last, map } from 'lodash';
 import {
+  Switch,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import { updateCampaign } from '../actions';
 import { CAMPAIGN_SCENARIOS } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
+import typography from '../../../styles/typography';
 
 const CUSTOM = 'Custom';
 
 class ScenarioSection extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
+    campaignId: PropTypes.number.isRequired,
     scenarioChanged: PropTypes.func.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
     // From redux/realm
+    showInterludes: PropTypes.bool.isRequired,
     allScenarios: PropTypes.array.isRequired,
   };
 
@@ -34,6 +40,7 @@ class ScenarioSection extends React.Component {
       resolution: '',
     };
 
+    this._toggleShowInterludes = this.toggleShowInterludes.bind(this);
     this._showCustomCampaignDialog = this.showCustomCampaignDialog.bind(this);
     this._updateManagedScenario = this.updateManagedScenario.bind(this);
     this._showScenarioDialog = this.showScenarioDialog.bind(this);
@@ -45,6 +52,15 @@ class ScenarioSection extends React.Component {
 
   componentDidMount() {
     this.updateManagedScenario();
+  }
+
+  toggleShowInterludes() {
+    const {
+      campaignId,
+      showInterludes,
+      updateCampaign,
+    } = this.props;
+    updateCampaign(campaignId, { showInterludes: !showInterludes });
   }
 
   showCustomCampaignDialog() {
@@ -132,8 +148,11 @@ class ScenarioSection extends React.Component {
   possibleScenarios() {
     const {
       allScenarios,
+      showInterludes,
     } = this.props;
-    const scenarios = map(allScenarios, card => card.name);
+    const scenarios = map(
+      filter(allScenarios, scenario => showInterludes || !scenario.interlude),
+      card => card.name);
     scenarios.push(CUSTOM);
     return scenarios;
   }
@@ -147,6 +166,16 @@ class ScenarioSection extends React.Component {
 
     return (
       <View>
+        <View style={[styles.margin, styles.row]}>
+          <Text style={typography.text}>
+            { 'Show Interludes' }
+          </Text>
+          <Switch
+            value={this.props.showInterludes}
+            onValueChange={this._toggleShowInterludes}
+            onTintColor="#222222"
+          />
+        </View>
         <LabeledTextBox
           label={selectedScenario !== CUSTOM && selectedScenario.interlude ? 'Interlude' : 'Scenario'}
           onPress={this._showScenarioDialog}
@@ -184,6 +213,8 @@ function mapStateToProps(state, props) {
   const cyclePacks = !cyclePack ? [] : filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
   const standalonePacks = filter(allPacks, pack => pack.cycle_position === 70);
   return {
+    campaignId: props.campaign.id,
+    showInterludes: !!props.campaign.showInterludes,
     cycleScenarios: CAMPAIGN_SCENARIOS[props.campaign.cycleCode],
     cyclePacks,
     standalonePacks,
@@ -193,7 +224,9 @@ function mapStateToProps(state, props) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({
+    updateCampaign,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
@@ -236,5 +269,9 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
     marginBottom: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

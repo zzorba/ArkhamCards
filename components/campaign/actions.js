@@ -1,5 +1,6 @@
 import { map } from 'lodash';
 import {
+  SET_ALL_CAMPAIGNS,
   NEW_CAMPAIGN,
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
@@ -15,6 +16,13 @@ function getBaseDeckIds(state, latestDeckIds) {
     }
     return deck ? deck.id : deckId;
   });
+}
+
+export function setAllCampaigns(campaigns) {
+  return {
+    type: SET_ALL_CAMPAIGNS,
+    campaigns,
+  };
 }
 
 export function newCampaign(
@@ -100,6 +108,7 @@ export function addScenarioResult(
 }
 
 export default {
+  setAllCampaigns,
   newCampaign,
   updateCampaign,
   deleteCampaign,
