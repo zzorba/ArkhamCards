@@ -18,7 +18,7 @@ export function campaignToText(campaign, latestDeckIds, decks, investigators) {
 
   lines.push('Campaign Progress');
   forEach(campaign.scenarioResults, result => {
-    lines.push(`${result.scenario}: ${result.resolution}, XP: ${result.xp}`);
+    lines.push(`${result.scenario}: ${result.resolution ? `${result.resolution}, ` : ''}XP: ${result.xp}`);
   });
   lines.push('');
 

@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { CUSTOM } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import typography from '../../../styles/typography';
@@ -43,9 +44,11 @@ export default class CampaignItem extends React.Component {
           colors={['#fbfaf6', '#ebe6d4']}
           style={styles.container}
         >
-          <Text style={[typography.text, styles.bottomMargin]}>
-            { campaign.name }
-          </Text>
+          { campaign.cycleCode !== CUSTOM && (
+            <Text style={[typography.text, styles.bottomMargin]}>
+              { campaign.name }
+            </Text>
+          ) }
           <CampaignSummaryComponent campaign={campaign} />
           <CampaignInvestigatorRow
             campaign={campaign}

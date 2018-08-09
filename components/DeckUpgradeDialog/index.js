@@ -46,8 +46,10 @@ class DeckUpgradeDialog extends React.Component {
   constructor(props) {
     super(props);
 
+    const latestScenario = props.campaign && head(props.campaign.scenarioResults || []);
+    const xp = latestScenario ? latestScenario.xp : 0;
     this.state = {
-      xp: 0,
+      xp,
       exileCounts: {},
       saving: false,
     };

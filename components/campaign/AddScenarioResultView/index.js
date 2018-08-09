@@ -35,9 +35,9 @@ class AddScenarioResultView extends React.Component {
 
     this.state = {
       scenario: {
-        scenario: '',
-        scenarioCode: '',
+        scenario: null,
         resolution: '',
+        interlude: false,
       },
       xp: 0,
     };
@@ -64,7 +64,8 @@ class AddScenarioResultView extends React.Component {
           title: 'Save',
           id: 'save',
           showAsAction: 'ifRoom',
-          disabled: this.state.scenario.scenario === '' || this.state.scenario.resolution === '',
+          disabled: !this.state.scenario.scenario ||
+            !(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
         },
       ],
     });

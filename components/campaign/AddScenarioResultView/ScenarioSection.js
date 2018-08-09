@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import { CAMPAIGN_SCENARIOS } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
 
@@ -28,7 +29,7 @@ class ScenarioSection extends React.Component {
 
     const nextScenario = head(props.allScenarios);
     this.state = {
-      selectedScenario: nextScenario ? nextScenario.name : null,
+      selectedScenario: nextScenario ? nextScenario : null,
       customScenario: '',
       resolution: '',
     };
@@ -70,25 +71,29 @@ class ScenarioSection extends React.Component {
 
   updateManagedScenario() {
     const {
-      allScenarios,
-    } = this.props;
-    const {
       selectedScenario,
       customScenario,
       resolution,
     } = this.state;
-    const scenarioCard = find(allScenarios, s => s.name === selectedScenario);
 
     this.props.scenarioChanged({
-      scenario: scenarioCard ? selectedScenario : customScenario,
-      scenarioCode: scenarioCard ? scenarioCard.code : CUSTOM,
+      scenario: selectedScenario !== CUSTOM ? selectedScenario.name : customScenario,
+      scenarioCode: selectedScenario !== CUSTOM ? selectedScenario.code : CUSTOM,
+      scenarioPack: selectedScenario !== CUSTOM ? selectedScenario.pack_code : CUSTOM,
+      interlude: selectedScenario !== CUSTOM && !!selectedScenario.interlude,
       resolution: resolution,
     });
   }
 
   scenarioChanged(value) {
+    const {
+      allScenarios,
+    } = this.props;
     this.setState({
-      selectedScenario: value,
+      selectedScenario: find(
+        allScenarios,
+        scenario => scenario.name === value
+      ) || CUSTOM,
     }, this._updateManagedScenario);
   }
 
@@ -108,12 +113,15 @@ class ScenarioSection extends React.Component {
     const {
       navigator,
     } = this.props;
+    const {
+      selectedScenario,
+    } = this.state;
     navigator.showLightBox({
       screen: 'Dialog.Scenario',
       passProps: {
         scenarioChanged: this._scenarioChanged,
         scenarios: this.possibleScenarios(),
-        selected: this.state.selectedScenario,
+        selected: selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name,
       },
       style: {
         backgroundColor: 'rgba(128,128,128,.75)',
@@ -140,9 +148,9 @@ class ScenarioSection extends React.Component {
     return (
       <View>
         <LabeledTextBox
-          label="Scenario"
+          label={selectedScenario !== CUSTOM && selectedScenario.interlude ? 'Interlude' : 'Scenario'}
           onPress={this._showScenarioDialog}
-          value={selectedScenario}
+          value={selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name}
           style={styles.margin}
           column
         />
@@ -155,13 +163,15 @@ class ScenarioSection extends React.Component {
             column
           />
         ) }
-        <LabeledTextBox
-          label="Resolution"
-          onPress={this._showResolutionDialog}
-          value={resolution}
-          style={styles.margin}
-          column
-        />
+        { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
+          <LabeledTextBox
+            label="Resolution"
+            onPress={this._showResolutionDialog}
+            value={resolution}
+            style={styles.margin}
+            column
+          />
+        ) }
       </View>
     );
   }
@@ -174,6 +184,7 @@ function mapStateToProps(state, props) {
   const cyclePacks = !cyclePack ? [] : filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
   const standalonePacks = filter(allPacks, pack => pack.cycle_position === 70);
   return {
+    cycleScenarios: CAMPAIGN_SCENARIOS[props.campaign.cycleCode],
     cyclePacks,
     standalonePacks,
     decks: getAllDecks(state),
@@ -200,16 +211,21 @@ export default connect(mapStateToProps, mapDispatchToProps)(
       const cycleScenarios = [];
       const standaloneScenarios = [];
       forEach(allScenarioCards, card => {
-        if (cyclePackCodes.has(card.pack_code) && !finishedScenarios.has(card.code)) {
+        if (cyclePackCodes.has(card.pack_code)) {
           cycleScenarios.push(card);
         }
-        if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.code)) {
+        if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.name)) {
           standaloneScenarios.push(card);
         }
       });
+      console.log(props.campaign.finishedScenarios);
       return {
-        realm,
-        allScenarios: concat(cycleScenarios, standaloneScenarios),
+        allScenarios: concat(
+          filter(
+            props.cycleScenarios || cycleScenarios,
+            scenario => !finishedScenarios.has(scenario.name)),
+          standaloneScenarios
+        ),
       };
     },
   }),

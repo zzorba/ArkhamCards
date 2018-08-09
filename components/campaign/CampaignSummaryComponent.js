@@ -43,15 +43,13 @@ export default class CampaignSummaryComponent extends React.Component {
     const {
       campaign: {
         cycleCode,
+        name,
       },
     } = this.props;
-    if (cycleCode === CUSTOM) {
-      return null;
-    }
     return (
       <View style={styles.marginTop}>
         <Text style={typography.bigGameFont}>
-          { CAMPAIGN_NAMES[cycleCode] }
+          { cycleCode === CUSTOM ? name : CAMPAIGN_NAMES[cycleCode] }
         </Text>
       </View>
     );
@@ -65,12 +63,12 @@ export default class CampaignSummaryComponent extends React.Component {
     if (latestScenario && latestScenario.scenario) {
       const resolution = latestScenario.resolution ?
         `: ${latestScenario.resolution}` : '';
-      const xp = latestScenario.xp !== null ?
+      const xp = (latestScenario.xp > 0 || !latestScenario.interlude) ?
         ` (${latestScenario.xp} XP)` : '';
       return (
         <View style={styles.marginTop}>
           <Text style={typography.smallLabel}>
-            LATEST SCENARIO
+            { latestScenario.interlude ? 'LATEST INTERLUDE' : 'LATEST SCENARIO' }
           </Text>
           <Text style={typography.gameFont}>
             { `${latestScenario.scenario}${resolution}${xp}` }

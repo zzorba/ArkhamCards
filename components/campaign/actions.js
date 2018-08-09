@@ -81,7 +81,7 @@ export function deleteCampaign(id) {
 
 export function addScenarioResult(
   id,
-  { scenario, scenarioCode, resolution },
+  { scenario, scenarioCode, scenarioPack, resolution, interlude },
   xp,
 ) {
   return {
@@ -90,7 +90,9 @@ export function addScenarioResult(
     scenarioResult: {
       scenario,
       scenarioCode,
+      scenarioPack,
       resolution,
+      interlude,
       xp,
     },
     now: new Date(),

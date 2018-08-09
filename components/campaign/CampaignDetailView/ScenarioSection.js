@@ -89,7 +89,7 @@ export default class ScenarioSection extends React.Component {
     return (
       <NavButton onPress={this._onPress}>
         <View style={styles.section}>
-          <View style={[styles.padding, styles.marginTop]}>
+          <View style={[styles.padding, styles.marginTop, styles.marginBottom]}>
             <CampaignSummaryComponent campaign={campaign} />
           </View>
           <Button
@@ -114,5 +114,8 @@ const styles = StyleSheet.create({
   },
   marginTop: {
     marginTop: 8,
+  },
+  marginBottom: {
+    marginBottom: 8,
   },
 });

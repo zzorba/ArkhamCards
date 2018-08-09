@@ -158,46 +158,15 @@ export function getDecks(state, deckIds) {
   return decks;
 }
 
-function mergeStatus(oldStatus, newStatus) {
-  const oldTrauma = (oldStatus && oldStatus.trauma) || {};
-  const newTrauma = (newStatus && newStatus.trauma) || {};
-  return {
-    trauma: {
-      physical: (oldTrauma.physical || 0) + (newTrauma.physical || 0),
-      mental: (oldTrauma.mental || 0) + (newTrauma.mental || 0),
-      killed: oldTrauma.killed || newTrauma.killed || false,
-      insane: oldTrauma.insane || newTrauma.insane || false,
-    },
-    xp: (oldStatus.xp || 0) + (newStatus.xp || 0),
-    missionCount: (oldStatus.missionCount || 0) + 1,
-  };
-}
-
 function processCampaign(campaign) {
   const latestScenario = last(campaign.scenarioResults);
-  const finishedScenarios = flatMap(campaign.scenarioResults,
-    scenarioResult => {
-      if (scenarioResult.scenarioCode) {
-        return scenarioResult.scenarioCode;
-      }
-      return null;
-    });
-  const investigatorStatus = {};
-  forEach(campaign.scenarioResults, scenarioResult => {
-    forEach(keys(scenarioResult.investigatorUpdates), investigator_code => {
-      const status = investigatorStatus[investigator_code] || {};
-      investigatorStatus[investigator_code] = mergeStatus(
-        status,
-        scenarioResult.investigatorUpdates[investigator_code]);
-    });
-  });
+  const finishedScenarios = flatMap(campaign.scenarioResults, r => r.scenario);
   return Object.assign(
     {},
     campaign,
     {
       latestScenario,
       finishedScenarios,
-      investigatorStatus,
     },
   );
 }
