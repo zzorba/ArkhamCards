@@ -130,6 +130,8 @@ export default class EditTextDialog extends React.Component {
         <DialogComponent.Input
           style={isCrossedOut ? {
             textDecorationLine: 'line-through',
+            textDecorationStyle: 'solid',
+            textDecorationColor: '#222',
             height,
           } : {
             height,

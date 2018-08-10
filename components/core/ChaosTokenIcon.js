@@ -10,20 +10,22 @@ import ArkhamIcon from '../../assets/ArkhamIcon';
 
 const SPECIAL_TOKENS_SET = new Set(SPECIAL_TOKENS);
 
-export default function ChaosTokenIcon({ id, size }) {
+export default function ChaosTokenIcon({ id, size, color = '#000' }) {
   if (SPECIAL_TOKENS_SET.has(id)) {
-    return <ArkhamIcon name={id} size={size} color="#000000" />;
+    return <ArkhamIcon name={id} size={size} color={color} />;
   }
-  return <Text style={[styles.label, { fontSize: size }]}>{ id }</Text>;
+  return <Text style={[styles.label, { fontSize: size, color: color }]}>{ id }</Text>;
 }
 
 ChaosTokenIcon.propTypes = {
   id: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
+  color: PropTypes.string,
 };
 
 const styles = StyleSheet.create({
   label: {
     fontSize: 28,
+    fontFamily: 'System',
   },
 });

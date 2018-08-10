@@ -134,11 +134,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   counterRow: {
-    marginLeft: 28,
+    marginRight: Platform.OS === 'ios' ? 28 : 8,
+    marginLeft: Platform.OS === 'ios' ? 28 : 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginRight: 28,
   },
   traumaText: {
     fontWeight: '900',

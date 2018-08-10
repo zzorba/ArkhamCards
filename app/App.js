@@ -3,7 +3,7 @@ import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 
 import { iconsLoaded, iconsMap } from './NavIcons';
-
+import { COLORS } from '../styles/colors';
 export default class App {
   constructor() {
     this._handleUrl = this.handleUrl.bind(this);
@@ -53,6 +53,9 @@ export default class App {
           screen: 'Settings',
         },
       ],
+      appStyle: {
+        tabBarSelectedButtonColor: COLORS.lightBlue,
+      },
     });
     Linking.addEventListener('url', this._handleUrl);
 

@@ -19,5 +19,7 @@ export default function StrikethroughTextNode(node, output, state) {
 const styles = StyleSheet.create({
   strikeText: {
     textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
+    textDecorationColor: '#222',
   },
 });

@@ -8,8 +8,6 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import { COLORS } from '../../styles/colors';
-
 export default class PlusMinusButtons extends React.Component {
   static propTypes = {
     count: PropTypes.number.isRequired,

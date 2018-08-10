@@ -20,8 +20,8 @@ export default function ChaosBagLine({ chaosBag }) {
             (tokenIdx === (bagKeys.length - 1));
           return (
             <View key={`${token}-${idx}`} style={styles.commaView}>
-              <ChaosTokenIcon id={token} size={18} />
-              { !isLast && <Text style={styles.comma}>,</Text> }
+              <ChaosTokenIcon id={token} size={18} color="#222" />
+              { !isLast && <Text style={styles.comma}>, </Text> }
             </View>
           );
         })
@@ -45,5 +45,7 @@ const styles = StyleSheet.create({
   },
   comma: {
     fontSize: 18,
+    fontFamily: 'System',
+    color: '#222',
   },
 });

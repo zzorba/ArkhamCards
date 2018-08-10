@@ -163,7 +163,9 @@ export default class EditCampaignNotesComponent extends React.Component {
         { this.renderSections(sections) }
         { this.renderCounts(counts) }
         { this.renderInvestigatorSection() }
-        <Button title="Add Log Section" onPress={this._showAddSectionDialog} />
+        <View style={styles.button}>
+          <Button title="Add Log Section" onPress={this._showAddSectionDialog} />
+        </View>
       </View>
     );
   }
@@ -179,5 +181,10 @@ const styles = StyleSheet.create({
   },
   investigatorSection: {
     marginTop: 8,
+  },
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: 8,
   },
 });

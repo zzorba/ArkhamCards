@@ -46,13 +46,15 @@ class WeaknessDrawComponent extends React.Component {
       width,
       height,
       headerHeight: 32,
+      flippedHeaderHeight: 32,
       selectedTraits: [],
       nextCard: this.nextCard([]),
       flipped: false,
       drawNewCard: false,
     };
 
-    this._onHeaderLayout = this.onHeaderLayout.bind(this);
+    this._onHeaderLayout = this.onHeaderLayout.bind(this, 'headerHeight');
+    this._onFlippedHeaderLayout = this.onHeaderLayout.bind(this, 'flippedHeaderHeight');
     this._drawAnother = this.drawAnother.bind(this);
     this._flipCard = this.flipCard.bind(this);
     this._onFlipEnd = this.onFlipEnd.bind(this);
@@ -94,9 +96,9 @@ class WeaknessDrawComponent extends React.Component {
     };
   }
 
-  onHeaderLayout(event) {
+  onHeaderLayout(key, event) {
     this.setState({
-      headerHeight: event.nativeEvent.layout.height,
+      [key]: event.nativeEvent.layout.height,
     });
   }
 
@@ -227,6 +229,7 @@ class WeaknessDrawComponent extends React.Component {
       selectedTraits,
       flipped,
       headerHeight,
+      flippedHeaderHeight,
     } = this.state;
     if (saving) {
       return (
@@ -242,7 +245,10 @@ class WeaknessDrawComponent extends React.Component {
     }
     if (flipped) {
       return (
-        <View style={[styles.buttonWrapper, { height: headerHeight }]}>
+        <View
+          onLayout={this._onFlippedHeaderLayout}
+          style={[styles.buttonWrapper, { minHeight: flippedHeaderHeight }]}
+        >
           <Button text="Draw another" onPress={this._drawAnother} />
           { customFlippedHeader }
         </View>

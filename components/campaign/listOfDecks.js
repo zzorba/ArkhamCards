@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
   Button,
+  StyleSheet,
   View,
 } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
@@ -69,7 +70,9 @@ export default function listOfDecks(DeckComponent) {
             />
           )) }
           { !!deckAdded && (
-            <Button title="Add Investigator" onPress={this._showDeckSelector} />
+            <View style={styles.button}>
+              <Button title="Add Investigator" onPress={this._showDeckSelector} />
+            </View>
           ) }
         </View>
       );
@@ -80,3 +83,11 @@ export default function listOfDecks(DeckComponent) {
   hoistNonReactStatic(result, DeckComponent);
   return result;
 }
+
+const styles = StyleSheet.create({
+  button: {
+    margin: 8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+});

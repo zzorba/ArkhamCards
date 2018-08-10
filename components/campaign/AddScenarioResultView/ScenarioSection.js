@@ -26,6 +26,7 @@ class ScenarioSection extends React.Component {
     scenarioChanged: PropTypes.func.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
     // From redux/realm
+    updateCampaign: PropTypes.func.isRequired,
     showInterludes: PropTypes.bool.isRequired,
     allScenarios: PropTypes.array.isRequired,
   };

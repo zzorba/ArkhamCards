@@ -237,7 +237,7 @@ class CampaignDetailView extends React.Component {
             showTextEditDialog={showTextEditDialog}
             showAddSectionDialog={this._showAddSectionDialog}
           />
-          <View style={styles.margin}>
+          <View style={[styles.margin, styles.button]}>
             <Button
               title="Delete Campaign"
               color={COLORS.red}
@@ -292,5 +292,9 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 40,
+  },
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });

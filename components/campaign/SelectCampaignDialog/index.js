@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys, map, partition } from 'lodash';
 import {
+  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,7 +13,6 @@ import { connect } from 'react-redux';
 
 import CycleItem from './CycleItem';
 import { CUSTOM } from '../constants';
-import Button from '../../core/Button';
 import { getPacksInCollection } from '../../../reducers';
 
 const CAMPAIGNS = {
@@ -93,7 +93,7 @@ class SelectCampaignDialog extends React.Component {
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
         { this.renderCampaign(CUSTOM) }
         <View style={styles.button}>
-          <Button onPress={this._editCollection} text="Edit Collection" />
+          <Button onPress={this._editCollection} title="Edit Collection" />
         </View>
         { otherCampaigns.length > 0 && (
           <View style={styles.headerRow}>

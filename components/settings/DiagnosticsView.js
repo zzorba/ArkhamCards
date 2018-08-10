@@ -65,9 +65,11 @@ class DiagnosticsView extends React.Component {
             },
           }],
         );
-        return
+        return;
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
     Alert.alert(
       'Problem with import',
       'We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.',

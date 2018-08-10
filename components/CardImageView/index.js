@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
   Dimensions,
-  Platform,
   StyleSheet,
   View,
 } from 'react-native';
@@ -12,8 +11,7 @@ import { connectRealm } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
 
 import { iconsMap } from '../../app/NavIcons';
-
-const HEADER_SIZE = 48;
+import { HEADER_HEIGHT } from '../../styles/sizes';
 
 class CardImageView extends React.Component {
   static propTypes = {
@@ -40,7 +38,7 @@ class CardImageView extends React.Component {
         props.card.type_code === 'agenda' ||
         (doubleCard && props.card.hidden),
       width,
-      height: height - HEADER_SIZE,
+      height: height - HEADER_HEIGHT,
     };
 
     this._flip = this.flip.bind(this);
@@ -95,7 +93,7 @@ class CardImageView extends React.Component {
             style={styles.pinchZoom}
           >
             <CachedImage
-              style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+              style={{ height: cardHeight, width: cardWidth }}
               resizeMode="contain"
               source={{
                 uri: `https://arkhamdb.com${card.imagesrc}`,
@@ -113,7 +111,7 @@ class CardImageView extends React.Component {
           style={styles.pinchZoom}
         >
           <CachedImage
-            style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+            style={{ height: cardHeight, width: cardWidth }}
             resizeMode="contain"
             source={{
               uri: `https://arkhamdb.com${card.double_sided ? card.backimagesrc : card.linked_card.imagesrc}`,
@@ -132,7 +130,7 @@ class CardImageView extends React.Component {
         style={styles.pinchZoom}
       >
         <CachedImage
-          style={[styles.bigCard, { height: cardHeight, width: cardWidth }]}
+          style={{ height: cardHeight, width: cardWidth }}
           resizeMode="contain"
           source={{
             uri: `https://arkhamdb.com${card.imagesrc}`,
@@ -169,8 +167,5 @@ const styles = StyleSheet.create({
   pinchZoom: {
     flex: 1,
     backgroundColor: 'white',
-  },
-  bigCard: {
-    marginTop: Platform.OS === 'ios' ? 0 : HEADER_SIZE,
   },
 });

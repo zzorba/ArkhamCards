@@ -437,7 +437,7 @@ class NewCampaignView extends React.Component {
           )) }
         </View>
         { !this.hasDefinedChaosBag() && (
-          <View style={styles.topPadding}>
+          <View style={[styles.topPadding, styles.button]}>
             <Button title="Add Log Section" onPress={this._toggleCampaignLogDialog} />
           </View>
         ) }
@@ -533,11 +533,13 @@ class NewCampaignView extends React.Component {
               deckRemoved={this._deckRemoved}
             />
           </View>
-          <Button
-            style={styles.topPadding}
-            title="Create Campaign"
-            onPress={this._onSave}
-          />
+          <View style={styles.button}>
+            <Button
+              style={styles.topPadding}
+              title="Create Campaign"
+              onPress={this._onSave}
+            />
+          </View>
           <View style={styles.footer} />
         </ScrollView>
         { this.renderCampaignSectionDialog() }
@@ -581,5 +583,9 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
+  },
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });

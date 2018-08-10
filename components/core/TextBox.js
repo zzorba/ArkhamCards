@@ -24,7 +24,6 @@ export default function TextBox({ value, multiline, style = {}, textStyle = {}, 
       >
         <TextInput
           autoCorrect={false}
-          underlineColorAndroid="transparent"
           style={[typography.text, styles.input, textStyle]}
           value={value}
           multiline={multiline}

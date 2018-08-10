@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   },
   row: {
     paddingTop: 4,
+    paddingBottom: 4,
     paddingLeft: 8,
     paddingRight: 8,
     width: '100%',
