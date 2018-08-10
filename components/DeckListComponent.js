@@ -113,10 +113,11 @@ class DeckListComponent extends React.Component {
   renderFooter() {
     const {
       isEmpty,
+      refreshing,
     } = this.props;
     return (
       <View style={styles.footer}>
-        { !!isEmpty && (
+        { !!isEmpty && !refreshing && (
           <Text style={[typography.text, styles.margin]}>
             { 'No decks yet.\n\nUse the + button to create a new one.' }
           </Text>

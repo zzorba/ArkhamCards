@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Animated,
+  Dimensions,
   Easing,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Button from '../core/Button';
+import PlusMinusButtons from '../core/PlusMinusButtons';
 import CountButton from './CountButton';
 import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING } from './constants';
+import typography from '../../styles/typography';
 
 /**
  * Simple sliding card count.
@@ -25,7 +29,10 @@ export default class CardQuantityComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    const tinyScreen = Dimensions.get('window').width < 375;
+
     this.state = {
+      tinyScreen,
       open: false,
       count: props.count,
       slideAnim: new Animated.Value(0),
@@ -33,6 +40,7 @@ export default class CardQuantityComponent extends React.Component {
 
     this._toggle = this.toggle.bind(this);
 
+    this._selectCount = this.selectCount.bind(this);
     this._selectZero = this.selectCount.bind(this, 0);
     this._selectOne = this.selectCount.bind(this, 1);
     this._selectTwo = this.selectCount.bind(this, 2);
@@ -72,7 +80,7 @@ export default class CardQuantityComponent extends React.Component {
     });
   }
 
-  render() {
+  renderTiny() {
     const {
       limit,
     } = this.props;
@@ -135,10 +143,49 @@ export default class CardQuantityComponent extends React.Component {
       </View>
     );
   }
+
+  render() {
+    if (this.state.tinyScreen) {
+      return this.renderTiny();
+    }
+
+    const {
+      limit,
+    } = this.props;
+    const {
+      count,
+    } = this.state;
+
+    return (
+      <View style={styles.row}>
+        { count !== 0 && (
+          <Text style={[typography.text, styles.count]}>
+            { `×${count}` }
+          </Text>
+        ) }
+        <PlusMinusButtons
+          count={count}
+          size={44}
+          onChange={this._selectCount}
+          limit={limit}
+          noFill
+        />
+      </View>
+    );
+  }
 }
 
 
 const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: ROW_HEIGHT,
+  },
+  count: {
+    marginRight: 4,
+  },
   container: {
     position: 'absolute',
     top: 0,

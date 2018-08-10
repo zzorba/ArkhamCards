@@ -1828,6 +1828,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkhamcards.ArkhamCards;
 				PRODUCT_NAME = ArkhamCards;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1859,6 +1860,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkhamcards.ArkhamCards;
 				PRODUCT_NAME = ArkhamCards;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
