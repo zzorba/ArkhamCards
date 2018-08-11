@@ -4,13 +4,13 @@ import {
   Animated,
   Easing,
   StyleSheet,
-  Switch,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import Switch from '../core/Switch';
 import SearchBox, { SEARCH_BAR_HEIGHT } from '../SearchBox';
 
 export const SEARCH_OPTIONS_HEIGHT = 44;
@@ -90,19 +90,16 @@ export default class CardSearchBox extends React.Component {
         <Switch
           value={searchText}
           onValueChange={toggleSearchText}
-          onTintColor="#222222"
         />
         <Text style={styles.searchOption}>{ 'Flavor\nText' }</Text>
         <Switch
           value={searchFlavor}
           onValueChange={toggleSearchFlavor}
-          onTintColor="#222222"
         />
         <Text style={styles.searchOption}>{ 'Card\nBacks' }</Text>
         <Switch
           value={searchBack}
           onValueChange={toggleSearchBack}
-          onTintColor="#222222"
         />
       </View>
     );

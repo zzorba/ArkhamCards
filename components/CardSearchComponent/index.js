@@ -301,6 +301,7 @@ class CardSearchComponent extends React.Component {
     } else if (baseQuery) {
       queryParts.push(baseQuery);
     }
+    queryParts.push('(altArtInvestigator != true)');
     queryParts.push('(back_linked != true)');
     this.applyQueryFilter(queryParts);
     forEach(

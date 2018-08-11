@@ -4,7 +4,6 @@ import { range } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
-  Switch,
   Text,
   TouchableOpacity,
   View,
@@ -13,6 +12,7 @@ import {
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardCostIcon from '../core/CardCostIcon';
+import Switch from '../core/Switch';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE } from './constants';
@@ -263,7 +263,6 @@ export default class CardSearchResult extends React.PureComponent {
             <Switch
               value={toggleValue}
               onValueChange={onToggleChange}
-              onTintColor="#222222"
             />
           </View>
         ) }

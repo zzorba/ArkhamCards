@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
-  Switch,
   Text,
   View,
   ViewPropTypes,
 } from 'react-native';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
+import Switch from '../core/Switch';
 
 const ICON_SIZE = 32;
 
@@ -65,7 +65,6 @@ export default class ToggleFilter extends React.Component {
         <Switch
           value={this.props.value}
           onValueChange={this._onToggle}
-          onTintColor="#222222"
         />
       </View>
     );

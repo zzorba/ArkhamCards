@@ -51,7 +51,7 @@ class CardEnemyFilterView extends React.Component {
     return (
       <AccordionItem
         label="Keywords"
-        height={250}
+        height={256}
         enabled={enemyKeywordsEnabled}
         toggleName="enemyKeywordsEnabled"
         onToggleChange={onToggleChange}

@@ -6,10 +6,10 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Switch,
 } from 'react-native';
 
 import EncounterIcon from '../../assets/EncounterIcon';
+import Switch from '../core/Switch';
 
 export default class PackRow extends React.Component {
   static propTypes = {
@@ -125,7 +125,6 @@ export default class PackRow extends React.Component {
             <Switch
               value={checked}
               onValueChange={this._onCheckPress}
-              onTintColor="#222222"
             />
           </View>
         ) }

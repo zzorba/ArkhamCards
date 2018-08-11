@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { concat, filter, flatMap, keys, uniqBy } from 'lodash';
 import {
   StyleSheet,
-  Switch,
   Text,
   View,
 } from 'react-native';
@@ -11,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { isEliminated } from './trauma';
+import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
 import withPlayerCards from '../withPlayerCards';
@@ -127,7 +127,6 @@ class MyDecksSelectorDialog extends React.Component {
           <Switch
             value={hideOtherCampaignInvestigators}
             onValueChange={this._toggleHideOtherCampaignInvestigators}
-            onTintColor="#222222"
           />
         </View>
         { !!campaign && (
@@ -138,7 +137,6 @@ class MyDecksSelectorDialog extends React.Component {
             <Switch
               value={hideEliminatedInvestigators}
               onValueChange={this._toggleHideEliminatedInvestigators}
-              onTintColor="#222222"
             />
           </View>
         ) }
@@ -150,7 +148,6 @@ class MyDecksSelectorDialog extends React.Component {
             <Switch
               value={onlyShowPreviousCampaignMembers}
               onValueChange={this._toggleOnlyShowPreviousCampaignMembers}
-              onTintColor="#222222"
             />
           </View>
         ) }

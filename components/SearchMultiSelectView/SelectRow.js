@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
-  Switch,
   Text,
   View,
 } from 'react-native';
 import capitalize from 'capitalize';
+
+import Switch from '../core/Switch';
 
 export default class SelectRow extends React.Component {
   static propTypes = {
@@ -44,7 +45,6 @@ export default class SelectRow extends React.Component {
         <Switch
           value={selected}
           onValueChange={this._onCheckPress}
-          onTintColor="#222222"
         />
       </View>
     );

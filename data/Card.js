@@ -245,6 +245,8 @@ export default class Card {
       json.name.substring(0, json.name.indexOf(' ')).replace(/"/g, '') :
       json.name;
 
+    const altArtInvestigator = json.code === '98001' || json.code === '98004';
+
     return Object.assign(
       {},
       json,
@@ -268,6 +270,7 @@ export default class Card {
         sort_by_pack,
         enemy_horror,
         enemy_damage,
+        altArtInvestigator,
       },
     );
   }
@@ -355,6 +358,7 @@ Card.schema = {
     back_linked: 'bool?',
 
     // Derived data.
+    altArtInvestigator: 'bool?',
     cycle_name: 'string?',
     has_restrictions: 'bool',
     traits_normalized: 'string?',

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { concat, filter, find, forEach, head, last, map } from 'lodash';
 import {
-  Switch,
   StyleSheet,
   Text,
   View,
@@ -14,6 +13,7 @@ import { connectRealm } from 'react-native-realm';
 import { updateCampaign } from '../actions';
 import { CAMPAIGN_SCENARIOS } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
+import Switch from '../../core/Switch';
 import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
 import typography from '../../../styles/typography';
 
@@ -174,7 +174,6 @@ class ScenarioSection extends React.Component {
           <Switch
             value={this.props.showInterludes}
             onValueChange={this._toggleShowInterludes}
-            onTintColor="#222222"
           />
         </View>
         <LabeledTextBox

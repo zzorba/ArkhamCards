@@ -4,11 +4,11 @@ import {
   Animated,
   Easing,
   StyleSheet,
-  Switch,
   Text,
   View,
 } from 'react-native';
 
+import Switch from '../core/Switch';
 import typography from '../../styles/typography';
 
 export default class AccordionChooser extends React.Component {
@@ -70,7 +70,6 @@ export default class AccordionChooser extends React.Component {
         <Switch
           value={enabled}
           onValueChange={this._togglePressed}
-          onTintColor="#222222"
         />
       </View>
     );
