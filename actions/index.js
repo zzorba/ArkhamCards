@@ -131,6 +131,7 @@ export function refreshMyDecks() {
       }
     },
     error => {
+      console.log(`ERROR: ${error.message || error}`);
       dispatch({
         type: MY_DECKS_ERROR,
         error: error.message || error,

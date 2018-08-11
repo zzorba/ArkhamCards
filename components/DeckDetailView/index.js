@@ -226,9 +226,6 @@ class DeckDetailView extends React.Component {
   }
 
   onNavigatorEvent(event) {
-    const {
-      navigator,
-    } = this.props;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'editName') {
         this.showEditNameDialog();

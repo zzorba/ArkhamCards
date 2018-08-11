@@ -11,6 +11,7 @@ export const COLORS = {
   gray: 'rgb(201, 201, 201)',
   darkGray: 'rgb(120, 120, 120)',
   lightGreen: 'rgb(114, 221, 82)',
+  yellow: 'rgb(255, 204, 0)',
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
   black: '#000',

@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import { filter } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import withNetworkStatus from './core/withNetworkStatus';
 import * as Actions from '../actions';
 import DeckListComponent from './DeckListComponent';
+import { COLORS } from '../styles/colors';
+import typography from '../styles/typography';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '../reducers';
 
 class MyDecksComponent extends React.Component {
   static propTypes = {
+    login: PropTypes.func.isRequired,
     navigator: PropTypes.object.isRequired,
     deckClicked: PropTypes.func.isRequired,
     onlyDeckIds: PropTypes.array,
@@ -22,6 +32,7 @@ class MyDecksComponent extends React.Component {
     myDecksUpdated: PropTypes.instanceOf(Date),
     refreshing: PropTypes.bool,
     error: PropTypes.string,
+    networkType: PropTypes.string,
     customHeader: PropTypes.node,
   };
 
@@ -29,6 +40,12 @@ class MyDecksComponent extends React.Component {
     super(props);
 
     this._onRefresh = this.onRefresh.bind(this);
+    this._renderHeader = this.renderHeader.bind(this);
+    this._reLogin = this.reLogin.bind(this);
+  }
+
+  reLogin() {
+    this.props.login();
   }
 
   onRefresh() {
@@ -58,6 +75,59 @@ class MyDecksComponent extends React.Component {
     }
   }
 
+  renderError() {
+    const {
+      error,
+      networkType,
+    } = this.props;
+
+    if (error === null && networkType !== 'none') {
+      return null;
+    }
+    if (networkType === 'none') {
+      return (
+        <View style={[styles.banner, styles.warning]}>
+          <Text style={typography.small}>
+            Unable to update: you appear to be offline.
+          </Text>
+        </View>
+      );
+    }
+    if (error === 'badAccessToken') {
+      return (
+        <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error]}>
+          <Text style={[typography.small, styles.errorText]}>
+            We're having trouble updating your decks at this time.
+            If the problem persists tap here to reauthorize.
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+    return (
+      <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error]}>
+        <Text style={[typography.small, styles.errorText]}>
+          { `An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
+        </Text>
+      </TouchableOpacity>
+    );
+  }
+
+  renderHeader() {
+    const {
+      customHeader,
+    } = this.props;
+    const error = this.renderError();
+    if (!customHeader && !error) {
+      return null;
+    }
+    return (
+      <View style={styles.stack}>
+        { error }
+        { customHeader }
+      </View>
+    );
+  }
+
   render() {
     const {
       navigator,
@@ -67,8 +137,6 @@ class MyDecksComponent extends React.Component {
       myDecks,
       decks,
       refreshing,
-      error,
-      customHeader,
       onlyDeckIds,
       deckToCampaign,
     } = this.props;
@@ -84,13 +152,12 @@ class MyDecksComponent extends React.Component {
     return (
       <DeckListComponent
         navigator={navigator}
-        customHeader={customHeader}
+        customHeader={this.renderHeader()}
         deckIds={deckIds}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}
         onRefresh={this._onRefresh}
         refreshing={refreshing}
-        error={error}
         isEmpty={myDecks.length === 0}
       />
     );
@@ -111,4 +178,28 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyDecksComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withNetworkStatus(MyDecksComponent)
+);
+
+const styles = StyleSheet.create({
+  stack: {
+    flexDirection: 'column',
+  },
+  banner: {
+    width: '100%',
+    paddingTop: 4,
+    paddingBottom: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
+  },
+  error: {
+    backgroundColor: COLORS.red,
+  },
+  warning: {
+    backgroundColor: COLORS.yellow,
+  },
+  errorText: {
+    color: COLORS.white,
+  },
+});

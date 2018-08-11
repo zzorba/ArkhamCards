@@ -40,9 +40,9 @@ export default class TextEditDialog extends React.Component {
     this._updateSize = this.updateSize.bind(this);
   }
 
-  updateSize(height) {
+  updateSize(event) {
     this.setState({
-      height,
+      height: event.nativeEvent.contentSize.height,
     });
   }
 
@@ -160,7 +160,7 @@ export default class TextEditDialog extends React.Component {
           onSubmitEditing={this._onDonePress}
           multiline={numberOfLines > 1}
           numberOfLines={numberOfLines}
-          onContentSizeChange={(e) => this.updateSize(e.nativeEvent.contentSize.height)}
+          onContentSizeChange={this._updateSize}
         />
         <DialogComponent.Button
           label="Cancel"

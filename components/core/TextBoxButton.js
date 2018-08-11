@@ -46,7 +46,7 @@ export default function TextBoxButton({
               textDecorationStyle: 'solid',
               textDecorationColor: '#222',
             } : {},
-            value ? { color: '#222' } : { color : '#aaa' },
+            value ? { color: '#222' } : { color: '#aaa' },
           ]}>
             { value || placeholder }
           </Text>
@@ -58,6 +58,7 @@ export default function TextBoxButton({
 
 TextBoxButton.propTypes = {
   value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   crossedOut: PropTypes.bool,
   style: ViewPropTypes.style,
   textStyle: PropTypes.any,

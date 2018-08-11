@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     borderTopWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#bdbdbd',
   },
 });
