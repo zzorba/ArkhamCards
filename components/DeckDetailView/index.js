@@ -4,6 +4,7 @@ import { findIndex, flatMap, forEach, keys, map, range } from 'lodash';
 import {
   Alert,
   ActivityIndicator,
+  BackHandler,
   Platform,
   StyleSheet,
   View,
@@ -55,7 +56,7 @@ class DeckDetailView extends React.Component {
         id: 'back',
       } : {
         icon: iconsMap['chevron-left'],
-        id: 'back',
+        id: 'androidBack',
       },
     ] : [];
     const rightButtons = props.isPrivate && props.modal && !props.deck.next_deck ? [
@@ -83,6 +84,7 @@ class DeckDetailView extends React.Component {
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = this.saveEdits.bind(this, false);
     this._clearEdits = this.clearEdits.bind(this);
+    this._handleBackPress = this.handleBackPress.bind(this);
 
     if (props.modal) {
       props.navigator.setButtons({
@@ -101,7 +103,11 @@ class DeckDetailView extends React.Component {
       fetchPrivateDeck,
       deck,
       previousDeck,
+      modal,
     } = this.props;
+    if (modal) {
+      BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
+    }
     if (isPrivate) {
       fetchPrivateDeck(id);
     } else {
@@ -117,6 +123,12 @@ class DeckDetailView extends React.Component {
       } else {
         this.loadCards(deck, previousDeck);
       }
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.modal) {
+      BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
     }
   }
 
@@ -182,6 +194,37 @@ class DeckDetailView extends React.Component {
     } */
   }
 
+  handleBackPress() {
+    const {
+      navigator,
+    } = this.props;
+    console.log('Hardware Back Press');
+    if (this.state.hasPendingEdits) {
+      Alert.alert(
+        'Save deck changes?',
+        'Looks like you have made some changes that have not been saved.',
+        [{
+          text: 'Save Changes',
+          onPress: () => {
+            this.saveEdits(true);
+          },
+        }, {
+          text: 'Discard Changes',
+          style: 'destructive',
+          onPress: () => {
+            navigator.dismissAllModals();
+          },
+        }, {
+          text: 'Cancel',
+          style: 'cancel',
+        }],
+      );
+    } else {
+      navigator.dismissAllModals();
+    }
+    return true;
+  }
+
   onNavigatorEvent(event) {
     const {
       navigator,
@@ -191,30 +234,8 @@ class DeckDetailView extends React.Component {
         this.showEditNameDialog();
       } else if (event.id === 'edit') {
         this.onEditPressed();
-      } else if (event.id === 'back') {
-        if (this.state.hasPendingEdits) {
-          Alert.alert(
-            'Save deck changes?',
-            'Looks like you have made some changes that have not been saved.',
-            [{
-              text: 'Save Changes',
-              onPress: () => {
-                this.saveEdits(true);
-              },
-            }, {
-              text: 'Discard Changes',
-              style: 'destructive',
-              onPress: () => {
-                navigator.dismissAllModals();
-              },
-            }, {
-              text: 'Cancel',
-              style: 'cancel',
-            }],
-          );
-        } else {
-          navigator.dismissAllModals();
-        }
+      } else if (event.id === 'back' || event.id === 'androidBack') {
+        this.handleBackPress();
       }
     }
   }

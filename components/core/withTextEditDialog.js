@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 
-import EditTextDialog from './EditTextDialog';
+import TextEditDialog from './TextEditDialog';
 
 export default function withTextEditDialog(WrappedComponent) {
   class TextEditDialogComponent extends React.Component {
@@ -70,7 +70,7 @@ export default function withTextEditDialog(WrappedComponent) {
         return null;
       }
       return (
-        <EditTextDialog
+        <TextEditDialog
           visible={visible}
           viewRef={baseViewRef}
           title={title}

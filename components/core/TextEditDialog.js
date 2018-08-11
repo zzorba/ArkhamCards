@@ -6,8 +6,9 @@ import {
 import DialogComponent from 'react-native-dialog';
 
 import Dialog from './Dialog';
+import typography from '../../styles/typography';
 
-export default class EditTextDialog extends React.Component {
+export default class TextEditDialog extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     visible: PropTypes.bool.isRequired,
@@ -28,6 +29,7 @@ export default class EditTextDialog extends React.Component {
       originalText: null,
       isCrossedOut: false,
       submitting: false,
+      height: 40,
     };
 
     this._onTextChange = this.onTextChange.bind(this);
@@ -35,6 +37,13 @@ export default class EditTextDialog extends React.Component {
     this._onDonePress = this.onDonePress.bind(this);
     this._onCancelPress = this.onCancelPress.bind(this);
     this._onCrossOutPress = this.onCrossOutPress.bind(this);
+    this._updateSize = this.updateSize.bind(this);
+  }
+
+  updateSize(height) {
+    this.setState({
+      height,
+    });
   }
 
   onTextChange(value) {
@@ -64,6 +73,7 @@ export default class EditTextDialog extends React.Component {
       this.setState({
         text: isCrossedOut ? text.substring(1) : text,
         originalText: text,
+        height: 40,
         isCrossedOut,
       }, () => {
         textInputRef && textInputRef.focus();
@@ -118,24 +128,30 @@ export default class EditTextDialog extends React.Component {
       isCrossedOut,
       originalText,
       text,
+      height,
     } = this.state;
 
     const textChanged = isCrossedOut ?
       text !== originalText.substring(1) :
       text !== originalText;
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
-    const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
+    // const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
     return (
       <Dialog visible={visible} title={title} viewRef={viewRef}>
+        { Platform.OS === 'android' && isCrossedOut && (
+          <DialogComponent.Description style={typography.small}>
+            Note: This entry is crossed out
+          </DialogComponent.Description>
+        ) }
         <DialogComponent.Input
-          style={isCrossedOut ? {
-            textDecorationLine: 'line-through',
-            textDecorationStyle: 'solid',
-            textDecorationColor: '#222',
-            height,
-          } : {
-            height,
-          }}
+          style={[
+            { height: height + 12 },
+            isCrossedOut ? {
+              textDecorationLine: 'line-through',
+              textDecorationStyle: 'solid',
+              textDecorationColor: '#222',
+            } : {},
+          ]}
           ref={this._captureTextInputRef}
           value={text}
           autoFocus
@@ -144,6 +160,7 @@ export default class EditTextDialog extends React.Component {
           onSubmitEditing={this._onDonePress}
           multiline={numberOfLines > 1}
           numberOfLines={numberOfLines}
+          onContentSizeChange={(e) => this.updateSize(e.nativeEvent.contentSize.height)}
         />
         <DialogComponent.Button
           label="Cancel"

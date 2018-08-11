@@ -54,6 +54,8 @@ export default class App {
         },
       ],
       appStyle: {
+        navBarBackgroundColor: 'white',
+        screenBackgroundColor: 'white',
         tabBarSelectedButtonColor: COLORS.lightBlue,
       },
     });

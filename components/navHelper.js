@@ -3,6 +3,7 @@ import { FACTION_DARK_GRADIENTS } from '../constants';
 export function showDeckModal(navigator, deck, investigator, campaignId) {
   navigator.showModal({
     screen: 'Deck',
+    overrideBackPress: true,
     title: deck.name,
     passProps: {
       id: deck.id,

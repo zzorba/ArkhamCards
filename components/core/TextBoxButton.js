@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Platform,
   StyleSheet,
+  Text,
   TextInput,
   View,
   ViewPropTypes,
@@ -11,7 +12,15 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
 
-export default function TextBox({ value, multiline, style = {}, textStyle = {}, ...otherProps }) {
+export default function TextBoxButton({
+  value,
+  multiline,
+  crossedOut,
+  placeholder,
+  style = {},
+  textStyle = {},
+  ...otherProps
+}) {
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -23,19 +32,33 @@ export default function TextBox({ value, multiline, style = {}, textStyle = {}, 
         ]}
       >
         <TextInput
-          autoCorrect={false}
-          style={[typography.text, styles.input, textStyle]}
-          value={value}
+          style={styles.textInput}
+          editable={false}
           multiline={multiline}
           {...otherProps}
-        />
+        >
+          <Text style={[
+            typography.text,
+            styles.input,
+            textStyle,
+            crossedOut ? {
+              textDecorationLine: 'line-through',
+              textDecorationStyle: 'solid',
+              textDecorationColor: '#222',
+            } : {},
+            value ? { color: '#222' } : { color : '#aaa' },
+          ]}>
+            { value || placeholder }
+          </Text>
+        </TextInput>
       </LinearGradient>
     </View>
   );
 }
 
-TextBox.propTypes = {
+TextBoxButton.propTypes = {
   value: PropTypes.string.isRequired,
+  crossedOut: PropTypes.bool,
   style: ViewPropTypes.style,
   textStyle: PropTypes.any,
   multiline: PropTypes.bool,
@@ -49,15 +72,21 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   textBox: {
-    width: '100%',
     paddingLeft: 4,
     paddingRight: 4,
     paddingBottom: Platform.OS === 'ios' ? 4 : 2,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  input: {
+  textInput: {
+    paddingTop: 2,
+    width: '100%',
     padding: 0,
+    minHeight: 22,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  input: {
     color: '#222',
     width: '100%',
   },

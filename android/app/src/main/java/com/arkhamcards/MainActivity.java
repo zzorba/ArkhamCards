@@ -1,5 +1,7 @@
 package com.arkhamcards;
 
+import android.view.View;
+
 import com.reactnativenavigation.controllers.SplashActivity;
 
 public class MainActivity extends SplashActivity {
@@ -10,5 +12,10 @@ public class MainActivity extends SplashActivity {
      */
     protected String getMainComponentName() {
         return "ArkhamCards";
+    }
+
+    @Override
+    public View createSplashLayout() {
+        return new View(this);
     }
 }

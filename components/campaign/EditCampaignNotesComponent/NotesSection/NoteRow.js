@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import TextBox from '../../../core/TextBox';
+import TextBoxButton from '../../../core/TextBoxButton';
 
 export default class NoteRow extends React.Component {
   static propTypes = {
@@ -50,14 +50,9 @@ export default class NoteRow extends React.Component {
     return (
       <View style={styles.row}>
         <TouchableOpacity onPress={this._onPress}>
-          <TextBox
-            textStyle={note.startsWith('~') ? {
-              textDecorationLine: 'line-through',
-              textDecorationStyle: 'solid',
-              textDecorationColor: '#222',
-            } : {}}
+          <TextBoxButton
+            crossedOut={note.startsWith('~')}
             value={note.startsWith('~') ? note.substring(1) : note}
-            editable={false}
             placeholder={last ? 'Add note' : null}
             pointerEvents="none"
             ellipsizeMode="tail"

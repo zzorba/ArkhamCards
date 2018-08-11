@@ -8,7 +8,7 @@ import {
   ViewPropTypes,
 } from 'react-native';
 
-import TextBox from './TextBox';
+import TextBoxButton from './TextBoxButton';
 import typography from '../../styles/typography';
 
 export default function LabeledTextBox({
@@ -26,9 +26,8 @@ export default function LabeledTextBox({
         { column ? label.toUpperCase() : `${label}:` }
       </Text>
       <TouchableOpacity onPress={onPress} style={column ? {} : styles.grow}>
-        <TextBox
+        <TextBoxButton
           value={value}
-          editable={false}
           placeholder={placeholder}
           pointerEvents="none"
         />
