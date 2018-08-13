@@ -5,7 +5,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 export default function withPlayerCards(WrappedComponent) {
   const result = connectRealm(WrappedComponent, {
     schemas: ['Card'],
-    mapToProps(results) {
+    mapToProps(results, realm) {
       const investigators = {};
       const cards = {};
       forEach(
@@ -17,6 +17,7 @@ export default function withPlayerCards(WrappedComponent) {
           }
         });
       return {
+        realm,
         cards,
         investigators,
       };

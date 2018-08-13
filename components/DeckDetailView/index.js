@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { findIndex, flatMap, forEach, keys, map, range } from 'lodash';
+import { findIndex, flatMap, forEach, keys, map, range, throttle } from 'lodash';
 import {
   Alert,
   ActivityIndicator,
@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
@@ -21,7 +20,9 @@ import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import { saveDeck } from '../../lib/authApi';
+import withPlayerCards from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
+import { FACTION_DARK_GRADIENTS } from '../../constants';
 import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
@@ -55,7 +56,7 @@ class DeckDetailView extends React.Component {
         systemItem: 'done',
         id: 'back',
       } : {
-        icon: iconsMap['chevron-left'],
+        icon: iconsMap['arrow-left'],
         id: 'androidBack',
       },
     ] : [];
@@ -68,7 +69,6 @@ class DeckDetailView extends React.Component {
 
     this.state = {
       parsedDeck: null,
-      cardsInDeck: {},
       slots: {},
       loaded: false,
       saving: false,
@@ -82,7 +82,7 @@ class DeckDetailView extends React.Component {
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigatorButtons = this.syncNavigatorButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
-    this._saveEdits = this.saveEdits.bind(this, false);
+    this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
     this._clearEdits = this.clearEdits.bind(this);
     this._handleBackPress = this.handleBackPress.bind(this);
 
@@ -255,7 +255,9 @@ class DeckDetailView extends React.Component {
       navigator,
       deck,
       previousDeck,
+      cards,
     } = this.props;
+    const investigator = cards[deck.investigator_code];
     navigator.push({
       screen: 'Deck.Edit',
       passProps: {
@@ -263,6 +265,13 @@ class DeckDetailView extends React.Component {
         previousDeck,
         slots: this.state.slots,
         updateSlots: this._updateSlots,
+      },
+      navigatorStyle: {
+        navBarBackgroundColor: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+        navBarTextColor: '#FFFFFF',
+        navBarSubtitleColor: '#FFFFFF',
+        navBarButtonColor: '#FFFFFF',
+        statusBarTextColorScheme: 'light',
       },
     });
   }
@@ -294,50 +303,52 @@ class DeckDetailView extends React.Component {
       navigator,
       deck,
       updateDeck,
+      cards,
     } = this.props;
-    this.setState({
-      saving: true,
-    });
-    const {
-      parsedDeck,
-      cardsInDeck,
-      nameChange,
-    } = this.state;
-    const {
-      slots,
-      investigator,
-    } = parsedDeck;
+    if (!this.state.saving) {
+      this.setState({
+        saving: true,
+      });
+      const {
+        parsedDeck,
+        nameChange,
+      } = this.state;
+      const {
+        slots,
+        investigator,
+      } = parsedDeck;
 
-    const validator = new DeckValidation(investigator);
-    const problemObj = validator.getProblem(flatMap(keys(slots), code => {
-      const card = cardsInDeck[code];
-      return map(range(0, slots[code]), () => card);
-    }));
-    const problem = problemObj ? problemObj.reason : '';
+      const validator = new DeckValidation(investigator);
+      const problemObj = validator.getProblem(flatMap(keys(slots), code => {
+        const card = cards[code];
+        return map(range(0, slots[code]), () => card);
+      }));
+      const problem = problemObj ? problemObj.reason : '';
 
-    saveDeck(
-      deck.id,
-      nameChange || deck.name,
-      slots,
-      problem,
-      parsedDeck.spentXp
-    ).then(deck => {
-      updateDeck(deck.id, deck, true);
-      if (dismissAfterSave) {
-        navigator.dismissAllModals();
-      } else {
+      saveDeck(
+        deck.id,
+        nameChange || deck.name,
+        slots,
+        problem,
+        parsedDeck.spentXp
+      ).then(deck => {
+        updateDeck(deck.id, deck, true);
+        if (dismissAfterSave) {
+          navigator.dismissAllModals();
+        } else {
+          this.setState({
+            saving: false,
+            nameChange: null,
+            hasPendingEdits: false,
+          });
+        }
+      }, err => {
         this.setState({
           saving: false,
-          nameChange: null,
-          hasPendingEdits: false,
         });
-      }
-    }, err => {
-      this.setState({
-        saving: false,
+        Alert.alert('Error', err.message || err);
       });
-      Alert.alert('Error', err.message || err);
-    });
+    }
   }
 
   clearEdits() {
@@ -378,29 +389,15 @@ class DeckDetailView extends React.Component {
       keys(additions).length > 0;
   }
 
-  static getCardsInDeck(deck, cards, slots, previousDeck) {
-    const cardsInDeck = {};
-    cards.forEach(card => {
-      if (slots[card.code] || deck.investigator_code === card.code ||
-        (previousDeck &&
-          (previousDeck.slots[card.code] || previousDeck.investigator_code === card.code))) {
-        cardsInDeck[card.code] = card;
-      }
-    });
-    return cardsInDeck;
-  }
-
   updateSlots(newSlots) {
     const {
       deck,
       previousDeck,
       cards,
     } = this.props;
-    const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, newSlots, previousDeck);
-    const parsedDeck = parseDeck(deck, newSlots, cardsInDeck, previousDeck);
+    const parsedDeck = parseDeck(deck, newSlots, cards, previousDeck);
     this.setState({
       slots: newSlots,
-      cardsInDeck,
       parsedDeck,
       hasPendingEdits: this.hasPendingEdits(this.state.nameChange, newSlots),
     }, this._syncNavigatorButtons);
@@ -415,11 +412,9 @@ class DeckDetailView extends React.Component {
     } = this.state;
     if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1 ||
       findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1) {
-      const cardsInDeck = DeckDetailView.getCardsInDeck(deck, cards, deck.slots, previousDeck);
-      const parsedDeck = parseDeck(deck, deck.slots, cardsInDeck, previousDeck);
+      const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
       this.setState({
         slots: deck.slots,
-        cardsInDeck,
         parsedDeck,
         hasPendingEdits: false,
         loaded: true,
@@ -511,11 +506,11 @@ class DeckDetailView extends React.Component {
       navigator,
       isPrivate,
       captureViewRef,
+      cards,
     } = this.props;
     const {
       loaded,
       parsedDeck,
-      cardsInDeck,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -537,14 +532,14 @@ class DeckDetailView extends React.Component {
             navigator={navigator}
             deck={deck}
             parsedDeck={parsedDeck}
-            cards={cardsInDeck}
+            cards={cards}
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
           />
           <DeckNavFooter
             navigator={navigator}
             parsedDeck={parsedDeck}
-            cards={cardsInDeck}
+            cards={cards}
           />
         </View>
         { this.renderSavingDialog() }
@@ -565,17 +560,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(withTextEditDialog(DeckDetailView)),
-  {
-    schemas: ['Card'],
-    mapToProps(results, realm) {
-      return {
-        realm,
-        cards: results.cards,
-      };
-    },
-  },
+export default withPlayerCards(
+  connect(mapStateToProps, mapDispatchToProps)(withTextEditDialog(DeckDetailView))
 );
 
 const styles = StyleSheet.create({

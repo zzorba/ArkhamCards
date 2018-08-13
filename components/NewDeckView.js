@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import {
   Alert,
 } from 'react-native';
@@ -23,6 +24,10 @@ class NewDeckView extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      saving: false,
+    };
+
     props.navigator.setButtons({
       leftButtons: [
         {
@@ -32,7 +37,7 @@ class NewDeckView extends React.Component {
       ],
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-    this._onPress = this.onPress.bind(this);
+    this._onPress = throttle(this.onPress.bind(this), 200);
   }
 
   onNavigatorEvent(event) {
@@ -58,13 +63,21 @@ class NewDeckView extends React.Component {
       setNewDeck,
       onCreateDeck,
     } = this.props;
-    newDeck(investigator.code).then(deck => {
-      setNewDeck(deck.id, deck);
-      onCreateDeck && onCreateDeck(deck);
-      showDeckModal(navigator, deck, investigator);
-    }, error => {
-      Alert.alert('Error', error.message);
-    });
+    if (!this.state.saving) {
+      this.setState({
+        saving: true,
+      });
+      newDeck(investigator.code).then(deck => {
+        setNewDeck(deck.id, deck);
+        onCreateDeck && onCreateDeck(deck);
+        showDeckModal(navigator, deck, investigator);
+      }, error => {
+        Alert.alert('Error', error.message);
+        this.setState({
+          saving: false,
+        });
+      });
+    }
   }
 
   render() {

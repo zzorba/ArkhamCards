@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
+  Button,
   Keyboard,
   Platform,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
@@ -15,11 +17,12 @@ import {
   SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
 import CardResultList from './CardResultList';
+import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
 import { applyFilters } from '../../lib/filters';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
-import { STORY_CARDS_QUERY } from '../../data/query';
-
+import { STORY_CARDS_QUERY, MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
+import typography from '../../styles/typography';
 
 class CardSearchComponent extends React.Component {
   static propTypes = {
@@ -28,6 +31,8 @@ class CardSearchComponent extends React.Component {
     defaultFilterState: PropTypes.object,
     defaultStoryFilterState: PropTypes.object,
     baseQuery: PropTypes.string,
+    mythosToggle: PropTypes.bool,
+    storyToggle: PropTypes.bool,
     sort: PropTypes.string,
 
     // Keyed by code, count of current deck.
@@ -37,7 +42,6 @@ class CardSearchComponent extends React.Component {
     backButtonText: PropTypes.string,
     limits: PropTypes.object,
     footer: PropTypes.node,
-    storyToggle: PropTypes.bool,
   };
 
   constructor(props) {
@@ -53,18 +57,22 @@ class CardSearchComponent extends React.Component {
       filters: props.defaultFilterState,
       storyFilters: props.defaultStoryFilterState,
       storyMode: false,
+      mythosMode: false,
       visible: true,
     };
 
     this._showHeader = this.showHeader.bind(this);
     this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
+    this._toggleMythosMode = this.toggleMythosMode.bind(this);
+    this._toggleStoryMode = this.toggleStoryMode.bind(this);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
     this._sortChanged = this.sortChanged.bind(this);
     this._searchUpdated = this.searchUpdated.bind(this);
-    this._applyFilters = this.applyFilters.bind(this);
+    this._setFilters = this.setFilters.bind(this);
+    this._clearSearchFilters = this.clearSearchFilters.bind(this);
 
     const leftButton = Platform.OS === 'ios' ? {
       id: 'back',
@@ -89,10 +97,15 @@ class CardSearchComponent extends React.Component {
         icon: iconsMap.book,
         id: 'story',
       });
+    } else if (props.mythosToggle) {
+      rightButtons.push({
+        icon: iconsMap.auto_fail,
+        id: 'mythos',
+      });
     }
-
+    const leftButtons = props.backButtonText ? [leftButton] : defaultButton;
     props.navigator.setButtons({
-      leftButtons: props.backButtonText ? [leftButton] : defaultButton,
+      leftButtons,
       rightButtons,
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -128,7 +141,18 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  applyFilters(filters) {
+  clearSearchFilters() {
+    const {
+      defaultFilterState,
+      defaultStoryFilterState,
+    } = this.props;
+    this.setState({
+      filters: defaultFilterState,
+      storyFilters: defaultStoryFilterState,
+    });
+  }
+
+  setFilters(filters) {
     if (this.state.storyMode) {
       this.setState({
         storyFilters: filters,
@@ -164,7 +188,7 @@ class CardSearchComponent extends React.Component {
           animationType: 'slide-down',
           backButtonTitle: 'Apply',
           passProps: {
-            applyFilters: this._applyFilters,
+            applyFilters: this._setFilters,
             defaultFilterState: storyMode ? defaultStoryFilterState : defaultFilterState,
             currentFilters: storyMode ? this.state.storyFilters : this.state.filters,
             baseQuery: storyMode ? STORY_CARDS_QUERY : baseQuery,
@@ -186,33 +210,9 @@ class CardSearchComponent extends React.Component {
           },
         });
       } else if (event.id === 'story') {
-        const {
-          storyMode,
-        } = this.state;
-        this.setState({
-          storyMode: !storyMode,
-        });
-
-        const rightButtons = [
-          {
-            icon: iconsMap.tune,
-            id: 'filter',
-          },
-          {
-            icon: iconsMap['sort-by-alpha'],
-            id: 'sort',
-          },
-          {
-            icon: storyMode ? iconsMap.book : iconsMap.per_investigator,
-            id: 'story',
-          },
-        ];
-        navigator.setButtons({
-          rightButtons,
-        });
-        navigator.setTitle({
-          title: storyMode ? '' : 'Special',
-        });
+        this.toggleStoryMode();
+      } else if (event.id === 'mythos') {
+        this.toggleMythosMode();
       }
     } else if (event.id === 'willDisappear') {
       this.setState({
@@ -228,6 +228,71 @@ class CardSearchComponent extends React.Component {
         visible: true,
       });
     }
+  }
+
+  toggleStoryMode() {
+    const {
+      navigator,
+    } = this.props;
+    const {
+      storyMode,
+    } = this.state;
+    this.setState({
+      storyMode: !storyMode,
+    });
+
+    const rightButtons = [
+      {
+        icon: iconsMap.tune,
+        id: 'filter',
+      },
+      {
+        icon: iconsMap['sort-by-alpha'],
+        id: 'sort',
+      },
+      {
+        icon: storyMode ? iconsMap.book : iconsMap.per_investigator,
+        id: 'story',
+      },
+    ];
+    navigator.setButtons({
+      rightButtons,
+    });
+    navigator.setTitle({
+      title: storyMode ? '' : 'Special Cards',
+    });
+  }
+
+  toggleMythosMode() {
+    const {
+      navigator,
+    } = this.props;
+    const {
+      mythosMode,
+    } = this.state;
+    this.setState({
+      mythosMode: !mythosMode,
+    });
+
+    const rightButtons = [
+      {
+        icon: iconsMap.tune,
+        id: 'filter',
+      }, {
+        icon: iconsMap['sort-by-alpha'],
+        id: 'sort',
+      }, {
+        icon: mythosMode ? iconsMap.auto_fail : iconsMap.per_investigator,
+        id: 'mythos',
+      },
+    ];
+    navigator.setButtons({
+      rightButtons,
+    });
+    navigator.setTitle({
+      title: mythosMode ? 'Player Cards' : 'Encounter Cards',
+    });
+
   }
 
   handleBackPress() {
@@ -267,6 +332,8 @@ class CardSearchComponent extends React.Component {
       if (searchText) {
         parts.push('real_text contains[c] $0');
         parts.push('linked_card.real_text contains[c] $0');
+        parts.push('traits contains[c] $0');
+        parts.push('linked_card.traits contains[c] $0');
         if (searchBack) {
           parts.push('back_text contains[c] $0');
           parts.push('linked_card.back_text contains[c] $0');
@@ -285,17 +352,33 @@ class CardSearchComponent extends React.Component {
     }
   }
 
+  filterQueryParts() {
+    const {
+      storyFilters,
+      storyMode,
+      filters,
+    } = this.state;
+    return applyFilters(storyMode ? storyFilters : filters);
+  }
+
   query() {
     const {
       baseQuery,
+      mythosToggle,
     } = this.props;
     const {
       selectedSort,
       storyMode,
-      filters,
-      storyFilters,
+      mythosMode,
     } = this.state;
     const queryParts = [];
+    if (mythosToggle) {
+      if (mythosMode) {
+        queryParts.push(MYTHOS_CARDS_QUERY);
+      } else {
+        queryParts.push(PLAYER_CARDS_QUERY);
+      }
+    }
     if (storyMode) {
       queryParts.push(STORY_CARDS_QUERY);
     } else if (baseQuery) {
@@ -305,7 +388,7 @@ class CardSearchComponent extends React.Component {
     queryParts.push('(back_linked != true)');
     this.applyQueryFilter(queryParts);
     forEach(
-      applyFilters(storyMode ? storyFilters : filters),
+      this.filterQueryParts(),
       clause => queryParts.push(clause));
 
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
@@ -331,6 +414,82 @@ class CardSearchComponent extends React.Component {
         toggleSearchFlavor={this._toggleSearchFlavor}
         toggleSearchBack={this._toggleSearchBack}
       />
+    );
+  }
+
+  renderExpandModesButtons() {
+    const {
+      mythosToggle,
+      storyToggle,
+    } = this.props;
+    const {
+      mythosMode,
+      storyMode,
+    } = this.state;
+    const hasFilters = this.filterQueryParts().length > 0;
+    if (!mythosToggle && !storyToggle && !hasFilters) {
+      return null;
+    }
+    return (
+      <View>
+        { !!mythosToggle && (
+          <View style={styles.button}>
+            <Button
+              onPress={this._toggleMythosMode}
+              title={mythosMode ? 'Search Player Cards' : 'Search Encounter Cards'}
+            />
+          </View>
+        ) }
+        { !!storyToggle && (
+          <View style={styles.button}>
+            <Button
+              onPress={this._toggleStoryMode}
+              title={storyMode ? 'Search Player Cards' : 'Search Weakness/Story Cards'}
+            />
+          </View>
+        ) }
+        { !!hasFilters && (
+          <View style={styles.button}>
+            <Button
+              onPress={this._clearSearchFilters}
+              title="Clear Search Filters"
+            />
+          </View>
+        ) }
+      </View>
+    );
+  }
+
+  renderExpandSearchButtons() {
+    const {
+      searchTerm,
+      searchText,
+      searchBack,
+    } = this.state;
+    if (!searchTerm) {
+      return this.renderExpandModesButtons();
+    }
+    return (
+      <View>
+        { }
+        { !searchText && (
+          <View style={styles.toggle}>
+            <Text style={[typography.text, styles.toggleText]}>
+              Search Game Text
+            </Text>
+            <Switch value={false} onValueChange={this._toggleSearchText} />
+          </View>
+        ) }
+        { !searchBack && (
+          <View style={styles.toggle}>
+            <Text style={[typography.text, styles.toggleText]}>
+              Search Card Backs
+            </Text>
+            <Switch value={false} onValueChange={this._toggleSearchBack} />
+          </View>
+        ) }
+        { this.renderExpandModesButtons() }
+      </View>
     );
   }
 
@@ -363,6 +522,7 @@ class CardSearchComponent extends React.Component {
             cardPressed={this._cardPressed}
             showHeader={this._showHeader}
             hideHeader={this._hideHeader}
+            expandSearchControls={this.renderExpandSearchButtons()}
             visible={visible}
           />
         </View>
@@ -409,5 +569,17 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: '100%',
     backgroundColor: 'red',
+  },
+  button: {
+    margin: 8,
+  },
+  toggle: {
+    margin: 8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  toggleText: {
+    minWidth: '60%',
   },
 });

@@ -33,7 +33,7 @@ export default class App {
       tabs: [
         {
           label: 'Cards',
-          title: 'Cards',
+          title: 'Player Cards',
           icon: iconsMap.cards,
           screen: 'Browse.Cards',
         }, {

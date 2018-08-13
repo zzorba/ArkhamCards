@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, map, partition, throttle } from 'lodash';
+import { concat, partition, random, throttle } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -8,6 +8,7 @@ import {
   Keyboard,
   SectionList,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
@@ -27,8 +28,19 @@ import {
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
+import typography from '../../styles/typography';
 
 const SCROLL_DISTANCE_BUFFER = 25;
+
+const FUN_LOADING_MESSAGES = [
+  'Investigating for clues',
+  'Cursing at the tentacle token',
+  'Drawing a mythos card with surge',
+  'Placing doom on the agenda',
+  'Reticulating spines',
+  'Trying to make sense of the Time Warp FAQ',
+  'Taking three damage and three horror',
+];
 
 class CardResultList extends React.Component {
   static propTypes = {
@@ -45,18 +57,25 @@ class CardResultList extends React.Component {
     showHeader: PropTypes.func.isRequired,
     hideHeader: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
+    expandSearchControls: PropTypes.node,
   };
+
+  static randomLoadingMessage() {
+    return FUN_LOADING_MESSAGES[random(0, FUN_LOADING_MESSAGES.length - 1)];
+  }
 
   constructor(props) {
     super(props);
 
     this.state = {
+      resultsKey: '',
       cards: [],
+      cardsCount: 0,
       deckCardCounts: props.deckCardCounts || {},
       spoilerCards: [],
       spoilerCardsCount: 0,
       showSpoilerCards: false,
-      loading: true,
+      loadingMessage: CardResultList.randomLoadingMessage(),
       dirty: false,
       scrollY: new Animated.Value(0),
     };
@@ -75,6 +94,7 @@ class CardResultList extends React.Component {
       },
     );
     this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
+    this._throttledUpdateResults = throttle(this.updateResults.bind(this), 200, { trailing: true });
     this._getItem = this.getItem.bind(this);
     this._renderSectionHeader = this.renderSectionHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
@@ -127,7 +147,7 @@ class CardResultList extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.updateResults(), 0);
+    this._throttledUpdateResults();
   }
 
   componentDidUpdate(prevProps) {
@@ -144,12 +164,10 @@ class CardResultList extends React.Component {
       if (this.props.visible) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
-          loading: true,
+          loadingMessage: CardResultList.randomLoadingMessage(),
           dirty: false,
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
-        }, () => {
-          setTimeout(() => this.updateResults(), 0);
-        });
+        }, this._throttledUpdateResults);
       } else {
         this.setState({
           dirty: true,
@@ -235,6 +253,18 @@ class CardResultList extends React.Component {
     return results;
   }
 
+  resultsKey() {
+    const {
+      query,
+      searchTerm,
+      show_spoilers,
+      sort,
+    } = this.props;
+    return (
+      `q:${query},s:${searchTerm},sp:${show_spoilers},st:${sort}`
+    );
+  }
+
   updateResults() {
     const {
       realm,
@@ -242,20 +272,22 @@ class CardResultList extends React.Component {
       searchTerm,
       show_spoilers,
     } = this.props;
+    const resultsKey = this.resultsKey();
     const cards = (query ?
       realm.objects('Card').filtered(query, searchTerm) :
       realm.objects('Card')
     ).sorted(this.getSort());
     const splitCards = partition(
-      map(cards, card => Object.assign({}, card)),
+      cards,
       card => show_spoilers[card.pack_code] ||
         !(card.spoiler || (card.linked_card && card.linked_card.spoiler))
     );
     this.setState({
+      resultsKey: resultsKey,
       cards: this.bucketCards(splitCards[0]),
+      cardsCount: splitCards[0].length,
       spoilerCards: this.bucketCards(splitCards[1]),
       spoilerCardsCount: splitCards[1].length,
-      loading: false,
     });
   }
 
@@ -303,21 +335,48 @@ class CardResultList extends React.Component {
     );
   }
 
+  renderEmptyState() {
+    const {
+      cardsCount,
+      spoilerCardsCount,
+    } = this.state;
+    if (!this.isLoading() && (cardsCount + spoilerCardsCount) === 0) {
+      return (
+        <View>
+          <View style={styles.emptyText}>
+            <Text style={typography.text}>
+              No matching cards
+            </Text>
+          </View>
+          { this.props.expandSearchControls }
+        </View>
+      );
+    }
+    return this.props.expandSearchControls;
+  }
+
   renderFooter() {
     const {
       spoilerCardsCount,
       showSpoilerCards,
     } = this.state;
     if (!spoilerCardsCount) {
-      return <View style={styles.footer} />;
+      return (
+        <View style={styles.footer}>
+          { this.renderEmptyState() }
+        </View>
+      );
     }
     if (showSpoilerCards) {
       return (
         <View style={styles.footer}>
-          <Button
-            onPress={this._editSpoilerSettings}
-            title="Edit Spoiler Settings"
-          />
+          <View style={styles.button}>
+            <Button
+              onPress={this._editSpoilerSettings}
+              title="Edit Spoiler Settings"
+            />
+          </View>
+          { this.renderEmptyState() }
         </View>
       );
     }
@@ -327,11 +386,16 @@ class CardResultList extends React.Component {
 
     return (
       <View style={styles.footer}>
-        <Button
-          onPress={this._editSpoilerSettings}
-          title="Edit Spoiler Settings"
-        />
-        <Button onPress={this._enableSpoilers} title={spoilerCount} />
+        <View style={styles.button}>
+          <Button onPress={this._enableSpoilers} title={spoilerCount} />
+        </View>
+        <View style={styles.button}>
+          <Button
+            onPress={this._editSpoilerSettings}
+            title="Edit Spoiler Settings"
+          />
+        </View>
+        { this.renderEmptyState() }
       </View>
     );
   }
@@ -349,20 +413,29 @@ class CardResultList extends React.Component {
     return concat(cards, spoilerCards);
   }
 
+  isLoading() {
+    return this.state.resultsKey !== this.resultsKey();
+  }
+
   render() {
     const {
       sort,
     } = this.props;
     const {
-      loading,
+      loadingMessage,
     } = this.state;
-    if (loading) {
+    if (this.isLoading()) {
       return (
-        <ActivityIndicator
-          style={[{ height: 80 }]}
-          size="small"
-          animating
-        />
+        <View style={styles.loading}>
+          <Text style={[typography.small, styles.loadingText]}>
+            { `${loadingMessage}...` }
+          </Text>
+          <ActivityIndicator
+            style={[{ height: 80 }]}
+            size="small"
+            animating
+          />
+        </View>
       );
     }
     const stickyHeaders = sort === SORT_BY_PACK || sort === SORT_BY_ENCOUNTER_SET;
@@ -407,5 +480,25 @@ export default connectRealm(
 const styles = StyleSheet.create({
   footer: {
     height: 300,
+  },
+  loading: {
+    margin: 16,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  button: {
+    margin: 8,
+  },
+  emptyText: {
+    padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
   },
 });

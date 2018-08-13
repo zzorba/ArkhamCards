@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, head, keys, range } from 'lodash';
+import { forEach, head, keys, range, throttle } from 'lodash';
 import {
   ActivityIndicator,
   Alert,
@@ -56,7 +56,7 @@ class DeckUpgradeDialog extends React.Component {
 
     this._onXpChange = this.onXpChange.bind(this);
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
-    this._saveUpgrade = this.saveUpgrade.bind(this);
+    this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
 
     props.navigator.setButtons({
       rightButtons: [
@@ -73,7 +73,7 @@ class DeckUpgradeDialog extends React.Component {
   onNavigatorEvent(event) {
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'save') {
-        this.saveUpgrade();
+        this._saveUpgrade();
       }
     }
   }
@@ -91,39 +91,44 @@ class DeckUpgradeDialog extends React.Component {
       updateCampaign,
       showNewDeck,
     } = this.props;
-    this.setState({
-      saving: true,
-    });
-    if (campaign) {
-      updateCampaign(campaign.id, { investigatorData: this.investigatorData() });
-    }
-    const {
-      xp,
-      exileCounts,
-    } = this.state;
-    const exileParts = [];
-    forEach(keys(exileCounts), code => {
-      const count = exileCounts[code];
-      if (count > 0) {
-        forEach(range(0, count), () => exileParts.push(code));
+    if (!this.state.saving) {
+      this.setState({
+        saving: true,
+      });
+      if (campaign) {
+        updateCampaign(campaign.id, { investigatorData: this.investigatorData() });
       }
-    });
-    const exiles = exileParts.join(',');
-    upgradeDeck(id, xp, exiles).then(decks => {
       const {
-        deck,
-        upgradedDeck,
-      } = decks;
-      updateDeck(deck.id, deck, false);
-      setNewDeck(upgradedDeck.id, upgradedDeck);
-      if (showNewDeck) {
-        showDeckModal(navigator, upgradedDeck, investigator);
-      } else {
-        navigator.pop();
-      }
-    }, err => {
-      Alert.alert(err.message || err);
-    });
+        xp,
+        exileCounts,
+      } = this.state;
+      const exileParts = [];
+      forEach(keys(exileCounts), code => {
+        const count = exileCounts[code];
+        if (count > 0) {
+          forEach(range(0, count), () => exileParts.push(code));
+        }
+      });
+      const exiles = exileParts.join(',');
+      upgradeDeck(id, xp, exiles).then(decks => {
+        const {
+          deck,
+          upgradedDeck,
+        } = decks;
+        updateDeck(deck.id, deck, false);
+        setNewDeck(upgradedDeck.id, upgradedDeck);
+        if (showNewDeck) {
+          showDeckModal(navigator, upgradedDeck, investigator);
+        } else {
+          navigator.pop();
+        }
+      }, err => {
+        Alert.alert(err.message || err);
+        this.setState({
+          saving: false,
+        });
+      });
+    }
   }
 
   onCardPress(card) {

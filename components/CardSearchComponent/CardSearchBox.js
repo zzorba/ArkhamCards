@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import {
   Animated,
   Easing,
@@ -36,8 +37,13 @@ export default class CardSearchBox extends React.Component {
       advancedOpen: false,
     };
 
+    this._onChangeText = throttle(this.onChangeText.bind(this), 250, { trailing: true });
     this._toggleAdvanced = this.toggleAdvanced.bind(this);
     this._renderTextSearchOptions = this.renderTextSearchOptions.bind(this);
+  }
+
+  onChangeText(search) {
+    this.props.onChangeText(search);
   }
 
   toggleAdvanced() {
@@ -63,7 +69,7 @@ export default class CardSearchBox extends React.Component {
       advancedOpen,
     } = this.state;
     return (
-      <TouchableOpacity onPress={this._toggleAdvanced}>
+      <TouchableOpacity style={styles.toggleButton} onPress={this._toggleAdvanced}>
         <View style={styles.icon}>
           <MaterialCommunityIcons
             name={advancedOpen ? 'chevron-double-up' : 'dots-horizontal'}
@@ -127,15 +133,12 @@ export default class CardSearchBox extends React.Component {
 
   render() {
     const {
-      onChangeText,
-    } = this.props;
-    const {
       anim,
     } = this.state;
     return (
       <Animated.View style={[styles.slider, { height: anim }]}>
         <SearchBox
-          onChangeText={onChangeText}
+          onChangeText={this._onChangeText}
           placeholder="Search for a card"
           sideButton={this.renderToggleButton()}
         />
@@ -163,5 +166,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginLeft: 10,
     marginRight: 2,
+  },
+  toggleButton: {
+    marginLeft: 8,
+  },
+  icon: {
+    width: 32,
+    height: 32,
   },
 });

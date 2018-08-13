@@ -11,10 +11,6 @@ class CardSearchView extends React.Component {
     sort: PropTypes.string,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       navigator,
@@ -25,6 +21,7 @@ class CardSearchView extends React.Component {
     return (
       <CardSearchComponent
         navigator={navigator}
+        mythosToggle={!baseQuery}
         baseQuery={baseQuery}
         sort={sort}
       />
