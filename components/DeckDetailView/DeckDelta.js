@@ -88,7 +88,7 @@ class DeckDelta extends React.Component {
       return null;
     }
     return (
-      <View>
+      <View style={styles.container}>
         <View style={styles.title}>
           <Text style={typography.smallLabel}>
             CAMPAIGN PROGRESS
@@ -112,7 +112,7 @@ class DeckDelta extends React.Component {
           <View>
             <View style={styles.title}>
               <Text style={typography.smallLabel}>
-                CHANGES
+                CHANGES FROM PREVIOUS DECK
               </Text>
             </View>
             { map(keys(changedCards), code => (
@@ -171,6 +171,9 @@ export default connectRealm(DeckDelta, {
 });
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 16,
+  },
   title: {
     marginTop: 16,
     paddingLeft: 8,
