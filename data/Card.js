@@ -1,4 +1,4 @@
-import { forEach, filter, keys, map } from 'lodash';
+import { forEach, filter, head, keys, map } from 'lodash';
 
 import CardRequirement from './CardRequirement';
 import CardRestrictions from './CardRestrictions';
@@ -76,7 +76,8 @@ export default class Card {
 
   static parseRestrictions(json) {
     const result = new CardRestrictions();
-    result.investigator = json.investigator;
+    result.investigators = json.investigator;
+    result.investigator = head(json.investigator);
     return result;
   }
 
