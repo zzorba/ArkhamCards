@@ -161,6 +161,7 @@ export default class TextEditDialog extends React.Component {
           multiline={numberOfLines > 1}
           numberOfLines={numberOfLines}
           onContentSizeChange={this._updateSize}
+          returnKeyType="done"
         />
         <DialogComponent.Button
           label="Cancel"
