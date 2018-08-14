@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, flatMap, map, pullAt, shuffle, range, without } from 'lodash';
+import { concat, filter, flatMap, map, shuffle, range, without } from 'lodash';
 import {
   Button,
   FlatList,
@@ -56,13 +56,10 @@ class DrawSimulatorView extends React.Component {
       drawnCards,
     } = this.state;
 
-    const selectedIndexes = map(selectedCards, key => key.split('-')[0]);
-    const selectedCardIds = map(selectedCards, key => key.split('-')[1]);
-
-    const newDrawnCards = drawnCards.slice();
-    pullAt(newDrawnCards, selectedIndexes);
+    const selectedSet = new Set(selectedCards);
+    const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
     this.setState({
-      shuffledDeck: shuffle(concat(shuffledDeck, selectedCardIds)),
+      shuffledDeck: shuffle(concat(shuffledDeck, selectedCards)),
       drawnCards: newDrawnCards,
       selectedCards: [],
     });
@@ -77,13 +74,10 @@ class DrawSimulatorView extends React.Component {
       shuffledDeck,
     } = this.drawHelper(selectedCards.length);
 
-    const selectedIndexes = map(selectedCards, key => key.split('-')[0]);
-    const selectedCardIds = map(selectedCards, key => key.split('-')[1]);
-
-    const newDrawnCards = drawnCards.slice();
-    pullAt(newDrawnCards, selectedIndexes);
+    const selectedSet = new Set(selectedCards);
+    const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
     this.setState({
-      shuffledDeck: shuffle(concat(shuffledDeck, selectedCardIds)),
+      shuffledDeck: shuffle(concat(shuffledDeck, selectedCards)),
       drawnCards: newDrawnCards,
       selectedCards: [],
     });
@@ -97,8 +91,8 @@ class DrawSimulatorView extends React.Component {
     if (count === 'all') {
       return {
         drawnCards: [
-          ...drawnCards,
           ...shuffledDeck,
+          ...drawnCards,
         ],
         shuffledDeck: [],
       };
@@ -106,8 +100,8 @@ class DrawSimulatorView extends React.Component {
 
     return {
       drawnCards: [
-        ...drawnCards,
         ...shuffledDeck.slice(0, count),
+        ...drawnCards,
       ],
       shuffledDeck: shuffledDeck.slice(count),
     };
@@ -131,7 +125,7 @@ class DrawSimulatorView extends React.Component {
           if (card.permanent || card.double_sided || card.code === '02014') {
             return [];
           }
-          return range(0, slots[cardId]).map(() => cardId);
+          return map(range(0, slots[cardId]), copy => `${cardId}-${copy}`);
         }));
   }
 
@@ -188,12 +182,12 @@ class DrawSimulatorView extends React.Component {
     );
   }
 
-  renderCardItem({ item, index }) {
-    const card = this.props.cards[item.id];
+  renderCardItem({ item }) {
+    const card = this.props.cards[item.code];
     return (
       <View style={item.selected ? styles.selected : {}}>
         <CardSearchResult
-          id={`${index}-${item.id}`}
+          id={item.key}
           card={card}
           onPress={this._toggleSelection}
         />
@@ -206,12 +200,13 @@ class DrawSimulatorView extends React.Component {
       drawnCards,
       selectedCards,
     } = this.state;
-    const data = map(drawnCards, (cardId, idx) => {
-      const key = `${idx}-${cardId}`;
+    const selectedSet = new Set(selectedCards);
+    const data = map(drawnCards, cardKey => {
+      const parts = cardKey.split('-');
       return {
-        key,
-        id: cardId,
-        selected: selectedCards.indexOf(key) !== -1,
+        key: cardKey,
+        code: parts[0],
+        selected: selectedSet.has(cardKey),
       };
     });
     return (
