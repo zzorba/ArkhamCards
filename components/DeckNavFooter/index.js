@@ -56,7 +56,7 @@ export default class DeckNavFooter extends React.Component {
     const {
       navigator,
       parsedDeck: {
-        deck,
+        slots,
       },
     } = this.props;
     navigator.push({
@@ -64,7 +64,7 @@ export default class DeckNavFooter extends React.Component {
       title: 'Draw',
       backButtonTitle: 'Deck',
       passProps: {
-        slots: deck.slots,
+        slots,
       },
       navigatorStyle: {
         tabBarHidden: true,
