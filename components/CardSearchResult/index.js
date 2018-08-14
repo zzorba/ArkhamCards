@@ -33,6 +33,7 @@ export default class CardSearchResult extends React.PureComponent {
     onToggleChange: PropTypes.func,
     toggleValue: PropTypes.bool,
     deltaCountMode: PropTypes.bool,
+    id: PropTypes.string,
   };
 
   constructor(props) {
@@ -45,10 +46,11 @@ export default class CardSearchResult extends React.PureComponent {
 
   onPress() {
     const {
+      id,
       onPress,
     } = this.props;
     Keyboard.dismiss();
-    onPress && onPress(this.props.card);
+    onPress && onPress(id || this.props.card);
   }
 
   onDeckCountChange(count) {
@@ -273,6 +275,7 @@ export default class CardSearchResult extends React.PureComponent {
 
 const styles = StyleSheet.create({
   rowContainer: {
+    backgroundColor: 'transparent',
     position: 'relative',
     width: '100%',
     minHeight: ROW_HEIGHT,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, flatMap, forEach, map, pullAt, shuffle, range, without } from 'lodash';
+import { concat, flatMap, map, pullAt, shuffle, range, without } from 'lodash';
 import {
   Button,
   FlatList,
@@ -8,14 +8,14 @@ import {
   Text,
   View,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
 
-import DrawCardItem from './DrawCardItem';
+import withPlayerCards from '../withPlayerCards';
+import CardSearchResult from '../CardSearchResult';
 
 class DrawSimulatorView extends React.Component {
   static propTypes = {
     slots: PropTypes.object,
-    cardsInDeck: PropTypes.object,
+    cards: PropTypes.object,
   };
 
   constructor(props) {
@@ -107,9 +107,9 @@ class DrawSimulatorView extends React.Component {
     return {
       drawnCards: [
         ...drawnCards,
-        ...shuffledDeck.splice(0, count),
+        ...shuffledDeck.slice(0, count),
       ],
-      shuffledDeck: shuffledDeck.splice(count),
+      shuffledDeck: shuffledDeck.slice(count),
     };
   }
 
@@ -119,14 +119,14 @@ class DrawSimulatorView extends React.Component {
 
   shuffleFreshDeck() {
     const {
-      cardsInDeck,
+      cards,
       slots,
     } = this.props;
     return shuffle(
       flatMap(
         Object.keys(slots),
         cardId => {
-          const card = cardsInDeck[cardId];
+          const card = cards[cardId];
           // DUKE=02014
           if (card.permanent || card.double_sided || card.code === '02014') {
             return [];
@@ -189,14 +189,15 @@ class DrawSimulatorView extends React.Component {
   }
 
   renderCardItem({ item, index }) {
-    const card = this.props.cardsInDeck[item.id];
+    const card = this.props.cards[item.id];
     return (
-      <DrawCardItem
-        id={`${index}-${item.id}`}
-        card={card}
-        onPressItem={this._toggleSelection}
-        selected={item.selected}
-      />
+      <View style={item.selected ? styles.selected : {}}>
+        <CardSearchResult
+          id={`${index}-${item.id}`}
+          card={card}
+          onPress={this._toggleSelection}
+        />
+      </View>
     );
   }
 
@@ -217,33 +218,15 @@ class DrawSimulatorView extends React.Component {
       <View style={styles.container}>
         { this.renderHeader() }
         <FlatList
-          contentContainerStyle={styles.deckContainer}
           data={data}
           renderItem={this._renderCardItem}
-          numColumns={3}
         />
       </View>
     );
   }
 }
 
-export default connectRealm(
-  DrawSimulatorView,
-  {
-    schemas: ['Card'],
-    mapToProps(results, realm, props) {
-      const cardsInDeck = {};
-      forEach(results.cards, card => {
-        if (props.slots[card.code]) {
-          cardsInDeck[card.code] = card;
-        }
-      });
-      return {
-        cardsInDeck,
-      };
-    },
-  },
-);
+export default withPlayerCards(DrawSimulatorView);
 
 const styles = StyleSheet.create({
   container: {
@@ -255,7 +238,10 @@ const styles = StyleSheet.create({
   },
   drawButtonRow: {
     width: '100%',
-    padding: 4,
+    paddingTop: 4,
+    paddingBottom: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -267,14 +253,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#f6f6f6',
     flexWrap: 'wrap',
   },
-  deckContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
   text: {
     fontFamily: 'System',
     fontSize: 18,
     lineHeight: 22,
+  },
+  selected: {
+    backgroundColor: '#ddd',
   },
 });
