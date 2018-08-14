@@ -4,6 +4,7 @@ import { head } from 'lodash';
 import { connectRealm } from 'react-native-realm';
 
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';
+import { STORY_CARDS_QUERY } from '../data/query';
 import CardSearchComponent from './CardSearchComponent';
 import { parseDeck } from './parseDeck';
 import DeckNavFooter from './DeckNavFooter';
@@ -99,15 +100,18 @@ class DeckEditView extends React.Component {
       deckCardCounts,
     } = this.state;
 
+    const baseQuery = investigator ?
+      `((${queryForInvestigator(investigator)}) or (${STORY_CARDS_QUERY}))` :
+      null;
+
     return (
       <CardSearchComponent
         navigator={navigator}
-        baseQuery={investigator ? queryForInvestigator(investigator) : null}
+        baseQuery={baseQuery}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
         backPressed={this._backPressed}
         footer={this.renderFooter()}
-        storyToggle
       />
     );
   }

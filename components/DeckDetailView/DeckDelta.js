@@ -96,16 +96,20 @@ class DeckDelta extends React.Component {
         </View>
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
-            <Button
-              onPress={this._showPreviousDeck}
-              title="Previous Deck"
-            />
+            <View style={styles.button}>
+              <Button
+                onPress={this._showPreviousDeck}
+                title="Previous Deck"
+              />
+            </View>
           ) }
           { !!deck.next_deck && (
-            <Button
-              onPress={this._showNextDeck}
-              title="Next Deck"
-            />
+            <View style={styles.button}>
+              <Button
+                onPress={this._showNextDeck}
+                title="Next Deck"
+              />
+            </View>
           ) }
         </View>
         { !!keys(changedCards).length && (
@@ -185,5 +189,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 8,
     marginRight: 8,
+  },
+  button: {
+    margin: 8,
   },
 });

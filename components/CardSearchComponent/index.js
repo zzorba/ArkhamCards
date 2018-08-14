@@ -21,7 +21,7 @@ import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
 import { applyFilters } from '../../lib/filters';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
-import { STORY_CARDS_QUERY, MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
 import typography from '../../styles/typography';
 
 class CardSearchComponent extends React.Component {
@@ -29,10 +29,8 @@ class CardSearchComponent extends React.Component {
     navigator: PropTypes.object.isRequired,
     // Function that takes 'realm' and gives back a base query.
     defaultFilterState: PropTypes.object,
-    defaultStoryFilterState: PropTypes.object,
     baseQuery: PropTypes.string,
     mythosToggle: PropTypes.bool,
-    storyToggle: PropTypes.bool,
     sort: PropTypes.string,
 
     // Keyed by code, count of current deck.
@@ -55,8 +53,6 @@ class CardSearchComponent extends React.Component {
       searchTerm: '',
       selectedSort: props.sort || SORT_BY_TYPE,
       filters: props.defaultFilterState,
-      storyFilters: props.defaultStoryFilterState,
-      storyMode: false,
       mythosMode: false,
       visible: true,
     };
@@ -65,7 +61,6 @@ class CardSearchComponent extends React.Component {
     this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
     this._toggleMythosMode = this.toggleMythosMode.bind(this);
-    this._toggleStoryMode = this.toggleStoryMode.bind(this);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
@@ -92,12 +87,7 @@ class CardSearchComponent extends React.Component {
         id: 'sort',
       },
     ];
-    if (props.storyToggle) {
-      rightButtons.push({
-        icon: iconsMap.book,
-        id: 'story',
-      });
-    } else if (props.mythosToggle) {
+    if (props.mythosToggle) {
       rightButtons.push({
         icon: iconsMap.auto_fail,
         id: 'mythos',
@@ -144,24 +134,16 @@ class CardSearchComponent extends React.Component {
   clearSearchFilters() {
     const {
       defaultFilterState,
-      defaultStoryFilterState,
     } = this.props;
     this.setState({
       filters: defaultFilterState,
-      storyFilters: defaultStoryFilterState,
     });
   }
 
   setFilters(filters) {
-    if (this.state.storyMode) {
-      this.setState({
-        storyFilters: filters,
-      });
-    } else {
-      this.setState({
-        filters: filters,
-      });
-    }
+    this.setState({
+      filters: filters,
+    });
   }
 
   sortChanged(selectedSort) {
@@ -175,11 +157,7 @@ class CardSearchComponent extends React.Component {
       navigator,
       baseQuery,
       defaultFilterState,
-      defaultStoryFilterState,
     } = this.props;
-    const {
-      storyMode,
-    } = this.state;
     if (event.type === 'NavBarButtonPress') {
       if (event.id === 'filter') {
         this.isOnTop = false;
@@ -189,9 +167,9 @@ class CardSearchComponent extends React.Component {
           backButtonTitle: 'Apply',
           passProps: {
             applyFilters: this._setFilters,
-            defaultFilterState: storyMode ? defaultStoryFilterState : defaultFilterState,
-            currentFilters: storyMode ? this.state.storyFilters : this.state.filters,
-            baseQuery: storyMode ? STORY_CARDS_QUERY : baseQuery,
+            defaultFilterState: defaultFilterState,
+            currentFilters: this.state.filters,
+            baseQuery: baseQuery,
           },
         });
       } else if (event.id === 'sort') {
@@ -209,8 +187,6 @@ class CardSearchComponent extends React.Component {
             backgroundColor: 'rgba(128,128,128,.75)',
           },
         });
-      } else if (event.id === 'story') {
-        this.toggleStoryMode();
       } else if (event.id === 'mythos') {
         this.toggleMythosMode();
       }
@@ -228,39 +204,6 @@ class CardSearchComponent extends React.Component {
         visible: true,
       });
     }
-  }
-
-  toggleStoryMode() {
-    const {
-      navigator,
-    } = this.props;
-    const {
-      storyMode,
-    } = this.state;
-    this.setState({
-      storyMode: !storyMode,
-    });
-
-    const rightButtons = [
-      {
-        icon: iconsMap.tune,
-        id: 'filter',
-      },
-      {
-        icon: iconsMap['sort-by-alpha'],
-        id: 'sort',
-      },
-      {
-        icon: storyMode ? iconsMap.book : iconsMap.per_investigator,
-        id: 'story',
-      },
-    ];
-    navigator.setButtons({
-      rightButtons,
-    });
-    navigator.setTitle({
-      title: storyMode ? '' : 'Special Cards',
-    });
   }
 
   toggleMythosMode() {
@@ -354,11 +297,9 @@ class CardSearchComponent extends React.Component {
 
   filterQueryParts() {
     const {
-      storyFilters,
-      storyMode,
       filters,
     } = this.state;
-    return applyFilters(storyMode ? storyFilters : filters);
+    return applyFilters(filters);
   }
 
   query() {
@@ -368,7 +309,6 @@ class CardSearchComponent extends React.Component {
     } = this.props;
     const {
       selectedSort,
-      storyMode,
       mythosMode,
     } = this.state;
     const queryParts = [];
@@ -379,9 +319,7 @@ class CardSearchComponent extends React.Component {
         queryParts.push(PLAYER_CARDS_QUERY);
       }
     }
-    if (storyMode) {
-      queryParts.push(STORY_CARDS_QUERY);
-    } else if (baseQuery) {
+    if (baseQuery) {
       queryParts.push(baseQuery);
     }
     queryParts.push('(altArtInvestigator != true)');
@@ -420,14 +358,12 @@ class CardSearchComponent extends React.Component {
   renderExpandModesButtons() {
     const {
       mythosToggle,
-      storyToggle,
     } = this.props;
     const {
       mythosMode,
-      storyMode,
     } = this.state;
     const hasFilters = this.filterQueryParts().length > 0;
-    if (!mythosToggle && !storyToggle && !hasFilters) {
+    if (!mythosToggle && !hasFilters) {
       return null;
     }
     return (
@@ -437,14 +373,6 @@ class CardSearchComponent extends React.Component {
             <Button
               onPress={this._toggleMythosMode}
               title={mythosMode ? 'Search Player Cards' : 'Search Encounter Cards'}
-            />
-          </View>
-        ) }
-        { !!storyToggle && (
-          <View style={styles.button}>
-            <Button
-              onPress={this._toggleStoryMode}
-              title={storyMode ? 'Search Player Cards' : 'Search Weakness/Story Cards'}
             />
           </View>
         ) }
@@ -541,10 +469,8 @@ export default connectRealm(CardSearchComponent, {
       results.cards.filtered(props.baseQuery) :
       results.cards;
 
-    const storyCards = results.cards.filtered(STORY_CARDS_QUERY);
     return {
       defaultFilterState: calculateDefaultFilterState(cards),
-      defaultStoryFilterState: calculateDefaultFilterState(storyCards),
     };
   },
 });
