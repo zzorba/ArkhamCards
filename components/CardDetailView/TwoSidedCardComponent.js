@@ -499,11 +499,11 @@ export default class TwoSidedCardComponent extends React.Component {
                   </View>
                 ) }
               </View>
-              { !!card.real_text && (
+              { !!card.text && (
                 <View style={[styles.gameTextBlock, {
                   borderColor: FACTION_COLORS[card.faction_code] || '#000000',
                 }]}>
-                  <CardTextComponent text={card.real_text} />
+                  <CardTextComponent text={card.text} />
                 </View>)
               }
               { ('victory' in card && card.victory !== null) &&

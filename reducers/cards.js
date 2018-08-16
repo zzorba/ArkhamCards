@@ -8,6 +8,7 @@ const DEFAULT_CARDS_STATE = {
   loading: false,
   error: null,
   cache: null,
+  lang: null,
 };
 
 export default function(state = DEFAULT_CARDS_STATE, action) {
@@ -25,6 +26,7 @@ export default function(state = DEFAULT_CARDS_STATE, action) {
       loading: false,
       error: null,
       cache: action.cache,
+      lang: action.lang,
     };
   }
   if (action.type === CARD_FETCH_ERROR) {

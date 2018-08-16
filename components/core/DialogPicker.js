@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import DialogOption from './DialogOption';
+import typography from '../../styles/typography';
 
 export default class DialogPicker extends React.Component {
   static propTypes = {
@@ -20,6 +21,7 @@ export default class DialogPicker extends React.Component {
     selectedOption: PropTypes.string,
     onSelectionChanged: PropTypes.func.isRequired,
     header: PropTypes.string.isRequired,
+    description: PropTypes.string,
     noCapitalize: PropTypes.bool,
   };
 
@@ -72,6 +74,7 @@ export default class DialogPicker extends React.Component {
   render() {
     const {
       header,
+      description,
     } = this.props;
 
     const {
@@ -87,8 +90,16 @@ export default class DialogPicker extends React.Component {
         </TouchableOpacity>
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={styles.headerText}>{ header }:</Text>
+            <Text style={styles.headerText}>
+              { header }:
+            </Text>
+            { !!description && (
+              <Text style={[typography.small, styles.descriptionText]}>
+                { description }
+              </Text>
+            ) }
           </View>
+
           <ScrollView
             style={styles.scrollOptions}
             overScrollMode="never"
@@ -137,12 +148,16 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomWidth: 1,
     borderColor: '#eeeeee',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   headerText: {
     fontSize: 22,
-    lineHeight: 70,
     textAlign: 'center',
     fontWeight: '700',
+  },
+  descriptionText: {
+    textAlign: 'center',
   },
   cancel: {
     height: 55,

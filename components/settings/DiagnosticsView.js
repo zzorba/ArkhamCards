@@ -31,6 +31,7 @@ class DiagnosticsView extends React.Component {
     fetchCards: PropTypes.func.isRequired,
     setAllCampaigns: PropTypes.func.isRequired,
     clearDecks: PropTypes.func.isRequired,
+    lang: PropTypes.string,
     // From HOC
     showTextEditDialog: PropTypes.func.isRequired,
   };
@@ -145,9 +146,10 @@ class DiagnosticsView extends React.Component {
   doSyncCards() {
     const {
       realm,
+      lang,
       fetchCards,
     } = this.props;
-    fetchCards(realm);
+    fetchCards(realm, lang);
   }
 
   render() {
@@ -167,6 +169,7 @@ class DiagnosticsView extends React.Component {
 function mapStateToProps(state) {
   return {
     campaigns: getCampaigns(state),
+    lang: state.packs.lang,
   };
 }
 

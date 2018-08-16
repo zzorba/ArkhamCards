@@ -14,22 +14,24 @@ function shouldFetchCards(state) {
   return !state.cards.loading;
 }
 
-function cardsCache(state) {
-  return state.cards.cache;
+function cardsCache(state, lang) {
+  /* eslint-disable eqeqeq */
+  return state.cards.lang == lang ? state.cards.cache : null;
 }
 
-export function fetchCards(realm) {
+export function fetchCards(realm, lang) {
   return (dispatch, getState) => {
     if (shouldFetchCards(getState())) {
       dispatch({
         type: CARD_FETCH_START,
       });
-      dispatch(fetchPacks()).then(packs => {
-        return syncCards(realm, packs, cardsCache(getState())).then(
+      dispatch(fetchPacks(lang)).then(packs => {
+        return syncCards(realm, packs, lang, cardsCache(getState(), lang)).then(
           (cache) => {
             dispatch({
               type: CARD_FETCH_SUCCESS,
               cache: cache,
+              lang: lang,
             });
           },
           (err) => {
@@ -44,18 +46,21 @@ export function fetchCards(realm) {
   };
 }
 
-export function fetchPacks() {
+export function fetchPacks(lang) {
   return (dispatch, getState) => {
     dispatch({
       type: PACKS_FETCH_START,
     });
-    const lastModified = getState().packs.lastModified;
-    const packs = getState().packs.all;
+    const state = getState().packs;
+    const lastModified = state.lastModified;
+    const packs = state.all;
     const headers = {};
-    if (lastModified && packs && packs.length) {
+    /* eslint-disable eqeqeq */
+    if (lastModified && packs && packs.length && state.lang == lang) {
       headers['If-Modified-Since'] = lastModified;
     }
-    return fetch('https://arkhamdb.com/api/public/packs/', {
+    const langPrefix = lang ? `${lang}.` : '';
+    return fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {
       method: 'GET',
       headers: headers,
     }).then(response => {
@@ -72,6 +77,7 @@ export function fetchPacks() {
         dispatch({
           type: PACKS_AVAILABLE,
           packs: json,
+          lang: lang,
           timestamp: new Date(),
           lastModified: newLastModified,
         });

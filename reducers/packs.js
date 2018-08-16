@@ -20,6 +20,7 @@ const DEFAULT_PACKS_STATE = {
   loading: false,
   error: null,
   lastModified: null,
+  lang: null, // defaults to 'en'
 };
 
 export default function(state = DEFAULT_PACKS_STATE, action) {
@@ -54,6 +55,7 @@ export default function(state = DEFAULT_PACKS_STATE, action) {
       state,
       {
         all: action.packs,
+        lang: action.lang,
         loading: false,
         dateFetched: action.timestamp.getTime() / 1000,
         dateUpdatePrompt: action.timestamp.getTime() / 1000,

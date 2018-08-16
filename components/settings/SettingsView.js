@@ -23,6 +23,7 @@ class SettingsView extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
+    lang: PropTypes.string,
     fetchCards: PropTypes.func.isRequired,
     clearDecks: PropTypes.func.isRequired,
     cardsLoading: PropTypes.bool,
@@ -32,11 +33,21 @@ class SettingsView extends React.Component {
   constructor(props) {
     super(props);
 
+    this._languagePressed = this.languagePressed.bind(this);
     this._myCollectionPressed = this.navButtonPressed.bind(this, 'My.Collection', 'Edit Collection');
     this._editSpoilersPressed = this.navButtonPressed.bind(this, 'My.Spoilers', 'Edit Spoilers');
     this._diagnosticsPressed = this.navButtonPressed.bind(this, 'Settings.Diagnostics', 'App Diagnostics');
     this._aboutPressed = this.navButtonPressed.bind(this, 'About', 'About');
     this._doSyncCards = this.doSyncCards.bind(this);
+  }
+
+  languagePressed() {
+    this.props.navigator.showLightBox({
+      screen: 'Dialog.Language',
+      style: {
+        backgroundColor: 'rgba(128,128,128,.75)',
+      },
+    });
   }
 
   navButtonPressed(screen, title) {
@@ -66,9 +77,10 @@ class SettingsView extends React.Component {
   doSyncCards() {
     const {
       realm,
+      lang,
       fetchCards,
     } = this.props;
-    fetchCards(realm);
+    fetchCards(realm, lang);
   }
 
   renderSyncCards() {
@@ -78,14 +90,17 @@ class SettingsView extends React.Component {
     } = this.props;
     if (cardsLoading) {
       return (
-        <SettingsItem onPress={this._doSyncCards} text="Updating cards" loading />
+        <SettingsItem text="Updating cards" loading />
       );
     }
     return (
-      <SettingsItem
-        onPress={this._doSyncCards}
-        text={cardsError ? 'Error: check for updated cards again' : 'Check for updated cards'}
-      />
+      <View>
+        <SettingsItem
+          onPress={this._doSyncCards}
+          text={cardsError ? 'Error: check for updated cards again' : 'Check for updated cards'}
+        />
+        <SettingsItem onPress={this._languagePressed} text="Card Language" />
+      </View>
     );
   }
 
@@ -110,6 +125,7 @@ function mapStateToProps(state) {
     cardsLoading: state.cards.loading,
     cardsError: state.cards.error,
     deckCount: keys(getAllDecks(state)).length,
+    lang: state.packs.lang,
   };
 }
 

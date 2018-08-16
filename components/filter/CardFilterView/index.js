@@ -45,6 +45,7 @@ class CardFilterView extends React.Component {
       allFactions: CARD_FACTION_CODES,
       allTraits: [],
       allTypes: [],
+      allTypeCodes: [],
       allSubTypes: [],
       allPacks: [],
       allSlots: [],
@@ -79,6 +80,7 @@ class CardFilterView extends React.Component {
       let hasXp = false;
       let hasSkill = false;
       const typesMap = {};
+      const typeCodesMap = {};
       const usesMap = {};
       const subTypesMap = {};
       const cycleNamesMap = {};
@@ -132,6 +134,7 @@ class CardFilterView extends React.Component {
           illustratorsMap[card.illustrator] = 1;
         }
         typesMap[card.type_name] = 1;
+        typeCodesMap[card.type_code] = 1;
       });
 
       this.setState({
@@ -144,6 +147,7 @@ class CardFilterView extends React.Component {
         allUses: keys(usesMap).sort(),
         allTraits: keys(traitsMap).sort(),
         allTypes: keys(typesMap).sort(),
+        allTypeCodes: keys(typeCodesMap).sort(),
         allSubTypes: keys(subTypesMap).sort(),
         allPacks: keys(packsMap).sort(),
         allSlots: keys(slotsMap).sort(),
@@ -335,6 +339,7 @@ class CardFilterView extends React.Component {
       allFactions,
       allTraits,
       allTypes,
+      allTypeCodes,
       allSubTypes,
       allPacks,
       allCycleNames,
@@ -512,10 +517,10 @@ class CardFilterView extends React.Component {
               </View>
             </AccordionItem>
           ) }
-          { indexOf(allTypes, 'Enemy') !== -1 && (
+          { indexOf(allTypeCodes, 'enemy') !== -1 && (
             <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
           ) }
-          { indexOf(allTypes, 'Location') !== -1 && (
+          { indexOf(allTypeCodes, 'location') !== -1 && (
             <NavButton text={this.locationFilterText()} onPress={this._onLocationPress} />
           ) }
           { (cycleNames.length > 0 || allCycleNames.length > 1) && (

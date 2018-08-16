@@ -100,8 +100,24 @@ export default class Card {
       case 'basicweakness':
       case 'weakness':
         return 'Weakness';
-      default:
-        return json.faction_name;
+      default: {
+        switch(json.faction_code) {
+          case 'guardian':
+            return 'Guardian';
+          case 'rogue':
+            return 'Rogue';
+          case 'mystic':
+            return 'Mystic';
+          case 'seeker':
+            return 'Seeker';
+          case 'survivor':
+            return 'Survivor';
+          case 'neutral':
+            return 'Neutral';
+          default:
+            return json.faction_name;
+        }
+      }
     }
   }
 
@@ -228,7 +244,7 @@ export default class Card {
       Card.parseRestrictions(json.restrictions) :
       null;
 
-    const uses_match = json.text && json.text.match(USES_REGEX);
+    const uses_match = json.real_text && json.real_text.match(USES_REGEX);
     const uses = uses_match ? uses_match[1].toLowerCase() : null;
 
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);

@@ -30,7 +30,7 @@ export default function SettingsItem({ loading, text, onPress }) {
 SettingsItem.propTypes = {
   loading: PropTypes.bool,
   text: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

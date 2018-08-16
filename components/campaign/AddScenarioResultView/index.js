@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   ScrollView,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
@@ -14,6 +15,7 @@ import XpComponent from '../XpComponent';
 import * as Actions from '../../../actions';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign } from '../../../reducers';
+import typography from '../../../styles/typography';
 
 class AddScenarioResultView extends React.Component {
   static propTypes = {
@@ -133,6 +135,12 @@ class AddScenarioResultView extends React.Component {
       <ScrollView contentContainerStyle={styles.container}>
         { this.renderScenarios() }
         <XpComponent xp={xp} onChange={this._xpChanged} />
+        <View style={styles.text}>
+          <Text style={typography.small}>
+            After saving the scenario result, you can use the "Upgrade Deck"
+            buttons to award XP and adjust trauma for each investigator.
+          </Text>
+        </View>
         <View style={styles.footer} />
       </ScrollView>
     );
@@ -167,5 +175,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
+  },
+  text: {
+    margin: 8,
   },
 });

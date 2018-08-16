@@ -29,6 +29,7 @@ class FetchCardsGate extends React.Component {
     promptForUpdate: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     error: PropTypes.string,
+    lang: PropTypes.string,
     /* eslint-disable react/no-unused-prop-types */
     cardCount: PropTypes.number,
     /* eslint-disable react/no-unused-prop-types */
@@ -85,9 +86,10 @@ class FetchCardsGate extends React.Component {
   doFetch() {
     const {
       realm,
+      lang,
       fetchCards,
     } = this.props;
-    fetchCards(realm);
+    fetchCards(realm, lang);
   }
 
   componentDidMount() {
@@ -147,6 +149,7 @@ class FetchCardsGate extends React.Component {
 function mapStateToProps(state) {
   return {
     fetchNeeded: state.packs.all.length === 0,
+    lang: state.packs.lang,
     loading: state.packs.loading || state.cards.loading,
     error: state.packs.error || state.cards.error,
     dateFetched: state.packs.dateFetched,

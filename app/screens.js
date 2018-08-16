@@ -29,6 +29,7 @@ import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
 import CardLocationFilterView from '../components/filter/CardLocationFilterView';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsView from '../components/settings/SettingsView';
+import LanguageDialog from '../components/settings/LanguageDialog';
 import DiagnosticsView from '../components/settings/DiagnosticsView';
 import PackCardsView from '../components/PackCardsView';
 import SpoilersView from '../components/SpoilersView';
@@ -75,6 +76,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent('Pack', () => PackCardsView, store, Provider);
   Navigation.registerComponent('My.Spoilers', () => SpoilersView, store, Provider);
   Navigation.registerComponent('WebView', () => WebViewWrapper, store, Provider);
+  Navigation.registerComponent('Dialog.Language', () => LanguageDialog, store, Provider);
   Navigation.registerComponent('Dialog.DeckSelector', () => MyDecksSelectorDialog, store, Provider);
   Navigation.registerComponent('Dialog.EditChaosBag', () => EditChaosBagDialog, store, Provider);
   Navigation.registerComponent('Dialog.ExileCards', () => ExileCardDialog, store, Provider);
