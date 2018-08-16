@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys, flatMap, map, range, sum } from 'lodash';
 import {
+  Alert,
+  Button,
+  Linking,
   StyleSheet,
   SectionList,
   View,
@@ -10,14 +13,14 @@ import {
   ScrollView,
 } from 'react-native';
 
-import AppIcon from '../../assets/AppIcon';
 import { DeckType } from '../parseDeck';
-import { COLORS } from '../../styles/colors';
-import DeckValidation from '../../lib/DeckValidation';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
+import AppIcon from '../../assets/AppIcon';
+import DeckValidation from '../../lib/DeckValidation';
 import typography from '../../styles/typography';
+import { COLORS } from '../../styles/colors';
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -74,10 +77,33 @@ export default class DeckViewTab extends React.Component {
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
+    this._deleteDeck = this.deleteDeck.bind(this);
   }
 
   keyForCard(item) {
     return item.id;
+  }
+
+  deleteDeck() {
+    const {
+      deck,
+    } = this.props;
+    Alert.alert(
+      `Visit ArkhamDB to delete?`,
+      `Unfortunately to delete decks you have to visit ArkhamDB at this time.`,
+      [
+        {
+          text: 'Visit ArkhamDB',
+          onPress: () => {
+            Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+          },
+        },
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+      ],
+    );
   }
 
   showInvestigator() {
@@ -238,6 +264,15 @@ export default class DeckViewTab extends React.Component {
             parsedDeck={this.props.parsedDeck}
             isPrivate={isPrivate}
           />
+          { isPrivate && (
+            <View style={styles.button}>
+              <Button
+                title="Delete Deck"
+                color={COLORS.red}
+                onPress={this._deleteDeck}
+              />
+            </View>
+          ) }
         </View>
       </ScrollView>
     );
@@ -249,6 +284,9 @@ const styles = StyleSheet.create({
     marginTop: 8,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  button: {
+    margin: 8,
   },
   metadata: {
     flexDirection: 'column',

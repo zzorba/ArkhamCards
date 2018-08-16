@@ -101,6 +101,9 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       {
         all,
         myDecks,
+        // There's a bug on ArkhamDB cache around deletes,
+        // so drop lastModified when we detect a delete locally.
+        lastModified: null,
       },
     );
   }
