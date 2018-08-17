@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import { handleAuthErrors } from '../authHelper';
 import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
 import Button from '../core/Button';
@@ -38,6 +39,7 @@ class DeckDetailView extends React.Component {
     // From realm.
     cards: PropTypes.object,
     // From redux.
+    login: PropTypes.func.isRequired,
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
     updateDeck: PropTypes.func.isRequired,
@@ -325,29 +327,41 @@ class DeckDetailView extends React.Component {
       }));
       const problem = problemObj ? problemObj.reason : '';
 
-      saveDeck(
+      const savePromise = saveDeck(
         deck.id,
         nameChange || deck.name,
         slots,
         problem,
         parsedDeck.spentXp
-      ).then(deck => {
-        updateDeck(deck.id, deck, true);
-        if (dismissAfterSave) {
-          navigator.dismissAllModals();
-        } else {
+      );
+      handleAuthErrors(
+        savePromise,
+        // onSuccess
+        deck => {
+          updateDeck(deck.id, deck, true);
+          if (dismissAfterSave) {
+            navigator.dismissAllModals();
+          } else {
+            this.setState({
+              saving: false,
+              nameChange: null,
+              hasPendingEdits: false,
+            });
+          }
+        },
+        // onFailure
+        () => {
           this.setState({
             saving: false,
-            nameChange: null,
-            hasPendingEdits: false,
           });
-        }
-      }, err => {
-        this.setState({
-          saving: false,
-        });
-        Alert.alert('Error', err.message || err);
-      });
+        },
+        // retry
+        () => {
+          this.saveEdits(dismissAfterSave);
+        },
+        // login
+        this.props.login
+      );
     }
   }
 

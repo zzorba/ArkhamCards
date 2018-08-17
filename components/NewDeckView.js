@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
-import {
-  Alert,
-} from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { handleAuthErrors } from './authHelper';
 import { showDeckModal } from './navHelper';
 import InvestigatorsListComponent from './InvestigatorsListComponent';
 import { iconsMap } from '../app/NavIcons';
@@ -17,6 +15,7 @@ class NewDeckView extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     setNewDeck: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
     onCreateDeck: PropTypes.func,
     filterInvestigators: PropTypes.array,
   };
@@ -62,21 +61,28 @@ class NewDeckView extends React.Component {
       navigator,
       setNewDeck,
       onCreateDeck,
+      login,
     } = this.props;
     if (!this.state.saving) {
       this.setState({
         saving: true,
       });
-      newDeck(investigator.code).then(deck => {
-        setNewDeck(deck.id, deck);
-        onCreateDeck && onCreateDeck(deck);
-        showDeckModal(navigator, deck, investigator);
-      }, error => {
-        Alert.alert('Error', error.message);
-        this.setState({
-          saving: false,
-        });
-      });
+      const newDeckPromise = newDeck(investigator.code);
+      handleAuthErrors(
+        newDeckPromise,
+        deck => {
+          setNewDeck(deck.id, deck);
+          onCreateDeck && onCreateDeck(deck);
+          showDeckModal(navigator, deck, investigator);
+        },
+        () => {
+          this.setState({
+            saving: false,
+          });
+        },
+        () => this.onPress(investigator),
+        login
+      );
     }
   }
 

@@ -1,3 +1,4 @@
+import { filter } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
@@ -44,7 +45,12 @@ export default function configureStore(initialState) {
     reducer,
     initialState,
     compose(
-      applyMiddleware(thunk, offline.middleware, (__DEV__ && loggerMiddleware)),
+      applyMiddleware(
+        ...filter([
+          thunk,
+          offline.middleware,
+          (__DEV__ && loggerMiddleware),
+        ], Boolean)),
       offline.enhanceStore)
   );
   const persistor = persistStore(store, { debug: true }, () => {

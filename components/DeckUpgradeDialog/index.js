@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { forEach, head, keys, range, throttle } from 'lodash';
 import {
   ActivityIndicator,
-  Alert,
   View,
   ScrollView,
   Text,
@@ -13,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
 import { updateCampaign } from '../campaign/actions';
@@ -33,6 +33,7 @@ class DeckUpgradeDialog extends React.Component {
     // Optional campaignId
     campaignId: PropTypes.number,
     // From redux, maybe
+    login: PropTypes.func.isRequired,
     updateCampaign: PropTypes.func.isRequired,
     deck: PropTypes.object,
     campaign: PropTypes.object,
@@ -90,6 +91,7 @@ class DeckUpgradeDialog extends React.Component {
       campaign,
       updateCampaign,
       showNewDeck,
+      login,
     } = this.props;
     if (!this.state.saving) {
       this.setState({
@@ -110,24 +112,29 @@ class DeckUpgradeDialog extends React.Component {
         }
       });
       const exiles = exileParts.join(',');
-      upgradeDeck(id, xp, exiles).then(decks => {
-        const {
-          deck,
-          upgradedDeck,
-        } = decks;
-        updateDeck(deck.id, deck, false);
-        setNewDeck(upgradedDeck.id, upgradedDeck);
-        if (showNewDeck) {
-          showDeckModal(navigator, upgradedDeck, investigator);
-        } else {
-          navigator.pop();
-        }
-      }, err => {
-        Alert.alert(err.message || err);
-        this.setState({
-          saving: false,
-        });
-      });
+      const upgradeDeckPromise = upgradeDeck(id, xp, exiles);
+      handleAuthErrors(
+        upgradeDeckPromise,
+        decks => {
+          const {
+            deck,
+            upgradedDeck,
+          } = decks;
+          updateDeck(deck.id, deck, false);
+          setNewDeck(upgradedDeck.id, upgradedDeck);
+          if (showNewDeck) {
+            showDeckModal(navigator, upgradedDeck, investigator);
+          } else {
+            navigator.pop();
+          }
+        },
+        () => {
+          this.setState({
+            saving: false,
+          });
+        },
+        () => this.saveUpgrade(),
+        login);
     }
   }
 

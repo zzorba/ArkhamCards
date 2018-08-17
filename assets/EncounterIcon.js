@@ -161,8 +161,9 @@ export default class EncounterIcon extends React.PureComponent {
       case 'epic_multiplayer':
       case 'single_group':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'hote':
+        return this.forgottenIcon('heart_of_the_elders', size, color);
       case 'tfa':
-      case 'hote': // HEART OF THE ELDERS
       case 'tcoa': // THE CITY OF ARCHIVES
       case 'tdoy': // THE DEPTHS OF YOTH
       case 'sha': // SHATTERED AEONS
@@ -191,6 +192,9 @@ export default class EncounterIcon extends React.PureComponent {
       case 'agents_of_yig':
       case 'guardians_of_time':
       case 'pnakotic_brotherhood':
+      case 'heart_of_the_elders':
+      case 'pillars_of_judgement':
+      case 'knyan':
       case 'poison':
         return this.forgottenIcon(encounter_code, size, color);
       default:
