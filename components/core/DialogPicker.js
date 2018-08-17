@@ -158,6 +158,8 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     textAlign: 'center',
+    marginLeft: 8,
+    marginRight: 8,
   },
   cancel: {
     height: 55,

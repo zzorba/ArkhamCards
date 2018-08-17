@@ -58,7 +58,7 @@ class LanguageDialog extends React.Component {
         options={map(LANGUAGES, obj => obj.name)}
         onSelectionChanged={this._selectionChanged}
         header="Change Card Language"
-        description={'Only the card and game text will be translated'}
+        description={'Only the card text will be translated. Syncing Non-English cards can take up to a minute.'}
         selectedOption={selectedLang.name}
       />
     );
