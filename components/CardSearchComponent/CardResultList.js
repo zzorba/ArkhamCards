@@ -155,7 +155,6 @@ class CardResultList extends React.Component {
       deckCardCounts,
     } = this.props;
     const updateDeckCardCounts = (prevProps.deckCardCounts !== deckCardCounts);
-
     if ((this.props.visible && !prevProps.visible && this.state.dirty) ||
         prevProps.query !== this.props.query ||
         prevProps.sort !== this.props.sort ||
@@ -168,7 +167,8 @@ class CardResultList extends React.Component {
           dirty: false,
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
         }, this._throttledUpdateResults);
-      } else {
+      } else if (!this.state.dirty) {
+        /* eslint-disable react/no-did-update-set-state */
         this.setState({
           dirty: true,
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,

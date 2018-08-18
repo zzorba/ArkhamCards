@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
+  BackHandler,
   Button,
   Keyboard,
   Platform,
@@ -57,6 +58,7 @@ class CardSearchComponent extends React.Component {
       visible: true,
     };
 
+    this._handleBackPress = this.handleBackPress.bind(this);
     this._showHeader = this.showHeader.bind(this);
     this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
@@ -93,9 +95,8 @@ class CardSearchComponent extends React.Component {
         id: 'mythos',
       });
     }
-    const leftButtons = props.backButtonText ? [leftButton] : defaultButton;
     props.navigator.setButtons({
-      leftButtons,
+      leftButtons: props.backButtonText ? [leftButton] : defaultButton,
       rightButtons,
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -189,17 +190,17 @@ class CardSearchComponent extends React.Component {
         });
       } else if (event.id === 'mythos') {
         this.toggleMythosMode();
+      } else if (event.id === 'back') {
+        this.handleBackPress();
+        this.props.navigator.pop();
       }
     } else if (event.id === 'willDisappear') {
+      BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
       this.setState({
         visible: false,
       });
-      if (this.isOnTop) {
-        this.handleBackPress();
-        this.isOnTop = false;
-      }
     } else if (event.id === 'willAppear') {
-      this.isOnTop = true;
+      BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
       this.setState({
         visible: true,
       });

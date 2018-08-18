@@ -52,6 +52,7 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       {
         refreshing: false,
         dateUpdated: action.timestamp.getTime(),
+        error: null,
       },
     );
   }

@@ -38,6 +38,7 @@ class DeckEditView extends React.Component {
       slots,
     } = this.props;
     if (slots !== prevProps.slots) {
+      console.log('DECK: component updated, clearing slots');
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
         deckCardCounts: slots,
@@ -46,10 +47,12 @@ class DeckEditView extends React.Component {
   }
 
   backPressed() {
+    console.log('DECK: back pressed');
     this.props.updateSlots(this.state.deckCardCounts);
   }
 
   onDeckCountChange(code, count) {
+    console.log(`DECK: ${code} = ${count}`);
     const newSlots = Object.assign(
       {},
       this.state.deckCardCounts,
@@ -110,6 +113,7 @@ class DeckEditView extends React.Component {
         baseQuery={baseQuery}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
+        backButtonText="Back"
         backPressed={this._backPressed}
         footer={this.renderFooter()}
       />
