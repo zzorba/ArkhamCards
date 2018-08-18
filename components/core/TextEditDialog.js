@@ -146,7 +146,7 @@ export default class TextEditDialog extends React.Component {
         <DialogComponent.Input
           style={[
             { height: height + 12 },
-            isCrossedOut ? {
+            isCrossedOut && Platform.OS === 'ios' ? {
               textDecorationLine: 'line-through',
               textDecorationStyle: 'solid',
               textDecorationColor: '#222',
