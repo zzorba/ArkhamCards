@@ -29,8 +29,12 @@ class DeckEditView extends React.Component {
       slots: props.slots,
     };
 
-    this._backPressed = this.backPressed.bind(this);
+    this._syncDeckCardCounts = this.syncDeckCardCounts.bind(this);
     this._onDeckCountChange = this.onDeckCountChange.bind(this);
+  }
+
+  syncDeckCardCounts() {
+    this.props.updateSlots(this.state.deckCardCounts);
   }
 
   componentDidUpdate(prevProps) {
@@ -38,7 +42,6 @@ class DeckEditView extends React.Component {
       slots,
     } = this.props;
     if (slots !== prevProps.slots) {
-      console.log('DECK: component updated, clearing slots');
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
         deckCardCounts: slots,
@@ -46,13 +49,7 @@ class DeckEditView extends React.Component {
     }
   }
 
-  backPressed() {
-    console.log('DECK: back pressed');
-    this.props.updateSlots(this.state.deckCardCounts);
-  }
-
   onDeckCountChange(code, count) {
-    console.log(`DECK: ${code} = ${count}`);
     const newSlots = Object.assign(
       {},
       this.state.deckCardCounts,
@@ -63,7 +60,7 @@ class DeckEditView extends React.Component {
     }
     this.setState({
       deckCardCounts: newSlots,
-    });
+    }, this._syncDeckCardCounts);
   }
 
   renderFooter() {
@@ -113,8 +110,6 @@ class DeckEditView extends React.Component {
         baseQuery={baseQuery}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
-        backButtonText="Back"
-        backPressed={this._backPressed}
         footer={this.renderFooter()}
       />
     );

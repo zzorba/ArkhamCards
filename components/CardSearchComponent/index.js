@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
-  BackHandler,
   Button,
   Keyboard,
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -37,8 +35,6 @@ class CardSearchComponent extends React.Component {
     // Keyed by code, count of current deck.
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
-    backPressed: PropTypes.func,
-    backButtonText: PropTypes.string,
     limits: PropTypes.object,
     footer: PropTypes.node,
   };
@@ -58,7 +54,6 @@ class CardSearchComponent extends React.Component {
       visible: true,
     };
 
-    this._handleBackPress = this.handleBackPress.bind(this);
     this._showHeader = this.showHeader.bind(this);
     this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
@@ -70,15 +65,6 @@ class CardSearchComponent extends React.Component {
     this._searchUpdated = this.searchUpdated.bind(this);
     this._setFilters = this.setFilters.bind(this);
     this._clearSearchFilters = this.clearSearchFilters.bind(this);
-
-    const leftButton = Platform.OS === 'ios' ? {
-      id: 'back',
-      title: props.backButtonText,
-    } : {
-      id: 'back',
-      icon: iconsMap['arrow-left'],
-    };
-    const defaultButton = Platform.OS === 'ios' ? [] : null;
     const rightButtons = [
       {
         icon: iconsMap.tune,
@@ -96,7 +82,6 @@ class CardSearchComponent extends React.Component {
       });
     }
     props.navigator.setButtons({
-      leftButtons: props.backButtonText ? [leftButton] : defaultButton,
       rightButtons,
     });
     props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -190,17 +175,12 @@ class CardSearchComponent extends React.Component {
         });
       } else if (event.id === 'mythos') {
         this.toggleMythosMode();
-      } else if (event.id === 'back') {
-        this.handleBackPress();
-        this.props.navigator.pop();
       }
     } else if (event.id === 'willDisappear') {
-      BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
       this.setState({
         visible: false,
       });
     } else if (event.id === 'willAppear') {
-      BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
       this.setState({
         visible: true,
       });
@@ -237,14 +217,6 @@ class CardSearchComponent extends React.Component {
       title: mythosMode ? 'Player Cards' : 'Encounter Cards',
     });
 
-  }
-
-  handleBackPress() {
-    const {
-      backPressed,
-    } = this.props;
-    backPressed && backPressed();
-    return true;
   }
 
   searchUpdated(text) {

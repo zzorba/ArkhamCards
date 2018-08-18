@@ -262,13 +262,7 @@ class DeckDetailView extends React.Component {
     const investigator = cards[deck.investigator_code];
     navigator.push({
       screen: 'Deck.Edit',
-      overrideBackPress: true,
-      navigatorButtons: {
-        leftButtons: [{
-          id: 'back',
-          title: 'Back',
-        }],
-      },
+      backButtonTitle: 'Back',
       passProps: {
         deck,
         previousDeck,
