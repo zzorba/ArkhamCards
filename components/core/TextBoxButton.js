@@ -12,58 +12,79 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
 
-export default function TextBoxButton({
-  value,
-  multiline,
-  crossedOut,
-  placeholder,
-  style = {},
-  textStyle = {},
-  ...otherProps
-}) {
-  return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#fff', '#eee']}
-        style={[
-          styles.textBox,
-          style,
-          multiline ? {} : { paddingTop: Platform.OS === 'ios' ? 4 : 2 },
-        ]}
-      >
-        <TextInput
-          style={styles.textInput}
-          editable={false}
-          multiline={multiline}
-          {...otherProps}
-        >
-          <Text style={[
-            typography.text,
-            styles.input,
-            textStyle,
-            crossedOut ? {
-              textDecorationLine: 'line-through',
-              textDecorationStyle: 'solid',
-              textDecorationColor: '#222',
-            } : {},
-            value ? { color: '#222' } : { color: '#aaa' },
-          ]}>
-            { value || placeholder }
-          </Text>
-        </TextInput>
-      </LinearGradient>
-    </View>
-  );
-}
+export default class TextBoxButton extends React.Component {
+  static propTypes = {
+    value: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    crossedOut: PropTypes.bool,
+    style: ViewPropTypes.style,
+    textStyle: PropTypes.any,
+    multiline: PropTypes.bool,
+  };
 
-TextBoxButton.propTypes = {
-  value: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  crossedOut: PropTypes.bool,
-  style: ViewPropTypes.style,
-  textStyle: PropTypes.any,
-  multiline: PropTypes.bool,
-};
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      height: 24,
+    };
+
+    this._updateSize = props.multiline ? this.updateSize.bind(this) : null;
+  }
+
+  updateSize(event) {
+    this.setState({
+      height: event.nativeEvent.contentSize.height,
+    });
+  }
+
+  render() {
+    const {
+      value,
+      multiline,
+      crossedOut,
+      placeholder,
+      style = {},
+      textStyle = {},
+      ...otherProps
+    } = this.props;
+    return (
+      <View style={styles.container}>
+        <LinearGradient
+          colors={['#fff', '#eee']}
+          style={[
+            styles.textBox,
+            style,
+            multiline ? {} : { paddingTop: Platform.OS === 'ios' ? 4 : 2 },
+          ]}
+        >
+          <TextInput
+            style={styles.textInput}
+            editable={false}
+            multiline={multiline}
+            {...otherProps}
+          >
+            <Text style={[
+              typography.text,
+              styles.input,
+              textStyle,
+              multiline ? { height: this.state.height + 12 } : {},
+              crossedOut ? {
+                textDecorationLine: 'line-through',
+                textDecorationStyle: 'solid',
+                textDecorationColor: '#222',
+              } : {},
+              value ? { color: '#222' } : { color: '#aaa' },
+            ]}
+            onContentSizeChange={this._updateSize}>
+              { value || placeholder }
+            </Text>
+          </TextInput>
+        </LinearGradient>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

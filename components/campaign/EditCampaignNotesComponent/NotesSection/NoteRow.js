@@ -57,7 +57,6 @@ export default class NoteRow extends React.Component {
             pointerEvents="none"
             ellipsizeMode="tail"
             multiline
-            numberOfLines={3}
           />
         </TouchableOpacity>
       </View>
