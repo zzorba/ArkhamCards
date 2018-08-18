@@ -2,8 +2,12 @@ import { Navigation } from 'react-native-navigation';
 import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 
+import I18n from 'react-native-i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import { COLORS } from '../styles/colors';
+
+I18n.fallbacks = true;
+
 export default class App {
   constructor() {
     this._handleUrl = this.handleUrl.bind(this);

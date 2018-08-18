@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 
+import I18n from '../../app/i18n';
 import {
   CORE_FACTION_CODES,
   FACTION_COLORS,
@@ -228,18 +229,18 @@ export default class TwoSidedCardComponent extends React.Component {
     if (card.type_code === 'enemy') {
       return (
         <Text>
-          { `Fight: ${num(card.enemy_fight)}. Health: ${num(card.health)}` }
+          { `${I18n.t('Fight')}: ${num(card.enemy_fight)}. ${I18n.t('Health')}: ${num(card.health)}` }
           { !!card.health_per_investigator && PER_INVESTIGATOR_ICON }
-          { `. Evade: ${num(card.enemy_evade)}. ` }
+          { `. ${I18n.t('Evade')}: ${num(card.enemy_evade)}. ` }
           { '\n' }
-          { `Damage: ${num(card.enemy_damage)}. Horror: ${num(card.enemy_horror)}. ` }
+          { `${I18n.t('Damage')}: ${num(card.enemy_damage)}. ${I18n.t('Horror')}: ${num(card.enemy_horror)}. ` }
         </Text>
       );
     }
     if (card.health > 0 || card.sanity > 0) {
       return (
         <Text>
-          { `Health: ${num(card.health)}. Sanity: ${num(card.sanity)}.` }
+          { `${I18n.t('Health')}: ${num(card.health)}. ${I18n.t('Sanity')}: ${num(card.sanity)}.` }
         </Text>
       );
     }

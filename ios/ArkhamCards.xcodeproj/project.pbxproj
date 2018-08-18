@@ -44,6 +44,7 @@
 		65626FAE20D4220B004F4190 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626FAD20D421FB004F4190 /* libReactNativeConfig.a */; };
 		6589F16920E484CB00B556CE /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6589F16620E484BA00B556CE /* libBVLinearGradient.a */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
+		65CA4CE9212892E00084A1CE /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CA4CE6212892D50084A1CE /* libRNI18n.a */; };
 		65CBE5C12049B8D200B47AB4 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5BC2049B07500B47AB4 /* libRNSVG.a */; };
 		65CBE5CB2049E9AB00B47AB4 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5C82049E99400B47AB4 /* libART.a */; };
 		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
@@ -402,6 +403,20 @@
 			remoteGlobalIDString = 5419C2701D824AA700DDF3A1;
 			remoteInfo = AppCenterReactNativeCrashes;
 		};
+		65CA4CE5212892D50084A1CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65CA4CE0212892D40084A1CE /* RNI18n.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNI18n;
+		};
+		65CA4CE7212892D50084A1CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65CA4CE0212892D40084A1CE /* RNI18n.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6476C4051EEAA69700B10F51;
+			remoteInfo = "RNI18n-tvOS";
+		};
 		65CBE5BB2049B07500B47AB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F772014B5F8843CAB79A64AB /* RNSVG.xcodeproj */;
@@ -509,6 +524,11 @@
 		65626F5320D3F14D004F4190 /* RNKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNKeychain.xcodeproj; path = "../node_modules/react-native-keychain/RNKeychain.xcodeproj"; sourceTree = "<group>"; };
 		65626FA820D421FB004F4190 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		65CA4CE0212892D40084A1CE /* RNI18n.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
+		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		65CA4CEB2128932A0084A1CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		65CA4CEC2128932F0084A1CE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		65CA4CED212893370084A1CE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CBE5C22049E99400B47AB4 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		65D3FA05210FF315000F8B9D /* Teutonic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Teutonic.ttf; path = ../assets/Teutonic.ttf; sourceTree = "<group>"; };
 		65EB590D2047B36E00CC5820 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
@@ -565,6 +585,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65CA4CE9212892E00084A1CE /* libRNI18n.a in Frameworks */,
 				6553072F20F6D2D100FDDFC4 /* libRNBlur.a in Frameworks */,
 				655F3D3F20F5AC9F0029A762 /* libRNFetchBlob.a in Frameworks */,
 				6589F16920E484CB00B556CE /* libBVLinearGradient.a in Frameworks */,
@@ -831,6 +852,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		65CA4CE1212892D40084A1CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65CA4CE6212892D50084A1CE /* libRNI18n.a */,
+				65CA4CE8212892D50084A1CE /* libRNI18n-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		65CBE5B72049B07400B47AB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -893,6 +923,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				65CA4CE0212892D40084A1CE /* RNI18n.xcodeproj */,
 				655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */,
 				655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */,
 				6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */,
@@ -1164,6 +1195,10 @@
 				{
 					ProductGroup = 655F3D3A20F5AC930029A762 /* Products */;
 					ProjectRef = 655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = 65CA4CE1212892D40084A1CE /* Products */;
+					ProjectRef = 65CA4CE0212892D40084A1CE /* RNI18n.xcodeproj */;
 				},
 				{
 					ProductGroup = 65626F5420D3F14D004F4190 /* Products */;
@@ -1516,6 +1551,20 @@
 			remoteRef = 65B3F02B20897A2200B0B126 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		65CA4CE6212892D50084A1CE /* libRNI18n.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNI18n.a;
+			remoteRef = 65CA4CE5212892D50084A1CE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65CA4CE8212892D50084A1CE /* libRNI18n-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNI18n-tvOS.a";
+			remoteRef = 65CA4CE7212892D50084A1CE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		65CBE5BC2049B07500B47AB4 /* libRNSVG.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1706,6 +1755,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				13B07FB21A68108700A75B9A /* Base */,
+				65CA4CEA212893160084A1CE /* es */,
+				65CA4CEB2128932A0084A1CE /* de */,
+				65CA4CEC2128932F0084A1CE /* it */,
+				65CA4CED212893370084A1CE /* fr */,
 			);
 			name = LaunchScreen.xib;
 			path = ArkhamCards;
@@ -1870,6 +1923,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1912,6 +1966,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
