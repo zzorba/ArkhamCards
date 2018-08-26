@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import L from '../../app/i18n';
 import Switch from '../core/Switch';
 import SearchBox, { SEARCH_BAR_HEIGHT } from '../SearchBox';
 
@@ -139,7 +140,7 @@ export default class CardSearchBox extends React.Component {
       <Animated.View style={[styles.slider, { height: anim }]}>
         <SearchBox
           onChangeText={this._onChangeText}
-          placeholder="Search for a card"
+          placeholder={L('Search for a card')}
           sideButton={this.renderToggleButton()}
         />
         { this.renderTextSearchOptions() }

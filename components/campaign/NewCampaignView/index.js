@@ -12,6 +12,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../../app/i18n';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import { CUSTOM } from '../constants';
@@ -43,7 +44,7 @@ class NewCampaignView extends React.Component {
     super(props);
 
     props.navigator.setTitle({
-      title: 'New Campaign',
+      title: L('New Campaign'),
     });
 
     this.state = {
@@ -141,21 +142,21 @@ class NewCampaignView extends React.Component {
     if (weaknesses.length) {
       setTimeout(() => {
         Alert.alert(
-          'Adjust Weakness Set',
+          L('Adjust Weakness Set'),
           /* eslint-disable prefer-template */
           (count > 1 ?
-            'This deck contains several basic weaknesses' :
-            'This deck contains a basic weakness') +
+            L('This deck contains several basic weaknesses') :
+            L('This deck contains a basic weakness')) +
           '\n\n' +
           map(weaknesses, code => `${deck.slots[code]}x - ${cardsMap[code].name}`).join('\n') +
           '\n\n' +
           (count > 1 ?
-            'Do you want to remove them from the campaign’s Basic Weakness set?' :
-            'Do you want to remove it from the campaign’s Basic Weakness set?'),
+            L('Do you want to remove them from the campaign’s Basic Weakness set?') :
+            L('Do you want to remove it from the campaign’s Basic Weakness set?')),
           [
-            { text: 'Not Now', style: 'cancel' },
+            { text: L('Not Now'), style: 'cancel' },
             {
-              text: 'Okay',
+              text: L('Okay'),
               style: 'default',
               onPress: () => {
                 const {
@@ -208,7 +209,7 @@ class NewCampaignView extends React.Component {
     navigator.setButtons({
       rightButtons: [
         {
-          title: 'Done',
+          title: L('Done'),
           id: 'save',
           showAsAction: 'ifRoom',
           disabled: campaignCode === CUSTOM && !name,
@@ -231,9 +232,9 @@ class NewCampaignView extends React.Component {
       campaignCode,
     } = this.state;
     if (campaignCode === CUSTOM) {
-      return '(required)';
+      return L('(required)');
     }
-    return `My ${campaign} Campaign`;
+    return L('My {{cycleName}} Campaign', { cycleName: campaign });
   }
 
   onSave() {
@@ -285,12 +286,12 @@ class NewCampaignView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Dialog.EditChaosBag',
-      title: 'Chaos Bag',
+      title: L('Chaos Bag'),
       passProps: {
         chaosBag: this.state.customChaosBag,
         updateChaosBag: this._updateChaosBag,
       },
-      backButtonTitle: 'Cancel',
+      backButtonTitle: L('Cancel'),
     });
   }
 

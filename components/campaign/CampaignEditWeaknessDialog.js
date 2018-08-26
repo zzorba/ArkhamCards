@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../app/i18n';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaign } from './actions';
 import { getCampaign } from '../../reducers';
@@ -22,7 +23,7 @@ class CampaignEditWeaknessDialog extends React.Component {
     this._updateAssignedCards = this.updateAssignedCards.bind(this);
 
     props.navigator.setTitle({
-      title: 'Available weaknesses',
+      title: L('Available weaknesses'),
     });
   }
 

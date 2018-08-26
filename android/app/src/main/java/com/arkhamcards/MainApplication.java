@@ -11,6 +11,7 @@ import com.BV.LinearGradient.LinearGradientPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.react.ReactPackage;
 import com.cmcewen.blurview.BlurViewPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +27,7 @@ public class MainApplication extends NavigationApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
         new ReactNativeConfigPackage(),
+        new RNI18nPackage(),
         new RNAppAuthPackage(),
         new VectorIconsPackage(),
         new RNFetchBlobPackage(),

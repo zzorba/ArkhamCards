@@ -9,6 +9,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../../app/i18n';
 import CampaignItem from './CampaignItem';
 import { CUSTOM } from '../constants';
 import SearchBox from '../../SearchBox';
@@ -76,7 +77,7 @@ class MyCampaignsView extends React.Component {
       if (event.id === 'add') {
         navigator.push({
           screen: 'Campaign.New',
-          backButtonTitle: 'Cancel',
+          backButtonTitle: L('Cancel'),
         });
       }
     }
@@ -133,7 +134,7 @@ class MyCampaignsView extends React.Component {
       >
         <SearchBox
           onChangeText={this._searchChanged}
-          placeholder="Search campaigns"
+          placeholder={L('Search campaigns')}
         />
         { map(this.filteredCampaigns(), campaign => this.renderItem(campaign)) }
       </ScrollView>

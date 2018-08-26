@@ -2,8 +2,10 @@ import { Navigation } from 'react-native-navigation';
 import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 
+import L from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import { COLORS } from '../styles/colors';
+
 export default class App {
   constructor() {
     this._handleUrl = this.handleUrl.bind(this);
@@ -32,23 +34,23 @@ export default class App {
     Navigation.startTabBasedApp({
       tabs: [
         {
-          label: 'Cards',
-          title: 'Player Cards',
+          label: L('Cards'),
+          title: L('Player Cards'),
           icon: iconsMap.cards,
           screen: 'Browse.Cards',
         }, {
-          label: 'Decks',
-          title: 'Decks',
+          label: L('Decks'),
+          title: L('Decks'),
           icon: iconsMap.deck,
           screen: 'My.Decks',
         }, {
-          label: 'Campaigns',
-          title: 'Campaigns',
+          label: L('Campaigns'),
+          title: L('Campaigns'),
           icon: iconsMap.book,
           screen: 'My.Campaigns',
         }, {
-          label: 'Settings',
-          title: 'Settings',
+          label: L('Settings'),
+          title: L('Settings'),
           icon: iconsMap.settings,
           screen: 'Settings',
         },

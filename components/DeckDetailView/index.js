@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import L from '../../app/i18n';
 import { handleAuthErrors } from '../authHelper';
 import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
@@ -262,7 +263,7 @@ class DeckDetailView extends React.Component {
     const investigator = cards[deck.investigator_code];
     navigator.push({
       screen: 'Deck.Edit',
-      backButtonTitle: 'Back',
+      backButtonTitle: L('Back'),
       passProps: {
         deck,
         previousDeck,
@@ -290,9 +291,9 @@ class DeckDetailView extends React.Component {
     } = this.state;
     navigator.push({
       screen: 'Deck.Upgrade',
-      title: 'Upgrade',
+      title: L('Upgrade'),
       subtitle: parsedDeck ? parsedDeck.investigator.name : '',
-      backButtonTitle: 'Cancel',
+      backButtonTitle: L('Cancel'),
       passProps: {
         id: deck.id,
         showNewDeck: true,
@@ -443,7 +444,7 @@ class DeckDetailView extends React.Component {
       showTextEditDialog,
     } = this.props;
     showTextEditDialog(
-      'Edit Deck Name',
+      L('Edit Deck Name'),
       this.state.nameChange || deck.name,
       this._saveName
     );
@@ -457,7 +458,7 @@ class DeckDetailView extends React.Component {
       saving,
     } = this.state;
     return (
-      <Dialog title="Saving" visible={saving} viewRef={viewRef}>
+      <Dialog title={L('Saving')} visible={saving} viewRef={viewRef}>
         <ActivityIndicator
           style={styles.spinner}
           size="large"
@@ -482,14 +483,14 @@ class DeckDetailView extends React.Component {
         <View style={styles.buttonRow}>
           <Button
             style={styles.button}
-            text="Edit"
+            text={L('Edit')}
             color="purple"
             icon={<MaterialIcons size={20} color="#FFFFFF" name="edit" />}
             onPress={this._onEditPressed}
           />
           { !hasPendingEdits && (
             <Button
-              text="Upgrade Deck"
+              text={L('Upgrade Deck')}
               color="yellow"
               icon={<MaterialCommunityIcons size={20} color="#FFFFFF" name="arrow-up-bold" />}
               onPress={this._onUpgradePressed}
@@ -500,12 +501,12 @@ class DeckDetailView extends React.Component {
           <View style={styles.buttonRow}>
             <Button
               style={styles.button}
-              text="Save"
+              text={L('Save')}
               color="green"
               onPress={this._saveEdits}
             />
             <Button
-              text="Cancel Edits"
+              text={L('Cancel Edits')}
               color="red"
               onPress={this._clearEdits}
             />

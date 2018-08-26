@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import L from '../app/i18n';
 import ExileCardSelectorComponent from './ExileCardSelectorComponent';
 
 export default class ExileCardDialog extends React.Component {
@@ -21,7 +22,7 @@ export default class ExileCardDialog extends React.Component {
     props.navigator.setButtons({
       rightButtons: [
         {
-          title: 'Save',
+          title: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
         },

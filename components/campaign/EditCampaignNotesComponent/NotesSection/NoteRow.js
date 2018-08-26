@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../../../app/i18n';
 import TextBoxButton from '../../../core/TextBoxButton';
 
 export default class NoteRow extends React.Component {
@@ -53,7 +54,7 @@ export default class NoteRow extends React.Component {
           <TextBoxButton
             crossedOut={note.startsWith('~')}
             value={note.startsWith('~') ? note.substring(1) : note}
-            placeholder={last ? 'Add note' : null}
+            placeholder={last ? L('Add note') : null}
             pointerEvents="none"
             ellipsizeMode="tail"
             multiline

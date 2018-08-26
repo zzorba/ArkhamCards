@@ -7,6 +7,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../app/i18n';
 import * as Actions from '../actions';
 import PackListComponent from './PackListComponent';
 import { getAllPacks, getPacksInCollection } from '../reducers';
@@ -22,7 +23,7 @@ class CollectionEditView extends React.Component {
 
   componentDidMount() {
     this.props.navigator.setTitle({
-      title: 'Edit Collection',
+      title: L('Edit Collection'),
     });
   }
 

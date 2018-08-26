@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
 
+import L from '../../app/i18n';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
@@ -40,7 +41,7 @@ export default class InvestigatorImage extends React.Component {
       },
       title: `${card.is_unique ? '✷ ' : ''}${card.name}`,
       subtitle: card.subname,
-      backButtonTitle: 'Back',
+      backButtonTitle: L('Back'),
     });
   }
 

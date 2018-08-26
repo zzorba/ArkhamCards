@@ -4,6 +4,7 @@ import { throttle } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../app/i18n';
 import { handleAuthErrors } from './authHelper';
 import { showDeckModal } from './navHelper';
 import InvestigatorsListComponent from './InvestigatorsListComponent';
@@ -52,7 +53,7 @@ class NewDeckView extends React.Component {
 
   componentDidMount() {
     this.props.navigator.setTitle({
-      title: 'New Deck',
+      title: L('New Deck'),
     });
   }
 

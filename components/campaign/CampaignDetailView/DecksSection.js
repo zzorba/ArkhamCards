@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../../app/i18n';
 import CampaignDecks from './CampaignDecks';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';
@@ -42,21 +43,21 @@ class DecksSection extends React.Component {
     if (weaknesses.length) {
       setTimeout(() => {
         Alert.alert(
-          'Adjust Weakness Set',
+          L('Adjust Weakness Set'),
           /* eslint-disable prefer-template */
           (count > 1 ?
-            'This deck contains several basic weaknesses' :
-            'This deck contains a basic weakness') +
+            L('This deck contains several basic weaknesses') :
+            L('This deck contains a basic weakness')) +
           '\n\n' +
           map(weaknesses, code => `${deck.slots[code]}x - ${cardsMap[code].name}`).join('\n') +
           '\n\n' +
           (count > 1 ?
-            'Do you want to remove them from the campaign’s Basic Weakness set?' :
-            'Do you want to remove it from the campaign’s Basic Weakness set?'),
+            L('Do you want to remove them from the campaign’s Basic Weakness set?') :
+            L('Do you want to remove it from the campaign’s Basic Weakness set?')),
           [
-            { text: 'Not Now', style: 'cancel' },
+            { text: L('Not Now'), style: 'cancel' },
             {
-              text: 'Okay',
+              text: L('Okay'),
               style: 'default',
               onPress: () => {
                 const {
@@ -106,18 +107,18 @@ class DecksSection extends React.Component {
 
   removeDeckPrompt(removedDeckId, deck, investigator) {
     Alert.alert(
-      `Remove ${investigator.name}?`,
-      `Are you sure you want to remove ${investigator.name} from this campaign?` +
+      L('Remove {{investigator}}?', { investigator: investigator.name }),
+      L('Are you sure you want to remove {{investigator}} from this campaign?', { investigator: investigator.name }) +
       '\n\n' +
-      'Campaign log data associated with them may be lost (but the deck will remain on ArkhamDB).',
+      L('Campaign log data associated with them may be lost (but the deck will remain on ArkhamDB).'),
       [
         {
-          text: 'Remove',
+          text: L('Remove'),
           onPress: () => this.removeDeck(removedDeckId),
           style: 'destructive',
         },
         {
-          text: 'Cancel',
+          text: L('Cancel'),
           style: 'cancel',
         },
       ],
@@ -131,9 +132,9 @@ class DecksSection extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Deck.Upgrade',
-      title: 'Upgrade',
+      title: L('Upgrade'),
       subtitle: investigator.name,
-      backButtonTitle: 'Cancel',
+      backButtonTitle: L('Cancel'),
       passProps: {
         id: deck.id,
         campaignId: campaignId,

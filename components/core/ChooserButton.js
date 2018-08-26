@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import L from '../../app/i18n';
 import NavButton from './NavButton';
 
 export default class ChooserButton extends React.Component {
@@ -29,9 +30,9 @@ export default class ChooserButton extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'SearchFilters.Chooser',
-      title: `Select ${title}`,
+      title: L('Select {{searchType}}', { searchType: title }),
       passProps: {
-        placeholder: `Search ${title}`,
+        placeholder: L('Search {{searchType}}', { searchType: title }),
         values,
         onChange,
         selection,
@@ -47,7 +48,7 @@ export default class ChooserButton extends React.Component {
     } = this.props;
     return (
       <NavButton
-        text={`${title}: ${selection.length ? selection.join(', ') : 'All'}`}
+        text={`${title}: ${selection.length ? selection.join(', ') : L('All')}`}
         onPress={this._onPress}
         indent={indent}
       />

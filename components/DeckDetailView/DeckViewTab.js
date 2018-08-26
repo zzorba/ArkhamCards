@@ -13,6 +13,7 @@ import {
   ScrollView,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import { DeckType } from '../parseDeck';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
@@ -28,7 +29,7 @@ function deckToSections(halfDeck) {
     const assetCount = sum(halfDeck.Assets.map(subAssets =>
       sum(subAssets.data.map(c => c.quantity))));
     result.push({
-      title: `Assets (${assetCount})`,
+      title: L('Assets ({{count}})', { count: assetCount }),
       data: [],
     });
     halfDeck.Assets.forEach(subAssets => {
@@ -51,12 +52,12 @@ function deckToSections(halfDeck) {
 }
 
 const DECK_PROBLEM_MESSAGES = {
-  too_few_cards: 'Not enough cards.',
-  too_many_cards: 'Too many cards.',
-  too_many_copies: 'Too many copies of a card with the same name.',
-  invalid_cards: 'Contains forbidden cards (cards not permitted by Faction)',
-  deck_options_limit: 'Contains too many limited cards.',
-  investigator: 'Doesn\'t comply with the Investigator requirements.',
+  too_few_cards: L('Not enough cards.'),
+  too_many_cards: L('Too many cards.'),
+  too_many_copies: L('Too many copies of a card with the same name.'),
+  invalid_cards: L('Contains forbidden cards (cards not permitted by Faction)'),
+  deck_options_limit: L('Contains too many limited cards.'),
+  investigator: L('Doesn\'t comply with the Investigator requirements.'),
 };
 
 export default class DeckViewTab extends React.Component {
@@ -89,17 +90,17 @@ export default class DeckViewTab extends React.Component {
       deck,
     } = this.props;
     Alert.alert(
-      `Visit ArkhamDB to delete?`,
-      `Unfortunately to delete decks you have to visit ArkhamDB at this time.`,
+      L('Visit ArkhamDB to delete?'),
+      L('Unfortunately to delete decks you have to visit ArkhamDB at this time.'),
       [
         {
-          text: 'Visit ArkhamDB',
+          text: L('Visit ArkhamDB'),
           onPress: () => {
             Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
           },
         },
         {
-          text: 'Cancel',
+          text: L('Cancel'),
           style: 'cancel',
         },
       ],
@@ -122,7 +123,7 @@ export default class DeckViewTab extends React.Component {
         id: card.code,
         pack_code: card.pack_code,
       },
-      backButtonTitle: 'Back',
+      backButtonTitle: L('Back'),
     });
   }
 
@@ -235,13 +236,16 @@ export default class DeckViewTab extends React.Component {
                   </Text>
                 </TouchableOpacity>
                 <Text style={styles.defaultText}>
-                  { `${normalCardCount} cards (${totalCardCount} total)` }
+                  { L(
+                    '{{cardCount}} cards ({{totalCount}} total)',
+                    { cardCount: normalCardCount, totalCount: totalCardCount }
+                  ) }
                 </Text>
                 <Text style={styles.defaultText}>
-                  { `${experience} experience required.` }
+                  { L('{{xp}} experience required.', { xp: experience }) }
                 </Text>
                 <Text style={styles.defaultText}>
-                  { `${packs} packs required.` }
+                  { L('{{packCount}} packs required.', { packCount: packs }) }
                 </Text>
                 { this.renderProblem() }
               </View>
@@ -270,7 +274,7 @@ export default class DeckViewTab extends React.Component {
           { isPrivate && (
             <View style={styles.button}>
               <Button
-                title="Delete Deck"
+                title={L('Delete Deck')}
                 color={COLORS.red}
                 onPress={this._deleteDeck}
               />

@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../../app/i18n';
 import NavButton from '../../core/NavButton';
 import WeaknessSetView from '../../weakness/WeaknessSetView';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
@@ -33,7 +34,7 @@ class WeaknessSetSection extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Dialog.CampaignDrawWeakness',
-      title: 'Draw Weaknesses',
+      title: L('Draw Weaknesses'),
       passProps: {
         campaignId,
       },
