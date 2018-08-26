@@ -4,7 +4,7 @@ import { concat, filter, forEach, keys, map, mapValues, range, groupBy, pullAt, 
 import { FACTION_CODES, SKILLS } from '../constants';
 
 function filterBy(cardIds, cards, field, value) {
-  return cardIds.filter(c => cards[c.id][field] === value);
+  return cardIds.filter(c => cards[c.id] && cards[c.id][field] === value);
 }
 
 function groupAssets(cardIds, cards) {
@@ -21,12 +21,14 @@ function groupAssets(cardIds, cards) {
 }
 
 function isSpecialCard(card) {
-  return card.code === '01000' ||
+  return card && (
+    card.code === '01000' ||
     card.permanent ||
     card.subtype_code === 'weakness' ||
     card.subtype_code === 'basicweakness' ||
     card.spoiler ||
-    card.restrictions;
+    card.restrictions
+  );
 }
 
 function splitCards(cardIds, cards) {
@@ -46,11 +48,12 @@ function splitCards(cardIds, cards) {
 }
 
 function computeXp(card) {
-  return card.xp ? ((card.exceptional ? 2 : 1) * (card.xp)) : 0;
+  return (card && card.xp) ? ((card.exceptional ? 2 : 1) * (card.xp)) : 0;
 }
 
 function factionCount(cardIds, cards, faction) {
   return sum(cardIds.filter(c => (
+    cards[c.id] &&
     !cards[c.id].permanent &&
     !cards[c.id].double_sided &&
     cards[c.id].code !== '02014' &&
@@ -63,12 +66,13 @@ function costHistogram(cardIds, cards) {
     groupBy(
       cardIds.filter(c => {
         const card = cards[c.id];
-        return !card.permanent &&
+        return card &&
+          !card.permanent &&
           !card.double_sided &&
           card.code !== '02014' && (
           card.type_code === 'asset' || card.type_code === 'event');
       }),
-      c => cards[c.id].cost),
+      c => cards[c.id] ? cards[c.id].cost : 0),
     cs => sum(cs.map(c => c.quantity))
   );
   return range(0, 6).map(cost => costHisto[cost] || 0);
@@ -76,7 +80,7 @@ function costHistogram(cardIds, cards) {
 
 function sumSkillIcons(cardIds, cards, skill) {
   return sum(cardIds.map(c =>
-    (cards[c.id][`skill_${skill}`] || 0) * c.quantity));
+    ((cards[c.id] && cards[c.id][`skill_${skill}`]) || 0) * c.quantity));
 }
 
 function getChangedCards(deck, slots, previousDeck, exiledCards) {
@@ -101,7 +105,7 @@ function getChangedCards(deck, slots, previousDeck, exiledCards) {
 function calculateTotalXp(cards, slots) {
   return sum(map(keys(slots), code => {
     const card = cards[code];
-    return (computeXp(card) || 0) * slots[code];
+    return ((card && computeXp(card)) || 0) * slots[code];
   }));
 }
 
@@ -112,7 +116,9 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
   forEach(keys(exiledCards), code => {
     if (exiledCards[code] > 0) {
       const card = cards[code];
-      forEach(range(0, exiledCards[code]), () => exiledSlots.push(card));
+      if (card) {
+        forEach(range(0, exiledCards[code]), () => exiledSlots.push(card));
+      }
     }
   });
   let adaptableUses = (slots[ADAPTABLE_CODE] || 0) * 2;
@@ -122,17 +128,19 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
   const removedCards = [];
   forEach(keys(changedCards), code => {
     const card = cards[code];
-    if (changedCards[code] < 0) {
-      for (let i = changedCards[code]; i < 0; i++) {
-        removedCards.push(card);
-      }
-    } else {
-      for (let i = 0; i < changedCards[code]; i++) {
-        addedCards.push(card);
-        if (card.code === ARCANE_RESEARCH_CODE) {
-          // Per FAQ, you do not get the arcane research bonus if you just
-          // added this card to your deck.
-          arcaneResearchUses--;
+    if (card) {
+      if (changedCards[code] < 0) {
+        for (let i = changedCards[code]; i < 0; i++) {
+          removedCards.push(card);
+        }
+      } else {
+        for (let i = 0; i < changedCards[code]; i++) {
+          addedCards.push(card);
+          if (card.code === ARCANE_RESEARCH_CODE) {
+            // Per FAQ, you do not get the arcane research bonus if you just
+            // added this card to your deck.
+            arcaneResearchUses--;
+          }
         }
       }
     }
@@ -210,12 +218,14 @@ export function parseDeck(deck, slots, cards, previousDeck) {
   if (!deck) {
     return {};
   }
-  const cardIds = Object.keys(slots).map(id => {
-    return {
-      id,
-      quantity: slots[id],
-    };
-  });
+  const cardIds = map(
+    filter(keys(slots), id => !!cards[id]), 
+    id => {
+      return {
+        id,
+        quantity: slots[id],
+      };
+    });
   const specialCards = cardIds.filter(c => isSpecialCard(cards[c.id]));
   const normalCards = cardIds.filter(c => !isSpecialCard(cards[c.id]));
   const exiledCards = deck.exile_string ? mapValues(

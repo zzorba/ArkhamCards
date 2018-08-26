@@ -76,6 +76,9 @@ class CampaignDeckDetail extends React.Component {
     const validator = new DeckValidation(investigator);
     const problemObj = validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
+      if (!card) {
+        return [];
+      }
       return map(range(0, slots[code]), () => card);
     }));
     return (

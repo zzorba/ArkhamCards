@@ -244,6 +244,19 @@ export default class CardSearchResult extends React.PureComponent {
       toggleValue,
       onPress,
     } = this.props;
+    if (!card) {
+      return (
+        <View style={styles.rowContainer}>
+          <View style={styles.cardNameBlock}>
+            <View style={styles.row}>
+              <Text style={typography.text}>
+                Unknown Card
+              </Text>
+            </View>
+          </View>
+        </View>
+      );
+    }
     if (!card.name) {
       return <Text>No Text</Text>;
     }
