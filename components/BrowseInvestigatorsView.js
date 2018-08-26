@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import L from '../app/i18n';
 import InvestigatorsListComponent from './InvestigatorsListComponent';
 
 export default class BrowseInvestigatorsView extends React.Component {
@@ -16,7 +17,7 @@ export default class BrowseInvestigatorsView extends React.Component {
 
   componentDidMount() {
     this.props.navigator.setTitle({
-      title: 'Investigators',
+      title: L('Investigators'),
     });
   }
 

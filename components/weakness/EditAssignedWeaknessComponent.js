@@ -5,6 +5,7 @@ import {
   ScrollView,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import withWeaknessCards from './withWeaknessCards';
 import CardSearchResult from '../CardSearchResult';
 
@@ -25,7 +26,7 @@ class EditAssignedWeaknessComponent extends React.Component {
     this._cardPressed = this.cardPressed.bind(this);
 
     props.navigator.setTitle({
-      title: 'Available weaknesses',
+      title: L('Available weaknesses'),
     });
   }
 
@@ -51,7 +52,7 @@ class EditAssignedWeaknessComponent extends React.Component {
         id: card.code,
         pack_code: card.pack_code,
         showSpoilers: true,
-        backButtonTitle: 'Back',
+        backButtonTitle: L('Back'),
       },
     });
   }

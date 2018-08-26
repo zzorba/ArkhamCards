@@ -5,6 +5,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../../app/i18n';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import { CUSTOM } from '../constants';
 
@@ -56,7 +57,7 @@ export default class CampaignSelector extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Dialog.Campaign',
-      backButtonTitle: 'Back',
+      backButtonTitle: L('Back'),
       passProps: {
         campaignChanged: this._campaignChanged,
         selected: this.state.selectedCampaign,

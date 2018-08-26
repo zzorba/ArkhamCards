@@ -219,7 +219,7 @@ export function parseDeck(deck, slots, cards, previousDeck) {
     return {};
   }
   const cardIds = map(
-    filter(keys(slots), id => !!cards[id]), 
+    filter(keys(slots), id => !!cards[id]),
     id => {
       return {
         id,

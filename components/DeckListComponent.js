@@ -11,6 +11,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../app/i18n';
 import { searchMatchesText } from './searchHelpers';
 import SearchBox from './SearchBox';
 import DeckListRow from './DeckListRow';
@@ -103,7 +104,7 @@ class DeckListComponent extends React.Component {
       <View style={styles.header}>
         <SearchBox
           onChangeText={this._searchChanged}
-          placeholder="Search decks"
+          placeholder={L('Search decks')}
         />
         { !!customHeader && customHeader }
       </View>

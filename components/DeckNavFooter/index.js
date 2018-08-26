@@ -10,6 +10,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 
+import L from '../../app/i18n';
 import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
 import { DeckType } from '../parseDeck';
@@ -42,7 +43,7 @@ export default class DeckNavFooter extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Deck.Charts',
-      backButtonTitle: 'Deck',
+      backButtonTitle: L('Deck'),
       passProps: {
         parsedDeck,
       },
@@ -61,8 +62,8 @@ export default class DeckNavFooter extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Deck.DrawSimulator',
-      title: 'Draw',
-      backButtonTitle: 'Deck',
+      title: L('Draw'),
+      backButtonTitle: L('Deck'),
       passProps: {
         slots,
       },

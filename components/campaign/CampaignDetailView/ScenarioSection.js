@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../../app/i18n';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import Button from '../../core/Button';
 import NavButton from '../../core/NavButton';
@@ -32,11 +33,11 @@ export default class ScenarioSection extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign.Scenarios',
-      title: 'Scenarios',
+      title: L('Scenarios'),
       passProps: {
         id: campaign.id,
       },
-      backButtonTitle: 'Back',
+      backButtonTitle: L('Back'),
     });
   }
 
@@ -47,11 +48,11 @@ export default class ScenarioSection extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Campaign.AddResult',
-      title: 'Scenario Result',
+      title: L('Scenario Result'),
       passProps: {
         id: campaign.id,
       },
-      backButtonTitle: 'Cancel',
+      backButtonTitle: L('Cancel'),
     });
   }
 
@@ -95,7 +96,7 @@ export default class ScenarioSection extends React.Component {
           <Button
             align="left"
             size="small"
-            text="Record Scenario Results"
+            text={L('Record Scenario Results')}
             onPress={this._addScenarioResult}
           />
         </View>

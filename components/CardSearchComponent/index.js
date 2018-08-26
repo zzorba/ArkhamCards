@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
+import L from '../../app/i18n';
 import CardSearchBox from './CardSearchBox';
 import {
   SORT_BY_TYPE,
@@ -150,7 +151,7 @@ class CardSearchComponent extends React.Component {
         navigator.push({
           screen: 'SearchFilters',
           animationType: 'slide-down',
-          backButtonTitle: 'Apply',
+          backButtonTitle: L('Apply'),
           passProps: {
             applyFilters: this._setFilters,
             defaultFilterState: defaultFilterState,
@@ -214,7 +215,7 @@ class CardSearchComponent extends React.Component {
       rightButtons,
     });
     navigator.setTitle({
-      title: mythosMode ? 'Player Cards' : 'Encounter Cards',
+      title: mythosMode ? L('Player Cards') : L('Encounter Cards'),
     });
 
   }

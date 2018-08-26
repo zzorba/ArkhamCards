@@ -9,6 +9,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../../app/i18n';
 import withTextEditDialog from '../../core/withTextEditDialog';
 import ScenarioSection from './ScenarioSection';
 import XpComponent from '../XpComponent';
@@ -63,7 +64,7 @@ class AddScenarioResultView extends React.Component {
     this.props.navigator.setButtons({
       rightButtons: [
         {
-          title: 'Save',
+          title: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
           disabled: !this.state.scenario.scenario ||
@@ -137,8 +138,7 @@ class AddScenarioResultView extends React.Component {
         <XpComponent xp={xp} onChange={this._xpChanged} />
         <View style={styles.text}>
           <Text style={typography.small}>
-            After saving the scenario result, you can use the "Upgrade Deck"
-            buttons to award XP and adjust trauma for each investigator.
+            { L('After saving the scenario result, you can use the "Upgrade Deck" buttons to award XP and adjust trauma for each investigator.') }
           </Text>
         </View>
         <View style={styles.footer} />

@@ -9,6 +9,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../app/i18n';
 import { isEliminated } from './trauma';
 import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
@@ -43,7 +44,7 @@ class MyDecksSelectorDialog extends React.Component {
     };
 
     this.props.navigator.setTitle({
-      title: 'Choose a Deck',
+      title: L('Choose a Deck'),
     });
     props.navigator.setButtons({
       leftButtons: [

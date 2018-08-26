@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
+import L from '../../app/i18n';
 import Dialog from '../core/Dialog';
 
 export default class AddCampaignNoteSectionDialog extends React.Component {
@@ -98,7 +99,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
         <DialogComponent.Input
           value={name}
           autoFocus
-          placeholder="Section Name"
+          placeholder={L('Section Name')}
           onChangeText={this._onNameChange}
         />
         <DialogComponent.Switch

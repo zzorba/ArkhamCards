@@ -7,6 +7,7 @@ import {
 import { connectRealm } from 'react-native-realm';
 import LinearGradient from 'react-native-linear-gradient';
 
+import L from '../../app/i18n';
 import { applyFilters } from '../../lib/filters';
 import space from '../../styles/space';
 import typography from '../../styles/typography';
@@ -37,7 +38,7 @@ class FilterFooterComponent extends React.Component {
     return (
       <LinearGradient style={styles.footerBar} colors={['#e6e6e6', '#cccccc']}>
         <Text style={[typography.text, space.marginLeftS]}>
-          { `${this.cardCount()} Cards Matched` }
+          { L('{{count}} Cards Matched', { count: this.cardCount() }) }
         </Text>
       </LinearGradient>
     );

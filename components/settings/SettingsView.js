@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 
+import L from '../../app/i18n';
 import { clearDecks } from '../../actions';
 import { fetchCards } from '../cards/actions';
 import { getAllDecks } from '../../reducers';
@@ -34,10 +35,10 @@ class SettingsView extends React.Component {
     super(props);
 
     this._languagePressed = this.languagePressed.bind(this);
-    this._myCollectionPressed = this.navButtonPressed.bind(this, 'My.Collection', 'Edit Collection');
-    this._editSpoilersPressed = this.navButtonPressed.bind(this, 'My.Spoilers', 'Edit Spoilers');
-    this._diagnosticsPressed = this.navButtonPressed.bind(this, 'Settings.Diagnostics', 'App Diagnostics');
-    this._aboutPressed = this.navButtonPressed.bind(this, 'About', 'About');
+    this._myCollectionPressed = this.navButtonPressed.bind(this, 'My.Collection', L('Edit Collection'));
+    this._editSpoilersPressed = this.navButtonPressed.bind(this, 'My.Spoilers', L('Edit Spoilers'));
+    this._diagnosticsPressed = this.navButtonPressed.bind(this, 'Settings.Diagnostics', L('App Diagnostics'));
+    this._aboutPressed = this.navButtonPressed.bind(this, 'About', L('About'));
     this._doSyncCards = this.doSyncCards.bind(this);
   }
 
@@ -54,7 +55,7 @@ class SettingsView extends React.Component {
     this.props.navigator.push({
       screen,
       title,
-      backButtonTitle: 'Done',
+      backButtonTitle: L('Done'),
     });
   }
 
@@ -90,16 +91,16 @@ class SettingsView extends React.Component {
     } = this.props;
     if (cardsLoading) {
       return (
-        <SettingsItem text="Updating cards" loading />
+        <SettingsItem text={L('Updating cards')} loading />
       );
     }
     return (
       <View>
         <SettingsItem
           onPress={this._doSyncCards}
-          text={cardsError ? 'Error: check for updated cards again' : 'Check for updated cards'}
+          text={cardsError ? L('Error: check for updated cards again') : L('Check for updated cards')}
         />
-        <SettingsItem onPress={this._languagePressed} text="Card Language" />
+        <SettingsItem onPress={this._languagePressed} text={L('Card Language')} />
       </View>
     );
   }
@@ -109,11 +110,11 @@ class SettingsView extends React.Component {
       <SafeAreaView style={styles.container}>
         <View style={styles.list}>
           <LoginButton />
-          <SettingsItem onPress={this._myCollectionPressed} text="Card Collection" />
-          <SettingsItem onPress={this._editSpoilersPressed} text="Spoiler Settings" />
+          <SettingsItem onPress={this._myCollectionPressed} text={L('Card Collection')} />
+          <SettingsItem onPress={this._editSpoilersPressed} text={L('Spoiler Settings')} />
           { this.renderSyncCards() }
-          <SettingsItem onPress={this._diagnosticsPressed} text="Diagnostics" />
-          <SettingsItem onPress={this._aboutPressed} text="About" />
+          <SettingsItem onPress={this._diagnosticsPressed} text={L('Diagnostics')} />
+          <SettingsItem onPress={this._aboutPressed} text={L('About')} />
         </View>
       </SafeAreaView>
     );

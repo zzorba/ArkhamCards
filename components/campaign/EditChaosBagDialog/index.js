@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../../app/i18n';
 import ChaosTokenRow from './ChaosTokenRow';
 import { CHAOS_BAG_TOKEN_COUNTS } from '../../../constants';
 import typography from '../../../styles/typography';
@@ -30,7 +31,7 @@ export default class EditChaosBagDialog extends React.Component {
     props.navigator.setButtons({
       rightButtons: [
         {
-          title: 'Save',
+          title: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
         },

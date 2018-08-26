@@ -1,5 +1,6 @@
 import { forEach, filter, head, keys, map } from 'lodash';
 
+import L from '../app/i18n';
 import CardRequirement from './CardRequirement';
 import CardRestrictions from './CardRestrictions';
 import DeckRequirement from './DeckRequirement';
@@ -18,9 +19,12 @@ export default class Card {
       return '';
     }
     if (this.permanent || this.double_sided || linked) {
-      return 'Cost: -';
+      return L('Cost: -');
     }
-    return `Cost: ${this.cost !== null ? this.cost : 'X'}`;
+    return L(
+      'Cost: {{cost}}',
+      { cost: this.cost !== null ? this.cost : 'X' }
+    );
   }
 
   static parseDeckRequirements(json) {
@@ -94,26 +98,26 @@ export default class Card {
 
   static factionSortHeader(json) {
     if (json.spoiler) {
-      return 'Mythos';
+      return L('Mythos');
     }
     switch(json.subtype_code) {
       case 'basicweakness':
       case 'weakness':
-        return 'Weakness';
+        return L('Weakness');
       default: {
         switch(json.faction_code) {
           case 'guardian':
-            return 'Guardian';
+            return L('Guardian');
           case 'rogue':
-            return 'Rogue';
+            return L('Rogue');
           case 'mystic':
-            return 'Mystic';
+            return L('Mystic');
           case 'seeker':
-            return 'Seeker';
+            return L('Seeker');
           case 'survivor':
-            return 'Survivor';
+            return L('Survivor');
           case 'neutral':
-            return 'Neutral';
+            return L('Neutral');
           default:
             return json.faction_name;
         }
@@ -122,22 +126,22 @@ export default class Card {
   }
 
   static TYPE_HEADER_ORDER = [
-    'Investigator',
-    'Asset: Hand',
-    'Asset: Hand x2',
-    'Asset: Accessory',
-    'Asset: Ally',
-    'Asset: Arcane',
-    'Asset: Arcane x2',
-    'Asset: Body',
-    'Asset: Permanent',
-    'Asset: Other',
-    'Event',
-    'Skill',
-    'Basic Weakness',
-    'Weakness',
-    'Scenario',
-    'Story',
+    L('Investigator'),
+    L('Asset: Hand'),
+    L('Asset: Hand x2'),
+    L('Asset: Accessory'),
+    L('Asset: Ally'),
+    L('Asset: Arcane'),
+    L('Asset: Arcane x2'),
+    L('Asset: Body'),
+    L('Asset: Permanent'),
+    L('Asset: Other'),
+    L('Event'),
+    L('Skill'),
+    L('Basic Weakness'),
+    L('Weakness'),
+    L('Scenario'),
+    L('Story'),
   ];
 
   static typeSortHeader(json) {
@@ -146,42 +150,50 @@ export default class Card {
     }
     switch(json.subtype_code) {
       case 'basicweakness':
-        return 'Basic Weakness';
+        return L('Basic Weakness');
       case 'weakness':
-        return 'Weakness';
+        return L('Weakness');
       default:
         switch(json.type_code) {
           case 'asset':
             if (json.spoiler) {
-              return 'Story';
+              return L('Story');
             }
             if (json.permanent || json.double_sided) {
-              return 'Asset: Permanent';
+              return L('Asset: Permanent');
             }
             switch(json.slot) {
-              case 'Hand': return 'Asset: Hand';
-              case 'Hand x2': return 'Asset: Hand x2';
-              case 'Accessory': return 'Asset: Accessory';
-              case 'Ally': return 'Asset: Ally';
-              case 'Arcane': return 'Asset: Arcane';
-              case 'Arcane x2': return 'Asset: Arcane x2';
-              case 'Body': return 'Asset: Body';
-              default: return 'Asset: Other';
+              case 'Hand':
+                return L('Asset: Hand');
+              case 'Hand x2':
+                return L('Asset: Hand x2');
+              case 'Accessory':
+                return L('Asset: Accessory');
+              case 'Ally':
+                return L('Asset: Ally');
+              case 'Arcane':
+                return L('Asset: Arcane');
+              case 'Arcane x2':
+                return L('Asset: Arcane x2');
+              case 'Body':
+                return L('Asset: Body');
+              default:
+                return L('Asset: Other');
             }
           case 'event':
             if (json.spoiler) {
-              return 'Story';
+              return L('Story');
             }
-            return 'Event';
+            return L('Event');
           case 'skill':
             if (json.spoiler) {
-              return 'Story';
+              return L('Story');
             }
-            return 'Skill';
+            return L('Skill');
           case 'investigator':
-            return 'Investigator';
+            return L('Investigator');
           default:
-            return 'Scenario';
+            return L('Scenario');
         }
     }
   }
@@ -212,11 +224,11 @@ export default class Card {
     let renderName = json.name;
     let renderSubname = json.subname;
     if (json.type_code === 'act' && json.stage) {
-      renderSubname = `Act ${json.stage}`;
+      renderSubname = L('Act {{stage}}', { stage: json.stage });
     } else if (json.type_code === 'agenda' && json.stage) {
-      renderSubname = `Agenda ${json.stage}`;
+      renderSubname = L('Agenda {{stage}}', { stage: json.stage });
     } else if (json.type_code === 'scenario') {
-      renderSubname = 'Scenario';
+      renderSubname = L('Scenario');
     }
     const linked_card = json.linked_card ?
       Card.fromJson(json.linked_card, packsByCode, cycleNames) :
@@ -226,9 +238,9 @@ export default class Card {
       if (json.hidden && !linked_card.hidden) {
         renderName = linked_card.name;
         if (linked_card.type_code === 'act' && linked_card.stage) {
-          renderSubname = `Act ${linked_card.stage}`;
+          renderSubname = L('Act {{stage}}', { stage: linked_card.stage });
         } else if (linked_card.type_code === 'agenda' && linked_card.stage) {
-          renderSubname = `Agenda ${linked_card.stage}`;
+          renderSubname = L('Agenda {{stage}}', { stage: linked_card.stage });
         } else {
           renderSubname = linked_card.subname;
         }

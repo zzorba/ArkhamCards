@@ -11,6 +11,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../../app/i18n';
 import CycleItem from './CycleItem';
 import { CUSTOM } from '../constants';
 import { getPacksInCollection } from '../../../reducers';
@@ -39,7 +40,7 @@ class SelectCampaignDialog extends React.Component {
 
   componentDidMount() {
     this.props.navigator.setTitle({
-      title: 'Select Campaign',
+      title: L('Select Campaign'),
     });
   }
 

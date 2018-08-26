@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint index.js './**/*.js'",
+    "i18n": "node scripts/i18n.js",
     "test": "jest"
   },
   "dependencies": {
@@ -59,6 +60,7 @@
     "eslint-plugin-destructuring": "2.1.0",
     "eslint-plugin-react": "7.10.0",
     "eslint-plugin-react-native": "3.2.1",
+    "i18n-extract": "0.6.1",
     "jest": "23.4.1",
     "react-test-renderer": "16.4.1",
     "reactotron-react-native": "2.0.0",

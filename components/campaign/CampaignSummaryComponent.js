@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import EncounterIcon from '../../assets/EncounterIcon';
 import { CUSTOM } from './constants';
 import { CAMPAIGN_NAMES, CAMPAIGN_COLORS } from '../../constants';
@@ -68,7 +69,7 @@ export default class CampaignSummaryComponent extends React.Component {
       return (
         <View style={styles.marginTop}>
           <Text style={typography.smallLabel}>
-            { latestScenario.interlude ? 'LATEST INTERLUDE' : 'LATEST SCENARIO' }
+            { latestScenario.interlude ? L('LATEST INTERLUDE') : L('LATEST SCENARIO') }
           </Text>
           <Text style={typography.gameFont}>
             { `${latestScenario.scenario}${resolution}${xp}` }
@@ -79,7 +80,7 @@ export default class CampaignSummaryComponent extends React.Component {
     return (
       <View style={styles.marginTop}>
         <Text style={typography.text}>
-          Not yet started
+          { L('Not yet started') }
         </Text>
       </View>
     );

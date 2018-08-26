@@ -10,6 +10,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../app/i18n';
 import * as Actions from '../../actions';
 
 class LoginButton extends React.Component {
@@ -28,14 +29,12 @@ class LoginButton extends React.Component {
 
   logOutPressed() {
     Alert.alert(
-      'Are you sure you want to sign out?',
-      'Data on ArkhamDB will be preserved, but all Campaign data and any edits ' +
-      'made without internet might be lost.\n\n' +
-      'If you are having trouble with your account you can also reconnect.',
+      L('Are you sure you want to sign out?'),
+      L('Data on ArkhamDB will be preserved, but all Campaign data and any edits made without internet might be lost.\n\n If you are having trouble with your account you can also reconnect.'),
       [
-        { text: 'Sign Out', style: 'destructive', onPress: this.props.logout },
-        { text: 'Reconnect Account', onPress: this.props.login },
-        { text: 'Cancel' },
+        { text: L('Sign Out'), style: 'destructive', onPress: this.props.logout },
+        { text: L('Reconnect Account'), onPress: this.props.login },
+        { text: L('Cancel') },
       ],
     );
   }
@@ -60,14 +59,14 @@ class LoginButton extends React.Component {
     if (signedIn) {
       return (
         <View style={styles.wrapper}>
-          <Button onPress={this._logOutPressed} title="Sign out of ArkhamDB" />
+          <Button onPress={this._logOutPressed} title={L('Sign out of ArkhamDB')} />
         </View>
       );
     }
 
     return (
       <View style={styles.wrapper}>
-        <Button onPress={login} title="Sign in to ArkhamDB" />
+        <Button onPress={login} title={L('Sign in to ArkhamDB')} />
       </View>
     );
   }

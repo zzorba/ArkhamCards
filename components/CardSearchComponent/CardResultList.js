@@ -15,6 +15,7 @@ import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../app/i18n';
 import * as Actions from '../../actions';
 import { getPackSpoilers } from '../../reducers';
 import Card from '../../data/Card';
@@ -193,7 +194,7 @@ class CardResultList extends React.Component {
     Keyboard.dismiss();
     this.props.navigator.push({
       screen: 'My.Spoilers',
-      title: 'Spoiler Settings',
+      title: L('Spoiler Settings'),
     });
   }
 
@@ -307,7 +308,7 @@ class CardResultList extends React.Component {
         id: card.code,
         pack_code: card.pack_code,
         showSpoilers: true,
-        backButtonTitle: 'Back',
+        backButtonTitle: L('Back'),
       },
     });
   }

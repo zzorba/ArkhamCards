@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import I18n from '../../app/i18n';
+import L from '../../app/i18n';
 import {
   CORE_FACTION_CODES,
   FACTION_COLORS,
@@ -92,7 +92,7 @@ export default class TwoSidedCardComponent extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Card.Faq',
-      title: 'FAQ',
+      title: L('FAQ'),
       subtitle: card.name,
       passProps: {
         id: card.code,
@@ -108,11 +108,11 @@ export default class TwoSidedCardComponent extends React.Component {
 
     navigator.push({
       screen: 'Browse.InvestigatorCards',
-      title: 'Allowed Cards',
+      title: L('Allowed Cards'),
       passProps: {
         investigatorCode: card.code,
       },
-      backButtonTitle: 'Back',
+      backButtonTitle: L('Back'),
     });
   }
 
@@ -160,7 +160,7 @@ export default class TwoSidedCardComponent extends React.Component {
     return (
       <View style={styles.testIconRow}>
         <Text>
-          { 'Test Icons: ' }
+          { L('Test Icons: ') }
         </Text>
         { map(skills, (skill, idx) => (
           <ArkhamIcon
@@ -182,7 +182,7 @@ export default class TwoSidedCardComponent extends React.Component {
     return (
       <View style={styles.slotBlock}>
         <Text>
-          Slot: { card.slot }
+          { L('Slot: {{slot}}', { slot: card.slot }) }
         </Text>
       </View>
     );
@@ -229,18 +229,18 @@ export default class TwoSidedCardComponent extends React.Component {
     if (card.type_code === 'enemy') {
       return (
         <Text>
-          { `${I18n.t('Fight')}: ${num(card.enemy_fight)}. ${I18n.t('Health')}: ${num(card.health)}` }
+          { `${L('Fight')}: ${num(card.enemy_fight)}. ${L('Health')}: ${num(card.health)}` }
           { !!card.health_per_investigator && PER_INVESTIGATOR_ICON }
-          { `. ${I18n.t('Evade')}: ${num(card.enemy_evade)}. ` }
+          { `. ${L('Evade')}: ${num(card.enemy_evade)}. ` }
           { '\n' }
-          { `${I18n.t('Damage')}: ${num(card.enemy_damage)}. ${I18n.t('Horror')}: ${num(card.enemy_horror)}. ` }
+          { `${L('Damage')}: ${num(card.enemy_damage)}. ${L('Horror')}: ${num(card.enemy_horror)}. ` }
         </Text>
       );
     }
     if (card.health > 0 || card.sanity > 0) {
       return (
         <Text>
-          { `${I18n.t('Health')}: ${num(card.health)}. ${I18n.t('Sanity')}: ${num(card.sanity)}.` }
+          { `${L('Health')}: ${num(card.health)}. ${L('Sanity')}: ${num(card.sanity)}.` }
         </Text>
       );
     }
@@ -374,7 +374,7 @@ export default class TwoSidedCardComponent extends React.Component {
     if (!backFirst && card.spoiler && !this.state.showBack && card.type_code !== 'scenario') {
       return (
         <View style={styles.buttonContainer}>
-          <Button text="Show back" onPress={this._toggleShowBack} />
+          <Button text={L('Show back')} onPress={this._toggleShowBack} />
         </View>
       );
     }
@@ -420,7 +420,7 @@ export default class TwoSidedCardComponent extends React.Component {
     return (
       <View style={styles.buttonContainer}>
         <Button
-          text="FAQ"
+          text={L('FAQ')}
           onPress={this._showFaq}
           icon={<AppIcon name="faq" size={18} color="white" />}
         />
@@ -435,17 +435,20 @@ export default class TwoSidedCardComponent extends React.Component {
           { !!card.illustrator && (
             <Text style={styles.illustratorText}>
               <AppIcon name="paintbrush" size={12} color="#000000" />
-              { card.illustrator }
+              { ` ${card.illustrator}` }
             </Text>
           ) }
           { !!card.pack_name &&
             <View style={styles.setRow}>
               <Text>
-                { `${card.cycle_name} #${card.position % 1000}.` }
+                { `${card.pack_name} #${card.position % 1000}.` }
               </Text>
               { !!card.encounter_name &&
                 <Text>
-                  { `${card.encounter_name} #${card.encounter_position}.${card.quantity > 1 ? `\n${card.quantity} copies.` : ''}` }
+                  { `${card.encounter_name} #${card.encounter_position}.${card.quantity > 1 ?
+                    `\n${L('{{quantity}} copies.', { quantity: card.quantity })}` :
+                    ''
+                  }` }
                 </Text>
               }
             </View>
@@ -466,7 +469,7 @@ export default class TwoSidedCardComponent extends React.Component {
       return (
         <View style={styles.buttonContainer}>
           <Button
-            text={(card.hidden || backFirst) ? 'Show back' : 'Show front'}
+            text={(card.hidden || backFirst) ? L('Show back') : L('Show front')}
             onPress={this._toggleShowBack}
           />
         </View>
@@ -509,7 +512,7 @@ export default class TwoSidedCardComponent extends React.Component {
               }
               { ('victory' in card && card.victory !== null) &&
                 <Text style={styles.typeText}>
-                  { `Victory: ${card.victory}.` }
+                  { L('Victory: {{points}}.', { points: card.victory }) }
                 </Text>
               }
               { !!card.flavor && !flavorFirst &&

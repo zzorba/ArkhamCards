@@ -12,6 +12,7 @@ import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../app/i18n';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import typography from '../../styles/typography';
@@ -98,7 +99,7 @@ class CardDetailView extends React.Component {
     } = this.props;
     navigator.push({
       screen: 'Card.Faq',
-      title: 'FAQ',
+      title: L('FAQ'),
       subtitle: card.name,
       passProps: {
         id: card.code,
@@ -114,11 +115,11 @@ class CardDetailView extends React.Component {
 
     navigator.push({
       screen: 'Browse.InvestigatorCards',
-      title: 'Allowed Cards',
+      title: L('Allowed Cards'),
       passProps: {
         investigatorCode: card.code,
       },
-      backButtonTitle: 'Back',
+      backButtonTitle: L('Back'),
     });
   }
 

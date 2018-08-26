@@ -5,6 +5,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import ToggleFilter from '../core/ToggleFilter';
 import SliderChooser from './SliderChooser';
 import withFilterFunctions from './withFilterFunctions';
@@ -23,7 +24,7 @@ class CardLocationFilterView extends React.Component {
     super(props);
 
     props.navigator.setTitle({
-      title: 'Location Filters',
+      title: L('Location Filters'),
     });
   }
 
@@ -44,7 +45,7 @@ class CardLocationFilterView extends React.Component {
     return (
       <ScrollView>
         <SliderChooser
-          label="Shroud"
+          label={L('Shroud')}
           width={width}
           max={defaultFilterState.shroud[1]}
           values={shroud}
@@ -55,7 +56,7 @@ class CardLocationFilterView extends React.Component {
           onToggleChange={onToggleChange}
         />
         <SliderChooser
-          label="Clues"
+          label={L('Clues')}
           width={width}
           max={defaultFilterState.clues[1]}
           values={clues}
@@ -68,7 +69,7 @@ class CardLocationFilterView extends React.Component {
         >
           <View>
             <ToggleFilter
-              label="Per Investigator"
+              label={L('Per Investigator')}
               setting="cluesFixed"
               value={!cluesFixed}
               onChange={onToggleChange}

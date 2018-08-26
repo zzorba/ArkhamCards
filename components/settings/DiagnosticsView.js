@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 
+import L from '../../app/i18n';
 import withTextEditDialog from '../core/withTextEditDialog';
 import { clearDecks } from '../../actions';
 import { getCampaigns } from '../../reducers';
@@ -53,13 +54,15 @@ class DiagnosticsView extends React.Component {
       if (newCampaigns.length) {
         const newCampaignNames = map(newCampaigns, campaign => campaign.name).join('\n');
         Alert.alert(
-          'Confirm import',
-          `We found the following campaigns:\n${newCampaignNames}\nAre you sure you want to import this and erase your current campaigns?`,
+          L('Confirm import'),
+          L(
+            'We found the following campaigns:\n{{campaignNames}}\nAre you sure you want to import this and erase your current campaigns?',
+            { campaignNames: newCampaignNames }),
           [{
-            text: 'Nevermind',
+            text: L('Nevermind'),
             style: 'cancel',
           }, {
-            text: 'Save These Campaigns',
+            text: L('Save These Campaigns'),
             style: 'destructive',
             onPress: () => {
               this.props.setAllCampaigns(newCampaigns);
@@ -72,8 +75,8 @@ class DiagnosticsView extends React.Component {
       console.log(e);
     }
     Alert.alert(
-      'Problem with import',
-      'We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.',
+      L('Problem with import'),
+      L('We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.'),
     );
   }
 
@@ -83,18 +86,23 @@ class DiagnosticsView extends React.Component {
       showTextEditDialog,
     } = this.props;
     const erasedCampaigns = map(campaigns, campaign => campaign.name).join('\n');
+    const erasedCopy = erasedCampaigns ?
+      L('The following campaigns will be ERASED: \n{{campaigns}}',
+        { campaigns: erasedCampaigns }) : '';
     Alert.alert(
-      'Restore campaign data?',
-      `This feature is intended for advanced diagnostics or to import data from another app.\n\n${erasedCampaigns ? `The following campaigns will be ERASED: \n${erasedCampaigns}` : ''}`,
+      L('Restore campaign data?'),
+      L('This feature is intended for advanced diagnostics or to import data from another app.\n\n{{erasedCampaigns}}',
+        { erasedCampaigns: erasedCopy }
+      ),
       [{
-        text: 'Nevermind',
+        text: L('Nevermind'),
         style: 'cancel',
       }, {
-        text: 'Import and Erase Current Campaigns',
+        text: L('Import and Erase Current Campaigns'),
         style: 'destructive',
         onPress: () => {
           showTextEditDialog(
-            'Paste Backup Here',
+            L('Paste Backup Here'),
             '',
             (json) => {
               Keyboard.dismiss();
@@ -110,13 +118,13 @@ class DiagnosticsView extends React.Component {
 
   exportCampaignData() {
     Alert.alert(
-      'Backup campaign data?',
-      'This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.',
+      L('Backup campaign data?'),
+      L('This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.'),
       [{
-        text: 'Cancel',
+        text: L('Cancel'),
         style: 'cancel',
       }, {
-        text: 'Export Campaign Data',
+        text: L('Export Campaign Data'),
         onPress: () => {
           Share.share({
             message: JSON.stringify(this.props.campaigns),
@@ -156,10 +164,10 @@ class DiagnosticsView extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.list}>
-          <SettingsItem onPress={this._exportCampaignData} text="Backup Campaign Data" />
-          <SettingsItem onPress={this._importCampaignData} text="Restore Campaign Data" />
-          <SettingsItem onPress={this._clearImageCache} text="Clear image cache" />
-          <SettingsItem onPress={this._clearCache} text="Clear cache" />
+          <SettingsItem onPress={this._exportCampaignData} text={L('Backup Campaign Data')} />
+          <SettingsItem onPress={this._importCampaignData} text={L('Restore Campaign Data')} />
+          <SettingsItem onPress={this._clearImageCache} text={L('Clear image cache')} />
+          <SettingsItem onPress={this._clearCache} text={L('Clear cache')} />
         </View>
       </SafeAreaView>
     );

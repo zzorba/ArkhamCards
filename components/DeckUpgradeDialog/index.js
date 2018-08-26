@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import L from '../../app/i18n';
 import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
@@ -62,7 +63,7 @@ class DeckUpgradeDialog extends React.Component {
     props.navigator.setButtons({
       rightButtons: [
         {
-          title: 'Save',
+          title: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
         },
