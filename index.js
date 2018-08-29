@@ -29,4 +29,4 @@ const { store /* , persistor */ } = configureStore({});
 registerScreens(store, MyProvider);
 
 /* eslint-disable no-unused-vars */
-const app = new App();
+const app = new App(store);

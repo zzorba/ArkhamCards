@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
+import L from '../../app/i18n';
 import withPlayerCards from '../withPlayerCards';
 
 export default function listOfDecks(DeckComponent) {
@@ -71,7 +72,7 @@ export default function listOfDecks(DeckComponent) {
           )) }
           { !!deckAdded && (
             <View style={styles.button}>
-              <Button title="Add Investigator" onPress={this._showDeckSelector} />
+              <Button title={L('Add Investigator')} onPress={this._showDeckSelector} />
             </View>
           ) }
         </View>

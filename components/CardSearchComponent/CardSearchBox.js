@@ -93,17 +93,17 @@ export default class CardSearchBox extends React.Component {
     } = this.props;
     return (
       <View style={styles.textSearchOptions}>
-        <Text style={styles.searchOption}>{ 'Game\nText' }</Text>
+        <Text style={styles.searchOption}>{ L('Game\nText') }</Text>
         <Switch
           value={searchText}
           onValueChange={toggleSearchText}
         />
-        <Text style={styles.searchOption}>{ 'Flavor\nText' }</Text>
+        <Text style={styles.searchOption}>{ L('Flavor\nText') }</Text>
         <Switch
           value={searchFlavor}
           onValueChange={toggleSearchFlavor}
         />
-        <Text style={styles.searchOption}>{ 'Card\nBacks' }</Text>
+        <Text style={styles.searchOption}>{ L('Card\nBacks') }</Text>
         <Switch
           value={searchBack}
           onValueChange={toggleSearchBack}

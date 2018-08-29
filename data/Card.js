@@ -86,14 +86,14 @@ export default class Card {
   }
 
   static FACTION_HEADER_ORDER = [
-    'Guardian',
-    'Seeker',
-    'Mystic',
-    'Rogue',
-    'Survivor',
-    'Neutral',
-    'Weakness',
-    'Mythos',
+    L('Guardian'),
+    L('Seeker'),
+    L('Mystic'),
+    L('Rogue'),
+    L('Survivor'),
+    L('Neutral'),
+    L('Weakness'),
+    L('Mythos'),
   ];
 
   static factionSortHeader(json) {
@@ -198,7 +198,7 @@ export default class Card {
     }
   }
 
-  static fromJson(json, packsByCode, cycleNames) {
+  static fromJson(json, packsByCode, cycleNames, lang) {
     if (json.code === '02041') {
       json.subtype_code = null;
       json.subtype_name = null;
@@ -224,23 +224,23 @@ export default class Card {
     let renderName = json.name;
     let renderSubname = json.subname;
     if (json.type_code === 'act' && json.stage) {
-      renderSubname = L('Act {{stage}}', { stage: json.stage });
+      renderSubname = L('Act {{stage}}', { stage: json.stage, locale: lang });
     } else if (json.type_code === 'agenda' && json.stage) {
-      renderSubname = L('Agenda {{stage}}', { stage: json.stage });
+      renderSubname = L('Agenda {{stage}}', { stage: json.stage, locale: lang });
     } else if (json.type_code === 'scenario') {
-      renderSubname = L('Scenario');
+      renderSubname = L('Scenario', { locale: lang });
     }
     const linked_card = json.linked_card ?
-      Card.fromJson(json.linked_card, packsByCode, cycleNames) :
+      Card.fromJson(json.linked_card, packsByCode, cycleNames, lang) :
       null;
     if (linked_card) {
       linked_card.back_linked = true;
       if (json.hidden && !linked_card.hidden) {
         renderName = linked_card.name;
         if (linked_card.type_code === 'act' && linked_card.stage) {
-          renderSubname = L('Act {{stage}}', { stage: linked_card.stage });
+          renderSubname = L('Act {{stage}}', { stage: linked_card.stage, locale: lang });
         } else if (linked_card.type_code === 'agenda' && linked_card.stage) {
-          renderSubname = L('Agenda {{stage}}', { stage: linked_card.stage });
+          renderSubname = L('Agenda {{stage}}', { stage: linked_card.stage, locale: lang });
         } else {
           renderSubname = linked_card.subname;
         }

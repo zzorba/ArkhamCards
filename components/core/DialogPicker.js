@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import DialogOption from './DialogOption';
 import typography from '../../styles/typography';
 
@@ -109,7 +110,7 @@ export default class DialogPicker extends React.Component {
           </ScrollView>
           <View style={styles.cancel}>
             <TouchableOpacity onPress={this._hide}>
-              <Text style={styles.cancelText}>Cancel</Text>
+              <Text style={styles.cancelText}>{ L('Cancel') }</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -346,7 +346,7 @@ class CardSearchComponent extends React.Component {
           <View style={styles.button}>
             <Button
               onPress={this._toggleMythosMode}
-              title={mythosMode ? 'Search Player Cards' : 'Search Encounter Cards'}
+              title={mythosMode ? L('Search Player Cards') : L('Search Encounter Cards')}
             />
           </View>
         ) }
@@ -354,7 +354,7 @@ class CardSearchComponent extends React.Component {
           <View style={styles.button}>
             <Button
               onPress={this._clearSearchFilters}
-              title="Clear Search Filters"
+              title={L('Clear Search Filters')}
             />
           </View>
         ) }
@@ -377,7 +377,7 @@ class CardSearchComponent extends React.Component {
         { !searchText && (
           <View style={styles.toggle}>
             <Text style={[typography.text, styles.toggleText]}>
-              Search Game Text
+              { L('Search Game Text') }
             </Text>
             <Switch value={false} onValueChange={this._toggleSearchText} />
           </View>
@@ -385,7 +385,7 @@ class CardSearchComponent extends React.Component {
         { !searchBack && (
           <View style={styles.toggle}>
             <Text style={[typography.text, styles.toggleText]}>
-              Search Card Backs
+              { L('Search Card Backs') }
             </Text>
             <Switch value={false} onValueChange={this._toggleSearchBack} />
           </View>
