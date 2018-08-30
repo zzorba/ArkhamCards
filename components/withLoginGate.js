@@ -11,6 +11,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../app/i18n';
 import * as Actions from '../actions';
 
 /**
@@ -47,7 +48,7 @@ export default function withLoginGate(WrappedComponent, message) {
         return (
           <View style={styles.signInContainer}>
             { !!message && <Text style={styles.messageText}>{ message }</Text> }
-            <Button title="Sign in to ArkhamDB" onPress={login} />
+            <Button title={L('Sign in to ArkhamDB')} onPress={login} />
           </View>
         );
       }

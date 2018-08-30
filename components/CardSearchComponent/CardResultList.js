@@ -374,17 +374,14 @@ class CardResultList extends React.Component {
           <View style={styles.button}>
             <Button
               onPress={this._editSpoilerSettings}
-              title="Edit Spoiler Settings"
+              title={L('Edit Spoiler Settings')}
             />
           </View>
           { this.renderEmptyState() }
         </View>
       );
     }
-    const spoilerCount = spoilerCardsCount > 1 ?
-      `Show ${spoilerCardsCount} Spoilers` :
-      'Show Spoiler';
-
+    const spoilerCount = L('Show {{count}} Spoilers', { count: spoilerCardsCount });
     return (
       <View style={styles.footer}>
         <View style={styles.button}>
@@ -393,7 +390,7 @@ class CardResultList extends React.Component {
         <View style={styles.button}>
           <Button
             onPress={this._editSpoilerSettings}
-            title="Edit Spoiler Settings"
+            title={L('Edit Spoiler Settings')}
           />
         </View>
         { this.renderEmptyState() }

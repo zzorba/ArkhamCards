@@ -8,6 +8,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../app/i18n';
 import WeaknessSetPackChooserComponent from './WeaknessSetPackChooserComponent';
 import Button from '../core/Button';
 import withTextEditDialog from '../core/withTextEditDialog';
@@ -73,7 +74,7 @@ class NewWeaknessSetDialog extends React.Component {
   renderFooter() {
     return (
       <View style={styles.button}>
-        <Button text="Create" onPress={this._onSavePressed} />
+        <Button text={L('Create')} onPress={this._onSavePressed} />
       </View>
     );
   }
@@ -85,7 +86,7 @@ class NewWeaknessSetDialog extends React.Component {
     const {
       name,
     } = this.state;
-    showTextEditDialog('Edit Name', name, this._onNameChange);
+    showTextEditDialog(L('Edit Name'), name, this._onNameChange);
   }
 
   renderHeader() {
@@ -96,13 +97,13 @@ class NewWeaknessSetDialog extends React.Component {
       <View >
         <View style={styles.row}>
           <LabeledTextBox
-            label="Name"
+            label={L('Name')}
             value={name}
             onPress={this._showEditNameDialog}
           />
         </View>
         <View style={styles.textBlock}>
-          <Text style={styles.text}>Include Weaknesses From These Sets</Text>
+          <Text style={styles.text}>{ L('Include Weaknesses From These Sets') }</Text>
         </View>
       </View>
     );

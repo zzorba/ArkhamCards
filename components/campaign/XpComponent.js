@@ -5,6 +5,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import EditCountComponent from './EditCountComponent';
 
 export default class XpComponent extends React.Component {
@@ -34,7 +35,7 @@ export default class XpComponent extends React.Component {
         <EditCountComponent
           countChanged={this._countChanged}
           index={0}
-          title="Experience"
+          title={L('Experience')}
           count={xp}
           isInvestigator={isInvestigator}
         />
