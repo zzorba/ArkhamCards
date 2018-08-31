@@ -7,16 +7,17 @@ import {
   View,
 } from 'react-native';
 
+import L from '../app/i18n';
 import AppIcon from '../assets/AppIcon';
 import typography from '../styles/typography';
 
 const DECK_PROBLEM_MESSAGES = {
-  too_few_cards: 'Not enough cards.',
-  too_many_cards: 'Too many cards.',
-  too_many_copies: 'Too many copies of a card with the same name.',
-  invalid_cards: 'Contains forbidden cards (cards not permitted by Faction)',
-  deck_options_limit: 'Contains too many limited cards.',
-  investigator: 'Doesn\'t comply with the Investigator requirements.',
+  too_few_cards: L('Not enough cards.'),
+  too_many_cards: L('Too many cards.'),
+  too_many_copies: L('Too many copies of a card with the same name.'),
+  invalid_cards: L('Contains forbidden cards (cards not permitted by Faction)'),
+  deck_options_limit: L('Contains too many limited cards.'),
+  investigator: L('Doesn\'t comply with the Investigator requirements.'),
 };
 
 export default function DeckProblemRow({ problem, color }) {

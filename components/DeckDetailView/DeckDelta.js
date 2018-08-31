@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 
+import L from '../../app/i18n';
 import CardSearchResult from '../CardSearchResult';
 import typography from '../../styles/typography';
 
@@ -91,7 +92,7 @@ class DeckDelta extends React.Component {
       <View style={styles.container}>
         <View style={styles.title}>
           <Text style={typography.smallLabel}>
-            CAMPAIGN PROGRESS
+            { L('CAMPAIGN PROGRESS') }
           </Text>
         </View>
         <View style={styles.buttonContainer}>
@@ -99,7 +100,7 @@ class DeckDelta extends React.Component {
             <View style={styles.button}>
               <Button
                 onPress={this._showPreviousDeck}
-                title="Previous Deck"
+                title={L('Previous Deck')}
               />
             </View>
           ) }
@@ -107,7 +108,7 @@ class DeckDelta extends React.Component {
             <View style={styles.button}>
               <Button
                 onPress={this._showNextDeck}
-                title="Next Deck"
+                title={L('Next Deck')}
               />
             </View>
           ) }
@@ -116,7 +117,7 @@ class DeckDelta extends React.Component {
           <View>
             <View style={styles.title}>
               <Text style={typography.smallLabel}>
-                CHANGES FROM PREVIOUS DECK
+                { L('CHANGES FROM PREVIOUS DECK') }
               </Text>
             </View>
             { map(keys(changedCards), code => (
@@ -134,7 +135,7 @@ class DeckDelta extends React.Component {
           <View>
             <View style={styles.title}>
               <Text style={typography.smallLabel}>
-                EXILED CARDS
+                { L('EXILED CARDS') }
               </Text>
             </View>
             { map(keys(exiledCards), code => (

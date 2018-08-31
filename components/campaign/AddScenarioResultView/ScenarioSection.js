@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import L from '../../../app/i18n';
 import { updateCampaign } from '../actions';
 import { CAMPAIGN_SCENARIOS } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
@@ -69,7 +70,7 @@ class ScenarioSection extends React.Component {
       showTextEditDialog,
     } = this.props;
     showTextEditDialog(
-      'Custom Scenario Name',
+      L('Custom Scenario Name'),
       this.state.customScenario,
       this._customScenarioTextChanged
     );
@@ -169,7 +170,7 @@ class ScenarioSection extends React.Component {
       <View>
         <View style={[styles.margin, styles.row]}>
           <Text style={typography.text}>
-            { 'Show Interludes' }
+            { L('Show Interludes') }
           </Text>
           <Switch
             value={this.props.showInterludes}
@@ -177,7 +178,7 @@ class ScenarioSection extends React.Component {
           />
         </View>
         <LabeledTextBox
-          label={selectedScenario !== CUSTOM && selectedScenario.interlude ? 'Interlude' : 'Scenario'}
+          label={selectedScenario !== CUSTOM && selectedScenario.interlude ? L('Interlude') : L('Scenario')}
           onPress={this._showScenarioDialog}
           value={selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name}
           style={styles.margin}
@@ -185,7 +186,7 @@ class ScenarioSection extends React.Component {
         />
         { selectedScenario === CUSTOM && (
           <LabeledTextBox
-            label="Name"
+            label={L('Name')}
             onPress={this._showCustomCampaignDialog}
             value={customScenario}
             style={styles.margin}
@@ -194,7 +195,7 @@ class ScenarioSection extends React.Component {
         ) }
         { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
           <LabeledTextBox
-            label="Resolution"
+            label={L('Resolution')}
             onPress={this._showResolutionDialog}
             value={resolution}
             style={styles.margin}

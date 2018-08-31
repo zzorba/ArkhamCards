@@ -2,16 +2,34 @@ import { Navigation } from 'react-native-navigation';
 import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 
-import L from './i18n';
+import L, { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import { COLORS } from '../styles/colors';
 
 export default class App {
-  constructor() {
+  constructor(store) {
+    this.started = false;
+    this.currentLang = null;
+    store.subscribe(this.onStoreUpdate.bind(this, store));
     this._handleUrl = this.handleUrl.bind(this);
-    iconsLoaded.then(() => {
-      this.startApp();
-    }).catch(error => console.log(error));
+
+    this.onStoreUpdate(store);
+  }
+
+  onStoreUpdate(store) {
+    const {
+      lang,
+    } = store.getState().cards;
+
+    // handle a root change
+    // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether
+    if (!this.started || this.currentLang !== lang) {
+      this.started = true;
+      this.currentLang = lang;
+      iconsLoaded.then(() => {
+        this.startApp(lang || 'en');
+      }).catch(error => console.log(error));
+    }
   }
 
   handleUrl({ url }) {
@@ -22,7 +40,8 @@ export default class App {
     });
   }
 
-  startApp() {
+  startApp(lang) {
+    changeLocale(lang);
     YellowBox.ignoreWarnings([
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
       'Consider using `numColumns` with `FlatList` instead.',

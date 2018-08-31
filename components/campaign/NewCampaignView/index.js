@@ -439,7 +439,7 @@ class NewCampaignView extends React.Component {
         </View>
         { !this.hasDefinedChaosBag() && (
           <View style={[styles.topPadding, styles.button]}>
-            <Button title="Add Log Section" onPress={this._toggleCampaignLogDialog} />
+            <Button title={L('Add Log Section')} onPress={this._toggleCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -493,7 +493,7 @@ class NewCampaignView extends React.Component {
             <View style={[styles.margin, styles.topPadding]}>
               <LabeledTextBox
                 column
-                label="Campaign Name"
+                label={L('Campaign Name')}
                 onPress={this._showCampaignNameDialog}
                 placeholder={this.placeholderName()}
                 required
@@ -503,7 +503,7 @@ class NewCampaignView extends React.Component {
             <View style={[styles.topPadding, styles.margin]}>
               <LabeledTextBox
                 column
-                label="Difficulty"
+                label={L('Difficulty')}
                 onPress={this._showDifficultyDialog}
                 value={capitalize(difficulty)}
               />
@@ -526,7 +526,7 @@ class NewCampaignView extends React.Component {
           </View>
           <View style={styles.underline}>
             <DeckSelector
-              label="Decks"
+              label={L('Decks')}
               navigator={navigator}
               campaignId={nextId}
               deckIds={deckIds}
@@ -537,7 +537,7 @@ class NewCampaignView extends React.Component {
           <View style={styles.button}>
             <Button
               style={styles.topPadding}
-              title="Create Campaign"
+              title={L('Create Campaign')}
               onPress={this._onSave}
             />
           </View>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import L from '../app/i18n';
 import DialogPicker from './core/DialogPicker';
 
 export default class ScenarioDialog extends React.Component {
@@ -22,7 +23,7 @@ export default class ScenarioDialog extends React.Component {
     return (
       <DialogPicker
         navigator={navigator}
-        header="Scenario"
+        header={L('Scenario')}
         options={scenarios}
         onSelectionChanged={scenarioChanged}
         selectedOption={selected}

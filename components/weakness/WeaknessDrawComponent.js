@@ -12,6 +12,7 @@ import {
 import { CachedImage, ImageCacheManager } from 'react-native-cached-image';
 import FlipCard from 'react-native-flip-card';
 
+import L from '../../app/i18n';
 import withWeaknessCards from './withWeaknessCards';
 import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
@@ -234,7 +235,7 @@ class WeaknessDrawComponent extends React.Component {
     if (saving) {
       return (
         <View style={[styles.buttonWrapper, { height: headerHeight }]}>
-          <Text style={typography.text}>Saving</Text>
+          <Text style={typography.text}>{ L('Saving') }</Text>
           <ActivityIndicator
             style={[{ height: 80 }]}
             size="small"
@@ -249,7 +250,7 @@ class WeaknessDrawComponent extends React.Component {
           onLayout={this._onFlippedHeaderLayout}
           style={[styles.buttonWrapper, { minHeight: flippedHeaderHeight }]}
         >
-          <Button text="Draw another" onPress={this._drawAnother} />
+          <Button text={L('Draw Another')} onPress={this._drawAnother} />
           { customFlippedHeader }
         </View>
       );
@@ -259,7 +260,7 @@ class WeaknessDrawComponent extends React.Component {
         { customHeader }
         <ChooserButton
           navigator={navigator}
-          title="Traits"
+          title={L('Traits')}
           values={this.allTraits()}
           selection={selectedTraits}
           onChange={this._onTraitsChange}
@@ -317,13 +318,13 @@ class WeaknessDrawComponent extends React.Component {
     if (selectedTraits.length) {
       return (
         <Text style={[typography.text, styles.errorText]}>
-          No Matching Weaknesses, try adjusting Trait filter.
+          { L('No Matching Weaknesses, try adjusting Trait filter.') }
         </Text>
       );
     }
     return (
       <Text style={[typography.text, styles.errorText]}>
-        All weaknesses have been drawn.
+        { L('All weaknesses have been drawn.') }
       </Text>
     );
   }

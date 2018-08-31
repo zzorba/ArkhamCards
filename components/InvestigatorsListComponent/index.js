@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import L from '../../app/i18n';
 import Button from '../core/Button';
 import InvestigatorRow from './InvestigatorRow';
 import * as Actions from '../../actions';
@@ -85,11 +86,11 @@ class InvestigatorsListComponent extends React.Component {
 
     return (
       <ScrollView>
-        { this.renderInvestigators('My Investigators', myInvestigators) }
+        { this.renderInvestigators(L('My Investigators'), myInvestigators) }
         <View style={styles.editCollectionButton}>
-          <Button onPress={this._editCollection} text="Manage Collection" />
+          <Button onPress={this._editCollection} text={L('Manage Collection')} />
         </View>
-        { this.renderInvestigators('Other Investigators', otherInvestigators) }
+        { this.renderInvestigators(L('Other Investigators'), otherInvestigators) }
         <View style={styles.footer} />
       </ScrollView>
     );

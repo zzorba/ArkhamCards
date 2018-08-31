@@ -66,7 +66,7 @@ class SelectCampaignDialog extends React.Component {
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}
-        text={packCode === CUSTOM ? 'Custom' : CAMPAIGNS[packCode]}
+        text={packCode === CUSTOM ? L('Custom') : CAMPAIGNS[packCode]}
       />
     );
   }
@@ -87,19 +87,19 @@ class SelectCampaignDialog extends React.Component {
         { myCampaigns.length > 0 && (
           <View style={styles.headerRow}>
             <Text style={styles.header}>
-              My Campaigns
+              { L('My Campaigns') }
             </Text>
           </View>
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
         { this.renderCampaign(CUSTOM) }
         <View style={styles.button}>
-          <Button onPress={this._editCollection} title="Edit Collection" />
+          <Button onPress={this._editCollection} title={L('Edit Collection')} />
         </View>
         { otherCampaigns.length > 0 && (
           <View style={styles.headerRow}>
             <Text style={styles.header}>
-              Other Campaigns
+              { L('Other Campaigns') }
             </Text>
           </View>
         ) }

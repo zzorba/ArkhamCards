@@ -92,7 +92,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
       <Dialog
-        title="Add Campaign Log Section"
+        title={L('Add Campaign Log Section')}
         visible={visible}
         viewRef={viewRef}
       >
@@ -103,25 +103,25 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
           onChangeText={this._onNameChange}
         />
         <DialogComponent.Switch
-          label="Count"
+          label={L('Count')}
           value={isCount}
           onValueChange={this._toggleCount}
           onTintColor="#222222"
           tintColor="#bbbbbb"
         />
         <DialogComponent.Switch
-          label="Per Investigator"
+          label={L('Per Investigator')}
           value={perInvestigator}
           onValueChange={this._toggleInvestigator}
           onTintColor="#222222"
           tintColor="#bbbbbb"
         />
         <DialogComponent.Button
-          label="Cancel"
+          label={L('Cancel')}
           onPress={this._onCancelPress}
         />
         <DialogComponent.Button
-          label="Add"
+          label={L('Add')}
           color={name ? buttonColor : '#666666'}
           disabled={!name}
           onPress={this._onAddPress}
