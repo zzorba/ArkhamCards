@@ -16,6 +16,7 @@ import { showDeckModal } from '../../navHelper';
 import Button from '../../core/Button';
 import EditTraumaComponent from '../EditTraumaComponent';
 import deckRowWithDetails from '../deckRowWithDetails';
+import DeckListRow from '../../DeckListRow';
 import DeckValidation from '../../../lib/DeckValidation';
 import DeckProblemRow from '../../DeckProblemRow';
 import typography from '../../../styles/typography';
@@ -156,7 +157,7 @@ class CampaignSubDeckDetail extends React.Component {
           spentXp: parsedDeck.spentXp,
         });
       }
-      return L('{{xpCount}} available', { xpCount: parsedDeck.spentXp });
+      return L('{{xpCount}} available', { xpCount: deck.xp || 0 });
     }
     return L('{{totalXp}} total', { totalXp: parsedDeck.totalXp || 0 });
   }
@@ -193,7 +194,7 @@ class CampaignSubDeckDetail extends React.Component {
                 { L('EXPERIENCE') }
               </Text>
               <Text style={typography.text}>
-                { this.experienceLine(deck, parsedDeck) }
+                { this.experienceLine(parsedDeck.deck, parsedDeck) }
               </Text>
             </View>
           </View>
