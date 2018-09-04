@@ -6,6 +6,7 @@ const keys = extractFromFiles([
   'app/*.js',
   'components/**/*.js',
   'data/*.js',
+  'constants/*.js',
 ], {
   marker: 'L',
 });

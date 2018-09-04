@@ -85,6 +85,14 @@ export const DIFFICULTY = {
   expert: 3,
 };
 
+// TODO: make dynamic
+export const DIFFICULTY_STRINGS = {
+  easy: L('Easy'),
+  standard: L('Standard'),
+  hard: L('Hard'),
+  expert: L('Expert'),
+};
+
 export const CHAOS_TOKEN_ORDER = {
   '+1': 0,
   '0': 1,
