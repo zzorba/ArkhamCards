@@ -143,16 +143,18 @@ export const CAMPAIGN_CHAOS_BAGS = {
   ],
 };
 
+// TODO: make this dynamic
 const CORE_CAMPAIGN_LOG = {
-  sections: ['Campaign Notes', 'Cultists We Interrogated', 'Cultists Who Got Away'],
+  sections: [L('Campaign Notes'), L('Cultists We Interrogated'), L('Cultists Who Got Away')],
 };
 
+// TODO: make this dynamic
 export const CAMPAIGN_NAMES = {
-  core: 'The Night of the Zealot',
-  rtnotz: 'Return to the Night of the Zealot',
-  dwl: 'The Dunwich Legacy',
-  ptc: 'The Path to Carcosa',
-  tfa: 'The Forgotten Age',
+  core: L('The Night of the Zealot'),
+  rtnotz: L('Return to the Night of the Zealot'),
+  dwl: L('The Dunwich Legacy'),
+  ptc: L('The Path to Carcosa'),
+  tfa: L('The Forgotten Age'),
 };
 
 export const CAMPAIGN_COLORS = {
@@ -163,20 +165,21 @@ export const CAMPAIGN_COLORS = {
   tfa: '#33660033',
 };
 
+// TODO: make this dynamic
 export const CAMPAIGN_LOGS = {
   'core': CORE_CAMPAIGN_LOG,
   'rtnotz': CORE_CAMPAIGN_LOG,
   'dwl': {
-    sections: ['Campaign Notes', 'Sacrificed to Yog-Sothoth'],
+    sections: [L('Campaign Notes'), L('Sacrificed to Yog-Sothoth')],
   },
   'ptc': {
-    sections: ['Campaign Notes', 'VIPs Interviewed', 'VIPs Slain'],
-    counts: ['Doubt', 'Conviction', 'Chasing the Stranger'],
+    sections: [L('Campaign Notes'), L('VIPs Interviewed'), L('VIPs Slain')],
+    counts: [L('Doubt'), L('Conviction'), L('Chasing the Stranger')],
   },
   'tfa': {
-    sections: ['Campaign Notes'],
-    counts: ['Yig\'s Fury'],
-    investigatorSections: ['Supplies'],
+    sections: [L('Campaign Notes')],
+    counts: [L('Yig\'s Fury')],
+    investigatorSections: [L('Supplies')],
     // investigatorCounts
   },
 };

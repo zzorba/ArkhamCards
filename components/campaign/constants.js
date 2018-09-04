@@ -1,5 +1,6 @@
 export const CUSTOM = 'custom';
 
+// TODO: make this dynamic
 export const CAMPAIGN_SCENARIOS = {
   'core': [
     { name: L('The Gathering'), code: 'torch', pack_code: 'core' },
