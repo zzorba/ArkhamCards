@@ -1,4 +1,6 @@
 
+
+
 {
 
   "en": {
@@ -342,7 +344,9 @@
     "Conviction": "Conviction",
     "Chasing the Stranger": "Chasing the Stranger",
     "Yig's Fury": "Yig's Fury",
-    "Supplies": "Supplies"
+    "Supplies": "Supplies",
+    "Selected Difficulty": "Selected Difficulty",
+    "Change Card Language": "Change Card Language"
 },
   "de": {
     "Test Icons: ": "Test Icons: ",
@@ -685,7 +689,9 @@
     "Conviction": "Conviction",
     "Chasing the Stranger": "Chasing the Stranger",
     "Yig's Fury": "Yig's Fury",
-    "Supplies": "Supplies"
+    "Supplies": "Supplies",
+    "Selected Difficulty": "Selected Difficulty",
+    "Change Card Language": "Change Card Language"
 },
   "es": {
     "Test Icons: ": "Iconos de habilidad: ",
@@ -1028,7 +1034,9 @@
     "Conviction": "Conviction",
     "Chasing the Stranger": "Chasing the Stranger",
     "Yig's Fury": "Yig's Fury",
-    "Supplies": "Supplies"
+    "Supplies": "Supplies",
+    "Selected Difficulty": "Selected Difficulty",
+    "Change Card Language": "Change Card Language"
 },
   "it": {
     "Test Icons: ": "Test Icons: ",
@@ -1371,7 +1379,9 @@
     "Conviction": "Conviction",
     "Chasing the Stranger": "Chasing the Stranger",
     "Yig's Fury": "Yig's Fury",
-    "Supplies": "Supplies"
+    "Supplies": "Supplies",
+    "Selected Difficulty": "Selected Difficulty",
+    "Change Card Language": "Change Card Language"
 },
   "fr": {
     "Test Icons: ": "Test Icons: ",
@@ -1714,6 +1724,8 @@
     "Conviction": "Conviction",
     "Chasing the Stranger": "Chasing the Stranger",
     "Yig's Fury": "Yig's Fury",
-    "Supplies": "Supplies"
+    "Supplies": "Supplies",
+    "Selected Difficulty": "Selected Difficulty",
+    "Change Card Language": "Change Card Language"
 }
 }

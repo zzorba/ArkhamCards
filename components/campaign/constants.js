@@ -1,5 +1,7 @@
 export const CUSTOM = 'custom';
 
+import L from '../../app/i18n';
+
 // TODO: make this dynamic
 export const CAMPAIGN_SCENARIOS = {
   'core': [

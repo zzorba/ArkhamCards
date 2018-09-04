@@ -1,6 +1,7 @@
 import React from 'react';
 import { mapValues } from 'lodash';
 
+import L from '../app/i18n';
 import ArkhamIcon from '../assets/ArkhamIcon';
 
 export const CORE_FACTION_CODES = [
