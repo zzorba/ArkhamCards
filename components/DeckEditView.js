@@ -94,6 +94,7 @@ class DeckEditView extends React.Component {
     const {
       navigator,
       investigator,
+      slots,
     } = this.props;
 
     const {
@@ -108,6 +109,7 @@ class DeckEditView extends React.Component {
       <CardSearchComponent
         navigator={navigator}
         baseQuery={baseQuery}
+        originalDeckSlots={slots}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
         footer={this.renderFooter()}

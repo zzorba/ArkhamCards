@@ -20,7 +20,7 @@ function groupAssets(cardIds, cards) {
   ].filter(asset => asset.data.length > 0);
 }
 
-function isSpecialCard(card) {
+export function isSpecialCard(card) {
   return card && (
     card.code === '01000' ||
     card.permanent ||

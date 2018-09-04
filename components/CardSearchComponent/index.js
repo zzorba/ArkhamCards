@@ -34,6 +34,7 @@ class CardSearchComponent extends React.Component {
     sort: PropTypes.string,
 
     // Keyed by code, count of current deck.
+    originalDeckSlots: PropTypes.object,
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
     limits: PropTypes.object,
@@ -398,6 +399,7 @@ class CardSearchComponent extends React.Component {
   render() {
     const {
       navigator,
+      originalDeckSlots,
       deckCardCounts,
       onDeckCountChange,
       limits,
@@ -418,6 +420,7 @@ class CardSearchComponent extends React.Component {
             query={query}
             searchTerm={searchTerm}
             sort={selectedSort}
+            originalDeckSlots={originalDeckSlots}
             deckCardCounts={deckCardCounts}
             onDeckCountChange={onDeckCountChange}
             limits={limits}

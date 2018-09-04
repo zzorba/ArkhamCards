@@ -16,7 +16,6 @@ import { showDeckModal } from '../../navHelper';
 import Button from '../../core/Button';
 import EditTraumaComponent from '../EditTraumaComponent';
 import deckRowWithDetails from '../deckRowWithDetails';
-import DeckListRow from '../../DeckListRow';
 import DeckValidation from '../../../lib/DeckValidation';
 import DeckProblemRow from '../../DeckProblemRow';
 import typography from '../../../styles/typography';
