@@ -1,8 +1,4 @@
-
-
-
 {
-
   "en": {
     "Test Icons: ": "Test Icons: ",
     "Slot: {{slot}}": "Slot: {{slot}}",
@@ -346,7 +342,11 @@
     "Yig's Fury": "Yig's Fury",
     "Supplies": "Supplies",
     "Selected Difficulty": "Selected Difficulty",
-    "Change Card Language": "Change Card Language"
+    "Change Card Language": "Change Card Language",
+    "CHAOS BAG": "CHAOS BAG",
+    "WEAKNESS SET": "WEAKNESS SET",
+    "Include all basic weaknesses from these expansions": "Include all basic weaknesses from these expansions",
+    "CAMPAIGN LOG": "CAMPAIGN LOG"
 },
   "de": {
     "Test Icons: ": "Test Icons: ",
@@ -691,7 +691,11 @@
     "Yig's Fury": "Yig's Fury",
     "Supplies": "Supplies",
     "Selected Difficulty": "Selected Difficulty",
-    "Change Card Language": "Change Card Language"
+    "Change Card Language": "Change Card Language",
+    "CHAOS BAG": "CHAOS BAG",
+    "WEAKNESS SET": "WEAKNESS SET",
+    "Include all basic weaknesses from these expansions": "Include all basic weaknesses from these expansions",
+    "CAMPAIGN LOG": "CAMPAIGN LOG"
 },
   "es": {
     "Test Icons: ": "Iconos de habilidad: ",
@@ -1036,7 +1040,11 @@
     "Yig's Fury": "Yig's Fury",
     "Supplies": "Supplies",
     "Selected Difficulty": "Selected Difficulty",
-    "Change Card Language": "Change Card Language"
+    "Change Card Language": "Change Card Language",
+    "CHAOS BAG": "CHAOS BAG",
+    "WEAKNESS SET": "WEAKNESS SET",
+    "Include all basic weaknesses from these expansions": "Include all basic weaknesses from these expansions",
+    "CAMPAIGN LOG": "CAMPAIGN LOG"
 },
   "it": {
     "Test Icons: ": "Test Icons: ",
@@ -1381,7 +1389,11 @@
     "Yig's Fury": "Yig's Fury",
     "Supplies": "Supplies",
     "Selected Difficulty": "Selected Difficulty",
-    "Change Card Language": "Change Card Language"
+    "Change Card Language": "Change Card Language",
+    "CHAOS BAG": "CHAOS BAG",
+    "WEAKNESS SET": "WEAKNESS SET",
+    "Include all basic weaknesses from these expansions": "Include all basic weaknesses from these expansions",
+    "CAMPAIGN LOG": "CAMPAIGN LOG"
 },
   "fr": {
     "Test Icons: ": "Test Icons: ",
@@ -1726,6 +1738,10 @@
     "Yig's Fury": "Yig's Fury",
     "Supplies": "Supplies",
     "Selected Difficulty": "Selected Difficulty",
-    "Change Card Language": "Change Card Language"
+    "Change Card Language": "Change Card Language",
+    "CHAOS BAG": "CHAOS BAG",
+    "WEAKNESS SET": "WEAKNESS SET",
+    "Include all basic weaknesses from these expansions": "Include all basic weaknesses from these expansions",
+    "CAMPAIGN LOG": "CAMPAIGN LOG"
 }
 }

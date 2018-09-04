@@ -373,7 +373,7 @@ class NewCampaignView extends React.Component {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          CHAOS BAG
+          { L('CHAOS BAG') }
         </Text>
         <View style={[styles.topPadding, styles.margin]}>
           <ChaosBagLine chaosBag={chaosBag} />
@@ -387,7 +387,7 @@ class NewCampaignView extends React.Component {
       name,
     } = this.state;
     this.props.showTextEditDialog(
-      'Campaign Name',
+      L('Campaign Name'),
       name,
       this._onNameChange
     );
@@ -399,9 +399,9 @@ class NewCampaignView extends React.Component {
     } = this.props;
     return (
       <View style={styles.margin}>
-        <Text style={typography.small}>WEAKNESS SET</Text>
+        <Text style={typography.small}>{ L('WEAKNESS SET') }</Text>
         <Text style={typography.small}>
-          Include all basic weaknesses from these expansions
+          { L('Include all basic weaknesses from these expansions')}
         </Text>
         <WeaknessSetPackChooserComponent
           navigator={navigator}
@@ -421,7 +421,7 @@ class NewCampaignView extends React.Component {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          CAMPAIGN LOG
+          { L('CAMPAIGN LOG') }
         </Text>
         <View style={styles.margin}>
           { map(campaignLog.sections || [], section => (
