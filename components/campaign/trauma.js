@@ -1,3 +1,5 @@
+import L from '../../app/i18n';
+
 export const DEFAULT_TRAUMA_DATA = {
   mental: 0,
   physical: 0,
@@ -34,19 +36,19 @@ export function isEliminated(traumaData, investigatorCard) {
 export function traumaString(traumaData, investigator) {
   const parts = [];
   if (traumaData.killed || investigator.health <= traumaData.physical) {
-    return 'Killed';
+    return L('Killed');
   }
   if (traumaData.insane || investigator.sanity <= traumaData.mental) {
-    return 'Insane';
+    return L('Insane');
   }
   if (traumaData.physical !== 0) {
-    parts.push(`${traumaData.physical} Physical`);
+    parts.push(L('{{count}} Physical', { count: traumaData.physical }));
   }
   if (traumaData.mental !== 0) {
-    parts.push(`${traumaData.mental} Mental`);
+    parts.push(L('{{count}} Mental', { count: traumaData.mental }));
   }
   if (!parts.length) {
-    return 'None';
+    return L('None');
   }
   return parts.join(', ');
 }

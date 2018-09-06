@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, map } from 'lodash';
+import { filter, forEach, map } from 'lodash';
 import {
   Text,
   ScrollView,
@@ -10,7 +10,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { CAMPAIGN_SCENARIOS } from '../constants';
+import { campaignScenarios } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import { getCampaign } from '../../../reducers';
 import typography from '../../../styles/typography';
@@ -21,6 +21,7 @@ class CampaignScenarioView extends React.Component {
     id: PropTypes.number.isRequired,
     campaign: PropTypes.object.isRequired,
     cycleScenarios: PropTypes.array,
+    scenarioByCode: PropTypes.object,
   };
 
   constructor(props) {
@@ -30,13 +31,18 @@ class CampaignScenarioView extends React.Component {
   }
 
   renderScenarioResult(scenarioResult, idx) {
+    const {
+      scenarioByCode,
+    } = this.props;
     const resolution = scenarioResult.resolution ?
       `: ${scenarioResult.resolution}` : '';
     const xp = (scenarioResult.xp > 0 || !scenarioResult.interlude) ?
       ` (${scenarioResult.xp} XP)` : '';
+    const scenario = scenarioByCode[scenarioResult];
+    const scenarioName = scenario ? scenario.name : scenarioResult.scenario;
     return (
       <Text style={typography.gameFont} key={idx}>
-        { `${scenarioResult.scenario}${resolution}${xp}` }
+        { `${scenarioName}${resolution}${xp}` }
       </Text>
     );
   }
@@ -54,7 +60,7 @@ class CampaignScenarioView extends React.Component {
       campaign,
       cycleScenarios,
     } = this.props;
-    const finishedScenarios = new Set(map(campaign.scenarioResults, result => result.scenario));
+    const finishedScenarios = new Set(map(campaign.scenarioResults, result => result.scenarioCode));
     return (
       <ScrollView style={styles.container}>
         <CampaignSummaryComponent campaign={campaign} hideScenario />
@@ -63,7 +69,7 @@ class CampaignScenarioView extends React.Component {
         </Text>
         { map(campaign.scenarioResults, this._renderScenarioResult) }
         { map(
-          filter(cycleScenarios, scenario => !finishedScenarios.has(scenario.name)),
+          filter(cycleScenarios, scenario => !finishedScenarios.has(scenario.code)),
           (scenario, idx) => this.renderPendingScenario(scenario, idx))
         }
         <View style={styles.footer} />
@@ -74,9 +80,15 @@ class CampaignScenarioView extends React.Component {
 
 function mapStateToProps(state, props) {
   const campaign = getCampaign(state, props.id);
+  const cycleScenarios = campaignScenarios()[campaign.cycleCode] || [];
+  const scenarioByCode = {};
+  forEach(cycleScenarios, scenario => {
+    scenarioByCode[scenario.code] = scenario;
+  });
   return {
-    campaign: campaign,
-    cycleScenarios: CAMPAIGN_SCENARIOS[campaign.cycleCode] || [],
+    campaign,
+    cycleScenarios,
+    scenarioByCode,
   };
 }
 

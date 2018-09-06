@@ -9,8 +9,7 @@ import {
 
 import L from '../../app/i18n';
 import EncounterIcon from '../../assets/EncounterIcon';
-import { CUSTOM } from './constants';
-import { CAMPAIGN_NAMES, CAMPAIGN_COLORS } from '../../constants';
+import { CUSTOM, campaignNames, CAMPAIGN_COLORS, difficultyStrings } from './constants';
 import typography from '../../styles/typography';
 
 export default class CampaignSummaryComponent extends React.Component {
@@ -33,7 +32,7 @@ export default class CampaignSummaryComponent extends React.Component {
       <View style={styles.difficultyRow}>
         <View style={styles.difficulty}>
           <Text style={typography.smallLabel}>
-            { difficulty.toUpperCase() }
+            { difficultyStrings()[difficulty].toUpperCase() }
           </Text>
         </View>
       </View>
@@ -50,7 +49,7 @@ export default class CampaignSummaryComponent extends React.Component {
     return (
       <View style={styles.marginTop}>
         <Text style={typography.bigGameFont}>
-          { cycleCode === CUSTOM ? name : CAMPAIGN_NAMES[cycleCode] }
+          { cycleCode === CUSTOM ? name : campaignNames()[cycleCode] }
         </Text>
       </View>
     );

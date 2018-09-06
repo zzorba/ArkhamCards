@@ -20,7 +20,7 @@ function groupAssets(cardIds, cards) {
   ].filter(asset => asset.data.length > 0);
 }
 
-function isSpecialCard(card) {
+export function isSpecialCard(card) {
   return card && (
     card.code === '01000' ||
     card.permanent ||
@@ -219,7 +219,13 @@ export function parseDeck(deck, slots, cards, previousDeck) {
     return {};
   }
   const cardIds = map(
-    filter(keys(slots), id => !!cards[id]),
+    sortBy(
+      sortBy(
+        filter(keys(slots), id => !!cards[id]),
+        id => cards[id].xp || 0
+      ),
+      id => cards[id].name
+    ),
     id => {
       return {
         id,

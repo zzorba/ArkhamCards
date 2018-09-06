@@ -96,28 +96,29 @@ export default class Card {
     'Mythos',
   ];
 
-  static factionSortHeader(json) {
+  static factionSortHeader(json, lang) {
+    const options = lang ? { locale: lang } : {};
     if (json.spoiler) {
-      return L('Mythos');
+      return L('Mythos', options);
     }
     switch(json.subtype_code) {
       case 'basicweakness':
       case 'weakness':
-        return L('Weakness');
+        return L('Weakness', options);
       default: {
         switch(json.faction_code) {
           case 'guardian':
-            return L('Guardian');
+            return L('Guardian', options);
           case 'rogue':
-            return L('Rogue');
+            return L('Rogue', options);
           case 'mystic':
-            return L('Mystic');
+            return L('Mystic', options);
           case 'seeker':
-            return L('Seeker');
+            return L('Seeker', options);
           case 'survivor':
-            return L('Survivor');
+            return L('Survivor', options);
           case 'neutral':
-            return L('Neutral');
+            return L('Neutral', options);
           default:
             return json.faction_name;
         }
@@ -126,79 +127,80 @@ export default class Card {
   }
 
   static TYPE_HEADER_ORDER = [
-    L('Investigator'),
-    L('Asset: Hand'),
-    L('Asset: Hand x2'),
-    L('Asset: Accessory'),
-    L('Asset: Ally'),
-    L('Asset: Arcane'),
-    L('Asset: Arcane x2'),
-    L('Asset: Body'),
-    L('Asset: Permanent'),
-    L('Asset: Other'),
-    L('Event'),
-    L('Skill'),
-    L('Basic Weakness'),
-    L('Weakness'),
-    L('Scenario'),
-    L('Story'),
+    'Investigator',
+    'Asset: Hand',
+    'Asset: Hand x2',
+    'Asset: Accessory',
+    'Asset: Ally',
+    'Asset: Arcane',
+    'Asset: Arcane x2',
+    'Asset: Body',
+    'Asset: Permanent',
+    'Asset: Other',
+    'Event',
+    'Skill',
+    'Basic Weakness',
+    'Weakness',
+    'Scenario',
+    'Story',
   ];
 
-  static typeSortHeader(json) {
+  static typeSortHeader(json, lang) {
+    const options = lang ? { locale: lang } : {};
     if (json.hidden && json.linked_card) {
-      return Card.typeSortHeader(json.linked_card);
+      return Card.typeSortHeader(json.linked_card, lang);
     }
     switch(json.subtype_code) {
       case 'basicweakness':
-        return L('Basic Weakness');
+        return L('Basic Weakness', options);
       case 'weakness':
-        return L('Weakness');
+        return L('Weakness', options);
       default:
         switch(json.type_code) {
           case 'asset':
             if (json.spoiler) {
-              return L('Story');
+              return L('Story', options);
             }
             if (json.permanent || json.double_sided) {
-              return L('Asset: Permanent');
+              return L('Asset: Permanent', options);
             }
             switch(json.slot) {
               case 'Hand':
-                return L('Asset: Hand');
+                return L('Asset: Hand', options);
               case 'Hand x2':
-                return L('Asset: Hand x2');
+                return L('Asset: Hand x2', options);
               case 'Accessory':
-                return L('Asset: Accessory');
+                return L('Asset: Accessory', options);
               case 'Ally':
-                return L('Asset: Ally');
+                return L('Asset: Ally', options);
               case 'Arcane':
-                return L('Asset: Arcane');
+                return L('Asset: Arcane', options);
               case 'Arcane x2':
-                return L('Asset: Arcane x2');
+                return L('Asset: Arcane x2', options);
               case 'Body':
-                return L('Asset: Body');
+                return L('Asset: Body', options);
               default:
-                return L('Asset: Other');
+                return L('Asset: Other', options);
             }
           case 'event':
             if (json.spoiler) {
-              return L('Story');
+              return L('Story', options);
             }
-            return L('Event');
+            return L('Event', options);
           case 'skill':
             if (json.spoiler) {
-              return L('Story');
+              return L('Story', options);
             }
-            return L('Skill');
+            return L('Skill', options);
           case 'investigator':
-            return L('Investigator');
+            return L('Investigator', options);
           default:
-            return L('Scenario');
+            return L('Scenario', options);
         }
     }
   }
 
-  static fromJson(json, packsByCode, cycleNames) {
+  static fromJson(json, packsByCode, cycleNames, lang) {
     if (json.code === '02041') {
       json.subtype_code = null;
       json.subtype_name = null;
@@ -224,23 +226,23 @@ export default class Card {
     let renderName = json.name;
     let renderSubname = json.subname;
     if (json.type_code === 'act' && json.stage) {
-      renderSubname = L('Act {{stage}}', { stage: json.stage });
+      renderSubname = L('Act {{stage}}', { stage: json.stage, locale: lang });
     } else if (json.type_code === 'agenda' && json.stage) {
-      renderSubname = L('Agenda {{stage}}', { stage: json.stage });
+      renderSubname = L('Agenda {{stage}}', { stage: json.stage, locale: lang });
     } else if (json.type_code === 'scenario') {
-      renderSubname = L('Scenario');
+      renderSubname = L('Scenario', { locale: lang });
     }
     const linked_card = json.linked_card ?
-      Card.fromJson(json.linked_card, packsByCode, cycleNames) :
+      Card.fromJson(json.linked_card, packsByCode, cycleNames, lang) :
       null;
     if (linked_card) {
       linked_card.back_linked = true;
       if (json.hidden && !linked_card.hidden) {
         renderName = linked_card.name;
         if (linked_card.type_code === 'act' && linked_card.stage) {
-          renderSubname = L('Act {{stage}}', { stage: linked_card.stage });
+          renderSubname = L('Act {{stage}}', { stage: linked_card.stage, locale: lang });
         } else if (linked_card.type_code === 'agenda' && linked_card.stage) {
-          renderSubname = L('Agenda {{stage}}', { stage: linked_card.stage });
+          renderSubname = L('Agenda {{stage}}', { stage: linked_card.stage, locale: lang });
         } else {
           renderSubname = linked_card.subname;
         }
@@ -262,8 +264,8 @@ export default class Card {
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
 
-    const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json));
-    const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json));
+    const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json, 'en'));
+    const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json, 'en'));
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const cycle_name = pack ? cycleNames[pack.cycle_position] : null;

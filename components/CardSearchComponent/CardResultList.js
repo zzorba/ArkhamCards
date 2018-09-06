@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, partition, random, throttle } from 'lodash';
+import { concat, partition, random, sortBy, throttle } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -19,6 +19,7 @@ import L from '../../app/i18n';
 import * as Actions from '../../actions';
 import { getPackSpoilers } from '../../reducers';
 import Card from '../../data/Card';
+import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import CardSectionHeader from './CardSectionHeader';
 import {
@@ -50,6 +51,7 @@ class CardResultList extends React.Component {
     query: PropTypes.string,
     searchTerm: PropTypes.string,
     sort: PropTypes.string,
+    originalDeckSlots: PropTypes.object,
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
     show_spoilers: PropTypes.object,
@@ -70,6 +72,7 @@ class CardResultList extends React.Component {
 
     this.state = {
       resultsKey: '',
+      deckSections: [],
       cards: [],
       cardsCount: 0,
       deckCardCounts: props.deckCardCounts || {},
@@ -215,8 +218,8 @@ class CardResultList extends React.Component {
     }
   }
 
-  headerForCard(card) {
-    switch(this.props.sort) {
+  headerForCard(card, sortOverride) {
+    switch(sortOverride || this.props.sort) {
       case SORT_BY_TYPE:
         return Card.typeSortHeader(card);
       case SORT_BY_FACTION:
@@ -237,11 +240,11 @@ class CardResultList extends React.Component {
     }
   }
 
-  bucketCards(cards) {
+  bucketCards(cards, sortOverride) {
     const results = [];
     let currentBucket = null;
     cards.forEach(card => {
-      const header = this.headerForCard(card);
+      const header = this.headerForCard(card, sortOverride);
       if (!currentBucket || currentBucket.title !== header) {
         currentBucket = {
           title: header,
@@ -272,23 +275,40 @@ class CardResultList extends React.Component {
       query,
       searchTerm,
       show_spoilers,
+      originalDeckSlots,
+      deckCardCounts,
     } = this.props;
     const resultsKey = this.resultsKey();
     const cards = (query ?
       realm.objects('Card').filtered(query, searchTerm) :
       realm.objects('Card')
     ).sorted(this.getSort());
-    const splitCards = partition(
+    const deckCards = [];
+    const groupedCards = partition(
       cards,
-      card => show_spoilers[card.pack_code] ||
-        !(card.spoiler || (card.linked_card && card.linked_card.spoiler))
+      card => {
+        if (originalDeckSlots && (
+          originalDeckSlots[card.code] > 0 || deckCardCounts[card.count] > 0)) {
+          deckCards.push(card);
+        }
+        return show_spoilers[card.pack_code] ||
+          !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
+      }
     );
+
+    const splitDeckCards = partition(deckCards, card => isSpecialCard(card));
+    const specialCards = sortBy(splitDeckCards[0], card => card.sort_by_type || -1);
+    const normalCards = sortBy(splitDeckCards[1], card => card.sort_by_type || -1);
+
     this.setState({
       resultsKey: resultsKey,
-      cards: this.bucketCards(splitCards[0]),
-      cardsCount: splitCards[0].length,
-      spoilerCards: this.bucketCards(splitCards[1]),
-      spoilerCardsCount: splitCards[1].length,
+      deckSections: concat(
+        this.bucketCards(normalCards, SORT_BY_TYPE),
+        this.bucketCards(specialCards, SORT_BY_TYPE)),
+      cards: this.bucketCards(groupedCards[0]),
+      cardsCount: groupedCards[0].length,
+      spoilerCards: this.bucketCards(groupedCards[1]),
+      spoilerCardsCount: groupedCards[1].length,
     });
   }
 
@@ -318,7 +338,7 @@ class CardResultList extends React.Component {
   }
 
   renderSectionHeader({ section }) {
-    return <CardSectionHeader title={section.title} />;
+    return <CardSectionHeader title={section.title} bold={section.bold} />;
   }
 
   renderCard({ item }) {
@@ -374,17 +394,14 @@ class CardResultList extends React.Component {
           <View style={styles.button}>
             <Button
               onPress={this._editSpoilerSettings}
-              title="Edit Spoiler Settings"
+              title={L('Edit Spoiler Settings')}
             />
           </View>
           { this.renderEmptyState() }
         </View>
       );
     }
-    const spoilerCount = spoilerCardsCount > 1 ?
-      `Show ${spoilerCardsCount} Spoilers` :
-      'Show Spoiler';
-
+    const spoilerCount = L('Show {{count}} Spoilers', { count: spoilerCardsCount });
     return (
       <View style={styles.footer}>
         <View style={styles.button}>
@@ -393,7 +410,7 @@ class CardResultList extends React.Component {
         <View style={styles.button}>
           <Button
             onPress={this._editSpoilerSettings}
-            title="Edit Spoiler Settings"
+            title={L('Edit Spoiler Settings')}
           />
         </View>
         { this.renderEmptyState() }
@@ -406,12 +423,29 @@ class CardResultList extends React.Component {
       cards,
       spoilerCards,
       showSpoilerCards,
+      deckSections,
     } = this.state;
+    const startCards = deckSections.length ?
+      concat(
+        [{
+          title: 'In Deck',
+          bold: true,
+          data: [],
+        }],
+        deckSections,
+        [{
+          title: 'All Eligible Cards',
+          bold: true,
+          data: [],
+        }],
+        cards,
+      ) : cards;
+
     if (!showSpoilerCards) {
-      return cards;
+      return startCards;
     }
 
-    return concat(cards, spoilerCards);
+    return concat(startCards, spoilerCards);
   }
 
   isLoading() {

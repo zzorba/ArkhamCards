@@ -19,7 +19,7 @@ export default class CampaignSelector extends React.Component {
     super(props);
 
     this.state = {
-      selectedCampaign: 'The Night of the Zealot',
+      selectedCampaign: L('The Night of the Zealot'),
       selectedCampaignCode: 'core',
     };
 
@@ -77,7 +77,7 @@ export default class CampaignSelector extends React.Component {
       <View>
         <LabeledTextBox
           column
-          label="Campaign"
+          label={L('Campaign')}
           onPress={this._campaignPressed}
           value={selectedCampaign}
           style={styles.margin}

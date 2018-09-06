@@ -4,6 +4,7 @@ import {
   Animated,
   Dimensions,
   Easing,
+  Platform,
   StyleSheet,
   Text,
   View,
@@ -29,7 +30,9 @@ export default class CardQuantityComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    const tinyScreen = Dimensions.get('window').width < 375;
+    const tinyScreen = (Platform.OS === 'ios' &&
+      Dimensions.get('window').width < 375
+    );
 
     this.state = {
       tinyScreen,

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import L from '../../../app/i18n';
 import { parseDeck } from '../../parseDeck';
 import listOfDecks from '../listOfDecks';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
@@ -91,7 +92,10 @@ class CampaignDeckDetail extends React.Component {
         <View style={styles.section}>
           <Button
             icon={<AppIcon name="deck" size={18} color="#222222" />}
-            text={`${parsedDeck.normalCardCount} Cards (${parsedDeck.totalCardCount} Total)`}
+            text={L('{{normalCount}} Cards ({{totalCount}} Total)', {
+              normalCount: parsedDeck.normalCardCount,
+              totalCount: parsedDeck.totalCardCount,
+            })}
             style={styles.button}
             size="small"
             align="left"
@@ -144,6 +148,19 @@ class CampaignSubDeckDetail extends React.Component {
     showDeckUpgradeDialog(deck, investigator);
   }
 
+  experienceLine(deck, parsedDeck) {
+    if (deck.xp > 0) {
+      if (parsedDeck.spentXp > 0) {
+        return L('{{xpCount}} available ({{spentXp}} spent)', {
+          xpCount: deck.xp || 0,
+          spentXp: parsedDeck.spentXp,
+        });
+      }
+      return L('{{xpCount}} available', { xpCount: deck.xp || 0 });
+    }
+    return L('{{totalXp}} total', { totalXp: parsedDeck.totalXp || 0 });
+  }
+
   render() {
     const {
       investigatorData = {},
@@ -173,13 +190,10 @@ class CampaignSubDeckDetail extends React.Component {
           <View style={styles.section}>
             <View style={styles.column}>
               <Text style={typography.smallLabel}>
-                EXPERIENCE
+                { L('EXPERIENCE') }
               </Text>
               <Text style={typography.text}>
-                { (deck.xp > 0 || parsedDeck.spentXp > 0) ?
-                  `${deck.xp || 0} available${parsedDeck.spentXp > 0 ? ` (${parsedDeck.spentXp} spent)` : ''}` :
-                  `${parsedDeck.totalXp || 0} total`
-                }
+                { this.experienceLine(parsedDeck.deck, parsedDeck) }
               </Text>
             </View>
           </View>
@@ -188,7 +202,7 @@ class CampaignSubDeckDetail extends React.Component {
           <View style={styles.section}>
             <Button
               icon={<MaterialCommunityIcons size={18} color="#222" name="arrow-up-bold" />}
-              text="Upgrade Deck"
+              text={L('Upgrade Deck')}
               style={styles.button}
               size="small"
               align="left"

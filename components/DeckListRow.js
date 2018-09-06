@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../app/i18n';
 import InvestigatorImage from './core/InvestigatorImage';
 import FactionGradient from './core/FactionGradient';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
@@ -47,10 +48,18 @@ export default class DeckListRow extends React.Component {
   }
 
   static xpString(parsedDeck) {
-    if (parsedDeck.deck.xp > 0 || parsedDeck.spentXp > 0) {
-      return `${parsedDeck.deck.xp || 0} available experience${parsedDeck.spentXp > 0 ? `, ${parsedDeck.spentXp} spent` : ''}`;
+    if (parsedDeck.deck.xp > 0) {
+      if (parsedDeck.spentXp > 0) {
+        return L(
+          '{{availableXp}} available experience, {{spentXp}} spent',
+          {
+            availableXp: parsedDeck.deck.xp || 0,
+            spentXp: parsedDeck.spentXp,
+          });
+      }
+      return L('{{availableXp}} available experience', { availableXp: parsedDeck.deck.xp || 0 });
     }
-    return `${parsedDeck.experience} experience required`;
+    return L('{{totalXp}} experience required', { totalXp: parsedDeck.experience });
   }
 
   renderDeckDetails() {
@@ -78,7 +87,10 @@ export default class DeckListRow extends React.Component {
         <Text style={typography.small}>
           { deckToCampaign && deckToCampaign[deck.id] ?
             deckToCampaign[deck.id].name :
-            `${deck.scenarioCount} ${deck.scenarioCount === 1 ? 'scenario' : 'scenarios'} completed`
+            L('{{scenarioCount}} scenarios completed', {
+              count: deck.scenarioCount,
+              scenarioCount: deck.scenarioCount,
+            })
           }
         </Text>
         <Text style={typography.small}>
@@ -88,7 +100,7 @@ export default class DeckListRow extends React.Component {
           <DeckProblemRow problem={{ reason: deck.problem }} color="#222" /> :
           (!!deck.date_update && (
             <Text style={typography.small} >
-              Updated { toRelativeDateString(Date.parse(deck.date_update)) }
+              { L('Updated {{date}}', { date: toRelativeDateString(Date.parse(deck.date_update)) }) }
             </Text>
           )) }
       </View>

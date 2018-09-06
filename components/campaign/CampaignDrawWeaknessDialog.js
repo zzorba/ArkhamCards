@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../app/i18n';
 import { updateCampaign } from './actions';
 import Button from '../core/Button';
 import NavButton from '../core/NavButton';
@@ -191,7 +192,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
     } = this.state;
     const deck = selectedDeckId && decks[selectedDeckId];
     const investigator = deck && investigators[deck.investigator_code];
-    const message = `Investigator: ${investigator ? investigator.name : ''}`;
+    const message = L('Investigator: {{name}}', { name: investigator ? investigator.name : '' });
     const hasRandomBasicWeakness = deck && deck.slots[RANDOM_BASIC_WEAKNESS] > 0;
     return (
       <View>
@@ -202,7 +203,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
         { hasRandomBasicWeakness && (
           <ToggleFilter
             style={styles.toggleRow}
-            label="Replace Random Weakness"
+            label={L('Replace Random Weakness')}
             setting="replaceRandomBasicWeakness"
             value={replaceRandomBasicWeakness}
             onChange={this._toggleReplaceRandomBasicWeakness}
@@ -232,7 +233,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
         <Button
           color="green"
           onPress={this._saveDrawnCard}
-          text={`Save to ${investigator.name}’s Deck`}
+          text={L('Save to {{name}}’s Deck', { name: investigator.name })}
         />
       </View>
     );

@@ -12,6 +12,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../../../app/i18n';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -239,7 +240,7 @@ class CampaignDetailView extends React.Component {
           />
           <View style={[styles.margin, styles.button]}>
             <Button
-              title="Delete Campaign"
+              title={L('Delete Campaign')}
               color={COLORS.red}
               onPress={this._deletePressed}
             />

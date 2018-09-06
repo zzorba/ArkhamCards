@@ -54,10 +54,13 @@ class WeaknessSetSection extends React.Component {
       <NavButton onPress={this._showDrawDialog}>
         <View style={styles.padding}>
           <Text style={typography.text}>
-            Basic Weakness Set
+            { L('Basic Weakness Set') }
           </Text>
           <Text style={typography.small}>
-            { `${counts.assigned} / ${counts.total} have been drawn.` }
+            { L('{{assignedCount}} / {{totalCount}} have been drawn.', {
+              assignedCount: counts.assigned,
+              totalCount: counts.total,
+            }) }
           </Text>
         </View>
       </NavButton>

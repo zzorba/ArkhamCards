@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import withPlayerCards from '../withPlayerCards';
 import CardSearchResult from '../CardSearchResult';
 
@@ -158,23 +159,23 @@ class DrawSimulatorView extends React.Component {
     return (
       <View style={styles.controlsContainer}>
         <View style={styles.drawButtonRow}>
-          <Text style={styles.text}>Draw: </Text>
+          <Text style={styles.text}>{ L('Draw: ') }</Text>
           <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
           <Button title="2" disabled={deckEmpty} onPress={this._drawTwo} />
           <Button title="5" disabled={deckEmpty} onPress={this._drawFive} />
-          <Button title="All" disabled={deckEmpty} onPress={this._drawAll} />
+          <Button title={L('All')} disabled={deckEmpty} onPress={this._drawAll} />
         </View>
         <View style={styles.wrapButtonRow}>
           <Button
-            title="Redraw"
+            title={L('Redraw')}
             disabled={noSelection}
             onPress={this._redrawSelected} />
           <Button
-            title="Reshuffle"
+            title={L('Reshuffle')}
             disabled={noSelection}
             onPress={this._reshuffleSelected} />
           <Button
-            title="Reset"
+            title={L('Reset')}
             disabled={drawnCards.length === 0}
             onPress={this._resetDeck} />
         </View>

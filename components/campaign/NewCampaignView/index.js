@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize, filter, forEach, keys, map, sumBy } from 'lodash';
+import { filter, forEach, keys, map, sumBy } from 'lodash';
 import {
   Alert,
   Button,
@@ -15,7 +15,13 @@ import { connect } from 'react-redux';
 import L from '../../../app/i18n';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
-import { CUSTOM } from '../constants';
+import {
+  CUSTOM,
+  DIFFICULTY,
+  campaignLogs,
+  CAMPAIGN_CHAOS_BAGS,
+  difficultyStrings,
+} from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
@@ -24,7 +30,6 @@ import LabeledTextBox from '../../core/LabeledTextBox';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
-import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { newCampaign } from '../actions';
@@ -348,7 +353,7 @@ class NewCampaignView extends React.Component {
     const {
       campaignCode,
     } = this.state;
-    return (campaignCode !== CUSTOM && CAMPAIGN_LOGS[campaignCode]);
+    return (campaignCode !== CUSTOM && campaignLogs()[campaignCode]);
   }
 
   getCampaignLog() {
@@ -357,7 +362,7 @@ class NewCampaignView extends React.Component {
       customCampaignLog,
     } = this.state;
     if (this.hasDefinedCampaignLog()) {
-      return CAMPAIGN_LOGS[campaignCode];
+      return campaignLogs()[campaignCode];
     }
     return customCampaignLog;
   }
@@ -373,7 +378,7 @@ class NewCampaignView extends React.Component {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          CHAOS BAG
+          { L('CHAOS BAG') }
         </Text>
         <View style={[styles.topPadding, styles.margin]}>
           <ChaosBagLine chaosBag={chaosBag} />
@@ -387,7 +392,7 @@ class NewCampaignView extends React.Component {
       name,
     } = this.state;
     this.props.showTextEditDialog(
-      'Campaign Name',
+      L('Campaign Name'),
       name,
       this._onNameChange
     );
@@ -399,9 +404,9 @@ class NewCampaignView extends React.Component {
     } = this.props;
     return (
       <View style={styles.margin}>
-        <Text style={typography.small}>WEAKNESS SET</Text>
+        <Text style={typography.small}>{ L('WEAKNESS SET') }</Text>
         <Text style={typography.small}>
-          Include all basic weaknesses from these expansions
+          { L('Include all basic weaknesses from these expansions') }
         </Text>
         <WeaknessSetPackChooserComponent
           navigator={navigator}
@@ -421,7 +426,7 @@ class NewCampaignView extends React.Component {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          CAMPAIGN LOG
+          { L('CAMPAIGN LOG') }
         </Text>
         <View style={styles.margin}>
           { map(campaignLog.sections || [], section => (
@@ -439,7 +444,7 @@ class NewCampaignView extends React.Component {
         </View>
         { !this.hasDefinedChaosBag() && (
           <View style={[styles.topPadding, styles.button]}>
-            <Button title="Add Log Section" onPress={this._toggleCampaignLogDialog} />
+            <Button title={L('Add Log Section')} onPress={this._toggleCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -493,7 +498,7 @@ class NewCampaignView extends React.Component {
             <View style={[styles.margin, styles.topPadding]}>
               <LabeledTextBox
                 column
-                label="Campaign Name"
+                label={L('Campaign Name')}
                 onPress={this._showCampaignNameDialog}
                 placeholder={this.placeholderName()}
                 required
@@ -503,9 +508,9 @@ class NewCampaignView extends React.Component {
             <View style={[styles.topPadding, styles.margin]}>
               <LabeledTextBox
                 column
-                label="Difficulty"
+                label={L('Difficulty')}
                 onPress={this._showDifficultyDialog}
-                value={capitalize(difficulty)}
+                value={difficultyStrings()[difficulty]}
               />
             </View>
           </View>
@@ -526,7 +531,7 @@ class NewCampaignView extends React.Component {
           </View>
           <View style={styles.underline}>
             <DeckSelector
-              label="Decks"
+              label={L('Decks')}
               navigator={navigator}
               campaignId={nextId}
               deckIds={deckIds}
@@ -537,7 +542,7 @@ class NewCampaignView extends React.Component {
           <View style={styles.button}>
             <Button
               style={styles.topPadding}
-              title="Create Campaign"
+              title={L('Create Campaign')}
               onPress={this._onSave}
             />
           </View>

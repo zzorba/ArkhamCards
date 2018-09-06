@@ -3,8 +3,10 @@ const { extractFromFiles, findMissing } = require('i18n-extract');
 const translations = require('../app/translations.json');
 
 const keys = extractFromFiles([
+  'app/*.js',
   'components/**/*.js',
   'data/*.js',
+  'constants/*.js',
 ], {
   marker: 'L',
 });
