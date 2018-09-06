@@ -11,14 +11,13 @@ import { connect } from 'react-redux';
 
 import L from '../../../app/i18n';
 import CampaignItem from './CampaignItem';
-import { CUSTOM } from '../constants';
+import { CUSTOM, campaignNames } from '../constants';
 import SearchBox from '../../SearchBox';
 import withPlayerCards from '../../withPlayerCards';
 import withLoginGate from '../../withLoginGate';
 import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
-import { CAMPAIGN_NAMES } from '../../../constants';
 import { getAllDecks, getCampaigns } from '../../../reducers';
 
 class MyCampaignsView extends React.Component {
@@ -119,7 +118,7 @@ class MyCampaignsView extends React.Component {
     return filter(campaigns, campaign => {
       const parts = [campaign.name];
       if (campaign.cycleCode !== CUSTOM) {
-        parts.push(CAMPAIGN_NAMES[campaign.cycleCode]);
+        parts.push(campaignNames()[campaign.cycleCode]);
       }
       return searchMatchesText(search, parts);
     });

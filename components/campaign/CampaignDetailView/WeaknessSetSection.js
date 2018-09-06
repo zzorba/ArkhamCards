@@ -58,10 +58,9 @@ class WeaknessSetSection extends React.Component {
           </Text>
           <Text style={typography.small}>
             { L('{{assignedCount}} / {{totalCount}} have been drawn.', {
-                assignedCount: counts.assigned,
-                totalCount: counts.total,
-              })
-            }
+              assignedCount: counts.assigned,
+              totalCount: counts.total,
+            }) }
           </Text>
         </View>
       </NavButton>

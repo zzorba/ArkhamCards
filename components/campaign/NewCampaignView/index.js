@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize, filter, forEach, keys, map, sumBy } from 'lodash';
+import { filter, forEach, keys, map, sumBy } from 'lodash';
 import {
   Alert,
   Button,
@@ -15,7 +15,13 @@ import { connect } from 'react-redux';
 import L from '../../../app/i18n';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
-import { CUSTOM } from '../constants';
+import {
+  CUSTOM,
+  DIFFICULTY,
+  campaignLogs,
+  CAMPAIGN_CHAOS_BAGS,
+  difficultyStrings,
+} from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
@@ -24,7 +30,6 @@ import LabeledTextBox from '../../core/LabeledTextBox';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
-import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { newCampaign } from '../actions';
@@ -348,7 +353,7 @@ class NewCampaignView extends React.Component {
     const {
       campaignCode,
     } = this.state;
-    return (campaignCode !== CUSTOM && CAMPAIGN_LOGS[campaignCode]);
+    return (campaignCode !== CUSTOM && campaignLogs()[campaignCode]);
   }
 
   getCampaignLog() {
@@ -357,7 +362,7 @@ class NewCampaignView extends React.Component {
       customCampaignLog,
     } = this.state;
     if (this.hasDefinedCampaignLog()) {
-      return CAMPAIGN_LOGS[campaignCode];
+      return campaignLogs()[campaignCode];
     }
     return customCampaignLog;
   }
@@ -401,7 +406,7 @@ class NewCampaignView extends React.Component {
       <View style={styles.margin}>
         <Text style={typography.small}>{ L('WEAKNESS SET') }</Text>
         <Text style={typography.small}>
-          { L('Include all basic weaknesses from these expansions')}
+          { L('Include all basic weaknesses from these expansions') }
         </Text>
         <WeaknessSetPackChooserComponent
           navigator={navigator}
@@ -505,7 +510,7 @@ class NewCampaignView extends React.Component {
                 column
                 label={L('Difficulty')}
                 onPress={this._showDifficultyDialog}
-                value={capitalize(difficulty)}
+                value={difficultyStrings()[difficulty]}
               />
             </View>
           </View>

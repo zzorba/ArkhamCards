@@ -1,7 +1,6 @@
 import React from 'react';
 import { mapValues } from 'lodash';
 
-import L from '../app/i18n';
 import ArkhamIcon from '../assets/ArkhamIcon';
 
 export const CORE_FACTION_CODES = [
@@ -79,21 +78,6 @@ export const FACTION_BACKGROUND_COLORS = Object.assign(
   { neutral: '#444444' },
 );
 
-export const DIFFICULTY = {
-  easy: 0,
-  standard: 1,
-  hard: 2,
-  expert: 3,
-};
-
-// TODO: make dynamic
-export const DIFFICULTY_STRINGS = {
-  easy: L('Easy'),
-  standard: L('Standard'),
-  hard: L('Hard'),
-  expert: L('Expert'),
-};
-
 export const CHAOS_TOKEN_ORDER = {
   '+1': 0,
   '0': 1,
@@ -121,77 +105,6 @@ export const SPECIAL_TOKENS = [
   'auto_fail',
   'elder_sign',
 ];
-
-const NOTZ_BAG = [
-  { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-];
-
-export const CAMPAIGN_CHAOS_BAGS = {
-  'core': NOTZ_BAG,
-  'rtnotz': NOTZ_BAG,
-  'dwl': [
-    { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-    { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-    { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  ],
-  'ptc': [
-    { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-    { '0': 3, '-1': 2, '-2': 2, '-3': 3, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-    { '0': 1, '-1': 2, '-2': 2, '-3': 3, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-  ],
-  'tfa': [
-    { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 3, '-1': 1, '-2': 2, '-3': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 2, '-1': 1, '-2': 1, '-3': 2, '-4': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-    { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-6': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-  ],
-};
-
-// TODO: make this dynamic
-const CORE_CAMPAIGN_LOG = {
-  sections: [L('Campaign Notes'), L('Cultists We Interrogated'), L('Cultists Who Got Away')],
-};
-
-// TODO: make this dynamic
-export const CAMPAIGN_NAMES = {
-  core: L('The Night of the Zealot'),
-  rtnotz: L('Return to the Night of the Zealot'),
-  dwl: L('The Dunwich Legacy'),
-  ptc: L('The Path to Carcosa'),
-  tfa: L('The Forgotten Age'),
-};
-
-export const CAMPAIGN_COLORS = {
-  core: '#00408033',
-  rtnotz: '#00006622',
-  dwl: '#00666633',
-  ptc: '#cc990033',
-  tfa: '#33660033',
-};
-
-// TODO: make this dynamic
-export const CAMPAIGN_LOGS = {
-  'core': CORE_CAMPAIGN_LOG,
-  'rtnotz': CORE_CAMPAIGN_LOG,
-  'dwl': {
-    sections: [L('Campaign Notes'), L('Sacrificed to Yog-Sothoth')],
-  },
-  'ptc': {
-    sections: [L('Campaign Notes'), L('VIPs Interviewed'), L('VIPs Slain')],
-    counts: [L('Doubt'), L('Conviction'), L('Chasing the Stranger')],
-  },
-  'tfa': {
-    sections: [L('Campaign Notes')],
-    counts: [L('Yig\'s Fury')],
-    investigatorSections: [L('Supplies')],
-    // investigatorCounts
-  },
-};
 
 export const CHAOS_BAG_TOKEN_COUNTS = {
   '+1': 3,

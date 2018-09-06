@@ -7,8 +7,8 @@ import ArkhamIconNode from './ArkhamIconNode';
 import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';
 import BoldHtmlTagNode from './BoldHtmlTagNode';
 import BoldItalicHtmlTagNode from './BoldItalicHtmlTagNode';
+import EmphasisHtmlTagNode from './EmphasisHtmlTagNode';
 import HrTagNode from './HrTagNode';
-import ItalicHtmlTagNode from './ItalicHtmlTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 import StrikethroughTextNode from './StrikethroughTextNode';
 
@@ -118,19 +118,24 @@ const UnderlineHtmlTagRule = {
 const EmphasisHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<em>([\\s\\S]+?)<\\/em>')),
   order: 1,
-  parse: (capture) => {
-    return { text: capture[1] };
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
-  render: ItalicHtmlTagNode,
+  render: EmphasisHtmlTagNode,
 };
 
 const ItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
   order: 2,
-  parse: (capture) => {
-    return { text: capture[1] };
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
-  render: ItalicHtmlTagNode,
+  // Maybe use Italic node for encounter cards?
+  render: EmphasisHtmlTagNode,
 };
 
 export default class CardText extends React.PureComponent {

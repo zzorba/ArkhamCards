@@ -12,7 +12,7 @@ import { connectRealm } from 'react-native-realm';
 
 import L from '../../../app/i18n';
 import { updateCampaign } from '../actions';
-import { CAMPAIGN_SCENARIOS } from '../constants';
+import { campaignScenarios } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import Switch from '../../core/Switch';
 import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
@@ -216,7 +216,7 @@ function mapStateToProps(state, props) {
   return {
     campaignId: props.campaign.id,
     showInterludes: !!props.campaign.showInterludes,
-    cycleScenarios: CAMPAIGN_SCENARIOS[props.campaign.cycleCode],
+    cycleScenarios: campaignScenarios()[props.campaign.cycleCode],
     cyclePacks,
     standalonePacks,
     decks: getAllDecks(state),
