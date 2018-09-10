@@ -252,7 +252,7 @@ export default class TwoSidedCardComponent extends React.Component {
       card.type_code === 'asset' ||
       card.type_code === 'event' ||
       card.type_code === 'skill' ||
-      card.type_code === 'investigator' ||
+      (card.type_code === 'investigator' && card.encounter_code === null) ||
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness'
     ) ? '#FFF' : '#222';

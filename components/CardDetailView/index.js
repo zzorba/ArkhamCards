@@ -56,7 +56,10 @@ class CardDetailView extends React.Component {
       icon: iconsMap.faq,
       id: 'faq',
     }];
-    if (props.card && props.card.type_code === 'investigator') {
+    if (props.card &&
+      props.card.type_code === 'investigator' &&
+      props.card.encounter_code === null
+    ) {
       rightButtons.push({
         icon: iconsMap.deck,
         id: 'deck',
@@ -147,7 +150,7 @@ class CardDetailView extends React.Component {
       navigator,
       card,
     } = this.props;
-    if (card.type_code !== 'investigator') {
+    if (card.type_code !== 'investigator' || card.encounter_code !== null) {
       return null;
     }
     return (

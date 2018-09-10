@@ -4,5 +4,5 @@ import { reactotronRedux } from 'reactotron-redux';
 Reactotron
   .configure()
   .useReactNative()
-  .use(reactotronRedux())
+//  .use(reactotronRedux())
   .connect();

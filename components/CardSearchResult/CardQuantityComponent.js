@@ -20,7 +20,7 @@ import typography from '../../styles/typography';
 /**
  * Simple sliding card count.
  */
-export default class CardQuantityComponent extends React.Component {
+export default class CardQuantityComponent extends React.PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
     countChanged: PropTypes.func.isRequired,

@@ -14,7 +14,7 @@ import typography from '../../styles/typography';
 
 const DEPRESS_HEIGHT = 6;
 
-export default class CountButton extends React.Component {
+export default class CountButton extends React.PureComponent {
   static propTypes = {
     text: PropTypes.string,
     selected: PropTypes.bool,

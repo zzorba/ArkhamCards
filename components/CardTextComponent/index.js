@@ -7,6 +7,7 @@ import ArkhamIconNode from './ArkhamIconNode';
 import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';
 import BoldHtmlTagNode from './BoldHtmlTagNode';
 import BoldItalicHtmlTagNode from './BoldItalicHtmlTagNode';
+import ItalicHtmlTagNode from './ItalicHtmlTagNode';
 import EmphasisHtmlTagNode from './EmphasisHtmlTagNode';
 import HrTagNode from './HrTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
@@ -134,8 +135,7 @@ const ItalicHtmlTagRule = {
       children: nestedParse(capture[1], state),
     };
   },
-  // Maybe use Italic node for encounter cards?
-  render: EmphasisHtmlTagNode,
+  render: ItalicHtmlTagNode,
 };
 
 export default class CardText extends React.PureComponent {

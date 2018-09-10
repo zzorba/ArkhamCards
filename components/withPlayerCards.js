@@ -9,7 +9,7 @@ export default function withPlayerCards(WrappedComponent) {
       const investigators = {};
       const cards = {};
       forEach(
-        results.cards.filtered('type_code == "investigator" || deck_limit > 0'),
+        results.cards.filtered('(type_code == "investigator" AND encounter_code == null) OR deck_limit > 0'),
         card => {
           cards[card.code] = card;
           if (card.type_code === 'investigator') {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, partition, random, sortBy, throttle } from 'lodash';
+import { concat, flatMap, map, partition, random, sortBy, throttle } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -21,6 +21,7 @@ import { getPackSpoilers } from '../../reducers';
 import Card from '../../data/Card';
 import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
+import { ROW_HEIGHT } from '../CardSearchResult/constants';
 import CardSectionHeader from './CardSectionHeader';
 import {
   SORT_BY_TYPE,
@@ -32,7 +33,7 @@ import {
 } from '../CardSortDialog/constants';
 import typography from '../../styles/typography';
 
-const SCROLL_DISTANCE_BUFFER = 25;
+const SCROLL_DISTANCE_BUFFER = 50;
 
 const FUN_LOADING_MESSAGES = [
   'Investigating for clues',
@@ -98,7 +99,10 @@ class CardResultList extends React.Component {
       },
     );
     this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
-    this._throttledUpdateResults = throttle(this.updateResults.bind(this), 200, { trailing: true });
+    this._throttledUpdateResults = throttle(
+      this.updateResults.bind(this),
+      200,
+      { trailing: true });
     this._getItem = this.getItem.bind(this);
     this._renderSectionHeader = this.renderSectionHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
@@ -111,11 +115,6 @@ class CardResultList extends React.Component {
 
   onScroll(event) {
     const offsetY = event.nativeEvent.contentOffset.y;
-
-    if (offsetY <= 0) {
-      this.props.showHeader();
-    }
-
     // Dispatch the throttle event to handle hiding/showing stuff on transition.
     this._throttledScroll(offsetY);
   }
@@ -126,21 +125,25 @@ class CardResultList extends React.Component {
    * the stored scrollY or not.
    */
   throttledScroll(offsetY) {
-    const delta = Math.abs(offsetY - this.lastOffsetY);
-    if (delta < SCROLL_DISTANCE_BUFFER) {
-      // Not a long enough scroll, don't update scrollY and don't take any
-      // action at all.
-      return;
-    }
-
-    // We have a decent sized scroll so we will make a direction based
-    // show/hide decision UNLESS we are near the top/bottom of the content.
-    const scrollingUp = offsetY < this.lastOffsetY;
-
-    if (scrollingUp) {
+    if (offsetY <= 0) {
       this.props.showHeader();
     } else {
-      this.props.hideHeader();
+      const delta = Math.abs(offsetY - this.lastOffsetY);
+      if (delta < SCROLL_DISTANCE_BUFFER) {
+        // Not a long enough scroll, don't update scrollY and don't take any
+        // action at all.
+        return;
+      }
+
+      // We have a decent sized scroll so we will make a direction based
+      // show/hide decision UNLESS we are near the top/bottom of the content.
+      const scrollingUp = offsetY < this.lastOffsetY;
+
+      if (scrollingUp) {
+        this.props.showHeader();
+      } else {
+        this.props.hideHeader();
+      }
     }
 
     this.lastOffsetY = offsetY;
@@ -474,6 +477,27 @@ class CardResultList extends React.Component {
       );
     }
     const stickyHeaders = sort === SORT_BY_PACK || sort === SORT_BY_ENCOUNTER_SET;
+    const data = this.getData();
+    let offset = 0;
+    const elementHeights = map(
+      flatMap(data, section => {
+        return concat(
+          [30], // Header
+          map(section.data || [], card => ROW_HEIGHT), // Rows
+          [0] // Footer (not used)
+        );
+      }),
+      (size, index) => {
+        const result = {
+          length: size,
+          offset: offset,
+        };
+        offset = offset + size;
+        return result;
+      });
+    const getItemLayout = (data, index) => {
+      return Object.assign({}, elementHeights[index], { index });
+    };
     return (
       <SectionList
         onScroll={this._handleScroll}
@@ -484,10 +508,12 @@ class CardResultList extends React.Component {
         keyExtractor={this._cardToKey}
         renderItem={this._renderCard}
         extraData={this.state.deckCardCounts}
+        getItemLayout={getItemLayout}
         ListFooterComponent={this._renderFooter}
         stickySectionHeadersEnabled={stickyHeaders}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
+        scrollEventThrottle={1}
       />
     );
   }

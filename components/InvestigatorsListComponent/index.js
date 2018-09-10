@@ -115,7 +115,7 @@ export default connectRealm(
       const investigators = [];
       const names = {};
       forEach(
-        results.cards.filtered('type_code == "investigator"')
+        results.cards.filtered('type_code == "investigator" AND encounter_code == null')
           .sorted('code', false),
         card => {
           if (!names[card.name]) {

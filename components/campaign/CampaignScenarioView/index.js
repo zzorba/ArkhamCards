@@ -61,6 +61,7 @@ class CampaignScenarioView extends React.Component {
       cycleScenarios,
     } = this.props;
     const finishedScenarios = new Set(map(campaign.scenarioResults, result => result.scenarioCode));
+    const finishedScenarioNames = new Set(map(campaign.scenarioResults, result => result.scenario));
     return (
       <ScrollView style={styles.container}>
         <CampaignSummaryComponent campaign={campaign} hideScenario />
@@ -69,7 +70,9 @@ class CampaignScenarioView extends React.Component {
         </Text>
         { map(campaign.scenarioResults, this._renderScenarioResult) }
         { map(
-          filter(cycleScenarios, scenario => !finishedScenarios.has(scenario.code)),
+          filter(cycleScenarios, scenario => (
+            !finishedScenarioNames.has(scenario.name) &&
+            !finishedScenarios.has(scenario.code))),
           (scenario, idx) => this.renderPendingScenario(scenario, idx))
         }
         <View style={styles.footer} />
