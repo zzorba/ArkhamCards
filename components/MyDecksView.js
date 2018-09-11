@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import L from '../app/i18n';
 import { iconsMap } from '../app/NavIcons';
 import { showDeckModal } from './navHelper';
 import withLoginGate from './withLoginGate';
@@ -58,7 +59,7 @@ class MyDecksView extends React.Component {
 export default withFetchCardsGate(
   withLoginGate(
     MyDecksView,
-    'ArkhamDB is a popular deck building site where you can manage your decks and share them with others. If you have an account, you can use this app to create and manage your decks on the go.\n\nPlease sign in to enable this feature.'
+    L('ArkhamDB is a popular deck building site where you can manage your decks and share them with others. If you have an account, you can use this app to create and manage your decks on the go.\n\nPlease sign in to enable this feature.')
   ),
   { promptForUpdate: false },
 );

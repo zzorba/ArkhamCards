@@ -114,7 +114,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         renderscriptTargetApi rootProject.ext.compileSdkVersion
         renderscriptSupportModeEnabled true
-        versionCode 8
+        versionCode 9
         versionName "1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
