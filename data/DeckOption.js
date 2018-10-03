@@ -28,7 +28,8 @@ export default class DeckOption {
     }
     if (this.text && this.text.length) {
       // No regex so we have to pre-bake these unfortunately.
-      if (this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror') {
+      if (this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
+        this.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror') {
         query += ' heals_horror == true ';
         dirty = true;
       }

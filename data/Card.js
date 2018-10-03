@@ -11,7 +11,7 @@ import DeckAtLeastOption from './DeckAtLeastOption';
 import { BASIC_SKILLS } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror');
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror');
 export default class Card {
 
   costString(linked) {
@@ -223,7 +223,8 @@ export default class Card {
       });
     }
 
-    let renderName = json.name;
+    const name = json.name.replace('', '');
+    let renderName = name;
     let renderSubname = json.subname;
     if (json.type_code === 'act' && json.stage) {
       renderSubname = L('Act {{stage}}', { stage: json.stage, locale: lang });
@@ -283,6 +284,7 @@ export default class Card {
       json,
       eskills,
       {
+        name,
         firstName,
         renderName,
         renderSubname,

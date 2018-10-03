@@ -163,8 +163,10 @@ export default class EncounterIcon extends React.PureComponent {
         return this.standaloneIcon(encounter_code, size, color);
       case 'hote':
         return this.forgottenIcon('heart_of_the_elders', size, color);
+      case 'tcoa':
+      case 'the_city_of_archives':
+        return this.forgottenIcon('city_of_archives', size, color);
       case 'tfa':
-      case 'tcoa': // THE CITY OF ARCHIVES
       case 'tdoy': // THE DEPTHS OF YOTH
       case 'sha': // SHATTERED AEONS
         return this.forgottenIcon('the_forgotten_age', size, color);
@@ -196,6 +198,7 @@ export default class EncounterIcon extends React.PureComponent {
       case 'pnakotic_brotherhood':
       case 'heart_of_the_elders':
       case 'pillars_of_judgement':
+      case 'city_of_archives':
       case 'knyan':
       case 'poison':
         return this.forgottenIcon(encounter_code, size, color);
