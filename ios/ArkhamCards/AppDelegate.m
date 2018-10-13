@@ -12,9 +12,9 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import "RCCManager.h"
 #import <React/RCTLinkingManager.h>
 #import <AppAuth/AppAuth.h>
+#import <ReactNativeNavigation/ReactNativeNavigation.h>
 
 @implementation AppDelegate
 
@@ -23,9 +23,7 @@
   NSURL *jsCodeLocation;
 
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];  // Initialize AppCenter crashes
-
   [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];  // Initialize AppCenter analytics
-
   [AppCenterReactNative register];  // Initialize AppCenter 
 #ifdef DEBUG
   //  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios&dev=true"];
@@ -36,8 +34,8 @@
   
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
-  [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation launchOptions:launchOptions];
-  
+  [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
+
   return YES;
 }
 
