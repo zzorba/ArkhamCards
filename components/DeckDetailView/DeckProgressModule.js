@@ -9,7 +9,7 @@ import { getDeck } from '../../reducers';
 
 class DeckProgressModule extends React.PureComponent {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     deck: PropTypes.object.isRequired,
     parsedDeck: PropTypes.object.isRequired,
     previousDeck: PropTypes.object,
@@ -37,7 +37,7 @@ class DeckProgressModule extends React.PureComponent {
 
   render() {
     const {
-      navigator,
+      componentId,
       deck,
       parsedDeck,
     } = this.props;
@@ -49,7 +49,7 @@ class DeckProgressModule extends React.PureComponent {
     // Actually compute the diffs.
     return (
       <DeckDelta
-        navigator={navigator}
+        componentId={componentId}
         parsedDeck={parsedDeck}
       />
     );

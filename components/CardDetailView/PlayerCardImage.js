@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
+import { Navigation } from 'react-native-navigation';
 
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 
@@ -14,7 +15,7 @@ const FACTION_ICONS = createFactionIcons(55, '#FFF');
 
 export default class PlayerCardImage extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     card: PropTypes.object.isRequired,
   };
 
@@ -26,16 +27,22 @@ export default class PlayerCardImage extends React.Component {
 
   onPress() {
     const {
-      navigator,
+      componentId,
       card,
     } = this.props;
-    navigator.push({
-      screen: 'Card.Image',
-      passProps: {
-        id: card.code,
-      },
-      navigatorStyle: {
-        tabBarHidden: true,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Card.Image',
+        passProps: {
+          id: card.code,
+        },
+        options: {
+          bottomTabs: {
+            visible: false,
+            drawBehind: true,
+            animate: true,
+          },
+        },
       },
     });
   }

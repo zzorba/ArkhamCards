@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
 import InvestigatorsListComponent from './InvestigatorsListComponent';
 
 export default class BrowseInvestigatorsView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          title: L('Investigators'),
+        },
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -15,28 +26,24 @@ export default class BrowseInvestigatorsView extends React.Component {
     this._onPress = this.onPress.bind(this);
   }
 
-  componentDidMount() {
-    this.props.navigator.setTitle({
-      title: L('Investigators'),
-    });
-  }
-
   onPress(investigator) {
-    this.props.navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: investigator.code,
-        pack_code: investigator.pack_code,
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: investigator.code,
+          pack_code: investigator.pack_code,
+        },
       },
     });
   }
 
   render() {
     const {
-      navigator,
+      componentId,
     } = this.props;
     return (
-      <InvestigatorsListComponent navigator={navigator} onPress={this._onPress} />
+      <InvestigatorsListComponent componentId={componentId} onPress={this._onPress} />
     );
   }
 }

@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import ChaosTokenRow from './ChaosTokenRow';
@@ -15,11 +16,23 @@ import typography from '../../../styles/typography';
 
 export default class EditChaosBagDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     chaosBag: PropTypes.object.isRequired,
     updateChaosBag: PropTypes.func.isRequired,
     trackDeltas: PropTypes.bool,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          text: L('Save'),
+          id: 'save',
+          showAsAction: 'ifRoom',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -28,26 +41,15 @@ export default class EditChaosBagDialog extends React.Component {
       chaosBag: Object.assign({}, props.chaosBag),
     };
 
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          title: L('Save'),
-          id: 'save',
-          showAsAction: 'ifRoom',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-
     this._onCountChange = this.onCountChange.bind(this);
+
+    Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'save') {
-        this.props.updateChaosBag(this.state.chaosBag);
-        this.props.navigator.pop();
-      }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'save') {
+      this.props.updateChaosBag(this.state.chaosBag);
+      Navigation.pop(this.props.componentId);
     }
   }
 

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import withTextEditDialog from '../../core/withTextEditDialog';
@@ -20,7 +21,7 @@ import typography from '../../../styles/typography';
 
 class AddScenarioResultView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     // from redux/realm
@@ -46,7 +47,7 @@ class AddScenarioResultView extends React.Component {
     };
 
     this.updateNavigatorButtons();
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    Navigation.events().bindComponent(this);
 
     this._doSave = this.doSave.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
@@ -61,30 +62,28 @@ class AddScenarioResultView extends React.Component {
   }
 
   updateNavigatorButtons() {
-    this.props.navigator.setButtons({
-      rightButtons: [
-        {
-          title: L('Save'),
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        rightButtons: [{
+          text: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
           disabled: !this.state.scenario.scenario ||
             !(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
-        },
-      ],
+        }],
+      },
     });
   }
 
-  onNavigatorEvent(event) {
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'save') {
-        this.doSave();
-      }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'save') {
+      this.doSave();
     }
   }
 
   doSave() {
     const {
-      navigator,
+      componentId,
       campaign,
       addScenarioResult,
     } = this.props;
@@ -97,7 +96,7 @@ class AddScenarioResultView extends React.Component {
       scenario,
       xp
     );
-    navigator.pop();
+    Navigation.pop(componentId);
   }
 
   scenarioChanged(scenario) {
@@ -114,13 +113,13 @@ class AddScenarioResultView extends React.Component {
 
   renderScenarios() {
     const {
-      navigator,
+      componentId,
       campaign,
       showTextEditDialog,
     } = this.props;
     return (
       <ScenarioSection
-        navigator={navigator}
+        componentId={componentId}
         campaign={campaign}
         scenarioChanged={this._scenarioChanged}
         showTextEditDialog={showTextEditDialog}

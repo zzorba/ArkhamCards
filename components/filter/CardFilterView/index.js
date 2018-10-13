@@ -23,7 +23,7 @@ const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
 class CardFilterView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     cards: PropTypes.object,
     filters: PropTypes.object,
     defaultFilterState: PropTypes.object,
@@ -32,6 +32,24 @@ class CardFilterView extends React.Component {
     onToggleChange: PropTypes.func.isRequired,
     onFilterChange: PropTypes.func.isRequired,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Filter'),
+        },
+        leftButtons: {
+          text: L('Apply'),
+          id: 'apply',
+        },
+        rightButtons: [{
+          text: L('Clear'),
+          id: 'clear',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -56,18 +74,6 @@ class CardFilterView extends React.Component {
 
     this._onEnemyPress = this.onEnemyPress.bind(this);
     this._onLocationPress = this.onLocationPress.bind(this);
-
-    props.navigator.setTitle({
-      title: L('Filter'),
-    });
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          title: L('Clear'),
-          id: 'clear',
-        },
-      ],
-    });
   }
 
   componentDidMount() {
@@ -301,7 +307,7 @@ class CardFilterView extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       width,
       defaultFilterState,
       filters: {
@@ -374,7 +380,7 @@ class CardFilterView extends React.Component {
         <View>
           { (types.length > 0 || allTypes.length > 0) && (
             <FilterChooserButton
-              navigator={navigator}
+              componentId={componentId}
               title={L('Types')}
               values={allTypes}
               selection={types}
@@ -384,7 +390,7 @@ class CardFilterView extends React.Component {
           ) }
           { (subTypes.length > 0 || allSubTypes.length > 0) && (
             <FilterChooserButton
-              navigator={navigator}
+              componentId={componentId}
               title={L('SubTypes')}
               values={allSubTypes}
               selection={subTypes}
@@ -448,7 +454,7 @@ class CardFilterView extends React.Component {
           { (traits.length > 0 || allTraits.length > 0) && (
             <FilterChooserButton
               title={L('Traits')}
-              navigator={navigator}
+              componentId={componentId}
               values={allTraits}
               selection={traits}
               setting="traits"
@@ -466,7 +472,7 @@ class CardFilterView extends React.Component {
             >
               { (slots.length > 0 || allSlots.length > 0) && (
                 <FilterChooserButton
-                  navigator={navigator}
+                  componentId={componentId}
                   title={L('Slots')}
                   values={allSlots}
                   selection={slots}
@@ -477,7 +483,7 @@ class CardFilterView extends React.Component {
               ) }
               { (uses.length > 0 || allUses.length > 0) && (
                 <FilterChooserButton
-                  navigator={navigator}
+                  componentId={componentId}
                   title={L('Uses')}
                   values={allUses}
                   selection={uses}
@@ -526,7 +532,7 @@ class CardFilterView extends React.Component {
           ) }
           { (cycleNames.length > 0 || allCycleNames.length > 1) && (
             <FilterChooserButton
-              navigator={navigator}
+              componentId={componentId}
               title={L('Cycles')}
               values={allCycleNames}
               selection={cycleNames}
@@ -536,7 +542,7 @@ class CardFilterView extends React.Component {
           ) }
           { (packs.length > 0 || allPacks.length > 1) && (
             <FilterChooserButton
-              navigator={navigator}
+              componentId={componentId}
               title={L('Packs')}
               values={allPacks}
               selection={packs}
@@ -546,7 +552,7 @@ class CardFilterView extends React.Component {
           ) }
           { (encounters.length > 0 || allEncounters.length > 0) && (
             <FilterChooserButton
-              navigator={navigator}
+              componentId={componentId}
               title={L('Encounter Sets')}
               values={allEncounters}
               selection={encounters}
@@ -556,7 +562,7 @@ class CardFilterView extends React.Component {
           ) }
           { (illustrators.length > 0 || allIllustrators.length > 0) && (
             <FilterChooserButton
-              navigator={navigator}
+              componentId={componentId}
               title={L('Illustrators')}
               values={allIllustrators}
               selection={illustrators}

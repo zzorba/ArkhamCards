@@ -20,7 +20,7 @@ import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '../reducers'
 class MyDecksComponent extends React.Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     deckClicked: PropTypes.func.isRequired,
     onlyDeckIds: PropTypes.array,
     filterDeckIds: PropTypes.array,
@@ -130,7 +130,7 @@ class MyDecksComponent extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       deckClicked,
       filterDeckIds = [],
       filterInvestigators = [],
@@ -151,7 +151,7 @@ class MyDecksComponent extends React.Component {
     });
     return (
       <DeckListComponent
-        navigator={navigator}
+        componentId={componentId}
         customHeader={this.renderHeader()}
         deckIds={deckIds}
         deckClicked={deckClicked}

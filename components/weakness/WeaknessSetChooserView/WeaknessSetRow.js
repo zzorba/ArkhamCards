@@ -5,12 +5,14 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+
 import typography from '../../../styles/typography';
 import WeaknessSetView from '../WeaknessSetView';
 
 export default class WeaknessSetRow extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     set: PropTypes.object.isRequired,
     cards: PropTypes.object,
   };
@@ -23,13 +25,22 @@ export default class WeaknessSetRow extends React.Component {
 
   onPress() {
     const {
-      navigator,
+      componentId,
       set,
     } = this.props;
-    navigator.push({
-      screen: 'Weakness.Detail',
-      passProps: {
-        id: set.id,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Weakness.Detail',
+        passProps: {
+          id: set.id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: set.name,
+            },
+          },
+        },
       },
     });
   }

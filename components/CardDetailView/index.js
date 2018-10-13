@@ -8,6 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +26,7 @@ import SignatureCardsComponent from './SignatureCardsComponent';
 
 class CardDetailView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.string.isRequired,
     pack_code: PropTypes.string.isRequired,
@@ -65,64 +66,86 @@ class CardDetailView extends React.Component {
         id: 'deck',
       });
     }
-    props.navigator.setButtons({
-      leftButtons: [
-        backButton,
-      ],
-      rightButtons,
+    Navigation.mergeOptions(props.componentId, {
+      topBar: {
+        leftButtons: [
+          backButton,
+        ],
+        rightButtons,
+      },
     });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    Navigation.events().bindComponent(this);
   }
 
   editSpoilersPressed() {
-    this.props.navigator.push({
-      screen: 'My.Spoilers',
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Spoilers',
+      },
     });
   }
 
-  onNavigatorEvent(event) {
+  navigationButtonPressed({ buttonId }) {
     const {
-      navigator,
+      componentId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'deck') {
-        this.showInvestigatorCards();
-      } else if (event.id === 'faq') {
-        this.showFaq();
-      } else if (event.id === 'back') {
-        navigator.pop();
-      }
+    if (buttonId === 'deck') {
+      this.showInvestigatorCards();
+    } else if (buttonId === 'faq') {
+      this.showFaq();
+    } else if (buttonId === 'back') {
+      Navigation.pop(componentId);
     }
   }
 
   showFaq() {
     const {
-      navigator,
+      componentId,
       card,
     } = this.props;
-    navigator.push({
-      screen: 'Card.Faq',
-      title: L('FAQ'),
-      subtitle: card.name,
-      passProps: {
-        id: card.code,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Card.Faq',
+        passProps: {
+          id: card.code,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('FAQ'),
+            },
+            subtitle: {
+              text: card.name,
+            },
+          },
+        },
       },
     });
   }
 
   showInvestigatorCards() {
     const {
-      navigator,
+      componentId,
       card,
     } = this.props;
 
-    navigator.push({
-      screen: 'Browse.InvestigatorCards',
-      title: L('Allowed Cards'),
-      passProps: {
-        investigatorCode: card.code,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Browse.InvestigatorCards',
+        passProps: {
+          investigatorCode: card.code,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Allowed Cards'),
+            },
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Back'),
     });
   }
 
@@ -147,7 +170,7 @@ class CardDetailView extends React.Component {
 
   renderInvestigatorCardsLink() {
     const {
-      navigator,
+      componentId,
       card,
     } = this.props;
     if (card.type_code !== 'investigator' || card.encounter_code !== null) {
@@ -165,14 +188,14 @@ class CardDetailView extends React.Component {
             icon={<AppIcon name="deck" size={18} color="white" />}
           />
         </View>
-        <SignatureCardsComponent navigator={navigator} investigator={card} />
+        <SignatureCardsComponent componentId={componentId} investigator={card} />
       </View>
     );
   }
 
   render() {
     const {
-      navigator,
+      componentId,
       card,
     } = this.props;
 
@@ -194,7 +217,7 @@ class CardDetailView extends React.Component {
     return (
       <ScrollView style={styles.viewContainer}>
         <TwoSidedCardComponent
-          navigator={navigator}
+          componentId={componentId}
           card={card}
         />
         { this.renderInvestigatorCardsLink() }

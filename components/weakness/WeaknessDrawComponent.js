@@ -25,7 +25,7 @@ const PADDING = 32;
 
 class WeaknessDrawComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     weaknessSet: PropTypes.object,
     updateDrawnCard: PropTypes.func.isRequired,
     customHeader: PropTypes.node,
@@ -221,7 +221,7 @@ class WeaknessDrawComponent extends React.Component {
 
   renderHeaderContent() {
     const {
-      navigator,
+      componentId,
       customHeader,
       customFlippedHeader,
       saving,
@@ -259,7 +259,7 @@ class WeaknessDrawComponent extends React.Component {
       <View onLayout={this._onHeaderLayout}>
         { customHeader }
         <ChooserButton
-          navigator={navigator}
+          componentId={componentId}
           title={L('Traits')}
           values={this.allTraits()}
           selection={selectedTraits}

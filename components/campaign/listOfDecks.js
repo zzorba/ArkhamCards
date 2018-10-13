@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import withPlayerCards from '../withPlayerCards';
@@ -14,7 +15,7 @@ import withPlayerCards from '../withPlayerCards';
 export default function listOfDecks(DeckComponent) {
   class DeckListerComponent extends React.Component {
     static propTypes = {
-      navigator: PropTypes.object.isRequired,
+      componentId: PropTypes.string.isRequired,
       campaignId: PropTypes.number.isRequired,
       deckIds: PropTypes.array.isRequired,
       deckAdded: PropTypes.func,
@@ -32,24 +33,29 @@ export default function listOfDecks(DeckComponent) {
 
     showDeckSelector() {
       const {
-        navigator,
         deckIds,
         deckAdded,
         campaignId,
       } = this.props;
-      navigator.showModal({
-        screen: 'Dialog.DeckSelector',
-        passProps: {
-          campaignId: campaignId,
-          onDeckSelect: deckAdded,
-          selectedDeckIds: deckIds,
+      Navigation.showModal({
+        stack: {
+          children: [{
+            component: {
+              name: 'Dialog.DeckSelector',
+              passProps: {
+                campaignId: campaignId,
+                onDeckSelect: deckAdded,
+                selectedDeckIds: deckIds,
+              },
+            },
+          }],
         },
       });
     }
 
     render() {
       const {
-        navigator,
+        componentId,
         deckIds,
         deckAdded,
         deckRemoved,
@@ -62,7 +68,7 @@ export default function listOfDecks(DeckComponent) {
           { map(deckIds, deckId => (
             <DeckComponent
               key={deckId}
-              navigator={navigator}
+              componentId={componentId}
               id={deckId}
               cards={cards}
               investigators={investigators}

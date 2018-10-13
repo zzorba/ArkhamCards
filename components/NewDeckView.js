@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
 import { handleAuthErrors } from './authHelper';
@@ -14,12 +15,26 @@ import { newDeck } from '../lib/authApi';
 
 class NewDeckView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     setNewDeck: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
     onCreateDeck: PropTypes.func,
     filterInvestigators: PropTypes.array,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          title: L('New Deck'),
+        },
+        leftButtons: [{
+          icon: iconsMap.close,
+          id: 'close',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -28,38 +43,23 @@ class NewDeckView extends React.Component {
       saving: false,
     };
 
-    props.navigator.setButtons({
-      leftButtons: [
-        {
-          icon: iconsMap.close,
-          id: 'close',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     this._onPress = throttle(this.onPress.bind(this), 200);
+
+    Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
+  navigationButtonPressed({ buttonId }) {
     const {
-      navigator,
+      componentId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'close') {
-        navigator.dismissModal();
-      }
+    if (buttonId === 'close') {
+      Navigation.dismissModal(componentId);
     }
-  }
-
-  componentDidMount() {
-    this.props.navigator.setTitle({
-      title: L('New Deck'),
-    });
   }
 
   onPress(investigator) {
     const {
-      navigator,
+      componentId,
       setNewDeck,
       onCreateDeck,
       login,
@@ -74,7 +74,7 @@ class NewDeckView extends React.Component {
         deck => {
           setNewDeck(deck.id, deck);
           onCreateDeck && onCreateDeck(deck);
-          showDeckModal(navigator, deck, investigator);
+          showDeckModal(componentId, deck, investigator);
         },
         () => {
           this.setState({
@@ -89,12 +89,12 @@ class NewDeckView extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       filterInvestigators,
     } = this.props;
     return (
       <InvestigatorsListComponent
-        navigator={navigator}
+        componentId={componentId}
         filterInvestigators={filterInvestigators}
         onPress={this._onPress}
       />

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { isEliminated } from './trauma';
@@ -19,7 +20,7 @@ import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds } from '../../
 
 class MyDecksSelectorDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     campaignId: PropTypes.number.isRequired,
     onDeckSelect: PropTypes.func.isRequired,
@@ -34,6 +35,24 @@ class MyDecksSelectorDialog extends React.Component {
     investigators: PropTypes.object,
   };
 
+  static options(passProps) {
+    return {
+      topBar: {
+        title: {
+          title: L('Choose a Deck'),
+        },
+        leftButtons: [{
+          icon: iconsMap.close,
+          id: 'close',
+        }],
+        rightButtons: passProps.showOnlySelectedDeckIds ? [] : [{
+          icon: iconsMap.add,
+          id: 'add',
+        }],
+      },
+    };
+  }
+
   constructor(props) {
     super(props);
 
@@ -43,25 +62,6 @@ class MyDecksSelectorDialog extends React.Component {
       hideEliminatedInvestigators: true,
     };
 
-    this.props.navigator.setTitle({
-      title: L('Choose a Deck'),
-    });
-    props.navigator.setButtons({
-      leftButtons: [
-        {
-          icon: iconsMap.close,
-          id: 'close',
-        },
-      ],
-      rightButtons: props.showOnlySelectedDeckIds ? [] : [
-        {
-          icon: iconsMap.add,
-          id: 'add',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-
     this._deckSelected = this.deckSelected.bind(this);
     this._toggleHideOtherCampaignInvestigators =
       this.toggleValue.bind(this, 'hideOtherCampaignInvestigators');
@@ -69,6 +69,8 @@ class MyDecksSelectorDialog extends React.Component {
       this.toggleValue.bind(this, 'onlyShowPreviousCampaignMembers');
     this._toggleHideEliminatedInvestigators =
       this.toggleValue.bind(this, 'hideEliminatedInvestigators');
+
+    Navigation.events().bindComponent(this);
   }
 
   toggleValue(key) {
@@ -77,33 +79,33 @@ class MyDecksSelectorDialog extends React.Component {
     });
   }
 
-  onNavigatorEvent(event) {
+  navigationButtonPressed({ buttonId }) {
     const {
-      navigator,
+      componentId,
       onDeckSelect,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'add') {
-        navigator.push({
-          screen: 'Deck.New',
+    if (buttonId === 'add') {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Deck.New',
           passProps: {
             onCreateDeck: onDeckSelect,
             filterInvestigators: this.filterInvestigators(),
           },
-        });
-      } else if (event.id === 'close') {
-        navigator.dismissModal();
-      }
+        },
+      });
+    } else if (buttonId === 'close') {
+      Navigation.dismissModal(componentId);
     }
   }
 
   deckSelected(deck) {
     const {
       onDeckSelect,
-      navigator,
+      componentId,
     } = this.props;
     onDeckSelect(deck);
-    navigator.dismissModal();
+    Navigation.dismissModal(componentId);
   }
 
   renderCustomHeader() {
@@ -226,12 +228,12 @@ class MyDecksSelectorDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
     } = this.props;
 
     return (
       <MyDecksComponent
-        navigator={navigator}
+        componentId={componentId}
         customHeader={this.renderCustomHeader()}
         deckClicked={this._deckSelected}
         onlyDeckIds={this.onlyDeckIds()}

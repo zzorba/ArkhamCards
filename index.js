@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { RealmProvider } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import { registerScreens } from './app/screens';
 import configureStore from './app/store';
@@ -27,7 +28,10 @@ class MyProvider extends React.Component {
 }
 
 const { store /* , persistor */ } = configureStore({});
-registerScreens(store, MyProvider);
+registerScreens(MyProvider, store);
 
 /* eslint-disable no-unused-vars */
-const app = new App(store);
+let app = null;
+Navigation.events().registerAppLaunchedListener(() => {
+  app = new App(store);
+});

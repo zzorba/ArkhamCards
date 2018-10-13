@@ -16,7 +16,7 @@ import {
 
 class CardSortDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     sortChanged: PropTypes.func.isRequired,
     selectedSort: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
@@ -51,7 +51,7 @@ class CardSortDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       selectedSort,
       hasEncounterCards,
     } = this.props;
@@ -71,7 +71,7 @@ class CardSortDialog extends React.Component {
 
     return (
       <DialogPicker
-        navigator={navigator}
+        componentId={componentId}
         options={map(sorts, sort => sortMap[sort])}
         onSelectionChanged={this._onSortChanged}
         header={L('Sort by')}

@@ -6,21 +6,21 @@ import withFetchCardsGate from './cards/withFetchCardsGate';
 
 class CardSearchView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     baseQuery: PropTypes.string,
     sort: PropTypes.string,
   };
 
   render() {
     const {
-      navigator,
+      componentId,
       baseQuery,
       sort,
     } = this.props;
 
     return (
       <CardSearchComponent
-        navigator={navigator}
+        componentId={componentId}
         mythosToggle={!baseQuery}
         baseQuery={baseQuery}
         sort={sort}

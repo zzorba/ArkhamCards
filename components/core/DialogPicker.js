@@ -10,6 +10,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import DialogOption from './DialogOption';
@@ -17,7 +18,7 @@ import typography from '../../styles/typography';
 
 export default class DialogPicker extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     options: PropTypes.array.isRequired,
     selectedOption: PropTypes.string,
     onSelectionChanged: PropTypes.func.isRequired,
@@ -45,14 +46,15 @@ export default class DialogPicker extends React.Component {
 
   onPress(option) {
     const {
+      componentId,
       onSelectionChanged,
     } = this.props;
     onSelectionChanged(option);
-    this.props.navigator.dismissLightBox();
+    Navigation.dismissOverlay(componentId);
   }
 
   hide() {
-    this.props.navigator.dismissLightBox();
+    Navigation.dismissOverlay(this.props.componentId);
   }
 
   renderOptions() {

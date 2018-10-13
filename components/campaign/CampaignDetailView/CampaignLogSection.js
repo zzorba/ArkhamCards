@@ -5,7 +5,7 @@ import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 
 export default class CampaignLogSection extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignNotes: PropTypes.object.isRequired,
     updateCampaignNotes: PropTypes.func.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
@@ -27,7 +27,7 @@ export default class CampaignLogSection extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       campaignNotes,
       showTextEditDialog,
       showAddSectionDialog,
@@ -35,7 +35,7 @@ export default class CampaignLogSection extends React.Component {
     } = this.props;
     return (
       <EditCampaignNotesComponent
-        navigator={navigator}
+        componentId={componentId}
         campaignNotes={campaignNotes}
         allInvestigators={allInvestigators}
         updateCampaignNotes={this._updateCampaignNotes}

@@ -11,7 +11,7 @@ import DeckNavFooter from './DeckNavFooter';
 
 class DeckEditView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     investigator: PropTypes.object,
     /* eslint-disable react/no-unused-prop-types */
     deck: PropTypes.object.isRequired,
@@ -65,7 +65,7 @@ class DeckEditView extends React.Component {
 
   renderFooter() {
     const {
-      navigator,
+      componentId,
       deck,
       previousDeck,
       cards,
@@ -83,7 +83,7 @@ class DeckEditView extends React.Component {
     const pDeck = parseDeck(deck, deckCardCounts, cardsInDeck, previousDeck);
     return (
       <DeckNavFooter
-        navigator={navigator}
+        componentId={componentId}
         parsedDeck={pDeck}
         cards={cardsInDeck}
       />
@@ -92,7 +92,7 @@ class DeckEditView extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       investigator,
       slots,
     } = this.props;
@@ -107,7 +107,7 @@ class DeckEditView extends React.Component {
 
     return (
       <CardSearchComponent
-        navigator={navigator}
+        componentId={componentId}
         baseQuery={baseQuery}
         originalDeckSlots={slots}
         deckCardCounts={deckCardCounts}

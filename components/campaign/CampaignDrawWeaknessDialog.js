@@ -4,6 +4,7 @@ import { head, flatMap, keys, map, range } from 'lodash';
 import { StyleSheet, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { updateCampaign } from './actions';
@@ -23,7 +24,7 @@ const RANDOM_BASIC_WEAKNESS = '01000';
 
 class CampaignDrawWeaknessDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignId: PropTypes.number.isRequired,
     // From redux
     weaknessSet: PropTypes.object.isRequired,
@@ -35,6 +36,17 @@ class CampaignDrawWeaknessDialog extends React.Component {
     investigators: PropTypes.object,
     cards: PropTypes.object,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          icon: iconsMap.edit,
+          id: 'edit',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -52,29 +64,24 @@ class CampaignDrawWeaknessDialog extends React.Component {
     this._updateDrawnCard = this.updateDrawnCard.bind(this);
     this._onPressInvestigator = this.onPressInvestigator.bind(this);
     this._toggleReplaceRandomBasicWeakness = this.toggleReplaceRandomBasicWeakness.bind(this);
-    props.navigator.setButtons({
-      rightButtons: [{
-        icon: iconsMap.edit,
-        id: 'edit',
-      }],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+    Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
+  navigationButtonPressed({ buttonId }) {
     const {
-      navigator,
+      componentId,
       campaignId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'edit') {
-        navigator.push({
-          screen: 'Dialog.CampaignEditWeakness',
+    if (buttonId === 'edit') {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Dialog.CampaignEditWeakness',
           passProps: {
             campaignId: campaignId,
           },
-        });
-      }
+        },
+      });
     }
   }
 
@@ -92,17 +99,22 @@ class CampaignDrawWeaknessDialog extends React.Component {
 
   onPressInvestigator() {
     const {
-      navigator,
       latestDeckIds,
       campaignId,
     } = this.props;
-    navigator.showModal({
-      screen: 'Dialog.DeckSelector',
-      passProps: {
-        campaignId: campaignId,
-        onDeckSelect: this._selectDeck,
-        selectedDeckIds: latestDeckIds,
-        showOnlySelectedDeckIds: true,
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.DeckSelector',
+            passProps: {
+              campaignId: campaignId,
+              onDeckSelect: this._selectDeck,
+              selectedDeckIds: latestDeckIds,
+              showOnlySelectedDeckIds: true,
+            },
+          },
+        }],
       },
     });
   }
@@ -241,7 +253,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       weaknessSet,
     } = this.props;
 
@@ -251,7 +263,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
 
     return (
       <WeaknessDrawComponent
-        navigator={navigator}
+        componentId={componentId}
         customHeader={this.renderInvestigatorChooser()}
         customFlippedHeader={this.renderFlippedHeader()}
         weaknessSet={weaknessSet}

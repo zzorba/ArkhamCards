@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { clearDecks } from '../../actions';
@@ -23,7 +24,7 @@ const defaultImageCacheManager = ImageCacheManager();
 class SettingsView extends React.Component {
   static propTypes = {
     realm: PropTypes.object.isRequired,
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     lang: PropTypes.string,
     fetchCards: PropTypes.func.isRequired,
     clearDecks: PropTypes.func.isRequired,
@@ -43,19 +44,33 @@ class SettingsView extends React.Component {
   }
 
   languagePressed() {
-    this.props.navigator.showLightBox({
-      screen: 'Dialog.Language',
-      style: {
-        backgroundColor: 'rgba(128,128,128,.75)',
+    Navigation.showOverlay({
+      component: {
+        name: 'Dialog.Language',
+        options: {
+          layout: {
+            backgroundColor: 'rgba(128,128,128,.75)',
+          },
+        },
       },
     });
   }
 
   navButtonPressed(screen, title) {
-    this.props.navigator.push({
-      screen,
-      title,
-      backButtonTitle: L('Done'),
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: screen,
+        options: {
+          topBar: {
+            title: {
+              text: title,
+            },
+            backButton: {
+              title: L('Done'),
+            },
+          },
+        },
+      },
     });
   }
 

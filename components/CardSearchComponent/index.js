@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import CardSearchBox from './CardSearchBox';
@@ -26,7 +27,7 @@ import typography from '../../styles/typography';
 
 class CardSearchComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     // Function that takes 'realm' and gives back a base query.
     defaultFilterState: PropTypes.object,
     baseQuery: PropTypes.string,
@@ -67,26 +68,28 @@ class CardSearchComponent extends React.Component {
     this._searchUpdated = this.searchUpdated.bind(this);
     this._setFilters = this.setFilters.bind(this);
     this._clearSearchFilters = this.clearSearchFilters.bind(this);
-    const rightButtons = [
-      {
-        icon: iconsMap.tune,
-        id: 'filter',
-      },
-      {
-        icon: iconsMap['sort-by-alpha'],
-        id: 'sort',
-      },
-    ];
+    const rightButtons = [{
+      icon: iconsMap.tune,
+      id: 'filter',
+    },{
+      icon: iconsMap['sort-by-alpha'],
+      id: 'sort',
+    }];
     if (props.mythosToggle) {
       rightButtons.push({
         icon: iconsMap.auto_fail,
         id: 'mythos',
       });
     }
-    props.navigator.setButtons({
-      rightButtons,
+    Navigation.mergeOptions(props.componentId, {
+      topBar: {
+        title: {
+          text: L('Player Cards'),
+        },
+        rightButtons,
+      },
     });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    Navigation.events().bindComponent(this);
   }
 
   showHeader() {
@@ -140,58 +143,64 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  onNavigatorEvent(event) {
+  navigationButtonPressed({ buttonId }) {
     const {
-      navigator,
+      componentId,
       baseQuery,
       defaultFilterState,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'filter') {
-        this.isOnTop = false;
-        navigator.push({
-          screen: 'SearchFilters',
-          animationType: 'slide-down',
-          backButtonTitle: L('Apply'),
+    // will be called when "buttonOne" is clicked
+    if (buttonId === 'filter') {
+      this.isOnTop = false;
+      Navigation.push(componentId, {
+        component: {
+          name: 'SearchFilters',
           passProps: {
             applyFilters: this._setFilters,
             defaultFilterState: defaultFilterState,
             currentFilters: this.state.filters,
             baseQuery: baseQuery,
           },
-        });
-      } else if (event.id === 'sort') {
-        this.isOnTop = false;
-        Keyboard.dismiss();
-        navigator.showLightBox({
-          screen: 'Dialog.Sort',
+        },
+      });
+    } else if (buttonId === 'sort') {
+      this.isOnTop = false;
+      Keyboard.dismiss();
+      Navigation.showOverlay({
+        component: {
+          name: 'Dialog.Sort',
           passProps: {
             sortChanged: this._sortChanged,
             selectedSort: this.state.selectedSort,
             query: this.query(),
             searchTerm: this.state.searchTerm,
           },
-          style: {
-            backgroundColor: 'rgba(128,128,128,.75)',
+          options: {
+            layout: {
+              backgroundColor: 'rgba(128,128,128,.75)',
+            },
           },
-        });
-      } else if (event.id === 'mythos') {
-        this.toggleMythosMode();
-      }
-    } else if (event.id === 'willDisappear') {
-      this.setState({
-        visible: false,
+        },
       });
-    } else if (event.id === 'willAppear') {
-      this.setState({
-        visible: true,
-      });
+    } else if (buttonId === 'mythos') {
+      this.toggleMythosMode();
     }
+  }
+  componentDidAppear() {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  componentDidDisappear() {
+    this.setState({
+      visible: false,
+    });
   }
 
   toggleMythosMode() {
     const {
-      navigator,
+      componentId,
     } = this.props;
     const {
       mythosMode,
@@ -212,13 +221,14 @@ class CardSearchComponent extends React.Component {
         id: 'mythos',
       },
     ];
-    navigator.setButtons({
-      rightButtons,
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          text: mythosMode ? L('Player Cards') : L('Encounter Cards'),
+        },
+        rightButtons,
+      },
     });
-    navigator.setTitle({
-      title: mythosMode ? L('Player Cards') : L('Encounter Cards'),
-    });
-
   }
 
   searchUpdated(text) {
@@ -398,7 +408,7 @@ class CardSearchComponent extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       originalDeckSlots,
       deckCardCounts,
       onDeckCountChange,
@@ -416,7 +426,7 @@ class CardSearchComponent extends React.Component {
         { this.renderHeader() }
         <View style={styles.container}>
           <CardResultList
-            navigator={navigator}
+            componentId={componentId}
             query={query}
             searchTerm={searchTerm}
             sort={selectedSort}

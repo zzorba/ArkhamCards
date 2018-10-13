@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
@@ -15,7 +16,7 @@ import typography from '../../../styles/typography';
 
 export default class ScenarioSection extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaign: PropTypes.object.isRequired,
   };
 
@@ -29,30 +30,50 @@ export default class ScenarioSection extends React.Component {
   onPress() {
     const {
       campaign,
-      navigator,
+      componentId,
     } = this.props;
-    navigator.push({
-      screen: 'Campaign.Scenarios',
-      title: L('Scenarios'),
-      passProps: {
-        id: campaign.id,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign.Scenarios',
+        passProps: {
+          id: campaign.id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Scenarios'),
+            },
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Back'),
     });
   }
 
   addScenarioResult() {
     const {
       campaign,
-      navigator,
+      componentId,
     } = this.props;
-    navigator.push({
-      screen: 'Campaign.AddResult',
-      title: L('Scenario Result'),
-      passProps: {
-        id: campaign.id,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign.AddResult',
+        passProps: {
+          id: campaign.id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Scenario Result'),
+            },
+            backButton: {
+              title: L('Cancel'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Cancel'),
     });
   }
 

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CampaignItem from './CampaignItem';
@@ -22,12 +23,23 @@ import { getAllDecks, getCampaigns } from '../../../reducers';
 
 class MyCampaignsView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaigns: PropTypes.array,
     decks: PropTypes.object,
     // From realm
     investigators: PropTypes.object,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          icon: iconsMap.add,
+          id: 'add',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -38,15 +50,7 @@ class MyCampaignsView extends React.Component {
 
     this._onPress = this.onPress.bind(this);
     this._searchChanged = this.searchChanged.bind(this);
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          icon: iconsMap.add,
-          id: 'add',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    Navigation.events().bindComponent(this);
   }
 
   searchChanged(text) {
@@ -55,30 +59,45 @@ class MyCampaignsView extends React.Component {
     });
   }
 
-  onPress(id) {
+  onPress(id, campaign) {
     const {
-      navigator,
+      componentId,
     } = this.props;
     Keyboard.dismiss();
-    navigator.push({
-      screen: 'Campaign',
-      passProps: {
-        id,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign',
+        passProps: {
+          id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: campaign.name,
+            },
+          },
+        },
       },
     });
   }
 
-  onNavigatorEvent(event) {
+  navigationButtonPressed({ buttonId }) {
     const {
-      navigator,
+      componentId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'add') {
-        navigator.push({
-          screen: 'Campaign.New',
-          backButtonTitle: L('Cancel'),
-        });
-      }
+    if (buttonId === 'add') {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Campaign.New',
+          options: {
+            topBar: {
+              backButton: {
+                title: L('Cancel'),
+              },
+            },
+          },
+        },
+      });
     }
   }
 

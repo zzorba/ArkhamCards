@@ -7,7 +7,7 @@ import WeaknessDrawComponent from './WeaknessDrawComponent';
 
 class WeaknessDrawDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     set: PropTypes.object,
@@ -34,7 +34,7 @@ class WeaknessDrawDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       set,
     } = this.props;
 
@@ -44,7 +44,7 @@ class WeaknessDrawDialog extends React.Component {
 
     return (
       <WeaknessDrawComponent
-        navigator={navigator}
+        componentId={componentId}
         weaknessSet={set}
         updateDrawnCard={this._updateDrawnCard}
       />

@@ -14,6 +14,7 @@ import {
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import * as Actions from '../../actions';
@@ -47,7 +48,7 @@ const FUN_LOADING_MESSAGES = [
 
 class CardResultList extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     realm: PropTypes.object.isRequired,
     query: PropTypes.string,
     searchTerm: PropTypes.string,
@@ -198,9 +199,17 @@ class CardResultList extends React.Component {
 
   editSpoilerSettings() {
     Keyboard.dismiss();
-    this.props.navigator.push({
-      screen: 'My.Spoilers',
-      title: L('Spoiler Settings'),
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Spoilers',
+        options: {
+          topBar: {
+            title: {
+              text: L('Spoiler Settings'),
+            },
+          },
+        },
+      },
     });
   }
 
@@ -322,16 +331,24 @@ class CardResultList extends React.Component {
   cardPressed(card) {
     const {
       cardPressed,
-      navigator,
+      componentId,
     } = this.props;
     cardPressed && cardPressed(card);
-    navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
-        showSpoilers: true,
-        backButtonTitle: L('Back'),
+    Navigation.push(componentId, {
+      component: {
+        name: 'Card`',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+          showSpoilers: true,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
     });
   }
@@ -483,11 +500,11 @@ class CardResultList extends React.Component {
       flatMap(data, section => {
         return concat(
           [30], // Header
-          map(section.data || [], card => ROW_HEIGHT), // Rows
+          map(section.data || [], () => ROW_HEIGHT), // Rows
           [0] // Footer (not used)
         );
       }),
-      (size, index) => {
+      (size) => {
         const result = {
           length: size,
           offset: offset,
