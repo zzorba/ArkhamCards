@@ -73,21 +73,6 @@ export default class TwoSidedCardComponent extends React.Component {
     });
   }
 
-  onNavigatorEvent(event) {
-    const {
-      componentId,
-    } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'deck') {
-        this.showInvestigatorCards();
-      } else if (event.id === 'faq') {
-        this.showFaq();
-      } else if (event.id === 'back') {
-        Navigation.pop(componentId);
-      }
-    }
-  }
-
   showFaq() {
     const {
       componentId,

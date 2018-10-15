@@ -46,13 +46,13 @@ class AddScenarioResultView extends React.Component {
       xp: 0,
     };
 
-    this.updateNavigatorButtons();
+    this.updateNavigationButtons();
     Navigation.events().bindComponent(this);
 
     this._doSave = this.doSave.bind(this);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
-    this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
+    this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
   }
 
   hideTraumaDialog() {
@@ -61,7 +61,7 @@ class AddScenarioResultView extends React.Component {
     });
   }
 
-  updateNavigatorButtons() {
+  updateNavigationButtons() {
     Navigation.mergeOptions(this.props.componentId, {
       topBar: {
         rightButtons: [{
@@ -102,7 +102,7 @@ class AddScenarioResultView extends React.Component {
   scenarioChanged(scenario) {
     this.setState({
       scenario,
-    }, this._updateNavigatorButtons);
+    }, this._updateNavigationButtons);
   }
 
   xpChanged(xp) {

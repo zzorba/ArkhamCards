@@ -336,7 +336,7 @@ class CardResultList extends React.Component {
     cardPressed && cardPressed(card);
     Navigation.push(componentId, {
       component: {
-        name: 'Card`',
+        name: 'Card',
         passProps: {
           id: card.code,
           pack_code: card.pack_code,

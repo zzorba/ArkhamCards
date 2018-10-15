@@ -81,6 +81,11 @@ class CardSearchComponent extends React.Component {
         id: 'mythos',
       });
     }
+    if (props.onDeckCountChange) {
+      forEach(rightButtons, button => {
+        button.color = 'white';
+      });
+    }
     Navigation.mergeOptions(props.componentId, {
       topBar: {
         title: {
@@ -201,6 +206,7 @@ class CardSearchComponent extends React.Component {
   toggleMythosMode() {
     const {
       componentId,
+      onDeckCountChange,
     } = this.props;
     const {
       mythosMode,
@@ -208,19 +214,22 @@ class CardSearchComponent extends React.Component {
     this.setState({
       mythosMode: !mythosMode,
     });
+    const rightButtons = [{
+      icon: iconsMap.tune,
+      id: 'filter',
+    }, {
+      icon: iconsMap['sort-by-alpha'],
+      id: 'sort',
+    }, {
+      icon: mythosMode ? iconsMap.auto_fail : iconsMap.per_investigator,
+      id: 'mythos',
+    }];
+    if (onDeckCountChange) {
+      forEach(rightButtons, button => {
+        button.color = 'white';
+      });
+    }
 
-    const rightButtons = [
-      {
-        icon: iconsMap.tune,
-        id: 'filter',
-      }, {
-        icon: iconsMap['sort-by-alpha'],
-        id: 'sort',
-      }, {
-        icon: mythosMode ? iconsMap.auto_fail : iconsMap.per_investigator,
-        id: 'mythos',
-      },
-    ];
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {

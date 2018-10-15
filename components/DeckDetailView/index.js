@@ -54,24 +54,6 @@ class DeckDetailView extends React.Component {
 
   constructor(props) {
     super(props);
-    const leftButtons = props.modal ? [
-      Platform.OS === 'ios' ? {
-        text: L('Done'),
-        id: 'back',
-        color: 'white',
-      } : {
-        icon: iconsMap['arrow-left'],
-        id: 'androidBack',
-        color: 'white',
-      },
-    ] : [];
-    const rightButtons = props.isPrivate && props.modal && !props.deck.next_deck ?
-      [{
-        id: 'editName',
-        icon: iconsMap.edit,
-        color: 'white',
-      }] :
-      [];
 
     this.state = {
       parsedDeck: null,
@@ -85,17 +67,29 @@ class DeckDetailView extends React.Component {
     this._onEditPressed = this.onEditPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
-    this._syncNavigatorButtons = this.syncNavigatorButtons.bind(this);
+    this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
     this._clearEdits = this.clearEdits.bind(this);
     this._handleBackPress = this.handleBackPress.bind(this);
 
+    const leftButtons = props.modal ? [
+      Platform.OS === 'ios' ? {
+        text: L('Done'),
+        id: 'back',
+        color: 'white',
+      } : {
+        icon: iconsMap['arrow-left'],
+        id: 'androidBack',
+        color: 'white',
+      },
+    ] : [];
+
     if (props.modal) {
       Navigation.mergeOptions(props.componentId, {
         topBar: {
           leftButtons,
-          rightButtons,
+          rightButtons: this.getRightButtons(),
         },
       });
     }
@@ -175,29 +169,41 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  syncNavigatorButtons() {
-    /* const {
-      componentId,
+  getRightButtons() {
+    const {
+      isPrivate,
+      deck,
     } = this.props;
     const {
-      leftButtons,
       hasPendingEdits,
     } = this.state;
-
+    const rightButtons = [];
     if (hasPendingEdits) {
-      navigator.setButtons({
-        rightButtons: [
-          {
-            systemItem: 'save',
-            id: 'save',
-          },
-        ],
+      rightButtons.push({
+        text: L('Save'),
+        id: 'save',
+        color: 'white',
       });
-    } else {
-      navigator.setButtons({
-        rightButtons: [],
+    } else if (isPrivate && !deck.next_deck) {
+      rightButtons.push({
+        id: 'editName',
+        icon: iconsMap.edit,
+        color: 'white',
       });
-    } */
+    }
+    return rightButtons;
+  }
+
+  syncNavigationButtons() {
+    const {
+      componentId,
+    } = this.props;
+
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        rightButtons: this.getRightButtons(),
+      },
+    });
   }
 
   handleBackPress() {
@@ -234,6 +240,8 @@ class DeckDetailView extends React.Component {
       this.onEditPressed();
     } else if (buttonId === 'back' || buttonId === 'androidBack') {
       this.handleBackPress();
+    } else if (buttonId === 'save') {
+      this._saveEdits();
     }
   }
 
@@ -449,7 +457,7 @@ class DeckDetailView extends React.Component {
       slots: newSlots,
       parsedDeck,
       hasPendingEdits: this.hasPendingEdits(this.state.nameChange, newSlots),
-    }, this._syncNavigatorButtons);
+    }, this._syncNavigationButtons);
   }
 
   loadCards(deck, previousDeck) {
@@ -467,7 +475,7 @@ class DeckDetailView extends React.Component {
         parsedDeck,
         hasPendingEdits: false,
         loaded: true,
-      }, this._syncNavigatorButtons);
+      }, this._syncNavigationButtons);
     }
   }
 

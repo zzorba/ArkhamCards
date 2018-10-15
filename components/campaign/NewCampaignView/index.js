@@ -71,7 +71,7 @@ class NewCampaignView extends React.Component {
       campaignLogDialogVisible: false,
     };
 
-    this.updateNavigatorButtons();
+    this.updateNavigationButtons();
     Navigation.events().bindComponent(this);
 
     this._onSave = this.onSave.bind(this);
@@ -86,7 +86,7 @@ class NewCampaignView extends React.Component {
     this._showChaosBagDialog = this.showChaosBagDialog.bind(this);
     this._showDifficultyDialog = this.showDifficultyDialog.bind(this);
     this._campaignChanged = this.campaignChanged.bind(this);
-    this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
+    this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
   }
@@ -209,7 +209,7 @@ class NewCampaignView extends React.Component {
     });
   }
 
-  updateNavigatorButtons() {
+  updateNavigationButtons() {
     const {
       componentId,
     } = this.props;
@@ -286,7 +286,7 @@ class NewCampaignView extends React.Component {
   updateDifficulty(value) {
     this.setState({
       difficulty: value,
-    }, this._updateNavigatorButtons);
+    }, this._updateNavigationButtons);
   }
 
   showChaosBagDialog() {
@@ -335,7 +335,7 @@ class NewCampaignView extends React.Component {
     this.setState({
       campaign,
       campaignCode,
-    }, this._updateNavigatorButtons);
+    }, this._updateNavigationButtons);
   }
 
   hasDefinedChaosBag() {
