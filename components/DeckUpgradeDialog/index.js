@@ -49,11 +49,17 @@ class DeckUpgradeDialog extends React.Component {
   static get options() {
     return {
       topBar: {
+        tintColor: 'white',
         rightButtons: [{
           text: L('Save'),
+          color: 'white',
           id: 'save',
           showAsAction: 'ifRoom',
         }],
+        backButton: {
+          title: L('Cancel'),
+          color: 'white',
+        },
       },
     };
   }

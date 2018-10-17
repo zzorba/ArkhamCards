@@ -152,10 +152,6 @@ class DecksSection extends React.Component {
               text: investigator.name,
               color: 'white',
             },
-            backButton: {
-              title: L('Cancel'),
-              color: 'white',
-            },
             background: {
               color: FACTION_DARK_GRADIENTS[investigator.faction_code][0],
             },

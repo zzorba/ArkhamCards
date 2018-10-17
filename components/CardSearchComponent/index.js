@@ -166,6 +166,13 @@ class CardSearchComponent extends React.Component {
             currentFilters: this.state.filters,
             baseQuery: baseQuery,
           },
+          options: {
+            topBar: {
+              backButton: {
+                title: L('Apply'),
+              },
+            },
+          },
         },
       });
     } else if (buttonId === 'sort') {

@@ -34,6 +34,16 @@ class CardDetailView extends React.Component {
     showSpoilers: PropTypes.bool,
   };
 
+  static get options () {
+    return {
+      topBar: {
+        backButton: {
+          title: L('Back'),
+        },
+      },
+    };
+  }
+
   constructor(props) {
     super(props);
 
@@ -47,12 +57,6 @@ class CardDetailView extends React.Component {
     this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
     this._showFaq = this.showFaq.bind(this);
 
-    const backButton = Platform.OS === 'ios' ? {
-      id: 'back',
-    } : {
-      id: 'back',
-      icon: iconsMap['arrow-left'],
-    };
     const rightButtons = [{
       icon: iconsMap.faq,
       id: 'faq',
@@ -68,9 +72,6 @@ class CardDetailView extends React.Component {
     }
     Navigation.mergeOptions(props.componentId, {
       topBar: {
-        leftButtons: [
-          backButton,
-        ],
         rightButtons,
       },
     });

@@ -294,6 +294,7 @@ class DeckDetailView extends React.Component {
             },
             backButton: {
               title: L('Back'),
+              titleColor: 'white',
             },
             background: {
               color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
@@ -322,15 +323,20 @@ class DeckDetailView extends React.Component {
           campaignId,
         },
         options: {
+          statusBar: {
+            style: 'light',
+          },
           topBar: {
             title: {
               text: L('Upgrade'),
+              color: 'white',
             },
             subtitle: {
               text: parsedDeck ? parsedDeck.investigator.name : '',
+              color: 'white',
             },
-            backButton: {
-              title: L('Cancel'),
+            background: {
+              color: FACTION_DARK_GRADIENTS[parsedDeck ? parsedDeck.investigator.faction_code : 'neutral'][0],
             },
           },
         },

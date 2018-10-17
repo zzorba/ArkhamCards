@@ -39,10 +39,6 @@ class CardFilterView extends React.Component {
         title: {
           text: L('Filter'),
         },
-        leftButtons: {
-          text: L('Apply'),
-          id: 'apply',
-        },
         rightButtons: [{
           text: L('Clear'),
           id: 'clear',

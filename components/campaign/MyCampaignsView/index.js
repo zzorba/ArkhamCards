@@ -75,6 +75,9 @@ class MyCampaignsView extends React.Component {
             title: {
               text: campaign.name,
             },
+            backButton: {
+              title: L('Back'),
+            },
           },
         },
       },
