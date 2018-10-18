@@ -14,7 +14,7 @@ export default class BrowseInvestigatorsView extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('Investigators'),
+          text: L('Investigators'),
         },
       },
     };

@@ -39,6 +39,8 @@ export default class TextEditDialog extends React.Component {
     this._onCancelPress = this.onCancelPress.bind(this);
     this._onCrossOutPress = this.onCrossOutPress.bind(this);
     this._updateSize = this.updateSize.bind(this);
+
+    this._textInputRef = null;
   }
 
   updateSize(event) {
@@ -54,9 +56,7 @@ export default class TextEditDialog extends React.Component {
   }
 
   captureTextInputRef(ref) {
-    this.setState({
-      textInputRef: ref,
-    });
+    this._textInputRef = ref;
   }
 
   componentDidUpdate(prevProps) {
@@ -65,9 +65,6 @@ export default class TextEditDialog extends React.Component {
       text,
       showCrossOut,
     } = this.props;
-    const {
-      textInputRef,
-    } = this.state;
     if (visible && !prevProps.visible) {
       const isCrossedOut = showCrossOut && text && text.startsWith('~');
       /* eslint-disable react/no-did-update-set-state */
@@ -77,7 +74,9 @@ export default class TextEditDialog extends React.Component {
         height: 40,
         isCrossedOut,
       }, () => {
-        textInputRef && textInputRef.focus();
+        if (this._textInputRef) {
+          this._textInputRef.focus();
+        }
       });
     }
   }
@@ -153,9 +152,8 @@ export default class TextEditDialog extends React.Component {
               textDecorationColor: '#222',
             } : {},
           ]}
-          ref={this._captureTextInputRef}
+          textInputRef={this._captureTextInputRef}
           value={text}
-          autoFocus
           editable={!isCrossedOut}
           onChangeText={this._onTextChange}
           onSubmitEditing={this._onDonePress}

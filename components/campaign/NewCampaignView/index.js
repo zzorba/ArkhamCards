@@ -45,11 +45,12 @@ class NewCampaignView extends React.Component {
     viewRef: PropTypes.object,
     cardsMap: PropTypes.object,
   };
+
   static get options() {
     return {
       topBar: {
         title: {
-          title: L('New Campaign'),
+          text: L('New Campaign'),
         },
       },
     };

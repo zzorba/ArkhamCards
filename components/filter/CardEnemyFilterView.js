@@ -25,7 +25,7 @@ class CardEnemyFilterView extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('Enemy Filters'),
+          text: L('Enemy Filters'),
         },
       },
     };

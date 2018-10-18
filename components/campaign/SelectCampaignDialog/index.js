@@ -36,7 +36,7 @@ class SelectCampaignDialog extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('Select Campaign'),
+          text: L('Select Campaign'),
         },
       },
     };

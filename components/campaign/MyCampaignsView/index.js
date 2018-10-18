@@ -94,6 +94,9 @@ class MyCampaignsView extends React.Component {
           name: 'Campaign.New',
           options: {
             topBar: {
+              title: {
+                text: L('New Campaign'),
+              },
               backButton: {
                 title: L('Cancel'),
               },

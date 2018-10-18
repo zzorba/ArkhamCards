@@ -21,7 +21,7 @@ class EditAssignedWeaknessDialog extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('Available weaknesses'),
+          text: L('Available weaknesses'),
         },
       },
     };

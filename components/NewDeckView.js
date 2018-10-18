@@ -26,7 +26,7 @@ class NewDeckView extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('New Deck'),
+          text: L('New Deck'),
         },
         leftButtons: [{
           icon: iconsMap.close,

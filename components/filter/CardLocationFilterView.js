@@ -23,7 +23,7 @@ class CardLocationFilterView extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('Location Filters'),
+          text: L('Location Filters'),
         },
       },
     };

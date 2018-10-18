@@ -39,7 +39,7 @@ class MyDecksSelectorDialog extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('Choose a Deck'),
+          text: L('Choose a Deck'),
         },
         leftButtons: [{
           icon: iconsMap.close,

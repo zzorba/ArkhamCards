@@ -294,7 +294,7 @@ class DeckDetailView extends React.Component {
             },
             backButton: {
               title: L('Back'),
-              titleColor: 'white',
+              color: 'white',
             },
             background: {
               color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],

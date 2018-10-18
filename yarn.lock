@@ -5855,9 +5855,9 @@ react-native-deep-linking@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.1.0.tgz#fcba2f5265fa1e218738e3af4102125158f0686d"
 
-react-native-dialog@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-dialog/-/react-native-dialog-5.1.0.tgz#f37e67705438082e7343cfc8419c3a91cbf6b2c7"
+react-native-dialog@5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-dialog/-/react-native-dialog-5.4.0.tgz#8529950ad3c30e30c7b78b0036b5f98ccf598ff0"
   dependencies:
     prop-types "^15.6.0"
     react-native-modal "^6.4.0"
@@ -5902,9 +5902,9 @@ react-native-modal@^6.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-react-native-navigation@2.0.2585:
-  version "2.0.2585"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.0.2585.tgz#c06f87d454d370a472a43ffb2adec243aaeadc5a"
+react-native-navigation@2.0.2593:
+  version "2.0.2593"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.0.2593.tgz#18533696e362fe10ff4b01f6eed69e6c5ebed30c"
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.x.x"
@@ -5943,12 +5943,6 @@ react-native-svg@6.4.1:
     color "^2.0.1"
     lodash "^4.16.6"
     pegjs "^0.10.0"
-
-react-native-tab-view@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-1.0.2.tgz#66e0bc6d38a227ed2b212e3a256b7902f6ce02ed"
-  dependencies:
-    prop-types "^15.6.1"
 
 react-native-tabular-grid-markdown-view@0.1.x:
   version "0.1.0"

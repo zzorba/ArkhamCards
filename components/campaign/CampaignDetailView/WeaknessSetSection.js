@@ -44,6 +44,9 @@ class WeaknessSetSection extends React.Component {
             title: {
               text: L('Draw Weaknesses'),
             },
+            backButton: {
+              title: L('Back'),
+            },
           },
         },
       },

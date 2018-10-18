@@ -69,9 +69,6 @@ export default class CampaignSelector extends React.Component {
               title: L('Back'),
             },
           },
-          layout: {
-            backgroundColor: 'rgba(128,128,128,.75)',
-          },
         },
       },
     });

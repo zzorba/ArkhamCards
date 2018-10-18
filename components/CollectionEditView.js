@@ -25,7 +25,7 @@ class CollectionEditView extends React.Component {
     return {
       topBar: {
         title: {
-          title: L('Edit Collection'),
+          text: L('Edit Collection'),
         },
       },
     };
