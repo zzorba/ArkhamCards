@@ -74,14 +74,16 @@ export default class App {
               children: [{
                 component: {
                   name: 'Browse.Cards',
+                  options: {
+                    topBar: {
+                      title: {
+                        text: L('Player Cards'),
+                      },
+                    },
+                  },
                 },
               }],
               options: {
-                topBar: {
-                  title: {
-                    text: L('Player Cards'),
-                  },
-                },
                 bottomTab: {
                   text: L('Cards'),
                   icon: iconsMap.cards,

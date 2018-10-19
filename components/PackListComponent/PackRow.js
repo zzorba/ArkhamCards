@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
+import L from '../../app/i18n';
 import EncounterIcon from '../../assets/EncounterIcon';
 import Switch from '../core/Switch';
 
@@ -49,6 +50,9 @@ export default class PackRow extends React.Component {
           topBar: {
             title: {
               text: pack.name,
+            },
+            backButton: {
+              title: L('Back'),
             },
           },
         },

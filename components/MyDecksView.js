@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
@@ -28,22 +29,27 @@ class MyDecksView extends React.Component {
   constructor(props) {
     super(props);
 
+    this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
     this._deckNavClicked = this.deckNavClicked.bind(this);
 
     Navigation.events().bindComponent(this);
   }
 
+  showNewDeckDialog() {
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Deck.New',
+          },
+        }],
+      },
+    });
+  }
+
   navigationButtonPressed({ buttonId }) {
     if (buttonId === 'add') {
-      Navigation.showModal({
-        stack: {
-          children: [{
-            component: {
-              name: 'Deck.New',
-            },
-          }],
-        },
-      });
+      this._showNewDeckDialog();
     }
   }
 

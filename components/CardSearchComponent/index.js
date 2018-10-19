@@ -88,9 +88,6 @@ class CardSearchComponent extends React.Component {
     }
     Navigation.mergeOptions(props.componentId, {
       topBar: {
-        title: {
-          text: L('Player Cards'),
-        },
         rightButtons,
       },
     });

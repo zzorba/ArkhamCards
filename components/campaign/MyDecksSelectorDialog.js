@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, filter, flatMap, keys, uniqBy } from 'lodash';
+import { concat, filter, flatMap, keys, throttle, uniqBy } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -62,6 +62,7 @@ class MyDecksSelectorDialog extends React.Component {
       hideEliminatedInvestigators: true,
     };
 
+    this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
     this._deckSelected = this.deckSelected.bind(this);
     this._toggleHideOtherCampaignInvestigators =
       this.toggleValue.bind(this, 'hideOtherCampaignInvestigators');
@@ -79,21 +80,28 @@ class MyDecksSelectorDialog extends React.Component {
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  showNewDeckDialog() {
     const {
       componentId,
       onDeckSelect,
     } = this.props;
-    if (buttonId === 'add') {
-      Navigation.push(componentId, {
-        component: {
-          name: 'Deck.New',
-          passProps: {
-            onCreateDeck: onDeckSelect,
-            filterInvestigators: this.filterInvestigators(),
-          },
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.New',
+        passProps: {
+          onCreateDeck: onDeckSelect,
+          filterInvestigators: this.filterInvestigators(),
         },
-      });
+      },
+    });
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    const {
+      componentId,
+    } = this.props;
+    if (buttonId === 'add') {
+      this._showNewDeckDialog();
     } else if (buttonId === 'close') {
       Navigation.dismissModal(componentId);
     }

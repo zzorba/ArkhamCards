@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -34,7 +33,7 @@ class CardDetailView extends React.Component {
     showSpoilers: PropTypes.bool,
   };
 
-  static get options () {
+  static get options() {
     return {
       topBar: {
         backButton: {
