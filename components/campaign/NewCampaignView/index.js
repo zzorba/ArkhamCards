@@ -73,7 +73,7 @@ class NewCampaignView extends React.Component {
     };
 
     this.updateNavigationButtons();
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
 
     this._onSave = throttle(this.onSave.bind(this), 200);
     this._onWeaknessPackChange = this.onWeaknessPackChange.bind(this);
@@ -90,6 +90,10 @@ class NewCampaignView extends React.Component {
     this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   onWeaknessPackChange(packs) {

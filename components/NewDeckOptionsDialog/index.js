@@ -93,6 +93,7 @@ class NewDeckOptionsDialog extends React.Component {
       componentId,
       setNewDeck,
       onCreateDeck,
+      toggleVisible,
     } = this.props;
     const investigator = this.investigator();
     setNewDeck(deck.id, deck);
@@ -102,6 +103,7 @@ class NewDeckOptionsDialog extends React.Component {
     this.setState({
       saving: false,
     });
+    toggleVisible();
   }
 
   processNewDeckOptions(deck) {

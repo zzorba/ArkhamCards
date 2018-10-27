@@ -94,7 +94,7 @@ class DeckDetailView extends React.Component {
         },
       });
     }
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   componentDidMount() {
@@ -132,6 +132,7 @@ class DeckDetailView extends React.Component {
     if (this.props.modal) {
       BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
     }
+    this._navEventListener.remove();
   }
 
   componentDidUpdate(prevProps) {

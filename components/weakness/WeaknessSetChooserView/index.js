@@ -44,7 +44,11 @@ class WeaknessSetChooserView extends React.Component {
     this._renderFooter = this.renderFooter.bind(this);
     this._showNewWeaknessDialog = throttle(this.showNewWeaknessDialog.bind(this), 200);
 
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   navigationButtonPressed({ buttonId }) {

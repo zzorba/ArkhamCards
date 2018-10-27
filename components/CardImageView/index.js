@@ -54,7 +54,11 @@ class CardImageView extends React.Component {
         },
       });
     }
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   navigationButtonPressed({ buttonId }) {

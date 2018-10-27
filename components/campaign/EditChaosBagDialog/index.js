@@ -44,7 +44,11 @@ export default class EditChaosBagDialog extends React.Component {
     this._onCountChange = this.onCountChange.bind(this);
     this._saveChanges = throttle(this.saveChanges.bind(this), 200);
 
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   navigationButtonPressed({ buttonId }) {

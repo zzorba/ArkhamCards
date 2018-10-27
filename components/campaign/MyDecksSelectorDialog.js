@@ -71,7 +71,11 @@ class MyDecksSelectorDialog extends React.Component {
     this._toggleHideEliminatedInvestigators =
       this.toggleValue.bind(this, 'hideEliminatedInvestigators');
 
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   toggleValue(key) {

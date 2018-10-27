@@ -79,7 +79,11 @@ class DeckUpgradeDialog extends React.Component {
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
     this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
 
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   navigationButtonPressed({ buttonId }) {

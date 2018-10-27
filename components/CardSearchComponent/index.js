@@ -29,6 +29,7 @@ class CardSearchComponent extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     // Function that takes 'realm' and gives back a base query.
+    promptForUpdate: PropTypes.bool,
     defaultFilterState: PropTypes.object,
     baseQuery: PropTypes.string,
     mythosToggle: PropTypes.bool,
@@ -94,7 +95,11 @@ class CardSearchComponent extends React.Component {
         rightButtons,
       },
     });
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   showHeader() {
@@ -205,6 +210,7 @@ class CardSearchComponent extends React.Component {
       this._toggleMythosMode();
     }
   }
+
   componentDidAppear() {
     this.setState({
       visible: true,
@@ -437,6 +443,7 @@ class CardSearchComponent extends React.Component {
       onDeckCountChange,
       limits,
       footer,
+      promptForUpdate,
     } = this.props;
     const {
       selectedSort,

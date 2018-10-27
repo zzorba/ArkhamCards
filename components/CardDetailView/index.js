@@ -74,7 +74,11 @@ class CardDetailView extends React.Component {
         rightButtons,
       },
     });
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   editSpoilersPressed() {

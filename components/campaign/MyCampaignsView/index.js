@@ -51,7 +51,11 @@ class MyCampaignsView extends React.Component {
     this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
     this._onPress = this.onPress.bind(this);
     this._searchChanged = this.searchChanged.bind(this);
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   searchChanged(text) {

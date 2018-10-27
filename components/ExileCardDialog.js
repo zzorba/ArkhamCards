@@ -36,7 +36,11 @@ export default class ExileCardDialog extends React.Component {
     this._doSave = throttle(this.doSave.bind(this), 200);
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
 
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   doSave() {

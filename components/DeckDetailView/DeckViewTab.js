@@ -79,6 +79,7 @@ export default class DeckViewTab extends React.Component {
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
+    this._viewDeck = this.viewDeck.bind(this);
     this._deleteDeck = this.deleteDeck.bind(this);
   }
 
@@ -106,6 +107,10 @@ export default class DeckViewTab extends React.Component {
         },
       ],
     );
+  }
+
+  viewDeck() {
+    Linking.openURL(`https://arkhamdb.com/deck/view/${this.props.deck.id}`);
   }
 
   showInvestigator() {
@@ -280,6 +285,12 @@ export default class DeckViewTab extends React.Component {
             parsedDeck={this.props.parsedDeck}
             isPrivate={isPrivate}
           />
+          <View style={styles.button}>
+            <Button
+              title={L('View on ArkhamDB')}
+              onPress={this._viewDeck}
+            />
+          </View>
           { isPrivate && (
             <View style={styles.button}>
               <Button

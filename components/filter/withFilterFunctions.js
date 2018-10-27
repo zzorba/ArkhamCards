@@ -40,7 +40,11 @@ export default function withFilterFunctions(WrappedComponent) {
       this._onToggleChange = this.onToggleChange.bind(this);
       this._onFilterChange = this.onFilterChange.bind(this);
 
-      Navigation.events().bindComponent(this);
+      this._navEventListener = Navigation.events().bindComponent(this);
+    }
+
+    componentWillUnmount() {
+      this._navEventListener.remove();
     }
 
     navigationButtonPressed({ buttonId }) {

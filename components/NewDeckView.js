@@ -43,7 +43,11 @@ export default class NewDeckView extends React.Component {
     this._captureViewRef = this.captureViewRef.bind(this);
     this._closeDialog = this.closeDialog.bind(this);
 
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   captureViewRef(ref) {

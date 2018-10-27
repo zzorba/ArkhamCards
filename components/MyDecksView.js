@@ -32,7 +32,11 @@ class MyDecksView extends React.Component {
     this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
     this._deckNavClicked = this.deckNavClicked.bind(this);
 
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   showNewDeckDialog() {
