@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CycleItem from './CycleItem';
@@ -26,10 +27,20 @@ const CAMPAIGNS = {
 
 class SelectCampaignDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignChanged: PropTypes.func.isRequired,
     in_collection: PropTypes.object,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Select Campaign'),
+        },
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -38,25 +49,21 @@ class SelectCampaignDialog extends React.Component {
     this._editCollection = this.editCollection.bind(this);
   }
 
-  componentDidMount() {
-    this.props.navigator.setTitle({
-      title: L('Select Campaign'),
-    });
-  }
-
   onPress(packCode, text) {
     const {
       campaignChanged,
-      navigator,
+      componentId,
     } = this.props;
 
     campaignChanged(packCode, text);
-    navigator.pop();
+    Navigation.pop(componentId);
   }
 
   editCollection() {
-    this.props.navigator.push({
-      screen: 'My.Collection',
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Collection',
+      },
     });
   }
 

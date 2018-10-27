@@ -1,16 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
 import ExileCardSelectorComponent from './ExileCardSelectorComponent';
 
 export default class ExileCardDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     updateExiles: PropTypes.func.isRequired,
     exiles: PropTypes.object.isRequired,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          text: L('Save'),
+          id: 'save',
+          showAsAction: 'ifRoom',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -19,30 +33,28 @@ export default class ExileCardDialog extends React.Component {
       exileCounts: props.exiles,
     };
 
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          title: L('Save'),
-          id: 'save',
-          showAsAction: 'ifRoom',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-
+    this._doSave = throttle(this.doSave.bind(this), 200);
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
+
+    this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
+  componentWillUnmount() {
+    this._navEventListener.remove();
+  }
+
+  doSave() {
     const {
       updateExiles,
-      navigator,
+      componentId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'save') {
-        updateExiles(this.state.exileCounts);
-        navigator.pop();
-      }
+    updateExiles(this.state.exileCounts);
+    Navigation.pop(componentId);
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'save') {
+      this._doSave();
     }
   }
 

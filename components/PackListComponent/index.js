@@ -12,7 +12,7 @@ import PackRow from './PackRow';
 
 export default class PackListComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object,
+    componentId: PropTypes.string.isRequired,
     packs: PropTypes.array,
     checkState: PropTypes.object,
     setChecked: PropTypes.func.isRequired,
@@ -51,7 +51,7 @@ export default class PackListComponent extends React.Component {
     }) : [];
     return (
       <PackRow
-        navigator={this.props.navigator}
+        componentId={this.props.componentId}
         pack={item}
         cycle={cyclePacks}
         setChecked={setChecked}

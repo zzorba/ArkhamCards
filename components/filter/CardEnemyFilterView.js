@@ -14,7 +14,6 @@ import withFilterFunctions from './withFilterFunctions';
 
 class CardEnemyFilterView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
     filters: PropTypes.object,
     defaultFilterState: PropTypes.object.isRequired,
     width: PropTypes.number,
@@ -22,12 +21,14 @@ class CardEnemyFilterView extends React.Component {
     onFilterChange: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-
-    props.navigator.setTitle({
-      title: L('Enemy Filters'),
-    });
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Enemy Filters'),
+        },
+      },
+    };
   }
 
   renderToggles() {

@@ -11,6 +11,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { handleAuthErrors } from '../authHelper';
@@ -27,7 +28,7 @@ import typography from '../../styles/typography';
 
 class DeckUpgradeDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     showNewDeck: PropTypes.bool,
@@ -45,6 +46,24 @@ class DeckUpgradeDialog extends React.Component {
     investigatorDataUpdates: PropTypes.object.isRequired,
   };
 
+  static get options() {
+    return {
+      topBar: {
+        tintColor: 'white',
+        rightButtons: [{
+          text: L('Save'),
+          color: 'white',
+          id: 'save',
+          showAsAction: 'ifRoom',
+        }],
+        backButton: {
+          title: L('Cancel'),
+          color: 'white',
+        },
+      },
+    };
+  }
+
   constructor(props) {
     super(props);
 
@@ -60,29 +79,22 @@ class DeckUpgradeDialog extends React.Component {
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
     this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
 
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          title: L('Save'),
-          id: 'save',
-          showAsAction: 'ifRoom',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'save') {
-        this._saveUpgrade();
-      }
+  componentWillUnmount() {
+    this._navEventListener.remove();
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'save') {
+      this._saveUpgrade();
     }
   }
 
   saveUpgrade() {
     const {
-      navigator,
+      componentId,
       investigator,
       deck: {
         id,
@@ -124,9 +136,9 @@ class DeckUpgradeDialog extends React.Component {
           updateDeck(deck.id, deck, false);
           setNewDeck(upgradedDeck.id, upgradedDeck);
           if (showNewDeck) {
-            showDeckModal(navigator, upgradedDeck, investigator);
+            showDeckModal(componentId, upgradedDeck, investigator);
           } else {
-            navigator.pop();
+            Navigation.pop(componentId);
           }
         },
         () => {
@@ -140,11 +152,13 @@ class DeckUpgradeDialog extends React.Component {
   }
 
   onCardPress(card) {
-    this.props.navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+        },
       },
     });
   }

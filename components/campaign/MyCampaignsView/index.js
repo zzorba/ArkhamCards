@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, last } from 'lodash';
+import { filter, forEach, map, last, throttle } from 'lodash';
 import {
   Keyboard,
   ScrollView,
@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CampaignItem from './CampaignItem';
@@ -22,12 +23,23 @@ import { getAllDecks, getCampaigns } from '../../../reducers';
 
 class MyCampaignsView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaigns: PropTypes.array,
     decks: PropTypes.object,
     // From realm
     investigators: PropTypes.object,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          icon: iconsMap.add,
+          id: 'add',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -36,17 +48,14 @@ class MyCampaignsView extends React.Component {
       search: '',
     };
 
+    this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
     this._onPress = this.onPress.bind(this);
     this._searchChanged = this.searchChanged.bind(this);
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          icon: iconsMap.add,
-          id: 'add',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   searchChanged(text) {
@@ -55,30 +64,54 @@ class MyCampaignsView extends React.Component {
     });
   }
 
-  onPress(id) {
+  onPress(id, campaign) {
     const {
-      navigator,
+      componentId,
     } = this.props;
     Keyboard.dismiss();
-    navigator.push({
-      screen: 'Campaign',
-      passProps: {
-        id,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign',
+        passProps: {
+          id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: campaign.name,
+            },
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
     });
   }
 
-  onNavigatorEvent(event) {
+  showNewCampaignDialog() {
     const {
-      navigator,
+      componentId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'add') {
-        navigator.push({
-          screen: 'Campaign.New',
-          backButtonTitle: L('Cancel'),
-        });
-      }
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign.New',
+        options: {
+          topBar: {
+            title: {
+              text: L('New Campaign'),
+            },
+            backButton: {
+              title: L('Cancel'),
+            },
+          },
+        },
+      },
+    });
+  }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'add') {
+      this._showNewCampaignDialog();
     }
   }
 

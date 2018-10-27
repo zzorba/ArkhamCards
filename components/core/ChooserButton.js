@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Navigation } from 'react-native-navigation';
 import L from '../../app/i18n';
 import NavButton from './NavButton';
 
 export default class ChooserButton extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     values: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -22,20 +22,28 @@ export default class ChooserButton extends React.Component {
 
   onPress() {
     const {
-      navigator,
+      componentId,
       title,
       values,
       onChange,
       selection,
     } = this.props;
-    navigator.push({
-      screen: 'SearchFilters.Chooser',
-      title: L('Select {{searchType}}', { searchType: title }),
-      passProps: {
-        placeholder: L('Search {{searchType}}', { searchType: title }),
-        values,
-        onChange,
-        selection,
+    Navigation.push(componentId, {
+      component: {
+        name: 'SearchFilters.Chooser',
+        passProps: {
+          placeholder: L('Search {{searchType}}', { searchType: title }),
+          values,
+          onChange,
+          selection,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Select {{searchType}}', { searchType: title }),
+            },
+          },
+        },
       },
     });
   }

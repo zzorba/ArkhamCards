@@ -4,6 +4,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import LabeledTextBox from '../../core/LabeledTextBox';
@@ -11,7 +12,7 @@ import { CUSTOM } from '../constants';
 
 export default class CampaignSelector extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignChanged: PropTypes.func.isRequired,
   };
 
@@ -53,17 +54,22 @@ export default class CampaignSelector extends React.Component {
 
   campaignPressed() {
     const {
-      navigator,
+      componentId,
     } = this.props;
-    navigator.push({
-      screen: 'Dialog.Campaign',
-      backButtonTitle: L('Back'),
-      passProps: {
-        campaignChanged: this._campaignChanged,
-        selected: this.state.selectedCampaign,
-      },
-      style: {
-        backgroundColor: 'rgba(128,128,128,.75)',
+    Navigation.push(componentId, {
+      component: {
+        name: 'Dialog.Campaign',
+        passProps: {
+          campaignChanged: this._campaignChanged,
+          selected: this.state.selectedCampaign,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
     });
   }

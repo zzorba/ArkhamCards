@@ -4,14 +4,25 @@ import { flatMap } from 'lodash';
 import {
   ScrollView,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import withWeaknessCards from './withWeaknessCards';
 import CardSearchResult from '../CardSearchResult';
 
 class EditAssignedWeaknessComponent extends React.Component {
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Available weaknesses'),
+        },
+      },
+    };
+  }
+
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     weaknessSet: PropTypes.object,
     updateAssignedCards: PropTypes.func.isRequired,
     // From realm.
@@ -24,10 +35,6 @@ class EditAssignedWeaknessComponent extends React.Component {
 
     this._onCountChange = this.onCountChange.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
-
-    props.navigator.setTitle({
-      title: L('Available weaknesses'),
-    });
   }
 
   onCountChange(code, count) {
@@ -46,13 +53,15 @@ class EditAssignedWeaknessComponent extends React.Component {
   }
 
   cardPressed(card) {
-    this.props.navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
-        showSpoilers: true,
-        backButtonTitle: L('Back'),
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+          showSpoilers: true,
+          backButtonTitle: L('Back'),
+        },
       },
     });
   }

@@ -19,7 +19,7 @@ const LANGUAGES = [
 
 class LanguageDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     // from redux.
     lang: PropTypes.string,
     fetchCards: PropTypes.func.isRequired,
@@ -48,14 +48,14 @@ class LanguageDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       lang,
     } = this.props;
     /* eslint-disable eqeqeq */
     const selectedLang = find(LANGUAGES, obj => obj.code == lang) || head(LANGUAGES);
     return (
       <DialogPicker
-        navigator={navigator}
+        componentId={componentId}
         options={map(LANGUAGES, obj => obj.name)}
         onSelectionChanged={this._selectionChanged}
         header={L('Change Card Language')}

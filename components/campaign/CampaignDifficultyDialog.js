@@ -8,7 +8,7 @@ import { DIFFICULTY, difficultyStrings } from './constants';
 
 export default class CampaignDifficultyDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     updateDifficulty: PropTypes.func.isRequired,
     difficulty: PropTypes.string,
   };
@@ -26,7 +26,7 @@ export default class CampaignDifficultyDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       difficulty,
     } = this.props;
     const strings = difficultyStrings();
@@ -34,7 +34,7 @@ export default class CampaignDifficultyDialog extends React.Component {
 
     return (
       <DialogPicker
-        navigator={navigator}
+        componentId={componentId}
         header={L('Selected Difficulty')}
         options={options}
         onSelectionChanged={this._onChoice}

@@ -14,7 +14,7 @@ import NotesSection from './NotesSection';
 
 export default class EditCampaignNotesComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     // Parts of the campaign object.
     allInvestigators: PropTypes.array,
     campaignNotes: PropTypes.object,
@@ -132,7 +132,7 @@ export default class EditCampaignNotesComponent extends React.Component {
 
   renderInvestigatorSection() {
     const {
-      navigator,
+      componentId,
       campaignNotes: {
         investigatorNotes,
       },
@@ -142,7 +142,7 @@ export default class EditCampaignNotesComponent extends React.Component {
     return (
       <View style={styles.investigatorSection}>
         <InvestigatorSectionList
-          navigator={navigator}
+          componentId={componentId}
           allInvestigators={allInvestigators}
           investigatorNotes={investigatorNotes}
           updateInvestigatorNotes={this._updateInvestigatorNotes}

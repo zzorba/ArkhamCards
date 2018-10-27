@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import NavButton from '../../core/NavButton';
@@ -13,7 +14,7 @@ import typography from '../../../styles/typography';
 
 export default class ChaosBagSection extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     chaosBag: PropTypes.object.isRequired,
     updateChaosBag: PropTypes.func.isRequired,
   };
@@ -26,19 +27,29 @@ export default class ChaosBagSection extends React.Component {
 
   showChaosBagDialog() {
     const {
-      navigator,
+      componentId,
       updateChaosBag,
       chaosBag,
     } = this.props;
-    navigator.push({
-      screen: 'Dialog.EditChaosBag',
-      title: L('Chaos Bag'),
-      passProps: {
-        chaosBag,
-        updateChaosBag: updateChaosBag,
-        trackDeltas: true,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Dialog.EditChaosBag',
+        passProps: {
+          chaosBag,
+          updateChaosBag: updateChaosBag,
+          trackDeltas: true,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Chaos Bag'),
+            },
+            backButton: {
+              title: L('Cancel'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Cancel'),
     });
   }
 

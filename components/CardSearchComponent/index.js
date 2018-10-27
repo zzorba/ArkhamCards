@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach } from 'lodash';
+import { forEach, throttle } from 'lodash';
 import {
   Button,
   Keyboard,
@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import CardSearchBox from './CardSearchBox';
@@ -26,8 +27,9 @@ import typography from '../../styles/typography';
 
 class CardSearchComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     // Function that takes 'realm' and gives back a base query.
+    promptForUpdate: PropTypes.bool,
     defaultFilterState: PropTypes.object,
     baseQuery: PropTypes.string,
     mythosToggle: PropTypes.bool,
@@ -59,7 +61,7 @@ class CardSearchComponent extends React.Component {
     this._showHeader = this.showHeader.bind(this);
     this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
-    this._toggleMythosMode = this.toggleMythosMode.bind(this);
+    this._toggleMythosMode = throttle(this.toggleMythosMode.bind(this), 200);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
@@ -67,26 +69,37 @@ class CardSearchComponent extends React.Component {
     this._searchUpdated = this.searchUpdated.bind(this);
     this._setFilters = this.setFilters.bind(this);
     this._clearSearchFilters = this.clearSearchFilters.bind(this);
-    const rightButtons = [
-      {
-        icon: iconsMap.tune,
-        id: 'filter',
-      },
-      {
-        icon: iconsMap['sort-by-alpha'],
-        id: 'sort',
-      },
-    ];
+    this._showSearchFilters = throttle(this.showSearchFilters.bind(this), 200);
+    this._showSortDialog = throttle(this.showSortDialog.bind(this), 200);
+
+    const rightButtons = [{
+      icon: iconsMap.tune,
+      id: 'filter',
+    },{
+      icon: iconsMap['sort-by-alpha'],
+      id: 'sort',
+    }];
     if (props.mythosToggle) {
       rightButtons.push({
         icon: iconsMap.auto_fail,
         id: 'mythos',
       });
     }
-    props.navigator.setButtons({
-      rightButtons,
+    if (props.onDeckCountChange) {
+      forEach(rightButtons, button => {
+        button.color = 'white';
+      });
+    }
+    Navigation.mergeOptions(props.componentId, {
+      topBar: {
+        rightButtons,
+      },
     });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   showHeader() {
@@ -140,58 +153,80 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  onNavigatorEvent(event) {
+  showSearchFilters() {
     const {
-      navigator,
+      componentId,
       baseQuery,
       defaultFilterState,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'filter') {
-        this.isOnTop = false;
-        navigator.push({
-          screen: 'SearchFilters',
-          animationType: 'slide-down',
-          backButtonTitle: L('Apply'),
-          passProps: {
-            applyFilters: this._setFilters,
-            defaultFilterState: defaultFilterState,
-            currentFilters: this.state.filters,
-            baseQuery: baseQuery,
+    this.isOnTop = false;
+    Navigation.push(componentId, {
+      component: {
+        name: 'SearchFilters',
+        passProps: {
+          applyFilters: this._setFilters,
+          defaultFilterState: defaultFilterState,
+          currentFilters: this.state.filters,
+          baseQuery: baseQuery,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Apply'),
+            },
           },
-        });
-      } else if (event.id === 'sort') {
-        this.isOnTop = false;
-        Keyboard.dismiss();
-        navigator.showLightBox({
-          screen: 'Dialog.Sort',
-          passProps: {
-            sortChanged: this._sortChanged,
-            selectedSort: this.state.selectedSort,
-            query: this.query(),
-            searchTerm: this.state.searchTerm,
-          },
-          style: {
+        },
+      },
+    });
+  }
+
+  showSortDialog() {
+    this.isOnTop = false;
+    Keyboard.dismiss();
+    Navigation.showOverlay({
+      component: {
+        name: 'Dialog.Sort',
+        passProps: {
+          sortChanged: this._sortChanged,
+          selectedSort: this.state.selectedSort,
+          query: this.query(),
+          searchTerm: this.state.searchTerm,
+        },
+        options: {
+          layout: {
             backgroundColor: 'rgba(128,128,128,.75)',
           },
-        });
-      } else if (event.id === 'mythos') {
-        this.toggleMythosMode();
-      }
-    } else if (event.id === 'willDisappear') {
-      this.setState({
-        visible: false,
-      });
-    } else if (event.id === 'willAppear') {
-      this.setState({
-        visible: true,
-      });
+        },
+      },
+    });
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'filter') {
+      this._showSearchFilters();
+    } else if (buttonId === 'sort') {
+      this._showSortDialog();
+    } else if (buttonId === 'mythos') {
+      this._toggleMythosMode();
     }
+  }
+
+  componentDidAppear() {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  componentDidDisappear() {
+    this.setState({
+      visible: false,
+    });
   }
 
   toggleMythosMode() {
     const {
-      navigator,
+      componentId,
+      onDeckCountChange,
     } = this.props;
     const {
       mythosMode,
@@ -199,26 +234,30 @@ class CardSearchComponent extends React.Component {
     this.setState({
       mythosMode: !mythosMode,
     });
+    const rightButtons = [{
+      icon: iconsMap.tune,
+      id: 'filter',
+    }, {
+      icon: iconsMap['sort-by-alpha'],
+      id: 'sort',
+    }, {
+      icon: mythosMode ? iconsMap.auto_fail : iconsMap.per_investigator,
+      id: 'mythos',
+    }];
+    if (onDeckCountChange) {
+      forEach(rightButtons, button => {
+        button.color = 'white';
+      });
+    }
 
-    const rightButtons = [
-      {
-        icon: iconsMap.tune,
-        id: 'filter',
-      }, {
-        icon: iconsMap['sort-by-alpha'],
-        id: 'sort',
-      }, {
-        icon: mythosMode ? iconsMap.auto_fail : iconsMap.per_investigator,
-        id: 'mythos',
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          text: mythosMode ? L('Player Cards') : L('Encounter Cards'),
+        },
+        rightButtons,
       },
-    ];
-    navigator.setButtons({
-      rightButtons,
     });
-    navigator.setTitle({
-      title: mythosMode ? L('Player Cards') : L('Encounter Cards'),
-    });
-
   }
 
   searchUpdated(text) {
@@ -398,12 +437,13 @@ class CardSearchComponent extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       originalDeckSlots,
       deckCardCounts,
       onDeckCountChange,
       limits,
       footer,
+      promptForUpdate,
     } = this.props;
     const {
       selectedSort,
@@ -416,7 +456,7 @@ class CardSearchComponent extends React.Component {
         { this.renderHeader() }
         <View style={styles.container}>
           <CardResultList
-            navigator={navigator}
+            componentId={componentId}
             query={query}
             searchTerm={searchTerm}
             sort={selectedSort}

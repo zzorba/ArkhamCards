@@ -10,6 +10,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import Button from '../core/Button';
@@ -19,7 +20,7 @@ import { getPacksInCollection } from '../../reducers';
 
 class InvestigatorsListComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired,
     investigators: PropTypes.array.isRequired,
     cards: PropTypes.object.isRequired,
@@ -39,8 +40,10 @@ class InvestigatorsListComponent extends React.Component {
   }
 
   editCollection() {
-    this.props.navigator.push({
-      screen: 'My.Collection',
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Collection',
+      },
     });
   }
 

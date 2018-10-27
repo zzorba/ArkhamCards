@@ -8,13 +8,14 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Button } from 'react-native-elements';
+import { Navigation } from 'react-native-navigation';
 
 import AppIcon from '../../assets/AppIcon';
 import { COLORS } from '../../styles/colors';
 
 export default class DeckNavHeader extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object,
+    componentId: PropTypes.string.isRequired,
     hasEdits: PropTypes.bool,
     saving: PropTypes.bool,
     clearEdits: PropTypes.func.isRequired,
@@ -28,7 +29,7 @@ export default class DeckNavHeader extends React.Component {
   }
 
   backPressed(){
-    this.props.navigator.pop();
+    Navigation.pop(this.props.componentId);
   }
 
   render() {

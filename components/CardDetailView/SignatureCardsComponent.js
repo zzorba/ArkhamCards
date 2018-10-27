@@ -12,7 +12,7 @@ import SignatureCardItem from './SignatureCardItem';
 
 class SignatureCardsComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     investigator: PropTypes.object.isRequired,
     requiredCards: PropTypes.object,
@@ -25,7 +25,7 @@ class SignatureCardsComponent extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       requiredCards,
       alternateCards,
     } = this.props;
@@ -34,13 +34,13 @@ class SignatureCardsComponent extends React.Component {
       <View style={styles.container}>
         <Text style={styles.header}>Required Cards</Text>
         { map(requiredCards, card => (
-          <SignatureCardItem key={card.code} navigator={navigator} card={card} />
+          <SignatureCardItem key={card.code} componentId={componentId} card={card} />
         )) }
         { !!(alternateCards && alternateCards.length) && (
           <View>
             <Text style={styles.header}>Alternate Cards</Text>
             { map(alternateCards, card => (
-              <SignatureCardItem key={card.code} navigator={navigator} card={card} />
+              <SignatureCardItem key={card.code} componentId={componentId} card={card} />
             )) }
           </View>
         ) }

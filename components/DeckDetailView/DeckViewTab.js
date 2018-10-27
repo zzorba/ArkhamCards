@@ -12,6 +12,7 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { DeckType } from '../parseDeck';
@@ -62,7 +63,7 @@ const DECK_PROBLEM_MESSAGES = {
 
 export default class DeckViewTab extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     deck: PropTypes.object,
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
@@ -78,6 +79,7 @@ export default class DeckViewTab extends React.Component {
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
+    this._viewDeck = this.viewDeck.bind(this);
     this._deleteDeck = this.deleteDeck.bind(this);
   }
 
@@ -107,6 +109,10 @@ export default class DeckViewTab extends React.Component {
     );
   }
 
+  viewDeck() {
+    Linking.openURL(`https://arkhamdb.com/deck/view/${this.props.deck.id}`);
+  }
+
   showInvestigator() {
     const {
       parsedDeck: {
@@ -117,13 +123,21 @@ export default class DeckViewTab extends React.Component {
   }
 
   showCard(card) {
-    this.props.navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Back'),
     });
   }
 
@@ -201,7 +215,7 @@ export default class DeckViewTab extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       deck,
       parsedDeck: {
         normalCards,
@@ -226,7 +240,7 @@ export default class DeckViewTab extends React.Component {
             <View style={styles.header}>
               <TouchableOpacity onPress={this._showInvestigator}>
                 <View style={styles.image}>
-                  <InvestigatorImage card={investigator} navigator={navigator} />
+                  <InvestigatorImage card={investigator} componentId={componentId} />
                 </View>
               </TouchableOpacity>
               <View style={styles.metadata}>
@@ -266,11 +280,17 @@ export default class DeckViewTab extends React.Component {
             />
           </View>
           <DeckProgressModule
-            navigator={navigator}
+            componentId={componentId}
             deck={deck}
             parsedDeck={this.props.parsedDeck}
             isPrivate={isPrivate}
           />
+          <View style={styles.button}>
+            <Button
+              title={L('View on ArkhamDB')}
+              onPress={this._viewDeck}
+            />
+          </View>
           { isPrivate && (
             <View style={styles.button}>
               <Button

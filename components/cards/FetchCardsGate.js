@@ -26,7 +26,7 @@ class FetchCardsGate extends React.Component {
   static propTypes = {
     // from redux/realm.
     realm: PropTypes.object.isRequired,
-    promptForUpdate: PropTypes.bool.isRequired,
+    promptForUpdate: PropTypes.bool,
     loading: PropTypes.bool,
     error: PropTypes.string,
     lang: PropTypes.string,

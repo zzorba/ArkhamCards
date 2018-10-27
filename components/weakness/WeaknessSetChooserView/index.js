@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { values } from 'lodash';
+import { throttle, values } from 'lodash';
 import {
   FlatList,
   Text,
@@ -10,6 +10,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import WeaknessSetRow from './WeaknessSetRow';
 import { BASIC_WEAKNESS_QUERY } from '../../../data/query';
@@ -19,10 +20,21 @@ import typography from '../../../styles/typography';
 
 class WeaknessSetChooserView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     weaknesses: PropTypes.array,
     cards: PropTypes.object,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          icon: iconsMap.add,
+          id: 'add',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -30,35 +42,37 @@ class WeaknessSetChooserView extends React.Component {
     this._extractKey = this.extractKey.bind(this);
     this._renderItem = this.renderItem.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          icon: iconsMap.add,
-          id: 'add',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._showNewWeaknessDialog = throttle(this.showNewWeaknessDialog.bind(this), 200);
+
+    this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
-    const {
-      navigator,
-    } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'add') {
-        navigator.push({
-          screen: 'Weakness.New',
-        });
-      }
+  componentWillUnmount() {
+    this._navEventListener.remove();
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'add') {
+      this._showNewWeaknessDialog();
     }
+  }
+
+  showNewWeaknessDialog() {
+    const {
+      componentId,
+    } = this.props;
+    Navigation.push(componentId, {
+      component: {
+        name: 'Weakness.New',
+      },
+    });
   }
 
   renderItem({ item }) {
     return (
       <WeaknessSetRow
         key={item.id}
-        navigator={this.props.navigator}
+        componentId={this.props.componentId}
         set={item}
         cards={this.props.cards}
       />

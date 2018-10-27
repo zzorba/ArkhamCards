@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import AppIcon from '../../assets/AppIcon';
@@ -24,7 +25,7 @@ const SHOW_CHARTS_BUTTON = false;
 
 export default class DeckNavFooter extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
   };
@@ -38,37 +39,59 @@ export default class DeckNavFooter extends React.Component {
 
   showCardCharts() {
     const {
-      navigator,
+      componentId,
       parsedDeck,
     } = this.props;
-    navigator.push({
-      screen: 'Deck.Charts',
-      backButtonTitle: L('Deck'),
-      passProps: {
-        parsedDeck,
-      },
-      navigatorStyle: {
-        tabBarHidden: true,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.Charts',
+        passProps: {
+          parsedDeck,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Deck'),
+            },
+          },
+          bottomTabs: {
+            visible: false,
+            drawBehind: true,
+            animate: true,
+          },
+        },
       },
     });
   }
 
   showCardSimulator() {
     const {
-      navigator,
+      componentId,
       parsedDeck: {
         slots,
       },
     } = this.props;
-    navigator.push({
-      screen: 'Deck.DrawSimulator',
-      title: L('Draw'),
-      backButtonTitle: L('Deck'),
-      passProps: {
-        slots,
-      },
-      navigatorStyle: {
-        tabBarHidden: true,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.DrawSimulator',
+        passProps: {
+          slots,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Draw'),
+            },
+            backButton: {
+              title: L('Deck'),
+            },
+          },
+          bottomTabs: {
+            visible: false,
+            drawBehind: true,
+            animate: true,
+          },
+        },
       },
     });
   }

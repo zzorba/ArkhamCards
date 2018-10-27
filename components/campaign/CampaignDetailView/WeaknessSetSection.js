@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import NavButton from '../../core/NavButton';
@@ -14,7 +15,7 @@ import typography from '../../../styles/typography';
 
 class WeaknessSetSection extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignId: PropTypes.number.isRequired,
     weaknessSet: PropTypes.object.isRequired,
     // From realm.
@@ -29,14 +30,25 @@ class WeaknessSetSection extends React.Component {
 
   showDrawDialog() {
     const {
-      navigator,
+      componentId,
       campaignId,
     } = this.props;
-    navigator.push({
-      screen: 'Dialog.CampaignDrawWeakness',
-      title: L('Draw Weaknesses'),
-      passProps: {
-        campaignId,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Dialog.CampaignDrawWeakness',
+        passProps: {
+          campaignId,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Draw Weaknesses'),
+            },
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
     });
   }

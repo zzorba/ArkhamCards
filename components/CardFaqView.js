@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import CardTextComponent from './CardTextComponent';
 import { getFaqEntry } from '../lib/publicApi';
@@ -16,7 +17,7 @@ import typography from '../styles/typography';
 
 class CardFaqView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     realm: PropTypes.object.isRequired,
     cards: PropTypes.object,
@@ -42,7 +43,7 @@ class CardFaqView extends React.Component {
 
   linkPressed(url) {
     const {
-      navigator,
+      componentId,
       cards,
     } = this.props;
     const regex = /\/card\/(\d+)/;
@@ -50,27 +51,45 @@ class CardFaqView extends React.Component {
     if (match) {
       const code = match[1];
       const card = head(cards.filtered(`code == '${code}'`));
-      navigator.push({
-        screen: 'Card',
-        passProps: {
-          id: code,
-          pack_code: card ? card.pack_code : null,
+      Navigation.push(componentId, {
+        component: {
+          name: 'Card',
+          passProps: {
+            id: code,
+            pack_code: card ? card.pack_code : null,
+          },
         },
       });
     } else if (url.indexOf('arkhamdb.com') !== -1) {
-      navigator.push({
-        screen: 'WebView',
-        title: 'ArkhamDB',
-        passProps: {
-          uri: url,
+      Navigation.push(componentId, {
+        component: {
+          name: 'WebView',
+          passProps: {
+            uri: url,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: 'ArkhamDB',
+              },
+            },
+          },
         },
       });
     } else if (url.startsWith('/')) {
-      navigator.push({
-        screen: 'WebView',
-        title: 'ArkhamDB',
-        passProps: {
-          uri: `https://arkhamdb.com${url}`,
+      Navigation.push(componentId, {
+        component: {
+          name: 'WebView',
+          passProps: {
+            uri: `https://arkhamdb.com${url}`,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: 'ArkhamDB',
+              },
+            },
+          },
         },
       });
     }
