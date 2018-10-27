@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, last } from 'lodash';
+import { filter, forEach, map, last, throttle } from 'lodash';
 import {
   Keyboard,
   ScrollView,
@@ -48,6 +48,7 @@ class MyCampaignsView extends React.Component {
       search: '',
     };
 
+    this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
     this._onPress = this.onPress.bind(this);
     this._searchChanged = this.searchChanged.bind(this);
     Navigation.events().bindComponent(this);
@@ -84,26 +85,29 @@ class MyCampaignsView extends React.Component {
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  showNewCampaignDialog() {
     const {
       componentId,
     } = this.props;
-    if (buttonId === 'add') {
-      Navigation.push(componentId, {
-        component: {
-          name: 'Campaign.New',
-          options: {
-            topBar: {
-              title: {
-                text: L('New Campaign'),
-              },
-              backButton: {
-                title: L('Cancel'),
-              },
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign.New',
+        options: {
+          topBar: {
+            title: {
+              text: L('New Campaign'),
+            },
+            backButton: {
+              title: L('Cancel'),
             },
           },
         },
-      });
+      },
+    });
+  }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'add') {
+      this._showNewCampaignDialog();
     }
   }
 

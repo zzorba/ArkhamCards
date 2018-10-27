@@ -64,14 +64,15 @@ class DeckDetailView extends React.Component {
       hasPendingEdits: false,
     };
     this._saveName = this.saveName.bind(this);
-    this._onEditPressed = this.onEditPressed.bind(this);
+    this._onEditPressed = throttle(this.onEditPressed.bind(this), 200);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
+    this._showEditNameDialog = throttle(this.showEditNameDialog.bind(this), 200);
     this._clearEdits = this.clearEdits.bind(this);
-    this._handleBackPress = this.handleBackPress.bind(this);
+    this._handleBackPress = throttle(this.handleBackPress.bind(this), 200);
 
     const leftButtons = props.modal ? [
       Platform.OS === 'ios' ? {
@@ -235,11 +236,11 @@ class DeckDetailView extends React.Component {
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId === 'editName') {
-      this.showEditNameDialog();
+      this._showEditNameDialog();
     } else if (buttonId === 'edit') {
-      this.onEditPressed();
+      this._onEditPressed();
     } else if (buttonId === 'back' || buttonId === 'androidBack') {
-      this.handleBackPress();
+      this._handleBackPress();
     } else if (buttonId === 'save') {
       this._saveEdits();
     }

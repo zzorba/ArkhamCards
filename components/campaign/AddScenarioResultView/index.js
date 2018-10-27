@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -49,7 +50,7 @@ class AddScenarioResultView extends React.Component {
     this.updateNavigationButtons();
     Navigation.events().bindComponent(this);
 
-    this._doSave = this.doSave.bind(this);
+    this._doSave = throttle(this.doSave.bind(this), 200);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
     this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
@@ -77,7 +78,7 @@ class AddScenarioResultView extends React.Component {
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId === 'save') {
-      this.doSave();
+      this._doSave();
     }
   }
 

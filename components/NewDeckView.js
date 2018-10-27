@@ -1,23 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../app/i18n';
-import { handleAuthErrors } from './authHelper';
-import { showDeckModal } from './navHelper';
 import InvestigatorsListComponent from './InvestigatorsListComponent';
+import NewDeckOptionsDialog from './NewDeckOptionsDialog';
+import L from '../app/i18n';
 import { iconsMap } from '../app/NavIcons';
-import * as Actions from '../actions';
-import { newDeck } from '../lib/authApi';
 
-class NewDeckView extends React.Component {
+export default class NewDeckView extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
-    setNewDeck: PropTypes.func.isRequired,
-    login: PropTypes.func.isRequired,
+    // From passProps
     onCreateDeck: PropTypes.func,
     filterInvestigators: PropTypes.array,
   };
@@ -41,11 +35,27 @@ class NewDeckView extends React.Component {
 
     this.state = {
       saving: false,
+      viewRef: null,
+      activeInvestigatorId: null,
     };
 
-    this._onPress = throttle(this.onPress.bind(this), 200);
+    this._onPress = this.onPress.bind(this);
+    this._captureViewRef = this.captureViewRef.bind(this);
+    this._closeDialog = this.closeDialog.bind(this);
 
     Navigation.events().bindComponent(this);
+  }
+
+  captureViewRef(ref) {
+    this.setState({
+      viewRef: ref,
+    });
+  }
+
+  closeDialog() {
+    this.setState({
+      activeInvestigatorId: null,
+    });
   }
 
   navigationButtonPressed({ buttonId }) {
@@ -58,57 +68,46 @@ class NewDeckView extends React.Component {
   }
 
   onPress(investigator) {
-    const {
-      componentId,
-      setNewDeck,
-      onCreateDeck,
-      login,
-    } = this.props;
-    if (!this.state.saving) {
+    if (!this.state.activeInvestigatorId) {
       this.setState({
-        saving: true,
+        activeInvestigatorId: investigator.code,
       });
-      const newDeckPromise = newDeck(investigator.code);
-      handleAuthErrors(
-        newDeckPromise,
-        deck => {
-          setNewDeck(deck.id, deck);
-          onCreateDeck && onCreateDeck(deck);
-          showDeckModal(componentId, deck, investigator);
-        },
-        () => {
-          this.setState({
-            saving: false,
-          });
-        },
-        () => this.onPress(investigator),
-        login
-      );
     }
   }
 
   render() {
     const {
       componentId,
+      onCreateDeck,
       filterInvestigators,
     } = this.props;
+    const {
+      viewRef,
+      activeInvestigatorId,
+    } = this.state;
     return (
-      <InvestigatorsListComponent
-        componentId={componentId}
-        filterInvestigators={filterInvestigators}
-        onPress={this._onPress}
-      />
+      <View style={styles.container}>
+        <View style={styles.container} ref={this._captureViewRef}>
+          <InvestigatorsListComponent
+            componentId={componentId}
+            filterInvestigators={filterInvestigators}
+            onPress={this._onPress}
+          />
+        </View>
+        <NewDeckOptionsDialog
+          componentId={componentId}
+          viewRef={viewRef}
+          onCreateDeck={onCreateDeck}
+          toggleVisible={this._closeDialog}
+          investigatorId={activeInvestigatorId}
+        />
+      </View>
     );
   }
 }
 
-
-function mapStateToProps() {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewDeckView);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, flatMap } from 'lodash';
+import { filter, flatMap, throttle } from 'lodash';
 import {
   Alert,
   Button,
@@ -77,7 +77,7 @@ class CampaignDetailView extends React.Component {
     this._updateWeaknessSet = this.applyCampaignUpdate.bind(this, 'weaknessSet');
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
-
+    this._showShareSheet = throttle(this.showShareSheet.bind(this), 200);
     Navigation.events().bindComponent(this);
   }
 
@@ -94,20 +94,24 @@ class CampaignDetailView extends React.Component {
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  showShareSheet() {
     const {
       campaign,
       latestDeckIds,
       decks,
       investigators,
     } = this.props;
+    Share.share({
+      text: campaign.name,
+      message: campaignToText(campaign, latestDeckIds, decks, investigators),
+    }, {
+      subject: campaign.name,
+    });
+  }
+
+  navigationButtonPressed({ buttonId }) {
     if (buttonId === 'share') {
-      Share.share({
-        text: campaign.name,
-        message: campaignToText(campaign, latestDeckIds, decks, investigators),
-      }, {
-        subject: campaign.name,
-      });
+      this._showShareSheet();
     }
   }
 

@@ -43,12 +43,6 @@ export default class InvestigatorImage extends React.Component {
         },
         options: {
           topBar: {
-            title: {
-              text: `${card.is_unique ? '✷ ' : ''}${card.name}`,
-            },
-            subtitle: {
-              text: card.subname,
-            },
             backButton: {
               title: L('Back'),
             },

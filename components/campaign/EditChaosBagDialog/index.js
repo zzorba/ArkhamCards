@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys, map } from 'lodash';
+import { keys, map, throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -42,15 +42,20 @@ export default class EditChaosBagDialog extends React.Component {
     };
 
     this._onCountChange = this.onCountChange.bind(this);
+    this._saveChanges = throttle(this.saveChanges.bind(this), 200);
 
     Navigation.events().bindComponent(this);
   }
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId === 'save') {
-      this.props.updateChaosBag(this.state.chaosBag);
-      Navigation.pop(this.props.componentId);
+      this._saveChanges();
     }
+  }
+
+  saveChanges() {
+    this.props.updateChaosBag(this.state.chaosBag);
+    Navigation.pop(this.props.componentId);
   }
 
   onCountChange(id, count) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head } from 'lodash';
+import { head, throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -53,8 +53,8 @@ class CardDetailView extends React.Component {
     this._editSpoilersPressed = this.editSpoilersPressed.bind(this);
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
     this._toggleShowBack = this.toggleShowBack.bind(this);
-    this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
-    this._showFaq = this.showFaq.bind(this);
+    this._showInvestigatorCards = throttle(this.showInvestigatorCards.bind(this), 200);
+    this._showFaq = throttle(this.showFaq.bind(this), 200);
 
     const rightButtons = [{
       icon: iconsMap.faq,
@@ -90,9 +90,9 @@ class CardDetailView extends React.Component {
       componentId,
     } = this.props;
     if (buttonId === 'deck') {
-      this.showInvestigatorCards();
+      this._showInvestigatorCards();
     } else if (buttonId === 'faq') {
-      this.showFaq();
+      this._showFaq();
     } else if (buttonId === 'back') {
       Navigation.pop(componentId);
     }

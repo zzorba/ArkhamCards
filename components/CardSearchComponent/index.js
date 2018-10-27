@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach } from 'lodash';
+import { forEach, throttle } from 'lodash';
 import {
   Button,
   Keyboard,
@@ -60,7 +60,7 @@ class CardSearchComponent extends React.Component {
     this._showHeader = this.showHeader.bind(this);
     this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
-    this._toggleMythosMode = this.toggleMythosMode.bind(this);
+    this._toggleMythosMode = throttle(this.toggleMythosMode.bind(this), 200);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
@@ -68,6 +68,9 @@ class CardSearchComponent extends React.Component {
     this._searchUpdated = this.searchUpdated.bind(this);
     this._setFilters = this.setFilters.bind(this);
     this._clearSearchFilters = this.clearSearchFilters.bind(this);
+    this._showSearchFilters = throttle(this.showSearchFilters.bind(this), 200);
+    this._showSortDialog = throttle(this.showSortDialog.bind(this), 200);
+
     const rightButtons = [{
       icon: iconsMap.tune,
       id: 'filter',
@@ -145,54 +148,61 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  showSearchFilters() {
     const {
       componentId,
       baseQuery,
       defaultFilterState,
     } = this.props;
-    // will be called when "buttonOne" is clicked
+    this.isOnTop = false;
+    Navigation.push(componentId, {
+      component: {
+        name: 'SearchFilters',
+        passProps: {
+          applyFilters: this._setFilters,
+          defaultFilterState: defaultFilterState,
+          currentFilters: this.state.filters,
+          baseQuery: baseQuery,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Apply'),
+            },
+          },
+        },
+      },
+    });
+  }
+
+  showSortDialog() {
+    this.isOnTop = false;
+    Keyboard.dismiss();
+    Navigation.showOverlay({
+      component: {
+        name: 'Dialog.Sort',
+        passProps: {
+          sortChanged: this._sortChanged,
+          selectedSort: this.state.selectedSort,
+          query: this.query(),
+          searchTerm: this.state.searchTerm,
+        },
+        options: {
+          layout: {
+            backgroundColor: 'rgba(128,128,128,.75)',
+          },
+        },
+      },
+    });
+  }
+
+  navigationButtonPressed({ buttonId }) {
     if (buttonId === 'filter') {
-      this.isOnTop = false;
-      Navigation.push(componentId, {
-        component: {
-          name: 'SearchFilters',
-          passProps: {
-            applyFilters: this._setFilters,
-            defaultFilterState: defaultFilterState,
-            currentFilters: this.state.filters,
-            baseQuery: baseQuery,
-          },
-          options: {
-            topBar: {
-              backButton: {
-                title: L('Apply'),
-              },
-            },
-          },
-        },
-      });
+      this._showSearchFilters();
     } else if (buttonId === 'sort') {
-      this.isOnTop = false;
-      Keyboard.dismiss();
-      Navigation.showOverlay({
-        component: {
-          name: 'Dialog.Sort',
-          passProps: {
-            sortChanged: this._sortChanged,
-            selectedSort: this.state.selectedSort,
-            query: this.query(),
-            searchTerm: this.state.searchTerm,
-          },
-          options: {
-            layout: {
-              backgroundColor: 'rgba(128,128,128,.75)',
-            },
-          },
-        },
-      });
+      this._showSortDialog();
     } else if (buttonId === 'mythos') {
-      this.toggleMythosMode();
+      this._toggleMythosMode();
     }
   }
   componentDidAppear() {

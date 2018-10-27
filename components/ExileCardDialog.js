@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
@@ -32,19 +33,24 @@ export default class ExileCardDialog extends React.Component {
       exileCounts: props.exiles,
     };
 
+    this._doSave = throttle(this.doSave.bind(this), 200);
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
 
     Navigation.events().bindComponent(this);
   }
 
-  navigationButtonPressed({ buttonId }) {
+  doSave() {
     const {
       updateExiles,
       componentId,
     } = this.props;
+    updateExiles(this.state.exileCounts);
+    Navigation.pop(componentId);
+  }
+
+  navigationButtonPressed({ buttonId }) {
     if (buttonId === 'save') {
-      updateExiles(this.state.exileCounts);
-      Navigation.pop(componentId);
+      this._doSave();
     }
   }
 

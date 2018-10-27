@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, keys, map, sumBy } from 'lodash';
+import { filter, forEach, keys, map, sumBy, throttle } from 'lodash';
 import {
   Alert,
   Button,
@@ -75,7 +75,7 @@ class NewCampaignView extends React.Component {
     this.updateNavigationButtons();
     Navigation.events().bindComponent(this);
 
-    this._onSave = this.onSave.bind(this);
+    this._onSave = throttle(this.onSave.bind(this), 200);
     this._onWeaknessPackChange = this.onWeaknessPackChange.bind(this);
     this._addCampaignNoteSection = this.addCampaignNoteSection.bind(this);
     this._deleteCampaignNoteSection = this.deleteCampaignNoteSection.bind(this);
@@ -232,7 +232,7 @@ class NewCampaignView extends React.Component {
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId === 'save') {
-      this.onSave();
+      this._onSave();
     }
   }
 

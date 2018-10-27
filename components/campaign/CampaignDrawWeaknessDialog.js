@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, flatMap, keys, map, range } from 'lodash';
+import { head, flatMap, keys, map, range, throttle } from 'lodash';
 import { StyleSheet, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -64,24 +64,28 @@ class CampaignDrawWeaknessDialog extends React.Component {
     this._updateDrawnCard = this.updateDrawnCard.bind(this);
     this._onPressInvestigator = this.onPressInvestigator.bind(this);
     this._toggleReplaceRandomBasicWeakness = this.toggleReplaceRandomBasicWeakness.bind(this);
-
+    this._showEditWeaknessDialog = throttle(this.showEditWeaknessDialog.bind(this), 200);
     Navigation.events().bindComponent(this);
   }
 
-  navigationButtonPressed({ buttonId }) {
+  showEditWeaknessDialog() {
     const {
       componentId,
       campaignId,
     } = this.props;
-    if (buttonId === 'edit') {
-      Navigation.push(componentId, {
-        component: {
-          name: 'Dialog.CampaignEditWeakness',
-          passProps: {
-            campaignId: campaignId,
-          },
+    Navigation.push(componentId, {
+      component: {
+        name: 'Dialog.CampaignEditWeakness',
+        passProps: {
+          campaignId: campaignId,
         },
-      });
+      },
+    });
+
+  }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'edit') {
+      this._showEditWeaknessDialog();
     }
   }
 
