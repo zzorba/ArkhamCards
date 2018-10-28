@@ -48,12 +48,16 @@ class AddScenarioResultView extends React.Component {
     };
 
     this.updateNavigationButtons();
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
 
     this._doSave = throttle(this.doSave.bind(this), 200);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
     this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   hideTraumaDialog() {

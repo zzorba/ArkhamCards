@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import SearchBox from '../SearchBox';
 import SelectRow from './SelectRow';
 
@@ -18,6 +19,16 @@ export default class SearchMultiSelectView extends React.Component {
     values: PropTypes.array.isRequired,
     selection: PropTypes.array,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        backButton: {
+          title: L('Back'),
+        },
+      },
+    };
+  }
 
   constructor(props) {
     super(props);

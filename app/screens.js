@@ -37,7 +37,6 @@ import CollectionEditView from '../components/CollectionEditView';
 import CardSortDialog from '../components/CardSortDialog';
 import ScenarioDialog from '../components/ScenarioDialog';
 import ExileCardDialog from '../components/ExileCardDialog';
-import BrowseInvestigatorsView from '../components/BrowseInvestigatorsView';
 import AboutView from '../components/AboutView';
 import NewWeaknessSetDialog from '../components/weakness/NewWeaknessSetDialog';
 import WeaknessSetView from '../components/weakness/WeaknessSetView';
@@ -49,7 +48,6 @@ import EditAssignedWeaknessDialog from '../components/weakness/EditAssignedWeakn
 export function registerScreens(Provider, store) {
   Navigation.registerComponentWithRedux('About', () => AboutView, Provider, store);
   Navigation.registerComponentWithRedux('Browse.Cards', () => CardSearchView, Provider, store);
-  Navigation.registerComponentWithRedux('Browse.Investigators', () => BrowseInvestigatorsView, Provider, store);
   Navigation.registerComponentWithRedux('Browse.InvestigatorCards', () => InvestigatorCardsView, Provider, store);
   Navigation.registerComponentWithRedux('Deck', () => DeckDetailView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Charts', () => DeckChartsView, Provider, store);

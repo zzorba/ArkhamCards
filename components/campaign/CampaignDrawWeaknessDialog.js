@@ -65,7 +65,11 @@ class CampaignDrawWeaknessDialog extends React.Component {
     this._onPressInvestigator = this.onPressInvestigator.bind(this);
     this._toggleReplaceRandomBasicWeakness = this.toggleReplaceRandomBasicWeakness.bind(this);
     this._showEditWeaknessDialog = throttle(this.showEditWeaknessDialog.bind(this), 200);
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   showEditWeaknessDialog() {

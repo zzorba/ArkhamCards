@@ -49,17 +49,6 @@ class CampaignDetailView extends React.Component {
     allInvestigators: PropTypes.array,
   };
 
-  static get options() {
-    return {
-      topBar: {
-        rightButtons: [{
-          icon: iconsMap.share,
-          id: 'share',
-        }],
-      },
-    };
-  }
-
   constructor(props) {
     super(props);
 
@@ -78,7 +67,23 @@ class CampaignDetailView extends React.Component {
     this._deletePressed = this.deletePressed.bind(this);
     this._delete = this.delete.bind(this);
     this._showShareSheet = throttle(this.showShareSheet.bind(this), 200);
-    Navigation.events().bindComponent(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
+
+    Navigation.mergeOptions(props.componentId, {
+      topBar: {
+        title: {
+          text: props.campaign ? props.campaign.name : L('Campaign'),
+        },
+        rightButtons: [{
+          icon: iconsMap.share,
+          id: 'share',
+        }],
+      },
+    });
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   showAddSectionDialog(addSectionFunction) {

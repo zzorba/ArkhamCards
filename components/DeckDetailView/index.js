@@ -216,7 +216,7 @@ class DeckDetailView extends React.Component {
         [{
           text: 'Save Changes',
           onPress: () => {
-            this.saveEdits(true);
+            this._saveEdits(true);
           },
         }, {
           text: 'Discard Changes',
@@ -391,7 +391,7 @@ class DeckDetailView extends React.Component {
               saving: false,
               nameChange: null,
               hasPendingEdits: false,
-            });
+            }, this._syncNavigationButtons);
           }
         },
         // onFailure

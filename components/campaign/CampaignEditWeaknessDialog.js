@@ -23,6 +23,9 @@ class CampaignEditWeaknessDialog extends React.Component {
         title: {
           text: L('Available weaknesses'),
         },
+        backButton: {
+          title: L('Back'),
+        },
       },
     };
   }
