@@ -11,6 +11,7 @@ import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import { getDeckOptions } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
 import typography from '../../styles/typography';
 
@@ -34,6 +35,7 @@ class DeckDelta extends React.Component {
       componentId,
       parsedDeck: {
         deck,
+        investigator,
       },
     } = this.props;
     Navigation.push(componentId, {
@@ -43,13 +45,7 @@ class DeckDelta extends React.Component {
           id: deck.previous_deck,
           isPrivate: true,
         },
-        options: {
-          bottomTabs: {
-            visible: false,
-            drawBehind: true,
-            animate: true,
-          },
-        },
+        options: getDeckOptions(investigator),
       },
     });
   }
@@ -59,6 +55,7 @@ class DeckDelta extends React.Component {
       componentId,
       parsedDeck: {
         deck,
+        investigator,
       },
     } = this.props;
     Navigation.push(componentId, {
@@ -68,13 +65,7 @@ class DeckDelta extends React.Component {
           id: deck.next_deck,
           isPrivate: true,
         },
-        options: {
-          bottomTabs: {
-            visible: false,
-            drawBehind: true,
-            animate: true,
-          },
-        },
+        options: getDeckOptions(investigator),
       },
     });
   }

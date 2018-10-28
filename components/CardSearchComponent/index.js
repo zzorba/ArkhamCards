@@ -29,7 +29,6 @@ class CardSearchComponent extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     // Function that takes 'realm' and gives back a base query.
-    promptForUpdate: PropTypes.bool,
     defaultFilterState: PropTypes.object,
     baseQuery: PropTypes.string,
     mythosToggle: PropTypes.bool,
@@ -443,7 +442,6 @@ class CardSearchComponent extends React.Component {
       onDeckCountChange,
       limits,
       footer,
-      promptForUpdate,
     } = this.props;
     const {
       selectedSort,

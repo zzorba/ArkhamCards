@@ -17,6 +17,7 @@ const icons = {
   tune: [28, COLORS.button],
   delete: [30, COLORS.button, MaterialCommunityIcons],
   close: [30, COLORS.button, MaterialCommunityIcons],
+  'arrow-up-bold': [26, COLORS.button, MaterialCommunityIcons],
   'arrow-left': [30, COLORS.button, MaterialCommunityIcons],
   'chevron-left': [40, COLORS.button, MaterialCommunityIcons],
   'sort-by-alpha': [28, COLORS.button],

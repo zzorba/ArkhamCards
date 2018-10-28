@@ -65,7 +65,7 @@ class DeckDetailView extends React.Component {
     };
     this._saveName = this.saveName.bind(this);
     this._onEditPressed = throttle(this.onEditPressed.bind(this), 200);
-    this._onUpgradePressed = this.onUpgradePressed.bind(this);
+    this._onUpgradePressed = throttle(this.onUpgradePressed.bind(this), 200);
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
@@ -180,15 +180,23 @@ class DeckDetailView extends React.Component {
       hasPendingEdits,
     } = this.state;
     const rightButtons = [];
+    const editable = isPrivate && !deck.next_deck;
     if (hasPendingEdits) {
       rightButtons.push({
         text: L('Save'),
         id: 'save',
         color: 'white',
       });
-    } else if (isPrivate && !deck.next_deck) {
+    } else if (editable) {
       rightButtons.push({
-        id: 'editName',
+        id: 'upgrade',
+        icon: iconsMap['arrow-up-bold'],
+        color: 'white',
+      });
+    }
+    if (editable) {
+      rightButtons.push({
+        id: 'edit',
         icon: iconsMap.edit,
         color: 'white',
       });
@@ -236,14 +244,14 @@ class DeckDetailView extends React.Component {
   }
 
   navigationButtonPressed({ buttonId }) {
-    if (buttonId === 'editName') {
-      this._showEditNameDialog();
-    } else if (buttonId === 'edit') {
+    if (buttonId === 'edit') {
       this._onEditPressed();
     } else if (buttonId === 'back' || buttonId === 'androidBack') {
       this._handleBackPress();
     } else if (buttonId === 'save') {
       this._saveEdits();
+    } else if (buttonId === 'upgrade') {
+      this._onUpgradePressed();
     }
   }
 
@@ -256,14 +264,7 @@ class DeckDetailView extends React.Component {
       nameChange: name,
       hasPendingEdits: pendingEdits,
       editNameDialogVisible: false,
-    });
-    Navigation.mergeOptions(this.props.componentId, {
-      topBar: {
-        title: {
-          text: name,
-        },
-      },
-    });
+    }, this._syncNavigationButtons);
   }
 
   onEditPressed() {
@@ -289,9 +290,7 @@ class DeckDetailView extends React.Component {
           },
           topBar: {
             title: {
-              color: 'white',
-            },
-            subtitle: {
+              text: L('Edit Deck'),
               color: 'white',
             },
             backButton: {
@@ -330,7 +329,7 @@ class DeckDetailView extends React.Component {
           },
           topBar: {
             title: {
-              text: L('Upgrade'),
+              text: L('Upgrade Deck'),
               color: 'white',
             },
             subtitle: {
@@ -576,6 +575,7 @@ class DeckDetailView extends React.Component {
     const {
       loaded,
       parsedDeck,
+      nameChange,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -589,17 +589,18 @@ class DeckDetailView extends React.Component {
         </View>
       );
     }
-
     return (
       <View>
         <View style={styles.container} ref={captureViewRef}>
           <DeckViewTab
             componentId={componentId}
             deck={deck}
+            deckName={nameChange || deck.name}
             parsedDeck={parsedDeck}
             cards={cards}
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
+            showEditNameDialog={this._showEditNameDialog}
           />
           <DeckNavFooter
             componentId={componentId}

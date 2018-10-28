@@ -13,13 +13,14 @@ import {
   ScrollView,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import AppIcon from '../../assets/AppIcon';
 import L from '../../app/i18n';
 import { DeckType } from '../parseDeck';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
-import AppIcon from '../../assets/AppIcon';
 import DeckValidation from '../../lib/DeckValidation';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
@@ -69,6 +70,8 @@ export default class DeckViewTab extends React.Component {
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
+    showEditNameDialog: PropTypes.func.isRequired,
+    deckName: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -217,6 +220,7 @@ export default class DeckViewTab extends React.Component {
     const {
       componentId,
       deck,
+      deckName,
       parsedDeck: {
         normalCards,
         specialCards,
@@ -228,6 +232,7 @@ export default class DeckViewTab extends React.Component {
       },
       isPrivate,
       buttons,
+      showEditNameDialog,
     } = this.props;
 
     const sections = deckToSections(normalCards)
@@ -244,11 +249,18 @@ export default class DeckViewTab extends React.Component {
                 </View>
               </TouchableOpacity>
               <View style={styles.metadata}>
-                <TouchableOpacity onPress={this._showInvestigator}>
+                { (isPrivate && !deck.next_deck) ? (
+                  <TouchableOpacity style={styles.row} onPress={showEditNameDialog}>
+                    <Text style={styles.investigatorName} ellipsizeMode="tail">
+                      { `${deckName}  ` }
+                    </Text>
+                    <MaterialIcons name="edit" color="#222222" size={16} />
+                  </TouchableOpacity>
+                ) : (
                   <Text style={styles.investigatorName}>
-                    { investigator.name }
+                    { `${deckName}  ` }
                   </Text>
-                </TouchableOpacity>
+                ) }
                 <Text style={styles.defaultText}>
                   { L(
                     '{{cardCount}} cards ({{totalCount}} total)',
@@ -364,5 +376,10 @@ const styles = StyleSheet.create({
     marginTop: 8,
     borderTopWidth: 1,
     borderColor: '#bdbdbd',
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
