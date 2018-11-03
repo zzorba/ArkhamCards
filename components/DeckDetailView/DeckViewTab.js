@@ -251,10 +251,15 @@ export default class DeckViewTab extends React.Component {
               <View style={styles.metadata}>
                 { (isPrivate && !deck.next_deck) ? (
                   <TouchableOpacity style={styles.row} onPress={showEditNameDialog}>
-                    <Text style={styles.investigatorName} ellipsizeMode="tail">
-                      { `${deckName}  ` }
+                    <Text style={styles.investigatorName}
+                      numberOfLines={2}
+                      ellipsizeMode="tail"
+                    >
+                      { deckName }
                     </Text>
-                    <MaterialIcons name="edit" color="#222222" size={16} />
+                    <View style={styles.editIcon}>
+                      <MaterialIcons name="edit" color="#222222" size={16} />
+                    </View>
                   </TouchableOpacity>
                 ) : (
                   <Text style={styles.investigatorName}>
@@ -266,6 +271,9 @@ export default class DeckViewTab extends React.Component {
                     '{{cardCount}} cards ({{totalCount}} total)',
                     { cardCount: normalCardCount, totalCount: totalCardCount }
                   ) }
+                </Text>
+                <Text style={styles.defaultText}>
+                  { L('Version {{version}}', { version: deck.version} )}
                 </Text>
                 <Text style={styles.defaultText}>
                   { L('{{xp}} experience required.', { xp: experience }) }
@@ -378,8 +386,12 @@ const styles = StyleSheet.create({
     borderColor: '#bdbdbd',
   },
   row: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingRight: 8,
+  },
+  editIcon: {
+    width: 16,
+    marginLeft: 16,
   },
 });

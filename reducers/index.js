@@ -85,6 +85,24 @@ export function getAllDecks(state) {
   return state.decks.all || {};
 }
 
+export function getBaseDeck(state, deckId) {
+  const decks = getAllDecks(state);
+  let deck = decks[deckId];
+  while (deck && deck.previous_deck && decks[deck.previous_deck]) {
+    deck = decks[deck.previous_deck];
+  }
+  return deck;
+}
+
+export function getLatestDeck(state, deckId) {
+  const decks = getAllDecks(state);
+  let deck = decks[deckId];
+  while (deck && deck.next_deck && decks[deck.next_deck]) {
+    deck = decks[deck.next_deck];
+  }
+  return deck;
+}
+
 export function getDeckToCampaignMap(state) {
   const decks = state.decks.all || {};
   const campaigns = state.campaigns.all;

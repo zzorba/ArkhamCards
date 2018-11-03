@@ -15,6 +15,7 @@ const icons = {
   auto_fail: [24, COLORS.button, ArkhamIcon],
   edit: [26, COLORS.button],
   tune: [28, COLORS.button],
+  'content-copy': [28, COLORS.button, MaterialCommunityIcons],
   delete: [30, COLORS.button, MaterialCommunityIcons],
   close: [30, COLORS.button, MaterialCommunityIcons],
   'arrow-up-bold': [26, COLORS.button, MaterialCommunityIcons],

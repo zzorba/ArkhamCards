@@ -16,6 +16,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
 import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
@@ -60,9 +61,11 @@ class DeckDetailView extends React.Component {
       slots: {},
       loaded: false,
       saving: false,
+      copying: false,
       nameChange: null,
       hasPendingEdits: false,
     };
+    this._toggleCopyDialog = throttle(this.toggleCopyDialog.bind(this), 200);
     this._saveName = this.saveName.bind(this);
     this._onEditPressed = throttle(this.onEditPressed.bind(this), 200);
     this._onUpgradePressed = throttle(this.onUpgradePressed.bind(this), 200);
@@ -171,6 +174,12 @@ class DeckDetailView extends React.Component {
     }
   }
 
+  toggleCopyDialog() {
+    this.setState({
+      copying: !this.state.copying,
+    });
+  }
+
   getRightButtons() {
     const {
       isPrivate,
@@ -187,12 +196,19 @@ class DeckDetailView extends React.Component {
         id: 'save',
         color: 'white',
       });
-    } else if (editable) {
+    } else {
       rightButtons.push({
-        id: 'upgrade',
-        icon: iconsMap['arrow-up-bold'],
+        id: 'copy',
+        icon: iconsMap['content-copy'],
         color: 'white',
       });
+      if (editable) {
+        rightButtons.push({
+          id: 'upgrade',
+          icon: iconsMap['arrow-up-bold'],
+          color: 'white',
+        });
+      }
     }
     if (editable) {
       rightButtons.push({
@@ -252,6 +268,8 @@ class DeckDetailView extends React.Component {
       this._saveEdits();
     } else if (buttonId === 'upgrade') {
       this._onUpgradePressed();
+    } else if (buttonId === 'copy') {
+      this._toggleCopyDialog();
     }
   }
 
@@ -498,6 +516,25 @@ class DeckDetailView extends React.Component {
     );
   }
 
+  renderCopyDialog() {
+    const {
+      componentId,
+      viewRef,
+      id,
+    } = this.props;
+    const {
+      copying,
+    } = this.state;
+    return (
+      <CopyDeckDialog
+        componentId={componentId}
+        deckId={copying ? id : null}
+        toggleVisible={this._toggleCopyDialog}
+        viewRef={viewRef}
+      />
+    );
+  }
+
   renderSavingDialog() {
     const {
       viewRef,
@@ -609,6 +646,7 @@ class DeckDetailView extends React.Component {
           />
         </View>
         { this.renderSavingDialog() }
+        { this.renderCopyDialog() }
       </View>
     );
   }
