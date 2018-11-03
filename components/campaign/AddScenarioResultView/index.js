@@ -73,8 +73,8 @@ class AddScenarioResultView extends React.Component {
           text: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
-          disabled: !this.state.scenario.scenario ||
-            !(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
+          enabled: (!!this.state.scenario.scenario) &&
+            !!(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
         }],
       },
     });

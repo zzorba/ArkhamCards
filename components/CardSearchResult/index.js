@@ -175,7 +175,7 @@ export default class CardSearchResult extends React.PureComponent {
           <Text style={[
             typography.text,
             { color: FACTION_COLORS[card.faction_code] || '#000000' },
-          ]} ellipsizeMode="tail">
+          ]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
           </Text>
         </View>

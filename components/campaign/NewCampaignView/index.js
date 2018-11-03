@@ -146,7 +146,7 @@ class NewCampaignView extends React.Component {
   onNameChange(name) {
     this.setState({
       name: name,
-    });
+    }, this._updateNavigationButtons);
   }
 
   maybeShowWeaknessPrompt(deck) {
@@ -228,7 +228,7 @@ class NewCampaignView extends React.Component {
           text: L('Done'),
           id: 'save',
           showAsAction: 'ifRoom',
-          disabled: campaignCode === CUSTOM && !name,
+          enabled: campaignCode !== CUSTOM || !!name,
         }],
       },
     });
@@ -497,6 +497,7 @@ class NewCampaignView extends React.Component {
 
     const {
       deckIds,
+      campaignCode,
       name,
       difficulty,
     } = this.state;
@@ -561,6 +562,7 @@ class NewCampaignView extends React.Component {
           </View>
           <View style={styles.button}>
             <Button
+              disabled={campaignCode === CUSTOM && !name}
               style={styles.topPadding}
               title={L('Create Campaign')}
               onPress={this._onSave}

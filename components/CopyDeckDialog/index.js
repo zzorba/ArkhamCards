@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
 import { countBy, find, forEach, map, throttle } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -111,6 +111,9 @@ class CopyDeckDialog extends React.Component {
     this.setState({
       saving: false,
     });
+    if (Platform.OS === 'android') {
+      toggleVisible();
+    }
     // Change the deck options for required cards, if present.
     showDeckModal(componentId, deck, investigator);
   }
@@ -308,7 +311,7 @@ class CopyDeckDialog extends React.Component {
         viewRef={viewRef}
       >
         <DialogComponent.Description
-          style={[styles.descriptionMargin, saving ? typography.left : typography.center]}
+          style={[styles.descriptionMargin, saving ? typography.center : typography.left]}
         >
           { saving ?
             L('Saving') :

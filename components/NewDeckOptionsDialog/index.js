@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
 import { countBy, find, forEach, map, throttle } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -100,6 +100,9 @@ class NewDeckOptionsDialog extends React.Component {
     this.setState({
       saving: false,
     });
+    if (Platform.OS === 'android') {
+      toggleVisible();
+    }
     // Change the deck options for required cards, if present.
     onCreateDeck && onCreateDeck(deck);
     showDeckModal(componentId, deck, investigator);
