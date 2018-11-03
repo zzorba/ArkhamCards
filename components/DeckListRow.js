@@ -59,7 +59,10 @@ export default class DeckListRow extends React.Component {
       }
       return L('{{availableXp}} available experience', { availableXp: parsedDeck.deck.xp || 0 });
     }
-    return L('{{totalXp}} experience required', { totalXp: parsedDeck.experience });
+    if (parseDeck.experience > 0) {
+      return L('{{totalXp}} experience required', { totalXp: parsedDeck.experience });
+    }
+    return null;
   }
 
   renderDeckDetails() {
@@ -82,6 +85,7 @@ export default class DeckListRow extends React.Component {
       return null;
     }
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
+    const xpString = DeckListRow.xpString(parsedDeck)
     return (
       <View>
         <Text style={typography.small}>
@@ -93,16 +97,19 @@ export default class DeckListRow extends React.Component {
             })
           }
         </Text>
-        <Text style={typography.small}>
-          { DeckListRow.xpString(parsedDeck) }
-        </Text>
-        { deck.problem ?
-          <DeckProblemRow problem={{ reason: deck.problem }} color="#222" /> :
-          (!!deck.date_update && (
-            <Text style={typography.small} >
-              { L('Updated {{date}}', { date: toRelativeDateString(Date.parse(deck.date_update)) }) }
-            </Text>
-          )) }
+        { !!xpString && (
+          <Text style={typography.small}>
+            { xpString }
+          </Text>
+        ) }
+        { !!deck.problem && (
+          <DeckProblemRow problem={{ reason: deck.problem }} color="#222" />
+        ) }
+        { !!deck.date_update && (
+          <Text style={typography.small} >
+            { L('Updated {{date}}', { date: toRelativeDateString(Date.parse(deck.date_update)) }) }
+          </Text>
+        ) }
       </View>
     );
   }

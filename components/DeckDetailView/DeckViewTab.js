@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys, flatMap, map, range, sum } from 'lodash';
+import { head, keys, flatMap, map, range, sum } from 'lodash';
 import {
   Alert,
   Button,
@@ -200,18 +200,22 @@ export default class DeckViewTab extends React.Component {
     if (!problem) {
       return null;
     }
-
+    const isSurvivor = investigator.faction_code === 'survivor'
     return (
-      <View style={styles.problemBox}>
-        <Text style={styles.problemText} numberOfLines={2}>
-          <AppIcon name="warning" size={14} color={COLORS.red} />
-          { DECK_PROBLEM_MESSAGES[problem.reason] }
-        </Text>
-        { problem.problems.map(problem => (
-          <Text key={problem} style={styles.problemText} numberOfLines={2}>
-            { `\u2022 ${problem}` }
+      <View style={[styles.problemBox,
+        { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
+      ]}>
+        <View style={styles.problemRow}>
+          <View style={styles.warningIcon}>
+            <AppIcon name="warning" size={14} color={isSurvivor ? COLORS.black : COLORS.white} />
+          </View>
+          <Text
+            numberOfLines={2}
+            style={[styles.problemText, { color: isSurvivor ? COLORS.black : COLORS.white }]}
+          >
+            { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
           </Text>
-        )) }
+        </View>
       </View>
     );
   }
@@ -241,6 +245,7 @@ export default class DeckViewTab extends React.Component {
     return (
       <ScrollView>
         <View>
+          { this.renderProblem() }
           <View style={[styles.container, styles.rowWrap]}>
             <View style={styles.header}>
               <TouchableOpacity onPress={this._showInvestigator}>
@@ -275,13 +280,11 @@ export default class DeckViewTab extends React.Component {
                 <Text style={styles.defaultText}>
                   { L('Version {{version}}', { version: deck.version} )}
                 </Text>
-                <Text style={styles.defaultText}>
-                  { L('{{xp}} experience required.', { xp: experience }) }
-                </Text>
-                <Text style={styles.defaultText}>
-                  { L('{{packCount}} packs required.', { packCount: packs }) }
-                </Text>
-                { this.renderProblem() }
+                { experience > 0 && (
+                  <Text style={styles.defaultText}>
+                    { L('{{xp}} experience required.', { xp: experience }) }
+                  </Text>
+                ) }
               </View>
             </View>
           </View>
@@ -330,7 +333,7 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 8,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   button: {
     margin: 8,
@@ -357,14 +360,25 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontSize: 14,
   },
+  problemRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   problemBox: {
     flex: 1,
+    paddingTop: 4,
+    paddingBottom: 4,
     paddingRight: 8,
+    paddingLeft: 8,
   },
   problemText: {
-    color: COLORS.red,
+    color: COLORS.white,
     fontSize: 14,
     flex: 1,
+  },
+  warningIcon: {
+    marginRight: 4,
   },
   subHeaderRow: {
     backgroundColor: '#eee',

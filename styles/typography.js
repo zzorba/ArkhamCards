@@ -58,4 +58,7 @@ export default StyleSheet.create({
   left: {
     textAlign: 'left',
   },
+  center: {
+    textAlign: 'center',
+  },
 });

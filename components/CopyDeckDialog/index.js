@@ -307,8 +307,10 @@ class CopyDeckDialog extends React.Component {
         visible={!!deckId}
         viewRef={viewRef}
       >
-        <DialogComponent.Description style={[styles.descriptionMargin, typography.left]}>
-          { saving ? 
+        <DialogComponent.Description
+          style={[styles.descriptionMargin, saving ? typography.left : typography.center]}
+        >
+          { saving ?
             L('Saving') :
             L('Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.')
           }
