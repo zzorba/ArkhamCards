@@ -1,5 +1,4 @@
 {
-
   "en": {
     "Test Icons: ": "Test Icons: ",
     "Slot: {{slot}}": "Slot: {{slot}}",
@@ -357,7 +356,18 @@
     "{{name}} on the Road": "{{name}} on the Road",
     "{{name}} Does It All": "{{name}} Does It All",
     "NAME": "NAME",
-    "REQUIRED CARDS": "REQUIRED CARDS"
+    "REQUIRED CARDS": "REQUIRED CARDS",
+    "SELECT DECK VERSION TO COPY": "SELECT DECK VERSION TO COPY",
+    "Base Version\n{{xpCount}} XP": "Base Version\n{{xpCount}} XP",
+    "Current Version {{version}}\n{{xpCount}} XP": "Current Version {{version}}\n{{xpCount}} XP",
+    "Latest Version {{version}}\n{{xpCount}} XP": "Latest Version {{version}}\n{{xpCount}} XP",
+    "NEW NAME": "NEW NAME",
+    "Required": "Required",
+    "Copy Deck": "Copy Deck",
+    "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.": "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.",
+    "Version {{version}}": "Version {{version}}",
+    "View on ArkhamDB": "View on ArkhamDB",
+    "Edit Deck": "Edit Deck"
 },
   "de": {
     "Test Icons: ": "Test Icons: ",
@@ -716,7 +726,18 @@
     "{{name}} on the Road": "{{name}} on the Road",
     "{{name}} Does It All": "{{name}} Does It All",
     "NAME": "NAME",
-    "REQUIRED CARDS": "REQUIRED CARDS"
+    "REQUIRED CARDS": "REQUIRED CARDS",
+    "SELECT DECK VERSION TO COPY": "SELECT DECK VERSION TO COPY",
+    "Base Version\n{{xpCount}} XP": "Base Version\n{{xpCount}} XP",
+    "Current Version {{version}}\n{{xpCount}} XP": "Current Version {{version}}\n{{xpCount}} XP",
+    "Latest Version {{version}}\n{{xpCount}} XP": "Latest Version {{version}}\n{{xpCount}} XP",
+    "NEW NAME": "NEW NAME",
+    "Required": "Required",
+    "Copy Deck": "Copy Deck",
+    "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.": "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.",
+    "Version {{version}}": "Version {{version}}",
+    "View on ArkhamDB": "View on ArkhamDB",
+    "Edit Deck": "Edit Deck"
 },
   "es": {
     "Test Icons: ": "Iconos de habilidad: ",
@@ -1075,7 +1096,18 @@
     "{{name}} on the Road": "{{name}} on the Road",
     "{{name}} Does It All": "{{name}} Does It All",
     "NAME": "NAME",
-    "REQUIRED CARDS": "REQUIRED CARDS"
+    "REQUIRED CARDS": "REQUIRED CARDS",
+    "SELECT DECK VERSION TO COPY": "SELECT DECK VERSION TO COPY",
+    "Base Version\n{{xpCount}} XP": "Base Version\n{{xpCount}} XP",
+    "Current Version {{version}}\n{{xpCount}} XP": "Current Version {{version}}\n{{xpCount}} XP",
+    "Latest Version {{version}}\n{{xpCount}} XP": "Latest Version {{version}}\n{{xpCount}} XP",
+    "NEW NAME": "NEW NAME",
+    "Required": "Required",
+    "Copy Deck": "Copy Deck",
+    "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.": "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.",
+    "Version {{version}}": "Version {{version}}",
+    "View on ArkhamDB": "View on ArkhamDB",
+    "Edit Deck": "Edit Deck"
 },
   "it": {
     "Test Icons: ": "Test Icons: ",
@@ -1434,7 +1466,18 @@
     "{{name}} on the Road": "{{name}} on the Road",
     "{{name}} Does It All": "{{name}} Does It All",
     "NAME": "NAME",
-    "REQUIRED CARDS": "REQUIRED CARDS"
+    "REQUIRED CARDS": "REQUIRED CARDS",
+    "SELECT DECK VERSION TO COPY": "SELECT DECK VERSION TO COPY",
+    "Base Version\n{{xpCount}} XP": "Base Version\n{{xpCount}} XP",
+    "Current Version {{version}}\n{{xpCount}} XP": "Current Version {{version}}\n{{xpCount}} XP",
+    "Latest Version {{version}}\n{{xpCount}} XP": "Latest Version {{version}}\n{{xpCount}} XP",
+    "NEW NAME": "NEW NAME",
+    "Required": "Required",
+    "Copy Deck": "Copy Deck",
+    "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.": "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.",
+    "Version {{version}}": "Version {{version}}",
+    "View on ArkhamDB": "View on ArkhamDB",
+    "Edit Deck": "Edit Deck"
 },
   "fr": {
     "Test Icons: ": "Icônes de Compétence: ",
@@ -1793,6 +1836,17 @@
     "{{name}} on the Road": "{{name}} on the Road",
     "{{name}} Does It All": "{{name}} Does It All",
     "NAME": "NAME",
-    "REQUIRED CARDS": "REQUIRED CARDS"
+    "REQUIRED CARDS": "REQUIRED CARDS",
+    "SELECT DECK VERSION TO COPY": "SELECT DECK VERSION TO COPY",
+    "Base Version\n{{xpCount}} XP": "Base Version\n{{xpCount}} XP",
+    "Current Version {{version}}\n{{xpCount}} XP": "Current Version {{version}}\n{{xpCount}} XP",
+    "Latest Version {{version}}\n{{xpCount}} XP": "Latest Version {{version}}\n{{xpCount}} XP",
+    "NEW NAME": "NEW NAME",
+    "Required": "Required",
+    "Copy Deck": "Copy Deck",
+    "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.": "Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.",
+    "Version {{version}}": "Version {{version}}",
+    "View on ArkhamDB": "View on ArkhamDB",
+    "Edit Deck": "Edit Deck"
 }
 }
