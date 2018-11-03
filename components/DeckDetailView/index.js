@@ -92,6 +92,10 @@ class DeckDetailView extends React.Component {
     if (props.modal) {
       Navigation.mergeOptions(props.componentId, {
         topBar: {
+          title: {
+            text: props.title,
+            color: '#FFFFFF',
+          },
           leftButtons,
           rightButtons: this.getRightButtons(),
         },

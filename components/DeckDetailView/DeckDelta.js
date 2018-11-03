@@ -42,6 +42,7 @@ class DeckDelta extends React.Component {
       component: {
         name: 'Deck',
         passProps: {
+          title: investigator.name,
           id: deck.previous_deck,
           isPrivate: true,
         },

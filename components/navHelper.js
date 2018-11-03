@@ -43,6 +43,7 @@ export function showDeckModal(componentId, deck, investigator, campaignId) {
             isPrivate: true,
             modal: true,
             campaignId,
+            title: investigator.name,
           },
           options: getDeckOptions(investigator),
         },
