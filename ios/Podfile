@@ -6,7 +6,7 @@ target 'ArkhamCards' do
   # use_frameworks!
 
   # Pods for ArkhamCards
-  pod 'AppAuth', '0.91'
+  pod 'AppAuth', '0.94'
   pod 'AppCenter/Crashes', '1.8.0'
   pod 'AppCenter/Analytics', '1.8.0'
   pod 'AppCenterReactNativeShared', '1.7.1'

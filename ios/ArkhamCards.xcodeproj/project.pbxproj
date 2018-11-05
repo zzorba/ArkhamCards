@@ -30,12 +30,12 @@
 		340897BFA7F34FF38E1C5884 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ED147EAE84244D3987FA3C67 /* libc++.tbd */; };
 		46581F38D9CD4038BA5C1529 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73A7D0C6281B49D0AC22D60D /* Ionicons.ttf */; };
 		4E4DC7E9E951472E9803FF51 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF971A7189444EA7ADD751E4 /* Zocial.ttf */; };
-		4E97B652050848BEABB5F8A8 /* libRNAppAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 405DFC8371C7450596D372BF /* libRNAppAuth.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		650CA534217237B500612F7A /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 650CA531217237A900612F7A /* libReactNativeNavigation.a */; };
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
+		653E0641218FA669008D7E99 /* libRNAppAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626ED620D3EA23004F4190 /* libRNAppAuth.a */; };
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		6553072F20F6D2D100FDDFC4 /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6553072620F6D2C600FDDFC4 /* libRNBlur.a */; };
@@ -324,6 +324,13 @@
 			remoteGlobalIDString = F60690131CA2766F0003FB26;
 			remoteInfo = RealmReact;
 		};
+		653E063E218FA637008D7E99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65EB590D2047B36E00CC5820 /* RNVectorIcons.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A39873CE1EA65EE60051E01A;
+			remoteInfo = "RNVectorIcons-tvOS";
+		};
 		6553072520F6D2C600FDDFC4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */;
@@ -567,6 +574,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653E0641218FA669008D7E99 /* libRNAppAuth.a in Frameworks */,
 				650CA534217237B500612F7A /* libReactNativeNavigation.a in Frameworks */,
 				6553072F20F6D2D100FDDFC4 /* libRNBlur.a in Frameworks */,
 				655F3D3F20F5AC9F0029A762 /* libRNFetchBlob.a in Frameworks */,
@@ -595,7 +603,6 @@
 				0A972858B1EF441A9A00C68C /* libAppCenterReactNative.a in Frameworks */,
 				8B5B29C910C84B5C82D08868 /* libAppCenterReactNativeAnalytics.a in Frameworks */,
 				20B35FA2C9264873AD538635 /* libAppCenterReactNativeCrashes.a in Frameworks */,
-				4E97B652050848BEABB5F8A8 /* libRNAppAuth.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +878,7 @@
 			isa = PBXGroup;
 			children = (
 				65EB59122047B36E00CC5820 /* libRNVectorIcons.a */,
+				653E063F218FA637008D7E99 /* libRNVectorIcons-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1426,6 +1434,13 @@
 			fileType = archive.ar;
 			path = libRealmReact.a;
 			remoteRef = 6520D0C0206F2F1600440C6C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		653E063F218FA637008D7E99 /* libRNVectorIcons-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNVectorIcons-tvOS.a";
+			remoteRef = 653E063E218FA637008D7E99 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		6553072620F6D2C600FDDFC4 /* libRNBlur.a */ = {

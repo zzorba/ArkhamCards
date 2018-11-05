@@ -14,6 +14,7 @@ export const CORE_FACTION_CODES = [
 export const FACTION_CODES = [
   ...CORE_FACTION_CODES,
   'neutral',
+  'dual',
 ];
 
 export const FACTION_CODE_TO_STRING = {
@@ -23,6 +24,7 @@ export const FACTION_CODE_TO_STRING = {
   rogue: 'Rogue',
   survivor: 'Survivor',
   neutral: 'Neutral',
+  dual: 'Dual',
 };
 
 export const BASIC_SKILLS = [
@@ -52,6 +54,7 @@ export const FACTION_COLORS = {
   rogue: '#107116',
   survivor: '#cc3038',
   neutral: '#000000',
+  dual: '#ffd700',
 };
 
 export const FACTION_LIGHT_GRADIENTS = {
@@ -61,6 +64,7 @@ export const FACTION_LIGHT_GRADIENTS = {
   rogue: ['#cfe3d0', '#9fc6a2'],
   survivor: ['#f5d6d7', '#ebacaf'],
   neutral: ['#e6e6e6', '#cccccc'],
+  dual: ['#fbe6d4', '#f7cea8'],
 };
 
 export const FACTION_DARK_GRADIENTS = {
@@ -70,6 +74,7 @@ export const FACTION_DARK_GRADIENTS = {
   rogue: ['#107116', '#0b4f0f'],
   survivor: ['#cc3038', '#a3262d'],
   neutral: ['#444444', '#222222'],
+  dual: ['#ec8426', '#bd6a1e'],
 };
 
 export const FACTION_BACKGROUND_COLORS = Object.assign(
@@ -129,7 +134,7 @@ export function createFactionIcons(size, defaultColor) {
   return mapValues(FACTION_COLORS, (color, faction) => {
     return (
       <ArkhamIcon
-        name={faction === 'neutral' ? 'elder_sign' : faction}
+        name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
         size={size}
         color={defaultColor || color}
       />

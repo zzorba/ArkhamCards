@@ -173,6 +173,9 @@ class CardSearchComponent extends React.Component {
             backButton: {
               title: L('Apply'),
             },
+            title: {
+              text: L('Filters'),
+            },
           },
         },
       },

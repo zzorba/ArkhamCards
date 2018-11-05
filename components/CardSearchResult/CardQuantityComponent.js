@@ -161,11 +161,6 @@ export default class CardQuantityComponent extends React.PureComponent {
 
     return (
       <View style={styles.row}>
-        { count !== 0 && (
-          <Text style={[typography.text, styles.count]}>
-            { `×${count}` }
-          </Text>
-        ) }
         <PlusMinusButtons
           count={count}
           size={44}
@@ -173,6 +168,9 @@ export default class CardQuantityComponent extends React.PureComponent {
           limit={limit}
           noFill
         />
+        <Text style={[typography.text, styles.count]}>
+          { count !== 0 ? count : ' ' }
+        </Text>
       </View>
     );
   }
@@ -187,7 +185,10 @@ const styles = StyleSheet.create({
     height: ROW_HEIGHT,
   },
   count: {
-    marginRight: 4,
+    marginLeft: 4,
+    width: 16,
+    textAlign: 'center',
+    marginRight: 8,
   },
   container: {
     position: 'absolute',
