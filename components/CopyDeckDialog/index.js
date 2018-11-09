@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
-import { countBy, find, forEach, map, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 import DialogComponent from 'react-native-dialog';
 
 import SelectDeckSwitch from './SelectDeckSwitch';
@@ -75,7 +74,7 @@ class CopyDeckDialog extends React.Component {
   selectedDeckIdChanged(deckId, value) {
     if (value) {
       this.setState({
-        selectedDeckId: deckId
+        selectedDeckId: deckId,
       });
     } else {
       this.setState({
@@ -256,9 +255,6 @@ class CopyDeckDialog extends React.Component {
   }
 
   renderFormContent() {
-    const {
-      deckId,
-    } = this.props;
     const {
       saving,
       deckName,

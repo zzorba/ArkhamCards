@@ -85,7 +85,7 @@ export default class DeckListRow extends React.Component {
       return null;
     }
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
-    const xpString = DeckListRow.xpString(parsedDeck)
+    const xpString = DeckListRow.xpString(parsedDeck);
     return (
       <View>
         <Text style={typography.small}>

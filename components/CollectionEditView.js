@@ -48,6 +48,7 @@ class CollectionEditView extends React.Component {
     }
     return (
       <PackListComponent
+        coreSetName={L('Second Core Set')}
         componentId={componentId}
         packs={packs}
         checkState={in_collection}

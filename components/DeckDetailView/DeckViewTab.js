@@ -200,7 +200,7 @@ export default class DeckViewTab extends React.Component {
     if (!problem) {
       return null;
     }
-    const isSurvivor = investigator.faction_code === 'survivor'
+    const isSurvivor = investigator.faction_code === 'survivor';
     return (
       <View style={[styles.problemBox,
         { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
@@ -231,7 +231,6 @@ export default class DeckViewTab extends React.Component {
         normalCardCount,
         totalCardCount,
         experience,
-        packs,
         investigator,
       },
       isPrivate,
@@ -278,7 +277,7 @@ export default class DeckViewTab extends React.Component {
                   ) }
                 </Text>
                 <Text style={styles.defaultText}>
-                  { L('Version {{version}}', { version: deck.version} )}
+                  { L('Version {{version}}', { version: deck.version }) }
                 </Text>
                 { experience > 0 && (
                   <Text style={styles.defaultText}>

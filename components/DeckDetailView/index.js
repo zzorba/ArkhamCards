@@ -39,6 +39,8 @@ class DeckDetailView extends React.Component {
     isPrivate: PropTypes.bool,
     modal: PropTypes.bool,
     campaignId: PropTypes.number,
+    // passed props
+    title: PropTypes.string,
     // From realm.
     cards: PropTypes.object,
     // From redux.

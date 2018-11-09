@@ -24,6 +24,7 @@ export default class PackRow extends React.Component {
     whiteBackground: PropTypes.bool,
     baseQuery: PropTypes.string,
     compact: PropTypes.bool,
+    nameOverride: PropTypes.string,
   };
 
   constructor(props) {
@@ -102,6 +103,7 @@ export default class PackRow extends React.Component {
       setChecked,
       whiteBackground,
       compact,
+      nameOverride,
     } = this.props;
 
     const mythosPack = (pack.position > 1 && pack.cycle_position < 70);
@@ -129,7 +131,7 @@ export default class PackRow extends React.Component {
               numberOfLines={2}
               ellipsizeMode="tail"
             >
-              { pack.name }
+              { nameOverride || pack.name }
             </Text>
           </View>
         </TouchableOpacity>

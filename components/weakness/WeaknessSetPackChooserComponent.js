@@ -23,7 +23,7 @@ class WeaknessSetPackChooserComponent extends React.Component {
     super(props);
 
     this.state = {
-      override: {},
+      override: { core: true },
     };
 
     this._onPackCheck = this.onPackCheck.bind(this);
