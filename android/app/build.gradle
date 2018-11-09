@@ -86,7 +86,7 @@ project.ext.react = [
 apply from: "../../node_modules/react-native/react.gradle"
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'arkhamicons.ttf', 'coreset.ttf', 'dunwich.ttf', 'carcosa.ttf', 'forgotten.ttf', 'app.ttf', 'Teutonic.ttf' ]
+    iconFontNames: [ 'arkhamicons.ttf', 'coreset.ttf', 'dunwich.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
 ]
 
 /**
@@ -115,7 +115,7 @@ android {
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative56"
         renderscriptTargetApi rootProject.ext.compileSdkVersion
         renderscriptSupportModeEnabled true
-        versionCode 1
+        versionCode 17
         versionName "1.1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -160,6 +160,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:design:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-blur')
     implementation project(':react-native-config')
