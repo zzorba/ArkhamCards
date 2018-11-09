@@ -329,6 +329,15 @@ class CardResultList extends React.Component {
         nonCollectionCards.push(card);
       }
     });
+
+    // One last snap of the non-collection cards
+    if (nonCollectionCards.length > 0) {
+      if (showNonCollection[currentBucket.id]) {
+        forEach(nonCollectionCards, c => currentBucket.data.push(c));
+      }
+      currentBucket.nonCollectionCount = nonCollectionCards.length;
+      nonCollectionCards = [];
+    }
     return results;
   }
 
