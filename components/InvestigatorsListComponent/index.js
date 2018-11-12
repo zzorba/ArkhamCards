@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, partition } from 'lodash';
+import { filter, forEach, map, sortBy } from 'lodash';
 import {
-  ScrollView,
+  Button,
+  Keyboard,
+  SectionList,
   StyleSheet,
   Text,
   View,
@@ -13,8 +15,10 @@ import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
-import Button from '../core/Button';
+import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK } from '../CardSortDialog/constants';
+import ShowNonCollectionFooter from '../CardSearchComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
+import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import * as Actions from '../../actions';
 import { getPacksInCollection } from '../../reducers';
 
@@ -23,6 +27,7 @@ class InvestigatorsListComponent extends React.Component {
     componentId: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired,
     investigators: PropTypes.array.isRequired,
+    sort: PropTypes.string.isRequired,
     cards: PropTypes.object.isRequired,
     in_collection: PropTypes.object,
     filterInvestigators: PropTypes.array,
@@ -31,8 +36,18 @@ class InvestigatorsListComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showNonCollection: {},
+    };
+
+    this._showNonCollectionCards = this.showNonCollectionCards.bind(this);
+    this._investigatorToCode = this.investigatorToCode.bind(this);
+    this._renderSectionHeader = this.renderSectionHeader.bind(this);
+    this._renderSectionFooter = this.renderSectionFooter.bind(this);
+    this._renderItem = this.renderItem.bind(this);
     this._onPress = this.onPress.bind(this);
     this._editCollection = this.editCollection.bind(this);
+    this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   onPress(investigator) {
@@ -47,11 +62,22 @@ class InvestigatorsListComponent extends React.Component {
     });
   }
 
-  renderItem(card) {
+  showNonCollectionCards(id) {
+    Keyboard.dismiss();
+    this.setState({
+      showNonCollection: Object.assign(
+        {},
+        this.state.showNonCollection,
+        { [id]: true },
+      ),
+    });
+  }
+
+  renderItem({ item }) {
     return (
       <InvestigatorRow
-        key={card.code}
-        investigator={card}
+        key={item.code}
+        investigator={item}
         cards={this.props.cards}
         onPress={this._onPress}
       />
@@ -74,28 +100,143 @@ class InvestigatorsListComponent extends React.Component {
     );
   }
 
-  render() {
+  static headerForInvestigator(investigator, sort) {
+    switch (sort) {
+      case SORT_BY_FACTION:
+        return investigator.faction_name;
+      case SORT_BY_TITLE:
+        return L('All Investigators');
+      case SORT_BY_PACK:
+        return investigator.pack_name;
+      default:
+        return L('N/A');
+    }
+  }
+
+  groupedInvestigators() {
     const {
       investigators,
       in_collection,
       filterInvestigators = [],
+      sort,
     } = this.props;
+    const {
+      showNonCollection,
+    } = this.state;
     const filterInvestigatorsSet = new Set(filterInvestigators);
-    const partitionedInvestigators = partition(
-      filter(investigators, investigator => !filterInvestigatorsSet.has(investigator.code)),
-      investigator => in_collection[investigator.pack_code]);
-    const myInvestigators = partitionedInvestigators[0];
-    const otherInvestigators = partitionedInvestigators[1];
+    const allInvestigators = sortBy(
+      filter(
+        investigators,
+        i => !filterInvestigatorsSet.has(i.code)),
+      investigator => {
+        switch (sort) {
+          case SORT_BY_FACTION:
+            return investigator.faction_code;
+          case SORT_BY_TITLE:
+            return investigator.name;
+          case SORT_BY_PACK:
+          default:
+            return investigator.code;
+        }
+      });
 
+    const results = [];
+    let nonCollectionCards = [];
+    let currentBucket = null;
+    forEach(allInvestigators, i => {
+      const header = InvestigatorsListComponent.headerForInvestigator(i, sort);
+      if (!currentBucket || currentBucket.title !== header) {
+        if (nonCollectionCards.length > 0) {
+          if (showNonCollection[currentBucket.id]) {
+            forEach(nonCollectionCards, c => currentBucket.data.push(c));
+          }
+          currentBucket.nonCollectionCount = nonCollectionCards.length;
+          nonCollectionCards = [];
+        }
+        currentBucket = {
+          title: header,
+          id: `${sort}-${results.length}`,
+          data: [],
+          nonCollectionCount: 0,
+        };
+        results.push(currentBucket);
+      }
+      if (i && i.pack_code && (
+        i.pack_code === 'core' || in_collection[i.pack_code])
+      ) {
+        currentBucket.data.push(i);
+      } else {
+        nonCollectionCards.push(i);
+      }
+    });
+
+    // One last snap of the non-collection cards
+    if (nonCollectionCards.length > 0) {
+      if (showNonCollection[currentBucket.id]) {
+        forEach(nonCollectionCards, c => currentBucket.data.push(c));
+      }
+      currentBucket.nonCollectionCount = nonCollectionCards.length;
+      nonCollectionCards = [];
+    }
+    return results;
+  }
+
+  renderSectionHeader({ section }) {
+    return <InvestigatorSectionHeader title={section.title} />;
+  }
+
+
+  renderSectionFooter({ section }) {
+    const {
+      showNonCollection,
+    } = this.state;
+    if (!section.nonCollectionCount) {
+      return null;
+    }
+    if (showNonCollection[section.id]) {
+      // Already pressed it, so show a button to edit collection.
+      return (
+        <Button
+          style={styles.sectionFooterButton}
+          title={L('Edit Collection')}
+          onPress={this._editCollection}
+        />
+      );
+    }
     return (
-      <ScrollView>
-        { this.renderInvestigators(L('My Investigators'), myInvestigators) }
-        <View style={styles.editCollectionButton}>
-          <Button onPress={this._editCollection} text={L('Manage Collection')} />
-        </View>
-        { this.renderInvestigators(L('Other Investigators'), otherInvestigators) }
-        <View style={styles.footer} />
-      </ScrollView>
+      <ShowNonCollectionFooter
+        id={section.id}
+        title={L('Show {{count}} Non-Collection Investigators', { count: section.nonCollectionCount })}
+        onPress={this._showNonCollectionCards}
+      />
+    );
+  }
+
+  investigatorToCode(investigator) {
+    return investigator.code;
+  }
+
+  render() {
+    const {
+      sort,
+    } = this.props;
+    return (
+      <View style={styles.wrapper}>
+        <SectionList
+          onScroll={this._handleScroll}
+          onScrollBeginDrag={this._handleScrollBeginDrag}
+          sections={this.groupedInvestigators()}
+          renderSectionHeader={this._renderSectionHeader}
+          renderSectionFooter={this._renderSectionFooter}
+          renderItem={this._renderItem}
+          initialNumToRender={12}
+          keyExtractor={this._investigatorToCode}
+          stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
+          scrollEventThrottle={1}
+        />
+      </View>
     );
   }
 }
@@ -142,6 +283,9 @@ export default connectRealm(
 );
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   header: {
     fontFamily: 'System',
     fontSize: 22,
@@ -154,11 +298,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     height: 50,
   },
-  editCollectionButton: {
-    marginTop: 8,
-    marginBottom: 8,
-  },
   footer: {
-    height: 100,
+    height: 60,
   },
 });

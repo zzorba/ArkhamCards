@@ -5,12 +5,10 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import L from '../../app/i18n';
-
 export default class ShowNonCollectionFooter extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
-    count: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired,
   };
 
@@ -26,12 +24,12 @@ export default class ShowNonCollectionFooter extends React.Component {
 
   render() {
     const {
-      count,
+      title,
     } = this.props;
     return (
       <Button
         style={styles.button}
-        title={L('Show {{count}} Non-Collection Cards', { count })}
+        title={title}
         onPress={this._onPress}
       />
     );

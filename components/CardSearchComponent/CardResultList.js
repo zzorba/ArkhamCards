@@ -453,7 +453,7 @@ class CardResultList extends React.Component {
     return (
       <ShowNonCollectionFooter
         id={section.id}
-        count={section.nonCollectionCount}
+        title={L('Show {{count}} Non-Collection Cards', { count: section.nonCollectionCount })}
         onPress={this._showNonCollectionCards}
       />
     );

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View } from 'react-native';
+import { throttle } from 'lodash';
+import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
+import { SORT_BY_PACK } from './CardSortDialog/constants';
 import InvestigatorsListComponent from './InvestigatorsListComponent';
 import NewDeckOptionsDialog from './NewDeckOptionsDialog';
 import L from '../app/i18n';
@@ -26,6 +28,10 @@ export default class NewDeckView extends React.Component {
           icon: iconsMap.close,
           id: 'close',
         }],
+        rightButtons: [{
+          icon: iconsMap['sort-by-alpha'],
+          id: 'sort',
+        }],
       },
     };
   }
@@ -37,11 +43,14 @@ export default class NewDeckView extends React.Component {
       saving: false,
       viewRef: null,
       activeInvestigatorId: null,
+      selectedSort: SORT_BY_PACK,
     };
 
     this._onPress = this.onPress.bind(this);
     this._captureViewRef = this.captureViewRef.bind(this);
     this._closeDialog = this.closeDialog.bind(this);
+    this._sortChanged = this.sortChanged.bind(this);
+    this._showSortDialog = throttle(this.showSortDialog.bind(this), 200);
 
     this._navEventListener = Navigation.events().bindComponent(this);
   }
@@ -49,6 +58,32 @@ export default class NewDeckView extends React.Component {
   componentWillUnmount() {
     this._navEventListener.remove();
   }
+
+  sortChanged(sort) {
+    this.setState({
+      selectedSort: sort,
+    });
+  }
+
+  showSortDialog() {
+    this.isOnTop = false;
+    Keyboard.dismiss();
+    Navigation.showOverlay({
+      component: {
+        name: 'Dialog.InvestigatorSort',
+        passProps: {
+          sortChanged: this._sortChanged,
+          selectedSort: this.state.selectedSort,
+        },
+        options: {
+          layout: {
+            backgroundColor: 'rgba(128,128,128,.75)',
+          },
+        },
+      },
+    });
+  }
+
 
   captureViewRef(ref) {
     this.setState({
@@ -68,6 +103,8 @@ export default class NewDeckView extends React.Component {
     } = this.props;
     if (buttonId === 'close') {
       Navigation.dismissModal(componentId);
+    } else if (buttonId === 'sort') {
+      this._showSortDialog();
     }
   }
 
@@ -88,6 +125,7 @@ export default class NewDeckView extends React.Component {
     const {
       viewRef,
       activeInvestigatorId,
+      selectedSort,
     } = this.state;
     return (
       <View style={styles.container}>
@@ -95,6 +133,7 @@ export default class NewDeckView extends React.Component {
           <InvestigatorsListComponent
             componentId={componentId}
             filterInvestigators={filterInvestigators}
+            sort={selectedSort}
             onPress={this._onPress}
           />
         </View>

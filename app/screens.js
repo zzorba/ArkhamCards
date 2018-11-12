@@ -35,6 +35,7 @@ import PackCardsView from '../components/PackCardsView';
 import SpoilersView from '../components/SpoilersView';
 import CollectionEditView from '../components/CollectionEditView';
 import CardSortDialog from '../components/CardSortDialog';
+import InvestigatorSortDialog from '../components/InvestigatorSortDialog';
 import ScenarioDialog from '../components/ScenarioDialog';
 import ExileCardDialog from '../components/ExileCardDialog';
 import AboutView from '../components/AboutView';
@@ -79,6 +80,7 @@ export function registerScreens(Provider, store) {
   Navigation.registerComponentWithRedux('Dialog.EditChaosBag', () => EditChaosBagDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.ExileCards', () => ExileCardDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.Sort', () => CardSortDialog, Provider, store);
+  Navigation.registerComponentWithRedux('Dialog.InvestigatorSort', () => InvestigatorSortDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.Scenario', () => ScenarioDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.Campaign', () => SelectCampaignDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CampaignDifficulty', () => CampaignDifficultyDialog, Provider, store);

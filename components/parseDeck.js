@@ -9,15 +9,25 @@ function filterBy(cardIds, cards, field, value) {
 
 function groupAssets(cardIds, cards) {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
-  return [
-    { type: 'Hand', data: filterBy(assets, cards, 'slot', 'Hand') },
-    { type: 'Hand x2', data: filterBy(assets, cards, 'slot', 'Hand x2') },
-    { type: 'Arcane', data: filterBy(assets, cards, 'slot', 'Arcane') },
-    { type: 'Accessory', data: filterBy(assets, cards, 'slot', 'Accessory') },
-    { type: 'Body', data: filterBy(assets, cards, 'slot', 'Body') },
-    { type: 'Ally', data: filterBy(assets, cards, 'slot', 'Ally') },
-    { type: 'Other', data: filterBy(assets, cards, 'slot', null) },
-  ].filter(asset => asset.data.length > 0);
+  const groups = groupBy(assets, c => {
+    switch(cards[c.id].slot) {
+      case 'Hand': return 'Hand';
+      case 'Hand x2': return 'Hand x2';
+      case 'Arcane': return 'Arcane';
+      case 'Accessory': return 'Accessory';
+      case 'Body': return 'Body';
+      case 'Ally': return 'Ally';
+      default: return 'Other';
+    }
+  });
+  return filter(
+    map(
+      ['Hand', 'Hand x2', 'Arcane', 'Accessory', 'Body', 'Ally', 'Other'],
+      t => {
+        return { type: t, data: groups[t] || [] };
+      }),
+    asset => asset.data.length > 0
+  );
 }
 
 export function isSpecialCard(card) {
