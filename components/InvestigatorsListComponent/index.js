@@ -16,6 +16,7 @@ import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import { searchMatchesText } from '../searchHelpers';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK } from '../CardSortDialog/constants';
 import ShowNonCollectionFooter from '../CardSearchComponent/ShowNonCollectionFooter';
@@ -67,6 +68,7 @@ class InvestigatorsListComponent extends React.Component {
     this._renderSectionHeader = this.renderSectionHeader.bind(this);
     this._renderSectionFooter = this.renderSectionFooter.bind(this);
     this._renderItem = this.renderItem.bind(this);
+    this._renderFooter = this.renderFooter.bind(this);
     this._onPress = this.onPress.bind(this);
     this._editCollection = this.editCollection.bind(this);
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -190,12 +192,18 @@ class InvestigatorsListComponent extends React.Component {
     } = this.props;
     const {
       showNonCollection,
+      searchTerm,
     } = this.state;
     const filterInvestigatorsSet = new Set(filterInvestigators);
     const allInvestigators = sortBy(
       filter(
         investigators,
-        i => !filterInvestigatorsSet.has(i.code)),
+        i => {
+          if (filterInvestigatorsSet.has(i.code)) {
+            return false;
+          }
+          return searchMatchesText(searchTerm, [i.name, i.faction_name, i.traits]);
+        }),
       investigator => {
         switch (sort) {
           case SORT_BY_FACTION:
@@ -313,6 +321,10 @@ class InvestigatorsListComponent extends React.Component {
     );
   }
 
+  renderFooter() {
+    return <View style={styles.footer} />;
+  }
+
   render() {
     const {
       sort,
@@ -326,8 +338,9 @@ class InvestigatorsListComponent extends React.Component {
           sections={this.groupedInvestigators()}
           renderSectionHeader={this._renderSectionHeader}
           renderSectionFooter={this._renderSectionFooter}
+          ListFooterComponent={this._renderFooter}
           renderItem={this._renderItem}
-          initialNumToRender={12}
+          initialNumToRender={24}
           keyExtractor={this._investigatorToCode}
           stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
           keyboardShouldPersistTaps="always"
