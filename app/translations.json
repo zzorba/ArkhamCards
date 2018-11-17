@@ -374,7 +374,16 @@
         "one": "Show Non-Collection Card",
         "other": "Show {{count}} Non-Collection Cards",
         "zero": "Show Non-Collection Cards"
-    }
+    },
+    "Second Core Set": "Second Core Set",
+    "All Investigators": "All Investigators",
+    "N/A": "N/A",
+    "Show {{count}} Non-Collection Investigators": {
+        "one": "Show Non-Collection Investigator",
+        "other": "Show {{count}} Non-Collection Investigators",
+        "zero": "Show Non-Collection Investigators"
+    },
+    "Search": "Search"
 },
   "de": {
     "Test Icons: ": "Test Icons: ",
@@ -746,7 +755,12 @@
     "View on ArkhamDB": "View on ArkhamDB",
     "Edit Deck": "Edit Deck",
     "Filters": "Filters",
-    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards"
+    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards",
+    "Second Core Set": "Second Core Set",
+    "All Investigators": "All Investigators",
+    "N/A": "N/A",
+    "Show {{count}} Non-Collection Investigators": "Show {{count}} Non-Collection Investigators",
+    "Search": "Search"
 },
   "es": {
     "Test Icons: ": "Iconos de habilidad: ",
@@ -1118,7 +1132,12 @@
     "View on ArkhamDB": "View on ArkhamDB",
     "Edit Deck": "Edit Deck",
     "Filters": "Filters",
-    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards"
+    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards",
+    "Second Core Set": "Second Core Set",
+    "All Investigators": "All Investigators",
+    "N/A": "N/A",
+    "Show {{count}} Non-Collection Investigators": "Show {{count}} Non-Collection Investigators",
+    "Search": "Search"
 },
   "it": {
     "Test Icons: ": "Test Icons: ",
@@ -1490,7 +1509,12 @@
     "View on ArkhamDB": "View on ArkhamDB",
     "Edit Deck": "Edit Deck",
     "Filters": "Filters",
-    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards"
+    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards",
+    "Second Core Set": "Second Core Set",
+    "All Investigators": "All Investigators",
+    "N/A": "N/A",
+    "Show {{count}} Non-Collection Investigators": "Show {{count}} Non-Collection Investigators",
+    "Search": "Search"
 },
   "fr": {
     "Test Icons: ": "Icônes de Compétence: ",
@@ -1862,6 +1886,11 @@
     "View on ArkhamDB": "View on ArkhamDB",
     "Edit Deck": "Edit Deck",
     "Filters": "Filters",
-    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards"
+    "Show {{count}} Non-Collection Cards": "Show {{count}} Non-Collection Cards",
+    "Second Core Set": "Second Core Set",
+    "All Investigators": "All Investigators",
+    "N/A": "N/A",
+    "Show {{count}} Non-Collection Investigators": "Show {{count}} Non-Collection Investigators",
+    "Search": "Search"
 }
 }
