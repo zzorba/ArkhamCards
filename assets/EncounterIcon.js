@@ -167,8 +167,10 @@ export default class EncounterIcon extends React.PureComponent {
       case 'the_city_of_archives':
         return this.forgottenIcon('city_of_archives', size, color);
       case 'tfa':
-      case 'sha': // SHATTERED AEONS
         return this.forgottenIcon('the_forgotten_age', size, color);
+      case 'sha':
+      case 'shattered_aeons':
+        return this.forgottenIcon('shattered_aeons', size, color);
       case 'tdoy':
       case 'depths_of_yoth':
         return this.forgottenIcon('the_depths_of_yoth', size, color);

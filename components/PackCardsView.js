@@ -26,6 +26,7 @@ export default class PackCardsView extends React.Component {
       <CardSearchComponent
         componentId={componentId}
         baseQuery={parts.join(' and ')}
+        showNonCollection
       />
     );
   }

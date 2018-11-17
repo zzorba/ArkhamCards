@@ -64,6 +64,7 @@ class CardResultList extends React.Component {
     showHeader: PropTypes.func.isRequired,
     hideHeader: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
+    showNonCollection: PropTypes.bool,
     expandSearchControls: PropTypes.node,
   };
 
@@ -322,7 +323,10 @@ class CardResultList extends React.Component {
         results.push(currentBucket);
       }
       if (card && card.pack_code && (
-        isDeck || card.pack_code === 'core' || in_collection[card.pack_code])
+        isDeck ||
+        card.pack_code === 'core' ||
+        in_collection[card.pack_code] ||
+        this.props.showNonCollection)
       ) {
         currentBucket.data.push(card);
       } else {

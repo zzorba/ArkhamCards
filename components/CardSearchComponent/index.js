@@ -33,6 +33,7 @@ class CardSearchComponent extends React.Component {
     baseQuery: PropTypes.string,
     mythosToggle: PropTypes.bool,
     sort: PropTypes.string,
+    showNonCollection: PropTypes.bool,
 
     // Keyed by code, count of current deck.
     originalDeckSlots: PropTypes.object,
@@ -445,6 +446,7 @@ class CardSearchComponent extends React.Component {
       onDeckCountChange,
       limits,
       footer,
+      showNonCollection,
     } = this.props;
     const {
       selectedSort,
@@ -470,6 +472,7 @@ class CardSearchComponent extends React.Component {
             hideHeader={this._hideHeader}
             expandSearchControls={this.renderExpandSearchButtons()}
             visible={visible}
+            showNonCollection={showNonCollection}
           />
         </View>
         { !!footer && <View style={[
