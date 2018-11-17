@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, sortBy } from 'lodash';
+import { filter, forEach, map, sortBy, throttle } from 'lodash';
 import {
+  Animated,
   Button,
   Keyboard,
   SectionList,
@@ -15,12 +16,15 @@ import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import InvestigatorSearchBox from './InvestigatorSearchBox';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK } from '../CardSortDialog/constants';
 import ShowNonCollectionFooter from '../CardSearchComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import * as Actions from '../../actions';
 import { getPacksInCollection } from '../../reducers';
+
+const SCROLL_DISTANCE_BUFFER = 50;
 
 class InvestigatorsListComponent extends React.Component {
   static propTypes = {
@@ -38,8 +42,26 @@ class InvestigatorsListComponent extends React.Component {
 
     this.state = {
       showNonCollection: {},
+      headerVisible: true,
+      searchTerm: '',
+      scrollY: new Animated.Value(0),
     };
 
+    this.lastOffsetY = 0;
+    this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
+    this._onScroll = this.onScroll.bind(this);
+    this._throttledScroll = throttle(
+      this.throttledScroll.bind(this),
+      100,
+      { trailing: true },
+    );
+    this._handleScroll = Animated.event(
+      [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
+      {
+        listener: this._onScroll,
+      },
+    );
+    this._searchUpdated = this.searchUpdated.bind(this);
     this._showNonCollectionCards = this.showNonCollectionCards.bind(this);
     this._investigatorToCode = this.investigatorToCode.bind(this);
     this._renderSectionHeader = this.renderSectionHeader.bind(this);
@@ -48,6 +70,52 @@ class InvestigatorsListComponent extends React.Component {
     this._onPress = this.onPress.bind(this);
     this._editCollection = this.editCollection.bind(this);
     this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  handleScrollBeginDrag() {
+    Keyboard.dismiss();
+  }
+
+  onScroll(event) {
+    const offsetY = event.nativeEvent.contentOffset.y;
+    // Dispatch the throttle event to handle hiding/showing stuff on transition.
+    this._throttledScroll(offsetY);
+  }
+
+  /**
+   * This is the throttle scrollEvent, throttled so we check it slightly
+   * less often and are able to make decisions about whether we update
+   * the stored scrollY or not.
+   */
+  throttledScroll(offsetY) {
+    if (offsetY <= 0) {
+      this.showHeader();
+    } else {
+      const delta = Math.abs(offsetY - this.lastOffsetY);
+      if (delta < SCROLL_DISTANCE_BUFFER) {
+        // Not a long enough scroll, don't update scrollY and don't take any
+        // action at all.
+        return;
+      }
+
+      // We have a decent sized scroll so we will make a direction based
+      // show/hide decision UNLESS we are near the top/bottom of the content.
+      const scrollingUp = offsetY < this.lastOffsetY;
+
+      if (scrollingUp) {
+        this.showHeader();
+      } else {
+        this.hideHeader();
+      }
+    }
+
+    this.lastOffsetY = offsetY;
+  }
+
+  searchUpdated(text) {
+    this.setState({
+      searchTerm: text,
+    });
   }
 
   onPress(investigator) {
@@ -216,12 +284,42 @@ class InvestigatorsListComponent extends React.Component {
     return investigator.code;
   }
 
+  showHeader() {
+    if (!this.state.headerVisible) {
+      this.setState({
+        headerVisible: true,
+      });
+    }
+  }
+
+  hideHeader() {
+    const {
+      headerVisible,
+      searchTerm,
+    } = this.state;
+    if (headerVisible && searchTerm === '') {
+      this.setState({
+        headerVisible: false,
+      });
+    }
+  }
+
+  renderHeader() {
+    return (
+      <InvestigatorSearchBox
+        visible={this.state.headerVisible}
+        onChangeText={this._searchUpdated}
+      />
+    );
+  }
+
   render() {
     const {
       sort,
     } = this.props;
     return (
       <View style={styles.wrapper}>
+        { this.renderHeader() }
         <SectionList
           onScroll={this._handleScroll}
           onScrollBeginDrag={this._handleScrollBeginDrag}
