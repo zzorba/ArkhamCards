@@ -13,6 +13,19 @@ import HrTagNode from './HrTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 import StrikethroughTextNode from './StrikethroughTextNode';
 
+const ParagraphTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<p>(.+?)<\\/p>$')),
+  order: 0,
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: (node, output, state) => {
+    return output(node.children, state);
+  },
+};
+
 const ArkhamIconRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
   order: 1,
@@ -162,6 +175,7 @@ export default class CardText extends React.PureComponent {
             biTag: BoldItalicHtmlTagRule,
             badBiTag: MalformedBoldItalicHtmlTagRule,
             bTag: BoldHtmlTagRule,
+            pTag: ParagraphTagRule,
             uTag: UnderlineHtmlTagRule,
             emTag: EmphasisHtmlTagRule,
             iTag: ItalicHtmlTagRule,

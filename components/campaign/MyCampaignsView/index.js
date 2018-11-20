@@ -5,6 +5,8 @@ import {
   Keyboard,
   ScrollView,
   StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -20,6 +22,7 @@ import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
 import { getAllDecks, getCampaigns } from '../../../reducers';
+import typography from '../../../styles/typography';
 
 class MyCampaignsView extends React.Component {
   static propTypes = {
@@ -157,7 +160,36 @@ class MyCampaignsView extends React.Component {
     });
   }
 
+  renderFooter(campaigns) {
+    const {
+      search,
+    } = this.state;
+    if (campaigns.length === 0) {
+      if (search) {
+        return (
+          <View style={styles.footer}>
+            <Text style={[typography.text, styles.margin]}>
+              { L('No matching campaigns for "{{searchTerm}}".', { searchTerm: search }) }
+            </Text>
+          </View>
+        );
+      }
+      return (
+        <View style={styles.footer}>
+          <Text style={[typography.text, styles.margin]}>
+            { L('No campaigns yet.\n\nUse the + button to create a new one.') }
+          </Text>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.footer} />
+    );
+  }
+
+
   render() {
+    const campaigns = this.filteredCampaigns();
     return (
       <ScrollView
         style={styles.container}
@@ -168,7 +200,8 @@ class MyCampaignsView extends React.Component {
           onChangeText={this._searchChanged}
           placeholder={L('Search campaigns')}
         />
-        { map(this.filteredCampaigns(), campaign => this.renderItem(campaign)) }
+        { map(campaigns, campaign => this.renderItem(campaign)) }
+        { this.renderFooter(campaigns) }
       </ScrollView>
     );
   }
@@ -198,5 +231,10 @@ export default withFetchCardsGate(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  footer: {
+    marginTop: 8,
+    marginBottom: 60,
+    alignItems: 'center',
   },
 });

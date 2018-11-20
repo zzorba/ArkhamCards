@@ -116,22 +116,33 @@ class DeckListComponent extends React.Component {
       isEmpty,
       refreshing,
     } = this.props;
-    return (
-      <View style={styles.footer}>
-        { !!isEmpty && !refreshing && (
-          <Text style={[typography.text, styles.margin]}>
-            { 'No decks yet.\n\nUse the + button to create a new one.' }
+    const {
+      searchTerm,
+    } = this.state;
+    if (isEmpty && !refreshing) {
+      return (
+        <View style={styles.footer}>
+          <Text style={[typography.text, typography.center]}>
+            { L('No decks yet.\n\nUse the + button to create a new one.') }
           </Text>
-        ) }
-      </View>
-    );
+        </View>
+      );
+    }
+    if (searchTerm && this.getItems().length === 0) {
+      return (
+        <View style={styles.footer}>
+          <Text style={[typography.text, typography.center]}>
+            { L('No matching decks for "{{searchTerm}}".', { searchTerm }) }
+          </Text>
+        </View>
+      );
+    }
+    return <View style={styles.footer} />;
   }
 
-  render() {
+  getItems() {
     const {
       deckIds,
-      onRefresh,
-      refreshing,
       decks,
       investigators,
     } = this.props;
@@ -139,7 +150,7 @@ class DeckListComponent extends React.Component {
     const {
       searchTerm,
     } = this.state;
-    const data = map(
+    return map(
       filter(deckIds, deckId => {
         const deck = decks[deckId];
         const investigator = deck && investigators[deck.investigator_code];
@@ -153,7 +164,14 @@ class DeckListComponent extends React.Component {
           deckId,
         };
       });
+  }
 
+  render() {
+    const {
+      onRefresh,
+      refreshing,
+      decks,
+    } = this.props;
     return (
       <FlatList
         keyboardShouldPersistTaps="always"
@@ -161,9 +179,9 @@ class DeckListComponent extends React.Component {
         refreshing={refreshing}
         onRefresh={onRefresh}
         style={styles.container}
-        data={data}
+        data={this.getItems()}
         renderItem={this._renderItem}
-        extraData={this.props.decks}
+        extraData={decks}
         ListHeaderComponent={this._renderHeader}
         ListFooterComponent={this._renderFooter}
       />
@@ -189,9 +207,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   footer: {
-    height: 100,
-  },
-  margin: {
-    margin: 8,
+    width: '100%',
+    marginTop: 8,
+    marginBottom: 60,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });

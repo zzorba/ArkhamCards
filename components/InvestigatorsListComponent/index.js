@@ -24,6 +24,7 @@ import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import * as Actions from '../../actions';
 import { getPacksInCollection } from '../../reducers';
+import typography from '../../styles/typography';
 
 const SCROLL_DISTANCE_BUFFER = 50;
 
@@ -322,6 +323,18 @@ class InvestigatorsListComponent extends React.Component {
   }
 
   renderFooter() {
+    const {
+      searchTerm,
+    } = this.state;
+    if (searchTerm && this.groupedInvestigators().length === 0) {
+      return (
+        <View style={styles.footer}>
+          <Text style={[typography.text, typography.center]}>
+            { L('No matching investigators for "{{searchTerm}}".', { searchTerm }) }
+          </Text>
+        </View>
+      );
+    }
     return <View style={styles.footer} />;
   }
 
@@ -410,6 +423,9 @@ const styles = StyleSheet.create({
     height: 50,
   },
   footer: {
-    height: 60,
+    marginLeft: 8,
+    marginRight: 8,
+    marginTop: 8,
+    marginBottom: 60,
   },
 });
