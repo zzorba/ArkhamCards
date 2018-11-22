@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { concat, filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy } from 'lodash';
 
+import L from '../app/i18n';
 import { FACTION_CODES, SKILLS } from '../constants';
 
 function filterBy(cardIds, cards, field, value) {
@@ -11,18 +12,19 @@ function groupAssets(cardIds, cards) {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, c => {
     switch(cards[c.id].slot) {
-      case 'Hand': return 'Hand';
-      case 'Hand x2': return 'Hand x2';
-      case 'Arcane': return 'Arcane';
-      case 'Accessory': return 'Accessory';
-      case 'Body': return 'Body';
-      case 'Ally': return 'Ally';
-      default: return 'Other';
+      case 'Hand': return L('Hand');
+      case 'Hand x2': return L('Hand x2');
+      case 'Arcane': return L('Arcane');
+      case 'Accessory': return L('Accessory');
+      case 'Body': return L('Body');
+      case 'Body. Hand x2': return L('Body. Hand x2');
+      case 'Ally': return L('Ally');
+      default: return L('Other');
     }
   });
   return filter(
     map(
-      ['Hand', 'Hand x2', 'Arcane', 'Accessory', 'Body', 'Ally', 'Other'],
+      [L('Hand'), L('Hand x2'), L('Body. Hand x2'), L('Arcane'), L('Accessory'), L('Body'), L('Ally'), L('Other')],
       t => {
         return { type: t, data: groups[t] || [] };
       }),
