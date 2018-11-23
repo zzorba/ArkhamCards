@@ -55,11 +55,28 @@ export function upgradeLocalDeck(id, deck, xp, exiles) {
       },
     ),
   };
+}
 
+export function cloneLocalDeck(id, deck, name) {
+  return Object.assign(
+    {},
+    deck,
+    {
+      id,
+      name,
+      local: true,
+      version: '0.1',
+      xp: 0,
+      spentXp: 0,
+      previous_deck: null,
+      next_deck: null,
+    }
+  );
 }
 
 export default {
   newLocalDeck,
   updateLocalDeck,
   upgradeLocalDeck,
+  cloneLocalDeck,
 };

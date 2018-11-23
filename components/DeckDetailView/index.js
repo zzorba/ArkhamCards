@@ -16,6 +16,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import withLoginState from '../withLoginState';
 import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
 import { updateLocalDeck } from '../decks/localHelper';
@@ -48,6 +49,7 @@ class DeckDetailView extends React.Component {
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
     login: PropTypes.func.isRequired,
+    signedIn: PropTypes.bool,
     updateDeck: PropTypes.func.isRequired,
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
@@ -461,7 +463,6 @@ class DeckDetailView extends React.Component {
   clearEdits() {
     const {
       deck,
-      componentId,
     } = this.props;
     this.setState({
       nameChange: null,
@@ -545,6 +546,7 @@ class DeckDetailView extends React.Component {
       componentId,
       viewRef,
       id,
+      signedIn,
     } = this.props;
     const {
       copying,
@@ -555,6 +557,7 @@ class DeckDetailView extends React.Component {
         deckId={copying ? id : null}
         toggleVisible={this._toggleCopyDialog}
         viewRef={viewRef}
+        signedIn={signedIn}
       />
     );
   }
@@ -694,7 +697,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withPlayerCards(
-  connect(mapStateToProps, mapDispatchToProps)(withTextEditDialog(DeckDetailView))
+  connect(mapStateToProps, mapDispatchToProps)(
+    withTextEditDialog(
+      withLoginState(DeckDetailView)
+    )
+  )
 );
 
 const styles = StyleSheet.create({

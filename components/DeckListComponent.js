@@ -19,6 +19,7 @@ import withPlayerCards from './withPlayerCards';
 import { getAllDecks } from '../reducers';
 import * as Actions from '../actions';
 import typography from '../styles/typography';
+import space from '../styles/space';
 
 class DeckListComponent extends React.Component {
   static propTypes = {
@@ -124,7 +125,7 @@ class DeckListComponent extends React.Component {
     if (isEmpty && !refreshing) {
       return (
         <View style={styles.footer}>
-          <Text style={[typography.text, typography.center]}>
+          <Text style={[typography.text, typography.center, space.marginBottomM]}>
             { L('No decks yet.\n\nUse the + button to create a new one.') }
           </Text>
           { customFooter }
@@ -134,7 +135,7 @@ class DeckListComponent extends React.Component {
     if (searchTerm && this.getItems().length === 0) {
       return (
         <View style={styles.footer}>
-          <Text style={[typography.text, typography.center]}>
+          <Text style={[typography.text, typography.center, space.marginBottomM]}>
             { L('No matching decks for "{{searchTerm}}".', { searchTerm }) }
           </Text>
           { customFooter }

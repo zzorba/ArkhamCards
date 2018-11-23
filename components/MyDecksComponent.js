@@ -23,7 +23,6 @@ import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '../reducers'
 
 class MyDecksComponent extends React.Component {
   static propTypes = {
-    login: PropTypes.func.isRequired,
     componentId: PropTypes.string.isRequired,
     deckClicked: PropTypes.func.isRequired,
     onlyDeckIds: PropTypes.array,
@@ -136,7 +135,7 @@ class MyDecksComponent extends React.Component {
         </Text>
         <Button onPress={login} title={L('Connect to ArkhamDB')} />
       </View>
-    )
+    );
   }
 
   renderHeader() {

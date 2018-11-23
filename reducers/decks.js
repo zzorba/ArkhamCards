@@ -1,4 +1,4 @@
-import { filter, forEach, map, reverse } from 'lodash';
+import { concat, filter, forEach, map, reverse } from 'lodash';
 
 import {
   LOGOUT,

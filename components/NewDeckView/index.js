@@ -17,6 +17,9 @@ class NewDeckView extends React.Component {
     // From passProps
     onCreateDeck: PropTypes.func,
     filterInvestigators: PropTypes.array,
+    // From loginState
+    signedIn: PropTypes.bool.isRequired,
+    login: PropTypes.func.isRequired,
   };
 
   static get options() {

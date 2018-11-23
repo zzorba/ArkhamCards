@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../app/i18n';
 import { iconsMap } from '../app/NavIcons';
 import { showDeckModal } from './navHelper';
 import withFetchCardsGate from './cards/withFetchCardsGate';

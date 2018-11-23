@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ActivityIndicator,
-  Button,
   StyleSheet,
   View,
-  Text,
 } from 'react-native';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import L from '../app/i18n';
 import * as Actions from '../actions';
 
 /**
@@ -60,7 +57,7 @@ export default function withLoginState(WrappedComponent) {
 
   function mapStateToProps(state) {
     return {
-      signedIn: state.signedIn.status,
+      signedIn: state.signedIn.status || false,
       error: state.signedIn.error,
       loading: state.signedIn.loading,
     };

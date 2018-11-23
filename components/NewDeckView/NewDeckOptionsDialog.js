@@ -12,7 +12,7 @@ import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
-import withNetworkStatus  from '../core/withNetworkStatus'
+import withNetworkStatus from '../core/withNetworkStatus';
 import * as Actions from '../../actions';
 import { newDeck, saveDeck } from '../../lib/authApi';
 import { getNextLocalDeckId } from '../../reducers';
@@ -30,7 +30,6 @@ class NewDeckOptionsDialog extends React.Component {
     viewRef: PropTypes.object,
     onCreateDeck: PropTypes.func,
     signedIn: PropTypes.bool,
-    login: PropTypes.func,
     // from realm
     investigators: PropTypes.object.isRequired,
     requiredCards: PropTypes.object.isRequired,
@@ -212,7 +211,6 @@ class NewDeckOptionsDialog extends React.Component {
       login,
       signedIn,
       nextLocalDeckId,
-      setNewDeck,
     } = this.props;
     const {
       deckName,
@@ -222,7 +220,7 @@ class NewDeckOptionsDialog extends React.Component {
     if (investigator && !this.state.saving) {
       if (offlineDeck || !signedIn) {
         const deck = newLocalDeck(
-          this.props.nextLocalDeckId,
+          nextLocalDeckId,
           deckName,
           investigator.code,
           this.getSlots()
@@ -367,7 +365,7 @@ class NewDeckOptionsDialog extends React.Component {
             label={L('Refresh Network')}
             onPress={refreshNetworkStatus}
           />
-        )}
+        ) }
       </React.Fragment>
     );
   }

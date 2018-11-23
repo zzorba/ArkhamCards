@@ -114,17 +114,12 @@ class DeckUpgradeDialog extends React.Component {
 
   saveUpgrade() {
     const {
-      componentId,
-      investigator,
       deck: {
         id,
         local,
       },
-      setNewDeck,
-      updateDeck,
       campaign,
       updateCampaign,
-      showNewDeck,
       login,
       nextLocalDeckId,
     } = this.props;
