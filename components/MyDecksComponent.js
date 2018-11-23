@@ -120,7 +120,7 @@ class MyDecksComponent extends React.Component {
     );
   }
 
-  renderSignInHeader() {
+  renderSignInFooter() {
     const {
       login,
       signedIn,
@@ -130,9 +130,9 @@ class MyDecksComponent extends React.Component {
       return null;
     }
     return (
-      <View style={styles.signInHeader}>
+      <View style={styles.signInFooter}>
         <Text style={[typography.text, space.marginBottomM]}>
-          { L('ArkhamDB is a popular deck building site where you can manage and share decks with others. Sign in to access your decks.') }
+          { L('ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.') }
         </Text>
         <Button onPress={login} title={L('Connect to ArkhamDB')} />
       </View>
@@ -142,19 +142,15 @@ class MyDecksComponent extends React.Component {
   renderHeader() {
     const {
       customHeader,
-      signedIn,
-      login,
     } = this.props;
     const error = this.renderError();
-    const signInHeader = this.renderSignInHeader();
-    if (!customHeader && !error && !signInHeader) {
+    if (!customHeader && !error) {
       return null;
     }
     return (
       <View style={styles.stack}>
         { error }
         { !!customHeader && customHeader }
-        { signInHeader }
       </View>
     );
   }
@@ -185,6 +181,7 @@ class MyDecksComponent extends React.Component {
       <DeckListComponent
         componentId={componentId}
         customHeader={this.renderHeader()}
+        customFooter={this.renderSignInFooter()}
         deckIds={deckIds}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}
@@ -236,7 +233,7 @@ const styles = StyleSheet.create({
   errorText: {
     color: COLORS.white,
   },
-  signInHeader: {
+  signInFooter: {
     padding: 16,
     backgroundColor: COLORS.lightGray,
   },

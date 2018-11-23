@@ -32,6 +32,7 @@ class DeckListComponent extends React.Component {
     deckToCampaign: PropTypes.object,
     fetchPublicDeck: PropTypes.func.isRequired,
     customHeader: PropTypes.node,
+    customFooter: PropTypes.node,
     isEmpty: PropTypes.bool,
   }
 
@@ -115,6 +116,7 @@ class DeckListComponent extends React.Component {
     const {
       isEmpty,
       refreshing,
+      customFooter,
     } = this.props;
     const {
       searchTerm,
@@ -125,6 +127,7 @@ class DeckListComponent extends React.Component {
           <Text style={[typography.text, typography.center]}>
             { L('No decks yet.\n\nUse the + button to create a new one.') }
           </Text>
+          { customFooter }
         </View>
       );
     }
@@ -134,10 +137,15 @@ class DeckListComponent extends React.Component {
           <Text style={[typography.text, typography.center]}>
             { L('No matching decks for "{{searchTerm}}".', { searchTerm }) }
           </Text>
+          { customFooter }
         </View>
       );
     }
-    return <View style={styles.footer} />;
+    return (
+      <View style={styles.footer}>
+        { customFooter }
+      </View>
+    );
   }
 
   getItems() {

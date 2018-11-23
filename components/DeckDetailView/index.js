@@ -18,6 +18,7 @@ import { Navigation } from 'react-native-navigation';
 import L from '../../app/i18n';
 import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
+import { updateLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
 import Button from '../core/Button';
@@ -380,9 +381,6 @@ class DeckDetailView extends React.Component {
       cards,
     } = this.props;
     if (!this.state.saving) {
-      this.setState({
-        saving: true,
-      });
       const {
         parsedDeck,
         nameChange,
@@ -399,41 +397,64 @@ class DeckDetailView extends React.Component {
       }));
       const problem = problemObj ? problemObj.reason : '';
 
-      const savePromise = saveDeck(
-        deck.id,
-        nameChange || deck.name,
-        slots,
-        problem,
-        parsedDeck.spentXp
-      );
-      handleAuthErrors(
-        savePromise,
-        // onSuccess
-        deck => {
-          updateDeck(deck.id, deck, true);
-          if (dismissAfterSave) {
-            Navigation.dismissAllModals();
-          } else {
+      if (deck.local) {
+        const newDeck = updateLocalDeck(
+          deck,
+          nameChange || deck.name,
+          slots,
+          problem,
+          parsedDeck.spentXp
+        );
+        updateDeck(newDeck.id, newDeck, true);
+        if (dismissAfterSave) {
+          Navigation.dismissAllModals();
+        } else {
+          this.setState({
+            nameChange: null,
+            hasPendingEdits: false,
+          }, this._syncNavigationButtons);
+        }
+      } else {
+        this.setState({
+          saving: true,
+        });
+
+        const savePromise = saveDeck(
+          deck.id,
+          nameChange || deck.name,
+          slots,
+          problem,
+          parsedDeck.spentXp
+        );
+        handleAuthErrors(
+          savePromise,
+          // onSuccess
+          deck => {
+            updateDeck(deck.id, deck, true);
+            if (dismissAfterSave) {
+              Navigation.dismissAllModals();
+            } else {
+              this.setState({
+                saving: false,
+                nameChange: null,
+                hasPendingEdits: false,
+              }, this._syncNavigationButtons);
+            }
+          },
+          // onFailure
+          () => {
             this.setState({
               saving: false,
-              nameChange: null,
-              hasPendingEdits: false,
-            }, this._syncNavigationButtons);
-          }
-        },
-        // onFailure
-        () => {
-          this.setState({
-            saving: false,
-          });
-        },
-        // retry
-        () => {
-          this.saveEdits(dismissAfterSave);
-        },
-        // login
-        this.props.login
-      );
+            });
+          },
+          // retry
+          () => {
+            this.saveEdits(dismissAfterSave);
+          },
+          // login
+          this.props.login
+        );
+      }
     }
   }
 
@@ -445,13 +466,6 @@ class DeckDetailView extends React.Component {
     this.setState({
       nameChange: null,
     }, () => {
-      Navigation.mergeOptions(componentId, {
-        topBar: {
-          title: {
-            text: deck.name,
-          },
-        },
-      });
       this.updateSlots(deck.slots);
     });
   }

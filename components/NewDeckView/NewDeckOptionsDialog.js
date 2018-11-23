@@ -10,6 +10,7 @@ import DialogComponent from 'react-native-dialog';
 import RequiredCardSwitch from './RequiredCardSwitch';
 import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
+import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withNetworkStatus  from '../core/withNetworkStatus'
 import * as Actions from '../../actions';
@@ -220,14 +221,12 @@ class NewDeckOptionsDialog extends React.Component {
     const investigator = this.investigator();
     if (investigator && !this.state.saving) {
       if (offlineDeck || !signedIn) {
-        const deck = {
-          id: this.props.nextLocalDeckId,
-          name: deckName,
-          investigator_code: investigator.code,
-          slots: this.getSlots(),
-          local: true,
-          problem: 'too_few_cards',
-        };
+        const deck = newLocalDeck(
+          this.props.nextLocalDeckId,
+          deckName,
+          investigator.code,
+          this.getSlots()
+        );
         this.showNewDeck(deck);
       } else {
         this.setState({

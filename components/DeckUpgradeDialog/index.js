@@ -20,10 +20,11 @@ import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
 import { updateCampaign } from '../campaign/actions';
 import withTraumaDialog from '../campaign/withTraumaDialog';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
+import { upgradeLocalDeck } from '../decks/localHelper';
 import { upgradeDeck } from '../../lib/authApi';
 import * as Actions from '../../actions';
 import PlusMinusButtons from '../core/PlusMinusButtons';
-import { getDeck, getCampaign } from '../../reducers';
+import { getDeck, getCampaign, getNextLocalDeckId } from '../../reducers';
 import typography from '../../styles/typography';
 
 class DeckUpgradeDialog extends React.Component {
@@ -44,6 +45,7 @@ class DeckUpgradeDialog extends React.Component {
     investigator: PropTypes.object,
     showTraumaDialog: PropTypes.func.isRequired,
     investigatorDataUpdates: PropTypes.object.isRequired,
+    nextLocalDeckId: PropTypes.number.isRequired,
   };
 
   static get options() {
@@ -75,6 +77,7 @@ class DeckUpgradeDialog extends React.Component {
       saving: false,
     };
 
+    this._handleDeckResult = this.handleDeckResult.bind(this);
     this._onXpChange = this.onXpChange.bind(this);
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
     this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
@@ -92,12 +95,30 @@ class DeckUpgradeDialog extends React.Component {
     }
   }
 
+  handleDeckResult({ deck, upgradedDeck }) {
+    const {
+      showNewDeck,
+      componentId,
+      investigator,
+      setNewDeck,
+      updateDeck,
+    } = this.props;
+    updateDeck(deck.id, deck, false);
+    setNewDeck(upgradedDeck.id, upgradedDeck);
+    if (showNewDeck) {
+      showDeckModal(componentId, upgradedDeck, investigator);
+    } else {
+      Navigation.pop(componentId);
+    }
+  }
+
   saveUpgrade() {
     const {
       componentId,
       investigator,
       deck: {
         id,
+        local,
       },
       setNewDeck,
       updateDeck,
@@ -105,11 +126,9 @@ class DeckUpgradeDialog extends React.Component {
       updateCampaign,
       showNewDeck,
       login,
+      nextLocalDeckId,
     } = this.props;
     if (!this.state.saving) {
-      this.setState({
-        saving: true,
-      });
       if (campaign) {
         updateCampaign(campaign.id, { investigatorData: this.investigatorData() });
       }
@@ -124,30 +143,28 @@ class DeckUpgradeDialog extends React.Component {
           forEach(range(0, count), () => exileParts.push(code));
         }
       });
-      const exiles = exileParts.join(',');
-      const upgradeDeckPromise = upgradeDeck(id, xp, exiles);
-      handleAuthErrors(
-        upgradeDeckPromise,
-        decks => {
-          const {
-            deck,
-            upgradedDeck,
-          } = decks;
-          updateDeck(deck.id, deck, false);
-          setNewDeck(upgradedDeck.id, upgradedDeck);
-          if (showNewDeck) {
-            showDeckModal(componentId, upgradedDeck, investigator);
-          } else {
-            Navigation.pop(componentId);
-          }
-        },
-        () => {
-          this.setState({
-            saving: false,
-          });
-        },
-        () => this.saveUpgrade(),
-        login);
+      if (local) {
+        this.handleDeckResult(
+          upgradeLocalDeck(nextLocalDeckId, this.props.deck, xp, exileParts)
+        );
+      } else {
+        this.setState({
+          saving: true,
+        });
+        const exiles = exileParts.join(',');
+        const upgradeDeckPromise = upgradeDeck(id, xp, exiles);
+        handleAuthErrors(
+          upgradeDeckPromise,
+          this._handleDeckResult,
+          () => {
+            this.setState({
+              saving: false,
+            });
+          },
+          () => this.saveUpgrade(),
+          login
+        );
+      }
     }
   }
 
@@ -265,6 +282,7 @@ function mapStateToProps(state, props) {
   return {
     deck: getDeck(state, props.id),
     campaign: props.campaignId && getCampaign(state, props.campaignId),
+    nextLocalDeckId: getNextLocalDeckId(state),
   };
 }
 
