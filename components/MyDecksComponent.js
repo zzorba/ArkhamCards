@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Button,
   View,
   Text,
   StyleSheet,
@@ -12,9 +13,12 @@ import { bindActionCreators } from 'redux';
 
 import withNetworkStatus from './core/withNetworkStatus';
 import * as Actions from '../actions';
+import L from '../app/i18n';
 import DeckListComponent from './DeckListComponent';
+import withLoginState from './withLoginState';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
+import space from '../styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '../reducers';
 
 class MyDecksComponent extends React.Component {
@@ -34,6 +38,10 @@ class MyDecksComponent extends React.Component {
     error: PropTypes.string,
     networkType: PropTypes.string,
     customHeader: PropTypes.node,
+    // from loginState
+    login: PropTypes.func.isRequired,
+    signedIn: PropTypes.bool.isRequired,
+    signInError: PropTypes.string,
   };
 
   constructor(props) {
@@ -63,14 +71,14 @@ class MyDecksComponent extends React.Component {
     const {
       myDecksUpdated,
       myDecks,
+      signedIn,
     } = this.props;
-
     const now = new Date();
-    if (!myDecks ||
+    if ((!myDecks ||
       myDecks.length === 0 ||
       !myDecksUpdated ||
       (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)
-    ) {
+    ) && signedIn) {
       this.onRefresh();
     }
   }
@@ -106,24 +114,47 @@ class MyDecksComponent extends React.Component {
     return (
       <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error]}>
         <Text style={[typography.small, styles.errorText]}>
-          { `An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
+          { L('An unexpected error occurred ({{error}}). If restarting the app doesn\'t fix the problem, tap here to reauthorize.', { error }) }
         </Text>
       </TouchableOpacity>
     );
   }
 
+  renderSignInHeader() {
+    const {
+      login,
+      signedIn,
+      signInError,
+    } = this.props;
+    if (signedIn) {
+      return null;
+    }
+    return (
+      <View style={styles.signInHeader}>
+        <Text style={[typography.text, space.marginBottomM]}>
+          { L('ArkhamDB is a popular deck building site where you can manage and share decks with others. Sign in to access your decks.') }
+        </Text>
+        <Button onPress={login} title={L('Connect to ArkhamDB')} />
+      </View>
+    )
+  }
+
   renderHeader() {
     const {
       customHeader,
+      signedIn,
+      login,
     } = this.props;
     const error = this.renderError();
-    if (!customHeader && !error) {
+    const signInHeader = this.renderSignInHeader();
+    if (!customHeader && !error && !signInHeader) {
       return null;
     }
     return (
       <View style={styles.stack}>
         { error }
-        { customHeader }
+        { !!customHeader && customHeader }
+        { signInHeader }
       </View>
     );
   }
@@ -139,6 +170,7 @@ class MyDecksComponent extends React.Component {
       refreshing,
       onlyDeckIds,
       deckToCampaign,
+      signedIn,
     } = this.props;
 
     const filterDeckIdsSet = new Set(filterDeckIds);
@@ -156,7 +188,7 @@ class MyDecksComponent extends React.Component {
         deckIds={deckIds}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}
-        onRefresh={this._onRefresh}
+        onRefresh={signedIn ? this._onRefresh : null}
         refreshing={refreshing}
         isEmpty={myDecks.length === 0}
       />
@@ -179,7 +211,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withNetworkStatus(MyDecksComponent)
+  withNetworkStatus(
+    withLoginState(MyDecksComponent)
+  )
 );
 
 const styles = StyleSheet.create({
@@ -201,5 +235,9 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: COLORS.white,
+  },
+  signInHeader: {
+    padding: 16,
+    backgroundColor: COLORS.lightGray,
   },
 });

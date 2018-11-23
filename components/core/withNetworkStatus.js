@@ -14,15 +14,20 @@ export default function withNetworkStatus(WrappedComponent) {
       };
 
       this._networkStatusChanged = this.networkStatusChanged.bind(this);
+      this._refreshNetworkStatus = this.refreshNetworkStatus.bind(this);
     }
 
     componentDidMount() {
-      NetInfo.getConnectionInfo().then(this._networkStatusChanged);
+      this.refreshNetworkStatus();
       NetInfo.addEventListener('connectionChange', this._networkStatusChanged);
     }
 
     componentWillUnmount() {
       NetInfo.removeEventListener('connectionChange', this._networkStatusChanged);
+    }
+
+    refreshNetworkStatus() {
+      NetInfo.getConnectionInfo().then(this._networkStatusChanged);
     }
 
     networkStatusChanged(connectionInfo) {
@@ -33,7 +38,11 @@ export default function withNetworkStatus(WrappedComponent) {
 
     render() {
       return (
-        <WrappedComponent networkType={this.state.networkType} {...this.props} />
+        <WrappedComponent
+          {...this.props}
+          networkType={this.state.networkType}
+          refreshNetworkStatus={this._refreshNetworkStatus}
+        />
       );
     }
   }

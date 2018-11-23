@@ -27,7 +27,7 @@ export default function(state = DEFAULT_SIGNED_IN_STATE, action) {
   if (action.type === LOGIN_ERROR) {
     return Object.assign({}, state, {
       loading: false,
-      error: action.error,
+      error: action.error == 'User Cancelled.' ? action.error : null,
     });
   }
   if (action.type === LOGOUT) {

@@ -24,7 +24,7 @@ class DeckListComponent extends React.Component {
   static propTypes = {
     deckIds: PropTypes.array.isRequired,
     deckClicked: PropTypes.func.isRequired,
-    onRefresh: PropTypes.func.isRequired,
+    onRefresh: PropTypes.func,
     refreshing: PropTypes.bool,
     investigators: PropTypes.object,
     cards: PropTypes.object,

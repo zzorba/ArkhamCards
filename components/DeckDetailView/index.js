@@ -22,7 +22,7 @@ import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
-import * as Actions from '../../actions';
+import { fetchPrivateDeck, fetchPublicDeck, login, updateDeck } from '../../actions';
 import { saveDeck } from '../../lib/authApi';
 import withPlayerCards from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
@@ -44,12 +44,13 @@ class DeckDetailView extends React.Component {
     // From realm.
     cards: PropTypes.object,
     // From redux.
-    login: PropTypes.func.isRequired,
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
+    login: PropTypes.func.isRequired,
     updateDeck: PropTypes.func.isRequired,
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
+    // From HOC
     showTextEditDialog: PropTypes.func.isRequired,
     captureViewRef: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
@@ -74,6 +75,7 @@ class DeckDetailView extends React.Component {
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
+    this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
     this._showEditNameDialog = throttle(this.showEditNameDialog.bind(this), 200);
     this._clearEdits = this.clearEdits.bind(this);
@@ -119,10 +121,12 @@ class DeckDetailView extends React.Component {
     if (modal) {
       BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
     }
-    if (isPrivate) {
-      fetchPrivateDeck(id);
-    } else {
-      fetchPublicDeck(id, false);
+    if (id >= 0 && (!deck || !deck.local)) {
+      if (isPrivate) {
+        fetchPrivateDeck(id);
+      } else {
+        fetchPublicDeck(id, false);
+      }
     }
     if (deck && deck.investigator_code) {
       if (deck && deck.previous_deck && !previousDeck) {
@@ -246,7 +250,7 @@ class DeckDetailView extends React.Component {
         [{
           text: 'Save Changes',
           onPress: () => {
-            this._saveEdits(true);
+            this._saveEditsAndDismiss();
           },
         }, {
           text: 'Discard Changes',
@@ -667,7 +671,12 @@ function mapStateToProps(state, props) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({
+    login,
+    fetchPrivateDeck,
+    fetchPublicDeck,
+    updateDeck,
+  }, dispatch);
 }
 
 export default withPlayerCards(

@@ -34,8 +34,23 @@ function updateDeck(state, action) {
 }
 
 export default function(state = DEFAULT_DECK_STATE, action) {
-  if (action.type === LOGOUT) {
-    return DEFAULT_DECK_STATE;
+  if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
+    const all = {};
+    forEach(Object.keys(state.all), id => {
+      const deck = state.all[id];
+      if (deck.local) {
+        all[id] = deck;
+      }
+    });
+    const myDecks = filter(state.myDecks, id => !!all[id]);
+    return Object.assign(
+      {},
+      DEFAULT_DECK_STATE,
+      {
+        all,
+        myDecks,
+      },
+    );
   }
   if (action.type === MY_DECKS_START_REFRESH) {
     return Object.assign({},
@@ -84,7 +99,12 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       state,
       {
         all: allDecks,
-        myDecks: reverse(map(filter(action.decks, deck => !deck.next_deck), deck => deck.id)),
+        myDecks: reverse(
+          concat(
+            filter(state.myDecks, id => allDecks[id] && allDecks[id].local),
+            map(filter(action.decks, deck => !deck.next_deck), deck => deck.id),
+          ),
+        ),
         dateUpdated: action.timestamp.getTime(),
         lastModified: action.lastModified,
         refreshing: false,
@@ -144,8 +164,6 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
     ];
     return newState;
-  } else if (action.type === CLEAR_DECKS) {
-    return DEFAULT_DECK_STATE;
   }
   return state;
 }

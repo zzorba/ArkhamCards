@@ -11,8 +11,10 @@ import RequiredCardSwitch from './RequiredCardSwitch';
 import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import Dialog from '../core/Dialog';
+import withNetworkStatus  from '../core/withNetworkStatus'
 import * as Actions from '../../actions';
 import { newDeck, saveDeck } from '../../lib/authApi';
+import { getNextLocalDeckId } from '../../reducers';
 import L from '../../app/i18n';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
@@ -26,13 +28,18 @@ class NewDeckOptionsDialog extends React.Component {
     investigatorId: PropTypes.string,
     viewRef: PropTypes.object,
     onCreateDeck: PropTypes.func,
-
+    signedIn: PropTypes.bool,
+    login: PropTypes.func,
     // from realm
     investigators: PropTypes.object.isRequired,
     requiredCards: PropTypes.object.isRequired,
     // from redux
+    nextLocalDeckId: PropTypes.number.isRequired,
     login: PropTypes.func.isRequired,
     setNewDeck: PropTypes.func.isRequired,
+    // from networkStatus
+    networkType: PropTypes.string,
+    refreshNetworkStatus: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -41,12 +48,14 @@ class NewDeckOptionsDialog extends React.Component {
     this.state = {
       saving: false,
       deckName: null,
+      offlineDeck: false,
       optionSelected: [true],
     };
 
     this._toggleOptionsSelected = this.toggleOptionsSelected.bind(this);
     this._processNewDeckOptions = this.processNewDeckOptions.bind(this);
     this._onDeckNameChange = this.onDeckNameChange.bind(this);
+    this._onDeckTypeChange = this.onDeckTypeChange.bind(this);
     this._onOkayPress = throttle(this.onOkayPress.bind(this), 200);
     this._captureTextInputRef = this.captureTextInputRef.bind(this);
     this._textInputRef = null;
@@ -59,6 +68,19 @@ class NewDeckOptionsDialog extends React.Component {
     if (investigatorId && investigatorId !== prevProps.investigatorId) {
       this.resetForm();
     }
+  }
+
+  onDeckTypeChange(value) {
+    const {
+      signedIn,
+      login,
+    } = this.props;
+    if (value && !signedIn) {
+      login();
+    }
+    this.setState({
+      offlineDeck: !value,
+    });
   }
 
   onDeckNameChange(value) {
@@ -108,6 +130,46 @@ class NewDeckOptionsDialog extends React.Component {
     showDeckModal(componentId, deck, investigator);
   }
 
+  getSlots() {
+    const {
+      requiredCards,
+    } = this.props;
+    const {
+      optionSelected,
+    } = this.state;
+    const slots = {
+      // Random basic weakness.
+      '01000': 1,
+    };
+
+    // Seed all the 'basic' requirements from the investigator.
+    const investigator = this.investigator();
+    if (investigator && investigator.deck_requirements) {
+      forEach(investigator.deck_requirements.card, cardRequirement => {
+        const card = requiredCards[cardRequirement.code];
+        slots[cardRequirement.code] = card.deck_limit || card.quantity;
+      });
+    }
+
+    if (optionSelected[0] !== true || countBy(optionSelected) !== 1) {
+      // Now sub in the options that were asked for if we aren't going
+      // with the defaults.
+      const options = this.requiredCardOptions();
+      forEach(optionSelected, (include, index) => {
+        const cards = options[index];
+        forEach(cards, card => {
+          if (include) {
+            slots[card.code] = card.deck_limit || card.quantity;
+          } else if (slots[card.code]) {
+            delete slots[card.code];
+          }
+        });
+      });
+    }
+
+    return slots;
+  }
+
   processNewDeckOptions(deck) {
     const {
       optionSelected,
@@ -117,21 +179,10 @@ class NewDeckOptionsDialog extends React.Component {
       // Deck is good as is...
       this.showNewDeck(deck);
     } else {
-      const options = this.requiredCardOptions();
-      forEach(optionSelected, (include, index) => {
-        const cards = options[index];
-        forEach(cards, card => {
-          if (include) {
-            deck.slots[card.code] = card.deck_limit || card.quantity;
-          } else if (deck.slots[card.code]) {
-            delete deck.slots[card.code];
-          }
-        });
-      });
       const savePromise = saveDeck(
         deck.id,
         deck.name,
-        deck.slots,
+        this.getSlots(),
         deck.problem,
         0
       );
@@ -158,26 +209,42 @@ class NewDeckOptionsDialog extends React.Component {
   onOkayPress() {
     const {
       login,
+      signedIn,
+      nextLocalDeckId,
+      setNewDeck,
     } = this.props;
     const {
       deckName,
+      offlineDeck,
     } = this.state;
     const investigator = this.investigator();
     if (investigator && !this.state.saving) {
-      this.setState({
-        saving: true,
-      });
-      handleAuthErrors(
-        newDeck(investigator.code, deckName),
-        this._processNewDeckOptions,
-        () => {
-          this.setState({
-            saving: false,
-          });
-        },
-        () => this.onOkayPress(),
-        login
-      );
+      if (offlineDeck || !signedIn) {
+        const deck = {
+          id: this.props.nextLocalDeckId,
+          name: deckName,
+          investigator_code: investigator.code,
+          slots: this.getSlots(),
+          local: true,
+          problem: 'too_few_cards',
+        };
+        this.showNewDeck(deck);
+      } else {
+        this.setState({
+          saving: true,
+        });
+        handleAuthErrors(
+          newDeck(investigator.code, deckName),
+          this._processNewDeckOptions,
+          () => {
+            this.setState({
+              saving: false,
+            });
+          },
+          () => this.onOkayPress(),
+          login
+        );
+      }
     }
   }
 
@@ -239,10 +306,14 @@ class NewDeckOptionsDialog extends React.Component {
   renderFormContent() {
     const {
       investigatorId,
+      signedIn,
+      refreshNetworkStatus,
+      networkType,
     } = this.props;
     const {
       saving,
       deckName,
+      offlineDeck,
       optionSelected,
     } = this.state;
     if (saving) {
@@ -281,6 +352,23 @@ class NewDeckOptionsDialog extends React.Component {
             />
           );
         }) }
+        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
+          { L('DECK TYPE') }
+        </DialogComponent.Description>
+        <DialogComponent.Switch
+          label={L('Create on ArkhamDB')}
+          value={!offlineDeck && signedIn && networkType !== 'none'}
+          disabled={networkType === 'none'}
+          onValueChange={this._onDeckTypeChange}
+          onTintColor="#222222"
+          tintColor="#bbbbbb"
+        />
+        { networkType === 'none' && (
+          <DialogComponent.Button
+            label={L('Refresh Network')}
+            onPress={refreshNetworkStatus}
+          />
+        )}
       </React.Fragment>
     );
   }
@@ -322,8 +410,10 @@ class NewDeckOptionsDialog extends React.Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    nextLocalDeckId: getNextLocalDeckId(state),
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -331,7 +421,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(NewDeckOptionsDialog), {
+  connect(mapStateToProps, mapDispatchToProps)(
+    withNetworkStatus(NewDeckOptionsDialog)
+  ), {
     schemas: ['Card'],
     mapToProps(results) {
       const investigators = {};

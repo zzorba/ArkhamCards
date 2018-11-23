@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
+import { find, flatMap, forEach, keys, map, max, min, last, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -203,4 +203,12 @@ export function getCampaign(state, id) {
     return campaign ? processCampaign(campaign) : null;
   }
   return null;
+}
+
+export function getNextLocalDeckId(state) {
+  const smallestDeckId = min(keys(state.decks.all)) || 0;
+  if (smallestDeckId < 0) {
+    return smallestDeckId - 1;
+  }
+  return -1;
 }
