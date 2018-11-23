@@ -135,6 +135,7 @@ export default class Card {
     'Asset: Arcane',
     'Asset: Arcane x2',
     'Asset: Body',
+    'Asset: Body. Hand x2',
     'Asset: Permanent',
     'Asset: Other',
     'Event',
