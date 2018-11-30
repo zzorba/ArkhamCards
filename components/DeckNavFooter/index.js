@@ -145,7 +145,7 @@ export default class DeckNavFooter extends React.Component {
         <View style={styles.left}>
           <Text style={[typography.text, styles.whiteText]}>
             { `${normalCardCount} Cards (${totalCardCount} Total)` }
-            { previous_deck ? ` - XP: ${spentXp} of ${xp}` : ` - XP: ${totalXp}` }
+            { previous_deck ? ` - XP: ${spentXp} of ${xp || 0}` : ` - XP: ${totalXp}` }
           </Text>
           { this.renderProblem() }
         </View>

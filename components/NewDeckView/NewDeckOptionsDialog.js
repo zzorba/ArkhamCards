@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
+import { ActivityIndicator, Platform, TouchableOpacity, StyleSheet } from 'react-native';
 import { countBy, find, forEach, map, throttle } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -330,10 +330,11 @@ class NewDeckOptionsDialog extends React.Component {
           tintColor="#bbbbbb"
         />
         { networkType === 'none' && (
-          <DialogComponent.Button
-            label={L('Refresh Network')}
-            onPress={refreshNetworkStatus}
-          />
+          <TouchableOpacity onPress={refreshNetworkStatus}>
+            <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+              { L('You seem to be offline. Refresh Network?') }
+            </DialogComponent.Description>
+          </TouchableOpacity>
         ) }
       </React.Fragment>
     );
