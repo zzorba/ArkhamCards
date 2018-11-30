@@ -24,15 +24,22 @@ import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
-import { fetchPrivateDeck, fetchPublicDeck, login, updateDeck } from '../../actions';
-import { saveDeck } from '../../lib/authApi';
+import {
+  fetchPrivateDeck,
+  fetchPublicDeck,
+  login,
+  updateDeck,
+  removeDeck,
+  replaceLocalDeck,
+} from '../../actions';
+import { saveDeck, newCustomDeck } from '../../lib/authApi';
 import withPlayerCards from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
-import { getDeck } from '../../reducers';
+import { getDeck, getEffectiveDeckId } from '../../reducers';
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -51,8 +58,10 @@ class DeckDetailView extends React.Component {
     login: PropTypes.func.isRequired,
     signedIn: PropTypes.bool,
     updateDeck: PropTypes.func.isRequired,
+    removeDeck: PropTypes.func.isRequired,
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
+    replaceLocalDeck: PropTypes.func.isRequired,
     // From HOC
     showTextEditDialog: PropTypes.func.isRequired,
     captureViewRef: PropTypes.func.isRequired,
@@ -68,9 +77,11 @@ class DeckDetailView extends React.Component {
       loaded: false,
       saving: false,
       copying: false,
+      deleting: false,
       nameChange: null,
       hasPendingEdits: false,
     };
+    this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
     this._toggleCopyDialog = throttle(this.toggleCopyDialog.bind(this), 200);
     this._saveName = this.saveName.bind(this);
     this._onEditPressed = throttle(this.onEditPressed.bind(this), 200);
@@ -83,6 +94,7 @@ class DeckDetailView extends React.Component {
     this._showEditNameDialog = throttle(this.showEditNameDialog.bind(this), 200);
     this._clearEdits = this.clearEdits.bind(this);
     this._handleBackPress = throttle(this.handleBackPress.bind(this), 200);
+    this._deleteDeck = this.deleteDeck.bind(this);
 
     const leftButtons = props.modal ? [
       Platform.OS === 'ios' ? {
@@ -161,17 +173,18 @@ class DeckDetailView extends React.Component {
     } = this.props;
     if (deck !== prevProps.deck) {
       if (!deck) {
-        Alert.alert(
-          'Deck has been deleted',
-          'It looks like you deleted this deck from ArkhamDB.\n\n' +
-          'If it was part of a campaign you can add the same investigator back to restore your campaign data.',
-          [{
-            text: 'OK',
-            onPress: () => {
-              Navigation.dismissAllModals();
-            },
-          }],
-        );
+        if (!this.state.deleting) {
+          Alert.alert(
+            L('Deck has been deleted'),
+            L('It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.'),
+            [{
+              text: L('OK'),
+              onPress: () => {
+                Navigation.dismissAllModals();
+              },
+            }],
+          );
+        }
       } else if (deck.previous_deck && !previousDeck) {
         if (isPrivate) {
           fetchPrivateDeck(deck.previous_deck);
@@ -185,6 +198,20 @@ class DeckDetailView extends React.Component {
         this.loadCards(deck, previousDeck);
       }
     }
+  }
+
+  deleteDeck(deleteAllVersions) {
+    const {
+      id,
+      removeDeck,
+    } = this.props;
+
+    this.setState({
+      deleting: true,
+    }, () => {
+      removeDeck(id, deleteAllVersions);
+      Navigation.dismissAllModals();
+    });
   }
 
   toggleCopyDialog() {
@@ -248,21 +275,21 @@ class DeckDetailView extends React.Component {
   handleBackPress() {
     if (this.state.hasPendingEdits) {
       Alert.alert(
-        'Save deck changes?',
-        'Looks like you have made some changes that have not been saved.',
+        L('Save deck changes?'),
+        L('Looks like you have made some changes that have not been saved.'),
         [{
-          text: 'Save Changes',
+          text: L('Save Changes'),
           onPress: () => {
             this._saveEditsAndDismiss();
           },
         }, {
-          text: 'Discard Changes',
+          text: L('Discard Changes'),
           style: 'destructive',
           onPress: () => {
             Navigation.dismissAllModals();
           },
         }, {
-          text: 'Cancel',
+          text: L('Cancel'),
           style: 'cancel',
         }],
       );
@@ -376,11 +403,57 @@ class DeckDetailView extends React.Component {
     });
   }
 
+  uploadLocalDeck() {
+    const {
+      deck,
+      login,
+      id,
+      replaceLocalDeck,
+    } = this.props;
+    const {
+      parsedDeck: {
+        slots,
+      },
+    } = this.state;
+    const problemObj = this.getProblem();
+    const problem = problemObj ? problemObj.reason : '';
+
+    const promise = newCustomDeck(
+      deck.investigator_code,
+      deck.name,
+      slots,
+      problem,
+    );
+    handleAuthErrors(
+      promise,
+      // onSuccess
+      deck => {
+        // Replace the local deck with the new one.
+        replaceLocalDeck(id, deck);
+        this.setState({
+          saving: false,
+          nameChange: null,
+          hasPendingEdits: false,
+        }, this._syncNavigationButtons);
+      },
+      // onFailure
+      () => {
+        this.setState({
+          saving: false,
+        });
+      },
+      // retry
+      () => {
+        this.uploadDeck();
+      },
+      login
+    );
+  }
+
   saveEdits(dismissAfterSave) {
     const {
       deck,
       updateDeck,
-      cards,
     } = this.props;
     if (!this.state.saving) {
       const {
@@ -389,14 +462,9 @@ class DeckDetailView extends React.Component {
       } = this.state;
       const {
         slots,
-        investigator,
       } = parsedDeck;
 
-      const validator = new DeckValidation(investigator);
-      const problemObj = validator.getProblem(flatMap(keys(slots), code => {
-        const card = cards[code];
-        return map(range(0, slots[code]), () => card);
-      }));
+      const problemObj = this.getProblem();
       const problem = problemObj ? problemObj.reason : '';
 
       if (deck.local) {
@@ -628,6 +696,31 @@ class DeckDetailView extends React.Component {
     );
   }
 
+  getProblem() {
+    const {
+      cards,
+      deck,
+    } = this.props;
+    const {
+      parsedDeck,
+      loaded,
+    } = this.state;
+    if (!deck || !loaded || !parsedDeck) {
+      return null;
+    }
+
+    const {
+      slots,
+      investigator,
+    } = parsedDeck;
+
+    const validator = new DeckValidation(investigator);
+    return validator.getProblem(flatMap(keys(slots), code => {
+      const card = cards[code];
+      return map(range(0, slots[code]), () => card);
+    }));
+  }
+
   render() {
     const {
       deck,
@@ -635,11 +728,14 @@ class DeckDetailView extends React.Component {
       isPrivate,
       captureViewRef,
       cards,
+      signedIn,
+      login,
     } = this.props;
     const {
       loaded,
       parsedDeck,
       nameChange,
+      hasPendingEdits,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -661,10 +757,16 @@ class DeckDetailView extends React.Component {
             deck={deck}
             deckName={nameChange || deck.name}
             parsedDeck={parsedDeck}
+            problem={this.getProblem()}
+            hasPendingEdits={hasPendingEdits}
             cards={cards}
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
             showEditNameDialog={this._showEditNameDialog}
+            signedIn={signedIn}
+            login={login}
+            deleteDeck={this._deleteDeck}
+            uploadLocalDeck={this._uploadLocalDeck}
           />
           <DeckNavFooter
             componentId={componentId}
@@ -680,8 +782,10 @@ class DeckDetailView extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  const deck = getDeck(state, props.id);
+  const id = getEffectiveDeckId(state, props.id);
+  const deck = getDeck(state, id);
   return {
+    id,
     deck,
     previousDeck: deck && deck.previous_deck && getDeck(state, deck.previous_deck),
   };
@@ -693,6 +797,8 @@ function mapDispatchToProps(dispatch) {
     fetchPrivateDeck,
     fetchPublicDeck,
     updateDeck,
+    removeDeck,
+    replaceLocalDeck,
   }, dispatch);
 }
 

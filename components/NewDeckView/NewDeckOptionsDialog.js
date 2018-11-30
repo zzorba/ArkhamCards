@@ -14,7 +14,7 @@ import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withNetworkStatus from '../core/withNetworkStatus';
 import * as Actions from '../../actions';
-import { newDeck, saveDeck } from '../../lib/authApi';
+import { newCustomDeck } from '../../lib/authApi';
 import { getNextLocalDeckId } from '../../reducers';
 import L from '../../app/i18n';
 import typography from '../../styles/typography';
@@ -53,7 +53,6 @@ class NewDeckOptionsDialog extends React.Component {
     };
 
     this._toggleOptionsSelected = this.toggleOptionsSelected.bind(this);
-    this._processNewDeckOptions = this.processNewDeckOptions.bind(this);
     this._onDeckNameChange = this.onDeckNameChange.bind(this);
     this._onDeckTypeChange = this.onDeckTypeChange.bind(this);
     this._onOkayPress = throttle(this.onOkayPress.bind(this), 200);
@@ -170,42 +169,6 @@ class NewDeckOptionsDialog extends React.Component {
     return slots;
   }
 
-  processNewDeckOptions(deck) {
-    const {
-      optionSelected,
-    } = this.state;
-
-    if (optionSelected[0] === true && countBy(optionSelected) === 1) {
-      // Deck is good as is...
-      this.showNewDeck(deck);
-    } else {
-      const savePromise = saveDeck(
-        deck.id,
-        deck.name,
-        this.getSlots(),
-        deck.problem,
-        0
-      );
-      handleAuthErrors(
-        savePromise,
-        // onSuccess
-        deck => this.showNewDeck(deck),
-        // onFailure
-        () => {
-          this.setState({
-            saving: false,
-          });
-        },
-        // retry
-        () => {
-          this.processNewDeckOptions(deck);
-        },
-        // login
-        this.props.login
-      );
-    }
-  }
-
   onOkayPress() {
     const {
       login,
@@ -230,9 +193,15 @@ class NewDeckOptionsDialog extends React.Component {
         this.setState({
           saving: true,
         });
+        const newDeckPromise = newCustomDeck(
+          investigator.code,
+          deckName,
+          this.getSlots(),
+          'too_few_cards'
+        );
         handleAuthErrors(
-          newDeck(investigator.code, deckName),
-          this._processNewDeckOptions,
+          newDeckPromise,
+          deck => this.showNewDeck(deck),
           () => {
             this.setState({
               saving: false,

@@ -2,6 +2,8 @@ import {
   Alert,
 } from 'react-native';
 
+import L from '../app/i18n';
+
 export function handleAuthErrors(
   promise,
   onSuccess,
@@ -14,29 +16,29 @@ export function handleAuthErrors(
     err => {
       if (err.message === 'badAccessToken') {
         Alert.alert(
-          'Authorization error',
-          'We are having trouble talking to ArkhamDB.\n\nIf the problem persists, please try to reauthorize.',
+          L('Authorization error'),
+          L('We are having trouble talking to ArkhamDB.\n\nIf the problem persists, please try to reauthorize.'),
           [{
-            text: 'Try again',
+            text: L('Try again'),
             onPress: () => {
               onFailure(err);
               retry();
             },
           }, {
-            text: 'Reauthorize',
+            text: L('Reauthorize'),
             onPress: () => {
               login();
               onFailure(err);
             },
           }, {
-            text: 'Cancel',
+            text: L('Cancel'),
             onPress: () => {
               onFailure(err);
             },
           }],
         );
       } else {
-        Alert.alert('Unknown error', err.message || err);
+        Alert.alert(L('Unknown error'), err.message || err);
         onFailure(err);
       }
     });

@@ -1,4 +1,4 @@
-import { concat, filter, forEach, map, reverse } from 'lodash';
+import { concat, filter, forEach, map, reverse, sortBy } from 'lodash';
 
 import {
   LOGOUT,
@@ -10,11 +10,13 @@ import {
   DELETE_DECK,
   UPDATE_DECK,
   CLEAR_DECKS,
+  REPLACE_LOCAL_DECK,
 } from '../actions/types';
 
 const DEFAULT_DECK_STATE = {
   all: {},
   myDecks: [],
+  replacedLocalIds: {},
   dateUpdated: null,
   refreshing: false,
   error: null,
@@ -31,6 +33,10 @@ function updateDeck(state, action) {
   }
   deck.scenarioCount = scenarioCount;
   return deck;
+}
+
+function sortMyDecks(myDecks, allDecks) {
+  return reverse(sortBy(myDecks, deckId => allDecks[deckId].deck_update));
 }
 
 export default function(state = DEFAULT_DECK_STATE, action) {
@@ -99,11 +105,12 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       state,
       {
         all: allDecks,
-        myDecks: reverse(
+        myDecks: sortMyDecks(
           concat(
             filter(state.myDecks, id => allDecks[id] && allDecks[id].local),
             map(filter(action.decks, deck => !deck.next_deck), deck => deck.id),
           ),
+          allDecks,
         ),
         dateUpdated: action.timestamp.getTime(),
         lastModified: action.lastModified,
@@ -112,10 +119,47 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       },
     );
   }
+  if (action.type === REPLACE_LOCAL_DECK) {
+    const all = Object.assign(
+      {},
+      state.all,
+      { [action.deck.id]: action.deck }
+    );
+    delete all[action.localId];
+    const myDecks = map(state.myDecks || [], deckId => {
+      if (deckId === action.localId) {
+        return action.deck.id;
+      }
+      return deckId;
+    });
+
+    const replacedLocalIds = Object.assign({}, state.replacedLocalIds || {});
+    replacedLocalIds[action.localId] = action.deck.id;
+    return Object.assign({},
+      state,
+      {
+        all,
+        myDecks: sortMyDecks(myDecks, all),
+        replacedLocalIds,
+      },
+    );
+  }
   if (action.type === DELETE_DECK) {
     const all = Object.assign({}, state.all);
+    let deck = all[action.id];
+
     delete all[action.id];
-    const myDecks = filter(state.myDecks, deckId => deckId !== action.id);
+    const toDelete = [action.id];
+    if (action.deleteAllVersions && deck) {
+      while (deck.previous_deck && all[deck.previous_deck]) {
+        const id = deck.previous_deck;
+        toDelete.push(id);
+        deck = all[id];
+        delete all[id];
+      }
+    }
+    const toDeleteSet = new Set(toDelete);
+    const myDecks = filter(state.myDecks, deckId => !toDeleteSet.has(deckId));
     return Object.assign({},
       state,
       {
@@ -150,7 +194,7 @@ export default function(state = DEFAULT_DECK_STATE, action) {
   }
   if (action.type === NEW_DECK_AVAILABLE) {
     const deck = updateDeck(state, action);
-    const newState = Object.assign({},
+    return Object.assign({},
       state,
       {
         all: Object.assign(
@@ -158,12 +202,11 @@ export default function(state = DEFAULT_DECK_STATE, action) {
           state.all,
           { [action.id]: deck },
         ),
+        myDecks: [
+          action.id,
+          ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
+        ],
       });
-    newState.myDecks = [
-      action.id,
-      ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
-    ];
-    return newState;
   }
   return state;
 }

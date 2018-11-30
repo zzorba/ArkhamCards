@@ -17,7 +17,6 @@ import CampaignItem from './CampaignItem';
 import { CUSTOM, campaignNames } from '../constants';
 import SearchBox from '../../SearchBox';
 import withPlayerCards from '../../withPlayerCards';
-import withLoginGate from '../../withLoginGate';
 import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
@@ -177,7 +176,7 @@ class MyCampaignsView extends React.Component {
       return (
         <View style={styles.footer}>
           <Text style={[typography.text, styles.margin]}>
-            { L('No campaigns yet.\n\nUse the + button to create a new one.') }
+            { L('No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.') }
           </Text>
         </View>
       );
@@ -219,11 +218,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withFetchCardsGate(
-  withLoginGate(
-    connect(mapStateToProps, mapDispatchToProps)(
-      withPlayerCards(MyCampaignsView)
-    ),
-    L('You can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all of your ArkhamDB decks.\n\nPlease sign in to enable this feature.')
+  connect(mapStateToProps, mapDispatchToProps)(
+    withPlayerCards(MyCampaignsView)
   ),
   { promptForUpdate: false },
 );
@@ -233,7 +229,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footer: {
-    marginTop: 8,
+    margin: 8,
     marginBottom: 60,
     alignItems: 'center',
   },

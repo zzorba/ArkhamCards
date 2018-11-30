@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, flatMap, forEach, keys, map, max, minBy, last, sortBy, values } from 'lodash';
+import { concat, find, flatMap, forEach, keys, map, max, minBy, last, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -155,6 +155,14 @@ export function getMyDecksState(state) {
   };
 }
 
+export function getEffectiveDeckId(state, id) {
+  const replacedLocalIds = state.decks.replacedLocalIds || {};
+  if (replacedLocalIds[id]) {
+    return parseInt(replacedLocalIds[id], 10);
+  }
+  return id;
+}
+
 export function getDeck(state, id) {
   if (!id) {
     return null;
@@ -206,7 +214,12 @@ export function getCampaign(state, id) {
 }
 
 export function getNextLocalDeckId(state) {
-  const smallestDeckId = minBy(keys(state.decks.all), parseInt) || 0;
+  const smallestDeckId = minBy(
+    concat(
+      keys(state.decks.all),
+      keys(state.replacedLocalIds || {})
+    ), parseInt
+  ) || 0;
   if (smallestDeckId < 0) {
     return smallestDeckId - 1;
   }

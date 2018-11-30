@@ -11,6 +11,7 @@ export default function FactionGradient({ faction_code, style, children, dark })
   const colors = dark ?
     FACTION_DARK_GRADIENTS[faction_code] :
     FACTION_LIGHT_GRADIENTS[faction_code];
+  console.log(children);
   return (
     <LinearGradient colors={colors} style={style}>
       { children }

@@ -80,13 +80,15 @@ export default class PackRow extends React.Component {
     ) {
       // This is the lead pack in a cycle.
       Alert.alert(
-        `${value ? 'Mark' : 'Clear'} entire cycle?`,
-        `${value ? 'Mark' : 'Clear'} all packs in the ${pack.name} cycle?`,
+        value ? L('Mark entire cycle?') : L('Clear entire cycle?'),
+        value ?
+          L('Mark all packs in the {{packName}} cycle?', { packName: pack.name }) :
+          L('Clear all packs in the {{packName}} cycle?', { packName: pack.name }),
         [
           {
-            text: 'No',
+            text: L('No'),
           },
-          { text: 'Yes',
+          { text: L('Yes'),
             onPress: () => {
               setCycleChecked(pack.cycle_position, value);
             },

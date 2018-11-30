@@ -69,7 +69,7 @@ class DeckListComponent extends React.Component {
       fetchPublicDeck,
     } = this.props;
     deckIds.forEach(deckId => {
-      if (!decks[deckId]) {
+      if (!decks[deckId] && deckId > 0) {
         fetchPublicDeck(deckId, false);
       }
     });
@@ -208,7 +208,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withPlayerCards(DeckListComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withPlayerCards(DeckListComponent)
+);
 
 const styles = StyleSheet.create({
   container: {

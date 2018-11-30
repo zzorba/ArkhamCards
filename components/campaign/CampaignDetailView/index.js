@@ -164,11 +164,13 @@ class CampaignDetailView extends React.Component {
       campaign,
     } = this.props;
     Alert.alert(
-      'Delete',
-      `Are you sure you want to delete the campaign: ${campaign.name}?`,
+      L('Delete'),
+      L('Are you sure you want to delete the campaign: {{campaignName}}',
+        { campaignName: campaign.name }
+      ),
       [
-        { text: 'Delete', onPress: this._delete, style: 'destructive' },
-        { text: 'Cancel', style: 'cancel' },
+        { text: L('Delete'), onPress: this._delete, style: 'destructive' },
+        { text: L('Cancel'), style: 'cancel' },
       ],
     );
   }

@@ -17,6 +17,7 @@ import {
   LOGIN,
   LOGIN_ERROR,
   LOGOUT,
+  REPLACE_LOCAL_DECK,
 } from './types';
 
 import { getAccessToken, signInFlow, signOutFlow } from '../lib/auth';
@@ -156,10 +157,19 @@ export function updateDeck(id, deck, isWrite) {
   };
 }
 
-export function removeDeck(id) {
+export function replaceLocalDeck(localId, deck) {
+  return {
+    type: REPLACE_LOCAL_DECK,
+    localId,
+    deck,
+  };
+}
+
+export function removeDeck(id, deleteAllVersions) {
   return {
     type: DELETE_DECK,
     id,
+    deleteAllVersions: !!deleteAllVersions,
   };
 }
 
@@ -248,4 +258,5 @@ export default {
   setNewDeck,
   updateDeck,
   removeDeck,
+  replaceLocalDeck,
 };
