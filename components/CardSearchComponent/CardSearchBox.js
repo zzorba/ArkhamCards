@@ -6,10 +6,8 @@ import {
   Easing,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import L from '../../app/i18n';
 import Switch from '../core/Switch';
@@ -65,23 +63,6 @@ export default class CardSearchBox extends React.Component {
     });
   }
 
-  renderToggleButton() {
-    const {
-      advancedOpen,
-    } = this.state;
-    return (
-      <TouchableOpacity style={styles.toggleButton} onPress={this._toggleAdvanced}>
-        <View style={styles.icon}>
-          <MaterialCommunityIcons
-            name={advancedOpen ? 'chevron-double-up' : 'dots-horizontal'}
-            size={32}
-            color="#888"
-          />
-        </View>
-      </TouchableOpacity>
-    );
-  }
-
   renderTextSearchOptions() {
     const {
       searchText,
@@ -135,13 +116,15 @@ export default class CardSearchBox extends React.Component {
   render() {
     const {
       anim,
+      advancedOpen,
     } = this.state;
     return (
       <Animated.View style={[styles.slider, { height: anim }]}>
         <SearchBox
           onChangeText={this._onChangeText}
           placeholder={L('Search for a card')}
-          sideButton={this.renderToggleButton()}
+          advancedOpen={advancedOpen}
+          toggleAdvanced={this._toggleAdvanced}
         />
         { this.renderTextSearchOptions() }
       </Animated.View>
@@ -167,12 +150,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginLeft: 10,
     marginRight: 2,
-  },
-  toggleButton: {
-    marginLeft: 8,
-  },
-  icon: {
-    width: 32,
-    height: 32,
   },
 });

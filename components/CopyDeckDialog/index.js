@@ -41,6 +41,9 @@ class CopyDeckDialog extends React.Component {
     login: PropTypes.func.isRequired,
     setNewDeck: PropTypes.func.isRequired,
     nextLocalDeckId: PropTypes.number.isRequired,
+    // from HOC
+    networkType: PropTypes.string,
+    refreshNetworkStatus: PropTypes.func.isRequired,
   };
 
   constructor(props) {

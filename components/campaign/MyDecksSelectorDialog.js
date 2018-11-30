@@ -137,7 +137,7 @@ class MyDecksSelectorDialog extends React.Component {
       <View>
         <View style={styles.row}>
           <Text style={styles.searchOption}>
-            { 'Hide Decks From Other Campaigns' }
+            { L('Hide Decks From Other Campaigns') }
           </Text>
           <Switch
             value={hideOtherCampaignInvestigators}
@@ -147,7 +147,7 @@ class MyDecksSelectorDialog extends React.Component {
         { !!campaign && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
-              { 'Hide Killed and Insane Investigators' }
+              { L('Hide Killed and Insane Investigators') }
             </Text>
             <Switch
               value={hideEliminatedInvestigators}
@@ -158,7 +158,7 @@ class MyDecksSelectorDialog extends React.Component {
         { !!campaign && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
-              { 'Only Show Previous Campaign Members' }
+              { L('Only Show Previous Campaign Members') }
             </Text>
             <Switch
               value={onlyShowPreviousCampaignMembers}
