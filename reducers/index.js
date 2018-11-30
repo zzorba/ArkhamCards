@@ -215,10 +215,13 @@ export function getCampaign(state, id) {
 
 export function getNextLocalDeckId(state) {
   const smallestDeckId = minBy(
-    concat(
-      keys(state.decks.all),
-      keys(state.replacedLocalIds || {})
-    ), parseInt
+    map(
+      concat(
+        keys(state.decks.all),
+        keys(state.decks.replacedLocalIds || {})
+      ),
+      x => parseInt(x, 10)
+    )
   ) || 0;
   if (smallestDeckId < 0) {
     return smallestDeckId - 1;

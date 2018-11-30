@@ -229,7 +229,7 @@ class DeckDetailView extends React.Component {
       hasPendingEdits,
     } = this.state;
     const rightButtons = [];
-    const editable = isPrivate && !deck.next_deck;
+    const editable = isPrivate && deck && !deck.next_deck;
     if (hasPendingEdits) {
       rightButtons.push({
         text: L('Save'),

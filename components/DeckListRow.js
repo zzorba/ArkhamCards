@@ -73,7 +73,6 @@ export default class DeckListRow extends React.Component {
       details,
       deckToCampaign,
     } = this.props;
-
     if (details) {
       return (
         <View>
@@ -86,6 +85,8 @@ export default class DeckListRow extends React.Component {
     }
     const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
     const xpString = DeckListRow.xpString(parsedDeck);
+
+    const date = deck.date_update || deck.date_creation;
     return (
       <View>
         <Text style={typography.small}>
@@ -105,9 +106,9 @@ export default class DeckListRow extends React.Component {
         { !!deck.problem && (
           <DeckProblemRow problem={{ reason: deck.problem }} color="#222" />
         ) }
-        { !!deck.date_update && (
+        { !!date && !!Date.parse(date) && (
           <Text style={typography.small} >
-            { L('Updated {{date}}', { date: toRelativeDateString(Date.parse(deck.date_update)) }) }
+            { L('Updated {{date}}', { date: toRelativeDateString(Date.parse(date)) }) }
           </Text>
         ) }
       </View>

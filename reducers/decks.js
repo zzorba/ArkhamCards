@@ -36,7 +36,7 @@ function updateDeck(state, action) {
 }
 
 function sortMyDecks(myDecks, allDecks) {
-  return reverse(sortBy(myDecks, deckId => allDecks[deckId].deck_update));
+  return reverse(sortBy(myDecks, deckId => allDecks[deckId].deck_update || allDecks[deckId].date_creation));
 }
 
 export default function(state = DEFAULT_DECK_STATE, action) {
@@ -120,21 +120,22 @@ export default function(state = DEFAULT_DECK_STATE, action) {
     );
   }
   if (action.type === REPLACE_LOCAL_DECK) {
+    const deck = updateDeck(state, action);
     const all = Object.assign(
       {},
       state.all,
-      { [action.deck.id]: action.deck }
+      { [deck.id]: deck }
     );
     delete all[action.localId];
     const myDecks = map(state.myDecks || [], deckId => {
       if (deckId === action.localId) {
-        return action.deck.id;
+        return deck.id;
       }
       return deckId;
     });
 
     const replacedLocalIds = Object.assign({}, state.replacedLocalIds || {});
-    replacedLocalIds[action.localId] = action.deck.id;
+    replacedLocalIds[action.localId] = deck.id;
     return Object.assign({},
       state,
       {
