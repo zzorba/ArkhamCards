@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, flatMap, forEach, map, partition, random, sortBy, throttle } from 'lodash';
+import { concat, flatMap, forEach, isEqual, map, partition, random, sortBy, throttle } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -169,7 +169,7 @@ class CardResultList extends React.Component {
     const {
       deckCardCounts,
     } = this.props;
-    const updateDeckCardCounts = (prevProps.deckCardCounts !== deckCardCounts);
+    const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
     if ((this.props.visible && !prevProps.visible && this.state.dirty) ||
         prevProps.query !== this.props.query ||
         prevProps.sort !== this.props.sort ||
@@ -253,15 +253,15 @@ class CardResultList extends React.Component {
   getSort() {
     switch(this.props.sort) {
       case SORT_BY_TYPE:
-        return [['sort_by_type', false], ['renderName', false]];
+        return [['sort_by_type', false], ['renderName', false], ['xp', false]];
       case SORT_BY_FACTION:
-        return [['sort_by_faction', false], ['renderName', false]];
+        return [['sort_by_faction', false], ['renderName', false], ['xp', false]];
       case SORT_BY_COST:
-        return [['cost', false], ['renderName', false]];
+        return [['cost', false], ['renderName', false], ['xp', false]];
       case SORT_BY_PACK:
         return [['sort_by_pack', false], ['position', false]];
       case SORT_BY_TITLE:
-        return [['renderName', false]];
+        return [['renderName', false], ['xp', false]];
       case SORT_BY_ENCOUNTER_SET:
         return [['sort_by_pack', false], ['encounter_code', false], ['encounter_position', false]];
     }

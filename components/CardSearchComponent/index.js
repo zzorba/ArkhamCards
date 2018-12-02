@@ -20,7 +20,7 @@ import {
 import CardResultList from './CardResultList';
 import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
-import { applyFilters } from '../../lib/filters';
+import { filterToQuery } from '../../lib/filters';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
 import typography from '../../styles/typography';
@@ -316,7 +316,7 @@ class CardSearchComponent extends React.Component {
     const {
       filters,
     } = this.state;
-    return applyFilters(filters);
+    return filterToQuery(filters);
   }
 
   query() {
