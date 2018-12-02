@@ -8,7 +8,6 @@ import { registerScreens } from './app/screens';
 import configureStore from './app/store';
 import App from './app/App';
 import realm from './data';
-// import './ReactotronConfig';
 
 class MyProvider extends React.Component {
   static propTypes = {

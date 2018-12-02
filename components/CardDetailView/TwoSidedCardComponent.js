@@ -224,7 +224,7 @@ export default class TwoSidedCardComponent extends React.Component {
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
           <Text>
-            Shroud: { card.shroud }. Clues: { card.clues }
+            Shroud: { num(card.shroud) }. Clues: { card.clues }
             { card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON }
             .
           </Text>)

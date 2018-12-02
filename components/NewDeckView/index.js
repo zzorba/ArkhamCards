@@ -4,18 +4,22 @@ import { throttle } from 'lodash';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import { SORT_BY_PACK } from './CardSortDialog/constants';
-import InvestigatorsListComponent from './InvestigatorsListComponent';
+import withLoginState from '../withLoginState';
+import { SORT_BY_PACK } from '../CardSortDialog/constants';
+import InvestigatorsListComponent from '../InvestigatorsListComponent';
 import NewDeckOptionsDialog from './NewDeckOptionsDialog';
-import L from '../app/i18n';
-import { iconsMap } from '../app/NavIcons';
+import L from '../../app/i18n';
+import { iconsMap } from '../../app/NavIcons';
 
-export default class NewDeckView extends React.Component {
+class NewDeckView extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     // From passProps
     onCreateDeck: PropTypes.func,
     filterInvestigators: PropTypes.array,
+    // From loginState
+    signedIn: PropTypes.bool.isRequired,
+    login: PropTypes.func.isRequired,
   };
 
   static get options() {
@@ -121,6 +125,8 @@ export default class NewDeckView extends React.Component {
       componentId,
       onCreateDeck,
       filterInvestigators,
+      signedIn,
+      login,
     } = this.props;
     const {
       viewRef,
@@ -143,11 +149,15 @@ export default class NewDeckView extends React.Component {
           onCreateDeck={onCreateDeck}
           toggleVisible={this._closeDialog}
           investigatorId={activeInvestigatorId}
+          signedIn={signedIn}
+          login={login}
         />
       </View>
     );
   }
 }
+
+export default withLoginState(NewDeckView);
 
 const styles = StyleSheet.create({
   container: {

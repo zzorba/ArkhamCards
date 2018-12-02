@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, keys, flatMap, map, range, sum } from 'lodash';
+import { head, sum } from 'lodash';
 import {
   Alert,
   Button,
@@ -21,7 +21,6 @@ import { DeckType } from '../parseDeck';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
-import DeckValidation from '../../lib/DeckValidation';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 
@@ -67,16 +66,23 @@ export default class DeckViewTab extends React.Component {
     componentId: PropTypes.string.isRequired,
     deck: PropTypes.object,
     parsedDeck: DeckType,
+    hasPendingEdits: PropTypes.bool,
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
     showEditNameDialog: PropTypes.func.isRequired,
     deckName: PropTypes.string.isRequired,
+    signedIn: PropTypes.bool.isRequired,
+    login: PropTypes.func.isRequired,
+    deleteDeck: PropTypes.func.isRequired,
+    uploadLocalDeck: PropTypes.func.isRequired,
+    problem: PropTypes.object,
   };
 
   constructor(props) {
     super(props);
 
+    this._uploadToArkhamDB = this.uploadToArkhamDB.bind(this);
     this._renderCard = this.renderCard.bind(this);
     this._renderCardHeader = this.renderCardHeader.bind(this);
     this._keyForCard = this.keyForCard.bind(this);
@@ -93,23 +99,95 @@ export default class DeckViewTab extends React.Component {
   deleteDeck() {
     const {
       deck,
+      deleteDeck,
     } = this.props;
-    Alert.alert(
-      L('Visit ArkhamDB to delete?'),
-      L('Unfortunately to delete decks you have to visit ArkhamDB at this time.'),
-      [
-        {
-          text: L('Visit ArkhamDB'),
+    if (deck.local) {
+      const options = [];
+      options.push({
+        text: deck.previous_deck ?
+          L('Delete this upgrade ({{version}})', { version: deck.version }) :
+          L('Delete'),
+        onPress: () => {
+          deleteDeck(deck.id);
+        },
+        style: 'destructive',
+      });
+      if (deck.previous_deck) {
+        options.push({
+          text: L('Delete all versions'),
           onPress: () => {
-            Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+            deleteDeck(deck.id, true);
           },
-        },
-        {
-          text: L('Cancel'),
-          style: 'cancel',
-        },
-      ],
-    );
+          style: 'destructive',
+        });
+      }
+      options.push({
+        text: L('Cancel'),
+        style: 'cancel',
+      });
+
+      Alert.alert(
+        L('Delete deck'),
+        L('Are you sure you want to delete this deck?'),
+        options,
+      );
+    } else {
+      Alert.alert(
+        L('Visit ArkhamDB to delete?'),
+        L('Unfortunately to delete decks you have to visit ArkhamDB at this time.'),
+        [
+          {
+            text: L('Visit ArkhamDB'),
+            onPress: () => {
+              Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+            },
+          },
+          {
+            text: L('Cancel'),
+            style: 'cancel',
+          },
+        ],
+      );
+    }
+  }
+
+  uploadToArkhamDB() {
+    const {
+      signedIn,
+      login,
+      deck,
+      hasPendingEdits,
+      uploadLocalDeck,
+    } = this.props;
+    if (hasPendingEdits) {
+      Alert.alert(
+        L('Save Local Changes'),
+        L('Please save any local edits to this deck before sharing to ArkhamDB')
+      );
+    } else if (deck.next_deck || deck.previous_deck) {
+      Alert.alert(
+        L('Unsupported Operation'),
+        L('This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, please make a \'copy\' first.')
+      );
+    } else if (!signedIn) {
+      Alert.alert(
+        L('Sign in to ArkhamDB'),
+        L('ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.'),
+        [
+          { text: 'Sign In', onPress: login },
+          { text: 'Cancel', style: 'cancel' },
+        ],
+      );
+    } else {
+      Alert.alert(
+        L('Upload to ArkhamDB'),
+        L('You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.'),
+        [
+          { text: 'Upload', onPress: uploadLocalDeck },
+          { text: 'Cancel', style: 'cancel' },
+        ],
+      );
+    }
   }
 
   viewDeck() {
@@ -181,21 +259,11 @@ export default class DeckViewTab extends React.Component {
 
   renderProblem() {
     const {
-      cards,
       parsedDeck: {
-        slots,
         investigator,
       },
+      problem,
     } = this.props;
-
-    const validator = new DeckValidation(investigator);
-    const problem = validator.getProblem(flatMap(keys(slots), code => {
-      const card = cards[code];
-      if (!card) {
-        return [];
-      }
-      return map(range(0, slots[code]), () => card);
-    }));
 
     if (!problem) {
       return null;
@@ -307,12 +375,21 @@ export default class DeckViewTab extends React.Component {
             parsedDeck={this.props.parsedDeck}
             isPrivate={isPrivate}
           />
-          <View style={styles.button}>
-            <Button
-              title={L('View on ArkhamDB')}
-              onPress={this._viewDeck}
-            />
-          </View>
+          { deck.local ? (
+            <View style={styles.button}>
+              <Button
+                title={L('Upload to ArkhamDB')}
+                onPress={this._uploadToArkhamDB}
+              />
+            </View>
+          ) : (
+            <View style={styles.button}>
+              <Button
+                title={L('View on ArkhamDB')}
+                onPress={this._viewDeck}
+              />
+            </View>
+          ) }
           { isPrivate && (
             <View style={styles.button}>
               <Button

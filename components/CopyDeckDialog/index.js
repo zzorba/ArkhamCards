@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
+import { ActivityIndicator, Platform, TouchableOpacity, StyleSheet } from 'react-native';
 import { throttle } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -12,12 +12,14 @@ import withPlayerCards from '../withPlayerCards';
 import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import Dialog from '../core/Dialog';
+import withNetworkStatus from '../core/withNetworkStatus';
+import { cloneLocalDeck } from '../decks/localHelper';
 import * as Actions from '../../actions';
 import { newDeck, saveDeck } from '../../lib/authApi';
 import L from '../../app/i18n';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
-import { getDeck, getBaseDeck, getLatestDeck } from '../../reducers';
+import { getDeck, getBaseDeck, getLatestDeck, getNextLocalDeckId } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 class CopyDeckDialog extends React.Component {
@@ -27,6 +29,7 @@ class CopyDeckDialog extends React.Component {
     toggleVisible: PropTypes.func.isRequired,
     deckId: PropTypes.number,
     viewRef: PropTypes.object,
+    signedIn: PropTypes.bool,
 
     // from realm
     investigators: PropTypes.object,
@@ -37,6 +40,10 @@ class CopyDeckDialog extends React.Component {
     latestDeck: PropTypes.object,
     login: PropTypes.func.isRequired,
     setNewDeck: PropTypes.func.isRequired,
+    nextLocalDeckId: PropTypes.number.isRequired,
+    // from HOC
+    networkType: PropTypes.string,
+    refreshNetworkStatus: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -45,9 +52,11 @@ class CopyDeckDialog extends React.Component {
     this.state = {
       saving: false,
       deckName: null,
+      offlineDeck: props.deck && props.deck.local,
       selectedDeckId: props.deckId,
     };
 
+    this._onDeckTypeChange = this.onDeckTypeChange.bind(this);
     this._updateNewDeck = this.updateNewDeck.bind(this);
     this._selectedDeckIdChanged = this.selectedDeckIdChanged.bind(this);
     this._onDeckNameChange = this.onDeckNameChange.bind(this);
@@ -63,6 +72,19 @@ class CopyDeckDialog extends React.Component {
     if (deckId && deckId !== prevProps.deckId) {
       this.resetForm();
     }
+  }
+
+  onDeckTypeChange(value) {
+    const {
+      signedIn,
+      login,
+    } = this.props;
+    if (value && !signedIn) {
+      login();
+    }
+    this.setState({
+      offlineDeck: !value,
+    });
   }
 
   onDeckNameChange(value) {
@@ -167,26 +189,35 @@ class CopyDeckDialog extends React.Component {
   onOkayPress() {
     const {
       login,
+      signedIn,
+      nextLocalDeckId,
     } = this.props;
     const {
       deckName,
+      offlineDeck,
     } = this.state;
     const investigator = this.investigator();
     if (investigator && !this.state.saving) {
-      this.setState({
-        saving: true,
-      });
-      handleAuthErrors(
-        newDeck(investigator.code, deckName),
-        this._updateNewDeck,
-        () => {
-          this.setState({
-            saving: false,
-          });
-        },
-        () => this.onOkayPress(),
-        login
-      );
+      if (offlineDeck || !signedIn) {
+        const cloneDeck = this.selectedDeck();
+        const newDeck = cloneLocalDeck(nextLocalDeckId, cloneDeck, deckName);
+        this.showNewDeck(newDeck);
+      } else {
+        this.setState({
+          saving: true,
+        });
+        handleAuthErrors(
+          newDeck(investigator.code, deckName),
+          this._updateNewDeck,
+          () => {
+            this.setState({
+              saving: false,
+            });
+          },
+          () => this.onOkayPress(),
+          login
+        );
+      }
     }
   }
 
@@ -256,8 +287,14 @@ class CopyDeckDialog extends React.Component {
 
   renderFormContent() {
     const {
+      signedIn,
+      networkType,
+      refreshNetworkStatus,
+    } = this.props;
+    const {
       saving,
       deckName,
+      offlineDeck,
     } = this.state;
     if (saving) {
       return (
@@ -281,6 +318,24 @@ class CopyDeckDialog extends React.Component {
           returnKeyType="done"
         />
         { this.renderDeckSelector() }
+        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
+          { L('DECK TYPE') }
+        </DialogComponent.Description>
+        <DialogComponent.Switch
+          label={L('Create on ArkhamDB')}
+          value={!offlineDeck && signedIn && networkType !== 'none'}
+          disabled={networkType === 'none'}
+          onValueChange={this._onDeckTypeChange}
+          onTintColor="#222222"
+          tintColor="#bbbbbb"
+        />
+        { networkType === 'none' && (
+          <TouchableOpacity onPress={refreshNetworkStatus}>
+            <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+              { L('You seem to be offline. Refresh Network?') }
+            </DialogComponent.Description>
+          </TouchableOpacity>
+        ) }
       </React.Fragment>
     );
   }
@@ -332,7 +387,9 @@ class CopyDeckDialog extends React.Component {
 
 function mapStateToProps(state, props) {
   if (!props.deckId) {
-    return {};
+    return {
+      nextLocalDeckId: getNextLocalDeckId(state),
+    };
   }
   const deck = getDeck(state, props.deckId);
   let baseDeck = getBaseDeck(state, props.deckId);
@@ -347,6 +404,7 @@ function mapStateToProps(state, props) {
     deck,
     baseDeck,
     latestDeck,
+    nextLocalDeckId: getNextLocalDeckId(state),
   };
 }
 
@@ -355,7 +413,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withPlayerCards(
-  connect(mapStateToProps, mapDispatchToProps)(CopyDeckDialog)
+  connect(mapStateToProps, mapDispatchToProps)(
+    withNetworkStatus(CopyDeckDialog)
+  )
 );
 
 const styles = StyleSheet.create({

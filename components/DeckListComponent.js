@@ -19,12 +19,13 @@ import withPlayerCards from './withPlayerCards';
 import { getAllDecks } from '../reducers';
 import * as Actions from '../actions';
 import typography from '../styles/typography';
+import space from '../styles/space';
 
 class DeckListComponent extends React.Component {
   static propTypes = {
     deckIds: PropTypes.array.isRequired,
     deckClicked: PropTypes.func.isRequired,
-    onRefresh: PropTypes.func.isRequired,
+    onRefresh: PropTypes.func,
     refreshing: PropTypes.bool,
     investigators: PropTypes.object,
     cards: PropTypes.object,
@@ -32,6 +33,7 @@ class DeckListComponent extends React.Component {
     deckToCampaign: PropTypes.object,
     fetchPublicDeck: PropTypes.func.isRequired,
     customHeader: PropTypes.node,
+    customFooter: PropTypes.node,
     isEmpty: PropTypes.bool,
   }
 
@@ -67,7 +69,7 @@ class DeckListComponent extends React.Component {
       fetchPublicDeck,
     } = this.props;
     deckIds.forEach(deckId => {
-      if (!decks[deckId]) {
+      if (!decks[deckId] && deckId > 0) {
         fetchPublicDeck(deckId, false);
       }
     });
@@ -115,6 +117,7 @@ class DeckListComponent extends React.Component {
     const {
       isEmpty,
       refreshing,
+      customFooter,
     } = this.props;
     const {
       searchTerm,
@@ -122,22 +125,28 @@ class DeckListComponent extends React.Component {
     if (isEmpty && !refreshing) {
       return (
         <View style={styles.footer}>
-          <Text style={[typography.text, typography.center]}>
+          <Text style={[typography.text, typography.center, space.marginBottomM]}>
             { L('No decks yet.\n\nUse the + button to create a new one.') }
           </Text>
+          { customFooter }
         </View>
       );
     }
     if (searchTerm && this.getItems().length === 0) {
       return (
         <View style={styles.footer}>
-          <Text style={[typography.text, typography.center]}>
+          <Text style={[typography.text, typography.center, space.marginBottomM]}>
             { L('No matching decks for "{{searchTerm}}".', { searchTerm }) }
           </Text>
+          { customFooter }
         </View>
       );
     }
-    return <View style={styles.footer} />;
+    return (
+      <View style={styles.footer}>
+        { customFooter }
+      </View>
+    );
   }
 
   getItems() {
@@ -199,7 +208,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withPlayerCards(DeckListComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withPlayerCards(DeckListComponent)
+);
 
 const styles = StyleSheet.create({
   container: {

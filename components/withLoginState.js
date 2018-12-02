@@ -2,23 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ActivityIndicator,
-  Button,
   StyleSheet,
   View,
-  Text,
 } from 'react-native';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import L from '../app/i18n';
 import * as Actions from '../actions';
 
 /**
  * Simple component to block children rendering until a login flow is completed.
  */
-export default function withLoginGate(WrappedComponent, message) {
-  class ConnectedLoginGateComponent extends React.Component {
+export default function withLoginState(WrappedComponent) {
+  class ConnectedLoginStateComponent extends React.Component {
     static propTypes = {
       loading: PropTypes.bool,
       error: PropTypes.string,
@@ -31,6 +28,7 @@ export default function withLoginGate(WrappedComponent, message) {
         loading,
         signedIn,
         login,
+        error,
       } = this.props;
       if (loading) {
         return (
@@ -44,26 +42,22 @@ export default function withLoginGate(WrappedComponent, message) {
         );
       }
 
-      if (!signedIn) {
-        return (
-          <View style={styles.signInContainer}>
-            { !!message && <Text style={styles.messageText}>{ message }</Text> }
-            <Button title={L('Sign in to ArkhamDB')} onPress={login} />
-          </View>
-        );
-      }
-
       return (
-        <WrappedComponent {...this.props} />
+        <WrappedComponent
+          {...this.props}
+          login={login}
+          signedIn={signedIn}
+          signInError={error}
+        />
       );
     }
   }
 
-  hoistNonReactStatics(ConnectedLoginGateComponent, WrappedComponent);
+  hoistNonReactStatics(ConnectedLoginStateComponent, WrappedComponent);
 
   function mapStateToProps(state) {
     return {
-      signedIn: state.signedIn.status,
+      signedIn: state.signedIn.status || false,
       error: state.signedIn.error,
       loading: state.signedIn.loading,
     };
@@ -73,7 +67,7 @@ export default function withLoginGate(WrappedComponent, message) {
     return bindActionCreators(Actions, dispatch);
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(ConnectedLoginGateComponent);
+  return connect(mapStateToProps, mapDispatchToProps)(ConnectedLoginStateComponent);
 }
 
 const styles = StyleSheet.create({
@@ -82,17 +76,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-  },
-  signInContainer: {
-    margin: 16,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-  messageText: {
-    fontSize: 18,
-    fontFamily: 'System',
-    marginBottom: 32,
   },
 });

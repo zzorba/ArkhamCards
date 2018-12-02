@@ -1,4 +1,4 @@
-import { forEach, keys, map } from 'lodash';
+import { find, forEach, keys, map } from 'lodash';
 
 import {
   LOGOUT,
@@ -7,6 +7,7 @@ import {
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
   SET_ALL_CAMPAIGNS,
+  REPLACE_LOCAL_DECK,
 } from '../actions/types';
 
 // Campaign: {
@@ -128,6 +129,32 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     return Object.assign({},
       state,
       { all: Object.assign({}, state.all, { [action.id]: campaign }) },
+    );
+  }
+  if (action.type === REPLACE_LOCAL_DECK) {
+    const all = Object.assign(
+      {},
+      state.all
+    );
+    forEach(keys(all), campaignId => {
+      const campaign = all[campaignId];
+      if (find(campaign.baseDeckIds || [], deckId => deckId === action.localId)) {
+        all[campaignId] = Object.assign({},
+          campaign,
+          {
+            baseDeckIds: map(campaign.baseDeckIds, deckId => {
+              if (deckId === action.localId) {
+                return action.deck.id;
+              }
+              return deckId;
+            }),
+          }
+        );
+      }
+    });
+    return Object.assign({},
+      state,
+      { all },
     );
   }
   if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {

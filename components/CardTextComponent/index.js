@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import SimpleMarkdown from 'simple-markdown';
 import { MarkdownView } from 'react-native-markdown-view';
 

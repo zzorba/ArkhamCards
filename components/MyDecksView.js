@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
+import { find, filter, throttle } from 'lodash';
+import { Text, StyleSheet, Switch, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import L from '../app/i18n';
 import { iconsMap } from '../app/NavIcons';
 import { showDeckModal } from './navHelper';
-import withLoginGate from './withLoginGate';
 import withFetchCardsGate from './cards/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
+import { getMyDecksState } from '../reducers';
 
 class MyDecksView extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
+    myDecks: PropTypes.array,
   };
 
   static get options() {
@@ -29,6 +33,10 @@ class MyDecksView extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      localDecksOnly: false,
+    };
+    this._toggleLocalDecksOnly = this.toggleLocalDecksOnly.bind(this);
     this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
     this._deckNavClicked = this.deckNavClicked.bind(this);
 
@@ -61,20 +69,81 @@ class MyDecksView extends React.Component {
     showDeckModal(this.props.componentId, deck, investigator);
   }
 
+  toggleLocalDecksOnly() {
+    this.setState({
+      localDecksOnly: !this.state.localDecksOnly,
+    });
+  }
+
+  renderCustomHeader() {
+    const {
+      myDecks,
+    } = this.props;
+    const {
+      localDecksOnly,
+    } = this.state;
+    const hasLocalDeck = find(myDecks, deckId => deckId < 0) !== null;
+    const hasOnlineDeck = find(myDecks, deckId => deckId > 0) !== null;
+    if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
+      // need to have both to show the toggle.
+      return null;
+    }
+    return (
+      <View style={styles.row}>
+        <Text style={styles.searchOption}>
+          { L('Hide ArkhamDB Decks') }
+        </Text>
+        <Switch
+          value={localDecksOnly}
+          onValueChange={this._toggleLocalDecksOnly}
+        />
+      </View>
+    );
+  }
+
+  onlyDeckIds() {
+    const {
+      myDecks,
+    } = this.props;
+    if (this.state.localDecksOnly) {
+      return filter(myDecks, deckId => parseInt(deckId, 10) < 0);
+    }
+    return null;
+  }
+
   render() {
     return (
       <MyDecksComponent
         componentId={this.props.componentId}
+        customHeader={this.renderCustomHeader()}
         deckClicked={this._deckNavClicked}
+        onlyDeckIds={this.onlyDeckIds()}
       />
     );
   }
 }
 
+function mapStateToProps(state) {
+  return getMyDecksState(state);
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({}, dispatch);
+}
+
 export default withFetchCardsGate(
-  withLoginGate(
-    MyDecksView,
-    L('ArkhamDB is a popular deck building site where you can manage your decks and share them with others. If you have an account, you can use this app to create and manage your decks on the go.\n\nPlease sign in to enable this feature.')
-  ),
+  connect(mapStateToProps, mapDispatchToProps)(MyDecksView),
   { promptForUpdate: false },
 );
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: 4,
+    paddingBottom: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
+  },
+});

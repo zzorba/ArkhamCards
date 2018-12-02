@@ -131,7 +131,9 @@ class CardFilterView extends React.Component {
           if (card.slot.indexOf('.') !== -1) {
             forEach(
               map(card.slot.split('.'), s => s.trim()),
-              s => slotsMap[s] = 1
+              s => {
+                slotsMap[s] = 1;
+              }
             );
           } else {
             slotsMap[card.slot] = 1;
