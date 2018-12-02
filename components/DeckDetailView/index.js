@@ -7,6 +7,7 @@ import {
   BackHandler,
   Platform,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
