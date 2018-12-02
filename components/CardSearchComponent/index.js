@@ -452,6 +452,7 @@ class CardSearchComponent extends React.Component {
       selectedSort,
       searchTerm,
       visible,
+      mythosMode,
     } = this.state;
     const query = this.query();
     return (
@@ -472,7 +473,7 @@ class CardSearchComponent extends React.Component {
             hideHeader={this._hideHeader}
             expandSearchControls={this.renderExpandSearchButtons()}
             visible={visible}
-            showNonCollection={showNonCollection}
+            showNonCollection={mythosMode || showNonCollection}
           />
         </View>
         { !!footer && <View style={[

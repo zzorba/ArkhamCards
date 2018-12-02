@@ -56,7 +56,7 @@ export function upgradeLocalDeck(id, deck, xp, exiles) {
         date_creation: timestamp,
         date_update: timestamp,
         problem: exiles.length ? 'too_few_cards' : deck.problem,
-        xp: xp + (deck.xp || 0) - (deck.spentXp),
+        xp: xp + (deck.xp || 0) - (deck.spentXp || 0),
         spentXp: 0,
         version: versionParts.join('.'),
         previous_deck: deck.id,

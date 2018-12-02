@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { Navigation } from 'react-native-navigation';
+import DialogComponent from 'react-native-dialog';
 
 import L from '../../app/i18n';
 import withLoginState from '../withLoginState';
@@ -76,11 +77,14 @@ class DeckDetailView extends React.Component {
       slots: {},
       loaded: false,
       saving: false,
+      saveError: null,
       copying: false,
       deleting: false,
       nameChange: null,
       hasPendingEdits: false,
     };
+    this._dismissSaveError = this.dismissSaveError.bind(this);
+    this._handleSaveError = this.handleSaveError.bind(this);
     this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
     this._toggleCopyDialog = throttle(this.toggleCopyDialog.bind(this), 200);
     this._saveName = this.saveName.bind(this);
@@ -417,6 +421,9 @@ class DeckDetailView extends React.Component {
     } = this.state;
     const problemObj = this.getProblem();
     const problem = problemObj ? problemObj.reason : '';
+    this.setState({
+      saving: true,
+    });
 
     const promise = newCustomDeck(
       deck.investigator_code,
@@ -437,17 +444,26 @@ class DeckDetailView extends React.Component {
         }, this._syncNavigationButtons);
       },
       // onFailure
-      () => {
-        this.setState({
-          saving: false,
-        });
-      },
+      this._handleSaveError,
       // retry
       () => {
         this.uploadDeck();
       },
       login
     );
+  }
+
+  dismissSaveError() {
+    this.setState({
+      saveError: null,
+      saving: false,
+    });
+  }
+
+  handleSaveError(err) {
+    this.setState({
+      saveError: err.message || 'Unknown Error',
+    });
   }
 
   saveEdits(dismissAfterSave) {
@@ -511,12 +527,7 @@ class DeckDetailView extends React.Component {
               }, this._syncNavigationButtons);
             }
           },
-          // onFailure
-          () => {
-            this.setState({
-              saving: false,
-            });
-          },
+          this._handleSaveError,
           // retry
           () => {
             this.saveEdits(dismissAfterSave);
@@ -636,7 +647,22 @@ class DeckDetailView extends React.Component {
     } = this.props;
     const {
       saving,
+      saveError,
     } = this.state;
+    if (saveError) {
+      return (
+        <Dialog title={L('Error')} visible={saving} viewRef={viewRef}>
+          <Text>
+            { saveError }
+          </Text>
+          <DialogComponent.Button
+            label={L('Okay')}
+            onPress={this._dismissSaveError}
+          />
+        </Dialog>
+      );
+
+    }
     return (
       <Dialog title={L('Saving')} visible={saving} viewRef={viewRef}>
         <ActivityIndicator

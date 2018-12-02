@@ -38,7 +38,6 @@ export function handleAuthErrors(
           }],
         );
       } else {
-        Alert.alert(L('Unknown error'), err.message || err);
         onFailure(err);
       }
     });
