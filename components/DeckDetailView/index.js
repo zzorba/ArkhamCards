@@ -42,6 +42,7 @@ import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
 import { getDeck, getEffectiveDeckId } from '../../reducers';
+import typography from '../../ui/typography';
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -653,7 +654,7 @@ class DeckDetailView extends React.Component {
     if (saveError) {
       return (
         <Dialog title={L('Error')} visible={saving} viewRef={viewRef}>
-          <Text>
+          <Text style={[styles.errorMargin, typography.small]}>
             { saveError }
           </Text>
           <DialogComponent.Button
@@ -859,5 +860,8 @@ const styles = StyleSheet.create({
   },
   button: {
     marginRight: 8,
+  },
+  errorMargin: {
+    padding: 16,
   },
 });

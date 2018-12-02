@@ -124,8 +124,13 @@ class DeckUpgradeDialog extends React.Component {
       nextLocalDeckId,
     } = this.props;
     if (!this.state.saving) {
+      this.setState({
+        saving: true,
+      });
       if (campaign) {
-        updateCampaign(campaign.id, { investigatorData: this.investigatorData() });
+        updateCampaign(campaign.id, {
+          investigatorData: this.investigatorData(),
+        });
       }
       const {
         xp,
@@ -142,10 +147,10 @@ class DeckUpgradeDialog extends React.Component {
         this.handleDeckResult(
           upgradeLocalDeck(nextLocalDeckId, this.props.deck, xp, exileParts)
         );
-      } else {
         this.setState({
-          saving: true,
+          saving: false,
         });
+      } else {
         const exiles = exileParts.join(',');
         const upgradeDeckPromise = upgradeDeck(id, xp, exiles);
         handleAuthErrors(
