@@ -213,6 +213,14 @@ export function getCampaign(state, id) {
   return null;
 }
 
+export function getCampaignForDeck(state, deckId) {
+  const deckToCampaign = getDeckToCampaignMap(state);
+  if (deckId in deckToCampaign) {
+    return processCampaign(deckToCampaign[deckId]);
+  }
+  return null;
+}
+
 export function getNextLocalDeckId(state) {
   const smallestDeckId = minBy(
     map(

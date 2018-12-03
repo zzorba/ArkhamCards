@@ -21,6 +21,7 @@ import L from '../../app/i18n';
 import withLoginState from '../withLoginState';
 import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
+import withTraumaDialog from '../campaign/withTraumaDialog';
 import { updateLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
@@ -41,8 +42,8 @@ import { FACTION_DARK_GRADIENTS } from '../../constants';
 import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
-import { getDeck, getEffectiveDeckId } from '../../reducers';
-import typography from '../../ui/typography';
+import { getCampaign, getDeck, getEffectiveDeckId, getCampaignForDeck } from '../../reducers';
+import typography from '../../styles/typography';
 
 class DeckDetailView extends React.Component {
   static propTypes = {
@@ -50,12 +51,14 @@ class DeckDetailView extends React.Component {
     id: PropTypes.number.isRequired,
     isPrivate: PropTypes.bool,
     modal: PropTypes.bool,
+    /* eslint-disable react/no-unused-prop-types */
     campaignId: PropTypes.number,
     // passed props
     title: PropTypes.string,
     // From realm.
     cards: PropTypes.object,
     // From redux.
+    campaign: PropTypes.object,
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
     login: PropTypes.func.isRequired,
@@ -69,6 +72,8 @@ class DeckDetailView extends React.Component {
     showTextEditDialog: PropTypes.func.isRequired,
     captureViewRef: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object,
   };
 
   constructor(props) {
@@ -374,7 +379,7 @@ class DeckDetailView extends React.Component {
     const {
       componentId,
       deck,
-      campaignId,
+      campaign,
     } = this.props;
     const {
       parsedDeck,
@@ -385,7 +390,7 @@ class DeckDetailView extends React.Component {
         passProps: {
           id: deck.id,
           showNewDeck: true,
-          campaignId,
+          campaignId: campaign ? campaign.id : null,
         },
         options: {
           statusBar: {
@@ -756,8 +761,11 @@ class DeckDetailView extends React.Component {
       isPrivate,
       captureViewRef,
       cards,
+      campaign,
       signedIn,
       login,
+      showTraumaDialog,
+      investigatorDataUpdates,
     } = this.props;
     const {
       loaded,
@@ -795,6 +803,9 @@ class DeckDetailView extends React.Component {
             login={login}
             deleteDeck={this._deleteDeck}
             uploadLocalDeck={this._uploadLocalDeck}
+            campaign={campaign}
+            showTraumaDialog={showTraumaDialog}
+            investigatorDataUpdates={investigatorDataUpdates}
           />
           <DeckNavFooter
             componentId={componentId}
@@ -816,6 +827,9 @@ function mapStateToProps(state, props) {
     id,
     deck,
     previousDeck: deck && deck.previous_deck && getDeck(state, deck.previous_deck),
+    campaign: props.campaignId ?
+      getCampaign(state, props.campaignId) :
+      getCampaignForDeck(state, id),
   };
 }
 
@@ -832,8 +846,10 @@ function mapDispatchToProps(dispatch) {
 
 export default withPlayerCards(
   connect(mapStateToProps, mapDispatchToProps)(
-    withTextEditDialog(
-      withLoginState(DeckDetailView)
+    withTraumaDialog(
+      withTextEditDialog(
+        withLoginState(DeckDetailView)
+      )
     )
   )
 );

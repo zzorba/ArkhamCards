@@ -200,7 +200,11 @@ class DeckUpgradeDialog extends React.Component {
     if (!campaign) {
       return null;
     }
-    return Object.assign({}, campaign.investigatorData || {}, investigatorDataUpdates);
+    return Object.assign(
+      {},
+      campaign.investigatorData || {},
+      investigatorDataUpdates
+    );
   }
 
   renderCampaignSection() {

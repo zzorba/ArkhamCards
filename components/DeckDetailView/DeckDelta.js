@@ -96,12 +96,7 @@ class DeckDelta extends React.Component {
       return null;
     }
     return (
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <Text style={typography.smallLabel}>
-            { L('CAMPAIGN PROGRESS') }
-          </Text>
-        </View>
+      <React.Fragment>
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
             <View style={styles.button}>
@@ -150,13 +145,13 @@ class DeckDelta extends React.Component {
                 key={code}
                 onPress={this._showCard}
                 card={cards[code]}
-                count={exiledCards[code]}
+                count={-exiledCards[code]}
                 deltaCountMode
               />
             )) }
           </View>
         ) }
-      </View>
+      </React.Fragment>
     );
   }
 }
@@ -183,9 +178,6 @@ export default connectRealm(DeckDelta, {
 });
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 16,
-  },
   title: {
     marginTop: 16,
     paddingLeft: 8,

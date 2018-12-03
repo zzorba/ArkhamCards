@@ -65,12 +65,15 @@ export default class DeckViewTab extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     deck: PropTypes.object,
+    campaign: PropTypes.object,
     parsedDeck: DeckType,
     hasPendingEdits: PropTypes.bool,
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
     showEditNameDialog: PropTypes.func.isRequired,
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object,
     deckName: PropTypes.string.isRequired,
     signedIn: PropTypes.bool.isRequired,
     login: PropTypes.func.isRequired,
@@ -167,7 +170,7 @@ export default class DeckViewTab extends React.Component {
     } else if (deck.next_deck || deck.previous_deck) {
       Alert.alert(
         L('Unsupported Operation'),
-        L('This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, please make a \'copy\' first.')
+        L('This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.')
       );
     } else if (!signedIn) {
       Alert.alert(
@@ -290,6 +293,8 @@ export default class DeckViewTab extends React.Component {
 
   render() {
     const {
+      campaign,
+      investigatorDataUpdates,
       componentId,
       deck,
       deckName,
@@ -304,6 +309,7 @@ export default class DeckViewTab extends React.Component {
       isPrivate,
       buttons,
       showEditNameDialog,
+      showTraumaDialog,
     } = this.props;
 
     const sections = deckToSections(normalCards)
@@ -369,12 +375,6 @@ export default class DeckViewTab extends React.Component {
               sections={sections}
             />
           </View>
-          <DeckProgressModule
-            componentId={componentId}
-            deck={deck}
-            parsedDeck={this.props.parsedDeck}
-            isPrivate={isPrivate}
-          />
           { deck.local ? (
             <View style={styles.button}>
               <Button
@@ -399,6 +399,15 @@ export default class DeckViewTab extends React.Component {
               />
             </View>
           ) }
+          <DeckProgressModule
+            componentId={componentId}
+            deck={deck}
+            parsedDeck={this.props.parsedDeck}
+            isPrivate={isPrivate}
+            campaign={campaign}
+            showTraumaDialog={showTraumaDialog}
+            investigatorDataUpdates={investigatorDataUpdates}
+          />
         </View>
       </ScrollView>
     );

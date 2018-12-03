@@ -60,6 +60,7 @@ export function upgradeLocalDeck(id, deck, xp, exiles) {
         spentXp: 0,
         version: versionParts.join('.'),
         previous_deck: deck.id,
+        exile_string: exiles && exiles.length ? exiles.join(',') : null,
       },
     ),
   };
