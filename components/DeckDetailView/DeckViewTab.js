@@ -111,7 +111,7 @@ export default class DeckViewTab extends React.Component {
           L('Delete this upgrade ({{version}})', { version: deck.version }) :
           L('Delete'),
         onPress: () => {
-          deleteDeck(deck.id);
+          deleteDeck(false);
         },
         style: 'destructive',
       });
@@ -119,7 +119,7 @@ export default class DeckViewTab extends React.Component {
         options.push({
           text: L('Delete all versions'),
           onPress: () => {
-            deleteDeck(deck.id, true);
+            deleteDeck(true);
           },
           style: 'destructive',
         });

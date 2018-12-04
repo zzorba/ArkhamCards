@@ -155,6 +155,9 @@ export default class Card {
       case 'basicweakness':
         return L('Basic Weakness', options);
       case 'weakness':
+        if (json.spoiler) {
+          return L('Story', options);
+        }
         return L('Weakness', options);
       default:
         switch(json.type_code) {
@@ -196,6 +199,9 @@ export default class Card {
             }
             return L('Skill', options);
           case 'investigator':
+            if (json.spoiler) {
+              return L('Story', options);
+            }
             return L('Investigator', options);
           default:
             return L('Scenario', options);
