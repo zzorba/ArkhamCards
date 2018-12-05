@@ -445,7 +445,8 @@
     "Mark all packs in the {{packName}} cycle?": "Mark all packs in the {{packName}} cycle?",
     "Clear all packs in the {{packName}} cycle?": "Clear all packs in the {{packName}} cycle?",
     "No": "No",
-    "Yes": "Yes"
+    "Yes": "Yes",
+    "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.": "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck."
 },
   "de": {
     "Test Icons: ": "Test Icons: ",
@@ -884,7 +885,8 @@
     "Mark all packs in the {{packName}} cycle?": "Mark all packs in the {{packName}} cycle?",
     "Clear all packs in the {{packName}} cycle?": "Clear all packs in the {{packName}} cycle?",
     "No": "No",
-    "Yes": "Yes"
+    "Yes": "Yes",
+    "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.": "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck."
 },
   "es": {
     "Test Icons: ": "Iconos de habilidad: ",
@@ -1323,7 +1325,8 @@
     "Mark all packs in the {{packName}} cycle?": "Mark all packs in the {{packName}} cycle?",
     "Clear all packs in the {{packName}} cycle?": "Clear all packs in the {{packName}} cycle?",
     "No": "No",
-    "Yes": "Yes"
+    "Yes": "Yes",
+    "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.": "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck."
 },
   "it": {
     "Test Icons: ": "Test Icons: ",
@@ -1762,7 +1765,8 @@
     "Mark all packs in the {{packName}} cycle?": "Mark all packs in the {{packName}} cycle?",
     "Clear all packs in the {{packName}} cycle?": "Clear all packs in the {{packName}} cycle?",
     "No": "No",
-    "Yes": "Yes"
+    "Yes": "Yes",
+    "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.": "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck."
 },
   "fr": {
     "Test Icons: ": "Icônes de Compétence: ",
@@ -2201,6 +2205,7 @@
     "Mark all packs in the {{packName}} cycle?": "Mark all packs in the {{packName}} cycle?",
     "Clear all packs in the {{packName}} cycle?": "Clear all packs in the {{packName}} cycle?",
     "No": "No",
-    "Yes": "Yes"
+    "Yes": "Yes",
+    "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.": "This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck."
 }
 }
