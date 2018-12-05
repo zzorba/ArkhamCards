@@ -220,8 +220,8 @@ class DeckDetailView extends React.Component {
     this.setState({
       deleting: true,
     }, () => {
-      removeDeck(id, deleteAllVersions);
       Navigation.dismissAllModals();
+      removeDeck(id, deleteAllVersions);
     });
   }
 

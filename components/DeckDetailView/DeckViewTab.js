@@ -92,32 +92,40 @@ export default class DeckViewTab extends React.Component {
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
     this._viewDeck = this.viewDeck.bind(this);
-    this._deleteDeck = this.deleteDeck.bind(this);
+    this._deleteDeckPrompt = this.deleteDeckPrompt.bind(this);
   }
 
   keyForCard(item) {
     return item.id;
   }
 
-  deleteDeck() {
+  deleteDeckPrompt() {
     const {
       deck,
       deleteDeck,
     } = this.props;
     if (deck.local) {
       const options = [];
-      options.push({
-        text: deck.previous_deck ?
-          L('Delete this upgrade ({{version}})', { version: deck.version }) :
-          L('Delete'),
-        onPress: () => {
-          deleteDeck(false);
-        },
-        style: 'destructive',
-      });
-      if (deck.previous_deck) {
+      const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
+      if (isLatestUpgrade) {
+        options.push({
+          text: L('Delete this upgrade ({{version}})', { version: deck.version }),
+          onPress: () => {
+            deleteDeck(false);
+          },
+          style: 'destructive',
+        });
         options.push({
           text: L('Delete all versions'),
+          onPress: () => {
+            deleteDeck(true);
+          },
+          style: 'destructive',
+        });
+      } else {
+        const isUpgraded = !!deck.next_deck;
+        options.push({
+          text: isUpgraded ? L('Delete all versions') : L('Delete'),
           onPress: () => {
             deleteDeck(true);
           },
@@ -395,7 +403,7 @@ export default class DeckViewTab extends React.Component {
               <Button
                 title={L('Delete Deck')}
                 color={COLORS.red}
-                onPress={this._deleteDeck}
+                onPress={this._deleteDeckPrompt}
               />
             </View>
           ) }

@@ -148,19 +148,33 @@ export default function(state = DEFAULT_DECK_STATE, action) {
   if (action.type === DELETE_DECK) {
     const all = Object.assign({}, state.all);
     let deck = all[action.id];
-
-    delete all[action.id];
     const toDelete = [action.id];
-    if (action.deleteAllVersions && deck) {
-      while (deck.previous_deck && all[deck.previous_deck]) {
-        const id = deck.previous_deck;
-        toDelete.push(id);
-        deck = all[id];
-        delete all[id];
+    if (deck) {
+      if (action.deleteAllVersions) {
+        console.log('DELETE: all versions');
+        while (deck.previous_deck && all[deck.previous_deck]) {
+          const id = deck.previous_deck;
+          toDelete.push(id);
+          deck = all[id];
+          delete all[id];
+        }
+      } else {
+        if (deck.previous_deck && all[deck.previous_deck]) {
+          const previousDeck = all[deck.previous_deck];
+          all[deck.previous_deck] = Object.assign(
+            {},
+            previousDeck,
+            { next_deck: null }
+          );
+        }
       }
     }
+    delete all[action.id];
     const toDeleteSet = new Set(toDelete);
-    const myDecks = filter(state.myDecks, deckId => !toDeleteSet.has(deckId));
+    const myDecks = (action.deleteAllVersions || !deck || !deck.previous_deck) ?
+      filter(state.myDecks, deckId => !toDeleteSet.has(deckId)) :
+      map(state.myDecks, deckId => deckId === action.id ? deck.previous_deck : deckId);
+
     return Object.assign({},
       state,
       {
