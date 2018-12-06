@@ -213,7 +213,7 @@ class DeckUpgradeDialog extends React.Component {
       investigator,
       showTraumaDialog,
     } = this.props;
-    if (!campaign) {
+    if (!campaign || !investigator) {
       return null;
     }
     return (
@@ -302,9 +302,12 @@ export default withTraumaDialog(
     connectRealm(DeckUpgradeDialog, {
       schemas: ['Card'],
       mapToProps(results, realm, props) {
-        return {
-          investigator: head(results.cards.filtered(`code == '${props.deck.investigator_code}'`)),
-        };
+        if (props.deck) {
+          return {
+            investigator: head(results.cards.filtered(`code == '${props.deck.investigator_code}'`)),
+          };
+        }
+        return {};
       },
     })
   )

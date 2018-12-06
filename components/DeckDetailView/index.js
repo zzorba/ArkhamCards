@@ -177,6 +177,7 @@ class DeckDetailView extends React.Component {
   componentDidUpdate(prevProps) {
     const {
       deck,
+      id,
       isPrivate,
       previousDeck,
       fetchPrivateDeck,
@@ -184,7 +185,7 @@ class DeckDetailView extends React.Component {
     } = this.props;
     if (deck !== prevProps.deck) {
       if (!deck) {
-        if (!this.state.deleting) {
+        if (!this.state.deleting && id > 0) {
           Alert.alert(
             L('Deck has been deleted'),
             L('It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.'),
