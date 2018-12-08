@@ -57,6 +57,7 @@ class CampaignDetailView extends React.Component {
       addSectionFunction: null,
     };
 
+    this._onCampaignNameChange = this.applyCampaignUpdate.bind(this, 'name');
     this._toggleAddSectionDialog = this.toggleAddSectionDialog.bind(this);
     this._showAddSectionDialog = this.showAddSectionDialog.bind(this);
     this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
@@ -77,6 +78,9 @@ class CampaignDetailView extends React.Component {
         rightButtons: [{
           icon: iconsMap.share,
           id: 'share',
+        }, {
+          icon: iconsMap.edit,
+          id: 'edit',
         }],
       },
     });
@@ -115,8 +119,18 @@ class CampaignDetailView extends React.Component {
   }
 
   navigationButtonPressed({ buttonId }) {
+    const {
+      showTextEditDialog,
+      campaign,
+    } = this.props;
     if (buttonId === 'share') {
       this._showShareSheet();
+    } else if (buttonId === 'edit') {
+      showTextEditDialog(
+        L('Campaign Name'),
+        campaign.name,
+        this._onCampaignNameChange
+      );
     }
   }
 
@@ -137,7 +151,7 @@ class CampaignDetailView extends React.Component {
     if (campaign && prevProps.campaign && campaign.name !== prevProps.campaign.name) {
       Navigation.mergeOptions(componentId, {
         topBar: {
-          subtitle: {
+          title: {
             text: campaign.name,
           },
         },

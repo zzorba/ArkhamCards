@@ -210,6 +210,13 @@ export default class EncounterIcon extends React.PureComponent {
       case 'knyan':
       case 'poison':
         return this.forgottenIcon(encounter_code, size, color);
+      case 'guardians':
+      case 'abyssal_gifts':
+      case 'abyssal_tribute':
+      case 'brotherhood_of_the_beast':
+      case 'sands_of_egypt':
+      case 'the_eternal_slumber':
+      case 'the_nights_usurper':
       default:
         return this.coreIcon('core', size, color);
     }
