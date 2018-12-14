@@ -1,4 +1,6 @@
 rootProject.name = 'ArkhamCards'
+include ':@matt-block_react-native-in-app-browser'
+project(':@matt-block_react-native-in-app-browser').projectDir = new File(rootProject.projectDir, '../node_modules/@matt-block/react-native-in-app-browser/android')
 include ':react-native-blur'
 project(':react-native-blur').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-blur/android')
 include ':react-native-config'

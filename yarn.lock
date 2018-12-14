@@ -1001,6 +1001,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@matt-block/react-native-in-app-browser@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@matt-block/react-native-in-app-browser/-/react-native-in-app-browser-1.1.2.tgz#b1a6df5d03d3233e357c97ea9c07ce2b9bec745c"
+
 "@ptomasroos/react-native-multi-slider@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@ptomasroos/react-native-multi-slider/-/react-native-multi-slider-1.0.0.tgz#a4ea27b1320b93a1db9f696c24789695df6c9f30"

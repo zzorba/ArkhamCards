@@ -12,6 +12,7 @@ import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
 import { parseDeck } from '../parseDeck';
+import { updateLocalDeck } from '../decks/localHelper';
 import * as Actions from '../../actions';
 import { iconsMap } from '../../app/NavIcons';
 import { saveDeck } from '../../lib/authApi';
@@ -154,9 +155,6 @@ class CampaignDrawWeaknessDialog extends React.Component {
     } = this.state;
     const deck = selectedDeckId && decks[selectedDeckId];
     if (deck) {
-      this.setState({
-        saving: true,
-      });
       const previousDeck = decks[deck.previous_deck];
       const investigator = investigators[deck.investigator_code];
       const newSlots = Object.assign({}, deck.slots);
@@ -178,20 +176,38 @@ class CampaignDrawWeaknessDialog extends React.Component {
       }));
       const problem = problemObj ? problemObj.reason : '';
 
-      saveDeck(
-        deck.id,
-        deck.name,
-        newSlots,
-        problem,
-        parsedDeck.spentXp
-      ).then(deck => {
-        updateDeck(deck.id, deck, true);
+      if (deck.local) {
+        const newDeck = updateLocalDeck(
+          deck,
+          deck.name,
+          newSlots,
+          problem,
+          parsedDeck.spentXp
+        );
+        updateDeck(newDeck.id, newDeck, true);
         this.setState({
-          saving: false,
           pendingAssignedCards: null,
           pendingNextCard: null,
         });
-      });
+      } else {
+        this.setState({
+          saving: true,
+        });
+        saveDeck(
+          deck.id,
+          deck.name,
+          newSlots,
+          problem,
+          parsedDeck.spentXp
+        ).then(deck => {
+          updateDeck(deck.id, deck, true);
+          this.setState({
+            saving: false,
+            pendingAssignedCards: null,
+            pendingNextCard: null,
+          });
+        });
+      }
     }
     const newWeaknessSet = Object.assign(
       {},

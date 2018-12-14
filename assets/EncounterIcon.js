@@ -74,6 +74,8 @@ export default class EncounterIcon extends React.PureComponent {
 
       case 'dwl': // THE DUNWICH LEGACY
         return this.dunwichIcon('set', size, color);
+      case 'rtdwl':
+        return this.dunwichIcon('return_to_the_dunwich_legacy', size, color);
       case 'tmm':
         return this.dunwichIcon('the_miskatonic_museum', size, color);
       case 'tece':
@@ -104,7 +106,22 @@ export default class EncounterIcon extends React.PureComponent {
       case 'sorcery':
       case 'the_beyond':
       case 'whippoorwills':
+      case 'return_to_extracurricular_activity':
+      case 'return_to_the_house_always_wins':
+      case 'return_to_the_miskatonic_museum':
+      case 'return_to_blood_on_the_altar':
+      case 'return_to_undimensioned_and_unseen':
+      case 'return_to_where_doom_awaits':
+      case 'return_to_lost_in_time_and_space':
         return this.dunwichIcon(encounter_code, size, color);
+      case 'resurgent_evils':
+      case 'erratic_fear':
+      case 'creeping_cold':
+      case 'secret_doors':
+      case 'yog_sothoths_emissaries':
+      case 'beyond_the_threshold':
+        // TODO: New return to dunwich icons
+        return this.coreIcon('core', size, color);
 
       case 'ptc': // THE PATH TO CARCOSA
         return this.carcosaIcon('carcosa', size, color);
