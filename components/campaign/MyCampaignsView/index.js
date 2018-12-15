@@ -196,6 +196,7 @@ class MyCampaignsView extends React.Component {
         keyboardDismissMode="on-drag"
       >
         <SearchBox
+          value={this.state.search}
           onChangeText={this._searchChanged}
           placeholder={L('Search campaigns')}
         />

@@ -67,6 +67,7 @@ class CardSearchComponent extends React.Component {
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
     this._sortChanged = this.sortChanged.bind(this);
     this._searchUpdated = this.searchUpdated.bind(this);
+    this._clearSearchTerm = this.searchUpdated.bind(this, '');
     this._setFilters = this.setFilters.bind(this);
     this._clearSearchFilters = this.clearSearchFilters.bind(this);
     this._showSearchFilters = throttle(this.showSearchFilters.bind(this), 200);
@@ -357,9 +358,11 @@ class CardSearchComponent extends React.Component {
       searchText,
       searchFlavor,
       searchBack,
+      searchTerm,
     } = this.state;
     return (
       <CardSearchBox
+        value={searchTerm}
         visible={this.state.headerVisible}
         onChangeText={this._searchUpdated}
         searchText={searchText}
@@ -416,7 +419,14 @@ class CardSearchComponent extends React.Component {
     }
     return (
       <View>
-        { }
+        { searchTerm && (
+          <View style={styles.button}>
+            <Button
+              onPress={this._clearSearchTerm}
+              title={L('Clear "{{searchTerm}}" search', { searchTerm })}
+            />
+          </View>
+        )}
         { !searchText && (
           <View style={styles.toggle}>
             <Text style={[typography.text, styles.toggleText]}>

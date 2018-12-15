@@ -106,6 +106,7 @@ export default class SearchMultiSelectView extends React.Component {
     } = this.props;
     const {
       selection,
+      search,
     } = this.state;
 
     const selectedSet = new Set(selection);
@@ -119,6 +120,7 @@ export default class SearchMultiSelectView extends React.Component {
     return (
       <View style={styles.flex}>
         <SearchBox
+          value={searh}
           onChangeText={this._onChangeText}
           placeholder={placeholder}
         />

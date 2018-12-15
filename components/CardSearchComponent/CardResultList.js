@@ -480,6 +480,9 @@ class CardResultList extends React.Component {
 
   renderEmptyState() {
     const {
+      searchTerm,
+    } = this.props;
+    const {
       cardsCount,
       spoilerCardsCount,
     } = this.state;
@@ -488,7 +491,9 @@ class CardResultList extends React.Component {
         <View>
           <View style={styles.emptyText}>
             <Text style={typography.text}>
-              No matching cards
+              { searchTerm ?
+                L('No matching cards for "{{searchTerm}}"', { searchTerm }) :
+                L('No matching cards') }
             </Text>
           </View>
           { this.props.expandSearchControls }

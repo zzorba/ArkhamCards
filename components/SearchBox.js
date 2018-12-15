@@ -15,6 +15,7 @@ export default class SearchBox extends React.Component {
     placeholder: PropTypes.string.isRequired,
     toggleAdvanced: PropTypes.func,
     advancedOpen: PropTypes.bool,
+    value: PropTypes.string,
   };
 
   renderToggleButton() {
@@ -43,6 +44,7 @@ export default class SearchBox extends React.Component {
       onChangeText,
       placeholder,
       toggleAdvanced,
+      value,
     } = this.props;
 
     return (
@@ -55,6 +57,7 @@ export default class SearchBox extends React.Component {
             autoCapitalize="none"
             onChangeText={onChangeText}
             placeholder={placeholder}
+            value={value}
           />
           { this.renderToggleButton() }
         </View>

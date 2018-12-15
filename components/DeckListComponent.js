@@ -105,6 +105,7 @@ class DeckListComponent extends React.Component {
     return (
       <View style={styles.header}>
         <SearchBox
+          value={this.state.searchTerm}
           onChangeText={this._searchChanged}
           placeholder={L('Search decks')}
         />

@@ -19,6 +19,7 @@ export default class CardSearchBox extends React.Component {
   static propTypes = {
     visible: PropTypes.bool.isRequired,
     onChangeText: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
 
     searchText: PropTypes.bool.isRequired,
     searchFlavor: PropTypes.bool.isRequired,
@@ -115,6 +116,9 @@ export default class CardSearchBox extends React.Component {
 
   render() {
     const {
+      value,
+    } = this.props;
+    const {
       anim,
       advancedOpen,
     } = this.state;
@@ -125,6 +129,7 @@ export default class CardSearchBox extends React.Component {
           placeholder={L('Search for a card')}
           advancedOpen={advancedOpen}
           toggleAdvanced={this._toggleAdvanced}
+          value={value}
         />
         { this.renderTextSearchOptions() }
       </Animated.View>

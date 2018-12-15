@@ -14,6 +14,7 @@ export const SEARCH_OPTIONS_HEIGHT = 44;
 
 export default class InvestigatorSearchBox extends React.Component {
   static propTypes = {
+    value: PropTypes.string,
     visible: PropTypes.bool.isRequired,
     onChangeText: PropTypes.func.isRequired,
   };
@@ -76,6 +77,7 @@ export default class InvestigatorSearchBox extends React.Component {
     return (
       <Animated.View style={[styles.slider, { height: anim }]}>
         <SearchBox
+          value={this.props.value}
           onChangeText={this._onChangeText}
           placeholder={L('Search')}
         />

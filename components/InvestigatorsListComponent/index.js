@@ -316,6 +316,7 @@ class InvestigatorsListComponent extends React.Component {
   renderHeader() {
     return (
       <InvestigatorSearchBox
+        value={this.state.searchTerm}
         visible={this.state.headerVisible}
         onChangeText={this._searchUpdated}
       />
