@@ -21,7 +21,6 @@ export function handleAuthErrors(
           [{
             text: L('Try again'),
             onPress: () => {
-              onFailure(err);
               retry();
             },
           }, {

@@ -186,19 +186,20 @@ class CopyDeckDialog extends React.Component {
     );
   }
 
-  onOkayPress() {
+  onOkayPress(isRetry) {
     const {
       login,
       signedIn,
       nextLocalDeckId,
+      networkType,
     } = this.props;
     const {
       deckName,
       offlineDeck,
     } = this.state;
     const investigator = this.investigator();
-    if (investigator && !this.state.saving) {
-      if (offlineDeck || !signedIn) {
+    if (investigator && (!this.state.saving || isRetry)) {
+      if (offlineDeck || !signedIn || networkType === 'none') {
         const cloneDeck = this.selectedDeck();
         const newDeck = cloneLocalDeck(nextLocalDeckId, cloneDeck, deckName);
         this.showNewDeck(newDeck);
@@ -214,7 +215,7 @@ class CopyDeckDialog extends React.Component {
               saving: false,
             });
           },
-          () => this.onOkayPress(),
+          () => this.onOkayPress(true),
           login
         );
       }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { startsWith } from 'lodash';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -52,8 +53,8 @@ export default class NoteRow extends React.Component {
       <View style={styles.row}>
         <TouchableOpacity onPress={this._onPress}>
           <TextBoxButton
-            crossedOut={note.startsWith('~')}
-            value={note.startsWith('~') ? note.substring(1) : note}
+            crossedOut={startsWith(note, '~')}
+            value={startsWith(note, '~') ? note.substring(1) : note}
             placeholder={last ? L('Add note') : null}
             pointerEvents="none"
             ellipsizeMode="tail"

@@ -415,7 +415,7 @@ class DeckDetailView extends React.Component {
     });
   }
 
-  uploadLocalDeck() {
+  uploadLocalDeck(isRetry) {
     const {
       deck,
       login,
@@ -426,39 +426,42 @@ class DeckDetailView extends React.Component {
       parsedDeck: {
         slots,
       },
+      saving,
     } = this.state;
-    const problemObj = this.getProblem();
-    const problem = problemObj ? problemObj.reason : '';
-    this.setState({
-      saving: true,
-    });
+    if (!saving || isRetry) {
+      const problemObj = this.getProblem();
+      const problem = problemObj ? problemObj.reason : '';
+      this.setState({
+        saving: true,
+      });
 
-    const promise = newCustomDeck(
-      deck.investigator_code,
-      deck.name,
-      slots,
-      problem,
-    );
-    handleAuthErrors(
-      promise,
-      // onSuccess
-      deck => {
-        // Replace the local deck with the new one.
-        replaceLocalDeck(id, deck);
-        this.setState({
-          saving: false,
-          nameChange: null,
-          hasPendingEdits: false,
-        }, this._syncNavigationButtons);
-      },
-      // onFailure
-      this._handleSaveError,
-      // retry
-      () => {
-        this.uploadDeck();
-      },
-      login
-    );
+      const promise = newCustomDeck(
+        deck.investigator_code,
+        deck.name,
+        slots,
+        problem,
+      );
+      handleAuthErrors(
+        promise,
+        // onSuccess
+        deck => {
+          // Replace the local deck with the new one.
+          replaceLocalDeck(id, deck);
+          this.setState({
+            saving: false,
+            nameChange: null,
+            hasPendingEdits: false,
+          }, this._syncNavigationButtons);
+        },
+        // onFailure
+        this._handleSaveError,
+        // retry
+        () => {
+          this.uploadLocalDeck(true);
+        },
+        login
+      );
+    }
   }
 
   dismissSaveError() {
@@ -470,16 +473,17 @@ class DeckDetailView extends React.Component {
 
   handleSaveError(err) {
     this.setState({
+      saving: false,
       saveError: err.message || 'Unknown Error',
     });
   }
 
-  saveEdits(dismissAfterSave) {
+  saveEdits(dismissAfterSave, isRetry) {
     const {
       deck,
       updateDeck,
     } = this.props;
-    if (!this.state.saving) {
+    if (!this.state.saving || isRetry) {
       const {
         parsedDeck,
         nameChange,
@@ -538,7 +542,7 @@ class DeckDetailView extends React.Component {
           this._handleSaveError,
           // retry
           () => {
-            this.saveEdits(dismissAfterSave);
+            this.saveEdits(dismissAfterSave, true);
           },
           // login
           this.props.login

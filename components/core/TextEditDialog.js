@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Platform,
 } from 'react-native';
+import { startsWith } from 'lodash';
 import DialogComponent from 'react-native-dialog';
 
 import L from '../../app/i18n';
@@ -66,7 +67,7 @@ export default class TextEditDialog extends React.Component {
       showCrossOut,
     } = this.props;
     if (visible && !prevProps.visible) {
-      const isCrossedOut = showCrossOut && text && text.startsWith('~');
+      const isCrossedOut = showCrossOut && text && startsWith(text, '~');
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
         text: isCrossedOut ? text.substring(1) : text,

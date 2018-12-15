@@ -169,19 +169,21 @@ class NewDeckOptionsDialog extends React.Component {
     return slots;
   }
 
-  onOkayPress() {
+  onOkayPress(isRetry) {
     const {
       login,
       signedIn,
       nextLocalDeckId,
+      networkType,
     } = this.props;
     const {
       deckName,
       offlineDeck,
+      saving,
     } = this.state;
     const investigator = this.investigator();
-    if (investigator && !this.state.saving) {
-      if (offlineDeck || !signedIn) {
+    if (investigator && (!saving || isRetry)) {
+      if (offlineDeck || !signedIn || networkType === 'none') {
         const deck = newLocalDeck(
           nextLocalDeckId,
           deckName,
@@ -207,7 +209,7 @@ class NewDeckOptionsDialog extends React.Component {
               saving: false,
             });
           },
-          () => this.onOkayPress(),
+          () => this.onOkayPress(true),
           login
         );
       }

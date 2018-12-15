@@ -30,25 +30,24 @@ export default function withLoginState(WrappedComponent) {
         login,
         error,
       } = this.props;
-      if (loading) {
-        return (
-          <View style={styles.activityIndicatorContainer}>
-            <ActivityIndicator
-              style={[{ height: 80 }]}
-              size="small"
-              animating
-            />
-          </View>
-        );
-      }
-
       return (
-        <WrappedComponent
-          {...this.props}
-          login={login}
-          signedIn={signedIn}
-          signInError={error}
-        />
+        <View style={styles.wrapper}>
+          <WrappedComponent
+            {...this.props}
+            login={login}
+            signedIn={signedIn}
+            signInError={error}
+          />
+          { loading && (
+            <View style={styles.activityIndicatorContainer}>
+              <ActivityIndicator
+                style={[{ height: 80 }]}
+                size="small"
+                animating
+              />
+            </View>
+          ) }
+        </View>
       );
     }
   }
@@ -71,6 +70,9 @@ export default function withLoginState(WrappedComponent) {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   activityIndicatorContainer: {
     backgroundColor: '#fff',
     alignItems: 'center',

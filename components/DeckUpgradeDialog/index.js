@@ -112,7 +112,7 @@ class DeckUpgradeDialog extends React.Component {
     }
   }
 
-  saveUpgrade() {
+  saveUpgrade(isRetry) {
     const {
       deck: {
         id,
@@ -123,7 +123,7 @@ class DeckUpgradeDialog extends React.Component {
       login,
       nextLocalDeckId,
     } = this.props;
-    if (!this.state.saving) {
+    if (!this.state.saving || isRetry) {
       this.setState({
         saving: true,
       });
@@ -161,7 +161,8 @@ class DeckUpgradeDialog extends React.Component {
               saving: false,
             });
           },
-          () => this.saveUpgrade(),
+          // retry
+          () => this.saveUpgrade(true),
           login
         );
       }

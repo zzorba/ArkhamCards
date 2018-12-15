@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head } from 'lodash';
+import { head, startsWith } from 'lodash';
 import {
   RefreshControl,
   ScrollView,
@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
+import openInApp from '@matt-block/react-native-in-app-browser';
 
 import CardTextComponent from './CardTextComponent';
 import { getFaqEntry } from '../lib/publicApi';
@@ -41,6 +42,29 @@ class CardFaqView extends React.Component {
     }
   }
 
+  openUrl(url) {
+    const {
+      componentId,
+    } = this.props;
+    openInApp(url).catch(() => {
+      Navigation.push(componentId, {
+        component: {
+          name: 'WebView',
+          passProps: {
+            uri: url,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: 'ArkhamDB',
+              },
+            },
+          },
+        },
+      });
+    });
+  }
+
   linkPressed(url) {
     const {
       componentId,
@@ -61,37 +85,9 @@ class CardFaqView extends React.Component {
         },
       });
     } else if (url.indexOf('arkhamdb.com') !== -1) {
-      Navigation.push(componentId, {
-        component: {
-          name: 'WebView',
-          passProps: {
-            uri: url,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: 'ArkhamDB',
-              },
-            },
-          },
-        },
-      });
-    } else if (url.startsWith('/')) {
-      Navigation.push(componentId, {
-        component: {
-          name: 'WebView',
-          passProps: {
-            uri: `https://arkhamdb.com${url}`,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: 'ArkhamDB',
-              },
-            },
-          },
-        },
-      });
+      this.openUrl(url);
+    } else if (startsWith(url, '/')) {
+      this.openUrl(`https://arkhamdb.com${url}`);
     }
   }
 
