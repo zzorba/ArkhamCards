@@ -8,6 +8,7 @@ const BAD_ICON_NAMES = {
   lightning: 'free',
   lighting: 'free',
   fast: 'free',
+  'lightning" title="Fast Action': 'free',
   'auto-fail': 'auto_fail',
 };
 

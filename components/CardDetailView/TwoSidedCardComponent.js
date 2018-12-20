@@ -212,7 +212,7 @@ export default class TwoSidedCardComponent extends React.Component {
             }
           </Text>
         ) }
-        { card.type_code === 'agenda' && <Text>Doom: { card.doom }</Text> }
+        { card.type_code === 'agenda' && <Text>Doom: { num(card.doom) }</Text> }
         { card.type_code === 'act' && card.clues > 0 && (
           <Text>
             Clues: { card.clues }
@@ -224,7 +224,7 @@ export default class TwoSidedCardComponent extends React.Component {
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
           <Text>
-            Shroud: { num(card.shroud) }. Clues: { card.clues }
+            Shroud: { num(card.shroud) }. Clues: { num(card.clues) }
             { card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON }
             .
           </Text>)
