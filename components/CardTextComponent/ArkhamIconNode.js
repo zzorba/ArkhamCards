@@ -9,6 +9,10 @@ const BAD_ICON_NAMES = {
   lighting: 'free',
   fast: 'free',
   'lightning" title="Fast Action': 'free',
+  'tablet" title="Tablet': 'tablet',
+  'cultist" title="Cultist': 'cultist',
+  'intellect" title="Intellect': 'cultist',
+  'action" title="Action': 'cultist',
   'auto-fail': 'auto_fail',
 };
 
