@@ -426,7 +426,7 @@ class CardSearchComponent extends React.Component {
               title={L('Clear "{{searchTerm}}" search', { searchTerm })}
             />
           </View>
-        )}
+        ) }
         { !searchText && (
           <View style={styles.toggle}>
             <Text style={[typography.text, styles.toggleText]}>

@@ -120,7 +120,7 @@ export default class SearchMultiSelectView extends React.Component {
     return (
       <View style={styles.flex}>
         <SearchBox
-          value={searh}
+          value={search}
           onChangeText={this._onChangeText}
           placeholder={placeholder}
         />
