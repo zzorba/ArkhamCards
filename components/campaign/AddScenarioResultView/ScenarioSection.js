@@ -253,7 +253,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
           standaloneScenarios.push(card);
         }
       });
-      console.log(props.campaign.finishedScenarios);
       return {
         allScenarios: concat(
           filter(
