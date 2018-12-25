@@ -35,7 +35,7 @@ const ArkhamIconRule = {
 };
 
 const ArkahmIconSpanRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"></span>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
   order: 1,
   parse: (capture) => {
     return { name: capture[1] };
