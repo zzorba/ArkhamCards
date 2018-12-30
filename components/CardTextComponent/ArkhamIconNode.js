@@ -1,5 +1,6 @@
 import React from 'react';
 
+import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
 const BAD_ICON_NAMES = {
@@ -11,8 +12,9 @@ const BAD_ICON_NAMES = {
 };
 
 export default function ArkhamIconNode(node, output, state) {
+  const Node = node.name === 'bullet' ? AppIcon : ArkhamIcon;
   return (
-    <ArkhamIcon
+    <Node
       key={state.key}
       name={BAD_ICON_NAMES[node.name] || node.name}
       size={16}
