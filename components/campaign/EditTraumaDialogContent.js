@@ -113,16 +113,14 @@ export default class EditTraumaDialogContent extends React.Component {
           value={killed || impliedKilled}
           disabled={impliedKilled}
           onValueChange={this._toggleKilled}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+          trackColor={{false: '#bbb', true: '#222'}}
         />
         <DialogComponent.Switch
           label={L('Insane')}
           value={insane || impliedInsane}
           disabled={impliedInsane}
           onValueChange={this._toggleInsane}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+          trackColor={{false: '#bbb', true: '#222'}}
         />
       </View>
     );

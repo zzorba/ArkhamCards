@@ -8,8 +8,7 @@ buildscript {
         jcenter()        
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-
+        classpath 'com.android.tools.build:gradle:3.1.4'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -23,6 +22,8 @@ allprojects {
         jcenter()
         maven {
             url 'https://maven.google.com'
+        }
+        maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
@@ -38,6 +39,12 @@ ext {
     supportLibVersion = "27.1.1"
 }
 
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4'
+    distributionUrl = distributionUrl.replace("bin", "all")
+}
+
 subprojects { subproject ->
     afterEvaluate {project ->
         if (project.hasProperty("android")) {
@@ -50,7 +57,7 @@ subprojects { subproject ->
             android {
                 variantFilter { variant ->
                     def names = variant.flavors*.name
-                    if (names.contains("reactNative51") || names.contains("reactNative55") || name.contains("reactNative57")) {
+                    if (names.contains("reactNative51") || names.contains("reactNative55") || name.contains("reactNative56")) {
                         setIgnore(true)
                     }
                 }

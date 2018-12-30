@@ -328,8 +328,7 @@ class NewDeckOptionsDialog extends React.Component {
           value={!offlineDeck && signedIn && networkType !== 'none'}
           disabled={networkType === 'none'}
           onValueChange={this._onDeckTypeChange}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+          trackColor={{false: '#bbb', true: '#222'}}
         />
         { networkType === 'none' && (
           <TouchableOpacity onPress={refreshNetworkStatus}>

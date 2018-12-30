@@ -123,15 +123,13 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
           label={L('Count')}
           value={isCount}
           onValueChange={this._toggleCount}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+          trackColor={{false: '#bbb', true: '#222'}}
         />
         <DialogComponent.Switch
           label={L('Per Investigator')}
           value={perInvestigator}
           onValueChange={this._toggleInvestigator}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+          trackColor={{false: '#bbb', true: '#222'}}
         />
         <DialogComponent.Button
           label={L('Cancel')}

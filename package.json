@@ -21,8 +21,8 @@
     "hoist-non-react-statics": "3.2.1",
     "i18n-js": "3.1.0",
     "lodash": "4.17.11",
-    "react": "16.4.1",
-    "react-native": "0.56.0",
+    "react": "16.6.3",
+    "react-native": "0.57.8",
     "react-native-app-auth": "4.0.0",
     "react-native-blur": "3.2.2",
     "react-native-cached-image": "fungilation/react-native-cached-image#master",
@@ -63,7 +63,7 @@
     "eslint-plugin-react-native": "3.2.1",
     "i18n-extract": "0.6.3",
     "jest": "23.6.0",
-    "react-test-renderer": "16.4.1"
+    "react-test-renderer": "16.6.3"
   },
   "jest": {
     "preset": "react-native",

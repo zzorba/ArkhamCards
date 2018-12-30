@@ -9,8 +9,8 @@ import { COLORS } from '../../styles/colors';
 export default function CustomSwitch(props) {
   return (
     <Switch
-      thumbTintColor={Platform.OS === 'android' ? COLORS.lightBlue : null}
-      onTintColor="#222222"
+      thumbColor={Platform.OS === 'android' ? COLORS.lightBlue : null}
+      trackColor={{ true: '#222' }}
       {...props}
     />
   );

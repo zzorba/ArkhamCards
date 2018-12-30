@@ -37,8 +37,7 @@ export default class RequiredCardSwitch extends React.Component {
         label={label}
         value={value}
         onValueChange={this._onValueChange}
-        onTintColor="#222222"
-        tintColor="#bbbbbb"
+        trackColor={{false: '#bbb', true: '#222'}}
       />
     );
   }
