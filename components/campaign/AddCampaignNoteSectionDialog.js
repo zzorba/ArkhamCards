@@ -7,6 +7,7 @@ import DialogComponent from 'react-native-dialog';
 
 import L from '../../app/i18n';
 import Dialog from '../core/Dialog';
+import { COLORS } from '../../styles/colors';
 
 export default class AddCampaignNoteSectionDialog extends React.Component {
   static propTypes = {
@@ -123,13 +124,13 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
           label={L('Count')}
           value={isCount}
           onValueChange={this._toggleCount}
-          trackColor={{false: '#bbb', true: '#222'}}
+          trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Switch
           label={L('Per Investigator')}
           value={perInvestigator}
           onValueChange={this._toggleInvestigator}
-          trackColor={{false: '#bbb', true: '#222'}}
+          trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Button
           label={L('Cancel')}

@@ -12,6 +12,7 @@ import { showDeckModal } from './navHelper';
 import withFetchCardsGate from './cards/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState } from '../reducers';
+import { COLORS } from '../styles/colors';
 
 class MyDecksView extends React.Component {
   static propTypes = {
@@ -96,6 +97,7 @@ class MyDecksView extends React.Component {
         <Switch
           value={localDecksOnly}
           onValueChange={this._toggleLocalDecksOnly}
+          trackColor={COLORS.switchTrackColor}
         />
       </View>
     );

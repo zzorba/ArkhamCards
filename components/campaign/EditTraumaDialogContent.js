@@ -10,6 +10,7 @@ import DialogComponent from 'react-native-dialog';
 
 import L from '../../app/i18n';
 import PlusMinusButtons from '../core/PlusMinusButtons';
+import { COLORS } from '../../styles/colors';
 
 export default class EditTraumaDialogContent extends React.Component {
   static propTypes = {
@@ -113,14 +114,14 @@ export default class EditTraumaDialogContent extends React.Component {
           value={killed || impliedKilled}
           disabled={impliedKilled}
           onValueChange={this._toggleKilled}
-          trackColor={{false: '#bbb', true: '#222'}}
+          trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Switch
           label={L('Insane')}
           value={insane || impliedInsane}
           disabled={impliedInsane}
           onValueChange={this._toggleInsane}
-          trackColor={{false: '#bbb', true: '#222'}}
+          trackColor={COLORS.switchTrackColor}
         />
       </View>
     );

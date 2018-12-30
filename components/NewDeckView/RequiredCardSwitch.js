@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DialogComponent from 'react-native-dialog';
 
+import { COLORS } from '../../styles/colors';
+
 export default class RequiredCardSwitch extends React.Component {
   static propTypes = {
     index: PropTypes.number.isRequired,
@@ -37,7 +39,7 @@ export default class RequiredCardSwitch extends React.Component {
         label={label}
         value={value}
         onValueChange={this._onValueChange}
-        trackColor={{false: '#bbb', true: '#222'}}
+        trackColor={COLORS.switchTrackColor}
       />
     );
   }

@@ -327,7 +327,7 @@ class CopyDeckDialog extends React.Component {
           value={!offlineDeck && signedIn && networkType !== 'none'}
           disabled={networkType === 'none'}
           onValueChange={this._onDeckTypeChange}
-          trackColor={{false: '#bbb', true: '#222'}}
+          trackColor={COLORS.switchTrackColor}
         />
         { networkType === 'none' && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
