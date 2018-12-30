@@ -1009,9 +1009,9 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@ptomasroos/react-native-multi-slider/-/react-native-multi-slider-1.0.0.tgz#a4ea27b1320b93a1db9f696c24789695df6c9f30"
 
-"@redux-offline/redux-offline@2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@redux-offline/redux-offline/-/redux-offline-2.5.0.tgz#92bef2a97b4c88dfdd55554ab5edfd9ac7183089"
+"@redux-offline/redux-offline@2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@redux-offline/redux-offline/-/redux-offline-2.5.1.tgz#fc752e2ba3c21bfc7ac2dda9d1319e65891eda6c"
   dependencies:
     "@babel/runtime" "^7.1.2"
     redux-persist "^4.6.0"
@@ -2152,9 +2152,9 @@ camelcase@^1.0.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-1.2.1.tgz#9bb5304d2e0b56698b2c758b08a3eaa9daa58a39"
 
-capitalize@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/capitalize/-/capitalize-1.0.0.tgz#dc802c580aee101929020d2ca14b4ca8a0ae44be"
+capitalize@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/capitalize/-/capitalize-2.0.0.tgz#61859dd952aba244f03541b23e11470ada097f4b"
 
 caseless@~0.11.0:
   version "0.11.0"
@@ -2565,9 +2565,9 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns@1.29.0:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
+date-fns@1.30.1:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
 
 dateformat@^2.0.0:
   version "2.2.0"
@@ -3733,15 +3733,21 @@ hoist-non-react-statics@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
-hoist-non-react-statics@3.1.0, hoist-non-react-statics@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.1.0.tgz#42414ccdfff019cd2168168be998c7b3bd5245c0"
+hoist-non-react-statics@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
   dependencies:
     react-is "^16.3.2"
 
 hoist-non-react-statics@3.x.x:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.0.1.tgz#fba3e7df0210eb9447757ca1a7cb607162f0a364"
+  dependencies:
+    react-is "^16.3.2"
+
+hoist-non-react-statics@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.1.0.tgz#42414ccdfff019cd2168168be998c7b3bd5245c0"
   dependencies:
     react-is "^16.3.2"
 
@@ -3803,9 +3809,9 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-i18n-extract@0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/i18n-extract/-/i18n-extract-0.6.1.tgz#ae9d5735ef0d49d009c97dc8cc121a1a661dbcef"
+i18n-extract@0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/i18n-extract/-/i18n-extract-0.6.3.tgz#7b1f359e1a363c9e94563a10331428839585673a"
   dependencies:
     "@babel/core" "^7.0.0-beta.46"
     "@babel/register" "^7.0.0-beta.46"
@@ -4273,7 +4279,7 @@ jest-changed-files@^23.4.2:
   dependencies:
     throat "^4.0.0"
 
-jest-cli@^23.4.1:
+jest-cli@^23.6.0:
   version "23.6.0"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-23.6.0.tgz#61ab917744338f443ef2baa282ddffdd658a5da4"
   dependencies:
@@ -4574,12 +4580,12 @@ jest-worker@^23.0.1, jest-worker@^23.2.0:
   dependencies:
     merge-stream "^1.0.1"
 
-jest@23.4.1:
-  version "23.4.1"
-  resolved "https://registry.yarnpkg.com/jest/-/jest-23.4.1.tgz#39550c72f3237f63ae1b434d8d122cdf6fa007b6"
+jest@23.6.0:
+  version "23.6.0"
+  resolved "https://registry.yarnpkg.com/jest/-/jest-23.6.0.tgz#ad5835e923ebf6e19e7a1d7529a432edfee7813d"
   dependencies:
     import-local "^1.0.0"
-    jest-cli "^23.4.1"
+    jest-cli "^23.6.0"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
@@ -4911,11 +4917,11 @@ lodash.zipobject@^4.1.3:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/lodash.zipobject/-/lodash.zipobject-4.1.3.tgz#b399f5aba8ff62a746f6979bf20b214f964dbef8"
 
-lodash@4.17.11:
+lodash@4.17.11, lodash@4.17.x:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
-lodash@4.x.x, lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
@@ -5310,7 +5316,11 @@ mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
-nan@2.8.0, nan@^2.3.0:
+nan@^2.10.0:
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.12.1.tgz#7b1aa193e9aa86057e3c7bbd0ac448e770925552"
+
+nan@^2.3.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
 
@@ -5367,6 +5377,10 @@ node-fetch@^1.0.1, node-fetch@^1.3.3, node-fetch@^1.6.3:
 node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
+
+node-machine-id@^1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/node-machine-id/-/node-machine-id-1.1.10.tgz#b4cb8f01b25b90d4e0675be00df30e61ee75179b"
 
 node-modules-regexp@^1.0.0:
   version "1.0.0"
@@ -6007,17 +6021,17 @@ react-native-clcasher@1.0.0:
   dependencies:
     mock-async-storage "^1.0.3"
 
-react-native-config@0.11.5:
-  version "0.11.5"
-  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
+react-native-config@0.11.7:
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.7.tgz#a2b323f2ecd76a4df88cbb6bc86eaa2ef9febee7"
 
 react-native-deep-linking@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.1.0.tgz#fcba2f5265fa1e218738e3af4102125158f0686d"
 
-react-native-dialog@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-dialog/-/react-native-dialog-5.4.0.tgz#8529950ad3c30e30c7b78b0036b5f98ccf598ff0"
+react-native-dialog@5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-dialog/-/react-native-dialog-5.5.0.tgz#09d13e23264f820d6308b5f93e1f03606f97dee3"
   dependencies:
     prop-types "^15.6.0"
     react-native-modal "^6.4.0"
@@ -6041,9 +6055,9 @@ react-native-keychain@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-3.0.0.tgz#29da1dfa43c2581f76bf9420914fd38a1558cf18"
 
-react-native-linear-gradient@2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.4.3.tgz#a7f5fe685b1a2ac788cca37828c5c9ca91357a16"
+react-native-linear-gradient@2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.3.tgz#d90cf19a13fcccfa8bb32025ac40a15ae1b49e99"
 
 react-native-markdown-view@1.1.4:
   version "1.1.4"
@@ -6060,12 +6074,12 @@ react-native-modal@^6.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-react-native-navigation@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.1.2.tgz#225698d7b39dd114a01ef0a301cca18af260316b"
+react-native-navigation@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.4.0.tgz#8b3ccc70510b971f2088973b28a1503f571153db"
   dependencies:
     hoist-non-react-statics "3.x.x"
-    lodash "4.x.x"
+    lodash "4.17.x"
     prop-types "15.x.x"
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
@@ -6095,9 +6109,9 @@ react-native-svg-charts@5.2.0:
     d3-shape "^1.0.6"
     prop-types "^15.6.0"
 
-react-native-svg@8.0.8:
-  version "8.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-8.0.8.tgz#5d4c636751d9db2d98a9b3cfc4ef45c4eac65d60"
+react-native-svg@8.0.10:
+  version "8.0.10"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-8.0.10.tgz#b07e2342d1486220f5fda1a584e316e7d2d1f392"
   dependencies:
     color "^2.0.1"
     lodash "^4.16.6"
@@ -6109,9 +6123,9 @@ react-native-tabular-grid-markdown-view@0.1.x:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-vector-icons@6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.0.2.tgz#826252a72d648cf957d46ada8df890318dac53e1"
+react-native-vector-icons@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.1.0.tgz#770a3f8ced692d75deb3afbb9829195ceed1eedd"
   dependencies:
     lodash "^4.0.0"
     prop-types "^15.6.2"
@@ -6294,17 +6308,18 @@ realm-query@0.0.7:
   dependencies:
     lodash "^4.17.4"
 
-realm@2.18.0:
-  version "2.18.0"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-2.18.0.tgz#83d7184653a9aaf0c9a28c9270e233d5d32d028a"
+realm@2.21.1:
+  version "2.21.1"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-2.21.1.tgz#a6e3bf86b8469665a176f1ff8db6ab35a8854d56"
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"
     deepmerge "2.1.0"
     fs-extra "^4.0.2"
     ini "^1.3.4"
-    nan "2.8.0"
+    nan "^2.10.0"
     node-fetch "^1.6.3"
+    node-machine-id "^1.1.10"
     node-pre-gyp "^0.11.0"
     progress "^2.0.0"
     prop-types "^15.5.10"
@@ -6638,9 +6653,9 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
 
-rn-fetch-blob@0.10.13:
-  version "0.10.13"
-  resolved "https://registry.yarnpkg.com/rn-fetch-blob/-/rn-fetch-blob-0.10.13.tgz#e0fd5eac1a3a872563b35061353d96c4e51ae1cc"
+rn-fetch-blob@0.10.15:
+  version "0.10.15"
+  resolved "https://registry.yarnpkg.com/rn-fetch-blob/-/rn-fetch-blob-0.10.15.tgz#3526860c1c57e0bf4c09bdbe409c919264afffba"
   dependencies:
     base-64 "0.1.0"
     glob "7.0.6"
