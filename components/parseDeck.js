@@ -19,12 +19,13 @@ function groupAssets(cardIds, cards) {
       case 'Body': return L('Body');
       case 'Body. Hand x2': return L('Body. Hand x2');
       case 'Ally': return L('Ally');
+      case 'Tarot': return L('Tarot');
       default: return L('Other');
     }
   });
   return filter(
     map(
-      [L('Hand'), L('Hand x2'), L('Body. Hand x2'), L('Arcane'), L('Accessory'), L('Body'), L('Ally'), L('Other')],
+      [L('Hand'), L('Hand x2'), L('Body. Hand x2'), L('Arcane'), L('Accessory'), L('Body'), L('Ally'), L('Tarot'), L('Other')],
       t => {
         return { type: t, data: groups[t] || [] };
       }),

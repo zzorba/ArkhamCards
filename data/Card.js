@@ -183,6 +183,8 @@ export default class Card {
                 return L('Asset: Arcane x2', options);
               case 'Body':
                 return L('Asset: Body', options);
+              case 'Tarot':
+                return L('Asset: Tarot', options);
               case 'Body. Hand x2':
                 return L('Asset: Body. Hand x2', options);
               default:
