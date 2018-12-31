@@ -30,6 +30,7 @@ const icons = {
   flip_card: [28, COLORS.button, AppIcon],
   book: [26, COLORS.button, AppIcon],
   share: [28, COLORS.button, AppIcon],
+  web: [28, COLORS.button, MaterialCommunityIcons],
 };
 
 const defaultIconProvider = MaterialIcons;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { head, throttle } from 'lodash';
 import {
+  Linking,
   ScrollView,
   StyleSheet,
   Text,
@@ -57,6 +58,9 @@ class CardDetailView extends React.Component {
     this._showFaq = throttle(this.showFaq.bind(this), 200);
 
     const rightButtons = [{
+      icon: iconsMap.web,
+      id: 'share',
+    }, {
       icon: iconsMap.faq,
       id: 'faq',
     }];
@@ -92,8 +96,11 @@ class CardDetailView extends React.Component {
   navigationButtonPressed({ buttonId }) {
     const {
       componentId,
+      id,
     } = this.props;
-    if (buttonId === 'deck') {
+    if (buttonId === 'share') {
+      Linking.openURL(`https://arkhamdb.com/card/${id}#reviews-header`);
+    } else if (buttonId === 'deck') {
       this._showInvestigatorCards();
     } else if (buttonId === 'faq') {
       this._showFaq();
