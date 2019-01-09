@@ -209,8 +209,8 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
           // and its a spell, you get a 1 XP discount on upgrade of
           // a spell to a spell.
           if (arcaneResearchUses > 0 &&
-            removedCard.traits_normalized.indexOf('#spell#') !== -1 &&
-            addedCard.traits_normalized.indexOf('#spell#') !== -1) {
+            removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
+            addedCard.real_traits_normalized.indexOf('#spell#') !== -1) {
             let xpCost = (computeXp(addedCard) - computeXp(removedCard));
             while (xpCost > 0 && arcaneResearchUses > 0) {
               xpCost--;

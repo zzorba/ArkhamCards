@@ -261,6 +261,11 @@ export default class Card {
       }
     }
 
+    const real_traits_normalized = json.real_traits ? map(
+      filter(
+        map(json.real_traits.split('.'), trait => trait.toLowerCase().trim()),
+        trait => trait),
+      trait => `#${trait}#`).join(',') : null;
     const traits_normalized = json.traits ? map(
       filter(
         map(json.traits.split('.'), trait => trait.toLowerCase().trim()),
@@ -308,6 +313,7 @@ export default class Card {
         linked_card,
         spoiler,
         traits_normalized,
+        real_traits_normalized,
         slots_normalized,
         uses,
         cycle_name,
@@ -411,6 +417,7 @@ Card.schema = {
     cycle_name: 'string?',
     has_restrictions: 'bool',
     traits_normalized: 'string?',
+    real_traits_normalized: 'string?',
     slots_normalized: 'string?',
     uses: 'string?',
     heals_horror: 'bool?',

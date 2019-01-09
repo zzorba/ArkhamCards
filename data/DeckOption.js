@@ -40,7 +40,7 @@ export default class DeckOption {
       }
       query += ' (';
       query +=
-        map(this.trait, trait => ` traits_normalized contains '#${trait}#'`)
+        map(this.trait, trait => ` real_traits_normalized contains '#${trait}#'`)
           .join(' OR');
       query += ' )';
       dirty = true;
