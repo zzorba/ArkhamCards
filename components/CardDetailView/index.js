@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, throttle } from 'lodash';
+import { head } from 'lodash';
 import {
   Linking,
   ScrollView,
@@ -54,8 +54,8 @@ class CardDetailView extends React.Component {
     this._editSpoilersPressed = this.editSpoilersPressed.bind(this);
     this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
     this._toggleShowBack = this.toggleShowBack.bind(this);
-    this._showInvestigatorCards = throttle(this.showInvestigatorCards.bind(this), 200);
-    this._showFaq = throttle(this.showFaq.bind(this), 200);
+    this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
+    this._showFaq = this.showFaq.bind(this);
 
     const rightButtons = [{
       icon: iconsMap.web,

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
@@ -54,7 +53,7 @@ class NewDeckView extends React.Component {
     this._captureViewRef = this.captureViewRef.bind(this);
     this._closeDialog = this.closeDialog.bind(this);
     this._sortChanged = this.sortChanged.bind(this);
-    this._showSortDialog = throttle(this.showSortDialog.bind(this), 200);
+    this._showSortDialog = this.showSortDialog.bind(this);
 
     this._navEventListener = Navigation.events().bindComponent(this);
   }

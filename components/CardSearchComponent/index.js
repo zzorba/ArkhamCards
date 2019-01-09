@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { forEach, throttle } from 'lodash';
+import { forEach } from 'lodash';
 import {
   Button,
   Keyboard,
@@ -61,7 +61,7 @@ class CardSearchComponent extends React.Component {
     this._showHeader = this.showHeader.bind(this);
     this._hideHeader = this.hideHeader.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
-    this._toggleMythosMode = throttle(this.toggleMythosMode.bind(this), 200);
+    this._toggleMythosMode = this.toggleMythosMode.bind(this);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
@@ -70,8 +70,8 @@ class CardSearchComponent extends React.Component {
     this._clearSearchTerm = this.searchUpdated.bind(this, '');
     this._setFilters = this.setFilters.bind(this);
     this._clearSearchFilters = this.clearSearchFilters.bind(this);
-    this._showSearchFilters = throttle(this.showSearchFilters.bind(this), 200);
-    this._showSortDialog = throttle(this.showSortDialog.bind(this), 200);
+    this._showSearchFilters = this.showSearchFilters.bind(this);
+    this._showSortDialog = this.showSortDialog.bind(this);
 
     const rightButtons = [{
       icon: iconsMap.tune,

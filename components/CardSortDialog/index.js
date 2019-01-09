@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { findKey, map } from 'lodash';
+import { BackHandler } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import DialogPicker from '../core/DialogPicker';
@@ -29,6 +31,20 @@ class CardSortDialog extends React.Component {
     super(props);
 
     this._onSortChanged = this.onSortChanged.bind(this);
+    this._handleBackPress = this.handleBackPress.bind(this);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  handleBackPress() {
+    Navigation.dismissOverlay(this.props.componentId);
+    return true;
   }
 
   sortToCopyMap() {

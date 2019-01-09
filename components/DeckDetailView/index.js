@@ -89,22 +89,23 @@ class DeckDetailView extends React.Component {
       deleting: false,
       nameChange: null,
       hasPendingEdits: false,
+      visible: true,
     };
     this._dismissSaveError = this.dismissSaveError.bind(this);
     this._handleSaveError = this.handleSaveError.bind(this);
     this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
-    this._toggleCopyDialog = throttle(this.toggleCopyDialog.bind(this), 200);
+    this._toggleCopyDialog = this.toggleCopyDialog.bind(this);
     this._saveName = this.saveName.bind(this);
-    this._onEditPressed = throttle(this.onEditPressed.bind(this), 200);
-    this._onUpgradePressed = throttle(this.onUpgradePressed.bind(this), 200);
+    this._onEditPressed = this.onEditPressed.bind(this);
+    this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
     this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
-    this._showEditNameDialog = throttle(this.showEditNameDialog.bind(this), 200);
+    this._showEditNameDialog = this.showEditNameDialog.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
-    this._handleBackPress = throttle(this.handleBackPress.bind(this), 200);
+    this._handleBackPress = this.handleBackPress.bind(this);
     this._deleteDeck = this.deleteDeck.bind(this);
 
     const leftButtons = props.modal ? [
@@ -132,6 +133,18 @@ class DeckDetailView extends React.Component {
       });
     }
     this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidAppear() {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  componentDidDisappear() {
+    this.setState({
+      visible: false,
+    });
   }
 
   componentDidMount() {
@@ -285,6 +298,9 @@ class DeckDetailView extends React.Component {
   }
 
   handleBackPress() {
+    if (!this.state.visible) {
+      return false;
+    }
     if (this.state.hasPendingEdits) {
       Alert.alert(
         L('Save deck changes?'),

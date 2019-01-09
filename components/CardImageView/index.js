@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, throttle } from 'lodash';
+import { head } from 'lodash';
 import {
   Dimensions,
   StyleSheet,
@@ -42,7 +42,7 @@ class CardImageView extends React.Component {
       height: height - HEADER_HEIGHT,
     };
 
-    this._flip = throttle(this.flip.bind(this), 200);
+    this._flip = this.flip.bind(this);
 
     if (doubleCard) {
       Navigation.mergeOptions(props.componentId, {

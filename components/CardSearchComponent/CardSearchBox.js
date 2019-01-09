@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
 import {
   Animated,
   Easing,
@@ -37,7 +36,7 @@ export default class CardSearchBox extends React.Component {
       advancedOpen: false,
     };
 
-    this._onChangeText = throttle(this.onChangeText.bind(this), 250, { trailing: true });
+    this._onChangeText = this.onChangeText.bind(this);
     this._toggleAdvanced = this.toggleAdvanced.bind(this);
     this._renderTextSearchOptions = this.renderTextSearchOptions.bind(this);
   }

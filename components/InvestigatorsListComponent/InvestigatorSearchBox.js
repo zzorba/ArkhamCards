@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
 import {
   Animated,
   Easing,
@@ -26,7 +25,7 @@ export default class InvestigatorSearchBox extends React.Component {
       anim: new Animated.Value(props.visible ? SEARCH_BAR_HEIGHT : 0),
     };
 
-    this._onChangeText = throttle(this.onChangeText.bind(this), 250, { trailing: true });
+    this._onChangeText = this.onChangeText.bind(this);
   }
 
   onChangeText(search) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { throttle, values } from 'lodash';
+import { values } from 'lodash';
 import {
   FlatList,
   Text,
@@ -42,7 +42,7 @@ class WeaknessSetChooserView extends React.Component {
     this._extractKey = this.extractKey.bind(this);
     this._renderItem = this.renderItem.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
-    this._showNewWeaknessDialog = throttle(this.showNewWeaknessDialog.bind(this), 200);
+    this._showNewWeaknessDialog = this.showNewWeaknessDialog.bind(this);
 
     this._navEventListener = Navigation.events().bindComponent(this);
   }

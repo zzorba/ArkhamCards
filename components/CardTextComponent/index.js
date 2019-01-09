@@ -196,9 +196,10 @@ export default class CardText extends React.PureComponent {
         onLinkPress={onLinkPress}
       >
         { this.props.text
-            .replace(/&rarr;/g, '→')
-            .replace(/\/n/g, '\n')
-            .replace(/^- (.+)$/gm, '[bullet] $1') }
+          .replace(/&rarr;/g, '→')
+          .replace(/\/n/g, '\n')
+          .replace(/^\s?-|— (.+)$/gm, '[bullet] $1')
+        }
       </MarkdownView>
     );
   }
