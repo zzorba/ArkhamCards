@@ -113,15 +113,13 @@ export default class EncounterIcon extends React.PureComponent {
       case 'return_to_undimensioned_and_unseen':
       case 'return_to_where_doom_awaits':
       case 'return_to_lost_in_time_and_space':
-        return this.dunwichIcon(encounter_code, size, color);
       case 'resurgent_evils':
       case 'erratic_fear':
       case 'creeping_cold':
       case 'secret_doors':
       case 'yog_sothoths_emissaries':
       case 'beyond_the_threshold':
-        // TODO: New return to dunwich icons
-        return this.coreIcon('core', size, color);
+        return this.dunwichIcon(encounter_code, size, color);
 
       case 'ptc': // THE PATH TO CARCOSA
         return this.carcosaIcon('carcosa', size, color);
