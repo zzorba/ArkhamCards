@@ -72,10 +72,19 @@ class CardSearchComponent extends React.Component {
     this._clearSearchFilters = this.clearSearchFilters.bind(this);
     this._showSearchFilters = this.showSearchFilters.bind(this);
     this._showSortDialog = this.showSortDialog.bind(this);
+    this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
 
     const rightButtons = [{
-      icon: iconsMap.tune,
       id: 'filter',
+      component: {
+        name: 'TuneButton',
+        passProps: {
+          onPress: this._showSearchFilters,
+          filters: props.defaultFilterState,
+          defaultFilters: props.defaultFilterState,
+          lightButton: !!props.onDeckCountChange,
+        },
+      },
     },{
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
@@ -146,6 +155,7 @@ class CardSearchComponent extends React.Component {
     this.setState({
       filters: filters,
     });
+    this.syncNavigationButtons(this.state.mythosMode, filters);
   }
 
   sortChanged(selectedSort) {
@@ -227,32 +237,32 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  toggleMythosMode() {
+  syncNavigationButtons(mythosMode, filters) {
     const {
       componentId,
       onDeckCountChange,
+      defaultFilterState,
     } = this.props;
-    const {
-      mythosMode,
-    } = this.state;
-    this.setState({
-      mythosMode: !mythosMode,
-    });
     const rightButtons = [{
-      icon: iconsMap.tune,
       id: 'filter',
+      component: {
+        name: 'TuneButton',
+        passProps: {
+          onPress: this._showSearchFilters,
+          filters: filters,
+          defaultFilters: defaultFilterState,
+          lightButton: !!onDeckCountChange,
+        },
+      },
     }, {
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
+      color: onDeckCountChange ? 'white' : undefined,
     }, {
-      icon: mythosMode ? iconsMap.auto_fail : iconsMap.per_investigator,
+      icon: mythosMode ? iconsMap.per_investigator : iconsMap.auto_fail,
       id: 'mythos',
+      color: onDeckCountChange ? 'white' : undefined,
     }];
-    if (onDeckCountChange) {
-      forEach(rightButtons, button => {
-        button.color = 'white';
-      });
-    }
 
     Navigation.mergeOptions(componentId, {
       topBar: {
@@ -262,6 +272,17 @@ class CardSearchComponent extends React.Component {
         rightButtons,
       },
     });
+  }
+
+  toggleMythosMode() {
+    const {
+      mythosMode,
+      filters,
+    } = this.state;
+    this.setState({
+      mythosMode: !mythosMode,
+    });
+    this.syncNavigationButtons(!mythosMode, filters);
   }
 
   searchUpdated(text) {

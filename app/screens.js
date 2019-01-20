@@ -4,6 +4,7 @@ import SearchMultiSelectView from '../components/SearchMultiSelectView';
 import DeckDetailView from '../components/DeckDetailView';
 import DeckEditView from '../components/DeckEditView';
 import CardSearchView from '../components/CardSearchView';
+import TuneButton from '../components/CardSearchComponent/TuneButton';
 import CardDetailView from '../components/CardDetailView';
 import CardFaqView from '../components/CardFaqView';
 import CardImageView from '../components/CardImageView';
@@ -91,4 +92,5 @@ export function registerScreens(Provider, store) {
   Navigation.registerComponentWithRedux('Weakness.Detail', () => WeaknessSetView, Provider, store);
   Navigation.registerComponentWithRedux('Weakness.Draw', () => WeaknessDrawDialog, Provider, store);
   Navigation.registerComponentWithRedux('Weakness.EditAssigned', () => EditAssignedWeaknessDialog, Provider, store);
+  Navigation.registerComponentWithRedux('TuneButton', () => TuneButton, Provider, store);
 }
