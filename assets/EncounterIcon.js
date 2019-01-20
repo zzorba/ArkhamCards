@@ -180,9 +180,11 @@ export default class EncounterIcon extends React.PureComponent {
       case 'abyssal_tribute':
       case 'brotherhood_of_the_beast':
       case 'sands_of_egypt':
-      case 'the_eternal_slumber':
-      case 'the_nights_usurper':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'the_eternal_slumber':
+        return this.standaloneIcon('eternal_slumber', size, color);
+      case 'the_nights_usurper':
+        return this.standaloneIcon('nights_usurper', size, color);
       case 'hote':
         return this.forgottenIcon('heart_of_the_elders', size, color);
       case 'tcoa':
