@@ -9,6 +9,10 @@ import {
 import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { FACTION_COLORS } from '../../constants';
+import { isBig } from '../../styles/space';
+
+export const SIZE = isBig ? 48 : 36;
+export const ICON_SIZE = isBig ? 46 : 32;
 
 export default class CardCostIcon extends React.Component {
   static propTypes = {
@@ -71,7 +75,7 @@ export default class CardCostIcon extends React.Component {
         <View style={styles.levelIcon}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${card.xp || 0}`}
-            size={32}
+            size={ICON_SIZE}
             color={inverted ? '#FFF' : color}
           />
         </View>
@@ -81,7 +85,7 @@ export default class CardCostIcon extends React.Component {
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
                 color="#FFF"
-                size={17}
+                size={ICON_SIZE / 2}
               />
             </View>
           ) : (
@@ -98,15 +102,15 @@ export default class CardCostIcon extends React.Component {
 const styles = StyleSheet.create({
   level: {
     position: 'relative',
-    width: 36,
-    height: 36,
+    width: SIZE,
+    height: SIZE,
   },
   levelIcon: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: 36,
-    height: 36,
+    width: SIZE,
+    height: SIZE,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -117,7 +121,7 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    fontSize: 23,
+    fontSize: isBig ? 32 : 23,
     color: '#FFF',
   },
   factionIcon: {

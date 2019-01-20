@@ -4,6 +4,8 @@ import {
   Text,
 } from 'react-native';
 
+import { isBig } from '../../styles/space';
+
 export default function BoldHtmlTagNode(node, output, state) {
   return (
     <Text key={state.key} style={styles.boldText}>
@@ -14,6 +16,6 @@ export default function BoldHtmlTagNode(node, output, state) {
 
 const styles = StyleSheet.create({
   boldText: {
-    fontWeight: '700',
+    fontWeight: isBig ? '500' : '700',
   },
 });

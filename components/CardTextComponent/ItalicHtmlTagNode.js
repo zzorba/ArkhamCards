@@ -4,6 +4,8 @@ import {
   Text,
 } from 'react-native';
 
+import { isBig } from '../../styles/space';
+
 export default function ItalicHtmlTagNode(node, output, state) {
   return (
     <Text
@@ -18,6 +20,6 @@ export default function ItalicHtmlTagNode(node, output, state) {
 const styles = StyleSheet.create({
   italicText: {
     fontStyle: 'italic',
-    fontWeight: '200',
+    fontWeight: isBig ? '300' : '200',
   },
 });

@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
@@ -33,21 +34,84 @@ export function getDeckOptions(investigator) {
 }
 
 export function showDeckModal(componentId, deck, investigator, campaignId) {
-  Navigation.showModal({
-    stack: {
-      children: [{
-        component: {
-          name: 'Deck',
-          passProps: {
-            id: deck.id,
-            isPrivate: true,
-            modal: true,
-            campaignId,
-            title: investigator.name,
+  if (Platform.OS === 'ios' && Platform.isPad && false) {
+    Navigation.showModal({
+      splitView: {
+        id: 'SPLIT_DECK_EDIT',
+        master: {
+          stack: {
+            id: 'MASTER_ID',
+            children: [
+              {
+                component: {
+                  name: 'Settings',
+                },
+              },
+            ],
           },
-          options: getDeckOptions(investigator),
         },
-      }],
+        detail: {
+          stack: {
+            id: 'DETAILS_ID',
+            children: [
+              {
+                component: {
+                  name: 'Deck',
+                  passProps: {
+                    id: deck.id,
+                    isPrivate: true,
+                    modal: true,
+                    campaignId,
+                    title: investigator.name,
+                  },
+                  options: getDeckOptions(investigator),
+                },
+              },
+            ],
+          },
+        },
+        options: {
+          displayMode: 'visible',
+        },
+      },
+    });
+  } else {
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Deck',
+            passProps: {
+              id: deck.id,
+              isPrivate: true,
+              modal: true,
+              campaignId,
+              title: investigator.name,
+            },
+            options: getDeckOptions(investigator),
+          },
+        }],
+      },
+    });
+  }
+}
+
+export function showCard(componentId, code, card, showSpoilers) {
+  Navigation.push(componentId, {
+    component: {
+      name: 'Card',
+      passProps: {
+        id: code,
+        pack_code: card.pack_code,
+        showSpoilers: !!showSpoilers,
+      },
+      options: {
+        topBar: {
+          backButton: {
+            title: L('Back'),
+          },
+        },
+      },
     },
   });
 }

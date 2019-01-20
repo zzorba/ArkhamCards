@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SimpleMarkdown from 'simple-markdown';
 import { MarkdownView } from 'react-native-markdown-view';
 
+import { isBig } from '../../styles/space';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
 
@@ -57,8 +58,8 @@ export default class FlavorTextComponent extends React.PureComponent {
         onLinkPress={onLinkPress}
         styles={{
           paragraph: {
-            fontSize: 14,
-            fontWeight: '100',
+            fontSize: isBig ? 24 : 14,
+            fontWeight: isBig ? '300' : '100',
             fontStyle: 'italic',
           },
         }}

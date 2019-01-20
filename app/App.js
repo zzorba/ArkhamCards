@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { Linking, YellowBox } from 'react-native';
+import { Linking, Platform, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 
 import L, { changeLocale } from './i18n';
@@ -67,97 +67,130 @@ export default class App {
       'Warning: isMounted(...) is deprecated',
     ]);
 
-    Navigation.setRoot({
-      root: {
-        bottomTabs: {
-          children: [{
-            stack: {
-              children: [{
-                component: {
-                  name: 'Browse.Cards',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Player Cards'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Cards'),
-                  icon: iconsMap.cards,
+    const isIpad = Platform.OS === 'ios' && Platform.isPad;
+
+    const tabs = [{
+      stack: {
+        children: [{
+          component: {
+            name: 'Browse.Cards',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Player Cards'),
                 },
               },
             },
-          }, {
-            stack: {
-              children: [{
-                component: {
-                  name: 'My.Decks',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Decks'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Decks'),
-                  icon: iconsMap.deck,
-                },
-              },
-            },
-          }, {
-            stack: {
-              children: [{
-                component: {
-                  name: 'My.Campaigns',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Campaigns'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Campaigns'),
-                  icon: iconsMap.book,
-                },
-              },
-            },
-          }, {
-            stack: {
-              children: [{
-                component: {
-                  name: 'Settings',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Settings'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Settings'),
-                  icon: iconsMap.settings,
-                },
-              },
-            },
-          }],
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Cards'),
+            icon: iconsMap.cards,
+          },
         },
       },
-    });
+    }, {
+      stack: {
+        children: [{
+          component: {
+            name: 'My.Decks',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Decks'),
+                },
+              },
+            },
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Decks'),
+            icon: iconsMap.deck,
+          },
+        },
+      },
+    }, {
+      stack: {
+        children: [{
+          component: {
+            name: 'My.Campaigns',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Campaigns'),
+                },
+              },
+            },
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Campaigns'),
+            icon: iconsMap.book,
+          },
+        },
+      },
+    }, {
+      stack: {
+        children: [{
+          component: {
+            name: 'Settings',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Settings'),
+                },
+              },
+            },
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Settings'),
+            icon: iconsMap.settings,
+          },
+        },
+      },
+    }];
+
+    /*if (Platform.OS === 'ios' && Platform.isPad) {
+      Navigation.showModal({
+        splitView: {
+          id: 'SPLIT_DECK_EDIT',
+          master: {
+            stack: {
+              id: 'MASTER_ID',
+              children: [
+                {
+                  component: {
+                    name: 'Settings',
+                  },
+                },
+              ],
+            },
+          },
+          detail: {
+            bottomTabs: {
+              children: tabs,
+            },
+          },
+          options: {
+            displayMode: 'hidden',
+            primaryEdge: 'trailing',
+          },
+        },
+      });
+    } else {*/
+      Navigation.setRoot({
+        root: {
+          bottomTabs: {
+            children: tabs,
+          },
+        },
+      });
+    //}
     Linking.addEventListener('url', this._handleUrl);
 
     // We handle scrollapp and https (universal) links

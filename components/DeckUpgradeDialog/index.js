@@ -15,7 +15,7 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { handleAuthErrors } from '../authHelper';
-import { showDeckModal } from '../navHelper';
+import { showDeckModal, showCard } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
 import { updateCampaign } from '../campaign/actions';
 import withTraumaDialog from '../campaign/withTraumaDialog';
@@ -171,15 +171,7 @@ class DeckUpgradeDialog extends React.Component {
   }
 
   onCardPress(card) {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'Card',
-        passProps: {
-          id: card.code,
-          pack_code: card.pack_code,
-        },
-      },
-    });
+    showCard(this.props.componentId, card.code, card);
   }
 
   onExileCountsChange(exileCounts) {

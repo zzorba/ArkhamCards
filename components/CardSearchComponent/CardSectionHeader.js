@@ -8,6 +8,9 @@ import {
 
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
+import { isBig } from '../../styles/space';
+
+export const ROW_HEADER_HEIGHT = isBig ? 42 : 30;
 
 export const ROW_HEADER_HEIGHT = 30;
 export default function CardSectionHeader({ title, bold }) {
@@ -33,6 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: ROW_HEADER_HEIGHT,
+    borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },

@@ -1,5 +1,6 @@
-export const ROW_HEIGHT = 48;
-export const ICON_SIZE = 28;
+import { isBig } from '../../styles/space';
+export const ROW_HEIGHT = isBig ? 72 : 48;
+export const ICON_SIZE = isBig ? 44 : 28;
 export const BUTTON_WIDTH = 40;
 export const BUTTON_PADDING = 12;
 

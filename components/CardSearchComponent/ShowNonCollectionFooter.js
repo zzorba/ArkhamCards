@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import {
   Button,
   StyleSheet,
+  View,
 } from 'react-native';
 
-export const ROW_NON_COLLECTION_HEIGHT = 38;
+import { isBig } from '../../styles/space';
+
+export const ROW_NON_COLLECTION_HEIGHT = isBig ? 52 : 38;
 
 export default class ShowNonCollectionFooter extends React.Component {
   static propTypes = {
@@ -29,11 +32,12 @@ export default class ShowNonCollectionFooter extends React.Component {
       title,
     } = this.props;
     return (
-      <Button
-        style={styles.button}
-        title={title}
-        onPress={this._onPress}
-      />
+      <View style={styles.row}>
+        <Button
+          title={title}
+          onPress={this._onPress}
+        />
+      </View>
     );
   }
 }
@@ -41,5 +45,10 @@ export default class ShowNonCollectionFooter extends React.Component {
 const styles = StyleSheet.create({
   button: {
     height: ROW_NON_COLLECTION_HEIGHT,
+  },
+  row: {
+    height: ROW_NON_COLLECTION_HEIGHT,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

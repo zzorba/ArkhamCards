@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { flatMap, map, range } from 'lodash';
 import {
+  Platform,
   StyleSheet,
   Text,
   View,
@@ -17,7 +18,7 @@ import {
   SKILL_COLORS,
 } from '../../constants';
 import typography from '../../styles/typography';
-import space from '../../styles/space';
+import space, { isBig, xs, s } from '../../styles/space';
 import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
@@ -35,6 +36,9 @@ const ENCOUNTER_BACK = require('../../assets/encounter-back.png');
 const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={12} color="#000000" />
 );
+const ICON_SIZE = isBig ? 44 : 28;
+const SMALL_ICON_SIZE = isBig ? 24 : 14;
+const SKILL_ICON_SIZE = isBig ? 24 : 16;
 
 function num(value) {
   if (value === null) {
@@ -134,14 +138,18 @@ export default class TwoSidedCardComponent extends React.Component {
     return (
       <View style={styles.metadataBlock}>
         { !!(card.subtype_name || card.type_name) && (
-          <Text style={styles.typeText}>
+          <Text style={[typography.cardText, styles.typeText]}>
             { card.subtype_name ?
               `${card.type_name}. ${card.subtype_name}` :
               card.type_name }
             { (card.type_code === 'agenda' || card.type_code === 'act') ? ` ${card.stage}` : '' }
           </Text>
         ) }
-        { !!card.traits && <Text style={styles.traitsText}>{ card.traits }</Text> }
+        { !!card.traits && (
+          <Text style={[typography.cardText, styles.traitsText]}>
+            { card.traits }
+          </Text>
+        ) }
       </View>
     );
   }
@@ -149,11 +157,11 @@ export default class TwoSidedCardComponent extends React.Component {
   renderTestIcons(card) {
     if (card.type_code === 'investigator') {
       return (
-        <Text>
-          <ArkhamIcon name="willpower" size={14} color="#000" />{ `${card.skill_willpower}  ` }
-          <ArkhamIcon name="intellect" size={14} color="#000" />{ `${card.skill_intellect}  ` }
-          <ArkhamIcon name="combat" size={14} color="#000" />{ `${card.skill_combat}  ` }
-          <ArkhamIcon name="agility" size={14} color="#000" />{ `${card.skill_agility}  ` }
+        <Text style={typography.cardText}>
+          <ArkhamIcon name="willpower" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_willpower}.  ` }
+          <ArkhamIcon name="intellect" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_intellect}.  ` }
+          <ArkhamIcon name="combat" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_combat}.  ` }
+          <ArkhamIcon name="agility" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_agility}.` }
         </Text>
       );
     }
@@ -167,7 +175,7 @@ export default class TwoSidedCardComponent extends React.Component {
     }
     return (
       <View style={styles.testIconRow}>
-        <Text>
+        <Text style={typography.cardText}>
           { L('Test Icons: ') }
         </Text>
         { map(skills, (skill, idx) => (
@@ -175,7 +183,7 @@ export default class TwoSidedCardComponent extends React.Component {
             style={styles.testIcon}
             key={idx}
             name={`skill_${skill}`}
-            size={16}
+            size={SKILL_ICON_SIZE}
             color={SKILL_COLORS[skill]}
           />))
         }
@@ -189,7 +197,7 @@ export default class TwoSidedCardComponent extends React.Component {
     }
     return (
       <View style={styles.slotBlock}>
-        <Text>
+        <Text style={typography.cardText}>
           { L('Slot: {{slot}}', { slot: card.slot }) }
         </Text>
       </View>
@@ -205,16 +213,20 @@ export default class TwoSidedCardComponent extends React.Component {
     return (
       <View style={styles.statsBlock}>
         { !!(card.xp || costString) && (
-          <Text>
+          <Text style={typography.cardText}>
             { card.xp ?
               (`${costString}${costString ? '. ' : ''}XP: ${card.xp}.`) :
               costString
             }
           </Text>
         ) }
-        { card.type_code === 'agenda' && <Text>Doom: { num(card.doom) }</Text> }
+        { card.type_code === 'agenda' && (
+          <Text style={typography.cardText}>
+            Doom: { num(card.doom) }
+          </Text>
+        ) }
         { card.type_code === 'act' && card.clues > 0 && (
-          <Text>
+          <Text style={typography.cardText}>
             Clues: { card.clues }
             { !card.clues_fixed && PER_INVESTIGATOR_ICON }
           </Text>
@@ -223,7 +235,7 @@ export default class TwoSidedCardComponent extends React.Component {
         { this.renderSlot(card) }
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
-          <Text>
+          <Text style={typography.cardText}>
             Shroud: { num(card.shroud) }. Clues: { num(card.clues) }
             { card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON }
             .
@@ -236,7 +248,7 @@ export default class TwoSidedCardComponent extends React.Component {
   renderHealthAndSanity(card) {
     if (card.type_code === 'enemy') {
       return (
-        <Text>
+        <Text style={typography.cardText}>
           { `${L('Fight')}: ${num(card.enemy_fight)}. ${L('Health')}: ${num(card.health)}` }
           { !!card.health_per_investigator && PER_INVESTIGATOR_ICON }
           { `. ${L('Evade')}: ${num(card.enemy_evade)}. ` }
@@ -247,7 +259,7 @@ export default class TwoSidedCardComponent extends React.Component {
     }
     if (card.health > 0 || card.sanity > 0) {
       return (
-        <Text>
+        <Text style={typography.cardText}>
           { `${L('Health')}: ${num(card.health)}. ${L('Sanity')}: ${num(card.sanity)}.` }
         </Text>
       );
@@ -270,7 +282,7 @@ export default class TwoSidedCardComponent extends React.Component {
         <View style={styles.factionIcon}>
           <EncounterIcon
             encounter_code={card.encounter_code || (card.linked_card && card.linked_card.encounter_code)}
-            size={28}
+            size={ICON_SIZE}
             color={color}
           />
         </View>
@@ -281,7 +293,7 @@ export default class TwoSidedCardComponent extends React.Component {
     ) {
       return (
         <View style={styles.factionIcon}>
-          <ArkhamIcon name="weakness" size={28} color={color} />
+          <ArkhamIcon name="weakness" size={ICON_SIZE} color={color} />
         </View>
       );
     }
@@ -306,7 +318,7 @@ export default class TwoSidedCardComponent extends React.Component {
       return (
         <View style={styles.factionIcon}>
           { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-            <ArkhamIcon name={card.faction_code} size={28} color={color} /> }
+            <ArkhamIcon name={card.faction_code} size={ICON_SIZE} color={color} /> }
         </View>
       );
     }
@@ -421,11 +433,15 @@ export default class TwoSidedCardComponent extends React.Component {
           <View style={styles.cardBody}>
             <View style={styles.typeBlock}>
               <View style={styles.metadataBlock}>
-                <Text style={styles.typeText}>
+                <Text style={[typography.cardText, styles.typeText]}>
                   { card.type_name }
-                  { (card.type_code === 'act' || card.type_code === 'agenda') ? ` ${card.stage}` : '' }
+                  { (card.type_code === 'act' || card.type_code === 'agenda') ?
+                    ` ${card.stage}` :
+                    '' }
                 </Text>
-                { !!card.traits && <Text style={styles.traitsText}>{ card.traits }</Text> }
+                { !!card.traits && (
+                  <Text style={[typography.cardText, styles.traitsText]}>{ card.traits }</Text>
+                ) }
               </View>
               { !!card.back_flavor && flavorFirst &&
                 <FlavorTextComponent text={card.back_flavor} />
@@ -465,18 +481,18 @@ export default class TwoSidedCardComponent extends React.Component {
       <View style={styles.twoColumn}>
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
-            <Text style={styles.illustratorText}>
+            <Text style={[typography.cardText, styles.illustratorText]}>
               <AppIcon name="paintbrush" size={12} color="#000000" />
               { ` ${card.illustrator}` }
             </Text>
           ) }
           { !!card.pack_name &&
             <View style={styles.setRow}>
-              <Text>
+              <Text style={typography.cardText}>
                 { `${card.pack_name} #${card.position % 1000}.` }
               </Text>
               { !!card.encounter_name &&
-                <Text>
+                <Text style={typography.cardText}>
                   { `${card.encounter_name} #${card.encounter_position}.${card.quantity > 1 ?
                     `\n${L('{{quantity}} copies.', { quantity: card.quantity })}` :
                     ''
@@ -493,11 +509,51 @@ export default class TwoSidedCardComponent extends React.Component {
     );
   }
 
+  renderImage(card) {
+    if (card.type_code === 'story' || card.type_code === 'scenario') {
+      return null;
+    }
+    return (
+      <View style={styles.column}>
+        <View style={styles.playerImage}>
+          <PlayerCardImage card={card} componentId={this.props.componentId} />
+        </View>
+      </View>
+    );
+  }
+
+  renderCardText(card, backFirst, isHorizontal, flavorFirst, isFirst) {
+    return (
+      <React.Fragment>
+        { !!card.text && (
+          <View style={[styles.gameTextBlock, {
+            borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (FACTION_COLORS[card.faction_code] || '#000000'),
+          }]}>
+            <CardTextComponent text={card.text} />
+          </View>)
+        }
+        { ('victory' in card && card.victory !== null) &&
+          <Text style={styles.typeText}>
+            { L('Victory: {{points}}.', { points: card.victory }) }
+          </Text>
+        }
+        { ('vengeance' in card && card.vengeance !== null) &&
+          <Text style={styles.typeText}>
+            { L('Vengeance: {{points}}.', { points: card.vengeance }) }
+          </Text>
+        }
+        { !!card.flavor && !flavorFirst &&
+          <FlavorTextComponent text={card.flavor} />
+        }
+      </React.Fragment>
+    );
+  }
+
   renderCardFront(card, backFirst, isHorizontal, flavorFirst, isFirst) {
     const {
       componentId,
     } = this.props;
-    if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack) {
+    if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== '01000') {
       return (
         <View style={styles.buttonContainer}>
           <Button
@@ -508,6 +564,7 @@ export default class TwoSidedCardComponent extends React.Component {
       );
     }
 
+    const isTablet = Platform.OS === 'ios' && Platform.isPad;
     return (
       <View style={styles.container}>
         <View style={[
@@ -526,35 +583,11 @@ export default class TwoSidedCardComponent extends React.Component {
                   { !!(card.flavor && flavorFirst) &&
                     <FlavorTextComponent text={card.flavor} />
                   }
+                  { isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst, isFirst) }
                 </View>
-                { card.type_code !== 'story' && card.type_code !== 'scenario' && (
-                  <View style={styles.column}>
-                    <View style={styles.playerImage}>
-                      <PlayerCardImage card={card} componentId={componentId} />
-                    </View>
-                  </View>
-                ) }
+                { this.renderImage(card) }
               </View>
-              { !!card.text && (
-                <View style={[styles.gameTextBlock, {
-                  borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (FACTION_COLORS[card.faction_code] || '#000000'),
-                }]}>
-                  <CardTextComponent text={card.text} />
-                </View>)
-              }
-              { ('victory' in card && card.victory !== null) &&
-                <Text style={styles.typeText}>
-                  { L('Victory: {{points}}.', { points: card.victory }) }
-                </Text>
-              }
-              { ('vengeance' in card && card.vengeance !== null) &&
-                <Text style={styles.typeText}>
-                  { L('Vengeance: {{points}}.', { points: card.vengeance }) }
-                </Text>
-              }
-              { !!card.flavor && !flavorFirst &&
-                <FlavorTextComponent text={card.flavor} />
-              }
+              { !isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst, isFirst) }
               { isFirst && this.renderCardFooter(card) }
             </View>
           </View>
@@ -628,36 +661,39 @@ const styles = StyleSheet.create({
   },
   playerImage: {
     marginTop: 2,
+    marginBottom: s,
+    marginLeft: xs,
   },
   metadataBlock: {
-    marginBottom: 8,
+    marginBottom: s,
   },
   container: {
-    marginTop: 8,
-    marginLeft: 8,
-    marginRight: 8,
-    marginBottom: 8,
+    marginTop: s,
+    marginLeft: s,
+    marginRight: s,
+    marginBottom: s,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   },
   card: {
     width: '100%',
+    maxWidth: 600,
     marginTop: 2,
     borderWidth: 1,
     borderRadius: 4,
   },
   cardBody: {
-    paddingTop: 4,
-    paddingLeft: 8,
-    paddingRight: 9,
-    paddingBottom: 4,
+    paddingTop: xs,
+    paddingLeft: s,
+    paddingRight: s + 1,
+    paddingBottom: xs,
   },
   cardTitle: {
-    paddingRight: 8,
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingRight: s,
+    paddingTop: xs,
+    paddingBottom: xs,
     borderBottomWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -665,41 +701,41 @@ const styles = StyleSheet.create({
   },
   gameTextBlock: {
     borderLeftWidth: 4,
-    paddingLeft: 8,
-    marginBottom: 8,
+    paddingLeft: xs,
+    marginBottom: s,
+    marginRight: s,
   },
   statsBlock: {
-    marginBottom: 8,
+    marginBottom: s,
   },
   slotBlock: {
-    marginBottom: 8,
+    marginBottom: s,
   },
   setRow: {
-    marginBottom: 4,
+    marginBottom: xs,
   },
   typeBlock: {
-    marginTop: 4,
+    marginTop: xs,
   },
   typeText: {
-    fontWeight: '700',
+    fontWeight: isBig ? '500' : '700',
   },
   traitsText: {
-    fontWeight: '700',
+    fontWeight: isBig ? '500' : '700',
     fontStyle: 'italic',
   },
   illustratorText: {
-    fontSize: 14,
-    marginBottom: 4,
+    marginBottom: xs,
   },
   buttonContainer: {
-    marginLeft: 8,
-    marginTop: 4,
-    marginBottom: 4,
+    marginLeft: s,
+    marginTop: xs,
+    marginBottom: xs,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
   costIcon: {
-    marginLeft: 4,
+    marginLeft: xs,
   },
   testIconRow: {
     flexDirection: 'row',

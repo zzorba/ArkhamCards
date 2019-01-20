@@ -12,12 +12,12 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import AppIcon from '../../assets/AppIcon';
 import L from '../../app/i18n';
 import { DeckType } from '../parseDeck';
+import { showCard } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
@@ -217,22 +217,7 @@ export default class DeckViewTab extends React.Component {
   }
 
   showCard(card) {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'Card',
-        passProps: {
-          id: card.code,
-          pack_code: card.pack_code,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: L('Back'),
-            },
-          },
-        },
-      },
-    });
+    showCard(this.props.componentId, card.code, card);
   }
 
   renderSectionHeader({ section }) {

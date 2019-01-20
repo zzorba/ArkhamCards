@@ -18,8 +18,9 @@ import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from '../../styles/typography';
+import { isBig, s } from '../../styles/space';
 
-const SMALL_ICON_SIZE = 26;
+const SMALL_ICON_SIZE = isBig ? 38 : 26;
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
 
@@ -140,7 +141,7 @@ export default class CardSearchResult extends React.PureComponent {
       <View key={`${skill}-${key}`} style={styles.skillIcon}>
         <ArkhamIcon
           name={skill}
-          size={14}
+          size={isBig ? 24 : 14}
           color="#444"
         />
       </View>
@@ -376,7 +377,7 @@ const styles = StyleSheet.create({
     marginRight: 2,
   },
   subname: {
-    marginRight: 8,
+    marginRight: s,
   },
   factionIcon: {
     flexDirection: 'column',
@@ -388,7 +389,7 @@ const styles = StyleSheet.create({
   cardTextRow: {
     flex: 2,
     flexDirection: 'row',
-    paddingLeft: 8,
+    paddingLeft: s,
     alignItems: 'center',
   },
   switchButton: {
@@ -396,7 +397,7 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   countText: {
-    marginRight: 8,
+    marginRight: s,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',

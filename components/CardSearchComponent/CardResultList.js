@@ -686,6 +686,7 @@ const styles = StyleSheet.create({
   },
   loading: {
     flex: 1,
+    margin: m,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
