@@ -160,6 +160,13 @@ export default class CardText extends React.PureComponent {
     const {
       onLinkPress,
     } = this.props;
+    const cleanText = this.props.text
+      .replace(/&rarr;/g, '→')
+      .replace(/\/n/g, '\n')
+      .replace(/^\s?-|—\s+(.+)$/gm,
+        onLinkPress ? '<span class="icon-bullet"></span> $1' : '[bullet] $1'
+      );
+
     // Text that has hyperlinks uses a different style for the icons.
     return (
       <MarkdownView
@@ -195,11 +202,7 @@ export default class CardText extends React.PureComponent {
         }}
         onLinkPress={onLinkPress}
       >
-        { this.props.text
-          .replace(/&rarr;/g, '→')
-          .replace(/\/n/g, '\n')
-          .replace(/^\s?-|— (.+)$/gm, '[bullet] $1')
-        }
+        { cleanText }
       </MarkdownView>
     );
   }
