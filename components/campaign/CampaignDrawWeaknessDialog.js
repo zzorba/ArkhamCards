@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, flatMap, keys, map, range } from 'lodash';
+import { head, flatMap, keys, map, range, throttle } from 'lodash';
 import { StyleSheet, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { updateCampaign } from './actions';
@@ -11,6 +12,7 @@ import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
 import { parseDeck } from '../parseDeck';
+import { updateLocalDeck } from '../decks/localHelper';
 import * as Actions from '../../actions';
 import { iconsMap } from '../../app/NavIcons';
 import { saveDeck } from '../../lib/authApi';
@@ -23,7 +25,7 @@ const RANDOM_BASIC_WEAKNESS = '01000';
 
 class CampaignDrawWeaknessDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignId: PropTypes.number.isRequired,
     // From redux
     weaknessSet: PropTypes.object.isRequired,
@@ -35,6 +37,17 @@ class CampaignDrawWeaknessDialog extends React.Component {
     investigators: PropTypes.object,
     cards: PropTypes.object,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          icon: iconsMap.edit,
+          id: 'edit',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -52,29 +65,32 @@ class CampaignDrawWeaknessDialog extends React.Component {
     this._updateDrawnCard = this.updateDrawnCard.bind(this);
     this._onPressInvestigator = this.onPressInvestigator.bind(this);
     this._toggleReplaceRandomBasicWeakness = this.toggleReplaceRandomBasicWeakness.bind(this);
-    props.navigator.setButtons({
-      rightButtons: [{
-        icon: iconsMap.edit,
-        id: 'edit',
-      }],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._showEditWeaknessDialog = throttle(this.showEditWeaknessDialog.bind(this), 200);
+    this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
+  componentWillUnmount() {
+    this._navEventListener.remove();
+  }
+
+  showEditWeaknessDialog() {
     const {
-      navigator,
+      componentId,
       campaignId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'edit') {
-        navigator.push({
-          screen: 'Dialog.CampaignEditWeakness',
-          passProps: {
-            campaignId: campaignId,
-          },
-        });
-      }
+    Navigation.push(componentId, {
+      component: {
+        name: 'Dialog.CampaignEditWeakness',
+        passProps: {
+          campaignId: campaignId,
+        },
+      },
+    });
+
+  }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'edit') {
+      this._showEditWeaknessDialog();
     }
   }
 
@@ -92,17 +108,22 @@ class CampaignDrawWeaknessDialog extends React.Component {
 
   onPressInvestigator() {
     const {
-      navigator,
       latestDeckIds,
       campaignId,
     } = this.props;
-    navigator.showModal({
-      screen: 'Dialog.DeckSelector',
-      passProps: {
-        campaignId: campaignId,
-        onDeckSelect: this._selectDeck,
-        selectedDeckIds: latestDeckIds,
-        showOnlySelectedDeckIds: true,
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.DeckSelector',
+            passProps: {
+              campaignId: campaignId,
+              onDeckSelect: this._selectDeck,
+              selectedDeckIds: latestDeckIds,
+              showOnlySelectedDeckIds: true,
+            },
+          },
+        }],
       },
     });
   }
@@ -134,9 +155,6 @@ class CampaignDrawWeaknessDialog extends React.Component {
     } = this.state;
     const deck = selectedDeckId && decks[selectedDeckId];
     if (deck) {
-      this.setState({
-        saving: true,
-      });
       const previousDeck = decks[deck.previous_deck];
       const investigator = investigators[deck.investigator_code];
       const newSlots = Object.assign({}, deck.slots);
@@ -158,20 +176,38 @@ class CampaignDrawWeaknessDialog extends React.Component {
       }));
       const problem = problemObj ? problemObj.reason : '';
 
-      saveDeck(
-        deck.id,
-        deck.name,
-        newSlots,
-        problem,
-        parsedDeck.spentXp
-      ).then(deck => {
-        updateDeck(deck.id, deck, true);
+      if (deck.local) {
+        const newDeck = updateLocalDeck(
+          deck,
+          deck.name,
+          newSlots,
+          problem,
+          parsedDeck.spentXp
+        );
+        updateDeck(newDeck.id, newDeck, true);
         this.setState({
-          saving: false,
           pendingAssignedCards: null,
           pendingNextCard: null,
         });
-      });
+      } else {
+        this.setState({
+          saving: true,
+        });
+        saveDeck(
+          deck.id,
+          deck.name,
+          newSlots,
+          problem,
+          parsedDeck.spentXp
+        ).then(deck => {
+          updateDeck(deck.id, deck, true);
+          this.setState({
+            saving: false,
+            pendingAssignedCards: null,
+            pendingNextCard: null,
+          });
+        });
+      }
     }
     const newWeaknessSet = Object.assign(
       {},
@@ -241,7 +277,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       weaknessSet,
     } = this.props;
 
@@ -251,7 +287,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
 
     return (
       <WeaknessDrawComponent
-        navigator={navigator}
+        componentId={componentId}
         customHeader={this.renderInvestigatorChooser()}
         customFlippedHeader={this.renderFlippedHeader()}
         weaknessSet={weaknessSet}

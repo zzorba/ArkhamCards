@@ -9,7 +9,7 @@ import * as Actions from '../../actions';
 
 class EditAssignedWeaknessDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     set: PropTypes.object,
@@ -17,14 +17,20 @@ class EditAssignedWeaknessDialog extends React.Component {
     editWeaknessSet: PropTypes.func.isRequired,
   };
 
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Available weaknesses'),
+        },
+      },
+    };
+  }
+
   constructor(props) {
     super(props);
 
     this._updateAssignedCards = this.updateAssignedCards.bind(this);
-
-    props.navigator.setTitle({
-      title: L('Available weaknesses'),
-    });
   }
 
   updateAssignedCards(assignedCards) {
@@ -37,7 +43,7 @@ class EditAssignedWeaknessDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       set,
     } = this.props;
     if (!set) {
@@ -45,7 +51,7 @@ class EditAssignedWeaknessDialog extends React.Component {
     }
     return (
       <EditAssignedWeaknessComponent
-        navigator={navigator}
+        componentId={componentId}
         weaknessSet={set}
         updateAssignedCards={this._updateAssignedCards}
       />

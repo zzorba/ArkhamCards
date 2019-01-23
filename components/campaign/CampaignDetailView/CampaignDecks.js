@@ -23,7 +23,7 @@ import AppIcon from '../../../assets/AppIcon';
 
 class CampaignDeckDetail extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
     investigator: PropTypes.object,
@@ -42,12 +42,12 @@ class CampaignDeckDetail extends React.Component {
 
   viewDeck() {
     const {
-      navigator,
+      componentId,
       deck,
       investigator,
       campaignId,
     } = this.props;
-    showDeckModal(navigator, deck, investigator, campaignId);
+    showDeckModal(componentId, deck, investigator, campaignId);
   }
 
   upgradeDeckPressed() {
@@ -112,7 +112,7 @@ class CampaignDeckDetail extends React.Component {
 /* eslint-disable react/no-multi-comp */
 class CampaignSubDeckDetail extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
     investigator: PropTypes.object,
@@ -132,11 +132,11 @@ class CampaignSubDeckDetail extends React.Component {
 
   viewDeck() {
     const {
-      navigator,
+      componentId,
       deck,
       investigator,
     } = this.props;
-    showDeckModal(navigator, deck, investigator);
+    showDeckModal(componentId, deck, investigator);
   }
 
   upgradeDeckPressed() {
@@ -156,7 +156,7 @@ class CampaignSubDeckDetail extends React.Component {
           spentXp: parsedDeck.spentXp,
         });
       }
-      return L('{{xpCount}} available', { xpCount: parsedDeck.spentXp });
+      return L('{{xpCount}} available', { xpCount: deck.xp || 0 });
     }
     return L('{{totalXp}} total', { totalXp: parsedDeck.totalXp || 0 });
   }
@@ -193,7 +193,7 @@ class CampaignSubDeckDetail extends React.Component {
                 { L('EXPERIENCE') }
               </Text>
               <Text style={typography.text}>
-                { this.experienceLine(deck, parsedDeck) }
+                { this.experienceLine(parsedDeck.deck, parsedDeck) }
               </Text>
             </View>
           </View>

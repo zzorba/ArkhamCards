@@ -1,8 +1,8 @@
 import { capitalize, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
-import { CUSTOM } from './constants';
+import { CUSTOM, campaignNames } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
-import { CAMPAIGN_NAMES, CHAOS_TOKEN_ORDER } from '../../constants';
+import { CHAOS_TOKEN_ORDER } from '../../constants';
 
 export function campaignToText(campaign, latestDeckIds, decks, investigators) {
   const lines = [];
@@ -11,7 +11,7 @@ export function campaignToText(campaign, latestDeckIds, decks, investigators) {
   if (campaign.cycleCode === CUSTOM) {
     lines.push('Custom Campaign');
   } else {
-    lines.push(`Campaign: ${CAMPAIGN_NAMES[campaign.cycleCode]}`);
+    lines.push(`Campaign: ${campaignNames()[campaign.cycleCode]}`);
     lines.push(`Difficulty: ${capitalize(campaign.difficulty)}`);
   }
   lines.push('');

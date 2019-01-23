@@ -74,6 +74,8 @@ export default class EncounterIcon extends React.PureComponent {
 
       case 'dwl': // THE DUNWICH LEGACY
         return this.dunwichIcon('set', size, color);
+      case 'rtdwl':
+        return this.dunwichIcon('return_to_the_dunwich_legacy', size, color);
       case 'tmm':
         return this.dunwichIcon('the_miskatonic_museum', size, color);
       case 'tece':
@@ -104,6 +106,19 @@ export default class EncounterIcon extends React.PureComponent {
       case 'sorcery':
       case 'the_beyond':
       case 'whippoorwills':
+      case 'return_to_extracurricular_activity':
+      case 'return_to_the_house_always_wins':
+      case 'return_to_the_miskatonic_museum':
+      case 'return_to_blood_on_the_altar':
+      case 'return_to_undimensioned_and_unseen':
+      case 'return_to_where_doom_awaits':
+      case 'return_to_lost_in_time_and_space':
+      case 'resurgent_evils':
+      case 'erratic_fear':
+      case 'creeping_cold':
+      case 'secret_doors':
+      case 'yog_sothoths_emissaries':
+      case 'beyond_the_threshold':
         return this.dunwichIcon(encounter_code, size, color);
 
       case 'ptc': // THE PATH TO CARCOSA
@@ -160,14 +175,29 @@ export default class EncounterIcon extends React.PureComponent {
       case 'in_the_labyrinths_of_lunacy':
       case 'epic_multiplayer':
       case 'single_group':
+      case 'guardians':
+      case 'abyssal_gifts':
+      case 'abyssal_tribute':
+      case 'brotherhood_of_the_beast':
+      case 'sands_of_egypt':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'the_eternal_slumber':
+        return this.standaloneIcon('eternal_slumber', size, color);
+      case 'the_nights_usurper':
+        return this.standaloneIcon('nights_usurper', size, color);
       case 'hote':
         return this.forgottenIcon('heart_of_the_elders', size, color);
+      case 'tcoa':
+      case 'the_city_of_archives':
+        return this.forgottenIcon('city_of_archives', size, color);
       case 'tfa':
-      case 'tcoa': // THE CITY OF ARCHIVES
-      case 'tdoy': // THE DEPTHS OF YOTH
-      case 'sha': // SHATTERED AEONS
         return this.forgottenIcon('the_forgotten_age', size, color);
+      case 'sha':
+      case 'shattered_aeons':
+        return this.forgottenIcon('shattered_aeons', size, color);
+      case 'tdoy':
+      case 'depths_of_yoth':
+        return this.forgottenIcon('the_depths_of_yoth', size, color);
       case 'tof':
       case 'threads_of_fate':
         return this.forgottenIcon('threads_of_fate', size, color);
@@ -188,6 +218,9 @@ export default class EncounterIcon extends React.PureComponent {
         return this.forgottenIcon('yigs_venom', size, color);
       case 'k\'n-yan':
         return this.forgottenIcon('knyan', size, color);
+      case 'pillars_of_judgment':
+        return this.forgottenIcon('pillars_of_judgement', size, color);
+      case 'turn_back_time':
       case 'rainforest':
       case 'serpents':
       case 'expedition':
@@ -196,6 +229,8 @@ export default class EncounterIcon extends React.PureComponent {
       case 'pnakotic_brotherhood':
       case 'heart_of_the_elders':
       case 'pillars_of_judgement':
+      case 'the_depths_of_yoth':
+      case 'city_of_archives':
       case 'knyan':
       case 'poison':
         return this.forgottenIcon(encounter_code, size, color);

@@ -175,7 +175,7 @@ export default class CardSearchResult extends React.PureComponent {
           <Text style={[
             typography.text,
             { color: FACTION_COLORS[card.faction_code] || '#000000' },
-          ]} ellipsizeMode="tail">
+          ]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
           </Text>
         </View>
@@ -258,7 +258,11 @@ export default class CardSearchResult extends React.PureComponent {
       );
     }
     if (!card.name) {
-      return <Text>No Text</Text>;
+      return (
+        <View style={styles.rowContainer}>
+          <Text>No Text</Text>;
+        </View>
+      );
     }
     return (
       <View style={styles.rowContainer}>
@@ -291,7 +295,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     position: 'relative',
     width: '100%',
-    minHeight: ROW_HEIGHT,
+    height: ROW_HEIGHT,
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderColor: COLORS.gray,

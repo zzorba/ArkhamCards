@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
@@ -17,7 +18,7 @@ const SMALL_FACTION_ICONS = createFactionIcons(40, '#FFF');
 export default class InvestigatorImage extends React.Component {
   static propTypes = {
     card: PropTypes.object.isRequired,
-    navigator: PropTypes.object,
+    componentId: PropTypes.string,
     small: PropTypes.bool,
   };
 
@@ -30,18 +31,24 @@ export default class InvestigatorImage extends React.Component {
   onPress() {
     const {
       card,
-      navigator,
+      componentId,
     } = this.props;
-    navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
-        showSpoilers: true,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+          showSpoilers: true,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
-      title: `${card.is_unique ? '✷ ' : ''}${card.name}`,
-      subtitle: card.subname,
-      backButtonTitle: L('Back'),
     });
   }
 
@@ -84,10 +91,7 @@ export default class InvestigatorImage extends React.Component {
   }
 
   render() {
-    const {
-      navigator,
-    } = this.props;
-    if (navigator) {
+    if (this.props.componentId) {
       return (
         <TouchableOpacity onPress={this._onPress}>
           { this.renderImage() }

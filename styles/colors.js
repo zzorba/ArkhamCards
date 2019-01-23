@@ -15,4 +15,5 @@ export const COLORS = {
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
   black: '#000',
+  switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : null,
 };

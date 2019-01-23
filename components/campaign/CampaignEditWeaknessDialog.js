@@ -10,21 +10,30 @@ import { getCampaign } from '../../reducers';
 
 class CampaignEditWeaknessDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignId: PropTypes.number.isRequired,
     // From redux
     weaknessSet: PropTypes.object.isRequired,
     updateCampaign: PropTypes.func.isRequired,
   };
 
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Available weaknesses'),
+        },
+        backButton: {
+          title: L('Back'),
+        },
+      },
+    };
+  }
+
   constructor(props) {
     super(props);
 
     this._updateAssignedCards = this.updateAssignedCards.bind(this);
-
-    props.navigator.setTitle({
-      title: L('Available weaknesses'),
-    });
   }
 
   updateAssignedCards(assignedCards) {
@@ -41,7 +50,7 @@ class CampaignEditWeaknessDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       weaknessSet,
     } = this.props;
     if (!weaknessSet) {
@@ -49,7 +58,7 @@ class CampaignEditWeaknessDialog extends React.Component {
     }
     return (
       <EditAssignedWeaknessComponent
-        navigator={navigator}
+        componentId={componentId}
         weaknessSet={weaknessSet}
         updateAssignedCards={this._updateAssignedCards}
       />

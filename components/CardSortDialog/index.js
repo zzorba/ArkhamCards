@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { findKey, map } from 'lodash';
+import { BackHandler } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import DialogPicker from '../core/DialogPicker';
@@ -16,7 +18,7 @@ import {
 
 class CardSortDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     sortChanged: PropTypes.func.isRequired,
     selectedSort: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
@@ -29,6 +31,20 @@ class CardSortDialog extends React.Component {
     super(props);
 
     this._onSortChanged = this.onSortChanged.bind(this);
+    this._handleBackPress = this.handleBackPress.bind(this);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  handleBackPress() {
+    Navigation.dismissOverlay(this.props.componentId);
+    return true;
   }
 
   sortToCopyMap() {
@@ -51,7 +67,7 @@ class CardSortDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       selectedSort,
       hasEncounterCards,
     } = this.props;
@@ -71,7 +87,7 @@ class CardSortDialog extends React.Component {
 
     return (
       <DialogPicker
-        navigator={navigator}
+        componentId={componentId}
         options={map(sorts, sort => sortMap[sort])}
         onSelectionChanged={this._onSortChanged}
         header={L('Sort by')}

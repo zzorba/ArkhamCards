@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import withWeaknessCards from './withWeaknessCards';
 import Button from '../core/Button';
@@ -32,7 +33,7 @@ class WeaknessSetView extends React.Component {
   }
 
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     set: PropTypes.object,
@@ -51,33 +52,29 @@ class WeaknessSetView extends React.Component {
     this._onDeletePress = this.onDeletePress.bind(this);
   }
 
-  componentDidMount() {
-    this.props.navigator.setTitle({
-      title: this.props.set.name,
-    });
-  }
-
   onScreenPress(screen) {
     const {
-      navigator,
+      componentId,
       set,
     } = this.props;
-    navigator.push({
-      screen,
-      passProps: {
-        id: set.id,
+    Navigation.push(componentId, {
+      component: {
+        name: screen,
+        passProps: {
+          id: set.id,
+        },
       },
     });
   }
 
   onDeletePress() {
     const {
-      navigator,
+      componentId,
       set,
       deleteWeaknessSet,
     } = this.props;
     deleteWeaknessSet(set.id);
-    navigator.pop();
+    Navigation.pop(componentId);
   }
 
   cards() {

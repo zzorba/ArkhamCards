@@ -12,7 +12,6 @@ import withFilterFunctions from './withFilterFunctions';
 
 class CardLocationFilterView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
     filters: PropTypes.object,
     defaultFilterState: PropTypes.object,
     width: PropTypes.number,
@@ -20,12 +19,14 @@ class CardLocationFilterView extends React.Component {
     onFilterChange: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-
-    props.navigator.setTitle({
-      title: L('Location Filters'),
-    });
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Location Filters'),
+        },
+      },
+    };
   }
 
   render() {

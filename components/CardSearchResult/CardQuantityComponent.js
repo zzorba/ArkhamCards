@@ -4,6 +4,7 @@ import {
   Animated,
   Dimensions,
   Easing,
+  Platform,
   StyleSheet,
   Text,
   View,
@@ -19,7 +20,7 @@ import typography from '../../styles/typography';
 /**
  * Simple sliding card count.
  */
-export default class CardQuantityComponent extends React.Component {
+export default class CardQuantityComponent extends React.PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
     countChanged: PropTypes.func.isRequired,
@@ -29,7 +30,9 @@ export default class CardQuantityComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    const tinyScreen = Dimensions.get('window').width < 375;
+    const tinyScreen = (Platform.OS === 'ios' &&
+      Dimensions.get('window').width < 375
+    );
 
     this.state = {
       tinyScreen,
@@ -158,11 +161,6 @@ export default class CardQuantityComponent extends React.Component {
 
     return (
       <View style={styles.row}>
-        { count !== 0 && (
-          <Text style={[typography.text, styles.count]}>
-            { `×${count}` }
-          </Text>
-        ) }
         <PlusMinusButtons
           count={count}
           size={44}
@@ -170,6 +168,9 @@ export default class CardQuantityComponent extends React.Component {
           limit={limit}
           noFill
         />
+        <Text style={[typography.text, styles.count]}>
+          { count !== 0 ? count : ' ' }
+        </Text>
       </View>
     );
   }
@@ -184,7 +185,10 @@ const styles = StyleSheet.create({
     height: ROW_HEIGHT,
   },
   count: {
-    marginRight: 4,
+    marginLeft: 4,
+    width: 16,
+    textAlign: 'center',
+    marginRight: 8,
   },
   container: {
     position: 'absolute',

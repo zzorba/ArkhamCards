@@ -7,10 +7,23 @@ import ArkhamIconNode from './ArkhamIconNode';
 import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';
 import BoldHtmlTagNode from './BoldHtmlTagNode';
 import BoldItalicHtmlTagNode from './BoldItalicHtmlTagNode';
-import HrTagNode from './HrTagNode';
 import ItalicHtmlTagNode from './ItalicHtmlTagNode';
+import EmphasisHtmlTagNode from './EmphasisHtmlTagNode';
+import HrTagNode from './HrTagNode';
+import ParagraphHtmlTagNode from './ParagraphHtmlTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 import StrikethroughTextNode from './StrikethroughTextNode';
+
+const ParagraphTagRule = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<p>(.+?)<\\/p>')),
+  order: 0,
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: ParagraphHtmlTagNode,
+};
 
 const ArkhamIconRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
@@ -22,7 +35,7 @@ const ArkhamIconRule = {
 };
 
 const ArkahmIconSpanRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"></span>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
   order: 1,
   parse: (capture) => {
     return { name: capture[1] };
@@ -118,17 +131,21 @@ const UnderlineHtmlTagRule = {
 const EmphasisHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<em>([\\s\\S]+?)<\\/em>')),
   order: 1,
-  parse: (capture) => {
-    return { text: capture[1] };
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
-  render: ItalicHtmlTagNode,
+  render: EmphasisHtmlTagNode,
 };
 
 const ItalicHtmlTagRule = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
   order: 2,
-  parse: (capture) => {
-    return { text: capture[1] };
+  parse: (capture, nestedParse, state) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
   render: ItalicHtmlTagNode,
 };
@@ -143,6 +160,13 @@ export default class CardText extends React.PureComponent {
     const {
       onLinkPress,
     } = this.props;
+    const cleanText = this.props.text
+      .replace(/&rarr;/g, '→')
+      .replace(/\/n/g, '\n')
+      .replace(/^\s?-|—\s+(.+)$/gm,
+        onLinkPress ? '<span class="icon-bullet"></span> $1' : '[bullet] $1'
+      );
+
     // Text that has hyperlinks uses a different style for the icons.
     return (
       <MarkdownView
@@ -157,6 +181,7 @@ export default class CardText extends React.PureComponent {
             biTag: BoldItalicHtmlTagRule,
             badBiTag: MalformedBoldItalicHtmlTagRule,
             bTag: BoldHtmlTagRule,
+            pTag: ParagraphTagRule,
             uTag: UnderlineHtmlTagRule,
             emTag: EmphasisHtmlTagRule,
             iTag: ItalicHtmlTagRule,
@@ -177,7 +202,7 @@ export default class CardText extends React.PureComponent {
         }}
         onLinkPress={onLinkPress}
       >
-        { this.props.text.replace('&rarr;', '→').replace(/\/n/g, '\n') }
+        { cleanText }
       </MarkdownView>
     );
   }

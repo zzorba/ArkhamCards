@@ -12,9 +12,9 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import "RCCManager.h"
 #import <React/RCTLinkingManager.h>
 #import <AppAuth/AppAuth.h>
+#import <ReactNativeNavigation/ReactNativeNavigation.h>
 
 @implementation AppDelegate
 
@@ -23,21 +23,18 @@
   NSURL *jsCodeLocation;
 
   [AppCenterReactNativeCrashes registerWithAutomaticProcessing];  // Initialize AppCenter crashes
-
   [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];  // Initialize AppCenter analytics
-
   [AppCenterReactNative register];  // Initialize AppCenter 
 #ifdef DEBUG
-  //  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.bundle?platform=ios&dev=true"];
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
   
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
-  [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation launchOptions:launchOptions];
-  
+  [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
+
   return YES;
 }
 
@@ -48,14 +45,8 @@
                       sourceApplication:sourceApplication annotation:annotation];
 }
 
-- (BOOL)application:(UIApplication *)app
-            openURL:(NSURL *)url
-            options:(NSDictionary<NSString *, id> *)options {
-  if ([_currentAuthorizationFlow resumeAuthorizationFlowWithURL:url]) {
-    _currentAuthorizationFlow = nil;
-    return YES;
-  }
-  return NO;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options {
+  return [self.authorizationFlowManagerDelegate resumeExternalUserAgentFlowWithURL:url];
 }
 
 @end

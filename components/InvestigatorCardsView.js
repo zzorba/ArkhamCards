@@ -8,7 +8,7 @@ import CardSearchComponent from './CardSearchComponent';
 
 class InvestigatorCardsView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     investigatorCode: PropTypes.string.isRequired,
     investigator: PropTypes.object.isRequired,
@@ -16,12 +16,12 @@ class InvestigatorCardsView extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       investigator,
     } = this.props;
     return (
       <CardSearchComponent
-        navigator={navigator}
+        componentId={componentId}
         baseQuery={investigator ? queryForInvestigator(investigator) : null}
       />
     );

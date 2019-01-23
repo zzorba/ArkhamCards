@@ -12,7 +12,8 @@ import PackRow from './PackRow';
 
 export default class PackListComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object,
+    componentId: PropTypes.string.isRequired,
+    coreSetName: PropTypes.string,
     packs: PropTypes.array,
     checkState: PropTypes.object,
     setChecked: PropTypes.func.isRequired,
@@ -44,6 +45,7 @@ export default class PackListComponent extends React.Component {
       whiteBackground,
       baseQuery,
       compact,
+      coreSetName,
     } = this.props;
     const cyclePacks = item.position === 1 ? filter(packs, pack => {
       return (pack.cycle_position === item.cycle_position &&
@@ -51,8 +53,9 @@ export default class PackListComponent extends React.Component {
     }) : [];
     return (
       <PackRow
-        navigator={this.props.navigator}
+        componentId={this.props.componentId}
         pack={item}
+        nameOverride={item.code === 'core' ? coreSetName : null}
         cycle={cyclePacks}
         setChecked={setChecked}
         setCycleChecked={setCycleChecked}

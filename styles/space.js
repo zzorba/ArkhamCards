@@ -19,4 +19,13 @@ export default StyleSheet.create({
   paddingLeftL: {
     paddingLeft: 32,
   },
+  marginBottomS: {
+    marginBottom: 8,
+  },
+  marginBottomM: {
+    marginBottom: 16,
+  },
+  marginBottomL: {
+    marginBottom: 32,
+  },
 });

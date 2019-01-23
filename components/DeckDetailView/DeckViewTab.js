@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys, flatMap, map, range, sum } from 'lodash';
+import { head, sum } from 'lodash';
 import {
   Alert,
   Button,
@@ -12,14 +12,15 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import AppIcon from '../../assets/AppIcon';
 import L from '../../app/i18n';
 import { DeckType } from '../parseDeck';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
-import AppIcon from '../../assets/AppIcon';
-import DeckValidation from '../../lib/DeckValidation';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 
@@ -62,49 +63,146 @@ const DECK_PROBLEM_MESSAGES = {
 
 export default class DeckViewTab extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     deck: PropTypes.object,
+    campaign: PropTypes.object,
     parsedDeck: DeckType,
+    hasPendingEdits: PropTypes.bool,
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
+    showEditNameDialog: PropTypes.func.isRequired,
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object,
+    deckName: PropTypes.string.isRequired,
+    signedIn: PropTypes.bool.isRequired,
+    login: PropTypes.func.isRequired,
+    deleteDeck: PropTypes.func.isRequired,
+    uploadLocalDeck: PropTypes.func.isRequired,
+    problem: PropTypes.object,
   };
 
   constructor(props) {
     super(props);
 
+    this._uploadToArkhamDB = this.uploadToArkhamDB.bind(this);
     this._renderCard = this.renderCard.bind(this);
     this._renderCardHeader = this.renderCardHeader.bind(this);
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
-    this._deleteDeck = this.deleteDeck.bind(this);
+    this._viewDeck = this.viewDeck.bind(this);
+    this._deleteDeckPrompt = this.deleteDeckPrompt.bind(this);
   }
 
   keyForCard(item) {
     return item.id;
   }
 
-  deleteDeck() {
+  deleteDeckPrompt() {
     const {
       deck,
+      deleteDeck,
     } = this.props;
-    Alert.alert(
-      L('Visit ArkhamDB to delete?'),
-      L('Unfortunately to delete decks you have to visit ArkhamDB at this time.'),
-      [
-        {
-          text: L('Visit ArkhamDB'),
+    if (deck.local) {
+      const options = [];
+      const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
+      if (isLatestUpgrade) {
+        options.push({
+          text: L('Delete this upgrade ({{version}})', { version: deck.version }),
           onPress: () => {
-            Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+            deleteDeck(false);
           },
-        },
-        {
-          text: L('Cancel'),
-          style: 'cancel',
-        },
-      ],
-    );
+          style: 'destructive',
+        });
+        options.push({
+          text: L('Delete all versions'),
+          onPress: () => {
+            deleteDeck(true);
+          },
+          style: 'destructive',
+        });
+      } else {
+        const isUpgraded = !!deck.next_deck;
+        options.push({
+          text: isUpgraded ? L('Delete all versions') : L('Delete'),
+          onPress: () => {
+            deleteDeck(true);
+          },
+          style: 'destructive',
+        });
+      }
+      options.push({
+        text: L('Cancel'),
+        style: 'cancel',
+      });
+
+      Alert.alert(
+        L('Delete deck'),
+        L('Are you sure you want to delete this deck?'),
+        options,
+      );
+    } else {
+      Alert.alert(
+        L('Visit ArkhamDB to delete?'),
+        L('Unfortunately to delete decks you have to visit ArkhamDB at this time.'),
+        [
+          {
+            text: L('Visit ArkhamDB'),
+            onPress: () => {
+              Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+            },
+          },
+          {
+            text: L('Cancel'),
+            style: 'cancel',
+          },
+        ],
+      );
+    }
+  }
+
+  uploadToArkhamDB() {
+    const {
+      signedIn,
+      login,
+      deck,
+      hasPendingEdits,
+      uploadLocalDeck,
+    } = this.props;
+    if (hasPendingEdits) {
+      Alert.alert(
+        L('Save Local Changes'),
+        L('Please save any local edits to this deck before sharing to ArkhamDB')
+      );
+    } else if (deck.next_deck || deck.previous_deck) {
+      Alert.alert(
+        L('Unsupported Operation'),
+        L('This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.')
+      );
+    } else if (!signedIn) {
+      Alert.alert(
+        L('Sign in to ArkhamDB'),
+        L('ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.'),
+        [
+          { text: 'Sign In', onPress: login },
+          { text: 'Cancel', style: 'cancel' },
+        ],
+      );
+    } else {
+      Alert.alert(
+        L('Upload to ArkhamDB'),
+        L('You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.'),
+        [
+          { text: 'Upload', onPress: uploadLocalDeck },
+          { text: 'Cancel', style: 'cancel' },
+        ],
+      );
+    }
+  }
+
+  viewDeck() {
+    Linking.openURL(`https://arkhamdb.com/deck/view/${this.props.deck.id}`);
   }
 
   showInvestigator() {
@@ -117,13 +215,21 @@ export default class DeckViewTab extends React.Component {
   }
 
   showCard(card) {
-    this.props.navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Back'),
     });
   }
 
@@ -164,56 +270,54 @@ export default class DeckViewTab extends React.Component {
 
   renderProblem() {
     const {
-      cards,
       parsedDeck: {
-        slots,
         investigator,
       },
+      problem,
     } = this.props;
-
-    const validator = new DeckValidation(investigator);
-    const problem = validator.getProblem(flatMap(keys(slots), code => {
-      const card = cards[code];
-      if (!card) {
-        return [];
-      }
-      return map(range(0, slots[code]), () => card);
-    }));
 
     if (!problem) {
       return null;
     }
-
+    const isSurvivor = investigator.faction_code === 'survivor';
     return (
-      <View style={styles.problemBox}>
-        <Text style={styles.problemText} numberOfLines={2}>
-          <AppIcon name="warning" size={14} color={COLORS.red} />
-          { DECK_PROBLEM_MESSAGES[problem.reason] }
-        </Text>
-        { problem.problems.map(problem => (
-          <Text key={problem} style={styles.problemText} numberOfLines={2}>
-            { `\u2022 ${problem}` }
+      <View style={[styles.problemBox,
+        { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
+      ]}>
+        <View style={styles.problemRow}>
+          <View style={styles.warningIcon}>
+            <AppIcon name="warning" size={14} color={isSurvivor ? COLORS.black : COLORS.white} />
+          </View>
+          <Text
+            numberOfLines={2}
+            style={[styles.problemText, { color: isSurvivor ? COLORS.black : COLORS.white }]}
+          >
+            { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
           </Text>
-        )) }
+        </View>
       </View>
     );
   }
 
   render() {
     const {
-      navigator,
+      campaign,
+      investigatorDataUpdates,
+      componentId,
       deck,
+      deckName,
       parsedDeck: {
         normalCards,
         specialCards,
         normalCardCount,
         totalCardCount,
         experience,
-        packs,
         investigator,
       },
       isPrivate,
       buttons,
+      showEditNameDialog,
+      showTraumaDialog,
     } = this.props;
 
     const sections = deckToSections(normalCards)
@@ -222,19 +326,32 @@ export default class DeckViewTab extends React.Component {
     return (
       <ScrollView>
         <View>
+          { this.renderProblem() }
           <View style={[styles.container, styles.rowWrap]}>
             <View style={styles.header}>
               <TouchableOpacity onPress={this._showInvestigator}>
                 <View style={styles.image}>
-                  <InvestigatorImage card={investigator} navigator={navigator} />
+                  <InvestigatorImage card={investigator} componentId={componentId} />
                 </View>
               </TouchableOpacity>
               <View style={styles.metadata}>
-                <TouchableOpacity onPress={this._showInvestigator}>
+                { (isPrivate && !deck.next_deck) ? (
+                  <TouchableOpacity style={styles.row} onPress={showEditNameDialog}>
+                    <Text style={styles.investigatorName}
+                      numberOfLines={2}
+                      ellipsizeMode="tail"
+                    >
+                      { deckName }
+                    </Text>
+                    <View style={styles.editIcon}>
+                      <MaterialIcons name="edit" color="#222222" size={16} />
+                    </View>
+                  </TouchableOpacity>
+                ) : (
                   <Text style={styles.investigatorName}>
-                    { investigator.name }
+                    { `${deckName}  ` }
                   </Text>
-                </TouchableOpacity>
+                ) }
                 <Text style={styles.defaultText}>
                   { L(
                     '{{cardCount}} cards ({{totalCount}} total)',
@@ -242,12 +359,13 @@ export default class DeckViewTab extends React.Component {
                   ) }
                 </Text>
                 <Text style={styles.defaultText}>
-                  { L('{{xp}} experience required.', { xp: experience }) }
+                  { L('Version {{version}}', { version: deck.version }) }
                 </Text>
-                <Text style={styles.defaultText}>
-                  { L('{{packCount}} packs required.', { packCount: packs }) }
-                </Text>
-                { this.renderProblem() }
+                { experience > 0 && (
+                  <Text style={styles.defaultText}>
+                    { L('{{xp}} experience required.', { xp: experience }) }
+                  </Text>
+                ) }
               </View>
             </View>
           </View>
@@ -265,21 +383,39 @@ export default class DeckViewTab extends React.Component {
               sections={sections}
             />
           </View>
-          <DeckProgressModule
-            navigator={navigator}
-            deck={deck}
-            parsedDeck={this.props.parsedDeck}
-            isPrivate={isPrivate}
-          />
+          { deck.local ? (
+            <View style={styles.button}>
+              <Button
+                title={L('Upload to ArkhamDB')}
+                onPress={this._uploadToArkhamDB}
+              />
+            </View>
+          ) : (
+            <View style={styles.button}>
+              <Button
+                title={L('View on ArkhamDB')}
+                onPress={this._viewDeck}
+              />
+            </View>
+          ) }
           { isPrivate && (
             <View style={styles.button}>
               <Button
                 title={L('Delete Deck')}
                 color={COLORS.red}
-                onPress={this._deleteDeck}
+                onPress={this._deleteDeckPrompt}
               />
             </View>
           ) }
+          <DeckProgressModule
+            componentId={componentId}
+            deck={deck}
+            parsedDeck={this.props.parsedDeck}
+            isPrivate={isPrivate}
+            campaign={campaign}
+            showTraumaDialog={showTraumaDialog}
+            investigatorDataUpdates={investigatorDataUpdates}
+          />
         </View>
       </ScrollView>
     );
@@ -290,7 +426,7 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 8,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   button: {
     margin: 8,
@@ -317,14 +453,25 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontSize: 14,
   },
+  problemRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   problemBox: {
     flex: 1,
+    paddingTop: 4,
+    paddingBottom: 4,
     paddingRight: 8,
+    paddingLeft: 8,
   },
   problemText: {
-    color: COLORS.red,
+    color: COLORS.white,
     fontSize: 14,
     flex: 1,
+  },
+  warningIcon: {
+    marginRight: 4,
   },
   subHeaderRow: {
     backgroundColor: '#eee',
@@ -344,5 +491,14 @@ const styles = StyleSheet.create({
     marginTop: 8,
     borderTopWidth: 1,
     borderColor: '#bdbdbd',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingRight: 8,
+  },
+  editIcon: {
+    width: 16,
+    marginLeft: 16,
   },
 });

@@ -5,19 +5,19 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 
 export default class SignatureCardItem extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     card: PropTypes.object.isRequired,
   };
 
   render() {
     const {
       card,
-      navigator,
+      componentId,
     } = this.props;
 
     return (
       <TwoSidedCardComponent
-        navigator={navigator}
+        componentId={componentId}
         card={card}
       />
     );

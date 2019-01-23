@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { throttle } from 'lodash';
 import {
   Animated,
   Easing,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import L from '../../app/i18n';
 import Switch from '../core/Switch';
@@ -21,6 +18,7 @@ export default class CardSearchBox extends React.Component {
   static propTypes = {
     visible: PropTypes.bool.isRequired,
     onChangeText: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
 
     searchText: PropTypes.bool.isRequired,
     searchFlavor: PropTypes.bool.isRequired,
@@ -38,7 +36,7 @@ export default class CardSearchBox extends React.Component {
       advancedOpen: false,
     };
 
-    this._onChangeText = throttle(this.onChangeText.bind(this), 250, { trailing: true });
+    this._onChangeText = this.onChangeText.bind(this);
     this._toggleAdvanced = this.toggleAdvanced.bind(this);
     this._renderTextSearchOptions = this.renderTextSearchOptions.bind(this);
   }
@@ -63,23 +61,6 @@ export default class CardSearchBox extends React.Component {
     this.setState({
       advancedOpen: !advancedOpen,
     });
-  }
-
-  renderToggleButton() {
-    const {
-      advancedOpen,
-    } = this.state;
-    return (
-      <TouchableOpacity style={styles.toggleButton} onPress={this._toggleAdvanced}>
-        <View style={styles.icon}>
-          <MaterialCommunityIcons
-            name={advancedOpen ? 'chevron-double-up' : 'dots-horizontal'}
-            size={32}
-            color="#888"
-          />
-        </View>
-      </TouchableOpacity>
-    );
   }
 
   renderTextSearchOptions() {
@@ -134,14 +115,20 @@ export default class CardSearchBox extends React.Component {
 
   render() {
     const {
+      value,
+    } = this.props;
+    const {
       anim,
+      advancedOpen,
     } = this.state;
     return (
       <Animated.View style={[styles.slider, { height: anim }]}>
         <SearchBox
           onChangeText={this._onChangeText}
           placeholder={L('Search for a card')}
-          sideButton={this.renderToggleButton()}
+          advancedOpen={advancedOpen}
+          toggleAdvanced={this._toggleAdvanced}
+          value={value}
         />
         { this.renderTextSearchOptions() }
       </Animated.View>
@@ -167,12 +154,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginLeft: 10,
     marginRight: 2,
-  },
-  toggleButton: {
-    marginLeft: 8,
-  },
-  icon: {
-    width: 32,
-    height: 32,
   },
 });

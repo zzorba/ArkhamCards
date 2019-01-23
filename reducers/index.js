@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { find, flatMap, forEach, keys, map, max, last, sortBy, values } from 'lodash';
+import { concat, find, flatMap, forEach, keys, map, max, minBy, last, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -85,6 +85,24 @@ export function getAllDecks(state) {
   return state.decks.all || {};
 }
 
+export function getBaseDeck(state, deckId) {
+  const decks = getAllDecks(state);
+  let deck = decks[deckId];
+  while (deck && deck.previous_deck && decks[deck.previous_deck]) {
+    deck = decks[deck.previous_deck];
+  }
+  return deck;
+}
+
+export function getLatestDeck(state, deckId) {
+  const decks = getAllDecks(state);
+  let deck = decks[deckId];
+  while (deck && deck.next_deck && decks[deck.next_deck]) {
+    deck = decks[deck.next_deck];
+  }
+  return deck;
+}
+
 export function getDeckToCampaignMap(state) {
   const decks = state.decks.all || {};
   const campaigns = state.campaigns.all;
@@ -137,6 +155,14 @@ export function getMyDecksState(state) {
   };
 }
 
+export function getEffectiveDeckId(state, id) {
+  const replacedLocalIds = state.decks.replacedLocalIds || {};
+  if (replacedLocalIds[id]) {
+    return parseInt(replacedLocalIds[id], 10);
+  }
+  return id;
+}
+
 export function getDeck(state, id) {
   if (!id) {
     return null;
@@ -185,4 +211,28 @@ export function getCampaign(state, id) {
     return campaign ? processCampaign(campaign) : null;
   }
   return null;
+}
+
+export function getCampaignForDeck(state, deckId) {
+  const deckToCampaign = getDeckToCampaignMap(state);
+  if (deckId in deckToCampaign) {
+    return processCampaign(deckToCampaign[deckId]);
+  }
+  return null;
+}
+
+export function getNextLocalDeckId(state) {
+  const smallestDeckId = minBy(
+    map(
+      concat(
+        keys(state.decks.all),
+        keys(state.decks.replacedLocalIds || {})
+      ),
+      x => parseInt(x, 10)
+    )
+  ) || 0;
+  if (smallestDeckId < 0) {
+    return smallestDeckId - 1;
+  }
+  return -1;
 }

@@ -9,10 +9,11 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import { updateCampaign } from '../actions';
-import { CAMPAIGN_SCENARIOS } from '../constants';
+import { campaignScenarios } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import Switch from '../../core/Switch';
 import { getAllDecks, getAllPacks, getPack } from '../../../reducers';
@@ -22,7 +23,6 @@ const CUSTOM = 'Custom';
 
 class ScenarioSection extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
     campaignId: PropTypes.number.isRequired,
     scenarioChanged: PropTypes.func.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
@@ -129,20 +129,21 @@ class ScenarioSection extends React.Component {
 
   showScenarioDialog() {
     const {
-      navigator,
-    } = this.props;
-    const {
       selectedScenario,
     } = this.state;
-    navigator.showLightBox({
-      screen: 'Dialog.Scenario',
-      passProps: {
-        scenarioChanged: this._scenarioChanged,
-        scenarios: this.possibleScenarios(),
-        selected: selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name,
-      },
-      style: {
-        backgroundColor: 'rgba(128,128,128,.75)',
+    Navigation.showOverlay({
+      component: {
+        name: 'Dialog.Scenario',
+        passProps: {
+          scenarioChanged: this._scenarioChanged,
+          scenarios: this.possibleScenarios(),
+          selected: selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name,
+        },
+        options: {
+          layout: {
+            backgroundColor: 'rgba(128,128,128,.75)',
+          },
+        },
       },
     });
   }
@@ -216,7 +217,7 @@ function mapStateToProps(state, props) {
   return {
     campaignId: props.campaign.id,
     showInterludes: !!props.campaign.showInterludes,
-    cycleScenarios: CAMPAIGN_SCENARIOS[props.campaign.cycleCode],
+    cycleScenarios: campaignScenarios()[props.campaign.cycleCode],
     cyclePacks,
     standalonePacks,
     decks: getAllDecks(state),
@@ -252,7 +253,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
           standaloneScenarios.push(card);
         }
       });
-      console.log(props.campaign.finishedScenarios);
       return {
         allScenarios: concat(
           filter(

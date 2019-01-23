@@ -7,95 +7,144 @@ import {
   BackHandler,
   Platform,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import { Navigation } from 'react-native-navigation';
+import DialogComponent from 'react-native-dialog';
 
 import L from '../../app/i18n';
+import withLoginState from '../withLoginState';
+import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
+import withTraumaDialog from '../campaign/withTraumaDialog';
+import { updateLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withTextEditDialog from '../core/withTextEditDialog';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
-import * as Actions from '../../actions';
-import { saveDeck } from '../../lib/authApi';
+import {
+  fetchPrivateDeck,
+  fetchPublicDeck,
+  login,
+  updateDeck,
+  removeDeck,
+  replaceLocalDeck,
+} from '../../actions';
+import { saveDeck, newCustomDeck } from '../../lib/authApi';
 import withPlayerCards from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 import { parseDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
-import { getDeck } from '../../reducers';
+import { getCampaign, getDeck, getEffectiveDeckId, getCampaignForDeck } from '../../reducers';
+import typography from '../../styles/typography';
 
 class DeckDetailView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     isPrivate: PropTypes.bool,
     modal: PropTypes.bool,
+    /* eslint-disable react/no-unused-prop-types */
     campaignId: PropTypes.number,
+    // passed props
+    title: PropTypes.string,
     // From realm.
     cards: PropTypes.object,
     // From redux.
-    login: PropTypes.func.isRequired,
+    campaign: PropTypes.object,
     deck: PropTypes.object,
     previousDeck: PropTypes.object,
+    login: PropTypes.func.isRequired,
+    signedIn: PropTypes.bool,
     updateDeck: PropTypes.func.isRequired,
+    removeDeck: PropTypes.func.isRequired,
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
+    replaceLocalDeck: PropTypes.func.isRequired,
+    // From HOC
     showTextEditDialog: PropTypes.func.isRequired,
     captureViewRef: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
+    showTraumaDialog: PropTypes.func.isRequired,
+    investigatorDataUpdates: PropTypes.object,
   };
 
   constructor(props) {
     super(props);
-
-    const leftButtons = props.modal ? [
-      Platform.OS === 'ios' ? {
-        systemItem: 'done',
-        id: 'back',
-      } : {
-        icon: iconsMap['arrow-left'],
-        id: 'androidBack',
-      },
-    ] : [];
-    const rightButtons = props.isPrivate && props.modal && !props.deck.next_deck ? [
-      {
-        id: 'editName',
-        icon: iconsMap.edit,
-      },
-    ] : [];
 
     this.state = {
       parsedDeck: null,
       slots: {},
       loaded: false,
       saving: false,
-      leftButtons,
+      saveError: null,
+      copying: false,
+      deleting: false,
       nameChange: null,
       hasPendingEdits: false,
+      visible: true,
     };
+    this._dismissSaveError = this.dismissSaveError.bind(this);
+    this._handleSaveError = this.handleSaveError.bind(this);
+    this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
+    this._toggleCopyDialog = this.toggleCopyDialog.bind(this);
     this._saveName = this.saveName.bind(this);
     this._onEditPressed = this.onEditPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
-    this._syncNavigatorButtons = this.syncNavigatorButtons.bind(this);
+    this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
+    this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
+    this._showEditNameDialog = this.showEditNameDialog.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
     this._handleBackPress = this.handleBackPress.bind(this);
+    this._deleteDeck = this.deleteDeck.bind(this);
+
+    const leftButtons = props.modal ? [
+      Platform.OS === 'ios' ? {
+        text: L('Done'),
+        id: 'back',
+        color: 'white',
+      } : {
+        icon: iconsMap['arrow-left'],
+        id: 'androidBack',
+        color: 'white',
+      },
+    ] : [];
 
     if (props.modal) {
-      props.navigator.setButtons({
-        leftButtons,
-        rightButtons,
+      Navigation.mergeOptions(props.componentId, {
+        topBar: {
+          title: {
+            text: props.title,
+            color: '#FFFFFF',
+          },
+          leftButtons,
+          rightButtons: this.getRightButtons(),
+        },
       });
     }
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidAppear() {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  componentDidDisappear() {
+    this.setState({
+      visible: false,
+    });
   }
 
   componentDidMount() {
@@ -111,10 +160,12 @@ class DeckDetailView extends React.Component {
     if (modal) {
       BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
     }
-    if (isPrivate) {
-      fetchPrivateDeck(id);
-    } else {
-      fetchPublicDeck(id, false);
+    if (id >= 0 && (!deck || !deck.local)) {
+      if (isPrivate) {
+        fetchPrivateDeck(id);
+      } else {
+        fetchPublicDeck(id, false);
+      }
     }
     if (deck && deck.investigator_code) {
       if (deck && deck.previous_deck && !previousDeck) {
@@ -133,12 +184,13 @@ class DeckDetailView extends React.Component {
     if (this.props.modal) {
       BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
     }
+    this._navEventListener.remove();
   }
 
   componentDidUpdate(prevProps) {
     const {
-      navigator,
       deck,
+      id,
       isPrivate,
       previousDeck,
       fetchPrivateDeck,
@@ -146,17 +198,18 @@ class DeckDetailView extends React.Component {
     } = this.props;
     if (deck !== prevProps.deck) {
       if (!deck) {
-        Alert.alert(
-          'Deck has been deleted',
-          'It looks like you deleted this deck from ArkhamDB.\n\n' +
-          'If it was part of a campaign you can add the same investigator back to restore your campaign data.',
-          [{
-            text: 'OK',
-            onPress: () => {
-              navigator.dismissAllModals();
-            },
-          }],
-        );
+        if (!this.state.deleting && id > 0) {
+          Alert.alert(
+            L('Deck has been deleted'),
+            L('It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.'),
+            [{
+              text: L('OK'),
+              onPress: () => {
+                Navigation.dismissAllModals();
+              },
+            }],
+          );
+        }
       } else if (deck.previous_deck && !previousDeck) {
         if (isPrivate) {
           fetchPrivateDeck(deck.previous_deck);
@@ -172,71 +225,119 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  syncNavigatorButtons() {
-    /* const {
-      navigator,
+  deleteDeck(deleteAllVersions) {
+    const {
+      id,
+      removeDeck,
+    } = this.props;
+
+    this.setState({
+      deleting: true,
+    }, () => {
+      Navigation.dismissAllModals();
+      removeDeck(id, deleteAllVersions);
+    });
+  }
+
+  toggleCopyDialog() {
+    this.setState({
+      copying: !this.state.copying,
+    });
+  }
+
+  getRightButtons() {
+    const {
+      isPrivate,
+      deck,
     } = this.props;
     const {
-      leftButtons,
       hasPendingEdits,
     } = this.state;
-
+    const rightButtons = [];
+    const editable = isPrivate && deck && !deck.next_deck;
     if (hasPendingEdits) {
-      navigator.setButtons({
-        rightButtons: [
-          {
-            systemItem: 'save',
-            id: 'save',
-          },
-        ],
+      rightButtons.push({
+        text: L('Save'),
+        id: 'save',
+        color: 'white',
       });
     } else {
-      navigator.setButtons({
-        rightButtons: [],
+      rightButtons.push({
+        id: 'copy',
+        icon: iconsMap['content-copy'],
+        color: 'white',
       });
-    } */
+      if (editable) {
+        rightButtons.push({
+          id: 'upgrade',
+          icon: iconsMap['arrow-up-bold'],
+          color: 'white',
+        });
+      }
+    }
+    if (editable) {
+      rightButtons.push({
+        id: 'edit',
+        icon: iconsMap.edit,
+        color: 'white',
+      });
+    }
+    return rightButtons;
+  }
+
+  syncNavigationButtons() {
+    const {
+      componentId,
+    } = this.props;
+
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        rightButtons: this.getRightButtons(),
+      },
+    });
   }
 
   handleBackPress() {
-    const {
-      navigator,
-    } = this.props;
-    console.log('Hardware Back Press');
+    if (!this.state.visible) {
+      return false;
+    }
     if (this.state.hasPendingEdits) {
       Alert.alert(
-        'Save deck changes?',
-        'Looks like you have made some changes that have not been saved.',
+        L('Save deck changes?'),
+        L('Looks like you have made some changes that have not been saved.'),
         [{
-          text: 'Save Changes',
+          text: L('Save Changes'),
           onPress: () => {
-            this.saveEdits(true);
+            this._saveEditsAndDismiss();
           },
         }, {
-          text: 'Discard Changes',
+          text: L('Discard Changes'),
           style: 'destructive',
           onPress: () => {
-            navigator.dismissAllModals();
+            Navigation.dismissAllModals();
           },
         }, {
-          text: 'Cancel',
+          text: L('Cancel'),
           style: 'cancel',
         }],
       );
     } else {
-      navigator.dismissAllModals();
+      Navigation.dismissAllModals();
     }
     return true;
   }
 
-  onNavigatorEvent(event) {
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'editName') {
-        this.showEditNameDialog();
-      } else if (event.id === 'edit') {
-        this.onEditPressed();
-      } else if (event.id === 'back' || event.id === 'androidBack') {
-        this.handleBackPress();
-      }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'edit') {
+      this._onEditPressed();
+    } else if (buttonId === 'back' || buttonId === 'androidBack') {
+      this._handleBackPress();
+    } else if (buttonId === 'save') {
+      this._saveEdits();
+    } else if (buttonId === 'upgrade') {
+      this._onUpgradePressed();
+    } else if (buttonId === 'copy') {
+      this._toggleCopyDialog();
     }
   }
 
@@ -249,133 +350,230 @@ class DeckDetailView extends React.Component {
       nameChange: name,
       hasPendingEdits: pendingEdits,
       editNameDialogVisible: false,
-    });
-    this.props.navigator.setTitle({ title: name });
+    }, this._syncNavigationButtons);
   }
 
   onEditPressed() {
     const {
-      navigator,
+      componentId,
       deck,
       previousDeck,
       cards,
     } = this.props;
     const investigator = cards[deck.investigator_code];
-    navigator.push({
-      screen: 'Deck.Edit',
-      backButtonTitle: L('Back'),
-      passProps: {
-        deck,
-        previousDeck,
-        slots: this.state.slots,
-        updateSlots: this._updateSlots,
-      },
-      navigatorStyle: {
-        navBarBackgroundColor: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
-        navBarTextColor: '#FFFFFF',
-        navBarSubtitleColor: '#FFFFFF',
-        navBarButtonColor: '#FFFFFF',
-        statusBarTextColorScheme: 'light',
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.Edit',
+        passProps: {
+          deck,
+          previousDeck,
+          slots: this.state.slots,
+          updateSlots: this._updateSlots,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+          },
+          topBar: {
+            title: {
+              text: L('Edit Deck'),
+              color: 'white',
+            },
+            backButton: {
+              title: L('Back'),
+              color: 'white',
+            },
+            background: {
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+            },
+          },
+        },
       },
     });
   }
 
   onUpgradePressed() {
     const {
-      navigator,
+      componentId,
       deck,
-      campaignId,
+      campaign,
     } = this.props;
     const {
       parsedDeck,
     } = this.state;
-    navigator.push({
-      screen: 'Deck.Upgrade',
-      title: L('Upgrade'),
-      subtitle: parsedDeck ? parsedDeck.investigator.name : '',
-      backButtonTitle: L('Cancel'),
-      passProps: {
-        id: deck.id,
-        showNewDeck: true,
-        campaignId,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.Upgrade',
+        passProps: {
+          id: deck.id,
+          showNewDeck: true,
+          campaignId: campaign ? campaign.id : null,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+          },
+          topBar: {
+            title: {
+              text: L('Upgrade Deck'),
+              color: 'white',
+            },
+            subtitle: {
+              text: parsedDeck ? parsedDeck.investigator.name : '',
+              color: 'white',
+            },
+            background: {
+              color: FACTION_DARK_GRADIENTS[parsedDeck ? parsedDeck.investigator.faction_code : 'neutral'][0],
+            },
+          },
+        },
       },
     });
   }
 
-  saveEdits(dismissAfterSave) {
+  uploadLocalDeck(isRetry) {
     const {
-      navigator,
       deck,
-      updateDeck,
-      cards,
+      login,
+      id,
+      replaceLocalDeck,
     } = this.props;
-    if (!this.state.saving) {
+    const {
+      parsedDeck: {
+        slots,
+      },
+      saving,
+    } = this.state;
+    if (!saving || isRetry) {
+      const problemObj = this.getProblem();
+      const problem = problemObj ? problemObj.reason : '';
       this.setState({
         saving: true,
       });
+
+      const promise = newCustomDeck(
+        deck.investigator_code,
+        deck.name,
+        slots,
+        problem,
+      );
+      handleAuthErrors(
+        promise,
+        // onSuccess
+        deck => {
+          // Replace the local deck with the new one.
+          replaceLocalDeck(id, deck);
+          this.setState({
+            saving: false,
+            nameChange: null,
+            hasPendingEdits: false,
+          }, this._syncNavigationButtons);
+        },
+        // onFailure
+        this._handleSaveError,
+        // retry
+        () => {
+          this.uploadLocalDeck(true);
+        },
+        login
+      );
+    }
+  }
+
+  dismissSaveError() {
+    this.setState({
+      saveError: null,
+      saving: false,
+    });
+  }
+
+  handleSaveError(err) {
+    this.setState({
+      saving: false,
+      saveError: err.message || 'Unknown Error',
+    });
+  }
+
+  saveEdits(dismissAfterSave, isRetry) {
+    const {
+      deck,
+      updateDeck,
+    } = this.props;
+    if (!this.state.saving || isRetry) {
       const {
         parsedDeck,
         nameChange,
       } = this.state;
       const {
         slots,
-        investigator,
       } = parsedDeck;
 
-      const validator = new DeckValidation(investigator);
-      const problemObj = validator.getProblem(flatMap(keys(slots), code => {
-        const card = cards[code];
-        return map(range(0, slots[code]), () => card);
-      }));
+      const problemObj = this.getProblem();
       const problem = problemObj ? problemObj.reason : '';
 
-      const savePromise = saveDeck(
-        deck.id,
-        nameChange || deck.name,
-        slots,
-        problem,
-        parsedDeck.spentXp
-      );
-      handleAuthErrors(
-        savePromise,
-        // onSuccess
-        deck => {
-          updateDeck(deck.id, deck, true);
-          if (dismissAfterSave) {
-            navigator.dismissAllModals();
-          } else {
-            this.setState({
-              saving: false,
-              nameChange: null,
-              hasPendingEdits: false,
-            });
-          }
-        },
-        // onFailure
-        () => {
+      if (deck.local) {
+        const newDeck = updateLocalDeck(
+          deck,
+          nameChange || deck.name,
+          slots,
+          problem,
+          parsedDeck.spentXp
+        );
+        updateDeck(newDeck.id, newDeck, true);
+        if (dismissAfterSave) {
+          Navigation.dismissAllModals();
+        } else {
           this.setState({
-            saving: false,
-          });
-        },
-        // retry
-        () => {
-          this.saveEdits(dismissAfterSave);
-        },
-        // login
-        this.props.login
-      );
+            nameChange: null,
+            hasPendingEdits: false,
+          }, this._syncNavigationButtons);
+        }
+      } else {
+        this.setState({
+          saving: true,
+        });
+
+        const savePromise = saveDeck(
+          deck.id,
+          nameChange || deck.name,
+          slots,
+          problem,
+          parsedDeck.spentXp
+        );
+        handleAuthErrors(
+          savePromise,
+          // onSuccess
+          deck => {
+            updateDeck(deck.id, deck, true);
+            if (dismissAfterSave) {
+              Navigation.dismissAllModals();
+            } else {
+              this.setState({
+                saving: false,
+                nameChange: null,
+                hasPendingEdits: false,
+              }, this._syncNavigationButtons);
+            }
+          },
+          this._handleSaveError,
+          // retry
+          () => {
+            this.saveEdits(dismissAfterSave, true);
+          },
+          // login
+          this.props.login
+        );
+      }
     }
   }
 
   clearEdits() {
     const {
       deck,
-      navigator,
     } = this.props;
     this.setState({
       nameChange: null,
     }, () => {
-      navigator.setTitle({ title: deck.name });
       this.updateSlots(deck.slots);
     });
   }
@@ -416,7 +614,7 @@ class DeckDetailView extends React.Component {
       slots: newSlots,
       parsedDeck,
       hasPendingEdits: this.hasPendingEdits(this.state.nameChange, newSlots),
-    }, this._syncNavigatorButtons);
+    }, this._syncNavigationButtons);
   }
 
   loadCards(deck, previousDeck) {
@@ -434,7 +632,7 @@ class DeckDetailView extends React.Component {
         parsedDeck,
         hasPendingEdits: false,
         loaded: true,
-      }, this._syncNavigatorButtons);
+      }, this._syncNavigationButtons);
     }
   }
 
@@ -450,13 +648,49 @@ class DeckDetailView extends React.Component {
     );
   }
 
+  renderCopyDialog() {
+    const {
+      componentId,
+      viewRef,
+      id,
+      signedIn,
+    } = this.props;
+    const {
+      copying,
+    } = this.state;
+    return (
+      <CopyDeckDialog
+        componentId={componentId}
+        deckId={copying ? id : null}
+        toggleVisible={this._toggleCopyDialog}
+        viewRef={viewRef}
+        signedIn={signedIn}
+      />
+    );
+  }
+
   renderSavingDialog() {
     const {
       viewRef,
     } = this.props;
     const {
       saving,
+      saveError,
     } = this.state;
+    if (saveError) {
+      return (
+        <Dialog title={L('Error')} visible={saving} viewRef={viewRef}>
+          <Text style={[styles.errorMargin, typography.small]}>
+            { saveError }
+          </Text>
+          <DialogComponent.Button
+            label={L('Okay')}
+            onPress={this._dismissSaveError}
+          />
+        </Dialog>
+      );
+
+    }
     return (
       <Dialog title={L('Saving')} visible={saving} viewRef={viewRef}>
         <ActivityIndicator
@@ -516,17 +750,49 @@ class DeckDetailView extends React.Component {
     );
   }
 
+  getProblem() {
+    const {
+      cards,
+      deck,
+    } = this.props;
+    const {
+      parsedDeck,
+      loaded,
+    } = this.state;
+    if (!deck || !loaded || !parsedDeck) {
+      return null;
+    }
+
+    const {
+      slots,
+      investigator,
+    } = parsedDeck;
+
+    const validator = new DeckValidation(investigator);
+    return validator.getProblem(flatMap(keys(slots), code => {
+      const card = cards[code];
+      return map(range(0, slots[code]), () => card);
+    }));
+  }
+
   render() {
     const {
       deck,
-      navigator,
+      componentId,
       isPrivate,
       captureViewRef,
       cards,
+      campaign,
+      signedIn,
+      login,
+      showTraumaDialog,
+      investigatorDataUpdates,
     } = this.props;
     const {
       loaded,
       parsedDeck,
+      nameChange,
+      hasPendingEdits,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -540,44 +806,73 @@ class DeckDetailView extends React.Component {
         </View>
       );
     }
-
     return (
       <View>
         <View style={styles.container} ref={captureViewRef}>
           <DeckViewTab
-            navigator={navigator}
+            componentId={componentId}
             deck={deck}
+            deckName={nameChange || deck.name}
             parsedDeck={parsedDeck}
+            problem={this.getProblem()}
+            hasPendingEdits={hasPendingEdits}
             cards={cards}
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
+            showEditNameDialog={this._showEditNameDialog}
+            signedIn={signedIn}
+            login={login}
+            deleteDeck={this._deleteDeck}
+            uploadLocalDeck={this._uploadLocalDeck}
+            campaign={campaign}
+            showTraumaDialog={showTraumaDialog}
+            investigatorDataUpdates={investigatorDataUpdates}
           />
           <DeckNavFooter
-            navigator={navigator}
+            componentId={componentId}
             parsedDeck={parsedDeck}
             cards={cards}
           />
         </View>
         { this.renderSavingDialog() }
+        { this.renderCopyDialog() }
       </View>
     );
   }
 }
 
 function mapStateToProps(state, props) {
-  const deck = getDeck(state, props.id);
+  const id = getEffectiveDeckId(state, props.id);
+  const deck = getDeck(state, id);
   return {
+    id,
     deck,
     previousDeck: deck && deck.previous_deck && getDeck(state, deck.previous_deck),
+    campaign: props.campaignId ?
+      getCampaign(state, props.campaignId) :
+      getCampaignForDeck(state, id),
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+  return bindActionCreators({
+    login,
+    fetchPrivateDeck,
+    fetchPublicDeck,
+    updateDeck,
+    removeDeck,
+    replaceLocalDeck,
+  }, dispatch);
 }
 
 export default withPlayerCards(
-  connect(mapStateToProps, mapDispatchToProps)(withTextEditDialog(DeckDetailView))
+  connect(mapStateToProps, mapDispatchToProps)(
+    withTraumaDialog(
+      withTextEditDialog(
+        withLoginState(DeckDetailView)
+      )
+    )
+  )
 );
 
 const styles = StyleSheet.create({
@@ -602,5 +897,8 @@ const styles = StyleSheet.create({
   },
   button: {
     marginRight: 8,
+  },
+  errorMargin: {
+    padding: 16,
   },
 });

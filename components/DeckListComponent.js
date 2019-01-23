@@ -19,12 +19,13 @@ import withPlayerCards from './withPlayerCards';
 import { getAllDecks } from '../reducers';
 import * as Actions from '../actions';
 import typography from '../styles/typography';
+import space from '../styles/space';
 
 class DeckListComponent extends React.Component {
   static propTypes = {
     deckIds: PropTypes.array.isRequired,
     deckClicked: PropTypes.func.isRequired,
-    onRefresh: PropTypes.func.isRequired,
+    onRefresh: PropTypes.func,
     refreshing: PropTypes.bool,
     investigators: PropTypes.object,
     cards: PropTypes.object,
@@ -32,6 +33,7 @@ class DeckListComponent extends React.Component {
     deckToCampaign: PropTypes.object,
     fetchPublicDeck: PropTypes.func.isRequired,
     customHeader: PropTypes.node,
+    customFooter: PropTypes.node,
     isEmpty: PropTypes.bool,
   }
 
@@ -67,7 +69,7 @@ class DeckListComponent extends React.Component {
       fetchPublicDeck,
     } = this.props;
     deckIds.forEach(deckId => {
-      if (!decks[deckId]) {
+      if (!decks[deckId] && deckId > 0) {
         fetchPublicDeck(deckId, false);
       }
     });
@@ -103,6 +105,7 @@ class DeckListComponent extends React.Component {
     return (
       <View style={styles.header}>
         <SearchBox
+          value={this.state.searchTerm}
           onChangeText={this._searchChanged}
           placeholder={L('Search decks')}
         />
@@ -115,23 +118,41 @@ class DeckListComponent extends React.Component {
     const {
       isEmpty,
       refreshing,
+      customFooter,
     } = this.props;
+    const {
+      searchTerm,
+    } = this.state;
+    if (isEmpty && !refreshing) {
+      return (
+        <View style={styles.footer}>
+          <Text style={[typography.text, typography.center, space.marginBottomM]}>
+            { L('No decks yet.\n\nUse the + button to create a new one.') }
+          </Text>
+          { customFooter }
+        </View>
+      );
+    }
+    if (searchTerm && this.getItems().length === 0) {
+      return (
+        <View style={styles.footer}>
+          <Text style={[typography.text, typography.center, space.marginBottomM]}>
+            { L('No matching decks for "{{searchTerm}}".', { searchTerm }) }
+          </Text>
+          { customFooter }
+        </View>
+      );
+    }
     return (
       <View style={styles.footer}>
-        { !!isEmpty && !refreshing && (
-          <Text style={[typography.text, styles.margin]}>
-            { 'No decks yet.\n\nUse the + button to create a new one.' }
-          </Text>
-        ) }
+        { customFooter }
       </View>
     );
   }
 
-  render() {
+  getItems() {
     const {
       deckIds,
-      onRefresh,
-      refreshing,
       decks,
       investigators,
     } = this.props;
@@ -139,7 +160,7 @@ class DeckListComponent extends React.Component {
     const {
       searchTerm,
     } = this.state;
-    const data = map(
+    return map(
       filter(deckIds, deckId => {
         const deck = decks[deckId];
         const investigator = deck && investigators[deck.investigator_code];
@@ -153,7 +174,14 @@ class DeckListComponent extends React.Component {
           deckId,
         };
       });
+  }
 
+  render() {
+    const {
+      onRefresh,
+      refreshing,
+      decks,
+    } = this.props;
     return (
       <FlatList
         keyboardShouldPersistTaps="always"
@@ -161,9 +189,9 @@ class DeckListComponent extends React.Component {
         refreshing={refreshing}
         onRefresh={onRefresh}
         style={styles.container}
-        data={data}
+        data={this.getItems()}
         renderItem={this._renderItem}
-        extraData={this.props.decks}
+        extraData={decks}
         ListHeaderComponent={this._renderHeader}
         ListFooterComponent={this._renderFooter}
       />
@@ -181,7 +209,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withPlayerCards(DeckListComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withPlayerCards(DeckListComponent)
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -189,9 +219,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   footer: {
-    height: 100,
-  },
-  margin: {
-    margin: 8,
+    width: '100%',
+    marginTop: 8,
+    marginBottom: 60,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });

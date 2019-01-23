@@ -8,18 +8,14 @@ export default function ItalicHtmlTagNode(node, output, state) {
   return (
     <Text
       key={state.key}
-      style={state.blockquote ? styles.italicText : styles.boldItalicText}
+      style={styles.italicText}
     >
-      { node.text }
+      { output(node.children, state) }
     </Text>
   );
 }
 
 const styles = StyleSheet.create({
-  boldItalicText: {
-    fontStyle: 'italic',
-    fontWeight: '700',
-  },
   italicText: {
     fontStyle: 'italic',
     fontWeight: '200',

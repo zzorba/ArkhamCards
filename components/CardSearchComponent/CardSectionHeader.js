@@ -9,9 +9,9 @@ import {
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
 
-export default function CardSectionHeader({ title }) {
+export default function CardSectionHeader({ title, bold }) {
   return (
-    <View style={styles.row}>
+    <View style={[styles.row, bold ? styles.boldRow : {}]}>
       <Text style={[typography.text, styles.headerText]}>
         { title }
       </Text>
@@ -21,18 +21,23 @@ export default function CardSectionHeader({ title }) {
 
 CardSectionHeader.propTypes = {
   title: PropTypes.string.isRequired,
+  bold: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: '#eee',
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
     height: 30,
     borderBottomWidth: 1,
-    borderColor: COLORS.gray,
+    borderColor: '#bdbdbd',
+  },
+  boldRow: {
+    backgroundColor: '#ccc',
+    borderColor: '#bdbdbd',
   },
   headerText: {
     marginLeft: 8,

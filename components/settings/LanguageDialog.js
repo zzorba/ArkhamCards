@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 
+import L from '../../app/i18n';
 import DialogPicker from '../core/DialogPicker';
 import { fetchCards } from '../cards/actions';
 
@@ -18,7 +19,7 @@ const LANGUAGES = [
 
 class LanguageDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     // from redux.
     lang: PropTypes.string,
     fetchCards: PropTypes.func.isRequired,
@@ -47,18 +48,18 @@ class LanguageDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       lang,
     } = this.props;
     /* eslint-disable eqeqeq */
     const selectedLang = find(LANGUAGES, obj => obj.code == lang) || head(LANGUAGES);
     return (
       <DialogPicker
-        navigator={navigator}
+        componentId={componentId}
         options={map(LANGUAGES, obj => obj.name)}
         onSelectionChanged={this._selectionChanged}
-        header="Change Card Language"
-        description={'Only the card text will be translated. Syncing Non-English cards can take up to a minute.'}
+        header={L('Change Card Language')}
+        description={'Note: not all cards have translations available.'}
         selectedOption={selectedLang.name}
       />
     );

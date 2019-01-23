@@ -14,7 +14,7 @@ import { getAllPacks, getPackSpoilers } from '../reducers';
 
 class SpoilersView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object,
+    componentId: PropTypes.string.isRequired,
     packs: PropTypes.array,
     show_spoilers: PropTypes.object,
     setPackSpoiler: PropTypes.func.isRequired,
@@ -40,7 +40,7 @@ class SpoilersView extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       packs,
       show_spoilers,
       setPackSpoiler,
@@ -55,7 +55,7 @@ class SpoilersView extends React.Component {
     }
     return (
       <PackListComponent
-        navigator={navigator}
+        componentId={componentId}
         packs={packs}
         renderHeader={this._renderHeader}
         checkState={show_spoilers}

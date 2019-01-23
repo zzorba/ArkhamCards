@@ -55,4 +55,10 @@ export default StyleSheet.create({
     lineHeight: 36,
     color: '#222',
   },
+  left: {
+    textAlign: 'left',
+  },
+  center: {
+    textAlign: 'center',
+  },
 });

@@ -11,7 +11,7 @@ import DeckAtLeastOption from './DeckAtLeastOption';
 import { BASIC_SKILLS } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror');
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror');
 export default class Card {
 
   costString(linked) {
@@ -86,38 +86,39 @@ export default class Card {
   }
 
   static FACTION_HEADER_ORDER = [
-    L('Guardian'),
-    L('Seeker'),
-    L('Mystic'),
-    L('Rogue'),
-    L('Survivor'),
-    L('Neutral'),
-    L('Weakness'),
-    L('Mythos'),
+    'Guardian',
+    'Seeker',
+    'Mystic',
+    'Rogue',
+    'Survivor',
+    'Neutral',
+    'Weakness',
+    'Mythos',
   ];
 
-  static factionSortHeader(json) {
+  static factionSortHeader(json, lang) {
+    const options = lang ? { locale: lang } : {};
     if (json.spoiler) {
-      return L('Mythos');
+      return L('Mythos', options);
     }
     switch(json.subtype_code) {
       case 'basicweakness':
       case 'weakness':
-        return L('Weakness');
+        return L('Weakness', options);
       default: {
         switch(json.faction_code) {
           case 'guardian':
-            return L('Guardian');
+            return L('Guardian', options);
           case 'rogue':
-            return L('Rogue');
+            return L('Rogue', options);
           case 'mystic':
-            return L('Mystic');
+            return L('Mystic', options);
           case 'seeker':
-            return L('Seeker');
+            return L('Seeker', options);
           case 'survivor':
-            return L('Survivor');
+            return L('Survivor', options);
           case 'neutral':
-            return L('Neutral');
+            return L('Neutral', options);
           default:
             return json.faction_name;
         }
@@ -126,74 +127,86 @@ export default class Card {
   }
 
   static TYPE_HEADER_ORDER = [
-    L('Investigator'),
-    L('Asset: Hand'),
-    L('Asset: Hand x2'),
-    L('Asset: Accessory'),
-    L('Asset: Ally'),
-    L('Asset: Arcane'),
-    L('Asset: Arcane x2'),
-    L('Asset: Body'),
-    L('Asset: Permanent'),
-    L('Asset: Other'),
-    L('Event'),
-    L('Skill'),
-    L('Basic Weakness'),
-    L('Weakness'),
-    L('Scenario'),
-    L('Story'),
+    'Investigator',
+    'Asset: Hand',
+    'Asset: Hand x2',
+    'Asset: Accessory',
+    'Asset: Ally',
+    'Asset: Arcane',
+    'Asset: Arcane x2',
+    'Asset: Body',
+    'Asset: Body. Hand x2',
+    'Asset: Permanent',
+    'Asset: Other',
+    'Event',
+    'Skill',
+    'Basic Weakness',
+    'Weakness',
+    'Scenario',
+    'Story',
   ];
 
-  static typeSortHeader(json) {
+  static typeSortHeader(json, lang) {
+    const options = lang ? { locale: lang } : {};
     if (json.hidden && json.linked_card) {
-      return Card.typeSortHeader(json.linked_card);
+      return Card.typeSortHeader(json.linked_card, lang);
     }
     switch(json.subtype_code) {
       case 'basicweakness':
-        return L('Basic Weakness');
+        return L('Basic Weakness', options);
       case 'weakness':
-        return L('Weakness');
+        if (json.spoiler) {
+          return L('Story', options);
+        }
+        return L('Weakness', options);
       default:
         switch(json.type_code) {
           case 'asset':
             if (json.spoiler) {
-              return L('Story');
+              return L('Story', options);
             }
             if (json.permanent || json.double_sided) {
-              return L('Asset: Permanent');
+              return L('Asset: Permanent', options);
             }
             switch(json.slot) {
               case 'Hand':
-                return L('Asset: Hand');
+                return L('Asset: Hand', options);
               case 'Hand x2':
-                return L('Asset: Hand x2');
+                return L('Asset: Hand x2', options);
               case 'Accessory':
-                return L('Asset: Accessory');
+                return L('Asset: Accessory', options);
               case 'Ally':
-                return L('Asset: Ally');
+                return L('Asset: Ally', options);
               case 'Arcane':
-                return L('Asset: Arcane');
+                return L('Asset: Arcane', options);
               case 'Arcane x2':
-                return L('Asset: Arcane x2');
+                return L('Asset: Arcane x2', options);
               case 'Body':
-                return L('Asset: Body');
+                return L('Asset: Body', options);
+              case 'Tarot':
+                return L('Asset: Tarot', options);
+              case 'Body. Hand x2':
+                return L('Asset: Body. Hand x2', options);
               default:
-                return L('Asset: Other');
+                return L('Asset: Other', options);
             }
           case 'event':
             if (json.spoiler) {
-              return L('Story');
+              return L('Story', options);
             }
-            return L('Event');
+            return L('Event', options);
           case 'skill':
             if (json.spoiler) {
-              return L('Story');
+              return L('Story', options);
             }
-            return L('Skill');
+            return L('Skill', options);
           case 'investigator':
-            return L('Investigator');
+            if (json.spoiler) {
+              return L('Story', options);
+            }
+            return L('Investigator', options);
           default:
-            return L('Scenario');
+            return L('Scenario', options);
         }
     }
   }
@@ -221,7 +234,8 @@ export default class Card {
       });
     }
 
-    let renderName = json.name;
+    const name = json.name.replace('', '');
+    let renderName = name;
     let renderSubname = json.subname;
     if (json.type_code === 'act' && json.stage) {
       renderSubname = L('Act {{stage}}', { stage: json.stage, locale: lang });
@@ -247,23 +261,32 @@ export default class Card {
       }
     }
 
+    const real_traits_normalized = json.real_traits ? map(
+      filter(
+        map(json.real_traits.split('.'), trait => trait.toLowerCase().trim()),
+        trait => trait),
+      trait => `#${trait}#`).join(',') : null;
     const traits_normalized = json.traits ? map(
       filter(
         map(json.traits.split('.'), trait => trait.toLowerCase().trim()),
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
+    const slots_normalized = json.slot ? map(
+      filter(
+        map(json.slot.split('.'), slot => slot.toLowerCase().trim()),
+        slot => slot),
+      slot => `#${slot}#`).join(',') : null;
     const restrictions = json.restrictions ?
       Card.parseRestrictions(json.restrictions) :
       null;
-
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
     const uses = uses_match ? uses_match[1].toLowerCase() : null;
 
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
 
-    const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json));
-    const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json));
+    const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json, 'en'));
+    const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json, 'en'));
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const cycle_name = pack ? cycleNames[pack.cycle_position] : null;
@@ -281,6 +304,7 @@ export default class Card {
       json,
       eskills,
       {
+        name,
         firstName,
         renderName,
         renderSubname,
@@ -289,6 +313,8 @@ export default class Card {
         linked_card,
         spoiler,
         traits_normalized,
+        real_traits_normalized,
+        slots_normalized,
         uses,
         cycle_name,
         has_restrictions: !!restrictions,
@@ -391,6 +417,8 @@ Card.schema = {
     cycle_name: 'string?',
     has_restrictions: 'bool',
     traits_normalized: 'string?',
+    real_traits_normalized: 'string?',
+    slots_normalized: 'string?',
     uses: 'string?',
     heals_horror: 'bool?',
     sort_by_type: 'int',

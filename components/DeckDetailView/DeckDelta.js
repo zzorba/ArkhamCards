@@ -8,14 +8,16 @@ import {
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import { getDeckOptions } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
 import typography from '../../styles/typography';
 
 class DeckDelta extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     cards: PropTypes.object,
     parsedDeck: PropTypes.object,
   };
@@ -30,48 +32,53 @@ class DeckDelta extends React.Component {
 
   showPreviousDeck() {
     const {
-      navigator,
+      componentId,
       parsedDeck: {
         deck,
+        investigator,
       },
     } = this.props;
-    navigator.push({
-      screen: 'Deck',
-      passProps: {
-        id: deck.previous_deck,
-        isPrivate: true,
-      },
-      navigatorStyle: {
-        tabBarHidden: true,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck',
+        passProps: {
+          title: investigator.name,
+          id: deck.previous_deck,
+          isPrivate: true,
+        },
+        options: getDeckOptions(investigator),
       },
     });
   }
 
   showNextDeck() {
     const {
-      navigator,
+      componentId,
       parsedDeck: {
         deck,
+        investigator,
       },
     } = this.props;
-    navigator.push({
-      screen: 'Deck',
-      passProps: {
-        id: deck.next_deck,
-        isPrivate: true,
-      },
-      navigatorStyle: {
-        tabBarHidden: true,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck',
+        passProps: {
+          id: deck.next_deck,
+          isPrivate: true,
+        },
+        options: getDeckOptions(investigator),
       },
     });
   }
 
   showCard(card) {
-    this.props.navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+        },
       },
     });
   }
@@ -89,12 +96,7 @@ class DeckDelta extends React.Component {
       return null;
     }
     return (
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <Text style={typography.smallLabel}>
-            { L('CAMPAIGN PROGRESS') }
-          </Text>
-        </View>
+      <React.Fragment>
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
             <View style={styles.button}>
@@ -143,13 +145,13 @@ class DeckDelta extends React.Component {
                 key={code}
                 onPress={this._showCard}
                 card={cards[code]}
-                count={exiledCards[code]}
+                count={-exiledCards[code]}
                 deltaCountMode
               />
             )) }
           </View>
         ) }
-      </View>
+      </React.Fragment>
     );
   }
 }
@@ -176,9 +178,6 @@ export default connectRealm(DeckDelta, {
 });
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 16,
-  },
   title: {
     marginTop: 16,
     paddingLeft: 8,

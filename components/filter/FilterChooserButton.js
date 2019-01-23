@@ -5,7 +5,7 @@ import ChooserButton from '../core/ChooserButton';
 
 export default class FilterChooserButton extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     values: PropTypes.array.isRequired,
     selection: PropTypes.array,
@@ -30,7 +30,7 @@ export default class FilterChooserButton extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       title,
       values,
       selection,
@@ -38,7 +38,7 @@ export default class FilterChooserButton extends React.Component {
     } = this.props;
     return (
       <ChooserButton
-        navigator={navigator}
+        componentId={componentId}
         title={title}
         values={values}
         selection={selection}

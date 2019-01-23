@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { concat, filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy } from 'lodash';
 
+import L from '../app/i18n';
 import { FACTION_CODES, SKILLS } from '../constants';
 
 function filterBy(cardIds, cards, field, value) {
@@ -9,18 +10,30 @@ function filterBy(cardIds, cards, field, value) {
 
 function groupAssets(cardIds, cards) {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
-  return [
-    { type: 'Hand', data: filterBy(assets, cards, 'slot', 'Hand') },
-    { type: 'Hand x2', data: filterBy(assets, cards, 'slot', 'Hand x2') },
-    { type: 'Arcane', data: filterBy(assets, cards, 'slot', 'Arcane') },
-    { type: 'Accessory', data: filterBy(assets, cards, 'slot', 'Accessory') },
-    { type: 'Body', data: filterBy(assets, cards, 'slot', 'Body') },
-    { type: 'Ally', data: filterBy(assets, cards, 'slot', 'Ally') },
-    { type: 'Other', data: filterBy(assets, cards, 'slot', null) },
-  ].filter(asset => asset.data.length > 0);
+  const groups = groupBy(assets, c => {
+    switch(cards[c.id].slot) {
+      case 'Hand': return L('Hand');
+      case 'Hand x2': return L('Hand x2');
+      case 'Arcane': return L('Arcane');
+      case 'Accessory': return L('Accessory');
+      case 'Body': return L('Body');
+      case 'Body. Hand x2': return L('Body. Hand x2');
+      case 'Ally': return L('Ally');
+      case 'Tarot': return L('Tarot');
+      default: return L('Other');
+    }
+  });
+  return filter(
+    map(
+      [L('Hand'), L('Hand x2'), L('Body. Hand x2'), L('Arcane'), L('Accessory'), L('Body'), L('Ally'), L('Tarot'), L('Other')],
+      t => {
+        return { type: t, data: groups[t] || [] };
+      }),
+    asset => asset.data.length > 0
+  );
 }
 
-function isSpecialCard(card) {
+export function isSpecialCard(card) {
   return card && (
     card.code === '01000' ||
     card.permanent ||
@@ -196,8 +209,8 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
           // and its a spell, you get a 1 XP discount on upgrade of
           // a spell to a spell.
           if (arcaneResearchUses > 0 &&
-            removedCard.traits_normalized.indexOf('#spell#') !== -1 &&
-            addedCard.traits_normalized.indexOf('#spell#') !== -1) {
+            removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
+            addedCard.real_traits_normalized.indexOf('#spell#') !== -1) {
             let xpCost = (computeXp(addedCard) - computeXp(removedCard));
             while (xpCost > 0 && arcaneResearchUses > 0) {
               xpCost--;
@@ -219,7 +232,13 @@ export function parseDeck(deck, slots, cards, previousDeck) {
     return {};
   }
   const cardIds = map(
-    filter(keys(slots), id => !!cards[id]),
+    sortBy(
+      sortBy(
+        filter(keys(slots), id => !!cards[id]),
+        id => cards[id].xp || 0
+      ),
+      id => cards[id].name
+    ),
     id => {
       return {
         id,

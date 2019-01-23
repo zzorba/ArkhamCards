@@ -13,6 +13,22 @@ export default class App {
     store.subscribe(this.onStoreUpdate.bind(this, store));
     this._handleUrl = this.handleUrl.bind(this);
 
+    Navigation.setDefaultOptions({
+      topBar: {
+        background: {
+          color: 'white',
+        },
+      },
+      layout: {
+        backgroundColor: 'white',
+      },
+      bottomTab: {
+        textColor: COLORS.darkGray,
+        selectedIconColor: COLORS.lightBlue,
+        selectedTextColor: COLORS.lightBlue,
+      },
+    });
+
     this.onStoreUpdate(store);
   }
 
@@ -50,34 +66,95 @@ export default class App {
       'Warning: isMounted(...) is deprecated',
     ]);
 
-    Navigation.startTabBasedApp({
-      tabs: [
-        {
-          label: L('Cards'),
-          title: L('Player Cards'),
-          icon: iconsMap.cards,
-          screen: 'Browse.Cards',
-        }, {
-          label: L('Decks'),
-          title: L('Decks'),
-          icon: iconsMap.deck,
-          screen: 'My.Decks',
-        }, {
-          label: L('Campaigns'),
-          title: L('Campaigns'),
-          icon: iconsMap.book,
-          screen: 'My.Campaigns',
-        }, {
-          label: L('Settings'),
-          title: L('Settings'),
-          icon: iconsMap.settings,
-          screen: 'Settings',
+    Navigation.setRoot({
+      root: {
+        bottomTabs: {
+          children: [{
+            stack: {
+              children: [{
+                component: {
+                  name: 'Browse.Cards',
+                  options: {
+                    topBar: {
+                      title: {
+                        text: L('Player Cards'),
+                      },
+                    },
+                  },
+                },
+              }],
+              options: {
+                bottomTab: {
+                  text: L('Cards'),
+                  icon: iconsMap.cards,
+                },
+              },
+            },
+          }, {
+            stack: {
+              children: [{
+                component: {
+                  name: 'My.Decks',
+                  options: {
+                    topBar: {
+                      title: {
+                        text: L('Decks'),
+                      },
+                    },
+                  },
+                },
+              }],
+              options: {
+                bottomTab: {
+                  text: L('Decks'),
+                  icon: iconsMap.deck,
+                },
+              },
+            },
+          }, {
+            stack: {
+              children: [{
+                component: {
+                  name: 'My.Campaigns',
+                  options: {
+                    topBar: {
+                      title: {
+                        text: L('Campaigns'),
+                      },
+                    },
+                  },
+                },
+              }],
+              options: {
+                bottomTab: {
+                  text: L('Campaigns'),
+                  icon: iconsMap.book,
+                },
+              },
+            },
+          }, {
+            stack: {
+              children: [{
+                component: {
+                  name: 'Settings',
+                  options: {
+                    topBar: {
+                      title: {
+                        text: L('Settings'),
+                      },
+                    },
+                  },
+                },
+              }],
+              options: {
+                bottomTab: {
+                  text: L('Settings'),
+                  icon: iconsMap.settings,
+                },
+              },
+            },
+          }],
         },
-      ],
-      appStyle: {
-        navBarBackgroundColor: 'white',
-        screenBackgroundColor: 'white',
-        tabBarSelectedButtonColor: COLORS.lightBlue,
       },
     });
     Linking.addEventListener('url', this._handleUrl);

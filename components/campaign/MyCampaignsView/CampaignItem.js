@@ -30,7 +30,7 @@ export default class CampaignItem extends React.Component {
       campaign,
       onPress,
     } = this.props;
-    onPress(campaign.id);
+    onPress(campaign.id, campaign);
   }
 
   render() {

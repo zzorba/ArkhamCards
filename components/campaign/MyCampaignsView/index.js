@@ -1,34 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, last } from 'lodash';
+import { filter, forEach, map, last, throttle } from 'lodash';
 import {
   Keyboard,
   ScrollView,
   StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CampaignItem from './CampaignItem';
-import { CUSTOM } from '../constants';
+import { CUSTOM, campaignNames } from '../constants';
 import SearchBox from '../../SearchBox';
 import withPlayerCards from '../../withPlayerCards';
-import withLoginGate from '../../withLoginGate';
 import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
-import { CAMPAIGN_NAMES } from '../../../constants';
 import { getAllDecks, getCampaigns } from '../../../reducers';
+import typography from '../../../styles/typography';
 
 class MyCampaignsView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaigns: PropTypes.array,
     decks: PropTypes.object,
     // From realm
     investigators: PropTypes.object,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        rightButtons: [{
+          icon: iconsMap.add,
+          id: 'add',
+        }],
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -37,17 +50,14 @@ class MyCampaignsView extends React.Component {
       search: '',
     };
 
+    this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
     this._onPress = this.onPress.bind(this);
     this._searchChanged = this.searchChanged.bind(this);
-    props.navigator.setButtons({
-      rightButtons: [
-        {
-          icon: iconsMap.add,
-          id: 'add',
-        },
-      ],
-    });
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   searchChanged(text) {
@@ -56,30 +66,54 @@ class MyCampaignsView extends React.Component {
     });
   }
 
-  onPress(id) {
+  onPress(id, campaign) {
     const {
-      navigator,
+      componentId,
     } = this.props;
     Keyboard.dismiss();
-    navigator.push({
-      screen: 'Campaign',
-      passProps: {
-        id,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign',
+        passProps: {
+          id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: campaign.name,
+            },
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
     });
   }
 
-  onNavigatorEvent(event) {
+  showNewCampaignDialog() {
     const {
-      navigator,
+      componentId,
     } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'add') {
-        navigator.push({
-          screen: 'Campaign.New',
-          backButtonTitle: L('Cancel'),
-        });
-      }
+    Navigation.push(componentId, {
+      component: {
+        name: 'Campaign.New',
+        options: {
+          topBar: {
+            title: {
+              text: L('New Campaign'),
+            },
+            backButton: {
+              title: L('Cancel'),
+            },
+          },
+        },
+      },
+    });
+  }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'add') {
+      this._showNewCampaignDialog();
     }
   }
 
@@ -119,13 +153,42 @@ class MyCampaignsView extends React.Component {
     return filter(campaigns, campaign => {
       const parts = [campaign.name];
       if (campaign.cycleCode !== CUSTOM) {
-        parts.push(CAMPAIGN_NAMES[campaign.cycleCode]);
+        parts.push(campaignNames()[campaign.cycleCode]);
       }
       return searchMatchesText(search, parts);
     });
   }
 
+  renderFooter(campaigns) {
+    const {
+      search,
+    } = this.state;
+    if (campaigns.length === 0) {
+      if (search) {
+        return (
+          <View style={styles.footer}>
+            <Text style={[typography.text, styles.margin]}>
+              { L('No matching campaigns for "{{searchTerm}}".', { searchTerm: search }) }
+            </Text>
+          </View>
+        );
+      }
+      return (
+        <View style={styles.footer}>
+          <Text style={[typography.text, styles.margin]}>
+            { L('No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.') }
+          </Text>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.footer} />
+    );
+  }
+
+
   render() {
+    const campaigns = this.filteredCampaigns();
     return (
       <ScrollView
         style={styles.container}
@@ -133,10 +196,12 @@ class MyCampaignsView extends React.Component {
         keyboardDismissMode="on-drag"
       >
         <SearchBox
+          value={this.state.search}
           onChangeText={this._searchChanged}
           placeholder={L('Search campaigns')}
         />
-        { map(this.filteredCampaigns(), campaign => this.renderItem(campaign)) }
+        { map(campaigns, campaign => this.renderItem(campaign)) }
+        { this.renderFooter(campaigns) }
       </ScrollView>
     );
   }
@@ -154,11 +219,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withFetchCardsGate(
-  withLoginGate(
-    connect(mapStateToProps, mapDispatchToProps)(
-      withPlayerCards(MyCampaignsView)
-    ),
-    'You can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all of your ArkhamDB decks.\n\nPlease sign in to enable this feature.',
+  connect(mapStateToProps, mapDispatchToProps)(
+    withPlayerCards(MyCampaignsView)
   ),
   { promptForUpdate: false },
 );
@@ -166,5 +228,10 @@ export default withFetchCardsGate(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  footer: {
+    margin: 8,
+    marginBottom: 60,
+    alignItems: 'center',
   },
 });

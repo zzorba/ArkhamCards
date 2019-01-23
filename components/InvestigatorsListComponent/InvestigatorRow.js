@@ -84,9 +84,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     borderBottomWidth: 1,
     borderColor: 'white',
-    height: 100,
   },
   image: {
+    marginTop: 8,
+    marginBottom: 8,
     marginLeft: 10,
     marginRight: 8,
   },
@@ -96,6 +97,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     marginLeft: 5,
+    marginTop: 4,
+    marginBottom: 4,
   },
   title: {
     fontFamily: 'System',

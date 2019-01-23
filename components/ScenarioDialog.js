@@ -6,7 +6,7 @@ import DialogPicker from './core/DialogPicker';
 
 export default class ScenarioDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     scenarioChanged: PropTypes.func.isRequired,
     selected: PropTypes.string.isRequired,
     scenarios: PropTypes.array.isRequired,
@@ -14,7 +14,7 @@ export default class ScenarioDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       scenarioChanged,
       selected,
       scenarios,
@@ -22,7 +22,7 @@ export default class ScenarioDialog extends React.Component {
 
     return (
       <DialogPicker
-        navigator={navigator}
+        componentId={componentId}
         header={L('Scenario')}
         options={scenarios}
         onSelectionChanged={scenarioChanged}

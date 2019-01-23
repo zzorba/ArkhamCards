@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CampaignDecks from './CampaignDecks';
@@ -14,7 +15,7 @@ import { FACTION_DARK_GRADIENTS } from '../../../constants';
 
 class DecksSection extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     campaignId: PropTypes.number.isRequired,
     latestDeckIds: PropTypes.array,
     investigatorData: PropTypes.object.isRequired,
@@ -127,32 +128,42 @@ class DecksSection extends React.Component {
 
   showDeckUpgradeDialog(deck, investigator) {
     const {
-      navigator,
+      componentId,
       campaignId,
     } = this.props;
-    navigator.push({
-      screen: 'Deck.Upgrade',
-      title: L('Upgrade'),
-      subtitle: investigator.name,
-      backButtonTitle: L('Cancel'),
-      passProps: {
-        id: deck.id,
-        campaignId: campaignId,
-        showNewDeck: false,
-      },
-      navigatorStyle: {
-        navBarBackgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0],
-        navBarTextColor: '#FFFFFF',
-        navBarSubtitleColor: '#FFFFFF',
-        navBarButtonColor: '#FFFFFF',
-        statusBarTextColorScheme: 'light',
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.Upgrade',
+        passProps: {
+          id: deck.id,
+          campaignId: campaignId,
+          showNewDeck: false,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+          },
+          topBar: {
+            title: {
+              text: L('Upgrade'),
+              color: 'white',
+            },
+            subtitle: {
+              text: investigator.name,
+              color: 'white',
+            },
+            background: {
+              color: FACTION_DARK_GRADIENTS[investigator.faction_code][0],
+            },
+          },
+        },
       },
     });
   }
 
   render() {
     const {
-      navigator,
+      componentId,
       campaignId,
       latestDeckIds,
       investigatorData,
@@ -162,7 +173,7 @@ class DecksSection extends React.Component {
       <View>
         <View style={styles.underline}>
           <CampaignDecks
-            navigator={navigator}
+            componentId={componentId}
             campaignId={campaignId}
             investigatorData={investigatorData}
             deckIds={latestDeckIds}

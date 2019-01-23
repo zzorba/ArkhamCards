@@ -15,8 +15,10 @@ const icons = {
   auto_fail: [24, COLORS.button, ArkhamIcon],
   edit: [26, COLORS.button],
   tune: [28, COLORS.button],
+  'content-copy': [28, COLORS.button, MaterialCommunityIcons],
   delete: [30, COLORS.button, MaterialCommunityIcons],
   close: [30, COLORS.button, MaterialCommunityIcons],
+  'arrow-up-bold': [26, COLORS.button, MaterialCommunityIcons],
   'arrow-left': [30, COLORS.button, MaterialCommunityIcons],
   'chevron-left': [40, COLORS.button, MaterialCommunityIcons],
   'sort-by-alpha': [28, COLORS.button],
@@ -28,6 +30,7 @@ const icons = {
   flip_card: [28, COLORS.button, AppIcon],
   book: [26, COLORS.button, AppIcon],
   share: [28, COLORS.button, AppIcon],
+  web: [28, COLORS.button, MaterialCommunityIcons],
 };
 
 const defaultIconProvider = MaterialIcons;

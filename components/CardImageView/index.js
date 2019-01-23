@@ -9,13 +9,14 @@ import {
 import { CachedImage } from 'react-native-cached-image';
 import { connectRealm } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
+import { Navigation } from 'react-native-navigation';
 
 import { iconsMap } from '../../app/NavIcons';
 import { HEADER_HEIGHT } from '../../styles/sizes';
 
 class CardImageView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.string.isRequired,
     card: PropTypes.object,
@@ -44,23 +45,25 @@ class CardImageView extends React.Component {
     this._flip = this.flip.bind(this);
 
     if (doubleCard) {
-      props.navigator.setButtons({
-        rightButtons: [
-          {
+      Navigation.mergeOptions(props.componentId, {
+        topBar: {
+          rightButtons: [{
             id: 'flip',
             icon: iconsMap.flip_card,
-          },
-        ],
+          }],
+        },
       });
     }
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'flip') {
-        this.flip();
-      }
+  componentWillUnmount() {
+    this._navEventListener.remove();
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'flip') {
+      this._flip();
     }
   }
 

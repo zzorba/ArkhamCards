@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys } from 'lodash';
+import { findKey, keys, map } from 'lodash';
 
+import L from '../../app/i18n';
 import DialogPicker from '../core/DialogPicker';
-import { DIFFICULTY } from '../../constants';
-
-const OPTIONS = keys(DIFFICULTY);
+import { DIFFICULTY, difficultyStrings } from './constants';
 
 export default class CampaignDifficultyDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     updateDifficulty: PropTypes.func.isRequired,
     difficulty: PropTypes.string,
   };
@@ -21,22 +20,25 @@ export default class CampaignDifficultyDialog extends React.Component {
   }
 
   onChoice(value) {
-    this.props.updateDifficulty(value);
+    this.props.updateDifficulty(
+      findKey(difficultyStrings(), entry => entry === value));
   }
 
   render() {
     const {
-      navigator,
+      componentId,
       difficulty,
     } = this.props;
+    const strings = difficultyStrings();
+    const options = map(keys(DIFFICULTY), code => strings[code]);
 
     return (
       <DialogPicker
-        navigator={navigator}
-        header="Selected Difficulty"
-        options={OPTIONS}
+        componentId={componentId}
+        header={L('Selected Difficulty')}
+        options={options}
         onSelectionChanged={this._onChoice}
-        selectedOption={difficulty}
+        selectedOption={strings[difficulty]}
       />
     );
   }

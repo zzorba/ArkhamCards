@@ -36,7 +36,7 @@ export default function deckRowWithDetails(
 ) {
   class DeckRow extends React.Component {
     static propTypes = {
-      navigator: PropTypes.object.isRequired,
+      componentId: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       deck: PropTypes.object,
       remove: PropTypes.func,
@@ -55,11 +55,11 @@ export default function deckRowWithDetails(
 
     onDeckPress() {
       const {
-        navigator,
+        componentId,
         deck,
         investigators,
       } = this.props;
-      showDeckModal(navigator, deck, investigators[deck.investigator_code]);
+      showDeckModal(componentId, deck, investigators[deck.investigator_code]);
     }
 
     onRemove() {
@@ -85,7 +85,7 @@ export default function deckRowWithDetails(
 
     renderSubDetails() {
       const {
-        navigator,
+        componentId,
         id,
         deck,
         /* eslint-disable no-unused-vars */
@@ -101,7 +101,7 @@ export default function deckRowWithDetails(
       }
       return (
         <DeckRowSubDetails
-          navigator={navigator}
+          componentId={componentId}
           id={id}
           deck={deck}
           investigator={investigators[deck.investigator_code]}
@@ -113,7 +113,7 @@ export default function deckRowWithDetails(
 
     renderDetails() {
       const {
-        navigator,
+        componentId,
         id,
         deck,
         /* eslint-disable no-unused-vars */
@@ -129,7 +129,7 @@ export default function deckRowWithDetails(
       }
       return (
         <DeckRowDetails
-          navigator={navigator}
+          componentId={componentId}
           id={id}
           deck={deck}
           investigator={investigators[deck.investigator_code]}

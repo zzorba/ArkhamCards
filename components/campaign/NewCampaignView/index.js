@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { capitalize, filter, forEach, keys, map, sumBy } from 'lodash';
+import { filter, forEach, keys, map, sumBy, throttle } from 'lodash';
 import {
   Alert,
   Button,
@@ -11,11 +11,18 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
-import { CUSTOM } from '../constants';
+import {
+  CUSTOM,
+  DIFFICULTY,
+  campaignLogs,
+  CAMPAIGN_CHAOS_BAGS,
+  difficultyStrings,
+} from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
@@ -24,14 +31,13 @@ import LabeledTextBox from '../../core/LabeledTextBox';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
-import { CAMPAIGN_CHAOS_BAGS, CAMPAIGN_LOGS, DIFFICULTY } from '../../../constants';
 import { getNextCampaignId } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { newCampaign } from '../actions';
 
 class NewCampaignView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     newCampaign: PropTypes.func.isRequired,
     nextId: PropTypes.number.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
@@ -40,12 +46,18 @@ class NewCampaignView extends React.Component {
     cardsMap: PropTypes.object,
   };
 
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('New Campaign'),
+        },
+      },
+    };
+  }
+
   constructor(props) {
     super(props);
-
-    props.navigator.setTitle({
-      title: L('New Campaign'),
-    });
 
     this.state = {
       name: '',
@@ -60,10 +72,10 @@ class NewCampaignView extends React.Component {
       campaignLogDialogVisible: false,
     };
 
-    this.updateNavigatorButtons();
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this.updateNavigationButtons();
+    this._navEventListener = Navigation.events().bindComponent(this);
 
-    this._onSave = this.onSave.bind(this);
+    this._onSave = throttle(this.onSave.bind(this), 200);
     this._onWeaknessPackChange = this.onWeaknessPackChange.bind(this);
     this._addCampaignNoteSection = this.addCampaignNoteSection.bind(this);
     this._deleteCampaignNoteSection = this.deleteCampaignNoteSection.bind(this);
@@ -75,9 +87,13 @@ class NewCampaignView extends React.Component {
     this._showChaosBagDialog = this.showChaosBagDialog.bind(this);
     this._showDifficultyDialog = this.showDifficultyDialog.bind(this);
     this._campaignChanged = this.campaignChanged.bind(this);
-    this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
+    this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
     this._deckAdded = this.deckAdded.bind(this);
     this._deckRemoved = this.deckRemoved.bind(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   onWeaknessPackChange(packs) {
@@ -130,7 +146,7 @@ class NewCampaignView extends React.Component {
   onNameChange(name) {
     this.setState({
       name: name,
-    });
+    }, this._updateNavigationButtons);
   }
 
   maybeShowWeaknessPrompt(deck) {
@@ -198,31 +214,29 @@ class NewCampaignView extends React.Component {
     });
   }
 
-  updateNavigatorButtons() {
+  updateNavigationButtons() {
     const {
-      navigator,
+      componentId,
     } = this.props;
     const {
       name,
       campaignCode,
     } = this.state;
-    navigator.setButtons({
-      rightButtons: [
-        {
-          title: L('Done'),
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        rightButtons: [{
+          text: L('Done'),
           id: 'save',
           showAsAction: 'ifRoom',
-          disabled: campaignCode === CUSTOM && !name,
-        },
-      ],
+          enabled: campaignCode !== CUSTOM || !!name,
+        }],
+      },
     });
   }
 
-  onNavigatorEvent(event) {
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'save') {
-        this.onSave();
-      }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'save') {
+      this._onSave();
     }
   }
 
@@ -241,7 +255,7 @@ class NewCampaignView extends React.Component {
     const {
       nextId,
       newCampaign,
-      navigator,
+      componentId,
     } = this.props;
     const {
       name,
@@ -265,7 +279,7 @@ class NewCampaignView extends React.Component {
         assignedCards: weaknessAssignedCards,
       }
     );
-    navigator.pop();
+    Navigation.pop(componentId);
   }
 
   updateChaosBag(chaosBag) {
@@ -277,36 +291,47 @@ class NewCampaignView extends React.Component {
   updateDifficulty(value) {
     this.setState({
       difficulty: value,
-    }, this._updateNavigatorButtons);
+    }, this._updateNavigationButtons);
   }
 
   showChaosBagDialog() {
     const {
-      navigator,
+      componentId,
     } = this.props;
-    navigator.push({
-      screen: 'Dialog.EditChaosBag',
-      title: L('Chaos Bag'),
-      passProps: {
-        chaosBag: this.state.customChaosBag,
-        updateChaosBag: this._updateChaosBag,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Dialog.EditChaosBag',
+        passProps: {
+          chaosBag: this.state.customChaosBag,
+          updateChaosBag: this._updateChaosBag,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Chaos Bag'),
+            },
+            backButton: {
+              title: L('Cancel'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Cancel'),
     });
   }
 
   showDifficultyDialog() {
-    const {
-      navigator,
-    } = this.props;
-    navigator.showLightBox({
-      screen: 'Dialog.CampaignDifficulty',
-      passProps: {
-        difficulty: this.state.difficulty,
-        updateDifficulty: this._updateDifficulty,
-      },
-      style: {
-        backgroundColor: 'rgba(128,128,128,.75)',
+    Navigation.showOverlay({
+      component: {
+        name: 'Dialog.CampaignDifficulty',
+        passProps: {
+          difficulty: this.state.difficulty,
+          updateDifficulty: this._updateDifficulty,
+        },
+        options: {
+          layout: {
+            backgroundColor: 'rgba(128,128,128,.75)',
+          },
+        },
       },
     });
   }
@@ -315,7 +340,7 @@ class NewCampaignView extends React.Component {
     this.setState({
       campaign,
       campaignCode,
-    }, this._updateNavigatorButtons);
+    }, this._updateNavigationButtons);
   }
 
   hasDefinedChaosBag() {
@@ -348,7 +373,7 @@ class NewCampaignView extends React.Component {
     const {
       campaignCode,
     } = this.state;
-    return (campaignCode !== CUSTOM && CAMPAIGN_LOGS[campaignCode]);
+    return (campaignCode !== CUSTOM && campaignLogs()[campaignCode]);
   }
 
   getCampaignLog() {
@@ -357,7 +382,7 @@ class NewCampaignView extends React.Component {
       customCampaignLog,
     } = this.state;
     if (this.hasDefinedCampaignLog()) {
-      return CAMPAIGN_LOGS[campaignCode];
+      return campaignLogs()[campaignCode];
     }
     return customCampaignLog;
   }
@@ -373,7 +398,7 @@ class NewCampaignView extends React.Component {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          CHAOS BAG
+          { L('CHAOS BAG') }
         </Text>
         <View style={[styles.topPadding, styles.margin]}>
           <ChaosBagLine chaosBag={chaosBag} />
@@ -387,7 +412,7 @@ class NewCampaignView extends React.Component {
       name,
     } = this.state;
     this.props.showTextEditDialog(
-      'Campaign Name',
+      L('Campaign Name'),
       name,
       this._onNameChange
     );
@@ -395,16 +420,16 @@ class NewCampaignView extends React.Component {
 
   renderWeaknessSetSection() {
     const {
-      navigator,
+      componentId,
     } = this.props;
     return (
       <View style={styles.margin}>
-        <Text style={typography.small}>WEAKNESS SET</Text>
+        <Text style={typography.small}>{ L('WEAKNESS SET') }</Text>
         <Text style={typography.small}>
-          Include all basic weaknesses from these expansions
+          { L('Include all basic weaknesses from these expansions') }
         </Text>
         <WeaknessSetPackChooserComponent
-          navigator={navigator}
+          componentId={componentId}
           compact
           onSelectedPacksChanged={this._onWeaknessPackChange}
         />
@@ -421,7 +446,7 @@ class NewCampaignView extends React.Component {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          CAMPAIGN LOG
+          { L('CAMPAIGN LOG') }
         </Text>
         <View style={styles.margin}>
           { map(campaignLog.sections || [], section => (
@@ -465,13 +490,14 @@ class NewCampaignView extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       captureViewRef,
       nextId,
     } = this.props;
 
     const {
       deckIds,
+      campaignCode,
       name,
       difficulty,
     } = this.state;
@@ -486,7 +512,7 @@ class NewCampaignView extends React.Component {
           <View style={styles.underline}>
             <View style={styles.topPadding}>
               <CampaignSelector
-                navigator={navigator}
+                componentId={componentId}
                 campaignChanged={this._campaignChanged}
               />
             </View>
@@ -505,7 +531,7 @@ class NewCampaignView extends React.Component {
                 column
                 label={L('Difficulty')}
                 onPress={this._showDifficultyDialog}
-                value={capitalize(difficulty)}
+                value={difficultyStrings()[difficulty]}
               />
             </View>
           </View>
@@ -527,7 +553,7 @@ class NewCampaignView extends React.Component {
           <View style={styles.underline}>
             <DeckSelector
               label={L('Decks')}
-              navigator={navigator}
+              componentId={componentId}
               campaignId={nextId}
               deckIds={deckIds}
               deckAdded={this._deckAdded}
@@ -536,6 +562,7 @@ class NewCampaignView extends React.Component {
           </View>
           <View style={styles.button}>
             <Button
+              disabled={campaignCode === CUSTOM && !name}
               style={styles.topPadding}
               title={L('Create Campaign')}
               onPress={this._onSave}

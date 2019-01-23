@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -8,6 +9,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import withTextEditDialog from '../../core/withTextEditDialog';
@@ -20,7 +22,7 @@ import typography from '../../../styles/typography';
 
 class AddScenarioResultView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     // from redux/realm
@@ -45,13 +47,17 @@ class AddScenarioResultView extends React.Component {
       xp: 0,
     };
 
-    this.updateNavigatorButtons();
-    props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this.updateNavigationButtons();
+    this._navEventListener = Navigation.events().bindComponent(this);
 
-    this._doSave = this.doSave.bind(this);
+    this._doSave = throttle(this.doSave.bind(this), 200);
     this._scenarioChanged = this.scenarioChanged.bind(this);
     this._xpChanged = this.xpChanged.bind(this);
-    this._updateNavigatorButtons = this.updateNavigatorButtons.bind(this);
+    this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   hideTraumaDialog() {
@@ -60,31 +66,29 @@ class AddScenarioResultView extends React.Component {
     });
   }
 
-  updateNavigatorButtons() {
-    this.props.navigator.setButtons({
-      rightButtons: [
-        {
-          title: L('Save'),
+  updateNavigationButtons() {
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        rightButtons: [{
+          text: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
-          disabled: !this.state.scenario.scenario ||
-            !(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
-        },
-      ],
+          enabled: (!!this.state.scenario.scenario) &&
+            !!(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
+        }],
+      },
     });
   }
 
-  onNavigatorEvent(event) {
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'save') {
-        this.doSave();
-      }
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'save') {
+      this._doSave();
     }
   }
 
   doSave() {
     const {
-      navigator,
+      componentId,
       campaign,
       addScenarioResult,
     } = this.props;
@@ -97,13 +101,13 @@ class AddScenarioResultView extends React.Component {
       scenario,
       xp
     );
-    navigator.pop();
+    Navigation.pop(componentId);
   }
 
   scenarioChanged(scenario) {
     this.setState({
       scenario,
-    }, this._updateNavigatorButtons);
+    }, this._updateNavigationButtons);
   }
 
   xpChanged(xp) {
@@ -114,13 +118,13 @@ class AddScenarioResultView extends React.Component {
 
   renderScenarios() {
     const {
-      navigator,
+      componentId,
       campaign,
       showTextEditDialog,
     } = this.props;
     return (
       <ScenarioSection
-        navigator={navigator}
+        componentId={componentId}
         campaign={campaign}
         scenarioChanged={this._scenarioChanged}
         showTextEditDialog={showTextEditDialog}

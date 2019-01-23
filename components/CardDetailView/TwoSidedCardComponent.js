@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import {
@@ -47,7 +48,7 @@ function num(value) {
 
 export default class TwoSidedCardComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     card: PropTypes.object.isRequired,
     linked: PropTypes.bool,
     notFirst: PropTypes.bool,
@@ -65,54 +66,61 @@ export default class TwoSidedCardComponent extends React.Component {
   }
 
   editSpoilersPressed() {
-    this.props.navigator.push({
-      screen: 'My.Spoilers',
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Spoilers',
+      },
     });
-  }
-
-  onNavigatorEvent(event) {
-    const {
-      navigator,
-    } = this.props;
-    if (event.type === 'NavBarButtonPress') {
-      if (event.id === 'deck') {
-        this.showInvestigatorCards();
-      } else if (event.id === 'faq') {
-        this.showFaq();
-      } else if (event.id === 'back') {
-        navigator.pop();
-      }
-    }
   }
 
   showFaq() {
     const {
-      navigator,
+      componentId,
       card,
     } = this.props;
-    navigator.push({
-      screen: 'Card.Faq',
-      title: L('FAQ'),
-      subtitle: card.name,
-      passProps: {
-        id: card.code,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Card.Faq',
+        passProps: {
+          id: card.code,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('FAQ'),
+            },
+            subtitle: {
+              text: card.name,
+            },
+          },
+        },
       },
     });
   }
 
   showInvestigatorCards() {
     const {
-      navigator,
+      componentId,
       card,
     } = this.props;
 
-    navigator.push({
-      screen: 'Browse.InvestigatorCards',
-      title: L('Allowed Cards'),
-      passProps: {
-        investigatorCode: card.code,
+    Navigation.push(componentId, {
+      component: {
+        name: 'Browse.InvestigatorCards',
+        passProps: {
+          investigatorCode: card.code,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: L('Allowed Cards'),
+            },
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
-      backButtonTitle: L('Back'),
     });
   }
 
@@ -204,7 +212,7 @@ export default class TwoSidedCardComponent extends React.Component {
             }
           </Text>
         ) }
-        { card.type_code === 'agenda' && <Text>Doom: { card.doom }</Text> }
+        { card.type_code === 'agenda' && <Text>Doom: { num(card.doom) }</Text> }
         { card.type_code === 'act' && card.clues > 0 && (
           <Text>
             Clues: { card.clues }
@@ -216,7 +224,7 @@ export default class TwoSidedCardComponent extends React.Component {
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
           <Text>
-            Shroud: { card.shroud }. Clues: { card.clues }
+            Shroud: { num(card.shroud) }. Clues: { num(card.clues) }
             { card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON }
             .
           </Text>)
@@ -351,13 +359,13 @@ export default class TwoSidedCardComponent extends React.Component {
 
   renderCardBack(card, backFirst, isHorizontal, flavorFirst, isFirst) {
     const {
-      navigator,
+      componentId,
     } = this.props;
     if (card.linked_card) {
       return (
         <View>
           <TwoSidedCardComponent
-            navigator={navigator}
+            componentId={componentId}
             id={card.code}
             card={card.linked_card}
             pack_code={card.pack_code}
@@ -463,7 +471,7 @@ export default class TwoSidedCardComponent extends React.Component {
 
   renderCardFront(card, backFirst, isHorizontal, flavorFirst, isFirst) {
     const {
-      navigator,
+      componentId,
     } = this.props;
     if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack) {
       return (
@@ -498,7 +506,7 @@ export default class TwoSidedCardComponent extends React.Component {
                 { card.type_code !== 'story' && card.type_code !== 'scenario' && (
                   <View style={styles.column}>
                     <View style={styles.playerImage}>
-                      <PlayerCardImage card={card} navigator={navigator} />
+                      <PlayerCardImage card={card} componentId={componentId} />
                     </View>
                   </View>
                 ) }

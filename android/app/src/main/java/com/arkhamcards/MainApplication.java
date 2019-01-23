@@ -1,22 +1,36 @@
 package com.arkhamcards;
 
-import com.reactlibrary.RNAppAuthPackage;
-import com.reactnativenavigation.NavigationApplication;
-import com.oblador.vectoricons.VectorIconsPackage;
-import com.RNFetchBlob.RNFetchBlobPackage;
-import com.horcrux.svg.SvgPackage;
-import io.realm.react.RealmReactPackage;
-import com.oblador.keychain.KeychainPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-import com.facebook.react.ReactPackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
 import com.cmcewen.blurview.BlurViewPackage;
-import com.AlexanderZaytsev.RNI18n.RNI18nPackage
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
+import com.horcrux.svg.SvgPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.oblador.keychain.KeychainPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.rnappauth.RNAppAuthPackage;
+import com.reactnativenavigation.NavigationApplication;
+import com.reactnativenavigation.react.NavigationReactNativeHost;
+import com.reactnativenavigation.react.ReactGateway;
 
 import java.util.Arrays;
 import java.util.List;
 
+import io.realm.react.RealmReactPackage;
+
 public class MainApplication extends NavigationApplication {
+
+  @Override
+  protected ReactGateway createReactGateway() {
+    ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
+        @Override
+        protected String getJSMainModuleName() {
+            return "index";
+        }
+    };
+    return new ReactGateway(this, isDebug(), host);
+  }
 
   @Override
   public boolean isDebug() {
@@ -27,7 +41,6 @@ public class MainApplication extends NavigationApplication {
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
         new ReactNativeConfigPackage(),
-        new RNI18nPackage(),
         new RNAppAuthPackage(),
         new VectorIconsPackage(),
         new RNFetchBlobPackage(),
@@ -42,11 +55,6 @@ public class MainApplication extends NavigationApplication {
   @Override
   public List<ReactPackage> createAdditionalReactPackages() {
     return getPackages();
-  }
-
-  @Override
-  public String getJSMainModuleName() {
-    return "index";
   }
 }
 

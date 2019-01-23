@@ -7,6 +7,7 @@ import DialogComponent from 'react-native-dialog';
 
 import L from '../../app/i18n';
 import Dialog from '../core/Dialog';
+import { COLORS } from '../../styles/colors';
 
 export default class AddCampaignNoteSectionDialog extends React.Component {
   static propTypes = {
@@ -25,11 +26,17 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
       isCount: false,
     };
 
+    this._captureTextInputRef = this.captureTextInputRef.bind(this);
     this._onAddPress = this.onAddPress.bind(this);
     this._onCancelPress = this.onCancelPress.bind(this);
     this._toggleCount = this.toggleCount.bind(this);
     this._toggleInvestigator = this.toggleInvestigator.bind(this);
     this._onNameChange = this.onNameChange.bind(this);
+    this._textInputRef = null;
+  }
+
+  captureTextInputRef(ref) {
+    this._textInputRef = ref;
   }
 
   onAddPress() {
@@ -78,6 +85,17 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      visible,
+    } = this.props;
+    if (visible && !prevProps.visible) {
+      if (this._textInputRef) {
+        this._textInputRef.focus();
+      }
+    }
+  }
+
   render() {
     const {
       viewRef,
@@ -98,7 +116,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
       >
         <DialogComponent.Input
           value={name}
-          autoFocus
+          textInputRef={this._captureTextInputRef}
           placeholder={L('Section Name')}
           onChangeText={this._onNameChange}
         />
@@ -106,15 +124,13 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
           label={L('Count')}
           value={isCount}
           onValueChange={this._toggleCount}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+          trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Switch
           label={L('Per Investigator')}
           value={perInvestigator}
           onValueChange={this._toggleInvestigator}
-          onTintColor="#222222"
-          tintColor="#bbbbbb"
+          trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Button
           label={L('Cancel')}

@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 
+import L from '../../app/i18n';
 import SearchBox from '../SearchBox';
 import SelectRow from './SelectRow';
 
@@ -18,6 +19,16 @@ export default class SearchMultiSelectView extends React.Component {
     values: PropTypes.array.isRequired,
     selection: PropTypes.array,
   };
+
+  static get options() {
+    return {
+      topBar: {
+        backButton: {
+          title: L('Back'),
+        },
+      },
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -95,6 +106,7 @@ export default class SearchMultiSelectView extends React.Component {
     } = this.props;
     const {
       selection,
+      search,
     } = this.state;
 
     const selectedSet = new Set(selection);
@@ -108,6 +120,7 @@ export default class SearchMultiSelectView extends React.Component {
     return (
       <View style={styles.flex}>
         <SearchBox
+          value={search}
           onChangeText={this._onChangeText}
           placeholder={placeholder}
         />

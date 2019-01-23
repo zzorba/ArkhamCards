@@ -14,22 +14,26 @@ import { getAllPacks, getPacksInCollection } from '../reducers';
 
 class CollectionEditView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object,
+    componentId: PropTypes.string.isRequired,
     packs: PropTypes.array,
     in_collection: PropTypes.object,
     setInCollection: PropTypes.func.isRequired,
     setCycleInCollection: PropTypes.func.isRequired,
   };
 
-  componentDidMount() {
-    this.props.navigator.setTitle({
-      title: L('Edit Collection'),
-    });
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Edit Collection'),
+        },
+      },
+    };
   }
 
   render() {
     const {
-      navigator,
+      componentId,
       packs,
       in_collection,
       setInCollection,
@@ -44,7 +48,8 @@ class CollectionEditView extends React.Component {
     }
     return (
       <PackListComponent
-        navigator={navigator}
+        coreSetName={L('Second Core Set')}
+        componentId={componentId}
         packs={packs}
         checkState={in_collection}
         setChecked={setInCollection}

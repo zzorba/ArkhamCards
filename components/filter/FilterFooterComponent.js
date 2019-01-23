@@ -8,7 +8,7 @@ import { connectRealm } from 'react-native-realm';
 import LinearGradient from 'react-native-linear-gradient';
 
 import L from '../../app/i18n';
-import { applyFilters } from '../../lib/filters';
+import { filterToQuery } from '../../lib/filters';
 import space from '../../styles/space';
 import typography from '../../styles/typography';
 
@@ -27,7 +27,7 @@ class FilterFooterComponent extends React.Component {
       cards,
       filters,
     } = this.props;
-    const query = applyFilters(filters).join(' and ');
+    const query = filterToQuery(filters).join(' and ');
     if (query) {
       return cards.filtered(query).length;
     }

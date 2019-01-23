@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import WeaknessSetPackChooserComponent from './WeaknessSetPackChooserComponent';
@@ -18,7 +19,7 @@ import { getNextWeaknessId } from '../../reducers';
 
 class NewWeaknessSetDialog extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object,
+    componentId: PropTypes.string.isRequired,
     nextId: PropTypes.number.isRequired,
     createWeaknessSet: PropTypes.func.isRequired,
     showTextEditDialog: PropTypes.func.isRequired,
@@ -58,7 +59,7 @@ class NewWeaknessSetDialog extends React.Component {
 
   onSavePressed() {
     const {
-      navigator,
+      componentId,
       createWeaknessSet,
       nextId,
     } = this.props;
@@ -68,7 +69,7 @@ class NewWeaknessSetDialog extends React.Component {
       packs,
     } = this.state;
     createWeaknessSet(nextId, name, packs);
-    navigator.pop();
+    Navigation.pop(componentId);
   }
 
   renderFooter() {
@@ -111,13 +112,13 @@ class NewWeaknessSetDialog extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
     } = this.props;
     return (
       <View style={styles.container}>
         { this.renderHeader() }
         <WeaknessSetPackChooserComponent
-          navigator={navigator}
+          componentId={componentId}
           onSelectedPacksChanged={this._onSelectedPacksChanged}
         />
         { this.renderFooter() }

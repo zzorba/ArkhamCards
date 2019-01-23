@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head } from 'lodash';
+import { head, startsWith } from 'lodash';
 import {
   RefreshControl,
   ScrollView,
@@ -9,6 +9,8 @@ import {
   View,
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
+import { Navigation } from 'react-native-navigation';
+import openInApp from '@matt-block/react-native-in-app-browser';
 
 import CardTextComponent from './CardTextComponent';
 import { getFaqEntry } from '../lib/publicApi';
@@ -16,7 +18,7 @@ import typography from '../styles/typography';
 
 class CardFaqView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     realm: PropTypes.object.isRequired,
     cards: PropTypes.object,
@@ -40,9 +42,32 @@ class CardFaqView extends React.Component {
     }
   }
 
+  openUrl(url) {
+    const {
+      componentId,
+    } = this.props;
+    openInApp(url).catch(() => {
+      Navigation.push(componentId, {
+        component: {
+          name: 'WebView',
+          passProps: {
+            uri: url,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: 'ArkhamDB',
+              },
+            },
+          },
+        },
+      });
+    });
+  }
+
   linkPressed(url) {
     const {
-      navigator,
+      componentId,
       cards,
     } = this.props;
     const regex = /\/card\/(\d+)/;
@@ -50,29 +75,19 @@ class CardFaqView extends React.Component {
     if (match) {
       const code = match[1];
       const card = head(cards.filtered(`code == '${code}'`));
-      navigator.push({
-        screen: 'Card',
-        passProps: {
-          id: code,
-          pack_code: card ? card.pack_code : null,
+      Navigation.push(componentId, {
+        component: {
+          name: 'Card',
+          passProps: {
+            id: code,
+            pack_code: card ? card.pack_code : null,
+          },
         },
       });
     } else if (url.indexOf('arkhamdb.com') !== -1) {
-      navigator.push({
-        screen: 'WebView',
-        title: 'ArkhamDB',
-        passProps: {
-          uri: url,
-        },
-      });
-    } else if (url.startsWith('/')) {
-      navigator.push({
-        screen: 'WebView',
-        title: 'ArkhamDB',
-        passProps: {
-          uri: `https://arkhamdb.com${url}`,
-        },
-      });
+      this.openUrl(url);
+    } else if (startsWith(url, '/')) {
+      this.openUrl(`https://arkhamdb.com${url}`);
     }
   }
 

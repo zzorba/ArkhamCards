@@ -5,14 +5,14 @@ import CardSearchComponent from './CardSearchComponent';
 
 export default class PackCardsView extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     pack_code: PropTypes.string.isRequired,
     baseQuery: PropTypes.string,
   };
 
   render() {
     const {
-      navigator,
+      componentId,
       pack_code,
       baseQuery,
     } = this.props;
@@ -24,8 +24,9 @@ export default class PackCardsView extends React.Component {
 
     return (
       <CardSearchComponent
-        navigator={navigator}
+        componentId={componentId}
         baseQuery={parts.join(' and ')}
+        showNonCollection
       />
     );
   }

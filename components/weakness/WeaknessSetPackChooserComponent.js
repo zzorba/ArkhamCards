@@ -11,7 +11,7 @@ import * as Actions from '../../actions';
 
 class WeaknessSetPackChooserComponent extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object,
+    componentId: PropTypes.string.isRequired,
     in_collection: PropTypes.object.isRequired,
     weaknessCards: PropTypes.object,
     packs: PropTypes.array,
@@ -23,7 +23,7 @@ class WeaknessSetPackChooserComponent extends React.Component {
     super(props);
 
     this.state = {
-      override: {},
+      override: { core: true },
     };
 
     this._onPackCheck = this.onPackCheck.bind(this);
@@ -70,7 +70,7 @@ class WeaknessSetPackChooserComponent extends React.Component {
 
   render() {
     const {
-      navigator,
+      componentId,
       in_collection,
       compact,
     } = this.props;
@@ -80,7 +80,7 @@ class WeaknessSetPackChooserComponent extends React.Component {
     const weaknessPacks = this.weaknessPacks();
     return (
       <PackListComponent
-        navigator={navigator}
+        componentId={componentId}
         packs={weaknessPacks}
         checkState={Object.assign({}, in_collection, override)}
         setChecked={this._onPackCheck}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, partition, random, throttle } from 'lodash';
+import { concat, flatMap, forEach, isEqual, map, partition, random, sortBy, throttle } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -14,13 +14,17 @@ import {
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import * as Actions from '../../actions';
-import { getPackSpoilers } from '../../reducers';
+import { getPackSpoilers, getPacksInCollection } from '../../reducers';
 import Card from '../../data/Card';
+import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
+import { ROW_HEIGHT } from '../CardSearchResult/constants';
 import CardSectionHeader from './CardSectionHeader';
+import ShowNonCollectionFooter from './ShowNonCollectionFooter';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -31,7 +35,7 @@ import {
 } from '../CardSortDialog/constants';
 import typography from '../../styles/typography';
 
-const SCROLL_DISTANCE_BUFFER = 25;
+const SCROLL_DISTANCE_BUFFER = 50;
 
 const FUN_LOADING_MESSAGES = [
   'Investigating for clues',
@@ -45,19 +49,22 @@ const FUN_LOADING_MESSAGES = [
 
 class CardResultList extends React.Component {
   static propTypes = {
-    navigator: PropTypes.object.isRequired,
+    componentId: PropTypes.string.isRequired,
     realm: PropTypes.object.isRequired,
     query: PropTypes.string,
     searchTerm: PropTypes.string,
     sort: PropTypes.string,
+    originalDeckSlots: PropTypes.object,
     deckCardCounts: PropTypes.object,
     onDeckCountChange: PropTypes.func,
     show_spoilers: PropTypes.object,
+    in_collection: PropTypes.object,
     limits: PropTypes.object,
     cardPressed: PropTypes.func,
     showHeader: PropTypes.func.isRequired,
     hideHeader: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
+    showNonCollection: PropTypes.bool,
     expandSearchControls: PropTypes.node,
   };
 
@@ -70,12 +77,14 @@ class CardResultList extends React.Component {
 
     this.state = {
       resultsKey: '',
+      deckSections: [],
       cards: [],
       cardsCount: 0,
       deckCardCounts: props.deckCardCounts || {},
       spoilerCards: [],
       spoilerCardsCount: 0,
       showSpoilerCards: false,
+      showNonCollection: {},
       loadingMessage: CardResultList.randomLoadingMessage(),
       dirty: false,
       scrollY: new Animated.Value(0),
@@ -95,24 +104,25 @@ class CardResultList extends React.Component {
       },
     );
     this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
-    this._throttledUpdateResults = throttle(this.updateResults.bind(this), 200, { trailing: true });
+    this._throttledUpdateResults = throttle(
+      this.updateResults.bind(this),
+      200,
+      { trailing: true });
     this._getItem = this.getItem.bind(this);
     this._renderSectionHeader = this.renderSectionHeader.bind(this);
+    this._renderSectionFooter = this.renderSectionFooter.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
     this._cardToKey = this.cardToKey.bind(this);
     this._editSpoilerSettings = this.editSpoilerSettings.bind(this);
+    this._editCollectionSettings = this.editCollectionSettings.bind(this);
     this._enableSpoilers = this.enableSpoilers.bind(this);
+    this._showNonCollectionCards = this.showNonCollectionCards.bind(this);
     this._renderCard = this.renderCard.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
   }
 
   onScroll(event) {
     const offsetY = event.nativeEvent.contentOffset.y;
-
-    if (offsetY <= 0) {
-      this.props.showHeader();
-    }
-
     // Dispatch the throttle event to handle hiding/showing stuff on transition.
     this._throttledScroll(offsetY);
   }
@@ -123,21 +133,25 @@ class CardResultList extends React.Component {
    * the stored scrollY or not.
    */
   throttledScroll(offsetY) {
-    const delta = Math.abs(offsetY - this.lastOffsetY);
-    if (delta < SCROLL_DISTANCE_BUFFER) {
-      // Not a long enough scroll, don't update scrollY and don't take any
-      // action at all.
-      return;
-    }
-
-    // We have a decent sized scroll so we will make a direction based
-    // show/hide decision UNLESS we are near the top/bottom of the content.
-    const scrollingUp = offsetY < this.lastOffsetY;
-
-    if (scrollingUp) {
+    if (offsetY <= 0) {
       this.props.showHeader();
     } else {
-      this.props.hideHeader();
+      const delta = Math.abs(offsetY - this.lastOffsetY);
+      if (delta < SCROLL_DISTANCE_BUFFER) {
+        // Not a long enough scroll, don't update scrollY and don't take any
+        // action at all.
+        return;
+      }
+
+      // We have a decent sized scroll so we will make a direction based
+      // show/hide decision UNLESS we are near the top/bottom of the content.
+      const scrollingUp = offsetY < this.lastOffsetY;
+
+      if (scrollingUp) {
+        this.props.showHeader();
+      } else {
+        this.props.hideHeader();
+      }
     }
 
     this.lastOffsetY = offsetY;
@@ -155,17 +169,20 @@ class CardResultList extends React.Component {
     const {
       deckCardCounts,
     } = this.props;
-    const updateDeckCardCounts = (prevProps.deckCardCounts !== deckCardCounts);
+    const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
     if ((this.props.visible && !prevProps.visible && this.state.dirty) ||
         prevProps.query !== this.props.query ||
         prevProps.sort !== this.props.sort ||
         prevProps.searchTerm !== this.props.searchTerm ||
-        prevProps.show_spoilers !== this.props.show_spoilers) {
+        prevProps.show_spoilers !== this.props.show_spoilers ||
+        prevProps.in_collection !== this.props.in_collection
+    ) {
       if (this.props.visible) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           loadingMessage: CardResultList.randomLoadingMessage(),
           dirty: false,
+          showNonCollection: [],
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
         }, this._throttledUpdateResults);
       } else if (!this.state.dirty) {
@@ -190,33 +207,68 @@ class CardResultList extends React.Component {
     });
   }
 
+  showNonCollectionCards(id) {
+    Keyboard.dismiss();
+    this.setState({
+      showNonCollection: Object.assign(
+        {},
+        this.state.showNonCollection,
+        { [id]: true },
+      ),
+    }, this._throttledUpdateResults);
+  }
+
+  editCollectionSettings() {
+    Keyboard.dismiss();
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Collection',
+        options: {
+          topBar: {
+            title: {
+              text: L('Edit Collection'),
+            },
+          },
+        },
+      },
+    });
+  }
+
   editSpoilerSettings() {
     Keyboard.dismiss();
-    this.props.navigator.push({
-      screen: 'My.Spoilers',
-      title: L('Spoiler Settings'),
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Spoilers',
+        options: {
+          topBar: {
+            title: {
+              text: L('Spoiler Settings'),
+            },
+          },
+        },
+      },
     });
   }
 
   getSort() {
     switch(this.props.sort) {
       case SORT_BY_TYPE:
-        return [['sort_by_type', false], ['renderName', false]];
+        return [['sort_by_type', false], ['renderName', false], ['xp', false]];
       case SORT_BY_FACTION:
-        return [['sort_by_faction', false], ['renderName', false]];
+        return [['sort_by_faction', false], ['renderName', false], ['xp', false]];
       case SORT_BY_COST:
-        return [['cost', false], ['renderName', false]];
+        return [['cost', false], ['renderName', false], ['xp', false]];
       case SORT_BY_PACK:
         return [['sort_by_pack', false], ['position', false]];
       case SORT_BY_TITLE:
-        return [['renderName', false]];
+        return [['renderName', false], ['xp', false]];
       case SORT_BY_ENCOUNTER_SET:
         return [['sort_by_pack', false], ['encounter_code', false], ['encounter_position', false]];
     }
   }
 
-  headerForCard(card) {
-    switch(this.props.sort) {
+  headerForCard(card, sortOverride) {
+    switch(sortOverride || this.props.sort) {
       case SORT_BY_TYPE:
         return Card.typeSortHeader(card);
       case SORT_BY_FACTION:
@@ -237,20 +289,59 @@ class CardResultList extends React.Component {
     }
   }
 
-  bucketCards(cards) {
+  bucketDeckCards(cards) {
+    return this.bucketCards(cards, 'deck', true);
+  }
+
+  bucketCards(cards, keyPrefix, isDeck) {
+    const {
+      in_collection,
+      sort,
+    } = this.props;
+    const {
+      showNonCollection,
+    } = this.state;
     const results = [];
+    let nonCollectionCards = [];
     let currentBucket = null;
     cards.forEach(card => {
-      const header = this.headerForCard(card);
+      const header = this.headerForCard(card, isDeck ? SORT_BY_TYPE : sort);
       if (!currentBucket || currentBucket.title !== header) {
+        if (nonCollectionCards.length > 0) {
+          if (showNonCollection[currentBucket.id]) {
+            forEach(nonCollectionCards, c => currentBucket.data.push(c));
+          }
+          currentBucket.nonCollectionCount = nonCollectionCards.length;
+          nonCollectionCards = [];
+        }
         currentBucket = {
           title: header,
+          id: `${keyPrefix}-${results.length}`,
           data: [],
+          nonCollectionCount: 0,
         };
         results.push(currentBucket);
       }
-      currentBucket.data.push(card);
+      if (card && card.pack_code && (
+        isDeck ||
+        card.pack_code === 'core' ||
+        in_collection[card.pack_code] ||
+        this.props.showNonCollection)
+      ) {
+        currentBucket.data.push(card);
+      } else {
+        nonCollectionCards.push(card);
+      }
     });
+
+    // One last snap of the non-collection cards
+    if (nonCollectionCards.length > 0) {
+      if (showNonCollection[currentBucket.id]) {
+        forEach(nonCollectionCards, c => currentBucket.data.push(c));
+      }
+      currentBucket.nonCollectionCount = nonCollectionCards.length;
+      nonCollectionCards = [];
+    }
     return results;
   }
 
@@ -272,23 +363,40 @@ class CardResultList extends React.Component {
       query,
       searchTerm,
       show_spoilers,
+      originalDeckSlots,
+      deckCardCounts,
     } = this.props;
     const resultsKey = this.resultsKey();
     const cards = (query ?
       realm.objects('Card').filtered(query, searchTerm) :
       realm.objects('Card')
     ).sorted(this.getSort());
-    const splitCards = partition(
+    const deckCards = [];
+    const groupedCards = partition(
       cards,
-      card => show_spoilers[card.pack_code] ||
-        !(card.spoiler || (card.linked_card && card.linked_card.spoiler))
+      card => {
+        if (originalDeckSlots && (
+          originalDeckSlots[card.code] > 0 || deckCardCounts[card.count] > 0)) {
+          deckCards.push(card);
+        }
+        return show_spoilers[card.pack_code] ||
+          !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
+      }
     );
+
+    const splitDeckCards = partition(deckCards, card => isSpecialCard(card));
+    const specialCards = sortBy(splitDeckCards[0], card => card.sort_by_type || -1);
+    const normalCards = sortBy(splitDeckCards[1], card => card.sort_by_type || -1);
+
     this.setState({
       resultsKey: resultsKey,
-      cards: this.bucketCards(splitCards[0]),
-      cardsCount: splitCards[0].length,
-      spoilerCards: this.bucketCards(splitCards[1]),
-      spoilerCardsCount: splitCards[1].length,
+      deckSections: concat(
+        this.bucketDeckCards(normalCards),
+        this.bucketDeckCards(specialCards)),
+      cards: this.bucketCards(groupedCards[0], 'cards'),
+      cardsCount: groupedCards[0].length,
+      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
+      spoilerCardsCount: groupedCards[1].length,
     });
   }
 
@@ -299,16 +407,24 @@ class CardResultList extends React.Component {
   cardPressed(card) {
     const {
       cardPressed,
-      navigator,
+      componentId,
     } = this.props;
     cardPressed && cardPressed(card);
-    navigator.push({
-      screen: 'Card',
-      passProps: {
-        id: card.code,
-        pack_code: card.pack_code,
-        showSpoilers: true,
-        backButtonTitle: L('Back'),
+    Navigation.push(componentId, {
+      component: {
+        name: 'Card',
+        passProps: {
+          id: card.code,
+          pack_code: card.pack_code,
+          showSpoilers: true,
+        },
+        options: {
+          topBar: {
+            backButton: {
+              title: L('Back'),
+            },
+          },
+        },
       },
     });
   }
@@ -318,7 +434,33 @@ class CardResultList extends React.Component {
   }
 
   renderSectionHeader({ section }) {
-    return <CardSectionHeader title={section.title} />;
+    return <CardSectionHeader title={section.title} bold={section.bold} />;
+  }
+
+  renderSectionFooter({ section }) {
+    const {
+      showNonCollection,
+    } = this.state;
+    if (!section.nonCollectionCount) {
+      return null;
+    }
+    if (showNonCollection[section.id]) {
+      // Already pressed it, so show a button to edit collection.
+      return (
+        <Button
+          style={styles.sectionFooterButton}
+          title={L('Edit Collection')}
+          onPress={this._editCollectionSettings}
+        />
+      );
+    }
+    return (
+      <ShowNonCollectionFooter
+        id={section.id}
+        title={L('Show {{count}} Non-Collection Cards', { count: section.nonCollectionCount })}
+        onPress={this._showNonCollectionCards}
+      />
+    );
   }
 
   renderCard({ item }) {
@@ -338,6 +480,9 @@ class CardResultList extends React.Component {
 
   renderEmptyState() {
     const {
+      searchTerm,
+    } = this.props;
+    const {
       cardsCount,
       spoilerCardsCount,
     } = this.state;
@@ -346,7 +491,9 @@ class CardResultList extends React.Component {
         <View>
           <View style={styles.emptyText}>
             <Text style={typography.text}>
-              No matching cards
+              { searchTerm ?
+                L('No matching cards for "{{searchTerm}}"', { searchTerm }) :
+                L('No matching cards') }
             </Text>
           </View>
           { this.props.expandSearchControls }
@@ -403,12 +550,29 @@ class CardResultList extends React.Component {
       cards,
       spoilerCards,
       showSpoilerCards,
+      deckSections,
     } = this.state;
+    const startCards = deckSections.length ?
+      concat(
+        [{
+          title: 'In Deck',
+          bold: true,
+          data: [],
+        }],
+        deckSections,
+        [{
+          title: 'All Eligible Cards',
+          bold: true,
+          data: [],
+        }],
+        cards,
+      ) : cards;
+
     if (!showSpoilerCards) {
-      return cards;
+      return startCards;
     }
 
-    return concat(cards, spoilerCards);
+    return concat(startCards, spoilerCards);
   }
 
   isLoading() {
@@ -436,21 +600,48 @@ class CardResultList extends React.Component {
         </View>
       );
     }
-    const stickyHeaders = sort === SORT_BY_PACK || sort === SORT_BY_ENCOUNTER_SET;
+    const stickyHeaders = (
+      sort === SORT_BY_PACK ||
+      sort === SORT_BY_ENCOUNTER_SET
+    );
+    const data = this.getData();
+    let offset = 0;
+    const elementHeights = map(
+      flatMap(data, section => {
+        return concat(
+          [30], // Header
+          map(section.data || [], () => ROW_HEIGHT), // Rows
+          [section.nonCollectionCount ? 38 : 0] // Footer (not used)
+        );
+      }),
+      (size) => {
+        const result = {
+          length: size,
+          offset: offset,
+        };
+        offset = offset + size;
+        return result;
+      });
+    const getItemLayout = (data, index) => {
+      return Object.assign({}, elementHeights[index], { index });
+    };
     return (
       <SectionList
         onScroll={this._handleScroll}
         onScrollBeginDrag={this._handleScrollBeginDrag}
-        sections={this.getData()}
+        sections={data}
         renderSectionHeader={this._renderSectionHeader}
+        renderSectionFooter={this._renderSectionFooter}
         initialNumToRender={30}
         keyExtractor={this._cardToKey}
         renderItem={this._renderCard}
         extraData={this.state.deckCardCounts}
+        getItemLayout={getItemLayout}
         ListFooterComponent={this._renderFooter}
         stickySectionHeadersEnabled={stickyHeaders}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
+        scrollEventThrottle={1}
       />
     );
   }
@@ -459,6 +650,7 @@ class CardResultList extends React.Component {
 function mapStateToProps(state) {
   return {
     show_spoilers: getPackSpoilers(state),
+    in_collection: getPacksInCollection(state),
   };
 }
 
@@ -498,5 +690,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
+  },
+  sectionFooterButton: {
+    height: 38,
   },
 });

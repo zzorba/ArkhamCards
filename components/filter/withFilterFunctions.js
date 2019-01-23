@@ -7,13 +7,14 @@ import {
   View,
 } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
+import { Navigation } from 'react-native-navigation';
 
 import FilterFooterComponent from './FilterFooterComponent';
 
 export default function withFilterFunctions(WrappedComponent) {
   class WrappedFilterComponent extends React.Component {
     static propTypes = {
-      navigator: PropTypes.object.isRequired,
+      componentId: PropTypes.string.isRequired,
       currentFilters: PropTypes.object.isRequired,
       defaultFilterState: PropTypes.object.isRequired,
       applyFilters: PropTypes.func.isRequired,
@@ -38,35 +39,44 @@ export default function withFilterFunctions(WrappedComponent) {
       this._updateFilters = this.updateFilters.bind(this);
       this._onToggleChange = this.onToggleChange.bind(this);
       this._onFilterChange = this.onFilterChange.bind(this);
-      props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+      this._navEventListener = Navigation.events().bindComponent(this);
     }
 
-    onNavigatorEvent(event) {
-      if (event.type === 'NavBarButtonPress') {
-        if (event.id === 'clear') {
-          this.setState({
-            filters: this.props.defaultFilterState,
-          });
-        }
+    componentWillUnmount() {
+      this._navEventListener.remove();
+    }
+
+    navigationButtonPressed({ buttonId }) {
+      if (buttonId === 'clear') {
+        this.setState({
+          filters: this.props.defaultFilterState,
+        });
+      } else if (buttonId === 'apply') {
+        Navigation.pop(this.props.componentId);
       }
-      if (event.id === 'willDisappear') {
-        this.props.applyFilters(this.state.filters);
-      }
+    }
+
+    componentDidDisappear() {
+      // NOTE: this might apply on push as well as pop, but probably okay.
+      this.props.applyFilters(this.state.filters);
     }
 
     pushFilterView(screenName) {
       const {
-        navigator,
+        componentId,
         baseQuery,
         defaultFilterState,
       } = this.props;
-      navigator.push({
-        screen: screenName,
-        passProps: {
-          applyFilters: this._updateFilters,
-          currentFilters: this.state.filters,
-          defaultFilterState,
-          baseQuery,
+      Navigation.push(componentId, {
+        component: {
+          name: screenName,
+          passProps: {
+            applyFilters: this._updateFilters,
+            currentFilters: this.state.filters,
+            defaultFilterState,
+            baseQuery,
+          },
         },
       });
     }
