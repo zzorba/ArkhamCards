@@ -69,7 +69,49 @@ export default class App {
 
     const isIpad = Platform.OS === 'ios' && Platform.isPad;
 
-    const tabs = [{
+    const browseTab = isIpad ? {
+      splitView: {
+        id: 'BROWSE_TAB',
+        master: {
+          stack: {
+            id: 'BROWSE_TAB_FILTERS_VIEW',
+            children: [
+              {
+                component: {
+                  name: 'Settings',
+                },
+              },
+            ],
+          },
+        },
+        detail: {
+          stack: {
+            id: 'BROWSE_TAB_CARD_VIEW',
+            children: [{
+              component: {
+                name: 'Browse.Cards',
+                options: {
+                  topBar: {
+                    title: {
+                      text: L('Player Cards'),
+                    },
+                  },
+                },
+              },
+            }],
+          },
+        },
+        options: {
+          splitView: {
+            primaryEdge: 'trailing',
+          },
+          bottomTab: {
+            text: L('Cards'),
+            icon: iconsMap.cards,
+          },
+        },
+      },
+    } : {
       stack: {
         children: [{
           component: {
@@ -90,7 +132,8 @@ export default class App {
           },
         },
       },
-    }, {
+    };
+    const tabs = [browseTab, {
       stack: {
         children: [{
           component: {
@@ -155,42 +198,13 @@ export default class App {
       },
     }];
 
-    /*if (Platform.OS === 'ios' && Platform.isPad) {
-      Navigation.showModal({
-        splitView: {
-          id: 'SPLIT_DECK_EDIT',
-          master: {
-            stack: {
-              id: 'MASTER_ID',
-              children: [
-                {
-                  component: {
-                    name: 'Settings',
-                  },
-                },
-              ],
-            },
-          },
-          detail: {
-            bottomTabs: {
-              children: tabs,
-            },
-          },
-          options: {
-            displayMode: 'hidden',
-            primaryEdge: 'trailing',
-          },
+    Navigation.setRoot({
+      root: {
+        bottomTabs: {
+          children: tabs,
         },
-      });
-    } else {*/
-      Navigation.setRoot({
-        root: {
-          bottomTabs: {
-            children: tabs,
-          },
-        },
-      });
-    //}
+      },
+    });
     Linking.addEventListener('url', this._handleUrl);
 
     // We handle scrollapp and https (universal) links
