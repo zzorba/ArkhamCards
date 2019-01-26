@@ -328,7 +328,7 @@ class CardFilterView extends React.Component {
         encounters,
         illustrators,
         victory,
-        // vengeance,
+        vengeance,
         skillIcons,
         skillEnabled,
         level,
@@ -582,6 +582,12 @@ class CardFilterView extends React.Component {
               label={L('Victory')}
               setting="victory"
               value={victory}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={L('Vengeance')}
+              setting="vengeance"
+              value={vengeance}
               onChange={onToggleChange}
             />
           </View>

@@ -523,6 +523,11 @@ export default class TwoSidedCardComponent extends React.Component {
                   { L('Victory: {{points}}.', { points: card.victory }) }
                 </Text>
               }
+              { ('vengeance' in card && card.vengeance !== null) &&
+                <Text style={styles.typeText}>
+                  { L('Vengeance: {{points}}.', { points: card.vengeance }) }
+                </Text>
+              }
               { !!card.flavor && !flavorFirst &&
                 <FlavorTextComponent text={card.flavor} />
               }

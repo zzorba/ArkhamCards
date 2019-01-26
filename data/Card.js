@@ -356,6 +356,7 @@ Card.schema = {
     exceptional: 'bool?',
     xp: { type: 'int', optional: true, indexed: true },
     victory: 'int?',
+    vengeance: 'int?',
     renderName: 'string',
     renderSubname: 'string?',
     name: 'string',
