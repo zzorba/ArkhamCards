@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     width: '90%',
+    maxWidth: 400,
     borderRadius: Platform.OS === 'ios' ? 25 : 0,
     borderWidth: 1,
     borderColor: '#dedede',

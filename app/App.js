@@ -103,7 +103,9 @@ export default class App {
         },
         options: {
           splitView: {
+            displayMode: 'hidden',
             primaryEdge: 'trailing',
+            minWidth: 100,
           },
           bottomTab: {
             text: L('Cards'),

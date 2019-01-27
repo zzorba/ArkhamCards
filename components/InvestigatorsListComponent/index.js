@@ -19,7 +19,7 @@ import L from '../../app/i18n';
 import { searchMatchesText } from '../searchHelpers';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK } from '../CardSortDialog/constants';
-import ShowNonCollectionFooter from '../CardSearchComponent/ShowNonCollectionFooter';
+import ShowNonCollectionFooter from '../CardSearchResultsComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import * as Actions from '../../actions';
