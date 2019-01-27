@@ -44,7 +44,6 @@ class CardSearchComponent extends React.Component {
       visible: true,
     };
 
-    this._cardPressed = this.cardPressed.bind(this);
     this._toggleMythosMode = this.toggleMythosMode.bind(this);
     this._sortChanged = this.sortChanged.bind(this);
     this._setFilters = this.setFilters.bind(this);
@@ -96,10 +95,6 @@ class CardSearchComponent extends React.Component {
     this._navEventListener.remove();
   }
 
-  cardPressed() {
-    this.isOnTop = false;
-  }
-
   toggleSearchMode(mode) {
     this.setState({
       [mode]: !this.state[mode],
@@ -135,7 +130,6 @@ class CardSearchComponent extends React.Component {
       modal,
       baseQuery,
     } = this.props;
-    this.isOnTop = false;
     Navigation.push(componentId, {
       component: {
         name: 'SearchFilters',
@@ -161,7 +155,6 @@ class CardSearchComponent extends React.Component {
   }
 
   showSortDialog() {
-    this.isOnTop = false;
     Keyboard.dismiss();
     Navigation.showOverlay({
       component: {

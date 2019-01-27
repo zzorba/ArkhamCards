@@ -57,7 +57,6 @@ export default class CardSearchResultComponent extends React.Component {
 
     this._showHeader = this.showHeader.bind(this);
     this._hideHeader = this.hideHeader.bind(this);
-    this._cardPressed = this.cardPressed.bind(this);
     this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
     this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
     this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
@@ -83,10 +82,6 @@ export default class CardSearchResultComponent extends React.Component {
         headerVisible: false,
       });
     }
-  }
-
-  cardPressed() {
-    this.isOnTop = false;
   }
 
   toggleSearchMode(mode) {
@@ -308,7 +303,6 @@ export default class CardSearchResultComponent extends React.Component {
             deckCardCounts={deckCardCounts}
             onDeckCountChange={onDeckCountChange}
             limits={limits}
-            cardPressed={this._cardPressed}
             showHeader={this._showHeader}
             hideHeader={this._hideHeader}
             expandSearchControls={this.renderExpandSearchButtons()}
