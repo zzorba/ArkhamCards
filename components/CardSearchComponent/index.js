@@ -267,7 +267,7 @@ class CardSearchComponent extends React.Component {
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
-          text: mythosMode ? L('Player Cards') : L('Encounter Cards'),
+          text: mythosMode ? L('Encounter Cards') : L('Player Cards'),
         },
         rightButtons,
       },
