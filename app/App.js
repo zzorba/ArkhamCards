@@ -103,7 +103,7 @@ export default class App {
         },
         options: {
           splitView: {
-            displayMode: 'hidden',
+            displayMode: 'visible',
             primaryEdge: 'trailing',
             minWidth: 100,
           },
