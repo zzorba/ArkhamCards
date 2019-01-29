@@ -1,4 +1,4 @@
-import { forEach, filter, head, keys, map } from 'lodash';
+import { forEach, filter, head, keys, map, min } from 'lodash';
 
 import L from '../app/i18n';
 import CardRequirement from './CardRequirement';
@@ -80,8 +80,8 @@ export default class Card {
 
   static parseRestrictions(json) {
     const result = new CardRestrictions();
-    result.investigators = json.investigator;
-    result.investigator = head(json.investigator);
+    result.investigators = keys(json.investigator);
+    result.investigator = min(result.investigators);
     return result;
   }
 
@@ -298,7 +298,11 @@ export default class Card {
       json.name.substring(0, json.name.indexOf(' ')).replace(/"/g, '') :
       json.name;
 
-    const altArtInvestigator = json.code === '98001' || json.code === '98004';
+    const altArtInvestigator =
+      json.code === '98001' || // Jenny
+      json.code === '98004' || // Roland
+      json.code === '98010' || // Carolyn
+      json.code === '99001'; // PROMO Marie
 
     return Object.assign(
       {},
