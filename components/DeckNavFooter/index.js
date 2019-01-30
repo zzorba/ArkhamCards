@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { Navigation } from 'react-native-navigation';
 
@@ -16,6 +17,7 @@ import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
 import { DeckType } from '../parseDeck';
 import typography from '../../styles/typography';
+import { TINY_PHONE } from '../../styles/sizes';
 import DeckValidation from '../../lib/DeckValidation';
 import { FOOTER_HEIGHT } from './constants';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
@@ -28,6 +30,8 @@ export default class DeckNavFooter extends React.Component {
     componentId: PropTypes.string.isRequired,
     parsedDeck: DeckType,
     cards: PropTypes.object.isRequired,
+    xpAdjustment: PropTypes.number,
+    showXpEditDialog: PropTypes.func,
   };
 
   constructor(props) {
@@ -123,30 +127,70 @@ export default class DeckNavFooter extends React.Component {
     );
   }
 
-  render() {
+  xpString() {
     const {
       parsedDeck: {
         deck: {
           xp,
           previous_deck,
         },
-        investigator,
         spentXp,
         totalXp,
+      },
+      xpAdjustment,
+    } = this.props;
+    if (!previous_deck) {
+      return L('XP: {{totalXp}}', { totalXp });
+    }
+    const experience = (xp || 0) + (xpAdjustment || 0);
+    if (xpAdjustment !== 0) {
+      return L('XP: {{spentXp}} of {{availableExperience}} ({{adjustment}})', {
+        spentXp,
+        availableExperience: experience,
+        adjustment: xpAdjustment > 0 ? `+${xpAdjustment}` : xpAdjustment,
+      });
+    }
+    return L('XP: {{spentXp}} of {{availableExperience}}', {
+      spentXp,
+      availableExperience: experience,
+    });
+  }
+
+  render() {
+    const {
+      parsedDeck: {
+        investigator,
         normalCardCount,
         totalCardCount,
       },
+      showXpEditDialog,
     } = this.props;
+    const cardCountString =
+      L('{{normalCardCount}} Cards ({{totalCardCount}} Total)',
+        { normalCardCount, totalCardCount });
+    const xpString = this.xpString();
+
     return (
       <LinearGradient
         style={styles.wrapper}
         colors={FACTION_DARK_GRADIENTS[investigator.faction_code]}
       >
         <View style={styles.left}>
-          <Text style={[typography.text, styles.whiteText]}>
-            { `${normalCardCount} Cards (${totalCardCount} Total)` }
-            { previous_deck ? ` - XP: ${spentXp} of ${xp || 0}` : ` - XP: ${totalXp}` }
-          </Text>
+          <View style={styles.row}>
+            <Text style={[
+              TINY_PHONE ? typography.small : typography.text,
+              styles.whiteText,
+            ]}>
+              { `${cardCountString} - ${xpString}` }
+            </Text>
+            { !!showXpEditDialog && (
+              <TouchableOpacity onPress={showXpEditDialog}>
+                <View style={styles.button}>
+                  <MaterialIcons name="edit" size={TINY_PHONE ? 12 : 18} color="#FFFFFF" />
+                </View>
+              </TouchableOpacity>
+            ) }
+          </View>
           { this.renderProblem() }
         </View>
         <View style={styles.right}>
@@ -197,5 +241,10 @@ const styles = StyleSheet.create({
   },
   whiteText: {
     color: '#FFFFFF',
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });

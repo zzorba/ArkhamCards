@@ -149,14 +149,15 @@ class CampaignSubDeckDetail extends React.Component {
   }
 
   experienceLine(deck, parsedDeck) {
-    if (deck.xp > 0) {
+    const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
+    if (xp > 0) {
       if (parsedDeck.spentXp > 0) {
         return L('{{xpCount}} available ({{spentXp}} spent)', {
-          xpCount: deck.xp || 0,
+          xpCount: xp,
           spentXp: parsedDeck.spentXp,
         });
       }
-      return L('{{xpCount}} available', { xpCount: deck.xp || 0 });
+      return L('{{xpCount}} available', { xpCount: xp  });
     }
     return L('{{totalXp}} total', { totalXp: parsedDeck.totalXp || 0 });
   }

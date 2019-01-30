@@ -165,6 +165,7 @@ class CopyDeckDialog extends React.Component {
       deck.name,
       cloneDeck.slots,
       cloneDeck.problem || '',
+      0,
       0
     );
     handleAuthErrors(

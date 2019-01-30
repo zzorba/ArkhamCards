@@ -24,7 +24,7 @@ import { handleAuthErrors } from '../authHelper';
 import withTraumaDialog from '../campaign/withTraumaDialog';
 import { updateLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
-import withTextEditDialog from '../core/withTextEditDialog';
+import withDialogs from '../core/withDialogs';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
 import {
@@ -70,6 +70,7 @@ class DeckDetailView extends React.Component {
     replaceLocalDeck: PropTypes.func.isRequired,
     // From HOC
     showTextEditDialog: PropTypes.func.isRequired,
+    showCountEditDialog: PropTypes.func.isRequired,
     captureViewRef: PropTypes.func.isRequired,
     viewRef: PropTypes.object,
     showTraumaDialog: PropTypes.func.isRequired,
@@ -82,6 +83,7 @@ class DeckDetailView extends React.Component {
     this.state = {
       parsedDeck: null,
       slots: {},
+      xpAdjustment: 0,
       loaded: false,
       saving: false,
       saveError: null,
@@ -101,6 +103,8 @@ class DeckDetailView extends React.Component {
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
+    this._showXpEditDialog = this.showXpEditDialog.bind(this);
+    this._updateXp = this.updateXp.bind(this);
     this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
     this._showEditNameDialog = this.showEditNameDialog.bind(this);
@@ -344,8 +348,9 @@ class DeckDetailView extends React.Component {
   saveName(name) {
     const {
       slots,
+      xpAdjustment,
     } = this.state;
-    const pendingEdits = this.hasPendingEdits(name, slots);
+    const pendingEdits = this.hasPendingEdits(name, slots, xpAdjustment);
     this.setState({
       nameChange: name,
       hasPendingEdits: pendingEdits,
@@ -369,6 +374,7 @@ class DeckDetailView extends React.Component {
           previousDeck,
           slots: this.state.slots,
           updateSlots: this._updateSlots,
+          xpAdjustment: this.state.xpAdjustment,
         },
         options: {
           statusBar: {
@@ -503,6 +509,7 @@ class DeckDetailView extends React.Component {
       const {
         parsedDeck,
         nameChange,
+        xpAdjustment,
       } = this.state;
       const {
         slots,
@@ -517,7 +524,8 @@ class DeckDetailView extends React.Component {
           nameChange || deck.name,
           slots,
           problem,
-          parsedDeck.spentXp
+          parsedDeck.spentXp,
+          xpAdjustment
         );
         updateDeck(newDeck.id, newDeck, true);
         if (dismissAfterSave) {
@@ -538,7 +546,8 @@ class DeckDetailView extends React.Component {
           nameChange || deck.name,
           slots,
           problem,
-          parsedDeck.spentXp
+          parsedDeck.spentXp,
+          xpAdjustment,
         );
         handleAuthErrors(
           savePromise,
@@ -573,12 +582,13 @@ class DeckDetailView extends React.Component {
     } = this.props;
     this.setState({
       nameChange: null,
+      xpAdjustment: deck.xp_adjustment || 0,
     }, () => {
       this.updateSlots(deck.slots);
     });
   }
 
-  hasPendingEdits(nameChange, slots) {
+  hasPendingEdits(nameChange, slots, xpAdjustment) {
     const {
       deck,
     } = this.props;
@@ -599,8 +609,44 @@ class DeckDetailView extends React.Component {
     });
 
     return (nameChange && deck.name !== nameChange) ||
+      (deck.previous_deck && deck.xp_adjustment !== xpAdjustment) ||
       keys(removals).length > 0 ||
       keys(additions).length > 0;
+  }
+
+  showXpEditDialog() {
+    const {
+      deck: {
+        xp,
+      },
+      showCountEditDialog,
+    } = this.props;
+    const {
+      xpAdjustment,
+    } = this.state;
+
+    showCountEditDialog(
+      'Available XP',
+      (xp || 0) + (xpAdjustment || 0),
+      this._updateXp
+    );
+  }
+
+  updateXp(newXp) {
+    const {
+      deck: {
+        xp,
+      },
+    } = this.props;
+
+    const xpAdjustment = newXp - xp;
+    this.setState({
+      xpAdjustment,
+      hasPendingEdits: this.hasPendingEdits(
+        this.state.nameChange,
+        this.state.slots,
+        xpAdjustment),
+    });
   }
 
   updateSlots(newSlots) {
@@ -613,7 +659,10 @@ class DeckDetailView extends React.Component {
     this.setState({
       slots: newSlots,
       parsedDeck,
-      hasPendingEdits: this.hasPendingEdits(this.state.nameChange, newSlots),
+      hasPendingEdits: this.hasPendingEdits(
+        this.state.nameChange,
+        newSlots,
+        this.state.xpAdjustment),
     }, this._syncNavigationButtons);
   }
 
@@ -629,6 +678,7 @@ class DeckDetailView extends React.Component {
       const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
       this.setState({
         slots: deck.slots,
+        xpAdjustment: deck.xp_adjustment || 0,
         parsedDeck,
         hasPendingEdits: false,
         loaded: true,
@@ -793,6 +843,7 @@ class DeckDetailView extends React.Component {
       parsedDeck,
       nameChange,
       hasPendingEdits,
+      xpAdjustment,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -832,6 +883,8 @@ class DeckDetailView extends React.Component {
             componentId={componentId}
             parsedDeck={parsedDeck}
             cards={cards}
+            xpAdjustment={xpAdjustment}
+            showXpEditDialog={deck.previous_deck ? this._showXpEditDialog : null}
           />
         </View>
         { this.renderSavingDialog() }
@@ -868,7 +921,7 @@ function mapDispatchToProps(dispatch) {
 export default withPlayerCards(
   connect(mapStateToProps, mapDispatchToProps)(
     withTraumaDialog(
-      withTextEditDialog(
+      withDialogs(
         withLoginState(DeckDetailView)
       )
     )

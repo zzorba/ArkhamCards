@@ -1,8 +1,10 @@
 import {
   DeviceInfo,
+  Dimensions,
   Platform,
 } from 'react-native';
 
+export const TINY_PHONE = (Platform.OS === 'ios' && Dimensions.get('window').width < 375);
 export const CARD_RATIO = 7.0 / 5.0;
 
 export const NOTCH_BOTTOM_PADDING = DeviceInfo.isIPhoneX_deprecated ? 20 : 0;

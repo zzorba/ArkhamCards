@@ -1,4 +1,4 @@
-import { forEach, filter, head, keys, map, min } from 'lodash';
+import { forEach, filter, keys, map, min } from 'lodash';
 
 import L from '../app/i18n';
 import CardRequirement from './CardRequirement';

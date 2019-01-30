@@ -15,7 +15,7 @@ import { connectRealm } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 
 import L from '../../app/i18n';
-import withTextEditDialog from '../core/withTextEditDialog';
+import withDialogs from '../core/withDialogs';
 import { clearDecks } from '../../actions';
 import { getCampaigns } from '../../reducers';
 import { fetchCards } from '../cards/actions';
@@ -189,7 +189,7 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default withTextEditDialog(
+export default withDialogs(
   connectRealm(
     connect(mapStateToProps, mapDispatchToProps)(DiagnosticsView),
     {

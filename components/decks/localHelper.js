@@ -15,7 +15,7 @@ export function newLocalDeck(id, name, investigator_code, slots) {
   };
 }
 
-export function updateLocalDeck(deck, name, slots, problem, spentXp) {
+export function updateLocalDeck(deck, name, slots, problem, spentXp, xp_adjustment) {
   const versionParts = (deck.version || '0.1').split('.');
   versionParts[1]++;
   const timestamp = (new Date()).toISOString();
@@ -28,6 +28,7 @@ export function updateLocalDeck(deck, name, slots, problem, spentXp) {
       slots,
       problem,
       spentXp,
+      xp_adjustment: xp_adjustment || 0,
       version: versionParts.join('.'),
     },
   );
@@ -56,7 +57,8 @@ export function upgradeLocalDeck(id, deck, xp, exiles) {
         date_creation: timestamp,
         date_update: timestamp,
         problem: exiles.length ? 'too_few_cards' : deck.problem,
-        xp: xp + (deck.xp || 0) - (deck.spentXp || 0),
+        xp: xp + (deck.xp || 0) + (deck.xp_adjustment || 0) - (deck.spentXp || 0),
+        xp_adjustment: 0,
         spentXp: 0,
         version: versionParts.join('.'),
         previous_deck: deck.id,

@@ -12,7 +12,7 @@ import { Navigation } from 'react-native-navigation';
 import L from '../../app/i18n';
 import WeaknessSetPackChooserComponent from './WeaknessSetPackChooserComponent';
 import Button from '../core/Button';
-import withTextEditDialog from '../core/withTextEditDialog';
+import withDialogs from '../core/withDialogs';
 import LabeledTextBox from '../core/LabeledTextBox';
 import * as Actions from '../../actions';
 import { getNextWeaknessId } from '../../reducers';
@@ -138,7 +138,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withTextEditDialog(NewWeaknessSetDialog));
+  withDialogs(NewWeaknessSetDialog));
 
 const styles = StyleSheet.create({
   container: {

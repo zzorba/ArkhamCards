@@ -13,6 +13,7 @@ class DeckEditView extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     investigator: PropTypes.object,
+    xpAdjustment: PropTypes.number,
     /* eslint-disable react/no-unused-prop-types */
     deck: PropTypes.object.isRequired,
     previousDeck: PropTypes.object,
@@ -69,6 +70,7 @@ class DeckEditView extends React.Component {
       deck,
       previousDeck,
       cards,
+      xpAdjustment,
     } = this.props;
     const {
       deckCardCounts,
@@ -86,6 +88,7 @@ class DeckEditView extends React.Component {
         componentId={componentId}
         parsedDeck={pDeck}
         cards={cardsInDeck}
+        xpAdjustment={xpAdjustment}
       />
     );
   }

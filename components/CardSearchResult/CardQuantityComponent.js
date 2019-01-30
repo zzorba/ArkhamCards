@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Animated,
-  Dimensions,
   Easing,
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -16,6 +14,7 @@ import PlusMinusButtons from '../core/PlusMinusButtons';
 import CountButton from './CountButton';
 import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING } from './constants';
 import typography from '../../styles/typography';
+import { TINY_PHONE } from '../../styles/sizes';
 
 /**
  * Simple sliding card count.
@@ -30,12 +29,7 @@ export default class CardQuantityComponent extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const tinyScreen = (Platform.OS === 'ios' &&
-      Dimensions.get('window').width < 375
-    );
-
     this.state = {
-      tinyScreen,
       open: false,
       count: props.count,
       slideAnim: new Animated.Value(0),
@@ -148,7 +142,7 @@ export default class CardQuantityComponent extends React.PureComponent {
   }
 
   render() {
-    if (this.state.tinyScreen) {
+    if (TINY_PHONE) {
       return this.renderTiny();
     }
 

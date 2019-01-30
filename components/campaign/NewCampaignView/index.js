@@ -26,7 +26,7 @@ import {
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
-import withTextEditDialog from '../../core/withTextEditDialog';
+import withDialogs from '../../core/withDialogs';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
@@ -591,7 +591,7 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   withWeaknessCards(
-    withTextEditDialog(NewCampaignView)
+    withDialogs(NewCampaignView)
   )
 );
 

@@ -23,7 +23,7 @@ import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import { campaignToText } from '../campaignUtil';
 import withTraumaDialog from '../withTraumaDialog';
 import withPlayerCards from '../../withPlayerCards';
-import withTextEditDialog from '../../core/withTextEditDialog';
+import withDialogs from '../../core/withDialogs';
 import { iconsMap } from '../../../app/NavIcons';
 import { updateCampaign, deleteCampaign } from '../actions';
 import { getCampaign, getAllPacks, getAllDecks, getLatestDeckIds } from '../../../reducers';
@@ -307,7 +307,7 @@ function mapDispatchToProps(dispatch) {
 export default withPlayerCards(
   connect(mapStateToProps, mapDispatchToProps)(
     withTraumaDialog(
-      withTextEditDialog(CampaignDetailView)
+      withDialogs(CampaignDetailView)
     )
   )
 );

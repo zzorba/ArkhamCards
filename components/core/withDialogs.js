@@ -4,27 +4,33 @@ import {
   View,
 } from 'react-native';
 
+import CountEditDialog from './CountEditDialog';
 import TextEditDialog from './TextEditDialog';
 
-export default function withTextEditDialog(WrappedComponent) {
-  class TextEditDialogComponent extends React.Component {
+export default function withDialogs(WrappedComponent) {
+  class ComponentWithDialogs extends React.Component {
     constructor(props) {
       super(props);
 
       this.state = {
         baseViewRef: null,
         viewRef: null,
-        visible: false,
+        textVisible: false,
         title: '',
         text: '',
         onTextChange: null,
         showCrossOut: false,
+        countVisible: false,
+        count: null,
+        onCountChange: null,
       };
 
       this._captureViewRef = this.captureViewRef.bind(this);
       this._captureBaseViewRef = this.captureBaseViewRef.bind(this);
-      this._showDialog = this.showDialog.bind(this);
-      this._hideDialog = this.hideDialog.bind(this);
+      this._showTextDialog = this.showTextDialog.bind(this);
+      this._hideTextDialog = this.hideTextDialog.bind(this);
+      this._showCountDialog = this.showCountDialog.bind(this);
+      this._hideCountDialog = this.hideCountDialog.bind(this);
     }
 
     captureBaseViewRef(ref) {
@@ -39,9 +45,9 @@ export default function withTextEditDialog(WrappedComponent) {
       });
     }
 
-    showDialog(title, text, onTextChange, showCrossOut, numberOfLines) {
+    showTextDialog(title, text, onTextChange, showCrossOut, numberOfLines) {
       this.setState({
-        visible: true,
+        textVisible: true,
         title,
         text,
         onTextChange,
@@ -50,15 +56,15 @@ export default function withTextEditDialog(WrappedComponent) {
       });
     }
 
-    hideDialog() {
+    hideTextDialog() {
       this.setState({
-        visible: false,
+        textVisible: false,
       });
     }
 
-    renderDialog() {
+    renderTextDialog() {
       const {
-        visible,
+        textVisible,
         title,
         text,
         onTextChange,
@@ -71,14 +77,52 @@ export default function withTextEditDialog(WrappedComponent) {
       }
       return (
         <TextEditDialog
-          visible={visible}
+          visible={textVisible}
           viewRef={baseViewRef}
           title={title}
           text={text}
           onTextChange={onTextChange}
-          toggleVisible={this._hideDialog}
+          toggleVisible={this._hideTextDialog}
           showCrossOut={showCrossOut}
           numberOfLines={numberOfLines}
+        />
+      );
+    }
+
+    showCountDialog(title, count, onCountChange) {
+      this.setState({
+        countVisible: true,
+        title,
+        count,
+        onCountChange,
+      });
+    }
+
+    hideCountDialog() {
+      this.setState({
+        countVisible: false,
+      });
+    }
+
+    renderCountDialog() {
+      const {
+        countVisible,
+        title,
+        count,
+        onCountChange,
+        baseViewRef,
+      } = this.state;
+      if (!baseViewRef) {
+        return null;
+      }
+      return (
+        <CountEditDialog
+          visible={countVisible}
+          viewRef={baseViewRef}
+          title={title}
+          count={count}
+          onCountChange={onCountChange}
+          toggleVisible={this._hideCountDialog}
         />
       );
     }
@@ -90,17 +134,19 @@ export default function withTextEditDialog(WrappedComponent) {
             <WrappedComponent
               captureViewRef={this._captureViewRef}
               viewRef={this.state.viewRef}
-              showTextEditDialog={this._showDialog}
+              showTextEditDialog={this._showTextDialog}
+              showCountEditDialog={this._showCountDialog}
               {...this.props}
             />
           </View>
-          { this.renderDialog() }
+          { this.renderTextDialog() }
+          { this.renderCountDialog() }
         </View>
       );
     }
   }
 
-  return TextEditDialogComponent;
+  return ComponentWithDialogs;
 }
 
 const styles = StyleSheet.create({

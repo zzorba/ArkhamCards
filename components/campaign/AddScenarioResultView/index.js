@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
-import withTextEditDialog from '../../core/withTextEditDialog';
+import withDialogs from '../../core/withDialogs';
 import ScenarioSection from './ScenarioSection';
 import XpComponent from '../XpComponent';
 import * as Actions from '../../../actions';
@@ -167,7 +167,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withTextEditDialog(AddScenarioResultView)
+  withDialogs(AddScenarioResultView)
 );
 const styles = StyleSheet.create({
   container: {
