@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CoreSetIcon from './CoreSetIcon';
+import CircleIcon from './CircleIcon';
 import DunwichIcon from './DunwichIcon';
 import CarcosaIcon from './CarcosaIcon';
 import ForgottenIcon from './ForgottenIcon';
@@ -28,6 +29,10 @@ export default class EncounterIcon extends React.PureComponent {
 
   forgottenIcon(name, size, color) {
     return (<ForgottenIcon name={name} size={size} color={color} />);
+  }
+
+  circleIcon(name, size, color) {
+    return (<CircleIcon name={name} size={size} color={color} />);
   }
 
   standaloneIcon(name, size, color) {
@@ -234,6 +239,23 @@ export default class EncounterIcon extends React.PureComponent {
       case 'knyan':
       case 'poison':
         return this.forgottenIcon(encounter_code, size, color);
+      case 'tcu':
+        return this.circleIcon('the_circle_undone', size, color);
+      case 'the_circle_undone':
+      case 'agents_of_azathoth':
+      case 'anettes_coven':
+      case 'at_deaths_doorstep':
+      case 'city_of_sin':
+      case 'disappearance_at_the_twilight_estate':
+      case 'inexorable_fate':
+      case 'realm_of_death':
+      case 'silver_twilight_lodge':
+      case 'spectral_predators':
+      case 'the_watcher':
+      case 'the_witching_hour':
+      case 'trapped_spirits':
+      case 'witchcraft':
+        return this.circleIcon(encounter_code, size, color);
       default:
         return this.coreIcon('core', size, color);
     }

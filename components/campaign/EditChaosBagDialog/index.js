@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys, map, throttle } from 'lodash';
+import { keys, map, sortBy, throttle } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -11,7 +11,7 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import ChaosTokenRow from './ChaosTokenRow';
-import { CHAOS_BAG_TOKEN_COUNTS } from '../../../constants';
+import { CHAOS_BAG_TOKEN_COUNTS, CHAOS_TOKEN_ORDER } from '../../../constants';
 import typography from '../../../styles/typography';
 
 export default class EditChaosBagDialog extends React.Component {
@@ -81,19 +81,20 @@ export default class EditChaosBagDialog extends React.Component {
         <View style={styles.row}>
           <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
         </View>
-        { map(keys(CHAOS_BAG_TOKEN_COUNTS), id => {
-          const originalCount = trackDeltas ? ogChaosBag[id] : chaosBag[id];
-          return (
-            <ChaosTokenRow
-              key={id}
-              id={id}
-              originalCount={originalCount || 0}
-              count={chaosBag[id] || 0}
-              limit={CHAOS_BAG_TOKEN_COUNTS[id]}
-              onCountChange={this._onCountChange}
-            />
-          );
-        }) }
+        { map(sortBy(keys(CHAOS_BAG_TOKEN_COUNTS), x => CHAOS_TOKEN_ORDER[x]),
+          id => {
+            const originalCount = trackDeltas ? ogChaosBag[id] : chaosBag[id];
+            return (
+              <ChaosTokenRow
+                key={id}
+                id={id}
+                originalCount={originalCount || 0}
+                count={chaosBag[id] || 0}
+                limit={CHAOS_BAG_TOKEN_COUNTS[id]}
+                onCountChange={this._onCountChange}
+              />
+            );
+          }) }
       </ScrollView>
     );
   }

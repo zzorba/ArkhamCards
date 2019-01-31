@@ -39,7 +39,10 @@ export default class DialogOption extends React.Component {
     return (
       <View style={styles.item}>
         <TouchableOpacity onPress={this._onPress}>
-          <Text style={styles.itemText}>
+          <Text
+            style={[styles.itemText, { fontSize: text.length > 30 ? 14 : 22 }]}
+            numberOfLines={2}
+          >
             { `${noCapitalize ? text : capitalize(text)}${selected ? ' ✓' : ''}` }
           </Text>
         </TouchableOpacity>

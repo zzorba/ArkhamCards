@@ -19,6 +19,18 @@ export function difficultyStrings() {
   };
 }
 
+export function campaigns() {
+  return {
+    core: L('Night of the Zealot'),
+    rtnotz: L('Return to the Night of the Zealot'),
+    dwl: L('The Dunwich Legacy'),
+    rtdwl: L('Return to The Dunwich Legacy'),
+    ptc: L('The Path To Carcosa'),
+    tfa: L('The Forgotten Age'),
+    tcu: L('The Circle Undone'),
+  };
+}
+
 export function campaignScenarios() {
   return {
     core: [
@@ -37,6 +49,19 @@ export function campaignScenarios() {
       { name: L('Undimensioned and Unseen'), code: 'undimensioned_and_unseen', pack_code: 'uau' },
       { name: L('Where Doom Awaits'), code: 'where_doom_awaits', pack_code: 'wda' },
       { name: L('Lost in Time and Space'), code: 'lost_in_time_and_space', pack_code: 'litas' },
+      { name: L('Epilogue'), code: 'dwl_epilogue', interlude: true },
+    ],
+    rtdwl: [
+      { name: L('Return to Extracurricular Activity'), code: 'return_to_extracurricular_activity', pack_code: 'rtdwl' },
+      { name: L('Return to The House Always Wins'), code: 'return_to_the_house_always_wins', pack_code: 'rtdwl' },
+      { name: L('Armitage’s Fate'), code: 'armitages_fate', interlude: true },
+      { name: L('Return to The Miskatonic Museum'), code: 'return_to_the_miskatonic_museum', pack_code: 'rtdwl' },
+      { name: L('Return to Essex County Express'), code: 'return_to_essex_county_express', pack_code: 'rtdwl' },
+      { name: L('Return to Blood on the Altar'), code: 'return_to_blood_on_the_altar', pack_code: 'rtdwl' },
+      { name: L('The Survivors'), code: 'dwl_interlude2', interlude: true },
+      { name: L('Return to Undimensioned and Unseen'), code: 'return_to_undimensioned_and_unseen', pack_code: 'rtdwl' },
+      { name: L('Return to Where Doom Awaits'), code: 'return_to_where_doom_awaits', pack_code: 'rtdwl' },
+      { name: L('Return to Lost in Time and Space'), code: 'return_to_lost_in_time_and_space', pack_code: 'rtdwl' },
       { name: L('Epilogue'), code: 'dwl_epilogue', interlude: true },
     ],
     ptc: [
@@ -70,6 +95,23 @@ export function campaignScenarios() {
       { name: L('Shattered Aeons'), code: 'shattered_aeons', pack_code: 'sha' },
       { name: L('Epilogue'), code: 'tfa_epilogue', interlude: true },
     ],
+    tcu: [
+      { name: L('Prologue: Disappearance at the Twilight Estate'), code: 'tcu_prologue', pack_code: 'tcu' },
+      { name: L('The Witching Hour'), code: 'the_witching_hour', pack_code: 'tcu' },
+      { name: L('At Death\'s Doorstep (Act 1)'), code: 'at_deaths_doorstep_1', pack_code: 'tcu' },
+      { name: L('A Record of Those Lost'), code: 'tcu_interlude_1', interlude: true },
+      { name: L('At Death\'s Doorstep (Acts 2-3)'), code: 'at_deaths_doorstep_23', pack_code: 'tcu' },
+      { name: L('The Price of Progress'), code: 'tcu_interlude_2', interlude: true },
+      { name: L('The Secret Name'), code: 'the_secret_name', pack_code: 'tsn' },
+      { name: L('The Wages of Sin'), code: 'the_wages_of_sin', pack_code: 'tws' },
+      { name: L('For the Greater Good'), code: 'for_the_greater_good', pack_code: 'fgg' },
+      { name: L('The Inner Circle'), code: 'tcu_interlude_3', interlude: true },
+      { name: L('Union and Disillusion'), code: 'union_and_disillusion', pack_code: 'uad' },
+      { name: L('In the Clutches of Chaos'), code: 'in_the_clutches_of_chaos', pack_code: 'icc' },
+      { name: L('Twist of Fate'), code: 'tcu_interlude_4', interlude: true },
+      { name: L('Before the Black Throne'), code: 'before_the_black_throne', pack_code: 'bbt' },
+      { name: L('Epilogue'), code: 'tcu_epilogue', interlude: true },
+    ],
     rtnotz: [
       { name: L('Return to The Gathering'), code: 'return_to_the_gathering', pack_code: 'rtnotz' },
       { name: L('Return to the Midnight Masks'), code: 'return_to_the_midnight_masks', pack_code: 'rtnotz' },
@@ -85,6 +127,7 @@ export function campaignNames() {
     dwl: L('The Dunwich Legacy'),
     ptc: L('The Path to Carcosa'),
     tfa: L('The Forgotten Age'),
+    tcu: L('The Circle Undone'),
   };
 }
 
@@ -92,30 +135,57 @@ export const CAMPAIGN_COLORS = {
   core: '#00408033',
   rtnotz: '#00006622',
   dwl: '#00666633',
+  rtdwl: '#00006622',
   ptc: '#cc990033',
   tfa: '#33660033',
+  tcu: '#00006622',
 };
 
 export function campaignLogs() {
   const coreLog = {
-    sections: [L('Campaign Notes'), L('Cultists We Interrogated'), L('Cultists Who Got Away')],
+    sections: [
+      L('Campaign Notes'),
+      L('Cultists We Interrogated'),
+      L('Cultists Who Got Away'),
+    ],
   };
 
   return {
     'core': coreLog,
     'rtnotz': coreLog,
     'dwl': {
-      sections: [L('Campaign Notes'), L('Sacrificed to Yog-Sothoth')],
+      sections: [
+        L('Campaign Notes'),
+        L('Sacrificed to Yog-Sothoth'),
+      ],
     },
     'ptc': {
-      sections: [L('Campaign Notes'), L('VIPs Interviewed'), L('VIPs Slain')],
-      counts: [L('Doubt'), L('Conviction'), L('Chasing the Stranger')],
+      sections: [
+        L('Campaign Notes'),
+        L('VIPs Interviewed'),
+        L('VIPs Slain'),
+      ],
+      counts: [
+        L('Doubt'),
+        L('Conviction'),
+        L('Chasing the Stranger'),
+      ],
     },
     'tfa': {
       sections: [L('Campaign Notes')],
       counts: [L('Yig\'s Fury')],
       investigatorSections: [L('Supplies')],
       // investigatorCounts
+    },
+    'tcu': {
+      sections: [
+        L('Campaign Notes'),
+        L('Mementos Discovered'),
+        L('Missing Persons - Gavriella Mizrah'),
+        L('Missing Persons - Jerome Davids'),
+        L('Missing Persons - Penny White'),
+        L('Missing Persons - Valentino Rivas'),
+      ],
     },
   };
 }
@@ -128,15 +198,18 @@ const NOTZ_BAG = [
   { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 ];
 
+const DWL_BAG = [
+  { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+];
+
 export const CAMPAIGN_CHAOS_BAGS = {
   'core': NOTZ_BAG,
   'rtnotz': NOTZ_BAG,
-  'dwl': [
-    { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-    { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-    { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  ],
+  'dwl': DWL_BAG,
+  'rtdwl': DWL_BAG,
   'ptc': [
     { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, auto_fail: 1, elder_sign: 1 },
     { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
@@ -148,5 +221,11 @@ export const CAMPAIGN_CHAOS_BAGS = {
     { '+1': 1, '0': 3, '-1': 1, '-2': 2, '-3': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
     { '+1': 1, '0': 2, '-1': 1, '-2': 1, '-3': 2, '-4': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
     { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-6': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  ],
+  'tcu': [
+    { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+    { '+1': 1, '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+    { '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+    { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-6': 1, '-8': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
   ],
 };

@@ -157,7 +157,7 @@ class CampaignSubDeckDetail extends React.Component {
           spentXp: parsedDeck.spentXp,
         });
       }
-      return L('{{xpCount}} available', { xpCount: xp  });
+      return L('{{xpCount}} available', { xpCount: xp });
     }
     return L('{{totalXp}} total', { totalXp: parsedDeck.totalXp || 0 });
   }

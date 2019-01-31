@@ -14,16 +14,8 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CycleItem from './CycleItem';
-import { CUSTOM } from '../constants';
+import { CUSTOM, campaigns } from '../constants';
 import { getPacksInCollection } from '../../../reducers';
-
-const CAMPAIGNS = {
-  core: 'Night of the Zealot',
-  rtnotz: 'Return to the Night of the Zealot',
-  dwl: 'The Dunwich Legacy',
-  ptc: 'The Path To Carcosa',
-  tfa: 'The Forgotten Age',
-};
 
 class SelectCampaignDialog extends React.Component {
   static propTypes = {
@@ -68,12 +60,13 @@ class SelectCampaignDialog extends React.Component {
   }
 
   renderCampaign(packCode) {
+    const allCampaigns = campaigns();
     return (
       <CycleItem
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}
-        text={packCode === CUSTOM ? L('Custom') : CAMPAIGNS[packCode]}
+        text={packCode === CUSTOM ? L('Custom') : allCampaigns[packCode]}
       />
     );
   }
@@ -82,9 +75,9 @@ class SelectCampaignDialog extends React.Component {
     const {
       in_collection,
     } = this.props;
-
+    const allCampaigns = campaigns();
     const partitionedCampaigns = partition(
-      keys(CAMPAIGNS),
+      keys(allCampaigns),
       pack_code => in_collection[pack_code]);
     const myCampaigns = partitionedCampaigns[0];
     const otherCampaigns = partitionedCampaigns[1];
