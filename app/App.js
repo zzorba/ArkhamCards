@@ -69,7 +69,7 @@ export default class App {
 
     const isIpad = Platform.OS === 'ios' && Platform.isPad;
 
-    const browseTab = isIpad ? {
+    const browseTab = /*isIpad ? {
       splitView: {
         id: 'BROWSE_TAB',
         master: {
@@ -113,7 +113,7 @@ export default class App {
           },
         },
       },
-    } : {
+    } :*/ {
       stack: {
         children: [{
           component: {
