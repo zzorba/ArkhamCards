@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   ScrollView,
+  StyleSheet,
   View,
 } from 'react-native';
 
@@ -38,6 +39,7 @@ class CardLocationFilterView extends React.Component {
         clues,
         cluesEnabled,
         cluesFixed,
+        hauntedEnabled,
       },
       width,
       onToggleChange,
@@ -77,9 +79,32 @@ class CardLocationFilterView extends React.Component {
             />
           </View>
         </SliderChooser>
+        <View style={styles.toggleRow}>
+          <View style={styles.toggleColumn}>
+            <ToggleFilter
+              label={L('Haunted')}
+              setting="hauntedEnabled"
+              value={hauntedEnabled}
+              onChange={onToggleChange}
+            />
+          </View>
+        </View>
       </ScrollView>
     );
   }
 }
 
 export default withFilterFunctions(CardLocationFilterView);
+
+const styles = StyleSheet.create({
+  toggleColumn: {
+    width: '50%',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+  toggleRow: {
+    marginTop: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+});

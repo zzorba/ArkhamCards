@@ -34,6 +34,7 @@ const defaultFilterState = {
   shroudEnabled: false,
   cluesEnabled: false,
   cluesFixed: false,
+  hauntedEnabled: false,
   enemyKeywordsEnabled: false,
   enemyHealthEnabled: false,
   enemyHealthPerInvestigator: false,
