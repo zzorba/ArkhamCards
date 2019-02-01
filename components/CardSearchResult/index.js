@@ -157,14 +157,14 @@ export default class CardSearchResult extends React.PureComponent {
         <View style={styles.skillIcon}>
           <ArkhamIcon
             name={card.faction_code}
-            size={16}
+            size={15}
             color={FACTION_COLORS[card.faction_code]}
           />
         </View>
         <View style={styles.skillIcon}>
           <ArkhamIcon
             name={card.faction2_code}
-            size={16}
+            size={15}
             color={FACTION_COLORS[card.faction2_code]}
           />
         </View>
@@ -208,7 +208,6 @@ export default class CardSearchResult extends React.PureComponent {
           <Text style={[typography.text, { color }]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
           </Text>
-          { this.renderDualFactionIcons() }
         </View>
         <View style={styles.row}>
           { this.renderSkillIcons() }
@@ -217,6 +216,7 @@ export default class CardSearchResult extends React.PureComponent {
               { card.renderSubname }
             </Text>
           ) }
+          { this.renderDualFactionIcons() }
         </View>
       </View>
     );
@@ -358,7 +358,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   dualFactionIcons: {
-    marginLeft: 16,
+    marginLeft: 8,
     flexDirection: 'row',
   },
   skillIcon: {
