@@ -11,7 +11,8 @@ export default class DeckOption {
       }
       query += ' (';
       query +=
-        map(this.faction, faction => ` faction_code == '${faction}'`)
+        map(this.faction, faction =>
+          ` faction_code == '${faction}' OR faction2_code == '${faction}'`)
           .join(' OR');
       query += ' )';
 

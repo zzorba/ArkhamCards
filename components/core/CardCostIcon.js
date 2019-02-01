@@ -38,6 +38,9 @@ export default class CardCostIcon extends React.Component {
   }
 
   static factionIcon(card) {
+    if (card.faction2_code) {
+      return 'elder_sign';
+    }
     if (card.faction_code === 'neutral') {
       if (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness') {
         return 'weakness';
@@ -47,12 +50,22 @@ export default class CardCostIcon extends React.Component {
     return card.faction_code;
   }
 
+  color() {
+    const {
+      card,
+    } = this.props;
+    if (card.faction2_code) {
+      return FACTION_COLORS.dual;
+    }
+    return FACTION_COLORS[card.faction_code];
+  }
+
   render() {
     const {
       card,
       inverted,
     } = this.props;
-    const color = FACTION_COLORS[card.faction_code];
+    const color = this.color();
     return (
       <View style={styles.level}>
         <View style={styles.levelIcon}>

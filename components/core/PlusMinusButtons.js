@@ -43,12 +43,25 @@ export default class PlusMinusButtons extends React.PureComponent {
     onChange(count - 1);
   }
 
+  disabledColor() {
+    const {
+      dark,
+    } = this.props;
+    return dark ? '#888' : '#ddd';
+  }
+
+  enabledColor() {
+    const {
+      dark,
+    } = this.props;
+    return dark ? '#000' : '#888';
+  }
+
   renderPlusButton() {
     const {
       count,
       limit,
       size = 36,
-      dark,
       disabled,
       noFill,
     } = this.props;
@@ -59,7 +72,7 @@ export default class PlusMinusButtons extends React.PureComponent {
           <MaterialCommunityIcons
             name="plus-box-outline"
             size={size}
-            color={dark ? '#888' : '#ddd'}
+            color={this.disabledColor()}
           />
         </TouchableOpacity>
       );
@@ -69,7 +82,7 @@ export default class PlusMinusButtons extends React.PureComponent {
         <MaterialCommunityIcons
           name={noFill ? 'plus-box-outline' : 'plus-box'}
           size={size}
-          color={dark ? '#000' : '#888'}
+          color={this.enabledColor()}
         />
       </TouchableOpacity>
     );
@@ -79,7 +92,6 @@ export default class PlusMinusButtons extends React.PureComponent {
     const {
       count,
       size = 36,
-      dark,
       disabled,
       noFill,
     } = this.props;
@@ -89,7 +101,7 @@ export default class PlusMinusButtons extends React.PureComponent {
           <MaterialCommunityIcons
             name={noFill ? 'minus-box-outline' : 'minus-box'}
             size={size}
-            color={dark ? '#000' : '#888'}
+            color={this.enabledColor()}
           />
         </TouchableOpacity>
       );
@@ -99,7 +111,7 @@ export default class PlusMinusButtons extends React.PureComponent {
         <MaterialCommunityIcons
           name="minus-box-outline"
           size={size}
-          color={dark ? '#888' : '#ddd'}
+          color={this.disabledColor()}
         />
       </TouchableOpacity>
     );

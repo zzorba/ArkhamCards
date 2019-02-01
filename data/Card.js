@@ -96,6 +96,25 @@ export default class Card {
     'Mythos',
   ];
 
+  static factionCodeToName(code, defaultName, options) {
+    switch(code) {
+      case 'guardian':
+        return L('Guardian', options);
+      case 'rogue':
+        return L('Rogue', options);
+      case 'mystic':
+        return L('Mystic', options);
+      case 'seeker':
+        return L('Seeker', options);
+      case 'survivor':
+        return L('Survivor', options);
+      case 'neutral':
+        return L('Neutral', options);
+      default:
+        return defaultName;
+    }
+  }
+
   static factionSortHeader(json, lang) {
     const options = lang ? { locale: lang } : {};
     if (json.spoiler) {
@@ -106,22 +125,14 @@ export default class Card {
       case 'weakness':
         return L('Weakness', options);
       default: {
-        switch(json.faction_code) {
-          case 'guardian':
-            return L('Guardian', options);
-          case 'rogue':
-            return L('Rogue', options);
-          case 'mystic':
-            return L('Mystic', options);
-          case 'seeker':
-            return L('Seeker', options);
-          case 'survivor':
-            return L('Survivor', options);
-          case 'neutral':
-            return L('Neutral', options);
-          default:
-            return json.faction_name;
+        if (json.faction2_code) {
+          return L('{{faction1}} / {{faction2}}', {
+            locale: lang,
+            faction1: Card.factionCodeToName(json.faction_code, json.faction_name, options),
+            faction2: Card.factionCodeToName(json.faction2_code, json.faction2_name, options),
+          });
         }
+        return Card.factionCodeToName(json.faction_code, json.faction_name, options);
       }
     }
   }
@@ -350,6 +361,8 @@ Card.schema = {
     slot: 'string?',
     faction_code: { type: 'string', optional: true, indexed: true },
     faction_name: 'string?',
+    faction2_code: { type: 'string', optional: true, indexed: true },
+    faction2_name: 'string?',
     position: 'int',
     enemy_damage: 'int?',
     enemy_horror: 'int?',

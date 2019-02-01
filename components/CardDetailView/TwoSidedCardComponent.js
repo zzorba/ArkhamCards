@@ -288,6 +288,21 @@ export default class TwoSidedCardComponent extends React.Component {
 
     if (card.type_code !== 'scenario' && card.type_code !== 'location' &&
       card.type_code !== 'act' && card.type_code !== 'agenda') {
+      if (card.faction2_code) {
+        return (
+          <React.Fragment>
+            <View style={styles.factionIcon}>
+              { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
+                <ArkhamIcon name={card.faction_code} size={28} color="#FFF" /> }
+            </View>
+            <View style={styles.factionIcon}>
+              { !!card.faction2_code &&
+                (CORE_FACTION_CODES.indexOf(card.faction2_code) !== -1) &&
+                <ArkhamIcon name={card.faction2_code} size={28} color="#FFF" /> }
+            </View>
+          </React.Fragment>
+        );
+      }
       return (
         <View style={styles.factionIcon}>
           { (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
@@ -298,13 +313,9 @@ export default class TwoSidedCardComponent extends React.Component {
     return null;
   }
 
-  renderTitle(card, name, subname) {
-    const factionColor = card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code];
+  renderTitleContent(card, name, subname, factionColor) {
     return (
-      <View style={[styles.cardTitle, {
-        backgroundColor: factionColor || '#FFFFFF',
-        borderColor: factionColor || '#000000',
-      }]}>
+      <React.Fragment>
         <View style={styles.titleRow}>
           { (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') && (
             <View style={styles.costIcon}>
@@ -331,6 +342,19 @@ export default class TwoSidedCardComponent extends React.Component {
           </View>
         </View>
         { this.renderFactionIcon(card) }
+      </React.Fragment>
+    );
+  }
+
+  renderTitle(card, name, subname) {
+    const factionColor = card.faction2_code ? FACTION_BACKGROUND_COLORS.dual :
+      (card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code]);
+    return (
+      <View style={[styles.cardTitle, {
+        backgroundColor: factionColor || '#FFFFFF',
+        borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (factionColor || '#000000'),
+      }]}>
+        { this.renderTitleContent(card, name, subname, factionColor) }
       </View>
     );
   }
@@ -391,7 +415,7 @@ export default class TwoSidedCardComponent extends React.Component {
       <View style={styles.container}>
         <View style={[styles.card, {
           backgroundColor: '#FFFFFF',
-          borderColor: FACTION_COLORS[card.faction_code] || '#000000',
+          borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (FACTION_COLORS[card.faction_code] || '#000000'),
         }]}>
           { this.renderTitle(card, card.back_name || card.name) }
           <View style={styles.cardBody}>
@@ -408,7 +432,7 @@ export default class TwoSidedCardComponent extends React.Component {
               }
               { !!card.back_text && (
                 <View style={[styles.gameTextBlock, {
-                  borderColor: FACTION_COLORS[card.faction_code] || '#000000',
+                  borderColor: card.faction2_color ? FACTION_BACKGROUND_COLORS.dual : (FACTION_COLORS[card.faction_code] || '#000000'),
                 }]}>
                   <CardTextComponent text={card.back_text} />
                 </View>)
@@ -488,7 +512,7 @@ export default class TwoSidedCardComponent extends React.Component {
       <View style={styles.container}>
         <View style={[
           styles.card,
-          { borderColor: FACTION_COLORS[card.faction_code] || '#000000' },
+          { borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (FACTION_COLORS[card.faction_code] || '#000000') },
         ]}>
           { this.renderTitle(card, card.name, card.subname) }
           <View style={styles.cardBody}>
@@ -513,7 +537,7 @@ export default class TwoSidedCardComponent extends React.Component {
               </View>
               { !!card.text && (
                 <View style={[styles.gameTextBlock, {
-                  borderColor: FACTION_COLORS[card.faction_code] || '#000000',
+                  borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (FACTION_COLORS[card.faction_code] || '#000000'),
                 }]}>
                   <CardTextComponent text={card.text} />
                 </View>)

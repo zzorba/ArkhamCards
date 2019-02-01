@@ -91,6 +91,9 @@ export default class CardSearchResult extends React.PureComponent {
         />
       );
     }
+    if (card.faction2_code) {
+      return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS).dual;
+    }
     return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS)[card.faction_code];
   }
 
@@ -134,12 +137,39 @@ export default class CardSearchResult extends React.PureComponent {
     return range(0, count).map(key => (
       <View key={`${skill}-${key}`} style={styles.skillIcon}>
         <ArkhamIcon
-          name={`skill_${skill}`}
+          name={skill}
           size={14}
-          color="#222"
+          color="#444"
         />
       </View>
     ));
+  }
+
+  renderDualFactionIcons() {
+    const {
+      card,
+    } = this.props;
+    if (!card.faction2_code) {
+      return null;
+    }
+    return (
+      <View style={styles.dualFactionIcons}>
+        <View style={styles.skillIcon}>
+          <ArkhamIcon
+            name={card.faction_code}
+            size={16}
+            color={FACTION_COLORS[card.faction_code]}
+          />
+        </View>
+        <View style={styles.skillIcon}>
+          <ArkhamIcon
+            name={card.faction2_code}
+            size={16}
+            color={FACTION_COLORS[card.faction2_code]}
+          />
+        </View>
+      </View>
+    );
   }
 
   renderSkillIcons() {
@@ -169,24 +199,21 @@ export default class CardSearchResult extends React.PureComponent {
     const {
       card,
     } = this.props;
+    const color = card.faction2_code ?
+      FACTION_COLORS.dual :
+      (FACTION_COLORS[card.faction_code] || '#000000');
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
-          <Text style={[
-            typography.text,
-            { color: FACTION_COLORS[card.faction_code] || '#000000' },
-          ]} numberOfLines={1} ellipsizeMode="tail">
+          <Text style={[typography.text, { color }]} numberOfLines={1} ellipsizeMode="tail">
             { card.renderName }
           </Text>
+          { this.renderDualFactionIcons() }
         </View>
         <View style={styles.row}>
           { this.renderSkillIcons() }
           { !!card.renderSubname && (
-            <Text style={[
-              typography.small,
-              styles.subname,
-              { color: FACTION_COLORS[card.faction_code] || '#000000' },
-            ]}>
+            <Text style={[typography.small, styles.subname, { color }]}>
               { card.renderSubname }
             </Text>
           ) }
@@ -237,12 +264,41 @@ export default class CardSearchResult extends React.PureComponent {
     return null;
   }
 
-  render() {
+  renderContent() {
     const {
       card,
       onToggleChange,
       toggleValue,
       onPress,
+    } = this.props;
+    return (
+      <React.Fragment>
+        <TouchableOpacity
+          onPress={this._onPress}
+          disabled={!onPress}
+          style={[styles.row, styles.fullHeight]}
+        >
+          <View style={styles.cardTextRow}>
+            { this.renderIcon(card) }
+            { this.renderCardName() }
+          </View>
+        </TouchableOpacity>
+        { this.renderCount() }
+        { !!onToggleChange && (
+          <View style={styles.switchButton}>
+            <Switch
+              value={toggleValue}
+              onValueChange={onToggleChange}
+            />
+          </View>
+        ) }
+      </React.Fragment>
+    );
+  }
+
+  render() {
+    const {
+      card,
     } = this.props;
     if (!card) {
       return (
@@ -264,27 +320,10 @@ export default class CardSearchResult extends React.PureComponent {
         </View>
       );
     }
+
     return (
       <View style={styles.rowContainer}>
-        <TouchableOpacity
-          onPress={this._onPress}
-          disabled={!onPress}
-          style={[styles.row, styles.fullHeight]}
-        >
-          <View style={styles.cardTextRow}>
-            { this.renderIcon(card) }
-            { this.renderCardName() }
-          </View>
-        </TouchableOpacity>
-        { this.renderCount() }
-        { !!onToggleChange && (
-          <View style={styles.switchButton}>
-            <Switch
-              value={toggleValue}
-              onValueChange={onToggleChange}
-            />
-          </View>
-        ) }
+        { this.renderContent() }
       </View>
     );
   }
@@ -316,6 +355,10 @@ const styles = StyleSheet.create({
   fullHeight: {
   },
   skillIcons: {
+    flexDirection: 'row',
+  },
+  dualFactionIcons: {
+    marginLeft: 16,
     flexDirection: 'row',
   },
   skillIcon: {
