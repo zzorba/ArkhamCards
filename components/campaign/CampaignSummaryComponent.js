@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 22,
     top: 0,
-    width: 100,
+    width: 110,
     flexDirection: 'row',
     justifyContent: 'center',
   },
