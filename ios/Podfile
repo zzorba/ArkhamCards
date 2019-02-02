@@ -7,9 +7,9 @@ target 'ArkhamCards' do
 
   # Pods for ArkhamCards
   pod 'AppAuth', '0.94'
-  pod 'AppCenter/Crashes', '~> 1.8.0'
-  pod 'AppCenter/Analytics', '~> 1.8.0'
-  pod 'AppCenterReactNativeShared', '~> 1.7.1'
+  pod 'AppCenter/Crashes', '~> 1.13.0'
+  pod 'AppCenter/Analytics', '~> 1.13.0'
+  pod 'AppCenterReactNativeShared', '~> 1.12.0'
 
   platform :ios, '9.0'
 
