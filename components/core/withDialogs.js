@@ -19,6 +19,7 @@ export default function withDialogs(WrappedComponent) {
         title: '',
         text: '',
         onTextChange: null,
+        onSaveAndAdd: null,
         showCrossOut: false,
         countVisible: false,
         count: null,
@@ -45,12 +46,20 @@ export default function withDialogs(WrappedComponent) {
       });
     }
 
-    showTextDialog(title, text, onTextChange, showCrossOut, numberOfLines) {
+    showTextDialog(
+      title,
+      text,
+      onTextChange,
+      showCrossOut,
+      numberOfLines,
+      onSaveAndAdd,
+    ) {
       this.setState({
         textVisible: true,
         title,
         text,
         onTextChange,
+        onSaveAndAdd,
         numberOfLines: numberOfLines || 1,
         showCrossOut: !!showCrossOut,
       });
@@ -68,6 +77,7 @@ export default function withDialogs(WrappedComponent) {
         title,
         text,
         onTextChange,
+        onSaveAndAdd,
         baseViewRef,
         showCrossOut,
         numberOfLines,
@@ -82,6 +92,7 @@ export default function withDialogs(WrappedComponent) {
           title={title}
           text={text}
           onTextChange={onTextChange}
+          onSaveAndAdd={onSaveAndAdd}
           toggleVisible={this._hideTextDialog}
           showCrossOut={showCrossOut}
           numberOfLines={numberOfLines}

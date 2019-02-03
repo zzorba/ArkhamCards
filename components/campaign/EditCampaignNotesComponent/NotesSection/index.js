@@ -29,6 +29,7 @@ export default class NotesSection extends React.Component {
 
     this._syncNotes = this.syncNotes.bind(this);
     this._updateNote = this.updateNote.bind(this);
+    this._updateLastNote = this.updateLastNote.bind(this);
   }
 
   syncNotes() {
@@ -43,6 +44,9 @@ export default class NotesSection extends React.Component {
   }
 
   updateNote(index, note) {
+    if (index === 'last') {
+      index = this.state.notes.length - 1;
+    }
     let notes = this.state.notes.slice();
     notes[index] = note;
     if (note === '') {
@@ -55,6 +59,10 @@ export default class NotesSection extends React.Component {
     this.setState({
       notes,
     }, this._syncNotes);
+  }
+
+  updateLastNote(ignoreIndex, note) {
+    this.updateNote(this.state.notes.length - 1, note);
   }
 
   render() {
@@ -72,17 +80,25 @@ export default class NotesSection extends React.Component {
           { title.toUpperCase() }
         </Text>
         <View>
-          { map(notes, (note, idx) => (
+          { map(filter(notes, note => note !== ''), (note, idx) => (
             <NoteRow
               key={`${idx}-${note}`}
               title={title}
               index={idx}
               note={note}
               updateNote={this._updateNote}
-              last={idx === (this.state.notes.length - 1)}
               showDialog={showDialog}
             />)
           ) }
+          <NoteRow
+            key="last"
+            title={title}
+            index={-1}
+            note=""
+            updateNote={this._updateLastNote}
+            showDialog={showDialog}
+            last
+          />
         </View>
       </View>
     );

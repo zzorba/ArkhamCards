@@ -18,6 +18,7 @@ export default class TextEditDialog extends React.Component {
     numberOfLines: PropTypes.number,
     viewRef: PropTypes.object,
     onTextChange: PropTypes.func,
+    onSaveAndAdd: PropTypes.func,
     toggleVisible: PropTypes.func.isRequired,
     showCrossOut: PropTypes.bool.isRequired,
   };
@@ -34,6 +35,7 @@ export default class TextEditDialog extends React.Component {
       height: 40,
     };
 
+    this._onSaveAndAddPress = this.onSaveAndAddPress.bind(this);
     this._onTextChange = this.onTextChange.bind(this);
     this._captureTextInputRef = this.captureTextInputRef.bind(this);
     this._onDonePress = this.onDonePress.bind(this);
@@ -117,12 +119,35 @@ export default class TextEditDialog extends React.Component {
     toggleVisible();
   }
 
+  onSaveAndAddPress() {
+    const {
+      onSaveAndAdd,
+    } = this.props;
+    const {
+      text,
+      isCrossedOut,
+    } = this.state;
+    const result = isCrossedOut ? `~${text}` : text;
+    onSaveAndAdd && onSaveAndAdd(result);
+    this.setState({
+      text: '',
+      originalText: '',
+      height: 40,
+      isCrossedOut: false,
+    }, () => {
+      if (this._textInputRef) {
+        this._textInputRef.focus();
+      }
+    });
+  }
+
   render() {
     const {
       visible,
       title,
       viewRef,
       showCrossOut,
+      onSaveAndAdd,
       numberOfLines = 1,
     } = this.props;
     const {
@@ -172,6 +197,14 @@ export default class TextEditDialog extends React.Component {
             label={isCrossedOut ? L('Uncross Out') : L('Cross Out')}
             color="#ff3b30"
             onPress={this._onCrossOutPress}
+          />
+        ) }
+        { !!onSaveAndAdd && (
+          <DialogComponent.Button
+            label={L('Add Another')}
+            color={textChanged ? buttonColor : '#666666'}
+            disabled={!textChanged}
+            onPress={this._onSaveAndAddPress}
           />
         ) }
         { !isCrossedOut && (

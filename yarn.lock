@@ -5623,9 +5623,9 @@ react-native-deep-linking@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
 
-react-native-dialog@5.5.0:
+react-native-dialog@zzorba/react-native-dialog#make_keyboard_avoid_behavior_prop:
   version "5.5.0"
-  resolved "https://registry.yarnpkg.com/react-native-dialog/-/react-native-dialog-5.5.0.tgz#09d13e23264f820d6308b5f93e1f03606f97dee3"
+  resolved "https://codeload.github.com/zzorba/react-native-dialog/tar.gz/338179f5a26b81ca74d9bab7152fe1b4c606a115"
   dependencies:
     prop-types "^15.6.0"
     react-native-modal "^6.4.0"

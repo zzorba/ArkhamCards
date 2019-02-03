@@ -16,7 +16,7 @@ export default class NoteRow extends React.Component {
     index: PropTypes.number.isRequired,
     note: PropTypes.string.isRequired,
     updateNote: PropTypes.func.isRequired,
-    last: PropTypes.bool.isRequired,
+    last: PropTypes.bool,
     showDialog: PropTypes.func.isRequired,
   };
 
@@ -40,8 +40,9 @@ export default class NoteRow extends React.Component {
       title,
       note,
       showDialog,
+      last,
     } = this.props;
-    showDialog(title, note, this._onChange, note !== '', 3);
+    showDialog(title, note, this._onChange, note !== '', 3, last ? this._onChange : null);
   }
 
   render() {

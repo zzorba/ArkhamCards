@@ -66,6 +66,7 @@ export default class Dialog extends React.Component {
         <DialogComponent.Container
           visible={visible}
           blurComponentIOS={this.blurComponent()}
+          keyboardAvoidBehaviorIOS="position"
         >
           <DialogComponent.Title>
             { title }
