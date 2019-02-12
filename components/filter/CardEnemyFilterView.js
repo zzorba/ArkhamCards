@@ -34,7 +34,6 @@ class CardEnemyFilterView extends React.Component {
   renderToggles() {
     const {
       filters: {
-        enemyKeywordsEnabled,
         enemyElite,
         enemyNonElite,
         enemyParley,
@@ -51,86 +50,78 @@ class CardEnemyFilterView extends React.Component {
     } = this.props;
 
     return (
-      <AccordionItem
-        label={L('Keywords')}
-        height={256}
-        enabled={enemyKeywordsEnabled}
-        toggleName="enemyKeywordsEnabled"
-        onToggleChange={onToggleChange}
-      >
-        <View style={styles.toggleRow}>
-          <View style={styles.toggleColumn}>
-            <ToggleFilter
-              label={L('Elite')}
-              setting="enemyElite"
-              value={enemyElite}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Hunter')}
-              setting="enemyHunter"
-              value={enemyHunter}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Alert')}
-              setting="enemyAlert"
-              value={enemyAlert}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Spawn')}
-              setting="enemySpawn"
-              value={enemySpawn}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Aloof')}
-              setting="enemyAloof"
-              value={enemyAloof}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Massive')}
-              setting="enemyMassive"
-              value={enemyMassive}
-              onChange={onToggleChange}
-            />
-          </View>
-          <View style={styles.toggleColumn}>
-            <ToggleFilter
-              label={L('Non-Elite')}
-              setting="enemyNonElite"
-              value={enemyNonElite}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Non-Hunter')}
-              setting="enemyNonHunter"
-              value={enemyNonHunter}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Retaliate')}
-              setting="enemyRetaliate"
-              value={enemyRetaliate}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Parley')}
-              setting="enemyParley"
-              value={enemyParley}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Prey')}
-              setting="enemyPrey"
-              value={enemyPrey}
-              onChange={onToggleChange}
-            />
-          </View>
+      <View style={styles.toggleRow}>
+        <View style={styles.toggleColumn}>
+          <ToggleFilter
+            label={L('Elite')}
+            setting="enemyElite"
+            value={enemyElite}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Hunter')}
+            setting="enemyHunter"
+            value={enemyHunter}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Alert')}
+            setting="enemyAlert"
+            value={enemyAlert}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Spawn')}
+            setting="enemySpawn"
+            value={enemySpawn}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Aloof')}
+            setting="enemyAloof"
+            value={enemyAloof}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Massive')}
+            setting="enemyMassive"
+            value={enemyMassive}
+            onChange={onToggleChange}
+          />
         </View>
-      </AccordionItem>
+        <View style={styles.toggleColumn}>
+          <ToggleFilter
+            label={L('Non-Elite')}
+            setting="enemyNonElite"
+            value={enemyNonElite}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Non-Hunter')}
+            setting="enemyNonHunter"
+            value={enemyNonHunter}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Retaliate')}
+            setting="enemyRetaliate"
+            value={enemyRetaliate}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Parley')}
+            setting="enemyParley"
+            value={enemyParley}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={L('Prey')}
+            setting="enemyPrey"
+            value={enemyPrey}
+            onChange={onToggleChange}
+          />
+        </View>
+      </View>
     );
   }
 
@@ -156,7 +147,6 @@ class CardEnemyFilterView extends React.Component {
     } = this.props;
     return (
       <ScrollView>
-        { this.renderToggles() }
         <SliderChooser
           label={L('Fight')}
           width={width}
@@ -222,6 +212,7 @@ class CardEnemyFilterView extends React.Component {
           toggleName="enemyHorrorEnabled"
           onToggleChange={onToggleChange}
         />
+        { this.renderToggles() }
       </ScrollView>
     );
   }

@@ -10,6 +10,7 @@ import {
 
 import L from '../../../app/i18n';
 import FactionChooser from './FactionChooser';
+import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
 import AccordionItem from '../AccordionItem';
 import FilterChooserButton from '../FilterChooserButton';
@@ -66,6 +67,7 @@ class CardFilterView extends React.Component {
       allSlots: [],
       allEncounters: [],
       allIllustrators: [],
+      levels: props.levels,
     };
 
     this._onEnemyPress = this.onEnemyPress.bind(this);
@@ -195,7 +197,6 @@ class CardFilterView extends React.Component {
   enemyFilterText() {
     const {
       filters: {
-        enemyKeywordsEnabled,
         enemyElite,
         enemyNonElite,
         enemyHunter,
@@ -221,40 +222,38 @@ class CardFilterView extends React.Component {
       },
     } = this.props;
     const parts = [];
-    if (enemyKeywordsEnabled) {
-      if (enemyElite) {
-        parts.push(L('Elite'));
-      }
-      if (enemyNonElite) {
-        parts.push(L('Non-Elite'));
-      }
-      if (enemyHunter) {
-        parts.push(L('Hunter'));
-      }
-      if (enemyNonHunter) {
-        parts.push(L('Non-Hunter'));
-      }
-      if (enemyParley) {
-        parts.push(L('Parley'));
-      }
-      if (enemyRetaliate) {
-        parts.push(L('Retaliate'));
-      }
-      if (enemyAlert) {
-        parts.push(L('Alert'));
-      }
-      if (enemySpawn) {
-        parts.push(L('Spawn'));
-      }
-      if (enemyPrey) {
-        parts.push(L('Prey'));
-      }
-      if (enemyAloof) {
-        parts.push(L('Aloof'));
-      }
-      if (enemyMassive) {
-        parts.push(L('Massive'));
-      }
+    if (enemyElite) {
+      parts.push(L('Elite'));
+    }
+    if (enemyNonElite) {
+      parts.push(L('Non-Elite'));
+    }
+    if (enemyHunter) {
+      parts.push(L('Hunter'));
+    }
+    if (enemyNonHunter) {
+      parts.push(L('Non-Hunter'));
+    }
+    if (enemyParley) {
+      parts.push(L('Parley'));
+    }
+    if (enemyRetaliate) {
+      parts.push(L('Retaliate'));
+    }
+    if (enemyAlert) {
+      parts.push(L('Alert'));
+    }
+    if (enemySpawn) {
+      parts.push(L('Spawn'));
+    }
+    if (enemyPrey) {
+      parts.push(L('Prey'));
+    }
+    if (enemyAloof) {
+      parts.push(L('Aloof'));
+    }
+    if (enemyMassive) {
+      parts.push(L('Massive'));
     }
     if (enemyHealthEnabled) {
       if (enemyHealthPerInvestigator) {
@@ -290,6 +289,7 @@ class CardFilterView extends React.Component {
         clues,
         cluesEnabled,
         cluesFixed,
+        hauntedEnabled,
       },
     } = this.props;
     const parts = [];
@@ -302,6 +302,9 @@ class CardFilterView extends React.Component {
     }
     if (shroudEnabled) {
       parts.push(CardFilterView.rangeText(L('Shroud'), shroud));
+    }
+    if (hauntedEnabled) {
+      parts.push(L('Haunted'));
     }
 
     if (parts.length === 0) {
@@ -323,7 +326,6 @@ class CardFilterView extends React.Component {
         subTypes,
         packs,
         cycleNames,
-        playerFiltersEnabled,
         slots,
         encounters,
         illustrators,
@@ -382,6 +384,46 @@ class CardFilterView extends React.Component {
           selection={factions}
           onFilterChange={onFilterChange}
         />
+        { hasXp && (
+          <XpChooser
+            maxLevel={defaultFilterState.level[1]}
+            levels={level}
+            enabled={levelEnabled}
+            onFilterChange={onFilterChange}
+            onToggleChange={onToggleChange}
+            exceptional={exceptional}
+            nonExceptional={nonExceptional}
+          />
+        ) }
+        { hasXp && (
+          <SliderChooser
+            label={L('Level')}
+            width={width}
+            values={level}
+            enabled={levelEnabled}
+            setting="level"
+            onFilterChange={onFilterChange}
+            toggleName="levelEnabled"
+            onToggleChange={onToggleChange}
+            max={defaultFilterState.level[1]}
+            height={2}
+          >
+            <View>
+              <ToggleFilter
+                label={L('Exceptional')}
+                setting="exceptional"
+                value={exceptional}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={L('Non-Exceptional')}
+                setting="nonExceptional"
+                value={nonExceptional}
+                onChange={onToggleChange}
+              />
+            </View>
+          </SliderChooser>
+        ) }
         <View>
           { (types.length > 0 || allTypes.length > 0) && (
             <FilterChooserButton
@@ -417,35 +459,6 @@ class CardFilterView extends React.Component {
             max={defaultFilterState.cost[1]}
           />
         ) }
-        { hasXp && (
-          <SliderChooser
-            label={L('Level')}
-            width={width}
-            values={level}
-            enabled={levelEnabled}
-            setting="level"
-            onFilterChange={onFilterChange}
-            toggleName="levelEnabled"
-            onToggleChange={onToggleChange}
-            max={defaultFilterState.level[1]}
-            height={2}
-          >
-            <View>
-              <ToggleFilter
-                label={L('Exceptional')}
-                setting="exceptional"
-                value={exceptional}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={L('Non-Exceptional')}
-                setting="nonExceptional"
-                value={nonExceptional}
-                onChange={onToggleChange}
-              />
-            </View>
-          </SliderChooser>
-        ) }
         { hasSkill && (
           <SkillIconChooser
             skillIcons={skillIcons}
@@ -466,132 +479,117 @@ class CardFilterView extends React.Component {
               onFilterChange={onFilterChange}
             />
           ) }
-          { ((slots.length > 0 || allSlots.length > 0) ||
-            (uses.length > 0 || allUses.length > 0)) && (
-            <AccordionItem
-              label={playerFiltersEnabled ? L('Player Cards') : L('Player Cards: All')}
-              height={195}
-              enabled={playerFiltersEnabled}
-              toggleName="playerFiltersEnabled"
-              onToggleChange={onToggleChange}
-            >
-              { (slots.length > 0 || allSlots.length > 0) && (
-                <FilterChooserButton
-                  componentId={componentId}
-                  title={L('Slots')}
-                  values={allSlots}
-                  selection={slots}
-                  setting="slots"
-                  onFilterChange={onFilterChange}
-                  indent
-                />
-              ) }
-              { (uses.length > 0 || allUses.length > 0) && (
-                <FilterChooserButton
-                  componentId={componentId}
-                  title={L('Uses')}
-                  values={allUses}
-                  selection={uses}
-                  setting="uses"
-                  onFilterChange={onFilterChange}
-                  indent
-                />
-              ) }
-              <View style={styles.toggleRow}>
-                <View style={styles.toggleColumn}>
-                  <ToggleFilter
-                    label={L('Fast')}
-                    setting="fast"
-                    value={fast}
-                    onChange={onToggleChange}
-                  />
-                  <ToggleFilter
-                    label={L('Permanent')}
-                    setting="permanent"
-                    value={permanent}
-                    onChange={onToggleChange}
-                  />
-                </View>
-                <View style={styles.toggleColumn}>
-                  <ToggleFilter
-                    label={L('Exile')}
-                    setting="exile"
-                    value={exile}
-                    onChange={onToggleChange}
-                  />
-                  <ToggleFilter
-                    label={L('Unique')}
-                    setting="unique"
-                    value={unique}
-                    onChange={onToggleChange}
-                  />
-                </View>
-              </View>
-            </AccordionItem>
-          ) }
           { indexOf(allTypeCodes, 'enemy') !== -1 && (
             <NavButton text={this.enemyFilterText()} onPress={this._onEnemyPress} />
           ) }
           { indexOf(allTypeCodes, 'location') !== -1 && (
             <NavButton text={this.locationFilterText()} onPress={this._onLocationPress} />
           ) }
-          { (cycleNames.length > 0 || allCycleNames.length > 1) && (
-            <FilterChooserButton
-              componentId={componentId}
-              title={L('Cycles')}
-              values={allCycleNames}
-              selection={cycleNames}
-              setting="cycleNames"
-              onFilterChange={onFilterChange}
-            />
-          ) }
-          { (packs.length > 0 || allPacks.length > 1) && (
-            <FilterChooserButton
-              componentId={componentId}
-              title={L('Packs')}
-              values={allPacks}
-              selection={packs}
-              setting="packs"
-              onFilterChange={onFilterChange}
-            />
-          ) }
-          { (encounters.length > 0 || allEncounters.length > 0) && (
-            <FilterChooserButton
-              componentId={componentId}
-              title={L('Encounter Sets')}
-              values={allEncounters}
-              selection={encounters}
-              setting="encounters"
-              onFilterChange={onFilterChange}
-            />
-          ) }
-          { (illustrators.length > 0 || allIllustrators.length > 0) && (
-            <FilterChooserButton
-              componentId={componentId}
-              title={L('Illustrators')}
-              values={allIllustrators}
-              selection={illustrators}
-              setting="illustrators"
-              onFilterChange={onFilterChange}
-            />
-          ) }
         </View>
+        { (slots.length > 0 || allSlots.length > 0) && (
+          <FilterChooserButton
+            componentId={componentId}
+            title={L('Slots')}
+            values={allSlots}
+            selection={slots}
+            setting="slots"
+            onFilterChange={onFilterChange}
+          />
+        ) }
+        { (uses.length > 0 || allUses.length > 0) && (
+          <FilterChooserButton
+            componentId={componentId}
+            title={L('Uses')}
+            values={allUses}
+            selection={uses}
+            setting="uses"
+            onFilterChange={onFilterChange}
+          />
+        ) }
         <View style={styles.toggleStack}>
           <View style={styles.toggleRow}>
-            <ToggleFilter
-              label={L('Victory')}
-              setting="victory"
-              value={victory}
-              onChange={onToggleChange}
-            />
-            <ToggleFilter
-              label={L('Vengeance')}
-              setting="vengeance"
-              value={vengeance}
-              onChange={onToggleChange}
-            />
+            <View style={styles.toggleColumn}>
+              <ToggleFilter
+                label={L('Fast')}
+                setting="fast"
+                value={fast}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={L('Permanent')}
+                setting="permanent"
+                value={permanent}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={L('Victory')}
+                setting="victory"
+                value={victory}
+                onChange={onToggleChange}
+              />
+            </View>
+            <View style={styles.toggleColumn}>
+              <ToggleFilter
+                label={L('Exile')}
+                setting="exile"
+                value={exile}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={L('Unique')}
+                setting="unique"
+                value={unique}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={L('Vengeance')}
+                setting="vengeance"
+                value={vengeance}
+                onChange={onToggleChange}
+              />
+            </View>
           </View>
         </View>
+        { (encounters.length > 0 || allEncounters.length > 0) && (
+          <FilterChooserButton
+            componentId={componentId}
+            title={L('Encounter Sets')}
+            values={allEncounters}
+            selection={encounters}
+            setting="encounters"
+            onFilterChange={onFilterChange}
+          />
+        ) }
+        { (cycleNames.length > 0 || allCycleNames.length > 1) && (
+          <FilterChooserButton
+            componentId={componentId}
+            title={L('Cycles')}
+            values={allCycleNames}
+            selection={cycleNames}
+            setting="cycleNames"
+            onFilterChange={onFilterChange}
+          />
+        ) }
+        { (packs.length > 0 || allPacks.length > 1) && (
+          <FilterChooserButton
+            componentId={componentId}
+            title={L('Packs')}
+            values={allPacks}
+            selection={packs}
+            setting="packs"
+            onFilterChange={onFilterChange}
+          />
+        ) }
+        { (illustrators.length > 0 || allIllustrators.length > 0) && (
+          <FilterChooserButton
+            componentId={componentId}
+            title={L('Illustrators')}
+            values={allIllustrators}
+            selection={illustrators}
+            setting="illustrators"
+            onFilterChange={onFilterChange}
+          />
+        ) }
       </ScrollView>
     );
   }

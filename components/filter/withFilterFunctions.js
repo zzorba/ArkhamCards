@@ -88,17 +88,18 @@ export default function withFilterFunctions(WrappedComponent) {
     }
 
     onToggleChange(key) {
-      const {
-        filters,
-      } = this.state;
-      this.setState({
-        filters: Object.assign({}, filters, { [key]: !filters[key] }),
+      this.setState(state => {
+        return {
+          filters: Object.assign({}, state.filters, { [key]: !state.filters[key] }),
+        };
       });
     }
 
     onFilterChange(key, selection) {
-      this.setState({
-        filters: Object.assign({}, this.state.filters, { [key]: selection }),
+      this.setState(state => {
+        return {
+          filters: Object.assign({}, state.filters, { [key]: selection }),
+        };
       });
     }
 

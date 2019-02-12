@@ -125,6 +125,7 @@ export function campaignNames() {
     core: L('The Night of the Zealot'),
     rtnotz: L('Return to the Night of the Zealot'),
     dwl: L('The Dunwich Legacy'),
+    rtdwl: L('Return to The Dunwich Legacy'),
     ptc: L('The Path to Carcosa'),
     tfa: L('The Forgotten Age'),
     tcu: L('The Circle Undone'),
