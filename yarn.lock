@@ -782,9 +782,9 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@matt-block/react-native-in-app-browser@1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@matt-block/react-native-in-app-browser/-/react-native-in-app-browser-1.2.4.tgz#4a4981e27198415d3362817d07c92a9ee4d87ef5"
+"@matt-block/react-native-in-app-browser@1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@matt-block/react-native-in-app-browser/-/react-native-in-app-browser-1.2.7.tgz#3893b4100252582d566ed337a453cf48fedb960a"
 
 "@ptomasroos/react-native-multi-slider@1.0.0":
   version "1.0.0"
@@ -835,6 +835,12 @@ acorn@^5.0.0, acorn@^5.3.0:
 acorn@^5.0.3, acorn@^5.6.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.1.tgz#f095829297706a7c9776958c0afc8930a9b9d9d8"
+
+agent-base@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.2.1.tgz#d89e5999f797875674c07d87f260fc41e83e8ca9"
+  dependencies:
+    es6-promisify "^5.0.0"
 
 ajv-keywords@^3.0.0:
   version "3.2.0"
@@ -944,21 +950,21 @@ anymatch@^1.3.0:
     micromatch "^2.1.5"
     normalize-path "^2.0.0"
 
-appcenter-analytics@1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-1.12.0.tgz#36e4e225d9a196f37af98e42832f25f87a9d4a06"
+appcenter-analytics@1.12.2:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-1.12.2.tgz#35a2c73979bf2c90f029eab4e94b80c8744e0356"
   dependencies:
-    appcenter "1.12.0"
+    appcenter "1.12.2"
 
-appcenter-crashes@1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-1.12.0.tgz#fbbb1651f4c7f703ee6f6069165fe5afd81b8296"
+appcenter-crashes@1.12.2:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-1.12.2.tgz#8fb01370ddbcd1a326fbd3f71cb7273d7c8393cf"
   dependencies:
-    appcenter "1.12.0"
+    appcenter "1.12.2"
 
-appcenter-link-scripts@1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-1.12.0.tgz#12511307040897aad55c0088d335774b91d65257"
+appcenter-link-scripts@1.12.2:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-1.12.2.tgz#e41898208ca8233c6b4daf07075e769dce7e59c0"
   dependencies:
     debug "^2.2.0"
     glob "^5.0.15"
@@ -968,11 +974,11 @@ appcenter-link-scripts@1.12.0:
     which "^1.2.11"
     xcode "^1.0.0"
 
-appcenter@1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-1.12.0.tgz#8d0933f5e0781c088ed1314ca6d7ac6cb7a0ee41"
+appcenter@1.12.2:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-1.12.2.tgz#254185f85d04dad32697ced9ec1576089ec56b65"
   dependencies:
-    appcenter-link-scripts "1.12.0"
+    appcenter-link-scripts "1.12.2"
 
 append-transform@^1.0.0:
   version "1.0.0"
@@ -2563,6 +2569,16 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
+es6-promise@^4.0.3:
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.6.tgz#b685edd8258886365ea62b57d30de28fadcd974f"
+
+es6-promisify@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-5.0.0.tgz#5109d62f3e56ea967c4b63505aef08291c8a5203"
+  dependencies:
+    es6-promise "^4.0.3"
+
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
@@ -3430,11 +3446,11 @@ hoist-non-react-statics@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
-hoist-non-react-statics@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
+hoist-non-react-statics@3.3.0, hoist-non-react-statics@^3.1.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
   dependencies:
-    react-is "^16.3.2"
+    react-is "^16.7.0"
 
 hoist-non-react-statics@3.x.x:
   version "3.0.1"
@@ -3447,12 +3463,6 @@ hoist-non-react-statics@^3.0.0:
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.1.0.tgz#42414ccdfff019cd2168168be998c7b3bd5245c0"
   dependencies:
     react-is "^16.3.2"
-
-hoist-non-react-statics@^3.1.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
-  dependencies:
-    react-is "^16.7.0"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -3511,6 +3521,13 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+https-proxy-agent@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.1.tgz#51552970fa04d723e04c56d04178c3f92592bbc0"
+  dependencies:
+    agent-base "^4.1.0"
+    debug "^3.1.0"
 
 i18n-extract@0.6.3:
   version "0.6.3"
@@ -5588,9 +5605,9 @@ react-native-animatable@^1.2.4:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-app-auth@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-4.0.0.tgz#d931a5a8780edb5ba3a18a02a44ae9be51a39a78"
+react-native-app-auth@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-4.1.0.tgz#33f078de9584f6cf8af66de8f2b0240137555ba0"
 
 react-native-blur@3.2.2:
   version "3.2.2"
@@ -5671,9 +5688,9 @@ react-native-modal@^6.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-react-native-navigation@2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.8.0.tgz#30b25a0744dda7c04d29bb5c8e8c3af911627d51"
+react-native-navigation@2.12.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.12.0.tgz#3b845a976a0e1b79b6caff185bb109fdb60889f2"
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -5717,9 +5734,9 @@ react-native-svg-charts@5.2.0:
     d3-shape "^1.0.6"
     prop-types "^15.6.0"
 
-react-native-svg@9.2.2:
-  version "9.2.2"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.2.2.tgz#3816136cb8e1f97fbcf9c0075b010c33dcda9f91"
+react-native-svg@9.2.4:
+  version "9.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.2.4.tgz#a30ee42535b39097e7b68dfa6dcf5c1c8cce97f1"
 
 react-native-tabular-grid-markdown-view@0.1.x:
   version "0.1.0"
@@ -5727,9 +5744,9 @@ react-native-tabular-grid-markdown-view@0.1.x:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-vector-icons@6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.2.0.tgz#2682b718099eb9470c0defd38da47deb844a0f9c"
+react-native-vector-icons@6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.3.0.tgz#47a0c9e04e045c0ea0b9ca450e2af84e45c07b3f"
   dependencies:
     lodash "^4.0.0"
     prop-types "^15.6.2"
@@ -5904,14 +5921,15 @@ realm-query@0.0.7:
   dependencies:
     lodash "^4.17.4"
 
-realm@2.21.1:
-  version "2.21.1"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-2.21.1.tgz#a6e3bf86b8469665a176f1ff8db6ab35a8854d56"
+realm@2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-2.23.0.tgz#e4645a99c39402a912ec66d860678a242655243e"
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"
     deepmerge "2.1.0"
     fs-extra "^4.0.2"
+    https-proxy-agent "^2.2.1"
     ini "^1.3.4"
     nan "^2.10.0"
     node-fetch "^1.6.3"
