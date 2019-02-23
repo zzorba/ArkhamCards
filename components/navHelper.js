@@ -53,7 +53,29 @@ export function showDeckModal(componentId, deck, investigator, campaignId) {
 }
 
 
+export function showCard(componentId, code, card, showSpoilers) {
+  Navigation.push(componentId, {
+    component: {
+      name: 'Card',
+      passProps: {
+        id: code,
+        pack_code: card.pack_code,
+        showSpoilers: !!showSpoilers,
+      },
+      options: {
+        topBar: {
+          backButton: {
+            title: L('Back'),
+          },
+        },
+      },
+    },
+  });
+}
+
+
 export default {
   showDeckModal,
   getDeckOptions,
+  showCard,
 };
