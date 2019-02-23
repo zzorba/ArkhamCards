@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
@@ -19,13 +18,12 @@ import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from '../../styles/typography';
-import { getPacksInCollection } from '../../reducers';
 
 const SMALL_ICON_SIZE = 26;
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
 
-class CardSearchResult extends React.PureComponent {
+export default class CardSearchResult extends React.PureComponent {
   static propTypes = {
     card: PropTypes.object.isRequired,
     count: PropTypes.number,
@@ -338,14 +336,6 @@ class CardSearchResult extends React.PureComponent {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    hasSecondCore: getPacksInCollection(state).core || false,
-  };
-}
-
-export default connect(mapStateToProps, {})(CardSearchResult);
 
 const styles = StyleSheet.create({
   rowContainer: {

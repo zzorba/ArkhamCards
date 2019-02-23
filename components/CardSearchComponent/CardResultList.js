@@ -61,6 +61,7 @@ class CardResultList extends React.Component {
     onDeckCountChange: PropTypes.func,
     show_spoilers: PropTypes.object,
     in_collection: PropTypes.object,
+    hasSecondCore: PropTypes.bool,
     limits: PropTypes.object,
     cardPressed: PropTypes.func,
     showHeader: PropTypes.func.isRequired,
@@ -468,6 +469,7 @@ class CardResultList extends React.Component {
   renderCard({ item }) {
     const {
       limits,
+      hasSecondCore,
     } = this.props;
     return (
       <CardSearchResult
@@ -476,6 +478,7 @@ class CardResultList extends React.Component {
         onDeckCountChange={this.props.onDeckCountChange}
         onPress={this._cardPressed}
         limit={limits ? limits[item.code] : null}
+        hasSecondCore={hasSecondCore}
       />
     );
   }
@@ -650,9 +653,11 @@ class CardResultList extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const in_collection = getPacksInCollection(state);
   return {
+    in_collection,
     show_spoilers: getPackSpoilers(state),
-    in_collection: getPacksInCollection(state),
+    hasSecondCore: in_collection.core || false,
   };
 }
 
