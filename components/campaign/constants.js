@@ -150,16 +150,18 @@ export function campaignLogs() {
       L('Cultists Who Got Away'),
     ],
   };
+  const dunwichLog = {
+    sections: [
+      L('Campaign Notes'),
+      L('Sacrificed to Yog-Sothoth'),
+    ],
+  };
 
   return {
     'core': coreLog,
     'rtnotz': coreLog,
-    'dwl': {
-      sections: [
-        L('Campaign Notes'),
-        L('Sacrificed to Yog-Sothoth'),
-      ],
-    },
+    'dwl': dunwichLog,
+    'rtdwl': dunwichLog,
     'ptc': {
       sections: [
         L('Campaign Notes'),

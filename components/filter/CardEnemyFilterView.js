@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 
 import L from '../../app/i18n';
-import AccordionItem from './AccordionItem';
 import SliderChooser from './SliderChooser';
 import ToggleFilter from '../core/ToggleFilter';
 import withFilterFunctions from './withFilterFunctions';

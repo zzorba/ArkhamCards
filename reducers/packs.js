@@ -15,7 +15,7 @@ const DEFAULT_PACKS_STATE = {
   all: [],
   dateFetched: null,
   dateUpdatePrompt: null,
-  in_collection: {},
+  in_collection: { core: true },
   show_spoilers: {},
   loading: false,
   error: null,

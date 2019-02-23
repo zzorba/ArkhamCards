@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { flatMap, forEach, map, max, min, range } from 'lodash';
+import { flatMap, map, max, min } from 'lodash';
 import {
   Text,
   StyleSheet,
-  View,
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
-
-import L from '../../../app/i18n';
-import ToggleFilter from '../../core/ToggleFilter';
 
 export default class XpChooser extends React.Component {
   static propTypes = {
@@ -67,9 +63,6 @@ export default class XpChooser extends React.Component {
       levels,
       maxLevel,
       enabled,
-      exceptional,
-      nonExceptional,
-      onToggleChange,
     } = this.props;
 
     if (maxLevel <= 1) {
@@ -83,8 +76,8 @@ export default class XpChooser extends React.Component {
         return [idx];
       }
       return [];
-    })
-    const buttons =  map(this.levelRanges(), (xyz, idx) => {
+    });
+    const buttons = map(this.levelRanges(), xyz => {
       const xp = xyz[0] === xyz[1] ?
         `${xyz[0]} XP` :
         `${xyz[0]} - ${xyz[1]} XP`;
@@ -115,9 +108,5 @@ const styles = StyleSheet.create({
   },
   selectedButton: {
     backgroundColor: 'rgb(221,221,221)',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
 });

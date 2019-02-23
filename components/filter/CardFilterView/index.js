@@ -12,7 +12,6 @@ import L from '../../../app/i18n';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
-import AccordionItem from '../AccordionItem';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
 import ToggleFilter from '../../core/ToggleFilter';
@@ -67,7 +66,7 @@ class CardFilterView extends React.Component {
       allSlots: [],
       allEncounters: [],
       allIllustrators: [],
-      levels: props.levels,
+      levels: [],
     };
 
     this._onEnemyPress = this.onEnemyPress.bind(this);

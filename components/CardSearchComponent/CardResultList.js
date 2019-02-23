@@ -20,11 +20,12 @@ import L from '../../app/i18n';
 import * as Actions from '../../actions';
 import { getPackSpoilers, getPacksInCollection } from '../../reducers';
 import Card from '../../data/Card';
+import { showCard } from '../navHelper';
 import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import { ROW_HEIGHT } from '../CardSearchResult/constants';
-import CardSectionHeader from './CardSectionHeader';
-import ShowNonCollectionFooter from './ShowNonCollectionFooter';
+import CardSectionHeader, { ROW_HEADER_HEIGHT } from './CardSectionHeader';
+import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from './ShowNonCollectionFooter';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -34,6 +35,7 @@ import {
   SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
 import typography from '../../styles/typography';
+import { s, m } from '../../styles/space';
 
 const SCROLL_DISTANCE_BUFFER = 50;
 
@@ -119,6 +121,7 @@ class CardResultList extends React.Component {
     this._showNonCollectionCards = this.showNonCollectionCards.bind(this);
     this._renderCard = this.renderCard.bind(this);
     this._renderFooter = this.renderFooter.bind(this);
+    this.hasPendingCountChanges = false;
   }
 
   onScroll(event) {
@@ -136,6 +139,11 @@ class CardResultList extends React.Component {
     if (offsetY <= 0) {
       this.props.showHeader();
     } else {
+      if (this.hasPendingCountChanges) {
+        this.hasPendingCountChanges = false;
+        this._throttledUpdateResults();
+      }
+
       const delta = Math.abs(offsetY - this.lastOffsetY);
       if (delta < SCROLL_DISTANCE_BUFFER) {
         // Not a long enough scroll, don't update scrollY and don't take any
@@ -193,10 +201,18 @@ class CardResultList extends React.Component {
         });
       }
     } else if (updateDeckCardCounts) {
-      /* eslint-disable react/no-did-update-set-state */
-      this.setState({
-        deckCardCounts: deckCardCounts,
-      });
+      if (this.lastOffsetY <= 0) {
+        /* eslint-disable react/no-did-update-set-state */
+        this.setState({
+          deckCardCounts: deckCardCounts,
+        }, this._throttledUpdateResults);
+        this.hasPendingCountChanges = false;
+      } else {
+        this.setState({
+          deckCardCounts: deckCardCounts,
+        });
+        this.hasPendingCountChanges = true;
+      }
     }
   }
 
@@ -364,8 +380,10 @@ class CardResultList extends React.Component {
       searchTerm,
       show_spoilers,
       originalDeckSlots,
-      deckCardCounts,
     } = this.props;
+    const {
+      deckCardCounts,
+    } = this.state;
     const resultsKey = this.resultsKey();
     const cards = (query ?
       realm.objects('Card').filtered(query, searchTerm) :
@@ -376,7 +394,7 @@ class CardResultList extends React.Component {
       cards,
       card => {
         if (originalDeckSlots && (
-          originalDeckSlots[card.code] > 0 || deckCardCounts[card.count] > 0)) {
+          originalDeckSlots[card.code] > 0 || deckCardCounts[card.code] > 0)) {
           deckCards.push(card);
         }
         return show_spoilers[card.pack_code] ||
@@ -410,23 +428,7 @@ class CardResultList extends React.Component {
       componentId,
     } = this.props;
     cardPressed && cardPressed(card);
-    Navigation.push(componentId, {
-      component: {
-        name: 'Card',
-        passProps: {
-          id: card.code,
-          pack_code: card.pack_code,
-          showSpoilers: true,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: L('Back'),
-            },
-          },
-        },
-      },
-    });
+    showCard(componentId, card.code, card, true);
   }
 
   getItem(data, index) {
@@ -609,9 +611,9 @@ class CardResultList extends React.Component {
     const elementHeights = map(
       flatMap(data, section => {
         return concat(
-          [30], // Header
+          [ROW_HEADER_HEIGHT], // Header
           map(section.data || [], () => ROW_HEIGHT), // Rows
-          [section.nonCollectionCount ? 38 : 0] // Footer (not used)
+          [section.nonCollectionCount ? ROW_NON_COLLECTION_HEIGHT : 0] // Footer (not used)
         );
       }),
       (size) => {
@@ -672,26 +674,26 @@ const styles = StyleSheet.create({
     height: 300,
   },
   loading: {
-    margin: 16,
+    margin: m,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
   loadingText: {
-    marginTop: 16,
-    marginBottom: 8,
+    marginTop: m,
+    marginBottom: s,
   },
   button: {
-    margin: 8,
+    margin: s,
   },
   emptyText: {
-    padding: 16,
+    padding: m,
     flexDirection: 'row',
     justifyContent: 'center',
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
   sectionFooterButton: {
-    height: 38,
+    height: ROW_NON_COLLECTION_HEIGHT,
   },
 });

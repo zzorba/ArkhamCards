@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { connect } from 'react-redux';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
@@ -18,12 +19,13 @@ import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from '../../styles/typography';
+import { getPacksInCollection } from '../../reducers';
 
 const SMALL_ICON_SIZE = 26;
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
 
-export default class CardSearchResult extends React.PureComponent {
+class CardSearchResult extends React.PureComponent {
   static propTypes = {
     card: PropTypes.object.isRequired,
     count: PropTypes.number,
@@ -33,6 +35,7 @@ export default class CardSearchResult extends React.PureComponent {
     onToggleChange: PropTypes.func,
     toggleValue: PropTypes.bool,
     deltaCountMode: PropTypes.bool,
+    hasSecondCore: PropTypes.bool,
     id: PropTypes.string,
   };
 
@@ -242,12 +245,19 @@ export default class CardSearchResult extends React.PureComponent {
       count = 0,
       onDeckCountChange,
       limit,
+      hasSecondCore,
     } = this.props;
     if (onDeckCountChange) {
+      const deck_limit = Math.min(
+        card.pack_code === 'core' ?
+          (card.quantity * (hasSecondCore ? 2 : 1)) :
+          card.deck_limit,
+        card.deck_limit
+      );
       return (
         <CardQuantityComponent
           count={count || 0}
-          limit={limit !== null ? limit : card.deck_limit}
+          limit={Math.max(count || 0, limit !== null ? limit : deck_limit)}
           countChanged={this._onDeckCountChange}
         />
       );
@@ -328,6 +338,14 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    hasSecondCore: getPacksInCollection(state).core || false,
+  };
+}
+
+export default connect(mapStateToProps, {})(CardSearchResult);
 
 const styles = StyleSheet.create({
   rowContainer: {
