@@ -28,6 +28,7 @@ import DeckUpgradeDialog from '../components/DeckUpgradeDialog';
 import CardFilterView from '../components/filter/CardFilterView';
 import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
 import CardLocationFilterView from '../components/filter/CardLocationFilterView';
+import PackFilterView from '../components/filter/PackFilterView';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsView from '../components/settings/SettingsView';
 import LanguageDialog from '../components/settings/LanguageDialog';
@@ -71,6 +72,7 @@ export function registerScreens(Provider, store) {
   Navigation.registerComponentWithRedux('SearchFilters', () => CardFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Enemy', () => CardEnemyFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Location', () => CardLocationFilterView, Provider, store);
+  Navigation.registerComponentWithRedux('SearchFilters.Packs', () => PackFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Chooser', () => SearchMultiSelectView, Provider, store);
   Navigation.registerComponentWithRedux('My.Collection', () => CollectionEditView, Provider, store);
   Navigation.registerComponentWithRedux('Pack', () => PackCardsView, Provider, store);

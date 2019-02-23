@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys, forEach, filter, indexOf, map } from 'lodash';
+import { keys, forEach, filter, indexOf, map, partition } from 'lodash';
 import {
   ActivityIndicator,
   ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
+import { connect } from 'react-redux';
 
 import L from '../../../app/i18n';
 import FactionChooser from './FactionChooser';
@@ -18,6 +19,7 @@ import ToggleFilter from '../../core/ToggleFilter';
 import withFilterFunctions from '../withFilterFunctions';
 import NavButton from '../../core/NavButton';
 import { FACTION_CODES } from '../../../constants';
+import { getAllPacks } from '../../../reducers';
 
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
@@ -31,6 +33,7 @@ class CardFilterView extends React.Component {
     pushFilterView: PropTypes.func.isRequired,
     onToggleChange: PropTypes.func.isRequired,
     onFilterChange: PropTypes.func.isRequired,
+    allPacks: PropTypes.array,
   };
 
   static get options() {
@@ -55,7 +58,6 @@ class CardFilterView extends React.Component {
       hasCost: false,
       hasXp: false,
       hasSkill: false,
-      allCycleNames: [],
       allUses: [],
       allFactions: CARD_FACTION_CODES,
       allTraits: [],
@@ -69,6 +71,7 @@ class CardFilterView extends React.Component {
       levels: [],
     };
 
+    this._onPacksPress = this.onPacksPress.bind(this);
     this._onEnemyPress = this.onEnemyPress.bind(this);
     this._onLocationPress = this.onLocationPress.bind(this);
   }
@@ -87,7 +90,6 @@ class CardFilterView extends React.Component {
       const typeCodesMap = {};
       const usesMap = {};
       const subTypesMap = {};
-      const cycleNamesMap = {};
       const traitsMap = {};
       const packsMap = {};
       const slotsMap = {};
@@ -118,9 +120,6 @@ class CardFilterView extends React.Component {
         }
         if (card.subtype_name) {
           subTypesMap[card.subtype_name] = 1;
-        }
-        if (card.cycle_name) {
-          cycleNamesMap[card.cycle_name] = 1;
         }
         if (card.uses) {
           usesMap[card.uses] = 1;
@@ -156,7 +155,6 @@ class CardFilterView extends React.Component {
         hasCost,
         hasXp,
         hasSkill,
-        allCycleNames: keys(cycleNamesMap).sort(),
         allUses: keys(usesMap).sort(),
         allTraits: keys(traitsMap).sort(),
         allTypes: keys(typesMap).sort(),
@@ -168,6 +166,10 @@ class CardFilterView extends React.Component {
         allIllustrators: keys(illustratorsMap).sort(),
       });
     }, 0);
+  }
+
+  onPacksPress() {
+    this.props.pushFilterView('SearchFilters.Packs');
   }
 
   onEnemyPress() {
@@ -191,6 +193,57 @@ class CardFilterView extends React.Component {
       return `${name}(${values[0]})`;
     }
     return `${name}(${values[0]}-${values[1]})`;
+  }
+
+  selectedPacksText() {
+    const {
+      filters: {
+        packs,
+      },
+      allPacks,
+    } = this.props;
+    if (!allPacks.length || !packs.length) {
+      return L('Packs: All');
+    }
+    const selectedPackNames = new Set(packs);
+    const cyclePackCounts = {};
+    const selectedCyclePackCounts = {};
+    const cycleNames = {};
+    const selectedPacks = filter(
+      allPacks,
+      pack => {
+        if (pack.cycle_position > 1 && pack.cycle_position < 50) {
+          if (pack.position === 1) {
+            cycleNames[pack.cycle_position] = pack.name;
+          }
+          cyclePackCounts[pack.cycle_position] =
+            (cyclePackCounts[pack.cycle_position] || 0) + 1;
+        }
+        if (selectedPackNames.has(pack.name)) {
+          selectedCyclePackCounts[pack.cycle_position] =
+            (selectedCyclePackCounts[pack.cycle_position] || 0) + 1;
+          return true;
+        }
+        return false;
+      }
+    );
+    const [completeCycles, partialCycles] = partition(
+      keys(selectedCyclePackCounts),
+      cycle_position => selectedCyclePackCounts[cycle_position] === cyclePackCounts[cycle_position]);
+
+    const parts = [];
+    forEach(completeCycles, cycle_position => {
+      parts.push(
+        L('{{cycleName}} Cycle', { cycleName: cycleNames[cycle_position] })
+      );
+    });
+    const partialCyclesSet = new Set(partialCycles);
+    forEach(selectedPacks, pack => {
+      if (partialCyclesSet.has(`${pack.cycle_position}`)) {
+        parts.push(pack.name);
+      }
+    });
+    return L('Packs: {{allPacks}}', { allPacks: parts.join(', ') });
   }
 
   enemyFilterText() {
@@ -324,7 +377,6 @@ class CardFilterView extends React.Component {
         types,
         subTypes,
         packs,
-        cycleNames,
         slots,
         encounters,
         illustrators,
@@ -355,7 +407,6 @@ class CardFilterView extends React.Component {
       allTypeCodes,
       allSubTypes,
       allPacks,
-      allCycleNames,
       allSlots,
       allEncounters,
       allIllustrators,
@@ -559,25 +610,8 @@ class CardFilterView extends React.Component {
             onFilterChange={onFilterChange}
           />
         ) }
-        { (cycleNames.length > 0 || allCycleNames.length > 1) && (
-          <FilterChooserButton
-            componentId={componentId}
-            title={L('Cycles')}
-            values={allCycleNames}
-            selection={cycleNames}
-            setting="cycleNames"
-            onFilterChange={onFilterChange}
-          />
-        ) }
         { (packs.length > 0 || allPacks.length > 1) && (
-          <FilterChooserButton
-            componentId={componentId}
-            title={L('Packs')}
-            values={allPacks}
-            selection={packs}
-            setting="packs"
-            onFilterChange={onFilterChange}
-          />
+          <NavButton text={this.selectedPacksText()} onPress={this._onPacksPress} />
         ) }
         { (illustrators.length > 0 || allIllustrators.length > 0) && (
           <FilterChooserButton
@@ -594,7 +628,14 @@ class CardFilterView extends React.Component {
   }
 }
 
-export default withFilterFunctions(CardFilterView);
+
+function mapStateToProps(state) {
+  return {
+    allPacks: getAllPacks(state),
+  };
+}
+
+export default connect(mapStateToProps, {})(withFilterFunctions(CardFilterView));
 
 const styles = StyleSheet.create({
   loadingWrapper: {
