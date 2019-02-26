@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { debounce } from 'lodash';
 import {
   Animated,
   Easing,
@@ -37,16 +38,48 @@ export default class CardQuantityComponent extends React.PureComponent {
 
     this._toggle = this.toggle.bind(this);
 
+    this._throttledCountChange = debounce(
+      props.countChanged,
+      200,
+      { trailing: true }
+    );
+
+    this._increment = this.increment.bind(this);
+    this._decrement = this.decrement.bind(this);
     this._selectCount = this.selectCount.bind(this);
     this._selectZero = this.selectCount.bind(this, 0);
     this._selectOne = this.selectCount.bind(this, 1);
     this._selectTwo = this.selectCount.bind(this, 2);
   }
 
-  selectCount(count) {
+  increment() {
     const {
-      open,
-    } = this.state;
+      limit,
+    } = this.props;
+    this.setState(state => {
+      const count = Math.min(state.count + 1, limit);
+      if (count !== state.count) {
+        this._throttledCountChange(count);
+      }
+      return {
+        count,
+      };
+    });
+  }
+
+  decrement() {
+    this.setState(state => {
+      const count = Math.max(state.count - 1, 0);
+      if (count !== state.count) {
+        this._throttledCountChange(count);
+      }
+      return {
+        count,
+      };
+    });
+  }
+
+  selectCount(count) {
     this.setState({
       count: count,
     }, () => {
@@ -54,7 +87,7 @@ export default class CardQuantityComponent extends React.PureComponent {
         if (TINY_PHONE) {
           this.toggle(true);
         }
-        this.props.countChanged(count);
+        this._throttledCountChange(count);
       }, 0);
     });
   }
@@ -158,7 +191,8 @@ export default class CardQuantityComponent extends React.PureComponent {
         <PlusMinusButtons
           count={count}
           size={44}
-          onChange={this._selectCount}
+          onIncrement={this._increment}
+          onDecrement={this._decrement}
           limit={limit}
           noFill
         />

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { concat, flatMap, forEach, isEqual, map, partition, random, sortBy, throttle } from 'lodash';
+import { concat, debounce, flatMap, forEach, isEqual, map, partition, random, sortBy, throttle } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -107,9 +107,9 @@ class CardResultList extends React.Component {
       },
     );
     this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
-    this._throttledUpdateResults = throttle(
+    this._throttledUpdateResults = debounce(
       this.updateResults.bind(this),
-      200,
+      100,
       { trailing: true });
     this._getItem = this.getItem.bind(this);
     this._renderSectionHeader = this.renderSectionHeader.bind(this);

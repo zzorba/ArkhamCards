@@ -26,7 +26,7 @@ export default class EditTraumaDialog extends React.Component {
 
     this._onCancel = this.onCancel.bind(this);
     this._onSubmit = this.onSubmit.bind(this);
-    this._onTraumaChange = this.onTraumaChange.bind(this);
+    this._mutateTrauma = this.mutateTrauma.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -58,9 +58,11 @@ export default class EditTraumaDialog extends React.Component {
     this.props.hideDialog();
   }
 
-  onTraumaChange(trauma) {
-    this.setState({
-      trauma,
+  mutateTrauma(mutate) {
+    this.setState(state => {
+      return {
+        trauma: mutate(state.trauma),
+      };
     });
   }
 
@@ -84,7 +86,7 @@ export default class EditTraumaDialog extends React.Component {
         <EditTraumaDialogContent
           investigator={investigator}
           trauma={trauma}
-          onTraumaChange={this._onTraumaChange}
+          mutateTrauma={this._mutateTrauma}
         />
         <DialogComponent.Button label={L('Cancel')} onPress={this._onCancel} />
         <DialogComponent.Button label={L('Save')} onPress={this._onSubmit} />

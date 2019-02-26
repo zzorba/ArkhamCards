@@ -12,7 +12,7 @@ import PlusMinusButtons from '../../core/PlusMinusButtons';
 export default class ChaosTokenRow extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
-    onCountChange: PropTypes.func.isRequired,
+    mutateCount: PropTypes.func.isRequired,
     originalCount: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
     limit: PropTypes.number.isRequired,
@@ -21,15 +21,25 @@ export default class ChaosTokenRow extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this._onChange = this.onChange.bind(this);
+    this._increment = this.increment.bind(this);
+    this._decrement = this.decrement.bind(this);
   }
 
-  onChange(count) {
+  increment() {
     const {
       id,
-      onCountChange,
+      mutateCount,
+      limit,
     } = this.props;
-    onCountChange(id, count);
+    mutateCount(id, count => Math.min(count + 1, limit));
+  }
+
+  decrement() {
+    const {
+      id,
+      mutateCount,
+    } = this.props;
+    mutateCount(id, count => Math.max(count - 1, 0));
   }
 
   static renderTokens(id, count, status) {
@@ -80,7 +90,8 @@ export default class ChaosTokenRow extends React.PureComponent {
           <ChaosToken id={id} />
           <PlusMinusButtons
             count={count}
-            onChange={this._onChange}
+            onIncrement={this._increment}
+            onDecrement={this._decrement}
             size={36}
             limit={limit}
           />

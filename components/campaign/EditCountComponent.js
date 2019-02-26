@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { debounce } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -21,23 +22,39 @@ export default class EditCountComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this._updateCount = this.updateCount.bind(this);
+    this.state = {
+      count: props.count,
+    };
+
+    this._increment = this.increment.bind(this);
+    this._decrement = this.decrement.bind(this);
+    this._countChanged = debounce(props.countChanged, 200, { trailing: true });
   }
 
-  updateCount(count) {
-    const {
-      countChanged,
-      index,
-    } = this.props;
-    countChanged(index, count);
+  increment() {
+    this.setState(state => {
+      const count = state.count + 1;
+      this._countChanged(this.props.index, count);
+      return { count };
+    });
+  }
+
+  decrement() {
+    this.setState(state => {
+      const count = Math.max(state.count - 1, 0);
+      this._countChanged(this.props.index, count);
+      return { count };
+    });
   }
 
   render() {
     const {
       title,
       isInvestigator,
-      count,
     } = this.props;
+    const {
+      count,
+    } = this.state;
     return (
       <View style={[styles.marginTop, isInvestigator ? {} : styles.container]}>
         <View style={styles.row}>
@@ -51,7 +68,8 @@ export default class EditCountComponent extends React.Component {
           </View>
           <PlusMinusButtons
             count={count}
-            onChange={this._updateCount}
+            onIncrement={this._increment}
+            onDecrement={this._decrement}
             size={36}
           />
         </View>

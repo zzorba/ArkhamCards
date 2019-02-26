@@ -16,48 +16,62 @@ export default class EditTraumaDialogContent extends React.Component {
   static propTypes = {
     investigator: PropTypes.object,
     trauma: PropTypes.object,
-    onTraumaChange: PropTypes.func.isRequired,
+    mutateTrauma: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
-    this._onPhysicalChange = this.onPhysicalChange.bind(this);
-    this._onMentalChange = this.onMentalChange.bind(this);
+    this._incPhysical = this.incPhysical.bind(this);
+    this._decPhysical = this.decPhysical.bind(this);
+    this._incMental = this.incMental.bind(this);
+    this._decMental = this.decMental.bind(this);
     this._toggleKilled = this.toggleKilled.bind(this);
     this._toggleInsane = this.toggleInsane.bind(this);
   }
 
-  onPhysicalChange(count) {
+  incPhysical() {
     const {
-      trauma,
-      onTraumaChange,
+      investigator,
     } = this.props;
-    onTraumaChange(Object.assign({}, trauma, { physical: count }));
+    const health = investigator ? investigator.health : 0;
+    this.props.mutateTrauma(trauma =>
+      Object.assign({}, trauma, { physical: Math.min(trauma.physical + 1, health) })
+    );
   }
 
-  onMentalChange(count) {
+  decPhysical() {
+    this.props.mutateTrauma(trauma =>
+      Object.assign({}, trauma, { physical: Math.max(trauma.physical - 1, 0) })
+    );
+  }
+
+  incMental() {
     const {
-      trauma,
-      onTraumaChange,
+      investigator,
     } = this.props;
-    onTraumaChange(Object.assign({}, trauma, { mental: count }));
+    const sanity = investigator ? investigator.sanity : 0;
+    this.props.mutateTrauma(trauma =>
+      Object.assign({}, trauma, { mental: Math.min(trauma.mental + 1, sanity) })
+    );
+  }
+
+  decMental() {
+    this.props.mutateTrauma(trauma =>
+      Object.assign({}, trauma, { mental: Math.max(trauma.mental - 1, 0) })
+    );
   }
 
   toggleKilled() {
-    const {
-      trauma,
-      onTraumaChange,
-    } = this.props;
-    onTraumaChange(Object.assign({}, trauma, { killed: !trauma.killed }));
+    this.props.mutateTrauma(trauma =>
+      Object.assign({}, trauma, { killed: !trauma.killed })
+    );
   }
 
   toggleInsane() {
-    const {
-      trauma,
-      onTraumaChange,
-    } = this.props;
-    onTraumaChange(Object.assign({}, trauma, { insane: !trauma.insane }));
+    this.props.mutateTrauma(trauma =>
+      Object.assign({}, trauma, { insane: !trauma.insane })
+    );
   }
 
   render() {
@@ -86,7 +100,8 @@ export default class EditTraumaDialogContent extends React.Component {
             <PlusMinusButtons
               count={physical || 0}
               limit={health}
-              onChange={this._onPhysicalChange}
+              onIncrement={this._incPhysical}
+              onDecrement={this._decPhysical}
               size={36}
               disabled={killed || insane}
               dark
@@ -102,7 +117,8 @@ export default class EditTraumaDialogContent extends React.Component {
             <PlusMinusButtons
               count={mental || 0}
               limit={sanity}
-              onChange={this._onMentalChange}
+              onIncrement={this._incMental}
+              onDecrement={this._decMental}
               size={36}
               disabled={killed || insane}
               dark

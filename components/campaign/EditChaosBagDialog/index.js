@@ -41,7 +41,7 @@ export default class EditChaosBagDialog extends React.Component {
       chaosBag: Object.assign({}, props.chaosBag),
     };
 
-    this._onCountChange = this.onCountChange.bind(this);
+    this._mutateCount = this.mutateCount.bind(this);
     this._saveChanges = throttle(this.saveChanges.bind(this), 200);
 
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -62,9 +62,14 @@ export default class EditChaosBagDialog extends React.Component {
     Navigation.pop(this.props.componentId);
   }
 
-  onCountChange(id, count) {
-    this.setState({
-      chaosBag: Object.assign({}, this.state.chaosBag, { [id]: count }),
+  mutateCount(id, mutate) {
+    this.setState(state => {
+      return {
+        chaosBag: Object.assign(
+          {},
+          state.chaosBag,
+          { [id]: mutate(state.chaosBag[id]) }),
+      };
     });
   }
 
@@ -91,7 +96,7 @@ export default class EditChaosBagDialog extends React.Component {
                 originalCount={originalCount || 0}
                 count={chaosBag[id] || 0}
                 limit={CHAOS_BAG_TOKEN_COUNTS[id]}
-                onCountChange={this._onCountChange}
+                mutateCount={this._mutateCount}
               />
             );
           }) }

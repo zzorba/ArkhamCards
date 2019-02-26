@@ -11,7 +11,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 export default class PlusMinusButtons extends React.PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onIncrement: PropTypes.func.isRequired,
+    onDecrement: PropTypes.func.isRequired,
     limit: PropTypes.number,
     style: ViewPropTypes.style,
     size: PropTypes.number,
@@ -19,29 +20,6 @@ export default class PlusMinusButtons extends React.PureComponent {
     dark: PropTypes.bool,
     noFill: PropTypes.bool,
   };
-
-  constructor(props) {
-    super(props);
-
-    this._increment = this.increment.bind(this);
-    this._decrement = this.decrement.bind(this);
-  }
-
-  increment() {
-    const {
-      count,
-      onChange,
-    } = this.props;
-    onChange(count + 1);
-  }
-
-  decrement() {
-    const {
-      count,
-      onChange,
-    } = this.props;
-    onChange(count - 1);
-  }
 
   disabledColor() {
     const {
@@ -64,6 +42,7 @@ export default class PlusMinusButtons extends React.PureComponent {
       size = 36,
       disabled,
       noFill,
+      onIncrement,
     } = this.props;
     const atLimit = limit && (count === limit);
     if (count === null || atLimit || disabled) {
@@ -78,7 +57,7 @@ export default class PlusMinusButtons extends React.PureComponent {
       );
     }
     return (
-      <TouchableOpacity onPress={this._increment}>
+      <TouchableOpacity onPress={onIncrement}>
         <MaterialCommunityIcons
           name={noFill ? 'plus-box-outline' : 'plus-box'}
           size={size}
@@ -94,10 +73,11 @@ export default class PlusMinusButtons extends React.PureComponent {
       size = 36,
       disabled,
       noFill,
+      onDecrement,
     } = this.props;
     if (count > 0 && !disabled) {
       return (
-        <TouchableOpacity onPress={this._decrement}>
+        <TouchableOpacity onPress={onDecrement}>
           <MaterialCommunityIcons
             name={noFill ? 'minus-box-outline' : 'minus-box'}
             size={size}

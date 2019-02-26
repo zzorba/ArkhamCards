@@ -31,14 +31,21 @@ export default class CountEditDialog extends React.Component {
       submitting: false,
     };
 
-    this._onCountChange = this.onCountChange.bind(this);
+    this._increment = this.increment.bind(this);
+    this._decrement = this.decrement.bind(this);
     this._onDonePress = this.onDonePress.bind(this);
     this._onCancelPress = this.onCancelPress.bind(this);
   }
 
-  onCountChange(value) {
-    this.setState({
-      count: value,
+  increment() {
+    this.setState(state => {
+      return { count: state.count + 1 };
+    });
+  }
+
+  decrement() {
+    this.setState(state => {
+      return { count: Math.max(state.count - 1, 0) };
     });
   }
 
@@ -98,7 +105,8 @@ export default class CountEditDialog extends React.Component {
             </Text>
             <PlusMinusButtons
               count={count}
-              onChange={this._onCountChange}
+              onIncrement={this._increment}
+              onDecrement={this._decrement}
               size={36}
               dark
             />

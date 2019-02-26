@@ -78,7 +78,8 @@ class DeckUpgradeDialog extends React.Component {
     };
 
     this._handleDeckResult = this.handleDeckResult.bind(this);
-    this._onXpChange = this.onXpChange.bind(this);
+    this._incXp = this.incXp.bind(this);
+    this._decXp = this.decXp.bind(this);
     this._onExileCountsChange = this.onExileCountsChange.bind(this);
     this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
 
@@ -187,9 +188,15 @@ class DeckUpgradeDialog extends React.Component {
     });
   }
 
-  onXpChange(xp) {
-    this.setState({
-      xp: xp,
+  incXp() {
+    this.setState(state => {
+      return { xp: state.xp + 1 };
+    });
+  }
+
+  decXp() {
+    this.setState(state => {
+      return { xp: Math.max(state.xp - 1, 0) };
     });
   }
 
@@ -266,7 +273,8 @@ class DeckUpgradeDialog extends React.Component {
             </Text>
             <PlusMinusButtons
               count={xp}
-              onChange={this._onXpChange}
+              onIncrement={this._incXp}
+              onDecrement={this._decXp}
             />
           </View>
         </View>
