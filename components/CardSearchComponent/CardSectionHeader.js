@@ -9,6 +9,7 @@ import {
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
 
+export const ROW_HEADER_HEIGHT = 30;
 export default function CardSectionHeader({ title, bold }) {
   return (
     <View style={[styles.row, bold ? styles.boldRow : {}]}>
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    height: 30,
+    height: ROW_HEADER_HEIGHT,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },

@@ -5,6 +5,8 @@ import {
   StyleSheet,
 } from 'react-native';
 
+export const ROW_NON_COLLECTION_HEIGHT = 38;
+
 export default class ShowNonCollectionFooter extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
@@ -38,6 +40,6 @@ export default class ShowNonCollectionFooter extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-    height: 38,
+    height: ROW_NON_COLLECTION_HEIGHT,
   },
 });
