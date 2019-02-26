@@ -245,7 +245,7 @@ export default class EncounterIcon extends React.PureComponent {
       case 'agents_of_azathoth':
       case 'anettes_coven':
       case 'at_deaths_doorstep':
-      case 'city_of_sin':
+      case 'city_of_sins':
       case 'disappearance_at_the_twilight_estate':
       case 'inexorable_fate':
       case 'realm_of_death':
