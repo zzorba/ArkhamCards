@@ -43,20 +43,20 @@ export default class CardQuantityComponent extends React.PureComponent {
     this._selectTwo = this.selectCount.bind(this, 2);
   }
 
-  static getDerivedStateFromProps(props) {
-    return {
-      count: props.count,
-    };
-  }
-
   selectCount(count) {
+    const {
+      open,
+    } = this.state;
     this.setState({
       count: count,
+    }, () => {
+      setTimeout(() => {
+        if (TINY_PHONE) {
+          this.toggle(true);
+        }
+        this.props.countChanged(count);
+      }, 0);
     });
-    setTimeout(() => {
-      this.toggle();
-      this.props.countChanged(count);
-    }, 50);
   }
 
   toggle() {
