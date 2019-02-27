@@ -22,6 +22,7 @@ import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
 import { getAllDecks, getCampaigns } from '../../../reducers';
 import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
 
 class MyCampaignsView extends React.Component {
   static propTypes = {
@@ -38,6 +39,7 @@ class MyCampaignsView extends React.Component {
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',
+          color: COLORS.navButton,
         }],
       },
     };

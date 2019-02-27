@@ -19,6 +19,7 @@ import * as Actions from '../../../actions';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign } from '../../../reducers';
 import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
 
 class AddScenarioResultView extends React.Component {
   static propTypes = {
@@ -73,6 +74,7 @@ class AddScenarioResultView extends React.Component {
           text: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
+          color: COLORS.navButton,
           enabled: (!!this.state.scenario.scenario) &&
             !!(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
         }],

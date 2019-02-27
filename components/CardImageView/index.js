@@ -13,6 +13,7 @@ import { Navigation } from 'react-native-navigation';
 
 import { iconsMap } from '../../app/NavIcons';
 import { HEADER_HEIGHT } from '../../styles/sizes';
+import { COLORS } from '../../styles/colors';
 
 class CardImageView extends React.Component {
   static propTypes = {
@@ -50,6 +51,7 @@ class CardImageView extends React.Component {
           rightButtons: [{
             id: 'flip',
             icon: iconsMap.flip_card,
+            color: COLORS.navButton,
           }],
         },
       });

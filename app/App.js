@@ -15,6 +15,7 @@ export default class App {
 
     Navigation.setDefaultOptions({
       topBar: {
+        buttonColor: COLORS.lightBlue,
         background: {
           color: 'white',
         },

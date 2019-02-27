@@ -5605,9 +5605,9 @@ react-native-animatable@^1.2.4:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-app-auth@4.1.0:
+react-native-app-auth@zzorba/react-native-app-auth#fix_null_response_scope:
   version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-4.1.0.tgz#33f078de9584f6cf8af66de8f2b0240137555ba0"
+  resolved "https://codeload.github.com/zzorba/react-native-app-auth/tar.gz/e181a529602a5b1e2832dcfba5f0f59e7e3bdee4"
 
 react-native-blur@3.2.2:
   version "3.2.2"

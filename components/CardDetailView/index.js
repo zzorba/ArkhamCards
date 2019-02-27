@@ -17,6 +17,7 @@ import L from '../../app/i18n';
 import { iconsMap } from '../../app/NavIcons';
 import * as Actions from '../../actions';
 import typography from '../../styles/typography';
+import { COLORS } from '../../styles/colors';
 import AppIcon from '../../assets/AppIcon';
 import Button from '../core/Button';
 import { getShowSpoilers } from '../../reducers';
@@ -60,9 +61,11 @@ class CardDetailView extends React.Component {
     const rightButtons = [{
       icon: iconsMap.web,
       id: 'share',
+      color: COLORS.navButton,
     }, {
       icon: iconsMap.faq,
       id: 'faq',
+      color: COLORS.navButton,
     }];
     if (props.card &&
       props.card.type_code === 'investigator' &&
@@ -71,6 +74,7 @@ class CardDetailView extends React.Component {
       rightButtons.push({
         icon: iconsMap.deck,
         id: 'deck',
+        color: COLORS.navButton,
       });
     }
     Navigation.mergeOptions(props.componentId, {

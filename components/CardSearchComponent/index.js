@@ -24,6 +24,7 @@ import { filterToQuery } from '../../lib/filters';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
 import typography from '../../styles/typography';
+import { COLORS } from '../../styles/colors';
 
 class CardSearchComponent extends React.Component {
   static propTypes = {
@@ -88,11 +89,13 @@ class CardSearchComponent extends React.Component {
     },{
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
+      color: COLORS.navButton,
     }];
     if (props.mythosToggle) {
       rightButtons.push({
         icon: iconsMap.auto_fail,
         id: 'mythos',
+        color: COLORS.navButton,
       });
     }
     if (props.onDeckCountChange) {
@@ -257,11 +260,11 @@ class CardSearchComponent extends React.Component {
     }, {
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
-      color: onDeckCountChange ? 'white' : undefined,
+      color: onDeckCountChange ? 'white' : COLORS.navButton,
     }, {
       icon: mythosMode ? iconsMap.per_investigator : iconsMap.auto_fail,
       id: 'mythos',
-      color: onDeckCountChange ? 'white' : undefined,
+      color: onDeckCountChange ? 'white' : COLORS.navButton,
     }];
 
     Navigation.mergeOptions(componentId, {

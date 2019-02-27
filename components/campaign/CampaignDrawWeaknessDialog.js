@@ -18,6 +18,7 @@ import { iconsMap } from '../../app/NavIcons';
 import { saveDeck } from '../../lib/authApi';
 import DeckValidation from '../../lib/DeckValidation';
 import { getCampaign, getAllDecks, getLatestDeckIds } from '../../reducers';
+import { COLORS } from '../../styles/colors';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards from '../withPlayerCards';
 
@@ -44,6 +45,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
         rightButtons: [{
           icon: iconsMap.edit,
           id: 'edit',
+          color: COLORS.navButton,
         }],
       },
     };

@@ -78,9 +78,11 @@ class CampaignDetailView extends React.Component {
         rightButtons: [{
           icon: iconsMap.share,
           id: 'share',
+          color: COLORS.navButton,
         }, {
           icon: iconsMap.edit,
           id: 'edit',
+          color: COLORS.navButton,
         }],
       },
     });

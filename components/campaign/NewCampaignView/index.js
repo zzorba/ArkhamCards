@@ -33,6 +33,7 @@ import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChoos
 import withWeaknessCards from '../../weakness/withWeaknessCards';
 import { getNextCampaignId } from '../../../reducers';
 import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
 import { newCampaign } from '../actions';
 
 class NewCampaignView extends React.Component {
@@ -229,6 +230,7 @@ class NewCampaignView extends React.Component {
           id: 'save',
           showAsAction: 'ifRoom',
           enabled: campaignCode !== CUSTOM || !!name,
+          color: COLORS.navButton,
         }],
       },
     });

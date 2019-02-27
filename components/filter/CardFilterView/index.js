@@ -20,6 +20,7 @@ import withFilterFunctions from '../withFilterFunctions';
 import NavButton from '../../core/NavButton';
 import { FACTION_CODES } from '../../../constants';
 import { getAllPacks } from '../../../reducers';
+import { COLORS } from '../../../styles/colors';
 
 const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
 
@@ -45,6 +46,7 @@ class CardFilterView extends React.Component {
         rightButtons: [{
           text: L('Clear'),
           id: 'clear',
+          color: COLORS.navButton,
         }],
       },
     };

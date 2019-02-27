@@ -62,7 +62,7 @@ const EmphasisMarkdownTagRule = {
 };
 
 const MalformedBoldItalicHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/b><\\/i>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([^<]+?)<\\/b><\\/i>')),
   order: 1,
   parse: (capture) => {
     return { text: capture[1] };
@@ -71,7 +71,7 @@ const MalformedBoldItalicHtmlTagRule = {
 };
 
 const DelHtmlTagRule = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<del>([\\s\\S]+?)<\\/del>')),
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<del>([^<]+?)<\\/del>')),
   order: 1,
   parse: (capture) => {
     return { text: capture[1] };

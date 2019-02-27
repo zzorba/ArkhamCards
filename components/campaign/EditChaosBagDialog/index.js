@@ -13,6 +13,7 @@ import L from '../../../app/i18n';
 import ChaosTokenRow from './ChaosTokenRow';
 import { CHAOS_BAG_TOKEN_COUNTS, CHAOS_TOKEN_ORDER } from '../../../constants';
 import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
 
 export default class EditChaosBagDialog extends React.Component {
   static propTypes = {
@@ -29,6 +30,7 @@ export default class EditChaosBagDialog extends React.Component {
           text: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
+          color: COLORS.navButton,
         }],
       },
     };

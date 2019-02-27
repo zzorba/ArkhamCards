@@ -9,6 +9,7 @@ import InvestigatorsListComponent from '../InvestigatorsListComponent';
 import NewDeckOptionsDialog from './NewDeckOptionsDialog';
 import L from '../../app/i18n';
 import { iconsMap } from '../../app/NavIcons';
+import { COLORS } from '../../styles/colors';
 
 class NewDeckView extends React.Component {
   static propTypes = {
@@ -30,10 +31,12 @@ class NewDeckView extends React.Component {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
+          color: COLORS.navButton,
         }],
         rightButtons: [{
           icon: iconsMap['sort-by-alpha'],
           id: 'sort',
+          color: COLORS.navButton,
         }],
       },
     };

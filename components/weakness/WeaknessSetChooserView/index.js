@@ -17,6 +17,7 @@ import { BASIC_WEAKNESS_QUERY } from '../../../data/query';
 import * as Actions from '../../../actions';
 import { iconsMap } from '../../../app/NavIcons';
 import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
 
 class WeaknessSetChooserView extends React.Component {
   static propTypes = {
@@ -31,6 +32,7 @@ class WeaknessSetChooserView extends React.Component {
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',
+          color: COLORS.navButton,
         }],
       },
     };

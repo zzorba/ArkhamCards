@@ -5,6 +5,7 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
 import ExileCardSelectorComponent from './ExileCardSelectorComponent';
+import { COLORS } from '../styles/colors';
 
 export default class ExileCardDialog extends React.Component {
   static propTypes = {
@@ -21,6 +22,7 @@ export default class ExileCardDialog extends React.Component {
           text: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
+          color: COLORS.navButton,
         }],
       },
     };

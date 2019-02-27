@@ -17,6 +17,7 @@ import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
 import withPlayerCards from '../withPlayerCards';
 import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds } from '../../reducers';
+import { COLORS } from '../../styles/colors';
 
 class MyDecksSelectorDialog extends React.Component {
   static propTypes = {
@@ -44,10 +45,12 @@ class MyDecksSelectorDialog extends React.Component {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
+          color: COLORS.navButton,
         }],
         rightButtons: passProps.showOnlySelectedDeckIds ? [] : [{
           icon: iconsMap.add,
           id: 'add',
+          color: COLORS.navButton,
         }],
       },
     };
