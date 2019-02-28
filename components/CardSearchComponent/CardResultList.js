@@ -35,19 +35,22 @@ import {
   SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
 import typography from '../../styles/typography';
-import { s, m } from '../../styles/space';
+import { s, m, l } from '../../styles/space';
 
 const SCROLL_DISTANCE_BUFFER = 50;
 
-const FUN_LOADING_MESSAGES = [
-  'Investigating for clues',
-  'Cursing at the tentacle token',
-  'Drawing a mythos card with surge',
-  'Placing doom on the agenda',
-  'Reticulating spines',
-  'Trying to make sense of the Time Warp FAQ',
-  'Taking three damage and three horror',
-];
+function funLoadingMessages() {
+  return [
+    L('Investigating for clues'),
+    L('Cursing at the tentacle token'),
+    L('Drawing a mythos card with surge'),
+    L('Placing doom on the agenda'),
+    L('Reticulating spines'),
+    L('Trying to make sense of the Time Warp FAQ'),
+    L('Taking three damage and three horror'),
+    L('Up by 5... drawing the tentacles'),
+  ];
+}
 
 class CardResultList extends React.Component {
   static propTypes = {
@@ -72,7 +75,8 @@ class CardResultList extends React.Component {
   };
 
   static randomLoadingMessage() {
-    return FUN_LOADING_MESSAGES[random(0, FUN_LOADING_MESSAGES.length - 1)];
+    const messages = funLoadingMessages();
+    return messages[random(0, messages.length - 1)];
   }
 
   constructor(props) {
@@ -594,9 +598,11 @@ class CardResultList extends React.Component {
     if (this.isLoading()) {
       return (
         <View style={styles.loading}>
-          <Text style={[typography.small, styles.loadingText]}>
-            { `${loadingMessage}...` }
-          </Text>
+          <View style={styles.loadingText}>
+            <Text style={typography.text}>
+              { `${loadingMessage}...` }
+            </Text>
+          </View>
           <ActivityIndicator
             style={[{ height: 80 }]}
             size="small"
@@ -679,14 +685,14 @@ const styles = StyleSheet.create({
     height: 300,
   },
   loading: {
-    margin: m,
+    flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   loadingText: {
-    marginTop: m,
-    marginBottom: s,
+    paddingTop: m,
+    paddingBottom: s,
   },
   button: {
     margin: s,

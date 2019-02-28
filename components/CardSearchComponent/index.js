@@ -86,6 +86,9 @@ class CardSearchComponent extends React.Component {
           lightButton: !!props.onDeckCountChange,
         },
       },
+      enabled: true,
+      icon: iconsMap.tune,
+      color: COLORS.navButton,
     },{
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
