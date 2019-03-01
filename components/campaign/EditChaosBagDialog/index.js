@@ -152,8 +152,8 @@ export default class EditChaosBagDialog extends React.Component {
       return {
         chaosBag: newChaosBag,
         hasPendingEdits: find(
-          keys(chaosBag),
-          key => chaosBag[key] !== newChaosBag[key]),
+          keys(CHAOS_BAG_TOKEN_COUNTS),
+          key => (chaosBag[key] || 0) !== (newChaosBag[key] || 0)),
       };
     });
   }
