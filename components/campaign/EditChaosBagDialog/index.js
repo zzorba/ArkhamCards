@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { keys, map, sortBy, throttle } from 'lodash';
+import { find, keys, map, sortBy, throttle } from 'lodash';
 import {
+  Alert,
+  BackHandler,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,6 +13,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import { iconsMap } from '../../../app/NavIcons';
 import ChaosTokenRow from './ChaosTokenRow';
 import { CHAOS_BAG_TOKEN_COUNTS, CHAOS_TOKEN_ORDER } from '../../../constants';
 import typography from '../../../styles/typography';
@@ -26,7 +30,20 @@ export default class EditChaosBagDialog extends React.Component {
   static get options() {
     return {
       topBar: {
+        leftButtons: [
+          Platform.OS === 'ios' ? {
+            systemItem: 'cancel',
+            text: L('Cancel'),
+            id: 'back',
+            color: COLORS.navButton,
+          } : {
+            icon: iconsMap['arrow-left'],
+            id: 'androidBack',
+            color: COLORS.navButton,
+          },
+        ],
         rightButtons: [{
+          systemItem: 'save',
           text: L('Save'),
           id: 'save',
           showAsAction: 'ifRoom',
@@ -41,22 +58,80 @@ export default class EditChaosBagDialog extends React.Component {
 
     this.state = {
       chaosBag: Object.assign({}, props.chaosBag),
+      visible: true,
     };
 
     this._mutateCount = this.mutateCount.bind(this);
     this._saveChanges = throttle(this.saveChanges.bind(this), 200);
 
+    this._handleBackPress = this.handleBackPress.bind(this);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
   componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
     this._navEventListener.remove();
+  }
+
+  componentDidAppear() {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  componentDidDisappear() {
+    this.setState({
+      visible: false,
+    });
   }
 
   navigationButtonPressed({ buttonId }) {
     if (buttonId === 'save') {
       this._saveChanges();
+    } else if (buttonId === 'back' || buttonId === 'androidBack') {
+      this.handleBackPress();
     }
+  }
+
+  handleBackPress() {
+    const {
+      componentId,
+    } = this.props;
+    const {
+      visible,
+      hasPendingEdits,
+    } = this.state;
+    if (!visible) {
+      return false;
+    }
+    if (hasPendingEdits) {
+      Alert.alert(
+        L('Save changes?'),
+        L('Looks like you have made some changes that have not been saved.'),
+        [{
+          text: L('Save Changes'),
+          onPress: () => {
+            this._saveChanges();
+          },
+        }, {
+          text: L('Discard Changes'),
+          style: 'destructive',
+          onPress: () => {
+            Navigation.pop(componentId);
+          },
+        }, {
+          text: L('Cancel'),
+          style: 'cancel',
+        }],
+      );
+    } else {
+      Navigation.pop(componentId);
+    }
+    return true;
   }
 
   saveChanges() {
@@ -66,11 +141,19 @@ export default class EditChaosBagDialog extends React.Component {
 
   mutateCount(id, mutate) {
     this.setState(state => {
+      const {
+        chaosBag,
+      } = this.props;
+      const newChaosBag = Object.assign(
+        {},
+        state.chaosBag,
+        { [id]: mutate(state.chaosBag[id]) }
+      );
       return {
-        chaosBag: Object.assign(
-          {},
-          state.chaosBag,
-          { [id]: mutate(state.chaosBag[id]) }),
+        chaosBag: newChaosBag,
+        hasPendingEdits: find(
+          keys(chaosBag),
+          key => chaosBag[key] !== newChaosBag[key]),
       };
     });
   }

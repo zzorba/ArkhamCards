@@ -4,7 +4,6 @@ import { countBy, keys } from 'lodash';
 import {
   Platform,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -51,10 +50,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  count: {
-    color: 'white',
-    fontWeight: '900',
-    fontSize: 10,
   },
 });

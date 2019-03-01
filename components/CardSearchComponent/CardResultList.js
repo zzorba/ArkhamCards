@@ -35,7 +35,7 @@ import {
   SORT_BY_ENCOUNTER_SET,
 } from '../CardSortDialog/constants';
 import typography from '../../styles/typography';
-import { s, m, l } from '../../styles/space';
+import { s, m } from '../../styles/space';
 
 const SCROLL_DISTANCE_BUFFER = 50;
 
