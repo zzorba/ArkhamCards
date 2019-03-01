@@ -190,13 +190,13 @@ class DeckUpgradeDialog extends React.Component {
 
   incXp() {
     this.setState(state => {
-      return { xp: state.xp + 1 };
+      return { xp: (state.xp || 0) + 1 };
     });
   }
 
   decXp() {
     this.setState(state => {
-      return { xp: Math.max(state.xp - 1, 0) };
+      return { xp: Math.max((state.xp || 0) - 1, 0) };
     });
   }
 

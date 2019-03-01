@@ -39,13 +39,13 @@ export default class CountEditDialog extends React.Component {
 
   increment() {
     this.setState(state => {
-      return { count: state.count + 1 };
+      return { count: (state.count || 0) + 1 };
     });
   }
 
   decrement() {
     this.setState(state => {
-      return { count: Math.max(state.count - 1, 0) };
+      return { count: Math.max((state.count || 0) - 1, 0) };
     });
   }
 

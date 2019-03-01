@@ -147,7 +147,7 @@ export default class EditChaosBagDialog extends React.Component {
       const newChaosBag = Object.assign(
         {},
         state.chaosBag,
-        { [id]: mutate(state.chaosBag[id]) }
+        { [id]: mutate(state.chaosBag[id] || 0) }
       );
       return {
         chaosBag: newChaosBag,

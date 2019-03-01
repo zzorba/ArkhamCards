@@ -33,7 +33,7 @@ export default class EditCountComponent extends React.Component {
 
   increment() {
     this.setState(state => {
-      const count = state.count + 1;
+      const count = (state.count || 0) + 1;
       this._countChanged(this.props.index, count);
       return { count };
     });
@@ -41,7 +41,7 @@ export default class EditCountComponent extends React.Component {
 
   decrement() {
     this.setState(state => {
-      const count = Math.max(state.count - 1, 0);
+      const count = Math.max((state.count || 0) - 1, 0);
       this._countChanged(this.props.index, count);
       return { count };
     });

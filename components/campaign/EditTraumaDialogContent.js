@@ -36,13 +36,13 @@ export default class EditTraumaDialogContent extends React.Component {
     } = this.props;
     const health = investigator ? investigator.health : 0;
     this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { physical: Math.min(trauma.physical + 1, health) })
+      Object.assign({}, trauma, { physical: Math.min((trauma.physical || 0) + 1, health) })
     );
   }
 
   decPhysical() {
     this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { physical: Math.max(trauma.physical - 1, 0) })
+      Object.assign({}, trauma, { physical: Math.max((trauma.physical || 0) - 1, 0) })
     );
   }
 
@@ -52,13 +52,13 @@ export default class EditTraumaDialogContent extends React.Component {
     } = this.props;
     const sanity = investigator ? investigator.sanity : 0;
     this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { mental: Math.min(trauma.mental + 1, sanity) })
+      Object.assign({}, trauma, { mental: Math.min((trauma.mental || 0) + 1, sanity) })
     );
   }
 
   decMental() {
     this.props.mutateTrauma(trauma =>
-      Object.assign({}, trauma, { mental: Math.max(trauma.mental - 1, 0) })
+      Object.assign({}, trauma, { mental: Math.max((trauma.mental || 0) - 1, 0) })
     );
   }
 

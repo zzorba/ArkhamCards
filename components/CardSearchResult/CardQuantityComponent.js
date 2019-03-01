@@ -57,7 +57,7 @@ export default class CardQuantityComponent extends React.PureComponent {
       limit,
     } = this.props;
     this.setState(state => {
-      const count = Math.min(state.count + 1, limit);
+      const count = Math.min((state.count || 0) + 1, limit);
       if (count !== state.count) {
         this._throttledCountChange(count);
       }
@@ -69,7 +69,7 @@ export default class CardQuantityComponent extends React.PureComponent {
 
   decrement() {
     this.setState(state => {
-      const count = Math.max(state.count - 1, 0);
+      const count = Math.max((state.count || 0) - 1, 0);
       if (count !== state.count) {
         this._throttledCountChange(count);
       }
