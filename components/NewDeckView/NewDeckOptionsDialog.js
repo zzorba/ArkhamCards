@@ -199,6 +199,7 @@ class NewDeckOptionsDialog extends React.Component {
           investigator.code,
           deckName,
           this.getSlots(),
+          {},
           'too_few_cards'
         );
         handleAuthErrors(

@@ -69,9 +69,10 @@ class CampaignDeckDetail extends React.Component {
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
     const {
       slots,
+      ignoreDeckLimitSlots,
     } = parsedDeck;
 
     const validator = new DeckValidation(investigator);
@@ -80,7 +81,10 @@ class CampaignDeckDetail extends React.Component {
       if (!card) {
         return [];
       }
-      return map(range(0, slots[code]), () => card);
+      return map(
+        range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
+        () => card
+      );
     }));
     return (
       <View style={styles.investigatorNotes}>
@@ -159,7 +163,7 @@ class CampaignSubDeckDetail extends React.Component {
       }
       return L('{{xpCount}} available', { xpCount: xp });
     }
-    return L('{{totalXp}} total', { totalXp: parsedDeck.totalXp || 0 });
+    return L('{{totalXp}} total', { totalXp: parsedDeck.experience || 0 });
   }
 
   render() {
@@ -177,7 +181,7 @@ class CampaignSubDeckDetail extends React.Component {
     const eliminated = isEliminated(
       investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
       investigator);
-    const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
     return (
       <View style={styles.investigatorSubNotes}>
         <View style={styles.section}>

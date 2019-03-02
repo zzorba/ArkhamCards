@@ -42,6 +42,7 @@ class CardSearchComponent extends React.Component {
     onDeckCountChange: PropTypes.func,
     limits: PropTypes.object,
     footer: PropTypes.node,
+    modal: PropTypes.bool,
   };
 
   constructor(props) {
@@ -175,6 +176,7 @@ class CardSearchComponent extends React.Component {
       componentId,
       baseQuery,
       defaultFilterState,
+      modal,
     } = this.props;
     this.isOnTop = false;
     Navigation.push(componentId, {
@@ -185,6 +187,7 @@ class CardSearchComponent extends React.Component {
           defaultFilterState: defaultFilterState,
           currentFilters: this.state.filters,
           baseQuery: baseQuery,
+          modal: modal,
         },
         options: {
           topBar: {

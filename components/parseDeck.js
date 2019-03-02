@@ -96,18 +96,20 @@ function sumSkillIcons(cardIds, cards, skill) {
     ((cards[c.id] && cards[c.id][`skill_${skill}`]) || 0) * c.quantity));
 }
 
-function getChangedCards(deck, slots, previousDeck, exiledCards) {
+function getChangedCards(deck, slots, ignoreDeckLimitSlots, previousDeck, exiledCards) {
   if (!deck.previous_deck || !previousDeck) {
     return {};
   }
+  const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards = {};
   forEach(
     uniqBy(concat(keys(slots), keys(previousDeck.slots))),
     code => {
+      const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
       const exiledCount = exiledCards[code] || 0;
       const newCount = slots[code] || 0;
       const oldCount = previousDeck.slots[code] || 0;
-      const delta = (newCount + exiledCount) - oldCount;
+      const delta = (newCount + exiledCount) - oldCount - ignoreDelta;
       if (delta !== 0) {
         changedCards[code] = delta;
       }
@@ -115,10 +117,12 @@ function getChangedCards(deck, slots, previousDeck, exiledCards) {
   return changedCards;
 }
 
-function calculateTotalXp(cards, slots) {
+function calculateTotalXp(cards, slots, ignoreDeckLimitSlots) {
   return sum(map(keys(slots), code => {
     const card = cards[code];
-    return ((card && computeXp(card)) || 0) * slots[code];
+    const xp = (card && computeXp(card)) || 0;
+    const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
+    return xp * count;
   }));
 }
 
@@ -227,7 +231,7 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
   ));
 }
 
-export function parseDeck(deck, slots, cards, previousDeck) {
+export function parseDeck(deck, slots, ignoreDeckLimitSlots, cards, previousDeck) {
   if (!deck) {
     return {};
   }
@@ -250,9 +254,9 @@ export function parseDeck(deck, slots, cards, previousDeck) {
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  const changedCards = getChangedCards(deck, slots, previousDeck, exiledCards);
+  const changedCards = getChangedCards(deck, slots, ignoreDeckLimitSlots, previousDeck, exiledCards);
   const spentXp = calculateSpentXp(cards, slots, changedCards, exiledCards);
-  const totalXp = calculateTotalXp(cards, slots);
+  const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);
 
   const factionCounts = {};
   FACTION_CODES.forEach(faction => {
@@ -267,19 +271,19 @@ export function parseDeck(deck, slots, cards, previousDeck) {
     investigator: cards[deck.investigator_code],
     deck: deck,
     slots: slots,
-    normalCardCount: sum(normalCards.map(c => c.quantity)),
+    normalCardCount: sum(normalCards.map(c => c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
-    experience: sum(cardIds.map(c => computeXp(cards[c.id]) * c.quantity)),
+    experience: totalXp,
     packs: uniqBy(cardIds, c => cards[c.id].pack_code).length,
     factionCounts: factionCounts,
     costHistogram: costHistogram(cardIds, cards),
     skillIconCounts: skillIconCounts,
     normalCards: splitCards(normalCards, cards, slots),
     specialCards: splitCards(specialCards, cards, slots),
+    ignoreDeckLimitSlots,
     exiledCards,
     changedCards,
     spentXp,
-    totalXp,
   };
 }
 

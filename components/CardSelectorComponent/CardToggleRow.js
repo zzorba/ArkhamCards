@@ -6,7 +6,7 @@ import {
 
 import CardSearchResult from '../CardSearchResult';
 
-export default class ExileRow extends React.Component {
+export default class CardToggleRow extends React.Component {
   static propTypes = {
     card: PropTypes.object.isRequired,
     count: PropTypes.number.isRequired,

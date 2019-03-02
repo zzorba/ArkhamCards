@@ -105,6 +105,7 @@ export default class DeckNavFooter extends React.Component {
       cards,
       parsedDeck: {
         slots,
+        ignoreDeckLimitSlots,
         investigator,
       },
     } = this.props;
@@ -115,7 +116,10 @@ export default class DeckNavFooter extends React.Component {
       if (!card) {
         return [];
       }
-      return map(range(0, slots[code]), () => card);
+      return map(
+        range(0, Math.max(0, slots[code] - (ignoreDeckLimitSlots[code] || 0))),
+        () => card
+      );
     }));
 
     if (!problem) {
@@ -135,24 +139,24 @@ export default class DeckNavFooter extends React.Component {
           previous_deck,
         },
         spentXp,
-        totalXp,
+        experience,
       },
       xpAdjustment,
     } = this.props;
     if (!previous_deck) {
-      return L('XP: {{totalXp}}', { totalXp });
+      return L('XP: {{totalXp}}', { totalXp: experience });
     }
-    const experience = (xp || 0) + (xpAdjustment || 0);
+    const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
     if (xpAdjustment !== 0) {
       return L('XP: {{spentXp}} of {{availableExperience}} ({{adjustment}})', {
         spentXp,
-        availableExperience: experience,
+        availableExperience: adjustedExperience,
         adjustment: xpAdjustment > 0 ? `+${xpAdjustment}` : xpAdjustment,
       });
     }
     return L('XP: {{spentXp}} of {{availableExperience}}', {
       spentXp,
-      availableExperience: experience,
+      availableExperience: adjustedExperience,
     });
   }
 

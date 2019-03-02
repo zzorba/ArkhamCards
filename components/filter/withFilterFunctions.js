@@ -18,6 +18,7 @@ export default function withFilterFunctions(WrappedComponent) {
       currentFilters: PropTypes.object.isRequired,
       defaultFilterState: PropTypes.object.isRequired,
       applyFilters: PropTypes.func.isRequired,
+      modal: PropTypes.bool,
       /* eslint-disable  react/no-unused-prop-types */
       baseQuery: PropTypes.string,
       cards: PropTypes.object,
@@ -67,6 +68,7 @@ export default function withFilterFunctions(WrappedComponent) {
         componentId,
         baseQuery,
         defaultFilterState,
+        modal,
       } = this.props;
       Navigation.push(componentId, {
         component: {
@@ -76,6 +78,7 @@ export default function withFilterFunctions(WrappedComponent) {
             currentFilters: this.state.filters,
             defaultFilterState,
             baseQuery,
+            modal,
           },
         },
       });
@@ -108,6 +111,7 @@ export default function withFilterFunctions(WrappedComponent) {
         cards,
         baseQuery,
         defaultFilterState,
+        modal,
         ...otherProps
       } = this.props;
       const {
@@ -126,7 +130,11 @@ export default function withFilterFunctions(WrappedComponent) {
             onFilterChange={this._onFilterChange}
             {...otherProps}
           />
-          <FilterFooterComponent baseQuery={baseQuery} filters={filters} />
+          <FilterFooterComponent
+            baseQuery={baseQuery}
+            filters={filters}
+            modal={modal}
+          />
         </View>
       );
     }

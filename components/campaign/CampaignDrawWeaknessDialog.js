@@ -159,6 +159,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
     if (deck) {
       const previousDeck = decks[deck.previous_deck];
       const investigator = investigators[deck.investigator_code];
+      const ignoreDeckLimitSlots = deck.ignoreDeckLimitSlots || {};
       const newSlots = Object.assign({}, deck.slots);
       if (!newSlots[pendingNextCard]) {
         newSlots[pendingNextCard] = 0;
@@ -170,11 +171,14 @@ class CampaignDrawWeaknessDialog extends React.Component {
           delete newSlots[RANDOM_BASIC_WEAKNESS];
         }
       }
-      const parsedDeck = parseDeck(deck, newSlots, cards, previousDeck);
+      const parsedDeck = parseDeck(deck, newSlots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
       const validator = new DeckValidation(investigator);
       const problemObj = validator.getProblem(flatMap(keys(newSlots), code => {
         const card = cards[code];
-        return map(range(0, newSlots[code]), () => card);
+        return map(
+          range(0, Math.max(0, newSlots[code] - (ignoreDeckLimitSlots[code] || 0))),
+          () => card
+        );
       }));
       const problem = problemObj ? problemObj.reason : '';
 
@@ -200,6 +204,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
           deck.id,
           deck.name,
           newSlots,
+          parsedDeck.ignoreDeckLimitSlots,
           problem,
           parsedDeck.spentXp,
           deck.xp_adjustment

@@ -82,7 +82,7 @@ class DeckEditView extends React.Component {
         cardsInDeck[card.code] = card;
       }
     });
-    const pDeck = parseDeck(deck, deckCardCounts, cardsInDeck, previousDeck);
+    const pDeck = parseDeck(deck, deckCardCounts, deck.ignoreDeckLimitSlots || {}, cardsInDeck, previousDeck);
     return (
       <DeckNavFooter
         componentId={componentId}
@@ -116,6 +116,7 @@ class DeckEditView extends React.Component {
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
         footer={this.renderFooter()}
+        modal
       />
     );
   }

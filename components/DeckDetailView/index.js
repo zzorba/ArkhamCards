@@ -447,6 +447,7 @@ class DeckDetailView extends React.Component {
     const {
       parsedDeck: {
         slots,
+        ignoreDeckLimitSlots,
       },
       saving,
     } = this.state;
@@ -461,6 +462,7 @@ class DeckDetailView extends React.Component {
         deck.investigator_code,
         deck.name,
         slots,
+        ignoreDeckLimitSlots,
         problem,
       );
       handleAuthErrors(
@@ -513,6 +515,7 @@ class DeckDetailView extends React.Component {
       } = this.state;
       const {
         slots,
+        ignoreDeckLimitSlots,
       } = parsedDeck;
 
       const problemObj = this.getProblem();
@@ -545,6 +548,7 @@ class DeckDetailView extends React.Component {
           deck.id,
           nameChange || deck.name,
           slots,
+          ignoreDeckLimitSlots,
           problem,
           parsedDeck.spentXp,
           xpAdjustment,
@@ -655,7 +659,7 @@ class DeckDetailView extends React.Component {
       previousDeck,
       cards,
     } = this.props;
-    const parsedDeck = parseDeck(deck, newSlots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, newSlots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
     this.setState({
       slots: newSlots,
       parsedDeck,
@@ -675,7 +679,7 @@ class DeckDetailView extends React.Component {
     } = this.state;
     if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1 ||
       findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1) {
-      const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
+      const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
       this.setState({
         slots: deck.slots,
         xpAdjustment: deck.xp_adjustment || 0,
@@ -815,13 +819,17 @@ class DeckDetailView extends React.Component {
 
     const {
       slots,
+      ignoreDeckLimitSlots,
       investigator,
     } = parsedDeck;
 
     const validator = new DeckValidation(investigator);
     return validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
-      return map(range(0, slots[code]), () => card);
+      return map(
+        range(0, Math.max(0, slots[code] - (ignoreDeckLimitSlots[code] || 0))),
+        () => card
+      );
     }));
   }
 

@@ -164,6 +164,7 @@ class CopyDeckDialog extends React.Component {
       deck.id,
       deck.name,
       cloneDeck.slots,
+      cloneDeck.ignoreDeckLimitSlots,
       cloneDeck.problem || '',
       0,
       0
@@ -241,9 +242,9 @@ class CopyDeckDialog extends React.Component {
     const {
       selectedDeckId,
     } = this.state;
-    const parsedCurrentDeck = deck && parseDeck(deck, deck.slots, cards);
-    const parsedBaseDeck = baseDeck && parseDeck(baseDeck, baseDeck.slots, cards);
-    const parsedLatestDeck = latestDeck && parseDeck(latestDeck, latestDeck.slots, cards);
+    const parsedCurrentDeck = deck && parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards);
+    const parsedBaseDeck = baseDeck && parseDeck(baseDeck, baseDeck.slots, baseDeck.ignoreDeckLimitSlots || {}, cards);
+    const parsedLatestDeck = latestDeck && parseDeck(latestDeck, latestDeck.slots, latestDeck.ignoreDeckLimitSlots || {}, cards);
     if (parsedCurrentDeck && !parsedBaseDeck && !parsedLatestDeck) {
       // Only one deck, no need to clone it.
       return null;

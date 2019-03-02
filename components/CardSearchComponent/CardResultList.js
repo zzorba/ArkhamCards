@@ -691,6 +691,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loadingText: {
+    paddingLeft: m,
+    paddingRight: m,
     paddingTop: m,
     paddingBottom: s,
   },

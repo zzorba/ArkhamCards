@@ -84,7 +84,7 @@ export default class DeckListRow extends React.Component {
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(deck, deck.slots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
     const xpString = DeckListRow.xpString(parsedDeck);
 
     const date = deck.date_update || deck.date_creation;
