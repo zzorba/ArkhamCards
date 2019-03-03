@@ -72,7 +72,7 @@ export default class DeckViewTab extends React.Component {
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
-    showEditSpecial: PropTypes.func.isRequired,
+    showEditSpecial: PropTypes.func,
     showEditNameDialog: PropTypes.func.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
     investigatorDataUpdates: PropTypes.object,
@@ -241,19 +241,31 @@ export default class DeckViewTab extends React.Component {
         investigator,
       },
     } = this.props;
-    if (section.onPress) {
+    if (section.superTitle) {
+      if (section.onPress) {
+        return (
+          <TouchableOpacity onPress={section.onPress} style={[
+            styles.superHeaderRow,
+            { backgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0] },
+          ]}>
+            <Text style={[typography.label, styles.superHeaderText]}>
+              { section.superTitle }
+            </Text>
+            <View style={styles.editIcon}>
+              <MaterialIcons name="edit" color="#FFF" size={18} />
+            </View>
+          </TouchableOpacity>
+        );
+      }
       return (
-        <TouchableOpacity onPress={section.onPress} style={[
-          styles.touchableHeaderRow,
+        <View style={[
+          styles.superHeaderRow,
           { backgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0] },
         ]}>
-          <Text style={[typography.label, styles.touchableHeaderText]}>
-            { section.title }
+          <Text style={[typography.label, styles.superHeaderText]}>
+            { section.superTitle }
           </Text>
-          <View style={styles.editIcon}>
-            <MaterialIcons name="edit" color="#FFF" size={18} />
-          </View>
-        </TouchableOpacity>
+        </View>
       );
     }
     if (section.subTitle) {
@@ -346,7 +358,7 @@ export default class DeckViewTab extends React.Component {
     const sections = [
       ...deckToSections(normalCards),
       {
-        title: L('Special Cards'),
+        superTitle: L('Special Cards'),
         data: [],
         onPress: showEditSpecial,
       },
@@ -503,10 +515,10 @@ const styles = StyleSheet.create({
   warningIcon: {
     marginRight: 4,
   },
-  touchableHeaderText: {
+  superHeaderText: {
     color: '#FFF',
   },
-  touchableHeaderRow: {
+  superHeaderRow: {
     marginTop: 32,
     padding: 8,
     borderBottomWidth: 1,

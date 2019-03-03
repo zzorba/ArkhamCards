@@ -1032,7 +1032,7 @@ class DeckDetailView extends React.Component {
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
             showEditNameDialog={this._showEditNameDialog}
-            showEditSpecial={this._onEditSpecialPressed}
+            showEditSpecial={deck.next_deck ? null : this._onEditSpecialPressed}
             signedIn={signedIn}
             login={login}
             deleteDeck={this._deleteDeck}
