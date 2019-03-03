@@ -11,8 +11,6 @@ import typography from '../../styles/typography';
 import { isBig } from '../../styles/space';
 
 export const ROW_HEADER_HEIGHT = isBig ? 42 : 30;
-
-export const ROW_HEADER_HEIGHT = 30;
 export default function CardSectionHeader({ title, bold }) {
   return (
     <View style={[styles.row, bold ? styles.boldRow : {}]}>

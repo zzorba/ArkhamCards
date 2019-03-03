@@ -12,8 +12,9 @@ import {
   SORT_BY_TYPE,
 } from '../CardSortDialog/constants';
 import CardSearchResultsComponent from '../CardSearchResultsComponent';
-import { iconsMap } from '../../app/NavIcons';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
+import { iconsMap } from '../../app/NavIcons';
+import { COLORS } from '../../styles/colors';
 
 class CardSearchComponent extends React.Component {
   static propTypes = {

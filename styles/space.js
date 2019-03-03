@@ -8,10 +8,6 @@ export const s = 8 * sizeScale;
 export const m = 16 * sizeScale;
 export const l = 32 * sizeScale;
 
-export const l = 32;
-export const m = 16;
-export const s = 8;
-
 export default StyleSheet.create({
   marginLeftS: {
     marginLeft: s,
