@@ -86,6 +86,7 @@ class EditAssignedWeaknessComponent extends React.Component {
               onPress={this._cardPressed}
               limit={card.quantity}
               onDeckCountChange={this._onCountChange}
+              showZeroCount
             />
           );
         }) }

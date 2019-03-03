@@ -23,6 +23,7 @@ import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
+import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -71,6 +72,7 @@ export default class DeckViewTab extends React.Component {
     cards: PropTypes.object.isRequired,
     isPrivate: PropTypes.bool,
     buttons: PropTypes.node,
+    showEditSpecial: PropTypes.func.isRequired,
     showEditNameDialog: PropTypes.func.isRequired,
     showTraumaDialog: PropTypes.func.isRequired,
     investigatorDataUpdates: PropTypes.object,
@@ -87,7 +89,7 @@ export default class DeckViewTab extends React.Component {
 
     this._uploadToArkhamDB = this.uploadToArkhamDB.bind(this);
     this._renderCard = this.renderCard.bind(this);
-    this._renderCardHeader = this.renderCardHeader.bind(this);
+    this._renderSectionHeader = this.renderSectionHeader.bind(this);
     this._keyForCard = this.keyForCard.bind(this);
     this._showCard = this.showCard.bind(this);
     this._showInvestigator = this.showInvestigator.bind(this);
@@ -233,7 +235,27 @@ export default class DeckViewTab extends React.Component {
     });
   }
 
-  renderCardHeader({ section }) {
+  renderSectionHeader({ section }) {
+    const {
+      parsedDeck: {
+        investigator,
+      },
+    } = this.props;
+    if (section.onPress) {
+      return (
+        <TouchableOpacity onPress={section.onPress} style={[
+          styles.touchableHeaderRow,
+          { backgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0] },
+        ]}>
+          <Text style={[typography.label, styles.touchableHeaderText]}>
+            { section.title }
+          </Text>
+          <View style={styles.editIcon}>
+            <MaterialIcons name="edit" color="#FFF" size={18} />
+          </View>
+        </TouchableOpacity>
+      );
+    }
     if (section.subTitle) {
       return (
         <View style={styles.subHeaderRow}>
@@ -318,10 +340,18 @@ export default class DeckViewTab extends React.Component {
       buttons,
       showEditNameDialog,
       showTraumaDialog,
+      showEditSpecial,
     } = this.props;
 
-    const sections = deckToSections(normalCards)
-      .concat(deckToSections(specialCards));
+    const sections = [
+      ...deckToSections(normalCards),
+      {
+        title: L('Special Cards'),
+        data: [],
+        onPress: showEditSpecial,
+      },
+      ...deckToSections(specialCards),
+    ];
 
     return (
       <ScrollView>
@@ -376,10 +406,10 @@ export default class DeckViewTab extends React.Component {
             <SectionList
               keyboardShouldPersistTaps="always"
               keyboardDismissMode="on-drag"
-              initialNumToRender={20}
+              initialNumToRender={25}
               renderItem={this._renderCard}
               keyExtractor={this._keyForCard}
-              renderSectionHeader={this._renderCardHeader}
+              renderSectionHeader={this._renderSectionHeader}
               sections={sections}
             />
           </View>
@@ -472,6 +502,17 @@ const styles = StyleSheet.create({
   },
   warningIcon: {
     marginRight: 4,
+  },
+  touchableHeaderText: {
+    color: '#FFF',
+  },
+  touchableHeaderRow: {
+    marginTop: 32,
+    padding: 8,
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   subHeaderRow: {
     backgroundColor: '#eee',

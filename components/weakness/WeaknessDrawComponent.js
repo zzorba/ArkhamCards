@@ -250,7 +250,7 @@ class WeaknessDrawComponent extends React.Component {
           onLayout={this._onFlippedHeaderLayout}
           style={[styles.buttonWrapper, { minHeight: flippedHeaderHeight }]}
         >
-          <Button text={L('Draw Another')} onPress={this._drawAnother} />
+          <Button text={customFlippedHeader ? L('Draw a Different Weakness') : L('Draw Another')} onPress={this._drawAnother} />
           { customFlippedHeader }
         </View>
       );
@@ -318,7 +318,7 @@ class WeaknessDrawComponent extends React.Component {
     if (selectedTraits.length) {
       return (
         <Text style={[typography.text, styles.errorText]}>
-          { L('No Matching Weaknesses, try adjusting Trait filter.') }
+          { L('There are no weaknesses that match these trait filters left in the set.\n\nPlease adjust the trait filter.') }
         </Text>
       );
     }

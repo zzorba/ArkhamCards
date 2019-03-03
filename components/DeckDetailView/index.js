@@ -35,6 +35,7 @@ import {
   removeDeck,
   replaceLocalDeck,
 } from '../../actions';
+import { updateCampaign } from '../campaign/actions';
 import { saveDeck, newCustomDeck } from '../../lib/authApi';
 import withPlayerCards from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
@@ -68,6 +69,7 @@ class DeckDetailView extends React.Component {
     fetchPublicDeck: PropTypes.func.isRequired,
     fetchPrivateDeck: PropTypes.func.isRequired,
     replaceLocalDeck: PropTypes.func.isRequired,
+    updateCampaign: PropTypes.func.isRequired,
     // From HOC
     showTextEditDialog: PropTypes.func.isRequired,
     showCountEditDialog: PropTypes.func.isRequired,
@@ -83,6 +85,7 @@ class DeckDetailView extends React.Component {
     this.state = {
       parsedDeck: null,
       slots: {},
+      ignoreDeckLimitSlots: {},
       xpAdjustment: 0,
       loaded: false,
       saving: false,
@@ -99,10 +102,12 @@ class DeckDetailView extends React.Component {
     this._toggleCopyDialog = this.toggleCopyDialog.bind(this);
     this._saveName = this.saveName.bind(this);
     this._onEditPressed = this.onEditPressed.bind(this);
+    this._onEditSpecialPressed = this.onEditSpecialPressed.bind(this);
     this._onUpgradePressed = this.onUpgradePressed.bind(this);
     this._clearEdits = this.clearEdits.bind(this);
     this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
     this._updateSlots = this.updateSlots.bind(this);
+    this._updateIgnoreDeckLimitSlots = this.updateIgnoreDeckLimitSlots.bind(this);
     this._showXpEditDialog = this.showXpEditDialog.bind(this);
     this._updateXp = this.updateXp.bind(this);
     this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
@@ -348,14 +353,74 @@ class DeckDetailView extends React.Component {
   saveName(name) {
     const {
       slots,
+      ignoreDeckLimitSlots,
       xpAdjustment,
     } = this.state;
-    const pendingEdits = this.hasPendingEdits(name, slots, xpAdjustment);
+    const pendingEdits = this.hasPendingEdits(
+      name,
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment
+    );
     this.setState({
       nameChange: name,
       hasPendingEdits: pendingEdits,
       editNameDialogVisible: false,
     }, this._syncNavigationButtons);
+  }
+
+  onEditSpecialPressed() {
+    const {
+      componentId,
+      deck,
+      previousDeck,
+      cards,
+      campaign,
+    } = this.props;
+    const {
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment,
+    } = this.state;
+    const investigator = cards[deck.investigator_code];
+    const addedWeaknesses = this.addedBasicWeaknesses(
+      slots,
+      ignoreDeckLimitSlots);
+
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.EditSpecial',
+        passProps: {
+          campaignId: campaign ? campaign.id : null,
+          deck,
+          previousDeck,
+          slots,
+          ignoreDeckLimitSlots,
+          updateSlots: this._updateSlots,
+          updateIgnoreDeckLimitSlots: this._updateIgnoreDeckLimitSlots,
+          assignedWeaknesses: addedWeaknesses,
+          xpAdjustment,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+          },
+          topBar: {
+            title: {
+              text: L('Edit Special Cards'),
+              color: 'white',
+            },
+            backButton: {
+              title: L('Back'),
+              color: 'white',
+            },
+            background: {
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+            },
+          },
+        },
+      },
+    });
   }
 
   onEditPressed() {
@@ -373,6 +438,7 @@ class DeckDetailView extends React.Component {
           deck,
           previousDeck,
           slots: this.state.slots,
+          ignoreDeckLimitSlots: this.state.ignoreDeckLimitSlots,
           updateSlots: this._updateSlots,
           xpAdjustment: this.state.xpAdjustment,
         },
@@ -502,6 +568,29 @@ class DeckDetailView extends React.Component {
     });
   }
 
+  updateCampaignWeaknessSet(newAssignedCards) {
+    const {
+      campaign,
+      updateCampaign,
+    } = this.props;
+    if (campaign) {
+      const assignedCards = Object.assign(
+        {},
+        (campaign.weaknessSet && campaign.weaknessSet.assignedCards) || {});
+      forEach(newAssignedCards, code => {
+        assignedCards[code] = (assignedCards[code] || 0) + 1;
+      });
+      updateCampaign(
+        campaign.id,
+        Object.assign(
+          {},
+          campaign,
+          { weaknessSet: Object.assign({}, campaign.weaknessSet || {}, { assignedCards }) }
+        )
+      );
+    }
+  }
+
   saveEdits(dismissAfterSave, isRetry) {
     const {
       deck,
@@ -521,6 +610,11 @@ class DeckDetailView extends React.Component {
       const problemObj = this.getProblem();
       const problem = problemObj ? problemObj.reason : '';
 
+      const addedBasicWeaknesses = this.addedBasicWeaknesses(
+        slots,
+        ignoreDeckLimitSlots
+      );
+
       if (deck.local) {
         const newDeck = updateLocalDeck(
           deck,
@@ -531,6 +625,7 @@ class DeckDetailView extends React.Component {
           xpAdjustment
         );
         updateDeck(newDeck.id, newDeck, true);
+        this.updateCampaignWeaknessSet(addedBasicWeaknesses);
         if (dismissAfterSave) {
           Navigation.dismissAllModals();
         } else {
@@ -540,6 +635,7 @@ class DeckDetailView extends React.Component {
           }, this._syncNavigationButtons);
         }
       } else {
+        // ArkhamDB deck.
         this.setState({
           saving: true,
         });
@@ -558,6 +654,7 @@ class DeckDetailView extends React.Component {
           // onSuccess
           deck => {
             updateDeck(deck.id, deck, true);
+            this.updateCampaignWeaknessSet(addedBasicWeaknesses);
             if (dismissAfterSave) {
               Navigation.dismissAllModals();
             } else {
@@ -588,34 +685,62 @@ class DeckDetailView extends React.Component {
       nameChange: null,
       xpAdjustment: deck.xp_adjustment || 0,
     }, () => {
-      this.updateSlots(deck.slots);
+      this.updateSlots(deck.slots, true);
     });
   }
 
-  hasPendingEdits(nameChange, slots, xpAdjustment) {
+  slotDeltas(slots, ignoreDeckLimitSlots) {
     const {
       deck,
     } = this.props;
-
-    const removals = {};
+    const result = {
+      removals: {},
+      additions: {},
+      ignoreDeckLimitChanged: false,
+    };
     forEach(keys(deck.slots), code => {
       const currentDeckCount = slots[code] || 0;
       if (deck.slots[code] > currentDeckCount) {
-        removals[code] = deck.slots[code] - currentDeckCount;
+        result.removals[code] = deck.slots[code] - currentDeckCount;
       }
     });
-    const additions = {};
     forEach(keys(slots), code => {
       const ogDeckCount = deck.slots[code] || 0;
       if (ogDeckCount < slots[code]) {
-        removals[code] = slots[code] - ogDeckCount;
+        result.additions[code] = slots[code] - ogDeckCount;
+      }
+      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
+      if (ogIgnoreCount !== (ignoreDeckLimitSlots[code] || 0)) {
+        result.ignoreDeckLimitChanged = true;
       }
     });
+    return result;
+  }
 
+  addedBasicWeaknesses(slots, ignoreDeckLimitSlots) {
+    const {
+      cards,
+    } = this.props;
+    const deltas = this.slotDeltas(slots, ignoreDeckLimitSlots);
+    const addedWeaknesses = [];
+    forEach(keys(deltas.additions), code => {
+      if (cards[code] && cards[code].subtype_code === 'basicweakness') {
+        forEach(range(0, deltas.additions[code]), () => addedWeaknesses.push(code));
+      }
+    });
+    return addedWeaknesses;
+  }
+
+  hasPendingEdits(nameChange, slots, ignoreDeckLimitSlots, xpAdjustment) {
+    const {
+      deck,
+    } = this.props;
+    const deltas = this.slotDeltas(slots, ignoreDeckLimitSlots);
     return (nameChange && deck.name !== nameChange) ||
       (deck.previous_deck && deck.xp_adjustment !== xpAdjustment) ||
-      keys(removals).length > 0 ||
-      keys(additions).length > 0;
+      keys(deltas.removals).length > 0 ||
+      keys(deltas.additions).length > 0 ||
+      deltas.ignoreDeckLimitChanged;
   }
 
   showXpEditDialog() {
@@ -649,23 +774,50 @@ class DeckDetailView extends React.Component {
       hasPendingEdits: this.hasPendingEdits(
         this.state.nameChange,
         this.state.slots,
+        this.state.ignoreDeckLimitSlots,
         xpAdjustment),
     });
   }
 
-  updateSlots(newSlots) {
+  updateIgnoreDeckLimitSlots(newIgnoreDeckLimitSlots) {
     const {
       deck,
       previousDeck,
       cards,
     } = this.props;
-    const parsedDeck = parseDeck(deck, newSlots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+    const {
+      slots,
+    } = this.state;
+    const parsedDeck = parseDeck(deck, slots, newIgnoreDeckLimitSlots, cards, previousDeck);
+    this.setState({
+      ignoreDeckLimitSlots: newIgnoreDeckLimitSlots,
+      parsedDeck,
+      hasPendingEdits: this.hasPendingEdits(
+        this.state.nameChange,
+        slots,
+        newIgnoreDeckLimitSlots,
+        this.state.xpAdjustment),
+    }, this._syncNavigationButtons);
+  }
+
+  updateSlots(newSlots, resetIgnoreDeckLimitSlots) {
+    const {
+      deck,
+      previousDeck,
+      cards,
+    } = this.props;
+    const ignoreDeckLimitSlots = resetIgnoreDeckLimitSlots ?
+      (deck.ignoreDeckLimitSlots || {}) :
+      this.state.ignoreDeckLimitSlots;
+    const parsedDeck = parseDeck(deck, newSlots, ignoreDeckLimitSlots, cards, previousDeck);
     this.setState({
       slots: newSlots,
+      ignoreDeckLimitSlots: ignoreDeckLimitSlots,
       parsedDeck,
       hasPendingEdits: this.hasPendingEdits(
         this.state.nameChange,
         newSlots,
+        ignoreDeckLimitSlots,
         this.state.xpAdjustment),
     }, this._syncNavigationButtons);
   }
@@ -682,6 +834,7 @@ class DeckDetailView extends React.Component {
       const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
       this.setState({
         slots: deck.slots,
+        ignoreDeckLimitSlots: deck.ignoreDeckLimitSlots || {},
         xpAdjustment: deck.xp_adjustment || 0,
         parsedDeck,
         hasPendingEdits: false,
@@ -879,6 +1032,7 @@ class DeckDetailView extends React.Component {
             isPrivate={isPrivate}
             buttons={this.renderButtons()}
             showEditNameDialog={this._showEditNameDialog}
+            showEditSpecial={this._onEditSpecialPressed}
             signedIn={signedIn}
             login={login}
             deleteDeck={this._deleteDeck}
@@ -923,6 +1077,7 @@ function mapDispatchToProps(dispatch) {
     updateDeck,
     removeDeck,
     replaceLocalDeck,
+    updateCampaign,
   }, dispatch);
 }
 

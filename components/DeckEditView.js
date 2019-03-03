@@ -14,11 +14,13 @@ class DeckEditView extends React.Component {
     componentId: PropTypes.string.isRequired,
     investigator: PropTypes.object,
     xpAdjustment: PropTypes.number,
+    storyOnly: PropTypes.bool,
     /* eslint-disable react/no-unused-prop-types */
     deck: PropTypes.object.isRequired,
     previousDeck: PropTypes.object,
     cards: PropTypes.object.isRequired,
     slots: PropTypes.object.isRequired,
+    ignoreDeckLimitSlots: PropTypes.object.isRequired,
     updateSlots: PropTypes.func.isRequired,
   };
 
@@ -68,6 +70,7 @@ class DeckEditView extends React.Component {
     const {
       componentId,
       deck,
+      ignoreDeckLimitSlots,
       previousDeck,
       cards,
       xpAdjustment,
@@ -82,7 +85,13 @@ class DeckEditView extends React.Component {
         cardsInDeck[card.code] = card;
       }
     });
-    const pDeck = parseDeck(deck, deckCardCounts, deck.ignoreDeckLimitSlots || {}, cardsInDeck, previousDeck);
+    const pDeck = parseDeck(
+      deck,
+      deckCardCounts,
+      ignoreDeckLimitSlots,
+      cardsInDeck,
+      previousDeck
+    );
     return (
       <DeckNavFooter
         componentId={componentId}
@@ -93,10 +102,22 @@ class DeckEditView extends React.Component {
     );
   }
 
+  baseQuery() {
+    const {
+      investigator,
+      storyOnly,
+    } = this.props;
+    if (storyOnly) {
+      return `((${STORY_CARDS_QUERY}) and (subtype_code != 'basicweakness'))`;
+    }
+    return investigator ?
+      `((${queryForInvestigator(investigator)}) or (${STORY_CARDS_QUERY}))` :
+      null;
+  }
+
   render() {
     const {
       componentId,
-      investigator,
       slots,
     } = this.props;
 
@@ -104,14 +125,10 @@ class DeckEditView extends React.Component {
       deckCardCounts,
     } = this.state;
 
-    const baseQuery = investigator ?
-      `((${queryForInvestigator(investigator)}) or (${STORY_CARDS_QUERY}))` :
-      null;
-
     return (
       <CardSearchComponent
         componentId={componentId}
-        baseQuery={baseQuery}
+        baseQuery={this.baseQuery()}
         originalDeckSlots={slots}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}

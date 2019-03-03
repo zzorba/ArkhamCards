@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ScrollView, StyleSheet } from 'react-native';
 import { throttle } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 
@@ -80,11 +81,19 @@ export default class ExileCardDialog extends React.Component {
     } = this.state;
 
     return (
-      <ExileCardSelectorComponent
-        id={id}
-        exileCounts={exileCounts}
-        updateExileCounts={this._onExileCountsChange}
-      />
+      <ScrollView style={styles.wrapper}>
+        <ExileCardSelectorComponent
+          id={id}
+          exileCounts={exileCounts}
+          updateExileCounts={this._onExileCountsChange}
+        />
+      </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+});

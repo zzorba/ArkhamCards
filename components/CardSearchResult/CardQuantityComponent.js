@@ -25,6 +25,7 @@ export default class CardQuantityComponent extends React.PureComponent {
     count: PropTypes.number.isRequired,
     countChanged: PropTypes.func.isRequired,
     limit: PropTypes.number.isRequired,
+    showZeroCount: PropTypes.bool,
   };
 
   constructor(props) {
@@ -181,6 +182,7 @@ export default class CardQuantityComponent extends React.PureComponent {
 
     const {
       limit,
+      showZeroCount,
     } = this.props;
     const {
       count,
@@ -197,7 +199,7 @@ export default class CardQuantityComponent extends React.PureComponent {
           noFill
         />
         <Text style={[typography.text, styles.count]}>
-          { count !== 0 ? count : ' ' }
+          { (showZeroCount || count !== 0) ? count : ' ' }
         </Text>
       </View>
     );

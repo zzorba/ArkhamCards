@@ -48,7 +48,7 @@ function funLoadingMessages() {
     L('Reticulating spines'),
     L('Trying to make sense of the Time Warp FAQ'),
     L('Taking three damage and three horror'),
-    L('Up by 5... drawing the tentacles'),
+    L('Up by 5, hope I don\'t draw the tentacle'),
   ];
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, flatMap, keys, map, range, throttle } from 'lodash';
+import { head, flatMap, forEach, keys, map, range, throttle } from 'lodash';
 import { StyleSheet, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -28,6 +28,10 @@ class CampaignDrawWeaknessDialog extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     campaignId: PropTypes.number.isRequired,
+    onlyDeckId: PropTypes.number,
+    saveWeakness: PropTypes.func,
+    unsavedAssignedCards: PropTypes.array,
+
     // From redux
     weaknessSet: PropTypes.object.isRequired,
     latestDeckIds: PropTypes.array,
@@ -39,27 +43,16 @@ class CampaignDrawWeaknessDialog extends React.Component {
     cards: PropTypes.object,
   };
 
-  static get options() {
-    return {
-      topBar: {
-        rightButtons: [{
-          icon: iconsMap.edit,
-          id: 'edit',
-          color: COLORS.navButton,
-        }],
-      },
-    };
-  }
-
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedDeckId: head(props.latestDeckIds),
+      selectedDeckId: props.onlyDeckId || head(props.latestDeckIds),
       replaceRandomBasicWeakness: true,
       saving: false,
       pendingNextCard: null,
       pendingAssignedCards: null,
+      unsavedAssignedCards: props.unsavedAssignedCards || [],
     };
 
     this._saveDrawnCard = this.saveDrawnCard.bind(this);
@@ -69,6 +62,18 @@ class CampaignDrawWeaknessDialog extends React.Component {
     this._toggleReplaceRandomBasicWeakness = this.toggleReplaceRandomBasicWeakness.bind(this);
     this._showEditWeaknessDialog = throttle(this.showEditWeaknessDialog.bind(this), 200);
     this._navEventListener = Navigation.events().bindComponent(this);
+
+    if (!props.onlyDeckId) {
+      Navigation.mergeOptions(props.componentId, {
+        topBar: {
+          rightButtons: [{
+            icon: iconsMap.edit,
+            id: 'edit',
+            color: COLORS.navButton,
+          }],
+        },
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -150,11 +155,22 @@ class CampaignDrawWeaknessDialog extends React.Component {
       decks,
       cards,
       investigators,
+      saveWeakness,
     } = this.props;
     const {
       selectedDeckId,
       replaceRandomBasicWeakness,
     } = this.state;
+    if (saveWeakness) {
+      // We are in 'pending' mode to don't save it immediately.
+      saveWeakness(pendingNextCard, replaceRandomBasicWeakness);
+      this.setState({
+        pendingAssignedCards: null,
+        pendingNextCard: null,
+        unsavedAssignedCards: [...this.state.unsavedAssignedCards, pendingNextCard],
+      });
+      return;
+    }
     const deck = selectedDeckId && decks[selectedDeckId];
     if (deck) {
       const previousDeck = decks[deck.previous_deck];
@@ -197,6 +213,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
           pendingNextCard: null,
         });
       } else {
+        // ArkhamDB deck
         this.setState({
           saving: true,
         });
@@ -230,6 +247,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
     const {
       decks,
       investigators,
+      onlyDeckId,
     } = this.props;
     const {
       selectedDeckId,
@@ -241,10 +259,12 @@ class CampaignDrawWeaknessDialog extends React.Component {
     const hasRandomBasicWeakness = deck && deck.slots[RANDOM_BASIC_WEAKNESS] > 0;
     return (
       <View>
-        <NavButton
-          text={message}
-          onPress={this._onPressInvestigator}
-        />
+        { !onlyDeckId && (
+          <NavButton
+            text={message}
+            onPress={this._onPressInvestigator}
+          />
+        ) }
         { hasRandomBasicWeakness && (
           <ToggleFilter
             style={styles.toggleRow}
@@ -294,12 +314,25 @@ class CampaignDrawWeaknessDialog extends React.Component {
       return null;
     }
 
+    const {
+      unsavedAssignedCards,
+    } = this.state;
+    const assignedCards = Object.assign({}, weaknessSet.assignedCards);
+    forEach(unsavedAssignedCards, code => {
+      assignedCards[code] = (assignedCards[code] || 0) + 1;
+    });
+
+    const dynamicWeaknessSet = Object.assign({},
+      weaknessSet,
+      { assignedCards }
+    );
+
     return (
       <WeaknessDrawComponent
         componentId={componentId}
         customHeader={this.renderInvestigatorChooser()}
         customFlippedHeader={this.renderFlippedHeader()}
-        weaknessSet={weaknessSet}
+        weaknessSet={dynamicWeaknessSet}
         updateDrawnCard={this._updateDrawnCard}
         saving={this.state.saving}
       />

@@ -34,6 +34,7 @@ export default class CardSearchResult extends React.PureComponent {
     toggleValue: PropTypes.bool,
     deltaCountMode: PropTypes.bool,
     hasSecondCore: PropTypes.bool,
+    showZeroCount: PropTypes.bool,
     id: PropTypes.string,
   };
 
@@ -244,6 +245,7 @@ export default class CardSearchResult extends React.PureComponent {
       onDeckCountChange,
       limit,
       hasSecondCore,
+      showZeroCount,
     } = this.props;
     if (onDeckCountChange) {
       const deck_limit = Math.min(
@@ -257,6 +259,7 @@ export default class CardSearchResult extends React.PureComponent {
           count={count || 0}
           limit={Math.max(count || 0, limit !== null ? limit : deck_limit)}
           countChanged={this._onDeckCountChange}
+          showZeroCount={showZeroCount}
         />
       );
     }

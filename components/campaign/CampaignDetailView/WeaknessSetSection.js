@@ -12,6 +12,7 @@ import NavButton from '../../core/NavButton';
 import WeaknessSetView from '../../weakness/WeaknessSetView';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
 import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
 
 class WeaknessSetSection extends React.Component {
   static propTypes = {
@@ -43,6 +44,7 @@ class WeaknessSetSection extends React.Component {
           topBar: {
             title: {
               text: L('Draw Weaknesses'),
+              color: COLORS.black,
             },
             backButton: {
               title: L('Back'),

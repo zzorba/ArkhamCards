@@ -7,6 +7,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import L from '../app/i18n';
 import { getDeck } from '../reducers';
 import typography from '../styles/typography';
 import CardSelectorComponent from './CardSelectorComponent';
@@ -45,7 +46,7 @@ class ExileCardSelectorComponent extends React.Component {
 
     const header = !!showLabel && (
       <Text style={[typography.small, styles.exileText]}>
-        EXILE CARDS
+        { L('EXILE CARDS') }
       </Text>
     );
     return (
