@@ -28,7 +28,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     campaignId: PropTypes.number.isRequired,
-    onlyDeckId: PropTypes.number,
+    deckSlots: PropTypes.object,
     saveWeakness: PropTypes.func,
     unsavedAssignedCards: PropTypes.array,
 
@@ -47,12 +47,13 @@ class CampaignDrawWeaknessDialog extends React.Component {
     super(props);
 
     this.state = {
-      selectedDeckId: props.onlyDeckId || head(props.latestDeckIds),
+      selectedDeckId: props.deckSlots ? null : head(props.latestDeckIds),
       replaceRandomBasicWeakness: true,
       saving: false,
       pendingNextCard: null,
       pendingAssignedCards: null,
       unsavedAssignedCards: props.unsavedAssignedCards || [],
+      deckSlots: props.deckSlots,
     };
 
     this._saveDrawnCard = this.saveDrawnCard.bind(this);
@@ -63,7 +64,7 @@ class CampaignDrawWeaknessDialog extends React.Component {
     this._showEditWeaknessDialog = throttle(this.showEditWeaknessDialog.bind(this), 200);
     this._navEventListener = Navigation.events().bindComponent(this);
 
-    if (!props.onlyDeckId) {
+    if (!props.deckSlots) {
       Navigation.mergeOptions(props.componentId, {
         topBar: {
           rightButtons: [{
@@ -142,6 +143,21 @@ class CampaignDrawWeaknessDialog extends React.Component {
     });
   }
 
+  static updateSlots(slots, pendingNextCard, replaceRandomBasicWeakness) {
+    const newSlots = Object.assign({}, slots);
+    if (!newSlots[pendingNextCard]) {
+      newSlots[pendingNextCard] = 0;
+    }
+    newSlots[pendingNextCard]++;
+    if (replaceRandomBasicWeakness && newSlots[RANDOM_BASIC_WEAKNESS] > 0) {
+      newSlots[RANDOM_BASIC_WEAKNESS]--;
+      if (!newSlots[RANDOM_BASIC_WEAKNESS]) {
+        delete newSlots[RANDOM_BASIC_WEAKNESS];
+      }
+    }
+    return newSlots;
+  }
+
   saveDrawnCard() {
     const {
       pendingNextCard,
@@ -164,10 +180,16 @@ class CampaignDrawWeaknessDialog extends React.Component {
     if (saveWeakness) {
       // We are in 'pending' mode to don't save it immediately.
       saveWeakness(pendingNextCard, replaceRandomBasicWeakness);
+      const newSlots = CampaignDrawWeaknessDialog.updateSlots(
+        this.state.deckSlots,
+        pendingNextCard,
+        replaceRandomBasicWeakness
+      );
       this.setState({
         pendingAssignedCards: null,
         pendingNextCard: null,
         unsavedAssignedCards: [...this.state.unsavedAssignedCards, pendingNextCard],
+        deckSlots: newSlots,
       });
       return;
     }
@@ -176,17 +198,11 @@ class CampaignDrawWeaknessDialog extends React.Component {
       const previousDeck = decks[deck.previous_deck];
       const investigator = investigators[deck.investigator_code];
       const ignoreDeckLimitSlots = deck.ignoreDeckLimitSlots || {};
-      const newSlots = Object.assign({}, deck.slots);
-      if (!newSlots[pendingNextCard]) {
-        newSlots[pendingNextCard] = 0;
-      }
-      newSlots[pendingNextCard]++;
-      if (replaceRandomBasicWeakness && newSlots[RANDOM_BASIC_WEAKNESS] > 0) {
-        newSlots[RANDOM_BASIC_WEAKNESS]--;
-        if (!newSlots[RANDOM_BASIC_WEAKNESS]) {
-          delete newSlots[RANDOM_BASIC_WEAKNESS];
-        }
-      }
+      const newSlots = CampaignDrawWeaknessDialog.updateSlots(
+        deck.slots,
+        pendingNextCard,
+        replaceRandomBasicWeakness
+      );
       const parsedDeck = parseDeck(deck, newSlots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
       const validator = new DeckValidation(investigator);
       const problemObj = validator.getProblem(flatMap(keys(newSlots), code => {
@@ -247,19 +263,20 @@ class CampaignDrawWeaknessDialog extends React.Component {
     const {
       decks,
       investigators,
-      onlyDeckId,
     } = this.props;
     const {
       selectedDeckId,
       replaceRandomBasicWeakness,
+      deckSlots,
     } = this.state;
     const deck = selectedDeckId && decks[selectedDeckId];
     const investigator = deck && investigators[deck.investigator_code];
     const message = L('Investigator: {{name}}', { name: investigator ? investigator.name : '' });
-    const hasRandomBasicWeakness = deck && deck.slots[RANDOM_BASIC_WEAKNESS] > 0;
+    const slots = (deckSlots || (deck && deck.slots)) || {};
+    const hasRandomBasicWeakness = slots[RANDOM_BASIC_WEAKNESS] > 0;
     return (
       <View>
-        { !onlyDeckId && (
+        { !!selectedDeckId && (
           <NavButton
             text={message}
             onPress={this._onPressInvestigator}
@@ -287,18 +304,20 @@ class CampaignDrawWeaknessDialog extends React.Component {
       pendingNextCard,
       selectedDeckId,
     } = this.state;
-    const deck = selectedDeckId && decks[selectedDeckId];
-    const investigator = deck && investigators[deck.investigator_code];
-    if (!pendingNextCard || !investigator) {
+    if (!pendingNextCard) {
       return null;
     }
-
+    const deck = selectedDeckId && decks[selectedDeckId];
+    const investigator = deck && investigators[deck.investigator_code];
+    const buttonText = investigator ?
+      L('Save to {{name}}’s Deck', { name: investigator.name }) :
+      L('Save to Deck');
     return (
       <View style={styles.button}>
         <Button
           color="green"
           onPress={this._saveDrawnCard}
-          text={L('Save to {{name}}’s Deck', { name: investigator.name })}
+          text={buttonText}
         />
       </View>
     );

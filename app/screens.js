@@ -42,11 +42,7 @@ import InvestigatorSortDialog from '../components/InvestigatorSortDialog';
 import ScenarioDialog from '../components/ScenarioDialog';
 import ExileCardDialog from '../components/ExileCardDialog';
 import AboutView from '../components/AboutView';
-import NewWeaknessSetDialog from '../components/weakness/NewWeaknessSetDialog';
-import WeaknessSetView from '../components/weakness/WeaknessSetView';
-import WeaknessSetChooserView from '../components/weakness/WeaknessSetChooserView';
 import WeaknessDrawDialog from '../components/weakness/WeaknessDrawDialog';
-import EditAssignedWeaknessDialog from '../components/weakness/EditAssignedWeaknessDialog';
 
 // register all screens of the app (including internal ones)
 export function registerScreens(Provider, store) {
@@ -91,10 +87,6 @@ export function registerScreens(Provider, store) {
   Navigation.registerComponentWithRedux('Dialog.CampaignDifficulty', () => CampaignDifficultyDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CampaignDrawWeakness', () => CampaignDrawWeaknessDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CampaignEditWeakness', () => CampaignEditWeaknessDialog, Provider, store);
-  Navigation.registerComponentWithRedux('Weakness.New', () => NewWeaknessSetDialog, Provider, store);
-  Navigation.registerComponentWithRedux('Weakness.Chooser', () => WeaknessSetChooserView, Provider, store);
-  Navigation.registerComponentWithRedux('Weakness.Detail', () => WeaknessSetView, Provider, store);
   Navigation.registerComponentWithRedux('Weakness.Draw', () => WeaknessDrawDialog, Provider, store);
-  Navigation.registerComponentWithRedux('Weakness.EditAssigned', () => EditAssignedWeaknessDialog, Provider, store);
   Navigation.registerComponentWithRedux('TuneButton', () => TuneButton, Provider, store);
 }

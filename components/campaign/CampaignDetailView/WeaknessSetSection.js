@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { filter, map, sum, values } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -9,7 +10,6 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import NavButton from '../../core/NavButton';
-import WeaknessSetView from '../../weakness/WeaknessSetView';
 import withWeaknessCards from '../../weakness/withWeaknessCards';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
@@ -22,6 +22,21 @@ class WeaknessSetSection extends React.Component {
     // From realm.
     cards: PropTypes.object.isRequired,
   };
+
+  static computeCount(set, allCards) {
+    if (!set) {
+      return {
+        assigned: 0,
+        total: 0,
+      };
+    }
+    const packCodes = new Set(set.packCodes);
+    const cards = filter(allCards, card => packCodes.has(card.pack_code));
+    return {
+      assigned: sum(values(set.assignedCards)),
+      total: sum(map(cards, card => card.quantity)),
+    };
+  }
 
   constructor(props) {
     super(props);
@@ -60,7 +75,7 @@ class WeaknessSetSection extends React.Component {
       weaknessSet,
       cards,
     } = this.props;
-    const counts = WeaknessSetView.computeCount(weaknessSet, cards);
+    const counts = WeaknessSetSection.computeCount(weaknessSet, cards);
     if (counts.total === 0) {
       return null;
     }

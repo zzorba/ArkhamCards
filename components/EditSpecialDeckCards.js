@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { forEach, keys, map, sortBy } from 'lodash';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -55,11 +55,14 @@ class EditSpecialDeckCards extends React.Component {
 
     this._updateSlots = this.updateSlots.bind(this);
     this._saveWeakness = this.saveWeakness.bind(this);
-    this._drawCampaignWeakness = this.drawCampaignWeakness.bind(this);
+    this._showCampaignWeaknessDialog = this.showCampaignWeaknessDialog.bind(this);
+    this._showWeaknessDialog = this.showWeaknessDialog.bind(this);
+    this._drawWeakness = this.drawWeakness.bind(this);
     this._editStoryPressed = this.editStoryPressed.bind(this);
     this._onIgnoreDeckLimitSlotsChange = this.onIgnoreDeckLimitSlotsChange.bind(this);
     this._cardPressed = this.cardPressed.bind(this);
     this._isSpecial = this.isSpecial.bind(this);
+    this._editCollection = this.editCollection.bind(this);
   }
 
   cardPressed(card) {
@@ -161,7 +164,65 @@ class EditSpecialDeckCards extends React.Component {
     });
   }
 
-  drawCampaignWeakness() {
+  editCollection() {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'My.Collection',
+      },
+    });
+  }
+
+  drawWeakness() {
+    Alert.alert(
+      L('Draw Basic Weakness'),
+      L('This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.'),
+      [
+        { text: L('Draw From Collection'), style: 'default', onPress: this._showWeaknessDialog },
+        { text: L('Edit Collection'), onPress: this._editCollection },
+        { text: L('Cancel'), style: 'cancel' },
+      ]);
+  }
+
+  showWeaknessDialog() {
+    const {
+      componentId,
+      cards,
+      deck,
+    } = this.props;
+    const {
+      slots,
+    } = this.state;
+    const investigator = cards[deck.investigator_code];
+    Navigation.push(componentId, {
+      component: {
+        name: 'Weakness.Draw',
+        passProps: {
+          slots,
+          saveWeakness: this._saveWeakness,
+        },
+        options: {
+          statusBar: {
+            style: 'light',
+          },
+          topBar: {
+            title: {
+              text: L('Draw Weaknesses'),
+              color: COLORS.white,
+            },
+            backButton: {
+              title: L('Back'),
+              color: 'white',
+            },
+            background: {
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+            },
+          },
+        },
+      },
+    });
+  }
+
+  showCampaignWeaknessDialog() {
     const {
       componentId,
       campaignId,
@@ -169,6 +230,7 @@ class EditSpecialDeckCards extends React.Component {
       cards,
     } = this.props;
     const {
+      slots,
       unsavedAssignedWeaknesses,
     } = this.state;
     const investigator = cards[deck.investigator_code];
@@ -177,7 +239,7 @@ class EditSpecialDeckCards extends React.Component {
         name: 'Dialog.CampaignDrawWeakness',
         passProps: {
           campaignId,
-          onlyDeckId: deck.id,
+          deckSlots: slots,
           saveWeakness: this._saveWeakness,
           unsavedAssignedCards: unsavedAssignedWeaknesses,
         },
@@ -214,15 +276,10 @@ class EditSpecialDeckCards extends React.Component {
     const {
       campaignId,
     } = this.props;
-
-    if (!campaignId) {
-      // Non campaign weakness stuff?
-      return null;
-    }
     return (
       <Button
         title={L('Draw Basic Weakness')}
-        onPress={this._drawCampaignWeakness}
+        onPress={campaignId ? this._showCampaignWeaknessDialog : this._drawWeakness}
       />
     );
   }

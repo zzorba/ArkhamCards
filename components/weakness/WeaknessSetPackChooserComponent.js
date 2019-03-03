@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, forEach, map, max, uniqBy, values } from 'lodash';
+import { filter, forEach, map, uniqBy, values } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
@@ -84,7 +84,7 @@ class WeaknessSetPackChooserComponent extends React.Component {
         packs={weaknessPacks}
         checkState={Object.assign({}, in_collection, override)}
         setChecked={this._onPackCheck}
-        baseQuery={'(subtype_code == "basicweakness" and code != "01000")'}
+        baseQuery={BASIC_WEAKNESS_QUERY}
         compact={compact}
         whiteBackground
       />
@@ -96,7 +96,6 @@ function mapStateToProps(state) {
   return {
     packs: state.packs.all,
     in_collection: state.packs.in_collection || {},
-    nextId: 1 + (max(map(values(state.weaknesses.all), set => set.id)) || 0),
   };
 }
 
