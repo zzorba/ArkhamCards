@@ -96,7 +96,6 @@ export default class CardSearchResultComponent extends React.Component {
     });
   }
 
-
   applyQueryFilter(query) {
     const {
       searchTerm,
