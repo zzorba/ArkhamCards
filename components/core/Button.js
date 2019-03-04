@@ -74,24 +74,24 @@ export default function Button({
       >
         <LinearGradient colors={colors} style={[
           styles.button,
+          styles.row,
           width ? { width } : {},
           { paddingLeft: padding, paddingRight: padding },
+          grow ? { flex: 1 } : {},
         ]}>
-          <View style={styles.row}>
-            { !!icon && (
-              <View style={text ? { marginRight: padding / 2 } : {}}>
-                { icon }
-              </View>
-            ) }
-            { !!text && (
-              <Text style={[
-                typography.text,
-                { fontWeight, color: textColor },
-              ]}>
-                { text }
-              </Text>
-            ) }
-          </View>
+          { !!icon && (
+            <View style={[styles.icon, text ? { marginRight: padding / 2 } : {}]}>
+              { icon }
+            </View>
+          ) }
+          { !!text && (
+            <Text style={[
+              typography.text,
+              { fontWeight, color: textColor },
+            ]}>
+              { text }
+            </Text>
+          ) }
         </LinearGradient>
       </TouchableOpacity>
     </View>
@@ -111,6 +111,10 @@ Button.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  icon: {
+    marginRight: 4,
+    marginLeft: 4,
+  },
   leftContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',

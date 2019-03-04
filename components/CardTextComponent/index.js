@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import SimpleMarkdown from 'simple-markdown';
 import { MarkdownView } from 'react-native-markdown-view';
 
+import { isBig } from '../../styles/space';
+
 import ArkhamIconNode from './ArkhamIconNode';
 import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';
 import BoldHtmlTagNode from './BoldHtmlTagNode';
@@ -196,6 +198,7 @@ export default class CardText extends React.PureComponent {
             marginRight: 4,
           },
           paragraph: {
+            fontSize: isBig ? 24 : 14,
             marginTop: 4,
             marginBottom: 4,
           },

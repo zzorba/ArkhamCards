@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import DeviceInfo from 'react-native-device-info';
 
 import L from '../../../app/i18n';
 import { parseDeck } from '../../parseDeck';
@@ -95,11 +96,18 @@ class CampaignDeckDetail extends React.Component {
         ) }
         <View style={styles.section}>
           <Button
-            icon={<AppIcon name="deck" size={18} color="#222222" />}
-            text={L('{{normalCount}} Cards ({{totalCount}} Total)', {
-              normalCount: parsedDeck.normalCardCount,
-              totalCount: parsedDeck.totalCardCount,
-            })}
+            icon={<AppIcon name="deck" size={18 * DeviceInfo.getFontScale()} color="#222222" />}
+            text={
+              DeviceInfo.getFontScale() > 1.5 ?
+                L('{{normalCount}} Cards\n({{totalCount}} Total)', {
+                  normalCount: parsedDeck.normalCardCount,
+                  totalCount: parsedDeck.totalCardCount,
+                }) :
+                L('{{normalCount}} Cards ({{totalCount}} Total)', {
+                  normalCount: parsedDeck.normalCardCount,
+                  totalCount: parsedDeck.totalCardCount,
+                })
+            }
             style={styles.button}
             size="small"
             align="left"
@@ -206,7 +214,7 @@ class CampaignSubDeckDetail extends React.Component {
         { !eliminated && (
           <View style={styles.section}>
             <Button
-              icon={<MaterialCommunityIcons size={18} color="#222" name="arrow-up-bold" />}
+              icon={<MaterialCommunityIcons size={18 * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
               text={L('Upgrade Deck')}
               style={styles.button}
               size="small"

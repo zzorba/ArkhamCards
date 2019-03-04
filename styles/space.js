@@ -1,35 +1,39 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
-export const l = 32;
-export const m = 16;
-export const s = 8;
+export const isBig = (Platform.OS === 'ios' && Platform.isPad);
+const sizeScale = isBig ? 2 : 1;
+
+export const xs = 4 * sizeScale;
+export const s = 8 * sizeScale;
+export const m = 16 * sizeScale;
+export const l = 32 * sizeScale;
 
 export default StyleSheet.create({
   marginLeftS: {
-    marginLeft: 8,
+    marginLeft: s,
   },
   marginLeftM: {
-    marginLeft: 16,
+    marginLeft: m,
   },
   marginLeftL: {
-    marginLeft: 32,
+    marginLeft: l,
   },
   paddingLeftS: {
-    paddingLeft: 8,
+    paddingLeft: s,
   },
   paddingLeftM: {
-    paddingLeft: 16,
+    paddingLeft: m,
   },
   paddingLeftL: {
-    paddingLeft: 32,
+    paddingLeft: l,
   },
   marginBottomS: {
-    marginBottom: 8,
+    marginBottom: s,
   },
   marginBottomM: {
-    marginBottom: 16,
+    marginBottom: m,
   },
   marginBottomL: {
-    marginBottom: 32,
+    marginBottom: l,
   },
 });

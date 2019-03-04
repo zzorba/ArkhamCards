@@ -72,7 +72,6 @@ class NewDeckView extends React.Component {
   }
 
   showSortDialog() {
-    this.isOnTop = false;
     Keyboard.dismiss();
     Navigation.showOverlay({
       component: {

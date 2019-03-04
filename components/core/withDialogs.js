@@ -60,7 +60,7 @@ export default function withDialogs(WrappedComponent) {
         text,
         onTextChange,
         onSaveAndAdd,
-        numberOfLines: numberOfLines || 1,
+        numberOfLines: numberOfLines || 2,
         showCrossOut: !!showCrossOut,
       });
     }

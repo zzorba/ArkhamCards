@@ -7,9 +7,8 @@ import {
   View,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
-import { Navigation } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { showCard } from '../navHelper';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
@@ -33,23 +32,7 @@ export default class InvestigatorImage extends React.Component {
       card,
       componentId,
     } = this.props;
-    Navigation.push(componentId, {
-      component: {
-        name: 'Card',
-        passProps: {
-          id: card.code,
-          pack_code: card.pack_code,
-          showSpoilers: true,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: L('Back'),
-            },
-          },
-        },
-      },
-    });
+    showCard(componentId, card.code, card, true);
   }
 
   renderImage() {
@@ -69,7 +52,7 @@ export default class InvestigatorImage extends React.Component {
               backgroundColor: FACTION_COLORS[card.faction_code],
             },
           ]}>
-            <Text style={styles.placeholderIcon}>
+            <Text style={styles.placeholderIcon} allowFontScaling={false}>
               { (small ? SMALL_FACTION_ICONS : FACTION_ICONS)[card.faction_code] }
             </Text>
           </View>

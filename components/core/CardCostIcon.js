@@ -5,10 +5,16 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { FACTION_COLORS } from '../../constants';
+import { isBig } from '../../styles/space';
+
+const scaleFactor = ((DeviceInfo.getFontScale() - 1) / 2 + 1);
+export const COST_ICON_SIZE = (isBig ? 48 : 36) * scaleFactor;
+export const ICON_SIZE = (isBig ? 46 : 32) * scaleFactor;
 
 export default class CardCostIcon extends React.Component {
   static propTypes = {
@@ -71,7 +77,7 @@ export default class CardCostIcon extends React.Component {
         <View style={styles.levelIcon}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${card.xp || 0}`}
-            size={32}
+            size={ICON_SIZE}
             color={inverted ? '#FFF' : color}
           />
         </View>
@@ -81,11 +87,11 @@ export default class CardCostIcon extends React.Component {
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
                 color="#FFF"
-                size={17}
+                size={ICON_SIZE / 2}
               />
             </View>
           ) : (
-            <Text style={styles.costNumber}>
+            <Text style={styles.costNumber} allowFontScaling={false}>
               { this.cardCost() }
             </Text>
           ) }
@@ -98,15 +104,15 @@ export default class CardCostIcon extends React.Component {
 const styles = StyleSheet.create({
   level: {
     position: 'relative',
-    width: 36,
-    height: 36,
+    width: COST_ICON_SIZE,
+    height: COST_ICON_SIZE,
   },
   levelIcon: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: 36,
-    height: 36,
+    width: COST_ICON_SIZE,
+    height: COST_ICON_SIZE,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -117,7 +123,7 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    fontSize: 23,
+    fontSize: (isBig ? 32 : 23) * scaleFactor,
     color: '#FFF',
   },
   factionIcon: {

@@ -14,6 +14,7 @@ import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withNetworkStatus from '../core/withNetworkStatus';
 import * as Actions from '../../actions';
+import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { newCustomDeck } from '../../lib/authApi';
 import { getNextLocalDeckId } from '../../reducers';
 import L from '../../app/i18n';
@@ -138,7 +139,7 @@ class NewDeckOptionsDialog extends React.Component {
     } = this.state;
     const slots = {
       // Random basic weakness.
-      '01000': 1,
+      [RANDOM_BASIC_WEAKNESS]: 1,
     };
 
     // Seed all the 'basic' requirements from the investigator.

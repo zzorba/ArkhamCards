@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { keys } from 'lodash';
 import {
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
@@ -123,14 +124,14 @@ class SettingsView extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.list}>
+        <ScrollView style={styles.list}>
           <LoginButton />
           <SettingsItem onPress={this._myCollectionPressed} text={L('Card Collection')} />
           <SettingsItem onPress={this._editSpoilersPressed} text={L('Spoiler Settings')} />
           { this.renderSyncCards() }
           <SettingsItem onPress={this._diagnosticsPressed} text={L('Diagnostics')} />
           <SettingsItem onPress={this._aboutPressed} text={L('About')} />
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }

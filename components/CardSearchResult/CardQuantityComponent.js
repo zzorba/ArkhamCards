@@ -13,9 +13,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import Button from '../core/Button';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import CountButton from './CountButton';
-import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING } from './constants';
+import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING, TOGGLE_BUTTON_MODE } from './constants';
 import typography from '../../styles/typography';
-import { TINY_PHONE } from '../../styles/sizes';
+
 
 /**
  * Simple sliding card count.
@@ -85,7 +85,7 @@ export default class CardQuantityComponent extends React.PureComponent {
       count: count,
     }, () => {
       setTimeout(() => {
-        if (TINY_PHONE) {
+        if (TOGGLE_BUTTON_MODE) {
           this.toggle(true);
         }
         this._throttledCountChange(count);
@@ -128,7 +128,7 @@ export default class CardQuantityComponent extends React.PureComponent {
     });
 
     return (
-      <View style={styles.container} pointerEvents="box-none">
+      <View style={styles.tinyContainer} pointerEvents="box-none">
         <Button
           style={styles.button}
           color={count === 0 ? 'white' : null}
@@ -176,7 +176,7 @@ export default class CardQuantityComponent extends React.PureComponent {
   }
 
   render() {
-    if (TINY_PHONE) {
+    if (TOGGLE_BUTTON_MODE) {
       return this.renderTiny();
     }
 
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginRight: 8,
   },
-  container: {
+  tinyContainer: {
     position: 'absolute',
     top: 0,
     left: 0,

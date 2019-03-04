@@ -91,9 +91,9 @@ export default class EditTraumaDialogContent extends React.Component {
     const impliedInsane = (mental === sanity);
     return (
       <View>
-        <View style={styles.counterRow}>
+        <View style={styles.counterColumn}>
           <Text style={styles.label}>{ L('Physical Trauma') }</Text>
-          <View style={styles.row}>
+          <View style={styles.buttonsRow}>
             <Text style={[styles.label, styles.traumaText]}>
               { physical || 0 }
             </Text>
@@ -108,9 +108,9 @@ export default class EditTraumaDialogContent extends React.Component {
             />
           </View>
         </View>
-        <View style={styles.counterRow}>
+        <View style={styles.counterColumn}>
           <Text style={styles.label}>{ L('Mental Trauma') }</Text>
-          <View style={styles.row}>
+          <View style={styles.buttonsRow}>
             <Text style={[styles.label, styles.traumaText]}>
               { mental || 0 }
             </Text>
@@ -145,16 +145,18 @@ export default class EditTraumaDialogContent extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  counterRow: {
+  counterColumn: {
     marginRight: Platform.OS === 'ios' ? 28 : 8,
     marginLeft: Platform.OS === 'ios' ? 28 : 8,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  buttonsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
+    width: '100%',
   },
   traumaText: {
     fontWeight: '900',

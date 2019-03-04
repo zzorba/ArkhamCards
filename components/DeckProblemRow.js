@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import L from '../app/i18n';
 import AppIcon from '../assets/AppIcon';
@@ -20,16 +21,21 @@ const DECK_PROBLEM_MESSAGES = {
   investigator: L('Doesn\'t comply with the Investigator requirements.'),
 };
 
-export default function DeckProblemRow({ problem, color }) {
+export default function DeckProblemRow({ problem, color, noFontScaling }) {
   return (
     <View style={styles.problemRow}>
       <View style={styles.warningIcon}>
-        <AppIcon name="warning" size={14} color={color} />
+        <AppIcon
+          name="warning"
+          size={14 * (noFontScaling ? 1 : DeviceInfo.getFontScale())}
+          color={color}
+        />
       </View>
       <Text
         style={[typography.small, { color }, styles.problemText]}
         numberOfLines={2}
         ellipsizeMode="tail"
+        allowFontScaling={!noFontScaling}
       >
         { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
       </Text>
@@ -40,6 +46,7 @@ export default function DeckProblemRow({ problem, color }) {
 DeckProblemRow.propTypes = {
   problem: PropTypes.object.isRequired,
   color: PropTypes.string.isRequired,
+  noFontScaling: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({

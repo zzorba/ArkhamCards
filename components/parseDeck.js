@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { concat, filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy } from 'lodash';
 
 import L from '../app/i18n';
-import { FACTION_CODES, SKILLS } from '../constants';
+import { FACTION_CODES, SKILLS, RANDOM_BASIC_WEAKNESS } from '../constants';
 
 function filterBy(cardIds, cards, field, value) {
   return cardIds.filter(c => cards[c.id] && cards[c.id][field] === value);
@@ -35,7 +35,7 @@ function groupAssets(cardIds, cards) {
 
 export function isSpecialCard(card) {
   return card && (
-    card.code === '01000' ||
+    card.code === RANDOM_BASIC_WEAKNESS ||
     card.permanent ||
     card.subtype_code === 'weakness' ||
     card.subtype_code === 'basicweakness' ||

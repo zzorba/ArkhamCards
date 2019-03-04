@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -93,7 +94,25 @@ export default class PlayerCardImage extends React.Component {
         </View>
       );
     }
+    const horizontal = card.type_code === 'act' ||
+      card.type_code === 'investigator' ||
+      card.type_code === 'agenda';
 
+    if (Platform.OS === 'ios' && Platform.isPad && !horizontal) {
+      return (
+        <TouchableOpacity onPress={this._onPress}>
+          <View style={styles.verticalContainer}>
+            <CachedImage
+              style={styles.verticalContainer}
+              source={{
+                uri: `https://arkhamdb.com${filename}`,
+              }}
+              resizeMode="contain"
+            />
+          </View>
+        </TouchableOpacity>
+      );
+    }
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.container}>
@@ -114,6 +133,10 @@ export default class PlayerCardImage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  verticalContainer: {
+    width: 215,
+    height: 300,
+  },
   container: {
     overflow: 'hidden',
     position: 'relative',

@@ -16,6 +16,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { Navigation } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
+import DeviceInfo from 'react-native-device-info';
 
 import L from '../../app/i18n';
 import withLoginState from '../withLoginState';
@@ -926,14 +927,14 @@ class DeckDetailView extends React.Component {
             style={styles.button}
             text={L('Edit')}
             color="purple"
-            icon={<MaterialIcons size={20} color="#FFFFFF" name="edit" />}
+            icon={<MaterialIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="edit" />}
             onPress={this._onEditPressed}
           />
           { !hasPendingEdits && (
             <Button
               text={L('Upgrade Deck')}
               color="yellow"
-              icon={<MaterialCommunityIcons size={20} color="#FFFFFF" name="arrow-up-bold" />}
+              icon={<MaterialCommunityIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="arrow-up-bold" />}
               onPress={this._onUpgradePressed}
             />
           ) }
@@ -1110,6 +1111,7 @@ const styles = StyleSheet.create({
   buttonRow: {
     paddingTop: 8,
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   button: {
     marginRight: 8,

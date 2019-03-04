@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import ChaosToken from '../../core/ChaosToken';
+import ChaosToken, { SIZE } from '../../core/ChaosToken';
 import PlusMinusButtons from '../../core/PlusMinusButtons';
 
 export default class ChaosTokenRow extends React.PureComponent {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingLeft: 8,
     paddingRight: 8,
-    height: 60,
+    height: SIZE + 24,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },

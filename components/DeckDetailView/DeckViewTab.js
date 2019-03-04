@@ -12,18 +12,21 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import DeviceInfo from 'react-native-device-info';
 
 import AppIcon from '../../assets/AppIcon';
 import L from '../../app/i18n';
 import { DeckType } from '../parseDeck';
+import { showCard } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
+
+const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
 
 function deckToSections(halfDeck) {
   const result = [];
@@ -217,22 +220,7 @@ export default class DeckViewTab extends React.Component {
   }
 
   showCard(card) {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'Card',
-        passProps: {
-          id: card.code,
-          pack_code: card.pack_code,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: L('Back'),
-            },
-          },
-        },
-      },
-    });
+    showCard(this.props.componentId, card.code, card);
   }
 
   renderSectionHeader({ section }) {
@@ -252,7 +240,7 @@ export default class DeckViewTab extends React.Component {
               { section.superTitle }
             </Text>
             <View style={styles.editIcon}>
-              <MaterialIcons name="edit" color="#FFF" size={18} />
+              <MaterialIcons name="edit" color="#FFF" size={SMALL_EDIT_ICON_SIZE} />
             </View>
           </TouchableOpacity>
         );
@@ -320,7 +308,7 @@ export default class DeckViewTab extends React.Component {
       ]}>
         <View style={styles.problemRow}>
           <View style={styles.warningIcon}>
-            <AppIcon name="warning" size={14} color={isSurvivor ? COLORS.black : COLORS.white} />
+            <AppIcon name="warning" size={14 * DeviceInfo.getFontScale()} color={isSurvivor ? COLORS.black : COLORS.white} />
           </View>
           <Text
             numberOfLines={2}
@@ -369,7 +357,7 @@ export default class DeckViewTab extends React.Component {
       <ScrollView>
         <View>
           { this.renderProblem() }
-          <View style={[styles.container, styles.rowWrap]}>
+          <View style={styles.container}>
             <View style={styles.header}>
               <TouchableOpacity onPress={this._showInvestigator}>
                 <View style={styles.image}>
@@ -378,15 +366,20 @@ export default class DeckViewTab extends React.Component {
               </TouchableOpacity>
               <View style={styles.metadata}>
                 { (isPrivate && !deck.next_deck) ? (
-                  <TouchableOpacity style={styles.row} onPress={showEditNameDialog}>
-                    <Text style={styles.investigatorName}
-                      numberOfLines={2}
-                      ellipsizeMode="tail"
-                    >
-                      { deckName }
-                    </Text>
-                    <View style={styles.editIcon}>
-                      <MaterialIcons name="edit" color="#222222" size={16} />
+                  <TouchableOpacity onPress={showEditNameDialog}>
+                    <View style={styles.nameRow}>
+                      <View style={styles.investigatorWrapper}>
+                        <Text
+                          style={styles.investigatorName}
+                          numberOfLines={2}
+                          ellipsizeMode="tail"
+                        >
+                          { deckName }
+                        </Text>
+                      </View>
+                      <View style={styles.editIcon}>
+                        <MaterialIcons name="edit" color="#222222" size={SMALL_EDIT_ICON_SIZE} />
+                      </View>
                     </View>
                   </TouchableOpacity>
                 ) : (
@@ -482,6 +475,9 @@ const styles = StyleSheet.create({
     height: 80,
     marginRight: 8,
   },
+  investigatorWrapper: {
+    flex: 1,
+  },
   investigatorName: {
     color: '#000000',
     fontSize: 18,
@@ -545,13 +541,14 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#bdbdbd',
   },
-  row: {
+  nameRow: {
     flexDirection: 'row',
+    flex: 1,
     alignItems: 'center',
-    paddingRight: 8,
+    justifyContent: 'space-between',
   },
   editIcon: {
-    width: 16,
-    marginLeft: 16,
+    width: SMALL_EDIT_ICON_SIZE,
+    height: SMALL_EDIT_ICON_SIZE,
   },
 });

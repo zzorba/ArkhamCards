@@ -9,8 +9,7 @@ import WeaknessDrawComponent from './WeaknessDrawComponent';
 import withWeaknessCards from './withWeaknessCards';
 import L from '../../app/i18n';
 import Button from '../core/Button';
-
-const RANDOM_BASIC_WEAKNESS = '01000';
+import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 
 class WeaknessDrawDialog extends React.Component {
   static propTypes = {

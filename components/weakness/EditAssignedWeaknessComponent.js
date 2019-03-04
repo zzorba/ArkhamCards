@@ -4,8 +4,8 @@ import { flatMap } from 'lodash';
 import {
   ScrollView,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 
+import { showCard } from '../navHelper';
 import L from '../../app/i18n';
 import withWeaknessCards from './withWeaknessCards';
 import CardSearchResult from '../CardSearchResult';
@@ -53,17 +53,7 @@ class EditAssignedWeaknessComponent extends React.Component {
   }
 
   cardPressed(card) {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'Card',
-        passProps: {
-          id: card.code,
-          pack_code: card.pack_code,
-          showSpoilers: true,
-          backButtonTitle: L('Back'),
-        },
-      },
-    });
+    showCard(this.props.componentId, card.code, card, true);
   }
 
   render() {

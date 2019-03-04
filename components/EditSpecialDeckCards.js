@@ -10,12 +10,11 @@ import L from '../app/i18n';
 import CardSelectorComponent from './CardSelectorComponent';
 import withPlayerCards from './withPlayerCards';
 import CardSearchResult from './CardSearchResult';
-import { FACTION_DARK_GRADIENTS } from '../constants';
+import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS } from '../constants';
 import { getCampaign } from '../reducers';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
 
-const RANDOM_BASIC_WEAKNESS = '01000';
 const ACE_OF_RODS = '05040';
 
 class EditSpecialDeckCards extends React.Component {

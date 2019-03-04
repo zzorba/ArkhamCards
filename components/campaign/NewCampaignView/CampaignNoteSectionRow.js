@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import DeviceInfo from 'react-native-device-info';
 
 import Button from '../../core/Button';
 import typography from '../../../styles/typography';
@@ -64,7 +65,7 @@ export default class CampaignNoteSectionRow extends React.Component {
             size="small"
             onPress={this._onPress}
             icon={
-              <MaterialIcons name="close" size={14} color="#FFFFFF" />
+              <MaterialIcons name="close" size={14 * DeviceInfo.getFontScale()} color="#FFFFFF" />
             }
           />
           <Text style={typography.text}>

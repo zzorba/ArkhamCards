@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { findKey, map } from 'lodash';
 import { BackHandler } from 'react-native';
-import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
@@ -16,14 +15,11 @@ import {
   SORT_BY_ENCOUNTER_SET,
 } from './constants';
 
-class CardSortDialog extends React.Component {
+export default class CardSortDialog extends React.Component {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     sortChanged: PropTypes.func.isRequired,
     selectedSort: PropTypes.string.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
-    query: PropTypes.string,
-    searchTerm: PropTypes.string,
     hasEncounterCards: PropTypes.bool.isRequired,
   };
 
@@ -96,18 +92,3 @@ class CardSortDialog extends React.Component {
     );
   }
 }
-
-export default connectRealm(CardSortDialog, {
-  schemas: ['Card'],
-  mapToProps(results, realm, props) {
-    if (!props.query) {
-      return {
-        hasEncounterCards: true,
-      };
-    }
-    const encounterQuery = `(${props.query}) and (encounter_code != null or (linked_card != null && linked_card.encounter_code != null))`;
-    return {
-      hasEncounterCards: results.cards.filtered(encounterQuery, props.searchTerm).length > 0,
-    };
-  },
-});

@@ -144,3 +144,5 @@ export function createFactionIcons(size, defaultColor) {
     );
   });
 }
+
+export const RANDOM_BASIC_WEAKNESS = '01000';

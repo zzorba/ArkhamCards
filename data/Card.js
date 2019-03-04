@@ -18,7 +18,12 @@ export default class Card {
     if (this.type_code !== 'asset' && this.type_code !== 'event') {
       return '';
     }
-    if (this.permanent || this.double_sided || linked) {
+    if (this.permanent ||
+      this.double_sided ||
+      linked ||
+      (this.cost === null && (
+        this.subtype_code === 'weakness' ||
+        this.subtype_code === 'basicweakness'))) {
       return L('Cost: -');
     }
     return L(

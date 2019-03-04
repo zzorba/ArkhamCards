@@ -11,7 +11,7 @@ import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
-import { getDeckOptions } from '../navHelper';
+import { getDeckOptions, showCard } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
 import typography from '../../styles/typography';
 
@@ -72,15 +72,7 @@ class DeckDelta extends React.Component {
   }
 
   showCard(card) {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'Card',
-        passProps: {
-          id: card.code,
-          pack_code: card.pack_code,
-        },
-      },
-    });
+    showCard(this.props.componentId, card.code, card);
   }
 
   render() {

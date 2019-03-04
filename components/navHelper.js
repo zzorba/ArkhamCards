@@ -33,6 +33,48 @@ export function getDeckOptions(investigator) {
 }
 
 export function showDeckModal(componentId, deck, investigator, campaignId) {
+  /* if (Platform.OS === 'ios' && Platform.isPad && false) {
+    Navigation.showModal({
+      splitView: {
+        id: 'SPLIT_DECK_EDIT',
+        master: {
+          stack: {
+            id: 'MASTER_ID',
+            children: [
+              {
+                component: {
+                  name: 'Settings',
+                },
+              },
+            ],
+          },
+        },
+        detail: {
+          stack: {
+            id: 'DETAILS_ID',
+            children: [
+              {
+                component: {
+                  name: 'Deck',
+                  passProps: {
+                    id: deck.id,
+                    isPrivate: true,
+                    modal: true,
+                    campaignId,
+                    title: investigator.name,
+                  },
+                  options: getDeckOptions(investigator),
+                },
+              },
+            ],
+          },
+        },
+        options: {
+          displayMode: 'visible',
+        },
+      },
+    });
+  } else { */
   Navigation.showModal({
     stack: {
       children: [{
@@ -51,7 +93,6 @@ export function showDeckModal(componentId, deck, investigator, campaignId) {
     },
   });
 }
-
 
 export function showCard(componentId, code, card, showSpoilers) {
   Navigation.push(componentId, {

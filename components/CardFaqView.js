@@ -13,8 +13,10 @@ import { Navigation } from 'react-native-navigation';
 import openInApp from '@matt-block/react-native-in-app-browser';
 
 import CardTextComponent from './CardTextComponent';
+import { showCard } from './navHelper';
 import { getFaqEntry } from '../lib/publicApi';
 import typography from '../styles/typography';
+import { m } from '../styles/space';
 
 class CardFaqView extends React.Component {
   static propTypes = {
@@ -75,15 +77,7 @@ class CardFaqView extends React.Component {
     if (match) {
       const code = match[1];
       const card = head(cards.filtered(`code == '${code}'`));
-      Navigation.push(componentId, {
-        component: {
-          name: 'Card',
-          passProps: {
-            id: code,
-            pack_code: card ? card.pack_code : null,
-          },
-        },
-      });
+      showCard(componentId, code, card);
     } else if (url.indexOf('arkhamdb.com') !== -1) {
       this.openUrl(url);
     } else if (startsWith(url, '/')) {
@@ -183,7 +177,7 @@ export default connectRealm(CardFaqView, {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
+    margin: m,
   },
   error: {
     color: 'red',

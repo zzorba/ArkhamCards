@@ -67,94 +67,145 @@ export default class App {
       'Warning: isMounted(...) is deprecated',
     ]);
 
+    // const isIpad = Platform.OS === 'ios' && Platform.isPad;
+
+    /*
+    isIpad ? {
+      splitView: {
+        id: 'BROWSE_TAB',
+        master: {
+          stack: {
+            id: 'BROWSE_TAB_FILTERS_VIEW',
+            children: [
+              {
+                component: {
+                  name: 'Settings',
+                },
+              },
+            ],
+          },
+        },
+        detail: {
+          stack: {
+            id: 'BROWSE_TAB_CARD_VIEW',
+            children: [{
+              component: {
+                name: 'Browse.Cards',
+                options: {
+                  topBar: {
+                    title: {
+                      text: L('Player Cards'),
+                    },
+                  },
+                },
+              },
+            }],
+          },
+        },
+        options: {
+          splitView: {
+            displayMode: 'visible',
+            primaryEdge: 'trailing',
+            minWidth: 100,
+          },
+          bottomTab: {
+            text: L('Cards'),
+            icon: iconsMap.cards,
+          },
+        },
+      },
+    } :*/
+    const browseTab = {
+      stack: {
+        children: [{
+          component: {
+            name: 'Browse.Cards',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Player Cards'),
+                },
+              },
+            },
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Cards'),
+            icon: iconsMap.cards,
+          },
+        },
+      },
+    };
+    const tabs = [browseTab, {
+      stack: {
+        children: [{
+          component: {
+            name: 'My.Decks',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Decks'),
+                },
+              },
+            },
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Decks'),
+            icon: iconsMap.deck,
+          },
+        },
+      },
+    }, {
+      stack: {
+        children: [{
+          component: {
+            name: 'My.Campaigns',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Campaigns'),
+                },
+              },
+            },
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Campaigns'),
+            icon: iconsMap.book,
+          },
+        },
+      },
+    }, {
+      stack: {
+        children: [{
+          component: {
+            name: 'Settings',
+            options: {
+              topBar: {
+                title: {
+                  text: L('Settings'),
+                },
+              },
+            },
+          },
+        }],
+        options: {
+          bottomTab: {
+            text: L('Settings'),
+            icon: iconsMap.settings,
+          },
+        },
+      },
+    }];
+
     Navigation.setRoot({
       root: {
         bottomTabs: {
-          children: [{
-            stack: {
-              children: [{
-                component: {
-                  name: 'Browse.Cards',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Player Cards'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Cards'),
-                  icon: iconsMap.cards,
-                },
-              },
-            },
-          }, {
-            stack: {
-              children: [{
-                component: {
-                  name: 'My.Decks',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Decks'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Decks'),
-                  icon: iconsMap.deck,
-                },
-              },
-            },
-          }, {
-            stack: {
-              children: [{
-                component: {
-                  name: 'My.Campaigns',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Campaigns'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Campaigns'),
-                  icon: iconsMap.book,
-                },
-              },
-            },
-          }, {
-            stack: {
-              children: [{
-                component: {
-                  name: 'Settings',
-                  options: {
-                    topBar: {
-                      title: {
-                        text: L('Settings'),
-                      },
-                    },
-                  },
-                },
-              }],
-              options: {
-                bottomTab: {
-                  text: L('Settings'),
-                  icon: iconsMap.settings,
-                },
-              },
-            },
-          }],
+          children: tabs,
         },
       },
     });
