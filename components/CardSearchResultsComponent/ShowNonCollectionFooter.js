@@ -5,10 +5,11 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import { isBig } from '../../styles/space';
 
-export const ROW_NON_COLLECTION_HEIGHT = isBig ? 52 : 38;
+export const ROW_NON_COLLECTION_HEIGHT = (isBig ? 52 : 38) * DeviceInfo.getFontScale();
 
 export default class ShowNonCollectionFooter extends React.Component {
   static propTypes = {
@@ -43,9 +44,6 @@ export default class ShowNonCollectionFooter extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  button: {
-    height: ROW_NON_COLLECTION_HEIGHT,
-  },
   row: {
     height: ROW_NON_COLLECTION_HEIGHT,
     alignItems: 'center',

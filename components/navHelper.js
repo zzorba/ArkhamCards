@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../app/i18n';
@@ -34,7 +33,7 @@ export function getDeckOptions(investigator) {
 }
 
 export function showDeckModal(componentId, deck, investigator, campaignId) {
-  if (Platform.OS === 'ios' && Platform.isPad && false) {
+  /* if (Platform.OS === 'ios' && Platform.isPad && false) {
     Navigation.showModal({
       splitView: {
         id: 'SPLIT_DECK_EDIT',
@@ -75,25 +74,24 @@ export function showDeckModal(componentId, deck, investigator, campaignId) {
         },
       },
     });
-  } else {
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Deck',
-            passProps: {
-              id: deck.id,
-              isPrivate: true,
-              modal: true,
-              campaignId,
-              title: investigator.name,
-            },
-            options: getDeckOptions(investigator),
+  } else { */
+  Navigation.showModal({
+    stack: {
+      children: [{
+        component: {
+          name: 'Deck',
+          passProps: {
+            id: deck.id,
+            isPrivate: true,
+            modal: true,
+            campaignId,
+            title: investigator.name,
           },
-        }],
-      },
-    });
-  }
+          options: getDeckOptions(investigator),
+        },
+      }],
+    },
+  });
 }
 
 export function showCard(componentId, code, card, showSpoilers) {

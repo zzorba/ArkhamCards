@@ -52,7 +52,7 @@ export default class InvestigatorImage extends React.Component {
               backgroundColor: FACTION_COLORS[card.faction_code],
             },
           ]}>
-            <Text style={styles.placeholderIcon}>
+            <Text style={styles.placeholderIcon} allowFontScaling={false}>
               { (small ? SMALL_FACTION_ICONS : FACTION_ICONS)[card.faction_code] }
             </Text>
           </View>

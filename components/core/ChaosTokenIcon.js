@@ -14,7 +14,7 @@ export default function ChaosTokenIcon({ id, size, color = '#000' }) {
   if (SPECIAL_TOKENS_SET.has(id)) {
     return <ArkhamIcon name={id} size={size} color={color} />;
   }
-  return <Text style={[styles.label, { fontSize: size, color: color }]}>{ id }</Text>;
+  return <Text style={[styles.label, { fontSize: size, color: color }]} allowFontScaling={false}>{ id }</Text>;
 }
 
 ChaosTokenIcon.propTypes = {

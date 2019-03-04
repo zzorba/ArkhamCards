@@ -8,19 +8,21 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
-import CardCostIcon from '../core/CardCostIcon';
+import CardCostIcon, { COST_ICON_SIZE } from '../core/CardCostIcon';
 import Switch from '../core/Switch';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import { COLORS } from '../../styles/colors';
-import { ROW_HEIGHT, ICON_SIZE } from './constants';
+import { ROW_HEIGHT, ICON_SIZE, TOGGLE_BUTTON_MODE, BUTTON_WIDTH } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from '../../styles/typography';
 import { isBig, s } from '../../styles/space';
 
-const SMALL_ICON_SIZE = isBig ? 38 : 26;
+const SKILL_ICON_SIZE = (isBig ? 24 : 14) * DeviceInfo.getFontScale();
+const SMALL_ICON_SIZE = (isBig ? 38 : 26) * DeviceInfo.getFontScale();
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
 
@@ -141,7 +143,7 @@ export default class CardSearchResult extends React.PureComponent {
       <View key={`${skill}-${key}`} style={styles.skillIcon}>
         <ArkhamIcon
           name={skill}
-          size={isBig ? 24 : 14}
+          size={SKILL_ICON_SIZE}
           color="#444"
         />
       </View>
@@ -208,16 +210,18 @@ export default class CardSearchResult extends React.PureComponent {
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
-          <Text style={[typography.text, { color }]} numberOfLines={1} ellipsizeMode="tail">
+          <Text style={[typography.text, { color }]} numberOfLines={1} ellipsizeMode="clip">
             { card.renderName }
           </Text>
         </View>
         <View style={styles.row}>
           { this.renderSkillIcons() }
           { !!card.renderSubname && (
-            <Text style={[typography.small, styles.subname, { color }]}>
-              { card.renderSubname }
-            </Text>
+            <View style={styles.row}>
+              <Text style={[typography.small, styles.subname, { color }]} numberOfLines={1} ellipsizeMode="clip">
+                { card.renderSubname }
+              </Text>
+            </View>
           ) }
           { this.renderDualFactionIcons() }
         </View>
@@ -282,6 +286,7 @@ export default class CardSearchResult extends React.PureComponent {
       onToggleChange,
       toggleValue,
       onPress,
+      onDeckCountChange,
     } = this.props;
     return (
       <React.Fragment>
@@ -290,7 +295,12 @@ export default class CardSearchResult extends React.PureComponent {
           disabled={!onPress}
           style={[styles.row, styles.fullHeight]}
         >
-          <View style={styles.cardTextRow}>
+          <View style={[
+            styles.cardTextRow,
+            onDeckCountChange && TOGGLE_BUTTON_MODE ?
+              { paddingRight: BUTTON_WIDTH } :
+              {},
+          ]}>
             { this.renderIcon(card) }
             { this.renderCardName() }
           </View>
@@ -355,6 +365,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     marginTop: 4,
     marginBottom: 4,
+    marginRight: 2,
     flexDirection: 'column',
     flex: 1,
   },
@@ -383,8 +394,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: ROW_HEIGHT,
-    width: ROW_HEIGHT,
+    height: COST_ICON_SIZE,
+    width: COST_ICON_SIZE,
   },
   cardTextRow: {
     flex: 2,

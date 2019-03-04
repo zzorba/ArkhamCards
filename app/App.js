@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { Linking, Platform, YellowBox } from 'react-native';
+import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 
 import L, { changeLocale } from './i18n';
@@ -67,9 +67,10 @@ export default class App {
       'Warning: isMounted(...) is deprecated',
     ]);
 
-    const isIpad = Platform.OS === 'ios' && Platform.isPad;
+    // const isIpad = Platform.OS === 'ios' && Platform.isPad;
 
-    const browseTab = /*isIpad ? {
+    /*
+    isIpad ? {
       splitView: {
         id: 'BROWSE_TAB',
         master: {
@@ -113,7 +114,8 @@ export default class App {
           },
         },
       },
-    } :*/ {
+    } :*/
+    const browseTab = {
       stack: {
         children: [{
           component: {

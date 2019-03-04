@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 export default class DialogOption extends React.Component {
   static propTypes = {
@@ -53,7 +54,7 @@ export default class DialogOption extends React.Component {
 
 const styles = StyleSheet.create({
   item: {
-    height: 50,
+    height: 50 * DeviceInfo.getFontScale(),
     width: '100%',
     borderBottomWidth: 1,
     borderColor: '#eeeeee',

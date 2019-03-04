@@ -4902,6 +4902,10 @@ react-native-deep-linking@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
 
+react-native-device-info@0.26.4:
+  version "0.26.4"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.26.4.tgz#5d747fae91d5abceff2de5430ff92749a09c62dd"
+
 react-native-dialog@zzorba/react-native-dialog#make_keyboard_avoid_behavior_prop:
   version "5.5.0"
   resolved "https://codeload.github.com/zzorba/react-native-dialog/tar.gz/338179f5a26b81ca74d9bab7152fe1b4c606a115"

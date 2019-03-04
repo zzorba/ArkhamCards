@@ -13,6 +13,7 @@ import com.rnappauth.RNAppAuthPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
+import com.learnium.RNDeviceInfo.RNDeviceInfo
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,8 @@ public class MainApplication extends NavigationApplication {
         new KeychainPackage(),
         new RealmReactPackage(),
         new LinearGradientPackage(),
-        new BlurViewPackage()
+        new BlurViewPackage(),
+        new RNDeviceInfo()
     );
   }
 

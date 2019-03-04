@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { CHAOS_TOKEN_ORDER } from '../../constants';
@@ -20,7 +21,11 @@ export default function ChaosBagLine({ chaosBag }) {
             (tokenIdx === (bagKeys.length - 1));
           return (
             <View key={`${token}-${idx}`} style={styles.commaView}>
-              <ChaosTokenIcon id={token} size={18} color="#222" />
+              <ChaosTokenIcon
+                id={token}
+                size={18 * DeviceInfo.getFontScale()}
+                color="#222"
+              />
               { !isLast && <Text style={styles.comma}>, </Text> }
             </View>
           );

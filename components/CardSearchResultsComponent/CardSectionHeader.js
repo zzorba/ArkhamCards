@@ -5,12 +5,13 @@ import {
   Text,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
 import { isBig } from '../../styles/space';
 
-export const ROW_HEADER_HEIGHT = isBig ? 42 : 30;
+export const ROW_HEADER_HEIGHT = (isBig ? 42 : 30) * DeviceInfo.getFontScale();
 export default function CardSectionHeader({ title, bold }) {
   return (
     <View style={[styles.row, bold ? styles.boldRow : {}]}>

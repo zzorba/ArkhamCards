@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import DeviceInfo from 'react-native-device-info';
 
 import typography from '../../styles/typography';
 
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   text: {
     paddingLeft: 6,
     flex: 1,
-    height: 40,
+    height: 22 + 18 * DeviceInfo.getFontScale(),
     flexDirection: 'row',
     alignItems: 'center',
   },

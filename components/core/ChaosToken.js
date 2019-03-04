@@ -4,8 +4,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
+
+const SCALE = ((DeviceInfo.getFontScale() - 1) / 4 + 1);
+export const SIZE = 36 * SCALE;
 
 export default function ChaosToken({ id, status }) {
   let color = '#eeeeee';
@@ -15,7 +19,7 @@ export default function ChaosToken({ id, status }) {
   }
   return (
     <View style={[styles.button, { backgroundColor: color }]}>
-      <ChaosTokenIcon id={id} size={28} />
+      <ChaosTokenIcon id={id} size={28 * SCALE} />
     </View>
   );
 }
@@ -27,9 +31,9 @@ ChaosToken.propTypes = {
 
 const styles = StyleSheet.create({
   button: {
-    width: 36,
+    width: SIZE,
+    height: SIZE,
     marginRight: 8,
-    height: 36,
     borderRadius: 6,
     flexDirection: 'row',
     justifyContent: 'center',

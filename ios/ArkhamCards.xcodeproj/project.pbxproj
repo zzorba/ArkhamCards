@@ -30,6 +30,7 @@
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
+		652E68A5222C853900452A3C /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 652E68A2222C852800452A3C /* libRNDeviceInfo.a */; };
 		653E0641218FA669008D7E99 /* libRNAppAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626ED620D3EA23004F4190 /* libRNAppAuth.a */; };
 		6543AB8221C198790098803A /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B3F02C20897A2200B0B126 /* libAppCenterReactNativeCrashes.a */; };
 		6543AB8421C198820098803A /* libAppAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6543AB8321C198820098803A /* libAppAuth.a */; };
@@ -320,6 +321,20 @@
 			remoteGlobalIDString = F60690131CA2766F0003FB26;
 			remoteInfo = RealmReact;
 		};
+		652E68A1222C852800452A3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA5891D81BA9A9FC002B4DB2;
+			remoteInfo = RNDeviceInfo;
+		};
+		652E68A3222C852800452A3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E72EC1401F7ABB5A0001BC90;
+			remoteInfo = "RNDeviceInfo-tvOS";
+		};
 		653E063E218FA637008D7E99 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65EB590D2047B36E00CC5820 /* RNVectorIcons.xcodeproj */;
@@ -513,6 +528,7 @@
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
+		652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		6543AB8321C198820098803A /* libAppAuth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAppAuth.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543AB8921C198A20098803A /* libRealmJS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRealmJS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -568,6 +584,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652E68A5222C853900452A3C /* libRNDeviceInfo.a in Frameworks */,
 				6543AB8A21C198A20098803A /* libRealmJS.a in Frameworks */,
 				6543AB8821C1989C0098803A /* libRealmReact.a in Frameworks */,
 				6543AB8721C198920098803A /* libRNInAppBrowser.a in Frameworks */,
@@ -766,6 +783,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		652E689D222C852700452A3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				652E68A2222C852800452A3C /* libRNDeviceInfo.a */,
+				652E68A4222C852800452A3C /* libRNDeviceInfo-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6543AB7D21C18D0A0098803A /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,6 +915,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */,
 				650CA52B217237A800612F7A /* ReactNativeNavigation.xcodeproj */,
 				655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */,
 				655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */,
@@ -1140,6 +1167,10 @@
 				{
 					ProductGroup = 655306F120F6D2C600FDDFC4 /* Products */;
 					ProjectRef = 655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */;
+				},
+				{
+					ProductGroup = 652E689D222C852700452A3C /* Products */;
+					ProjectRef = 652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */;
 				},
 				{
 					ProductGroup = 655F3D3A20F5AC930029A762 /* Products */;
@@ -1421,6 +1452,20 @@
 			fileType = archive.ar;
 			path = libRealmReact.a;
 			remoteRef = 6520D0C0206F2F1600440C6C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		652E68A2222C852800452A3C /* libRNDeviceInfo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNDeviceInfo.a;
+			remoteRef = 652E68A1222C852800452A3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		652E68A4222C852800452A3C /* libRNDeviceInfo-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNDeviceInfo-tvOS.a";
+			remoteRef = 652E68A3222C852800452A3C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		653E063F218FA637008D7E99 /* libRNVectorIcons-tvOS.a */ = {

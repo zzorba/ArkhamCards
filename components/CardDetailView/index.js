@@ -12,6 +12,7 @@ import { Navigation } from 'react-native-navigation';
 import { connectRealm } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import DeviceInfo from 'react-native-device-info';
 
 import L from '../../app/i18n';
 import { iconsMap } from '../../app/NavIcons';
@@ -200,7 +201,7 @@ class CardDetailView extends React.Component {
           <Button
             onPress={this._showInvestigatorCards}
             text={`Browse ${card.name} Cards`}
-            icon={<AppIcon name="deck" size={18} color="white" />}
+            icon={<AppIcon name="deck" size={18 * DeviceInfo.getFontScale()} color="white" />}
           />
         </View>
         <SignatureCardsComponent componentId={componentId} investigator={card} />

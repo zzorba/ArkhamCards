@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import DeviceInfo from 'react-native-device-info';
 
 import L from '../../app/i18n';
 import DialogOption from './DialogOption';
@@ -92,7 +93,9 @@ export default class DialogPicker extends React.Component {
           <View style={styles.background} />
         </TouchableOpacity>
         <View style={styles.container}>
-          <View style={styles.header}>
+          <View style={[
+            styles.header,
+          ]}>
             <Text style={styles.headerText}>
               { header }:
             </Text>
@@ -148,8 +151,9 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   header: {
-    height: 70,
     width: '100%',
+    paddingTop: 20,
+    paddingBottom: 8,
     borderBottomWidth: 1,
     borderColor: '#eeeeee',
     flexDirection: 'column',
@@ -159,6 +163,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
     fontWeight: '700',
+    paddingBottom: 4,
   },
   descriptionText: {
     textAlign: 'center',
@@ -166,7 +171,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   cancel: {
-    height: 55,
+    height: 55 * DeviceInfo.getFontScale(),
     width: '100%',
   },
   cancelText: {

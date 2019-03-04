@@ -133,10 +133,6 @@ export default class PlayerCardImage extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  horizontalContainer: {
-    width: 400,
-    height: 287,
-  },
   verticalContainer: {
     width: 215,
     height: 300,

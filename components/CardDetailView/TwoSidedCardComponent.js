@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import DeviceInfo from 'react-native-device-info';
 
 import L from '../../app/i18n';
 import {
@@ -470,7 +471,7 @@ export default class TwoSidedCardComponent extends React.Component {
         <Button
           text={L('FAQ')}
           onPress={this._showFaq}
-          icon={<AppIcon name="faq" size={18} color="white" />}
+          icon={<AppIcon name="faq" size={18 * DeviceInfo.getFontScale()} color="white" />}
         />
       </View>
     );
@@ -522,7 +523,7 @@ export default class TwoSidedCardComponent extends React.Component {
     );
   }
 
-  renderCardText(card, backFirst, isHorizontal, flavorFirst, isFirst) {
+  renderCardText(card, backFirst, isHorizontal, flavorFirst) {
     return (
       <React.Fragment>
         { !!card.text && (
@@ -550,9 +551,6 @@ export default class TwoSidedCardComponent extends React.Component {
   }
 
   renderCardFront(card, backFirst, isHorizontal, flavorFirst, isFirst) {
-    const {
-      componentId,
-    } = this.props;
     if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== '01000') {
       return (
         <View style={styles.buttonContainer}>

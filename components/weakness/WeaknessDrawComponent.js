@@ -245,12 +245,17 @@ class WeaknessDrawComponent extends React.Component {
       );
     }
     if (flipped) {
+      const buttonText = customFlippedHeader ?
+        L('Draw a Different Weakness') :
+        L('Draw Another');
       return (
         <View
           onLayout={this._onFlippedHeaderLayout}
           style={[styles.buttonWrapper, { minHeight: flippedHeaderHeight }]}
         >
-          <Button text={customFlippedHeader ? L('Draw a Different Weakness') : L('Draw Another')} onPress={this._drawAnother} />
+          <Button
+            text={buttonText}
+            onPress={this._drawAnother} />
           { customFlippedHeader }
         </View>
       );

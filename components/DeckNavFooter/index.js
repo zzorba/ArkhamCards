@@ -127,7 +127,7 @@ export default class DeckNavFooter extends React.Component {
     }
 
     return (
-      <DeckProblemRow problem={problem} color="#FFFFFF" />
+      <DeckProblemRow problem={problem} color="#FFFFFF" noFontScaling />
     );
   }
 
@@ -184,7 +184,7 @@ export default class DeckNavFooter extends React.Component {
             <Text style={[
               TINY_PHONE ? typography.small : typography.text,
               styles.whiteText,
-            ]}>
+            ]} allowFontScaling={false}>
               { `${cardCountString} - ${xpString}` }
             </Text>
             { !!showXpEditDialog && (
