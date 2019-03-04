@@ -14,6 +14,7 @@ import ToggleFilter from '../core/ToggleFilter';
 import { parseDeck } from '../parseDeck';
 import { updateLocalDeck } from '../decks/localHelper';
 import * as Actions from '../../actions';
+import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
 import { saveDeck } from '../../lib/authApi';
 import DeckValidation from '../../lib/DeckValidation';
@@ -21,8 +22,6 @@ import { getCampaign, getAllDecks, getLatestDeckIds } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards from '../withPlayerCards';
-
-const RANDOM_BASIC_WEAKNESS = '01000';
 
 class CampaignDrawWeaknessDialog extends React.Component {
   static propTypes = {

@@ -16,6 +16,7 @@ import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { searchMatchesText } from '../searchHelpers';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK } from '../CardSortDialog/constants';
@@ -395,7 +396,7 @@ export default connectRealm(
 
       const cards = {};
       forEach(
-        results.cards.filtered('has_restrictions == true OR code == "01000"'),
+        results.cards.filtered(`has_restrictions == true OR code == "${RANDOM_BASIC_WEAKNESS}"`),
         card => {
           cards[card.code] = card;
         });

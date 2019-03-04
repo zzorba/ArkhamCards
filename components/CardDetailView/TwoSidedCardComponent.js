@@ -17,6 +17,7 @@ import {
   FACTION_BACKGROUND_COLORS,
   SKILLS,
   SKILL_COLORS,
+  RANDOM_BASIC_WEAKNESS,
 } from '../../constants';
 import typography from '../../styles/typography';
 import space, { isBig, xs, s } from '../../styles/space';
@@ -551,7 +552,7 @@ export default class TwoSidedCardComponent extends React.Component {
   }
 
   renderCardFront(card, backFirst, isHorizontal, flavorFirst, isFirst) {
-    if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== '01000') {
+    if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== RANDOM_BASIC_WEAKNESS) {
       return (
         <View style={styles.buttonContainer}>
           <Button
