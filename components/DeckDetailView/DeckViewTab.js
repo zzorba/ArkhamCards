@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { head, sum } from 'lodash';
+import { head, map, sum } from 'lodash';
 import {
   Alert,
   Button,
@@ -28,7 +28,7 @@ import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
 
-function deckToSections(halfDeck) {
+function deckToSections(halfDeck, special) {
   const result = [];
   if (halfDeck.Assets) {
     const assetCount = sum(halfDeck.Assets.map(subAssets =>
@@ -40,7 +40,7 @@ function deckToSections(halfDeck) {
     halfDeck.Assets.forEach(subAssets => {
       result.push({
         subTitle: subAssets.type,
-        data: subAssets.data,
+        data: map(subAssets.data, c => Object.assign({}, c, { special })),
       });
     });
   }
@@ -49,7 +49,7 @@ function deckToSections(halfDeck) {
       const count = sum(halfDeck[type].map(c => c.quantity));
       result.push({
         title: `${type} (${count})`,
-        data: halfDeck[type],
+        data: map(halfDeck[type], c => Object.assign({}, c, { special })),
       });
     }
   });
@@ -276,16 +276,24 @@ export default class DeckViewTab extends React.Component {
   }
 
   renderCard({ item }) {
+    const {
+      parsedDeck: {
+        ignoreDeckLimitSlots,
+      },
+    } = this.props;
     const card = this.props.cards[item.id];
     if (!card) {
       return null;
     }
+    const count = (item.special && ignoreDeckLimitSlots[item.id] > 0) ?
+      ignoreDeckLimitSlots[item.id] :
+      (item.quantity - (ignoreDeckLimitSlots[item.id] || 0));
     return (
       <CardSearchResult
         key={item.id}
         card={card}
         onPress={this._showCard}
-        count={item.quantity}
+        count={count}
       />
     );
   }
@@ -321,6 +329,27 @@ export default class DeckViewTab extends React.Component {
     );
   }
 
+  data() {
+    const {
+      parsedDeck: {
+        normalCards,
+        specialCards,
+        ignoreDeckLimitSlots,
+      },
+      showEditSpecial,
+    } = this.props;
+
+    return [
+      ...deckToSections(normalCards, false),
+      {
+        superTitle: L('Special Cards'),
+        data: [],
+        onPress: showEditSpecial,
+      },
+      ...deckToSections(specialCards, true),
+    ];
+  }
+
   render() {
     const {
       campaign,
@@ -343,15 +372,7 @@ export default class DeckViewTab extends React.Component {
       showEditSpecial,
     } = this.props;
 
-    const sections = [
-      ...deckToSections(normalCards),
-      {
-        superTitle: L('Special Cards'),
-        data: [],
-        onPress: showEditSpecial,
-      },
-      ...deckToSections(specialCards),
-    ];
+    const sections = this.data();
 
     return (
       <ScrollView>

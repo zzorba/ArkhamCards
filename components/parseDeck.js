@@ -249,8 +249,10 @@ export function parseDeck(deck, slots, ignoreDeckLimitSlots, cards, previousDeck
         quantity: slots[id],
       };
     });
-  const specialCards = cardIds.filter(c => isSpecialCard(cards[c.id]));
-  const normalCards = cardIds.filter(c => !isSpecialCard(cards[c.id]));
+  const specialCards = cardIds.filter(c =>
+    isSpecialCard(cards[c.id]) || ignoreDeckLimitSlots[c.id] > 0);
+  const normalCards = cardIds.filter(c =>
+    !isSpecialCard(cards[c.id]) && slots[c.id] > (ignoreDeckLimitSlots[c.id] || 0));
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
@@ -271,15 +273,16 @@ export function parseDeck(deck, slots, ignoreDeckLimitSlots, cards, previousDeck
     investigator: cards[deck.investigator_code],
     deck: deck,
     slots: slots,
-    normalCardCount: sum(normalCards.map(c => c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
+    normalCardCount: sum(normalCards.map(c =>
+      c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,
     packs: uniqBy(cardIds, c => cards[c.id].pack_code).length,
     factionCounts: factionCounts,
     costHistogram: costHistogram(cardIds, cards),
     skillIconCounts: skillIconCounts,
-    normalCards: splitCards(normalCards, cards, slots),
-    specialCards: splitCards(specialCards, cards, slots),
+    normalCards: splitCards(normalCards, cards),
+    specialCards: splitCards(specialCards, cards),
     ignoreDeckLimitSlots,
     exiledCards,
     changedCards,
