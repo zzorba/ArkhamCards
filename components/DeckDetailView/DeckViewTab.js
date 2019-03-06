@@ -334,7 +334,6 @@ export default class DeckViewTab extends React.Component {
       parsedDeck: {
         normalCards,
         specialCards,
-        ignoreDeckLimitSlots,
       },
       showEditSpecial,
     } = this.props;
@@ -358,8 +357,6 @@ export default class DeckViewTab extends React.Component {
       deck,
       deckName,
       parsedDeck: {
-        normalCards,
-        specialCards,
         normalCardCount,
         totalCardCount,
         experience,
@@ -369,7 +366,6 @@ export default class DeckViewTab extends React.Component {
       buttons,
       showEditNameDialog,
       showTraumaDialog,
-      showEditSpecial,
     } = this.props;
 
     const sections = this.data();

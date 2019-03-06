@@ -108,7 +108,7 @@ class WeaknessDrawDialog extends React.Component {
     } = this.state;
     const packCodes = {};
     forEach(cards, weaknessCard => {
-      if (in_collection[weaknessCard.pack_code]) {
+      if (in_collection[weaknessCard.pack_code] || weaknessCard.pack_code === 'core') {
         packCodes[weaknessCard.pack_code] = 1;
       }
     });

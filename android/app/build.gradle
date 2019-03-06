@@ -112,11 +112,11 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57"
+        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
         renderscriptTargetApi rootProject.ext.compileSdkVersion
         renderscriptSupportModeEnabled true
-        versionCode 53
-        versionName "1.4.7"
+        versionCode 56
+        versionName "1.4.8"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

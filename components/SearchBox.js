@@ -55,6 +55,7 @@ export default class SearchBox extends React.Component {
             clearButtonMode="always"
             autoCorrect={false}
             autoCapitalize="none"
+            allowFontScaling={false}
             onChangeText={onChangeText}
             placeholder={placeholder}
             value={value}
