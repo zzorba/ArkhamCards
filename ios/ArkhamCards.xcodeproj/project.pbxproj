@@ -48,6 +48,9 @@
 		65626FAE20D4220B004F4190 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626FAD20D421FB004F4190 /* libReactNativeConfig.a */; };
 		6589F16920E484CB00B556CE /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6589F16620E484BA00B556CE /* libBVLinearGradient.a */; };
 		65B73EDB223023CF00495217 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B73E9D223023CF00495217 /* JavaScriptCore.framework */; };
+		65B5EA3C2221B0D700843CE0 /* libicloudstorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B5EA072221B0C800843CE0 /* libicloudstorage.a */; };
+		65B5ECD822277F3F00843CE0 /* libRNIcloudAccountStatus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B5ECD722277F3200843CE0 /* libRNIcloudAccountStatus.a */; };
+		65B5ECDA222782A000843CE0 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B5ECD92227829F00843CE0 /* CloudKit.framework */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
 		65CBE5C12049B8D200B47AB4 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5BC2049B07500B47AB4 /* libRNSVG.a */; };
 		65CBE5CB2049E9AB00B47AB4 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5C82049E99400B47AB4 /* libART.a */; };
@@ -434,6 +437,20 @@
 			remoteGlobalIDString = 5419C2701D824AA700DDF3A1;
 			remoteInfo = AppCenterReactNativeCrashes;
 		};
+		65B5EA062221B0C800843CE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65B5E9FB2221B0C700843CE0 /* icloudstorage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = icloudstorage;
+		};
+		65B5ECD622277F3200843CE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65B5ECD222277F3200843CE0 /* RNIcloudAccountStatus.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNIcloudAccountStatus;
+		};
 		65BD5CF621D9BEC100C93C8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65626FA820D421FB004F4190 /* ReactNativeConfig.xcodeproj */;
@@ -543,6 +560,10 @@
 		65626FA820D421FB004F4190 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		65B73E9D223023CF00495217 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		65B5E9FB2221B0C700843CE0 /* icloudstorage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = icloudstorage.xcodeproj; path = "../node_modules/react-native-icloudstore/icloudstorage.xcodeproj"; sourceTree = "<group>"; };
+		65B5EA3D2221B1B500843CE0 /* ArkhamCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCards.entitlements; path = ArkhamCards/ArkhamCards.entitlements; sourceTree = "<group>"; };
+		65B5ECD222277F3200843CE0 /* RNIcloudAccountStatus.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNIcloudAccountStatus.xcodeproj; path = "../node_modules/react-native-icloud-account-status/ios/RNIcloudAccountStatus.xcodeproj"; sourceTree = "<group>"; };
+		65B5ECD92227829F00843CE0 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEB2128932A0084A1CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEC2128932F0084A1CE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -588,6 +609,8 @@
 			files = (
 				65B73EDB223023CF00495217 /* JavaScriptCore.framework in Frameworks */,
 				652E68A5222C853900452A3C /* libRNDeviceInfo.a in Frameworks */,
+				65B5ECD822277F3F00843CE0 /* libRNIcloudAccountStatus.a in Frameworks */,
+				65B5EA3C2221B0D700843CE0 /* libicloudstorage.a in Frameworks */,
 				6543AB8A21C198A20098803A /* libRealmJS.a in Frameworks */,
 				6543AB8821C1989C0098803A /* libRealmReact.a in Frameworks */,
 				6543AB8721C198920098803A /* libRNInAppBrowser.a in Frameworks */,
@@ -595,6 +618,7 @@
 				6543AB8521C198890098803A /* libAppCenterReactNative.a in Frameworks */,
 				6543AB8421C198820098803A /* libAppAuth.a in Frameworks */,
 				6543AB8221C198790098803A /* libAppCenterReactNativeCrashes.a in Frameworks */,
+				65B5ECDA222782A000843CE0 /* CloudKit.framework in Frameworks */,
 				653E0641218FA669008D7E99 /* libRNAppAuth.a in Frameworks */,
 				650CA534217237B500612F7A /* libReactNativeNavigation.a in Frameworks */,
 				6553072F20F6D2D100FDDFC4 /* libRNBlur.a in Frameworks */,
@@ -699,6 +723,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65B5EA3D2221B1B500843CE0 /* ArkhamCards.entitlements */,
 				65CF51DF220386F400A1D2FA /* circle.ttf */,
 				65D3FA05210FF315000F8B9D /* Teutonic.ttf */,
 				6556782820BA144600C18EC4 /* forgotten.ttf */,
@@ -748,6 +773,7 @@
 			isa = PBXGroup;
 			children = (
 				65B73E9D223023CF00495217 /* JavaScriptCore.framework */,
+				65B5ECD92227829F00843CE0 /* CloudKit.framework */,
 				6543AB8921C198A20098803A /* libRealmJS.a */,
 				6543AB8321C198820098803A /* libAppAuth.a */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
@@ -880,6 +906,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		65B5E9FC2221B0C700843CE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65B5EA072221B0C800843CE0 /* libicloudstorage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65B5ECD322277F3200843CE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65B5ECD722277F3200843CE0 /* libRNIcloudAccountStatus.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		65CBE5B72049B07400B47AB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -920,6 +962,8 @@
 			isa = PBXGroup;
 			children = (
 				652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */,
+				65B5ECD222277F3200843CE0 /* RNIcloudAccountStatus.xcodeproj */,
+				65B5E9FB2221B0C700843CE0 /* icloudstorage.xcodeproj */,
 				650CA52B217237A800612F7A /* ReactNativeNavigation.xcodeproj */,
 				655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */,
 				655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */,
@@ -1073,6 +1117,14 @@
 						DevelopmentTeam = 54773FU58P;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1107,6 +1159,10 @@
 				{
 					ProductGroup = 6589F16120E484BA00B556CE /* Products */;
 					ProjectRef = 6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */;
+				},
+				{
+					ProductGroup = 65B5E9FC2221B0C700843CE0 /* Products */;
+					ProjectRef = 65B5E9FB2221B0C700843CE0 /* icloudstorage.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1179,6 +1235,10 @@
 				{
 					ProductGroup = 655F3D3A20F5AC930029A762 /* Products */;
 					ProjectRef = 655F3D3920F5AC930029A762 /* RNFetchBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = 65B5ECD322277F3200843CE0 /* Products */;
+					ProjectRef = 65B5ECD222277F3200843CE0 /* RNIcloudAccountStatus.xcodeproj */;
 				},
 				{
 					ProductGroup = 6543AB7D21C18D0A0098803A /* Products */;
@@ -1570,6 +1630,20 @@
 			remoteRef = 65B3F02B20897A2200B0B126 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		65B5EA072221B0C800843CE0 /* libicloudstorage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libicloudstorage.a;
+			remoteRef = 65B5EA062221B0C800843CE0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65B5ECD722277F3200843CE0 /* libRNIcloudAccountStatus.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNIcloudAccountStatus.a;
+			remoteRef = 65B5ECD622277F3200843CE0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		65BD5CF721D9BEC100C93C8D /* libReactNativeConfig-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1864,6 +1938,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1906,6 +1981,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
