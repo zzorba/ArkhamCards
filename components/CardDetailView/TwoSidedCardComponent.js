@@ -160,10 +160,10 @@ export default class TwoSidedCardComponent extends React.Component {
     if (card.type_code === 'investigator') {
       return (
         <Text style={typography.cardText}>
-          <ArkhamIcon name="willpower" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_willpower}.  ` }
-          <ArkhamIcon name="intellect" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_intellect}.  ` }
-          <ArkhamIcon name="combat" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_combat}.  ` }
-          <ArkhamIcon name="agility" size={SMALL_ICON_SIZE} color="#000" />{ ` ${card.skill_agility}.` }
+          {`${card.skill_willpower} `}<ArkhamIcon name="willpower" size={SMALL_ICON_SIZE} color="#000" />.
+          {`  ${card.skill_intellect} `}<ArkhamIcon name="intellect" size={SMALL_ICON_SIZE} color="#000" />.
+          {`  ${card.skill_combat} `}<ArkhamIcon name="combat" size={SMALL_ICON_SIZE} color="#000" />.
+          {`  ${card.skill_agility} `} <ArkhamIcon name="agility" size={SMALL_ICON_SIZE} color="#000" />.
         </Text>
       );
     }

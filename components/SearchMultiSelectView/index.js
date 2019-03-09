@@ -11,6 +11,7 @@ import {
 import L from '../../app/i18n';
 import SearchBox from '../SearchBox';
 import SelectRow from './SelectRow';
+import { COLORS } from '../../styles/colors';
 
 export default class SearchMultiSelectView extends React.Component {
   static propTypes = {
@@ -25,6 +26,7 @@ export default class SearchMultiSelectView extends React.Component {
       topBar: {
         backButton: {
           title: L('Back'),
+          color: COLORS.navButton,
         },
       },
     };

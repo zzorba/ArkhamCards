@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { find, filter, throttle } from 'lodash';
-import { Text, StyleSheet, Switch, View } from 'react-native';
+import { Button, Text, StyleSheet, Switch, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -107,6 +107,12 @@ class MyDecksView extends React.Component {
     );
   }
 
+  renderCustomFooter() {
+    return (
+      <Button title={L('New Deck')} onPress={this._showNewDeckDialog} />
+    );
+  }
+
   onlyDeckIds() {
     const {
       myDecks,
@@ -122,6 +128,7 @@ class MyDecksView extends React.Component {
       <MyDecksComponent
         componentId={this.props.componentId}
         customHeader={this.renderCustomHeader()}
+        customFooter={this.renderCustomFooter()}
         deckClicked={this._deckNavClicked}
         onlyDeckIds={this.onlyDeckIds()}
       />

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, forEach, map, last, throttle } from 'lodash';
 import {
+  Button,
   Keyboard,
   ScrollView,
   StyleSheet,
@@ -207,6 +208,8 @@ class MyCampaignsView extends React.Component {
         />
         { map(campaigns, campaign => this.renderItem(campaign)) }
         { this.renderFooter(campaigns) }
+        <Button title={L('New Campaign')} onPress={this._showNewCampaignDialog} />
+        <View style={styles.gutter} />
       </ScrollView>
     );
   }
@@ -236,7 +239,9 @@ const styles = StyleSheet.create({
   },
   footer: {
     margin: 8,
-    marginBottom: 60,
     alignItems: 'center',
+  },
+  gutter: {
+    marginBottom: 60,
   },
 });

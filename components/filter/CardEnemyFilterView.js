@@ -10,6 +10,7 @@ import L from '../../app/i18n';
 import SliderChooser from './SliderChooser';
 import ToggleFilter from '../core/ToggleFilter';
 import withFilterFunctions from './withFilterFunctions';
+import { COLORS } from '../../styles/colors';
 
 class CardEnemyFilterView extends React.Component {
   static propTypes = {
@@ -23,6 +24,10 @@ class CardEnemyFilterView extends React.Component {
   static get options() {
     return {
       topBar: {
+        backButton: {
+          title: L('Back'),
+          color: COLORS.navButton,
+        },
         title: {
           text: L('Enemy Filters'),
         },

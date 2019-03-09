@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Navigation } from 'react-native-navigation';
 import L from '../../app/i18n';
 import NavButton from './NavButton';
+import { COLORS } from '../../styles/colors';
 
 export default class ChooserButton extends React.Component {
   static propTypes = {
@@ -41,6 +42,7 @@ export default class ChooserButton extends React.Component {
           topBar: {
             title: {
               text: L('Select {{searchType}}', { searchType: title }),
+              color: COLORS.navButton,
             },
           },
         },

@@ -200,7 +200,7 @@ class CardDetailView extends React.Component {
         <View style={styles.buttonContainer}>
           <Button
             onPress={this._showInvestigatorCards}
-            text={`Browse ${card.name} Cards`}
+            text={L('Deckbuilding Cards')}
             icon={<AppIcon name="deck" size={18 * DeviceInfo.getFontScale()} color="white" />}
           />
         </View>

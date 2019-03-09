@@ -42,6 +42,7 @@ class CardFilterView extends React.Component {
       topBar: {
         title: {
           text: L('Filter'),
+          color: COLORS.navButton,
         },
         rightButtons: [{
           text: L('Clear'),

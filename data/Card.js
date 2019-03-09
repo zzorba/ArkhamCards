@@ -146,12 +146,13 @@ export default class Card {
     'Investigator',
     'Asset: Hand',
     'Asset: Hand x2',
+    'Asset: Hand. Arcane',
+    'Asset: Body. Hand x2',
     'Asset: Accessory',
     'Asset: Ally',
     'Asset: Arcane',
     'Asset: Arcane x2',
     'Asset: Body',
-    'Asset: Body. Hand x2',
     'Asset: Permanent',
     'Asset: Tarot',
     'Asset: Other',
@@ -204,6 +205,8 @@ export default class Card {
                 return L('Asset: Tarot', options);
               case 'Body. Hand x2':
                 return L('Asset: Body. Hand x2', options);
+              case 'Hand. Arcane':
+                return L('Asset: Hand. Arcane', options);
               default:
                 return L('Asset: Other', options);
             }

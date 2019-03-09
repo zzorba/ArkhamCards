@@ -37,6 +37,7 @@ class MyDecksComponent extends React.Component {
     error: PropTypes.string,
     networkType: PropTypes.string,
     customHeader: PropTypes.node,
+    customFooter: PropTypes.node,
     // from loginState
     login: PropTypes.func.isRequired,
     signedIn: PropTypes.bool.isRequired,
@@ -119,6 +120,18 @@ class MyDecksComponent extends React.Component {
     );
   }
 
+  renderFooter() {
+    const {
+      customFooter,
+    } = this.props;
+    return (
+      <React.Fragment>
+        { customFooter }
+        { this.renderSignInFooter() }
+      </React.Fragment>
+    )
+  }
+
   renderSignInFooter() {
     const {
       login,
@@ -180,7 +193,7 @@ class MyDecksComponent extends React.Component {
       <DeckListComponent
         componentId={componentId}
         customHeader={this.renderHeader()}
-        customFooter={this.renderSignInFooter()}
+        customFooter={this.renderFooter()}
         deckIds={deckIds}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}

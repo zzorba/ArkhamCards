@@ -13,6 +13,7 @@ function groupAssets(cardIds, cards) {
   const groups = groupBy(assets, c => {
     switch(cards[c.id].slot) {
       case 'Hand': return L('Hand');
+      case 'Hand. Arcane': return L('Hand. Arcane');
       case 'Hand x2': return L('Hand x2');
       case 'Arcane': return L('Arcane');
       case 'Accessory': return L('Accessory');
@@ -25,7 +26,7 @@ function groupAssets(cardIds, cards) {
   });
   return filter(
     map(
-      [L('Hand'), L('Hand x2'), L('Body. Hand x2'), L('Arcane'), L('Accessory'), L('Body'), L('Ally'), L('Tarot'), L('Other')],
+      [L('Hand'), L('Hand x2'), L('Hand. Arcane'), L('Body. Hand x2'), L('Arcane'), L('Accessory'), L('Body'), L('Ally'), L('Tarot'), L('Other')],
       t => {
         return { type: t, data: groups[t] || [] };
       }),

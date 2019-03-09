@@ -11,6 +11,7 @@ import L from '../../app/i18n';
 import PackListComponent from '../PackListComponent';
 import { getAllPacks } from '../../reducers';
 import withFilterFunctions from './withFilterFunctions';
+import { COLORS } from '../../styles/colors';
 
 class PackFilterView extends React.Component {
   static propTypes = {
@@ -23,8 +24,12 @@ class PackFilterView extends React.Component {
   static get options() {
     return {
       topBar: {
+        backButton: {
+          title: L('Back'),
+          color: COLORS.navButton,
+        },
         title: {
-          text: L('Packs Filter'),
+          text: L('Select Packs'),
         },
       },
     };
