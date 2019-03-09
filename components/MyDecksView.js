@@ -23,6 +23,9 @@ class MyDecksView extends React.Component {
   static get options() {
     return {
       topBar: {
+        title: {
+          text: L('Decks'),
+        },
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',

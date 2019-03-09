@@ -147,6 +147,11 @@ export default class App {
                 title: {
                   text: L('Decks'),
                 },
+                rightButtons: [{
+                  icon: iconsMap.add,
+                  id: 'add',
+                  color: COLORS.navButton,
+                }],
               },
             },
           },
@@ -168,6 +173,11 @@ export default class App {
                 title: {
                   text: L('Campaigns'),
                 },
+                rightButtons: [{
+                  icon: iconsMap.add,
+                  id: 'add',
+                  color: COLORS.navButton,
+                }],
               },
             },
           },

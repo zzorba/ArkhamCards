@@ -36,6 +36,9 @@ class MyCampaignsView extends React.Component {
   static get options() {
     return {
       topBar: {
+        title: {
+          text: L('Campaigns'),
+        },
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',
