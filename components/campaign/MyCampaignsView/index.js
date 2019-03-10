@@ -208,7 +208,9 @@ class MyCampaignsView extends React.Component {
         />
         { map(campaigns, campaign => this.renderItem(campaign)) }
         { this.renderFooter(campaigns) }
-        <Button title={L('New Campaign')} onPress={this._showNewCampaignDialog} />
+        <View style={styles.button}>
+          <Button title={L('New Campaign')} onPress={this._showNewCampaignDialog} />
+        </View>
         <View style={styles.gutter} />
       </ScrollView>
     );
@@ -243,5 +245,8 @@ const styles = StyleSheet.create({
   },
   gutter: {
     marginBottom: 60,
+  },
+  button: {
+    margin: 8,
   },
 });

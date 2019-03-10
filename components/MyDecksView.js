@@ -109,7 +109,9 @@ class MyDecksView extends React.Component {
 
   renderCustomFooter() {
     return (
-      <Button title={L('New Deck')} onPress={this._showNewDeckDialog} />
+      <View style={styles.buttonRow}>
+        <Button title={L('New Deck')} onPress={this._showNewDeckDialog} />
+      </View>
     );
   }
 
@@ -158,5 +160,10 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
     paddingLeft: 8,
     paddingRight: 8,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

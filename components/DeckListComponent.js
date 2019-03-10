@@ -126,7 +126,7 @@ class DeckListComponent extends React.Component {
     if (isEmpty && !refreshing) {
       return (
         <View style={styles.footer}>
-          <Text style={[typography.text, typography.center, space.marginBottomM]}>
+          <Text style={[typography.text, space.marginBottomM]}>
             { L('No decks yet.\n\nUse the + button to create a new one.') }
           </Text>
           { customFooter }
@@ -220,9 +220,9 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: '100%',
-    marginTop: 8,
+    padding: 8,
     marginBottom: 60,
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
 });

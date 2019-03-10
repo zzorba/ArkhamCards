@@ -247,6 +247,7 @@ const styles = StyleSheet.create({
   },
   signInFooter: {
     padding: 16,
+    marginTop: 8,
     backgroundColor: COLORS.lightGray,
   },
 });
