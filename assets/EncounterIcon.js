@@ -241,6 +241,8 @@ export default class EncounterIcon extends React.PureComponent {
         return this.forgottenIcon(encounter_code, size, color);
       case 'tcu':
         return this.circleIcon('the_circle_undone', size, color);
+      case 'tsn':
+        return this.circleIcon('the_secret_name', size, color);
       case 'the_circle_undone':
       case 'agents_of_azathoth':
       case 'anettes_coven':
@@ -255,6 +257,7 @@ export default class EncounterIcon extends React.PureComponent {
       case 'the_witching_hour':
       case 'trapped_spirits':
       case 'witchcraft':
+      case 'the_secret_name':
         return this.circleIcon(encounter_code, size, color);
       default:
         return this.coreIcon('core', size, color);
