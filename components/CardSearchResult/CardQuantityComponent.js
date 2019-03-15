@@ -53,6 +53,17 @@ export default class CardQuantityComponent extends React.PureComponent {
     this._selectTwo = this.selectCount.bind(this, 2);
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      count,
+    } = this.props;
+    if (count !== prevProps.count) {
+      this.setState({
+        count,
+      });
+    }
+  }
+
   increment() {
     const {
       limit,
