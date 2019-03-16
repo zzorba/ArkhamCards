@@ -13,6 +13,7 @@ import { showDeckModal } from '../navHelper';
 import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withNetworkStatus from '../core/withNetworkStatus';
+import withLoginState from '../withLoginState';
 import * as Actions from '../../actions';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { newCustomDeck } from '../../lib/authApi';
@@ -49,7 +50,7 @@ class NewDeckOptionsDialog extends React.Component {
     this.state = {
       saving: false,
       deckName: null,
-      offlineDeck: false,
+      offlineDeck: !props.signedIn || props.networkType === 'none',
       optionSelected: [true],
     };
 
@@ -71,13 +72,6 @@ class NewDeckOptionsDialog extends React.Component {
   }
 
   onDeckTypeChange(value) {
-    const {
-      signedIn,
-      login,
-    } = this.props;
-    if (value && !signedIn) {
-      login();
-    }
     this.setState({
       offlineDeck: !value,
     });
@@ -327,11 +321,16 @@ class NewDeckOptionsDialog extends React.Component {
         </DialogComponent.Description>
         <DialogComponent.Switch
           label={L('Create on ArkhamDB')}
-          value={!offlineDeck && signedIn && networkType !== 'none'}
-          disabled={networkType === 'none'}
+          value={!offlineDeck}
+          disabled={!signedIn || networkType === 'none'}
           onValueChange={this._onDeckTypeChange}
           trackColor={COLORS.switchTrackColor}
         />
+        { !signedIn && (
+          <DialogComponent.Description style={[typography.small, space.marginBottomS]}>
+            { L('Visit Settings to sign in to ArkhamDB.') }
+          </DialogComponent.Description>
+        )}
         { networkType === 'none' && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
             <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
@@ -392,7 +391,10 @@ function mapDispatchToProps(dispatch) {
 
 export default connectRealm(
   connect(mapStateToProps, mapDispatchToProps)(
-    withNetworkStatus(NewDeckOptionsDialog)
+    withLoginState(
+      withNetworkStatus(NewDeckOptionsDialog),
+      { noWrapper: true }
+    )
   ), {
     schemas: ['Card'],
     mapToProps(results) {

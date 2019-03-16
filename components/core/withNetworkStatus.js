@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  NetInfo,
-} from 'react-native';
+import NetInfo from '@react-native-community/netinfo';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 export default function withNetworkStatus(WrappedComponent) {
@@ -20,14 +18,16 @@ export default function withNetworkStatus(WrappedComponent) {
     componentDidMount() {
       this.refreshNetworkStatus();
       NetInfo.addEventListener('connectionChange', this._networkStatusChanged);
+      this._networkInterval = setInterval(this._refreshNetworkStatus, 5000);
     }
 
     componentWillUnmount() {
       NetInfo.removeEventListener('connectionChange', this._networkStatusChanged);
+      clearInterval(this._networkInterval);
     }
 
     refreshNetworkStatus() {
-      NetInfo.getConnectionInfo().then(this._networkStatusChanged);
+      NetInfo.isConnected.fetch().then(this._networkStatusChanged);
     }
 
     networkStatusChanged(connectionInfo) {

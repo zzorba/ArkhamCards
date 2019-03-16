@@ -14,6 +14,7 @@ import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.reactnativecommunity.netinfo.NetInfoPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +51,8 @@ public class MainApplication extends NavigationApplication {
         new RealmReactPackage(),
         new LinearGradientPackage(),
         new BlurViewPackage(),
-        new RNDeviceInfo()
+        new RNDeviceInfo(),
+        new NetInfoPackage()
     );
   }
 

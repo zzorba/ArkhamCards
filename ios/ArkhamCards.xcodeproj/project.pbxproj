@@ -47,6 +47,7 @@
 		65626F5C20D3F162004F4190 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626F5920D3F14D004F4190 /* libRNKeychain.a */; };
 		65626FAE20D4220B004F4190 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626FAD20D421FB004F4190 /* libReactNativeConfig.a */; };
 		6589F16920E484CB00B556CE /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6589F16620E484BA00B556CE /* libBVLinearGradient.a */; };
+		65971843223DB585002F9202 /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65971835223DB57D002F9202 /* libRNCNetInfo.a */; };
 		65B5EA3C2221B0D700843CE0 /* libicloudstorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B5EA072221B0C800843CE0 /* libicloudstorage.a */; };
 		65B5ECD822277F3F00843CE0 /* libRNIcloudAccountStatus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B5ECD722277F3200843CE0 /* libRNIcloudAccountStatus.a */; };
 		65B5ECDA222782A000843CE0 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B5ECD92227829F00843CE0 /* CloudKit.framework */; };
@@ -416,6 +417,20 @@
 			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
 			remoteInfo = "jsiexecutor-tvOS";
 		};
+		65971834223DB57D002F9202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 659717FB223DB57D002F9202 /* RNCNetInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNCNetInfo;
+		};
+		65971836223DB57D002F9202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 659717FB223DB57D002F9202 /* RNCNetInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5027B1B2237B30F00F1AABA;
+			remoteInfo = "RNCNetInfo-tvOS";
+		};
 		65B3F02120897A2100B0B126 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9DB86F05CCF241BC8784868B /* AppCenterReactNativeAnalytics.xcodeproj */;
@@ -559,6 +574,7 @@
 		65626F5320D3F14D004F4190 /* RNKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNKeychain.xcodeproj; path = "../node_modules/react-native-keychain/RNKeychain.xcodeproj"; sourceTree = "<group>"; };
 		65626FA820D421FB004F4190 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		659717FB223DB57D002F9202 /* RNCNetInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCNetInfo.xcodeproj; path = "../node_modules/@react-native-community/netinfo/ios/RNCNetInfo.xcodeproj"; sourceTree = "<group>"; };
 		65B5E9FB2221B0C700843CE0 /* icloudstorage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = icloudstorage.xcodeproj; path = "../node_modules/react-native-icloudstore/icloudstorage.xcodeproj"; sourceTree = "<group>"; };
 		65B5EA3D2221B1B500843CE0 /* ArkhamCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCards.entitlements; path = ArkhamCards/ArkhamCards.entitlements; sourceTree = "<group>"; };
 		65B5ECD222277F3200843CE0 /* RNIcloudAccountStatus.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNIcloudAccountStatus.xcodeproj; path = "../node_modules/react-native-icloud-account-status/ios/RNIcloudAccountStatus.xcodeproj"; sourceTree = "<group>"; };
@@ -607,6 +623,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65971843223DB585002F9202 /* libRNCNetInfo.a in Frameworks */,
 				65B73EDB223023CF00495217 /* JavaScriptCore.framework in Frameworks */,
 				652E68A5222C853900452A3C /* libRNDeviceInfo.a in Frameworks */,
 				65B5ECD822277F3F00843CE0 /* libRNIcloudAccountStatus.a in Frameworks */,
@@ -882,6 +899,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		659717FC223DB57D002F9202 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65971835223DB57D002F9202 /* libRNCNetInfo.a */,
+				65971837223DB57D002F9202 /* libRNCNetInfo-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		65B3F01E20897A2100B0B126 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -961,6 +987,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				659717FB223DB57D002F9202 /* RNCNetInfo.xcodeproj */,
 				652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */,
 				65B5ECD222277F3200843CE0 /* RNIcloudAccountStatus.xcodeproj */,
 				65B5E9FB2221B0C700843CE0 /* icloudstorage.xcodeproj */,
@@ -1227,6 +1254,10 @@
 				{
 					ProductGroup = 655306F120F6D2C600FDDFC4 /* Products */;
 					ProjectRef = 655306F020F6D2C600FDDFC4 /* RNBlur.xcodeproj */;
+				},
+				{
+					ProductGroup = 659717FC223DB57D002F9202 /* Products */;
+					ProjectRef = 659717FB223DB57D002F9202 /* RNCNetInfo.xcodeproj */;
 				},
 				{
 					ProductGroup = 652E689D222C852700452A3C /* Products */;
@@ -1607,6 +1638,20 @@
 			fileType = archive.ar;
 			path = "libjsiexecutor-tvOS.a";
 			remoteRef = 659717AC2233D6F8002F9202 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65971835223DB57D002F9202 /* libRNCNetInfo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCNetInfo.a;
+			remoteRef = 65971834223DB57D002F9202 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65971837223DB57D002F9202 /* libRNCNetInfo-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNCNetInfo-tvOS.a";
+			remoteRef = 65971836223DB57D002F9202 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		65B3F02220897A2100B0B126 /* libAppCenterReactNativeAnalytics.a */ = {

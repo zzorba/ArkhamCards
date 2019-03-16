@@ -14,7 +14,7 @@ import * as Actions from '../actions';
 /**
  * Simple component to block children rendering until a login flow is completed.
  */
-export default function withLoginState(WrappedComponent) {
+export default function withLoginState(WrappedComponent, options) {
   class ConnectedLoginStateComponent extends React.Component {
     static propTypes = {
       loading: PropTypes.bool,
@@ -30,6 +30,16 @@ export default function withLoginState(WrappedComponent) {
         login,
         error,
       } = this.props;
+      if (options && options.noWrapper) {
+        return (
+          <WrappedComponent
+            {...this.props}
+            login={login}
+            signedIn={signedIn}
+            signInError={error}
+          />
+        );
+      }
       return (
         <View style={styles.wrapper}>
           <WrappedComponent
