@@ -5079,9 +5079,9 @@ react-native-elements@1.1.0:
     react-native-ratings "^6.3.0"
     react-native-status-bar-height "^2.2.0"
 
-react-native-flip-card@3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/react-native-flip-card/-/react-native-flip-card-3.5.2.tgz#6563f4a6d95b999c21e82deec9b2f502175847d6"
+react-native-flip-card@3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-flip-card/-/react-native-flip-card-3.5.3.tgz#92157d9bf40103d04294c5fc754ce88c2bb94202"
   dependencies:
     prop-types "^15.5.10"
 
@@ -5108,9 +5108,9 @@ react-native-modal@^6.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-react-native-navigation@2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.13.1.tgz#1aefe56a8b92541f110120d2aa079c8c0cdc7213"
+react-native-navigation@2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.14.0.tgz#d453dc92031ffaf7951f741a733bdc969a1670ea"
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -5154,9 +5154,9 @@ react-native-svg-charts@5.2.0:
     d3-shape "^1.0.6"
     prop-types "^15.6.0"
 
-react-native-svg@9.2.4:
-  version "9.2.4"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.2.4.tgz#a30ee42535b39097e7b68dfa6dcf5c1c8cce97f1"
+react-native-svg@9.3.3:
+  version "9.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.3.3.tgz#6e94b7d1e2eee1fad23e6af317be68d6db16e5a0"
 
 react-native-tabular-grid-markdown-view@0.1.x:
   version "0.1.0"
