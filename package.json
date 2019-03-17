@@ -34,8 +34,6 @@
     "react-native-dialog": "zzorba/react-native-dialog#make_keyboard_avoid_behavior_prop",
     "react-native-elements": "1.1.0",
     "react-native-flip-card": "3.5.2",
-    "react-native-icloud-account-status": "1.0.1",
-    "react-native-icloudstore": "zzorba/react-native-icloudstore#add_dispatch_mainqueue",
     "react-native-keychain": "3.1.1",
     "react-native-linear-gradient": "2.5.3",
     "react-native-markdown-view": "1.1.4",

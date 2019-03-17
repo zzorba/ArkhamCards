@@ -665,10 +665,6 @@
     "@babel/runtime" "^7.1.2"
     redux-persist "^4.6.0"
 
-"@types/node@*":
-  version "11.10.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.5.tgz#fbaca34086bdc118011e1f05c47688d432f2d571"
-
 abab@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
@@ -3657,8 +3653,8 @@ jest-serializer@^23.0.1:
   resolved "https://registry.yarnpkg.com/jest-serializer/-/jest-serializer-23.0.1.tgz#a3776aeb311e90fe83fab9e533e85102bd164165"
 
 jest-serializer@^24.0.0-alpha.6:
-  version "24.3.0"
-  resolved "https://registry.yarnpkg.com/jest-serializer/-/jest-serializer-24.3.0.tgz#074e307300d1451617cf2630d11543ee4f74a1c8"
+  version "24.0.0"
+  resolved "https://registry.yarnpkg.com/jest-serializer/-/jest-serializer-24.0.0.tgz#522c44a332cdd194d8c0531eb06a1ee5afb4256b"
 
 jest-snapshot@^23.6.0:
   version "23.6.0"
@@ -3718,10 +3714,9 @@ jest-worker@^23.2.0:
     merge-stream "^1.0.1"
 
 jest-worker@^24.0.0-alpha.6:
-  version "24.3.1"
-  resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-24.3.1.tgz#c1759dd2b1d5541b09a2e5e1bc3288de6c9d8632"
+  version "24.0.0"
+  resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-24.0.0.tgz#3d3483b077bf04f412f47654a27bba7e947f8b6d"
   dependencies:
-    "@types/node" "*"
     merge-stream "^1.0.1"
     supports-color "^6.1.0"
 
@@ -5002,13 +4997,17 @@ react-deep-force-update@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.1.2.tgz#3d2ae45c2c9040cbb1772be52f8ea1ade6ca2ee1"
 
 react-devtools-core@^3.4.2:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-3.6.1.tgz#51af81ceada65209bbccb8b547a01187cd1cbf04"
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-3.6.0.tgz#77009517d72594fe6e2794f5ae160646d77fc467"
   dependencies:
     shell-quote "^1.6.1"
     ws "^3.3.1"
 
-react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.2:
+react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1:
+  version "16.8.3"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
+
+react-is@^16.8.2:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
 
@@ -5085,14 +5084,6 @@ react-native-flip-card@3.5.2:
   resolved "https://registry.yarnpkg.com/react-native-flip-card/-/react-native-flip-card-3.5.2.tgz#6563f4a6d95b999c21e82deec9b2f502175847d6"
   dependencies:
     prop-types "^15.5.10"
-
-react-native-icloud-account-status@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-icloud-account-status/-/react-native-icloud-account-status-1.0.1.tgz#2fd27ae8f2bce631c86e2176533b029b9ca91715"
-
-react-native-icloudstore@zzorba/react-native-icloudstore#add_dispatch_mainqueue:
-  version "0.9.0"
-  resolved "https://codeload.github.com/zzorba/react-native-icloudstore/tar.gz/a273de6533e6f0ea2f2b3bf6105e8899a13d2c1f"
 
 react-native-keychain@3.1.1:
   version "3.1.1"
@@ -5378,9 +5369,9 @@ redux@4.0.1:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
 
-regenerate-unicode-properties@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.0.1.tgz#58a4a74e736380a7ab3c5f7e03f303a941b31289"
+regenerate-unicode-properties@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-7.0.0.tgz#107405afcc4a190ec5ed450ecaa00ed0cafa7a4c"
   dependencies:
     regenerate "^1.4.0"
 
@@ -5434,15 +5425,15 @@ regexpp@^1.1.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-1.1.0.tgz#0e3516dd0b7904f413d2d4193dce4618c3a689ab"
 
 regexpu-core@^4.1.3:
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-4.5.3.tgz#72f572e03bb8b9f4f4d895a0ccc57e707f4af2e4"
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/regexpu-core/-/regexpu-core-4.4.0.tgz#8d43e0d1266883969720345e70c275ee0aec0d32"
   dependencies:
     regenerate "^1.4.0"
-    regenerate-unicode-properties "^8.0.1"
+    regenerate-unicode-properties "^7.0.0"
     regjsgen "^0.5.0"
     regjsparser "^0.6.0"
     unicode-match-property-ecmascript "^1.0.4"
-    unicode-match-property-value-ecmascript "^1.1.0"
+    unicode-match-property-value-ecmascript "^1.0.2"
 
 regjsgen@^0.5.0:
   version "0.5.0"
@@ -6284,13 +6275,13 @@ unicode-match-property-ecmascript@^1.0.4:
     unicode-canonical-property-names-ecmascript "^1.0.4"
     unicode-property-aliases-ecmascript "^1.0.4"
 
-unicode-match-property-value-ecmascript@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-1.1.0.tgz#5b4b426e08d13a80365e0d657ac7a6c1ec46a277"
+unicode-match-property-value-ecmascript@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-1.0.2.tgz#9f1dc76926d6ccf452310564fd834ace059663d4"
 
 unicode-property-aliases-ecmascript@^1.0.4:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.5.tgz#a9cc6cc7ce63a0a3023fc99e341b94431d405a57"
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.4.tgz#5a533f31b4317ea76f17d807fa0d116546111dd0"
 
 union-value@^1.0.0:
   version "1.0.0"
