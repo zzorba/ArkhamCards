@@ -243,6 +243,16 @@ export default class EncounterIcon extends React.PureComponent {
         return this.circleIcon('the_circle_undone', size, color);
       case 'tsn':
         return this.circleIcon('the_secret_name', size, color);
+      case 'wos':
+        return this.circleIcon('the_wages_of_sin', size, color);
+      case 'fgg':
+        return this.circleIcon('for_the_greater_good', size, color);
+      case 'uad':
+        return this.circleIcon('union_and_disillusion', size, color);
+      case 'icc':
+        return this.circleIcon('in_the_clutches_of_chaos', size, color);
+      case 'bbt':
+        return this.circleIcon('before_the_black_throne', size, color);
       case 'the_circle_undone':
       case 'agents_of_azathoth':
       case 'anettes_coven':
@@ -257,7 +267,14 @@ export default class EncounterIcon extends React.PureComponent {
       case 'the_witching_hour':
       case 'trapped_spirits':
       case 'witchcraft':
+      case 'music_of_the_damned':
+      case 'secrets_of_the_universe':
       case 'the_secret_name':
+      case 'the_wages_of_sin':
+      case 'for_the_greater_good':
+      case 'union_and_disillusion':
+      case 'in_the_clutches_of_chaos':
+      case 'before_the_black_throne':
         return this.circleIcon(encounter_code, size, color);
       default:
         return this.coreIcon('core', size, color);
