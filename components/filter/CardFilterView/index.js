@@ -44,11 +44,6 @@ class CardFilterView extends React.Component {
           text: L('Filter'),
           color: COLORS.navButton,
         },
-        rightButtons: [{
-          text: L('Clear'),
-          id: 'clear',
-          color: COLORS.navButton,
-        }],
       },
     };
   }

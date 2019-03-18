@@ -58,6 +58,7 @@ export default class CardQuantityComponent extends React.PureComponent {
       count,
     } = this.props;
     if (count !== prevProps.count) {
+      /* eslint-disable react/no-did-update-set-state */
       this.setState({
         count,
       });

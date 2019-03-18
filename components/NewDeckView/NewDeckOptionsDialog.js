@@ -330,7 +330,7 @@ class NewDeckOptionsDialog extends React.Component {
           <DialogComponent.Description style={[typography.small, space.marginBottomS]}>
             { L('Visit Settings to sign in to ArkhamDB.') }
           </DialogComponent.Description>
-        )}
+        ) }
         { networkType === 'none' && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
             <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>

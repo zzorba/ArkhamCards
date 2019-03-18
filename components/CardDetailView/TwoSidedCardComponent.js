@@ -158,12 +158,13 @@ export default class TwoSidedCardComponent extends React.Component {
 
   renderTestIcons(card) {
     if (card.type_code === 'investigator') {
+      /* eslint-disable no-irregular-whitespace */
       return (
         <Text style={typography.cardText}>
-          {`${card.skill_willpower} `}<ArkhamIcon name="willpower" size={SMALL_ICON_SIZE} color="#000" />.
-          {`  ${card.skill_intellect} `}<ArkhamIcon name="intellect" size={SMALL_ICON_SIZE} color="#000" />.
-          {`  ${card.skill_combat} `}<ArkhamIcon name="combat" size={SMALL_ICON_SIZE} color="#000" />.
-          {`  ${card.skill_agility} `} <ArkhamIcon name="agility" size={SMALL_ICON_SIZE} color="#000" />.
+          { `${card.skill_willpower} ` }<ArkhamIcon name="willpower" size={SMALL_ICON_SIZE} color="#000" />.
+          { `  ${card.skill_intellect} ` }<ArkhamIcon name="intellect" size={SMALL_ICON_SIZE} color="#000" />.
+          { `  ${card.skill_combat} ` }<ArkhamIcon name="combat" size={SMALL_ICON_SIZE} color="#000" />.
+          { `  ${card.skill_agility} ` } <ArkhamIcon name="agility" size={SMALL_ICON_SIZE} color="#000" />.
         </Text>
       );
     }

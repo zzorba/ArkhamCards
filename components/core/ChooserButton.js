@@ -44,6 +44,16 @@ export default class ChooserButton extends React.Component {
               text: L('Select {{searchType}}', { searchType: title }),
               color: COLORS.navButton,
             },
+            backButton: {
+              title: L('Back'),
+              color: COLORS.navButton,
+            },
+            rightButtons: selection && selection.length > 0 ?
+              [{
+                text: L('Clear'),
+                id: 'clear',
+                color: COLORS.navButton,
+              }] : [],
           },
         },
       },

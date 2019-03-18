@@ -91,6 +91,11 @@ export default class Card {
   }
 
   static FACTION_HEADER_ORDER = [
+    'Guardian / Rogue',
+    'Rogue / Survivor',
+    'Survivor / Seeker',
+    'Seeker / Mystic',
+    'Mystic / Guardian',
     'Guardian',
     'Seeker',
     'Mystic',

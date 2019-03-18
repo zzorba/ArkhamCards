@@ -122,8 +122,6 @@ export default class NewDeckView extends React.Component {
       componentId,
       onCreateDeck,
       filterInvestigators,
-      signedIn,
-      login,
     } = this.props;
     const {
       viewRef,

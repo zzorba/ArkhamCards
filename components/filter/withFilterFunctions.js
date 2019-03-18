@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { pick } from 'lodash';
 import { connectRealm } from 'react-native-realm';
 import {
   Dimensions,
@@ -8,10 +9,13 @@ import {
 } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { Navigation } from 'react-native-navigation';
+import deepDiff from 'deep-diff';
 
+import L from '../../app/i18n';
+import { COLORS } from '../../styles/colors';
 import FilterFooterComponent from './FilterFooterComponent';
 
-export default function withFilterFunctions(WrappedComponent) {
+export default function withFilterFunctions(WrappedComponent, clearTraits) {
   class WrappedFilterComponent extends React.Component {
     static propTypes = {
       componentId: PropTypes.string.isRequired,
@@ -40,19 +44,53 @@ export default function withFilterFunctions(WrappedComponent) {
       this._updateFilters = this.updateFilters.bind(this);
       this._onToggleChange = this.onToggleChange.bind(this);
       this._onFilterChange = this.onFilterChange.bind(this);
-
+      this._syncState = this.syncState.bind(this);
       this._navEventListener = Navigation.events().bindComponent(this);
+
+      this.syncState();
     }
 
     componentWillUnmount() {
       this._navEventListener.remove();
     }
 
+    hasChanges() {
+      const {
+        defaultFilterState,
+      } = this.props;
+      const {
+        filters,
+      } = this.state;
+      const differences = (clearTraits && clearTraits.length) ?
+        deepDiff(pick(filters, clearTraits), pick(defaultFilterState, clearTraits)) :
+        deepDiff(filters, defaultFilterState);
+      return differences && differences.length;
+    }
+
+    syncState() {
+      Navigation.mergeOptions(this.props.componentId, {
+        topBar: {
+          rightButtons: this.hasChanges() ?
+            [{
+              text: L('Clear'),
+              id: 'clear',
+              color: COLORS.navButton,
+            }] : [],
+        },
+      });
+    }
+
     navigationButtonPressed({ buttonId }) {
+      const {
+        defaultFilterState,
+      } = this.props;
       if (buttonId === 'clear') {
+        const filters = clearTraits && clearTraits.length ?
+          Object.assign({}, this.state.filters, pick(defaultFilterState, clearTraits)) :
+          defaultFilterState;
         this.setState({
-          filters: this.props.defaultFilterState,
-        });
+          filters,
+        }, this._syncState);
       } else if (buttonId === 'apply') {
         Navigation.pop(this.props.componentId);
       }
@@ -87,7 +125,7 @@ export default function withFilterFunctions(WrappedComponent) {
     updateFilters(filters) {
       this.setState({
         filters,
-      });
+      }, this._syncState);
     }
 
     onToggleChange(key) {
@@ -95,7 +133,7 @@ export default function withFilterFunctions(WrappedComponent) {
         return {
           filters: Object.assign({}, state.filters, { [key]: !state.filters[key] }),
         };
-      });
+      }, this._syncState);
     }
 
     onFilterChange(key, selection) {
@@ -103,7 +141,7 @@ export default function withFilterFunctions(WrappedComponent) {
         return {
           filters: Object.assign({}, state.filters, { [key]: selection }),
         };
-      });
+      }, this._syncState);
     }
 
     render() {

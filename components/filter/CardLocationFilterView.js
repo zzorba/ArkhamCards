@@ -94,7 +94,17 @@ class CardLocationFilterView extends React.Component {
   }
 }
 
-export default withFilterFunctions(CardLocationFilterView);
+export default withFilterFunctions(
+  CardLocationFilterView,
+  [
+    'shroud',
+    'shroudEnabled',
+    'clues',
+    'cluesEnabled',
+    'cluesFixed',
+    'hauntedEnabled',
+  ]
+);
 
 const styles = StyleSheet.create({
   toggleColumn: {

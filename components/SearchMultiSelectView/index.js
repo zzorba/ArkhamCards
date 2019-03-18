@@ -7,6 +7,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import SearchBox from '../SearchBox';
@@ -15,22 +16,12 @@ import { COLORS } from '../../styles/colors';
 
 export default class SearchMultiSelectView extends React.Component {
   static propTypes = {
+    componentId: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     values: PropTypes.array.isRequired,
     selection: PropTypes.array,
   };
-
-  static get options() {
-    return {
-      topBar: {
-        backButton: {
-          title: L('Back'),
-          color: COLORS.navButton,
-        },
-      },
-    };
-  }
 
   constructor(props) {
     super(props);
@@ -45,6 +36,12 @@ export default class SearchMultiSelectView extends React.Component {
     this._onSelectChanged = this.onSelectChanged.bind(this);
     this._renderItem = this.renderItem.bind(this);
     this._keyExtractor = this.keyExtractor.bind(this);
+
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener.remove();
   }
 
   syncSelection() {
@@ -52,6 +49,24 @@ export default class SearchMultiSelectView extends React.Component {
       selection,
     } = this.state;
     this.props.onChange(selection);
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        rightButtons: selection && selection.length > 0 ?
+          [{
+            text: L('Clear'),
+            id: 'clear',
+            color: COLORS.navButton,
+          }] : [],
+      },
+    });
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'clear') {
+      this.setState({
+        selection: [],
+      }, this._syncSelection);
+    }
   }
 
   onSelectChanged(value, selected) {

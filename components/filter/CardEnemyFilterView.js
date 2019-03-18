@@ -222,7 +222,22 @@ class CardEnemyFilterView extends React.Component {
   }
 }
 
-export default withFilterFunctions(CardEnemyFilterView);
+export default withFilterFunctions(
+  CardEnemyFilterView,
+  [
+    'enemyHealth',
+    'enemyHealthEnabled',
+    'enemyHealthPerInvestigator',
+    'enemyDamage',
+    'enemyDamageEnabled',
+    'enemyHorror',
+    'enemyHorrorEnabled',
+    'enemyFight',
+    'enemyFightEnabled',
+    'enemyEvade',
+    'enemyEvadeEnabled',
+  ]
+);
 
 const styles = StyleSheet.create({
   toggleColumn: {

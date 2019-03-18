@@ -129,7 +129,7 @@ class MyDecksComponent extends React.Component {
         { customFooter }
         { this.renderSignInFooter() }
       </React.Fragment>
-    )
+    );
   }
 
   renderSignInFooter() {
