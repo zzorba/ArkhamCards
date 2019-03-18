@@ -17,4 +17,6 @@ export const COLORS = {
   navButton: Platform.OS === 'ios' ? '#007AFF' : '#000  ',
   black: '#000',
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : null,
+  iosSettingsBackground: '#e3e6ed',
+  monza: '#C70039',
 };

@@ -3,16 +3,20 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
   Alert,
+  Platform,
   Keyboard,
   SafeAreaView,
+  ScrollView,
   Share,
   StyleSheet,
-  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
+import {
+  SettingsCategoryHeader,
+} from 'react-native-settings-components';
 
 import L from '../../app/i18n';
 import withDialogs from '../core/withDialogs';
@@ -21,6 +25,7 @@ import { getCampaigns } from '../../reducers';
 import { fetchCards } from '../cards/actions';
 import { setAllCampaigns } from '../campaign/actions';
 import SettingsItem from './SettingsItem';
+import { COLORS } from '../../styles/colors';
 
 const defaultImageCacheManager = ImageCacheManager();
 
@@ -163,12 +168,20 @@ class DiagnosticsView extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.list}>
+        <ScrollView style={styles.list}>
+          <SettingsCategoryHeader
+            title={L('Backup')}
+            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+          />
           <SettingsItem onPress={this._exportCampaignData} text={L('Backup Campaign Data')} />
           <SettingsItem onPress={this._importCampaignData} text={L('Restore Campaign Data')} />
+          <SettingsCategoryHeader
+            title={L('Caches')}
+            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+          />
           <SettingsItem onPress={this._clearImageCache} text={L('Clear image cache')} />
           <SettingsItem onPress={this._clearCache} text={L('Clear cache')} />
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -205,11 +218,9 @@ export default withDialogs(
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     flex: 1,
-    paddingTop: 16,
   },
   list: {
-    padding: 8,
+    backgroundColor: Platform.OS === 'ios' ? COLORS.iosSettingsBackground : COLORS.white,
   },
 });

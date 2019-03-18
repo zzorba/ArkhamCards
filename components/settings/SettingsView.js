@@ -2,16 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { keys } from 'lodash';
 import {
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  View,
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
+import {
+  SettingsCategoryHeader,
+} from 'react-native-settings-components';
 
 import L from '../../app/i18n';
 import { clearDecks } from '../../actions';
@@ -19,6 +22,7 @@ import { fetchCards } from '../cards/actions';
 import { getAllDecks } from '../../reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
+import { COLORS } from '../../styles/colors';
 
 const defaultImageCacheManager = ImageCacheManager();
 
@@ -39,8 +43,8 @@ class SettingsView extends React.Component {
     this._languagePressed = this.languagePressed.bind(this);
     this._myCollectionPressed = this.navButtonPressed.bind(this, 'My.Collection', L('Edit Collection'));
     this._editSpoilersPressed = this.navButtonPressed.bind(this, 'My.Spoilers', L('Edit Spoilers'));
-    this._diagnosticsPressed = this.navButtonPressed.bind(this, 'Settings.Diagnostics', L('App Diagnostics'));
-    this._aboutPressed = this.navButtonPressed.bind(this, 'About', L('About'));
+    this._diagnosticsPressed = this.navButtonPressed.bind(this, 'Settings.Diagnostics', L('Diagnostics'));
+    this._aboutPressed = this.navButtonPressed.bind(this, 'About', L('About Arkham Cards'));
     this._doSyncCards = this.doSyncCards.bind(this);
   }
 
@@ -107,17 +111,20 @@ class SettingsView extends React.Component {
     } = this.props;
     if (cardsLoading) {
       return (
-        <SettingsItem text={L('Updating cards')} loading />
+        <React.Fragment>
+          <SettingsItem text={L('Updating cards')} />
+          <SettingsItem text={L('Card Language')} />
+        </React.Fragment>
       );
     }
     return (
-      <View>
+      <React.Fragment>
         <SettingsItem
           onPress={this._doSyncCards}
-          text={cardsError ? L('Error: check for updated cards again') : L('Check for updated cards')}
+          text={cardsError ? L('Error: Check for Cards Again') : L('Check for New Cards on ArkhamDB')}
         />
         <SettingsItem onPress={this._languagePressed} text={L('Card Language')} />
-      </View>
+      </React.Fragment>
     );
   }
 
@@ -125,12 +132,28 @@ class SettingsView extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
-          <LoginButton />
-          <SettingsItem onPress={this._myCollectionPressed} text={L('Card Collection')} />
-          <SettingsItem onPress={this._editSpoilersPressed} text={L('Spoiler Settings')} />
+          <SettingsCategoryHeader
+            title={L('Account')}
+            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+          />
+          <LoginButton settings />
+          <SettingsCategoryHeader
+            title={L('Card Data')}
+            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+          />
+          <SettingsItem navigation onPress={this._myCollectionPressed} text={L('Card Collection')} />
+          <SettingsItem navigation onPress={this._editSpoilersPressed} text={L('Spoiler Settings')} />
           { this.renderSyncCards() }
-          <SettingsItem onPress={this._diagnosticsPressed} text={L('Diagnostics')} />
-          <SettingsItem onPress={this._aboutPressed} text={L('About')} />
+          <SettingsCategoryHeader
+            title={L('Debug')}
+            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+          />
+          <SettingsItem navigation onPress={this._diagnosticsPressed} text={L('Diagnostics')} />
+          <SettingsCategoryHeader
+            title={L('About Arkham Cards')}
+            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+          />
+          <SettingsItem navigation onPress={this._aboutPressed} text={L('About Arkham Cards')} />
         </ScrollView>
       </SafeAreaView>
     );
@@ -167,11 +190,10 @@ export default connectRealm(
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     flex: 1,
-    paddingTop: 16,
   },
   list: {
-    padding: 8,
+    flex: 1,
+    backgroundColor: Platform.OS === 'ios' ? COLORS.iosSettingsBackground : COLORS.white,
   },
 });

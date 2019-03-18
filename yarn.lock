@@ -5067,6 +5067,10 @@ react-native-dialog@zzorba/react-native-dialog#make_keyboard_avoid_behavior_prop
     prop-types "^15.6.0"
     react-native-modal "^6.4.0"
 
+react-native-dialogs@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-dialogs/-/react-native-dialogs-1.0.3.tgz#6f29480162535514dc82f2ddb1999cd49913a3fc"
+
 react-native-elements@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.1.0.tgz#f99bcda4459a886f3ab4591c684c099d37aedf2b"
@@ -5139,6 +5143,13 @@ react-native-realm@0.1.2:
     hoist-non-react-statics "1.2.0"
     pluralize "5.0.0"
     prop-types "15.5.10"
+
+react-native-settings-components@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-settings-components/-/react-native-settings-components-0.0.2.tgz#39e4e352b85674897e31ecde05e6195c59023c14"
+  dependencies:
+    lodash "^4.17.11"
+    react-native-dialogs "^1.0.2"
 
 react-native-status-bar-height@^2.2.0:
   version "2.2.0"

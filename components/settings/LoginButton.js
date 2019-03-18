@@ -10,11 +10,14 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import SettingsItem from './SettingsItem';
 import L from '../../app/i18n';
 import * as Actions from '../../actions';
 
 class LoginButton extends React.Component {
   static propTypes = {
+    settings: PropTypes.bool,
+    // From Redux
     signedIn: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     login: PropTypes.func.isRequired,
@@ -41,6 +44,7 @@ class LoginButton extends React.Component {
 
   render() {
     const {
+      settings,
       signedIn,
       loading,
       login,
@@ -57,14 +61,18 @@ class LoginButton extends React.Component {
     }
 
     if (signedIn) {
-      return (
+      return settings ? (
+        <SettingsItem onPress={this._logOutPressed} text={L('Sign out of ArkhamDB')} />
+      ) : (
         <View style={styles.wrapper}>
           <Button onPress={this._logOutPressed} title={L('Sign out of ArkhamDB')} />
         </View>
       );
     }
 
-    return (
+    return settings ? (
+      <SettingsItem onPress={login} text={L('Sign in to ArkhamDB')} />
+    ) : (
       <View style={styles.wrapper}>
         <Button onPress={login} title={L('Sign in to ArkhamDB')} />
       </View>
