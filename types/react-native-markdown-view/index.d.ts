@@ -109,9 +109,9 @@ declare module "react-native-markdown-view" {
         u?: TextStyle;
     }
 
-    type RegexComponents = string[]
-    type NestedParseFunction = (x: string, s: any) => any
-    type ParseState = any
+    export type RegexComponents = string[]
+    export type NestedParseFunction = (x: string, s: any) => any
+    export type ParseState = any
 
     type NodeKey = string
     export type OutputFunction = (node: Node, s: any) => any
@@ -127,14 +127,15 @@ declare module "react-native-markdown-view" {
         [key: string]: RenderStyle
     }
 
-    interface MarkdownRule {
-        match?: (x: string, state: RenderState, list: string[]) => RegExp | undefined | null
-        parse?: (components: RegexComponents, parse: NestedParseFunction, state: ParseState) => any,
-        render: (node: Node, output: OutputFunction, state: RenderState, style: RenderStyle) => any
+    export interface MarkdownRule<NodeT, StateT> {
+        match?: (x: string, state: RenderState, list: string[]) => RegExp | undefined | null;
+        parse?: (capture: RegexComponents, parse: NestedParseFunction, state: ParseState) => NodeT;
+        render: (node: Node & NodeT, output: OutputFunction, state: RenderState & StateT, style: RenderStyle) => any;
+        order: number;
     }
 
     interface MarkdownRules {
-        [key: string]: MarkdownRule
+        [key: string]: MarkdownRule<any,any>
     }
 
     /**

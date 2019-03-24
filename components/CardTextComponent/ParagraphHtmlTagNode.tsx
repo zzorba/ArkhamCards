@@ -4,8 +4,10 @@ import {
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
+import { WithChildren } from './types';
+
 export default function ParagraphHtmlTagNode(
-  node: Node & { text: string, children: Node },
+  node: Node & WithChildren,
   output: OutputFunction,
   state: RenderState
 ) {

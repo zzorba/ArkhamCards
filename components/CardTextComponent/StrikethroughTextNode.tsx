@@ -5,8 +5,10 @@ import {
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
+import { WithText } from './types';
+
 export default function StrikethroughTextNode(
-  node: Node & { text: string},
+  node: Node & WithText,
   output: OutputFunction,
   state: RenderState
 ) {

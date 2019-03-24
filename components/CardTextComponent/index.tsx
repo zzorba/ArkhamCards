@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SimpleMarkdown from 'simple-markdown';
-import { MarkdownView } from 'react-native-markdown-view';
+import {
+  MarkdownView,
+  MarkdownRule,
+  RegexComponents,
+  NestedParseFunction,
+  ParseState,
+} from 'react-native-markdown-view';
 
 import { isBig } from '../../styles/space';
 
+import { WithChildren, WithIconName, WithText, State } from './types';
 import ArkhamIconNode from './ArkhamIconNode';
 import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';
 import BoldHtmlTagNode from './BoldHtmlTagNode';
@@ -16,10 +23,10 @@ import ParagraphHtmlTagNode from './ParagraphHtmlTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 import StrikethroughTextNode from './StrikethroughTextNode';
 
-const ParagraphTagRule = {
+const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<p>(.+?)<\\/p>')),
   order: 0,
-  parse: (capture, nestedParse, state) => {
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
     };
@@ -27,7 +34,7 @@ const ParagraphTagRule = {
   render: ParagraphHtmlTagNode,
 };
 
-const ArkhamIconRule = {
+const ArkhamIconRule: MarkdownRule<WithIconName, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
   order: 1,
   parse: (capture) => {
@@ -36,7 +43,7 @@ const ArkhamIconRule = {
   render: ArkhamIconNode,
 };
 
-const ArkahmIconSpanRule = {
+const ArkahmIconSpanRule: MarkdownRule<WithIconName, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<span class="icon-(.+?)"( title="[^"]*")?></span>')),
   order: 1,
   parse: (capture) => {
@@ -45,7 +52,7 @@ const ArkahmIconSpanRule = {
   render: ArkhamIconNode,
 };
 
-const BreakTagRule = {
+const BreakTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/>')),
   order: 1,
   parse: () => {
@@ -54,7 +61,7 @@ const BreakTagRule = {
   render: BoldItalicHtmlTagNode,
 };
 
-const EmphasisMarkdownTagRule = {
+const EmphasisMarkdownTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[\\[([\\s\\S]+?)\\]\\]')),
   order: 0,
   parse: (capture) => {
@@ -63,7 +70,7 @@ const EmphasisMarkdownTagRule = {
   render: BoldItalicHtmlTagNode,
 };
 
-const MalformedBoldItalicHtmlTagRule = {
+const MalformedBoldItalicHtmlTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([^<]+?)<\\/b><\\/i>')),
   order: 1,
   parse: (capture) => {
@@ -72,7 +79,7 @@ const MalformedBoldItalicHtmlTagRule = {
   render: BoldItalicHtmlTagNode,
 };
 
-const DelHtmlTagRule = {
+const DelHtmlTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<del>([^<]+?)<\\/del>')),
   order: 1,
   parse: (capture) => {
@@ -81,19 +88,19 @@ const DelHtmlTagRule = {
   render: StrikethroughTextNode,
 };
 
-const HrTagRule = {
+const HrTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<hr>')),
   order: 1,
-  parse: (capture, nestedParse, state) => {
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return { children: nestedParse(capture[1], state) };
   },
   render: HrTagNode,
 };
 
-const BlockquoteHtmlTagRule = {
+const BlockquoteHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<blockquote>([\\s\\S]+?)<\\/blockquote>')),
   order: 1,
-  parse: (capture, nestedParse, state) => {
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
     };
@@ -101,7 +108,7 @@ const BlockquoteHtmlTagRule = {
   render: BlockquoteHtmlTagNode,
 };
 
-const BoldItalicHtmlTagRule = {
+const BoldItalicHtmlTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b><i>([\\s\\S]+?)<\\/i><\\/b>')),
   order: 1,
   parse: (capture) => {
@@ -110,10 +117,10 @@ const BoldItalicHtmlTagRule = {
   render: BoldItalicHtmlTagNode,
 };
 
-const BoldHtmlTagRule = {
+const BoldHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b>([\\s\\S]+?)<\\/b>')),
   order: 2,
-  parse: (capture, nestedParse, state) => {
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
     };
@@ -121,7 +128,7 @@ const BoldHtmlTagRule = {
   render: BoldHtmlTagNode,
 };
 
-const UnderlineHtmlTagRule = {
+const UnderlineHtmlTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
   order: 2,
   parse: (capture) => {
@@ -130,10 +137,10 @@ const UnderlineHtmlTagRule = {
   render: UnderlineHtmlTagNode,
 };
 
-const EmphasisHtmlTagRule = {
+const EmphasisHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<em>([\\s\\S]+?)<\\/em>')),
   order: 1,
-  parse: (capture, nestedParse, state) => {
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
     };
@@ -141,10 +148,10 @@ const EmphasisHtmlTagRule = {
   render: EmphasisHtmlTagNode,
 };
 
-const ItalicHtmlTagRule = {
+const ItalicHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
   order: 2,
-  parse: (capture, nestedParse, state) => {
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
     return {
       children: nestedParse(capture[1], state),
     };
@@ -152,61 +159,57 @@ const ItalicHtmlTagRule = {
   render: ItalicHtmlTagNode,
 };
 
-export default class CardText extends React.PureComponent {
-  static propTypes = {
-    text: PropTypes.string.isRequired,
-    onLinkPress: PropTypes.func,
-  };
 
-  render() {
-    const {
-      onLinkPress,
-    } = this.props;
-    const cleanText = this.props.text
-      .replace(/&rarr;/g, '→')
-      .replace(/\/n/g, '\n')
-      .replace(/^\s?-|—\s+(.+)$/gm,
-        onLinkPress ? '<span class="icon-bullet"></span> $1' : '[bullet] $1'
-      );
+interface Props {
+  text: string;
+  onLinkPress?: (url: string) => void,
+}
 
-    // Text that has hyperlinks uses a different style for the icons.
-    return (
-      <MarkdownView
-        rules={
-          Object.assign({
-            emMarkdown: EmphasisMarkdownTagRule,
-            arkhamIconSpan: ArkahmIconSpanRule,
-            hrTag: HrTagRule,
-            blockquoteTag: BlockquoteHtmlTagRule,
-            delTag: DelHtmlTagRule,
-            brTag: BreakTagRule,
-            biTag: BoldItalicHtmlTagRule,
-            badBiTag: MalformedBoldItalicHtmlTagRule,
-            bTag: BoldHtmlTagRule,
-            pTag: ParagraphTagRule,
-            uTag: UnderlineHtmlTagRule,
-            emTag: EmphasisHtmlTagRule,
-            iTag: ItalicHtmlTagRule,
-          }, onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })
-        }
-        styles={{
-          list: {
-            marginLeft: 4,
-          },
-          listItemBullet: {
-            minWidth: 12,
-            marginRight: 4,
-          },
-          paragraph: {
-            fontSize: isBig ? 24 : 14,
-            marginTop: 4,
-            marginBottom: 4,
-          },
-        }}
-        onLinkPress={onLinkPress}
-      >
-        { cleanText }
-      </MarkdownView>
+export default function CardText({ text, onLinkPress }: Props) {
+  const cleanText = text
+    .replace(/&rarr;/g, '→')
+    .replace(/\/n/g, '\n')
+    .replace(/^\s?-|—\s+(.+)$/gm,
+      onLinkPress ? '<span class="icon-bullet"></span> $1' : '[bullet] $1'
     );
-  }
+
+  // Text that has hyperlinks uses a different style for the icons.
+  return (
+    <MarkdownView
+      rules={
+        Object.assign({
+          emMarkdown: EmphasisMarkdownTagRule,
+          arkhamIconSpan: ArkahmIconSpanRule,
+          hrTag: HrTagRule,
+          blockquoteTag: BlockquoteHtmlTagRule,
+          delTag: DelHtmlTagRule,
+          brTag: BreakTagRule,
+          biTag: BoldItalicHtmlTagRule,
+          badBiTag: MalformedBoldItalicHtmlTagRule,
+          bTag: BoldHtmlTagRule,
+          pTag: ParagraphTagRule,
+          uTag: UnderlineHtmlTagRule,
+          emTag: EmphasisHtmlTagRule,
+          iTag: ItalicHtmlTagRule,
+        }, onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })
+      }
+      styles={{
+        list: {
+          marginLeft: 4,
+        },
+        listItemBullet: {
+          minWidth: 12,
+          marginRight: 4,
+        },
+        paragraph: {
+          fontSize: isBig ? 24 : 14,
+          marginTop: 4,
+          marginBottom: 4,
+        },
+      }}
+      onLinkPress={onLinkPress}
+    >
+      { cleanText }
+    </MarkdownView>
+  );
 }

@@ -3,8 +3,15 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-export default function BlockquoteHtmlTagNode(node, output, state) {
+import { WithChildren } from './types';
+
+export default function BlockquoteHtmlTagNode(
+  node: Node & WithChildren,
+  output: OutputFunction,
+  state: RenderState
+) {
   return (
     <Text key={state.key} style={styles.blockquote}>
       { '\n\n' }
