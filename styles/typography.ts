@@ -1,9 +1,24 @@
-import { StyleSheet } from 'react-native';
+import { TextStyle, StyleSheet } from 'react-native';
 
 import { isBig } from './space';
 const sizeScale = isBig ? 1.5 : 1;
 
-export default StyleSheet.create({
+interface Styles {
+  header: TextStyle;
+  cardText: TextStyle;
+  text: TextStyle;
+  small: TextStyle;
+  smallLabel: TextStyle;
+  label: TextStyle;
+  bigLabel: TextStyle;
+  bold: TextStyle;
+  gameFont: TextStyle;
+  bigGameFont: TextStyle;
+  left: TextStyle;
+  center: TextStyle;
+}
+
+export default StyleSheet.create<Styles>({
   header: {
     fontFamily: 'System',
     fontSize: 24 * sizeScale,

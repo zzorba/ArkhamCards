@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
+  ViewStyle,
   ViewPropTypes,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { FACTION_DARK_GRADIENTS, FACTION_LIGHT_GRADIENTS } from '../../constants';
+import { FACTION_DARK_GRADIENTS, FACTION_LIGHT_GRADIENTS, FactionCodeType } from '../../constants';
 
-export default function FactionGradient({ faction_code, style, children, dark }) {
+interface Props {
+  faction_code: FactionCodeType,
+  style?: ViewStyle,
+  children: ReactNode,
+  dark?: boolean;
+}
+
+export default function FactionGradient({ faction_code, style, children, dark }: Props) {
   const colors = dark ?
     FACTION_DARK_GRADIENTS[faction_code] :
     FACTION_LIGHT_GRADIENTS[faction_code];
@@ -17,10 +25,3 @@ export default function FactionGradient({ faction_code, style, children, dark })
     </LinearGradient>
   );
 }
-
-FactionGradient.propTypes = {
-  faction_code: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  style: ViewPropTypes.style,
-  dark: PropTypes.bool,
-};

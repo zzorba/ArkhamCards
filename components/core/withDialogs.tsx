@@ -3,57 +3,83 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { Subtract } from 'utility-types';
 
 import CountEditDialog from './CountEditDialog';
 import TextEditDialog from './TextEditDialog';
 
-export default function withDialogs(WrappedComponent) {
-  class ComponentWithDialogs extends React.Component {
-    constructor(props) {
+export interface InjectedDialogProps {
+  captureViewRef: (viewRef: View) => void;
+  viewRef?: View;
+  showTextEditDialog: (
+    title: string,
+    text: string,
+    onTextChange: (text: string) => void,
+    showCrossOut: boolean,
+    numberOfLines: number,
+    onSaveAndAdd: (text: string) => void,
+  ) => void;
+  showCountEditDialog: (
+    title: string,
+    count: number,
+    onCountChange: (count: number) => void,
+  ) => void;
+}
+
+export default function withDialogs<P extends InjectedDialogProps>(
+  WrappedComponent: React.ComponentType<P>
+) {
+  interface State {
+    baseViewRef?: View;
+    viewRef?: View;
+    textVisible: boolean;
+    title: string;
+    text: string;
+    numberOfLines: number;
+    onTextChange?: (text: string) => void;
+    onSaveAndAdd?: (text: string) => void;
+    showCrossOut: boolean;
+    countVisible: boolean;
+    count: number;
+    onCountChange?: (count: number) => void;
+  }
+
+  class ComponentWithDialogs extends
+    React.Component<Subtract<P, InjectedDialogProps>, State> {
+    constructor(props: Subtract<P, InjectedDialogProps>) {
       super(props);
 
       this.state = {
-        baseViewRef: null,
-        viewRef: null,
         textVisible: false,
         title: '',
         text: '',
-        onTextChange: null,
-        onSaveAndAdd: null,
+        numberOfLines: 2,
         showCrossOut: false,
         countVisible: false,
-        count: null,
-        onCountChange: null,
+        count: 0,
       };
-
-      this._captureViewRef = this.captureViewRef.bind(this);
-      this._captureBaseViewRef = this.captureBaseViewRef.bind(this);
-      this._showTextDialog = this.showTextDialog.bind(this);
-      this._hideTextDialog = this.hideTextDialog.bind(this);
-      this._showCountDialog = this.showCountDialog.bind(this);
-      this._hideCountDialog = this.hideCountDialog.bind(this);
     }
 
-    captureBaseViewRef(ref) {
+    _captureBaseViewRef = (ref: View) => {
       this.setState({
         baseViewRef: ref,
       });
-    }
+    };
 
-    captureViewRef(ref) {
+    _captureViewRef = (ref: View) => {
       this.setState({
         viewRef: ref,
       });
-    }
+    };
 
-    showTextDialog(
-      title,
-      text,
-      onTextChange,
-      showCrossOut,
-      numberOfLines,
-      onSaveAndAdd,
-    ) {
+    _showTextDialog = (
+      title: string,
+      text: string,
+      onTextChange: (text: string) => void,
+      showCrossOut: boolean,
+      numberOfLines: number,
+      onSaveAndAdd: (text: string) => void,
+    ) => {
       this.setState({
         textVisible: true,
         title,
@@ -63,13 +89,13 @@ export default function withDialogs(WrappedComponent) {
         numberOfLines: numberOfLines || 2,
         showCrossOut: !!showCrossOut,
       });
-    }
+    };
 
-    hideTextDialog() {
+    _hideTextDialog = () => {
       this.setState({
         textVisible: false,
       });
-    }
+    };
 
     renderTextDialog() {
       const {
@@ -100,20 +126,24 @@ export default function withDialogs(WrappedComponent) {
       );
     }
 
-    showCountDialog(title, count, onCountChange) {
+    _showCountDialog = (
+      title: string,
+      count: number,
+      onCountChange: (count: number) => void
+    ) => {
       this.setState({
         countVisible: true,
         title,
         count,
         onCountChange,
       });
-    }
+    };
 
-    hideCountDialog() {
+    _hideCountDialog = () => {
       this.setState({
         countVisible: false,
       });
-    }
+    };
 
     renderCountDialog() {
       const {
@@ -143,11 +173,11 @@ export default function withDialogs(WrappedComponent) {
         <View style={styles.wrapper}>
           <View style={styles.wrapper} ref={this._captureBaseViewRef}>
             <WrappedComponent
+              {...this.props as P}
               captureViewRef={this._captureViewRef}
               viewRef={this.state.viewRef}
               showTextEditDialog={this._showTextDialog}
               showCountEditDialog={this._showCountDialog}
-              {...this.props}
             />
           </View>
           { this.renderTextDialog() }

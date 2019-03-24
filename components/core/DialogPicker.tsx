@@ -17,46 +17,28 @@ import L from '../../app/i18n';
 import DialogOption from './DialogOption';
 import typography from '../../styles/typography';
 
-export default class DialogPicker extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    options: PropTypes.array.isRequired,
-    selectedOption: PropTypes.string,
-    onSelectionChanged: PropTypes.func.isRequired,
-    header: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    noCapitalize: PropTypes.bool,
-  };
-
-  constructor(props) {
-    super(props);
-
-    const {
-      height,
-      width,
-    } = Dimensions.get('window');
-
-    this.state = {
-      width,
-      height,
-    };
-
-    this._hide = this.hide.bind(this);
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress(option) {
+interface Props {
+  componentId: string;
+  options: string[];
+  selectedOption?: string;
+  onSelectionChanged: (selection: string) => void;
+  header: string;
+  description?: string;
+  noCapitalize?: boolean;
+}
+export default class DialogPicker extends React.Component<Props> {
+  _onPress = (option: string) => {
     const {
       componentId,
       onSelectionChanged,
     } = this.props;
     onSelectionChanged(option);
     Navigation.dismissOverlay(componentId);
-  }
+  };
 
-  hide() {
+  _hide = () => {
     Navigation.dismissOverlay(this.props.componentId);
-  }
+  };
 
   renderOptions() {
     const {
@@ -82,10 +64,9 @@ export default class DialogPicker extends React.Component {
     } = this.props;
 
     const {
-      width,
       height,
-    } = this.state;
-
+      width,
+    } = Dimensions.get('window');
 
     return (
       <View style={[styles.wrapper, { width, height }]}>

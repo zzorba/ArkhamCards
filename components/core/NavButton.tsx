@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
@@ -6,12 +6,19 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+// @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import DeviceInfo from 'react-native-device-info';
 
 import typography from '../../styles/typography';
 
-export default function NavButton({ text, onPress, indent, children }) {
+interface Props {
+  text?: string;
+  onPress: () => void;
+  indent?: boolean;
+  children?: ReactNode;
+}
+export default function NavButton({ text, onPress, indent, children }: Props) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[
@@ -36,13 +43,6 @@ export default function NavButton({ text, onPress, indent, children }) {
     </TouchableOpacity>
   );
 }
-
-NavButton.propTypes = {
-  text: PropTypes.string,
-  onPress: PropTypes.func.isRequired,
-  indent: PropTypes.bool,
-  children: PropTypes.node,
-};
 
 const styles = StyleSheet.create({
   container: {

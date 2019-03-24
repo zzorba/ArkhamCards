@@ -5,11 +5,20 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ViewPropTypes,
+  ViewStyle,
 } from 'react-native';
 
 import TextBoxButton from './TextBoxButton';
 import typography from '../../styles/typography';
+
+interface Props {
+  label: string;
+  onPress: () => void;
+  value: string;
+  placeholder?: string;
+  style?: ViewStyle;
+  column?: boolean;
+}
 
 export default function LabeledTextBox({
   label,
@@ -17,8 +26,8 @@ export default function LabeledTextBox({
   value,
   placeholder,
   column,
-  style = {},
-}) {
+  style,
+}: Props) {
   const viewStyle = column ? styles.column : styles.row;
   return (
     <View style={[viewStyle, style]}>
@@ -35,15 +44,6 @@ export default function LabeledTextBox({
     </View>
   );
 }
-
-LabeledTextBox.propTypes = {
-  label: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  style: ViewPropTypes.style,
-  column: PropTypes.bool,
-};
 
 const styles = StyleSheet.create({
   row: {

@@ -9,20 +9,26 @@ import {
 import DeviceInfo from 'react-native-device-info';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
-import { CHAOS_TOKEN_ORDER } from '../../constants';
+import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '../../constants';
 
-export default function ChaosBagLine({ chaosBag }) {
-  const bagKeys = sortBy(keys(chaosBag), token => CHAOS_TOKEN_ORDER[token]);
+interface Props {
+  chaosBag: ChaosBag;
+}
+
+export default function ChaosBagLine({ chaosBag }: Props) {
+  const bagKeys = sortBy(
+    keys(chaosBag),
+    (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token]);
   return (
     <View style={styles.row}>
-      { map(bagKeys, (token, tokenIdx) => (
-        map(range(0, chaosBag[token]), idx => {
-          const isLast = (idx === (chaosBag[token] - 1)) &&
+      { map(bagKeys, (token: ChaosTokenType, tokenIdx: number) => (
+        map(range(0, chaosBag[token] || 0), idx => {
+          const isLast = (idx === ((chaosBag[token] || 0) - 1)) &&
             (tokenIdx === (bagKeys.length - 1));
           return (
             <View key={`${token}-${idx}`} style={styles.commaView}>
               <ChaosTokenIcon
-                id={token}
+                icon={token}
                 size={18 * DeviceInfo.getFontScale()}
                 color="#222"
               />

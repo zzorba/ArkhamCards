@@ -1,33 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  ImageStyle,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
 
 import { showCard } from '../navHelper';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
+import Card from '../../data/Card';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
 const SMALL_FACTION_ICONS = createFactionIcons(40, '#FFF');
 
-export default class InvestigatorImage extends React.Component {
-  static propTypes = {
-    card: PropTypes.object.isRequired,
-    componentId: PropTypes.string,
-    small: PropTypes.bool,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+interface Props {
+  card: Card;
+  componentId: string;
+  small?: boolean;
+}
+export default class InvestigatorImage extends React.Component<Props> {
+  _onPress = () => {
     const {
       card,
       componentId,
@@ -49,15 +46,14 @@ export default class InvestigatorImage extends React.Component {
             {
               width: size,
               height: size,
-              backgroundColor: FACTION_COLORS[card.faction_code],
+              backgroundColor: FACTION_COLORS[card.faction_code || 'neutral'],
             },
           ]}>
             <Text style={styles.placeholderIcon} allowFontScaling={false}>
-              { (small ? SMALL_FACTION_ICONS : FACTION_ICONS)[card.faction_code] }
+              { (small ? SMALL_FACTION_ICONS : FACTION_ICONS)[card.faction_code || 'neutral'] }
             </Text>
           </View>
         </View>
-
         { !!card.imagesrc && (
           <View style={styles.relative}>
             <CachedImage
@@ -85,7 +81,15 @@ export default class InvestigatorImage extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+interface Styles {
+  container: ViewStyle;
+  relative: ViewStyle;
+  image: ImageStyle;
+  placeholder: ViewStyle;
+  placeholderIcon: TextStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   container: {
     position: 'relative',
     overflow: 'hidden',

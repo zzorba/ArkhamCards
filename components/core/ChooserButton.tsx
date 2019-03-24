@@ -5,23 +5,16 @@ import L from '../../app/i18n';
 import NavButton from './NavButton';
 import { COLORS } from '../../styles/colors';
 
-export default class ChooserButton extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    values: PropTypes.array.isRequired,
-    onChange: PropTypes.func.isRequired,
-    selection: PropTypes.array,
-    indent: PropTypes.bool,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+interface Props {
+  componentId: string;
+  title: string;
+  values: string[];
+  onChange: (selection: string[]) => void;
+  selection?: string[];
+  indent?: boolean;
+}
+export default class ChooserButton extends React.Component<Props> {
+  _onPress = () => {
     const {
       componentId,
       title,
@@ -68,7 +61,7 @@ export default class ChooserButton extends React.Component {
     } = this.props;
     return (
       <NavButton
-        text={`${title}: ${selection.length ? selection.join(', ') : L('All')}`}
+        text={`${title}: ${selection && selection.length ? selection.join(', ') : L('All')}`}
         onPress={this._onPress}
         indent={indent}
       />

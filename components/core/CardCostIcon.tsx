@@ -10,19 +10,19 @@ import DeviceInfo from 'react-native-device-info';
 import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { FACTION_COLORS } from '../../constants';
+import Card from '../../data/Card';
 import { isBig } from '../../styles/space';
 
 const scaleFactor = ((DeviceInfo.getFontScale() - 1) / 2 + 1);
 export const COST_ICON_SIZE = (isBig ? 48 : 36) * scaleFactor;
 export const ICON_SIZE = (isBig ? 46 : 32) * scaleFactor;
 
-export default class CardCostIcon extends React.Component {
-  static propTypes = {
-    card: PropTypes.object.isRequired,
-    inverted: PropTypes.bool,
-    linked: PropTypes.bool,
-  };
-
+interface Props {
+  card: Card;
+  inverted?: boolean;
+  linked?: boolean;
+}
+export default class CardCostIcon extends React.Component<Props> {
   cardCost() {
     const {
       card,
@@ -43,7 +43,7 @@ export default class CardCostIcon extends React.Component {
     return `${card.cost !== null ? card.cost : 'X'}`;
   }
 
-  static factionIcon(card) {
+  static factionIcon(card: Card): string {
     if (card.faction2_code) {
       return 'elder_sign';
     }
@@ -53,7 +53,10 @@ export default class CardCostIcon extends React.Component {
       }
       return 'elder_sign';
     }
-    return card.faction_code;
+    if (card.faction_code) {
+      return card.faction_code;
+    }
+    return 'elder_sign';
   }
 
   color() {
@@ -63,7 +66,10 @@ export default class CardCostIcon extends React.Component {
     if (card.faction2_code) {
       return FACTION_COLORS.dual;
     }
-    return FACTION_COLORS[card.faction_code];
+    if (card.faction_code) {
+      return FACTION_COLORS[card.faction_code];
+    }
+    return FACTION_COLORS.neutral;
   }
 
   render() {

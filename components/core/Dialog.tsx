@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
   Platform,
@@ -9,30 +9,34 @@ import {
 import DialogComponent from 'react-native-dialog';
 import { BlurView } from 'react-native-blur';
 
-export default class Dialog extends React.Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    visible: PropTypes.bool.isRequired,
-    viewRef: PropTypes.object,
-    children: PropTypes.node,
-  };
+interface Props {
+  title: string;
+  visible: boolean;
+  viewRef?: View;
+  children?: ReactNode;
+}
 
-  constructor(props) {
+interface State {
+  nodeHandle: null | number;
+}
+
+export default class Dialog extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      nodeHandle: props.viewRef && findNodeHandle(props.viewRef),
+      nodeHandle: props.viewRef ? findNodeHandle(props.viewRef) : null,
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       viewRef,
     } = this.props;
     if (viewRef !== prevProps.viewRef) {
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
-        nodeHandle: findNodeHandle(viewRef),
+        nodeHandle: viewRef ? findNodeHandle(viewRef) : null,
       });
     }
   }
@@ -47,7 +51,7 @@ export default class Dialog extends React.Component {
 
     return (
       <BlurView
-        style={StyleSheet.absoluteFill}
+        style={styles.blur}
         viewRef={nodeHandle}
         blurType="xlight"
         blurAmount={50}
@@ -66,7 +70,6 @@ export default class Dialog extends React.Component {
         <DialogComponent.Container
           visible={visible}
           blurComponentIOS={this.blurComponent()}
-          keyboardAvoidBehaviorIOS="position"
         >
           <DialogComponent.Title>
             { title }
@@ -77,3 +80,13 @@ export default class Dialog extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  blur: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+});

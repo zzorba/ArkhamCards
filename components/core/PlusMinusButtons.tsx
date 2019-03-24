@@ -4,23 +4,25 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  ViewStyle,
   ViewPropTypes,
 } from 'react-native';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-export default class PlusMinusButtons extends React.PureComponent {
-  static propTypes = {
-    count: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired,
-    limit: PropTypes.number,
-    style: ViewPropTypes.style,
-    size: PropTypes.number,
-    disabled: PropTypes.bool,
-    dark: PropTypes.bool,
-    noFill: PropTypes.bool,
-  };
+interface Props {
+  count: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
+  limit?: number;
+  style?: ViewStyle;
+  size?: number;
+  disabled?: boolean;
+  dark?: boolean;
+  noFill?: boolean;
+}
 
+export default class PlusMinusButtons extends React.PureComponent<Props> {
   disabledColor() {
     const {
       dark,

@@ -47,7 +47,9 @@ export const SKILL_COLORS = {
   wild: '#635120',
 };
 
-export const FACTION_COLORS = {
+export type FactionCodeType = 'guardian' | 'seeker' | 'rogue' | 'mystic' | 'survivor' | 'neutral' | 'mythos';
+
+export const FACTION_COLORS: { [faction_code: string]: string } = {
   mystic: '#4331b9',
   seeker: '#ec8426',
   guardian: '#2b80c5',
@@ -57,7 +59,7 @@ export const FACTION_COLORS = {
   dual: '#868600',
 };
 
-export const FACTION_LIGHT_GRADIENTS = {
+export const FACTION_LIGHT_GRADIENTS: { [faction_code: string]: string[] } = {
   mystic: ['#d9d6f1', '#a198dc'],
   seeker: ['#fbe6d4', '#f7cea8'],
   guardian: ['#d5e6f3', '#aacce8'],
@@ -67,7 +69,7 @@ export const FACTION_LIGHT_GRADIENTS = {
   dual: ['#f2f2cc', '#e6e699'],
 };
 
-export const FACTION_DARK_GRADIENTS = {
+export const FACTION_DARK_GRADIENTS: { [faction_code: string]: string[] } = {
   mystic: ['#4331b9', '#2f2282'],
   seeker: ['#ec8426', '#bd6a1e'],
   guardian: ['#2b80c5', '#22669e'],
@@ -77,7 +79,7 @@ export const FACTION_DARK_GRADIENTS = {
   dual: ['#c0c000', '#868600'],
 };
 
-export const FACTION_BACKGROUND_COLORS = Object.assign(
+export const FACTION_BACKGROUND_COLORS: { [faction_code: string]: string } = Object.assign(
   {},
   FACTION_COLORS,
   {
@@ -86,7 +88,28 @@ export const FACTION_BACKGROUND_COLORS = Object.assign(
   },
 );
 
-export const CHAOS_TOKEN_ORDER = {
+export interface ChaosBag {
+  '+1'?: number;
+  '0'?: number;
+  '-1'?: number;
+  '-2'?: number;
+  '-3'?: number;
+  '-4'?: number;
+  '-5'?: number;
+  '-6'?: number;
+  '-7'?: number;
+  '-8'?: number;
+  skull?: number;
+  cultist?: number;
+  tablet?: number;
+  elder_thing?: number;
+  auto_fail?: number;
+  elder_sign?: number;
+}
+
+export type ChaosTokenType = keyof ChaosBag;
+
+export const CHAOS_TOKEN_ORDER: ChaosBag = {
   '+1': 0,
   '0': 1,
   '-1': 2,

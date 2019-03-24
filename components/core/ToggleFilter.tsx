@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
-  ViewPropTypes,
+  ViewStyle,
 } from 'react-native';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
@@ -12,23 +12,17 @@ import Switch from '../core/Switch';
 
 const ICON_SIZE = 32;
 
-export default class ToggleFilter extends React.Component {
-  static propTypes = {
-    label: PropTypes.string,
-    icon: PropTypes.string,
-    setting: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
-    style: ViewPropTypes.style,
-  };
+interface Props {
+  label?: string;
+  icon?: string;
+  setting: string;
+  value: boolean;
+  onChange: (setting: string) => void;
+  style?: ViewStyle;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onToggle = this.onToggle.bind(this);
-  }
-
-  onToggle() {
+export default class ToggleFilter extends React.Component<Props> {
+  _onToggle = () => {
     const {
       onChange,
       setting,

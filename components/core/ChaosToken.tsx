@@ -7,11 +7,16 @@ import {
 import DeviceInfo from 'react-native-device-info';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
+import { ChaosTokenType } from '../../constants';
 
 const SCALE = ((DeviceInfo.getFontScale() - 1) / 4 + 1);
 export const SIZE = 36 * SCALE;
 
-export default function ChaosToken({ id, status }) {
+interface Props {
+  id: ChaosTokenType;
+  status?: 'added' | 'removed';
+}
+export default function ChaosToken({ id, status }: Props) {
   let color = '#eeeeee';
   switch (status) {
     case 'added': color = '#cfe3d0'; break;
@@ -19,7 +24,7 @@ export default function ChaosToken({ id, status }) {
   }
   return (
     <View style={[styles.button, { backgroundColor: color }]}>
-      <ChaosTokenIcon id={id} size={28 * SCALE} />
+      <ChaosTokenIcon icon={id} size={28 * SCALE} />
     </View>
   );
 }

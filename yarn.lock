@@ -667,11 +667,17 @@
     "@babel/runtime" "^7.1.2"
     redux-persist "^4.6.0"
 
-"@types/i18n-js@^3.0.1":
+"@types/hoist-non-react-statics@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#a59c0c995cc885bef1b8ec2241b114f9b35b517b"
+  dependencies:
+    "@types/react" "*"
+
+"@types/i18n-js@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/i18n-js/-/i18n-js-3.0.1.tgz#e027d35513b2703e5d48b82771e7fcb3b664e2fb"
 
-"@types/lodash@^4.14.123":
+"@types/lodash@4.14.123":
   version "4.14.123"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.123.tgz#39be5d211478c8dd3bdae98ee75bb7efe4abfe4d"
 
@@ -679,7 +685,21 @@
   version "15.7.0"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.0.tgz#4c48fed958d6dcf9487195a0ef6456d5f6e0163a"
 
-"@types/react-native-vector-icons@^4.6.4":
+"@types/react-native-dialog@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-dialog/-/react-native-dialog-5.5.0.tgz#69c817fc16c3f0fb8942697fa34e0f3f14c2f06e"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native-flip-card@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-flip-card/-/react-native-flip-card-3.5.0.tgz#db2197b5ba541ba92a0c79419bb526e3688b8a02"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native-vector-icons@4.6.4":
   version "4.6.4"
   resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-4.6.4.tgz#83c2d88f0c2615a44b9059eb75c11f92702c1ee2"
   dependencies:
@@ -5233,9 +5253,9 @@ react-native-typescript-transformer@1.2.12:
     semver "^5.4.1"
     source-map "^0.5.6"
 
-react-native-vector-icons@6.4.1:
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.4.1.tgz#bf69b5321b67c5f510e09d39e3bf4d193f2596c5"
+react-native-vector-icons@6.4.2:
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.4.2.tgz#ee0b097e783387544ed160a3192a437c097e551d"
   dependencies:
     lodash "^4.0.0"
     prop-types "^15.6.2"
@@ -6411,6 +6431,10 @@ util.promisify@^1.0.0:
   dependencies:
     define-properties "^1.1.2"
     object.getownpropertydescriptors "^2.0.3"
+
+utility-types@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.4.1.tgz#3caa1d207eac873f989bf8c92cf3e8c539045c61"
 
 utils-merge@1.0.1:
   version "1.0.1"

@@ -12,44 +12,43 @@ import L from '../../app/i18n';
 import Dialog from './Dialog';
 import PlusMinusButtons from './PlusMinusButtons';
 
-export default class CountEditDialog extends React.Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    visible: PropTypes.bool.isRequired,
-    count: PropTypes.number,
-    viewRef: PropTypes.object,
-    onCountChange: PropTypes.func,
-    toggleVisible: PropTypes.func.isRequired,
-  };
+interface Props {
+  title: string;
+  visible: boolean;
+  count?: number;
+  viewRef?: View;
+  onCountChange?: (count: number) => void;
+  toggleVisible: () => void;
+}
 
-  constructor(props) {
+interface State {
+  count?: number;
+  originalCount?: number;
+  submitting: boolean;
+}
+
+export default class CountEditDialog extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      count: 0,
-      originalCount: null,
       submitting: false,
     };
-
-    this._increment = this.increment.bind(this);
-    this._decrement = this.decrement.bind(this);
-    this._onDonePress = this.onDonePress.bind(this);
-    this._onCancelPress = this.onCancelPress.bind(this);
   }
 
-  increment() {
+  _increment = () => {
     this.setState(state => {
       return { count: (state.count || 0) + 1 };
     });
-  }
+  };
 
-  decrement() {
+  _decrement = () => {
     this.setState(state => {
       return { count: Math.max((state.count || 0) - 1, 0) };
     });
-  }
+  };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       visible,
       count,
@@ -63,14 +62,14 @@ export default class CountEditDialog extends React.Component {
     }
   }
 
-  onCancelPress() {
+  _onCancelPress = () => {
     const {
       toggleVisible,
     } = this.props;
     toggleVisible();
-  }
+  };
 
-  onDonePress() {
+  _onDonePress = () => {
     const {
       onCountChange,
       toggleVisible,
@@ -78,9 +77,9 @@ export default class CountEditDialog extends React.Component {
     const {
       count,
     } = this.state;
-    onCountChange && onCountChange(count);
+    onCountChange && onCountChange(count || 0);
     toggleVisible();
-  }
+  };
 
   render() {
     const {
@@ -104,7 +103,7 @@ export default class CountEditDialog extends React.Component {
               { count || 0 }
             </Text>
             <PlusMinusButtons
-              count={count}
+              count={count || 0}
               onIncrement={this._increment}
               onDecrement={this._decrement}
               size={36}

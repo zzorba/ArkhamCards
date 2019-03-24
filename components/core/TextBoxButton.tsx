@@ -1,40 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  LayoutChangeEvent,
   Platform,
   StyleSheet,
   Text,
+  TextStyle,
   TextInput,
   View,
-  ViewPropTypes,
+  ViewProps,
+  ViewStyle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
 
-export default class TextBoxButton extends React.Component {
-  static propTypes = {
-    value: PropTypes.string.isRequired,
-    placeholder: PropTypes.string,
-    crossedOut: PropTypes.bool,
-    style: ViewPropTypes.style,
-    textStyle: PropTypes.any,
-    multiline: PropTypes.bool,
-  };
+interface Props extends ViewProps {
+  value: string;
+  placeholder?: string;
+  crossedOut?: boolean;
+  style?: ViewStyle;
+  textStyle?: TextStyle;
+  multiline?: boolean;
+}
 
-  constructor(props) {
+interface State {
+  height: number;
+}
+
+export default class TextBoxButton extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       height: 24,
     };
-
-    this._updateSize = props.multiline ? this.updateSize.bind(this) : null;
   }
 
-  updateSize(event) {
+  _updateSize = (event: LayoutChangeEvent) => {
     this.setState({
-      height: event.nativeEvent.contentSize.height,
+      height: event.nativeEvent.layout.height,
     });
   }
 
@@ -76,7 +81,7 @@ export default class TextBoxButton extends React.Component {
               } : {},
               value ? { color: '#222' } : { color: '#aaa' },
             ]}
-            onContentSizeChange={this._updateSize}>
+            onLayout={multiline ? this._updateSize : undefined}>
               { value || placeholder }
             </Text>
           </TextInput>

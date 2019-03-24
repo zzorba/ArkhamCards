@@ -9,7 +9,7 @@ import RandomRequirement from './RandomRequirement';
 import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import DeckAtLeastOption from './DeckAtLeastOption';
-import { BASIC_SKILLS } from '../constants';
+import { BASIC_SKILLS, FactionCodeType } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror');
@@ -122,9 +122,9 @@ export default class Card {
   public subtype_code?: 'basicweakness' | 'weakness';
   public subtype_name?: string;
   public slot?: string;
-  public faction_code?: string;
+  public faction_code?: FactionCodeType;
   public faction_name?: string;
-  public faction2_code?: string;
+  public faction2_code?: FactionCodeType;
   public faction2_name?: string;
   public position!: number;
   public enemy_damage?: number;

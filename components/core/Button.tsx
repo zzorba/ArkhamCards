@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
   Text,
+  TextStyle,
   TouchableOpacity,
   StyleSheet,
   View,
   ViewPropTypes,
+  ViewStyle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
+
+interface Props {
+  text?: string;
+  icon?: ReactNode;
+  onPress?: () => void;
+  align: 'left' | 'center' |'right';
+  size: 'small' | 'normal';
+  style?: ViewStyle;
+  width?: number;
+  color: 'default' | 'green' | 'purple' | 'red' | 'yellow' | 'white';
+  grow?: boolean;
+}
 
 export default function Button({
   text,
@@ -19,26 +33,16 @@ export default function Button({
   width,
   onPress,
   style,
-  color,
+  color = 'default',
   grow,
-}) {
-  let containerStyle = styles.centerContainer;
+}: Props) {
+  let containerStyle: ViewStyle = styles.centerContainer;
   switch (align) {
     case 'left': containerStyle = styles.leftContainer; break;
     case 'right': containerStyle = styles.rightContainer; break;
     default: containerStyle = styles.centerContainer; break;
   }
-  let padding = 16;
-  let fontWeight = '700';
-  switch(size) {
-    case 'small':
-      fontWeight = '400';
-      padding = 8;
-      break;
-    default:
-      padding = 16;
-      break;
-  }
+  let padding = size === 'small' ? 8 : 16;
   let borderWidth = 0;
   let borderColor = null;
   let textColor = '#FFFFFF';
@@ -87,7 +91,10 @@ export default function Button({
           { !!text && (
             <Text style={[
               typography.text,
-              { fontWeight, color: textColor },
+              {
+                fontWeight: size === 'small' ? '400' : '700',
+                color: textColor,
+              },
             ]}>
               { text }
             </Text>
@@ -98,19 +105,18 @@ export default function Button({
   );
 }
 
-Button.propTypes = {
-  text: PropTypes.string,
-  icon: PropTypes.node,
-  onPress: PropTypes.func,
-  align: PropTypes.oneOf(['left', 'center', 'right']),
-  size: PropTypes.oneOf(['small', 'normal']),
-  style: ViewPropTypes.style,
-  width: PropTypes.number,
-  color: PropTypes.oneOf(['default', 'green', 'purple', 'red', 'yellow', 'white']),
-  grow: PropTypes.bool,
-};
 
-const styles = StyleSheet.create({
+
+interface Styles {
+  icon: ViewStyle;
+  leftContainer: ViewStyle;
+  rightContainer: ViewStyle;
+  centerContainer: ViewStyle;
+  button: ViewStyle;
+  row: ViewStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   icon: {
     marginRight: 4,
     marginLeft: 4,

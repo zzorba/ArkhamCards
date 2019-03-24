@@ -1,79 +1,91 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  NativeSyntheticEvent,
+  TextInputContentSizeChangeEventData,
   Platform,
+  TextInput,
+  View,
 } from 'react-native';
-import { startsWith } from 'lodash';
+import { startsWith, throttle } from 'lodash';
 import DialogComponent from 'react-native-dialog';
 
 import L from '../../app/i18n';
 import Dialog from './Dialog';
 import typography from '../../styles/typography';
 
-export default class TextEditDialog extends React.Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    visible: PropTypes.bool.isRequired,
-    text: PropTypes.string,
-    numberOfLines: PropTypes.number,
-    viewRef: PropTypes.object,
-    onTextChange: PropTypes.func,
-    onSaveAndAdd: PropTypes.func,
-    toggleVisible: PropTypes.func.isRequired,
-    showCrossOut: PropTypes.bool.isRequired,
-  };
+interface Props {
+  title: string;
+  visible: boolean;
+  text?: string;
+  numberOfLines?: number;
+  viewRef?: View;
+  onTextChange?: (text: string) => void;
+  onSaveAndAdd?: (test: string) => void;
+  toggleVisible: () => void;
+  showCrossOut: boolean;
+}
 
-  constructor(props) {
+interface State {
+  textInputRef?: TextInput;
+  text?: string;
+  originalText: string;
+  isCrossedOut: boolean;
+  submitting: boolean;
+  height: number;
+}
+export default class TextEditDialog extends React.Component<Props, State> {
+  _textInputRef?: TextInput;
+  _throttledUpdateSize!: (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void;
+  
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      textInputRef: null,
-      text: null,
-      originalText: null,
+      originalText: '',
       isCrossedOut: false,
       submitting: false,
       height: 40,
     };
 
-    this._onSaveAndAddPress = this.onSaveAndAddPress.bind(this);
-    this._onTextChange = this.onTextChange.bind(this);
-    this._captureTextInputRef = this.captureTextInputRef.bind(this);
-    this._onDonePress = this.onDonePress.bind(this);
-    this._onCancelPress = this.onCancelPress.bind(this);
-    this._onCrossOutPress = this.onCrossOutPress.bind(this);
-    this._updateSize = this.updateSize.bind(this);
-
-    this._textInputRef = null;
+    this._throttledUpdateSize = throttle(
+      this._updateSize,
+      200,
+      { trailing: true }
+    );
   }
 
-  updateSize(event) {
-    this.setState({
-      height: event.nativeEvent.contentSize.height,
-    });
-  }
+  _updateSize = (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => {
+    const height = event.nativeEvent.contentSize.height;
+    if (height > this.state.height) {
+      this.setState({
+        height,
+      });
+    }
+  };
 
-  onTextChange(value) {
+  _onTextChange = (value: string) => {
     this.setState({
       text: value,
     });
-  }
+  };
 
-  captureTextInputRef(ref) {
+  _captureTextInputRef = (ref: TextInput) => {
     this._textInputRef = ref;
-  }
+  };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       visible,
-      text,
       showCrossOut,
     } = this.props;
     if (visible && !prevProps.visible) {
-      const isCrossedOut = showCrossOut && text && startsWith(text, '~');
+      const text = this.props.text || '';
+      const isCrossedOut = !!(showCrossOut && text) && startsWith(text, '~');
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
         text: isCrossedOut ? text.substring(1) : text,
-        originalText: text,
+        originalText: text || '',
         height: 40,
         isCrossedOut,
       }, () => {
@@ -84,14 +96,14 @@ export default class TextEditDialog extends React.Component {
     }
   }
 
-  onCancelPress() {
+  _onCancelPress = () => {
     const {
       toggleVisible,
     } = this.props;
     toggleVisible();
-  }
+  };
 
-  onCrossOutPress() {
+  _onCrossOutPress = () => {
     const {
       onTextChange,
       toggleVisible,
@@ -102,10 +114,10 @@ export default class TextEditDialog extends React.Component {
     } = this.state;
     const result = isCrossedOut ? text : `~${text}`;
     toggleVisible();
-    onTextChange && onTextChange(result);
+    onTextChange && onTextChange(result || '');
   }
 
-  onDonePress() {
+  _onDonePress = () => {
     const {
       onTextChange,
       toggleVisible,
@@ -115,11 +127,11 @@ export default class TextEditDialog extends React.Component {
       isCrossedOut,
     } = this.state;
     const result = isCrossedOut ? `~${text}` : text;
-    onTextChange && onTextChange(result);
+    onTextChange && onTextChange(result || '');
     toggleVisible();
-  }
+  };
 
-  onSaveAndAddPress() {
+  _onSaveAndAddPress = () => {
     const {
       onSaveAndAdd,
     } = this.props;
@@ -128,7 +140,7 @@ export default class TextEditDialog extends React.Component {
       isCrossedOut,
     } = this.state;
     const result = isCrossedOut ? `~${text}` : text;
-    onSaveAndAdd && onSaveAndAdd(result);
+    onSaveAndAdd && onSaveAndAdd(result || '');
     this.setState({
       text: '',
       originalText: '',
@@ -139,7 +151,7 @@ export default class TextEditDialog extends React.Component {
         this._textInputRef.focus();
       }
     });
-  }
+  };
 
   render() {
     const {
@@ -171,13 +183,14 @@ export default class TextEditDialog extends React.Component {
         ) }
         <DialogComponent.Input
           style={[
-            { height: height + 12 },
+            { minHeight: height + 12 },
             isCrossedOut && Platform.OS === 'ios' ? {
               textDecorationLine: 'line-through',
               textDecorationStyle: 'solid',
               textDecorationColor: '#222',
             } : {},
           ]}
+          wrapperStyle={{ minHeight: height + 12 }}
           textInputRef={this._captureTextInputRef}
           value={text}
           editable={!isCrossedOut}

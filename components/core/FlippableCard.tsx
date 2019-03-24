@@ -1,32 +1,25 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
-  ViewPropTypes,
+  ViewStyle,
 } from 'react-native';
 import FlipCard from 'react-native-flip-card';
 
-export default class FlippableCard extends React.Component {
-  static propTypes = {
-    style: ViewPropTypes.style,
-    backSide: PropTypes.node.isRequired,
-    frontSide: PropTypes.node.isRequired,
-    flipped: PropTypes.bool,
-    onFlip: PropTypes.func,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._onFlip = this.onFlip.bind(this);
-  }
-
-  onFlip() {
+interface Props {
+  style?: ViewStyle;
+  backSide: ReactNode;
+  frontSide: ReactNode;
+  flipped?: boolean;
+  onFlip: () => void;
+}
+export default class FlippableCard extends React.Component<Props> {
+  _onFlip = () => {
     const {
       onFlip,
     } = this.props;
 
     onFlip && onFlip();
-  }
+  };
 
   render() {
     const {
