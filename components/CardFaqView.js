@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
-import openInApp from '@matt-block/react-native-in-app-browser';
+import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 
 import CardTextComponent from './CardTextComponent';
 import { showCard } from './navHelper';
@@ -48,7 +48,7 @@ class CardFaqView extends React.Component {
     const {
       componentId,
     } = this.props;
-    openInApp(url).catch(() => {
+    InAppBrowser.open(url).catch(() => {
       Navigation.push(componentId, {
         component: {
           name: 'WebView',

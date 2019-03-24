@@ -1,6 +1,34 @@
+import Realm from 'realm';
 import { map } from 'lodash';
 
+import DeckAtLeastOption from './DeckAtLeastOption';
+import DeckOptionLevel from './DeckOptionLevel';
+
 export default class DeckOption {
+  public static schema: Realm.ObjectSchema = {
+    name: 'DeckOption',
+    properties: {
+      faction: 'string[]',
+      uses: 'string[]',
+      trait: 'string[]',
+      text: 'string[]',
+      atleast: 'DeckAtLeastOption?',
+      level: 'DeckOptionLevel?',
+      limit: 'int?',
+      error: 'string?',
+      not: 'bool?',
+    },
+  };
+
+  public faction!: string[];
+  public uses!: string[];
+  public trait!: string[];
+  public text!: string[];
+  public atleast?: DeckAtLeastOption;
+  public level?: DeckOptionLevel;
+  public limit?: number;
+  public error?: string;
+  public not?: boolean;
 
   toQuery() {
     let query = this.not ? 'NOT (' : '(';
@@ -57,18 +85,3 @@ export default class DeckOption {
     return query;
   }
 }
-
-DeckOption.schema = {
-  name: 'DeckOption',
-  properties: {
-    faction: 'string[]',
-    uses: 'string[]',
-    trait: 'string[]',
-    text: 'string[]',
-    atleast: 'DeckAtLeastOption?',
-    level: 'DeckOptionLevel?',
-    limit: 'int?',
-    error: 'string?',
-    not: 'bool?',
-  },
-};

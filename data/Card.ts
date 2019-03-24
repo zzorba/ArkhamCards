@@ -1,3 +1,4 @@
+import Realm from 'realm';
 import { forEach, filter, keys, map, min } from 'lodash';
 
 import L from '../app/i18n';
@@ -12,9 +13,201 @@ import { BASIC_SKILLS } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror');
-export default class Card {
 
-  costString(linked) {
+export default class Card {
+  public static schema: Realm.ObjectSchema = {
+    name: 'Card',
+    primaryKey: 'code',
+    properties: {
+      code: 'string', // primary key
+      pack_code: 'string',
+      pack_name: 'string',
+      type_code: { type: 'string', indexed: true },
+      type_name: 'string',
+      subtype_code: 'string?',
+      subtype_name: 'string?',
+      slot: 'string?',
+      faction_code: { type: 'string', optional: true, indexed: true },
+      faction_name: 'string?',
+      faction2_code: { type: 'string', optional: true, indexed: true },
+      faction2_name: 'string?',
+      position: 'int',
+      enemy_damage: 'int?',
+      enemy_horror: 'int?',
+      enemy_fight: 'int?',
+      enemy_evade: 'int?',
+      encounter_code: 'string?',
+      encounter_name: 'string?',
+      encounter_position: 'int?',
+      exceptional: 'bool?',
+      xp: { type: 'int', optional: true, indexed: true },
+      victory: 'int?',
+      vengeance: 'int?',
+      renderName: 'string',
+      renderSubname: 'string?',
+      name: 'string',
+      real_name: 'string',
+      subname: 'string?',
+      firstName: 'string?',
+      illustrator: 'string?',
+      text: 'string?',
+      flavor: 'string?',
+      cost: 'int?',
+      real_text: 'string?',
+      back_name: 'string?',
+      back_text: 'string?',
+      back_flavor: 'string?',
+      quantity: 'int?',
+      spoiler: 'bool?',
+      stage: 'int?', // Act/Agenda deck
+      clues: 'int?',
+      shroud: 'int?',
+      clues_fixed: 'bool?',
+      doom: 'int?',
+      health: 'int?',
+      health_per_investigator: 'bool?',
+      sanity: 'int?',
+      deck_limit: 'int?',
+      traits: 'string?',
+      real_traits: 'string?',
+      is_unique: 'bool?',
+      exile: 'bool?',
+      hidden: 'bool?',
+      permanent: 'bool?',
+      double_sided: 'bool',
+      url: 'string?',
+      octgn_id: 'string?',
+      imagesrc: 'string?',
+      backimagesrc: 'string?',
+      skill_willpower: 'int?',
+      skill_intellect: 'int?',
+      skill_combat: 'int?',
+      skill_agility: 'int?',
+      skill_wild: 'int?',
+      // Effective skills (add wilds to them)
+      eskill_willpower: 'int?',
+      eskill_intellect: 'int?',
+      eskill_combat: 'int?',
+      eskill_agility: 'int?',
+      linked_to_code: 'string?',
+      linked_to_name: 'string?',
+
+      // Parsed data (from original)
+      restrictions: 'CardRestrictions?',
+      deck_requirements: 'DeckRequirement?',
+      deck_options: 'DeckOption[]',
+      linked_card: 'Card',
+      back_linked: 'bool?',
+
+      // Derived data.
+      altArtInvestigator: 'bool?',
+      cycle_name: 'string?',
+      has_restrictions: 'bool',
+      traits_normalized: 'string?',
+      real_traits_normalized: 'string?',
+      slots_normalized: 'string?',
+      uses: 'string?',
+      heals_horror: 'bool?',
+      sort_by_type: 'int',
+      sort_by_faction: 'int',
+      sort_by_pack: 'int',
+    },
+  };
+
+  public code!: string;
+  public pack_code!: string;
+  public pack_name!: string;
+  public type_code!: 'asset' | 'event' | 'skill' | 'act' | 'agenda' | 'story' | 'enemy' | 'treachery' | 'location';
+  public type_name!: string;
+  public subtype_code?: 'basicweakness' | 'weakness';
+  public subtype_name?: string;
+  public slot?: string;
+  public faction_code?: string;
+  public faction_name?: string;
+  public faction2_code?: string;
+  public faction2_name?: string;
+  public position!: number;
+  public enemy_damage?: number;
+  public enemy_horror?: number;
+  public enemy_fight?: number;
+  public enemy_evade?: number;
+  public encounter_code?: string;
+  public encounter_name?: string;
+  public encounter_position?: number;
+  public exceptional?: boolean;
+  public xp?: number;
+  public victory?: number;
+  public vengeance?: number;
+  public renderName!: string;
+  public renderSubname?: string;
+  public name!: string;
+  public real_name!: string;
+  public subname?: string;
+  public firstName?: string;
+  public illustrator?: string;
+  public text?: string;
+  public flavor?: string;
+  public cost?: number;
+  public real_text?: string;
+  public back_name?: string;
+  public back_text?: string;
+  public back_flavor?: string;
+  public quantity?: number;
+  public spoiler?: boolean;
+  public stage?: number; // Act/Agenda deck
+  public clues?: number;
+  public shroud?: number;
+  public clues_fixed?: boolean;
+  public doom?: number;
+  public health?: number;
+  public health_per_investigator?: boolean;
+  public sanity?: number;
+  public deck_limit?: number;
+  public traits?: string;
+  public real_traits?: string;
+  public is_unique?: boolean;
+  public exile?: boolean;
+  public hidden?: boolean;
+  public permanent?: boolean;
+  public double_sided?: boolean;
+  public url?: string;
+  public octgn_id?: string;
+  public imagesrc?: string;
+  public backimagesrc?: string;
+  public skill_willpower?: number;
+  public skill_intellect?: number;
+  public skill_combat?: number;
+  public skill_agility?: number;
+  public skill_wild?: number;
+  // Effective skills (add wilds to them)
+  public eskill_willpower?: number;
+  public eskill_intellect?: number;
+  public eskill_combat?: number;
+  public eskill_agility?: number;
+  public linked_to_code?: string;
+  public linked_to_name?: string;
+
+  // Parsed data (from original)
+  public restrictions?: CardRestrictions;
+  public deck_requirements?: DeckRequirement;
+  public deck_options!: DeckOption[];
+  public linked_card?: Card;
+  public back_linked?: boolean;
+
+  // Derived data.
+  public altArtInvestigator?: boolean;
+  public cycle_name?: string;
+  public has_restrictions!: boolean;
+  public traits_normalized?: string;
+  public real_traits_normalized?: string;
+  public slots_normalized?: string;
+  public uses?: string;
+  public heals_horror?: boolean;
+  public sort_by_type!: number;
+  public sort_by_faction!: number;
+  public sort_by_pack!: number;
+
+  costString(linked: Card) {
     if (this.type_code !== 'asset' && this.type_code !== 'event') {
       return '';
     }
@@ -32,7 +225,7 @@ export default class Card {
     );
   }
 
-  static parseDeckRequirements(json) {
+  static parseDeckRequirements(json: any) {
     const dr = new DeckRequirement();
     dr.card = map(keys(json.card), code => {
       const cr = new CardRequirement();
@@ -54,7 +247,7 @@ export default class Card {
     return dr;
   }
 
-  static parseDeckOptions(jsonList) {
+  static parseDeckOptions(jsonList: any[]) {
     return map(jsonList, json => {
       const deck_option = new DeckOption();
       deck_option.faction = json.faction || [];
@@ -63,7 +256,7 @@ export default class Card {
       deck_option.trait = json.trait || [];
       deck_option.limit = json.limit;
       deck_option.error = json.error;
-      deck_option.not = json.not ? true : null;
+      deck_option.not = json.not ? true : undefined;
 
       if (json.level) {
         const level = new DeckOptionLevel();
@@ -83,11 +276,16 @@ export default class Card {
     });
   }
 
-  static parseRestrictions(json) {
-    const result = new CardRestrictions();
-    result.investigators = keys(json.investigator);
-    result.investigator = min(result.investigators);
-    return result;
+  static parseRestrictions(json: { investigator?: { [key: string]: string} }) {
+    if (json.investigator && keys(json.investigator).length) {
+      const result = new CardRestrictions();
+      result.investigators = keys(json.investigator);
+      const mainInvestigator = min(result.investigators);
+      if (mainInvestigator) {
+        result.investigator = mainInvestigator;
+      }
+      return result;
+    }
   }
 
   static FACTION_HEADER_ORDER = [
@@ -106,7 +304,7 @@ export default class Card {
     'Mythos',
   ];
 
-  static factionCodeToName(code, defaultName, options) {
+  static factionCodeToName(code: string, defaultName: string, options: object) {
     switch(code) {
       case 'guardian':
         return L('Guardian', options);
@@ -125,7 +323,7 @@ export default class Card {
     }
   }
 
-  static factionSortHeader(json, lang) {
+  static factionSortHeader(json: any, lang: string) {
     const options = lang ? { locale: lang } : {};
     if (json.spoiler) {
       return L('Mythos', options);
@@ -135,7 +333,10 @@ export default class Card {
       case 'weakness':
         return L('Weakness', options);
       default: {
-        if (json.faction2_code) {
+        if (!json.faction_code || !json.faction_name) {
+          return 'Unknown';
+        }
+        if (json.faction2_code && json.faction2_name) {
           return L('{{faction1}} / {{faction2}}', {
             locale: lang,
             faction1: Card.factionCodeToName(json.faction_code, json.faction_name, options),
@@ -169,7 +370,7 @@ export default class Card {
     'Story',
   ];
 
-  static typeSortHeader(json, lang) {
+  static typeSortHeader(json: any, lang: string): string {
     const options = lang ? { locale: lang } : {};
     if (json.hidden && json.linked_card) {
       return Card.typeSortHeader(json.linked_card, lang);
@@ -236,7 +437,11 @@ export default class Card {
     }
   }
 
-  static fromJson(json, packsByCode, cycleNames, lang) {
+  static fromJson(
+    json: any,
+    packsByCode: {[pack_code: string]: { position: number, cycle_position: number}},
+    cycleNames: {[cycle_code: string]: string},
+    lang: string): Card {
     if (json.code === '02041') {
       json.subtype_code = null;
       json.subtype_name = null;
@@ -249,7 +454,7 @@ export default class Card {
       [];
 
     const wild = json.skill_wild || 0;
-    const eskills = {};
+    const eskills: any = {};
     if (json.type_code !== 'investigator' && wild > 0) {
       forEach(BASIC_SKILLS, skill => {
         const value = json[`skill_${skill}`] || 0;
@@ -301,9 +506,7 @@ export default class Card {
         map(json.slot.split('.'), slot => slot.toLowerCase().trim()),
         slot => slot),
       slot => `#${slot}#`).join(',') : null;
-    const restrictions = json.restrictions ?
-      Card.parseRestrictions(json.restrictions) :
-      null;
+    const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
     const uses = uses_match ? uses_match[1].toLowerCase() : null;
 
@@ -359,102 +562,3 @@ export default class Card {
     );
   }
 }
-
-Card.schema = {
-  name: 'Card',
-  primaryKey: 'code',
-  properties: {
-    code: 'string', // primary key
-    pack_code: 'string',
-    pack_name: 'string',
-    type_code: { type: 'string', indexed: true },
-    type_name: 'string',
-    subtype_code: 'string?',
-    subtype_name: 'string?',
-    slot: 'string?',
-    faction_code: { type: 'string', optional: true, indexed: true },
-    faction_name: 'string?',
-    faction2_code: { type: 'string', optional: true, indexed: true },
-    faction2_name: 'string?',
-    position: 'int',
-    enemy_damage: 'int?',
-    enemy_horror: 'int?',
-    enemy_fight: 'int?',
-    enemy_evade: 'int?',
-    encounter_code: 'string?',
-    encounter_name: 'string?',
-    encounter_position: 'int?',
-    exceptional: 'bool?',
-    xp: { type: 'int', optional: true, indexed: true },
-    victory: 'int?',
-    vengeance: 'int?',
-    renderName: 'string',
-    renderSubname: 'string?',
-    name: 'string',
-    real_name: 'string',
-    subname: 'string?',
-    firstName: 'string?',
-    illustrator: 'string?',
-    text: 'string?',
-    flavor: 'string?',
-    cost: 'int?',
-    real_text: 'string?',
-    back_name: 'string?',
-    back_text: 'string?',
-    back_flavor: 'string?',
-    quantity: 'int?',
-    spoiler: 'bool?',
-    stage: 'int?', // Act/Agenda deck
-    clues: 'int?',
-    shroud: 'int?',
-    clues_fixed: 'bool?',
-    doom: 'int?',
-    health: 'int?',
-    health_per_investigator: 'bool?',
-    sanity: 'int?',
-    deck_limit: 'int?',
-    traits: 'string?',
-    real_traits: 'string?',
-    is_unique: 'bool?',
-    exile: 'bool?',
-    hidden: 'bool?',
-    permanent: 'bool?',
-    double_sided: 'bool',
-    url: 'string?',
-    octgn_id: 'string?',
-    imagesrc: 'string?',
-    backimagesrc: 'string?',
-    skill_willpower: 'int?',
-    skill_intellect: 'int?',
-    skill_combat: 'int?',
-    skill_agility: 'int?',
-    skill_wild: 'int?',
-    // Effective skills (add wilds to them)
-    eskill_willpower: 'int?',
-    eskill_intellect: 'int?',
-    eskill_combat: 'int?',
-    eskill_agility: 'int?',
-    linked_to_code: 'string?',
-    linked_to_name: 'string?',
-
-    // Parsed data (from original)
-    restrictions: 'CardRestrictions?',
-    deck_requirements: 'DeckRequirement?',
-    deck_options: 'DeckOption[]',
-    linked_card: 'Card',
-    back_linked: 'bool?',
-
-    // Derived data.
-    altArtInvestigator: 'bool?',
-    cycle_name: 'string?',
-    has_restrictions: 'bool',
-    traits_normalized: 'string?',
-    real_traits_normalized: 'string?',
-    slots_normalized: 'string?',
-    uses: 'string?',
-    heals_horror: 'bool?',
-    sort_by_type: 'int',
-    sort_by_faction: 'int',
-    sort_by_pack: 'int',
-  },
-};

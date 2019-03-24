@@ -133,7 +133,7 @@ export const CHAOS_BAG_TOKEN_COUNTS = {
   elder_sign: 1,
 };
 
-export function createFactionIcons(size, defaultColor) {
+export function createFactionIcons(size: number, defaultColor: string) {
   return mapValues(FACTION_COLORS, (color, faction) => {
     return (
       <ArkhamIcon
