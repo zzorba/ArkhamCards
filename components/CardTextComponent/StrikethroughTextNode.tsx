@@ -3,13 +3,17 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-export default function StrikethroughTextNode(node, output, state) {
+export default function StrikethroughTextNode(
+  node: Node & { text: string},
+  output: OutputFunction,
+  state: RenderState
+) {
   return (
     <Text
       key={state.key}
       style={styles.strikeText}
-      textDecorationLine="line-through"
     >
       { node.text }
     </Text>

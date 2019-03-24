@@ -1,6 +1,7 @@
 import { Platform, StyleSheet } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
-export const isBig = (Platform.OS === 'ios' && Platform.isPad);
+export const isBig = (Platform.OS === 'ios' && DeviceInfo.isTablet());
 const sizeScale = isBig ? 2 : 1;
 
 export const xs = 4 * sizeScale;

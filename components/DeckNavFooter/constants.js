@@ -1,7 +1,5 @@
-import {
-  DeviceInfo as ReactNativeDeviceInfo,
-} from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
-const NOTCH_BOTTOM_PADDING = ReactNativeDeviceInfo.isIPhoneX_deprecated ? 20 : 0;
+const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
 export const FOOTER_HEIGHT = 64 + NOTCH_BOTTOM_PADDING;

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  DeviceInfo,
   StyleSheet,
   Text,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import { connectRealm } from 'react-native-realm';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -13,7 +13,7 @@ import { filterToQuery } from '../../lib/filters';
 import space from '../../styles/space';
 import typography from '../../styles/typography';
 const FOOTER_HEIGHT = 40;
-const NOTCH_BOTTOM_PADDING = DeviceInfo.isIPhoneX_deprecated ? 20 : 0;
+const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
 class FilterFooterComponent extends React.Component {
   static propTypes = {
