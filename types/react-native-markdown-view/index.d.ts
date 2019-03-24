@@ -160,7 +160,7 @@ declare module "react-native-markdown-view" {
         onLinkPress?: (url: string) => void;
     }
 
-    /**
+    /** 
      * View hosting markdown text.
      */
     class MarkdownView extends React.Component<MarkdownViewProps> {}

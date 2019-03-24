@@ -8,34 +8,34 @@ import CarcosaIcon from './CarcosaIcon';
 import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
 
-export default class EncounterIcon extends React.PureComponent {
-  static propTypes = {
-    encounter_code: PropTypes.string.isRequired,
-    size: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
-  };
+interface Props {
+  encounter_code: string;
+  size: number;
+  color: string;
+}
 
-  coreIcon(name, size, color) {
+export default class EncounterIcon extends React.PureComponent<Props> {
+  coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
   }
 
-  dunwichIcon(name, size, color) {
+  dunwichIcon(name: string, size: number, color: string) {
     return (<DunwichIcon name={name} size={size} color={color} />);
   }
 
-  carcosaIcon(name, size, color) {
+  carcosaIcon(name: string, size: number, color: string) {
     return (<CarcosaIcon name={name} size={size} color={color} />);
   }
 
-  forgottenIcon(name, size, color) {
+  forgottenIcon(name: string, size: number, color: string) {
     return (<ForgottenIcon name={name} size={size} color={color} />);
   }
 
-  circleIcon(name, size, color) {
+  circleIcon(name: string, size: number, color: string) {
     return (<CircleIcon name={name} size={size} color={color} />);
   }
 
-  standaloneIcon(name, size, color) {
+  standaloneIcon(name: string, size: number, color: string) {
     return (<StandaloneIcon name={name} size={size} color={color} />);
   }
 

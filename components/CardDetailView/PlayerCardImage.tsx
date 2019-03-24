@@ -9,24 +9,20 @@ import {
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
+import DeviceInfo from 'react-native-device-info';
 
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
+import Card from '../../data/Card';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
 
-export default class PlayerCardImage extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    card: PropTypes.object.isRequired,
-  };
+interface Props {
+  componentId: string;
+  card: Card;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+export default class PlayerCardImage extends React.Component<Props> {
+  _onPress = () => {
     const {
       componentId,
       card,
@@ -46,7 +42,7 @@ export default class PlayerCardImage extends React.Component {
         },
       },
     });
-  }
+  };
 
   imageStyle() {
     const {
@@ -70,10 +66,16 @@ export default class PlayerCardImage extends React.Component {
     return (
       <View style={[
         styles.placeholder,
-        { backgroundColor: card.faction2_code ? FACTION_COLORS.dual : FACTION_COLORS[card.faction_code] },
+        { backgroundColor: card.faction2_code ?
+            FACTION_COLORS.dual :
+            FACTION_COLORS[card.faction_code || 'neutral']
+        },
       ]}>
         <Text style={styles.placeholderIcon}>
-          { card.faction2_code ? FACTION_ICONS.dual : FACTION_ICONS[card.faction_code] }
+          { card.faction2_code ?
+              FACTION_ICONS.dual :
+              FACTION_ICONS[card.faction_code || 'neutral']
+          }
         </Text>
       </View>
     );
@@ -98,7 +100,7 @@ export default class PlayerCardImage extends React.Component {
       card.type_code === 'investigator' ||
       card.type_code === 'agenda';
 
-    if (Platform.OS === 'ios' && Platform.isPad && !horizontal) {
+    if (Platform.OS === 'ios' && DeviceInfo.isTablet() && !horizontal) {
       return (
         <TouchableOpacity onPress={this._onPress}>
           <View style={styles.verticalContainer}>

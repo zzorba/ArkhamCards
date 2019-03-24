@@ -17,11 +17,11 @@ interface Props {
   text?: string;
   icon?: ReactNode;
   onPress?: () => void;
-  align: 'left' | 'center' |'right';
-  size: 'small' | 'normal';
+  align?: 'left' | 'center' |'right';
+  size?: 'small' | 'normal';
   style?: ViewStyle;
   width?: number;
-  color: 'default' | 'green' | 'purple' | 'red' | 'yellow' | 'white';
+  color?: 'default' | 'green' | 'purple' | 'red' | 'yellow' | 'white';
   grow?: boolean;
 }
 

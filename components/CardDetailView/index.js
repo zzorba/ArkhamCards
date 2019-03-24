@@ -22,20 +22,28 @@ import { COLORS } from '../../styles/colors';
 import AppIcon from '../../assets/AppIcon';
 import Button from '../core/Button';
 import { getShowSpoilers } from '../../reducers';
+import Card from '../../data/Card';
 
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 
-class CardDetailView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
-    id: PropTypes.string.isRequired,
-    pack_code: PropTypes.string.isRequired,
-    card: PropTypes.object,
-    showSpoilers: PropTypes.bool,
-  };
+/*
+interface RealmProps {
+  card?: Card;
+}
 
+interface Props extends RealmProps {
+  componentId: string;
+  id: string;
+  pack_code: string;
+  showSpoilers?: boolean;
+}
+
+interface State {
+  showSpoilers: boolean;
+}*/
+
+class CardDetailView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -50,14 +58,8 @@ class CardDetailView extends React.Component {
     super(props);
 
     this.state = {
-      showSpoilers: props.showSpoilers,
+      showSpoilers: props.showSpoilers || false,
     };
-
-    this._editSpoilersPressed = this.editSpoilersPressed.bind(this);
-    this._toggleShowSpoilers = this.toggleShowSpoilers.bind(this);
-    this._toggleShowBack = this.toggleShowBack.bind(this);
-    this._showInvestigatorCards = this.showInvestigatorCards.bind(this);
-    this._showFaq = this.showFaq.bind(this);
 
     const rightButtons = [{
       icon: iconsMap.web,
@@ -90,13 +92,13 @@ class CardDetailView extends React.Component {
     this._navEventListener.remove();
   }
 
-  editSpoilersPressed() {
+  _editSpoilersPressed = () => {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Spoilers',
       },
     });
-  }
+  };
 
   navigationButtonPressed({ buttonId }) {
     const {
@@ -114,7 +116,7 @@ class CardDetailView extends React.Component {
     }
   }
 
-  showFaq() {
+  _showFaq = () => {
     const {
       componentId,
       card,
@@ -137,9 +139,9 @@ class CardDetailView extends React.Component {
         },
       },
     });
-  }
+  };
 
-  showInvestigatorCards() {
+  _showInvestigatorCards = () => {
     const {
       componentId,
       card,
@@ -163,19 +165,13 @@ class CardDetailView extends React.Component {
         },
       },
     });
-  }
+  };
 
-  toggleShowBack() {
-    this.setState({
-      showBack: !this.state.showBack,
-    });
-  }
-
-  toggleShowSpoilers() {
+  _toggleShowSpoilers = () => {
     this.setState({
       showSpoilers: !this.state.showSpoilers,
     });
-  }
+  };
 
   shouldBlur() {
     if (this.props.showSpoilers || this.state.showSpoilers) {

@@ -19,7 +19,7 @@ export default function ArkhamIconNode(
   node: Node & WithIconName,
   output: OutputFunction,
   state: RenderState
-){
+) {
   return (
     <ArkhamIcon
       key={state.key}

@@ -39,7 +39,13 @@ export const SKILLS = [
   'wild',
 ];
 
-export const SKILL_COLORS = {
+export type SkillCodeType = 'willpower' |
+  'intellect' |
+  'combat' |
+  'agility' |
+  'wild';
+
+export const SKILL_COLORS: { [skill: string]: string } = {
   willpower: '#003961',
   intellect: '#4e1a45',
   combat: '#661e09',
@@ -47,6 +53,18 @@ export const SKILL_COLORS = {
   wild: '#635120',
 };
 
+export type TypeCodeType =
+  'asset' |
+  'event' |
+  'skill' |
+  'act' |
+  'agenda' |
+  'story' |
+  'enemy' |
+  'treachery' |
+  'location' |
+  'investigator' |
+  'scenario';
 export type FactionCodeType = 'guardian' | 'seeker' | 'rogue' | 'mystic' | 'survivor' | 'neutral' | 'mythos';
 
 export const FACTION_COLORS: { [faction_code: string]: string } = {
