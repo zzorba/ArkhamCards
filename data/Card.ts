@@ -254,6 +254,7 @@ export default class Card {
       deck_option.uses = json.uses || [];
       deck_option.text = json.text || [];
       deck_option.trait = json.trait || [];
+      deck_option.type_code = json.type || [];
       deck_option.limit = json.limit;
       deck_option.error = json.error;
       deck_option.not = json.not ? true : undefined;
@@ -276,8 +277,8 @@ export default class Card {
     });
   }
 
-  static parseRestrictions(json: { investigator?: { [key: string]: string} }) {
-    if (json.investigator && keys(json.investigator).length) {
+  static parseRestrictions(json?: { investigator?: { [key: string]: string} }) {
+    if (json && json.investigator && keys(json.investigator).length) {
       const result = new CardRestrictions();
       result.investigators = keys(json.investigator);
       const mainInvestigator = min(result.investigators);
@@ -286,6 +287,7 @@ export default class Card {
       }
       return result;
     }
+    return null;
   }
 
   static FACTION_HEADER_ORDER = [
