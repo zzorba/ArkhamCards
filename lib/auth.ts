@@ -1,8 +1,8 @@
 import Config from 'react-native-config';
 import * as Keychain from 'react-native-keychain';
-import { authorize, refresh, revoke } from 'react-native-app-auth';
+import { authorize, refresh, revoke, AuthConfiguration, AuthorizeResult, RefreshResult } from 'react-native-app-auth';
 
-const config = {
+const config: any = {
   clientId: Config.OAUTH_CLIENT_ID,
   clientSecret: Config.OAUTH_CLIENT_SECRET,
   redirectUrl: 'arkhamcards://auth/redirect',
@@ -13,7 +13,7 @@ const config = {
   },
 };
 
-function saveAuthResponse(response) {
+function saveAuthResponse(response: AuthorizeResult | RefreshResult) {
   const serialized = JSON.stringify(response);
   return Keychain.setGenericPassword('arkhamdb', serialized)
     .then(() => {
@@ -24,7 +24,7 @@ function saveAuthResponse(response) {
 export function getRefreshToken() {
   return Keychain.getGenericPassword()
     .then(creds => {
-      if (creds) {
+      if (creds && creds !== true) {
         const data = JSON.parse(creds.password);
         return data.refreshToken;
       }
@@ -35,7 +35,7 @@ export function getRefreshToken() {
 export function getAccessToken() {
   return Keychain.getGenericPassword()
     .then(creds => {
-      if (creds) {
+      if (creds && creds !== true) {
         const data = JSON.parse(creds.password);
         const nowSeconds = (new Date()).getTime() / 1000;
         const expiration = new Date(data.accessTokenExpirationDate).getTime() / 1000;
@@ -54,14 +54,17 @@ export function getAccessToken() {
     });
 }
 
-export function signInFlow() {
+export function signInFlow(): Promise<{
+  success: boolean,
+  error?: string | Error,
+}> {
   return authorize(config)
     .then(saveAuthResponse)
     .then(() => {
       return {
         success: true,
       };
-    }, error => {
+    }, (error: Error) => {
       return {
         success: false,
         error: error.message || error,

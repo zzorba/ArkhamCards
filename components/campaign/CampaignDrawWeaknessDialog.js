@@ -362,7 +362,7 @@ function mapStateToProps(state, props) {
   const campaign = getCampaign(state, props.campaignId);
   return {
     weaknessSet: campaign.weaknessSet,
-    latestDeckIds: getLatestDeckIds(campaign, state),
+    latestDeckIds: getLatestDeckIds(state, campaign),
     decks: getAllDecks(state),
   };
 }

@@ -8,68 +8,29 @@ import {
   ADD_CAMPAIGN_SCENARIO_RESULT,
   SET_ALL_CAMPAIGNS,
   REPLACE_LOCAL_DECK,
+  Campaign,
+  CampaignActions,
 } from '../actions/types';
 
-// Campaign: {
-//   id: '',
-//   name: '',
-//   cycleCode: '',
-//   lastUpdated: Date,
-//   showInterludes: true,
-//   baseDeckIds: [],
-//   latestDeckIds: [], /* deprecated */
-//   investigatorData: {
-//     investigator_code: {
-//       physical: #,
-//       mental: #,
-//       killed: bool,
-//       insane: bool,
-//     },
-//   },
-//   chaosBag: {},
-//   weaknessSet: {
-//     packCodes: [],
-//     assignedCards: {},
-//   },
-//   campaignNotes: {
-//     sections: [
-//       { title: 'Campaign Notes', notes: [] },
-//       { title: 'Section Title', notes: [], custom: true },
-//     ],
-//     counts: [
-//       { title: 'Doubt', count: 2 },
-//     ],
-//     // Not the data, just the config.
-//     investigatorNotes: {
-//       sections: [
-//         { title: 'Supplies', notes: { investigatorCodes: [] } },
-//         { title: 'Custom Something', notes: { investigatorCodes: [] }, custom: true },
-//       ],
-//       counts: [
-//         { title: 'Vengeance', counts: { investigatorCodes: # } },
-//       ],
-//     },
-//   },
-//   scenarioResults: [{
-//     scenario: '',
-//     scenarioCode: '',
-//     resolution: '',
-//     xp: #,
-//   },{
-//     scenario: '',
-//     scenarioCode: '',
-//   }],
-// }
-const DEFAULT_CAMPAIGNS_STATE = {
+export interface CampaignsState {
+  all: {
+    [id: string]: Campaign;
+  };
+}
+
+const DEFAULT_CAMPAIGNS_STATE: CampaignsState = {
   all: {},
 };
 
-export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
+export default function(
+  state: CampaignsState = DEFAULT_CAMPAIGNS_STATE,
+  action: CampaignActions
+): CampaignsState {
   if (action.type === LOGOUT) {
     return DEFAULT_CAMPAIGNS_STATE;
   }
   if (action.type === SET_ALL_CAMPAIGNS) {
-    const all = {};
+    const all: { [id: string]: Campaign } = {};
     forEach(action.campaigns, campaign => {
       all[campaign.id] = campaign;
     });
@@ -86,20 +47,21 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     );
   }
   if (action.type === NEW_CAMPAIGN) {
-    const campaignNotes = {};
-    campaignNotes.sections = map(action.campaignLog.sections || [], section => {
-      return { title: section, notes: [] };
-    });
-    campaignNotes.counts = map(action.campaignLog.counts || [], section => {
-      return { title: section, count: 0 };
-    });
-    campaignNotes.investigatorNotes = {
-      sections: map(action.campaignLog.investigatorSections || [], section => {
-        return { title: section, notes: {} };
+    const campaignNotes = {
+      sections: map(action.campaignLog.sections || [], section => {
+        return { title: section, notes: [] };
       }),
-      counts: map(action.campaignLog.investigatorCounts || [], section => {
-        return { title: section, counts: {} };
+      counts: map(action.campaignLog.counts || [], section => {
+        return { title: section, count: 0 };
       }),
+      investigatorNotes: {
+        sections: map(action.campaignLog.investigatorSections || [], section => {
+          return { title: section, notes: {} };
+        }),
+        counts: map(action.campaignLog.investigatorCounts || [], section => {
+          return { title: section, counts: {} };
+        }),
+      },
     };
 
     const newCampaign = {
@@ -122,10 +84,15 @@ export default function(state = DEFAULT_CAMPAIGNS_STATE, action) {
     );
   }
   if (action.type === UPDATE_CAMPAIGN) {
-    const campaign = Object.assign({}, state.all[action.id], { lastUpdated: action.now });
-    forEach(keys(action.campaign), key => {
-      campaign[key] = action.campaign[key];
-    });
+    const campaign: Campaign = Object.assign(
+      {},
+      state.all[action.id],
+      action.campaign,
+      { lastUpdated: action.now }
+    );
+//    forEach(keys(action.campaign), key => {
+//      campaign[key] = action.campaign[key];
+//    });
     return Object.assign({},
       state,
       { all: Object.assign({}, state.all, { [action.id]: campaign }) },

@@ -3,15 +3,24 @@ import {
   LOGIN,
   LOGIN_ERROR,
   LOGOUT,
+  SignInActions,
 } from '../actions/types';
 
-const DEFAULT_SIGNED_IN_STATE = {
+interface SignedInState {
+  loading: boolean;
+  status: boolean;
+  error: string | null;
+}
+const DEFAULT_SIGNED_IN_STATE: SignedInState = {
   loading: false,
   status: false,
   error: null,
 };
 
-export default function(state = DEFAULT_SIGNED_IN_STATE, action) {
+export default function(
+  state: SignedInState = DEFAULT_SIGNED_IN_STATE,
+  action: SignInActions
+): SignedInState {
   if (action.type === LOGIN_STARTED) {
     return Object.assign({}, state, {
       loading: true,

@@ -18,7 +18,7 @@ export default class FaqEntry {
   public fetched?: Date;
   public lastModified?: string;
 
-  static fromJson(json: any, lastModified: Date) {
+  static fromJson(json: any, lastModified?: string) {
     return {
       fetched: new Date(),
       code: json.code,
@@ -28,7 +28,7 @@ export default class FaqEntry {
     };
   }
 
-  static empty(code: string, lastModified: Date) {
+  static empty(code: string, lastModified?: string) {
     return {
       fetched: new Date(),
       code: code,

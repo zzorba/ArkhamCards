@@ -1,3 +1,6 @@
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
 import {
   NEW_DECK_AVAILABLE,
   DELETE_DECK,
@@ -9,58 +12,29 @@ import {
   MY_DECKS_ERROR,
   SET_IN_COLLECTION,
   SET_PACK_SPOILER,
-  SET_ALL_PACK_SPOILERS,
-  NEW_WEAKNESS_SET,
-  EDIT_WEAKNESS_SET,
-  DELETE_WEAKNESS_SET,
   LOGIN_STARTED,
   LOGIN,
   LOGIN_ERROR,
   LOGOUT,
   REPLACE_LOCAL_DECK,
+  Deck,
 } from './types';
+import { AppState } from '../reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '../lib/auth';
+// @ts-ignore
 import { decks, loadDeck } from '../lib/authApi';
 
-export function createWeaknessSet(id, name, packCodes) {
-  return {
-    type: NEW_WEAKNESS_SET,
-    id,
-    set: {
-      id,
-      name,
-      packCodes,
-      created: new Date(),
-      assignedCards: {},
-    },
-  };
-}
-
-export function editWeaknessSet(id, name, packCodes, assignedCards) {
-  return {
-    type: EDIT_WEAKNESS_SET,
-    id: id,
-    name: name || null,
-    packCodes: packCodes || null,
-    assignedCards: assignedCards || null,
-  };
-}
-
-export function deleteWeaknessSet(id) {
-  return {
-    type: DELETE_WEAKNESS_SET,
-    id: id,
-  };
-}
-
-
-export function login() {
+export function login(): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
-    dispatch({ type: LOGIN_STARTED });
+    dispatch({
+      type: LOGIN_STARTED,
+    });
     signInFlow().then(response => {
       if (response.success) {
-        dispatch({ type: LOGIN });
+        dispatch({
+          type: LOGIN,
+        });
       } else {
         dispatch({
           type: LOGIN_ERROR,
@@ -71,9 +45,11 @@ export function login() {
   };
 }
 
-export function logout() {
+export function logout(): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
-    dispatch({ type: LOGIN_STARTED });
+    dispatch({
+      type: LOGIN_STARTED,
+    });
     signOutFlow().then(() => {
       dispatch({
         type: LOGOUT,
@@ -82,7 +58,7 @@ export function logout() {
   };
 }
 
-export function verifyLogin() {
+export function verifyLogin(): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
     getAccessToken().then(accessToken => {
       if (accessToken) {
@@ -98,19 +74,19 @@ export function verifyLogin() {
   };
 }
 
-export function clearDecks() {
+export function clearDecks(): Action<string> {
   return {
     type: CLEAR_DECKS,
   };
 }
 
-function getDecksLastModified(state) {
+function getDecksLastModified(state: AppState): string | undefined {
   return (state.decks.myDecks && state.decks.myDecks.length) ?
     state.decks.lastModified :
-    null;
+    undefined;
 }
 
-export function refreshMyDecks() {
+export function refreshMyDecks(): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     dispatch({
       type: MY_DECKS_START_REFRESH,
@@ -140,7 +116,10 @@ export function refreshMyDecks() {
   };
 }
 
-export function setNewDeck(id, deck) {
+export function setNewDeck(
+  id: number,
+  deck: Deck
+) {
   return {
     type: NEW_DECK_AVAILABLE,
     id,
@@ -148,7 +127,11 @@ export function setNewDeck(id, deck) {
   };
 }
 
-export function updateDeck(id, deck, isWrite) {
+export function updateDeck(
+  id: number,
+  deck: Deck,
+  isWrite: boolean
+) {
   return {
     type: UPDATE_DECK,
     id,
@@ -157,7 +140,7 @@ export function updateDeck(id, deck, isWrite) {
   };
 }
 
-export function replaceLocalDeck(localId, deck) {
+export function replaceLocalDeck(localId: number, deck: Deck) {
   return {
     type: REPLACE_LOCAL_DECK,
     localId,
@@ -165,7 +148,7 @@ export function replaceLocalDeck(localId, deck) {
   };
 }
 
-export function removeDeck(id, deleteAllVersions) {
+export function removeDeck(id: number, deleteAllVersions?: boolean) {
   return {
     type: DELETE_DECK,
     id,
@@ -173,7 +156,9 @@ export function removeDeck(id, deleteAllVersions) {
   };
 }
 
-export function fetchPrivateDeck(id) {
+export function fetchPrivateDeck(
+  id: number
+): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
     loadDeck(id).then(deck => {
       dispatch(updateDeck(id, deck, false));
@@ -185,7 +170,10 @@ export function fetchPrivateDeck(id) {
   };
 }
 
-export function fetchPublicDeck(id, useDeckEndpoint) {
+export function fetchPublicDeck(
+  id: number,
+  useDeckEndpoint: boolean
+): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
     const uri = `https://arkhamdb.com/api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
     fetch(uri, { method: 'GET' })
@@ -197,16 +185,16 @@ export function fetchPublicDeck(id, useDeckEndpoint) {
       })
       .then(json => {
         dispatch(updateDeck(id, json, false));
-      }).catch(err => {
+      }).catch((err: Error) => {
         if (!useDeckEndpoint) {
-          return fetchPublicDeck(id, true)(dispatch);
+          return dispatch(fetchPublicDeck(id, true));
         }
         console.log(err);
       });
   };
 }
 
-export function setInCollection(code, value) {
+export function setInCollection(code: string, value: boolean) {
   return {
     type: SET_IN_COLLECTION,
     code,
@@ -214,7 +202,7 @@ export function setInCollection(code, value) {
   };
 }
 
-export function setCycleInCollection(cycle, value) {
+export function setCycleInCollection(cycle: number, value: boolean) {
   return {
     type: SET_IN_COLLECTION,
     cycle,
@@ -222,7 +210,7 @@ export function setCycleInCollection(cycle, value) {
   };
 }
 
-export function setPackSpoiler(code, value) {
+export function setPackSpoiler(code: string, value: boolean) {
   return {
     type: SET_PACK_SPOILER,
     code,
@@ -230,21 +218,13 @@ export function setPackSpoiler(code, value) {
   };
 }
 
-export function setCyclePackSpoiler(cycle, value) {
+export function setCyclePackSpoiler(cycle: string, value: boolean) {
   return {
     type: SET_PACK_SPOILER,
     cycle,
     value,
   };
 }
-
-export function setAllPackSpoilers(spoilers) {
-  return {
-    type: SET_ALL_PACK_SPOILERS,
-    spoilers,
-  };
-}
-
 
 export default {
   login,

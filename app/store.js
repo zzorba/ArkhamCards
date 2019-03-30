@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import loggerMiddleware from 'redux-logger';
-import { persistStore, persistReducer } from 'redux-persist';
+import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import reducers from '../reducers';
 
@@ -29,11 +29,23 @@ export default function configureStore(initialState) {
     persist: false,
   });
 
+  const migrations = {
+    0: (state) => {
+      const newState = Object.assign({}, state);
+      if (newState.weaknesses) {
+        delete newState.weaknesses;
+      }
+      return newState;
+    },
+  };
+
   const persistConfig = {
     key: 'persist',
+    version: 0,
     storage,
     // These three have some transient fields and are handled separately.
     blacklist: ['cards', 'decks', 'packs', 'signedIn'],
+    migrate: createMigrate(migrations, { debug: false }),
   };
 
   const reducer = persistReducer(

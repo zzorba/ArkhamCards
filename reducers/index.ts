@@ -8,7 +8,7 @@ import campaigns from './campaigns';
 import cards from './cards';
 import decks from './decks';
 import packs from './packs';
-import weaknesses from './weaknesses';
+import { Campaign, Deck } from '../actions/types';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -40,52 +40,53 @@ const rootReducer = combineReducers({
   cards: persistReducer(cardsPersistConfig, cards),
   decks: persistReducer(decksPersistConfig, decks),
   campaigns,
-  weaknesses,
   signedIn: persistReducer(signedInPersistConfig, signedIn),
 });
 
+export type AppState = ReturnType<typeof rootReducer>;
+
 export default rootReducer;
 
-export function getCampaigns(state) {
+export function getCampaigns(state: AppState) {
   return sortBy(
     values(state.campaigns.all),
     campaign => campaign.lastUpdated ? -new Date(campaign.lastUpdated).getTime() : 0);
 }
-export function getShowSpoilers(state, packCode) {
+export function getShowSpoilers(state: AppState, packCode: string) {
   const show_spoilers = state.packs.show_spoilers || {};
   return !!show_spoilers[packCode];
 }
 
-export function getPackFetchDate(state) {
-  return state.pack.dateFetched;
+export function getPackFetchDate(state: AppState) {
+  return state.packs.dateFetched;
 }
 
-export function getAllPacks(state) {
+export function getAllPacks(state: AppState) {
   return sortBy(
     sortBy(state.packs.all || [], pack => pack.position),
     pack => pack.cycle_position);
 }
 
-export function getPack(state, packCode) {
+export function getPack(state: AppState, packCode: string) {
   if (packCode) {
     return find(state.packs.all || [], pack => pack.code === packCode);
   }
   return null;
 }
 
-export function getPackSpoilers(state) {
+export function getPackSpoilers(state: AppState) {
   return state.packs.show_spoilers || {};
 }
 
-export function getPacksInCollection(state) {
+export function getPacksInCollection(state: AppState) {
   return state.packs.in_collection || {};
 }
 
-export function getAllDecks(state) {
+export function getAllDecks(state: AppState) {
   return state.decks.all || {};
 }
 
-export function getBaseDeck(state, deckId) {
+export function getBaseDeck(state: AppState, deckId: number) {
   const decks = getAllDecks(state);
   let deck = decks[deckId];
   while (deck && deck.previous_deck && decks[deck.previous_deck]) {
@@ -94,7 +95,7 @@ export function getBaseDeck(state, deckId) {
   return deck;
 }
 
-export function getLatestDeck(state, deckId) {
+export function getLatestDeck(state: AppState, deckId: number) {
   const decks = getAllDecks(state);
   let deck = decks[deckId];
   while (deck && deck.next_deck && decks[deck.next_deck]) {
@@ -103,10 +104,12 @@ export function getLatestDeck(state, deckId) {
   return deck;
 }
 
-export function getDeckToCampaignMap(state) {
+export function getDeckToCampaignMap(state: AppState): {
+  [id: string]: Campaign
+} {
   const decks = state.decks.all || {};
   const campaigns = state.campaigns.all;
-  const result = {};
+  const result: { [id: string]: Campaign } = {};
   forEach(values(campaigns), campaign => {
     forEach(campaign.baseDeckIds || [], deckId => {
       let deck = decks[deckId];
@@ -123,7 +126,7 @@ export function getDeckToCampaignMap(state) {
   return result;
 }
 
-export function getLatestDeckIds(campaign, state) {
+export function getLatestDeckIds(state: AppState, campaign?: Campaign) {
   if (!campaign) {
     return [];
   }
@@ -146,7 +149,7 @@ export function getLatestDeckIds(campaign, state) {
   });
 }
 
-export function getMyDecksState(state) {
+export function getMyDecksState(state: AppState) {
   return {
     myDecks: state.decks.myDecks || [],
     myDecksUpdated: state.decks.dateUpdated ? new Date(state.decks.dateUpdated) : null,
@@ -155,15 +158,15 @@ export function getMyDecksState(state) {
   };
 }
 
-export function getEffectiveDeckId(state, id) {
-  const replacedLocalIds = state.decks.replacedLocalIds || {};
-  if (replacedLocalIds[id]) {
-    return parseInt(replacedLocalIds[id], 10);
+export function getEffectiveDeckId(state: AppState, id: number): number {
+  const replacedLocalIds = state.decks.replacedLocalIds;
+  if (replacedLocalIds && replacedLocalIds[id]) {
+    return replacedLocalIds[id];
   }
   return id;
 }
 
-export function getDeck(state, id) {
+export function getDeck(state: AppState, id: number): Deck | null {
   if (!id) {
     return null;
   }
@@ -173,8 +176,8 @@ export function getDeck(state, id) {
   return null;
 }
 
-export function getDecks(state, deckIds) {
-  const decks = [];
+export function getDecks(state: AppState, deckIds: number[]): Deck[] {
+  const decks: Deck[] = [];
   forEach(deckIds, deckId => {
     const deck = getDeck(state, deckId);
     if (deck && deck.id) {
@@ -184,7 +187,7 @@ export function getDecks(state, deckIds) {
   return decks;
 }
 
-function processCampaign(campaign) {
+function processCampaign(campaign: Campaign) {
   const latestScenario = last(campaign.scenarioResults);
   const finishedScenarios = flatMap(campaign.scenarioResults, r => r.scenario);
   return Object.assign(
@@ -197,15 +200,11 @@ function processCampaign(campaign) {
   );
 }
 
-export function getNextCampaignId(state) {
+export function getNextCampaignId(state: AppState) {
   return 1 + (max(map(keys(state.campaigns.all), id => parseInt(id, 10))) || 0);
 }
 
-export function getNextWeaknessId(state) {
-  return 1 + (max(map(values(state.weaknesses.all), set => set.id)) || 0);
-}
-
-export function getCampaign(state, id) {
+export function getCampaign(state: AppState, id: string) {
   if (id in state.campaigns.all) {
     const campaign = state.campaigns.all[id];
     return campaign ? processCampaign(campaign) : null;
@@ -213,7 +212,10 @@ export function getCampaign(state, id) {
   return null;
 }
 
-export function getCampaignForDeck(state, deckId) {
+export function getCampaignForDeck(
+  state: AppState,
+  deckId: number
+): Campaign | null {
   const deckToCampaign = getDeckToCampaignMap(state);
   if (deckId in deckToCampaign) {
     return processCampaign(deckToCampaign[deckId]);
@@ -221,7 +223,7 @@ export function getCampaignForDeck(state, deckId) {
   return null;
 }
 
-export function getNextLocalDeckId(state) {
+export function getNextLocalDeckId(state: AppState) {
   const smallestDeckId = minBy(
     map(
       concat(

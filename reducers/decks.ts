@@ -1,4 +1,4 @@
-import { concat, filter, forEach, map, reverse, sortBy } from 'lodash';
+import { concat, filter, forEach, keys, map, reverse, sortBy } from 'lodash';
 
 import {
   LOGOUT,
@@ -11,19 +11,41 @@ import {
   UPDATE_DECK,
   CLEAR_DECKS,
   REPLACE_LOCAL_DECK,
+  DecksActions,
+  NewDeckAvailableAction,
+  ReplaceLocalDeckAction,
+  UpdateDeckAction,
+  Deck,
 } from '../actions/types';
 
-const DEFAULT_DECK_STATE = {
+interface DecksState {
+  all: {
+    [id: number]: Deck;
+  };
+  myDecks: number[];
+  replacedLocalIds?: {
+    [id: number]: number;
+  };
+  dateUpdated: number | null;
+  refreshing: boolean;
+  error: string | null;
+  lastModified?: string;
+}
+
+const DEFAULT_DECK_STATE: DecksState = {
   all: {},
   myDecks: [],
   replacedLocalIds: {},
   dateUpdated: null,
   refreshing: false,
   error: null,
-  lastModified: null,
+  lastModified: undefined,
 };
 
-function updateDeck(state, action) {
+function updateDeck(
+  state: DecksState,
+  action: NewDeckAvailableAction | UpdateDeckAction | ReplaceLocalDeckAction
+): Deck {
   const deck = Object.assign({}, action.deck);
   let scenarioCount = 0;
   let currentDeck = deck;
@@ -35,16 +57,27 @@ function updateDeck(state, action) {
   return deck;
 }
 
-function sortMyDecks(myDecks, allDecks) {
-  return reverse(sortBy(myDecks, deckId => allDecks[deckId].deck_update || allDecks[deckId].date_creation));
+function sortMyDecks(
+  myDecks: number[],
+  allDecks: { [id: string]: Deck },
+): number[] {
+  return reverse(
+    sortBy(
+      myDecks,
+      deckId => allDecks[deckId].date_update || allDecks[deckId].date_creation
+    )
+  );
 }
 
-export default function(state = DEFAULT_DECK_STATE, action) {
+export default function(
+  state = DEFAULT_DECK_STATE,
+  action: DecksActions
+) {
   if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
-    const all = {};
-    forEach(Object.keys(state.all), id => {
+    const all: { [id: number]: Deck } = {};
+    forEach(keys(state.all), (id: any) => {
       const deck = state.all[id];
-      if (deck.local) {
+      if (deck && deck.local) {
         all[id] = deck;
       }
     });
@@ -83,12 +116,12 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       {
         refreshing: false,
         error: action.error,
-        lastModified: null,
+        lastModified: undefined,
       },
     );
   }
   if (action.type === SET_MY_DECKS) {
-    const allDecks = Object.assign({}, state.all);
+    const allDecks: { [id: number]: Deck } = Object.assign({}, state.all);
     forEach(action.decks, deck => {
       allDecks[deck.id] = deck;
     });
@@ -101,17 +134,19 @@ export default function(state = DEFAULT_DECK_STATE, action) {
       }
       deck.scenarioCount = scenarioCount;
     });
+    const localDeckIds: number[] = filter(
+      state.myDecks,
+      id => allDecks[id] ? !!allDecks[id].local : false);
+
+    const actionDeckIds: number[] = map(
+      filter(action.decks, (deck: Deck) => !deck.next_deck),
+      deck => deck.id
+    );
     return Object.assign({},
       state,
       {
         all: allDecks,
-        myDecks: sortMyDecks(
-          concat(
-            filter(state.myDecks, id => allDecks[id] && allDecks[id].local),
-            map(filter(action.decks, deck => !deck.next_deck), deck => deck.id),
-          ),
-          allDecks,
-        ),
+        myDecks: sortMyDecks(concat(localDeckIds, actionDeckIds), allDecks),
         dateUpdated: action.timestamp.getTime(),
         lastModified: action.lastModified,
         refreshing: false,
@@ -182,7 +217,7 @@ export default function(state = DEFAULT_DECK_STATE, action) {
         myDecks,
         // There's a bug on ArkhamDB cache around deletes,
         // so drop lastModified when we detect a delete locally.
-        lastModified: null,
+        lastModified: undefined,
       },
     );
   }

@@ -1,3 +1,7 @@
+import Realm from 'realm';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
 import {
   PACKS_AVAILABLE,
   PACKS_FETCH_START,
@@ -7,19 +11,28 @@ import {
   CARD_FETCH_SUCCESS,
   CARD_FETCH_ERROR,
   UPDATE_PROMPT_DISMISSED,
+  CardFetchStartAction,
+  CardFetchSuccessAction,
+  CardFetchErrorAction,
+  Pack,
+  CardCache,
 } from '../../actions/types';
+import { AppState } from '../../reducers/index';
 import { syncCards } from '../../lib/publicApi';
 
-function shouldFetchCards(state) {
+function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
 }
 
-function cardsCache(state, lang) {
+function cardsCache(state: AppState, lang: string): undefined | CardCache {
   /* eslint-disable eqeqeq */
-  return state.cards.lang == lang ? state.cards.cache : null;
+  return state.cards.lang == lang ? state.cards.cache : undefined;
 }
 
-export function fetchCards(realm, lang) {
+export function fetchCards(
+  realm: Realm,
+  lang: string
+): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     if (shouldFetchCards(getState())) {
       dispatch({
@@ -46,7 +59,9 @@ export function fetchCards(realm, lang) {
   };
 }
 
-export function fetchPacks(lang) {
+export function fetchPacks(
+  lang: string
+): ThunkAction<Promise<Pack[]>, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     dispatch({
       type: PACKS_FETCH_START,
@@ -54,10 +69,10 @@ export function fetchPacks(lang) {
     const state = getState().packs;
     const lastModified = state.lastModified;
     const packs = state.all;
-    const headers = {};
+    const headers = new Headers();
     /* eslint-disable eqeqeq */
     if (lastModified && packs && packs.length && state.lang == lang) {
-      headers['If-Modified-Since'] = lastModified;
+      headers.append('If-Modified-Since', lastModified);
     }
     const langPrefix = lang ? `${lang}.` : '';
     return fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {

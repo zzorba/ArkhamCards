@@ -287,7 +287,7 @@ function mapStateToProps(state, props) {
   const campaign = getCampaign(state, props.id);
   const packs = getAllPacks(state);
   const decks = getAllDecks(state);
-  const latestDeckIds = getLatestDeckIds(campaign, state);
+  const latestDeckIds = getLatestDeckIds(state, campaign);
   return {
     allInvestigators: flatMap(
       filter(flatMap(latestDeckIds, deckId => decks[deckId]), deck => deck && deck.investigator_code),

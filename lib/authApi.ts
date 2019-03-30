@@ -1,24 +1,13 @@
 import { forEach, keys, map } from 'lodash';
 import { getAccessToken } from './auth';
+import { Deck, Slots } from '../actions/types';
 
-function cleanDeck(deck) {
-  if (deck && deck.slots) {
-    const newSlots = {};
-    forEach(keys(deck.slots), code => {
-      const value = deck.slots[code];
-      if (typeof value === 'object') {
-        if (value.count) {
-          newSlots[code] = value.count;
-        } else if (value.quantity) {
-          newSlots[code] = value.quantity;
-        } else {
-          newSlots[code] = 0;
-        }
-      } else {
-        newSlots[code] = value;
-      }
-    });
-    deck.slots = newSlots;
+interface Params {
+  [key: string]: string | number;
+}
+
+function cleanDeck(deck: Deck): Deck {
+  if (deck) {
     if (!deck.ignoreDeckLimitSlots) {
       deck.ignoreDeckLimitSlots = {};
     }
@@ -26,18 +15,27 @@ function cleanDeck(deck) {
   return deck;
 }
 
-export function decks(lastModified) {
+export function decks(lastModified?: string): Promise<{
+  cacheHit: boolean,
+  lastModified?: string,
+  decks?: Deck[],
+}> {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
     const uri = `https://arkhamdb.com/api/oauth2/decks?access_token=${accessToken}`;
-    const options = { method: 'get', headers: {} };
+    const headers = new Headers();
     if (lastModified) {
-      options.headers['If-Modified-Since'] = lastModified;
+      headers.append('If-Modified-Since', lastModified);
     } else {
-      options.cache = { cache: 'no-cache' };
+      headers.append('cache-control', 'no-cache');
+      headers.append('pragma', 'no-cache');
     }
+    const options: RequestInit = {
+      method: 'GET',
+      headers,
+    };
     return fetch(uri, options).then(response => {
       if (response.status === 304) {
         return Promise.resolve({
@@ -56,7 +54,7 @@ export function decks(lastModified) {
   });
 }
 
-export function loadDeck(id) {
+export function loadDeck(id: number) {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
@@ -81,18 +79,24 @@ export function loadDeck(id) {
   });
 }
 
-function encodeParams(params) {
+function encodeParams(params: { [key: string]: string | number }) {
   return map(keys(params), key => {
-    return `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`;
+    return `${encodeURIComponent(key)}=${encodeURIComponent(`${params[key]}`)}`;
   }).join('&');
 }
 
-export function newCustomDeck(investigator, name, slots, ignoreDeckLimitSlots, problem) {
+export function newCustomDeck(
+  investigator: string,
+  name: string,
+  slots: { [code: string]: number },
+  ignoreDeckLimitSlots: { [code: string]: number },
+  problem: string
+) {
   return newDeck(investigator, name)
     .then(deck => saveDeck(deck.id, deck.name, slots, ignoreDeckLimitSlots, problem, 0, 0));
 }
 
-export function newDeck(investigator, name) {
+export function newDeck(investigator: string, name: string) {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
@@ -118,13 +122,21 @@ export function newDeck(investigator, name) {
   });
 }
 
-export function saveDeck(id, name, slots, ignoreDeckLimitSlots, problem, spentXp, xpAdjustment) {
+export function saveDeck(
+  id: number,
+  name: string,
+  slots: { [code: string]: number },
+  ignoreDeckLimitSlots: { [code: string]: number },
+  problem: string,
+  spentXp: number,
+  xpAdjustment?: number
+) {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
     const uri = `https://arkhamdb.com/api/oauth2/deck/save/${id}?access_token=${accessToken}`;
-    const bodyParams = {
+    const bodyParams: Params = {
       name: name,
       slots: JSON.stringify(slots),
       problem: problem,
@@ -160,13 +172,13 @@ export function saveDeck(id, name, slots, ignoreDeckLimitSlots, problem, spentXp
   });
 }
 
-export function upgradeDeck(id, xp, exiles) {
+export function upgradeDeck(id: number, xp: number, exiles?: string) {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
     const uri = `https://arkhamdb.com/api/oauth2/deck/upgrade/${id}?access_token=${accessToken}`;
-    const params = {
+    const params: Params = {
       xp: xp,
     };
     if (exiles) {

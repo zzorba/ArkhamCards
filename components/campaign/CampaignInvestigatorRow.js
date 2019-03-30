@@ -40,7 +40,7 @@ class CampaignInvestigatorRow extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  const latestDeckIds = getLatestDeckIds(props.campaign, state);
+  const latestDeckIds = getLatestDeckIds(state, props.campaign);
   return {
     decks: getDecks(state, latestDeckIds),
   };

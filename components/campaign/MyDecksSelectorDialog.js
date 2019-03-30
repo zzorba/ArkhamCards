@@ -263,11 +263,11 @@ function mapStateToProps(state, props) {
   const otherCampaigns = filter(
     getCampaigns(state),
     campaign => campaign.id !== props.campaignId);
-  const otherCampaignDeckIds = flatMap(otherCampaigns, c => getLatestDeckIds(c, state));
+  const otherCampaignDeckIds = flatMap(otherCampaigns, c => getLatestDeckIds(state, c));
   const campaign = getCampaign(state, props.campaignId);
   return {
     campaign,
-    campaignLatestDeckIds: getLatestDeckIds(campaign, state),
+    campaignLatestDeckIds: getLatestDeckIds(state, campaign),
     otherCampaignDeckIds,
     decks: getAllDecks(state),
   };

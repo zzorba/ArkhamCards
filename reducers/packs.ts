@@ -7,11 +7,28 @@ import {
   PACKS_AVAILABLE,
   PACKS_CACHE_HIT,
   SET_IN_COLLECTION,
-  SET_ALL_PACK_SPOILERS,
   SET_PACK_SPOILER,
+  PacksActions,
+  Pack,
 } from '../actions/types';
 
-const DEFAULT_PACKS_STATE = {
+interface PacksState {
+  all: Pack[];
+  dateFetched: number | null;
+  dateUpdatePrompt: number | null;
+  in_collection: {
+    [code: string]: boolean;
+  };
+  show_spoilers: {
+    [code: string]: boolean;
+  };
+  loading: boolean;
+  error: string | null;
+  lastModified: string | null;
+  lang: string | null;
+}
+
+const DEFAULT_PACKS_STATE: PacksState = {
   all: [],
   dateFetched: null,
   dateUpdatePrompt: null,
@@ -23,7 +40,10 @@ const DEFAULT_PACKS_STATE = {
   lang: null, // defaults to 'en'
 };
 
-export default function(state = DEFAULT_PACKS_STATE, action) {
+export default function(
+  state: PacksState = DEFAULT_PACKS_STATE,
+  action: PacksActions
+): PacksState {
   if (action.type === UPDATE_PROMPT_DISMISSED) {
     return Object.assign({},
       state,
@@ -85,13 +105,6 @@ export default function(state = DEFAULT_PACKS_STATE, action) {
       state,
       {
         in_collection: new_collection,
-      },
-    );
-  } else if (action.type === SET_ALL_PACK_SPOILERS) {
-    return Object.assign({},
-      state,
-      {
-        show_spoilers: Object.assign({}, action.spoilers),
       },
     );
   } else if (action.type === SET_PACK_SPOILER) {
