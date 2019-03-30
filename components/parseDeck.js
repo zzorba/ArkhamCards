@@ -131,11 +131,11 @@ const ARCANE_RESEARCH_CODE = '04109';
 const ADAPTABLE_CODE = '02110';
 function calculateSpentXp(cards, slots, changedCards, exiledCards) {
   const exiledSlots = [];
-  forEach(keys(exiledCards), code => {
-    if (exiledCards[code] > 0) {
+  forEach(exiledCards, (exileCount, code) => {
+    if (exileCount > 0) {
       const card = cards[code];
       if (card) {
-        forEach(range(0, exiledCards[code]), () => exiledSlots.push(card));
+        forEach(range(0, exileCount), () => exiledSlots.push(card));
       }
     }
   });
@@ -144,15 +144,15 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
 
   const addedCards = [];
   const removedCards = [];
-  forEach(keys(changedCards), code => {
+  forEach(changedCards, (count, code) => {
     const card = cards[code];
     if (card) {
-      if (changedCards[code] < 0) {
-        for (let i = changedCards[code]; i < 0; i++) {
+      if (count < 0) {
+        for (let i = count; i < 0; i++) {
           removedCards.push(card);
         }
       } else {
-        for (let i = 0; i < changedCards[code]; i++) {
+        for (let i = 0; i < count; i++) {
           addedCards.push(card);
           if (card.code === ARCANE_RESEARCH_CODE) {
             // Per FAQ, you do not get the arcane research bonus if you just

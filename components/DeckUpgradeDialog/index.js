@@ -138,8 +138,7 @@ class DeckUpgradeDialog extends React.Component {
         exileCounts,
       } = this.state;
       const exileParts = [];
-      forEach(keys(exileCounts), code => {
-        const count = exileCounts[code];
+      forEach(exileCounts, (count, code) => {
         if (count > 0) {
           forEach(range(0, count), () => exileParts.push(code));
         }

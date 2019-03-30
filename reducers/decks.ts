@@ -75,8 +75,7 @@ export default function(
 ) {
   if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
     const all: { [id: number]: Deck } = {};
-    forEach(keys(state.all), (id: any) => {
-      const deck = state.all[id];
+    forEach(state.all, (deck, id: any) => {
       if (deck && deck.local) {
         all[id] = deck;
       }

@@ -699,16 +699,16 @@ class DeckDetailView extends React.Component {
       additions: {},
       ignoreDeckLimitChanged: false,
     };
-    forEach(keys(deck.slots), code => {
+    forEach(deck.slots, (deckCount, code) => {
       const currentDeckCount = slots[code] || 0;
-      if (deck.slots[code] > currentDeckCount) {
-        result.removals[code] = deck.slots[code] - currentDeckCount;
+      if (deckCount > currentDeckCount) {
+        result.removals[code] = deckCount - currentDeckCount;
       }
     });
-    forEach(keys(slots), code => {
+    forEach(slots, (currentCount, code) => {
       const ogDeckCount = deck.slots[code] || 0;
-      if (ogDeckCount < slots[code]) {
-        result.additions[code] = slots[code] - ogDeckCount;
+      if (ogDeckCount < currentCount) {
+        result.additions[code] = currentCount - ogDeckCount;
       }
       const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
       if (ogIgnoreCount !== (ignoreDeckLimitSlots[code] || 0)) {
@@ -724,9 +724,9 @@ class DeckDetailView extends React.Component {
     } = this.props;
     const deltas = this.slotDeltas(slots, ignoreDeckLimitSlots);
     const addedWeaknesses = [];
-    forEach(keys(deltas.additions), code => {
+    forEach(deltas.additions, (addition, code) => {
       if (cards[code] && cards[code].subtype_code === 'basicweakness') {
-        forEach(range(0, deltas.additions[code]), () => addedWeaknesses.push(code));
+        forEach(range(0, addition), () => addedWeaknesses.push(code));
       }
     });
     return addedWeaknesses;

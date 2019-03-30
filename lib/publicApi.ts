@@ -1,5 +1,6 @@
 import { forEach, head } from 'lodash';
 import Realm from 'realm';
+import { Alert } from 'react-native';
 
 import L from '../app/i18n';
 import { CardCache, Pack } from '../actions/types';
@@ -52,6 +53,7 @@ export const syncCards = function(
               true
             );
           } catch (e) {
+            Alert.alert(e);
             console.log(e);
             console.log(cardJson);
           }

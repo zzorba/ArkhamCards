@@ -3,6 +3,7 @@ import { map } from 'lodash';
 
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
+import { TypeCodeType } from '../constants';
 
 export default class DeckOption {
   public static schema: Realm.ObjectSchema = {
@@ -12,6 +13,7 @@ export default class DeckOption {
       uses: 'string[]',
       trait: 'string[]',
       text: 'string[]',
+      type_code: 'string[]',
       atleast: 'DeckAtLeastOption?',
       level: 'DeckOptionLevel?',
       limit: 'int?',
@@ -20,6 +22,7 @@ export default class DeckOption {
     },
   };
 
+  public type_code!: TypeCodeType[];
   public faction!: string[];
   public uses!: string[];
   public trait!: string[];
@@ -79,6 +82,16 @@ export default class DeckOption {
         query += ' AND';
       }
       query += ` xp >= ${this.level.min} AND xp <= ${this.level.max}`;
+      dirty = true;
+    }
+    if (this.type_code) {
+      if (dirty) {
+        query += ' AND';
+      }
+      query += ' (';
+      query +=
+        map(this.type_code, type => ` type_code = '${type}'`).join(' OR');
+        query += ' )';
       dirty = true;
     }
     query += ' )';

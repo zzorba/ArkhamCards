@@ -1,44 +1,56 @@
+import Card from '../data/Card';
+import DeckOption from '../data/DeckOption';
+import { FactionCodeType } from '../constants';
+
 
 // Code taken from:
 // https://github.com/Kamalisk/arkhamdb/blob/4c194c54fcbc381e45b93f0f1bcb65a37ae581a9/src/AppBundle/Resources/public/js/app.deck.js
 /* eslint-disable */
 import { groupBy, mapValues, keys, forEach, find, findKey, filter } from 'lodash';
 
-export default class DeckValidation {
-  constructor(investigator) {
-    this.investigator = investigator;
+interface DeckOptionsCount {
+  limit: number,
+  atleast: {
+    [faction_code: string]: number,
+  };
+}
 
-    this.problem_list = [];
+export default class DeckValidation {
+  investigator!: Card;
+  problem_list: string[] = [];
+  deck_options_counts: DeckOptionsCount[] = [];
+  constructor(investigator: Card) {
+    this.investigator = investigator;
   }
 
-  getPhysicalDrawDeck(cards) {
+  getPhysicalDrawDeck(cards: Card[]) {
     return filter(cards, card => card && !card.permanent && !card.double_sided);
   }
 
-  getDrawDeck(cards) {
+  getDrawDeck(cards: Card[]) {
     return filter(
       this.getPhysicalDrawDeck(cards),
       card => card && card.xp !== null
     );
   }
 
-  getDrawDeckSize(cards) {
+  getDrawDeckSize(cards: Card[]) {
     var draw_deck = this.getDrawDeck(cards);
 	  return draw_deck.length;
   }
 
-  getCopiesAndDeckLimit(cards) {
+  getCopiesAndDeckLimit(cards: Card[]) {
     return mapValues(
       groupBy(this.getDrawDeck(cards), card => card ? card.real_name : 'Unknown Card'),
       group => {
         return {
           nb_copies: group.length,
-          deck_limit: group[0].deck_limit,
+          deck_limit: group[0].deck_limit || 0,
         }
       });
   }
 
-  getProblem(cards) {
+  getProblem(cards: Card[]) {
     const reason = this.getProblemHelper(cards);
     if (!reason) {
       return null;
@@ -49,7 +61,7 @@ export default class DeckValidation {
     };
   }
 
-  getProblemHelper(cards) {
+  getProblemHelper(cards: Card[]) {
 	  // get investigator data
   	var card = this.investigator;
   	var size = 30;
@@ -97,27 +109,30 @@ export default class DeckValidation {
   	//console.log(investigator);
   	for (var i = 0; i < investigator.deck_options.length; i++) {
   		//console.log(investigator.deck_options);
-  		if (this.deck_options_counts[i].limit && investigator.deck_options[i].limit){
-  			if (this.deck_options_counts[i].limit > investigator.deck_options[i].limit){
-  				if (investigator.deck_options[i].error){
-  					this.problem_list.push(investigator.deck_options[i].error);
+      const option = investigator.deck_options[i];
+      if (!option) {
+        continue;
+      }
+  		if (this.deck_options_counts[i].limit && option.limit){
+  			if (this.deck_options_counts[i].limit > option.limit){
+  				if (option.error) {
+  					this.problem_list.push(option.error);
   				}
   				return 'investigator';
   			}
   		}
-
-  		if (investigator.deck_options[i].atleast){
-  			if (investigator.deck_options[i].atleast.factions && investigator.deck_options[i].atleast.min){
+      const atleast = option.atleast;
+  		if (atleast) {
+  			if (atleast.factions && atleast.min){
   				var faction_count = 0;
-          forEach(keys(this.deck_options_counts[i].atleast), key => {
-            const value = this.deck_options_counts[i].atleast[key];
-  					if (value >= investigator.deck_options[i].atleast.min){
+          forEach(this.deck_options_counts[i].atleast, (value, key) => {
+  					if (value >= atleast.min){
   						faction_count++;
   					}
   				})
-  				if (faction_count < investigator.deck_options[i].atleast.factions){
-  					if (investigator.deck_options[i].error){
-  						this.problem_list.push(investigator.deck_options[i].error);
+  				if (faction_count < atleast.factions){
+  					if (option.error){
+  						this.problem_list.push(option.error);
   					}
   					return 'investigator';
   				}
@@ -138,7 +153,7 @@ export default class DeckValidation {
     return null;
   }
 
-  getInvalidCards(cards) {
+  getInvalidCards(cards: Card[]) {
     const investigator = this.investigator;
 
   	if (this.investigator) {
@@ -153,7 +168,7 @@ export default class DeckValidation {
   	return filter(cards, card => !this.canIncludeCard(card, true));
   }
 
-  canIncludeCard(card, processDeckCounts) {
+  canIncludeCard(card: Card, processDeckCounts: boolean): boolean {
     const investigator = this.investigator;
 
   	// hide investigators
@@ -200,11 +215,11 @@ export default class DeckValidation {
   				//console.log("faction valid");
   			}
 
-  			if (option.type && option.type.length){
+  			if (option.type_code && option.type_code.length){
   				// needs to match at least one faction
   				var type_valid = false;
-  				for(var j = 0; j < option.type.length; j++){
-  					var type = option.type[j];
+  				for(var j = 0; j < option.type_code.length; j++){
+  					var type = option.type_code[j];
   					if (card.type_code == type){
   						type_valid = true;
   					}
@@ -288,8 +303,8 @@ export default class DeckValidation {
   				if (processDeckCounts && option.limit){
   					this.deck_options_counts[i].limit += 1;
   				}
-  				if (processDeckCounts && option.atleast){
-  					if (!this.deck_options_counts[i].atleast[card.faction_code]){
+  				if (processDeckCounts && option.atleast && card.faction_code) {
+  					if (!this.deck_options_counts[i].atleast[card.faction_code]) {
   						this.deck_options_counts[i].atleast[card.faction_code] = 0;
   					}
   					this.deck_options_counts[i].atleast[card.faction_code] += 1;

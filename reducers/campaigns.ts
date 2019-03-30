@@ -103,8 +103,7 @@ export default function(
       {},
       state.all
     );
-    forEach(keys(all), campaignId => {
-      const campaign = all[campaignId];
+    forEach(all, (campaign, campaignId) => {
       if (find(campaign.baseDeckIds || [], deckId => deckId === action.localId)) {
         all[campaignId] = Object.assign({},
           campaign,

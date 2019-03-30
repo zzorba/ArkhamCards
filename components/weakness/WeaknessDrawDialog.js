@@ -113,9 +113,9 @@ class WeaknessDrawDialog extends React.Component {
       }
     });
     const assignedCards = {};
-    forEach(keys(slots), code => {
+    forEach(slots, (count, code) => {
       if (cardsMap[code]) {
-        assignedCards[code] = slots[code];
+        assignedCards[code] = count;
       }
     });
     return {
