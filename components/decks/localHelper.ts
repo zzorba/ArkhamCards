@@ -1,6 +1,13 @@
 import { forEach } from 'lodash';
 
-export function newLocalDeck(id, name, investigator_code, slots) {
+import { Deck, Slots } from '../../actions/types';
+
+export function newLocalDeck(
+  id: number,
+  name: string,
+  investigator_code: string,
+  slots: Slots
+): Deck {
   const timestamp = (new Date()).toISOString();
   return {
     id,
@@ -9,14 +16,23 @@ export function newLocalDeck(id, name, investigator_code, slots) {
     name,
     investigator_code,
     slots,
+    ignoreDeckLimitSlots: {},
     local: true,
     problem: 'too_few_cards',
     version: '0.1',
   };
 }
 
-export function updateLocalDeck(deck, name, slots, problem, spentXp, xp_adjustment) {
+export function updateLocalDeck(
+  deck: Deck,
+  name: string,
+  slots: Slots,
+  problem: string,
+  spentXp?: number,
+  xp_adjustment?: number
+) {
   const versionParts = (deck.version || '0.1').split('.');
+  // @ts-ignore
   versionParts[1]++;
   const timestamp = (new Date()).toISOString();
   return Object.assign(
@@ -34,9 +50,16 @@ export function updateLocalDeck(deck, name, slots, problem, spentXp, xp_adjustme
   );
 }
 
-export function upgradeLocalDeck(id, deck, xp, exiles) {
+export function upgradeLocalDeck(
+  id: number,
+  deck: Deck,
+  xp: number,
+  exiles: string[]
+) {
   const versionParts = (deck.version || '0.1').split('.');
+  // @ts-ignore
   versionParts[0]++;
+  // @ts-ignore
   versionParts[1] = 0;
   const slots = Object.assign({}, deck.slots);
   forEach(exiles, code => {
@@ -68,7 +91,7 @@ export function upgradeLocalDeck(id, deck, xp, exiles) {
   };
 }
 
-export function cloneLocalDeck(id, deck, name) {
+export function cloneLocalDeck(id: number, deck: Deck, name: string) {
   const timestamp = (new Date()).toISOString();
   return Object.assign(
     {},

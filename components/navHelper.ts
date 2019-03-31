@@ -1,10 +1,11 @@
 import { Navigation, Options } from 'react-native-navigation';
 
 import L from '../app/i18n';
+import { Deck } from '../actions/types';
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import Card from '../data/Card';
 
-export function getDeckOptions(investigator: Card): Options {
+export function getDeckOptions(investigator?: Card): Options {
   return {
     statusBar: {
       style: 'light',
@@ -15,14 +16,16 @@ export function getDeckOptions(investigator: Card): Options {
         color: '#FFFFFF',
       },
       title: {
-        text: investigator.name,
+        text: investigator ? investigator.name : L('Deck'),
         color: '#FFFFFF',
       },
       subtitle: {
         color: '#FFFFFF',
       },
       background: {
-        color: FACTION_DARK_GRADIENTS[investigator.faction_code || 'neutral'][0],
+        color: FACTION_DARK_GRADIENTS[
+          (investigator ? investigator.faction_code : null) || 'neutral'
+        ][0],
       },
     },
     bottomTabs: {
@@ -35,9 +38,9 @@ export function getDeckOptions(investigator: Card): Options {
 
 export function showDeckModal(
   componentId: string,
-  deck: any,
-  investigator: Card,
-  campaignId: number
+  deck: Deck,
+  investigator?: Card,
+  campaignId?: number
 ) {
   /* if (Platform.OS === 'ios' && Platform.isPad && false) {
     Navigation.showModal({
@@ -91,7 +94,7 @@ export function showDeckModal(
             isPrivate: true,
             modal: true,
             campaignId,
-            title: investigator.name,
+            title: investigator ? investigator.name : L('Deck'),
           },
           options: getDeckOptions(investigator),
         },

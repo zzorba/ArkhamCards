@@ -1,0 +1,103 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { find, map } from 'lodash';
+import { BackHandler } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+
+import L from '../../app/i18n';
+import DialogPicker from '../core/DialogPicker';
+import {
+  SORT_BY_TYPE,
+  SORT_BY_FACTION,
+  SORT_BY_COST,
+  SORT_BY_PACK,
+  SORT_BY_TITLE,
+  SORT_BY_ENCOUNTER_SET,
+  SortType,
+} from './constants';
+
+interface Props {
+  componentId: string;
+  sortChanged: (sort: SortType) => void;
+  selectedSort: SortType;
+  hasEncounterCards: boolean;
+}
+
+export default class CardSortDialog extends React.Component<Props> {
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  _handleBackPress = () => {
+    Navigation.dismissOverlay(this.props.componentId);
+    return true;
+  };
+
+  static sortToCopy(sort: SortType): string {
+    switch (sort) {
+      case SORT_BY_TYPE:
+        return L('Type');
+      case SORT_BY_FACTION:
+        return L('Faction');
+      case SORT_BY_COST:
+        return L('Cost');
+      case SORT_BY_PACK:
+        return L('Pack');
+      case SORT_BY_TITLE:
+        return L('Title');
+      case SORT_BY_ENCOUNTER_SET:
+        return L('Encounter Set');
+      default:
+        const _exhaustiveCheck: never = sort;
+        return '';
+    };
+  }
+
+  _onSortChanged = (sortString: string) => {
+    const sort: SortType =
+      find(this.sorts(), sort => CardSortDialog.sortToCopy(sort) === sortString) ||
+      SORT_BY_TYPE;
+    this.props.sortChanged(sort);
+  };
+
+  sorts(): SortType[] {
+    const {
+      selectedSort,
+      hasEncounterCards,
+    } = this.props;
+
+    const sorts: SortType[] = [
+      SORT_BY_TYPE,
+      SORT_BY_FACTION,
+      SORT_BY_COST,
+      SORT_BY_PACK,
+      SORT_BY_TITLE,
+    ];
+    if (hasEncounterCards || selectedSort === SORT_BY_ENCOUNTER_SET) {
+      sorts.push(SORT_BY_ENCOUNTER_SET);
+    }
+    return sorts;
+  }
+
+  render() {
+    const {
+      componentId,
+      selectedSort,
+    } = this.props;
+
+    const sorts = this.sorts();
+    return (
+      <DialogPicker
+        componentId={componentId}
+        options={map(sorts, CardSortDialog.sortToCopy)}
+        onSelectionChanged={this._onSortChanged}
+        header={L('Sort by')}
+        selectedOption={CardSortDialog.sortToCopy(selectedSort)}
+      />
+    );
+  }
+}

@@ -1,36 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { forEach, keys, map } from 'lodash';
+import { keys, map } from 'lodash';
 import {
   Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { getDeckOptions, showCard } from '../navHelper';
+import { ParsedDeck } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
+import Card, { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 
-class DeckDelta extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    cards: PropTypes.object,
-    parsedDeck: PropTypes.object,
-  };
+interface Props {
+  componentId: string;
+  cards: CardsMap;
+  parsedDeck: ParsedDeck;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._showPreviousDeck = this.showPreviousDeck.bind(this);
-    this._showNextDeck = this.showNextDeck.bind(this);
-    this._showCard = this.showCard.bind(this);
-  }
-
-  showPreviousDeck() {
+export default class DeckDelta extends React.Component<Props> {
+  _showPreviousDeck = () => {
     const {
       componentId,
       parsedDeck: {
@@ -49,9 +41,9 @@ class DeckDelta extends React.Component {
         options: getDeckOptions(investigator),
       },
     });
-  }
+  };
 
-  showNextDeck() {
+  _showNextDeck = () => {
     const {
       componentId,
       parsedDeck: {
@@ -69,11 +61,11 @@ class DeckDelta extends React.Component {
         options: getDeckOptions(investigator),
       },
     });
-  }
+  };
 
-  showCard(card) {
-    showCard(this.props.componentId, card.code, card);
-  }
+  _showCard = (card: Card) => {
+    showCard(this.props.componentId, card.code, card, true);
+  };
 
   render() {
     const {
@@ -147,27 +139,6 @@ class DeckDelta extends React.Component {
     );
   }
 }
-
-export default connectRealm(DeckDelta, {
-  schemas: ['Card'],
-  mapToProps(results, realm, props) {
-    const {
-      parsedDeck: {
-        changedCards,
-        exiledCards,
-      },
-    } = props;
-    const cards = {};
-    forEach(results.cards, card => {
-      if (card.code in changedCards || card.code in exiledCards) {
-        cards[card.code] = card;
-      }
-    });
-    return {
-      cards,
-    };
-  },
-});
 
 const styles = StyleSheet.create({
   title: {

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import {
   Platform,
   View,
+  ViewStyle,
   Text,
+  TextStyle,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
@@ -13,24 +15,17 @@ import { Navigation } from 'react-native-navigation';
 import AppIcon from '../../assets/AppIcon';
 import { COLORS } from '../../styles/colors';
 
-export default class DeckNavHeader extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    hasEdits: PropTypes.bool,
-    saving: PropTypes.bool,
-    clearEdits: PropTypes.func.isRequired,
-    saveEdits: PropTypes.func.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._backPressed = this.backPressed.bind(this);
-  }
-
-  backPressed(){
+interface Props {
+  componentId: string;
+  hasEdits?: boolean;
+  saving?: boolean;
+  clearEdits: () => void;
+  saveEdits: () => void;
+}
+export default class DeckNavHeader extends React.Component<Props> {
+  _backPressed = () => {
     Navigation.pop(this.props.componentId);
-  }
+  };
 
   render() {
     const {
@@ -46,19 +41,19 @@ export default class DeckNavHeader extends React.Component {
               loadingProps={{ size: 'small', color: COLORS.green }}
               icon={<AppIcon name="check_circle" size={18} color={COLORS.green} />}
               iconContainerStyle={styles.icon}
-              textStyle={[styles.text, styles.saveText]}
+              titleStyle={[styles.text, styles.saveText]}
               buttonStyle={[styles.button, styles.saveEditsButton]}
               onPress={this.props.saveEdits}
-              text="Save"
+              title="Save"
             />
             { !saving &&
               <Button
                 icon={<AppIcon name="cancel" size={18} color={COLORS.red} />}
                 iconContainerStyle={styles.icon}
-                textStyle={[styles.text, styles.cancelText]}
+                titleStyle={[styles.text, styles.cancelText]}
                 buttonStyle={[styles.button, styles.cancelEditsButton]}
                 onPress={this.props.clearEdits}
-                text="Discard Changes"
+                title="Discard Changes"
               />
             }
           </View>
@@ -78,8 +73,21 @@ export default class DeckNavHeader extends React.Component {
     );
   }
 }
+interface Styles {
+  container: ViewStyle;
+  row: ViewStyle;
+  icon: ViewStyle;
+  backArrow: ViewStyle;
+  backButton: TextStyle;
+  cancelText: TextStyle;
+  saveText: TextStyle;
+  text: TextStyle;
+  button: TextStyle;
+  cancelEditsButton: TextStyle;
+  saveEditsButton: TextStyle;
+}
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<Styles>({
   container: {
     marginTop: Platform.OS === 'ios' ? 20 : 0,
     height: 40,

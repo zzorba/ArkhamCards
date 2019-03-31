@@ -15,8 +15,13 @@ export interface Deck {
   date_creation: string;
   scenarioCount?: number;
   slots: Slots;
-  ignoreDeckLimitSlots: Slots,
+  ignoreDeckLimitSlots: Slots;
   exile_string?: string;
+  problem?: string;
+  version?: string;
+  xp?: number;
+  xp_adjustment?: number;
+  spentXp?: number;
 }
 
 export interface Pack {

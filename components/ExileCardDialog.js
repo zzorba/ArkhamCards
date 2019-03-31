@@ -74,6 +74,7 @@ export default class ExileCardDialog extends React.Component {
   render() {
     const {
       id,
+      componentId,
     } = this.props;
 
     const {
@@ -83,6 +84,7 @@ export default class ExileCardDialog extends React.Component {
     return (
       <ScrollView style={styles.wrapper}>
         <ExileCardSelectorComponent
+          componentId={componentId}
           id={id}
           exileCounts={exileCounts}
           updateExileCounts={this._onExileCountsChange}

@@ -4,12 +4,12 @@ import {
 
 import L from '../app/i18n';
 
-export function handleAuthErrors(
-  promise,
-  onSuccess,
-  onFailure,
-  retry,
-  login,
+export function handleAuthErrors<T>(
+  promise: Promise<T>,
+  onSuccess: (result: T) => void,
+  onFailure: (error: Error) => void,
+  retry: () => void,
+  login: () => void,
 ) {
   promise.then(
     onSuccess,

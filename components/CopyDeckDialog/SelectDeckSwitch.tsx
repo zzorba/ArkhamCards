@@ -1,24 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import DialogComponent from 'react-native-dialog';
 
 import { COLORS } from '../../styles/colors';
 
-export default class SelectDeckSwitch extends React.Component {
-  static propTypes = {
-    deckId: PropTypes.number.isRequired,
-    label: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
-    onValueChange: PropTypes.func.isRequired,
-  };
+interface Props {
+  deckId: number;
+  label: string;
+  value: boolean;
+  onValueChange: (deckId: number, value: boolean) => void;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onValueChange = this.onValueChange.bind(this);
-  }
-
-  onValueChange(value) {
+export default class SelectDeckSwitch extends React.Component<Props> {
+  _onValueChange = (value: boolean) => {
     const {
       onValueChange,
       deckId,

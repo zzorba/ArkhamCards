@@ -229,6 +229,7 @@ class DeckUpgradeDialog extends React.Component {
   render() {
     const {
       deck,
+      componentId,
     } = this.props;
     const {
       xp,
@@ -271,6 +272,7 @@ class DeckUpgradeDialog extends React.Component {
         </View>
         { this.renderCampaignSection() }
         <ExileCardSelectorComponent
+          componentId={componentId}
           id={deck.id}
           showLabel
           exileCounts={exileCounts}

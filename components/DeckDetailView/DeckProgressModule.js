@@ -17,6 +17,7 @@ class DeckProgressModule extends React.PureComponent {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     deck: PropTypes.object.isRequired,
+    cards: PropTypes.object.isRequired,
     parsedDeck: PropTypes.object.isRequired,
     previousDeck: PropTypes.object,
     fetchPrivateDeck: PropTypes.func.isRequired,
@@ -93,6 +94,7 @@ class DeckProgressModule extends React.PureComponent {
       campaign,
       componentId,
       deck,
+      cards,
       parsedDeck,
     } = this.props;
 
@@ -112,6 +114,7 @@ class DeckProgressModule extends React.PureComponent {
         { (!!deck.previous_deck || !!deck.next_deck) && (
           <DeckDelta
             componentId={componentId}
+            cards={cards}
             parsedDeck={parsedDeck}
           />
         ) }

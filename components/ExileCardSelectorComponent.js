@@ -14,6 +14,7 @@ import CardSelectorComponent from './CardSelectorComponent';
 
 class ExileCardSelectorComponent extends React.Component {
   static propTypes = {
+    componentId: PropTypes.string.isRequired,
     /* eslint-disable react/no-unused-prop-types */
     id: PropTypes.number.isRequired,
     exileCounts: PropTypes.object.isRequired,
@@ -35,6 +36,7 @@ class ExileCardSelectorComponent extends React.Component {
 
   render() {
     const {
+      componentId,
       deck,
       exileCounts,
       updateExileCounts,
@@ -51,6 +53,7 @@ class ExileCardSelectorComponent extends React.Component {
     );
     return (
       <CardSelectorComponent
+        componentId={componentId}
         slots={deck.slots}
         counts={exileCounts}
         updateCounts={updateExileCounts}

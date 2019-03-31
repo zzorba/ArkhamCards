@@ -356,6 +356,7 @@ class EditSpecialDeckCards extends React.Component {
 
   renderIgnoreCardsSection() {
     const {
+      componentId,
       slots,
     } = this.props;
 
@@ -372,6 +373,7 @@ class EditSpecialDeckCards extends React.Component {
     );
     return (
       <CardSelectorComponent
+        componentId={componentId}
         slots={slots}
         counts={ignoreDeckLimitSlots}
         updateCounts={this._onIgnoreDeckLimitSlotsChange}

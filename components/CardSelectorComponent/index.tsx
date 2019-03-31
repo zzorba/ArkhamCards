@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { filter, keys, map, sortBy } from 'lodash';
 import {
@@ -6,33 +6,35 @@ import {
   View,
 } from 'react-native';
 
+import { Slots } from '../../actions/types';
+import Card from '../../data/Card';
 import CardToggleRow from './CardToggleRow';
-import withPlayerCards from '../withPlayerCards';
+import { showCard } from '../navHelper';
+import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 
-class CardSelectorComponent extends React.Component {
-  static propTypes = {
-    slots: PropTypes.object.isRequired,
-    counts: PropTypes.object.isRequired,
-    updateCounts: PropTypes.func.isRequired,
-    filterCard: PropTypes.func,
-    header: PropTypes.node,
-    // From realm.
-    cards: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+  slots: Slots;
+  counts: Slots;
+  updateCounts: (slots: Slots) => void;
+  filterCard?: (card: Card) => boolean;
+  header?: ReactNode;
+}
 
-  constructor(props) {
-    super(props);
+type Props = OwnProps & PlayerCardProps;
 
-    this._onChange = this.onChange.bind(this);
-  }
-
-  onChange(card, count) {
+class CardSelectorComponent extends React.Component<Props> {
+  _onChange = (card: Card, count: number) => {
     const {
       counts,
       updateCounts,
     } = this.props;
     updateCounts(Object.assign({}, counts, { [card.code]: count }));
-  }
+  };
+
+  _onCardPress = (card: Card) => {
+    showCard(this.props.componentId, card.code, card, true);
+  };
 
   render() {
     const {
@@ -74,7 +76,7 @@ class CardSelectorComponent extends React.Component {
   }
 }
 
-export default withPlayerCards(CardSelectorComponent);
+export default withPlayerCards<OwnProps>(CardSelectorComponent);
 
 
 const styles = StyleSheet.create({

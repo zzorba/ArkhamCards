@@ -152,8 +152,8 @@ function getChangedCards(
   deck: Deck,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
-  previousDeck: Deck | null,
-  exiledCards: Slots
+  exiledCards: Slots,
+  previousDeck?: Deck
 ) {
   if (!deck.previous_deck || !previousDeck) {
     return {};
@@ -302,14 +302,42 @@ function calculateSpentXp(
   ));
 }
 
+type FactionCounts = {
+  [faction in FactionCodeType]?: number;
+};
+
+type SkillCounts = {
+  [skill in SkillCodeType]?: number;
+};
+
+export interface ParsedDeck {
+  investigator: Card;
+  deck: Deck;
+  slots: Slots;
+  normalCardCount: number;
+  totalCardCount: number;
+  experience: number;
+  packs: number;
+  factionCounts: FactionCounts;
+  costHistogram: number[];
+  skillIconCounts: SkillCounts;
+  normalCards: SplitCards;
+  specialCards: SplitCards;
+  ignoreDeckLimitSlots: Slots;
+  exiledCards: Slots;
+  changedCards: Slots;
+  spentXp?: number;
+}
+
 export function parseDeck(
   deck: Deck | null,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
   cards: CardsMap,
-  previousDeck: Deck | null,
-) {
+  previousDeck?: Deck,
+): ParsedDeck {
   if (!deck) {
+    // @ts-ignore
     return {};
   }
   const cardIds = map(
@@ -333,17 +361,15 @@ export function parseDeck(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  const changedCards = getChangedCards(deck, slots, ignoreDeckLimitSlots, previousDeck, exiledCards);
+  const changedCards = getChangedCards(deck, slots, ignoreDeckLimitSlots, exiledCards, previousDeck);
   const spentXp = calculateSpentXp(cards, slots, changedCards, exiledCards);
   const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);
 
-  const factionCounts: {
-    [faction in FactionCodeType]?: number
-  } = {};
+  const factionCounts: FactionCounts = {};
   PLAYER_FACTION_CODES.forEach(faction => {
     factionCounts[faction] = factionCount(cardIds, cards, faction);
   });
-  const skillIconCounts: { [skill in SkillCodeType]?: number } = {};
+  const skillIconCounts: SkillCounts = {};
   SKILLS.forEach(skill => {
     skillIconCounts[skill] = sumSkillIcons(cardIds, cards, skill);
   });

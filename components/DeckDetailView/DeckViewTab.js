@@ -355,6 +355,7 @@ export default class DeckViewTab extends React.Component {
       investigatorDataUpdates,
       componentId,
       deck,
+      cards,
       deckName,
       parsedDeck: {
         normalCardCount,
@@ -461,6 +462,7 @@ export default class DeckViewTab extends React.Component {
           ) }
           <DeckProgressModule
             componentId={componentId}
+            cards={cards}
             deck={deck}
             parsedDeck={this.props.parsedDeck}
             isPrivate={isPrivate}

@@ -5,29 +5,33 @@ import {
 } from 'react-native';
 
 import CardSearchResult from '../CardSearchResult';
+import Card from '../../data/Card';
 
-export default class CardToggleRow extends React.Component {
-  static propTypes = {
-    card: PropTypes.object.isRequired,
-    count: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
-    limit: PropTypes.number.isRequired,
-  };
+interface Props {
+  key: string;
+  card: Card;
+  count: number;
+  onChange: (card: Card, count: number) => void;
+  onPress?: (card: Card) => void;
+  limit: number;
+}
 
-  constructor(props) {
+interface State {
+  one: boolean;
+  two: boolean;
+}
+
+export default class CardToggleRow extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       one: props.count > 0,
       two: props.count > 1,
     };
-
-    this._syncChange = this.syncChange.bind(this);
-    this._onCardOneToggle = this.onCardToggle.bind(this, 'one');
-    this._onCardTwoToggle = this.onCardToggle.bind(this, 'two');
   }
 
-  syncChange() {
+  _syncChange = () => {
     const {
       card,
       onChange,
@@ -37,18 +41,26 @@ export default class CardToggleRow extends React.Component {
       two,
     } = this.state;
     onChange(card, (one ? 1 : 0) + (two ? 1 : 0));
-  }
+  };
 
-  onCardToggle(key) {
+  _onCardOneToggle = () => {
     this.setState({
-      [key]: !this.state[key],
+      one: !this.state.one,
     }, this._syncChange);
-  }
+  };
+
+  _onCardTwoToggle = () => {
+    this.setState({
+      two: !this.state.two,
+    }, this._syncChange);
+  };
 
   render() {
     const {
       card,
       limit,
+      key,
+      onPress,
     } = this.props;
     const {
       one,
@@ -59,16 +71,18 @@ export default class CardToggleRow extends React.Component {
       return null;
     }
     return (
-      <View>
+      <View key={key}>
         <CardSearchResult
           card={card}
           onToggleChange={this._onCardOneToggle}
+          onPress={onPress}
           toggleValue={one}
         />
         { (limit > 1) && (
           <CardSearchResult
             card={card}
             onToggleChange={this._onCardTwoToggle}
+            onPress={onPress}
             toggleValue={two}
           />
         ) }
