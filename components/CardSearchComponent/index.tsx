@@ -1,41 +1,55 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
+import Realm from 'realm';
 import {
   Keyboard,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
-import { Navigation } from 'react-native-navigation';
+import { connectRealm, CardResults } from 'react-native-realm';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import Card from '../../data/Card';
+import { Slots } from '../../actions/types';
 import {
   SORT_BY_TYPE,
 } from '../CardSortDialog/constants';
 import CardSearchResultsComponent from '../CardSearchResultsComponent';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
+import { FilterState } from '../../lib/filters';
 import { iconsMap } from '../../app/NavIcons';
 import { COLORS } from '../../styles/colors';
 
-class CardSearchComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    // Function that takes 'realm' and gives back a base query.
-    defaultFilterState: PropTypes.object,
-    baseQuery: PropTypes.string,
-    mythosToggle: PropTypes.bool,
-    sort: PropTypes.string,
-    showNonCollection: PropTypes.bool,
+interface RealmProps {
+  defaultFilterState: FilterState,
+}
+interface OwnProps {
+  componentId: string;
+  baseQuery?: string;
+  mythosToggle?: boolean;
+  sort?: string;
+  showNonCollection?: boolean;
 
-    // Keyed by code, count of current deck.
-    originalDeckSlots: PropTypes.object,
-    deckCardCounts: PropTypes.object,
-    onDeckCountChange: PropTypes.func,
-    limits: PropTypes.object,
-    footer: PropTypes.node,
-    modal: PropTypes.bool,
-  };
+  originalDeckSlots?: Slots;
+  deckCardCounts?: Slots;
+  onDeckCountChange?: (code: string, count: number) => void;
+  limits?: Slots;
+  footer?: ReactNode;
+  modal?: boolean;
+}
 
-  constructor(props) {
+type Props = OwnProps & RealmProps;
+
+interface State {
+  selectedSort: string;
+  filters: FilterState;
+  mythosMode: boolean;
+  visible: boolean;
+}
+class CardSearchComponent extends React.Component<Props, State> {
+  _navEventListener?: EventSubscription;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -44,14 +58,6 @@ class CardSearchComponent extends React.Component {
       mythosMode: false,
       visible: true,
     };
-
-    this._toggleMythosMode = this.toggleMythosMode.bind(this);
-    this._sortChanged = this.sortChanged.bind(this);
-    this._setFilters = this.setFilters.bind(this);
-    this._clearSearchFilters = this.clearSearchFilters.bind(this);
-    this._showSearchFilters = this.showSearchFilters.bind(this);
-    this._showSortDialog = this.showSortDialog.bind(this);
-    this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
 
     const rightButtons = [{
       id: 'filter',
@@ -93,38 +99,32 @@ class CardSearchComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  toggleSearchMode(mode) {
-    this.setState({
-      [mode]: !this.state[mode],
-    });
-  }
-
-  clearSearchFilters() {
+  _clearSearchFilters = () => {
     const {
       defaultFilterState,
     } = this.props;
     this.setState({
       filters: defaultFilterState,
     });
-  }
+  };
 
-  setFilters(filters) {
+  _setFilters = (filters: FilterState) => {
     this.setState({
       filters: filters,
     });
-    this.syncNavigationButtons(this.state.mythosMode, filters);
-  }
+    this._syncNavigationButtons(this.state.mythosMode, filters);
+  };
 
-  sortChanged(selectedSort) {
+  _sortChanged = (selectedSort: string) => {
     this.setState({
       selectedSort,
     });
-  }
+  };
 
-  showSearchFilters() {
+  _showSearchFilters = () => {
     const {
       componentId,
       defaultFilterState,
@@ -153,9 +153,9 @@ class CardSearchComponent extends React.Component {
         },
       },
     });
-  }
+  };
 
-  showSortDialog() {
+  _showSortDialog = () => {
     Keyboard.dismiss();
     Navigation.showOverlay({
       component: {
@@ -172,9 +172,9 @@ class CardSearchComponent extends React.Component {
         },
       },
     });
-  }
+  };
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'filter') {
       this._showSearchFilters();
     } else if (buttonId === 'sort') {
@@ -196,7 +196,7 @@ class CardSearchComponent extends React.Component {
     });
   }
 
-  syncNavigationButtons(mythosMode, filters) {
+  _syncNavigationButtons = (mythosMode: boolean, filters: FilterState) => {
     const {
       componentId,
       onDeckCountChange,
@@ -231,9 +231,9 @@ class CardSearchComponent extends React.Component {
         rightButtons,
       },
     });
-  }
+  };
 
-  toggleMythosMode() {
+  _toggleMythosMode = () => {
     const {
       mythosMode,
       filters,
@@ -241,8 +241,8 @@ class CardSearchComponent extends React.Component {
     this.setState({
       mythosMode: !mythosMode,
     });
-    this.syncNavigationButtons(!mythosMode, filters);
-  }
+    this._syncNavigationButtons(!mythosMode, filters);
+  };
 
   render() {
     const {
@@ -268,7 +268,6 @@ class CardSearchComponent extends React.Component {
         baseQuery={baseQuery}
         mythosToggle={mythosToggle}
         mythosMode={mythosMode}
-        sort={selectedSort}
         showNonCollection={showNonCollection}
         selectedSort={selectedSort}
         filters={filters}
@@ -285,9 +284,9 @@ class CardSearchComponent extends React.Component {
   }
 }
 
-export default connectRealm(CardSearchComponent, {
+export default connectRealm<OwnProps, RealmProps, Card>(CardSearchComponent, {
   schemas: ['Card'],
-  mapToProps(results, realm, props) {
+  mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
     const cards = props.baseQuery ?
       results.cards.filtered(props.baseQuery) :
       results.cards;

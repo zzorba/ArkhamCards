@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { mapValues } from 'lodash';
 
 import ArkhamIcon from '../assets/ArkhamIcon';
 
-export const CORE_FACTION_CODES = [
+
+export type TypeCodeType =
+  'asset' |
+  'event' |
+  'skill' |
+  'act' |
+  'agenda' |
+  'story' |
+  'enemy' |
+  'treachery' |
+  'location' |
+  'investigator' |
+  'scenario';
+
+export type FactionCodeType =
+  'guardian' |
+  'seeker' |
+  'rogue' |
+  'mystic' |
+  'survivor' |
+  'neutral' |
+  'mythos';
+
+export const CORE_FACTION_CODES: FactionCodeType[] = [
   'mystic',
   'seeker',
   'guardian',
@@ -11,7 +34,12 @@ export const CORE_FACTION_CODES = [
   'survivor',
 ];
 
-export const FACTION_CODES = [
+export const PLAYER_FACTION_CODES: FactionCodeType[] = [
+  ...CORE_FACTION_CODES,
+  'neutral',
+];
+
+export const FACTION_CODES: string[] = [
   ...CORE_FACTION_CODES,
   'neutral',
   'dual',
@@ -27,23 +55,23 @@ export const FACTION_CODE_TO_STRING = {
   dual: 'Dual',
 };
 
-export const BASIC_SKILLS = [
+export type SkillCodeType = 'willpower' |
+  'intellect' |
+  'combat' |
+  'agility' |
+  'wild';
+
+export const BASIC_SKILLS: SkillCodeType[] = [
   'willpower',
   'intellect',
   'combat',
   'agility',
 ];
 
-export const SKILLS = [
+export const SKILLS: SkillCodeType[] = [
   ...BASIC_SKILLS,
   'wild',
 ];
-
-export type SkillCodeType = 'willpower' |
-  'intellect' |
-  'combat' |
-  'agility' |
-  'wild';
 
 export const SKILL_COLORS: { [skill: string]: string } = {
   willpower: '#003961',
@@ -53,19 +81,6 @@ export const SKILL_COLORS: { [skill: string]: string } = {
   wild: '#635120',
 };
 
-export type TypeCodeType =
-  'asset' |
-  'event' |
-  'skill' |
-  'act' |
-  'agenda' |
-  'story' |
-  'enemy' |
-  'treachery' |
-  'location' |
-  'investigator' |
-  'scenario';
-export type FactionCodeType = 'guardian' | 'seeker' | 'rogue' | 'mystic' | 'survivor' | 'neutral' | 'mythos';
 
 export const FACTION_COLORS: { [faction_code: string]: string } = {
   mystic: '#4331b9',
@@ -174,7 +189,10 @@ export const CHAOS_BAG_TOKEN_COUNTS = {
   elder_sign: 1,
 };
 
-export function createFactionIcons(size: number, defaultColor: string) {
+export function createFactionIcons(
+  size: number,
+  defaultColor?: string
+): { [faction in FactionCodeType | 'dual']?: ReactNode } {
   return mapValues(FACTION_COLORS, (color, faction) => {
     return (
       <ArkhamIcon

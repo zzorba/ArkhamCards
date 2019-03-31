@@ -9,7 +9,7 @@ import RandomRequirement from './RandomRequirement';
 import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import DeckAtLeastOption from './DeckAtLeastOption';
-import { BASIC_SKILLS, FactionCodeType, TypeCodeType } from '../constants';
+import { BASIC_SKILLS, FactionCodeType, SkillCodeType, TypeCodeType } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror');
@@ -223,6 +223,19 @@ export default class Card {
       'Cost: {{cost}}',
       { cost: this.cost !== null ? this.cost : 'X' }
     );
+  }
+
+  skillCount(skill: SkillCodeType): number {
+    switch (skill) {
+      case 'willpower': return this.skill_willpower || 0;
+      case 'intellect': return this.skill_intellect || 0;
+      case 'combat': return this.skill_combat || 0;
+      case 'agility': return this.skill_agility || 0;
+      case 'wild': return this.skill_wild || 0;
+      default:
+        const _exhaustiveCheck: never = skill;
+        return 0;
+    }
   }
 
   static parseDeckRequirements(json: any) {
@@ -564,3 +577,8 @@ export default class Card {
     );
   }
 }
+
+export type CardKey = keyof Card;
+export interface CardsMap {
+  [code: string]: Card
+};

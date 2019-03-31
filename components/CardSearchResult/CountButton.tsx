@@ -14,14 +14,18 @@ import typography from '../../styles/typography';
 
 const DEPRESS_HEIGHT = 6;
 
-export default class CountButton extends React.PureComponent {
-  static propTypes = {
-    text: PropTypes.string,
-    selected: PropTypes.bool,
-    onPress: PropTypes.func.isRequired,
-  };
+interface Props {
+  text?: string;
+  selected?: boolean;
+  onPress: () => void;
+}
 
-  constructor(props) {
+interface State {
+  anim: Animated.Value;
+}
+
+export default class CountButton extends React.PureComponent<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -29,7 +33,7 @@ export default class CountButton extends React.PureComponent {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       selected,
     } = this.props;
@@ -42,7 +46,6 @@ export default class CountButton extends React.PureComponent {
           Animated.timing(anim, {
             toValue: 1,
             duration: 250,
-            easing: Easing.easeIn,
             useNativeDriver: true,
           }).start();
         });
@@ -51,7 +54,6 @@ export default class CountButton extends React.PureComponent {
           Animated.timing(anim, {
             toValue: 0,
             duration: 100,
-            easing: Easing.easeOut,
             useNativeDriver: true,
           }).start();
         });

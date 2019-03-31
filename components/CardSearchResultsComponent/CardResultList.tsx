@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { concat, debounce, flatMap, forEach, isEqual, map, partition, random, sortBy, throttle } from 'lodash';
+import { concat, debounce, flatMap, forEach, isEqual, map, partition, random, sortBy, throttle, Cancelable } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -10,16 +10,23 @@ import {
   StyleSheet,
   Text,
   View,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  ViewStyle,
+  TextStyle,
+  SectionListData,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
+import Realm, { Results } from 'realm';
+import { connectRealm, CardResults, Sort } from 'react-native-realm';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import * as Actions from '../../actions';
-import { getPackSpoilers, getPacksInCollection } from '../../reducers';
-import Card from '../../data/Card';
+import { Slots } from '../../actions/types';
+import { getPackSpoilers, getPacksInCollection, AppState } from '../../reducers';
+import Card, { CardsMap } from '../../data/Card';
 import { showCard } from '../navHelper';
 import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
@@ -52,34 +59,71 @@ function funLoadingMessages() {
   ];
 }
 
-class CardResultList extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    realm: PropTypes.object.isRequired,
-    query: PropTypes.string,
-    searchTerm: PropTypes.string,
-    sort: PropTypes.string,
-    originalDeckSlots: PropTypes.object,
-    deckCardCounts: PropTypes.object,
-    onDeckCountChange: PropTypes.func,
-    show_spoilers: PropTypes.object,
-    in_collection: PropTypes.object,
-    hasSecondCore: PropTypes.bool,
-    limits: PropTypes.object,
-    cardPressed: PropTypes.func,
-    showHeader: PropTypes.func.isRequired,
-    hideHeader: PropTypes.func.isRequired,
-    visible: PropTypes.bool.isRequired,
-    showNonCollection: PropTypes.bool,
-    expandSearchControls: PropTypes.node,
-  };
+interface OwnProps {
+  componentId: string;
+  query?: string;
+  searchTerm?: string;
+  sort?: string;
+  originalDeckSlots?: Slots;
+  deckCardCounts?: Slots;
+  onDeckCountChange?: (code: string, count: number) => void;
+  limits?: Slots;
+  cardPressed?: (card: Card) => void;
+  showHeader: () => void;
+  hideHeader: () => void;
+  visible: boolean;
+  showNonCollection?: boolean;
+  expandSearchControls?: ReactNode;
+}
 
+interface ReduxProps {
+  show_spoilers: { [code: string]: boolean; };
+  in_collection: { [code: string]: boolean; };
+  hasSecondCore: boolean;
+  lang: string;
+}
+
+interface RealmProps {
+  realm: Realm,
+}
+
+type Props = OwnProps & ReduxProps & RealmProps;
+
+interface State {
+  resultsKey: string;
+  deckSections: any[];
+  cards: CardBucket[];
+  cardsCount: number;
+  deckCardCounts?: Slots;
+  spoilerCards: CardBucket[];
+  spoilerCardsCount: number;
+  showSpoilerCards: boolean;
+  showNonCollection: { [code: string]: boolean; };
+  loadingMessage: string;
+  dirty: boolean;
+  scrollY: Animated.Value;
+}
+
+interface CardBucket {
+  title: string;
+  bold?: boolean;
+  id: string;
+  data: Card[];
+  nonCollectionCount: number;
+}
+
+class CardResultList extends React.Component<Props, State> {
   static randomLoadingMessage() {
     const messages = funLoadingMessages();
     return messages[random(0, messages.length - 1)];
   }
 
-  constructor(props) {
+  lastOffsetY: number = 0;
+  hasPendingCountChanges: boolean = false;
+  _throttledUpdateResults!: () => void;
+  _handleScroll!: (...args: any[]) => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -97,88 +141,74 @@ class CardResultList extends React.Component {
       scrollY: new Animated.Value(0),
     };
 
-    this.lastOffsetY = 0;
-    this._onScroll = this.onScroll.bind(this);
-    this._throttledScroll = throttle(
-      this.throttledScroll.bind(this),
-      100,
-      { trailing: true },
-    );
     this._handleScroll = Animated.event(
       [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
       {
         listener: this._onScroll,
       },
     );
-    this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
+
     this._throttledUpdateResults = debounce(
-      this.updateResults.bind(this),
+      this._updateResults,
       100,
-      { trailing: true });
-    this._getItem = this.getItem.bind(this);
-    this._renderSectionHeader = this.renderSectionHeader.bind(this);
-    this._renderSectionFooter = this.renderSectionFooter.bind(this);
-    this._cardPressed = this.cardPressed.bind(this);
-    this._cardToKey = this.cardToKey.bind(this);
-    this._editSpoilerSettings = this.editSpoilerSettings.bind(this);
-    this._editCollectionSettings = this.editCollectionSettings.bind(this);
-    this._enableSpoilers = this.enableSpoilers.bind(this);
-    this._showNonCollectionCards = this.showNonCollectionCards.bind(this);
-    this._renderCard = this.renderCard.bind(this);
-    this._renderFooter = this.renderFooter.bind(this);
-    this.hasPendingCountChanges = false;
+      { trailing: true }
+    );
   }
 
-  onScroll(event) {
+  _onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
     // Dispatch the throttle event to handle hiding/showing stuff on transition.
     this._throttledScroll(offsetY);
-  }
+  };
 
   /**
    * This is the throttle scrollEvent, throttled so we check it slightly
    * less often and are able to make decisions about whether we update
    * the stored scrollY or not.
    */
-  throttledScroll(offsetY) {
-    if (offsetY <= 0) {
-      this.props.showHeader();
-    } else {
-      if (this.hasPendingCountChanges) {
-        this.hasPendingCountChanges = false;
-        this._throttledUpdateResults();
-      }
-
-      const delta = Math.abs(offsetY - this.lastOffsetY);
-      if (delta < SCROLL_DISTANCE_BUFFER) {
-        // Not a long enough scroll, don't update scrollY and don't take any
-        // action at all.
-        return;
-      }
-
-      // We have a decent sized scroll so we will make a direction based
-      // show/hide decision UNLESS we are near the top/bottom of the content.
-      const scrollingUp = offsetY < this.lastOffsetY;
-
-      if (scrollingUp) {
+  _throttledScroll = throttle(
+    (offsetY: number) => {
+      if (offsetY <= 0) {
         this.props.showHeader();
       } else {
-        this.props.hideHeader();
+        if (this.hasPendingCountChanges) {
+          this.hasPendingCountChanges = false;
+          this._throttledUpdateResults();
+        }
+
+        const delta = Math.abs(offsetY - this.lastOffsetY);
+        if (delta < SCROLL_DISTANCE_BUFFER) {
+          // Not a long enough scroll, don't update scrollY and don't take any
+          // action at all.
+          return;
+        }
+
+        // We have a decent sized scroll so we will make a direction based
+        // show/hide decision UNLESS we are near the top/bottom of the content.
+        const scrollingUp = offsetY < this.lastOffsetY;
+
+        if (scrollingUp) {
+          this.props.showHeader();
+        } else {
+          this.props.hideHeader();
+        }
       }
-    }
 
-    this.lastOffsetY = offsetY;
-  }
+      this.lastOffsetY = offsetY;
+    },
+    100,
+    { trailing: true }
+  );
 
-  handleScrollBeginDrag() {
+  _handleScrollBeginDrag = () => {
     Keyboard.dismiss();
-  }
+  };
 
   componentDidMount() {
     this._throttledUpdateResults();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       deckCardCounts,
     } = this.props;
@@ -195,7 +225,7 @@ class CardResultList extends React.Component {
         this.setState({
           loadingMessage: CardResultList.randomLoadingMessage(),
           dirty: false,
-          showNonCollection: [],
+          showNonCollection: {},
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
         }, this._throttledUpdateResults);
       } else if (!this.state.dirty) {
@@ -221,14 +251,14 @@ class CardResultList extends React.Component {
     }
   }
 
-  enableSpoilers() {
+  _enableSpoilers = () => {
     Keyboard.dismiss();
     this.setState({
       showSpoilerCards: true,
     });
-  }
+  };
 
-  showNonCollectionCards(id) {
+  _showNonCollectionCards = (id: string) => {
     Keyboard.dismiss();
     this.setState({
       showNonCollection: Object.assign(
@@ -237,9 +267,9 @@ class CardResultList extends React.Component {
         { [id]: true },
       ),
     }, this._throttledUpdateResults);
-  }
+  };
 
-  editCollectionSettings() {
+  _editCollectionSettings = () => {
     Keyboard.dismiss();
     Navigation.push(this.props.componentId, {
       component: {
@@ -253,9 +283,9 @@ class CardResultList extends React.Component {
         },
       },
     });
-  }
+  };
 
-  editSpoilerSettings() {
+  _editSpoilerSettings = () => {
     Keyboard.dismiss();
     Navigation.push(this.props.componentId, {
       component: {
@@ -269,9 +299,9 @@ class CardResultList extends React.Component {
         },
       },
     });
-  }
+  };
 
-  getSort() {
+  getSort(): Sort[] {
     switch(this.props.sort) {
       case SORT_BY_TYPE:
         return [['sort_by_type', false], ['renderName', false], ['xp', false]];
@@ -285,36 +315,45 @@ class CardResultList extends React.Component {
         return [['renderName', false], ['xp', false]];
       case SORT_BY_ENCOUNTER_SET:
         return [['sort_by_pack', false], ['encounter_code', false], ['encounter_position', false]];
+      default:
+        return [['renderName', false], ['xp', false]];
     }
   }
 
-  headerForCard(card, sortOverride) {
-    switch(sortOverride || this.props.sort) {
+  static headerForCard(card: Card, lang: string, sort?: string): string {
+    switch(sort) {
       case SORT_BY_TYPE:
-        return Card.typeSortHeader(card);
+        return Card.typeSortHeader(card, lang);
       case SORT_BY_FACTION:
-        return Card.factionSortHeader(card);
+        return Card.factionSortHeader(card, lang);
       case SORT_BY_COST:
         if (card.cost === null) {
-          return 'Cost: None';
+          return L('Cost: None');
         }
-        return `Cost: ${card.cost}`;
+        return L('Cost: {{ cost }}', { cost: card.cost });
       case SORT_BY_PACK:
         return card.pack_name;
       case SORT_BY_TITLE:
-        return 'All Cards';
+        return L('All Cards');
       case SORT_BY_ENCOUNTER_SET:
         return card.encounter_name ||
           (card.linked_card && card.linked_card.encounter_name) ||
-          'N/A';
+          L('N/A');
+      default:
+        return 'All Cards';
     }
   }
 
-  bucketDeckCards(cards) {
-    return this.bucketCards(cards, 'deck', true);
+  bucketDeckCards(cards: Card[], lang: string): CardBucket[] {
+    return this.bucketCards(cards, 'deck', true, lang);
   }
 
-  bucketCards(cards, keyPrefix, isDeck) {
+  bucketCards(
+    cards: Card[],
+    keyPrefix: string,
+    isDeck: boolean,
+    lang: string,
+  ): CardBucket[] {
     const {
       in_collection,
       sort,
@@ -322,15 +361,22 @@ class CardResultList extends React.Component {
     const {
       showNonCollection,
     } = this.state;
-    const results = [];
-    let nonCollectionCards = [];
-    let currentBucket = null;
+    const results: CardBucket[] = [];
+    let nonCollectionCards: Card[] = [];
+    let currentBucket: CardBucket | null = null;
     cards.forEach(card => {
-      const header = this.headerForCard(card, isDeck ? SORT_BY_TYPE : sort);
+      const header = CardResultList.headerForCard(
+        card,
+        lang,
+        isDeck ? SORT_BY_TYPE : sort
+      );
       if (!currentBucket || currentBucket.title !== header) {
-        if (nonCollectionCards.length > 0) {
+        if (currentBucket && nonCollectionCards.length > 0) {
           if (showNonCollection[currentBucket.id]) {
-            forEach(nonCollectionCards, c => currentBucket.data.push(c));
+            forEach(nonCollectionCards, c => {
+              // @ts-ignore
+              currentBucket.data.push(c);
+            });
           }
           currentBucket.nonCollectionCount = nonCollectionCards.length;
           nonCollectionCards = [];
@@ -356,10 +402,15 @@ class CardResultList extends React.Component {
     });
 
     // One last snap of the non-collection cards
-    if (nonCollectionCards.length > 0) {
+    if (currentBucket !== null && nonCollectionCards.length > 0) {
+      // @ts-ignore
       if (showNonCollection[currentBucket.id]) {
-        forEach(nonCollectionCards, c => currentBucket.data.push(c));
+        forEach(nonCollectionCards, c => {
+          // @ts-ignore
+          currentBucket.data.push(c);
+        });
       }
+      // @ts-ignore
       currentBucket.nonCollectionCount = nonCollectionCards.length;
       nonCollectionCards = [];
     }
@@ -378,28 +429,30 @@ class CardResultList extends React.Component {
     );
   }
 
-  updateResults() {
+  _updateResults = () => {
     const {
       realm,
       query,
       searchTerm,
       show_spoilers,
       originalDeckSlots,
+      lang,
     } = this.props;
     const {
       deckCardCounts,
     } = this.state;
     const resultsKey = this.resultsKey();
-    const cards = (query ?
-      realm.objects('Card').filtered(query, searchTerm) :
-      realm.objects('Card')
+    const cards: Results<Card> = (query ?
+      realm.objects<Card>('Card').filtered(query, searchTerm) :
+      realm.objects<Card>('Card')
     ).sorted(this.getSort());
-    const deckCards = [];
+    const deckCards: Card[] = [];
     const groupedCards = partition(
       cards,
       card => {
         if (originalDeckSlots && (
-          originalDeckSlots[card.code] > 0 || deckCardCounts[card.code] > 0)) {
+          originalDeckSlots[card.code] > 0 ||
+          (deckCardCounts && deckCardCounts[card.code] > 0))) {
           deckCards.push(card);
         }
         return show_spoilers[card.pack_code] ||
@@ -414,37 +467,37 @@ class CardResultList extends React.Component {
     this.setState({
       resultsKey: resultsKey,
       deckSections: concat(
-        this.bucketDeckCards(normalCards),
-        this.bucketDeckCards(specialCards)),
-      cards: this.bucketCards(groupedCards[0], 'cards'),
+        this.bucketDeckCards(normalCards, lang),
+        this.bucketDeckCards(specialCards, lang)),
+      cards: this.bucketCards(groupedCards[0], 'cards', false, lang),
       cardsCount: groupedCards[0].length,
-      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
+      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler', false, lang),
       spoilerCardsCount: groupedCards[1].length,
     });
-  }
+  };
 
-  cardToKey(card) {
+  _cardToKey = (card: Card) => {
     return card.code;
-  }
+  };
 
-  cardPressed(card) {
+  _cardPressed = (card: Card) => {
     const {
       cardPressed,
       componentId,
     } = this.props;
     cardPressed && cardPressed(card);
     showCard(componentId, card.code, card, true);
-  }
+  };
 
-  getItem(data, index) {
+  _getItem = (data: Card[], index: number) => {
     return data[index];
-  }
+  };
 
-  renderSectionHeader({ section }) {
+  _renderSectionHeader = ({ section }: { section: SectionListData<CardBucket> }) => {
     return <CardSectionHeader title={section.title} bold={section.bold} />;
-  }
+  };
 
-  renderSectionFooter({ section }) {
+  _renderSectionFooter = ({ section }: { section: SectionListData<CardBucket> }) => {
     const {
       showNonCollection,
     } = this.state;
@@ -454,11 +507,12 @@ class CardResultList extends React.Component {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <Button
-          style={styles.sectionFooterButton}
-          title={L('Edit Collection')}
-          onPress={this._editCollectionSettings}
-        />
+        <View style={styles.sectionFooterButton}>
+          <Button
+            title={L('Edit Collection')}
+            onPress={this._editCollectionSettings}
+          />
+        </View>
       );
     }
     return (
@@ -468,24 +522,27 @@ class CardResultList extends React.Component {
         onPress={this._showNonCollectionCards}
       />
     );
-  }
+  };
 
-  renderCard({ item }) {
+  _renderCard = ({ item }: { item: Card }) => {
     const {
       limits,
       hasSecondCore,
     } = this.props;
+    const {
+      deckCardCounts,
+    } = this.state;
     return (
       <CardSearchResult
         card={item}
-        count={this.state.deckCardCounts[item.code]}
+        count={deckCardCounts && deckCardCounts[item.code]}
         onDeckCountChange={this.props.onDeckCountChange}
         onPress={this._cardPressed}
-        limit={limits ? limits[item.code] : null}
+        limit={limits ? limits[item.code] : undefined}
         hasSecondCore={hasSecondCore}
       />
     );
-  }
+  };
 
   renderEmptyState() {
     const {
@@ -512,7 +569,7 @@ class CardResultList extends React.Component {
     return this.props.expandSearchControls;
   }
 
-  renderFooter() {
+  _renderFooter = () => {
     const {
       spoilerCardsCount,
       showSpoilerCards,
@@ -552,9 +609,9 @@ class CardResultList extends React.Component {
         { this.renderEmptyState() }
       </View>
     );
-  }
+  };
 
-  getData() {
+  getData(): CardBucket[] {
     const {
       cards,
       spoilerCards,
@@ -633,7 +690,14 @@ class CardResultList extends React.Component {
         offset = offset + size;
         return result;
       });
-    const getItemLayout = (data, index) => {
+    const getItemLayout = (
+      data: SectionListData<CardBucket>[] | null,
+      index: number
+    ): {
+      index: number,
+      length: number;
+      offset: number;
+    } => {
       return Object.assign({}, elementHeights[index], { index });
     };
     return (
@@ -658,29 +722,35 @@ class CardResultList extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   const in_collection = getPacksInCollection(state);
   return {
     in_collection,
     show_spoilers: getPackSpoilers(state),
     hasSecondCore: in_collection.core || false,
+    lang: state.packs.lang || 'en',
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
 
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(CardResultList), {
-    mapToProps(results, realm) {
+export default connectRealm<OwnProps, RealmProps, Card>(
+  connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(CardResultList), {
+    mapToProps(results: any, realm: Realm): RealmProps {
       return {
         realm,
       };
     },
   });
 
-const styles = StyleSheet.create({
+interface Styles {
+  footer: ViewStyle;
+  loading: ViewStyle;
+  loadingText: TextStyle;
+  button: ViewStyle;
+  emptyText: TextStyle;
+  sectionFooterButton: ViewStyle;
+}
+const styles = StyleSheet.create<Styles>({
   footer: {
     height: 300,
   },

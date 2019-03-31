@@ -6,18 +6,18 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 export const SEARCH_BAR_HEIGHT = 58;
-export default class SearchBox extends React.Component {
-  static propTypes = {
-    onChangeText: PropTypes.func.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    toggleAdvanced: PropTypes.func,
-    advancedOpen: PropTypes.bool,
-    value: PropTypes.string,
-  };
-
+interface Props {
+  onChangeText: (search: string) => void;
+  placeholder: string;
+  value?: string;
+  toggleAdvanced?: () => void;
+  advancedOpen?: boolean;
+}
+export default class SearchBox extends React.Component<Props> {
   renderToggleButton() {
     const {
       toggleAdvanced,

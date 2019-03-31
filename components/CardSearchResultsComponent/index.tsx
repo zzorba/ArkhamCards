@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 
 import L from '../../app/i18n';
+import { Slots } from '../../actions/types';
+import Card from '../../data/Card';
 import CardSearchBox from './CardSearchBox';
 import {
   SORT_BY_ENCOUNTER_SET,
@@ -16,35 +18,39 @@ import {
 import CardResultList from './CardResultList';
 import Switch from '../core/Switch';
 import { filterToQuery } from '../../lib/filters';
+import { FilterState } from '../../lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
 import typography from '../../styles/typography';
 
-export default class CardSearchResultComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    // Function that takes 'realm' and gives back a base query.
-    baseQuery: PropTypes.string,
-    mythosToggle: PropTypes.bool,
-    showNonCollection: PropTypes.bool,
+interface Props {
+  componentId: string;
+  baseQuery?: string;
+  mythosToggle?: boolean;
+  showNonCollection?: boolean;
+  selectedSort?: string;
+  filters: FilterState;
+  mythosMode?: boolean;
+  visible: boolean;
+  toggleMythosMode: () => void;
+  clearSearchFilters: () => void;
 
-    selectedSort: PropTypes.string,
-    filters: PropTypes.object,
-    mythosMode: PropTypes.bool,
-    visible: PropTypes.bool,
+  originalDeckSlots?: Slots;
+  deckCardCounts?: Slots;
+  onDeckCountChange?: (code: string, count: number) => void;
+  limits?: Slots;
+  footer?: ReactNode;
+}
 
-    // Functions
-    toggleMythosMode: PropTypes.func.isRequired,
-    clearSearchFilters: PropTypes.func.isRequired,
+interface State {
+  headerVisible: boolean;
+  searchText: boolean;
+  searchFlavor: boolean;
+  searchBack: boolean;
+  searchTerm: string;
+}
 
-    // Keyed by code, count of current deck.
-    originalDeckSlots: PropTypes.object,
-    deckCardCounts: PropTypes.object,
-    onDeckCountChange: PropTypes.func,
-    limits: PropTypes.object,
-    footer: PropTypes.node,
-  };
-
-  constructor(props) {
+export default class CardSearchResultComponent extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -54,25 +60,17 @@ export default class CardSearchResultComponent extends React.Component {
       searchBack: false,
       searchTerm: '',
     };
-
-    this._showHeader = this.showHeader.bind(this);
-    this._hideHeader = this.hideHeader.bind(this);
-    this._toggleSearchText = this.toggleSearchMode.bind(this, 'searchText');
-    this._toggleSearchFlavor = this.toggleSearchMode.bind(this, 'searchFlavor');
-    this._toggleSearchBack = this.toggleSearchMode.bind(this, 'searchBack');
-    this._searchUpdated = this.searchUpdated.bind(this);
-    this._clearSearchTerm = this.searchUpdated.bind(this, '');
   }
 
-  showHeader() {
+  _showHeader = () => {
     if (!this.state.headerVisible) {
       this.setState({
         headerVisible: true,
       });
     }
-  }
+  };
 
-  hideHeader() {
+  _hideHeader = () => {
     const {
       headerVisible,
       searchTerm,
@@ -84,19 +82,35 @@ export default class CardSearchResultComponent extends React.Component {
     }
   }
 
-  toggleSearchMode(mode) {
+  _toggleSearchText = () => {
     this.setState({
-      [mode]: !this.state[mode],
+      searchText: !this.state.searchText,
     });
-  }
+  };
 
-  searchUpdated(text) {
+  _toggleSearchFlavor = () => {
+    this.setState({
+      searchFlavor: !this.state.searchFlavor,
+    });
+  };
+
+  _toggleSearchBack = () => {
+    this.setState({
+      searchBack: !this.state.searchBack,
+    });
+  };
+
+  _searchUpdated = (text: string) => {
     this.setState({
       searchTerm: text,
     });
-  }
+  };
 
-  applyQueryFilter(query) {
+  _clearSearchTerm = () => {
+    this._searchUpdated('');
+  };
+
+  applyQueryFilter(query: string[]) {
     const {
       searchTerm,
       searchText,

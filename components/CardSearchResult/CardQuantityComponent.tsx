@@ -16,19 +16,25 @@ import CountButton from './CountButton';
 import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING, TOGGLE_BUTTON_MODE } from './constants';
 import typography from '../../styles/typography';
 
+interface Props {
+  count: number;
+  countChanged: (count: number) => void;
+  limit: number;
+  showZeroCount?: boolean;
+}
+
+interface State {
+  open: boolean;
+  count: number;
+  slideAnim: Animated.Value;
+}
 
 /**
  * Simple sliding card count.
  */
-export default class CardQuantityComponent extends React.PureComponent {
-  static propTypes = {
-    count: PropTypes.number.isRequired,
-    countChanged: PropTypes.func.isRequired,
-    limit: PropTypes.number.isRequired,
-    showZeroCount: PropTypes.bool,
-  };
-
-  constructor(props) {
+export default class CardQuantityComponent extends React.PureComponent<Props, State> {
+  _throttledCountChange!: (count: number) => void;
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -37,23 +43,14 @@ export default class CardQuantityComponent extends React.PureComponent {
       slideAnim: new Animated.Value(0),
     };
 
-    this._toggle = this.toggle.bind(this);
-
     this._throttledCountChange = debounce(
       props.countChanged,
       200,
       { trailing: true }
     );
-
-    this._increment = this.increment.bind(this);
-    this._decrement = this.decrement.bind(this);
-    this._selectCount = this.selectCount.bind(this);
-    this._selectZero = this.selectCount.bind(this, 0);
-    this._selectOne = this.selectCount.bind(this, 1);
-    this._selectTwo = this.selectCount.bind(this, 2);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       count,
     } = this.props;
@@ -65,7 +62,7 @@ export default class CardQuantityComponent extends React.PureComponent {
     }
   }
 
-  increment() {
+  _increment = () => {
     const {
       limit,
     } = this.props;
@@ -78,9 +75,9 @@ export default class CardQuantityComponent extends React.PureComponent {
         count,
       };
     });
-  }
+  };
 
-  decrement() {
+  _decrement = () => {
     this.setState(state => {
       const count = Math.max((state.count || 0) - 1, 0);
       if (count !== state.count) {
@@ -90,22 +87,34 @@ export default class CardQuantityComponent extends React.PureComponent {
         count,
       };
     });
-  }
+  };
 
-  selectCount(count) {
+  _selectCount = (count: number) => {
     this.setState({
       count: count,
     }, () => {
       setTimeout(() => {
         if (TOGGLE_BUTTON_MODE) {
-          this.toggle(true);
+          this._toggle();
         }
         this._throttledCountChange(count);
       }, 0);
     });
   }
 
-  toggle() {
+  _selectZero = () => {
+    this._selectCount(0);
+  };
+
+  _selectOne = () => {
+    this._selectCount(1);
+  };
+
+  _selectTwo = () => {
+    this._selectCount(2);
+  };
+
+  _toggle = () => {
     const {
       open,
       slideAnim,
@@ -115,13 +124,12 @@ export default class CardQuantityComponent extends React.PureComponent {
         toValue: open ? 0 : 1,
         duration: 150,
         useNativeDriver: true,
-        easing: Easing.easeIn,
       }).start();
     });
     this.setState({
       open: !open,
     });
-  }
+  };
 
   renderTiny() {
     const {
@@ -143,7 +151,7 @@ export default class CardQuantityComponent extends React.PureComponent {
       <View style={styles.tinyContainer} pointerEvents="box-none">
         <Button
           style={styles.button}
-          color={count === 0 ? 'white' : null}
+          color={count === 0 ? 'white' : undefined}
           size="small"
           align="center"
           width={BUTTON_WIDTH}
@@ -217,7 +225,6 @@ export default class CardQuantityComponent extends React.PureComponent {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   row: {

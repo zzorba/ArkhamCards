@@ -8,8 +8,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import Realm from 'realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
@@ -266,7 +267,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
 export default connectRealm<OwnProps, RealmProps, Card>(
   connect(mapStateToProps, mapDispatchToProps)(CardDetailView), {
     schemas: ['Card'],
-    mapToProps(results, realm, props) {
+    mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
       return {
         realm,
         card: head(results.cards.filtered(`code == '${props.id}'`)),

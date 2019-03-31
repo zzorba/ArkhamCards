@@ -12,7 +12,11 @@ import typography from '../../styles/typography';
 import { isBig } from '../../styles/space';
 
 export const ROW_HEADER_HEIGHT = (isBig ? 42 : 30) * DeviceInfo.getFontScale();
-export default function CardSectionHeader({ title, bold }) {
+interface Props {
+  title: string;
+  bold?: boolean;
+}
+export default function CardSectionHeader({ title, bold }: Props) {
   return (
     <View style={[styles.row, bold ? styles.boldRow : {}]}>
       <Text style={[typography.text, styles.headerText]}>
@@ -21,11 +25,6 @@ export default function CardSectionHeader({ title, bold }) {
     </View>
   );
 }
-
-CardSectionHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  bold: PropTypes.bool,
-};
 
 const styles = StyleSheet.create({
   row: {

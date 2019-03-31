@@ -7,11 +7,20 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+// @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import { FilterState } from '../../lib/filters';
 import { COLORS } from '../../styles/colors';
 
-export default function TuneButton({ defaultFilters, filters, onPress, lightButton }) {
+interface Props {
+  defaultFilters: FilterState;
+  filters: FilterState;
+  onPress: () => void;
+  lightButton?: boolean;
+}
+
+export default function TuneButton({ defaultFilters, filters, onPress, lightButton }: Props) {
   const count = countBy(keys(defaultFilters), key => {
     return JSON.stringify(defaultFilters[key]) !== JSON.stringify(filters[key]);
   }).true || 0;
@@ -25,13 +34,6 @@ export default function TuneButton({ defaultFilters, filters, onPress, lightButt
     </TouchableOpacity>
   );
 }
-
-TuneButton.propTypes = {
-  defaultFilters: PropTypes.object,
-  filters: PropTypes.object,
-  onPress: PropTypes.func.isRequired,
-  lightButton: PropTypes.bool,
-};
 
 const styles = StyleSheet.create({
   container: {

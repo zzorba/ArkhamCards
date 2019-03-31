@@ -190,7 +190,7 @@ class DrawSimulatorView extends React.Component {
         <CardSearchResult
           id={item.key}
           card={card}
-          onPress={this._toggleSelection}
+          onPressId={this._toggleSelection}
         />
       </View>
     );

@@ -2,11 +2,149 @@ import { findIndex, forEach, map } from 'lodash';
 
 import { SKILLS } from '../constants';
 
-function safeValue(value) {
+
+interface SkillIconsFilters {
+  willpower: boolean;
+  intellect: boolean;
+  combat: boolean;
+  agility: boolean;
+  wild: boolean;
+  doubleIcons: boolean;
+}
+export interface FilterState {
+  [key: string]: string[] | boolean | [number, number] | SkillIconsFilters;
+  factions: string[];
+  uses: string[];
+  types: string[];
+  subTypes: string[];
+  xpLevels: string[];
+  traits: string[];
+  packs: string[];
+  cycleNames: string[];
+  slots: string[];
+  encounters: string[];
+  illustrators: string[];
+  levelEnabled: boolean;
+  exceptional: boolean;
+  nonExceptional: boolean;
+  costEnabled: boolean;
+  victory: boolean;
+  vengeance: boolean;
+  skillEnabled: boolean;
+  unique: boolean;
+  permanent: boolean;
+  fast: boolean;
+  exile: boolean;
+  skillIcons: SkillIconsFilters,
+  shroudEnabled: boolean;
+  cluesEnabled: boolean;
+  cluesFixed: boolean;
+  hauntedEnabled: boolean;
+  enemyHealthEnabled: boolean;
+  enemyHealthPerInvestigator: boolean;
+  enemyDamageEnabled: boolean;
+  enemyHorrorEnabled: boolean;
+  enemyFightEnabled: boolean;
+  enemyEvadeEnabled: boolean;
+  // Misc traits
+  enemyElite: boolean;
+  enemyNonElite: boolean;
+  enemyHunter: boolean;
+  enemyNonHunter: boolean;
+  enemyParley: boolean;
+  enemyRetaliate: boolean;
+  enemyAlert: boolean;
+  enemySpawn: boolean;
+  enemyPrey: boolean;
+  enemyAloof: boolean;
+  enemyMassive: boolean;
+  // Slider controls that are dynamically sized
+  level: [number, number];
+  cost: [number, number];
+  shroud: [number, number];
+  clues: [number, number];
+  enemyHealth: [number, number];
+  enemyDamage: [number, number];
+  enemyHorror: [number, number];
+  enemyFight: [number, number];
+  enemyEvade: [number, number];
+}
+
+export const defaultFilterState: FilterState = {
+  factions: [],
+  uses: [],
+  types: [],
+  subTypes: [],
+  xpLevels: [],
+  traits: [],
+  packs: [],
+  cycleNames: [],
+  slots: [],
+  encounters: [],
+  illustrators: [],
+  levelEnabled: false,
+  exceptional: false,
+  nonExceptional: false,
+  costEnabled: false,
+  victory: false,
+  vengeance: false,
+  skillEnabled: false,
+  unique: false,
+  permanent: false,
+  fast: false,
+  exile: false,
+  skillIcons: {
+    willpower: false,
+    intellect: false,
+    combat: false,
+    agility: false,
+    wild: false,
+    doubleIcons: false,
+  },
+  shroudEnabled: false,
+  cluesEnabled: false,
+  cluesFixed: false,
+  hauntedEnabled: false,
+  enemyHealthEnabled: false,
+  enemyHealthPerInvestigator: false,
+  enemyDamageEnabled: false,
+  enemyHorrorEnabled: false,
+  enemyFightEnabled: false,
+  enemyEvadeEnabled: false,
+  // Misc traits
+  enemyElite: false,
+  enemyNonElite: false,
+  enemyHunter: false,
+  enemyNonHunter: false,
+  enemyParley: false,
+  enemyRetaliate: false,
+  enemyAlert: false,
+  enemySpawn: false,
+  enemyPrey: false,
+  enemyAloof: false,
+  enemyMassive: false,
+  // Slider controls that are dynamically sized
+  level: [0, 5],
+  cost: [0, 6],
+  shroud: [0, 6],
+  clues: [0, 6],
+  enemyHealth: [0, 10],
+  enemyDamage: [0, 5],
+  enemyHorror: [0, 5],
+  enemyFight: [0, 6],
+  enemyEvade: [0, 6],
+};
+
+function safeValue(value: any) {
   return value;
 }
 
-function applyRangeFilter(query, field, values, linked) {
+function applyRangeFilter(
+  query: string[],
+  field: string,
+  values: [number, number],
+  linked: boolean
+) {
   if (values[0] === values[1]) {
     query.push(`(${field} == ${values[0]}${linked ? ` or linked_card.${field} == ${values[0]}` : ''})`);
   } else {
@@ -14,7 +152,7 @@ function applyRangeFilter(query, field, values, linked) {
   }
 }
 
-function applySlotFilter(filters, query) {
+function applySlotFilter(filters: FilterState, query: string[]) {
   const {
     slots,
   } = filters;
@@ -27,7 +165,7 @@ function applySlotFilter(filters, query) {
   }
 }
 
-function applyTraitFilter(filters, query) {
+function applyTraitFilter(filters: FilterState, query: string[]) {
   const {
     traits,
   } = filters;
@@ -42,14 +180,14 @@ function applyTraitFilter(filters, query) {
   }
 }
 
-function applySkillIconFilter(filters, query) {
-  const parts = [];
-  const doubleIcons = filters.doubleIcons;
+function applySkillIconFilter(skillFilters: SkillIconsFilters, query: string[]) {
+  const parts: string[] = [];
+  const doubleIcons = skillFilters.doubleIcons;
   const matchAll = doubleIcons &&
-    (findIndex(SKILLS, skill => filters[skill]) === -1);
+    (findIndex(SKILLS, skill => skillFilters[skill]) === -1);
 
   forEach(SKILLS, skill => {
-    if (matchAll || filters[skill]) {
+    if (matchAll || skillFilters[skill]) {
       parts.push(`skill_${skill} > ${doubleIcons ? 1 : 0}`);
     }
   });
@@ -62,7 +200,7 @@ function applySkillIconFilter(filters, query) {
   }
 }
 
-function applyLocationFilters(filters, query) {
+function applyLocationFilters(filters: FilterState, query: string[]) {
   const {
     shroudEnabled,
     shroud,
@@ -89,7 +227,7 @@ function applyLocationFilters(filters, query) {
   }
 }
 
-function applyEnemyFilters(filters, query) {
+function applyEnemyFilters(filters: FilterState, query: string[]) {
   const {
     // toggle filters
     enemyElite,
@@ -173,7 +311,7 @@ function applyEnemyFilters(filters, query) {
   }
 }
 
-function applyMiscFilter(filters, query) {
+function applyMiscFilter(filters: FilterState, query: string[]) {
   const {
     victory,
     vengeance,
@@ -186,7 +324,7 @@ function applyMiscFilter(filters, query) {
   }
 }
 
-function applyLevelFilter(filters, query) {
+function applyLevelFilter(filters: FilterState, query: string[]) {
   const {
     levelEnabled,
     level,
@@ -194,7 +332,7 @@ function applyLevelFilter(filters, query) {
     nonExceptional,
   } = filters;
   if (levelEnabled) {
-    applyRangeFilter(query, 'xp', level);
+    applyRangeFilter(query, 'xp', level, false);
     if (exceptional && !nonExceptional) {
       query.push(`(real_text CONTAINS 'Exceptional.' or linked_card.real_text CONTAINS 'Exceptional.')`);
     }
@@ -204,23 +342,23 @@ function applyLevelFilter(filters, query) {
   }
 }
 
-function applyCostFilter(filters, query) {
+function applyCostFilter(filters: FilterState, query: string[]) {
   const {
     costEnabled,
     cost,
   } = filters;
   if (costEnabled) {
-    applyRangeFilter(query, 'cost', cost);
+    applyRangeFilter(query, 'cost', cost, false);
   }
 }
 
-function applyFilter(values, field, query) {
+function applyFilter(values: string[], field: string, query: string[]) {
   if (values.length) {
     query.push(`(${map(values, value => `${field} == "${safeValue(value)}"`).join(' or ')})`);
   }
 }
 
-function applyPlayerCardFilters(filters, query) {
+function applyPlayerCardFilters(filters: FilterState, query: string[]) {
   const {
     uses,
     unique,
@@ -244,7 +382,7 @@ function applyPlayerCardFilters(filters, query) {
   }
 }
 
-export function filterToQuery(filters) {
+export function filterToQuery(filters: FilterState): string[] {
   const query = [];
   if (filters.factions.length) {
     query.push(`(${map(filters.factions, value => `faction_code == "${safeValue(value)}" or faction2_code == "${safeValue(value)}"`).join(' or ')})`);

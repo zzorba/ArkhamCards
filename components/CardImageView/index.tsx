@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
@@ -168,7 +168,7 @@ class CardImageView extends React.Component<Props, State> {
 
 export default connectRealm<OwnProps, RealmProps, Card>(CardImageView, {
   schemas: ['Card'],
-  mapToProps(results, realm, props) {
+  mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
     const card =
       head(results.cards.filtered(`code == "${props.id}"`));
     return {

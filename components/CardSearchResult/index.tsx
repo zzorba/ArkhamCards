@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { range } from 'lodash';
+import { flatMap, map, range } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -14,7 +14,8 @@ import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardCostIcon, { COST_ICON_SIZE } from '../core/CardCostIcon';
 import Switch from '../core/Switch';
-import { createFactionIcons, FACTION_COLORS } from '../../constants';
+import Card from '../../data/Card';
+import { createFactionIcons, FACTION_COLORS, SKILLS, SkillCodeType } from '../../constants';
 import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE, TOGGLE_BUTTON_MODE, BUTTON_WIDTH } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
@@ -26,52 +27,54 @@ const SMALL_ICON_SIZE = (isBig ? 38 : 26) * DeviceInfo.getFontScale();
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
 
-export default class CardSearchResult extends React.PureComponent {
-  static propTypes = {
-    card: PropTypes.object.isRequired,
-    count: PropTypes.number,
-    onPress: PropTypes.func,
-    onDeckCountChange: PropTypes.func,
-    limit: PropTypes.number,
-    onToggleChange: PropTypes.func,
-    toggleValue: PropTypes.bool,
-    deltaCountMode: PropTypes.bool,
-    hasSecondCore: PropTypes.bool,
-    showZeroCount: PropTypes.bool,
-    id: PropTypes.string,
-  };
+interface Props {
+  card: Card;
+  id?: string;
+  count?: number;
+  onPress?: (card: Card) => void;
+  onPressId?: (code: string) => void;
+  onDeckCountChange?: (code: string, count: number) => void;
+  limit?: number;
+  onToggleChange?: () => void;
+  toggleValue?: boolean;
+  deltaCountMode?: boolean;
+  hasSecondCore?: boolean;
+  showZeroCount?: boolean;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-    this._onDeckCountChange = this.onDeckCountChange.bind(this);
-    this._renderCountButton = this.renderCountButton.bind(this);
-  }
-
-  onPress() {
+export default class CardSearchResult extends React.PureComponent<Props> {
+  _onPress = () => {
     const {
       id,
       onPress,
+      onPressId,
     } = this.props;
     Keyboard.dismiss();
-    onPress && onPress(id || this.props.card);
-  }
+    if (id && onPressId) {
+      onPressId(id);
+    } else {
+      onPress && onPress(this.props.card);
+    }
+  };
 
-  onDeckCountChange(count) {
-    this.props.onDeckCountChange(this.props.card.code, count);
-  }
+  _onDeckCountChange = (count: number) => {
+    const {
+      onDeckCountChange,
+      card,
+    } = this.props;
+    onDeckCountChange && onDeckCountChange(card.code, count);
+  };
 
-  renderCountButton(count) {
+  _renderCountButton = (count: number) => {
     return count;
-  }
+  };
 
-  renderFactionIcon(card, size) {
+  renderFactionIcon(card: Card, size: number): ReactNode {
     if (!card.encounter_code && card.linked_card) {
       return this.renderFactionIcon(card.linked_card, size);
     }
 
-    if (card.spoiler) {
+    if (card.spoiler && card.encounter_code) {
       return (
         <EncounterIcon
           encounter_code={card.encounter_code}
@@ -99,10 +102,10 @@ export default class CardSearchResult extends React.PureComponent {
     if (card.faction2_code) {
       return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS).dual;
     }
-    return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS)[card.faction_code];
+    return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS)[card.faction_code || 'neutral'];
   }
 
-  static cardCost(card) {
+  static cardCost(card: Card): string {
     if (card.type_code === 'skill') {
       return '';
     }
@@ -112,7 +115,7 @@ export default class CardSearchResult extends React.PureComponent {
     return `${card.cost !== null ? card.cost : 'X'}`;
   }
 
-  renderIcon(card) {
+  renderIcon(card: Card): ReactNode {
     if (card.hidden && card.linked_card) {
       return this.renderIcon(card.linked_card);
     }
@@ -135,11 +138,11 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
-  static skillIcon(skill, count) {
+  static skillIcon(skill: SkillCodeType, count: number): ReactNode[] {
     if (count === 0) {
-      return null;
+      return [];
     }
-    return range(0, count).map(key => (
+    return map(range(0, count), key => (
       <View key={`${skill}-${key}`} style={styles.skillIcon}>
         <ArkhamIcon
           name={skill}
@@ -161,9 +164,9 @@ export default class CardSearchResult extends React.PureComponent {
       <View style={styles.dualFactionIcons}>
         <View style={styles.skillIcon}>
           <ArkhamIcon
-            name={card.faction_code}
+            name={card.faction_code || 'neutral'}
             size={15}
-            color={FACTION_COLORS[card.faction_code]}
+            color={FACTION_COLORS[card.faction_code || 'neutral']}
           />
         </View>
         <View style={styles.skillIcon}>
@@ -191,11 +194,8 @@ export default class CardSearchResult extends React.PureComponent {
     }
     return (
       <View style={styles.skillIcons}>
-        { CardSearchResult.skillIcon('willpower', card.skill_willpower) }
-        { CardSearchResult.skillIcon('intellect', card.skill_intellect) }
-        { CardSearchResult.skillIcon('combat', card.skill_combat) }
-        { CardSearchResult.skillIcon('agility', card.skill_agility) }
-        { CardSearchResult.skillIcon('wild', card.skill_wild) }
+        { flatMap(SKILLS, (skill: SkillCodeType) =>
+            CardSearchResult.skillIcon(skill, card.skillCount(skill))) }
       </View>
     );
   }
@@ -206,7 +206,7 @@ export default class CardSearchResult extends React.PureComponent {
     } = this.props;
     const color = card.faction2_code ?
       FACTION_COLORS.dual :
-      (FACTION_COLORS[card.faction_code] || '#000000');
+      (FACTION_COLORS[card.faction_code || 'neutral'] || '#000000');
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
@@ -229,9 +229,8 @@ export default class CardSearchResult extends React.PureComponent {
     );
   }
 
-  countText() {
+  countText(count: number) {
     const {
-      count,
       deltaCountMode,
     } = this.props;
     if (deltaCountMode) {
@@ -253,16 +252,16 @@ export default class CardSearchResult extends React.PureComponent {
       showZeroCount,
     } = this.props;
     if (onDeckCountChange) {
-      const deck_limit = Math.min(
+      const deck_limit: number = Math.min(
         card.pack_code === 'core' ?
-          (card.quantity * (hasSecondCore ? 2 : 1)) :
-          card.deck_limit,
-        card.deck_limit
+          ((card.quantity || 0) * (hasSecondCore ? 2 : 1)) :
+          (card.deck_limit || 0),
+        card.deck_limit || 0
       );
       return (
         <CardQuantityComponent
           count={count || 0}
-          limit={Math.max(count || 0, limit !== null ? limit : deck_limit)}
+          limit={Math.max(count || 0, typeof limit === 'number' ? limit : deck_limit)}
           countChanged={this._onDeckCountChange}
           showZeroCount={showZeroCount}
         />
@@ -272,7 +271,7 @@ export default class CardSearchResult extends React.PureComponent {
       return (
         <View style={styles.countText}>
           <Text style={typography.text}>
-            { this.countText() }
+            { this.countText(count) }
           </Text>
         </View>
       );

@@ -1,17 +1,40 @@
 import PropTypes from 'prop-types';
-import { concat, filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy } from 'lodash';
+import { concat, filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy, union } from 'lodash';
 
 import L from '../app/i18n';
-import { FACTION_CODES, SKILLS, RANDOM_BASIC_WEAKNESS } from '../constants';
+import { Deck, Slots } from '../actions/types';
+import Card, { CardKey, CardsMap } from '../data/Card';
+import {
+  PLAYER_FACTION_CODES,
+  SKILLS,
+  RANDOM_BASIC_WEAKNESS,
+  FactionCodeType,
+  SkillCodeType,
+} from '../constants';
 
-function filterBy(cardIds, cards, field, value) {
+interface CardId {
+  id: string;
+  quantity: number;
+}
+
+function filterBy(
+  cardIds: CardId[],
+  cards: CardsMap,
+  field: CardKey,
+  value: any
+): CardId[] {
   return cardIds.filter(c => cards[c.id] && cards[c.id][field] === value);
 }
 
-function groupAssets(cardIds, cards) {
+interface AssetGroup {
+  type: string;
+  data: CardId[];
+}
+
+function groupAssets(cardIds: CardId[], cards: CardsMap): AssetGroup[] {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, c => {
-    switch(cards[c.id].slot) {
+    switch (cards[c.id].slot) {
       case 'Hand': return L('Hand');
       case 'Hand. Arcane': return L('Hand. Arcane');
       case 'Hand x2': return L('Hand x2');
@@ -26,7 +49,18 @@ function groupAssets(cardIds, cards) {
   });
   return filter(
     map(
-      [L('Hand'), L('Hand x2'), L('Hand. Arcane'), L('Body. Hand x2'), L('Arcane'), L('Accessory'), L('Body'), L('Ally'), L('Tarot'), L('Other')],
+      [
+        L('Hand'),
+        L('Hand x2'),
+        L('Hand. Arcane'),
+        L('Body. Hand x2'),
+        L('Arcane'),
+        L('Accessory'),
+        L('Body'),
+        L('Ally'),
+        L('Tarot'),
+        L('Other'),
+      ],
       t => {
         return { type: t, data: groups[t] || [] };
       }),
@@ -34,25 +68,38 @@ function groupAssets(cardIds, cards) {
   );
 }
 
-export function isSpecialCard(card) {
-  return card && (
-    card.code === RANDOM_BASIC_WEAKNESS ||
-    card.permanent ||
-    card.subtype_code === 'weakness' ||
-    card.subtype_code === 'basicweakness' ||
-    card.spoiler ||
-    card.restrictions
+export function isSpecialCard(card: Card): boolean {
+  return !!(
+    card && (
+      card.code === RANDOM_BASIC_WEAKNESS ||
+      card.permanent ||
+      card.subtype_code === 'weakness' ||
+      card.subtype_code === 'basicweakness' ||
+      card.spoiler ||
+      card.restrictions
+    )
   );
 }
 
-function splitCards(cardIds, cards) {
-  const result = {};
+
+interface SplitCards {
+  Assets?: AssetGroup[];
+  Event?: CardId[];
+  Skill?: CardId[];
+  Treachery?: CardId[];
+  Enemy?: CardId[];
+}
+type CardSplitType = keyof SplitCards;
+
+function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
+  const result: SplitCards = {};
 
   const groupedAssets = groupAssets(cardIds, cards);
   if (groupedAssets.length > 0) {
     result.Assets = groupedAssets;
   }
-  ['Event', 'Skill', 'Treachery', 'Enemy'].forEach(type_code => {
+  const otherTypes: CardSplitType[] = ['Event', 'Skill', 'Treachery', 'Enemy'];
+  otherTypes.forEach(type_code => {
     const typeCards = filterBy(cardIds, cards, 'type_code', type_code.toLowerCase());
     if (typeCards.length > 0) {
       result[type_code] = typeCards;
@@ -61,11 +108,15 @@ function splitCards(cardIds, cards) {
   return result;
 }
 
-function computeXp(card) {
+function computeXp(card?: Card) {
   return (card && card.xp) ? ((card.exceptional ? 2 : 1) * (card.xp)) : 0;
 }
 
-function factionCount(cardIds, cards, faction) {
+function factionCount(
+  cardIds: CardId[],
+  cards: CardsMap,
+  faction: FactionCodeType
+): number {
   return sum(cardIds.filter(c => (
     cards[c.id] &&
     !cards[c.id].permanent &&
@@ -75,7 +126,7 @@ function factionCount(cardIds, cards, faction) {
   )).map(c => c.quantity));
 }
 
-function costHistogram(cardIds, cards) {
+function costHistogram(cardIds: CardId[], cards: CardsMap): number[] {
   const costHisto = mapValues(
     groupBy(
       cardIds.filter(c => {
@@ -92,19 +143,25 @@ function costHistogram(cardIds, cards) {
   return range(0, 6).map(cost => costHisto[cost] || 0);
 }
 
-function sumSkillIcons(cardIds, cards, skill) {
+function sumSkillIcons(cardIds: CardId[], cards: CardsMap, skill: SkillCodeType): number {
   return sum(cardIds.map(c =>
-    ((cards[c.id] && cards[c.id][`skill_${skill}`]) || 0) * c.quantity));
+    (cards[c.id] ? cards[c.id].skillCount(skill) : 0) * c.quantity));
 }
 
-function getChangedCards(deck, slots, ignoreDeckLimitSlots, previousDeck, exiledCards) {
+function getChangedCards(
+  deck: Deck,
+  slots: Slots,
+  ignoreDeckLimitSlots: Slots,
+  previousDeck: Deck | null,
+  exiledCards: Slots
+) {
   if (!deck.previous_deck || !previousDeck) {
     return {};
   }
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
-  const changedCards = {};
+  const changedCards: Slots = {};
   forEach(
-    uniqBy(concat(keys(slots), keys(previousDeck.slots))),
+    union(keys(slots), keys(previousDeck.slots)),
     code => {
       const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
       const exiledCount = exiledCards[code] || 0;
@@ -118,7 +175,11 @@ function getChangedCards(deck, slots, ignoreDeckLimitSlots, previousDeck, exiled
   return changedCards;
 }
 
-function calculateTotalXp(cards, slots, ignoreDeckLimitSlots) {
+function calculateTotalXp(
+  cards: CardsMap,
+  slots: Slots,
+  ignoreDeckLimitSlots: Slots
+): number {
   return sum(map(keys(slots), code => {
     const card = cards[code];
     const xp = (card && computeXp(card)) || 0;
@@ -129,8 +190,13 @@ function calculateTotalXp(cards, slots, ignoreDeckLimitSlots) {
 
 const ARCANE_RESEARCH_CODE = '04109';
 const ADAPTABLE_CODE = '02110';
-function calculateSpentXp(cards, slots, changedCards, exiledCards) {
-  const exiledSlots = [];
+function calculateSpentXp(
+  cards: CardsMap,
+  slots: Slots,
+  changedCards: Slots,
+  exiledCards: Slots
+) {
+  const exiledSlots: Card[] = [];
   forEach(exiledCards, (exileCount, code) => {
     if (exileCount > 0) {
       const card = cards[code];
@@ -142,8 +208,8 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
   let adaptableUses = (slots[ADAPTABLE_CODE] || 0) * 2;
   let arcaneResearchUses = (slots[ARCANE_RESEARCH_CODE] || 0);
 
-  const addedCards = [];
-  const removedCards = [];
+  const addedCards: Card[] = [];
+  const removedCards: Card[] = [];
   forEach(changedCards, (count, code) => {
     const card = cards[code];
     if (card) {
@@ -168,7 +234,7 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
     sortBy(
       // null cards are story assets, so putting them in is free.
       filter(addedCards, card => card.xp !== null),
-      card => -card.xp
+      card => -(card.xp || 0)
     ),
     addedCard => {
       // We visit cards from high XP to low XP, so if there's 0 XP card,
@@ -206,6 +272,8 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
       for (let i = 0; i < removedCards.length; i++) {
         const removedCard = removedCards[i];
         if (addedCard.name === removedCard.name &&
+            addedCard.xp !== null &&
+            removedCard.xp !== null &&
             addedCard.xp > removedCard.xp) {
 
           pullAt(removedCards, [i]);
@@ -214,6 +282,8 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
           // and its a spell, you get a 1 XP discount on upgrade of
           // a spell to a spell.
           if (arcaneResearchUses > 0 &&
+            removedCard.real_traits_normalized &&
+            addedCard.real_traits_normalized &&
             removedCard.real_traits_normalized.indexOf('#spell#') !== -1 &&
             addedCard.real_traits_normalized.indexOf('#spell#') !== -1) {
             let xpCost = (computeXp(addedCard) - computeXp(removedCard));
@@ -232,7 +302,13 @@ function calculateSpentXp(cards, slots, changedCards, exiledCards) {
   ));
 }
 
-export function parseDeck(deck, slots, ignoreDeckLimitSlots, cards, previousDeck) {
+export function parseDeck(
+  deck: Deck | null,
+  slots: Slots,
+  ignoreDeckLimitSlots: Slots,
+  cards: CardsMap,
+  previousDeck: Deck | null,
+) {
   if (!deck) {
     return {};
   }
@@ -261,11 +337,13 @@ export function parseDeck(deck, slots, ignoreDeckLimitSlots, cards, previousDeck
   const spentXp = calculateSpentXp(cards, slots, changedCards, exiledCards);
   const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);
 
-  const factionCounts = {};
-  FACTION_CODES.forEach(faction => {
+  const factionCounts: {
+    [faction in FactionCodeType]?: number
+  } = {};
+  PLAYER_FACTION_CODES.forEach(faction => {
     factionCounts[faction] = factionCount(cardIds, cards, faction);
   });
-  const skillIconCounts = {};
+  const skillIconCounts: { [skill in SkillCodeType]?: number } = {};
   SKILLS.forEach(skill => {
     skillIconCounts[skill] = sumSkillIcons(cardIds, cards, skill);
   });

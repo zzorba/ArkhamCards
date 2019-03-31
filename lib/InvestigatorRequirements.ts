@@ -1,9 +1,11 @@
 import { map, partition } from 'lodash';
 
+import Card from '../data/Card';
+
 /**
  * Turn the given realm card into a realm-query string.
  */
-export function queryForInvestigator(investigator) {
+export function queryForInvestigator(investigator: Card) {
   const [inverted, normal] = partition(
     investigator.deck_options,
     opt => opt.not);

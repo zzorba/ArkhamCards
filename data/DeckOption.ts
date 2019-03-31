@@ -59,10 +59,13 @@ export default class DeckOption {
       dirty = true;
     }
     if (this.text && this.text.length) {
+      if (dirty) {
+        query += ' AND';
+      }
       // No regex so we have to pre-bake these unfortunately.
       if (this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
         this.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror') {
-        query += ' heals_horror == true ';
+        query += ' (heals_horror == true)';
         dirty = true;
       }
     }
@@ -81,10 +84,12 @@ export default class DeckOption {
       if (dirty) {
         query += ' AND';
       }
+      query += ' (';
       query += ` xp >= ${this.level.min} AND xp <= ${this.level.max}`;
+      query += ' )';
       dirty = true;
     }
-    if (this.type_code) {
+    if (this.type_code && this.type_code.length) {
       if (dirty) {
         query += ' AND';
       }

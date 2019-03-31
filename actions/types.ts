@@ -7,6 +7,7 @@ export interface Slots {
 export interface Deck {
   id: number;
   name: string;
+  investigator_code: string;
   next_deck?: number;
   previous_deck?: number;
   local?: boolean;
@@ -15,6 +16,7 @@ export interface Deck {
   scenarioCount?: number;
   slots: Slots;
   ignoreDeckLimitSlots: Slots,
+  exile_string?: string;
 }
 
 export interface Pack {
