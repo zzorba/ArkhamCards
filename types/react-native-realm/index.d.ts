@@ -5,6 +5,7 @@ declare module "react-native-realm" {
 
   interface ResultsObject<T> {
     filtered: (query: string) => T[];
+    length: number;
   }
 
   export interface CardResults<Card> {
@@ -15,13 +16,13 @@ declare module "react-native-realm" {
     cards: ResultsObject<Card>;
   }
 
-  export interface CardOptions<P extends IP, IP extends object, Card> {
+  export interface CardOptions<OwnProps, RealmProps, Card> {
     schemas: ['Card'];
     mapToProps: (
       results: CardResults<Card>,
       realm: Realm,
-      props: Subtract<P, IP>
-    ) => IP;
+      props: OwnProps
+    ) => RealmProps;
   }
 
   export interface CardAndFaqResults<Card, FaqEntry> {
@@ -29,17 +30,17 @@ declare module "react-native-realm" {
     faqEntries: ResultsObject<FaqEntry>
   }
 
-  export interface CardAndFaqOptions<P extends IP, IP extends object, Card, FaqEntry>  {
+  export interface CardAndFaqOptions<OwnProps, RealmProps, Card, FaqEntry> {
     schemas: ['Card', 'FaqEntry'];
     mapToProps: (
       results: CardAndFaqResults<Card, FaqEntry>,
       realm: Realm,
-      props: Subtract<P, IP>
-    ) => IP;
+      props: OwnProps
+    ) => RealmProps;
   }
 
-  export function connectRealm<P extends IP, IP extends object, Card>(
-    component: React.ComponentType<P>,
-    options: CardOptions<P, IP, Card>
-  ): React.ComponentType<Subtract<P, IP>>;
+  export function connectRealm<OwnProps, RealmProps, Card>(
+    component: React.ComponentType<OwnProps & RealmProps>,
+    options: CardOptions<OwnProps, RealmProps, Card>
+  ): React.ComponentType<OwnProps>;
 }

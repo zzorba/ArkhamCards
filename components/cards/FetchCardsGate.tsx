@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
   Alert,
@@ -7,58 +7,62 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import Realm from 'realm';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
+import { Subtract } from 'utility-types';
 
 import L from '../../app/i18n';
 import Button from '../core/Button';
+import Card from '../../data/Card';
 import { fetchCards, dismissUpdatePrompt } from './actions';
+import { AppState } from '../../reducers';
 import typography from '../../styles/typography';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
 const REFETCH_SECONDS = REFETCH_DAYS * 24 * 60 * 60;
 const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
+
+interface RealmProps {
+  realm: Realm;
+  cardCount?: number;
+}
+
+interface ReduxProps {
+  loading?: boolean;
+  error?: string;
+  lang?: string;
+  fetchNeeded?: boolean;
+  dateFetched?: number;
+  dateUpdatePrompt?: number;
+}
+
+interface ReduxActionProps {
+  fetchCards: (realm: Realm, lang?: string) => void;
+  dismissUpdatePrompt: () => void;
+}
+
+interface OwnProps {
+  promptForUpdate?: boolean;
+  children: ReactNode;
+}
+
+type Props = RealmProps & ReduxProps & ReduxActionProps & OwnProps;
+
 /**
  * Simple component to block children rendering until cards/packs are loaded.
  */
-class FetchCardsGate extends React.Component {
-  static propTypes = {
-    // from redux/realm.
-    realm: PropTypes.object.isRequired,
-    promptForUpdate: PropTypes.bool,
-    loading: PropTypes.bool,
-    error: PropTypes.string,
-    lang: PropTypes.string,
-    /* eslint-disable react/no-unused-prop-types */
-    cardCount: PropTypes.number,
-    /* eslint-disable react/no-unused-prop-types */
-    fetchNeeded: PropTypes.bool,
-    // From redux
-    fetchCards: PropTypes.func.isRequired,
-    dismissUpdatePrompt: PropTypes.func.isRequired,
-    children: PropTypes.node.isRequired,
-    dateFetched: PropTypes.number,
-    dateUpdatePrompt: PropTypes.number,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-
-    this._doFetch = this.doFetch.bind(this);
-    this._ignoreUpdate = this.ignoreUpdate.bind(this);
-  }
-
-  fetchNeeded(props) {
+class FetchCardsGate extends React.Component<Props> {
+  fetchNeeded(props: Props) {
     return props.fetchNeeded || props.cardCount === 0;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (this.fetchNeeded(this.props) && !this.fetchNeeded(prevProps)) {
-      this.doFetch();
+      this._doFetch();
     }
   }
 
@@ -69,33 +73,29 @@ class FetchCardsGate extends React.Component {
     } = this.props;
     const nowSeconds = (new Date()).getTime() / 1000;
     return (
-      dateFetched === null ||
+      !dateFetched ||
       (dateFetched + REFETCH_SECONDS) < nowSeconds
     ) && (
-      dateUpdatePrompt === null ||
+      !dateUpdatePrompt ||
       (dateUpdatePrompt + REPROMPT_SECONDS) < nowSeconds
     );
   }
 
-  ignoreUpdate() {
-    const {
-      dismissUpdatePrompt,
-    } = this.props;
-    dismissUpdatePrompt();
-  }
+  _ignoreUpdate = () => {
+    this.props.dismissUpdatePrompt();
+  };
 
-  doFetch() {
+  _doFetch = () => {
     const {
       realm,
       lang,
-      fetchCards,
     } = this.props;
-    fetchCards(realm, lang);
-  }
+    this.props.fetchCards(realm, lang);
+  };
 
   componentDidMount() {
     if (this.fetchNeeded(this.props)) {
-      this.doFetch();
+      this._doFetch();
     } else if (this.props.promptForUpdate && this.updateNeeded()) {
       Alert.alert(
         L('Check for updated cards?'),
@@ -147,36 +147,44 @@ class FetchCardsGate extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
     fetchNeeded: state.packs.all.length === 0,
-    lang: state.packs.lang,
+    lang: state.packs.lang || undefined,
     loading: state.packs.loading || state.cards.loading,
-    error: state.packs.error || state.cards.error,
-    dateFetched: state.packs.dateFetched,
-    dateUpdatePrompt: state.packs.dateUpdatePrompt,
+    error: state.packs.error || state.cards.error || undefined,
+    dateFetched: state.packs.dateFetched || undefined,
+    dateUpdatePrompt: state.packs.dateUpdatePrompt || undefined,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(
+  dispatch: Dispatch<Action>
+): ReduxActionProps {
   return bindActionCreators({
     fetchCards,
     dismissUpdatePrompt,
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  connectRealm(FetchCardsGate,
-    {
-      schemas: ['Card'],
-      mapToProps(results, realm) {
-        return {
-          realm,
-          cardCount: results.cards.length,
-        };
-      },
+export default connectRealm<OwnProps, RealmProps, Card>(
+  connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(FetchCardsGate),
+  {
+    schemas: ['Card'],
+    mapToProps(
+      results: CardResults<Card>,
+      realm: Realm,
+      props: OwnProps
+    ) {
+      return {
+        realm,
+        cardCount: results.cards.length,
+      };
     },
-  )
+  },
 );
 
 const styles = StyleSheet.create({

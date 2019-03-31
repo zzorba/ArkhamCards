@@ -11,7 +11,7 @@ import { AppState } from '../reducers';
 export const syncCards = function(
   realm: Realm,
   packs: Pack[],
-  lang: string,
+  lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
   const langPrefix = lang ? `${lang}.` : '';

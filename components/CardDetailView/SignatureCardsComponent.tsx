@@ -20,10 +20,11 @@ interface RealmProps {
   alternateCards?: Card[];
 }
 
-interface Props extends RealmProps {
+interface OwnProps {
   componentId: string;
   investigator: Card;
 }
+type Props = OwnProps & RealmProps;
 
 class SignatureCardsComponent extends React.Component<Props> {
   render() {
@@ -54,13 +55,13 @@ class SignatureCardsComponent extends React.Component<Props> {
 }
 
 
-export default connectRealm<Props, RealmProps, Card>(
+export default connectRealm<OwnProps, RealmProps, Card>(
   SignatureCardsComponent, {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: Subtract<Props, RealmProps>
+      props: OwnProps
     ) {
       const requirements = props.investigator.deck_requirements;
       const card_requirements = requirements && requirements.card;

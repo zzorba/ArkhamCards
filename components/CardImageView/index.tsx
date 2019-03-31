@@ -9,41 +9,46 @@ import {
 import { CachedImage } from 'react-native-cached-image';
 import { connectRealm } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { iconsMap } from '../../app/NavIcons';
+import Card from '../../data/Card';
 import { HEADER_HEIGHT } from '../../styles/sizes';
 import { COLORS } from '../../styles/colors';
 
-class CardImageView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
-    id: PropTypes.string.isRequired,
-    card: PropTypes.object,
-  };
+interface RealmProps {
+  card?: Card;
+}
 
-  constructor(props) {
+interface OwnProps {
+  componentId: string;
+  id: string;
+}
+
+type Props = OwnProps & RealmProps;
+
+interface State {
+  flipped: boolean;
+};
+
+class CardImageView extends React.Component<Props, State> {
+  _navEventListener?: EventSubscription;
+
+  constructor(props: Props) {
     super(props);
 
-    const {
-      height,
-      width,
-    } = Dimensions.get('window');
-
-    const doubleCard = props.card.double_sided ||
-      (props.card.linked_card && props.card.linked_card.imagesrc);
+    const doubleCard: boolean = !!props.card && (
+      props.card.double_sided ||
+      !!(props.card.linked_card && props.card.linked_card.imagesrc)
+    );
 
     this.state = {
-      flipped: props.card.type_code === 'investigator' ||
+      flipped: !!props.card && (
+        props.card.type_code === 'investigator' ||
         props.card.type_code === 'act' ||
         props.card.type_code === 'agenda' ||
-        (doubleCard && props.card.hidden),
-      width,
-      height: height - HEADER_HEIGHT,
+        (doubleCard && !!props.card.hidden)),
     };
-
-    this._flip = this.flip.bind(this);
 
     if (doubleCard) {
       Navigation.mergeOptions(props.componentId, {
@@ -60,20 +65,20 @@ class CardImageView extends React.Component {
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'flip') {
       this._flip();
     }
   }
 
-  flip() {
+  _flip = () => {
     this.setState({
       flipped: !this.state.flipped,
     });
-  }
+  };
 
   renderContent() {
     const {
@@ -81,18 +86,24 @@ class CardImageView extends React.Component {
     } = this.props;
     const {
       flipped,
+    } = this.state;
+    const {
       height,
       width,
-    } = this.state;
+    } = Dimensions.get('window');
+    if (!card) {
+      return null;
+    }
+
     const cardRatio = 68.0 / 88;
-    const cardHeight = height * cardRatio;
+    const cardHeight = (height - HEADER_HEIGHT) * cardRatio;
     const cardWidth = width - 16;
     if (card.double_sided || (card.linked_card && card.linked_card.imagesrc)) {
       if (flipped) {
         return (
           <ViewControl
             cropWidth={width}
-            cropHeight={height}
+            cropHeight={height - HEADER_HEIGHT}
             imageWidth={cardWidth}
             imageHeight={cardHeight}
             style={styles.pinchZoom}
@@ -110,7 +121,7 @@ class CardImageView extends React.Component {
       return (
         <ViewControl
           cropWidth={width}
-          cropHeight={height}
+          cropHeight={height - HEADER_HEIGHT}
           imageWidth={cardWidth}
           imageHeight={cardHeight}
           style={styles.pinchZoom}
@@ -119,6 +130,7 @@ class CardImageView extends React.Component {
             style={{ height: cardHeight, width: cardWidth }}
             resizeMode="contain"
             source={{
+              // @ts-ignore
               uri: `https://arkhamdb.com${card.double_sided ? card.backimagesrc : card.linked_card.imagesrc}`,
             }}
           />
@@ -129,7 +141,7 @@ class CardImageView extends React.Component {
     return (
       <ViewControl
         cropWidth={width}
-        cropHeight={height}
+        cropHeight={height - HEADER_HEIGHT}
         imageWidth={cardWidth}
         imageHeight={cardHeight}
         style={styles.pinchZoom}
@@ -154,7 +166,7 @@ class CardImageView extends React.Component {
   }
 }
 
-export default connectRealm(CardImageView, {
+export default connectRealm<OwnProps, RealmProps, Card>(CardImageView, {
   schemas: ['Card'],
   mapToProps(results, realm, props) {
     const card =

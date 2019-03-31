@@ -2,10 +2,17 @@ import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import FetchCardsGate from './FetchCardsGate';
 
-export default function withFetchCardsGate(WrappedComponent, { promptForUpdate }) {
-  const result = function(props) {
+interface Arguments {
+  promptForUpdate?: boolean;
+}
+
+export default function withFetchCardsGate<Props>(
+  WrappedComponent: React.ComponentType<Props>,
+  { promptForUpdate }: Arguments
+) {
+  const result = function(props: Props) {
     return (
-      <FetchCardsGate promptForUpdate={promptForUpdate} {...props}>
+      <FetchCardsGate promptForUpdate={promptForUpdate}>
         <WrappedComponent {...props} />
       </FetchCardsGate>
     );

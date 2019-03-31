@@ -42,7 +42,7 @@ const icons: {
 const defaultIconProvider = MaterialIcons;
 
 const iconsMap: {
-  [key: string]: string;
+  [key: string]: number;
 } = {};
 
 const iconsLoaded = new Promise((resolve) => {

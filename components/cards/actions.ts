@@ -24,14 +24,14 @@ function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
 }
 
-function cardsCache(state: AppState, lang: string): undefined | CardCache {
+function cardsCache(state: AppState, lang?: string): undefined | CardCache {
   /* eslint-disable eqeqeq */
   return state.cards.lang == lang ? state.cards.cache : undefined;
 }
 
 export function fetchCards(
   realm: Realm,
-  lang: string
+  lang?: string
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     if (shouldFetchCards(getState())) {
@@ -60,7 +60,7 @@ export function fetchCards(
 }
 
 export function fetchPacks(
-  lang: string
+  lang?: string
 ): ThunkAction<Promise<Pack[]>, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     dispatch({

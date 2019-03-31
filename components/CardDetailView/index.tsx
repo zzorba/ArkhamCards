@@ -8,40 +8,42 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connectRealm } from 'react-native-realm';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
+import { Subtract } from 'utility-types';
 
 import L from '../../app/i18n';
 import { iconsMap } from '../../app/NavIcons';
-import * as Actions from '../../actions';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import AppIcon from '../../assets/AppIcon';
 import Button from '../core/Button';
-import { getShowSpoilers } from '../../reducers';
+import { getShowSpoilers, AppState } from '../../reducers';
 import Card from '../../data/Card';
 
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 
-/*
 interface RealmProps {
   card?: Card;
 }
 
-interface Props extends RealmProps {
+interface OwnProps {
   componentId: string;
   id: string;
   pack_code: string;
   showSpoilers?: boolean;
+
 }
+
+type Props = OwnProps & RealmProps;
 
 interface State {
   showSpoilers: boolean;
-}*/
+}
 
 class CardDetailView extends React.Component<Props, State> {
   static get options() {
@@ -54,7 +56,9 @@ class CardDetailView extends React.Component<Props, State> {
     };
   }
 
-  constructor(props) {
+  _navEventListener?: EventSubscription;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -89,7 +93,7 @@ class CardDetailView extends React.Component<Props, State> {
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
   _editSpoilersPressed = () => {
@@ -100,7 +104,7 @@ class CardDetailView extends React.Component<Props, State> {
     });
   };
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const {
       componentId,
       id,
@@ -121,24 +125,26 @@ class CardDetailView extends React.Component<Props, State> {
       componentId,
       card,
     } = this.props;
-    Navigation.push(componentId, {
-      component: {
-        name: 'Card.Faq',
-        passProps: {
-          id: card.code,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: L('FAQ'),
-            },
-            subtitle: {
-              text: card.name,
+    if (card) {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Card.Faq',
+          passProps: {
+            id: card.code,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: L('FAQ'),
+              },
+              subtitle: {
+                text: card.name,
+              },
             },
           },
         },
-      },
-    });
+      });
+    }
   };
 
   _showInvestigatorCards = () => {
@@ -147,24 +153,26 @@ class CardDetailView extends React.Component<Props, State> {
       card,
     } = this.props;
 
-    Navigation.push(componentId, {
-      component: {
-        name: 'Browse.InvestigatorCards',
-        passProps: {
-          investigatorCode: card.code,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: L('Allowed Cards'),
-            },
-            backButton: {
-              title: L('Back'),
+    if (card) {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Browse.InvestigatorCards',
+          passProps: {
+            investigatorCode: card.code,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: L('Allowed Cards'),
+              },
+              backButton: {
+                title: L('Back'),
+              },
             },
           },
         },
-      },
-    });
+      });
+    }
   };
 
   _toggleShowSpoilers = () => {
@@ -174,10 +182,14 @@ class CardDetailView extends React.Component<Props, State> {
   };
 
   shouldBlur() {
-    if (this.props.showSpoilers || this.state.showSpoilers) {
+    const {
+      showSpoilers,
+      card,
+    } = this.props;
+    if (showSpoilers || this.state.showSpoilers) {
       return false;
     }
-    return this.props.card.spoiler;
+    return card && card.spoiler;
   }
 
   renderInvestigatorCardsLink() {
@@ -185,7 +197,7 @@ class CardDetailView extends React.Component<Props, State> {
       componentId,
       card,
     } = this.props;
-    if (card.type_code !== 'investigator' || card.encounter_code !== null) {
+    if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
       return null;
     }
     return (
@@ -210,7 +222,9 @@ class CardDetailView extends React.Component<Props, State> {
       componentId,
       card,
     } = this.props;
-
+    if (!card) {
+      return null;
+    }
     if (this.shouldBlur()) {
       return (
         <ScrollView style={styles.viewContainer}>
@@ -239,17 +253,17 @@ class CardDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: Subtract<Props, RealmProps>) {
   return {
     showSpoilers: props.showSpoilers || getShowSpoilers(state, props.pack_code),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+function mapDispatchToProps(dispatch: Dispatch) {
+  return bindActionCreators({}, dispatch);
 }
 
-export default connectRealm(
+export default connectRealm<OwnProps, RealmProps, Card>(
   connect(mapStateToProps, mapDispatchToProps)(CardDetailView), {
     schemas: ['Card'],
     mapToProps(results, realm, props) {
