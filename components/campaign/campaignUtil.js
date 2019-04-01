@@ -1,6 +1,7 @@
 import { capitalize, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
-import { CUSTOM, campaignNames } from './constants';
+import { CUSTOM } from '../../actions/types';
+import { campaignNames } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
 import { CHAOS_TOKEN_ORDER } from '../../constants';
 

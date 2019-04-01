@@ -1,13 +1,31 @@
 import { map } from 'lodash';
+import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
 import {
   SET_ALL_CAMPAIGNS,
   NEW_CAMPAIGN,
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
+  Campaign,
+  CampaignCycleCode,
+  CampaignDifficultyType,
+  CustomCampaignLog,
+  WeaknessSet,
+  AddCampaignScenarioResultAction,
+  NewCampaignAction,
+  UpdateCampaignAction,
+  DeleteCampaignAction,
+  SetAllCampaignsAction,
 } from '../../actions/types';
+import { ChaosBag } from '../../constants';
+import { AppState } from '../../reducers';
 
-function getBaseDeckIds(state, latestDeckIds) {
+function getBaseDeckIds(
+  state: AppState,
+  latestDeckIds: number[]
+): number[] {
   const decks = state.decks.all || {};
   return map(latestDeckIds, deckId => {
     let deck = decks[deckId];
@@ -18,7 +36,9 @@ function getBaseDeckIds(state, latestDeckIds) {
   });
 }
 
-export function setAllCampaigns(campaigns) {
+export function setAllCampaigns(
+  campaigns: { [id: string]: Campaign }
+): SetAllCampaignsAction {
   return {
     type: SET_ALL_CAMPAIGNS,
     campaigns,
@@ -26,16 +46,16 @@ export function setAllCampaigns(campaigns) {
 }
 
 export function newCampaign(
-  id,
-  name,
-  pack_code,
-  difficulty,
-  deckIds,
-  chaosBag,
-  campaignLog,
-  weaknessSet
-) {
-  return (dispatch, getState) => {
+  id: number,
+  name: string,
+  pack_code: CampaignCycleCode,
+  difficulty: CampaignDifficultyType,
+  deckIds: number[],
+  chaosBag: ChaosBag,
+  campaignLog: CustomCampaignLog,
+  weaknessSet: WeaknessSet,
+): ThunkAction<void, AppState, null, NewCampaignAction> {
+  return (dispatch, getState: () => AppState) => {
     dispatch({
       type: NEW_CAMPAIGN,
       id,
@@ -62,9 +82,9 @@ export function newCampaign(
  * }
  */
 export function updateCampaign(
-  id,
-  sparseCampaign,
-) {
+  id: string,
+  sparseCampaign: Campaign,
+): ThunkAction<void, AppState, null, UpdateCampaignAction>  {
   return (dispatch, getState) => {
     const campaign = Object.assign({}, sparseCampaign);
     if (campaign.latestDeckIds) {
@@ -80,7 +100,7 @@ export function updateCampaign(
   };
 }
 
-export function deleteCampaign(id) {
+export function deleteCampaign(id: string): DeleteCampaignAction {
   return {
     type: DELETE_CAMPAIGN,
     id,
@@ -88,10 +108,22 @@ export function deleteCampaign(id) {
 }
 
 export function addScenarioResult(
-  id,
-  { scenario, scenarioCode, scenarioPack, resolution, interlude },
-  xp,
-) {
+  id: string,
+  {
+    scenario,
+    scenarioCode,
+    scenarioPack,
+    resolution,
+    interlude,
+  }: {
+    scenario: string;
+    scenarioCode: string;
+    resolution: string;
+    scenarioPack?: string;
+    interlude?: boolean;
+  },
+  xp: number,
+): AddCampaignScenarioResultAction {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
     id,

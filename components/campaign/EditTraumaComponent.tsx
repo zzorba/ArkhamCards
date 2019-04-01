@@ -5,23 +5,19 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../app/i18n';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
 import LabeledTextBox from '../core/LabeledTextBox';
+import L from '../../app/i18n';
+import { InvestigatorData, Trauma } from '../../actions/types';
+import Card from '../../data/Card';
 
-export default class EditTraumaComponent extends React.Component {
-  static propTypes = {
-    investigator: PropTypes.object.isRequired,
-    investigatorData: PropTypes.object,
-    showTraumaDialog: PropTypes.func.isRequired,
-  };
+interface Props {
+  investigator: Card;
+  investigatorData: InvestigatorData;
+  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._editTraumaPressed = this.editTraumaPressed.bind(this);
-  }
-
+export default class EditTraumaComponent extends React.Component<Props> {
   traumaData() {
     const {
       investigatorData,
@@ -30,13 +26,13 @@ export default class EditTraumaComponent extends React.Component {
     return investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA;
   }
 
-  editTraumaPressed() {
+  _editTraumaPressed = () => {
     const {
       investigator,
       showTraumaDialog,
     } = this.props;
     showTraumaDialog(investigator, this.traumaData());
-  }
+  };
 
   render() {
     const {

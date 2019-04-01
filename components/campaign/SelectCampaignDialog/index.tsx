@@ -13,17 +13,23 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import { CUSTOM, ALL_CAMPAIGNS, CampaignCycleCode } from '../../../actions/types';
 import CycleItem from './CycleItem';
-import { CUSTOM, campaigns } from '../constants';
-import { getPacksInCollection } from '../../../reducers';
+import { campaignName } from '../constants';
+import { getPacksInCollection, AppState } from '../../../reducers';
 
-class SelectCampaignDialog extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    campaignChanged: PropTypes.func.isRequired,
-    in_collection: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+  campaignChanged: (packCode: CampaignCycleCode, text: string) => void;
+}
 
+interface ReduxProps {
+  in_collection: { [code: string]: boolean; };
+}
+
+type Props = OwnProps & ReduxProps;
+
+class SelectCampaignDialog extends React.Component<Props> {
   static get options() {
     return {
       topBar: {
@@ -34,14 +40,7 @@ class SelectCampaignDialog extends React.Component {
     };
   }
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-    this._editCollection = this.editCollection.bind(this);
-  }
-
-  onPress(packCode, text) {
+  _onPress = (packCode: CampaignCycleCode, text: string) => {
     const {
       campaignChanged,
       componentId,
@@ -49,24 +48,23 @@ class SelectCampaignDialog extends React.Component {
 
     campaignChanged(packCode, text);
     Navigation.pop(componentId);
-  }
+  };
 
-  editCollection() {
+  _editCollection = () => {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },
     });
-  }
+  };
 
-  renderCampaign(packCode) {
-    const allCampaigns = campaigns();
+  renderCampaign(packCode: CampaignCycleCode) {
     return (
       <CycleItem
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}
-        text={packCode === CUSTOM ? L('Custom') : allCampaigns[packCode]}
+        text={campaignName(packCode) || L('Custom')}
       />
     );
   }
@@ -75,9 +73,8 @@ class SelectCampaignDialog extends React.Component {
     const {
       in_collection,
     } = this.props;
-    const allCampaigns = campaigns();
     const partitionedCampaigns = partition(
-      keys(allCampaigns),
+      ALL_CAMPAIGNS,
       pack_code => in_collection[pack_code]);
     const myCampaigns = partitionedCampaigns[0];
     const otherCampaigns = partitionedCampaigns[1];
@@ -109,17 +106,13 @@ class SelectCampaignDialog extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     in_collection: getPacksInCollection(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectCampaignDialog);
+export default connect(mapStateToProps)(SelectCampaignDialog);
 
 const styles = StyleSheet.create({
   flex: {

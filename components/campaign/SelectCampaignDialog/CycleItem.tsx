@@ -7,24 +7,19 @@ import {
   Text,
 } from 'react-native';
 
+import { CampaignCycleCode } from '../../../actions/types';
 import EncounterIcon from '../../../assets/EncounterIcon';
 
-export default class CycleItem extends React.Component {
-  static propTypes = {
-    packCode: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired,
-  };
+interface Props {
+  packCode: CampaignCycleCode;
+  text: string;
+  onPress: (packCode: CampaignCycleCode, text: string) => void;
+}
+export default class CycleItem extends React.Component<Props> {
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+  _onPress = () => {
     this.props.onPress(this.props.packCode, this.props.text);
-  }
+  };
 
   render() {
     const {

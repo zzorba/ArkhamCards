@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { last } from 'lodash';
 import {
   StyleSheet,
@@ -7,17 +6,17 @@ import {
   View,
 } from 'react-native';
 
+import { campaignNames, CAMPAIGN_COLORS, difficultyStrings } from './constants';
 import L from '../../app/i18n';
+import { CUSTOM, Campaign } from '../../actions/types';
 import EncounterIcon from '../../assets/EncounterIcon';
-import { CUSTOM, campaignNames, CAMPAIGN_COLORS, difficultyStrings } from './constants';
 import typography from '../../styles/typography';
 
-export default class CampaignSummaryComponent extends React.Component {
-  static propTypes = {
-    campaign: PropTypes.object.isRequired,
-    hideScenario: PropTypes.bool,
-  };
-
+interface Props {
+  campaign: Campaign;
+  hideScenario?: boolean;
+}
+export default class CampaignSummaryComponent extends React.Component<Props> {
   latestScenario() {
     return last(this.props.campaign.scenarioResults);
   }
@@ -63,7 +62,7 @@ export default class CampaignSummaryComponent extends React.Component {
     if (latestScenario && latestScenario.scenario) {
       const resolution = latestScenario.resolution ?
         `: ${latestScenario.resolution}` : '';
-      const xp = (latestScenario.xp > 0 || !latestScenario.interlude) ?
+      const xp = ((latestScenario.xp || 0) > 0 || !latestScenario.interlude) ?
         ` (${latestScenario.xp} XP)` : '';
       return (
         <View style={styles.marginTop}>

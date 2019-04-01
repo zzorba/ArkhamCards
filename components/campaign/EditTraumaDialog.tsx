@@ -1,12 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
-import L from '../../app/i18n';
 import EditTraumaDialogContent from './EditTraumaDialogContent';
 import Dialog from '../core/Dialog';
+import L from '../../app/i18n';
+import { Trauma } from '../../actions/types';
+import Card from '../../data/Card';
 
-export default class EditTraumaDialog extends React.Component {
+interface Props {
+  visible: boolean;
+  investigator?: Card;
+  trauma?: Trauma;
+  updateTrauma: (investigator_code: string, trauma: Trauma) => void;
+  hideDialog: () => void;
+  viewRef?: View;
+}
+
+interface State {
+  trauma: Trauma;
+  visible: boolean;
+}
+
+export default class EditTraumaDialog extends React.Component<Props, State> {
   static propTypes = {
     visible: PropTypes.bool.isRequired,
     investigator: PropTypes.object,
@@ -16,20 +33,16 @@ export default class EditTraumaDialog extends React.Component {
     viewRef: PropTypes.object,
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       trauma: {},
       visible: false,
     };
-
-    this._onCancel = this.onCancel.bind(this);
-    this._onSubmit = this.onSubmit.bind(this);
-    this._mutateTrauma = this.mutateTrauma.bind(this);
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: Props, state: State) {
     if (props.visible !== state.visible) {
       if (props.visible) {
         return {
@@ -44,27 +57,29 @@ export default class EditTraumaDialog extends React.Component {
     return null;
   }
 
-  onSubmit() {
+  _onSubmit = () => {
     const {
       investigator,
       updateTrauma,
       hideDialog,
     } = this.props;
-    updateTrauma(investigator.code, this.state.trauma);
+    if (investigator) {
+      updateTrauma(investigator.code, this.state.trauma);
+    }
     hideDialog();
-  }
+  };
 
-  onCancel() {
+  _onCancel = () => {
     this.props.hideDialog();
-  }
+  };
 
-  mutateTrauma(mutate) {
+  _mutateTrauma = (mutate: (trauma: Trauma) => Trauma) => {
     this.setState(state => {
       return {
         trauma: mutate(state.trauma),
       };
     });
-  }
+  };
 
   render() {
     const {

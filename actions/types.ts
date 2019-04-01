@@ -36,14 +36,18 @@ export interface Pack {
   url: string;
 }
 
-interface CampaignInvestigatorData {
+export interface Trauma {
   physical?: number;
   mental?: number;
   killed?: boolean;
   insane?: boolean;
 }
 
-interface WeaknessSet {
+export type InvestigatorData = {
+  [code: string]: Trauma;
+};
+
+export interface WeaknessSet {
   packCodes: string[];
   assignedCards: {
     [code: string]: number;
@@ -87,18 +91,69 @@ interface ScenarioResult {
   interlude?: boolean;
 }
 
+export const EASY = 'easy';
+export const STANDARD = 'standard';
+export const HARD = 'hard';
+export const EXPERT = 'expert';
+
+export type CampaignDifficultyType =
+  typeof EASY |
+  typeof STANDARD |
+  typeof HARD |
+  typeof EXPERT;
+
+export const DIFFICULTIES: CampaignDifficultyType[] = [
+  EASY,
+  STANDARD,
+  HARD,
+  EXPERT,
+];
+
+export const CUSTOM = 'custom';
+export const CORE = 'core';
+export const RTNOTZ = 'rtnotz';
+export const DWL = 'dwl';
+export const RTDWL = 'rtdwl';
+export const PTC = 'ptc';
+export const TFA = 'tfa';
+export const TCU = 'tcu';
+
+export type CampaignCycleCode =
+  typeof CUSTOM |
+  typeof CORE |
+  typeof RTNOTZ |
+  typeof DWL |
+  typeof RTDWL |
+  typeof PTC |
+  typeof TFA |
+  typeof TCU;
+
+export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
+  CORE,
+  RTNOTZ,
+  DWL,
+  RTDWL,
+  PTC,
+  TFA,
+  TCU,
+];
+export interface CustomCampaignLog {
+  sections?: string[];
+  counts?: string[];
+  investigatorSections?: string[];
+  investigatorCounts?: string[];
+};
+
 export interface Campaign {
-  id: string;
+  id: number;
   name: string;
-  difficulty: string;
-  cycleCode: string;
+  difficulty: CampaignDifficultyType;
+  cycleCode: CampaignCycleCode;
   lastUpdated: Date;
   showInterludes?: boolean;
   baseDeckIds?: number[];
   latestDeckIds?: number[]; // deprecated
-  investigatorData: {
-    [code: string]: CampaignInvestigatorData;
-  };
+  investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
   campaignNotes: {
@@ -230,15 +285,17 @@ export interface SetPackSpoilerAction {
   value: boolean;
 }
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';
-export interface NewCampaignAction extends Campaign {
+export interface NewCampaignAction {
   type: typeof NEW_CAMPAIGN;
   now: Date;
-  campaignLog: {
-    sections?: string[];
-    counts?: string[];
-    investigatorSections?: string[];
-    investigatorCounts?: string[];
-  }
+  id: number;
+  name: string;
+  difficulty: CampaignDifficultyType;
+  cycleCode: CampaignCycleCode;
+  baseDeckIds: number[];
+  chaosBag: ChaosBag;
+  weaknessSet: WeaknessSet;
+  campaignLog: CustomCampaignLog;
 }
 export const SET_ALL_CAMPAIGNS = 'SET_ALL_CAMPAIGNS';
 export interface SetAllCampaignsAction {

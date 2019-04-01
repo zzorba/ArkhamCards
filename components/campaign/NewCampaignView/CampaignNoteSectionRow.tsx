@@ -5,35 +5,29 @@ import {
   Text,
   View,
 } from 'react-native';
+// @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import DeviceInfo from 'react-native-device-info';
 
 import Button from '../../core/Button';
 import typography from '../../../styles/typography';
 
-export default class CampaignNoteSectionRow extends React.Component {
-  static propTypes = {
-    name: PropTypes.string,
-    isCount: PropTypes.bool,
-    perInvestigator: PropTypes.bool,
-    onPress: PropTypes.func,
-  }
-
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+interface Props {
+  name: string;
+  isCount?: boolean;
+  perInvestigator?: boolean;
+  onPress?: (name: string, isCount?: boolean, perInvestigator?: boolean) => void;
+}
+export default class CampaignNoteSectionRow extends React.Component<Props> {
+  _onPress = () => {
     const {
       name,
       isCount,
       perInvestigator,
       onPress,
     } = this.props;
-    onPress(name, isCount, perInvestigator);
-  }
+    onPress && onPress(name, isCount, perInvestigator);
+  };
 
   text() {
     const {

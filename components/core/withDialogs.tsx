@@ -15,9 +15,9 @@ export interface InjectedDialogProps {
     title: string,
     text: string,
     onTextChange: (text: string) => void,
-    showCrossOut: boolean,
-    numberOfLines: number,
-    onSaveAndAdd: (text: string) => void,
+    showCrossOut?: boolean,
+    numberOfLines?: number,
+    onSaveAndAdd?: (text: string) => void,
   ) => void;
   showCountEditDialog: (
     title: string,

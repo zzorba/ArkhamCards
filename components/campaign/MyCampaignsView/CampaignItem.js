@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { CUSTOM } from '../constants';
+import { CUSTOM } from '../../../actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import typography from '../../../styles/typography';

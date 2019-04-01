@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Platform,
+  TextInput,
+  View,
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
@@ -9,15 +11,23 @@ import L from '../../app/i18n';
 import Dialog from '../core/Dialog';
 import { COLORS } from '../../styles/colors';
 
-export default class AddCampaignNoteSectionDialog extends React.Component {
-  static propTypes = {
-    viewRef: PropTypes.object,
-    visible: PropTypes.bool,
-    addSection: PropTypes.func,
-    toggleVisible: PropTypes.func.isRequired,
-  };
+interface Props {
+  viewRef?: View,
+  visible: boolean;
+  addSection?: (name: string, perInvestigator: boolean, isCount: boolean) => void;
+  toggleVisible: () => void;
+}
 
-  constructor(props) {
+interface State {
+  name: string;
+  perInvestigator: boolean;
+  isCount: boolean;
+}
+
+export default class AddCampaignNoteSectionDialog extends React.Component<Props, State> {
+  _textInputRef: TextInput | null = null;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -25,21 +35,13 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
       perInvestigator: false,
       isCount: false,
     };
-
-    this._captureTextInputRef = this.captureTextInputRef.bind(this);
-    this._onAddPress = this.onAddPress.bind(this);
-    this._onCancelPress = this.onCancelPress.bind(this);
-    this._toggleCount = this.toggleCount.bind(this);
-    this._toggleInvestigator = this.toggleInvestigator.bind(this);
-    this._onNameChange = this.onNameChange.bind(this);
-    this._textInputRef = null;
   }
 
-  captureTextInputRef(ref) {
+  _captureTextInputRef = (ref: TextInput) => {
     this._textInputRef = ref;
-  }
+  };
 
-  onAddPress() {
+  _onAddPress = () => {
     const {
       name,
       perInvestigator,
@@ -52,40 +54,40 @@ export default class AddCampaignNoteSectionDialog extends React.Component {
     addSection && addSection(name, isCount, perInvestigator);
     this.resetForm();
     toggleVisible();
-  }
+  };
 
-  onCancelPress() {
+  _onCancelPress = () => {
     this.resetForm();
     this.props.toggleVisible();
-  }
+  };
 
   resetForm() {
     this.setState({
       name: '',
       perInvestigator: false,
-      inCount: false,
+      isCount: false,
     });
   }
 
-  toggleCount() {
+  _toggleCount = () => {
     this.setState({
       isCount: !this.state.isCount,
     });
-  }
+  };
 
-  toggleInvestigator() {
+  _toggleInvestigator = () => {
     this.setState({
       perInvestigator: !this.state.perInvestigator,
     });
-  }
+  };
 
-  onNameChange(value) {
+  _onNameChange = (value: string) => {
     this.setState({
       name: value,
     });
-  }
+  };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       visible,
     } = this.props;

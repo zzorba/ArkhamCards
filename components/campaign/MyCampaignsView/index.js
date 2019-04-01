@@ -15,12 +15,13 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import CampaignItem from './CampaignItem';
-import { CUSTOM, campaignNames } from '../constants';
+import { campaignNames } from '../constants';
 import SearchBox from '../../SearchBox';
 import withPlayerCards from '../../withPlayerCards';
 import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
+import { CUSTOM } from '../../../actions/types';
 import { getAllDecks, getCampaigns } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';

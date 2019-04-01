@@ -8,32 +8,33 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import LabeledTextBox from '../../core/LabeledTextBox';
-import { CUSTOM } from '../constants';
+import { CUSTOM, CORE, Campaign, CampaignCycleCode } from '../../../actions/types';
 
-export default class CampaignSelector extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    campaignChanged: PropTypes.func.isRequired,
-  };
+interface Props {
+  componentId: string;
+  campaignChanged: (cycleCode: CampaignCycleCode, campaignName: string) => void;
+}
 
-  constructor(props) {
+interface State {
+  selectedCampaign: string;
+  selectedCampaignCode: CampaignCycleCode;
+  customCampaign?: string;
+}
+export default class CampaignSelector extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       selectedCampaign: L('The Night of the Zealot'),
-      selectedCampaignCode: 'core',
+      selectedCampaignCode: CORE,
     };
-
-    this._updateManagedCampaign = this.updateManagedCampaign.bind(this);
-    this._campaignPressed = this.campaignPressed.bind(this);
-    this._campaignChanged = this.campaignChanged.bind(this);
   }
 
   componentDidMount() {
-    this.updateManagedCampaign();
+    this._updateManagedCampaign();
   }
 
-  updateManagedCampaign() {
+  _updateManagedCampaign = () => {
     const {
       selectedCampaign,
       selectedCampaignCode,
@@ -41,18 +42,20 @@ export default class CampaignSelector extends React.Component {
     } = this.state;
     this.props.campaignChanged(
       selectedCampaignCode,
-      selectedCampaignCode === CUSTOM ? customCampaign : selectedCampaign,
+      selectedCampaignCode === CUSTOM ?
+        (customCampaign || 'Custom Campaign') :
+        selectedCampaign,
     );
-  }
+  };
 
-  campaignChanged(code, text) {
+  _campaignChanged = (code: CampaignCycleCode, text: string) => {
     this.setState({
       selectedCampaign: text,
       selectedCampaignCode: code,
     }, this._updateManagedCampaign);
-  }
+  };
 
-  campaignPressed() {
+  _campaignPressed = () => {
     const {
       componentId,
     } = this.props;
@@ -72,7 +75,7 @@ export default class CampaignSelector extends React.Component {
         },
       },
     });
-  }
+  };
 
   render() {
     const {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { filter, forEach, keys, map, sumBy, throttle } from 'lodash';
 import {
   Alert,
@@ -9,44 +8,82 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import {
+  CORE,
+  STANDARD,
+  CUSTOM,
+  CampaignCycleCode,
+  CampaignDifficultyType,
+  CustomCampaignLog,
+  Deck,
+  Slots,
+  WeaknessSet,
+} from '../../../actions/types';
+import { ChaosBag } from '../../../constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import {
-  CUSTOM,
-  DIFFICULTY,
-  campaignLogs,
-  CAMPAIGN_CHAOS_BAGS,
+  getCampaignLog,
+  getChaosBag,
   difficultyStrings,
 } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
-import withDialogs from '../../core/withDialogs';
+import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
-import withWeaknessCards from '../../weakness/withWeaknessCards';
-import { getNextCampaignId } from '../../../reducers';
+import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
+import { getNextCampaignId, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 import { newCampaign } from '../actions';
 
-class NewCampaignView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    newCampaign: PropTypes.func.isRequired,
-    nextId: PropTypes.number.isRequired,
-    showTextEditDialog: PropTypes.func.isRequired,
-    captureViewRef: PropTypes.func.isRequired,
-    viewRef: PropTypes.object,
-    cardsMap: PropTypes.object,
-  };
+type InjectedProps = WeaknessCardProps & InjectedDialogProps;
 
+interface OwnProps extends InjectedProps {
+  componentId: string;
+}
+
+interface ReduxProps {
+  nextId: number;
+}
+
+interface ReduxActionProps {
+  newCampaign: (
+    id: number,
+    name: string,
+    pack_code: CampaignCycleCode,
+    difficulty: CampaignDifficultyType,
+    deckIds: number[],
+    chaosBag: ChaosBag,
+    campaignLog: CustomCampaignLog,
+    weaknessSet: WeaknessSet,
+  ) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps;
+
+interface State {
+  name: string;
+  campaign: string;
+  campaignCode: CampaignCycleCode;
+  difficulty: CampaignDifficultyType;
+  deckIds: number[];
+  weaknessPacks: string[];
+  weaknessAssignedCards: Slots;
+  customChaosBag: ChaosBag;
+  customCampaignLog: CustomCampaignLog;
+  campaignLogDialogVisible: boolean;
+}
+
+class NewCampaignView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -57,53 +94,45 @@ class NewCampaignView extends React.Component {
     };
   }
 
-  constructor(props) {
+  _navEventListener?: EventSubscription;
+  _onSave!: () => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       name: '',
       campaign: '',
-      campaignCode: '',
-      difficulty: 'standard',
+      campaignCode: CORE,
+      difficulty: STANDARD,
       deckIds: [],
       weaknessPacks: [],
       weaknessAssignedCards: {},
-      customChaosBag: Object.assign({}, CAMPAIGN_CHAOS_BAGS.core[1]),
+      customChaosBag: Object.assign({}, getChaosBag(CORE, STANDARD)),
       customCampaignLog: { sections: ['Campaign Notes'] },
       campaignLogDialogVisible: false,
     };
 
-    this.updateNavigationButtons();
+    this._updateNavigationButtons();
     this._navEventListener = Navigation.events().bindComponent(this);
 
     this._onSave = throttle(this.onSave.bind(this), 200);
-    this._onWeaknessPackChange = this.onWeaknessPackChange.bind(this);
-    this._addCampaignNoteSection = this.addCampaignNoteSection.bind(this);
-    this._deleteCampaignNoteSection = this.deleteCampaignNoteSection.bind(this);
-    this._toggleCampaignLogDialog = this.toggleCampaignLogDialog.bind(this);
-    this._showCampaignNameDialog = this.showCampaignNameDialog.bind(this);
-    this._onNameChange = this.onNameChange.bind(this);
-    this._updateChaosBag = this.updateChaosBag.bind(this);
-    this._updateDifficulty = this.updateDifficulty.bind(this);
-    this._showChaosBagDialog = this.showChaosBagDialog.bind(this);
-    this._showDifficultyDialog = this.showDifficultyDialog.bind(this);
-    this._campaignChanged = this.campaignChanged.bind(this);
-    this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
-    this._deckAdded = this.deckAdded.bind(this);
-    this._deckRemoved = this.deckRemoved.bind(this);
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  onWeaknessPackChange(packs) {
+  _onWeaknessPackChange = (packs: string[]) =>  {
     this.setState({
       weaknessPacks: packs,
     });
-  }
+  };
 
-  static getKeyName(isCount, perInvestigator) {
+  static getKeyName(
+    isCount?: boolean,
+    perInvestigator?: boolean
+  ): keyof CustomCampaignLog {
     if (perInvestigator) {
       if (isCount) {
         return 'investigatorCounts';
@@ -116,17 +145,27 @@ class NewCampaignView extends React.Component {
     return 'sections';
   }
 
-  addCampaignNoteSection(name, isCount, perInvestigator) {
+  _addCampaignNoteSection = (
+    name: string,
+    isCount?: boolean,
+    perInvestigator?: boolean
+  ) => {
     const customCampaignLog = Object.assign({}, this.state.customCampaignLog);
-    const keyName = NewCampaignView.getKeyName(isCount, perInvestigator);
-    customCampaignLog[keyName] = (customCampaignLog[keyName] || []).slice();
-    customCampaignLog[keyName].push(name);
+    const keyName: keyof CustomCampaignLog = NewCampaignView.getKeyName(isCount, perInvestigator);
+    customCampaignLog[keyName] = [
+      ...(customCampaignLog[keyName] || []),
+      name,
+    ];
     this.setState({
       customCampaignLog,
     });
-  }
+  };
 
-  deleteCampaignNoteSection(name, isCount, perInvestigator) {
+  _deleteCampaignNoteSection = (
+    name: string,
+    isCount?: boolean,
+    perInvestigator?: boolean
+  ) => {
     const customCampaignLog = Object.assign({}, this.state.customCampaignLog);
     const keyName = NewCampaignView.getKeyName(isCount, perInvestigator);
     customCampaignLog[keyName] = filter(
@@ -136,21 +175,21 @@ class NewCampaignView extends React.Component {
     this.setState({
       customCampaignLog,
     });
-  }
+  };
 
-  toggleCampaignLogDialog() {
+  _toggleCampaignLogDialog = () => {
     this.setState({
       campaignLogDialogVisible: !this.state.campaignLogDialogVisible,
     });
-  }
+  };
 
-  onNameChange(name) {
+  _onNameChange = (name: string) => {
     this.setState({
       name: name,
     }, this._updateNavigationButtons);
-  }
+  };
 
-  maybeShowWeaknessPrompt(deck) {
+  maybeShowWeaknessPrompt(deck: Deck) {
     const {
       cardsMap,
     } = this.props;
@@ -185,8 +224,8 @@ class NewCampaignView extends React.Component {
                   if (!(code in assignedCards)) {
                     assignedCards[code] = 0;
                   }
-                  if ((assignedCards[code] + count) > cardsMap[code].quantity) {
-                    assignedCards[code] = cardsMap[code].quantity;
+                  if ((assignedCards[code] + count) > (cardsMap[code].quantity || 0)) {
+                    assignedCards[code] = cardsMap[code].quantity || 0;
                   } else {
                     assignedCards[code] += count;
                   }
@@ -202,20 +241,20 @@ class NewCampaignView extends React.Component {
     }
   }
 
-  deckAdded(deck) {
+  _deckAdded = (deck: Deck) => {
     this.setState({
       deckIds: [...this.state.deckIds, deck.id],
     });
     this.maybeShowWeaknessPrompt(deck);
-  }
+  };
 
-  deckRemoved(id) {
+  _deckRemoved = (id: number) => {
     this.setState({
       deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
     });
-  }
+  };
 
-  updateNavigationButtons() {
+  _updateNavigationButtons = () => {
     const {
       componentId,
     } = this.props;
@@ -226,17 +265,16 @@ class NewCampaignView extends React.Component {
     Navigation.mergeOptions(componentId, {
       topBar: {
         rightButtons: [{
-          text: L('Done'),
+          text: L('Create'),
           id: 'save',
-          showAsAction: 'ifRoom',
           enabled: campaignCode !== CUSTOM || !!name,
           color: COLORS.navButton,
         }],
       },
     });
-  }
+  };
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string}) {
     if (buttonId === 'save') {
       this._onSave();
     }
@@ -284,19 +322,19 @@ class NewCampaignView extends React.Component {
     Navigation.pop(componentId);
   }
 
-  updateChaosBag(chaosBag) {
+  _updateChaosBag = (chaosBag: ChaosBag) => {
     this.setState({
       customChaosBag: chaosBag,
     });
-  }
+  };
 
-  updateDifficulty(value) {
+  _updateDifficulty = (value: CampaignDifficultyType) => {
     this.setState({
       difficulty: value,
     }, this._updateNavigationButtons);
-  }
+  };
 
-  showChaosBagDialog() {
+  _showChaosBagDialog = () => {
     const {
       componentId,
     } = this.props;
@@ -319,9 +357,9 @@ class NewCampaignView extends React.Component {
         },
       },
     });
-  }
+  };
 
-  showDifficultyDialog() {
+  _showDifficultyDialog = () => {
     Navigation.showOverlay({
       component: {
         name: 'Dialog.CampaignDifficulty',
@@ -336,46 +374,42 @@ class NewCampaignView extends React.Component {
         },
       },
     });
-  }
+  };
 
-  campaignChanged(campaignCode, campaign) {
+  _campaignChanged = (campaignCode: CampaignCycleCode, campaign: string) => {
     this.setState({
       campaign,
       campaignCode,
     }, this._updateNavigationButtons);
-  }
+  };
 
-  hasDefinedChaosBag() {
+  hasDefinedChaosBag(): boolean {
     const {
       campaignCode,
       difficulty,
     } = this.state;
 
-    return (
-      campaignCode !== CUSTOM &&
-      CAMPAIGN_CHAOS_BAGS[campaignCode] &&
-      CAMPAIGN_CHAOS_BAGS[campaignCode][DIFFICULTY[difficulty]]
-    );
+    return campaignCode !== CUSTOM && !!getChaosBag(campaignCode, difficulty);
   }
 
-  getChaosBag() {
+  getChaosBag(): ChaosBag {
     const {
       campaignCode,
       difficulty,
       customChaosBag,
     } = this.state;
     if (this.hasDefinedChaosBag()) {
-      return CAMPAIGN_CHAOS_BAGS[campaignCode][DIFFICULTY[difficulty]];
+      return getChaosBag(campaignCode, difficulty);
     }
 
     return customChaosBag;
   }
 
-  hasDefinedCampaignLog() {
+  hasDefinedCampaignLog(): boolean {
     const {
       campaignCode,
     } = this.state;
-    return (campaignCode !== CUSTOM && campaignLogs()[campaignCode]);
+    return (campaignCode !== CUSTOM && !!getCampaignLog(campaignCode));
   }
 
   getCampaignLog() {
@@ -384,15 +418,9 @@ class NewCampaignView extends React.Component {
       customCampaignLog,
     } = this.state;
     if (this.hasDefinedCampaignLog()) {
-      return campaignLogs()[campaignCode];
+      return getCampaignLog(campaignCode);
     }
     return customCampaignLog;
-  }
-
-  captureViewRef(ref) {
-    this.setState({
-      viewRef: ref,
-    });
   }
 
   renderChaosBagSection() {
@@ -409,7 +437,7 @@ class NewCampaignView extends React.Component {
     );
   }
 
-  showCampaignNameDialog() {
+  _showCampaignNameDialog = () => {
     const {
       name,
     } = this.state;
@@ -418,7 +446,7 @@ class NewCampaignView extends React.Component {
       name,
       this._onNameChange
     );
-  }
+  };
 
   renderWeaknessSetSection() {
     const {
@@ -442,7 +470,7 @@ class NewCampaignView extends React.Component {
   renderCampaignLogSection() {
     const campaignLog = this.getCampaignLog();
     const onPress = this.hasDefinedCampaignLog() ?
-      null :
+      undefined :
       this._deleteCampaignNoteSection;
 
     return (
@@ -524,7 +552,6 @@ class NewCampaignView extends React.Component {
                 label={L('Campaign Name')}
                 onPress={this._showCampaignNameDialog}
                 placeholder={this.placeholderName()}
-                required
                 value={name}
               />
             </View>
@@ -562,10 +589,9 @@ class NewCampaignView extends React.Component {
               deckRemoved={this._deckRemoved}
             />
           </View>
-          <View style={styles.button}>
+          <View style={[styles.button, styles.topPadding]}>
             <Button
               disabled={campaignCode === CUSTOM && !name}
-              style={styles.topPadding}
               title={L('Create Campaign')}
               onPress={this._onSave}
             />
@@ -579,13 +605,13 @@ class NewCampaignView extends React.Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     nextId: getNextCampaignId(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     newCampaign,
   }, dispatch);

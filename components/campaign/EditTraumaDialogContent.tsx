@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Platform,
   StyleSheet,
@@ -8,71 +7,61 @@ import {
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
-import L from '../../app/i18n';
 import PlusMinusButtons from '../core/PlusMinusButtons';
+import L from '../../app/i18n';
+import { Trauma } from '../../actions/types';
+import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
 
-export default class EditTraumaDialogContent extends React.Component {
-  static propTypes = {
-    investigator: PropTypes.object,
-    trauma: PropTypes.object,
-    mutateTrauma: PropTypes.func.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._incPhysical = this.incPhysical.bind(this);
-    this._decPhysical = this.decPhysical.bind(this);
-    this._incMental = this.incMental.bind(this);
-    this._decMental = this.decMental.bind(this);
-    this._toggleKilled = this.toggleKilled.bind(this);
-    this._toggleInsane = this.toggleInsane.bind(this);
-  }
-
-  incPhysical() {
+interface Props {
+  investigator?: Card;
+  trauma: Trauma;
+  mutateTrauma: (updateTrauma: (trauma: Trauma) => Trauma) => void;
+}
+export default class EditTraumaDialogContent extends React.Component<Props> {
+  _incPhysical = () => {
     const {
       investigator,
     } = this.props;
-    const health = investigator ? investigator.health : 0;
+    const health = investigator ? (investigator.health || 0) : 0;
     this.props.mutateTrauma(trauma =>
       Object.assign({}, trauma, { physical: Math.min((trauma.physical || 0) + 1, health) })
     );
-  }
+  };
 
-  decPhysical() {
+  _decPhysical = () => {
     this.props.mutateTrauma(trauma =>
       Object.assign({}, trauma, { physical: Math.max((trauma.physical || 0) - 1, 0) })
     );
-  }
+  };
 
-  incMental() {
+  _incMental = () => {
     const {
       investigator,
     } = this.props;
-    const sanity = investigator ? investigator.sanity : 0;
+    const sanity = investigator ? (investigator.sanity || 0) : 0;
     this.props.mutateTrauma(trauma =>
       Object.assign({}, trauma, { mental: Math.min((trauma.mental || 0) + 1, sanity) })
     );
-  }
+  };
 
-  decMental() {
+  _decMental = () => {
     this.props.mutateTrauma(trauma =>
       Object.assign({}, trauma, { mental: Math.max((trauma.mental || 0) - 1, 0) })
     );
-  }
+  };
 
-  toggleKilled() {
+  _toggleKilled = () => {
     this.props.mutateTrauma(trauma =>
       Object.assign({}, trauma, { killed: !trauma.killed })
     );
-  }
+  };
 
-  toggleInsane() {
+  _toggleInsane = () => {
     this.props.mutateTrauma(trauma =>
       Object.assign({}, trauma, { insane: !trauma.insane })
     );
-  }
+  };
 
   render() {
     const {
@@ -84,8 +73,8 @@ export default class EditTraumaDialogContent extends React.Component {
         mental,
       },
     } = this.props;
-    const health = investigator ? investigator.health : 0;
-    const sanity = investigator ? investigator.sanity : 0;
+    const health = investigator ? (investigator.health || 0) : 0;
+    const sanity = investigator ? (investigator.sanity || 0) : 0;
 
     const impliedKilled = (physical === health);
     const impliedInsane = (mental === sanity);

@@ -1,33 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import DeckDelta from './DeckDelta';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
+import { ParsedDeck } from '../parseDeck';
 import L from '../../app/i18n';
-import * as Actions from '../../actions';
-import { getDeck } from '../../reducers';
+import { fetchPublicDeck, fetchPrivateDeck } from '../../actions';
+import { Campaign, Deck } from '../../actions/types';
+import { CardsMap } from '../../data/Card';
+import { getDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
 
-class DeckProgressModule extends React.PureComponent {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    deck: PropTypes.object.isRequired,
-    cards: PropTypes.object.isRequired,
-    parsedDeck: PropTypes.object.isRequired,
-    previousDeck: PropTypes.object,
-    fetchPrivateDeck: PropTypes.func.isRequired,
-    fetchPublicDeck: PropTypes.func.isRequired,
-    isPrivate: PropTypes.bool.isRequired,
-    campaign: PropTypes.object,
-    showTraumaDialog: PropTypes.func.isRequired,
-    investigatorDataUpdates: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+  deck: Deck;
+  cards: CardsMap;
+  parsedDeck: ParsedDeck;
+  isPrivate: boolean;
+  campaign?: Campaign;
+  showTraumaDialog: () => void;
+  investigatorDataUpdates: any;
+}
 
+interface ReduxProps {
+  previousDeck?: Deck;
+}
+
+interface ReduxActionProps {
+  fetchPrivateDeck: (deckId: number) => void;
+  fetchPublicDeck: (deckId: number, useDeckEndpoint: boolean) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps;
+
+class DeckProgressModule extends React.PureComponent<Props> {
   componentDidMount() {
     const {
       deck,
@@ -123,19 +134,20 @@ class DeckProgressModule extends React.PureComponent {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   if (props.deck && props.deck.previous_deck) {
     return {
-      previousDeck: getDeck(state, props.deck.previous_deck),
+      previousDeck: getDeck(state, props.deck.previous_deck) || undefined,
     };
   }
-  return {
-    previousDeck: null,
-  };
+  return {};
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    fetchPublicDeck,
+    fetchPrivateDeck,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeckProgressModule);

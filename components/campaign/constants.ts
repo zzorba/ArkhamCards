@@ -1,16 +1,36 @@
-export const CUSTOM = 'custom';
-
 import L from '../../app/i18n';
+import {
+  CUSTOM,
+  CORE,
+  RTNOTZ,
+  DWL,
+  RTDWL,
+  PTC,
+  TFA,
+  TCU,
+  EASY,
+  STANDARD,
+  HARD,
+  EXPERT,
+  CampaignDifficultyType,
+  CampaignCycleCode,
+  CustomCampaignLog,
+} from '../../actions/types';
+import { ChaosBag } from '../../constants';
 
-
-export const DIFFICULTY = {
-  easy: 0,
-  standard: 1,
-  hard: 2,
-  expert: 3,
+export const DIFFICULTY: {
+  [difficulty in CampaignDifficultyType]: number;
+} = {
+  [EASY]: 0,
+  [STANDARD]: 1,
+  [HARD]: 2,
+  [EXPERT]: 3,
 };
 
-export function difficultyStrings() {
+
+export function difficultyStrings(): {
+  [difficulty in CampaignDifficultyType]: string;
+} {
   return {
     easy: L('Easy'),
     standard: L('Standard'),
@@ -19,16 +39,32 @@ export function difficultyStrings() {
   };
 }
 
-export function campaigns() {
-  return {
-    core: L('Night of the Zealot'),
-    rtnotz: L('Return to the Night of the Zealot'),
-    dwl: L('The Dunwich Legacy'),
-    rtdwl: L('Return to The Dunwich Legacy'),
-    ptc: L('The Path To Carcosa'),
-    tfa: L('The Forgotten Age'),
-    tcu: L('The Circle Undone'),
-  };
+export function difficultyString(difficulty: CampaignDifficultyType): string {
+  switch (difficulty) {
+    case EASY: return L('Easy');
+    case STANDARD: return L('Standard');
+    case HARD: return L('Hard');
+    case EXPERT: return L('Expert');
+    default:
+      const _exhaustiveCheck: never = difficulty;
+      return 'Unknown';
+  }
+}
+
+export function campaignName(cycleCode: CampaignCycleCode): string | null {
+  switch (cycleCode) {
+    case CORE: return L('Night of the Zealot');
+    case RTNOTZ: return L('Return to the Night of the Zealot');
+    case DWL: return L('The Dunwich Legacy');
+    case RTDWL: return L('Return to The Dunwich Legacy');
+    case PTC: return L('The Path To Carcosa');
+    case TFA: return L('The Forgotten Age');
+    case TCU: return L('The Circle Undone');
+    case CUSTOM: return null;
+    default:
+      const _exhaustiveCheck: never = cycleCode;
+      return null;
+  }
 }
 
 export function campaignScenarios() {
@@ -142,93 +178,128 @@ export const CAMPAIGN_COLORS = {
   tcu: '#00006622',
 };
 
-export function campaignLogs() {
-  const coreLog = {
-    sections: [
-      L('Campaign Notes'),
-      L('Cultists We Interrogated'),
-      L('Cultists Who Got Away'),
-    ],
-  };
-  const dunwichLog = {
-    sections: [
-      L('Campaign Notes'),
-      L('Sacrificed to Yog-Sothoth'),
-    ],
-  };
-
-  return {
-    'core': coreLog,
-    'rtnotz': coreLog,
-    'dwl': dunwichLog,
-    'rtdwl': dunwichLog,
-    'ptc': {
-      sections: [
-        L('Campaign Notes'),
-        L('VIPs Interviewed'),
-        L('VIPs Slain'),
-      ],
-      counts: [
-        L('Doubt'),
-        L('Conviction'),
-        L('Chasing the Stranger'),
-      ],
-    },
-    'tfa': {
-      sections: [L('Campaign Notes')],
-      counts: [L('Yig\'s Fury')],
-      investigatorSections: [L('Supplies')],
-      // investigatorCounts
-    },
-    'tcu': {
-      sections: [
-        L('Campaign Notes'),
-        L('Mementos Discovered'),
-        L('Missing Persons - Gavriella Mizrah'),
-        L('Missing Persons - Jerome Davids'),
-        L('Missing Persons - Penny White'),
-        L('Missing Persons - Valentino Rivas'),
-      ],
-    },
-  };
+export function getCampaignLog(
+  cycleCode: CampaignCycleCode
+): CustomCampaignLog {
+  switch (cycleCode) {
+    case CORE:
+    case RTNOTZ:
+      return {
+        sections: [
+          L('Campaign Notes'),
+          L('Cultists We Interrogated'),
+          L('Cultists Who Got Away'),
+        ],
+      };
+    case DWL:
+    case RTDWL:
+      return {
+        sections: [
+          L('Campaign Notes'),
+          L('Sacrificed to Yog-Sothoth'),
+        ],
+      };
+    case PTC:
+      return {
+        sections: [
+          L('Campaign Notes'),
+          L('VIPs Interviewed'),
+          L('VIPs Slain'),
+        ],
+        counts: [
+          L('Doubt'),
+          L('Conviction'),
+          L('Chasing the Stranger'),
+        ],
+      };
+    case TFA:
+      return {
+        sections: [L('Campaign Notes')],
+        counts: [L('Yig\'s Fury')],
+        investigatorSections: [L('Supplies')],
+        // investigatorCounts
+      };
+    case TCU:
+      return {
+        sections: [
+          L('Campaign Notes'),
+          L('Mementos Discovered'),
+          L('Missing Persons - Gavriella Mizrah'),
+          L('Missing Persons - Jerome Davids'),
+          L('Missing Persons - Penny White'),
+          L('Missing Persons - Valentino Rivas'),
+        ],
+      };
+    case CUSTOM:
+      return {
+        sections: [
+          L('Campaign Notes'),
+        ],
+      };
+    default:
+      const _exhaustiveCheck: never = cycleCode;
+      return {
+        sections: [
+          L('Campaign Notes'),
+        ],
+      };
+  }
 }
 
+type ChaosBagByDifficulty = { [difficulty in CampaignDifficultyType]: ChaosBag };
 
-const NOTZ_BAG = [
-  { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-];
-
-const DWL_BAG = [
-  { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-];
-
-export const CAMPAIGN_CHAOS_BAGS = {
-  'core': NOTZ_BAG,
-  'rtnotz': NOTZ_BAG,
-  'dwl': DWL_BAG,
-  'rtdwl': DWL_BAG,
-  'ptc': [
-    { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-    { '0': 3, '-1': 2, '-2': 2, '-3': 3, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-    { '0': 1, '-1': 2, '-2': 2, '-3': 3, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-  ],
-  'tfa': [
-    { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 3, '-1': 1, '-2': 2, '-3': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 2, '-1': 1, '-2': 1, '-3': 2, '-4': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-    { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-6': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-  ],
-  'tcu': [
-    { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-    { '+1': 1, '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-    { '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-    { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-6': 1, '-8': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-  ],
+const NOTZ_BAG: ChaosBagByDifficulty = {
+  [EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
+
+const DWL_BAG: ChaosBagByDifficulty = {
+  [EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  [STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  [HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+};
+const PTC_BAG: ChaosBagByDifficulty = {
+  [EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 3, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 3, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+};
+const TFA_BAG: ChaosBagByDifficulty = {
+  [EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [STANDARD]: { '+1': 1, '0': 3, '-1': 1, '-2': 2, '-3': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [HARD]: { '+1': 1, '0': 2, '-1': 1, '-2': 1, '-3': 2, '-4': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-6': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+};
+const TCU_BAG: ChaosBagByDifficulty = {
+  [EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+  [STANDARD]: { '+1': 1, '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+  [HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-6': 1, '-8': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+}
+
+export function getChaosBag(
+  cycleCode: CampaignCycleCode,
+  difficulty: CampaignDifficultyType,
+): ChaosBag {
+  switch (cycleCode) {
+    case CORE:
+    case RTNOTZ:
+    case CUSTOM:
+      return NOTZ_BAG[difficulty];
+    case DWL:
+    case RTDWL:
+      return DWL_BAG[difficulty];
+    case PTC:
+      return PTC_BAG[difficulty];
+    case TFA:
+      return TFA_BAG[difficulty];
+    case TCU:
+      return TCU_BAG[difficulty];
+    default:
+      const _exhaustiveCheck: never = cycleCode;
+      return NOTZ_BAG[difficulty];
+  }
+}
