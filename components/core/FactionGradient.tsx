@@ -11,11 +11,16 @@ import { FACTION_DARK_GRADIENTS, FACTION_LIGHT_GRADIENTS, FactionCodeType } from
 interface Props {
   faction_code: FactionCodeType,
   style?: ViewStyle,
-  children: ReactNode,
+  children?: ReactNode,
   dark?: boolean;
 }
 
-export default function FactionGradient({ faction_code, style, children, dark }: Props) {
+export default function FactionGradient({
+  faction_code,
+  style,
+  children,
+  dark,
+}: Props) {
   const colors = dark ?
     FACTION_DARK_GRADIENTS[faction_code] :
     FACTION_LIGHT_GRADIENTS[faction_code];

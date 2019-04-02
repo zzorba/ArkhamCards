@@ -20,16 +20,19 @@ const SMALL_FACTION_ICONS = createFactionIcons(40, '#FFF');
 
 interface Props {
   card: Card;
-  componentId: string;
+  componentId?: string;
   small?: boolean;
 }
+
 export default class InvestigatorImage extends React.Component<Props> {
   _onPress = () => {
     const {
       card,
       componentId,
     } = this.props;
-    showCard(componentId, card.code, card, true);
+    if (componentId) {
+      showCard(componentId, card.code, card, true);
+    }
   }
 
   renderImage() {

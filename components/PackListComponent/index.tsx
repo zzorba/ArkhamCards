@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { filter } from 'lodash';
 import {
@@ -8,35 +8,29 @@ import {
   View,
 } from 'react-native';
 
+import { Pack } from '../../actions/types';
 import PackRow from './PackRow';
 
-export default class PackListComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    coreSetName: PropTypes.string,
-    packs: PropTypes.array,
-    checkState: PropTypes.object,
-    setChecked: PropTypes.func.isRequired,
-    setCycleChecked: PropTypes.func,
-    renderHeader: PropTypes.func,
-    renderFooter: PropTypes.func,
-    whiteBackground: PropTypes.bool,
-    baseQuery: PropTypes.string,
-    compact: PropTypes.bool,
+interface Props {
+  componentId: string;
+  coreSetName?: string;
+  packs: Pack[];
+  checkState?: { [pack_code: string]: boolean};
+  setChecked: (pack_code: string, checked: boolean) => void;
+  setCycleChecked?: (cycle_number: number, checked: boolean) => void;
+  renderHeader?: React.ReactElement;
+  renderFooter?: React.ReactElement;
+  whiteBackground?: boolean;
+  baseQuery?: string;
+  compact?: boolean;
+}
+
+export default class PackListComponent extends React.Component<Props> {
+  _keyExtractor = (item: Pack) => {
+    return item.code;
   };
 
-  constructor(props) {
-    super(props);
-
-    this._renderItem = this.renderItem.bind(this);
-    this._keyExtractor = this.keyExtractor.bind(this);
-  }
-
-  keyExtractor(item) {
-    return item.code;
-  }
-
-  renderItem({ item }) {
+  _renderItem = ({ item }: { item: Pack }) => {
     const {
       packs,
       checkState,
@@ -47,7 +41,7 @@ export default class PackListComponent extends React.Component {
       compact,
       coreSetName,
     } = this.props;
-    const cyclePacks = item.position === 1 ? filter(packs, pack => {
+    const cyclePacks: Pack[] = item.position === 1 ? filter(packs, pack => {
       return (pack.cycle_position === item.cycle_position &&
         pack.id !== item.id);
     }) : [];
@@ -55,7 +49,7 @@ export default class PackListComponent extends React.Component {
       <PackRow
         componentId={this.props.componentId}
         pack={item}
-        nameOverride={item.code === 'core' ? coreSetName : null}
+        nameOverride={item.code === 'core' ? coreSetName : undefined}
         cycle={cyclePacks}
         setChecked={setChecked}
         setCycleChecked={setCycleChecked}
@@ -65,7 +59,7 @@ export default class PackListComponent extends React.Component {
         compact={compact}
       />
     );
-  }
+  };
 
   render() {
     const {

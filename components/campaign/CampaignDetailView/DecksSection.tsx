@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { filter, forEach, keys, map, sumBy } from 'lodash';
 import {
   Alert,
@@ -9,33 +8,25 @@ import {
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import { Deck, InvestigatorData, Trauma, WeaknessSet } from '../../../actions/types';
+import Card from '../../../data/Card';
 import CampaignDecks from './CampaignDecks';
-import withWeaknessCards from '../../weakness/withWeaknessCards';
+import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';
 
-class DecksSection extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    campaignId: PropTypes.number.isRequired,
-    latestDeckIds: PropTypes.array,
-    investigatorData: PropTypes.object.isRequired,
-    showTraumaDialog: PropTypes.func.isRequired,
-    weaknessSet: PropTypes.object.isRequired,
-    updateLatestDeckIds: PropTypes.func.isRequired,
-    updateWeaknessSet: PropTypes.func.isRequired,
-    // From HOC
-    cardsMap: PropTypes.object,
-  };
+interface Props extends WeaknessCardProps {
+  componentId: string;
+  campaignId: number;
+  latestDeckIds: number[];
+  investigatorData: InvestigatorData;
+  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  weaknessSet: WeaknessSet;
+  updateLatestDeckIds: (latestDeckIds: number[]) => void;
+  updateWeaknessSet: (weaknessSet: WeaknessSet) => void;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._addDeck = this.addDeck.bind(this);
-    this._showDeckUpgradeDialog = this.showDeckUpgradeDialog.bind(this);
-    this._removeDeckPrompt = this.removeDeckPrompt.bind(this);
-  }
-
-  maybeShowWeaknessPrompt(deck) {
+class DecksSection extends React.Component<Props> {
+  maybeShowWeaknessPrompt(deck: Deck) {
     const {
       cardsMap,
     } = this.props;
@@ -71,7 +62,8 @@ class DecksSection extends React.Component {
                   if (!(code in assignedCards)) {
                     assignedCards[code] = 0;
                   }
-                  if ((assignedCards[code] + count) > cardsMap[code].quantity) {
+                  if ((assignedCards[code] + count) > (cardsMap[code].quantity || 0)) {
+                    // @ts-ignore
                     assignedCards[code] = cardsMap[code].quantity;
                   } else {
                     assignedCards[code] += count;
@@ -86,7 +78,7 @@ class DecksSection extends React.Component {
     }
   }
 
-  addDeck(deck) {
+  _addDeck = (deck: Deck) => {
     const {
       latestDeckIds,
       updateLatestDeckIds,
@@ -95,9 +87,9 @@ class DecksSection extends React.Component {
     newLatestDeckIds.push(deck.id);
     updateLatestDeckIds(newLatestDeckIds);
     this.maybeShowWeaknessPrompt(deck);
-  }
+  };
 
-  removeDeck(removedDeckId) {
+  removeDeck(removedDeckId: number) {
     const {
       latestDeckIds,
       updateLatestDeckIds,
@@ -106,7 +98,7 @@ class DecksSection extends React.Component {
     updateLatestDeckIds(newLatestDeckIds);
   }
 
-  removeDeckPrompt(removedDeckId, deck, investigator) {
+  _removeDeckPrompt = (removedDeckId: number, deck: Deck, investigator: Card) => {
     Alert.alert(
       L('Remove {{investigator}}?', { investigator: investigator.name }),
       L('Are you sure you want to remove {{investigator}} from this campaign?', { investigator: investigator.name }) +
@@ -124,9 +116,9 @@ class DecksSection extends React.Component {
         },
       ],
     );
-  }
+  };
 
-  showDeckUpgradeDialog(deck, investigator) {
+  _showDeckUpgradeDialog = (deck: Deck, investigator: Card) => {
     const {
       componentId,
       campaignId,
@@ -153,13 +145,13 @@ class DecksSection extends React.Component {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator.faction_code][0],
+              color: FACTION_DARK_GRADIENTS[investigator.faction_code || 'neutral'][0],
             },
           },
         },
       },
     });
-  }
+  };
 
   render() {
     const {

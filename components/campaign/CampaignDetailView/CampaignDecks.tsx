@@ -1,47 +1,38 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { flatMap, keys, map, range } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import DeviceInfo from 'react-native-device-info';
 
 import L from '../../../app/i18n';
-import { parseDeck } from '../../parseDeck';
+import AppIcon from '../../../assets/AppIcon';
+import { Deck, InvestigatorData, Trauma } from '../../../actions/types';
+import DeckValidation from '../../../lib/DeckValidation';
+import Card from '../../../data/Card';
+import typography from '../../../styles/typography';
+import Button from '../../core/Button';
+import { parseDeck, ParsedDeck } from '../../parseDeck';
+import { showDeckModal } from '../../navHelper';
+import DeckProblemRow from '../../DeckProblemRow';
+import EditTraumaComponent from '../EditTraumaComponent';
 import listOfDecks from '../listOfDecks';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
-import { showDeckModal } from '../../navHelper';
-import Button from '../../core/Button';
-import EditTraumaComponent from '../EditTraumaComponent';
-import deckRowWithDetails from '../deckRowWithDetails';
-import DeckValidation from '../../../lib/DeckValidation';
-import DeckProblemRow from '../../DeckProblemRow';
-import typography from '../../../styles/typography';
-import AppIcon from '../../../assets/AppIcon';
+import deckRowWithDetails, { DeckRowDetailsProps } from '../deckRowWithDetails';
 
-class CampaignDeckDetail extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    deck: PropTypes.object,
-    previousDeck: PropTypes.object,
-    investigator: PropTypes.object,
-    campaignId: PropTypes.number.isRequired,
-    showDeckUpgradeDialog: PropTypes.func.isRequired,
-    // From the realm HOC
-    cards: PropTypes.object.isRequired,
-  };
+interface Props {
+  campaignId: number;
+  showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
+  investigatorData: InvestigatorData;
+  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._viewDeck = this.viewDeck.bind(this);
-    this._upgradeDeckPressed = this.upgradeDeckPressed.bind(this);
-  }
-
-  viewDeck() {
+class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
+  _viewDeck = () => {
     const {
       componentId,
       deck,
@@ -49,16 +40,16 @@ class CampaignDeckDetail extends React.Component {
       campaignId,
     } = this.props;
     showDeckModal(componentId, deck, investigator, campaignId);
-  }
+  };
 
-  upgradeDeckPressed() {
+  _upgradeDeckPressed = () => {
     const {
       showDeckUpgradeDialog,
       deck,
       investigator,
     } = this.props;
     showDeckUpgradeDialog(deck, investigator);
-  }
+  };
 
   render() {
     const {
@@ -76,8 +67,7 @@ class CampaignDeckDetail extends React.Component {
       ignoreDeckLimitSlots,
     } = parsedDeck;
 
-    const validator = new DeckValidation(investigator);
-    const problemObj = validator.getProblem(flatMap(keys(slots), code => {
+    const problemObj = new DeckValidation(investigator).getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       if (!card) {
         return [];
@@ -122,48 +112,29 @@ class CampaignDeckDetail extends React.Component {
 }
 
 /* eslint-disable react/no-multi-comp */
-class CampaignSubDeckDetail extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    deck: PropTypes.object,
-    previousDeck: PropTypes.object,
-    investigator: PropTypes.object,
-    investigatorData: PropTypes.object.isRequired,
-    showTraumaDialog: PropTypes.func.isRequired,
-    showDeckUpgradeDialog: PropTypes.func.isRequired,
-    // From the realm HOC
-    cards: PropTypes.object.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._viewDeck = this.viewDeck.bind(this);
-    this._upgradeDeckPressed = this.upgradeDeckPressed.bind(this);
-  }
-
-  viewDeck() {
+class CampaignSubDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
+  _viewDeck = () => {
     const {
       componentId,
       deck,
       investigator,
     } = this.props;
     showDeckModal(componentId, deck, investigator);
-  }
+  };
 
-  upgradeDeckPressed() {
+  _upgradeDeckPressed = () => {
     const {
       showDeckUpgradeDialog,
       deck,
       investigator,
     } = this.props;
     showDeckUpgradeDialog(deck, investigator);
-  }
+  };
 
-  experienceLine(deck, parsedDeck) {
+  experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
     const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
     if (xp > 0) {
-      if (parsedDeck.spentXp > 0) {
+      if ((parsedDeck.spentXp || 0) > 0) {
         return L('{{xpCount}} available ({{spentXp}} spent)', {
           xpCount: xp,
           spentXp: parsedDeck.spentXp,
@@ -230,12 +201,16 @@ class CampaignSubDeckDetail extends React.Component {
   }
 }
 
-export default listOfDecks(
-  deckRowWithDetails(CampaignDeckDetail, CampaignSubDeckDetail, {
+const ComposedDeckRow = deckRowWithDetails<Props>({
     compact: true,
     viewDeckButton: true,
-  })
+  },
+  CampaignDeckDetail,
+  CampaignSubDeckDetail
 );
+
+// @ts-ignore
+export default listOfDecks<Props>(ComposedDeckRow);
 
 const styles = StyleSheet.create({
   section: {

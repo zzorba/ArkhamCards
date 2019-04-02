@@ -4,6 +4,26 @@ export interface Slots {
   [code: string]: number;
 }
 
+const INVESTIGATOR = 'investigator';
+const TOO_MANY_COPIES = 'too_many_copies';
+const INVALID_CARDS = 'invalid_cards';
+const TOO_FEW_CARDS = 'too_few_cards';
+const TOO_MANY_CARDS = 'too_many_cards';
+const DECK_OPTIONS_LIMIT = 'deck_options_limit';
+
+export type DeckProblemType =
+  typeof INVESTIGATOR |
+  typeof TOO_MANY_COPIES |
+  typeof INVALID_CARDS |
+  typeof TOO_FEW_CARDS |
+  typeof TOO_MANY_CARDS |
+  typeof DECK_OPTIONS_LIMIT;
+
+export interface DeckProblem {
+  reason: DeckProblemType;
+  problems?: string[];
+}
+
 export interface Deck {
   id: number;
   name: string;
@@ -17,7 +37,7 @@ export interface Deck {
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
   exile_string?: string;
-  problem?: string;
+  problem?: DeckProblemType;
   version?: string;
   xp?: number;
   xp_adjustment?: number;

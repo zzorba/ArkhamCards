@@ -1,12 +1,11 @@
+import { DeckProblem, DeckProblemType } from '../actions/types';
 import Card from '../data/Card';
-import DeckOption from '../data/DeckOption';
-import { FactionCodeType } from '../constants';
 
 
 // Code taken from:
 // https://github.com/Kamalisk/arkhamdb/blob/4c194c54fcbc381e45b93f0f1bcb65a37ae581a9/src/AppBundle/Resources/public/js/app.deck.js
 /* eslint-disable */
-import { groupBy, mapValues, keys, forEach, find, findKey, filter } from 'lodash';
+import { groupBy, mapValues, forEach, find, findKey, filter } from 'lodash';
 
 interface DeckOptionsCount {
   limit: number,
@@ -46,22 +45,22 @@ export default class DeckValidation {
         return {
           nb_copies: group.length,
           deck_limit: group[0].deck_limit || 0,
-        }
+        };
       });
   }
 
-  getProblem(cards: Card[]) {
+  getProblem(cards: Card[]): DeckProblem | null {
     const reason = this.getProblemHelper(cards);
     if (!reason) {
       return null;
     }
     return {
       reason,
-      problems: this.problem_list.slice(0),
+      problems: [...this.problem_list],
     };
   }
 
-  getProblemHelper(cards: Card[]) {
+  getProblemHelper(cards: Card[]): DeckProblemType | null {
 	  // get investigator data
   	var card = this.investigator;
   	var size = 30;
@@ -78,7 +77,6 @@ export default class DeckValidation {
   			var req_met_count = 0;
   			forEach(card.deck_requirements.card, possible => {
   				req_count++;
-  				var found_match = false;
           if (find(cards, theCard =>
             theCard.code === possible.code ||
             find(possible.alternates, alt => alt === theCard.code))) {
@@ -86,7 +84,7 @@ export default class DeckValidation {
           }
   			});
   			if (req_met_count < req_count) {
-  				return "investigator";
+  				return 'investigator';
   			}
   		}
   	} else {
@@ -125,7 +123,7 @@ export default class DeckValidation {
   		if (atleast) {
   			if (atleast.factions && atleast.min){
   				var faction_count = 0;
-          forEach(this.deck_options_counts[i].atleast, (value, key) => {
+          forEach(this.deck_options_counts[i].atleast, (value) => {
   					if (value >= atleast.min){
   						faction_count++;
   					}
@@ -154,8 +152,6 @@ export default class DeckValidation {
   }
 
   getInvalidCards(cards: Card[]) {
-    const investigator = this.investigator;
-
   	if (this.investigator) {
       this.deck_options_counts = [];
   		for (var i = 0; i < this.investigator.deck_options.length; i++){
@@ -196,8 +192,6 @@ export default class DeckValidation {
   		for (var i = 0; i < investigator.deck_options.length; i++) {
   			var option = investigator.deck_options[i];
   			//console.log(option);
-
-  			var valid = false;
 
   			if (option.faction && option.faction.length){
   				// needs to match at least one faction

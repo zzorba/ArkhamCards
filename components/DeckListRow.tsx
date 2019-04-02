@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
   ActivityIndicator,
@@ -9,48 +9,44 @@ import {
 } from 'react-native';
 
 import L from '../app/i18n';
+import { Campaign, Deck } from '../actions/types';
+import Card, { CardsMap } from '../data/Card';
 import InvestigatorImage from './core/InvestigatorImage';
 import FactionGradient from './core/FactionGradient';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
 import DeckProblemRow from './DeckProblemRow';
 import { toRelativeDateString } from '../lib/datetime';
-import { parseDeck } from './parseDeck';
+import { parseDeck, ParsedDeck } from './parseDeck';
 import typography from '../styles/typography';
 
-export default class DeckListRow extends React.Component {
-  static propTypes = {
-    deck: PropTypes.object.isRequired,
-    previousDeck: PropTypes.object,
-    deckToCampaign: PropTypes.object,
-    cards: PropTypes.object,
-    investigator: PropTypes.object,
-    onPress: PropTypes.func,
-    details: PropTypes.node,
-    subDetails: PropTypes.node,
-    titleButton: PropTypes.node,
-    compact: PropTypes.bool,
-    viewDeckButton: PropTypes.bool,
-  };
+interface Props {
+  deck: Deck;
+  previousDeck?: Deck;
+  deckToCampaign?: { [deck_id: number]: Campaign };
+  cards: CardsMap;
+  investigator?: Card;
+  onPress?: (deck: Deck, investigator?: Card) => void;
+  details?: ReactNode;
+  subDetails: ReactNode;
+  titleButton?: ReactNode;
+  compact?: boolean;
+  viewDeckButton?: boolean;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+export default class DeckListRow extends React.Component<Props> {
+  _onPress = () => {
     const {
       deck,
       investigator,
       onPress,
     } = this.props;
     onPress && onPress(deck, investigator);
-  }
+  };
 
-  static xpString(parsedDeck) {
+  static xpString(parsedDeck: ParsedDeck) {
     const xp = (parsedDeck.deck.xp || 0) + (parsedDeck.deck.xp_adjustment || 0);
     if (xp > 0) {
-      if (parsedDeck.spentXp > 0) {
+      if ((parsedDeck.spentXp || 0) > 0) {
         return L(
           '{{availableXp}} available experience, {{spentXp}} spent',
           {
@@ -60,7 +56,7 @@ export default class DeckListRow extends React.Component {
       }
       return L('{{availableXp}} available experience', { availableXp: xp });
     }
-    if (parseDeck.experience > 0) {
+    if (parsedDeck.experience > 0) {
       return L('{{totalXp}} experience required', { totalXp: parsedDeck.experience });
     }
     return null;
@@ -84,10 +80,17 @@ export default class DeckListRow extends React.Component {
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+    const parsedDeck = parseDeck(
+      deck,
+      deck.slots,
+      deck.ignoreDeckLimitSlots || {},
+      cards,
+      previousDeck
+    );
     const xpString = DeckListRow.xpString(parsedDeck);
 
-    const date = deck.date_update || deck.date_creation;
+    const date: undefined | string = deck.date_update || deck.date_creation;
+    const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
     return (
       <View>
         <Text style={typography.small}>
@@ -107,9 +110,9 @@ export default class DeckListRow extends React.Component {
         { !!deck.problem && (
           <DeckProblemRow problem={{ reason: deck.problem }} color="#222" />
         ) }
-        { !!date && !!Date.parse(date) && (
+        { !!parsedDate && (
           <Text style={typography.small} >
-            { L('Updated {{date}}', { date: toRelativeDateString(Date.parse(date)) }) }
+            { L('Updated {{date}}', { date: toRelativeDateString(new Date(parsedDate)) }) }
           </Text>
         ) }
       </View>
@@ -146,7 +149,7 @@ export default class DeckListRow extends React.Component {
             compact
           />
           <FactionGradient
-            faction_code={investigator.faction_code}
+            faction_code={investigator.faction_code || 'neutral'}
             style={styles.investigatorBlock}
           >
             <View style={styles.investigatorBlockRow}>
@@ -166,7 +169,7 @@ export default class DeckListRow extends React.Component {
           </FactionGradient>
         </View>
         <FactionGradient
-          faction_code={investigator.faction_code}
+          faction_code={investigator.faction_code || 'neutral'}
           style={styles.footer}
           dark
         />
@@ -184,6 +187,10 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   investigatorBlockRow: {
     flexDirection: 'row',

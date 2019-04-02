@@ -10,31 +10,25 @@ import {
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import { Pack } from '../../actions/types';
 import EncounterIcon from '../../assets/EncounterIcon';
 import Switch from '../core/Switch';
 
-export default class PackRow extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    pack: PropTypes.object,
-    cycle: PropTypes.array,
-    setChecked: PropTypes.func,
-    setCycleChecked: PropTypes.func,
-    checked: PropTypes.bool,
-    whiteBackground: PropTypes.bool,
-    baseQuery: PropTypes.string,
-    compact: PropTypes.bool,
-    nameOverride: PropTypes.string,
-  };
+interface Props {
+  componentId: string;
+  pack: Pack;
+  cycle: Pack[];
+  setChecked?: (pack_code: string, checked: boolean) => void;
+  setCycleChecked?: (cycle_position: number, checked: boolean) => void;
+  checked?: boolean;
+  whiteBackground?: boolean;
+  baseQuery?: string;
+  compact?: boolean;
+  nameOverride?: string;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-    this._onCheckPress = this.onCheckPress.bind(this);
-  }
-
-  onPress() {
+export default class PackRow extends React.Component<Props> {
+  _onPress = () => {
     const {
       pack,
       componentId,
@@ -59,9 +53,9 @@ export default class PackRow extends React.Component {
         },
       },
     });
-  }
+  };
 
-  onCheckPress() {
+  _onCheckPress = () => {
     const {
       pack,
       cycle,
@@ -96,7 +90,7 @@ export default class PackRow extends React.Component {
         ],
       );
     }
-  }
+  };
 
   render() {
     const {

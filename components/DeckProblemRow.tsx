@@ -8,11 +8,12 @@ import {
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
+import { DeckProblem, DeckProblemType } from '../actions/types';
 import L from '../app/i18n';
 import AppIcon from '../assets/AppIcon';
 import typography from '../styles/typography';
 
-const DECK_PROBLEM_MESSAGES = {
+const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
   too_few_cards: L('Not enough cards.'),
   too_many_cards: L('Too many cards.'),
   too_many_copies: L('Too many copies of a card with the same name.'),
@@ -21,7 +22,16 @@ const DECK_PROBLEM_MESSAGES = {
   investigator: L('Doesn\'t comply with the Investigator requirements.'),
 };
 
-export default function DeckProblemRow({ problem, color, noFontScaling }) {
+interface Props {
+  problem: DeckProblem;
+  color: string;
+  noFontScaling?: boolean;
+}
+export default function DeckProblemRow({
+  problem,
+  color,
+  noFontScaling
+}: Props) {
   return (
     <View style={styles.problemRow}>
       <View style={styles.warningIcon}>
@@ -42,12 +52,6 @@ export default function DeckProblemRow({ problem, color, noFontScaling }) {
     </View>
   );
 }
-
-DeckProblemRow.propTypes = {
-  problem: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired,
-  noFontScaling: PropTypes.bool,
-};
 
 const styles = StyleSheet.create({
   problemText: {

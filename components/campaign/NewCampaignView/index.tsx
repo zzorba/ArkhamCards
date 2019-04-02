@@ -265,7 +265,7 @@ class NewCampaignView extends React.Component<Props, State> {
     Navigation.mergeOptions(componentId, {
       topBar: {
         rightButtons: [{
-          text: L('Create'),
+          text: L('Done'),
           id: 'save',
           enabled: campaignCode !== CUSTOM || !!name,
           color: COLORS.navButton,
@@ -534,11 +534,8 @@ class NewCampaignView extends React.Component<Props, State> {
     const hasDefinedChaosBag = this.hasDefinedChaosBag();
 
     return (
-      <View>
-        <ScrollView
-          contentContainerStyle={styles.topPadding}
-          ref={captureViewRef}
-        >
+      <View ref={captureViewRef}>
+        <ScrollView contentContainerStyle={styles.topPadding}>
           <View style={styles.underline}>
             <View style={styles.topPadding}>
               <CampaignSelector
@@ -581,7 +578,6 @@ class NewCampaignView extends React.Component<Props, State> {
           </View>
           <View style={styles.underline}>
             <DeckSelector
-              label={L('Decks')}
               componentId={componentId}
               campaignId={nextId}
               deckIds={deckIds}
