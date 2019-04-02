@@ -7,23 +7,23 @@ import {
 
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
+import { ShowTextEditDialog } from '../../core/withDialogs';
+import {
+  InvestigatorNotes,
+  InvestigatorCampaignNoteSection,
+  InvestigatorCampaignNoteCount,
+} from '../../../actions/types';
+import Card from '../../../data/Card';
 
-export default class InvestigatorSectionRow extends React.Component {
-  static propTypes = {
-    investigator: PropTypes.object.isRequired,
-    updateInvestigatorNotes: PropTypes.func.isRequired,
-    investigatorNotes: PropTypes.object.isRequired,
-    showDialog: PropTypes.func.isRequired,
-  };
+interface Props {
+  investigator: Card;
+  updateInvestigatorNotes: (investigatorNotes: InvestigatorNotes) => void;
+  investigatorNotes: InvestigatorNotes;
+  showDialog: ShowTextEditDialog;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._notesChanged = this.notesChanged.bind(this);
-    this._countChanged = this.countChanged.bind(this);
-  }
-
-  notesChanged(index, notes) {
+export default class InvestigatorSectionRow extends React.Component<Props> {
+  _notesChanged = (index: number, notes: string[]) => {
     const {
       investigator,
       updateInvestigatorNotes,
@@ -33,9 +33,9 @@ export default class InvestigatorSectionRow extends React.Component {
     const newNotes = Object.assign({}, sections[index].notes, { [investigator.code]: notes });
     sections[index] = Object.assign({}, sections[index], { notes: newNotes });
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { sections }));
-  }
+  };
 
-  countChanged(index, count) {
+  _countChanged = (index: number, count: number) => {
     const {
       investigator,
       updateInvestigatorNotes,
@@ -45,22 +45,24 @@ export default class InvestigatorSectionRow extends React.Component {
     const newCounts = Object.assign({}, counts[index].counts, { [investigator.code]: count });
     counts[index] = Object.assign({}, counts[index], { counts: newCounts });
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { counts }));
-  }
+  };
 
-  renderSections(investigator, sections) {
+  renderSections(investigator: Card, sections: InvestigatorCampaignNoteSection[]) {
     const {
       showDialog,
     } = this.props;
     return (
       <View>
         { map(sections, (section, idx) => {
-          const title = `${investigator.firstName}’s ${section.title}`;
+          const name = investigator.firstName ?
+            investigator.firstName.toUpperCase() :
+            'Unknown';
+          const title = `${name}’S ${section.title}`;
           return (
             <NotesSection
               key={idx}
               title={title}
               notes={section.notes[investigator.code] || []}
-              notesSection={section}
               index={idx}
               notesChanged={this._notesChanged}
               showDialog={showDialog}
@@ -72,11 +74,14 @@ export default class InvestigatorSectionRow extends React.Component {
     );
   }
 
-  renderCounts(investigator, counts) {
+  renderCounts(investigator: Card, counts: InvestigatorCampaignNoteCount[]) {
     return (
       <View>
         { map(counts, (section, idx) => {
-          const title = `${investigator.firstName.toUpperCase()}’S ${section.title}`;
+          const name = investigator.firstName ?
+            investigator.firstName.toUpperCase() :
+            'Unknown';
+          const title = `${name}’S ${section.title}`;
           return (
             <EditCountComponent
               key={idx}

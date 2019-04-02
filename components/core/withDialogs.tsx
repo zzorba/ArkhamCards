@@ -8,22 +8,26 @@ import { Subtract } from 'utility-types';
 import CountEditDialog from './CountEditDialog';
 import TextEditDialog from './TextEditDialog';
 
+export type ShowTextEditDialog = (
+  title: string,
+  text: string,
+  onTextChange: (text: string) => void,
+  showCrossOut?: boolean,
+  numberOfLines?: number,
+  onSaveAndAdd?: (text: string) => void,
+) => void;
+
+export type ShowCountEditDialog = (
+  title: string,
+  count: number,
+  onCountChange: (count: number) => void,
+) => void;
+
 export interface InjectedDialogProps {
   captureViewRef: (viewRef: View) => void;
   viewRef?: View;
-  showTextEditDialog: (
-    title: string,
-    text: string,
-    onTextChange: (text: string) => void,
-    showCrossOut?: boolean,
-    numberOfLines?: number,
-    onSaveAndAdd?: (text: string) => void,
-  ) => void;
-  showCountEditDialog: (
-    title: string,
-    count: number,
-    onCountChange: (count: number) => void,
-  ) => void;
+  showTextEditDialog: ShowTextEditDialog;
+  showCountEditDialog: ShowCountEditDialog;
 }
 
 export default function withDialogs<P extends InjectedDialogProps>(

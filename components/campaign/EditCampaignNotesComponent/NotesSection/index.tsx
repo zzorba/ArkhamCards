@@ -9,30 +9,31 @@ import {
 
 import NoteRow from './NoteRow';
 import typography from '../../../../styles/typography';
+import { ShowTextEditDialog } from '../../../core/withDialogs';
 
-export default class NotesSection extends React.Component {
-  static propTypes = {
-    notesChanged: PropTypes.func.isRequired,
-    index: PropTypes.number,
-    title: PropTypes.string.isRequired,
-    notes: PropTypes.array,
-    isInvestigator: PropTypes.bool,
-    showDialog: PropTypes.func.isRequired,
-  };
+interface Props {
+  notesChanged: (index: number, notes: string[]) => void;
+  index: number;
+  title: string;
+  notes: string[];
+  showDialog: ShowTextEditDialog;
+  isInvestigator?: boolean;
+}
 
-  constructor(props) {
+interface State {
+  notes: string[];
+}
+
+export default class NotesSection extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       notes: [...props.notes, ''],
     };
-
-    this._syncNotes = this.syncNotes.bind(this);
-    this._updateNote = this.updateNote.bind(this);
-    this._updateLastNote = this.updateLastNote.bind(this);
   }
 
-  syncNotes() {
+  _syncNotes = () => {
     const {
       notesChanged,
       index,
@@ -41,9 +42,9 @@ export default class NotesSection extends React.Component {
       notes,
     } = this.state;
     notesChanged(index, filter(notes, note => note !== ''));
-  }
+  };
 
-  updateNote(index, note) {
+  _updateNote = (index: number | 'last', note: string) => {
     if (index === 'last') {
       index = this.state.notes.length - 1;
     }
@@ -59,11 +60,11 @@ export default class NotesSection extends React.Component {
     this.setState({
       notes,
     }, this._syncNotes);
-  }
+  };
 
-  updateLastNote(ignoreIndex, note) {
-    this.updateNote(this.state.notes.length - 1, note);
-  }
+  _updateLastNote = (ignoreIndex: number | 'last', note: string) => {
+    this._updateNote(this.state.notes.length - 1, note);
+  };
 
   render() {
     const {

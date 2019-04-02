@@ -1,29 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
+import { ShowTextEditDialog } from '../../core/withDialogs';
+import { CampaignNotes } from '../../../actions/types';
+import Card from '../../../data/Card';
 import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 
-export default class CampaignLogSection extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    campaignNotes: PropTypes.object.isRequired,
-    updateCampaignNotes: PropTypes.func.isRequired,
-    showTextEditDialog: PropTypes.func.isRequired,
-    showAddSectionDialog: PropTypes.func.isRequired,
-    allInvestigators: PropTypes.array,
-  };
+interface Props {
+  componentId: string;
+  campaignNotes: CampaignNotes;
+  updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
+  showTextEditDialog: ShowTextEditDialog;
+  showAddSectionDialog: (
+    addSection: (
+      name: string,
+      isCount: boolean,
+      perInvestigator: boolean
+    ) => void
+  ) => void;
+  allInvestigators: Card[];
+}
 
-  constructor(props) {
-    super(props);
+export default class CampaignLogSection extends React.Component<Props> {
 
-    this._updateCampaignNotes = this.updateCampaignNotes.bind(this);
-  }
-
-  updateCampaignNotes(campaignNotes) {
+  _updateCampaignNotes = (campaignNotes: CampaignNotes) => {
     setTimeout(() => {
       this.props.updateCampaignNotes(campaignNotes);
     }, 0);
-  }
+  };
 
   render() {
     const {

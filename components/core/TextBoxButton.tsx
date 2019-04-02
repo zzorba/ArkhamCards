@@ -7,15 +7,15 @@ import {
   Text,
   TextStyle,
   TextInput,
+  TextInputProps,
   View,
-  ViewProps,
   ViewStyle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
 
-interface Props extends ViewProps {
+interface Props extends TextInputProps {
   value: string;
   placeholder?: string;
   crossedOut?: boolean;

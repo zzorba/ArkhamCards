@@ -74,19 +74,19 @@ export interface WeaknessSet {
   };
 }
 
-interface CampaignNoteSection {
+export interface CampaignNoteSection {
   title: string;
   notes: string[];
   custom?: boolean;
 }
 
-interface CampaignNoteCount {
+export interface CampaignNoteCount {
   title: string;
   count: number;
   custom?: boolean;
 }
 
-interface InvestigatorCampaignNoteSection {
+export interface InvestigatorCampaignNoteSection {
   title: string;
   notes: {
     [investigator_code: string]: string[];
@@ -94,7 +94,7 @@ interface InvestigatorCampaignNoteSection {
   custom?: boolean;
 }
 
-interface InvestigatorCampaignNoteCount {
+export interface InvestigatorCampaignNoteCount {
   title: string;
   counts: {
     [investigator_code: string]: number;
@@ -164,6 +164,17 @@ export interface CustomCampaignLog {
   investigatorCounts?: string[];
 };
 
+export interface InvestigatorNotes {
+  sections: InvestigatorCampaignNoteSection[];
+  counts: InvestigatorCampaignNoteCount[];
+}
+
+export interface CampaignNotes {
+  sections: CampaignNoteSection[];
+  counts: CampaignNoteCount[];
+  investigatorNotes: InvestigatorNotes;
+}
+
 export interface Campaign {
   id: number;
   name: string;
@@ -176,14 +187,7 @@ export interface Campaign {
   investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
-  campaignNotes: {
-    sections: CampaignNoteSection[];
-    counts: CampaignNoteCount[];
-    investigatorNotes: {
-      sections: InvestigatorCampaignNoteSection[];
-      counts: InvestigatorCampaignNoteCount[];
-    };
-  }
+  campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
 }
 

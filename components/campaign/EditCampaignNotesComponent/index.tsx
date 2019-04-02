@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
   Button,
@@ -8,40 +7,37 @@ import {
 } from 'react-native';
 
 import L from '../../../app/i18n';
+import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount} from '../../../actions/types';
+import Card from '../../../data/Card';
+import { ShowTextEditDialog } from '../../core/withDialogs';
 import EditCountComponent from '../EditCountComponent';
 import InvestigatorSectionList from './InvestigatorSectionList';
 import NotesSection from './NotesSection';
 
-export default class EditCampaignNotesComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    // Parts of the campaign object.
-    allInvestigators: PropTypes.array,
-    campaignNotes: PropTypes.object,
-    // Update function.
-    updateCampaignNotes: PropTypes.func.isRequired,
-    showDialog: PropTypes.func.isRequired,
-    showAddSectionDialog: PropTypes.func.isRequired,
-  };
+interface Props {
+  componentId: string;
+  allInvestigators: Card[];
+  campaignNotes: CampaignNotes;
+  updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
+  showDialog: ShowTextEditDialog;
+  showAddSectionDialog: (
+    addSection: (
+      name: string,
+      isCount: boolean,
+      perInvestigator: boolean
+    ) => void
+  ) => void;
+}
+export default class EditCampaignNotesComponent extends React.Component<Props> {
 
-  constructor(props) {
-    super(props);
-
-    this._addNotesSection = this.addNotesSection.bind(this);
-    this._notesChanged = this.notesChanged.bind(this);
-    this._countChanged = this.countChanged.bind(this);
-    this._updateInvestigatorNotes = this.updateInvestigatorNotes.bind(this);
-    this._showAddSectionDialog = this.showAddSectionDialog.bind(this);
-  }
-
-  showAddSectionDialog() {
+  _showAddSectionDialog = () => {
     const {
       showAddSectionDialog,
     } = this.props;
     showAddSectionDialog(this._addNotesSection);
-  }
+  };
 
-  addNotesSection(name, isCount, perInvestigator) {
+  _addNotesSection = (name: string, isCount: boolean, perInvestigator: boolean) => {
     const {
       campaignNotes,
       updateCampaignNotes,
@@ -67,9 +63,9 @@ export default class EditCampaignNotesComponent extends React.Component {
       }
     }
     updateCampaignNotes(newCampaignNotes);
-  }
+  };
 
-  notesChanged(index, notes) {
+  _notesChanged = (index: number, notes: string[]) => {
     const {
       updateCampaignNotes,
       campaignNotes,
@@ -77,9 +73,9 @@ export default class EditCampaignNotesComponent extends React.Component {
     const sections = (campaignNotes.sections || []).slice();
     sections[index] = Object.assign({}, sections[index], { notes });
     updateCampaignNotes(Object.assign({}, campaignNotes, { sections }));
-  }
+  };
 
-  countChanged(index, count) {
+  _countChanged = (index: number, count: number) => {
     const {
       updateCampaignNotes,
       campaignNotes,
@@ -87,17 +83,17 @@ export default class EditCampaignNotesComponent extends React.Component {
     const counts = (campaignNotes.counts || []).slice();
     counts[index] = Object.assign({}, counts[index], { count });
     updateCampaignNotes(Object.assign({}, campaignNotes, { counts }));
-  }
+  };
 
-  updateInvestigatorNotes(investigatorNotes) {
+  _updateInvestigatorNotes = (investigatorNotes: InvestigatorNotes) => {
     const {
       updateCampaignNotes,
       campaignNotes,
     } = this.props;
     updateCampaignNotes(Object.assign({}, campaignNotes, { investigatorNotes }));
-  }
+  };
 
-  renderSections(sections) {
+  renderSections(sections: CampaignNoteSection[]) {
     return (
       <View>
         { map(sections, (section, idx) => (
@@ -114,7 +110,7 @@ export default class EditCampaignNotesComponent extends React.Component {
     );
   }
 
-  renderCounts(counts) {
+  renderCounts(counts: CampaignNoteCount[]) {
     return (
       <View>
         { map(counts, (section, idx) => (
@@ -122,7 +118,7 @@ export default class EditCampaignNotesComponent extends React.Component {
             key={idx}
             index={idx}
             title={section.title}
-            count={section.count}
+            count={section.count || 0}
             countChanged={this._countChanged}
           />
         )) }

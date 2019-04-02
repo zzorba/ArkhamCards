@@ -10,42 +10,46 @@ import {
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import typography from '../../styles/typography';
 
-export default class EditCountComponent extends React.Component {
-  static propTypes = {
-    countChanged: PropTypes.func.isRequired,
-    index: PropTypes.number,
-    title: PropTypes.string.isRequired,
-    count: PropTypes.number,
-    isInvestigator: PropTypes.bool,
-  };
+interface Props {
+  countChanged: (index: number, count: number) => void;
+  index: number;
+  title: string;
+  count?: number;
+  isInvestigator?: boolean;
+}
 
-  constructor(props) {
+interface State {
+  count?: number;
+}
+
+export default class EditCountComponent extends React.Component<Props, State> {
+  _countChanged!: (index: number, count: number) => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       count: props.count,
     };
 
-    this._increment = this.increment.bind(this);
-    this._decrement = this.decrement.bind(this);
     this._countChanged = debounce(props.countChanged, 200, { trailing: true });
   }
 
-  increment() {
+  _increment = () => {
     this.setState(state => {
       const count = (state.count || 0) + 1;
       this._countChanged(this.props.index, count);
       return { count };
     });
-  }
+  };
 
-  decrement() {
+  _decrement = () => {
     this.setState(state => {
       const count = Math.max((state.count || 0) - 1, 0);
       this._countChanged(this.props.index, count);
       return { count };
     });
-  }
+  };
 
   render() {
     const {
@@ -67,7 +71,7 @@ export default class EditCountComponent extends React.Component {
             </Text>
           </View>
           <PlusMinusButtons
-            count={count}
+            count={count || 0}
             onIncrement={this._increment}
             onDecrement={this._decrement}
             size={36}

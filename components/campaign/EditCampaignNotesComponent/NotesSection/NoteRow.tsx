@@ -9,41 +9,41 @@ import {
 
 import L from '../../../../app/i18n';
 import TextBoxButton from '../../../core/TextBoxButton';
+import { ShowTextEditDialog } from '../../../core/withDialogs';
 
-export default class NoteRow extends React.Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    note: PropTypes.string.isRequired,
-    updateNote: PropTypes.func.isRequired,
-    last: PropTypes.bool,
-    showDialog: PropTypes.func.isRequired,
-  };
+interface Props {
+  title: string;
+  index: number | 'last';
+  note: string;
+  updateNote: (index: number | 'last', note: string) => void;
+  last?: boolean;
+  showDialog: ShowTextEditDialog;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-    this._onChange = this.onChange.bind(this);
-  }
-
-  onChange(note) {
+export default class NoteRow extends React.Component<Props> {
+  _onChange = (note: string) => {
     const {
       index,
       updateNote,
     } = this.props;
     updateNote(index, note);
-  }
+  };
 
-  onPress() {
+  _onPress = () => {
     const {
       title,
       note,
       showDialog,
       last,
     } = this.props;
-    showDialog(title, note, this._onChange, note !== '', 3, last ? this._onChange : null);
-  }
+    showDialog(
+      title,
+      note,
+      this._onChange,
+      note !== '', 3,
+      last ? this._onChange : undefined
+    );
+  };
 
   render() {
     const {
@@ -56,7 +56,7 @@ export default class NoteRow extends React.Component {
           <TextBoxButton
             crossedOut={startsWith(note, '~')}
             value={startsWith(note, '~') ? note.substring(1) : note}
-            placeholder={last ? L('Add note') : null}
+            placeholder={last ? L('Add note') : undefined}
             pointerEvents="none"
             ellipsizeMode="tail"
             multiline

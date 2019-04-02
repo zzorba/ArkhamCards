@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
   StyleSheet,
@@ -7,16 +6,21 @@ import {
 } from 'react-native';
 
 import InvestigatorSectionRow from './InvestigatorSectionRow';
+import { InvestigatorNotes } from '../../../actions/types';
+import Card from '../../../data/Card';
+import { ShowTextEditDialog } from '../../core/withDialogs';
 
-export default class InvestigatorSectionList extends React.Component {
-  static propTypes = {
-    allInvestigators: PropTypes.array,
-    updateInvestigatorNotes: PropTypes.func.isRequired,
-    investigatorNotes: PropTypes.object.isRequired,
-    showDialog: PropTypes.func.isRequired,
-  };
 
-  renderDeckRow(investigator) {
+interface Props {
+  componentId: string;
+  allInvestigators: Card[];
+  updateInvestigatorNotes: (notes: InvestigatorNotes) => void;
+  investigatorNotes: InvestigatorNotes;
+  showDialog: ShowTextEditDialog;
+}
+
+export default class InvestigatorSectionList extends React.Component<Props> {
+  renderDeckRow(investigator: Card) {
     const {
       investigatorNotes,
       updateInvestigatorNotes,
@@ -39,7 +43,10 @@ export default class InvestigatorSectionList extends React.Component {
     } = this.props;
     return (
       <View style={styles.investigatorNotes}>
-        { map(allInvestigators, investigator => this.renderDeckRow(investigator)) }
+        { map(allInvestigators, investigator =>
+            this.renderDeckRow(investigator)
+          )
+        }
       </View>
     );
   }

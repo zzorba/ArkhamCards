@@ -36,7 +36,7 @@ export default class XpComponent extends React.Component {
           countChanged={this._countChanged}
           index={0}
           title={L('Experience')}
-          count={xp}
+          count={xp || 0}
           isInvestigator={isInvestigator}
         />
       </View>
