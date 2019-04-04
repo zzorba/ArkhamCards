@@ -102,7 +102,7 @@ export interface InvestigatorCampaignNoteCount {
   custom?: boolean;
 }
 
-interface ScenarioResult {
+export interface ScenarioResult {
   scenario: string;
   scenarioCode: string;
   resolution: string;
@@ -190,6 +190,12 @@ export interface Campaign {
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
 }
+
+export interface SingleCampaign extends Campaign {
+  latestScenario?: ScenarioResult;
+  finishedScenarios: string[];
+}
+
 
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
 export interface PacksFetchStartAction {
@@ -329,19 +335,19 @@ export interface SetAllCampaignsAction {
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
-  id: string;
+  id: number;
   campaign: Campaign;
   now: Date;
 }
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export interface DeleteCampaignAction {
   type: typeof DELETE_CAMPAIGN;
-  id: string;
+  id: number;
 }
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 export interface AddCampaignScenarioResultAction {
   type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
-  id: string;
+  id: number;
   scenarioResult: ScenarioResult;
   now: Date;
 }

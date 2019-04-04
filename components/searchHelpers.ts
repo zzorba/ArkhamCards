@@ -1,6 +1,6 @@
 import { findIndex } from 'lodash';
 
-export function searchMatchesText(searchTerm, parts) {
+export function searchMatchesText(searchTerm: string, parts: string[]): boolean {
   if (!searchTerm) {
     return true;
   }

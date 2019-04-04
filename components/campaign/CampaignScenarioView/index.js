@@ -83,7 +83,7 @@ class CampaignScenarioView extends React.Component {
 
 function mapStateToProps(state, props) {
   const campaign = getCampaign(state, props.id);
-  const cycleScenarios = campaignScenarios()[campaign.cycleCode] || [];
+  const cycleScenarios = campaignScenarios(campaign.cycleCode);
   const scenarioByCode = {};
   forEach(cycleScenarios, scenario => {
     scenarioByCode[scenario.code] = scenario;

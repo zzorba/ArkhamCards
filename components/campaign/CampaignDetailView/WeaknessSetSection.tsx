@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { filter, map, sum, values } from 'lodash';
 import {
   StyleSheet,
@@ -7,23 +6,26 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { Results } from 'realm';
 
 import L from '../../../app/i18n';
-import NavButton from '../../core/NavButton';
-import withWeaknessCards from '../../weakness/withWeaknessCards';
+import { WeaknessSet } from '../../../actions/types';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
+import Card from '../../../data/Card';
+import NavButton from '../../core/NavButton';
+import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
 
-class WeaknessSetSection extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    campaignId: PropTypes.number.isRequired,
-    weaknessSet: PropTypes.object.isRequired,
-    // From realm.
-    cards: PropTypes.object.isRequired,
-  };
+interface OwnProps {
+  componentId: string;
+  campaignId: number;
+  weaknessSet: WeaknessSet;
 
-  static computeCount(set, allCards) {
+}
+type Props = OwnProps &  WeaknessCardProps;
+
+class WeaknessSetSection extends React.Component<Props> {
+  static computeCount(set: WeaknessSet, allCards: Results<Card>) {
     if (!set) {
       return {
         assigned: 0,
@@ -38,13 +40,7 @@ class WeaknessSetSection extends React.Component {
     };
   }
 
-  constructor(props) {
-    super(props);
-
-    this._showDrawDialog = this.showDrawDialog.bind(this);
-  }
-
-  showDrawDialog() {
+  _showDrawDialog = () => {
     const {
       componentId,
       campaignId,
@@ -68,7 +64,7 @@ class WeaknessSetSection extends React.Component {
         },
       },
     });
-  }
+  };
 
   render() {
     const {
@@ -97,7 +93,7 @@ class WeaknessSetSection extends React.Component {
   }
 }
 
-export default withWeaknessCards(WeaknessSetSection);
+export default withWeaknessCards<OwnProps>(WeaknessSetSection);
 
 const styles = StyleSheet.create({
   padding: {

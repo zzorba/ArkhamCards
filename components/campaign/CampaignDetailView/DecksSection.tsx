@@ -14,7 +14,7 @@ import CampaignDecks from './CampaignDecks';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';
 
-interface Props extends WeaknessCardProps {
+interface OwnProps {
   componentId: string;
   campaignId: number;
   latestDeckIds: number[];
@@ -24,6 +24,8 @@ interface Props extends WeaknessCardProps {
   updateLatestDeckIds: (latestDeckIds: number[]) => void;
   updateWeaknessSet: (weaknessSet: WeaknessSet) => void;
 }
+
+type Props = OwnProps & WeaknessCardProps;
 
 class DecksSection extends React.Component<Props> {
   maybeShowWeaknessPrompt(deck: Deck) {
@@ -180,7 +182,7 @@ class DecksSection extends React.Component<Props> {
   }
 }
 
-export default withWeaknessCards(DecksSection);
+export default withWeaknessCards<OwnProps>(DecksSection);
 
 const styles = StyleSheet.create({
   underline: {

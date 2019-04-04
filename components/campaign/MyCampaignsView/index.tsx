@@ -11,30 +11,38 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import { Campaign, Deck } from '../../../actions/types';
 import CampaignItem from './CampaignItem';
 import { campaignNames } from '../constants';
 import SearchBox from '../../SearchBox';
-import withPlayerCards from '../../withPlayerCards';
+import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
 import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
 import { CUSTOM } from '../../../actions/types';
-import { getAllDecks, getCampaigns } from '../../../reducers';
+import { getAllDecks, getCampaigns, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 
-class MyCampaignsView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    campaigns: PropTypes.array,
-    decks: PropTypes.object,
-    // From realm
-    investigators: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+}
 
+interface ReduxProps {
+  campaigns: Campaign[];
+  decks: { [id: number]: Deck };
+}
+
+type Props = OwnProps & ReduxProps & PlayerCardProps;
+
+interface State {
+  search: string;
+}
+
+class MyCampaignsView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -50,7 +58,10 @@ class MyCampaignsView extends React.Component {
     };
   }
 
-  constructor(props) {
+  _navEventListener?: EventSubscription;
+  _showNewCampaignDialog!: () => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -58,22 +69,20 @@ class MyCampaignsView extends React.Component {
     };
 
     this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
-    this._onPress = this.onPress.bind(this);
-    this._searchChanged = this.searchChanged.bind(this);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  searchChanged(text) {
+  _searchChanged = (text: string) => {
     this.setState({
       search: text,
     });
-  }
+  };
 
-  onPress(id, campaign) {
+  _onPress = (id: number, campaign: Campaign) => {
     const {
       componentId,
     } = this.props;
@@ -96,7 +105,7 @@ class MyCampaignsView extends React.Component {
         },
       },
     });
-  }
+  };
 
   showNewCampaignDialog() {
     const {
@@ -118,27 +127,16 @@ class MyCampaignsView extends React.Component {
       },
     });
   }
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'add') {
       this._showNewCampaignDialog();
     }
   }
 
-  renderItem(campaign) {
+  renderItem(campaign: Campaign) {
     const {
-      decks,
       investigators,
     } = this.props;
-    const latestScenario = last(campaign.scenarioResults);
-    const deckIds = latestScenario ? latestScenario.deckIds : [];
-    const scenarioDecks = [];
-    forEach(deckIds, deckId => {
-      const deck = decks[deckId];
-      if (deck) {
-        scenarioDecks.push(deck);
-      }
-    });
-
     return (
       <CampaignItem
         key={campaign.id}
@@ -149,7 +147,7 @@ class MyCampaignsView extends React.Component {
     );
   }
 
-  filteredCampaigns() {
+  filteredCampaigns(): Campaign[] {
     const {
       campaigns,
     } = this.props;
@@ -157,7 +155,7 @@ class MyCampaignsView extends React.Component {
       search,
     } = this.state;
 
-    return filter(campaigns, campaign => {
+    return filter<Campaign>(campaigns, campaign => {
       const parts = [campaign.name];
       if (campaign.cycleCode !== CUSTOM) {
         parts.push(campaignNames()[campaign.cycleCode]);
@@ -166,7 +164,7 @@ class MyCampaignsView extends React.Component {
     });
   }
 
-  renderFooter(campaigns) {
+  renderFooter(campaigns: Campaign[]) {
     const {
       search,
     } = this.state;
@@ -174,7 +172,7 @@ class MyCampaignsView extends React.Component {
       if (search) {
         return (
           <View style={styles.footer}>
-            <Text style={[typography.text, styles.margin]}>
+            <Text style={[typography.text]}>
               { L('No matching campaigns for "{{searchTerm}}".', { searchTerm: search }) }
             </Text>
           </View>
@@ -182,7 +180,7 @@ class MyCampaignsView extends React.Component {
       }
       return (
         <View style={styles.footer}>
-          <Text style={[typography.text, styles.margin]}>
+          <Text style={[typography.text]}>
             { L('No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.') }
           </Text>
         </View>
@@ -218,19 +216,15 @@ class MyCampaignsView extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     campaigns: getCampaigns(state),
     decks: getAllDecks(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
 export default withFetchCardsGate(
-  connect(mapStateToProps, mapDispatchToProps)(
+  connect(mapStateToProps)(
     withPlayerCards(MyCampaignsView)
   ),
   { promptForUpdate: false },

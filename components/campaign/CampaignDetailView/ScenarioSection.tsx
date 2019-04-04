@@ -9,25 +9,18 @@ import {
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import { Campaign } from '../../../actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import Button from '../../core/Button';
 import NavButton from '../../core/NavButton';
 import typography from '../../../styles/typography';
 
-export default class ScenarioSection extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    campaign: PropTypes.object.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._addScenarioResult = this.addScenarioResult.bind(this);
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+interface Props {
+  componentId: string;
+  campaign: Campaign;
+}
+export default class ScenarioSection extends React.Component<Props> {
+  _onPress = () => {
     const {
       campaign,
       componentId,
@@ -50,9 +43,9 @@ export default class ScenarioSection extends React.Component {
         },
       },
     });
-  }
+  };
 
-  addScenarioResult() {
+  _addScenarioResult = () => {
     const {
       campaign,
       componentId,
@@ -75,7 +68,7 @@ export default class ScenarioSection extends React.Component {
         },
       },
     });
-  }
+  };
 
   renderCompletedScenarios() {
     const {

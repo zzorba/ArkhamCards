@@ -6,33 +6,42 @@ import {
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import EditTraumaDialog from './EditTraumaDialog';
+import { InvestigatorData, Trauma } from '../../actions/types';
+import Card from '../../data/Card';
 
-export default function withTraumaDialog(WrappedComponent) {
-  class TraumaEditDialogComponent extends React.Component {
-    constructor(props) {
+export interface TraumaProps {
+  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  investigatorDataUpdates: InvestigatorData;
+}
+
+export default function withTraumaDialog<Props>(
+  WrappedComponent: React.ComponentType<Props & TraumaProps>
+) {
+  interface State {
+    viewRef?: View;
+    visible: boolean;
+    investigator?: Card;
+    traumaData?: Trauma;
+    investigatorData: InvestigatorData;
+  }
+
+  class TraumaEditDialogComponent extends React.Component<Props, State> {
+    constructor(props: Props) {
       super(props);
 
       this.state = {
-        viewRef: null,
         visible: false,
-        investigator: null,
-        traumaData: null,
         investigatorData: {},
       };
-
-      this._captureViewRef = this.captureViewRef.bind(this);
-      this._updateTraumaData = this.updateTraumaData.bind(this);
-      this._showTraumaDialog = this.showTraumaDialog.bind(this);
-      this._hideDialog = this.hideDialog.bind(this);
     }
 
-    captureViewRef(ref) {
+    _captureViewRef = (ref: View) => {
       this.setState({
         viewRef: ref,
       });
-    }
+    };
 
-    updateTraumaData(code, data) {
+    _updateTraumaData = (code: string, data: Trauma) => {
       this.setState({
         investigatorData: Object.assign(
           {},
@@ -40,21 +49,21 @@ export default function withTraumaDialog(WrappedComponent) {
           { [code]: Object.assign({}, data) },
         ),
       });
-    }
+    };
 
-    showTraumaDialog(investigator, traumaData) {
+    _showTraumaDialog = (investigator: Card, traumaData: Trauma) => {
       this.setState({
         visible: true,
         investigator: investigator,
         traumaData,
       });
-    }
+    };
 
-    hideDialog() {
+    _hideDialog = () => {
       this.setState({
         visible: false,
       });
-    }
+    };
 
     renderDialog() {
       const {

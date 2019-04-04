@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
@@ -7,31 +6,26 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { CUSTOM } from '../../../actions/types';
+import { Campaign, CUSTOM } from '../../../actions/types';
+import { CardsMap } from '../../../data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import typography from '../../../styles/typography';
 
-export default class CampaignItem extends React.Component {
-  static propTypes = {
-    campaign: PropTypes.object.isRequired,
-    onPress: PropTypes.func.isRequired,
-    investigators: PropTypes.object,
-  };
+interface Props {
+  campaign: Campaign;
+  onPress: (id: number, campaign: Campaign) => void;
+  investigators: CardsMap;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+export default class CampaignItem extends React.Component<Props> {
+  _onPress = () => {
     const {
       campaign,
       onPress,
     } = this.props;
     onPress(campaign.id, campaign);
-  }
+  };
 
   render() {
     const {

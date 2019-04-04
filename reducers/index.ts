@@ -8,7 +8,7 @@ import campaigns from './campaigns';
 import cards from './cards';
 import decks from './decks';
 import packs from './packs';
-import { Campaign, Deck } from '../actions/types';
+import { Campaign, SingleCampaign, Deck } from '../actions/types';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -187,9 +187,9 @@ export function getDecks(state: AppState, deckIds: number[]): Deck[] {
   return decks;
 }
 
-function processCampaign(campaign: Campaign) {
+function processCampaign(campaign: Campaign): SingleCampaign {
   const latestScenario = last(campaign.scenarioResults);
-  const finishedScenarios = flatMap(campaign.scenarioResults, r => r.scenario);
+  const finishedScenarios = flatMap(campaign.scenarioResults || [], r => r.scenario);
   return Object.assign(
     {},
     campaign,
@@ -204,7 +204,7 @@ export function getNextCampaignId(state: AppState) {
   return 1 + (max(map(keys(state.campaigns.all), id => parseInt(id, 10))) || 0);
 }
 
-export function getCampaign(state: AppState, id: string) {
+export function getCampaign(state: AppState, id: number): SingleCampaign | null {
   if (id in state.campaigns.all) {
     const campaign = state.campaigns.all[id];
     return campaign ? processCampaign(campaign) : null;
@@ -215,7 +215,7 @@ export function getCampaign(state: AppState, id: string) {
 export function getCampaignForDeck(
   state: AppState,
   deckId: number
-): Campaign | null {
+): SingleCampaign | null {
   const deckToCampaign = getDeckToCampaignMap(state);
   if (deckId in deckToCampaign) {
     return processCampaign(deckToCampaign[deckId]);

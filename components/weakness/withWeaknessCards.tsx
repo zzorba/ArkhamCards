@@ -1,4 +1,5 @@
 import { forEach } from 'lodash';
+import { Results } from 'realm';
 import { connectRealm, CardResults } from 'react-native-realm';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
@@ -6,7 +7,7 @@ import Card, { CardsMap } from '../../data/Card';
 import { BASIC_WEAKNESS_QUERY } from '../../data/query';
 
 export interface WeaknessCardProps {
-  cards: Card[];
+  cards: Results<Card>;
   cardsMap: CardsMap
 }
 

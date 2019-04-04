@@ -1,7 +1,8 @@
 import { concat, forEach } from 'lodash';
 
+import { Results } from 'realm';
 import Card from '../../data/Card';
-import { defaultFilterState, FilterState } from '../../lib/filters';
+import { defaultFilterState } from '../../lib/filters';
 
 function update(value: number | null, minMax: [number, number]): [number, number] {
   if (value === null || value < 0) {
@@ -13,7 +14,7 @@ function update(value: number | null, minMax: [number, number]): [number, number
   ];
 }
 
-export default function calculateDefaultFilterState(cards: Card[]) {
+export default function calculateDefaultFilterState(cards: Results<Card> | Card[]) {
   const fields = [
     'xp',
     'cost',

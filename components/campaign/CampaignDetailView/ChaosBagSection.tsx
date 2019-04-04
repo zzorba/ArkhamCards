@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
@@ -8,24 +7,18 @@ import {
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import { ChaosBag } from '../../../constants';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import typography from '../../../styles/typography';
 
-export default class ChaosBagSection extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    chaosBag: PropTypes.object.isRequired,
-    updateChaosBag: PropTypes.func.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._showChaosBagDialog = this.showChaosBagDialog.bind(this);
-  }
-
-  showChaosBagDialog() {
+interface Props {
+  componentId: string;
+  chaosBag: ChaosBag;
+  updateChaosBag: (chaosBag: ChaosBag) => void;
+}
+export default class ChaosBagSection extends React.Component<Props> {
+  _showChaosBagDialog = () => {
     const {
       componentId,
       updateChaosBag,
@@ -51,7 +44,7 @@ export default class ChaosBagSection extends React.Component {
         },
       },
     });
-  }
+  };
 
   render() {
     return (

@@ -1,20 +1,12 @@
 declare module "react-native-realm" {
   import React from 'react';
-  import Realm from 'realm';
+  import Realm, { Results } from 'realm';
   import { Subtract } from 'utility-types';
 
   export type Sort = [string, boolean];
-  interface ResultsObject<T> extends Array<T> {
-    filtered: (query: string) => ResultsObject<T>;
-    sorted: (sorts: Sort[]) => ResultsObject<T>;
-  }
 
   export interface CardResults<Card> {
-    cards: ResultsObject<Card>;
-  }
-
-  export interface CardResults<Card> {
-    cards: ResultsObject<Card>;
+    cards: Results<Card>;
   }
 
   export interface CardOptions<OwnProps, RealmProps, Card> {
@@ -27,8 +19,8 @@ declare module "react-native-realm" {
   }
 
   export interface CardAndFaqResults<Card, FaqEntry> {
-    cards: ResultsObject<Card>;
-    faqEntries: ResultsObject<FaqEntry>
+    cards: Results<Card>;
+    faqEntries: Results<FaqEntry>
   }
 
   export interface Options<OwnProps, RealmProps> {

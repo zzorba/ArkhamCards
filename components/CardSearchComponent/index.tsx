@@ -284,15 +284,16 @@ class CardSearchComponent extends React.Component<Props, State> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(CardSearchComponent, {
-  schemas: ['Card'],
-  mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
-    const cards = props.baseQuery ?
-      results.cards.filtered(props.baseQuery) :
-      results.cards;
+export default connectRealm<OwnProps, RealmProps, Card>(
+  CardSearchComponent, {
+    schemas: ['Card'],
+    mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
+      const cards = props.baseQuery ?
+        results.cards.filtered(props.baseQuery) :
+        results.cards;
 
-    return {
-      defaultFilterState: calculateDefaultFilterState(cards),
-    };
-  },
-});
+      return {
+        defaultFilterState: calculateDefaultFilterState(cards),
+      };
+    },
+  });

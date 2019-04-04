@@ -9,11 +9,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
+import { Campaign, CampaignNotes, Deck, InvestigatorData, WeaknessSet } from '../../../actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -21,52 +22,75 @@ import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import { campaignToText } from '../campaignUtil';
-import withTraumaDialog from '../withTraumaDialog';
-import withPlayerCards from '../../withPlayerCards';
-import withDialogs from '../../core/withDialogs';
+import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
+import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
+import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import { iconsMap } from '../../../app/NavIcons';
+import Card, { CardsMap } from '../../../data/Card';
+import { ChaosBag } from '../../../constants';
 import { updateCampaign, deleteCampaign } from '../actions';
-import { getCampaign, getAllPacks, getAllDecks, getLatestDeckIds } from '../../../reducers';
+import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
-class CampaignDetailView extends React.Component {
+interface OwnProps {
+  componentId: string;
+  id: number;
+}
+
+interface ReduxProps {
+  campaign?: Campaign;
+  latestDeckIds: number[];
+  decks: { [deckId: number]: Deck };
+  allInvestigators: Card[];
+}
+
+interface ReduxActionProps {
+  updateCampaign: (id: number, sparseCampaign: Campaign) => void;
+  deleteCampaign: (id: number) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps &
+  TraumaProps & PlayerCardProps & InjectedDialogProps;
+
+type AddSectionFunction = (
+  name: string,
+  perInvestigator: boolean,
+  isCount: boolean
+) => void;
+
+interface State {
+  addSectionVisible: boolean,
+  addSectionFunction?: AddSectionFunction;
+}
+
+class CampaignDetailView extends React.Component<Props, State> {
   static propTypes = {
     componentId: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
-    // from HOC
-    showTraumaDialog: PropTypes.func.isRequired,
-    investigatorDataUpdates: PropTypes.object.isRequired,
-    showTextEditDialog: PropTypes.func.isRequired,
-    viewRef: PropTypes.object,
-    captureViewRef: PropTypes.func.isRequired,
-    // redux
-    updateCampaign: PropTypes.func.isRequired,
-    deleteCampaign: PropTypes.func.isRequired,
-    campaign: PropTypes.object,
-    latestDeckIds: PropTypes.array,
-    decks: PropTypes.object,
-    investigators: PropTypes.object,
-    allInvestigators: PropTypes.array,
   };
 
-  constructor(props) {
+  _navEventListener?: EventSubscription;
+  _onCampaignNameChange!: (name: string) => void;
+  _updateLatestDeckIds!: (latestDeckIds: number[]) => void;
+  _updateCampaignNotes!: (campaignNotes: CampaignNotes) => void;
+  _updateInvestigatorData!: (investigatorData: InvestigatorData) => void;
+  _updateChaosBag!: (chaosBag: ChaosBag) => void;
+  _updateWeaknessSet!: (weaknessSet: WeaknessSet) => void;
+  _showShareSheet!: () => void;
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       addSectionVisible: false,
-      addSectionFunction: null,
     };
 
     this._onCampaignNameChange = this.applyCampaignUpdate.bind(this, 'name');
-    this._toggleAddSectionDialog = this.toggleAddSectionDialog.bind(this);
-    this._showAddSectionDialog = this.showAddSectionDialog.bind(this);
     this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
     this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._updateWeaknessSet = this.applyCampaignUpdate.bind(this, 'weaknessSet');
-    this._deletePressed = this.deletePressed.bind(this);
-    this._delete = this.delete.bind(this);
+
     this._showShareSheet = throttle(this.showShareSheet.bind(this), 200);
     this._navEventListener = Navigation.events().bindComponent(this);
 
@@ -89,21 +113,21 @@ class CampaignDetailView extends React.Component {
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  showAddSectionDialog(addSectionFunction) {
+  _showAddSectionDialog = (addSectionFunction: AddSectionFunction) => {
     this.setState({
       addSectionVisible: true,
       addSectionFunction,
     });
-  }
+  };
 
-  toggleAddSectionDialog() {
+  _toggleAddSectionDialog = () => {
     this.setState({
       addSectionVisible: !this.state.addSectionVisible,
     });
-  }
+  };
 
   showShareSheet() {
     const {
@@ -112,15 +136,18 @@ class CampaignDetailView extends React.Component {
       decks,
       investigators,
     } = this.props;
-    Share.share({
-      text: campaign.name,
-      message: campaignToText(campaign, latestDeckIds, decks, investigators),
-    }, {
-      subject: campaign.name,
-    });
+    if (campaign) {
+      Share.share({
+        title: campaign.name,
+        message: campaignToText(campaign, latestDeckIds, decks, investigators),
+      }, {
+        // @ts-ignore
+        subject: campaign.name,
+      });
+    }
   }
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const {
       showTextEditDialog,
       campaign,
@@ -128,23 +155,27 @@ class CampaignDetailView extends React.Component {
     if (buttonId === 'share') {
       this._showShareSheet();
     } else if (buttonId === 'edit') {
-      showTextEditDialog(
-        L('Campaign Name'),
-        campaign.name,
-        this._onCampaignNameChange
-      );
+      if (campaign) {
+        showTextEditDialog(
+          L('Campaign Name'),
+          campaign.name,
+          this._onCampaignNameChange
+        );
+      }
     }
   }
 
-  applyCampaignUpdate(key, value) {
+  applyCampaignUpdate(key: keyof Campaign, value: any) {
     const {
       campaign,
       updateCampaign,
     } = this.props;
-    updateCampaign(campaign.id, { [key]: value });
+    if (campaign) {
+      updateCampaign(campaign.id, { [key]: value } as Campaign);
+    }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       campaign,
       componentId,
@@ -163,35 +194,31 @@ class CampaignDetailView extends React.Component {
     if (investigatorDataUpdates !== prevProps.investigatorDataUpdates) {
       this._updateInvestigatorData(Object.assign(
         {},
-        campaign.investigatorData || {},
+        (campaign && campaign.investigatorData) || {},
         investigatorDataUpdates
       ));
     }
   }
 
-  updateChaosBag(bag) {
-    this.setState({
-      chaosBag: bag,
-    });
-  }
-
-  deletePressed() {
+  _deletePressed = () => {
     const {
       campaign,
     } = this.props;
-    Alert.alert(
-      L('Delete'),
-      L('Are you sure you want to delete the campaign: {{campaignName}}',
-        { campaignName: campaign.name }
-      ),
-      [
-        { text: L('Delete'), onPress: this._delete, style: 'destructive' },
-        { text: L('Cancel'), style: 'cancel' },
-      ],
-    );
-  }
+    if (campaign) {
+      Alert.alert(
+        L('Delete'),
+        L('Are you sure you want to delete the campaign: {{campaignName}}',
+          { campaignName: campaign.name }
+        ),
+        [
+          { text: L('Delete'), onPress: this._delete, style: 'destructive' },
+          { text: L('Cancel'), style: 'cancel' },
+        ],
+      );
+    }
+  };
 
-  delete() {
+  _delete = () => {
     const {
       id,
       deleteCampaign,
@@ -199,7 +226,7 @@ class CampaignDetailView extends React.Component {
     } = this.props;
     deleteCampaign(id);
     Navigation.pop(componentId);
-  }
+  };
 
   renderAddSectionDialog() {
     const {
@@ -234,8 +261,8 @@ class CampaignDetailView extends React.Component {
       return null;
     }
     return (
-      <View style={styles.flex}>
-        <ScrollView style={styles.flex} ref={captureViewRef}>
+      <View style={styles.flex} ref={captureViewRef}>
+        <ScrollView style={styles.flex}>
           <ScenarioSection
             componentId={componentId}
             campaign={campaign}
@@ -283,23 +310,22 @@ class CampaignDetailView extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  const campaign = getCampaign(state, props.id);
-  const packs = getAllPacks(state);
+function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): ReduxProps {
+  const campaign = getCampaign(state, props.id) || undefined;
   const decks = getAllDecks(state);
-  const latestDeckIds = getLatestDeckIds(state, campaign);
+  const latestDeckIds = campaign ? getLatestDeckIds(state, campaign) : [];
+  const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
   return {
     allInvestigators: flatMap(
-      filter(flatMap(latestDeckIds, deckId => decks[deckId]), deck => deck && deck.investigator_code),
+      filter(latestDecks, deck => !!(deck && deck.investigator_code)),
       deck => props.investigators[deck.investigator_code]),
     latestDeckIds,
     campaign,
-    packs,
     decks,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return bindActionCreators({
     deleteCampaign,
     updateCampaign,

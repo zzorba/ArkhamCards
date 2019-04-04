@@ -1,6 +1,5 @@
 import React from 'react';
-import Realm from 'realm';
-import PropTypes from 'prop-types';
+import Realm, { Results } from 'realm';
 import { flatMap, map } from 'lodash';
 import {
   StyleSheet,
@@ -8,16 +7,14 @@ import {
   View,
 } from 'react-native';
 import { connectRealm, CardResults } from 'react-native-realm';
-import { Subtract } from 'utility-types';
 
 import L from '../../app/i18n';
 import SignatureCardItem from './SignatureCardItem';
 import Card from '../../data/Card';
-import FaqEntry from '../../data/FaqEntry';
 
 interface RealmProps {
-  requiredCards?: Card[];
-  alternateCards?: Card[];
+  requiredCards?: Results<Card>;
+  alternateCards?: Results<Card>;
 }
 
 interface OwnProps {
@@ -62,7 +59,7 @@ export default connectRealm<OwnProps, RealmProps, Card>(
       results: CardResults<Card>,
       realm: Realm,
       props: OwnProps
-    ) {
+    ): RealmProps {
       const requirements = props.investigator.deck_requirements;
       const card_requirements = requirements && requirements.card;
       const requiredQuery = map(card_requirements || [], req => {

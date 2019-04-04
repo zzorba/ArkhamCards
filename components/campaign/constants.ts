@@ -67,14 +67,21 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
   }
 }
 
-export function campaignScenarios() {
-  return {
-    core: [
+export interface Scenario {
+  name: string;
+  code: string;
+  pack_code?: string;
+  interlude?: boolean;
+}
+
+export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
+  switch (cycleCode) {
+    case CORE: return [
       { name: L('The Gathering'), code: 'torch', pack_code: 'core' },
       { name: L('The Midnight Masks'), code: 'arkham', pack_code: 'core' },
       { name: L('The Devourer Below'), code: 'tentacles', pack_code: 'core' },
-    ],
-    dwl: [
+    ];
+    case DWL: return [
       { name: L('Extracurricular Activity'), code: 'extracurricular_activity', pack_code: 'dwl' },
       { name: L('The House Always Wins'), code: 'the_house_always_wins', pack_code: 'dwl' },
       { name: L('Armitage’s Fate'), code: 'armitages_fate', interlude: true },
@@ -86,8 +93,8 @@ export function campaignScenarios() {
       { name: L('Where Doom Awaits'), code: 'where_doom_awaits', pack_code: 'wda' },
       { name: L('Lost in Time and Space'), code: 'lost_in_time_and_space', pack_code: 'litas' },
       { name: L('Epilogue'), code: 'dwl_epilogue', interlude: true },
-    ],
-    rtdwl: [
+    ];
+    case RTDWL: return [
       { name: L('Return to Extracurricular Activity'), code: 'return_to_extracurricular_activity', pack_code: 'rtdwl' },
       { name: L('Return to The House Always Wins'), code: 'return_to_the_house_always_wins', pack_code: 'rtdwl' },
       { name: L('Armitage’s Fate'), code: 'armitages_fate', interlude: true },
@@ -99,8 +106,8 @@ export function campaignScenarios() {
       { name: L('Return to Where Doom Awaits'), code: 'return_to_where_doom_awaits', pack_code: 'rtdwl' },
       { name: L('Return to Lost in Time and Space'), code: 'return_to_lost_in_time_and_space', pack_code: 'rtdwl' },
       { name: L('Epilogue'), code: 'dwl_epilogue', interlude: true },
-    ],
-    ptc: [
+    ];
+    case PTC: return [
       { name: L('Prologue'), code: 'ptc_prologue', interlude: true },
       { name: L('Curtain Call'), code: 'curtain_call', pack_code: 'ptc' },
       { name: L('The Last King'), code: 'the_last_king', pack_code: 'ptc' },
@@ -113,8 +120,8 @@ export function campaignScenarios() {
       { name: L('Black Stars Rise'), code: 'black_stars_rise', pack_code: 'bsr' },
       { name: L('Dim Carcosa'), code: 'dim_carcosa', pack_code: 'dca' },
       { name: L('Epilogue'), code: 'ptc_epilogue', interlude: true },
-    ],
-    tfa: [
+    ];
+    case TFA: [
       { name: L('Prologue'), code: 'tfa_prologue', interlude: true },
       { name: L('The Untamed Wilds'), code: 'wilds', pack_code: 'tfa' },
       { name: L('Restless Nights'), code: 'tfa_interlude1', interlude: true },
@@ -130,8 +137,8 @@ export function campaignScenarios() {
       { name: L('The Darkness'), code: 'tfa_interlude5', interlude: true },
       { name: L('Shattered Aeons'), code: 'shattered_aeons', pack_code: 'sha' },
       { name: L('Epilogue'), code: 'tfa_epilogue', interlude: true },
-    ],
-    tcu: [
+    ];
+    case TCU: [
       { name: L('Prologue: Disappearance at the Twilight Estate'), code: 'tcu_prologue', pack_code: 'tcu' },
       { name: L('The Witching Hour'), code: 'the_witching_hour', pack_code: 'tcu' },
       { name: L('At Death\'s Doorstep (Act 1)'), code: 'at_deaths_doorstep_1', pack_code: 'tcu' },
@@ -147,12 +154,16 @@ export function campaignScenarios() {
       { name: L('Twist of Fate'), code: 'tcu_interlude_4', interlude: true },
       { name: L('Before the Black Throne'), code: 'before_the_black_throne', pack_code: 'bbt' },
       { name: L('Epilogue'), code: 'tcu_epilogue', interlude: true },
-    ],
-    rtnotz: [
+    ];
+    case RTNOTZ: return [
       { name: L('Return to The Gathering'), code: 'return_to_the_gathering', pack_code: 'rtnotz' },
       { name: L('Return to the Midnight Masks'), code: 'return_to_the_midnight_masks', pack_code: 'rtnotz' },
       { name: L('Return to the Devourer Below'), code: 'return_to_the_devourer_below', pack_code: 'rtnotz' },
-    ],
+    ];
+    case CUSTOM: return [];
+    default:
+      const _exhaustiveCheck: never = cycleCode;
+      return [];
   };
 }
 

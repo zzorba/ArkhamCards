@@ -22,6 +22,7 @@ interface Props extends TextInputProps {
   style?: ViewStyle;
   textStyle?: TextStyle;
   multiline?: boolean;
+  ellipsizeMode?: string;
 }
 
 interface State {

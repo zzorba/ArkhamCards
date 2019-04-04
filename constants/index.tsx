@@ -121,26 +121,19 @@ export const FACTION_BACKGROUND_COLORS: { [faction_code: string]: string } = Obj
   },
 );
 
-export interface ChaosBag {
-  '+1'?: number;
-  '0'?: number;
-  '-1'?: number;
-  '-2'?: number;
-  '-3'?: number;
-  '-4'?: number;
-  '-5'?: number;
-  '-6'?: number;
-  '-7'?: number;
-  '-8'?: number;
-  skull?: number;
-  cultist?: number;
-  tablet?: number;
-  elder_thing?: number;
-  auto_fail?: number;
-  elder_sign?: number;
-}
+export type ChaosTokenType =
+  '+1' | '0' | '-1' | '-2' | '-3' |
+  '-4' | '-5' | '-6' | '-7' | '-8' |
+  'skull' | 'cultist' | 'tablet' | 'elder_thing' |
+  'auto_fail' | 'elder_sign';
 
-export type ChaosTokenType = keyof ChaosBag;
+export const CHAOS_TOKENS: ChaosTokenType[] = [
+  '+1', '0', '-1', '-2', '-3',
+  '-4', '-5', '-6', '-7', '-8',
+  'skull', 'cultist', 'tablet', 'elder_thing',
+  'auto_fail', 'elder_sign',
+]
+export type ChaosBag = { [chaosToken in ChaosTokenType]?: number; };
 
 export const CHAOS_TOKEN_ORDER: ChaosBag = {
   '+1': 0,
@@ -161,7 +154,7 @@ export const CHAOS_TOKEN_ORDER: ChaosBag = {
   'elder_sign': 15,
 };
 
-export const SPECIAL_TOKENS = [
+export const SPECIAL_TOKENS: ChaosTokenType[] = [
   'skull',
   'cultist',
   'tablet',
@@ -170,7 +163,7 @@ export const SPECIAL_TOKENS = [
   'elder_sign',
 ];
 
-export const CHAOS_BAG_TOKEN_COUNTS = {
+export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '+1': 3,
   '0': 4,
   '-1': 5,

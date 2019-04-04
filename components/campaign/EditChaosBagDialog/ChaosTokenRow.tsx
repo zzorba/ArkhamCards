@@ -6,47 +6,45 @@ import {
   View,
 } from 'react-native';
 
+import { ChaosTokenType } from '../../../constants';
 import ChaosToken, { SIZE } from '../../core/ChaosToken';
 import PlusMinusButtons from '../../core/PlusMinusButtons';
 
-export default class ChaosTokenRow extends React.PureComponent {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    mutateCount: PropTypes.func.isRequired,
-    originalCount: PropTypes.number.isRequired,
-    count: PropTypes.number.isRequired,
-    limit: PropTypes.number.isRequired,
-  };
+interface Props {
+  id: ChaosTokenType;
+  mutateCount: (id: ChaosTokenType, mutate: (count: number) => number) => void;
+  originalCount: number;
+  count: number;
+  limit: number;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._increment = this.increment.bind(this);
-    this._decrement = this.decrement.bind(this);
-  }
-
-  increment() {
+export default class ChaosTokenRow extends React.PureComponent<Props> {
+  _increment = () => {
     const {
       id,
       mutateCount,
       limit,
     } = this.props;
     mutateCount(id, count => Math.min(count + 1, limit));
-  }
+  };
 
-  decrement() {
+  _decrement = () => {
     const {
       id,
       mutateCount,
     } = this.props;
     mutateCount(id, count => Math.max(count - 1, 0));
-  }
+  };
 
-  static renderTokens(id, count, status) {
+  static renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'removed') {
     return (
       <View style={styles.row}>
         { map(range(0, count), (idx) => (
-          <ChaosToken key={`${status}-${idx}`} id={id} status={status} />
+          <ChaosToken
+            key={`${status}-${idx}`}
+            id={id}
+            status={status}
+          />
         )) }
       </View>
     );

@@ -29,11 +29,6 @@ export default function ChaosToken({ id, status }: Props) {
   );
 }
 
-ChaosToken.propTypes = {
-  id: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(['added', 'removed']),
-};
-
 const styles = StyleSheet.create({
   button: {
     width: SIZE,

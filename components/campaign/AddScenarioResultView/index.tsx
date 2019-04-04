@@ -7,82 +7,80 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
-import withDialogs from '../../core/withDialogs';
+import { Deck, SingleCampaign, ScenarioResult } from '../../../actions/types';
+import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import ScenarioSection from './ScenarioSection';
 import XpComponent from '../XpComponent';
-import * as Actions from '../../../actions';
+import { setNewDeck, updateDeck } from '../../../actions';
 import { addScenarioResult } from '../actions';
-import { getAllDecks, getCampaign } from '../../../reducers';
+import { getAllDecks, getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 
-class AddScenarioResultView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
-    id: PropTypes.number.isRequired,
-    // from redux/realm
-    campaign: PropTypes.object.isRequired,
-    decks: PropTypes.object,
-    addScenarioResult: PropTypes.func.isRequired,
-    setNewDeck: PropTypes.func.isRequired,
-    updateDeck: PropTypes.func.isRequired,
-    //  From HOC
-    showTextEditDialog: PropTypes.func.isRequired,
-  };
+interface OwnProps {
+  componentId: string;
+  id: number;
+}
 
-  constructor(props) {
+interface ReduxProps {
+  campaign?: SingleCampaign;
+  decks: { [id: number]: Deck };
+}
+
+interface ReduxActionProps {
+  addScenarioResult: (id: number, scenarioResult: ScenarioResult) => void;
+  setNewDeck: (id: number, deck: Deck) => void;
+  updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+interface State {
+  scenario?: ScenarioResult;
+  xp: number;
+}
+
+class AddScenarioResultView extends React.Component<Props, State> {
+  _navEventListener?: EventSubscription;
+  _doSave!: () => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      scenario: {
-        scenario: null,
-        resolution: '',
-        interlude: false,
-      },
       xp: 0,
     };
 
-    this.updateNavigationButtons();
+    this._updateNavigationButtons();
     this._navEventListener = Navigation.events().bindComponent(this);
-
     this._doSave = throttle(this.doSave.bind(this), 200);
-    this._scenarioChanged = this.scenarioChanged.bind(this);
-    this._xpChanged = this.xpChanged.bind(this);
-    this._updateNavigationButtons = this.updateNavigationButtons.bind(this);
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  hideTraumaDialog() {
-    this.setState({
-      traumaDialogVisible: false,
-    });
-  }
-
-  updateNavigationButtons() {
+  _updateNavigationButtons = () => {
+    const { scenario } = this.state;
     Navigation.mergeOptions(this.props.componentId, {
       topBar: {
         rightButtons: [{
           text: L('Save'),
           id: 'save',
-          showAsAction: 'ifRoom',
           color: COLORS.navButton,
-          enabled: (!!this.state.scenario.scenario) &&
-            !!(this.state.scenario.interlude || this.state.scenario.resolution !== ''),
+          enabled: !!(scenario &&
+            scenario.scenario &&
+            (scenario.interlude || scenario.resolution !== '')),
         }],
       },
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string}) {
     if (buttonId === 'save') {
       this._doSave();
     }
@@ -91,7 +89,7 @@ class AddScenarioResultView extends React.Component {
   doSave() {
     const {
       componentId,
-      campaign,
+      id,
       addScenarioResult,
     } = this.props;
     const {
@@ -99,24 +97,23 @@ class AddScenarioResultView extends React.Component {
       xp,
     } = this.state;
     addScenarioResult(
-      campaign.id,
-      scenario,
-      xp
+      id,
+      Object.assign({}, scenario, { xp })
     );
     Navigation.pop(componentId);
   }
 
-  scenarioChanged(scenario) {
+  _scenarioChanged = (scenario: ScenarioResult) => {
     this.setState({
       scenario,
     }, this._updateNavigationButtons);
-  }
+  };
 
-  xpChanged(xp) {
+  _xpChanged = (xp: number) => {
     this.setState({
       xp,
     });
-  }
+  };
 
   renderScenarios() {
     const {
@@ -124,6 +121,9 @@ class AddScenarioResultView extends React.Component {
       campaign,
       showTextEditDialog,
     } = this.props;
+    if (!campaign) {
+      return null;
+    }
     return (
       <ScenarioSection
         componentId={componentId}
@@ -153,18 +153,19 @@ class AddScenarioResultView extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const campaign = getCampaign(state, props.id);
   return {
-    campaign: campaign,
+    campaign: campaign || undefined,
     decks: getAllDecks(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     addScenarioResult,
-    ...Actions,
+    setNewDeck,
+    updateDeck,
   }, dispatch);
 }
 

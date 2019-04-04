@@ -10,23 +10,35 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import { iconsMap } from '../../../app/NavIcons';
 import ChaosTokenRow from './ChaosTokenRow';
-import { CHAOS_BAG_TOKEN_COUNTS, CHAOS_TOKEN_ORDER } from '../../../constants';
+import {
+  CHAOS_TOKENS,
+  CHAOS_BAG_TOKEN_COUNTS,
+  CHAOS_TOKEN_ORDER,
+  ChaosBag,
+  ChaosTokenType,
+} from '../../../constants';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 
-export default class EditChaosBagDialog extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    chaosBag: PropTypes.object.isRequired,
-    updateChaosBag: PropTypes.func.isRequired,
-    trackDeltas: PropTypes.bool,
-  };
+interface Props {
+  componentId: string;
+  chaosBag: ChaosBag;
+  updateChaosBag: (chaosBag: ChaosBag) => void;
+  trackDeltas?: boolean;
+}
 
+interface State {
+  chaosBag: ChaosBag;
+  visible: boolean;
+  hasPendingEdits: boolean;
+}
+
+export default class EditChaosBagDialog extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -53,18 +65,19 @@ export default class EditChaosBagDialog extends React.Component {
     };
   }
 
-  constructor(props) {
+  _navEventListener?: EventSubscription;
+  _saveChanges!: () => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       chaosBag: Object.assign({}, props.chaosBag),
       visible: true,
+      hasPendingEdits: false,
     };
 
-    this._mutateCount = this.mutateCount.bind(this);
     this._saveChanges = throttle(this.saveChanges.bind(this), 200);
-
-    this._handleBackPress = this.handleBackPress.bind(this);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -74,7 +87,7 @@ export default class EditChaosBagDialog extends React.Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
   componentDidAppear() {
@@ -89,15 +102,15 @@ export default class EditChaosBagDialog extends React.Component {
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'save') {
       this._saveChanges();
     } else if (buttonId === 'back' || buttonId === 'androidBack') {
-      this.handleBackPress();
+      this._handleBackPress();
     }
   }
 
-  handleBackPress() {
+  _handleBackPress = () => {
     const {
       componentId,
     } = this.props;
@@ -132,15 +145,15 @@ export default class EditChaosBagDialog extends React.Component {
       Navigation.pop(componentId);
     }
     return true;
-  }
+  };
 
   saveChanges() {
     this.props.updateChaosBag(this.state.chaosBag);
     Navigation.pop(this.props.componentId);
   }
 
-  mutateCount(id, mutate) {
-    this.setState(state => {
+  _mutateCount = (id: ChaosTokenType, mutate: (count: number) => number) => {
+    this.setState((state: State) => {
       const {
         chaosBag,
       } = this.props;
@@ -151,12 +164,12 @@ export default class EditChaosBagDialog extends React.Component {
       );
       return {
         chaosBag: newChaosBag,
-        hasPendingEdits: find(
-          keys(CHAOS_BAG_TOKEN_COUNTS),
+        hasPendingEdits: !!find(
+          CHAOS_TOKENS,
           key => (chaosBag[key] || 0) !== (newChaosBag[key] || 0)),
       };
     });
-  }
+  };
 
   render() {
     const {
@@ -171,7 +184,7 @@ export default class EditChaosBagDialog extends React.Component {
         <View style={styles.row}>
           <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
         </View>
-        { map(sortBy(keys(CHAOS_BAG_TOKEN_COUNTS), x => CHAOS_TOKEN_ORDER[x]),
+        { map(sortBy(CHAOS_TOKENS, x => CHAOS_TOKEN_ORDER[x]),
           id => {
             const originalCount = trackDeltas ? ogChaosBag[id] : chaosBag[id];
             return (
@@ -180,7 +193,7 @@ export default class EditChaosBagDialog extends React.Component {
                 id={id}
                 originalCount={originalCount || 0}
                 count={chaosBag[id] || 0}
-                limit={CHAOS_BAG_TOKEN_COUNTS[id]}
+                limit={CHAOS_BAG_TOKEN_COUNTS[id] || 0}
                 mutateCount={this._mutateCount}
               />
             );

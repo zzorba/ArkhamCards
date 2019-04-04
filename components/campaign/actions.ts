@@ -12,6 +12,7 @@ import {
   CampaignCycleCode,
   CampaignDifficultyType,
   CustomCampaignLog,
+  ScenarioResult,
   WeaknessSet,
   AddCampaignScenarioResultAction,
   NewCampaignAction,
@@ -82,7 +83,7 @@ export function newCampaign(
  * }
  */
 export function updateCampaign(
-  id: string,
+  id: number,
   sparseCampaign: Campaign,
 ): ThunkAction<void, AppState, null, UpdateCampaignAction>  {
   return (dispatch, getState) => {
@@ -100,7 +101,7 @@ export function updateCampaign(
   };
 }
 
-export function deleteCampaign(id: string): DeleteCampaignAction {
+export function deleteCampaign(id: number): DeleteCampaignAction {
   return {
     type: DELETE_CAMPAIGN,
     id,
@@ -108,33 +109,13 @@ export function deleteCampaign(id: string): DeleteCampaignAction {
 }
 
 export function addScenarioResult(
-  id: string,
-  {
-    scenario,
-    scenarioCode,
-    scenarioPack,
-    resolution,
-    interlude,
-  }: {
-    scenario: string;
-    scenarioCode: string;
-    resolution: string;
-    scenarioPack?: string;
-    interlude?: boolean;
-  },
-  xp: number,
+  id: number,
+  scenarioResult: ScenarioResult
 ): AddCampaignScenarioResultAction {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
     id,
-    scenarioResult: {
-      scenario,
-      scenarioCode,
-      scenarioPack,
-      resolution,
-      interlude,
-      xp,
-    },
+    scenarioResult,
     now: new Date(),
   };
 }

@@ -1,12 +1,17 @@
 import { capitalize, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
-import { CUSTOM } from '../../actions/types';
+import { CUSTOM, Campaign, Deck } from '../../actions/types';
 import { campaignNames } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
-import { CHAOS_TOKEN_ORDER } from '../../constants';
+import { CHAOS_TOKEN_ORDER, ChaosTokenType } from '../../constants';
+import { CardsMap } from '../../data/Card';
 
-export function campaignToText(campaign, latestDeckIds, decks, investigators) {
-  const lines = [];
+export function campaignToText(
+  campaign: Campaign,
+  latestDeckIds: number[],
+  decks: { [deckId: number]: Deck; },
+  investigators: CardsMap) {
+  const lines: string[] = [];
   lines.push(campaign.name);
   lines.push('');
   if (campaign.cycleCode === CUSTOM) {
@@ -24,8 +29,12 @@ export function campaignToText(campaign, latestDeckIds, decks, investigators) {
   lines.push('');
 
   lines.push('Chaos Bag:');
-  const tokens = sortBy(keys(campaign.chaosBag), token => CHAOS_TOKEN_ORDER[token]);
-  const tokenParts = flatMap(tokens, token => map(range(0, campaign.chaosBag[token]), () => token));
+  const unsortedTokens: ChaosTokenType[] = keys(campaign.chaosBag) as ChaosTokenType[];
+  const tokens: ChaosTokenType[] = sortBy<ChaosTokenType>(
+    unsortedTokens,
+    token => CHAOS_TOKEN_ORDER[token]);
+  const tokenParts = flatMap(tokens,
+    token => map(range(0, campaign.chaosBag[token]), () => token));
   lines.push(tokenParts.join(', '));
 
   lines.push('');

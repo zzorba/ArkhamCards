@@ -8,22 +8,16 @@ import {
 import L from '../../app/i18n';
 import EditCountComponent from './EditCountComponent';
 
-export default class XpComponent extends React.Component {
-  static propTypes = {
-    xp: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
-    isInvestigator: PropTypes.bool,
-  };
+interface Props {
+  xp: number;
+  onChange: (xp: number) => void;
+  isInvestigator?: boolean;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._countChanged = this.countChanged.bind(this);
-  }
-
-  countChanged(index, count) {
+export default class XpComponent extends React.Component<Props> {
+  _countChanged = (index: number, count: number) => {
     this.props.onChange(count);
-  }
+  };
 
   render() {
     const {
