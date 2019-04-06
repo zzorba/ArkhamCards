@@ -218,7 +218,7 @@ export function setPackSpoiler(code: string, value: boolean) {
   };
 }
 
-export function setCyclePackSpoiler(cycle: string, value: boolean) {
+export function setCyclePackSpoiler(cycle: number, value: boolean) {
   return {
     type: SET_PACK_SPOILER,
     cycle,

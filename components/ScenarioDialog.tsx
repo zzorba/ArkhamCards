@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import L from '../app/i18n';
 import DialogPicker from './core/DialogPicker';
 
-export default class ScenarioDialog extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    scenarioChanged: PropTypes.func.isRequired,
-    selected: PropTypes.string.isRequired,
-    scenarios: PropTypes.array.isRequired,
-  };
+interface Props {
+  componentId: string;
+  scenarioChanged: (scenario: string) => void;
+  selected: string;
+  scenarios: string[];
+}
 
+export default class ScenarioDialog extends React.Component<Props> {
   render() {
     const {
       componentId,

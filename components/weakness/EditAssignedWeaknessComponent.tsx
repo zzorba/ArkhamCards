@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { flatMap } from 'lodash';
 import {
   ScrollView,
@@ -7,10 +6,20 @@ import {
 
 import { showCard } from '../navHelper';
 import L from '../../app/i18n';
-import withWeaknessCards from './withWeaknessCards';
+import { Slots, WeaknessSet } from '../../actions/types';
+import Card from '../../data/Card';
+import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
 import CardSearchResult from '../CardSearchResult';
 
-class EditAssignedWeaknessComponent extends React.Component {
+interface OwnProps {
+  componentId: string;
+  weaknessSet: WeaknessSet;
+  updateAssignedCards: (assignedCards: Slots) => void;
+}
+
+type Props = OwnProps & WeaknessCardProps;
+
+class EditAssignedWeaknessComponent extends React.Component<Props> {
   static get options() {
     return {
       topBar: {
@@ -21,23 +30,7 @@ class EditAssignedWeaknessComponent extends React.Component {
     };
   }
 
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    weaknessSet: PropTypes.object,
-    updateAssignedCards: PropTypes.func.isRequired,
-    // From realm.
-    cards: PropTypes.object, // Realm array
-    cardsMap: PropTypes.object,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._onCountChange = this.onCountChange.bind(this);
-    this._cardPressed = this.cardPressed.bind(this);
-  }
-
-  onCountChange(code, count) {
+  _onCountChange = (code: string, count: number) => {
     const {
       weaknessSet: {
         assignedCards,
@@ -50,11 +43,11 @@ class EditAssignedWeaknessComponent extends React.Component {
       assignedCards,
       { [code]: (cardsMap[code].quantity || 1) - count });
     updateAssignedCards(newAssignedCards);
-  }
+  };
 
-  cardPressed(card) {
+  _cardPressed = (card: Card) => {
     showCard(this.props.componentId, card.code, card, true);
-  }
+  };
 
   render() {
     const {
@@ -72,9 +65,9 @@ class EditAssignedWeaknessComponent extends React.Component {
             <CardSearchResult
               key={card.code}
               card={card}
-              count={card.quantity - (weaknessSet.assignedCards[card.code] || 0)}
+              count={(card.quantity || 0) - (weaknessSet.assignedCards[card.code] || 0)}
               onPress={this._cardPressed}
-              limit={card.quantity}
+              limit={(card.quantity || 0)}
               onDeckCountChange={this._onCountChange}
               showZeroCount
             />
@@ -85,4 +78,6 @@ class EditAssignedWeaknessComponent extends React.Component {
   }
 }
 
-export default withWeaknessCards(EditAssignedWeaknessComponent);
+export default withWeaknessCards<OwnProps>(
+  EditAssignedWeaknessComponent
+);

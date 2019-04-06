@@ -5,29 +5,33 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../actions';
+import { Pack } from '../actions/types';
+import { setPackSpoiler, setCyclePackSpoiler } from '../actions';
 import PackListComponent from './PackListComponent';
-import { getAllPacks, getPackSpoilers } from '../reducers';
+import { getAllPacks, getPackSpoilers, AppState } from '../reducers';
 
-class SpoilersView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    packs: PropTypes.array,
-    show_spoilers: PropTypes.object,
-    setPackSpoiler: PropTypes.func.isRequired,
-    setCyclePackSpoiler: PropTypes.func.isRequired,
-  };
 
-  constructor(props) {
-    super(props);
+interface OwnProps {
+  componentId: string;
+}
 
-    this._renderHeader = this.renderHeader.bind(this);
-  }
+interface ReduxProps {
+  packs: Pack[];
+  show_spoilers: { [pack_code: string]: boolean };
+}
 
-  renderHeader() {
+interface ReduxActionProps {
+  setPackSpoiler: (code: string, value: boolean) => void;
+  setCyclePackSpoiler: (cycle: number, value: boolean) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps;
+
+class SpoilersView extends React.Component<Props> {
+  _renderHeader = (): React.ReactElement => {
     return (
       <View style={styles.header}>
         <Text style={styles.headerText}>
@@ -36,7 +40,7 @@ class SpoilersView extends React.Component {
         </Text>
       </View>
     );
-  }
+  };
 
   render() {
     const {
@@ -66,18 +70,24 @@ class SpoilersView extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     packs: getAllPacks(state),
     show_spoilers: getPackSpoilers(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    setPackSpoiler,
+    setCyclePackSpoiler,
+  }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpoilersView);
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(SpoilersView);
 
 const styles = StyleSheet.create({
   header: {
