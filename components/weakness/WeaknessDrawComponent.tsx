@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { filter, find, flatMap, forEach, head, keys, map, range, shuffle } from 'lodash';
 import {
   ActivityIndicator,
   Dimensions,
+  LayoutChangeEvent,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
@@ -13,7 +14,9 @@ import { CachedImage, ImageCacheManager } from 'react-native-cached-image';
 import FlipCard from 'react-native-flip-card';
 
 import L from '../../app/i18n';
-import withWeaknessCards from './withWeaknessCards';
+import { Slots, WeaknessSet } from '../../actions/types';
+import Card from '../../data/Card';
+import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
 import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '../../styles/sizes';
@@ -23,29 +26,32 @@ const defaultImageCacheManager = ImageCacheManager();
 
 const PADDING = 32;
 
-class WeaknessDrawComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    weaknessSet: PropTypes.object,
-    updateDrawnCard: PropTypes.func.isRequired,
-    customHeader: PropTypes.node,
-    customFlippedHeader: PropTypes.node,
-    saving: PropTypes.bool,
-    // From realm, actually an 'array'.
-    cards: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+  weaknessSet: WeaknessSet;
+  updateDrawnCard: (code: string, assignedCards: Slots) => void;
+  customHeader?: ReactNode;
+  customFlippedHeader?: ReactNode;
+  saving?: boolean;
+}
+type Props = OwnProps & WeaknessCardProps;
 
-  constructor(props) {
+interface State {
+  headerHeight: number;
+  flippedHeaderHeight: number;
+  selectedTraits: string[];
+  nextCard?: Card;
+  flipped: boolean;
+  drawNewCard: boolean;
+}
+class WeaknessDrawComponent extends React.Component<Props, State> {
+  _onHeaderLayout!: (event: LayoutChangeEvent) => void;
+  _onFlippedHeaderLayout!: (event: LayoutChangeEvent) => void;
+
+  constructor(props: Props) {
     super(props);
 
-    const {
-      width,
-      height,
-    } = Dimensions.get('window');
-
     this.state = {
-      width,
-      height,
       headerHeight: 32,
       flippedHeaderHeight: 32,
       selectedTraits: [],
@@ -54,16 +60,11 @@ class WeaknessDrawComponent extends React.Component {
       drawNewCard: false,
     };
 
-    this._onHeaderLayout = this.onHeaderLayout.bind(this, 'headerHeight');
-    this._onFlippedHeaderLayout = this.onHeaderLayout.bind(this, 'flippedHeaderHeight');
-    this._drawAnother = this.drawAnother.bind(this);
-    this._flipCard = this.flipCard.bind(this);
-    this._onFlipEnd = this.onFlipEnd.bind(this);
-    this._onTraitsChange = this.onTraitsChange.bind(this);
-    this._selectNextCard = this.selectNextCard.bind(this);
+    this._onHeaderLayout = this.onHeaderLayout.bind(this, false);
+    this._onFlippedHeaderLayout = this.onHeaderLayout.bind(this, true);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (this.props.weaknessSet !== prevProps.weaknessSet && !this.state.flipped) {
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
@@ -74,10 +75,12 @@ class WeaknessDrawComponent extends React.Component {
 
   calculateCardDimensions() {
     const {
-      width,
-      height,
       headerHeight,
     } = this.state;
+    const {
+      width,
+      height,
+    } = Dimensions.get('window');
 
     const wBasedWidth = width - PADDING * 2;
     const wBasedHeight = Math.round(wBasedWidth * CARD_RATIO);
@@ -97,20 +100,29 @@ class WeaknessDrawComponent extends React.Component {
     };
   }
 
-  onHeaderLayout(key, event) {
-    this.setState({
-      [key]: event.nativeEvent.layout.height,
-    });
+  onHeaderLayout(
+    flipped: boolean,
+    event: LayoutChangeEvent
+  ) {
+    if (flipped) {
+      this.setState({
+        flippedHeaderHeight: event.nativeEvent.layout.height,
+      });
+    } else {
+      this.setState({
+        headerHeight: event.nativeEvent.layout.height,
+      });
+    }
   }
 
-  drawAnother() {
+  _drawAnother = () => {
     this.setState({
       flipped: false,
       drawNewCard: true,
     });
-  }
+  };
 
-  flipCard() {
+  _flipCard = () => {
     if (!this.state.flipped && !this.state.drawNewCard) {
       const {
         updateDrawnCard,
@@ -121,41 +133,42 @@ class WeaknessDrawComponent extends React.Component {
       const {
         nextCard,
       } = this.state;
+      if (nextCard) {
+        const newAssignedCards = Object.assign({}, assignedCards);
+        if (!newAssignedCards[nextCard.code]) {
+          newAssignedCards[nextCard.code] = 0;
+        }
+        newAssignedCards[nextCard.code]++;
 
-      const newAssignedCards = Object.assign({}, assignedCards);
-      if (!newAssignedCards[nextCard.code]) {
-        newAssignedCards[nextCard.code] = 0;
+        this.setState({
+          flipped: true,
+        }, () => {
+          updateDrawnCard(nextCard.code, newAssignedCards);
+        });
       }
-      newAssignedCards[nextCard.code]++;
-
-      this.setState({
-        flipped: true,
-      }, () => {
-        updateDrawnCard(nextCard.code, newAssignedCards);
-      });
     }
-  }
+  };
 
-  onTraitsChange(values) {
+  _onTraitsChange = (values: string[]) => {
     this.setState({
       selectedTraits: values,
     }, this._selectNextCard);
-  }
+  };
 
-  onFlipEnd() {
+  _onFlipEnd = () => {
     if (this.state.drawNewCard) {
       setTimeout(this._selectNextCard, 200);
     }
-  }
+  };
 
-  selectNextCard() {
+  _selectNextCard = () => {
     this.setState({
       drawNewCard: false,
       nextCard: this.nextCard(this.state.selectedTraits),
     });
-  }
+  };
 
-  nextCard(selectedTraits) {
+  nextCard(selectedTraits: string[]) {
     const {
       weaknessSet: {
         assignedCards,
@@ -163,7 +176,7 @@ class WeaknessDrawComponent extends React.Component {
     } = this.props;
     const cards = shuffle(flatMap(this.selectedCards(selectedTraits), card => {
       return map(
-        range(0, card.quantity - (assignedCards[card.code] || 0)),
+        range(0, (card.quantity || 0) - (assignedCards[card.code] || 0)),
         () => card);
     }));
 
@@ -174,13 +187,15 @@ class WeaknessDrawComponent extends React.Component {
     return card;
   }
 
-  selectedCards(selectedTraits) {
+  selectedCards(selectedTraits: string[]) {
     if (!selectedTraits.length) {
       return this.cards();
     }
     return filter(this.cards(), card => {
-      return !!find(selectedTraits, trait =>
-        card.traits_normalized.indexOf(`#${trait.toLowerCase()}#`) !== -1);
+      return !!find(selectedTraits, trait => (
+        card.traits_normalized &&
+        card.traits_normalized.indexOf(`#${trait.toLowerCase()}#`) !== -1)
+      );
     });
   }
 
@@ -195,7 +210,7 @@ class WeaknessDrawComponent extends React.Component {
     const packSet = new Set(packCodes);
     return filter(cards, card => (
       packSet.has(card.pack_code) &&
-      (assignedCards[card.code] || 0) < card.quantity
+      (assignedCards[card.code] || 0) < (card.quantity || 0)
     ));
   }
 
@@ -203,11 +218,11 @@ class WeaknessDrawComponent extends React.Component {
     const {
       selectedTraits,
     } = this.state;
-    const traitsMap = {};
+    const traitsMap: { [trait: string]: number } = {};
     forEach(this.cards(), card => {
       if (card.traits) {
         forEach(
-          filter(map(card.traits.split('.'), t => t.trim()), t => t),
+          filter<string>(map(card.traits.split('.'), t => t.trim()), t => !!t),
           t => {
             traitsMap[t] = 1;
           });

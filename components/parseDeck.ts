@@ -326,7 +326,7 @@ export interface ParsedDeck {
   ignoreDeckLimitSlots: Slots;
   exiledCards: Slots;
   changedCards: Slots;
-  spentXp?: number;
+  spentXp: number;
 }
 
 export function parseDeck(
@@ -391,7 +391,7 @@ export function parseDeck(
     ignoreDeckLimitSlots,
     exiledCards,
     changedCards,
-    spentXp,
+    spentXp: spentXp || 0,
   };
 }
 

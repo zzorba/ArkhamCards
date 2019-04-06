@@ -10,44 +10,43 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { campaignScenarios } from '../constants';
+import { Campaign, ScenarioResult } from '../../../actions/types';
+import { campaignScenarios, Scenario } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
-import { getCampaign } from '../../../reducers';
+import { getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 
-class CampaignScenarioView extends React.Component {
-  static propTypes = {
-    /* eslint-disable react/no-unused-prop-types */
-    id: PropTypes.number.isRequired,
-    campaign: PropTypes.object.isRequired,
-    cycleScenarios: PropTypes.array,
-    scenarioByCode: PropTypes.object,
-  };
+interface OwnProps {
+  id: number;
+}
 
-  constructor(props) {
-    super(props);
+interface ReduxProps {
+  campaign?: Campaign;
+  cycleScenarios?: Scenario[];
+  scenarioByCode?: { [code: string]: Scenario };
+}
 
-    this._renderScenarioResult = this.renderScenarioResult.bind(this);
-  }
+type Props = OwnProps & ReduxProps;
 
-  renderScenarioResult(scenarioResult, idx) {
+class CampaignScenarioView extends React.Component<Props> {
+  _renderScenarioResult = (scenarioResult: ScenarioResult, idx: number) => {
     const {
       scenarioByCode,
     } = this.props;
     const resolution = scenarioResult.resolution ?
       `: ${scenarioResult.resolution}` : '';
-    const xp = (scenarioResult.xp > 0 || !scenarioResult.interlude) ?
+    const xp = ((scenarioResult.xp || 0) > 0 || !scenarioResult.interlude) ?
       ` (${scenarioResult.xp} XP)` : '';
-    const scenario = scenarioByCode[scenarioResult];
+    const scenario = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];
     const scenarioName = scenario ? scenario.name : scenarioResult.scenario;
     return (
       <Text style={typography.gameFont} key={idx}>
         { `${scenarioName}${resolution}${xp}` }
       </Text>
     );
-  }
+  };
 
-  renderPendingScenario(scenario, idx) {
+  renderPendingScenario(scenario: Scenario, idx: number) {
     return (
       <Text style={[typography.gameFont, styles.disabled]} key={idx}>
         { scenario.name }
@@ -60,6 +59,9 @@ class CampaignScenarioView extends React.Component {
       campaign,
       cycleScenarios,
     } = this.props;
+    if (!campaign) {
+      return null;
+    }
     const finishedScenarios = new Set(map(campaign.scenarioResults, result => result.scenarioCode));
     const finishedScenarioNames = new Set(map(campaign.scenarioResults, result => result.scenario));
     return (
@@ -81,26 +83,24 @@ class CampaignScenarioView extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const campaign = getCampaign(state, props.id);
-  const cycleScenarios = campaignScenarios(campaign.cycleCode);
-  const scenarioByCode = {};
-  forEach(cycleScenarios, scenario => {
-    scenarioByCode[scenario.code] = scenario;
-  });
-  return {
-    campaign,
-    cycleScenarios,
-    scenarioByCode,
-  };
+  if (campaign) {
+    const cycleScenarios = campaignScenarios(campaign.cycleCode);
+    const scenarioByCode: { [code: string]: Scenario } = {};
+    forEach(cycleScenarios, scenario => {
+      scenarioByCode[scenario.code] = scenario;
+    });
+    return {
+      campaign,
+      cycleScenarios,
+      scenarioByCode,
+    };
+  }
+  return {};
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CampaignScenarioView);
-
+export default connect(mapStateToProps)(CampaignScenarioView);
 
 const styles = StyleSheet.create({
   container: {
