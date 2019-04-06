@@ -9,31 +9,22 @@ import {
 import {
   SettingsButton,
 } from 'react-native-settings-components';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
 
-export default class SettingsItem extends React.Component {
-  static propTypes = {
-    loading: PropTypes.bool,
-    navigation: PropTypes.bool,
-    text: PropTypes.string.isRequired,
-    onPress: PropTypes.func,
-  };
+interface Props {
+  loading?: boolean;
+  navigation?: boolean;
+  text: string;
+  onPress?: () => void;
+}
+export default class SettingsItem extends React.Component<Props> {
+  _dummyOnPress = () => {};
 
-  constructor(props) {
-    super(props);
-
-    this._renderIcon = this.renderIcon.bind(this);
-    this._dummyOnPress = this.dummyOnPress.bind(this);
-  }
-
-  dummyOnPress() {
-
-  }
-
-  renderIcon() {
+  _renderIcon = () => {
     return (
       <MaterialCommunityIcons
         size={28}
@@ -41,7 +32,8 @@ export default class SettingsItem extends React.Component {
         name="chevron-right"
       />
     );
-  }
+  };
+
   render() {
     const { loading, navigation, text, onPress } = this.props;
     if (loading) {
@@ -57,7 +49,7 @@ export default class SettingsItem extends React.Component {
       <SettingsButton
         onPress={onPress || this._dummyOnPress}
         title={text}
-        rightIcon={navigation ? this._renderIcon : null}
+        rightIcon={navigation ? this._renderIcon : undefined}
         disabled={!onPress}
       />
     );

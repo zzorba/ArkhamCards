@@ -10,18 +10,20 @@ import {
   Share,
   StyleSheet,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
 
 import L from '../../app/i18n';
-import withDialogs from '../core/withDialogs';
+import { Campaign } from '../../actions/types';
+import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
 import { clearDecks } from '../../actions';
-import { getCampaigns } from '../../reducers';
+import Card from '../../data/Card';
+import { getCampaigns, AppState } from '../../reducers';
 import { fetchCards } from '../cards/actions';
 import { setAllCampaigns } from '../campaign/actions';
 import SettingsItem from './SettingsItem';
@@ -29,31 +31,25 @@ import { COLORS } from '../../styles/colors';
 
 const defaultImageCacheManager = ImageCacheManager();
 
-class DiagnosticsView extends React.Component {
-  static propTypes = {
-    realm: PropTypes.object.isRequired,
-    // from redux.
-    campaigns: PropTypes.array.isRequired,
-    fetchCards: PropTypes.func.isRequired,
-    setAllCampaigns: PropTypes.func.isRequired,
-    clearDecks: PropTypes.func.isRequired,
-    lang: PropTypes.string,
-    // From HOC
-    showTextEditDialog: PropTypes.func.isRequired,
-  };
+interface RealmProps {
+   realm: Realm
+}
 
-  constructor(props) {
-    super(props);
+interface ReduxProps {
+  campaigns: Campaign[];
+  lang?: string;
+}
 
-    this._importCampaignDataJson = this.importCampaignDataJson.bind(this);
-    this._importCampaignData = this.importCampaignData.bind(this);
-    this._exportCampaignData = this.exportCampaignData.bind(this);
-    this._doSyncCards = this.doSyncCards.bind(this);
-    this._clearImageCache = this.clearImageCache.bind(this);
-    this._clearCache = this.clearCache.bind(this);
-  }
+interface ReduxActionProps {
+  fetchCards: (realm: Realm, lang?: string) => void;
+  setAllCampaigns: (campaigns: { [id: string]: Campaign }) => void;
+  clearDecks: () => void;
+}
 
-  importCampaignDataJson(json) {
+type Props = RealmProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+
+class DiagnosticsView extends React.Component<Props> {
+  _importCampaignDataJson = (json: any) => {
     try {
       const newCampaigns = JSON.parse(json) || [];
       if (newCampaigns.length) {
@@ -83,9 +79,9 @@ class DiagnosticsView extends React.Component {
       L('Problem with import'),
       L('We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.'),
     );
-  }
+  };
 
-  importCampaignData() {
+  _importCampaignData = () => {
     const {
       campaigns,
       showTextEditDialog,
@@ -119,9 +115,9 @@ class DiagnosticsView extends React.Component {
         },
       }],
     );
-  }
+  };
 
-  exportCampaignData() {
+  _exportCampaignData = () => {
     Alert.alert(
       L('Backup campaign data?'),
       L('This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.'),
@@ -137,14 +133,13 @@ class DiagnosticsView extends React.Component {
         },
       }],
     );
+  };
 
-  }
-
-  clearImageCache() {
+  _clearImageCache = () => {
     defaultImageCacheManager.clearCache({});
-  }
+  };
 
-  clearCache() {
+  _clearCache = () => {
     const {
       realm,
       clearDecks,
@@ -153,17 +148,17 @@ class DiagnosticsView extends React.Component {
     realm.write(() => {
       realm.delete(realm.objects('Card'));
     });
-    this.doSyncCards();
-  }
+    this._doSyncCards();
+  };
 
-  doSyncCards() {
+  _doSyncCards = () => {
     const {
       realm,
       lang,
       fetchCards,
     } = this.props;
     fetchCards(realm, lang);
-  }
+  };
 
   render() {
     return (
@@ -171,13 +166,13 @@ class DiagnosticsView extends React.Component {
         <ScrollView style={styles.list}>
           <SettingsCategoryHeader
             title={L('Backup')}
-            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+            titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
           <SettingsItem onPress={this._exportCampaignData} text={L('Backup Campaign Data')} />
           <SettingsItem onPress={this._importCampaignData} text={L('Restore Campaign Data')} />
           <SettingsCategoryHeader
             title={L('Caches')}
-            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+            titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
           <SettingsItem onPress={this._clearImageCache} text={L('Clear image cache')} />
           <SettingsItem onPress={this._clearCache} text={L('Clear cache')} />
@@ -187,14 +182,14 @@ class DiagnosticsView extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     campaigns: getCampaigns(state),
-    lang: state.packs.lang,
+    lang: state.packs.lang || undefined,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     clearDecks,
     fetchCards,
@@ -203,11 +198,17 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withDialogs(
-  connectRealm(
-    connect(mapStateToProps, mapDispatchToProps)(DiagnosticsView),
+  connectRealm<InjectedDialogProps, RealmProps, Card>(
+    connect<ReduxProps, ReduxActionProps, RealmProps & InjectedDialogProps, AppState>(
+      mapStateToProps,
+      mapDispatchToProps
+    )(DiagnosticsView),
     {
       schemas: ['Card'],
-      mapToProps(results, realm) {
+      mapToProps(
+        results: CardResults<Card>,
+        realm: Realm
+      ): RealmProps {
         return {
           realm,
         };

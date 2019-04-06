@@ -10,28 +10,24 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import InvestigatorImage from '../core/InvestigatorImage';
+import Card, { CardsMap } from '../../data/Card';
 import { FACTION_LIGHT_GRADIENTS } from '../../constants';
+import typography from '../../styles/typography';
 
-export default class InvestigatorRow extends React.Component {
-  static propTypes = {
-    investigator: PropTypes.object.isRequired,
-    cards: PropTypes.object.isRequired,
-    onPress: PropTypes.func.isRequired,
-  };
+interface Props {
+  investigator: Card;
+  cards: CardsMap;
+  onPress: (card: Card) => void;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onPress = this.onPress.bind(this);
-  }
-
-  onPress() {
+export default class InvestigatorRow extends React.Component<Props> {
+  _onPress = () => {
     const {
       onPress,
       investigator,
     } = this.props;
     onPress(investigator);
-  }
+  };
 
   render() {
     const {
@@ -46,7 +42,7 @@ export default class InvestigatorRow extends React.Component {
     return (
       <TouchableOpacity onPress={this._onPress}>
         <LinearGradient
-          colors={FACTION_LIGHT_GRADIENTS[investigator.faction_code]}
+          colors={FACTION_LIGHT_GRADIENTS[investigator.factionCode()]}
           style={styles.row}
         >
           <View style={styles.image}>
@@ -56,7 +52,7 @@ export default class InvestigatorRow extends React.Component {
             <Text style={styles.title}>
               { investigator.name }
             </Text>
-            <Text style={styles.text}>
+            <Text style={typography.text}>
               { `${investigator.deck_requirements.size} Cards` }
             </Text>
             { map(investigator.deck_requirements.card, req => {

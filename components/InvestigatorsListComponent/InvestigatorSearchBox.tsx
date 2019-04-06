@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Animated,
   Easing,
@@ -11,26 +10,30 @@ import SearchBox, { SEARCH_BAR_HEIGHT } from '../SearchBox';
 
 export const SEARCH_OPTIONS_HEIGHT = 44;
 
-export default class InvestigatorSearchBox extends React.Component {
-  static propTypes = {
-    value: PropTypes.string,
-    visible: PropTypes.bool.isRequired,
-    onChangeText: PropTypes.func.isRequired,
-  };
+interface Props {
+  value?: string;
+  visible: boolean;
+  onChangeText: (search: string) => void;
+}
 
-  constructor(props) {
+interface State {
+  anim: Animated.Value;
+  advancedOpen: boolean;
+}
+
+export default class InvestigatorSearchBox extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       anim: new Animated.Value(props.visible ? SEARCH_BAR_HEIGHT : 0),
+      advancedOpen: false,
     };
-
-    this._onChangeText = this.onChangeText.bind(this);
   }
 
-  onChangeText(search) {
+  _onChangeText = (search: string) => {
     this.props.onChangeText(search);
-  }
+  };
 
   toggleAdvanced() {
     const {
@@ -42,7 +45,7 @@ export default class InvestigatorSearchBox extends React.Component {
       Animated.timing(anim, {
         toValue: SEARCH_BAR_HEIGHT + (!advancedOpen ? SEARCH_OPTIONS_HEIGHT : 0),
         duration: 200,
-        easing: Easing.easeIn,
+        easing: Easing.in(Easing.ease),
       }).start();
     });
     this.setState({
@@ -50,7 +53,7 @@ export default class InvestigatorSearchBox extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       visible,
     } = this.props;
@@ -63,7 +66,7 @@ export default class InvestigatorSearchBox extends React.Component {
         Animated.timing(anim, {
           toValue: visible ? height : 0,
           duration: 250,
-          easing: Easing.easeIn,
+          easing: Easing.in(Easing.ease),
         }).start();
       });
     }

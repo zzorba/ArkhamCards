@@ -1,10 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { ActivityIndicator, Platform, TouchableOpacity, StyleSheet } from 'react-native';
-import { countBy, find, forEach, map, throttle } from 'lodash';
-import { bindActionCreators } from 'redux';
+import {
+  ActivityIndicator,
+  Platform,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+} from 'react-native';
+import { find, forEach, map, sumBy, throttle } from 'lodash';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import DialogComponent from 'react-native-dialog';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
@@ -12,57 +18,68 @@ import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
-import withNetworkStatus from '../core/withNetworkStatus';
-import withLoginState from '../withLoginState';
-import * as Actions from '../../actions';
+import withNetworkStatus, { InjectedNetworkStatusProps } from '../core/withNetworkStatus';
+import withLoginState, { LoginStateProps } from '../withLoginState';
+import { setNewDeck } from '../../actions';
+import { Deck, Slots } from '../../actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
+import Card, { CardsMap } from '../../data/Card';
 import { newCustomDeck } from '../../lib/authApi';
-import { getNextLocalDeckId } from '../../reducers';
+import { getNextLocalDeckId, AppState } from '../../reducers';
 import L from '../../app/i18n';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
 import { COLORS } from '../../styles/colors';
 
-class NewDeckOptionsDialog extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    //
-    toggleVisible: PropTypes.func.isRequired,
-    investigatorId: PropTypes.string,
-    viewRef: PropTypes.object,
-    onCreateDeck: PropTypes.func,
-    signedIn: PropTypes.bool,
-    // from realm
-    investigators: PropTypes.object.isRequired,
-    requiredCards: PropTypes.object.isRequired,
-    // from redux
-    nextLocalDeckId: PropTypes.number.isRequired,
-    login: PropTypes.func.isRequired,
-    setNewDeck: PropTypes.func.isRequired,
-    // from networkStatus
-    networkType: PropTypes.string,
-    refreshNetworkStatus: PropTypes.func.isRequired,
-  };
+interface OwnProps {
+  componentId: string;
+  toggleVisible: () => void;
+  investigatorId?: string;
+  viewRef?: View;
+  onCreateDeck: (deck: Deck) => void;
+}
 
-  constructor(props) {
+interface RealmProps {
+  investigators: CardsMap;
+  requiredCards: CardsMap;
+}
+
+interface ReduxProps {
+  nextLocalDeckId: number;
+}
+
+interface ReduxActionProps {
+  setNewDeck: (id: number, deck: Deck) => void;
+}
+
+type Props = OwnProps &
+  RealmProps & ReduxProps & ReduxActionProps &
+  InjectedNetworkStatusProps & LoginStateProps;
+
+interface State {
+  saving: boolean;
+  deckName?: string;
+  offlineDeck: boolean;
+  optionSelected: boolean[];
+}
+
+class NewDeckOptionsDialog extends React.Component<Props, State> {
+  _textInputRef?: TextInput;
+  _onOkayPress!: () => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       saving: false,
-      deckName: null,
       offlineDeck: !props.signedIn || props.networkType === 'none',
       optionSelected: [true],
     };
 
-    this._toggleOptionsSelected = this.toggleOptionsSelected.bind(this);
-    this._onDeckNameChange = this.onDeckNameChange.bind(this);
-    this._onDeckTypeChange = this.onDeckTypeChange.bind(this);
     this._onOkayPress = throttle(this.onOkayPress.bind(this), 200);
-    this._captureTextInputRef = this.captureTextInputRef.bind(this);
-    this._textInputRef = null;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       investigatorId,
     } = this.props;
@@ -71,30 +88,30 @@ class NewDeckOptionsDialog extends React.Component {
     }
   }
 
-  onDeckTypeChange(value) {
+  _onDeckTypeChange = (value: boolean) => {
     this.setState({
       offlineDeck: !value,
     });
-  }
+  };
 
-  onDeckNameChange(value) {
+  _onDeckNameChange = (value: string) => {
     this.setState({
       deckName: value,
     });
-  }
+  };
 
-  toggleOptionsSelected(index, value) {
+  _toggleOptionsSelected = (index: number, value: boolean) => {
     const optionSelected = this.state.optionSelected.slice();
     optionSelected[index] = value;
 
     this.setState({
       optionSelected,
     });
-  }
+  };
 
-  captureTextInputRef(ref) {
+  _captureTextInputRef = (ref: TextInput) => {
     this._textInputRef = ref;
-  }
+  };
 
   resetForm() {
     this.setState({
@@ -104,7 +121,7 @@ class NewDeckOptionsDialog extends React.Component {
     });
   }
 
-  showNewDeck(deck) {
+  showNewDeck(deck: Deck) {
     const {
       componentId,
       setNewDeck,
@@ -131,7 +148,7 @@ class NewDeckOptionsDialog extends React.Component {
     const {
       optionSelected,
     } = this.state;
-    const slots = {
+    const slots: Slots = {
       // Random basic weakness.
       [RANDOM_BASIC_WEAKNESS]: 1,
     };
@@ -141,11 +158,12 @@ class NewDeckOptionsDialog extends React.Component {
     if (investigator && investigator.deck_requirements) {
       forEach(investigator.deck_requirements.card, cardRequirement => {
         const card = requiredCards[cardRequirement.code];
-        slots[cardRequirement.code] = card.deck_limit || card.quantity;
+        slots[cardRequirement.code] = card.deck_limit || card.quantity || 0;
       });
     }
 
-    if (optionSelected[0] !== true || countBy(optionSelected) !== 1) {
+    if (optionSelected[0] !== true ||
+      sumBy(optionSelected, x => x ? 1 : 0) !== 1) {
       // Now sub in the options that were asked for if we aren't going
       // with the defaults.
       const options = this.requiredCardOptions();
@@ -153,7 +171,7 @@ class NewDeckOptionsDialog extends React.Component {
         const cards = options[index];
         forEach(cards, card => {
           if (include) {
-            slots[card.code] = card.deck_limit || card.quantity;
+            slots[card.code] = card.deck_limit || card.quantity || 0;
           } else if (slots[card.code]) {
             delete slots[card.code];
           }
@@ -164,7 +182,7 @@ class NewDeckOptionsDialog extends React.Component {
     return slots;
   }
 
-  onOkayPress(isRetry) {
+  onOkayPress(isRetry?: boolean) {
     const {
       login,
       signedIn,
@@ -181,7 +199,7 @@ class NewDeckOptionsDialog extends React.Component {
       if (offlineDeck || !signedIn || networkType === 'none') {
         const deck = newLocalDeck(
           nextLocalDeckId,
-          deckName,
+          deckName || 'New Deck',
           investigator.code,
           this.getSlots()
         );
@@ -192,7 +210,7 @@ class NewDeckOptionsDialog extends React.Component {
         });
         const newDeckPromise = newCustomDeck(
           investigator.code,
-          deckName,
+          deckName || 'New Deck',
           this.getSlots(),
           {},
           'too_few_cards'
@@ -217,13 +235,13 @@ class NewDeckOptionsDialog extends React.Component {
       investigatorId,
       investigators,
     } = this.props;
-    return investigatorId ? investigators[investigatorId] : null;
+    return investigatorId ? investigators[investigatorId] : undefined;
   }
 
   deckName() {
     const investigator = this.investigator();
     if (!investigator) {
-      return null;
+      return undefined;
     }
     switch (investigator.faction_code) {
       case 'guardian':
@@ -249,9 +267,9 @@ class NewDeckOptionsDialog extends React.Component {
     if (!investigator) {
       return [];
     }
-    const result = [[]];
+    const result: Card[][] = [[]];
     forEach(
-      investigator.deck_requirements.card,
+      investigator.deck_requirements ? investigator.deck_requirements.card : [],
       cardRequirement => {
         result[0].push(requiredCards[cardRequirement.code]);
         if (cardRequirement.alternates && cardRequirement.alternates.length) {
@@ -379,26 +397,29 @@ class NewDeckOptionsDialog extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     nextLocalDeckId: getNextLocalDeckId(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({ setNewDeck }, dispatch);
 }
 
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(
-    withLoginState(
+export default connectRealm<OwnProps, RealmProps, Card>(
+  connect<ReduxProps, ReduxActionProps, OwnProps & RealmProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(
+    withLoginState<OwnProps & ReduxProps & ReduxActionProps & RealmProps>(
       withNetworkStatus(NewDeckOptionsDialog),
       { noWrapper: true }
     )
   ), {
     schemas: ['Card'],
-    mapToProps(results) {
-      const investigators = {};
+    mapToProps(results: CardResults<Card>) {
+      const investigators: CardsMap = {};
       forEach(
         results.cards.filtered(`type_code == 'investigator'`),
         card => {
@@ -407,7 +428,7 @@ export default connectRealm(
           }
         }
       );
-      const requiredCards = {};
+      const requiredCards: CardsMap = {};
       forEach(
         results.cards.filtered(`has_restrictions == true`),
         card => {

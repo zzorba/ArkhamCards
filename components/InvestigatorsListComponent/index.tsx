@@ -5,42 +5,73 @@ import {
   Animated,
   Button,
   Keyboard,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
   SectionList,
+  SectionListData,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
-import { Navigation } from 'react-native-navigation';
+import { connectRealm, CardResults} from 'react-native-realm';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
+import Card, { CardsMap } from '../../data/Card';
 import { searchMatchesText } from '../searchHelpers';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
-import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK } from '../CardSortDialog/constants';
-import ShowNonCollectionFooter from '../CardSearchResultsComponent/ShowNonCollectionFooter';
+import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '../CardSortDialog/constants';
+import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from '../CardSearchResultsComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import * as Actions from '../../actions';
-import { getPacksInCollection } from '../../reducers';
+import { getPacksInCollection, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 
 const SCROLL_DISTANCE_BUFFER = 50;
 
-class InvestigatorsListComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired,
-    investigators: PropTypes.array.isRequired,
-    sort: PropTypes.string.isRequired,
-    cards: PropTypes.object.isRequired,
-    in_collection: PropTypes.object,
-    filterInvestigators: PropTypes.array,
-  };
+interface OwnProps {
+  componentId: string;
+  sort: SortType,
+  onPress: (investigator: Card) => void;
+  filterInvestigators?: string[];
+}
 
-  constructor(props) {
+interface ReduxProps {
+  in_collection: { [code: string]: boolean };
+}
+
+interface RealmProps {
+  investigators: Card[];
+  cards: CardsMap;
+}
+
+type Props = OwnProps & ReduxProps & RealmProps;
+
+interface State {
+  showNonCollection: { [key: string]: boolean };
+  headerVisible: boolean;
+  searchTerm: string;
+  scrollY: Animated.Value;
+}
+
+interface Section {
+  title: string;
+  id: string;
+  data: Card[];
+  nonCollectionCount: number;
+}
+
+class InvestigatorsListComponent extends React.Component<Props, State> {
+  lastOffsetY: number = 0;
+
+  _navEventListener?: EventSubscription;
+  _throttledScroll!: (offset: number) => void;
+  _handleScroll!: (...args: any[]) => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -50,9 +81,6 @@ class InvestigatorsListComponent extends React.Component {
       scrollY: new Animated.Value(0),
     };
 
-    this.lastOffsetY = 0;
-    this._handleScrollBeginDrag = this.handleScrollBeginDrag.bind(this);
-    this._onScroll = this.onScroll.bind(this);
     this._throttledScroll = throttle(
       this.throttledScroll.bind(this),
       100,
@@ -64,34 +92,25 @@ class InvestigatorsListComponent extends React.Component {
         listener: this._onScroll,
       },
     );
-    this._searchUpdated = this.searchUpdated.bind(this);
-    this._showNonCollectionCards = this.showNonCollectionCards.bind(this);
-    this._investigatorToCode = this.investigatorToCode.bind(this);
-    this._renderSectionHeader = this.renderSectionHeader.bind(this);
-    this._renderSectionFooter = this.renderSectionFooter.bind(this);
-    this._renderItem = this.renderItem.bind(this);
-    this._renderFooter = this.renderFooter.bind(this);
-    this._onPress = this.onPress.bind(this);
-    this._editCollection = this.editCollection.bind(this);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  handleScrollBeginDrag() {
+  _handleScrollBeginDrag = () => {
     Keyboard.dismiss();
-  }
+  };
 
-  onScroll(event) {
+  _onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
     // Dispatch the throttle event to handle hiding/showing stuff on transition.
     this._throttledScroll(offsetY);
-  }
+  };
 
   /**
    * This is the throttle scrollEvent, throttled so we check it slightly
    * less often and are able to make decisions about whether we update
    * the stored scrollY or not.
    */
-  throttledScroll(offsetY) {
+  throttledScroll(offsetY: number) {
     if (offsetY <= 0) {
       this.showHeader();
     } else {
@@ -116,25 +135,25 @@ class InvestigatorsListComponent extends React.Component {
     this.lastOffsetY = offsetY;
   }
 
-  searchUpdated(text) {
+  _searchUpdated = (text: string) => {
     this.setState({
       searchTerm: text,
     });
-  }
+  };
 
-  onPress(investigator) {
+  _onPress = (investigator: Card) => {
     this.props.onPress(investigator);
-  }
+  };
 
-  editCollection() {
+  _editCollection = () => {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },
     });
-  }
+  };
 
-  showNonCollectionCards(id) {
+  _showNonCollectionCards = (id: string) => {
     Keyboard.dismiss();
     this.setState({
       showNonCollection: Object.assign(
@@ -143,9 +162,9 @@ class InvestigatorsListComponent extends React.Component {
         { [id]: true },
       ),
     });
-  }
+  };
 
-  renderItem({ item }) {
+  _renderItem = ({ item }: { item: Card }) => {
     return (
       <InvestigatorRow
         key={item.code}
@@ -154,28 +173,15 @@ class InvestigatorsListComponent extends React.Component {
         onPress={this._onPress}
       />
     );
-  }
+  };
 
-  renderInvestigators(header, investigators) {
-    if (investigators.length === 0) {
-      return null;
-    }
-    return (
-      <View>
-        <View style={styles.headerRow}>
-          <Text style={styles.header}>
-            { header }
-          </Text>
-        </View>
-        { map(investigators, card => this.renderItem(card)) }
-      </View>
-    );
-  }
-
-  static headerForInvestigator(investigator, sort) {
+  static headerForInvestigator(
+    investigator: Card,
+    sort: SortType
+  ): string {
     switch (sort) {
       case SORT_BY_FACTION:
-        return investigator.faction_name;
+        return investigator.faction_name || L('N/A');
       case SORT_BY_TITLE:
         return L('All Investigators');
       case SORT_BY_PACK:
@@ -185,7 +191,7 @@ class InvestigatorsListComponent extends React.Component {
     }
   }
 
-  groupedInvestigators() {
+  groupedInvestigators(): Section[] {
     const {
       investigators,
       in_collection,
@@ -204,12 +210,15 @@ class InvestigatorsListComponent extends React.Component {
           if (filterInvestigatorsSet.has(i.code)) {
             return false;
           }
-          return searchMatchesText(searchTerm, [i.name, i.faction_name, i.traits]);
+          return searchMatchesText(
+            searchTerm,
+            [i.name, i.faction_name || '', i.traits || '']
+          );
         }),
       investigator => {
         switch (sort) {
           case SORT_BY_FACTION:
-            return investigator.faction_code;
+            return investigator.factionCode();
           case SORT_BY_TITLE:
             return investigator.name;
           case SORT_BY_PACK:
@@ -218,15 +227,17 @@ class InvestigatorsListComponent extends React.Component {
         }
       });
 
-    const results = [];
-    let nonCollectionCards = [];
-    let currentBucket = null;
+    const results: Section[] = [];
+    let nonCollectionCards: Card[] = [];
+    let currentBucket: Section | undefined = undefined;
     forEach(allInvestigators, i => {
       const header = InvestigatorsListComponent.headerForInvestigator(i, sort);
       if (!currentBucket || currentBucket.title !== header) {
-        if (nonCollectionCards.length > 0) {
+        if (currentBucket && nonCollectionCards.length > 0) {
           if (showNonCollection[currentBucket.id]) {
-            forEach(nonCollectionCards, c => currentBucket.data.push(c));
+            forEach(nonCollectionCards, c => {
+              currentBucket && currentBucket.data.push(c);
+            });
           }
           currentBucket.nonCollectionCount = nonCollectionCards.length;
           nonCollectionCards = [];
@@ -249,22 +260,27 @@ class InvestigatorsListComponent extends React.Component {
     });
 
     // One last snap of the non-collection cards
-    if (nonCollectionCards.length > 0) {
-      if (showNonCollection[currentBucket.id]) {
-        forEach(nonCollectionCards, c => currentBucket.data.push(c));
+    if (currentBucket) {
+      if (nonCollectionCards.length > 0) {
+        // @ts-ignore
+        if (showNonCollection[currentBucket.id]) {
+          forEach(nonCollectionCards, c => {
+            currentBucket && currentBucket.data.push(c);
+          });
+        }
+        // @ts-ignore
+        currentBucket.nonCollectionCount = nonCollectionCards.length;
+        nonCollectionCards = [];
       }
-      currentBucket.nonCollectionCount = nonCollectionCards.length;
-      nonCollectionCards = [];
     }
     return results;
   }
 
-  renderSectionHeader({ section }) {
+  _renderSectionHeader = ({ section }: { section: SectionListData<Section> }) => {
     return <InvestigatorSectionHeader title={section.title} />;
-  }
+  };
 
-
-  renderSectionFooter({ section }) {
+  _renderSectionFooter = ({ section }: { section: SectionListData<Section> }) => {
     const {
       showNonCollection,
     } = this.state;
@@ -274,11 +290,12 @@ class InvestigatorsListComponent extends React.Component {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <Button
-          style={styles.sectionFooterButton}
-          title={L('Edit Collection')}
-          onPress={this._editCollection}
-        />
+        <View style={styles.sectionFooterButton}>
+          <Button
+            title={L('Edit Collection')}
+            onPress={this._editCollection}
+          />
+        </View>
       );
     }
     return (
@@ -288,11 +305,11 @@ class InvestigatorsListComponent extends React.Component {
         onPress={this._showNonCollectionCards}
       />
     );
-  }
+  };
 
-  investigatorToCode(investigator) {
+  _investigatorToCode = (investigator: Card) => {
     return investigator.code;
-  }
+  };
 
   showHeader() {
     if (!this.state.headerVisible) {
@@ -324,7 +341,7 @@ class InvestigatorsListComponent extends React.Component {
     );
   }
 
-  renderFooter() {
+  _renderFooter = () => {
     const {
       searchTerm,
     } = this.state;
@@ -338,7 +355,7 @@ class InvestigatorsListComponent extends React.Component {
       );
     }
     return <View style={styles.footer} />;
-  }
+  };
 
   render() {
     const {
@@ -367,23 +384,21 @@ class InvestigatorsListComponent extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     in_collection: getPacksInCollection(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
-}
-
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(InvestigatorsListComponent),
+export default connectRealm<OwnProps, RealmProps, Card>(
+  connect<ReduxProps, {}, OwnProps & RealmProps, AppState>(
+    mapStateToProps
+  )(InvestigatorsListComponent),
   {
     schemas: ['Card'],
-    mapToProps(results) {
-      const investigators = [];
-      const names = {};
+    mapToProps(results: CardResults<Card>) {
+      const investigators: Card[] = [];
+      const names: { [name: string]: boolean } = {};
       forEach(
         results.cards.filtered('type_code == "investigator" AND encounter_code == null')
           .sorted('code', false),
@@ -394,7 +409,7 @@ export default connectRealm(
           }
         });
 
-      const cards = {};
+      const cards: CardsMap = {};
       forEach(
         results.cards.filtered(`has_restrictions == true OR code == "${RANDOM_BASIC_WEAKNESS}"`),
         card => {
@@ -429,5 +444,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
     marginTop: 8,
     marginBottom: 60,
+  },
+  sectionFooterButton: {
+    height: ROW_NON_COLLECTION_HEIGHT,
   },
 });

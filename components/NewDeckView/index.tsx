@@ -1,23 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Keyboard, StyleSheet, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import { SORT_BY_PACK } from '../CardSortDialog/constants';
+import { SORT_BY_PACK, SortType } from '../CardSortDialog/constants';
 import InvestigatorsListComponent from '../InvestigatorsListComponent';
 import NewDeckOptionsDialog from './NewDeckOptionsDialog';
 import L from '../../app/i18n';
 import { iconsMap } from '../../app/NavIcons';
+import { Deck } from '../../actions/types';
+import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
 
-export default class NewDeckView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    // From passProps
-    onCreateDeck: PropTypes.func,
-    filterInvestigators: PropTypes.array,
-  };
+interface Props {
+  componentId: string;
+  onCreateDeck: (deck: Deck) => void;
+  filterInvestigators?: string[];
+}
 
+interface State {
+  saving: boolean;
+  viewRef?: View;
+  activeInvestigatorId?: string;
+  selectedSort: SortType;
+}
+
+export default class NewDeckView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -38,36 +45,29 @@ export default class NewDeckView extends React.Component {
     };
   }
 
-  constructor(props) {
+  _navEventListener?: EventSubscription;
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       saving: false,
-      viewRef: null,
-      activeInvestigatorId: null,
       selectedSort: SORT_BY_PACK,
     };
-
-    this._onPress = this.onPress.bind(this);
-    this._captureViewRef = this.captureViewRef.bind(this);
-    this._closeDialog = this.closeDialog.bind(this);
-    this._sortChanged = this.sortChanged.bind(this);
-    this._showSortDialog = this.showSortDialog.bind(this);
 
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  sortChanged(sort) {
+  _sortChanged = (sort: SortType) => {
     this.setState({
       selectedSort: sort,
     });
-  }
+  };
 
-  showSortDialog() {
+  _showSortDialog = () => {
     Keyboard.dismiss();
     Navigation.showOverlay({
       component: {
@@ -83,22 +83,22 @@ export default class NewDeckView extends React.Component {
         },
       },
     });
-  }
+  };
 
 
-  captureViewRef(ref) {
+  _captureViewRef = (ref: View) => {
     this.setState({
       viewRef: ref,
     });
-  }
+  };
 
-  closeDialog() {
+  _closeDialog = () => {
     this.setState({
-      activeInvestigatorId: null,
+      activeInvestigatorId: undefined,
     });
-  }
+  };
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const {
       componentId,
     } = this.props;
@@ -109,13 +109,13 @@ export default class NewDeckView extends React.Component {
     }
   }
 
-  onPress(investigator) {
+  _onPress = (investigator: Card) => {
     if (!this.state.activeInvestigatorId) {
       this.setState({
         activeInvestigatorId: investigator.code,
       });
     }
-  }
+  };
 
   render() {
     const {

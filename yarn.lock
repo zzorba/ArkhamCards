@@ -667,6 +667,10 @@
     "@babel/runtime" "^7.1.2"
     redux-persist "^4.6.0"
 
+"@types/capitalize@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/capitalize/-/capitalize-1.0.1.tgz#8d4cc32df8d916f6897530c01cda0c5207ef5184"
+
 "@types/hoist-non-react-statics@3.3.0", "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#a59c0c995cc885bef1b8ec2241b114f9b35b517b"

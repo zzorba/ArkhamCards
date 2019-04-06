@@ -7,44 +7,49 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import SearchBox from '../SearchBox';
 import SelectRow from './SelectRow';
 import { COLORS } from '../../styles/colors';
 
-export default class SearchMultiSelectView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    values: PropTypes.array.isRequired,
-    selection: PropTypes.array,
-  };
+interface Props {
+  componentId: string;
+  placeholder: string;
+  onChange: (selection: string[]) => void;
+  values: string[];
+  selection?: string[];
+}
 
-  constructor(props) {
+interface State {
+  search: string;
+  selection: string[]
+}
+
+interface Item {
+  value: string;
+  selected: boolean;
+}
+
+export default class SearchMultiSelectView extends React.Component<Props, State> {
+  _navEventListener?: EventSubscription;
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       search: '',
-      selection: props.selection,
+      selection: props.selection || [],
     };
-
-    this._syncSelection = this.syncSelection.bind(this);
-    this._onChangeText = this.onChangeText.bind(this);
-    this._onSelectChanged = this.onSelectChanged.bind(this);
-    this._renderItem = this.renderItem.bind(this);
-    this._keyExtractor = this.keyExtractor.bind(this);
 
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  syncSelection() {
+  _syncSelection = () => {
     const {
       selection,
     } = this.state;
@@ -59,9 +64,9 @@ export default class SearchMultiSelectView extends React.Component {
           }] : [],
       },
     });
-  }
+  };
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'clear') {
       this.setState({
         selection: [],
@@ -69,7 +74,7 @@ export default class SearchMultiSelectView extends React.Component {
     }
   }
 
-  onSelectChanged(value, selected) {
+  _onSelectChanged = (value: string, selected: boolean) => {
     const {
       selection,
     } = this.state;
@@ -81,13 +86,13 @@ export default class SearchMultiSelectView extends React.Component {
     this.setState({
       selection: newSelection,
     }, this._syncSelection);
-  }
+  };
 
-  keyExtractor(item) {
+  _keyExtractor = (item: Item) => {
     return item.value;
-  }
+  };
 
-  renderItem({ item }) {
+  _renderItem = ({ item }: { item: Item }) => {
     return (
       <SelectRow
         value={item.value}
@@ -95,13 +100,13 @@ export default class SearchMultiSelectView extends React.Component {
         onSelectChanged={this._onSelectChanged}
       />
     );
-  }
+  };
 
-  onChangeText(text) {
+  _onChangeText = (text: string) => {
     this.setState({
       search: text,
     });
-  }
+  };
 
   getValues() {
     const {

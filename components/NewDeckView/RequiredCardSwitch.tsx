@@ -4,28 +4,22 @@ import DialogComponent from 'react-native-dialog';
 
 import { COLORS } from '../../styles/colors';
 
-export default class RequiredCardSwitch extends React.Component {
-  static propTypes = {
-    index: PropTypes.number.isRequired,
-    disabled: PropTypes.bool.isRequired,
-    label: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
-    onValueChange: PropTypes.func.isRequired,
-  };
+interface Props {
+  index: number;
+  disabled: boolean;
+  label: string;
+  value: boolean;
+  onValueChange: (index: number, value: boolean) => void;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onValueChange = this.onValueChange.bind(this);
-  }
-
-  onValueChange(value) {
+export default class RequiredCardSwitch extends React.Component<Props> {
+  _onValueChange = (value: boolean) => {
     const {
       onValueChange,
       index,
     } = this.props;
     onValueChange(index, value);
-  }
+  };
 
   render() {
     const {

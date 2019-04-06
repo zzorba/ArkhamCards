@@ -1,15 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { keys } from 'lodash';
 import {
   Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
+  TextStyle,
+  ViewStyle,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import Realm, { Results } from 'realm';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
 import {
@@ -19,36 +21,40 @@ import {
 import L from '../../app/i18n';
 import { clearDecks } from '../../actions';
 import { fetchCards } from '../cards/actions';
-import { getAllDecks } from '../../reducers';
+import Card from '../../data/Card';
+import { getAllDecks, AppState } from '../../reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
 import { COLORS } from '../../styles/colors';
 
 const defaultImageCacheManager = ImageCacheManager();
 
-class SettingsView extends React.Component {
-  static propTypes = {
-    realm: PropTypes.object.isRequired,
-    componentId: PropTypes.string.isRequired,
-    lang: PropTypes.string,
-    fetchCards: PropTypes.func.isRequired,
-    clearDecks: PropTypes.func.isRequired,
-    cardsLoading: PropTypes.bool,
-    cardsError: PropTypes.string,
-  };
+interface OwnProps {
+  componentId: string;
+}
 
-  constructor(props) {
-    super(props);
+interface ReduxProps {
+  lang?: string;
+  cardsLoading?: boolean;
+  cardsError?: string;
+  deckCount: number;
+}
 
-    this._languagePressed = this.languagePressed.bind(this);
-    this._myCollectionPressed = this.navButtonPressed.bind(this, 'My.Collection', L('Edit Collection'));
-    this._editSpoilersPressed = this.navButtonPressed.bind(this, 'My.Spoilers', L('Edit Spoilers'));
-    this._diagnosticsPressed = this.navButtonPressed.bind(this, 'Settings.Diagnostics', L('Diagnostics'));
-    this._aboutPressed = this.navButtonPressed.bind(this, 'About', L('About Arkham Cards'));
-    this._doSyncCards = this.doSyncCards.bind(this);
-  }
+interface ReduxActionProps {
+  fetchCards: (realm: Realm, lang?: string) => void;
+  clearDecks: () => void;
+}
 
-  languagePressed() {
+interface RealmProps {
+  realm: Realm;
+  cards: Results<Card>;
+  cardCount: number;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps & RealmProps;
+
+class SettingsView extends React.Component<Props> {
+  _languagePressed = () => {
     Navigation.showOverlay({
       component: {
         name: 'Dialog.Language',
@@ -59,9 +65,9 @@ class SettingsView extends React.Component {
         },
       },
     });
-  }
+  };
 
-  navButtonPressed(screen, title) {
+  navButtonPressed(screen: string, title: string) {
     Navigation.push(this.props.componentId, {
       component: {
         name: screen,
@@ -79,11 +85,27 @@ class SettingsView extends React.Component {
     });
   }
 
-  clearImageCache() {
-    defaultImageCacheManager.clearCache({});
-  }
+  _myCollectionPressed = () => {
+    this.navButtonPressed('My.Collection', L('Edit Collection'));
+  };
 
-  clearCache() {
+  _editSpoilersPressed = () => {
+    this.navButtonPressed('My.Spoilers', L('Edit Spoilers'));
+  };
+
+  _diagnosticsPressed = () => {
+    this.navButtonPressed('Settings.Diagnostics', L('Diagnostics'));
+  };
+
+  _aboutPressed = () => {
+    this.navButtonPressed('About', L('About Arkham Cards'));
+  };
+
+  _clearImageCache = () => {
+    defaultImageCacheManager.clearCache({});
+  };
+
+  _clearCache = () => {
     const {
       realm,
       clearDecks,
@@ -92,17 +114,17 @@ class SettingsView extends React.Component {
     realm.write(() => {
       realm.delete(realm.objects('Card'));
     });
-    this.doSyncCards();
-  }
+    this._doSyncCards();
+  };
 
-  doSyncCards() {
+  _doSyncCards = () => {
     const {
       realm,
       lang,
       fetchCards,
     } = this.props;
     fetchCards(realm, lang);
-  }
+  };
 
   renderSyncCards() {
     const {
@@ -134,24 +156,24 @@ class SettingsView extends React.Component {
         <ScrollView style={styles.list}>
           <SettingsCategoryHeader
             title={L('Account')}
-            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+            titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
           <LoginButton settings />
           <SettingsCategoryHeader
             title={L('Card Data')}
-            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+            titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
           <SettingsItem navigation onPress={this._myCollectionPressed} text={L('Card Collection')} />
           <SettingsItem navigation onPress={this._editSpoilersPressed} text={L('Spoiler Settings')} />
           { this.renderSyncCards() }
           <SettingsCategoryHeader
             title={L('Debug')}
-            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+            titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
           <SettingsItem navigation onPress={this._diagnosticsPressed} text={L('Diagnostics')} />
           <SettingsCategoryHeader
             title={L('About Arkham Cards')}
-            textStyle={Platform.OS === 'android' ? { color: COLORS.monza } : null}
+            titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
           <SettingsItem navigation onPress={this._aboutPressed} text={L('About Arkham Cards')} />
         </ScrollView>
@@ -160,26 +182,29 @@ class SettingsView extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     cardsLoading: state.cards.loading,
-    cardsError: state.cards.error,
+    cardsError: state.cards.error || undefined,
     deckCount: keys(getAllDecks(state)).length,
-    lang: state.packs.lang,
+    lang: state.packs.lang || undefined,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     clearDecks,
     fetchCards,
   }, dispatch);
 }
 
-export default connectRealm(
-  connect(mapStateToProps, mapDispatchToProps)(SettingsView), {
+export default connectRealm<OwnProps, RealmProps, Card>(
+  connect<ReduxProps, ReduxActionProps, OwnProps & RealmProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SettingsView), {
     schemas: ['Card'],
-    mapToProps(results, realm) {
+    mapToProps(results: CardResults<Card>, realm: Realm): RealmProps {
       return {
         realm,
         cards: results.cards,
@@ -188,12 +213,21 @@ export default connectRealm(
     },
   });
 
-const styles = StyleSheet.create({
+interface Styles {
+  container: ViewStyle;
+  list: ViewStyle;
+  androidCategory: TextStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
   },
   list: {
     flex: 1,
     backgroundColor: Platform.OS === 'ios' ? COLORS.iosSettingsBackground : COLORS.white,
+  },
+  androidCategory: {
+    color: COLORS.monza
   },
 });

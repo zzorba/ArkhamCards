@@ -9,27 +9,21 @@ import capitalize from 'capitalize';
 
 import Switch from '../core/Switch';
 
-export default class SelectRow extends React.Component {
-  static propTypes = {
-    value: PropTypes.string.isRequired,
-    selected: PropTypes.bool.isRequired,
-    onSelectChanged: PropTypes.func.isRequired,
-  };
+interface Props {
+  value: string;
+  selected: boolean;
+  onSelectChanged: (value: string, selected: boolean) => void;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onCheckPress = this.onCheckPress.bind(this);
-  }
-
-  onCheckPress() {
+export default class SelectRow extends React.Component<Props> {
+  _onCheckPress = () => {
     const {
       value,
       selected,
       onSelectChanged,
     } = this.props;
     onSelectChanged(value, !selected);
-  }
+  };
 
   render() {
     const {

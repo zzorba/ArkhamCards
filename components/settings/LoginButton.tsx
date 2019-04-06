@@ -7,30 +7,32 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import SettingsItem from './SettingsItem';
 import L from '../../app/i18n';
-import * as Actions from '../../actions';
+import { logout, login } from '../../actions';
+import { AppState } from '../../reducers';
 
-class LoginButton extends React.Component {
-  static propTypes = {
-    settings: PropTypes.bool,
-    // From Redux
-    signedIn: PropTypes.bool.isRequired,
-    loading: PropTypes.bool,
-    login: PropTypes.func.isRequired,
-    logout: PropTypes.func.isRequired,
-  };
+interface OwnProps {
+  settings?: boolean;
+}
 
-  constructor(props) {
-    super(props);
+interface ReduxProps {
+  signedIn: boolean;
+  loading?: boolean;
+}
 
-    this._logOutPressed = this.logOutPressed.bind(this);
-  }
+interface ReduxActionProps {
+  login: () => void;
+  logout: () => void;
+}
 
-  logOutPressed() {
+type Props = OwnProps & ReduxProps & ReduxActionProps;
+
+class LoginButton extends React.Component<Props> {
+  _logOutPressed = () => {
     Alert.alert(
       L('Are you sure you want to sign out?'),
       L('Data on ArkhamDB will be preserved, but all Campaign data and any edits made without internet might be lost.\n\n If you are having trouble with your account you can also reconnect.'),
@@ -40,7 +42,7 @@ class LoginButton extends React.Component {
         { text: L('Cancel') },
       ],
     );
-  }
+  };
 
   render() {
     const {
@@ -80,18 +82,24 @@ class LoginButton extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     signedIn: state.signedIn.status,
     loading: state.signedIn.loading,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    logout,
+    login,
+  }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginButton);
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginButton);
 
 const styles = StyleSheet.create({
   wrapper: {

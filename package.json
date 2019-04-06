@@ -58,6 +58,7 @@
     "yarn": "1.13.0"
   },
   "devDependencies": {
+    "@types/capitalize": "^1.0.1",
     "@types/hoist-non-react-statics": "3.3.0",
     "@types/i18n-js": "3.0.1",
     "@types/lodash": "4.14.123",

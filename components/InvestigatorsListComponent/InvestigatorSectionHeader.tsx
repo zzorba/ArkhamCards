@@ -9,7 +9,12 @@ import {
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
 
-export default function InvestigatorSectionHeader({ title, bold }) {
+interface Props {
+  title: string;
+  bold?: boolean;
+}
+
+export default function InvestigatorSectionHeader({ title, bold }: Props) {
   return (
     <View style={[styles.row, bold ? styles.boldRow : {}]}>
       <Text style={[typography.text, styles.headerText]}>
@@ -18,11 +23,6 @@ export default function InvestigatorSectionHeader({ title, bold }) {
     </View>
   );
 }
-
-InvestigatorSectionHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  bold: PropTypes.bool,
-};
 
 const styles = StyleSheet.create({
   row: {
