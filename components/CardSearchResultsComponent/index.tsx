@@ -14,6 +14,7 @@ import Card from '../../data/Card';
 import CardSearchBox from './CardSearchBox';
 import {
   SORT_BY_ENCOUNTER_SET,
+  SortType,
 } from '../CardSortDialog/constants';
 import CardResultList from './CardResultList';
 import Switch from '../core/Switch';
@@ -27,7 +28,7 @@ interface Props {
   baseQuery?: string;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
-  selectedSort?: string;
+  selectedSort?: SortType;
   filters: FilterState;
   mythosMode?: boolean;
   visible: boolean;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { find, map } from 'lodash';
 import { BackHandler } from 'react-native';
 import { Navigation } from 'react-native-navigation';

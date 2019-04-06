@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -13,7 +12,7 @@ import Card from '../../data/Card';
 
 interface Props {
   investigator: Card;
-  investigatorData: InvestigatorData;
+  investigatorData?: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
 }
 
@@ -23,7 +22,9 @@ export default class EditTraumaComponent extends React.Component<Props> {
       investigatorData,
       investigator,
     } = this.props;
-    return investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA;
+    return (
+      investigatorData && investigatorData[investigator.code]
+    ) || DEFAULT_TRAUMA_DATA;
   }
 
   _editTraumaPressed = () => {

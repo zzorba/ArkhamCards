@@ -107,7 +107,7 @@ export function showCard(
   componentId: string,
   code: string,
   card: Card,
-  showSpoilers: boolean
+  showSpoilers?: boolean
 ) {
   Navigation.push(componentId, {
     component: {

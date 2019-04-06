@@ -28,6 +28,7 @@ import { showCard } from '../navHelper';
 import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import { ROW_HEIGHT } from '../CardSearchResult/constants';
+import { SortType } from '../CardSortDialog/constants';
 import CardSectionHeader, { ROW_HEADER_HEIGHT } from './CardSectionHeader';
 import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from './ShowNonCollectionFooter';
 import {
@@ -60,7 +61,7 @@ interface OwnProps {
   componentId: string;
   query?: string;
   searchTerm?: string;
-  sort?: string;
+  sort?: SortType;
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
@@ -317,7 +318,7 @@ class CardResultList extends React.Component<Props, State> {
     }
   }
 
-  static headerForCard(card: Card, lang: string, sort?: string): string {
+  static headerForCard(card: Card, lang: string, sort?: SortType): string {
     switch(sort) {
       case SORT_BY_TYPE:
         return Card.typeSortHeader(card, lang);

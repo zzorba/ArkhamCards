@@ -1,16 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
+import { SortType } from './CardSortDialog/constants';
 import CardSearchComponent from './CardSearchComponent';
 import withFetchCardsGate from './cards/withFetchCardsGate';
 
-class CardSearchView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    baseQuery: PropTypes.string,
-    sort: PropTypes.string,
-  };
+interface Props {
+  componentId: string;
+  baseQuery?: string;
+  sort?: SortType;
+}
 
+class CardSearchView extends React.Component<Props> {
   render() {
     const {
       componentId,
@@ -29,4 +29,7 @@ class CardSearchView extends React.Component {
   }
 }
 
-export default withFetchCardsGate(CardSearchView, { promptForUpdate: true });
+export default withFetchCardsGate<Props>(
+  CardSearchView,
+  { promptForUpdate: true }
+);

@@ -1,38 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import L from '../app/i18n';
-import { getDeck } from '../reducers';
+import { Deck, Slots } from '../actions/types';
+import Card from '../data/Card';
+import { getDeck, AppState } from '../reducers';
 import typography from '../styles/typography';
 import CardSelectorComponent from './CardSelectorComponent';
 
-class ExileCardSelectorComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
-    id: PropTypes.number.isRequired,
-    exileCounts: PropTypes.object.isRequired,
-    updateExileCounts: PropTypes.func.isRequired,
-    showLabel: PropTypes.bool,
-    // From redux.
-    deck: PropTypes.object,
+interface OwnProps {
+  componentId: string;
+  id: number;
+  exileCounts: Slots;
+  updateExileCounts: (exileCounts: Slots) => void;
+  showLabel?: boolean;
+}
+
+interface ReduxProps {
+  deck?: Deck;
+}
+
+type Props = OwnProps & ReduxProps;
+
+class ExileCardSelectorComponent extends React.Component<Props> {
+  _isExile = (card: Card) => {
+    return !!card.exile;
   };
-
-  constructor(props) {
-    super(props);
-
-    this._isExile = this.isExile.bind(this);
-  }
-
-  isExile(card) {
-    return card.exile;
-  }
 
   render() {
     const {
@@ -65,17 +62,15 @@ class ExileCardSelectorComponent extends React.Component {
 }
 
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
-    deck: getDeck(state, props.id),
+    deck: getDeck(state, props.id) || undefined,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExileCardSelectorComponent);
+export default connect<ReduxProps, {}, OwnProps, AppState>(
+  mapStateToProps
+)(ExileCardSelectorComponent);
 
 const styles = StyleSheet.create({
   exileText: {

@@ -1,0 +1,86 @@
+import React from 'react';
+import {
+  Text,
+  View,
+} from 'react-native';
+import { bindActionCreators, Dispatch, Action } from 'redux';
+import { connect } from 'react-redux';
+
+import L from '../app/i18n';
+import { Pack } from '../actions/types';
+import { setInCollection, setCycleInCollection } from '../actions';
+import PackListComponent from './PackListComponent';
+import { getAllPacks, getPacksInCollection, AppState } from '../reducers';
+
+interface OwnProps {
+  componentId: string;
+}
+
+interface ReduxProps {
+  packs: Pack[];
+  in_collection: { [pack_code: string]: boolean };
+}
+
+interface ReduxActionProps {
+  setInCollection: (code: string, value: boolean) => void;
+  setCycleInCollection: (cycle: number, value: boolean) => void;
+}
+type Props = OwnProps & ReduxProps & ReduxActionProps;
+
+class CollectionEditView extends React.Component<Props> {
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: L('Edit Collection'),
+        },
+      },
+    };
+  }
+
+  render() {
+    const {
+      componentId,
+      packs,
+      in_collection,
+      setInCollection,
+      setCycleInCollection,
+    } = this.props;
+    if (!packs.length) {
+      return (
+        <View>
+          <Text>Loading</Text>
+        </View>
+      );
+    }
+    return (
+      <PackListComponent
+        coreSetName={L('Second Core Set')}
+        componentId={componentId}
+        packs={packs}
+        checkState={in_collection}
+        setChecked={setInCollection}
+        setCycleChecked={setCycleInCollection}
+      />
+    );
+  }
+}
+
+function mapStateToProps(state: AppState) {
+  return {
+    packs: getAllPacks(state),
+    in_collection: getPacksInCollection(state),
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch<Action>) {
+  return bindActionCreators({
+    setInCollection,
+    setCycleInCollection,
+  }, dispatch);
+}
+
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(CollectionEditView);

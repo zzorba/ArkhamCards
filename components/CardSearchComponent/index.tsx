@@ -13,6 +13,7 @@ import Card from '../../data/Card';
 import { Slots } from '../../actions/types';
 import {
   SORT_BY_TYPE,
+  SortType,
 } from '../CardSortDialog/constants';
 import CardSearchResultsComponent from '../CardSearchResultsComponent';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
@@ -27,7 +28,7 @@ interface OwnProps {
   componentId: string;
   baseQuery?: string;
   mythosToggle?: boolean;
-  sort?: string;
+  sort?: SortType;
   showNonCollection?: boolean;
 
   originalDeckSlots?: Slots;
@@ -41,7 +42,7 @@ interface OwnProps {
 type Props = OwnProps & RealmProps;
 
 interface State {
-  selectedSort: string;
+  selectedSort: SortType;
   filters: FilterState;
   mythosMode: boolean;
   visible: boolean;
@@ -118,7 +119,7 @@ class CardSearchComponent extends React.Component<Props, State> {
     this._syncNavigationButtons(this.state.mythosMode, filters);
   };
 
-  _sortChanged = (selectedSort: string) => {
+  _sortChanged = (selectedSort: SortType) => {
     this.setState({
       selectedSort,
     });
