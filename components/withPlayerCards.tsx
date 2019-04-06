@@ -1,5 +1,4 @@
 import { forEach } from 'lodash';
-import Ream from 'realm';
 import { connectRealm, CardResults } from 'react-native-realm';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 

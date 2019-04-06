@@ -69,9 +69,7 @@ export type InvestigatorData = {
 
 export interface WeaknessSet {
   packCodes: string[];
-  assignedCards: {
-    [code: string]: number;
-  };
+  assignedCards: Slots;
 }
 
 export interface CampaignNoteSection {

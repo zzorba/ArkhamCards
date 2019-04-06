@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   View,
 } from 'react-native';
@@ -8,7 +7,6 @@ import CardSearchResult from '../CardSearchResult';
 import Card from '../../data/Card';
 
 interface Props {
-  key: string;
   card: Card;
   count: number;
   onChange: (card: Card, count: number) => void;
@@ -59,7 +57,6 @@ export default class CardToggleRow extends React.Component<Props, State> {
     const {
       card,
       limit,
-      key,
       onPress,
     } = this.props;
     const {
@@ -71,7 +68,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
       return null;
     }
     return (
-      <View key={key}>
+      <View>
         <CardSearchResult
           card={card}
           onToggleChange={this._onCardOneToggle}

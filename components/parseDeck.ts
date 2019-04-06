@@ -12,7 +12,7 @@ import {
   SkillCodeType,
 } from '../constants';
 
-interface CardId {
+export interface CardId {
   id: string;
   quantity: number;
 }
@@ -82,14 +82,14 @@ export function isSpecialCard(card: Card): boolean {
 }
 
 
-interface SplitCards {
+export interface SplitCards {
   Assets?: AssetGroup[];
   Event?: CardId[];
   Skill?: CardId[];
   Treachery?: CardId[];
   Enemy?: CardId[];
 }
-type CardSplitType = keyof SplitCards;
+export type CardSplitType = keyof SplitCards;
 
 function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
   const result: SplitCards = {};

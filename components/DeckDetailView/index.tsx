@@ -1,6 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { findIndex, flatMap, forEach, keys, map, range, throttle } from 'lodash';
+import {
+  findIndex,
+  flatMap,
+  forEach,
+  keys,
+  map,
+  range,
+  throttle,
+} from 'lodash';
 import {
   Alert,
   ActivityIndicator,
@@ -10,113 +17,115 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
+// @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
 import DeviceInfo from 'react-native-device-info';
 
 import L from '../../app/i18n';
-import withLoginState from '../withLoginState';
+import withLoginState, { LoginStateProps } from '../withLoginState';
 import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
-import withTraumaDialog from '../campaign/withTraumaDialog';
+import withTraumaDialog, { TraumaProps } from '../campaign/withTraumaDialog';
 import { updateLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
-import withDialogs from '../core/withDialogs';
+import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
 import Button from '../core/Button';
 import { iconsMap } from '../../app/NavIcons';
 import {
   fetchPrivateDeck,
   fetchPublicDeck,
-  login,
   updateDeck,
   removeDeck,
   replaceLocalDeck,
 } from '../../actions';
+import { Campaign, Deck, Slots } from '../../actions/types'
 import { updateCampaign } from '../campaign/actions';
 import { saveDeck, newCustomDeck } from '../../lib/authApi';
-import withPlayerCards from '../withPlayerCards';
+import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
-import { parseDeck } from '../parseDeck';
+import { parseDeck, ParsedDeck } from '../parseDeck';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
-import { getCampaign, getDeck, getEffectiveDeckId, getCampaignForDeck } from '../../reducers';
+import {
+  getCampaign,
+  getDeck,
+  getEffectiveDeckId,
+  getCampaignForDeck,
+  AppState,
+} from '../../reducers';
 import typography from '../../styles/typography';
 
-class DeckDetailView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isPrivate: PropTypes.bool,
-    modal: PropTypes.bool,
-    /* eslint-disable react/no-unused-prop-types */
-    campaignId: PropTypes.number,
-    // passed props
-    title: PropTypes.string,
-    // From realm.
-    cards: PropTypes.object,
-    // From redux.
-    campaign: PropTypes.object,
-    deck: PropTypes.object,
-    previousDeck: PropTypes.object,
-    login: PropTypes.func.isRequired,
-    signedIn: PropTypes.bool,
-    updateDeck: PropTypes.func.isRequired,
-    removeDeck: PropTypes.func.isRequired,
-    fetchPublicDeck: PropTypes.func.isRequired,
-    fetchPrivateDeck: PropTypes.func.isRequired,
-    replaceLocalDeck: PropTypes.func.isRequired,
-    updateCampaign: PropTypes.func.isRequired,
-    // From HOC
-    showTextEditDialog: PropTypes.func.isRequired,
-    showCountEditDialog: PropTypes.func.isRequired,
-    captureViewRef: PropTypes.func.isRequired,
-    viewRef: PropTypes.object,
-    showTraumaDialog: PropTypes.func.isRequired,
-    investigatorDataUpdates: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+  id: number;
+  title: string;
+  campaignId?: number;
+  isPrivate?: boolean;
+  modal?: boolean;
+}
 
-  constructor(props) {
+interface ReduxProps {
+  deck?: Deck;
+  previousDeck?: Deck;
+  campaign?: Campaign;
+}
+
+interface ReduxActionProps {
+  fetchPrivateDeck: (id: number) => void;
+  fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
+  updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
+  removeDeck: (id: number, deleteAllVersions?: boolean) => void;
+  replaceLocalDeck: (localId: number, deck: Deck) => void;
+  updateCampaign: (id: number, sparseCampaign: Campaign) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps &
+  TraumaProps & LoginStateProps & InjectedDialogProps;
+
+interface State {
+  parsedDeck?: ParsedDeck;
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  xpAdjustment: number;
+  loaded: boolean;
+  saving: boolean;
+  saveError?: string;
+  copying: boolean;
+  deleting: boolean;
+  nameChange?: string;
+  hasPendingEdits: boolean;
+  visible: boolean;
+}
+class DeckDetailView extends React.Component<Props, State> {
+  _navEventListener?: EventSubscription;
+  _uploadLocalDeck!: (isRetry?: boolean) => void;
+  _saveEditsAndDismiss!: (isRetry?: boolean) => void;
+  _saveEdits!: (isRetry?: boolean) => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      parsedDeck: null,
       slots: {},
       ignoreDeckLimitSlots: {},
       xpAdjustment: 0,
       loaded: false,
       saving: false,
-      saveError: null,
       copying: false,
       deleting: false,
-      nameChange: null,
       hasPendingEdits: false,
       visible: true,
     };
-    this._dismissSaveError = this.dismissSaveError.bind(this);
-    this._handleSaveError = this.handleSaveError.bind(this);
     this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
-    this._toggleCopyDialog = this.toggleCopyDialog.bind(this);
-    this._saveName = this.saveName.bind(this);
-    this._onEditPressed = this.onEditPressed.bind(this);
-    this._onEditSpecialPressed = this.onEditSpecialPressed.bind(this);
-    this._onUpgradePressed = this.onUpgradePressed.bind(this);
-    this._clearEdits = this.clearEdits.bind(this);
-    this._syncNavigationButtons = this.syncNavigationButtons.bind(this);
-    this._updateSlots = this.updateSlots.bind(this);
-    this._updateIgnoreDeckLimitSlots = this.updateIgnoreDeckLimitSlots.bind(this);
-    this._showXpEditDialog = this.showXpEditDialog.bind(this);
-    this._updateXp = this.updateXp.bind(this);
     this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
-    this._showEditNameDialog = this.showEditNameDialog.bind(this);
-    this._clearEdits = this.clearEdits.bind(this);
-    this._handleBackPress = this.handleBackPress.bind(this);
-    this._deleteDeck = this.deleteDeck.bind(this);
 
     const leftButtons = props.modal ? [
       Platform.OS === 'ios' ? {
@@ -194,10 +203,10 @@ class DeckDetailView extends React.Component {
     if (this.props.modal) {
       BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
     }
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       deck,
       id,
@@ -235,7 +244,7 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  deleteDeck(deleteAllVersions) {
+  _deleteDeck = (deleteAllVersions: boolean) => {
     const {
       id,
       removeDeck,
@@ -247,13 +256,13 @@ class DeckDetailView extends React.Component {
       Navigation.dismissAllModals();
       removeDeck(id, deleteAllVersions);
     });
-  }
+  };
 
-  toggleCopyDialog() {
+  _toggleCopyDialog = () => {
     this.setState({
       copying: !this.state.copying,
     });
-  }
+  };
 
   getRightButtons() {
     const {
@@ -295,7 +304,7 @@ class DeckDetailView extends React.Component {
     return rightButtons;
   }
 
-  syncNavigationButtons() {
+  _syncNavigationButtons = () => {
     const {
       componentId,
     } = this.props;
@@ -305,9 +314,9 @@ class DeckDetailView extends React.Component {
         rightButtons: this.getRightButtons(),
       },
     });
-  }
+  };
 
-  handleBackPress() {
+  _handleBackPress = () => {
     if (!this.state.visible) {
       return false;
     }
@@ -335,9 +344,9 @@ class DeckDetailView extends React.Component {
       Navigation.dismissAllModals();
     }
     return true;
-  }
+  };
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'edit') {
       this._onEditPressed();
     } else if (buttonId === 'back' || buttonId === 'androidBack') {
@@ -351,26 +360,25 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  saveName(name) {
+  _saveName = (name: string) => {
     const {
       slots,
       ignoreDeckLimitSlots,
       xpAdjustment,
     } = this.state;
     const pendingEdits = this.hasPendingEdits(
-      name,
       slots,
       ignoreDeckLimitSlots,
-      xpAdjustment
+      xpAdjustment,
+      name
     );
     this.setState({
       nameChange: name,
       hasPendingEdits: pendingEdits,
-      editNameDialogVisible: false,
     }, this._syncNavigationButtons);
-  }
+  };
 
-  onEditSpecialPressed() {
+  _onEditSpecialPressed = () => {
     const {
       componentId,
       deck,
@@ -383,8 +391,12 @@ class DeckDetailView extends React.Component {
       ignoreDeckLimitSlots,
       xpAdjustment,
     } = this.state;
+    if (!deck) {
+      return;
+    }
     const investigator = cards[deck.investigator_code];
     const addedWeaknesses = this.addedBasicWeaknesses(
+      deck,
       slots,
       ignoreDeckLimitSlots);
 
@@ -392,7 +404,7 @@ class DeckDetailView extends React.Component {
       component: {
         name: 'Deck.EditSpecial',
         passProps: {
-          campaignId: campaign ? campaign.id : null,
+          campaignId: campaign ? campaign.id : undefined,
           deck,
           previousDeck,
           slots,
@@ -416,21 +428,24 @@ class DeckDetailView extends React.Component {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
             },
           },
         },
       },
     });
-  }
+  };
 
-  onEditPressed() {
+  _onEditPressed = () => {
     const {
       componentId,
       deck,
       previousDeck,
       cards,
     } = this.props;
+    if (!deck) {
+      return;
+    }
     const investigator = cards[deck.investigator_code];
     Navigation.push(componentId, {
       component: {
@@ -457,15 +472,15 @@ class DeckDetailView extends React.Component {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
             },
           },
         },
       },
     });
-  }
+  };
 
-  onUpgradePressed() {
+  _onUpgradePressed = () => {
     const {
       componentId,
       deck,
@@ -474,6 +489,9 @@ class DeckDetailView extends React.Component {
     const {
       parsedDeck,
     } = this.state;
+    if (!deck) {
+      return;
+    }
     Navigation.push(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -496,15 +514,15 @@ class DeckDetailView extends React.Component {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[parsedDeck ? parsedDeck.investigator.faction_code : 'neutral'][0],
+              color: FACTION_DARK_GRADIENTS[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'][0],
             },
           },
         },
       },
     });
-  }
+  };
 
-  uploadLocalDeck(isRetry) {
+  uploadLocalDeck(isRetry?: boolean) {
     const {
       deck,
       login,
@@ -512,12 +530,16 @@ class DeckDetailView extends React.Component {
       replaceLocalDeck,
     } = this.props;
     const {
-      parsedDeck: {
-        slots,
-        ignoreDeckLimitSlots,
-      },
+      parsedDeck,
       saving,
     } = this.state;
+    if (!parsedDeck || !deck) {
+      return;
+    }
+    const {
+      slots,
+      ignoreDeckLimitSlots,
+    } = parsedDeck;
     if (!saving || isRetry) {
       const problemObj = this.getProblem();
       const problem = problemObj ? problemObj.reason : '';
@@ -540,7 +562,7 @@ class DeckDetailView extends React.Component {
           replaceLocalDeck(id, deck);
           this.setState({
             saving: false,
-            nameChange: null,
+            nameChange: undefined,
             hasPendingEdits: false,
           }, this._syncNavigationButtons);
         },
@@ -555,21 +577,21 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  dismissSaveError() {
+  _dismissSaveError = () => {
     this.setState({
-      saveError: null,
+      saveError: undefined,
       saving: false,
     });
-  }
+  };
 
-  handleSaveError(err) {
+  _handleSaveError = (err: Error) => {
     this.setState({
       saving: false,
       saveError: err.message || 'Unknown Error',
     });
-  }
+  };
 
-  updateCampaignWeaknessSet(newAssignedCards) {
+  updateCampaignWeaknessSet(newAssignedCards: string[]) {
     const {
       campaign,
       updateCampaign,
@@ -592,7 +614,7 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  saveEdits(dismissAfterSave, isRetry) {
+  saveEdits(dismissAfterSave: boolean, isRetry?: boolean) {
     const {
       deck,
       updateDeck,
@@ -603,6 +625,9 @@ class DeckDetailView extends React.Component {
         nameChange,
         xpAdjustment,
       } = this.state;
+      if (!deck || !parsedDeck) {
+        return;
+      }
       const {
         slots,
         ignoreDeckLimitSlots,
@@ -612,6 +637,7 @@ class DeckDetailView extends React.Component {
       const problem = problemObj ? problemObj.reason : '';
 
       const addedBasicWeaknesses = this.addedBasicWeaknesses(
+        deck,
         slots,
         ignoreDeckLimitSlots
       );
@@ -631,7 +657,7 @@ class DeckDetailView extends React.Component {
           Navigation.dismissAllModals();
         } else {
           this.setState({
-            nameChange: null,
+            nameChange: undefined,
             hasPendingEdits: false,
           }, this._syncNavigationButtons);
         }
@@ -661,7 +687,7 @@ class DeckDetailView extends React.Component {
             } else {
               this.setState({
                 saving: false,
-                nameChange: null,
+                nameChange: undefined,
                 hasPendingEdits: false,
               }, this._syncNavigationButtons);
             }
@@ -678,23 +704,31 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  clearEdits() {
+  _clearEdits = () => {
     const {
       deck,
     } = this.props;
+    if (!deck) {
+      return;
+    }
     this.setState({
-      nameChange: null,
+      nameChange: undefined,
       xpAdjustment: deck.xp_adjustment || 0,
     }, () => {
-      this.updateSlots(deck.slots, true);
+      this._updateSlots(deck.slots, true);
     });
-  }
+  };
 
-  slotDeltas(slots, ignoreDeckLimitSlots) {
-    const {
-      deck,
-    } = this.props;
-    const result = {
+  slotDeltas(
+    deck: Deck,
+    slots: Slots,
+    ignoreDeckLimitSlots: Slots
+  ) {
+    const result: {
+      removals: Slots;
+      additions: Slots;
+      ignoreDeckLimitChanged: boolean;
+    } = {
       removals: {},
       additions: {},
       ignoreDeckLimitChanged: false,
@@ -718,12 +752,16 @@ class DeckDetailView extends React.Component {
     return result;
   }
 
-  addedBasicWeaknesses(slots, ignoreDeckLimitSlots) {
+  addedBasicWeaknesses(
+    deck: Deck,
+    slots: Slots,
+    ignoreDeckLimitSlots: Slots
+  ): string[] {
     const {
       cards,
     } = this.props;
-    const deltas = this.slotDeltas(slots, ignoreDeckLimitSlots);
-    const addedWeaknesses = [];
+    const deltas = this.slotDeltas(deck, slots, ignoreDeckLimitSlots);
+    const addedWeaknesses: string[] = [];
     forEach(deltas.additions, (addition, code) => {
       if (cards[code] && cards[code].subtype_code === 'basicweakness') {
         forEach(range(0, addition), () => addedWeaknesses.push(code));
@@ -732,11 +770,19 @@ class DeckDetailView extends React.Component {
     return addedWeaknesses;
   }
 
-  hasPendingEdits(nameChange, slots, ignoreDeckLimitSlots, xpAdjustment) {
+  hasPendingEdits(
+    slots: Slots,
+    ignoreDeckLimitSlots: Slots,
+    xpAdjustment: number,
+    nameChange?: string
+  ) {
     const {
       deck,
     } = this.props;
-    const deltas = this.slotDeltas(slots, ignoreDeckLimitSlots);
+    if (!deck) {
+      return false;
+    }
+    const deltas = this.slotDeltas(deck, slots, ignoreDeckLimitSlots);
     return (nameChange && deck.name !== nameChange) ||
       (deck.previous_deck && deck.xp_adjustment !== xpAdjustment) ||
       keys(deltas.removals).length > 0 ||
@@ -744,43 +790,44 @@ class DeckDetailView extends React.Component {
       deltas.ignoreDeckLimitChanged;
   }
 
-  showXpEditDialog() {
+  _showXpEditDialog = () => {
     const {
-      deck: {
-        xp,
-      },
+      deck,
       showCountEditDialog,
     } = this.props;
+    if (!deck) {
+      return;
+    }
     const {
       xpAdjustment,
     } = this.state;
 
     showCountEditDialog(
       'Available XP',
-      (xp || 0) + (xpAdjustment || 0),
+      (deck.xp || 0) + (xpAdjustment || 0),
       this._updateXp
     );
-  }
+  };
 
-  updateXp(newXp) {
+  _updateXp = (newXp: number) => {
     const {
-      deck: {
-        xp,
-      },
+      deck,
     } = this.props;
-
-    const xpAdjustment = newXp - xp;
+    if (!deck) {
+      return;
+    }
+    const xpAdjustment = newXp - (deck.xp || 0);
     this.setState({
       xpAdjustment,
       hasPendingEdits: this.hasPendingEdits(
-        this.state.nameChange,
         this.state.slots,
         this.state.ignoreDeckLimitSlots,
-        xpAdjustment),
+        xpAdjustment,
+        this.state.nameChange),
     });
-  }
+  };
 
-  updateIgnoreDeckLimitSlots(newIgnoreDeckLimitSlots) {
+  _updateIgnoreDeckLimitSlots = (newIgnoreDeckLimitSlots: Slots) => {
     const {
       deck,
       previousDeck,
@@ -789,24 +836,30 @@ class DeckDetailView extends React.Component {
     const {
       slots,
     } = this.state;
+    if (!deck) {
+      return;
+    }
     const parsedDeck = parseDeck(deck, slots, newIgnoreDeckLimitSlots, cards, previousDeck);
     this.setState({
       ignoreDeckLimitSlots: newIgnoreDeckLimitSlots,
       parsedDeck,
       hasPendingEdits: this.hasPendingEdits(
-        this.state.nameChange,
         slots,
         newIgnoreDeckLimitSlots,
-        this.state.xpAdjustment),
+        this.state.xpAdjustment,
+        this.state.nameChange),
     }, this._syncNavigationButtons);
-  }
+  };
 
-  updateSlots(newSlots, resetIgnoreDeckLimitSlots) {
+  _updateSlots = (newSlots: Slots, resetIgnoreDeckLimitSlots: boolean) => {
     const {
       deck,
       previousDeck,
       cards,
     } = this.props;
+    if (!deck) {
+      return;
+    }
     const ignoreDeckLimitSlots = resetIgnoreDeckLimitSlots ?
       (deck.ignoreDeckLimitSlots || {}) :
       this.state.ignoreDeckLimitSlots;
@@ -816,14 +869,14 @@ class DeckDetailView extends React.Component {
       ignoreDeckLimitSlots: ignoreDeckLimitSlots,
       parsedDeck,
       hasPendingEdits: this.hasPendingEdits(
-        this.state.nameChange,
         newSlots,
         ignoreDeckLimitSlots,
-        this.state.xpAdjustment),
+        this.state.xpAdjustment,
+        this.state.nameChange),
     }, this._syncNavigationButtons);
-  }
+  };
 
-  loadCards(deck, previousDeck) {
+  loadCards(deck: Deck, previousDeck?: Deck) {
     const {
       cards,
     } = this.props;
@@ -844,17 +897,20 @@ class DeckDetailView extends React.Component {
     }
   }
 
-  showEditNameDialog() {
+  _showEditNameDialog = () => {
     const {
       deck,
       showTextEditDialog,
     } = this.props;
+    if (!deck) {
+      return;
+    }
     showTextEditDialog(
       L('Edit Deck Name'),
       this.state.nameChange || deck.name,
       this._saveName
     );
-  }
+  };
 
   renderCopyDialog() {
     const {
@@ -869,7 +925,7 @@ class DeckDetailView extends React.Component {
     return (
       <CopyDeckDialog
         componentId={componentId}
-        deckId={copying ? id : null}
+        deckId={copying ? id : undefined}
         toggleVisible={this._toggleCopyDialog}
         viewRef={viewRef}
         signedIn={signedIn}
@@ -1027,13 +1083,13 @@ class DeckDetailView extends React.Component {
             deck={deck}
             deckName={nameChange || deck.name}
             parsedDeck={parsedDeck}
-            problem={this.getProblem()}
+            problem={this.getProblem() || undefined}
             hasPendingEdits={hasPendingEdits}
             cards={cards}
-            isPrivate={isPrivate}
+            isPrivate={!!isPrivate}
             buttons={this.renderButtons()}
             showEditNameDialog={this._showEditNameDialog}
-            showEditSpecial={deck.next_deck ? null : this._onEditSpecialPressed}
+            showEditSpecial={deck.next_deck ? undefined : this._onEditSpecialPressed}
             signedIn={signedIn}
             login={login}
             deleteDeck={this._deleteDeck}
@@ -1047,7 +1103,7 @@ class DeckDetailView extends React.Component {
             parsedDeck={parsedDeck}
             cards={cards}
             xpAdjustment={xpAdjustment}
-            showXpEditDialog={deck.previous_deck ? this._showXpEditDialog : null}
+            showXpEditDialog={deck.previous_deck ? this._showXpEditDialog : undefined}
           />
         </View>
         { this.renderSavingDialog() }
@@ -1057,22 +1113,23 @@ class DeckDetailView extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const id = getEffectiveDeckId(state, props.id);
-  const deck = getDeck(state, id);
+  const deck = getDeck(state, id) || undefined;
+  const previousDeck = (
+    deck && deck.previous_deck && getDeck(state, deck.previous_deck)
+  ) || undefined;
   return {
-    id,
     deck,
-    previousDeck: deck && deck.previous_deck && getDeck(state, deck.previous_deck),
-    campaign: props.campaignId ?
+    previousDeck,
+    campaign: (props.campaignId ?
       getCampaign(state, props.campaignId) :
-      getCampaignForDeck(state, id),
+      getCampaignForDeck(state, id)) || undefined,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    login,
     fetchPrivateDeck,
     fetchPublicDeck,
     updateDeck,
@@ -1083,7 +1140,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withPlayerCards(
-  connect(mapStateToProps, mapDispatchToProps)(
+  connect<ReduxProps, ReduxActionProps, OwnProps & PlayerCardProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(
     withTraumaDialog(
       withDialogs(
         withLoginState(DeckDetailView)

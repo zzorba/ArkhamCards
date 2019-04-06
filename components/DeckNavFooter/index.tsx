@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+// @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+// @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { Navigation } from 'react-native-navigation';
@@ -15,7 +17,8 @@ import { Navigation } from 'react-native-navigation';
 import L from '../../app/i18n';
 import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
-import { DeckType } from '../parseDeck';
+import { ParsedDeck } from '../parseDeck';
+import { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 import { TINY_PHONE } from '../../styles/sizes';
 import DeckValidation from '../../lib/DeckValidation';
@@ -24,24 +27,16 @@ import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SHOW_CHARTS_BUTTON = false;
 
+interface Props {
+  componentId: string;
+  parsedDeck: ParsedDeck;
+  cards: CardsMap;
+  xpAdjustment: number;
+  showXpEditDialog?: () => void;
+}
 
-export default class DeckNavFooter extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    parsedDeck: DeckType,
-    cards: PropTypes.object.isRequired,
-    xpAdjustment: PropTypes.number,
-    showXpEditDialog: PropTypes.func,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this._showCardSimulator = this.showCardSimulator.bind(this);
-    this._showCardCharts = this.showCardCharts.bind(this);
-  }
-
-  showCardCharts() {
+export default class DeckNavFooter extends React.Component<Props> {
+  _showCardCharts = () => {
     const {
       componentId,
       parsedDeck,
@@ -66,9 +61,9 @@ export default class DeckNavFooter extends React.Component {
         },
       },
     });
-  }
+  };
 
-  showCardSimulator() {
+  _showCardSimulator = () => {
     const {
       componentId,
       parsedDeck: {
@@ -98,7 +93,7 @@ export default class DeckNavFooter extends React.Component {
         },
       },
     });
-  }
+  };
 
   renderProblem() {
     const {
@@ -177,7 +172,7 @@ export default class DeckNavFooter extends React.Component {
     return (
       <LinearGradient
         style={styles.wrapper}
-        colors={FACTION_DARK_GRADIENTS[investigator.faction_code]}
+        colors={FACTION_DARK_GRADIENTS[investigator.factionCode()]}
       >
         <View style={styles.left}>
           <View style={styles.row}>

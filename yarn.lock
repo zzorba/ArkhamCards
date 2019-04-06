@@ -692,9 +692,9 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native-vector-icons@4.6.4":
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-4.6.4.tgz#83c2d88f0c2615a44b9059eb75c11f92702c1ee2"
+"@types/react-native-vector-icons@6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.0.tgz#3ff6b29c8e831f11364c12801ae7966dab8dcbe0"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -706,7 +706,7 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react-redux@^7.0.5":
+"@types/react-redux@7.0.5":
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.0.5.tgz#4d284f8565cd9f7316086cce50e87f3d201d0880"
   dependencies:

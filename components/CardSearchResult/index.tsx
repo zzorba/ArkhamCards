@@ -102,7 +102,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     if (card.faction2_code) {
       return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS).dual;
     }
-    return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS)[card.faction_code || 'neutral'];
+    return (size === ICON_SIZE ? FACTION_ICONS : SMALL_FACTION_ICONS)[card.factionCode()];
   }
 
   static cardCost(card: Card): string {
@@ -164,9 +164,9 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       <View style={styles.dualFactionIcons}>
         <View style={styles.skillIcon}>
           <ArkhamIcon
-            name={card.faction_code || 'neutral'}
+            name={card.factionCode()}
             size={15}
-            color={FACTION_COLORS[card.faction_code || 'neutral']}
+            color={FACTION_COLORS[card.factionCode()]}
           />
         </View>
         <View style={styles.skillIcon}>
@@ -206,7 +206,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     } = this.props;
     const color = card.faction2_code ?
       FACTION_COLORS.dual :
-      (FACTION_COLORS[card.faction_code || 'neutral'] || '#000000');
+      (FACTION_COLORS[card.factionCode()] || '#000000');
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>

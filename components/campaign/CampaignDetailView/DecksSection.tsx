@@ -147,7 +147,7 @@ class DecksSection extends React.Component<Props> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator.faction_code || 'neutral'][0],
+              color: FACTION_DARK_GRADIENTS[investigator.factionCode()][0],
             },
           },
         },

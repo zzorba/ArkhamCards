@@ -84,7 +84,7 @@ export function newCampaign(
  */
 export function updateCampaign(
   id: number,
-  sparseCampaign: Campaign,
+  sparseCampaign: Campaign
 ): ThunkAction<void, AppState, null, UpdateCampaignAction>  {
   return (dispatch, getState) => {
     const campaign = Object.assign({}, sparseCampaign);

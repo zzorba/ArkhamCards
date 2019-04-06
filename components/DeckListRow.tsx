@@ -149,7 +149,7 @@ export default class DeckListRow extends React.Component<Props> {
             compact
           />
           <FactionGradient
-            faction_code={investigator.faction_code || 'neutral'}
+            faction_code={investigator.factionCode()}
             style={styles.investigatorBlock}
           >
             <View style={styles.investigatorBlockRow}>
@@ -169,7 +169,7 @@ export default class DeckListRow extends React.Component<Props> {
           </FactionGradient>
         </View>
         <FactionGradient
-          faction_code={investigator.faction_code || 'neutral'}
+          faction_code={investigator.factionCode()}
           style={styles.footer}
           dark
         />

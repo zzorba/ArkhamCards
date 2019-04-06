@@ -207,6 +207,10 @@ export default class Card {
   public sort_by_faction!: number;
   public sort_by_pack!: number;
 
+  factionCode(): FactionCodeType {
+    return this.faction_code || 'neutral';
+  }
+
   costString(linked?: boolean) {
     if (this.type_code !== 'asset' && this.type_code !== 'event') {
       return '';

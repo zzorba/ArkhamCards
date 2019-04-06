@@ -49,11 +49,11 @@ export default class InvestigatorImage extends React.Component<Props> {
             {
               width: size,
               height: size,
-              backgroundColor: FACTION_COLORS[card.faction_code || 'neutral'],
+              backgroundColor: FACTION_COLORS[card.factionCode()],
             },
           ]}>
             <Text style={styles.placeholderIcon} allowFontScaling={false}>
-              { (small ? SMALL_FACTION_ICONS : FACTION_ICONS)[card.faction_code || 'neutral'] }
+              { (small ? SMALL_FACTION_ICONS : FACTION_ICONS)[card.factionCode()] }
             </Text>
           </View>
         </View>

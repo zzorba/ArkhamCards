@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ActivityIndicator, Platform, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { throttle } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
@@ -396,7 +395,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): ReduxProps {
   if (!props.deckId) {
     return {
       nextLocalDeckId: getNextLocalDeckId(state),
@@ -423,8 +422,11 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({ login, setNewDeck }, dispatch);
 }
 
-export default withPlayerCards(
-  connect(mapStateToProps, mapDispatchToProps)(
+export default withPlayerCards<OwnProps>(
+  connect<ReduxProps, ReduxActionProps, OwnProps & PlayerCardProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(
     withNetworkStatus(CopyDeckDialog)
   )
 );

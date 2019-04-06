@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { head, map, sum } from 'lodash';
+import React, { ReactNode } from 'react';
+import { head, forEach, map, sum, sumBy } from 'lodash';
 import {
   Alert,
+  AlertButton,
   Button,
   Linking,
   StyleSheet,
@@ -12,24 +12,39 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
+// @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import DeviceInfo from 'react-native-device-info';
 
 import AppIcon from '../../assets/AppIcon';
+import { Campaign, Deck, DeckProblem, InvestigatorData, Trauma } from '../../actions/types';
 import L from '../../app/i18n';
-import { DeckType } from '../parseDeck';
+import { CardId, CardSplitType, ParsedDeck, SplitCards } from '../parseDeck';
 import { showCard } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
+import Card, { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
 
-function deckToSections(halfDeck, special) {
-  const result = [];
+interface SectionCardId extends CardId {
+  special: boolean;
+}
+
+interface CardSection {
+  superTitle?: string;
+  title?: string;
+  subTitle?: string;
+  data: SectionCardId[];
+  onPress?: () => void;
+}
+
+function deckToSections(halfDeck: SplitCards, special: boolean): CardSection[] {
+  const result: CardSection[] = [];
   if (halfDeck.Assets) {
     const assetCount = sum(halfDeck.Assets.map(subAssets =>
       sum(subAssets.data.map(c => c.quantity))));
@@ -37,19 +52,28 @@ function deckToSections(halfDeck, special) {
       title: L('Assets ({{count}})', { count: assetCount }),
       data: [],
     });
-    halfDeck.Assets.forEach(subAssets => {
+    forEach(halfDeck.Assets, subAssets => {
       result.push({
         subTitle: subAssets.type,
-        data: map(subAssets.data, c => Object.assign({}, c, { special })),
+        data: map(subAssets.data, c => {
+          return { ...c, special };
+        }),
       });
     });
   }
-  ['Event', 'Skill', 'Treachery', 'Enemy'].forEach(type => {
-    if (halfDeck[type]) {
-      const count = sum(halfDeck[type].map(c => c.quantity));
+  forEach({
+    [L('Event')]: halfDeck.Event,
+    [L('Skill')]: halfDeck.Skill,
+    [L('Enemy')]: halfDeck.Enemy,
+    [L('Treachery')]: halfDeck.Treachery,
+  }, (cardSplitGroup, localizedName) => {
+    if (cardSplitGroup) {
+      const count = sumBy(cardSplitGroup, c => c.quantity);
       result.push({
-        title: `${type} (${count})`,
-        data: map(halfDeck[type], c => Object.assign({}, c, { special })),
+        title: `${localizedName} (${count})`,
+        data: map(cardSplitGroup, c => {
+          return { ...c, special };
+        }),
       });
     }
   });
@@ -65,52 +89,39 @@ const DECK_PROBLEM_MESSAGES = {
   investigator: L('Doesn\'t comply with the Investigator requirements.'),
 };
 
-export default class DeckViewTab extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    deck: PropTypes.object,
-    campaign: PropTypes.object,
-    parsedDeck: DeckType,
-    hasPendingEdits: PropTypes.bool,
-    cards: PropTypes.object.isRequired,
-    isPrivate: PropTypes.bool,
-    buttons: PropTypes.node,
-    showEditSpecial: PropTypes.func,
-    showEditNameDialog: PropTypes.func.isRequired,
-    showTraumaDialog: PropTypes.func.isRequired,
-    investigatorDataUpdates: PropTypes.object,
-    deckName: PropTypes.string.isRequired,
-    signedIn: PropTypes.bool.isRequired,
-    login: PropTypes.func.isRequired,
-    deleteDeck: PropTypes.func.isRequired,
-    uploadLocalDeck: PropTypes.func.isRequired,
-    problem: PropTypes.object,
+interface Props {
+  componentId: string;
+  deck: Deck;
+  campaign?: Campaign;
+  parsedDeck: ParsedDeck;
+  hasPendingEdits?: boolean;
+  cards: CardsMap;
+  isPrivate: boolean;
+  buttons?: ReactNode;
+  showEditSpecial?: () => void;
+  showEditNameDialog: () => void;
+  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  investigatorDataUpdates?: InvestigatorData;
+  deckName: string;
+  signedIn: boolean;
+  login: () => void;
+  deleteDeck: (allVersions: boolean) => void;
+  uploadLocalDeck: () => void;
+  problem?: DeckProblem;
+}
+
+export default class DeckViewTab extends React.Component<Props> {
+  _keyForCard = (item: SectionCardId) => {
+    return item.id;
   };
 
-  constructor(props) {
-    super(props);
-
-    this._uploadToArkhamDB = this.uploadToArkhamDB.bind(this);
-    this._renderCard = this.renderCard.bind(this);
-    this._renderSectionHeader = this.renderSectionHeader.bind(this);
-    this._keyForCard = this.keyForCard.bind(this);
-    this._showCard = this.showCard.bind(this);
-    this._showInvestigator = this.showInvestigator.bind(this);
-    this._viewDeck = this.viewDeck.bind(this);
-    this._deleteDeckPrompt = this.deleteDeckPrompt.bind(this);
-  }
-
-  keyForCard(item) {
-    return item.id;
-  }
-
-  deleteDeckPrompt() {
+  _deleteDeckPrompt = () => {
     const {
       deck,
       deleteDeck,
     } = this.props;
     if (deck.local) {
-      const options = [];
+      const options: AlertButton[] = [];
       const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
       if (isLatestUpgrade) {
         options.push({
@@ -165,9 +176,9 @@ export default class DeckViewTab extends React.Component {
         ],
       );
     }
-  }
+  };
 
-  uploadToArkhamDB() {
+  _uploadToArkhamDB = () => {
     const {
       signedIn,
       login,
@@ -204,26 +215,26 @@ export default class DeckViewTab extends React.Component {
         ],
       );
     }
-  }
+  };
 
-  viewDeck() {
+  _viewDeck = () => {
     Linking.openURL(`https://arkhamdb.com/deck/view/${this.props.deck.id}`);
-  }
+  };
 
-  showInvestigator() {
+  _showInvestigator = () => {
     const {
       parsedDeck: {
         investigator,
       },
     } = this.props;
-    this.showCard(investigator);
-  }
+    this._showCard(investigator);
+  };
 
-  showCard(card) {
-    showCard(this.props.componentId, card.code, card);
-  }
+  _showCard = (card: Card) => {
+    showCard(this.props.componentId, card.code, card, false);
+  };
 
-  renderSectionHeader({ section }) {
+  _renderSectionHeader = ({ section }: { section: CardSection }) => {
     const {
       parsedDeck: {
         investigator,
@@ -234,7 +245,7 @@ export default class DeckViewTab extends React.Component {
         return (
           <TouchableOpacity onPress={section.onPress} style={[
             styles.superHeaderRow,
-            { backgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0] },
+            { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
           ]}>
             <Text style={[typography.label, styles.superHeaderText]}>
               { section.superTitle }
@@ -248,7 +259,7 @@ export default class DeckViewTab extends React.Component {
       return (
         <View style={[
           styles.superHeaderRow,
-          { backgroundColor: FACTION_DARK_GRADIENTS[investigator.faction_code][0] },
+          { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
         ]}>
           <Text style={[typography.label, styles.superHeaderText]}>
             { section.superTitle }
@@ -266,16 +277,19 @@ export default class DeckViewTab extends React.Component {
       );
     }
 
-    return (
-      <View style={styles.headerRow}>
-        <Text style={typography.small}>
-          { section.title.toUpperCase() }
-        </Text>
-      </View>
-    );
+    if (section.title) {
+      return (
+        <View style={styles.headerRow}>
+          <Text style={typography.small}>
+            { section.title.toUpperCase() }
+          </Text>
+        </View>
+      );
+    }
+    return null;
   }
 
-  renderCard({ item }) {
+  _renderCard = ({ item }: { item: SectionCardId }) => {
     const {
       parsedDeck: {
         ignoreDeckLimitSlots,
@@ -296,7 +310,7 @@ export default class DeckViewTab extends React.Component {
         count={count}
       />
     );
-  }
+  };
 
   renderProblem() {
     const {

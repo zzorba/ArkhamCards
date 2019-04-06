@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -10,8 +9,8 @@ import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
 import { ParsedDeck } from '../parseDeck';
 import L from '../../app/i18n';
 import { fetchPublicDeck, fetchPrivateDeck } from '../../actions';
-import { Campaign, Deck } from '../../actions/types';
-import { CardsMap } from '../../data/Card';
+import { Campaign, Deck, Trauma } from '../../actions/types';
+import Card, { CardsMap } from '../../data/Card';
 import { getDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
@@ -23,7 +22,7 @@ interface OwnProps {
   parsedDeck: ParsedDeck;
   isPrivate: boolean;
   campaign?: Campaign;
-  showTraumaDialog: () => void;
+  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   investigatorDataUpdates: any;
 }
 

@@ -1,46 +1,55 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Realm, { Results } from 'realm';
 import { head } from 'lodash';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 
+import { Deck, Slots } from '../actions/types';
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';
 import { STORY_CARDS_QUERY } from '../data/query';
+import Card, { CardsMap } from '../data/Card';
 import CardSearchComponent from './CardSearchComponent';
 import { parseDeck } from './parseDeck';
 import DeckNavFooter from './DeckNavFooter';
 
-class DeckEditView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    investigator: PropTypes.object,
-    xpAdjustment: PropTypes.number,
-    storyOnly: PropTypes.bool,
-    /* eslint-disable react/no-unused-prop-types */
-    deck: PropTypes.object.isRequired,
-    previousDeck: PropTypes.object,
-    cards: PropTypes.object.isRequired,
-    slots: PropTypes.object.isRequired,
-    ignoreDeckLimitSlots: PropTypes.object.isRequired,
-    updateSlots: PropTypes.func.isRequired,
-  };
+interface OwnProps {
+  componentId: string;
+  xpAdjustment: number;
+  storyOnly?: boolean;
+  deck: Deck;
+  previousDeck?: Deck;
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  updateSlots: (slots: Slots) => void;
+}
 
-  constructor(props) {
+interface RealmProps {
+  realm: Realm;
+  investigator?: Card;
+  cards: Results<Card>;
+}
+
+type Props = OwnProps & RealmProps;
+
+interface State {
+  deckCardCounts: Slots;
+  slots: Slots;
+}
+
+class DeckEditView extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       deckCardCounts: props.slots || {},
       slots: props.slots,
     };
-
-    this._syncDeckCardCounts = this.syncDeckCardCounts.bind(this);
-    this._onDeckCountChange = this.onDeckCountChange.bind(this);
   }
 
-  syncDeckCardCounts() {
+  _syncDeckCardCounts = () => {
     this.props.updateSlots(this.state.deckCardCounts);
-  }
+  };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       slots,
     } = this.props;
@@ -52,7 +61,7 @@ class DeckEditView extends React.Component {
     }
   }
 
-  onDeckCountChange(code, count) {
+  _onDeckCountChange = (code: string, count: number) => {
     const newSlots = Object.assign(
       {},
       this.state.deckCardCounts,
@@ -64,7 +73,7 @@ class DeckEditView extends React.Component {
     this.setState({
       deckCardCounts: newSlots,
     }, this._syncDeckCardCounts);
-  }
+  };
 
   renderFooter() {
     const {
@@ -78,7 +87,7 @@ class DeckEditView extends React.Component {
     const {
       deckCardCounts,
     } = this.state;
-    const cardsInDeck = {};
+    const cardsInDeck: CardsMap = {};
     cards.forEach(card => {
       if (deckCardCounts[card.code] || deck.investigator_code === card.code ||
         (previousDeck && previousDeck.slots[card.code])) {
@@ -112,7 +121,7 @@ class DeckEditView extends React.Component {
     }
     return investigator ?
       `((${queryForInvestigator(investigator)}) or (${STORY_CARDS_QUERY}))` :
-      null;
+      undefined;
   }
 
   render() {
@@ -139,11 +148,15 @@ class DeckEditView extends React.Component {
   }
 }
 
-export default connectRealm(
+export default connectRealm<OwnProps, RealmProps, Card>(
   DeckEditView,
   {
     schemas: ['Card'],
-    mapToProps(results, realm, props) {
+    mapToProps(
+      results: CardResults<Card>,
+      realm: Realm,
+      props: OwnProps
+    ) {
       return {
         realm,
         investigator: head(results.cards.filtered(`code == "${props.deck.investigator_code}"`)),
