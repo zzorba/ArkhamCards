@@ -152,9 +152,9 @@ export function getLatestDeckIds(state: AppState, campaign?: Campaign) {
 export function getMyDecksState(state: AppState) {
   return {
     myDecks: state.decks.myDecks || [],
-    myDecksUpdated: state.decks.dateUpdated ? new Date(state.decks.dateUpdated) : null,
+    myDecksUpdated: state.decks.dateUpdated ? new Date(state.decks.dateUpdated) : undefined,
     refreshing: state.decks.refreshing,
-    error: state.decks.error,
+    error: state.decks.error || undefined,
   };
 }
 

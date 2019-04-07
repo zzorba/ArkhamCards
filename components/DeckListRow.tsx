@@ -27,7 +27,7 @@ interface Props {
   investigator?: Card;
   onPress?: (deck: Deck, investigator?: Card) => void;
   details?: ReactNode;
-  subDetails: ReactNode;
+  subDetails?: ReactNode;
   titleButton?: ReactNode;
   compact?: boolean;
   viewDeckButton?: boolean;

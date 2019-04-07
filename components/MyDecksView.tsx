@@ -1,25 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { find, filter, throttle } from 'lodash';
 import { Button, Text, StyleSheet, Switch, View } from 'react-native';
-import { Navigation } from 'react-native-navigation';
-import { bindActionCreators } from 'redux';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import L from '../app/i18n';
+import { Deck } from '../actions/types';
+import Card from '../data/Card';
 import { iconsMap } from '../app/NavIcons';
 import { showDeckModal } from './navHelper';
 import withFetchCardsGate from './cards/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
-import { getMyDecksState } from '../reducers';
+import { getMyDecksState, AppState } from '../reducers';
 import { COLORS } from '../styles/colors';
 
-class MyDecksView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    myDecks: PropTypes.array,
-  };
+interface OwnProps {
+  componentId: string;
+}
 
+interface ReduxProps {
+  myDecks: number[];
+}
+
+type Props = OwnProps & ReduxProps;
+
+interface State {
+  localDecksOnly: boolean;
+}
+
+class MyDecksView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -35,21 +44,21 @@ class MyDecksView extends React.Component {
     };
   }
 
-  constructor(props) {
+  _navEventListener?: EventSubscription;
+
+  _showNewDeckDialog!: () => void;
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       localDecksOnly: false,
     };
-    this._toggleLocalDecksOnly = this.toggleLocalDecksOnly.bind(this);
     this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
-    this._deckNavClicked = this.deckNavClicked.bind(this);
-
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   componentWillUnmount() {
-    this._navEventListener.remove();
+    this._navEventListener && this._navEventListener.remove();
   }
 
   showNewDeckDialog() {
@@ -64,21 +73,21 @@ class MyDecksView extends React.Component {
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'add') {
       this._showNewDeckDialog();
     }
   }
 
-  deckNavClicked(deck, investigator) {
+  _deckNavClicked = (deck: Deck, investigator?: Card) => {
     showDeckModal(this.props.componentId, deck, investigator);
-  }
+  };
 
-  toggleLocalDecksOnly() {
+  _toggleLocalDecksOnly = () => {
     this.setState({
       localDecksOnly: !this.state.localDecksOnly,
     });
-  }
+  };
 
   renderCustomHeader() {
     const {
@@ -120,9 +129,10 @@ class MyDecksView extends React.Component {
       myDecks,
     } = this.props;
     if (this.state.localDecksOnly) {
+      // @ts-ignore
       return filter(myDecks, deckId => parseInt(deckId, 10) < 0);
     }
-    return null;
+    return undefined;
   }
 
   render() {
@@ -138,16 +148,12 @@ class MyDecksView extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return getMyDecksState(state);
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
 export default withFetchCardsGate(
-  connect(mapStateToProps, mapDispatchToProps)(MyDecksView),
+  connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(MyDecksView),
   { promptForUpdate: false },
 );
 
@@ -165,5 +171,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  searchOption: {
+    fontFamily: 'System',
+    fontSize: 12,
+    marginLeft: 10,
+    marginRight: 2,
   },
 });

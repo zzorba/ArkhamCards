@@ -11,7 +11,7 @@ import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import Dialog from '../core/Dialog';
-import withNetworkStatus, { InjectedNetworkStatusProps } from '../core/withNetworkStatus';
+import withNetworkStatus, { NetworkStatusProps } from '../core/withNetworkStatus';
 import { cloneLocalDeck } from '../decks/localHelper';
 import { login, setNewDeck } from '../../actions';
 import { Deck } from '../../actions/types';
@@ -42,7 +42,7 @@ interface ReduxActionProps {
   setNewDeck: (id: number, deck: Deck) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps & InjectedNetworkStatusProps;
+type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps & NetworkStatusProps;
 
 interface State {
   saving: boolean;

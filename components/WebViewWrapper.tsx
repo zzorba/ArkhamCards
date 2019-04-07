@@ -1,12 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { StyleSheet, WebView } from 'react-native';
 
-export default class WebViewWrapper extends React.Component {
-  static propTypes = {
-    uri: PropTypes.string.isRequired,
-  };
-
+interface Props {
+  uri: string;
+}
+export default class WebViewWrapper extends React.Component<Props> {
   render() {
     return (
       <WebView

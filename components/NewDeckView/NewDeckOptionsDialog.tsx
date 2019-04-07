@@ -18,7 +18,7 @@ import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
-import withNetworkStatus, { InjectedNetworkStatusProps } from '../core/withNetworkStatus';
+import withNetworkStatus, { NetworkStatusProps } from '../core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '../withLoginState';
 import { setNewDeck } from '../../actions';
 import { Deck, Slots } from '../../actions/types';
@@ -54,7 +54,7 @@ interface ReduxActionProps {
 
 type Props = OwnProps &
   RealmProps & ReduxProps & ReduxActionProps &
-  InjectedNetworkStatusProps & LoginStateProps;
+  NetworkStatusProps & LoginStateProps;
 
 interface State {
   saving: boolean;

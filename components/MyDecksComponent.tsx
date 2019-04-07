@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import {
   Button,
   View,
@@ -8,55 +7,52 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { filter } from 'lodash';
+import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import withNetworkStatus from './core/withNetworkStatus';
-import * as Actions from '../actions';
+import withNetworkStatus, { NetworkStatusProps } from './core/withNetworkStatus';
+import { Campaign, Deck } from '../actions/types';
+import { refreshMyDecks } from '../actions';
 import L from '../app/i18n';
+import Card from '../data/Card';
 import DeckListComponent from './DeckListComponent';
-import withLoginState from './withLoginState';
+import withLoginState, { LoginStateProps } from './withLoginState';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
 import space from '../styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignMap } from '../reducers';
+import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '../reducers';
 
-class MyDecksComponent extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    deckClicked: PropTypes.func.isRequired,
-    onlyDeckIds: PropTypes.array,
-    filterDeckIds: PropTypes.array,
-    filterInvestigators: PropTypes.array,
-    refreshMyDecks: PropTypes.func.isRequired,
-    decks: PropTypes.object,
-    deckToCampaign: PropTypes.object,
-    myDecks: PropTypes.array,
-    myDecksUpdated: PropTypes.instanceOf(Date),
-    refreshing: PropTypes.bool,
-    error: PropTypes.string,
-    networkType: PropTypes.string,
-    customHeader: PropTypes.node,
-    customFooter: PropTypes.node,
-    // from loginState
-    login: PropTypes.func.isRequired,
-    signedIn: PropTypes.bool.isRequired,
-    signInError: PropTypes.string,
+interface OwnProps {
+  componentId: string;
+  deckClicked: (deck: Deck, investigator?: Card) => void;
+  onlyDeckIds?: number[];
+  filterDeckIds?: number[]
+  filterInvestigators?: string[];
+  customHeader?: ReactNode;
+  customFooter?: ReactNode;
+}
+
+interface ReduxProps {
+  decks: { [id: number]: Deck };
+  deckToCampaign: { [id: number]: Campaign };
+  myDecks: number[];
+  myDecksUpdated?: Date;
+  refreshing: boolean;
+  error?: string;
+}
+
+interface ReduxActionProps {
+  refreshMyDecks: () => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps & LoginStateProps & NetworkStatusProps;
+
+class MyDecksComponent extends React.Component<Props> {
+  _reLogin = () => {
+    this.props.login();
   };
 
-  constructor(props) {
-    super(props);
-
-    this._onRefresh = this.onRefresh.bind(this);
-    this._renderHeader = this.renderHeader.bind(this);
-    this._reLogin = this.reLogin.bind(this);
-  }
-
-  reLogin() {
-    this.props.login();
-  }
-
-  onRefresh() {
+  _onRefresh = () => {
     const {
       refreshing,
       refreshMyDecks,
@@ -65,7 +61,7 @@ class MyDecksComponent extends React.Component {
     if (!refreshing) {
       refreshMyDecks();
     }
-  }
+  };
 
   componentDidMount() {
     const {
@@ -79,7 +75,7 @@ class MyDecksComponent extends React.Component {
       !myDecksUpdated ||
       (myDecksUpdated.getTime() / 1000 + 600) < (now.getTime() / 1000)
     ) && signedIn) {
-      this.onRefresh();
+      this._onRefresh();
     }
   }
 
@@ -136,7 +132,6 @@ class MyDecksComponent extends React.Component {
     const {
       login,
       signedIn,
-      signInError,
     } = this.props;
     if (signedIn) {
       return null;
@@ -169,7 +164,6 @@ class MyDecksComponent extends React.Component {
 
   render() {
     const {
-      componentId,
       deckClicked,
       filterDeckIds = [],
       filterInvestigators = [],
@@ -191,13 +185,12 @@ class MyDecksComponent extends React.Component {
     });
     return (
       <DeckListComponent
-        componentId={componentId}
         customHeader={this.renderHeader()}
         customFooter={this.renderFooter()}
         deckIds={deckIds}
         deckClicked={deckClicked}
         deckToCampaign={deckToCampaign}
-        onRefresh={signedIn ? this._onRefresh : null}
+        onRefresh={signedIn ? this._onRefresh : undefined}
         refreshing={refreshing}
         isEmpty={myDecks.length === 0}
       />
@@ -205,23 +198,26 @@ class MyDecksComponent extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return Object.assign({},
-    {
-      decks: getAllDecks(state),
-      deckToCampaign: getDeckToCampaignMap(state),
-    },
-    getMyDecksState(state),
-  );
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    decks: getAllDecks(state),
+    deckToCampaign: getDeckToCampaignMap(state) || {},
+    ...getMyDecksState(state),
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({ refreshMyDecks }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withNetworkStatus(
-    withLoginState(MyDecksComponent)
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  withNetworkStatus<ReduxProps & ReduxActionProps & OwnProps>(
+    withLoginState<ReduxProps & ReduxActionProps & OwnProps & NetworkStatusProps>(
+      MyDecksComponent
+    )
   )
 );
 

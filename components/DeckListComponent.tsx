@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { filter, map } from 'lodash';
 import {
   FlatList,
@@ -8,59 +7,70 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import L from '../app/i18n';
+import { Campaign, Deck } from '../actions/types';
+import Card from '../data/Card';
 import { searchMatchesText } from './searchHelpers';
 import SearchBox from './SearchBox';
 import DeckListRow from './DeckListRow';
-import withPlayerCards from './withPlayerCards';
-import { getAllDecks } from '../reducers';
-import * as Actions from '../actions';
+import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
+import { getAllDecks, AppState } from '../reducers';
+import { fetchPublicDeck } from '../actions';
 import typography from '../styles/typography';
 import space from '../styles/space';
 
-class DeckListComponent extends React.Component {
-  static propTypes = {
-    deckIds: PropTypes.array.isRequired,
-    deckClicked: PropTypes.func.isRequired,
-    onRefresh: PropTypes.func,
-    refreshing: PropTypes.bool,
-    investigators: PropTypes.object,
-    cards: PropTypes.object,
-    decks: PropTypes.object,
-    deckToCampaign: PropTypes.object,
-    fetchPublicDeck: PropTypes.func.isRequired,
-    customHeader: PropTypes.node,
-    customFooter: PropTypes.node,
-    isEmpty: PropTypes.bool,
-  }
+interface OwnProps {
+  deckIds: number[];
+  deckClicked: (deck: Deck, investigator?: Card) => void;
+  onRefresh?: () => void;
+  refreshing?: boolean;
+  deckToCampaign?: { [id: number]: Campaign };
+  customHeader?: ReactNode;
+  customFooter?: ReactNode;
+  isEmpty?: boolean;
+}
 
-  constructor(props) {
+interface ReduxProps {
+  decks: { [id: number]: Deck };
+}
+
+interface ReduxActionProps {
+  fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps;
+
+interface State {
+  searchTerm: string;
+}
+
+interface Item {
+  key: string;
+  deckId: number;
+}
+
+class DeckListComponent extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       searchTerm: '',
     };
-
-    this._deckClicked = this.deckClicked.bind(this);
-    this._searchChanged = this.searchChanged.bind(this);
-    this._renderHeader = this.renderHeader.bind(this);
-    this._renderFooter = this.renderFooter.bind(this);
-    this._renderItem = this.renderItem.bind(this);
   }
 
-  deckClicked(deck, investigator) {
+  _deckClicked = (deck: Deck, investigator?: Card) => {
     Keyboard.dismiss();
     this.props.deckClicked(deck, investigator);
-  }
+  };
 
-  searchChanged(searchTerm) {
+  _searchChanged = (searchTerm: string) => {
     this.setState({
       searchTerm,
     });
-  }
+  };
 
   componentDidMount() {
     const {
@@ -75,7 +85,7 @@ class DeckListComponent extends React.Component {
     });
   }
 
-  renderItem({ item: { deckId } }) {
+  _renderItem = ({ item: { deckId } }: { item: Item }) => {
     const {
       investigators,
       decks,
@@ -87,23 +97,22 @@ class DeckListComponent extends React.Component {
     return (
       <DeckListRow
         key={deckId}
-        id={deckId}
         deck={deck}
-        previousDeck={deck.previous_deck ? decks[deck.previous_deck] : null}
+        previousDeck={deck.previous_deck ? decks[deck.previous_deck] : undefined}
         cards={cards}
         deckToCampaign={deckToCampaign}
-        investigator={deck ? investigators[deck.investigator_code] : null}
+        investigator={deck ? investigators[deck.investigator_code] : undefined}
         onPress={this._deckClicked}
       />
     );
-  }
+  };
 
-  renderHeader() {
+  _renderHeader = () => {
     const {
       customHeader,
     } = this.props;
     return (
-      <View style={styles.header}>
+      <View>
         <SearchBox
           value={this.state.searchTerm}
           onChangeText={this._searchChanged}
@@ -112,9 +121,9 @@ class DeckListComponent extends React.Component {
         { !!customHeader && customHeader }
       </View>
     );
-  }
+  };
 
-  renderFooter() {
+  _renderFooter = () => {
     const {
       isEmpty,
       refreshing,
@@ -148,7 +157,7 @@ class DeckListComponent extends React.Component {
         { customFooter }
       </View>
     );
-  }
+  };
 
   getItems() {
     const {
@@ -199,18 +208,21 @@ class DeckListComponent extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     decks: getAllDecks(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(Actions, dispatch);
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({ fetchPublicDeck }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withPlayerCards(DeckListComponent)
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  withPlayerCards<ReduxProps & ReduxActionProps & OwnProps>(DeckListComponent)
 );
 
 const styles = StyleSheet.create({
