@@ -9,17 +9,9 @@ import {
 import L from '../../app/i18n';
 import ToggleFilter from '../core/ToggleFilter';
 import SliderChooser from './SliderChooser';
-import withFilterFunctions from './withFilterFunctions';
+import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 
-class CardLocationFilterView extends React.Component {
-  static propTypes = {
-    filters: PropTypes.object,
-    defaultFilterState: PropTypes.object,
-    width: PropTypes.number,
-    onToggleChange: PropTypes.func.isRequired,
-    onFilterChange: PropTypes.func.isRequired,
-  };
-
+class CardLocationFilterView extends React.Component<FilterProps> {
   static get options() {
     return {
       topBar: {

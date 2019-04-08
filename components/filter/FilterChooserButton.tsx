@@ -1,26 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import ChooserButton from '../core/ChooserButton';
 
-export default class FilterChooserButton extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    values: PropTypes.array.isRequired,
-    selection: PropTypes.array,
-    setting: PropTypes.string.isRequired,
-    onFilterChange: PropTypes.func.isRequired,
-    indent: PropTypes.bool,
-  };
+interface Props {
+  componentId: string;
+  title: string;
+  values: string[];
+  selection?: string[];
+  setting: string;
+  onFilterChange: (setting: string, selection: string[]) => void;
+  indent?: boolean;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onChange = this.onChange.bind(this);
-  }
-
-  onChange(values) {
+export default class FilterChooserButton extends React.Component<Props> {
+  _onChange = (values: string[]) => {
     const {
       onFilterChange,
       setting,

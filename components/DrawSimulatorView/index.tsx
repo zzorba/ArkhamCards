@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { concat, filter, flatMap, map, shuffle, range, without } from 'lodash';
 import {
   Button,
@@ -10,16 +9,36 @@ import {
 } from 'react-native';
 
 import L from '../../app/i18n';
-import withPlayerCards from '../withPlayerCards';
+import { Slots } from '../../actions/types';
+import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import CardSearchResult from '../CardSearchResult';
 
-class DrawSimulatorView extends React.Component {
-  static propTypes = {
-    slots: PropTypes.object,
-    cards: PropTypes.object,
-  };
 
-  constructor(props) {
+interface OwnProps {
+  slots: Slots;
+}
+
+type Props = OwnProps & PlayerCardProps;
+
+interface State {
+  shuffledDeck: string[];
+  drawnCards: string[];
+  selectedCards: string[];
+}
+
+interface Item {
+  key: string;
+  code: string;
+  selected: boolean;
+}
+
+class DrawSimulatorView extends React.Component<Props, State> {
+  _drawOne!: () => void;
+  _drawTwo!: () => void;
+  _drawFive!: () => void;
+  _drawAll!: () => void;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -27,30 +46,17 @@ class DrawSimulatorView extends React.Component {
       drawnCards: [],
       selectedCards: [],
     };
-
-    this._toggleSelection = this.toggleSelection.bind(this);
-    this._renderHeader = this.renderHeader.bind(this);
-    this._renderCardItem = this.renderCardItem.bind(this);
-
-    this._drawOne = this.draw.bind(this, 1);
-    this._drawTwo = this.draw.bind(this, 2);
-    this._drawFive = this.draw.bind(this, 5);
-    this._drawAll = this.draw.bind(this, 'all');
-
-    this._resetDeck = this.resetDeck.bind(this);
-    this._redrawSelected = this.redrawSelected.bind(this);
-    this._reshuffleSelected = this.reshuffleSelected.bind(this);
   }
 
-  resetDeck() {
+  _resetDeck = () => {
     this.setState({
       shuffledDeck: this.shuffleFreshDeck(),
       drawnCards: [],
       selectedCards: [],
     });
-  }
+  };
 
-  reshuffleSelected() {
+  _reshuffleSelected = () => {
     const {
       shuffledDeck,
       selectedCards,
@@ -64,9 +70,9 @@ class DrawSimulatorView extends React.Component {
       drawnCards: newDrawnCards,
       selectedCards: [],
     });
-  }
+  };
 
-  redrawSelected() {
+  _redrawSelected = () => {
     const {
       selectedCards,
     } = this.state;
@@ -82,9 +88,9 @@ class DrawSimulatorView extends React.Component {
       drawnCards: newDrawnCards,
       selectedCards: [],
     });
-  }
+  };
 
-  drawHelper(count) {
+  drawHelper(count: number | 'all') {
     const {
       drawnCards,
       shuffledDeck,
@@ -108,7 +114,7 @@ class DrawSimulatorView extends React.Component {
     };
   }
 
-  draw(count) {
+  draw(count: number | 'all') {
     this.setState(this.drawHelper(count));
   }
 
@@ -130,7 +136,7 @@ class DrawSimulatorView extends React.Component {
         }));
   }
 
-  toggleSelection(id) {
+  _toggleSelection = (id: string) => {
     const {
       selectedCards,
     } = this.state;
@@ -146,9 +152,9 @@ class DrawSimulatorView extends React.Component {
         ],
       });
     }
-  }
+  };
 
-  renderHeader() {
+  _renderHeader = () => {
     const {
       shuffledDeck,
       drawnCards,
@@ -181,9 +187,9 @@ class DrawSimulatorView extends React.Component {
         </View>
       </View>
     );
-  }
+  };
 
-  renderCardItem({ item }) {
+  _renderCardItem = ({ item }: { item: Item }) => {
     const card = this.props.cards[item.code];
     return (
       <View style={item.selected ? styles.selected : {}}>
@@ -194,7 +200,7 @@ class DrawSimulatorView extends React.Component {
         />
       </View>
     );
-  }
+  };
 
   render() {
     const {
@@ -212,7 +218,7 @@ class DrawSimulatorView extends React.Component {
     });
     return (
       <View style={styles.container}>
-        { this.renderHeader() }
+        { this._renderHeader() }
         <FlatList
           data={data}
           renderItem={this._renderCardItem}

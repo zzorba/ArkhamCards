@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import {
   StyleSheet,
 } from 'react-native';
@@ -7,34 +6,28 @@ import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 import AccordionItem from './AccordionItem';
 
-export default class SliderChooser extends React.Component {
-  static propTypes = {
-    label: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    max: PropTypes.number.isRequired,
-    values: PropTypes.array.isRequired,
-    enabled: PropTypes.bool.isRequired,
-    setting: PropTypes.string.isRequired,
-    onFilterChange: PropTypes.func.isRequired,
-    toggleName: PropTypes.string.isRequired,
-    onToggleChange: PropTypes.func.isRequired,
-    children: PropTypes.node,
-    height: PropTypes.number,
-  };
+interface Props {
+  label: string;
+  width: number;
+  height?: number;
+  max: number;
+  values: number[];
+  enabled: boolean;
+  setting: string;
+  onFilterChange: (setting: string, values: number[]) => void;
+  toggleName: string;
+  onToggleChange: (setting: string) => void;
+  children?: ReactNode;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._onChange = this.onChange.bind(this);
-  }
-
-  onChange(values) {
+export default class SliderChooser extends React.Component<Props> {
+  _onChange = (values: number[]) => {
     const {
       onFilterChange,
       setting,
     } = this.props;
     onFilterChange(setting, values);
-  }
+  };
 
   label() {
     const {

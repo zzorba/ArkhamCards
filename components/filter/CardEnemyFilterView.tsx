@@ -9,18 +9,10 @@ import {
 import L from '../../app/i18n';
 import SliderChooser from './SliderChooser';
 import ToggleFilter from '../core/ToggleFilter';
-import withFilterFunctions from './withFilterFunctions';
+import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import { COLORS } from '../../styles/colors';
 
-class CardEnemyFilterView extends React.Component {
-  static propTypes = {
-    filters: PropTypes.object,
-    defaultFilterState: PropTypes.object.isRequired,
-    width: PropTypes.number,
-    onToggleChange: PropTypes.func.isRequired,
-    onFilterChange: PropTypes.func.isRequired,
-  };
-
+class CardEnemyFilterView extends React.Component<FilterProps> {
   static get options() {
     return {
       topBar: {

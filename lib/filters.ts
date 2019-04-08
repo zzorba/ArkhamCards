@@ -1,9 +1,9 @@
 import { findIndex, forEach, map } from 'lodash';
 
-import { SKILLS } from '../constants';
+import { SKILLS, FactionCodeType } from '../constants';
 
 
-interface SkillIconsFilters {
+export interface SkillIconsFilters {
   willpower: boolean;
   intellect: boolean;
   combat: boolean;
@@ -13,7 +13,7 @@ interface SkillIconsFilters {
 }
 export interface FilterState {
   [key: string]: string[] | boolean | [number, number] | SkillIconsFilters;
-  factions: string[];
+  factions: FactionCodeType[];
   uses: string[];
   types: string[];
   subTypes: string[];

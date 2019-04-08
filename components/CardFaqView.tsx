@@ -8,43 +8,53 @@ import {
   Text,
   View,
 } from 'react-native';
-import { connectRealm } from 'react-native-realm';
+import Realm, { Results } from 'realm';
+import { connectRealm, CardAndFaqResults } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 
+import Card from '../data/Card';
+import FaqEntry from '../data/FaqEntry';
 import CardTextComponent from './CardTextComponent';
 import { showCard } from './navHelper';
 import { getFaqEntry } from '../lib/publicApi';
 import typography from '../styles/typography';
 import { m } from '../styles/space';
 
-class CardFaqView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    realm: PropTypes.object.isRequired,
-    cards: PropTypes.object,
-    faqEntries: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+  id: string;
+}
 
-  constructor(props) {
+interface RealmProps {
+  realm: Realm;
+  cards: Results<Card>;
+  faqEntries: Results<FaqEntry>;
+}
+
+type Props = OwnProps & RealmProps;
+
+interface State {
+  faqLoading: boolean;
+  faqError?: string;
+}
+
+class CardFaqView extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       faqLoading: false,
     };
-
-    this._linkPressed = this.linkPressed.bind(this);
-    this._loadFaq = this.loadFaq.bind(this);
   }
 
   componentDidMount() {
     if (!head(this.props.faqEntries)) {
-      this.loadFaq();
+      this._loadFaq();
     }
   }
 
-  openUrl(url) {
+  openUrl(url: string) {
     const {
       componentId,
     } = this.props;
@@ -67,7 +77,7 @@ class CardFaqView extends React.Component {
     });
   }
 
-  linkPressed(url) {
+  _linkPressed = (url: string) => {
     const {
       componentId,
       cards,
@@ -77,15 +87,17 @@ class CardFaqView extends React.Component {
     if (match) {
       const code = match[1];
       const card = head(cards.filtered(`code == '${code}'`));
-      showCard(componentId, code, card);
+      if (card) {
+        showCard(componentId, code, card);
+      }
     } else if (url.indexOf('arkhamdb.com') !== -1) {
       this.openUrl(url);
     } else if (startsWith(url, '/')) {
       this.openUrl(`https://arkhamdb.com${url}`);
     }
-  }
+  };
 
-  loadFaq() {
+  _loadFaq = () => {
     const {
       id,
       realm,
@@ -98,7 +110,7 @@ class CardFaqView extends React.Component {
       getFaqEntry(realm, id).then(() => {
         this.setState({
           faqLoading: false,
-          faqError: null,
+          faqError: undefined,
         });
       }).catch(() => {
         this.setState({
@@ -107,7 +119,7 @@ class CardFaqView extends React.Component {
         });
       });
     }
-  }
+  };
 
   renderFaqContent() {
     const {
@@ -138,7 +150,7 @@ class CardFaqView extends React.Component {
             </Text>
           ) }
         </View>
-        { !!faqEntry && (
+        { !!faqEntry && !!faqEntry.fetched && (
           <Text style={typography.small}>
             Last Updated: { faqEntry.fetched.toISOString().slice(0, 10) }
           </Text>
@@ -164,9 +176,13 @@ class CardFaqView extends React.Component {
   }
 }
 
-export default connectRealm(CardFaqView, {
+export default connectRealm<OwnProps, RealmProps, Card, FaqEntry>(CardFaqView, {
   schemas: ['Card', 'FaqEntry'],
-  mapToProps(results, realm, props) {
+  mapToProps(
+    results: CardAndFaqResults<Card, FaqEntry>,
+    realm: Realm,
+    props: OwnProps
+  ): RealmProps {
     return {
       realm,
       cards: results.cards,

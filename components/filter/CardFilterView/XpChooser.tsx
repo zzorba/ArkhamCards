@@ -7,23 +7,17 @@ import {
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 
-export default class XpChooser extends React.Component {
-  static propTypes = {
-    onFilterChange: PropTypes.func.isRequired,
-    onToggleChange: PropTypes.func.isRequired,
-    maxLevel: PropTypes.number.isRequired,
-    levels: PropTypes.array.isRequired,
-    enabled: PropTypes.bool.isRequired,
-    exceptional: PropTypes.bool.isRequired,
-    nonExceptional: PropTypes.bool.isRequired,
-  };
+interface Props {
+  onFilterChange: (setting: string, value: any) => void;
+  onToggleChange: (setting: string) => void;
+  maxLevel: number;
+  levels: [number, number];
+  enabled: boolean;
+  exceptional: boolean;
+  nonExceptional: boolean;
+}
 
-  constructor(props) {
-    super(props);
-
-    this._updateIndex = this.updateIndex.bind(this);
-  }
-
+export default class XpChooser extends React.Component<Props> {
   levelRanges() {
     const {
       maxLevel,
@@ -31,7 +25,7 @@ export default class XpChooser extends React.Component {
     return [[0, 0], [1, maxLevel]];
   }
 
-  updateIndex(indexes) {
+  _updateIndex = (indexes: number[]) => {
     const {
       onFilterChange,
       onToggleChange,
@@ -56,7 +50,7 @@ export default class XpChooser extends React.Component {
     this.setState({
       levels: level,
     });
-  }
+  };
 
   render() {
     const {
@@ -87,6 +81,7 @@ export default class XpChooser extends React.Component {
     });
     return (
       <ButtonGroup
+        // @ts-ignore
         onPress={this._updateIndex}
         selectedIndexes={selectedIndexes}
         buttons={buttons}

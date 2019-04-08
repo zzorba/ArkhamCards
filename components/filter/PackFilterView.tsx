@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { difference, forEach, filter, map, union } from 'lodash';
 import {
   Text,
@@ -8,19 +7,22 @@ import {
 import { connect } from 'react-redux';
 
 import L from '../../app/i18n';
+import { Pack } from '../../actions/types';
 import PackListComponent from '../PackListComponent';
-import { getAllPacks } from '../../reducers';
-import withFilterFunctions from './withFilterFunctions';
+import { getAllPacks, AppState } from '../../reducers';
+import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import { COLORS } from '../../styles/colors';
 
-class PackFilterView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    onFilterChange: PropTypes.func.isRequired,
-    filters: PropTypes.object,
-    allPacks: PropTypes.array,
-  };
+interface OwnProps {
+  componentId: string;
+}
 
+interface ReduxProps {
+  allPacks: Pack[];
+}
+
+type Props = OwnProps & ReduxProps & FilterProps;
+class PackFilterView extends React.Component<Props> {
   static get options() {
     return {
       topBar: {
@@ -35,14 +37,7 @@ class PackFilterView extends React.Component {
     };
   }
 
-  constructor(props) {
-    super(props);
-
-    this._setChecked = this.setChecked.bind(this);
-    this._setCycleChecked = this.setCycleChecked.bind(this);
-  }
-
-  setChecked(code, value) {
+  _setChecked = (code: string, value: boolean) => {
     const {
       onFilterChange,
       filters: {
@@ -58,9 +53,9 @@ class PackFilterView extends React.Component {
       'packs',
       value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
     );
-  }
+  };
 
-  setCycleChecked(cycle_position, value) {
+  _setCycleChecked = (cycle_position: number, value: boolean) => {
     const {
       onFilterChange,
       filters: {
@@ -77,7 +72,7 @@ class PackFilterView extends React.Component {
       'packs',
       value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
     );
-  }
+  };
 
   render() {
     const {
@@ -95,7 +90,7 @@ class PackFilterView extends React.Component {
       );
     }
     const selectedPackNames = new Set(packs || []);
-    const selected = {};
+    const selected: { [pack_code: string]: boolean } = {};
     forEach(allPacks, pack => {
       if (selectedPackNames.has(pack.name)) {
         selected[pack.code] = true;
@@ -114,10 +109,12 @@ class PackFilterView extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     allPacks: getAllPacks(state),
   };
 }
 
-export default connect(mapStateToProps, {})(withFilterFunctions(PackFilterView));
+export default connect(mapStateToProps)(
+  withFilterFunctions(PackFilterView)
+);

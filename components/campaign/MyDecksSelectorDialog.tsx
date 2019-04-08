@@ -1,42 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { concat, filter, flatMap, keys, throttle, uniqBy } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
+import { Deck, Campaign } from '../../actions/types';
+import Card from '../../data/Card';
 import { isEliminated } from './trauma';
 import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
-import withPlayerCards from '../withPlayerCards';
-import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds } from '../../reducers';
+import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
+import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
-class MyDecksSelectorDialog extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    /* eslint-disable react/no-unused-prop-types */
-    campaignId: PropTypes.number.isRequired,
-    onDeckSelect: PropTypes.func.isRequired,
-    selectedDeckIds: PropTypes.array,
-    showOnlySelectedDeckIds: PropTypes.bool,
-    //  From redux
-    campaignLatestDeckIds: PropTypes.array,
-    otherCampaignDeckIds: PropTypes.array,
-    decks: PropTypes.object,
-    campaign: PropTypes.object,
-    // From realm
-    investigators: PropTypes.object,
-  };
+interface OwnProps {
+  componentId: string;
+  campaignId: number;
+  onDeckSelect: (deck: Deck) => void;
+  selectedDeckIds: number[];
+  showOnlySelectedDeckIds?: boolean;
+}
 
-  static options(passProps) {
+interface ReduxProps {
+  campaignLatestDeckIds: number[];
+  otherCampaignDeckIds: number[];
+  decks: { [id: number]: Deck };
+  campaign?: Campaign;
+}
+
+type Props = OwnProps & ReduxProps & PlayerCardProps;
+
+interface State {
+  hideOtherCampaignInvestigators: boolean;
+  onlyShowPreviousCampaignMembers: boolean;
+  hideEliminatedInvestigators: boolean;
+}
+
+class MyDecksSelectorDialog extends React.Component<Props, State> {
+  static options(passProps: Props) {
     return {
       topBar: {
         title: {
@@ -55,8 +62,10 @@ class MyDecksSelectorDialog extends React.Component {
       },
     };
   }
+  _navEventListener: EventSubscription;
+  _showNewDeckDialog!: () => void;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -66,14 +75,6 @@ class MyDecksSelectorDialog extends React.Component {
     };
 
     this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
-    this._deckSelected = this.deckSelected.bind(this);
-    this._toggleHideOtherCampaignInvestigators =
-      this.toggleValue.bind(this, 'hideOtherCampaignInvestigators');
-    this._toggleOnlyShowPreviousCampaignMembers =
-      this.toggleValue.bind(this, 'onlyShowPreviousCampaignMembers');
-    this._toggleHideEliminatedInvestigators =
-      this.toggleValue.bind(this, 'hideEliminatedInvestigators');
-
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -81,11 +82,23 @@ class MyDecksSelectorDialog extends React.Component {
     this._navEventListener.remove();
   }
 
-  toggleValue(key) {
+  _toggleHideOtherCampaignInvestigators = () => {
     this.setState({
-      [key]: !this.state[key],
+      hideOtherCampaignInvestigators: !this.state.hideOtherCampaignInvestigators,
     });
-  }
+  };
+
+  _toggleOnlyShowPreviousCampaignMembers = () => {
+    this.setState({
+      onlyShowPreviousCampaignMembers: !this.state.onlyShowPreviousCampaignMembers,
+    });
+  };
+
+  _toggleHideEliminatedInvestigators = () => {
+    this.setState({
+      hideEliminatedInvestigators: !this.state.hideEliminatedInvestigators,
+    });
+  };
 
   showNewDeckDialog() {
     const {
@@ -103,7 +116,7 @@ class MyDecksSelectorDialog extends React.Component {
     });
   }
 
-  navigationButtonPressed({ buttonId }) {
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const {
       componentId,
     } = this.props;
@@ -114,7 +127,7 @@ class MyDecksSelectorDialog extends React.Component {
     }
   }
 
-  deckSelected(deck) {
+  _deckSelected = (deck: Deck) => {
     const {
       onDeckSelect,
       componentId,
@@ -188,20 +201,23 @@ class MyDecksSelectorDialog extends React.Component {
       return [];
     }
 
-    const eliminatedInvestigators = !campaign ? [] :
+    const eliminatedInvestigators: string[] = !campaign ? [] :
       filter(
         keys(campaign.investigatorData || {}),
         code => isEliminated(campaign.investigatorData[code], investigators[code]));
-    return uniqBy(concat(
-      hideEliminatedInvestigators ? eliminatedInvestigators : [],
-      flatMap(selectedDeckIds, deckId => {
-        const deck = decks[deckId];
-        if (deck) {
-          return deck.investigator_code;
-        }
-        return null;
-      })
-    ));
+    return uniqBy(
+      [
+        ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),
+        ...flatMap(selectedDeckIds, deckId => {
+          const deck = decks[deckId];
+          if (deck) {
+            return [deck.investigator_code];
+          }
+          return [];
+        }),
+      ],
+      x => x
+    );
   }
 
   onlyDeckIds() {
@@ -220,7 +236,7 @@ class MyDecksSelectorDialog extends React.Component {
     if (onlyShowPreviousCampaignMembers && campaign) {
       return campaignLatestDeckIds;
     }
-    return null;
+    return undefined;
   }
 
   filterDeckIds() {
@@ -236,7 +252,7 @@ class MyDecksSelectorDialog extends React.Component {
       return [];
     }
     if (hideOtherCampaignInvestigators) {
-      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds));
+      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds), x => x);
     }
     return selectedDeckIds;
   }
@@ -259,25 +275,23 @@ class MyDecksSelectorDialog extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const otherCampaigns = filter(
     getCampaigns(state),
     campaign => campaign.id !== props.campaignId);
   const otherCampaignDeckIds = flatMap(otherCampaigns, c => getLatestDeckIds(state, c));
-  const campaign = getCampaign(state, props.campaignId);
+  const campaign = getCampaign(state, props.campaignId) || undefined;
   return {
     campaign,
-    campaignLatestDeckIds: getLatestDeckIds(state, campaign),
+    campaignLatestDeckIds: campaign ? getLatestDeckIds(state, campaign) : [],
     otherCampaignDeckIds,
     decks: getAllDecks(state),
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withPlayerCards(MyDecksSelectorDialog));
+export default connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(
+  withPlayerCards<OwnProps & ReduxProps>(MyDecksSelectorDialog)
+);
 
 const styles = StyleSheet.create({
   row: {
@@ -288,5 +302,11 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
     paddingLeft: 8,
     paddingRight: 8,
+  },
+  searchOption: {
+    fontFamily: 'System',
+    fontSize: 12,
+    marginLeft: 10,
+    marginRight: 2,
   },
 });

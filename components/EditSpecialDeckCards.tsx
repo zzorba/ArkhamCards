@@ -1,38 +1,48 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { forEach, keys, map, sortBy } from 'lodash';
 import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import L from '../app/i18n';
+import { Campaign, Deck, Slots } from '../actions/types';
+import Card from '../data/Card';
 import CardSelectorComponent from './CardSelectorComponent';
-import withPlayerCards from './withPlayerCards';
+import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
 import CardSearchResult from './CardSearchResult';
 import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS } from '../constants';
-import { getCampaign } from '../reducers';
+import { getCampaign, AppState } from '../reducers';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
 
 const ACE_OF_RODS = '05040';
 
-class EditSpecialDeckCards extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    deck: PropTypes.object.isRequired,
-    previousDeck: PropTypes.object,
-    xpAdjustment: PropTypes.number,
-    campaignId: PropTypes.number,
-    updateSlots: PropTypes.func.isRequired,
-    updateIgnoreDeckLimitSlots: PropTypes.func.isRequired,
-    slots: PropTypes.object.isRequired,
-    ignoreDeckLimitSlots: PropTypes.object.isRequired,
-    assignedWeaknesses: PropTypes.array,
-    // From withPlayerCards
-    cards: PropTypes.object.isRequired,
-  };
+interface OwnProps {
+  componentId: string;
+  deck: Deck;
+  previousDeck?: Deck;
+  xpAdjustment?: number;
+  campaignId?: number;
+  updateSlots: (slots: Slots) => void;
+  updateIgnoreDeckLimitSlots: (slots: Slots) => void;
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  assignedWeaknesses: string[];
+}
 
+interface ReduxProps {
+  campaign?: Campaign;
+}
+
+type Props = OwnProps & ReduxProps & PlayerCardProps;
+
+interface State {
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  unsavedAssignedWeaknesses: string[];
+}
+
+class EditSpecialDeckCards extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -43,7 +53,7 @@ class EditSpecialDeckCards extends React.Component {
     };
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -51,20 +61,9 @@ class EditSpecialDeckCards extends React.Component {
       ignoreDeckLimitSlots: props.ignoreDeckLimitSlots,
       unsavedAssignedWeaknesses: props.assignedWeaknesses || [],
     };
-
-    this._updateSlots = this.updateSlots.bind(this);
-    this._saveWeakness = this.saveWeakness.bind(this);
-    this._showCampaignWeaknessDialog = this.showCampaignWeaknessDialog.bind(this);
-    this._showWeaknessDialog = this.showWeaknessDialog.bind(this);
-    this._drawWeakness = this.drawWeakness.bind(this);
-    this._editStoryPressed = this.editStoryPressed.bind(this);
-    this._onIgnoreDeckLimitSlotsChange = this.onIgnoreDeckLimitSlotsChange.bind(this);
-    this._cardPressed = this.cardPressed.bind(this);
-    this._isSpecial = this.isSpecial.bind(this);
-    this._editCollection = this.editCollection.bind(this);
   }
 
-  cardPressed(card) {
+  _cardPressed = (card: Card) => {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'Card',
@@ -76,9 +75,9 @@ class EditSpecialDeckCards extends React.Component {
         },
       },
     });
-  }
+  };
 
-  editStoryPressed() {
+  _editStoryPressed = () => {
     const {
       componentId,
       deck,
@@ -117,29 +116,29 @@ class EditSpecialDeckCards extends React.Component {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
             },
           },
         },
       },
     });
-  }
+  };
 
-  isSpecial(card) {
+  _isSpecial = (card: Card) => {
     const {
       ignoreDeckLimitSlots,
     } = this.state;
-    return card.code === ACE_OF_RODS || ignoreDeckLimitSlots > 0;
-  }
+    return card.code === ACE_OF_RODS || ignoreDeckLimitSlots[card.code] > 0;
+  };
 
-  updateSlots(newSlots) {
+  _updateSlots = (newSlots: Slots) => {
     this.setState({
       slots: newSlots,
     });
     this.props.updateSlots(newSlots);
-  }
+  };
 
-  saveWeakness(code, replaceRandomBasicWeakness) {
+  _saveWeakness = (code: string, replaceRandomBasicWeakness: boolean) => {
     const {
       updateSlots,
     } = this.props;
@@ -161,17 +160,17 @@ class EditSpecialDeckCards extends React.Component {
       slots: newSlots,
       unsavedAssignedWeaknesses: [...unsavedAssignedWeaknesses, code],
     });
-  }
+  };
 
-  editCollection() {
+  _editCollection = () => {
     Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },
     });
-  }
+  };
 
-  drawWeakness() {
+  _drawWeakness = () => {
     Alert.alert(
       L('Draw Basic Weakness'),
       L('This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.'),
@@ -180,9 +179,9 @@ class EditSpecialDeckCards extends React.Component {
         { text: L('Edit Collection'), onPress: this._editCollection },
         { text: L('Cancel'), style: 'cancel' },
       ]);
-  }
+  };
 
-  showWeaknessDialog() {
+  _showWeaknessDialog = () => {
     const {
       componentId,
       cards,
@@ -213,15 +212,15 @@ class EditSpecialDeckCards extends React.Component {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
             },
           },
         },
       },
     });
-  }
+  };
 
-  showCampaignWeaknessDialog() {
+  _showCampaignWeaknessDialog = () => {
     const {
       componentId,
       campaignId,
@@ -256,20 +255,20 @@ class EditSpecialDeckCards extends React.Component {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.faction_code : 'neutral'][0],
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
             },
           },
         },
       },
     });
-  }
+  };
 
-  onIgnoreDeckLimitSlotsChange(ignoreDeckLimitSlots) {
+  _onIgnoreDeckLimitSlotsChange = (ignoreDeckLimitSlots: Slots) => {
     this.props.updateIgnoreDeckLimitSlots(ignoreDeckLimitSlots);
     this.setState({
       ignoreDeckLimitSlots,
     });
-  }
+  };
 
   renderDrawWeaknessButton() {
     const {
@@ -290,7 +289,7 @@ class EditSpecialDeckCards extends React.Component {
     const {
       slots,
     } = this.state;
-    const weaknesses = [];
+    const weaknesses: Card[] = [];
     forEach(keys(slots), code => {
       if (cards[code] && cards[code].subtype_code === 'basicweakness') {
         weaknesses.push(cards[code]);
@@ -324,7 +323,7 @@ class EditSpecialDeckCards extends React.Component {
     const {
       slots,
     } = this.state;
-    const storyCards = [];
+    const storyCards: Card[] = [];
     forEach(keys(slots), code => {
       if (cards[code] && cards[code].spoiler) {
         storyCards.push(cards[code]);
@@ -394,18 +393,14 @@ class EditSpecialDeckCards extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
-    campaign: props.campaignId && getCampaign(state, props.campaignId),
+    campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
 export default withPlayerCards(
-  connect(mapStateToProps, mapDispatchToProps)(EditSpecialDeckCards)
+  connect(mapStateToProps)(EditSpecialDeckCards)
 );
 
 const styles = StyleSheet.create({

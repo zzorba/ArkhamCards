@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { flatMap, map } from 'lodash';
 import {
   StyleSheet,
@@ -7,9 +6,9 @@ import {
 import { ButtonGroup } from 'react-native-elements';
 
 import ArkhamIcon from '../../../assets/ArkhamIcon';
-import { FACTION_COLORS } from '../../../constants';
+import { FACTION_COLORS, FactionCodeType } from '../../../constants';
 
-function factionToIconName(faction) {
+function factionToIconName(faction: FactionCodeType) {
   if (faction === 'neutral') {
     return 'elder_sign';
   }
@@ -19,27 +18,21 @@ function factionToIconName(faction) {
   return faction;
 }
 
-export default class FactionChooser extends React.Component {
-  static propTypes = {
-    onFilterChange: PropTypes.func.isRequired,
-    factions: PropTypes.array.isRequired,
-    selection: PropTypes.array.isRequired,
-  };
+interface Props {
+  onFilterChange: (setting: string, value: any) => void;
+  factions: FactionCodeType[];
+  selection: FactionCodeType[];
+}
 
-  constructor(props) {
-    super(props);
-
-    this._updateIndex = this.updateIndex.bind(this);
-  }
-
-  updateIndex(indexes) {
+export default class FactionChooser extends React.Component<Props> {
+  _updateIndex = (indexes: number[]) => {
     const {
       factions,
       onFilterChange,
     } = this.props;
     const selection = flatMap(indexes, idx => factions[idx].toLowerCase());
     onFilterChange('factions', selection);
-  }
+  };
 
   render() {
     const {
@@ -51,7 +44,7 @@ export default class FactionChooser extends React.Component {
       return null;
     }
 
-    const selectedIndexes = [];
+    const selectedIndexes: number[] = [];
     const buttons = map(factions, (faction, idx) => {
       const selected = selection.indexOf(faction) !== -1;
       if (selected) {
@@ -69,6 +62,7 @@ export default class FactionChooser extends React.Component {
     });
     return (
       <ButtonGroup
+        // @ts-ignore
         onPress={this._updateIndex}
         selectedIndexes={selectedIndexes}
         buttons={buttons}

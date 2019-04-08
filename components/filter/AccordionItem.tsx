@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
   Animated,
@@ -11,7 +11,20 @@ import {
 import Switch from '../core/Switch';
 import typography from '../../styles/typography';
 
-export default class AccordionChooser extends React.Component {
+interface Props {
+  label: string;
+  height: number;
+  children: ReactNode;
+  enabled: boolean;
+  toggleName: string;
+  onToggleChange: (toggleName: string) => void;
+}
+
+interface State {
+  heightAnim: Animated.Value;
+}
+
+export default class AccordionChooser extends React.Component<Props, State> {
   static propTypes = {
     label: PropTypes.string.isRequired,
     height: PropTypes.number.isRequired,
@@ -21,17 +34,15 @@ export default class AccordionChooser extends React.Component {
     onToggleChange: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       heightAnim: new Animated.Value(props.enabled ? 1 : 0),
     };
-
-    this._togglePressed = this.togglePressed.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const {
       enabled,
     } = this.props;
@@ -43,19 +54,19 @@ export default class AccordionChooser extends React.Component {
         Animated.timing(heightAnim, {
           toValue: enabled ? 1 : 0,
           duration: 250,
-          easing: enabled ? Easing.easeIn : Easing.easeOut,
+          easing: enabled ? Easing.in(Easing.ease) : Easing.out(Easing.ease),
         }).start();
       });
     }
   }
 
-  togglePressed() {
+  _togglePressed = () => {
     const {
       toggleName,
       onToggleChange,
     } = this.props;
     onToggleChange(toggleName);
-  }
+  };
 
   renderLabel() {
     const {

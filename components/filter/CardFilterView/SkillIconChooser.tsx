@@ -8,8 +8,16 @@ import {
 import L from '../../../app/i18n';
 import AccordionItem from '../AccordionItem';
 import ToggleFilter from '../../core/ToggleFilter';
+import { SkillIconsFilters } from '../../../lib/filters';
 
-export default class SkillIconChooser extends React.Component {
+interface Props {
+  onFilterChange: (setting: string, value: any) => void;
+  skillIcons: SkillIconsFilters;
+  enabled: boolean;
+  onToggleChange: (setting: string) => void;
+}
+
+export default class SkillIconChooser extends React.Component<Props> {
   static propTypes = {
     onFilterChange: PropTypes.func.isRequired,
     skillIcons: PropTypes.object.isRequired,
@@ -17,19 +25,17 @@ export default class SkillIconChooser extends React.Component {
     onToggleChange: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-
-    this._onToggleChange = this.onToggleChange.bind(this);
-  }
-
-  onToggleChange(key) {
+  _onToggleChange = (key: string) => {
     const {
       onFilterChange,
       skillIcons,
     } = this.props;
-    onFilterChange('skillIcons', Object.assign({}, skillIcons, { [key]: !skillIcons[key] }));
-  }
+
+    onFilterChange('skillIcons', {
+      ...skillIcons,
+      [key]: !skillIcons[key as keyof SkillIconsFilters],
+    });
+  };
 
   render() {
     const {

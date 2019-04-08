@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { keys, forEach, filter, indexOf, map, partition } from 'lodash';
 import {
   ActivityIndicator,
@@ -10,33 +9,50 @@ import {
 import { connect } from 'react-redux';
 
 import L from '../../../app/i18n';
+import { Pack } from '../../../actions/types';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
 import ToggleFilter from '../../core/ToggleFilter';
-import withFilterFunctions from '../withFilterFunctions';
+import withFilterFunctions, { FilterProps } from '../withFilterFunctions';
 import NavButton from '../../core/NavButton';
-import { FACTION_CODES } from '../../../constants';
-import { getAllPacks } from '../../../reducers';
+import { CORE_FACTION_CODES, FactionCodeType } from '../../../constants';
+import { getAllPacks, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
-const CARD_FACTION_CODES = [...FACTION_CODES, 'mythos'];
+const CARD_FACTION_CODES: FactionCodeType[] = [
+  ...CORE_FACTION_CODES,
+  'neutral',
+  'mythos',
+];
 
-class CardFilterView extends React.Component {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    cards: PropTypes.object,
-    filters: PropTypes.object,
-    defaultFilterState: PropTypes.object,
-    width: PropTypes.number,
-    pushFilterView: PropTypes.func.isRequired,
-    onToggleChange: PropTypes.func.isRequired,
-    onFilterChange: PropTypes.func.isRequired,
-    allPacks: PropTypes.array,
-  };
+type ReduxProps = {
+  allPacks: Pack[];
+}
 
+type Props = ReduxProps & FilterProps;
+
+interface State {
+  loading: boolean;
+  hasCost: boolean;
+  hasXp: boolean;
+  hasSkill: boolean;
+  allUses: string[];
+  allFactions: FactionCodeType[];
+  allTraits: string[],
+  allTypes: string[],
+  allTypeCodes: string[],
+  allSubTypes: string[],
+  allPacks: string[];
+  allSlots: string[];
+  allEncounters: string[];
+  allIllustrators: string[];
+  levels: number[];
+}
+
+class CardFilterView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -48,7 +64,7 @@ class CardFilterView extends React.Component {
     };
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -68,10 +84,6 @@ class CardFilterView extends React.Component {
       allIllustrators: [],
       levels: [],
     };
-
-    this._onPacksPress = this.onPacksPress.bind(this);
-    this._onEnemyPress = this.onEnemyPress.bind(this);
-    this._onLocationPress = this.onLocationPress.bind(this);
   }
 
   componentDidMount() {
@@ -79,20 +91,20 @@ class CardFilterView extends React.Component {
       cards,
     } = this.props;
     setTimeout(() => {
-      const allFactions = filter(FACTION_CODES, faction_code =>
+      const allFactions = filter(CARD_FACTION_CODES, faction_code =>
         cards.filtered(`faction_code == '${faction_code}'`).length > 0);
       let hasCost = false;
       let hasXp = false;
       let hasSkill = false;
-      const typesMap = {};
-      const typeCodesMap = {};
-      const usesMap = {};
-      const subTypesMap = {};
-      const traitsMap = {};
-      const packsMap = {};
-      const slotsMap = {};
-      const encountersMap = {};
-      const illustratorsMap = {};
+      const typesMap: { [key: string]: boolean } = {};
+      const typeCodesMap: { [key: string]: boolean } = {};
+      const usesMap: { [key: string]: boolean } = {};
+      const subTypesMap: { [key: string]: boolean } = {};
+      const traitsMap: { [key: string]: boolean } = {};
+      const packsMap: { [key: string]: boolean } = {};
+      const slotsMap: { [key: string]: boolean } = {};
+      const encountersMap: { [key: string]: boolean } = {};
+      const illustratorsMap: { [key: string]: boolean } = {};
       forEach(cards, card => {
         if (card.cost !== null) {
           hasCost = true;
@@ -111,40 +123,40 @@ class CardFilterView extends React.Component {
         }
         if (card.traits) {
           forEach(
-            filter(map(card.traits.split('.'), t => t.trim()), t => t),
+            filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
             t => {
-              traitsMap[t] = 1;
+              traitsMap[t] = true;
             });
         }
         if (card.subtype_name) {
-          subTypesMap[card.subtype_name] = 1;
+          subTypesMap[card.subtype_name] = true;
         }
         if (card.uses) {
-          usesMap[card.uses] = 1;
+          usesMap[card.uses] = true;
         }
         if (card.pack_name) {
-          packsMap[card.pack_name] = 1;
+          packsMap[card.pack_name] = true;
         }
         if (card.slot) {
           if (card.slot.indexOf('.') !== -1) {
             forEach(
               map(card.slot.split('.'), s => s.trim()),
               s => {
-                slotsMap[s] = 1;
+                slotsMap[s] = true;
               }
             );
           } else {
-            slotsMap[card.slot] = 1;
+            slotsMap[card.slot] = true;
           }
         }
         if (card.encounter_name) {
-          encountersMap[card.encounter_name] = 1;
+          encountersMap[card.encounter_name] = true;
         }
         if (card.illustrator) {
-          illustratorsMap[card.illustrator] = 1;
+          illustratorsMap[card.illustrator] = true;
         }
-        typesMap[card.type_name] = 1;
-        typeCodesMap[card.type_code] = 1;
+        typesMap[card.type_name] = true;
+        typeCodesMap[card.type_code] = true;
       });
 
       this.setState({
@@ -166,27 +178,27 @@ class CardFilterView extends React.Component {
     }, 0);
   }
 
-  onPacksPress() {
+  _onPacksPress = () => {
     this.props.pushFilterView('SearchFilters.Packs');
-  }
+  };
 
-  onEnemyPress() {
+  _onEnemyPress = () => {
     this.props.pushFilterView('SearchFilters.Enemy');
-  }
+  };
 
-  onLocationPress() {
+  _onLocationPress = () => {
     this.props.pushFilterView('SearchFilters.Location');
-  }
+  };
 
-  onToggleChange(key) {
+  onToggleChange(key: string) {
     this.props.onToggleChange(key);
   }
 
-  onFilterChange(key, selection) {
+  onFilterChange(key: string, selection: any) {
     this.props.onFilterChange(key, selection);
   }
 
-  static rangeText(name, values) {
+  static rangeText(name: string, values: [number, number]) {
     if (values[0] === values[1]) {
       return `${name}(${values[0]})`;
     }
@@ -204,9 +216,9 @@ class CardFilterView extends React.Component {
       return L('Packs: All');
     }
     const selectedPackNames = new Set(packs);
-    const cyclePackCounts = {};
-    const selectedCyclePackCounts = {};
-    const cycleNames = {};
+    const cyclePackCounts: { [code: string]: number }  = {};
+    const selectedCyclePackCounts: { [code: string]: number } = {};
+    const cycleNames: { [code: string]: string } = {};
     const selectedPacks = filter(
       allPacks,
       pack => {
@@ -229,7 +241,7 @@ class CardFilterView extends React.Component {
       keys(selectedCyclePackCounts),
       cycle_position => selectedCyclePackCounts[cycle_position] === cyclePackCounts[cycle_position]);
 
-    const parts = [];
+    const parts: string[] = [];
     forEach(completeCycles, cycle_position => {
       parts.push(
         L('{{cycleName}} Cycle', { cycleName: cycleNames[cycle_position] })
@@ -510,7 +522,6 @@ class CardFilterView extends React.Component {
         { hasSkill && (
           <SkillIconChooser
             skillIcons={skillIcons}
-            setting="skillIcons"
             onFilterChange={onFilterChange}
             enabled={skillEnabled}
             onToggleChange={onToggleChange}
@@ -627,13 +638,13 @@ class CardFilterView extends React.Component {
 }
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     allPacks: getAllPacks(state),
   };
 }
 
-export default connect(mapStateToProps, {})(withFilterFunctions(CardFilterView));
+export default connect(mapStateToProps)(withFilterFunctions(CardFilterView));
 
 const styles = StyleSheet.create({
   loadingWrapper: {

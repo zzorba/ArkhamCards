@@ -2,24 +2,27 @@ import React from 'react';
 import { BarChart, XAxis, YAxis } from 'react-native-svg-charts';
 import { View, Text } from 'react-native';
 
-import { DeckType } from '../parseDeck';
+import { ParsedDeck } from '../parseDeck';
 
-export default class CostChart extends React.PureComponent {
-  static propTypes = {
-    parsedDeck: DeckType,
+interface Props {
+  parsedDeck: ParsedDeck;
+}
+
+interface Item {
+  value: number;
+  svg: {
+    fill: string;
+  };
+}
+
+export default class CostChart extends React.PureComponent<Props> {
+  _getValue = ({ item }: { item: Item }) => {
+    return item.value;
   };
 
-  constructor(props) {
-    super(props);
-  }
-
-  getValue({ item }) {
-    return item.value;
-  }
-
-  formatLabel(value, index) {
+  _formatLabel = (value: number, index: number) => {
     return index;
-  }
+  };
 
   render() {
     const {
@@ -27,7 +30,7 @@ export default class CostChart extends React.PureComponent {
         costHistogram,
       },
     } = this.props;
-    const data = costHistogram.map(cost => {
+    const data: Item[] = costHistogram.map(cost => {
       return {
         value: cost,
         svg: {
@@ -43,7 +46,7 @@ export default class CostChart extends React.PureComponent {
           contentInset={{ top: 10, left: 10, right: 10, bottom: 10 }}
           style={{ height: 200 }}
           data={data}
-          yAccessor={this.getValue}
+          yAccessor={this._getValue}
           numberOfTicks={5}
           gridMin={0}
         />
@@ -63,7 +66,7 @@ export default class CostChart extends React.PureComponent {
         <XAxis
           style={{ marginHorizontal: -10 }}
           data={costHistogram}
-          formatLabel={this.formatLabel}
+          formatLabel={this._formatLabel}
           contentInset={{ left: 10, right: 10 }}
           svg={{ fontSize: 10 }}
         />

@@ -1,53 +1,65 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { pick } from 'lodash';
-import { connectRealm } from 'react-native-realm';
+import Realm, { Results } from 'realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import {
   Dimensions,
   StyleSheet,
   View,
 } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
 
 import L from '../../app/i18n';
+import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
+import { FilterState } from '../../lib/filters';
 import FilterFooterComponent from './FilterFooterComponent';
 
-export default function withFilterFunctions(WrappedComponent, clearTraits) {
-  class WrappedFilterComponent extends React.Component {
-    static propTypes = {
-      componentId: PropTypes.string.isRequired,
-      currentFilters: PropTypes.object.isRequired,
-      defaultFilterState: PropTypes.object.isRequired,
-      applyFilters: PropTypes.func.isRequired,
-      modal: PropTypes.bool,
-      /* eslint-disable  react/no-unused-prop-types */
-      baseQuery: PropTypes.string,
-      cards: PropTypes.object,
-    };
+export interface FilterProps {
+  componentId: string;
+  cards: Results<Card>;
+  filters: FilterState;
+  defaultFilterState: FilterState;
+  width: number;
+  pushFilterView: (screen: string) => void;
+  onToggleChange: (setting: string) => void;
+  onFilterChange: (setting: string, value: any) => void;
+}
 
-    constructor(props) {
+interface OwnProps {
+  componentId: string;
+  currentFilters: FilterState;
+  applyFilters: (filters: FilterState) => void;
+  defaultFilterState: FilterState;
+  modal?: boolean;
+  baseQuery?: string;
+}
+
+export default function withFilterFunctions<P>(
+  WrappedComponent: React.ComponentType<P & FilterProps>,
+  clearTraits?: string[]
+): React.ComponentType<OwnProps & P> {
+  interface RealmProps {
+    cards: Results<Card>;
+  }
+  interface State {
+    filters: FilterState;
+  }
+  type Props = OwnProps & RealmProps & P;
+  class WrappedFilterComponent extends React.Component<Props, State> {
+    _navEventListener: EventSubscription;
+    constructor(props: Props) {
       super(props);
 
-      const {
-        width,
-      } = Dimensions.get('window');
-
       this.state = {
-        width,
         filters: props.currentFilters,
       };
 
-      this._pushFilterView = this.pushFilterView.bind(this);
-      this._updateFilters = this.updateFilters.bind(this);
-      this._onToggleChange = this.onToggleChange.bind(this);
-      this._onFilterChange = this.onFilterChange.bind(this);
-      this._syncState = this.syncState.bind(this);
       this._navEventListener = Navigation.events().bindComponent(this);
 
-      this.syncState();
+      this._syncState();
     }
 
     componentWillUnmount() {
@@ -62,12 +74,15 @@ export default function withFilterFunctions(WrappedComponent, clearTraits) {
         filters,
       } = this.state;
       const differences = (clearTraits && clearTraits.length) ?
-        deepDiff(pick(filters, clearTraits), pick(defaultFilterState, clearTraits)) :
+        deepDiff(
+          pick(filters, clearTraits),
+          pick(defaultFilterState, clearTraits)
+        ) :
         deepDiff(filters, defaultFilterState);
       return differences && differences.length;
     }
 
-    syncState() {
+    _syncState = () => {
       Navigation.mergeOptions(this.props.componentId, {
         topBar: {
           rightButtons: this.hasChanges() ?
@@ -78,9 +93,9 @@ export default function withFilterFunctions(WrappedComponent, clearTraits) {
             }] : [],
         },
       });
-    }
+    };
 
-    navigationButtonPressed({ buttonId }) {
+    navigationButtonPressed({ buttonId }: { buttonId: string }) {
       const {
         defaultFilterState,
       } = this.props;
@@ -101,7 +116,7 @@ export default function withFilterFunctions(WrappedComponent, clearTraits) {
       this.props.applyFilters(this.state.filters);
     }
 
-    pushFilterView(screenName) {
+    _pushFilterView = (screenName: string) => {
       const {
         componentId,
         baseQuery,
@@ -120,45 +135,51 @@ export default function withFilterFunctions(WrappedComponent, clearTraits) {
           },
         },
       });
-    }
+    };
 
-    updateFilters(filters) {
+    _updateFilters = (filters: FilterState) => {
       this.setState({
         filters,
       }, this._syncState);
-    }
+    };
 
-    onToggleChange(key) {
+    _onToggleChange = (key: string) => {
       this.setState(state => {
         return {
           filters: Object.assign({}, state.filters, { [key]: !state.filters[key] }),
         };
       }, this._syncState);
-    }
+    };
 
-    onFilterChange(key, selection) {
+    _onFilterChange = (key: string, selection: any) => {
       this.setState(state => {
         return {
           filters: Object.assign({}, state.filters, { [key]: selection }),
         };
       }, this._syncState);
-    }
+    };
 
     render() {
       const {
+        componentId,
         cards,
         baseQuery,
         defaultFilterState,
         modal,
+        applyFilters,
         ...otherProps
       } = this.props;
       const {
         filters,
-        width,
       } = this.state;
+
+      const {
+        width,
+      } = Dimensions.get('window');
       return (
         <View style={styles.wrapper}>
           <WrappedComponent
+            componentId={componentId}
             cards={cards}
             filters={filters}
             defaultFilterState={defaultFilterState}
@@ -166,7 +187,7 @@ export default function withFilterFunctions(WrappedComponent, clearTraits) {
             pushFilterView={this._pushFilterView}
             onToggleChange={this._onToggleChange}
             onFilterChange={this._onFilterChange}
-            {...otherProps}
+            {...otherProps as P}
           />
           <FilterFooterComponent
             baseQuery={baseQuery}
@@ -178,11 +199,18 @@ export default function withFilterFunctions(WrappedComponent, clearTraits) {
     }
   }
 
-  const result = connectRealm(WrappedFilterComponent, {
+  const result = connectRealm<OwnProps & P, RealmProps, Card>(
+    WrappedFilterComponent, {
     schemas: ['Card'],
-    mapToProps(results, realm, props) {
+    mapToProps(
+      results: CardResults<Card>,
+      realm: Realm,
+      props: OwnProps
+    ): RealmProps {
       return {
-        cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
+        cards: props.baseQuery ?
+          results.cards.filtered(props.baseQuery) :
+          results.cards,
       };
     },
   });

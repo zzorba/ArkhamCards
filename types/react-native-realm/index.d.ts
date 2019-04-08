@@ -40,8 +40,10 @@ declare module "react-native-realm" {
     ) => RealmProps;
   }
 
-  export function connectRealm<OwnProps, RealmProps, Card>(
+  export function connectRealm<OwnProps, RealmProps, Card, FaqEntry={}>(
     component: React.ComponentType<OwnProps & RealmProps>,
-    options: CardOptions<OwnProps, RealmProps, Card> | Options<OwnProps, RealmProps>
+    options: CardOptions<OwnProps, RealmProps, Card> |
+      Options<OwnProps, RealmProps> |
+      CardAndFaqOptions<OwnProps, RealmProps, Card, FaqEntry>
   ): React.ComponentType<OwnProps>;
 }

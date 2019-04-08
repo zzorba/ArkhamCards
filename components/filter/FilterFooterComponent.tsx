@@ -1,29 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
 } from 'react-native';
+import Realm, { Results } from 'realm';
 import DeviceInfo from 'react-native-device-info';
-import { connectRealm } from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import LinearGradient from 'react-native-linear-gradient';
 
 import L from '../../app/i18n';
-import { filterToQuery } from '../../lib/filters';
+import { filterToQuery, FilterState } from '../../lib/filters';
+import Card from '../../data/Card';
 import space from '../../styles/space';
 import typography from '../../styles/typography';
 const FOOTER_HEIGHT = 40;
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
-class FilterFooterComponent extends React.Component {
-  static propTypes = {
-    /* eslint-disable  react/no-unused-prop-types */
-    baseQuery: PropTypes.string,
-    filters: PropTypes.object.isRequired,
-    cards: PropTypes.object.isRequired,
-    modal: PropTypes.bool,
-  }
+interface OwnProps {
+  baseQuery?: string;
+  filters: FilterState;
+  modal?: boolean;
+}
 
+interface RealmProps {
+  cards: Results<Card>;
+}
+
+type Props = OwnProps & RealmProps;
+
+class FilterFooterComponent extends React.Component<Props> {
   cardCount() {
     const {
       cards,
@@ -53,9 +58,9 @@ class FilterFooterComponent extends React.Component {
   }
 }
 
-export default connectRealm(FilterFooterComponent, {
+export default connectRealm<OwnProps, RealmProps, Card>(FilterFooterComponent, {
   schemas: ['Card'],
-  mapToProps(results, realm, props) {
+  mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps): RealmProps {
     return {
       cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
     };

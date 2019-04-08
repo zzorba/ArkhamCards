@@ -2,26 +2,34 @@ import React from 'react';
 import { BarChart, XAxis } from 'react-native-svg-charts';
 import { View, Text } from 'react-native';
 
-import { DeckType } from '../parseDeck';
+import { ParsedDeck } from '../parseDeck';
 import { SKILLS } from '../../constants';
 
-export default class SkillIconChart extends React.PureComponent {
-  static propTypes = {
-    parsedDeck: DeckType,
+
+interface Props {
+  parsedDeck: ParsedDeck;
+}
+
+interface Item {
+  value: number;
+  svg: {
+    fill: string;
+  };
+}
+
+export default class SkillIconChart extends React.PureComponent<Props> {
+  _formatLabel = (value: number, index: number) => {
+    return SKILLS[index];
   };
 
-  formatLabel(value, index) {
-    return SKILLS[index];
-  }
-
-  getValue({ item }) {
+  _getValue = ({ item }: { item: Item }) => {
     return item.value;
-  }
+  };
 
   render() {
-    const data = SKILLS.map(skill => {
+    const data: Item[] = SKILLS.map(skill => {
       return {
-        value: this.props.parsedDeck.skillIconCounts[skill],
+        value: this.props.parsedDeck.skillIconCounts[skill] || 0,
         svg: {
           fill: '#606060',
         },
@@ -32,16 +40,15 @@ export default class SkillIconChart extends React.PureComponent {
         <Text>Card Skill Icons</Text>
         <BarChart
           style={{ height: 200 }}
-          spacing={0.1}
           numberOfTicks={4}
           contentInset={{ top: 30, bottom: 30 }}
           data={data}
-          yAccessor={this.getValue}
+          yAccessor={this._getValue}
         />
         <XAxis
           style={{ marginHorizontal: -10 }}
           data={data}
-          formatLabel={this.formatLabel}
+          formatLabel={this._formatLabel}
           contentInset={{ left: 10, right: 10 }}
           svg={{ fontSize: 10 }}
         />

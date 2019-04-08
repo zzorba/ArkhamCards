@@ -45,7 +45,7 @@ import AboutView from '../components/AboutView';
 import WeaknessDrawDialog from '../components/weakness/WeaknessDrawDialog';
 
 // register all screens of the app (including internal ones)
-export function registerScreens(Provider, store) {
+export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('About', () => AboutView, Provider, store);
   Navigation.registerComponentWithRedux('Browse.Cards', () => CardSearchView, Provider, store);
   Navigation.registerComponentWithRedux('Browse.InvestigatorCards', () => InvestigatorCardsView, Provider, store);

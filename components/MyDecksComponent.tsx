@@ -85,7 +85,7 @@ class MyDecksComponent extends React.Component<Props> {
       networkType,
     } = this.props;
 
-    if (error === null && networkType !== 'none') {
+    if (!error && networkType !== 'none') {
       return null;
     }
     if (networkType === 'none') {
