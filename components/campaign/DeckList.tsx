@@ -9,6 +9,7 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { Deck } from '../../actions/types';
+import { MyDecksSelectorProps } from '../campaign/MyDecksSelectorDialog';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { CardsMap } from '../../data/Card';
 
@@ -16,7 +17,7 @@ export interface DeckListProps  {
   componentId: string;
   campaignId: number;
   deckIds: number[];
-  deckAdded?: (deck: Deck) => void;
+  deckAdded: (deck: Deck) => void;
   renderDeck: (
     deckId: number,
     cards: CardsMap,
@@ -31,16 +32,17 @@ class DeckList extends React.Component<DeckListProps & PlayerCardProps> {
       deckAdded,
       campaignId,
     } = this.props;
+    const passProps: MyDecksSelectorProps = {
+      campaignId: campaignId,
+      onDeckSelect: deckAdded,
+      selectedDeckIds: deckIds,
+    };
     Navigation.showModal({
       stack: {
         children: [{
           component: {
             name: 'Dialog.DeckSelector',
-            passProps: {
-              campaignId: campaignId,
-              onDeckSelect: deckAdded,
-              selectedDeckIds: deckIds,
-            },
+            passProps,
           },
         }],
       },

@@ -10,18 +10,17 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import { Deck, Campaign } from '../../actions/types';
-import Card from '../../data/Card';
 import { isEliminated } from './trauma';
 import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
+import { NavigationProps } from '../types';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 import { NewDeckProps } from '../NewDeckView';
 
-interface OwnProps {
-  componentId: string;
+export interface MyDecksSelectorProps {
   campaignId: number;
   onDeckSelect: (deck: Deck) => void;
   selectedDeckIds: number[];
@@ -35,7 +34,7 @@ interface ReduxProps {
   campaign?: Campaign;
 }
 
-type Props = OwnProps & ReduxProps & PlayerCardProps;
+type Props = NavigationProps & MyDecksSelectorProps & ReduxProps & PlayerCardProps;
 
 interface State {
   hideOtherCampaignInvestigators: boolean;
@@ -276,7 +275,10 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & MyDecksSelectorProps
+): ReduxProps {
   const otherCampaigns = filter(
     getCampaigns(state),
     campaign => campaign.id !== props.campaignId);
@@ -290,8 +292,8 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   };
 }
 
-export default connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(
-  withPlayerCards<OwnProps & ReduxProps>(MyDecksSelectorDialog)
+export default connect<ReduxProps, {}, NavigationProps & MyDecksSelectorProps, AppState>(mapStateToProps)(
+  withPlayerCards<NavigationProps & MyDecksSelectorProps & ReduxProps>(MyDecksSelectorDialog)
 );
 
 const styles = StyleSheet.create({

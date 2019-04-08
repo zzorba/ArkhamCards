@@ -21,6 +21,7 @@ import { saveDeck } from '../../lib/authApi';
 import DeckValidation from '../../lib/DeckValidation';
 import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
+import { MyDecksSelectorProps } from '../campaign/MyDecksSelectorDialog';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
@@ -128,17 +129,18 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       latestDeckIds,
       campaignId,
     } = this.props;
+    const passProps: MyDecksSelectorProps = {
+      campaignId: campaignId,
+      onDeckSelect: this._selectDeck,
+      selectedDeckIds: latestDeckIds,
+      showOnlySelectedDeckIds: true,
+    };
     Navigation.showModal({
       stack: {
         children: [{
           component: {
             name: 'Dialog.DeckSelector',
-            passProps: {
-              campaignId: campaignId,
-              onDeckSelect: this._selectDeck,
-              selectedDeckIds: latestDeckIds,
-              showOnlySelectedDeckIds: true,
-            },
+            passProps,
           },
         }],
       },

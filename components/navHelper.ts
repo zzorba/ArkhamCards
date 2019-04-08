@@ -5,6 +5,7 @@ import { Deck } from '../actions/types';
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import Card from '../data/Card';
 import { CardDetailProps } from './CardDetailView';
+import { DeckDetailProps } from './DeckDetailView';
 
 export function getDeckOptions(investigator?: Card): Options {
   return {
@@ -85,18 +86,20 @@ export function showDeckModal(
       },
     });
   } else { */
+  const passProps: DeckDetailProps = {
+    id: deck.id,
+    isPrivate: true,
+    modal: true,
+    campaignId,
+    title: investigator ? investigator.name : L('Deck'),
+  };
+
   Navigation.showModal({
     stack: {
       children: [{
         component: {
           name: 'Deck',
-          passProps: {
-            id: deck.id,
-            isPrivate: true,
-            modal: true,
-            campaignId,
-            title: investigator ? investigator.name : L('Deck'),
-          },
+          passProps,
           options: getDeckOptions(investigator),
         },
       }],
