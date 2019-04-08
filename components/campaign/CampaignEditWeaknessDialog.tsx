@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 
 import L from '../../app/i18n';
 import { Campaign, Slots, WeaknessSet } from '../../actions/types';
+import { NavigationProps } from '../types';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaign } from './actions';
 import { getCampaign, AppState } from '../../reducers';
 
-interface OwnProps {
-  componentId: string;
+export interface CampaignEditWeaknessProps {
   campaignId: number;
 }
+
 interface ReduxProps {
   weaknessSet?: WeaknessSet;
 }
@@ -20,7 +21,7 @@ interface ReduxActionProps {
   updateCampaign: (id: number, campaign: Campaign) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps;
+type Props = NavigationProps & CampaignEditWeaknessProps & ReduxProps & ReduxActionProps;
 
 class CampaignEditWeaknessDialog extends React.Component<Props> {
   static get options() {
@@ -72,7 +73,7 @@ class CampaignEditWeaknessDialog extends React.Component<Props> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState, props: NavigationProps & CampaignEditWeaknessProps): ReduxProps {
   const campaign = getCampaign(state, props.campaignId);
   return {
     weaknessSet: (campaign && campaign.weaknessSet) || undefined,
@@ -85,7 +86,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignEditWeaknessProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(

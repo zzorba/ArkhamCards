@@ -15,6 +15,7 @@ import { COLORS } from '../../../styles/colors';
 import Card from '../../../data/Card';
 import NavButton from '../../core/NavButton';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
+import { CampaignDrawWeaknessProps } from '../CampaignDrawWeaknessDialog';
 
 interface OwnProps {
   componentId: string;
@@ -45,7 +46,7 @@ class WeaknessSetSection extends React.Component<Props> {
       componentId,
       campaignId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<CampaignDrawWeaknessProps>(componentId, {
       component: {
         name: 'Dialog.CampaignDrawWeakness',
         passProps: {

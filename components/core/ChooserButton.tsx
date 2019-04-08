@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Navigation } from 'react-native-navigation';
 import L from '../../app/i18n';
 import NavButton from './NavButton';
+import { SearchSelectProps } from '../SearchMultiSelectView';
 import { COLORS } from '../../styles/colors';
 
 interface Props {
@@ -22,7 +22,7 @@ export default class ChooserButton extends React.Component<Props> {
       onChange,
       selection,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<SearchSelectProps>(componentId, {
       component: {
         name: 'SearchFilters.Chooser',
         passProps: {

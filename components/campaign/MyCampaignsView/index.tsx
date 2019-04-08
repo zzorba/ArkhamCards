@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { filter, forEach, map, last, throttle } from 'lodash';
+import { filter, map, throttle } from 'lodash';
 import {
   Button,
   Keyboard,
@@ -9,13 +8,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import { Campaign, Deck } from '../../../actions/types';
 import CampaignItem from './CampaignItem';
+import { CampaignDetailProps } from '../CampaignDetailView';
 import { campaignNames } from '../constants';
 import SearchBox from '../../SearchBox';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
@@ -87,7 +86,7 @@ class MyCampaignsView extends React.Component<Props, State> {
       componentId,
     } = this.props;
     Keyboard.dismiss();
-    Navigation.push(componentId, {
+    Navigation.push<CampaignDetailProps>(componentId, {
       component: {
         name: 'Campaign',
         passProps: {
@@ -111,7 +110,7 @@ class MyCampaignsView extends React.Component<Props, State> {
     const {
       componentId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<{}>(componentId, {
       component: {
         name: 'Campaign.New',
         options: {

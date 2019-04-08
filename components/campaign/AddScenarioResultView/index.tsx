@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { throttle } from 'lodash';
 import {
   ScrollView,
@@ -14,6 +13,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import L from '../../../app/i18n';
 import { Deck, SingleCampaign, ScenarioResult } from '../../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
+import { NavigationProps } from '../../types';
 import ScenarioSection from './ScenarioSection';
 import XpComponent from '../XpComponent';
 import { setNewDeck, updateDeck } from '../../../actions';
@@ -22,8 +22,7 @@ import { getAllDecks, getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 
-interface OwnProps {
-  componentId: string;
+export interface AddScenarioResultProps {
   id: number;
 }
 
@@ -38,7 +37,7 @@ interface ReduxActionProps {
   updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = NavigationProps & AddScenarioResultProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 interface State {
   scenario?: ScenarioResult;
   xp: number;
@@ -153,7 +152,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState, props: NavigationProps & AddScenarioResultProps): ReduxProps {
   const campaign = getCampaign(state, props.id);
   return {
     campaign: campaign || undefined,

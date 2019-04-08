@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
   StyleSheet,
@@ -14,6 +13,8 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import Button from '../../core/Button';
 import NavButton from '../../core/NavButton';
 import typography from '../../../styles/typography';
+import { CampaignScenarioProps } from '../CampaignScenarioView';
+import { AddScenarioResultProps } from '../AddScenarioResultView';
 
 interface Props {
   componentId: string;
@@ -25,7 +26,7 @@ export default class ScenarioSection extends React.Component<Props> {
       campaign,
       componentId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<CampaignScenarioProps>(componentId, {
       component: {
         name: 'Campaign.Scenarios',
         passProps: {
@@ -50,7 +51,7 @@ export default class ScenarioSection extends React.Component<Props> {
       campaign,
       componentId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<AddScenarioResultProps>(componentId, {
       component: {
         name: 'Campaign.AddResult',
         passProps: {

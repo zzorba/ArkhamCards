@@ -8,11 +8,11 @@ import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
 import L from '../../app/i18n';
 import { Slots } from '../../actions/types';
 import Button from '../core/Button';
+import { NavigationProps } from '../types';
 import { AppState } from '../../reducers';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 
-interface OwnProps {
-  componentId: string;
+export interface DrawWeaknessProps {
   saveWeakness: (code: string, replaceRandomBasicWeakness: boolean) => void;
   slots: Slots;
 }
@@ -21,7 +21,7 @@ interface ReduxProps {
   in_collection: { [pack_code: string]: boolean };
 }
 
-type Props = OwnProps & ReduxProps & WeaknessCardProps;
+type Props = NavigationProps & DrawWeaknessProps & ReduxProps & WeaknessCardProps;
 
 interface State {
   replaceRandomBasicWeakness: boolean;

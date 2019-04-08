@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { filter, forEach, map, sortBy, throttle } from 'lodash';
+import { filter, forEach, sortBy, throttle } from 'lodash';
 import {
   Animated,
   Button,
@@ -146,7 +145,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   };
 
   _editCollection = () => {
-    Navigation.push(this.props.componentId, {
+    Navigation.push<{}>(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
   Linking,
@@ -24,7 +23,9 @@ import AppIcon from '../../assets/AppIcon';
 import Button from '../core/Button';
 import { getShowSpoilers, AppState } from '../../reducers';
 import Card from '../../data/Card';
-
+import { InvestigatorCardsProps } from '../InvestigatorCardsView';
+import { CardFaqProps } from '../CardFaqView';
+import { NavigationProps } from '../types';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 
@@ -32,15 +33,13 @@ interface RealmProps {
   card?: Card;
 }
 
-interface OwnProps {
-  componentId: string;
+export interface CardDetailProps {
   id: string;
   pack_code: string;
   showSpoilers?: boolean;
-
 }
 
-type Props = OwnProps & RealmProps;
+type Props = NavigationProps & CardDetailProps & RealmProps;
 
 interface State {
   showSpoilers: boolean;
@@ -98,7 +97,7 @@ class CardDetailView extends React.Component<Props, State> {
   }
 
   _editSpoilersPressed = () => {
-    Navigation.push(this.props.componentId, {
+    Navigation.push<{}>(this.props.componentId, {
       component: {
         name: 'My.Spoilers',
       },
@@ -127,7 +126,7 @@ class CardDetailView extends React.Component<Props, State> {
       card,
     } = this.props;
     if (card) {
-      Navigation.push(componentId, {
+      Navigation.push<CardFaqProps>(componentId, {
         component: {
           name: 'Card.Faq',
           passProps: {
@@ -155,7 +154,7 @@ class CardDetailView extends React.Component<Props, State> {
     } = this.props;
 
     if (card) {
-      Navigation.push(componentId, {
+      Navigation.push<InvestigatorCardsProps>(componentId, {
         component: {
           name: 'Browse.InvestigatorCards',
           passProps: {
@@ -264,10 +263,10 @@ function mapDispatchToProps(dispatch: Dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(
+export default connectRealm<NavigationProps & CardDetailProps, RealmProps, Card>(
   connect(mapStateToProps, mapDispatchToProps)(CardDetailView), {
     schemas: ['Card'],
-    mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
+    mapToProps(results: CardResults<Card>, realm: Realm, props: NavigationProps & CardDetailProps) {
       return {
         realm,
         card: head(results.cards.filtered(`code == '${props.id}'`)),

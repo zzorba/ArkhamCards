@@ -11,10 +11,7 @@ import { Pack } from '../actions/types';
 import { setInCollection, setCycleInCollection } from '../actions';
 import PackListComponent from './PackListComponent';
 import { getAllPacks, getPacksInCollection, AppState } from '../reducers';
-
-interface OwnProps {
-  componentId: string;
-}
+import { NavigationProps } from './types';
 
 interface ReduxProps {
   packs: Pack[];
@@ -25,7 +22,7 @@ interface ReduxActionProps {
   setInCollection: (code: string, value: boolean) => void;
   setCycleInCollection: (cycle: number, value: boolean) => void;
 }
-type Props = OwnProps & ReduxProps & ReduxActionProps;
+type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class CollectionEditView extends React.Component<Props> {
   static get options() {
@@ -80,7 +77,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
   }, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+export default connect<ReduxProps, ReduxActionProps, NavigationProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(CollectionEditView);

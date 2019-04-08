@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Alert,
   StyleSheet,
@@ -13,6 +12,7 @@ import L from '../../app/i18n';
 import { Pack } from '../../actions/types';
 import EncounterIcon from '../../assets/EncounterIcon';
 import Switch from '../core/Switch';
+import { PackCardsProps } from '../PackCardsView';
 
 interface Props {
   componentId: string;
@@ -34,7 +34,7 @@ export default class PackRow extends React.Component<Props> {
       componentId,
       baseQuery,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<PackCardsProps>(componentId, {
       component: {
         name: 'Pack',
         passProps: {

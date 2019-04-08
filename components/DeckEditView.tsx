@@ -10,13 +10,13 @@ import Card, { CardsMap } from '../data/Card';
 import CardSearchComponent from './CardSearchComponent';
 import { parseDeck } from './parseDeck';
 import DeckNavFooter from './DeckNavFooter';
+import { NavigationProps } from './types';
 
-interface OwnProps {
-  componentId: string;
-  xpAdjustment: number;
-  storyOnly?: boolean;
+export interface EditDeckProps {
   deck: Deck;
   previousDeck?: Deck;
+  xpAdjustment?: number;
+  storyOnly?: boolean;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
   updateSlots: (slots: Slots) => void;
@@ -28,7 +28,7 @@ interface RealmProps {
   cards: Results<Card>;
 }
 
-type Props = OwnProps & RealmProps;
+type Props = NavigationProps & EditDeckProps & RealmProps;
 
 interface State {
   deckCardCounts: Slots;
@@ -106,7 +106,7 @@ class DeckEditView extends React.Component<Props, State> {
         componentId={componentId}
         parsedDeck={pDeck}
         cards={cardsInDeck}
-        xpAdjustment={xpAdjustment}
+        xpAdjustment={xpAdjustment || 0}
       />
     );
   }
@@ -148,14 +148,14 @@ class DeckEditView extends React.Component<Props, State> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(
+export default connectRealm<NavigationProps & EditDeckProps, RealmProps, Card>(
   DeckEditView,
   {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: OwnProps
+      props: NavigationProps & EditDeckProps
     ) {
       return {
         realm,

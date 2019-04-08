@@ -68,7 +68,7 @@ class SettingsView extends React.Component<Props> {
   };
 
   navButtonPressed(screen: string, title: string) {
-    Navigation.push(this.props.componentId, {
+    Navigation.push<{}>(this.props.componentId, {
       component: {
         name: screen,
         options: {

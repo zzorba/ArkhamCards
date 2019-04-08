@@ -11,6 +11,7 @@ import { ChaosBag } from '../../../constants';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import typography from '../../../styles/typography';
+import { EditChaosBagProps } from '../EditChaosBagDialog';
 
 interface Props {
   componentId: string;
@@ -24,7 +25,7 @@ export default class ChaosBagSection extends React.Component<Props> {
       updateChaosBag,
       chaosBag,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<EditChaosBagProps>(componentId, {
       component: {
         name: 'Dialog.EditChaosBag',
         passProps: {

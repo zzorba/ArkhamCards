@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { head, startsWith } from 'lodash';
 import {
   RefreshControl,
@@ -17,12 +16,13 @@ import Card from '../data/Card';
 import FaqEntry from '../data/FaqEntry';
 import CardTextComponent from './CardTextComponent';
 import { showCard } from './navHelper';
+import { NavigationProps } from './types';
+import { WebViewProps } from './WebViewWrapper';
 import { getFaqEntry } from '../lib/publicApi';
 import typography from '../styles/typography';
 import { m } from '../styles/space';
 
-interface OwnProps {
-  componentId: string;
+export interface CardFaqProps {
   id: string;
 }
 
@@ -32,7 +32,7 @@ interface RealmProps {
   faqEntries: Results<FaqEntry>;
 }
 
-type Props = OwnProps & RealmProps;
+type Props = NavigationProps & CardFaqProps & RealmProps;
 
 interface State {
   faqLoading: boolean;
@@ -59,7 +59,7 @@ class CardFaqView extends React.Component<Props, State> {
       componentId,
     } = this.props;
     InAppBrowser.open(url).catch(() => {
-      Navigation.push(componentId, {
+      Navigation.push<WebViewProps>(componentId, {
         component: {
           name: 'WebView',
           passProps: {
@@ -176,12 +176,12 @@ class CardFaqView extends React.Component<Props, State> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, Card, FaqEntry>(CardFaqView, {
+export default connectRealm<NavigationProps & CardFaqProps, RealmProps, Card, FaqEntry>(CardFaqView, {
   schemas: ['Card', 'FaqEntry'],
   mapToProps(
     results: CardAndFaqResults<Card, FaqEntry>,
     realm: Realm,
-    props: OwnProps
+    props: NavigationProps & CardFaqProps
   ): RealmProps {
     return {
       realm,

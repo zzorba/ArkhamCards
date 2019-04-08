@@ -12,11 +12,7 @@ import { Pack } from '../actions/types';
 import { setPackSpoiler, setCyclePackSpoiler } from '../actions';
 import PackListComponent from './PackListComponent';
 import { getAllPacks, getPackSpoilers, AppState } from '../reducers';
-
-
-interface OwnProps {
-  componentId: string;
-}
+import { NavigationProps } from './types';
 
 interface ReduxProps {
   packs: Pack[];
@@ -28,7 +24,7 @@ interface ReduxActionProps {
   setCyclePackSpoiler: (cycle: number, value: boolean) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps;
+type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class SpoilersView extends React.Component<Props> {
   _renderHeader = (): React.ReactElement => {
@@ -84,7 +80,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+export default connect<ReduxProps, ReduxActionProps, NavigationProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(SpoilersView);

@@ -12,6 +12,7 @@ import L from '../../app/i18n';
 import { getDeckOptions, showCard } from '../navHelper';
 import { ParsedDeck } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
+import { DeckDetailProps } from '../DeckDetailView';
 import Card, { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 
@@ -30,7 +31,10 @@ export default class DeckDelta extends React.Component<Props> {
         investigator,
       },
     } = this.props;
-    Navigation.push(componentId, {
+    if (!deck.previous_deck) {
+      return;
+    }
+    Navigation.push<DeckDetailProps>(componentId, {
       component: {
         name: 'Deck',
         passProps: {
@@ -51,7 +55,10 @@ export default class DeckDelta extends React.Component<Props> {
         investigator,
       },
     } = this.props;
-    Navigation.push(componentId, {
+    if (!deck.next_deck) {
+      return;
+    }
+    Navigation.push<DeckDetailProps>(componentId, {
       component: {
         name: 'Deck',
         passProps: {

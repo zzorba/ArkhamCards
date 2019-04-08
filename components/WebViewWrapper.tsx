@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, WebView } from 'react-native';
 
-interface Props {
+export interface WebViewProps {
   uri: string;
 }
-export default class WebViewWrapper extends React.Component<Props> {
+
+export default class WebViewWrapper extends React.Component<WebViewProps> {
   render() {
     return (
       <WebView

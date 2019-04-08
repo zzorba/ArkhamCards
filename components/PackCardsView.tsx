@@ -1,13 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CardSearchComponent from './CardSearchComponent';
+import { NavigationProps } from './types';
 
-interface Props {
-  componentId: string;
+export interface PackCardsProps {
   pack_code: string;
   baseQuery?: string;
 }
+
+type Props = NavigationProps & PackCardsProps;
 
 export default function PackCardsView({
   componentId,

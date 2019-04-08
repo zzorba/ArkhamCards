@@ -15,6 +15,7 @@ import L from '../../app/i18n';
 import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
 import { FilterState } from '../../lib/filters';
+import { NavigationProps } from '../types';
 import FilterFooterComponent from './FilterFooterComponent';
 
 export interface FilterProps {
@@ -28,8 +29,7 @@ export interface FilterProps {
   onFilterChange: (setting: string, value: any) => void;
 }
 
-interface OwnProps {
-  componentId: string;
+export interface CardFilterProps {
   currentFilters: FilterState;
   applyFilters: (filters: FilterState) => void;
   defaultFilterState: FilterState;
@@ -40,14 +40,14 @@ interface OwnProps {
 export default function withFilterFunctions<P>(
   WrappedComponent: React.ComponentType<P & FilterProps>,
   clearTraits?: string[]
-): React.ComponentType<OwnProps & P> {
+): React.ComponentType<NavigationProps & CardFilterProps & P> {
   interface RealmProps {
     cards: Results<Card>;
   }
   interface State {
     filters: FilterState;
   }
-  type Props = OwnProps & RealmProps & P;
+  type Props = NavigationProps & CardFilterProps & RealmProps & P;
   class WrappedFilterComponent extends React.Component<Props, State> {
     _navEventListener: EventSubscription;
     constructor(props: Props) {
@@ -123,7 +123,7 @@ export default function withFilterFunctions<P>(
         defaultFilterState,
         modal,
       } = this.props;
-      Navigation.push(componentId, {
+      Navigation.push<CardFilterProps>(componentId, {
         component: {
           name: screenName,
           passProps: {
@@ -199,13 +199,13 @@ export default function withFilterFunctions<P>(
     }
   }
 
-  const result = connectRealm<OwnProps & P, RealmProps, Card>(
+  const result = connectRealm<NavigationProps & CardFilterProps & P, RealmProps, Card>(
     WrappedFilterComponent, {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: OwnProps
+      props: NavigationProps & CardFilterProps
     ): RealmProps {
       return {
         cards: props.baseQuery ?

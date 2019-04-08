@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -18,13 +17,6 @@ interface Props {
 }
 
 export default class SkillIconChooser extends React.Component<Props> {
-  static propTypes = {
-    onFilterChange: PropTypes.func.isRequired,
-    skillIcons: PropTypes.object.isRequired,
-    enabled: PropTypes.bool,
-    onToggleChange: PropTypes.func.isRequired,
-  };
-
   _onToggleChange = (key: string) => {
     const {
       onFilterChange,

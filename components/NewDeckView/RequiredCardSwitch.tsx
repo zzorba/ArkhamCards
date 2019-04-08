@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import DialogComponent from 'react-native-dialog';
 
 import { COLORS } from '../../styles/colors';

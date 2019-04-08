@@ -26,14 +26,14 @@ import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import { iconsMap } from '../../../app/NavIcons';
-import Card, { CardsMap } from '../../../data/Card';
+import Card from '../../../data/Card';
 import { ChaosBag } from '../../../constants';
 import { updateCampaign, deleteCampaign } from '../actions';
+import { NavigationProps } from '../../types';
 import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
-interface OwnProps {
-  componentId: string;
+export interface CampaignDetailProps {
   id: number;
 }
 
@@ -49,7 +49,7 @@ interface ReduxActionProps {
   deleteCampaign: (id: number) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps &
+type Props = NavigationProps & CampaignDetailProps & ReduxProps & ReduxActionProps &
   TraumaProps & PlayerCardProps & InjectedDialogProps;
 
 type AddSectionFunction = (
@@ -64,11 +64,6 @@ interface State {
 }
 
 class CampaignDetailView extends React.Component<Props, State> {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-  };
-
   _navEventListener?: EventSubscription;
   _onCampaignNameChange!: (name: string) => void;
   _updateLatestDeckIds!: (latestDeckIds: number[]) => void;
@@ -310,7 +305,7 @@ class CampaignDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): ReduxProps {
+function mapStateToProps(state: AppState, props: NavigationProps & CampaignDetailProps & PlayerCardProps): ReduxProps {
   const campaign = getCampaign(state, props.id) || undefined;
   const decks = getAllDecks(state);
   const latestDeckIds = campaign ? getLatestDeckIds(state, campaign) : [];

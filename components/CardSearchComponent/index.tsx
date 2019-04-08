@@ -18,6 +18,7 @@ import {
 import CardSearchResultsComponent from '../CardSearchResultsComponent';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { FilterState } from '../../lib/filters';
+import { CardFilterProps } from '../filter/withFilterFunctions';
 import { iconsMap } from '../../app/NavIcons';
 import { COLORS } from '../../styles/colors';
 
@@ -132,7 +133,7 @@ class CardSearchComponent extends React.Component<Props, State> {
       modal,
       baseQuery,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<CardFilterProps>(componentId, {
       component: {
         name: 'SearchFilters',
         passProps: {

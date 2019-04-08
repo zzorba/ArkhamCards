@@ -51,8 +51,12 @@ import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 import { parseDeck, ParsedDeck } from '../parseDeck';
+import { EditDeckProps } from '../DeckEditView';
+import { EditSpecialCardsProps } from '../EditSpecialDeckCards';
+import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
+import { NavigationProps } from '../types';
 import {
   getCampaign,
   getDeck,
@@ -62,10 +66,9 @@ import {
 } from '../../reducers';
 import typography from '../../styles/typography';
 
-interface OwnProps {
-  componentId: string;
+export interface DeckDetailProps {
   id: number;
-  title: string;
+  title?: string;
   campaignId?: number;
   isPrivate?: boolean;
   modal?: boolean;
@@ -86,7 +89,8 @@ interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Campaign) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps &
+type Props = NavigationProps & DeckDetailProps &
+  ReduxProps & ReduxActionProps & PlayerCardProps &
   TraumaProps & LoginStateProps & InjectedDialogProps;
 
 interface State {
@@ -400,7 +404,7 @@ class DeckDetailView extends React.Component<Props, State> {
       slots,
       ignoreDeckLimitSlots);
 
-    Navigation.push(componentId, {
+    Navigation.push<EditSpecialCardsProps>(componentId, {
       component: {
         name: 'Deck.EditSpecial',
         passProps: {
@@ -447,7 +451,7 @@ class DeckDetailView extends React.Component<Props, State> {
       return;
     }
     const investigator = cards[deck.investigator_code];
-    Navigation.push(componentId, {
+    Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.Edit',
         passProps: {
@@ -492,13 +496,13 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return;
     }
-    Navigation.push(componentId, {
+    Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
         passProps: {
           id: deck.id,
           showNewDeck: true,
-          campaignId: campaign ? campaign.id : null,
+          campaignId: campaign ? campaign.id : undefined,
         },
         options: {
           statusBar: {
@@ -851,7 +855,7 @@ class DeckDetailView extends React.Component<Props, State> {
     }, this._syncNavigationButtons);
   };
 
-  _updateSlots = (newSlots: Slots, resetIgnoreDeckLimitSlots: boolean) => {
+  _updateSlots = (newSlots: Slots, resetIgnoreDeckLimitSlots?: boolean) => {
     const {
       deck,
       previousDeck,
@@ -1113,7 +1117,7 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState, props: NavigationProps & DeckDetailProps): ReduxProps {
   const id = getEffectiveDeckId(state, props.id);
   const deck = getDeck(state, id) || undefined;
   const previousDeck = (
@@ -1140,7 +1144,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 }
 
 export default withPlayerCards(
-  connect<ReduxProps, ReduxActionProps, OwnProps & PlayerCardProps, AppState>(
+  connect<ReduxProps, ReduxActionProps, NavigationProps & DeckDetailProps & PlayerCardProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
   )(

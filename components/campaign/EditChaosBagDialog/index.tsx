@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { find, keys, map, sortBy, throttle } from 'lodash';
 import {
   Alert,
@@ -14,6 +13,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import { iconsMap } from '../../../app/NavIcons';
+import { NavigationProps } from '../../types';
 import ChaosTokenRow from './ChaosTokenRow';
 import {
   CHAOS_TOKENS,
@@ -25,8 +25,7 @@ import {
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 
-interface Props {
-  componentId: string;
+export interface EditChaosBagProps {
   chaosBag: ChaosBag;
   updateChaosBag: (chaosBag: ChaosBag) => void;
   trackDeltas?: boolean;
@@ -37,6 +36,8 @@ interface State {
   visible: boolean;
   hasPendingEdits: boolean;
 }
+
+type Props = EditChaosBagProps & NavigationProps;
 
 export default class EditChaosBagDialog extends React.Component<Props, State> {
   static get options() {

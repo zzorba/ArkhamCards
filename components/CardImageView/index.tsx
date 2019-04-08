@@ -15,17 +15,17 @@ import { iconsMap } from '../../app/NavIcons';
 import Card from '../../data/Card';
 import { HEADER_HEIGHT } from '../../styles/sizes';
 import { COLORS } from '../../styles/colors';
+import { NavigationProps } from '../types';
 
 interface RealmProps {
   card?: Card;
 }
 
-interface OwnProps {
-  componentId: string;
+export interface CardImageProps {
   id: string;
 }
 
-type Props = OwnProps & RealmProps;
+type Props = CardImageProps & NavigationProps & RealmProps;
 
 interface State {
   flipped: boolean;
@@ -166,9 +166,13 @@ class CardImageView extends React.Component<Props, State> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(CardImageView, {
+export default connectRealm<CardImageProps & NavigationProps, RealmProps, Card>(CardImageView, {
   schemas: ['Card'],
-  mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
+  mapToProps(
+    results: CardResults<Card>,
+    realm: Realm,
+    props: CardImageProps & NavigationProps
+  ) {
     const card =
       head(results.cards.filtered(`code == "${props.id}"`));
     return {

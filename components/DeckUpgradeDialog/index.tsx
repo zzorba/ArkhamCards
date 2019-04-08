@@ -15,6 +15,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import L from '../../app/i18n';
 import { Campaign, Deck, Slots } from '../../actions/types';
 import { handleAuthErrors } from '../authHelper';
+import { NavigationProps } from '../types';
 import { showDeckModal, showCard } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
 import { updateCampaign } from '../campaign/actions';
@@ -28,8 +29,7 @@ import PlusMinusButtons from '../core/PlusMinusButtons';
 import { getDeck, getCampaign, getNextLocalDeckId, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 
-interface OwnProps {
-  componentId: string;
+export interface UpgradeDeckProps {
   id: number;
   campaignId?: number;
   showNewDeck: boolean;
@@ -52,7 +52,7 @@ interface RealmProps {
   investigator?: Card;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & RealmProps & TraumaProps;
+type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps & TraumaProps;
 
 interface State {
   xp: number;
@@ -306,7 +306,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
 }
 
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState, props: UpgradeDeckProps): ReduxProps {
   return {
     deck: getDeck(state, props.id) || undefined,
     campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
@@ -324,14 +324,14 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 }
 
 export default
-  connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(mapStateToProps, mapDispatchToProps)(
-    connectRealm<OwnProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-      withTraumaDialog<OwnProps & ReduxProps & ReduxActionProps & RealmProps>(DeckUpgradeDialog), {
+  connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDeckProps, AppState>(mapStateToProps, mapDispatchToProps)(
+    connectRealm<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
+      withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps>(DeckUpgradeDialog), {
       schemas: ['Card'],
       mapToProps(
         results: CardResults<Card>,
         realm: Realm,
-        props: OwnProps & ReduxProps & ReduxActionProps
+        props: NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps
       ): RealmProps {
         if (props.deck) {
           return {

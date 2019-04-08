@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { keys, map, range, sortBy } from 'lodash';
 import {
   StyleSheet,
@@ -40,10 +39,6 @@ export default function ChaosBagLine({ chaosBag }: Props) {
     </View>
   );
 }
-
-ChaosBagLine.propTypes = {
-  chaosBag: PropTypes.object.isRequired,
-};
 
 const styles = StyleSheet.create({
   row: {

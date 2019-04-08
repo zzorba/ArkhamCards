@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { filter, forEach, map } from 'lodash';
 import {
   Text,
@@ -7,7 +6,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { Campaign, ScenarioResult } from '../../../actions/types';
@@ -16,7 +14,7 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import { getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 
-interface OwnProps {
+export interface CampaignScenarioProps {
   id: number;
 }
 
@@ -26,7 +24,7 @@ interface ReduxProps {
   scenarioByCode?: { [code: string]: Scenario };
 }
 
-type Props = OwnProps & ReduxProps;
+type Props = CampaignScenarioProps & ReduxProps;
 
 class CampaignScenarioView extends React.Component<Props> {
   _renderScenarioResult = (scenarioResult: ScenarioResult, idx: number) => {
@@ -83,7 +81,10 @@ class CampaignScenarioView extends React.Component<Props> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: CampaignScenarioProps
+): ReduxProps {
   const campaign = getCampaign(state, props.id);
   if (campaign) {
     const cycleScenarios = campaignScenarios(campaign.cycleCode);

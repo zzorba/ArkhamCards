@@ -1,9 +1,5 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
-import {
-  ViewStyle,
-  ViewPropTypes,
-} from 'react-native';
+import { ViewStyle } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { FACTION_DARK_GRADIENTS, FACTION_LIGHT_GRADIENTS, FactionCodeType } from '../../constants';

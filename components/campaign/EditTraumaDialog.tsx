@@ -24,15 +24,6 @@ interface State {
 }
 
 export default class EditTraumaDialog extends React.Component<Props, State> {
-  static propTypes = {
-    visible: PropTypes.bool.isRequired,
-    investigator: PropTypes.object,
-    trauma: PropTypes.object,
-    updateTrauma: PropTypes.func.isRequired,
-    hideDialog: PropTypes.func.isRequired,
-    viewRef: PropTypes.object,
-  };
-
   constructor(props: Props) {
     super(props);
 

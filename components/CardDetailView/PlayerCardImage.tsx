@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Platform,
   StyleSheet,
@@ -11,6 +10,7 @@ import { CachedImage } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
 import DeviceInfo from 'react-native-device-info';
 
+import { CardImageProps } from '../CardImageView';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import Card from '../../data/Card';
 
@@ -27,7 +27,7 @@ export default class PlayerCardImage extends React.Component<Props> {
       componentId,
       card,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<CardImageProps>(componentId, {
       component: {
         name: 'Card.Image',
         passProps: {

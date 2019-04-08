@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { head, flatMap, forEach, keys, map, range, throttle } from 'lodash';
 import { StyleSheet, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -9,28 +8,28 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import L from '../../app/i18n';
 import { Campaign, Deck, Slots, WeaknessSet } from '../../actions/types';
 import { updateCampaign } from './actions';
+import { NavigationProps } from '../types';
 import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
 import { parseDeck } from '../parseDeck';
 import { updateLocalDeck } from '../decks/localHelper';
-import * as Actions from '../../actions';
+import { updateDeck } from '../../actions';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
-import Card, { CardsMap } from '../../data/Card';
 import { saveDeck } from '../../lib/authApi';
 import DeckValidation from '../../lib/DeckValidation';
 import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
+import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
 
-interface OwnProps {
-  componentId: string;
+export interface CampaignDrawWeaknessProps {
   campaignId: number;
   deckSlots?: Slots;
-  unsavedAssignedCards: string[];
-  saveWeakness: (code: string, replaceRandomBasicWeakness: boolean) => void;
+  unsavedAssignedCards?: string[];
+  saveWeakness?: (code: string, replaceRandomBasicWeakness: boolean) => void;
 }
 
 interface ReduxProps {
@@ -44,7 +43,7 @@ interface ReduxActionProps {
   updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps;
+type Props = NavigationProps & CampaignDrawWeaknessProps & ReduxProps & ReduxActionProps & PlayerCardProps;
 
 interface State {
   selectedDeckId?: number;
@@ -96,7 +95,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       componentId,
       campaignId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<CampaignEditWeaknessProps>(componentId, {
       component: {
         name: 'Dialog.CampaignEditWeakness',
         passProps: {
@@ -371,7 +370,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState, props: NavigationProps & CampaignDrawWeaknessProps): ReduxProps {
   const campaign: Campaign = getCampaign(state, props.campaignId) as Campaign;
   return {
     weaknessSet: campaign.weaknessSet,
@@ -381,15 +380,16 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators(
-    Object.assign({}, Actions, { updateCampaign }),
-    dispatch);
+  return bindActionCreators({
+    updateDeck,
+    updateCampaign,
+  }, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignDrawWeaknessProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(withPlayerCards<OwnProps & ReduxProps & ReduxActionProps>(CampaignDrawWeaknessDialog));
+)(withPlayerCards<NavigationProps & CampaignDrawWeaknessProps & ReduxProps & ReduxActionProps>(CampaignDrawWeaknessDialog));
 
 const styles = StyleSheet.create({
   toggleRow: {

@@ -7,8 +7,13 @@ import { connect } from 'react-redux';
 import L from '../app/i18n';
 import { Campaign, Deck, Slots } from '../actions/types';
 import Card from '../data/Card';
+import { CardDetailProps } from './CardDetailView';
+import { EditDeckProps } from './DeckEditView';
+import { CampaignDrawWeaknessProps } from './campaign/CampaignDrawWeaknessDialog';
 import CardSelectorComponent from './CardSelectorComponent';
+import { DrawWeaknessProps } from './weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
+import { NavigationProps } from './types';
 import CardSearchResult from './CardSearchResult';
 import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS } from '../constants';
 import { getCampaign, AppState } from '../reducers';
@@ -17,8 +22,7 @@ import typography from '../styles/typography';
 
 const ACE_OF_RODS = '05040';
 
-interface OwnProps {
-  componentId: string;
+export interface EditSpecialCardsProps {
   deck: Deck;
   previousDeck?: Deck;
   xpAdjustment?: number;
@@ -27,14 +31,14 @@ interface OwnProps {
   updateIgnoreDeckLimitSlots: (slots: Slots) => void;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
-  assignedWeaknesses: string[];
+  assignedWeaknesses?: string[];
 }
 
 interface ReduxProps {
   campaign?: Campaign;
 }
 
-type Props = OwnProps & ReduxProps & PlayerCardProps;
+type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps;
 
 interface State {
   slots: Slots;
@@ -64,14 +68,13 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
   }
 
   _cardPressed = (card: Card) => {
-    Navigation.push(this.props.componentId, {
+    Navigation.push<CardDetailProps>(this.props.componentId, {
       component: {
         name: 'Card',
         passProps: {
           id: card.code,
           pack_code: card.pack_code,
           showSpoilers: true,
-          backButtonTitle: L('Back'),
         },
       },
     });
@@ -90,7 +93,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
       ignoreDeckLimitSlots,
     } = this.state;
     const investigator = cards[deck.investigator_code];
-    Navigation.push(componentId, {
+    Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.Edit',
         passProps: {
@@ -163,7 +166,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
   };
 
   _editCollection = () => {
-    Navigation.push(this.props.componentId, {
+    Navigation.push<{}>(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },
@@ -191,7 +194,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
       slots,
     } = this.state;
     const investigator = cards[deck.investigator_code];
-    Navigation.push(componentId, {
+    Navigation.push<DrawWeaknessProps>(componentId, {
       component: {
         name: 'Weakness.Draw',
         passProps: {
@@ -231,8 +234,11 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
       slots,
       unsavedAssignedWeaknesses,
     } = this.state;
+    if (!campaignId) {
+      return;
+    }
     const investigator = cards[deck.investigator_code];
-    Navigation.push(componentId, {
+    Navigation.push<CampaignDrawWeaknessProps>(componentId, {
       component: {
         name: 'Dialog.CampaignDrawWeakness',
         passProps: {
@@ -393,7 +399,10 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & EditSpecialCardsProps
+): ReduxProps {
   return {
     campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
   };

@@ -13,6 +13,7 @@ import Card from '../../../data/Card';
 import CampaignDecks from './CampaignDecks';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';
+import { UpgradeDeckProps } from '../../DeckUpgradeDialog';
 
 interface OwnProps {
   componentId: string;
@@ -125,7 +126,7 @@ class DecksSection extends React.Component<Props> {
       componentId,
       campaignId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
         passProps: {

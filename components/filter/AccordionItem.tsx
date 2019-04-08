@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import {
   Animated,
   Easing,
@@ -25,15 +24,6 @@ interface State {
 }
 
 export default class AccordionChooser extends React.Component<Props, State> {
-  static propTypes = {
-    label: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    children: PropTypes.node.isRequired,
-    enabled: PropTypes.bool.isRequired,
-    toggleName: PropTypes.string.isRequired,
-    onToggleChange: PropTypes.func.isRequired,
-  };
-
   constructor(props: Props) {
     super(props);
 

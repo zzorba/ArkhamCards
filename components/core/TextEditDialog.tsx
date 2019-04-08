@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   NativeSyntheticEvent,
   TextInputContentSizeChangeEventData,
@@ -37,7 +36,7 @@ interface State {
 export default class TextEditDialog extends React.Component<Props, State> {
   _textInputRef?: TextInput;
   _throttledUpdateSize!: (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void;
-  
+
   constructor(props: Props) {
     super(props);
 

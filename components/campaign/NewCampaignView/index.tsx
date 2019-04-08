@@ -44,12 +44,10 @@ import { getNextCampaignId, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 import { newCampaign } from '../actions';
+import { NavigationProps } from '../../types';
+import { EditChaosBagProps } from '../EditChaosBagDialog';
 
-type InjectedProps = WeaknessCardProps & InjectedDialogProps;
-
-interface OwnProps extends InjectedProps {
-  componentId: string;
-}
+type OwnProps = NavigationProps & WeaknessCardProps & InjectedDialogProps;
 
 interface ReduxProps {
   nextId: number;
@@ -338,7 +336,7 @@ class NewCampaignView extends React.Component<Props, State> {
     const {
       componentId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<EditChaosBagProps>(componentId, {
       component: {
         name: 'Dialog.EditChaosBag',
         passProps: {

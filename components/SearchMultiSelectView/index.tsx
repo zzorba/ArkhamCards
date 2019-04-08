@@ -11,16 +11,18 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
 import SearchBox from '../SearchBox';
+import { NavigationProps } from '../types';
 import SelectRow from './SelectRow';
 import { COLORS } from '../../styles/colors';
 
-interface Props {
-  componentId: string;
+export interface SearchSelectProps {
   placeholder: string;
   onChange: (selection: string[]) => void;
   values: string[];
   selection?: string[];
 }
+
+type Props = NavigationProps & SearchSelectProps;
 
 interface State {
   search: string;

@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { concat, filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy, union } from 'lodash';
+import { filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy, union } from 'lodash';
 
 import L from '../app/i18n';
 import { Deck, Slots } from '../actions/types';
@@ -394,40 +393,3 @@ export function parseDeck(
     spentXp: spentXp || 0,
   };
 }
-
-const DeckFactionShape = {
-  guardian: PropTypes.number,
-  seeker: PropTypes.number,
-  mystic: PropTypes.number,
-  rogue: PropTypes.number,
-  survivor: PropTypes.number,
-  neutral: PropTypes.number,
-};
-export const OptionalDeckFactionType = PropTypes.shape(DeckFactionShape);
-export const DeckFactionType = PropTypes.shape(DeckFactionShape).isRequired;
-
-const DeckSectionShape = {
-  Assets: PropTypes.array,
-  Events: PropTypes.array,
-  Skills: PropTypes.array,
-  Treachery: PropTypes.array,
-  Enemy: PropTypes.array,
-};
-export const OptionalDeckSectionType = PropTypes.shape(DeckSectionShape);
-export const DeckSectionType = PropTypes.shape(DeckSectionShape).isRequired;
-
-const DeckShape = {
-  investigator: PropTypes.object.isRequired,
-  deck: PropTypes.object.isRequired,
-  normalCardCount: PropTypes.number,
-  totalCardCount: PropTypes.number,
-  experience: PropTypes.number,
-  packs: PropTypes.number,
-  factionCounts: DeckFactionType,
-  skillIconCounts: PropTypes.object,
-  costHistogram: PropTypes.arrayOf(PropTypes.number),
-  normalCards: DeckSectionType,
-  specialCards: DeckSectionType,
-};
-export const OptionalDeckType = PropTypes.shape(DeckShape);
-export const DeckType = PropTypes.shape(DeckShape).isRequired;

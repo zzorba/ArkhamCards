@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { flatMap, map, range } from 'lodash';
 import {
   Platform,
@@ -15,7 +14,6 @@ import {
   CORE_FACTION_CODES,
   FACTION_COLORS,
   FACTION_BACKGROUND_COLORS,
-  SKILLS,
   SKILL_COLORS,
   RANDOM_BASIC_WEAKNESS,
 } from '../../constants';
@@ -25,10 +23,12 @@ import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardFlavorTextComponent from '../CardFlavorTextComponent';
+import { InvestigatorCardsProps } from '../InvestigatorCardsView';
 import CardTextComponent from '../CardTextComponent';
 import Button from '../core/Button';
 import CardCostIcon from '../core/CardCostIcon';
 import Card from '../../data/Card';
+import { CardFaqProps } from '../CardFaqView';
 
 import PlayerCardImage from './PlayerCardImage';
 
@@ -73,13 +73,6 @@ interface State {
 }
 
 export default class TwoSidedCardComponent extends React.Component<Props, State> {
-  static propTypes = {
-    componentId: PropTypes.string.isRequired,
-    card: PropTypes.object.isRequired,
-    linked: PropTypes.bool,
-    notFirst: PropTypes.bool,
-  };
-
   constructor(props: Props) {
     super(props);
 
@@ -89,7 +82,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   editSpoilersPressed() {
-    Navigation.push(this.props.componentId, {
+    Navigation.push<{}>(this.props.componentId, {
       component: {
         name: 'My.Spoilers',
       },
@@ -101,7 +94,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       componentId,
       card,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<CardFaqProps>(componentId, {
       component: {
         name: 'Card.Faq',
         passProps: {
@@ -127,7 +120,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       card,
     } = this.props;
 
-    Navigation.push(componentId, {
+    Navigation.push<InvestigatorCardsProps>(componentId, {
       component: {
         name: 'Browse.InvestigatorCards',
         passProps: {

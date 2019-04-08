@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { keys, map, partition } from 'lodash';
+import { map, partition } from 'lodash';
 import {
   Button,
   ScrollView,
@@ -8,7 +7,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
@@ -16,10 +14,10 @@ import L from '../../../app/i18n';
 import { CUSTOM, ALL_CAMPAIGNS, CampaignCycleCode } from '../../../actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
+import { NavigationProps } from '../../types';
 import { getPacksInCollection, AppState } from '../../../reducers';
 
-interface OwnProps {
-  componentId: string;
+export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string) => void;
 }
 
@@ -27,7 +25,7 @@ interface ReduxProps {
   in_collection: { [code: string]: boolean; };
 }
 
-type Props = OwnProps & ReduxProps;
+type Props = NavigationProps & SelectCampagaignProps & ReduxProps;
 
 class SelectCampaignDialog extends React.Component<Props> {
   static get options() {
@@ -51,7 +49,7 @@ class SelectCampaignDialog extends React.Component<Props> {
   };
 
   _editCollection = () => {
-    Navigation.push(this.props.componentId, {
+    Navigation.push<{}>(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },

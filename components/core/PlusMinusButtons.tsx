@@ -1,11 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   TouchableOpacity,
   View,
   ViewStyle,
-  ViewPropTypes,
 } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';

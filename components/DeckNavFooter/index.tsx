@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { flatMap, keys, map, range } from 'lodash';
 import {
   View,
@@ -17,6 +16,7 @@ import { Navigation } from 'react-native-navigation';
 import L from '../../app/i18n';
 import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
+import { DrawSimulatorProps } from '../DrawSimulatorView'; 
 import { ParsedDeck } from '../parseDeck';
 import { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
@@ -70,7 +70,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         slots,
       },
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<DrawSimulatorProps>(componentId, {
       component: {
         name: 'Deck.DrawSimulator',
         passProps: {

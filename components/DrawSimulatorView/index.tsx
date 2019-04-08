@@ -14,11 +14,11 @@ import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import CardSearchResult from '../CardSearchResult';
 
 
-interface OwnProps {
+export interface DrawSimulatorProps {
   slots: Slots;
 }
 
-type Props = OwnProps & PlayerCardProps;
+type Props = DrawSimulatorProps & PlayerCardProps;
 
 interface State {
   shuffledDeck: string[];

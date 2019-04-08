@@ -4,6 +4,7 @@ import L from '../app/i18n';
 import { Deck } from '../actions/types';
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import Card from '../data/Card';
+import { CardDetailProps } from './CardDetailView';
 
 export function getDeckOptions(investigator?: Card): Options {
   return {
@@ -109,7 +110,7 @@ export function showCard(
   card: Card,
   showSpoilers?: boolean
 ) {
-  Navigation.push(componentId, {
+  Navigation.push<CardDetailProps>(componentId, {
     component: {
       name: 'Card',
       passProps: {

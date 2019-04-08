@@ -18,6 +18,7 @@ import MyDecksComponent from '../MyDecksComponent';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
+import { NewDeckProps } from '../NewDeckView';
 
 interface OwnProps {
   componentId: string;
@@ -105,7 +106,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       componentId,
       onDeckSelect,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<NewDeckProps>(componentId, {
       component: {
         name: 'Deck.New',
         passProps: {

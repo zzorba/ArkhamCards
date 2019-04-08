@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -8,11 +7,15 @@ import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
 import LabeledTextBox from '../../core/LabeledTextBox';
-import { CUSTOM, CORE, Campaign, CampaignCycleCode } from '../../../actions/types';
+import { CUSTOM, CORE, CampaignCycleCode } from '../../../actions/types';
+import { SelectCampagaignProps } from '../SelectCampaignDialog';
 
 interface Props {
   componentId: string;
-  campaignChanged: (cycleCode: CampaignCycleCode, campaignName: string) => void;
+  campaignChanged: (
+    cycleCode: CampaignCycleCode,
+    campaignName: string
+  ) => void;
 }
 
 interface State {
@@ -59,12 +62,11 @@ export default class CampaignSelector extends React.Component<Props, State> {
     const {
       componentId,
     } = this.props;
-    Navigation.push(componentId, {
+    Navigation.push<SelectCampagaignProps>(componentId, {
       component: {
         name: 'Dialog.Campaign',
         passProps: {
           campaignChanged: this._campaignChanged,
-          selected: this.state.selectedCampaign,
         },
         options: {
           topBar: {
