@@ -10,7 +10,6 @@ import {
 import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import DialogComponent from 'react-native-dialog';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
@@ -20,10 +19,11 @@ import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '../core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '../withLoginState';
+import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { setNewDeck } from '../../actions';
 import { Deck, Slots } from '../../actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
-import Card, { CardsMap } from '../../data/Card';
+import Card from '../../data/Card';
 import { newCustomDeck } from '../../lib/authApi';
 import { getNextLocalDeckId, AppState } from '../../reducers';
 import L from '../../app/i18n';
@@ -39,11 +39,6 @@ interface OwnProps {
   onCreateDeck: (deck: Deck) => void;
 }
 
-interface RealmProps {
-  investigators: CardsMap;
-  requiredCards: CardsMap;
-}
-
 interface ReduxProps {
   nextLocalDeckId: number;
 }
@@ -53,7 +48,7 @@ interface ReduxActionProps {
 }
 
 type Props = OwnProps &
-  RealmProps & ReduxProps & ReduxActionProps &
+  PlayerCardProps & ReduxProps & ReduxActionProps &
   NetworkStatusProps & LoginStateProps;
 
 interface State {
@@ -143,7 +138,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
   getSlots() {
     const {
-      requiredCards,
+      cards,
     } = this.props;
     const {
       optionSelected,
@@ -157,7 +152,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     const investigator = this.investigator();
     if (investigator && investigator.deck_requirements) {
       forEach(investigator.deck_requirements.card, cardRequirement => {
-        const card = requiredCards[cardRequirement.code];
+        const card = cards[cardRequirement.code];
         slots[cardRequirement.code] = card.deck_limit || card.quantity || 0;
       });
     }
@@ -261,7 +256,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
   requiredCardOptions() {
     const {
-      requiredCards,
+      cards,
     } = this.props;
     const investigator = this.investigator();
     if (!investigator) {
@@ -271,13 +266,13 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     forEach(
       investigator.deck_requirements ? investigator.deck_requirements.card : [],
       cardRequirement => {
-        result[0].push(requiredCards[cardRequirement.code]);
+        result[0].push(cards[cardRequirement.code]);
         if (cardRequirement.alternates && cardRequirement.alternates.length) {
           forEach(cardRequirement.alternates, (altCode, index) => {
             while (result.length <= index + 1) {
               result.push([]);
             }
-            result[index + 1].push(requiredCards[altCode]);
+            result[index + 1].push(cards[altCode]);
           });
         }
       }
@@ -397,7 +392,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
     nextLocalDeckId: getNextLocalDeckId(state),
   };
@@ -407,40 +402,17 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({ setNewDeck }, dispatch);
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(
-  connect<ReduxProps, ReduxActionProps, OwnProps & RealmProps, AppState>(
+export default withPlayerCards<OwnProps>(
+  connect(
     mapStateToProps,
     mapDispatchToProps
   )(
-    withLoginState<OwnProps & ReduxProps & ReduxActionProps & RealmProps>(
+    withLoginState<OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
       withNetworkStatus(NewDeckOptionsDialog),
       { noWrapper: true }
     )
-  ), {
-    schemas: ['Card'],
-    mapToProps(results: CardResults<Card>) {
-      const investigators: CardsMap = {};
-      forEach(
-        results.cards.filtered(`type_code == 'investigator'`),
-        card => {
-          if (!card.spoiler) {
-            investigators[card.code] = card;
-          }
-        }
-      );
-      const requiredCards: CardsMap = {};
-      forEach(
-        results.cards.filtered(`has_restrictions == true`),
-        card => {
-          requiredCards[card.code] = card;
-        }
-      );
-      return {
-        investigators,
-        requiredCards,
-      };
-    },
-  });
+  )
+);
 
 const styles = StyleSheet.create({
   spinner: {

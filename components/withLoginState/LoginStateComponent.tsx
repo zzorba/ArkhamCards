@@ -17,6 +17,7 @@ interface OwnProps {
     signInError?: string,
   ) => ReactNode;
   noWrapper: boolean;
+  otherProps: any;
 }
 
 interface ReduxProps {

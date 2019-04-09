@@ -41,6 +41,7 @@ export default function withLoginState<P>(
         <LoginStateComponent
           noWrapper={!!(options && options.noWrapper)}
           render={this._renderWrappedComponent}
+          otherProps={this.props}
         />
       );
     }
