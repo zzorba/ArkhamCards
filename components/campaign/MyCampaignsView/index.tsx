@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
-import { Campaign, Deck } from '../../../actions/types';
+import { Campaign, DecksMap } from '../../../actions/types';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '../CampaignDetailView';
 import { campaignNames } from '../constants';
@@ -32,7 +32,7 @@ interface OwnProps {
 
 interface ReduxProps {
   campaigns: Campaign[];
-  decks: { [id: number]: Deck };
+  decks: DecksMap;
 }
 
 type Props = OwnProps & ReduxProps & PlayerCardProps;

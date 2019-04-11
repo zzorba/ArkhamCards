@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
-import { Deck, SingleCampaign, ScenarioResult } from '../../../actions/types';
+import { Deck, DecksMap, SingleCampaign, ScenarioResult } from '../../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import { NavigationProps } from '../../types';
 import ScenarioSection from './ScenarioSection';
@@ -28,7 +28,7 @@ export interface AddScenarioResultProps {
 
 interface ReduxProps {
   campaign?: SingleCampaign;
-  decks: { [id: number]: Deck };
+  decks: DecksMap;
 }
 
 interface ReduxActionProps {

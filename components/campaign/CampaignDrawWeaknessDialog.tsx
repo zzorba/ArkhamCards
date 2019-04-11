@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
-import { Campaign, Deck, Slots, WeaknessSet } from '../../actions/types';
+import { Campaign, Deck, DecksMap, Slots, WeaknessSet } from '../../actions/types';
 import { updateCampaign } from './actions';
 import { NavigationProps } from '../types';
 import Button from '../core/Button';
@@ -36,7 +36,7 @@ export interface CampaignDrawWeaknessProps {
 interface ReduxProps {
   weaknessSet: WeaknessSet;
   latestDeckIds: number[];
-  decks: { [id: number]: Deck };
+  decks: DecksMap;
 }
 
 interface ReduxActionProps {

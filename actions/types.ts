@@ -44,6 +44,10 @@ export interface Deck {
   spentXp?: number;
 }
 
+export interface DecksMap {
+  [id: number]: Deck;
+}
+
 export interface Pack {
   id: string;
   name: string;

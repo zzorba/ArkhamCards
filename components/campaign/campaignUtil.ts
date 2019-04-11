@@ -1,6 +1,6 @@
 import { capitalize, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
 
-import { CUSTOM, Campaign, Deck } from '../../actions/types';
+import { CUSTOM, Campaign, DecksMap } from '../../actions/types';
 import { campaignNames } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
 import { CHAOS_TOKEN_ORDER, ChaosTokenType } from '../../constants';
@@ -9,7 +9,7 @@ import { CardsMap } from '../../data/Card';
 export function campaignToText(
   campaign: Campaign,
   latestDeckIds: number[],
-  decks: { [deckId: number]: Deck; },
+  decks: DecksMap,
   investigators: CardsMap) {
   const lines: string[] = [];
   lines.push(campaign.name);

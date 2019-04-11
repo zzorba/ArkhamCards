@@ -16,12 +16,11 @@ import {
   ReplaceLocalDeckAction,
   UpdateDeckAction,
   Deck,
+  DecksMap,
 } from '../actions/types';
 
 interface DecksState {
-  all: {
-    [id: number]: Deck;
-  };
+  all: DecksMap;
   myDecks: number[];
   replacedLocalIds?: {
     [id: number]: number;
@@ -57,10 +56,7 @@ function updateDeck(
   return deck;
 }
 
-function sortMyDecks(
-  myDecks: number[],
-  allDecks: { [id: string]: Deck },
-): number[] {
+function sortMyDecks(myDecks: number[], allDecks: DecksMap): number[] {
   return reverse(
     sortBy(
       myDecks,
@@ -74,7 +70,7 @@ export default function(
   action: DecksActions
 ) {
   if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
-    const all: { [id: number]: Deck } = {};
+    const all: DecksMap = {};
     forEach(state.all, (deck, id: any) => {
       if (deck && deck.local) {
         all[id] = deck;
@@ -120,7 +116,7 @@ export default function(
     );
   }
   if (action.type === SET_MY_DECKS) {
-    const allDecks: { [id: number]: Deck } = Object.assign({}, state.all);
+    const allDecks: DecksMap = Object.assign({}, state.all);
     forEach(action.decks, deck => {
       allDecks[deck.id] = deck;
     });

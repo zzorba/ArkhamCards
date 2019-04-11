@@ -11,7 +11,7 @@ import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import withNetworkStatus, { NetworkStatusProps } from './core/withNetworkStatus';
-import { Campaign, Deck } from '../actions/types';
+import { Campaign, Deck, DecksMap } from '../actions/types';
 import { refreshMyDecks } from '../actions';
 import L from '../app/i18n';
 import Card from '../data/Card';
@@ -33,7 +33,7 @@ interface OwnProps {
 }
 
 interface ReduxProps {
-  decks: { [id: number]: Deck };
+  decks: DecksMap;
   deckToCampaign: { [id: number]: Campaign };
   myDecks: number[];
   myDecksUpdated?: Date;

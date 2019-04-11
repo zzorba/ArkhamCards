@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { filter, flatMap, throttle } from 'lodash';
 import {
   Alert,
@@ -14,7 +13,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
-import { Campaign, CampaignNotes, Deck, InvestigatorData, WeaknessSet } from '../../../actions/types';
+import { Campaign, CampaignNotes, Deck, DecksMap, InvestigatorData, WeaknessSet } from '../../../actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -40,7 +39,7 @@ export interface CampaignDetailProps {
 interface ReduxProps {
   campaign?: Campaign;
   latestDeckIds: number[];
-  decks: { [deckId: number]: Deck };
+  decks: DecksMap;
   allInvestigators: Card[];
 }
 

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import L from '../../app/i18n';
-import { Deck, Campaign } from '../../actions/types';
+import { Deck, DecksMap, Campaign } from '../../actions/types';
 import { isEliminated } from './trauma';
 import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
@@ -30,7 +30,7 @@ export interface MyDecksSelectorProps {
 interface ReduxProps {
   campaignLatestDeckIds: number[];
   otherCampaignDeckIds: number[];
-  decks: { [id: number]: Deck };
+  decks: DecksMap;
   campaign?: Campaign;
 }
 

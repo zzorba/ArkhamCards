@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { concat, filter, find, forEach, head, last, map } from 'lodash';
 import {
   StyleSheet,
@@ -13,7 +12,7 @@ import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
 import L from '../../../app/i18n';
-import { Campaign, SingleCampaign, Deck, Pack, ScenarioResult, CUSTOM } from '../../../actions/types';
+import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '../../../actions/types';
 import Card from '../../../data/Card';
 import { updateCampaign } from '../actions';
 import { campaignScenarios, Scenario } from '../constants';
@@ -36,7 +35,7 @@ interface ReduxProps {
   cycleScenarios: Scenario[];
   cyclePacks: Pack[];
   standalonePacks: Pack[];
-  decks: { [id: number]: Deck };
+  decks: DecksMap;
   latestScenario?: ScenarioResult;
 }
 

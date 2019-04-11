@@ -11,7 +11,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import L from '../app/i18n';
-import { Campaign, Deck } from '../actions/types';
+import { Campaign, Deck, DecksMap } from '../actions/types';
 import Card from '../data/Card';
 import { searchMatchesText } from './searchHelpers';
 import SearchBox from './SearchBox';
@@ -34,7 +34,7 @@ interface OwnProps {
 }
 
 interface ReduxProps {
-  decks: { [id: number]: Deck };
+  decks: DecksMap;
 }
 
 interface ReduxActionProps {
