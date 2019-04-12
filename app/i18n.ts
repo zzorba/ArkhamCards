@@ -13,9 +13,7 @@ function getTranslationObj(locale: string) {
 }
 
 export function changeLocale(locale: string) {
-  console.log('Changing locale to ' + locale);
-  //const translationObj = getTranslationObj(locale);
-  //addLocale(locale, translationObj);
-  //useLocale(locale);
-  console.log('All Done!');
+  const translationObj = getTranslationObj(locale);
+  addLocale(locale, translationObj);
+  useLocale(locale);
 }

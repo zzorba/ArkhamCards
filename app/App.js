@@ -1,8 +1,9 @@
 import { Navigation } from 'react-native-navigation';
 import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
+import { t } from 'ttag';
 
-import L, { changeLocale } from './i18n';
+import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import { COLORS } from '../styles/colors';
 
