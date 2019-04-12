@@ -6,7 +6,7 @@ import {
 
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
 import LabeledTextBox from '../core/LabeledTextBox';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { InvestigatorData, Trauma } from '../../actions/types';
 import Card from '../../data/Card';
 
@@ -43,7 +43,7 @@ export default class EditTraumaComponent extends React.Component<Props> {
       <View style={styles.traumaBlock}>
         <LabeledTextBox
           column
-          label={L('Trauma')}
+          label={t`Trauma`}
           onPress={this._editTraumaPressed}
           value={traumaString(this.traumaData(), investigator)}
         />

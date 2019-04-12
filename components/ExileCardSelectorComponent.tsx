@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Deck, Slots } from '../actions/types';
 import Card from '../data/Card';
 import { getDeck, AppState } from '../reducers';
@@ -45,7 +45,7 @@ class ExileCardSelectorComponent extends React.Component<Props> {
 
     const header = !!showLabel && (
       <Text style={[typography.small, styles.exileText]}>
-        { L('EXILE CARDS') }
+        { t`EXILE CARDS` }
       </Text>
     );
     return (

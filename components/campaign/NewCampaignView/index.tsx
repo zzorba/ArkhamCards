@@ -12,7 +12,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import {
   CORE,
   STANDARD,
@@ -86,7 +86,7 @@ class NewCampaignView extends React.Component<Props, State> {
     return {
       topBar: {
         title: {
-          text: L('New Campaign'),
+          text: t`New Campaign`,
         },
       },
     };
@@ -196,21 +196,21 @@ class NewCampaignView extends React.Component<Props, State> {
     if (weaknesses.length) {
       setTimeout(() => {
         Alert.alert(
-          L('Adjust Weakness Set'),
+          t`Adjust Weakness Set`,
           /* eslint-disable prefer-template */
           (count > 1 ?
-            L('This deck contains several basic weaknesses') :
-            L('This deck contains a basic weakness')) +
+            t`This deck contains several basic weaknesses` :
+            t`This deck contains a basic weakness`) +
           '\n\n' +
           map(weaknesses, code => `${deck.slots[code]}x - ${cardsMap[code].name}`).join('\n') +
           '\n\n' +
           (count > 1 ?
-            L('Do you want to remove them from the campaign’s Basic Weakness set?') :
-            L('Do you want to remove it from the campaign’s Basic Weakness set?')),
+            t`Do you want to remove them from the campaign’s Basic Weakness set?` :
+            t`Do you want to remove it from the campaign’s Basic Weakness set?`),
           [
-            { text: L('Not Now'), style: 'cancel' },
+            { text: t`Not Now`, style: 'cancel' },
             {
-              text: L('Okay'),
+              text: t`Okay`,
               style: 'default',
               onPress: () => {
                 const {
@@ -263,7 +263,7 @@ class NewCampaignView extends React.Component<Props, State> {
     Navigation.mergeOptions(componentId, {
       topBar: {
         rightButtons: [{
-          text: L('Done'),
+          text: t`Done`,
           id: 'save',
           enabled: campaignCode !== CUSTOM || !!name,
           color: COLORS.navButton,
@@ -284,9 +284,9 @@ class NewCampaignView extends React.Component<Props, State> {
       campaignCode,
     } = this.state;
     if (campaignCode === CUSTOM) {
-      return L('(required)');
+      return t`(required)`;
     }
-    return L('My {{cycleName}} Campaign', { cycleName: campaign });
+    return t`My ${campaign} Campaign`;
   }
 
   onSave() {
@@ -346,10 +346,10 @@ class NewCampaignView extends React.Component<Props, State> {
         options: {
           topBar: {
             title: {
-              text: L('Chaos Bag'),
+              text: t`Chaos Bag`,
             },
             backButton: {
-              title: L('Cancel'),
+              title: t`Cancel`,
             },
           },
         },
@@ -426,7 +426,7 @@ class NewCampaignView extends React.Component<Props, State> {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          { L('CHAOS BAG') }
+          { t`CHAOS BAG` }
         </Text>
         <View style={[styles.topPadding, styles.margin]}>
           <ChaosBagLine chaosBag={chaosBag} />
@@ -440,7 +440,7 @@ class NewCampaignView extends React.Component<Props, State> {
       name,
     } = this.state;
     this.props.showTextEditDialog(
-      L('Campaign Name'),
+      t`Campaign Name`,
       name,
       this._onNameChange
     );
@@ -452,9 +452,9 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.props;
     return (
       <View style={styles.margin}>
-        <Text style={typography.small}>{ L('WEAKNESS SET') }</Text>
+        <Text style={typography.small}>{ t`WEAKNESS SET` }</Text>
         <Text style={typography.small}>
-          { L('Include all basic weaknesses from these expansions') }
+          { t`Include all basic weaknesses from these expansions` }
         </Text>
         <WeaknessSetPackChooserComponent
           componentId={componentId}
@@ -474,7 +474,7 @@ class NewCampaignView extends React.Component<Props, State> {
     return (
       <View>
         <Text style={[typography.small, styles.margin]}>
-          { L('CAMPAIGN LOG') }
+          { t`CAMPAIGN LOG` }
         </Text>
         <View style={styles.margin}>
           { map(campaignLog.sections || [], section => (
@@ -492,7 +492,7 @@ class NewCampaignView extends React.Component<Props, State> {
         </View>
         { !this.hasDefinedChaosBag() && (
           <View style={[styles.topPadding, styles.button]}>
-            <Button title={L('Add Log Section')} onPress={this._toggleCampaignLogDialog} />
+            <Button title={t`Add Log Section`} onPress={this._toggleCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -544,7 +544,7 @@ class NewCampaignView extends React.Component<Props, State> {
             <View style={[styles.margin, styles.topPadding]}>
               <LabeledTextBox
                 column
-                label={L('Campaign Name')}
+                label={t`Campaign Name`}
                 onPress={this._showCampaignNameDialog}
                 placeholder={this.placeholderName()}
                 value={name}
@@ -553,7 +553,7 @@ class NewCampaignView extends React.Component<Props, State> {
             <View style={[styles.topPadding, styles.margin]}>
               <LabeledTextBox
                 column
-                label={L('Difficulty')}
+                label={t`Difficulty`}
                 onPress={this._showDifficultyDialog}
                 value={difficultyStrings()[difficulty]}
               />
@@ -586,7 +586,7 @@ class NewCampaignView extends React.Component<Props, State> {
           <View style={[styles.button, styles.topPadding]}>
             <Button
               disabled={campaignCode === CUSTOM && !name}
-              title={L('Create Campaign')}
+              title={t`Create Campaign`}
               onPress={this._onSave}
             />
           </View>

@@ -6,7 +6,7 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Pack } from '../actions/types';
 import { setInCollection, setCycleInCollection } from '../actions';
 import PackListComponent from './PackListComponent';
@@ -29,7 +29,7 @@ class CollectionEditView extends React.Component<Props> {
     return {
       topBar: {
         title: {
-          text: L('Edit Collection'),
+          text: t`Edit Collection`,
         },
       },
     };
@@ -52,7 +52,7 @@ class CollectionEditView extends React.Component<Props> {
     }
     return (
       <PackListComponent
-        coreSetName={L('Second Core Set')}
+        coreSetName={t`Second Core Set`}
         componentId={componentId}
         packs={packs}
         checkState={in_collection}

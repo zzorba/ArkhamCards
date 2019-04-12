@@ -12,7 +12,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 import DeviceInfo from 'react-native-device-info';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import DialogOption from './DialogOption';
 import typography from '../../styles/typography';
 
@@ -95,7 +95,7 @@ export default class DialogPicker extends React.Component<Props> {
           </ScrollView>
           <View style={styles.cancel}>
             <TouchableOpacity onPress={this._hide}>
-              <Text style={styles.cancelText}>{ L('Cancel') }</Text>
+              <Text style={styles.cancelText}>{ t`Cancel` }</Text>
             </TouchableOpacity>
           </View>
         </View>

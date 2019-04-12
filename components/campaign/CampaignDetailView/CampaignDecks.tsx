@@ -8,8 +8,8 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import DeviceInfo from 'react-native-device-info';
+import { ngettext, msgid, t } from 'ttag';
 
-import L from '../../../app/i18n';
 import AppIcon from '../../../assets/AppIcon';
 import { Deck, InvestigatorData, Trauma } from '../../../actions/types';
 import DeckValidation from '../../../lib/DeckValidation';
@@ -89,14 +89,12 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
             icon={<AppIcon name="deck" size={18 * DeviceInfo.getFontScale()} color="#222222" />}
             text={
               DeviceInfo.getFontScale() > 1.5 ?
-                L('{{normalCount}} Cards\n({{totalCount}} Total)', {
-                  normalCount: parsedDeck.normalCardCount,
-                  totalCount: parsedDeck.totalCardCount,
-                }) :
-                L('{{normalCount}} Cards ({{totalCount}} Total)', {
-                  normalCount: parsedDeck.normalCardCount,
-                  totalCount: parsedDeck.totalCardCount,
-                })
+                ngettext(msgid`${parsedDeck.normalCardCount} Card\n(${parsedDeck.totalCardCount} Total`,
+                  `${parsedDeck.normalCardCount} Cards\n(${parsedDeck.totalCardCount} Total`,
+                  parsedDeck.normalCardCount) :
+                ngettext(msgid`${parsedDeck.normalCardCount} Card (${parsedDeck.totalCardCount} Total)`,
+                  `${parsedDeck.normalCardCount} Cards (${parsedDeck.totalCardCount} Total)`,
+                  parsedDeck.normalCardCount)
             }
             style={styles.button}
             size="small"
@@ -135,14 +133,12 @@ class CampaignSubDeckDetail extends React.Component<Props & DeckRowDetailsProps>
     const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
     if (xp > 0) {
       if ((parsedDeck.spentXp || 0) > 0) {
-        return L('{{xpCount}} available ({{spentXp}} spent)', {
-          xpCount: xp,
-          spentXp: parsedDeck.spentXp,
-        });
+        return t`${xp} available (${parsedDeck.spentXp} spent)`;
       }
-      return L('{{xpCount}} available', { xpCount: xp });
+      return t`${xp} available`;
     }
-    return L('{{totalXp}} total', { totalXp: parsedDeck.experience || 0 });
+    const totalXp = parsedDeck.experience || 0;
+    return t`${totalXp} total`;
   }
 
   render() {
@@ -174,7 +170,7 @@ class CampaignSubDeckDetail extends React.Component<Props & DeckRowDetailsProps>
           <View style={styles.section}>
             <View style={styles.column}>
               <Text style={typography.smallLabel}>
-                { L('EXPERIENCE') }
+                { t`EXPERIENCE` }
               </Text>
               <Text style={typography.text}>
                 { this.experienceLine(parsedDeck.deck, parsedDeck) }
@@ -186,7 +182,7 @@ class CampaignSubDeckDetail extends React.Component<Props & DeckRowDetailsProps>
           <View style={styles.section}>
             <Button
               icon={<MaterialCommunityIcons size={18 * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
-              text={L('Upgrade Deck')}
+              text={t`Upgrade Deck`}
               style={styles.button}
               size="small"
               align="left"

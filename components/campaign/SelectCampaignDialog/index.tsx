@@ -10,7 +10,7 @@ import {
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { CUSTOM, ALL_CAMPAIGNS, CampaignCycleCode } from '../../../actions/types';
 import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
@@ -32,7 +32,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     return {
       topBar: {
         title: {
-          text: L('Select Campaign'),
+          text: t`Select Campaign`,
         },
       },
     };
@@ -62,7 +62,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         key={packCode}
         packCode={packCode}
         onPress={this._onPress}
-        text={campaignName(packCode) || L('Custom')}
+        text={campaignName(packCode) || t`Custom`}
       />
     );
   }
@@ -82,19 +82,19 @@ class SelectCampaignDialog extends React.Component<Props> {
         { myCampaigns.length > 0 && (
           <View style={styles.headerRow}>
             <Text style={styles.header}>
-              { L('My Campaigns') }
+              { t`My Campaigns` }
             </Text>
           </View>
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
         { this.renderCampaign(CUSTOM) }
         <View style={styles.button}>
-          <Button onPress={this._editCollection} title={L('Edit Collection')} />
+          <Button onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
         { otherCampaigns.length > 0 && (
           <View style={styles.headerRow}>
             <Text style={styles.header}>
-              { L('Other Campaigns') }
+              { t`Other Campaigns` }
             </Text>
           </View>
         ) }

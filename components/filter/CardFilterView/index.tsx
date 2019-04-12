@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { Pack } from '../../../actions/types';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
@@ -57,7 +57,7 @@ class CardFilterView extends React.Component<Props, State> {
     return {
       topBar: {
         title: {
-          text: L('Filter'),
+          text: t`Filter`,
           color: COLORS.navButton,
         },
       },
@@ -213,7 +213,7 @@ class CardFilterView extends React.Component<Props, State> {
       allPacks,
     } = this.props;
     if (!allPacks.length || !packs.length) {
-      return L('Packs: All');
+      return t`Packs: All`;
     }
     const selectedPackNames = new Set(packs);
     const cyclePackCounts: { [code: string]: number }  = {};
@@ -243,9 +243,7 @@ class CardFilterView extends React.Component<Props, State> {
 
     const parts: string[] = [];
     forEach(completeCycles, cycle_position => {
-      parts.push(
-        L('{{cycleName}} Cycle', { cycleName: cycleNames[cycle_position] })
-      );
+      parts.push(t`${cycleNames[cycle_position]} Cycle`);
     });
     const partialCyclesSet = new Set(partialCycles);
     forEach(selectedPacks, pack => {
@@ -253,7 +251,8 @@ class CardFilterView extends React.Component<Props, State> {
         parts.push(pack.name);
       }
     });
-    return L('Packs: {{allPacks}}', { allPacks: parts.join(', ') });
+    const allPacksString = parts.join(', ');
+    return t`Packs: ${allPacksString}`;
   }
 
   enemyFilterText() {
@@ -285,62 +284,63 @@ class CardFilterView extends React.Component<Props, State> {
     } = this.props;
     const parts = [];
     if (enemyElite) {
-      parts.push(L('Elite'));
+      parts.push(t`Elite`);
     }
     if (enemyNonElite) {
-      parts.push(L('Non-Elite'));
+      parts.push(t`Non-Elite`);
     }
     if (enemyHunter) {
-      parts.push(L('Hunter'));
+      parts.push(t`Hunter`);
     }
     if (enemyNonHunter) {
-      parts.push(L('Non-Hunter'));
+      parts.push(t`Non-Hunter`);
     }
     if (enemyParley) {
-      parts.push(L('Parley'));
+      parts.push(t`Parley`);
     }
     if (enemyRetaliate) {
-      parts.push(L('Retaliate'));
+      parts.push(t`Retaliate`);
     }
     if (enemyAlert) {
-      parts.push(L('Alert'));
+      parts.push(t`Alert`);
     }
     if (enemySpawn) {
-      parts.push(L('Spawn'));
+      parts.push(t`Spawn`);
     }
     if (enemyPrey) {
-      parts.push(L('Prey'));
+      parts.push(t`Prey`);
     }
     if (enemyAloof) {
-      parts.push(L('Aloof'));
+      parts.push(t`Aloof`);
     }
     if (enemyMassive) {
-      parts.push(L('Massive'));
+      parts.push(t`Massive`);
     }
     if (enemyHealthEnabled) {
       if (enemyHealthPerInvestigator) {
-        parts.push(CardFilterView.rangeText(L('HPI'), enemyHealth));
+        parts.push(CardFilterView.rangeText(t`HPI`, enemyHealth));
       } else {
-        parts.push(CardFilterView.rangeText(L('Health'), enemyHealth));
+        parts.push(CardFilterView.rangeText(t`Health`, enemyHealth));
       }
     }
     if (enemyDamageEnabled) {
-      parts.push(CardFilterView.rangeText(L('Damage'), enemyDamage));
+      parts.push(CardFilterView.rangeText(t`Damage`, enemyDamage));
     }
     if (enemyHorrorEnabled) {
-      parts.push(CardFilterView.rangeText(L('Horror'), enemyHorror));
+      parts.push(CardFilterView.rangeText(t`Horror`, enemyHorror));
     }
     if (enemyFightEnabled) {
-      parts.push(CardFilterView.rangeText(L('Fight'), enemyFight));
+      parts.push(CardFilterView.rangeText(t`Fight`, enemyFight));
     }
     if (enemyEvadeEnabled) {
-      parts.push(CardFilterView.rangeText(L('Evade'), enemyEvade));
+      parts.push(CardFilterView.rangeText(t`Evade`, enemyEvade));
     }
 
     if (parts.length === 0) {
-      return L('Enemies: All');
+      return t`Enemies: All`;
     }
-    return L('Enemies: {{parts}}', { parts: parts.join(', ') });
+    const searchParts = parts.join(', ');
+    return t`Enemies: ${searchParts}`;
   }
 
   locationFilterText() {
@@ -357,22 +357,23 @@ class CardFilterView extends React.Component<Props, State> {
     const parts = [];
     if (cluesEnabled) {
       if (cluesFixed) {
-        parts.push(CardFilterView.rangeText(L('Fixed Clues'), clues));
+        parts.push(CardFilterView.rangeText(t`Fixed Clues`, clues));
       } else {
-        parts.push(CardFilterView.rangeText(L('Clues'), clues));
+        parts.push(CardFilterView.rangeText(t`Clues`, clues));
       }
     }
     if (shroudEnabled) {
-      parts.push(CardFilterView.rangeText(L('Shroud'), shroud));
+      parts.push(CardFilterView.rangeText(t`Shroud`, shroud));
     }
     if (hauntedEnabled) {
-      parts.push(L('Haunted'));
+      parts.push(t`Haunted`);
     }
 
     if (parts.length === 0) {
-      return L('Locations: All');
+      return t`Locations: All`;
     }
-    return L('Locations: {{parts}}', { parts: parts.join(', ') });
+    const searchParts = parts.join(', ');
+    return t`Locations: ${searchParts}`;
   }
 
   render() {
@@ -457,7 +458,7 @@ class CardFilterView extends React.Component<Props, State> {
         ) }
         { hasXp && (
           <SliderChooser
-            label={L('Level')}
+            label={t`Level`}
             width={width}
             values={level}
             enabled={levelEnabled}
@@ -470,13 +471,13 @@ class CardFilterView extends React.Component<Props, State> {
           >
             <View>
               <ToggleFilter
-                label={L('Exceptional')}
+                label={t`Exceptional`}
                 setting="exceptional"
                 value={exceptional}
                 onChange={onToggleChange}
               />
               <ToggleFilter
-                label={L('Non-Exceptional')}
+                label={t`Non-Exceptional`}
                 setting="nonExceptional"
                 value={nonExceptional}
                 onChange={onToggleChange}
@@ -488,7 +489,7 @@ class CardFilterView extends React.Component<Props, State> {
           { (types.length > 0 || allTypes.length > 0) && (
             <FilterChooserButton
               componentId={componentId}
-              title={L('Types')}
+              title={t`Types`}
               values={allTypes}
               selection={types}
               setting="types"
@@ -498,7 +499,7 @@ class CardFilterView extends React.Component<Props, State> {
           { (subTypes.length > 0 || allSubTypes.length > 0) && (
             <FilterChooserButton
               componentId={componentId}
-              title={L('SubTypes')}
+              title={t`SubTypes`}
               values={allSubTypes}
               selection={subTypes}
               setting="subTypes"
@@ -508,7 +509,7 @@ class CardFilterView extends React.Component<Props, State> {
         </View>
         { hasCost && (
           <SliderChooser
-            label={L('Cost')}
+            label={t`Cost`}
             width={width}
             values={cost}
             enabled={costEnabled}
@@ -530,7 +531,7 @@ class CardFilterView extends React.Component<Props, State> {
         <View>
           { (traits.length > 0 || allTraits.length > 0) && (
             <FilterChooserButton
-              title={L('Traits')}
+              title={t`Traits`}
               componentId={componentId}
               values={allTraits}
               selection={traits}
@@ -548,7 +549,7 @@ class CardFilterView extends React.Component<Props, State> {
         { (slots.length > 0 || allSlots.length > 0) && (
           <FilterChooserButton
             componentId={componentId}
-            title={L('Slots')}
+            title={t`Slots`}
             values={allSlots}
             selection={slots}
             setting="slots"
@@ -558,7 +559,7 @@ class CardFilterView extends React.Component<Props, State> {
         { (uses.length > 0 || allUses.length > 0) && (
           <FilterChooserButton
             componentId={componentId}
-            title={L('Uses')}
+            title={t`Uses`}
             values={allUses}
             selection={uses}
             setting="uses"
@@ -569,19 +570,19 @@ class CardFilterView extends React.Component<Props, State> {
           <View style={styles.toggleRow}>
             <View style={styles.toggleColumn}>
               <ToggleFilter
-                label={L('Fast')}
+                label={t`Fast`}
                 setting="fast"
                 value={fast}
                 onChange={onToggleChange}
               />
               <ToggleFilter
-                label={L('Permanent')}
+                label={t`Permanent`}
                 setting="permanent"
                 value={permanent}
                 onChange={onToggleChange}
               />
               <ToggleFilter
-                label={L('Victory')}
+                label={t`Victory`}
                 setting="victory"
                 value={victory}
                 onChange={onToggleChange}
@@ -589,19 +590,19 @@ class CardFilterView extends React.Component<Props, State> {
             </View>
             <View style={styles.toggleColumn}>
               <ToggleFilter
-                label={L('Exile')}
+                label={t`Exile`}
                 setting="exile"
                 value={exile}
                 onChange={onToggleChange}
               />
               <ToggleFilter
-                label={L('Unique')}
+                label={t`Unique`}
                 setting="unique"
                 value={unique}
                 onChange={onToggleChange}
               />
               <ToggleFilter
-                label={L('Vengeance')}
+                label={t`Vengeance`}
                 setting="vengeance"
                 value={vengeance}
                 onChange={onToggleChange}
@@ -612,7 +613,7 @@ class CardFilterView extends React.Component<Props, State> {
         { (encounters.length > 0 || allEncounters.length > 0) && (
           <FilterChooserButton
             componentId={componentId}
-            title={L('Encounter Sets')}
+            title={t`Encounter Sets`}
             values={allEncounters}
             selection={encounters}
             setting="encounters"
@@ -625,7 +626,7 @@ class CardFilterView extends React.Component<Props, State> {
         { (illustrators.length > 0 || allIllustrators.length > 0) && (
           <FilterChooserButton
             componentId={componentId}
-            title={L('Illustrators')}
+            title={t`Illustrators`}
             values={allIllustrators}
             selection={illustrators}
             setting="illustrators"

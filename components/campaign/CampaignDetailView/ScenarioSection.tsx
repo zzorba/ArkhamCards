@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { Campaign } from '../../../actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import Button from '../../core/Button';
@@ -35,10 +35,10 @@ export default class ScenarioSection extends React.Component<Props> {
         options: {
           topBar: {
             title: {
-              text: L('Scenarios'),
+              text: t`Scenarios`,
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
             },
           },
         },
@@ -60,10 +60,10 @@ export default class ScenarioSection extends React.Component<Props> {
         options: {
           topBar: {
             title: {
-              text: L('Scenario Result'),
+              text: t`Scenario Result`,
             },
             backButton: {
-              title: L('Cancel'),
+              title: t`Cancel`,
             },
           },
         },
@@ -111,7 +111,7 @@ export default class ScenarioSection extends React.Component<Props> {
           <Button
             align="left"
             size="small"
-            text={L('Record Scenario Results')}
+            text={t`Record Scenario Results`}
             onPress={this._addScenarioResult}
           />
         </View>

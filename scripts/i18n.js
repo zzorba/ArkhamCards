@@ -4,9 +4,17 @@ const translations = require('../app/translations.json');
 
 const keys = extractFromFiles([
   'app/*.js',
+  'app/*.ts',
+  'app/*.tsx',
   'components/**/*.js',
+  'components/**/*.ts',
+  'components/**/*.tsx',
   'data/*.js',
+  'data/*.ts',
+  'data/*.tsx',
   'constants/*.js',
+  'constants/*.ts',
+  'constants/*.tsx',
 ], {
   marker: 'L',
 });

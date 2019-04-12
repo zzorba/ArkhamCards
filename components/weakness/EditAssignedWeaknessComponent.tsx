@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import { showCard } from '../navHelper';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Slots, WeaknessSet } from '../../actions/types';
 import Card from '../../data/Card';
 import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
@@ -24,7 +24,7 @@ class EditAssignedWeaknessComponent extends React.Component<Props> {
     return {
       topBar: {
         title: {
-          text: L('Available weaknesses'),
+          text: t`Available weaknesses`,
         },
       },
     };

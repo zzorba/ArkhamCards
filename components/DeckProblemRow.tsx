@@ -8,17 +8,17 @@ import {
 import DeviceInfo from 'react-native-device-info';
 
 import { DeckProblem, DeckProblemType } from '../actions/types';
-import L from '../app/i18n';
+import { t } from 'ttag';
 import AppIcon from '../assets/AppIcon';
 import typography from '../styles/typography';
 
 const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
-  too_few_cards: L('Not enough cards.'),
-  too_many_cards: L('Too many cards.'),
-  too_many_copies: L('Too many copies of a card with the same name.'),
-  invalid_cards: L('Contains forbidden cards (cards not permitted by Faction)'),
-  deck_options_limit: L('Contains too many limited cards.'),
-  investigator: L('Doesn\'t comply with the Investigator requirements.'),
+  too_few_cards: t`Not enough cards.`,
+  too_many_cards: t`Too many cards.`,
+  too_many_copies: t`Too many copies of a card with the same name.`,
+  invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
+  deck_options_limit: t`Contains too many limited cards.`,
+  investigator: t`Doesn\'t comply with the Investigator requirements.`,
 };
 
 interface Props {

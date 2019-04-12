@@ -18,7 +18,7 @@ import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { clearDecks } from '../../actions';
 import { fetchCards } from '../cards/actions';
 import Card from '../../data/Card';
@@ -77,7 +77,7 @@ class SettingsView extends React.Component<Props> {
               text: title,
             },
             backButton: {
-              title: L('Done'),
+              title: t`Done`,
             },
           },
         },
@@ -86,19 +86,19 @@ class SettingsView extends React.Component<Props> {
   }
 
   _myCollectionPressed = () => {
-    this.navButtonPressed('My.Collection', L('Edit Collection'));
+    this.navButtonPressed('My.Collection', t`Edit Collection`);
   };
 
   _editSpoilersPressed = () => {
-    this.navButtonPressed('My.Spoilers', L('Edit Spoilers'));
+    this.navButtonPressed('My.Spoilers', t`Edit Spoilers`);
   };
 
   _diagnosticsPressed = () => {
-    this.navButtonPressed('Settings.Diagnostics', L('Diagnostics'));
+    this.navButtonPressed('Settings.Diagnostics', t`Diagnostics`);
   };
 
   _aboutPressed = () => {
-    this.navButtonPressed('About', L('About Arkham Cards'));
+    this.navButtonPressed('About', t`About Arkham Cards`);
   };
 
   _clearImageCache = () => {
@@ -134,8 +134,8 @@ class SettingsView extends React.Component<Props> {
     if (cardsLoading) {
       return (
         <React.Fragment>
-          <SettingsItem text={L('Updating cards')} />
-          <SettingsItem text={L('Card Language')} />
+          <SettingsItem text={t`Updating cards`} />
+          <SettingsItem text={t`Card Language`} />
         </React.Fragment>
       );
     }
@@ -143,9 +143,9 @@ class SettingsView extends React.Component<Props> {
       <React.Fragment>
         <SettingsItem
           onPress={this._doSyncCards}
-          text={cardsError ? L('Error: Check for Cards Again') : L('Check for New Cards on ArkhamDB')}
+          text={cardsError ? t`Error: Check for Cards Again` : t`Check for New Cards on ArkhamDB`}
         />
-        <SettingsItem onPress={this._languagePressed} text={L('Card Language')} />
+        <SettingsItem onPress={this._languagePressed} text={t`Card Language`} />
       </React.Fragment>
     );
   }
@@ -155,27 +155,27 @@ class SettingsView extends React.Component<Props> {
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
           <SettingsCategoryHeader
-            title={L('Account')}
+            title={t`Account`}
             titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
           <LoginButton settings />
           <SettingsCategoryHeader
-            title={L('Card Data')}
+            title={t`Card Data`}
             titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
-          <SettingsItem navigation onPress={this._myCollectionPressed} text={L('Card Collection')} />
-          <SettingsItem navigation onPress={this._editSpoilersPressed} text={L('Spoiler Settings')} />
+          <SettingsItem navigation onPress={this._myCollectionPressed} text={t`Card Collection`} />
+          <SettingsItem navigation onPress={this._editSpoilersPressed} text={t`Spoiler Settings`} />
           { this.renderSyncCards() }
           <SettingsCategoryHeader
-            title={L('Debug')}
+            title={t`Debug`}
             titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
-          <SettingsItem navigation onPress={this._diagnosticsPressed} text={L('Diagnostics')} />
+          <SettingsItem navigation onPress={this._diagnosticsPressed} text={t`Diagnostics`} />
           <SettingsCategoryHeader
-            title={L('About Arkham Cards')}
+            title={t`About Arkham Cards`}
             titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
-          <SettingsItem navigation onPress={this._aboutPressed} text={L('About Arkham Cards')} />
+          <SettingsItem navigation onPress={this._aboutPressed} text={t`About Arkham Cards`} />
         </ScrollView>
       </SafeAreaView>
     );

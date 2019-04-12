@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { campaignNames, CAMPAIGN_COLORS, difficultyStrings } from './constants';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { CUSTOM, Campaign } from '../../actions/types';
 import EncounterIcon from '../../assets/EncounterIcon';
 import typography from '../../styles/typography';
@@ -67,7 +67,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
       return (
         <View style={styles.marginTop}>
           <Text style={typography.smallLabel}>
-            { latestScenario.interlude ? L('LATEST INTERLUDE') : L('LATEST SCENARIO') }
+            { latestScenario.interlude ? t`LATEST INTERLUDE` : t`LATEST SCENARIO` }
           </Text>
           <Text style={typography.gameFont}>
             { `${latestScenario.scenario}${resolution}${xp}` }
@@ -78,7 +78,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     return (
       <View style={styles.marginTop}>
         <Text style={typography.text}>
-          { L('Not yet started') }
+          { t`Not yet started` }
         </Text>
       </View>
     );

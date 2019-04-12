@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
 import { Subtract } from 'utility-types';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { iconsMap } from '../../app/NavIcons';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
@@ -50,7 +50,7 @@ class CardDetailView extends React.Component<Props, State> {
     return {
       topBar: {
         backButton: {
-          title: L('Back'),
+          title: t`Back`,
         },
       },
     };
@@ -135,7 +135,7 @@ class CardDetailView extends React.Component<Props, State> {
           options: {
             topBar: {
               title: {
-                text: L('FAQ'),
+                text: t`FAQ`,
               },
               subtitle: {
                 text: card.name,
@@ -163,10 +163,10 @@ class CardDetailView extends React.Component<Props, State> {
           options: {
             topBar: {
               title: {
-                text: L('Allowed Cards'),
+                text: t`Allowed Cards`,
               },
               backButton: {
-                title: L('Back'),
+                title: t`Back`,
               },
             },
           },
@@ -208,7 +208,7 @@ class CardDetailView extends React.Component<Props, State> {
         <View style={styles.buttonContainer}>
           <Button
             onPress={this._showInvestigatorCards}
-            text={L('Deckbuilding Cards')}
+            text={t`Deckbuilding Cards`}
             icon={<AppIcon name="deck" size={18 * DeviceInfo.getFontScale()} color="white" />}
           />
         </View>

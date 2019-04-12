@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import SearchBox from '../SearchBox';
 import { NavigationProps } from '../types';
 import SelectRow from './SelectRow';
@@ -60,7 +60,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       topBar: {
         rightButtons: selection && selection.length > 0 ?
           [{
-            text: L('Clear'),
+            text: t`Clear`,
             id: 'clear',
             color: COLORS.navButton,
           }] : [],

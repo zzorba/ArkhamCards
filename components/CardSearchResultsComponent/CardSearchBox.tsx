@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import Switch from '../core/Switch';
 import SearchBox, { SEARCH_BAR_HEIGHT } from '../SearchBox';
 
@@ -74,17 +74,17 @@ export default class CardSearchBox extends React.Component<Props, State> {
     } = this.props;
     return (
       <View style={styles.textSearchOptions}>
-        <Text style={styles.searchOption}>{ L('Game\nText') }</Text>
+        <Text style={styles.searchOption}>{ t`Game\nText` }</Text>
         <Switch
           value={searchText}
           onValueChange={toggleSearchText}
         />
-        <Text style={styles.searchOption}>{ L('Flavor\nText') }</Text>
+        <Text style={styles.searchOption}>{ t`Flavor\nText` }</Text>
         <Switch
           value={searchFlavor}
           onValueChange={toggleSearchFlavor}
         />
-        <Text style={styles.searchOption}>{ L('Card\nBacks') }</Text>
+        <Text style={styles.searchOption}>{ t`Card\nBacks` }</Text>
         <Switch
           value={searchBack}
           onValueChange={toggleSearchBack}
@@ -124,7 +124,7 @@ export default class CardSearchBox extends React.Component<Props, State> {
       <Animated.View style={[styles.slider, { height: anim }]}>
         <SearchBox
           onChangeText={this._onChangeText}
-          placeholder={L('Search for a card')}
+          placeholder={t`Search for a card`}
           advancedOpen={advancedOpen}
           toggleAdvanced={this._toggleAdvanced}
           value={value}

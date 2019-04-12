@@ -6,6 +6,11 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint index.js './**/*.js'",
     "i18n": "node scripts/i18n.js",
+    "i18n-extract-en": "ttag update assets/en.po app/ components/ data/ constants/",
+    "i18n-extract-fr": "ttag update assets/fr.po app/ components/ data/ constants/",
+    "i18n-extract-it": "ttag update assets/it.po app/ components/ data/ constants/",
+    "i18n-extract-de": "ttag update assets/de.po app/ components/ data/ constants/",
+    "i18n-extract-es": "ttag update assets/es.po app/ components/ data/ constants/",
     "build": "tsc --resolveJsonModule --noEmit",
     "test": "jest"
   },
@@ -54,6 +59,7 @@
     "redux-thunk": "2.3.0",
     "rn-fetch-blob": "0.10.15",
     "simple-markdown": "0.4.4",
+    "ttag": "1.7.8",
     "utility-types": "3.4.1",
     "yarn": "1.13.0"
   },
@@ -80,6 +86,7 @@
     "jest": "23.6.0",
     "react-native-typescript-transformer": "1.2.12",
     "react-test-renderer": "16.6.3",
+    "ttag-cli": "1.7.8",
     "typescript": "3.3.4000"
   },
   "jest": {

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import Dialog from './Dialog';
 import PlusMinusButtons from './PlusMinusButtons';
 
@@ -111,11 +111,11 @@ export default class CountEditDialog extends React.Component<Props, State> {
           </View>
         </View>
         <DialogComponent.Button
-          label={L('Cancel')}
+          label={t`Cancel`}
           onPress={this._onCancelPress}
         />
         <DialogComponent.Button
-          label={L('Done')}
+          label={t`Done`}
           color={countChanged ? buttonColor : '#666666'}
           disabled={!countChanged}
           onPress={this._onDonePress}

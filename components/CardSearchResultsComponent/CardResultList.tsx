@@ -19,8 +19,8 @@ import Realm, { Results } from 'realm';
 import { connectRealm, Sort } from 'react-native-realm';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
+import { msgid, ngettext, t } from 'ttag';
 
-import L from '../../app/i18n';
 import { Slots } from '../../actions/types';
 import { getPackSpoilers, getPacksInCollection, AppState } from '../../reducers';
 import Card from '../../data/Card';
@@ -46,14 +46,14 @@ const SCROLL_DISTANCE_BUFFER = 50;
 
 function funLoadingMessages() {
   return [
-    L('Investigating for clues'),
-    L('Cursing at the tentacle token'),
-    L('Drawing a mythos card with surge'),
-    L('Placing doom on the agenda'),
-    L('Reticulating spines'),
-    L('Trying to make sense of the Time Warp FAQ'),
-    L('Taking three damage and three horror'),
-    L('Up by 5, hope I don\'t draw the tentacle'),
+    t`Investigating for clues`,
+    t`Cursing at the tentacle token`,
+    t`Drawing a mythos card with surge`,
+    t`Placing doom on the agenda`,
+    t`Reticulating spines`,
+    t`Trying to make sense of the Time Warp FAQ`,
+    t`Taking three damage and three horror`,
+    t`Up by 5, hope I don't draw the tentacle`,
   ];
 }
 
@@ -78,7 +78,6 @@ interface ReduxProps {
   show_spoilers: { [code: string]: boolean; };
   in_collection: { [code: string]: boolean; };
   hasSecondCore: boolean;
-  lang: string;
 }
 
 interface RealmProps {
@@ -275,7 +274,7 @@ class CardResultList extends React.Component<Props, State> {
         options: {
           topBar: {
             title: {
-              text: L('Edit Collection'),
+              text: t`Edit Collection`,
             },
           },
         },
@@ -291,7 +290,7 @@ class CardResultList extends React.Component<Props, State> {
         options: {
           topBar: {
             title: {
-              text: L('Spoiler Settings'),
+              text: t`Spoiler Settings`,
             },
           },
         },
@@ -318,39 +317,38 @@ class CardResultList extends React.Component<Props, State> {
     }
   }
 
-  static headerForCard(card: Card, lang: string, sort?: SortType): string {
+  static headerForCard(card: Card, sort?: SortType): string {
     switch(sort) {
       case SORT_BY_TYPE:
-        return Card.typeSortHeader(card, lang);
+        return Card.typeSortHeader(card);
       case SORT_BY_FACTION:
-        return Card.factionSortHeader(card, lang);
+        return Card.factionSortHeader(card);
       case SORT_BY_COST:
         if (card.cost === null) {
-          return L('Cost: None');
+          return t`Cost: None`;
         }
-        return L('Cost: {{ cost }}', { cost: card.cost });
+        return t`Cost: ${card.cost}`;
       case SORT_BY_PACK:
         return card.pack_name;
       case SORT_BY_TITLE:
-        return L('All Cards');
+        return t`All Cards`;
       case SORT_BY_ENCOUNTER_SET:
         return card.encounter_name ||
           (card.linked_card && card.linked_card.encounter_name) ||
-          L('N/A');
+          t`N/A`;
       default:
-        return 'All Cards';
+        return t`All Cards`;
     }
   }
 
-  bucketDeckCards(cards: Card[], lang: string): CardBucket[] {
-    return this.bucketCards(cards, 'deck', true, lang);
+  bucketDeckCards(cards: Card[]): CardBucket[] {
+    return this.bucketCards(cards, 'deck', true);
   }
 
   bucketCards(
     cards: Card[],
     keyPrefix: string,
-    isDeck: boolean,
-    lang: string,
+    isDeck: boolean
   ): CardBucket[] {
     const {
       in_collection,
@@ -365,7 +363,6 @@ class CardResultList extends React.Component<Props, State> {
     cards.forEach(card => {
       const header = CardResultList.headerForCard(
         card,
-        lang,
         isDeck ? SORT_BY_TYPE : sort
       );
       if (!currentBucket || currentBucket.title !== header) {
@@ -434,7 +431,6 @@ class CardResultList extends React.Component<Props, State> {
       searchTerm,
       show_spoilers,
       originalDeckSlots,
-      lang,
     } = this.props;
     const {
       deckCardCounts,
@@ -465,11 +461,11 @@ class CardResultList extends React.Component<Props, State> {
     this.setState({
       resultsKey: resultsKey,
       deckSections: concat(
-        this.bucketDeckCards(normalCards, lang),
-        this.bucketDeckCards(specialCards, lang)),
-      cards: this.bucketCards(groupedCards[0], 'cards', false, lang),
+        this.bucketDeckCards(normalCards),
+        this.bucketDeckCards(specialCards)),
+      cards: this.bucketCards(groupedCards[0], 'cards', false),
       cardsCount: groupedCards[0].length,
-      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler', false, lang),
+      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler', false),
       spoilerCardsCount: groupedCards[1].length,
     });
   };
@@ -507,7 +503,7 @@ class CardResultList extends React.Component<Props, State> {
       return (
         <View style={styles.sectionFooterButton}>
           <Button
-            title={L('Edit Collection')}
+            title={t`Edit Collection`}
             onPress={this._editCollectionSettings}
           />
         </View>
@@ -516,7 +512,10 @@ class CardResultList extends React.Component<Props, State> {
     return (
       <ShowNonCollectionFooter
         id={section.id}
-        title={L('Show {{count}} Non-Collection Cards', { count: section.nonCollectionCount })}
+        title={ngettext(
+          msgid`Show ${section.nonCollectionCount} Non-Collection Card`,
+          `Show ${section.nonCollectionCount} Non-Collection Cards`,
+          section.nonCollectionCount)}
         onPress={this._showNonCollectionCards}
       />
     );
@@ -556,8 +555,8 @@ class CardResultList extends React.Component<Props, State> {
           <View style={styles.emptyText}>
             <Text style={typography.text}>
               { searchTerm ?
-                L('No matching cards for "{{searchTerm}}"', { searchTerm }) :
-                L('No matching cards') }
+                t`No matching cards for "${searchTerm}"` :
+                t`No matching cards` }
             </Text>
           </View>
           { this.props.expandSearchControls }
@@ -585,14 +584,17 @@ class CardResultList extends React.Component<Props, State> {
           <View style={styles.button}>
             <Button
               onPress={this._editSpoilerSettings}
-              title={L('Edit Spoiler Settings')}
+              title={t`Edit Spoiler Settings`}
             />
           </View>
           { this.renderEmptyState() }
         </View>
       );
     }
-    const spoilerCount = L('Show {{count}} Spoilers', { count: spoilerCardsCount });
+    const spoilerCount = ngettext(
+      msgid`Show ${spoilerCardsCount} Spoiler`,
+      `Show ${spoilerCardsCount} Spoilers`,
+      spoilerCardsCount);
     return (
       <View style={styles.footer}>
         <View style={styles.button}>
@@ -601,7 +603,7 @@ class CardResultList extends React.Component<Props, State> {
         <View style={styles.button}>
           <Button
             onPress={this._editSpoilerSettings}
-            title={L('Edit Spoiler Settings')}
+            title={t`Edit Spoiler Settings`}
           />
         </View>
         { this.renderEmptyState() }
@@ -726,7 +728,6 @@ function mapStateToProps(state: AppState): ReduxProps {
     in_collection,
     show_spoilers: getPackSpoilers(state),
     hasSecondCore: in_collection.core || false,
-    lang: state.packs.lang || 'en',
   };
 }
 

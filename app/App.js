@@ -58,7 +58,7 @@ export default class App {
   }
 
   startApp(lang) {
-    changeLocale(lang);
+    changeLocale(lang || 'en');
     YellowBox.ignoreWarnings([
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
       'Consider using `numColumns` with `FlatList` instead.',
@@ -94,7 +94,7 @@ export default class App {
                 options: {
                   topBar: {
                     title: {
-                      text: L('Player Cards'),
+                      text: t`Player Cards`,
                     },
                   },
                 },
@@ -109,7 +109,7 @@ export default class App {
             minWidth: 100,
           },
           bottomTab: {
-            text: L('Cards'),
+            text: t`Cards`,
             icon: iconsMap.cards,
           },
         },
@@ -123,7 +123,7 @@ export default class App {
             options: {
               topBar: {
                 title: {
-                  text: L('Player Cards'),
+                  text: t`Player Cards`,
                 },
               },
             },
@@ -131,7 +131,7 @@ export default class App {
         }],
         options: {
           bottomTab: {
-            text: L('Cards'),
+            text: t`Cards`,
             icon: iconsMap.cards,
           },
         },
@@ -145,7 +145,7 @@ export default class App {
             options: {
               topBar: {
                 title: {
-                  text: L('Decks'),
+                  text: t`Decks`,
                 },
                 rightButtons: [{
                   icon: iconsMap.add,
@@ -158,7 +158,7 @@ export default class App {
         }],
         options: {
           bottomTab: {
-            text: L('Decks'),
+            text: t`Decks`,
             icon: iconsMap.deck,
           },
         },
@@ -171,7 +171,7 @@ export default class App {
             options: {
               topBar: {
                 title: {
-                  text: L('Campaigns'),
+                  text: t`Campaigns`,
                 },
                 rightButtons: [{
                   icon: iconsMap.add,
@@ -184,7 +184,7 @@ export default class App {
         }],
         options: {
           bottomTab: {
-            text: L('Campaigns'),
+            text: t`Campaigns`,
             icon: iconsMap.book,
           },
         },
@@ -197,7 +197,7 @@ export default class App {
             options: {
               topBar: {
                 title: {
-                  text: L('Settings'),
+                  text: t`Settings`,
                 },
               },
             },
@@ -205,7 +205,7 @@ export default class App {
         }],
         options: {
           bottomTab: {
-            text: L('Settings'),
+            text: t`Settings`,
             icon: iconsMap.settings,
           },
         },

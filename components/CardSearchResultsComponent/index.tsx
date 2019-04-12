@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Slots } from '../../actions/types';
 import Card from '../../data/Card';
 import CardSearchBox from './CardSearchBox';
@@ -232,7 +232,7 @@ export default class CardSearchResultComponent extends React.Component<Props, St
           <View style={styles.button}>
             <Button
               onPress={toggleMythosMode}
-              title={mythosMode ? L('Search Player Cards') : L('Search Encounter Cards')}
+              title={mythosMode ? t`Search Player Cards` : t`Search Encounter Cards`}
             />
           </View>
         ) }
@@ -240,7 +240,7 @@ export default class CardSearchResultComponent extends React.Component<Props, St
           <View style={styles.button}>
             <Button
               onPress={clearSearchFilters}
-              title={L('Clear Search Filters')}
+              title={t`Clear Search Filters`}
             />
           </View>
         ) }
@@ -263,14 +263,14 @@ export default class CardSearchResultComponent extends React.Component<Props, St
           <View style={styles.button}>
             <Button
               onPress={this._clearSearchTerm}
-              title={L('Clear "{{searchTerm}}" search', { searchTerm })}
+              title={t`Clear "${searchTerm}" search`}
             />
           </View>
         ) }
         { !searchText && (
           <View style={styles.toggle}>
             <Text style={[typography.text, styles.toggleText]}>
-              { L('Search Game Text') }
+              { t`Search Game Text` }
             </Text>
             <Switch value={false} onValueChange={this._toggleSearchText} />
           </View>
@@ -278,7 +278,7 @@ export default class CardSearchResultComponent extends React.Component<Props, St
         { !searchBack && (
           <View style={styles.toggle}>
             <Text style={[typography.text, styles.toggleText]}>
-              { L('Search Card Backs') }
+              { t`Search Card Backs` }
             </Text>
             <Switch value={false} onValueChange={this._toggleSearchBack} />
           </View>

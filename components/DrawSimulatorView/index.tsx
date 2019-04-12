@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Slots } from '../../actions/types';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import CardSearchResult from '../CardSearchResult';
@@ -165,23 +165,23 @@ class DrawSimulatorView extends React.Component<Props, State> {
     return (
       <View style={styles.controlsContainer}>
         <View style={styles.drawButtonRow}>
-          <Text style={styles.text}>{ L('Draw: ') }</Text>
+          <Text style={styles.text}>{ t`Draw: ` }</Text>
           <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
           <Button title="2" disabled={deckEmpty} onPress={this._drawTwo} />
           <Button title="5" disabled={deckEmpty} onPress={this._drawFive} />
-          <Button title={L('All')} disabled={deckEmpty} onPress={this._drawAll} />
+          <Button title={t`All`} disabled={deckEmpty} onPress={this._drawAll} />
         </View>
         <View style={styles.wrapButtonRow}>
           <Button
-            title={L('Redraw')}
+            title={t`Redraw`}
             disabled={noSelection}
             onPress={this._redrawSelected} />
           <Button
-            title={L('Reshuffle')}
+            title={t`Reshuffle`}
             disabled={noSelection}
             onPress={this._reshuffleSelected} />
           <Button
-            title={L('Reset')}
+            title={t`Reset`}
             disabled={drawnCards.length === 0}
             onPress={this._resetDeck} />
         </View>

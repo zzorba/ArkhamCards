@@ -1,4 +1,4 @@
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import {
   CUSTOM,
   CORE,
@@ -32,19 +32,19 @@ export function difficultyStrings(): {
   [difficulty in CampaignDifficultyType]: string;
 } {
   return {
-    easy: L('Easy'),
-    standard: L('Standard'),
-    hard: L('Hard'),
-    expert: L('Expert'),
+    easy: t`Easy`,
+    standard: t`Standard`,
+    hard: t`Hard`,
+    expert: t`Expert`,
   };
 }
 
 export function difficultyString(difficulty: CampaignDifficultyType): string {
   switch (difficulty) {
-    case EASY: return L('Easy');
-    case STANDARD: return L('Standard');
-    case HARD: return L('Hard');
-    case EXPERT: return L('Expert');
+    case EASY: return t`Easy`;
+    case STANDARD: return t`Standard`;
+    case HARD: return t`Hard`;
+    case EXPERT: return t`Expert`;
     default:
       const _exhaustiveCheck: never = difficulty;
       return 'Unknown';
@@ -53,13 +53,13 @@ export function difficultyString(difficulty: CampaignDifficultyType): string {
 
 export function campaignName(cycleCode: CampaignCycleCode): string | null {
   switch (cycleCode) {
-    case CORE: return L('Night of the Zealot');
-    case RTNOTZ: return L('Return to the Night of the Zealot');
-    case DWL: return L('The Dunwich Legacy');
-    case RTDWL: return L('Return to The Dunwich Legacy');
-    case PTC: return L('The Path To Carcosa');
-    case TFA: return L('The Forgotten Age');
-    case TCU: return L('The Circle Undone');
+    case CORE: return t`Night of the Zealot`;
+    case RTNOTZ: return t`Return to the Night of the Zealot`;
+    case DWL: return t`The Dunwich Legacy`;
+    case RTDWL: return t`Return to The Dunwich Legacy`;
+    case PTC: return t`The Path To Carcosa`;
+    case TFA: return t`The Forgotten Age`;
+    case TCU: return t`The Circle Undone`;
     case CUSTOM: return null;
     default:
       const _exhaustiveCheck: never = cycleCode;
@@ -77,88 +77,88 @@ export interface Scenario {
 export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
   switch (cycleCode) {
     case CORE: return [
-      { name: L('The Gathering'), code: 'torch', pack_code: 'core' },
-      { name: L('The Midnight Masks'), code: 'arkham', pack_code: 'core' },
-      { name: L('The Devourer Below'), code: 'tentacles', pack_code: 'core' },
+      { name: t`The Gathering`, code: 'torch', pack_code: 'core' },
+      { name: t`The Midnight Masks`, code: 'arkham', pack_code: 'core' },
+      { name: t`The Devourer Below`, code: 'tentacles', pack_code: 'core' },
     ];
     case DWL: return [
-      { name: L('Extracurricular Activity'), code: 'extracurricular_activity', pack_code: 'dwl' },
-      { name: L('The House Always Wins'), code: 'the_house_always_wins', pack_code: 'dwl' },
-      { name: L('Armitage’s Fate'), code: 'armitages_fate', interlude: true },
-      { name: L('The Miskatonic Museum'), code: 'the_miskatonic_museum', pack_code: 'tmm' },
-      { name: L('Essex County Express'), code: 'essex_county_express', pack_code: 'tece' },
-      { name: L('Blood on the Altar'), code: 'blood_on_the_altar', pack_code: 'bota' },
-      { name: L('The Survivors'), code: 'dwl_interlude2', interlude: true },
-      { name: L('Undimensioned and Unseen'), code: 'undimensioned_and_unseen', pack_code: 'uau' },
-      { name: L('Where Doom Awaits'), code: 'where_doom_awaits', pack_code: 'wda' },
-      { name: L('Lost in Time and Space'), code: 'lost_in_time_and_space', pack_code: 'litas' },
-      { name: L('Epilogue'), code: 'dwl_epilogue', interlude: true },
+      { name: t`Extracurricular Activity`, code: 'extracurricular_activity', pack_code: 'dwl' },
+      { name: t`The House Always Wins`, code: 'the_house_always_wins', pack_code: 'dwl' },
+      { name: t`Armitage’s Fate`, code: 'armitages_fate', interlude: true },
+      { name: t`The Miskatonic Museum`, code: 'the_miskatonic_museum', pack_code: 'tmm' },
+      { name: t`Essex County Express`, code: 'essex_county_express', pack_code: 'tece' },
+      { name: t`Blood on the Altar`, code: 'blood_on_the_altar', pack_code: 'bota' },
+      { name: t`The Survivors`, code: 'dwl_interlude2', interlude: true },
+      { name: t`Undimensioned and Unseen`, code: 'undimensioned_and_unseen', pack_code: 'uau' },
+      { name: t`Where Doom Awaits`, code: 'where_doom_awaits', pack_code: 'wda' },
+      { name: t`Lost in Time and Space`, code: 'lost_in_time_and_space', pack_code: 'litas' },
+      { name: t`Epilogue`, code: 'dwl_epilogue', interlude: true },
     ];
     case RTDWL: return [
-      { name: L('Return to Extracurricular Activity'), code: 'return_to_extracurricular_activity', pack_code: 'rtdwl' },
-      { name: L('Return to The House Always Wins'), code: 'return_to_the_house_always_wins', pack_code: 'rtdwl' },
-      { name: L('Armitage’s Fate'), code: 'armitages_fate', interlude: true },
-      { name: L('Return to The Miskatonic Museum'), code: 'return_to_the_miskatonic_museum', pack_code: 'rtdwl' },
-      { name: L('Return to Essex County Express'), code: 'return_to_essex_county_express', pack_code: 'rtdwl' },
-      { name: L('Return to Blood on the Altar'), code: 'return_to_blood_on_the_altar', pack_code: 'rtdwl' },
-      { name: L('The Survivors'), code: 'dwl_interlude2', interlude: true },
-      { name: L('Return to Undimensioned and Unseen'), code: 'return_to_undimensioned_and_unseen', pack_code: 'rtdwl' },
-      { name: L('Return to Where Doom Awaits'), code: 'return_to_where_doom_awaits', pack_code: 'rtdwl' },
-      { name: L('Return to Lost in Time and Space'), code: 'return_to_lost_in_time_and_space', pack_code: 'rtdwl' },
-      { name: L('Epilogue'), code: 'dwl_epilogue', interlude: true },
+      { name: t`Return to Extracurricular Activity`, code: 'return_to_extracurricular_activity', pack_code: 'rtdwl' },
+      { name: t`Return to The House Always Wins`, code: 'return_to_the_house_always_wins', pack_code: 'rtdwl' },
+      { name: t`Armitage’s Fate`, code: 'armitages_fate', interlude: true },
+      { name: t`Return to The Miskatonic Museum`, code: 'return_to_the_miskatonic_museum', pack_code: 'rtdwl' },
+      { name: t`Return to Essex County Express`, code: 'return_to_essex_county_express', pack_code: 'rtdwl' },
+      { name: t`Return to Blood on the Altar`, code: 'return_to_blood_on_the_altar', pack_code: 'rtdwl' },
+      { name: t`The Survivors`, code: 'dwl_interlude2', interlude: true },
+      { name: t`Return to Undimensioned and Unseen`, code: 'return_to_undimensioned_and_unseen', pack_code: 'rtdwl' },
+      { name: t`Return to Where Doom Awaits`, code: 'return_to_where_doom_awaits', pack_code: 'rtdwl' },
+      { name: t`Return to Lost in Time and Space`, code: 'return_to_lost_in_time_and_space', pack_code: 'rtdwl' },
+      { name: t`Epilogue`, code: 'dwl_epilogue', interlude: true },
     ];
     case PTC: return [
-      { name: L('Prologue'), code: 'ptc_prologue', interlude: true },
-      { name: L('Curtain Call'), code: 'curtain_call', pack_code: 'ptc' },
-      { name: L('The Last King'), code: 'the_last_king', pack_code: 'ptc' },
-      { name: L('Lunacy’s Reward'), code: 'ptc_interlude1', interlude: true },
-      { name: L('Echoes of the Past'), code: 'echoes_of_the_past', pack_code: 'eotp' },
-      { name: L('The Unspeakable Oath'), code: 'the_unspeakable_oath', pack_code: 'tuo' },
-      { name: L('Lost Soul'), code: 'ptc_interlude2', interlude: true },
-      { name: L('A Phantom of Truth'), code: 'a_phantom_of_truth', pack_code: 'apot' },
-      { name: L('The Pallid Mask'), code: 'the_pallid_mask', pack_code: 'tpm' },
-      { name: L('Black Stars Rise'), code: 'black_stars_rise', pack_code: 'bsr' },
-      { name: L('Dim Carcosa'), code: 'dim_carcosa', pack_code: 'dca' },
-      { name: L('Epilogue'), code: 'ptc_epilogue', interlude: true },
+      { name: t`Prologue`, code: 'ptc_prologue', interlude: true },
+      { name: t`Curtain Call`, code: 'curtain_call', pack_code: 'ptc' },
+      { name: t`The Last King`, code: 'the_last_king', pack_code: 'ptc' },
+      { name: t`Lunacy’s Reward`, code: 'ptc_interlude1', interlude: true },
+      { name: t`Echoes of the Past`, code: 'echoes_of_the_past', pack_code: 'eotp' },
+      { name: t`The Unspeakable Oath`, code: 'the_unspeakable_oath', pack_code: 'tuo' },
+      { name: t`Lost Soul`, code: 'ptc_interlude2', interlude: true },
+      { name: t`A Phantom of Truth`, code: 'a_phantom_of_truth', pack_code: 'apot' },
+      { name: t`The Pallid Mask`, code: 'the_pallid_mask', pack_code: 'tpm' },
+      { name: t`Black Stars Rise`, code: 'black_stars_rise', pack_code: 'bsr' },
+      { name: t`Dim Carcosa`, code: 'dim_carcosa', pack_code: 'dca' },
+      { name: t`Epilogue`, code: 'ptc_epilogue', interlude: true },
     ];
     case TFA: [
-      { name: L('Prologue'), code: 'tfa_prologue', interlude: true },
-      { name: L('The Untamed Wilds'), code: 'wilds', pack_code: 'tfa' },
-      { name: L('Restless Nights'), code: 'tfa_interlude1', interlude: true },
-      { name: L('The Doom of Eztli'), code: 'eztli', pack_code: 'tfa' },
-      { name: L('Expedition’s End'), code: 'tfa_interlude2', interlude: true },
-      { name: L('Threads of Fate'), code: 'threads_of_fate', pack_code: 'tof' },
-      { name: L('The Boundary Beyond'), code: 'the_boundary_beyond', pack_code: 'tbb' },
-      { name: L('The Jungle Beckons'), code: 'tfa_interlude3', interlude: true },
-      { name: L('Heart of the Elders'), code: 'heart_of_the_elders', pack_code: 'hote' },
-      { name: L('The City of Archives'), code: 'the_city_of_archives', pack_code: 'tcoa' },
-      { name: L('Those Held Captive'), code: 'tfa_interlude4', interlude: true },
-      { name: L('The Depths of Yoth'), code: 'the_depths_of_yoth', pack_code: 'tdoy' },
-      { name: L('The Darkness'), code: 'tfa_interlude5', interlude: true },
-      { name: L('Shattered Aeons'), code: 'shattered_aeons', pack_code: 'sha' },
-      { name: L('Epilogue'), code: 'tfa_epilogue', interlude: true },
+      { name: t`Prologue`, code: 'tfa_prologue', interlude: true },
+      { name: t`The Untamed Wilds`, code: 'wilds', pack_code: 'tfa' },
+      { name: t`Restless Nights`, code: 'tfa_interlude1', interlude: true },
+      { name: t`The Doom of Eztli`, code: 'eztli', pack_code: 'tfa' },
+      { name: t`Expedition’s End`, code: 'tfa_interlude2', interlude: true },
+      { name: t`Threads of Fate`, code: 'threads_of_fate', pack_code: 'tof' },
+      { name: t`The Boundary Beyond`, code: 'the_boundary_beyond', pack_code: 'tbb' },
+      { name: t`The Jungle Beckons`, code: 'tfa_interlude3', interlude: true },
+      { name: t`Heart of the Elders`, code: 'heart_of_the_elders', pack_code: 'hote' },
+      { name: t`The City of Archives`, code: 'the_city_of_archives', pack_code: 'tcoa' },
+      { name: t`Those Held Captive`, code: 'tfa_interlude4', interlude: true },
+      { name: t`The Depths of Yoth`, code: 'the_depths_of_yoth', pack_code: 'tdoy' },
+      { name: t`The Darkness`, code: 'tfa_interlude5', interlude: true },
+      { name: t`Shattered Aeons`, code: 'shattered_aeons', pack_code: 'sha' },
+      { name: t`Epilogue`, code: 'tfa_epilogue', interlude: true },
     ];
     case TCU: [
-      { name: L('Prologue: Disappearance at the Twilight Estate'), code: 'tcu_prologue', pack_code: 'tcu' },
-      { name: L('The Witching Hour'), code: 'the_witching_hour', pack_code: 'tcu' },
-      { name: L('At Death\'s Doorstep (Act 1)'), code: 'at_deaths_doorstep_1', pack_code: 'tcu' },
-      { name: L('A Record of Those Lost'), code: 'tcu_interlude_1', interlude: true },
-      { name: L('At Death\'s Doorstep (Acts 2-3)'), code: 'at_deaths_doorstep_23', pack_code: 'tcu' },
-      { name: L('The Price of Progress'), code: 'tcu_interlude_2', interlude: true },
-      { name: L('The Secret Name'), code: 'the_secret_name', pack_code: 'tsn' },
-      { name: L('The Wages of Sin'), code: 'the_wages_of_sin', pack_code: 'tws' },
-      { name: L('For the Greater Good'), code: 'for_the_greater_good', pack_code: 'fgg' },
-      { name: L('The Inner Circle'), code: 'tcu_interlude_3', interlude: true },
-      { name: L('Union and Disillusion'), code: 'union_and_disillusion', pack_code: 'uad' },
-      { name: L('In the Clutches of Chaos'), code: 'in_the_clutches_of_chaos', pack_code: 'icc' },
-      { name: L('Twist of Fate'), code: 'tcu_interlude_4', interlude: true },
-      { name: L('Before the Black Throne'), code: 'before_the_black_throne', pack_code: 'bbt' },
-      { name: L('Epilogue'), code: 'tcu_epilogue', interlude: true },
+      { name: t`Prologue: Disappearance at the Twilight Estate`, code: 'tcu_prologue', pack_code: 'tcu' },
+      { name: t`The Witching Hour`, code: 'the_witching_hour', pack_code: 'tcu' },
+      { name: t`At Death's Doorstep (Act 1)`, code: 'at_deaths_doorstep_1', pack_code: 'tcu' },
+      { name: t`A Record of Those Lost`, code: 'tcu_interlude_1', interlude: true },
+      { name: t`At Death's Doorstep (Acts 2-3)`, code: 'at_deaths_doorstep_23', pack_code: 'tcu' },
+      { name: t`The Price of Progress`, code: 'tcu_interlude_2', interlude: true },
+      { name: t`The Secret Name`, code: 'the_secret_name', pack_code: 'tsn' },
+      { name: t`The Wages of Sin`, code: 'the_wages_of_sin', pack_code: 'tws' },
+      { name: t`For the Greater Good`, code: 'for_the_greater_good', pack_code: 'fgg' },
+      { name: t`The Inner Circle`, code: 'tcu_interlude_3', interlude: true },
+      { name: t`Union and Disillusion`, code: 'union_and_disillusion', pack_code: 'uad' },
+      { name: t`In the Clutches of Chaos`, code: 'in_the_clutches_of_chaos', pack_code: 'icc' },
+      { name: t`Twist of Fate`, code: 'tcu_interlude_4', interlude: true },
+      { name: t`Before the Black Throne`, code: 'before_the_black_throne', pack_code: 'bbt' },
+      { name: t`Epilogue`, code: 'tcu_epilogue', interlude: true },
     ];
     case RTNOTZ: return [
-      { name: L('Return to The Gathering'), code: 'return_to_the_gathering', pack_code: 'rtnotz' },
-      { name: L('Return to the Midnight Masks'), code: 'return_to_the_midnight_masks', pack_code: 'rtnotz' },
-      { name: L('Return to the Devourer Below'), code: 'return_to_the_devourer_below', pack_code: 'rtnotz' },
+      { name: t`Return to The Gathering`, code: 'return_to_the_gathering', pack_code: 'rtnotz' },
+      { name: t`Return to the Midnight Masks`, code: 'return_to_the_midnight_masks', pack_code: 'rtnotz' },
+      { name: t`Return to the Devourer Below`, code: 'return_to_the_devourer_below', pack_code: 'rtnotz' },
     ];
     case CUSTOM: return [];
     default:
@@ -169,13 +169,13 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
 
 export function campaignNames() {
   return {
-    core: L('The Night of the Zealot'),
-    rtnotz: L('Return to the Night of the Zealot'),
-    dwl: L('The Dunwich Legacy'),
-    rtdwl: L('Return to The Dunwich Legacy'),
-    ptc: L('The Path to Carcosa'),
-    tfa: L('The Forgotten Age'),
-    tcu: L('The Circle Undone'),
+    core: t`The Night of the Zealot`,
+    rtnotz: t`Return to the Night of the Zealot`,
+    dwl: t`The Dunwich Legacy`,
+    rtdwl: t`Return to The Dunwich Legacy`,
+    ptc: t`The Path to Carcosa`,
+    tfa: t`The Forgotten Age`,
+    tcu: t`The Circle Undone`,
   };
 }
 
@@ -197,61 +197,61 @@ export function getCampaignLog(
     case RTNOTZ:
       return {
         sections: [
-          L('Campaign Notes'),
-          L('Cultists We Interrogated'),
-          L('Cultists Who Got Away'),
+          t`Campaign Notes`,
+          t`Cultists We Interrogated`,
+          t`Cultists Who Got Away`,
         ],
       };
     case DWL:
     case RTDWL:
       return {
         sections: [
-          L('Campaign Notes'),
-          L('Sacrificed to Yog-Sothoth'),
+          t`Campaign Notes`,
+          t`Sacrificed to Yog-Sothoth`,
         ],
       };
     case PTC:
       return {
         sections: [
-          L('Campaign Notes'),
-          L('VIPs Interviewed'),
-          L('VIPs Slain'),
+          t`Campaign Notes`,
+          t`VIPs Interviewed`,
+          t`VIPs Slain`,
         ],
         counts: [
-          L('Doubt'),
-          L('Conviction'),
-          L('Chasing the Stranger'),
+          t`Doubt`,
+          t`Conviction`,
+          t`Chasing the Stranger`,
         ],
       };
     case TFA:
       return {
-        sections: [L('Campaign Notes')],
-        counts: [L('Yig\'s Fury')],
-        investigatorSections: [L('Supplies')],
+        sections: [t`Campaign Notes`],
+        counts: [t`Yig's Fury`],
+        investigatorSections: [t`Supplies`],
         // investigatorCounts
       };
     case TCU:
       return {
         sections: [
-          L('Campaign Notes'),
-          L('Mementos Discovered'),
-          L('Missing Persons - Gavriella Mizrah'),
-          L('Missing Persons - Jerome Davids'),
-          L('Missing Persons - Penny White'),
-          L('Missing Persons - Valentino Rivas'),
+          t`Campaign Notes`,
+          t`Mementos Discovered`,
+          t`Missing Persons - Gavriella Mizrah`,
+          t`Missing Persons - Jerome Davids`,
+          t`Missing Persons - Penny White`,
+          t`Missing Persons - Valentino Rivas`,
         ],
       };
     case CUSTOM:
       return {
         sections: [
-          L('Campaign Notes'),
+          t`Campaign Notes`,
         ],
       };
     default:
       const _exhaustiveCheck: never = cycleCode;
       return {
         sections: [
-          L('Campaign Notes'),
+          t`Campaign Notes`,
         ],
       };
   }

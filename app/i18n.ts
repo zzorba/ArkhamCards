@@ -1,14 +1,21 @@
-import I18n from 'i18n-js';
+import { addLocale, useLocale } from 'ttag';
 
-const translations = require('./translations.json');
-I18n.fallbacks = true;
-
-I18n.translations = translations;
-
-export default function(value: string, variables: any = {}) {
-  return I18n.t(value, Object.assign({ defaultValue: value }, variables));
+function getTranslationObj(locale: string) {
+  switch (locale) {
+    case 'es': return require('../assets/es.po.json');
+    case 'de': return require('../assets/de.po.json');
+    case 'fr': return require('../assets/fr.po.json');
+    case 'it': return require('../assets/it.po.json');
+    case 'en':
+    default:
+      return require('../assets/en.po.json');
+  }
 }
 
 export function changeLocale(locale: string) {
-  I18n.locale = locale;
+  console.log('Changing locale to ' + locale);
+  //const translationObj = getTranslationObj(locale);
+  //addLocale(locale, translationObj);
+  //useLocale(locale);
+  console.log('All Done!');
 }

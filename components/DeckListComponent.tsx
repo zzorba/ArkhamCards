@@ -10,7 +10,7 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Campaign, Deck, DecksMap } from '../actions/types';
 import Card from '../data/Card';
 import { searchMatchesText } from './searchHelpers';
@@ -116,7 +116,7 @@ class DeckListComponent extends React.Component<Props, State> {
         <SearchBox
           value={this.state.searchTerm}
           onChangeText={this._searchChanged}
-          placeholder={L('Search decks')}
+          placeholder={t`Search decks`}
         />
         { !!customHeader && customHeader }
       </View>
@@ -136,7 +136,7 @@ class DeckListComponent extends React.Component<Props, State> {
       return (
         <View style={styles.footer}>
           <Text style={[typography.text, space.marginBottomM]}>
-            { L('No decks yet.\n\nUse the + button to create a new one.') }
+            { t`No decks yet.\n\nUse the + button to create a new one.` }
           </Text>
           { customFooter }
         </View>
@@ -146,7 +146,7 @@ class DeckListComponent extends React.Component<Props, State> {
       return (
         <View style={styles.footer}>
           <Text style={[typography.text, typography.center, space.marginBottomM]}>
-            { L('No matching decks for "{{searchTerm}}".', { searchTerm }) }
+            { t`No matching decks for "${searchTerm}".` }
           </Text>
           { customFooter }
         </View>

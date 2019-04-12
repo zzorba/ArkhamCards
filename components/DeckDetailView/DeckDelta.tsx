@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { getDeckOptions, showCard } from '../navHelper';
 import { ParsedDeck } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
@@ -93,7 +93,7 @@ export default class DeckDelta extends React.Component<Props> {
             <View style={styles.button}>
               <Button
                 onPress={this._showPreviousDeck}
-                title={L('Previous Deck')}
+                title={t`Previous Deck`}
               />
             </View>
           ) }
@@ -101,7 +101,7 @@ export default class DeckDelta extends React.Component<Props> {
             <View style={styles.button}>
               <Button
                 onPress={this._showNextDeck}
-                title={L('Next Deck')}
+                title={t`Next Deck`}
               />
             </View>
           ) }
@@ -110,7 +110,7 @@ export default class DeckDelta extends React.Component<Props> {
           <View>
             <View style={styles.title}>
               <Text style={typography.smallLabel}>
-                { L('CHANGES FROM PREVIOUS DECK') }
+                { t`CHANGES FROM PREVIOUS DECK` }
               </Text>
             </View>
             { map(keys(changedCards), code => (
@@ -128,7 +128,7 @@ export default class DeckDelta extends React.Component<Props> {
           <View>
             <View style={styles.title}>
               <Text style={typography.smallLabel}>
-                { L('EXILED CARDS') }
+                { t`EXILED CARDS` }
               </Text>
             </View>
             { map(keys(exiledCards), code => (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import DialogPicker from './core/DialogPicker';
 
 interface Props {
@@ -22,7 +22,7 @@ export default class ScenarioDialog extends React.Component<Props> {
     return (
       <DialogPicker
         componentId={componentId}
-        header={L('Scenario')}
+        header={t`Scenario`}
         options={scenarios}
         onSelectionChanged={scenarioChanged}
         selectedOption={selected}

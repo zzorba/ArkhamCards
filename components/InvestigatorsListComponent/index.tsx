@@ -15,8 +15,8 @@ import {
 import { connect } from 'react-redux';
 import { connectRealm, CardResults} from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
+import { msgid, ngettext, t } from 'ttag';
 
-import L from '../../app/i18n';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import Card, { CardsMap } from '../../data/Card';
 import { searchMatchesText } from '../searchHelpers';
@@ -180,13 +180,13 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   ): string {
     switch (sort) {
       case SORT_BY_FACTION:
-        return investigator.faction_name || L('N/A');
+        return investigator.faction_name || t`N/A`;
       case SORT_BY_TITLE:
-        return L('All Investigators');
+        return t`All Investigators`;
       case SORT_BY_PACK:
         return investigator.pack_name;
       default:
-        return L('N/A');
+        return t`N/A`;
     }
   }
 
@@ -291,7 +291,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       return (
         <View style={styles.sectionFooterButton}>
           <Button
-            title={L('Edit Collection')}
+            title={t`Edit Collection`}
             onPress={this._editCollection}
           />
         </View>
@@ -300,7 +300,11 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     return (
       <ShowNonCollectionFooter
         id={section.id}
-        title={L('Show {{count}} Non-Collection Investigators', { count: section.nonCollectionCount })}
+        title={ngettext(
+          msgid`Show ${section.nonCollectionCount} Non-Collection Investigator`,
+          `Show ${section.nonCollectionCount} Non-Collection Investigators`,
+          section.nonCollectionCount
+        )}
         onPress={this._showNonCollectionCards}
       />
     );
@@ -348,7 +352,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       return (
         <View style={styles.footer}>
           <Text style={[typography.text, typography.center]}>
-            { L('No matching investigators for "{{searchTerm}}".', { searchTerm }) }
+            { t`No matching investigators for "${searchTerm}".` }
           </Text>
         </View>
       );

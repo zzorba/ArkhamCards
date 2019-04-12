@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import SearchBox, { SEARCH_BAR_HEIGHT } from '../SearchBox';
 
 export const SEARCH_OPTIONS_HEIGHT = 44;
@@ -81,7 +81,7 @@ export default class InvestigatorSearchBox extends React.Component<Props, State>
         <SearchBox
           value={this.props.value}
           onChangeText={this._onChangeText}
-          placeholder={L('Search')}
+          placeholder={t`Search`}
         />
       </Animated.View>
     );

@@ -3,7 +3,7 @@ import { find, map } from 'lodash';
 import { BackHandler } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import DialogPicker from '../core/DialogPicker';
 import {
   SORT_BY_TYPE,
@@ -39,17 +39,17 @@ export default class CardSortDialog extends React.Component<Props> {
   static sortToCopy(sort: SortType): string {
     switch (sort) {
       case SORT_BY_TYPE:
-        return L('Type');
+        return t`Type`;
       case SORT_BY_FACTION:
-        return L('Faction');
+        return t`Faction`;
       case SORT_BY_COST:
-        return L('Cost');
+        return t`Cost`;
       case SORT_BY_PACK:
-        return L('Pack');
+        return t`Pack`;
       case SORT_BY_TITLE:
-        return L('Title');
+        return t`Title`;
       case SORT_BY_ENCOUNTER_SET:
-        return L('Encounter Set');
+        return t`Encounter Set`;
       default:
         const _exhaustiveCheck: never = sort;
         return '';
@@ -94,7 +94,7 @@ export default class CardSortDialog extends React.Component<Props> {
         componentId={componentId}
         options={map(sorts, CardSortDialog.sortToCopy)}
         onSelectionChanged={this._onSortChanged}
-        header={L('Sort by')}
+        header={t`Sort by`}
         selectedOption={CardSortDialog.sortToCopy(selectedSort)}
       />
     );

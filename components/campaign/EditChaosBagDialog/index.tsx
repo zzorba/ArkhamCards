@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { iconsMap } from '../../../app/NavIcons';
 import { NavigationProps } from '../../types';
 import ChaosTokenRow from './ChaosTokenRow';
@@ -46,7 +46,7 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
         leftButtons: [
           Platform.OS === 'ios' ? {
             systemItem: 'cancel',
-            text: L('Cancel'),
+            text: t`Cancel`,
             id: 'back',
             color: COLORS.navButton,
           } : {
@@ -57,7 +57,7 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
         ],
         rightButtons: [{
           systemItem: 'save',
-          text: L('Save'),
+          text: t`Save`,
           id: 'save',
           showAsAction: 'ifRoom',
           color: COLORS.navButton,
@@ -124,21 +124,21 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
     }
     if (hasPendingEdits) {
       Alert.alert(
-        L('Save changes?'),
-        L('Looks like you have made some changes that have not been saved.'),
+        t`Save changes?`,
+        t`Looks like you have made some changes that have not been saved.`,
         [{
-          text: L('Save Changes'),
+          text: t`Save Changes`,
           onPress: () => {
             this._saveChanges();
           },
         }, {
-          text: L('Discard Changes'),
+          text: t`Discard Changes`,
           style: 'destructive',
           onPress: () => {
             Navigation.pop(componentId);
           },
         }, {
-          text: L('Cancel'),
+          text: t`Cancel`,
           style: 'cancel',
         }],
       );

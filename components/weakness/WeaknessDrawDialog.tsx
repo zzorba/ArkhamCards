@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import WeaknessDrawComponent from './WeaknessDrawComponent';
 import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Slots } from '../../actions/types';
 import Button from '../core/Button';
 import { NavigationProps } from '../types';
@@ -95,7 +95,7 @@ class WeaknessDrawDialog extends React.Component<Props, State> {
         <Button
           color="green"
           onPress={this._saveDrawnCard}
-          text={L('Save to Deck')}
+          text={t`Save to Deck`}
         />
       </View>
     );

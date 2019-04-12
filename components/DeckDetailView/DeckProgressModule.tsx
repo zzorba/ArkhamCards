@@ -7,7 +7,7 @@ import DeckDelta from './DeckDelta';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
 import { ParsedDeck } from '../parseDeck';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { fetchPublicDeck, fetchPrivateDeck } from '../../actions';
 import { Campaign, Deck, Trauma } from '../../actions/types';
 import Card, { CardsMap } from '../../data/Card';
@@ -117,7 +117,7 @@ class DeckProgressModule extends React.PureComponent<Props> {
       <View style={styles.container}>
         <View style={styles.title}>
           <Text style={typography.smallLabel}>
-            { L('CAMPAIGN PROGRESS') }
+            { t`CAMPAIGN PROGRESS` }
           </Text>
         </View>
         { this.renderCampaignSection() }

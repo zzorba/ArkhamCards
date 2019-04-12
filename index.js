@@ -7,7 +7,10 @@ import { Navigation } from 'react-native-navigation';
 import { registerScreens } from './app/screens';
 import configureStore from './app/store';
 import App from './app/App';
+import { changeLocale } from './app/i18n';
 import realm from './data';
+
+changeLocale('en');
 
 class MyProvider extends React.Component {
   static propTypes = {

@@ -18,7 +18,7 @@ import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Campaign } from '../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
 import { clearDecks } from '../../actions';
@@ -55,15 +55,13 @@ class DiagnosticsView extends React.Component<Props> {
       if (newCampaigns.length) {
         const newCampaignNames = map(newCampaigns, campaign => campaign.name).join('\n');
         Alert.alert(
-          L('Confirm import'),
-          L(
-            'We found the following campaigns:\n{{campaignNames}}\nAre you sure you want to import this and erase your current campaigns?',
-            { campaignNames: newCampaignNames }),
+          t`Confirm import`,
+          t`We found the following campaigns:\n${newCampaignNames}\nAre you sure you want to import this and erase your current campaigns?`,
           [{
-            text: L('Nevermind'),
+            text: t`Nevermind`,
             style: 'cancel',
           }, {
-            text: L('Save These Campaigns'),
+            text: t`Save These Campaigns`,
             style: 'destructive',
             onPress: () => {
               this.props.setAllCampaigns(newCampaigns);
@@ -76,8 +74,8 @@ class DiagnosticsView extends React.Component<Props> {
       console.log(e);
     }
     Alert.alert(
-      L('Problem with import'),
-      L('We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.'),
+      t`Problem with import`,
+      t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
     );
   };
 
@@ -88,22 +86,19 @@ class DiagnosticsView extends React.Component<Props> {
     } = this.props;
     const erasedCampaigns = map(campaigns, campaign => campaign.name).join('\n');
     const erasedCopy = erasedCampaigns ?
-      L('The following campaigns will be ERASED: \n{{campaigns}}',
-        { campaigns: erasedCampaigns }) : '';
+      t`The following campaigns will be ERASED: \n${erasedCampaigns}` : '';
     Alert.alert(
-      L('Restore campaign data?'),
-      L('This feature is intended for advanced diagnostics or to import data from another app.\n\n{{erasedCampaigns}}',
-        { erasedCampaigns: erasedCopy }
-      ),
+      t`Restore campaign data?`,
+      t`This feature is intended for advanced diagnostics or to import data from another app.\n\n${erasedCopy}`,
       [{
-        text: L('Nevermind'),
+        text: t`Nevermind`,
         style: 'cancel',
       }, {
-        text: L('Import and Erase Current Campaigns'),
+        text: t`Import and Erase Current Campaigns`,
         style: 'destructive',
         onPress: () => {
           showTextEditDialog(
-            L('Paste Backup Here'),
+            t`Paste Backup Here`,
             '',
             (json) => {
               Keyboard.dismiss();
@@ -119,13 +114,13 @@ class DiagnosticsView extends React.Component<Props> {
 
   _exportCampaignData = () => {
     Alert.alert(
-      L('Backup campaign data?'),
-      L('This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.'),
+      t`Backup campaign data?`,
+      t`This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.`,
       [{
-        text: L('Cancel'),
+        text: t`Cancel`,
         style: 'cancel',
       }, {
-        text: L('Export Campaign Data'),
+        text: t`Export Campaign Data`,
         onPress: () => {
           Share.share({
             message: JSON.stringify(this.props.campaigns),
@@ -165,17 +160,17 @@ class DiagnosticsView extends React.Component<Props> {
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
           <SettingsCategoryHeader
-            title={L('Backup')}
+            title={t`Backup`}
             titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
-          <SettingsItem onPress={this._exportCampaignData} text={L('Backup Campaign Data')} />
-          <SettingsItem onPress={this._importCampaignData} text={L('Restore Campaign Data')} />
+          <SettingsItem onPress={this._exportCampaignData} text={t`Backup Campaign Data`} />
+          <SettingsItem onPress={this._importCampaignData} text={t`Restore Campaign Data`} />
           <SettingsCategoryHeader
-            title={L('Caches')}
+            title={t`Caches`}
             titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
-          <SettingsItem onPress={this._clearImageCache} text={L('Clear image cache')} />
-          <SettingsItem onPress={this._clearCache} text={L('Clear cache')} />
+          <SettingsItem onPress={this._clearImageCache} text={t`Clear image cache`} />
+          <SettingsItem onPress={this._clearCache} text={t`Clear cache`} />
         </ScrollView>
       </SafeAreaView>
     );

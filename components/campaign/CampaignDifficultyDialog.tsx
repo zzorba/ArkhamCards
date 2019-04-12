@@ -1,7 +1,7 @@
 import React from 'react';
 import { find, map } from 'lodash';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { CampaignDifficultyType, DIFFICULTIES } from '../../actions/types';
 import DialogPicker from '../core/DialogPicker';
 import { difficultyString } from './constants';
@@ -31,7 +31,7 @@ export default class CampaignDifficultyDialog extends React.Component<Props> {
     return (
       <DialogPicker
         componentId={componentId}
-        header={L('Selected Difficulty')}
+        header={t`Selected Difficulty`}
         options={options}
         onSelectionChanged={this._onChoice}
         selectedOption={difficultyString(difficulty)}

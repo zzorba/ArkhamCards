@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import Dialog from '../core/Dialog';
 import { COLORS } from '../../styles/colors';
 
@@ -112,34 +112,34 @@ export default class AddCampaignNoteSectionDialog extends React.Component<Props,
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
       <Dialog
-        title={L('Add Campaign Log Section')}
+        title={t`Add Campaign Log Section`}
         visible={visible}
         viewRef={viewRef}
       >
         <DialogComponent.Input
           value={name}
           textInputRef={this._captureTextInputRef}
-          placeholder={L('Section Name')}
+          placeholder={t`Section Name`}
           onChangeText={this._onNameChange}
         />
         <DialogComponent.Switch
-          label={L('Count')}
+          label={t`Count`}
           value={isCount}
           onValueChange={this._toggleCount}
           trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Switch
-          label={L('Per Investigator')}
+          label={t`Per Investigator`}
           value={perInvestigator}
           onValueChange={this._toggleInvestigator}
           trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Button
-          label={L('Cancel')}
+          label={t`Cancel`}
           onPress={this._onCancelPress}
         />
         <DialogComponent.Button
-          label={L('Add')}
+          label={t`Add`}
           color={name ? buttonColor : '#666666'}
           disabled={!name}
           onPress={this._onAddPress}

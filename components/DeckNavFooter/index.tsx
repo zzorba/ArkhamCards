@@ -12,11 +12,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { Navigation } from 'react-native-navigation';
+import { msgid, ngettext, t } from 'ttag';
 
-import L from '../../app/i18n';
 import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
-import { DrawSimulatorProps } from '../DrawSimulatorView'; 
+import { DrawSimulatorProps } from '../DrawSimulatorView';
 import { ParsedDeck } from '../parseDeck';
 import { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
@@ -50,7 +50,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         options: {
           topBar: {
             backButton: {
-              title: L('Deck'),
+              title: t`Deck`,
             },
           },
           bottomTabs: {
@@ -79,10 +79,10 @@ export default class DeckNavFooter extends React.Component<Props> {
         options: {
           topBar: {
             title: {
-              text: L('Draw'),
+              text: t`Draw`,
             },
             backButton: {
-              title: L('Deck'),
+              title: t`Deck`,
             },
           },
           bottomTabs: {
@@ -139,20 +139,14 @@ export default class DeckNavFooter extends React.Component<Props> {
       xpAdjustment,
     } = this.props;
     if (!previous_deck) {
-      return L('XP: {{totalXp}}', { totalXp: experience });
+      return t`XP: ${experience}`;
     }
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
     if (xpAdjustment !== 0) {
-      return L('XP: {{spentXp}} of {{availableExperience}} ({{adjustment}})', {
-        spentXp,
-        availableExperience: adjustedExperience,
-        adjustment: xpAdjustment > 0 ? `+${xpAdjustment}` : xpAdjustment,
-      });
+      const adjustment = xpAdjustment > 0 ? `+${xpAdjustment}` : xpAdjustment;
+      return t`XP: ${spentXp} of ${adjustedExperience} (${adjustment})`;
     }
-    return L('XP: {{spentXp}} of {{availableExperience}}', {
-      spentXp,
-      availableExperience: adjustedExperience,
-    });
+    return t`XP: ${spentXp} of ${adjustedExperience}`;
   }
 
   render() {
@@ -164,11 +158,12 @@ export default class DeckNavFooter extends React.Component<Props> {
       },
       showXpEditDialog,
     } = this.props;
-    const cardCountString =
-      L('{{normalCardCount}} Cards ({{totalCardCount}} Total)',
-        { normalCardCount, totalCardCount });
+    const cardCountString = ngettext(
+      msgid`${normalCardCount} Card (${totalCardCount} Total)`,
+      `${normalCardCount} Cards (${totalCardCount} Total)`,
+      normalCardCount
+    );
     const xpString = this.xpString();
-
     return (
       <LinearGradient
         style={styles.wrapper}

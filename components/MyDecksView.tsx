@@ -4,7 +4,7 @@ import { Button, Text, StyleSheet, Switch, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Deck } from '../actions/types';
 import Card from '../data/Card';
 import { iconsMap } from '../app/NavIcons';
@@ -33,7 +33,7 @@ class MyDecksView extends React.Component<Props, State> {
     return {
       topBar: {
         title: {
-          text: L('Decks'),
+          text: t`Decks`,
         },
         rightButtons: [{
           icon: iconsMap.add,
@@ -105,7 +105,7 @@ class MyDecksView extends React.Component<Props, State> {
     return (
       <View style={styles.row}>
         <Text style={styles.searchOption}>
-          { L('Hide ArkhamDB Decks') }
+          { t`Hide ArkhamDB Decks` }
         </Text>
         <Switch
           value={localDecksOnly}
@@ -119,7 +119,7 @@ class MyDecksView extends React.Component<Props, State> {
   renderCustomFooter() {
     return (
       <View style={styles.buttonRow}>
-        <Button title={L('New Deck')} onPress={this._showNewDeckDialog} />
+        <Button title={t`New Deck`} onPress={this._showNewDeckDialog} />
       </View>
     );
   }

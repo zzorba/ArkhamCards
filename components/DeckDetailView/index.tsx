@@ -27,7 +27,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
 import DeviceInfo from 'react-native-device-info';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import withLoginState, { LoginStateProps } from '../withLoginState';
 import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
@@ -133,7 +133,7 @@ class DeckDetailView extends React.Component<Props, State> {
 
     const leftButtons = props.modal ? [
       Platform.OS === 'ios' ? {
-        text: L('Done'),
+        text: t`Done`,
         id: 'back',
         color: 'white',
       } : {
@@ -223,10 +223,10 @@ class DeckDetailView extends React.Component<Props, State> {
       if (!deck) {
         if (!this.state.deleting && id > 0) {
           Alert.alert(
-            L('Deck has been deleted'),
-            L('It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.'),
+            t`Deck has been deleted`,
+            t`It looks like you deleted this deck from ArkhamDB.\n\n If it was part of a campaign you can add the same investigator back to restore your campaign data.`,
             [{
-              text: L('OK'),
+              text: t`OK`,
               onPress: () => {
                 Navigation.dismissAllModals();
               },
@@ -280,7 +280,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const editable = isPrivate && deck && !deck.next_deck;
     if (hasPendingEdits) {
       rightButtons.push({
-        text: L('Save'),
+        text: t`Save`,
         id: 'save',
         color: 'white',
       });
@@ -326,21 +326,21 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     if (this.state.hasPendingEdits) {
       Alert.alert(
-        L('Save deck changes?'),
-        L('Looks like you have made some changes that have not been saved.'),
+        t`Save deck changes?`,
+        t`Looks like you have made some changes that have not been saved.`,
         [{
-          text: L('Save Changes'),
+          text: t`Save Changes`,
           onPress: () => {
             this._saveEditsAndDismiss();
           },
         }, {
-          text: L('Discard Changes'),
+          text: t`Discard Changes`,
           style: 'destructive',
           onPress: () => {
             Navigation.dismissAllModals();
           },
         }, {
-          text: L('Cancel'),
+          text: t`Cancel`,
           style: 'cancel',
         }],
       );
@@ -424,11 +424,11 @@ class DeckDetailView extends React.Component<Props, State> {
           },
           topBar: {
             title: {
-              text: L('Edit Special Cards'),
+              text: t`Edit Special Cards`,
               color: 'white',
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
               color: 'white',
             },
             background: {
@@ -468,11 +468,11 @@ class DeckDetailView extends React.Component<Props, State> {
           },
           topBar: {
             title: {
-              text: L('Edit Deck'),
+              text: t`Edit Deck`,
               color: 'white',
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
               color: 'white',
             },
             background: {
@@ -510,7 +510,7 @@ class DeckDetailView extends React.Component<Props, State> {
           },
           topBar: {
             title: {
-              text: L('Upgrade Deck'),
+              text: t`Upgrade Deck`,
               color: 'white',
             },
             subtitle: {
@@ -910,7 +910,7 @@ class DeckDetailView extends React.Component<Props, State> {
       return;
     }
     showTextEditDialog(
-      L('Edit Deck Name'),
+      t`Edit Deck Name`,
       this.state.nameChange || deck.name,
       this._saveName
     );
@@ -947,12 +947,12 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.state;
     if (saveError) {
       return (
-        <Dialog title={L('Error')} visible={saving} viewRef={viewRef}>
+        <Dialog title={t`Error`} visible={saving} viewRef={viewRef}>
           <Text style={[styles.errorMargin, typography.small]}>
             { saveError }
           </Text>
           <DialogComponent.Button
-            label={L('Okay')}
+            label={t`Okay`}
             onPress={this._dismissSaveError}
           />
         </Dialog>
@@ -960,7 +960,7 @@ class DeckDetailView extends React.Component<Props, State> {
 
     }
     return (
-      <Dialog title={L('Saving')} visible={saving} viewRef={viewRef}>
+      <Dialog title={t`Saving`} visible={saving} viewRef={viewRef}>
         <ActivityIndicator
           style={styles.spinner}
           size="large"
@@ -985,14 +985,14 @@ class DeckDetailView extends React.Component<Props, State> {
         <View style={styles.buttonRow}>
           <Button
             style={styles.button}
-            text={L('Edit')}
+            text={t`Edit`}
             color="purple"
             icon={<MaterialIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="edit" />}
             onPress={this._onEditPressed}
           />
           { !hasPendingEdits && (
             <Button
-              text={L('Upgrade Deck')}
+              text={t`Upgrade Deck`}
               color="yellow"
               icon={<MaterialCommunityIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="arrow-up-bold" />}
               onPress={this._onUpgradePressed}
@@ -1003,12 +1003,12 @@ class DeckDetailView extends React.Component<Props, State> {
           <View style={styles.buttonRow}>
             <Button
               style={styles.button}
-              text={L('Save')}
+              text={t`Save`}
               color="green"
               onPress={this._saveEdits}
             />
             <Button
-              text={L('Cancel Edits')}
+              text={t`Cancel Edits`}
               color="red"
               onPress={this._clearEdits}
             />

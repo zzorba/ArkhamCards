@@ -11,7 +11,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import SettingsItem from './SettingsItem';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { logout, login } from '../../actions';
 import { AppState } from '../../reducers';
 
@@ -34,12 +34,12 @@ type Props = OwnProps & ReduxProps & ReduxActionProps;
 class LoginButton extends React.Component<Props> {
   _logOutPressed = () => {
     Alert.alert(
-      L('Are you sure you want to sign out?'),
-      L('Data on ArkhamDB will be preserved, but all Campaign data and any edits made without internet might be lost.\n\n If you are having trouble with your account you can also reconnect.'),
+      t`Are you sure you want to sign out?`,
+      t`Data on ArkhamDB will be preserved, but all Campaign data and any edits made without internet might be lost.\n\n If you are having trouble with your account you can also reconnect.`,
       [
-        { text: L('Sign Out'), style: 'destructive', onPress: this.props.logout },
-        { text: L('Reconnect Account'), onPress: this.props.login },
-        { text: L('Cancel') },
+        { text: t`Sign Out`, style: 'destructive', onPress: this.props.logout },
+        { text: t`Reconnect Account`, onPress: this.props.login },
+        { text: t`Cancel` },
       ],
     );
   };
@@ -64,19 +64,19 @@ class LoginButton extends React.Component<Props> {
 
     if (signedIn) {
       return settings ? (
-        <SettingsItem onPress={this._logOutPressed} text={L('Sign out of ArkhamDB')} />
+        <SettingsItem onPress={this._logOutPressed} text={t`Sign out of ArkhamDB`} />
       ) : (
         <View style={styles.wrapper}>
-          <Button onPress={this._logOutPressed} title={L('Sign out of ArkhamDB')} />
+          <Button onPress={this._logOutPressed} title={t`Sign out of ArkhamDB`} />
         </View>
       );
     }
 
     return settings ? (
-      <SettingsItem onPress={login} text={L('Sign in to ArkhamDB')} />
+      <SettingsItem onPress={login} text={t`Sign in to ArkhamDB`} />
     ) : (
       <View style={styles.wrapper}>
-        <Button onPress={login} title={L('Sign in to ArkhamDB')} />
+        <Button onPress={login} title={t`Sign in to ArkhamDB`} />
       </View>
     );
   }

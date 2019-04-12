@@ -7,8 +7,8 @@ import Realm, { Results } from 'realm';
 import DeviceInfo from 'react-native-device-info';
 import { connectRealm, CardResults } from 'react-native-realm';
 import LinearGradient from 'react-native-linear-gradient';
+import { msgid, ngettext, t } from 'ttag';
 
-import L from '../../app/i18n';
 import { filterToQuery, FilterState } from '../../lib/filters';
 import Card from '../../data/Card';
 import space from '../../styles/space';
@@ -45,13 +45,18 @@ class FilterFooterComponent extends React.Component<Props> {
     const {
       modal,
     } = this.props;
+    const count = this.cardCount();
     return (
       <LinearGradient
         style={modal ? styles.footerBarModal : styles.footerBar}
         colors={['#e6e6e6', '#cccccc']}
       >
         <Text style={[typography.text, space.marginLeftS]}>
-          { L('{{count}} Cards Matched', { count: this.cardCount() }) }
+          { ngettext(
+              msgid`${count} Card Matched`,
+              `${count} Cards Matched`,
+              count
+            ) }
         </Text>
       </LinearGradient>
     );
