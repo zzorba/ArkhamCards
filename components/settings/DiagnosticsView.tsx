@@ -37,11 +37,11 @@ interface RealmProps {
 
 interface ReduxProps {
   campaigns: Campaign[];
-  lang?: string;
+  lang: string;
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang?: string) => void;
+  fetchCards: (realm: Realm, lang: string) => void;
   setAllCampaigns: (campaigns: { [id: string]: Campaign }) => void;
   clearDecks: () => void;
 }
@@ -180,7 +180,7 @@ class DiagnosticsView extends React.Component<Props> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     campaigns: getCampaigns(state),
-    lang: state.packs.lang || undefined,
+    lang: state.packs.lang || 'en',
   };
 }
 

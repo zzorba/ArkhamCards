@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
-"Plural-Forms: nplurals = 2; plural = (n !== 1);\n"
-"Language: en\n"
+"Plural-Forms: nplurals = 2; plural = (n > 1);\n"
+"Language: fr\n"
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -271,10 +271,6 @@ msgstr ""
 msgid "Contains too many limited cards."
 msgstr ""
 
-#: components/DeckProblemRow.tsx:21
-msgid "Doesn\\'t comply with the Investigator requirements."
-msgstr ""
-
 #: components/CardDetailView/TwoSidedCardComponent.tsx:135
 #: components/CardDetailView/index.tsx:53
 #: components/CardDetailView/index.tsx:169
@@ -413,6 +409,8 @@ msgstr ""
 msgid "Connect to ArkhamDB"
 msgstr ""
 
+#: app/App.js:149
+#: app/App.js:162
 #: components/MyDecksView.tsx:36
 msgid "Decks"
 msgstr ""
@@ -1631,6 +1629,8 @@ msgstr ""
 msgid "Create Campaign"
 msgstr ""
 
+#: app/App.js:175
+#: app/App.js:188
 #: components/campaign/MyCampaignsView/index.tsx:49
 msgid "Campaigns"
 msgstr ""
@@ -2266,6 +2266,7 @@ msgstr ""
 msgid "Encounter Cards"
 msgstr ""
 
+#: app/App.js:127
 #: components/CardSearchComponent/index.tsx:231
 msgid "Player Cards"
 msgstr ""
@@ -2351,9 +2352,19 @@ msgid "Yig's Fury"
 msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:89
+#: components/DeckProblemRow.tsx:21
 msgid "Doesn't comply with the Investigator requirements."
 msgstr ""
 
 #: components/CardSearchResultsComponent/CardResultList.tsx:56
 msgid "Up by 5, hope I don't draw the tentacle"
+msgstr ""
+
+#: app/App.js:135
+msgid "Cards"
+msgstr ""
+
+#: app/App.js:201
+#: app/App.js:209
+msgid "Settings"
 msgstr ""

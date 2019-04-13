@@ -25,46 +25,48 @@ function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
 }
 
-function cardsCache(state: AppState, lang?: string): undefined | CardCache {
-  /* eslint-disable eqeqeq */
-  return state.cards.lang == lang ? state.cards.cache : undefined;
+function cardsCache(state: AppState, lang: string): undefined | CardCache {
+  return (state.cards.lang || 'en') === lang ? state.cards.cache : undefined;
 }
 
 export function fetchCards(
   realm: Realm,
-  lang?: string
+  lang: string
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     if (shouldFetchCards(getState())) {
-      if (lang && getState().cards.lang !== lang) {
+      const previousLang = (getState().cards.lang || 'en');
+      if (lang && previousLang !== lang) {
         changeLocale(lang);
       }
       dispatch({
         type: CARD_FETCH_START,
       });
-      dispatch(fetchPacks(lang)).then(packs => {
-        return syncCards(realm, packs, lang, cardsCache(getState(), lang)).then(
-          (cache) => {
-            dispatch({
-              type: CARD_FETCH_SUCCESS,
-              cache: cache,
-              lang: lang,
-            });
-          },
-          (err) => {
-            dispatch({
-              type: CARD_FETCH_ERROR,
-              error: err.message || err,
-            });
-          },
-        );
+      dispatch(fetchPacks(lang))
+        .then(packs => {
+          return syncCards(realm, packs, lang, cardsCache(getState(), lang)).then(
+            (cache) => {
+              dispatch({
+                type: CARD_FETCH_SUCCESS,
+                cache: cache,
+                lang: lang,
+              });
+            },
+            (err) => {
+              dispatch({
+                type: CARD_FETCH_ERROR,
+                error: err.message || err,
+                lang: previousLang,
+              });
+            },
+          );
       });
     }
   };
 }
 
 export function fetchPacks(
-  lang?: string
+  lang: string
 ): ThunkAction<Promise<Pack[]>, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     dispatch({
@@ -78,7 +80,7 @@ export function fetchPacks(
     if (lastModified && packs && packs.length && state.lang == lang) {
       headers.append('If-Modified-Since', lastModified);
     }
-    const langPrefix = lang ? `${lang}.` : '';
+    const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
     return fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {
       method: 'GET',
       headers: headers,

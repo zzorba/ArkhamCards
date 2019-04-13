@@ -34,14 +34,14 @@ interface OwnProps {
 }
 
 interface ReduxProps {
-  lang?: string;
+  lang: string;
   cardsLoading?: boolean;
   cardsError?: string;
   deckCount: number;
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang?: string) => void;
+  fetchCards: (realm: Realm, lang: string) => void;
   clearDecks: () => void;
 }
 
@@ -123,7 +123,7 @@ class SettingsView extends React.Component<Props> {
       lang,
       fetchCards,
     } = this.props;
-    fetchCards(realm, lang);
+    fetchCards(realm, lang || 'en');
   };
 
   renderSyncCards() {
@@ -187,7 +187,7 @@ function mapStateToProps(state: AppState): ReduxProps {
     cardsLoading: state.cards.loading,
     cardsError: state.cards.error || undefined,
     deckCount: keys(getAllDecks(state)).length,
-    lang: state.packs.lang || undefined,
+    lang: state.packs.lang || 'en',
   };
 }
 

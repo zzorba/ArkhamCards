@@ -34,14 +34,14 @@ interface RealmProps {
 interface ReduxProps {
   loading?: boolean;
   error?: string;
-  lang?: string;
+  lang: string;
   fetchNeeded?: boolean;
   dateFetched?: number;
   dateUpdatePrompt?: number;
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang?: string) => void;
+  fetchCards: (realm: Realm, lang: string) => void;
   dismissUpdatePrompt: () => void;
 }
 
@@ -150,7 +150,7 @@ class FetchCardsGate extends React.Component<Props> {
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
     fetchNeeded: state.packs.all.length === 0,
-    lang: state.packs.lang || undefined,
+    lang: state.packs.lang || 'en',
     loading: state.packs.loading || state.cards.loading,
     error: state.packs.error || state.cards.error || undefined,
     dateFetched: state.packs.dateFetched || undefined,

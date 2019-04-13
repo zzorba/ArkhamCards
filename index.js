@@ -10,8 +10,6 @@ import App from './app/App';
 import { changeLocale } from './app/i18n';
 import realm from './data';
 
-changeLocale('en');
-
 class MyProvider extends React.Component {
   static propTypes = {
     store: PropTypes.object.isRequired,

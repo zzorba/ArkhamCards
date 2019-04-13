@@ -14,7 +14,7 @@ export const syncCards = function(
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
-  const langPrefix = lang ? `${lang}.` : '';
+  const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
   const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
   const packsByCode: { [code: string]: Pack } = {};
   const cycleNames: { [cycle_position: number]: string } = {};

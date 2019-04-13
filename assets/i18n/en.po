@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals = 2; plural = (n !== 1);\n"
-"Language: it\n"
+"Language: en\n"
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -271,10 +271,6 @@ msgstr ""
 msgid "Contains too many limited cards."
 msgstr ""
 
-#: components/DeckProblemRow.tsx:21
-msgid "Doesn\\'t comply with the Investigator requirements."
-msgstr ""
-
 #: components/CardDetailView/TwoSidedCardComponent.tsx:135
 #: components/CardDetailView/index.tsx:53
 #: components/CardDetailView/index.tsx:169
@@ -400,12 +396,6 @@ msgstr ""
 msgid "Pack"
 msgstr ""
 
-#: components/MyDecksComponent.tsx:113
-msgid ""
-"An unexpected error occurred (${ error }). If restarting the app doesn't "
-"fix the problem, tap here to reauthorize."
-msgstr ""
-
 #: components/DeckDetailView/DeckViewTab.tsx:202
 #: components/MyDecksComponent.tsx:142
 msgid ""
@@ -419,6 +409,8 @@ msgstr ""
 msgid "Connect to ArkhamDB"
 msgstr ""
 
+#: app/App.js:149
+#: app/App.js:162
 #: components/MyDecksView.tsx:36
 msgid "Decks"
 msgstr ""
@@ -1384,16 +1376,8 @@ msgstr ""
 msgid "The Witching Hour"
 msgstr ""
 
-#: components/campaign/constants.ts:144
-msgid "At Death's Doorstep (Act 1)"
-msgstr ""
-
 #: components/campaign/constants.ts:145
 msgid "A Record of Those Lost"
-msgstr ""
-
-#: components/campaign/constants.ts:146
-msgid "At Death's Doorstep (Acts 2-3)"
 msgstr ""
 
 #: components/campaign/constants.ts:147
@@ -1493,10 +1477,6 @@ msgstr ""
 
 #: components/campaign/constants.ts:223
 msgid "Chasing the Stranger"
-msgstr ""
-
-#: components/campaign/constants.ts:229
-msgid "Yig's Fury"
 msgstr ""
 
 #: components/campaign/constants.ts:230
@@ -1649,6 +1629,8 @@ msgstr ""
 msgid "Create Campaign"
 msgstr ""
 
+#: app/App.js:175
+#: app/App.js:188
 #: components/campaign/MyCampaignsView/index.tsx:49
 msgid "Campaigns"
 msgstr ""
@@ -1982,10 +1964,6 @@ msgstr ""
 msgid "Treachery"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:89
-msgid "Doesn't comply with the Investigator requirements."
-msgstr ""
-
 #: components/DeckDetailView/DeckViewTab.tsx:128
 msgid "Delete this upgrade (${ deck.version })"
 msgstr ""
@@ -2192,10 +2170,6 @@ msgstr ""
 msgid "Taking three damage and three horror"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:56
-msgid "Up by 5, hope I don't draw the tentacle"
-msgstr ""
-
 #: components/CardSearchResultsComponent/CardResultList.tsx:515
 msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
@@ -2292,6 +2266,7 @@ msgstr ""
 msgid "Encounter Cards"
 msgstr ""
 
+#: app/App.js:127
 #: components/CardSearchComponent/index.tsx:231
 msgid "Player Cards"
 msgstr ""
@@ -2356,4 +2331,40 @@ msgstr ""
 
 #: components/CardDetailView/index.tsx:211
 msgid "Deckbuilding Cards"
+msgstr ""
+
+#: components/MyDecksComponent.tsx:113
+msgid ""
+"An unexpected error occurred (${ error }). If restarting the app doesn't "
+"fix the problem, tap here to reauthorize."
+msgstr ""
+
+#: components/campaign/constants.ts:144
+msgid "At Death's Doorstep (Act 1)"
+msgstr ""
+
+#: components/campaign/constants.ts:146
+msgid "At Death's Doorstep (Acts 2-3)"
+msgstr ""
+
+#: components/campaign/constants.ts:229
+msgid "Yig's Fury"
+msgstr ""
+
+#: components/DeckDetailView/DeckViewTab.tsx:89
+#: components/DeckProblemRow.tsx:21
+msgid "Doesn't comply with the Investigator requirements."
+msgstr ""
+
+#: components/CardSearchResultsComponent/CardResultList.tsx:56
+msgid "Up by 5, hope I don't draw the tentacle"
+msgstr ""
+
+#: app/App.js:135
+msgid "Cards"
+msgstr ""
+
+#: app/App.js:201
+#: app/App.js:209
+msgid "Settings"
 msgstr ""
