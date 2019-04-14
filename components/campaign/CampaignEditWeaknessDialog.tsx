@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Campaign, Slots, WeaknessSet } from '../../actions/types';
 import { NavigationProps } from '../types';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
@@ -28,10 +28,10 @@ class CampaignEditWeaknessDialog extends React.Component<Props> {
     return {
       topBar: {
         title: {
-          text: L('Available weaknesses'),
+          text: t`Available weaknesses`,
         },
         backButton: {
-          title: L('Back'),
+          title: t`Back`,
         },
       },
     };

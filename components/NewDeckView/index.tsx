@@ -6,7 +6,7 @@ import { SORT_BY_PACK, SortType } from '../CardSortDialog/constants';
 import InvestigatorsListComponent from '../InvestigatorsListComponent';
 import NewDeckOptionsDialog from './NewDeckOptionsDialog';
 import { NavigationProps } from '../types';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { iconsMap } from '../../app/NavIcons';
 import { Deck } from '../../actions/types';
 import Card from '../../data/Card';
@@ -31,7 +31,7 @@ export default class NewDeckView extends React.Component<Props, State> {
     return {
       topBar: {
         title: {
-          text: L('New Deck'),
+          text: t`New Deck`,
         },
         leftButtons: [{
           icon: iconsMap.close,

@@ -8,7 +8,7 @@ import {
 import DialogComponent from 'react-native-dialog';
 
 import PlusMinusButtons from '../core/PlusMinusButtons';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Trauma } from '../../actions/types';
 import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
@@ -81,7 +81,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
     return (
       <View>
         <View style={styles.counterColumn}>
-          <Text style={styles.label}>{ L('Physical Trauma') }</Text>
+          <Text style={styles.label}>{ t`Physical Trauma` }</Text>
           <View style={styles.buttonsRow}>
             <Text style={[styles.label, styles.traumaText]}>
               { physical || 0 }
@@ -98,7 +98,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
           </View>
         </View>
         <View style={styles.counterColumn}>
-          <Text style={styles.label}>{ L('Mental Trauma') }</Text>
+          <Text style={styles.label}>{ t`Mental Trauma` }</Text>
           <View style={styles.buttonsRow}>
             <Text style={[styles.label, styles.traumaText]}>
               { mental || 0 }
@@ -115,14 +115,14 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
           </View>
         </View>
         <DialogComponent.Switch
-          label={L('Killed')}
+          label={t`Killed`}
           value={killed || impliedKilled}
           disabled={impliedKilled}
           onValueChange={this._toggleKilled}
           trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Switch
-          label={L('Insane')}
+          label={t`Insane`}
           value={insane || impliedInsane}
           disabled={impliedInsane}
           onValueChange={this._toggleInsane}

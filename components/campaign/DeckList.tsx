@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Deck } from '../../actions/types';
 import { MyDecksSelectorProps } from '../campaign/MyDecksSelectorDialog';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
@@ -64,7 +64,7 @@ class DeckList extends React.Component<DeckListProps & PlayerCardProps> {
         )) }
         { !!deckAdded && (
           <View style={styles.button}>
-            <Button title={L('Add Investigator')} onPress={this._showDeckSelector} />
+            <Button title={t`Add Investigator`} onPress={this._showDeckSelector} />
           </View>
         ) }
       </View>

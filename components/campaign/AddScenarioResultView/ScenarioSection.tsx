@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '../../../actions/types';
 import Card from '../../../data/Card';
 import { updateCampaign } from '../actions';
@@ -85,7 +85,7 @@ class ScenarioSection extends React.Component<Props, State> {
       showTextEditDialog,
     } = this.props;
     showTextEditDialog(
-      L('Custom Scenario Name'),
+      t`Custom Scenario Name`,
       this.state.customScenario,
       this._customScenarioTextChanged
     );
@@ -186,7 +186,7 @@ class ScenarioSection extends React.Component<Props, State> {
       <View>
         <View style={[styles.margin, styles.row]}>
           <Text style={typography.text}>
-            { L('Show Interludes') }
+            { t`Show Interludes` }
           </Text>
           <Switch
             value={this.props.showInterludes}
@@ -194,7 +194,7 @@ class ScenarioSection extends React.Component<Props, State> {
           />
         </View>
         <LabeledTextBox
-          label={selectedScenario !== CUSTOM && selectedScenario.interlude ? L('Interlude') : L('Scenario')}
+          label={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
           onPress={this._showScenarioDialog}
           value={selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name}
           style={styles.margin}
@@ -202,7 +202,7 @@ class ScenarioSection extends React.Component<Props, State> {
         />
         { selectedScenario === CUSTOM && (
           <LabeledTextBox
-            label={L('Name')}
+            label={t`Name`}
             onPress={this._showCustomCampaignDialog}
             value={customScenario}
             style={styles.margin}
@@ -211,7 +211,7 @@ class ScenarioSection extends React.Component<Props, State> {
         ) }
         { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
           <LabeledTextBox
-            label={L('Resolution')}
+            label={t`Resolution`}
             onPress={this._showResolutionDialog}
             value={resolution}
             style={styles.margin}

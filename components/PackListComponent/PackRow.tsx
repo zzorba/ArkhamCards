@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Pack } from '../../actions/types';
 import EncounterIcon from '../../assets/EncounterIcon';
 import Switch from '../core/Switch';
@@ -47,7 +47,7 @@ export default class PackRow extends React.Component<Props> {
               text: pack.name,
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
             },
           },
         },
@@ -74,15 +74,15 @@ export default class PackRow extends React.Component<Props> {
     ) {
       // This is the lead pack in a cycle.
       Alert.alert(
-        value ? L('Mark entire cycle?') : L('Clear entire cycle?'),
+        value ? t`Mark entire cycle?` : t`Clear entire cycle?`,
         value ?
-          L('Mark all packs in the {{packName}} cycle?', { packName: pack.name }) :
-          L('Clear all packs in the {{packName}} cycle?', { packName: pack.name }),
+          t`Mark all packs in the ${pack.name} cycle?` :
+          t`Clear all packs in the ${pack.name} cycle?`,
         [
           {
-            text: L('No'),
+            text: t`No`,
           },
-          { text: L('Yes'),
+          { text: t`Yes`,
             onPress: () => {
               setCycleChecked(pack.cycle_position, value);
             },

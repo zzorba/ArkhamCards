@@ -4,7 +4,7 @@ import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Campaign, Deck, Slots } from '../actions/types';
 import Card from '../data/Card';
 import { CardDetailProps } from './CardDetailView';
@@ -51,7 +51,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
     return {
       topBar: {
         backButton: {
-          title: L('Back'),
+          title: t`Back`,
         },
       },
     };
@@ -111,11 +111,11 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
           },
           topBar: {
             title: {
-              text: L('Edit Story Cards'),
+              text: t`Edit Story Cards`,
               color: 'white',
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
               color: 'white',
             },
             background: {
@@ -175,12 +175,12 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
 
   _drawWeakness = () => {
     Alert.alert(
-      L('Draw Basic Weakness'),
-      L('This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.'),
+      t`Draw Basic Weakness`,
+      t`This deck does not seem to be part of a campaign yet.\n\nIf you add this deck to a campaign, the app can keep track of the available weaknesses between multiple decks.\n\nOtherwise, you can draw random weaknesses from your entire collection.`,
       [
-        { text: L('Draw From Collection'), style: 'default', onPress: this._showWeaknessDialog },
-        { text: L('Edit Collection'), onPress: this._editCollection },
-        { text: L('Cancel'), style: 'cancel' },
+        { text: t`Draw From Collection`, style: 'default', onPress: this._showWeaknessDialog },
+        { text: t`Edit Collection`, onPress: this._editCollection },
+        { text: t`Cancel`, style: 'cancel' },
       ]);
   };
 
@@ -207,11 +207,11 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
           },
           topBar: {
             title: {
-              text: L('Draw Weaknesses'),
+              text: t`Draw Weaknesses`,
               color: COLORS.white,
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
               color: 'white',
             },
             background: {
@@ -253,11 +253,11 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
           },
           topBar: {
             title: {
-              text: L('Draw Weaknesses'),
+              text: t`Draw Weaknesses`,
               color: COLORS.white,
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
               color: 'white',
             },
             background: {
@@ -282,7 +282,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
     } = this.props;
     return (
       <Button
-        title={L('Draw Basic Weakness')}
+        title={t`Draw Basic Weakness`}
         onPress={campaignId ? this._showCampaignWeaknessDialog : this._drawWeakness}
       />
     );
@@ -306,7 +306,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
       <React.Fragment>
         <View style={styles.header}>
           <Text style={[typography.small, styles.headerText]}>
-            { L('BASIC WEAKNESS') }
+            { t`BASIC WEAKNESS` }
           </Text>
         </View>
         { map(sortBy(weaknesses, card => card.name), card => (
@@ -340,7 +340,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
       <React.Fragment>
         <View style={styles.header}>
           <Text style={[typography.small, styles.headerText]}>
-            { L('STORY') }
+            { t`STORY` }
           </Text>
         </View>
         { map(sortBy(storyCards, card => card.name), card => (
@@ -352,7 +352,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
           />
         )) }
         <Button
-          title={L('Edit Story Cards')}
+          title={t`Edit Story Cards`}
           onPress={this._editStoryPressed}
         />
       </React.Fragment>
@@ -372,7 +372,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
     const header = (
       <View style={styles.header}>
         <Text style={[typography.small, styles.headerText]}>
-          { L('DO NOT COUNT TOWARDS DECK SIZE') }
+          { t`DO NOT COUNT TOWARDS DECK SIZE` }
         </Text>
       </View>
     );

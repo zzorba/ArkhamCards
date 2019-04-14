@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../../../app/i18n';
+import { t } from 'ttag';
 import TextBoxButton from '../../../core/TextBoxButton';
 import { ShowTextEditDialog } from '../../../core/withDialogs';
 
@@ -56,7 +56,7 @@ export default class NoteRow extends React.Component<Props> {
           <TextBoxButton
             crossedOut={startsWith(note, '~')}
             value={startsWith(note, '~') ? note.substring(1) : note}
-            placeholder={last ? L('Add note') : undefined}
+            placeholder={last ? t`Add note` : undefined}
             pointerEvents="none"
             ellipsizeMode="tail"
             multiline

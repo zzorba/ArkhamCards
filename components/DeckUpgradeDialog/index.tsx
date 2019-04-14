@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Campaign, Deck, Slots } from '../../actions/types';
 import { handleAuthErrors } from '../authHelper';
 import { NavigationProps } from '../types';
@@ -66,13 +66,13 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       topBar: {
         tintColor: 'white',
         rightButtons: [{
-          text: L('Save'),
+          text: t`Save`,
           color: 'white',
           id: 'save',
           showAsAction: 'ifRoom',
         }],
         backButton: {
-          title: L('Cancel'),
+          title: t`Cancel`,
           color: 'white',
         },
       },

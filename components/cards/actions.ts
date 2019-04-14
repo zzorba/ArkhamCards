@@ -2,6 +2,7 @@ import Realm from 'realm';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
+import { changeLocale } from '../../app/i18n';
 import {
   PACKS_AVAILABLE,
   PACKS_FETCH_START,
@@ -35,6 +36,9 @@ export function fetchCards(
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch, getState) => {
     if (shouldFetchCards(getState())) {
+      if (lang && getState().cards.lang !== lang) {
+        changeLocale(lang);
+      }
       dispatch({
         type: CARD_FETCH_START,
       });

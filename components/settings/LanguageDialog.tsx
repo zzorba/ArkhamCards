@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import DialogPicker from '../core/DialogPicker';
 import { fetchCards } from '../cards/actions';
 import Card from '../../data/Card';
@@ -67,7 +67,7 @@ class LanguageDialog extends React.Component<Props> {
         componentId={componentId}
         options={map(LANGUAGES, obj => obj.name)}
         onSelectionChanged={this._selectionChanged}
-        header={L('Change Card Language')}
+        header={t`Change Card Language`}
         description={'Note: not all cards have translations available.'}
         selectedOption={selectedLang.name}
       />

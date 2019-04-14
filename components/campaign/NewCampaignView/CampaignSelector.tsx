@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import { CUSTOM, CORE, CampaignCycleCode } from '../../../actions/types';
 import { SelectCampagaignProps } from '../SelectCampaignDialog';
@@ -28,7 +28,7 @@ export default class CampaignSelector extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      selectedCampaign: L('The Night of the Zealot'),
+      selectedCampaign: t`The Night of the Zealot`,
       selectedCampaignCode: CORE,
     };
   }
@@ -71,7 +71,7 @@ export default class CampaignSelector extends React.Component<Props, State> {
         options: {
           topBar: {
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
             },
           },
         },
@@ -88,7 +88,7 @@ export default class CampaignSelector extends React.Component<Props, State> {
       <View>
         <LabeledTextBox
           column
-          label={L('Campaign')}
+          label={t`Campaign`}
           onPress={this._campaignPressed}
           value={selectedCampaign}
           style={styles.margin}

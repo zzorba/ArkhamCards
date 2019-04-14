@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount} from '../../../actions/types';
 import Card from '../../../data/Card';
 import { ShowTextEditDialog } from '../../core/withDialogs';
@@ -161,7 +161,7 @@ export default class EditCampaignNotesComponent extends React.Component<Props> {
         { this.renderCounts(counts) }
         { this.renderInvestigatorSection() }
         <View style={styles.button}>
-          <Button title={L('Add Log Section')} onPress={this._showAddSectionDialog} />
+          <Button title={t`Add Log Section`} onPress={this._showAddSectionDialog} />
         </View>
       </View>
     );

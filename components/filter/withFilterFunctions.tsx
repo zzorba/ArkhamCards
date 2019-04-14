@@ -11,7 +11,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
 import { FilterState } from '../../lib/filters';
@@ -87,7 +87,7 @@ export default function withFilterFunctions<P>(
         topBar: {
           rightButtons: this.hasChanges() ?
             [{
-              text: L('Clear'),
+              text: t`Clear`,
               id: 'clear',
               color: COLORS.navButton,
             }] : [],

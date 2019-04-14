@@ -5,7 +5,7 @@ import DialogComponent from 'react-native-dialog';
 
 import EditTraumaDialogContent from './EditTraumaDialogContent';
 import Dialog from '../core/Dialog';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Trauma } from '../../actions/types';
 import Card from '../../data/Card';
 
@@ -84,8 +84,8 @@ export default class EditTraumaDialog extends React.Component<Props, State> {
     return (
       <Dialog
         title={investigator ?
-          L('{{firstName}}’s Trauma', { firstName: investigator.firstName }) :
-          L('Trauma')}
+          t`${investigator.firstName}’s Trauma` :
+          t`Trauma`}
         visible={visible}
         viewRef={viewRef}
       >
@@ -94,8 +94,8 @@ export default class EditTraumaDialog extends React.Component<Props, State> {
           trauma={trauma}
           mutateTrauma={this._mutateTrauma}
         />
-        <DialogComponent.Button label={L('Cancel')} onPress={this._onCancel} />
-        <DialogComponent.Button label={L('Save')} onPress={this._onSubmit} />
+        <DialogComponent.Button label={t`Cancel`} onPress={this._onCancel} />
+        <DialogComponent.Button label={t`Save`} onPress={this._onSubmit} />
       </Dialog>
     );
   }

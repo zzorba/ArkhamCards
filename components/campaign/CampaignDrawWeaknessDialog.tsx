@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Campaign, Deck, DecksMap, Slots, WeaknessSet } from '../../actions/types';
 import { updateCampaign } from './actions';
 import { NavigationProps } from '../types';
@@ -284,7 +284,8 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     } = this.state;
     const deck = selectedDeckId && decks[selectedDeckId];
     const investigator = deck && investigators[deck.investigator_code];
-    const message = L('Investigator: {{name}}', { name: investigator ? investigator.name : '' });
+    const investigatorName = investigator ? investigator.name : '';
+    const message = t`Investigator: ${investigatorName}`;
     const slots = (deckSlots || (deck && deck.slots)) || {};
     const hasRandomBasicWeakness = slots[RANDOM_BASIC_WEAKNESS] > 0;
     return (
@@ -298,7 +299,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
         { hasRandomBasicWeakness && (
           <ToggleFilter
             style={styles.toggleRow}
-            label={L('Replace Random Weakness')}
+            label={t`Replace Random Weakness`}
             setting="replaceRandomBasicWeakness"
             value={replaceRandomBasicWeakness}
             onChange={this._toggleReplaceRandomBasicWeakness}
@@ -323,8 +324,8 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const deck = selectedDeckId && decks[selectedDeckId];
     const investigator = deck && investigators[deck.investigator_code];
     const buttonText = investigator ?
-      L('Save to {{name}}’s Deck', { name: investigator.name }) :
-      L('Save to Deck');
+      t`Save to ${investigator.name}’s Deck` :
+      t`Save to Deck`;
     return (
       <View style={styles.button}>
         <Button

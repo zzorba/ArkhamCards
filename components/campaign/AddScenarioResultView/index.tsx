@@ -10,7 +10,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { Deck, DecksMap, SingleCampaign, ScenarioResult } from '../../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import { NavigationProps } from '../../types';
@@ -68,7 +68,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
     Navigation.mergeOptions(this.props.componentId, {
       topBar: {
         rightButtons: [{
-          text: L('Save'),
+          text: t`Save`,
           id: 'save',
           color: COLORS.navButton,
           enabled: !!(scenario &&
@@ -143,7 +143,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
         <XpComponent xp={xp} onChange={this._xpChanged} />
         <View style={styles.text}>
           <Text style={typography.small}>
-            { L('After saving the scenario result, you can use the "Upgrade Deck" buttons to award XP and adjust trauma for each investigator.') }
+            { t`After saving the scenario result, you can use the "Upgrade Deck" buttons to award XP and adjust trauma for each investigator.` }
           </Text>
         </View>
         <View style={styles.footer} />

@@ -26,7 +26,7 @@ import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import Card from '../../data/Card';
 import { newCustomDeck } from '../../lib/authApi';
 import { getNextLocalDeckId, AppState } from '../../reducers';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
 import { COLORS } from '../../styles/colors';
@@ -240,17 +240,17 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     }
     switch (investigator.faction_code) {
       case 'guardian':
-        return L('The Adventures of {{name}}', { name: investigator.name });
+        return t`The Adventures of ${investigator.name}`;
       case 'seeker':
-        return L('{{name}} Investigates', { name: investigator.name });
+        return t`${investigator.name} Investigates`;
       case 'mystic':
-        return L('The {{name}} Mysteries', { name: investigator.name });
+        return t`The ${investigator.name} Mysteries`;
       case 'rogue':
-        return L('The {{name}} Job', { name: investigator.name });
+        return t`The ${investigator.name} Job`;
       case 'survivor':
-        return L('{{name}} on the Road', { name: investigator.name });
+        return t`${investigator.name} on the Road`;
       default:
-        return L('{{name}} Does It All', { name: investigator.name });
+        return t`${investigator.name} Does It All`;
     }
   }
 
@@ -306,7 +306,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { L('NAME') }
+          { t`NAME` }
         </DialogComponent.Description>
         <DialogComponent.Input
           textInputRef={this._captureTextInputRef}
@@ -315,7 +315,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           returnKeyType="done"
         />
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { L('REQUIRED CARDS') }
+          { t`REQUIRED CARDS` }
         </DialogComponent.Description>
         { map(cardOptions, (requiredCards, index) => {
           return (
@@ -330,10 +330,10 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           );
         }) }
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { L('DECK TYPE') }
+          { t`DECK TYPE` }
         </DialogComponent.Description>
         <DialogComponent.Switch
-          label={L('Create on ArkhamDB')}
+          label={t`Create on ArkhamDB`}
           value={!offlineDeck}
           disabled={!signedIn || networkType === 'none'}
           onValueChange={this._onDeckTypeChange}
@@ -341,13 +341,13 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         />
         { !signedIn && (
           <DialogComponent.Description style={[typography.small, space.marginBottomS]}>
-            { L('Visit Settings to sign in to ArkhamDB.') }
+            { t`Visit Settings to sign in to ArkhamDB.` }
           </DialogComponent.Description>
         ) }
         { networkType === 'none' && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
             <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-              { L('You seem to be offline. Refresh Network?') }
+              { t`You seem to be offline. Refresh Network?` }
             </DialogComponent.Description>
           </TouchableOpacity>
         ) }
@@ -372,17 +372,17 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     const okDisabled = saving || !find(optionSelected, selected => selected);
     return (
       <Dialog
-        title={L('New Deck')}
+        title={t`New Deck`}
         visible={!!investigatorId}
         viewRef={viewRef}
       >
         { this.renderFormContent() }
         <DialogComponent.Button
-          label={L('Cancel')}
+          label={t`Cancel`}
           onPress={toggleVisible}
         />
         <DialogComponent.Button
-          label={L('Okay')}
+          label={t`Okay`}
           color={okDisabled ? COLORS.darkGray : COLORS.lightBlue}
           disabled={okDisabled}
           onPress={this._onOkayPress}

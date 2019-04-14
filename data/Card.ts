@@ -1,7 +1,7 @@
 import Realm from 'realm';
 import { forEach, filter, keys, map, min } from 'lodash';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import CardRequirement from './CardRequirement';
 import CardRestrictions from './CardRestrictions';
 import DeckRequirement from './DeckRequirement';
@@ -221,12 +221,10 @@ export default class Card {
       (this.cost === null && (
         this.subtype_code === 'weakness' ||
         this.subtype_code === 'basicweakness'))) {
-      return L('Cost: -');
+      return t`Cost: -`;
     }
-    return L(
-      'Cost: {{cost}}',
-      { cost: this.cost !== null ? this.cost : 'X' }
-    );
+    const costString = this.cost !== null ? this.cost : 'X';
+    return t`Cost: ${costString}`;
   }
 
   skillCount(skill: SkillCodeType): number {
@@ -307,151 +305,151 @@ export default class Card {
     return null;
   }
 
-  static FACTION_HEADER_ORDER = [
-    'Guardian / Rogue',
-    'Rogue / Survivor',
-    'Survivor / Seeker',
-    'Seeker / Mystic',
-    'Mystic / Guardian',
-    'Guardian',
-    'Seeker',
-    'Mystic',
-    'Rogue',
-    'Survivor',
-    'Neutral',
-    'Weakness',
-    'Mythos',
-  ];
+  static factionHeaderOrder() {
+    return [
+      t`Guardian / Rogue`,
+      t`Rogue / Survivor`,
+      t`Survivor / Seeker`,
+      t`Seeker / Mystic`,
+      t`Mystic / Guardian`,
+      t`Guardian`,
+      t`Seeker`,
+      t`Mystic`,
+      t`Rogue`,
+      t`Survivor`,
+      t`Neutral`,
+      t`Weakness`,
+      t`Mythos`,
+    ];
+  }
 
-  static factionCodeToName(code: string, defaultName: string, options: object) {
+  static factionCodeToName(code: string, defaultName: string) {
     switch(code) {
       case 'guardian':
-        return L('Guardian', options);
+        return t`Guardian`;
       case 'rogue':
-        return L('Rogue', options);
+        return t`Rogue`;
       case 'mystic':
-        return L('Mystic', options);
+        return t`Mystic`;
       case 'seeker':
-        return L('Seeker', options);
+        return t`Seeker`;
       case 'survivor':
-        return L('Survivor', options);
+        return t`Survivor`;
       case 'neutral':
-        return L('Neutral', options);
+        return t`Neutral`;
       default:
         return defaultName;
     }
   }
 
-  static factionSortHeader(json: any, lang: string) {
-    const options = lang ? { locale: lang } : {};
+  static factionSortHeader(json: any) {
     if (json.spoiler) {
-      return L('Mythos', options);
+      return t`Mythos`;
     }
     switch(json.subtype_code) {
       case 'basicweakness':
       case 'weakness':
-        return L('Weakness', options);
+        return t`Weakness`;
       default: {
         if (!json.faction_code || !json.faction_name) {
-          return 'Unknown';
+          return t`Unknown`;
         }
         if (json.faction2_code && json.faction2_name) {
-          return L('{{faction1}} / {{faction2}}', {
-            locale: lang,
-            faction1: Card.factionCodeToName(json.faction_code, json.faction_name, options),
-            faction2: Card.factionCodeToName(json.faction2_code, json.faction2_name, options),
-          });
+          const faction1 = Card.factionCodeToName(json.faction_code, json.faction_name);
+          const faction2 = Card.factionCodeToName(json.faction2_code, json.faction2_name);
+          return `${faction1} / ${faction2}`;
         }
-        return Card.factionCodeToName(json.faction_code, json.faction_name, options);
+        return Card.factionCodeToName(json.faction_code, json.faction_name);
       }
     }
   }
 
-  static TYPE_HEADER_ORDER = [
-    'Investigator',
-    'Asset: Hand',
-    'Asset: Hand x2',
-    'Asset: Hand. Arcane',
-    'Asset: Body. Hand x2',
-    'Asset: Accessory',
-    'Asset: Ally',
-    'Asset: Arcane',
-    'Asset: Arcane x2',
-    'Asset: Body',
-    'Asset: Permanent',
-    'Asset: Tarot',
-    'Asset: Other',
-    'Event',
-    'Skill',
-    'Basic Weakness',
-    'Weakness',
-    'Scenario',
-    'Story',
-  ];
+  static typeHeaderOrder() {
+    return [
+      t`Investigator`,
+      t`Asset: Hand`,
+      t`Asset: Hand x2`,
+      t`Asset: Hand. Arcane`,
+      t`Asset: Body. Hand x2`,
+      t`Asset: Accessory`,
+      t`Asset: Ally`,
+      t`Asset: Arcane`,
+      t`Asset: Arcane x2`,
+      t`Asset: Body`,
+      t`Asset: Permanent`,
+      t`Asset: Tarot`,
+      t`Asset: Other`,
+      t`Event`,
+      t`Skill`,
+      t`Basic Weakness`,
+      t`Weakness`,
+      t`Scenario`,
+      t`Story`,
+    ];
+  }
 
-  static typeSortHeader(json: any, lang: string): string {
-    const options = lang ? { locale: lang } : {};
+  static typeSortHeader(json: any): string {
     if (json.hidden && json.linked_card) {
-      return Card.typeSortHeader(json.linked_card, lang);
+      return Card.typeSortHeader(json.linked_card);
     }
     switch(json.subtype_code) {
       case 'basicweakness':
-        return L('Basic Weakness', options);
+        return t`Basic Weakness`;
       case 'weakness':
         if (json.spoiler) {
-          return L('Story', options);
+          return t`Story`;
         }
-        return L('Weakness', options);
+        return t`Weakness`;
       default:
         switch(json.type_code) {
           case 'asset':
             if (json.spoiler) {
-              return L('Story', options);
+              return t`Story`;
             }
             if (json.permanent || json.double_sided) {
-              return L('Asset: Permanent', options);
+              return t`Asset: Permanent`;
             }
             switch(json.slot) {
               case 'Hand':
-                return L('Asset: Hand', options);
+                return t`Asset: Hand`;
               case 'Hand x2':
-                return L('Asset: Hand x2', options);
+                return t`Asset: Hand x2`;
               case 'Accessory':
-                return L('Asset: Accessory', options);
+                return t`Asset: Accessory`;
               case 'Ally':
-                return L('Asset: Ally', options);
+                return t`Asset: Ally`;
               case 'Arcane':
-                return L('Asset: Arcane', options);
+                return t`Asset: Arcane`;
               case 'Arcane x2':
-                return L('Asset: Arcane x2', options);
+                return t`Asset: Arcane x2`;
               case 'Body':
-                return L('Asset: Body', options);
+                return t`Asset: Body`;
               case 'Tarot':
-                return L('Asset: Tarot', options);
+                return t`Asset: Tarot`;
               case 'Body. Hand x2':
-                return L('Asset: Body. Hand x2', options);
+                return t`Asset: Body. Hand x2`;
               case 'Hand. Arcane':
-                return L('Asset: Hand. Arcane', options);
+                return t`Asset: Hand. Arcane`;
               default:
-                return L('Asset: Other', options);
+                return t`Asset: Other`;
             }
           case 'event':
             if (json.spoiler) {
-              return L('Story', options);
+              return t`Story`;
             }
-            return L('Event', options);
+            return t`Event`;
           case 'skill':
             if (json.spoiler) {
-              return L('Story', options);
+              return t`Story`;
             }
-            return L('Skill', options);
+            return t`Skill`;
           case 'investigator':
             if (json.spoiler) {
-              return L('Story', options);
+              return t`Story`;
             }
-            return L('Investigator', options);
+            return t`Investigator`;
           default:
-            return L('Scenario', options);
+            return t`Scenario`;
         }
     }
   }
@@ -487,11 +485,11 @@ export default class Card {
     let renderName = name;
     let renderSubname = json.subname;
     if (json.type_code === 'act' && json.stage) {
-      renderSubname = L('Act {{stage}}', { stage: json.stage, locale: lang });
+      renderSubname = t`Act ${json.stage}`;
     } else if (json.type_code === 'agenda' && json.stage) {
-      renderSubname = L('Agenda {{stage}}', { stage: json.stage, locale: lang });
+      renderSubname = t`Agenda ${json.stage}`;
     } else if (json.type_code === 'scenario') {
-      renderSubname = L('Scenario', { locale: lang });
+      renderSubname = t`Scenario`;
     }
     const linked_card = json.linked_card ?
       Card.fromJson(json.linked_card, packsByCode, cycleNames, lang) :
@@ -501,9 +499,9 @@ export default class Card {
       if (json.hidden && !linked_card.hidden) {
         renderName = linked_card.name;
         if (linked_card.type_code === 'act' && linked_card.stage) {
-          renderSubname = L('Act {{stage}}', { stage: linked_card.stage, locale: lang });
+          renderSubname = t`Act ${linked_card.stage}`;
         } else if (linked_card.type_code === 'agenda' && linked_card.stage) {
-          renderSubname = L('Agenda {{stage}}', { stage: linked_card.stage, locale: lang });
+          renderSubname = t`Agenda ${linked_card.stage}`;
         } else {
           renderSubname = linked_card.subname;
         }
@@ -532,8 +530,8 @@ export default class Card {
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
 
-    const sort_by_type = Card.TYPE_HEADER_ORDER.indexOf(Card.typeSortHeader(json, 'en'));
-    const sort_by_faction = Card.FACTION_HEADER_ORDER.indexOf(Card.factionSortHeader(json, 'en'));
+    const sort_by_type = Card.typeHeaderOrder().indexOf(Card.typeSortHeader(json));
+    const sort_by_faction = Card.factionHeaderOrder().indexOf(Card.factionSortHeader(json));
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const cycle_name = pack ? cycleNames[pack.cycle_position] : null;

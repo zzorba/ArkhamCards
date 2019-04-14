@@ -11,7 +11,7 @@ import {
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { Campaign, DecksMap } from '../../../actions/types';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '../CampaignDetailView';
@@ -46,7 +46,7 @@ class MyCampaignsView extends React.Component<Props, State> {
     return {
       topBar: {
         title: {
-          text: L('Campaigns'),
+          text: t`Campaigns`,
         },
         rightButtons: [{
           icon: iconsMap.add,
@@ -98,7 +98,7 @@ class MyCampaignsView extends React.Component<Props, State> {
               text: campaign.name,
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
             },
           },
         },
@@ -116,10 +116,10 @@ class MyCampaignsView extends React.Component<Props, State> {
         options: {
           topBar: {
             title: {
-              text: L('New Campaign'),
+              text: t`New Campaign`,
             },
             backButton: {
-              title: L('Cancel'),
+              title: t`Cancel`,
             },
           },
         },
@@ -172,7 +172,7 @@ class MyCampaignsView extends React.Component<Props, State> {
         return (
           <View style={styles.footer}>
             <Text style={[typography.text]}>
-              { L('No matching campaigns for "{{searchTerm}}".', { searchTerm: search }) }
+              { t`No matching campaigns for "${search}".` }
             </Text>
           </View>
         );
@@ -180,7 +180,7 @@ class MyCampaignsView extends React.Component<Props, State> {
       return (
         <View style={styles.footer}>
           <Text style={[typography.text]}>
-            { L('No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.') }
+            { t`No campaigns yet.\n\nUse the + button to create a new one.\n\nYou can use this app to keep track of campaigns, including investigator trauma, the chaos bag, basic weaknesses, campaign notes and the experience values for all decks.` }
           </Text>
         </View>
       );
@@ -202,12 +202,12 @@ class MyCampaignsView extends React.Component<Props, State> {
         <SearchBox
           value={this.state.search}
           onChangeText={this._searchChanged}
-          placeholder={L('Search campaigns')}
+          placeholder={t`Search campaigns`}
         />
         { map(campaigns, campaign => this.renderItem(campaign)) }
         { this.renderFooter(campaigns) }
         <View style={styles.button}>
-          <Button title={L('New Campaign')} onPress={this._showNewCampaignDialog} />
+          <Button title={t`New Campaign`} onPress={this._showNewCampaignDialog} />
         </View>
         <View style={styles.gutter} />
       </ScrollView>

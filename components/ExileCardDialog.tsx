@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import { throttle } from 'lodash';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Slots } from '../actions/types';
 import ExileCardSelectorComponent from './ExileCardSelectorComponent';
 import { COLORS } from '../styles/colors';
@@ -24,7 +24,7 @@ export default class ExileCardDialog extends React.Component<Props, State> {
     return {
       topBar: {
         rightButtons: [{
-          text: L('Save'),
+          text: t`Save`,
           id: 'save',
           showAsAction: 'ifRoom',
           color: COLORS.navButton,

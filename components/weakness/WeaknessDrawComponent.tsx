@@ -13,7 +13,7 @@ import {
 import { CachedImage, ImageCacheManager } from 'react-native-cached-image';
 import FlipCard from 'react-native-flip-card';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Slots, WeaknessSet } from '../../actions/types';
 import Card from '../../data/Card';
 import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
@@ -250,7 +250,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     if (saving) {
       return (
         <View style={[styles.buttonWrapper, { height: headerHeight }]}>
-          <Text style={typography.text}>{ L('Saving') }</Text>
+          <Text style={typography.text}>{ t`Saving` }</Text>
           <ActivityIndicator
             style={[{ height: 80 }]}
             size="small"
@@ -261,8 +261,8 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     }
     if (flipped) {
       const buttonText = customFlippedHeader ?
-        L('Draw a Different Weakness') :
-        L('Draw Another');
+        t`Draw a Different Weakness` :
+        t`Draw Another`;
       return (
         <View
           onLayout={this._onFlippedHeaderLayout}
@@ -280,7 +280,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
         { customHeader }
         <ChooserButton
           componentId={componentId}
-          title={L('Traits')}
+          title={t`Traits`}
           values={this.allTraits()}
           selection={selectedTraits}
           onChange={this._onTraitsChange}
@@ -338,13 +338,13 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     if (selectedTraits.length) {
       return (
         <Text style={[typography.text, styles.errorText]}>
-          { L('There are no weaknesses that match these trait filters left in the set.\n\nPlease adjust the trait filter.') }
+          { t`There are no weaknesses that match these trait filters left in the set.\n\nPlease adjust the trait filter.` }
         </Text>
       );
     }
     return (
       <Text style={[typography.text, styles.errorText]}>
-        { L('All weaknesses have been drawn.') }
+        { t`All weaknesses have been drawn.` }
       </Text>
     );
   }

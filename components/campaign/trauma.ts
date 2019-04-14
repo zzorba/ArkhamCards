@@ -1,4 +1,4 @@
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Trauma } from '../../actions/types';
 import Card from '../../data/Card';
 
@@ -38,19 +38,19 @@ export function isEliminated(traumaData: Trauma, investigatorCard: Card) {
 export function traumaString(traumaData: Trauma, investigator: Card) {
   const parts = [];
   if (traumaData.killed || (investigator.health || 0) <= (traumaData.physical || 0)) {
-    return L('Killed');
+    return t`Killed`;
   }
   if (traumaData.insane || (investigator.sanity || 0) <= (traumaData.mental || 0)) {
-    return L('Insane');
+    return t`Insane`;
   }
   if (traumaData.physical !== 0) {
-    parts.push(L('{{count}} Physical', { count: traumaData.physical }));
+    parts.push(t`${traumaData.physical} Physical`);
   }
   if (traumaData.mental !== 0) {
-    parts.push(L('{{count}} Mental', { count: traumaData.mental }));
+    parts.push(t`${traumaData.mental} Mental`);
   }
   if (!parts.length) {
-    return L('None');
+    return t`None`;
   }
   return parts.join(', ');
 }

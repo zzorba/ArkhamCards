@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import withNetworkStatus, { NetworkStatusProps } from './core/withNetworkStatus';
 import { Campaign, Deck, DecksMap } from '../actions/types';
 import { refreshMyDecks } from '../actions';
-import L from '../app/i18n';
+import { t } from 'ttag';
 import Card from '../data/Card';
 import DeckListComponent from './DeckListComponent';
 import withLoginState, { LoginStateProps } from './withLoginState';
@@ -110,7 +110,7 @@ class MyDecksComponent extends React.Component<Props> {
     return (
       <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error]}>
         <Text style={[typography.small, styles.errorText]}>
-          { L('An unexpected error occurred ({{error}}). If restarting the app doesn\'t fix the problem, tap here to reauthorize.', { error }) }
+          { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
         </Text>
       </TouchableOpacity>
     );
@@ -139,9 +139,9 @@ class MyDecksComponent extends React.Component<Props> {
     return (
       <View style={styles.signInFooter}>
         <Text style={[typography.text, space.marginBottomM]}>
-          { L('ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.') }
+          { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
         </Text>
-        <Button onPress={login} title={L('Connect to ArkhamDB')} />
+        <Button onPress={login} title={t`Connect to ArkhamDB`} />
       </View>
     );
   }

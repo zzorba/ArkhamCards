@@ -12,7 +12,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { Campaign, CampaignNotes, Deck, DecksMap, InvestigatorData, WeaknessSet } from '../../../actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
@@ -91,7 +91,7 @@ class CampaignDetailView extends React.Component<Props, State> {
     Navigation.mergeOptions(props.componentId, {
       topBar: {
         title: {
-          text: props.campaign ? props.campaign.name : L('Campaign'),
+          text: props.campaign ? props.campaign.name : t`Campaign`,
         },
         rightButtons: [{
           icon: iconsMap.share,
@@ -151,7 +151,7 @@ class CampaignDetailView extends React.Component<Props, State> {
     } else if (buttonId === 'edit') {
       if (campaign) {
         showTextEditDialog(
-          L('Campaign Name'),
+          t`Campaign Name`,
           campaign.name,
           this._onCampaignNameChange
         );
@@ -200,13 +200,11 @@ class CampaignDetailView extends React.Component<Props, State> {
     } = this.props;
     if (campaign) {
       Alert.alert(
-        L('Delete'),
-        L('Are you sure you want to delete the campaign: {{campaignName}}',
-          { campaignName: campaign.name }
-        ),
+        t`Delete`,
+        t`Are you sure you want to delete the campaign: ${campaign.name}`,
         [
-          { text: L('Delete'), onPress: this._delete, style: 'destructive' },
-          { text: L('Cancel'), style: 'cancel' },
+          { text: t`Delete`, onPress: this._delete, style: 'destructive' },
+          { text: t`Cancel`, style: 'cancel' },
         ],
       );
     }
@@ -291,7 +289,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           />
           <View style={[styles.margin, styles.button]}>
             <Button
-              title={L('Delete Campaign')}
+              title={t`Delete Campaign`}
               color={COLORS.red}
               onPress={this._deletePressed}
             />

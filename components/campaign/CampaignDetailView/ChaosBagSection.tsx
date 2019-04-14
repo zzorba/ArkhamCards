@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { ChaosBag } from '../../../constants';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
@@ -36,10 +36,10 @@ export default class ChaosBagSection extends React.Component<Props> {
         options: {
           topBar: {
             title: {
-              text: L('Chaos Bag'),
+              text: t`Chaos Bag`,
             },
             backButton: {
-              title: L('Cancel'),
+              title: t`Cancel`,
             },
           },
         },
@@ -52,7 +52,7 @@ export default class ChaosBagSection extends React.Component<Props> {
       <NavButton onPress={this._showChaosBagDialog}>
         <View style={styles.padding}>
           <Text style={typography.text}>
-            { L('Chaos Bag') }
+            { t`Chaos Bag` }
           </Text>
           <View style={styles.marginTop}>
             <ChaosBagLine chaosBag={this.props.chaosBag} />

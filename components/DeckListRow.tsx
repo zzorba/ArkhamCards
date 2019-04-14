@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { ngettext, msgid, t } from 'ttag';
 
-import L from '../app/i18n';
 import { Campaign, Deck } from '../actions/types';
 import Card, { CardsMap } from '../data/Card';
 import InvestigatorImage from './core/InvestigatorImage';
@@ -46,17 +46,12 @@ export default class DeckListRow extends React.Component<Props> {
     const xp = (parsedDeck.deck.xp || 0) + (parsedDeck.deck.xp_adjustment || 0);
     if (xp > 0) {
       if ((parsedDeck.spentXp || 0) > 0) {
-        return L(
-          '{{availableXp}} available experience, {{spentXp}} spent',
-          {
-            availableXp: xp,
-            spentXp: parsedDeck.spentXp,
-          });
+        return t`${xp} available experience, ${parsedDeck.spentXp} spent`;
       }
-      return L('{{availableXp}} available experience', { availableXp: xp });
+      return t`${xp} available experience`;
     }
     if (parsedDeck.experience > 0) {
-      return L('{{totalXp}} experience required', { totalXp: parsedDeck.experience });
+      return t`${parsedDeck.experience} experience required`;
     }
     return null;
   }
@@ -90,15 +85,18 @@ export default class DeckListRow extends React.Component<Props> {
 
     const date: undefined | string = deck.date_update || deck.date_creation;
     const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
+    const scenarioCount = deck.scenarioCount || 0;
+    const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate)) : undefined;
     return (
       <View>
         <Text style={typography.small}>
           { deckToCampaign && deckToCampaign[deck.id] ?
             deckToCampaign[deck.id].name :
-            L('{{scenarioCount}} scenarios completed', {
-              count: deck.scenarioCount,
-              scenarioCount: deck.scenarioCount,
-            })
+            ngettext(
+              msgid`${scenarioCount} scenario completed`,
+              `${scenarioCount} scenarios completed`,
+              scenarioCount
+            )
           }
         </Text>
         { !!xpString && (
@@ -109,9 +107,9 @@ export default class DeckListRow extends React.Component<Props> {
         { !!deck.problem && (
           <DeckProblemRow problem={{ reason: deck.problem }} color="#222" />
         ) }
-        { !!parsedDate && (
+        { !!dateStr && (
           <Text style={typography.small} >
-            { L('Updated {{date}}', { date: toRelativeDateString(new Date(parsedDate)) }) }
+            { t`Updated ${dateStr}` }
           </Text>
         ) }
       </View>

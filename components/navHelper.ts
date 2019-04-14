@@ -1,6 +1,6 @@
 import { Navigation, Options } from 'react-native-navigation';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Deck } from '../actions/types';
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import Card from '../data/Card';
@@ -14,11 +14,11 @@ export function getDeckOptions(investigator?: Card): Options {
     },
     topBar: {
       backButton: {
-        title: L('Back'),
+        title: t`Back`,
         color: '#FFFFFF',
       },
       title: {
-        text: investigator ? investigator.name : L('Deck'),
+        text: investigator ? investigator.name : t`Deck`,
         color: '#FFFFFF',
       },
       subtitle: {
@@ -91,7 +91,7 @@ export function showDeckModal(
     isPrivate: true,
     modal: true,
     campaignId,
-    title: investigator ? investigator.name : L('Deck'),
+    title: investigator ? investigator.name : t`Deck`,
   };
 
   Navigation.showModal({
@@ -124,7 +124,7 @@ export function showCard(
       options: {
         topBar: {
           backButton: {
-            title: L('Back'),
+            title: t`Back`,
           },
         },
       },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import NavButton from './NavButton';
 import { SearchSelectProps } from '../SearchMultiSelectView';
 import { COLORS } from '../../styles/colors';
@@ -26,7 +26,7 @@ export default class ChooserButton extends React.Component<Props> {
       component: {
         name: 'SearchFilters.Chooser',
         passProps: {
-          placeholder: L('Search {{searchType}}', { searchType: title }),
+          placeholder: t`Search ${title}`,
           values,
           onChange,
           selection,
@@ -34,16 +34,16 @@ export default class ChooserButton extends React.Component<Props> {
         options: {
           topBar: {
             title: {
-              text: L('Select {{searchType}}', { searchType: title }),
+              text: t`Select ${title}`,
               color: COLORS.navButton,
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
               color: COLORS.navButton,
             },
             rightButtons: selection && selection.length > 0 ?
               [{
-                text: L('Clear'),
+                text: t`Clear`,
                 id: 'clear',
                 color: COLORS.navButton,
               }] : [],
@@ -61,7 +61,7 @@ export default class ChooserButton extends React.Component<Props> {
     } = this.props;
     return (
       <NavButton
-        text={`${title}: ${selection && selection.length ? selection.join(', ') : L('All')}`}
+        text={`${title}: ${selection && selection.length ? selection.join(', ') : t`All`}`}
         onPress={this._onPress}
         indent={indent}
       />

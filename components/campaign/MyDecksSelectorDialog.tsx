@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Deck, DecksMap, Campaign } from '../../actions/types';
 import { isEliminated } from './trauma';
 import Switch from '../core/Switch';
@@ -47,7 +47,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     return {
       topBar: {
         title: {
-          text: L('Choose a Deck'),
+          text: t`Choose a Deck`,
         },
         leftButtons: [{
           icon: iconsMap.close,
@@ -153,7 +153,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       <View>
         <View style={styles.row}>
           <Text style={styles.searchOption}>
-            { L('Hide Decks From Other Campaigns') }
+            { t`Hide Decks From Other Campaigns` }
           </Text>
           <Switch
             value={hideOtherCampaignInvestigators}
@@ -163,7 +163,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         { !!campaign && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
-              { L('Hide Killed and Insane Investigators') }
+              { t`Hide Killed and Insane Investigators` }
             </Text>
             <Switch
               value={hideEliminatedInvestigators}
@@ -174,7 +174,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         { !!campaign && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
-              { L('Only Show Previous Campaign Members') }
+              { t`Only Show Previous Campaign Members` }
             </Text>
             <Switch
               value={onlyShowPreviousCampaignMembers}

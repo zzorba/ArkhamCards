@@ -9,7 +9,7 @@ import {
 import { startsWith, throttle } from 'lodash';
 import DialogComponent from 'react-native-dialog';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import Dialog from './Dialog';
 import typography from '../../styles/typography';
 
@@ -177,7 +177,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
       <Dialog visible={visible} title={title} viewRef={viewRef}>
         { Platform.OS === 'android' && isCrossedOut && (
           <DialogComponent.Description style={typography.small}>
-            { L('Note: This entry is crossed out') }
+            { t`Note: This entry is crossed out` }
           </DialogComponent.Description>
         ) }
         <DialogComponent.Input
@@ -201,19 +201,19 @@ export default class TextEditDialog extends React.Component<Props, State> {
           returnKeyType="done"
         />
         <DialogComponent.Button
-          label={L('Cancel')}
+          label={t`Cancel`}
           onPress={this._onCancelPress}
         />
         { showCrossOut && (
           <DialogComponent.Button
-            label={isCrossedOut ? L('Uncross Out') : L('Cross Out')}
+            label={isCrossedOut ? t`Uncross Out` : t`Cross Out`}
             color="#ff3b30"
             onPress={this._onCrossOutPress}
           />
         ) }
         { !!onSaveAndAdd && (
           <DialogComponent.Button
-            label={L('Add Another')}
+            label={t`Add Another`}
             color={textChanged ? buttonColor : '#666666'}
             disabled={!textChanged}
             onPress={this._onSaveAndAddPress}
@@ -221,7 +221,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
         ) }
         { !isCrossedOut && (
           <DialogComponent.Button
-            label={L('Done')}
+            label={t`Done`}
             color={textChanged ? buttonColor : '#666666'}
             disabled={!textChanged}
             onPress={this._onDonePress}

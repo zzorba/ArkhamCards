@@ -1,6 +1,6 @@
 import { filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy, union } from 'lodash';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { Deck, Slots } from '../actions/types';
 import Card, { CardKey, CardsMap } from '../data/Card';
 import {
@@ -34,31 +34,31 @@ function groupAssets(cardIds: CardId[], cards: CardsMap): AssetGroup[] {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, c => {
     switch (cards[c.id].slot) {
-      case 'Hand': return L('Hand');
-      case 'Hand. Arcane': return L('Hand. Arcane');
-      case 'Hand x2': return L('Hand x2');
-      case 'Arcane': return L('Arcane');
-      case 'Accessory': return L('Accessory');
-      case 'Body': return L('Body');
-      case 'Body. Hand x2': return L('Body. Hand x2');
-      case 'Ally': return L('Ally');
-      case 'Tarot': return L('Tarot');
-      default: return L('Other');
+      case 'Hand': return t`Hand`;
+      case 'Hand. Arcane': return t`Hand. Arcane`;
+      case 'Hand x2': return t`Hand x2`;
+      case 'Arcane': return t`Arcane`;
+      case 'Accessory': return t`Accessory`;
+      case 'Body': return t`Body`;
+      case 'Body. Hand x2': return t`Body. Hand x2`;
+      case 'Ally': return t`Ally`;
+      case 'Tarot': return t`Tarot`;
+      default: return t`Other`;
     }
   });
   return filter(
     map(
       [
-        L('Hand'),
-        L('Hand x2'),
-        L('Hand. Arcane'),
-        L('Body. Hand x2'),
-        L('Arcane'),
-        L('Accessory'),
-        L('Body'),
-        L('Ally'),
-        L('Tarot'),
-        L('Other'),
+        t`Hand`,
+        t`Hand x2`,
+        t`Hand. Arcane`,
+        t`Body. Hand x2`,
+        t`Arcane`,
+        t`Accessory`,
+        t`Body`,
+        t`Ally`,
+        t`Tarot`,
+        t`Other`,
       ],
       t => {
         return { type: t, data: groups[t] || [] };

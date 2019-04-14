@@ -2,7 +2,7 @@ import { forEach, head } from 'lodash';
 import Realm from 'realm';
 import { Alert } from 'react-native';
 
-import L from '../app/i18n';
+import { t } from 'ttag';
 import { CardCache, Pack } from '../actions/types';
 import Card from '../data/Card';
 import FaqEntry from '../data/FaqEntry';
@@ -24,9 +24,9 @@ export const syncCards = function(
       cycleNames[pack.cycle_position] = pack.name;
     }
   });
-  cycleNames[50] = L('Return to...');
-  cycleNames[70] = L('Standalone Scenarios');
-  cycleNames[80] = L('Books');
+  cycleNames[50] = t`Return to...`;
+  cycleNames[70] = t`Standalone Scenarios`;
+  cycleNames[80] = t`Books`;
   const headers = new Headers();
   if (cache &&
     cache.lastModified &&

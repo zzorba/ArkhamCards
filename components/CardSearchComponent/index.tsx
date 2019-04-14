@@ -8,7 +8,7 @@ import {
 import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import Card from '../../data/Card';
 import { Slots } from '../../actions/types';
 import {
@@ -146,10 +146,10 @@ class CardSearchComponent extends React.Component<Props, State> {
         options: {
           topBar: {
             backButton: {
-              title: L('Apply'),
+              title: t`Apply`,
             },
             title: {
-              text: L('Filters'),
+              text: t`Filters`,
             },
           },
         },
@@ -228,7 +228,7 @@ class CardSearchComponent extends React.Component<Props, State> {
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
-          text: mythosMode ? L('Encounter Cards') : L('Player Cards'),
+          text: mythosMode ? t`Encounter Cards` : t`Player Cards`,
         },
         rightButtons,
       },

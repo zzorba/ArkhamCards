@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import SliderChooser from './SliderChooser';
 import ToggleFilter from '../core/ToggleFilter';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
@@ -16,11 +16,11 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
     return {
       topBar: {
         backButton: {
-          title: L('Back'),
+          title: t`Back`,
           color: COLORS.navButton,
         },
         title: {
-          text: L('Enemy Filters'),
+          text: t`Enemy Filters`,
         },
       },
     };
@@ -48,37 +48,37 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
       <View style={styles.toggleRow}>
         <View style={styles.toggleColumn}>
           <ToggleFilter
-            label={L('Elite')}
+            label={t`Elite`}
             setting="enemyElite"
             value={enemyElite}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Hunter')}
+            label={t`Hunter`}
             setting="enemyHunter"
             value={enemyHunter}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Alert')}
+            label={t`Alert`}
             setting="enemyAlert"
             value={enemyAlert}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Spawn')}
+            label={t`Spawn`}
             setting="enemySpawn"
             value={enemySpawn}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Aloof')}
+            label={t`Aloof`}
             setting="enemyAloof"
             value={enemyAloof}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Massive')}
+            label={t`Massive`}
             setting="enemyMassive"
             value={enemyMassive}
             onChange={onToggleChange}
@@ -86,31 +86,31 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
         </View>
         <View style={styles.toggleColumn}>
           <ToggleFilter
-            label={L('Non-Elite')}
+            label={t`Non-Elite`}
             setting="enemyNonElite"
             value={enemyNonElite}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Non-Hunter')}
+            label={t`Non-Hunter`}
             setting="enemyNonHunter"
             value={enemyNonHunter}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Retaliate')}
+            label={t`Retaliate`}
             setting="enemyRetaliate"
             value={enemyRetaliate}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Parley')}
+            label={t`Parley`}
             setting="enemyParley"
             value={enemyParley}
             onChange={onToggleChange}
           />
           <ToggleFilter
-            label={L('Prey')}
+            label={t`Prey`}
             setting="enemyPrey"
             value={enemyPrey}
             onChange={onToggleChange}
@@ -143,7 +143,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
     return (
       <ScrollView>
         <SliderChooser
-          label={L('Fight')}
+          label={t`Fight`}
           width={width}
           max={defaultFilterState.enemyFight[1]}
           values={enemyFight}
@@ -154,7 +154,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           onToggleChange={onToggleChange}
         />
         <SliderChooser
-          label={L('Health')}
+          label={t`Health`}
           width={width}
           max={defaultFilterState.enemyHealth[1]}
           values={enemyHealth}
@@ -167,7 +167,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
         >
           <View>
             <ToggleFilter
-              label={L('Per Investigator')}
+              label={t`Per Investigator`}
               setting="enemyHealthPerInvestigator"
               value={enemyHealthPerInvestigator}
               onChange={onToggleChange}
@@ -175,7 +175,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           </View>
         </SliderChooser>
         <SliderChooser
-          label={L('Evade')}
+          label={t`Evade`}
           width={width}
           max={defaultFilterState.enemyEvade[1]}
           values={enemyEvade}
@@ -186,7 +186,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           onToggleChange={onToggleChange}
         />
         <SliderChooser
-          label={L('Damage')}
+          label={t`Damage`}
           width={width}
           max={defaultFilterState.enemyDamage[1]}
           values={enemyDamage}
@@ -197,7 +197,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           onToggleChange={onToggleChange}
         />
         <SliderChooser
-          label={L('Horror')}
+          label={t`Horror`}
           width={width}
           max={defaultFilterState.enemyHorror[1]}
           values={enemyHorror}

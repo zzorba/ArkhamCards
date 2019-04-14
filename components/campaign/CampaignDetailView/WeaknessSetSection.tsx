@@ -8,7 +8,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { Results } from 'realm';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import { WeaknessSet } from '../../../actions/types';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
@@ -55,11 +55,11 @@ class WeaknessSetSection extends React.Component<Props> {
         options: {
           topBar: {
             title: {
-              text: L('Draw Weaknesses'),
+              text: t`Draw Weaknesses`,
               color: COLORS.black,
             },
             backButton: {
-              title: L('Back'),
+              title: t`Back`,
             },
           },
         },
@@ -80,13 +80,10 @@ class WeaknessSetSection extends React.Component<Props> {
       <NavButton onPress={this._showDrawDialog}>
         <View style={styles.padding}>
           <Text style={typography.text}>
-            { L('Basic Weakness Set') }
+            { t`Basic Weakness Set` }
           </Text>
           <Text style={typography.small}>
-            { L('{{assignedCount}} / {{totalCount}} have been drawn.', {
-              assignedCount: counts.assigned,
-              totalCount: counts.total,
-            }) }
+            { t`${counts.assigned} / ${counts.total} have been drawn.` }
           </Text>
         </View>
       </NavButton>

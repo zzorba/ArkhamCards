@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import { Pack } from '../../actions/types';
 import PackListComponent from '../PackListComponent';
 import { getAllPacks, AppState } from '../../reducers';
@@ -27,11 +27,11 @@ class PackFilterView extends React.Component<Props> {
     return {
       topBar: {
         backButton: {
-          title: L('Back'),
+          title: t`Back`,
           color: COLORS.navButton,
         },
         title: {
-          text: L('Select Packs'),
+          text: t`Select Packs`,
         },
       },
     };
@@ -98,7 +98,7 @@ class PackFilterView extends React.Component<Props> {
     });
     return (
       <PackListComponent
-        coreSetName={L('Core Set')}
+        coreSetName={t`Core Set`}
         componentId={componentId}
         packs={allPacks}
         checkState={selected}

@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { Subtract } from 'utility-types';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import Button from '../core/Button';
 import Card from '../../data/Card';
 import { fetchCards, dismissUpdatePrompt } from './actions';
@@ -98,11 +98,11 @@ class FetchCardsGate extends React.Component<Props> {
       this._doFetch();
     } else if (this.props.promptForUpdate && this.updateNeeded()) {
       Alert.alert(
-        L('Check for updated cards?'),
-        L('It has been more than a week since you checked for new cards.\nCheck for new cards from ArkhamDB?'),
+        t`Check for updated cards?`,
+        t`It has been more than a week since you checked for new cards.\nCheck for new cards from ArkhamDB?`,
         [
-          { text: L('Ask me later'), onPress: this._ignoreUpdate },
-          { text: L('Check for updates'), onPress: this._doFetch },
+          { text: t`Ask me later`, onPress: this._ignoreUpdate },
+          { text: t`Check for updates`, onPress: this._doFetch },
         ],
       );
     }

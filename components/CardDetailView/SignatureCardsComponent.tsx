@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { connectRealm, CardResults } from 'react-native-realm';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import SignatureCardItem from './SignatureCardItem';
 import Card from '../../data/Card';
 
@@ -33,14 +33,14 @@ class SignatureCardsComponent extends React.Component<Props> {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>{ L('Required Cards') }</Text>
+        <Text style={styles.header}>{ t`Required Cards` }</Text>
         { !!(requiredCards && requiredCards.length) && (
           map(requiredCards, card => (
           <SignatureCardItem key={card.code} componentId={componentId} card={card} />
         ))) }
         { !!(alternateCards && alternateCards.length) && (
           <React.Fragment>
-            <Text style={styles.header}>{ L('Alternate Cards') }</Text>
+            <Text style={styles.header}>{ t`Alternate Cards` }</Text>
             { map(alternateCards, card => (
               <SignatureCardItem key={card.code} componentId={componentId} card={card} />
             )) }

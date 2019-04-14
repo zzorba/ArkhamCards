@@ -16,7 +16,7 @@ import { cloneLocalDeck } from '../decks/localHelper';
 import { login, setNewDeck } from '../../actions';
 import { Deck } from '../../actions/types';
 import { newDeck, saveDeck } from '../../lib/authApi';
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
 import { getDeck, getBaseDeck, getLatestDeck, getNextLocalDeckId, AppState } from '../../reducers';
@@ -260,12 +260,12 @@ class CopyDeckDialog extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { L('SELECT DECK VERSION TO COPY') }
+          { t`SELECT DECK VERSION TO COPY` }
         </DialogComponent.Description>
         { parsedBaseDeck ? (
           <SelectDeckSwitch
             deckId={parsedBaseDeck.deck.id}
-            label={L('Base Version\n{{xpCount}} XP', { xpCount: parsedBaseDeck.experience })}
+            label={t`Base Version\n${parsedBaseDeck.experience} XP`}
             value={selectedDeckId === parsedBaseDeck.deck.id}
             onValueChange={this._selectedDeckIdChanged}
           />
@@ -273,10 +273,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
         { parsedCurrentDeck ? (
           <SelectDeckSwitch
             deckId={parsedCurrentDeck.deck.id}
-            label={L('Current Version {{version}}\n{{xpCount}} XP', {
-              version: parsedCurrentDeck.deck.version,
-              xpCount: parsedCurrentDeck.experience,
-            })}
+            label={t`Current Version ${parsedCurrentDeck.deck.version}\n${parsedCurrentDeck.experience} XP`}
             value={selectedDeckId === parsedCurrentDeck.deck.id}
             onValueChange={this._selectedDeckIdChanged}
           />
@@ -284,10 +281,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
         { parsedLatestDeck ? (
           <SelectDeckSwitch
             deckId={parsedLatestDeck.deck.id}
-            label={L('Latest Version {{version}}\n{{xpCount}} XP', {
-              version: parsedLatestDeck.deck.version,
-              xpCount: parsedLatestDeck.experience,
-            })}
+            label={t`Latest Version ${parsedLatestDeck.deck.version}\n${parsedLatestDeck.experience} XP`}
             value={selectedDeckId === parsedLatestDeck.deck.id}
             onValueChange={this._selectedDeckIdChanged}
           />
@@ -319,21 +313,21 @@ class CopyDeckDialog extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { L('NEW NAME') }
+          { t`NEW NAME` }
         </DialogComponent.Description>
         <DialogComponent.Input
           textInputRef={this._captureTextInputRef}
           value={deckName || ''}
-          placeholder={L('Required')}
+          placeholder={t`Required`}
           onChangeText={this._onDeckNameChange}
           returnKeyType="done"
         />
         { this.renderDeckSelector() }
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { L('DECK TYPE') }
+          { t`DECK TYPE` }
         </DialogComponent.Description>
         <DialogComponent.Switch
-          label={L('Create on ArkhamDB')}
+          label={t`Create on ArkhamDB`}
           value={!offlineDeck && signedIn && networkType !== 'none'}
           disabled={networkType === 'none'}
           onValueChange={this._onDeckTypeChange}
@@ -342,7 +336,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
         { networkType === 'none' && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
             <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-              { L('You seem to be offline. Refresh Network?') }
+              { t`You seem to be offline. Refresh Network?` }
             </DialogComponent.Description>
           </TouchableOpacity>
         ) }
@@ -367,7 +361,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
     const okDisabled = saving || selectedDeckId === null;
     return (
       <Dialog
-        title={L('Copy Deck')}
+        title={t`Copy Deck`}
         visible={!!deckId}
         viewRef={viewRef}
       >
@@ -375,17 +369,17 @@ class CopyDeckDialog extends React.Component<Props, State> {
           style={[styles.descriptionMargin, saving ? typography.center : typography.left]}
         >
           { saving ?
-            L('Saving') :
-            L('Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.')
+            t`Saving` :
+            t`Make a copy of a deck so that you can use it in a different campaign or choose different upgrades.`
           }
         </DialogComponent.Description>
         { this.renderFormContent() }
         <DialogComponent.Button
-          label={L('Cancel')}
+          label={t`Cancel`}
           onPress={toggleVisible}
         />
         <DialogComponent.Button
-          label={L('Okay')}
+          label={t`Okay`}
           color={okDisabled ? COLORS.darkGray : COLORS.lightBlue}
           disabled={okDisabled}
           onPress={this._onOkayPress}

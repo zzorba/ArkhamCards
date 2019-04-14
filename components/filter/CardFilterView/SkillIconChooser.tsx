@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../../app/i18n';
+import { t } from 'ttag';
 import AccordionItem from '../AccordionItem';
 import ToggleFilter from '../../core/ToggleFilter';
 import { SkillIconsFilters } from '../../../lib/filters';
@@ -44,7 +44,7 @@ export default class SkillIconChooser extends React.Component<Props> {
     } = this.props;
     return (
       <AccordionItem
-        label={enabled ? L('Skill Icons') : L('Skill Icons: All')}
+        label={enabled ? t`Skill Icons` : t`Skill Icons: All`}
         height={126}
         enabled={enabled}
         toggleName="skillEnabled"

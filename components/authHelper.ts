@@ -1,8 +1,7 @@
 import {
   Alert,
 } from 'react-native';
-
-import L from '../app/i18n';
+import { t } from 'ttag';
 
 export function handleAuthErrors<T>(
   promise: Promise<T>,
@@ -16,21 +15,21 @@ export function handleAuthErrors<T>(
     err => {
       if (err.message === 'badAccessToken') {
         Alert.alert(
-          L('Authorization error'),
-          L('We are having trouble talking to ArkhamDB.\n\nIf the problem persists, please try to reauthorize.'),
+          t`Authorization error`,
+          t`We are having trouble talking to ArkhamDB.\n\nIf the problem persists, please try to reauthorize.`,
           [{
-            text: L('Try again'),
+            text: t`Try again`,
             onPress: () => {
               retry();
             },
           }, {
-            text: L('Reauthorize'),
+            text: t`Reauthorize`,
             onPress: () => {
               login();
               onFailure(err);
             },
           }, {
-            text: L('Cancel'),
+            text: t`Cancel`,
             onPress: () => {
               onFailure(err);
             },

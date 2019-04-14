@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import L from '../../app/i18n';
+import { t } from 'ttag';
 import ToggleFilter from '../core/ToggleFilter';
 import SliderChooser from './SliderChooser';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
@@ -15,7 +15,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
     return {
       topBar: {
         title: {
-          text: L('Location Filters'),
+          text: t`Location Filters`,
         },
       },
     };
@@ -39,7 +39,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
     return (
       <ScrollView>
         <SliderChooser
-          label={L('Shroud')}
+          label={t`Shroud`}
           width={width}
           max={defaultFilterState.shroud[1]}
           values={shroud}
@@ -50,7 +50,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
           onToggleChange={onToggleChange}
         />
         <SliderChooser
-          label={L('Clues')}
+          label={t`Clues`}
           width={width}
           max={defaultFilterState.clues[1]}
           values={clues}
@@ -63,7 +63,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
         >
           <View>
             <ToggleFilter
-              label={L('Per Investigator')}
+              label={t`Per Investigator`}
               setting="cluesFixed"
               value={!cluesFixed}
               onChange={onToggleChange}
@@ -73,7 +73,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
         <View style={styles.toggleRow}>
           <View style={styles.toggleColumn}>
             <ToggleFilter
-              label={L('Haunted')}
+              label={t`Haunted`}
               setting="hauntedEnabled"
               value={hauntedEnabled}
               onChange={onToggleChange}

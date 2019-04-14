@@ -15,10 +15,10 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import DeviceInfo from 'react-native-device-info';
+import { msgid, ngettext, t } from 'ttag';
 
 import AppIcon from '../../assets/AppIcon';
 import { Campaign, Deck, DeckProblem, InvestigatorData, Trauma } from '../../actions/types';
-import L from '../../app/i18n';
 import { CardId, CardSplitType, ParsedDeck, SplitCards } from '../parseDeck';
 import { showCard } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
@@ -49,7 +49,7 @@ function deckToSections(halfDeck: SplitCards, special: boolean): CardSection[] {
     const assetCount = sum(halfDeck.Assets.map(subAssets =>
       sum(subAssets.data.map(c => c.quantity))));
     result.push({
-      title: L('Assets ({{count}})', { count: assetCount }),
+      title: t`Assets (${assetCount})`,
       data: [],
     });
     forEach(halfDeck.Assets, subAssets => {
@@ -62,10 +62,10 @@ function deckToSections(halfDeck: SplitCards, special: boolean): CardSection[] {
     });
   }
   forEach({
-    [L('Event')]: halfDeck.Event,
-    [L('Skill')]: halfDeck.Skill,
-    [L('Enemy')]: halfDeck.Enemy,
-    [L('Treachery')]: halfDeck.Treachery,
+    [t`Event`]: halfDeck.Event,
+    [t`Skill`]: halfDeck.Skill,
+    [t`Enemy`]: halfDeck.Enemy,
+    [t`Treachery`]: halfDeck.Treachery,
   }, (cardSplitGroup, localizedName) => {
     if (cardSplitGroup) {
       const count = sumBy(cardSplitGroup, c => c.quantity);
@@ -81,12 +81,12 @@ function deckToSections(halfDeck: SplitCards, special: boolean): CardSection[] {
 }
 
 const DECK_PROBLEM_MESSAGES = {
-  too_few_cards: L('Not enough cards.'),
-  too_many_cards: L('Too many cards.'),
-  too_many_copies: L('Too many copies of a card with the same name.'),
-  invalid_cards: L('Contains forbidden cards (cards not permitted by Faction)'),
-  deck_options_limit: L('Contains too many limited cards.'),
-  investigator: L('Doesn\'t comply with the Investigator requirements.'),
+  too_few_cards: t`Not enough cards.`,
+  too_many_cards: t`Too many cards.`,
+  too_many_copies: t`Too many copies of a card with the same name.`,
+  invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
+  deck_options_limit: t`Contains too many limited cards.`,
+  investigator: t`Doesn't comply with the Investigator requirements.`,
 };
 
 interface Props {
@@ -125,14 +125,14 @@ export default class DeckViewTab extends React.Component<Props> {
       const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
       if (isLatestUpgrade) {
         options.push({
-          text: L('Delete this upgrade ({{version}})', { version: deck.version }),
+          text: t`Delete this upgrade (${deck.version})`,
           onPress: () => {
             deleteDeck(false);
           },
           style: 'destructive',
         });
         options.push({
-          text: L('Delete all versions'),
+          text: t`Delete all versions`,
           onPress: () => {
             deleteDeck(true);
           },
@@ -141,7 +141,7 @@ export default class DeckViewTab extends React.Component<Props> {
       } else {
         const isUpgraded = !!deck.next_deck;
         options.push({
-          text: isUpgraded ? L('Delete all versions') : L('Delete'),
+          text: isUpgraded ? t`Delete all versions` : t`Delete`,
           onPress: () => {
             deleteDeck(true);
           },
@@ -149,28 +149,28 @@ export default class DeckViewTab extends React.Component<Props> {
         });
       }
       options.push({
-        text: L('Cancel'),
+        text: t`Cancel`,
         style: 'cancel',
       });
 
       Alert.alert(
-        L('Delete deck'),
-        L('Are you sure you want to delete this deck?'),
+        t`Delete deck`,
+        t`Are you sure you want to delete this deck?`,
         options,
       );
     } else {
       Alert.alert(
-        L('Visit ArkhamDB to delete?'),
-        L('Unfortunately to delete decks you have to visit ArkhamDB at this time.'),
+        t`Visit ArkhamDB to delete?`,
+        t`Unfortunately to delete decks you have to visit ArkhamDB at this time.`,
         [
           {
-            text: L('Visit ArkhamDB'),
+            text: t`Visit ArkhamDB`,
             onPress: () => {
               Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
             },
           },
           {
-            text: L('Cancel'),
+            text: t`Cancel`,
             style: 'cancel',
           },
         ],
@@ -188,18 +188,18 @@ export default class DeckViewTab extends React.Component<Props> {
     } = this.props;
     if (hasPendingEdits) {
       Alert.alert(
-        L('Save Local Changes'),
-        L('Please save any local edits to this deck before sharing to ArkhamDB')
+        t`Save Local Changes`,
+        t`Please save any local edits to this deck before sharing to ArkhamDB`
       );
     } else if (deck.next_deck || deck.previous_deck) {
       Alert.alert(
-        L('Unsupported Operation'),
-        L('This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.')
+        t`Unsupported Operation`,
+        t`This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.`
       );
     } else if (!signedIn) {
       Alert.alert(
-        L('Sign in to ArkhamDB'),
-        L('ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.'),
+        t`Sign in to ArkhamDB`,
+        t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.`,
         [
           { text: 'Sign In', onPress: login },
           { text: 'Cancel', style: 'cancel' },
@@ -207,8 +207,8 @@ export default class DeckViewTab extends React.Component<Props> {
       );
     } else {
       Alert.alert(
-        L('Upload to ArkhamDB'),
-        L('You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.'),
+        t`Upload to ArkhamDB`,
+        t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
         [
           { text: 'Upload', onPress: uploadLocalDeck },
           { text: 'Cancel', style: 'cancel' },
@@ -355,7 +355,7 @@ export default class DeckViewTab extends React.Component<Props> {
     return [
       ...deckToSections(normalCards, false),
       {
-        superTitle: L('Special Cards'),
+        superTitle: t`Special Cards`,
         data: [],
         onPress: showEditSpecial,
       },
@@ -420,17 +420,18 @@ export default class DeckViewTab extends React.Component<Props> {
                   </Text>
                 ) }
                 <Text style={styles.defaultText}>
-                  { L(
-                    '{{cardCount}} cards ({{totalCount}} total)',
-                    { cardCount: normalCardCount, totalCount: totalCardCount }
+                  { ngettext(
+                      msgid`${normalCardCount} card (${totalCardCount} total)`,
+                      `${normalCardCount} cards (${totalCardCount} total)`,
+                      normalCardCount
                   ) }
                 </Text>
                 <Text style={styles.defaultText}>
-                  { L('Version {{version}}', { version: deck.version }) }
+                  { t`Version ${deck.version}` }
                 </Text>
                 { experience > 0 && (
                   <Text style={styles.defaultText}>
-                    { L('{{xp}} experience required.', { xp: experience }) }
+                    { t`${experience} experience required.` }
                   </Text>
                 ) }
               </View>
@@ -453,14 +454,14 @@ export default class DeckViewTab extends React.Component<Props> {
           { deck.local ? (
             <View style={styles.button}>
               <Button
-                title={L('Upload to ArkhamDB')}
+                title={t`Upload to ArkhamDB`}
                 onPress={this._uploadToArkhamDB}
               />
             </View>
           ) : (
             <View style={styles.button}>
               <Button
-                title={L('View on ArkhamDB')}
+                title={t`View on ArkhamDB`}
                 onPress={this._viewDeck}
               />
             </View>
@@ -468,7 +469,7 @@ export default class DeckViewTab extends React.Component<Props> {
           { isPrivate && (
             <View style={styles.button}>
               <Button
-                title={L('Delete Deck')}
+                title={t`Delete Deck`}
                 color={COLORS.red}
                 onPress={this._deleteDeckPrompt}
               />
