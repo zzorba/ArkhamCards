@@ -2,85 +2,79 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals = 2; plural = (n !== 1);\n"
-"Language: es\n"
+"Language: it\n"
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"x-generator: Poedit 2.2.1\n"
 
 #: data/Card.ts:224
 msgid "Cost: -"
-msgstr "Coste: -"
+msgstr ""
 
 #: data/Card.ts:227
 msgid "Cost: ${ costString }"
-msgstr "Coste: ${costString}"
+msgstr ""
 
 #: data/Card.ts:310
 msgid "Guardian / Rogue"
-msgstr "Guardián / Rebelde"
+msgstr ""
 
 #: data/Card.ts:311
 msgid "Rogue / Survivor"
-msgstr "Rebelde / Superviviente"
+msgstr ""
 
 #: data/Card.ts:312
 msgid "Survivor / Seeker"
-msgstr "Superviviente / Buscador"
+msgstr ""
 
 #: data/Card.ts:313
 msgid "Seeker / Mystic"
-msgstr "Buscador / Místico"
+msgstr ""
 
 #: data/Card.ts:314
 msgid "Mystic / Guardian"
-msgstr "Místico / Guardián"
+msgstr ""
 
 #: data/Card.ts:315
 #: data/Card.ts:329
 msgid "Guardian"
-msgstr "Guardián"
+msgstr ""
 
 #: data/Card.ts:316
 #: data/Card.ts:335
 msgid "Seeker"
-msgstr "Buscador"
+msgstr ""
 
 #: data/Card.ts:317
 #: data/Card.ts:333
 msgid "Mystic"
-msgstr "Místico"
+msgstr ""
 
 #: data/Card.ts:318
 #: data/Card.ts:331
 msgid "Rogue"
-msgstr "Rebelde"
+msgstr ""
 
 #: data/Card.ts:319
 #: data/Card.ts:337
 msgid "Survivor"
-msgstr "Superviviente"
+msgstr ""
 
 #: data/Card.ts:320
 #: data/Card.ts:339
 msgid "Neutral"
-msgstr "Neutral"
+msgstr ""
 
 #: data/Card.ts:321
 #: data/Card.ts:352
 #: data/Card.ts:385
 #: data/Card.ts:402
 msgid "Weakness"
-msgstr "Debilidad"
+msgstr ""
 
 #: data/Card.ts:322
 #: data/Card.ts:347
 msgid "Mythos"
-msgstr "Mitos"
+msgstr ""
 
 #: data/Card.ts:355
 msgid "Unknown"
@@ -89,57 +83,57 @@ msgstr ""
 #: data/Card.ts:369
 #: data/Card.ts:450
 msgid "Investigator"
-msgstr "Investigador"
+msgstr ""
 
 #: data/Card.ts:370
 #: data/Card.ts:414
 msgid "Asset: Hand"
-msgstr "Apoyo: Mano"
+msgstr ""
 
 #: data/Card.ts:371
 #: data/Card.ts:416
 msgid "Asset: Hand x2"
-msgstr "Apoyo: Mano x2"
+msgstr ""
 
 #: data/Card.ts:372
 #: data/Card.ts:432
 msgid "Asset: Hand. Arcane"
-msgstr "Apoyo: Mano. Arcano"
+msgstr ""
 
 #: data/Card.ts:373
 #: data/Card.ts:430
 msgid "Asset: Body. Hand x2"
-msgstr "Apoyo: Cuerpo. Mano x2"
+msgstr ""
 
 #: data/Card.ts:374
 #: data/Card.ts:418
 msgid "Asset: Accessory"
-msgstr "Apoyo: Accesorio"
+msgstr ""
 
 #: data/Card.ts:375
 #: data/Card.ts:420
 msgid "Asset: Ally"
-msgstr "Apoyo: Aliado"
+msgstr ""
 
 #: data/Card.ts:376
 #: data/Card.ts:422
 msgid "Asset: Arcane"
-msgstr "Apoyo: Arcano"
+msgstr ""
 
 #: data/Card.ts:377
 #: data/Card.ts:424
 msgid "Asset: Arcane x2"
-msgstr "Apoyo: Arcano x2"
+msgstr ""
 
 #: data/Card.ts:378
 #: data/Card.ts:426
 msgid "Asset: Body"
-msgstr "Apoyo: Cuerpo"
+msgstr ""
 
 #: data/Card.ts:379
 #: data/Card.ts:410
 msgid "Asset: Permanent"
-msgstr "Apoyo: Permanente"
+msgstr ""
 
 #: data/Card.ts:380
 #: data/Card.ts:428
@@ -149,24 +143,24 @@ msgstr ""
 #: data/Card.ts:381
 #: data/Card.ts:434
 msgid "Asset: Other"
-msgstr "Apoyo: Otros"
+msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:65
 #: data/Card.ts:382
 #: data/Card.ts:440
 msgid "Event"
-msgstr "Evento"
+msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:66
 #: data/Card.ts:383
 #: data/Card.ts:445
 msgid "Skill"
-msgstr "Habilidad"
+msgstr ""
 
 #: data/Card.ts:384
 #: data/Card.ts:397
 msgid "Basic Weakness"
-msgstr "Debilidad básica"
+msgstr ""
 
 #: components/ScenarioDialog.tsx:25
 #: components/campaign/AddScenarioResultView/ScenarioSection.tsx:197
@@ -174,7 +168,7 @@ msgstr "Debilidad básica"
 #: data/Card.ts:452
 #: data/Card.ts:492
 msgid "Scenario"
-msgstr "Escenario"
+msgstr ""
 
 #: data/Card.ts:387
 #: data/Card.ts:400
@@ -183,27 +177,27 @@ msgstr "Escenario"
 #: data/Card.ts:443
 #: data/Card.ts:448
 msgid "Story"
-msgstr "Historia"
+msgstr ""
 
 #: data/Card.ts:488
 msgid "Act ${ json.stage }"
-msgstr "Acto ${json.stage}"
+msgstr ""
 
 #: data/Card.ts:490
 msgid "Agenda ${ json.stage }"
-msgstr "Plan ${json.stage}"
+msgstr ""
 
 #: data/Card.ts:502
 msgid "Act ${ linked_card.stage }"
-msgstr "Acto ${linked_card.stage}"
+msgstr ""
 
 #: data/Card.ts:504
 msgid "Agenda ${ linked_card.stage }"
-msgstr "Plan ${linked_card.stage}"
+msgstr ""
 
 #: components/CollectionEditView.tsx:55
 msgid "Second Core Set"
-msgstr "Segundo Core Set"
+msgstr ""
 
 #: components/CardSearchResultsComponent/CardResultList.tsx:277
 #: components/CardSearchResultsComponent/CardResultList.tsx:506
@@ -213,11 +207,11 @@ msgstr "Segundo Core Set"
 #: components/campaign/SelectCampaignDialog/index.tsx:92
 #: components/settings/SettingsView.tsx:89
 msgid "Edit Collection"
-msgstr "Editar Colección"
+msgstr ""
 
 #: components/DeckListComponent.tsx:119
 msgid "Search decks"
-msgstr "Buscar mazos"
+msgstr ""
 
 #: components/DeckListComponent.tsx:139
 msgid ""
@@ -225,63 +219,56 @@ msgid ""
 "\\n"
 "Use the + button to create a new one."
 msgstr ""
-"No hay mazos todavía.\\n"
-"\\n"
-"Utiliza el botón + para crear uno nuevo."
 
 #: components/DeckListComponent.tsx:149
 msgid "No matching decks for \"${ searchTerm }\"."
-msgstr "No se encontraron mazos buscando por “${ searchTerm }”."
+msgstr ""
 
 #: components/DeckListRow.tsx:95
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
-msgstr[0] "Ningún escenario completado"
-msgstr[1] "1 escenario completado"
+msgstr[0] ""
+msgstr[1] ""
 
 #: components/DeckListRow.tsx:112
 msgid "Updated ${ dateStr }"
-msgstr "Actualizado el ${dateStr}"
+msgstr ""
 
 #: components/DeckListRow.tsx:49
 msgid "${ xp } available experience, ${ parsedDeck.spentXp } spent"
-msgstr "${xp} de experiencia disponible, ${parsedDeck.spentXp} gastada"
+msgstr ""
 
 #: components/DeckListRow.tsx:51
 msgid "${ xp } available experience"
-msgstr "${xp} de experiencia disponible"
+msgstr ""
 
 #: components/DeckListRow.tsx:54
 msgid "${ parsedDeck.experience } experience required"
-msgstr "${parsedDeck.experience} de experiencia requerida"
+msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:84
 #: components/DeckProblemRow.tsx:16
 msgid "Not enough cards."
-msgstr "Faltan cartas."
+msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:85
 #: components/DeckProblemRow.tsx:17
 msgid "Too many cards."
-msgstr "Demasiadas cartas."
+msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:86
 #: components/DeckProblemRow.tsx:18
 msgid "Too many copies of a card with the same name."
-msgstr "Demasiadas copias de una carta con el mismo nombre."
+msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:87
 #: components/DeckProblemRow.tsx:19
 msgid "Contains forbidden cards (cards not permitted by Faction)"
-msgstr "Contiene cartas prohibidas (cartas no permitidas por Clase)"
+msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:88
 #: components/DeckProblemRow.tsx:20
 msgid "Contains too many limited cards."
-msgstr "Contiene demasiadas cartas limitadas."
-
-#: components/DeckProblemRow.tsx:21
-msgid "Doesn\\'t comply with the Investigator requirements."
 msgstr ""
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:135
@@ -409,6 +396,12 @@ msgstr ""
 msgid "Pack"
 msgstr ""
 
+#: components/MyDecksComponent.tsx:113
+msgid ""
+"An unexpected error occurred (${ error }). If restarting the app doesn't "
+"fix the problem, tap here to reauthorize."
+msgstr ""
+
 #: components/DeckDetailView/DeckViewTab.tsx:202
 #: components/MyDecksComponent.tsx:142
 msgid ""
@@ -422,6 +415,8 @@ msgstr ""
 msgid "Connect to ArkhamDB"
 msgstr ""
 
+#: app/App.js:149
+#: app/App.js:162
 #: components/MyDecksView.tsx:36
 msgid "Decks"
 msgstr ""
@@ -1387,8 +1382,16 @@ msgstr ""
 msgid "The Witching Hour"
 msgstr ""
 
+#: components/campaign/constants.ts:144
+msgid "At Death's Doorstep (Act 1)"
+msgstr ""
+
 #: components/campaign/constants.ts:145
 msgid "A Record of Those Lost"
+msgstr ""
+
+#: components/campaign/constants.ts:146
+msgid "At Death's Doorstep (Acts 2-3)"
 msgstr ""
 
 #: components/campaign/constants.ts:147
@@ -1488,6 +1491,10 @@ msgstr ""
 
 #: components/campaign/constants.ts:223
 msgid "Chasing the Stranger"
+msgstr ""
+
+#: components/campaign/constants.ts:229
+msgid "Yig's Fury"
 msgstr ""
 
 #: components/campaign/constants.ts:230
@@ -1640,6 +1647,8 @@ msgstr ""
 msgid "Create Campaign"
 msgstr ""
 
+#: app/App.js:175
+#: app/App.js:188
 #: components/campaign/MyCampaignsView/index.tsx:49
 msgid "Campaigns"
 msgstr ""
@@ -1973,6 +1982,11 @@ msgstr ""
 msgid "Treachery"
 msgstr ""
 
+#: components/DeckDetailView/DeckViewTab.tsx:89
+#: components/DeckProblemRow.tsx:21
+msgid "Doesn't comply with the Investigator requirements."
+msgstr ""
+
 #: components/DeckDetailView/DeckViewTab.tsx:128
 msgid "Delete this upgrade (${ deck.version })"
 msgstr ""
@@ -2179,6 +2193,10 @@ msgstr ""
 msgid "Taking three damage and three horror"
 msgstr ""
 
+#: components/CardSearchResultsComponent/CardResultList.tsx:56
+msgid "Up by 5, hope I don't draw the tentacle"
+msgstr ""
+
 #: components/CardSearchResultsComponent/CardResultList.tsx:515
 msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
@@ -2275,6 +2293,7 @@ msgstr ""
 msgid "Encounter Cards"
 msgstr ""
 
+#: app/App.js:127
 #: components/CardSearchComponent/index.tsx:231
 msgid "Player Cards"
 msgstr ""
@@ -2341,28 +2360,11 @@ msgstr ""
 msgid "Deckbuilding Cards"
 msgstr ""
 
-#: components/MyDecksComponent.tsx:113
-msgid ""
-"An unexpected error occurred (${ error }). If restarting the app doesn't "
-"fix the problem, tap here to reauthorize."
+#: app/App.js:135
+msgid "Cards"
 msgstr ""
 
-#: components/campaign/constants.ts:144
-msgid "At Death's Doorstep (Act 1)"
-msgstr ""
-
-#: components/campaign/constants.ts:146
-msgid "At Death's Doorstep (Acts 2-3)"
-msgstr ""
-
-#: components/campaign/constants.ts:229
-msgid "Yig's Fury"
-msgstr ""
-
-#: components/DeckDetailView/DeckViewTab.tsx:89
-msgid "Doesn't comply with the Investigator requirements."
-msgstr ""
-
-#: components/CardSearchResultsComponent/CardResultList.tsx:56
-msgid "Up by 5, hope I don't draw the tentacle"
+#: app/App.js:201
+#: app/App.js:209
+msgid "Settings"
 msgstr ""

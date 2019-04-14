@@ -24,11 +24,11 @@ interface OwnProps {
 }
 
 interface ReduxProps {
-  lang?: string;
+  lang: string;
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang?: string) => void;
+  fetchCards: (realm: Realm, lang: string) => void;
 }
 
 interface RealmProps {
@@ -60,7 +60,7 @@ class LanguageDialog extends React.Component<Props> {
     } = this.props;
     const selectedLang = find(
       LANGUAGES,
-      obj => obj.name === lang
+      obj => obj.code === lang
     ) || LANGUAGES[0];
     return (
       <DialogPicker
@@ -77,7 +77,7 @@ class LanguageDialog extends React.Component<Props> {
 
 function mapStateToProps(state: AppState): ReduxProps {
   return {
-    lang: state.packs.lang || undefined,
+    lang: state.packs.lang || 'en',
   };
 }
 

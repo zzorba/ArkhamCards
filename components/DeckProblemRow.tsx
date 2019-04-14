@@ -18,7 +18,7 @@ const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
   too_many_copies: t`Too many copies of a card with the same name.`,
   invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
   deck_options_limit: t`Contains too many limited cards.`,
-  investigator: t`Doesn\'t comply with the Investigator requirements.`,
+  investigator: t`Doesn't comply with the Investigator requirements.`,
 };
 
 interface Props {
