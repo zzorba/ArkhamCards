@@ -10,7 +10,7 @@ import { COLORS } from '../styles/colors';
 export default class App {
   constructor(store) {
     this.started = false;
-    this.currentLang = null;
+    this.currentLang = 'en';
     store.subscribe(this.onStoreUpdate.bind(this, store));
     this._handleUrl = this.handleUrl.bind(this);
 
@@ -35,9 +35,7 @@ export default class App {
   }
 
   onStoreUpdate(store) {
-    const {
-      lang,
-    } = store.getState().cards;
+    const lang = store.getState().cards.lang || 'en';
 
     // handle a root change
     // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether
@@ -45,7 +43,7 @@ export default class App {
       this.started = true;
       this.currentLang = lang;
       iconsLoaded.then(() => {
-        this.startApp(lang || 'en');
+        this.startApp(lang);
       }).catch(error => console.log(error));
     }
   }

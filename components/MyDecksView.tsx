@@ -13,6 +13,7 @@ import withFetchCardsGate from './cards/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from '../reducers';
 import { COLORS } from '../styles/colors';
+import typography from '../styles/typography';
 
 interface OwnProps {
   componentId: string;
@@ -104,7 +105,7 @@ class MyDecksView extends React.Component<Props, State> {
     }
     return (
       <View style={styles.row}>
-        <Text style={styles.searchOption}>
+        <Text style={[typography.small, styles.searchOption]}>
           { t`Hide ArkhamDB Decks` }
         </Text>
         <Switch
@@ -173,8 +174,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchOption: {
-    fontFamily: 'System',
-    fontSize: 12,
     marginLeft: 10,
     marginRight: 2,
   },

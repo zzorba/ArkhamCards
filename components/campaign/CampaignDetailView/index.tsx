@@ -324,10 +324,10 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
   }, dispatch);
 }
 
-export default withPlayerCards(
+export default withPlayerCards<NavigationProps & CampaignDetailProps>(
   connect(mapStateToProps, mapDispatchToProps)(
-    withTraumaDialog(
-      withDialogs(CampaignDetailView)
+    withTraumaDialog<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps>(
+      withDialogs<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps & TraumaProps>(CampaignDetailView)
     )
   )
 );

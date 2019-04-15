@@ -15,11 +15,13 @@ function cleanDeck(deck: Deck): Deck {
   return deck;
 }
 
-export function decks(lastModified?: string): Promise<{
-  cacheHit: boolean,
-  lastModified?: string,
-  decks?: Deck[],
-}> {
+interface DecksResponse {
+  cacheHit: boolean;
+  lastModified?: string;
+  decks?: Deck[];
+}
+
+export function decks(lastModified?: string): Promise<DecksResponse> {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
@@ -38,17 +40,19 @@ export function decks(lastModified?: string): Promise<{
     };
     return fetch(uri, options).then(response => {
       if (response.status === 304) {
-        return Promise.resolve({
+        const result: DecksResponse = {
           cacheHit: true,
-        });
+        };
+        return Promise.resolve(result);
       }
       const lastModified = response.headers.get('Last-Modified');
       return response.json().then(json => {
-        return {
+        const result: DecksResponse = {
           cacheHit: false,
-          lastModified,
+          lastModified: lastModified || undefined,
           decks: map(json || [], deck => cleanDeck(deck)),
         };
+        return result;
       });
     });
   });

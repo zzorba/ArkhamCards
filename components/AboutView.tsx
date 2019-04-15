@@ -11,7 +11,7 @@ import typography from '../styles/typography';
 export default function AboutView() {
   return (
     <ScrollView style={styles.container}>
-      <Text style={typography.text}>
+      <Text style={typography.small}>
         The information presented in this app about Arkham Horror: The Card
         Game, both literal and graphical, is copyrighted by Fantasy Flight
         Games. This app is not produced, endorsed, supported, or affiliated
@@ -50,7 +50,7 @@ export default function AboutView() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    padding: 16,
   },
   footer: {
     height: 100,

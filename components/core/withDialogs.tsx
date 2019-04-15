@@ -30,8 +30,8 @@ export interface InjectedDialogProps {
   showCountEditDialog: ShowCountEditDialog;
 }
 
-export default function withDialogs<P extends InjectedDialogProps>(
-  WrappedComponent: React.ComponentType<P>
+export default function withDialogs<P>(
+  WrappedComponent: React.ComponentType<P & InjectedDialogProps>
 ) {
   interface State {
     baseViewRef?: View;
@@ -49,8 +49,8 @@ export default function withDialogs<P extends InjectedDialogProps>(
   }
 
   class ComponentWithDialogs extends
-    React.Component<Subtract<P, InjectedDialogProps>, State> {
-    constructor(props: Subtract<P, InjectedDialogProps>) {
+    React.Component<P, State> {
+    constructor(props: P) {
       super(props);
 
       this.state = {
@@ -80,9 +80,9 @@ export default function withDialogs<P extends InjectedDialogProps>(
       title: string,
       text: string,
       onTextChange: (text: string) => void,
-      showCrossOut: boolean,
-      numberOfLines: number,
-      onSaveAndAdd: (text: string) => void,
+      showCrossOut?: boolean,
+      numberOfLines?: number,
+      onSaveAndAdd?: (text: string) => void,
     ) => {
       this.setState({
         textVisible: true,
@@ -177,7 +177,7 @@ export default function withDialogs<P extends InjectedDialogProps>(
         <View style={styles.wrapper}>
           <View style={styles.wrapper} ref={this._captureBaseViewRef}>
             <WrappedComponent
-              {...this.props as P}
+              {...this.props}
               captureViewRef={this._captureViewRef}
               viewRef={this.state.viewRef}
               showTextEditDialog={this._showTextDialog}

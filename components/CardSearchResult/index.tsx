@@ -20,7 +20,7 @@ import { COLORS } from '../../styles/colors';
 import { ROW_HEIGHT, ICON_SIZE, TOGGLE_BUTTON_MODE, BUTTON_WIDTH } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from '../../styles/typography';
-import { isBig, s } from '../../styles/space';
+import { isBig, s, xs } from '../../styles/space';
 
 const SKILL_ICON_SIZE = (isBig ? 24 : 14) * DeviceInfo.getFontScale();
 const SMALL_ICON_SIZE = (isBig ? 38 : 26) * DeviceInfo.getFontScale();
@@ -395,6 +395,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: COST_ICON_SIZE,
     width: COST_ICON_SIZE,
+    marginRight: xs,
   },
   cardTextRow: {
     flex: 2,

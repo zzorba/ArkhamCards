@@ -14,8 +14,6 @@ export default function withNetworkStatus<P>(
     networkType?: string;
   }
   class NetworkStatusComponent extends React.Component<P, State> {
-
-    _networkInterval?: number;
     constructor(props: P) {
       super(props);
 
@@ -25,12 +23,10 @@ export default function withNetworkStatus<P>(
     componentDidMount() {
       this._refreshNetworkStatus();
       NetInfo.addEventListener('connectionChange', this._refreshNetworkStatus);
-      this._networkInterval = setInterval(this._refreshNetworkStatus, 5000);
     }
 
     componentWillUnmount() {
       NetInfo.removeEventListener('connectionChange', this._refreshNetworkStatus);
-      this._networkInterval && clearInterval(this._networkInterval);
     }
 
     _refreshNetworkStatus = () => {
