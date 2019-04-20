@@ -353,6 +353,14 @@ export interface AddCampaignScenarioResultAction {
   scenarioResult: ScenarioResult;
   now: Date;
 }
+export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
+export interface EditCampaignScenarioResultAction {
+  type: typeof EDIT_CAMPAIGN_SCENARIO_RESULT;
+  id: number;
+  index: number;
+  scenarioResult: ScenarioResult;
+  now: Date;
+}
 export const NEW_WEAKNESS_SET = 'NEW_WEAKNESS_SET';
 export const EDIT_WEAKNESS_SET = 'EDIT_WEAKNESS_SET';
 export const DELETE_WEAKNESS_SET = 'DELETE_WEAKNESS_SET';
@@ -412,4 +420,5 @@ export type CampaignActions =
   UpdateCampaignAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
+  EditCampaignScenarioResultAction | 
   SetAllCampaignsAction

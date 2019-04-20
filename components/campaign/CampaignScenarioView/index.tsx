@@ -8,9 +8,11 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Campaign, ScenarioResult } from '../../../actions/types';
+import ScenarioResultRow from './ScenarioResultRow';
 import { campaignScenarios, Scenario } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
+import { NavigationProps } from '../../types';
+import { Campaign, ScenarioResult } from '../../../actions/types';
 import { getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 
@@ -24,23 +26,24 @@ interface ReduxProps {
   scenarioByCode?: { [code: string]: Scenario };
 }
 
-type Props = CampaignScenarioProps & ReduxProps;
+type Props = NavigationProps & CampaignScenarioProps & ReduxProps;
 
 class CampaignScenarioView extends React.Component<Props> {
   _renderScenarioResult = (scenarioResult: ScenarioResult, idx: number) => {
     const {
+      componentId,
+      id,
       scenarioByCode,
     } = this.props;
-    const resolution = scenarioResult.resolution ?
-      `: ${scenarioResult.resolution}` : '';
-    const xp = ((scenarioResult.xp || 0) > 0 || !scenarioResult.interlude) ?
-      ` (${scenarioResult.xp} XP)` : '';
-    const scenario = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];
-    const scenarioName = scenario ? scenario.name : scenarioResult.scenario;
     return (
-      <Text style={typography.gameFont} key={idx}>
-        { `${scenarioName}${resolution}${xp}` }
-      </Text>
+      <ScenarioResultRow
+        key={idx}
+        componentId={componentId}
+        campaignId={id}
+        index={idx}
+        scenarioResult={scenarioResult}
+        scenarioByCode={scenarioByCode}
+      />
     );
   };
 

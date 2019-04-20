@@ -6,6 +6,7 @@ import {
   UPDATE_CAMPAIGN,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
+  EDIT_CAMPAIGN_SCENARIO_RESULT,
   SET_ALL_CAMPAIGNS,
   REPLACE_LOCAL_DECK,
   Campaign,
@@ -123,24 +124,37 @@ export default function(
       { all },
     );
   }
+  if (action.type === EDIT_CAMPAIGN_SCENARIO_RESULT) {
+    const campaign = { ...state.all[action.id] };
+    const scenarioResults = [
+      ...campaign.scenarioResults || []
+    ];
+    scenarioResults[action.index] = { ...action.scenarioResult };
+    const updatedCampaign = {
+      ...campaign,
+      scenarioResults,
+      lastUpdated: action.now,
+    };
+    return {
+      ...state,
+      all: { ...state.all, [action.id]: updatedCampaign },
+    };
+  }
   if (action.type === ADD_CAMPAIGN_SCENARIO_RESULT) {
-    const campaign = Object.assign({}, state.all[action.id]);
+    const campaign = { ...state.all[action.id] };
     const scenarioResults = [
       ...campaign.scenarioResults || [],
-      Object.assign({}, action.scenarioResult),
+      { ...action.scenarioResult },
     ];
-    const updatedCampaign = Object.assign(
-      {},
-      campaign,
-      {
-        scenarioResults,
-        lastUpdated: action.now,
-      },
-    );
-    return Object.assign({},
-      state,
-      { all: Object.assign({}, state.all, { [action.id]: updatedCampaign }) },
-    );
+    const updatedCampaign = {
+      ...campaign,
+      scenarioResults,
+      lastUpdated: action.now,
+    };
+    return {
+      ...state,
+      all: { ...state.all, [action.id]: updatedCampaign },
+    };
   }
   return state;
 }

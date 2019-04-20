@@ -8,6 +8,7 @@ import {
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
+  EDIT_CAMPAIGN_SCENARIO_RESULT,
   Campaign,
   CampaignCycleCode,
   CampaignDifficultyType,
@@ -15,6 +16,7 @@ import {
   ScenarioResult,
   WeaknessSet,
   AddCampaignScenarioResultAction,
+  EditCampaignScenarioResultAction,
   NewCampaignAction,
   UpdateCampaignAction,
   DeleteCampaignAction,
@@ -115,6 +117,20 @@ export function addScenarioResult(
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
     id,
+    scenarioResult,
+    now: new Date(),
+  };
+}
+
+export function editScenarioResult(
+  id: number,
+  index: number,
+  scenarioResult: ScenarioResult
+): EditCampaignScenarioResultAction {
+  return {
+    type: EDIT_CAMPAIGN_SCENARIO_RESULT,
+    id,
+    index,
     scenarioResult,
     now: new Date(),
   };

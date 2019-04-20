@@ -10,7 +10,7 @@ module.exports = {
     return blacklist([/react-native\/local-cli\/core\/__fixtures__.*/]);
   },
   transformer: {
-    getTransformOptions: async () => ({
+    getTransformOptions: async() => ({
       transform: {
         experimentalImportSupport: false,
         inlineRequires: false,
