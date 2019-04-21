@@ -50,6 +50,7 @@ export default function listOfDecks<P = {}>(
           campaignId={campaignId}
           deckIds={deckIds}
           deckAdded={deckAdded}
+          otherProps={this.props}
         />
       );
     }

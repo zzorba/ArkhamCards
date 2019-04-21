@@ -86,8 +86,7 @@ class DecksSection extends React.Component<Props> {
       latestDeckIds,
       updateLatestDeckIds,
     } = this.props;
-    const newLatestDeckIds = latestDeckIds.slice();
-    newLatestDeckIds.push(deck.id);
+    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
     updateLatestDeckIds(newLatestDeckIds);
     this.maybeShowWeaknessPrompt(deck);
   };

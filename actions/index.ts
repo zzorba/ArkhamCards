@@ -35,6 +35,7 @@ export function login(): ThunkAction<void, AppState, null, Action<string>> {
         dispatch({
           type: LOGIN,
         });
+        dispatch(refreshMyDecks());
       } else {
         dispatch({
           type: LOGIN_ERROR,

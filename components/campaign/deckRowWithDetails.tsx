@@ -88,6 +88,7 @@ export default function deckRowWithDetails<P = {}>(
           viewDeckButton={viewDeckButton}
           renderDetails={this._renderDetails}
           renderSubDetails={this._renderSubDetails}
+          otherProps={this.props}
         />
       );
     }

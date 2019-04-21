@@ -23,6 +23,7 @@ export interface DeckListProps  {
     cards: CardsMap,
     investigators: CardsMap
   ) => ReactNode;
+  otherProps: any;
 }
 
 class DeckList extends React.Component<DeckListProps & PlayerCardProps> {

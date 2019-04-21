@@ -33,6 +33,7 @@ interface OwnProps {
   renderDetails?: RenderDeckDetails;
   compact?: boolean;
   viewDeckButton?: boolean;
+  otherProps: any;
 }
 
 interface ReduxProps {
