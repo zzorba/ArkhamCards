@@ -31,6 +31,11 @@
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
 		652E68A5222C853900452A3C /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 652E68A2222C852800452A3C /* libRNDeviceInfo.a */; };
+		652EB73A226BAF7800F6D790 /* de.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB6FA226BAF7800F6D790 /* de.po.json */; };
+		652EB73C226BAF8400F6D790 /* en.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73B226BAF8400F6D790 /* en.po.json */; };
+		652EB73E226BAF9300F6D790 /* es.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73D226BAF9200F6D790 /* es.po.json */; };
+		652EB740226BAF9C00F6D790 /* fr.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73F226BAF9C00F6D790 /* fr.po.json */; };
+		652EB742226BAFA800F6D790 /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB741226BAFA800F6D790 /* it.po.json */; };
 		653E0641218FA669008D7E99 /* libRNAppAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626ED620D3EA23004F4190 /* libRNAppAuth.a */; };
 		6543AB8221C198790098803A /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B3F02C20897A2200B0B126 /* libAppCenterReactNativeCrashes.a */; };
 		6543AB8421C198820098803A /* libAppAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6543AB8321C198820098803A /* libAppAuth.a */; };
@@ -545,6 +550,11 @@
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
 		652E689C222C852700452A3C /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
+		652EB6FA226BAF7800F6D790 /* de.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = de.po.json; path = ../assets/i18n/de.po.json; sourceTree = "<group>"; };
+		652EB73B226BAF8400F6D790 /* en.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = en.po.json; path = ../assets/i18n/en.po.json; sourceTree = "<group>"; };
+		652EB73D226BAF9200F6D790 /* es.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = es.po.json; path = ../assets/i18n/es.po.json; sourceTree = "<group>"; };
+		652EB73F226BAF9C00F6D790 /* fr.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fr.po.json; path = ../assets/i18n/fr.po.json; sourceTree = "<group>"; };
+		652EB741226BAFA800F6D790 /* it.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = it.po.json; path = ../assets/i18n/it.po.json; sourceTree = "<group>"; };
 		6543AB8321C198820098803A /* libAppAuth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAppAuth.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543AB8921C198A20098803A /* libRealmJS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRealmJS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -716,6 +726,11 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				652EB741226BAFA800F6D790 /* it.po.json */,
+				652EB73F226BAF9C00F6D790 /* fr.po.json */,
+				652EB73D226BAF9200F6D790 /* es.po.json */,
+				652EB73B226BAF8400F6D790 /* en.po.json */,
+				652EB6FA226BAF7800F6D790 /* de.po.json */,
 				65CF51DF220386F400A1D2FA /* circle.ttf */,
 				65D3FA05210FF315000F8B9D /* Teutonic.ttf */,
 				6556782820BA144600C18EC4 /* forgotten.ttf */,
@@ -1694,6 +1709,8 @@
 			files = (
 				65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				652EB73C226BAF8400F6D790 /* en.po.json in Resources */,
+				652EB742226BAFA800F6D790 /* it.po.json in Resources */,
 				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
@@ -1702,8 +1719,11 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
 				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,
+				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
 				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
 				F607A526C444481AAEA01704 /* MaterialCommunityIcons.ttf in Resources */,
+				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
+				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,
 				31D495278C154F3F8F3C04EF /* MaterialIcons.ttf in Resources */,
 				02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */,
 			);
@@ -1940,7 +1960,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ArkhamCards-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1980,7 +2000,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArkhamCards-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

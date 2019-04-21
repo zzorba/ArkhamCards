@@ -1,11 +1,4 @@
 {
-    "presets": [
-        "@babel/env",
-        "@babel/preset-typescript",
-        "module:metro-react-native-babel-preset"
-    ],
-    "plugins": [
-        "@babel/proposal-class-properties",
-        "@babel/proposal-object-rest-spread"
-    ]
+    "presets": [ "module:metro-react-native-babel-preset" ],
+    "sourceMaps": true
 }

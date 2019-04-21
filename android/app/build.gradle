@@ -126,6 +126,7 @@ android {
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
         ]
+        multiDexEnabled true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

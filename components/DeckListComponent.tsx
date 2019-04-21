@@ -112,7 +112,7 @@ class DeckListComponent extends React.Component<Props, State> {
       customHeader,
     } = this.props;
     return (
-      <View>
+      <View style={styles.header}>
         <SearchBox
           value={this.state.searchTerm}
           onChangeText={this._searchChanged}
@@ -135,7 +135,7 @@ class DeckListComponent extends React.Component<Props, State> {
     if (isEmpty && !refreshing) {
       return (
         <View style={styles.footer}>
-          <Text style={[typography.text, space.marginBottomM]}>
+          <Text style={[styles.emptyStateText, typography.text, space.marginBottomM]}>
             { t`No decks yet.\n\nUse the + button to create a new one.` }
           </Text>
           { customFooter }
@@ -230,11 +230,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F5F5',
   },
+  header: {
+    width: '100%',
+    flexDirection: 'column',
+  },
   footer: {
     width: '100%',
-    padding: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
     marginBottom: 60,
     flexDirection: 'column',
     alignItems: 'flex-start',
+  },
+  emptyStateText: {
+    marginLeft: 8,
+    marginRight: 8,
   },
 });

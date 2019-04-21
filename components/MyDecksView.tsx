@@ -165,10 +165,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 4,
     paddingBottom: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
   },
   buttonRow: {
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

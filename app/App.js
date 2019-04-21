@@ -114,20 +114,67 @@ export default class App {
         },
       },
     } :*/
-    const browseTab = {
-      stack: {
-        children: [{
-          component: {
-            name: 'Browse.Cards',
-            options: {
-              topBar: {
-                title: {
-                  text: t`Player Cards`,
-                },
-              },
+    const browseCards = {
+      component: {
+        name: 'Browse.Cards',
+        options: {
+          topBar: {
+            title: {
+              text: t`Player Cards`,
             },
           },
-        }],
+        },
+      },
+    };
+    const browseDecks = {
+      component: {
+        name: 'My.Decks',
+        options: {
+          topBar: {
+            title: {
+              text: t`Decks`,
+            },
+            rightButtons: [{
+              icon: iconsMap.add,
+              id: 'add',
+              color: COLORS.navButton,
+            }],
+          },
+        },
+      },
+    };
+    const browseCampaigns = {
+      component: {
+        name: 'My.Campaigns',
+        options: {
+          topBar: {
+            title: {
+              text: t`Campaigns`,
+            },
+            rightButtons: [{
+              icon: iconsMap.add,
+              id: 'add',
+              color: COLORS.navButton,
+            }],
+          },
+        },
+      },
+    };
+    const settings = {
+      component: {
+        name: 'Settings',
+        options: {
+          topBar: {
+            title: {
+              text: t`Settings`,
+            },
+          },
+        },
+      },
+    };
+    const tabs = [{
+      stack: {
+        children: [browseCards],
         options: {
           bottomTab: {
             text: t`Cards`,
@@ -135,26 +182,9 @@ export default class App {
           },
         },
       },
-    };
-    const tabs = [browseTab, {
+    }, {
       stack: {
-        children: [{
-          component: {
-            name: 'My.Decks',
-            options: {
-              topBar: {
-                title: {
-                  text: t`Decks`,
-                },
-                rightButtons: [{
-                  icon: iconsMap.add,
-                  id: 'add',
-                  color: COLORS.navButton,
-                }],
-              },
-            },
-          },
-        }],
+        children: [browseDecks],
         options: {
           bottomTab: {
             text: t`Decks`,
@@ -164,23 +194,7 @@ export default class App {
       },
     }, {
       stack: {
-        children: [{
-          component: {
-            name: 'My.Campaigns',
-            options: {
-              topBar: {
-                title: {
-                  text: t`Campaigns`,
-                },
-                rightButtons: [{
-                  icon: iconsMap.add,
-                  id: 'add',
-                  color: COLORS.navButton,
-                }],
-              },
-            },
-          },
-        }],
+        children: [browseCampaigns],
         options: {
           bottomTab: {
             text: t`Campaigns`,
@@ -190,18 +204,7 @@ export default class App {
       },
     }, {
       stack: {
-        children: [{
-          component: {
-            name: 'Settings',
-            options: {
-              topBar: {
-                title: {
-                  text: t`Settings`,
-                },
-              },
-            },
-          },
-        }],
+        children: [settings],
         options: {
           bottomTab: {
             text: t`Settings`,
