@@ -7,7 +7,7 @@ import Card from '../data/Card';
 import { CardDetailProps } from './CardDetailView';
 import { DeckDetailProps } from './DeckDetailView';
 
-export function getDeckOptions(investigator?: Card): Options {
+export function getDeckOptions(investigator?: Card, title?: string): Options {
   return {
     statusBar: {
       style: 'light',
@@ -18,7 +18,7 @@ export function getDeckOptions(investigator?: Card): Options {
         color: '#FFFFFF',
       },
       title: {
-        text: investigator ? investigator.name : t`Deck`,
+        text: title || (investigator ? investigator.name : t`Deck`),
         color: '#FFFFFF',
       },
       subtitle: {

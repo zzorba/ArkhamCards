@@ -22,10 +22,11 @@ import { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 import { TINY_PHONE } from '../../styles/sizes';
 import DeckValidation from '../../lib/DeckValidation';
+import { getDeckOptions } from '../navHelper';
 import { FOOTER_HEIGHT } from './constants';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
-const SHOW_CHARTS_BUTTON = false;
+const SHOW_CHARTS_BUTTON = true;
 
 interface Props {
   componentId: string;
@@ -47,18 +48,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         passProps: {
           parsedDeck,
         },
-        options: {
-          topBar: {
-            backButton: {
-              title: t`Deck`,
-            },
-          },
-          bottomTabs: {
-            visible: false,
-            drawBehind: true,
-            animate: true,
-          },
-        },
+        options: getDeckOptions(parsedDeck.investigator, t`Charts`),
       },
     });
   };
@@ -68,6 +58,7 @@ export default class DeckNavFooter extends React.Component<Props> {
       componentId,
       parsedDeck: {
         slots,
+        investigator,
       },
     } = this.props;
     Navigation.push<DrawSimulatorProps>(componentId, {
@@ -76,21 +67,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         passProps: {
           slots,
         },
-        options: {
-          topBar: {
-            title: {
-              text: t`Draw`,
-            },
-            backButton: {
-              title: t`Deck`,
-            },
-          },
-          bottomTabs: {
-            visible: false,
-            drawBehind: true,
-            animate: true,
-          },
-        },
+        options: getDeckOptions(investigator, t`Draw`),
       },
     });
   };

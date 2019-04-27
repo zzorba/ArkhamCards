@@ -115,14 +115,24 @@ function factionCount(
   cardIds: CardId[],
   cards: CardsMap,
   faction: FactionCodeType
-): number {
-  return sum(cardIds.filter(c => (
+): [number, number] {
+  const nonPermanentCards = cardIds.filter(c => (
     cards[c.id] &&
     !cards[c.id].permanent &&
     !cards[c.id].double_sided &&
-    cards[c.id].code !== '02014' &&
-    cards[c.id].faction_code === faction
-  )).map(c => c.quantity));
+    cards[c.id].code !== '02014'
+  ));
+  return [
+    sum(nonPermanentCards.filter(c => (
+      cards[c.id].faction2_code !== null &&
+      (cards[c.id].faction_code === faction ||
+      cards[c.id].faction2_code === faction)
+    )).map(c => c.quantity)),
+    sum(nonPermanentCards.filter(c => (
+      cards[c.id].faction2_code === null &&
+      cards[c.id].faction_code === faction
+    )).map(c => c.quantity)),
+  ];
 }
 
 function costHistogram(cardIds: CardId[], cards: CardsMap): number[] {
@@ -136,10 +146,19 @@ function costHistogram(cardIds: CardId[], cards: CardsMap): number[] {
           card.code !== '02014' && (
           card.type_code === 'asset' || card.type_code === 'event');
       }),
-      c => cards[c.id] ? cards[c.id].cost : 0),
+      c => {
+        const card = cards[c.id];
+        if (!card) {
+          return 0;
+        }
+        if (card.cost === null) {
+          return -2;
+        }
+        return card.cost;
+      }),
     cs => sum(cs.map(c => c.quantity))
   );
-  return range(0, 6).map(cost => costHisto[cost] || 0);
+  return range(-2, 11).map(cost => costHisto[cost] || 0);
 }
 
 function sumSkillIcons(cardIds: CardId[], cards: CardsMap, skill: SkillCodeType): number {
@@ -302,7 +321,7 @@ function calculateSpentXp(
 }
 
 type FactionCounts = {
-  [faction in FactionCodeType]?: number;
+  [faction in FactionCodeType]?: [number, number];
 };
 
 type SkillCounts = {
