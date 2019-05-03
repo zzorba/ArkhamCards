@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "lint": "eslint index.js './**/*.js'",
+    "lint": "eslint index.js './**/*.{ts,js,tsx}'",
     "i18n-extract-en": "ttag update assets/i18n/en.po app/ components/ data/ constants/",
     "i18n-extract-fr": "ttag update assets/i18n/fr.po app/ components/ data/ constants/",
     "i18n-extract-it": "ttag update assets/i18n/it.po app/ components/ data/ constants/",
@@ -78,6 +78,8 @@
     "@types/react-native-svg-charts": "5.0.1",
     "@types/react-native-vector-icons": "6.4.0",
     "@types/react-redux": "6.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "@typescript-eslint/parser": "^1.7.0",
     "babel-eslint": "8.2.6",
     "babel-jest": "24.7.1",
     "babel-preset-react-native": "4.0.0",

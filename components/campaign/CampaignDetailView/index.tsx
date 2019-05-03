@@ -58,7 +58,7 @@ type AddSectionFunction = (
 ) => void;
 
 interface State {
-  addSectionVisible: boolean,
+  addSectionVisible: boolean;
   addSectionFunction?: AddSectionFunction;
 }
 

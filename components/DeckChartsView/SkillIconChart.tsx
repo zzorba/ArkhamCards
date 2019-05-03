@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, map, maxBy } from 'lodash';
+import { map, maxBy } from 'lodash';
 import { BarChart } from 'react-native-svg-charts';
 import { View, Text, StyleSheet } from 'react-native';
 import { t } from 'ttag';
@@ -14,7 +14,7 @@ interface Props {
 }
 
 interface Item {
-  skill: SkillCodeType,
+  skill: SkillCodeType;
   value: number;
   svg: {
     fill: string;
@@ -58,8 +58,7 @@ export default class SkillIconChart extends React.PureComponent<Props> {
             left: x(index),
             top: y(0) + 4,
             width: bandwidth,
-           }]}
-          >
+          }]}>
             <ArkhamIcon
               name={value.skill}
               size={32}
@@ -86,7 +85,7 @@ export default class SkillIconChart extends React.PureComponent<Props> {
     return (
       <View style={styles.wrapper}>
         <Text style={[typography.bigLabel, typography.center]}>
-          {t`Skill Icons`}
+          { t`Skill Icons` }
         </Text>
         <View style={styles.chart}>
           <BarChart
@@ -97,6 +96,7 @@ export default class SkillIconChart extends React.PureComponent<Props> {
             yAccessor={this._getValue}
             data={barData}
           >
+            // @ts-ignore TS2739
             <Labels />
           </BarChart>
         </View>

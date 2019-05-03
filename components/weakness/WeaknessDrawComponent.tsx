@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { filter, find, flatMap, forEach, head, keys, map, range, shuffle } from 'lodash';
 import {
   ActivityIndicator,
@@ -22,6 +21,7 @@ import ChooserButton from '../core/ChooserButton';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '../../styles/sizes';
 import typography from '../../styles/typography';
 const PLAYER_BACK = require('../../assets/player-back.png');
+
 const defaultImageCacheManager = ImageCacheManager();
 
 const PADDING = 32;

@@ -7,7 +7,7 @@ import Realm, { Results } from 'realm';
 import DeviceInfo from 'react-native-device-info';
 import { connectRealm, CardResults } from 'react-native-realm';
 import LinearGradient from 'react-native-linear-gradient';
-import { msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext } from 'ttag';
 
 import { filterToQuery, FilterState } from '../../lib/filters';
 import Card from '../../data/Card';
@@ -53,10 +53,10 @@ class FilterFooterComponent extends React.Component<Props> {
       >
         <Text style={[typography.text, space.marginLeftS]}>
           { ngettext(
-              msgid`${count} Card Matched`,
-              `${count} Cards Matched`,
-              count
-            ) }
+            msgid`${count} Card Matched`,
+            `${count} Cards Matched`,
+            count
+          ) }
         </Text>
       </LinearGradient>
     );

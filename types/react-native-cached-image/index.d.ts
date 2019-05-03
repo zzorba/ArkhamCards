@@ -1,1 +1,1 @@
-declare module "react-native-cached-image"
+declare module 'react-native-cached-image'

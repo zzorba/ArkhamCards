@@ -8,46 +8,23 @@ import {
   PTC,
   TFA,
   TCU,
-  EASY,
-  STANDARD,
-  HARD,
-  EXPERT,
-  CampaignDifficultyType,
+  CampaignDifficulty,
   CampaignCycleCode,
   CustomCampaignLog,
 } from '../../actions/types';
 import { ChaosBag } from '../../constants';
 
-export const DIFFICULTY: {
-  [difficulty in CampaignDifficultyType]: number;
-} = {
-  [EASY]: 0,
-  [STANDARD]: 1,
-  [HARD]: 2,
-  [EXPERT]: 3,
-};
-
-
-export function difficultyStrings(): {
-  [difficulty in CampaignDifficultyType]: string;
-} {
-  return {
-    easy: t`Easy`,
-    standard: t`Standard`,
-    hard: t`Hard`,
-    expert: t`Expert`,
-  };
-}
-
-export function difficultyString(difficulty: CampaignDifficultyType): string {
+export function difficultyString(difficulty: CampaignDifficulty): string {
   switch (difficulty) {
-    case EASY: return t`Easy`;
-    case STANDARD: return t`Standard`;
-    case HARD: return t`Hard`;
-    case EXPERT: return t`Expert`;
-    default:
+    case CampaignDifficulty.EASY: return t`Easy`;
+    case CampaignDifficulty.STANDARD: return t`Standard`;
+    case CampaignDifficulty.HARD: return t`Hard`;
+    case CampaignDifficulty.EXPERT: return t`Expert`;
+    default: {
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = difficulty;
       return 'Unknown';
+    }
   }
 }
 
@@ -61,9 +38,11 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TFA: return t`The Forgotten Age`;
     case TCU: return t`The Circle Undone`;
     case CUSTOM: return null;
-    default:
+    default: {
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
       return null;
+    }
   }
 }
 
@@ -161,10 +140,12 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Return to the Devourer Below`, code: 'return_to_the_devourer_below', pack_code: 'rtnotz' },
     ];
     case CUSTOM: return [];
-    default:
+    default: {
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
       return [];
-  };
+    }
+  }
 }
 
 export function campaignNames() {
@@ -247,53 +228,55 @@ export function getCampaignLog(
           t`Campaign Notes`,
         ],
       };
-    default:
+    default: {
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
       return {
         sections: [
           t`Campaign Notes`,
         ],
       };
+    }
   }
 }
 
-type ChaosBagByDifficulty = { [difficulty in CampaignDifficultyType]: ChaosBag };
+type ChaosBagByDifficulty = { [difficulty in CampaignDifficulty]: ChaosBag };
 
 const NOTZ_BAG: ChaosBagByDifficulty = {
-  [EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  [STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  [HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
-  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, tablet: 1, auto_fail: 1, elder_sign: 1 },
 };
 
 const DWL_BAG: ChaosBagByDifficulty = {
-  [EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  [STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  [HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
-  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, auto_fail: 1, elder_sign: 1 },
 };
 const PTC_BAG: ChaosBagByDifficulty = {
-  [EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, auto_fail: 1, elder_sign: 1 },
-  [STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-  [HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 3, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
-  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 3, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 3, '-4': 1, '-5': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 3, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 3, auto_fail: 1, elder_sign: 1 },
 };
 const TFA_BAG: ChaosBagByDifficulty = {
-  [EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-  [STANDARD]: { '+1': 1, '0': 3, '-1': 1, '-2': 2, '-3': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-  [HARD]: { '+1': 1, '0': 2, '-1': 1, '-2': 1, '-3': 2, '-4': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
-  [EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-6': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 3, '-1': 1, '-2': 2, '-3': 1, '-5': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '+1': 1, '0': 2, '-1': 1, '-2': 1, '-3': 2, '-4': 1, '-6': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 1, '-2': 2, '-3': 2, '-4': 2, '-6': 1, '-8': 1, skull: 2, elder_thing: 1, auto_fail: 1, elder_sign: 1 },
 };
 const TCU_BAG: ChaosBagByDifficulty = {
-  [EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-  [STANDARD]: { '+1': 1, '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-  [HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-  [EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-6': 1, '-8': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
-}
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 1, '-3': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-5': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-6': 1, '-8': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
+};
 
 export function getChaosBag(
   cycleCode: CampaignCycleCode,
-  difficulty: CampaignDifficultyType,
+  difficulty: CampaignDifficulty,
 ): ChaosBag {
   switch (cycleCode) {
     case CORE:
@@ -309,8 +292,10 @@ export function getChaosBag(
       return TFA_BAG[difficulty];
     case TCU:
       return TCU_BAG[difficulty];
-    default:
+    default: {
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;
       return NOTZ_BAG[difficulty];
+    }
   }
 }

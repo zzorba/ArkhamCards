@@ -67,9 +67,9 @@ export interface Trauma {
   insane?: boolean;
 }
 
-export type InvestigatorData = {
+export interface InvestigatorData {
   [code: string]: Trauma;
-};
+}
 
 export interface WeaknessSet {
   packCodes: string[];
@@ -113,22 +113,18 @@ export interface ScenarioResult {
   interlude?: boolean;
 }
 
-export const EASY = 'easy';
-export const STANDARD = 'standard';
-export const HARD = 'hard';
-export const EXPERT = 'expert';
+export enum CampaignDifficulty {
+  EASY = 'easy',
+  STANDARD = 'standard',
+  HARD = 'hard',
+  EXPERT = 'expert',
+}
 
-export type CampaignDifficultyType =
-  typeof EASY |
-  typeof STANDARD |
-  typeof HARD |
-  typeof EXPERT;
-
-export const DIFFICULTIES: CampaignDifficultyType[] = [
-  EASY,
-  STANDARD,
-  HARD,
-  EXPERT,
+export const DIFFICULTIES: CampaignDifficulty[] = [
+  CampaignDifficulty.EASY,
+  CampaignDifficulty.STANDARD,
+  CampaignDifficulty.HARD,
+  CampaignDifficulty.EXPERT,
 ];
 
 export const CUSTOM = 'custom';
@@ -164,7 +160,7 @@ export interface CustomCampaignLog {
   counts?: string[];
   investigatorSections?: string[];
   investigatorCounts?: string[];
-};
+}
 
 export interface InvestigatorNotes {
   sections: InvestigatorCampaignNoteSection[];
@@ -180,7 +176,7 @@ export interface CampaignNotes {
 export interface Campaign {
   id: number;
   name: string;
-  difficulty: CampaignDifficultyType;
+  difficulty: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
   lastUpdated: Date;
   showInterludes?: boolean;
@@ -214,11 +210,16 @@ export interface PacksAvailableAction {
   packs: Pack[];
   lang: string;
   timestamp: Date;
-  lastModified: string;
+  lastModified?: string;
 }
 
 export interface CardCache {
   cardCount: number;
+  lastModified?: string;
+}
+
+export interface TabooCache {
+  tabooCount: number;
   lastModified?: string;
 }
 
@@ -235,7 +236,8 @@ export interface CardFetchStartAction {
 export const CARD_FETCH_SUCCESS = 'CARD_FETCH_SUCCESS';
 export interface CardFetchSuccessAction {
   type: typeof CARD_FETCH_SUCCESS;
-  cache: CardCache;
+  cache?: CardCache;
+  tabooCache?: TabooCache;
   lang: string;
 }
 
@@ -322,7 +324,7 @@ export interface NewCampaignAction {
   now: Date;
   id: number;
   name: string;
-  difficulty: CampaignDifficultyType;
+  difficulty: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
   baseDeckIds: number[];
   chaosBag: ChaosBag;
@@ -332,7 +334,9 @@ export interface NewCampaignAction {
 export const SET_ALL_CAMPAIGNS = 'SET_ALL_CAMPAIGNS';
 export interface SetAllCampaignsAction {
   type: typeof SET_ALL_CAMPAIGNS;
-  campaigns: { [id: string]: Campaign },
+  campaigns: {
+    [id: string]: Campaign;
+  };
 }
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
 export interface UpdateCampaignAction {
@@ -420,5 +424,5 @@ export type CampaignActions =
   UpdateCampaignAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
-  EditCampaignScenarioResultAction | 
+  EditCampaignScenarioResultAction |
   SetAllCampaignsAction

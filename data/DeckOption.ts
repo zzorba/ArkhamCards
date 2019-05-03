@@ -96,7 +96,7 @@ export default class DeckOption {
       query += ' (';
       query +=
         map(this.type_code, type => ` type_code = '${type}'`).join(' OR');
-        query += ' )';
+      query += ' )';
       dirty = true;
     }
     query += ' )';

@@ -8,7 +8,7 @@ module.exports = {
     'process': true,
     'Promise': true
   },
-  'parser': 'babel-eslint',
+  'parser': '@typescript-eslint/parser',
   'parserOptions': {
     'ecmaVersion': 6,
     'sourceType': 'module',
@@ -22,8 +22,9 @@ module.exports = {
     'destructuring',
   ],
   'extends': [
+    'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
   ],
   'rules': {
     // Enable additional rules for ESLint:
@@ -140,5 +141,17 @@ module.exports = {
     'react/jsx-pascal-case': 'error',
     'react/jsx-tag-spacing': 'error',
     'react/jsx-wrap-multilines': 'error',
+    '@typescript-eslint/indent': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+    '@typescript-eslint/camelcase': 'off',
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-object-literal-type-assertion': 'off',
+    'react/no-multi-comp': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
   }
 }

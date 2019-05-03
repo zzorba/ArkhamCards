@@ -1,12 +1,9 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import {
   Text,
-  TextStyle,
   TouchableOpacity,
   StyleSheet,
   View,
-  ViewPropTypes,
   ViewStyle,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -42,7 +39,7 @@ export default function Button({
     case 'right': containerStyle = styles.rightContainer; break;
     default: containerStyle = styles.centerContainer; break;
   }
-  let padding = size === 'small' ? 8 : 16;
+  const padding = size === 'small' ? 8 : 16;
   let borderWidth = 0;
   let borderColor = null;
   let textColor = '#FFFFFF';
@@ -104,8 +101,6 @@ export default function Button({
     </View>
   );
 }
-
-
 
 interface Styles {
   icon: ViewStyle;

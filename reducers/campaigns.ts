@@ -1,4 +1,4 @@
-import { find, forEach, keys, map } from 'lodash';
+import { find, forEach, map } from 'lodash';
 
 import {
   LOGOUT,
@@ -91,9 +91,6 @@ export default function(
       action.campaign,
       { lastUpdated: action.now }
     );
-//    forEach(keys(action.campaign), key => {
-//      campaign[key] = action.campaign[key];
-//    });
     return Object.assign({},
       state,
       { all: Object.assign({}, state.all, { [action.id]: campaign }) },
@@ -127,7 +124,7 @@ export default function(
   if (action.type === EDIT_CAMPAIGN_SCENARIO_RESULT) {
     const campaign = { ...state.all[action.id] };
     const scenarioResults = [
-      ...campaign.scenarioResults || []
+      ...campaign.scenarioResults || [],
     ];
     scenarioResults[action.index] = { ...action.scenarioResult };
     const updatedCampaign = {

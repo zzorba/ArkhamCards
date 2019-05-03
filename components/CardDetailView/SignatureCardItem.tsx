@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from '../../data/Card';

@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import {
   Alert,
   StyleSheet,
@@ -8,11 +7,9 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Realm from 'realm';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
-import { Subtract } from 'utility-types';
 
 import { t } from 'ttag';
 import Button from '../core/Button';
@@ -147,7 +144,7 @@ class FetchCardsGate extends React.Component<Props> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     fetchNeeded: state.packs.all.length === 0,
     lang: state.packs.lang || 'en',
@@ -176,8 +173,7 @@ export default connectRealm<OwnProps, RealmProps, Card>(
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
-      realm: Realm,
-      props: OwnProps
+      realm: Realm
     ) {
       return {
         realm,

@@ -1,6 +1,6 @@
 import Config from 'react-native-config';
 import * as Keychain from 'react-native-keychain';
-import { authorize, refresh, revoke, AuthConfiguration, AuthorizeResult, RefreshResult } from 'react-native-app-auth';
+import { authorize, refresh, revoke, AuthorizeResult, RefreshResult } from 'react-native-app-auth';
 
 const config: any = {
   clientId: Config.OAUTH_CLIENT_ID,
@@ -54,10 +54,12 @@ export function getAccessToken() {
     });
 }
 
-export function signInFlow(): Promise<{
-  success: boolean,
-  error?: string | Error,
-}> {
+interface SignInResult {
+  success: boolean;
+  error?: string | Error;
+}
+
+export function signInFlow(): Promise<SignInResult> {
   return authorize(config)
     .then(saveAuthResponse)
     .then(() => {

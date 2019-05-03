@@ -5,7 +5,6 @@ import { View, Text, StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
 import { ParsedDeck } from '../parseDeck';
-import ArkhamIcon from '../../assets/ArkhamIcon';
 import { SLOTS, SlotCodeType } from '../../constants';
 import typography from '../../styles/typography';
 
@@ -14,7 +13,7 @@ interface Props {
 }
 
 interface Item {
-  slot: SlotCodeType,
+  slot: SlotCodeType;
   value: number;
 }
 
@@ -56,8 +55,7 @@ export default class SlotsChart extends React.PureComponent<Props> {
           <View style={[styles.label, {
             left: x(index) - bandwidth / 3,
             top: y(0) + 8,
-           }]}
-          >
+          }]}>
             <Text style={{
               height: bandwidth,
               width: TEXT_LENGTH,
@@ -66,7 +64,7 @@ export default class SlotsChart extends React.PureComponent<Props> {
                 { translateX: -(TEXT_LENGTH / 2 - bandwidth / 2) },
                 { translateY: (TEXT_LENGTH / 2 - bandwidth / 2) },
               ],
-            }}>{value.slot}</Text>
+            }}>{ value.slot }</Text>
           </View>
           { value.value > 0 && (
             <Text style={[
@@ -88,7 +86,7 @@ export default class SlotsChart extends React.PureComponent<Props> {
     return (
       <View style={styles.wrapper}>
         <Text style={[typography.bigLabel, typography.center]}>
-          {t`Slots`}
+          { t`Slots` }
         </Text>
         <View style={styles.chart}>
           <BarChart
@@ -99,6 +97,7 @@ export default class SlotsChart extends React.PureComponent<Props> {
             yAccessor={this._getValue}
             data={barData}
           >
+            // @ts-ignore TS2739
             <Labels />
           </BarChart>
         </View>

@@ -392,7 +392,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToProps(state: AppState): ReduxProps {
   return {
     nextLocalDeckId: getNextLocalDeckId(state),
   };

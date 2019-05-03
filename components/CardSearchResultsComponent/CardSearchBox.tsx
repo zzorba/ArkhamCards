@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Animated,
-  Easing,
   StyleSheet,
   Text,
   View,
@@ -28,7 +26,7 @@ interface Props {
 }
 
 interface State {
-  anim: Animated.Value,
+  anim: Animated.Value;
   advancedOpen: boolean;
 }
 

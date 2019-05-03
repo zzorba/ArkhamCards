@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, map } from 'lodash';
+import { map } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 
 import { Campaign, Deck } from '../../actions/types';
-import Card, { CardsMap } from '../../data/Card';
+import { CardsMap } from '../../data/Card';
 import InvestigatorImage from '../core/InvestigatorImage';
 import { getDecks, getLatestDeckIds, AppState } from '../../reducers';
 

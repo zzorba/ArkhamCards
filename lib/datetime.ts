@@ -2,13 +2,8 @@ import {
   getTime,
   format,
   addDays,
-  addWeeks,
-  addMonths,
-  addYears,
   isAfter,
-  startOfMonth,
   startOfDay,
-  endOfMonth,
 } from 'date-fns';
 
 /**
@@ -114,4 +109,5 @@ export default {
   toRelativeDateString,
   nowAsSeconds,
   objectIdToTimestamp,
+  localDateToUtc,
 };

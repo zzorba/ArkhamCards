@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { filter, map } from 'lodash';
 import {
   FlatList,
@@ -26,7 +25,7 @@ type Props = NavigationProps & SearchSelectProps;
 
 interface State {
   search: string;
-  selection: string[]
+  selection: string[];
 }
 
 interface Item {

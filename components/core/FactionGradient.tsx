@@ -5,9 +5,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import { FACTION_DARK_GRADIENTS, FACTION_LIGHT_GRADIENTS, FactionCodeType } from '../../constants';
 
 interface Props {
-  faction_code: FactionCodeType,
-  style?: ViewStyle,
-  children?: ReactNode,
+  faction_code: FactionCodeType;
+  style?: ViewStyle;
+  children?: ReactNode;
   dark?: boolean;
 }
 

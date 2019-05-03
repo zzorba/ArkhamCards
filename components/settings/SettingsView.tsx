@@ -228,6 +228,6 @@ const styles = StyleSheet.create<Styles>({
     backgroundColor: Platform.OS === 'ios' ? COLORS.iosSettingsBackground : COLORS.white,
   },
   androidCategory: {
-    color: COLORS.monza
+    color: COLORS.monza,
   },
 });

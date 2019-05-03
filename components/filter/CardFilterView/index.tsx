@@ -28,7 +28,7 @@ const CARD_FACTION_CODES: FactionCodeType[] = [
   'mythos',
 ];
 
-type ReduxProps = {
+interface ReduxProps {
   allPacks: Pack[];
 }
 
@@ -41,10 +41,10 @@ interface State {
   hasSkill: boolean;
   allUses: string[];
   allFactions: FactionCodeType[];
-  allTraits: string[],
-  allTypes: string[],
-  allTypeCodes: string[],
-  allSubTypes: string[],
+  allTraits: string[];
+  allTypes: string[];
+  allTypeCodes: string[];
+  allSubTypes: string[];
   allPacks: string[];
   allSlots: string[];
   allEncounters: string[];
@@ -216,7 +216,7 @@ class CardFilterView extends React.Component<Props, State> {
       return t`Packs: All`;
     }
     const selectedPackNames = new Set(packs);
-    const cyclePackCounts: { [code: string]: number }  = {};
+    const cyclePackCounts: { [code: string]: number } = {};
     const selectedCyclePackCounts: { [code: string]: number } = {};
     const cycleNames: { [code: string]: string } = {};
     const selectedPacks = filter(

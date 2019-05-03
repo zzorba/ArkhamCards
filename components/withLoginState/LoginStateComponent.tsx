@@ -40,7 +40,7 @@ class LoginStateComponent extends React.Component<Props> {
       login,
       error,
       render,
-      noWrapper
+      noWrapper,
     } = this.props;
     if (noWrapper) {
       return render(login, signedIn, error);

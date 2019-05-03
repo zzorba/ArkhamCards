@@ -1,5 +1,5 @@
 import React from 'react';
-import { find, keys, map, sortBy, throttle } from 'lodash';
+import { find, map, sortBy, throttle } from 'lodash';
 import {
   Alert,
   BackHandler,

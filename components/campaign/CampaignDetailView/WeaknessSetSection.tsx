@@ -21,9 +21,9 @@ interface OwnProps {
   componentId: string;
   campaignId: number;
   weaknessSet: WeaknessSet;
-
 }
-type Props = OwnProps &  WeaknessCardProps;
+
+type Props = OwnProps & WeaknessCardProps;
 
 class WeaknessSetSection extends React.Component<Props> {
   static computeCount(set: WeaknessSet, allCards: Results<Card>) {

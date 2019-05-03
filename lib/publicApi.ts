@@ -3,10 +3,76 @@ import Realm from 'realm';
 import { Alert } from 'react-native';
 
 import { t } from 'ttag';
-import { CardCache, Pack } from '../actions/types';
+import { CardCache, TabooCache, Pack } from '../actions/types';
 import Card from '../data/Card';
+import TabooCard from '../data/TabooCard';
+import TabooSet from '../data/TabooSet';
 import FaqEntry from '../data/FaqEntry';
-import { AppState } from '../reducers';
+
+export const syncTaboos = function(
+  realm: Realm,
+  lang?: string,
+  cache?: TabooCache
+): Promise<TabooCache | null> {
+  const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
+  const uri = `https://${langPrefix}arkhamdb.com/api/public/taboos/`;
+  const headers = new Headers();
+  if (cache &&
+    cache.lastModified &&
+    cache.tabooCount > 0 &&
+    realm.objects('Taboo').length === cache.tabooCount
+  ) {
+    headers.append('If-Modified-Since', cache.lastModified);
+  }
+  return fetch(uri, {
+    method: 'GET',
+    headers,
+  }).then(response => {
+    if (response.status === 304 && cache) {
+      return Promise.resolve(cache);
+    }
+    const lastModified = response.headers.get('Last-Modified') || undefined;
+    return response.json().then(json => {
+      realm.write(() => {
+        forEach(json, tabooJson => {
+          const cards = JSON.parse(tabooJson.cards);
+          try {
+            realm.create(
+              'TabooSet',
+              TabooSet.fromJson(tabooJson, cards.length),
+              true
+            );
+          } catch (e) {
+            Alert.alert(`${e}`);
+            console.log(e);
+            console.log(tabooJson);
+          }
+          forEach(cards, cardJson => {
+            const code: string = cardJson.code;
+            const card = head(realm.objects<Card>('Card').filtered(`code == '${code}'`));
+            if (card) {
+              try {
+                realm.create(
+                  'TabooCard',
+                  TabooCard.fromJson(tabooJson.code, cardJson, card),
+                  true
+                );
+              } catch (e) {
+                Alert.alert(`${e}`);
+                console.log(e);
+                console.log(cardJson);
+              }
+            }
+          });
+        });
+      });
+      return {
+        tabooCount: realm.objects('TabooCard').length,
+        lastModified,
+      };
+    });
+  });
+};
 
 export const syncCards = function(
   realm: Realm,
@@ -71,9 +137,9 @@ export const syncCards = function(
 };
 
 export const getFaqEntry = function(realm: Realm, code: string) {
-  const faqEntry: FaqEntry = <FaqEntry> (head(
-    realm.objects('FaqEntry').filtered(`code == '${code}'`)
-  ) as unknown);
+  const faqEntry: FaqEntry | undefined = head(
+    realm.objects<FaqEntry>('FaqEntry').filtered(`code == '${code}'`)
+  );
   const headers = new Headers();
   if (faqEntry && faqEntry.lastModified) {
     headers.append('If-Modified-Since', faqEntry.lastModified);

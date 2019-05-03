@@ -9,7 +9,7 @@ import { NavigationProps } from './types';
 import CardSearchComponent from './CardSearchComponent';
 
 export interface InvestigatorCardsProps {
-  investigatorCode: string
+  investigatorCode: string;
 }
 
 interface RealmProps {
@@ -34,16 +34,16 @@ class InvestigatorCardsView extends React.Component<Props> {
 
 export default connectRealm<NavigationProps & InvestigatorCardsProps, RealmProps, Card>(
   InvestigatorCardsView, {
-  schemas: ['Card'],
-  mapToProps(
-    results: CardResults<Card>,
-    realm: Realm,
-    props: NavigationProps & InvestigatorCardsProps
-  ): RealmProps {
-    const investigator =
-      head(results.cards.filtered(`code == "${props.investigatorCode}"`));
-    return {
-      investigator,
-    };
-  },
-});
+    schemas: ['Card'],
+    mapToProps(
+      results: CardResults<Card>,
+      realm: Realm,
+      props: NavigationProps & InvestigatorCardsProps
+    ): RealmProps {
+      const investigator =
+        head(results.cards.filtered(`code == "${props.investigatorCode}"`));
+      return {
+        investigator,
+      };
+    },
+  });

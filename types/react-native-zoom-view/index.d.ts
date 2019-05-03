@@ -1,1 +1,1 @@
-declare module "react-native-zoom-view"
+declare module 'react-native-zoom-view'

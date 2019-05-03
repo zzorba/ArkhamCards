@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -162,7 +161,7 @@ const ItalicHtmlTagRule: MarkdownRule<WithChildren, State> = {
 
 interface Props {
   text: string;
-  onLinkPress?: (url: string) => void,
+  onLinkPress?: (url: string) => void;
 }
 
 export default function CardText({ text, onLinkPress }: Props) {

@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import { campaignNames, CAMPAIGN_COLORS, difficultyStrings } from './constants';
+import { campaignNames, CAMPAIGN_COLORS, difficultyString } from './constants';
 import { t } from 'ttag';
 import { CUSTOM, Campaign } from '../../actions/types';
 import EncounterIcon from '../../assets/EncounterIcon';
@@ -31,7 +31,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
       <View style={styles.difficultyRow}>
         <View style={styles.difficulty}>
           <Text style={typography.smallLabel}>
-            { difficultyStrings()[difficulty].toUpperCase() }
+            { difficultyString(difficulty).toUpperCase() }
           </Text>
         </View>
       </View>

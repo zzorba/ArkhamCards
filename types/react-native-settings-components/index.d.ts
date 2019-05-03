@@ -1,5 +1,5 @@
-declare module "react-native-settings-components" {
-  import { ReactNode } from 'react';
+declare module 'react-native-settings-components' {
+  import React, { ReactNode } from 'react';
   import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
   interface SettingsCategoryHeaderProps {
     container?: React.ReactNode;

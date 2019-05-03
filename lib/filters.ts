@@ -35,7 +35,7 @@ export interface FilterState {
   permanent: boolean;
   fast: boolean;
   exile: boolean;
-  skillIcons: SkillIconsFilters,
+  skillIcons: SkillIconsFilters;
   shroudEnabled: boolean;
   cluesEnabled: boolean;
   cluesFixed: boolean;

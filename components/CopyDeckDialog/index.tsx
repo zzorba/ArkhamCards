@@ -277,7 +277,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
             value={selectedDeckId === parsedCurrentDeck.deck.id}
             onValueChange={this._selectedDeckIdChanged}
           />
-        ) : null}
+        ) : null }
         { parsedLatestDeck ? (
           <SelectDeckSwitch
             deckId={parsedLatestDeck.deck.id}

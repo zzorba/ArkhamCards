@@ -1,5 +1,4 @@
 import Realm from 'realm';
-import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import { changeLocale } from '../../app/i18n';
@@ -15,11 +14,16 @@ import {
   CardFetchStartAction,
   CardFetchSuccessAction,
   CardFetchErrorAction,
+  PacksFetchStartAction,
+  PacksFetchErrorAction,
+  PacksCacheHitAction,
+  PacksAvailableAction,
   Pack,
   CardCache,
+  TabooCache,
 } from '../../actions/types';
 import { AppState } from '../../reducers/index';
-import { syncCards } from '../../lib/publicApi';
+import { syncCards, syncTaboos } from '../../lib/publicApi';
 
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
@@ -29,11 +33,15 @@ function cardsCache(state: AppState, lang: string): undefined | CardCache {
   return (state.cards.lang || 'en') === lang ? state.cards.cache : undefined;
 }
 
+function taboosCache(state: AppState, lang: string): undefined | TabooCache {
+  return (state.cards.lang || 'en') === lang ? state.cards.tabooCache : undefined;
+}
+
 export function fetchCards(
   realm: Realm,
   lang: string
-): ThunkAction<void, AppState, null, Action<string>> {
-  return (dispatch, getState) => {
+): ThunkAction<void, AppState, null, CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
+  return async(dispatch, getState) => {
     if (shouldFetchCards(getState())) {
       const previousLang = (getState().cards.lang || 'en');
       if (lang && previousLang !== lang) {
@@ -42,32 +50,38 @@ export function fetchCards(
       dispatch({
         type: CARD_FETCH_START,
       });
-      dispatch(fetchPacks(lang))
-        .then(packs => {
-          return syncCards(realm, packs, lang, cardsCache(getState(), lang)).then(
-            (cache) => {
-              dispatch({
-                type: CARD_FETCH_SUCCESS,
-                cache: cache,
-                lang: lang,
-              });
-            },
-            (err) => {
-              dispatch({
-                type: CARD_FETCH_ERROR,
-                error: err.message || err,
-                lang: previousLang,
-              });
-            },
-          );
-      });
+      const packs = await dispatch(fetchPacks(lang));
+      try {
+        const cardCache = await syncCards(realm, packs, lang, cardsCache(getState(), lang));
+        try {
+          const tabooCache = await syncTaboos(realm, lang, taboosCache(getState(), lang));
+          dispatch({
+            type: CARD_FETCH_SUCCESS,
+            cache: cardCache || undefined,
+            tabooCache: tabooCache || undefined,
+            lang: lang,
+          });
+        } catch (tabooErr) {
+          dispatch({
+            type: CARD_FETCH_SUCCESS,
+            cache: cardCache || undefined,
+            lang: lang,
+          });
+        }
+      } catch (err) {
+        dispatch({
+          type: CARD_FETCH_ERROR,
+          error: err.message || err,
+          lang: previousLang,
+        });
+      }
     }
   };
 }
 
 export function fetchPacks(
   lang: string
-): ThunkAction<Promise<Pack[]>, AppState, null, Action<string>> {
+): ThunkAction<Promise<Pack[]>, AppState, null, PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction> {
   return (dispatch, getState) => {
     dispatch({
       type: PACKS_FETCH_START,
@@ -95,12 +109,13 @@ export function fetchPacks(
       }
       const newLastModified = response.headers.get('Last-Modified');
       return response.json().then(json => {
+        const packs: Pack[] = json;
         dispatch({
           type: PACKS_AVAILABLE,
-          packs: json,
-          lang: lang,
+          packs,
+          lang,
           timestamp: new Date(),
-          lastModified: newLastModified,
+          lastModified: newLastModified || undefined,
         });
         return json;
       });

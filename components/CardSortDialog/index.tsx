@@ -50,10 +50,12 @@ export default class CardSortDialog extends React.Component<Props> {
         return t`Title`;
       case SORT_BY_ENCOUNTER_SET:
         return t`Encounter Set`;
-      default:
+      default: {
+        /* eslint-disable @typescript-eslint/no-unused-vars */
         const _exhaustiveCheck: never = sort;
         return '';
-    };
+      }
+    }
   }
 
   _onSortChanged = (sortString: string) => {

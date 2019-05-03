@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { t } from 'ttag';
-import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount} from '../../../actions/types';
+import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount } from '../../../actions/types';
 import Card from '../../../data/Card';
 import { ShowTextEditDialog } from '../../core/withDialogs';
 import EditCountComponent from '../EditCountComponent';

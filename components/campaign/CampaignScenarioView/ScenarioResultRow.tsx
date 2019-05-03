@@ -3,7 +3,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation'
+import { Navigation } from 'react-native-navigation';
 
 import { ScenarioResult } from '../../../actions/types';
 import { Scenario } from '../constants';
@@ -33,7 +33,7 @@ export default class ScenarioResultRow extends React.Component<Props> {
           index,
         },
       },
-    })
+    });
   };
 
   render() {

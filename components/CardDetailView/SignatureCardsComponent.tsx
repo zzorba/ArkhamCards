@@ -36,8 +36,9 @@ class SignatureCardsComponent extends React.Component<Props> {
         <Text style={styles.header}>{ t`Required Cards` }</Text>
         { !!(requiredCards && requiredCards.length) && (
           map(requiredCards, card => (
-          <SignatureCardItem key={card.code} componentId={componentId} card={card} />
-        ))) }
+            <SignatureCardItem key={card.code} componentId={componentId} card={card} />
+          ))
+        ) }
         { !!(alternateCards && alternateCards.length) && (
           <React.Fragment>
             <Text style={styles.header}>{ t`Alternate Cards` }</Text>

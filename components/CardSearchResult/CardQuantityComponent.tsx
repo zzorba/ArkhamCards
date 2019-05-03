@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 import {
   Animated,
-  Easing,
   StyleSheet,
   Text,
   View,

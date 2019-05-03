@@ -44,7 +44,7 @@ import {
   removeDeck,
   replaceLocalDeck,
 } from '../../actions';
-import { Campaign, Deck, Slots } from '../../actions/types'
+import { Campaign, Deck, Slots } from '../../actions/types';
 import { updateCampaign } from '../campaign/actions';
 import { saveDeck, newCustomDeck } from '../../lib/authApi';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';

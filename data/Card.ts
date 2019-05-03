@@ -10,7 +10,7 @@ import RandomRequirement from './RandomRequirement';
 import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import DeckAtLeastOption from './DeckAtLeastOption';
-import { BASIC_SKILLS, FactionCodeType, SkillCodeType } from '../constants';
+import { BASIC_SKILLS } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
@@ -20,135 +20,8 @@ export default class Card extends BaseCard {
   public static schema: Realm.ObjectSchema = {
     name: 'Card',
     primaryKey: 'code',
-    properties: {
-      code: 'string', // primary key
-      pack_code: 'string',
-      pack_name: 'string',
-      type_code: { type: 'string', indexed: true },
-      type_name: 'string',
-      subtype_code: 'string?',
-      subtype_name: 'string?',
-      slot: 'string?',
-      faction_code: { type: 'string', optional: true, indexed: true },
-      faction_name: 'string?',
-      faction2_code: { type: 'string', optional: true, indexed: true },
-      faction2_name: 'string?',
-      position: 'int',
-      enemy_damage: 'int?',
-      enemy_horror: 'int?',
-      enemy_fight: 'int?',
-      enemy_evade: 'int?',
-      encounter_code: 'string?',
-      encounter_name: 'string?',
-      encounter_position: 'int?',
-      exceptional: 'bool?',
-      xp: { type: 'int', optional: true, indexed: true },
-      victory: 'int?',
-      vengeance: 'int?',
-      renderName: 'string',
-      renderSubname: 'string?',
-      name: 'string',
-      real_name: 'string',
-      subname: 'string?',
-      firstName: 'string?',
-      illustrator: 'string?',
-      text: 'string?',
-      flavor: 'string?',
-      cost: 'int?',
-      real_text: 'string?',
-      back_name: 'string?',
-      back_text: 'string?',
-      back_flavor: 'string?',
-      quantity: 'int?',
-      spoiler: 'bool?',
-      stage: 'int?', // Act/Agenda deck
-      clues: 'int?',
-      shroud: 'int?',
-      clues_fixed: 'bool?',
-      doom: 'int?',
-      health: 'int?',
-      health_per_investigator: 'bool?',
-      sanity: 'int?',
-      deck_limit: 'int?',
-      traits: 'string?',
-      real_traits: 'string?',
-      is_unique: 'bool?',
-      exile: 'bool?',
-      hidden: 'bool?',
-      permanent: 'bool?',
-      double_sided: 'bool',
-      url: 'string?',
-      octgn_id: 'string?',
-      imagesrc: 'string?',
-      backimagesrc: 'string?',
-      skill_willpower: 'int?',
-      skill_intellect: 'int?',
-      skill_combat: 'int?',
-      skill_agility: 'int?',
-      skill_wild: 'int?',
-      // Effective skills (add wilds to them)
-      eskill_willpower: 'int?',
-      eskill_intellect: 'int?',
-      eskill_combat: 'int?',
-      eskill_agility: 'int?',
-      linked_to_code: 'string?',
-      linked_to_name: 'string?',
-
-      // Parsed data (from original)
-      restrictions: 'CardRestrictions?',
-      deck_requirements: 'DeckRequirement?',
-      deck_options: 'DeckOption[]',
-      linked_card: 'Card',
-      back_linked: 'bool?',
-
-      // Derived data.
-      altArtInvestigator: 'bool?',
-      cycle_name: 'string?',
-      has_restrictions: 'bool',
-      traits_normalized: 'string?',
-      real_traits_normalized: 'string?',
-      slots_normalized: 'string?',
-      uses: 'string?',
-      bonded_name: 'string?',
-      heals_horror: 'bool?',
-      sort_by_type: 'int',
-      sort_by_faction: 'int',
-      sort_by_pack: 'int',
-    },
+    properties: BaseCard.SCHEMA,
   };
-
-  factionCode(): FactionCodeType {
-    return this.faction_code || 'neutral';
-  }
-
-  costString(linked?: boolean) {
-    if (this.type_code !== 'asset' && this.type_code !== 'event') {
-      return '';
-    }
-    if (this.permanent ||
-      this.double_sided ||
-      linked ||
-      (this.cost === null && (
-        this.subtype_code === 'weakness' ||
-        this.subtype_code === 'basicweakness'))) {
-      return t`Cost: -`;
-    }
-    const costString = this.cost !== null ? this.cost : 'X';
-    return t`Cost: ${costString}`;
-  }
-
-  skillCount(skill: SkillCodeType): number {
-    switch (skill) {
-      case 'willpower': return this.skill_willpower || 0;
-      case 'intellect': return this.skill_intellect || 0;
-      case 'combat': return this.skill_combat || 0;
-      case 'agility': return this.skill_agility || 0;
-      case 'wild': return this.skill_wild || 0;
-      default:
-        const _exhaustiveCheck: never = skill;
-        return 0;
-    }
-  }
 
   static parseDeckRequirements(json: any) {
     const dr = new DeckRequirement();
@@ -366,8 +239,15 @@ export default class Card extends BaseCard {
 
   static fromJson(
     json: any,
-    packsByCode: {[pack_code: string]: { position: number, cycle_position: number}},
-    cycleNames: {[cycle_code: string]: string},
+    packsByCode: {
+      [pack_code: string]: {
+        position: number;
+        cycle_position: number;
+      };
+    },
+    cycleNames: {
+      [cycle_code: string]: string;
+    },
     lang: string
   ): Card {
     if (json.code === '02041') {
@@ -497,5 +377,5 @@ export default class Card extends BaseCard {
 
 export type CardKey = keyof Card;
 export interface CardsMap {
-  [code: string]: Card
-};
+  [code: string]: Card;
+}

@@ -242,7 +242,7 @@ class CardDetailView extends React.Component<Props, State> {
               />
             )) }
           </React.Fragment>
-        )}
+        ) }
         { !!(bonded_from_cards && bonded_from_cards.length) && (
           <React.Fragment>
             <Text style={styles.header}>{ t`Bound Cards` }</Text>
@@ -254,7 +254,7 @@ class CardDetailView extends React.Component<Props, State> {
               />
             )) }
           </React.Fragment>
-        )}
+        ) }
       </React.Fragment>
     );
   }
@@ -311,8 +311,8 @@ export default connectRealm<NavigationProps & CardDetailProps, RealmProps, Card>
     schemas: ['Card'],
     mapToProps(results: CardResults<Card>, realm: Realm, props: NavigationProps & CardDetailProps) {
       const card = head(results.cards.filtered(`code == '${props.id}'`));
-      const bonded_to_cards = card && card.bonded_name &&
-        results.cards.filtered(`real_name == '${card.bonded_name}'`);
+      const bonded_to_cards = (card && card.bonded_name) ?
+        results.cards.filtered(`real_name == '${card.bonded_name}'`) : undefined;
       const bonded_from_cards = card &&
         results.cards.filtered(`bonded_name == '${card.real_name}'`);
 

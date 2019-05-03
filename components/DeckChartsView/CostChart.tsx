@@ -12,8 +12,8 @@ interface Props {
 }
 
 interface Item {
-  cost: string,
-  alwaysShow: boolean,
+  cost: string;
+  alwaysShow: boolean;
   value: number;
   svg: {
     fill: string;
@@ -29,14 +29,14 @@ interface LabelData {
 
 export default class CostChart extends React.PureComponent<Props> {
   getCostData(index: number): Item {
-    const cost = index - 2
+    const cost = index - 2;
     return {
       cost: cost === -2 ? 'X' : `${cost}`,
-      alwaysShow: cost >=0 && cost < 5,
+      alwaysShow: cost >= 0 && cost < 5,
       value: this.props.parsedDeck.costHistogram[index] || 0,
       svg: {
-        fill: '#444444'
-      }
+        fill: '#444444',
+      },
     };
   }
 
@@ -93,7 +93,7 @@ export default class CostChart extends React.PureComponent<Props> {
     return (
       <View style={styles.wrapper}>
         <Text style={[typography.bigLabel, typography.center]}>
-          {t`Card Costs`}
+          { t`Card Costs` }
         </Text>
         <View style={styles.chart}>
           <BarChart
@@ -104,6 +104,7 @@ export default class CostChart extends React.PureComponent<Props> {
             yAccessor={this._getValue}
             data={barData}
           >
+            // @ts-ignore TS2739
             <Labels />
           </BarChart>
         </View>

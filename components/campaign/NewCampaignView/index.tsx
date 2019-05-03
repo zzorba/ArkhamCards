@@ -15,10 +15,9 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 import {
   CORE,
-  STANDARD,
   CUSTOM,
   CampaignCycleCode,
-  CampaignDifficultyType,
+  CampaignDifficulty,
   CustomCampaignLog,
   Deck,
   Slots,
@@ -30,7 +29,7 @@ import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import {
   getCampaignLog,
   getChaosBag,
-  difficultyStrings,
+  difficultyString,
 } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '../../core/NavButton';
@@ -58,7 +57,7 @@ interface ReduxActionProps {
     id: number,
     name: string,
     pack_code: CampaignCycleCode,
-    difficulty: CampaignDifficultyType,
+    difficulty: CampaignDifficulty,
     deckIds: number[],
     chaosBag: ChaosBag,
     campaignLog: CustomCampaignLog,
@@ -72,7 +71,7 @@ interface State {
   name: string;
   campaign: string;
   campaignCode: CampaignCycleCode;
-  difficulty: CampaignDifficultyType;
+  difficulty: CampaignDifficulty;
   deckIds: number[];
   weaknessPacks: string[];
   weaknessAssignedCards: Slots;
@@ -102,11 +101,11 @@ class NewCampaignView extends React.Component<Props, State> {
       name: '',
       campaign: '',
       campaignCode: CORE,
-      difficulty: STANDARD,
+      difficulty: CampaignDifficulty.STANDARD,
       deckIds: [],
       weaknessPacks: [],
       weaknessAssignedCards: {},
-      customChaosBag: Object.assign({}, getChaosBag(CORE, STANDARD)),
+      customChaosBag: Object.assign({}, getChaosBag(CORE, CampaignDifficulty.STANDARD)),
       customCampaignLog: { sections: ['Campaign Notes'] },
       campaignLogDialogVisible: false,
     };
@@ -121,7 +120,7 @@ class NewCampaignView extends React.Component<Props, State> {
     this._navEventListener && this._navEventListener.remove();
   }
 
-  _onWeaknessPackChange = (packs: string[]) =>  {
+  _onWeaknessPackChange = (packs: string[]) => {
     this.setState({
       weaknessPacks: packs,
     });
@@ -326,7 +325,7 @@ class NewCampaignView extends React.Component<Props, State> {
     });
   };
 
-  _updateDifficulty = (value: CampaignDifficultyType) => {
+  _updateDifficulty = (value: CampaignDifficulty) => {
     this.setState({
       difficulty: value,
     }, this._updateNavigationButtons);
@@ -555,7 +554,7 @@ class NewCampaignView extends React.Component<Props, State> {
                 column
                 label={t`Difficulty`}
                 onPress={this._showDifficultyDialog}
-                value={difficultyStrings()[difficulty]}
+                value={difficultyString(difficulty)}
               />
             </View>
           </View>

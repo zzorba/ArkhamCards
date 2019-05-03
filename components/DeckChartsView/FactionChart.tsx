@@ -6,17 +6,15 @@ import { t } from 'ttag';
 
 import { ParsedDeck } from '../parseDeck';
 import ArkhamIcon from '../../assets/ArkhamIcon';
-import { createFactionIcons, PLAYER_FACTION_CODES, FACTION_COLORS, FactionCodeType } from '../../constants';
+import { PLAYER_FACTION_CODES, FACTION_COLORS, FactionCodeType } from '../../constants';
 import typography from '../../styles/typography';
-
-const DARK_FACTION_ICONS = createFactionIcons(32, '#222');
 
 interface Props {
   parsedDeck: ParsedDeck;
 }
 
 interface Item {
-  faction: FactionCodeType,
+  faction: FactionCodeType;
   guardian: number;
   seeker: number;
   rogue: number;
@@ -74,15 +72,14 @@ export default class FactionChart extends React.PureComponent<Props> {
       4,
       (maxBy(map(barData, barData => barData.total)) || 0)
     );
-    const Labels = ({ x, y, width, data}: LabelData) => (
+    const Labels = ({ x, y, width, data }: LabelData) => (
       data.map((value, index) => (
         <View key={index}>
           <View style={[styles.label, {
             left: x(index),
             top: y(0) + 4,
             width: width / barData.length,
-           }]}
-          >
+          }]}>
             <ArkhamIcon
               name={value.faction === 'neutral' ? 'elder_sign' : value.faction}
               size={32}
@@ -101,13 +98,13 @@ export default class FactionChart extends React.PureComponent<Props> {
                 styles.count,
               ]}
             >
-              {value.total}
+              { value.total }
             </Text>
           ) }
         </View>
       ))
     );
-    const keys = [
+    const keys: (FactionCodeType | 'dual')[] = [
       'mystic',
       'seeker',
       'guardian',
@@ -120,7 +117,7 @@ export default class FactionChart extends React.PureComponent<Props> {
     return (
       <View style={styles.wrapper}>
         <Text style={[typography.bigLabel, typography.center]}>
-          {t`Card Factions`}
+          { t`Card Factions` }
         </Text>
         <View style={styles.chart}>
           <StackedBarChart
@@ -132,6 +129,7 @@ export default class FactionChart extends React.PureComponent<Props> {
             colors={colors}
             data={barData}
           >
+            // @ts-ignore TS2739
             <Labels />
           </StackedBarChart>
         </View>

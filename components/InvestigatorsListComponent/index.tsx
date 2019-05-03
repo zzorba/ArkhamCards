@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults} from 'react-native-realm';
+import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
@@ -25,7 +25,6 @@ import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '../CardS
 import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from '../CardSearchResultsComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
-import * as Actions from '../../actions';
 import { getPacksInCollection, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 
@@ -33,7 +32,7 @@ const SCROLL_DISTANCE_BUFFER = 50;
 
 interface OwnProps {
   componentId: string;
-  sort: SortType,
+  sort: SortType;
   onPress: (investigator: Card) => void;
   filterInvestigators?: string[];
 }
@@ -429,18 +428,6 @@ export default connectRealm<OwnProps, RealmProps, Card>(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-  },
-  header: {
-    fontFamily: 'System',
-    fontSize: 22,
-    marginLeft: 10,
-  },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderBottomWidth: 1,
-    height: 50,
   },
   footer: {
     marginLeft: 8,

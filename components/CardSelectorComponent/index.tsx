@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { filter, keys, map, sortBy } from 'lodash';
 import {
   StyleSheet,

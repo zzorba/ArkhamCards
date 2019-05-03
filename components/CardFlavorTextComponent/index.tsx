@@ -1,12 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
   MarkdownRule,
-  RegexComponents,
-  NestedParseFunction,
-  ParseState,
 } from 'react-native-markdown-view';
 
 import { WithText, State } from '../CardTextComponent/types';
@@ -43,7 +39,7 @@ const UnderlineHtmlTagRule: MarkdownRule<WithText, State> = {
 
 interface Props {
   text: string;
-  onLinkPress?: (url:  string) => void;
+  onLinkPress?: (url: string) => void;
 }
 
 export default function CardFlavorTextComponent(

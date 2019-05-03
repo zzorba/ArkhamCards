@@ -13,7 +13,7 @@ import { MyDecksSelectorProps } from '../campaign/MyDecksSelectorDialog';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { CardsMap } from '../../data/Card';
 
-export interface DeckListProps  {
+export interface DeckListProps {
   componentId: string;
   campaignId: number;
   deckIds: number[];

@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { t } from 'ttag';
-import { Campaign, DecksMap } from '../../../actions/types';
+import { CUSTOM, Campaign, DecksMap } from '../../../actions/types';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '../CampaignDetailView';
 import { campaignNames } from '../constants';
@@ -21,7 +21,6 @@ import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
 import { searchMatchesText } from '../../searchHelpers';
 import withFetchCardsGate from '../../cards/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
-import { CUSTOM } from '../../../actions/types';
 import { getAllDecks, getCampaigns, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import {
   Alert,
@@ -32,7 +31,7 @@ import { COLORS } from '../../styles/colors';
 const defaultImageCacheManager = ImageCacheManager();
 
 interface RealmProps {
-   realm: Realm
+  realm: Realm;
 }
 
 interface ReduxProps {

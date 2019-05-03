@@ -16,7 +16,7 @@ export type TypeCodeType =
   'location' |
   'investigator' |
   'scenario';
-  
+
 export type SlotCodeType =
   'hand' |
   'hand x2' |
@@ -153,7 +153,7 @@ export const CHAOS_TOKENS: ChaosTokenType[] = [
   '-4', '-5', '-6', '-7', '-8',
   'skull', 'cultist', 'tablet', 'elder_thing',
   'auto_fail', 'elder_sign',
-]
+];
 export type ChaosBag = { [chaosToken in ChaosTokenType]?: number; };
 
 export const CHAOS_TOKEN_ORDER: ChaosBag = {

@@ -197,7 +197,8 @@ class CampaignSubDeckDetail extends React.Component<Props & DeckRowDetailsProps>
   }
 }
 
-const ComposedDeckRow = deckRowWithDetails<Props>({
+const ComposedDeckRow = deckRowWithDetails<Props>(
+  {
     compact: true,
     viewDeckButton: true,
   },

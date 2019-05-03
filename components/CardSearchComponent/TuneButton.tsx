@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { countBy, keys } from 'lodash';
 import {
   Platform,
@@ -28,8 +27,8 @@ export default function TuneButton({ defaultFilters, filters, onPress, lightButt
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.touchable}>
-          <MaterialIcons name="tune" size={28} color={lightButton ? 'white' : defaultColor} />
-          { count > 0 && <View style={styles.chiclet} /> }
+        <MaterialIcons name="tune" size={28} color={lightButton ? 'white' : defaultColor} />
+        { count > 0 && <View style={styles.chiclet} /> }
       </TouchableOpacity>
     </View>
   );

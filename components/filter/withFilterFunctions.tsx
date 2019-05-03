@@ -166,6 +166,7 @@ export default function withFilterFunctions<P>(
         baseQuery,
         defaultFilterState,
         modal,
+        /* eslint-disable @typescript-eslint/no-unused-vars */
         applyFilters,
         ...otherProps
       } = this.props;
@@ -201,19 +202,19 @@ export default function withFilterFunctions<P>(
 
   const result = connectRealm<NavigationProps & CardFilterProps & P, RealmProps, Card>(
     WrappedFilterComponent, {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: NavigationProps & CardFilterProps
-    ): RealmProps {
-      return {
-        cards: props.baseQuery ?
-          results.cards.filtered(props.baseQuery) :
-          results.cards,
-      };
-    },
-  });
+      schemas: ['Card'],
+      mapToProps(
+        results: CardResults<Card>,
+        realm: Realm,
+        props: NavigationProps & CardFilterProps
+      ): RealmProps {
+        return {
+          cards: props.baseQuery ?
+            results.cards.filtered(props.baseQuery) :
+            results.cards,
+        };
+      },
+    });
 
   hoistNonReactStatic(result, WrappedComponent);
 

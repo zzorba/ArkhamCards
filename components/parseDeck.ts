@@ -417,7 +417,7 @@ export function parseDeck(
   forEach(SKILLS, skill => {
     skillIconCounts[skill] = sumSkillIcons(cardIds, cards, skill);
   });
-  const slotCounts: SlotCounts = {}
+  const slotCounts: SlotCounts = {};
   forEach(SLOTS, slot => {
     slotCounts[slot] = slotCount(cardIds, cards, slot);
   });

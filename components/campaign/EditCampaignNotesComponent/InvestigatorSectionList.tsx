@@ -44,9 +44,8 @@ export default class InvestigatorSectionList extends React.Component<Props> {
     return (
       <View style={styles.investigatorNotes}>
         { map(allInvestigators, investigator =>
-            this.renderDeckRow(investigator)
-          )
-        }
+          this.renderDeckRow(investigator)
+        ) }
       </View>
     );
   }

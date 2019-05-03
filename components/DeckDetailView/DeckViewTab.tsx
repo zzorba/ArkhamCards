@@ -19,7 +19,7 @@ import { msgid, ngettext, t } from 'ttag';
 
 import AppIcon from '../../assets/AppIcon';
 import { Campaign, Deck, DeckProblem, InvestigatorData, Trauma } from '../../actions/types';
-import { CardId, CardSplitType, ParsedDeck, SplitCards } from '../parseDeck';
+import { CardId, ParsedDeck, SplitCards } from '../parseDeck';
 import { showCard } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
@@ -421,9 +421,9 @@ export default class DeckViewTab extends React.Component<Props> {
                 ) }
                 <Text style={styles.defaultText}>
                   { ngettext(
-                      msgid`${normalCardCount} card (${totalCardCount} total)`,
-                      `${normalCardCount} cards (${totalCardCount} total)`,
-                      normalCardCount
+                    msgid`${normalCardCount} card (${totalCardCount} total)`,
+                    `${normalCardCount} cards (${totalCardCount} total)`,
+                    normalCardCount
                   ) }
                 </Text>
                 <Text style={styles.defaultText}>

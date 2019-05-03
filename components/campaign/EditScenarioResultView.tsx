@@ -131,7 +131,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
         scenarioResult: {
           ...scenarioResult,
           xp,
-        }
+        },
       });
     }
   };
@@ -205,9 +205,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
-  },
-  text: {
-    margin: 8,
   },
   margin: {
     marginLeft: 8,

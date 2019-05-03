@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import {
   Button,
@@ -10,7 +9,6 @@ import {
 
 import { t } from 'ttag';
 import { Slots } from '../../actions/types';
-import Card from '../../data/Card';
 import CardSearchBox from './CardSearchBox';
 import {
   SORT_BY_ENCOUNTER_SET,
@@ -18,8 +16,7 @@ import {
 } from '../CardSortDialog/constants';
 import CardResultList from './CardResultList';
 import Switch from '../core/Switch';
-import { filterToQuery } from '../../lib/filters';
-import { FilterState } from '../../lib/filters';
+import { FilterState, filterToQuery } from '../../lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
 import typography from '../../styles/typography';
 

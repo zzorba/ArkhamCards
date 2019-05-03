@@ -105,7 +105,7 @@ export function getLatestDeck(state: AppState, deckId: number) {
 }
 
 export function getDeckToCampaignMap(state: AppState): {
-  [id: string]: Campaign
+  [id: string]: Campaign;
 } {
   const decks = state.decks.all || {};
   const campaigns = state.campaigns.all;

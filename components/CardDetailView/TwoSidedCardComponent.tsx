@@ -48,7 +48,7 @@ const SKILL_FIELDS = [
   'skill_intellect',
   'skill_combat',
   'skill_agility',
-  'skill_wild'
+  'skill_wild',
 ];
 
 function num(value: number | null) {
@@ -620,9 +620,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       <View style={styles.container}>
         <View style={[
           styles.card,
-          { borderColor: card.faction2_code ?
+          {
+            borderColor: card.faction2_code ?
               FACTION_BACKGROUND_COLORS.dual :
-              ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000') },
+              ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
+          },
         ]}>
           { this.renderTitle(card, card.name, card.subname) }
           <View style={styles.cardBody}>

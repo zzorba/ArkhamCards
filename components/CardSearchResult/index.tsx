@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { flatMap, map, range } from 'lodash';
 import {
   Keyboard,
@@ -195,7 +194,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     return (
       <View style={styles.skillIcons}>
         { flatMap(SKILLS, (skill: SkillCodeType) =>
-            CardSearchResult.skillIcon(skill, card.skillCount(skill))) }
+          CardSearchResult.skillIcon(skill, card.skillCount(skill))) }
       </View>
     );
   }

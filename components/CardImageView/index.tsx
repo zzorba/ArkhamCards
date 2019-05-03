@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { head } from 'lodash';
 import {
   Dimensions,
@@ -29,7 +28,7 @@ type Props = CardImageProps & NavigationProps & RealmProps;
 
 interface State {
   flipped: boolean;
-};
+}
 
 class CardImageView extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;

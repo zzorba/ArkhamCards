@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Platform,
   TextInput,
@@ -12,7 +11,7 @@ import Dialog from '../core/Dialog';
 import { COLORS } from '../../styles/colors';
 
 interface Props {
-  viewRef?: View,
+  viewRef?: View;
   visible: boolean;
   addSection?: (name: string, perInvestigator: boolean, isCount: boolean) => void;
   toggleVisible: () => void;

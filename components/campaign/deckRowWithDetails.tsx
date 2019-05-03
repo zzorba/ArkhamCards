@@ -19,7 +19,7 @@ interface PassThroughProps {
 export interface DeckRowDetailsProps extends PassThroughProps {
   deck: Deck;
   investigator: Card;
-  previousDeck?: Deck
+  previousDeck?: Deck;
 }
 
 interface Options {
@@ -51,7 +51,7 @@ export default function deckRowWithDetails<P = {}>(
       );
     }
 
-    _renderDetails =  (
+    _renderDetails = (
       deck: Deck,
       investigator: Card,
       previousDeck?: Deck

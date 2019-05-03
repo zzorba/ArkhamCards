@@ -22,7 +22,9 @@ export interface SelectCampagaignProps {
 }
 
 interface ReduxProps {
-  in_collection: { [code: string]: boolean; };
+  in_collection: {
+    [code: string]: boolean;
+  };
 }
 
 type Props = NavigationProps & SelectCampagaignProps & ReduxProps;

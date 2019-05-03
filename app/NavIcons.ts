@@ -12,7 +12,7 @@ import { COLORS } from '../styles/colors';
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
 const icons: {
-  [iconName: string]: [number, string, ReactNode?]
+  [iconName: string]: [number, string, ReactNode?];
 } = {
   elder_sign: [30, COLORS.button, ArkhamIcon],
   intellect: [26, COLORS.button, ArkhamIcon],

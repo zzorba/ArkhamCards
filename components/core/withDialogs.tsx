@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Subtract } from 'utility-types';
 
 import CountEditDialog from './CountEditDialog';
 import TextEditDialog from './TextEditDialog';

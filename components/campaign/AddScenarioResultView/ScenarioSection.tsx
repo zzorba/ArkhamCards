@@ -47,7 +47,7 @@ interface RealmProps {
   allScenarios: Scenario[];
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps &  RealmProps;
+type Props = OwnProps & ReduxProps & ReduxActionProps & RealmProps;
 
 interface State {
   selectedScenario: typeof CUSTOM | Scenario;
@@ -77,7 +77,8 @@ class ScenarioSection extends React.Component<Props, State> {
       showInterludes,
       updateCampaign,
     } = this.props;
-    updateCampaign(campaign.id, { showInterludes: !showInterludes } as Campaign);
+    const campaignUpdate: Campaign = { showInterludes: !showInterludes } as any;
+    updateCampaign(campaign.id, campaignUpdate);
   };
 
   _showCustomCampaignDialog = () => {
@@ -109,7 +110,7 @@ class ScenarioSection extends React.Component<Props, State> {
       resolution,
     } = this.state;
 
-     this.props.scenarioChanged({
+    this.props.scenarioChanged({
       scenario: selectedScenario !== CUSTOM ? selectedScenario.name : customScenario,
       scenarioCode: selectedScenario !== CUSTOM ? selectedScenario.code : CUSTOM,
       scenarioPack: selectedScenario !== CUSTOM ? selectedScenario.pack_code : CUSTOM,

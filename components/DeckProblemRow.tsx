@@ -29,7 +29,7 @@ interface Props {
 export default function DeckProblemRow({
   problem,
   color,
-  noFontScaling
+  noFontScaling,
 }: Props) {
   return (
     <View style={styles.problemRow}>

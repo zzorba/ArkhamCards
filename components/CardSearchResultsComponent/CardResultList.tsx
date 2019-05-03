@@ -28,7 +28,6 @@ import { showCard } from '../navHelper';
 import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import { ROW_HEIGHT } from '../CardSearchResult/constants';
-import { SortType } from '../CardSortDialog/constants';
 import CardSectionHeader, { ROW_HEADER_HEIGHT } from './CardSectionHeader';
 import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from './ShowNonCollectionFooter';
 import {
@@ -38,6 +37,7 @@ import {
   SORT_BY_PACK,
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
+  SortType,
 } from '../CardSortDialog/constants';
 import typography from '../../styles/typography';
 import { s, m } from '../../styles/space';
@@ -75,13 +75,17 @@ interface OwnProps {
 }
 
 interface ReduxProps {
-  show_spoilers: { [code: string]: boolean; };
-  in_collection: { [code: string]: boolean; };
+  show_spoilers: {
+    [code: string]: boolean;
+  };
+  in_collection: {
+    [code: string]: boolean;
+  };
   hasSecondCore: boolean;
 }
 
 interface RealmProps {
-  realm: Realm,
+  realm: Realm;
 }
 
 type Props = OwnProps & ReduxProps & RealmProps;
@@ -95,7 +99,9 @@ interface State {
   spoilerCards: CardBucket[];
   spoilerCardsCount: number;
   showSpoilerCards: boolean;
-  showNonCollection: { [code: string]: boolean; };
+  showNonCollection: {
+    [code: string]: boolean;
+  };
   loadingMessage: string;
   dirty: boolean;
   scrollY: Animated.Value;
@@ -694,7 +700,7 @@ class CardResultList extends React.Component<Props, State> {
       data: SectionListData<CardBucket>[] | null,
       index: number
     ): {
-      index: number,
+      index: number;
       length: number;
       offset: number;
     } => {

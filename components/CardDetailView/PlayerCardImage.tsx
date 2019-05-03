@@ -67,14 +67,14 @@ export default class PlayerCardImage extends React.Component<Props> {
       <View style={[
         styles.placeholder,
         { backgroundColor: card.faction2_code ?
-            FACTION_COLORS.dual :
-            FACTION_COLORS[card.factionCode()]
+          FACTION_COLORS.dual :
+          FACTION_COLORS[card.factionCode()],
         },
       ]}>
         <Text style={styles.placeholderIcon}>
           { card.faction2_code ?
-              FACTION_ICONS.dual :
-              FACTION_ICONS[card.factionCode()]
+            FACTION_ICONS.dual :
+            FACTION_ICONS[card.factionCode()]
           }
         </Text>
       </View>

@@ -1,1 +1,1 @@
-declare module "simple-markdown"
+declare module 'simple-markdown'

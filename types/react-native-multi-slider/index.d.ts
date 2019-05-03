@@ -1,1 +1,1 @@
-declare module "@ptomasroos/react-native-multi-slider";
+declare module '@ptomasroos/react-native-multi-slider';

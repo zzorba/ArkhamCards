@@ -2,14 +2,14 @@ import React from 'react';
 import { find, map } from 'lodash';
 
 import { t } from 'ttag';
-import { CampaignDifficultyType, DIFFICULTIES } from '../../actions/types';
+import { CampaignDifficulty, DIFFICULTIES } from '../../actions/types';
 import DialogPicker from '../core/DialogPicker';
 import { difficultyString } from './constants';
 
 interface Props {
   componentId: string;
-  updateDifficulty: (difficulty: CampaignDifficultyType) => void;
-  difficulty: CampaignDifficultyType;
+  updateDifficulty: (difficulty: CampaignDifficulty) => void;
+  difficulty: CampaignDifficulty;
 }
 
 export default class CampaignDifficultyDialog extends React.Component<Props> {

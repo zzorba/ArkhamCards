@@ -1,5 +1,5 @@
 import React from 'react';
-import { forEach, head, keys, range, throttle } from 'lodash';
+import { forEach, head, range, throttle } from 'lodash';
 import {
   ActivityIndicator,
   View,
@@ -110,7 +110,10 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
   _handleDeckResult = ({
     deck,
     upgradedDeck,
-  }: { deck: Deck, upgradedDeck: Deck })  => {
+  }: {
+    deck: Deck;
+    upgradedDeck: Deck;
+  }) => {
     const {
       showNewDeck,
       componentId,
@@ -323,10 +326,12 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default
-  connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDeckProps, AppState>(mapStateToProps, mapDispatchToProps)(
-    connectRealm<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-      withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps>(DeckUpgradeDialog), {
+export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDeckProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  connectRealm<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
+    withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps>(DeckUpgradeDialog), {
       schemas: ['Card'],
       mapToProps(
         results: CardResults<Card>,
@@ -341,7 +346,7 @@ export default
         return {};
       },
     })
-  );
+);
 
 const styles = StyleSheet.create({
   container: {

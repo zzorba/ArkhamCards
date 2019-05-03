@@ -26,7 +26,7 @@ interface OwnProps {
   componentId: string;
   deckClicked: (deck: Deck, investigator?: Card) => void;
   onlyDeckIds?: number[];
-  filterDeckIds?: number[]
+  filterDeckIds?: number[];
   filterInvestigators?: string[];
   customHeader?: ReactNode;
   customFooter?: ReactNode;

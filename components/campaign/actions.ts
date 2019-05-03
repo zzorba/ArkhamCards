@@ -1,5 +1,4 @@
 import { map } from 'lodash';
-import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import {
@@ -11,7 +10,7 @@ import {
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   Campaign,
   CampaignCycleCode,
-  CampaignDifficultyType,
+  CampaignDifficulty,
   CustomCampaignLog,
   ScenarioResult,
   WeaknessSet,
@@ -52,7 +51,7 @@ export function newCampaign(
   id: number,
   name: string,
   pack_code: CampaignCycleCode,
-  difficulty: CampaignDifficultyType,
+  difficulty: CampaignDifficulty,
   deckIds: number[],
   chaosBag: ChaosBag,
   campaignLog: CustomCampaignLog,
@@ -87,7 +86,7 @@ export function newCampaign(
 export function updateCampaign(
   id: number,
   sparseCampaign: Campaign
-): ThunkAction<void, AppState, null, UpdateCampaignAction>  {
+): ThunkAction<void, AppState, null, UpdateCampaignAction> {
   return (dispatch, getState) => {
     const campaign = Object.assign({}, sparseCampaign);
     if (campaign.latestDeckIds) {

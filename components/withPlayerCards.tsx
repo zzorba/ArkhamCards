@@ -15,25 +15,25 @@ export default function withPlayerCards<Props>(
 ): React.ComponentType<Props> {
   const result = connectRealm<Props, PlayerCardProps, Card>(
     WrappedComponent, {
-    schemas: ['Card'],
-    mapToProps(results: CardResults<Card>, realm: Realm): PlayerCardProps {
-      const investigators: CardsMap = {};
-      const cards: CardsMap = {};
-      forEach(
-        results.cards.filtered('(type_code == "investigator" AND encounter_code == null) OR deck_limit > 0'),
-        card => {
-          cards[card.code] = card;
-          if (card.type_code === 'investigator') {
-            investigators[card.code] = card;
-          }
-        });
-      return {
-        realm,
-        cards,
-        investigators,
-      };
-    },
-  });
+      schemas: ['Card'],
+      mapToProps(results: CardResults<Card>, realm: Realm): PlayerCardProps {
+        const investigators: CardsMap = {};
+        const cards: CardsMap = {};
+        forEach(
+          results.cards.filtered('(type_code == "investigator" AND encounter_code == null) OR deck_limit > 0'),
+          card => {
+            cards[card.code] = card;
+            if (card.type_code === 'investigator') {
+              investigators[card.code] = card;
+            }
+          });
+        return {
+          realm,
+          cards,
+          investigators,
+        };
+      },
+    });
   hoistNonReactStatic(result, WrappedComponent);
   return result;
 }

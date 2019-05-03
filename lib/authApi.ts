@@ -1,6 +1,6 @@
-import { forEach, keys, map } from 'lodash';
+import { keys, map } from 'lodash';
 import { getAccessToken } from './auth';
-import { Deck, Slots } from '../actions/types';
+import { Deck } from '../actions/types';
 
 interface Params {
   [key: string]: string | number;

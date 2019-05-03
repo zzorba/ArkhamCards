@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CoreSetIcon from './CoreSetIcon';
 import CircleIcon from './CircleIcon';

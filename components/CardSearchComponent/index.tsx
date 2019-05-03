@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { forEach } from 'lodash';
 import Realm from 'realm';
 import {
@@ -23,8 +22,9 @@ import { iconsMap } from '../../app/NavIcons';
 import { COLORS } from '../../styles/colors';
 
 interface RealmProps {
-  defaultFilterState: FilterState,
+  defaultFilterState: FilterState;
 }
+
 interface OwnProps {
   componentId: string;
   baseQuery?: string;

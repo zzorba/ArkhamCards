@@ -1,4 +1,4 @@
-declare module "react-native-realm" {
+declare module 'react-native-realm' {
   import React from 'react';
   import Realm, { Results } from 'realm';
   import { Subtract } from 'utility-types';
@@ -20,7 +20,7 @@ declare module "react-native-realm" {
 
   export interface CardAndFaqResults<Card, FaqEntry> {
     cards: Results<Card>;
-    faqEntries: Results<FaqEntry>
+    faqEntries: Results<FaqEntry>;
   }
 
   export interface Options<OwnProps, RealmProps> {

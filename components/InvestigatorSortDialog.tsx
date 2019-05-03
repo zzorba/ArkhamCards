@@ -7,7 +7,7 @@ import {
   SORT_BY_FACTION,
   SORT_BY_PACK,
   SORT_BY_TITLE,
-  SortType
+  SortType,
 } from './CardSortDialog/constants';
 
 interface Props {

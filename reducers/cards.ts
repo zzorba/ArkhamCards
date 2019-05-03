@@ -6,12 +6,14 @@ import {
   CardFetchSuccessAction,
   CardFetchErrorAction,
   CardCache,
+  TabooCache,
 } from '../actions/types';
 
 interface CardsState {
   loading: boolean;
   error: string | null;
   cache?: CardCache;
+  tabooCache?: TabooCache;
   lang?: string | null;
 }
 
@@ -41,6 +43,7 @@ export default function(
         loading: false,
         error: null,
         cache: action.cache,
+        tabooCache: action.tabooCache,
         lang: action.lang,
       };
     }
@@ -49,6 +52,7 @@ export default function(
         loading: false,
         error: action.error,
         cache: undefined,
+        tabooCache: undefined,
       };
     }
     default: {

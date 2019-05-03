@@ -29,7 +29,7 @@ class MyProvider extends React.Component {
 const { store /* , persistor */ } = configureStore({});
 registerScreens(MyProvider, store);
 
-/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
   app = new App(store);

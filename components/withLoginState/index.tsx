@@ -33,7 +33,7 @@ export default function withLoginState<P>(
           signedIn={signedIn}
           signInError={signInError}
         />
-      )
+      );
     };
 
     render() {
