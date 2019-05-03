@@ -1,5 +1,5 @@
 import React from 'react';
-import { head } from 'lodash';
+import { head, map } from 'lodash';
 import {
   Linking,
   ScrollView,
@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import Realm from 'realm';
+import Realm, { Results } from 'realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -31,6 +31,8 @@ import SignatureCardsComponent from './SignatureCardsComponent';
 
 interface RealmProps {
   card?: Card;
+  bonded_to_cards?: Results<Card>;
+  bonded_from_cards?: Results<Card>;
 }
 
 export interface CardDetailProps {
@@ -201,7 +203,7 @@ class CardDetailView extends React.Component<Props, State> {
       return null;
     }
     return (
-      <View>
+      <React.Fragment>
         <Text style={[typography.header, styles.sectionHeader]}>
           Deckbuilding
         </Text>
@@ -213,7 +215,47 @@ class CardDetailView extends React.Component<Props, State> {
           />
         </View>
         <SignatureCardsComponent componentId={componentId} investigator={card} />
-      </View>
+      </React.Fragment>
+    );
+  }
+
+  renderBondedCards() {
+    const {
+      componentId,
+      bonded_to_cards,
+      bonded_from_cards,
+    } = this.props;
+    if (!(bonded_to_cards && bonded_to_cards.length) &&
+      !(bonded_from_cards && bonded_from_cards.length)) {
+      return null;
+    }
+    return (
+      <React.Fragment>
+        { !!(bonded_to_cards && bonded_to_cards.length) && (
+          <React.Fragment>
+            <Text style={styles.header}>{ t`Bonded` }</Text>
+            { map(bonded_to_cards, card => (
+              <TwoSidedCardComponent
+                componentId={componentId}
+                key={card.code}
+                card={card}
+              />
+            )) }
+          </React.Fragment>
+        )}
+        { !!(bonded_from_cards && bonded_from_cards.length) && (
+          <React.Fragment>
+            <Text style={styles.header}>{ t`Bound Cards` }</Text>
+            { map(bonded_from_cards, card => (
+              <TwoSidedCardComponent
+                key={card.code}
+                componentId={componentId}
+                card={card}
+              />
+            )) }
+          </React.Fragment>
+        )}
+      </React.Fragment>
     );
   }
 
@@ -246,6 +288,7 @@ class CardDetailView extends React.Component<Props, State> {
           componentId={componentId}
           card={card}
         />
+        { this.renderBondedCards() }
         { this.renderInvestigatorCardsLink() }
         <View style={styles.footerPadding} />
       </ScrollView>
@@ -267,9 +310,17 @@ export default connectRealm<NavigationProps & CardDetailProps, RealmProps, Card>
   connect(mapStateToProps, mapDispatchToProps)(CardDetailView), {
     schemas: ['Card'],
     mapToProps(results: CardResults<Card>, realm: Realm, props: NavigationProps & CardDetailProps) {
+      const card = head(results.cards.filtered(`code == '${props.id}'`));
+      const bonded_to_cards = card && card.bonded_name &&
+        results.cards.filtered(`real_name == '${card.bonded_name}'`);
+      const bonded_from_cards = card &&
+        results.cards.filtered(`bonded_name == '${card.real_name}'`);
+
       return {
         realm,
-        card: head(results.cards.filtered(`code == '${props.id}'`)),
+        card,
+        bonded_to_cards,
+        bonded_from_cards,
       };
     },
   });
@@ -297,5 +348,13 @@ const styles = StyleSheet.create({
   },
   spoilerText: {
     margin: 8,
+  },
+  header: {
+    marginTop: 24,
+    paddingLeft: 8,
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: '600',
+    fontFamily: 'System',
   },
 });

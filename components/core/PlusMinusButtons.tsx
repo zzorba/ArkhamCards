@@ -45,7 +45,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       onIncrement,
     } = this.props;
     const atLimit = limit && (count === limit);
-    if (count === null || atLimit || disabled) {
+    if (count === null || atLimit || disabled || limit === 0) {
       return (
         <TouchableOpacity disabled>
           <MaterialCommunityIcons

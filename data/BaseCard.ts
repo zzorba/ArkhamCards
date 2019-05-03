@@ -1,0 +1,100 @@
+import { FactionCodeType, TypeCodeType } from '../constants';
+import CardRestrictions from './CardRestrictions';
+import DeckRequirement from './DeckRequirement';
+import DeckOption from './DeckOption';
+
+export default class BaseCard {
+  public code!: string;
+  public pack_code!: string;
+  public pack_name!: string;
+  public type_code!: TypeCodeType;
+  public type_name!: string;
+  public subtype_code?: 'basicweakness' | 'weakness';
+  public subtype_name!: string | null;
+  public slot!: string | null;
+  public faction_code?: FactionCodeType;
+  public faction_name!: string | null;
+  public faction2_code?: FactionCodeType;
+  public faction2_name!: string | null;
+  public position!: number;
+  public enemy_damage!: number | null;
+  public enemy_horror!: number | null;
+  public enemy_fight!: number | null;
+  public enemy_evade!: number | null;
+  public encounter_code!: string | null;
+  public encounter_name!: string | null;
+  public encounter_position!: number | null;
+  public exceptional?: boolean;
+  public xp!: number | null;
+  public victory!: number | null;
+  public vengeance!: number | null;
+  public renderName!: string;
+  public renderSubname!: string | null;
+  public name!: string;
+  public real_name!: string;
+  public subname!: string | null;
+  public firstName!: string | null;
+  public illustrator!: string | null;
+  public text!: string | null;
+  public flavor!: string | null;
+  public cost!: number | null;
+  public real_text!: string | null;
+  public back_name!: string | null;
+  public back_text!: string | null;
+  public back_flavor!: string | null;
+  public quantity!: number | null;
+  public spoiler?: boolean;
+  public stage!: number | null; // Act/Agenda deck
+  public clues!: number | null;
+  public shroud!: number | null;
+  public clues_fixed?: boolean;
+  public doom!: number | null;
+  public health!: number | null;
+  public health_per_investigator?: boolean;
+  public sanity!: number | null;
+  public deck_limit!: number | null;
+  public traits!: string | null;
+  public real_traits!: string | null;
+  public is_unique?: boolean;
+  public exile?: boolean;
+  public hidden?: boolean;
+  public permanent?: boolean;
+  public double_sided?: boolean;
+  public url!: string | null;
+  public octgn_id!: string | null;
+  public imagesrc!: string | null;
+  public backimagesrc!: string | null;
+  public skill_willpower!: number | null;
+  public skill_intellect!: number | null;
+  public skill_combat!: number | null;
+  public skill_agility!: number | null;
+  public skill_wild!: number | null;
+  // Effective skills (add wilds to them)
+  public eskill_willpower!: number | null;
+  public eskill_intellect!: number | null;
+  public eskill_combat!: number | null;
+  public eskill_agility!: number | null;
+  public linked_to_code!: string | null;
+  public linked_to_name!: string | null;
+
+  // Parsed data (from original)
+  public restrictions?: CardRestrictions;
+  public deck_requirements?: DeckRequirement;
+  public deck_options!: DeckOption[];
+  public linked_card?: BaseCard;
+  public back_linked?: boolean;
+
+  // Derived data.
+  public altArtInvestigator?: boolean;
+  public cycle_name!: string | null;
+  public has_restrictions!: boolean;
+  public traits_normalized!: string | null;
+  public real_traits_normalized!: string | null;
+  public slots_normalized!: string | null;
+  public uses!: string | null;
+  public bonded_name!: string | null;
+  public heals_horror?: boolean;
+  public sort_by_type!: number;
+  public sort_by_faction!: number;
+  public sort_by_pack!: number;
+}
