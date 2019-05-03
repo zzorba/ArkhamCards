@@ -16,6 +16,27 @@ export type TypeCodeType =
   'location' |
   'investigator' |
   'scenario';
+  
+export type SlotCodeType =
+  'hand' |
+  'hand x2' |
+  'arcane' |
+  'arcane x2' |
+  'accessory' |
+  'body' |
+  'ally' |
+  'tarot';
+
+export const SLOTS: SlotCodeType[] = [
+  'hand',
+  'hand x2',
+  'arcane',
+  'arcane x2',
+  'accessory',
+  'body',
+  'ally',
+  'tarot',
+];
 
 export type FactionCodeType =
   'guardian' |

@@ -9,11 +9,15 @@ import { ParsedDeck } from '../parseDeck';
 
 import FactionChart from './FactionChart';
 import CostChart from './CostChart';
+import SlotsChart from './SlotsChart';
 import SkillIconChart from './SkillIconChart';
+
+const INCLUDE_SLOTS_CHART = false;
 
 interface Props {
   parsedDeck?: ParsedDeck;
 }
+
 export default class DeckChartsView extends React.Component<Props> {
   render() {
     const {
@@ -24,9 +28,10 @@ export default class DeckChartsView extends React.Component<Props> {
     }
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <FactionChart parsedDeck={parsedDeck} />
-        <CostChart parsedDeck={parsedDeck} />
         <SkillIconChart parsedDeck={parsedDeck} />
+        <CostChart parsedDeck={parsedDeck} />
+        { INCLUDE_SLOTS_CHART && <SlotsChart parsedDeck={parsedDeck} /> }
+        <FactionChart parsedDeck={parsedDeck} />
       </ScrollView>
     );
   }

@@ -6,8 +6,10 @@ import Card, { CardKey, CardsMap } from '../data/Card';
 import {
   PLAYER_FACTION_CODES,
   SKILLS,
+  SLOTS,
   RANDOM_BASIC_WEAKNESS,
   FactionCodeType,
+  SlotCodeType,
   SkillCodeType,
 } from '../constants';
 
@@ -109,6 +111,25 @@ function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
 
 function computeXp(card?: Card) {
   return (card && card.xp) ? ((card.exceptional ? 2 : 1) * (card.xp)) : 0;
+}
+
+function slotCount(
+  cardIds: CardId[],
+  cards: CardsMap,
+  slot: SlotCodeType
+): number {
+  return sum(
+    map(
+      filter(cardIds, c => {
+        if (!cards[c.id] || cards[c.id].type_code !== 'asset') {
+          return false;
+        }
+        const slots = cards[c.id].slots_normalized;
+        return !!(slots && slots.indexOf(`#${slot}#`) !== -1);
+      }),
+      c => c.quantity
+    )
+  );
 }
 
 function factionCount(
@@ -328,6 +349,10 @@ type SkillCounts = {
   [skill in SkillCodeType]?: number;
 };
 
+type SlotCounts = {
+  [slot in SlotCodeType]?: number;
+}
+
 export interface ParsedDeck {
   investigator: Card;
   deck: Deck;
@@ -339,6 +364,7 @@ export interface ParsedDeck {
   factionCounts: FactionCounts;
   costHistogram: number[];
   skillIconCounts: SkillCounts;
+  slotCounts: SlotCounts;
   normalCards: SplitCards;
   specialCards: SplitCards;
   ignoreDeckLimitSlots: Slots;
@@ -384,14 +410,17 @@ export function parseDeck(
   const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);
 
   const factionCounts: FactionCounts = {};
-  PLAYER_FACTION_CODES.forEach(faction => {
+  forEach(PLAYER_FACTION_CODES, faction => {
     factionCounts[faction] = factionCount(cardIds, cards, faction);
   });
   const skillIconCounts: SkillCounts = {};
-  SKILLS.forEach(skill => {
+  forEach(SKILLS, skill => {
     skillIconCounts[skill] = sumSkillIcons(cardIds, cards, skill);
   });
-
+  const slotCounts: SlotCounts = {}
+  forEach(SLOTS, slot => {
+    slotCounts[slot] = slotCount(cardIds, cards, slot);
+  });
   return {
     investigator: cards[deck.investigator_code],
     deck: deck,
@@ -403,6 +432,7 @@ export function parseDeck(
     packs: uniqBy(cardIds, c => cards[c.id].pack_code).length,
     factionCounts: factionCounts,
     costHistogram: costHistogram(cardIds, cards),
+    slotCounts: slotCounts,
     skillIconCounts: skillIconCounts,
     normalCards: splitCards(normalCards, cards),
     specialCards: splitCards(specialCards, cards),

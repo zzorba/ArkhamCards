@@ -6,7 +6,7 @@ import { t } from 'ttag';
 
 import { ParsedDeck } from '../parseDeck';
 import ArkhamIcon from '../../assets/ArkhamIcon';
-import { SKILLS, SKILL_COLORS, SkillCodeType } from '../../constants';
+import { SLOTS, SlotCodeType } from '../../constants';
 import typography from '../../styles/typography';
 
 interface Props {
@@ -14,11 +14,8 @@ interface Props {
 }
 
 interface Item {
-  skill: SkillCodeType,
+  slot: SlotCodeType,
   value: number;
-  svg: {
-    fill: string;
-  };
 }
 
 interface LabelData {
@@ -28,14 +25,11 @@ interface LabelData {
   data: Item[];
 }
 
-export default class SkillIconChart extends React.PureComponent<Props> {
-  getSkillData(skill: SkillCodeType): Item {
+export default class SlotsChart extends React.PureComponent<Props> {
+  getSlotData(slot: SlotCodeType): Item {
     return {
-      skill,
-      value: this.props.parsedDeck.skillIconCounts[skill] || 0,
-      svg: {
-        fill: SKILL_COLORS[skill],
-      },
+      slot,
+      value: this.props.parsedDeck.slotCounts[slot] || 0,
     };
   }
 
@@ -44,27 +38,35 @@ export default class SkillIconChart extends React.PureComponent<Props> {
   };
 
   render() {
-    const barData = map(SKILLS, skill => this.getSkillData(skill));
+    const barData = filter(
+      map(SLOTS, slot => this.getSlotData(slot)),
+      slot => slot.value > 0
+    );
     const CUT_OFF = Math.min(
       4,
       (maxBy(map(barData, barData => barData.value)) || 0)
     );
 
     const contentInset = { top: 10, bottom: 10 };
+    const TEXT_LENGTH = 100;
+
     const Labels = ({ x, y, bandwidth, data }: LabelData) => (
       data.map((value, index) => (
         <View key={index}>
           <View style={[styles.label, {
-            left: x(index),
-            top: y(0) + 4,
-            width: bandwidth,
+            left: x(index) - bandwidth / 3,
+            top: y(0) + 8,
            }]}
           >
-            <ArkhamIcon
-              name={value.skill}
-              size={32}
-              color={SKILL_COLORS[value.skill]}
-            />
+            <Text style={{
+              height: bandwidth,
+              width: TEXT_LENGTH,
+              transform: [
+                { rotate: '90deg' },
+                { translateX: -(TEXT_LENGTH / 2 - bandwidth / 2) },
+                { translateY: (TEXT_LENGTH / 2 - bandwidth / 2) },
+              ],
+            }}>{value.slot}</Text>
           </View>
           { value.value > 0 && (
             <Text style={[
@@ -86,7 +88,7 @@ export default class SkillIconChart extends React.PureComponent<Props> {
     return (
       <View style={styles.wrapper}>
         <Text style={[typography.bigLabel, typography.center]}>
-          {t`Skill Icons`}
+          {t`Slots`}
         </Text>
         <View style={styles.chart}>
           <BarChart
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'column',
     position: 'relative',
-    marginBottom: 64,
+    marginBottom: 128,
   },
   chart: {
     flexDirection: 'row',

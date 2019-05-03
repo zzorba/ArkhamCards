@@ -121,7 +121,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Dim Carcosa`, code: 'dim_carcosa', pack_code: 'dca' },
       { name: t`Epilogue`, code: 'ptc_epilogue', interlude: true },
     ];
-    case TFA: [
+    case TFA: return [
       { name: t`Prologue`, code: 'tfa_prologue', interlude: true },
       { name: t`The Untamed Wilds`, code: 'wilds', pack_code: 'tfa' },
       { name: t`Restless Nights`, code: 'tfa_interlude1', interlude: true },
@@ -138,7 +138,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Shattered Aeons`, code: 'shattered_aeons', pack_code: 'sha' },
       { name: t`Epilogue`, code: 'tfa_epilogue', interlude: true },
     ];
-    case TCU: [
+    case TCU: return [
       { name: t`Prologue: Disappearance at the Twilight Estate`, code: 'tcu_prologue', pack_code: 'tcu' },
       { name: t`The Witching Hour`, code: 'the_witching_hour', pack_code: 'tcu' },
       { name: t`At Death's Doorstep (Act 1)`, code: 'at_deaths_doorstep_1', pack_code: 'tcu' },
