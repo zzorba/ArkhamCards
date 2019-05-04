@@ -1,3 +1,4 @@
+import Config from 'react-native-config';
 import { keys, map } from 'lodash';
 import { getAccessToken } from './auth';
 import { Deck } from '../actions/types';
@@ -26,7 +27,7 @@ export function decks(lastModified?: string): Promise<DecksResponse> {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
-    const uri = `https://arkhamdb.com/api/oauth2/decks?access_token=${accessToken}`;
+    const uri = `${Config.OAUTH_SITE}api/oauth2/decks?access_token=${accessToken}`;
     const headers = new Headers();
     if (lastModified) {
       headers.append('If-Modified-Since', lastModified);
@@ -63,7 +64,7 @@ export function loadDeck(id: number) {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
-    const uri = `https://arkhamdb.com/api/oauth2/deck/load/${id}?access_token=${accessToken}`;
+    const uri = `${Config.OAUTH_SITE}api/oauth2/deck/load/${id}?access_token=${accessToken}`;
     return fetch(uri, {
       method: 'GET',
     }).then(response => {
@@ -105,7 +106,7 @@ export function newDeck(investigator: string, name: string) {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
-    const uri = `https://arkhamdb.com/api/oauth2/deck/new?access_token=${accessToken}`;
+    const uri = `${Config.OAUTH_SITE}api/oauth2/deck/new?access_token=${accessToken}`;
     return fetch(uri, {
       method: 'POST',
       headers: {
@@ -139,7 +140,7 @@ export function saveDeck(
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
-    const uri = `https://arkhamdb.com/api/oauth2/deck/save/${id}?access_token=${accessToken}`;
+    const uri = `${Config.OAUTH_SITE}api/oauth2/deck/save/${id}?access_token=${accessToken}`;
     const bodyParams: Params = {
       name: name,
       slots: JSON.stringify(slots),
@@ -181,7 +182,7 @@ export function upgradeDeck(id: number, xp: number, exiles?: string) {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
-    const uri = `https://arkhamdb.com/api/oauth2/deck/upgrade/${id}?access_token=${accessToken}`;
+    const uri = `${Config.OAUTH_SITE}api/oauth2/deck/upgrade/${id}?access_token=${accessToken}`;
     const params: Params = {
       xp: xp,
     };

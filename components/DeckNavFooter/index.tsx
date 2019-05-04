@@ -48,7 +48,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         passProps: {
           parsedDeck,
         },
-        options: getDeckOptions(parsedDeck.investigator, t`Charts`),
+        options: getDeckOptions(parsedDeck.investigator, false, t`Charts`),
       },
     });
   };
@@ -67,7 +67,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         passProps: {
           slots,
         },
-        options: getDeckOptions(investigator, t`Draw`),
+        options: getDeckOptions(investigator, false, t`Draw`),
       },
     });
   };

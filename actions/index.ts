@@ -1,3 +1,4 @@
+import Config from 'react-native-config';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
@@ -176,7 +177,7 @@ export function fetchPublicDeck(
   useDeckEndpoint: boolean
 ): ThunkAction<void, AppState, null, Action<string>> {
   return (dispatch) => {
-    const uri = `https://arkhamdb.com/api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
+    const uri = `${Config.OAUTH_SITE}api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
     fetch(uri, { method: 'GET' })
       .then(response => {
         if (response.ok === true) {

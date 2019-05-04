@@ -7,9 +7,9 @@ const config: any = {
   clientSecret: Config.OAUTH_CLIENT_SECRET,
   redirectUrl: 'arkhamcards://auth/redirect',
   serviceConfiguration: {
-    authorizationEndpoint: 'https://arkhamdb.com/oauth/v2/auth',
-    tokenEndpoint: 'https://arkhamdb.com/oauth/v2/token',
-    revocationEndpoint: 'https://arkhamdb.com/oauth/v2/revoke',
+    authorizationEndpoint: `${Config.OAUTH_SITE}oauth/v2/auth`,
+    tokenEndpoint: `${Config.OAUTH_SITE}oauth/v2/token`,
+    revocationEndpoint: `${Config.OAUTH_SITE}oauth/v2/revoke`,
   },
 };
 

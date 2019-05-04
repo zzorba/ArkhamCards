@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
 
 import { t } from 'ttag';
@@ -6,8 +7,13 @@ import { FACTION_DARK_GRADIENTS } from '../constants';
 import Card from '../data/Card';
 import { CardDetailProps } from './CardDetailView';
 import { DeckDetailProps } from './DeckDetailView';
+import { iconsMap } from '../app/NavIcons';
 
-export function getDeckOptions(investigator?: Card, title?: string): Options {
+export function getDeckOptions(
+  investigator?: Card,
+  modal?: boolean,
+  title?: string
+): Options {
   return {
     statusBar: {
       style: 'light',
@@ -17,6 +23,17 @@ export function getDeckOptions(investigator?: Card, title?: string): Options {
         title: t`Back`,
         color: '#FFFFFF',
       },
+      leftButtons: modal ? [
+        Platform.OS === 'ios' ? {
+          text: t`Done`,
+          id: 'back',
+          color: 'white',
+        } : {
+          icon: iconsMap['arrow-left'],
+          id: 'androidBack',
+          color: 'white',
+        },
+      ] : [],
       title: {
         text: title || (investigator ? investigator.name : t`Deck`),
         color: '#FFFFFF',
@@ -100,7 +117,7 @@ export function showDeckModal(
         component: {
           name: 'Deck',
           passProps,
-          options: getDeckOptions(investigator),
+          options: getDeckOptions(investigator, true),
         },
       }],
     },
