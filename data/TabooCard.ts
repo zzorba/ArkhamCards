@@ -1,3 +1,5 @@
+import { forEach } from 'lodash';
+
 import Card from './Card';
 import BaseCard from './BaseCard';
 
@@ -7,18 +9,19 @@ export default class TabooCard extends BaseCard {
     primaryKey: 'id',
     properties: {
       id: 'string',
-      taboo_id: 'string',
-      text_change: 'string?',
+      taboo_id: 'int',
+      taboo_text_change: 'string?',
+      extra_xp: 'int?',
       ...BaseCard.SCHEMA,
     },
   };
 
   public id!: string;
-  public taboo_id!: string;
-  public text_change!: string | null;
+  public taboo_id!: number;
+  public taboo_text_change!: string | null;
 
   static fromJson(
-    tabooId: string,
+    tabooId: number,
     json: any,
     card: Card
   ): TabooCard {
@@ -26,14 +29,18 @@ export default class TabooCard extends BaseCard {
     const result: TabooCard = {
       id: `${tabooId}-${code}`,
       taboo_id: tabooId,
-      ...card,
+      code: card.code,
     } as TabooCard;
+    forEach(BaseCard.SCHEMA, property => {
+      // @ts-ignore TS7017
+      result[property] = card[property];
+    });
 
     if (json.xp) {
       result.extra_xp = json.xp;
     }
     if (json.text) {
-      result.text_change = json.text;
+      result.taboo_text_change = json.text;
     }
     if (json.exceptional) {
       result.exceptional = true;

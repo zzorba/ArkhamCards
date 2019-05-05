@@ -29,7 +29,6 @@ export default class BaseCard {
     encounter_position: 'int?',
     exceptional: 'bool?',
     xp: { type: 'int', optional: true, indexed: true },
-    extra_xp: 'int?',
     victory: 'int?',
     vengeance: 'int?',
     renderName: 'string',

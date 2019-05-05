@@ -8,6 +8,7 @@ import campaigns from './campaigns';
 import cards from './cards';
 import decks from './decks';
 import packs from './packs';
+import settings from './settings';
 import { Campaign, SingleCampaign, Deck } from '../actions/types';
 
 const packsPersistConfig = {
@@ -28,6 +29,12 @@ const decksPersistConfig = {
   blacklist: ['refreshing', 'error'],
 };
 
+const settingsPeristConfig = {
+  key: 'settings',
+  storage,
+  blacklist: [],
+};
+
 const signedInPersistConfig = {
   key: 'signedIn',
   storage,
@@ -41,6 +48,7 @@ const rootReducer = combineReducers({
   decks: persistReducer(decksPersistConfig, decks),
   campaigns,
   signedIn: persistReducer(signedInPersistConfig, signedIn),
+  settings: persistReducer(settingsPeristConfig, settings),
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

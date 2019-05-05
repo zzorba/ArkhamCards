@@ -5,6 +5,19 @@ declare module 'react-native-realm' {
 
   export type Sort = [string, boolean];
 
+  export interface TabooSetResults<TabooSet> {
+    tabooSets: Results<TabooSet>;
+  }
+
+  export interface TabooSetOptions<OwnProps, RealmProps, TabooSet> {
+    schemas: ['TabooSet'];
+    mapToProps: (
+      results: TabooSetResults<TabooSet>,
+      realm: Realm,
+      props: OwnProps
+    ) => RealmProps;
+  }
+
   export interface CardResults<Card> {
     cards: Results<Card>;
   }
@@ -40,10 +53,11 @@ declare module 'react-native-realm' {
     ) => RealmProps;
   }
 
-  export function connectRealm<OwnProps, RealmProps, Card, FaqEntry={}>(
+  export function connectRealm<OwnProps, RealmProps, Card, FaqEntry={}, TabooSet={}>(
     component: React.ComponentType<OwnProps & RealmProps>,
     options: CardOptions<OwnProps, RealmProps, Card> |
       Options<OwnProps, RealmProps> |
-      CardAndFaqOptions<OwnProps, RealmProps, Card, FaqEntry>
+      CardAndFaqOptions<OwnProps, RealmProps, Card, FaqEntry> |
+      TabooSetOptions<OwnProps, RealmProps, TabooSet>
   ): React.ComponentType<OwnProps>;
 }

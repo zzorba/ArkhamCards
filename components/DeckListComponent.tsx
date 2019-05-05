@@ -94,6 +94,9 @@ class DeckListComponent extends React.Component<Props, State> {
     } = this.props;
 
     const deck = decks[deckId];
+    if (!deck) {
+      return null;
+    }
     return (
       <DeckListRow
         key={deckId}

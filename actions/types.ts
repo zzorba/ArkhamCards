@@ -195,6 +195,12 @@ export interface SingleCampaign extends Campaign {
 }
 
 
+export const SET_TABOO_SET = 'SET_TABOO_SET';
+export interface SetTabooSetAction {
+  type: typeof SET_TABOO_SET;
+  tabooId?: number;
+}
+
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
 export interface PacksFetchStartAction {
   type: typeof PACKS_FETCH_START;

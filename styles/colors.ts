@@ -14,7 +14,7 @@ export const COLORS = {
   yellow: 'rgb(255, 204, 0)',
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
-  navButton: Platform.OS === 'ios' ? '#007AFF' : '#000  ',
+  navButton: Platform.OS === 'ios' ? '#007AFF' : '#000',
   black: '#000',
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : undefined,
   iosSettingsBackground: '#e3e6ed',

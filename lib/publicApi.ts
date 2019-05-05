@@ -20,7 +20,7 @@ export const syncTaboos = function(
   if (cache &&
     cache.lastModified &&
     cache.tabooCount > 0 &&
-    realm.objects('Taboo').length === cache.tabooCount
+    realm.objects('TabooCard').length === cache.tabooCount
   ) {
     headers.append('If-Modified-Since', cache.lastModified);
   }
@@ -45,7 +45,6 @@ export const syncTaboos = function(
           } catch (e) {
             Alert.alert(`${e}`);
             console.log(e);
-            console.log(tabooJson);
           }
           forEach(cards, cardJson => {
             const code: string = cardJson.code;
@@ -54,13 +53,12 @@ export const syncTaboos = function(
               try {
                 realm.create(
                   'TabooCard',
-                  TabooCard.fromJson(tabooJson.code, cardJson, card),
+                  TabooCard.fromJson(tabooJson.id, cardJson, card),
                   true
                 );
               } catch (e) {
-                Alert.alert(`${e}`);
+                // Alert.alert(`${e}`);
                 console.log(e);
-                console.log(cardJson);
               }
             }
           });
@@ -119,7 +117,7 @@ export const syncCards = function(
               true
             );
           } catch (e) {
-            Alert.alert(e);
+            Alert.alert(`${e}`);
             console.log(e);
             console.log(cardJson);
           }

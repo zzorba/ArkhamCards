@@ -14,11 +14,11 @@ import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
-import {
-  SettingsCategoryHeader,
-} from 'react-native-settings-components';
-
+import { SettingsCategoryHeader } from 'react-native-settings-components';
 import { t } from 'ttag';
+
+import LanguagePicker from './LanguagePicker';
+import TabooPicker from './TabooPicker';
 import { clearDecks } from '../../actions';
 import { fetchCards } from '../cards/actions';
 import Card from '../../data/Card';
@@ -54,19 +54,6 @@ interface RealmProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps & RealmProps;
 
 class SettingsView extends React.Component<Props> {
-  _languagePressed = () => {
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.Language',
-        options: {
-          layout: {
-            backgroundColor: 'rgba(128,128,128,.75)',
-          },
-        },
-      },
-    });
-  };
-
   navButtonPressed(screen: string, title: string) {
     Navigation.push<{}>(this.props.componentId, {
       component: {
@@ -126,31 +113,21 @@ class SettingsView extends React.Component<Props> {
     fetchCards(realm, lang || 'en');
   };
 
-  renderSyncCards() {
+  syncCardsText() {
     const {
       cardsLoading,
       cardsError,
     } = this.props;
     if (cardsLoading) {
-      return (
-        <React.Fragment>
-          <SettingsItem text={t`Updating cards`} />
-          <SettingsItem text={t`Card Language`} />
-        </React.Fragment>
-      );
+      return t`Updating cards`;
     }
-    return (
-      <React.Fragment>
-        <SettingsItem
-          onPress={this._doSyncCards}
-          text={cardsError ? t`Error: Check for Cards Again` : t`Check for New Cards on ArkhamDB`}
-        />
-        <SettingsItem onPress={this._languagePressed} text={t`Card Language`} />
-      </React.Fragment>
-    );
+    return cardsError ?
+      t`Error: Check for Cards Again` :
+      t`Check for New Cards on ArkhamDB`;
   }
 
   render() {
+    const { cardsLoading } = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
@@ -160,12 +137,21 @@ class SettingsView extends React.Component<Props> {
           />
           <LoginButton settings />
           <SettingsCategoryHeader
-            title={t`Card Data`}
+            title={t`Card Settings`}
             titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
           />
           <SettingsItem navigation onPress={this._myCollectionPressed} text={t`Card Collection`} />
           <SettingsItem navigation onPress={this._editSpoilersPressed} text={t`Spoiler Settings`} />
-          { this.renderSyncCards() }
+          <TabooPicker />
+          <SettingsCategoryHeader
+            title={t`Card Data`}
+            titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
+          />
+          <SettingsItem
+            onPress={cardsLoading ? undefined : this._doSyncCards}
+            text={this.syncCardsText()}
+          />
+          <LanguagePicker />
           <SettingsCategoryHeader
             title={t`Debug`}
             titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
@@ -228,6 +214,6 @@ const styles = StyleSheet.create<Styles>({
     backgroundColor: Platform.OS === 'ios' ? COLORS.iosSettingsBackground : COLORS.white,
   },
   androidCategory: {
-    color: COLORS.monza,
+    color: COLORS.darkBlue,
   },
 });

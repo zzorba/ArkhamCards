@@ -12,7 +12,7 @@ import FaqEntry from './FaqEntry';
 import TabooCard from './TabooCard';
 import TabooSet from './TabooSet';
 
-const SCHEMA_VERSION = 39;
+const SCHEMA_VERSION = 40;
 export default new Realm({
   schema: [
     Card,

@@ -27,6 +27,52 @@ declare module 'react-native-settings-components' {
   }
   class SettingsButton extends React.Component<SettingsButtonProps> {}
 
-  export { SettingsButton, SettingsCategoryHeader };
+  interface PickerOption<T> {
+    value: T;
+    label: string;
+  }
 
+  interface ModalStyle {
+    innerWrapper?: ViewStyle;
+    header?: {
+      wrapper?: ViewStyle;
+      titleWrapper?: ViewStyle;
+      title?: TextStyle;
+      description?: TextStyle;
+      closeBtnWrapper?: ViewStyle;
+    };
+    list?: {
+      wrapper?: ViewStyle;
+      scrollView?: ViewStyle;
+      innerWrapper?: ViewStyle;
+      itemColor?: string;
+    };
+  }
+
+  interface SettingsPickerProps<T> {
+    containerProps?: ViewProps;
+    containerStyle?: ViewStyle;
+    disabledOverlayStyle?: any;
+    titleProps?: TextProps;
+    titleStyle?: TextStyle;
+    title: string;
+    valueProps?: TextProps;
+    valueStyle?: TextStyle;
+    value?: T;
+    valueFormat?: (value: T) => string;
+    valuePlaceholder?: string;
+    options: PickerOption<T>[];
+    dialogDescription?: string;
+    onValueChange: (value: T) => void;
+    disabled?: boolean;
+    modalStyle?: ModalStyle;
+    multi?: boolean;
+    renderCloseButton?: () => React.Component;
+    singleRadio?: boolean;
+  }
+  class SettingsPicker<T> extends React.Component<SettingsPickerProps<T>> {
+    closeModal: () => void;
+  }
+
+  export { SettingsButton, SettingsCategoryHeader, SettingsPicker };
 }

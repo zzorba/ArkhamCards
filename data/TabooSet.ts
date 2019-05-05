@@ -1,8 +1,9 @@
 export default class TabooSet {
   public static schema: Realm.ObjectSchema = {
     name: 'TabooSet',
-    primaryKey: 'code',
+    primaryKey: 'id',
     properties: {
+      id: 'int',
       code: 'string',
       name: 'string',
       cardCount: 'int',
@@ -12,6 +13,7 @@ export default class TabooSet {
     },
   };
 
+  id!: number;
   code!: string;
   name!: string;
   cardCount!: number;
@@ -21,6 +23,7 @@ export default class TabooSet {
 
   static fromJson(json: any, cardCount: number): TabooSet {
     return {
+      id: json.id,
       code: json.code,
       name: json.name,
       cardCount,

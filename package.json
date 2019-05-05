@@ -46,7 +46,7 @@
     "react-native-markdown-view": "1.1.4",
     "react-native-navigation": "2.17.0-snapshot.282",
     "react-native-realm": "0.1.2",
-    "react-native-settings-components": "0.0.2",
+    "react-native-settings-components": "zzorba/react-native-settings-components",
     "react-native-svg": "9.4.0",
     "react-native-svg-charts": "5.2.0",
     "react-native-vector-icons": "6.4.2",

@@ -1,5 +1,6 @@
 import Config from 'react-native-config';
 import { keys, map } from 'lodash';
+
 import { getAccessToken } from './auth';
 import { Deck } from '../actions/types';
 

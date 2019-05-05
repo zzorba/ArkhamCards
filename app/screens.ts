@@ -33,7 +33,6 @@ import CardLocationFilterView from '../components/filter/CardLocationFilterView'
 import PackFilterView from '../components/filter/PackFilterView';
 import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsView from '../components/settings/SettingsView';
-import LanguageDialog from '../components/settings/LanguageDialog';
 import DiagnosticsView from '../components/settings/DiagnosticsView';
 import PackCardsView from '../components/PackCardsView';
 import SpoilersView from '../components/SpoilersView';
@@ -78,7 +77,6 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Pack', () => PackCardsView, Provider, store);
   Navigation.registerComponentWithRedux('My.Spoilers', () => SpoilersView, Provider, store);
   Navigation.registerComponentWithRedux('WebView', () => WebViewWrapper, Provider, store);
-  Navigation.registerComponentWithRedux('Dialog.Language', () => LanguageDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.DeckSelector', () => MyDecksSelectorDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.EditChaosBag', () => EditChaosBagDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.ExileCards', () => ExileCardDialog, Provider, store);

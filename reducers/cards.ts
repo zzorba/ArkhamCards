@@ -56,6 +56,8 @@ export default function(
       };
     }
     default: {
+      /* eslint-disable @typescript-eslint/no-unused-vars */
+      const _exhaustiveCheck: never = action;
       return state;
     }
   }
