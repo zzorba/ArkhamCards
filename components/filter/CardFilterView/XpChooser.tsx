@@ -72,8 +72,8 @@ export default class XpChooser extends React.Component<Props> {
     });
     const buttons = map(this.levelRanges(), xyz => {
       const xp = xyz[0] === xyz[1] ?
-        `${xyz[0]} XP` :
-        `${xyz[0]} - ${xyz[1]} XP`;
+        `Level ${xyz[0]}` :
+        `Level ${xyz[0]} - ${xyz[1]}`;
       return {
         element: () => (<Text>{ xp }</Text>),
       };
