@@ -1,5 +1,6 @@
 import React from 'react';
 import Realm, { Results } from 'realm';
+import { connect } from 'react-redux';
 import { map } from 'lodash';
 import {
   StyleSheet,
@@ -10,10 +11,15 @@ import { connectRealm, CardResults } from 'react-native-realm';
 import { t } from 'ttag';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from '../../data/Card';
+import { getTabooSet, AppState } from '../../reducers';
 
 interface OwnProps {
   componentId: string;
   card: Card;
+}
+
+interface ReduxProps {
+  tabooSetId?: number;
 }
 
 interface RealmProps {
@@ -21,7 +27,7 @@ interface RealmProps {
   bonded_from_cards?: Results<Card>;
 }
 
-type Props = OwnProps & RealmProps;
+type Props = OwnProps & ReduxProps & RealmProps;
 
 class BondedCardsComponent extends React.Component<Props> {
   render() {
@@ -65,26 +71,34 @@ class BondedCardsComponent extends React.Component<Props> {
   }
 }
 
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    tabooSetId: getTabooSet(state),
+  };
+}
 
-export default connectRealm<OwnProps, RealmProps, Card>(
+export default connect<ReduxProps, {}, OwnProps, AppState>(
+  mapStateToProps
+)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
   BondedCardsComponent, {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: OwnProps
+      props: OwnProps & ReduxProps
     ): RealmProps {
       const bonded_to_cards = (props.card && props.card.bonded_name) ?
-        results.cards.filtered(`real_name == '${props.card.bonded_name}'`) : undefined;
+        results.cards.filtered(`(real_name == $0) and ${Card.tabooSetQuery(props.tabooSetId)}`, props.card.bonded_name) : undefined;
       const bonded_from_cards = props.card &&
-        results.cards.filtered(`bonded_name == '${props.card.real_name}'`);
+        results.cards.filtered(`(bonded_name == $0) and ${Card.tabooSetQuery(props.tabooSetId)}`, props.card.real_name);
 
       return {
         bonded_to_cards,
         bonded_from_cards,
       };
     },
-  });
+  })
+);
 
 const styles = StyleSheet.create({
   header: {

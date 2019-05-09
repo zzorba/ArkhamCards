@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import { connect } from 'react-redux';
 import Realm, { Results } from 'realm';
 import DeviceInfo from 'react-native-device-info';
 import { connectRealm, CardResults } from 'react-native-realm';
@@ -11,6 +12,7 @@ import { msgid, ngettext } from 'ttag';
 
 import { filterToQuery, FilterState } from '../../lib/filters';
 import Card from '../../data/Card';
+import { getTabooSet, AppState } from '../../reducers';
 import space from '../../styles/space';
 import typography from '../../styles/typography';
 const FOOTER_HEIGHT = 40;
@@ -26,7 +28,11 @@ interface RealmProps {
   cards: Results<Card>;
 }
 
-type Props = OwnProps & RealmProps;
+interface ReduxProps {
+  tabooSetId?: number;
+}
+
+type Props = OwnProps & RealmProps & ReduxProps;
 
 class FilterFooterComponent extends React.Component<Props> {
   cardCount() {
@@ -63,14 +69,29 @@ class FilterFooterComponent extends React.Component<Props> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(FilterFooterComponent, {
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    tabooSetId: getTabooSet(state),
+  };
+}
+
+export default connect<ReduxProps, {}, OwnProps, AppState>(
+  mapStateToProps
+)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(FilterFooterComponent, {
   schemas: ['Card'],
-  mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps): RealmProps {
+  mapToProps(
+    results: CardResults<Card>,
+    realm: Realm,
+    props: OwnProps & ReduxProps
+  ): RealmProps {
     return {
-      cards: props.baseQuery ? results.cards.filtered(props.baseQuery) : results.cards,
+      cards: props.baseQuery ?
+        results.cards.filtered(`(${props.baseQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
+        results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
     };
   },
-});
+})
+);
 
 const styles = StyleSheet.create({
   footerBar: {

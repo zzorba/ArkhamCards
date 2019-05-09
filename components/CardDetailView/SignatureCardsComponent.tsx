@@ -1,5 +1,6 @@
 import React from 'react';
 import Realm, { Results } from 'realm';
+import { connect } from 'react-redux';
 import { flatMap, map } from 'lodash';
 import {
   StyleSheet,
@@ -7,21 +8,26 @@ import {
   View,
 } from 'react-native';
 import { connectRealm, CardResults } from 'react-native-realm';
-
 import { t } from 'ttag';
+
 import SignatureCardItem from './SignatureCardItem';
 import Card from '../../data/Card';
+import { getTabooSet, AppState } from '../../reducers';
 
 interface RealmProps {
   requiredCards?: Results<Card>;
   alternateCards?: Results<Card>;
 }
 
+interface ReduxProps {
+  tabooSetId?: number;
+}
+
 interface OwnProps {
   componentId: string;
   investigator: Card;
 }
-type Props = OwnProps & RealmProps;
+type Props = OwnProps & RealmProps & ReduxProps;
 
 class SignatureCardsComponent extends React.Component<Props> {
   render() {
@@ -52,14 +58,21 @@ class SignatureCardsComponent extends React.Component<Props> {
   }
 }
 
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    tabooSetId: getTabooSet(state),
+  };
+}
 
-export default connectRealm<OwnProps, RealmProps, Card>(
+export default connect<ReduxProps, {}, OwnProps, AppState>(
+  mapStateToProps
+)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
   SignatureCardsComponent, {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: OwnProps
+      props: OwnProps & ReduxProps
     ): RealmProps {
       const requirements = props.investigator.deck_requirements;
       const card_requirements = requirements && requirements.card;
@@ -70,11 +83,15 @@ export default connectRealm<OwnProps, RealmProps, Card>(
         flatMap(card_requirements || [], req => (req.alternates || [])),
         code => `code == '${code}'`).join(' OR ');
       return {
-        requiredCards: requiredQuery ? results.cards.filtered(requiredQuery) : undefined,
-        alternateCards: alternateQuery ? results.cards.filtered(alternateQuery) : undefined,
+        requiredCards: requiredQuery ?
+          results.cards.filtered(`(${requiredQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
+          undefined,
+        alternateCards: alternateQuery ?
+          results.cards.filtered(`(${alternateQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
+          undefined,
       };
     },
-  });
+  }));
 
 const styles = StyleSheet.create({
   header: {

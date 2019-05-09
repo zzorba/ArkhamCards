@@ -29,6 +29,7 @@ import Button from '../core/Button';
 import CardCostIcon from '../core/CardCostIcon';
 import BaseCard from '../../data/BaseCard';
 import { CardFaqProps } from '../CardFaqView';
+import { CardTabooProps } from '../CardTabooView';
 
 import PlayerCardImage from './PlayerCardImage';
 
@@ -88,6 +89,31 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       },
     });
   }
+
+  _showTaboo = () => {
+    const {
+      componentId,
+      card,
+    } = this.props;
+    Navigation.push<CardTabooProps>(componentId, {
+      component: {
+        name: 'Card.Taboo',
+        passProps: {
+          id: card.code,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: card.name,
+            },
+            subtitle: {
+              text: `Taboos`,
+            },
+          },
+        },
+      },
+    });
+  };
 
   _showFaq = () => {
     const {
@@ -229,9 +255,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         { !!(card.xp || costString) && (
           <Text style={typography.cardText}>
             { card.xp ?
-              (`${costString}${costString ? '. ' : ''}XP: ${card.xp}.`) :
+              (`${costString}${costString ? '. ' : ''}${t`Level: ${card.xp}.`}`) :
               costString
             }
+          </Text>
+        ) }
+        { !!card.extra_xp && (
+          <Text style={typography.cardText}>
+            { t`Additional XP: ${card.extra_xp}.` }
           </Text>
         ) }
         { card.type_code === 'agenda' && (
@@ -502,21 +533,31 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
+  renderTabooButton() {
+    return (
+      <Button
+        grow
+        text={t`Taboo`}
+        onPress={this._showTaboo}
+        icon={<ArkhamIcon name="tablet" size={18 * DeviceInfo.getFontScale()} color="white" />}
+      />
+    );
+  }
+
   renderFaqButton() {
     return (
-      <View style={styles.buttonContainer}>
-        <Button
-          text={t`FAQ`}
-          onPress={this._showFaq}
-          icon={<AppIcon name="faq" size={18 * DeviceInfo.getFontScale()} color="white" />}
-        />
-      </View>
+      <Button
+        grow
+        text={t`FAQ`}
+        onPress={this._showFaq}
+        icon={<AppIcon name="faq" size={18 * DeviceInfo.getFontScale()} color="white" />}
+      />
     );
   }
 
   renderCardFooter(card: BaseCard) {
     return (
-      <View style={styles.twoColumn}>
+      <React.Fragment>
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={[typography.cardText, styles.illustratorText]}>
@@ -543,10 +584,17 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             </View>
           }
         </View>
-        <View style={styles.column}>
-          { this.renderFaqButton() }
+        <View style={styles.twoColumn}>
+          <View style={[styles.halfColumn, { paddingRight: s }]}>
+            { this.renderFaqButton() }
+          </View>
+          { (card.taboo_set_id === 0) && (
+            <View style={[styles.halfColumn, { paddingLeft: s }]}>
+              { this.renderTabooButton() }
+            </View>
+          ) }
         </View>
-      </View>
+      </React.Fragment>
     );
   }
 
@@ -580,6 +628,15 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <CardTextComponent text={card.text} />
           </View>)
         }
+        { !!card.taboo_text_change && (
+          <View style={[styles.gameTextBlock, {
+            borderColor: card.faction2_code ?
+              FACTION_BACKGROUND_COLORS.dual :
+              ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
+          }]}>
+            <CardTextComponent text={card.taboo_text_change} />
+          </View>
+        ) }
         { ('victory' in card && card.victory !== null) &&
           <Text style={styles.typeText}>
             { t`Victory: ${card.victory}.` }
@@ -699,6 +756,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   column: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  halfColumn: {
+    width: '50%',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',

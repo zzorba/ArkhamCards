@@ -8,6 +8,7 @@ import CardSearchView from '../components/CardSearchView';
 import TuneButton from '../components/CardSearchComponent/TuneButton';
 import CardDetailView from '../components/CardDetailView';
 import CardFaqView from '../components/CardFaqView';
+import CardTabooView from '../components/CardTabooView';
 import CardImageView from '../components/CardImageView';
 import InvestigatorCardsView from '../components/InvestigatorCardsView';
 import AddScenarioResultView from '../components/campaign/AddScenarioResultView';
@@ -58,6 +59,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Deck.New', () => NewDeckView, Provider, store);
   Navigation.registerComponentWithRedux('Card', () => CardDetailView, Provider, store);
   Navigation.registerComponentWithRedux('Card.Faq', () => CardFaqView, Provider, store);
+  Navigation.registerComponentWithRedux('Card.Taboo', () => CardTabooView, Provider, store);
   Navigation.registerComponentWithRedux('Card.Image', () => CardImageView, Provider, store);
   Navigation.registerComponentWithRedux('My.Campaigns', () => MyCampaignsView, Provider, store);
   Navigation.registerComponentWithRedux('My.Decks', () => MyDecksView, Provider, store);

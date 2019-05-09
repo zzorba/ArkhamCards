@@ -19,7 +19,7 @@ import { campaignScenarios, Scenario } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import Switch from '../../core/Switch';
 import { ShowTextEditDialog } from '../../core/withDialogs';
-import { getAllDecks, getAllPacks, getPack, AppState } from '../../../reducers';
+import { getAllDecks, getAllPacks, getPack, getTabooSet, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 
 
@@ -37,6 +37,7 @@ interface ReduxProps {
   standalonePacks: Pack[];
   decks: DecksMap;
   latestScenario?: ScenarioResult;
+  tabooSetId?: number;
 }
 
 interface ReduxActionProps {
@@ -237,6 +238,7 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
     standalonePacks,
     decks: getAllDecks(state),
     latestScenario,
+    tabooSetId: getTabooSet(state),
   };
 }
 
@@ -260,7 +262,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(
         const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
 
         const allScenarioCards = results.cards
-          .filtered('type_code == "scenario"')
+          .filtered(`(type_code == "scenario") and ${Card.tabooSetQuery(props.tabooSetId)}`)
           .sorted('position');
 
         const cycleScenarios: Card[] = [];

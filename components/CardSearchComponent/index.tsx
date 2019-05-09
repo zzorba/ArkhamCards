@@ -4,6 +4,7 @@ import Realm from 'realm';
 import {
   Keyboard,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
@@ -19,10 +20,15 @@ import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { FilterState } from '../../lib/filters';
 import { CardFilterProps } from '../filter/withFilterFunctions';
 import { iconsMap } from '../../app/NavIcons';
+import { getTabooSet, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 interface RealmProps {
   defaultFilterState: FilterState;
+}
+
+interface ReduxProps {
+  tabooSetId?: number;
 }
 
 interface OwnProps {
@@ -40,7 +46,7 @@ interface OwnProps {
   modal?: boolean;
 }
 
-type Props = OwnProps & RealmProps;
+type Props = OwnProps & RealmProps & ReduxProps;
 
 interface State {
   selectedSort: SortType;
@@ -286,16 +292,29 @@ class CardSearchComponent extends React.Component<Props, State> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    tabooSetId: getTabooSet(state),
+  };
+}
+
+export default connect<ReduxProps, {}, OwnProps, AppState>(
+  mapStateToProps
+)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
   CardSearchComponent, {
     schemas: ['Card'],
-    mapToProps(results: CardResults<Card>, realm: Realm, props: OwnProps) {
+    mapToProps(
+      results: CardResults<Card>,
+      realm: Realm,
+      props: OwnProps & ReduxProps
+    ) {
       const cards = props.baseQuery ?
-        results.cards.filtered(props.baseQuery) :
-        results.cards;
+        results.cards.filtered(`(${props.baseQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
+        results.cards.filtered(Card.tabooSetQuery(props.tabooSetId));
 
       return {
         defaultFilterState: calculateDefaultFilterState(cards),
       };
     },
-  });
+  })
+);

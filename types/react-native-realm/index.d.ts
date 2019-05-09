@@ -18,6 +18,20 @@ declare module 'react-native-realm' {
     ) => RealmProps;
   }
 
+  export interface CardAndTabooSetResults<Card, TabooSet> {
+    cards: Results<Card>;
+    tabooSets: Results<TabooSet>;
+  }
+
+  export interface CardAndTabooSetOptions<OwnProps, RealmProps, Card, TabooSet> {
+    schemas: ['Card', 'TabooSet'];
+    mapToProps: (
+      results: CardAndTabooSetResults<Card, TabooSet>,
+      realm: Realm,
+      props: OwnProps
+    ) => RealmProps;
+  }
+
   export interface CardResults<Card> {
     cards: Results<Card>;
   }
@@ -58,6 +72,7 @@ declare module 'react-native-realm' {
     options: CardOptions<OwnProps, RealmProps, Card> |
       Options<OwnProps, RealmProps> |
       CardAndFaqOptions<OwnProps, RealmProps, Card, FaqEntry> |
+      CardAndTabooSetOptions<OwnProps, RealmProps, Card, TabooSet> |
       TabooSetOptions<OwnProps, RealmProps, TabooSet>
   ): React.ComponentType<OwnProps>;
 }

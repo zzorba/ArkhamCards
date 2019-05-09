@@ -40,8 +40,8 @@ export default class SearchBox extends React.Component<Props> {
 
   render() {
     const {
-      onChangeText,
       placeholder,
+      onChangeText,
       toggleAdvanced,
       value,
     } = this.props;

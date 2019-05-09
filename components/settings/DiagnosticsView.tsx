@@ -142,7 +142,6 @@ class DiagnosticsView extends React.Component<Props> {
     realm.write(() => {
       realm.delete(realm.objects('Card'));
       realm.delete(realm.objects('FaqEntry'));
-      realm.delete(realm.objects('TabooCard'));
       realm.delete(realm.objects('TabooSet'));
     });
     this._doSyncCards();

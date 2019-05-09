@@ -19,9 +19,13 @@ const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+ damage (and|
 export default class Card extends BaseCard {
   public static schema: Realm.ObjectSchema = {
     name: 'Card',
-    primaryKey: 'code',
+    primaryKey: 'id',
     properties: BaseCard.SCHEMA,
   };
+
+  public static tabooSetQuery(tabooSetId?: number) {
+    return `(taboo_set_id == null || taboo_set_id == ${tabooSetId || 0})`;
+  }
 
   static parseDeckRequirements(json: any) {
     const dr = new DeckRequirement();
@@ -347,6 +351,8 @@ export default class Card extends BaseCard {
       json,
       eskills,
       {
+        id: json.code,
+        tabooSetId: null,
         name,
         firstName,
         renderName,
@@ -372,6 +378,32 @@ export default class Card extends BaseCard {
         altArtInvestigator,
       },
     );
+  }
+
+  static fromTabooCardJson(
+    tabooId: number,
+    json: any,
+    card: Card
+  ): Card {
+    const code: string = json.code;
+    const result: Card = {} as Card;
+    forEach(keys(BaseCard.SCHEMA), property => {
+      // @ts-ignore TS7017
+      result[property] = card[property];
+    });
+    result.id = `${tabooId}-${code}`;
+    result.taboo_set_id = tabooId;
+
+    if (json.xp) {
+      result.extra_xp = json.xp;
+    }
+    if (json.text) {
+      result.taboo_text_change = json.text;
+    }
+    if (json.exceptional) {
+      result.exceptional = true;
+    }
+    return result;
   }
 }
 

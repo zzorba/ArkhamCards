@@ -22,7 +22,7 @@ import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
 import { Slots } from '../../actions/types';
-import { getPackSpoilers, getPacksInCollection, AppState } from '../../reducers';
+import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '../../reducers';
 import Card from '../../data/Card';
 import { showCard } from '../navHelper';
 import { isSpecialCard } from '../parseDeck';
@@ -82,6 +82,7 @@ interface ReduxProps {
     [code: string]: boolean;
   };
   hasSecondCore: boolean;
+  tabooSetId?: number;
 }
 
 interface RealmProps {
@@ -153,7 +154,7 @@ class CardResultList extends React.Component<Props, State> {
 
     this._throttledUpdateResults = debounce(
       this._updateResults,
-      100,
+      250,
       { trailing: true }
     );
   }
@@ -208,7 +209,7 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this._throttledUpdateResults();
+    this._updateResults();
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -226,7 +227,6 @@ class CardResultList extends React.Component<Props, State> {
       if (this.props.visible) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
-          loadingMessage: CardResultList.randomLoadingMessage(),
           dirty: false,
           showNonCollection: {},
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
@@ -437,14 +437,20 @@ class CardResultList extends React.Component<Props, State> {
       searchTerm,
       show_spoilers,
       originalDeckSlots,
+      tabooSetId,
     } = this.props;
     const {
       deckCardCounts,
     } = this.state;
+    this.setState({
+      loadingMessage: CardResultList.randomLoadingMessage(),
+    });
     const resultsKey = this.resultsKey();
     const cards: Results<Card> = (query ?
-      realm.objects<Card>('Card').filtered(query, searchTerm) :
-      realm.objects<Card>('Card')
+      realm.objects<Card>('Card').filtered(
+        `(${query}) and ${Card.tabooSetQuery(tabooSetId)}`,
+        searchTerm
+      ) : realm.objects<Card>('Card').filtered(Card.tabooSetQuery(tabooSetId))
     ).sorted(this.getSort());
     const deckCards: Card[] = [];
     const groupedCards = partition(
@@ -734,18 +740,22 @@ function mapStateToProps(state: AppState): ReduxProps {
     in_collection,
     show_spoilers: getPackSpoilers(state),
     hasSecondCore: in_collection.core || false,
+    tabooSetId: getTabooSet(state),
   };
 }
 
 
-export default connectRealm<OwnProps, RealmProps, Card>(
-  connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(CardResultList), {
+export default connect<ReduxProps, {}, OwnProps, AppState>(
+  mapStateToProps
+)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
+  CardResultList, {
     mapToProps(results: any, realm: Realm): RealmProps {
       return {
         realm,
       };
     },
-  });
+  })
+);
 
 interface Styles {
   footer: ViewStyle;

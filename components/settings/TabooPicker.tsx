@@ -10,7 +10,7 @@ import { t } from 'ttag';
 import { setTabooSet } from './actions';
 import Card from '../../data/Card';
 import TabooSet from '../../data/TabooSet';
-import { AppState } from '../../reducers';
+import { AppState, getTabooSet } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 interface ReduxProps {
@@ -102,7 +102,7 @@ class TabooPicker extends React.Component<Props> {
 
 function mapStateToProps(state: AppState): ReduxProps {
   return {
-    tabooSetId: state.settings.tabooId,
+    tabooSetId: getTabooSet(state),
     cardsLoading: state.cards.loading,
   };
 }

@@ -96,8 +96,10 @@ export default class SkillIconChart extends React.PureComponent<Props> {
             yAccessor={this._getValue}
             data={barData}
           >
-            // @ts-ignore TS2739
-            <Labels />
+            {
+              // @ts-ignore TS2739
+              <Labels />
+            }
           </BarChart>
         </View>
       </View>

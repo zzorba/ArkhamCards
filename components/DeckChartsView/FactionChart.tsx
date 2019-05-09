@@ -80,11 +80,19 @@ export default class FactionChart extends React.PureComponent<Props> {
             top: y(0) + 4,
             width: width / barData.length,
           }]}>
-            <ArkhamIcon
-              name={value.faction === 'neutral' ? 'elder_sign' : value.faction}
-              size={32}
-              color={FACTION_COLORS[value.faction]}
-            />
+            { value.faction === 'neutral' ? (
+              <ArkhamIcon
+                name="elder_sign"
+                size={32}
+                color="#444"
+              />
+            ) : (
+              <ArkhamIcon
+                name={value.faction}
+                size={32}
+                color={FACTION_COLORS[value.faction]}
+              />
+            ) }
           </View>
           { value.total > 0 && (
             <Text
@@ -113,7 +121,7 @@ export default class FactionChart extends React.PureComponent<Props> {
       'neutral',
       'dual',
     ];
-    const colors = map(keys, key => FACTION_COLORS[key]);
+    const colors = map(keys, key => key === 'neutral' ? '#444' : FACTION_COLORS[key]);
     return (
       <View style={styles.wrapper}>
         <Text style={[typography.bigLabel, typography.center]}>
@@ -129,8 +137,10 @@ export default class FactionChart extends React.PureComponent<Props> {
             colors={colors}
             data={barData}
           >
-            // @ts-ignore TS2739
-            <Labels />
+            {
+              // @ts-ignore TS2739
+              <Labels />
+            }
           </StackedBarChart>
         </View>
       </View>

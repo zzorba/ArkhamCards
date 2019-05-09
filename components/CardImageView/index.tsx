@@ -5,6 +5,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { CachedImage } from 'react-native-cached-image';
 import { connectRealm, CardResults } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
@@ -12,6 +13,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { iconsMap } from '../../app/NavIcons';
 import Card from '../../data/Card';
+import { getTabooSet, AppState } from '../../reducers';
 import { HEADER_HEIGHT } from '../../styles/sizes';
 import { COLORS } from '../../styles/colors';
 import { NavigationProps } from '../types';
@@ -24,7 +26,11 @@ export interface CardImageProps {
   id: string;
 }
 
-type Props = CardImageProps & NavigationProps & RealmProps;
+interface ReduxProps {
+  tabooSetId?: number;
+}
+
+type Props = CardImageProps & NavigationProps & ReduxProps & RealmProps;
 
 interface State {
   flipped: boolean;
@@ -165,20 +171,28 @@ class CardImageView extends React.Component<Props, State> {
   }
 }
 
-export default connectRealm<CardImageProps & NavigationProps, RealmProps, Card>(CardImageView, {
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    tabooSetId: getTabooSet(state),
+  };
+}
+
+export default connect<ReduxProps, {}, NavigationProps & CardImageProps, AppState>(
+  mapStateToProps
+)(connectRealm<CardImageProps & NavigationProps & ReduxProps, RealmProps, Card>(CardImageView, {
   schemas: ['Card'],
   mapToProps(
     results: CardResults<Card>,
     realm: Realm,
-    props: CardImageProps & NavigationProps
+    props: CardImageProps & NavigationProps & ReduxProps
   ) {
     const card =
-      head(results.cards.filtered(`code == "${props.id}"`));
+      head(results.cards.filtered(`(code == "${props.id}") and ${Card.tabooSetQuery(props.tabooSetId)}`));
     return {
       card,
     };
   },
-});
+}));
 
 const styles = StyleSheet.create({
   container: {

@@ -9,10 +9,9 @@ import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOption from './DeckOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import FaqEntry from './FaqEntry';
-import TabooCard from './TabooCard';
 import TabooSet from './TabooSet';
 
-const SCHEMA_VERSION = 40;
+const SCHEMA_VERSION = 41;
 export default new Realm({
   schema: [
     Card,
@@ -24,7 +23,6 @@ export default new Realm({
     DeckOption,
     DeckOptionLevel,
     FaqEntry,
-    TabooCard,
     TabooSet,
   ],
   schemaVersion: SCHEMA_VERSION,
@@ -32,7 +30,6 @@ export default new Realm({
     if (oldRealm.schemaVersion < SCHEMA_VERSION) {
       newRealm.delete(newRealm.objects('Card'));
       newRealm.delete(newRealm.objects('FaqEntry'));
-      newRealm.delete(newRealm.objects('TabooCard'));
       newRealm.delete(newRealm.objects('TabooSet'));
     }
   },

@@ -5,7 +5,6 @@ import { Alert } from 'react-native';
 import { t } from 'ttag';
 import { CardCache, TabooCache, Pack } from '../actions/types';
 import Card from '../data/Card';
-import TabooCard from '../data/TabooCard';
 import TabooSet from '../data/TabooSet';
 import FaqEntry from '../data/FaqEntry';
 
@@ -20,7 +19,7 @@ export const syncTaboos = function(
   if (cache &&
     cache.lastModified &&
     cache.tabooCount > 0 &&
-    realm.objects('TabooCard').length === cache.tabooCount
+    realm.objects('Card').filtered('taboo_set_id > 0').length === cache.tabooCount
   ) {
     headers.append('If-Modified-Since', cache.lastModified);
   }
@@ -48,16 +47,18 @@ export const syncTaboos = function(
           }
           forEach(cards, cardJson => {
             const code: string = cardJson.code;
-            const card = head(realm.objects<Card>('Card').filtered(`code == '${code}'`));
+            const card = head(realm.objects<Card>('Card').filtered(`code == '${code}' and (taboo_set_id == null || taboo_set_id == 0)`));
             if (card) {
               try {
+                card.taboo_set_id = 0;
+                // Mark the original card as the 'vanilla' version.
                 realm.create(
-                  'TabooCard',
-                  TabooCard.fromJson(tabooJson.id, cardJson, card),
+                  'Card',
+                  Card.fromTabooCardJson(tabooJson.id, cardJson, card),
                   true
                 );
               } catch (e) {
-                // Alert.alert(`${e}`);
+                Alert.alert(`${e}`);
                 console.log(e);
               }
             }
@@ -65,7 +66,7 @@ export const syncTaboos = function(
         });
       });
       return {
-        tabooCount: realm.objects('TabooCard').length,
+        tabooCount: realm.objects('Card').filtered('taboo_set_id > 0').length,
         lastModified,
       };
     });

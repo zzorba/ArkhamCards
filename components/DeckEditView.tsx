@@ -1,12 +1,14 @@
 import React from 'react';
 import Realm, { Results } from 'realm';
 import { head } from 'lodash';
+import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, Slots } from '../actions/types';
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';
 import { STORY_CARDS_QUERY } from '../data/query';
 import Card, { CardsMap } from '../data/Card';
+import { getTabooSet, AppState } from '../reducers';
 import CardSearchComponent from './CardSearchComponent';
 import { parseDeck } from './parseDeck';
 import DeckNavFooter from './DeckNavFooter';
@@ -22,13 +24,17 @@ export interface EditDeckProps {
   updateSlots: (slots: Slots) => void;
 }
 
+interface ReduxProps {
+  tabooSetId?: number;
+}
+
 interface RealmProps {
   realm: Realm;
   investigator?: Card;
   cards: Results<Card>;
 }
 
-type Props = NavigationProps & EditDeckProps & RealmProps;
+type Props = NavigationProps & EditDeckProps & ReduxProps & RealmProps;
 
 interface State {
   deckCardCounts: Slots;
@@ -148,20 +154,28 @@ class DeckEditView extends React.Component<Props, State> {
   }
 }
 
-export default connectRealm<NavigationProps & EditDeckProps, RealmProps, Card>(
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    tabooSetId: getTabooSet(state),
+  };
+}
+
+export default connect<ReduxProps, {}, NavigationProps & EditDeckProps, AppState>(
+  mapStateToProps
+)(connectRealm<NavigationProps & EditDeckProps & ReduxProps, RealmProps, Card>(
   DeckEditView,
   {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: NavigationProps & EditDeckProps
+      props: NavigationProps & EditDeckProps & ReduxProps
     ) {
       return {
         realm,
-        investigator: head(results.cards.filtered(`code == "${props.deck.investigator_code}"`)),
+        investigator: head(results.cards.filtered(`(code == '${props.deck.investigator_code}') and ${Card.tabooSetQuery(props.tabooSetId)}`)),
         cards: results.cards,
       };
     },
   },
-);
+));

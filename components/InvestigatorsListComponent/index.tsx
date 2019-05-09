@@ -25,7 +25,7 @@ import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '../CardS
 import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from '../CardSearchResultsComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
-import { getPacksInCollection, AppState } from '../../reducers';
+import { getTabooSet, getPacksInCollection, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 
 const SCROLL_DISTANCE_BUFFER = 50;
@@ -39,6 +39,7 @@ interface OwnProps {
 
 interface ReduxProps {
   in_collection: { [code: string]: boolean };
+  tabooSetId?: number;
 }
 
 interface RealmProps {
@@ -389,20 +390,26 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     in_collection: getPacksInCollection(state),
+    tabooSetId: getTabooSet(state),
   };
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(
-  connect<ReduxProps, {}, OwnProps & RealmProps, AppState>(
-    mapStateToProps
-  )(InvestigatorsListComponent),
+export default connect<ReduxProps, {}, OwnProps, AppState>(
+  mapStateToProps
+)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
+  InvestigatorsListComponent,
   {
     schemas: ['Card'],
-    mapToProps(results: CardResults<Card>) {
+    mapToProps(
+      results: CardResults<Card>,
+      realm: Realm,
+      props: OwnProps & ReduxProps
+    ): RealmProps {
       const investigators: Card[] = [];
       const names: { [name: string]: boolean } = {};
       forEach(
-        results.cards.filtered('type_code == "investigator" AND encounter_code == null')
+        results.cards.filtered(
+          `(type_code == "investigator" AND encounter_code == null) and ${Card.tabooSetQuery(props.tabooSetId)}`)
           .sorted('code', false),
         card => {
           if (!names[card.name]) {
@@ -413,7 +420,7 @@ export default connectRealm<OwnProps, RealmProps, Card>(
 
       const cards: CardsMap = {};
       forEach(
-        results.cards.filtered(`has_restrictions == true OR code == "${RANDOM_BASIC_WEAKNESS}"`),
+        results.cards.filtered(`(has_restrictions == true OR code == "${RANDOM_BASIC_WEAKNESS}") and ${Card.tabooSetQuery(props.tabooSetId)}`),
         card => {
           cards[card.code] = card;
         });
@@ -422,7 +429,7 @@ export default connectRealm<OwnProps, RealmProps, Card>(
         cards,
       };
     },
-  },
+  })
 );
 
 const styles = StyleSheet.create({

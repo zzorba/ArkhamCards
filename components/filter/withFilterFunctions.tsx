@@ -7,6 +7,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
@@ -17,6 +18,7 @@ import { COLORS } from '../../styles/colors';
 import { FilterState } from '../../lib/filters';
 import { NavigationProps } from '../types';
 import FilterFooterComponent from './FilterFooterComponent';
+import { getTabooSet, AppState } from '../../reducers';
 
 export interface FilterProps {
   componentId: string;
@@ -47,7 +49,11 @@ export default function withFilterFunctions<P>(
   interface State {
     filters: FilterState;
   }
-  type Props = NavigationProps & CardFilterProps & RealmProps & P;
+
+  interface ReduxProps {
+    tabooSetId?: number;
+  }
+  type Props = NavigationProps & CardFilterProps & RealmProps & ReduxProps & P;
   class WrappedFilterComponent extends React.Component<Props, State> {
     _navEventListener: EventSubscription;
     constructor(props: Props) {
@@ -200,25 +206,34 @@ export default function withFilterFunctions<P>(
     }
   }
 
-  const result = connectRealm<NavigationProps & CardFilterProps & P, RealmProps, Card>(
+  const mapStateToProps = (state: AppState): ReduxProps => {
+    return {
+      tabooSetId: getTabooSet(state),
+    };
+  };
+
+  const result = connect<ReduxProps, {}, NavigationProps & CardFilterProps & P, AppState>(
+    mapStateToProps
+  )(connectRealm<NavigationProps & CardFilterProps & P & ReduxProps, RealmProps, Card>(
     WrappedFilterComponent, {
       schemas: ['Card'],
       mapToProps(
         results: CardResults<Card>,
         realm: Realm,
-        props: NavigationProps & CardFilterProps
+        props: NavigationProps & CardFilterProps & P & ReduxProps
       ): RealmProps {
         return {
           cards: props.baseQuery ?
-            results.cards.filtered(props.baseQuery) :
-            results.cards,
+            results.cards.filtered(`(${props.baseQuery} and ${Card.tabooSetQuery(props.tabooSetId)}`) :
+            results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
         };
       },
-    });
+    })
+  );
 
   hoistNonReactStatic(result, WrappedComponent);
 
-  return result;
+  return result as React.ComponentType<NavigationProps & CardFilterProps & P>;
 }
 
 const styles = StyleSheet.create({

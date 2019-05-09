@@ -220,6 +220,10 @@ export function getCampaign(state: AppState, id: number): SingleCampaign | null 
   return null;
 }
 
+export function getTabooSet(state: AppState): number | undefined {
+  return state.settings.tabooId;
+}
+
 export function getCampaignForDeck(
   state: AppState,
   deckId: number

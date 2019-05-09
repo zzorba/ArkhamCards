@@ -10,7 +10,6 @@ import {
 import Realm from 'realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connectRealm, CardResults } from 'react-native-realm';
-import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
 import { Subtract } from 'utility-types';
@@ -21,7 +20,7 @@ import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import AppIcon from '../../assets/AppIcon';
 import Button from '../core/Button';
-import { getShowSpoilers, AppState } from '../../reducers';
+import { getShowSpoilers, getTabooSet, AppState } from '../../reducers';
 import Card from '../../data/Card';
 import { InvestigatorCardsProps } from '../InvestigatorCardsView';
 import { CardFaqProps } from '../CardFaqView';
@@ -34,13 +33,18 @@ interface RealmProps {
   card?: Card;
 }
 
+interface ReduxProps {
+  showSpoilers: boolean;
+  tabooSetId?: number;
+}
+
 export interface CardDetailProps {
   id: string;
   pack_code: string;
   showSpoilers?: boolean;
 }
 
-type Props = NavigationProps & CardDetailProps & RealmProps;
+type Props = NavigationProps & CardDetailProps & ReduxProps & RealmProps;
 
 interface State {
   showSpoilers: boolean;
@@ -136,10 +140,10 @@ class CardDetailView extends React.Component<Props, State> {
           options: {
             topBar: {
               title: {
-                text: t`FAQ`,
+                text: card.name,
               },
               subtitle: {
-                text: card.name,
+                text: t`FAQ`,
               },
             },
           },
@@ -255,27 +259,31 @@ class CardDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: Subtract<Props, RealmProps>) {
+function mapStateToProps(state: AppState, props: Subtract<Props, RealmProps>): ReduxProps {
   return {
     showSpoilers: props.showSpoilers || getShowSpoilers(state, props.pack_code),
+    tabooSetId: getTabooSet(state),
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-  return bindActionCreators({}, dispatch);
-}
-
-export default connectRealm<NavigationProps & CardDetailProps, RealmProps, Card>(
-  connect(mapStateToProps, mapDispatchToProps)(CardDetailView), {
-    schemas: ['Card'],
-    mapToProps(results: CardResults<Card>, realm: Realm, props: NavigationProps & CardDetailProps) {
-      const card = head(results.cards.filtered(`code == '${props.id}'`));
-      return {
-        realm,
-        card,
-      };
-    },
-  });
+export default
+connect(mapStateToProps)(
+  connectRealm<NavigationProps & CardDetailProps & ReduxProps, RealmProps, Card>(
+    CardDetailView, {
+      schemas: ['Card'],
+      mapToProps(
+        results: CardResults<Card>,
+        realm: Realm,
+        props: NavigationProps & CardDetailProps & ReduxProps
+      ) {
+        const card = head(results.cards.filtered(`(code == '${props.id}') and ${Card.tabooSetQuery(props.tabooSetId)}`));
+        return {
+          realm,
+          card,
+        };
+      },
+    })
+);
 
 const styles = StyleSheet.create({
   viewContainer: {

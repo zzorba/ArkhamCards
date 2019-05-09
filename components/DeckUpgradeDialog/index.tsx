@@ -26,7 +26,7 @@ import Card from '../../data/Card';
 import { upgradeDeck } from '../../lib/authApi';
 import { login, setNewDeck, updateDeck } from '../../actions';
 import PlusMinusButtons from '../core/PlusMinusButtons';
-import { getDeck, getCampaign, getNextLocalDeckId, AppState } from '../../reducers';
+import { getDeck, getCampaign, getNextLocalDeckId, getTabooSet, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 
 export interface UpgradeDeckProps {
@@ -39,6 +39,7 @@ interface ReduxProps {
   deck?: Deck;
   campaign?: Campaign;
   nextLocalDeckId: number;
+  tabooSetId?: number;
 }
 
 interface ReduxActionProps {
@@ -314,6 +315,7 @@ function mapStateToProps(state: AppState, props: UpgradeDeckProps): ReduxProps {
     deck: getDeck(state, props.id) || undefined,
     campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
     nextLocalDeckId: getNextLocalDeckId(state),
+    tabooSetId: getTabooSet(state),
   };
 }
 
@@ -340,7 +342,7 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDe
       ): RealmProps {
         if (props.deck) {
           return {
-            investigator: head(results.cards.filtered(`code == '${props.deck.investigator_code}'`)),
+            investigator: head(results.cards.filtered(`(code == '${props.deck.investigator_code}') and ${Card.tabooSetQuery(props.tabooSetId)}`)),
           };
         }
         return {};

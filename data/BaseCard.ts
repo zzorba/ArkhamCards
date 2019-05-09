@@ -7,7 +7,10 @@ import DeckOption from './DeckOption';
 
 export default class BaseCard {
   protected static SCHEMA = {
-    code: 'string',
+    id: 'string',
+    code: { type: 'string', indexed: true },
+    taboo_set_id: 'int?',
+    taboo_text_change: 'string?',
     pack_code: 'string',
     pack_name: 'string',
     type_code: { type: 'string', indexed: true },
@@ -29,6 +32,7 @@ export default class BaseCard {
     encounter_position: 'int?',
     exceptional: 'bool?',
     xp: { type: 'int', optional: true, indexed: true },
+    extra_xp: 'int?',
     victory: 'int?',
     vengeance: 'int?',
     renderName: 'string',
@@ -101,8 +105,10 @@ export default class BaseCard {
     sort_by_faction: 'int',
     sort_by_pack: 'int',
   };
-
+  public id!: string;
   public code!: string;
+  public taboo_set_id!: number | null;
+  public taboo_text_change!: string | null;
   public pack_code!: string;
   public pack_name!: string;
   public type_code!: TypeCodeType;
