@@ -41,25 +41,22 @@ class CardTabooView extends React.Component<Props> {
     const tabooSet = taboo.taboo_set_id && tabooSets[taboo.taboo_set_id];
 
     return (
-      <View key={taboo.id} style={styles.gameTextBlock}>
+      <View key={taboo.id}>
         { !!tabooSet && (
           <Text style={[typography.bigLabel, styles.tabooHeader]}>
             { `${tabooSet.name} - ${tabooSet.date_start}` }
           </Text>
         ) }
-        { (!!taboo.extra_xp && taboo.extra_xp > 0) && (
-          <Text>
-            { t`Additional XP Cost: ${taboo.extra_xp}` }
-          </Text>
-        ) }
-        { !!taboo.taboo_text_change && (
-          <CardTextComponent text={taboo.taboo_text_change} />
-        ) }
-        { (taboo.exceptional && !card.exceptional) && (
-          <Text>
-            { t`This card gains 'exceptional'` }
-          </Text>
-        ) }
+        <View style={styles.gameTextBlock}>
+          { (!!taboo.extra_xp && taboo.extra_xp > 0) && (
+            <Text>
+              { t`Additional XP: ${taboo.extra_xp}.` }
+            </Text>
+          ) }
+          { !!taboo.taboo_text_change && (
+            <CardTextComponent text={taboo.taboo_text_change} />
+          ) }
+        </View>
       </View>
     );
   }
@@ -119,6 +116,8 @@ const styles = StyleSheet.create({
     paddingLeft: xs,
     marginBottom: s,
     marginRight: s,
+    paddingTop: m,
+    paddingBottom: m,
   },
   tabooHeader: {
     marginTop: s,

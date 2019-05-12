@@ -33,10 +33,10 @@ interface Item {
 }
 
 class DrawSimulatorView extends React.Component<Props, State> {
-  _drawOne!: () => void;
-  _drawTwo!: () => void;
-  _drawFive!: () => void;
-  _drawAll!: () => void;
+  _drawOne = this.draw.bind(this, 1);
+  _drawTwo = this.draw.bind(this, 2);
+  _drawFive = this.draw.bind(this, 5);
+  _drawAll = this.draw.bind(this, 'all');
 
   constructor(props: Props) {
     super(props);

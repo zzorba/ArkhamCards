@@ -47,7 +47,7 @@ import {
 import { Campaign, Deck, Slots } from '../../actions/types';
 import { updateCampaign } from '../campaign/actions';
 import { saveDeck, newCustomDeck } from '../../lib/authApi';
-import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
+import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 import { parseDeck, ParsedDeck } from '../parseDeck';
@@ -1059,6 +1059,7 @@ class DeckDetailView extends React.Component<Props, State> {
       login,
       showTraumaDialog,
       investigatorDataUpdates,
+      tabooSetId,
     } = this.props;
     const {
       loaded,
@@ -1085,6 +1086,7 @@ class DeckDetailView extends React.Component<Props, State> {
           <DeckViewTab
             componentId={componentId}
             deck={deck}
+            tabooSetId={tabooSetId}
             deckName={nameChange || deck.name}
             parsedDeck={parsedDeck}
             problem={this.getProblem() || undefined}
@@ -1117,7 +1119,10 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: NavigationProps & DeckDetailProps): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & DeckDetailProps
+): ReduxProps & TabooSetOverride {
   const id = getEffectiveDeckId(state, props.id);
   const deck = getDeck(state, id) || undefined;
   const previousDeck = (
@@ -1126,6 +1131,7 @@ function mapStateToProps(state: AppState, props: NavigationProps & DeckDetailPro
   return {
     deck,
     previousDeck,
+    tabooSetOverride: deck ? (deck.taboo_id || 0) : undefined,
     campaign: (props.campaignId ?
       getCampaign(state, props.campaignId) :
       getCampaignForDeck(state, id)) || undefined,
@@ -1143,11 +1149,11 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default withPlayerCards(
-  connect<ReduxProps, ReduxActionProps, NavigationProps & DeckDetailProps & PlayerCardProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(
+export default connect<ReduxProps & TabooSetOverride, ReduxActionProps, NavigationProps & DeckDetailProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  withPlayerCards(
     withTraumaDialog(
       withDialogs(
         withLoginState(DeckDetailView)

@@ -64,6 +64,7 @@ interface OwnProps {
   sort?: SortType;
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
+  tabooSetOverride?: number;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
   cardPressed?: (card: Card) => void;
@@ -490,9 +491,10 @@ class CardResultList extends React.Component<Props, State> {
     const {
       cardPressed,
       componentId,
+      tabooSetOverride,
     } = this.props;
     cardPressed && cardPressed(card);
-    showCard(componentId, card.code, card, true);
+    showCard(componentId, card.code, card, true, tabooSetOverride);
   };
 
   _getItem = (data: Card[], index: number) => {
@@ -734,13 +736,13 @@ class CardResultList extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const in_collection = getPacksInCollection(state);
   return {
     in_collection,
     show_spoilers: getPackSpoilers(state),
     hasSecondCore: in_collection.core || false,
-    tabooSetId: getTabooSet(state),
+    tabooSetId: getTabooSet(state, props.tabooSetOverride),
   };
 }
 

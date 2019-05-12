@@ -134,6 +134,7 @@ class DeckEditView extends React.Component<Props, State> {
     const {
       componentId,
       slots,
+      deck,
     } = this.props;
 
     const {
@@ -143,6 +144,7 @@ class DeckEditView extends React.Component<Props, State> {
     return (
       <CardSearchComponent
         componentId={componentId}
+        tabooSetOverride={deck && deck.taboo_id}
         baseQuery={this.baseQuery()}
         originalDeckSlots={slots}
         deckCardCounts={deckCardCounts}
@@ -154,9 +156,12 @@ class DeckEditView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & EditDeckProps
+): ReduxProps {
   return {
-    tabooSetId: getTabooSet(state),
+    tabooSetId: getTabooSet(state, (props.deck && props.deck.taboo_id) || 0),
   };
 }
 
@@ -174,7 +179,7 @@ export default connect<ReduxProps, {}, NavigationProps & EditDeckProps, AppState
       return {
         realm,
         investigator: head(results.cards.filtered(`(code == '${props.deck.investigator_code}') and ${Card.tabooSetQuery(props.tabooSetId)}`)),
-        cards: results.cards,
+        cards: results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
       };
     },
   },

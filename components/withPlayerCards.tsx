@@ -10,20 +10,28 @@ export interface PlayerCardProps {
   realm: Realm;
   cards: CardsMap;
   investigators: CardsMap;
+  tabooSetId?: number;
+}
+
+export interface TabooSetOverride {
+  tabooSetOverride?: number;
 }
 
 export default function withPlayerCards<Props>(
   WrappedComponent: React.ComponentType<Props & PlayerCardProps>
-): React.ComponentType<Props> {
+): React.ComponentType<Props & TabooSetOverride> {
   interface ReduxProps {
     tabooSetId?: number;
   }
-  const mapStateToProps = (state: AppState): ReduxProps => {
+  const mapStateToProps = (
+    state: AppState,
+    props: Props & TabooSetOverride
+  ): ReduxProps => {
     return {
-      tabooSetId: getTabooSet(state),
+      tabooSetId: getTabooSet(state, props.tabooSetOverride),
     };
   };
-  const result = connect<ReduxProps, {}, Props, AppState>(mapStateToProps)(
+  const result = connect<ReduxProps, {}, Props & TabooSetOverride, AppState>(mapStateToProps)(
     connectRealm<Props & ReduxProps, PlayerCardProps, Card>(
       WrappedComponent, {
         schemas: ['Card'],
@@ -47,10 +55,11 @@ export default function withPlayerCards<Props>(
             realm,
             cards,
             investigators,
+            tabooSetId: props.tabooSetId,
           };
         },
       })
   );
   hoistNonReactStatic(result, WrappedComponent);
-  return result as React.ComponentType<Props>;
+  return result as React.ComponentType<Props & TabooSetOverride>;
 }

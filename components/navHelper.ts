@@ -128,7 +128,8 @@ export function showCard(
   componentId: string,
   code: string,
   card: Card,
-  showSpoilers?: boolean
+  showSpoilers?: boolean,
+  tabooSetId?: number
 ) {
   Navigation.push<CardDetailProps>(componentId, {
     component: {
@@ -137,6 +138,7 @@ export function showCard(
         id: code,
         pack_code: card.pack_code,
         showSpoilers: !!showSpoilers,
+        tabooSetId,
       },
       options: {
         topBar: {

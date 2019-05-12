@@ -12,7 +12,6 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { connect } from 'react-redux';
 import DeviceInfo from 'react-native-device-info';
-import { Subtract } from 'utility-types';
 
 import { t } from 'ttag';
 import { iconsMap } from '../../app/NavIcons';
@@ -42,6 +41,7 @@ export interface CardDetailProps {
   id: string;
   pack_code: string;
   showSpoilers?: boolean;
+  tabooSetId?: number;
 }
 
 type Props = NavigationProps & CardDetailProps & ReduxProps & RealmProps;
@@ -259,15 +259,18 @@ class CardDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: Subtract<Props, RealmProps>): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & CardDetailProps
+): ReduxProps {
   return {
     showSpoilers: props.showSpoilers || getShowSpoilers(state, props.pack_code),
-    tabooSetId: getTabooSet(state),
+    tabooSetId: getTabooSet(state, props.tabooSetId),
   };
 }
 
 export default
-connect(mapStateToProps)(
+connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToProps)(
   connectRealm<NavigationProps & CardDetailProps & ReduxProps, RealmProps, Card>(
     CardDetailView, {
       schemas: ['Card'],

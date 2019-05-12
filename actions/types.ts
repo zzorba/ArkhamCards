@@ -27,6 +27,7 @@ export interface DeckProblem {
 export interface Deck {
   id: number;
   name: string;
+  taboo_id?: number;
   investigator_code: string;
   next_deck?: number;
   previous_deck?: number;

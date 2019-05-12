@@ -37,6 +37,7 @@ interface OwnProps {
   mythosToggle?: boolean;
   sort?: SortType;
   showNonCollection?: boolean;
+  tabooSetOverride?: number;
 
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
@@ -263,6 +264,7 @@ class CardSearchComponent extends React.Component<Props, State> {
       showNonCollection,
       mythosToggle,
       baseQuery,
+      tabooSetOverride,
     } = this.props;
     const {
       selectedSort,
@@ -279,6 +281,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         showNonCollection={showNonCollection}
         selectedSort={selectedSort}
         filters={filters}
+        tabooSetOverride={tabooSetOverride}
         toggleMythosMode={this._toggleMythosMode}
         clearSearchFilters={this._clearSearchFilters}
         originalDeckSlots={originalDeckSlots}
@@ -292,9 +295,9 @@ class CardSearchComponent extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
-    tabooSetId: getTabooSet(state),
+    tabooSetId: getTabooSet(state, props.tabooSetOverride),
   };
 }
 

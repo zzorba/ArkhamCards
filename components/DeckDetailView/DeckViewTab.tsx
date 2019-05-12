@@ -92,6 +92,7 @@ const DECK_PROBLEM_MESSAGES = {
 interface Props {
   componentId: string;
   deck: Deck;
+  tabooSetId?: number;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
   hasPendingEdits?: boolean;
@@ -231,7 +232,17 @@ export default class DeckViewTab extends React.Component<Props> {
   };
 
   _showCard = (card: Card) => {
-    showCard(this.props.componentId, card.code, card, false);
+    const {
+      componentId,
+      tabooSetId,
+    } = this.props;
+    showCard(
+      componentId,
+      card.code,
+      card,
+      false,
+      tabooSetId
+    );
   };
 
   _renderSectionHeader = ({ section }: { section: CardSection }) => {

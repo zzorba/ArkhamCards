@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { flatMap, map, range } from 'lodash';
+import { flatMap, map, range, repeat } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -21,6 +21,7 @@ import CardQuantityComponent from './CardQuantityComponent';
 import typography from '../../styles/typography';
 import { isBig, s, xs } from '../../styles/space';
 
+const TABOO_ICON_SIZE = (isBig ? 18 : 14) * DeviceInfo.getFontScale();
 const SKILL_ICON_SIZE = (isBig ? 24 : 14) * DeviceInfo.getFontScale();
 const SMALL_ICON_SIZE = (isBig ? 38 : 26) * DeviceInfo.getFontScale();
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
@@ -199,6 +200,27 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     );
   }
 
+  renderTabooBlock() {
+    const {
+      card,
+    } = this.props;
+    if (!card.taboo_set_id || card.taboo_set_id === 0) {
+      return null;
+    }
+    return (
+      <View style={styles.tabooBlock}>
+        { !!(card.taboo_set_id && card.taboo_set_id > 0) && (
+          <ArkhamIcon name="tablet" size={TABOO_ICON_SIZE} color="purple" />
+        ) }
+        { !!(card.extra_xp && card.extra_xp > 0) && (
+          <Text style={[typography.small, styles.extraXp]} numberOfLines={1} ellipsizeMode="clip">
+            { repeat('•', card.extra_xp) }
+          </Text>
+        ) }
+      </View>
+    );
+  }
+
   renderCardName() {
     const {
       card,
@@ -212,6 +234,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           <Text style={[typography.text, { color }]} numberOfLines={1} ellipsizeMode="clip">
             { card.renderName }
           </Text>
+          { this.renderTabooBlock() }
         </View>
         <View style={styles.row}>
           { this.renderSkillIcons() }
@@ -411,5 +434,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  tabooBlock: {
+    marginLeft: s,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  extraXp: {
+    color: 'purple',
+    marginLeft: xs,
   },
 });

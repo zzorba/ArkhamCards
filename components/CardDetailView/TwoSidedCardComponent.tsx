@@ -260,11 +260,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             }
           </Text>
         ) }
-        { !!card.extra_xp && (
-          <Text style={typography.cardText}>
-            { t`Additional XP: ${card.extra_xp}.` }
-          </Text>
-        ) }
         { card.type_code === 'agenda' && (
           <Text style={typography.cardText}>
             Doom: { num(card.doom) }
@@ -537,6 +532,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <Button
         grow
+        color="purple"
         text={t`Taboo`}
         onPress={this._showTaboo}
         icon={<ArkhamIcon name="tablet" size={18 * DeviceInfo.getFontScale()} color="white" />}
@@ -628,15 +624,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <CardTextComponent text={card.text} />
           </View>)
         }
-        { !!card.taboo_text_change && (
-          <View style={[styles.gameTextBlock, {
-            borderColor: card.faction2_code ?
-              FACTION_BACKGROUND_COLORS.dual :
-              ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
-          }]}>
-            <CardTextComponent text={card.taboo_text_change} />
-          </View>
-        ) }
         { ('victory' in card && card.victory !== null) &&
           <Text style={styles.typeText}>
             { t`Victory: ${card.victory}.` }
@@ -650,6 +637,28 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         { !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
+        { !!(card.taboo_set_id && card.taboo_set_id > 0) && (
+          <View style={[styles.gameTextBlock, {
+            borderColor: 'purple',
+          }]}>
+            <View style={styles.tabooRow}>
+              <View style={styles.tabooIcon}>
+                <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE} color="purple" />
+              </View>
+              <Text style={typography.cardText}>
+                { t`Taboo List Changes` }
+              </Text>
+            </View>
+            { !!card.extra_xp && (
+              <Text style={typography.cardText}>
+                { t`Additional XP: ${card.extra_xp}.` }
+              </Text>
+            ) }
+            { !!card.taboo_text_change && (
+              <CardTextComponent text={card.taboo_text_change} />
+            ) }
+          </View>
+        ) }
       </React.Fragment>
     );
   }
@@ -862,5 +871,12 @@ const styles = StyleSheet.create({
     marginLeft: 2,
   },
   factionIcon: {
+  },
+  tabooRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  tabooIcon: {
+    marginRight: xs,
   },
 });

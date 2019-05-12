@@ -220,7 +220,10 @@ export function getCampaign(state: AppState, id: number): SingleCampaign | null 
   return null;
 }
 
-export function getTabooSet(state: AppState): number | undefined {
+export function getTabooSet(state: AppState, tabooSetOverride?: number): number | undefined {
+  if (tabooSetOverride !== undefined) {
+    return tabooSetOverride;
+  }
   return state.settings.tabooId;
 }
 

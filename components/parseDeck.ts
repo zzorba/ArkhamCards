@@ -109,8 +109,10 @@ function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
   return result;
 }
 
-function computeXp(card?: Card) {
-  return (card && card.xp) ? ((card.exceptional ? 2 : 1) * (card.xp)) : 0;
+function computeXp(card?: Card): number {
+  return card ?
+    (card.exceptional ? 2 : 1) * ((card.xp || 0) + (card.extra_xp || 0)) :
+    0;
 }
 
 function slotCount(
@@ -221,7 +223,7 @@ function calculateTotalXp(
 ): number {
   return sum(map(keys(slots), code => {
     const card = cards[code];
-    const xp = (card && computeXp(card)) || 0;
+    const xp = computeXp(card);
     const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
     return xp * count;
   }));
@@ -273,7 +275,7 @@ function calculateSpentXp(
     sortBy(
       // null cards are story assets, so putting them in is free.
       filter(addedCards, card => card.xp !== null),
-      card => -(card.xp || 0)
+      card => -((card.xp || 0) + (card.extra_xp || 0))
     ),
     addedCard => {
       // We visit cards from high XP to low XP, so if there's 0 XP card,
@@ -283,7 +285,8 @@ function calculateSpentXp(
         if (exiledSlots.length > 0) {
           // Every exiled card gives you one free '0' cost insert.
           pullAt(exiledSlots, [0]);
-          return 0;
+          // But you still have to pay the TABOO xp.
+          return (addedCard.extra_xp || 0);
         }
         // You can use adaptable to swap in to level 0s.
         // It is okay even if you just took adaptable this time.
@@ -298,11 +301,11 @@ function calculateSpentXp(
           }
           // Couldn't find a 0 cost card to remove, it's weird that you
           // chose to take away an XP card?
-          return 1;
+          return 1 + (addedCard.extra_xp || 0);
         }
         // But if there's no slots it costs you a minimum of 1 xp to swap
         // 0 for 0.
-        return 1;
+        return 1 + (addedCard.extra_xp || 0);
       }
 
       // XP higher than 0.
