@@ -400,9 +400,8 @@ export default class DeckViewTab extends React.Component<Props> {
     return t`Experience: ${spentXp} of ${adjustedExperience}`;
   }
 
-  renderMetadata(detailsEditable: boolean) {
+  renderMetadata() {
     const {
-      deckName,
       tabooSet,
       parsedDeck: {
         normalCardCount,
@@ -485,10 +484,10 @@ export default class DeckViewTab extends React.Component<Props> {
               <View style={styles.metadata}>
                 { detailsEditable ? (
                   <TouchableOpacity onPress={showEditNameDialog}>
-                    { this.renderMetadata(detailsEditable) }
+                    { this.renderMetadata() }
                   </TouchableOpacity>
                 ) : (
-                  this.renderMetadata(detailsEditable)
+                  this.renderMetadata()
                 ) }
               </View>
             </View>

@@ -264,6 +264,7 @@ class DeckDetailView extends React.Component<Props, State> {
           ignoreDeckLimitSlots,
         } = this.state;
         const parsedDeck = parseDeck(deck, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
+        /* eslint-disable react/no-did-update-set-state */
         this.setState({
           parsedDeck,
         });
