@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import DialogComponent from 'react-native-dialog';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
-import TabooSetSwitch from './TabooSetSwitch';
+import TabooSetDialogOptions from '../TabooSetDialogOptions';
 import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import { newLocalDeck } from '../decks/localHelper';
@@ -293,51 +293,20 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     });
   };
 
-  renderTabooSetOptions() {
-    const {
-      tabooSets,
-    } = this.props;
-    const {
-      tabooSetId,
-    } = this.state;
-    if (!tabooSets.length) {
-      return null;
-    }
-    return (
-      <React.Fragment>
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`Taboo List` }
-        </DialogComponent.Description>
-        <TabooSetSwitch
-          label={t`None`}
-          value={tabooSetId === undefined || tabooSetId === 0}
-          onValueChange={this._setTabooSetId}
-        />
-        { map(tabooSets, (tabooSet, idx) => (
-          <TabooSetSwitch
-            key={idx}
-            tabooId={tabooSet.id}
-            label={tabooSet.date_start}
-            value={tabooSetId === tabooSet.id}
-            onValueChange={this._setTabooSetId}
-          />
-        )) }
-      </React.Fragment>
-    );
-  }
-
   renderFormContent() {
     const {
       investigatorId,
       signedIn,
       refreshNetworkStatus,
       networkType,
+      tabooSets,
     } = this.props;
     const {
       saving,
       deckName,
       offlineDeck,
       optionSelected,
+      tabooSetId,
     } = this.state;
     if (saving) {
       return (
@@ -375,7 +344,11 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             />
           );
         }) }
-        { this.renderTabooSetOptions() }
+        <TabooSetDialogOptions
+          tabooSets={tabooSets}
+          tabooSetId={tabooSetId}
+          setTabooSetId={this._setTabooSetId}
+        />
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
           { t`DECK TYPE` }
         </DialogComponent.Description>

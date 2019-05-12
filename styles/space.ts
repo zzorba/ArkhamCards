@@ -10,6 +10,12 @@ export const m = 16 * sizeScale;
 export const l = 32 * sizeScale;
 
 export default StyleSheet.create({
+  marginTopM: {
+    marginTop: m,
+  },
+  marginTopS: {
+    marginTop: s,
+  },
   marginLeftS: {
     marginLeft: s,
   },

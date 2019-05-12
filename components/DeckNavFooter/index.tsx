@@ -8,8 +8,6 @@ import {
 } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
@@ -33,7 +31,6 @@ interface Props {
   parsedDeck: ParsedDeck;
   cards: CardsMap;
   xpAdjustment: number;
-  showXpEditDialog?: () => void;
 }
 
 export default class DeckNavFooter extends React.Component<Props> {
@@ -119,10 +116,6 @@ export default class DeckNavFooter extends React.Component<Props> {
       return t`XP: ${experience}`;
     }
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    if (xpAdjustment !== 0) {
-      const adjustment = xpAdjustment > 0 ? `+${xpAdjustment}` : xpAdjustment;
-      return t`XP: ${spentXp} of ${adjustedExperience} (${adjustment})`;
-    }
     return t`XP: ${spentXp} of ${adjustedExperience}`;
   }
 
@@ -133,7 +126,6 @@ export default class DeckNavFooter extends React.Component<Props> {
         normalCardCount,
         totalCardCount,
       },
-      showXpEditDialog,
     } = this.props;
     const cardCountString = ngettext(
       msgid`${normalCardCount} Card (${totalCardCount} Total)`,
@@ -154,13 +146,6 @@ export default class DeckNavFooter extends React.Component<Props> {
             ]} allowFontScaling={false}>
               { `${cardCountString} - ${xpString}` }
             </Text>
-            { !!showXpEditDialog && (
-              <TouchableOpacity onPress={showXpEditDialog}>
-                <View style={styles.button}>
-                  <MaterialIcons name="edit" size={TINY_PHONE ? 12 : 18} color="#FFFFFF" />
-                </View>
-              </TouchableOpacity>
-            ) }
           </View>
           { this.renderProblem() }
         </View>

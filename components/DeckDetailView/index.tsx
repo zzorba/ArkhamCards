@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  find,
   findIndex,
   flatMap,
   forEach,
@@ -26,8 +27,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
 import DeviceInfo from 'react-native-device-info';
-
 import { t } from 'ttag';
+
 import withLoginState, { LoginStateProps } from '../withLoginState';
 import CopyDeckDialog from '../CopyDeckDialog';
 import { handleAuthErrors } from '../authHelper';
@@ -54,8 +55,10 @@ import { parseDeck, ParsedDeck } from '../parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCards';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
+import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
 import DeckNavFooter from '../DeckNavFooter';
+import withTabooSetOverride, { TabooSetOverrideProps } from '../withTabooSetOverride';
 import { NavigationProps } from '../types';
 import {
   getCampaign,
@@ -90,7 +93,7 @@ interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Campaign) => void;
 }
 
-type Props = NavigationProps & DeckDetailProps &
+type Props = NavigationProps & DeckDetailProps & TabooSetOverrideProps &
   ReduxProps & ReduxActionProps & PlayerCardProps &
   TraumaProps & LoginStateProps & InjectedDialogProps;
 
@@ -105,9 +108,12 @@ interface State {
   copying: boolean;
   deleting: boolean;
   nameChange?: string;
+  tabooSetId?: number;
   hasPendingEdits: boolean;
   visible: boolean;
+  editDetailsVisible: boolean;
 }
+
 class DeckDetailView extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;
   _uploadLocalDeck!: (isRetry?: boolean) => void;
@@ -127,6 +133,7 @@ class DeckDetailView extends React.Component<Props, State> {
       deleting: false,
       hasPendingEdits: false,
       visible: true,
+      editDetailsVisible: false,
     };
     this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
     this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
@@ -365,24 +372,6 @@ class DeckDetailView extends React.Component<Props, State> {
     }
   }
 
-  _saveName = (name: string) => {
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-      xpAdjustment,
-    } = this.state;
-    const pendingEdits = this.hasPendingEdits(
-      slots,
-      ignoreDeckLimitSlots,
-      xpAdjustment,
-      name
-    );
-    this.setState({
-      nameChange: name,
-      hasPendingEdits: pendingEdits,
-    }, this._syncNavigationButtons);
-  };
-
   _onEditSpecialPressed = () => {
     const {
       componentId,
@@ -452,16 +441,23 @@ class DeckDetailView extends React.Component<Props, State> {
       return;
     }
     const investigator = cards[deck.investigator_code];
+    const {
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment,
+      tabooSetId,
+    } = this.state;
     Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.Edit',
         passProps: {
           deck,
           previousDeck,
-          slots: this.state.slots,
-          ignoreDeckLimitSlots: this.state.ignoreDeckLimitSlots,
+          slots: slots,
+          ignoreDeckLimitSlots: ignoreDeckLimitSlots,
           updateSlots: this._updateSlots,
-          xpAdjustment: this.state.xpAdjustment,
+          xpAdjustment: xpAdjustment,
+          tabooSetId: tabooSetId !== undefined ? tabooSetId : deck.taboo_id,
         },
         options: {
           statusBar: {
@@ -569,6 +565,7 @@ class DeckDetailView extends React.Component<Props, State> {
           this.setState({
             saving: false,
             nameChange: undefined,
+            tabooSetId: deck.taboo_id,
             hasPendingEdits: false,
           }, this._syncNavigationButtons);
         },
@@ -629,6 +626,7 @@ class DeckDetailView extends React.Component<Props, State> {
       const {
         parsedDeck,
         nameChange,
+        tabooSetId,
         xpAdjustment,
       } = this.state;
       if (!deck || !parsedDeck) {
@@ -656,7 +654,7 @@ class DeckDetailView extends React.Component<Props, State> {
           problem,
           parsedDeck.spentXp,
           xpAdjustment,
-          deck.taboo_id
+          tabooSetId !== undefined ? tabooSetId : deck.taboo_id
         );
         updateDeck(newDeck.id, newDeck, true);
         this.updateCampaignWeaknessSet(addedBasicWeaknesses);
@@ -682,7 +680,7 @@ class DeckDetailView extends React.Component<Props, State> {
           problem,
           parsedDeck.spentXp,
           xpAdjustment,
-          deck.taboo_id
+          tabooSetId !== undefined ? tabooSetId : deck.taboo_id
         );
         handleAuthErrors(
           savePromise,
@@ -719,8 +717,10 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return;
     }
+    this.props.setTabooSet(deck.taboo_id || undefined);
     this.setState({
       nameChange: undefined,
+      tabooSetId: deck.taboo_id || undefined,
       xpAdjustment: deck.xp_adjustment || 0,
     }, () => {
       this._updateSlots(deck.slots, true);
@@ -782,7 +782,8 @@ class DeckDetailView extends React.Component<Props, State> {
     slots: Slots,
     ignoreDeckLimitSlots: Slots,
     xpAdjustment: number,
-    nameChange?: string
+    nameChange?: string,
+    tabooSetId?: number,
   ) {
     const {
       deck,
@@ -790,9 +791,12 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return false;
     }
+    const originalTabooSet: number = (deck.taboo_id || 0);
+    const newTabooSet: number = (tabooSetId || 0);
     const deltas = this.slotDeltas(deck, slots, ignoreDeckLimitSlots);
     return (nameChange && deck.name !== nameChange) ||
-      (deck.previous_deck && deck.xp_adjustment !== xpAdjustment) ||
+      (tabooSetId !== undefined && originalTabooSet !== newTabooSet) ||
+      (deck.previous_deck && (deck.xp_adjustment || 0) !== xpAdjustment) ||
       keys(deltas.removals).length > 0 ||
       keys(deltas.additions).length > 0 ||
       deltas.ignoreDeckLimitChanged;
@@ -831,8 +835,9 @@ class DeckDetailView extends React.Component<Props, State> {
         this.state.slots,
         this.state.ignoreDeckLimitSlots,
         xpAdjustment,
-        this.state.nameChange),
-    });
+        this.state.nameChange,
+        this.state.tabooSetId),
+    }, this._syncNavigationButtons);
   };
 
   _updateIgnoreDeckLimitSlots = (newIgnoreDeckLimitSlots: Slots) => {
@@ -855,7 +860,8 @@ class DeckDetailView extends React.Component<Props, State> {
         slots,
         newIgnoreDeckLimitSlots,
         this.state.xpAdjustment,
-        this.state.nameChange),
+        this.state.nameChange,
+        this.state.tabooSetId),
     }, this._syncNavigationButtons);
   };
 
@@ -880,7 +886,8 @@ class DeckDetailView extends React.Component<Props, State> {
         newSlots,
         ignoreDeckLimitSlots,
         this.state.xpAdjustment,
-        this.state.nameChange),
+        this.state.nameChange,
+        this.state.tabooSetId),
     }, this._syncNavigationButtons);
   };
 
@@ -905,21 +912,6 @@ class DeckDetailView extends React.Component<Props, State> {
     }
   }
 
-  _showEditNameDialog = () => {
-    const {
-      deck,
-      showTextEditDialog,
-    } = this.props;
-    if (!deck) {
-      return;
-    }
-    showTextEditDialog(
-      t`Edit Deck Name`,
-      this.state.nameChange || deck.name,
-      this._saveName
-    );
-  };
-
   renderCopyDialog() {
     const {
       componentId,
@@ -937,6 +929,65 @@ class DeckDetailView extends React.Component<Props, State> {
         toggleVisible={this._toggleCopyDialog}
         viewRef={viewRef}
         signedIn={signedIn}
+      />
+    );
+  }
+
+  _toggleEditDetailsVisible = () => {
+    this.setState({
+      editDetailsVisible: !this.state.editDetailsVisible,
+    });
+  };
+
+  _updateDeckDetails = (name: string, tabooSetId: number, xpAdjustment: number) => {
+    const {
+      slots,
+      ignoreDeckLimitSlots,
+    } = this.state;
+    const pendingEdits = this.hasPendingEdits(
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment,
+      name,
+      tabooSetId,
+    );
+    this.props.setTabooSet(tabooSetId);
+    this.setState({
+      nameChange: name,
+      tabooSetId,
+      xpAdjustment,
+      hasPendingEdits: pendingEdits,
+      editDetailsVisible: false,
+    }, this._syncNavigationButtons);
+  };
+
+  renderEditDetailsDialog(deck: Deck, parsedDeck: ParsedDeck) {
+    const {
+      tabooSets,
+      viewRef,
+    } = this.props;
+    const {
+      editDetailsVisible,
+      nameChange,
+      tabooSetId,
+      xpAdjustment,
+    } = this.state;
+    const {
+      spentXp,
+    } = parsedDeck;
+    return (
+      <EditDeckDetailsDialog
+        tabooSets={tabooSets}
+        viewRef={viewRef}
+        visible={editDetailsVisible}
+        xp={deck.xp || 0}
+        spentXp={spentXp}
+        xpAdjustment={xpAdjustment}
+        xpAdjustmentEnabled={!!deck.previous_deck && !deck.next_deck}
+        toggleVisible={this._toggleEditDetailsVisible}
+        name={nameChange || deck.name}
+        tabooSetId={tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || undefined)}
+        updateDetails={this._updateDeckDetails}
       />
     );
   }
@@ -1079,7 +1130,7 @@ class DeckDetailView extends React.Component<Props, State> {
       login,
       showTraumaDialog,
       investigatorDataUpdates,
-      tabooSetId,
+      tabooSets,
     } = this.props;
     const {
       loaded,
@@ -1087,6 +1138,7 @@ class DeckDetailView extends React.Component<Props, State> {
       nameChange,
       hasPendingEdits,
       xpAdjustment,
+      tabooSetId,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -1100,21 +1152,27 @@ class DeckDetailView extends React.Component<Props, State> {
         </View>
       );
     }
+    const selectedTabooSetId = tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || undefined);
+    const tabooSet = selectedTabooSetId ? find(
+      tabooSets,
+      tabooSet => tabooSet.id === selectedTabooSetId
+    ) : undefined;
     return (
       <View>
         <View style={styles.container} ref={captureViewRef}>
           <DeckViewTab
             componentId={componentId}
             deck={deck}
-            tabooSetId={tabooSetId}
             deckName={nameChange || deck.name}
+            tabooSet={tabooSet}
+            xpAdjustment={xpAdjustment}
             parsedDeck={parsedDeck}
             problem={this.getProblem() || undefined}
             hasPendingEdits={hasPendingEdits}
             cards={cards}
             isPrivate={!!isPrivate}
             buttons={this.renderButtons()}
-            showEditNameDialog={this._showEditNameDialog}
+            showEditNameDialog={this._toggleEditDetailsVisible}
             showEditSpecial={deck.next_deck ? undefined : this._onEditSpecialPressed}
             signedIn={signedIn}
             login={login}
@@ -1129,9 +1187,9 @@ class DeckDetailView extends React.Component<Props, State> {
             parsedDeck={parsedDeck}
             cards={cards}
             xpAdjustment={xpAdjustment}
-            showXpEditDialog={deck.previous_deck ? this._showXpEditDialog : undefined}
           />
         </View>
+        { this.renderEditDetailsDialog(deck, parsedDeck) }
         { this.renderSavingDialog() }
         { this.renderCopyDialog() }
       </View>
@@ -1141,7 +1199,7 @@ class DeckDetailView extends React.Component<Props, State> {
 
 function mapStateToProps(
   state: AppState,
-  props: NavigationProps & DeckDetailProps
+  props: NavigationProps & DeckDetailProps & TabooSetOverrideProps
 ): ReduxProps & TabooSetOverride {
   const id = getEffectiveDeckId(state, props.id);
   const deck = getDeck(state, id) || undefined;
@@ -1151,7 +1209,7 @@ function mapStateToProps(
   return {
     deck,
     previousDeck,
-    tabooSetOverride: deck ? (deck.taboo_id || 0) : undefined,
+    tabooSetOverride: props.tabooSetOverride || (deck ? (deck.taboo_id || 0) : undefined),
     campaign: (props.campaignId ?
       getCampaign(state, props.campaignId) :
       getCampaignForDeck(state, id)) || undefined,
@@ -1169,14 +1227,16 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connect<ReduxProps & TabooSetOverride, ReduxActionProps, NavigationProps & DeckDetailProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  withPlayerCards(
-    withTraumaDialog(
-      withDialogs(
-        withLoginState(DeckDetailView)
+export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
+  connect<ReduxProps & TabooSetOverride, ReduxActionProps, NavigationProps & DeckDetailProps & TabooSetOverrideProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(
+    withPlayerCards(
+      withTraumaDialog(
+        withDialogs(
+          withLoginState(DeckDetailView)
+        )
       )
     )
   )

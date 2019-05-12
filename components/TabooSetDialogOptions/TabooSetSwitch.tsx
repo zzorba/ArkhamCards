@@ -4,10 +4,10 @@ import DialogComponent from 'react-native-dialog';
 import { COLORS } from '../../styles/colors';
 
 interface Props {
-  tabooId?: number;
+  tabooId: number;
   label: string;
   value: boolean;
-  onValueChange: (tabooId?: number) => void;
+  onValueChange: (tabooId: number) => void;
 }
 
 export default class TabooSetSwitch extends React.Component<Props> {

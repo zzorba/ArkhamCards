@@ -25,6 +25,7 @@ import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
 import Card, { CardsMap } from '../../data/Card';
+import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
@@ -92,7 +93,6 @@ const DECK_PROBLEM_MESSAGES = {
 interface Props {
   componentId: string;
   deck: Deck;
-  tabooSetId?: number;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
   hasPendingEdits?: boolean;
@@ -104,6 +104,8 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   investigatorDataUpdates?: InvestigatorData;
   deckName: string;
+  tabooSet?: TabooSet;
+  xpAdjustment: number;
   signedIn: boolean;
   login: () => void;
   deleteDeck: (allVersions: boolean) => void;
@@ -234,14 +236,14 @@ export default class DeckViewTab extends React.Component<Props> {
   _showCard = (card: Card) => {
     const {
       componentId,
-      tabooSetId,
+      tabooSet,
     } = this.props;
     showCard(
       componentId,
       card.code,
       card,
       false,
-      tabooSetId
+      tabooSet && tabooSet.id,
     );
   };
 
@@ -374,6 +376,79 @@ export default class DeckViewTab extends React.Component<Props> {
     ];
   }
 
+  xpString() {
+    const {
+      parsedDeck: {
+        deck: {
+          xp,
+          previous_deck,
+        },
+        spentXp,
+        experience,
+      },
+      xpAdjustment,
+    } = this.props;
+    if (!previous_deck) {
+      return t`Experience Required: ${experience}`;
+    }
+    const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
+    if (xpAdjustment !== 0) {
+      const adjustment = xpAdjustment > 0 ? `+${xpAdjustment}` : xpAdjustment;
+      return t`Experience: ${spentXp} of ${adjustedExperience} (${adjustment})`;
+    }
+    return t`Experience: ${spentXp} of ${adjustedExperience}`;
+  }
+
+  renderMetadata(detailsEditable: boolean) {
+    const {
+      deckName,
+      tabooSet,
+      parsedDeck: {
+        normalCardCount,
+        totalCardCount,
+      },
+    } = this.props;
+    return (
+      <View style={styles.metadata}>
+        { detailsEditable ? (
+          <View style={styles.nameRow}>
+            <View style={styles.investigatorWrapper}>
+              <Text
+                style={styles.investigatorName}
+                numberOfLines={2}
+                ellipsizeMode="tail"
+              >
+                { deckName }
+              </Text>
+            </View>
+            <View style={styles.editIcon}>
+              <MaterialIcons name="edit" color="#222222" size={SMALL_EDIT_ICON_SIZE} />
+            </View>
+          </View>
+        ) : (
+          <Text style={styles.investigatorName}>
+            { `${deckName}  ` }
+          </Text>
+        ) }
+        <Text style={styles.defaultText}>
+          { ngettext(
+            msgid`${normalCardCount} card (${totalCardCount} total)`,
+            `${normalCardCount} cards (${totalCardCount} total)`,
+            normalCardCount
+          ) }
+        </Text>
+        <Text style={styles.defaultText}>
+          { this.xpString() }
+        </Text>
+        { !!tabooSet && (
+          <Text style={styles.defaultText}>
+            { t`Taboo List: ${tabooSet.date_start}.` }
+          </Text>
+        ) }
+      </View>
+    );
+  }
+
   render() {
     const {
       campaign,
@@ -381,11 +456,7 @@ export default class DeckViewTab extends React.Component<Props> {
       componentId,
       deck,
       cards,
-      deckName,
       parsedDeck: {
-        normalCardCount,
-        totalCardCount,
-        experience,
         investigator,
       },
       isPrivate,
@@ -395,7 +466,7 @@ export default class DeckViewTab extends React.Component<Props> {
     } = this.props;
 
     const sections = this.data();
-
+    const detailsEditable = (isPrivate && !deck.next_deck);
     return (
       <ScrollView>
         <View>
@@ -408,42 +479,12 @@ export default class DeckViewTab extends React.Component<Props> {
                 </View>
               </TouchableOpacity>
               <View style={styles.metadata}>
-                { (isPrivate && !deck.next_deck) ? (
+                { detailsEditable ? (
                   <TouchableOpacity onPress={showEditNameDialog}>
-                    <View style={styles.nameRow}>
-                      <View style={styles.investigatorWrapper}>
-                        <Text
-                          style={styles.investigatorName}
-                          numberOfLines={2}
-                          ellipsizeMode="tail"
-                        >
-                          { deckName }
-                        </Text>
-                      </View>
-                      <View style={styles.editIcon}>
-                        <MaterialIcons name="edit" color="#222222" size={SMALL_EDIT_ICON_SIZE} />
-                      </View>
-                    </View>
+                    { this.renderMetadata(detailsEditable) }
                   </TouchableOpacity>
                 ) : (
-                  <Text style={styles.investigatorName}>
-                    { `${deckName}  ` }
-                  </Text>
-                ) }
-                <Text style={styles.defaultText}>
-                  { ngettext(
-                    msgid`${normalCardCount} card (${totalCardCount} total)`,
-                    `${normalCardCount} cards (${totalCardCount} total)`,
-                    normalCardCount
-                  ) }
-                </Text>
-                <Text style={styles.defaultText}>
-                  { t`Version ${deck.version}` }
-                </Text>
-                { experience > 0 && (
-                  <Text style={styles.defaultText}>
-                    { t`${experience} experience required.` }
-                  </Text>
+                  this.renderMetadata(detailsEditable)
                 ) }
               </View>
             </View>

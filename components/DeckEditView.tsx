@@ -1,14 +1,12 @@
 import React from 'react';
 import Realm, { Results } from 'realm';
 import { head } from 'lodash';
-import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, Slots } from '../actions/types';
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';
 import { STORY_CARDS_QUERY } from '../data/query';
 import Card, { CardsMap } from '../data/Card';
-import { getTabooSet, AppState } from '../reducers';
 import CardSearchComponent from './CardSearchComponent';
 import { parseDeck } from './parseDeck';
 import DeckNavFooter from './DeckNavFooter';
@@ -17,15 +15,12 @@ import { NavigationProps } from './types';
 export interface EditDeckProps {
   deck: Deck;
   previousDeck?: Deck;
+  tabooSetId?: number;
   xpAdjustment?: number;
   storyOnly?: boolean;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
   updateSlots: (slots: Slots) => void;
-}
-
-interface ReduxProps {
-  tabooSetId?: number;
 }
 
 interface RealmProps {
@@ -34,7 +29,7 @@ interface RealmProps {
   cards: Results<Card>;
 }
 
-type Props = NavigationProps & EditDeckProps & ReduxProps & RealmProps;
+type Props = NavigationProps & EditDeckProps & RealmProps;
 
 interface State {
   deckCardCounts: Slots;
@@ -134,7 +129,7 @@ class DeckEditView extends React.Component<Props, State> {
     const {
       componentId,
       slots,
-      deck,
+      tabooSetId,
     } = this.props;
 
     const {
@@ -144,7 +139,7 @@ class DeckEditView extends React.Component<Props, State> {
     return (
       <CardSearchComponent
         componentId={componentId}
-        tabooSetOverride={deck && deck.taboo_id}
+        tabooSetOverride={tabooSetId}
         baseQuery={this.baseQuery()}
         originalDeckSlots={slots}
         deckCardCounts={deckCardCounts}
@@ -156,25 +151,14 @@ class DeckEditView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & EditDeckProps
-): ReduxProps {
-  return {
-    tabooSetId: getTabooSet(state, (props.deck && props.deck.taboo_id) || 0),
-  };
-}
-
-export default connect<ReduxProps, {}, NavigationProps & EditDeckProps, AppState>(
-  mapStateToProps
-)(connectRealm<NavigationProps & EditDeckProps & ReduxProps, RealmProps, Card>(
+export default connectRealm<NavigationProps & EditDeckProps, RealmProps, Card>(
   DeckEditView,
   {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: NavigationProps & EditDeckProps & ReduxProps
+      props: NavigationProps & EditDeckProps
     ) {
       return {
         realm,
@@ -183,4 +167,4 @@ export default connect<ReduxProps, {}, NavigationProps & EditDeckProps, AppState
       };
     },
   },
-));
+);

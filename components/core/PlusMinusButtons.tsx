@@ -18,6 +18,7 @@ interface Props {
   disabled?: boolean;
   dark?: boolean;
   noFill?: boolean;
+  allowNegative?: boolean;
 }
 
 export default class PlusMinusButtons extends React.PureComponent<Props> {
@@ -74,8 +75,9 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       disabled,
       noFill,
       onDecrement,
+      allowNegative,
     } = this.props;
-    if (count > 0 && !disabled) {
+    if ((count > 0 || allowNegative) && !disabled) {
       return (
         <TouchableOpacity onPress={onDecrement}>
           <MaterialCommunityIcons

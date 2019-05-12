@@ -15,6 +15,7 @@ import CardSearchResult from '../CardSearchResult';
 import { DeckDetailProps } from '../DeckDetailView';
 import Card, { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
+import { m, s } from '../../styles/space';
 
 interface Props {
   componentId: string;
@@ -83,11 +84,11 @@ export default class DeckDelta extends React.Component<Props> {
         exiledCards,
       },
     } = this.props;
-    if (!keys(changedCards).length && !keys(exiledCards)) {
-      return null;
-    }
     return (
       <React.Fragment>
+        <Text style={[typography.text, styles.text]}>
+          { t`Version ${deck.version}` }
+        </Text>
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
             <View style={styles.button}>
@@ -149,16 +150,19 @@ export default class DeckDelta extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   title: {
-    marginTop: 16,
-    paddingLeft: 8,
-    paddingRight: 8,
+    marginTop: m,
+    paddingLeft: s,
+    paddingRight: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
+  text: {
+    margin: s,
+  },
   buttonContainer: {
     flexDirection: 'column',
-    marginLeft: 8,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
   button: {
     margin: 8,
