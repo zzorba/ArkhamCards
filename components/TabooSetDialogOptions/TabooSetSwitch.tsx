@@ -7,16 +7,16 @@ interface Props {
   tabooId: number;
   label: string;
   value: boolean;
-  onValueChange: (tabooId: number) => void;
+  onValueChange: (tabooId: number, value: boolean) => void;
 }
 
 export default class TabooSetSwitch extends React.Component<Props> {
-  _onValueChange = () => {
+  _onValueChange = (value: boolean) => {
     const {
       onValueChange,
       tabooId,
     } = this.props;
-    onValueChange(tabooId);
+    onValueChange(tabooId, value);
   };
 
   render() {
@@ -28,7 +28,6 @@ export default class TabooSetSwitch extends React.Component<Props> {
       <DialogComponent.Switch
         label={label}
         value={value}
-        disabled={value}
         onValueChange={this._onValueChange}
         trackColor={COLORS.switchTrackColor}
       />

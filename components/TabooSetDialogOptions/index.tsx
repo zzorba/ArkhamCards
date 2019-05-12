@@ -16,11 +16,19 @@ interface Props {
 }
 
 export default class TabooSetDialogOptions extends React.Component<Props> {
+  _selectedTabooSetChanged = (tabooSetId: number, selected: boolean) => {
+    const { setTabooSetId } = this.props;
+    if (selected) {
+      setTabooSetId(tabooSetId);
+    } else {
+      setTabooSetId(0);
+    }
+  };
+
   render() {
     const {
       tabooSets,
       tabooSetId,
-      setTabooSetId,
     } = this.props;
     if (!tabooSets.length) {
       return null;
@@ -30,19 +38,13 @@ export default class TabooSetDialogOptions extends React.Component<Props> {
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
           { t`TABOO LIST` }
         </DialogComponent.Description>
-        <TabooSetSwitch
-          label={t`None`}
-          tabooId={0}
-          value={tabooSetId === undefined || tabooSetId === 0}
-          onValueChange={setTabooSetId}
-        />
         { map(tabooSets, (tabooSet, idx) => (
           <TabooSetSwitch
             key={idx}
             tabooId={tabooSet.id}
             label={tabooSet.date_start}
             value={tabooSetId === tabooSet.id}
-            onValueChange={setTabooSetId}
+            onValueChange={this._selectedTabooSetChanged}
           />
         )) }
       </React.Fragment>
