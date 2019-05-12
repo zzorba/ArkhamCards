@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Dimensions,
   Platform,
   StyleSheet,
   Text,
@@ -134,6 +135,7 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
       tabooSetId,
       xpAdjustment,
     } = this.state;
+    const { width } = Dimensions.get('window');
     const okDisabled = !name.length;
     return (
       <Dialog
@@ -141,24 +143,28 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
         visible={visible}
         viewRef={viewRef}
       >
-        <DialogComponent.Description style={[typography.smallLabel, space.marginTopM]}>
-          { t`NAME` }
-        </DialogComponent.Description>
-        <DialogComponent.Input
-          textInputRef={this._captureTextInputRef}
-          value={name}
-          onChangeText={this._onDeckNameChange}
-          returnKeyType="done"
-        />
+        <View style={styles.column}>
+          <DialogComponent.Description style={[typography.smallLabel, space.marginTopM]}>
+            { t`NAME` }
+          </DialogComponent.Description>
+          <DialogComponent.Input
+            textInputRef={this._captureTextInputRef}
+            value={name}
+            onChangeText={this._onDeckNameChange}
+            returnKeyType="done"
+          />
+        </View>
         { xpAdjustmentEnabled && (
-          <View style={styles.counterColumn}>
+          <View style={styles.column}>
             <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
               { t`EXPERIENCE` }
             </DialogComponent.Description>
             <View style={styles.buttonsRow}>
-              <Text style={styles.label}>
-                { this.xpString() }
-              </Text>
+              <View style={styles.buttonLabel}>
+                <Text style={styles.label}>
+                  { this.xpString() }
+                </Text>
+              </View>
               <PlusMinusButtons
                 count={xpAdjustment}
                 onIncrement={this._incXp}
@@ -191,19 +197,21 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
 }
 
 const styles = StyleSheet.create({
-  counterColumn: {
-    width: '100%',
-    paddingRight: Platform.OS === 'ios' ? 28 : 8,
-    paddingLeft: Platform.OS === 'ios' ? 28 : 8,
+  column: {
     flexDirection: 'column',
-    alignItems: 'center',
-    marginBottom: m,
   },
   buttonsRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
+    paddingRight: Platform.OS === 'ios' ? 28 : 8,
+    paddingLeft: Platform.OS === 'ios' ? 28 : 8,
+    marginBottom: m,
+  },
+  buttonLabel: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   label: Platform.select({
     ios: {

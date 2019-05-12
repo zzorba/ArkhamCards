@@ -948,7 +948,11 @@ class DeckDetailView extends React.Component<Props, State> {
       />
     );
   }
-
+  _showEditDetailsVisible = () => {
+    this.setState({
+      editDetailsVisible: true,
+    });
+  };
   _toggleEditDetailsVisible = () => {
     this.setState({
       editDetailsVisible: !this.state.editDetailsVisible,
@@ -1188,7 +1192,7 @@ class DeckDetailView extends React.Component<Props, State> {
             cards={cards}
             isPrivate={!!isPrivate}
             buttons={this.renderButtons()}
-            showEditNameDialog={this._toggleEditDetailsVisible}
+            showEditNameDialog={this._showEditDetailsVisible}
             showEditSpecial={deck.next_deck ? undefined : this._onEditSpecialPressed}
             signedIn={signedIn}
             login={login}
