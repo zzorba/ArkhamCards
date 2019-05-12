@@ -235,7 +235,8 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
           newSlots,
           problem,
           parsedDeck.spentXp,
-          deck.xp_adjustment
+          deck.xp_adjustment,
+          deck.taboo_id
         );
         updateDeck(newDeck.id, newDeck, true);
         this.setState({
@@ -254,7 +255,8 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
           parsedDeck.ignoreDeckLimitSlots,
           problem,
           parsedDeck.spentXp,
-          deck.xp_adjustment
+          deck.xp_adjustment,
+          deck.taboo_id
         ).then(deck => {
           updateDeck(deck.id, deck, true);
           this.setState({

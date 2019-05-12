@@ -1,9 +1,12 @@
 import { forEach } from 'lodash';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
+import { Results } from 'realm';
+import { connectRealm, CardAndTabooSetResults } from 'react-native-realm';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import Card, { CardsMap } from '../data/Card';
+import FaqEntry from '../data/FaqEntry';
+import TabooSet from '../data/TabooSet';
 import { AppState, getTabooSet } from '../reducers';
 
 export interface PlayerCardProps {
@@ -11,6 +14,7 @@ export interface PlayerCardProps {
   cards: CardsMap;
   investigators: CardsMap;
   tabooSetId?: number;
+  tabooSets: Results<TabooSet>;
 }
 
 export interface TabooSetOverride {
@@ -32,11 +36,11 @@ export default function withPlayerCards<Props>(
     };
   };
   const result = connect<ReduxProps, {}, Props & TabooSetOverride, AppState>(mapStateToProps)(
-    connectRealm<Props & ReduxProps, PlayerCardProps, Card>(
+    connectRealm<Props & ReduxProps, PlayerCardProps, Card, FaqEntry, TabooSet>(
       WrappedComponent, {
-        schemas: ['Card'],
+        schemas: ['Card', 'TabooSet'],
         mapToProps(
-          results: CardResults<Card>,
+          results: CardAndTabooSetResults<Card, TabooSet>,
           realm: Realm,
           props: Props & ReduxProps
         ): PlayerCardProps {
@@ -56,6 +60,7 @@ export default function withPlayerCards<Props>(
             cards,
             investigators,
             tabooSetId: props.tabooSetId,
+            tabooSets: results.tabooSets,
           };
         },
       })

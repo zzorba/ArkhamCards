@@ -96,27 +96,32 @@ export function newCustomDeck(
   name: string,
   slots: { [code: string]: number },
   ignoreDeckLimitSlots: { [code: string]: number },
-  problem: string
+  problem: string,
+  tabooSetId?: number,
 ) {
-  return newDeck(investigator, name)
-    .then(deck => saveDeck(deck.id, deck.name, slots, ignoreDeckLimitSlots, problem, 0, 0));
+  return newDeck(investigator, name, tabooSetId)
+    .then(deck => saveDeck(deck.id, deck.name, slots, ignoreDeckLimitSlots, problem, 0, 0, tabooSetId));
 }
 
-export function newDeck(investigator: string, name: string) {
+export function newDeck(investigator: string, name: string, tabooSetId?: number) {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
     }
     const uri = `${Config.OAUTH_SITE}api/oauth2/deck/new?access_token=${accessToken}`;
+    const params: Params = {
+      investigator: investigator,
+      name: name,
+    };
+    if (tabooSetId) {
+      params.taboo = tabooSetId;
+    }
     return fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
-      body: encodeParams({
-        investigator: investigator,
-        name: name,
-      }),
+      body: encodeParams(params),
     }).then(response => {
       return response.json().then(json => {
         if (!json.success) {
@@ -135,7 +140,8 @@ export function saveDeck(
   ignoreDeckLimitSlots: { [code: string]: number },
   problem: string,
   spentXp: number,
-  xpAdjustment?: number
+  xpAdjustment?: number,
+  tabooSetId?: number
 ) {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
@@ -149,6 +155,9 @@ export function saveDeck(
       xp_spent: spentXp,
       xp_adjustment: xpAdjustment || 0,
     };
+    if (tabooSetId) {
+      bodyParams.taboo = tabooSetId;
+    }
     if (ignoreDeckLimitSlots && keys(ignoreDeckLimitSlots).length) {
       bodyParams.ignored = JSON.stringify(ignoreDeckLimitSlots);
     }

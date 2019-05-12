@@ -172,7 +172,8 @@ class CopyDeckDialog extends React.Component<Props, State> {
       cloneDeck.ignoreDeckLimitSlots,
       cloneDeck.problem || '',
       0,
-      0
+      0,
+      cloneDeck.taboo_id
     );
     handleAuthErrors(
       savePromise,
@@ -204,6 +205,10 @@ class CopyDeckDialog extends React.Component<Props, State> {
       deckName,
       offlineDeck,
     } = this.state;
+    const cloneDeck = this.selectedDeck();
+    if (!cloneDeck) {
+      return;
+    }
     const investigator = this.investigator();
     if (investigator && (!this.state.saving || isRetry)) {
       if (offlineDeck || !signedIn || networkType === 'none') {
@@ -218,7 +223,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
           saving: true,
         });
         handleAuthErrors(
-          newDeck(investigator.code, deckName || 'New Deck'),
+          newDeck(investigator.code, deckName || 'New Deck', cloneDeck.taboo_id),
           this._updateNewDeck,
           () => {
             this.setState({

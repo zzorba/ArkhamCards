@@ -6,7 +6,8 @@ export function newLocalDeck(
   id: number,
   name: string,
   investigator_code: string,
-  slots: Slots
+  slots: Slots,
+  tabooSetId?: number
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
@@ -16,6 +17,7 @@ export function newLocalDeck(
     name,
     investigator_code,
     slots,
+    taboo_id: tabooSetId,
     ignoreDeckLimitSlots: {},
     local: true,
     problem: 'too_few_cards',
@@ -29,7 +31,8 @@ export function updateLocalDeck(
   slots: Slots,
   problem: string,
   spentXp?: number,
-  xp_adjustment?: number
+  xp_adjustment?: number,
+  tabooSetId?: number
 ) {
   const versionParts = (deck.version || '0.1').split('.');
   // @ts-ignore
@@ -46,6 +49,7 @@ export function updateLocalDeck(
       spentXp,
       xp_adjustment: xp_adjustment || 0,
       version: versionParts.join('.'),
+      taboo_id: tabooSetId,
     },
   );
 }

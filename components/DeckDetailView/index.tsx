@@ -64,6 +64,7 @@ import {
   getCampaignForDeck,
   AppState,
 } from '../../reducers';
+import { m, s } from '../../styles/space';
 import typography from '../../styles/typography';
 
 export interface DeckDetailProps {
@@ -557,6 +558,7 @@ class DeckDetailView extends React.Component<Props, State> {
         slots,
         ignoreDeckLimitSlots,
         problem,
+        deck.taboo_id
       );
       handleAuthErrors(
         promise,
@@ -653,7 +655,8 @@ class DeckDetailView extends React.Component<Props, State> {
           slots,
           problem,
           parsedDeck.spentXp,
-          xpAdjustment
+          xpAdjustment,
+          deck.taboo_id
         );
         updateDeck(newDeck.id, newDeck, true);
         this.updateCampaignWeaknessSet(addedBasicWeaknesses);
@@ -679,6 +682,7 @@ class DeckDetailView extends React.Component<Props, State> {
           problem,
           parsedDeck.spentXp,
           xpAdjustment,
+          deck.taboo_id
         );
         handleAuthErrors(
           savePromise,
@@ -981,40 +985,56 @@ class DeckDetailView extends React.Component<Props, State> {
       return null;
     }
     return (
-      <View>
-        <View style={styles.buttonRow}>
-          <Button
-            style={styles.button}
-            text={t`Edit`}
-            color="purple"
-            icon={<MaterialIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="edit" />}
-            onPress={this._onEditPressed}
-          />
-          { !hasPendingEdits && (
+      <React.Fragment>
+        <View style={styles.twoColumn}>
+          <View style={styles.halfColumn}>
             <Button
-              text={t`Upgrade Deck`}
-              color="yellow"
-              icon={<MaterialCommunityIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="arrow-up-bold" />}
-              onPress={this._onUpgradePressed}
+              style={styles.button}
+              grow
+              text={t`Edit`}
+              color="purple"
+              size="small"
+              icon={<MaterialIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="edit" />}
+              onPress={this._onEditPressed}
             />
+          </View>
+          { !hasPendingEdits && (
+            <View style={styles.halfColumn}>
+              <Button
+                text={t`Upgrade Deck`}
+                color="yellow"
+                grow
+                size="small"
+                icon={<MaterialCommunityIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="arrow-up-bold" />}
+                onPress={this._onUpgradePressed}
+              />
+            </View>
           ) }
         </View>
         { hasPendingEdits && (
-          <View style={styles.buttonRow}>
-            <Button
-              style={styles.button}
-              text={t`Save`}
-              color="green"
-              onPress={this._saveEdits}
-            />
-            <Button
-              text={t`Cancel Edits`}
-              color="red"
-              onPress={this._clearEdits}
-            />
+          <View style={styles.twoColumn}>
+            <View style={styles.halfColumn}>
+              <Button
+                style={styles.button}
+                text={t`Save`}
+                color="green"
+                size="small"
+                grow
+                onPress={this._saveEdits}
+              />
+            </View>
+            <View style={styles.halfColumn}>
+              <Button
+                text={t`Discard Edits`}
+                color="red"
+                grow
+                size="small"
+                onPress={this._clearEdits}
+              />
+            </View>
           </View>
         ) }
-      </View>
+      </React.Fragment>
     );
   }
 
@@ -1178,15 +1198,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  buttonRow: {
-    paddingTop: 8,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
   button: {
-    marginRight: 8,
+    marginRight: s,
   },
   errorMargin: {
-    padding: 16,
+    padding: m,
+  },
+  twoColumn: {
+    marginTop: s,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+  },
+  halfColumn: {
+    width: '50%',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
 });

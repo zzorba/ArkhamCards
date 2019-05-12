@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import DialogComponent from 'react-native-dialog';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
+import TabooSetSwitch from './TabooSetSwitch';
 import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import { newLocalDeck } from '../decks/localHelper';
@@ -25,7 +26,7 @@ import { Deck, Slots } from '../../actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import Card from '../../data/Card';
 import { newCustomDeck } from '../../lib/authApi';
-import { getNextLocalDeckId, AppState } from '../../reducers';
+import { getNextLocalDeckId, getTabooSet, AppState } from '../../reducers';
 import { t } from 'ttag';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
@@ -41,6 +42,7 @@ interface OwnProps {
 
 interface ReduxProps {
   nextLocalDeckId: number;
+  defaultTabooSetId?: number;
 }
 
 interface ReduxActionProps {
@@ -55,6 +57,7 @@ interface State {
   saving: boolean;
   deckName?: string;
   offlineDeck: boolean;
+  tabooSetId?: number;
   optionSelected: boolean[];
 }
 
@@ -69,6 +72,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       saving: false,
       offlineDeck: !props.signedIn || props.networkType === 'none',
       optionSelected: [true],
+      tabooSetId: props.defaultTabooSetId,
     };
 
     this._onOkayPress = throttle(this.onOkayPress.bind(this), 200);
@@ -188,6 +192,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       deckName,
       offlineDeck,
       saving,
+      tabooSetId,
     } = this.state;
     const investigator = this.investigator();
     if (investigator && (!saving || isRetry)) {
@@ -196,7 +201,8 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           nextLocalDeckId,
           deckName || 'New Deck',
           investigator.code,
-          this.getSlots()
+          this.getSlots(),
+          tabooSetId,
         );
         this.showNewDeck(deck);
       } else {
@@ -208,7 +214,8 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           deckName || 'New Deck',
           this.getSlots(),
           {},
-          'too_few_cards'
+          'too_few_cards',
+          tabooSetId
         );
         handleAuthErrors(
           newDeckPromise,
@@ -280,6 +287,45 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     return result;
   }
 
+  _setTabooSetId = (tabooSetId?: number) => {
+    this.setState({
+      tabooSetId,
+    });
+  };
+
+  renderTabooSetOptions() {
+    const {
+      tabooSets,
+    } = this.props;
+    const {
+      tabooSetId,
+    } = this.state;
+    if (!tabooSets.length) {
+      return null;
+    }
+    return (
+      <React.Fragment>
+        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
+          { t`Taboo List` }
+        </DialogComponent.Description>
+        <TabooSetSwitch
+          label={t`None`}
+          value={tabooSetId === undefined || tabooSetId === 0}
+          onValueChange={this._setTabooSetId}
+        />
+        { map(tabooSets, (tabooSet, idx) => (
+          <TabooSetSwitch
+            key={idx}
+            tabooId={tabooSet.id}
+            label={tabooSet.date_start}
+            value={tabooSetId === tabooSet.id}
+            onValueChange={this._setTabooSetId}
+          />
+        )) }
+      </React.Fragment>
+    );
+  }
+
   renderFormContent() {
     const {
       investigatorId,
@@ -329,6 +375,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             />
           );
         }) }
+        { this.renderTabooSetOptions() }
         <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
           { t`DECK TYPE` }
         </DialogComponent.Description>
@@ -395,6 +442,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     nextLocalDeckId: getNextLocalDeckId(state),
+    defaultTabooSetId: getTabooSet(state),
   };
 }
 

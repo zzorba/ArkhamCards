@@ -216,23 +216,28 @@ class CardResultList extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props) {
     const {
       deckCardCounts,
+      visible,
     } = this.props;
+    const {
+      dirty,
+    } = this.state;
     const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
-    if ((this.props.visible && !prevProps.visible && this.state.dirty) ||
+    if ((visible && !prevProps.visible && dirty) ||
         prevProps.query !== this.props.query ||
         prevProps.sort !== this.props.sort ||
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers ||
-        prevProps.in_collection !== this.props.in_collection
+        prevProps.in_collection !== this.props.in_collection ||
+        prevProps.tabooSetId !== this.props.tabooSetId
     ) {
-      if (this.props.visible) {
+      if (visible) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           dirty: false,
           showNonCollection: {},
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
         }, this._throttledUpdateResults);
-      } else if (!this.state.dirty) {
+      } else if (!dirty) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           dirty: true,

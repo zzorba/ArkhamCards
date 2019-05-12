@@ -209,13 +209,13 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     }
     return (
       <View style={styles.tabooBlock}>
-        { !!(card.taboo_set_id && card.taboo_set_id > 0) && (
-          <ArkhamIcon name="tablet" size={TABOO_ICON_SIZE} color="purple" />
-        ) }
         { !!(card.extra_xp && card.extra_xp > 0) && (
           <Text style={[typography.small, styles.extraXp]} numberOfLines={1} ellipsizeMode="clip">
             { repeat('•', card.extra_xp) }
           </Text>
+        ) }
+        { !!(card.taboo_set_id && card.taboo_set_id > 0) && (
+          <ArkhamIcon name="tablet" size={TABOO_ICON_SIZE} color="purple" />
         ) }
       </View>
     );
@@ -443,6 +443,6 @@ const styles = StyleSheet.create({
   },
   extraXp: {
     color: 'purple',
-    marginLeft: xs,
+    marginRight: xs,
   },
 });
