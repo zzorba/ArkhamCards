@@ -226,6 +226,7 @@ class DeckDetailView extends React.Component<Props, State> {
       previousDeck,
       fetchPrivateDeck,
       fetchPublicDeck,
+      tabooSetOverride,
     } = this.props;
     if (deck !== prevProps.deck) {
       if (!deck) {
@@ -249,9 +250,23 @@ class DeckDetailView extends React.Component<Props, State> {
         }
       }
     }
-    if (deck !== prevProps.deck || previousDeck !== prevProps.previousDeck) {
-      if (deck && (!deck.previous_deck || previousDeck)) {
+    if (deck && (!deck.previous_deck || previousDeck)) {
+      if (deck !== prevProps.deck ||
+        previousDeck !== prevProps.previousDeck
+      ) {
         this.loadCards(deck, previousDeck);
+      } else if (tabooSetOverride !== prevProps.tabooSetOverride) {
+        const {
+          cards,
+        } = this.props;
+        const {
+          slots,
+          ignoreDeckLimitSlots,
+        } = this.state;
+        const parsedDeck = parseDeck(deck, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
+        this.setState({
+          parsedDeck,
+        });
       }
     }
   }
@@ -1206,10 +1221,13 @@ function mapStateToProps(
   const previousDeck = (
     deck && deck.previous_deck && getDeck(state, deck.previous_deck)
   ) || undefined;
+  const tabooSetOverride = props.tabooSetOverride !== undefined ?
+    props.tabooSetOverride :
+    ((deck && deck.taboo_id) || 0);
   return {
     deck,
     previousDeck,
-    tabooSetOverride: props.tabooSetOverride || (deck ? (deck.taboo_id || 0) : undefined),
+    tabooSetOverride,
     campaign: (props.campaignId ?
       getCampaign(state, props.campaignId) :
       getCampaignForDeck(state, id)) || undefined,

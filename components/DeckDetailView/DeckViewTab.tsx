@@ -28,6 +28,7 @@ import Card, { CardsMap } from '../../data/Card';
 import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
+import { l, s } from '../../styles/space';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
@@ -410,26 +411,6 @@ export default class DeckViewTab extends React.Component<Props> {
     } = this.props;
     return (
       <View style={styles.metadata}>
-        { detailsEditable ? (
-          <View style={styles.nameRow}>
-            <View style={styles.investigatorWrapper}>
-              <Text
-                style={styles.investigatorName}
-                numberOfLines={2}
-                ellipsizeMode="tail"
-              >
-                { deckName }
-              </Text>
-            </View>
-            <View style={styles.editIcon}>
-              <MaterialIcons name="edit" color="#222222" size={SMALL_EDIT_ICON_SIZE} />
-            </View>
-          </View>
-        ) : (
-          <Text style={styles.investigatorName}>
-            { `${deckName}  ` }
-          </Text>
-        ) }
         <Text style={styles.defaultText}>
           { ngettext(
             msgid`${normalCardCount} card (${totalCardCount} total)`,
@@ -455,6 +436,7 @@ export default class DeckViewTab extends React.Component<Props> {
       investigatorDataUpdates,
       componentId,
       deck,
+      deckName,
       cards,
       parsedDeck: {
         investigator,
@@ -472,6 +454,28 @@ export default class DeckViewTab extends React.Component<Props> {
         <View>
           { this.renderProblem() }
           <View style={styles.container}>
+            { detailsEditable ? (
+              <TouchableOpacity onPress={showEditNameDialog}>
+                <View style={styles.nameRow}>
+                  <View style={styles.investigatorWrapper}>
+                    <Text
+                      style={styles.investigatorName}
+                      numberOfLines={2}
+                      ellipsizeMode="tail"
+                    >
+                      { deckName }
+                    </Text>
+                  </View>
+                  <View style={styles.editIcon}>
+                    <MaterialIcons name="edit" color="#222222" size={SMALL_EDIT_ICON_SIZE} />
+                  </View>
+                </View>
+              </TouchableOpacity>
+            ) : (
+              <Text style={styles.investigatorName}>
+                { `${deckName}  ` }
+              </Text>
+            ) }
             <View style={styles.header}>
               <TouchableOpacity onPress={this._showInvestigator}>
                 <View style={styles.image}>
@@ -545,12 +549,12 @@ export default class DeckViewTab extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 8,
+    marginTop: s,
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
   button: {
-    margin: 8,
+    margin: s,
   },
   metadata: {
     flexDirection: 'column',
@@ -559,7 +563,7 @@ const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 80,
-    marginRight: 8,
+    marginRight: s,
   },
   investigatorWrapper: {
     flex: 1,
@@ -570,8 +574,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   container: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
   defaultText: {
     color: '#000000',
@@ -586,8 +590,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 4,
     paddingBottom: 4,
-    paddingRight: 8,
-    paddingLeft: 8,
+    paddingRight: s,
+    paddingLeft: s,
   },
   problemText: {
     color: COLORS.white,
@@ -601,8 +605,8 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   superHeaderRow: {
-    marginTop: 32,
-    padding: 8,
+    marginTop: l,
+    padding: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
     flexDirection: 'row',
@@ -610,24 +614,25 @@ const styles = StyleSheet.create({
   },
   subHeaderRow: {
     backgroundColor: '#eee',
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingLeft: s,
+    paddingRight: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
   headerRow: {
     backgroundColor: '#ccc',
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingLeft: s,
+    paddingRight: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
   cards: {
-    marginTop: 8,
+    marginTop: s,
     borderTopWidth: 1,
     borderColor: '#bdbdbd',
   },
   nameRow: {
+    marginTop: s,
     flexDirection: 'row',
     flex: 1,
     alignItems: 'center',

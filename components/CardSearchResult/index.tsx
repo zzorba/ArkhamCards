@@ -310,7 +310,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       onDeckCountChange,
     } = this.props;
     return (
-      <React.Fragment>
+      <View style={styles.rowContainer}>
         <TouchableOpacity
           onPress={this._onPress}
           disabled={!onPress}
@@ -335,7 +335,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
             />
           </View>
         ) }
-      </React.Fragment>
+      </View>
     );
   }
 
@@ -364,11 +364,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       );
     }
 
-    return (
-      <View style={styles.rowContainer}>
-        { this.renderContent() }
-      </View>
-    );
+    return this.renderContent();
   }
 }
 

@@ -17,6 +17,7 @@ import Card from '../../data/Card';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from '../../reducers';
 import typography from '../../styles/typography';
+import { l, s } from '../../styles/space';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -114,12 +115,14 @@ class FetchCardsGate extends React.Component<Props> {
     if (error) {
       return (
         <View style={styles.activityIndicatorContainer}>
-          <Text style={[typography.text, styles.error]}>
-            Error loading cards, make sure your network is working.
-          </Text>
-          <Text style={[typography.text, styles.error]}>
-            { error }
-          </Text>
+          <View style={styles.errorBlock}>
+            <Text style={[typography.text, styles.error]}>
+              Error loading cards, make sure your network is working.
+            </Text>
+            <Text style={[typography.text, styles.error]}>
+              { error }
+            </Text>
+          </View>
           <Button onPress={this._doFetch} text="Try Again" />
         </View>
       );
@@ -193,7 +196,14 @@ const styles = StyleSheet.create({
   spinner: {
     height: 80,
   },
+  errorBlock: {
+    marginLeft: l,
+    marginRight: l,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   error: {
     color: 'red',
+    marginBottom: s,
   },
 });

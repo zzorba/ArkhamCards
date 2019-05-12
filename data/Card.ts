@@ -402,6 +402,7 @@ export default class Card extends BaseCard {
     }
     if (json.exceptional) {
       result.exceptional = true;
+      result.deck_limit = 1;
     }
     return result;
   }
