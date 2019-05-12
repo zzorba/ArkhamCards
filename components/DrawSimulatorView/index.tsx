@@ -12,7 +12,7 @@ import { t } from 'ttag';
 import { Slots } from '../../actions/types';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import CardSearchResult from '../CardSearchResult';
-
+import { xs } from '../../styles/space';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -166,24 +166,38 @@ class DrawSimulatorView extends React.Component<Props, State> {
       <View style={styles.controlsContainer}>
         <View style={styles.drawButtonRow}>
           <Text style={styles.text}>{ t`Draw: ` }</Text>
-          <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
-          <Button title="2" disabled={deckEmpty} onPress={this._drawTwo} />
-          <Button title="5" disabled={deckEmpty} onPress={this._drawFive} />
-          <Button title={t`All`} disabled={deckEmpty} onPress={this._drawAll} />
+          <View style={styles.button}>
+            <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
+          </View>
+          <View style={styles.button}>
+            <Button title="2" disabled={deckEmpty} onPress={this._drawTwo} />
+          </View>
+          <View style={styles.button}>
+            <Button title="5" disabled={deckEmpty} onPress={this._drawFive} />
+          </View>
+          <View style={styles.button}>
+            <Button title={t`All`} disabled={deckEmpty} onPress={this._drawAll} />
+          </View>
         </View>
         <View style={styles.wrapButtonRow}>
-          <Button
-            title={t`Redraw`}
-            disabled={noSelection}
-            onPress={this._redrawSelected} />
-          <Button
-            title={t`Reshuffle`}
-            disabled={noSelection}
-            onPress={this._reshuffleSelected} />
-          <Button
-            title={t`Reset`}
-            disabled={drawnCards.length === 0}
-            onPress={this._resetDeck} />
+          <View style={styles.button}>
+            <Button
+              title={t`Redraw`}
+              disabled={noSelection}
+              onPress={this._redrawSelected} />
+          </View>
+          <View style={styles.button}>
+            <Button
+              title={t`Reshuffle`}
+              disabled={noSelection}
+              onPress={this._reshuffleSelected} />
+          </View>
+          <View style={styles.button}>
+            <Button
+              title={t`Reset`}
+              disabled={drawnCards.length === 0}
+              onPress={this._resetDeck} />
+          </View>
         </View>
       </View>
     );
@@ -262,5 +276,10 @@ const styles = StyleSheet.create({
   },
   selected: {
     backgroundColor: '#ddd',
+  },
+  button: {
+    flex: 1,
+    marginLeft: xs,
+    marginRight: xs,
   },
 });

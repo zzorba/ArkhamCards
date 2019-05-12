@@ -10,8 +10,8 @@ import Realm from 'realm';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
-
 import { t } from 'ttag';
+
 import Button from '../core/Button';
 import Card from '../../data/Card';
 import { fetchCards, dismissUpdatePrompt } from './actions';
@@ -117,13 +117,13 @@ class FetchCardsGate extends React.Component<Props> {
         <View style={styles.activityIndicatorContainer}>
           <View style={styles.errorBlock}>
             <Text style={[typography.text, styles.error]}>
-              Error loading cards, make sure your network is working.
+              { t`Error loading cards, make sure your network is working.` }
             </Text>
             <Text style={[typography.text, styles.error]}>
               { error }
             </Text>
           </View>
-          <Button onPress={this._doFetch} text="Try Again" />
+          <Button onPress={this._doFetch} text={t`Try Again`} />
         </View>
       );
     }
@@ -132,7 +132,7 @@ class FetchCardsGate extends React.Component<Props> {
       return (
         <View style={styles.activityIndicatorContainer}>
           <Text style={typography.text}>
-            Loading latest cards...
+            {t`Loading latest cards...`}
           </Text>
           <ActivityIndicator
             style={styles.spinner}

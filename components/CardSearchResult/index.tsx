@@ -307,13 +307,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       onToggleChange,
       toggleValue,
       onPress,
+      onPressId,
       onDeckCountChange,
     } = this.props;
     return (
       <View style={styles.rowContainer}>
         <TouchableOpacity
           onPress={this._onPress}
-          disabled={!onPress}
+          disabled={!onPress && !onPressId}
           style={[styles.row, styles.fullHeight]}
         >
           <View style={[
