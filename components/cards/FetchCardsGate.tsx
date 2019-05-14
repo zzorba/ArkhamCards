@@ -132,7 +132,7 @@ class FetchCardsGate extends React.Component<Props> {
       return (
         <View style={styles.activityIndicatorContainer}>
           <Text style={typography.text}>
-            {t`Loading latest cards...`}
+            { t`Loading latest cards...` }
           </Text>
           <ActivityIndicator
             style={styles.spinner}

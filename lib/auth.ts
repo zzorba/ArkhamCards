@@ -24,7 +24,7 @@ function saveAuthResponse(response: AuthorizeResult | RefreshResult) {
 export function getRefreshToken() {
   return Keychain.getGenericPassword()
     .then(creds => {
-      if (creds && creds !== true) {
+      if (creds) {
         const data = JSON.parse(creds.password);
         return data.refreshToken;
       }
@@ -35,7 +35,7 @@ export function getRefreshToken() {
 export function getAccessToken() {
   return Keychain.getGenericPassword()
     .then(creds => {
-      if (creds && creds !== true) {
+      if (creds) {
         const data = JSON.parse(creds.password);
         const nowSeconds = (new Date()).getTime() / 1000;
         const expiration = new Date(data.accessTokenExpirationDate).getTime() / 1000;

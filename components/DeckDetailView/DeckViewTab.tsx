@@ -106,6 +106,7 @@ interface Props {
   investigatorDataUpdates?: InvestigatorData;
   deckName: string;
   tabooSet?: TabooSet;
+  tabooSetId?: number;
   xpAdjustment: number;
   signedIn: boolean;
   login: () => void;
@@ -237,14 +238,14 @@ export default class DeckViewTab extends React.Component<Props> {
   _showCard = (card: Card) => {
     const {
       componentId,
-      tabooSet,
+      tabooSetId,
     } = this.props;
     showCard(
       componentId,
       card.code,
       card,
       false,
-      tabooSet && tabooSet.id,
+      tabooSetId,
     );
   };
 

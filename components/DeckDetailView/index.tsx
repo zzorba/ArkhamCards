@@ -1172,7 +1172,7 @@ class DeckDetailView extends React.Component<Props, State> {
         </View>
       );
     }
-    const selectedTabooSetId = tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || undefined);
+    const selectedTabooSetId = tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || 0);
     const tabooSet = selectedTabooSetId ? find(
       tabooSets,
       tabooSet => tabooSet.id === selectedTabooSetId
@@ -1185,6 +1185,7 @@ class DeckDetailView extends React.Component<Props, State> {
             deck={deck}
             deckName={nameChange || deck.name}
             tabooSet={tabooSet}
+            tabooSetId={selectedTabooSetId}
             xpAdjustment={xpAdjustment}
             parsedDeck={parsedDeck}
             problem={this.getProblem() || undefined}

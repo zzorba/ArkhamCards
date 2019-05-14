@@ -1,5 +1,5 @@
 import React from 'react';
-import NetInfo, { ConnectionInfo } from '@react-native-community/netinfo';
+import NetInfo from '@react-native-community/netinfo';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 export interface NetworkStatusProps {
@@ -14,11 +14,7 @@ export default function withNetworkStatus<P>(
     networkType?: string;
   }
   class NetworkStatusComponent extends React.Component<P, State> {
-    constructor(props: P) {
-      super(props);
-
-      this.state = {};
-    }
+    state: State = {};
 
     componentDidMount() {
       this._refreshNetworkStatus();
@@ -33,7 +29,7 @@ export default function withNetworkStatus<P>(
       NetInfo.getConnectionInfo().then(this._networkStatusChanged);
     };
 
-    _networkStatusChanged = (connectionInfo: ConnectionInfo) => {
+    _networkStatusChanged = (connectionInfo: NetInfo.NetInfoData) => {
       this.setState({
         networkType: connectionInfo.type,
       });

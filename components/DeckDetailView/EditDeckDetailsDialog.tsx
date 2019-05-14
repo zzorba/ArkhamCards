@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Dimensions,
   Platform,
   StyleSheet,
   Text,
@@ -135,7 +134,6 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
       tabooSetId,
       xpAdjustment,
     } = this.state;
-    const { width } = Dimensions.get('window');
     const okDisabled = !name.length;
     return (
       <Dialog
