@@ -224,7 +224,7 @@ export default function withFilterFunctions<P>(
       ): RealmProps {
         return {
           cards: props.baseQuery ?
-            results.cards.filtered(`(${props.baseQuery} and ${Card.tabooSetQuery(props.tabooSetId)}`) :
+            results.cards.filtered(`((${props.baseQuery}) and (${Card.tabooSetQuery(props.tabooSetId)}))`) :
             results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
         };
       },
