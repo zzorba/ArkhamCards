@@ -360,7 +360,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           trackColor={COLORS.switchTrackColor}
         />
         { !signedIn && (
-          <DialogComponent.Description style={[typography.small, space.marginBottomS]}>
+          <DialogComponent.Description style={[typography.small, space.marginBottomS, styles.networkMessage]}>
             { t`Visit Settings to sign in to ArkhamDB.` }
           </DialogComponent.Description>
         ) }
@@ -438,5 +438,9 @@ export default withPlayerCards<OwnProps>(
 const styles = StyleSheet.create({
   spinner: {
     height: 80,
+  },
+  networkMessage: {
+    marginLeft: Platform.OS === 'ios' ? 28 : 8,
+    marginRight: Platform.OS === 'ios' ? 28 : 8,
   },
 });
