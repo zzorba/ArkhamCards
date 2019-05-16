@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
-import { forEach } from 'lodash';
+import { forEach, isEqual, map } from 'lodash';
 import Realm from 'realm';
 import {
   Keyboard,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, OptionsTopBar } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import Card from '../../data/Card';
@@ -54,19 +54,13 @@ interface State {
   filters: FilterState;
   mythosMode: boolean;
   visible: boolean;
+  rightButtonIds: string[];
 }
 class CardSearchComponent extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {
     super(props);
-
-    this.state = {
-      selectedSort: props.sort || SORT_BY_TYPE,
-      filters: props.defaultFilterState,
-      mythosMode: false,
-      visible: true,
-    };
 
     const rightButtons = [{
       id: 'filter',
@@ -99,6 +93,15 @@ class CardSearchComponent extends React.Component<Props, State> {
         button.color = 'white';
       });
     }
+
+    this.state = {
+      selectedSort: props.sort || SORT_BY_TYPE,
+      filters: props.defaultFilterState,
+      mythosMode: false,
+      visible: true,
+      rightButtonIds: map(rightButtons, button => button.id),
+    };
+
     Navigation.mergeOptions(props.componentId, {
       topBar: {
         rightButtons,
@@ -124,7 +127,7 @@ class CardSearchComponent extends React.Component<Props, State> {
     this.setState({
       filters: filters,
     });
-    this._syncNavigationButtons(this.state.mythosMode, filters);
+    this._syncNavigationButtons(this.state.mythosMode, filters, true);
   };
 
   _sortChanged = (selectedSort: SortType) => {
@@ -188,7 +191,7 @@ class CardSearchComponent extends React.Component<Props, State> {
       this._showSearchFilters();
     } else if (buttonId === 'sort') {
       this._showSortDialog();
-    } else if (buttonId === 'mythos') {
+    } else if (buttonId === 'mythos' || buttonId === 'investigator') {
       this._toggleMythosMode();
     }
   }
@@ -205,11 +208,12 @@ class CardSearchComponent extends React.Component<Props, State> {
     });
   }
 
-  _syncNavigationButtons = (mythosMode: boolean, filters: FilterState) => {
+  _syncNavigationButtons = (mythosMode: boolean, filters: FilterState, filtersChanged?: boolean) => {
     const {
       componentId,
       onDeckCountChange,
       defaultFilterState,
+      mythosToggle,
     } = this.props;
     const rightButtons = [{
       id: 'filter',
@@ -226,20 +230,29 @@ class CardSearchComponent extends React.Component<Props, State> {
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
       color: onDeckCountChange ? 'white' : COLORS.navButton,
-    }, {
-      icon: mythosMode ? iconsMap.per_investigator : iconsMap.auto_fail,
-      id: 'mythos',
-      color: onDeckCountChange ? 'white' : COLORS.navButton,
     }];
+    const topBar: OptionsTopBar = {};
+    if (mythosToggle) {
+      rightButtons.push({
+        icon: mythosMode ? iconsMap.per_investigator : iconsMap.auto_fail,
+        id: mythosMode ? 'investigator' : 'mythos',
+        color: onDeckCountChange ? 'white' : COLORS.navButton,
+      });
+      topBar.title = {
+        text: mythosMode ? t`Encounter Cards` : t`Player Cards`,
+      };
+    }
+    topBar.rightButtons = rightButtons;
 
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        title: {
-          text: mythosMode ? t`Encounter Cards` : t`Player Cards`,
-        },
-        rightButtons,
-      },
-    });
+    const rightButtonIds = map(rightButtons, button => button.id);
+    if (filtersChanged || !isEqual(rightButtonIds, this.state.rightButtonIds)) {
+      Navigation.mergeOptions(componentId, {
+        topBar,
+      });
+      this.setState({
+        rightButtonIds,
+      });
+    }
   };
 
   _toggleMythosMode = () => {

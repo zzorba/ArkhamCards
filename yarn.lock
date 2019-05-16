@@ -6912,10 +6912,10 @@ react-native-modal@^9.0.0:
     prop-types "^15.6.2"
     react-native-animatable "^1.2.4"
 
-react-native-navigation@2.18.5:
-  version "2.18.5"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.18.5.tgz#e4e89f2aa2b03b9569803e1a61a28a6683c3800a"
-  integrity sha512-NMOTHlfbL02Y1yK/IR44gNrwqs6lqrFEcPk/KG0JHbpD3xvltE946p1DZMWcxBOvjaccaHs5M3u1ywait5rdPA==
+react-native-navigation@2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.19.0.tgz#25a4a5890dd670281925154025f45ac51d1f693f"
+  integrity sha512-r81d+MQUtUY1WedtelnrRdz0w7W9HKaY4Jlwg5bda0vN3DvYOmeAchTiIg76dEgRQs1Pwo67XvgWPKT+TxFlag==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
