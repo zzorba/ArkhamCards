@@ -13,8 +13,10 @@ export default function withNetworkStatus<P>(
   interface State {
     networkType?: string;
   }
+
   class NetworkStatusComponent extends React.Component<P, State> {
     state: State = {};
+    unmounted: boolean = false;
 
     componentDidMount() {
       this._refreshNetworkStatus();
@@ -22,6 +24,7 @@ export default function withNetworkStatus<P>(
     }
 
     componentWillUnmount() {
+      this.unmounted = true;
       NetInfo.removeEventListener('connectionChange', this._refreshNetworkStatus);
     }
 
@@ -30,9 +33,11 @@ export default function withNetworkStatus<P>(
     };
 
     _networkStatusChanged = (connectionInfo: NetInfo.NetInfoData) => {
-      this.setState({
-        networkType: connectionInfo.type,
-      });
+      if (!this.unmounted) {
+        this.setState({
+          networkType: connectionInfo.type,
+        });
+      }
     };
 
     render() {
