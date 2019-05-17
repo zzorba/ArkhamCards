@@ -97,10 +97,12 @@ class CampaignDetailView extends React.Component<Props, State> {
           icon: iconsMap.share,
           id: 'share',
           color: COLORS.navButton,
+          testID: t`Share Campaign`,
         }, {
           icon: iconsMap.edit,
           id: 'edit',
           color: COLORS.navButton,
+          testID: t`Edit Campaign`,
         }],
       },
     });

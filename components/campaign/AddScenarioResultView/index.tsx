@@ -74,6 +74,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
           enabled: !!(scenario &&
             scenario.scenario &&
             (scenario.interlude || scenario.resolution !== '')),
+          testID: t`Save`,
         }],
       },
     });

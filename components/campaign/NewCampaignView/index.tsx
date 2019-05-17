@@ -266,6 +266,7 @@ class NewCampaignView extends React.Component<Props, State> {
           id: 'save',
           enabled: campaignCode !== CUSTOM || !!name,
           color: COLORS.navButton,
+          testID: t`Done`,
         }],
       },
     });

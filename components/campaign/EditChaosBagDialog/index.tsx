@@ -49,10 +49,12 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
             text: t`Cancel`,
             id: 'back',
             color: COLORS.navButton,
+            testID: t`Cancel`,
           } : {
             icon: iconsMap['arrow-left'],
             id: 'androidBack',
             color: COLORS.navButton,
+            testID: t`Back`,
           },
         ],
         rightButtons: [{
@@ -61,6 +63,7 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
           id: 'save',
           showAsAction: 'ifRoom',
           color: COLORS.navButton,
+          testID: t`Save`,
         }],
       },
     };

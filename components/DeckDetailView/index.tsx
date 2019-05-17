@@ -307,18 +307,21 @@ class DeckDetailView extends React.Component<Props, State> {
         text: t`Save`,
         id: 'save',
         color: 'white',
+        testID: t`Save`,
       });
     } else {
       rightButtons.push({
         id: 'copy',
         icon: iconsMap['content-copy'],
         color: 'white',
+        testID: t`Clone Deck`,
       });
       if (editable) {
         rightButtons.push({
           id: 'upgrade',
           icon: iconsMap['arrow-up-bold'],
           color: 'white',
+          testID: t`Upgrade Deck`,
         });
       }
     }
@@ -327,6 +330,7 @@ class DeckDetailView extends React.Component<Props, State> {
         id: 'edit',
         icon: iconsMap.edit,
         color: 'white',
+        testID: t`Edit Deck`,
       });
     }
     return rightButtons;
@@ -667,6 +671,7 @@ class DeckDetailView extends React.Component<Props, State> {
           deck,
           nameChange || deck.name,
           slots,
+          ignoreDeckLimitSlots,
           problem,
           parsedDeck.spentXp,
           xpAdjustment,

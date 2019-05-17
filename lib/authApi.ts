@@ -187,7 +187,16 @@ export function saveDeck(
   });
 }
 
-export function upgradeDeck(id: number, xp: number, exiles?: string) {
+export interface UpgradeDeckResult {
+  deck: Deck;
+  upgradedDeck: Deck;
+}
+
+export function upgradeDeck(
+  id: number,
+  xp: number,
+  exiles?: string
+): Promise<UpgradeDeckResult> {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');

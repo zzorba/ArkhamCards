@@ -10,6 +10,7 @@ import { CachedImage } from 'react-native-cached-image';
 import { connectRealm, CardResults } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';
+import { t } from 'ttag';
 
 import { iconsMap } from '../../app/NavIcons';
 import Card from '../../data/Card';
@@ -62,6 +63,7 @@ class CardImageView extends React.Component<Props, State> {
             id: 'flip',
             icon: iconsMap.flip_card,
             color: COLORS.navButton,
+            testID: t`Flip Card`,
           }],
         },
       });

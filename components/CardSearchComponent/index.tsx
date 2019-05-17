@@ -72,6 +72,7 @@ class CardSearchComponent extends React.Component<Props, State> {
           defaultFilters: props.defaultFilterState,
           lightButton: !!props.onDeckCountChange,
         },
+        testID: t`Filters`,
       },
       enabled: true,
       icon: iconsMap.tune,
@@ -80,12 +81,14 @@ class CardSearchComponent extends React.Component<Props, State> {
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
       color: COLORS.navButton,
+      testID: t`Sort`,
     }];
     if (props.mythosToggle) {
       rightButtons.push({
         icon: iconsMap.auto_fail,
         id: 'mythos',
         color: COLORS.navButton,
+        testID: t`Show Encounter Cards`,
       });
     }
     if (props.onDeckCountChange) {
@@ -226,10 +229,12 @@ class CardSearchComponent extends React.Component<Props, State> {
           lightButton: !!onDeckCountChange,
         },
       },
+      testID: t`Filters`,
     }, {
       icon: iconsMap['sort-by-alpha'],
       id: 'sort',
       color: onDeckCountChange ? 'white' : COLORS.navButton,
+      testID: t`Sort`,
     }];
     const topBar: OptionsTopBar = {};
     if (mythosToggle) {
@@ -237,6 +242,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         icon: mythosMode ? iconsMap.per_investigator : iconsMap.auto_fail,
         id: mythosMode ? 'investigator' : 'mythos',
         color: onDeckCountChange ? 'white' : COLORS.navButton,
+        testID: mythosMode ? t`Show Player Cards` : t`Show Encounter Cards`,
       });
       topBar.title = {
         text: mythosMode ? t`Encounter Cards` : t`Player Cards`,

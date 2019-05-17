@@ -96,6 +96,7 @@ export default function withFilterFunctions<P>(
               text: t`Clear`,
               id: 'clear',
               color: COLORS.navButton,
+              testID: t`Clear`,
             }] : [],
         },
       });

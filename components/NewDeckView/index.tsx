@@ -37,11 +37,13 @@ export default class NewDeckView extends React.Component<Props, State> {
           icon: iconsMap.close,
           id: 'close',
           color: COLORS.navButton,
+          testID: t`Cancel`,
         }],
         rightButtons: [{
           icon: iconsMap['sort-by-alpha'],
           id: 'sort',
           color: COLORS.navButton,
+          testID: t`Sort`,
         }],
       },
     };

@@ -402,7 +402,7 @@ export function parseDeck(
       };
     });
   const specialCards = cardIds.filter(c =>
-    isSpecialCard(cards[c.id]) || ignoreDeckLimitSlots[c.id] > 0);
+    (isSpecialCard(cards[c.id]) && slots[c.id] > 0) || ignoreDeckLimitSlots[c.id] > 0);
   const normalCards = cardIds.filter(c =>
     !isSpecialCard(cards[c.id]) && slots[c.id] > (ignoreDeckLimitSlots[c.id] || 0));
   const exiledCards = deck.exile_string ? mapValues(

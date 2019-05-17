@@ -37,7 +37,7 @@ export default function TuneButton({ defaultFilters, filters, onPress, lightButt
   );
 }
 
-const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 8 : 0)
+const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 8 : 0);
 const styles = StyleSheet.create({
   container: {
     marginLeft: Platform.OS === 'android' ? 8 : 12,

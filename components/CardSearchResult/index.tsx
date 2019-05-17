@@ -22,7 +22,7 @@ import typography from '../../styles/typography';
 import { isBig, s, xs } from '../../styles/space';
 
 const TABOO_ICON_SIZE = (isBig ? 18 : 14) * DeviceInfo.getFontScale();
-const SKILL_ICON_SIZE = (isBig ? 24 : 14) * DeviceInfo.getFontScale();
+const SKILL_ICON_SIZE = (isBig ? 26 : 16) * DeviceInfo.getFontScale();
 const SMALL_ICON_SIZE = (isBig ? 38 : 26) * DeviceInfo.getFontScale();
 const SMALL_FACTION_ICONS = createFactionIcons(SMALL_ICON_SIZE);
 const FACTION_ICONS = createFactionIcons(ICON_SIZE);
@@ -374,7 +374,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     position: 'relative',
     width: '100%',
-    height: ROW_HEIGHT,
+    minHeight: ROW_HEIGHT,
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderColor: COLORS.gray,

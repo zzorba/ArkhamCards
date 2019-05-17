@@ -53,11 +53,13 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
           icon: iconsMap.close,
           id: 'close',
           color: COLORS.navButton,
+          testID: t`Cancel`,
         }],
         rightButtons: passProps.showOnlySelectedDeckIds ? [] : [{
           icon: iconsMap.add,
           id: 'add',
           color: COLORS.navButton,
+          testID: t`New Deck`,
         }],
       },
     };

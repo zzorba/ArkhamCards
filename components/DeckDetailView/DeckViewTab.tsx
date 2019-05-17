@@ -391,14 +391,10 @@ export default class DeckViewTab extends React.Component<Props> {
       xpAdjustment,
     } = this.props;
     if (!previous_deck) {
-      return t`Experience Required: ${experience}`;
+      return t`Experience required: ${experience}`;
     }
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    if (xpAdjustment !== 0) {
-      const adjustment = xpAdjustment > 0 ? `+${xpAdjustment}` : xpAdjustment;
-      return t`Experience: ${spentXp} of ${adjustedExperience} (${adjustment})`;
-    }
-    return t`Experience: ${spentXp} of ${adjustedExperience}`;
+    return t`Available experience: ${adjustedExperience}\nSpent experience: ${spentXp}`;
   }
 
   renderMetadata() {
@@ -445,6 +441,7 @@ export default class DeckViewTab extends React.Component<Props> {
       buttons,
       showEditNameDialog,
       showTraumaDialog,
+      xpAdjustment,
     } = this.props;
 
     const sections = this.data();
@@ -507,6 +504,17 @@ export default class DeckViewTab extends React.Component<Props> {
               sections={sections}
             />
           </View>
+          <DeckProgressModule
+            componentId={componentId}
+            cards={cards}
+            deck={deck}
+            parsedDeck={this.props.parsedDeck}
+            isPrivate={isPrivate}
+            campaign={campaign}
+            showTraumaDialog={showTraumaDialog}
+            investigatorDataUpdates={investigatorDataUpdates}
+            xpAdjustment={xpAdjustment}
+          />
           { deck.local ? (
             <View style={styles.button}>
               <Button
@@ -531,16 +539,6 @@ export default class DeckViewTab extends React.Component<Props> {
               />
             </View>
           ) }
-          <DeckProgressModule
-            componentId={componentId}
-            cards={cards}
-            deck={deck}
-            parsedDeck={this.props.parsedDeck}
-            isPrivate={isPrivate}
-            campaign={campaign}
-            showTraumaDialog={showTraumaDialog}
-            investigatorDataUpdates={investigatorDataUpdates}
-          />
         </View>
       </ScrollView>
     );

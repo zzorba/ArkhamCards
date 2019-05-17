@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
+import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import DeckDelta from './DeckDelta';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
@@ -24,6 +25,7 @@ interface OwnProps {
   campaign?: Campaign;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   investigatorDataUpdates: any;
+  xpAdjustment: number;
 }
 
 interface ReduxProps {
@@ -83,19 +85,26 @@ class DeckProgressModule extends React.PureComponent<Props> {
       return null;
     }
     return (
-      <View style={styles.campaign}>
-        <Text style={[typography.text, space.marginBottomS]}>
-          { campaign.name }
-        </Text>
-        <View style={space.marginBottomM}>
-          <CampaignSummaryComponent campaign={campaign} hideScenario />
+      <React.Fragment>
+        <View style={styles.title}>
+          <Text style={typography.smallLabel}>
+            { t`CAMPAIGN PROGRESS` }
+          </Text>
         </View>
-        <EditTraumaComponent
-          investigator={investigator}
-          investigatorData={this.investigatorData()}
-          showTraumaDialog={showTraumaDialog}
-        />
-      </View>
+        <View style={styles.campaign}>
+          <Text style={[typography.text, space.marginBottomS]}>
+            { campaign.name }
+          </Text>
+          <View style={space.marginBottomM}>
+            <CampaignSummaryComponent campaign={campaign} hideScenario />
+          </View>
+          <EditTraumaComponent
+            investigator={investigator}
+            investigatorData={this.investigatorData()}
+            showTraumaDialog={showTraumaDialog}
+          />
+        </View>
+      </React.Fragment>
     );
   }
 
@@ -106,6 +115,7 @@ class DeckProgressModule extends React.PureComponent<Props> {
       deck,
       cards,
       parsedDeck,
+      xpAdjustment,
     } = this.props;
 
     if (!deck.previous_deck && !deck.next_deck && !campaign) {
@@ -115,19 +125,20 @@ class DeckProgressModule extends React.PureComponent<Props> {
     // Actually compute the diffs.
     return (
       <View style={styles.container}>
-        <View style={styles.title}>
-          <Text style={typography.smallLabel}>
-            { t`CAMPAIGN PROGRESS` }
-          </Text>
-        </View>
-        { this.renderCampaignSection() }
+        <ChangesFromPreviousDeck
+          componentId={componentId}
+          cards={cards}
+          parsedDeck={parsedDeck}
+          xpAdjustment={xpAdjustment}
+        />
         { (!!deck.previous_deck || !!deck.next_deck) && (
           <DeckDelta
             componentId={componentId}
-            cards={cards}
             parsedDeck={parsedDeck}
+            xpAdjustment={xpAdjustment}
           />
         ) }
+        { this.renderCampaignSection() }
       </View>
     );
   }
@@ -155,6 +166,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(DeckProgressModule);
 const styles = StyleSheet.create({
   container: {
     marginTop: 16,
+    marginBottom: 32,
   },
   campaign: {
     marginTop: 8,

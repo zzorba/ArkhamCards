@@ -28,6 +28,7 @@ export default class ExileCardDialog extends React.Component<Props, State> {
           id: 'save',
           showAsAction: 'ifRoom',
           color: COLORS.navButton,
+          testID: t`Save`,
         }],
       },
     };

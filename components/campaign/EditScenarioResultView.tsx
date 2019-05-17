@@ -69,6 +69,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
           color: COLORS.navButton,
           enabled: scenarioResult && !!(scenarioResult.scenario &&
             (scenarioResult.interlude || scenarioResult.resolution !== '')),
+          testID: t`Save`,
         }],
       },
     });

@@ -40,6 +40,7 @@ class MyDecksView extends React.Component<Props, State> {
           icon: iconsMap.add,
           id: 'add',
           color: COLORS.navButton,
+          testID: t`New Deck`,
         }],
       },
     };

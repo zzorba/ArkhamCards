@@ -74,10 +74,12 @@ class CardDetailView extends React.Component<Props, State> {
       icon: iconsMap.web,
       id: 'share',
       color: COLORS.navButton,
+      testID: t`Share`,
     }, {
       icon: iconsMap.faq,
       id: 'faq',
       color: COLORS.navButton,
+      testID: t`FAQ`,
     }];
     if (props.card &&
       props.card.type_code === 'investigator' &&
@@ -87,6 +89,7 @@ class CardDetailView extends React.Component<Props, State> {
         icon: iconsMap.deck,
         id: 'deck',
         color: COLORS.navButton,
+        testID: t`Deckbuilding Cards`,
       });
     }
     Navigation.mergeOptions(props.componentId, {

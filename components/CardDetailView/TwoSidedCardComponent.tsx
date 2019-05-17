@@ -41,8 +41,8 @@ const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={12} color="#000000" />
 );
 const ICON_SIZE = isBig ? 44 : 28;
-const SMALL_ICON_SIZE = isBig ? 24 : 14;
-const SKILL_ICON_SIZE = isBig ? 24 : 16;
+const SMALL_ICON_SIZE = isBig ? 26 : 16;
+const SKILL_ICON_SIZE = isBig ? 26 : 16;
 
 const SKILL_FIELDS = [
   'skill_willpower',
@@ -222,7 +222,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           <ArkhamIcon
             style={styles.testIcon}
             key={idx}
-            name={skill}
+            name={skill.substring(6)}
             size={SKILL_ICON_SIZE}
             color={SKILL_COLORS[skill]}
           />))
@@ -363,7 +363,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return (
         <View style={styles.factionIcon}>
           { (!!card.faction_code && CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-            <ArkhamIcon name={card.faction_code} size={ICON_SIZE} color={color} /> }
+            <ArkhamIcon name={card.faction_code} size={ICON_SIZE + 4} color={color} /> }
         </View>
       );
     }
@@ -557,7 +557,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={[typography.cardText, styles.illustratorText]}>
-              <AppIcon name="paintbrush" size={12} color="#000000" />
+              <AppIcon name="paintbrush" size={16} color="#000000" />
               { ` ${card.illustrator}` }
             </Text>
           ) }

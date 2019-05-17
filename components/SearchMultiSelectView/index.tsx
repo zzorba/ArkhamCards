@@ -62,6 +62,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
             text: t`Clear`,
             id: 'clear',
             color: COLORS.navButton,
+            testID: t`Clear`,
           }] : [],
       },
     });

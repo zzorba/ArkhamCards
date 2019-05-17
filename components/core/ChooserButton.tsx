@@ -46,6 +46,7 @@ export default class ChooserButton extends React.Component<Props> {
                 text: t`Clear`,
                 id: 'clear',
                 color: COLORS.navButton,
+                testID: t`Clear`,
               }] : [],
           },
         },

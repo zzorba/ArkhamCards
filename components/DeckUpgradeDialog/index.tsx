@@ -1,5 +1,5 @@
 import React from 'react';
-import { forEach, head, range, throttle } from 'lodash';
+import { forEach, find, head, keys, last, range, throttle } from 'lodash';
 import {
   ActivityIndicator,
   View,
@@ -11,19 +11,20 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
 import { Campaign, Deck, Slots } from '../../actions/types';
 import { handleAuthErrors } from '../authHelper';
 import { NavigationProps } from '../types';
 import { showDeckModal, showCard } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
+import StoryCardSelectorComponent from '../StoryCardSelectorComponent';
 import { updateCampaign } from '../campaign/actions';
 import withTraumaDialog, { TraumaProps } from '../campaign/withTraumaDialog';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
-import { upgradeLocalDeck } from '../decks/localHelper';
+import { upgradeLocalDeck, updateLocalDeck } from '../decks/localHelper';
 import Card from '../../data/Card';
-import { upgradeDeck } from '../../lib/authApi';
+import { saveDeck, upgradeDeck, UpgradeDeckResult } from '../../lib/authApi';
 import { login, setNewDeck, updateDeck } from '../../actions';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import { getDeck, getCampaign, getNextLocalDeckId, getTabooSet, AppState } from '../../reducers';
@@ -58,6 +59,9 @@ type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps 
 interface State {
   xp: number;
   exileCounts: Slots;
+  storyEncounterCodes: string[];
+  storyCounts: Slots;
+  scenarioName?: string;
   saving: boolean;
 }
 
@@ -71,10 +75,12 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           color: 'white',
           id: 'save',
           showAsAction: 'ifRoom',
+          testID: t`Save`,
         }],
         backButton: {
           title: t`Cancel`,
           color: 'white',
+          testID: t`Cancel`,
         },
       },
     };
@@ -85,16 +91,21 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    const latestScenario = props.campaign && head(props.campaign.scenarioResults || []);
+    const latestScenario = props.campaign && last(props.campaign.scenarioResults || []);
     const xp = latestScenario ? (latestScenario.xp || 0) : 0;
+    const storyEncounterCodes = latestScenario && latestScenario.scenarioCode ?
+      [latestScenario.scenarioCode] :
+      [];
     this.state = {
       xp,
       exileCounts: {},
       saving: false,
+      scenarioName: latestScenario ? latestScenario.scenario : undefined,
+      storyEncounterCodes,
+      storyCounts: {},
     };
 
     this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
-
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -108,27 +119,77 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     }
   }
 
-  _handleDeckResult = ({
-    deck,
-    upgradedDeck,
-  }: {
-    deck: Deck;
-    upgradedDeck: Deck;
-  }) => {
+  _deckUpgradeComplete = (deck: Deck) => {
     const {
       showNewDeck,
       componentId,
       investigator,
+    } = this.props;
+    if (showNewDeck) {
+      showDeckModal(componentId, deck, investigator);
+    } else {
+      Navigation.pop(componentId);
+    }
+  }
+
+  _handleUpgradeDeckResult = ({
+    deck,
+    upgradedDeck,
+  }: UpgradeDeckResult) => {
+    const {
       setNewDeck,
       updateDeck,
     } = this.props;
     updateDeck(deck.id, deck, false);
     setNewDeck(upgradedDeck.id, upgradedDeck);
-    if (showNewDeck) {
-      showDeckModal(componentId, upgradedDeck, investigator);
+
+    const {
+      storyCounts,
+    } = this.state;
+    const hasStoryChange = !!find(keys(storyCounts), code =>
+      upgradedDeck.slots[code] !== storyCounts[code]
+    );
+    if (hasStoryChange) {
+      const newSlots: Slots = { ...upgradedDeck.slots };
+      forEach(keys(storyCounts), code => {
+        if (storyCounts[code] > 0) {
+          newSlots[code] = storyCounts[code];
+        } else {
+          delete newSlots[code];
+        }
+      });
+      if (upgradedDeck.local) {
+        const updatedDeck = updateLocalDeck(
+          upgradedDeck,
+          upgradedDeck.name,
+          newSlots,
+          upgradedDeck.ignoreDeckLimitSlots || {},
+          upgradedDeck.problem || '',
+          upgradedDeck.spentXp,
+          upgradedDeck.xp_adjustment,
+          upgradedDeck.taboo_id
+        );
+        updateDeck(updatedDeck.id, updatedDeck, false);
+        this._deckUpgradeComplete(updatedDeck);
+      } else {
+        saveDeck(
+          upgradedDeck.id,
+          upgradedDeck.name,
+          newSlots,
+          upgradedDeck.ignoreDeckLimitSlots || {},
+          upgradedDeck.problem || '',
+          upgradedDeck.spentXp || 0,
+          upgradedDeck.xp_adjustment || 0,
+          upgradedDeck.taboo_id
+        ).then(deck => {
+          updateDeck(deck.id, deck, false);
+          this._deckUpgradeComplete(deck);
+        });
+      }
     } else {
-      Navigation.pop(componentId);
+      this._deckUpgradeComplete(upgradedDeck);
     }
+
   };
 
   saveUpgrade(isRetry?: boolean) {
@@ -170,7 +231,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
         }
       });
       if (local) {
-        this._handleDeckResult(
+        this._handleUpgradeDeckResult(
           upgradeLocalDeck(nextLocalDeckId, deck, xp, exileParts)
         );
         this.setState({
@@ -181,7 +242,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
         const upgradeDeckPromise = upgradeDeck(id, xp, exiles);
         handleAuthErrors(
           upgradeDeckPromise,
-          this._handleDeckResult,
+          this._handleUpgradeDeckResult,
           () => {
             this.setState({
               saving: false,
@@ -202,6 +263,12 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
   _onExileCountsChange = (exileCounts: Slots) => {
     this.setState({
       exileCounts,
+    });
+  };
+
+  _onStoryCountsChange = (storyCounts: Slots) => {
+    this.setState({
+      storyCounts,
     });
   };
 
@@ -261,6 +328,8 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       xp,
       exileCounts,
       saving,
+      storyEncounterCodes,
+      scenarioName,
     } = this.state;
     if (!deck) {
       return null;
@@ -269,7 +338,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       return (
         <View style={[styles.container, styles.saving]}>
           <Text style={typography.text}>
-            Saving...
+            { t`Saving...` }
           </Text>
           <ActivityIndicator
             style={styles.savingSpinner}
@@ -282,8 +351,8 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.labeledRow}>
-          <Text style={typography.small}>
-            EXPERIENCE
+          <Text style={[typography.small, styles.header]}>
+            { t`Earned experience` }
           </Text>
           <View style={styles.row}>
             <Text style={typography.text}>
@@ -296,13 +365,20 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
             />
           </View>
         </View>
-        { this.renderCampaignSection() }
         <ExileCardSelectorComponent
           componentId={componentId}
           id={deck.id}
           showLabel
           exileCounts={exileCounts}
           updateExileCounts={this._onExileCountsChange}
+        />
+        { this.renderCampaignSection() }
+        <StoryCardSelectorComponent
+          componentId={componentId}
+          deckId={deck.id}
+          updateStoryCounts={this._onStoryCountsChange}
+          encounterCodes={storyEncounterCodes}
+          scenarioName={scenarioName}
         />
       </ScrollView>
     );
@@ -373,5 +449,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  header: {
+    textTransform: 'uppercase',
   },
 });

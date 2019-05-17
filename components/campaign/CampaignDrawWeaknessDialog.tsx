@@ -81,6 +81,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
             icon: iconsMap.edit,
             id: 'edit',
             color: COLORS.navButton,
+            testID: t`Edit Assigned Weaknesses`,
           }],
         },
       });
@@ -233,6 +234,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
           deck,
           deck.name,
           newSlots,
+          deck.ignoreDeckLimitSlots || {},
           problem,
           parsedDeck.spentXp,
           deck.xp_adjustment,

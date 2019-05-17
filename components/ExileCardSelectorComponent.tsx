@@ -45,7 +45,7 @@ class ExileCardSelectorComponent extends React.Component<Props> {
 
     const header = !!showLabel && (
       <Text style={[typography.small, styles.exileText]}>
-        { t`EXILE CARDS` }
+        { t`Exiled cards` }
       </Text>
     );
     return (
@@ -75,5 +75,6 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
 const styles = StyleSheet.create({
   exileText: {
     paddingLeft: 8,
+    textTransform: 'uppercase',
   },
 });
