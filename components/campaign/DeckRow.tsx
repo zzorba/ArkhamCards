@@ -14,7 +14,7 @@ import DeckListRow from '../DeckListRow';
 import { Deck } from '../../actions/types';
 import AppIcon from '../../assets/AppIcon';
 import Card, { CardsMap } from '../../data/Card';
-import { fetchPrivateDeck } from '../../actions';
+import { fetchPrivateDeck } from '../decks/actions';
 import { getDeck, AppState } from '../../reducers';
 
 type RenderDeckDetails = (

@@ -1,5 +1,6 @@
 import { forEach } from 'lodash';
 
+import { UpgradeDeckResult } from '../../lib/authApi';
 import { Deck, Slots } from '../../actions/types';
 
 export function newLocalDeck(
@@ -61,7 +62,7 @@ export function upgradeLocalDeck(
   deck: Deck,
   xp: number,
   exiles: string[]
-) {
+): UpgradeDeckResult {
   const versionParts = (deck.version || '0.1').split('.');
   // @ts-ignore
   versionParts[0]++;
@@ -97,29 +98,8 @@ export function upgradeLocalDeck(
   };
 }
 
-export function cloneLocalDeck(id: number, deck: Deck, name: string) {
-  const timestamp = (new Date()).toISOString();
-  return Object.assign(
-    {},
-    deck,
-    {
-      id,
-      date_creation: timestamp,
-      date_update: timestamp,
-      name,
-      local: true,
-      version: '0.1',
-      xp: 0,
-      spentXp: 0,
-      previous_deck: null,
-      next_deck: null,
-    }
-  );
-}
-
 export default {
   newLocalDeck,
   updateLocalDeck,
   upgradeLocalDeck,
-  cloneLocalDeck,
 };

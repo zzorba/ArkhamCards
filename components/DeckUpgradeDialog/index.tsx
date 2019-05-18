@@ -1,5 +1,5 @@
 import React from 'react';
-import { forEach, find, head, keys, last, range, throttle } from 'lodash';
+import { forEach, find, head, keys, last, throttle } from 'lodash';
 import {
   ActivityIndicator,
   View,
@@ -14,7 +14,6 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { Campaign, Deck, Slots } from '../../actions/types';
-import { handleAuthErrors } from '../authHelper';
 import { NavigationProps } from '../types';
 import { showDeckModal, showCard } from '../navHelper';
 import ExileCardSelectorComponent from '../ExileCardSelectorComponent';
@@ -22,12 +21,10 @@ import StoryCardSelectorComponent from '../StoryCardSelectorComponent';
 import { updateCampaign } from '../campaign/actions';
 import withTraumaDialog, { TraumaProps } from '../campaign/withTraumaDialog';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
-import { upgradeLocalDeck, updateLocalDeck } from '../decks/localHelper';
 import Card from '../../data/Card';
-import { saveDeck, upgradeDeck, UpgradeDeckResult } from '../../lib/authApi';
-import { login, setNewDeck, updateDeck } from '../../actions';
+import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '../decks/actions';
 import PlusMinusButtons from '../core/PlusMinusButtons';
-import { getDeck, getCampaign, getNextLocalDeckId, getTabooSet, AppState } from '../../reducers';
+import { getDeck, getCampaign, getTabooSet, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 
 export interface UpgradeDeckProps {
@@ -39,14 +36,12 @@ export interface UpgradeDeckProps {
 interface ReduxProps {
   deck?: Deck;
   campaign?: Campaign;
-  nextLocalDeckId: number;
   tabooSetId?: number;
 }
 
 interface ReduxActionProps {
-  login: () => void;
-  setNewDeck: (id: number, deck: Deck) => void;
-  updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
+  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
+  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
   updateCampaign: (id: number, sparseCampaign: Campaign) => void;
 }
 
@@ -132,17 +127,10 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     }
   }
 
-  _handleUpgradeDeckResult = ({
-    deck,
-    upgradedDeck,
-  }: UpgradeDeckResult) => {
+  _handleStoryCardChanges = (upgradedDeck: Deck) => {
     const {
-      setNewDeck,
-      updateDeck,
+      saveDeckChanges,
     } = this.props;
-    updateDeck(deck.id, deck, false);
-    setNewDeck(upgradedDeck.id, upgradedDeck);
-
     const {
       storyCounts,
     } = this.state;
@@ -158,38 +146,15 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           delete newSlots[code];
         }
       });
-      if (upgradedDeck.local) {
-        const updatedDeck = updateLocalDeck(
-          upgradedDeck,
-          upgradedDeck.name,
-          newSlots,
-          upgradedDeck.ignoreDeckLimitSlots || {},
-          upgradedDeck.problem || '',
-          upgradedDeck.spentXp,
-          upgradedDeck.xp_adjustment,
-          upgradedDeck.taboo_id
-        );
-        updateDeck(updatedDeck.id, updatedDeck, false);
-        this._deckUpgradeComplete(updatedDeck);
-      } else {
-        saveDeck(
-          upgradedDeck.id,
-          upgradedDeck.name,
-          newSlots,
-          upgradedDeck.ignoreDeckLimitSlots || {},
-          upgradedDeck.problem || '',
-          upgradedDeck.spentXp || 0,
-          upgradedDeck.xp_adjustment || 0,
-          upgradedDeck.taboo_id
-        ).then(deck => {
-          updateDeck(deck.id, deck, false);
-          this._deckUpgradeComplete(deck);
-        });
-      }
+      saveDeckChanges(upgradedDeck, { slots: newSlots }).then(
+        this._deckUpgradeComplete,
+        () => {
+          this._deckUpgradeComplete(upgradedDeck);
+        }
+      );
     } else {
       this._deckUpgradeComplete(upgradedDeck);
     }
-
   };
 
   saveUpgrade(isRetry?: boolean) {
@@ -197,16 +162,11 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       deck,
       campaign,
       updateCampaign,
-      login,
-      nextLocalDeckId,
+      saveDeckUpgrade,
     } = this.props;
     if (!deck) {
       return;
     }
-    const {
-      id,
-      local,
-    } = deck;
     if (!this.state.saving || isRetry) {
       this.setState({
         saving: true,
@@ -224,35 +184,18 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
         xp,
         exileCounts,
       } = this.state;
-      const exileParts: string[] = [];
-      forEach(exileCounts, (count, code) => {
-        if (count > 0) {
-          forEach(range(0, count), () => exileParts.push(code));
-        }
+      this.setState({
+        saving: true,
       });
-      if (local) {
-        this._handleUpgradeDeckResult(
-          upgradeLocalDeck(nextLocalDeckId, deck, xp, exileParts)
-        );
-        this.setState({
-          saving: false,
-        });
-      } else {
-        const exiles = exileParts.join(',');
-        const upgradeDeckPromise = upgradeDeck(id, xp, exiles);
-        handleAuthErrors(
-          upgradeDeckPromise,
-          this._handleUpgradeDeckResult,
-          () => {
-            this.setState({
-              saving: false,
-            });
-          },
-          // retry
-          () => this.saveUpgrade(true),
-          login
-        );
-      }
+      saveDeckUpgrade(deck, xp, exileCounts).then(
+        this._handleStoryCardChanges,
+        () => {
+          // TODO: handle errors
+          this.setState({
+            saving: false,
+          });
+        }
+      );
     }
   }
 
@@ -390,18 +333,16 @@ function mapStateToProps(state: AppState, props: UpgradeDeckProps): ReduxProps {
   return {
     deck: getDeck(state, props.id) || undefined,
     campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
-    nextLocalDeckId: getNextLocalDeckId(state),
     tabooSetId: getTabooSet(state),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    login,
-    setNewDeck,
-    updateDeck,
+    saveDeckChanges,
+    saveDeckUpgrade,
     updateCampaign,
-  }, dispatch);
+  } as any, dispatch);
 }
 
 export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDeckProps, AppState>(

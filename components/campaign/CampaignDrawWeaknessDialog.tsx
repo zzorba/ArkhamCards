@@ -1,6 +1,6 @@
 import React from 'react';
 import { head, flatMap, forEach, keys, map, range, throttle } from 'lodash';
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
@@ -13,11 +13,9 @@ import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
 import { parseDeck } from '../parseDeck';
-import { updateLocalDeck } from '../decks/localHelper';
-import { updateDeck } from '../../actions';
+import { saveDeckChanges, DeckChanges } from '../decks/actions';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
-import { saveDeck } from '../../lib/authApi';
 import DeckValidation from '../../lib/DeckValidation';
 import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
@@ -40,8 +38,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  updateCampaign: (id: number, campaign: Campaign) => void;
-  updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
+  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
 }
 
 type Props = NavigationProps & CampaignDrawWeaknessProps & ReduxProps & ReduxActionProps & PlayerCardProps;
@@ -178,8 +175,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const {
       campaignId,
       weaknessSet,
-      updateCampaign,
-      updateDeck,
+      saveDeckChanges,
       decks,
       cards,
       investigators,
@@ -229,51 +225,31 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       }));
       const problem = problemObj ? problemObj.reason : '';
 
-      if (deck.local) {
-        const newDeck = updateLocalDeck(
-          deck,
-          deck.name,
-          newSlots,
-          deck.ignoreDeckLimitSlots || {},
-          problem,
-          parsedDeck.spentXp,
-          deck.xp_adjustment,
-          deck.taboo_id
-        );
-        updateDeck(newDeck.id, newDeck, true);
+      this.setState({
+        saving: true,
+      });
+      saveDeckChanges(deck, {
+        slots: newSlots,
+        problem,
+        spentXp: parsedDeck.spentXp,
+      }).then(() => {
         this.setState({
+          saving: false,
           pendingAssignedCards: {},
           pendingNextCard: undefined,
         });
-      } else {
-        // ArkhamDB deck
+        const newWeaknessSet = {
+          ...weaknessSet,
+          assignedCards: pendingAssignedCards,
+        };
+        updateCampaign(campaignId, { weaknessSet: newWeaknessSet } as any as Campaign);
+      }, err => {
         this.setState({
-          saving: true,
+          saving: false,
         });
-        saveDeck(
-          deck.id,
-          deck.name,
-          newSlots,
-          parsedDeck.ignoreDeckLimitSlots,
-          problem,
-          parsedDeck.spentXp,
-          deck.xp_adjustment,
-          deck.taboo_id
-        ).then(deck => {
-          updateDeck(deck.id, deck, true);
-          this.setState({
-            saving: false,
-            pendingAssignedCards: {},
-            pendingNextCard: undefined,
-          });
-        });
-      }
+        Alert.alert(err);
+      });
     }
-    const newWeaknessSet = {
-      ...weaknessSet,
-      assignedCards: pendingAssignedCards,
-    };
-    updateCampaign(campaignId, { weaknessSet: newWeaknessSet } as any as Campaign);
   };
 
   renderInvestigatorChooser() {
@@ -388,9 +364,8 @@ function mapStateToProps(state: AppState, props: NavigationProps & CampaignDrawW
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    updateDeck,
-    updateCampaign,
-  }, dispatch);
+    saveDeckChanges,
+  } as any, dispatch);
 }
 
 export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignDrawWeaknessProps, AppState>(

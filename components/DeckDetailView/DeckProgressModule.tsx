@@ -9,7 +9,7 @@ import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
 import { ParsedDeck } from '../parseDeck';
 import { t } from 'ttag';
-import { fetchPublicDeck, fetchPrivateDeck } from '../../actions';
+import { fetchPublicDeck, fetchPrivateDeck } from '../decks/actions';
 import { Campaign, Deck, Trauma } from '../../actions/types';
 import Card, { CardsMap } from '../../data/Card';
 import { getDeck, AppState } from '../../reducers';

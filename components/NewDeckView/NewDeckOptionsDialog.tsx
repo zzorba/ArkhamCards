@@ -14,19 +14,16 @@ import DialogComponent from 'react-native-dialog';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
 import TabooSetDialogOptions from '../TabooSetDialogOptions';
-import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
-import { newLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '../core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '../withLoginState';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
-import { setNewDeck } from '../../actions';
+import { saveNewDeck, NewDeckParams } from '../decks/actions';
 import { Deck, Slots } from '../../actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import Card from '../../data/Card';
-import { newCustomDeck } from '../../lib/authApi';
-import { getNextLocalDeckId, getTabooSet, AppState } from '../../reducers';
+import { getTabooSet, AppState } from '../../reducers';
 import { t } from 'ttag';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
@@ -41,12 +38,11 @@ interface OwnProps {
 }
 
 interface ReduxProps {
-  nextLocalDeckId: number;
   defaultTabooSetId?: number;
 }
 
 interface ReduxActionProps {
-  setNewDeck: (id: number, deck: Deck) => void;
+  saveNewDeck: (params: NewDeckParams) => Promise<Deck>;
 }
 
 type Props = OwnProps &
@@ -120,15 +116,13 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     });
   }
 
-  showNewDeck(deck: Deck) {
+  _showNewDeck = (deck: Deck) => {
     const {
       componentId,
-      setNewDeck,
       onCreateDeck,
       toggleVisible,
     } = this.props;
     const investigator = this.investigator();
-    setNewDeck(deck.id, deck);
     this.setState({
       saving: false,
     });
@@ -138,7 +132,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     // Change the deck options for required cards, if present.
     onCreateDeck && onCreateDeck(deck);
     showDeckModal(componentId, deck, investigator);
-  }
+  };
 
   getSlots() {
     const {
@@ -183,10 +177,9 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
   onOkayPress(isRetry?: boolean) {
     const {
-      login,
       signedIn,
-      nextLocalDeckId,
       networkType,
+      saveNewDeck,
     } = this.props;
     const {
       deckName,
@@ -196,39 +189,25 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     } = this.state;
     const investigator = this.investigator();
     if (investigator && (!saving || isRetry)) {
-      if (offlineDeck || !signedIn || networkType === 'none') {
-        const deck = newLocalDeck(
-          nextLocalDeckId,
-          deckName || 'New Deck',
-          investigator.code,
-          this.getSlots(),
-          tabooSetId,
-        );
-        this.showNewDeck(deck);
-      } else {
-        this.setState({
-          saving: true,
-        });
-        const newDeckPromise = newCustomDeck(
-          investigator.code,
-          deckName || 'New Deck',
-          this.getSlots(),
-          {},
-          'too_few_cards',
-          tabooSetId
-        );
-        handleAuthErrors(
-          newDeckPromise,
-          deck => this.showNewDeck(deck),
-          () => {
-            this.setState({
-              saving: false,
-            });
-          },
-          () => this.onOkayPress(true),
-          login
-        );
-      }
+      const local = (offlineDeck || !signedIn || networkType === 'none');
+      this.setState({
+        saving: true,
+      });
+      saveNewDeck({
+        local,
+        deckName: deckName || t`New Deck`,
+        investigatorCode: investigator.code,
+        slots: this.getSlots(),
+        tabooSetId,
+      }).then(
+        this._showNewDeck,
+        () => {
+          // TODO: error
+          this.setState({
+            saving: false,
+          });
+        }
+      );
     }
   }
 
@@ -414,13 +393,12 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState): ReduxProps {
   return {
-    nextLocalDeckId: getNextLocalDeckId(state),
     defaultTabooSetId: getTabooSet(state),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({ setNewDeck }, dispatch);
+  return bindActionCreators({ saveNewDeck } as any, dispatch);
 }
 
 export default withPlayerCards<OwnProps>(

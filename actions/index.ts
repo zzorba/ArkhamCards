@@ -1,11 +1,7 @@
-import Config from 'react-native-config';
 import { Action } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import {
-  NEW_DECK_AVAILABLE,
-  DELETE_DECK,
-  UPDATE_DECK,
   CLEAR_DECKS,
   SET_MY_DECKS,
   MY_DECKS_START_REFRESH,
@@ -17,17 +13,15 @@ import {
   LOGIN,
   LOGIN_ERROR,
   LOGOUT,
-  REPLACE_LOCAL_DECK,
-  Deck,
 } from './types';
 import { AppState } from '../reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from '../lib/auth';
 // @ts-ignore
-import { decks, loadDeck } from '../lib/authApi';
+import { decks } from '../lib/authApi';
 
-export function login(): ThunkAction<void, AppState, null, Action<string>> {
-  return (dispatch) => {
+export function login(): ThunkAction<void, AppState, {}, Action> {
+  return (dispatch: ThunkDispatch<AppState, {}, Action>): void => {
     dispatch({
       type: LOGIN_STARTED,
     });
@@ -88,8 +82,8 @@ function getDecksLastModified(state: AppState): string | undefined {
     undefined;
 }
 
-export function refreshMyDecks(): ThunkAction<void, AppState, null, Action<string>> {
-  return (dispatch, getState) => {
+export function refreshMyDecks(): ThunkAction<void, AppState, {}, Action> {
+  return (dispatch: ThunkDispatch<AppState, {}, Action>, getState: () => AppState) => {
     dispatch({
       type: MY_DECKS_START_REFRESH,
     });
@@ -115,84 +109,6 @@ export function refreshMyDecks(): ThunkAction<void, AppState, null, Action<strin
         error: error.message || error,
       });
     });
-  };
-}
-
-export function setNewDeck(
-  id: number,
-  deck: Deck
-) {
-  return {
-    type: NEW_DECK_AVAILABLE,
-    id,
-    deck,
-  };
-}
-
-export function updateDeck(
-  id: number,
-  deck: Deck,
-  isWrite: boolean
-) {
-  return {
-    type: UPDATE_DECK,
-    id,
-    deck,
-    isWrite,
-  };
-}
-
-export function replaceLocalDeck(localId: number, deck: Deck) {
-  return {
-    type: REPLACE_LOCAL_DECK,
-    localId,
-    deck,
-  };
-}
-
-export function removeDeck(id: number, deleteAllVersions?: boolean) {
-  return {
-    type: DELETE_DECK,
-    id,
-    deleteAllVersions: !!deleteAllVersions,
-  };
-}
-
-export function fetchPrivateDeck(
-  id: number
-): ThunkAction<void, AppState, null, Action<string>> {
-  return (dispatch) => {
-    loadDeck(id).then(deck => {
-      dispatch(updateDeck(id, deck, false));
-    }).catch(err => {
-      if (err.message === 'Not Found') {
-        dispatch(removeDeck(id));
-      }
-    });
-  };
-}
-
-export function fetchPublicDeck(
-  id: number,
-  useDeckEndpoint: boolean
-): ThunkAction<void, AppState, null, Action<string>> {
-  return (dispatch) => {
-    const uri = `${Config.OAUTH_SITE}api/public/${useDeckEndpoint ? 'deck' : 'decklist'}/${id}`;
-    fetch(uri, { method: 'GET' })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-        throw new Error(`Unexpected status: ${response.status}`);
-      })
-      .then(json => {
-        dispatch(updateDeck(id, json, false));
-      }).catch((err: Error) => {
-        if (!useDeckEndpoint) {
-          return dispatch(fetchPublicDeck(id, true));
-        }
-        console.log(err);
-      });
   };
 }
 
@@ -233,12 +149,6 @@ export default {
   logout,
   verifyLogin,
   refreshMyDecks,
-  fetchPrivateDeck,
-  fetchPublicDeck,
   setInCollection,
   setPackSpoiler,
-  setNewDeck,
-  updateDeck,
-  removeDeck,
-  replaceLocalDeck,
 };

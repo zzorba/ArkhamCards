@@ -1,5 +1,6 @@
 import Realm from 'realm';
 import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
 
 import { changeLocale } from '../../app/i18n';
 import {
@@ -79,10 +80,11 @@ export function fetchCards(
   };
 }
 
+type PackActions = PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction;
 export function fetchPacks(
   lang: string
-): ThunkAction<Promise<Pack[]>, AppState, null, PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHitAction | PacksAvailableAction> {
-  return (dispatch, getState) => {
+): ThunkAction<Promise<Pack[]>, AppState, null, PackActions> {
+  return (dispatch: Dispatch<PackActions>, getState: () => AppState) => {
     dispatch({
       type: PACKS_FETCH_START,
     });

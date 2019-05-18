@@ -1,4 +1,4 @@
-import { concat, filter, forEach, map, reverse, sortBy } from 'lodash';
+import { concat, uniq, filter, forEach, map, reverse, sortBy } from 'lodash';
 
 import {
   LOGOUT,
@@ -151,21 +151,22 @@ export default function(
   }
   if (action.type === REPLACE_LOCAL_DECK) {
     const deck = updateDeck(state, action);
-    const all = Object.assign(
-      {},
-      state.all,
-      { [deck.id]: deck }
-    );
+    const all = {
+      ...state.all,
+      [deck.id]: deck,
+    };
     delete all[action.localId];
-    const myDecks = map(state.myDecks || [], deckId => {
+    const myDecks = uniq(map(state.myDecks || [], deckId => {
       if (deckId === action.localId) {
         return deck.id;
       }
       return deckId;
-    });
+    }));
 
-    const replacedLocalIds = Object.assign({}, state.replacedLocalIds || {});
-    replacedLocalIds[action.localId] = deck.id;
+    const replacedLocalIds = {
+      ...(state.replacedLocalIds || {}),
+      [action.localId]: deck.id,
+    };
     return Object.assign({},
       state,
       {

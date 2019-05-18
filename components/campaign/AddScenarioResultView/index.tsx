@@ -11,12 +11,11 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { t } from 'ttag';
-import { Deck, DecksMap, SingleCampaign, ScenarioResult } from '../../../actions/types';
+import { DecksMap, SingleCampaign, ScenarioResult } from '../../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import { NavigationProps } from '../../types';
 import ScenarioSection from './ScenarioSection';
 import XpComponent from '../XpComponent';
-import { setNewDeck, updateDeck } from '../../../actions';
 import { addScenarioResult } from '../actions';
 import { getAllDecks, getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
@@ -33,8 +32,6 @@ interface ReduxProps {
 
 interface ReduxActionProps {
   addScenarioResult: (id: number, scenarioResult: ScenarioResult) => void;
-  setNewDeck: (id: number, deck: Deck) => void;
-  updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
 }
 
 type Props = NavigationProps & AddScenarioResultProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
@@ -164,8 +161,6 @@ function mapStateToProps(state: AppState, props: NavigationProps & AddScenarioRe
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     addScenarioResult,
-    setNewDeck,
-    updateDeck,
   }, dispatch);
 }
 

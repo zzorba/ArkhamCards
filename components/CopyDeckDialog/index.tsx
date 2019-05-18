@@ -8,18 +8,16 @@ import DialogComponent from 'react-native-dialog';
 import SelectDeckSwitch from './SelectDeckSwitch';
 import { parseDeck } from '../parseDeck';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
-import { handleAuthErrors } from '../authHelper';
 import { showDeckModal } from '../navHelper';
 import Dialog from '../core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '../core/withNetworkStatus';
-import { cloneLocalDeck } from '../decks/localHelper';
-import { login, setNewDeck } from '../../actions';
+import { saveClonedDeck } from '../decks/actions';
+import { login } from '../../actions';
 import { Deck } from '../../actions/types';
-import { newDeck, saveDeck } from '../../lib/authApi';
 import { t } from 'ttag';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
-import { getDeck, getBaseDeck, getLatestDeck, getNextLocalDeckId, AppState } from '../../reducers';
+import { getDeck, getBaseDeck, getLatestDeck, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 interface OwnProps {
@@ -34,12 +32,11 @@ interface ReduxProps {
   deck?: Deck;
   baseDeck?: Deck;
   latestDeck?: Deck;
-  nextLocalDeckId: number;
 }
 
 interface ReduxActionProps {
   login: () => void;
-  setNewDeck: (id: number, deck: Deck) => void;
+  saveClonedDeck: (local: boolean, cloneDeck: Deck, deckName: string) => Promise<Deck>;
 }
 
 type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps & NetworkStatusProps;
@@ -123,14 +120,12 @@ class CopyDeckDialog extends React.Component<Props, State> {
     });
   }
 
-  showNewDeck(deck: Deck) {
+  _showNewDeck = (deck: Deck) => {
     const {
       componentId,
-      setNewDeck,
       toggleVisible,
     } = this.props;
     const investigator = this.investigator();
-    setNewDeck(deck.id, deck);
     this.setState({
       saving: false,
     });
@@ -139,7 +134,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
     }
     // Change the deck options for required cards, if present.
     showDeckModal(componentId, deck, investigator);
-  }
+  };
 
   selectedDeck(): Deck | undefined {
     const {
@@ -160,46 +155,11 @@ class CopyDeckDialog extends React.Component<Props, State> {
     return deck;
   }
 
-  _updateNewDeck = (deck: Deck) => {
-    const cloneDeck = this.selectedDeck();
-    if (!cloneDeck) {
-      return;
-    }
-    const savePromise = saveDeck(
-      deck.id,
-      deck.name,
-      cloneDeck.slots,
-      cloneDeck.ignoreDeckLimitSlots,
-      cloneDeck.problem || '',
-      0,
-      0,
-      cloneDeck.taboo_id
-    );
-    handleAuthErrors(
-      savePromise,
-      // onSuccess
-      (deck: Deck) => this.showNewDeck(deck),
-      // onFailure
-      () => {
-        this.setState({
-          saving: false,
-        });
-      },
-      // retry
-      () => {
-        this._updateNewDeck(deck);
-      },
-      // login
-      this.props.login
-    );
-  };
-
   onOkayPress(isRetry: boolean) {
     const {
-      login,
       signedIn,
-      nextLocalDeckId,
       networkType,
+      saveClonedDeck,
     } = this.props;
     const {
       deckName,
@@ -211,29 +171,20 @@ class CopyDeckDialog extends React.Component<Props, State> {
     }
     const investigator = this.investigator();
     if (investigator && (!this.state.saving || isRetry)) {
-      if (offlineDeck || !signedIn || networkType === 'none') {
-        const cloneDeck = this.selectedDeck();
-        if (!cloneDeck) {
-          return;
+      const local = (offlineDeck || !signedIn || networkType === 'none');
+      saveClonedDeck(
+        local,
+        cloneDeck,
+        deckName || t`New Deck`
+      ).then(
+        this._showNewDeck,
+        () => {
+          // TODO: error.
+          this.setState({
+            saving: false,
+          });
         }
-        const newDeck = cloneLocalDeck(nextLocalDeckId, cloneDeck, deckName || 'New Deck');
-        this.showNewDeck(newDeck);
-      } else {
-        this.setState({
-          saving: true,
-        });
-        handleAuthErrors(
-          newDeck(investigator.code, deckName || 'New Deck', cloneDeck.taboo_id),
-          this._updateNewDeck,
-          () => {
-            this.setState({
-              saving: false,
-            });
-          },
-          () => this.onOkayPress(true),
-          login
-        );
-      }
+      );
     }
   }
 
@@ -396,9 +347,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): ReduxProps {
   if (!props.deckId) {
-    return {
-      nextLocalDeckId: getNextLocalDeckId(state),
-    };
+    return {};
   }
   const deck = getDeck(state, props.deckId);
   let baseDeck: Deck | undefined = getBaseDeck(state, props.deckId);
@@ -413,12 +362,14 @@ function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): Re
     deck: deck || undefined,
     baseDeck,
     latestDeck,
-    nextLocalDeckId: getNextLocalDeckId(state),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({ login, setNewDeck }, dispatch);
+  return bindActionCreators({
+    saveClonedDeck,
+    login,
+  } as any, dispatch);
 }
 
 export default withPlayerCards<OwnProps>(

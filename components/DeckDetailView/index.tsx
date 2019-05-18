@@ -18,7 +18,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
@@ -31,9 +31,7 @@ import { t } from 'ttag';
 
 import withLoginState, { LoginStateProps } from '../withLoginState';
 import CopyDeckDialog from '../CopyDeckDialog';
-import { handleAuthErrors } from '../authHelper';
 import withTraumaDialog, { TraumaProps } from '../campaign/withTraumaDialog';
-import { updateLocalDeck } from '../decks/localHelper';
 import Dialog from '../core/Dialog';
 import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
 import Button from '../core/Button';
@@ -41,13 +39,13 @@ import { iconsMap } from '../../app/NavIcons';
 import {
   fetchPrivateDeck,
   fetchPublicDeck,
-  updateDeck,
   removeDeck,
-  replaceLocalDeck,
-} from '../../actions';
+  uploadLocalDeck,
+  saveDeckChanges,
+  DeckChanges,
+} from '../decks/actions';
 import { Campaign, Deck, Slots } from '../../actions/types';
 import { updateCampaign } from '../campaign/actions';
-import { saveDeck, newCustomDeck } from '../../lib/authApi';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
@@ -87,10 +85,10 @@ interface ReduxProps {
 interface ReduxActionProps {
   fetchPrivateDeck: (id: number) => void;
   fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
-  updateDeck: (id: number, deck: Deck, isWrite: boolean) => void;
   removeDeck: (id: number, deleteAllVersions?: boolean) => void;
-  replaceLocalDeck: (localId: number, deck: Deck) => void;
+  uploadLocalDeck: (deck: Deck) => Promise<Deck>;
   updateCampaign: (id: number, sparseCampaign: Campaign) => void;
+  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
 }
 
 type Props = NavigationProps & DeckDetailProps & TabooSetOverrideProps &
@@ -546,9 +544,7 @@ class DeckDetailView extends React.Component<Props, State> {
   uploadLocalDeck(isRetry?: boolean) {
     const {
       deck,
-      login,
-      id,
-      replaceLocalDeck,
+      uploadLocalDeck,
     } = this.props;
     const {
       parsedDeck,
@@ -557,46 +553,21 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!parsedDeck || !deck) {
       return;
     }
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = parsedDeck;
     if (!saving || isRetry) {
-      const problemObj = this.getProblem();
-      const problem = problemObj ? problemObj.reason : '';
       this.setState({
         saving: true,
       });
-
-      const promise = newCustomDeck(
-        deck.investigator_code,
-        deck.name,
-        slots,
-        ignoreDeckLimitSlots,
-        problem,
-        deck.taboo_id
-      );
-      handleAuthErrors(
-        promise,
-        // onSuccess
-        deck => {
-          // Replace the local deck with the new one.
-          replaceLocalDeck(id, deck);
-          this.setState({
-            saving: false,
-            nameChange: undefined,
-            tabooSetId: deck.taboo_id,
-            hasPendingEdits: false,
-          }, this._syncNavigationButtons);
-        },
-        // onFailure
-        this._handleSaveError,
-        // retry
-        () => {
-          this.uploadLocalDeck(true);
-        },
-        login
-      );
+      uploadLocalDeck(deck).then(newDeck => {
+        this.setState({
+          saving: false,
+          tabooSetId: newDeck.taboo_id,
+          hasPendingEdits: false,
+        }, this._syncNavigationButtons);
+      }, () => {
+        this.setState({
+          saving: false,
+        });
+      });
     }
   }
 
@@ -640,7 +611,6 @@ class DeckDetailView extends React.Component<Props, State> {
   saveEdits(dismissAfterSave: boolean, isRetry?: boolean) {
     const {
       deck,
-      updateDeck,
     } = this.props;
     if (!this.state.saving || isRetry) {
       const {
@@ -666,68 +636,32 @@ class DeckDetailView extends React.Component<Props, State> {
         ignoreDeckLimitSlots
       );
 
-      if (deck.local) {
-        const newDeck = updateLocalDeck(
-          deck,
-          nameChange || deck.name,
+      this.setState({
+        saving: true,
+      });
+      this.props.saveDeckChanges(
+        deck,
+        {
+          name: nameChange,
           slots,
           ignoreDeckLimitSlots,
           problem,
-          parsedDeck.spentXp,
+          spentXp: parsedDeck.spentXp,
           xpAdjustment,
-          tabooSetId !== undefined ? tabooSetId : deck.taboo_id
-        );
-        updateDeck(newDeck.id, newDeck, true);
+          tabooSetId,
+        }
+      ).then(() => {
         this.updateCampaignWeaknessSet(addedBasicWeaknesses);
         if (dismissAfterSave) {
           Navigation.dismissAllModals();
         } else {
           this.setState({
+            saving: false,
             nameChange: undefined,
             hasPendingEdits: false,
           }, this._syncNavigationButtons);
         }
-      } else {
-        // ArkhamDB deck.
-        this.setState({
-          saving: true,
-        });
-
-        const savePromise = saveDeck(
-          deck.id,
-          nameChange || deck.name,
-          slots,
-          ignoreDeckLimitSlots,
-          problem,
-          parsedDeck.spentXp,
-          xpAdjustment,
-          tabooSetId !== undefined ? tabooSetId : deck.taboo_id
-        );
-        handleAuthErrors(
-          savePromise,
-          // onSuccess
-          deck => {
-            updateDeck(deck.id, deck, true);
-            this.updateCampaignWeaknessSet(addedBasicWeaknesses);
-            if (dismissAfterSave) {
-              Navigation.dismissAllModals();
-            } else {
-              this.setState({
-                saving: false,
-                nameChange: undefined,
-                hasPendingEdits: false,
-              }, this._syncNavigationButtons);
-            }
-          },
-          this._handleSaveError,
-          // retry
-          () => {
-            this.saveEdits(dismissAfterSave, true);
-          },
-          // login
-          this.props.login
-        );
-      }
+      }, this._handleSaveError);
     }
   }
 
@@ -1245,15 +1179,15 @@ function mapStateToProps(
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+function mapDispatchToProps(dispatch: Dispatch): ReduxActionProps {
   return bindActionCreators({
     fetchPrivateDeck,
     fetchPublicDeck,
-    updateDeck,
     removeDeck,
-    replaceLocalDeck,
+    uploadLocalDeck,
     updateCampaign,
-  }, dispatch);
+    saveDeckChanges,
+  } as any, dispatch) as ReduxActionProps;
 }
 
 export default withTabooSetOverride<NavigationProps & DeckDetailProps>(

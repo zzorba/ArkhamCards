@@ -60,7 +60,7 @@ export function decks(lastModified?: string): Promise<DecksResponse> {
   });
 }
 
-export function loadDeck(id: number) {
+export function loadDeck(id: number): Promise<Deck> {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');
@@ -142,7 +142,7 @@ export function saveDeck(
   spentXp: number,
   xpAdjustment?: number,
   tabooSetId?: number
-) {
+): Promise<Deck> {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
       throw new Error('badAccessToken');

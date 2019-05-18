@@ -18,7 +18,7 @@ import SearchBox from './SearchBox';
 import DeckListRow from './DeckListRow';
 import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
 import { getAllDecks, AppState } from '../reducers';
-import { fetchPublicDeck } from '../actions';
+import { fetchPublicDeck } from './decks/actions';
 import typography from '../styles/typography';
 import space from '../styles/space';
 
