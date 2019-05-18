@@ -51,13 +51,16 @@ export default class FactionChooser extends React.Component<Props> {
         selectedIndexes.push(idx);
       }
       return {
-        element: () => (
-          <ArkhamIcon
-            name={factionToIconName(faction)}
-            size={28}
-            color={selected ? FACTION_COLORS[faction] : '#bdbdbd'}
-          />
-        ),
+        element: () => {
+          const iconName = factionToIconName(faction);
+          return (
+            <ArkhamIcon
+              name={iconName}
+              size={iconName !== faction ? 28 : 32}
+              color={selected ? FACTION_COLORS[faction] : '#bdbdbd'}
+            />
+          );
+        },
       };
     });
     return (

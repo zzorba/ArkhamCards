@@ -12,6 +12,7 @@ import CardTabooView from '../components/CardTabooView';
 import CardImageView from '../components/CardImageView';
 import InvestigatorCardsView from '../components/InvestigatorCardsView';
 import AddScenarioResultView from '../components/campaign/AddScenarioResultView';
+import UpgradeDecksView from '../components/campaign/UpgradeDecksView';
 import EditScenarioResultView from '../components/campaign/EditScenarioResultView';
 import CampaignDetailView from '../components/campaign/CampaignDetailView';
 import CampaignEditWeaknessDialog from '../components/campaign/CampaignEditWeaknessDialog';
@@ -66,6 +67,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Campaign', () => CampaignDetailView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.New', () => NewCampaignView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.AddResult', () => AddScenarioResultView, Provider, store);
+  Navigation.registerComponentWithRedux('Campaign.UpgradeDecks', () => UpgradeDecksView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.EditResult', () => EditScenarioResultView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.Scenarios', () => CampaignScenarioView, Provider, store);
   Navigation.registerComponentWithRedux('Settings', () => SettingsView, Provider, store);

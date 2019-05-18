@@ -70,7 +70,7 @@ export default function Button({
         onPress={onPress}
         style={[
           borderColor ? { borderRadius: 4, borderWidth, borderColor } : {},
-          grow ? { flex: 1 } : {},
+          grow ? { width: '100%' } : {},
         ]}
       >
         <LinearGradient colors={colors} style={[
@@ -78,7 +78,7 @@ export default function Button({
           styles.row,
           width ? { width } : {},
           { paddingLeft: padding, paddingRight: padding },
-          grow ? { flex: 1 } : {},
+          grow ? { width: '100%' } : {},
         ]}>
           { !!icon && (
             <View style={[styles.icon, text ? { marginRight: padding / 2 } : {}]}>

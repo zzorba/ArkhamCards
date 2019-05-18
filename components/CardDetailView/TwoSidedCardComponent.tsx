@@ -8,13 +8,12 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import DeviceInfo from 'react-native-device-info';
-import { msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext, t, jt } from 'ttag';
 
 import {
   CORE_FACTION_CODES,
   FACTION_COLORS,
   FACTION_BACKGROUND_COLORS,
-  SKILL_COLORS,
   RANDOM_BASIC_WEAKNESS,
 } from '../../constants';
 import typography from '../../styles/typography';
@@ -224,7 +223,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             key={idx}
             name={skill.substring(6)}
             size={SKILL_ICON_SIZE}
-            color={SKILL_COLORS[skill]}
+            color="#444"
           />))
         }
       </View>
@@ -250,6 +249,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return null;
     }
     const costString = card.costString(this.props.linked);
+    const doom = num(card.doom);
+    const shroud = num(card.shroud);
+    const clues = num(card.clues);
+    const perInvestigatorClues = card.clues && card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON;
     return (
       <View style={styles.statsBlock}>
         { !!(card.xp || costString) && (
@@ -262,13 +265,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         ) }
         { card.type_code === 'agenda' && (
           <Text style={typography.cardText}>
-            Doom: { num(card.doom) }
+            { t`Doom: ${doom}` }
           </Text>
         ) }
         { card.type_code === 'act' && card.clues && card.clues > 0 && (
           <Text style={typography.cardText}>
-            Clues: { card.clues }
-            { !card.clues_fixed && PER_INVESTIGATOR_ICON }
+            { jt`Clues: ${clues}${perInvestigatorClues}` }
           </Text>
         ) }
         { this.renderTestIcons(card) }
@@ -276,9 +278,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
           <Text style={typography.cardText}>
-            Shroud: { num(card.shroud) }. Clues: { num(card.clues) }
-            { card.clues && card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON }
-            .
+            { jt`Shroud: ${shroud}. Clues: ${clues}${perInvestigatorClues}.` }
           </Text>)
         }
       </View>
@@ -535,7 +535,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         color="purple"
         text={t`Taboo`}
         onPress={this._showTaboo}
-        icon={<ArkhamIcon name="tablet" size={18 * DeviceInfo.getFontScale()} color="white" />}
+        icon={<ArkhamIcon name="tablet" size={20 * DeviceInfo.getFontScale()} color="white" />}
       />
     );
   }
@@ -546,7 +546,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         grow
         text={t`FAQ`}
         onPress={this._showFaq}
-        icon={<AppIcon name="faq" size={18 * DeviceInfo.getFontScale()} color="white" />}
+        icon={<AppIcon name="faq" size={24 * DeviceInfo.getFontScale()} color="white" />}
       />
     );
   }

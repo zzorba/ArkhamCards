@@ -217,7 +217,7 @@ class CardDetailView extends React.Component<Props, State> {
           <Button
             onPress={this._showInvestigatorCards}
             text={t`Deckbuilding Cards`}
-            icon={<AppIcon name="deck" size={18 * DeviceInfo.getFontScale()} color="white" />}
+            icon={<AppIcon name="deck" size={22 * DeviceInfo.getFontScale()} color="white" />}
           />
         </View>
         <SignatureCardsComponent componentId={componentId} investigator={card} />

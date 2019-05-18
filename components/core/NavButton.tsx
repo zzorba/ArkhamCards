@@ -16,13 +16,15 @@ interface Props {
   onPress: () => void;
   indent?: boolean;
   children?: ReactNode;
+  noBorder?: boolean;
 }
-export default function NavButton({ text, onPress, indent, children }: Props) {
+export default function NavButton({ text, onPress, indent, children, noBorder }: Props) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[
         styles.container,
-        indent ? styles.indentedContainer : styles.bottomBorder,
+        indent ? styles.indentedContainer : {},
+        noBorder ? {} : styles.bottomBorder,
       ]}>
         { text ? (
           <View style={styles.text}>

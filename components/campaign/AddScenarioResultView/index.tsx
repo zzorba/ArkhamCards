@@ -1,6 +1,7 @@
 import React from 'react';
 import { throttle } from 'lodash';
 import {
+  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,15 +10,16 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import { DecksMap, SingleCampaign, ScenarioResult } from '../../../actions/types';
+
+import { SingleCampaign, ScenarioResult } from '../../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import { NavigationProps } from '../../types';
 import ScenarioSection from './ScenarioSection';
 import XpComponent from '../XpComponent';
+import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
-import { getAllDecks, getCampaign, AppState } from '../../../reducers';
+import { getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { COLORS } from '../../../styles/colors';
 
@@ -27,7 +29,6 @@ export interface AddScenarioResultProps {
 
 interface ReduxProps {
   campaign?: SingleCampaign;
-  decks: DecksMap;
 }
 
 interface ReduxActionProps {
@@ -42,7 +43,7 @@ interface State {
 
 class AddScenarioResultView extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;
-  _doSave!: () => void;
+  _doSave!: (showDeckUpgrade: boolean) => void;
 
   constructor(props: Props) {
     super(props);
@@ -51,39 +52,17 @@ class AddScenarioResultView extends React.Component<Props, State> {
       xp: 0,
     };
 
-    this._updateNavigationButtons();
-    this._navEventListener = Navigation.events().bindComponent(this);
     this._doSave = throttle(this.doSave.bind(this), 200);
   }
 
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _updateNavigationButtons = () => {
+  saveEnabled() {
     const { scenario } = this.state;
-    Navigation.mergeOptions(this.props.componentId, {
-      topBar: {
-        rightButtons: [{
-          text: t`Save`,
-          id: 'save',
-          color: COLORS.navButton,
-          enabled: !!(scenario &&
-            scenario.scenario &&
-            (scenario.interlude || scenario.resolution !== '')),
-          testID: t`Save`,
-        }],
-      },
-    });
+    return !!(scenario &&
+      scenario.scenario &&
+      (scenario.interlude || scenario.resolution !== ''));
   }
 
-  navigationButtonPressed({ buttonId }: { buttonId: string}) {
-    if (buttonId === 'save') {
-      this._doSave();
-    }
-  }
-
-  doSave() {
+  doSave(showDeckUpgrade: boolean) {
     const {
       componentId,
       id,
@@ -93,23 +72,51 @@ class AddScenarioResultView extends React.Component<Props, State> {
       scenario,
       xp,
     } = this.state;
-    addScenarioResult(
-      id,
-      Object.assign({}, scenario, { xp })
-    );
-    Navigation.pop(componentId);
+    if (scenario) {
+      const scenarioResult: ScenarioResult = { ...scenario, xp };
+      addScenarioResult(id, scenarioResult);
+      const passProps: UpgradeDecksProps = {
+        id,
+        scenarioResult,
+      };
+      if (showDeckUpgrade) {
+        Navigation.showModal({
+          stack: {
+            children: [{
+              component: {
+                name: 'Campaign.UpgradeDecks',
+                passProps,
+              },
+            }],
+          },
+        });
+        setTimeout(() => {
+          Navigation.pop(componentId);
+        }, 1500);
+      } else {
+        Navigation.pop(componentId);
+      }
+    }
   }
 
   _scenarioChanged = (scenario: ScenarioResult) => {
     this.setState({
       scenario,
-    }, this._updateNavigationButtons);
+    });
   };
 
   _xpChanged = (xp: number) => {
     this.setState({
       xp,
     });
+  };
+
+  _saveAndDismiss = () => {
+    this._doSave(false);
+  };
+
+  _saveAndUpgradeDecks = () => {
+    this._doSave(true);
   };
 
   renderScenarios() {
@@ -137,12 +144,15 @@ class AddScenarioResultView extends React.Component<Props, State> {
     } = this.state;
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        { this.renderScenarios() }
-        <XpComponent xp={xp} onChange={this._xpChanged} />
-        <View style={styles.text}>
-          <Text style={typography.small}>
-            { t`After saving the scenario result, you can use the "Upgrade Deck" buttons to award XP and adjust trauma for each investigator.` }
-          </Text>
+        <View style={styles.bottomBorder}>
+          { this.renderScenarios() }
+          <XpComponent xp={xp} onChange={this._xpChanged} />
+        </View>
+        <View style={styles.button}>
+          <Button title={t`Save and Upgrade Decks`} onPress={this._saveAndUpgradeDecks} disabled={!this.saveEnabled()} />
+        </View>
+        <View style={styles.button}>
+          <Button title={t`Only Save`} onPress={this._saveAndDismiss} disabled={!this.saveEnabled()}/>
         </View>
         <View style={styles.footer} />
       </ScrollView>
@@ -154,7 +164,6 @@ function mapStateToProps(state: AppState, props: NavigationProps & AddScenarioRe
   const campaign = getCampaign(state, props.id);
   return {
     campaign: campaign || undefined,
-    decks: getAllDecks(state),
   };
 }
 
@@ -180,5 +189,13 @@ const styles = StyleSheet.create({
   },
   text: {
     margin: 8,
+  },
+  button: {
+    marginBottom: 8,
+  },
+  bottomBorder: {
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+    marginBottom: 8,
   },
 });

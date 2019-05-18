@@ -9,7 +9,7 @@ import {
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import Switch from '../core/Switch';
 
-const ICON_SIZE = 32;
+const ICON_SIZE = 28;
 
 interface Props {
   label?: string;

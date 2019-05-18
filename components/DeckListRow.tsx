@@ -65,11 +65,7 @@ export default class DeckListRow extends React.Component<Props> {
       deckToCampaign,
     } = this.props;
     if (details) {
-      return (
-        <View>
-          { details }
-        </View>
-      );
+      return details;
     }
     if (!deck) {
       return null;
@@ -116,7 +112,7 @@ export default class DeckListRow extends React.Component<Props> {
     );
   }
 
-  render() {
+  renderContents() {
     const {
       deck,
       investigator,
@@ -137,7 +133,7 @@ export default class DeckListRow extends React.Component<Props> {
       );
     }
     return (
-      <TouchableOpacity onPress={this._onPress} disabled={viewDeckButton}>
+      <React.Fragment>
         <View style={styles.column}>
           <DeckTitleBarComponent
             name={compact && investigator ? investigator.name : deck.name}
@@ -147,22 +143,23 @@ export default class DeckListRow extends React.Component<Props> {
           />
           <FactionGradient
             faction_code={investigator.factionCode()}
-            style={styles.investigatorBlock}
           >
-            <View style={styles.investigatorBlockRow}>
-              <View style={styles.image}>
-                { !!investigator && <InvestigatorImage card={investigator} /> }
+            <View style={styles.investigatorBlock}>
+              <View style={styles.investigatorBlockRow}>
+                <View style={styles.image}>
+                  { !!investigator && <InvestigatorImage card={investigator} /> }
+                </View>
+                <View style={[styles.column, styles.titleColumn]}>
+                  { !compact && (
+                    <Text style={typography.bigLabel}>
+                      { investigator.name }
+                    </Text>
+                  ) }
+                  { this.renderDeckDetails() }
+                </View>
               </View>
-              <View style={[styles.column, styles.titleColumn]}>
-                { !compact && (
-                  <Text style={typography.bigLabel}>
-                    { investigator.name }
-                  </Text>
-                ) }
-                { this.renderDeckDetails() }
-              </View>
+              { subDetails }
             </View>
-            { subDetails }
           </FactionGradient>
         </View>
         <FactionGradient
@@ -170,6 +167,30 @@ export default class DeckListRow extends React.Component<Props> {
           style={styles.footer}
           dark
         />
+      </React.Fragment>
+    );
+  }
+
+  render() {
+    const {
+      deck,
+      investigator,
+      viewDeckButton,
+    } = this.props;
+    if (!deck || !investigator) {
+      return (
+        <View style={styles.row}>
+          <ActivityIndicator
+            style={styles.loading}
+            size="large"
+            color="#000000"
+          />
+        </View>
+      );
+    }
+    return (
+      <TouchableOpacity onPress={this._onPress} disabled={viewDeckButton}>
+        { this.renderContents() }
       </TouchableOpacity>
     );
   }

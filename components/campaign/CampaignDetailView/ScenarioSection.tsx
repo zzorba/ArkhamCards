@@ -1,6 +1,7 @@
 import React from 'react';
 import { map } from 'lodash';
 import {
+  Button,
   StyleSheet,
   Text,
   View,
@@ -10,7 +11,6 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { Campaign } from '../../../actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
-import Button from '../../core/Button';
 import NavButton from '../../core/NavButton';
 import typography from '../../../styles/typography';
 import { CampaignScenarioProps } from '../CampaignScenarioView';
@@ -103,19 +103,21 @@ export default class ScenarioSection extends React.Component<Props> {
       campaign,
     } = this.props;
     return (
-      <NavButton onPress={this._onPress}>
-        <View style={styles.section}>
-          <View style={[styles.padding, styles.marginTop, styles.marginBottom]}>
-            <CampaignSummaryComponent campaign={campaign} />
+      <React.Fragment>
+        <NavButton onPress={this._onPress} noBorder>
+          <View style={styles.section}>
+            <View style={[styles.padding, styles.marginTop, styles.marginBottom]}>
+              <CampaignSummaryComponent campaign={campaign} />
+            </View>
           </View>
+        </NavButton>
+        <View style={[styles.button, styles.bottomBorder]}>
           <Button
-            align="left"
-            size="small"
-            text={t`Record Scenario Results`}
+            title={t`Record Scenario Results`}
             onPress={this._addScenarioResult}
           />
         </View>
-      </NavButton>
+      </React.Fragment>
     );
   }
 }
@@ -127,11 +129,24 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingBottom: 8,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   },
   marginTop: {
     marginTop: 8,
   },
   marginBottom: {
     marginBottom: 8,
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: 8,
+  },
+  bottomBorder: {
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
   },
 });

@@ -214,6 +214,7 @@ class ScenarioSection extends React.Component<Props, State> {
         { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
           <LabeledTextBox
             label={t`Resolution`}
+            placeholder={t`(required)`}
             onPress={this._showResolutionDialog}
             value={resolution}
             style={styles.margin}

@@ -104,6 +104,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     });
 
   }
+
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'edit') {
       this._showEditWeaknessDialog();

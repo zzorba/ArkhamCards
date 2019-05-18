@@ -117,29 +117,42 @@ class DeckRow extends React.Component<Props> {
     );
   }
 
+  titleButton() {
+    const {
+      deckRemoved,
+      viewDeckButton,
+    } = this.props;
+    if (deckRemoved) {
+      return (
+        <View style={styles.row}>
+          <TouchableOpacity onPress={this._onRemove}>
+            <MaterialCommunityIcons name="close" size={32} color="#FFFFFF" />
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    if (!viewDeckButton) {
+      return (
+        <TouchableOpacity onPress={this._onDeckPress}>
+          <AppIcon name="deck" size={28} color="#FFFFFF" />
+        </TouchableOpacity>
+      );
+    }
+    return null;
+  }
+
   render() {
     const {
       theDeck,
       thePreviousDeck,
       cards,
-      deckRemoved,
       compact,
       viewDeckButton,
     } = this.props;
     if (!theDeck) {
       return null;
     }
-    const titleButton: ReactNode = deckRemoved ? (
-      <View style={styles.row}>
-        <TouchableOpacity onPress={this._onRemove}>
-          <MaterialCommunityIcons name="close" size={32} color="#FFFFFF" />
-        </TouchableOpacity>
-      </View>
-    ) : (
-      <TouchableOpacity onPress={this._onDeckPress}>
-        <AppIcon name="deck" size={28} color="#FFFFFF" />
-      </TouchableOpacity>
-    );
     return (
       <DeckListRow
         deck={theDeck}
@@ -147,7 +160,7 @@ class DeckRow extends React.Component<Props> {
         cards={cards}
         onPress={this._onDeckPress}
         investigator={cards[theDeck.investigator_code]}
-        titleButton={titleButton}
+        titleButton={this.titleButton()}
         details={this.renderDetails()}
         subDetails={this.renderSubDetails()}
         compact={compact}

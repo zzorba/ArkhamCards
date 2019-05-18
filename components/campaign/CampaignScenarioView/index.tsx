@@ -43,6 +43,7 @@ class CampaignScenarioView extends React.Component<Props> {
         index={idx}
         scenarioResult={scenarioResult}
         scenarioByCode={scenarioByCode}
+        editable
       />
     );
   };

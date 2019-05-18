@@ -16,6 +16,7 @@ interface Props {
   index: number;
   scenarioResult: ScenarioResult;
   scenarioByCode?: { [code: string]: Scenario };
+  editable?: boolean;
 }
 
 export default class ScenarioResultRow extends React.Component<Props> {
@@ -40,6 +41,7 @@ export default class ScenarioResultRow extends React.Component<Props> {
     const {
       scenarioResult,
       scenarioByCode,
+      editable,
     } = this.props;
     const resolution = scenarioResult.resolution ?
       `: ${scenarioResult.resolution}` : '';
@@ -47,11 +49,17 @@ export default class ScenarioResultRow extends React.Component<Props> {
       ` (${scenarioResult.xp} XP)` : '';
     const scenarioCard = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];
     const scenarioName = scenarioCard ? scenarioCard.name : scenarioResult.scenario;
+    const content = (
+      <Text style={typography.gameFont}>
+        { `${scenarioName}${resolution}${xp}` }
+      </Text>
+    );
+    if (!editable) {
+      return content;
+    }
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <Text style={typography.gameFont}>
-          { `${scenarioName}${resolution}${xp}` }
-        </Text>
+        { content }
       </TouchableOpacity>
     );
   }
