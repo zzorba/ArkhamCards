@@ -8,10 +8,13 @@ import {
   View,
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
+// @ts-ignore
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import EncounterIcon from '../../assets/EncounterIcon';
 import CardCostIcon, { COST_ICON_SIZE } from '../core/CardCostIcon';
+import Button from '../core/Button';
 import Switch from '../core/Switch';
 import Card from '../../data/Card';
 import { createFactionIcons, FACTION_COLORS, SKILLS, SkillCodeType } from '../../constants';
@@ -33,6 +36,7 @@ interface Props {
   count?: number;
   onPress?: (card: Card) => void;
   onPressId?: (code: string) => void;
+  onUpgrade?: (card: Card) => void;
   onDeckCountChange?: (code: string, count: number) => void;
   limit?: number;
   onToggleChange?: () => void;
@@ -55,6 +59,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     } else {
       onPress && onPress(this.props.card);
     }
+  };
+
+  _onUpgradePressed = () => {
+    const {
+      onUpgrade,
+      card,
+    } = this.props;
+    onUpgrade && onUpgrade(card);
   };
 
   _onDeckCountChange = (count: number) => {
@@ -269,6 +281,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       card,
       count = 0,
       onDeckCountChange,
+      onUpgrade,
       limit,
       hasSecondCore,
       showZeroCount,
@@ -292,6 +305,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     if (count !== 0) {
       return (
         <View style={styles.countText}>
+          { !!onUpgrade && (
+            <Button
+              style={styles.upgradeButton}
+              size="small"
+              onPress={this._onUpgradePressed}
+              icon={<MaterialCommunityIcons size={18 * DeviceInfo.getFontScale()} color="#FFF" name="arrow-up-bold" />}
+            />
+          ) }
           <Text style={typography.text}>
             { this.countText(count) }
           </Text>
@@ -428,7 +449,7 @@ const styles = StyleSheet.create({
   },
   countText: {
     marginRight: s,
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -441,5 +462,8 @@ const styles = StyleSheet.create({
   extraXp: {
     color: 'purple',
     marginRight: xs,
+  },
+  upgradeButton: {
+    marginRight: s,
   },
 });

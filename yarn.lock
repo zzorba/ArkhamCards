@@ -1574,6 +1574,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@kudo-ci/jsc-android@^241213.10000.0":
+  version "241213.10000.0"
+  resolved "https://registry.yarnpkg.com/@kudo-ci/jsc-android/-/jsc-android-241213.10000.0.tgz#a299636bdacaf5eb6d800a4ce7892a7c1eb813bd"
+  integrity sha512-2Oy45sWvUljbhixttrlTvfuBzetRtIayNQmUhjeijwV6oCJ8KswrgEpCKeotlyxkCUuWcVKUM8I7lzISY16QMg==
+
 "@matt-block/react-native-in-app-browser@1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@matt-block/react-native-in-app-browser/-/react-native-in-app-browser-1.4.0.tgz#c7c2a6b6768c8fabcc4fb34fda151b11e553612e"
@@ -6912,10 +6917,10 @@ react-native-modal@^9.0.0:
     prop-types "^15.6.2"
     react-native-animatable "^1.2.4"
 
-react-native-navigation@2.19.0:
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.19.0.tgz#25a4a5890dd670281925154025f45ac51d1f693f"
-  integrity sha512-r81d+MQUtUY1WedtelnrRdz0w7W9HKaY4Jlwg5bda0vN3DvYOmeAchTiIg76dEgRQs1Pwo67XvgWPKT+TxFlag==
+react-native-navigation@2.20.2:
+  version "2.20.2"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.20.2.tgz#8019a92bd20b707f01b18ff0bac222639655bd5e"
+  integrity sha512-Ok1x2bBFLcIGzYF5k9SFikkUSDr4MWp1zLYy6KernL4g20DE9flgPphOrllbOEDSA87NwDUv+QsUPbpOPeW1iw==
   dependencies:
     hoist-non-react-statics "3.x.x"
     lodash "4.17.x"
@@ -7154,9 +7159,10 @@ readline-sync@^1.4.7:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/readline-sync/-/readline-sync-1.4.9.tgz#3eda8e65f23cd2a17e61301b1f0003396af5ecda"
 
-realm@2.26.1:
-  version "2.26.1"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-2.26.1.tgz#9d890c85c4d0946bef0a3ece736551c6a8a5dc49"
+realm@2.28.0:
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-2.28.0.tgz#e79df5727e3922d507629a7ab079190d984e3bde"
+  integrity sha512-WvZ497qxQlUAiOxTVPI5/YL1zRlcpvjX26J9NeSs0O4Q5qNEGEP8MnAdrCSOC6zg2GH5vazeW4vla69swEncWA==
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"

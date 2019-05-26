@@ -128,9 +128,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 2,
+    borderColor: '#222',
     height: 50,
   },
   button: {
-    marginTop: 8,
+    padding: 8,
+    borderBottomWidth: 2,
+    borderColor: '#222',
   },
 });

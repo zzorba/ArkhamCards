@@ -583,7 +583,7 @@ class NewCampaignView extends React.Component<Props, State> {
               deckRemoved={this._deckRemoved}
             />
           </View>
-          <View style={[styles.button, styles.topPadding]}>
+          <View style={styles.button}>
             <Button
               disabled={campaignCode === CUSTOM && !name}
               title={t`Create Campaign`}
@@ -635,7 +635,6 @@ const styles = StyleSheet.create({
     height: 100,
   },
   button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    margin: 8,
   },
 });

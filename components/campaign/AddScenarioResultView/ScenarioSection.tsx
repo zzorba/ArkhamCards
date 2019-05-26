@@ -41,7 +41,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  updateCampaign: (id: number, sparseCampaign: Campaign) => void;
+  updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
 }
 
 interface RealmProps {

@@ -8,7 +8,7 @@ import DeviceInfo from 'react-native-device-info';
 
 import { isBig } from '../../styles/space';
 
-export const ROW_NON_COLLECTION_HEIGHT = (isBig ? 52 : 38) * DeviceInfo.getFontScale();
+export const ROW_NON_COLLECTION_HEIGHT = (isBig ? 52 : 38) * DeviceInfo.getFontScale() + 16;
 
 interface Props {
   id: string;
@@ -38,7 +38,6 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
 const styles = StyleSheet.create({
   row: {
     height: ROW_NON_COLLECTION_HEIGHT,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 8,
   },
 });

@@ -1,4 +1,4 @@
-import { forEach, head } from 'lodash';
+import { forEach, groupBy, head, sortBy } from 'lodash';
 import Realm from 'realm';
 import { Alert } from 'react-native';
 
@@ -123,6 +123,21 @@ export const syncCards = function(
             console.log(cardJson);
           }
         });
+        forEach(
+          groupBy(
+            realm.objects<Card>('Card')
+              .filtered(`deck_limit > 0 && spoiler != true && (taboo_set_id == null || taboo_set_id == 0)`),
+            card => card.name
+          ), (cards) => {
+            if (cards.length > 1) {
+              const maxXpCard = head(sortBy(cards, card => -(card.xp || 0)));
+              forEach(cards, card => {
+                if (maxXpCard && card.code !== maxXpCard.code) {
+                  card.has_upgrades = true;
+                }
+              });
+            }
+          });
       });
       return {
         cardCount: realm.objects('Card').length,

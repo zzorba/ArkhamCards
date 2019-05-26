@@ -44,7 +44,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  updateCampaign: (id: number, sparseCampaign: Campaign) => void;
+  updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
   deleteCampaign: (id: number) => void;
 }
 
@@ -167,7 +167,7 @@ class CampaignDetailView extends React.Component<Props, State> {
       updateCampaign,
     } = this.props;
     if (campaign) {
-      updateCampaign(campaign.id, { [key]: value } as Campaign);
+      updateCampaign(campaign.id, { [key]: value });
     }
   }
 
@@ -289,7 +289,7 @@ class CampaignDetailView extends React.Component<Props, State> {
             showTextEditDialog={showTextEditDialog}
             showAddSectionDialog={this._showAddSectionDialog}
           />
-          <View style={[styles.margin, styles.button]}>
+          <View style={styles.margin}>
             <Button
               title={t`Delete Campaign`}
               color={COLORS.red}

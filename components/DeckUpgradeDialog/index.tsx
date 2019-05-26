@@ -42,7 +42,7 @@ interface ReduxProps {
 interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
-  updateCampaign: (id: number, sparseCampaign: Campaign) => void;
+  updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
 }
 
 interface RealmProps {
@@ -176,7 +176,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
         if (investigatorData) {
           updateCampaign(
             campaign.id,
-            { investigatorData } as any as Campaign
+            { investigatorData }
           );
         }
       }

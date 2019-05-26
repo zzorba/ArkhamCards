@@ -140,19 +140,25 @@ class AddScenarioResultView extends React.Component<Props, State> {
 
   render() {
     const {
+      campaign,
+    } = this.props;
+    const {
       xp,
     } = this.state;
+    const hasDecks = !!campaign && !!campaign.baseDeckIds && campaign.baseDeckIds.length > 0;
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.bottomBorder}>
           { this.renderScenarios() }
           <XpComponent xp={xp} onChange={this._xpChanged} />
         </View>
+        { hasDecks && (
+          <View style={styles.button}>
+            <Button title={t`Save and Upgrade Decks`} onPress={this._saveAndUpgradeDecks} disabled={!this.saveEnabled()} />
+          </View>
+        ) }
         <View style={styles.button}>
-          <Button title={t`Save and Upgrade Decks`} onPress={this._saveAndUpgradeDecks} disabled={!this.saveEnabled()} />
-        </View>
-        <View style={styles.button}>
-          <Button title={t`Only Save`} onPress={this._saveAndDismiss} disabled={!this.saveEnabled()}/>
+          <Button title={hasDecks ? t`Only Save` : t`Save`} onPress={this._saveAndDismiss} disabled={!this.saveEnabled()}/>
         </View>
         <View style={styles.footer} />
       </ScrollView>
@@ -191,7 +197,7 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   button: {
-    marginBottom: 8,
+    margin: 8,
   },
   bottomBorder: {
     borderBottomWidth: 1,

@@ -180,8 +180,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     margin: 8,
   },
 });

@@ -95,6 +95,7 @@ export default class BaseCard {
     altArtInvestigator: 'bool?',
     cycle_name: 'string?',
     has_restrictions: 'bool',
+    has_upgrades: 'bool?',
     traits_normalized: 'string?',
     real_traits_normalized: 'string?',
     slots_normalized: 'string?',
@@ -193,6 +194,7 @@ export default class BaseCard {
   public altArtInvestigator?: boolean;
   public cycle_name!: string | null;
   public has_restrictions!: boolean;
+  public has_upgrades?: boolean;
   public traits_normalized!: string | null;
   public real_traits_normalized!: string | null;
   public slots_normalized!: string | null;

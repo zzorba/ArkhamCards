@@ -801,5 +801,6 @@ const styles = StyleSheet.create<Styles>({
   },
   sectionFooterButton: {
     height: ROW_NON_COLLECTION_HEIGHT,
+    margin: 8,
   },
 });

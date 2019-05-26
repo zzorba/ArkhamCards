@@ -78,7 +78,5 @@ export default withPlayerCards(DeckList);
 const styles = StyleSheet.create({
   button: {
     margin: 8,
-    flexDirection: 'row',
-    justifyContent: 'center',
   },
 });

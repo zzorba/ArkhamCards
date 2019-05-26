@@ -32,7 +32,7 @@ import { l, s } from '../../styles/space';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
-
+const SHOW_UPGRADE_BUTTON = false;
 interface SectionCardId extends CardId {
   special: boolean;
 }
@@ -304,6 +304,10 @@ export default class DeckViewTab extends React.Component<Props> {
     return null;
   }
 
+  _upgradePressed = (card: Card) => {
+    Alert.alert('Upgrading card');
+  }
+
   _renderCard = ({ item }: { item: SectionCardId }) => {
     const {
       parsedDeck: {
@@ -321,6 +325,7 @@ export default class DeckViewTab extends React.Component<Props> {
       <CardSearchResult
         key={item.id}
         card={card}
+        onUpgrade={card.has_upgrades && SHOW_UPGRADE_BUTTON ? this._upgradePressed : undefined}
         onPress={this._showCard}
         count={count}
       />

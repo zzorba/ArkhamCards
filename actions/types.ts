@@ -349,7 +349,7 @@ export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
   id: number;
-  campaign: Campaign;
+  campaign: Partial<Campaign>;
   now: Date;
 }
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';

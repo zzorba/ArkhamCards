@@ -444,5 +444,6 @@ const styles = StyleSheet.create({
   },
   sectionFooterButton: {
     height: ROW_NON_COLLECTION_HEIGHT,
+    margin: 8,
   },
 });

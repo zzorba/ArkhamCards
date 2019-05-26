@@ -14,6 +14,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@kudo-ci/jsc-android": "^241213.10000.0",
     "@matt-block/react-native-in-app-browser": "1.4.0",
     "@ptomasroos/react-native-multi-slider": "1.0.0",
     "@react-native-community/netinfo": "2.0.10",
@@ -43,7 +44,7 @@
     "react-native-keychain": "3.1.3",
     "react-native-linear-gradient": "2.5.4",
     "react-native-markdown-view": "1.1.4",
-    "react-native-navigation": "2.19.0",
+    "react-native-navigation": "2.20.2",
     "react-native-realm": "0.1.2",
     "react-native-settings-components": "zzorba/react-native-settings-components",
     "react-native-svg": "9.4.0",
@@ -51,7 +52,7 @@
     "react-native-vector-icons": "6.4.2",
     "react-native-zoom-view": "1.0.2",
     "react-redux": "6.0.1",
-    "realm": "2.26.1",
+    "realm": "2.28.0",
     "redux": "4.0.1",
     "redux-logger": "3.0.6",
     "redux-persist": "5.10.0",

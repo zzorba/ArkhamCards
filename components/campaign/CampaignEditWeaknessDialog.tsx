@@ -18,7 +18,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  updateCampaign: (id: number, campaign: Campaign) => void;
+  updateCampaign: (id: number, campaign: Partial<Campaign>) => void;
 }
 
 type Props = NavigationProps & CampaignEditWeaknessProps & ReduxProps & ReduxActionProps;

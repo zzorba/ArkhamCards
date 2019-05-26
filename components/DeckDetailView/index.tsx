@@ -87,7 +87,7 @@ interface ReduxActionProps {
   fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
   removeDeck: (id: number, deleteAllVersions?: boolean) => void;
   uploadLocalDeck: (deck: Deck) => Promise<Deck>;
-  updateCampaign: (id: number, sparseCampaign: Campaign) => void;
+  updateCampaign: (id: number, campaign: Partial<Campaign>) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
 }
 
@@ -599,11 +599,12 @@ class DeckDetailView extends React.Component<Props, State> {
       });
       updateCampaign(
         campaign.id,
-        Object.assign(
-          {},
-          campaign,
-          { weaknessSet: Object.assign({}, campaign.weaknessSet || {}, { assignedCards }) }
-        )
+        {
+          weaknessSet: {
+            ...(campaign.weaknessSet || {}),
+            assignedCards,
+          },
+        },
       );
     }
   }

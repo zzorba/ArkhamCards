@@ -168,10 +168,8 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   buttonRow: {
+    padding: 8,
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   searchOption: {
     marginLeft: 10,

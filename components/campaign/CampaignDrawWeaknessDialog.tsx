@@ -243,7 +243,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
           ...weaknessSet,
           assignedCards: pendingAssignedCards,
         };
-        updateCampaign(campaignId, { weaknessSet: newWeaknessSet } as any as Campaign);
+        updateCampaign(campaignId, { weaknessSet: newWeaknessSet });
       }, err => {
         this.setState({
           saving: false,
