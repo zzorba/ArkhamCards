@@ -305,8 +305,9 @@ export default class DeckViewTab extends React.Component<Props> {
   }
 
   _upgradePressed = (card: Card) => {
+    // TODO: figure out upgrade CARD ui
     Alert.alert('Upgrading card');
-  }
+  };
 
   _renderCard = ({ item }: { item: SectionCardId }) => {
     const {

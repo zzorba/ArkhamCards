@@ -344,8 +344,4 @@ const styles = StyleSheet.create({
   footer: {
     height: 40,
   },
-  button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
 });

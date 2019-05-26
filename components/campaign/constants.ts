@@ -274,6 +274,29 @@ const TCU_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-6': 1, '-8': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
 };
 
+export function scenarioRewards(encounterCode: string) {
+  switch (encounterCode) {
+    case 'the_eternal_slumber':
+      return ['abyssal_tribute'];
+    case 'the_nights_usurper':
+      return ['abyssal_gifts'];
+    case 'rougarou':
+      return ['bayou'];
+    case 'wilds':
+    case 'eztli':
+    case 'the_boundary_beyond':
+    case 'heart_of_the_elders':
+    case 'the_depths_of_yoth':
+    case 'turn_back_time':
+      return ['poison'];
+    case 'threads_of_fate':
+      // Add Alejandro Vela
+      return ['wilds'];
+    default:
+      return [];
+  }
+}
+
 export function getChaosBag(
   cycleCode: CampaignCycleCode,
   difficulty: CampaignDifficulty,

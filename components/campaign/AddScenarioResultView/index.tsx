@@ -4,7 +4,6 @@ import {
   Button,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -20,8 +19,6 @@ import XpComponent from '../XpComponent';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
 import { getCampaign, AppState } from '../../../reducers';
-import typography from '../../../styles/typography';
-import { COLORS } from '../../../styles/colors';
 
 export interface AddScenarioResultProps {
   id: number;
@@ -154,11 +151,19 @@ class AddScenarioResultView extends React.Component<Props, State> {
         </View>
         { hasDecks && (
           <View style={styles.button}>
-            <Button title={t`Save and Upgrade Decks`} onPress={this._saveAndUpgradeDecks} disabled={!this.saveEnabled()} />
+            <Button
+              title={t`Save and Upgrade Decks`}
+              onPress={this._saveAndUpgradeDecks}
+              disabled={!this.saveEnabled()}
+            />
           </View>
         ) }
         <View style={styles.button}>
-          <Button title={hasDecks ? t`Only Save` : t`Save`} onPress={this._saveAndDismiss} disabled={!this.saveEnabled()}/>
+          <Button
+            title={hasDecks ? t`Only Save` : t`Save`}
+            onPress={this._saveAndDismiss}
+            disabled={!this.saveEnabled()}
+          />
         </View>
         <View style={styles.footer} />
       </ScrollView>
@@ -192,9 +197,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
-  },
-  text: {
-    margin: 8,
   },
   button: {
     margin: 8,

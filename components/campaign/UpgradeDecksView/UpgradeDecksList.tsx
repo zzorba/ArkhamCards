@@ -1,5 +1,4 @@
 import React from 'react';
-import { flatMap, keys, map, range } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -10,8 +9,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import DeviceInfo from 'react-native-device-info';
 import { t } from 'ttag';
 
-import { Deck, InvestigatorData, Trauma } from '../../../actions/types';
-import DeckValidation from '../../../lib/DeckValidation';
+import { Deck, InvestigatorData } from '../../../actions/types';
 import Card from '../../../data/Card';
 import typography from '../../../styles/typography';
 import Button from '../../core/Button';
@@ -110,29 +108,10 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
   render() {
     const {
       deck,
-      cards,
-      previousDeck,
-      investigator,
     } = this.props;
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = parsedDeck;
-
-    const problemObj = new DeckValidation(investigator).getProblem(flatMap(keys(slots), code => {
-      const card = cards[code];
-      if (!card) {
-        return [];
-      }
-      return map(
-        range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
-        () => card
-      );
-    }));
     return (
       <View style={styles.investigatorNotes}>
         <View style={styles.section}>
@@ -164,10 +143,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 4,
     flexDirection: 'column',
-  },
-  investigatorSubNotes: {
-    marginTop: 4,
-    marginLeft: 8,
   },
   button: {
     marginLeft: 0,

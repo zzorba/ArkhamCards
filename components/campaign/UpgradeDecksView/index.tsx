@@ -1,6 +1,7 @@
 import React from 'react';
 import { forEach } from 'lodash';
 import {
+  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -73,9 +74,13 @@ class UpgradeDecksView extends React.Component<Props> {
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'close') {
-      Navigation.dismissModal(this.props.componentId);
+      this._close();
     }
   }
+
+  _close = () => {
+    Navigation.dismissModal(this.props.componentId);
+  };
 
   _showDeckUpgradeDialog = (deck: Deck, investigator: Card) => {
     const {
@@ -146,6 +151,9 @@ class UpgradeDecksView extends React.Component<Props> {
           originalDeckIds={this._originalDeckIds}
           showDeckUpgradeDialog={this._showDeckUpgradeDialog}
         />
+        <View style={styles.button}>
+          <Button title={t`Done`} onPress={this._close} />
+        </View>
         <View style={styles.footer} />
       </ScrollView>
     );
@@ -185,10 +193,10 @@ const styles = StyleSheet.create({
   footer: {
     height: 100,
   },
-  text: {
+  header: {
     margin: 8,
   },
-  header: {
+  button: {
     margin: 8,
   },
 });

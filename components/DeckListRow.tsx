@@ -118,7 +118,6 @@ export default class DeckListRow extends React.Component<Props> {
       investigator,
       titleButton,
       compact,
-      viewDeckButton,
       subDetails,
     } = this.props;
     if (!deck || !investigator) {

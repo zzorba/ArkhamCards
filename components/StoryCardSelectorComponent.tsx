@@ -3,13 +3,14 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { forEach } from 'lodash';
+import { flatMap, forEach } from 'lodash';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 
 import { t } from 'ttag';
 import { Deck, Slots } from '../actions/types';
 import Card from '../data/Card';
+import { scenarioRewards } from './campaign/constants';
 import { getDeck, getTabooSet, AppState } from '../reducers';
 import typography from '../styles/typography';
 import CardSelectorComponent from './CardSelectorComponent';
@@ -169,7 +170,12 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
         const deckStorySlots: Slots = {};
         const storyCards: Card[] = [];
         const deckStoryCards: Card[] = [];
-        const encounterCodes = new Set(props.encounterCodes);
+        const encounterCodes = new Set(flatMap(props.encounterCodes, encounterCode => {
+          return [
+            encounterCode,
+            ...scenarioRewards(encounterCode),
+          ];
+        }));
         forEach(allStoryCards, card => {
           if (props.deck && card.code && props.deck.slots[card.code] > 0) {
             deckStoryCards.push(card);
