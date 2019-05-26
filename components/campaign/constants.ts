@@ -292,8 +292,8 @@ export function scenarioRewards(encounterCode: string) {
       return ['abyssal_tribute'];
     case 'the_nights_usurper':
       return ['abyssal_gifts'];
-    case 'rougarou':
-      return ['bayou'];
+    case 'bayou':
+      return ['rougarou'];
     case 'wilds':
     case 'eztli':
     case 'the_boundary_beyond':
