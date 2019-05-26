@@ -13,6 +13,7 @@ import {
   CustomCampaignLog,
 } from '../../actions/types';
 import { ChaosBag } from '../../constants';
+import Card from '../../data/Card';
 
 export function difficultyString(difficulty: CampaignDifficulty): string {
   switch (difficulty) {
@@ -51,6 +52,17 @@ export interface Scenario {
   code: string;
   pack_code?: string;
   interlude?: boolean;
+}
+
+export function scenarioFromCard(card: Card): Scenario | null {
+  if (!card.encounter_code) {
+    return null;
+  }
+  return {
+    name: card.renderName,
+    code: card.encounter_code,
+    pack_code: card.pack_code,
+  };
 }
 
 export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {

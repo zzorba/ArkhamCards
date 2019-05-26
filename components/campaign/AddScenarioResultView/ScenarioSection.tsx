@@ -15,7 +15,7 @@ import { t } from 'ttag';
 import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '../../../actions/types';
 import Card from '../../../data/Card';
 import { updateCampaign } from '../actions';
-import { campaignScenarios, Scenario } from '../constants';
+import { campaignScenarios, scenarioFromCard, Scenario } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import Switch from '../../core/Switch';
 import { ShowTextEditDialog } from '../../core/withDialogs';
@@ -266,14 +266,20 @@ export default connect(mapStateToProps, mapDispatchToProps)(
           .filtered(`(type_code == "scenario") and ${Card.tabooSetQuery(props.tabooSetId)}`)
           .sorted('position');
 
-        const cycleScenarios: Card[] = [];
-        const standaloneScenarios: Card[] = [];
+        const cycleScenarios: Scenario[] = [];
+        const standaloneScenarios: Scenario[] = [];
         forEach(allScenarioCards, card => {
           if (cyclePackCodes.has(card.pack_code)) {
-            cycleScenarios.push(card);
+            const scenario = scenarioFromCard(card);
+            if (scenario) {
+              cycleScenarios.push(scenario);
+            }
           }
           if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.name)) {
-            standaloneScenarios.push(card);
+            const scenario = scenarioFromCard(card);
+            if (scenario) {
+              standaloneScenarios.push(scenario);
+            }
           }
         });
         return {
