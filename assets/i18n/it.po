@@ -12,11 +12,11 @@ msgstr ""
 "Language-Team: \n"
 "x-generator: Poedit 2.2.1\n"
 
-#: data/BaseCard.ts:221
+#: data/BaseCard.ts:223
 msgid "Cost: -"
 msgstr ""
 
-#: data/BaseCard.ts:224
+#: data/BaseCard.ts:226
 msgid "Cost: ${ costString }"
 msgstr ""
 
@@ -361,11 +361,12 @@ msgstr ""
 
 #: components/DeckDetailView/index.tsx:305
 #: components/DeckDetailView/index.tsx:308
-#: components/DeckDetailView/index.tsx:1029
+#: components/DeckDetailView/index.tsx:1030
 #: components/DeckUpgradeDialog/index.tsx:69
 #: components/DeckUpgradeDialog/index.tsx:73
 #: components/ExileCardDialog.tsx:27
 #: components/ExileCardDialog.tsx:31
+#: components/campaign/AddScenarioResultView/index.tsx:161
 #: components/campaign/EditChaosBagDialog/index.tsx:62
 #: components/campaign/EditChaosBagDialog/index.tsx:66
 #: components/campaign/EditScenarioResultView.tsx:67
@@ -498,7 +499,7 @@ msgid "Available weaknesses"
 msgstr ""
 
 #: components/CopyDeckDialog/index.tsx:328
-#: components/DeckDetailView/index.tsx:977
+#: components/DeckDetailView/index.tsx:978
 #: components/weakness/WeaknessDrawComponent.tsx:253
 msgid "Saving"
 msgstr ""
@@ -1543,7 +1544,7 @@ msgstr ""
 
 #: components/CopyDeckDialog/index.tsx:338
 #: components/DeckDetailView/EditDeckDetailsDialog.tsx:187
-#: components/DeckDetailView/index.tsx:969
+#: components/DeckDetailView/index.tsx:970
 #: components/NewDeckView/NewDeckOptionsDialog.tsx:384
 #: components/campaign/CampaignDetailView/DecksSection.tsx:55
 #: components/campaign/NewCampaignView/index.tsx:212
@@ -1654,7 +1655,7 @@ msgstr ""
 
 #: components/DeckDetailView/index.tsx:322
 #: components/DeckDetailView/index.tsx:528
-#: components/DeckDetailView/index.tsx:1014
+#: components/DeckDetailView/index.tsx:1015
 #: components/campaign/CampaignDetailView/CampaignDecks.tsx:185
 msgid "Upgrade Deck"
 msgstr ""
@@ -1945,25 +1946,25 @@ msgid ""
 msgstr ""
 
 #: components/DeckDetailView/DeckViewTab.tsx:215
-#: components/DeckDetailView/DeckViewTab.tsx:521
+#: components/DeckDetailView/DeckViewTab.tsx:526
 msgid "Upload to ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:373
+#: components/DeckDetailView/DeckViewTab.tsx:378
 msgid "Special Cards"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:411
+#: components/DeckDetailView/DeckViewTab.tsx:416
 msgid "${ normalCardCount } card (${ totalCardCount } total)"
 msgid_plural "${ normalCardCount } cards (${ totalCardCount } total)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:528
+#: components/DeckDetailView/DeckViewTab.tsx:533
 msgid "View on ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:536
+#: components/DeckDetailView/DeckViewTab.tsx:541
 msgid "Delete Deck"
 msgstr ""
 
@@ -1988,11 +1989,11 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:964
+#: components/DeckDetailView/index.tsx:965
 msgid "Error"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:1004
+#: components/DeckDetailView/index.tsx:1005
 msgid "Edit"
 msgstr ""
 
@@ -2210,7 +2211,7 @@ msgstr ""
 msgid "Additional XP: ${ taboo.extra_xp }."
 msgstr ""
 
-#: components/CardTabooView.tsx:75
+#: components/CardTabooView.tsx:76
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
 "optional deckbuilding restrictions or text changes. This list is designed "
@@ -2218,7 +2219,7 @@ msgid ""
 "difficulty, and to enforce shifts in deckbuilding environments over time."
 msgstr ""
 
-#: components/CardTabooView.tsx:77
+#: components/CardTabooView.tsx:78
 msgid ""
 "Adhering to The List of Taboos is completely optional. Investigators are "
 "not forced to adhere to the restrictions on this list, but if an "
@@ -2262,7 +2263,7 @@ msgstr ""
 msgid "Charts"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:422
+#: components/DeckDetailView/DeckViewTab.tsx:427
 msgid "Taboo List: ${ tabooSet.date_start }."
 msgstr ""
 
@@ -2274,7 +2275,7 @@ msgstr ""
 msgid "Deck Details"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:1038
+#: components/DeckDetailView/index.tsx:1039
 msgid "Discard Edits"
 msgstr ""
 
@@ -2543,7 +2544,7 @@ msgid "Earned experience"
 msgstr ""
 
 #: components/DeckDetailView/DeckDelta.tsx:82
-#: components/DeckDetailView/DeckViewTab.tsx:397
+#: components/DeckDetailView/DeckViewTab.tsx:402
 msgid ""
 "Available experience: ${ adjustedExperience }\n"
 "Spent experience: ${ spentXp }"
@@ -2557,7 +2558,7 @@ msgstr ""
 msgid "View Next Deck"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:394
+#: components/DeckDetailView/DeckViewTab.tsx:399
 msgid "Experience required: ${ experience }"
 msgstr ""
 
@@ -2593,10 +2594,16 @@ msgid ""
 "Previous versions of your deck will still be accessible."
 msgstr ""
 
-#: components/campaign/AddScenarioResultView/index.tsx:152
+#: components/campaign/AddScenarioResultView/index.tsx:157
 msgid "Save and Upgrade Decks"
 msgstr ""
 
-#: components/campaign/AddScenarioResultView/index.tsx:155
+#: components/campaign/AddScenarioResultView/index.tsx:161
 msgid "Only Save"
+msgstr ""
+
+#: components/CardTabooView.tsx:80
+msgid ""
+"You can opt-in to always seeing taboos and buiding decks with them in "
+"Settings."
 msgstr ""
