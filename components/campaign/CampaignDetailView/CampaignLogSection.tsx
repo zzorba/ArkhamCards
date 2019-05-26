@@ -8,6 +8,7 @@ import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 interface Props {
   componentId: string;
   campaignNotes: CampaignNotes;
+  scenarioCount: number;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
   showTextEditDialog: ShowTextEditDialog;
   showAddSectionDialog: (
@@ -21,7 +22,6 @@ interface Props {
 }
 
 export default class CampaignLogSection extends React.Component<Props> {
-
   _updateCampaignNotes = (campaignNotes: CampaignNotes) => {
     setTimeout(() => {
       this.props.updateCampaignNotes(campaignNotes);
@@ -35,9 +35,11 @@ export default class CampaignLogSection extends React.Component<Props> {
       showTextEditDialog,
       showAddSectionDialog,
       allInvestigators,
+      scenarioCount,
     } = this.props;
     return (
       <EditCampaignNotesComponent
+        key={scenarioCount}
         componentId={componentId}
         campaignNotes={campaignNotes}
         allInvestigators={allInvestigators}

@@ -10,10 +10,16 @@ import { t } from 'ttag';
 import Dialog from '../core/Dialog';
 import { COLORS } from '../../styles/colors';
 
+export type AddSectionFunction = (
+  name: string,
+  perInvestigator: boolean,
+  isCount: boolean
+) => void;
+
 interface Props {
   viewRef?: View;
   visible: boolean;
-  addSection?: (name: string, perInvestigator: boolean, isCount: boolean) => void;
+  addSection?: AddSectionFunction;
   toggleVisible: () => void;
 }
 

@@ -57,16 +57,6 @@ export default class ScenarioSection extends React.Component<Props> {
         passProps: {
           id: campaign.id,
         },
-        options: {
-          topBar: {
-            title: {
-              text: t`Scenario Result`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
-        },
       },
     });
   };
@@ -105,10 +95,8 @@ export default class ScenarioSection extends React.Component<Props> {
     return (
       <React.Fragment>
         <NavButton onPress={this._onPress} noBorder>
-          <View style={styles.section}>
-            <View style={[styles.padding, styles.marginTop, styles.marginBottom]}>
-              <CampaignSummaryComponent campaign={campaign} />
-            </View>
+          <View style={[styles.section, styles.padding, styles.marginTop, styles.marginBottom]}>
+            <CampaignSummaryComponent campaign={campaign} />
           </View>
         </NavButton>
         <View style={[styles.button, styles.bottomBorder]}>

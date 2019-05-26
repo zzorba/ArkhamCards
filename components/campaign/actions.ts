@@ -9,6 +9,7 @@ import {
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   Campaign,
+  CampaignNotes,
   CampaignCycleCode,
   CampaignDifficulty,
   CustomCampaignLog,
@@ -111,12 +112,14 @@ export function deleteCampaign(id: number): DeleteCampaignAction {
 
 export function addScenarioResult(
   id: number,
-  scenarioResult: ScenarioResult
+  scenarioResult: ScenarioResult,
+  campaignNotes?: CampaignNotes
 ): AddCampaignScenarioResultAction {
   return {
     type: ADD_CAMPAIGN_SCENARIO_RESULT,
     id,
     scenarioResult,
+    campaignNotes,
     now: new Date(),
   };
 }

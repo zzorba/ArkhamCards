@@ -53,10 +53,8 @@ export default class InvestigatorSectionRow extends React.Component<Props> {
     return (
       <View>
         { map(sections, (section, idx) => {
-          const name = investigator.firstName ?
-            investigator.firstName.toUpperCase() :
-            'Unknown';
-          const title = `${name}’S ${section.title}`;
+          const name = investigator.firstName || 'Unknown';
+          const title = `${name}’s ${section.title}`;
           return (
             <NotesSection
               key={idx}

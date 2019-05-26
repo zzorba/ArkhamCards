@@ -148,6 +148,9 @@ export default function(
       scenarioResults,
       lastUpdated: action.now,
     };
+    if (action.campaignNotes) {
+      updatedCampaign.campaignNotes = action.campaignNotes;
+    }
     return {
       ...state,
       all: { ...state.all, [action.id]: updatedCampaign },

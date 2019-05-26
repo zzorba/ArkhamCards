@@ -300,6 +300,7 @@ export function scenarioRewards(encounterCode: string) {
     case 'heart_of_the_elders':
     case 'the_depths_of_yoth':
     case 'turn_back_time':
+      // Scenario's that include Poison.
       return ['poison'];
     case 'threads_of_fate':
       // Add Alejandro Vela

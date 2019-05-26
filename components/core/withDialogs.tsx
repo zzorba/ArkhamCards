@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import CountEditDialog from './CountEditDialog';
 import TextEditDialog from './TextEditDialog';
@@ -189,6 +190,7 @@ export default function withDialogs<P>(
       );
     }
   }
+  hoistNonReactStatic(ComponentWithDialogs, WrappedComponent);
 
   return ComponentWithDialogs;
 }

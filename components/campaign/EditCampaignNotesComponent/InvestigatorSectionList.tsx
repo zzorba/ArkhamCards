@@ -10,7 +10,6 @@ import { InvestigatorNotes } from '../../../actions/types';
 import Card from '../../../data/Card';
 import { ShowTextEditDialog } from '../../core/withDialogs';
 
-
 interface Props {
   componentId: string;
   allInvestigators: Card[];
@@ -53,7 +52,6 @@ export default class InvestigatorSectionList extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   investigatorNotes: {
-    flex: 1,
     marginLeft: 8,
     marginRight: 8,
   },

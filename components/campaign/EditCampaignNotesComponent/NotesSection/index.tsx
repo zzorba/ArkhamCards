@@ -19,35 +19,27 @@ interface Props {
   isInvestigator?: boolean;
 }
 
-interface State {
-  notes: string[];
-}
-
-export default class NotesSection extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      notes: [...props.notes, ''],
-    };
+export default class NotesSection extends React.Component<Props> {
+  notes() {
+    return [
+      ...this.props.notes,
+      '',
+    ];
   }
 
-  _syncNotes = () => {
+  syncNotes(notes: string[]) {
     const {
       notesChanged,
       index,
     } = this.props;
-    const {
-      notes,
-    } = this.state;
     notesChanged(index, filter(notes, note => note !== ''));
-  };
+  }
 
   _updateNote = (index: number | 'last', note: string) => {
+    let notes = this.notes();
     if (index === 'last') {
-      index = this.state.notes.length - 1;
+      index = notes.length - 1;
     }
-    let notes = this.state.notes.slice();
     notes[index] = note;
     if (note === '') {
       notes = filter(notes, note => note !== '');
@@ -56,13 +48,11 @@ export default class NotesSection extends React.Component<Props, State> {
       // If they add something to last one, grow it.
       notes.push('');
     }
-    this.setState({
-      notes,
-    }, this._syncNotes);
+    this.syncNotes(notes);
   };
 
   _updateLastNote = (ignoreIndex: number | 'last', note: string) => {
-    this._updateNote(this.state.notes.length - 1, note);
+    this._updateNote(this.notes().length - 1, note);
   };
 
   render() {
@@ -71,9 +61,7 @@ export default class NotesSection extends React.Component<Props, State> {
       isInvestigator,
       showDialog,
     } = this.props;
-    const {
-      notes,
-    } = this.state;
+    const notes = this.notes();
     return (
       <View style={isInvestigator ? {} : styles.container}>
         <Text style={[typography.smallLabel, styles.margin]}>

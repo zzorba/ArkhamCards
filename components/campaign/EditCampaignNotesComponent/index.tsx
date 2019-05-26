@@ -170,7 +170,6 @@ export default class EditCampaignNotesComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   underline: {
-    flex: 1,
     paddingBottom: 8,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',

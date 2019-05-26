@@ -19,7 +19,7 @@ import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
-import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
+import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { campaignToText } from '../campaignUtil';
 import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
@@ -48,14 +48,13 @@ interface ReduxActionProps {
   deleteCampaign: (id: number) => void;
 }
 
-type Props = NavigationProps & CampaignDetailProps & ReduxProps & ReduxActionProps &
-  TraumaProps & PlayerCardProps & InjectedDialogProps;
-
-type AddSectionFunction = (
-  name: string,
-  perInvestigator: boolean,
-  isCount: boolean
-) => void;
+type Props = NavigationProps &
+  CampaignDetailProps &
+  ReduxProps &
+  ReduxActionProps &
+  TraumaProps &
+  PlayerCardProps &
+  InjectedDialogProps;
 
 interface State {
   addSectionVisible: boolean;
@@ -71,6 +70,7 @@ class CampaignDetailView extends React.Component<Props, State> {
   _updateChaosBag!: (chaosBag: ChaosBag) => void;
   _updateWeaknessSet!: (weaknessSet: WeaknessSet) => void;
   _showShareSheet!: () => void;
+
   constructor(props: Props) {
     super(props);
 
@@ -266,11 +266,6 @@ class CampaignDetailView extends React.Component<Props, State> {
             chaosBag={campaign.chaosBag}
             updateChaosBag={this._updateChaosBag}
           />
-          <WeaknessSetSection
-            componentId={componentId}
-            campaignId={campaign.id}
-            weaknessSet={campaign.weaknessSet}
-          />
           <DecksSection
             componentId={componentId}
             campaignId={campaign.id}
@@ -281,9 +276,15 @@ class CampaignDetailView extends React.Component<Props, State> {
             updateLatestDeckIds={this._updateLatestDeckIds}
             updateWeaknessSet={this._updateWeaknessSet}
           />
+          <WeaknessSetSection
+            componentId={componentId}
+            campaignId={campaign.id}
+            weaknessSet={campaign.weaknessSet}
+          />
           <CampaignLogSection
             componentId={componentId}
             campaignNotes={campaign.campaignNotes}
+            scenarioCount={(campaign.scenarioResults || []).length}
             allInvestigators={allInvestigators}
             updateCampaignNotes={this._updateCampaignNotes}
             showTextEditDialog={showTextEditDialog}

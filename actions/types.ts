@@ -362,6 +362,7 @@ export interface AddCampaignScenarioResultAction {
   type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
   id: number;
   scenarioResult: ScenarioResult;
+  campaignNotes?: CampaignNotes;
   now: Date;
 }
 export const EDIT_CAMPAIGN_SCENARIO_RESULT = 'EDIT_CAMPAIGN_SCENARIO_RESULT';
