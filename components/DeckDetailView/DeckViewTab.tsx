@@ -33,6 +33,7 @@ import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
 const SHOW_UPGRADE_BUTTON = false;
+
 interface SectionCardId extends CardId {
   special: boolean;
 }
@@ -103,6 +104,7 @@ interface Props {
   showEditSpecial?: () => void;
   showEditNameDialog: () => void;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  showCardUpgradeDialog: (card: Card) => void;
   investigatorDataUpdates?: InvestigatorData;
   deckName: string;
   tabooSet?: TabooSet;
@@ -304,16 +306,12 @@ export default class DeckViewTab extends React.Component<Props> {
     return null;
   }
 
-  _upgradePressed = (card: Card) => {
-    // TODO: figure out upgrade CARD ui
-    Alert.alert('Upgrading card');
-  };
-
   _renderCard = ({ item }: { item: SectionCardId }) => {
     const {
       parsedDeck: {
         ignoreDeckLimitSlots,
       },
+      showCardUpgradeDialog,
     } = this.props;
     const card = this.props.cards[item.id];
     if (!card) {
@@ -326,7 +324,7 @@ export default class DeckViewTab extends React.Component<Props> {
       <CardSearchResult
         key={item.id}
         card={card}
-        onUpgrade={card.has_upgrades && SHOW_UPGRADE_BUTTON ? this._upgradePressed : undefined}
+        onUpgrade={card.has_upgrades && SHOW_UPGRADE_BUTTON ? showCardUpgradeDialog : undefined}
         onPress={this._showCard}
         count={count}
       />
