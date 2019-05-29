@@ -93,9 +93,15 @@ interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
 }
 
-type Props = NavigationProps & DeckDetailProps & TabooSetOverrideProps &
-  ReduxProps & ReduxActionProps & PlayerCardProps &
-  TraumaProps & LoginStateProps & InjectedDialogProps;
+type Props = NavigationProps &
+  DeckDetailProps &
+  TabooSetOverrideProps &
+  ReduxProps &
+  ReduxActionProps &
+  PlayerCardProps &
+  TraumaProps &
+  LoginStateProps &
+  InjectedDialogProps;
 
 interface State {
   parsedDeck?: ParsedDeck;
@@ -1115,7 +1121,7 @@ class DeckDetailView extends React.Component<Props, State> {
         toggleVisible={this._hideCardUpgradeDialog}
         updateSlots={this._updateSlots}
       />
-    )
+    );
   }
 
   render() {
@@ -1239,6 +1245,7 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
     mapDispatchToProps
   )(
     withPlayerCards(
+      // TODO: Load the cards with the same that have upgrades for this investigator here.
       withTraumaDialog(
         withDialogs(
           withLoginState(DeckDetailView)

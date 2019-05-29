@@ -1015,7 +1015,7 @@ msgstr "Das vergessene Zeitalter"
 
 #: components/campaign/constants.ts:39 components/campaign/constants.ts:159
 msgid "The Circle Undone"
-msgstr "Der gebrochene Kreise"
+msgstr "Der Gebrochene Kreis"
 
 #: components/campaign/constants.ts:59
 msgid "The Gathering"

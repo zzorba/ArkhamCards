@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 4,
     paddingBottom: 4,
+    paddingRight: 8,
   },
   buttonRow: {
     padding: 8,

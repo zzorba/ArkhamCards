@@ -1574,10 +1574,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@kudo-ci/jsc-android@^241213.10000.0":
-  version "241213.10000.0"
-  resolved "https://registry.yarnpkg.com/@kudo-ci/jsc-android/-/jsc-android-241213.10000.0.tgz#a299636bdacaf5eb6d800a4ce7892a7c1eb813bd"
-  integrity sha512-2Oy45sWvUljbhixttrlTvfuBzetRtIayNQmUhjeijwV6oCJ8KswrgEpCKeotlyxkCUuWcVKUM8I7lzISY16QMg==
+"@kudo-ci/jsc-android@^241213.9000.1":
+  version "241213.9000.1"
+  resolved "https://registry.yarnpkg.com/@kudo-ci/jsc-android/-/jsc-android-241213.9000.1.tgz#983b3b4b87f7e64915d65e9685219f3d60ff2c2f"
+  integrity sha512-cAIP6+P3n6sczNY7ExYPKq6OVBs7Ql4hbbpZlCPjm4ACaPRu2t9YgYyKVbgjql/waay7HdNb1kydiGSdYqx+Zg==
 
 "@matt-block/react-native-in-app-browser@1.4.0":
   version "1.4.0"
@@ -6935,9 +6935,9 @@ react-native-ratings@^6.3.0:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
-react-native-realm@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-realm/-/react-native-realm-0.1.2.tgz#7e9b4b9c633373c7c3bcdb728daa4390e6c73aeb"
+react-native-realm@zzorba/react-native-realm#catch_update_errors:
+  version "0.1.1"
+  resolved "https://codeload.github.com/zzorba/react-native-realm/tar.gz/1a6d0054cf639ceed4e2742cd5f806a6046b387b"
   dependencies:
     camelcase "4.1.0"
     hoist-non-react-statics "1.2.0"
@@ -7159,10 +7159,10 @@ readline-sync@^1.4.7:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/readline-sync/-/readline-sync-1.4.9.tgz#3eda8e65f23cd2a17e61301b1f0003396af5ecda"
 
-realm@2.28.0:
-  version "2.28.0"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-2.28.0.tgz#e79df5727e3922d507629a7ab079190d984e3bde"
-  integrity sha512-WvZ497qxQlUAiOxTVPI5/YL1zRlcpvjX26J9NeSs0O4Q5qNEGEP8MnAdrCSOC6zg2GH5vazeW4vla69swEncWA==
+realm@2.29.0-alpha.1:
+  version "2.29.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-2.29.0-alpha.1.tgz#c99f7eaee3a32fcad02caea9828e01ee8d37b5a1"
+  integrity sha512-CC1hp1LfEGC5uhS8O5fwVAc3b0Gj18Qe2hPiJLGPHq6yCXfU4VjzHNvl98WXDzvnoRfp1iY0/CXYfCYKH33t6Q==
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"

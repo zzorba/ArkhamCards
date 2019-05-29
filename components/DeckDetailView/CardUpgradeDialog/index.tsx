@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
 } from 'react-native';
@@ -15,8 +14,6 @@ import { Slots } from '../../../actions/types';
 import Dialog from '../../core/Dialog';
 import Card from '../../../data/Card';
 import { COLORS } from '../../../styles/colors';
-import { m } from '../../../styles/space';
-import typography from '../../../styles/typography';
 
 interface OwnProps {
   card?: Card;
@@ -60,6 +57,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
           .filtered(`(real_name == "${card.real_name}") and (${Card.tabooSetQuery(tabooSetId)})`)
           .sorted([['real_name', false], ['xp', false]]),
         card => namedCards.push(card));
+      /* eslint-disable react/no-did-update-set-state */
       this.setState({
         slots,
         namedCards,
@@ -150,7 +148,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
               onIncrement={this._onIncrement}
               onDecrement={this._onDecrement}
             />
-          ))}
+          )) }
         </View>
         <DialogComponent.Button
           label={t`Cancel`}
@@ -181,27 +179,4 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
   },
-  buttonsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: Platform.OS === 'ios' ? 28 : 8,
-    paddingLeft: Platform.OS === 'ios' ? 28 : 8,
-    marginBottom: m,
-  },
-  buttonLabel: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  label: Platform.select({
-    ios: {
-      fontSize: 13,
-      color: 'black',
-    },
-    android: {
-      fontSize: 16,
-      color: '#33383D',
-    },
-  }),
 });

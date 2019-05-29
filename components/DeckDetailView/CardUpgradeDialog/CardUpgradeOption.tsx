@@ -66,9 +66,6 @@ export default class CardUpgradeOption extends React.Component<Props> {
 
 
 const styles = StyleSheet.create({
-  column: {
-    flexDirection: 'column',
-  },
   buttonsRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -95,5 +92,5 @@ const styles = StyleSheet.create({
   countText: {
     fontWeight: '900',
     width: 30,
-  }
+  },
 });
