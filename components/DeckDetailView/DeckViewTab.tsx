@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { head, forEach, map, sum, sumBy } from 'lodash';
+import { head, find, forEach, map, sum, sumBy } from 'lodash';
 import {
   Alert,
   AlertButton,
@@ -24,6 +24,7 @@ import { showCard } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
+import DeckValidation from '../../lib/DeckValidation';
 import Card, { CardsMap } from '../../data/Card';
 import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
@@ -32,10 +33,11 @@ import { l, s } from '../../styles/space';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
-const SHOW_UPGRADE_BUTTON = false;
+const SHOW_UPGRADE_BUTTON = true;
 
 interface SectionCardId extends CardId {
   special: boolean;
+  hasUpgrades: boolean;
 }
 
 interface CardSection {
@@ -46,7 +48,31 @@ interface CardSection {
   onPress?: () => void;
 }
 
-function deckToSections(halfDeck: SplitCards, special: boolean): CardSection[] {
+function hasUpgrades(
+  code: string,
+  cards: CardsMap,
+  cardsByName: { [name: string]: Card[] },
+  validation: DeckValidation
+) {
+  const card = cards[code];
+  return !!(
+    card &&
+    card.has_upgrades &&
+    find(cardsByName[card.real_name] || [], upgradeCard => (
+      upgradeCard.code !== code &&
+      validation.canIncludeCard(upgradeCard, false) &&
+      (card.xp || 0) <= (upgradeCard.xp || 0)
+    )));
+
+}
+
+function deckToSections(
+  halfDeck: SplitCards,
+  cards: CardsMap,
+  cardsByName: { [name: string]: Card[] },
+  validation: DeckValidation,
+  special: boolean
+): CardSection[] {
   const result: CardSection[] = [];
   if (halfDeck.Assets) {
     const assetCount = sum(halfDeck.Assets.map(subAssets =>
@@ -59,7 +85,11 @@ function deckToSections(halfDeck: SplitCards, special: boolean): CardSection[] {
       result.push({
         subTitle: subAssets.type,
         data: map(subAssets.data, c => {
-          return { ...c, special };
+          return {
+            ...c,
+            special,
+            hasUpgrades: hasUpgrades(c.id, cards, cardsByName, validation),
+          };
         }),
       });
     });
@@ -75,7 +105,11 @@ function deckToSections(halfDeck: SplitCards, special: boolean): CardSection[] {
       result.push({
         title: `${localizedName} (${count})`,
         data: map(cardSplitGroup, c => {
-          return { ...c, special };
+          return {
+            ...c,
+            special,
+            hasUpgrades: hasUpgrades(c.id, cards, cardsByName, validation),
+          };
         }),
       });
     }
@@ -99,6 +133,9 @@ interface Props {
   parsedDeck: ParsedDeck;
   hasPendingEdits?: boolean;
   cards: CardsMap;
+  cardsByName: {
+    [name: string]: Card[];
+  };
   isPrivate: boolean;
   buttons?: ReactNode;
   showEditSpecial?: () => void;
@@ -324,7 +361,7 @@ export default class DeckViewTab extends React.Component<Props> {
       <CardSearchResult
         key={item.id}
         card={card}
-        onUpgrade={card.has_upgrades && SHOW_UPGRADE_BUTTON ? showCardUpgradeDialog : undefined}
+        onUpgrade={item.hasUpgrades && SHOW_UPGRADE_BUTTON ? showCardUpgradeDialog : undefined}
         onPress={this._showCard}
         count={count}
       />
@@ -367,18 +404,23 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         normalCards,
         specialCards,
+        investigator,
       },
       showEditSpecial,
+      cards,
+      cardsByName,
     } = this.props;
 
+    const validation = new DeckValidation(investigator);
+
     return [
-      ...deckToSections(normalCards, false),
+      ...deckToSections(normalCards, cards, cardsByName, validation, false),
       {
         superTitle: t`Special Cards`,
         data: [],
         onPress: showEditSpecial,
       },
-      ...deckToSections(specialCards, true),
+      ...deckToSections(specialCards, cards, cardsByName, validation, true),
     ];
   }
 

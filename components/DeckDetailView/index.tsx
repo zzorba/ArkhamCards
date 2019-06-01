@@ -18,6 +18,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Results } from 'realm';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 // @ts-ignore
@@ -84,6 +85,12 @@ interface ReduxProps {
   campaign?: Campaign;
 }
 
+interface UpgradeCardProps {
+  cardsByName: {
+    [name: string]: Card[];
+  };
+}
+
 interface ReduxActionProps {
   fetchPrivateDeck: (id: number) => void;
   fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
@@ -101,7 +108,8 @@ type Props = NavigationProps &
   PlayerCardProps &
   TraumaProps &
   LoginStateProps &
-  InjectedDialogProps;
+  InjectedDialogProps &
+  UpgradeCardProps;
 
 interface State {
   parsedDeck?: ParsedDeck;
@@ -1102,6 +1110,8 @@ class DeckDetailView extends React.Component<Props, State> {
   renderCardUpgradeDialog() {
     const {
       viewRef,
+      cards,
+      cardsByName,
     } = this.props;
     const {
       upgradeCard,
@@ -1114,6 +1124,9 @@ class DeckDetailView extends React.Component<Props, State> {
     return (
       <CardUpgradeDialog
         card={upgradeCard}
+        cards={cards}
+        cardsByName={cardsByName}
+        investigator={parsedDeck.investigator}
         tabooSetId={tabooSetId}
         slots={parsedDeck.slots}
         visible={!!upgradeCard}
@@ -1137,6 +1150,7 @@ class DeckDetailView extends React.Component<Props, State> {
       showTraumaDialog,
       investigatorDataUpdates,
       tabooSets,
+      cardsByName,
     } = this.props;
     const {
       loaded,
@@ -1177,6 +1191,7 @@ class DeckDetailView extends React.Component<Props, State> {
             problem={this.getProblem() || undefined}
             hasPendingEdits={hasPendingEdits}
             cards={cards}
+            cardsByName={cardsByName}
             isPrivate={!!isPrivate}
             buttons={this.renderButtons()}
             showEditNameDialog={this._showEditDetailsVisible}
@@ -1244,13 +1259,29 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
     mapStateToProps,
     mapDispatchToProps
   )(
-    withPlayerCards(
-      // TODO: Load the cards with the same that have upgrades for this investigator here.
+    withPlayerCards<ReduxProps & TabooSetOverride & ReduxActionProps & NavigationProps & DeckDetailProps & TabooSetOverrideProps, UpgradeCardProps>(
       withTraumaDialog(
         withDialogs(
-          withLoginState(DeckDetailView)
+          withLoginState(
+            DeckDetailView
+          )
         )
-      )
+      ),
+      (cards: Results<Card>) => {
+        const cardsByName: {
+          [name: string]: Card[];
+        } = {};
+        forEach(cards, card => {
+          if (cardsByName[card.real_name]) {
+            cardsByName[card.real_name].push(card);
+          } else {
+            cardsByName[card.real_name] = [card];
+          }
+        });
+        return {
+          cardsByName,
+        };
+      }
     )
   )
 );

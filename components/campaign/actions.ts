@@ -89,7 +89,7 @@ export function updateCampaign(
   sparseCampaign: Partial<Campaign>
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
   return (dispatch, getState) => {
-    const campaign = Object.assign({}, sparseCampaign);
+    const campaign: Partial<Campaign> = { ...sparseCampaign };
     if (campaign.latestDeckIds) {
       campaign.baseDeckIds = getBaseDeckIds(getState(), campaign.latestDeckIds);
       delete campaign.latestDeckIds;

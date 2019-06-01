@@ -42,10 +42,10 @@ export default function(
   if (action.type === DELETE_CAMPAIGN) {
     const newCampaigns = Object.assign({}, state.all);
     delete newCampaigns[action.id];
-    return Object.assign({},
-      state,
-      { all: newCampaigns },
-    );
+    return {
+      ...state,
+      all: newCampaigns,
+    };
   }
   if (action.type === NEW_CAMPAIGN) {
     const campaignNotes = {
@@ -71,7 +71,7 @@ export default function(
       showInterludes: true,
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
-      chaosBag: Object.assign({}, action.chaosBag),
+      chaosBag: { ...action.chaosBag },
       campaignNotes,
       weaknessSet: action.weaknessSet,
       baseDeckIds: action.baseDeckIds,
@@ -79,47 +79,44 @@ export default function(
       investigatorData: {},
       scenarioResults: [],
     };
-    return Object.assign({},
-      state,
-      { all: Object.assign({}, state.all, { [action.id]: newCampaign }) },
-    );
+    return {
+      ...state,
+      all: {
+        ...state.all,
+        [action.id]: newCampaign,
+      },
+    };
   }
   if (action.type === UPDATE_CAMPAIGN) {
-    const campaign: Campaign = Object.assign(
-      {},
-      state.all[action.id],
-      action.campaign,
-      { lastUpdated: action.now }
-    );
-    return Object.assign({},
-      state,
-      { all: Object.assign({}, state.all, { [action.id]: campaign }) },
-    );
+    const campaign: Campaign = {
+      ...state.all[action.id],
+      ...action.campaign,
+      lastUpdated: action.now,
+    };
+    return {
+      ...state,
+      all: { ...state.all, [action.id]: campaign },
+    };
   }
   if (action.type === REPLACE_LOCAL_DECK) {
-    const all = Object.assign(
-      {},
-      state.all
-    );
+    const all = { ...state.all };
     forEach(all, (campaign, campaignId) => {
       if (find(campaign.baseDeckIds || [], deckId => deckId === action.localId)) {
-        all[campaignId] = Object.assign({},
-          campaign,
-          {
-            baseDeckIds: map(campaign.baseDeckIds, deckId => {
-              if (deckId === action.localId) {
-                return action.deck.id;
-              }
-              return deckId;
-            }),
-          }
-        );
+        all[campaignId] = {
+          ...campaign,
+          baseDeckIds: map(campaign.baseDeckIds, deckId => {
+            if (deckId === action.localId) {
+              return action.deck.id;
+            }
+            return deckId;
+          }),
+        };
       }
     });
-    return Object.assign({},
-      state,
-      { all },
-    );
+    return {
+      ...state,
+      all,
+    };
   }
   if (action.type === EDIT_CAMPAIGN_SCENARIO_RESULT) {
     const campaign = { ...state.all[action.id] };

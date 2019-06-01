@@ -13,27 +13,27 @@ import { m } from '../../../styles/space';
 
 interface Props {
   card: Card;
-  index: number;
+  code: string;
   count: number;
-  onIncrement: (index: number) => void;
-  onDecrement: (index: number) => void;
+  onIncrement: (code: string) => void;
+  onDecrement: (code: string) => void;
 }
 
 export default class CardUpgradeOption extends React.Component<Props> {
   _inc = () => {
     const {
       onIncrement,
-      index,
+      code,
     } = this.props;
-    onIncrement(index);
+    onIncrement(code);
   };
 
   _dec = () => {
     const {
       onDecrement,
-      index,
+      code,
     } = this.props;
-    onDecrement(index);
+    onDecrement(code);
   };
 
   render() {

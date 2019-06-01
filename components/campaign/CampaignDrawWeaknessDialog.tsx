@@ -38,6 +38,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
+  updateCampaign: (id: number, campaign: Partial<Campaign>) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
 }
 
@@ -181,6 +182,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       cards,
       investigators,
       saveWeakness,
+      updateCampaign,
     } = this.props;
     const {
       selectedDeckId,
@@ -234,16 +236,16 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
         problem,
         spentXp: parsedDeck.spentXp,
       }).then(() => {
-        this.setState({
-          saving: false,
-          pendingAssignedCards: {},
-          pendingNextCard: undefined,
-        });
         const newWeaknessSet = {
           ...weaknessSet,
           assignedCards: pendingAssignedCards,
         };
         updateCampaign(campaignId, { weaknessSet: newWeaknessSet });
+        this.setState({
+          saving: false,
+          pendingAssignedCards: {},
+          pendingNextCard: undefined,
+        });
       }, err => {
         this.setState({
           saving: false,
@@ -331,15 +333,15 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const {
       unsavedAssignedCards,
     } = this.state;
-    const assignedCards = Object.assign({}, weaknessSet.assignedCards);
+    const assignedCards = { ...weaknessSet.assignedCards };
     forEach(unsavedAssignedCards, code => {
       assignedCards[code] = (assignedCards[code] || 0) + 1;
     });
 
-    const dynamicWeaknessSet = Object.assign({},
-      weaknessSet,
-      { assignedCards }
-    );
+    const dynamicWeaknessSet = {
+      ...weaknessSet,
+      assignedCards,
+    };
 
     return (
       <WeaknessDrawComponent
@@ -366,6 +368,7 @@ function mapStateToProps(state: AppState, props: NavigationProps & CampaignDrawW
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     saveDeckChanges,
+    updateCampaign,
   } as any, dispatch);
 }
 

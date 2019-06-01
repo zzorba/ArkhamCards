@@ -21,8 +21,9 @@ export interface TabooSetOverride {
   tabooSetOverride?: number;
 }
 
-export default function withPlayerCards<Props>(
-  WrappedComponent: React.ComponentType<Props & PlayerCardProps>
+export default function withPlayerCards<Props, ExtraProps={}>(
+  WrappedComponent: React.ComponentType<Props & PlayerCardProps & ExtraProps>,
+  computeExtraProps?: (cards: Results<Card>) => ExtraProps
 ): React.ComponentType<Props & TabooSetOverride> {
   interface ReduxProps {
     tabooSetId?: number;
@@ -36,31 +37,40 @@ export default function withPlayerCards<Props>(
     };
   };
   const result = connect<ReduxProps, {}, Props & TabooSetOverride, AppState>(mapStateToProps)(
-    connectRealm<Props & ReduxProps, PlayerCardProps, Card, FaqEntry, TabooSet>(
+    connectRealm<Props & ReduxProps, PlayerCardProps & ExtraProps, Card, FaqEntry, TabooSet>(
       WrappedComponent, {
         schemas: ['Card', 'TabooSet'],
         mapToProps(
           results: CardAndTabooSetResults<Card, TabooSet>,
           realm: Realm,
           props: Props & ReduxProps
-        ): PlayerCardProps {
+        ): PlayerCardProps & ExtraProps {
+          const playerCards = results.cards.filtered(
+            `((type_code == "investigator" AND encounter_code == null) OR deck_limit > 0) and ${Card.tabooSetQuery(props.tabooSetId)}`
+          );
           const investigators: CardsMap = {};
           const cards: CardsMap = {};
           forEach(
-            results.cards.filtered(
-              `((type_code == "investigator" AND encounter_code == null) OR deck_limit > 0) and ${Card.tabooSetQuery(props.tabooSetId)}`),
+            playerCards,
             card => {
               cards[card.code] = card;
               if (card.type_code === 'investigator') {
                 investigators[card.code] = card;
               }
             });
-          return {
+          const playerCardProps: PlayerCardProps = {
             realm,
             cards,
             investigators,
             tabooSetId: props.tabooSetId,
             tabooSets: results.tabooSets,
+          };
+          const extraProps: ExtraProps = computeExtraProps ?
+            computeExtraProps(playerCards) :
+            ({} as ExtraProps);
+          return {
+            ...extraProps,
+            ...playerCardProps,
           };
         },
       })
