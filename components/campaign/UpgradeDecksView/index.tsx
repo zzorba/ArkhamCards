@@ -184,7 +184,6 @@ export default connect<ReduxProps, {}, NavigationProps & UpgradeDecksProps, AppS
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: 8,
     paddingBottom: 8,
     flexDirection: 'column',
