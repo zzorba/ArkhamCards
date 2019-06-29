@@ -168,7 +168,7 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
                 onIncrement={this._incXp}
                 onDecrement={this._decXp}
                 size={36}
-                dark
+                color="dark"
                 allowNegative
               />
             </View>

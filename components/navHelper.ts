@@ -1,13 +1,16 @@
+import React from 'react';
 import { Platform } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
 
 import { t } from 'ttag';
-import { Deck } from '../actions/types';
+import { Deck, Slots } from '../actions/types';
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import Card from '../data/Card';
 import { CardDetailProps } from './CardDetailView';
+import { CardDetailSwipeProps } from './CardDetailSwipeView';
 import { DeckDetailProps } from './DeckDetailView';
 import { iconsMap } from '../app/NavIcons';
+import { COLORS } from '../styles/colors';
 
 export function getDeckOptions(
   investigator?: Card,
@@ -147,6 +150,44 @@ export function showCard(
           },
         },
       },
+    },
+  });
+}
+
+export function showCardSwipe(
+  componentId: string,
+  ids: string[],
+  index: number,
+  showSpoilers?: boolean,
+  tabooSetId?: number,
+  deckCardCounts?: Slots,
+  onDeckCountChange?: (code: string, count: number) => void,
+  investigator?: Card,
+  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
+) {
+  const options = investigator ?
+    getDeckOptions(investigator, false, t`Card`) :
+    {
+      topBar: {
+        backButton: {
+          title: t`Back`,
+          color: COLORS.navButton,
+        },
+      },
+    };
+  Navigation.push<CardDetailSwipeProps>(componentId, {
+    component: {
+      name: 'Card.Swipe',
+      passProps: {
+        ids,
+        initialIndex: index,
+        showSpoilers: !!showSpoilers,
+        tabooSetId,
+        deckCardCounts,
+        onDeckCountChange,
+        renderFooter,
+      },
+      options,
     },
   });
 }

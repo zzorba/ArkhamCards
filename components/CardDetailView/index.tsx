@@ -2,31 +2,49 @@ import React from 'react';
 import { head } from 'lodash';
 import {
   Linking,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 import Realm from 'realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { connect } from 'react-redux';
-import DeviceInfo from 'react-native-device-info';
-
 import { t } from 'ttag';
-import { iconsMap } from '../../app/NavIcons';
-import typography from '../../styles/typography';
-import { COLORS } from '../../styles/colors';
-import AppIcon from '../../assets/AppIcon';
-import Button from '../core/Button';
-import { getShowSpoilers, getTabooSet, AppState } from '../../reducers';
-import Card from '../../data/Card';
+
+import CardDetailComponent from './CardDetailComponent';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { InvestigatorCardsProps } from '../InvestigatorCardsView';
 import { CardFaqProps } from '../CardFaqView';
 import { NavigationProps } from '../types';
-import BondedCardsComponent from './BondedCardsComponent';
-import TwoSidedCardComponent from './TwoSidedCardComponent';
-import SignatureCardsComponent from './SignatureCardsComponent';
+import { iconsMap } from '../../app/NavIcons';
+import { COLORS } from '../../styles/colors';
+import { getShowSpoilers, getTabooSet, AppState } from '../../reducers';
+import Card from '../../data/Card';
+
+
+export function rightButtonsForCard(card?: Card, color?: string) {
+  const rightButtons = [{
+    icon: iconsMap.web,
+    id: 'share',
+    color: color || COLORS.navButton,
+    testID: t`Share`,
+  }, {
+    icon: iconsMap.faq,
+    id: 'faq',
+    color: color || COLORS.navButton,
+    testID: t`FAQ`,
+  }];
+  if (card &&
+    card.type_code === 'investigator' &&
+    card.encounter_code === null
+  ) {
+    rightButtons.push({
+      icon: iconsMap.deck,
+      id: 'deck',
+      color: color || COLORS.navButton,
+      testID: t`Deckbuilding Cards`,
+    });
+  }
+  return rightButtons;
+}
 
 interface RealmProps {
   card?: Card;
@@ -44,7 +62,7 @@ export interface CardDetailProps {
   tabooSetId?: number;
 }
 
-type Props = NavigationProps & CardDetailProps & ReduxProps & RealmProps;
+type Props = NavigationProps & DimensionsProps & CardDetailProps & ReduxProps & RealmProps;
 
 interface State {
   showSpoilers: boolean;
@@ -70,31 +88,9 @@ class CardDetailView extends React.Component<Props, State> {
       showSpoilers: props.showSpoilers || false,
     };
 
-    const rightButtons = [{
-      icon: iconsMap.web,
-      id: 'share',
-      color: COLORS.navButton,
-      testID: t`Share`,
-    }, {
-      icon: iconsMap.faq,
-      id: 'faq',
-      color: COLORS.navButton,
-      testID: t`FAQ`,
-    }];
-    if (props.card &&
-      props.card.type_code === 'investigator' &&
-      props.card.encounter_code === null
-    ) {
-      rightButtons.push({
-        icon: iconsMap.deck,
-        id: 'deck',
-        color: COLORS.navButton,
-        testID: t`Deckbuilding Cards`,
-      });
-    }
     Navigation.mergeOptions(props.componentId, {
       topBar: {
-        rightButtons,
+        rightButtons: rightButtonsForCard(props.card),
       },
     });
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -103,14 +99,6 @@ class CardDetailView extends React.Component<Props, State> {
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }
-
-  _editSpoilersPressed = () => {
-    Navigation.push<{}>(this.props.componentId, {
-      component: {
-        name: 'My.Spoilers',
-      },
-    });
-  };
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const {
@@ -189,75 +177,27 @@ class CardDetailView extends React.Component<Props, State> {
     });
   };
 
-  shouldBlur() {
-    const {
-      showSpoilers,
-      card,
-    } = this.props;
-    if (showSpoilers || this.state.showSpoilers) {
-      return false;
-    }
-    return card && card.spoiler;
-  }
-
-  renderInvestigatorCardsLink() {
-    const {
-      componentId,
-      card,
-    } = this.props;
-    if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
-      return null;
-    }
-    return (
-      <React.Fragment>
-        <Text style={[typography.header, styles.sectionHeader]}>
-          Deckbuilding
-        </Text>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._showInvestigatorCards}
-            text={t`Deckbuilding Cards`}
-            icon={<AppIcon name="deck" size={22 * DeviceInfo.getFontScale()} color="white" />}
-          />
-        </View>
-        <SignatureCardsComponent componentId={componentId} investigator={card} />
-      </React.Fragment>
-    );
-  }
-
   render() {
     const {
       componentId,
       card,
+      showSpoilers,
+      tabooSetId,
+      width,
     } = this.props;
     if (!card) {
       return null;
     }
-    if (this.shouldBlur()) {
-      return (
-        <ScrollView style={styles.viewContainer}>
-          <Text style={styles.spoilerText}>
-            Warning: this card contains possible spoilers for '{ card.pack_name }'.
-          </Text>
-          <View style={styles.buttonContainer}>
-            <Button onPress={this._toggleShowSpoilers} text="Show card" />
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button onPress={this._editSpoilersPressed} text="Edit my spoiler settings" />
-          </View>
-        </ScrollView>
-      );
-    }
     return (
-      <ScrollView style={styles.viewContainer}>
-        <TwoSidedCardComponent
-          componentId={componentId}
-          card={card}
-        />
-        <BondedCardsComponent componentId={componentId} card={card} />
-        { this.renderInvestigatorCardsLink() }
-        <View style={styles.footerPadding} />
-      </ScrollView>
+      <CardDetailComponent
+        width={width}
+        componentId={componentId}
+        card={card}
+        showSpoilers={showSpoilers || this.state.showSpoilers}
+        tabooSetId={tabooSetId}
+        toggleShowSpoilers={this._toggleShowSpoilers}
+        showInvestigatorCards={this._showInvestigatorCards}
+      />
     );
   }
 }
@@ -275,7 +215,7 @@ function mapStateToProps(
 export default
 connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToProps)(
   connectRealm<NavigationProps & CardDetailProps & ReduxProps, RealmProps, Card>(
-    CardDetailView, {
+    withDimensions(CardDetailView), {
       schemas: ['Card'],
       mapToProps(
         results: CardResults<Card>,
@@ -290,29 +230,3 @@ connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToP
       },
     })
 );
-
-const styles = StyleSheet.create({
-  viewContainer: {
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  footerPadding: {
-    height: 150,
-  },
-  buttonContainer: {
-    marginLeft: 8,
-    marginTop: 4,
-    marginBottom: 4,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  sectionHeader: {
-    marginTop: 24,
-    paddingLeft: 8,
-  },
-  spoilerText: {
-    margin: 8,
-  },
-});

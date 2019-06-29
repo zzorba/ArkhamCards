@@ -1,6 +1,6 @@
 import React from 'react';
 import Realm, { Results } from 'realm';
-import { head } from 'lodash';
+import { find, head } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, Slots } from '../actions/types';
@@ -76,7 +76,7 @@ class DeckEditView extends React.Component<Props, State> {
     }, this._syncDeckCardCounts);
   };
 
-  renderFooter() {
+  _renderFooter = (updatedDeckCardCounts?: Slots, controls?: React.ReactNode) => {
     const {
       componentId,
       deck,
@@ -85,9 +85,7 @@ class DeckEditView extends React.Component<Props, State> {
       cards,
       xpAdjustment,
     } = this.props;
-    const {
-      deckCardCounts,
-    } = this.state;
+    const deckCardCounts = updatedDeckCardCounts || this.state.deckCardCounts;
     const cardsInDeck: CardsMap = {};
     cards.forEach(card => {
       if (deckCardCounts[card.code] || deck.investigator_code === card.code ||
@@ -108,6 +106,7 @@ class DeckEditView extends React.Component<Props, State> {
         parsedDeck={pDeck}
         cards={cardsInDeck}
         xpAdjustment={xpAdjustment || 0}
+        controls={controls}
       />
     );
   }
@@ -130,21 +129,24 @@ class DeckEditView extends React.Component<Props, State> {
       componentId,
       slots,
       tabooSetId,
+      cards,
+      deck,
     } = this.props;
 
     const {
       deckCardCounts,
     } = this.state;
-
+    const investigator = find(cards, card => card.code === deck.investigator_code);
     return (
       <CardSearchComponent
         componentId={componentId}
         tabooSetOverride={tabooSetId}
         baseQuery={this.baseQuery()}
         originalDeckSlots={slots}
+        investigator={investigator}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
-        footer={this.renderFooter()}
+        renderFooter={this._renderFooter}
         modal
       />
     );

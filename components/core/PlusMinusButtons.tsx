@@ -16,7 +16,7 @@ interface Props {
   style?: ViewStyle;
   size?: number;
   disabled?: boolean;
-  dark?: boolean;
+  color?: 'light' | 'dark';
   noFill?: boolean;
   allowNegative?: boolean;
 }
@@ -24,16 +24,24 @@ interface Props {
 export default class PlusMinusButtons extends React.PureComponent<Props> {
   disabledColor() {
     const {
-      dark,
+      color,
     } = this.props;
-    return dark ? '#888' : '#ddd';
+    switch (color) {
+      case 'dark': return '#888';
+      case 'light': return '#aaa';
+      default: return '#ddd';
+    }
   }
 
   enabledColor() {
     const {
-      dark,
+      color,
     } = this.props;
-    return dark ? '#000' : '#888';
+    switch (color) {
+      case 'dark': return '#000';
+      case 'light': return '#FFF';
+      default: return '#888';
+    }
   }
 
   renderPlusButton() {

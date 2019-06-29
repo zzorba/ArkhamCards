@@ -24,7 +24,7 @@ import { msgid, ngettext, t } from 'ttag';
 import { Slots } from '../../actions/types';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '../../reducers';
 import Card from '../../data/Card';
-import { showCard } from '../navHelper';
+import { showCardSwipe } from '../navHelper';
 import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import { ROW_HEIGHT } from '../CardSearchResult/constants';
@@ -62,6 +62,7 @@ interface OwnProps {
   query?: string;
   searchTerm?: string;
   sort?: SortType;
+  investigator?: Card;
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
   tabooSetOverride?: number;
@@ -73,6 +74,7 @@ interface OwnProps {
   visible: boolean;
   showNonCollection?: boolean;
   expandSearchControls?: ReactNode;
+  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
 }
 
 interface ReduxProps {
@@ -94,7 +96,7 @@ type Props = OwnProps & ReduxProps & RealmProps;
 
 interface State {
   resultsKey: string;
-  deckSections: any[];
+  deckSections: CardBucket[];
   cards: CardBucket[];
   cardsCount: number;
   deckCardCounts?: Slots;
@@ -114,7 +116,7 @@ interface CardBucket {
   bold?: boolean;
   id: string;
   data: Card[];
-  nonCollectionCount: number;
+  nonCollectionCount?: number;
 }
 
 class CardResultList extends React.Component<Props, State> {
@@ -353,8 +355,8 @@ class CardResultList extends React.Component<Props, State> {
     }
   }
 
-  bucketDeckCards(cards: Card[]): CardBucket[] {
-    return this.bucketCards(cards, 'deck', true);
+  bucketDeckCards(cards: Card[], type: string): CardBucket[] {
+    return this.bucketCards(cards, `deck-${type}`, true);
   }
 
   bucketCards(
@@ -479,8 +481,8 @@ class CardResultList extends React.Component<Props, State> {
     this.setState({
       resultsKey: resultsKey,
       deckSections: concat(
-        this.bucketDeckCards(normalCards),
-        this.bucketDeckCards(specialCards)),
+        this.bucketDeckCards(normalCards, 'normal'),
+        this.bucketDeckCards(specialCards, 'special')),
       cards: this.bucketCards(groupedCards[0], 'cards', false),
       cardsCount: groupedCards[0].length,
       spoilerCards: this.bucketCards(groupedCards[1], 'spoiler', false),
@@ -492,14 +494,42 @@ class CardResultList extends React.Component<Props, State> {
     return card.code;
   };
 
-  _cardPressed = (card: Card) => {
+  _cardPressed = (id: string, card: Card) => {
     const {
       cardPressed,
       componentId,
       tabooSetOverride,
+      onDeckCountChange,
+      investigator,
+      renderFooter,
     } = this.props;
+    const {
+      deckCardCounts,
+    } = this.state;
+
     cardPressed && cardPressed(card);
-    showCard(componentId, card.code, card, true, tabooSetOverride);
+    const [sectionId, cardIndex] = id.split('.');
+    let index = 0;
+    const ids: string[] = [];
+    forEach(this.getData(), section => {
+      if (sectionId === section.id) {
+        index = ids.length + parseInt(cardIndex, 10);
+      }
+      forEach(section.data, card => {
+        ids.push(card.code);
+      });
+    });
+    showCardSwipe(
+      componentId,
+      ids,
+      index,
+      true,
+      tabooSetOverride,
+      deckCardCounts,
+      onDeckCountChange,
+      investigator,
+      renderFooter,
+    );
   };
 
   _getItem = (data: Card[], index: number) => {
@@ -540,7 +570,11 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  _renderCard = ({ item }: { item: Card }) => {
+  _renderCard = ({ item, index, section }: {
+    item: Card;
+    index: number;
+    section: SectionListData<CardBucket>;
+  }) => {
     const {
       limits,
       hasSecondCore,
@@ -553,7 +587,8 @@ class CardResultList extends React.Component<Props, State> {
         card={item}
         count={deckCardCounts && deckCardCounts[item.code]}
         onDeckCountChange={this.props.onDeckCountChange}
-        onPress={this._cardPressed}
+        id={`${section.id}.${index}`}
+        onPressId={this._cardPressed}
         limit={limits ? limits[item.code] : undefined}
         hasSecondCore={hasSecondCore}
       />
@@ -640,15 +675,17 @@ class CardResultList extends React.Component<Props, State> {
     const startCards = deckSections.length ?
       concat(
         [{
-          title: 'In Deck',
+          title: t`In Deck`,
           bold: true,
           data: [],
+          id: 'InDeck',
         }],
         deckSections,
         [{
-          title: 'All Eligible Cards',
+          title: t`All Eligible Cards`,
           bold: true,
           data: [],
+          id: 'AllEligibleCards',
         }],
         cards,
       ) : cards;

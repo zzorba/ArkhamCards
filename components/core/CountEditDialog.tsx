@@ -106,7 +106,7 @@ export default class CountEditDialog extends React.Component<Props, State> {
               onIncrement={this._increment}
               onDecrement={this._decrement}
               size={36}
-              dark
+              color="dark"
             />
           </View>
         </View>

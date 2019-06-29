@@ -16,6 +16,7 @@ import { getTabooSet, AppState } from '../../reducers';
 interface OwnProps {
   componentId: string;
   card: Card;
+  width: number;
 }
 
 interface ReduxProps {
@@ -35,6 +36,7 @@ class BondedCardsComponent extends React.Component<Props> {
       componentId,
       bonded_to_cards,
       bonded_from_cards,
+      width,
     } = this.props;
     if (!(bonded_to_cards && bonded_to_cards.length) &&
       !(bonded_from_cards && bonded_from_cards.length)) {
@@ -50,6 +52,7 @@ class BondedCardsComponent extends React.Component<Props> {
                 componentId={componentId}
                 key={card.code}
                 card={card}
+                width={width}
               />
             )) }
           </React.Fragment>
@@ -62,6 +65,7 @@ class BondedCardsComponent extends React.Component<Props> {
                 key={card.code}
                 componentId={componentId}
                 card={card}
+                width={width}
               />
             )) }
           </React.Fragment>

@@ -31,6 +31,7 @@ interface Props {
   parsedDeck: ParsedDeck;
   cards: CardsMap;
   xpAdjustment: number;
+  controls?: React.ReactNode;
 }
 
 export default class DeckNavFooter extends React.Component<Props> {
@@ -119,6 +120,31 @@ export default class DeckNavFooter extends React.Component<Props> {
     return t`XP: ${spentXp} of ${adjustedExperience}`;
   }
 
+  renderControls() {
+    const {
+      controls,
+    } = this.props;
+    if (controls) {
+      return controls;
+    }
+    return (
+      <React.Fragment>
+        { SHOW_CHARTS_BUTTON && (
+          <TouchableOpacity onPress={this._showCardCharts}>
+            <View style={styles.button}>
+              <MaterialCommunityIcons name="chart-bar" size={28} color="#FFFFFF" />
+            </View>
+          </TouchableOpacity>
+        ) }
+        <TouchableOpacity onPress={this._showCardSimulator}>
+          <View style={styles.button}>
+            <AppIcon name="cards" size={28} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </React.Fragment>
+    );
+  }
+
   render() {
     const {
       parsedDeck: {
@@ -150,18 +176,7 @@ export default class DeckNavFooter extends React.Component<Props> {
           { this.renderProblem() }
         </View>
         <View style={styles.right}>
-          { SHOW_CHARTS_BUTTON && (
-            <TouchableOpacity onPress={this._showCardCharts}>
-              <View style={styles.button}>
-                <MaterialCommunityIcons name="chart-bar" size={28} color="#FFFFFF" />
-              </View>
-            </TouchableOpacity>
-          ) }
-          <TouchableOpacity onPress={this._showCardSimulator}>
-            <View style={styles.button}>
-              <AppIcon name="cards" size={28} color="#FFFFFF" />
-            </View>
-          </TouchableOpacity>
+          { this.renderControls() }
         </View>
       </LinearGradient>
     );

@@ -18,6 +18,7 @@ import CardResultList from './CardResultList';
 import Switch from '../core/Switch';
 import { FilterState, filterToQuery } from '../../lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from '../../data/query';
+import Card from '../../data/Card';
 import typography from '../../styles/typography';
 
 interface Props {
@@ -33,11 +34,12 @@ interface Props {
   clearSearchFilters: () => void;
   tabooSetOverride?: number;
 
+  investigator?: Card;
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
-  footer?: ReactNode;
+  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
 }
 
 interface State {
@@ -293,12 +295,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       deckCardCounts,
       onDeckCountChange,
       limits,
-      footer,
+      renderFooter,
       showNonCollection,
       selectedSort,
       mythosMode,
       visible,
       tabooSetOverride,
+      investigator,
     } = this.props;
     const {
       searchTerm,
@@ -313,6 +316,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             query={this.query()}
             searchTerm={searchTerm}
             sort={selectedSort}
+            investigator={investigator}
             originalDeckSlots={originalDeckSlots}
             deckCardCounts={deckCardCounts}
             onDeckCountChange={onDeckCountChange}
@@ -321,12 +325,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             hideHeader={this._hideHeader}
             expandSearchControls={this.renderExpandSearchButtons()}
             visible={visible}
+            renderFooter={renderFooter}
             showNonCollection={mythosMode || showNonCollection}
           />
         </View>
-        { !!footer && <View style={[
+        { !!renderFooter && <View style={[
           styles.footer,
-        ]}>{ footer }</View> }
+        ]}>{ renderFooter() }</View> }
       </View>
     );
   }

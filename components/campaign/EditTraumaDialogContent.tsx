@@ -93,7 +93,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
               onDecrement={this._decPhysical}
               size={36}
               disabled={killed || insane}
-              dark
+              color="dark"
             />
           </View>
         </View>
@@ -110,7 +110,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
               onDecrement={this._decMental}
               size={36}
               disabled={killed || insane}
-              dark
+              color="dark"
             />
           </View>
         </View>

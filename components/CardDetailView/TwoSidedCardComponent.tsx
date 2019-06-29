@@ -66,6 +66,7 @@ interface Props {
   card: BaseCard;
   linked?: boolean;
   notFirst?: boolean;
+  width: number;
 }
 
 interface State {
@@ -456,6 +457,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   ) {
     const {
       componentId,
+      width,
     } = this.props;
     if (card.linked_card) {
       return (
@@ -465,6 +467,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             card={card.linked_card}
             linked
             notFirst={!isFirst}
+            width={width}
           />
         </View>
       );
@@ -482,7 +485,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     }
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { width }]}>
         <View style={[styles.card, {
           backgroundColor: '#FFFFFF',
           borderColor: card.faction2_code ?
@@ -584,11 +587,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           <View style={[styles.halfColumn, { paddingRight: s }]}>
             { this.renderFaqButton() }
           </View>
-          { (card.taboo_set_id === 0) && (
-            <View style={[styles.halfColumn, { paddingLeft: s }]}>
-              { this.renderTabooButton() }
-            </View>
-          ) }
+          <View style={[styles.halfColumn, { paddingLeft: s }]}>
+            { (card.taboo_set_id === 0) && (
+              this.renderTabooButton()
+            ) }
+          </View>
         </View>
       </React.Fragment>
     );
@@ -601,7 +604,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <View style={styles.column}>
         <View style={styles.playerImage}>
-          <PlayerCardImage card={card} componentId={this.props.componentId} />
+          <PlayerCardImage
+            card={card}
+            componentId={this.props.componentId}
+          />
         </View>
       </View>
     );
@@ -770,7 +776,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   halfColumn: {
-    width: '50%',
+    flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
@@ -795,10 +801,10 @@ const styles = StyleSheet.create({
     marginBottom: s,
   },
   container: {
-    marginTop: s,
-    marginLeft: s,
-    marginRight: s,
-    marginBottom: s,
+    paddingTop: s,
+    paddingLeft: s,
+    paddingRight: s,
+    paddingBottom: s,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',

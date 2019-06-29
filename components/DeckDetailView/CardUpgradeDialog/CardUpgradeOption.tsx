@@ -57,7 +57,7 @@ export default class CardUpgradeOption extends React.Component<Props> {
           onIncrement={this._inc}
           onDecrement={this._dec}
           size={36}
-          dark
+          color="dark"
         />
       </View>
     );

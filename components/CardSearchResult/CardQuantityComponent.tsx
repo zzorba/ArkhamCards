@@ -19,6 +19,8 @@ interface Props {
   countChanged: (count: number) => void;
   limit: number;
   showZeroCount?: boolean;
+  forceBig?: boolean;
+  light?: boolean;
 }
 
 interface State {
@@ -194,14 +196,16 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
   }
 
   render() {
-    if (TOGGLE_BUTTON_MODE) {
-      return this.renderTiny();
-    }
-
     const {
       limit,
       showZeroCount,
+      forceBig,
+      light,
     } = this.props;
+    if (TOGGLE_BUTTON_MODE && !forceBig) {
+      return this.renderTiny();
+    }
+
     const {
       count,
     } = this.state;
@@ -214,9 +218,10 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
           onIncrement={this._increment}
           onDecrement={this._decrement}
           limit={limit}
+          color={light ? 'light' : undefined}
           noFill
         />
-        <Text style={[typography.text, styles.count]}>
+        <Text style={[typography.text, styles.count, light ? { color: 'white' } : {}]}>
           { (showZeroCount || count !== 0) ? count : ' ' }
         </Text>
       </View>

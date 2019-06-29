@@ -39,11 +39,12 @@ interface OwnProps {
   showNonCollection?: boolean;
   tabooSetOverride?: number;
 
+  investigator?: Card;
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
-  footer?: ReactNode;
+  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   modal?: boolean;
 }
 
@@ -279,11 +280,12 @@ class CardSearchComponent extends React.Component<Props, State> {
       deckCardCounts,
       onDeckCountChange,
       limits,
-      footer,
+      renderFooter,
       showNonCollection,
       mythosToggle,
       baseQuery,
       tabooSetOverride,
+      investigator,
     } = this.props;
     const {
       selectedSort,
@@ -303,11 +305,12 @@ class CardSearchComponent extends React.Component<Props, State> {
         tabooSetOverride={tabooSetOverride}
         toggleMythosMode={this._toggleMythosMode}
         clearSearchFilters={this._clearSearchFilters}
+        investigator={investigator}
         originalDeckSlots={originalDeckSlots}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={onDeckCountChange}
         limits={limits}
-        footer={footer}
+        renderFooter={renderFooter}
         visible={visible}
       />
     );

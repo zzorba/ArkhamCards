@@ -35,7 +35,7 @@ interface Props {
   id?: string;
   count?: number;
   onPress?: (card: Card) => void;
-  onPressId?: (code: string) => void;
+  onPressId?: (code: string, card: Card) => void;
   onUpgrade?: (card: Card) => void;
   onDeckCountChange?: (code: string, count: number) => void;
   limit?: number;
@@ -52,12 +52,13 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       id,
       onPress,
       onPressId,
+      card,
     } = this.props;
     Keyboard.dismiss();
     if (id && onPressId) {
-      onPressId(id);
+      onPressId(id, card);
     } else {
-      onPress && onPress(this.props.card);
+      onPress && onPress(card);
     }
   };
 

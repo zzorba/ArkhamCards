@@ -26,6 +26,7 @@ interface ReduxProps {
 interface OwnProps {
   componentId: string;
   investigator: Card;
+  width: number;
 }
 type Props = OwnProps & RealmProps & ReduxProps;
 
@@ -35,6 +36,7 @@ class SignatureCardsComponent extends React.Component<Props> {
       componentId,
       requiredCards,
       alternateCards,
+      width,
     } = this.props;
 
     return (
@@ -42,14 +44,24 @@ class SignatureCardsComponent extends React.Component<Props> {
         <Text style={styles.header}>{ t`Required Cards` }</Text>
         { !!(requiredCards && requiredCards.length) && (
           map(requiredCards, card => (
-            <SignatureCardItem key={card.code} componentId={componentId} card={card} />
+            <SignatureCardItem
+              key={card.code}
+              componentId={componentId}
+              card={card}
+              width={width}
+            />
           ))
         ) }
         { !!(alternateCards && alternateCards.length) && (
           <React.Fragment>
             <Text style={styles.header}>{ t`Alternate Cards` }</Text>
             { map(alternateCards, card => (
-              <SignatureCardItem key={card.code} componentId={componentId} card={card} />
+              <SignatureCardItem
+                key={card.code}
+                componentId={componentId}
+                card={card}
+                width={width}
+              />
             )) }
           </React.Fragment>
         ) }
