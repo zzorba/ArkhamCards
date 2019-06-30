@@ -838,6 +838,20 @@ class DeckDetailView extends React.Component<Props, State> {
     }, this._syncNavigationButtons);
   };
 
+  _onDeckCountChange = (code: string, count: number) => {
+    const {
+      slots,
+    } = this.state;
+    const newSlots = {
+      ...slots,
+      [code]: count,
+    };
+    if (count === 0) {
+      delete newSlots[code];
+    }
+    this._updateSlots(newSlots);
+  };
+
   _updateSlots = (newSlots: Slots, resetIgnoreDeckLimitSlots?: boolean) => {
     const {
       deck,
@@ -1137,6 +1151,29 @@ class DeckDetailView extends React.Component<Props, State> {
     );
   }
 
+  _renderFooter = (slots?: Slots, controls?: React.ReactNode) => {
+    const {
+      componentId,
+      cards,
+    } = this.props;
+    const {
+      parsedDeck,
+      xpAdjustment,
+    } = this.state;
+    if (!parsedDeck) {
+      return null;
+    }
+    return (
+      <DeckNavFooter
+        componentId={componentId}
+        parsedDeck={parsedDeck}
+        cards={cards}
+        xpAdjustment={xpAdjustment}
+        controls={controls}
+      />
+    );
+  };
+
   render() {
     const {
       deck,
@@ -1204,13 +1241,10 @@ class DeckDetailView extends React.Component<Props, State> {
             campaign={campaign}
             showTraumaDialog={showTraumaDialog}
             investigatorDataUpdates={investigatorDataUpdates}
+            renderFooter={this._renderFooter}
+            onDeckCountChange={this._onDeckCountChange}
           />
-          <DeckNavFooter
-            componentId={componentId}
-            parsedDeck={parsedDeck}
-            cards={cards}
-            xpAdjustment={xpAdjustment}
-          />
+          { this._renderFooter() }
         </View>
         { this.renderEditDetailsDialog(deck, parsedDeck) }
         { this.renderSavingDialog() }

@@ -152,6 +152,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         normalCardCount,
         totalCardCount,
       },
+      controls,
     } = this.props;
     const cardCountString = ngettext(
       msgid`${normalCardCount} Card (${totalCardCount} Total)`,
@@ -167,7 +168,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         <View style={styles.left}>
           <View style={styles.row}>
             <Text style={[
-              TINY_PHONE ? typography.small : typography.text,
+              (TINY_PHONE || controls) ? typography.small : typography.text,
               styles.whiteText,
             ]} allowFontScaling={false}>
               { `${cardCountString} - ${xpString}` }

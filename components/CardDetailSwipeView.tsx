@@ -200,12 +200,16 @@ class CardDetailSwipeView extends React.Component<Props, State> {
   }
 
   _onSwipe = (direction: SwipeDirection) => {
-    const { ids } = this.props;
+    const { ids, componentId } = this.props;
     const { index } = this.state;
     if (direction === SwipeDirection.SWIPE_RIGHT) {
-      this.setState({
-        index: Math.max(0, index - 1),
-      });
+      if (index === 0) {
+        Navigation.pop(componentId);
+      } else {
+        this.setState({
+          index: Math.max(0, index - 1),
+        });
+      }
     } else {
       this.setState({
         index: Math.min(ids.length - 1, index + 1),

@@ -38,7 +38,7 @@ export function getDeckOptions(
         },
       ] : [],
       title: {
-        text: title || (investigator ? investigator.name : t`Deck`),
+        text: (title !== undefined ? title : (investigator ? investigator.name : t`Deck`)),
         color: '#FFFFFF',
       },
       subtitle: {
@@ -166,7 +166,7 @@ export function showCardSwipe(
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
 ) {
   const options = investigator ?
-    getDeckOptions(investigator, false, t`Card`) :
+    getDeckOptions(investigator, false, '') :
     {
       topBar: {
         backButton: {

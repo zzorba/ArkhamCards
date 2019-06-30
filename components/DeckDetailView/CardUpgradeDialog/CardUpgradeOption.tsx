@@ -41,11 +41,12 @@ export default class CardUpgradeOption extends React.Component<Props> {
       count,
       card,
     } = this.props;
+    const level = card.xp || 0;
     return (
       <View style={styles.buttonsRow}>
         <View style={styles.buttonLabel}>
           <Text style={styles.label}>
-            { t`Level ${card.xp || 0}` }
+            { t`Level ${level}` }
           </Text>
         </View>
         <Text style={[styles.label, styles.countText]}>

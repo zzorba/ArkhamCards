@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   Text,
   ScrollView,
+  SectionListData,
 } from 'react-native';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
@@ -18,9 +19,9 @@ import DeviceInfo from 'react-native-device-info';
 import { msgid, ngettext, t } from 'ttag';
 
 import AppIcon from '../../assets/AppIcon';
-import { Campaign, Deck, DeckProblem, InvestigatorData, Trauma } from '../../actions/types';
+import { Campaign, Deck, DeckProblem, InvestigatorData, Slots, Trauma } from '../../actions/types';
 import { CardId, ParsedDeck, SplitCards } from '../parseDeck';
-import { showCard } from '../navHelper';
+import { showCard, showCardSwipe } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import CardSearchResult from '../CardSearchResult';
@@ -41,6 +42,7 @@ interface SectionCardId extends CardId {
 }
 
 interface CardSection {
+  id: string;
   superTitle?: string;
   title?: string;
   subTitle?: string;
@@ -78,11 +80,13 @@ function deckToSections(
     const assetCount = sum(halfDeck.Assets.map(subAssets =>
       sum(subAssets.data.map(c => c.quantity))));
     result.push({
+      id: `assets${special ? '-special' : ''}`,
       title: t`Assets (${assetCount})`,
       data: [],
     });
-    forEach(halfDeck.Assets, subAssets => {
+    forEach(halfDeck.Assets, (subAssets, idx) => {
       result.push({
+        id: `asset${special ? '-special' : ''}-${idx}`,
         subTitle: subAssets.type,
         data: map(subAssets.data, c => {
           return {
@@ -103,6 +107,7 @@ function deckToSections(
     if (cardSplitGroup) {
       const count = sumBy(cardSplitGroup, c => c.quantity);
       result.push({
+        id: localizedName,
         title: `${localizedName} (${count})`,
         data: map(cardSplitGroup, c => {
           return {
@@ -152,6 +157,8 @@ interface Props {
   deleteDeck: (allVersions: boolean) => void;
   uploadLocalDeck: () => void;
   problem?: DeckProblem;
+  renderFooter: (slots?: Slots) => React.ReactNode;
+  onDeckCountChange: (code: string, count: number) => void;
 }
 
 export default class DeckViewTab extends React.Component<Props> {
@@ -270,25 +277,57 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         investigator,
       },
-    } = this.props;
-    this._showCard(investigator);
-  };
-
-  _showCard = (card: Card) => {
-    const {
       componentId,
       tabooSetId,
     } = this.props;
     showCard(
       componentId,
-      card.code,
-      card,
+      investigator.code,
+      investigator,
       false,
       tabooSetId,
     );
   };
 
-  _renderSectionHeader = ({ section }: { section: CardSection }) => {
+  _showSwipeCard = (id: string, card: Card) => {
+    const {
+      componentId,
+      tabooSetId,
+      parsedDeck: {
+        investigator,
+        slots,
+      },
+      renderFooter,
+      onDeckCountChange,
+    } = this.props;
+    const [sectionId, cardIndex] = id.split('.');
+    let index = 0;
+    const ids: string[] = [];
+    forEach(this.data(), section => {
+      if (sectionId === section.id) {
+        index = ids.length + parseInt(cardIndex, 10);
+      }
+      forEach(section.data, item => {
+        ids.push(item.id);
+      });
+    });
+
+    showCardSwipe(
+      componentId,
+      ids,
+      index,
+      true,
+      tabooSetId,
+      slots,
+      onDeckCountChange,
+      investigator,
+      renderFooter,
+    );
+  };
+
+  _renderSectionHeader = ({ section }: {
+    section: SectionListData<CardSection>;
+  }) => {
     const {
       parsedDeck: {
         investigator,
@@ -343,7 +382,11 @@ export default class DeckViewTab extends React.Component<Props> {
     return null;
   }
 
-  _renderCard = ({ item }: { item: SectionCardId }) => {
+  _renderCard = ({ item, index, section }: {
+    item: SectionCardId,
+    index: number;
+    section: SectionListData<CardSection>;
+  }) => {
     const {
       parsedDeck: {
         ignoreDeckLimitSlots,
@@ -361,8 +404,9 @@ export default class DeckViewTab extends React.Component<Props> {
       <CardSearchResult
         key={item.id}
         card={card}
+        id={`${section.id}.${index}`}
         onUpgrade={item.hasUpgrades && SHOW_UPGRADE_BUTTON ? showCardUpgradeDialog : undefined}
-        onPress={this._showCard}
+        onPressId={this._showSwipeCard}
         count={count}
       />
     );
@@ -399,7 +443,7 @@ export default class DeckViewTab extends React.Component<Props> {
     );
   }
 
-  data() {
+  data(): CardSection[] {
     const {
       parsedDeck: {
         normalCards,
@@ -416,6 +460,7 @@ export default class DeckViewTab extends React.Component<Props> {
     return [
       ...deckToSections(normalCards, cards, cardsByName, validation, false),
       {
+        id: 'special',
         superTitle: t`Special Cards`,
         data: [],
         onPress: showEditSpecial,

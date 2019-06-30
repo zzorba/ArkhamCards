@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button as BasicButton,
   ScrollView,
   StyleSheet,
   Text,
@@ -101,21 +102,21 @@ export default class CardDetailComponent extends React.Component<Props> {
     } = this.props;
     if (this.shouldBlur()) {
       return (
-        <ScrollView style={styles.viewContainer} contentContainerStyle={{ width }}>
+        <ScrollView key={card.code} style={styles.viewContainer} contentContainerStyle={{ width }}>
           <Text style={styles.spoilerText}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
-          <View style={styles.buttonContainer}>
-            <Button onPress={this._toggleShowSpoilers} text="Show card" />
+          <View style={styles.basicButtonContainer}>
+            <BasicButton onPress={this._toggleShowSpoilers} title="Show card" />
           </View>
-          <View style={styles.buttonContainer}>
-            <Button onPress={this._editSpoilersPressed} text="Edit my spoiler settings" />
+          <View style={styles.basicButtonContainer}>
+            <BasicButton onPress={this._editSpoilersPressed} title="Edit my spoiler settings" />
           </View>
         </ScrollView>
       );
     }
     return (
-      <ScrollView style={styles.viewContainer} contentContainerStyle={{ width }}>
+      <ScrollView key={card.code} style={styles.viewContainer} contentContainerStyle={{ width }}>
         <TwoSidedCardComponent
           componentId={componentId}
           card={card}
@@ -127,7 +128,6 @@ export default class CardDetailComponent extends React.Component<Props> {
           width={width}
         />
         { this.renderInvestigatorCardsLink() }
-        <View style={styles.footerPadding} />
       </ScrollView>
     );
   }
@@ -138,15 +138,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  footerPadding: {
-    height: 150,
-  },
   buttonContainer: {
     marginLeft: 8,
     marginTop: 4,
     marginBottom: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  basicButtonContainer: {
+    marginLeft: 8,
+    marginTop: 4,
+    marginBottom: 4,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   sectionHeader: {
     marginTop: 24,
