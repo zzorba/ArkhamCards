@@ -302,21 +302,22 @@ export default class DeckViewTab extends React.Component<Props> {
     } = this.props;
     const [sectionId, cardIndex] = id.split('.');
     let index = 0;
-    const ids: string[] = [];
+    const cards: Card[] = [];
     forEach(this.data(), section => {
       if (sectionId === section.id) {
-        index = ids.length + parseInt(cardIndex, 10);
+        index = cards.length + parseInt(cardIndex, 10);
       }
       forEach(section.data, item => {
-        ids.push(item.id);
+        const card = this.props.cards[item.id];
+        cards.push(card);
       });
     });
 
     showCardSwipe(
       componentId,
-      ids,
+      cards,
       index,
-      true,
+      false,
       tabooSetId,
       slots,
       onDeckCountChange,

@@ -95,7 +95,6 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
         results.cards.filtered(`(real_name == $0) and ${Card.tabooSetQuery(props.tabooSetId)}`, props.card.bonded_name) : undefined;
       const bonded_from_cards = props.card &&
         results.cards.filtered(`(bonded_name == $0) and ${Card.tabooSetQuery(props.tabooSetId)}`, props.card.real_name);
-
       return {
         bonded_to_cards,
         bonded_from_cards,

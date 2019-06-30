@@ -110,6 +110,7 @@ export default class PlayerCardImage extends React.Component<Props> {
                 uri: `https://arkhamdb.com${filename}`,
               }}
               resizeMode="contain"
+              loadingIndicator={null}
             />
           </View>
         </TouchableOpacity>
@@ -126,6 +127,7 @@ export default class PlayerCardImage extends React.Component<Props> {
                 uri: `https://arkhamdb.com${filename}`,
               }}
               resizeMode="contain"
+              loadingIndicator={null}
             />
           </View>
         </View>

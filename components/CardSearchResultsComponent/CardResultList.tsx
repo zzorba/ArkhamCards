@@ -505,25 +505,26 @@ class CardResultList extends React.Component<Props, State> {
     } = this.props;
     const {
       deckCardCounts,
+      showSpoilerCards,
     } = this.state;
 
     cardPressed && cardPressed(card);
     const [sectionId, cardIndex] = id.split('.');
     let index = 0;
-    const ids: string[] = [];
+    const cards: Card[] = [];
     forEach(this.getData(), section => {
       if (sectionId === section.id) {
-        index = ids.length + parseInt(cardIndex, 10);
+        index = cards.length + parseInt(cardIndex, 10);
       }
       forEach(section.data, card => {
-        ids.push(card.code);
+        cards.push(card);
       });
     });
     showCardSwipe(
       componentId,
-      ids,
+      cards,
       index,
-      true,
+      showSpoilerCards,
       tabooSetOverride,
       deckCardCounts,
       onDeckCountChange,

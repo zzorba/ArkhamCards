@@ -19,6 +19,8 @@ interface Props {
   color?: 'light' | 'dark';
   noFill?: boolean;
   allowNegative?: boolean;
+  countRender?: React.ReactNode;
+  hideDisabledMinus?: boolean;
 }
 
 export default class PlusMinusButtons extends React.PureComponent<Props> {
@@ -28,7 +30,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     } = this.props;
     switch (color) {
       case 'dark': return '#888';
-      case 'light': return '#aaa';
+      case 'light': return '#FFF';
       default: return '#ddd';
     }
   }
@@ -52,16 +54,21 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       disabled,
       noFill,
       onIncrement,
+      color,
     } = this.props;
     const atLimit = limit && (count === limit);
     if (count === null || atLimit || disabled || limit === 0) {
       return (
         <TouchableOpacity disabled>
-          <MaterialCommunityIcons
-            name="plus-box-outline"
-            size={size}
-            color={this.disabledColor()}
-          />
+          { color === 'light' ? (
+            <View style={{ width: size, height: size }} />
+          ) : (
+            <MaterialCommunityIcons
+              name="plus-box-outline"
+              size={size}
+              color={this.disabledColor()}
+            />
+          ) }
         </TouchableOpacity>
       );
     }
@@ -84,6 +91,8 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       noFill,
       onDecrement,
       allowNegative,
+      color,
+      hideDisabledMinus,
     } = this.props;
     if ((count > 0 || allowNegative) && !disabled) {
       return (
@@ -98,19 +107,25 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     }
     return (
       <TouchableOpacity disabled>
-        <MaterialCommunityIcons
-          name="minus-box-outline"
-          size={size}
-          color={this.disabledColor()}
-        />
+        { color === 'light' || hideDisabledMinus ? (
+          <View style={{ width: size, height: size }} />
+        ) : (
+          <MaterialCommunityIcons
+            name="minus-box-outline"
+            size={size}
+            color={this.disabledColor()}
+          />
+        ) }
       </TouchableOpacity>
     );
   }
 
   render() {
+    const { countRender } = this.props;
     return (
       <View style={this.props.style || styles.row}>
         { this.renderMinusButton() }
+        { countRender }
         { this.renderPlusButton() }
       </View>
     );

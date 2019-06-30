@@ -214,16 +214,18 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
       <View style={styles.row}>
         <PlusMinusButtons
           count={count}
-          size={44}
+          size={36}
           onIncrement={this._increment}
           onDecrement={this._decrement}
           limit={limit}
           color={light ? 'light' : undefined}
-          noFill
+          hideDisabledMinus
+          countRender={
+            <Text style={[typography.text, styles.count, light ? { color: 'white', fontSize: 22 } : {}]}>
+              { (showZeroCount || count !== 0) ? count : ' ' }
+            </Text>
+          }
         />
-        <Text style={[typography.text, styles.count, light ? { color: 'white' } : {}]}>
-          { (showZeroCount || count !== 0) ? count : ' ' }
-        </Text>
       </View>
     );
   }
@@ -241,6 +243,7 @@ const styles = StyleSheet.create({
     width: 16,
     textAlign: 'center',
     marginRight: 8,
+    fontWeight: '600',
   },
   tinyContainer: {
     position: 'absolute',

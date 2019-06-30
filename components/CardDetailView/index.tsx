@@ -2,6 +2,8 @@ import React from 'react';
 import { head } from 'lodash';
 import {
   Linking,
+  ScrollView,
+  StyleSheet,
 } from 'react-native';
 import Realm from 'realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
@@ -189,15 +191,17 @@ class CardDetailView extends React.Component<Props, State> {
       return null;
     }
     return (
-      <CardDetailComponent
-        width={width}
-        componentId={componentId}
-        card={card}
-        showSpoilers={showSpoilers || this.state.showSpoilers}
-        tabooSetId={tabooSetId}
-        toggleShowSpoilers={this._toggleShowSpoilers}
-        showInvestigatorCards={this._showInvestigatorCards}
-      />
+      <ScrollView style={styles.wrapper}>
+        <CardDetailComponent
+          width={width}
+          componentId={componentId}
+          card={card}
+          showSpoilers={showSpoilers || this.state.showSpoilers}
+          tabooSetId={tabooSetId}
+          toggleShowSpoilers={this._toggleShowSpoilers}
+          showInvestigatorCards={this._showInvestigatorCards}
+        />
+      </ScrollView>
     );
   }
 }
@@ -230,3 +234,9 @@ connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToP
       },
     })
 );
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+});

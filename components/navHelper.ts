@@ -156,7 +156,7 @@ export function showCard(
 
 export function showCardSwipe(
   componentId: string,
-  ids: string[],
+  cards: Card[],
   index: number,
   showSpoilers?: boolean,
   tabooSetId?: number,
@@ -179,7 +179,7 @@ export function showCardSwipe(
     component: {
       name: 'Card.Swipe',
       passProps: {
-        ids,
+        cards,
         initialIndex: index,
         showSpoilers: !!showSpoilers,
         tabooSetId,

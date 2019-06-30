@@ -102,7 +102,7 @@ export default class CardDetailComponent extends React.Component<Props> {
     } = this.props;
     if (this.shouldBlur()) {
       return (
-        <ScrollView key={card.code} style={styles.viewContainer} contentContainerStyle={{ width }}>
+        <View key={card.code} style={[styles.viewContainer, { width }]}>
           <Text style={styles.spoilerText}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
@@ -112,11 +112,11 @@ export default class CardDetailComponent extends React.Component<Props> {
           <View style={styles.basicButtonContainer}>
             <BasicButton onPress={this._editSpoilersPressed} title="Edit my spoiler settings" />
           </View>
-        </ScrollView>
+        </View>
       );
     }
     return (
-      <ScrollView key={card.code} style={styles.viewContainer} contentContainerStyle={{ width }}>
+      <View key={card.code} style={[styles.viewContainer, { width }]}>
         <TwoSidedCardComponent
           componentId={componentId}
           card={card}
@@ -128,14 +128,13 @@ export default class CardDetailComponent extends React.Component<Props> {
           width={width}
         />
         { this.renderInvestigatorCardsLink() }
-      </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   viewContainer: {
-    flex: 1,
     backgroundColor: 'white',
   },
   buttonContainer: {
