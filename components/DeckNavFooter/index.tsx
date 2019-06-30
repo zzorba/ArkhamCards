@@ -152,7 +152,6 @@ export default class DeckNavFooter extends React.Component<Props> {
         normalCardCount,
         totalCardCount,
       },
-      controls,
     } = this.props;
     const cardCountString = ngettext(
       msgid`${normalCardCount} Card (${totalCardCount} Total)`,

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Button as BasicButton,
-  ScrollView,
   StyleSheet,
   Text,
   View,

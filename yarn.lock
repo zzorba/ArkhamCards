@@ -6956,10 +6956,6 @@ react-native-settings-components@zzorba/react-native-settings-components:
     lodash "^4.17.11"
     react-native-dialogs "^1.0.2"
 
-react-native-sideswipe@zzorba/react-native-sideswipe#no_animation:
-  version "1.5.0"
-  resolved "https://codeload.github.com/zzorba/react-native-sideswipe/tar.gz/0eb563b7d09f96caf32ebf66bd4b375b7faa53d0"
-
 react-native-status-bar-height@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-status-bar-height/-/react-native-status-bar-height-2.2.0.tgz#3bd51de134660efc5f5ad136ca573c7d5790f7ed"
@@ -6986,7 +6982,7 @@ react-native-svg@^6.2.1:
     lodash "^4.16.6"
     pegjs "^0.10.0"
 
-react-native-swiper@^1.6.0-nightly.1:
+react-native-swiper@1.6.0-nightly.1:
   version "1.6.0-nightly.1"
   resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.6.0-nightly.1.tgz#d240b18d66376ded241aa6a05164b9b81e305bdb"
   integrity sha512-5YVp1wTvkxTrvZGxhUhExQjJAAGwpCsVHYxLfbxRyNKhvXwksQ6zRYfjo2Y8STX85xmBKm1QKooYPU/FhvwHBA==

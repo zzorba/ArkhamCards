@@ -17,6 +17,7 @@ export function getDeckOptions(
   modal?: boolean,
   title?: string
 ): Options {
+  const investigatorDeckName = investigator ? investigator.name : t`Deck`;
   return {
     statusBar: {
       style: 'light',
@@ -38,7 +39,7 @@ export function getDeckOptions(
         },
       ] : [],
       title: {
-        text: (title !== undefined ? title : (investigator ? investigator.name : t`Deck`)),
+        text: (title !== undefined ? title : investigatorDeckName),
         color: '#FFFFFF',
       },
       subtitle: {

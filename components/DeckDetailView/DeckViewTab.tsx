@@ -289,7 +289,7 @@ export default class DeckViewTab extends React.Component<Props> {
     );
   };
 
-  _showSwipeCard = (id: string, card: Card) => {
+  _showSwipeCard = (id: string) => {
     const {
       componentId,
       tabooSetId,
@@ -384,7 +384,7 @@ export default class DeckViewTab extends React.Component<Props> {
   }
 
   _renderCard = ({ item, index, section }: {
-    item: SectionCardId,
+    item: SectionCardId;
     index: number;
     section: SectionListData<CardSection>;
   }) => {

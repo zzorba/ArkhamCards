@@ -6,22 +6,19 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { map, slice } from 'lodash';
+import { map } from 'lodash';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
-import SideSwipe from 'react-native-sideswipe';
 import Swiper from 'react-native-swiper';
 
 import { Slots } from '../actions/types';
 import CardQuantityComponent from './CardSearchResult/CardQuantityComponent';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
-import SwipeRecognizer, { SwipeDirection } from './core/SwipeRecognizer';
 import withDimensions, { DimensionsProps } from './core/withDimensions';
 import Card from '../data/Card';
 import { getTabooSet, AppState } from '../reducers';
-import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
 import { InvestigatorCardsProps } from './InvestigatorCardsView';
 import { CardFaqProps } from './CardFaqView';
 import { NavigationProps } from './types';
@@ -65,7 +62,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     };
   }
 
-  _listRef?: ScrollView;
   _navEventListener?: EventSubscription;
   _touchX: Animated.Value;
   constructor(props: Props) {
@@ -204,24 +200,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     return false;
   }
 
-  _onSwipe = (direction: SwipeDirection) => {
-    const { cards, componentId } = this.props;
-    const { index } = this.state;
-    if (direction === SwipeDirection.SWIPE_RIGHT) {
-      if (index === 0) {
-        Navigation.pop(componentId);
-      } else {
-        this.setState({
-          index: Math.max(0, index - 1),
-        });
-      }
-    } else {
-      this.setState({
-        index: Math.min(cards.length - 1, index + 1),
-      });
-    }
-  };
-
   _countChanged = (count: number) => {
     const {
       onDeckCountChange,
@@ -272,45 +250,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     );
   }
 
-  altRender() {
-    const {
-      componentId,
-      tabooSetId,
-      width,
-      renderFooter,
-    } = this.props;
-    const {
-      deckCardCounts,
-    } = this.state;
-    const card = this.currentCard();
-    if (!card) {
-      return null;
-    }
-    return (
-      <SwipeRecognizer
-        onSwipe={this._onSwipe}
-        config={{
-          velocityThreshold: 0.1,
-          directionalOffsetThreshold: 50,
-        }}
-        style={styles.wrapper}
-      >
-        <View style={styles.wrapper}>
-          <CardDetailComponent
-            componentId={componentId}
-            card={card}
-            showSpoilers={this.showSpoilers(card)}
-            tabooSetId={tabooSetId}
-            toggleShowSpoilers={this._toggleShowSpoilers}
-            showInvestigatorCards={this._showInvestigatorCards}
-            width={width}
-          />
-          { !!renderFooter && renderFooter(deckCardCounts, this.renderDeckCountControl()) }
-        </View>
-      </SwipeRecognizer>
-    );
-  }
-
   _onIndexChange = (index: number) => {
     if (index !== this.state.index) {
       this.setState({
@@ -319,14 +258,12 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     }
   };
 
-  _renderItem = ({ itemIndex }: { itemIndex: number }) => {
+  _renderItem = (card: Card, itemIndex: number) => {
     const {
       componentId,
-      cards,
       tabooSetId,
       width,
     } = this.props;
-    const card = cards[itemIndex];
     return (
       <ScrollView
         key={itemIndex}
@@ -347,89 +284,19 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     );
   };
 
-  _captureScrollView = (ref: ScrollView) => {
-    this._listRef = ref;
-  };
-
-  renderSideSwipe() {
-    const {
-      width,
-      renderFooter,
-      cards,
-    } = this.props;
-    const {
-      deckCardCounts,
-      index,
-    } = this.state;
-    const card = this.currentCard();
-    if (!card) {
-      return null;
-    }
-    return (
-      <View style={styles.wrapper}>
-        <ScrollView
-          style={styles.wrapper}
-          ref={this._captureScrollView}
-          overScrollMode="never"
-          bounces={false}
-        >
-          <SideSwipe
-            index={index}
-            data={cards}
-            itemWidth={width}
-            style={{ width }}
-            onIndexChange={this._onIndexChange}
-            renderItem={this._renderItem}
-            useVelocityForIndex={false}
-            threshold={width / 2.5}
-          />
-        </ScrollView>
-        { !!renderFooter && renderFooter(deckCardCounts, this.renderDeckCountControl()) }
-      </View>
-    );
-  }
-
-  _handleMomentum = (e, state) => {
-    const { lastIndex, index } = this.state
-    let newIndex = index
-
-    if (lastIndex === 2 && state.index === 0) {
-      newIndex += 1 // forward
-    } else if (lastIndex === 0 && state.index === 2) {
-      newIndex -= 1 // backward
-    } else if (lastIndex > state.index) {
-      newIndex -= 1 // backward
-    } else if (lastIndex < state.index) {
-      newIndex += 1 // forward
-    }
-    this.setState({ lastIndex: state.index, index: newIndex })
-  };
   render() {
     const {
       width,
-      height,
       renderFooter,
       cards,
       initialIndex,
     } = this.props;
     const {
       deckCardCounts,
-      index,
     } = this.state;
     const card = this.currentCard();
     if (!card) {
       return null;
-    }
-    const cardsToRender: Card[] = [];
-    let startIndex = index;
-    if (index - 1 >= 0) {
-      cardsToRender.push(cards[index - 1]);
-      startIndex = index - 1;
-    }
-    const effectiveIndex = cardsToRender.length;
-    cardsToRender.push(cards[index]);
-    if (index + 1 < cards.length) {
-      cardsToRender.push(cards[index + 1]);
     }
     return (
       <View style={styles.wrapper}>
@@ -444,7 +311,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           loop={false}
         >
           { map(cards, (card, idx) =>
-            this._renderItem({ itemIndex: idx })
+            this._renderItem(card, idx)
           ) }
         </Swiper>
         { !!renderFooter && renderFooter(deckCardCounts, this.renderDeckCountControl()) }
