@@ -14,7 +14,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@kudo-ci/jsc-android": "^241213.9000.1",
     "@matt-block/react-native-in-app-browser": "1.4.0",
     "@ptomasroos/react-native-multi-slider": "1.0.0",
     "@react-native-community/netinfo": "2.0.10",
@@ -27,11 +26,10 @@
     "deep-diff": "1.0.2",
     "events": "3.0.0",
     "hoist-non-react-statics": "3.3.0",
-    "i18n-js": "3.2.2",
     "lodash": "4.17.11",
     "react": "16.8.3",
-    "react-native": "0.59.8",
-    "react-native-app-auth": "4.3.1",
+    "react-native": "0.59.10",
+    "react-native-app-auth": "4.4.0",
     "react-native-blur": "3.2.2",
     "react-native-cached-image": "fungilation/react-native-cached-image#master",
     "react-native-config": "0.11.7",
@@ -60,13 +58,13 @@
     "redux-thunk": "2.3.0",
     "rn-fetch-blob": "0.10.15",
     "simple-markdown": "0.4.4",
-    "ttag": "1.7.13",
+    "ttag": "1.7.17",
     "utility-types": "3.5.0",
     "yarn": "1.13.0"
   },
   "devDependencies": {
-    "@babel/core": "7.4.4",
-    "@babel/preset-env": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
     "@babel/preset-typescript": "7.3.3",
     "@babel/runtime": "7.4.4",
     "@types/capitalize": "1.0.1",
@@ -90,10 +88,10 @@
     "eslint-plugin-react": "7.10.0",
     "eslint-plugin-react-native": "3.2.1",
     "jest": "24.8.0",
-    "metro-react-native-babel-preset": "0.54.0",
+    "metro-react-native-babel-preset": "0.54.1",
     "react-native-typescript-transformer": "1.2.12",
     "react-test-renderer": "16.8.3",
-    "ttag-cli": "1.7.13",
+    "ttag-cli": "1.7.17",
     "typescript": "3.4.3"
   },
   "jest": {

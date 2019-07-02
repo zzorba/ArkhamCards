@@ -305,7 +305,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           width={width}
           containerStyle={{ flex: 1 }}
           loadMinimal
-          loadMinimalSize={3}
+          loadMinimalSize={2}
           showsPagination={false}
           onIndexChanged={this._onIndexChange}
           loop={false}
