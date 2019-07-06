@@ -116,5 +116,5 @@ function mapStateToProps(state: AppState): ReduxProps {
 }
 
 export default connect(mapStateToProps)(
-  withFilterFunctions(PackFilterView)
+  withFilterFunctions(PackFilterView, t`Pack Filters`)
 );

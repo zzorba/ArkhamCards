@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import { head, flatMap, forEach, keys, map, range, throttle } from 'lodash';
 import { Alert, StyleSheet, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -356,11 +356,12 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
   }
 }
 
+const EMPTY_WEAKNESS_SET = { packCodes: [], assignedCards: {} };
 function mapStateToProps(state: AppState, props: NavigationProps & CampaignDrawWeaknessProps): ReduxProps {
-  const campaign: Campaign = getCampaign(state, props.campaignId) as Campaign;
+  const campaign = getCampaign(state, props.campaignId);
   return {
-    weaknessSet: campaign.weaknessSet,
-    latestDeckIds: campaign ? getLatestDeckIds(state, campaign) : [],
+    weaknessSet: campaign ? campaign.weaknessSet: EMPTY_WEAKNESS_SET,
+    latestDeckIds: getLatestDeckIds(state, campaign),
     decks: getAllDecks(state),
   };
 }

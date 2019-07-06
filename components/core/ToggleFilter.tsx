@@ -18,7 +18,7 @@ interface Props {
   icon?: string;
   setting: string;
   value: boolean;
-  onChange: (setting: string) => void;
+  onChange: (setting: string, value: boolean) => void;
   style?: ViewStyle;
 }
 
@@ -27,8 +27,9 @@ export default class ToggleFilter extends React.Component<Props> {
     const {
       onChange,
       setting,
+      value,
     } = this.props;
-    onChange(setting);
+    onChange(setting, !value);
   }
 
   renderLabel() {

@@ -70,7 +70,9 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+function mapDispatchToProps(
+  dispatch: Dispatch<Action>
+): ReduxActionProps {
   return bindActionCreators({ login }, dispatch);
 }
 

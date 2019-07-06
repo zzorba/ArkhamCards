@@ -1,5 +1,6 @@
 import React from 'react';
 import { countBy, keys } from 'lodash';
+import { connect } from 'react-redux';
 import {
   Platform,
   StyleSheet,
@@ -9,33 +10,51 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { FilterState } from '../../lib/filters';
+import { filterToQuery } from '../../lib/filters';
+import { AppState, getFilterState, getDefaultFilterState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
-interface Props {
-  defaultFilters: FilterState;
-  filters: FilterState;
+const SIZE = 36;
+
+interface OwnProps {
+  filterId: string;
   onPress: () => void;
   lightButton?: boolean;
 }
 
-const SIZE = 36;
-export default function TuneButton({ defaultFilters, filters, onPress, lightButton }: Props) {
-  const count = countBy(keys(defaultFilters), key => {
-    return JSON.stringify(defaultFilters[key]) !== JSON.stringify(filters[key]);
-  }).true || 0;
+interface ReduxProps {
+  filters: boolean;
+}
+
+type Props = OwnProps & ReduxProps;
+
+function TuneButton({ filters, onPress, lightButton }: Props) {
   const defaultColor = Platform.OS === 'ios' ? '#007AFF' : COLORS.button;
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <View style={styles.touchable}>
           <MaterialIcons name="tune" size={28} color={lightButton ? 'white' : defaultColor} />
-          { count > 0 && <View style={styles.chiclet} /> }
+          { filters && <View style={styles.chiclet} /> }
         </View>
       </TouchableOpacity>
     </View>
   );
 }
+
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+  const filters = getFilterState(state, props.filterId);
+  if (!filters) {
+    return {
+      filters: false,
+    };
+  }
+  return {
+    filters: filterToQuery(filters).length > 0,
+  };
+}
+
+export default connect(mapStateToProps)(TuneButton);
 
 const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 8 : 0);
 const styles = StyleSheet.create({

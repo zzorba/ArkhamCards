@@ -164,7 +164,7 @@ function mapStateToProps(
   state: AppState,
   props: NavigationProps & UpgradeDecksProps
 ): ReduxProps {
-  const campaign = getCampaign(state, props.id) || undefined;
+  const campaign = getCampaign(state, props.id);
   const cycleScenarios = campaign ? campaignScenarios(campaign.cycleCode) : [];
   const scenarioByCode: { [code: string]: Scenario } = {};
   forEach(cycleScenarios, scenario => {

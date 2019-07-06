@@ -33,7 +33,7 @@ export default function withNetworkStatus<P>(
     };
 
     _networkStatusChanged = (connectionInfo: NetInfo.NetInfoData) => {
-      if (!this.unmounted) {
+      if (!this.unmounted && this.state.networkType !== connectionInfo.type) {
         this.setState({
           networkType: connectionInfo.type,
         });

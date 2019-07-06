@@ -215,6 +215,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
 
 export default withFilterFunctions(
   CardEnemyFilterView,
+  t`Enemy Filters`,
   [
     'enemyHealth',
     'enemyHealthEnabled',

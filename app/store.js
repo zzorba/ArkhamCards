@@ -1,3 +1,4 @@
+import React from 'react'
 import { filter } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -6,7 +7,9 @@ import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import loggerMiddleware from 'redux-logger';
 import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 import reducers from '../reducers';
+// import Reactotron from './ReactotronConfig';
 
 /**
  * How to refresh discarded offline tokens properly.
@@ -44,7 +47,7 @@ export default function configureStore(initialState) {
     version: 0,
     storage,
     // These three have some transient fields and are handled separately.
-    blacklist: ['cards', 'decks', 'packs', 'signedIn'],
+    blacklist: ['cards', 'decks', 'packs', 'signedIn', 'filters'],
     migrate: createMigrate(migrations, { debug: false }),
   };
 
@@ -53,15 +56,18 @@ export default function configureStore(initialState) {
     offline.enhanceReducer(reducers)
   );
 
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
   const store = createStore(
     reducer,
     initialState,
-    compose(
+    composeEnhancers(
+      // Reactotron.createEnhancer(),
       applyMiddleware(
         ...filter([
           thunk,
           offline.middleware,
-          (__DEV__ && loggerMiddleware),
+          // (__DEV__ && loggerMiddleware),
         ], Boolean)),
       offline.enhanceStore)
   );

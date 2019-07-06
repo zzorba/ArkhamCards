@@ -408,8 +408,10 @@ function mapStateToProps(
   };
 }
 
-export default withPlayerCards(
-  connect(mapStateToProps)(EditSpecialDeckCards)
+export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
+  connect<ReduxProps, {}, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
+    mapStateToProps
+  )(EditSpecialDeckCards)
 );
 
 const styles = StyleSheet.create({

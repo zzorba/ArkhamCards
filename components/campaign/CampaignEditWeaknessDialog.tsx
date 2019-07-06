@@ -76,7 +76,7 @@ class CampaignEditWeaknessDialog extends React.Component<Props> {
 function mapStateToProps(state: AppState, props: NavigationProps & CampaignEditWeaknessProps): ReduxProps {
   const campaign = getCampaign(state, props.campaignId);
   return {
-    weaknessSet: (campaign && campaign.weaknessSet) || undefined,
+    weaknessSet: campaign && campaign.weaknessSet,
   };
 }
 

@@ -181,7 +181,7 @@ function mapStateToProps(
   props: NavigationProps & EditScenarioResultProps
 ): ReduxProps {
   const campaign = getCampaign(state, props.campaignId);
-  const scenarioResult = campaign ? campaign.scenarioResults[props.index] : undefined;
+  const scenarioResult = campaign && campaign.scenarioResults[props.index];
   return {
     scenarioResult,
   };

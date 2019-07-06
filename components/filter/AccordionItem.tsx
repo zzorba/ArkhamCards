@@ -18,7 +18,7 @@ interface Props {
   children: ReactNode;
   enabled: boolean;
   toggleName: string;
-  onToggleChange: (toggleName: string) => void;
+  onToggleChange: (toggleName: string, enabled: boolean) => void;
 }
 
 interface State {
@@ -58,8 +58,9 @@ export default class AccordionItem extends React.Component<Props, State> {
     const {
       toggleName,
       onToggleChange,
+      enabled,
     } = this.props;
-    onToggleChange(toggleName);
+    onToggleChange(toggleName, !enabled);
   };
 
   renderLabel() {

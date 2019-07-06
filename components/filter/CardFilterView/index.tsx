@@ -190,14 +190,6 @@ class CardFilterView extends React.Component<Props, State> {
     this.props.pushFilterView('SearchFilters.Location');
   };
 
-  onToggleChange(key: string) {
-    this.props.onToggleChange(key);
-  }
-
-  onFilterChange(key: string, selection: any) {
-    this.props.onFilterChange(key, selection);
-  }
-
   static rangeText(name: string, values: [number, number]) {
     if (values[0] === values[1]) {
       return `${name}(${values[0]})`;
@@ -645,7 +637,9 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default connect(mapStateToProps)(withFilterFunctions(CardFilterView));
+export default connect(mapStateToProps)(
+  withFilterFunctions(CardFilterView, t`Filters`)
+);
 
 const styles = StyleSheet.create({
   loadingWrapper: {

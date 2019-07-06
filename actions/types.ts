@@ -1,4 +1,5 @@
 import { ChaosBag } from '../constants';
+import { FilterState } from '../lib/filters';
 
 export interface Slots {
   [code: string]: number;
@@ -397,6 +398,55 @@ export const LOGOUT = 'LOGOUT';
 interface LogoutAction {
   type: typeof LOGOUT;
 }
+
+export const CLEAR_FILTER = 'CLEAR_FILTER';
+export interface ClearFilterAction {
+  type: typeof CLEAR_FILTER;
+  id: string;
+  clearTraits?: string[];
+}
+export const TOGGLE_FILTER = 'TOGGLE_FILTER';
+export interface ToggleFilterAction {
+  type: typeof TOGGLE_FILTER;
+  id: string;
+  key: keyof FilterState;
+  value: boolean;
+}
+export const UPDATE_FILTER = 'UPDATE_FILTER';
+export interface UpdateFilterAction {
+  type: typeof UPDATE_FILTER;
+  id: string;
+  key: keyof FilterState;
+  value: any;
+}
+
+export const ADD_FILTER_SET = 'ADD_FILTER_SET';
+export interface AddFilterSetAction {
+  type: typeof ADD_FILTER_SET;
+  id: string;
+  filters: FilterState;
+}
+
+export const SYNC_FILTER_SET = 'SYNC_FILTER_SET';
+export interface SyncFilterSetAction {
+  type: typeof SYNC_FILTER_SET;
+  id: string;
+  filters: FilterState;
+}
+
+export const REMOVE_FILTER_SET = 'REMOVE_FILTER_SET';
+export interface RemoveFilterSetAction {
+  type: typeof REMOVE_FILTER_SET;
+  id: string;
+}
+
+export type FilterActions =
+  ClearFilterAction |
+  ToggleFilterAction |
+  UpdateFilterAction |
+  AddFilterSetAction |
+  SyncFilterSetAction |
+  RemoveFilterSetAction;
 
 export type PacksActions =
   PacksFetchStartAction |

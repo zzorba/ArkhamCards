@@ -305,9 +305,9 @@ class AddScenarioResultView extends React.Component<Props, State> {
 }
 
 function mapStateToProps(state: AppState, props: NavigationProps & AddScenarioResultProps & PlayerCardProps): ReduxProps {
-  const campaign = getCampaign(state, props.id) || undefined;
+  const campaign = getCampaign(state, props.id);
   const decks = getAllDecks(state);
-  const latestDeckIds = campaign ? getLatestDeckIds(state, campaign) : [];
+  const latestDeckIds = getLatestDeckIds(state, campaign);
   const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
   return {
     campaign,

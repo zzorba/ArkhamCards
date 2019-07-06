@@ -8,7 +8,7 @@ import { ButtonGroup } from 'react-native-elements';
 
 interface Props {
   onFilterChange: (setting: string, value: any) => void;
-  onToggleChange: (setting: string) => void;
+  onToggleChange: (setting: string, value: boolean) => void;
   maxLevel: number;
   levels: [number, number];
   enabled: boolean;
@@ -39,11 +39,11 @@ export default class XpChooser extends React.Component<Props> {
     onFilterChange('level', level);
     if (indexes.length > 0) {
       if (!enabled) {
-        onToggleChange('levelEnabled');
+        onToggleChange('levelEnabled', true);
       }
     } else {
       if (enabled && !exceptional && !nonExceptional) {
-        onToggleChange('levelEnabled');
+        onToggleChange('levelEnabled', false);
       }
     }
     this.setState({

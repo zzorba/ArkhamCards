@@ -73,7 +73,7 @@ class DeckList extends React.Component<DeckListProps & PlayerCardProps> {
   }
 }
 
-export default withPlayerCards(DeckList);
+export default withPlayerCards<DeckListProps>(DeckList);
 
 const styles = StyleSheet.create({
   button: {

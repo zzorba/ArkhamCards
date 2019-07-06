@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import Realm, { Results } from 'realm';
 import DeviceInfo from 'react-native-device-info';
@@ -15,10 +16,13 @@ import Card from '../../data/Card';
 import { getTabooSet, AppState } from '../../reducers';
 import space from '../../styles/space';
 import typography from '../../styles/typography';
+import { COLORS } from '../../styles/colors';
+
 const FOOTER_HEIGHT = 40;
 const NOTCH_BOTTOM_PADDING = DeviceInfo.hasNotch() ? 20 : 0;
 
 interface OwnProps {
+  componentId: string;
   baseQuery?: string;
   filters: FilterState;
   modal?: boolean;

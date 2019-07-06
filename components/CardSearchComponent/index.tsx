@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { forEach, isEqual, map } from 'lodash';
 import Realm from 'realm';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import {
   Keyboard,
 } from 'react-native';
@@ -18,9 +19,10 @@ import {
 import CardSearchResultsComponent from '../CardSearchResultsComponent';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { FilterState } from '../../lib/filters';
+import { addFilterSet, removeFilterSet, clearFilters, syncFilterSet } from '../filter/actions';
 import { CardFilterProps } from '../filter/withFilterFunctions';
 import { iconsMap } from '../../app/NavIcons';
-import { getTabooSet, AppState } from '../../reducers';
+import { getTabooSet, getFilterState, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 interface RealmProps {
@@ -29,6 +31,14 @@ interface RealmProps {
 
 interface ReduxProps {
   tabooSetId?: number;
+  filters?: FilterState;
+}
+
+interface ReduxActionProps {
+  clearFilters: (id: string, clearTraits?: string[]) => void;
+  addFilterSet: (id: string, filters: FilterState) => void;
+  syncFilterSet: (id: string, filters: FilterState) => void;
+  removeFilterSet: (id: string) => void;
 }
 
 interface OwnProps {
@@ -48,16 +58,17 @@ interface OwnProps {
   modal?: boolean;
 }
 
-type Props = OwnProps & RealmProps & ReduxProps;
+type Props = OwnProps & RealmProps & ReduxProps & ReduxActionProps;
 
 interface State {
   selectedSort: SortType;
-  filters: FilterState;
   mythosMode: boolean;
   visible: boolean;
   rightButtonIds: string[];
+  filters?: FilterState;
 }
 class CardSearchComponent extends React.Component<Props, State> {
+  static whyDidYouRender = true;
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {
@@ -69,8 +80,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         name: 'TuneButton',
         passProps: {
           onPress: this._showSearchFilters,
-          filters: props.defaultFilterState,
-          defaultFilters: props.defaultFilterState,
+          filterId: props.componentId,
           lightButton: !!props.onDeckCountChange,
         },
         testID: t`Filters`,
@@ -100,7 +110,6 @@ class CardSearchComponent extends React.Component<Props, State> {
 
     this.state = {
       selectedSort: props.sort || SORT_BY_TYPE,
-      filters: props.defaultFilterState,
       mythosMode: false,
       visible: true,
       rightButtonIds: map(rightButtons, button => button.id),
@@ -111,6 +120,19 @@ class CardSearchComponent extends React.Component<Props, State> {
         rightButtons,
       },
     });
+  }
+
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    return this.state.visible || nextState.visible;
+  }
+
+  componentDidMount() {
+    const {
+      componentId,
+      addFilterSet,
+      defaultFilterState,
+    } = this.props;
+    addFilterSet(componentId, defaultFilterState);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -120,18 +142,10 @@ class CardSearchComponent extends React.Component<Props, State> {
 
   _clearSearchFilters = () => {
     const {
-      defaultFilterState,
+      componentId,
+      clearFilters,
     } = this.props;
-    this.setState({
-      filters: defaultFilterState,
-    });
-  };
-
-  _setFilters = (filters: FilterState) => {
-    this.setState({
-      filters: filters,
-    });
-    this._syncNavigationButtons(this.state.mythosMode, filters, true);
+    clearFilters(componentId);
   };
 
   _sortChanged = (selectedSort: SortType) => {
@@ -140,20 +154,27 @@ class CardSearchComponent extends React.Component<Props, State> {
     });
   };
 
+  _setFilters = (filters: FilterState) => {
+    const {
+      componentId,
+      syncFilterSet,
+    } = this.props;
+    syncFilterSet(componentId, filters);
+  }
+
   _showSearchFilters = () => {
     const {
       componentId,
-      defaultFilterState,
       modal,
       baseQuery,
+      defaultFilterState,
+      filters,
     } = this.props;
     Navigation.push<CardFilterProps>(componentId, {
       component: {
         name: 'SearchFilters',
         passProps: {
-          applyFilters: this._setFilters,
-          defaultFilterState: defaultFilterState,
-          currentFilters: this.state.filters,
+          filterId: componentId,
           baseQuery: baseQuery,
           modal: modal,
         },
@@ -201,22 +222,27 @@ class CardSearchComponent extends React.Component<Props, State> {
   }
 
   componentDidAppear() {
-    this.setState({
-      visible: true,
-    });
+    if (!this.state.visible) {
+      this.setState({
+        visible: true,
+        filters: undefined,
+      });
+    }
   }
 
   componentDidDisappear() {
-    this.setState({
-      visible: false,
-    });
+    if (this.state.visible) {
+      this.setState({
+        visible: false,
+        filters: this.props.filters,
+      });
+    }
   }
 
-  _syncNavigationButtons = (mythosMode: boolean, filters: FilterState, filtersChanged?: boolean) => {
+  _syncNavigationButtons = (mythosMode: boolean) => {
     const {
       componentId,
       onDeckCountChange,
-      defaultFilterState,
       mythosToggle,
     } = this.props;
     const rightButtons = [{
@@ -225,8 +251,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         name: 'TuneButton',
         passProps: {
           onPress: this._showSearchFilters,
-          filters: filters,
-          defaultFilters: defaultFilterState,
+          filterId: componentId,
           lightButton: !!onDeckCountChange,
         },
       },
@@ -252,7 +277,7 @@ class CardSearchComponent extends React.Component<Props, State> {
     topBar.rightButtons = rightButtons;
 
     const rightButtonIds = map(rightButtons, button => button.id);
-    if (filtersChanged || !isEqual(rightButtonIds, this.state.rightButtonIds)) {
+    if (!isEqual(rightButtonIds, this.state.rightButtonIds)) {
       Navigation.mergeOptions(componentId, {
         topBar,
       });
@@ -265,12 +290,11 @@ class CardSearchComponent extends React.Component<Props, State> {
   _toggleMythosMode = () => {
     const {
       mythosMode,
-      filters,
     } = this.state;
     this.setState({
       mythosMode: !mythosMode,
     });
-    this._syncNavigationButtons(!mythosMode, filters);
+    this._syncNavigationButtons(!mythosMode);
   };
 
   render() {
@@ -286,12 +310,13 @@ class CardSearchComponent extends React.Component<Props, State> {
       baseQuery,
       tabooSetOverride,
       investigator,
+      filters,
+      defaultFilterState,
     } = this.props;
     const {
       selectedSort,
       visible,
       mythosMode,
-      filters,
     } = this.state;
     return (
       <CardSearchResultsComponent
@@ -301,7 +326,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         mythosMode={mythosMode}
         showNonCollection={showNonCollection}
         selectedSort={selectedSort}
-        filters={filters}
+        filters={this.state.filters || filters || defaultFilterState}
         tabooSetOverride={tabooSetOverride}
         toggleMythosMode={this._toggleMythosMode}
         clearSearchFilters={this._clearSearchFilters}
@@ -320,12 +345,23 @@ class CardSearchComponent extends React.Component<Props, State> {
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
     tabooSetId: getTabooSet(state, props.tabooSetOverride),
+    filters: getFilterState(state, props.componentId),
   };
 }
 
-export default connect<ReduxProps, {}, OwnProps, AppState>(
-  mapStateToProps
-)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    addFilterSet,
+    removeFilterSet,
+    clearFilters,
+    syncFilterSet,
+  }, dispatch);
+}
+
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(connectRealm<OwnProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
   CardSearchComponent, {
     schemas: ['Card'],
     mapToProps(
