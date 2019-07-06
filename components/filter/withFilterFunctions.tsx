@@ -3,7 +3,6 @@ import { pick } from 'lodash';
 import Realm, { Results } from 'realm';
 import { connectRealm, CardResults } from 'react-native-realm';
 import {
-  Dimensions,
   StyleSheet,
   View,
 } from 'react-native';
@@ -13,6 +12,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
 
 import { t } from 'ttag';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
 import { FilterState } from '../../lib/filters';
@@ -53,7 +53,7 @@ export default function withFilterFunctions<P>(
   interface ReduxProps {
     tabooSetId?: number;
   }
-  type Props = NavigationProps & CardFilterProps & RealmProps & ReduxProps & P;
+  type Props = NavigationProps & DimensionsProps & CardFilterProps & RealmProps & ReduxProps & P;
   class WrappedFilterComponent extends React.Component<Props, State> {
     _navEventListener: EventSubscription;
     constructor(props: Props) {
@@ -175,15 +175,13 @@ export default function withFilterFunctions<P>(
         modal,
         /* eslint-disable @typescript-eslint/no-unused-vars */
         applyFilters,
+        width,
         ...otherProps
       } = this.props;
       const {
         filters,
       } = this.state;
 
-      const {
-        width,
-      } = Dimensions.get('window');
       return (
         <View style={styles.wrapper}>
           <WrappedComponent
@@ -215,21 +213,22 @@ export default function withFilterFunctions<P>(
 
   const result = connect<ReduxProps, {}, NavigationProps & CardFilterProps & P, AppState>(
     mapStateToProps
-  )(connectRealm<NavigationProps & CardFilterProps & P & ReduxProps, RealmProps, Card>(
-    WrappedFilterComponent, {
-      schemas: ['Card'],
-      mapToProps(
-        results: CardResults<Card>,
-        realm: Realm,
-        props: NavigationProps & CardFilterProps & P & ReduxProps
-      ): RealmProps {
-        return {
-          cards: props.baseQuery ?
-            results.cards.filtered(`((${props.baseQuery}) and (${Card.tabooSetQuery(props.tabooSetId)}))`) :
-            results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
-        };
-      },
-    })
+  )(
+    connectRealm<NavigationProps & CardFilterProps & P & ReduxProps, RealmProps, Card>(
+      withDimensions(WrappedFilterComponent), {
+        schemas: ['Card'],
+        mapToProps(
+          results: CardResults<Card>,
+          realm: Realm,
+          props: NavigationProps & CardFilterProps & P & ReduxProps
+        ): RealmProps {
+          return {
+            cards: props.baseQuery ?
+              results.cards.filtered(`((${props.baseQuery}) and (${Card.tabooSetQuery(props.tabooSetId)}))`) :
+              results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
+          };
+        },
+      })
   );
 
   hoistNonReactStatic(result, WrappedComponent);

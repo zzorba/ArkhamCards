@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -8,13 +7,14 @@ import {
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
-import DeviceInfo from 'react-native-device-info';
 
 import { CardImageProps } from '../CardImageView';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import Card from '../../data/Card';
+import { isBig } from '../../styles/space';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
+const SCALE_FACTOR = isBig ? 1.5 : 1.0;
 
 interface Props {
   componentId: string;
@@ -100,7 +100,7 @@ export default class PlayerCardImage extends React.Component<Props> {
       card.type_code === 'investigator' ||
       card.type_code === 'agenda';
 
-    if (Platform.OS === 'ios' && DeviceInfo.isTablet() && !horizontal) {
+    if (isBig && !horizontal) {
       return (
         <TouchableOpacity onPress={this._onPress}>
           <View style={styles.verticalContainer}>
@@ -145,54 +145,54 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     position: 'relative',
     borderRadius: 6,
-    width: 90,
-    height: 90,
+    width: 90 * SCALE_FACTOR,
+    height: 90 * SCALE_FACTOR,
   },
   image: {
     position: 'absolute',
-    top: -14,
-    left: -18,
-    width: 142 * 1.1,
-    height: 198 * 1.1,
+    top: -14 * SCALE_FACTOR,
+    left: -18 * SCALE_FACTOR,
+    width: 142 * 1.1 * SCALE_FACTOR,
+    height: 198 * 1.1 * SCALE_FACTOR,
   },
   enemyImage: {
     position: 'absolute',
-    top: -90,
-    left: -25,
-    width: 142 * 1.4,
-    height: 198 * 1.4,
+    top: -90 * SCALE_FACTOR,
+    left: -25 * SCALE_FACTOR,
+    width: 142 * 1.4 * SCALE_FACTOR,
+    height: 198 * 1.4 * SCALE_FACTOR,
   },
   locationImage: {
     position: 'absolute',
-    top: -17,
-    left: -25,
-    width: 142 * 1.4,
-    height: 198 * 1.4,
+    top: -17 * SCALE_FACTOR,
+    left: -25 * SCALE_FACTOR,
+    width: 142 * 1.4 * SCALE_FACTOR,
+    height: 198 * 1.4 * SCALE_FACTOR,
   },
   investigatorImage: {
-    top: -17,
-    left: -10,
-    width: 166 + 44,
-    height: 136 + 34,
+    top: -17 * SCALE_FACTOR,
+    left: -10 * SCALE_FACTOR,
+    width: (166 + 44) * SCALE_FACTOR,
+    height: (136 + 34) * SCALE_FACTOR,
   },
   agendaImage: {
-    top: -35,
+    top: -35 * SCALE_FACTOR,
     left: 0,
-    height: 136 * 1.35,
-    width: 166 * 1.35,
+    height: 136 * 1.35 * SCALE_FACTOR,
+    width: 166 * 1.35 * SCALE_FACTOR,
   },
   actImage: {
-    top: -17,
-    left: -65,
-    height: 136 * 1.35,
-    width: 166 * 1.35,
+    top: -17 * SCALE_FACTOR,
+    left: -65 * SCALE_FACTOR,
+    height: 136 * 1.35 * SCALE_FACTOR,
+    width: 166 * 1.35 * SCALE_FACTOR,
   },
   placeholder: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: 90,
-    height: 90,
+    width: 90 * SCALE_FACTOR,
+    height: 90 * SCALE_FACTOR,
     borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',

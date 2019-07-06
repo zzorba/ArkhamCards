@@ -5,6 +5,7 @@ import { map } from 'lodash';
 import {
   StyleSheet,
   Text,
+  View,
 } from 'react-native';
 import { connectRealm, CardResults } from 'react-native-realm';
 
@@ -46,7 +47,9 @@ class BondedCardsComponent extends React.Component<Props> {
       <React.Fragment>
         { !!(bonded_to_cards && bonded_to_cards.length) && (
           <React.Fragment>
-            <Text style={styles.header}>{ t`Bonded` }</Text>
+            <View style={styles.bondedContainer}>
+              <Text style={styles.header}>{ t`Bonded` }</Text>
+            </View>
             { map(bonded_to_cards, card => (
               <TwoSidedCardComponent
                 componentId={componentId}
@@ -59,7 +62,9 @@ class BondedCardsComponent extends React.Component<Props> {
         ) }
         { !!(bonded_from_cards && bonded_from_cards.length) && (
           <React.Fragment>
-            <Text style={styles.header}>{ t`Bound Cards` }</Text>
+            <View style={styles.bondedContainer}>
+              <Text style={styles.header}>{ t`Bound Cards` }</Text>
+            </View>
             { map(bonded_from_cards, card => (
               <TwoSidedCardComponent
                 key={card.code}
@@ -111,5 +116,9 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: '600',
     fontFamily: 'System',
+  },
+  bondedContainer: {
+    width: '100%',
+    maxWidth: 768,
   },
 });

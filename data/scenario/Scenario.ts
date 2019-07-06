@@ -1,8 +1,6 @@
 import Realm from 'realm';
 
 import ScenarioResolution from './ScenarioResolution';
-import ScenarioCardQuery from './ScenarioCardQuery';
-import ScenarioEffect from './ScenarioEffect';
 import ScenarioStep from './ScenarioStep';
 
 export default class Scenario {

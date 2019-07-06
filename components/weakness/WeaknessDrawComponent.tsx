@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import { filter, find, flatMap, forEach, head, keys, map, range, shuffle } from 'lodash';
 import {
   ActivityIndicator,
-  Dimensions,
   LayoutChangeEvent,
   StyleSheet,
   Text,
@@ -18,6 +17,7 @@ import Card from '../../data/Card';
 import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
 import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '../../styles/sizes';
 import typography from '../../styles/typography';
 const PLAYER_BACK = require('../../assets/player-back.png');
@@ -34,7 +34,7 @@ interface OwnProps {
   customFlippedHeader?: ReactNode;
   saving?: boolean;
 }
-type Props = OwnProps & WeaknessCardProps;
+type Props = OwnProps & WeaknessCardProps & DimensionsProps;
 
 interface State {
   headerHeight: number;
@@ -75,12 +75,12 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
 
   calculateCardDimensions() {
     const {
-      headerHeight,
-    } = this.state;
-    const {
       width,
       height,
-    } = Dimensions.get('window');
+    } = this.props;
+    const {
+      headerHeight,
+    } = this.state;
 
     const wBasedWidth = width - PADDING * 2;
     const wBasedHeight = Math.round(wBasedWidth * CARD_RATIO);
@@ -361,7 +361,9 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   }
 }
 
-export default withWeaknessCards(WeaknessDrawComponent);
+export default withWeaknessCards(
+  withDimensions(WeaknessDrawComponent)
+);
 
 const styles = StyleSheet.create({
   container: {

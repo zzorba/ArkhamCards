@@ -10,7 +10,7 @@ import DeviceInfo from 'react-native-device-info';
 import { DeckProblem, DeckProblemType } from '../actions/types';
 import { t } from 'ttag';
 import AppIcon from '../assets/AppIcon';
-import typography from '../styles/typography';
+import typography, { SMALL_FONT_SIZE } from '../styles/typography';
 
 const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
   too_few_cards: t`Not enough cards.`,
@@ -36,7 +36,7 @@ export default function DeckProblemRow({
       <View style={styles.warningIcon}>
         <AppIcon
           name="warning"
-          size={14 * (noFontScaling ? 1 : DeviceInfo.getFontScale())}
+          size={SMALL_FONT_SIZE * (noFontScaling ? 1 : DeviceInfo.getFontScale())}
           color={color}
         />
       </View>

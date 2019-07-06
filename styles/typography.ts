@@ -18,6 +18,8 @@ interface Styles {
   center: TextStyle;
 }
 
+export const SMALL_FONT_SIZE = 12 * sizeScale;
+
 export default StyleSheet.create<Styles>({
   header: {
     fontFamily: 'System',
@@ -39,7 +41,7 @@ export default StyleSheet.create<Styles>({
   },
   small: {
     fontFamily: 'System',
-    fontSize: 12 * sizeScale,
+    fontSize: SMALL_FONT_SIZE,
     lineHeight: 18 * sizeScale,
     color: '#222',
   },

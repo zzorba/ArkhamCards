@@ -30,7 +30,7 @@ import Card, { CardsMap } from '../../data/Card';
 import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
-import { l, s } from '../../styles/space';
+import { l, s, xs } from '../../styles/space';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
@@ -341,7 +341,7 @@ export default class DeckViewTab extends React.Component<Props> {
             styles.superHeaderRow,
             { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
           ]}>
-            <Text style={[typography.label, styles.superHeaderText]}>
+            <Text style={[typography.text, styles.superHeaderText]}>
               { section.superTitle }
             </Text>
             <View style={styles.editIcon}>
@@ -364,8 +364,8 @@ export default class DeckViewTab extends React.Component<Props> {
     if (section.subTitle) {
       return (
         <View style={styles.subHeaderRow}>
-          <Text style={typography.smallLabel}>
-            { section.subTitle.toUpperCase() }
+          <Text style={typography.text}>
+            { section.subTitle }
           </Text>
         </View>
       );
@@ -374,8 +374,8 @@ export default class DeckViewTab extends React.Component<Props> {
     if (section.title) {
       return (
         <View style={styles.headerRow}>
-          <Text style={typography.small}>
-            { section.title.toUpperCase() }
+          <Text style={typography.text}>
+            { section.title }
           </Text>
         </View>
       );
@@ -499,18 +499,18 @@ export default class DeckViewTab extends React.Component<Props> {
     } = this.props;
     return (
       <View style={styles.metadata}>
-        <Text style={styles.defaultText}>
+        <Text style={typography.small}>
           { ngettext(
             msgid`${normalCardCount} card (${totalCardCount} total)`,
             `${normalCardCount} cards (${totalCardCount} total)`,
             normalCardCount
           ) }
         </Text>
-        <Text style={styles.defaultText}>
+        <Text style={typography.small}>
           { this.xpString() }
         </Text>
         { !!tabooSet && (
-          <Text style={styles.defaultText}>
+          <Text style={typography.small}>
             { t`Taboo List: ${tabooSet.date_start}.` }
           </Text>
         ) }
@@ -548,7 +548,7 @@ export default class DeckViewTab extends React.Component<Props> {
                 <View style={styles.nameRow}>
                   <View style={styles.investigatorWrapper}>
                     <Text
-                      style={styles.investigatorName}
+                      style={[typography.text, typography.bold]}
                       numberOfLines={2}
                       ellipsizeMode="tail"
                     >
@@ -561,7 +561,7 @@ export default class DeckViewTab extends React.Component<Props> {
                 </View>
               </TouchableOpacity>
             ) : (
-              <Text style={styles.investigatorName}>
+              <Text style={[typography.text, typography.bold]}>
                 { `${deckName}  ` }
               </Text>
             ) }
@@ -651,25 +651,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   image: {
-    width: 80,
-    height: 80,
     marginRight: s,
   },
   investigatorWrapper: {
     flex: 1,
   },
-  investigatorName: {
-    color: '#000000',
-    fontSize: 18,
-    fontWeight: '700',
-  },
   container: {
     marginLeft: s,
     marginRight: s,
-  },
-  defaultText: {
-    color: '#000000',
-    fontSize: 14,
   },
   problemRow: {
     flexDirection: 'row',
@@ -713,6 +702,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     paddingLeft: s,
     paddingRight: s,
+    paddingTop: xs,
+    paddingBottom: xs,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },

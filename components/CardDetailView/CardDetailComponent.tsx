@@ -65,7 +65,7 @@ export default class CardDetailComponent extends React.Component<Props> {
       return null;
     }
     return (
-      <React.Fragment>
+      <View style={styles.investigatorContent}>
         <Text style={[typography.header, styles.sectionHeader]}>
           { t`Deckbuilding` }
         </Text>
@@ -81,7 +81,7 @@ export default class CardDetailComponent extends React.Component<Props> {
           investigator={card}
           width={width}
         />
-      </React.Fragment>
+      </View>
     );
   }
 
@@ -135,6 +135,8 @@ export default class CardDetailComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   viewContainer: {
     backgroundColor: 'white',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   buttonContainer: {
     marginLeft: 8,
@@ -156,5 +158,9 @@ const styles = StyleSheet.create({
   },
   spoilerText: {
     margin: 8,
+  },
+  investigatorContent: {
+    width: '100%',
+    maxWidth: 768,
   },
 });

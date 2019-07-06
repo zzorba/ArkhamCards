@@ -1,7 +1,6 @@
 import React from 'react';
 import { map } from 'lodash';
 import {
-  Dimensions,
   Platform,
   Text,
   TouchableOpacity,
@@ -14,9 +13,10 @@ import DeviceInfo from 'react-native-device-info';
 
 import { t } from 'ttag';
 import DialogOption from './DialogOption';
+import withDimensions, { DimensionsProps } from './withDimensions';
 import typography from '../../styles/typography';
 
-interface Props {
+interface OwnProps {
   componentId: string;
   options: string[];
   selectedOption?: string;
@@ -25,7 +25,9 @@ interface Props {
   description?: string;
   noCapitalize?: boolean;
 }
-export default class DialogPicker extends React.Component<Props> {
+type Props = OwnProps & DimensionsProps;
+
+class DialogPicker extends React.Component<Props> {
   _onPress = (option: string) => {
     const {
       componentId,
@@ -60,12 +62,9 @@ export default class DialogPicker extends React.Component<Props> {
     const {
       header,
       description,
-    } = this.props;
-
-    const {
       height,
       width,
-    } = Dimensions.get('window');
+    } = this.props;
 
     return (
       <View style={[styles.wrapper, { width, height }]}>
@@ -103,6 +102,8 @@ export default class DialogPicker extends React.Component<Props> {
     );
   }
 }
+
+export default withDimensions(DialogPicker);
 
 const styles = StyleSheet.create({
   wrapper: {

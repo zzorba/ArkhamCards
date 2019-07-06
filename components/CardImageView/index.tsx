@@ -1,7 +1,6 @@
 import React from 'react';
 import { head } from 'lodash';
 import {
-  Dimensions,
   StyleSheet,
   View,
 } from 'react-native';
@@ -12,6 +11,7 @@ import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { iconsMap } from '../../app/NavIcons';
 import Card from '../../data/Card';
 import { getTabooSet, AppState } from '../../reducers';
@@ -31,7 +31,7 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-type Props = CardImageProps & NavigationProps & ReduxProps & RealmProps;
+type Props = CardImageProps & NavigationProps & DimensionsProps & ReduxProps & RealmProps;
 
 interface State {
   flipped: boolean;
@@ -90,14 +90,12 @@ class CardImageView extends React.Component<Props, State> {
   renderContent() {
     const {
       card,
+      height,
+      width,
     } = this.props;
     const {
       flipped,
     } = this.state;
-    const {
-      height,
-      width,
-    } = Dimensions.get('window');
     if (!card) {
       return null;
     }
@@ -181,20 +179,22 @@ function mapStateToProps(state: AppState): ReduxProps {
 
 export default connect<ReduxProps, {}, NavigationProps & CardImageProps, AppState>(
   mapStateToProps
-)(connectRealm<CardImageProps & NavigationProps & ReduxProps, RealmProps, Card>(CardImageView, {
-  schemas: ['Card'],
-  mapToProps(
-    results: CardResults<Card>,
-    realm: Realm,
-    props: CardImageProps & NavigationProps & ReduxProps
-  ) {
-    const card =
-      head(results.cards.filtered(`(code == "${props.id}") and ${Card.tabooSetQuery(props.tabooSetId)}`));
-    return {
-      card,
-    };
-  },
-}));
+)(connectRealm<CardImageProps & NavigationProps & ReduxProps, RealmProps, Card>(
+  withDimensions(CardImageView), {
+    schemas: ['Card'],
+    mapToProps(
+      results: CardResults<Card>,
+      realm: Realm,
+      props: CardImageProps & NavigationProps & ReduxProps
+    ) {
+      const card =
+        head(results.cards.filtered(`(code == "${props.id}") and ${Card.tabooSetQuery(props.tabooSetId)}`));
+      return {
+        card,
+      };
+    },
+  })
+);
 
 const styles = StyleSheet.create({
   container: {

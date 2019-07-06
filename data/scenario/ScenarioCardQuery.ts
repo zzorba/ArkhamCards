@@ -1,7 +1,5 @@
 import Realm from 'realm';
 
-import ScenarioEffect from './ScenarioEffect';
-
 export default class ScenarioCardQuery {
   public static schema: Realm.ObjectSchema = {
     name: 'ScenarioCardQuery',

@@ -812,7 +812,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: '100%',
-    maxWidth: 600,
+    maxWidth: 768,
     marginTop: 2,
     borderWidth: 1,
     borderRadius: 4,
@@ -861,11 +861,12 @@ const styles = StyleSheet.create({
     marginBottom: xs,
   },
   buttonContainer: {
-    marginLeft: s,
-    marginTop: xs,
-    marginBottom: xs,
+    paddingLeft: s,
+    paddingTop: xs,
+    paddingBottom: xs,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: isBig ? 'center' : 'flex-start',
+    width: '100%',
   },
   costIcon: {
     marginLeft: xs,

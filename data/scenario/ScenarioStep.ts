@@ -1,6 +1,5 @@
 import Realm from 'realm';
 
-import { ChaosTokenType, ScenarioInvestigator } from './BasicTypes';
 import ScenarioInput from './ScenarioInput';
 import ScenarioCondition from './ScenarioCondition';
 import ScenarioBranchOption from './ScenarioBranchOption';

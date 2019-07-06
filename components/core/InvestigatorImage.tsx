@@ -13,9 +13,12 @@ import { CachedImage } from 'react-native-cached-image';
 import { showCard } from '../navHelper';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import Card from '../../data/Card';
+import { isBig } from '../../styles/space';
 
 const FACTION_ICONS = createFactionIcons(55, '#FFF');
 const SMALL_FACTION_ICONS = createFactionIcons(40, '#FFF');
+
+const scaleFactor = isBig ? 1.5 : 1.0;
 
 interface Props {
   card: Card;
@@ -39,7 +42,7 @@ export default class InvestigatorImage extends React.Component<Props> {
       card,
       small,
     } = this.props;
-    const size = small ? 65 : 80;
+    const size = (small ? 65 : 80) * scaleFactor;
     return (
       <View style={[styles.container, { width: size, height: size }]}>
         <View style={styles.relative}>
@@ -102,10 +105,10 @@ const styles = StyleSheet.create<Styles>({
   },
   image: {
     position: 'absolute',
-    top: -17,
-    left: -10,
-    width: 166 + 44,
-    height: 136 + 34,
+    top: -17 * scaleFactor,
+    left: -10 * scaleFactor,
+    width: (166 + 44) * scaleFactor,
+    height: (136 + 34) * scaleFactor,
   },
   placeholder: {
     position: 'absolute',

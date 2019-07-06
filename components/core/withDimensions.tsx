@@ -1,24 +1,22 @@
 import React from 'react';
 import { Dimensions, ScaledSize } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
-import { Subtract } from 'utility-types';
 
 export interface DimensionsProps {
   width: number;
   height: number;
 }
 
-export default function withDimensions<P extends DimensionsProps>(
-  WrappedComponent: React.ComponentType<P>
-): React.ComponentType<Subtract<P, DimensionsProps>> {
-  type Props = Subtract<P, DimensionsProps>;
+export default function withDimensions<P>(
+  WrappedComponent: React.ComponentType<P & DimensionsProps>
+): React.ComponentType<P> {
   interface State {
     width: number;
     height: number;
   }
 
-  class DimensionsComponent extends React.Component<Props, State> {
-    constructor(props: Props) {
+  class DimensionsComponent extends React.Component<P, State> {
+    constructor(props: P) {
       super(props);
 
       const { width, height } = Dimensions.get('screen');
