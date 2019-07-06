@@ -320,12 +320,13 @@ class CardDetailSwipeView extends React.Component<Props, State> {
   }
 }
 
+const EMPTY_SPOILERS = {};
 function mapStateToProps(
   state: AppState,
   props: NavigationProps & CardDetailSwipeProps
 ): ReduxProps {
   return {
-    showSpoilers: state.packs.show_spoilers || {},
+    showSpoilers: state.packs.show_spoilers || EMPTY_SPOILERS,
     tabooSetId: getTabooSet(state, props.tabooSetId),
     hasSecondCore: (state.packs.in_collection || {}).core || false,
   };

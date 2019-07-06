@@ -16,7 +16,7 @@ import { NavigationProps } from '../../types';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';
 import Card from '../../../data/Card';
 import { Scenario, campaignScenarios } from '../constants';
-import { getAllDecks, getLatestDeckIds, getCampaign, AppState } from '../../../reducers';
+import { getAllDecks, getLatestCampaignDeckIds, getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { iconsMap } from '../../../app/NavIcons';
 import { COLORS } from '../../../styles/colors';
@@ -160,7 +160,7 @@ class UpgradeDecksView extends React.Component<Props> {
   }
 }
 
-function mapStateToProps(
+function mapStateToPropsFix(
   state: AppState,
   props: NavigationProps & UpgradeDecksProps
 ): ReduxProps {
@@ -173,13 +173,13 @@ function mapStateToProps(
   return {
     campaign,
     decks: getAllDecks(state),
-    latestDeckIds: getLatestDeckIds(state, campaign),
+    latestDeckIds: getLatestCampaignDeckIds(state, campaign),
     scenarioByCode,
   };
 }
 
 export default connect<ReduxProps, {}, NavigationProps & UpgradeDecksProps, AppState>(
-  mapStateToProps
+  mapStateToPropsFix
 )(UpgradeDecksView);
 
 const styles = StyleSheet.create({

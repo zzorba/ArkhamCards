@@ -226,7 +226,7 @@ class ScenarioSection extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+function mapStateToPropsFix(state: AppState, props: OwnProps): ReduxProps {
   const latestScenario = last(props.campaign.scenarioResults || []);
   const cyclePack = getPack(state, props.campaign.cycleCode);
   const allPacks = getAllPacks(state);
@@ -249,7 +249,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
+export default connect(mapStateToPropsFix, mapDispatchToProps)(
   connectRealm<OwnProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
     ScenarioSection, {
       schemas: ['Card'],

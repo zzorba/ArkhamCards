@@ -16,7 +16,7 @@ interface Props {
   setting: string;
   onFilterChange: (setting: string, values: number[]) => void;
   toggleName: string;
-  onToggleChange: (setting: string) => void;
+  onToggleChange: (setting: string, value: boolean) => void;
   children?: ReactNode;
 }
 

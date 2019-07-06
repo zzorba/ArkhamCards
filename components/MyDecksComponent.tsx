@@ -198,10 +198,11 @@ class MyDecksComponent extends React.Component<Props> {
   }
 }
 
+const EMPTY_DECKS_TO_CAMPAIGN = {};
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     decks: getAllDecks(state),
-    deckToCampaign: getDeckToCampaignMap(state) || {},
+    deckToCampaign: getDeckToCampaignMap(state) || EMPTY_DECKS_TO_CAMPAIGN,
     ...getMyDecksState(state),
   };
 }

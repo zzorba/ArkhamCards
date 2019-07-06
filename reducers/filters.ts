@@ -1,6 +1,6 @@
 import { pick } from 'lodash';
 
-import { FilterState } from '../lib/filters'
+import { FilterState } from '../lib/filters';
 import {
   CLEAR_FILTER,
   TOGGLE_FILTER,

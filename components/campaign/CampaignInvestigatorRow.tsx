@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { Campaign, Deck } from '../../actions/types';
 import { CardsMap } from '../../data/Card';
 import InvestigatorImage from '../core/InvestigatorImage';
-import { getDecks, getLatestDeckIds, AppState } from '../../reducers';
+import { getDecks, getLatestCampaignDeckIds, AppState } from '../../reducers';
 
 interface OwnProps {
   campaign: Campaign;
@@ -51,7 +51,7 @@ class CampaignInvestigatorRow extends React.Component<Props> {
 }
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const latestDeckIds = getLatestDeckIds(state, props.campaign);
+  const latestDeckIds = getLatestCampaignDeckIds(state, props.campaign);
   return {
     decks: getDecks(state, latestDeckIds),
   };

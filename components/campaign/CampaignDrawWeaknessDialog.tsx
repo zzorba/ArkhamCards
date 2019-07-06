@@ -1,4 +1,4 @@
-  import React from 'react';
+import React from 'react';
 import { head, flatMap, forEach, keys, map, range, throttle } from 'lodash';
 import { Alert, StyleSheet, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -17,7 +17,7 @@ import { saveDeckChanges, DeckChanges } from '../decks/actions';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
 import DeckValidation from '../../lib/DeckValidation';
-import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../reducers';
+import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 import { MyDecksSelectorProps } from '../campaign/MyDecksSelectorDialog';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
@@ -357,11 +357,14 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
 }
 
 const EMPTY_WEAKNESS_SET = { packCodes: [], assignedCards: {} };
-function mapStateToProps(state: AppState, props: NavigationProps & CampaignDrawWeaknessProps): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & CampaignDrawWeaknessProps
+): ReduxProps {
   const campaign = getCampaign(state, props.campaignId);
   return {
-    weaknessSet: campaign ? campaign.weaknessSet: EMPTY_WEAKNESS_SET,
-    latestDeckIds: getLatestDeckIds(state, campaign),
+    weaknessSet: campaign ? campaign.weaknessSet : EMPTY_WEAKNESS_SET,
+    latestDeckIds: getLatestCampaignDeckIds(state, campaign),
     decks: getAllDecks(state),
   };
 }

@@ -8,7 +8,7 @@ import {
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import Switch from '../core/Switch';
-import typography  from '../../styles/typography';
+import typography from '../../styles/typography';
 import { s, xs } from '../../styles/space';
 
 const ICON_SIZE = 28;

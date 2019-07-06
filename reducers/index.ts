@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { concat, find, flatMap, forEach, keys, map, max, minBy, last, sortBy, values } from 'lodash';
+import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
 import signedIn from './signedIn';
 import campaigns from './campaigns';
@@ -13,6 +13,7 @@ import packs from './packs';
 import settings from './settings';
 import { FilterState } from '../lib/filters';
 import { Campaign, SingleCampaign, Deck, DecksMap, Pack } from '../actions/types';
+import Card, { CardsMap } from '../data/Card';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -131,8 +132,6 @@ export function getLatestDeck(state: AppState, deckId: number): Deck | undefined
   return deck;
 }
 
-
-
 export const getDeckToCampaignMap = createSelector(
   allCampaignsSelector,
   allDecksSelector,
@@ -162,11 +161,28 @@ export const getDeckToCampaignMap = createSelector(
   }
 );
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const getAllDecksForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => getAllDecks(state);
+const getInvestigatorsForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => investigators;
+const getLatestDeckIdsForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => getLatestCampaignDeckIds(state, campaign);
+export const getLatestCampaignInvestigators = createSelector(
+  getAllDecksForCampaignInvestigators,
+  getInvestigatorsForCampaignInvestigators,
+  getLatestDeckIdsForCampaignInvestigators,
+  (decks, investigators, latestDeckIds): Card[] => {
+    const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
+    return flatMap(
+      filter(latestDecks, deck => !!(deck && deck.investigator_code)),
+      deck => investigators[deck.investigator_code]
+    );
+  }
+);
+
 const EMPTY_DECK_ID_LIST: number[] = [];
 
 const latestDeckIdsDecksSelector = (state: AppState, campaign?: Campaign) => state.decks.all;
 const latestDeckidsCampaignSelector = (state: AppState, campaign?: Campaign) => campaign;
-export const getLatestDeckIds = createSelector(
+export const getLatestCampaignDeckIds = createSelector(
   latestDeckIdsDecksSelector,
   latestDeckidsCampaignSelector,
   (decks, campaign) => {

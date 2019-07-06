@@ -167,8 +167,6 @@ class CardSearchComponent extends React.Component<Props, State> {
       componentId,
       modal,
       baseQuery,
-      defaultFilterState,
-      filters,
     } = this.props;
     Navigation.push<CardFilterProps>(componentId, {
       component: {

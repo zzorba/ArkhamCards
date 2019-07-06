@@ -5,7 +5,6 @@ import { connectRealm, CardResults } from 'react-native-realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -20,7 +19,7 @@ import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
 import { filterToQuery, FilterState } from '../../lib/filters';
 import { NavigationProps } from '../types';
-import { getTabooSet, getFilterState, getDefaultFilterState, AppState } from '../../reducers';
+import { getFilterState, getDefaultFilterState, AppState } from '../../reducers';
 
 export interface FilterProps {
   componentId: string;
@@ -182,8 +181,10 @@ export default function withFilterFunctions<P>(
       const {
         componentId,
         cards,
+        /* eslint-disable @typescript-eslint/no-unused-vars */
         baseQuery,
         defaultFilterState,
+        /* eslint-disable @typescript-eslint/no-unused-vars */
         modal,
         /* eslint-disable @typescript-eslint/no-unused-vars */
         filterId,

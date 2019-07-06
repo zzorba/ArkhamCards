@@ -13,7 +13,7 @@ interface Props {
   onFilterChange: (setting: string, value: any) => void;
   skillIcons: SkillIconsFilters;
   enabled: boolean;
-  onToggleChange: (setting: string) => void;
+  onToggleChange: (setting: string, value: boolean) => void;
 }
 
 export default class SkillIconChooser extends React.Component<Props> {

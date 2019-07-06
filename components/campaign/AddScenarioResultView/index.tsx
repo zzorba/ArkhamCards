@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, flatMap, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import {
   Button,
   ScrollView,
@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { CampaignNotes, Deck, SingleCampaign, ScenarioResult } from '../../../actions/types';
+import { CampaignNotes, SingleCampaign, ScenarioResult } from '../../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import { NavigationProps } from '../../types';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
@@ -22,7 +22,7 @@ import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaign
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
 import Card from '../../../data/Card';
-import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../../reducers';
+import { getCampaign, getLatestCampaignInvestigators, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
 export interface AddScenarioResultProps {
@@ -304,16 +304,15 @@ class AddScenarioResultView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: NavigationProps & AddScenarioResultProps & PlayerCardProps): ReduxProps {
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & AddScenarioResultProps & PlayerCardProps
+): ReduxProps {
   const campaign = getCampaign(state, props.id);
-  const decks = getAllDecks(state);
-  const latestDeckIds = getLatestDeckIds(state, campaign);
-  const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
+  const allInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
   return {
     campaign,
-    allInvestigators: flatMap(
-      filter(latestDecks, deck => !!(deck && deck.investigator_code)),
-      deck => props.investigators[deck.investigator_code]),
+    allInvestigators,
   };
 }
 

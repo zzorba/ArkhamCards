@@ -16,7 +16,7 @@ import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
 import { NavigationProps } from '../types';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
-import { getAllDecks, getCampaign, getCampaigns, getLatestDeckIds, AppState } from '../../reducers';
+import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 import { NewDeckProps } from '../NewDeckView';
 
@@ -278,24 +278,26 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
 }
 
 const EMPTY_DECK_IDS: number[] = [];
-function mapStateToProps(
+function mapStateToPropsFix(
   state: AppState,
   props: NavigationProps & MyDecksSelectorProps
 ): ReduxProps {
   const otherCampaigns = filter(
     getCampaigns(state),
     campaign => campaign.id !== props.campaignId);
-  const otherCampaignDeckIds = flatMap(otherCampaigns, c => getLatestDeckIds(state, c));
+  const otherCampaignDeckIds = flatMap(otherCampaigns, c => getLatestCampaignDeckIds(state, c));
   const campaign = getCampaign(state, props.campaignId);
   return {
     campaign,
-    campaignLatestDeckIds: campaign ? getLatestDeckIds(state, campaign) : EMPTY_DECK_IDS,
+    campaignLatestDeckIds: campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS,
     otherCampaignDeckIds,
     decks: getAllDecks(state),
   };
 }
 
-export default connect<ReduxProps, {}, NavigationProps & MyDecksSelectorProps, AppState>(mapStateToProps)(
+export default connect<ReduxProps, {}, NavigationProps & MyDecksSelectorProps, AppState>(
+  mapStateToPropsFix
+)(
   withPlayerCards<NavigationProps & MyDecksSelectorProps & ReduxProps>(MyDecksSelectorDialog)
 );
 

@@ -1255,7 +1255,7 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(
+function mapStateToPropsFix(
   state: AppState,
   props: NavigationProps & DeckDetailProps & TabooSetOverrideProps
 ): ReduxProps & TabooSetOverride {
@@ -1290,7 +1290,7 @@ function mapDispatchToProps(dispatch: Dispatch): ReduxActionProps {
 
 export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
   connect<ReduxProps & TabooSetOverride, ReduxActionProps, NavigationProps & DeckDetailProps & TabooSetOverrideProps, AppState>(
-    mapStateToProps,
+    mapStateToPropsFix,
     mapDispatchToProps
   )(
     withPlayerCards<ReduxProps & TabooSetOverride & ReduxActionProps & NavigationProps & DeckDetailProps & TabooSetOverrideProps, UpgradeCardProps>(

@@ -85,7 +85,7 @@ class CampaignScenarioView extends React.Component<Props> {
   }
 }
 
-function mapStateToProps(
+function mapStateToPropsFix(
   state: AppState,
   props: CampaignScenarioProps
 ): ReduxProps {
@@ -105,7 +105,7 @@ function mapStateToProps(
   return {};
 }
 
-export default connect(mapStateToProps)(CampaignScenarioView);
+export default connect(mapStateToPropsFix)(CampaignScenarioView);
 
 const styles = StyleSheet.create({
   container: {

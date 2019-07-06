@@ -10,7 +10,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import DeviceInfo from 'react-native-device-info';
 
 import typography from '../../styles/typography';
-import { xs, s, isBig } from '../../styles/space';
+import { s, isBig } from '../../styles/space';
 
 interface Props {
   text?: string;

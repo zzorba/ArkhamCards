@@ -145,10 +145,11 @@ class WeaknessDrawDialog extends React.Component<Props, State> {
   }
 }
 
+const EMPTY_IN_COLLECTION = {};
 function mapStateToProps(state: AppState) {
   return {
     packs: state.packs.all,
-    in_collection: state.packs.in_collection || {},
+    in_collection: state.packs.in_collection || EMPTY_IN_COLLECTION,
   };
 }
 

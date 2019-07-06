@@ -1,5 +1,4 @@
 import React from 'react';
-import { countBy, keys } from 'lodash';
 import { connect } from 'react-redux';
 import {
   Platform,
@@ -11,7 +10,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { filterToQuery } from '../../lib/filters';
-import { AppState, getFilterState, getDefaultFilterState } from '../../reducers';
+import { AppState, getFilterState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 const SIZE = 36;

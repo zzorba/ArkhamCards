@@ -29,7 +29,7 @@ import Card from '../../../data/Card';
 import { ChaosBag } from '../../../constants';
 import { updateCampaign, deleteCampaign } from '../actions';
 import { NavigationProps } from '../../types';
-import { getCampaign, getAllDecks, getLatestDeckIds, AppState } from '../../../reducers';
+import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
 export interface CampaignDetailProps {
@@ -305,10 +305,13 @@ class CampaignDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToProps(state: AppState, props: NavigationProps & CampaignDetailProps & PlayerCardProps): ReduxProps {
+function mapStateToPropsFix(
+  state: AppState,
+  props: NavigationProps & CampaignDetailProps & PlayerCardProps
+): ReduxProps {
   const campaign = getCampaign(state, props.id);
   const decks = getAllDecks(state);
-  const latestDeckIds = getLatestDeckIds(state, campaign);
+  const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
   const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
   return {
     allInvestigators: flatMap(
@@ -328,7 +331,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
 }
 
 export default withPlayerCards<NavigationProps & CampaignDetailProps>(
-  connect(mapStateToProps, mapDispatchToProps)(
+  connect(mapStateToPropsFix, mapDispatchToProps)(
     withTraumaDialog<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps>(
       withDialogs<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps & TraumaProps>(CampaignDetailView)
     )

@@ -1,10 +1,8 @@
-import React from 'react'
 import { filter } from 'lodash';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createOffline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
-import loggerMiddleware from 'redux-logger';
 import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -67,7 +65,6 @@ export default function configureStore(initialState) {
         ...filter([
           thunk,
           offline.middleware,
-          // (__DEV__ && loggerMiddleware),
         ], Boolean)),
       offline.enhanceStore)
   );
