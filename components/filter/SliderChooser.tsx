@@ -57,7 +57,7 @@ export default class SliderChooser extends React.Component<Props> {
     return (
       <AccordionItem
         label={this.label()}
-        height={80 + (children && height ? (height * 48) : 10)}
+        height={40 + (children && height ? (height * 48) : 10)}
         enabled={enabled}
         toggleName={toggleName}
         onToggleChange={onToggleChange}

@@ -45,7 +45,7 @@ export default class SkillIconChooser extends React.Component<Props> {
     return (
       <AccordionItem
         label={enabled ? t`Skill Icons` : t`Skill Icons: All`}
-        height={126}
+        height={90}
         enabled={enabled}
         toggleName="skillEnabled"
         onToggleChange={onToggleChange}

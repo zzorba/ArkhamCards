@@ -37,7 +37,7 @@ const BLURRED_AGENDA = require('../../assets/blur-agenda.jpeg');
 const PLAYER_BACK = require('../../assets/player-back.png');
 const ENCOUNTER_BACK = require('../../assets/encounter-back.png');
 const PER_INVESTIGATOR_ICON = (
-  <ArkhamIcon name="per_investigator" size={12} color="#000000" />
+  <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color="#000000" />
 );
 const ICON_SIZE = isBig ? 44 : 28;
 const SMALL_ICON_SIZE = isBig ? 26 : 16;
@@ -631,12 +631,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           </View>)
         }
         { ('victory' in card && card.victory !== null) &&
-          <Text style={styles.typeText}>
+          <Text style={[typography.cardText, styles.typeText]}>
             { t`Victory: ${card.victory}.` }
           </Text>
         }
         { ('vengeance' in card && card.vengeance !== null) &&
-          <Text style={styles.typeText}>
+          <Text style={[typography.cardText, styles.typeText]}>
             { t`Vengeance: ${card.vengeance}.` }
           </Text>
         }

@@ -6,9 +6,11 @@ import {
   Text,
   View,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import Switch from '../core/Switch';
 import typography from '../../styles/typography';
+import { isBig, s, xs } from '../../styles/space';
 
 interface Props {
   label: string;
@@ -23,7 +25,9 @@ interface State {
   heightAnim: Animated.Value;
 }
 
-export default class AccordionChooser extends React.Component<Props, State> {
+const COLLAPSED_HEIGHT = 22 + 18 * DeviceInfo.getFontScale() * (isBig ? 1.5 : 1.0);
+
+export default class AccordionItem extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -84,7 +88,7 @@ export default class AccordionChooser extends React.Component<Props, State> {
 
     const containerHeight = this.state.heightAnim.interpolate({
       inputRange: [0, 1],
-      outputRange: [40, height],
+      outputRange: [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height],
       extrapolate: 'clamp',
     });
     return (
@@ -106,10 +110,10 @@ const styles = StyleSheet.create({
     borderColor: '#bdbdbd',
   },
   row: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingTop: xs,
+    paddingBottom: xs,
+    paddingLeft: s,
+    paddingRight: s,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',

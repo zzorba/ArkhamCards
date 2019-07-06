@@ -8,6 +8,8 @@ import {
 
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import Switch from '../core/Switch';
+import typography  from '../../styles/typography';
+import { s, xs } from '../../styles/space';
 
 const ICON_SIZE = 28;
 
@@ -42,7 +44,7 @@ export default class ToggleFilter extends React.Component<Props> {
       );
     }
     return (
-      <Text style={styles.labelText}>{ label }</Text>
+      <Text style={[typography.text, styles.labelText]}>{ label }</Text>
     );
   }
 
@@ -69,19 +71,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingRight: 12,
-    paddingBottom: 4,
+    paddingRight: s + xs,
+    paddingBottom: xs,
   },
   icon: {
     width: 28,
   },
   label: {
-    paddingLeft: 8,
-    paddingRight: 4,
+    paddingLeft: s,
+    paddingRight: xs,
   },
   labelText: {
-    fontFamily: 'System',
-    fontSize: 18,
     fontWeight: '400',
     minWidth: 28,
   },

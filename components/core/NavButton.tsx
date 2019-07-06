@@ -10,6 +10,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import DeviceInfo from 'react-native-device-info';
 
 import typography from '../../styles/typography';
+import { xs, s, isBig } from '../../styles/space';
 
 interface Props {
   text?: string;
@@ -51,6 +52,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingLeft: s,
+    paddingRight: s,
   },
   bottomBorder: {
     borderBottomWidth: 1,
@@ -60,9 +63,8 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
   },
   text: {
-    paddingLeft: 6,
     flex: 1,
-    height: 22 + 18 * DeviceInfo.getFontScale(),
+    minHeight: 22 + 18 * DeviceInfo.getFontScale() * (isBig ? 1.5 : 1.0),
     flexDirection: 'row',
     alignItems: 'center',
   },

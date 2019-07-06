@@ -220,7 +220,7 @@ function applyLocationFilters(filters: FilterState, query: string[]) {
     }
   }
   if (hauntedEnabled) {
-    query.push(`(real_text CONTAINS 'Haunted.' or linked_card.real_text CONTAINS 'Haunted.')`);
+    query.push(`(real_text CONTAINS '<b>Haunted</b>' or linked_card.real_text CONTAINS '<b>Haunted</b>')`);
   }
   if (query.length !== oldLength) {
     query.push(`(type_code == 'location' or linked_card.type_code == 'location')`);
