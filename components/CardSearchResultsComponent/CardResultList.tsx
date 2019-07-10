@@ -21,15 +21,6 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
-import { Slots } from '../../actions/types';
-import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '../../reducers';
-import Card from '../../data/Card';
-import { showCardSwipe } from '../navHelper';
-import { isSpecialCard } from '../parseDeck';
-import CardSearchResult from '../CardSearchResult';
-import { ROW_HEIGHT } from '../CardSearchResult/constants';
-import CardSectionHeader, { ROW_HEADER_HEIGHT } from './CardSectionHeader';
-import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from './ShowNonCollectionFooter';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -38,7 +29,16 @@ import {
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
   SortType,
-} from '../CardSortDialog/constants';
+  Slots,
+} from '../../actions/types';
+import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '../../reducers';
+import Card from '../../data/Card';
+import { showCardSwipe } from '../navHelper';
+import { isSpecialCard } from '../parseDeck';
+import CardSearchResult from '../CardSearchResult';
+import { ROW_HEIGHT } from '../CardSearchResult/constants';
+import CardSectionHeader, { ROW_HEADER_HEIGHT } from './CardSectionHeader';
+import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from './ShowNonCollectionFooter';
 import typography from '../../styles/typography';
 import { s, m } from '../../styles/space';
 

@@ -2,9 +2,8 @@ import React from 'react';
 import { find, map } from 'lodash';
 import { BackHandler } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import DialogPicker from '../core/DialogPicker';
+
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -13,7 +12,8 @@ import {
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
   SortType,
-} from './constants';
+} from '../../actions/types';
+import DialogPicker from '../core/DialogPicker';
 
 interface Props {
   componentId: string;

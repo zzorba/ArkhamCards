@@ -5,7 +5,9 @@ import DeckDetailView from '../components/DeckDetailView';
 import DeckEditView from '../components/DeckEditView';
 import EditSpecialDeckCards from '../components/EditSpecialDeckCards';
 import CardSearchView from '../components/CardSearchView';
+import MythosButton from '../components/CardSearchComponent/MythosButton';
 import TuneButton from '../components/CardSearchComponent/TuneButton';
+import SortButton from '../components/CardSearchComponent/SortButton';
 import CardDetailView from '../components/CardDetailView';
 import CardDetailSwipeView from '../components/CardDetailSwipeView';
 import CardFaqView from '../components/CardFaqView';
@@ -94,5 +96,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Dialog.CampaignDrawWeakness', () => CampaignDrawWeaknessDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CampaignEditWeakness', () => CampaignEditWeaknessDialog, Provider, store);
   Navigation.registerComponentWithRedux('Weakness.Draw', () => WeaknessDrawDialog, Provider, store);
+  Navigation.registerComponentWithRedux('SortButton', () => SortButton, Provider, store);
   Navigation.registerComponentWithRedux('TuneButton', () => TuneButton, Provider, store);
+  Navigation.registerComponentWithRedux('MythosButton', () => MythosButton, Provider, store);
 }

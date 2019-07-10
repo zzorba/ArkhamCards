@@ -2,13 +2,12 @@ import React from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import { SORT_BY_PACK, SortType } from '../CardSortDialog/constants';
 import InvestigatorsListComponent from '../InvestigatorsListComponent';
 import NewDeckOptionsDialog from './NewDeckOptionsDialog';
 import { NavigationProps } from '../types';
 import { t } from 'ttag';
 import { iconsMap } from '../../app/NavIcons';
-import { Deck } from '../../actions/types';
+import { SORT_BY_PACK, SortType , Deck } from '../../actions/types';
 import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
 

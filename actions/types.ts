@@ -1,10 +1,24 @@
 import { ChaosBag } from '../constants';
 import { FilterState } from '../lib/filters';
 
+export const SORT_BY_TYPE = 'Type';
+export const SORT_BY_FACTION = 'Faction';
+export const SORT_BY_COST = 'Cost';
+export const SORT_BY_PACK = 'Pack';
+export const SORT_BY_TITLE = 'Title';
+export const SORT_BY_ENCOUNTER_SET = 'Encounter Set';
+
+export type SortType =
+  typeof SORT_BY_TYPE |
+  typeof SORT_BY_FACTION |
+  typeof SORT_BY_COST |
+  typeof SORT_BY_PACK |
+  typeof SORT_BY_TITLE |
+  typeof SORT_BY_ENCOUNTER_SET;
+
 export interface Slots {
   [code: string]: number;
 }
-
 const INVESTIGATOR = 'investigator';
 const TOO_MANY_COPIES = 'too_many_copies';
 const INVALID_CARDS = 'invalid_cards';
@@ -419,12 +433,25 @@ export interface UpdateFilterAction {
   key: keyof FilterState;
   value: any;
 }
+export const TOGGLE_MYTHOS = 'TOGGLE_MYTHOS';
+export interface ToggleMythosAction {
+  type: typeof TOGGLE_MYTHOS;
+  id: string;
+  value: boolean;
+}
+export const UPDATE_CARD_SORT = 'UPDATE_CARD_SORT';
+export interface UpdateCardSortAction {
+  type: typeof UPDATE_CARD_SORT;
+  id: string;
+  sort: SortType;
+}
 
 export const ADD_FILTER_SET = 'ADD_FILTER_SET';
 export interface AddFilterSetAction {
   type: typeof ADD_FILTER_SET;
   id: string;
   filters: FilterState;
+  sort?: SortType;
 }
 
 export const SYNC_FILTER_SET = 'SYNC_FILTER_SET';
@@ -446,7 +473,9 @@ export type FilterActions =
   UpdateFilterAction |
   AddFilterSetAction |
   SyncFilterSetAction |
-  RemoveFilterSetAction;
+  RemoveFilterSetAction |
+  ToggleMythosAction |
+  UpdateCardSortAction;
 
 export type PacksActions =
   PacksFetchStartAction |

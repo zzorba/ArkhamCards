@@ -1,19 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+  Keyboard,
   Platform,
   StyleSheet,
   TouchableOpacity,
   View,
 } from 'react-native';
-import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { CardFilterProps } from '../filter/withFilterFunctions';
-import { filterToQuery } from '../../lib/filters';
-import { AppState, getFilterState } from '../../reducers';
+import { SortType } from '../../actions/types';
+import { updateCardSort } from '../filter/actions';
+import { AppState, getMythosMode, getCardSort } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 const SIZE = 36;
@@ -26,34 +27,38 @@ interface OwnProps {
 }
 
 interface ReduxProps {
-  filters: boolean;
+  mythosMode: boolean;
+  sort: SortType;
 }
 
-type Props = OwnProps & ReduxProps;
+interface ReduxActionProps {
+  updateCardSort: (id: string, sort: SortType) => void;
+}
 
-class TuneButton extends React.Component<Props> {
-  _onPress = () => {
+type Props = OwnProps & ReduxProps & ReduxActionProps;
+
+class SortButton extends React.Component<Props> {
+  _sortChanged = (sort: SortType) => {
     const {
       filterId,
-      baseQuery,
-      modal,
+      updateCardSort,
     } = this.props;
-    Navigation.push<CardFilterProps>(filterId, {
+    updateCardSort(filterId, sort);
+  };
+
+  _onPress = () => {
+    Keyboard.dismiss();
+    Navigation.showOverlay({
       component: {
-        name: 'SearchFilters',
+        name: 'Dialog.Sort',
         passProps: {
-          filterId: filterId,
-          baseQuery: baseQuery,
-          modal: modal,
+          sortChanged: this._sortChanged,
+          selectedSort: this.props.sort,
+          hasEncounterCards: this.props.mythosMode,
         },
         options: {
-          topBar: {
-            backButton: {
-              title: t`Apply`,
-            },
-            title: {
-              text: t`Filters`,
-            },
+          layout: {
+            backgroundColor: 'rgba(128,128,128,.75)',
           },
         },
       },
@@ -62,7 +67,6 @@ class TuneButton extends React.Component<Props> {
 
   render() {
     const {
-      filters,
       lightButton,
     } = this.props;
     const defaultColor = Platform.OS === 'ios' ? '#007AFF' : COLORS.button;
@@ -70,8 +74,7 @@ class TuneButton extends React.Component<Props> {
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPress}>
           <View style={styles.touchable}>
-            <MaterialIcons name="tune" size={28} color={lightButton ? 'white' : defaultColor} />
-            { filters && <View style={styles.chiclet} /> }
+            <MaterialIcons name="sort-by-alpha" size={28} color={lightButton ? 'white' : defaultColor} />
           </View>
         </TouchableOpacity>
       </View>
@@ -80,18 +83,20 @@ class TuneButton extends React.Component<Props> {
 }
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const filters = getFilterState(state, props.filterId);
-  if (!filters) {
-    return {
-      filters: false,
-    };
-  }
   return {
-    filters: filterToQuery(filters).length > 0,
+    mythosMode: getMythosMode(state, props.filterId),
+    sort: getCardSort(state, props.filterId),
   };
 }
 
-export default connect(mapStateToProps)(TuneButton);
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    updateCardSort,
+  }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SortButton);
 
 const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 8 : 0);
 const styles = StyleSheet.create({
@@ -105,18 +110,5 @@ const styles = StyleSheet.create({
     padding: 4,
     width: SIZE + EXTRA_ANDROID_WIDTH,
     height: SIZE,
-  },
-  chiclet: {
-    borderColor: 'white',
-    borderWidth: 1,
-    position: 'absolute',
-    top: 1,
-    right: 1 + EXTRA_ANDROID_WIDTH,
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

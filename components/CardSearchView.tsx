@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SortType } from './CardSortDialog/constants';
+import { SortType } from '../actions/types';
 import CardSearchComponent from './CardSearchComponent';
 import withFetchCardsGate from './cards/withFetchCardsGate';
 

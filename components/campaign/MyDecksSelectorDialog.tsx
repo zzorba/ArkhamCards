@@ -277,7 +277,6 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
   }
 }
 
-const EMPTY_DECK_IDS: number[] = [];
 function mapStateToPropsFix(
   state: AppState,
   props: NavigationProps & MyDecksSelectorProps
@@ -289,7 +288,7 @@ function mapStateToPropsFix(
   const campaign = getCampaign(state, props.campaignId);
   return {
     campaign,
-    campaignLatestDeckIds: campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS,
+    campaignLatestDeckIds: getLatestCampaignDeckIds(state, campaign),
     otherCampaignDeckIds,
     decks: getAllDecks(state),
   };

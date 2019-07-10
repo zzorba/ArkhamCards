@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 
 import { t } from 'ttag';
-import { Slots } from '../../actions/types';
-import CardSearchBox from './CardSearchBox';
 import {
   SORT_BY_ENCOUNTER_SET,
   SortType,
-} from '../CardSortDialog/constants';
+  Slots,
+} from '../../actions/types';
+import CardSearchBox from './CardSearchBox';
 import CardResultList from './CardResultList';
 import Switch from '../core/Switch';
 import { FilterState, filterToQuery } from '../../lib/filters';

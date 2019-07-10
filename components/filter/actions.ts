@@ -5,14 +5,41 @@ import {
   ADD_FILTER_SET,
   REMOVE_FILTER_SET,
   SYNC_FILTER_SET,
+  TOGGLE_MYTHOS,
+  UPDATE_CARD_SORT,
   ClearFilterAction,
   ToggleFilterAction,
   UpdateFilterAction,
   AddFilterSetAction,
   SyncFilterSetAction,
   RemoveFilterSetAction,
+  ToggleMythosAction,
+  UpdateCardSortAction,
+  SortType,
 } from '../../actions/types';
 import { FilterState } from '../../lib/filters';
+
+export function toggleMythosMode(
+  id: string,
+  value: boolean
+): ToggleMythosAction {
+  return {
+    type: TOGGLE_MYTHOS,
+    id,
+    value,
+  };
+}
+
+export function updateCardSort(
+  id: string,
+  sort: SortType
+): UpdateCardSortAction {
+  return {
+    type: UPDATE_CARD_SORT,
+    id,
+    sort,
+  };
+}
 
 export function clearFilters(
   id: string,
@@ -41,7 +68,7 @@ export function toggleFilter(
 export function updateFilter(
   id: string,
   key: keyof FilterState,
-  value: any
+  value: any,
 ): UpdateFilterAction {
   return {
     type: UPDATE_FILTER,
@@ -53,12 +80,14 @@ export function updateFilter(
 
 export function addFilterSet(
   id: string,
-  filters: FilterState
+  filters: FilterState,
+  sort?: SortType
 ): AddFilterSetAction {
   return {
     type: ADD_FILTER_SET,
     id,
     filters,
+    sort,
   };
 }
 

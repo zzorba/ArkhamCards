@@ -12,7 +12,7 @@ import decks from './decks';
 import packs from './packs';
 import settings from './settings';
 import { FilterState } from '../lib/filters';
-import { Campaign, SingleCampaign, Deck, DecksMap, Pack } from '../actions/types';
+import { Campaign, SingleCampaign, Deck, DecksMap, Pack, SortType } from '../actions/types';
 import Card, { CardsMap } from '../data/Card';
 
 const packsPersistConfig = {
@@ -92,6 +92,23 @@ export const getAllPacks = createSelector(
   )
 );
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const EMPTY_PACKS: Pack[] = [];
+const allPacksCycleSelector = (state: AppState, cyclePack?: Pack) => getAllPacks(state);
+const cycleSelector = (state: AppState, cyclePack?: Pack) => cyclePack;
+export const getAllCyclePacks = createSelector(
+  allPacksCycleSelector,
+  cycleSelector,
+  (allPacks, cyclePack) => !cyclePack ?
+    EMPTY_PACKS :
+    filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position)
+);
+
+export const getAllStandalonePacks = createSelector(
+  allPacksSelector,
+  (packs) => filter(packs, pack => pack.cycle_position === 70)
+);
+
 export function getPack(state: AppState, packCode: string): Pack | undefined {
   if (packCode) {
     return find(
@@ -161,7 +178,6 @@ export const getDeckToCampaignMap = createSelector(
   }
 );
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
 const getAllDecksForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => getAllDecks(state);
 const getInvestigatorsForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => investigators;
 const getLatestDeckIdsForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => getLatestCampaignDeckIds(state, campaign);
@@ -336,6 +352,20 @@ export function getFilterState(
   filterId: string
 ): FilterState {
   return state.filters.all[filterId];
+}
+
+export function getMythosMode(
+  state: AppState,
+  filterId: string
+): boolean {
+  return !!state.filters.mythos[filterId];
+}
+
+export function getCardSort(
+  state: AppState,
+  filterId: string
+): SortType {
+  return state.filters.sorts[filterId];
 }
 
 export function getDefaultFilterState(

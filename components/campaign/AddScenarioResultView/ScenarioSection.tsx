@@ -19,7 +19,7 @@ import { campaignScenarios, scenarioFromCard, Scenario } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import Switch from '../../core/Switch';
 import { ShowTextEditDialog } from '../../core/withDialogs';
-import { getAllDecks, getAllPacks, getPack, getTabooSet, AppState } from '../../../reducers';
+import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 
 
@@ -229,9 +229,8 @@ class ScenarioSection extends React.Component<Props, State> {
 function mapStateToPropsFix(state: AppState, props: OwnProps): ReduxProps {
   const latestScenario = last(props.campaign.scenarioResults || []);
   const cyclePack = getPack(state, props.campaign.cycleCode);
-  const allPacks = getAllPacks(state);
-  const cyclePacks = !cyclePack ? [] : filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position);
-  const standalonePacks = filter(allPacks, pack => pack.cycle_position === 70);
+  const cyclePacks = getAllCyclePacks(state, cyclePack);
+  const standalonePacks = getAllStandalonePacks(state);
   return {
     showInterludes: !!props.campaign.showInterludes,
     cycleScenarios: campaignScenarios(props.campaign.cycleCode),

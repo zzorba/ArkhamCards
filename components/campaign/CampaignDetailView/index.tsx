@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, flatMap, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import {
   Alert,
   Button,
@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { t } from 'ttag';
-import { Campaign, CampaignNotes, Deck, DecksMap, InvestigatorData, WeaknessSet } from '../../../actions/types';
+import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '../../../actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -29,7 +29,7 @@ import Card from '../../../data/Card';
 import { ChaosBag } from '../../../constants';
 import { updateCampaign, deleteCampaign } from '../actions';
 import { NavigationProps } from '../../types';
-import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from '../../../reducers';
+import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
 export interface CampaignDetailProps {
@@ -305,18 +305,16 @@ class CampaignDetailView extends React.Component<Props, State> {
   }
 }
 
-function mapStateToPropsFix(
+function mapStateToProps(
   state: AppState,
   props: NavigationProps & CampaignDetailProps & PlayerCardProps
 ): ReduxProps {
   const campaign = getCampaign(state, props.id);
   const decks = getAllDecks(state);
   const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
-  const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
+  const allInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
   return {
-    allInvestigators: flatMap(
-      filter(latestDecks, deck => !!(deck && deck.investigator_code)),
-      deck => props.investigators[deck.investigator_code]),
+    allInvestigators,
     latestDeckIds,
     campaign,
     decks,
@@ -331,7 +329,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
 }
 
 export default withPlayerCards<NavigationProps & CampaignDetailProps>(
-  connect(mapStateToPropsFix, mapDispatchToProps)(
+  connect(mapStateToProps, mapDispatchToProps)(
     withTraumaDialog<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps>(
       withDialogs<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps & TraumaProps>(CampaignDetailView)
     )

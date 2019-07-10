@@ -17,11 +17,11 @@ import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '../../actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import Card, { CardsMap } from '../../data/Card';
 import { searchMatchesText } from '../searchHelpers';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
-import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '../CardSortDialog/constants';
 import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from '../CardSearchResultsComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
