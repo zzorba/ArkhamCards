@@ -478,7 +478,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
 
     if (!backFirst && card.spoiler && !this.state.showBack && card.type_code !== 'scenario') {
       return (
-        <View style={styles.buttonContainer}>
+        <View style={[styles.buttonContainer, { width }]}>
           <Button grow text={t`Show back`} onPress={this._toggleShowBack} />
         </View>
       );
@@ -676,9 +676,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     flavorFirst: boolean,
     isFirst: boolean
   ) {
+    const { width } = this.props;
     if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== RANDOM_BASIC_WEAKNESS) {
       return (
-        <View style={styles.buttonContainer}>
+        <View style={[styles.buttonContainer, { width }]}>
           <Button
             grow
             text={(card.hidden || backFirst) ? t`Show back` : t`Show front`}
@@ -863,11 +864,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     paddingLeft: s,
+    paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
     flexDirection: 'row',
     justifyContent: isBig ? 'center' : 'flex-start',
-    width: '100%',
     maxWidth: 768,
   },
   costIcon: {
