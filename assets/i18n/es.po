@@ -207,7 +207,7 @@ msgid "Second Core Set"
 msgstr "Segundo Core Set"
 
 #: components/CardSearchResultsComponent/CardResultList.tsx:291
-#: components/CardSearchResultsComponent/CardResultList.tsx:555
+#: components/CardSearchResultsComponent/CardResultList.tsx:556
 #: components/CollectionEditView.tsx:32
 #: components/EditSpecialDeckCards.tsx:182
 #: components/InvestigatorsListComponent/index.tsx:294
@@ -271,12 +271,12 @@ msgstr "Contiene cartas prohibidas (cartas no permitidas por Clase)"
 msgid "Contains too many limited cards."
 msgstr "Contiene demasiadas cartas limitadas."
 
-#: components/CardDetailSwipeView.tsx:56
-#: components/CardDetailSwipeView.tsx:100
-#: components/CardDetailSwipeView.tsx:171
+#: components/CardDetailSwipeView.tsx:57
+#: components/CardDetailSwipeView.tsx:101
+#: components/CardDetailSwipeView.tsx:172
 #: components/CardDetailView/TwoSidedCardComponent.tsx:161
-#: components/CardDetailView/index.tsx:76
-#: components/CardDetailView/index.tsx:165
+#: components/CardDetailView/index.tsx:78
+#: components/CardDetailView/index.tsx:167
 #: components/DeckDetailView/index.tsx:456
 #: components/DeckDetailView/index.tsx:507
 #: components/EditSpecialDeckCards.tsx:54
@@ -293,9 +293,9 @@ msgstr "Contiene demasiadas cartas limitadas."
 #: components/core/ChooserButton.tsx:41
 #: components/filter/CardEnemyFilterView.tsx:19
 #: components/filter/PackFilterView.tsx:30
-#: components/navHelper.ts:26
-#: components/navHelper.ts:149
-#: components/navHelper.ts:173
+#: components/navHelper.ts:27
+#: components/navHelper.ts:150
+#: components/navHelper.ts:174
 msgid "Back"
 msgstr "Atrás"
 
@@ -323,7 +323,7 @@ msgstr "Robar de colección"
 #: components/DeckUpgradeDialog/index.tsx:78
 #: components/EditSpecialDeckCards.tsx:183
 #: components/NewDeckView/NewDeckOptionsDialog.tsx:380
-#: components/NewDeckView/index.tsx:40
+#: components/NewDeckView/index.tsx:39
 #: components/authHelper.ts:32
 #: components/campaign/AddCampaignNoteSectionDialog.tsx:143
 #: components/campaign/AddScenarioResultView/index.tsx:66
@@ -339,7 +339,7 @@ msgstr "Robar de colección"
 #: components/campaign/NewCampaignView/index.tsx:352
 #: components/campaign/UpgradeDecksView/index.tsx:55
 #: components/core/CountEditDialog.tsx:114
-#: components/core/DialogPicker.tsx:98
+#: components/core/DialogPicker.tsx:97
 #: components/core/TextEditDialog.tsx:204
 #: components/settings/DiagnosticsView.tsx:119
 #: components/settings/LoginButton.tsx:41
@@ -424,7 +424,7 @@ msgstr "Esconder Mazos de ArkhamDB"
 #: components/MyDecksView.tsx:124
 #: components/NewDeckView/NewDeckOptionsDialog.tsx:198
 #: components/NewDeckView/NewDeckOptionsDialog.tsx:374
-#: components/NewDeckView/index.tsx:34
+#: components/NewDeckView/index.tsx:33
 #: components/campaign/MyDecksSelectorDialog.tsx:62
 msgid "New Deck"
 msgstr "Nuevo Mazo"
@@ -441,8 +441,8 @@ msgstr "Intentar nuevamente"
 msgid "Reauthorize"
 msgstr "Reautorizar"
 
-#: components/navHelper.ts:41
-#: components/navHelper.ts:114
+#: components/navHelper.ts:20
+#: components/navHelper.ts:115
 msgid "Deck"
 msgstr "Mazo"
 
@@ -515,7 +515,7 @@ msgstr "Robar una debilidad diferente"
 msgid "Draw Another"
 msgstr "Robar otra"
 
-#: components/filter/CardFilterView/index.tsx:534
+#: components/filter/CardFilterView/index.tsx:526
 #: components/weakness/WeaknessDrawComponent.tsx:283
 msgid "Traits"
 msgstr "Rasgos"
@@ -644,7 +644,7 @@ msgstr "Acerca de Arkham Cards"
 #: components/campaign/UpgradeDecksView/index.tsx:155
 #: components/core/CountEditDialog.tsx:118
 #: components/core/TextEditDialog.tsx:224
-#: components/navHelper.ts:31
+#: components/navHelper.ts:32
 #: components/settings/SettingsView.tsx:67
 msgid "Done"
 msgstr "Hecho"
@@ -687,70 +687,70 @@ msgid "Debug"
 msgstr "Depurar"
 
 #: components/filter/CardEnemyFilterView.tsx:51
-#: components/filter/CardFilterView/index.tsx:287
+#: components/filter/CardFilterView/index.tsx:279
 msgid "Elite"
 msgstr "Élite"
 
 #: components/filter/CardEnemyFilterView.tsx:57
-#: components/filter/CardFilterView/index.tsx:293
+#: components/filter/CardFilterView/index.tsx:285
 msgid "Hunter"
 msgstr "Cazador"
 
 #: components/filter/CardEnemyFilterView.tsx:63
-#: components/filter/CardFilterView/index.tsx:305
+#: components/filter/CardFilterView/index.tsx:297
 msgid "Alert"
 msgstr "Alerta"
 
 #: components/filter/CardEnemyFilterView.tsx:69
-#: components/filter/CardFilterView/index.tsx:308
+#: components/filter/CardFilterView/index.tsx:300
 msgid "Spawn"
 msgstr "Aparición"
 
 #: components/filter/CardEnemyFilterView.tsx:75
-#: components/filter/CardFilterView/index.tsx:314
+#: components/filter/CardFilterView/index.tsx:306
 msgid "Aloof"
 msgstr "Indiferente"
 
 #: components/filter/CardEnemyFilterView.tsx:81
-#: components/filter/CardFilterView/index.tsx:317
+#: components/filter/CardFilterView/index.tsx:309
 msgid "Massive"
 msgstr "Descomunal"
 
 #: components/filter/CardEnemyFilterView.tsx:89
-#: components/filter/CardFilterView/index.tsx:290
+#: components/filter/CardFilterView/index.tsx:282
 msgid "Non-Elite"
 msgstr "No Élite"
 
 #: components/filter/CardEnemyFilterView.tsx:95
-#: components/filter/CardFilterView/index.tsx:296
+#: components/filter/CardFilterView/index.tsx:288
 msgid "Non-Hunter"
 msgstr "No Cazador"
 
 #: components/filter/CardEnemyFilterView.tsx:101
-#: components/filter/CardFilterView/index.tsx:302
+#: components/filter/CardFilterView/index.tsx:294
 msgid "Retaliate"
 msgstr "Represalia"
 
 #: components/filter/CardEnemyFilterView.tsx:107
-#: components/filter/CardFilterView/index.tsx:299
+#: components/filter/CardFilterView/index.tsx:291
 msgid "Parley"
 msgstr "Negociar"
 
 #: components/filter/CardEnemyFilterView.tsx:113
-#: components/filter/CardFilterView/index.tsx:311
+#: components/filter/CardFilterView/index.tsx:303
 msgid "Prey"
 msgstr "Presa"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:293
 #: components/filter/CardEnemyFilterView.tsx:146
-#: components/filter/CardFilterView/index.tsx:333
+#: components/filter/CardFilterView/index.tsx:325
 msgid "Fight"
 msgstr "Combate"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:293
 #: components/CardDetailView/TwoSidedCardComponent.tsx:304
 #: components/filter/CardEnemyFilterView.tsx:157
-#: components/filter/CardFilterView/index.tsx:323
+#: components/filter/CardFilterView/index.tsx:315
 msgid "Health"
 msgstr "Salud"
 
@@ -762,50 +762,46 @@ msgstr "Por Investigador"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:295
 #: components/filter/CardEnemyFilterView.tsx:178
-#: components/filter/CardFilterView/index.tsx:336
+#: components/filter/CardFilterView/index.tsx:328
 msgid "Evade"
 msgstr "Evadir"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:297
 #: components/filter/CardEnemyFilterView.tsx:189
-#: components/filter/CardFilterView/index.tsx:327
+#: components/filter/CardFilterView/index.tsx:319
 msgid "Damage"
 msgstr "Daño"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:297
 #: components/filter/CardEnemyFilterView.tsx:200
-#: components/filter/CardFilterView/index.tsx:330
+#: components/filter/CardFilterView/index.tsx:322
 msgid "Horror"
 msgstr "Horror"
 
 #: components/filter/CardEnemyFilterView.tsx:23
+#: components/filter/CardEnemyFilterView.tsx:218
 msgid "Enemy Filters"
 msgstr "Filtros de Enemigos"
 
-#: components/filter/CardFilterView/index.tsx:366
+#: components/filter/CardFilterView/index.tsx:358
 #: components/filter/CardLocationFilterView.tsx:42
 msgid "Shroud"
 msgstr "Velo"
 
-#: components/filter/CardFilterView/index.tsx:362
+#: components/filter/CardFilterView/index.tsx:354
 #: components/filter/CardLocationFilterView.tsx:53
 msgid "Clues"
 msgstr "Pistas"
 
-#: components/filter/CardFilterView/index.tsx:369
+#: components/filter/CardFilterView/index.tsx:361
 #: components/filter/CardLocationFilterView.tsx:76
 msgid "Haunted"
 msgstr "Embrujada"
 
 #: components/filter/CardLocationFilterView.tsx:18
+#: components/filter/CardLocationFilterView.tsx:90
 msgid "Location Filters"
 msgstr "Filtros de Lugar"
-
-#: components/filter/FilterFooterComponent.tsx:61
-msgid "${ count } Card Matched"
-msgid_plural "${ count } Cards Matched"
-msgstr[0] "${count} Carta Igualada"
-msgstr[1] "${count} Cartas Igualadas"
 
 #: components/filter/PackFilterView.tsx:101
 msgid "Core Set"
@@ -819,8 +815,8 @@ msgstr "Seleccione packs"
 #: components/SearchMultiSelectView/index.tsx:65
 #: components/core/ChooserButton.tsx:46
 #: components/core/ChooserButton.tsx:49
-#: components/filter/withFilterFunctions.tsx:96
-#: components/filter/withFilterFunctions.tsx:99
+#: components/filter/withFilterFunctions.tsx:114
+#: components/filter/withFilterFunctions.tsx:117
 msgid "Clear"
 msgstr "Limpiar"
 
@@ -837,105 +833,105 @@ msgstr "Iconos de Habilidad: Todos"
 msgid "Filter"
 msgstr "Filtro"
 
-#: components/filter/CardFilterView/index.tsx:216
+#: components/filter/CardFilterView/index.tsx:208
 msgid "Packs: All"
 msgstr "Packs: Todos"
 
-#: components/filter/CardFilterView/index.tsx:246
+#: components/filter/CardFilterView/index.tsx:238
 msgid "${ cycleNames[cycle_position] } Cycle"
 msgstr "Ciclo ${cycleNames[cycle_position]}"
 
-#: components/filter/CardFilterView/index.tsx:255
+#: components/filter/CardFilterView/index.tsx:247
 msgid "Packs: ${ allPacksString }"
 msgstr "Packs: ${allPacksString}"
 
-#: components/filter/CardFilterView/index.tsx:321
+#: components/filter/CardFilterView/index.tsx:313
 msgid "HPI"
 msgstr "SPI"
 
-#: components/filter/CardFilterView/index.tsx:340
+#: components/filter/CardFilterView/index.tsx:332
 msgid "Enemies: All"
 msgstr "Enemigos: Todos"
 
-#: components/filter/CardFilterView/index.tsx:343
+#: components/filter/CardFilterView/index.tsx:335
 msgid "Enemies: ${ searchParts }"
 msgstr "Enemigos: ${searchParts}"
 
-#: components/filter/CardFilterView/index.tsx:360
+#: components/filter/CardFilterView/index.tsx:352
 msgid "Fixed Clues"
 msgstr "Pistas Fijas"
 
-#: components/filter/CardFilterView/index.tsx:373
+#: components/filter/CardFilterView/index.tsx:365
 msgid "Locations: All"
 msgstr "Lugares: Todos"
 
-#: components/filter/CardFilterView/index.tsx:376
+#: components/filter/CardFilterView/index.tsx:368
 msgid "Locations: ${ searchParts }"
 msgstr "Lugares: ${searchParts}"
 
-#: components/filter/CardFilterView/index.tsx:461
+#: components/filter/CardFilterView/index.tsx:453
 msgid "Level"
 msgstr "Nivel"
 
-#: components/filter/CardFilterView/index.tsx:474
+#: components/filter/CardFilterView/index.tsx:466
 msgid "Exceptional"
 msgstr "Excepcional"
 
-#: components/filter/CardFilterView/index.tsx:480
+#: components/filter/CardFilterView/index.tsx:472
 msgid "Non-Exceptional"
 msgstr "No Excepcional"
 
-#: components/filter/CardFilterView/index.tsx:492
+#: components/filter/CardFilterView/index.tsx:484
 msgid "Types"
 msgstr "Tipos"
 
-#: components/filter/CardFilterView/index.tsx:502
+#: components/filter/CardFilterView/index.tsx:494
 msgid "SubTypes"
 msgstr "Subtipos"
 
 #: components/CardSortDialog/index.tsx:46
-#: components/filter/CardFilterView/index.tsx:512
+#: components/filter/CardFilterView/index.tsx:504
 msgid "Cost"
 msgstr "Costo"
 
 #: components/DeckChartsView/SlotsChart.tsx:89
-#: components/filter/CardFilterView/index.tsx:552
+#: components/filter/CardFilterView/index.tsx:544
 msgid "Slots"
 msgstr "Espacios"
 
-#: components/filter/CardFilterView/index.tsx:562
+#: components/filter/CardFilterView/index.tsx:554
 msgid "Uses"
 msgstr "Usos"
 
-#: components/filter/CardFilterView/index.tsx:573
+#: components/filter/CardFilterView/index.tsx:565
 msgid "Fast"
 msgstr "Rápido"
 
-#: components/filter/CardFilterView/index.tsx:579
+#: components/filter/CardFilterView/index.tsx:571
 msgid "Permanent"
 msgstr "Permanente"
 
-#: components/filter/CardFilterView/index.tsx:585
+#: components/filter/CardFilterView/index.tsx:577
 msgid "Victory"
 msgstr "Victoria"
 
-#: components/filter/CardFilterView/index.tsx:593
+#: components/filter/CardFilterView/index.tsx:585
 msgid "Exile"
 msgstr "Exilio"
 
-#: components/filter/CardFilterView/index.tsx:599
+#: components/filter/CardFilterView/index.tsx:591
 msgid "Unique"
 msgstr "Única"
 
-#: components/filter/CardFilterView/index.tsx:605
+#: components/filter/CardFilterView/index.tsx:597
 msgid "Vengeance"
 msgstr "Venganza"
 
-#: components/filter/CardFilterView/index.tsx:616
+#: components/filter/CardFilterView/index.tsx:608
 msgid "Encounter Sets"
 msgstr "Conjuntos de Encuentros"
 
-#: components/filter/CardFilterView/index.tsx:629
+#: components/filter/CardFilterView/index.tsx:621
 msgid "Illustrators"
 msgstr "Ilustradores"
 
@@ -1857,7 +1853,7 @@ msgstr "XP: ${spentXp} de ${adjustedExperience} (${adjustment})"
 msgid "XP: ${ spentXp } of ${ adjustedExperience }"
 msgstr "XP: ${spentXp} de ${adjustedExperience}"
 
-#: components/DeckNavFooter/index.tsx:157
+#: components/DeckNavFooter/index.tsx:156
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
 msgstr[0] "${normalCardCount} Carta (${totalCardCount} en Total)"
@@ -1943,25 +1939,25 @@ msgstr ""
 "actual."
 
 #: components/DeckDetailView/DeckViewTab.tsx:261
-#: components/DeckDetailView/DeckViewTab.tsx:612
+#: components/DeckDetailView/DeckViewTab.tsx:613
 msgid "Upload to ArkhamDB"
 msgstr "Subir a ArkhamDB"
 
-#: components/DeckDetailView/DeckViewTab.tsx:464
+#: components/DeckDetailView/DeckViewTab.tsx:465
 msgid "Special Cards"
 msgstr "Special Cards"
 
-#: components/DeckDetailView/DeckViewTab.tsx:502
+#: components/DeckDetailView/DeckViewTab.tsx:503
 msgid "${ normalCardCount } card (${ totalCardCount } total)"
 msgid_plural "${ normalCardCount } cards (${ totalCardCount } total)"
 msgstr[0] "${normalCardCount} carta (${totalCardCount} en total)"
 msgstr[1] "${normalCardCount} cartas (${totalCardCount} en total)"
 
-#: components/DeckDetailView/DeckViewTab.tsx:619
+#: components/DeckDetailView/DeckViewTab.tsx:620
 msgid "View on ArkhamDB"
 msgstr "Ver en ArkhamDB"
 
-#: components/DeckDetailView/DeckViewTab.tsx:627
+#: components/DeckDetailView/DeckViewTab.tsx:628
 msgid "Delete Deck"
 msgstr "Borrar Mazo"
 
@@ -2054,28 +2050,28 @@ msgstr "Tratando de entender el FAQ de Time Warp"
 msgid "Taking three damage and three horror"
 msgstr "Tomando tres de Daño y tres de Horror"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:564
+#: components/CardSearchResultsComponent/CardResultList.tsx:565
 msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
 msgstr[0] "Mostrar ${section.nonCollectionCount} Carta fuera de la colección"
 msgstr[1] "Mostrar ${section.nonCollectionCount} Cartas fuera de la colección"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:641
-#: components/CardSearchResultsComponent/CardResultList.tsx:660
+#: components/CardSearchResultsComponent/CardResultList.tsx:642
+#: components/CardSearchResultsComponent/CardResultList.tsx:661
 msgid "Edit Spoiler Settings"
 msgstr "Editar Configuraciones de Spoiler"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:648
+#: components/CardSearchResultsComponent/CardResultList.tsx:649
 msgid "Show ${ spoilerCardsCount } Spoiler"
 msgid_plural "Show ${ spoilerCardsCount } Spoilers"
 msgstr[0] "Mostrar ${spoilerCardsCount} spoiler"
 msgstr[1] "Mostrar ${spoilerCardsCount} spoilers"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:612
+#: components/CardSearchResultsComponent/CardResultList.tsx:613
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "No hay cartas que coincidan con \"${searchTerm}\""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:613
+#: components/CardSearchResultsComponent/CardResultList.tsx:614
 msgid "No matching cards"
 msgstr "No hay cartas que coincidan"
 
@@ -2120,22 +2116,20 @@ msgstr "Buscar Texto de Juego"
 msgid "Search Card Backs"
 msgstr "Buscar Dorsos de Cartas"
 
-#: components/CardSearchComponent/index.tsx:163
+#: components/CardSearchComponent/TuneButton.tsx:52
+#: components/CardSearchComponent/index.tsx:177
 msgid "Apply"
 msgstr "Aplicar"
 
-#: components/CardSearchComponent/index.tsx:76
-#: components/CardSearchComponent/index.tsx:166
-#: components/CardSearchComponent/index.tsx:233
+#: components/CardSearchComponent/TuneButton.tsx:55
+#: components/CardSearchComponent/index.tsx:83
+#: components/CardSearchComponent/index.tsx:96
+#: components/CardSearchComponent/index.tsx:180
+#: components/filter/CardFilterView/index.tsx:641
 msgid "Filters"
 msgstr "Filtros"
 
-#: components/CardSearchComponent/index.tsx:249
-msgid "Encounter Cards"
-msgstr "Cartas de Encuentro"
-
 #: app/App.js:123
-#: components/CardSearchComponent/index.tsx:249
 msgid "Player Cards"
 msgstr "Cartas de Jugador"
 
@@ -2147,17 +2141,17 @@ msgstr "Cartas Requeridas"
 msgid "Alternate Cards"
 msgstr "Alternar Cartas"
 
-#: components/CardDetailSwipeView.tsx:145
+#: components/CardDetailSwipeView.tsx:146
 #: components/CardDetailView/TwoSidedCardComponent.tsx:132
 #: components/CardDetailView/TwoSidedCardComponent.tsx:550
-#: components/CardDetailView/index.tsx:33
-#: components/CardDetailView/index.tsx:137
+#: components/CardDetailView/index.tsx:35
+#: components/CardDetailView/index.tsx:139
 msgid "FAQ"
 msgstr "FAQ"
 
-#: components/CardDetailSwipeView.tsx:168
+#: components/CardDetailSwipeView.tsx:169
 #: components/CardDetailView/TwoSidedCardComponent.tsx:158
-#: components/CardDetailView/index.tsx:162
+#: components/CardDetailView/index.tsx:164
 msgid "Allowed Cards"
 msgstr "Cartas Permitidas"
 
@@ -2174,7 +2168,7 @@ msgid "Sanity"
 msgstr "Cordura"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:482
-#: components/CardDetailView/TwoSidedCardComponent.tsx:683
+#: components/CardDetailView/TwoSidedCardComponent.tsx:685
 msgid "Show back"
 msgstr "Mostrar dorso"
 
@@ -2186,12 +2180,12 @@ msgstr "Victoria: ${card.victory}."
 msgid "Vengeance: ${ card.vengeance }."
 msgstr "Venganza: ${card.vengeance}."
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:683
+#: components/CardDetailView/TwoSidedCardComponent.tsx:685
 msgid "Show front"
 msgstr "Mostrar frente"
 
-#: components/CardDetailView/CardDetailComponent.tsx:76
-#: components/CardDetailView/index.tsx:43
+#: components/CardDetailView/CardDetailComponent.tsx:75
+#: components/CardDetailView/index.tsx:45
 msgid "Deckbuilding Cards"
 msgstr "Cartas de Construcción de mazos"
 
@@ -2300,7 +2294,7 @@ msgstr "LISTA TABÚ"
 msgid "Charts"
 msgstr "Listas"
 
-#: components/DeckDetailView/DeckViewTab.tsx:513
+#: components/DeckDetailView/DeckViewTab.tsx:514
 msgid "Taboo List: ${ tabooSet.date_start }."
 msgstr "Lista tabú: ${ tabooSet.date_start }."
 
@@ -2324,11 +2318,11 @@ msgstr "Costos de cartas"
 msgid "Card Factions"
 msgstr "Facciones de cartas"
 
-#: components/CardDetailView/BondedCardsComponent.tsx:49
+#: components/CardDetailView/BondedCardsComponent.tsx:51
 msgid "Bonded"
 msgstr "Consolidado"
 
-#: components/CardDetailView/BondedCardsComponent.tsx:62
+#: components/CardDetailView/BondedCardsComponent.tsx:66
 msgid "Bound Cards"
 msgstr "Cartas enlazadas"
 
@@ -2528,9 +2522,7 @@ msgstr "Compartir campaña"
 msgid "Edit Campaign"
 msgstr "Editar Campaña"
 
-#: components/CardSearchComponent/index.tsx:85
-#: components/CardSearchComponent/index.tsx:238
-#: components/NewDeckView/index.tsx:46
+#: components/NewDeckView/index.tsx:45
 msgid "Sort"
 msgstr "Ordenar"
 
@@ -2609,12 +2601,7 @@ msgstr ""
 "Dorsos\n"
 "De Cartas"
 
-#: components/CardSearchComponent/index.tsx:246
-msgid "Show Player Cards"
-msgstr "Mostrar cartas de jugador"
-
-#: components/CardSearchComponent/index.tsx:92
-#: components/CardSearchComponent/index.tsx:246
+#: components/CardSearchComponent/index.tsx:108
 msgid "Show Encounter Cards"
 msgstr "Mostrar cartas de encuentro"
 
@@ -2624,7 +2611,7 @@ msgid_plural "${ card.quantity } copies."
 msgstr[0] "${card.quantity} copia."
 msgstr[1] "${ card.quantity } copias."
 
-#: components/CardDetailView/index.tsx:28
+#: components/CardDetailView/index.tsx:30
 msgid "Share"
 msgstr "Compartir"
 
@@ -2657,7 +2644,7 @@ msgid "Earned experience"
 msgstr "Experiencia ganada"
 
 #: components/DeckDetailView/DeckDelta.tsx:82
-#: components/DeckDetailView/DeckViewTab.tsx:488
+#: components/DeckDetailView/DeckViewTab.tsx:489
 msgid ""
 "Available experience: ${ adjustedExperience }\n"
 "Spent experience: ${ spentXp }"
@@ -2673,7 +2660,7 @@ msgstr "Ver Mazo Anterior"
 msgid "View Next Deck"
 msgstr "Ver Siguiente Mazo"
 
-#: components/DeckDetailView/DeckViewTab.tsx:485
+#: components/DeckDetailView/DeckViewTab.tsx:486
 msgid "Experience required: ${ experience }"
 msgstr "Experiencia requerida: ${ experience }"
 
@@ -2741,20 +2728,30 @@ msgstr "Tarjeta de actualización"
 msgid "Too many copies of the card"
 msgstr "Demasiadas copias de la tarjeta"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:678
+#: components/CardSearchResultsComponent/CardResultList.tsx:679
 msgid "In Deck"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:685
+#: components/CardSearchResultsComponent/CardResultList.tsx:686
 msgid "All Eligible Cards"
 msgstr "Todas las tarjetas elegibles"
 
-#: components/CardDetailView/CardDetailComponent.tsx:71
+#: components/CardDetailView/CardDetailComponent.tsx:70
 msgid "Deckbuilding"
 msgstr "Cartas de Construcción de mazos"
 
-#: components/CardDetailView/CardDetailComponent.tsx:107
+#: components/CardDetailView/CardDetailComponent.tsx:106
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
 msgstr ""
 "Advertencia: esta tarjeta contiene posibles spoilers para ‘${ "
 "card.pack_name}'."
+
+#: components/filter/PackFilterView.tsx:119
+msgid "Pack Filters"
+msgstr ""
+
+#: components/filter/withFilterFunctions.tsx:120
+msgid "${ count } Card"
+msgid_plural "${ count } Cards"
+msgstr[0] ""
+msgstr[1] ""
