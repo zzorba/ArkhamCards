@@ -53,6 +53,7 @@ export default class Card extends BaseCard {
     return map(jsonList, json => {
       const deck_option = new DeckOption();
       deck_option.faction = json.faction || [];
+      deck_option.faction_select = json.faction_select || [];
       deck_option.uses = json.uses || [];
       deck_option.text = json.text || [];
       deck_option.trait = json.trait || [];
@@ -60,7 +61,7 @@ export default class Card extends BaseCard {
       deck_option.limit = json.limit;
       deck_option.error = json.error;
       deck_option.not = json.not ? true : undefined;
-
+      deck_option.real_name = json.name || undefined;
       if (json.level) {
         const level = new DeckOptionLevel();
         level.min = json.level.min;

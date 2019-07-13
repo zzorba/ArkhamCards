@@ -1,5 +1,6 @@
 import Realm from 'realm';
 import { map } from 'lodash';
+import { t } from 'ttag';
 
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
@@ -19,6 +20,8 @@ export default class DeckOption {
       limit: 'int?',
       error: 'string?',
       not: 'bool?',
+      real_name: 'string?',
+      faction_select: 'string[]',
     },
   };
 
@@ -32,6 +35,17 @@ export default class DeckOption {
   public limit?: number;
   public error?: string;
   public not?: boolean;
+  public real_name?: string;
+  public faction_select!: string[];
+
+  name() {
+    switch (this.real_name) {
+      case 'Secondary Class':
+        return t`Secondary Class`;
+      default:
+        return this.real_name;
+    }
+  }
 
   toQuery() {
     let query = this.not ? 'NOT (' : '(';
