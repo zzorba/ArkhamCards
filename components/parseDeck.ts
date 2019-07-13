@@ -199,6 +199,12 @@ function incSlot(slots: Slots, card: Card) {
   }
   slots[card.code]++;
 }
+function decSlot(slots: Slots, card: Card) {
+  if (!slots[card.code]) {
+    slots[card.code] = 0;
+  }
+  slots[card.code]--;
+}
 function getDeckChanges(
   cards: CardsMap,
   deck: Deck,
@@ -288,7 +294,7 @@ function getDeckChanges(
           for (let i = 0; i < removedCards.length; i++) {
             const removedCard = removedCards[i];
             if (removedCard.xp !== null && removedCard.xp === 0) {
-              incSlot(removed, removedCards[i]);
+              decSlot(removed, removedCards[i]);
               incSlot(added, addedCard);
 
               pullAt(removedCards, [i]);
@@ -316,6 +322,7 @@ function getDeckChanges(
             addedCard.xp !== null &&
             removedCard.xp !== null &&
             addedCard.xp > removedCard.xp) {
+          decSlot(upgraded, removedCards[i]);
           incSlot(upgraded, addedCard);
           pullAt(removedCards, [i]);
 
@@ -343,7 +350,7 @@ function getDeckChanges(
       return computeXp(addedCard);
     }
   ));
-  forEach(removedCards, removedCard => incSlot(removed, removedCard));
+  forEach(removedCards, removedCard => decSlot(removed, removedCard));
 
   return {
     added,

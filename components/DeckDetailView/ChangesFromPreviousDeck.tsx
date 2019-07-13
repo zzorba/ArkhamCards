@@ -1,5 +1,5 @@
 import React from 'react';
-import { keys, map } from 'lodash';
+import { keys, map, sortBy } from 'lodash';
 
 import { t } from 'ttag';
 import { Slots } from '../../actions/types';
@@ -31,18 +31,24 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
     if (!keys(slots).length) {
       return null;
     }
+    const sortedCards = sortBy(
+      sortBy(
+        map(keys(slots), code => cards[code]),
+        card => card.xp || 0),
+      card => card.name
+    );
     return (
       <React.Fragment>
         <CardSectionHeader
           investigator={investigator}
           section={{ title }}
         />
-        { map(keys(slots), code => (
+        { map(sortedCards, card => (
           <CardSearchResult
-            key={`${id}-${code}`}
+            key={`${id}-${card.code}`}
             onPress={this._showCard}
-            card={cards[code]}
-            count={slots[code]}
+            card={card}
+            count={slots[card.code]}
             deltaCountMode
           />
         )) }
