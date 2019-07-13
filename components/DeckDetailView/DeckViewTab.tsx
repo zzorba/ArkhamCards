@@ -107,7 +107,7 @@ function deckToSections(
     if (cardSplitGroup) {
       const count = sumBy(cardSplitGroup, c => c.quantity);
       result.push({
-        id: localizedName,
+        id: `${localizedName}-${special ? '-special' : ''}`,
         title: `${localizedName} (${count})`,
         data: map(cardSplitGroup, c => {
           return {
@@ -312,7 +312,6 @@ export default class DeckViewTab extends React.Component<Props> {
         cards.push(card);
       });
     });
-
     showCardSwipe(
       componentId,
       cards,
@@ -401,11 +400,12 @@ export default class DeckViewTab extends React.Component<Props> {
     const count = (item.special && ignoreDeckLimitSlots[item.id] > 0) ?
       ignoreDeckLimitSlots[item.id] :
       (item.quantity - (ignoreDeckLimitSlots[item.id] || 0));
+    const id = `${section.id}.${index}`;
     return (
       <CardSearchResult
-        key={item.id}
+        key={id}
         card={card}
-        id={`${section.id}.${index}`}
+        id={id}
         onUpgrade={item.hasUpgrades && SHOW_UPGRADE_BUTTON ? showCardUpgradeDialog : undefined}
         onPressId={this._showSwipeCard}
         count={count}
