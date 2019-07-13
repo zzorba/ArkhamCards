@@ -49,8 +49,8 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
   experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
     const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
     if (xp > 0) {
-      if ((parsedDeck.spentXp || 0) > 0) {
-        return t`${xp} available (${parsedDeck.spentXp} spent)`;
+      if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
+        return t`${xp} available (${parsedDeck.changes.spentXp} spent)`;
       }
       return t`${xp} available`;
     }

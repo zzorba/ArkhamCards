@@ -1,3 +1,4 @@
+import { filter } from 'lodash';
 import { t } from 'ttag';
 
 import { FactionCodeType, TypeCodeType, SkillCodeType } from '../constants';
@@ -239,5 +240,14 @@ export default class BaseCard {
         return 0;
       }
     }
+  }
+
+  investigatorOptions(): DeckOption[] {
+    if (this.type_code === 'investigator' && this.deck_options) {
+      return filter(this.deck_options, option => {
+        return option.faction_select && option.faction_select.length > 0;
+      });
+    }
+    return [];
   }
 }

@@ -74,13 +74,14 @@ export default class DeckDelta extends React.Component<Props> {
         deck: {
           xp,
         },
-        spentXp,
+        changes,
       },
       xpAdjustment,
     } = this.props;
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    return t`Available experience: ${adjustedExperience}\nSpent experience: ${spentXp}`;
+    return t`Available experience: ${adjustedExperience}\nSpent experience: ${changes ? changes.spentXp : 0}`;
   }
+
   render() {
     const {
       parsedDeck: {

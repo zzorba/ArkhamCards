@@ -106,18 +106,17 @@ export default class DeckNavFooter extends React.Component<Props> {
       parsedDeck: {
         deck: {
           xp,
-          previous_deck,
         },
-        spentXp,
+        changes,
         experience,
       },
       xpAdjustment,
     } = this.props;
-    if (!previous_deck) {
+    if (!changes) {
       return t`XP: ${experience}`;
     }
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    return t`XP: ${spentXp} of ${adjustedExperience}`;
+    return t`XP: ${changes.spentXp} of ${adjustedExperience}`;
   }
 
   renderControls() {

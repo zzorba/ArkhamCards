@@ -1,15 +1,11 @@
 import Realm from 'realm';
-import { forEach, filter, keys, map, min } from 'lodash';
+import { forEach, filter, keys, map } from 'lodash';
 import { t } from 'ttag';
 
 import BaseCard from './BaseCard';
-import CardRequirement from './CardRequirement';
 import CardRestrictions from './CardRestrictions';
 import DeckRequirement from './DeckRequirement';
-import RandomRequirement from './RandomRequirement';
 import DeckOption from './DeckOption';
-import DeckOptionLevel from './DeckOptionLevel';
-import DeckAtLeastOption from './DeckAtLeastOption';
 import { BASIC_SKILLS } from '../constants';
 
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
@@ -27,68 +23,9 @@ export default class Card extends BaseCard {
     return `(taboo_set_id == null || taboo_set_id == ${tabooSetId || 0})`;
   }
 
-  static parseDeckRequirements(json: any) {
-    const dr = new DeckRequirement();
-    dr.card = map(keys(json.card), code => {
-      const cr = new CardRequirement();
-      cr.code = code;
-      cr.alternates = filter(
-        keys(json.card[code]),
-        altCode => altCode !== code
-      );
-      return cr;
-    });
-    dr.random = map(json.random, r => {
-      const rr = new RandomRequirement();
-      rr.target = r.target;
-      rr.value = r.value;
-      return rr;
-    });
-    dr.size = json.size;
-
-    return dr;
-  }
-
-  static parseDeckOptions(jsonList: any[]) {
-    return map(jsonList, json => {
-      const deck_option = new DeckOption();
-      deck_option.faction = json.faction || [];
-      deck_option.faction_select = json.faction_select || [];
-      deck_option.uses = json.uses || [];
-      deck_option.text = json.text || [];
-      deck_option.trait = json.trait || [];
-      deck_option.type_code = json.type || [];
-      deck_option.limit = json.limit;
-      deck_option.error = json.error;
-      deck_option.not = json.not ? true : undefined;
-      deck_option.real_name = json.name || undefined;
-      if (json.level) {
-        const level = new DeckOptionLevel();
-        level.min = json.level.min;
-        level.max = json.level.max;
-        deck_option.level = level;
-      }
-
-      if (json.atleast) {
-        const atleast = new DeckAtLeastOption();
-        atleast.factions = json.atleast.factions;
-        atleast.min = json.atleast.min;
-        deck_option.atleast = atleast;
-      }
-
-      return deck_option;
-    });
-  }
-
   static parseRestrictions(json?: { investigator?: { [key: string]: string} }) {
     if (json && json.investigator && keys(json.investigator).length) {
-      const result = new CardRestrictions();
-      result.investigators = keys(json.investigator);
-      const mainInvestigator = min(result.investigators);
-      if (mainInvestigator) {
-        result.investigator = mainInvestigator;
-      }
-      return result;
+      return CardRestrictions.parse(json);
     }
     return null;
   }
@@ -260,10 +197,10 @@ export default class Card extends BaseCard {
       json.subtype_name = null;
     }
     const deck_requirements = json.deck_requirements ?
-      Card.parseDeckRequirements(json.deck_requirements) :
+      DeckRequirement.parse(json.deck_requirements) :
       null;
     const deck_options = json.deck_options ?
-      Card.parseDeckOptions(json.deck_options) :
+      DeckOption.parseList(json.deck_options) :
       [];
 
     const wild = json.skill_wild || 0;

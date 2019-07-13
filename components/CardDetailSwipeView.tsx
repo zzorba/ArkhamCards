@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Animated,
   Linking,
   ScrollView,
   StyleSheet,
@@ -63,7 +62,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
   }
 
   _navEventListener?: EventSubscription;
-  _touchX: Animated.Value;
+
   constructor(props: Props) {
     super(props);
 
@@ -74,7 +73,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       lastIndex: props.initialIndex === 0 ? 0 : props.initialIndex,
     };
 
-    this._touchX = new Animated.Value(props.width / 2);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 

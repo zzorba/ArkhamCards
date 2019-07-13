@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
-import { TypeCodeType } from '../constants';
+import { FactionCodeType, TypeCodeType } from '../constants';
 
 export default class DeckOption {
   public static schema: Realm.ObjectSchema = {
@@ -26,7 +26,7 @@ export default class DeckOption {
   };
 
   public type_code!: TypeCodeType[];
-  public faction!: string[];
+  public faction!: FactionCodeType[];
   public uses!: string[];
   public trait!: string[];
   public text!: string[];
@@ -36,7 +36,7 @@ export default class DeckOption {
   public error?: string;
   public not?: boolean;
   public real_name?: string;
-  public faction_select!: string[];
+  public faction_select!: FactionCodeType[];
 
   name() {
     switch (this.real_name) {
@@ -115,5 +115,36 @@ export default class DeckOption {
     }
     query += ' )';
     return query;
+  }
+
+  static parseList(jsonList: any[]): DeckOption[] {
+    return map(jsonList, json => {
+      const deck_option = new DeckOption();
+      deck_option.faction = json.faction || [];
+      deck_option.faction_select = json.faction_select || [];
+      deck_option.uses = json.uses || [];
+      deck_option.text = json.text || [];
+      deck_option.trait = json.trait || [];
+      deck_option.type_code = json.type || [];
+      deck_option.limit = json.limit;
+      deck_option.error = json.error;
+      deck_option.not = json.not ? true : undefined;
+      deck_option.real_name = json.name || undefined;
+      if (json.level) {
+        const level = new DeckOptionLevel();
+        level.min = json.level.min;
+        level.max = json.level.max;
+        deck_option.level = level;
+      }
+
+      if (json.atleast) {
+        const atleast = new DeckAtLeastOption();
+        atleast.factions = json.atleast.factions;
+        atleast.min = json.atleast.min;
+        deck_option.atleast = atleast;
+      }
+
+      return deck_option;
+    });
   }
 }

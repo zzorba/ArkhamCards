@@ -234,7 +234,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       saveDeckChanges(deck, {
         slots: newSlots,
         problem,
-        spentXp: parsedDeck.spentXp,
+        spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
       }).then(() => {
         const newWeaknessSet = {
           ...weaknessSet,

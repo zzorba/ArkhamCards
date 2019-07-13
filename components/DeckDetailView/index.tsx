@@ -664,7 +664,7 @@ class DeckDetailView extends React.Component<Props, State> {
           slots,
           ignoreDeckLimitSlots,
           problem,
-          spentXp: parsedDeck.spentXp,
+          spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
           xpAdjustment,
           tabooSetId,
         }
@@ -964,7 +964,7 @@ class DeckDetailView extends React.Component<Props, State> {
       xpAdjustment,
     } = this.state;
     const {
-      spentXp,
+      changes,
     } = parsedDeck;
     return (
       <EditDeckDetailsDialog
@@ -972,7 +972,7 @@ class DeckDetailView extends React.Component<Props, State> {
         viewRef={viewRef}
         visible={editDetailsVisible}
         xp={deck.xp || 0}
-        spentXp={spentXp}
+        spentXp={changes ? changes.spentXp : 0}
         xpAdjustment={xpAdjustment}
         xpAdjustmentEnabled={!!deck.previous_deck && !deck.next_deck}
         toggleVisible={this._toggleEditDetailsVisible}

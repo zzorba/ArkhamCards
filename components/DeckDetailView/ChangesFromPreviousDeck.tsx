@@ -1,18 +1,13 @@
 import React from 'react';
 import { keys, map } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
 
 import { t } from 'ttag';
+import { Slots } from '../../actions/types';
 import { showCard } from '../navHelper';
 import { ParsedDeck } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
+import CardSectionHeader from './CardSectionHeader';
 import Card, { CardsMap } from '../../data/Card';
-import typography from '../../styles/typography';
-import { m, s } from '../../styles/space';
 
 interface Props {
   componentId: string;
@@ -26,76 +21,57 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
     showCard(this.props.componentId, card.code, card, true);
   };
 
-  render() {
+  renderSection(slots: Slots, id: string, title: string) {
     const {
       cards,
       parsedDeck: {
-        changedCards,
-        exiledCards,
-        deck,
+        investigator,
       },
     } = this.props;
-    if (!deck.previous_deck) {
+    if (!keys(slots).length) {
       return null;
-    }
-    if (keys(changedCards).length === 0 && keys(exiledCards).length === 0) {
-      return (
-        <View style={styles.title}>
-          <Text style={typography.smallLabel}>
-            { t`CHANGES FROM PREVIOUS DECK` }
-          </Text>
-        </View>
-      );
     }
     return (
       <React.Fragment>
-        { !!keys(changedCards.length) && (
-          <View>
-            <View style={styles.title}>
-              <Text style={typography.smallLabel}>
-                { t`CHANGES FROM PREVIOUS DECK` }
-              </Text>
-            </View>
-            { map(keys(changedCards), code => (
-              <CardSearchResult
-                key={code}
-                onPress={this._showCard}
-                card={cards[code]}
-                count={changedCards[code]}
-                deltaCountMode
-              />
-            )) }
-          </View>
-        ) }
-        { !!keys(exiledCards).length && (
-          <View>
-            <View style={styles.title}>
-              <Text style={typography.smallLabel}>
-                { t`EXILED CARDS` }
-              </Text>
-            </View>
-            { map(keys(exiledCards), code => (
-              <CardSearchResult
-                key={code}
-                onPress={this._showCard}
-                card={cards[code]}
-                count={-exiledCards[code]}
-                deltaCountMode
-              />
-            )) }
-          </View>
-        ) }
+        <CardSectionHeader
+          investigator={investigator}
+          section={{ title }}
+        />
+        { map(keys(slots), code => (
+          <CardSearchResult
+            key={`${id}-${code}`}
+            onPress={this._showCard}
+            card={cards[code]}
+            count={slots[code]}
+            deltaCountMode
+          />
+        )) }
+      </React.Fragment>
+    );
+  }
+
+  render() {
+    const {
+      parsedDeck: {
+        investigator,
+        changes,
+      },
+    } = this.props;
+    if (!changes) {
+      return null;
+    }
+
+    return (
+      <React.Fragment>
+        <CardSectionHeader
+          investigator={investigator}
+          section={{ superTitle: t`Changes from previous deck` }}
+        />
+        { this.renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
+        { this.renderSection(changes.added, 'added', t`Added cards`) }
+        { this.renderSection(changes.removed, 'removed', t`Removed cards`) }
+        { this.renderSection(changes.exiled, 'exiled', t`Exiled cards`) }
       </React.Fragment>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  title: {
-    marginTop: m,
-    paddingLeft: s,
-    paddingRight: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
-  },
-});

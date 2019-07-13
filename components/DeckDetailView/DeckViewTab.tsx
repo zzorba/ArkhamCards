@@ -24,30 +24,27 @@ import { CardId, ParsedDeck, SplitCards } from '../parseDeck';
 import { showCard, showCardSwipe } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
+import InvestigatorOptionsModule from './InvestigatorOptionsModule';
+import CardSectionHeader, { CardSectionHeaderData } from './CardSectionHeader';
 import CardSearchResult from '../CardSearchResult';
 import DeckValidation from '../../lib/DeckValidation';
 import Card, { CardsMap } from '../../data/Card';
 import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
-import { l, s, xs } from '../../styles/space';
-import { FACTION_DARK_GRADIENTS } from '../../constants';
+import { s } from '../../styles/space';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
-const SHOW_UPGRADE_BUTTON = true;
+const DISABLE_INVESTIGATOR_OPTIONS = true;
 
 interface SectionCardId extends CardId {
   special: boolean;
   hasUpgrades: boolean;
 }
 
-interface CardSection {
+interface CardSection extends CardSectionHeaderData {
   id: string;
-  superTitle?: string;
-  title?: string;
-  subTitle?: string;
   data: SectionCardId[];
-  onPress?: () => void;
 }
 
 function hasUpgrades(
@@ -63,7 +60,7 @@ function hasUpgrades(
     find(cardsByName[card.real_name] || [], upgradeCard => (
       upgradeCard.code !== code &&
       validation.canIncludeCard(upgradeCard, false) &&
-      (card.xp || 0) <= (upgradeCard.xp || 0)
+      (card.xp || 0) < (upgradeCard.xp || 0)
     )));
 
 }
@@ -333,53 +330,13 @@ export default class DeckViewTab extends React.Component<Props> {
         investigator,
       },
     } = this.props;
-    if (section.superTitle) {
-      if (section.onPress) {
-        return (
-          <TouchableOpacity onPress={section.onPress} style={[
-            styles.superHeaderRow,
-            { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
-          ]}>
-            <Text style={[typography.text, styles.superHeaderText]}>
-              { section.superTitle }
-            </Text>
-            <View style={styles.editIcon}>
-              <MaterialIcons name="edit" color="#FFF" size={SMALL_EDIT_ICON_SIZE} />
-            </View>
-          </TouchableOpacity>
-        );
-      }
-      return (
-        <View style={[
-          styles.superHeaderRow,
-          { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
-        ]}>
-          <Text style={[typography.label, styles.superHeaderText]}>
-            { section.superTitle }
-          </Text>
-        </View>
-      );
-    }
-    if (section.subTitle) {
-      return (
-        <View style={styles.subHeaderRow}>
-          <Text style={typography.text}>
-            { section.subTitle }
-          </Text>
-        </View>
-      );
-    }
-
-    if (section.title) {
-      return (
-        <View style={styles.headerRow}>
-          <Text style={typography.text}>
-            { section.title }
-          </Text>
-        </View>
-      );
-    }
-    return null;
+    return (
+      <CardSectionHeader
+        key={section.id}
+        section={section as CardSectionHeaderData}
+        investigator={investigator}
+      />
+    );
   }
 
   _renderCard = ({ item, index, section }: {
@@ -390,6 +347,10 @@ export default class DeckViewTab extends React.Component<Props> {
     const {
       parsedDeck: {
         ignoreDeckLimitSlots,
+        deck: {
+          previous_deck,
+          next_deck,
+        },
       },
       showCardUpgradeDialog,
     } = this.props;
@@ -401,12 +362,13 @@ export default class DeckViewTab extends React.Component<Props> {
       ignoreDeckLimitSlots[item.id] :
       (item.quantity - (ignoreDeckLimitSlots[item.id] || 0));
     const id = `${section.id}.${index}`;
+    const upgradeEnabled = previous_deck && !next_deck && item.hasUpgrades;
     return (
       <CardSearchResult
         key={id}
         card={card}
         id={id}
-        onUpgrade={item.hasUpgrades && SHOW_UPGRADE_BUTTON ? showCardUpgradeDialog : undefined}
+        onUpgrade={upgradeEnabled ? showCardUpgradeDialog : undefined}
         onPressId={this._showSwipeCard}
         count={count}
       />
@@ -475,18 +437,17 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         deck: {
           xp,
-          previous_deck,
         },
-        spentXp,
+        changes,
         experience,
       },
       xpAdjustment,
     } = this.props;
-    if (!previous_deck) {
+    if (!changes) {
       return t`Experience required: ${experience}`;
     }
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    return t`Available experience: ${adjustedExperience}\nSpent experience: ${spentXp}`;
+    return t`Available experience: ${adjustedExperience}\nSpent experience: ${changes.spentXp}`;
   }
 
   renderMetadata() {
@@ -515,6 +476,24 @@ export default class DeckViewTab extends React.Component<Props> {
           </Text>
         ) }
       </View>
+    );
+  }
+
+  renderInvestigatorOptions() {
+    const {
+      parsedDeck: {
+        investigator,
+        deck,
+      },
+    } = this.props;
+    if (DISABLE_INVESTIGATOR_OPTIONS) {
+      return null;
+    }
+    return (
+      <InvestigatorOptionsModule
+        investigator={investigator}
+        deck={deck}
+      />
     );
   }
 
@@ -582,6 +561,7 @@ export default class DeckViewTab extends React.Component<Props> {
               </View>
             </View>
           </View>
+          { this.renderInvestigatorOptions() }
           <View style={styles.container}>
             { buttons }
           </View>
@@ -679,33 +659,6 @@ const styles = StyleSheet.create({
   },
   warningIcon: {
     marginRight: 4,
-  },
-  superHeaderText: {
-    color: '#FFF',
-  },
-  superHeaderRow: {
-    marginTop: l,
-    padding: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  subHeaderRow: {
-    backgroundColor: '#eee',
-    paddingLeft: s,
-    paddingRight: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
-  },
-  headerRow: {
-    backgroundColor: '#ccc',
-    paddingLeft: s,
-    paddingRight: s,
-    paddingTop: xs,
-    paddingBottom: xs,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
   },
   cards: {
     marginTop: s,

@@ -45,8 +45,8 @@ export default class DeckListRow extends React.Component<Props> {
   static xpString(parsedDeck: ParsedDeck) {
     const xp = (parsedDeck.deck.xp || 0) + (parsedDeck.deck.xp_adjustment || 0);
     if (xp > 0) {
-      if ((parsedDeck.spentXp || 0) > 0) {
-        return t`${xp} available experience, ${parsedDeck.spentXp} spent`;
+      if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
+        return t`${xp} available experience, ${parsedDeck.changes.spentXp} spent`;
       }
       return t`${xp} available experience`;
     }

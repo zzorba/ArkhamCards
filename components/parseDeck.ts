@@ -189,15 +189,28 @@ function sumSkillIcons(cardIds: CardId[], cards: CardsMap, skill: SkillCodeType)
     (cards[c.id] ? cards[c.id].skillCount(skill) : 0) * c.quantity));
 }
 
-function getChangedCards(
+
+const ARCANE_RESEARCH_CODE = '04109';
+const ADAPTABLE_CODE = '02110';
+
+function incSlot(slots: Slots, card: Card) {
+  if (!slots[card.code]) {
+    slots[card.code] = 0;
+  }
+  slots[card.code]++;
+}
+function getDeckChanges(
+  cards: CardsMap,
   deck: Deck,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
-  exiledCards: Slots,
   previousDeck?: Deck
-) {
+): DeckChanges | undefined {
+  const exiledCards = deck.exile_string ? mapValues(
+    groupBy(deck.exile_string.split(',')),
+    items => items.length) : {};
   if (!deck.previous_deck || !previousDeck) {
-    return {};
+    return undefined;
   }
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
@@ -213,30 +226,6 @@ function getChangedCards(
         changedCards[code] = delta;
       }
     });
-  return changedCards;
-}
-
-function calculateTotalXp(
-  cards: CardsMap,
-  slots: Slots,
-  ignoreDeckLimitSlots: Slots
-): number {
-  return sum(map(keys(slots), code => {
-    const card = cards[code];
-    const xp = computeXp(card);
-    const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
-    return xp * count;
-  }));
-}
-
-const ARCANE_RESEARCH_CODE = '04109';
-const ADAPTABLE_CODE = '02110';
-function calculateSpentXp(
-  cards: CardsMap,
-  slots: Slots,
-  changedCards: Slots,
-  exiledCards: Slots
-) {
   const exiledSlots: Card[] = [];
   forEach(exiledCards, (exileCount, code) => {
     if (exileCount > 0) {
@@ -270,8 +259,10 @@ function calculateSpentXp(
       }
     }
   });
-
-  return sum(map(
+  const added: Slots = {};
+  const removed: Slots = {};
+  const upgraded: Slots = {};
+  const spentXp = sum(map(
     sortBy(
       // null cards are story assets, so putting them in is free.
       filter(addedCards, card => card.xp !== null),
@@ -285,6 +276,9 @@ function calculateSpentXp(
         if (exiledSlots.length > 0) {
           // Every exiled card gives you one free '0' cost insert.
           pullAt(exiledSlots, [0]);
+
+          incSlot(added, addedCard);
+
           // But you still have to pay the TABOO xp.
           return (addedCard.extra_xp || 0);
         }
@@ -294,30 +288,35 @@ function calculateSpentXp(
           for (let i = 0; i < removedCards.length; i++) {
             const removedCard = removedCards[i];
             if (removedCard.xp !== null && removedCard.xp === 0) {
+              incSlot(removed, removedCards[i]);
+              incSlot(added, addedCard);
+
               pullAt(removedCards, [i]);
+
               adaptableUses--;
               return 0;
             }
           }
           // Couldn't find a 0 cost card to remove, it's weird that you
           // chose to take away an XP card?
+          incSlot(added, addedCard);
           return 1 + (addedCard.extra_xp || 0);
         }
         // But if there's no slots it costs you a minimum of 1 xp to swap
         // 0 for 0.
+        incSlot(added, addedCard);
         return 1 + (addedCard.extra_xp || 0);
       }
 
       // XP higher than 0.
       // See if there's a lower version card that counts as an upgrade.
-      // TODO(daniel): handle card 04106 (Shrewd Analysis)
       for (let i = 0; i < removedCards.length; i++) {
         const removedCard = removedCards[i];
         if (addedCard.name === removedCard.name &&
             addedCard.xp !== null &&
             removedCard.xp !== null &&
             addedCard.xp > removedCard.xp) {
-
+          incSlot(upgraded, addedCard);
           pullAt(removedCards, [i]);
 
           // If you have unspent uses of arcaneResearchUses,
@@ -339,9 +338,33 @@ function calculateSpentXp(
           return (computeXp(addedCard) - computeXp(removedCard));
         }
       }
+
+      incSlot(added, addedCard);
       return computeXp(addedCard);
     }
   ));
+  forEach(removedCards, removedCard => incSlot(removed, removedCard));
+
+  return {
+    added,
+    removed,
+    upgraded,
+    exiled: exiledCards,
+    spentXp: spentXp || 0,
+  };
+}
+
+function calculateTotalXp(
+  cards: CardsMap,
+  slots: Slots,
+  ignoreDeckLimitSlots: Slots
+): number {
+  return sum(map(keys(slots), code => {
+    const card = cards[code];
+    const xp = computeXp(card);
+    const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
+    return xp * count;
+  }));
 }
 
 type FactionCounts = {
@@ -354,6 +377,14 @@ type SkillCounts = {
 
 type SlotCounts = {
   [slot in SlotCodeType]?: number;
+}
+
+interface DeckChanges {
+  added: Slots;
+  removed: Slots;
+  upgraded: Slots;
+  exiled: Slots;
+  spentXp: number;
 }
 
 export interface ParsedDeck {
@@ -371,9 +402,7 @@ export interface ParsedDeck {
   normalCards: SplitCards;
   specialCards: SplitCards;
   ignoreDeckLimitSlots: Slots;
-  exiledCards: Slots;
-  changedCards: Slots;
-  spentXp: number;
+  changes?: DeckChanges;
 }
 
 export function parseDeck(
@@ -405,11 +434,12 @@ export function parseDeck(
     (isSpecialCard(cards[c.id]) && slots[c.id] > 0) || ignoreDeckLimitSlots[c.id] > 0);
   const normalCards = cardIds.filter(c =>
     !isSpecialCard(cards[c.id]) && slots[c.id] > (ignoreDeckLimitSlots[c.id] || 0));
-  const exiledCards = deck.exile_string ? mapValues(
-    groupBy(deck.exile_string.split(',')),
-    items => items.length) : {};
-  const changedCards = getChangedCards(deck, slots, ignoreDeckLimitSlots, exiledCards, previousDeck);
-  const spentXp = calculateSpentXp(cards, slots, changedCards, exiledCards);
+  const changes = getDeckChanges(
+    cards,
+    deck,
+    slots,
+    ignoreDeckLimitSlots,
+    previousDeck);
   const totalXp = calculateTotalXp(cards, slots, ignoreDeckLimitSlots);
 
   const factionCounts: FactionCounts = {};
@@ -440,8 +470,6 @@ export function parseDeck(
     normalCards: splitCards(normalCards, cards),
     specialCards: splitCards(specialCards, cards),
     ignoreDeckLimitSlots,
-    exiledCards,
-    changedCards,
-    spentXp: spentXp || 0,
+    changes,
   };
 }
