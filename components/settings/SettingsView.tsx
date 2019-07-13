@@ -14,13 +14,14 @@ import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { ImageCacheManager } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
-import { SettingsCategoryHeader } from 'react-native-settings-components';
+import { SettingsCategoryHeader, SettingsSwitch } from 'react-native-settings-components';
 import { t } from 'ttag';
 
 import LanguagePicker from './LanguagePicker';
 import TabooPicker from './TabooPicker';
 import { clearDecks } from '../../actions';
 import { fetchCards } from '../cards/actions';
+import { setSingleCardView } from './actions';
 import Card from '../../data/Card';
 import { getAllDecks, AppState } from '../../reducers';
 import SettingsItem from './SettingsItem';
@@ -34,6 +35,7 @@ interface OwnProps {
 }
 
 interface ReduxProps {
+  showCardsingleCardView: boolean;
   lang: string;
   cardsLoading?: boolean;
   cardsError?: string;
@@ -43,6 +45,7 @@ interface ReduxProps {
 interface ReduxActionProps {
   fetchCards: (realm: Realm, lang: string) => void;
   clearDecks: () => void;
+  setSingleCardView: (value: boolean) => void;
 }
 
 interface RealmProps {
@@ -126,8 +129,12 @@ class SettingsView extends React.Component<Props> {
       t`Check for New Cards on ArkhamDB`;
   }
 
+  _swipeBetweenCardsChanged = (value: boolean) => {
+    this.props.setSingleCardView(!value);
+  };
+
   render() {
-    const { cardsLoading } = this.props;
+    const { cardsLoading, showCardsingleCardView } = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
@@ -153,8 +160,13 @@ class SettingsView extends React.Component<Props> {
           />
           <LanguagePicker />
           <SettingsCategoryHeader
-            title={t`Debug`}
+            title={t`Preferences`}
             titleStyle={Platform.OS === 'android' ? styles.androidCategory : undefined}
+          />
+          <SettingsSwitch
+            title={t`Swipe between card results`}
+            value={!showCardsingleCardView}
+            onValueChange={this._swipeBetweenCardsChanged}
           />
           <SettingsItem navigation onPress={this._diagnosticsPressed} text={t`Diagnostics`} />
           <SettingsCategoryHeader
@@ -170,6 +182,7 @@ class SettingsView extends React.Component<Props> {
 
 function mapStateToProps(state: AppState): ReduxProps {
   return {
+    showCardsingleCardView: state.settings.singleCardView || false,
     cardsLoading: state.cards.loading,
     cardsError: state.cards.error || undefined,
     deckCount: keys(getAllDecks(state)).length,
@@ -181,6 +194,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     clearDecks,
     fetchCards,
+    setSingleCardView,
   }, dispatch);
 }
 

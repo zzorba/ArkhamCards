@@ -1,6 +1,6 @@
 declare module 'react-native-settings-components' {
   import React, { ReactNode } from 'react';
-  import { TextProps, TextStyle, ViewProps, ViewStyle } from 'react-native';
+  import { TextProps, TextStyle, SwitchProps, ViewProps, ViewStyle } from 'react-native';
   interface SettingsCategoryHeaderProps {
     container?: React.ReactNode;
     containerStyle?: ViewStyle;
@@ -74,5 +74,31 @@ declare module 'react-native-settings-components' {
     closeModal: () => void;
   }
 
-  export { SettingsButton, SettingsCategoryHeader, SettingsPicker };
+  interface SettingsSwitchProps<T> {
+    containerProps?: ViewProps;
+    containerStyle?: ViewStyle;
+    disabledOverlayStyle?: ViewStyle;
+    titleProps?: TextProps;
+    titleStyle?: TextStyle;
+    title: string;
+    descriptionProps?: TextProps;
+    descriptionStyle?: TextStyle;
+    description?: string;
+    switchWrapperProps?: ViewProps;
+    switchWrapperStyle?: ViewStyle;
+    value: boolean;
+    disabled?: boolean;
+    onValueChange: (value: boolean) => void;
+    trackColor?: {
+      true?: string;
+      false?: string;
+    };
+    switchProps?: SwitchProps;
+  }
+
+  class SettingsSwitch<T> extends React.Component<SettingsSwitchProps<T>> {
+
+  }
+
+  export { SettingsButton, SettingsSwitch, SettingsCategoryHeader, SettingsPicker };
 }

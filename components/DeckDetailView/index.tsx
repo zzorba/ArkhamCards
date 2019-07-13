@@ -80,6 +80,7 @@ export interface DeckDetailProps {
 }
 
 interface ReduxProps {
+  singleCardView: boolean;
   deck?: Deck;
   previousDeck?: Deck;
   campaign?: Campaign;
@@ -1188,6 +1189,7 @@ class DeckDetailView extends React.Component<Props, State> {
       investigatorDataUpdates,
       tabooSets,
       cardsByName,
+      singleCardView,
     } = this.props;
     const {
       loaded,
@@ -1223,6 +1225,7 @@ class DeckDetailView extends React.Component<Props, State> {
             deckName={nameChange || deck.name}
             tabooSet={tabooSet}
             tabooSetId={selectedTabooSetId}
+            singleCardView={singleCardView}
             xpAdjustment={xpAdjustment}
             parsedDeck={parsedDeck}
             problem={this.getProblem() || undefined}
@@ -1268,6 +1271,7 @@ function mapStateToProps(
     props.tabooSetOverride :
     ((deck && deck.taboo_id) || 0);
   return {
+    singleCardView: state.settings.singleCardView || false,
     deck,
     previousDeck,
     tabooSetOverride,

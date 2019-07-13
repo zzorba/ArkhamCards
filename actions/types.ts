@@ -217,6 +217,12 @@ export interface SetTabooSetAction {
   tabooId?: number;
 }
 
+export const SET_SINGLE_CARD_VIEW = 'SET_SINGLE_CARD_VIEW';
+export interface SetSingleCardViewAction {
+  type: typeof SET_SINGLE_CARD_VIEW;
+  singleCardView: boolean;
+}
+
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
 export interface PacksFetchStartAction {
   type: typeof PACKS_FETCH_START;

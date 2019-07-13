@@ -147,6 +147,7 @@ interface Props {
   investigatorDataUpdates?: InvestigatorData;
   deckName: string;
   tabooSet?: TabooSet;
+  singleCardView: boolean;
   tabooSetId?: number;
   xpAdjustment: number;
   signedIn: boolean;
@@ -286,7 +287,7 @@ export default class DeckViewTab extends React.Component<Props> {
     );
   };
 
-  _showSwipeCard = (id: string) => {
+  _showSwipeCard = (id: string, card: Card) => {
     const {
       componentId,
       tabooSetId,
@@ -296,7 +297,18 @@ export default class DeckViewTab extends React.Component<Props> {
       },
       renderFooter,
       onDeckCountChange,
+      singleCardView,
     } = this.props;
+    if (singleCardView) {
+      showCard(
+        componentId,
+        card.code,
+        card,
+        true,
+        tabooSetId
+      );
+      return;
+    }
     const [sectionId, cardIndex] = id.split('.');
     let index = 0;
     const cards: Card[] = [];

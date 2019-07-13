@@ -33,7 +33,7 @@ import {
 } from '../../actions/types';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '../../reducers';
 import Card from '../../data/Card';
-import { showCardSwipe } from '../navHelper';
+import { showCard, showCardSwipe } from '../navHelper';
 import { isSpecialCard } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import { ROW_HEIGHT } from '../CardSearchResult/constants';
@@ -78,6 +78,7 @@ interface OwnProps {
 }
 
 interface ReduxProps {
+  singleCardView: boolean;
   show_spoilers: {
     [code: string]: boolean;
   };
@@ -502,7 +503,18 @@ class CardResultList extends React.Component<Props, State> {
       onDeckCountChange,
       investigator,
       renderFooter,
+      singleCardView,
     } = this.props;
+    if (singleCardView) {
+      showCard(
+        componentId,
+        card.code,
+        card,
+        true,
+        tabooSetOverride
+      );
+      return;
+    }
     const {
       deckCardCounts,
       showSpoilerCards,
@@ -782,6 +794,7 @@ class CardResultList extends React.Component<Props, State> {
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const in_collection = getPacksInCollection(state);
   return {
+    singleCardView: state.settings.singleCardView || false,
     in_collection,
     show_spoilers: getPackSpoilers(state),
     hasSecondCore: in_collection.core || false,
