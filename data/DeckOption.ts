@@ -1,7 +1,8 @@
 import Realm from 'realm';
-import { map } from 'lodash';
+import { indexOf, map } from 'lodash';
 import { t } from 'ttag';
 
+import { Deck } from '../actions/types';
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import { FactionCodeType, TypeCodeType } from '../constants';
@@ -47,7 +48,7 @@ export default class DeckOption {
     }
   }
 
-  toQuery() {
+  toQuery(deck?: Deck) {
     let query = this.not ? 'NOT (' : '(';
     let dirty = false;
     if (this.faction && this.faction.length) {
@@ -57,6 +58,29 @@ export default class DeckOption {
       query += ' (';
       query +=
         map(this.faction, faction =>
+          ` faction_code == '${faction}' OR faction2_code == '${faction}'`)
+          .join(' OR');
+      query += ' )';
+
+      dirty = true;
+    }
+    if (this.faction_select && this.faction_select.length) {
+      if (dirty) {
+        query += ' AND';
+      }
+      let factions = this.faction_select;
+      if (deck &&
+        deck.meta &&
+        deck.meta.faction_selected &&
+        indexOf(this.faction_select, deck.meta.faction_selected) !== -1
+      ) {
+        // If we have a deck select ONLY the ones they specified.
+        // If not select them all.
+        factions = [deck.meta.faction_selected];
+      }
+      query += ' (';
+      query +=
+        map(factions, faction =>
           ` faction_code == '${faction}' OR faction2_code == '${faction}'`)
           .join(' OR');
       query += ' )';

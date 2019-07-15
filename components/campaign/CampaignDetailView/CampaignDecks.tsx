@@ -67,7 +67,7 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
       ignoreDeckLimitSlots,
     } = parsedDeck;
 
-    const problemObj = new DeckValidation(investigator).getProblem(flatMap(keys(slots), code => {
+    const problemObj = new DeckValidation(investigator, deck).getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       if (!card) {
         return [];

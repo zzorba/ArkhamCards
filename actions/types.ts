@@ -1,4 +1,4 @@
-import { ChaosBag } from '../constants';
+import { ChaosBag, FactionCodeType } from '../constants';
 import { FilterState } from '../lib/filters';
 
 export const SORT_BY_TYPE = 'Type';
@@ -39,6 +39,9 @@ export interface DeckProblem {
   problems?: string[];
 }
 
+export interface DeckMeta {
+  faction_selected?: FactionCodeType;
+}
 export interface Deck {
   id: number;
   name: string;
@@ -47,6 +50,7 @@ export interface Deck {
   next_deck?: number;
   previous_deck?: number;
   local?: boolean;
+  meta?: DeckMeta;
   date_update: string;
   date_creation: string;
   scenarioCount?: number;

@@ -2,7 +2,7 @@ import Config from 'react-native-config';
 import { keys, map } from 'lodash';
 
 import { getAccessToken } from './auth';
-import { Deck } from '../actions/types';
+import { Deck, DeckMeta } from '../actions/types';
 
 interface Params {
   [key: string]: string | number;
@@ -98,9 +98,20 @@ export function newCustomDeck(
   ignoreDeckLimitSlots: { [code: string]: number },
   problem: string,
   tabooSetId?: number,
+  meta?: DeckMeta
 ) {
   return newDeck(investigator, name, tabooSetId)
-    .then(deck => saveDeck(deck.id, deck.name, slots, ignoreDeckLimitSlots, problem, 0, 0, tabooSetId));
+    .then(deck => saveDeck(
+      deck.id,
+      deck.name,
+      slots,
+      ignoreDeckLimitSlots,
+      problem,
+      0,
+      0,
+      tabooSetId,
+      meta)
+    );
 }
 
 export function newDeck(investigator: string, name: string, tabooSetId?: number) {
@@ -141,7 +152,8 @@ export function saveDeck(
   problem: string,
   spentXp: number,
   xpAdjustment?: number,
-  tabooSetId?: number
+  tabooSetId?: number,
+  meta?: DeckMeta
 ): Promise<Deck> {
   return getAccessToken().then(accessToken => {
     if (!accessToken) {
@@ -155,6 +167,9 @@ export function saveDeck(
       xp_spent: spentXp,
       xp_adjustment: xpAdjustment || 0,
     };
+    if (meta) {
+      bodyParams.meta = JSON.stringify(meta);
+    }
     if (tabooSetId) {
       bodyParams.taboo = tabooSetId;
     }

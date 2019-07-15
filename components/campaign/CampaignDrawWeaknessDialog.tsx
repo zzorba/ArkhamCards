@@ -218,7 +218,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
         replaceRandomBasicWeakness
       );
       const parsedDeck = parseDeck(deck, newSlots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
-      const validator = new DeckValidation(investigator);
+      const validator = new DeckValidation(investigator, deck);
       const problemObj = validator.getProblem(flatMap(keys(newSlots), code => {
         const card = cards[code];
         return map(

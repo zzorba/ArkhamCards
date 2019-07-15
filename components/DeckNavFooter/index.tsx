@@ -74,13 +74,14 @@ export default class DeckNavFooter extends React.Component<Props> {
     const {
       cards,
       parsedDeck: {
+        deck,
         slots,
         ignoreDeckLimitSlots,
         investigator,
       },
     } = this.props;
 
-    const validator = new DeckValidation(investigator);
+    const validator = new DeckValidation(investigator, deck);
     const problem = validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       if (!card) {

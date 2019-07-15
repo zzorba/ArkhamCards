@@ -8,13 +8,14 @@ import { t } from 'ttag';
 import DialogComponent from 'react-native-dialog';
 
 import CardUpgradeOption from './CardUpgradeOption';
-import { Slots } from '../../../actions/types';
+import { Deck, Slots } from '../../../actions/types';
 import Dialog from '../../core/Dialog';
 import DeckValidation from '../../../lib/DeckValidation';
 import Card, { CardsMap } from '../../../data/Card';
 import { COLORS } from '../../../styles/colors';
 
 interface Props {
+  deck: Deck;
   card?: Card;
   cards: CardsMap;
   cardsByName: {
@@ -56,8 +57,9 @@ export default class CardUpgradeDialog extends React.Component<Props, State> {
       card,
       cardsByName,
       investigator,
+      deck,
     } = this.props;
-    const validation = new DeckValidation(investigator);
+    const validation = new DeckValidation(investigator, deck);
     return sortBy(
       filter((card && cardsByName[card.real_name]) || [],
         card => validation.canIncludeCard(card, false)),

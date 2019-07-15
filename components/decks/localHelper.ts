@@ -1,14 +1,15 @@
 import { forEach } from 'lodash';
 
 import { UpgradeDeckResult } from '../../lib/authApi';
-import { Deck, Slots } from '../../actions/types';
+import { Deck, DeckMeta, Slots } from '../../actions/types';
 
 export function newLocalDeck(
   id: number,
   name: string,
   investigator_code: string,
   slots: Slots,
-  tabooSetId?: number
+  tabooSetId?: number,
+  meta?: DeckMeta
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
@@ -18,6 +19,7 @@ export function newLocalDeck(
     name,
     investigator_code,
     slots,
+    meta,
     taboo_id: tabooSetId,
     ignoreDeckLimitSlots: {},
     local: true,
@@ -34,7 +36,8 @@ export function updateLocalDeck(
   problem: string,
   spentXp?: number,
   xp_adjustment?: number,
-  tabooSetId?: number
+  tabooSetId?: number,
+  meta?: DeckMeta,
 ) {
   const versionParts = (deck.version || '0.1').split('.');
   // @ts-ignore
@@ -53,6 +56,7 @@ export function updateLocalDeck(
       xp_adjustment: xp_adjustment || 0,
       version: versionParts.join('.'),
       taboo_id: tabooSetId,
+      meta,
     },
   );
 }

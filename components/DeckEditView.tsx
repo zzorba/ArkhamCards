@@ -113,6 +113,7 @@ class DeckEditView extends React.Component<Props, State> {
 
   baseQuery() {
     const {
+      deck,
       investigator,
       storyOnly,
     } = this.props;
@@ -120,7 +121,7 @@ class DeckEditView extends React.Component<Props, State> {
       return `((${STORY_CARDS_QUERY}) and (subtype_code != 'basicweakness'))`;
     }
     return investigator ?
-      `((${queryForInvestigator(investigator)}) or (${STORY_CARDS_QUERY}))` :
+      `((${queryForInvestigator(investigator, deck)}) or (${STORY_CARDS_QUERY}))` :
       undefined;
   }
 

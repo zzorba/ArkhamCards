@@ -10,7 +10,7 @@ import { COLORS } from '../../styles/colors';
 interface Props {
   name: string;
   factions: FactionCodeType[];
-  selection?: FactionCodeType;
+  selection: FactionCodeType;
   onChange: (faction: FactionCodeType) => void;
   investigatorFaction?: FactionCodeType;
 }

@@ -28,6 +28,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
 import DeviceInfo from 'react-native-device-info';
+import deepDiff from 'deep-diff';
 import { t } from 'ttag';
 
 import withLoginState, { LoginStateProps } from '../withLoginState';
@@ -45,7 +46,7 @@ import {
   saveDeckChanges,
   DeckChanges,
 } from '../decks/actions';
-import { Campaign, Deck, Slots } from '../../actions/types';
+import { Campaign, Deck, DeckMeta, Slots } from '../../actions/types';
 import { updateCampaign } from '../campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
@@ -115,6 +116,7 @@ type Props = NavigationProps &
 interface State {
   parsedDeck?: ParsedDeck;
   slots: Slots;
+  meta: DeckMeta;
   ignoreDeckLimitSlots: Slots;
   xpAdjustment: number;
   loaded: boolean;
@@ -140,6 +142,7 @@ class DeckDetailView extends React.Component<Props, State> {
     super(props);
 
     this.state = {
+      meta: {},
       slots: {},
       ignoreDeckLimitSlots: {},
       xpAdjustment: 0,
@@ -637,6 +640,7 @@ class DeckDetailView extends React.Component<Props, State> {
         nameChange,
         tabooSetId,
         xpAdjustment,
+        meta,
       } = this.state;
       if (!deck || !parsedDeck) {
         return;
@@ -668,6 +672,7 @@ class DeckDetailView extends React.Component<Props, State> {
           spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
           xpAdjustment,
           tabooSetId,
+          meta,
         }
       ).then(() => {
         this.updateCampaignWeaknessSet(addedBasicWeaknesses);
@@ -693,6 +698,7 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     this.props.setTabooSet(deck.taboo_id || undefined);
     this.setState({
+      meta: deck.meta || {},
       nameChange: undefined,
       tabooSetId: deck.taboo_id || undefined,
       xpAdjustment: deck.xp_adjustment || 0,
@@ -755,10 +761,11 @@ class DeckDetailView extends React.Component<Props, State> {
   hasPendingEdits(
     slots: Slots,
     ignoreDeckLimitSlots: Slots,
+    meta: DeckMeta,
     xpAdjustment: number,
     nameChange?: string,
     tabooSetId?: number,
-  ) {
+  ): boolean {
     const {
       deck,
     } = this.props;
@@ -767,32 +774,35 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     const originalTabooSet: number = (deck.taboo_id || 0);
     const newTabooSet: number = (tabooSetId || 0);
+    const metaChanges = deepDiff(meta, deck.meta || {});
     const deltas = this.slotDeltas(deck, slots, ignoreDeckLimitSlots);
     return (nameChange && deck.name !== nameChange) ||
       (tabooSetId !== undefined && originalTabooSet !== newTabooSet) ||
       (deck.previous_deck && (deck.xp_adjustment || 0) !== xpAdjustment) ||
       keys(deltas.removals).length > 0 ||
       keys(deltas.additions).length > 0 ||
-      deltas.ignoreDeckLimitChanged;
+      deltas.ignoreDeckLimitChanged ||
+      (!!metaChanges && metaChanges.length > 0);
   }
 
-  _showXpEditDialog = () => {
+  _setMeta = (key: string, value: string) => {
     const {
-      deck,
-      showCountEditDialog,
-    } = this.props;
-    if (!deck) {
-      return;
-    }
-    const {
-      xpAdjustment,
+      meta,
     } = this.state;
-
-    showCountEditDialog(
-      'Available XP',
-      (deck.xp || 0) + (xpAdjustment || 0),
-      this._updateXp
-    );
+    const updatedMeta = {
+      ...meta,
+      [key]: value,
+    };
+    this.setState({
+      meta: updatedMeta,
+      hasPendingEdits: this.hasPendingEdits(
+        this.state.slots,
+        this.state.ignoreDeckLimitSlots,
+        updatedMeta,
+        this.state.xpAdjustment,
+        this.state.nameChange,
+        this.state.tabooSetId),
+    }, this._syncNavigationButtons);
   };
 
   _updateXp = (newXp: number) => {
@@ -808,6 +818,7 @@ class DeckDetailView extends React.Component<Props, State> {
       hasPendingEdits: this.hasPendingEdits(
         this.state.slots,
         this.state.ignoreDeckLimitSlots,
+        this.state.meta,
         xpAdjustment,
         this.state.nameChange,
         this.state.tabooSetId),
@@ -833,6 +844,7 @@ class DeckDetailView extends React.Component<Props, State> {
       hasPendingEdits: this.hasPendingEdits(
         slots,
         newIgnoreDeckLimitSlots,
+        this.state.meta,
         this.state.xpAdjustment,
         this.state.nameChange,
         this.state.tabooSetId),
@@ -873,6 +885,7 @@ class DeckDetailView extends React.Component<Props, State> {
       hasPendingEdits: this.hasPendingEdits(
         newSlots,
         ignoreDeckLimitSlots,
+        this.state.meta,
         this.state.xpAdjustment,
         this.state.nameChange,
         this.state.tabooSetId),
@@ -935,10 +948,12 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       slots,
       ignoreDeckLimitSlots,
+      meta,
     } = this.state;
     const pendingEdits = this.hasPendingEdits(
       slots,
       ignoreDeckLimitSlots,
+      meta,
       xpAdjustment,
       name,
       tabooSetId,
@@ -1100,7 +1115,7 @@ class DeckDetailView extends React.Component<Props, State> {
       investigator,
     } = parsedDeck;
 
-    const validator = new DeckValidation(investigator);
+    const validator = new DeckValidation(investigator, deck);
     return validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       return map(
@@ -1138,6 +1153,7 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     return (
       <CardUpgradeDialog
+        deck={parsedDeck.deck}
         card={upgradeCard}
         cards={cards}
         cardsByName={cardsByName}
@@ -1198,6 +1214,7 @@ class DeckDetailView extends React.Component<Props, State> {
       hasPendingEdits,
       xpAdjustment,
       tabooSetId,
+      meta,
     } = this.state;
 
     if (!deck || !loaded || !parsedDeck) {
@@ -1222,6 +1239,8 @@ class DeckDetailView extends React.Component<Props, State> {
           <DeckViewTab
             componentId={componentId}
             deck={deck}
+            meta={meta}
+            setMeta={this._setMeta}
             deckName={nameChange || deck.name}
             tabooSet={tabooSet}
             tabooSetId={selectedTabooSetId}

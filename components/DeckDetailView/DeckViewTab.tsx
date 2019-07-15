@@ -19,7 +19,7 @@ import DeviceInfo from 'react-native-device-info';
 import { msgid, ngettext, t } from 'ttag';
 
 import AppIcon from '../../assets/AppIcon';
-import { Campaign, Deck, DeckProblem, InvestigatorData, Slots, Trauma } from '../../actions/types';
+import { Campaign, Deck, DeckMeta, DeckProblem, InvestigatorData, Slots, Trauma } from '../../actions/types';
 import { CardId, ParsedDeck, SplitCards } from '../parseDeck';
 import { showCard, showCardSwipe } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
@@ -35,7 +35,6 @@ import { COLORS } from '../../styles/colors';
 import { s } from '../../styles/space';
 
 const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
-const DISABLE_INVESTIGATOR_OPTIONS = true;
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -133,6 +132,7 @@ interface Props {
   deck: Deck;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
+  meta: DeckMeta;
   hasPendingEdits?: boolean;
   cards: CardsMap;
   cardsByName: {
@@ -157,6 +157,7 @@ interface Props {
   problem?: DeckProblem;
   renderFooter: (slots?: Slots) => React.ReactNode;
   onDeckCountChange: (code: string, count: number) => void;
+  setMeta: (key: string, value: string) => void;
 }
 
 export default class DeckViewTab extends React.Component<Props> {
@@ -420,6 +421,7 @@ export default class DeckViewTab extends React.Component<Props> {
 
   data(): CardSection[] {
     const {
+      deck,
       parsedDeck: {
         normalCards,
         specialCards,
@@ -430,7 +432,7 @@ export default class DeckViewTab extends React.Component<Props> {
       cardsByName,
     } = this.props;
 
-    const validation = new DeckValidation(investigator);
+    const validation = new DeckValidation(investigator, deck);
 
     return [
       ...deckToSections(normalCards, cards, cardsByName, validation, false),
@@ -495,16 +497,15 @@ export default class DeckViewTab extends React.Component<Props> {
     const {
       parsedDeck: {
         investigator,
-        deck,
       },
+      meta,
+      setMeta,
     } = this.props;
-    if (DISABLE_INVESTIGATOR_OPTIONS) {
-      return null;
-    }
     return (
       <InvestigatorOptionsModule
         investigator={investigator}
-        deck={deck}
+        meta={meta}
+        setMeta={setMeta}
       />
     );
   }

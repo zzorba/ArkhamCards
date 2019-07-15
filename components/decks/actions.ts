@@ -15,6 +15,7 @@ import {
   UpdateDeckAction,
   DeleteDeckAction,
   Deck,
+  DeckMeta,
   Slots,
 } from '../../actions/types';
 import { login } from '../../actions';
@@ -113,6 +114,7 @@ export interface DeckChanges {
   spentXp?: number;
   xpAdjustment?: number;
   tabooSetId?: number;
+  meta?: DeckMeta;
 }
 
 function handleUpgradeDeckResult(
@@ -189,7 +191,8 @@ export const saveDeckChanges: ActionCreator<
           changes.problem !== undefined ? changes.problem : (deck.problem || ''),
           changes.spentXp !== undefined ? changes.spentXp : (deck.spentXp || 0),
           changes.xpAdjustment !== undefined ? changes.xpAdjustment : (deck.xp_adjustment || 0),
-          changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id
+          changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
+          changes.meta !== undefined ? changes.meta : deck.meta
         );
         dispatch(updateDeck(newDeck.id, newDeck, true));
         setTimeout(() => {
@@ -235,6 +238,7 @@ export interface NewDeckParams {
   slots: Slots;
   ignoreDeckLimitSlots?: Slots;
   tabooSetId?: number;
+  meta?: DeckMeta;
 }
 export const saveNewDeck: ActionCreator<
   ThunkAction<Promise<Deck>, AppState, {}, Action>
@@ -254,6 +258,7 @@ export const saveNewDeck: ActionCreator<
           params.investigatorCode,
           params.slots,
           params.tabooSetId,
+          params.meta,
         );
         dispatch(setNewDeck(deck.id, deck));
         setTimeout(() => {
@@ -266,7 +271,8 @@ export const saveNewDeck: ActionCreator<
           params.slots,
           params.ignoreDeckLimitSlots || {},
           'too_few_cards',
-          params.tabooSetId
+          params.tabooSetId,
+          params.meta
         );
         handleAuthErrors<Deck>(
           newDeckPromise,
@@ -304,6 +310,7 @@ export const saveClonedDeck: ActionCreator<
       slots: cloneDeck.slots,
       ignoreDeckLimitSlots: cloneDeck.ignoreDeckLimitSlots,
       tabooSetId: cloneDeck.taboo_id,
+      meta: cloneDeck.meta,
     })).then(deck => {
       return dispatch(saveDeckChanges(
         deck,

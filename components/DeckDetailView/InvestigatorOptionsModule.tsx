@@ -3,18 +3,19 @@ import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
 import InvestigatorOption from './InvestigatorOption';
-import { Deck } from '../../actions/types';
+import { DeckMeta } from '../../actions/types';
 import Card from '../../data/Card';
 import { s } from '../../styles/space';
 
 interface Props {
   investigator: Card;
-  deck: Deck;
+  meta: DeckMeta;
+  setMeta: (key: string, value: string) => void;
 }
 
 export default class InvestigatorOptionsModule extends React.Component<Props> {
   render() {
-    const { investigator, deck } = this.props;
+    const { investigator, meta, setMeta } = this.props;
     const options = investigator.investigatorOptions();
     if (!options.length) {
       return null;
@@ -27,7 +28,8 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
               key={idx}
               investigator={investigator}
               option={option}
-              deck={deck}
+              setMeta={setMeta}
+              meta={meta}
             />
           );
         }) }

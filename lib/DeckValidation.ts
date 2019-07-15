@@ -1,4 +1,5 @@
-import { DeckProblem, DeckProblemType } from '../actions/types';
+import { indexOf } from 'lodash';
+import { Deck, DeckProblem, DeckProblemType } from '../actions/types';
 import Card from '../data/Card';
 
 
@@ -15,11 +16,14 @@ interface DeckOptionsCount {
 }
 
 export default class DeckValidation {
-  investigator!: Card;
+  investigator: Card;
+  deck: Deck;
   problem_list: string[] = [];
   deck_options_counts: DeckOptionsCount[] = [];
-  constructor(investigator: Card) {
+
+  constructor(investigator: Card, deck: Deck) {
     this.investigator = investigator;
+    this.deck = deck;
   }
 
   getPhysicalDrawDeck(cards: Card[]) {
@@ -208,6 +212,19 @@ export default class DeckValidation {
   				}
   				//console.log("faction valid");
   			}
+        if (option.faction_select && option.faction_select.length) {
+          let selected_faction: string = option.faction_select[0]
+          if (this.deck.meta &&
+            this.deck.meta.faction_selected &&
+            indexOf(option.faction_select, this.deck.meta.faction_selected) !== -1
+          ) {
+            selected_faction = this.deck.meta.faction_selected;
+          }
+          if (card.faction_code != selected_faction &&
+            card.faction2_code != selected_faction){
+            continue;
+          }
+        }
 
   			if (option.type_code && option.type_code.length){
   				// needs to match at least one faction
