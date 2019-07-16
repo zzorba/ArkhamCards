@@ -61,13 +61,18 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+    const parsedDeck = parseDeck(
+      deck,
+      deck.slots,
+      deck.ignoreDeckLimitSlots || {},
+      cards,
+      previousDeck);
     const {
       slots,
       ignoreDeckLimitSlots,
     } = parsedDeck;
 
-    const problemObj = new DeckValidation(investigator, deck).getProblem(flatMap(keys(slots), code => {
+    const problemObj = new DeckValidation(investigator, deck.meta).getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       if (!card) {
         return [];

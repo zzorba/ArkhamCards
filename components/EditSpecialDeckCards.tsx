@@ -5,7 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import { t } from 'ttag';
-import { Campaign, Deck, Slots } from '../actions/types';
+import { Campaign, Deck, DeckMeta, Slots } from '../actions/types';
 import Card from '../data/Card';
 import { CardDetailProps } from './CardDetailView';
 import { EditDeckProps } from './DeckEditView';
@@ -24,6 +24,7 @@ const ACE_OF_RODS = '05040';
 
 export interface EditSpecialCardsProps {
   deck: Deck;
+  meta: DeckMeta;
   previousDeck?: Deck;
   xpAdjustment?: number;
   campaignId?: number;
@@ -84,6 +85,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
     const {
       componentId,
       deck,
+      meta,
       previousDeck,
       cards,
       xpAdjustment,
@@ -98,6 +100,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
         name: 'Deck.Edit',
         passProps: {
           deck,
+          meta,
           previousDeck,
           slots,
           ignoreDeckLimitSlots,

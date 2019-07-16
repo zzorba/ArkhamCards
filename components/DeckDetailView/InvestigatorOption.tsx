@@ -14,7 +14,7 @@ interface Props {
   setMeta: (key: string, value: string) => void;
 }
 
-export default class InvestigatorOptionsModule extends React.Component<Props> {
+export default class InvestigatorOption extends React.Component<Props> {
   _onChange = (selection: string) => {
     const {
       option,
@@ -35,7 +35,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
       const selection = (
         meta.faction_selected &&
         indexOf(option.faction_select, meta.faction_selected) !== -1
-      ) ? meta.faction_selected : option.faction_select[0];
+      ) ? meta.faction_selected : undefined;
       return (
         <FactionSelectPicker
           name={option.name() || t`Select Faction`}

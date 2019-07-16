@@ -12,6 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import { DeckMeta } from '../../actions/types';
 import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
 import { DrawSimulatorProps } from '../DrawSimulatorView';
@@ -30,6 +31,7 @@ interface Props {
   componentId: string;
   parsedDeck: ParsedDeck;
   cards: CardsMap;
+  meta: DeckMeta;
   xpAdjustment: number;
   controls?: React.ReactNode;
 }
@@ -74,14 +76,14 @@ export default class DeckNavFooter extends React.Component<Props> {
     const {
       cards,
       parsedDeck: {
-        deck,
         slots,
         ignoreDeckLimitSlots,
         investigator,
       },
+      meta,
     } = this.props;
 
-    const validator = new DeckValidation(investigator, deck);
+    const validator = new DeckValidation(investigator, meta);
     const problem = validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       if (!card) {

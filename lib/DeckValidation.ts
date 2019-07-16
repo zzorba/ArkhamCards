@@ -1,5 +1,5 @@
 import { indexOf } from 'lodash';
-import { Deck, DeckProblem, DeckProblemType } from '../actions/types';
+import { DeckMeta, DeckProblem, DeckProblemType } from '../actions/types';
 import Card from '../data/Card';
 
 
@@ -17,13 +17,13 @@ interface DeckOptionsCount {
 
 export default class DeckValidation {
   investigator: Card;
-  deck: Deck;
+  meta?: DeckMeta;
   problem_list: string[] = [];
   deck_options_counts: DeckOptionsCount[] = [];
 
-  constructor(investigator: Card, deck: Deck) {
+  constructor(investigator: Card, meta?: DeckMeta) {
     this.investigator = investigator;
-    this.deck = deck;
+    this.meta = meta;
   }
 
   getPhysicalDrawDeck(cards: Card[]) {
@@ -214,11 +214,11 @@ export default class DeckValidation {
   			}
         if (option.faction_select && option.faction_select.length) {
           let selected_faction: string = option.faction_select[0]
-          if (this.deck.meta &&
-            this.deck.meta.faction_selected &&
-            indexOf(option.faction_select, this.deck.meta.faction_selected) !== -1
+          if (this.meta &&
+            this.meta.faction_selected &&
+            indexOf(option.faction_select, this.meta.faction_selected) !== -1
           ) {
-            selected_faction = this.deck.meta.faction_selected;
+            selected_faction = this.meta.faction_selected;
           }
           if (card.faction_code != selected_faction &&
             card.faction2_code != selected_faction){

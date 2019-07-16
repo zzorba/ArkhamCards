@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
@@ -10,7 +11,7 @@ import { COLORS } from '../../styles/colors';
 interface Props {
   name: string;
   factions: FactionCodeType[];
-  selection: FactionCodeType;
+  selection?: FactionCodeType;
   onChange: (faction: FactionCodeType) => void;
   investigatorFaction?: FactionCodeType;
 }
@@ -31,7 +32,7 @@ export default class FactionSelectPicker extends React.Component<Props> {
   };
 
   _codeToLabel = (faction: string) => {
-    return Card.factionCodeToName(faction, t`Unknown Faction`);
+    return Card.factionCodeToName(faction, t`Select Faction`);
   };
 
   render() {
@@ -57,6 +58,9 @@ export default class FactionSelectPicker extends React.Component<Props> {
         value={selection}
         valueFormat={this._codeToLabel}
         onValueChange={this._onChange}
+        containerStyle={styles.container}
+        titleStyle={styles.title}
+        valueStyle={styles.value}
         modalStyle={{
           header: {
             wrapper: {
@@ -75,3 +79,18 @@ export default class FactionSelectPicker extends React.Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  title: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  value: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+});

@@ -207,7 +207,8 @@ export const saveDeckChanges: ActionCreator<
           changes.problem !== undefined ? changes.problem : (deck.problem || ''),
           changes.spentXp !== undefined ? changes.spentXp : (deck.spentXp || 0),
           changes.xpAdjustment !== undefined ? changes.xpAdjustment : (deck.xp_adjustment || 0),
-          changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id
+          changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
+          changes.meta !== undefined ? changes.meta : deck.meta
         );
         handleAuthErrors<Deck>(
           savePromise,

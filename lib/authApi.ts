@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import Config from 'react-native-config';
 import { keys, map } from 'lodash';
 
@@ -12,6 +13,9 @@ function cleanDeck(deck: Deck): Deck {
   if (deck) {
     if (!deck.ignoreDeckLimitSlots) {
       deck.ignoreDeckLimitSlots = {};
+    }
+    if (deck.meta && typeof(deck.meta) === 'string') {
+      deck.meta = JSON.parse(deck.meta);
     }
   }
   return deck;
@@ -169,6 +173,7 @@ export function saveDeck(
     };
     if (meta) {
       bodyParams.meta = JSON.stringify(meta);
+      Alert.alert('Sending Meta', bodyParams.meta);
     }
     if (tabooSetId) {
       bodyParams.taboo = tabooSetId;

@@ -420,6 +420,7 @@ class DeckDetailView extends React.Component<Props, State> {
       campaign,
     } = this.props;
     const {
+      meta,
       slots,
       ignoreDeckLimitSlots,
       xpAdjustment,
@@ -439,6 +440,7 @@ class DeckDetailView extends React.Component<Props, State> {
         passProps: {
           campaignId: campaign ? campaign.id : undefined,
           deck,
+          meta,
           previousDeck,
           slots,
           ignoreDeckLimitSlots,
@@ -482,6 +484,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const investigator = cards[deck.investigator_code];
     const {
       slots,
+      meta,
       ignoreDeckLimitSlots,
       xpAdjustment,
       tabooSetId,
@@ -491,6 +494,7 @@ class DeckDetailView extends React.Component<Props, State> {
         name: 'Deck.Edit',
         passProps: {
           deck,
+          meta,
           previousDeck,
           slots: slots,
           ignoreDeckLimitSlots: ignoreDeckLimitSlots,
@@ -904,6 +908,7 @@ class DeckDetailView extends React.Component<Props, State> {
       const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
       this.setState({
         slots: deck.slots,
+        meta: deck.meta || {},
         ignoreDeckLimitSlots: deck.ignoreDeckLimitSlots || {},
         xpAdjustment: deck.xp_adjustment || 0,
         parsedDeck,
@@ -1104,6 +1109,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       parsedDeck,
       loaded,
+      meta,
     } = this.state;
     if (!deck || !loaded || !parsedDeck) {
       return null;
@@ -1115,7 +1121,7 @@ class DeckDetailView extends React.Component<Props, State> {
       investigator,
     } = parsedDeck;
 
-    const validator = new DeckValidation(investigator, deck);
+    const validator = new DeckValidation(investigator, meta);
     return validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       return map(
@@ -1147,6 +1153,7 @@ class DeckDetailView extends React.Component<Props, State> {
       upgradeCard,
       tabooSetId,
       parsedDeck,
+      meta,
     } = this.state;
     if (!parsedDeck) {
       return null;
@@ -1154,6 +1161,7 @@ class DeckDetailView extends React.Component<Props, State> {
     return (
       <CardUpgradeDialog
         deck={parsedDeck.deck}
+        meta={meta}
         card={upgradeCard}
         cards={cards}
         cardsByName={cardsByName}
@@ -1176,6 +1184,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       parsedDeck,
       xpAdjustment,
+      meta,
     } = this.state;
     if (!parsedDeck) {
       return null;
@@ -1184,6 +1193,7 @@ class DeckDetailView extends React.Component<Props, State> {
       <DeckNavFooter
         componentId={componentId}
         parsedDeck={parsedDeck}
+        meta={meta}
         cards={cards}
         xpAdjustment={xpAdjustment}
         controls={controls}
@@ -1366,7 +1376,6 @@ const styles = StyleSheet.create({
     padding: m,
   },
   twoColumn: {
-    marginTop: s,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',

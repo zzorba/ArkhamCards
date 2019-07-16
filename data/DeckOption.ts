@@ -2,7 +2,7 @@ import Realm from 'realm';
 import { indexOf, map } from 'lodash';
 import { t } from 'ttag';
 
-import { Deck } from '../actions/types';
+import { DeckMeta } from '../actions/types';
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import { FactionCodeType, TypeCodeType } from '../constants';
@@ -48,7 +48,7 @@ export default class DeckOption {
     }
   }
 
-  toQuery(deck?: Deck) {
+  toQuery(meta?: DeckMeta) {
     let query = this.not ? 'NOT (' : '(';
     let dirty = false;
     if (this.faction && this.faction.length) {
@@ -69,14 +69,13 @@ export default class DeckOption {
         query += ' AND';
       }
       let factions = this.faction_select;
-      if (deck &&
-        deck.meta &&
-        deck.meta.faction_selected &&
-        indexOf(this.faction_select, deck.meta.faction_selected) !== -1
+      if (meta &&
+        meta.faction_selected &&
+        indexOf(this.faction_select, meta.faction_selected) !== -1
       ) {
         // If we have a deck select ONLY the ones they specified.
         // If not select them all.
-        factions = [deck.meta.faction_selected];
+        factions = [meta.faction_selected];
       }
       query += ' (';
       query +=

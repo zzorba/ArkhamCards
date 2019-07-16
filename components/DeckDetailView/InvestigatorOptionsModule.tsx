@@ -18,7 +18,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
     const { investigator, meta, setMeta } = this.props;
     const options = investigator.investigatorOptions();
     if (!options.length) {
-      return null;
+      return <View style={styles.placeholder} />;
     }
     return (
       <View style={styles.container}>
@@ -42,5 +42,8 @@ const styles = StyleSheet.create({
   container: {
     marginLeft: s,
     marginRight: s,
+  },
+  placeholder: {
+    marginBottom: s,
   },
 });

@@ -3,7 +3,7 @@ import Realm, { Results } from 'realm';
 import { find, head } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 
-import { Deck, Slots } from '../actions/types';
+import { Deck, DeckMeta, Slots } from '../actions/types';
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';
 import { STORY_CARDS_QUERY } from '../data/query';
 import Card, { CardsMap } from '../data/Card';
@@ -19,6 +19,7 @@ export interface EditDeckProps {
   xpAdjustment?: number;
   storyOnly?: boolean;
   slots: Slots;
+  meta: DeckMeta;
   ignoreDeckLimitSlots: Slots;
   updateSlots: (slots: Slots) => void;
 }
@@ -84,6 +85,7 @@ class DeckEditView extends React.Component<Props, State> {
       previousDeck,
       cards,
       xpAdjustment,
+      meta,
     } = this.props;
     const deckCardCounts = updatedDeckCardCounts || this.state.deckCardCounts;
     const cardsInDeck: CardsMap = {};
@@ -103,6 +105,7 @@ class DeckEditView extends React.Component<Props, State> {
     return (
       <DeckNavFooter
         componentId={componentId}
+        meta={meta}
         parsedDeck={pDeck}
         cards={cardsInDeck}
         xpAdjustment={xpAdjustment || 0}
@@ -113,7 +116,7 @@ class DeckEditView extends React.Component<Props, State> {
 
   baseQuery() {
     const {
-      deck,
+      meta,
       investigator,
       storyOnly,
     } = this.props;
@@ -121,7 +124,7 @@ class DeckEditView extends React.Component<Props, State> {
       return `((${STORY_CARDS_QUERY}) and (subtype_code != 'basicweakness'))`;
     }
     return investigator ?
-      `((${queryForInvestigator(investigator, deck)}) or (${STORY_CARDS_QUERY}))` :
+      `((${queryForInvestigator(investigator, meta)}) or (${STORY_CARDS_QUERY}))` :
       undefined;
   }
 

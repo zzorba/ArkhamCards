@@ -421,18 +421,18 @@ export default class DeckViewTab extends React.Component<Props> {
 
   data(): CardSection[] {
     const {
-      deck,
       parsedDeck: {
         normalCards,
         specialCards,
         investigator,
       },
+      meta,
       showEditSpecial,
       cards,
       cardsByName,
     } = this.props;
 
-    const validation = new DeckValidation(investigator, deck);
+    const validation = new DeckValidation(investigator, meta);
 
     return [
       ...deckToSections(normalCards, cards, cardsByName, validation, false),
