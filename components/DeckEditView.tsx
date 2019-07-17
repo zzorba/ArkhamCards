@@ -146,7 +146,7 @@ class DeckEditView extends React.Component<Props, State> {
         componentId={componentId}
         tabooSetOverride={tabooSetId}
         baseQuery={this.baseQuery()}
-        originalDeckSlots={slots}
+        originalDeckSlots={deck.slots}
         investigator={investigator}
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}

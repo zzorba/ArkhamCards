@@ -1075,7 +1075,7 @@ class DeckDetailView extends React.Component<Props, State> {
           ) }
         </View>
         { hasPendingEdits && (
-          <View style={styles.twoColumn}>
+          <View style={[styles.twoColumn, styles.topSpace]}>
             <View style={styles.halfColumn}>
               <Button
                 style={styles.button}
@@ -1374,6 +1374,9 @@ const styles = StyleSheet.create({
   },
   errorMargin: {
     padding: m,
+  },
+  topSpace: {
+    marginTop: s,
   },
   twoColumn: {
     flexDirection: 'row',

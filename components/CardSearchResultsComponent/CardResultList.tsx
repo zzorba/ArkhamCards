@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { concat, debounce, flatMap, forEach, isEqual, map, partition, random, sortBy, throttle } from 'lodash';
+import { concat, debounce, flatMap, filter, forEach, keys, isEqual, map, partition, random, sortBy, throttle, uniq } from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -439,18 +439,43 @@ class CardResultList extends React.Component<Props, State> {
     );
   }
 
-  _updateResults = () => {
+  deckSections(): CardBucket[] {
     const {
       realm,
-      query,
-      searchTerm,
-      show_spoilers,
       originalDeckSlots,
       tabooSetId,
     } = this.props;
     const {
       deckCardCounts,
     } = this.state;
+    if (!originalDeckSlots) {
+      return [];
+    }
+    const codes = filter(
+      uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
+      code => originalDeckSlots[code] > 0 ||
+        (deckCardCounts && deckCardCounts[code] > 0));
+    const query = map(codes, code => ` (code == '${code}')`).join(' OR ');
+    const deckCards: Results<Card> = realm.objects<Card>('Card')
+      .filtered(`(${query}) and ${Card.tabooSetQuery(tabooSetId)}`);
+    const splitDeckCards = partition(deckCards, card => isSpecialCard(card));
+    const specialCards = sortBy(splitDeckCards[0], card => card.sort_by_type || -1);
+    const normalCards = sortBy(splitDeckCards[1], card => card.sort_by_type || -1);
+
+    return concat(
+      this.bucketDeckCards(normalCards, 'normal'),
+      this.bucketDeckCards(specialCards, 'special')
+    );
+  }
+
+  _updateResults = () => {
+    const {
+      realm,
+      query,
+      searchTerm,
+      show_spoilers,
+      tabooSetId,
+    } = this.props;
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
@@ -461,29 +486,16 @@ class CardResultList extends React.Component<Props, State> {
         searchTerm
       ) : realm.objects<Card>('Card').filtered(Card.tabooSetQuery(tabooSetId))
     ).sorted(this.getSort());
-    const deckCards: Card[] = [];
     const groupedCards = partition(
       cards,
       card => {
-        if (originalDeckSlots && (
-          originalDeckSlots[card.code] > 0 ||
-          (deckCardCounts && deckCardCounts[card.code] > 0))) {
-          deckCards.push(card);
-        }
         return show_spoilers[card.pack_code] ||
           !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
-      }
-    );
-
-    const splitDeckCards = partition(deckCards, card => isSpecialCard(card));
-    const specialCards = sortBy(splitDeckCards[0], card => card.sort_by_type || -1);
-    const normalCards = sortBy(splitDeckCards[1], card => card.sort_by_type || -1);
+      });
 
     this.setState({
       resultsKey: resultsKey,
-      deckSections: concat(
-        this.bucketDeckCards(normalCards, 'normal'),
-        this.bucketDeckCards(specialCards, 'special')),
+      deckSections: this.deckSections(),
       cards: this.bucketCards(groupedCards[0], 'cards', false),
       cardsCount: groupedCards[0].length,
       spoilerCards: this.bucketCards(groupedCards[1], 'spoiler', false),

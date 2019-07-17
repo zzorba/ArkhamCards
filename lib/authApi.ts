@@ -1,4 +1,3 @@
-import { Alert } from 'react-native';
 import Config from 'react-native-config';
 import { keys, map } from 'lodash';
 
@@ -173,7 +172,6 @@ export function saveDeck(
     };
     if (meta) {
       bodyParams.meta = JSON.stringify(meta);
-      Alert.alert('Sending Meta', bodyParams.meta);
     }
     if (tabooSetId) {
       bodyParams.taboo = tabooSetId;
