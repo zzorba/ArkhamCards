@@ -13,6 +13,7 @@ import PlusMinusButtons from '../core/PlusMinusButtons';
 import CountButton from './CountButton';
 import { ROW_HEIGHT, BUTTON_WIDTH, BUTTON_PADDING, TOGGLE_BUTTON_MODE } from './constants';
 import typography from '../../styles/typography';
+import { s, xs } from '../../styles/space';
 
 interface Props {
   count: number;
@@ -237,12 +238,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: ROW_HEIGHT,
+    paddingRight: xs,
   },
   count: {
-    marginLeft: 4,
+    marginLeft: xs,
     width: 16,
     textAlign: 'center',
-    marginRight: 8,
+    marginRight: s,
     fontWeight: '600',
   },
   tinyContainer: {
@@ -257,9 +259,9 @@ const styles = StyleSheet.create({
     overflow: 'visible',
   },
   button: {
-    marginTop: 4,
-    marginBottom: 4,
-    marginRight: 4,
+    marginTop: xs,
+    marginBottom: xs,
+    marginRight: xs,
     width: BUTTON_WIDTH,
     flexDirection: 'row',
     alignItems: 'center',

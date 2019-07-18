@@ -20,7 +20,7 @@ import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
 import { getAllDecks, AppState } from '../reducers';
 import { fetchPublicDeck } from './decks/actions';
 import typography from '../styles/typography';
-import space from '../styles/space';
+import space, { s } from '../styles/space';
 
 interface OwnProps {
   deckIds: number[];
@@ -239,14 +239,14 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: '100%',
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: s,
+    paddingBottom: s,
     marginBottom: 60,
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
   emptyStateText: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
 });

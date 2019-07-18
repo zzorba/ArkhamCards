@@ -4,11 +4,12 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
+import { SelectCampagaignProps } from '../SelectCampaignDialog';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import { CUSTOM, CORE, CampaignCycleCode } from '../../../actions/types';
-import { SelectCampagaignProps } from '../SelectCampaignDialog';
+import { s } from '../../../styles/space';
 
 interface Props {
   componentId: string;
@@ -100,7 +101,7 @@ export default class CampaignSelector extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   margin: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
 });

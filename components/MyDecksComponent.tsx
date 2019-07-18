@@ -9,17 +9,18 @@ import {
 import { filter } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { t } from 'ttag';
 
 import withNetworkStatus, { NetworkStatusProps } from './core/withNetworkStatus';
 import { Campaign, Deck, DecksMap } from '../actions/types';
 import { refreshMyDecks } from '../actions';
-import { t } from 'ttag';
 import Card from '../data/Card';
+import withDimensions, { DimensionsProps } from './core/withDimensions';
 import DeckListComponent from './DeckListComponent';
 import withLoginState, { LoginStateProps } from './withLoginState';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
-import space from '../styles/space';
+import space, { m, s, xs } from '../styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '../reducers';
 
 interface OwnProps {
@@ -45,7 +46,7 @@ interface ReduxActionProps {
   refreshMyDecks: () => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & LoginStateProps & NetworkStatusProps;
+type Props = OwnProps & ReduxProps & ReduxActionProps & LoginStateProps & NetworkStatusProps & DimensionsProps;
 
 class MyDecksComponent extends React.Component<Props> {
   _reLogin = () => {
@@ -83,6 +84,7 @@ class MyDecksComponent extends React.Component<Props> {
     const {
       error,
       networkType,
+      width,
     } = this.props;
 
     if (!error && networkType !== 'none') {
@@ -90,25 +92,24 @@ class MyDecksComponent extends React.Component<Props> {
     }
     if (networkType === 'none') {
       return (
-        <View style={[styles.banner, styles.warning]}>
+        <View style={[styles.banner, styles.warning, { width }]}>
           <Text style={typography.small}>
-            Unable to update: you appear to be offline.
+            { t`Unable to update: you appear to be offline.`}
           </Text>
         </View>
       );
     }
     if (error === 'badAccessToken') {
       return (
-        <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error]}>
+        <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error, { width }]}>
           <Text style={[typography.small, styles.errorText]}>
-            We're having trouble updating your decks at this time.
-            If the problem persists tap here to reauthorize.
+            { t`We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize.` }
           </Text>
         </TouchableOpacity>
       );
     }
     return (
-      <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error]}>
+      <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error, { width }]}>
         <Text style={[typography.small, styles.errorText]}>
           { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
         </Text>
@@ -132,12 +133,13 @@ class MyDecksComponent extends React.Component<Props> {
     const {
       login,
       signedIn,
+      width,
     } = this.props;
     if (signedIn) {
       return null;
     }
     return (
-      <View style={styles.signInFooter}>
+      <View style={[styles.signInFooter, { width }]}>
         <Text style={[typography.text, space.marginBottomM]}>
           { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
         </Text>
@@ -217,7 +219,7 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
 )(
   withNetworkStatus<ReduxProps & ReduxActionProps & OwnProps>(
     withLoginState<ReduxProps & ReduxActionProps & OwnProps & NetworkStatusProps>(
-      MyDecksComponent
+      withDimensions(MyDecksComponent)
     )
   )
 );
@@ -227,11 +229,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   banner: {
-    width: '100%',
-    paddingTop: 4,
-    paddingBottom: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingTop: xs,
+    paddingBottom: xs,
+    paddingLeft: s,
+    paddingRight: s,
   },
   error: {
     backgroundColor: COLORS.red,
@@ -243,8 +244,8 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
   signInFooter: {
-    padding: 16,
-    marginTop: 8,
+    padding: m,
+    marginTop: s,
     backgroundColor: COLORS.lightGray,
   },
 });

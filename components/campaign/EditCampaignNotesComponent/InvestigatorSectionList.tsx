@@ -9,6 +9,7 @@ import InvestigatorSectionRow from './InvestigatorSectionRow';
 import { InvestigatorNotes } from '../../../actions/types';
 import Card from '../../../data/Card';
 import { ShowTextEditDialog } from '../../core/withDialogs';
+import { s } from '../../../styles/space';
 
 interface Props {
   componentId: string;
@@ -52,7 +53,7 @@ export default class InvestigatorSectionList extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   investigatorNotes: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
 });

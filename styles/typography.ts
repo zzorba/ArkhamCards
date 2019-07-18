@@ -1,26 +1,11 @@
-import { TextStyle, StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { isBig } from './space';
 const sizeScale = isBig ? 1.5 : 1;
 
-interface Styles {
-  header: TextStyle;
-  cardText: TextStyle;
-  text: TextStyle;
-  small: TextStyle;
-  smallLabel: TextStyle;
-  label: TextStyle;
-  bigLabel: TextStyle;
-  bold: TextStyle;
-  gameFont: TextStyle;
-  bigGameFont: TextStyle;
-  left: TextStyle;
-  center: TextStyle;
-}
-
 export const SMALL_FONT_SIZE = 12 * sizeScale;
 
-export default StyleSheet.create<Styles>({
+export default StyleSheet.create({
   header: {
     fontFamily: 'System',
     fontSize: 24 * sizeScale,
@@ -80,6 +65,16 @@ export default StyleSheet.create<Styles>({
     lineHeight: 36 * sizeScale,
     color: '#222',
   },
+  dialogLabel: Platform.select({
+    ios: {
+      fontSize: 13 * sizeScale,
+      color: 'black',
+    },
+    android: {
+      fontSize: 16 * sizeScale,
+      color: '#33383D',
+    },
+  }),
   left: {
     textAlign: 'left',
   },

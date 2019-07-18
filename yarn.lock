@@ -6676,10 +6676,9 @@ react-native-device-info@2.1.3:
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-2.1.3.tgz#7463f826a420a53210be89cf671345d1fa92843f"
   integrity sha512-PmF2dHjoxzYfq0VQ+a1E82z2Bf+8svUk2JoYmgkAI/EPrWfbrKYSC3WxRv4/VAUS0RsGMLnYw+Ygtuf4hIXpew==
 
-react-native-dialog@5.6.0:
+react-native-dialog@zzorba/react-native-dialog#add_label_style_prop:
   version "5.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-dialog/-/react-native-dialog-5.6.0.tgz#8c36a1e9f397eba0cea88821ebcf92f029236a1a"
-  integrity sha512-pUTxHJHzErMY+JaDRSMKiCbJTEdy2Ik4hcNOwasOlxpj6S6tT5SonLsrLPGBCO0XpTOySE0qVzuikmKgUDZfig==
+  resolved "https://codeload.github.com/zzorba/react-native-dialog/tar.gz/1aaacaae1ffde7ed090af813de7e2289ae9b4bd6"
   dependencies:
     prop-types "^15.7.2"
     react-native-modal "^9.0.0"

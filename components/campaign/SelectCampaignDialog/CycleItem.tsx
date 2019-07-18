@@ -5,9 +5,12 @@ import {
   View,
   Text,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import { CampaignCycleCode } from '../../../actions/types';
 import EncounterIcon from '../../../assets/EncounterIcon';
+import { s, xs, iconSizeScale } from '../../../styles/space';
+import typography from '../../../styles/typography';
 
 interface Props {
   packCode: CampaignCycleCode;
@@ -29,9 +32,13 @@ export default class CycleItem extends React.Component<Props> {
       <TouchableOpacity onPress={this._onPress} key={packCode}>
         <View style={styles.campaignRow}>
           <View style={styles.campaignIcon}>
-            <EncounterIcon encounter_code={packCode} size={18} color="#000000" />
+            <EncounterIcon
+              encounter_code={packCode}
+              size={18 * iconSizeScale * DeviceInfo.getFontScale()}
+              color="#000000"
+            />
           </View>
-          <Text style={styles.campaignText}>
+          <Text style={[typography.text, styles.campaignText]}>
             { text }
           </Text>
         </View>
@@ -42,21 +49,20 @@ export default class CycleItem extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   campaignRow: {
-    height: 40,
+    paddingTop: xs,
+    paddingBottom: xs,
     borderBottomWidth: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   campaignText: {
-    fontFamily: 'System',
-    fontSize: 18,
-    marginLeft: 8,
+    marginLeft: s,
   },
   campaignIcon: {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 8,
+    marginLeft: s,
   },
 });

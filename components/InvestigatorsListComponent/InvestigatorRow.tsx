@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { t } from 'ttag';
 
 import InvestigatorImage from '../core/InvestigatorImage';
 import Card, { CardsMap } from '../../data/Card';
@@ -48,19 +49,23 @@ export default class InvestigatorRow extends React.Component<Props> {
             <InvestigatorImage card={investigator} />
           </View>
           <View style={styles.titleColumn}>
-            <Text style={styles.title}>
+            <Text style={typography.text}>
               { investigator.name }
             </Text>
             <Text style={typography.text}>
-              { `${investigator.deck_requirements.size} Cards` }
+              { t`${investigator.deck_requirements.size} Cards` }
             </Text>
             { map(investigator.deck_requirements.card, req => {
               const card = cards[req.code];
               if (!card) {
-                return <Text key={req.code}>Unknown card: { req.code }</Text>;
+                return (
+                  <Text key={req.code} style={typography.small}>
+                    { t`Unknown card: ${req.code}` }
+                  </Text>
+                );
               }
               return (
-                <Text key={req.code}>
+                <Text key={req.code} style={typography.small}>
                   { card.quantity }x { card.name }
                 </Text>
               );

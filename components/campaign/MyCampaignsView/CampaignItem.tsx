@@ -11,6 +11,7 @@ import { CardsMap } from '../../../data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import typography from '../../../styles/typography';
+import { s } from '../../../styles/space';
 
 interface Props {
   campaign: Campaign;
@@ -56,9 +57,9 @@ export default class CampaignItem extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingTop: 8,
+    paddingLeft: s,
+    paddingRight: s,
+    paddingTop: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
     flexDirection: 'column',
@@ -66,6 +67,6 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   bottomMargin: {
-    marginBottom: 8,
+    marginBottom: s,
   },
 });

@@ -13,6 +13,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import typography from '../../styles/typography';
+import { xs } from '../../styles/space';
 
 interface Props extends TextInputProps {
   value: string;
@@ -99,14 +100,14 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   textBox: {
-    paddingLeft: 4,
-    paddingRight: 4,
-    paddingBottom: Platform.OS === 'ios' ? 4 : 2,
+    paddingLeft: xs,
+    paddingRight: xs,
+    paddingBottom: Platform.OS === 'ios' ? xs : (xs / 2),
     flexDirection: 'row',
     alignItems: 'center',
   },
   textInput: {
-    paddingTop: 2,
+    paddingTop: (xs / 2 ),
     width: '100%',
     padding: 0,
     minHeight: 22,

@@ -19,6 +19,7 @@ import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS } from '../constants';
 import { getCampaign, AppState } from '../reducers';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
+import { l, s } from '../styles/space';
 
 const ACE_OF_RODS = '05040';
 
@@ -422,11 +423,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    marginTop: 32,
+    marginTop: l,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
   headerText: {
-    paddingLeft: 8,
+    paddingLeft: s,
   },
 });

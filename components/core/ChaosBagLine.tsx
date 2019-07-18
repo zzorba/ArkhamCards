@@ -9,6 +9,8 @@ import DeviceInfo from 'react-native-device-info';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '../../constants';
+import { iconSizeScale } from '../../styles/space';
+import typography from '../../styles/typography';
 
 interface Props {
   chaosBag: ChaosBag;
@@ -28,10 +30,10 @@ export default function ChaosBagLine({ chaosBag }: Props) {
             <View key={`${token}-${idx}`} style={styles.commaView}>
               <ChaosTokenIcon
                 icon={token}
-                size={18 * DeviceInfo.getFontScale()}
+                size={18 * iconSizeScale * DeviceInfo.getFontScale()}
                 color="#222"
               />
-              { !isLast && <Text style={styles.comma}>, </Text> }
+              { !isLast && <Text style={typography.text}>, </Text> }
             </View>
           );
         })

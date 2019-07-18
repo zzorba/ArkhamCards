@@ -16,6 +16,7 @@ import CycleItem from './CycleItem';
 import { campaignName } from '../constants';
 import { NavigationProps } from '../../types';
 import { getPacksInCollection, AppState } from '../../../reducers';
+import { s } from '../../../styles/space';
 
 export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string) => void;
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   header: {
     fontFamily: 'System',
     fontSize: 22,
-    marginLeft: 10,
+    marginLeft: s,
   },
   headerRow: {
     flexDirection: 'row',
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   button: {
-    padding: 8,
+    padding: s,
     borderBottomWidth: 2,
     borderColor: '#222',
   },

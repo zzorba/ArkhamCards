@@ -69,7 +69,7 @@ import {
   getCampaignForDeck,
   AppState,
 } from '../../reducers';
-import { m, s } from '../../styles/space';
+import { m, s, iconSizeScale } from '../../styles/space';
 import typography from '../../styles/typography';
 
 export interface DeckDetailProps {
@@ -1057,7 +1057,7 @@ class DeckDetailView extends React.Component<Props, State> {
               text={t`Edit`}
               color="purple"
               size="small"
-              icon={<MaterialIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="edit" />}
+              icon={<MaterialIcons size={20 * iconSizeScale * DeviceInfo.getFontScale()} color="#FFFFFF" name="edit" />}
               onPress={this._onEditPressed}
             />
           </View>
@@ -1068,7 +1068,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 color="yellow"
                 grow
                 size="small"
-                icon={<MaterialCommunityIcons size={20 * DeviceInfo.getFontScale()} color="#FFFFFF" name="arrow-up-bold" />}
+                icon={<MaterialCommunityIcons size={20 * iconSizeScale * DeviceInfo.getFontScale()} color="#FFFFFF" name="arrow-up-bold" />}
                 onPress={this._onUpgradePressed}
               />
             </View>

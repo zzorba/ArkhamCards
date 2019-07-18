@@ -10,6 +10,7 @@ import { Campaign, Deck } from '../../actions/types';
 import { CardsMap } from '../../data/Card';
 import InvestigatorImage from '../core/InvestigatorImage';
 import { getDecks, getLatestCampaignDeckIds, AppState } from '../../reducers';
+import { s } from '../../styles/space';
 
 interface OwnProps {
   campaign: Campaign;
@@ -61,13 +62,13 @@ export default connect(mapStateToProps)(CampaignInvestigatorRow);
 
 const styles = StyleSheet.create({
   row: {
-    marginTop: 8,
+    marginTop: s,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
   },
   investigator: {
-    marginRight: 8,
-    marginBottom: 8,
+    marginRight: s,
+    marginBottom: s,
   },
 });

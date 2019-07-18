@@ -17,6 +17,7 @@ import DeckProblemRow from './DeckProblemRow';
 import { toRelativeDateString } from '../lib/datetime';
 import { parseDeck, ParsedDeck } from './parseDeck';
 import typography from '../styles/typography';
+import { s } from '../styles/space';
 
 interface Props {
   deck: Deck;
@@ -150,7 +151,7 @@ export default class DeckListRow extends React.Component<Props> {
                 </View>
                 <View style={[styles.column, styles.titleColumn]}>
                   { !compact && (
-                    <Text style={typography.bigLabel}>
+                    <Text style={typography.label}>
                       { investigator.name }
                     </Text>
                   ) }
@@ -215,8 +216,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   investigatorBlock: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: s,
+    paddingBottom: s,
     width: '100%',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -226,8 +227,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   image: {
-    marginLeft: 10,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
   titleColumn: {
     flex: 1,

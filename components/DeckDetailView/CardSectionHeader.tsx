@@ -12,9 +12,9 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 import Card from '../../data/Card';
 import typography from '../../styles/typography';
-import { l, s, xs } from '../../styles/space';
+import { l, s, xs, iconSizeScale } from '../../styles/space';
 
-const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
+const SMALL_EDIT_ICON_SIZE = 18 * iconSizeScale * DeviceInfo.getFontScale();
 
 export interface CardSectionHeaderData {
   superTitle?: string;

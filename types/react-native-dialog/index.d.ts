@@ -14,6 +14,7 @@ declare module 'react-native-dialog' {
     TextProps,
     StyleProp,
     TextInputProps,
+    TextStyle,
     ViewStyle,
   } from 'react-native';
 
@@ -53,6 +54,7 @@ declare module 'react-native-dialog' {
 
   interface DialogSwitchProps {
     label?: string;
+    labelStyle?: TextStyle;
   }
 
   interface InputProps<T> {

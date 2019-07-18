@@ -299,8 +299,8 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     const cardOptions = this.requiredCardOptions();
     return (
       <React.Fragment>
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`NAME` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Name` }
         </DialogComponent.Description>
         <DialogComponent.Input
           textInputRef={this._captureTextInputRef}
@@ -308,8 +308,8 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           onChangeText={this._onDeckNameChange}
           returnKeyType="done"
         />
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`REQUIRED CARDS` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Required Cards` }
         </DialogComponent.Description>
         { map(cardOptions, (requiredCards, index) => {
           return (
@@ -328,8 +328,8 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           tabooSetId={tabooSetId}
           setTabooSetId={this._setTabooSetId}
         />
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`DECK TYPE` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Deck Type` }
         </DialogComponent.Description>
         <DialogComponent.Switch
           label={t`Create on ArkhamDB`}

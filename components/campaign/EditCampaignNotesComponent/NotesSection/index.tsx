@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 
 import NoteRow from './NoteRow';
-import typography from '../../../../styles/typography';
 import { ShowTextEditDialog } from '../../../core/withDialogs';
-
+import { s, xs } from '../../../../styles/space';
+import typography from '../../../../styles/typography';
 interface Props {
   notesChanged: (index: number, notes: string[]) => void;
   index: number;
@@ -95,11 +95,11 @@ export default class NotesSection extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 8,
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingTop: s,
+    paddingLeft: s,
+    paddingRight: s,
   },
   margin: {
-    marginTop: 4,
+    marginTop: xs,
   },
 });

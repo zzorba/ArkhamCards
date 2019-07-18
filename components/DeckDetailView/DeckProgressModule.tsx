@@ -14,7 +14,7 @@ import { Campaign, Deck, Trauma } from '../../actions/types';
 import Card, { CardsMap } from '../../data/Card';
 import { getDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';
-import space from '../../styles/space';
+import space, { l, m, s } from '../../styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -165,18 +165,18 @@ export default connect(mapStateToProps, mapDispatchToProps)(DeckProgressModule);
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 16,
-    marginBottom: 32,
+    marginTop: m,
+    marginBottom: l,
   },
   campaign: {
-    marginTop: 8,
-    marginLeft: 8,
-    marginRight: 8,
+    marginTop: s,
+    marginLeft: s,
+    marginRight: s,
   },
   title: {
-    marginTop: 16,
-    paddingLeft: 8,
-    paddingRight: 8,
+    marginTop: m,
+    paddingLeft: s,
+    paddingRight: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },

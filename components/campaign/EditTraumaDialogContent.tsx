@@ -12,6 +12,7 @@ import { t } from 'ttag';
 import { Trauma } from '../../actions/types';
 import Card from '../../data/Card';
 import { COLORS } from '../../styles/colors';
+import typography from '../../styles/typography';
 
 interface Props {
   investigator?: Card;
@@ -81,9 +82,11 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
     return (
       <View>
         <View style={styles.counterColumn}>
-          <Text style={styles.label}>{ t`Physical Trauma` }</Text>
+          <Text style={typography.dialogLabel}>
+            { t`Physical Trauma` }
+          </Text>
           <View style={styles.buttonsRow}>
-            <Text style={[styles.label, styles.traumaText]}>
+            <Text style={[typography.dialogLabel, styles.traumaText]}>
               { physical || 0 }
             </Text>
             <PlusMinusButtons
@@ -98,9 +101,11 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
           </View>
         </View>
         <View style={styles.counterColumn}>
-          <Text style={styles.label}>{ t`Mental Trauma` }</Text>
+          <Text style={typography.dialogLabel}>
+            { t`Mental Trauma` }
+          </Text>
           <View style={styles.buttonsRow}>
-            <Text style={[styles.label, styles.traumaText]}>
+            <Text style={[typography.dialogLabel, styles.traumaText]}>
               { mental || 0 }
             </Text>
             <PlusMinusButtons
@@ -116,6 +121,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
         </View>
         <DialogComponent.Switch
           label={t`Killed`}
+          labelStyle={typography.dialogLabel}
           value={killed || impliedKilled}
           disabled={impliedKilled}
           onValueChange={this._toggleKilled}
@@ -123,6 +129,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
         />
         <DialogComponent.Switch
           label={t`Insane`}
+          labelStyle={typography.dialogLabel}
           value={insane || impliedInsane}
           disabled={impliedInsane}
           onValueChange={this._toggleInsane}
@@ -151,14 +158,4 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     width: 30,
   },
-  label: Platform.select({
-    ios: {
-      fontSize: 13,
-      color: 'black',
-    },
-    android: {
-      fontSize: 16,
-      color: '#33383D',
-    },
-  }),
 });

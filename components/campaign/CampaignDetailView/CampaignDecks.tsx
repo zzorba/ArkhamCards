@@ -14,7 +14,6 @@ import AppIcon from '../../../assets/AppIcon';
 import { Deck, InvestigatorData, Trauma } from '../../../actions/types';
 import DeckValidation from '../../../lib/DeckValidation';
 import Card from '../../../data/Card';
-import typography from '../../../styles/typography';
 import Button from '../../core/Button';
 import { parseDeck, ParsedDeck } from '../../parseDeck';
 import { showDeckModal } from '../../navHelper';
@@ -23,6 +22,8 @@ import EditTraumaComponent from '../EditTraumaComponent';
 import listOfDecks from '../listOfDecks';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
 import deckRowWithDetails, { DeckRowDetailsProps } from '../deckRowWithDetails';
+import typography from '../../../styles/typography';
+import { iconSizeScale, s, xs } from '../../../styles/space';
 
 interface Props {
   campaignId: number;
@@ -91,7 +92,7 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
         ) }
         <View style={styles.section}>
           <Button
-            icon={<AppIcon name="deck" size={18 * DeviceInfo.getFontScale()} color="#222222" />}
+            icon={<AppIcon name="deck" size={18 * iconSizeScale * DeviceInfo.getFontScale()} color="#222222" />}
             text={
               DeviceInfo.getFontScale() > 1.5 ?
                 ngettext(msgid`${parsedDeck.normalCardCount} Card\n(${parsedDeck.totalCardCount} Total`,
@@ -186,7 +187,7 @@ class CampaignSubDeckDetail extends React.Component<Props & DeckRowDetailsProps>
         { !eliminated && (
           <View style={styles.section}>
             <Button
-              icon={<MaterialCommunityIcons size={18 * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
+              icon={<MaterialCommunityIcons size={18 * iconSizeScale * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
               text={t`Upgrade Deck`}
               style={styles.button}
               size="small"
@@ -216,18 +217,18 @@ export default listOfDecks<Props>(ComposedDeckRow);
 
 const styles = StyleSheet.create({
   section: {
-    marginBottom: 8,
-    marginRight: 8,
+    marginBottom: s,
+    marginRight: s,
     flexDirection: 'row',
   },
   investigatorNotes: {
     flex: 1,
-    marginTop: 4,
+    marginTop: xs,
   },
   investigatorSubNotes: {
     flex: 1,
-    marginTop: 4,
-    marginLeft: 8,
+    marginTop: xs,
+    marginLeft: s,
   },
   button: {
     marginLeft: 0,

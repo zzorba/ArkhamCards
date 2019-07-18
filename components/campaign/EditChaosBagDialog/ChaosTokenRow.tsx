@@ -6,8 +6,9 @@ import {
 } from 'react-native';
 
 import { ChaosTokenType } from '../../../constants';
-import ChaosToken, { SIZE } from '../../core/ChaosToken';
+import ChaosToken from '../../core/ChaosToken';
 import PlusMinusButtons from '../../core/PlusMinusButtons';
+import { s, xs } from '../../../styles/space';
 
 interface Props {
   id: ChaosTokenType;
@@ -105,9 +106,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: 8,
-    paddingRight: 8,
-    height: SIZE + 24,
+    paddingLeft: s,
+    paddingRight: s,
+    paddingTop: xs,
+    paddingBottom: xs,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },

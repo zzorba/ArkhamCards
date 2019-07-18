@@ -35,8 +35,8 @@ export default class TabooSetDialogOptions extends React.Component<Props> {
     }
     return (
       <React.Fragment>
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`TABOO LIST` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Taboo List` }
         </DialogComponent.Description>
         { map(tabooSets, (tabooSet, idx) => (
           <TabooSetSwitch

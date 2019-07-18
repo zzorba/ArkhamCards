@@ -7,6 +7,7 @@ import {
 
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
+import { s, xs } from '../../styles/space';
 
 interface Props {
   title: string;
@@ -30,7 +31,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    height: 30,
+    paddingTop: xs,
+    paddingBottom: xs,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     borderColor: '#bdbdbd',
   },
   headerText: {
-    marginLeft: 8,
+    marginLeft: s,
     color: COLORS.black,
   },
 });

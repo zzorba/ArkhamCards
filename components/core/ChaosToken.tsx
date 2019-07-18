@@ -7,9 +7,10 @@ import DeviceInfo from 'react-native-device-info';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { ChaosTokenType } from '../../constants';
+import { iconSizeScale } from '../../styles/space';
 
 const SCALE = ((DeviceInfo.getFontScale() - 1) / 4 + 1);
-export const SIZE = 36 * SCALE;
+export const SIZE = 36 * SCALE * iconSizeScale;
 
 interface Props {
   id: ChaosTokenType;
@@ -23,7 +24,7 @@ export default function ChaosToken({ id, status }: Props) {
   }
   return (
     <View style={[styles.button, { backgroundColor: color }]}>
-      <ChaosTokenIcon icon={id} size={28 * SCALE} />
+      <ChaosTokenIcon icon={id} size={28 * SCALE * iconSizeScale} />
     </View>
   );
 }

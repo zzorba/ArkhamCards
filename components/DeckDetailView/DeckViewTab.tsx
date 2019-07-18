@@ -32,9 +32,9 @@ import Card, { CardsMap } from '../../data/Card';
 import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
-import { s } from '../../styles/space';
+import { s, sizeScale } from '../../styles/space';
 
-const SMALL_EDIT_ICON_SIZE = 18 * DeviceInfo.getFontScale();
+const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * DeviceInfo.getFontScale();
 
 interface SectionCardId extends CardId {
   special: boolean;

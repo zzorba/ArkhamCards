@@ -3,10 +3,13 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import Card from '../data/Card';
 import FactionGradient from './core/FactionGradient';
 import ArkhamIcon from '../assets/ArkhamIcon';
+import typography from '../styles/typography';
+import { s, iconSizeScale } from '../styles/space';
 
 interface Props {
   name: string;
@@ -31,9 +34,9 @@ export default function DeckTitleBarComponent({
       style={styles.titleBar}
       dark
     >
-      { !!iconName && <ArkhamIcon name={iconName} size={28} color="#FFFFFF" /> }
+      { !!iconName && <ArkhamIcon name={iconName} size={28 * iconSizeScale * DeviceInfo.getFontScale()} color="#FFFFFF" /> }
       <Text
-        style={[styles.title, { color: hasFactionColor ? '#FFFFFF' : '#000000' }]}
+        style={[typography.text, styles.title, { color: hasFactionColor ? '#FFFFFF' : '#000000' }]}
         numberOfLines={compact ? 1 : 2}
         ellipsizeMode="tail"
       >
@@ -57,10 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    marginLeft: 8,
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 22,
+    marginLeft: s,
     flex: 1,
   },
 });

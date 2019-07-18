@@ -8,6 +8,8 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import { iconSizeScale } from '../../styles/space';
+
 interface Props {
   count: number;
   onIncrement: () => void;
@@ -50,12 +52,12 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     const {
       count,
       limit,
-      size = 36,
       disabled,
       noFill,
       onIncrement,
       color,
     } = this.props;
+    const size = (this.props.size || 36) * iconSizeScale;
     const atLimit = limit && (count === limit);
     if (count === null || atLimit || disabled || limit === 0) {
       return (
@@ -86,7 +88,6 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
   renderMinusButton() {
     const {
       count,
-      size = 36,
       disabled,
       noFill,
       onDecrement,
@@ -94,6 +95,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       color,
       hideDisabledMinus,
     } = this.props;
+    const size = (this.props.size || 36) * iconSizeScale;
     if ((count > 0 || allowNegative) && !disabled) {
       return (
         <TouchableOpacity onPress={onDecrement}>

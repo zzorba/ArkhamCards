@@ -9,6 +9,7 @@ import DialogComponent from 'react-native-dialog';
 import { t } from 'ttag';
 import Dialog from '../core/Dialog';
 import { COLORS } from '../../styles/colors';
+import typography from '../../styles/typography';
 
 export type AddSectionFunction = (
   name: string,
@@ -129,12 +130,14 @@ export default class AddCampaignNoteSectionDialog extends React.Component<Props,
         />
         <DialogComponent.Switch
           label={t`Count`}
+          labelStyle={typography.dialogLabel}
           value={isCount}
           onValueChange={this._toggleCount}
           trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Switch
           label={t`Per Investigator`}
+          labelStyle={typography.dialogLabel}
           value={perInvestigator}
           onValueChange={this._toggleInvestigator}
           trackColor={COLORS.switchTrackColor}

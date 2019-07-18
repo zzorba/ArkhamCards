@@ -40,11 +40,12 @@ import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
 import { getNextCampaignId, AppState } from '../../../reducers';
-import typography from '../../../styles/typography';
-import { COLORS } from '../../../styles/colors';
 import { newCampaign } from '../actions';
 import { NavigationProps } from '../../types';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
+import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
+import { s, xs } from '../../../styles/space';
 
 type OwnProps = NavigationProps & WeaknessCardProps & InjectedDialogProps;
 
@@ -619,15 +620,15 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 
 const styles = StyleSheet.create({
   topPadding: {
-    marginTop: 8,
+    marginTop: s,
   },
   margin: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
   underline: {
-    paddingBottom: 8,
-    marginBottom: 4,
+    paddingBottom: s,
+    marginBottom: xs,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
@@ -635,6 +636,6 @@ const styles = StyleSheet.create({
     height: 100,
   },
   button: {
-    margin: 8,
+    margin: s,
   },
 });

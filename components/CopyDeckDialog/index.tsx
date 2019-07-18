@@ -4,6 +4,7 @@ import { throttle } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import DialogComponent from 'react-native-dialog';
+import { t } from 'ttag';
 
 import SelectDeckSwitch from './SelectDeckSwitch';
 import { parseDeck } from '../parseDeck';
@@ -14,10 +15,9 @@ import withNetworkStatus, { NetworkStatusProps } from '../core/withNetworkStatus
 import { saveClonedDeck } from '../decks/actions';
 import { login } from '../../actions';
 import { Deck } from '../../actions/types';
-import { t } from 'ttag';
+import { getDeck, getBaseDeck, getLatestDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
-import { getDeck, getBaseDeck, getLatestDeck, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 
 interface OwnProps {
@@ -268,8 +268,8 @@ class CopyDeckDialog extends React.Component<Props, State> {
     }
     return (
       <React.Fragment>
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`NEW NAME` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`New Name` }
         </DialogComponent.Description>
         <DialogComponent.Input
           textInputRef={this._captureTextInputRef}
@@ -279,8 +279,8 @@ class CopyDeckDialog extends React.Component<Props, State> {
           returnKeyType="done"
         />
         { this.renderDeckSelector() }
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`DECK TYPE` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Deck Type` }
         </DialogComponent.Description>
         <DialogComponent.Switch
           label={t`Create on ArkhamDB`}

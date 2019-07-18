@@ -14,6 +14,7 @@ import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from '../reducers';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
+import { s, xs } from '../styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -164,16 +165,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 4,
-    paddingBottom: 4,
-    paddingRight: 8,
+    paddingTop: xs,
+    paddingBottom: xs,
+    paddingLeft: s,
+    paddingRight: s,
   },
   buttonRow: {
-    padding: 8,
+    padding: s,
     width: '100%',
   },
   searchOption: {
-    marginLeft: 10,
     marginRight: 2,
   },
 });

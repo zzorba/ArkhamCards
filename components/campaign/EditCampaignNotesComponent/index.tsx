@@ -13,6 +13,7 @@ import { ShowTextEditDialog } from '../../core/withDialogs';
 import EditCountComponent from '../EditCountComponent';
 import InvestigatorSectionList from './InvestigatorSectionList';
 import NotesSection from './NotesSection';
+import { s, xs } from '../../../styles/space';
 
 interface Props {
   componentId: string;
@@ -170,15 +171,15 @@ export default class EditCampaignNotesComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   underline: {
-    paddingBottom: 8,
+    paddingBottom: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
-    marginBottom: 4,
+    marginBottom: xs,
   },
   investigatorSection: {
-    marginTop: 8,
+    marginTop: s,
   },
   button: {
-    margin: 8,
+    margin: s,
   },
 });
