@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textInput: {
-    paddingTop: (xs / 2 ),
+    paddingTop: (xs / 2),
     width: '100%',
     padding: 0,
     minHeight: 22,

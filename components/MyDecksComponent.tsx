@@ -94,7 +94,7 @@ class MyDecksComponent extends React.Component<Props> {
       return (
         <View style={[styles.banner, styles.warning, { width }]}>
           <Text style={typography.small}>
-            { t`Unable to update: you appear to be offline.`}
+            { t`Unable to update: you appear to be offline.` }
           </Text>
         </View>
       );

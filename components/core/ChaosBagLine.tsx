@@ -51,9 +51,4 @@ const styles = StyleSheet.create({
   commaView: {
     flexDirection: 'row',
   },
-  comma: {
-    fontSize: 18,
-    fontFamily: 'System',
-    color: '#222',
-  },
 });

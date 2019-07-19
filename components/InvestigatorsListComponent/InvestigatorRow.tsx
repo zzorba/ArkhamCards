@@ -100,8 +100,4 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 4,
   },
-  title: {
-    fontFamily: 'System',
-    fontSize: 22,
-  },
 });

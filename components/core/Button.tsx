@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { sizeScale } from '../../styles/space';
 import typography from '../../styles/typography';
 
 interface Props {

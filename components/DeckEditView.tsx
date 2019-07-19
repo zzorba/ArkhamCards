@@ -131,7 +131,6 @@ class DeckEditView extends React.Component<Props, State> {
   render() {
     const {
       componentId,
-      slots,
       tabooSetId,
       cards,
       deck,

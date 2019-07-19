@@ -2,7 +2,6 @@ import React from 'react';
 import DialogComponent from 'react-native-dialog';
 
 import { COLORS } from '../../styles/colors';
-import typography from '../../styles/typography';
 
 interface Props {
   tabooId: number;

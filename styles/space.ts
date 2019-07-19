@@ -3,7 +3,7 @@ import DeviceInfo from 'react-native-device-info';
 
 export const isBig = (Platform.OS === 'ios' && DeviceInfo.isTablet());
 export const sizeScale = isBig ? 2 : 1;
-export const iconSizeScale =  isBig ? 1.75 : 1;
+export const iconSizeScale = isBig ? 1.75 : 1;
 
 export const xs = 4 * sizeScale;
 export const s = 8 * sizeScale;
