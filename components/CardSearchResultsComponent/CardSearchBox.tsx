@@ -5,10 +5,12 @@ import {
   Text,
   View,
 } from 'react-native';
-
 import { t } from 'ttag';
+
 import Switch from '../core/Switch';
 import SearchBox, { SEARCH_BAR_HEIGHT } from '../SearchBox';
+import { isBig, s, xs } from '../../styles/space';
+import typography from '../../styles/typography';
 
 export const SEARCH_OPTIONS_HEIGHT = 44;
 
@@ -72,17 +74,23 @@ export default class CardSearchBox extends React.Component<Props, State> {
     } = this.props;
     return (
       <View style={styles.textSearchOptions}>
-        <Text style={styles.searchOption}>{ t`Game\nText` }</Text>
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isBig ? t`Game Text` : t`Game\nText` }
+        </Text>
         <Switch
           value={searchText}
           onValueChange={toggleSearchText}
         />
-        <Text style={styles.searchOption}>{ t`Flavor\nText` }</Text>
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isBig ? t`Flavor Text` : t`Flavor\nText` }
+        </Text>
         <Switch
           value={searchFlavor}
           onValueChange={toggleSearchFlavor}
         />
-        <Text style={styles.searchOption}>{ t`Card\nBacks` }</Text>
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isBig ? t`Card Backs` : t`Card\nBacks` }
+        </Text>
         <Switch
           value={searchBack}
           onValueChange={toggleSearchBack}
@@ -139,17 +147,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   textSearchOptions: {
-    paddingLeft: 4,
-    paddingRight: 8,
-    paddingBottom: 4,
+    paddingLeft: xs,
+    paddingRight: s,
+    paddingBottom: xs,
     flexDirection: 'row',
     alignItems: 'center',
     height: SEARCH_OPTIONS_HEIGHT,
   },
   searchOption: {
-    fontFamily: 'System',
-    fontSize: 12,
-    marginLeft: 10,
-    marginRight: 2,
+    marginLeft: s,
+    marginRight: xs,
   },
 });
