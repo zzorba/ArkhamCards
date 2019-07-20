@@ -60,6 +60,7 @@ function funLoadingMessages() {
 interface OwnProps {
   componentId: string;
   query?: string;
+  termQuery?: string;
   searchTerm?: string;
   sort?: SortType;
   investigator?: Card;
@@ -430,12 +431,13 @@ class CardResultList extends React.Component<Props, State> {
   resultsKey() {
     const {
       query,
+      termQuery,
       searchTerm,
       show_spoilers,
       sort,
     } = this.props;
     return (
-      `q:${query},s:${searchTerm},sp:${show_spoilers},st:${sort}`
+      `q:${query},tq:${termQuery},s:${searchTerm},sp:${show_spoilers},st:${sort}`
     );
   }
 
@@ -444,6 +446,8 @@ class CardResultList extends React.Component<Props, State> {
       realm,
       originalDeckSlots,
       tabooSetId,
+      searchTerm,
+      termQuery,
     } = this.props;
     const {
       deckCardCounts,
@@ -456,8 +460,11 @@ class CardResultList extends React.Component<Props, State> {
       code => originalDeckSlots[code] > 0 ||
         (deckCardCounts && deckCardCounts[code] > 0));
     const query = map(codes, code => ` (code == '${code}')`).join(' OR ');
-    const deckCards: Results<Card> = realm.objects<Card>('Card')
+    const possibleDeckCards: Results<Card> = realm.objects<Card>('Card')
       .filtered(`(${query}) and ${Card.tabooSetQuery(tabooSetId)}`);
+    const deckCards: Results<Card> = termQuery ?
+      possibleDeckCards.filtered(termQuery, searchTerm) :
+      possibleDeckCards;
     const splitDeckCards = partition(deckCards, card => isSpecialCard(card));
     const specialCards = sortBy(splitDeckCards[0], card => card.sort_by_type || -1);
     const normalCards = sortBy(splitDeckCards[1], card => card.sort_by_type || -1);
@@ -472,6 +479,7 @@ class CardResultList extends React.Component<Props, State> {
     const {
       realm,
       query,
+      termQuery,
       searchTerm,
       show_spoilers,
       tabooSetId,
@@ -480,11 +488,17 @@ class CardResultList extends React.Component<Props, State> {
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
     const resultsKey = this.resultsKey();
-    const cards: Results<Card> = (query ?
+    const queryCards: Results<Card> = (query ?
       realm.objects<Card>('Card').filtered(
         `(${query}) and ${Card.tabooSetQuery(tabooSetId)}`,
         searchTerm
-      ) : realm.objects<Card>('Card').filtered(Card.tabooSetQuery(tabooSetId))
+      ) : realm.objects<Card>('Card').filtered(
+        Card.tabooSetQuery(tabooSetId)
+      )
+    );
+    const cards: Results<Card> = (termQuery ?
+      queryCards.filtered(termQuery, searchTerm) :
+      queryCards
     ).sorted(this.getSort());
     const groupedCards = partition(
       cards,

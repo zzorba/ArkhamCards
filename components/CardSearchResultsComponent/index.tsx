@@ -111,7 +111,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     this._searchUpdated('');
   };
 
-  applyQueryFilter(query: string[]) {
+  termQuery(): string | undefined {
     const {
       searchTerm,
       searchText,
@@ -119,39 +119,40 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchBack,
     } = this.state;
 
-    if (searchTerm !== '') {
-      const parts = searchBack ? [
-        'name contains[c] $0',
-        'linked_card.name contains[c] $0',
-        'back_name contains[c] $0',
-        'linked_card.back_name contains[c] $0',
-        'subname contains[c] $0',
-        'linked_card.subname contains[c] $0',
-      ] : [
-        'renderName contains[c] $0',
-        'renderSubname contains[c] $0',
-      ];
-      if (searchText) {
-        parts.push('real_text contains[c] $0');
-        parts.push('linked_card.real_text contains[c] $0');
-        parts.push('traits contains[c] $0');
-        parts.push('linked_card.traits contains[c] $0');
-        if (searchBack) {
-          parts.push('back_text contains[c] $0');
-          parts.push('linked_card.back_text contains[c] $0');
-        }
-      }
-
-      if (searchFlavor) {
-        parts.push('flavor contains[c] $0');
-        parts.push('linked_card.flavor contains[c] $0');
-        if (searchBack) {
-          parts.push('back_flavor contains[c] $0');
-          parts.push('linked_card.back_flavor contains[c] $0');
-        }
-      }
-      query.push(`(${parts.join(' or ')})`);
+    if (searchTerm === '') {
+      return undefined;
     }
+    const parts = searchBack ? [
+      'name contains[c] $0',
+      'linked_card.name contains[c] $0',
+      'back_name contains[c] $0',
+      'linked_card.back_name contains[c] $0',
+      'subname contains[c] $0',
+      'linked_card.subname contains[c] $0',
+    ] : [
+      'renderName contains[c] $0',
+      'renderSubname contains[c] $0',
+    ];
+    if (searchText) {
+      parts.push('real_text contains[c] $0');
+      parts.push('linked_card.real_text contains[c] $0');
+      parts.push('traits contains[c] $0');
+      parts.push('linked_card.traits contains[c] $0');
+      if (searchBack) {
+        parts.push('back_text contains[c] $0');
+        parts.push('linked_card.back_text contains[c] $0');
+      }
+    }
+
+    if (searchFlavor) {
+      parts.push('flavor contains[c] $0');
+      parts.push('linked_card.flavor contains[c] $0');
+      if (searchBack) {
+        parts.push('back_flavor contains[c] $0');
+        parts.push('linked_card.back_flavor contains[c] $0');
+      }
+    }
+    return `(${parts.join(' or ')})`;
   }
 
   filterQueryParts() {
@@ -181,7 +182,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     }
     queryParts.push('(altArtInvestigator != true)');
     queryParts.push('(back_linked != true)');
-    this.applyQueryFilter(queryParts);
     forEach(
       this.filterQueryParts(),
       clause => queryParts.push(clause));
@@ -314,6 +314,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             componentId={componentId}
             tabooSetOverride={tabooSetOverride}
             query={this.query()}
+            termQuery={this.termQuery()}
             searchTerm={searchTerm}
             sort={selectedSort}
             investigator={investigator}
