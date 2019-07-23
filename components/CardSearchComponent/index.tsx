@@ -185,6 +185,19 @@ class CardSearchComponent extends React.Component<Props, State> {
     });
   };
 
+  componentDidUpdate(prevProps: Props) {
+    const { mythosMode, componentId } = this.props;
+    if (mythosMode !== prevProps.mythosMode) {
+      Navigation.mergeOptions(componentId, {
+        topBar: {
+          title: {
+            text: mythosMode ? t`Encounter Cards` : t`Player Cards`,
+          },
+        },
+      });
+    }
+  }
+
   componentDidAppear() {
     if (!this.state.visible) {
       this.setState({
@@ -207,6 +220,7 @@ class CardSearchComponent extends React.Component<Props, State> {
     const {
       componentId,
       mythosMode,
+      toggleMythosMode,
     } = this.props;
     toggleMythosMode(componentId, !mythosMode);
   };
