@@ -228,6 +228,7 @@ class CardResultList extends React.Component<Props, State> {
     const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
     if ((visible && !prevProps.visible && dirty) ||
         prevProps.query !== this.props.query ||
+        prevProps.termQuery !== this.props.termQuery ||
         prevProps.sort !== this.props.sort ||
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers ||

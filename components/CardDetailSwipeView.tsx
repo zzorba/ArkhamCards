@@ -3,6 +3,7 @@ import {
   Linking,
   ScrollView,
   StyleSheet,
+  Platform,
   View,
 } from 'react-native';
 import { map } from 'lodash';
@@ -57,7 +58,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           color: passProps.onDeckCountChange ? 'white' : COLORS.navButton,
         },
       },
-      popGesture: false,
     };
   }
 
@@ -288,6 +288,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       renderFooter,
       cards,
       initialIndex,
+      height,
     } = this.props;
     const {
       deckCardCounts,
@@ -297,7 +298,9 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       return null;
     }
     return (
-      <View style={styles.wrapper}>
+      <View
+        style={styles.wrapper}
+      >
         <Swiper
           index={initialIndex}
           width={width}
@@ -313,6 +316,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           ) }
         </Swiper>
         { !!renderFooter && renderFooter(deckCardCounts, this.renderDeckCountControl()) }
+        { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
       </View>
     );
   }
@@ -339,5 +343,11 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
+  },
+  gutter: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 10,
   },
 });

@@ -14,23 +14,6 @@ export default class App {
     store.subscribe(this.onStoreUpdate.bind(this, store));
     this._handleUrl = this.handleUrl.bind(this);
 
-    Navigation.setDefaultOptions({
-      topBar: {
-        buttonColor: COLORS.lightBlue,
-        background: {
-          color: 'white',
-        },
-      },
-      layout: {
-        backgroundColor: 'white',
-      },
-      bottomTab: {
-        textColor: COLORS.darkGray,
-        selectedIconColor: COLORS.lightBlue,
-        selectedTextColor: COLORS.lightBlue,
-      },
-    });
-
     this.onStoreUpdate(store);
   }
 
@@ -215,6 +198,23 @@ export default class App {
         },
       },
     }];
+
+    Navigation.setDefaultOptions({
+      topBar: {
+        buttonColor: COLORS.lightBlue,
+        background: {
+          color: 'white',
+        },
+      },
+      layout: {
+        backgroundColor: 'white',
+      },
+      bottomTab: {
+        textColor: COLORS.darkGray,
+        selectedIconColor: COLORS.lightBlue,
+        selectedTextColor: COLORS.lightBlue,
+      },
+    });
 
     Navigation.setRoot({
       root: {
