@@ -77,11 +77,13 @@ export default class CardCostIcon extends React.Component<Props> {
       inverted,
     } = this.props;
     const color = this.color();
+    const level = (card.xp === null || card.xp === undefined) ?
+      'none' : `${card.xp}`;
     return (
       <View style={styles.level}>
         <View style={styles.levelIcon}>
           <AppIcon
-            name={`${inverted ? 'inverted_' : ''}level_${card.xp || 0}`}
+            name={`${inverted ? 'inverted_' : ''}level_${level}`}
             size={ICON_SIZE}
             color={inverted ? '#FFF' : color}
           />
