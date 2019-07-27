@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { head, find, forEach, map, sum, sumBy } from 'lodash';
+import { head, find, forEach, keys, map, sum, sumBy } from 'lodash';
 import {
   Alert,
   AlertButton,
@@ -118,6 +118,42 @@ function deckToSections(
   return result;
 }
 
+
+function bondedSections(
+  slots: Slots,
+  cards: CardsMap,
+  bondedCardsByName: { [name: string]: Card[] }
+): CardSection[] {
+  const bondedCards: Card[] = [];
+  forEach(keys(slots), code => {
+    const card = cards[code];
+    if (slots[code] > 0 && card) {
+      const possibleBondedCards = bondedCardsByName[card.real_name];
+      if (possibleBondedCards && possibleBondedCards.length) {
+        forEach(possibleBondedCards, bonded => {
+          bondedCards.push(bonded);
+        });
+      }
+    }
+  });
+  if (!bondedCards.length) {
+    return [];
+  }
+  const count = sumBy(bondedCards, card => card.quantity || 0);
+  return [{
+    id: 'bonded-cards',
+    title: t`Bonded Cards (${count})`,
+    data: map(bondedCards, c => {
+      return {
+        id: c.code,
+        quantity: c.quantity || 0,
+        special: true,
+        hasUpgrades: false,
+      };
+    }),
+  }];
+}
+
 const DECK_PROBLEM_MESSAGES = {
   too_few_cards: t`Not enough cards.`,
   too_many_cards: t`Too many cards.`,
@@ -136,6 +172,9 @@ interface Props {
   hasPendingEdits?: boolean;
   cards: CardsMap;
   cardsByName: {
+    [name: string]: Card[];
+  };
+  bondedCardsByName: {
     [name: string]: Card[];
   };
   isPrivate: boolean;
@@ -425,11 +464,13 @@ export default class DeckViewTab extends React.Component<Props> {
         normalCards,
         specialCards,
         investigator,
+        slots,
       },
       meta,
       showEditSpecial,
       cards,
       cardsByName,
+      bondedCardsByName,
     } = this.props;
 
     const validation = new DeckValidation(investigator, meta);
@@ -443,6 +484,7 @@ export default class DeckViewTab extends React.Component<Props> {
         onPress: showEditSpecial,
       },
       ...deckToSections(specialCards, cards, cardsByName, validation, true),
+      ...bondedSections(slots, cards, bondedCardsByName),
     ];
   }
 

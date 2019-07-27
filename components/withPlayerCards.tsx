@@ -46,7 +46,7 @@ export default function withPlayerCards<Props, ExtraProps={}>(
           props: Props & ReduxProps
         ): PlayerCardProps & ExtraProps {
           const playerCards = results.cards.filtered(
-            `((type_code == "investigator" AND encounter_code == null) OR deck_limit > 0) and ${Card.tabooSetQuery(props.tabooSetId)}`
+            `((type_code == "investigator" AND encounter_code == null) OR deck_limit > 0 OR bonded_name != null) and ${Card.tabooSetQuery(props.tabooSetId)}`
           );
           const investigators: CardsMap = {};
           const cards: CardsMap = {};

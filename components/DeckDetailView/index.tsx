@@ -91,6 +91,9 @@ interface UpgradeCardProps {
   cardsByName: {
     [name: string]: Card[];
   };
+  bondedCardsByName: {
+    [name: string]: Card[];
+  };
 }
 
 interface ReduxActionProps {
@@ -1216,6 +1219,7 @@ class DeckDetailView extends React.Component<Props, State> {
       tabooSets,
       cardsByName,
       singleCardView,
+      bondedCardsByName,
     } = this.props;
     const {
       loaded,
@@ -1261,6 +1265,7 @@ class DeckDetailView extends React.Component<Props, State> {
             hasPendingEdits={hasPendingEdits}
             cards={cards}
             cardsByName={cardsByName}
+            bondedCardsByName={bondedCardsByName}
             isPrivate={!!isPrivate}
             buttons={this.renderButtons()}
             showEditNameDialog={this._showEditDetailsVisible}
@@ -1338,15 +1343,26 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
         const cardsByName: {
           [name: string]: Card[];
         } = {};
+        const bondedCardsByName: {
+          [name: string]: Card[];
+        } = {};
         forEach(cards, card => {
           if (cardsByName[card.real_name]) {
             cardsByName[card.real_name].push(card);
           } else {
             cardsByName[card.real_name] = [card];
           }
+          if (card.bonded_name) {
+            if (bondedCardsByName[card.bonded_name]) {
+              bondedCardsByName[card.bonded_name].push(card);
+            } else {
+              bondedCardsByName[card.bonded_name] = [card];
+            }
+          }
         });
         return {
           cardsByName,
+          bondedCardsByName,
         };
       }
     )
