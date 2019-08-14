@@ -188,11 +188,11 @@ export const saveDeckChanges: ActionCreator<
           changes.name || deck.name,
           changes.slots || deck.slots,
           changes.ignoreDeckLimitSlots || deck.ignoreDeckLimitSlots || {},
-          changes.problem !== undefined ? changes.problem : (deck.problem || ''),
-          changes.spentXp !== undefined ? changes.spentXp : (deck.spentXp || 0),
-          changes.xpAdjustment !== undefined ? changes.xpAdjustment : (deck.xp_adjustment || 0),
+          (changes.problem !== undefined && changes.problem !== null) ? changes.problem : (deck.problem || ''),
+          (changes.spentXp !== undefined && changes.spentXp !== null) ? changes.spentXp : (deck.spentXp || 0),
+          (changes.xpAdjustment !== undefined && changes.xpAdjustment !== null) ? changes.xpAdjustment : (deck.xp_adjustment || 0),
           changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
-          changes.meta !== undefined ? changes.meta : deck.meta
+          (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta
         );
         dispatch(updateDeck(newDeck.id, newDeck, true));
         setTimeout(() => {
@@ -204,11 +204,11 @@ export const saveDeckChanges: ActionCreator<
           changes.name || deck.name,
           changes.slots || deck.slots,
           changes.ignoreDeckLimitSlots || deck.ignoreDeckLimitSlots || {},
-          changes.problem !== undefined ? changes.problem : (deck.problem || ''),
-          changes.spentXp !== undefined ? changes.spentXp : (deck.spentXp || 0),
-          changes.xpAdjustment !== undefined ? changes.xpAdjustment : (deck.xp_adjustment || 0),
+          (changes.problem !== undefined && changes.problem !== null) ? changes.problem : (deck.problem || ''),
+          (changes.spentXp !== undefined && changes.spentXp !== null) ? changes.spentXp : (deck.spentXp || 0),
+          (changes.xpAdjustment !== undefined && changes.xpAdjustment !== null) ? changes.xpAdjustment : (deck.xp_adjustment || 0),
           changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,
-          changes.meta !== undefined ? changes.meta : deck.meta
+          (changes.meta !== undefined && changes.meta !== null) ? changes.meta : deck.meta
         );
         handleAuthErrors<Deck>(
           savePromise,
@@ -250,7 +250,7 @@ export const saveNewDeck: ActionCreator<
     dispatch: ThunkDispatch<AppState, {}, Action>,
     getState: () => AppState
   ): Promise<Deck> => {
-    return new Promise((resolve, reject) => {
+    return new Promise<Deck>((resolve, reject) => {
       if (params.local) {
         const nextLocalDeckId = getNextLocalDeckId(getState());
         const deck = newLocalDeck(
@@ -304,26 +304,32 @@ export const saveClonedDeck: ActionCreator<
   deckName: string
 ) => {
   return (dispatch: ThunkDispatch<AppState, {}, Action>): Promise<Deck> => {
-    return dispatch(saveNewDeck({
-      local,
-      deckName,
-      investigatorCode: cloneDeck.investigator_code,
-      slots: cloneDeck.slots,
-      ignoreDeckLimitSlots: cloneDeck.ignoreDeckLimitSlots,
-      tabooSetId: cloneDeck.taboo_id,
-      meta: cloneDeck.meta,
-    })).then(deck => {
-      return dispatch(saveDeckChanges(
-        deck,
-        {
-          slots: cloneDeck.slots,
-          ignoreDeckLimitSlots: cloneDeck.ignoreDeckLimitSlots,
-          problem: cloneDeck.problem,
-          spentXp: 0,
-          xpAdjustment: 0,
-          tabooSetId: cloneDeck.taboo_id,
-        }
-      ));
+    return new Promise<Deck>((resolve, reject) => {
+      dispatch(saveNewDeck({
+        local,
+        deckName,
+        investigatorCode: cloneDeck.investigator_code,
+        slots: cloneDeck.slots,
+        ignoreDeckLimitSlots: cloneDeck.ignoreDeckLimitSlots,
+        tabooSetId: cloneDeck.taboo_id,
+        meta: cloneDeck.meta,
+      })).then(deck => {
+        setTimeout(() => {
+          dispatch(saveDeckChanges(
+            deck,
+            {
+              slots: cloneDeck.slots,
+              ignoreDeckLimitSlots: cloneDeck.ignoreDeckLimitSlots,
+              problem: cloneDeck.problem,
+              spentXp: 0,
+              xpAdjustment: 0,
+              tabooSetId: cloneDeck.taboo_id,
+            }
+          )).then(resolve, reject);
+        },
+        // Slow it down to avoid ADB race conditions
+        1000);
+      }, reject);
     });
   };
 };

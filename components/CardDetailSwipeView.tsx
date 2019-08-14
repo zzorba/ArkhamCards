@@ -6,7 +6,6 @@ import {
   Platform,
   View,
 } from 'react-native';
-import { map } from 'lodash';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -310,11 +309,9 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           showsPagination={false}
           onIndexChanged={this._onIndexChange}
           loop={false}
-        >
-          { map(cards, (card, idx) =>
-            this._renderItem(card, idx)
-          ) }
-        </Swiper>
+          items={cards}
+          renderItem={this._renderItem}
+        />
         { !!renderFooter && renderFooter(deckCardCounts, this.renderDeckCountControl()) }
         { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
       </View>

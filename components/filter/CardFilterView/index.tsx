@@ -397,6 +397,10 @@ class CardFilterView extends React.Component<Props, State> {
         permanent,
         fast,
         exile,
+        bonded,
+        evadeAction,
+        investigateAction,
+        fightAction,
       },
       onToggleChange,
       onFilterChange,
@@ -574,6 +578,18 @@ class CardFilterView extends React.Component<Props, State> {
                 onChange={onToggleChange}
               />
               <ToggleFilter
+                label={t`Fight`}
+                setting="fightAction"
+                value={fightAction}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={t`Investigate`}
+                setting="investigateAction"
+                value={investigateAction}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
                 label={t`Victory`}
                 setting="victory"
                 value={victory}
@@ -591,6 +607,18 @@ class CardFilterView extends React.Component<Props, State> {
                 label={t`Unique`}
                 setting="unique"
                 value={unique}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={t`Evade`}
+                setting="evadeAction"
+                value={evadeAction}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={t`Bonded`}
+                setting="bonded"
+                value={bonded}
                 onChange={onToggleChange}
               />
               <ToggleFilter

@@ -15,7 +15,6 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
-import com.reactnativecommunity.viewpager.RNCViewPagerPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,8 +52,7 @@ public class MainApplication extends NavigationApplication {
         new LinearGradientPackage(),
         new BlurViewPackage(),
         new RNDeviceInfo(),
-        new NetInfoPackage(),
-        new RNCViewPagerPackage()
+        new NetInfoPackage()
     );
   }
 

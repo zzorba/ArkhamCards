@@ -54,7 +54,7 @@ export default function withPlayerCards<Props, ExtraProps={}>(
             playerCards,
             card => {
               cards[card.code] = card;
-              if (card.type_code === 'investigator') {
+              if (card.type_code === 'investigator' && card.encounter_code === null) {
                 investigators[card.code] = card;
               }
             });

@@ -1430,11 +1430,6 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-2.0.10.tgz#d28a446352e75754b78509557988359133cdbcca"
   integrity sha512-NrIzyLe0eSbhgMnHl2QdSEhaA7yXh6p9jzMomfUa//hoTXE+xbObGDdiWWSQm2bnXnZJg8XCU3AB9qzvqcuLnA==
 
-"@react-native-community/viewpager@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-1.1.7.tgz#7d3b1631f1ec91145db92a8e25c80d53027e96ba"
-  integrity sha512-k9v2KJtAprNPq7IZmedD2VLMePvPW+ohX3uDnkpoKritBji+/RtRmTKrdtPi3Uvp0toq/KtPttAds1dr7AZNpw==
-
 "@redux-offline/redux-offline@2.5.1":
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/@redux-offline/redux-offline/-/redux-offline-2.5.1.tgz#fc752e2ba3c21bfc7ac2dda9d1319e65891eda6c"
@@ -6799,12 +6794,10 @@ react-native-svg@^6.2.1:
     lodash "^4.16.6"
     pegjs "^0.10.0"
 
-react-native-swiper@1.6.0-nightly.1:
-  version "1.6.0-nightly.1"
-  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.6.0-nightly.1.tgz#d240b18d66376ded241aa6a05164b9b81e305bdb"
-  integrity sha512-5YVp1wTvkxTrvZGxhUhExQjJAAGwpCsVHYxLfbxRyNKhvXwksQ6zRYfjo2Y8STX85xmBKm1QKooYPU/FhvwHBA==
+"react-native-swiper@github:zzorba/react-native-swiper#switch_to_indexed_items":
+  version "1.6.0-nightly.4"
+  resolved "https://codeload.github.com/zzorba/react-native-swiper/tar.gz/d929f4021064f460f8f7cc25c650e05128491bcc"
   dependencies:
-    "@react-native-community/viewpager" "^1.1.7"
     prop-types "^15.5.10"
 
 react-native-tabular-grid-markdown-view@0.1.x:

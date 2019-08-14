@@ -35,6 +35,10 @@ export interface FilterState {
   permanent: boolean;
   fast: boolean;
   exile: boolean;
+  bonded: boolean;
+  fightAction: boolean;
+  investigateAction: boolean;
+  evadeAction: boolean;
   skillIcons: SkillIconsFilters;
   shroudEnabled: boolean;
   cluesEnabled: boolean;
@@ -92,6 +96,10 @@ export const defaultFilterState: FilterState = {
   unique: false,
   permanent: false,
   fast: false,
+  bonded: false,
+  fightAction: false,
+  investigateAction: false,
+  evadeAction: false,
   exile: false,
   skillIcons: {
     willpower: false,
@@ -363,6 +371,10 @@ function applyPlayerCardFilters(filters: FilterState, query: string[]) {
     uses,
     unique,
     fast,
+    bonded,
+    evadeAction,
+    fightAction,
+    investigateAction,
     permanent,
     exile,
   } = filters;
@@ -370,6 +382,18 @@ function applyPlayerCardFilters(filters: FilterState, query: string[]) {
   applyFilter(uses, 'uses', query);
   if (fast) {
     query.push(`(real_text CONTAINS 'Fast.' or linked_card.real_text CONTAINS 'Fast.')`);
+  }
+  if (bonded) {
+    query.push(`(bonded_name != null or linked_card.bonded_name != null)`);
+  }
+  if (fightAction) {
+    query.push(`(real_text CONTAINS '<b>Fight.</b>' or linked_card.real_text CONTAINS '<b>Fight.</b>')`);
+  }
+  if (evadeAction) {
+    query.push(`(real_text CONTAINS '<b>Evade.</b>' or linked_card.real_text CONTAINS '<b>Evade.</b>')`);
+  }
+  if (investigateAction) {
+    query.push(`(real_text CONTAINS '<b>Investigate.</b>' or linked_card.real_text CONTAINS '<b>Investigate.</b>')`);
   }
   if (permanent) {
     query.push(`(real_text CONTAINS 'Permanent.' or linked_card.real_text CONTAINS 'Permanent.')`);

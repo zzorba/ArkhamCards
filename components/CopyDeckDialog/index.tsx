@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Platform, TouchableOpacity, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { throttle } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ import { login } from '../../actions';
 import { Deck } from '../../actions/types';
 import { getDeck, getBaseDeck, getLatestDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';
-import space from '../../styles/space';
+import space, { s } from '../../styles/space';
 import { COLORS } from '../../styles/colors';
 
 interface OwnProps {
@@ -46,6 +46,7 @@ interface State {
   deckName: string | null;
   offlineDeck: boolean;
   selectedDeckId?: number;
+  error: string | null;
 }
 
 class CopyDeckDialog extends React.Component<Props, State> {
@@ -59,6 +60,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
       deckName: null,
       offlineDeck: !!(props.deck && props.deck.local),
       selectedDeckId: props.deckId,
+      error: null,
     };
 
     this._onOkayPress = throttle(this.onOkayPress.bind(this, false), 200);
@@ -171,6 +173,9 @@ class CopyDeckDialog extends React.Component<Props, State> {
     }
     const investigator = this.investigator();
     if (investigator && (!this.state.saving || isRetry)) {
+      this.setState({
+        saving: true,
+      });
       const local = (offlineDeck || !signedIn || networkType === 'none');
       saveClonedDeck(
         local,
@@ -178,10 +183,10 @@ class CopyDeckDialog extends React.Component<Props, State> {
         deckName || t`New Deck`
       ).then(
         this._showNewDeck,
-        () => {
-          // TODO: error.
+        (err) => {
           this.setState({
             saving: false,
+            error: err.message,
           });
         }
       );
@@ -256,6 +261,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
       saving,
       deckName,
       offlineDeck,
+      error,
     } = this.state;
     if (saving) {
       return (
@@ -295,6 +301,12 @@ class CopyDeckDialog extends React.Component<Props, State> {
               { t`You seem to be offline. Refresh Network?` }
             </DialogComponent.Description>
           </TouchableOpacity>
+        ) }
+
+        { !!error && (
+          <Text style={[typography.text, typography.center, styles.error]}>
+            { error }
+          </Text>
         ) }
       </React.Fragment>
     );
@@ -388,5 +400,9 @@ const styles = StyleSheet.create({
   descriptionMargin: {
     marginLeft: 8,
     marginRight: 8,
+  },
+  error: {
+    color: 'red',
+    marginBottom: s,
   },
 });
