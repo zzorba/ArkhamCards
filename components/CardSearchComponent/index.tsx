@@ -61,71 +61,13 @@ type Props = OwnProps & RealmProps & ReduxProps & ReduxActionProps;
 
 interface State {
   visible: boolean;
-  rightButtonIds: string[];
   filters?: FilterState;
 }
 class CardSearchComponent extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    const rightButtons = [{
-      id: 'filter',
-      component: {
-        name: 'TuneButton',
-        passProps: {
-          filterId: props.componentId,
-          baseQuery: props.baseQuery,
-          model: props.modal,
-          lightButton: !!props.onDeckCountChange,
-        },
-        testID: t`Filters`,
-      },
-      enabled: true,
-      icon: iconsMap.tune,
-      color: COLORS.navButton,
-    }, {
-      id: 'sort',
-      component: {
-        name: 'SortButton',
-        passProps: {
-          filterId: props.componentId,
-          lightButton: !!props.onDeckCountChange,
-        },
-        testID: t`Filters`,
-      },
-    }];
-    if (props.mythosToggle) {
-      rightButtons.push({
-        id: 'mythos',
-        component: {
-          name: 'MythosButton',
-          passProps: {
-            filterId: props.componentId,
-            lightButton: !!props.onDeckCountChange,
-          },
-          testID: t`Show Encounter Cards`,
-        },
-      });
-    }
-    if (props.onDeckCountChange) {
-      forEach(rightButtons, button => {
-        button.color = 'white';
-      });
-    }
-
-    this.state = {
-      visible: true,
-      rightButtonIds: map(rightButtons, button => button.id),
-    };
-
-    Navigation.mergeOptions(props.componentId, {
-      topBar: {
-        rightButtons,
-      },
-    });
-  }
+  state: State = {
+    visible: true,
+  };
 
   shouldComponentUpdate(nextProps: Props, nextState: State) {
     return this.state.visible || nextState.visible;
@@ -137,8 +79,63 @@ class CardSearchComponent extends React.Component<Props, State> {
       addFilterSet,
       defaultFilterState,
       sort,
+      baseQuery,
+      modal,
+      onDeckCountChange,
+      mythosToggle,
     } = this.props;
     addFilterSet(componentId, defaultFilterState, sort);
+
+    const rightButtons = [{
+      id: 'filter',
+      component: {
+        name: 'TuneButton',
+        passProps: {
+          filterId: componentId,
+          baseQuery: baseQuery,
+          model: modal,
+          lightButton: !!onDeckCountChange,
+        },
+        testID: t`Filters`,
+      },
+      enabled: true,
+      icon: iconsMap.tune,
+      color: COLORS.navButton,
+    }, {
+      id: 'sort',
+      component: {
+        name: 'SortButton',
+        passProps: {
+          filterId: componentId,
+          lightButton: !!onDeckCountChange,
+        },
+        testID: t`Filters`,
+      },
+    }];
+    if (mythosToggle) {
+      rightButtons.push({
+        id: 'mythos',
+        component: {
+          name: 'MythosButton',
+          passProps: {
+            filterId: componentId,
+            lightButton: !!onDeckCountChange,
+          },
+          testID: t`Show Encounter Cards`,
+        },
+      });
+    }
+    if (onDeckCountChange) {
+      forEach(rightButtons, button => {
+        button.color = 'white';
+      });
+    }
+
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        rightButtons,
+      },
+    });
   }
 
   _clearSearchFilters = () => {

@@ -49,54 +49,6 @@ export default class App {
       'Warning: isMounted(...) is deprecated',
     ]);
 
-    // const isIpad = Platform.OS === 'ios' && Platform.isPad;
-
-    /*
-    isIpad ? {
-      splitView: {
-        id: 'BROWSE_TAB',
-        master: {
-          stack: {
-            id: 'BROWSE_TAB_FILTERS_VIEW',
-            children: [
-              {
-                component: {
-                  name: 'Settings',
-                },
-              },
-            ],
-          },
-        },
-        detail: {
-          stack: {
-            id: 'BROWSE_TAB_CARD_VIEW',
-            children: [{
-              component: {
-                name: 'Browse.Cards',
-                options: {
-                  topBar: {
-                    title: {
-                      text: t`Player Cards`,
-                    },
-                  },
-                },
-              },
-            }],
-          },
-        },
-        options: {
-          splitView: {
-            displayMode: 'visible',
-            primaryEdge: 'trailing',
-            minWidth: 100,
-          },
-          bottomTab: {
-            text: t`Cards`,
-            icon: iconsMap.cards,
-          },
-        },
-      },
-    } :*/
     const browseCards = {
       component: {
         name: 'Browse.Cards',
