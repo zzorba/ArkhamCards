@@ -60,6 +60,7 @@ function funLoadingMessages() {
 interface OwnProps {
   componentId: string;
   query?: string;
+  filterQuery?: string;
   termQuery?: string;
   searchTerm?: string;
   sort?: SortType;
@@ -449,6 +450,7 @@ class CardResultList extends React.Component<Props, State> {
       tabooSetId,
       searchTerm,
       termQuery,
+      filterQuery,
     } = this.props;
     const {
       deckCardCounts,
@@ -461,8 +463,12 @@ class CardResultList extends React.Component<Props, State> {
       code => originalDeckSlots[code] > 0 ||
         (deckCardCounts && deckCardCounts[code] > 0));
     const query = map(codes, code => ` (code == '${code}')`).join(' OR ');
+    const queryParts = [`(${query})`, Card.tabooSetQuery(tabooSetId)];
+    if (filterQuery) {
+      queryParts.push(filterQuery);
+    }
     const possibleDeckCards: Results<Card> = realm.objects<Card>('Card')
-      .filtered(`(${query}) and ${Card.tabooSetQuery(tabooSetId)}`);
+      .filtered(queryParts.join(' and '));
     const deckCards: Results<Card> = termQuery ?
       possibleDeckCards.filtered(termQuery, searchTerm) :
       possibleDeckCards;

@@ -314,6 +314,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             componentId={componentId}
             tabooSetOverride={tabooSetOverride}
             query={this.query()}
+            filterQuery={this.filterQueryParts().join(' and ')}
             termQuery={this.termQuery()}
             searchTerm={searchTerm}
             sort={selectedSort}
