@@ -19,7 +19,7 @@ export default function withDimensions<P>(
     constructor(props: P) {
       super(props);
 
-      const { width, height } = Dimensions.get('screen');
+      const { width, height } = Dimensions.get('window');
       this.state = {
         width,
         height,
@@ -34,7 +34,7 @@ export default function withDimensions<P>(
       Dimensions.removeEventListener('change', this._onChange);
     }
 
-    _onChange = ({ screen: { width, height } }: {
+    _onChange = ({ window: { width, height } }: {
       window: ScaledSize;
       screen: ScaledSize;
     }) => {
