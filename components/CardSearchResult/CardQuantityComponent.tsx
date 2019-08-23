@@ -1,5 +1,5 @@
 import React from 'react';
-import { debounce } from 'lodash';
+import { debounce, range } from 'lodash';
 import {
   Animated,
   StyleSheet,
@@ -173,20 +173,12 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
               start={{ x: 0, y: 1 }}
               end={{ x: 1, y: 1 }}
             >
-              <CountButton
-                text="0"
-                selected={count === 0}
-                onPress={this._selectZero}
-              />
-              <CountButton text="1"
-                selected={count === 1}
-                onPress={this._selectOne}
-              />
-              { (limit > 1) && (
+              { range(0, limit + 1).map(buttonIdx =>
                 <CountButton
-                  text="2"
-                  selected={count === 2}
-                  onPress={this._selectTwo}
+                  key={buttonIdx}
+                  text={`${buttonIdx}`}
+                  selected={count === buttonIdx}
+                  onPress={() => this._selectCount(buttonIdx)}
                 />
               ) }
             </LinearGradient>

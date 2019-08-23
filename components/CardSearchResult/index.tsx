@@ -178,14 +178,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <View style={styles.skillIcon}>
           <ArkhamIcon
             name={card.factionCode()}
-            size={15}
+            size={SKILL_ICON_SIZE}
             color={FACTION_COLORS[card.factionCode()]}
           />
         </View>
         <View style={styles.skillIcon}>
           <ArkhamIcon
             name={card.faction2_code}
-            size={15}
+            size={SKILL_ICON_SIZE}
             color={FACTION_COLORS[card.faction2_code]}
           />
         </View>

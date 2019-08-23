@@ -351,12 +351,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <View style={styles.factionIcon}>
               { !!card.faction_code &&
                 (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-                <ArkhamIcon name={card.faction_code} size={28} color="#FFF" /> }
+                <ArkhamIcon name={card.faction_code} size={ICON_SIZE + 4} color="#FFF" /> }
             </View>
             <View style={styles.factionIcon}>
               { !!card.faction2_code &&
                 (CORE_FACTION_CODES.indexOf(card.faction2_code) !== -1) &&
-                <ArkhamIcon name={card.faction2_code} size={28} color="#FFF" /> }
+                <ArkhamIcon name={card.faction2_code} size={ICON_SIZE + 4} color="#FFF" /> }
             </View>
           </React.Fragment>
         );
@@ -478,14 +478,16 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
 
     if (!backFirst && card.spoiler && !this.state.showBack && card.type_code !== 'scenario') {
       return (
-        <View style={[styles.buttonContainer, { width }]}>
-          <Button grow text={t`Show back`} onPress={this._toggleShowBack} />
+        <View style={[styles.container, styles.buttonContainerPadding, { width }]}>
+          <View style={styles.buttonContainer}>
+            <Button grow text={t`Show back`} onPress={this._toggleShowBack} />
+          </View>
         </View>
       );
     }
 
     return (
-      <View style={[styles.container, { width }]}>
+      <View style={[styles.container, styles.containerPadding, { width }]}>
         <View style={[styles.card, {
           backgroundColor: '#FFFFFF',
           borderColor: card.faction2_code ?
@@ -679,19 +681,21 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const { width } = this.props;
     if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== RANDOM_BASIC_WEAKNESS) {
       return (
-        <View style={[styles.buttonContainer, { width }]}>
-          <Button
-            grow
-            text={(card.hidden || backFirst) ? t`Show back` : t`Show front`}
-            onPress={this._toggleShowBack}
-          />
+        <View style={[styles.container, styles.buttonContainerPadding, { width }]}>
+          <View style={styles.buttonContainer}>
+            <Button
+              grow
+              text={(card.hidden || backFirst) ? t`Show back` : t`Show front`}
+              onPress={this._toggleShowBack}
+            />
+          </View>
         </View>
       );
     }
 
     const isTablet = Platform.OS === 'ios' && DeviceInfo.isTablet();
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, styles.containerPadding]}>
         <View style={[
           styles.card,
           {
@@ -802,11 +806,13 @@ const styles = StyleSheet.create({
   metadataBlock: {
     marginBottom: s,
   },
-  container: {
+  containerPadding: {
     paddingTop: s,
     paddingLeft: s,
     paddingRight: s,
     paddingBottom: s,
+  },
+  container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
@@ -862,11 +868,13 @@ const styles = StyleSheet.create({
   illustratorText: {
     marginBottom: xs,
   },
-  buttonContainer: {
+  buttonContainerPadding: {
     paddingLeft: s,
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
+  },
+  buttonContainer: {
     flexDirection: 'row',
     justifyContent: isBig ? 'center' : 'flex-start',
     maxWidth: 768,
