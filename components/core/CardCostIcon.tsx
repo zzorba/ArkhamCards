@@ -34,6 +34,8 @@ export default class CardCostIcon extends React.Component<Props> {
       return '-';
     }
     if (card.cost === null && (
+      card.code === '03012' ||
+      card.code === '03306' ||
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness')
     ) {
