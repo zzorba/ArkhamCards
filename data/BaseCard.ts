@@ -219,6 +219,8 @@ export default class BaseCard {
       this.double_sided ||
       linked ||
       (this.cost === null && (
+        this.code === '03012' ||
+        this.code === '03306' ||
         this.subtype_code === 'weakness' ||
         this.subtype_code === 'basicweakness'))) {
       return t`Cost: -`;
