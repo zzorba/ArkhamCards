@@ -81,13 +81,15 @@ export function updateFilter(
 export function addFilterSet(
   id: string,
   filters: FilterState,
-  sort?: SortType
+  sort?: SortType,
+  mythosToggle?: boolean
 ): AddFilterSetAction {
   return {
     type: ADD_FILTER_SET,
     id,
     filters,
     sort,
+    mythosToggle,
   };
 }
 

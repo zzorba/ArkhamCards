@@ -45,7 +45,7 @@ export default function(
       },
       mythos: {
         ...state.mythos,
-        [action.id]: false,
+        [action.id]: !action.mythosToggle,
       },
       sorts: {
         ...state.sorts,

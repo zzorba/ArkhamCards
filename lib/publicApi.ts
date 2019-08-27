@@ -82,16 +82,21 @@ export const syncCards = function(
   const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
   const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
   const packsByCode: { [code: string]: Pack } = {};
-  const cycleNames: { [cycle_position: number]: string } = {};
+  const cycleNames: {
+    [cycle_position: number]: {
+      name?: string;
+      code?: string;
+    };
+  } = {};
   forEach(packs, pack => {
     packsByCode[pack.code] = pack;
     if (pack.position === 1) {
-      cycleNames[pack.cycle_position] = pack.name;
+      cycleNames[pack.cycle_position] = pack;
     }
   });
-  cycleNames[50] = t`Return to...`;
-  cycleNames[70] = t`Standalone Scenarios`;
-  cycleNames[80] = t`Books`;
+  cycleNames[50] = {};
+  cycleNames[70] = {};
+  cycleNames[80] = {};
   const headers = new Headers();
   if (cache &&
     cache.lastModified &&

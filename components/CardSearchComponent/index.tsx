@@ -34,7 +34,7 @@ interface ReduxProps {
 
 interface ReduxActionProps {
   clearFilters: (id: string, clearTraits?: string[]) => void;
-  addFilterSet: (id: string, filters: FilterState, sort?: SortType) => void;
+  addFilterSet: (id: string, filters: FilterState, sort?: SortType, mythosToggle?: boolean) => void;
   syncFilterSet: (id: string, filters: FilterState) => void;
   removeFilterSet: (id: string) => void;
   toggleMythosMode: (id: string, value: boolean) => void;
@@ -84,7 +84,7 @@ class CardSearchComponent extends React.Component<Props, State> {
       onDeckCountChange,
       mythosToggle,
     } = this.props;
-    addFilterSet(componentId, defaultFilterState, sort);
+    addFilterSet(componentId, defaultFilterState, sort, mythosToggle);
 
     const rightButtons = [{
       id: 'filter',

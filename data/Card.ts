@@ -188,7 +188,10 @@ export default class Card extends BaseCard {
       };
     },
     cycleNames: {
-      [cycle_code: string]: string;
+      [cycle_code: string]: {
+        name: string;
+        code?: string;
+      };
     },
     lang: string
   ): Card {
@@ -270,7 +273,7 @@ export default class Card extends BaseCard {
     const sort_by_faction = Card.factionHeaderOrder().indexOf(Card.factionSortHeader(json));
     const pack = packsByCode[json.pack_code] || null;
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
-    const cycle_name = pack ? cycleNames[pack.cycle_position] : null;
+    const cycle_pack = pack ? cycleNames[pack.cycle_position] : null;
     const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
     const enemy_horror = json.type_code === 'enemy' ? (json.enemy_horror || 0) : null;
     const enemy_damage = json.type_code === 'enemy' ? (json.enemy_damage || 0) : null;
@@ -304,7 +307,8 @@ export default class Card extends BaseCard {
         slots_normalized,
         uses,
         bonded_name,
-        cycle_name,
+        cycle_name: (cycle_pack && cycle_pack.name) || json.pack_name,
+        cycle_code: cycle_pack && cycle_pack.code || json.pack_code,
         has_restrictions: !!restrictions,
         restrictions,
         heals_horror,

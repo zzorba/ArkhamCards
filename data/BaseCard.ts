@@ -95,6 +95,7 @@ export default class BaseCard {
     // Derived data.
     altArtInvestigator: 'bool?',
     cycle_name: 'string?',
+    cycle_code: 'string?',
     has_restrictions: 'bool',
     has_upgrades: 'bool?',
     traits_normalized: 'string?',
@@ -194,6 +195,7 @@ export default class BaseCard {
   // Derived data.
   public altArtInvestigator?: boolean;
   public cycle_name!: string | null;
+  public cycle_code!: string | null;
   public has_restrictions!: boolean;
   public has_upgrades?: boolean;
   public traits_normalized!: string | null;
@@ -221,6 +223,7 @@ export default class BaseCard {
       (this.cost === null && (
         this.code === '03012' ||
         this.code === '03306' ||
+        this.code === '51031' ||
         this.subtype_code === 'weakness' ||
         this.subtype_code === 'basicweakness'))) {
       return t`Cost: -`;

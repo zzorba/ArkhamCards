@@ -562,26 +562,37 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={[typography.cardText, styles.illustratorText]}>
-              <AppIcon name="paintbrush" size={16} color="#000000" />
+              <AppIcon name="paintbrush" size={16 * DeviceInfo.getFontScale()} color="#000000" />
               { ` ${card.illustrator}` }
             </Text>
           ) }
           { !!card.pack_name &&
             <View style={styles.setRow}>
-              <Text style={typography.cardText}>
-                { `${card.pack_name} #${card.position % 1000}.` }
-              </Text>
-              { !!card.encounter_name &&
+              { !!card.encounter_name && !!card.encounter_code ? (
+                <>
+                  <Text style={typography.cardText}>
+                    <EncounterIcon encounter_code={card.encounter_code} size={16 * DeviceInfo.getFontScale()} color="#000" />
+                    { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
+                      ngettext(
+                        msgid`\n${card.quantity} copy.`,
+                        `\n${card.quantity} copies.`,
+                        card.quantity
+                      ) : ''
+                    }` }
+                  </Text>
+                  { card.encounter_name !== card.cycle_name && (
+                    <Text style={typography.cardText}>
+                      <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * DeviceInfo.getFontScale()} color="#000" />
+                      { ` ${card.cycle_name} #${card.position % 1000}.` }
+                    </Text>
+                  ) }
+                </>
+              ) : (
                 <Text style={typography.cardText}>
-                  { `${card.encounter_name} #${card.encounter_position}.${card.quantity && card.quantity > 1 ?
-                    ngettext(
-                      msgid`\n${card.quantity} copy.`,
-                      `\n${card.quantity} copies.`,
-                      card.quantity
-                    ) : ''
-                  }` }
+                  <EncounterIcon encounter_code={card.pack_code} size={16 * DeviceInfo.getFontScale()} color="#000" />
+                  { ` ${card.pack_name} #${card.position % 1000}.` }
                 </Text>
-              }
+              ) }
             </View>
           }
         </View>

@@ -110,9 +110,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sorcery':
       case 'the_beyond':
       case 'whippoorwills':
-      case 'return_to_extracurricular_activity':
+      case 'return_to_extracurricular_activities':
       case 'return_to_the_house_always_wins':
       case 'return_to_the_miskatonic_museum':
+      case 'return_to_the_essex_county_express':
       case 'return_to_blood_on_the_altar':
       case 'return_to_undimensioned_and_unseen':
       case 'return_to_where_doom_awaits':
@@ -127,6 +128,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
       case 'ptc': // THE PATH TO CARCOSA
         return this.carcosaIcon('carcosa', size, color);
+      case 'rtptc':
+        return this.carcosaIcon('return_to_the_path_to_carcosa', size, color);
       case 'eotp':
       case 'echoes_of_the_past':
         return this.carcosaIcon('echoes_of_the_past', size, color);

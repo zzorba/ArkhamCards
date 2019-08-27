@@ -462,6 +462,7 @@ export interface AddFilterSetAction {
   id: string;
   filters: FilterState;
   sort?: SortType;
+  mythosToggle?: boolean;
 }
 
 export const SYNC_FILTER_SET = 'SYNC_FILTER_SET';
