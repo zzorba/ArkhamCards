@@ -134,6 +134,7 @@ class DeckEditView extends React.Component<Props, State> {
       tabooSetId,
       cards,
       deck,
+      storyOnly,
     } = this.props;
 
     const {
@@ -150,6 +151,7 @@ class DeckEditView extends React.Component<Props, State> {
         deckCardCounts={deckCardCounts}
         onDeckCountChange={this._onDeckCountChange}
         renderFooter={this._renderFooter}
+        storyOnly={storyOnly}
         modal
       />
     );

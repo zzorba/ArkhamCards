@@ -55,6 +55,7 @@ interface OwnProps {
   limits?: Slots;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   modal?: boolean;
+  storyOnly?: boolean;
 }
 
 type Props = OwnProps & RealmProps & ReduxProps & ReduxActionProps;
@@ -239,6 +240,7 @@ class CardSearchComponent extends React.Component<Props, State> {
       defaultFilterState,
       mythosMode,
       selectedSort,
+      storyOnly,
     } = this.props;
     const {
       visible,
@@ -262,6 +264,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         limits={limits}
         renderFooter={renderFooter}
         visible={visible}
+        storyOnly={storyOnly}
       />
     );
   }

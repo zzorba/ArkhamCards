@@ -40,6 +40,7 @@ interface Props {
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
+  storyOnly?: boolean;
 }
 
 interface State {
@@ -302,6 +303,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       visible,
       tabooSetOverride,
       investigator,
+      storyOnly,
     } = this.props;
     const {
       searchTerm,
@@ -329,6 +331,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             visible={visible}
             renderFooter={renderFooter}
             showNonCollection={mythosMode || showNonCollection}
+            storyOnly={storyOnly}
           />
         </View>
         { !!renderFooter && <View style={[

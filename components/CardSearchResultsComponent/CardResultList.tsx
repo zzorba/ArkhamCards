@@ -77,6 +77,7 @@ interface OwnProps {
   showNonCollection?: boolean;
   expandSearchControls?: ReactNode;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
+  storyOnly?: boolean;
 }
 
 interface ReduxProps {
@@ -451,6 +452,8 @@ class CardResultList extends React.Component<Props, State> {
       searchTerm,
       termQuery,
       filterQuery,
+      storyOnly,
+      query,
     } = this.props;
     const {
       deckCardCounts,
@@ -462,8 +465,11 @@ class CardResultList extends React.Component<Props, State> {
       uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
       code => originalDeckSlots[code] > 0 ||
         (deckCardCounts && deckCardCounts[code] > 0));
-    const query = map(codes, code => ` (code == '${code}')`).join(' OR ');
-    const queryParts = [`(${query})`, Card.tabooSetQuery(tabooSetId)];
+    const deckQuery = map(codes, code => ` (code == '${code}')`).join(' OR ');
+    const queryParts = [`(${deckQuery})`, Card.tabooSetQuery(tabooSetId)];
+    if (storyOnly && query) {
+      queryParts.push(query);
+    }
     if (filterQuery) {
       queryParts.push(filterQuery);
     }
