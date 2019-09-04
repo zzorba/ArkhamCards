@@ -330,7 +330,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             expandSearchControls={this.renderExpandSearchButtons()}
             visible={visible}
             renderFooter={renderFooter}
-            showNonCollection={mythosMode || showNonCollection}
+            showNonCollection={showNonCollection}
             storyOnly={storyOnly}
           />
         </View>
