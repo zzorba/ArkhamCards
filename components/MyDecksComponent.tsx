@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { filter } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
+import { NetInfoStateType } from '@react-native-community/netinfo';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
@@ -84,13 +85,14 @@ class MyDecksComponent extends React.Component<Props> {
     const {
       error,
       networkType,
+      isConnected,
       width,
     } = this.props;
 
-    if (!error && networkType !== 'none') {
+    if (!error && networkType !== NetInfoStateType.none) {
       return null;
     }
-    if (networkType === 'none') {
+    if (!isConnected || networkType === NetInfoStateType.none) {
       return (
         <View style={[styles.banner, styles.warning, { width }]}>
           <Text style={typography.small}>

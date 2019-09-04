@@ -11,6 +11,7 @@ import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import DialogComponent from 'react-native-dialog';
+import { NetInfoStateType } from '@react-native-community/netinfo';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
 import TabooSetDialogOptions from '../TabooSetDialogOptions';
@@ -66,7 +67,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
     this.state = {
       saving: false,
-      offlineDeck: !props.signedIn || props.networkType === 'none',
+      offlineDeck: !props.signedIn || !props.isConnected || props.networkType === NetInfoStateType.none,
       optionSelected: [true],
       tabooSetId: props.defaultTabooSetId,
     };
@@ -179,6 +180,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     const {
       signedIn,
       networkType,
+      isConnected,
       saveNewDeck,
     } = this.props;
     const {
@@ -189,7 +191,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     } = this.state;
     const investigator = this.investigator();
     if (investigator && (!saving || isRetry)) {
-      const local = (offlineDeck || !signedIn || networkType === 'none');
+      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
       this.setState({
         saving: true,
       });
@@ -278,6 +280,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       signedIn,
       refreshNetworkStatus,
       networkType,
+      isConnected,
       tabooSets,
     } = this.props;
     const {
@@ -334,7 +337,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         <DialogComponent.Switch
           label={t`Create on ArkhamDB`}
           value={!offlineDeck}
-          disabled={!signedIn || networkType === 'none'}
+          disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
           onValueChange={this._onDeckTypeChange}
           trackColor={COLORS.switchTrackColor}
         />
@@ -343,7 +346,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             { t`Visit Settings to sign in to ArkhamDB.` }
           </DialogComponent.Description>
         ) }
-        { networkType === 'none' && (
+        { (!isConnected || networkType === NetInfoStateType.none) && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
             <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
               { t`You seem to be offline. Refresh Network?` }

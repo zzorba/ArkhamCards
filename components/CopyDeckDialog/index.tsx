@@ -4,6 +4,7 @@ import { throttle } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import DialogComponent from 'react-native-dialog';
+import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
 import SelectDeckSwitch from './SelectDeckSwitch';
@@ -160,6 +161,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
   onOkayPress(isRetry: boolean) {
     const {
       signedIn,
+      isConnected,
       networkType,
       saveClonedDeck,
     } = this.props;
@@ -176,7 +178,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
       this.setState({
         saving: true,
       });
-      const local = (offlineDeck || !signedIn || networkType === 'none');
+      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
       saveClonedDeck(
         local,
         cloneDeck,
@@ -255,6 +257,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
     const {
       signedIn,
       networkType,
+      isConnected,
       refreshNetworkStatus,
     } = this.props;
     const {
@@ -290,12 +293,12 @@ class CopyDeckDialog extends React.Component<Props, State> {
         </DialogComponent.Description>
         <DialogComponent.Switch
           label={t`Create on ArkhamDB`}
-          value={!offlineDeck && signedIn && networkType !== 'none'}
-          disabled={networkType === 'none'}
+          value={!offlineDeck && signedIn && isConnected && networkType !== NetInfoStateType.none}
+          disabled={!isConnected || networkType === NetInfoStateType.none}
           onValueChange={this._onDeckTypeChange}
           trackColor={COLORS.switchTrackColor}
         />
-        { networkType === 'none' && (
+        { (!isConnected || networkType === NetInfoStateType.none) && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
             <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
               { t`You seem to be offline. Refresh Network?` }

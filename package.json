@@ -16,7 +16,7 @@
   "dependencies": {
     "@matt-block/react-native-in-app-browser": "1.4.0",
     "@ptomasroos/react-native-multi-slider": "1.0.0",
-    "@react-native-community/netinfo": "2.0.10",
+    "@react-native-community/netinfo": "3.2.1",
     "@redux-offline/redux-offline": "2.5.1",
     "appcenter": "1.12.2",
     "appcenter-analytics": "1.12.2",
