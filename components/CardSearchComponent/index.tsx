@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { forEach, map } from 'lodash';
+import { forEach } from 'lodash';
 import Realm from 'realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';

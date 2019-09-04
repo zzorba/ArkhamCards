@@ -2,7 +2,6 @@ import { forEach, groupBy, head, sortBy } from 'lodash';
 import Realm from 'realm';
 import { Alert } from 'react-native';
 
-import { t } from 'ttag';
 import { CardCache, TabooCache, Pack } from '../actions/types';
 import Card from '../data/Card';
 import TabooSet from '../data/TabooSet';

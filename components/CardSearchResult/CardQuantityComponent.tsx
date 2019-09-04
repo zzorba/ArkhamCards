@@ -173,14 +173,14 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
               start={{ x: 0, y: 1 }}
               end={{ x: 1, y: 1 }}
             >
-              { range(0, limit + 1).map(buttonIdx =>
+              { range(0, limit + 1).map(buttonIdx => (
                 <CountButton
                   key={buttonIdx}
                   text={`${buttonIdx}`}
                   selected={count === buttonIdx}
                   onPress={() => this._selectCount(buttonIdx)}
                 />
-              ) }
+              )) }
             </LinearGradient>
           </Animated.View>
         </View>

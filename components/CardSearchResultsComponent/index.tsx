@@ -299,7 +299,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       renderFooter,
       showNonCollection,
       selectedSort,
-      mythosMode,
       visible,
       tabooSetOverride,
       investigator,
