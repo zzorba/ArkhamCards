@@ -189,7 +189,7 @@ export default class Card extends BaseCard {
     },
     cycleNames: {
       [cycle_code: string]: {
-        name: string;
+        name?: string;
         code?: string;
       };
     },
