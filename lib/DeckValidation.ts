@@ -198,7 +198,7 @@ export default class DeckValidation {
           max: 0
         },
         limit: versatileCount,
-        error: "Too many off-class cards for Versatile"
+        error: 'Too many off-class cards for Versatile'
       }));
     }
     return deck_options;
@@ -231,6 +231,7 @@ export default class DeckValidation {
     if (deck_options.length) {
   		//console.log(card);
   		for (var i = 0; i < deck_options.length; i++) {
+        const finalOption = (i === deck_options.length - 1);
   			var option = deck_options[i];
   			//console.log(option);
 
@@ -348,23 +349,27 @@ export default class DeckValidation {
   			if (option.not){
   				return false;
   			} else {
-  				if (processDeckCounts && option.limit){
-  					this.deck_options_counts[i].limit += 1;
-  				}
-  				if (processDeckCounts && option.atleast && card.faction_code) {
-  					if (!this.deck_options_counts[i].atleast[card.faction_code]) {
-  						this.deck_options_counts[i].atleast[card.faction_code] = 0;
-  					}
-  					this.deck_options_counts[i].atleast[card.faction_code] += 1;
+          if (processDeckCounts && option.atleast && card.faction_code) {
+            if (!this.deck_options_counts[i].atleast[card.faction_code]) {
+              this.deck_options_counts[i].atleast[card.faction_code] = 0;
+            }
+            this.deck_options_counts[i].atleast[card.faction_code] += 1;
 
             if (card.faction2_code){
               if (!this.deck_options_counts[i].atleast[card.faction2_code]){
-				        this.deck_options_counts[i].atleast[card.faction2_code] = 0;
+                this.deck_options_counts[i].atleast[card.faction2_code] = 0;
               }
               this.deck_options_counts[i].atleast[card.faction2_code] += 1;
-  					}
-  				}
-  				return true;
+            }
+          }
+  				if (processDeckCounts && option.limit) {
+            if (finalOption || this.deck_options_counts[i].limit < option.limit) {
+				      this.deck_options_counts[i].limit += 1;
+              return true;
+            }
+  				} else {
+            return true;
+          }
   			}
   		}
   	}

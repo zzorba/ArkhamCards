@@ -5,7 +5,7 @@ import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, DeckMeta, Slots } from '../actions/types';
 import { VERSATILE_CODE } from '../constants';
-import { queryForInvestigator } from '../lib/InvestigatorRequirements';
+import { queryForInvestigator, negativeQueryForInvestigator } from '../lib/InvestigatorRequirements';
 import { filterToQuery, defaultFilterState } from '../lib/filters';
 import { STORY_CARDS_QUERY } from '../data/query';
 import Card, { CardsMap } from '../data/Card';
@@ -129,18 +129,21 @@ class DeckEditView extends React.Component<Props, State> {
       return `((${STORY_CARDS_QUERY}) and (subtype_code != 'basicweakness'))`;
     }
     const parts = investigator ? [
-      `(${queryForInvestigator(investigator, meta)})`
+      `(${queryForInvestigator(investigator, meta)})`,
     ] : [];
     parts.push(`(${STORY_CARDS_QUERY})`);
     if (deckCardCounts[VERSATILE_CODE] > 0) {
-      const query = filterToQuery({
+      const versatileQuery = filterToQuery({
         ...defaultFilterState,
         factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
         level: [0, 0],
+        levelEnabled: true,
       }).join(' and ');
-      parts.push(`(${query})`);
+      const invertedClause = investigator ?
+        negativeQueryForInvestigator(investigator, meta) : '';
+      parts.push(`(${invertedClause}${versatileQuery})`);
     }
-    return parts.join(' or ');
+    return `(${parts.join(' or ')})`;
   }
 
   render() {

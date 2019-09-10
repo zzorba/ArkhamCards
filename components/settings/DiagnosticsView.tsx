@@ -1,5 +1,5 @@
 import React from 'react';
-import { map } from 'lodash';
+import { forEach, map } from 'lodash';
 import {
   Alert,
   Platform,
@@ -18,11 +18,11 @@ import {
 } from 'react-native-settings-components';
 
 import { t } from 'ttag';
-import { Campaign } from '../../actions/types';
+import { Campaign, Pack } from '../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
 import { clearDecks } from '../../actions';
 import Card from '../../data/Card';
-import { getCampaigns, AppState } from '../../reducers';
+import { getCampaigns, getAllPacks, AppState } from '../../reducers';
 import { fetchCards } from '../cards/actions';
 import { setAllCampaigns } from '../campaign/actions';
 import SettingsItem from './SettingsItem';
@@ -36,6 +36,7 @@ interface RealmProps {
 
 interface ReduxProps {
   campaigns: Campaign[];
+  packs: Pack[];
   lang: string;
 }
 
@@ -156,6 +157,69 @@ class DiagnosticsView extends React.Component<Props> {
     fetchCards(realm, lang);
   };
 
+  addDebugCardJson(json: string) {
+    const {
+      realm,
+      packs,
+      lang,
+    } = this.props;
+    const packsByCode: { [code: string]: Pack } = {};
+    const cycleNames: {
+      [cycle_position: number]: {
+        name?: string;
+        code?: string;
+      };
+    } = {};
+    forEach(packs, pack => {
+      packsByCode[pack.code] = pack;
+      if (pack.position === 1) {
+        cycleNames[pack.cycle_position] = pack;
+      }
+    });
+    cycleNames[50] = {};
+    cycleNames[70] = {};
+    cycleNames[80] = {};
+    realm.write(() => {
+      realm.create(
+        'Card',
+        Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang),
+        true
+      );
+    });
+  }
+
+  _addDebugCard = () => {
+    const {
+      showTextEditDialog,
+    } = this.props;
+    showTextEditDialog(
+      t`Debug Card Json`,
+      '',
+      (json) => {
+        Keyboard.dismiss();
+        setTimeout(() => this.addDebugCardJson(json), 1000);
+      },
+      false,
+      4
+    );
+  };
+
+  renderDebugSection() {
+    if (!__DEV__) {
+      return null;
+    }
+    return (
+      <React.Fragment>
+        <SettingsCategoryHeader
+          title={t`Debug`}
+          titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
+        />
+        <SettingsItem onPress={this._addDebugCard} text={t`Add Debug Card`} />
+
+      </React.Fragment>
+    );
+  }
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -172,6 +236,7 @@ class DiagnosticsView extends React.Component<Props> {
           />
           <SettingsItem onPress={this._clearImageCache} text={t`Clear image cache`} />
           <SettingsItem onPress={this._clearCache} text={t`Clear cache`} />
+          { this.renderDebugSection() }
         </ScrollView>
       </SafeAreaView>
     );
@@ -181,6 +246,7 @@ class DiagnosticsView extends React.Component<Props> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     campaigns: getCampaigns(state),
+    packs: getAllPacks(state),
     lang: state.packs.lang || 'en',
   };
 }
