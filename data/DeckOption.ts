@@ -26,18 +26,18 @@ export default class DeckOption {
     },
   };
 
-  public type_code!: TypeCodeType[];
-  public faction!: FactionCodeType[];
-  public uses!: string[];
-  public trait!: string[];
-  public text!: string[];
+  public type_code?: TypeCodeType[];
+  public faction?: FactionCodeType[];
+  public uses?: string[];
+  public trait?: string[];
+  public text?: string[];
   public atleast?: DeckAtLeastOption;
   public level?: DeckOptionLevel;
   public limit?: number;
   public error?: string;
   public not?: boolean;
   public real_name?: string;
-  public faction_select!: FactionCodeType[];
+  public faction_select?: FactionCodeType[];
 
   name() {
     switch (this.real_name) {
@@ -141,33 +141,35 @@ export default class DeckOption {
   }
 
   static parseList(jsonList: any[]): DeckOption[] {
-    return map(jsonList, json => {
-      const deck_option = new DeckOption();
-      deck_option.faction = json.faction || [];
-      deck_option.faction_select = json.faction_select || [];
-      deck_option.uses = json.uses || [];
-      deck_option.text = json.text || [];
-      deck_option.trait = json.trait || [];
-      deck_option.type_code = json.type || [];
-      deck_option.limit = json.limit;
-      deck_option.error = json.error;
-      deck_option.not = json.not ? true : undefined;
-      deck_option.real_name = json.name || undefined;
-      if (json.level) {
-        const level = new DeckOptionLevel();
-        level.min = json.level.min;
-        level.max = json.level.max;
-        deck_option.level = level;
-      }
+    return map(jsonList, DeckOption.parse);
+  }
 
-      if (json.atleast) {
-        const atleast = new DeckAtLeastOption();
-        atleast.factions = json.atleast.factions;
-        atleast.min = json.atleast.min;
-        deck_option.atleast = atleast;
-      }
+  static parse(json: any): DeckOption {
+    const deck_option = new DeckOption();
+    deck_option.faction = json.faction || [];
+    deck_option.faction_select = json.faction_select || [];
+    deck_option.uses = json.uses || [];
+    deck_option.text = json.text || [];
+    deck_option.trait = json.trait || [];
+    deck_option.type_code = json.type || [];
+    deck_option.limit = json.limit;
+    deck_option.error = json.error;
+    deck_option.not = json.not ? true : undefined;
+    deck_option.real_name = json.name || undefined;
+    if (json.level) {
+      const level = new DeckOptionLevel();
+      level.min = json.level.min;
+      level.max = json.level.max;
+      deck_option.level = level;
+    }
 
-      return deck_option;
-    });
+    if (json.atleast) {
+      const atleast = new DeckAtLeastOption();
+      atleast.factions = json.atleast.factions;
+      atleast.min = json.atleast.min;
+      deck_option.atleast = atleast;
+    }
+
+    return deck_option;
   }
 }

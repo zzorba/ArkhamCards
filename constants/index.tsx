@@ -219,3 +219,4 @@ export function createFactionIcons(
 }
 
 export const RANDOM_BASIC_WEAKNESS = '01000';
+export const VERSATILE_CODE = '06167';

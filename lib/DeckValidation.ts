@@ -1,12 +1,22 @@
-import { indexOf } from 'lodash';
+import {
+  groupBy,
+  mapValues,
+  forEach,
+  find,
+  findKey,
+  filter,
+  indexOf,
+} from 'lodash';
+
 import { DeckMeta, DeckProblem, DeckProblemType } from '../actions/types';
+import { VERSATILE_CODE } from '../constants';
 import Card from '../data/Card';
+import DeckOption from '../data/DeckOption';
 
 
 // Code taken from:
 // https://github.com/Kamalisk/arkhamdb/blob/4c194c54fcbc381e45b93f0f1bcb65a37ae581a9/src/AppBundle/Resources/public/js/app.deck.js
 /* eslint-disable */
-import { groupBy, mapValues, forEach, find, findKey, filter } from 'lodash';
 
 interface DeckOptionsCount {
   limit: number,
@@ -94,6 +104,8 @@ export default class DeckValidation {
   	} else {
 
   	}
+    const versatileCount = filter(cards, card => card.code === VERSATILE_CODE).length;
+    size += (versatileCount * 5);
 
   	// too many copies of one card
   	if(findKey(
@@ -103,15 +115,13 @@ export default class DeckValidation {
     }
 
   	// no invalid card
-  	if(this.getInvalidCards(cards).length > 0) {
+  	if(this.getInvalidCards(cards, versatileCount).length > 0) {
   		return 'invalid_cards';
   	}
 
-    const investigator = this.investigator;
-  	//console.log(investigator);
-  	for (var i = 0; i < investigator.deck_options.length; i++) {
-  		//console.log(investigator.deck_options);
-      const option = investigator.deck_options[i];
+    const deck_options = this.deckOptions(versatileCount);
+  	for (var i = 0; i < deck_options.length; i++) {
+      const option = deck_options[i];
       if (!option) {
         continue;
       }
@@ -155,9 +165,9 @@ export default class DeckValidation {
     return null;
   }
 
-  getInvalidCards(cards: Card[]) {
+  getInvalidCards(cards: Card[], versatileCount: number) {
+    this.deck_options_counts = [];
   	if (this.investigator) {
-      this.deck_options_counts = [];
   		for (var i = 0; i < this.investigator.deck_options.length; i++){
   			this.deck_options_counts.push({
           limit: 0,
@@ -165,10 +175,40 @@ export default class DeckValidation {
         });
   		}
   	}
-  	return filter(cards, card => !this.canIncludeCard(card, true));
+    if (versatileCount > 0) {
+      this.deck_options_counts.push({
+        limit: 0,
+        atleast: {},
+      });
+    }
+  	return filter(cards, card => !this.canIncludeCard(card, true, versatileCount));
   }
 
-  canIncludeCard(card: Card, processDeckCounts: boolean): boolean {
+  deckOptions(versatileCount: number): DeckOption[] {
+    var deck_options: DeckOption[] = [];
+  	if (this.investigator &&
+        this.investigator.deck_options &&
+        this.investigator.deck_options.length) {
+      forEach(this.investigator.deck_options, deck_option => deck_options.push(deck_option));
+    }
+    if (versatileCount > 0) {
+      deck_options.push(DeckOption.parse({
+        level: {
+          min: 0,
+          max: 0
+        },
+        limit: versatileCount,
+        error: "Too many off-class cards for Versatile"
+      }));
+    }
+    return deck_options;
+  }
+
+  canIncludeCard(
+    card: Card,
+    processDeckCounts: boolean,
+    versatileCount?: number
+  ): boolean {
     const investigator = this.investigator;
 
   	// hide investigators
@@ -187,14 +227,11 @@ export default class DeckValidation {
   	}
 
   	//var investigator = app.data.cards.findById(investigator_code);
-
-  	if (investigator &&
-        investigator.deck_options &&
-        investigator.deck_options.length) {
-
+    const deck_options: DeckOption[] = this.deckOptions(versatileCount || 0);
+    if (deck_options.length) {
   		//console.log(card);
-  		for (var i = 0; i < investigator.deck_options.length; i++) {
-  			var option = investigator.deck_options[i];
+  		for (var i = 0; i < deck_options.length; i++) {
+  			var option = deck_options[i];
   			//console.log(option);
 
   			if (option.faction && option.faction.length){

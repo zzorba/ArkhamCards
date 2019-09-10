@@ -4,7 +4,9 @@ import { find, head } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, DeckMeta, Slots } from '../actions/types';
+import { VERSATILE_CODE } from '../constants';
 import { queryForInvestigator } from '../lib/InvestigatorRequirements';
+import { filterToQuery, defaultFilterState } from '../lib/filters';
 import { STORY_CARDS_QUERY } from '../data/query';
 import Card, { CardsMap } from '../data/Card';
 import CardSearchComponent from './CardSearchComponent';
@@ -120,12 +122,25 @@ class DeckEditView extends React.Component<Props, State> {
       investigator,
       storyOnly,
     } = this.props;
+    const {
+      deckCardCounts,
+    } = this.state;
     if (storyOnly) {
       return `((${STORY_CARDS_QUERY}) and (subtype_code != 'basicweakness'))`;
     }
-    return investigator ?
-      `((${queryForInvestigator(investigator, meta)}) or (${STORY_CARDS_QUERY}))` :
-      undefined;
+    const parts = investigator ? [
+      `(${queryForInvestigator(investigator, meta)})`
+    ] : [];
+    parts.push(`(${STORY_CARDS_QUERY})`);
+    if (deckCardCounts[VERSATILE_CODE] > 0) {
+      const query = filterToQuery({
+        ...defaultFilterState,
+        factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
+        level: [0, 0],
+      }).join(' and ');
+      parts.push(`(${query})`);
+    }
+    return parts.join(' or ');
   }
 
   render() {

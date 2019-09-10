@@ -250,7 +250,7 @@ export default class BaseCard {
   investigatorOptions(): DeckOption[] {
     if (this.type_code === 'investigator' && this.deck_options) {
       return filter(this.deck_options, option => {
-        return option.faction_select && option.faction_select.length > 0;
+        return !!(option.faction_select && option.faction_select.length > 0);
       });
     }
     return [];
