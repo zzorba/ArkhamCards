@@ -40,6 +40,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
         enemyPrey,
         enemyAloof,
         enemyMassive,
+        enemySwarm,
       },
       onToggleChange,
     } = this.props;
@@ -113,6 +114,12 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
             label={t`Prey`}
             setting="enemyPrey"
             value={enemyPrey}
+            onChange={onToggleChange}
+          />
+          <ToggleFilter
+            label={t`Swarm`}
+            setting="enemySwarm"
+            value={enemySwarm}
             onChange={onToggleChange}
           />
         </View>

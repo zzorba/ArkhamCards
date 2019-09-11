@@ -36,6 +36,8 @@ export interface FilterState {
   fast: boolean;
   exile: boolean;
   bonded: boolean;
+  seal: boolean;
+  myriad: boolean;
   fightAction: boolean;
   investigateAction: boolean;
   evadeAction: boolean;
@@ -62,6 +64,7 @@ export interface FilterState {
   enemyPrey: boolean;
   enemyAloof: boolean;
   enemyMassive: boolean;
+  enemySwarm: boolean;
   // Slider controls that are dynamically sized
   level: [number, number];
   cost: [number, number];
@@ -101,6 +104,8 @@ export const defaultFilterState: FilterState = {
   investigateAction: false,
   evadeAction: false,
   exile: false,
+  myriad: false,
+  seal: false,
   skillIcons: {
     willpower: false,
     intellect: false,
@@ -131,6 +136,7 @@ export const defaultFilterState: FilterState = {
   enemyPrey: false,
   enemyAloof: false,
   enemyMassive: false,
+  enemySwarm: false,
   // Slider controls that are dynamically sized
   level: [0, 5],
   cost: [0, 6],
@@ -249,6 +255,7 @@ function applyEnemyFilters(filters: FilterState, query: string[]) {
     enemyPrey,
     enemyAloof,
     enemyMassive,
+    enemySwarm,
     // range filters
     enemyEvade,
     enemyEvadeEnabled,
@@ -295,6 +302,9 @@ function applyEnemyFilters(filters: FilterState, query: string[]) {
   }
   if (enemyMassive) {
     query.push(`(real_text CONTAINS 'Massive.' or linked_card.real_text CONTAINS 'Massive.')`);
+  }
+  if (enemySwarm) {
+    query.push(`(real_text CONTAINS 'Swarm.' or linked_card.real_text CONTAINS 'Swarm.')`);
   }
   if (enemyFightEnabled) {
     applyRangeFilter(query, 'enemy_fight', enemyFight, true);
@@ -372,6 +382,8 @@ function applyPlayerCardFilters(filters: FilterState, query: string[]) {
     unique,
     fast,
     bonded,
+    seal,
+    myriad,
     evadeAction,
     fightAction,
     investigateAction,
@@ -403,6 +415,12 @@ function applyPlayerCardFilters(filters: FilterState, query: string[]) {
   }
   if (unique) {
     query.push('((is_unique == true or linked_card.is_unique == true) && type_code != "enemy")');
+  }
+  if (seal) {
+    query.push(`(seal == true or linked_card.seal == true)`);
+  }
+  if (myriad) {
+    query.push(`(real_text CONTAINS 'Myriad.' or linked_card.real_text CONTAINS 'Myriad.')`);
   }
 }
 

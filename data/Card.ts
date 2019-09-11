@@ -8,8 +8,10 @@ import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { BASIC_SKILLS } from '../constants';
 
+const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
+const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror');
 
 export default class Card extends BaseCard {
@@ -266,6 +268,9 @@ export default class Card extends BaseCard {
     const bonded_match = json.real_text && json.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;
 
+    const seal_match = json.real_text && json.real_text.match(SEAL_REGEX);
+    const seal = !!seal_match || json.code === SERPENTS_OF_YIG;
+
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
 
@@ -310,6 +315,7 @@ export default class Card extends BaseCard {
         cycle_name: (cycle_pack && cycle_pack.name) || json.pack_name,
         cycle_code: cycle_pack && cycle_pack.code || json.pack_code,
         has_restrictions: !!restrictions,
+        seal,
         restrictions,
         heals_horror,
         sort_by_type,

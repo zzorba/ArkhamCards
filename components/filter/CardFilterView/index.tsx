@@ -398,6 +398,8 @@ class CardFilterView extends React.Component<Props, State> {
         fast,
         exile,
         bonded,
+        seal,
+        myriad,
         evadeAction,
         investigateAction,
         fightAction,
@@ -578,6 +580,12 @@ class CardFilterView extends React.Component<Props, State> {
                 onChange={onToggleChange}
               />
               <ToggleFilter
+                label={t`Seal`}
+                setting="seal"
+                value={seal}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
                 label={t`Fight`}
                 setting="fightAction"
                 value={fightAction}
@@ -607,6 +615,12 @@ class CardFilterView extends React.Component<Props, State> {
                 label={t`Unique`}
                 setting="unique"
                 value={unique}
+                onChange={onToggleChange}
+              />
+              <ToggleFilter
+                label={t`Myriad`}
+                setting="myriad"
+                value={myriad}
                 onChange={onToggleChange}
               />
               <ToggleFilter

@@ -98,6 +98,7 @@ export default class BaseCard {
     cycle_code: 'string?',
     has_restrictions: 'bool',
     has_upgrades: 'bool?',
+    seal: 'bool?',
     traits_normalized: 'string?',
     real_traits_normalized: 'string?',
     slots_normalized: 'string?',
@@ -203,6 +204,7 @@ export default class BaseCard {
   public slots_normalized!: string | null;
   public uses!: string | null;
   public bonded_name!: string | null;
+  public seal?: boolean;
   public heals_horror?: boolean;
   public sort_by_type!: number;
   public sort_by_faction!: number;
