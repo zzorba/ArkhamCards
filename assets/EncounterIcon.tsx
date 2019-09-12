@@ -131,26 +131,20 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'rtptc':
         return this.carcosaIcon('return_to_the_path_to_carcosa', size, color);
       case 'eotp':
-      case 'echoes_of_the_past':
         return this.carcosaIcon('echoes_of_the_past', size, color);
       case 'tuo':
-      case 'the_unspeakable_oath':
         return this.carcosaIcon('the_unspeakable_oath', size, color);
       case 'apot':
-      case 'a_phantom_of_truth':
         return this.carcosaIcon('a_phantom_of_truth', size, color);
       case 'tpm':
-      case 'the_pallid_mask':
         return this.carcosaIcon('the_pallid_mask', size, color);
       case 'bsr':
-      case 'black_stars_rise':
         return this.carcosaIcon('black_stars_rise', size, color);
       case 'flood':
         return this.carcosaIcon('the_flood_below', size, color);
       case 'vortex':
         return this.carcosaIcon('the_vortex_above', size, color);
       case 'dca':
-      case 'dim_carcosa':
         return this.carcosaIcon('dim_carcosa', size, color);
       case 'byakhee':
       case 'cult_of_the_yellow_sign':
@@ -159,8 +153,23 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'evil_portents':
       case 'hasturs_gift':
       case 'inhabitants_of_carcosa':
-      case 'the_last_king':
+      case 'return_to_the_path_to_carcosa':
       case 'curtain_call':
+      case 'the_last_king':
+      case 'echoes_of_the_past':
+      case 'the_unspeakable_oath':
+      case 'a_phantom_of_truth':
+      case 'the_pallid_mask':
+      case 'black_stars_rise':
+      case 'dim_carcosa':
+      case 'return_to_curtain_call':
+      case 'return_to_the_last_king':
+      case 'return_to_echoes_of_the_past':
+      case 'return_to_the_unspeakable_oath':
+      case 'return_to_a_phantom_of_truth':
+      case 'return_to_the_pallid_mask':
+      case 'return_to_black_stars_rise':
+      case 'return_to_dim_carcosa':
         return this.carcosaIcon(encounter_code, size, color);
       case 'decay':
         return this.carcosaIcon('decay_and_filth', size, color);
