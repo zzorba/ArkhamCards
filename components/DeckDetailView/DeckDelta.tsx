@@ -9,8 +9,8 @@ import { Navigation } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import { getDeckOptions } from '../navHelper';
-import { ParsedDeck } from '../parseDeck';
 import { DeckDetailProps } from '../DeckDetailView';
+import { ParsedDeck } from '../../actions/types';
 import typography from '../../styles/typography';
 import { s } from '../../styles/space';
 

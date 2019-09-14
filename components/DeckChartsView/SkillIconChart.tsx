@@ -4,7 +4,7 @@ import { BarChart } from 'react-native-svg-charts';
 import { View, Text, StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
-import { ParsedDeck } from '../parseDeck';
+import { ParsedDeck } from '../../actions/types';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { SKILLS, SKILL_COLORS, SkillCodeType } from '../../constants';
 import typography from '../../styles/typography';

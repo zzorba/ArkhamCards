@@ -4,8 +4,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { ParsedDeck } from '../parseDeck';
-
+import { ParsedDeck } from '../../actions/types';
 import FactionChart from './FactionChart';
 import CostChart from './CostChart';
 import SlotsChart from './SlotsChart';

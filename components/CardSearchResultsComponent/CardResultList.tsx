@@ -34,7 +34,7 @@ import {
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '../../reducers';
 import Card from '../../data/Card';
 import { showCard, showCardSwipe } from '../navHelper';
-import { isSpecialCard } from '../parseDeck';
+import { isSpecialCard } from '../../lib/parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import { ROW_HEIGHT } from '../CardSearchResult/constants';
 import CardSectionHeader, { ROW_HEADER_HEIGHT } from './CardSectionHeader';

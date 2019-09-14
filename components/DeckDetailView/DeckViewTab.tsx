@@ -19,8 +19,7 @@ import DeviceInfo from 'react-native-device-info';
 import { msgid, ngettext, t } from 'ttag';
 
 import AppIcon from '../../assets/AppIcon';
-import { Campaign, Deck, DeckMeta, DeckProblem, InvestigatorData, Slots, Trauma } from '../../actions/types';
-import { CardId, ParsedDeck, SplitCards } from '../parseDeck';
+import { Campaign, CardId, Deck, DeckMeta, DeckProblem, InvestigatorData, ParsedDeck, SplitCards, Slots, Trauma } from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';

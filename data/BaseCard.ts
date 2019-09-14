@@ -66,6 +66,7 @@ export default class BaseCard {
     is_unique: 'bool?',
     exile: 'bool?',
     hidden: 'bool?',
+    myriad: 'bool?',
     permanent: 'bool?',
     double_sided: 'bool',
     url: 'string?',
@@ -167,6 +168,7 @@ export default class BaseCard {
   public is_unique?: boolean;
   public exile?: boolean;
   public hidden?: boolean;
+  public myriad?: boolean;
   public permanent?: boolean;
   public double_sided?: boolean;
   public url!: string | null;

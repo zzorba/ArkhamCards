@@ -4,7 +4,7 @@ import { StackedBarChart } from 'react-native-svg-charts';
 import { View, Text, StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
-import { ParsedDeck } from '../parseDeck';
+import { ParsedDeck } from '../../actions/types';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import { PLAYER_FACTION_CODES, FACTION_COLORS, FactionCodeType } from '../../constants';
 import typography from '../../styles/typography';

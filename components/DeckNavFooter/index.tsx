@@ -12,11 +12,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
-import { DeckMeta } from '../../actions/types';
+import { DeckMeta, ParsedDeck } from '../../actions/types';
 import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
 import { DrawSimulatorProps } from '../DrawSimulatorView';
-import { ParsedDeck } from '../parseDeck';
 import { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 import { TINY_PHONE } from '../../styles/sizes';

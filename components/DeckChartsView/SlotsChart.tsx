@@ -4,7 +4,7 @@ import { BarChart } from 'react-native-svg-charts';
 import { View, Text, StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
-import { ParsedDeck } from '../parseDeck';
+import { ParsedDeck } from '../../actions/types';
 import { SLOTS, SlotCodeType } from '../../constants';
 import typography from '../../styles/typography';
 

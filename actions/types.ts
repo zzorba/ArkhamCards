@@ -1,5 +1,6 @@
-import { ChaosBag, FactionCodeType } from '../constants';
+import { ChaosBag, FactionCodeType, SkillCodeType, SlotCodeType } from '../constants';
 import { FilterState } from '../lib/filters';
+import Card from '../data/Card';
 
 export const SORT_BY_TYPE = 'Type';
 export const SORT_BY_FACTION = 'Faction';
@@ -66,6 +67,63 @@ export interface Deck {
 
 export interface DecksMap {
   [id: number]: Deck;
+}
+
+export type FactionCounts = {
+  [faction in FactionCodeType]?: [number, number];
+};
+
+export type SkillCounts = {
+  [skill in SkillCodeType]?: number;
+};
+
+export type SlotCounts = {
+  [slot in SlotCodeType]?: number;
+}
+
+export interface DeckChanges {
+  added: Slots;
+  removed: Slots;
+  upgraded: Slots;
+  exiled: Slots;
+  spentXp: number;
+}
+
+export interface CardId {
+  id: string;
+  quantity: number;
+}
+
+export interface AssetGroup {
+  type: string;
+  data: CardId[];
+}
+
+export interface SplitCards {
+  Assets?: AssetGroup[];
+  Event?: CardId[];
+  Skill?: CardId[];
+  Treachery?: CardId[];
+  Enemy?: CardId[];
+}
+export type CardSplitType = keyof SplitCards;
+
+export interface ParsedDeck {
+  investigator: Card;
+  deck: Deck;
+  slots: Slots;
+  normalCardCount: number;
+  totalCardCount: number;
+  experience: number;
+  packs: number;
+  factionCounts: FactionCounts;
+  costHistogram: number[];
+  skillIconCounts: SkillCounts;
+  slotCounts: SlotCounts;
+  normalCards: SplitCards;
+  specialCards: SplitCards;
+  ignoreDeckLimitSlots: Slots;
+  changes?: DeckChanges;
 }
 
 export interface Pack {

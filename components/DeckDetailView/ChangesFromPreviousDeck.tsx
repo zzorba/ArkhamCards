@@ -2,9 +2,8 @@ import React from 'react';
 import { keys, map, sortBy } from 'lodash';
 
 import { t } from 'ttag';
-import { Slots } from '../../actions/types';
+import { ParsedDeck, Slots } from '../../actions/types';
 import { showCard } from '../navHelper';
-import { ParsedDeck } from '../parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import CardSectionHeader from './CardSectionHeader';
 import Card, { CardsMap } from '../../data/Card';

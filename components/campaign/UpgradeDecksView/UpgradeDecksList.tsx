@@ -9,11 +9,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import DeviceInfo from 'react-native-device-info';
 import { t } from 'ttag';
 
-import { Deck, InvestigatorData } from '../../../actions/types';
+import { Deck, InvestigatorData, ParsedDeck } from '../../../actions/types';
 import Card from '../../../data/Card';
+import { parseDeck } from '../../../lib/parseDeck';
 import typography from '../../../styles/typography';
 import Button from '../../core/Button';
-import { parseDeck, ParsedDeck } from '../../parseDeck';
 import { showDeckModal } from '../../navHelper';
 import listOfDecks from '../listOfDecks';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';

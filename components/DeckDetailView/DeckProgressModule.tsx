@@ -2,15 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
+import { t } from 'ttag';
 
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import DeckDelta from './DeckDelta';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
-import { ParsedDeck } from '../parseDeck';
-import { t } from 'ttag';
 import { fetchPublicDeck, fetchPrivateDeck } from '../decks/actions';
-import { Campaign, Deck, Trauma } from '../../actions/types';
+import { Campaign, Deck, ParsedDeck, Trauma } from '../../actions/types';
 import Card, { CardsMap } from '../../data/Card';
 import { getDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';

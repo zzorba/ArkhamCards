@@ -9,8 +9,8 @@ import { queryForInvestigator, negativeQueryForInvestigator } from '../lib/Inves
 import { filterToQuery, defaultFilterState } from '../lib/filters';
 import { STORY_CARDS_QUERY } from '../data/query';
 import Card, { CardsMap } from '../data/Card';
+import { parseDeck } from '../lib/parseDeck';
 import CardSearchComponent from './CardSearchComponent';
-import { parseDeck } from './parseDeck';
 import DeckNavFooter from './DeckNavFooter';
 import { NavigationProps } from './types';
 

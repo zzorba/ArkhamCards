@@ -46,13 +46,13 @@ import {
   saveDeckChanges,
   DeckChanges,
 } from '../decks/actions';
-import { Campaign, Deck, DeckMeta, Slots } from '../../actions/types';
+import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '../../actions/types';
 import { updateCampaign } from '../campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '../withPlayerCards';
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 import Card from '../../data/Card';
-import { parseDeck, ParsedDeck } from '../parseDeck';
+import { parseDeck } from '../../lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCards';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';

@@ -273,6 +273,7 @@ export default class Card extends BaseCard {
 
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
+    const myriad = !!json.myriad || (json.real_text && json.real_text.indexOf('Myriad.') !== -1);
 
     const sort_by_type = Card.typeHeaderOrder().indexOf(Card.typeSortHeader(json));
     const sort_by_faction = Card.factionHeaderOrder().indexOf(Card.factionSortHeader(json));
@@ -316,6 +317,7 @@ export default class Card extends BaseCard {
         cycle_code: cycle_pack && cycle_pack.code || json.pack_code,
         has_restrictions: !!restrictions,
         seal,
+        myriad,
         restrictions,
         heals_horror,
         sort_by_type,

@@ -1,22 +1,31 @@
 import { filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy, union } from 'lodash';
 
 import { t } from 'ttag';
-import { Deck, Slots } from '../actions/types';
+import {
+  AssetGroup,
+  CardId,
+  CardSplitType,
+  Deck,
+  DeckChanges,
+  FactionCounts,
+  ParsedDeck,
+  SkillCounts,
+  SlotCounts,
+  Slots,
+  SplitCards,
+} from '../actions/types';
 import Card, { CardKey, CardsMap } from '../data/Card';
 import {
   PLAYER_FACTION_CODES,
   SKILLS,
   SLOTS,
   RANDOM_BASIC_WEAKNESS,
+  VERSATILE_CODE,
   FactionCodeType,
   SlotCodeType,
   SkillCodeType,
 } from '../constants';
-
-export interface CardId {
-  id: string;
-  quantity: number;
-}
+import DeckValidation from './DeckValidation';
 
 function filterBy(
   cardIds: CardId[],
@@ -25,11 +34,6 @@ function filterBy(
   value: any
 ): CardId[] {
   return cardIds.filter(c => cards[c.id] && cards[c.id][field] === value);
-}
-
-interface AssetGroup {
-  type: string;
-  data: CardId[];
 }
 
 function groupAssets(cardIds: CardId[], cards: CardsMap): AssetGroup[] {
@@ -81,16 +85,6 @@ export function isSpecialCard(card: Card): boolean {
     )
   );
 }
-
-
-export interface SplitCards {
-  Assets?: AssetGroup[];
-  Event?: CardId[];
-  Skill?: CardId[];
-  Treachery?: CardId[];
-  Enemy?: CardId[];
-}
-export type CardSplitType = keyof SplitCards;
 
 function splitCards(cardIds: CardId[], cards: CardsMap): SplitCards {
   const result: SplitCards = {};
@@ -205,6 +199,7 @@ function decSlot(slots: Slots, card: Card) {
   }
   slots[card.code]--;
 }
+
 function getDeckChanges(
   cards: CardsMap,
   deck: Deck,
@@ -215,9 +210,15 @@ function getDeckChanges(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  if (!deck.previous_deck || !previousDeck) {
+  const investigator = cards[deck.investigator_code];
+  if (!deck.previous_deck || !previousDeck || !investigator) {
     return undefined;
   }
+  const deckValidation = new DeckValidation(investigator, deck.meta);
+  const oldDeckSize = deckValidation.getDeckSize(previousDeck.slots[VERSATILE_CODE] || 0);
+  const newDeckSize = deckValidation.getDeckSize(slots[VERSATILE_CODE] || 0);
+  let extraDeckSize = newDeckSize - oldDeckSize;
+
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
   forEach(
@@ -268,6 +269,9 @@ function getDeckChanges(
   const added: Slots = {};
   const removed: Slots = {};
   const upgraded: Slots = {};
+  const myriadBuys: {
+    [name: string]: boolean;
+  } = {};
   const spentXp = sum(map(
     sortBy(
       // null cards are story assets, so putting them in is free.
@@ -275,9 +279,25 @@ function getDeckChanges(
       card => -((card.xp || 0) + (card.extra_xp || 0))
     ),
     addedCard => {
-      // We visit cards from high XP to low XP, so if there's 0 XP card,
+      if (addedCard.myriad) {
+        const myriadKey = `${addedCard.real_text}_${addedCard.xp}`;
+        if (myriadBuys[myriadKey]) {
+          // Already paid for a myriad of this level
+          // So this one is free.
+          incSlot(added, addedCard);
+          if (addedCard.xp === 0) {
+            if (extraDeckSize > 0) {
+              extraDeckSize--;
+            }
+          }
+          return 0;
+        }
+        myriadBuys[myriadKey] = true;
+      }
+
       if (addedCard.xp === 0) {
-        // We've found matches for all the other cards already.
+        // We visit cards from high XP to low XP, so if there's 0 XP card,
+        // we've found matches for all the other cards already.
         // Only 0 XP cards are left, so it's safe to apply adaptable changes.
         if (exiledSlots.length > 0) {
           // Every exiled card gives you one free '0' cost insert.
@@ -288,6 +308,7 @@ function getDeckChanges(
           // But you still have to pay the TABOO xp.
           return (addedCard.extra_xp || 0);
         }
+
         // You can use adaptable to swap in to level 0s.
         // It is okay even if you just took adaptable this time.
         if (adaptableUses > 0) {
@@ -304,14 +325,17 @@ function getDeckChanges(
             }
           }
           // Couldn't find a 0 cost card to remove, it's weird that you
-          // chose to take away an XP card?
-          incSlot(added, addedCard);
-          return 1 + (addedCard.extra_xp || 0);
+          // chose to take away an XP card -- or maybe you are just adding cards.
         }
-        // But if there's no slots it costs you a minimum of 1 xp to swap
-        // 0 for 0.
+        // But if there's no slots it costs you a
+        // minimum of 1 xp to swap 0 for 0.
         incSlot(added, addedCard);
-        return 1 + (addedCard.extra_xp || 0);
+        let minimumSwapCost = 1;
+        if (extraDeckSize > 0) {
+          extraDeckSize--;
+          minimumSwapCost = 0;
+        }
+        return minimumSwapCost + (addedCard.extra_xp || 0);
       }
 
       // XP higher than 0.
@@ -374,43 +398,6 @@ function calculateTotalXp(
   }));
 }
 
-type FactionCounts = {
-  [faction in FactionCodeType]?: [number, number];
-};
-
-type SkillCounts = {
-  [skill in SkillCodeType]?: number;
-};
-
-type SlotCounts = {
-  [slot in SlotCodeType]?: number;
-}
-
-interface DeckChanges {
-  added: Slots;
-  removed: Slots;
-  upgraded: Slots;
-  exiled: Slots;
-  spentXp: number;
-}
-
-export interface ParsedDeck {
-  investigator: Card;
-  deck: Deck;
-  slots: Slots;
-  normalCardCount: number;
-  totalCardCount: number;
-  experience: number;
-  packs: number;
-  factionCounts: FactionCounts;
-  costHistogram: number[];
-  skillIconCounts: SkillCounts;
-  slotCounts: SlotCounts;
-  normalCards: SplitCards;
-  specialCards: SplitCards;
-  ignoreDeckLimitSlots: Slots;
-  changes?: DeckChanges;
-}
 
 export function parseDeck(
   deck: Deck | null,

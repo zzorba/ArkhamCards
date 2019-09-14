@@ -36,6 +36,16 @@ export default class DeckValidation {
     this.meta = meta;
   }
 
+  getDeckSize(versatileCount: number): number {
+    var size = 30;
+  	if (this.investigator.deck_requirements) {
+  		if (this.investigator.deck_requirements.size) {
+  			size = this.investigator.deck_requirements.size;
+  		}
+    }
+    return size + (versatileCount * 5);
+  }
+
   getPhysicalDrawDeck(cards: Card[]) {
     return filter(cards, card => card && !card.permanent && !card.double_sided);
   }
@@ -77,13 +87,9 @@ export default class DeckValidation {
   getProblemHelper(cards: Card[]): DeckProblemType | null {
 	  // get investigator data
   	var card = this.investigator;
-  	var size = 30;
   	// store list of all problems
   	this.problem_list = [];
   	if (card && card.deck_requirements){
-  		if (card.deck_requirements.size){
-  			size = card.deck_requirements.size;
-  		}
   		//console.log(card.deck_requirements);
   		// must have the required cards
   		if (card.deck_requirements.card){
@@ -105,7 +111,7 @@ export default class DeckValidation {
 
   	}
     const versatileCount = filter(cards, card => card.code === VERSATILE_CODE).length;
-    size += (versatileCount * 5);
+    const size = this.getDeckSize(versatileCount);
 
   	// too many copies of one card
   	if(findKey(

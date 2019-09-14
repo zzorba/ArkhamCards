@@ -8,7 +8,7 @@ import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
 import SelectDeckSwitch from './SelectDeckSwitch';
-import { parseDeck } from '../parseDeck';
+import { parseDeck } from '../../lib/parseDeck';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
 import { showDeckModal } from '../navHelper';
 import Dialog from '../core/Dialog';

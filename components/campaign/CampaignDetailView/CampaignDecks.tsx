@@ -11,11 +11,11 @@ import DeviceInfo from 'react-native-device-info';
 import { ngettext, msgid, t } from 'ttag';
 
 import AppIcon from '../../../assets/AppIcon';
-import { Deck, InvestigatorData, Trauma } from '../../../actions/types';
+import { Deck, InvestigatorData, ParsedDeck, Trauma } from '../../../actions/types';
 import DeckValidation from '../../../lib/DeckValidation';
+import { parseDeck } from '../../../lib/parseDeck';
 import Card from '../../../data/Card';
 import Button from '../../core/Button';
-import { parseDeck, ParsedDeck } from '../../parseDeck';
 import { showDeckModal } from '../../navHelper';
 import DeckProblemRow from '../../DeckProblemRow';
 import EditTraumaComponent from '../EditTraumaComponent';

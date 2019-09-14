@@ -8,14 +8,14 @@ import {
 } from 'react-native';
 import { ngettext, msgid, t } from 'ttag';
 
-import { Campaign, Deck } from '../actions/types';
+import { Campaign, Deck, ParsedDeck } from '../actions/types';
 import Card, { CardsMap } from '../data/Card';
 import InvestigatorImage from './core/InvestigatorImage';
 import FactionGradient from './core/FactionGradient';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
 import DeckProblemRow from './DeckProblemRow';
 import { toRelativeDateString } from '../lib/datetime';
-import { parseDeck, ParsedDeck } from './parseDeck';
+import { parseDeck } from '../lib/parseDeck';
 import typography from '../styles/typography';
 import { s } from '../styles/space';
 
