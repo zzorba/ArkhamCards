@@ -24,7 +24,7 @@ interface ReduxProps {
 }
 
 interface OwnProps {
-  componentId: string;
+  componentId?: string;
   investigator: Card;
   width: number;
 }

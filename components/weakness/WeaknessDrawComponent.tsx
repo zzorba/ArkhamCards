@@ -17,7 +17,9 @@ import Card from '../../data/Card';
 import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
 import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
+import ToggleFilter from '../core/ToggleFilter';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
+import CardDetailComponent from '../CardDetailView/CardDetailComponent';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '../../styles/sizes';
 import typography from '../../styles/typography';
 const PLAYER_BACK = require('../../assets/player-back.png');
@@ -30,6 +32,8 @@ interface OwnProps {
   componentId: string;
   weaknessSet: WeaknessSet;
   updateDrawnCard: (code: string, assignedCards: Slots) => void;
+  playerCount?: number;
+  campaignMode?: boolean;
   customHeader?: ReactNode;
   customFlippedHeader?: ReactNode;
   saving?: boolean;
@@ -40,10 +44,13 @@ interface State {
   headerHeight: number;
   flippedHeaderHeight: number;
   selectedTraits: string[];
+  standalone: boolean;
+  multiplayer: boolean;
   nextCard?: Card;
   flipped: boolean;
   drawNewCard: boolean;
 }
+
 class WeaknessDrawComponent extends React.Component<Props, State> {
   _onHeaderLayout!: (event: LayoutChangeEvent) => void;
   _onFlippedHeaderLayout!: (event: LayoutChangeEvent) => void;
@@ -51,11 +58,15 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
+    const multiplayer = props.playerCount !== 1;
+    const standalone = false;
     this.state = {
       headerHeight: 32,
       flippedHeaderHeight: 32,
       selectedTraits: [],
-      nextCard: this.nextCard([]),
+      standalone,
+      multiplayer,
+      nextCard: this.nextCard([], multiplayer, standalone),
       flipped: false,
       drawNewCard: false,
     };
@@ -66,9 +77,14 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     if (this.props.weaknessSet !== prevProps.weaknessSet && !this.state.flipped) {
+      const {
+        selectedTraits,
+        multiplayer,
+        standalone,
+      } = this.state;
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
-        nextCard: this.nextCard(this.state.selectedTraits),
+        nextCard: this.nextCard(selectedTraits, multiplayer, standalone),
       });
     }
   }
@@ -162,23 +178,34 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   };
 
   _selectNextCard = () => {
+    const {
+      selectedTraits,
+      multiplayer,
+      standalone,
+    } = this.state;
     this.setState({
       drawNewCard: false,
-      nextCard: this.nextCard(this.state.selectedTraits),
+      nextCard: this.nextCard(selectedTraits, multiplayer, standalone),
     });
   };
 
-  nextCard(selectedTraits: string[]) {
+  nextCard(
+    selectedTraits: string[],
+    multiplayer: boolean,
+    standalone: boolean
+  ) {
     const {
       weaknessSet: {
         assignedCards,
       },
     } = this.props;
-    const cards = shuffle(flatMap(this.selectedCards(selectedTraits), card => {
-      return map(
-        range(0, (card.quantity || 0) - (assignedCards[card.code] || 0)),
-        () => card);
-    }));
+    const cards = shuffle(
+      flatMap(this.selectedCards(selectedTraits, multiplayer, standalone),
+      card => {
+        return map(
+          range(0, (card.quantity || 0) - (assignedCards[card.code] || 0)),
+          () => card);
+      }));
 
     const card = head(cards);
     if (card && card.imagesrc) {
@@ -187,15 +214,25 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     return card;
   }
 
-  selectedCards(selectedTraits: string[]) {
-    if (!selectedTraits.length) {
-      return this.cards();
-    }
+  selectedCards(
+    selectedTraits: string[],
+    multiplayer: boolean,
+    standalone: boolean
+  ): Card[] {
     return filter(this.cards(), card => {
-      return !!find(selectedTraits, trait => (
-        card.traits_normalized &&
-        card.traits_normalized.indexOf(`#${trait.toLowerCase()}#`) !== -1)
+      const matchesTrait = !selectedTraits.length ||
+        !!find(selectedTraits, trait => (
+          card.traits_normalized &&
+          card.traits_normalized.indexOf(`#${trait.toLowerCase()}#`) !== -1)
+        );
+      const matchesMultiplayerOnly = multiplayer || !!(
+        card.real_text && card.real_text.indexOf('Multiplayer only.') === -1
       );
+      const matchesCampaignModeOnly = !standalone || !!(
+        card.real_text && card.real_text.indexOf('Campaign Mode only.') === -1
+      );
+
+      return matchesTrait && matchesMultiplayerOnly && matchesCampaignModeOnly;
     });
   }
 
@@ -234,18 +271,33 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     return keys(traitsMap).sort();
   }
 
+  _onToggleChange = (key: string, value: boolean) => {
+    if (key === 'multiplayer') {
+      this.setState({
+        multiplayer: value,
+      }, this._selectNextCard);
+    } else if (key === 'standalone') {
+      this.setState({
+        standalone: value,
+      }, this._selectNextCard);
+    }
+  };
+
   renderHeaderContent() {
     const {
       componentId,
       customHeader,
       customFlippedHeader,
       saving,
+      campaignMode,
     } = this.props;
     const {
       selectedTraits,
       flipped,
       headerHeight,
       flippedHeaderHeight,
+      standalone,
+      multiplayer,
     } = this.state;
     if (saving) {
       return (
@@ -285,6 +337,49 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
           selection={selectedTraits}
           onChange={this._onTraitsChange}
         />
+        <View style={styles.toggleRow}>
+          <View style={styles.toggleColumn}>
+            <ToggleFilter
+              label={t`Multiplayer`}
+              setting="multiplayer"
+              value={multiplayer}
+              onChange={this._onToggleChange}
+            />
+          </View>
+          <View style={styles.toggleColumn}>
+            { !campaignMode && (
+              <ToggleFilter
+                label={t`Standalone`}
+                setting="standalone"
+                value={standalone}
+                onChange={this._onToggleChange}
+              />
+            ) }
+          </View>
+        </View>
+      </View>
+    );
+  }
+
+  renderCardImage(card: Card, width: number) {
+    if (card.imagesrc) {
+      return (
+        <CachedImage
+          style={styles.verticalCardImage}
+          source={{
+            uri: `https://arkhamdb.com/${card.imagesrc}`,
+          }}
+          resizeMode="contain"
+        />
+      );
+    }
+    return (
+      <View style={styles.cardWrapper}>
+        <CardDetailComponent
+          card={card}
+          width={width}
+          showSpoilers
+        />
       </View>
     );
   }
@@ -321,15 +416,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
                 source={PLAYER_BACK}
                 resizeMode="contain"
               />
-              { nextCard && (
-                <CachedImage
-                  style={styles.verticalCardImage}
-                  source={{
-                    uri: `https://arkhamdb.com/${nextCard.imagesrc}`,
-                  }}
-                  resizeMode="contain"
-                />
-              ) }
+              { nextCard && this.renderCardImage(nextCard, cardWidth) }
             </FlipCard>
           </TouchableWithoutFeedback>
         </View>
@@ -372,6 +459,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
+  },
+  toggleRow: {
+    marginTop: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  toggleColumn: {
+    width: '50%',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
   },
   headerContainer: {
     flexDirection: 'column',

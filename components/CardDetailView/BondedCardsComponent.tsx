@@ -15,7 +15,7 @@ import Card from '../../data/Card';
 import { getTabooSet, AppState } from '../../reducers';
 
 interface OwnProps {
-  componentId: string;
+  componentId?: string;
   card: Card;
   width: number;
 }

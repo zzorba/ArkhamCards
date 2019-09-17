@@ -62,7 +62,7 @@ function num(value: number | null) {
 }
 
 interface Props {
-  componentId: string;
+  componentId?: string;
   card: BaseCard;
   linked?: boolean;
   notFirst?: boolean;
@@ -83,11 +83,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   editSpoilersPressed() {
-    Navigation.push<{}>(this.props.componentId, {
-      component: {
-        name: 'My.Spoilers',
-      },
-    });
+    const { componentId } = this.props;
+    if (componentId) {
+      Navigation.push<{}>(componentId, {
+        component: {
+          name: 'My.Spoilers',
+        },
+      });
+    }
   }
 
   _showTaboo = () => {
@@ -95,24 +98,26 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       componentId,
       card,
     } = this.props;
-    Navigation.push<CardTabooProps>(componentId, {
-      component: {
-        name: 'Card.Taboo',
-        passProps: {
-          id: card.code,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: card.name,
-            },
-            subtitle: {
-              text: `Taboos`,
+    if (componentId) {
+      Navigation.push<CardTabooProps>(componentId, {
+        component: {
+          name: 'Card.Taboo',
+          passProps: {
+            id: card.code,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: card.name,
+              },
+              subtitle: {
+                text: `Taboos`,
+              },
             },
           },
         },
-      },
-    });
+      });
+    }
   };
 
   _showFaq = () => {
@@ -120,24 +125,26 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       componentId,
       card,
     } = this.props;
-    Navigation.push<CardFaqProps>(componentId, {
-      component: {
-        name: 'Card.Faq',
-        passProps: {
-          id: card.code,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`FAQ`,
-            },
-            subtitle: {
-              text: card.name,
+    if (componentId) {
+      Navigation.push<CardFaqProps>(componentId, {
+        component: {
+          name: 'Card.Faq',
+          passProps: {
+            id: card.code,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`FAQ`,
+              },
+              subtitle: {
+                text: card.name,
+              },
             },
           },
         },
-      },
-    });
+      });
+    }
   };
 
   showInvestigatorCards() {
@@ -145,25 +152,26 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       componentId,
       card,
     } = this.props;
-
-    Navigation.push<InvestigatorCardsProps>(componentId, {
-      component: {
-        name: 'Browse.InvestigatorCards',
-        passProps: {
-          investigatorCode: card.code,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Allowed Cards`,
-            },
-            backButton: {
-              title: t`Back`,
+    if (componentId) {
+      Navigation.push<InvestigatorCardsProps>(componentId, {
+        component: {
+          name: 'Browse.InvestigatorCards',
+          passProps: {
+            investigatorCode: card.code,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Allowed Cards`,
+              },
+              backButton: {
+                title: t`Back`,
+              },
             },
           },
         },
-      },
-    });
+      });
+    }
   }
 
   _toggleShowBack = () => {
@@ -557,6 +565,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardFooter(card: BaseCard) {
+    const { componentId } = this.props;
     return (
       <React.Fragment>
         <View style={[styles.column, styles.flex]}>
@@ -596,16 +605,18 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             </View>
           }
         </View>
-        <View style={styles.twoColumn}>
-          <View style={[styles.halfColumn, { paddingRight: s }]}>
-            { this.renderFaqButton() }
+        { !!componentId && (
+          <View style={styles.twoColumn}>
+            <View style={[styles.halfColumn, { paddingRight: s }]}>
+              { this.renderFaqButton() }
+            </View>
+            <View style={[styles.halfColumn, { paddingLeft: s }]}>
+              { (card.taboo_set_id === 0) && (
+                this.renderTabooButton()
+              ) }
+            </View>
           </View>
-          <View style={[styles.halfColumn, { paddingLeft: s }]}>
-            { (card.taboo_set_id === 0) && (
-              this.renderTabooButton()
-            ) }
-          </View>
-        </View>
+        ) }
       </React.Fragment>
     );
   }

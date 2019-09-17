@@ -1,5 +1,5 @@
 import React from 'react';
-import { head, flatMap, forEach, keys, map, range, throttle } from 'lodash';
+import { head, flatMap, forEach, keys, map, range, sum, throttle } from 'lodash';
 import { Alert, StyleSheet, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -9,6 +9,7 @@ import { t } from 'ttag';
 import { Campaign, Deck, DecksMap, Slots, WeaknessSet } from '../../actions/types';
 import { updateCampaign } from './actions';
 import { NavigationProps } from '../types';
+import { DEFAULT_TRAUMA_DATA, isEliminated } from './trauma';
 import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
@@ -35,6 +36,7 @@ interface ReduxProps {
   weaknessSet: WeaknessSet;
   latestDeckIds: number[];
   decks: DecksMap;
+  playerCount: number;
 }
 
 interface ReduxActionProps {
@@ -324,6 +326,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const {
       componentId,
       weaknessSet,
+      playerCount,
     } = this.props;
 
     if (!weaknessSet) {
@@ -346,6 +349,8 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     return (
       <WeaknessDrawComponent
         componentId={componentId}
+        playerCount={playerCount}
+        campaignMode
         customHeader={this.renderInvestigatorChooser()}
         customFlippedHeader={this.renderFlippedHeader()}
         weaknessSet={dynamicWeaknessSet}
@@ -359,13 +364,27 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
 const EMPTY_WEAKNESS_SET = { packCodes: [], assignedCards: {} };
 function mapStateToProps(
   state: AppState,
-  props: NavigationProps & CampaignDrawWeaknessProps
+  props: NavigationProps & CampaignDrawWeaknessProps & PlayerCardProps
 ): ReduxProps {
   const campaign = getCampaign(state, props.campaignId);
+  const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
+  const decks = getAllDecks(state);
+  const playerCount = campaign ? sum(map(latestDeckIds, deckId => {
+    const deck = decks[deckId];
+    if (deck) {
+      const investigator = props.cards[deck.investigator_code];
+      const traumaData = campaign.investigatorData[deck.investigator_code] || DEFAULT_TRAUMA_DATA;
+      if (!isEliminated(traumaData, investigator)) {
+        return 1;
+      }
+    }
+    return 0;
+  })) : 0;
   return {
     weaknessSet: campaign ? campaign.weaknessSet : EMPTY_WEAKNESS_SET,
-    latestDeckIds: getLatestCampaignDeckIds(state, campaign),
-    decks: getAllDecks(state),
+    latestDeckIds,
+    decks,
+    playerCount,
   };
 }
 
@@ -376,10 +395,12 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   } as any, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignDrawWeaknessProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(withPlayerCards<NavigationProps & CampaignDrawWeaknessProps & ReduxProps & ReduxActionProps>(CampaignDrawWeaknessDialog));
+export default withPlayerCards<NavigationProps & CampaignDrawWeaknessProps>(
+  connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignDrawWeaknessProps & PlayerCardProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CampaignDrawWeaknessDialog)
+);
 
 const styles = StyleSheet.create({
   toggleRow: {

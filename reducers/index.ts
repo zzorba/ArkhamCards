@@ -178,9 +178,22 @@ export const getDeckToCampaignMap = createSelector(
   }
 );
 
-const getAllDecksForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => getAllDecks(state);
-const getInvestigatorsForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => investigators;
-const getLatestDeckIdsForCampaignInvestigators = (state: AppState, investigators: CardsMap, campaign?: Campaign) => getLatestCampaignDeckIds(state, campaign);
+const getAllDecksForCampaignInvestigators = (
+  state: AppState,
+  investigators: CardsMap,
+  campaign?: Campaign
+) => getAllDecks(state);
+const getInvestigatorsForCampaignInvestigators = (
+  state: AppState,
+  investigators: CardsMap,
+  campaign?: Campaign
+) => investigators;
+const getLatestDeckIdsForCampaignInvestigators = (
+  state: AppState,
+  investigators: CardsMap,
+  campaign?: Campaign
+) => getLatestCampaignDeckIds(state, campaign);
+
 export const getLatestCampaignInvestigators = createSelector(
   getAllDecksForCampaignInvestigators,
   getInvestigatorsForCampaignInvestigators,
@@ -197,10 +210,10 @@ export const getLatestCampaignInvestigators = createSelector(
 const EMPTY_DECK_ID_LIST: number[] = [];
 
 const latestDeckIdsDecksSelector = (state: AppState, campaign?: Campaign) => state.decks.all;
-const latestDeckidsCampaignSelector = (state: AppState, campaign?: Campaign) => campaign;
+const latestDeckIdsCampaignSelector = (state: AppState, campaign?: Campaign) => campaign;
 export const getLatestCampaignDeckIds = createSelector(
   latestDeckIdsDecksSelector,
-  latestDeckidsCampaignSelector,
+  latestDeckIdsCampaignSelector,
   (decks, campaign) => {
     if (!campaign) {
       return EMPTY_DECK_ID_LIST;

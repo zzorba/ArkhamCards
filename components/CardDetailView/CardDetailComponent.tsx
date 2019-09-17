@@ -18,22 +18,25 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 
 interface Props {
-  componentId: string;
+  componentId?: string;
   card: Card;
   width: number;
   showSpoilers: boolean;
   tabooSetId?: number;
-  toggleShowSpoilers: (code: string) => void;
-  showInvestigatorCards: (code: string) => void;
+  toggleShowSpoilers?: (code: string) => void;
+  showInvestigatorCards?: (code: string) => void;
 }
 
 export default class CardDetailComponent extends React.Component<Props> {
   _editSpoilersPressed = () => {
-    Navigation.push<{}>(this.props.componentId, {
-      component: {
-        name: 'My.Spoilers',
-      },
-    });
+    const { componentId } = this.props;
+    if (componentId) {
+      Navigation.push<{}>(componentId, {
+        component: {
+          name: 'My.Spoilers',
+        },
+      });
+    }
   };
 
   shouldBlur() {
@@ -52,7 +55,7 @@ export default class CardDetailComponent extends React.Component<Props> {
       card,
       showInvestigatorCards,
     } = this.props;
-    showInvestigatorCards(card.code);
+    showInvestigatorCards && showInvestigatorCards(card.code);
   };
 
   renderInvestigatorCardsLink() {
@@ -90,7 +93,7 @@ export default class CardDetailComponent extends React.Component<Props> {
       card,
       toggleShowSpoilers,
     } = this.props;
-    toggleShowSpoilers(card.code);
+    toggleShowSpoilers && toggleShowSpoilers(card.code);
   };
 
   render() {

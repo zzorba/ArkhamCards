@@ -17,7 +17,7 @@ const FACTION_ICONS = createFactionIcons(55, '#FFF');
 const SCALE_FACTOR = isBig ? 1.5 : 1.0;
 
 interface Props {
-  componentId: string;
+  componentId?: string;
   card: Card;
 }
 
@@ -27,21 +27,23 @@ export default class PlayerCardImage extends React.Component<Props> {
       componentId,
       card,
     } = this.props;
-    Navigation.push<CardImageProps>(componentId, {
-      component: {
-        name: 'Card.Image',
-        passProps: {
-          id: card.code,
-        },
-        options: {
-          bottomTabs: {
-            visible: false,
-            drawBehind: true,
-            animate: true,
+    if (componentId) {
+      Navigation.push<CardImageProps>(componentId, {
+        component: {
+          name: 'Card.Image',
+          passProps: {
+            id: card.code,
+          },
+          options: {
+            bottomTabs: {
+              visible: false,
+              drawBehind: true,
+              animate: true,
+            },
           },
         },
-      },
-    });
+      });
+    }
   };
 
   imageStyle() {
@@ -81,7 +83,7 @@ export default class PlayerCardImage extends React.Component<Props> {
     );
   }
 
-  render() {
+  renderContent() {
     const {
       card,
     } = this.props;
@@ -89,6 +91,46 @@ export default class PlayerCardImage extends React.Component<Props> {
       card.backimagesrc :
       card.imagesrc;
 
+    const horizontal = card.type_code === 'act' ||
+      card.type_code === 'investigator' ||
+      card.type_code === 'agenda';
+
+    if (isBig && !horizontal) {
+      return (
+        <View style={styles.verticalContainer}>
+          <CachedImage
+            style={styles.verticalContainer}
+            source={{
+              uri: `https://arkhamdb.com${filename}`,
+            }}
+            resizeMode="contain"
+            loadingIndicator={null}
+          />
+        </View>
+      );
+    }
+    return (
+      <View style={styles.container}>
+        { this.renderPlaceholder() }
+        <View style={styles.container}>
+          <CachedImage
+            style={[styles.image, this.imageStyle()]}
+            source={{
+              uri: `https://arkhamdb.com${filename}`,
+            }}
+            resizeMode="contain"
+            loadingIndicator={null}
+          />
+        </View>
+      </View>
+    );
+  }
+
+  render() {
+    const {
+      card,
+      componentId,
+    } = this.props;
     if (!card.imagesrc) {
       return (
         <View style={styles.container}>
@@ -96,43 +138,15 @@ export default class PlayerCardImage extends React.Component<Props> {
         </View>
       );
     }
-    const horizontal = card.type_code === 'act' ||
-      card.type_code === 'investigator' ||
-      card.type_code === 'agenda';
 
-    if (isBig && !horizontal) {
+    if (componentId) {
       return (
         <TouchableOpacity onPress={this._onPress}>
-          <View style={styles.verticalContainer}>
-            <CachedImage
-              style={styles.verticalContainer}
-              source={{
-                uri: `https://arkhamdb.com${filename}`,
-              }}
-              resizeMode="contain"
-              loadingIndicator={null}
-            />
-          </View>
+          { this.renderContent() }
         </TouchableOpacity>
       );
     }
-    return (
-      <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.container}>
-          { this.renderPlaceholder() }
-          <View style={styles.container}>
-            <CachedImage
-              style={[styles.image, this.imageStyle()]}
-              source={{
-                uri: `https://arkhamdb.com${filename}`,
-              }}
-              resizeMode="contain"
-              loadingIndicator={null}
-            />
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
+    return this.renderContent();
   }
 }
 
