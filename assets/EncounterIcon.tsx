@@ -170,6 +170,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_the_pallid_mask':
       case 'return_to_black_stars_rise':
       case 'return_to_dim_carcosa':
+      case 'decaying_reality':
+      case 'maddening_delusions':
+      case 'hasturs_envoys':
+      case 'neurotic_fear':
+      case 'delusory_evils':
         return this.carcosaIcon(encounter_code, size, color);
       case 'decay':
         return this.carcosaIcon('decay_and_filth', size, color);
