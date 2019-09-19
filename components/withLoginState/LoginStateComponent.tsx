@@ -48,7 +48,7 @@ class LoginStateComponent extends React.Component<Props> {
     return (
       <View style={styles.wrapper}>
         { render(login, signedIn, error) }
-        { loading && (
+        { !!loading && (
           <View style={styles.activityIndicatorContainer}>
             <ActivityIndicator
               style={[{ height: 80 }]}

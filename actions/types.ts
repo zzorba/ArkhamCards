@@ -211,6 +211,7 @@ export const RTNOTZ = 'rtnotz';
 export const DWL = 'dwl';
 export const RTDWL = 'rtdwl';
 export const PTC = 'ptc';
+export const RTPTC = 'rtptc';
 export const TFA = 'tfa';
 export const TCU = 'tcu';
 
@@ -221,6 +222,7 @@ export type CampaignCycleCode =
   typeof DWL |
   typeof RTDWL |
   typeof PTC |
+  typeof RTPTC |
   typeof TFA |
   typeof TCU;
 
@@ -230,6 +232,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   DWL,
   RTDWL,
   PTC,
+  RTPTC,
   TFA,
   TCU,
 ];

@@ -656,7 +656,7 @@ export default class DeckViewTab extends React.Component<Props> {
               />
             </View>
           ) }
-          { isPrivate && (
+          { !!isPrivate && (
             <View style={styles.button}>
               <Button
                 title={t`Delete Deck`}

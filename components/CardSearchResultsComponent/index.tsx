@@ -260,7 +260,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     }
     return (
       <View>
-        { searchTerm && (
+        { !!searchTerm && (
           <View style={styles.button}>
             <Button
               onPress={this._clearSearchTerm}

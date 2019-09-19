@@ -1077,7 +1077,7 @@ class DeckDetailView extends React.Component<Props, State> {
             </View>
           ) }
         </View>
-        { hasPendingEdits && (
+        { !!hasPendingEdits && (
           <View style={[styles.twoColumn, styles.topSpace]}>
             <View style={styles.halfColumn}>
               <Button

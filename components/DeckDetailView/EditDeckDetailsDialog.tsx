@@ -152,7 +152,7 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
             returnKeyType="done"
           />
         </View>
-        { xpAdjustmentEnabled && (
+        { !!xpAdjustmentEnabled && (
           <View style={styles.column}>
             <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
               { t`EXPERIENCE` }

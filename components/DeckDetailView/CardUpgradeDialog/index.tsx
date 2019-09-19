@@ -144,7 +144,7 @@ export default class CardUpgradeDialog extends React.Component<Props, State> {
         visible={visible}
         viewRef={viewRef}
       >
-        { overLimit && (
+        { !!overLimit && (
           <DialogComponent.Description>
             { t`Too many copies of the card` }
           </DialogComponent.Description>

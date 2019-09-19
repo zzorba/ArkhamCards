@@ -277,7 +277,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             { t`Doom: ${doom}` }
           </Text>
         ) }
-        { card.type_code === 'act' && card.clues && card.clues > 0 && (
+        { !!(card.type_code === 'act' && card.clues && card.clues > 0) && (
           <Text style={typography.cardText}>
             { jt`Clues: ${clues}${perInvestigatorClues}` }
           </Text>

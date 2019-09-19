@@ -204,7 +204,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
           label={t`Cancel`}
           onPress={this._onCancelPress}
         />
-        { showCrossOut && (
+        { !!showCrossOut && (
           <DialogComponent.Button
             label={isCrossedOut ? t`Uncross Out` : t`Cross Out`}
             color="#ff3b30"

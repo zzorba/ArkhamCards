@@ -6,6 +6,7 @@ import {
   DWL,
   RTDWL,
   PTC,
+  RTPTC,
   TFA,
   TCU,
   CampaignDifficulty,
@@ -36,6 +37,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case DWL: return t`The Dunwich Legacy`;
     case RTDWL: return t`Return to The Dunwich Legacy`;
     case PTC: return t`The Path To Carcosa`;
+    case RTPTC: return t`Return to The Path to Carcosa`;
     case TFA: return t`The Forgotten Age`;
     case TCU: return t`The Circle Undone`;
     case CUSTOM: return null;
@@ -112,6 +114,20 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Dim Carcosa`, code: 'dim_carcosa', pack_code: 'dca' },
       { name: t`Epilogue`, code: 'ptc_epilogue', interlude: true },
     ];
+    case RTPTC: return [
+      { name: t`Prologue`, code: 'ptc_prologue', interlude: true },
+      { name: t`Return to Curtain Call`, code: 'return_to_curtain_call', pack_code: 'rtptc' },
+      { name: t`Return to The Last King`, code: 'return_to_the_last_king', pack_code: 'rtptc' },
+      { name: t`Lunacy’s Reward`, code: 'ptc_interlude1', interlude: true },
+      { name: t`Return to Echoes of the Past`, code: 'return_to_echoes_of_the_past', pack_code: 'rtptc' },
+      { name: t`Return to The Unspeakable Oath`, code: 'return_to_the_unspeakable_oath', pack_code: 'rtptc' },
+      { name: t`Lost Soul`, code: 'ptc_interlude2', interlude: true },
+      { name: t`Return to A Phantom of Truth`, code: 'return_to_a_phantom_of_truth', pack_code: 'rtptc' },
+      { name: t`Return to The Pallid Mask`, code: 'return_to_the_pallid_mask', pack_code: 'rtptc' },
+      { name: t`Return to Black Stars Rise`, code: 'return_to_black_stars_rise', pack_code: 'rtptc' },
+      { name: t`Return to Dim Carcosa`, code: 'return_to_dim_carcosa', pack_code: 'rtptc' },
+      { name: t`Epilogue`, code: 'ptc_epilogue', interlude: true },
+    ];
     case TFA: return [
       { name: t`Prologue`, code: 'tfa_prologue', interlude: true },
       { name: t`The Untamed Wilds`, code: 'wilds', pack_code: 'tfa' },
@@ -167,6 +183,7 @@ export function campaignNames() {
     dwl: t`The Dunwich Legacy`,
     rtdwl: t`Return to The Dunwich Legacy`,
     ptc: t`The Path to Carcosa`,
+    rtptc: t`Return to The Path to Carcosa`,
     tfa: t`The Forgotten Age`,
     tcu: t`The Circle Undone`,
   };
@@ -178,6 +195,7 @@ export const CAMPAIGN_COLORS = {
   dwl: '#00666633',
   rtdwl: '#00006622',
   ptc: '#cc990033',
+  rtptc: '#cc990033',
   tfa: '#33660033',
   tcu: '#00006622',
 };
@@ -204,6 +222,7 @@ export function getCampaignLog(
         ],
       };
     case PTC:
+    case RTPTC:
       return {
         sections: [
           t`Campaign Notes`,
@@ -323,6 +342,7 @@ export function getChaosBag(
     case RTDWL:
       return DWL_BAG[difficulty];
     case PTC:
+    case RTPTC:
       return PTC_BAG[difficulty];
     case TFA:
       return TFA_BAG[difficulty];

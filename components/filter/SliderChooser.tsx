@@ -62,7 +62,7 @@ export default class SliderChooser extends React.Component<Props> {
         toggleName={toggleName}
         onToggleChange={onToggleChange}
       >
-        { enabled && (
+        { !!enabled && (
           <MultiSlider
             values={values}
             labels={values}
