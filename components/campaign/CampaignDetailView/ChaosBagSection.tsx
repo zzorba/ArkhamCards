@@ -11,25 +11,30 @@ import { ChaosBag } from '../../../constants';
 import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import typography from '../../../styles/typography';
-import { EditChaosBagProps } from '../EditChaosBagDialog';
+import { CampaignChaosBagProps } from '../CampaignChaosBagView';
+import { ChaosBagResults } from '../../../actions/types';
 
 interface Props {
   componentId: string;
   chaosBag: ChaosBag;
   updateChaosBag: (chaosBag: ChaosBag) => void;
+  chaosBagResults: ChaosBagResults;
 }
+
 export default class ChaosBagSection extends React.Component<Props> {
-  _showChaosBagDialog = () => {
+  _showChaosBag = () => {
     const {
       componentId,
       updateChaosBag,
       chaosBag,
+      chaosBagResults,
     } = this.props;
-    Navigation.push<EditChaosBagProps>(componentId, {
+    Navigation.push<CampaignChaosBagProps>(componentId, {
       component: {
-        name: 'Dialog.EditChaosBag',
+        name: 'Campaign.ChaosBag',
         passProps: {
           chaosBag,
+          chaosBagResults,
           updateChaosBag: updateChaosBag,
           trackDeltas: true,
         },
@@ -45,11 +50,11 @@ export default class ChaosBagSection extends React.Component<Props> {
         },
       },
     });
-  };
+  }
 
   render() {
     return (
-      <NavButton onPress={this._showChaosBagDialog}>
+      <NavButton onPress={this._showChaosBag}>
         <View style={styles.padding}>
           <Text style={typography.text}>
             { t`Chaos Bag` }

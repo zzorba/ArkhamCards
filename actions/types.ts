@@ -1,4 +1,4 @@
-import { ChaosBag, FactionCodeType, SkillCodeType, SlotCodeType } from '../constants';
+import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from '../constants';
 import { FilterState } from '../lib/filters';
 import Card from '../data/Card';
 
@@ -182,6 +182,12 @@ export interface InvestigatorCampaignNoteCount {
   custom?: boolean;
 }
 
+export interface ChaosBagResults {
+  currentToken?: ChaosTokenType;
+  drawnTokens: ChaosTokenType[];
+  total: number;
+}
+
 export interface ScenarioResult {
   scenario: string;
   scenarioCode: string;
@@ -265,6 +271,7 @@ export interface Campaign {
   latestDeckIds?: number[]; // deprecated
   investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
+  chaosBagResults: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];

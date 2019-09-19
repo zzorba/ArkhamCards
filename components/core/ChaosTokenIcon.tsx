@@ -14,12 +14,14 @@ interface Props {
   icon: ChaosTokenType;
   size: number;
   color?: string;
+  fontFamily?: string;
 }
-export default function ChaosTokenIcon({ icon, size, color }: Props) {
+
+export default function ChaosTokenIcon({ icon, size, color, fontFamily }: Props) {
   if (SPECIAL_TOKENS_SET.has(icon)) {
     return <ArkhamIcon name={icon} size={size} color={color || '#000'} />;
   }
-  const textStyle: TextStyle = { fontSize: size, color: color || '#000' };
+  const textStyle: TextStyle = { fontSize: size, color: color || '#000', fontFamily: fontFamily || 'System' };
   return (
     <Text
       style={[styles.label, textStyle]}
@@ -37,6 +39,5 @@ interface Styles {
 const styles = StyleSheet.create<Styles>({
   label: {
     fontSize: 28,
-    fontFamily: 'System',
   },
 });

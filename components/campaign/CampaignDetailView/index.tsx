@@ -264,6 +264,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           <ChaosBagSection
             componentId={componentId}
             chaosBag={campaign.chaosBag}
+            chaosBagResults={campaign.chaosBagResults}
             updateChaosBag={this._updateChaosBag}
           />
           <DecksSection
