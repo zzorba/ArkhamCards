@@ -1,12 +1,12 @@
 import React from 'react';
-import { keys, values } from 'lodash';
-import { BackHandler, Button, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { keys, values, shuffle } from 'lodash';
+import { Button, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
 import { iconsMap } from '../../../app/NavIcons';
 import { NavigationProps } from '../../types';
-import { CHAOS_TOKENS, ChaosBag, ChaosTokenType } from '../../../constants';
+import { ChaosBag, ChaosTokenType } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
 import { ChaosBagResults } from '../../../actions/types';
 import typography from '../../../styles/typography';
@@ -14,16 +14,16 @@ import { EditChaosBagProps } from '../EditChaosBagDialog';
 import ChaosToken from '../ChaosToken';
 
 export interface CampaignChaosBagProps {
-    chaosBag: ChaosBag;
-    chaosBagResults: ChaosBagResults;
-    updateChaosBag: (chaosBag: ChaosBag) => void;
-    trackDeltas?: boolean;
+  chaosBag: ChaosBag;
+  chaosBagResults: ChaosBagResults;
+  updateChaosBag: (chaosBag: ChaosBag) => void;
+  trackDeltas?: boolean;
 }
 
 interface State {
-    chaosBagResults: ChaosBagResults;
-    visible: boolean;
-    iconKey?: ChaosTokenType;
+  chaosBag: ChaosBag;
+  chaosBagResults: ChaosBagResults;
+  iconKey?: ChaosTokenType;
 }
 
 type Props = CampaignChaosBagProps & NavigationProps;
@@ -65,67 +65,49 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
     super(props);
 
     this.state = {
+      chaosBag: Object.assign({}, props.chaosBag),
       chaosBagResults: {
-        currentToken: undefined,
         drawnTokens: [],
-        total: 0,
+        sealedTokens: [],
+        totalDrawnTokens: 0,
       },
-      visible: true,
     };
 
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
-  }
-
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
     this._navEventListener && this._navEventListener.remove();
   }
 
-  componentDidAppear() {
-    this.setState({
-      visible: true,
-    });
-  }
-
-  componentDidDisappear() {
-    this.setState({
-      visible: false,
-    });
-  }
-
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
+    const { componentId } = this.props;
     if (buttonId === 'back' || buttonId === 'androidBack') {
-      this._handleBackPress();
+      Navigation.pop(componentId);
     } else if (buttonId === 'edit') {
       this._showChaosBagDialog();
     }
   }
 
+  _handleClearTokensPressed = () => {
+    this.clearTokens();
+  };
+
   _handleDrawTokenPressed = () => {
-    this._drawToken();
-  }
+    const { chaosBagResults } = this.state;
+    if (chaosBagResults.drawnTokens.length >= 1) {
+      this.clearTokens();
+    } else {
+      this.drawToken();
+    }
+  };
+
+  _handleAddAndDrawAgainPressed = () => {
+    this.drawToken();
+  };
 
   _handleSealTokenPressed = () => {
-
-  }
-
-  _handleBackPress = () => {
-    const {
-      componentId,
-    } = this.props;
-    const {
-      visible,
-    } = this.state;
-    if (!visible) {
-      return false;
-    }
-    Navigation.pop(componentId);
-    return true;
-  }
+  };
 
   _showChaosBagDialog = () => {
     const {
@@ -154,73 +136,67 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
         },
       },
     });
-  }
+  };
 
-  _getRandomNumber = (min: number, max: number) => {
-    return Math.random() * (max - min) + min;
-  }
-
-  _getRandomChaosToken = (chaosBag: ChaosBag) => {
-    const list = keys(chaosBag);
-    const weight = values(chaosBag);
+  getWeighedChaosBag = (list: any[], weight: any[]) => {
+    const weighedList = [];
 
     const totalWeight = weight.reduce((prev, cur) => {
       return (prev && cur) ? (prev + cur) : 0;
     });
 
-    if (totalWeight) {
-      const random_num = this._getRandomNumber(0, totalWeight);
-      let weight_sum = 0;
-      const length = list.length;
-      for (let i = 0; i < length; i++) {
-        const item = weight[i];
-        if (item) {
-          weight_sum += item;
-          weight_sum = +weight_sum.toFixed(2);
-        }
-
-        if (random_num <= weight_sum) {
-          const tokenName = list[i];
-          let drawnToken = null;
-          CHAOS_TOKENS.forEach(token => {
-            if (token === tokenName) {
-              drawnToken = token;
-            }
-          });
-
-          if (drawnToken) {
-            return drawnToken;
-          }
-        }
+      for (let j = 0; j < multiples; j++) {
+        weighedList.push(list[i]);
       }
     }
+
+    return weighedList;
   }
 
-  _drawToken = (refresh = false) => {
-    const { chaosBagResults } = this.state;
+  getRandomChaosToken = (chaosBag: ChaosBag) => {
+    const list = keys(chaosBag);
+    const weight = values(chaosBag);
+    const weighedList = this.getWeighedChaosBag(list, weight);
+
+    return shuffle(weighedList)[0];
+  };
+
+  drawToken = () => {
     const { chaosBag } = this.props;
+    const { chaosBagResults } = this.state;
 
-    if (!chaosBagResults.currentToken || refresh) {
-      const newIconKey = this._getRandomChaosToken(chaosBag);
-      this.setState({
-        chaosBagResults: {
-          currentToken: newIconKey,
-          drawnTokens: chaosBagResults.drawnTokens,
-          total: chaosBagResults.total + 1,
-        },
-      });
-    } else {
-      this.setState({
-        chaosBagResults: {
-          currentToken: undefined,
-          drawnTokens: [],
-          total: chaosBagResults.total,
-        },
-      });
+    const newIconKey = this.getRandomChaosToken(chaosBag);
+    const drawnTokens = chaosBagResults.drawnTokens;
+
+    if (newIconKey) {
+      drawnTokens.push(newIconKey);
     }
+
+    this.setState({
+      chaosBagResults: {
+        drawnTokens: drawnTokens,
+        sealedTokens: chaosBagResults.sealedTokens,
+        totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+      },
+    });
   }
 
-  _renderChaosToken = (iconKey?: ChaosTokenType) => {
+  clearTokens = () => {
+    const { chaosBagResults } = this.state;
+
+    this.setState({
+      chaosBagResults: {
+        drawnTokens: [],
+        sealedTokens: chaosBagResults.sealedTokens,
+        totalDrawnTokens: chaosBagResults.totalDrawnTokens,
+      },
+    });
+  }
+
+  renderChaosToken = () => {
+    const { chaosBagResults } = this.state;
+    const iconKey = chaosBagResults.drawnTokens[chaosBagResults.drawnTokens.length - 1] || undefined;
+
     return (
       <TouchableOpacity onPress={this._handleDrawTokenPressed}>
         <ChaosToken iconKey={iconKey} />
@@ -228,67 +204,35 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
     );
   }
 
-  _addTokenAndDraw = () => {
-    const {
-      chaosBagResults,
-    } = this.state;
-
-    const drawnTokens = chaosBagResults.drawnTokens;
-    if (chaosBagResults.currentToken) {
-      drawnTokens.push(chaosBagResults.currentToken);
-    }
-
-    this.setState({
-      chaosBagResults: {
-        currentToken: chaosBagResults.currentToken,
-        drawnTokens: drawnTokens,
-        total: chaosBagResults.total,
-      },
-    });
-    this._drawToken(true);
-  }
-
-  _clearTokens = () => {
-    const { chaosBagResults } = this.state;
-
-    this.setState({
-      chaosBagResults: {
-        currentToken: undefined,
-        drawnTokens: [],
-        total: chaosBagResults.total,
-      },
-    });
-  }
-
-  _renderDrawnTokens() {
+  renderDrawnTokens() {
     const { chaosBagResults } = this.state;
 
     const drawnTokens = chaosBagResults.drawnTokens;
 
-    if (drawnTokens.length > 0) {
-      return drawnTokens.map(function(token, index) {
+    if (drawnTokens.length > 1) {
+      return drawnTokens.slice(0, drawnTokens.length - 1).map(function(token, index) {
         return (
           <ChaosToken key={index} iconKey={token} small />
         );
       });
     }
 
-    return <Text style={[styles.drawTokenText, typography.text]}>Tap token to draw</Text>;
+    return <Text style={[styles.drawTokenText, typography.text]}>{ t`Tap token to draw` }</Text>;
   }
 
-  _renderDrawButton = () => {
-    const { chaosBagResults } = this.state;
-
-    if (chaosBagResults.currentToken || chaosBagResults.drawnTokens.length > 0) {
-      return <Button title="Add and Draw Again" onPress={this._addTokenAndDraw} />;
-    }
-  }
-
-  _renderClearButton = () => {
+  renderDrawButton = () => {
     const { chaosBagResults } = this.state;
 
     if (chaosBagResults.drawnTokens.length > 0) {
-      return <Button title="Clear Tokens" onPress={this._clearTokens} />;
+      return <Button title={t`Add and Draw Again`} onPress={this._handleAddAndDrawAgainPressed} />;
+    }
+  }
+
+  renderClearButton = () => {
+    const { chaosBagResults } = this.state;
+
+    if (chaosBagResults.drawnTokens.length > 1) {
+      return <Button title={t`Clear Tokens`} onPress={this._handleClearTokensPressed} />;
     }
   }
 
@@ -299,30 +243,30 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
       <View style={styles.container}>
         <View style={styles.containerTop}>
           <View style={styles.chaosTokenView}>
-            { this._renderChaosToken(chaosBagResults.currentToken) }
+            { this.renderChaosToken() }
           </View>
           <View style={styles.drawButtonView}>
-            { this._renderDrawButton() }
+            { this.renderDrawButton() }
           </View>
         </View>
         <ScrollView style={styles.containerBottom}>
           <View style={styles.header}>
-            <Text style={typography.text}>Drawn</Text>
-            <Text style={typography.small}>Total ({ chaosBagResults.total })</Text>
+            <Text style={typography.text}>{ t`Drawn` }</Text>
+            <Text style={typography.small}>{ t`Total` } ({ chaosBagResults.totalDrawnTokens })</Text>
           </View>
           <View style={styles.container}>
             <View style={styles.drawnTokenRow}>
-              { this._renderDrawnTokens() }
+              { this.renderDrawnTokens() }
             </View>
             <View>
-              { this._renderClearButton() }
+              { this.renderClearButton() }
             </View>
           </View>
           <View style={styles.header}>
-            <Text style={typography.text}>Sealed Tokens</Text>
+            <Text style={typography.text}>{ t`Sealed Tokens` }</Text>
           </View>
-          <View>
-            <Button title="Seal Token" onPress={this._handleSealTokenPressed} />
+          <View style={styles.container}>
+            <Button title={t`Seal Token`} onPress={this._handleSealTokenPressed} />
           </View>
         </ScrollView>
       </View>
