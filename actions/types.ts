@@ -183,9 +183,9 @@ export interface InvestigatorCampaignNoteCount {
 }
 
 export interface ChaosBagResults {
-  currentToken?: ChaosTokenType;
   drawnTokens: ChaosTokenType[];
-  total: number;
+  sealedTokens: ChaosTokenType[];
+  totalDrawnTokens: number;
 }
 
 export interface ScenarioResult {
@@ -271,7 +271,7 @@ export interface Campaign {
   latestDeckIds?: number[]; // deprecated
   investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
-  chaosBagResults: ChaosBagResults;
+  chaosBagResults?: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
