@@ -9,6 +9,8 @@ import {
   RTPTC,
   TFA,
   TCU,
+  TDEA,
+  TDEB,
   CampaignDifficulty,
   CampaignCycleCode,
   CustomCampaignLog,
@@ -40,6 +42,8 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case RTPTC: return t`Return to The Path to Carcosa`;
     case TFA: return t`The Forgotten Age`;
     case TCU: return t`The Circle Undone`;
+    case TDEA: return t`The Dream-Quest`;
+    case TDEB: return t`The Web of Dreams`;
     case CUSTOM: return null;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -167,6 +171,28 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Return to the Midnight Masks`, code: 'return_to_the_midnight_masks', pack_code: 'rtnotz' },
       { name: t`Return to the Devourer Below`, code: 'return_to_the_devourer_below', pack_code: 'rtnotz' },
     ];
+    case TDEA: return [
+      { name: t`Prologue`, code: 'prologue', pack_code: 'tde', interlude: true },
+      { name: t`Beyond the Gates of Sleep`, code: 'beyond_the_gates_of_sleep', pack_code: 'tde' },
+      { name: t`The Black Cat`, code: 'black_cat', pack_code: 'tde', interlude: true },
+      { name: t`The Search for Kadath`, code: 'sfk', pack_code: 'sfk' },
+      { name: t`The Oneironauts`, code: 'oneironauts', pack_code: 'sfk', interlude: true },
+      { name: t`Dark Side of the Moon`, code: 'dsm', pack_code: 'dsm' },
+      { name: t`The Great Ones`, code: 'great_ones', pack_code: 'dsm', interlude: true },
+      { name: t`Where Gods Dwell`, code: 'wgd', pack_code: 'wgd' },
+      { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
+    ];
+    case TDEB: return [
+      { name: t`Prologue`, code: 'prologue', pack_code: 'tde', interlude: true },
+      { name: t`Waking Nightmare`, code: 'waking_nightmare', pack_code: 'tde' },
+      { name: t`The Black Cat`, code: 'black_cat', pack_code: 'tde', interlude: true },
+      { name: t`A Thousand Shapes of Horror`, code: 'tsh', pack_code: 'tsh' },
+      { name: t`The Oneironauts`, code: 'oneironauts', pack_code: 'sfk', interlude: true },
+      { name: t`Point of No Return`, code: 'pnr', pack_code: 'pnr' },
+      { name: t`The Great Ones`, code: 'great_ones', pack_code: 'dsm', interlude: true },
+      { name: t`Weaver of the Cosmos`, code: 'woc', pack_code: 'woc' },
+      { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
+    ];
     case CUSTOM: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -185,6 +211,8 @@ export function campaignNames() {
     ptc: t`The Path to Carcosa`,
     rtptc: t`Return to The Path to Carcosa`,
     tfa: t`The Forgotten Age`,
+    tdea: t`The Dream-Quest`,
+    tdeb: t`The Web of Dreams`,
     tcu: t`The Circle Undone`,
   };
 }
@@ -198,6 +226,8 @@ export const CAMPAIGN_COLORS = {
   rtptc: '#cc990033',
   tfa: '#33660033',
   tcu: '#00006622',
+  tdea: '#00006622',
+  tdeb: '#00006622',
 };
 
 export function getCampaignLog(
@@ -253,6 +283,20 @@ export function getCampaignLog(
           t`Missing Persons - Valentino Rivas`,
         ],
       };
+    case TDEA:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Evidence of Kadath`,
+        ],
+      };
+    case TDEB:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Steps of the Bridge`,
+        ],
+      };
     case CUSTOM:
       return {
         sections: [
@@ -305,6 +349,19 @@ const TCU_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 1, '-6': 1, '-8': 1, skull: 2, auto_fail: 1, elder_sign: 1 },
 };
 
+const TDEA_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 2, '-2': 2, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 2, '-2': 2, '-3': 1, '-4': 1, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 2, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 1, '-4': 2, '-5': 1, '-6': 1, '-8': 1, cultist: 1, tablet: 2, auto_fail: 1, elder_sign: 1 },
+};
+const TDEB_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+};
+
 export function scenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'the_eternal_slumber':
@@ -348,6 +405,10 @@ export function getChaosBag(
       return TFA_BAG[difficulty];
     case TCU:
       return TCU_BAG[difficulty];
+    case TDEA:
+      return TDEA_BAG[difficulty];
+    case TDEB:
+      return TDEB_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

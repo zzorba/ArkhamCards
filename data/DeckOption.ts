@@ -23,6 +23,7 @@ export default class DeckOption {
       not: 'bool?',
       real_name: 'string?',
       faction_select: 'string[]',
+      deck_size_select: 'string[]',
     },
   };
 
@@ -38,11 +39,14 @@ export default class DeckOption {
   public not?: boolean;
   public real_name?: string;
   public faction_select?: FactionCodeType[];
+  public deck_size_select?: string[];
 
   name() {
     switch (this.real_name) {
       case 'Secondary Class':
         return t`Secondary Class`;
+      case 'Deck Size':
+        return t`Deck Size`;
       default:
         return this.real_name;
     }
@@ -148,6 +152,7 @@ export default class DeckOption {
     const deck_option = new DeckOption();
     deck_option.faction = json.faction || [];
     deck_option.faction_select = json.faction_select || [];
+    deck_option.deck_size_select = json.deck_size_select || [];
     deck_option.uses = json.uses || [];
     deck_option.text = json.text || [];
     deck_option.trait = json.trait || [];

@@ -37,9 +37,11 @@ export default class DeckValidation {
   }
 
   getDeckSize(versatileCount: number): number {
-    var size = 30;
+    var size: number = 30;
   	if (this.investigator.deck_requirements) {
-  		if (this.investigator.deck_requirements.size) {
+      if (this.meta && this.meta.deck_size_selected) {
+        size = parseInt(this.meta.deck_size_selected, 10);
+      } else if (this.investigator.deck_requirements.size) {
   			size = this.investigator.deck_requirements.size;
   		}
     }

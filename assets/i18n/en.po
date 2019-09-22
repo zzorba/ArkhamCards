@@ -6,193 +6,193 @@ msgstr ""
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/BaseCard.ts:224
+#: data/BaseCard.ts:233
 msgid "Cost: -"
 msgstr ""
 
-#: data/BaseCard.ts:227
+#: data/BaseCard.ts:236
 msgid "Cost: ${ costString }"
 msgstr ""
 
-#: data/Card.ts:35
+#: data/Card.ts:37
 msgid "Guardian / Rogue"
 msgstr ""
 
-#: data/Card.ts:36
+#: data/Card.ts:38
 msgid "Rogue / Survivor"
 msgstr ""
 
-#: data/Card.ts:37
+#: data/Card.ts:39
 msgid "Survivor / Seeker"
 msgstr ""
 
-#: data/Card.ts:38
+#: data/Card.ts:40
 msgid "Seeker / Mystic"
 msgstr ""
 
-#: data/Card.ts:39
+#: data/Card.ts:41
 msgid "Mystic / Guardian"
 msgstr ""
 
-#: data/Card.ts:40
-#: data/Card.ts:54
+#: data/Card.ts:42
+#: data/Card.ts:56
 msgid "Guardian"
 msgstr ""
 
-#: data/Card.ts:41
-#: data/Card.ts:60
+#: data/Card.ts:43
+#: data/Card.ts:62
 msgid "Seeker"
 msgstr ""
 
-#: data/Card.ts:42
-#: data/Card.ts:58
+#: data/Card.ts:44
+#: data/Card.ts:60
 msgid "Mystic"
 msgstr ""
 
-#: data/Card.ts:43
-#: data/Card.ts:56
+#: data/Card.ts:45
+#: data/Card.ts:58
 msgid "Rogue"
 msgstr ""
 
-#: data/Card.ts:44
-#: data/Card.ts:62
+#: data/Card.ts:46
+#: data/Card.ts:64
 msgid "Survivor"
 msgstr ""
 
-#: data/Card.ts:45
-#: data/Card.ts:64
+#: data/Card.ts:47
+#: data/Card.ts:66
 msgid "Neutral"
 msgstr ""
 
-#: data/Card.ts:46
-#: data/Card.ts:77
-#: data/Card.ts:110
-#: data/Card.ts:127
+#: data/Card.ts:48
+#: data/Card.ts:79
+#: data/Card.ts:112
+#: data/Card.ts:129
 msgid "Weakness"
 msgstr ""
 
-#: data/Card.ts:47
-#: data/Card.ts:72
+#: data/Card.ts:49
+#: data/Card.ts:74
 msgid "Mythos"
 msgstr ""
 
-#: data/Card.ts:80
+#: data/Card.ts:82
 msgid "Unknown"
 msgstr ""
 
-#: data/Card.ts:94
-#: data/Card.ts:175
+#: data/Card.ts:96
+#: data/Card.ts:177
 msgid "Investigator"
 msgstr ""
 
-#: data/Card.ts:95
-#: data/Card.ts:139
+#: data/Card.ts:97
+#: data/Card.ts:141
 msgid "Asset: Hand"
 msgstr ""
 
-#: data/Card.ts:96
-#: data/Card.ts:141
+#: data/Card.ts:98
+#: data/Card.ts:143
 msgid "Asset: Hand x2"
 msgstr ""
 
-#: data/Card.ts:97
-#: data/Card.ts:157
+#: data/Card.ts:99
+#: data/Card.ts:159
 msgid "Asset: Hand. Arcane"
 msgstr ""
 
-#: data/Card.ts:98
-#: data/Card.ts:155
+#: data/Card.ts:100
+#: data/Card.ts:157
 msgid "Asset: Body. Hand x2"
 msgstr ""
 
-#: data/Card.ts:99
-#: data/Card.ts:143
+#: data/Card.ts:101
+#: data/Card.ts:145
 msgid "Asset: Accessory"
 msgstr ""
 
-#: data/Card.ts:100
-#: data/Card.ts:145
+#: data/Card.ts:102
+#: data/Card.ts:147
 msgid "Asset: Ally"
 msgstr ""
 
-#: data/Card.ts:101
-#: data/Card.ts:147
+#: data/Card.ts:103
+#: data/Card.ts:149
 msgid "Asset: Arcane"
 msgstr ""
 
-#: data/Card.ts:102
-#: data/Card.ts:149
-msgid "Asset: Arcane x2"
-msgstr ""
-
-#: data/Card.ts:103
-#: data/Card.ts:151
-msgid "Asset: Body"
-msgstr ""
-
 #: data/Card.ts:104
-#: data/Card.ts:135
-msgid "Asset: Permanent"
+#: data/Card.ts:151
+msgid "Asset: Arcane x2"
 msgstr ""
 
 #: data/Card.ts:105
 #: data/Card.ts:153
-msgid "Asset: Tarot"
+msgid "Asset: Body"
 msgstr ""
 
 #: data/Card.ts:106
-#: data/Card.ts:159
+#: data/Card.ts:137
+msgid "Asset: Permanent"
+msgstr ""
+
+#: data/Card.ts:107
+#: data/Card.ts:155
+msgid "Asset: Tarot"
+msgstr ""
+
+#: data/Card.ts:108
+#: data/Card.ts:161
 msgid "Asset: Other"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:99
-#: data/Card.ts:107
-#: data/Card.ts:165
+#: components/DeckDetailView/DeckViewTab.tsx:97
+#: data/Card.ts:109
+#: data/Card.ts:167
 msgid "Event"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:100
-#: data/Card.ts:108
-#: data/Card.ts:170
+#: components/DeckDetailView/DeckViewTab.tsx:98
+#: data/Card.ts:110
+#: data/Card.ts:172
 msgid "Skill"
 msgstr ""
 
-#: data/Card.ts:109
-#: data/Card.ts:122
+#: data/Card.ts:111
+#: data/Card.ts:124
 msgid "Basic Weakness"
 msgstr ""
 
 #: components/ScenarioDialog.tsx:25
 #: components/campaign/AddScenarioResultView/ScenarioSection.tsx:199
 #: components/campaign/EditScenarioResultView.tsx:158
-#: data/Card.ts:111
-#: data/Card.ts:177
-#: data/Card.ts:225
+#: data/Card.ts:113
+#: data/Card.ts:179
+#: data/Card.ts:230
 msgid "Scenario"
 msgstr ""
 
-#: data/Card.ts:112
-#: data/Card.ts:125
-#: data/Card.ts:132
-#: data/Card.ts:163
-#: data/Card.ts:168
-#: data/Card.ts:173
+#: data/Card.ts:114
+#: data/Card.ts:127
+#: data/Card.ts:134
+#: data/Card.ts:165
+#: data/Card.ts:170
+#: data/Card.ts:175
 msgid "Story"
 msgstr ""
 
-#: data/Card.ts:221
+#: data/Card.ts:226
 msgid "Act ${ json.stage }"
 msgstr ""
 
-#: data/Card.ts:223
+#: data/Card.ts:228
 msgid "Agenda ${ json.stage }"
 msgstr ""
 
-#: data/Card.ts:235
+#: data/Card.ts:240
 msgid "Act ${ linked_card.stage }"
 msgstr ""
 
-#: data/Card.ts:237
+#: data/Card.ts:242
 msgid "Agenda ${ linked_card.stage }"
 msgstr ""
 
@@ -200,12 +200,12 @@ msgstr ""
 msgid "Second Core Set"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:292
-#: components/CardSearchResultsComponent/CardResultList.tsx:568
+#: components/CardSearchResultsComponent/CardResultList.tsx:295
+#: components/CardSearchResultsComponent/CardResultList.tsx:606
 #: components/CollectionEditView.tsx:32
-#: components/EditSpecialDeckCards.tsx:182
+#: components/EditSpecialDeckCards.tsx:186
 #: components/InvestigatorsListComponent/index.tsx:294
-#: components/campaign/SelectCampaignDialog/index.tsx:94
+#: components/campaign/SelectCampaignDialog/index.tsx:95
 #: components/settings/SettingsView.tsx:79
 msgid "Edit Collection"
 msgstr ""
@@ -218,68 +218,68 @@ msgstr ""
 msgid "No matching decks for \"${ searchTerm }\"."
 msgstr ""
 
-#: components/DeckListRow.tsx:91
+#: components/DeckListRow.tsx:92
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/DeckListRow.tsx:108
+#: components/DeckListRow.tsx:109
 msgid "Updated ${ dateStr }"
 msgstr ""
 
-#: components/DeckListRow.tsx:51
+#: components/DeckListRow.tsx:52
 msgid "${ xp } available experience"
 msgstr ""
 
-#: components/DeckListRow.tsx:54
+#: components/DeckListRow.tsx:55
 msgid "${ parsedDeck.experience } experience required"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:123
+#: components/DeckDetailView/DeckViewTab.tsx:157
 #: components/DeckProblemRow.tsx:16
 msgid "Not enough cards."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:124
+#: components/DeckDetailView/DeckViewTab.tsx:158
 #: components/DeckProblemRow.tsx:17
 msgid "Too many cards."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:125
+#: components/DeckDetailView/DeckViewTab.tsx:159
 #: components/DeckProblemRow.tsx:18
 msgid "Too many copies of a card with the same name."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:126
+#: components/DeckDetailView/DeckViewTab.tsx:160
 #: components/DeckProblemRow.tsx:19
 msgid "Contains forbidden cards (cards not permitted by Faction)"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:127
+#: components/DeckDetailView/DeckViewTab.tsx:161
 #: components/DeckProblemRow.tsx:20
 msgid "Contains too many limited cards."
 msgstr ""
 
 #: components/CardDetailSwipeView.tsx:56
-#: components/CardDetailSwipeView.tsx:99
-#: components/CardDetailSwipeView.tsx:170
-#: components/CardDetailView/TwoSidedCardComponent.tsx:161
+#: components/CardDetailSwipeView.tsx:98
+#: components/CardDetailSwipeView.tsx:169
+#: components/CardDetailView/TwoSidedCardComponent.tsx:168
 #: components/CardDetailView/index.tsx:78
 #: components/CardDetailView/index.tsx:167
-#: components/DeckDetailView/index.tsx:457
-#: components/DeckDetailView/index.tsx:508
-#: components/EditSpecialDeckCards.tsx:54
-#: components/EditSpecialDeckCards.tsx:118
-#: components/EditSpecialDeckCards.tsx:214
-#: components/EditSpecialDeckCards.tsx:260
+#: components/DeckDetailView/index.tsx:465
+#: components/DeckDetailView/index.tsx:518
+#: components/EditSpecialDeckCards.tsx:56
+#: components/EditSpecialDeckCards.tsx:122
+#: components/EditSpecialDeckCards.tsx:218
+#: components/EditSpecialDeckCards.tsx:264
 #: components/PackListComponent/PackRow.tsx:50
 #: components/campaign/CampaignDetailView/ScenarioSection.tsx:41
 #: components/campaign/CampaignDetailView/WeaknessSetSection.tsx:62
 #: components/campaign/CampaignEditWeaknessDialog.tsx:34
 #: components/campaign/EditChaosBagDialog/index.tsx:57
-#: components/campaign/MyCampaignsView/index.tsx:101
-#: components/campaign/NewCampaignView/CampaignSelector.tsx:74
+#: components/campaign/MyCampaignsView/index.tsx:102
+#: components/campaign/NewCampaignView/CampaignSelector.tsx:75
 #: components/core/ChooserButton.tsx:41
 #: components/filter/CardEnemyFilterView.tsx:19
 #: components/filter/PackFilterView.tsx:30
@@ -289,33 +289,33 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:114
-#: components/EditSpecialDeckCards.tsx:355
+#: components/EditSpecialDeckCards.tsx:118
+#: components/EditSpecialDeckCards.tsx:359
 msgid "Edit Story Cards"
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:178
-#: components/EditSpecialDeckCards.tsx:285
+#: components/EditSpecialDeckCards.tsx:182
+#: components/EditSpecialDeckCards.tsx:289
 msgid "Draw Basic Weakness"
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:181
+#: components/EditSpecialDeckCards.tsx:185
 msgid "Draw From Collection"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:334
-#: components/DeckDetailView/CardUpgradeDialog/index.tsx:162
-#: components/DeckDetailView/DeckViewTab.tsx:201
-#: components/DeckDetailView/DeckViewTab.tsx:222
+#: components/CopyDeckDialog/index.tsx:349
+#: components/DeckDetailView/CardUpgradeDialog/index.tsx:165
+#: components/DeckDetailView/DeckViewTab.tsx:240
+#: components/DeckDetailView/DeckViewTab.tsx:261
 #: components/DeckDetailView/EditDeckDetailsDialog.tsx:183
-#: components/DeckDetailView/index.tsx:387
+#: components/DeckDetailView/index.tsx:393
 #: components/DeckUpgradeDialog/index.tsx:76
 #: components/DeckUpgradeDialog/index.tsx:78
-#: components/EditSpecialDeckCards.tsx:183
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:380
+#: components/EditSpecialDeckCards.tsx:187
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:383
 #: components/NewDeckView/index.tsx:39
 #: components/authHelper.ts:32
-#: components/campaign/AddCampaignNoteSectionDialog.tsx:143
+#: components/campaign/AddCampaignNoteSectionDialog.tsx:146
 #: components/campaign/AddScenarioResultView/index.tsx:66
 #: components/campaign/CampaignDetailView/ChaosBagSection.tsx:42
 #: components/campaign/CampaignDetailView/DecksSection.tsx:114
@@ -324,39 +324,39 @@ msgstr ""
 #: components/campaign/EditChaosBagDialog/index.tsx:52
 #: components/campaign/EditChaosBagDialog/index.tsx:144
 #: components/campaign/EditTraumaDialog.tsx:96
-#: components/campaign/MyCampaignsView/index.tsx:122
+#: components/campaign/MyCampaignsView/index.tsx:123
 #: components/campaign/MyDecksSelectorDialog.tsx:56
-#: components/campaign/NewCampaignView/index.tsx:352
+#: components/campaign/NewCampaignView/index.tsx:353
 #: components/campaign/UpgradeDecksView/index.tsx:55
 #: components/core/CountEditDialog.tsx:114
 #: components/core/DialogPicker.tsx:97
 #: components/core/TextEditDialog.tsx:204
-#: components/settings/DiagnosticsView.tsx:119
+#: components/settings/DiagnosticsView.tsx:120
 #: components/settings/LoginButton.tsx:41
 msgid "Cancel"
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:210
-#: components/EditSpecialDeckCards.tsx:256
+#: components/EditSpecialDeckCards.tsx:214
+#: components/EditSpecialDeckCards.tsx:260
 #: components/campaign/CampaignDetailView/WeaknessSetSection.tsx:58
 msgid "Draw Weaknesses"
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:309
+#: components/EditSpecialDeckCards.tsx:313
 msgid "BASIC WEAKNESS"
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:343
+#: components/EditSpecialDeckCards.tsx:347
 msgid "STORY"
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:375
+#: components/EditSpecialDeckCards.tsx:379
 msgid "DO NOT COUNT TOWARDS DECK SIZE"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:323
-#: components/DeckDetailView/index.tsx:326
-#: components/DeckDetailView/index.tsx:1062
+#: components/DeckDetailView/index.tsx:329
+#: components/DeckDetailView/index.tsx:332
+#: components/DeckDetailView/index.tsx:1085
 #: components/DeckUpgradeDialog/index.tsx:69
 #: components/DeckUpgradeDialog/index.tsx:73
 #: components/ExileCardDialog.tsx:27
@@ -394,26 +394,26 @@ msgstr ""
 msgid "Pack"
 msgstr ""
 
-#: components/MyDecksComponent.tsx:144
+#: components/MyDecksComponent.tsx:148
 msgid "Connect to ArkhamDB"
 msgstr ""
 
-#: app/App.js:135
-#: app/App.js:192
-#: components/MyDecksView.tsx:37
+#: app/App.js:70
+#: app/App.js:127
+#: components/MyDecksView.tsx:38
 msgid "Decks"
 msgstr ""
 
-#: components/MyDecksView.tsx:110
+#: components/MyDecksView.tsx:111
 msgid "Hide ArkhamDB Decks"
 msgstr ""
 
-#: app/App.js:141
-#: components/CopyDeckDialog/index.tsx:178
-#: components/MyDecksView.tsx:43
-#: components/MyDecksView.tsx:124
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:198
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:374
+#: app/App.js:76
+#: components/CopyDeckDialog/index.tsx:185
+#: components/MyDecksView.tsx:44
+#: components/MyDecksView.tsx:125
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:200
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:377
 #: components/NewDeckView/index.tsx:33
 #: components/campaign/MyDecksSelectorDialog.tsx:62
 msgid "New Deck"
@@ -436,154 +436,104 @@ msgstr ""
 msgid "Deck"
 msgstr ""
 
-#: components/parseDeck.ts:39
-#: components/parseDeck.ts:54
-msgid "Hand"
-msgstr ""
-
-#: components/parseDeck.ts:40
-#: components/parseDeck.ts:56
-msgid "Hand. Arcane"
-msgstr ""
-
-#: components/parseDeck.ts:41
-#: components/parseDeck.ts:55
-msgid "Hand x2"
-msgstr ""
-
-#: components/parseDeck.ts:42
-#: components/parseDeck.ts:58
-msgid "Arcane"
-msgstr ""
-
-#: components/parseDeck.ts:43
-#: components/parseDeck.ts:59
-msgid "Accessory"
-msgstr ""
-
-#: components/parseDeck.ts:44
-#: components/parseDeck.ts:60
-msgid "Body"
-msgstr ""
-
-#: components/parseDeck.ts:45
-#: components/parseDeck.ts:57
-msgid "Body. Hand x2"
-msgstr ""
-
-#: components/parseDeck.ts:46
-#: components/parseDeck.ts:61
-msgid "Ally"
-msgstr ""
-
-#: components/parseDeck.ts:47
-#: components/parseDeck.ts:62
-msgid "Tarot"
-msgstr ""
-
-#: components/parseDeck.ts:48
-#: components/parseDeck.ts:63
-msgid "Other"
-msgstr ""
-
 #: components/campaign/CampaignEditWeaknessDialog.tsx:31
 #: components/weakness/EditAssignedWeaknessComponent.tsx:27
 msgid "Available weaknesses"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:328
-#: components/DeckDetailView/index.tsx:1010
-#: components/weakness/WeaknessDrawComponent.tsx:253
+#: components/CopyDeckDialog/index.tsx:343
+#: components/DeckDetailView/index.tsx:1033
+#: components/weakness/WeaknessDrawComponent.tsx:305
 msgid "Saving"
 msgstr ""
 
-#: components/weakness/WeaknessDrawComponent.tsx:264
+#: components/weakness/WeaknessDrawComponent.tsx:316
 msgid "Draw a Different Weakness"
 msgstr ""
 
-#: components/weakness/WeaknessDrawComponent.tsx:265
+#: components/weakness/WeaknessDrawComponent.tsx:317
 msgid "Draw Another"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:526
-#: components/weakness/WeaknessDrawComponent.tsx:283
+#: components/filter/CardFilterView/index.tsx:532
+#: components/weakness/WeaknessDrawComponent.tsx:335
 msgid "Traits"
 msgstr ""
 
-#: components/weakness/WeaknessDrawComponent.tsx:347
+#: components/weakness/WeaknessDrawComponent.tsx:434
 msgid "All weaknesses have been drawn."
 msgstr ""
 
-#: components/campaign/CampaignDrawWeaknessDialog.tsx:311
+#: components/campaign/CampaignDrawWeaknessDialog.tsx:313
 #: components/weakness/WeaknessDrawDialog.tsx:98
 msgid "Save to Deck"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:57
+#: components/settings/DiagnosticsView.tsx:58
 msgid "Confirm import"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:60
-#: components/settings/DiagnosticsView.tsx:93
+#: components/settings/DiagnosticsView.tsx:61
+#: components/settings/DiagnosticsView.tsx:94
 msgid "Nevermind"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:63
+#: components/settings/DiagnosticsView.tsx:64
 msgid "Save These Campaigns"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:76
+#: components/settings/DiagnosticsView.tsx:77
 msgid "Problem with import"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:90
+#: components/settings/DiagnosticsView.tsx:91
 msgid "Restore campaign data?"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:96
+#: components/settings/DiagnosticsView.tsx:97
 msgid "Import and Erase Current Campaigns"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:100
+#: components/settings/DiagnosticsView.tsx:101
 msgid "Paste Backup Here"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:116
+#: components/settings/DiagnosticsView.tsx:117
 msgid "Backup campaign data?"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:117
+#: components/settings/DiagnosticsView.tsx:118
 msgid ""
 "This feature is intended for advanced diagnostics or if you are trying to "
 "move your campaign data from one device to another. Just copy the data and "
 "paste it into the other app."
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:122
+#: components/settings/DiagnosticsView.tsx:123
 msgid "Export Campaign Data"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:164
+#: components/settings/DiagnosticsView.tsx:228
 msgid "Backup"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:167
+#: components/settings/DiagnosticsView.tsx:231
 msgid "Backup Campaign Data"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:168
+#: components/settings/DiagnosticsView.tsx:232
 msgid "Restore Campaign Data"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:170
+#: components/settings/DiagnosticsView.tsx:234
 msgid "Caches"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:173
+#: components/settings/DiagnosticsView.tsx:237
 msgid "Clear image cache"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:174
+#: components/settings/DiagnosticsView.tsx:238
 msgid "Clear cache"
 msgstr ""
 
@@ -604,7 +554,7 @@ msgstr ""
 msgid "Sign out of ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:250
+#: components/DeckDetailView/DeckViewTab.tsx:289
 #: components/settings/LoginButton.tsx:75
 #: components/settings/LoginButton.tsx:78
 msgid "Sign in to ArkhamDB"
@@ -625,9 +575,9 @@ msgstr ""
 msgid "About Arkham Cards"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:160
-#: components/campaign/NewCampaignView/index.tsx:265
-#: components/campaign/NewCampaignView/index.tsx:269
+#: components/DeckDetailView/index.tsx:166
+#: components/campaign/NewCampaignView/index.tsx:266
+#: components/campaign/NewCampaignView/index.tsx:270
 #: components/campaign/UpgradeDecksView/index.tsx:155
 #: components/core/CountEditDialog.tsx:118
 #: components/core/TextEditDialog.tsx:224
@@ -664,105 +614,107 @@ msgstr ""
 msgid "Card Collection"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:308
+#: components/CardSearchResultsComponent/CardResultList.tsx:311
 #: components/settings/SettingsView.tsx:151
 msgid "Spoiler Settings"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:51
+#: components/filter/CardEnemyFilterView.tsx:52
 #: components/filter/CardFilterView/index.tsx:279
 msgid "Elite"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:57
+#: components/filter/CardEnemyFilterView.tsx:58
 #: components/filter/CardFilterView/index.tsx:285
 msgid "Hunter"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:63
+#: components/filter/CardEnemyFilterView.tsx:64
 #: components/filter/CardFilterView/index.tsx:297
 msgid "Alert"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:69
+#: components/filter/CardEnemyFilterView.tsx:70
 #: components/filter/CardFilterView/index.tsx:300
 msgid "Spawn"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:75
+#: components/filter/CardEnemyFilterView.tsx:76
 #: components/filter/CardFilterView/index.tsx:306
 msgid "Aloof"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:81
+#: components/filter/CardEnemyFilterView.tsx:82
 #: components/filter/CardFilterView/index.tsx:309
 msgid "Massive"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:89
+#: components/filter/CardEnemyFilterView.tsx:90
 #: components/filter/CardFilterView/index.tsx:282
 msgid "Non-Elite"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:95
+#: components/filter/CardEnemyFilterView.tsx:96
 #: components/filter/CardFilterView/index.tsx:288
 msgid "Non-Hunter"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:101
+#: components/filter/CardEnemyFilterView.tsx:102
 #: components/filter/CardFilterView/index.tsx:294
 msgid "Retaliate"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:107
+#: components/filter/CardEnemyFilterView.tsx:108
 #: components/filter/CardFilterView/index.tsx:291
 msgid "Parley"
 msgstr ""
 
-#: components/filter/CardEnemyFilterView.tsx:113
+#: components/filter/CardEnemyFilterView.tsx:114
 #: components/filter/CardFilterView/index.tsx:303
 msgid "Prey"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:293
-#: components/filter/CardEnemyFilterView.tsx:146
+#: components/CardDetailView/TwoSidedCardComponent.tsx:301
+#: components/filter/CardEnemyFilterView.tsx:153
 #: components/filter/CardFilterView/index.tsx:325
+#: components/filter/CardFilterView/index.tsx:589
 msgid "Fight"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:293
-#: components/CardDetailView/TwoSidedCardComponent.tsx:304
-#: components/filter/CardEnemyFilterView.tsx:157
+#: components/CardDetailView/TwoSidedCardComponent.tsx:301
+#: components/CardDetailView/TwoSidedCardComponent.tsx:312
+#: components/filter/CardEnemyFilterView.tsx:164
 #: components/filter/CardFilterView/index.tsx:315
 msgid "Health"
 msgstr ""
 
-#: components/campaign/AddCampaignNoteSectionDialog.tsx:137
-#: components/filter/CardEnemyFilterView.tsx:170
+#: components/campaign/AddCampaignNoteSectionDialog.tsx:139
+#: components/filter/CardEnemyFilterView.tsx:177
 #: components/filter/CardLocationFilterView.tsx:66
 msgid "Per Investigator"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:295
-#: components/filter/CardEnemyFilterView.tsx:178
+#: components/CardDetailView/TwoSidedCardComponent.tsx:303
+#: components/filter/CardEnemyFilterView.tsx:185
 #: components/filter/CardFilterView/index.tsx:328
+#: components/filter/CardFilterView/index.tsx:627
 msgid "Evade"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:297
-#: components/filter/CardEnemyFilterView.tsx:189
+#: components/CardDetailView/TwoSidedCardComponent.tsx:305
+#: components/filter/CardEnemyFilterView.tsx:196
 #: components/filter/CardFilterView/index.tsx:319
 msgid "Damage"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:297
-#: components/filter/CardEnemyFilterView.tsx:200
+#: components/CardDetailView/TwoSidedCardComponent.tsx:305
+#: components/filter/CardEnemyFilterView.tsx:207
 #: components/filter/CardFilterView/index.tsx:322
 msgid "Horror"
 msgstr ""
 
 #: components/filter/CardEnemyFilterView.tsx:23
-#: components/filter/CardEnemyFilterView.tsx:218
+#: components/filter/CardEnemyFilterView.tsx:225
 msgid "Enemy Filters"
 msgstr ""
 
@@ -852,69 +804,69 @@ msgstr ""
 msgid "Locations: ${ searchParts }"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:453
+#: components/filter/CardFilterView/index.tsx:459
 msgid "Level"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:466
+#: components/filter/CardFilterView/index.tsx:472
 msgid "Exceptional"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:472
+#: components/filter/CardFilterView/index.tsx:478
 msgid "Non-Exceptional"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:484
+#: components/filter/CardFilterView/index.tsx:490
 msgid "Types"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:494
+#: components/filter/CardFilterView/index.tsx:500
 msgid "SubTypes"
 msgstr ""
 
 #: components/CardSortDialog/index.tsx:46
-#: components/filter/CardFilterView/index.tsx:504
+#: components/filter/CardFilterView/index.tsx:510
 msgid "Cost"
 msgstr ""
 
 #: components/DeckChartsView/SlotsChart.tsx:89
-#: components/filter/CardFilterView/index.tsx:544
+#: components/filter/CardFilterView/index.tsx:550
 msgid "Slots"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:554
+#: components/filter/CardFilterView/index.tsx:560
 msgid "Uses"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:565
+#: components/filter/CardFilterView/index.tsx:571
 msgid "Fast"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:571
+#: components/filter/CardFilterView/index.tsx:577
 msgid "Permanent"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:577
+#: components/filter/CardFilterView/index.tsx:601
 msgid "Victory"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:585
+#: components/filter/CardFilterView/index.tsx:609
 msgid "Exile"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:591
+#: components/filter/CardFilterView/index.tsx:615
 msgid "Unique"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:597
+#: components/filter/CardFilterView/index.tsx:639
 msgid "Vengeance"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:608
+#: components/filter/CardFilterView/index.tsx:650
 msgid "Encounter Sets"
 msgstr ""
 
-#: components/filter/CardFilterView/index.tsx:621
+#: components/filter/CardFilterView/index.tsx:663
 msgid "Illustrators"
 msgstr ""
 
@@ -959,19 +911,19 @@ msgstr ""
 msgid "Check for updates"
 msgstr ""
 
-#: components/campaign/AddCampaignNoteSectionDialog.tsx:120
+#: components/campaign/AddCampaignNoteSectionDialog.tsx:121
 msgid "Add Campaign Log Section"
 msgstr ""
 
-#: components/campaign/AddCampaignNoteSectionDialog.tsx:127
+#: components/campaign/AddCampaignNoteSectionDialog.tsx:128
 msgid "Section Name"
 msgstr ""
 
-#: components/campaign/AddCampaignNoteSectionDialog.tsx:131
+#: components/campaign/AddCampaignNoteSectionDialog.tsx:132
 msgid "Count"
 msgstr ""
 
-#: components/campaign/AddCampaignNoteSectionDialog.tsx:147
+#: components/campaign/AddCampaignNoteSectionDialog.tsx:150
 msgid "Add"
 msgstr ""
 
@@ -979,15 +931,15 @@ msgstr ""
 msgid "Selected Difficulty"
 msgstr ""
 
-#: components/campaign/CampaignDrawWeaknessDialog.tsx:271
+#: components/campaign/CampaignDrawWeaknessDialog.tsx:273
 msgid "Investigator: ${ investigatorName }"
 msgstr ""
 
-#: components/campaign/CampaignDrawWeaknessDialog.tsx:285
+#: components/campaign/CampaignDrawWeaknessDialog.tsx:287
 msgid "Replace Random Weakness"
 msgstr ""
 
-#: components/campaign/CampaignDrawWeaknessDialog.tsx:310
+#: components/campaign/CampaignDrawWeaknessDialog.tsx:312
 msgid "Save to ${ investigator.name }’s Deck"
 msgstr ""
 
@@ -1016,20 +968,20 @@ msgstr ""
 msgid "${ investigator.firstName }’s Trauma"
 msgstr ""
 
-#: components/campaign/EditTraumaDialogContent.tsx:84
+#: components/campaign/EditTraumaDialogContent.tsx:86
 msgid "Physical Trauma"
 msgstr ""
 
-#: components/campaign/EditTraumaDialogContent.tsx:101
+#: components/campaign/EditTraumaDialogContent.tsx:105
 msgid "Mental Trauma"
 msgstr ""
 
-#: components/campaign/EditTraumaDialogContent.tsx:118
+#: components/campaign/EditTraumaDialogContent.tsx:123
 #: components/campaign/trauma.ts:41
 msgid "Killed"
 msgstr ""
 
-#: components/campaign/EditTraumaDialogContent.tsx:125
+#: components/campaign/EditTraumaDialogContent.tsx:131
 #: components/campaign/trauma.ts:44
 msgid "Insane"
 msgstr ""
@@ -1054,378 +1006,388 @@ msgstr ""
 msgid "Experience"
 msgstr ""
 
-#: components/campaign/constants.ts:20
+#: components/campaign/constants.ts:23
 msgid "Easy"
 msgstr ""
 
-#: components/campaign/constants.ts:21
+#: components/campaign/constants.ts:24
 msgid "Standard"
 msgstr ""
 
-#: components/campaign/constants.ts:22
+#: components/campaign/constants.ts:25
 msgid "Hard"
 msgstr ""
 
-#: components/campaign/constants.ts:23
+#: components/campaign/constants.ts:26
 msgid "Expert"
 msgstr ""
 
-#: components/campaign/constants.ts:34
+#: components/campaign/constants.ts:37
 msgid "Night of the Zealot"
 msgstr ""
 
-#: components/campaign/constants.ts:35
-#: components/campaign/constants.ts:166
+#: components/campaign/constants.ts:38
+#: components/campaign/constants.ts:208
 msgid "Return to the Night of the Zealot"
 msgstr ""
 
-#: components/campaign/constants.ts:36
-#: components/campaign/constants.ts:167
+#: components/campaign/constants.ts:39
+#: components/campaign/constants.ts:209
 msgid "The Dunwich Legacy"
 msgstr ""
 
-#: components/campaign/constants.ts:37
-#: components/campaign/constants.ts:168
+#: components/campaign/constants.ts:40
+#: components/campaign/constants.ts:210
 msgid "Return to The Dunwich Legacy"
 msgstr ""
 
-#: components/campaign/constants.ts:38
+#: components/campaign/constants.ts:41
 msgid "The Path To Carcosa"
 msgstr ""
 
-#: components/campaign/constants.ts:39
-#: components/campaign/constants.ts:170
+#: components/campaign/constants.ts:43
+#: components/campaign/constants.ts:213
 msgid "The Forgotten Age"
 msgstr ""
 
-#: components/campaign/constants.ts:40
-#: components/campaign/constants.ts:171
+#: components/campaign/constants.ts:44
+#: components/campaign/constants.ts:216
 msgid "The Circle Undone"
 msgstr ""
 
-#: components/campaign/constants.ts:71
+#: components/campaign/constants.ts:77
 msgid "The Gathering"
 msgstr ""
 
-#: components/campaign/constants.ts:72
+#: components/campaign/constants.ts:78
 msgid "The Midnight Masks"
 msgstr ""
 
-#: components/campaign/constants.ts:73
+#: components/campaign/constants.ts:79
 msgid "The Devourer Below"
 msgstr ""
 
-#: components/campaign/constants.ts:76
+#: components/campaign/constants.ts:82
 msgid "Extracurricular Activity"
 msgstr ""
 
-#: components/campaign/constants.ts:77
+#: components/campaign/constants.ts:83
 msgid "The House Always Wins"
 msgstr ""
 
-#: components/campaign/constants.ts:78
-#: components/campaign/constants.ts:91
+#: components/campaign/constants.ts:84
+#: components/campaign/constants.ts:97
 msgid "Armitage’s Fate"
 msgstr ""
 
-#: components/campaign/constants.ts:79
+#: components/campaign/constants.ts:85
 msgid "The Miskatonic Museum"
 msgstr ""
 
-#: components/campaign/constants.ts:80
+#: components/campaign/constants.ts:86
 msgid "Essex County Express"
 msgstr ""
 
-#: components/campaign/constants.ts:81
+#: components/campaign/constants.ts:87
 msgid "Blood on the Altar"
 msgstr ""
 
-#: components/campaign/constants.ts:82
-#: components/campaign/constants.ts:95
+#: components/campaign/constants.ts:88
+#: components/campaign/constants.ts:101
 msgid "The Survivors"
 msgstr ""
 
-#: components/campaign/constants.ts:83
+#: components/campaign/constants.ts:89
 msgid "Undimensioned and Unseen"
 msgstr ""
 
-#: components/campaign/constants.ts:84
+#: components/campaign/constants.ts:90
 msgid "Where Doom Awaits"
 msgstr ""
 
-#: components/campaign/constants.ts:85
+#: components/campaign/constants.ts:91
 msgid "Lost in Time and Space"
 msgstr ""
 
-#: components/campaign/constants.ts:86
-#: components/campaign/constants.ts:99
-#: components/campaign/constants.ts:113
-#: components/campaign/constants.ts:130
-#: components/campaign/constants.ts:147
+#: components/campaign/constants.ts:92
+#: components/campaign/constants.ts:105
+#: components/campaign/constants.ts:119
+#: components/campaign/constants.ts:133
+#: components/campaign/constants.ts:150
+#: components/campaign/constants.ts:167
+#: components/campaign/constants.ts:183
+#: components/campaign/constants.ts:194
 msgid "Epilogue"
 msgstr ""
 
-#: components/campaign/constants.ts:89
+#: components/campaign/constants.ts:95
 msgid "Return to Extracurricular Activity"
 msgstr ""
 
-#: components/campaign/constants.ts:90
+#: components/campaign/constants.ts:96
 msgid "Return to The House Always Wins"
 msgstr ""
 
-#: components/campaign/constants.ts:92
+#: components/campaign/constants.ts:98
 msgid "Return to The Miskatonic Museum"
 msgstr ""
 
-#: components/campaign/constants.ts:93
+#: components/campaign/constants.ts:99
 msgid "Return to Essex County Express"
 msgstr ""
 
-#: components/campaign/constants.ts:94
+#: components/campaign/constants.ts:100
 msgid "Return to Blood on the Altar"
 msgstr ""
 
-#: components/campaign/constants.ts:96
+#: components/campaign/constants.ts:102
 msgid "Return to Undimensioned and Unseen"
 msgstr ""
 
-#: components/campaign/constants.ts:97
+#: components/campaign/constants.ts:103
 msgid "Return to Where Doom Awaits"
 msgstr ""
 
-#: components/campaign/constants.ts:98
+#: components/campaign/constants.ts:104
 msgid "Return to Lost in Time and Space"
 msgstr ""
 
-#: components/campaign/constants.ts:102
-#: components/campaign/constants.ts:116
+#: components/campaign/constants.ts:108
+#: components/campaign/constants.ts:122
+#: components/campaign/constants.ts:136
+#: components/campaign/constants.ts:175
+#: components/campaign/constants.ts:186
 msgid "Prologue"
 msgstr ""
 
-#: components/campaign/constants.ts:103
+#: components/campaign/constants.ts:109
 msgid "Curtain Call"
 msgstr ""
 
-#: components/campaign/constants.ts:104
+#: components/campaign/constants.ts:110
 msgid "The Last King"
 msgstr ""
 
-#: components/campaign/constants.ts:105
+#: components/campaign/constants.ts:111
+#: components/campaign/constants.ts:125
 msgid "Lunacy’s Reward"
 msgstr ""
 
-#: components/campaign/constants.ts:106
+#: components/campaign/constants.ts:112
 msgid "Echoes of the Past"
 msgstr ""
 
-#: components/campaign/constants.ts:107
+#: components/campaign/constants.ts:113
 msgid "The Unspeakable Oath"
 msgstr ""
 
-#: components/campaign/constants.ts:108
+#: components/campaign/constants.ts:114
+#: components/campaign/constants.ts:128
 msgid "Lost Soul"
 msgstr ""
 
-#: components/campaign/constants.ts:109
+#: components/campaign/constants.ts:115
 msgid "A Phantom of Truth"
 msgstr ""
 
-#: components/campaign/constants.ts:110
+#: components/campaign/constants.ts:116
 msgid "The Pallid Mask"
 msgstr ""
 
-#: components/campaign/constants.ts:111
+#: components/campaign/constants.ts:117
 msgid "Black Stars Rise"
 msgstr ""
 
-#: components/campaign/constants.ts:112
+#: components/campaign/constants.ts:118
 msgid "Dim Carcosa"
 msgstr ""
 
-#: components/campaign/constants.ts:117
+#: components/campaign/constants.ts:137
 msgid "The Untamed Wilds"
 msgstr ""
 
-#: components/campaign/constants.ts:118
+#: components/campaign/constants.ts:138
 msgid "Restless Nights"
 msgstr ""
 
-#: components/campaign/constants.ts:119
+#: components/campaign/constants.ts:139
 msgid "The Doom of Eztli"
 msgstr ""
 
-#: components/campaign/constants.ts:120
+#: components/campaign/constants.ts:140
 msgid "Expedition’s End"
 msgstr ""
 
-#: components/campaign/constants.ts:121
+#: components/campaign/constants.ts:141
 msgid "Threads of Fate"
 msgstr ""
 
-#: components/campaign/constants.ts:122
+#: components/campaign/constants.ts:142
 msgid "The Boundary Beyond"
 msgstr ""
 
-#: components/campaign/constants.ts:123
+#: components/campaign/constants.ts:143
 msgid "The Jungle Beckons"
 msgstr ""
 
-#: components/campaign/constants.ts:124
+#: components/campaign/constants.ts:144
 msgid "Heart of the Elders"
 msgstr ""
 
-#: components/campaign/constants.ts:125
+#: components/campaign/constants.ts:145
 msgid "The City of Archives"
 msgstr ""
 
-#: components/campaign/constants.ts:126
+#: components/campaign/constants.ts:146
 msgid "Those Held Captive"
 msgstr ""
 
-#: components/campaign/constants.ts:127
+#: components/campaign/constants.ts:147
 msgid "The Depths of Yoth"
 msgstr ""
 
-#: components/campaign/constants.ts:128
+#: components/campaign/constants.ts:148
 msgid "The Darkness"
 msgstr ""
 
-#: components/campaign/constants.ts:129
+#: components/campaign/constants.ts:149
 msgid "Shattered Aeons"
 msgstr ""
 
-#: components/campaign/constants.ts:133
+#: components/campaign/constants.ts:153
 msgid "Prologue: Disappearance at the Twilight Estate"
 msgstr ""
 
-#: components/campaign/constants.ts:134
+#: components/campaign/constants.ts:154
 msgid "The Witching Hour"
 msgstr ""
 
-#: components/campaign/constants.ts:136
+#: components/campaign/constants.ts:156
 msgid "A Record of Those Lost"
 msgstr ""
 
-#: components/campaign/constants.ts:138
+#: components/campaign/constants.ts:158
 msgid "The Price of Progress"
 msgstr ""
 
-#: components/campaign/constants.ts:139
+#: components/campaign/constants.ts:159
 msgid "The Secret Name"
 msgstr ""
 
-#: components/campaign/constants.ts:140
+#: components/campaign/constants.ts:160
 msgid "The Wages of Sin"
 msgstr ""
 
-#: components/campaign/constants.ts:141
+#: components/campaign/constants.ts:161
 msgid "For the Greater Good"
 msgstr ""
 
-#: components/campaign/constants.ts:142
+#: components/campaign/constants.ts:162
 msgid "The Inner Circle"
 msgstr ""
 
-#: components/campaign/constants.ts:143
+#: components/campaign/constants.ts:163
 msgid "Union and Disillusion"
 msgstr ""
 
-#: components/campaign/constants.ts:144
+#: components/campaign/constants.ts:164
 msgid "In the Clutches of Chaos"
 msgstr ""
 
-#: components/campaign/constants.ts:145
+#: components/campaign/constants.ts:165
 msgid "Twist of Fate"
 msgstr ""
 
-#: components/campaign/constants.ts:146
+#: components/campaign/constants.ts:166
 msgid "Before the Black Throne"
 msgstr ""
 
-#: components/campaign/constants.ts:150
+#: components/campaign/constants.ts:170
 msgid "Return to The Gathering"
 msgstr ""
 
-#: components/campaign/constants.ts:151
+#: components/campaign/constants.ts:171
 msgid "Return to the Midnight Masks"
 msgstr ""
 
-#: components/campaign/constants.ts:152
+#: components/campaign/constants.ts:172
 msgid "Return to the Devourer Below"
 msgstr ""
 
-#: components/campaign/NewCampaignView/CampaignSelector.tsx:31
-#: components/campaign/constants.ts:165
+#: components/campaign/NewCampaignView/CampaignSelector.tsx:32
+#: components/campaign/constants.ts:207
 msgid "The Night of the Zealot"
 msgstr ""
 
-#: components/campaign/constants.ts:169
+#: components/campaign/constants.ts:211
 msgid "The Path to Carcosa"
 msgstr ""
 
-#: components/campaign/constants.ts:193
-#: components/campaign/constants.ts:202
-#: components/campaign/constants.ts:209
-#: components/campaign/constants.ts:221
-#: components/campaign/constants.ts:229
-#: components/campaign/constants.ts:240
-#: components/campaign/constants.ts:248
+#: components/campaign/constants.ts:241
+#: components/campaign/constants.ts:250
+#: components/campaign/constants.ts:258
+#: components/campaign/constants.ts:270
+#: components/campaign/constants.ts:278
+#: components/campaign/constants.ts:289
+#: components/campaign/constants.ts:296
+#: components/campaign/constants.ts:303
+#: components/campaign/constants.ts:311
 msgid "Campaign Notes"
 msgstr ""
 
-#: components/campaign/constants.ts:194
+#: components/campaign/constants.ts:242
 msgid "Cultists We Interrogated"
 msgstr ""
 
-#: components/campaign/constants.ts:195
+#: components/campaign/constants.ts:243
 msgid "Cultists Who Got Away"
 msgstr ""
 
-#: components/campaign/constants.ts:203
+#: components/campaign/constants.ts:251
 msgid "Sacrificed to Yog-Sothoth"
 msgstr ""
 
-#: components/campaign/constants.ts:210
+#: components/campaign/constants.ts:259
 msgid "VIPs Interviewed"
 msgstr ""
 
-#: components/campaign/constants.ts:211
+#: components/campaign/constants.ts:260
 msgid "VIPs Slain"
 msgstr ""
 
-#: components/campaign/constants.ts:214
+#: components/campaign/constants.ts:263
 msgid "Doubt"
 msgstr ""
 
-#: components/campaign/constants.ts:215
+#: components/campaign/constants.ts:264
 msgid "Conviction"
 msgstr ""
 
-#: components/campaign/constants.ts:216
+#: components/campaign/constants.ts:265
 msgid "Chasing the Stranger"
 msgstr ""
 
-#: components/campaign/constants.ts:223
+#: components/campaign/constants.ts:272
 msgid "Supplies"
 msgstr ""
 
-#: components/campaign/constants.ts:230
+#: components/campaign/constants.ts:279
 msgid "Mementos Discovered"
 msgstr ""
 
-#: components/campaign/constants.ts:231
+#: components/campaign/constants.ts:280
 msgid "Missing Persons - Gavriella Mizrah"
 msgstr ""
 
-#: components/campaign/constants.ts:232
+#: components/campaign/constants.ts:281
 msgid "Missing Persons - Jerome Davids"
 msgstr ""
 
-#: components/campaign/constants.ts:233
+#: components/campaign/constants.ts:282
 msgid "Missing Persons - Penny White"
 msgstr ""
 
-#: components/campaign/constants.ts:234
+#: components/campaign/constants.ts:283
 msgid "Missing Persons - Valentino Rivas"
 msgstr ""
 
@@ -1445,136 +1407,136 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: components/campaign/SelectCampaignDialog/index.tsx:67
+#: components/campaign/SelectCampaignDialog/index.tsx:68
 msgid "Custom"
 msgstr ""
 
-#: components/campaign/SelectCampaignDialog/index.tsx:87
+#: components/campaign/SelectCampaignDialog/index.tsx:88
 msgid "My Campaigns"
 msgstr ""
 
-#: components/campaign/SelectCampaignDialog/index.tsx:99
+#: components/campaign/SelectCampaignDialog/index.tsx:100
 msgid "Other Campaigns"
 msgstr ""
 
-#: components/campaign/SelectCampaignDialog/index.tsx:37
+#: components/campaign/SelectCampaignDialog/index.tsx:38
 msgid "Select Campaign"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/index.tsx:94
-#: components/campaign/NewCampaignView/CampaignSelector.tsx:91
+#: components/campaign/NewCampaignView/CampaignSelector.tsx:92
 msgid "Campaign"
 msgstr ""
 
-#: app/App.js:159
-#: components/campaign/MyCampaignsView/index.tsx:54
-#: components/campaign/MyCampaignsView/index.tsx:119
-#: components/campaign/MyCampaignsView/index.tsx:210
-#: components/campaign/NewCampaignView/index.tsx:88
+#: app/App.js:94
+#: components/campaign/MyCampaignsView/index.tsx:55
+#: components/campaign/MyCampaignsView/index.tsx:120
+#: components/campaign/MyCampaignsView/index.tsx:211
+#: components/campaign/NewCampaignView/index.tsx:89
 msgid "New Campaign"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/ChaosBagSection.tsx:39
 #: components/campaign/CampaignDetailView/ChaosBagSection.tsx:55
-#: components/campaign/NewCampaignView/index.tsx:349
+#: components/campaign/NewCampaignView/index.tsx:350
 msgid "Chaos Bag"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/index.tsx:156
-#: components/campaign/NewCampaignView/index.tsx:443
-#: components/campaign/NewCampaignView/index.tsx:547
+#: components/campaign/NewCampaignView/index.tsx:444
+#: components/campaign/NewCampaignView/index.tsx:548
 msgid "Campaign Name"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/DecksSection.tsx:41
-#: components/campaign/NewCampaignView/index.tsx:198
+#: components/campaign/NewCampaignView/index.tsx:199
 msgid "Adjust Weakness Set"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/DecksSection.tsx:44
-#: components/campaign/NewCampaignView/index.tsx:201
+#: components/campaign/NewCampaignView/index.tsx:202
 msgid "This deck contains several basic weaknesses"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/DecksSection.tsx:45
-#: components/campaign/NewCampaignView/index.tsx:202
+#: components/campaign/NewCampaignView/index.tsx:203
 msgid "This deck contains a basic weakness"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/DecksSection.tsx:50
-#: components/campaign/NewCampaignView/index.tsx:207
+#: components/campaign/NewCampaignView/index.tsx:208
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/DecksSection.tsx:51
-#: components/campaign/NewCampaignView/index.tsx:208
+#: components/campaign/NewCampaignView/index.tsx:209
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr ""
 
 #: components/campaign/CampaignDetailView/DecksSection.tsx:53
-#: components/campaign/NewCampaignView/index.tsx:210
+#: components/campaign/NewCampaignView/index.tsx:211
 msgid "Not Now"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:338
-#: components/DeckDetailView/CardUpgradeDialog/index.tsx:166
+#: components/CopyDeckDialog/index.tsx:353
+#: components/DeckDetailView/CardUpgradeDialog/index.tsx:169
 #: components/DeckDetailView/EditDeckDetailsDialog.tsx:187
-#: components/DeckDetailView/index.tsx:1002
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:384
+#: components/DeckDetailView/index.tsx:1025
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:387
 #: components/campaign/CampaignDetailView/DecksSection.tsx:55
-#: components/campaign/NewCampaignView/index.tsx:212
+#: components/campaign/NewCampaignView/index.tsx:213
 msgid "Okay"
 msgstr ""
 
 #: components/campaign/AddScenarioResultView/ScenarioSection.tsx:217
-#: components/campaign/NewCampaignView/index.tsx:287
+#: components/campaign/NewCampaignView/index.tsx:288
 msgid "(required)"
 msgstr ""
 
-#: components/campaign/NewCampaignView/index.tsx:289
+#: components/campaign/NewCampaignView/index.tsx:290
 msgid "My ${ campaign } Campaign"
 msgstr ""
 
-#: components/campaign/NewCampaignView/index.tsx:429
+#: components/campaign/NewCampaignView/index.tsx:430
 msgid "CHAOS BAG"
 msgstr ""
 
-#: components/campaign/NewCampaignView/index.tsx:455
+#: components/campaign/NewCampaignView/index.tsx:456
 msgid "WEAKNESS SET"
 msgstr ""
 
-#: components/campaign/NewCampaignView/index.tsx:457
+#: components/campaign/NewCampaignView/index.tsx:458
 msgid "Include all basic weaknesses from these expansions"
 msgstr ""
 
-#: components/campaign/NewCampaignView/index.tsx:477
+#: components/campaign/NewCampaignView/index.tsx:478
 msgid "CAMPAIGN LOG"
 msgstr ""
 
-#: components/campaign/EditCampaignNotesComponent/index.tsx:164
-#: components/campaign/NewCampaignView/index.tsx:495
+#: components/campaign/EditCampaignNotesComponent/index.tsx:165
+#: components/campaign/NewCampaignView/index.tsx:496
 msgid "Add Log Section"
 msgstr ""
 
-#: components/campaign/NewCampaignView/index.tsx:556
+#: components/campaign/NewCampaignView/index.tsx:557
 msgid "Difficulty"
 msgstr ""
 
-#: components/campaign/NewCampaignView/index.tsx:589
+#: components/campaign/NewCampaignView/index.tsx:590
 msgid "Create Campaign"
 msgstr ""
 
-#: app/App.js:153
-#: app/App.js:202
-#: components/campaign/MyCampaignsView/index.tsx:48
+#: app/App.js:88
+#: app/App.js:137
+#: components/campaign/MyCampaignsView/index.tsx:49
 msgid "Campaigns"
 msgstr ""
 
-#: components/campaign/MyCampaignsView/index.tsx:175
+#: components/campaign/MyCampaignsView/index.tsx:176
 msgid "No matching campaigns for \"${ search }\"."
 msgstr ""
 
-#: components/campaign/MyCampaignsView/index.tsx:205
+#: components/campaign/MyCampaignsView/index.tsx:206
 msgid "Search campaigns"
 msgstr ""
 
@@ -1582,17 +1544,17 @@ msgstr ""
 msgid "Save changes?"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:374
+#: components/DeckDetailView/index.tsx:380
 #: components/campaign/EditChaosBagDialog/index.tsx:131
 msgid "Looks like you have made some changes that have not been saved."
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:376
+#: components/DeckDetailView/index.tsx:382
 #: components/campaign/EditChaosBagDialog/index.tsx:133
 msgid "Save Changes"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:381
+#: components/DeckDetailView/index.tsx:387
 #: components/campaign/EditChaosBagDialog/index.tsx:138
 msgid "Discard Changes"
 msgstr ""
@@ -1601,32 +1563,32 @@ msgstr ""
 msgid "Add note"
 msgstr ""
 
-#: components/campaign/CampaignDetailView/CampaignDecks.tsx:95
+#: components/campaign/CampaignDetailView/CampaignDecks.tsx:101
 msgid "${ parsedDeck.normalCardCount } Card (${ parsedDeck.totalCardCount } Total)"
 msgid_plural "${ parsedDeck.normalCardCount } Cards (${ parsedDeck.totalCardCount } Total)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/campaign/CampaignDetailView/CampaignDecks.tsx:138
+#: components/campaign/CampaignDetailView/CampaignDecks.tsx:144
 #: components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:55
 msgid "${ xp } available"
 msgstr ""
 
-#: components/campaign/CampaignDetailView/CampaignDecks.tsx:141
+#: components/campaign/CampaignDetailView/CampaignDecks.tsx:147
 #: components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:58
 msgid "${ totalXp } total"
 msgstr ""
 
 #: components/DeckDetailView/EditDeckDetailsDialog.tsx:158
-#: components/campaign/CampaignDetailView/CampaignDecks.tsx:173
+#: components/campaign/CampaignDetailView/CampaignDecks.tsx:179
 #: components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:84
 msgid "EXPERIENCE"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:340
-#: components/DeckDetailView/index.tsx:546
-#: components/DeckDetailView/index.tsx:1047
-#: components/campaign/CampaignDetailView/CampaignDecks.tsx:185
+#: components/DeckDetailView/index.tsx:346
+#: components/DeckDetailView/index.tsx:556
+#: components/DeckDetailView/index.tsx:1070
+#: components/campaign/CampaignDetailView/CampaignDecks.tsx:191
 msgid "Upgrade Deck"
 msgstr ""
 
@@ -1663,7 +1625,7 @@ msgstr ""
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:193
+#: components/DeckDetailView/DeckViewTab.tsx:232
 #: components/campaign/CampaignDetailView/index.tsx:205
 #: components/campaign/CampaignDetailView/index.tsx:208
 msgid "Delete"
@@ -1690,6 +1652,7 @@ msgstr ""
 msgid "Interlude"
 msgstr ""
 
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:306
 #: components/campaign/AddScenarioResultView/ScenarioSection.tsx:207
 msgid "Name"
 msgstr ""
@@ -1723,55 +1686,45 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:229
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:231
 msgid "The Adventures of ${ investigator.name }"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:231
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:233
 msgid "${ investigator.name } Investigates"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:233
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:235
 msgid "The ${ investigator.name } Mysteries"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:235
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:237
 msgid "The ${ investigator.name } Job"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:237
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:239
 msgid "${ investigator.name } on the Road"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:239
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:241
 msgid "${ investigator.name } Does It All"
 msgstr ""
 
 #: components/DeckDetailView/EditDeckDetailsDialog.tsx:146
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:303
 msgid "NAME"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:312
-msgid "REQUIRED CARDS"
-msgstr ""
-
-#: components/CopyDeckDialog/index.tsx:283
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:332
-msgid "DECK TYPE"
-msgstr ""
-
-#: components/CopyDeckDialog/index.tsx:286
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:335
+#: components/CopyDeckDialog/index.tsx:295
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:338
 msgid "Create on ArkhamDB"
 msgstr ""
 
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:343
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:346
 msgid "Visit Settings to sign in to ArkhamDB."
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:295
-#: components/NewDeckView/NewDeckOptionsDialog.tsx:349
+#: components/CopyDeckDialog/index.tsx:304
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:352
 msgid "You seem to be offline. Refresh Network?"
 msgstr ""
 
@@ -1789,7 +1742,7 @@ msgstr[1] ""
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:353
+#: components/CardSearchResultsComponent/CardResultList.tsx:356
 #: components/InvestigatorsListComponent/index.tsx:183
 #: components/InvestigatorsListComponent/index.tsx:189
 msgid "N/A"
@@ -1815,11 +1768,11 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: components/DeckNavFooter/index.tsx:68
+#: components/DeckNavFooter/index.tsx:69
 msgid "Draw"
 msgstr ""
 
-#: components/DeckNavFooter/index.tsx:116
+#: components/DeckNavFooter/index.tsx:118
 msgid "XP: ${ experience }"
 msgstr ""
 
@@ -1827,145 +1780,141 @@ msgstr ""
 msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
 msgstr ""
 
-#: components/DeckNavFooter/index.tsx:155
+#: components/DeckNavFooter/index.tsx:157
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/DeckDetailView/DeckProgressModule.tsx:91
+#: components/DeckDetailView/DeckProgressModule.tsx:90
 msgid "CAMPAIGN PROGRESS"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:81
+#: components/DeckDetailView/DeckViewTab.tsx:79
 msgid "Assets (${ assetCount })"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:101
+#: components/DeckDetailView/DeckViewTab.tsx:99
 msgid "Enemy"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:102
+#: components/DeckDetailView/DeckViewTab.tsx:100
 msgid "Treachery"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:177
+#: components/DeckDetailView/DeckViewTab.tsx:216
 msgid "Delete this upgrade (${ deck.version })"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:184
-#: components/DeckDetailView/DeckViewTab.tsx:193
+#: components/DeckDetailView/DeckViewTab.tsx:223
+#: components/DeckDetailView/DeckViewTab.tsx:232
 msgid "Delete all versions"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:206
+#: components/DeckDetailView/DeckViewTab.tsx:245
 msgid "Delete deck"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:207
+#: components/DeckDetailView/DeckViewTab.tsx:246
 msgid "Are you sure you want to delete this deck?"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:212
+#: components/DeckDetailView/DeckViewTab.tsx:251
 msgid "Visit ArkhamDB to delete?"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:213
+#: components/DeckDetailView/DeckViewTab.tsx:252
 msgid "Unfortunately to delete decks you have to visit ArkhamDB at this time."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:216
+#: components/DeckDetailView/DeckViewTab.tsx:255
 msgid "Visit ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:240
+#: components/DeckDetailView/DeckViewTab.tsx:279
 msgid "Save Local Changes"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:241
+#: components/DeckDetailView/DeckViewTab.tsx:280
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:245
+#: components/DeckDetailView/DeckViewTab.tsx:284
 msgid "Unsupported Operation"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:246
+#: components/DeckDetailView/DeckViewTab.tsx:285
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
 "upload it to ArkhamDB at this time. If you would like to upload it, you can "
 "use Copy to upload a clone of the current deck."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:259
-#: components/DeckDetailView/DeckViewTab.tsx:605
+#: components/DeckDetailView/DeckViewTab.tsx:298
+#: components/DeckDetailView/DeckViewTab.tsx:647
 msgid "Upload to ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:439
+#: components/DeckDetailView/DeckViewTab.tsx:481
 msgid "Special Cards"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:476
+#: components/DeckDetailView/DeckViewTab.tsx:519
 msgid "${ normalCardCount } card (${ totalCardCount } total)"
 msgid_plural "${ normalCardCount } cards (${ totalCardCount } total)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:612
+#: components/DeckDetailView/DeckViewTab.tsx:654
 msgid "View on ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:620
+#: components/DeckDetailView/DeckViewTab.tsx:662
 msgid "Delete Deck"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:373
+#: components/DeckDetailView/index.tsx:379
 msgid "Save deck changes?"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:453
+#: components/DeckDetailView/index.tsx:461
 msgid "Edit Special Cards"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:349
-#: components/DeckDetailView/index.tsx:504
+#: components/DeckDetailView/index.tsx:355
+#: components/DeckDetailView/index.tsx:514
 msgid "Edit Deck"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:251
+#: components/DeckDetailView/index.tsx:257
 msgid "Deck has been deleted"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:254
+#: components/DeckDetailView/index.tsx:260
 msgid "OK"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:997
+#: components/DeckDetailView/index.tsx:1020
 msgid "Error"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:1037
+#: components/DeckDetailView/index.tsx:1060
 msgid "Edit"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:219
+#: components/CopyDeckDialog/index.tsx:226
 msgid "SELECT DECK VERSION TO COPY"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:272
-msgid "NEW NAME"
-msgstr ""
-
-#: components/CopyDeckDialog/index.tsx:277
+#: components/CopyDeckDialog/index.tsx:286
 msgid "Required"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:320
+#: components/CopyDeckDialog/index.tsx:335
 msgid "Copy Deck"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:329
+#: components/CopyDeckDialog/index.tsx:344
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
@@ -2007,90 +1956,92 @@ msgstr ""
 msgid "Taking three damage and three horror"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:577
+#: components/CardSearchResultsComponent/CardResultList.tsx:615
 msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:654
-#: components/CardSearchResultsComponent/CardResultList.tsx:673
+#: components/CardSearchResultsComponent/CardResultList.tsx:692
+#: components/CardSearchResultsComponent/CardResultList.tsx:711
 msgid "Edit Spoiler Settings"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:661
+#: components/CardSearchResultsComponent/CardResultList.tsx:699
 msgid "Show ${ spoilerCardsCount } Spoiler"
 msgid_plural "Show ${ spoilerCardsCount } Spoilers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:625
+#: components/CardSearchResultsComponent/CardResultList.tsx:663
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:626
+#: components/CardSearchResultsComponent/CardResultList.tsx:664
 msgid "No matching cards"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:343
+#: components/CardSearchResultsComponent/CardResultList.tsx:346
 msgid "Cost: None"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:345
+#: components/CardSearchResultsComponent/CardResultList.tsx:348
 msgid "Cost: ${ card.cost }"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:349
-#: components/CardSearchResultsComponent/CardResultList.tsx:355
+#: components/CardSearchResultsComponent/CardResultList.tsx:352
+#: components/CardSearchResultsComponent/CardResultList.tsx:358
 msgid "All Cards"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardSearchBox.tsx:125
+#: components/CardSearchResultsComponent/CardSearchBox.tsx:133
 msgid "Search for a card"
 msgstr ""
 
-#: components/CardSearchResultsComponent/index.tsx:235
+#: components/CardSearchResultsComponent/index.tsx:236
 msgid "Search Player Cards"
 msgstr ""
 
-#: components/CardSearchResultsComponent/index.tsx:235
+#: components/CardSearchResultsComponent/index.tsx:236
 msgid "Search Encounter Cards"
 msgstr ""
 
-#: components/CardSearchResultsComponent/index.tsx:243
+#: components/CardSearchResultsComponent/index.tsx:244
 msgid "Clear Search Filters"
 msgstr ""
 
-#: components/CardSearchResultsComponent/index.tsx:266
+#: components/CardSearchResultsComponent/index.tsx:267
 msgid "Clear \"${ searchTerm }\" search"
 msgstr ""
 
-#: components/CardSearchResultsComponent/index.tsx:273
+#: components/CardSearchResultsComponent/index.tsx:274
 msgid "Search Game Text"
 msgstr ""
 
-#: components/CardSearchResultsComponent/index.tsx:281
+#: components/CardSearchResultsComponent/index.tsx:282
 msgid "Search Card Backs"
 msgstr ""
 
 #: components/CardSearchComponent/TuneButton.tsx:52
-#: components/CardSearchComponent/index.tsx:177
+#: components/CardSearchComponent/index.tsx:175
 msgid "Apply"
 msgstr ""
 
 #: components/CardSearchComponent/TuneButton.tsx:55
-#: components/CardSearchComponent/index.tsx:83
-#: components/CardSearchComponent/index.tsx:96
-#: components/CardSearchComponent/index.tsx:180
-#: components/filter/CardFilterView/index.tsx:641
+#: components/CardSearchComponent/index.tsx:100
+#: components/CardSearchComponent/index.tsx:113
+#: components/CardSearchComponent/index.tsx:178
+#: components/filter/CardFilterView/index.tsx:683
 msgid "Filters"
 msgstr ""
 
-#: app/App.js:123
+#: app/App.js:58
+#: components/CardSearchComponent/index.tsx:192
 msgid "Player Cards"
 msgstr ""
 
 #: components/CardDetailView/SignatureCardsComponent.tsx:44
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:315
 msgid "Required Cards"
 msgstr ""
 
@@ -2098,73 +2049,73 @@ msgstr ""
 msgid "Alternate Cards"
 msgstr ""
 
-#: components/CardDetailSwipeView.tsx:144
-#: components/CardDetailView/TwoSidedCardComponent.tsx:132
-#: components/CardDetailView/TwoSidedCardComponent.tsx:550
+#: components/CardDetailSwipeView.tsx:143
+#: components/CardDetailView/TwoSidedCardComponent.tsx:138
+#: components/CardDetailView/TwoSidedCardComponent.tsx:560
 #: components/CardDetailView/index.tsx:35
 #: components/CardDetailView/index.tsx:139
 msgid "FAQ"
 msgstr ""
 
-#: components/CardDetailSwipeView.tsx:167
-#: components/CardDetailView/TwoSidedCardComponent.tsx:158
+#: components/CardDetailSwipeView.tsx:166
+#: components/CardDetailView/TwoSidedCardComponent.tsx:165
 #: components/CardDetailView/index.tsx:164
 msgid "Allowed Cards"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:219
+#: components/CardDetailView/TwoSidedCardComponent.tsx:227
 msgid "Test Icons: "
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:241
+#: components/CardDetailView/TwoSidedCardComponent.tsx:249
 msgid "Slot: ${ card.slot }"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:304
+#: components/CardDetailView/TwoSidedCardComponent.tsx:312
 msgid "Sanity"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:482
-#: components/CardDetailView/TwoSidedCardComponent.tsx:685
+#: components/CardDetailView/TwoSidedCardComponent.tsx:491
+#: components/CardDetailView/TwoSidedCardComponent.tsx:710
 msgid "Show back"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:635
+#: components/CardDetailView/TwoSidedCardComponent.tsx:659
 msgid "Victory: ${ card.victory }."
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:640
+#: components/CardDetailView/TwoSidedCardComponent.tsx:664
 msgid "Vengeance: ${ card.vengeance }."
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:685
+#: components/CardDetailView/TwoSidedCardComponent.tsx:710
 msgid "Show front"
 msgstr ""
 
-#: components/CardDetailView/CardDetailComponent.tsx:75
+#: components/CardDetailView/CardDetailComponent.tsx:78
 #: components/CardDetailView/index.tsx:45
 msgid "Deckbuilding Cards"
 msgstr ""
 
-#: components/MyDecksComponent.tsx:113
+#: components/MyDecksComponent.tsx:116
 msgid ""
 "An unexpected error occurred (${ error }). If restarting the app doesn't "
 "fix the problem, tap here to reauthorize."
 msgstr ""
 
-#: components/campaign/constants.ts:135
+#: components/campaign/constants.ts:155
 msgid "At Death's Doorstep (Act 1)"
 msgstr ""
 
-#: components/campaign/constants.ts:137
+#: components/campaign/constants.ts:157
 msgid "At Death's Doorstep (Acts 2-3)"
 msgstr ""
 
-#: components/campaign/constants.ts:222
+#: components/campaign/constants.ts:271
 msgid "Yig's Fury"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:128
+#: components/DeckDetailView/DeckViewTab.tsx:162
 #: components/DeckProblemRow.tsx:21
 msgid "Doesn't comply with the Investigator requirements."
 msgstr ""
@@ -2173,12 +2124,12 @@ msgstr ""
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr ""
 
-#: app/App.js:182
+#: app/App.js:117
 msgid "Cards"
 msgstr ""
 
-#: app/App.js:171
-#: app/App.js:212
+#: app/App.js:106
+#: app/App.js:147
 msgid "Settings"
 msgstr ""
 
@@ -2210,6 +2161,7 @@ msgstr ""
 msgid "Card Settings"
 msgstr ""
 
+#: components/TabooSetDialogOptions/index.tsx:39
 #: components/settings/TabooPicker.tsx:76
 msgid "Taboo List"
 msgstr ""
@@ -2230,15 +2182,11 @@ msgstr ""
 msgid "Loading latest cards..."
 msgstr ""
 
-#: components/TabooSetDialogOptions/index.tsx:39
-msgid "TABOO LIST"
-msgstr ""
-
-#: components/DeckNavFooter/index.tsx:49
+#: components/DeckNavFooter/index.tsx:50
 msgid "Charts"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:487
+#: components/DeckDetailView/DeckViewTab.tsx:530
 msgid "Taboo List: ${ tabooSet.date_start }."
 msgstr ""
 
@@ -2250,7 +2198,7 @@ msgstr ""
 msgid "Deck Details"
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:1071
+#: components/DeckDetailView/index.tsx:1094
 msgid "Discard Edits"
 msgstr ""
 
@@ -2263,6 +2211,7 @@ msgid "Card Factions"
 msgstr ""
 
 #: components/CardDetailView/BondedCardsComponent.tsx:51
+#: components/filter/CardFilterView/index.tsx:633
 msgid "Bonded"
 msgstr ""
 
@@ -2270,19 +2219,19 @@ msgstr ""
 msgid "Bound Cards"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:262
+#: components/CardDetailView/TwoSidedCardComponent.tsx:270
 msgid "Level: ${ card.xp }."
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:539
+#: components/CardDetailView/TwoSidedCardComponent.tsx:549
 msgid "Taboo"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:655
+#: components/CardDetailView/TwoSidedCardComponent.tsx:679
 msgid "Taboo List Changes"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:660
+#: components/CardDetailView/TwoSidedCardComponent.tsx:684
 msgid "Additional XP: ${ card.extra_xp }."
 msgstr ""
 
@@ -2293,7 +2242,7 @@ msgid ""
 "Use the + button to create a new one."
 msgstr ""
 
-#: components/EditSpecialDeckCards.tsx:179
+#: components/EditSpecialDeckCards.tsx:183
 msgid ""
 "This deck does not seem to be part of a campaign yet.\n"
 "\n"
@@ -2303,8 +2252,8 @@ msgid ""
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:251
-#: components/MyDecksComponent.tsx:142
+#: components/DeckDetailView/DeckViewTab.tsx:290
+#: components/MyDecksComponent.tsx:146
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
 "decks with others.\n"
@@ -2319,21 +2268,21 @@ msgid ""
 "If the problem persists, please try to reauthorize."
 msgstr ""
 
-#: components/weakness/WeaknessDrawComponent.tsx:341
+#: components/weakness/WeaknessDrawComponent.tsx:428
 msgid ""
 "There are no weaknesses that match these trait filters left in the set.\n"
 "\n"
 "Please adjust the trait filter."
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:58
+#: components/settings/DiagnosticsView.tsx:59
 msgid ""
 "We found the following campaigns:\n"
 "${ newCampaignNames }\n"
 "Are you sure you want to import this and erase your current campaigns?"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:77
+#: components/settings/DiagnosticsView.tsx:78
 msgid ""
 "We were not able to parse any campaigns from that pasted data.\n"
 "\n"
@@ -2341,13 +2290,13 @@ msgid ""
 "an Arkham Cards app."
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:88
+#: components/settings/DiagnosticsView.tsx:89
 msgid ""
 "The following campaigns will be ERASED: \n"
 "${ erasedCampaigns }"
 msgstr ""
 
-#: components/settings/DiagnosticsView.tsx:91
+#: components/settings/DiagnosticsView.tsx:92
 msgid ""
 "This feature is intended for advanced diagnostics or to import data from "
 "another app.\n"
@@ -2369,11 +2318,11 @@ msgid ""
 "Check for new cards from ArkhamDB?"
 msgstr ""
 
-#: components/campaign/CampaignDrawWeaknessDialog.tsx:82
+#: components/campaign/CampaignDrawWeaknessDialog.tsx:84
 msgid "Edit Assigned Weaknesses"
 msgstr ""
 
-#: components/campaign/MyCampaignsView/index.tsx:183
+#: components/campaign/MyCampaignsView/index.tsx:184
 msgid ""
 "No campaigns yet.\n"
 "\n"
@@ -2384,7 +2333,7 @@ msgid ""
 "values for all decks."
 msgstr ""
 
-#: components/campaign/CampaignDetailView/CampaignDecks.tsx:92
+#: components/campaign/CampaignDetailView/CampaignDecks.tsx:98
 msgid ""
 "${ parsedDeck.normalCardCount } Card\n"
 "(${ parsedDeck.totalCardCount } Total"
@@ -2414,14 +2363,14 @@ msgstr ""
 msgid "Sort"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:260
+#: components/DeckDetailView/DeckViewTab.tsx:299
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
 "After doing this you will need network access to make changes to the deck."
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:252
+#: components/DeckDetailView/index.tsx:258
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
 "\n"
@@ -2429,51 +2378,51 @@ msgid ""
 "restore your campaign data."
 msgstr ""
 
-#: components/DeckDetailView/index.tsx:333
+#: components/DeckDetailView/index.tsx:339
 msgid "Clone Deck"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:224
+#: components/CopyDeckDialog/index.tsx:231
 msgid ""
 "Base Version\n"
 "${ parsedBaseDeck.experience } XP"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:232
+#: components/CopyDeckDialog/index.tsx:239
 msgid ""
 "Current Version ${ parsedCurrentDeck.deck.version }\n"
 "${ parsedCurrentDeck.experience } XP"
 msgstr ""
 
-#: components/CopyDeckDialog/index.tsx:240
+#: components/CopyDeckDialog/index.tsx:247
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardSearchBox.tsx:75
+#: components/CardSearchResultsComponent/CardSearchBox.tsx:78
 msgid ""
 "Game\n"
 "Text"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardSearchBox.tsx:80
+#: components/CardSearchResultsComponent/CardSearchBox.tsx:85
 msgid ""
 "Flavor\n"
 "Text"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardSearchBox.tsx:85
+#: components/CardSearchResultsComponent/CardSearchBox.tsx:92
 msgid ""
 "Card\n"
 "Backs"
 msgstr ""
 
-#: components/CardSearchComponent/index.tsx:108
+#: components/CardSearchComponent/index.tsx:125
 msgid "Show Encounter Cards"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:575
+#: components/CardDetailView/TwoSidedCardComponent.tsx:585
 msgid "${ card.quantity } copy."
 msgid_plural "${ card.quantity } copies."
 msgstr[0] ""
@@ -2483,7 +2432,7 @@ msgstr[1] ""
 msgid "Share"
 msgstr ""
 
-#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:79
+#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:78
 #: components/ExileCardSelectorComponent.tsx:48
 msgid "Exiled cards"
 msgstr ""
@@ -2526,7 +2475,7 @@ msgstr ""
 msgid "View Next Deck"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:459
+#: components/DeckDetailView/DeckViewTab.tsx:502
 msgid "Experience required: ${ experience }"
 msgstr ""
 
@@ -2534,15 +2483,15 @@ msgstr ""
 msgid "Flip Card"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:269
+#: components/CardDetailView/TwoSidedCardComponent.tsx:277
 msgid "Doom: ${ doom }"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:274
+#: components/CardDetailView/TwoSidedCardComponent.tsx:282
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr ""
 
-#: components/CardDetailView/TwoSidedCardComponent.tsx:282
+#: components/CardDetailView/TwoSidedCardComponent.tsx:290
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 msgstr ""
 
@@ -2580,27 +2529,27 @@ msgstr ""
 msgid "Level ${ level }"
 msgstr ""
 
-#: components/DeckDetailView/CardUpgradeDialog/index.tsx:140
+#: components/DeckDetailView/CardUpgradeDialog/index.tsx:143
 msgid "Upgrade Card"
 msgstr ""
 
-#: components/DeckDetailView/CardUpgradeDialog/index.tsx:146
+#: components/DeckDetailView/CardUpgradeDialog/index.tsx:149
 msgid "Too many copies of the card"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:691
+#: components/CardSearchResultsComponent/CardResultList.tsx:729
 msgid "In Deck"
 msgstr ""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:698
+#: components/CardSearchResultsComponent/CardResultList.tsx:736
 msgid "All Eligible Cards"
 msgstr ""
 
-#: components/CardDetailView/CardDetailComponent.tsx:70
+#: components/CardDetailView/CardDetailComponent.tsx:73
 msgid "Deckbuilding"
 msgstr ""
 
-#: components/CardDetailView/CardDetailComponent.tsx:106
+#: components/CardDetailView/CardDetailComponent.tsx:109
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
 msgstr ""
 
@@ -2614,11 +2563,11 @@ msgid_plural "${ count } Cards"
 msgstr[0] ""
 msgstr[1] ""
 
-#: data/DeckOption.ts:44
+#: data/DeckOption.ts:47
 msgid "Secondary Class"
 msgstr ""
 
-#: components/DeckListRow.tsx:49
+#: components/DeckListRow.tsx:50
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr ""
 
@@ -2630,41 +2579,232 @@ msgstr ""
 msgid "Swipe between card results"
 msgstr ""
 
-#: components/campaign/CampaignDetailView/CampaignDecks.tsx:136
+#: components/campaign/CampaignDetailView/CampaignDecks.tsx:142
 #: components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:53
 msgid "${ xp } available (${ parsedDeck.changes.spentXp } spent)"
 msgstr ""
 
-#: components/DeckNavFooter/index.tsx:119
+#: components/DeckNavFooter/index.tsx:121
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
 msgstr ""
 
-#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:74
+#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:73
 msgid "Changes from previous deck"
 msgstr ""
 
-#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:76
+#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:75
 msgid "Upgraded cards"
 msgstr ""
 
-#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:77
+#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:76
 msgid "Added cards"
 msgstr ""
 
-#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:78
+#: components/DeckDetailView/ChangesFromPreviousDeck.tsx:77
 msgid "Removed cards"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:462
+#: components/DeckDetailView/DeckViewTab.tsx:505
 msgid ""
 "Available experience: ${ adjustedExperience }\n"
 "Spent experience: ${ changes.spentXp }"
 msgstr ""
 
-#: components/DeckDetailView/FactionSelectPicker.tsx:34
-msgid "Unknown Faction"
+#: components/DeckDetailView/FactionSelectPicker.tsx:35
+#: components/DeckDetailView/InvestigatorOption.tsx:44
+msgid "Select Faction"
 msgstr ""
 
-#: components/DeckDetailView/InvestigatorOption.tsx:28
-msgid "Select Faction"
+#: data/DeckOption.ts:49
+msgid "Deck Size"
+msgstr ""
+
+#: components/MyDecksComponent.tsx:99
+msgid "Unable to update: you appear to be offline."
+msgstr ""
+
+#: components/MyDecksComponent.tsx:108
+msgid ""
+"We're having trouble updating your decks at this time. If the problem "
+"persists tap here to reauthorize."
+msgstr ""
+
+#: components/weakness/WeaknessDrawComponent.tsx:343
+msgid "Multiplayer"
+msgstr ""
+
+#: components/weakness/WeaknessDrawComponent.tsx:352
+msgid "Standalone"
+msgstr ""
+
+#: components/settings/DiagnosticsView.tsx:196
+msgid "Debug Card Json"
+msgstr ""
+
+#: components/settings/DiagnosticsView.tsx:214
+msgid "Debug"
+msgstr ""
+
+#: components/settings/DiagnosticsView.tsx:217
+msgid "Add Debug Card"
+msgstr ""
+
+#: components/filter/CardEnemyFilterView.tsx:120
+msgid "Swarm"
+msgstr ""
+
+#: components/filter/CardFilterView/index.tsx:583
+msgid "Seal"
+msgstr ""
+
+#: components/filter/CardFilterView/index.tsx:595
+msgid "Investigate"
+msgstr ""
+
+#: components/filter/CardFilterView/index.tsx:621
+msgid "Myriad"
+msgstr ""
+
+#: components/campaign/constants.ts:42
+#: components/campaign/constants.ts:212
+msgid "Return to The Path to Carcosa"
+msgstr ""
+
+#: components/campaign/constants.ts:45
+#: components/campaign/constants.ts:214
+msgid "The Dream-Quest"
+msgstr ""
+
+#: components/campaign/constants.ts:46
+#: components/campaign/constants.ts:215
+msgid "The Web of Dreams"
+msgstr ""
+
+#: components/campaign/constants.ts:123
+msgid "Return to Curtain Call"
+msgstr ""
+
+#: components/campaign/constants.ts:124
+msgid "Return to The Last King"
+msgstr ""
+
+#: components/campaign/constants.ts:126
+msgid "Return to Echoes of the Past"
+msgstr ""
+
+#: components/campaign/constants.ts:127
+msgid "Return to The Unspeakable Oath"
+msgstr ""
+
+#: components/campaign/constants.ts:129
+msgid "Return to A Phantom of Truth"
+msgstr ""
+
+#: components/campaign/constants.ts:130
+msgid "Return to The Pallid Mask"
+msgstr ""
+
+#: components/campaign/constants.ts:131
+msgid "Return to Black Stars Rise"
+msgstr ""
+
+#: components/campaign/constants.ts:132
+msgid "Return to Dim Carcosa"
+msgstr ""
+
+#: components/campaign/constants.ts:176
+msgid "Beyond the Gates of Sleep"
+msgstr ""
+
+#: components/campaign/constants.ts:177
+#: components/campaign/constants.ts:188
+msgid "The Black Cat"
+msgstr ""
+
+#: components/campaign/constants.ts:178
+msgid "The Search for Kadath"
+msgstr ""
+
+#: components/campaign/constants.ts:179
+#: components/campaign/constants.ts:190
+msgid "The Oneironauts"
+msgstr ""
+
+#: components/campaign/constants.ts:180
+msgid "Dark Side of the Moon"
+msgstr ""
+
+#: components/campaign/constants.ts:181
+#: components/campaign/constants.ts:192
+msgid "The Great Ones"
+msgstr ""
+
+#: components/campaign/constants.ts:182
+msgid "Where Gods Dwell"
+msgstr ""
+
+#: components/campaign/constants.ts:187
+msgid "Waking Nightmare"
+msgstr ""
+
+#: components/campaign/constants.ts:189
+msgid "A Thousand Shapes of Horror"
+msgstr ""
+
+#: components/campaign/constants.ts:191
+msgid "Point of No Return"
+msgstr ""
+
+#: components/campaign/constants.ts:193
+msgid "Weaver of the Cosmos"
+msgstr ""
+
+#: components/campaign/constants.ts:290
+msgid "Evidence of Kadath"
+msgstr ""
+
+#: components/campaign/constants.ts:297
+msgid "Steps of the Bridge"
+msgstr ""
+
+#: components/CopyDeckDialog/index.tsx:292
+#: components/NewDeckView/NewDeckOptionsDialog.tsx:335
+msgid "Deck Type"
+msgstr ""
+
+#: components/InvestigatorsListComponent/InvestigatorRow.tsx:56
+msgid "${ investigator.deck_requirements.size } Cards"
+msgstr ""
+
+#: components/InvestigatorsListComponent/InvestigatorRow.tsx:63
+msgid "Unknown card: ${ req.code }"
+msgstr ""
+
+#: components/DeckDetailView/DeckSizeSelectPicker.tsx:34
+#: components/DeckDetailView/InvestigatorOption.tsx:59
+msgid "Select Deck Size"
+msgstr ""
+
+#: components/DeckDetailView/DeckViewTab.tsx:144
+msgid "Bonded Cards (${ count })"
+msgstr ""
+
+#: components/CopyDeckDialog/index.tsx:281
+msgid "New Name"
+msgstr ""
+
+#: components/CardSearchResultsComponent/CardSearchBox.tsx:78
+msgid "Game Text"
+msgstr ""
+
+#: components/CardSearchResultsComponent/CardSearchBox.tsx:85
+msgid "Flavor Text"
+msgstr ""
+
+#: components/CardSearchResultsComponent/CardSearchBox.tsx:92
+msgid "Card Backs"
+msgstr ""
+
+#: components/CardSearchComponent/index.tsx:192
+msgid "Encounter Cards"
 msgstr ""

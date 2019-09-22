@@ -201,11 +201,11 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     } = this.props;
     const cards = shuffle(
       flatMap(this.selectedCards(selectedTraits, multiplayer, standalone),
-      card => {
-        return map(
-          range(0, (card.quantity || 0) - (assignedCards[card.code] || 0)),
-          () => card);
-      }));
+        card => {
+          return map(
+            range(0, (card.quantity || 0) - (assignedCards[card.code] || 0)),
+            () => card);
+        }));
 
     const card = head(cards);
     if (card && card.imagesrc) {

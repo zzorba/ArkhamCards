@@ -2,6 +2,7 @@ import React from 'react';
 import { indexOf } from 'lodash';
 import { t } from 'ttag';
 
+import DeckSizeSelectPicker from './DeckSizeSelectPicker';
 import FactionSelectPicker from './FactionSelectPicker';
 import { DeckMeta } from '../../actions/types';
 import Card from '../../data/Card';
@@ -22,6 +23,8 @@ export default class InvestigatorOption extends React.Component<Props> {
     } = this.props;
     if (option.faction_select && option.faction_select.length) {
       setMeta('faction_selected', selection);
+    } else if (option.deck_size_select && option.deck_size_select.length) {
+      setMeta('deck_size_selected', selection);
     }
   };
 
@@ -40,6 +43,21 @@ export default class InvestigatorOption extends React.Component<Props> {
         <FactionSelectPicker
           name={option.name() || t`Select Faction`}
           factions={option.faction_select}
+          onChange={this._onChange}
+          selection={selection}
+          investigatorFaction={investigator.faction_code}
+        />
+      );
+    }
+    if (option.deck_size_select && option.deck_size_select.length) {
+      const selection = (
+        meta.deck_size_selected &&
+        indexOf(option.deck_size_select, meta.deck_size_selected) !== -1
+      ) ? meta.deck_size_selected : undefined;
+      return (
+        <DeckSizeSelectPicker
+          name={option.name() || t`Select Deck Size`}
+          sizes={option.deck_size_select}
           onChange={this._onChange}
           selection={selection}
           investigatorFaction={investigator.faction_code}
