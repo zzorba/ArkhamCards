@@ -2,34 +2,40 @@ import React from 'react';
 import { keys, values, shuffle } from 'lodash';
 import { Button, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
+import { Action, bindActionCreators, Dispatch } from 'redux';
 import { t } from 'ttag';
 
 import { iconsMap } from '../../../app/NavIcons';
 import { NavigationProps } from '../../types';
 import { ChaosBag, ChaosTokenType } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
-import { ChaosBagResults } from '../../../actions/types';
+import { Campaign, ChaosBagResults } from '../../../actions/types';
 import typography from '../../../styles/typography';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import ChaosToken from '../ChaosToken';
+import { updateCampaign } from '../actions';
+import { connect } from 'react-redux';
+import { AppState, getCampaign } from '../../../reducers';
 
 export interface CampaignChaosBagProps {
-  chaosBag: ChaosBag;
-  chaosBagResults: ChaosBagResults;
+  componentId: string;
+  campaignId: number;
   updateChaosBag: (chaosBag: ChaosBag) => void;
   trackDeltas?: boolean;
 }
 
-interface State {
+interface ReduxProps {
   chaosBag: ChaosBag;
   chaosBagResults: ChaosBagResults;
-  iconKey?: ChaosTokenType;
 }
 
-type Props = CampaignChaosBagProps & NavigationProps;
+interface ReduxActionProps {
+  updateCampaign: (id: number, chaosBagResults: Partial<Campaign>) => void;
+}
 
-// TODO: need to change it to pull chaosBag from redux state (pass the campaignId, and fetch campaign + get it from redux)
-export default class CampaignChaosBagView extends React.Component<Props, State> {
+type Props = NavigationProps & CampaignChaosBagProps & ReduxProps & ReduxActionProps;
+
+class CampaignChaosBagView extends React.Component<Props> {
   static get options() {
     return {
       topBar: {
@@ -64,15 +70,6 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   constructor(props: Props) {
     super(props);
 
-    this.state = {
-      chaosBag: Object.assign({}, props.chaosBag),
-      chaosBagResults: {
-        drawnTokens: [],
-        sealedTokens: [],
-        totalDrawnTokens: 0,
-      },
-    };
-
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -94,7 +91,7 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   };
 
   _handleDrawTokenPressed = () => {
-    const { chaosBagResults } = this.state;
+    const { chaosBagResults } = this.props;
     if (chaosBagResults.drawnTokens.length >= 1) {
       this.clearTokens();
     } else {
@@ -112,9 +109,10 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   _showChaosBagDialog = () => {
     const {
       componentId,
-      updateChaosBag,
       chaosBag,
+      updateChaosBag,
     } = this.props;
+
 
     Navigation.push<EditChaosBagProps>(componentId, {
       component: {
@@ -141,9 +139,8 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   getWeighedChaosBag = (list: any[], weight: any[]) => {
     const weighedList = [];
 
-    const totalWeight = weight.reduce((prev, cur) => {
-      return (prev && cur) ? (prev + cur) : 0;
-    });
+    for (let i = 0; i < weight.length; i++) {
+      const multiples = weight[i];
 
       for (let j = 0; j < multiples; j++) {
         weighedList.push(list[i]);
@@ -162,8 +159,7 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   };
 
   drawToken = () => {
-    const { chaosBag } = this.props;
-    const { chaosBagResults } = this.state;
+    const { campaignId, chaosBag, chaosBagResults } = this.props;
 
     const newIconKey = this.getRandomChaosToken(chaosBag);
     const drawnTokens = chaosBagResults.drawnTokens;
@@ -172,29 +168,42 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
       drawnTokens.push(newIconKey);
     }
 
-    this.setState({
-      chaosBagResults: {
-        drawnTokens: drawnTokens,
-        sealedTokens: chaosBagResults.sealedTokens,
-        totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
-      },
-    });
+    const newChaosBagResults = {
+      drawnTokens: drawnTokens,
+      sealedTokens: chaosBagResults.sealedTokens,
+      totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+    };
+
+    updateCampaign(campaignId, { chaosBagResults: newChaosBagResults });
   }
 
-  clearTokens = () => {
-    const { chaosBagResults } = this.state;
+  // _mutateCount = (id: ChaosTokenType, mutate: (count: number) => number) => {
+  //   this.setState((state: State) => {
+  //     const newChaosBag = Object.assign(
+  //       {},
+  //       state.chaosBag,
+  //       { [id]: mutate(state.chaosBag[id] || 0) }
+  //     );
+  //     return {
+  //       chaosBag: newChaosBag,
+  //     };
+  //   });
+  // };
 
-    this.setState({
-      chaosBagResults: {
-        drawnTokens: [],
-        sealedTokens: chaosBagResults.sealedTokens,
-        totalDrawnTokens: chaosBagResults.totalDrawnTokens,
-      },
-    });
+  clearTokens = () => {
+    const { campaignId, chaosBagResults } = this.props;
+
+    const newChaosBagResults = {
+      drawnTokens: [],
+      sealedTokens: chaosBagResults.sealedTokens,
+      totalDrawnTokens: chaosBagResults.totalDrawnTokens,
+    };
+
+    updateCampaign(campaignId, { chaosBagResults: newChaosBagResults });
   }
 
   renderChaosToken = () => {
-    const { chaosBagResults } = this.state;
+    const { chaosBagResults } = this.props;
     const iconKey = chaosBagResults.drawnTokens[chaosBagResults.drawnTokens.length - 1] || undefined;
 
     return (
@@ -205,7 +214,7 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   }
 
   renderDrawnTokens() {
-    const { chaosBagResults } = this.state;
+    const { chaosBagResults } = this.props;
 
     const drawnTokens = chaosBagResults.drawnTokens;
 
@@ -221,7 +230,7 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   }
 
   renderDrawButton = () => {
-    const { chaosBagResults } = this.state;
+    const { chaosBagResults } = this.props;
 
     if (chaosBagResults.drawnTokens.length > 0) {
       return <Button title={t`Add and Draw Again`} onPress={this._handleAddAndDrawAgainPressed} />;
@@ -229,7 +238,7 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   }
 
   renderClearButton = () => {
-    const { chaosBagResults } = this.state;
+    const { chaosBagResults } = this.props;
 
     if (chaosBagResults.drawnTokens.length > 1) {
       return <Button title={t`Clear Tokens`} onPress={this._handleClearTokensPressed} />;
@@ -237,7 +246,7 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
   }
 
   render() {
-    const { chaosBagResults } = this.state;
+    const { chaosBagResults } = this.props;
 
     return (
       <View style={styles.container}>
@@ -273,6 +282,34 @@ export default class CampaignChaosBagView extends React.Component<Props, State> 
     );
   }
 }
+
+const EMPTY_CHAOS_BAG = {
+  drawnTokens: [],
+  sealedTokens: [],
+  totalDrawnTokens: 0,
+};
+
+function mapStateToProps(
+  state: AppState,
+  props: NavigationProps & CampaignChaosBagProps
+): ReduxProps {
+  const campaign = getCampaign(state, props.campaignId);
+  return {
+    chaosBag: campaign ? campaign.chaosBag : {},
+    chaosBagResults: campaign ? campaign.chaosBagResults : EMPTY_CHAOS_BAG,
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    updateCampaign,
+  } as any, dispatch);
+}
+
+export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignChaosBagProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(CampaignChaosBagView);
 
 const styles = StyleSheet.create({
   container: {

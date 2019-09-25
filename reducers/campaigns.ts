@@ -72,6 +72,11 @@ export default function(
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
       chaosBag: { ...action.chaosBag },
+      chaosBagResults: {
+        drawnTokens: [],
+        sealedTokens: [],
+        totalDrawnTokens: 0,
+      },
       campaignNotes,
       weaknessSet: action.weaknessSet,
       baseDeckIds: action.baseDeckIds,
