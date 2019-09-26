@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { keys, values, shuffle } from 'lodash';
+import { cloneDeep, keys, values, shuffle } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -33,9 +33,13 @@ interface ReduxActionProps {
   updateCampaign: (id: number, chaosBagResults: Partial<Campaign>) => void;
 }
 
+interface State {
+  isChaosBagEmpty: boolean;
+}
+
 type Props = NavigationProps & CampaignChaosBagProps & ReduxProps & ReduxActionProps;
 
-class CampaignChaosBagView extends React.Component<Props> {
+class CampaignChaosBagView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -69,6 +73,10 @@ class CampaignChaosBagView extends React.Component<Props> {
 
   constructor(props: Props) {
     super(props);
+
+    this.state = {
+      isChaosBagEmpty: false,
+    };
 
     this._navEventListener = Navigation.events().bindComponent(this);
   }
@@ -157,6 +165,10 @@ class CampaignChaosBagView extends React.Component<Props> {
     const weight = values(chaosBag);
     const weighedList = this.getWeighedChaosBag(list, weight);
 
+    this.setState({
+      isChaosBagEmpty: weighedList.length <= 1,
+    });
+
     return shuffle(weighedList)[0];
   }
 
@@ -168,20 +180,31 @@ class CampaignChaosBagView extends React.Component<Props> {
       updateCampaign,
     } = this.props;
 
-    const newIconKey = this.getRandomChaosToken(chaosBag);
+    const currentChaosBag = cloneDeep(chaosBag);
     const drawnTokens = [...chaosBagResults.drawnTokens];
+
+    drawnTokens.forEach(function(token) {
+      const currentCount = currentChaosBag[token];
+      if (currentCount) {
+        currentChaosBag[token] = currentCount - 1;
+      }
+    });
+
+    const newIconKey = this.getRandomChaosToken(currentChaosBag);
 
     if (newIconKey) {
       drawnTokens.push(newIconKey);
+
+      const newChaosBagResults = {
+        drawnTokens: drawnTokens,
+        sealedTokens: chaosBagResults.sealedTokens,
+        totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
+      };
+
+      updateCampaign(campaignId, { chaosBagResults: newChaosBagResults });
+    } else {
+      this.clearTokens();
     }
-
-    const newChaosBagResults = {
-      drawnTokens: drawnTokens,
-      sealedTokens: chaosBagResults.sealedTokens,
-      totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
-    };
-
-    updateCampaign(campaignId, { chaosBagResults: newChaosBagResults });
   }
 
   // _mutateCount = (id: ChaosTokenType, mutate: (count: number) => number) => {
@@ -250,8 +273,12 @@ class CampaignChaosBagView extends React.Component<Props> {
       chaosBagResults,
     } = this.props;
 
+    const {
+      isChaosBagEmpty,
+    } = this.state;
+
     if (chaosBagResults.drawnTokens.length > 0) {
-      return <Button title={t`Add and Draw Again`} onPress={this._handleAddAndDrawAgainPressed} />;
+      return <Button title={t`Add and Draw Again`} onPress={this._handleAddAndDrawAgainPressed} disabled={isChaosBagEmpty} />;
     }
   }
 
