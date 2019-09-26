@@ -182,6 +182,12 @@ export interface InvestigatorCampaignNoteCount {
   custom?: boolean;
 }
 
+export const NEW_CHAOS_BAG_RESULTS = {
+  drawnTokens: [],
+  sealedTokens: [],
+  totalDrawnTokens: 0,
+};
+
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
   sealedTokens: ChaosTokenType[];
@@ -271,7 +277,7 @@ export interface Campaign {
   latestDeckIds?: number[]; // deprecated
   investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
-  chaosBagResults?: ChaosBagResults;
+  chaosBagResults: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
@@ -428,6 +434,7 @@ export interface NewCampaignAction {
   cycleCode: CampaignCycleCode;
   baseDeckIds: number[];
   chaosBag: ChaosBag;
+  chaosBagResults: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
 }
