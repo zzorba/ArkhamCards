@@ -683,7 +683,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               <Text style={typography.cardText}>
                 { card.extra_xp > 0 ?
                   t`Additional XP: ${card.extra_xp}.` :
-                  t`XP Discount: ${card.extra_xp}.`  }
+                  t`XP Discount: ${card.extra_xp}.` }
               </Text>
             ) }
             { !!card.taboo_text_change && (

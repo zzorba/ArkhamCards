@@ -362,7 +362,7 @@ const TDEB_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
 };
 
-export function scenarioRewards(encounterCode: string) {
+function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
     case 'the_eternal_slumber':
       return ['abyssal_tribute'];
@@ -384,6 +384,19 @@ export function scenarioRewards(encounterCode: string) {
     default:
       return [];
   }
+}
+
+export function scenarioRewards(encounterCode: string) {
+  const result = basicScenarioRewards(encounterCode);
+  if (encounterCode.startsWith('return_to_')) {
+    const nonReturnCode = encounterCode.substring('return_to_'.length);
+    return [
+      nonReturnCode,
+      ...result,
+      ...basicScenarioRewards(nonReturnCode),
+    ];
+  }
+  return result;
 }
 
 export function getChaosBag(
