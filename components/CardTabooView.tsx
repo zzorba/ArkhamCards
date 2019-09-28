@@ -48,9 +48,11 @@ class CardTabooView extends React.Component<Props> {
           </Text>
         ) }
         <View style={styles.gameTextBlock}>
-          { (!!taboo.extra_xp && taboo.extra_xp > 0) && (
+          { !!taboo.extra_xp && (
             <Text>
-              { t`Additional XP: ${taboo.extra_xp}.` }
+              { taboo.extra_xp > 0 ?
+                t`Additional XP: ${taboo.extra_xp}.` :
+                t`XP Discount: ${taboo.extra_xp}.` }
             </Text>
           ) }
           { !!taboo.taboo_text_change && (
