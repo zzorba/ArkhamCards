@@ -9,6 +9,7 @@ import {
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   SET_ALL_CAMPAIGNS,
   REPLACE_LOCAL_DECK,
+  NEW_CHAOS_BAG_RESULTS,
   Campaign,
   CampaignActions,
 } from '../actions/types';
@@ -72,6 +73,7 @@ export default function(
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
       chaosBag: { ...action.chaosBag },
+      chaosBagResults: NEW_CHAOS_BAG_RESULTS,
       campaignNotes,
       weaknessSet: action.weaknessSet,
       baseDeckIds: action.baseDeckIds,

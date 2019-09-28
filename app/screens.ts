@@ -27,6 +27,7 @@ import NewCampaignView from '../components/campaign/NewCampaignView';
 import SelectCampaignDialog from '../components/campaign/SelectCampaignDialog';
 import MyDecksSelectorDialog from '../components/campaign/MyDecksSelectorDialog';
 import CampaignScenarioView from '../components/campaign/CampaignScenarioView';
+import CampaignChaosBagView from '../components/campaign/CampaignChaosBagView';
 import MyDecksView from '../components/MyDecksView';
 import NewDeckView from '../components/NewDeckView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
@@ -74,6 +75,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Campaign.UpgradeDecks', () => UpgradeDecksView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.EditResult', () => EditScenarioResultView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.Scenarios', () => CampaignScenarioView, Provider, store);
+  Navigation.registerComponentWithRedux('Campaign.ChaosBag', () => CampaignChaosBagView, Provider, store);
   Navigation.registerComponentWithRedux('Settings', () => SettingsView, Provider, store);
   Navigation.registerComponentWithRedux('Settings.Diagnostics', () => DiagnosticsView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters', () => CardFilterView, Provider, store);
