@@ -1,6 +1,6 @@
 import React from 'react';
 import DeviceInfo from 'react-native-device-info';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { ChaosTokenType } from '../../constants';
 import ChaosTokenIcon from '../core/ChaosTokenIcon';
@@ -18,15 +18,14 @@ interface OwnProps {
 type Props = OwnProps;
 
 export default class ChaosToken extends React.Component<Props> {
-
-  _renderIcon = () => {
+  renderIcon() {
     const { iconKey, small } = this.props;
     const size = small ? 25 : 50;
 
     if (iconKey) {
       return <ChaosTokenIcon icon={iconKey} size={size * SCALE * iconSizeScale} color="#fff" fontFamily="Teutonic" />;
-
     }
+    return null;
   }
 
   render() {
@@ -36,7 +35,7 @@ export default class ChaosToken extends React.Component<Props> {
     return (
       <View style={circleStyle}>
         <ImageBackground source={CHAOS_TOKEN_BACKGROUND} style={styles.token}>
-          { this._renderIcon() }
+          { this.renderIcon() }
         </ImageBackground>
       </View>
     );

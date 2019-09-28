@@ -284,7 +284,7 @@ export interface Campaign {
   latestDeckIds?: number[]; // deprecated
   investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
-  chaosBagResults: ChaosBagResults;
+  chaosBagResults?: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
@@ -441,7 +441,6 @@ export interface NewCampaignAction {
   cycleCode: CampaignCycleCode;
   baseDeckIds: number[];
   chaosBag: ChaosBag;
-  chaosBagResults: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
 }
