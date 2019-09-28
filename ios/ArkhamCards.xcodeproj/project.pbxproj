@@ -53,6 +53,7 @@
 		65626FAE20D4220B004F4190 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65626FAD20D421FB004F4190 /* libReactNativeConfig.a */; };
 		6589F16920E484CB00B556CE /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6589F16620E484BA00B556CE /* libBVLinearGradient.a */; };
 		65971843223DB585002F9202 /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65971835223DB57D002F9202 /* libRNCNetInfo.a */; };
+		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
 		65B73EDB223023CF00495217 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B73E9D223023CF00495217 /* JavaScriptCore.framework */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
 		65CBE5C12049B8D200B47AB4 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CBE5BC2049B07500B47AB4 /* libRNSVG.a */; };
@@ -568,6 +569,7 @@
 		65626FA820D421FB004F4190 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		6589F16020E484BA00B556CE /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		659717FB223DB57D002F9202 /* RNCNetInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCNetInfo.xcodeproj; path = "../node_modules/@react-native-community/netinfo/ios/RNCNetInfo.xcodeproj"; sourceTree = "<group>"; };
+		65A43C65233EE33F00A79EA3 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
 		65B73E9D223023CF00495217 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEB2128932A0084A1CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -737,6 +739,7 @@
 				655226C7205EEAF00065A1F7 /* app.ttf */,
 				65522688205D68D70065A1F7 /* standalone.ttf */,
 				652421242054954F00FF6DB9 /* dunwich.ttf */,
+				65A43C65233EE33F00A79EA3 /* dreameaters.ttf */,
 				652421222054951A00FF6DB9 /* coreset.ttf */,
 				652420F42054950D00FF6DB9 /* carcosa.ttf */,
 				65EB59142047B67600CC5820 /* arkhamicons.ttf */,
@@ -1720,6 +1723,7 @@
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
 				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
+				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
 				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,

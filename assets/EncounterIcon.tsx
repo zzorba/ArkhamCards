@@ -1,9 +1,10 @@
 import React from 'react';
 
-import CoreSetIcon from './CoreSetIcon';
-import CircleIcon from './CircleIcon';
-import DunwichIcon from './DunwichIcon';
 import CarcosaIcon from './CarcosaIcon';
+import CircleIcon from './CircleIcon';
+import CoreSetIcon from './CoreSetIcon';
+import DreamEatersIcon from './DreamEatersIcon';
+import DunwichIcon from './DunwichIcon';
 import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
 
@@ -32,6 +33,10 @@ export default class EncounterIcon extends React.PureComponent<Props> {
 
   circleIcon(name: string, size: number, color: string) {
     return (<CircleIcon name={name} size={size} color={color} />);
+  }
+
+  dreamIcon(name: string, size: number, color: string) {
+    return (<DreamEatersIcon name={name} size={size} color={color} />);
   }
 
   standaloneIcon(name: string, size: number, color: string) {
@@ -292,6 +297,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'in_the_clutches_of_chaos':
       case 'before_the_black_throne':
         return this.circleIcon(encounter_code, size, color);
+      case 'tde':
+      case 'tdea':
+      case 'tdeb':
+      case 'the_dream_eaters':
+        return this.dreamIcon('dream', size, color);
       default:
         return this.coreIcon('core', size, color);
     }
