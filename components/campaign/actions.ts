@@ -20,7 +20,7 @@ import {
   NewCampaignAction,
   UpdateCampaignAction,
   DeleteCampaignAction,
-  SetAllCampaignsAction,
+  SetAllCampaignsAction, ChaosBagResults,
 } from '../../actions/types';
 import { ChaosBag } from '../../constants';
 import { AppState } from '../../reducers';
@@ -55,6 +55,7 @@ export function newCampaign(
   difficulty: CampaignDifficulty,
   deckIds: number[],
   chaosBag: ChaosBag,
+  chaosBagResults: ChaosBagResults,
   campaignLog: CustomCampaignLog,
   weaknessSet: WeaknessSet,
 ): ThunkAction<void, AppState, null, NewCampaignAction> {
@@ -66,6 +67,7 @@ export function newCampaign(
       cycleCode: pack_code,
       difficulty,
       chaosBag,
+      chaosBagResults,
       campaignLog,
       weaknessSet,
       baseDeckIds: getBaseDeckIds(getState(), deckIds),
@@ -78,6 +80,7 @@ export function newCampaign(
  * Pass only the fields that you want to update.
  * {
  *   chaosBag,
+ *   chaosBagResults,
  *   campaignNotes,
  *   investigatorData,
  *   latestDeckIds,
