@@ -1127,6 +1127,9 @@ class DeckDetailView extends React.Component<Props, State> {
     const validator = new DeckValidation(investigator, meta);
     return validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
+      if (!card) {
+        return [];
+      }
       return map(
         range(0, Math.max(0, slots[code] - (ignoreDeckLimitSlots[code] || 0))),
         () => card

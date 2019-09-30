@@ -39,6 +39,9 @@ class CardTabooView extends React.Component<Props> {
   renderContent(card: Card, taboo: Card) {
     const { tabooSets } = this.props;
     const tabooSet = taboo.taboo_set_id && tabooSets[taboo.taboo_set_id];
+    if (taboo.taboo_placeholder) {
+      return null;
+    }
 
     return (
       <View key={taboo.id}>
@@ -93,7 +96,7 @@ export default connectRealm<NavigationProps & CardTabooProps, RealmProps, Card, 
     realm: Realm,
     props: NavigationProps & CardTabooProps
   ): RealmProps {
-    const card = head(results.cards.filtered(`code == "${props.id}" and (taboo_set_id == 0 || taboo_set_id == null)`));
+    const card = head(results.cards.filtered(`code == "${props.id}" and (taboo_set_id == 0 or taboo_set_id == null)`));
     const taboos = results.cards.filtered(`code == "${props.id}" and taboo_set_id > 0`);
     const tabooSets: TabooSetMap = {};
     forEach(results.tabooSets, tabooSet => {

@@ -141,6 +141,9 @@ export default class DeckOption {
       dirty = true;
     }
     query += ' )';
+    if (query === '( )') {
+      return null;
+    }
     return query;
   }
 

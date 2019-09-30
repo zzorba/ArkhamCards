@@ -223,6 +223,9 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       const validator = new DeckValidation(investigator, deck.meta);
       const problemObj = validator.getProblem(flatMap(keys(newSlots), code => {
         const card = cards[code];
+        if (!card) {
+          return [];
+        }
         return map(
           range(0, Math.max(0, newSlots[code] - (ignoreDeckLimitSlots[code] || 0))),
           () => card

@@ -611,7 +611,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { this.renderFaqButton() }
             </View>
             <View style={[styles.halfColumn, { paddingLeft: s }]}>
-              { (card.taboo_set_id === 0) && (
+              { (card.taboo_set_id === 0 || card.taboo_placeholder) && (
                 this.renderTabooButton()
               ) }
             </View>
@@ -667,7 +667,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         { !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
-        { !!(card.taboo_set_id && card.taboo_set_id > 0) && (
+        { !!(card.taboo_set_id && card.taboo_set_id > 0) && !card.taboo_placeholder && (
           <View style={[styles.gameTextBlock, {
             borderColor: 'purple',
           }]}>

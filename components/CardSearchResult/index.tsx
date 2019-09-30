@@ -217,7 +217,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     const {
       card,
     } = this.props;
-    if (!card.taboo_set_id || card.taboo_set_id === 0) {
+    if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
       return null;
     }
     return (
