@@ -342,9 +342,9 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             <Text style={typography.text}>{ t`Sealed Tokens` }</Text>
           </View>
           <View style={styles.container}>
-            <View style={styles.drawnTokenRow}>
+            { chaosBagResults.sealedTokens.length > 0 && <View style={styles.drawnTokenRow}>
               { this.renderSealedTokens() }
-            </View>
+            </View> }
             <Button title={t`Seal Token`} onPress={this._handleSealTokenPressed} />
           </View>
         </ScrollView>
@@ -418,14 +418,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
-    maxHeight: 89,
-    marginTop: 8,
-    marginBottom: 8,
+    minHeight: 89,
   },
   drawTokenText: {
     flex: 1,
     textAlign: 'center',
-    marginTop: 17,
-    marginBottom: 17,
   },
 });
