@@ -16,6 +16,8 @@ import { EditChaosBagProps } from '../EditChaosBagDialog';
 import ChaosToken from '../ChaosToken';
 import { updateCampaign } from '../actions';
 import { AppState, getCampaign } from '../../../reducers';
+import { SealTokenDialogProps } from '../SealTokenDialog';
+import SealTokenButton from '../SealTokenButton';
 
 export interface CampaignChaosBagProps {
   componentId: string;
@@ -115,6 +117,22 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   };
 
   _handleSealTokenPressed = () => {
+    const {
+      campaignId,
+    } = this.props;
+    const passProps: SealTokenDialogProps = {
+      campaignId: campaignId,
+    };
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.SealToken',
+            passProps,
+          },
+        }],
+      },
+    });
   };
 
   _showChaosBagDialog = () => {
@@ -207,19 +225,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     }
   }
 
-  // _mutateCount = (id: ChaosTokenType, mutate: (count: number) => number) => {
-  //   this.setState((state: State) => {
-  //     const newChaosBag = Object.assign(
-  //       {},
-  //       state.chaosBag,
-  //       { [id]: mutate(state.chaosBag[id] || 0) }
-  //     );
-  //     return {
-  //       chaosBag: newChaosBag,
-  //     };
-  //   });
-  // };
-
   clearTokens() {
     const {
       campaignId,
@@ -266,6 +271,19 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     }
 
     return <Text style={[styles.drawTokenText, typography.text]}>{ t`Tap token to draw` }</Text>;
+  }
+
+  renderSealedTokens() {
+    const {
+      campaignId,
+      chaosBagResults,
+    } = this.props;
+
+    const sealedTokens = chaosBagResults.sealedTokens;
+
+    return sealedTokens.map(token => {
+      return <SealTokenButton key={token.id} campaignId={campaignId} sealed id={token.id} iconKey={token.icon} />;
+    });
   }
 
   renderDrawButton() {
@@ -324,6 +342,9 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             <Text style={typography.text}>{ t`Sealed Tokens` }</Text>
           </View>
           <View style={styles.container}>
+            <View style={styles.drawnTokenRow}>
+              { this.renderSealedTokens() }
+            </View>
             <Button title={t`Seal Token`} onPress={this._handleSealTokenPressed} />
           </View>
         </ScrollView>
@@ -397,10 +418,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
-    minHeight: 89,
+    maxHeight: 89,
+    marginTop: 8,
+    marginBottom: 8,
   },
   drawTokenText: {
     flex: 1,
     textAlign: 'center',
+    marginTop: 17,
+    marginBottom: 17,
   },
 });

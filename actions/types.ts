@@ -190,7 +190,7 @@ export const NEW_CHAOS_BAG_RESULTS = {
 
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
-  sealedTokens: ChaosTokenType[];
+  sealedTokens: {id: string; icon: ChaosTokenType}[];
   totalDrawnTokens: number;
 }
 

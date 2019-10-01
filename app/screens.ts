@@ -49,6 +49,7 @@ import ScenarioDialog from '../components/ScenarioDialog';
 import ExileCardDialog from '../components/ExileCardDialog';
 import AboutView from '../components/AboutView';
 import WeaknessDrawDialog from '../components/weakness/WeaknessDrawDialog';
+import SealTokenDialog from '../components/campaign/SealTokenDialog';
 
 // register all screens of the app (including internal ones)
 export function registerScreens(Provider: any, store: any) {
@@ -97,6 +98,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Dialog.CampaignDifficulty', () => CampaignDifficultyDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CampaignDrawWeakness', () => CampaignDrawWeaknessDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CampaignEditWeakness', () => CampaignEditWeaknessDialog, Provider, store);
+  Navigation.registerComponentWithRedux('Dialog.SealToken', () => SealTokenDialog, Provider, store);
   Navigation.registerComponentWithRedux('Weakness.Draw', () => WeaknessDrawDialog, Provider, store);
   Navigation.registerComponentWithRedux('SortButton', () => SortButton, Provider, store);
   Navigation.registerComponentWithRedux('TuneButton', () => TuneButton, Provider, store);
