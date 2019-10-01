@@ -152,9 +152,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
     case TCU: return [
       { name: t`Prologue: Disappearance at the Twilight Estate`, code: 'tcu_prologue', pack_code: 'tcu' },
       { name: t`The Witching Hour`, code: 'the_witching_hour', pack_code: 'tcu' },
-      { name: t`At Death's Doorstep (Act 1)`, code: 'at_deaths_doorstep_1', pack_code: 'tcu' },
-      { name: t`A Record of Those Lost`, code: 'tcu_interlude_1', interlude: true },
-      { name: t`At Death's Doorstep (Acts 2-3)`, code: 'at_deaths_doorstep_23', pack_code: 'tcu' },
+      { name: t`At Death's Doorstep`, code: 'at_deaths_doorstep_23', pack_code: 'tcu' },
       { name: t`The Price of Progress`, code: 'tcu_interlude_2', interlude: true },
       { name: t`The Secret Name`, code: 'the_secret_name', pack_code: 'tsn' },
       { name: t`The Wages of Sin`, code: 'the_wages_of_sin', pack_code: 'tws' },
@@ -287,13 +285,17 @@ export function getCampaignLog(
       return {
         sections: [
           t`Campaign Notes`,
-          t`Evidence of Kadath`,
         ],
+        counts: [
+          t`Evidence of Kadath`,
+        ]
       };
     case TDEB:
       return {
         sections: [
           t`Campaign Notes`,
+        ],
+        counts: [
           t`Steps of the Bridge`,
         ],
       };

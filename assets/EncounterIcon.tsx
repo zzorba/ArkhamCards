@@ -302,6 +302,19 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tdeb':
       case 'the_dream_eaters':
         return this.dreamIcon('dream', size, color);
+      case 'agents_of_atlach_nacha':
+      case 'agents_of_nyarlathotep':
+      case 'beyond_the_gates_of_sleep':
+      case 'corsairs':
+      case 'creatures_of_the_underworld':
+      case 'dreamers_curse':
+      case 'dreamlands':
+      case 'merging_realities':
+      case 'spiders':
+      case 'waking_nightmare':
+      case 'whispers_of_hypnos':
+      case 'zoogs':
+        return this.dreamIcon(encounter_code, size, color);
       default:
         return this.coreIcon('core', size, color);
     }
