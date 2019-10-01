@@ -22,7 +22,7 @@ export default class Card extends BaseCard {
   };
 
   public static tabooSetQuery(tabooSetId?: number) {
-    return `(taboo_set_id == null || taboo_set_id == ${tabooSetId || 0})`;
+    return `(taboo_set_id == null or taboo_set_id == ${tabooSetId || 0})`;
   }
 
   static parseRestrictions(json?: { investigator?: { [key: string]: string} }) {
@@ -330,6 +330,21 @@ export default class Card extends BaseCard {
     );
   }
 
+  static placeholderTabooCard(
+    tabooId: number,
+    card: Card
+  ): Card {
+    const result: Card = {} as Card;
+    forEach(keys(BaseCard.SCHEMA), property => {
+      // @ts-ignore TS7017
+      result[property] = card[property];
+    });
+    result.id = `${tabooId}-${card.code}`;
+    result.taboo_set_id = tabooId;
+    result.taboo_placeholder = true;
+    return result;
+  }
+
   static fromTabooCardJson(
     tabooId: number,
     json: any,
@@ -343,6 +358,7 @@ export default class Card extends BaseCard {
     });
     result.id = `${tabooId}-${code}`;
     result.taboo_set_id = tabooId;
+    result.taboo_placeholder = false;
 
     if (json.xp) {
       result.extra_xp = json.xp;

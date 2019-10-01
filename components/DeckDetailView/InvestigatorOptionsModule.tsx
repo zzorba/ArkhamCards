@@ -16,7 +16,7 @@ interface Props {
 export default class InvestigatorOptionsModule extends React.Component<Props> {
   render() {
     const { investigator, meta, setMeta } = this.props;
-    const options = investigator.investigatorOptions();
+    const options = investigator.investigatorSelectOptions();
     if (!options.length) {
       return <View style={styles.placeholder} />;
     }

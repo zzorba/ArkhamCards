@@ -86,7 +86,7 @@ project.ext.react = [
 apply from: "../../node_modules/react-native/react.gradle"
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'arkhamicons.ttf', 'coreset.ttf', 'circle.ttf', 'dunwich.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
+    iconFontNames: [ 'arkhamicons.ttf', 'coreset.ttf', 'circle.ttf', 'dreameaters.ttf', 'dunwich.ttf', 'carcosa.ttf', 'forgotten.ttf', 'standalone.ttf', 'app.ttf', 'Teutonic.ttf' ]
 ]
 
 /**
@@ -118,8 +118,8 @@ android {
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative57_5"
         renderscriptTargetApi rootProject.ext.compileSdkVersion
         renderscriptSupportModeEnabled true
-        versionCode 86
-        versionName "1.8.10"
+        versionCode 89
+        versionName "1.8.13"
         ndk {
             abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }

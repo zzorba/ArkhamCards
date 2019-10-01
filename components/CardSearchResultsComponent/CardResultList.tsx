@@ -182,11 +182,6 @@ class CardResultList extends React.Component<Props, State> {
       if (offsetY <= 0) {
         this.props.showHeader();
       } else {
-        if (this.hasPendingCountChanges) {
-          this.hasPendingCountChanges = false;
-          this._throttledUpdateResults();
-        }
-
         const delta = Math.abs(offsetY - this.lastOffsetY);
         if (delta < SCROLL_DISTANCE_BUFFER) {
           // Not a long enough scroll, don't update scrollY and don't take any
@@ -199,6 +194,10 @@ class CardResultList extends React.Component<Props, State> {
         const scrollingUp = offsetY < this.lastOffsetY;
 
         if (scrollingUp) {
+          if (this.hasPendingCountChanges) {
+            this.hasPendingCountChanges = false;
+            this._throttledUpdateResults();
+          }
           this.props.showHeader();
         } else {
           this.props.hideHeader();

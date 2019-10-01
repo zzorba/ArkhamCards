@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.8.10</string>
+	<string>1.8.12</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -34,7 +34,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -64,6 +64,7 @@
 		<string>forgotten.ttf</string>
 		<string>circle.ttf</string>
 		<string>arkhamicons.ttf</string>
+		<string>dreameaters.ttf</string>
 		<string>coreset.ttf</string>
 		<string>dunwich.ttf</string>
 		<string>carcosa.ttf</string>

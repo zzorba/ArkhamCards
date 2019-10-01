@@ -42,6 +42,7 @@ export interface DeckProblem {
 
 export interface DeckMeta {
   faction_selected?: FactionCodeType;
+  deck_size_selected?: string;
 }
 export interface Deck {
   id: number;
@@ -226,6 +227,8 @@ export const PTC = 'ptc';
 export const RTPTC = 'rtptc';
 export const TFA = 'tfa';
 export const TCU = 'tcu';
+export const TDEA = 'tdea';
+export const TDEB = 'tdeb';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -236,7 +239,9 @@ export type CampaignCycleCode =
   typeof PTC |
   typeof RTPTC |
   typeof TFA |
-  typeof TCU;
+  typeof TCU |
+  typeof TDEA |
+  typeof TDEB;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -247,6 +252,8 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   RTPTC,
   TFA,
   TCU,
+  TDEA,
+  TDEB,
 ];
 export interface CustomCampaignLog {
   sections?: string[];
@@ -277,7 +284,7 @@ export interface Campaign {
   latestDeckIds?: number[]; // deprecated
   investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
-  chaosBagResults: ChaosBagResults;
+  chaosBagResults?: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
@@ -434,7 +441,6 @@ export interface NewCampaignAction {
   cycleCode: CampaignCycleCode;
   baseDeckIds: number[];
   chaosBag: ChaosBag;
-  chaosBagResults: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
 }

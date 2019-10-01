@@ -12,6 +12,9 @@ import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import typography from '../../../styles/typography';
 import { CampaignChaosBagProps } from '../CampaignChaosBagView';
+import { EditChaosBagProps } from '../EditChaosBagDialog';
+
+const DRAW_CHAOS_TOKENS_ENABLED = false;
 
 interface Props {
   componentId: string;
@@ -25,29 +28,43 @@ export default class ChaosBagSection extends React.Component<Props> {
     const {
       componentId,
       campaignId,
+      chaosBag,
       updateChaosBag,
     } = this.props;
-    Navigation.push<CampaignChaosBagProps>(componentId, {
-      component: {
-        name: 'Campaign.ChaosBag',
-        passProps: {
-          componentId,
-          campaignId,
-          updateChaosBag: updateChaosBag,
-          trackDeltas: true,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Cancel`,
+    if (DRAW_CHAOS_TOKENS_ENABLED) {
+      Navigation.push<CampaignChaosBagProps>(componentId, {
+        component: {
+          name: 'Campaign.ChaosBag',
+          passProps: {
+            componentId,
+            campaignId,
+            updateChaosBag: updateChaosBag,
+            trackDeltas: true,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Chaos Bag`,
+              },
+              backButton: {
+                title: t`Cancel`,
+              },
             },
           },
         },
-      },
-    });
+      });
+    } else {
+      Navigation.push<EditChaosBagProps>(componentId, {
+        component: {
+          name: 'Dialog.EditChaosBag',
+          passProps: {
+            chaosBag,
+            updateChaosBag: updateChaosBag,
+            trackDeltas: true,
+          },
+        },
+      });
+    }
   }
 
   render() {

@@ -20,7 +20,7 @@ import {
   NewCampaignAction,
   UpdateCampaignAction,
   DeleteCampaignAction,
-  SetAllCampaignsAction, ChaosBagResults,
+  SetAllCampaignsAction,
 } from '../../actions/types';
 import { ChaosBag } from '../../constants';
 import { AppState } from '../../reducers';
@@ -55,7 +55,6 @@ export function newCampaign(
   difficulty: CampaignDifficulty,
   deckIds: number[],
   chaosBag: ChaosBag,
-  chaosBagResults: ChaosBagResults,
   campaignLog: CustomCampaignLog,
   weaknessSet: WeaknessSet,
 ): ThunkAction<void, AppState, null, NewCampaignAction> {
@@ -67,7 +66,6 @@ export function newCampaign(
       cycleCode: pack_code,
       difficulty,
       chaosBag,
-      chaosBagResults,
       campaignLog,
       weaknessSet,
       baseDeckIds: getBaseDeckIds(getState(), deckIds),

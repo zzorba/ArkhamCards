@@ -217,14 +217,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     const {
       card,
     } = this.props;
-    if (!card.taboo_set_id || card.taboo_set_id === 0) {
+    if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
       return null;
     }
     return (
       <View style={styles.tabooBlock}>
-        { !!(card.extra_xp && card.extra_xp > 0) && (
+        { !!card.extra_xp && (
           <Text style={[typography.small, styles.extraXp]} numberOfLines={1} ellipsizeMode="clip">
-            { repeat('•', card.extra_xp) }
+            { repeat(card.extra_xp > 0 ? '•' : '-', Math.abs(card.extra_xp)) }
           </Text>
         ) }
         { !!(card.taboo_set_id && card.taboo_set_id > 0) && (

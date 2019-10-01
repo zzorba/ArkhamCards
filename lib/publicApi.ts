@@ -1,4 +1,4 @@
-import { forEach, groupBy, head, sortBy } from 'lodash';
+import { flatMap, forEach, groupBy, head, map, sortBy, uniq } from 'lodash';
 import Realm from 'realm';
 import { Alert } from 'react-native';
 
@@ -31,6 +31,12 @@ export const syncTaboos = function(
     }
     const lastModified = response.headers.get('Last-Modified') || undefined;
     return response.json().then(json => {
+      const allTabooCards = uniq(
+        flatMap(json, tabooJson => {
+          const cards = JSON.parse(tabooJson.cards);
+          return map(cards, card => card.code);
+        })
+      );
       realm.write(() => {
         forEach(json, tabooJson => {
           const cards = JSON.parse(tabooJson.cards);
@@ -44,9 +50,19 @@ export const syncTaboos = function(
             Alert.alert(`${e}`);
             console.log(e);
           }
+          forEach(allTabooCards, tabooCode => {
+            const card = head(realm.objects<Card>('Card').filtered(`code == '${tabooCode}' and (taboo_set_id == null OR taboo_set_id == 0)`));
+            if (card) {
+              realm.create(
+                'Card',
+                Card.placeholderTabooCard(tabooJson.id, card),
+                true
+              );
+            }
+          });
           forEach(cards, cardJson => {
             const code: string = cardJson.code;
-            const card = head(realm.objects<Card>('Card').filtered(`code == '${code}' and (taboo_set_id == null || taboo_set_id == 0)`));
+            const card = head(realm.objects<Card>('Card').filtered(`code == '${code}' and (taboo_set_id == null OR taboo_set_id == 0)`));
             if (card) {
               try {
                 card.taboo_set_id = 0;
@@ -60,6 +76,8 @@ export const syncTaboos = function(
                 Alert.alert(`${e}`);
                 console.log(e);
               }
+            } else {
+              console.log(`Could not find old card: ${code}`);
             }
           });
         });
@@ -130,7 +148,7 @@ export const syncCards = function(
         forEach(
           groupBy(
             realm.objects<Card>('Card')
-              .filtered(`deck_limit > 0 && spoiler != true && (taboo_set_id == null || taboo_set_id == 0)`),
+              .filtered(`deck_limit > 0 and spoiler != true and (taboo_set_id == null or taboo_set_id == 0)`),
             card => card.name
           ), (cards) => {
             if (cards.length > 1) {

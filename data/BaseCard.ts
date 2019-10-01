@@ -11,6 +11,7 @@ export default class BaseCard {
     id: 'string',
     code: { type: 'string', indexed: true },
     taboo_set_id: 'int?',
+    taboo_placeholder: 'bool?',
     taboo_text_change: 'string?',
     pack_code: 'string',
     pack_name: 'string',
@@ -113,6 +114,7 @@ export default class BaseCard {
   public id!: string;
   public code!: string;
   public taboo_set_id!: number | null;
+  public taboo_placeholder?: boolean;
   public taboo_text_change!: string | null;
   public pack_code!: string;
   public pack_name!: string;
@@ -251,10 +253,11 @@ export default class BaseCard {
     }
   }
 
-  investigatorOptions(): DeckOption[] {
+  investigatorSelectOptions(): DeckOption[] {
     if (this.type_code === 'investigator' && this.deck_options) {
       return filter(this.deck_options, option => {
-        return !!(option.faction_select && option.faction_select.length > 0);
+        return !!(option.faction_select && option.faction_select.length > 0) ||
+          !!(option.deck_size_select && option.deck_size_select.length > 0);
       });
     }
     return [];
