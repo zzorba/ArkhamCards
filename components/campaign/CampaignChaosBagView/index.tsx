@@ -102,7 +102,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     this.drawToken();
   };
 
-  _handleSealTokenPressed = () => {
+  _handleSealTokensPressed = () => {
     const {
       campaignId,
     } = this.props;
@@ -331,7 +331,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             { chaosBagResults.sealedTokens.length > 0 && <View style={styles.drawnTokenRow}>
               { this.renderSealedTokens() }
             </View> }
-            <Button title={t`Seal Token`} onPress={this._handleSealTokenPressed} />
+            <Button title={t`Seal Tokens`} onPress={this._handleSealTokensPressed} />
           </View>
         </ScrollView>
       </View>
