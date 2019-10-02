@@ -14,7 +14,7 @@ import typography from '../../../styles/typography';
 import { CampaignChaosBagProps } from '../CampaignChaosBagView';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 
-const DRAW_CHAOS_TOKENS_ENABLED = false;
+const DRAW_CHAOS_TOKENS_ENABLED = true;
 
 interface Props {
   componentId: string;
@@ -47,7 +47,7 @@ export default class ChaosBagSection extends React.Component<Props> {
                 text: t`Chaos Bag`,
               },
               backButton: {
-                title: t`Cancel`,
+                title: t`Back`,
               },
             },
           },

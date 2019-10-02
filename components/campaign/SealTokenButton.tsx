@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
@@ -25,22 +25,14 @@ interface ReduxActionProps {
   updateCampaign: (id: number, chaosBagResults: Partial<Campaign>) => void;
 }
 
-interface State {
-  sealed: boolean;
-  canDisable: boolean;
-}
-
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
-class SealTokenButton extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
+class SealTokenButton extends React.Component<Props> {
 
-    this.state = {
-      sealed: props.sealed || false,
-      canDisable: props.canDisable || false,
-    };
-  }
+  public static defaultProps: Partial<Props> = {
+    sealed: false,
+    canDisable: false,
+  };
 
   _toggleSealToken = () => {
     const {
@@ -49,28 +41,16 @@ class SealTokenButton extends React.Component<Props, State> {
       id,
       updateCampaign,
       iconKey,
-    } = this.props;
-
-    const {
       sealed,
-    } = this.state;
+    } = this.props;
 
     let newSealedTokens = [...chaosBagResults.sealedTokens];
 
     if (sealed) {
-      newSealedTokens = newSealedTokens.filter(function(token) {
-        return token.id !== id;
-      });
-
-      this.setState({
-        sealed: false,
-      });
+      newSealedTokens = newSealedTokens.filter(token => token.id !== id);
     } else {
       const token = { id: id, icon: iconKey };
       newSealedTokens.push(token);
-      this.setState({
-        sealed: true,
-      });
     }
 
     const newChaosBagResults = {
@@ -84,16 +64,14 @@ class SealTokenButton extends React.Component<Props, State> {
 
   render() {
     const {
-      canDisable,
-      sealed,
-    } = this.state;
-    const {
       iconKey,
+      sealed,
+      canDisable,
     } = this.props;
     return (
-      <TouchableOpacity style={sealed && canDisable && { opacity: 0.2 }} onPress={this._toggleSealToken} disabled={sealed && canDisable}>
+      <TouchableHighlight style={sealed && canDisable && { opacity: 0.2 }} onPress={this._toggleSealToken} underlayColor="transparent">
         <ChaosToken iconKey={iconKey} small />
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { flatMap, keys, map, range, sortBy } from 'lodash';
@@ -14,8 +14,6 @@ import { AppState, getCampaign } from '../../reducers';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '../../constants';
 import { Campaign, ChaosBagResults, NEW_CHAOS_BAG_RESULTS } from '../../actions/types';
 import SealTokenButton from './SealTokenButton';
-
-const uuidv4 = require('uuid/v4');
 
 export interface SealTokenDialogProps {
   campaignId: number;
@@ -37,7 +35,7 @@ class SealTokenDialog extends React.Component<Props> {
     return {
       topBar: {
         title: {
-          text: t`Choose a Token`,
+          text: t`Choose Tokens to Seal`,
         },
         leftButtons: [{
           icon: iconsMap.close,
@@ -70,6 +68,10 @@ class SealTokenDialog extends React.Component<Props> {
     }
   }
 
+  _close = () => {
+    Navigation.dismissModal(this.props.componentId);
+  };
+
   getAllChaosTokens() {
     const {
       campaignId,
@@ -84,20 +86,26 @@ class SealTokenDialog extends React.Component<Props> {
     const tokenParts = flatMap(tokens,
       token => map(range(0, chaosBag[token]), () => token));
 
-    const sealedTokens: ChaosBag = {};
-    chaosBagResults.sealedTokens.forEach(token => {
-      sealedTokens[token.icon] = (sealedTokens[token.icon] || 0) + 1;
-    });
+    const sealedTokens = chaosBagResults.sealedTokens;
+
+    let currentToken: ChaosTokenType;
+    let tokenCount = 1;
 
     return tokenParts.map((token, index) => {
-      let sealed = false;
-      const count = sealedTokens[token] || 0;
-      if (count > 0) {
-        sealed = true;
-        sealedTokens[token] = count - 1;
+      if (currentToken !== token) {
+        currentToken = token;
+        tokenCount = 1;
+      } else {
+        tokenCount += 1;
       }
 
-      const id = uuidv4();
+      const id = `${token}_${tokenCount}`;
+      let sealed = false;
+      const sealedToken = sealedTokens.find(sealedToken => sealedToken.id === id);
+      if (sealedToken) {
+        sealed = true;
+      }
+
       return <SealTokenButton key={index} id={id} sealed={sealed} campaignId={campaignId} canDisable iconKey={token} />;
     });
   }
@@ -106,6 +114,7 @@ class SealTokenDialog extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <View style={styles.drawnTokenRow}>{ this.getAllChaosTokens() }</View>
+        <Button title={t`Done`} onPress={this._close} />
       </View>
     );
   }

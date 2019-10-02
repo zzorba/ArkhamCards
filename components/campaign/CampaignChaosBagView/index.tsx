@@ -45,20 +45,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
-        leftButtons: [
-          Platform.OS === 'ios' ? {
-            systemItem: 'cancel',
-            text: t`Cancel`,
-            id: 'back',
-            color: COLORS.navButton,
-            testID: t`Cancel`,
-          } : {
-            icon: iconsMap['arrow-left'],
-            id: 'androidBack',
-            color: COLORS.navButton,
-            testID: t`Back`,
-          },
-        ],
         rightButtons: [{
           systemItem: 'save',
           text: t`Edit`,
