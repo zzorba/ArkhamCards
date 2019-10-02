@@ -381,8 +381,8 @@ function basicScenarioRewards(encounterCode: string) {
       // Scenario's that include Poison.
       return ['poison'];
     case 'threads_of_fate':
-      // Add Alejandro Vela
-      return ['wilds'];
+      // Add Alejandro Vela and basic Relic of Ages
+      return ['wilds', 'eztli'];
     default:
       return [];
   }
