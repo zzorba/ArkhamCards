@@ -18,9 +18,9 @@ export default function AboutView() {
         with Fantasy Flight Games.
         { '\n\n' }
         This application was created by Daniel Salinas as a fan project to
-        help support the Arkham Horror: The Card Game community. If you find
-        yourself managing lots of decks and campaigns, I'm hoping it proves
-        useful.
+        help support the Arkham Horror: The Card Game community. Additional
+        development by Joshua Payne. If you find yourself managing lots of
+        decks and campaigns, I'm hoping it proves useful.
         { '\n\n' }
         Feedback and bug reports are welcome by email at arkhamcards@gmail.com
         or via Twitter @ArkhamCards

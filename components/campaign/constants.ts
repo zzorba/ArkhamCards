@@ -288,7 +288,7 @@ export function getCampaignLog(
         ],
         counts: [
           t`Evidence of Kadath`,
-        ]
+        ],
       };
     case TDEB:
       return {

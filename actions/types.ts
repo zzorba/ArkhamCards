@@ -191,7 +191,7 @@ export const NEW_CHAOS_BAG_RESULTS = {
 
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
-  sealedTokens: ChaosTokenType[];
+  sealedTokens: {id: string; icon: ChaosTokenType}[];
   totalDrawnTokens: number;
 }
 
@@ -284,7 +284,6 @@ export interface Campaign {
   latestDeckIds?: number[]; // deprecated
   investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
-  chaosBagResults?: ChaosBagResults;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
@@ -458,6 +457,13 @@ export interface UpdateCampaignAction {
   campaign: Partial<Campaign>;
   now: Date;
 }
+export const UPDATE_CHAOS_BAG_RESULTS = 'UPDATE_CHAOS_BAG_RESULTS';
+export interface UpdateChaosBagResultsAction {
+  type: typeof UPDATE_CHAOS_BAG_RESULTS;
+  id: number;
+  chaosBagResults: ChaosBagResults;
+  now: Date;
+}
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export interface DeleteCampaignAction {
   type: typeof DELETE_CAMPAIGN;
@@ -604,4 +610,5 @@ export type CampaignActions =
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |
-  SetAllCampaignsAction
+  SetAllCampaignsAction |
+  UpdateChaosBagResultsAction;

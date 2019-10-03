@@ -1,21 +1,22 @@
 import React from 'react';
-import { Button, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button , ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { cloneDeep, keys, values, shuffle } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { iconsMap } from '../../../app/NavIcons';
 import { NavigationProps } from '../../types';
 import { ChaosBag } from '../../../constants';
 import { COLORS } from '../../../styles/colors';
-import { Campaign, ChaosBagResults, NEW_CHAOS_BAG_RESULTS } from '../../../actions/types';
+import { ChaosBagResults } from '../../../actions/types';
 import typography from '../../../styles/typography';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import ChaosToken from '../ChaosToken';
-import { updateCampaign } from '../actions';
-import { AppState, getCampaign } from '../../../reducers';
+import { updateChaosBagResults } from '../actions';
+import { AppState, getCampaign, getChaosBagResults } from '../../../reducers';
+import { SealTokenDialogProps } from '../SealTokenDialog';
+import SealTokenButton from '../SealTokenButton';
 
 export interface CampaignChaosBagProps {
   componentId: string;
@@ -30,7 +31,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  updateCampaign: (id: number, chaosBagResults: Partial<Campaign>) => void;
+  updateChaosBagResults: (id: number, chaosBagResults: ChaosBagResults) => void;
 }
 
 interface State {
@@ -43,20 +44,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
-        leftButtons: [
-          Platform.OS === 'ios' ? {
-            systemItem: 'cancel',
-            text: t`Cancel`,
-            id: 'back',
-            color: COLORS.navButton,
-            testID: t`Cancel`,
-          } : {
-            icon: iconsMap['arrow-left'],
-            id: 'androidBack',
-            color: COLORS.navButton,
-            testID: t`Back`,
-          },
-        ],
         rightButtons: [{
           systemItem: 'save',
           text: t`Edit`,
@@ -114,7 +101,23 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     this.drawToken();
   };
 
-  _handleSealTokenPressed = () => {
+  _handleSealTokensPressed = () => {
+    const {
+      campaignId,
+    } = this.props;
+    const passProps: SealTokenDialogProps = {
+      campaignId: campaignId,
+    };
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.SealToken',
+            passProps,
+          },
+        }],
+      },
+    });
   };
 
   _showChaosBagDialog = () => {
@@ -177,7 +180,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
       campaignId,
       chaosBag,
       chaosBagResults,
-      updateCampaign,
+      updateChaosBagResults,
     } = this.props;
 
     const currentChaosBag = cloneDeep(chaosBag);
@@ -201,39 +204,26 @@ class CampaignChaosBagView extends React.Component<Props, State> {
         totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
       };
 
-      updateCampaign(campaignId, { chaosBagResults: newChaosBagResults });
+      updateChaosBagResults(campaignId, newChaosBagResults);
     } else {
       this.clearTokens();
     }
   }
 
-  // _mutateCount = (id: ChaosTokenType, mutate: (count: number) => number) => {
-  //   this.setState((state: State) => {
-  //     const newChaosBag = Object.assign(
-  //       {},
-  //       state.chaosBag,
-  //       { [id]: mutate(state.chaosBag[id] || 0) }
-  //     );
-  //     return {
-  //       chaosBag: newChaosBag,
-  //     };
-  //   });
-  // };
-
   clearTokens() {
     const {
       campaignId,
       chaosBagResults,
-      updateCampaign,
+      updateChaosBagResults,
     } = this.props;
 
-    const newChaosBagResults = {
+    const newChaosBagResults: ChaosBagResults = {
       drawnTokens: [],
       sealedTokens: chaosBagResults.sealedTokens,
       totalDrawnTokens: chaosBagResults.totalDrawnTokens,
     };
 
-    updateCampaign(campaignId, { chaosBagResults: newChaosBagResults });
+    updateChaosBagResults(campaignId, newChaosBagResults);
   }
 
   renderChaosToken() {
@@ -268,6 +258,19 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     return <Text style={[styles.drawTokenText, typography.text]}>{ t`Tap token to draw` }</Text>;
   }
 
+  renderSealedTokens() {
+    const {
+      campaignId,
+      chaosBagResults,
+    } = this.props;
+
+    const sealedTokens = chaosBagResults.sealedTokens;
+
+    return sealedTokens.map(token => {
+      return <SealTokenButton key={token.id} campaignId={campaignId} sealed id={token.id} iconKey={token.icon} />;
+    });
+  }
+
   renderDrawButton() {
     const {
       chaosBagResults,
@@ -278,7 +281,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     } = this.state;
 
     if (chaosBagResults.drawnTokens.length > 0) {
-      return <Button title={t`Add and Draw Again`} onPress={this._handleAddAndDrawAgainPressed} disabled={isChaosBagEmpty} />;
+      return <Button title={t`Set aside and draw another`} onPress={this._handleAddAndDrawAgainPressed} disabled={isChaosBagEmpty} />;
     }
   }
 
@@ -288,8 +291,13 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     } = this.props;
 
     if (chaosBagResults.drawnTokens.length > 1) {
-      return <Button title={t`Clear Tokens`} onPress={this._handleClearTokensPressed} />;
+      return (
+        <View style={styles.buttonContainer}>
+          <Button title={t`Clear Tokens`} onPress={this._handleClearTokensPressed} />
+        </View>
+      );
     }
+    return null;
   }
 
   render() {
@@ -298,7 +306,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     } = this.props;
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.containerBottom}>
         <View style={styles.containerTop}>
           <View style={styles.chaosTokenView}>
             { this.renderChaosToken() }
@@ -307,27 +315,30 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             { this.renderDrawButton() }
           </View>
         </View>
-        <ScrollView style={styles.containerBottom}>
-          <View style={styles.header}>
-            <Text style={typography.text}>{ t`Drawn` }</Text>
-            <Text style={typography.small}>{ t`Total` } ({ chaosBagResults.totalDrawnTokens })</Text>
+        <View style={styles.header}>
+          <Text style={typography.text}>{ t`Drawn` }</Text>
+          <Text style={typography.small}>{ t`Total` } ({ chaosBagResults.totalDrawnTokens })</Text>
+        </View>
+        <View style={styles.container}>
+          <View style={styles.drawnTokenRow}>
+            { this.renderDrawnTokens() }
           </View>
-          <View style={styles.container}>
-            <View style={styles.drawnTokenRow}>
-              { this.renderDrawnTokens() }
-            </View>
-            <View>
-              { this.renderClearButton() }
-            </View>
+          <View>
+            { this.renderClearButton() }
           </View>
-          <View style={styles.header}>
-            <Text style={typography.text}>{ t`Sealed Tokens` }</Text>
+        </View>
+        <View style={styles.header}>
+          <Text style={typography.text}>{ t`Sealed Tokens` }</Text>
+        </View>
+        <View style={styles.container}>
+          { chaosBagResults.sealedTokens.length > 0 && <View style={styles.drawnTokenRow}>
+            { this.renderSealedTokens() }
+          </View> }
+          <View style={styles.buttonContainer}>
+            <Button title={t`Seal Tokens`} onPress={this._handleSealTokensPressed} />
           </View>
-          <View style={styles.container}>
-            <Button title={t`Seal Token`} onPress={this._handleSealTokenPressed} />
-          </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -338,14 +349,14 @@ function mapStateToProps(
 ): ReduxProps {
   const campaign = getCampaign(state, props.campaignId);
   return {
-    chaosBag: campaign ? campaign.chaosBag : {},
-    chaosBagResults: (campaign && campaign.chaosBagResults) || NEW_CHAOS_BAG_RESULTS,
+    chaosBag: (campaign && campaign.chaosBag) || {},
+    chaosBagResults: getChaosBagResults(state, props.campaignId),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    updateCampaign,
+    updateChaosBagResults,
   } as any, dispatch);
 }
 
@@ -361,6 +372,10 @@ const styles = StyleSheet.create({
   },
   drawButtonView: {
     flex: 1,
+    minHeight: 60,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   chaosTokenView: {
     flex: 2,
@@ -402,5 +417,8 @@ const styles = StyleSheet.create({
   drawTokenText: {
     flex: 1,
     textAlign: 'center',
+  },
+  buttonContainer: {
+    padding: 8,
   },
 });

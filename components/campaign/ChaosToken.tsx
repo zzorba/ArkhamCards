@@ -40,7 +40,6 @@ export default class ChaosToken extends React.Component<Props> {
       </View>
     );
   }
-
 }
 
 const circleLarge = 150;
