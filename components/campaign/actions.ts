@@ -6,12 +6,14 @@ import {
   NEW_CAMPAIGN,
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
+  UPDATE_CHAOS_BAG_RESULTS,
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   Campaign,
   CampaignNotes,
   CampaignCycleCode,
   CampaignDifficulty,
+  ChaosBagResults,
   CustomCampaignLog,
   ScenarioResult,
   WeaknessSet,
@@ -19,6 +21,7 @@ import {
   EditCampaignScenarioResultAction,
   NewCampaignAction,
   UpdateCampaignAction,
+  UpdateChaosBagResultsAction,
   DeleteCampaignAction,
   SetAllCampaignsAction,
 } from '../../actions/types';
@@ -78,7 +81,6 @@ export function newCampaign(
  * Pass only the fields that you want to update.
  * {
  *   chaosBag,
- *   chaosBagResults,
  *   campaignNotes,
  *   investigatorData,
  *   latestDeckIds,
@@ -99,6 +101,20 @@ export function updateCampaign(
       type: UPDATE_CAMPAIGN,
       id,
       campaign,
+      now: new Date(),
+    });
+  };
+}
+
+export function updateChaosBagResults(
+  id: number,
+  chaosBagResults: ChaosBagResults
+): ThunkAction<void, AppState, null, UpdateChaosBagResultsAction> {
+  return (dispatch) => {
+    dispatch({
+      type: UPDATE_CHAOS_BAG_RESULTS,
+      id,
+      chaosBagResults,
       now: new Date(),
     });
   };

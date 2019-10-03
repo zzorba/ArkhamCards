@@ -4,6 +4,7 @@ import {
   LOGOUT,
   NEW_CAMPAIGN,
   UPDATE_CAMPAIGN,
+  UPDATE_CHAOS_BAG_RESULTS,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
@@ -12,16 +13,21 @@ import {
   NEW_CHAOS_BAG_RESULTS,
   Campaign,
   CampaignActions,
+  ChaosBagResults,
 } from '../actions/types';
 
 export interface CampaignsState {
   all: {
     [id: string]: Campaign;
   };
+  chaosBagResults?: {
+    [id: string]: ChaosBagResults;
+  };
 }
 
 const DEFAULT_CAMPAIGNS_STATE: CampaignsState = {
   all: {},
+  chaosBagResults: {},
 };
 
 export default function(
@@ -38,14 +44,18 @@ export default function(
     });
     return {
       all,
+      chaosBagResults: {},
     };
   }
   if (action.type === DELETE_CAMPAIGN) {
     const newCampaigns = Object.assign({}, state.all);
     delete newCampaigns[action.id];
+    const newChaosBags = Object.assign({}, state.chaosBagResults || {});
+    delete newChaosBags[action.id];
     return {
       ...state,
       all: newCampaigns,
+      chaosBagResults: newChaosBags,
     };
   }
   if (action.type === NEW_CAMPAIGN) {
@@ -73,7 +83,6 @@ export default function(
       cycleCode: action.cycleCode,
       difficulty: action.difficulty,
       chaosBag: { ...action.chaosBag },
-      chaosBagResults: NEW_CHAOS_BAG_RESULTS,
       campaignNotes,
       weaknessSet: action.weaknessSet,
       baseDeckIds: action.baseDeckIds,
@@ -86,6 +95,19 @@ export default function(
       all: {
         ...state.all,
         [action.id]: newCampaign,
+      },
+      chaosBagResults: {
+        ...state.chaosBagResults || {},
+        [action.id]: NEW_CHAOS_BAG_RESULTS,
+      },
+    };
+  }
+  if (action.type === UPDATE_CHAOS_BAG_RESULTS) {
+    return {
+      ...state,
+      chaosBagResults: {
+        ...state.chaosBagResults || {},
+        [action.id]: action.chaosBagResults,
       },
     };
   }

@@ -1,18 +1,16 @@
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { flatMap, keys, map, range, sortBy } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { NavigationProps } from '../types';
-import { updateCampaign } from './actions';
 import { iconsMap } from '../../app/NavIcons';
 import { COLORS } from '../../styles/colors';
-import { AppState, getCampaign } from '../../reducers';
+import { AppState, getCampaign, getChaosBagResults } from '../../reducers';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '../../constants';
-import { Campaign, ChaosBagResults, NEW_CHAOS_BAG_RESULTS } from '../../actions/types';
+import { ChaosBagResults } from '../../actions/types';
 import SealTokenButton from './SealTokenButton';
 
 export interface SealTokenDialogProps {
@@ -24,11 +22,7 @@ interface ReduxProps {
   chaosBagResults: ChaosBagResults;
 }
 
-interface ReduxActionProps {
-  updateCampaign: (id: number, chaosBagResults: Partial<Campaign>) => void;
-}
-
-type Props = NavigationProps & SealTokenDialogProps & ReduxProps & ReduxActionProps;
+type Props = NavigationProps & SealTokenDialogProps & ReduxProps;
 
 class SealTokenDialog extends React.Component<Props> {
   static options() {
@@ -114,7 +108,9 @@ class SealTokenDialog extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <View style={styles.drawnTokenRow}>{ this.getAllChaosTokens() }</View>
-        <Button title={t`Done`} onPress={this._close} />
+        <View style={styles.buttonContainer}>
+          <Button title={t`Done`} onPress={this._close} />
+        </View>
       </View>
     );
   }
@@ -126,20 +122,14 @@ function mapStateToProps(
 ): ReduxProps {
   const campaign = getCampaign(state, props.campaignId);
   return {
-    chaosBag: campaign ? campaign.chaosBag : {},
-    chaosBagResults: (campaign && campaign.chaosBagResults) || NEW_CHAOS_BAG_RESULTS,
+    chaosBag: (campaign && campaign.chaosBag) || {},
+    chaosBagResults: getChaosBagResults(state, props.campaignId),
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    updateCampaign,
-  } as any, dispatch);
-}
 
-export default connect<ReduxProps, ReduxActionProps, NavigationProps & SealTokenDialogProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
+export default connect<ReduxProps, {}, NavigationProps & SealTokenDialogProps, AppState>(
+  mapStateToProps
 )(SealTokenDialog);
 
 const styles = StyleSheet.create({
@@ -154,5 +144,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
     minHeight: 89,
+  },
+  buttonContainer: {
+    padding: 8,
   },
 });

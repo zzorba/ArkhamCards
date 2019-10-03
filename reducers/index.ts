@@ -12,7 +12,7 @@ import decks from './decks';
 import packs from './packs';
 import settings from './settings';
 import { FilterState } from '../lib/filters';
-import { Campaign, SingleCampaign, Deck, DecksMap, Pack, SortType } from '../actions/types';
+import { Campaign, ChaosBagResults, SingleCampaign, Deck, DecksMap, Pack, SortType, NEW_CHAOS_BAG_RESULTS } from '../actions/types';
 import Card, { CardsMap } from '../data/Card';
 
 const packsPersistConfig = {
@@ -321,6 +321,19 @@ export const getCampaign = createSelector(
       return campaign && processCampaign(campaign);
     }
     return undefined;
+  }
+);
+
+const getChaosBagResultsWithId = (state: AppState, id: number) => state.campaigns.chaosBagResults;
+
+export const getChaosBagResults = createSelector(
+  getChaosBagResultsWithId,
+  getIdWithId,
+  (chaosBagResults, id): ChaosBagResults => {
+    if (chaosBagResults && chaosBagResults[id]) {
+      return chaosBagResults[id];
+    }
+    return NEW_CHAOS_BAG_RESULTS;
   }
 );
 

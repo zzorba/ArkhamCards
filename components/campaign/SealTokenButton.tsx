@@ -3,10 +3,10 @@ import { TouchableHighlight } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { updateCampaign } from './actions';
+import { updateChaosBagResults } from './actions';
 import ChaosToken from './ChaosToken';
-import { Campaign, ChaosBagResults, NEW_CHAOS_BAG_RESULTS } from '../../actions/types';
-import { AppState, getCampaign } from '../../reducers';
+import { ChaosBagResults } from '../../actions/types';
+import { AppState, getChaosBagResults } from '../../reducers';
 import { ChaosTokenType } from '../../constants';
 
 interface OwnProps {
@@ -22,7 +22,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  updateCampaign: (id: number, chaosBagResults: Partial<Campaign>) => void;
+  updateChaosBagResults: (id: number, chaosBagResults: ChaosBagResults) => void;
 }
 
 type Props = OwnProps & ReduxProps & ReduxActionProps;
@@ -39,7 +39,7 @@ class SealTokenButton extends React.Component<Props> {
       campaignId,
       chaosBagResults,
       id,
-      updateCampaign,
+      updateChaosBagResults,
       iconKey,
       sealed,
     } = this.props;
@@ -59,7 +59,7 @@ class SealTokenButton extends React.Component<Props> {
       totalDrawnTokens: chaosBagResults.totalDrawnTokens,
     };
 
-    updateCampaign(campaignId, { chaosBagResults: newChaosBagResults });
+    updateChaosBagResults(campaignId, newChaosBagResults);
   }
 
   render() {
@@ -80,15 +80,14 @@ function mapStateToProps(
   state: AppState,
   props: OwnProps
 ): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
   return {
-    chaosBagResults: (campaign && campaign.chaosBagResults) || NEW_CHAOS_BAG_RESULTS,
+    chaosBagResults: getChaosBagResults(state, props.campaignId),
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    updateCampaign,
+    updateChaosBagResults,
   } as any, dispatch);
 }
 
