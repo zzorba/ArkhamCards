@@ -185,8 +185,11 @@ class CampaignChaosBagView extends React.Component<Props, State> {
 
     const currentChaosBag = cloneDeep(chaosBag);
     const drawnTokens = [...chaosBagResults.drawnTokens];
+    const sealedTokens = [...chaosBagResults.sealedTokens].map(token => token.icon);
 
-    drawnTokens.forEach(function(token) {
+    const drawnAndSealedTokens = drawnTokens.concat(sealedTokens);
+
+    drawnAndSealedTokens.forEach(function(token) {
       const currentCount = currentChaosBag[token];
       if (currentCount) {
         currentChaosBag[token] = currentCount - 1;
