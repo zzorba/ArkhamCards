@@ -34,6 +34,7 @@ import { COLORS } from '../../styles/colors';
 import { s, sizeScale } from '../../styles/space';
 
 const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * DeviceInfo.getFontScale();
+const TINY_EDIT_ICON_SIZE = 14 * sizeScale * DeviceInfo.getFontScale();
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -488,7 +489,7 @@ export default class DeckViewTab extends React.Component<Props> {
     ];
   }
 
-  xpString() {
+  xpLines() {
     const {
       parsedDeck: {
         deck: {
@@ -500,10 +501,14 @@ export default class DeckViewTab extends React.Component<Props> {
       xpAdjustment,
     } = this.props;
     if (!changes) {
-      return t`Experience required: ${experience}`;
+      return [t`Experience required: ${experience}`];
     }
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    return t`Available experience: ${adjustedExperience}\nSpent experience: ${changes.spentXp}`;
+    t`Available experience: ${adjustedExperience}\nSpent experience: ${changes.spentXp}`;
+    return [
+      t`Available experience: ${adjustedExperience} `,
+      t`Spent experience: ${changes.spentXp}`,
+    ];
   }
 
   renderMetadata() {
@@ -514,6 +519,7 @@ export default class DeckViewTab extends React.Component<Props> {
         totalCardCount,
       },
     } = this.props;
+    const xpLines = this.xpLines();
     return (
       <View style={styles.metadata}>
         <Text style={typography.small}>
@@ -523,9 +529,14 @@ export default class DeckViewTab extends React.Component<Props> {
             normalCardCount
           ) }
         </Text>
-        <Text style={typography.small}>
-          { this.xpString() }
-        </Text>
+        { map(xpLines, (line, idx) => (
+          <Text key={idx} style={typography.small}>
+            { line }
+            { (idx === 0 && xpLines.length > 1) && (
+              <MaterialIcons name="edit" color="#222" size={TINY_EDIT_ICON_SIZE} />
+            ) }
+          </Text>
+        )) }
         { !!tabooSet && (
           <Text style={typography.small}>
             { t`Taboo List: ${tabooSet.date_start}.` }

@@ -145,13 +145,13 @@ msgstr ""
 msgid "Asset: Other"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:98
+#: components/DeckDetailView/DeckViewTab.tsx:99
 #: data/Card.ts:109
 #: data/Card.ts:167
 msgid "Event"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:99
+#: components/DeckDetailView/DeckViewTab.tsx:100
 #: data/Card.ts:110
 #: data/Card.ts:172
 msgid "Skill"
@@ -236,27 +236,27 @@ msgstr ""
 msgid "${ parsedDeck.experience } experience required"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:158
+#: components/DeckDetailView/DeckViewTab.tsx:159
 #: components/DeckProblemRow.tsx:16
 msgid "Not enough cards."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:159
+#: components/DeckDetailView/DeckViewTab.tsx:160
 #: components/DeckProblemRow.tsx:17
 msgid "Too many cards."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:160
+#: components/DeckDetailView/DeckViewTab.tsx:161
 #: components/DeckProblemRow.tsx:18
 msgid "Too many copies of a card with the same name."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:161
+#: components/DeckDetailView/DeckViewTab.tsx:162
 #: components/DeckProblemRow.tsx:19
 msgid "Contains forbidden cards (cards not permitted by Faction)"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:162
+#: components/DeckDetailView/DeckViewTab.tsx:163
 #: components/DeckProblemRow.tsx:20
 msgid "Contains too many limited cards."
 msgstr ""
@@ -306,8 +306,8 @@ msgstr ""
 
 #: components/CopyDeckDialog/index.tsx:349
 #: components/DeckDetailView/CardUpgradeDialog/index.tsx:165
-#: components/DeckDetailView/DeckViewTab.tsx:241
-#: components/DeckDetailView/DeckViewTab.tsx:262
+#: components/DeckDetailView/DeckViewTab.tsx:242
+#: components/DeckDetailView/DeckViewTab.tsx:263
 #: components/DeckDetailView/EditDeckDetailsDialog.tsx:183
 #: components/DeckDetailView/index.tsx:393
 #: components/DeckUpgradeDialog/index.tsx:76
@@ -556,7 +556,7 @@ msgstr ""
 msgid "Sign out of ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:290
+#: components/DeckDetailView/DeckViewTab.tsx:291
 #: components/settings/LoginButton.tsx:75
 #: components/settings/LoginButton.tsx:78
 msgid "Sign in to ArkhamDB"
@@ -1625,7 +1625,7 @@ msgstr ""
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:233
+#: components/DeckDetailView/DeckViewTab.tsx:234
 #: components/campaign/CampaignDetailView/index.tsx:205
 #: components/campaign/CampaignDetailView/index.tsx:208
 msgid "Delete"
@@ -1790,86 +1790,86 @@ msgstr[1] ""
 msgid "CAMPAIGN PROGRESS"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:80
+#: components/DeckDetailView/DeckViewTab.tsx:81
 msgid "Assets (${ assetCount })"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:100
+#: components/DeckDetailView/DeckViewTab.tsx:101
 msgid "Enemy"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:101
+#: components/DeckDetailView/DeckViewTab.tsx:102
 msgid "Treachery"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:217
+#: components/DeckDetailView/DeckViewTab.tsx:218
 msgid "Delete this upgrade (${ deck.version })"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:224
-#: components/DeckDetailView/DeckViewTab.tsx:233
+#: components/DeckDetailView/DeckViewTab.tsx:225
+#: components/DeckDetailView/DeckViewTab.tsx:234
 msgid "Delete all versions"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:246
+#: components/DeckDetailView/DeckViewTab.tsx:247
 msgid "Delete deck"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:247
+#: components/DeckDetailView/DeckViewTab.tsx:248
 msgid "Are you sure you want to delete this deck?"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:252
+#: components/DeckDetailView/DeckViewTab.tsx:253
 msgid "Visit ArkhamDB to delete?"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:253
+#: components/DeckDetailView/DeckViewTab.tsx:254
 msgid "Unfortunately to delete decks you have to visit ArkhamDB at this time."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:256
+#: components/DeckDetailView/DeckViewTab.tsx:257
 msgid "Visit ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:280
+#: components/DeckDetailView/DeckViewTab.tsx:281
 msgid "Save Local Changes"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:281
+#: components/DeckDetailView/DeckViewTab.tsx:282
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:285
+#: components/DeckDetailView/DeckViewTab.tsx:286
 msgid "Unsupported Operation"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:286
+#: components/DeckDetailView/DeckViewTab.tsx:287
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
 "upload it to ArkhamDB at this time. If you would like to upload it, you can "
 "use Copy to upload a clone of the current deck."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:299
-#: components/DeckDetailView/DeckViewTab.tsx:648
+#: components/DeckDetailView/DeckViewTab.tsx:300
+#: components/DeckDetailView/DeckViewTab.tsx:659
 msgid "Upload to ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:482
+#: components/DeckDetailView/DeckViewTab.tsx:483
 msgid "Special Cards"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:520
+#: components/DeckDetailView/DeckViewTab.tsx:526
 msgid "${ normalCardCount } card (${ totalCardCount } total)"
 msgid_plural "${ normalCardCount } cards (${ totalCardCount } total)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:655
+#: components/DeckDetailView/DeckViewTab.tsx:666
 msgid "View on ArkhamDB"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:663
+#: components/DeckDetailView/DeckViewTab.tsx:674
 msgid "Delete Deck"
 msgstr ""
 
@@ -2109,7 +2109,7 @@ msgstr ""
 msgid "Yig's Fury"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:163
+#: components/DeckDetailView/DeckViewTab.tsx:164
 #: components/DeckProblemRow.tsx:21
 msgid "Doesn't comply with the Investigator requirements."
 msgstr ""
@@ -2180,7 +2180,7 @@ msgstr ""
 msgid "Charts"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:531
+#: components/DeckDetailView/DeckViewTab.tsx:542
 msgid "Taboo List: ${ tabooSet.date_start }."
 msgstr ""
 
@@ -2246,7 +2246,7 @@ msgid ""
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:291
+#: components/DeckDetailView/DeckViewTab.tsx:292
 #: components/MyDecksComponent.tsx:146
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
@@ -2357,7 +2357,7 @@ msgstr ""
 msgid "Sort"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:300
+#: components/DeckDetailView/DeckViewTab.tsx:301
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
@@ -2469,7 +2469,7 @@ msgstr ""
 msgid "View Next Deck"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:503
+#: components/DeckDetailView/DeckViewTab.tsx:504
 msgid "Experience required: ${ experience }"
 msgstr ""
 
@@ -2598,7 +2598,7 @@ msgstr ""
 msgid "Removed cards"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:506
+#: components/DeckDetailView/DeckViewTab.tsx:507
 msgid ""
 "Available experience: ${ adjustedExperience }\n"
 "Spent experience: ${ changes.spentXp }"
@@ -2779,7 +2779,7 @@ msgstr ""
 msgid "Select Deck Size"
 msgstr ""
 
-#: components/DeckDetailView/DeckViewTab.tsx:145
+#: components/DeckDetailView/DeckViewTab.tsx:146
 msgid "Bonded Cards (${ count })"
 msgstr ""
 
@@ -2815,34 +2815,42 @@ msgstr ""
 msgid "At Death's Doorstep"
 msgstr ""
 
-#: components/campaign/CampaignChaosBagView/index.tsx:258
+#: components/campaign/CampaignChaosBagView/index.tsx:261
 msgid "Tap token to draw"
 msgstr ""
 
-#: components/campaign/CampaignChaosBagView/index.tsx:284
+#: components/campaign/CampaignChaosBagView/index.tsx:287
 msgid "Set aside and draw another"
 msgstr ""
 
-#: components/campaign/CampaignChaosBagView/index.tsx:296
+#: components/campaign/CampaignChaosBagView/index.tsx:299
 msgid "Clear Tokens"
 msgstr ""
 
-#: components/campaign/CampaignChaosBagView/index.tsx:319
+#: components/campaign/CampaignChaosBagView/index.tsx:322
 msgid "Drawn"
 msgstr ""
 
-#: components/campaign/CampaignChaosBagView/index.tsx:320
+#: components/campaign/CampaignChaosBagView/index.tsx:323
 msgid "Total"
 msgstr ""
 
-#: components/campaign/CampaignChaosBagView/index.tsx:331
+#: components/campaign/CampaignChaosBagView/index.tsx:334
 msgid "Sealed Tokens"
 msgstr ""
 
-#: components/campaign/CampaignChaosBagView/index.tsx:338
+#: components/campaign/CampaignChaosBagView/index.tsx:341
 msgid "Seal Tokens"
 msgstr ""
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:686
 msgid "XP Discount: ${ card.extra_xp }."
+msgstr ""
+
+#: components/DeckDetailView/DeckViewTab.tsx:509
+msgid "Available experience: ${ adjustedExperience } "
+msgstr ""
+
+#: components/DeckDetailView/DeckViewTab.tsx:510
+msgid "Spent experience: ${ changes.spentXp }"
 msgstr ""
