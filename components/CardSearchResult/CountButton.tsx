@@ -13,9 +13,10 @@ import typography from '../../styles/typography';
 const DEPRESS_HEIGHT = 6;
 
 interface Props {
+  count: number;
   text?: string;
   selected?: boolean;
-  onPress: () => void;
+  onPress: (count: number) => void;
 }
 
 interface State {
@@ -59,11 +60,18 @@ export default class CountButton extends React.PureComponent<Props, State> {
     }
   }
 
+  _onPress = () => {
+    const {
+      count,
+      onPress,
+    } = this.props;
+    onPress(count);
+  }
+
   render() {
     const {
       text,
       selected,
-      onPress,
     } = this.props;
     const {
       anim,
@@ -74,7 +82,7 @@ export default class CountButton extends React.PureComponent<Props, State> {
       extrapolate: 'clamp',
     });
     return (
-      <TouchableWithoutFeedback onPress={onPress}>
+      <TouchableWithoutFeedback onPress={this._onPress}>
         <View style={[
           styles.container,
         ]}>

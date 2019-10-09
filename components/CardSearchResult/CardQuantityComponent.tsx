@@ -176,9 +176,10 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
               { range(0, limit + 1).map(buttonIdx => (
                 <CountButton
                   key={buttonIdx}
+                  count={buttonIdx}
                   text={`${buttonIdx}`}
                   selected={count === buttonIdx}
-                  onPress={() => this._selectCount(buttonIdx)}
+                  onPress={this._selectCount}
                 />
               )) }
             </LinearGradient>
