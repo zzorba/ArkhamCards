@@ -255,7 +255,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     }
   };
 
-  _renderItem = (card: Card, itemIndex: number) => {
+  renderCard(card: Card, itemIndex: number) {
     const {
       componentId,
       tabooSetId,
@@ -279,13 +279,21 @@ class CardDetailSwipeView extends React.Component<Props, State> {
         />
       </ScrollView>
     );
-  };
+  }
+
+  renderCards() {
+    const {
+      cards,
+    } = this.props;
+    const vm = this;
+
+    return cards.map((card, index) => vm.renderCard(card, index));
+  }
 
   render() {
     const {
       width,
       renderFooter,
-      cards,
       initialIndex,
       height,
     } = this.props;
@@ -309,9 +317,9 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           showsPagination={false}
           onIndexChanged={this._onIndexChange}
           loop={false}
-          items={cards}
-          renderItem={this._renderItem}
-        />
+        >
+          { this.renderCards() }
+        </Swiper>
         { !!renderFooter && renderFooter(deckCardCounts, this.renderDeckCountControl()) }
         { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
       </View>
