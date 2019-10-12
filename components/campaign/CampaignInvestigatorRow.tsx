@@ -30,11 +30,13 @@ class CampaignInvestigatorRow extends React.Component<Props> {
     } = this.props;
     if (deck && deck.investigator_code) {
       const card = investigators[deck.investigator_code];
-      return (
-        <View key={card.code} style={styles.investigator}>
-          <InvestigatorImage card={card} small />
-        </View>
-      );
+      if (card) {
+        return (
+          <View key={card.code} style={styles.investigator}>
+            <InvestigatorImage card={card} small />
+          </View>
+        );
+      }
     }
     return null;
   };
