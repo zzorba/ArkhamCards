@@ -23,7 +23,14 @@ export default class ChaosToken extends React.Component<Props> {
     const size = small ? 25 : 50;
 
     if (iconKey) {
-      return <ChaosTokenIcon icon={iconKey} size={size * SCALE * iconSizeScale} color="#fff" fontFamily="Teutonic" />;
+      return (
+        <ChaosTokenIcon
+          icon={iconKey}
+          size={size * SCALE * iconSizeScale}
+          color="#fff"
+          fontFamily="Teutonic"
+        />
+      );
     }
     return null;
   }
@@ -42,8 +49,8 @@ export default class ChaosToken extends React.Component<Props> {
   }
 }
 
-const circleLarge = 150;
-const circleSmall = 75;
+const circleLarge = 150 * iconSizeScale;
+const circleSmall = 75 * iconSizeScale;
 
 const styles = StyleSheet.create({
   circle: {
