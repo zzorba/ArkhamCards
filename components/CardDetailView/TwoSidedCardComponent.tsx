@@ -261,7 +261,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const doom = num(card.doom);
     const shroud = num(card.shroud);
     const clues = num(card.clues);
-    const perInvestigatorClues = card.clues && card.clues > 0 && !card.clues_fixed && PER_INVESTIGATOR_ICON;
+    const perInvestigatorClues = (card.clues && card.clues > 0 && !card.clues_fixed) ?
+      PER_INVESTIGATOR_ICON :
+      '';
     return (
       <View style={styles.statsBlock}>
         { !!(card.xp || costString) && (
