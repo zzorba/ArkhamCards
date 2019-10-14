@@ -65,7 +65,10 @@ class DeckList extends React.Component<DeckListProps & PlayerCardProps> {
         )) }
         { !!deckAdded && (
           <View style={styles.button}>
-            <Button title={t`Add Investigator`} onPress={this._showDeckSelector} />
+            <Button
+              title={t`Add Investigator Deck`}
+              onPress={this._showDeckSelector}
+            />
           </View>
         ) }
       </View>

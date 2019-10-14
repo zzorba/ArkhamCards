@@ -366,6 +366,9 @@ const TDEB_BAG: ChaosBagByDifficulty = {
 
 function basicScenarioRewards(encounterCode: string) {
   switch (encounterCode) {
+    case 'blood_on_the_altar':
+      // Each of the professors could be earned here.
+      return ['extracurricular_activity', 'the_house_always_wins', 'armitages_fate'];
     case 'the_eternal_slumber':
       return ['abyssal_tribute'];
     case 'the_nights_usurper':

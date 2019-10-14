@@ -76,7 +76,7 @@ export default function(
       },
     };
 
-    const newCampaign = {
+    const newCampaign: Campaign = {
       id: action.id,
       name: action.name,
       showInterludes: true,
