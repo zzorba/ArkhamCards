@@ -174,7 +174,9 @@ export default class DeckNavFooter extends React.Component<Props> {
               { `${cardCountString} - ${xpString}` }
             </Text>
           </View>
-          { this.renderProblem() }
+          <View style={styles.row}>
+            { this.renderProblem() }
+          </View>
         </View>
         <View style={styles.right}>
           { this.renderControls() }

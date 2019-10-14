@@ -58,7 +58,7 @@ import { EditSpecialCardsProps } from '../EditSpecialDeckCards';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
-import CardUpgradeDialog from './CardUpgradeDialog';
+import { CardUpgradeDialogProps } from './CardUpgradeDialog';
 import DeckNavFooter from '../DeckNavFooter';
 import withTabooSetOverride, { TabooSetOverrideProps } from '../withTabooSetOverride';
 import { NavigationProps } from '../types';
@@ -71,6 +71,7 @@ import {
 } from '../../reducers';
 import { m, s, iconSizeScale } from '../../styles/space';
 import typography from '../../styles/typography';
+import { getDeckOptions } from '../navHelper';
 
 export interface DeckDetailProps {
   id: number;
@@ -812,26 +813,6 @@ class DeckDetailView extends React.Component<Props, State> {
     }, this._syncNavigationButtons);
   };
 
-  _updateXp = (newXp: number) => {
-    const {
-      deck,
-    } = this.props;
-    if (!deck) {
-      return;
-    }
-    const xpAdjustment = newXp - (deck.xp || 0);
-    this.setState({
-      xpAdjustment,
-      hasPendingEdits: this.hasPendingEdits(
-        this.state.slots,
-        this.state.ignoreDeckLimitSlots,
-        this.state.meta,
-        xpAdjustment,
-        this.state.nameChange,
-        this.state.tabooSetId),
-    }, this._syncNavigationButtons);
-  };
-
   _updateIgnoreDeckLimitSlots = (newIgnoreDeckLimitSlots: Slots) => {
     const {
       deck,
@@ -1137,49 +1118,50 @@ class DeckDetailView extends React.Component<Props, State> {
     }));
   }
 
-  _hideCardUpgradeDialog = () => {
-    this.setState({
-      upgradeCard: undefined,
-    });
-  };
-
   _showCardUpgradeDialog = (card: Card) => {
-    this.setState({
-      upgradeCard: card,
-    });
-  };
-
-  renderCardUpgradeDialog() {
     const {
-      viewRef,
+      componentId,
       cards,
       cardsByName,
+      previousDeck,
     } = this.props;
     const {
-      upgradeCard,
       tabooSetId,
       parsedDeck,
       meta,
+      xpAdjustment,
+      ignoreDeckLimitSlots,
     } = this.state;
+
     if (!parsedDeck) {
       return null;
     }
-    return (
-      <CardUpgradeDialog
-        deck={parsedDeck.deck}
-        meta={meta}
-        card={upgradeCard}
-        cards={cards}
-        cardsByName={cardsByName}
-        investigator={parsedDeck.investigator}
-        tabooSetId={tabooSetId}
-        slots={parsedDeck.slots}
-        visible={!!upgradeCard}
-        viewRef={viewRef}
-        toggleVisible={this._hideCardUpgradeDialog}
-        updateSlots={this._updateSlots}
-      />
-    );
+
+    const passProps: CardUpgradeDialogProps = {
+      componentId,
+      card,
+      parsedDeck: parsedDeck,
+      meta,
+      cards,
+      cardsByName,
+      investigator: parsedDeck.investigator,
+      tabooSetId,
+      previousDeck,
+      ignoreDeckLimitSlots,
+      slots: parsedDeck.slots,
+      xpAdjustment: xpAdjustment,
+      updateSlots: this._updateSlots,
+    };
+
+    const options = getDeckOptions(parsedDeck.investigator, true, card.name);
+
+    Navigation.push<CardUpgradeDialogProps>(componentId, {
+      component: {
+        name: 'Dialog.CardUpgrade',
+        passProps,
+        options: options,
+      },
+    });
   }
 
   _renderFooter = (slots?: Slots, controls?: React.ReactNode) => {
@@ -1289,7 +1271,6 @@ class DeckDetailView extends React.Component<Props, State> {
         { this.renderEditDetailsDialog(deck, parsedDeck) }
         { this.renderSavingDialog() }
         { this.renderCopyDialog() }
-        { this.renderCardUpgradeDialog() }
       </View>
     );
   }

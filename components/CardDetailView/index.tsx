@@ -21,7 +21,6 @@ import { COLORS } from '../../styles/colors';
 import { getShowSpoilers, getTabooSet, AppState } from '../../reducers';
 import Card from '../../data/Card';
 
-
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = [{
     icon: iconsMap.web,

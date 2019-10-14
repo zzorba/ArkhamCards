@@ -25,12 +25,15 @@ interface Props {
   problem: DeckProblem;
   color: string;
   noFontScaling?: boolean;
+  fontSize?: number;
 }
 export default function DeckProblemRow({
   problem,
   color,
   noFontScaling,
+  fontSize,
 }: Props) {
+
   return (
     <View style={styles.problemRow}>
       <View style={styles.warningIcon}>
@@ -41,7 +44,7 @@ export default function DeckProblemRow({
         />
       </View>
       <Text
-        style={[typography.small, { color }, styles.problemText]}
+        style={[typography.small, { color }, { fontSize: fontSize || SMALL_FONT_SIZE }, styles.problemText]}
         numberOfLines={2}
         ellipsizeMode="tail"
         allowFontScaling={!noFontScaling}
@@ -59,9 +62,10 @@ const styles = StyleSheet.create({
   problemRow: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   warningIcon: {
-    marginRight: 2,
+    marginRight: 4,
   },
 });
