@@ -66,23 +66,10 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     }
   }
 
-  _onSavePress = () => {
-    const {
-      componentId,
-      updateSlots,
-    } = this.props;
-    const {
-      slots,
-    } = this.state;
-
-    updateSlots(slots);
-
-    Navigation.pop(componentId);
-  };
-
   _onIncrement = (code: string) => {
     const {
       cards,
+      updateSlots,
     } = this.props;
     const {
       slots,
@@ -111,9 +98,14 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       slots: newSlots,
       parsedDeck: parsedDeck,
     });
+
+    updateSlots(newSlots);
   };
 
   _onDecrement = (code: string) => {
+    const {
+      updateSlots,
+    } = this.props;
     const {
       slots,
     } = this.state;
@@ -133,6 +125,8 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       slots: newSlots,
       parsedDeck: parsedDeck,
     });
+
+    updateSlots(newSlots);
   };
 
   namedCards() {
@@ -260,7 +254,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
             </View>
           ) }
           { this.renderCards() }
-          <Button title={t`Save`} onPress={this._onSavePress} />
         </ScrollView>
         { this.renderFooter() }
       </View>
