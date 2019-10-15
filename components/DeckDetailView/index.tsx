@@ -1153,7 +1153,7 @@ class DeckDetailView extends React.Component<Props, State> {
       updateSlots: this._updateSlots,
     };
 
-    const options = getDeckOptions(parsedDeck.investigator, true, card.name);
+    const options = getDeckOptions(parsedDeck.investigator, false, card.name);
 
     Navigation.push<CardUpgradeDialogProps>(componentId, {
       component: {
