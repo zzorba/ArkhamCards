@@ -499,17 +499,24 @@ class CardResultList extends React.Component<Props, State> {
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
+    let parsedSearchTerm = searchTerm;
+    if (parsedSearchTerm) {
+      // replace "smart" single and double quotes
+      parsedSearchTerm = parsedSearchTerm
+        .replace(/[\u2018\u2019]/g, '\'')
+        .replace(/[\u201C\u201D]/g, '"');
+    }
     const resultsKey = this.resultsKey();
     const queryCards: Results<Card> = (query ?
       realm.objects<Card>('Card').filtered(
         `(${query}) and ${Card.tabooSetQuery(tabooSetId)}`,
-        searchTerm
+        parsedSearchTerm
       ) : realm.objects<Card>('Card').filtered(
         Card.tabooSetQuery(tabooSetId)
       )
     );
     const cards: Results<Card> = (termQuery ?
-      queryCards.filtered(termQuery, searchTerm) :
+      queryCards.filtered(termQuery, parsedSearchTerm) :
       queryCards
     ).sorted(this.getSort());
     const groupedCards = partition(
