@@ -146,8 +146,14 @@ export interface Trauma {
   insane?: boolean;
 }
 
+export interface TraumaAndCardData extends Trauma {
+  availableXp?: number;
+  spentXp?: number;
+  storyAssets?: string[];
+}
+
 export interface InvestigatorData {
-  [code: string]: Trauma;
+  [code: string]: TraumaAndCardData;
 }
 
 export interface WeaknessSet {
@@ -283,6 +289,7 @@ export interface Campaign {
   baseDeckIds?: number[];
   latestDeckIds?: number[]; // deprecated
   investigatorData: InvestigatorData;
+  nonDeckInvestigators?: string[];
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
