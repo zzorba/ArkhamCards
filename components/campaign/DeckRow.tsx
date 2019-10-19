@@ -19,11 +19,12 @@ import { getDeck, AppState } from '../../reducers';
 
 type RenderDeckDetails = (
   deck: Deck,
+  cards: CardsMap,
   investigator: Card,
   previousDeck?: Deck
 ) => ReactNode;
 
-interface OwnProps {
+export interface DeckRowProps {
   componentId: string;
   id: number;
   deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
@@ -31,9 +32,12 @@ interface OwnProps {
   cards: CardsMap;
   renderSubDetails?: RenderDeckDetails;
   renderDetails?: RenderDeckDetails;
+}
+
+interface OwnProps extends DeckRowProps {
   compact?: boolean;
   viewDeckButton?: boolean;
-  otherProps: any;
+  otherProps?: any;
 }
 
 interface ReduxProps {
@@ -86,6 +90,7 @@ class DeckRow extends React.Component<Props> {
   renderSubDetails() {
     const {
       theDeck,
+      cards,
       thePreviousDeck,
       investigators,
       renderSubDetails,
@@ -93,6 +98,7 @@ class DeckRow extends React.Component<Props> {
     if (theDeck && renderSubDetails) {
       return renderSubDetails(
         theDeck,
+        cards,
         investigators[theDeck.investigator_code],
         thePreviousDeck
       );
@@ -103,6 +109,7 @@ class DeckRow extends React.Component<Props> {
   renderDetails() {
     const {
       theDeck,
+      cards,
       thePreviousDeck,
       investigators,
       renderDetails,
@@ -112,6 +119,7 @@ class DeckRow extends React.Component<Props> {
     }
     return renderDetails(
       theDeck,
+      cards,
       investigators[theDeck.investigator_code],
       thePreviousDeck
     );

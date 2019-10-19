@@ -10,41 +10,37 @@ import DeviceInfo from 'react-native-device-info';
 import { t } from 'ttag';
 
 import { Deck, InvestigatorData, ParsedDeck } from '../../../actions/types';
-import Card from '../../../data/Card';
+import Card, { CardsMap } from '../../../data/Card';
 import { parseDeck } from '../../../lib/parseDeck';
 import typography from '../../../styles/typography';
 import Button from '../../core/Button';
 import { showDeckModal } from '../../navHelper';
-import listOfDecks from '../listOfDecks';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
-import deckRowWithDetails, { DeckRowDetailsProps } from '../deckRowWithDetails';
+import DeckList, { DeckListProps } from '../DeckList';
+import DeckRow from '../DeckRow';
 
-interface Props {
+interface Props extends DeckListProps {
   campaignId: number;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   investigatorData: InvestigatorData;
   originalDeckIds: Set<number>;
 }
 
-class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
-  _viewDeck = () => {
+export default class UpgradeDecksList extends React.Component<Props> {
+  viewDeck(deck: Deck, investigator: Card) {
     const {
       componentId,
-      deck,
-      investigator,
       campaignId,
     } = this.props;
     showDeckModal(componentId, deck, investigator, campaignId);
-  };
+  }
 
-  _upgradeDeckPressed = () => {
+  upgradeDeckPressed(deck: Deck, investigator: Card) {
     const {
       showDeckUpgradeDialog,
-      deck,
-      investigator,
     } = this.props;
     showDeckUpgradeDialog(deck, investigator);
-  };
+  }
 
   experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
     const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
@@ -58,13 +54,15 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
     return t`${totalXp} total`;
   }
 
-  renderUpgradeButton(deck: Deck) {
+  renderUpgradeButton(
+    deck: Deck,
+    cards: CardsMap,
+    investigator: Card,
+    previousDeck?: Deck
+  ) {
     const {
-      investigator,
       investigatorData,
       originalDeckIds,
-      cards,
-      previousDeck,
     } = this.props;
     const eliminated = isEliminated(
       investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
@@ -99,39 +97,71 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
         size="small"
         align="left"
         color="white"
-        onPress={this._upgradeDeckPressed}
+        onPress={() => this.upgradeDeckPressed(deck, investigator)}
         grow
       />
     );
   }
 
-  render() {
-    const {
-      deck,
-    } = this.props;
+  _renderDetails = (
+    deck: Deck,
+    cards: CardsMap,
+    investigator: Card,
+    previousDeck?: Deck
+  ) => {
     if (!deck) {
       return null;
     }
     return (
       <View style={styles.investigatorNotes}>
         <View style={styles.section}>
-          { this.renderUpgradeButton(deck) }
+          { this.renderUpgradeButton(deck, cards, investigator, previousDeck) }
         </View>
       </View>
     );
+  };
+
+  _renderDeck = (
+    deckId: number,
+    cards: CardsMap,
+    investigators: CardsMap
+  ) => {
+    const {
+      componentId,
+    } = this.props;
+    return (
+      <DeckRow
+        key={deckId}
+        componentId={componentId}
+        id={deckId}
+        cards={cards}
+        investigators={investigators}
+        renderDetails={this._renderDetails}
+        otherProps={this.props}
+        compact
+        viewDeckButton
+      />
+    );
+  };
+  render() {
+    const {
+      componentId,
+      deckIds,
+      deckAdded,
+      campaignId,
+    } = this.props;
+    return (
+      <DeckList
+        renderDeck={this._renderDeck}
+        componentId={componentId}
+        campaignId={campaignId}
+        deckIds={deckIds}
+        deckAdded={deckAdded}
+        otherProps={this.props}
+      />
+    );
   }
 }
-
-const ComposedDeckRow = deckRowWithDetails<Props>(
-  {
-    compact: true,
-    viewDeckButton: true,
-  },
-  CampaignDeckDetail,
-);
-
-// @ts-ignore
-export default listOfDecks<Props>(ComposedDeckRow);
 
 const styles = StyleSheet.create({
   section: {

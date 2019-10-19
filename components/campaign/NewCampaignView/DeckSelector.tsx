@@ -1,12 +1,46 @@
-import listOfDecks from '../listOfDecks';
-import deckRowWithDetails from '../deckRowWithDetails';
+import React from 'react';
 
-interface Props {}
+import DeckRow from '../DeckRow';
+import DeckList, { DeckListProps } from '../DeckList';
+import { CardsMap } from '../../../data/Card';
 
-const ComposedDeck = deckRowWithDetails<Props>({
-  compact: false,
-  viewDeckButton: false,
-});
+export default class DeckSelector extends React.Component<DeckListProps> {
+  _renderDeck = (
+    deckId: number,
+    cards: CardsMap,
+    investigators: CardsMap
+  ) => {
+    const {
+      componentId,
+    } = this.props;
+    return (
+      <DeckRow
+        key={deckId}
+        componentId={componentId}
+        id={deckId}
+        cards={cards}
+        investigators={investigators}
+        otherProps={this.props}
+      />
+    );
+  };
 
-// @ts-ignore
-export default listOfDecks<Props>(ComposedDeck);
+  render() {
+    const {
+      componentId,
+      deckIds,
+      deckAdded,
+      campaignId,
+    } = this.props;
+    return (
+      <DeckList
+        renderDeck={this._renderDeck}
+        componentId={componentId}
+        campaignId={campaignId}
+        deckIds={deckIds}
+        deckAdded={deckAdded}
+        otherProps={this.props}
+      />
+    );
+  }
+}

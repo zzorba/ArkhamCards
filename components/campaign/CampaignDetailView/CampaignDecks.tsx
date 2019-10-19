@@ -14,51 +14,113 @@ import AppIcon from '../../../assets/AppIcon';
 import { Deck, InvestigatorData, ParsedDeck, Trauma } from '../../../actions/types';
 import DeckValidation from '../../../lib/DeckValidation';
 import { parseDeck } from '../../../lib/parseDeck';
-import Card from '../../../data/Card';
+import Card, { CardsMap } from '../../../data/Card';
 import Button from '../../core/Button';
 import { showDeckModal } from '../../navHelper';
 import DeckProblemRow from '../../DeckProblemRow';
 import EditTraumaComponent from '../EditTraumaComponent';
-import listOfDecks from '../listOfDecks';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
-import deckRowWithDetails, { DeckRowDetailsProps } from '../deckRowWithDetails';
+import DeckRow from '../DeckRow';
+import DeckList, { DeckListProps } from '../DeckList';
 import typography from '../../../styles/typography';
 import { iconSizeScale, s, xs } from '../../../styles/space';
 
-interface Props {
-  campaignId: number;
+interface Props extends DeckListProps {
+  deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
 }
 
-class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
-  _viewDeck = () => {
+export default class CampaignDeckList extends React.Component<Props> {
+  viewDeck(deck: Deck, investigator: Card) {
     const {
       componentId,
-      deck,
-      investigator,
-      campaignId,
     } = this.props;
-    showDeckModal(componentId, deck, investigator, campaignId);
-  };
+    showDeckModal(componentId, deck, investigator);
+  }
 
-  _upgradeDeckPressed = () => {
+  upgradeDeckPressed(deck: Deck, investigator: Card) {
     const {
       showDeckUpgradeDialog,
-      deck,
-      investigator,
     } = this.props;
     showDeckUpgradeDialog(deck, investigator);
+  }
+
+  experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
+    const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
+    if (xp > 0) {
+      if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
+        return t`${xp} available (${parsedDeck.changes.spentXp} spent)`;
+      }
+      return t`${xp} available`;
+    }
+    const totalXp = parsedDeck.experience || 0;
+    return t`${totalXp} total`;
+  }
+
+  _renderSubDetails = (
+    deck: Deck,
+    cards: CardsMap,
+    investigator: Card,
+    previousDeck?: Deck
+  ) => {
+    const {
+      investigatorData = {},
+      showTraumaDialog,
+    } = this.props;
+    if (!deck) {
+      return null;
+    }
+    const eliminated = isEliminated(
+      investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
+      investigator);
+    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+    return (
+      <View style={styles.investigatorSubNotes}>
+        <View style={styles.section}>
+          <EditTraumaComponent
+            investigator={investigator}
+            investigatorData={investigatorData}
+            showTraumaDialog={showTraumaDialog}
+          />
+        </View>
+        { !eliminated && (
+          <View style={styles.section}>
+            <View style={styles.column}>
+              <Text style={typography.smallLabel}>
+                { t`EXPERIENCE` }
+              </Text>
+              <Text style={typography.text}>
+                { this.experienceLine(parsedDeck.deck, parsedDeck) }
+              </Text>
+            </View>
+          </View>
+        ) }
+        { !eliminated && (
+          <View style={styles.section}>
+            <Button
+              icon={<MaterialCommunityIcons size={18 * iconSizeScale * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
+              text={t`Upgrade Deck`}
+              style={styles.button}
+              size="small"
+              align="left"
+              color="white"
+              onPress={() => this.upgradeDeckPressed(deck, investigator)}
+              grow
+            />
+          </View>
+        ) }
+      </View>
+    );
   };
 
-  render() {
-    const {
-      deck,
-      cards,
-      previousDeck,
-      investigator,
-    } = this.props;
+  _renderDetails = (
+    deck: Deck,
+    cards: CardsMap,
+    investigator: Card,
+    previousDeck?: Deck
+  ) => {
     if (!deck) {
       return null;
     }
@@ -106,114 +168,59 @@ class CampaignDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
             size="small"
             align="left"
             color="white"
-            onPress={this._viewDeck}
+            onPress={() => this.viewDeck(deck, investigator)}
             grow
           />
         </View>
       </View>
     );
   }
-}
 
-/* eslint-disable react/no-multi-comp */
-class CampaignSubDeckDetail extends React.Component<Props & DeckRowDetailsProps> {
-  _viewDeck = () => {
+  _renderDeck = (
+    deckId: number,
+    cards: CardsMap,
+    investigators: CardsMap
+  ) => {
     const {
       componentId,
-      deck,
-      investigator,
+      deckRemoved,
     } = this.props;
-    showDeckModal(componentId, deck, investigator);
+    return (
+      <DeckRow
+        key={deckId}
+        componentId={componentId}
+        id={deckId}
+        deckRemoved={deckRemoved}
+        cards={cards}
+        investigators={investigators}
+        renderDetails={this._renderDetails}
+        renderSubDetails={this._renderSubDetails}
+        otherProps={this.props}
+        compact
+        viewDeckButton
+      />
+    );
   };
-
-  _upgradeDeckPressed = () => {
-    const {
-      showDeckUpgradeDialog,
-      deck,
-      investigator,
-    } = this.props;
-    showDeckUpgradeDialog(deck, investigator);
-  };
-
-  experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
-    const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
-    if (xp > 0) {
-      if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
-        return t`${xp} available (${parsedDeck.changes.spentXp} spent)`;
-      }
-      return t`${xp} available`;
-    }
-    const totalXp = parsedDeck.experience || 0;
-    return t`${totalXp} total`;
-  }
 
   render() {
     const {
-      investigatorData = {},
-      deck,
-      cards,
-      previousDeck,
-      investigator,
-      showTraumaDialog,
+      componentId,
+      deckIds,
+      deckAdded,
+      campaignId,
     } = this.props;
-    if (!deck) {
-      return null;
-    }
-    const eliminated = isEliminated(
-      investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
-      investigator);
-    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
     return (
-      <View style={styles.investigatorSubNotes}>
-        <View style={styles.section}>
-          <EditTraumaComponent
-            investigator={investigator}
-            investigatorData={investigatorData}
-            showTraumaDialog={showTraumaDialog}
-          />
-        </View>
-        { !eliminated && (
-          <View style={styles.section}>
-            <View style={styles.column}>
-              <Text style={typography.smallLabel}>
-                { t`EXPERIENCE` }
-              </Text>
-              <Text style={typography.text}>
-                { this.experienceLine(parsedDeck.deck, parsedDeck) }
-              </Text>
-            </View>
-          </View>
-        ) }
-        { !eliminated && (
-          <View style={styles.section}>
-            <Button
-              icon={<MaterialCommunityIcons size={18 * iconSizeScale * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
-              text={t`Upgrade Deck`}
-              style={styles.button}
-              size="small"
-              align="left"
-              color="white"
-              onPress={this._upgradeDeckPressed}
-              grow
-            />
-          </View>
-        ) }
-      </View>
+      <DeckList
+        renderDeck={this._renderDeck}
+        componentId={componentId}
+        campaignId={campaignId}
+        deckIds={deckIds}
+        deckAdded={deckAdded}
+        otherProps={this.props}
+      />
     );
   }
 }
-
-const ComposedDeckRow = deckRowWithDetails<Props>(
-  {
-    compact: true,
-    viewDeckButton: true,
-  },
-  CampaignDeckDetail,
-  CampaignSubDeckDetail
-);
-
-// @ts-ignore
-export default listOfDecks<Props>(ComposedDeckRow);
 
 const styles = StyleSheet.create({
   section: {

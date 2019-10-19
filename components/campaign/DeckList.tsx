@@ -18,15 +18,18 @@ export interface DeckListProps {
   campaignId: number;
   deckIds: number[];
   deckAdded: (deck: Deck) => void;
+}
+
+interface OwnProps extends DeckListProps {
   renderDeck: (
     deckId: number,
     cards: CardsMap,
     investigators: CardsMap
   ) => ReactNode;
-  otherProps: any;
+  otherProps?: any;
 }
 
-class DeckList extends React.Component<DeckListProps & PlayerCardProps> {
+class DeckList extends React.Component<OwnProps & PlayerCardProps> {
   _showDeckSelector = () => {
     const {
       deckIds,
@@ -76,7 +79,7 @@ class DeckList extends React.Component<DeckListProps & PlayerCardProps> {
   }
 }
 
-export default withPlayerCards<DeckListProps>(DeckList);
+export default withPlayerCards<OwnProps>(DeckList);
 
 const styles = StyleSheet.create({
   button: {
