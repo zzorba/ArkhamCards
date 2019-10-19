@@ -32,6 +32,7 @@ import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import { s, sizeScale } from '../../styles/space';
+import DeckProblemRow from "../DeckProblemRow";
 
 const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * DeviceInfo.getFontScale();
 const TINY_EDIT_ICON_SIZE = 14 * sizeScale * DeviceInfo.getFontScale();
@@ -444,17 +445,7 @@ export default class DeckViewTab extends React.Component<Props> {
       <View style={[styles.problemBox,
         { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
       ]}>
-        <View style={styles.problemRow}>
-          <View style={styles.warningIcon}>
-            <AppIcon name="warning" size={14 * DeviceInfo.getFontScale()} color={isSurvivor ? COLORS.black : COLORS.white} />
-          </View>
-          <Text
-            numberOfLines={2}
-            style={[styles.problemText, { color: isSurvivor ? COLORS.black : COLORS.white }]}
-          >
-            { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
-          </Text>
-        </View>
+        <DeckProblemRow problem={problem} color={isSurvivor ? COLORS.black : COLORS.white} fontSize={14}/>
       </View>
     );
   }
@@ -706,25 +697,12 @@ const styles = StyleSheet.create({
     marginLeft: s,
     marginRight: s,
   },
-  problemRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
   problemBox: {
     flex: 1,
     paddingTop: 4,
     paddingBottom: 4,
     paddingRight: s,
     paddingLeft: s,
-  },
-  problemText: {
-    color: COLORS.white,
-    fontSize: 14,
-    flex: 1,
-  },
-  warningIcon: {
-    marginRight: 4,
   },
   cards: {
     marginTop: s,

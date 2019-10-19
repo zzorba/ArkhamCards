@@ -66,6 +66,7 @@ interface Props {
   card: BaseCard;
   linked?: boolean;
   notFirst?: boolean;
+  simple?: boolean;
   width: number;
 }
 
@@ -467,6 +468,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   ) {
     const {
       componentId,
+      simple,
       width,
     } = this.props;
     if (card.linked_card) {
@@ -478,6 +480,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             linked
             notFirst={!isFirst}
             width={width}
+            simple={simple}
           />
         </View>
       );
@@ -645,6 +648,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     isHorizontal: boolean,
     flavorFirst: boolean
   ) {
+    const { simple } = this.props;
     return (
       <React.Fragment>
         { !!card.text && (
@@ -666,7 +670,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             { t`Vengeance: ${card.vengeance}.` }
           </Text>
         }
-        { !!card.flavor && !flavorFirst &&
+        { !simple && !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
         { !!(card.taboo_set_id && card.taboo_set_id > 0) && !card.taboo_placeholder && (
@@ -704,7 +708,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     flavorFirst: boolean,
     isFirst: boolean
   ) {
-    const { width } = this.props;
+    const {
+      simple,
+      width,
+    } = this.props;
     if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== RANDOM_BASIC_WEAKNESS) {
       return (
         <View style={[styles.container, styles.buttonContainerPadding, { width }]}>
@@ -739,7 +746,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 <View style={styles.mainColumn}>
                   { this.renderMetadata(card) }
                   { this.renderPlaydata(card) }
-                  { !!(card.flavor && flavorFirst) &&
+                  { !simple || !!(card.flavor && flavorFirst) &&
                     <CardFlavorTextComponent text={card.flavor} />
                   }
                   { isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
@@ -747,7 +754,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 { this.renderImage(card) }
               </View>
               { !isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
-              { isFirst && this.renderCardFooter(card) }
+              { isFirst && !simple && this.renderCardFooter(card) }
             </View>
           </View>
         </View>
