@@ -26,6 +26,7 @@ import MyCampaignsView from '../components/campaign/MyCampaignsView';
 import NewCampaignView from '../components/campaign/NewCampaignView';
 import SelectCampaignDialog from '../components/campaign/SelectCampaignDialog';
 import MyDecksSelectorDialog from '../components/campaign/MyDecksSelectorDialog';
+import CardUpgradeDialog from '../components/DeckDetailView/CardUpgradeDialog';
 import CampaignScenarioView from '../components/campaign/CampaignScenarioView';
 import CampaignChaosBagView from '../components/campaign/CampaignChaosBagView';
 import MyDecksView from '../components/MyDecksView';
@@ -88,6 +89,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Pack', () => PackCardsView, Provider, store);
   Navigation.registerComponentWithRedux('My.Spoilers', () => SpoilersView, Provider, store);
   Navigation.registerComponentWithRedux('WebView', () => WebViewWrapper, Provider, store);
+  Navigation.registerComponentWithRedux('Dialog.CardUpgrade', () => CardUpgradeDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.DeckSelector', () => MyDecksSelectorDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.EditChaosBag', () => EditChaosBagDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.ExileCards', () => ExileCardDialog, Provider, store);

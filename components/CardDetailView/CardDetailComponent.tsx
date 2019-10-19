@@ -25,9 +25,14 @@ interface Props {
   tabooSetId?: number;
   toggleShowSpoilers?: (code: string) => void;
   showInvestigatorCards?: (code: string) => void;
+  simple?: boolean;
 }
 
 export default class CardDetailComponent extends React.Component<Props> {
+  public static defaultProps = {
+    simple: false,
+  };
+
   _editSpoilersPressed = () => {
     const { componentId } = this.props;
     if (componentId) {
@@ -100,6 +105,7 @@ export default class CardDetailComponent extends React.Component<Props> {
     const {
       componentId,
       card,
+      simple,
       width,
     } = this.props;
     if (this.shouldBlur()) {
@@ -123,6 +129,7 @@ export default class CardDetailComponent extends React.Component<Props> {
           componentId={componentId}
           card={card}
           width={width}
+          simple={simple}
         />
         <BondedCardsComponent
           componentId={componentId}
