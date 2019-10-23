@@ -1,6 +1,7 @@
+import { Platform } from 'react-native';
 import Config from 'react-native-config';
 import * as Keychain from 'react-native-keychain';
-import { authorize, refresh, revoke, AuthorizeResult, RefreshResult } from 'react-native-app-auth';
+import { authorize, refresh, revoke, prefetchConfiguration, AuthorizeResult, RefreshResult } from 'react-native-app-auth';
 
 const config: any = {
   clientId: Config.OAUTH_CLIENT_ID,
@@ -59,6 +60,16 @@ interface SignInResult {
   error?: string | Error;
 }
 
+export function prefetch(): Promise<void> {
+  if (Platform.OS === 'android') {
+    return prefetchConfiguration({
+      warmAndPrefetchChrome: true,
+      ...config
+    });
+  }
+  return Promise.resolve();
+}
+
 export function signInFlow(): Promise<SignInResult> {
   return authorize(config)
     .then(saveAuthResponse)
@@ -95,6 +106,7 @@ export function signOutFlow() {
 }
 
 export default {
+  prefetch,
   signInFlow,
   signOutFlow,
   getAccessToken,

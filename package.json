@@ -67,6 +67,7 @@
     "@babel/preset-env": "7.4.5",
     "@babel/preset-typescript": "7.3.3",
     "@babel/runtime": "7.4.4",
+    "@react-native-community/cli": "1.2.1",
     "@types/capitalize": "1.0.1",
     "@types/hoist-non-react-statics": "3.3.0",
     "@types/i18n-js": "3.0.1",

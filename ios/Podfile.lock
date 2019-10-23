@@ -15,7 +15,7 @@ DEPENDENCIES:
   - AppCenterReactNativeShared (~> 1.12.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AppAuth
     - AppCenter
     - AppCenterReactNativeShared
@@ -27,4 +27,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c5bb82e4c309fbdcafb0f962adac538bd6ea07dd
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

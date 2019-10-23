@@ -22,6 +22,7 @@ import TabooPicker from './TabooPicker';
 import { clearDecks } from '../../actions';
 import { fetchCards } from '../cards/actions';
 import { setSingleCardView } from './actions';
+import { prefetch } from '../../lib/auth';
 import Card from '../../data/Card';
 import { getAllDecks, AppState } from '../../reducers';
 import SettingsItem from './SettingsItem';
@@ -73,6 +74,10 @@ class SettingsView extends React.Component<Props> {
         },
       },
     });
+  }
+
+  componentDidMount() {
+    prefetch();
   }
 
   _myCollectionPressed = () => {
