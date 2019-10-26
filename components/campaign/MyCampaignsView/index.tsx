@@ -223,9 +223,9 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default withFetchCardsGate(
+export default withFetchCardsGate<OwnProps>(
   connect(mapStateToProps)(
-    withPlayerCards(MyCampaignsView)
+    withPlayerCards<OwnProps & ReduxProps>(MyCampaignsView)
   ),
   { promptForUpdate: false },
 );

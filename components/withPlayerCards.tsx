@@ -37,6 +37,7 @@ export default function withPlayerCards<Props, ExtraProps={}>(
     };
   };
   const result = connect<ReduxProps, {}, Props & TabooSetOverride, AppState>(mapStateToProps)(
+    // @ts-ignore TS2345
     connectRealm<Props & ReduxProps, PlayerCardProps & ExtraProps, Card, FaqEntry, TabooSet>(
       WrappedComponent, {
         schemas: ['Card', 'TabooSet'],
