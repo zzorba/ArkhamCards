@@ -12,6 +12,8 @@ import { DeckDetailProps } from './DeckDetailView';
 import { iconsMap } from '../app/NavIcons';
 import { COLORS } from '../styles/colors';
 
+const DECK_MENU = false;
+
 export function getDeckOptions(
   investigator?: Card,
   modal?: boolean,
@@ -115,17 +117,42 @@ export function showDeckModal(
     title: investigator ? investigator.name : t`Deck`,
   };
 
-  Navigation.showModal({
-    stack: {
-      children: [{
-        component: {
-          name: 'Deck',
-          passProps,
-          options: getDeckOptions(investigator, true),
+  if (DECK_MENU) {
+    Navigation.showModal({
+      sideMenu: {
+        center: {
+          stack: {
+            options: getDeckOptions(investigator, true),
+            children: [{
+              component: {
+                name: 'Deck',
+                passProps,
+              },
+            }],
+          },
         },
-      }],
-    },
-  });
+        left: {
+          component: {
+            name: 'Deck.Menu',
+            passProps,
+            options: getDeckOptions(investigator, true),
+          },
+        },
+      },
+    });
+  } else {
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Deck',
+            passProps,
+            options: getDeckOptions(investigator, true),
+          },
+        }],
+      },
+    });
+  }
 }
 
 export function showCard(

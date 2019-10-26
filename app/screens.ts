@@ -2,6 +2,7 @@ import { Navigation } from 'react-native-navigation';
 
 import SearchMultiSelectView from '../components/SearchMultiSelectView';
 import DeckDetailView from '../components/DeckDetailView';
+import DeckMenuView from '../components/DeckMenuView';
 import DeckEditView from '../components/DeckEditView';
 import EditSpecialDeckCards from '../components/EditSpecialDeckCards';
 import CardSearchView from '../components/CardSearchView';
@@ -58,6 +59,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Browse.Cards', () => CardSearchView, Provider, store);
   Navigation.registerComponentWithRedux('Browse.InvestigatorCards', () => InvestigatorCardsView, Provider, store);
   Navigation.registerComponentWithRedux('Deck', () => DeckDetailView, Provider, store);
+  Navigation.registerComponentWithRedux('Deck.Menu', () => DeckMenuView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Charts', () => DeckChartsView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.DrawSimulator', () => DrawSimulatorView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Edit', () => DeckEditView, Provider, store);
