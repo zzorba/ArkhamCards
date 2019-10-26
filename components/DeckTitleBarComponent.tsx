@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import Card from '../data/Card';
 import FactionGradient from './core/FactionGradient';
@@ -13,6 +12,7 @@ import { s, iconSizeScale } from '../styles/space';
 
 interface Props {
   name: string;
+  fontScale: number;
   investigator?: Card;
   compact?: boolean;
   button?: ReactNode;
@@ -23,6 +23,7 @@ export default function DeckTitleBarComponent({
   investigator,
   compact,
   button,
+  fontScale,
 }: Props) {
   const hasFactionColor = !!(investigator && investigator.faction_code);
   const faction_code = (investigator && investigator.faction_code) || 'neutral';
@@ -34,7 +35,7 @@ export default function DeckTitleBarComponent({
       style={styles.titleBar}
       dark
     >
-      { !!iconName && <ArkhamIcon name={iconName} size={28 * iconSizeScale * DeviceInfo.getFontScale()} color="#FFFFFF" /> }
+      { !!iconName && <ArkhamIcon name={iconName} size={28 * iconSizeScale * fontScale} color="#FFFFFF" /> }
       <Text
         style={[typography.text, styles.title, { color: hasFactionColor ? '#FFFFFF' : '#000000' }]}
         numberOfLines={compact ? 1 : 2}

@@ -13,6 +13,7 @@ import { t } from 'ttag';
 
 import { CampaignNotes, SingleCampaign, ScenarioResult } from '../../../actions/types';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { NavigationProps } from '../../types';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
 import ScenarioSection from './ScenarioSection';
@@ -42,7 +43,13 @@ interface ReduxActionProps {
   ) => void;
 }
 
-type Props = NavigationProps & PlayerCardProps & AddScenarioResultProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = NavigationProps &
+  PlayerCardProps &
+  AddScenarioResultProps &
+  ReduxProps &
+  ReduxActionProps &
+  InjectedDialogProps &
+  DimensionsProps;
 
 interface State {
   scenario?: ScenarioResult;
@@ -255,6 +262,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
       showTextEditDialog,
       captureViewRef,
       allInvestigators,
+      fontScale,
     } = this.props;
     const {
       xp,
@@ -289,6 +297,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
           { !!notes && (
             <CampaignLogSection
               componentId={componentId}
+              fontScale={fontScale}
               scenarioCount={scenarioResults.length}
               campaignNotes={notes}
               allInvestigators={allInvestigators}
@@ -324,7 +333,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 
 export default withPlayerCards<NavigationProps & AddScenarioResultProps>(
   connect(mapStateToProps, mapDispatchToProps)(
-    withDialogs(AddScenarioResultView)
+    withDialogs(
+      withDimensions(AddScenarioResultView)
+    )
   )
 );
 const styles = StyleSheet.create({

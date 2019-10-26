@@ -27,7 +27,6 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
-import DeviceInfo from 'react-native-device-info';
 import deepDiff from 'deep-diff';
 import { t } from 'ttag';
 
@@ -37,6 +36,7 @@ import withTraumaDialog, { TraumaProps } from '../campaign/withTraumaDialog';
 import Dialog from '../core/Dialog';
 import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
 import Button from '../core/Button';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { iconsMap } from '../../app/NavIcons';
 import {
   fetchPrivateDeck,
@@ -115,7 +115,8 @@ type Props = NavigationProps &
   TraumaProps &
   LoginStateProps &
   InjectedDialogProps &
-  UpgradeCardProps;
+  UpgradeCardProps &
+  DimensionsProps;
 
 interface State {
   parsedDeck?: ParsedDeck;
@@ -1024,6 +1025,7 @@ class DeckDetailView extends React.Component<Props, State> {
   renderButtons() {
     const {
       deck,
+      fontScale,
     } = this.props;
     const {
       hasPendingEdits,
@@ -1041,7 +1043,7 @@ class DeckDetailView extends React.Component<Props, State> {
               text={t`Edit`}
               color="purple"
               size="small"
-              icon={<MaterialIcons size={20 * iconSizeScale * DeviceInfo.getFontScale()} color="#FFFFFF" name="edit" />}
+              icon={<MaterialIcons size={20 * iconSizeScale * fontScale} color="#FFFFFF" name="edit" />}
               onPress={this._onEditPressed}
             />
           </View>
@@ -1052,7 +1054,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 color="yellow"
                 grow
                 size="small"
-                icon={<MaterialCommunityIcons size={20 * iconSizeScale * DeviceInfo.getFontScale()} color="#FFFFFF" name="arrow-up-bold" />}
+                icon={<MaterialCommunityIcons size={20 * iconSizeScale * fontScale} color="#FFFFFF" name="arrow-up-bold" />}
                 onPress={this._onUpgradePressed}
               />
             </View>
@@ -1164,10 +1166,14 @@ class DeckDetailView extends React.Component<Props, State> {
     });
   }
 
-  _renderFooter = (slots?: Slots, controls?: React.ReactNode) => {
+  _renderFooter = (
+    slots?: Slots,
+    controls?: React.ReactNode
+  ) => {
     const {
       componentId,
       cards,
+      fontScale,
     } = this.props;
     const {
       parsedDeck,
@@ -1180,6 +1186,7 @@ class DeckDetailView extends React.Component<Props, State> {
     return (
       <DeckNavFooter
         componentId={componentId}
+        fontScale={fontScale}
         parsedDeck={parsedDeck}
         meta={meta}
         cards={cards}
@@ -1193,6 +1200,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       deck,
       componentId,
+      fontScale,
       isPrivate,
       captureViewRef,
       cards,
@@ -1237,6 +1245,7 @@ class DeckDetailView extends React.Component<Props, State> {
         <View style={styles.container} ref={captureViewRef}>
           <DeckViewTab
             componentId={componentId}
+            fontScale={fontScale}
             deck={deck}
             meta={meta}
             setMeta={this._setMeta}
@@ -1319,7 +1328,7 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
       withTraumaDialog(
         withDialogs(
           withLoginState(
-            DeckDetailView
+            withDimensions(DeckDetailView)
           )
         )
       ),

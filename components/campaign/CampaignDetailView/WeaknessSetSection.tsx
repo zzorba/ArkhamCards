@@ -19,6 +19,7 @@ import { CampaignDrawWeaknessProps } from '../CampaignDrawWeaknessDialog';
 
 interface OwnProps {
   componentId: string;
+  fontScale: number;
   campaignId: number;
   weaknessSet: WeaknessSet;
 }
@@ -71,13 +72,14 @@ class WeaknessSetSection extends React.Component<Props> {
     const {
       weaknessSet,
       cards,
+      fontScale,
     } = this.props;
     const counts = WeaknessSetSection.computeCount(weaknessSet, cards);
     if (counts.total === 0) {
       return null;
     }
     return (
-      <NavButton onPress={this._showDrawDialog}>
+      <NavButton fontScale={fontScale} onPress={this._showDrawDialog}>
         <View style={styles.padding}>
           <Text style={typography.text}>
             { t`Basic Weakness Set` }

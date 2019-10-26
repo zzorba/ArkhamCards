@@ -10,6 +10,7 @@ import Card, { CardsMap } from '../../data/Card';
 
 interface Props {
   componentId: string;
+  fontScale: number;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
   xpAdjustment: number;
@@ -26,6 +27,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       parsedDeck: {
         investigator,
       },
+      fontScale,
     } = this.props;
     if (!keys(slots).length) {
       return null;
@@ -41,6 +43,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         <CardSectionHeader
           investigator={investigator}
           section={{ title }}
+          fontScale={fontScale}
         />
         { map(sortedCards, card => (
           <CardSearchResult
@@ -48,6 +51,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
             onPress={this._showCard}
             card={card}
             count={slots[card.code]}
+            fontScale={fontScale}
             deltaCountMode
           />
         )) }
@@ -61,6 +65,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         investigator,
         changes,
       },
+      fontScale,
     } = this.props;
     if (!changes) {
       return null;
@@ -71,6 +76,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         <CardSectionHeader
           investigator={investigator}
           section={{ superTitle: t`Changes from previous deck` }}
+          fontScale={fontScale}
         />
         { this.renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
         { this.renderSection(changes.added, 'added', t`Added cards`) }

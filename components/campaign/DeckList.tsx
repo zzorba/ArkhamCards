@@ -15,9 +15,10 @@ import { CardsMap } from '../../data/Card';
 
 export interface DeckListProps {
   componentId: string;
+  fontScale: number;
   campaignId: number;
   deckIds: number[];
-  deckAdded: (deck: Deck) => void;
+  deckAdded?: (deck: Deck) => void;
 }
 
 interface OwnProps extends DeckListProps {
@@ -36,21 +37,23 @@ class DeckList extends React.Component<OwnProps & PlayerCardProps> {
       deckAdded,
       campaignId,
     } = this.props;
-    const passProps: MyDecksSelectorProps = {
-      campaignId: campaignId,
-      onDeckSelect: deckAdded,
-      selectedDeckIds: deckIds,
-    };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-          },
-        }],
-      },
-    });
+    if (deckAdded) {
+      const passProps: MyDecksSelectorProps = {
+        campaignId: campaignId,
+        onDeckSelect: deckAdded,
+        selectedDeckIds: deckIds,
+      };
+      Navigation.showModal({
+        stack: {
+          children: [{
+            component: {
+              name: 'Dialog.DeckSelector',
+              passProps,
+            },
+          }],
+        },
+      });
+    }
   };
 
   render() {

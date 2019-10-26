@@ -9,6 +9,7 @@ import AccordionItem from './AccordionItem';
 interface Props {
   label: string;
   width: number;
+  fontScale: number;
   height?: number;
   max: number;
   values: number[];
@@ -52,12 +53,14 @@ export default class SliderChooser extends React.Component<Props> {
       toggleName,
       children,
       height,
+      fontScale,
     } = this.props;
 
     return (
       <AccordionItem
         label={this.label()}
         height={40 + (children && height ? (height * 48) : 10)}
+        fontScale={fontScale}
         enabled={enabled}
         toggleName={toggleName}
         onToggleChange={onToggleChange}

@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 import { connectRealm, CardResults } from 'react-native-realm';
-
 import { t } from 'ttag';
+
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from '../../data/Card';
 import { getTabooSet, AppState } from '../../reducers';
@@ -18,6 +18,7 @@ interface OwnProps {
   componentId?: string;
   card: Card;
   width: number;
+  fontScale: number;
 }
 
 interface ReduxProps {
@@ -38,6 +39,7 @@ class BondedCardsComponent extends React.Component<Props> {
       bonded_to_cards,
       bonded_from_cards,
       width,
+      fontScale,
     } = this.props;
     if (!(bonded_to_cards && bonded_to_cards.length) &&
       !(bonded_from_cards && bonded_from_cards.length)) {
@@ -56,6 +58,7 @@ class BondedCardsComponent extends React.Component<Props> {
                 key={card.code}
                 card={card}
                 width={width}
+                fontScale={fontScale}
               />
             )) }
           </React.Fragment>
@@ -71,6 +74,7 @@ class BondedCardsComponent extends React.Component<Props> {
                 componentId={componentId}
                 card={card}
                 width={width}
+                fontScale={fontScale}
               />
             )) }
           </React.Fragment>

@@ -24,6 +24,7 @@ import { campaignToText } from '../campaignUtil';
 import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { iconsMap } from '../../../app/NavIcons';
 import Card from '../../../data/Card';
 import { ChaosBag } from '../../../constants';
@@ -54,7 +55,8 @@ type Props = NavigationProps &
   ReduxActionProps &
   TraumaProps &
   PlayerCardProps &
-  InjectedDialogProps;
+  InjectedDialogProps &
+  DimensionsProps;
 
 interface State {
   addSectionVisible: boolean;
@@ -250,6 +252,7 @@ class CampaignDetailView extends React.Component<Props, State> {
       captureViewRef,
       showTextEditDialog,
       allInvestigators,
+      fontScale,
     } = this.props;
     if (!campaign) {
       return null;
@@ -260,15 +263,18 @@ class CampaignDetailView extends React.Component<Props, State> {
           <ScenarioSection
             componentId={componentId}
             campaign={campaign}
+            fontScale={fontScale}
           />
           <ChaosBagSection
             componentId={componentId}
+            fontScale={fontScale}
             campaignId={campaign.id}
             chaosBag={campaign.chaosBag}
             updateChaosBag={this._updateChaosBag}
           />
           <DecksSection
             componentId={componentId}
+            fontScale={fontScale}
             campaignId={campaign.id}
             weaknessSet={campaign.weaknessSet}
             latestDeckIds={latestDeckIds || []}
@@ -279,11 +285,13 @@ class CampaignDetailView extends React.Component<Props, State> {
           />
           <WeaknessSetSection
             componentId={componentId}
+            fontScale={fontScale}
             campaignId={campaign.id}
             weaknessSet={campaign.weaknessSet}
           />
           <CampaignLogSection
             componentId={componentId}
+            fontScale={fontScale}
             campaignNotes={campaign.campaignNotes}
             scenarioCount={(campaign.scenarioResults || []).length}
             allInvestigators={allInvestigators}
@@ -332,7 +340,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
 export default withPlayerCards<NavigationProps & CampaignDetailProps>(
   connect(mapStateToProps, mapDispatchToProps)(
     withTraumaDialog<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps>(
-      withDialogs<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps & TraumaProps>(CampaignDetailView)
+      withDialogs<NavigationProps & CampaignDetailProps & PlayerCardProps & ReduxProps & ReduxActionProps & TraumaProps>(
+        withDimensions(CampaignDetailView)
+      )
     )
   )
 );

@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import DeviceInfo from 'react-native-device-info';
 import { t } from 'ttag';
 
 import { Deck, InvestigatorData, ParsedDeck } from '../../../actions/types';
@@ -63,6 +62,7 @@ export default class UpgradeDecksList extends React.Component<Props> {
     const {
       investigatorData,
       originalDeckIds,
+      fontScale,
     } = this.props;
     const eliminated = isEliminated(
       investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
@@ -91,7 +91,7 @@ export default class UpgradeDecksList extends React.Component<Props> {
 
     return (
       <Button
-        icon={<MaterialCommunityIcons size={18 * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
+        icon={<MaterialCommunityIcons size={18 * fontScale} color="#222" name="arrow-up-bold" />}
         text={t`Upgrade deck`}
         style={styles.button}
         size="small"
@@ -128,10 +128,12 @@ export default class UpgradeDecksList extends React.Component<Props> {
   ) => {
     const {
       componentId,
+      fontScale,
     } = this.props;
     return (
       <DeckRow
         key={deckId}
+        fontScale={fontScale}
         componentId={componentId}
         id={deckId}
         cards={cards}
@@ -143,15 +145,18 @@ export default class UpgradeDecksList extends React.Component<Props> {
       />
     );
   };
+
   render() {
     const {
       componentId,
       deckIds,
       deckAdded,
       campaignId,
+      fontScale,
     } = this.props;
     return (
       <DeckList
+        fontScale={fontScale}
         renderDeck={this._renderDeck}
         componentId={componentId}
         campaignId={campaignId}

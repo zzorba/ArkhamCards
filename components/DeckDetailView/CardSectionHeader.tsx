@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
@@ -13,8 +12,6 @@ import { FACTION_DARK_GRADIENTS } from '../../constants';
 import Card from '../../data/Card';
 import typography from '../../styles/typography';
 import { l, s, xs, iconSizeScale } from '../../styles/space';
-
-const SMALL_EDIT_ICON_SIZE = 18 * iconSizeScale * DeviceInfo.getFontScale();
 
 export interface CardSectionHeaderData {
   superTitle?: string;
@@ -25,6 +22,7 @@ export interface CardSectionHeaderData {
 
 interface Props {
   investigator: Card;
+  fontScale: number;
   section: CardSectionHeaderData;
 }
 
@@ -33,9 +31,11 @@ export default class CardSectionHeader extends React.Component<Props> {
     const {
       investigator,
       section,
+      fontScale,
     } = this.props;
     if (section.superTitle) {
       if (section.onPress) {
+        const SMALL_EDIT_ICON_SIZE = 18 * iconSizeScale * fontScale;
         return (
           <TouchableOpacity onPress={section.onPress} style={[
             styles.superHeaderRow,
@@ -44,8 +44,15 @@ export default class CardSectionHeader extends React.Component<Props> {
             <Text style={[typography.text, styles.superHeaderText]}>
               { section.superTitle }
             </Text>
-            <View style={styles.editIcon}>
-              <MaterialIcons name="edit" color="#FFF" size={SMALL_EDIT_ICON_SIZE} />
+            <View style={{
+              width: SMALL_EDIT_ICON_SIZE,
+              height: SMALL_EDIT_ICON_SIZE,
+            }}>
+              <MaterialIcons
+                name="edit"
+                color="#FFF"
+                size={SMALL_EDIT_ICON_SIZE}
+              />
             </View>
           </TouchableOpacity>
         );
@@ -111,9 +118,5 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
-  },
-  editIcon: {
-    width: SMALL_EDIT_ICON_SIZE,
-    height: SMALL_EDIT_ICON_SIZE,
   },
 });

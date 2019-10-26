@@ -36,9 +36,9 @@ import Card from '../../data/Card';
 import { showCard, showCardSwipe } from '../navHelper';
 import { isSpecialCard } from '../../lib/parseDeck';
 import CardSearchResult from '../CardSearchResult';
-import { ROW_HEIGHT } from '../CardSearchResult/constants';
-import CardSectionHeader, { ROW_HEADER_HEIGHT } from './CardSectionHeader';
-import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from './ShowNonCollectionFooter';
+import { rowHeight } from '../CardSearchResult/constants';
+import CardSectionHeader, { rowHeaderHeight } from './CardSectionHeader';
+import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
 import typography from '../../styles/typography';
 import { s, m } from '../../styles/space';
 
@@ -59,6 +59,7 @@ function funLoadingMessages() {
 
 interface OwnProps {
   componentId: string;
+  fontScale: number;
   query?: string;
   filterQuery?: string;
   termQuery?: string;
@@ -595,10 +596,18 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   _renderSectionHeader = ({ section }: { section: SectionListData<CardBucket> }) => {
-    return <CardSectionHeader title={section.title} bold={section.bold} />;
+    const { fontScale } = this.props;
+    return (
+      <CardSectionHeader
+        title={section.title}
+        bold={section.bold}
+        fontScale={fontScale}
+      />
+    );
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<CardBucket> }) => {
+    const { fontScale } = this.props;
     const {
       showNonCollection,
     } = this.state;
@@ -608,7 +617,7 @@ class CardResultList extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={styles.sectionFooterButton}>
+        <View style={[styles.sectionFooterButton, { height: rowNonCollectionHeight(fontScale) }]}>
           <Button
             title={t`Edit Collection`}
             onPress={this._editCollectionSettings}
@@ -619,6 +628,7 @@ class CardResultList extends React.Component<Props, State> {
     return (
       <ShowNonCollectionFooter
         id={section.id}
+        fontScale={fontScale}
         title={ngettext(
           msgid`Show ${section.nonCollectionCount} Non-Collection Card`,
           `Show ${section.nonCollectionCount} Non-Collection Cards`,
@@ -636,6 +646,7 @@ class CardResultList extends React.Component<Props, State> {
     const {
       limits,
       hasSecondCore,
+      fontScale,
     } = this.props;
     const {
       deckCardCounts,
@@ -643,6 +654,7 @@ class CardResultList extends React.Component<Props, State> {
     return (
       <CardSearchResult
         card={item}
+        fontScale={fontScale}
         count={deckCardCounts && deckCardCounts[item.code]}
         onDeckCountChange={this.props.onDeckCountChange}
         id={`${section.id}.${index}`}
@@ -762,6 +774,7 @@ class CardResultList extends React.Component<Props, State> {
   render() {
     const {
       sort,
+      fontScale,
     } = this.props;
     const {
       loadingMessage,
@@ -791,9 +804,9 @@ class CardResultList extends React.Component<Props, State> {
     const elementHeights = map(
       flatMap(data, section => {
         return concat(
-          [ROW_HEADER_HEIGHT], // Header
-          map(section.data || [], () => ROW_HEIGHT), // Rows
-          [section.nonCollectionCount ? ROW_NON_COLLECTION_HEIGHT : 0] // Footer (not used)
+          [rowHeaderHeight(fontScale)], // Header
+          map(section.data || [], () => rowHeight(fontScale)), // Rows
+          [section.nonCollectionCount ? rowNonCollectionHeight(fontScale) : 0] // Footer (not used)
         );
       }),
       (size) => {
@@ -896,7 +909,6 @@ const styles = StyleSheet.create<Styles>({
     borderColor: '#bdbdbd',
   },
   sectionFooterButton: {
-    height: ROW_NON_COLLECTION_HEIGHT,
     margin: 8,
   },
 });

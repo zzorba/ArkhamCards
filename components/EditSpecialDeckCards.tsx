@@ -13,6 +13,7 @@ import { CampaignDrawWeaknessProps } from './campaign/CampaignDrawWeaknessDialog
 import CardSelectorComponent from './CardSelectorComponent';
 import { DrawWeaknessProps } from './weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
+import withDimensions, { DimensionsProps } from './core/withDimensions';
 import { NavigationProps } from './types';
 import CardSearchResult from './CardSearchResult';
 import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS } from '../constants';
@@ -40,7 +41,7 @@ interface ReduxProps {
   campaign?: Campaign;
 }
 
-type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps;
+type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps & DimensionsProps;
 
 interface State {
   slots: Slots;
@@ -295,6 +296,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
   renderBasicWeaknessSection() {
     const {
       cards,
+      fontScale,
     } = this.props;
     const {
       slots,
@@ -319,6 +321,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
             card={card}
             count={slots[card.code]}
             onPress={this._cardPressed}
+            fontScale={fontScale}
           />
         )) }
         { this.renderDrawWeaknessButton() }
@@ -329,6 +332,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
   renderStorySection() {
     const {
       cards,
+      fontScale,
     } = this.props;
     const {
       slots,
@@ -353,6 +357,7 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
             card={card}
             count={slots[card.code]}
             onPress={this._cardPressed}
+            fontScale={fontScale}
           />
         )) }
         <Button
@@ -415,7 +420,9 @@ function mapStateToProps(
 export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
   connect<ReduxProps, {}, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
     mapStateToProps
-  )(EditSpecialDeckCards)
+  )(
+    withDimensions(EditSpecialDeckCards)
+  )
 );
 
 const styles = StyleSheet.create({

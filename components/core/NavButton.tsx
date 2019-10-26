@@ -7,19 +7,19 @@ import {
 } from 'react-native';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
-import DeviceInfo from 'react-native-device-info';
 
 import typography from '../../styles/typography';
 import { s, isBig } from '../../styles/space';
 
 interface Props {
+  fontScale: number;
   text?: string;
   onPress: () => void;
   indent?: boolean;
   children?: ReactNode;
   noBorder?: boolean;
 }
-export default function NavButton({ text, onPress, indent, children, noBorder }: Props) {
+export default function NavButton({ text, fontScale, onPress, indent, children, noBorder }: Props) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[
@@ -28,7 +28,10 @@ export default function NavButton({ text, onPress, indent, children, noBorder }:
         noBorder ? {} : styles.bottomBorder,
       ]}>
         { text ? (
-          <View style={styles.text}>
+          <View style={[
+            styles.text,
+            { minHeight: 22 + 18 * fontScale * (isBig ? 1.5 : 1.0) },
+          ]}>
             <Text style={typography.text} numberOfLines={1}>
               { text }
             </Text>
@@ -63,7 +66,6 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    minHeight: 22 + 18 * DeviceInfo.getFontScale() * (isBig ? 1.5 : 1.0),
     flexDirection: 'row',
     alignItems: 'center',
   },

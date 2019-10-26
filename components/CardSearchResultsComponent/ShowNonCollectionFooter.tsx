@@ -4,15 +4,17 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import { isBig } from '../../styles/space';
 
-export const ROW_NON_COLLECTION_HEIGHT = (isBig ? 52 : 38) * DeviceInfo.getFontScale() + 16;
+export function rowNonCollectionHeight(fontScale: number) {
+  return (isBig ? 52 : 38) * fontScale + 16;
+}
 
 interface Props {
   id: string;
   title: string;
+  fontScale: number;
   onPress: (id: string) => void;
 }
 export default class ShowNonCollectionFooter extends React.Component<Props> {
@@ -23,9 +25,10 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
   render() {
     const {
       title,
+      fontScale,
     } = this.props;
     return (
-      <View style={styles.row}>
+      <View style={[styles.row, { height: rowNonCollectionHeight(fontScale) }]}>
         <Button
           title={title}
           onPress={this._onPress}
@@ -37,7 +40,6 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   row: {
-    height: ROW_NON_COLLECTION_HEIGHT,
     padding: 8 * (isBig ? 1.5 : 1.0),
   },
 });

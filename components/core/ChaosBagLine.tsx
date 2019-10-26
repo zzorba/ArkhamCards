@@ -5,7 +5,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '../../constants';
@@ -14,9 +13,10 @@ import typography from '../../styles/typography';
 
 interface Props {
   chaosBag: ChaosBag;
+  fontScale: number;
 }
 
-export default function ChaosBagLine({ chaosBag }: Props) {
+export default function ChaosBagLine({ chaosBag, fontScale }: Props) {
   const bagKeys = sortBy(
     keys(chaosBag),
     (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token]);
@@ -30,7 +30,7 @@ export default function ChaosBagLine({ chaosBag }: Props) {
             <View key={`${token}-${idx}`} style={styles.commaView}>
               <ChaosTokenIcon
                 icon={token}
-                size={18 * iconSizeScale * DeviceInfo.getFontScale()}
+                size={18 * iconSizeScale * fontScale}
                 color="#222"
               />
               { !isLast && <Text style={typography.text}>, </Text> }

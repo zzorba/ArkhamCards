@@ -68,6 +68,7 @@ interface Props {
   notFirst?: boolean;
   simple?: boolean;
   width: number;
+  fontScale: number;
 }
 
 interface State {
@@ -388,12 +389,18 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     subname: string | null,
     factionColor?: string
   ) {
+    const { fontScale } = this.props;
     return (
       <React.Fragment>
         <View style={styles.titleRow}>
           { (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') && (
             <View style={styles.costIcon}>
-              <CardCostIcon card={card} inverted linked={this.props.linked} />
+              <CardCostIcon
+                card={card}
+                fontScale={fontScale}
+                inverted
+                linked={this.props.linked}
+              />
             </View>
           ) }
           <View style={styles.column}>
@@ -470,12 +477,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       componentId,
       simple,
       width,
+      fontScale,
     } = this.props;
     if (card.linked_card) {
       return (
         <View>
           <TwoSidedCardComponent
             componentId={componentId}
+            fontScale={fontScale}
             card={card.linked_card}
             linked
             notFirst={!isFirst}
@@ -547,36 +556,38 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTabooButton() {
+    const { fontScale } = this.props;
     return (
       <Button
         grow
         color="purple"
         text={t`Taboo`}
         onPress={this._showTaboo}
-        icon={<ArkhamIcon name="tablet" size={20 * DeviceInfo.getFontScale()} color="white" />}
+        icon={<ArkhamIcon name="tablet" size={20 * fontScale} color="white" />}
       />
     );
   }
 
   renderFaqButton() {
+    const { fontScale } = this.props;
     return (
       <Button
         grow
         text={t`FAQ`}
         onPress={this._showFaq}
-        icon={<AppIcon name="faq" size={24 * DeviceInfo.getFontScale()} color="white" />}
+        icon={<AppIcon name="faq" size={24 * fontScale} color="white" />}
       />
     );
   }
 
   renderCardFooter(card: BaseCard) {
-    const { componentId } = this.props;
+    const { componentId, fontScale } = this.props;
     return (
       <React.Fragment>
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={[typography.cardText, styles.illustratorText]}>
-              <AppIcon name="paintbrush" size={16 * DeviceInfo.getFontScale()} color="#000000" />
+              <AppIcon name="paintbrush" size={16 * fontScale} color="#000000" />
               { ` ${card.illustrator}` }
             </Text>
           ) }
@@ -585,7 +596,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { !!card.encounter_name && !!card.encounter_code ? (
                 <>
                   <Text style={typography.cardText}>
-                    <EncounterIcon encounter_code={card.encounter_code} size={16 * DeviceInfo.getFontScale()} color="#000" />
+                    <EncounterIcon encounter_code={card.encounter_code} size={16 * fontScale} color="#000" />
                     { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
                       ngettext(
                         msgid`\n${card.quantity} copy.`,
@@ -596,14 +607,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   </Text>
                   { card.encounter_name !== card.cycle_name && (
                     <Text style={typography.cardText}>
-                      <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * DeviceInfo.getFontScale()} color="#000" />
+                      <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
                       { ` ${card.cycle_name} #${card.position % 1000}.` }
                     </Text>
                   ) }
                 </>
               ) : (
                 <Text style={typography.cardText}>
-                  <EncounterIcon encounter_code={card.pack_code} size={16 * DeviceInfo.getFontScale()} color="#000" />
+                  <EncounterIcon encounter_code={card.pack_code} size={16 * fontScale} color="#000" />
                   { ` ${card.pack_name} #${card.position % 1000}.` }
                 </Text>
               ) }
@@ -648,7 +659,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     isHorizontal: boolean,
     flavorFirst: boolean
   ) {
-    const { simple } = this.props;
+    const { simple, fontScale } = this.props;
     return (
       <React.Fragment>
         { !!card.text && (
@@ -679,7 +690,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           }]}>
             <View style={styles.tabooRow}>
               <View style={styles.tabooIcon}>
-                <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE} color="purple" />
+                <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color="purple" />
               </View>
               <Text style={typography.cardText}>
                 { t`Taboo List Changes` }

@@ -1,10 +1,12 @@
 import React from 'react';
+import DeviceInfo from 'react-native-device-info';
 import { Dimensions, ScaledSize } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 export interface DimensionsProps {
   width: number;
   height: number;
+  fontScale: number;
 }
 
 export default function withDimensions<P>(
@@ -13,6 +15,7 @@ export default function withDimensions<P>(
   interface State {
     width: number;
     height: number;
+    fontScale: number;
   }
 
   class DimensionsComponent extends React.Component<P, State> {
@@ -23,11 +26,19 @@ export default function withDimensions<P>(
       this.state = {
         width,
         height,
+        fontScale: 1.0,
       };
     }
 
     componentDidMount() {
       Dimensions.addEventListener('change', this._onChange);
+      DeviceInfo.getFontScale().then(fontScale => {
+        if (fontScale !== 'unknown') {
+          this.setState({
+            fontScale,
+          });
+        }
+      });
     }
 
     componentWillUnmount() {
@@ -46,10 +57,11 @@ export default function withDimensions<P>(
 
 
     render() {
-      const { width, height } = this.state;
+      const { width, height, fontScale } = this.state;
       return (
         <WrappedComponent
           {...this.props as P}
+          fontScale={fontScale}
           width={width}
           height={height}
         />

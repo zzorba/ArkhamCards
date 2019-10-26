@@ -7,6 +7,7 @@ import { COLORS } from '../../styles/colors';
 
 interface Props {
   componentId: string;
+  fontScale: number;
   title: string;
   values: string[];
   onChange: (selection: string[]) => void;
@@ -59,9 +60,11 @@ export default class ChooserButton extends React.Component<Props> {
       title,
       selection,
       indent,
+      fontScale,
     } = this.props;
     return (
       <NavButton
+        fontScale={fontScale}
         text={`${title}: ${selection && selection.length ? selection.join(', ') : t`All`}`}
         onPress={this._onPress}
         indent={indent}

@@ -17,6 +17,7 @@ import { searchMatchesText } from './searchHelpers';
 import SearchBox from './SearchBox';
 import DeckListRow from './DeckListRow';
 import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
+import withDimensions, { DimensionsProps } from './core/withDimensions';
 import { getAllDecks, AppState } from '../reducers';
 import { fetchPublicDeck } from './decks/actions';
 import typography from '../styles/typography';
@@ -41,7 +42,11 @@ interface ReduxActionProps {
   fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps;
+type Props = OwnProps &
+  ReduxProps &
+  ReduxActionProps &
+  PlayerCardProps &
+  DimensionsProps;
 
 interface State {
   searchTerm: string;
@@ -91,6 +96,7 @@ class DeckListComponent extends React.Component<Props, State> {
       decks,
       cards,
       deckToCampaign,
+      fontScale,
     } = this.props;
 
     const deck = decks[deckId];
@@ -100,6 +106,7 @@ class DeckListComponent extends React.Component<Props, State> {
     return (
       <DeckListRow
         key={deckId}
+        fontScale={fontScale}
         deck={deck}
         previousDeck={deck.previous_deck ? decks[deck.previous_deck] : undefined}
         cards={cards}
@@ -225,7 +232,9 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(
-  withPlayerCards<ReduxProps & ReduxActionProps & OwnProps>(DeckListComponent)
+  withPlayerCards<ReduxProps & ReduxActionProps & OwnProps>(
+    withDimensions(DeckListComponent)
+  )
 );
 
 const styles = StyleSheet.create({

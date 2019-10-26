@@ -6,9 +6,7 @@ import {
 export default class DeckMenuView extends React.Component {
   render() {
     return (
-      <View style={{ backgroundColor: 'red' }}>
-
-      </View>
+      <View style={{ backgroundColor: 'red' }} />
     );
   }
 }

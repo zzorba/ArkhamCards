@@ -5,7 +5,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import { DeckProblem, DeckProblemType } from '../actions/types';
 import { t } from 'ttag';
@@ -26,12 +25,14 @@ interface Props {
   color: string;
   noFontScaling?: boolean;
   fontSize?: number;
+  fontScale: number;
 }
 export default function DeckProblemRow({
   problem,
   color,
   noFontScaling,
   fontSize,
+  fontScale,
 }: Props) {
 
   return (
@@ -39,7 +40,7 @@ export default function DeckProblemRow({
       <View style={styles.warningIcon}>
         <AppIcon
           name="warning"
-          size={SMALL_FONT_SIZE * (noFontScaling ? 1 : DeviceInfo.getFontScale())}
+          size={SMALL_FONT_SIZE * (noFontScaling ? 1 : fontScale)}
           color={color}
         />
       </View>

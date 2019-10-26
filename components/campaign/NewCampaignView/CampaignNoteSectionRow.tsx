@@ -6,18 +6,20 @@ import {
 } from 'react-native';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
-import DeviceInfo from 'react-native-device-info';
 
 import Button from '../../core/Button';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import typography from '../../../styles/typography';
 
-interface Props {
+interface OwnProps {
   name: string;
   isCount?: boolean;
   perInvestigator?: boolean;
   onPress?: (name: string, isCount?: boolean, perInvestigator?: boolean) => void;
 }
-export default class CampaignNoteSectionRow extends React.Component<Props> {
+type Props = OwnProps & DimensionsProps;
+
+class CampaignNoteSectionRow extends React.Component<Props> {
   _onPress = () => {
     const {
       name,
@@ -48,6 +50,7 @@ export default class CampaignNoteSectionRow extends React.Component<Props> {
   render() {
     const {
       onPress,
+      fontScale,
     } = this.props;
     if (onPress) {
       return (
@@ -58,7 +61,7 @@ export default class CampaignNoteSectionRow extends React.Component<Props> {
             size="small"
             onPress={this._onPress}
             icon={
-              <MaterialIcons name="close" size={14 * DeviceInfo.getFontScale()} color="#FFFFFF" />
+              <MaterialIcons name="close" size={14 * fontScale} color="#FFFFFF" />
             }
           />
           <Text style={typography.text}>
@@ -76,6 +79,8 @@ export default class CampaignNoteSectionRow extends React.Component<Props> {
     );
   }
 }
+
+export default withDimensions<OwnProps>(CampaignNoteSectionRow);
 
 const styles = StyleSheet.create({
   row: {

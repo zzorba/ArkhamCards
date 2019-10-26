@@ -204,11 +204,10 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
 };
 
 export function createFactionIcons(
-  size: number,
   defaultColor?: string
-): { [faction in FactionCodeType | 'dual']?: ReactNode } {
+): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
   return mapValues(FACTION_COLORS, (color, faction) => {
-    return (
+    return (size: number) => (
       <ArkhamIcon
         name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
         size={size}

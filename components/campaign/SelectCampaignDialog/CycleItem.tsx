@@ -5,7 +5,6 @@ import {
   View,
   Text,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import { CampaignCycleCode } from '../../../actions/types';
 import EncounterIcon from '../../../assets/EncounterIcon';
@@ -13,12 +12,13 @@ import { s, xs, iconSizeScale } from '../../../styles/space';
 import typography from '../../../styles/typography';
 
 interface Props {
+  fontScale: number;
   packCode: CampaignCycleCode;
   text: string;
   onPress: (packCode: CampaignCycleCode, text: string) => void;
 }
-export default class CycleItem extends React.Component<Props> {
 
+export default class CycleItem extends React.Component<Props> {
   _onPress = () => {
     this.props.onPress(this.props.packCode, this.props.text);
   };
@@ -27,6 +27,7 @@ export default class CycleItem extends React.Component<Props> {
     const {
       packCode,
       text,
+      fontScale,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress} key={packCode}>
@@ -34,7 +35,7 @@ export default class CycleItem extends React.Component<Props> {
           <View style={styles.campaignIcon}>
             <EncounterIcon
               encounter_code={packCode}
-              size={18 * iconSizeScale * DeviceInfo.getFontScale()}
+              size={18 * iconSizeScale * fontScale}
               color="#000000"
             />
           </View>

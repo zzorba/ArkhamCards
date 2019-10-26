@@ -4,20 +4,23 @@ import {
   Text,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import { COLORS } from '../../styles/colors';
 import typography from '../../styles/typography';
 import { isBig } from '../../styles/space';
 
-export const ROW_HEADER_HEIGHT = (isBig ? 42 : 30) * DeviceInfo.getFontScale();
 interface Props {
   title: string;
+  fontScale: number;
   bold?: boolean;
 }
-export default function CardSectionHeader({ title, bold }: Props) {
+export function rowHeaderHeight(fontScale: number) {
+  return (isBig ? 42 : 30) * fontScale;
+}
+
+export default function CardSectionHeader({ title, bold, fontScale }: Props) {
   return (
-    <View style={[styles.row, bold ? styles.boldRow : {}]}>
+    <View style={[styles.row, { height: rowHeaderHeight(fontScale) }, bold ? styles.boldRow : {}]}>
       <Text style={[typography.text, styles.headerText]}>
         { title }
       </Text>
@@ -32,7 +35,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    height: ROW_HEADER_HEIGHT,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',

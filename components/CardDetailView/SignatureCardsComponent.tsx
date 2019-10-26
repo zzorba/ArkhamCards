@@ -27,6 +27,7 @@ interface OwnProps {
   componentId?: string;
   investigator: Card;
   width: number;
+  fontScale: number;
 }
 type Props = OwnProps & RealmProps & ReduxProps;
 
@@ -37,6 +38,7 @@ class SignatureCardsComponent extends React.Component<Props> {
       requiredCards,
       alternateCards,
       width,
+      fontScale,
     } = this.props;
 
     return (
@@ -47,6 +49,7 @@ class SignatureCardsComponent extends React.Component<Props> {
             <SignatureCardItem
               key={card.code}
               componentId={componentId}
+              fontScale={fontScale}
               card={card}
               width={width}
             />
@@ -59,6 +62,7 @@ class SignatureCardsComponent extends React.Component<Props> {
               <SignatureCardItem
                 key={card.code}
                 componentId={componentId}
+                fontScale={fontScale}
                 card={card}
                 width={width}
               />

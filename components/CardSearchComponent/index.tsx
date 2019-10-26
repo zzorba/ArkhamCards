@@ -5,14 +5,15 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
 import Card from '../../data/Card';
 import {
   SortType,
   Slots,
 } from '../../actions/types';
 import CardSearchResultsComponent from '../CardSearchResultsComponent';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import calculateDefaultFilterState from '../filter/DefaultFilterState';
 import { FilterState } from '../../lib/filters';
 import { addFilterSet, removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode } from '../filter/actions';
@@ -58,7 +59,11 @@ interface OwnProps {
   storyOnly?: boolean;
 }
 
-type Props = OwnProps & RealmProps & ReduxProps & ReduxActionProps;
+type Props = OwnProps &
+  RealmProps &
+  ReduxProps &
+  ReduxActionProps &
+  DimensionsProps;
 
 interface State {
   visible: boolean;
@@ -241,6 +246,7 @@ class CardSearchComponent extends React.Component<Props, State> {
       mythosMode,
       selectedSort,
       storyOnly,
+      fontScale,
     } = this.props;
     const {
       visible,
@@ -248,6 +254,7 @@ class CardSearchComponent extends React.Component<Props, State> {
     return (
       <CardSearchResultsComponent
         componentId={componentId}
+        fontScale={fontScale}
         baseQuery={baseQuery}
         mythosToggle={mythosToggle}
         mythosMode={mythosMode}
@@ -293,7 +300,7 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(connectRealm<OwnProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-  CardSearchComponent, {
+  withDimensions(CardSearchComponent), {
     schemas: ['Card'],
     mapToProps(
       results: CardResults<Card>,

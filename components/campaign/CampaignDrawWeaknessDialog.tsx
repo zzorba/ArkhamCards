@@ -13,6 +13,7 @@ import { DEFAULT_TRAUMA_DATA, isEliminated } from './trauma';
 import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { saveDeckChanges, DeckChanges } from '../decks/actions';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
@@ -44,7 +45,12 @@ interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
 }
 
-type Props = NavigationProps & CampaignDrawWeaknessProps & ReduxProps & ReduxActionProps & PlayerCardProps;
+type Props = NavigationProps &
+  CampaignDrawWeaknessProps &
+  ReduxProps &
+  ReduxActionProps &
+  PlayerCardProps &
+  DimensionsProps;
 
 interface State {
   selectedDeckId?: number;
@@ -264,6 +270,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const {
       decks,
       investigators,
+      fontScale,
     } = this.props;
     const {
       selectedDeckId,
@@ -280,6 +287,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       <View>
         { !!selectedDeckId && (
           <NavButton
+            fontScale={fontScale}
             text={message}
             onPress={this._onPressInvestigator}
           />
@@ -402,7 +410,9 @@ export default withPlayerCards<NavigationProps & CampaignDrawWeaknessProps>(
   connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignDrawWeaknessProps & PlayerCardProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-  )(CampaignDrawWeaknessDialog)
+  )(
+    withDimensions(CampaignDrawWeaknessDialog)
+  )
 );
 
 const styles = StyleSheet.create({

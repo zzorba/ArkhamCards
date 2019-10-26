@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import DeviceInfo from 'react-native-device-info';
 
 import { t } from 'ttag';
 import DialogOption from './DialogOption';
@@ -46,10 +45,12 @@ class DialogPicker extends React.Component<Props> {
       options,
       selectedOption,
       noCapitalize,
+      fontScale,
     } = this.props;
     return map(options, option => (
       <DialogOption
         key={option}
+        fontScale={fontScale}
         text={option}
         onPress={this._onPress}
         selected={option === selectedOption}
@@ -64,6 +65,7 @@ class DialogPicker extends React.Component<Props> {
       description,
       height,
       width,
+      fontScale,
     } = this.props;
 
     return (
@@ -92,7 +94,7 @@ class DialogPicker extends React.Component<Props> {
           >
             { this.renderOptions() }
           </ScrollView>
-          <View style={styles.cancel}>
+          <View style={[styles.cancel, { height: 55 * fontScale }]}>
             <TouchableOpacity onPress={this._hide}>
               <Text style={styles.cancelText}>{ t`Cancel` }</Text>
             </TouchableOpacity>
@@ -152,7 +154,6 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   cancel: {
-    height: 55 * DeviceInfo.getFontScale(),
     width: '100%',
   },
   cancelText: {

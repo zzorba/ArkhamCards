@@ -18,6 +18,7 @@ const DRAW_CHAOS_TOKENS_ENABLED = true;
 
 interface Props {
   componentId: string;
+  fontScale: number;
   campaignId: number;
   chaosBag: ChaosBag;
   updateChaosBag: (chaosBag: ChaosBag) => void;
@@ -68,14 +69,15 @@ export default class ChaosBagSection extends React.Component<Props> {
   }
 
   render() {
+    const { fontScale } = this.props;
     return (
-      <NavButton onPress={this._showChaosBag}>
+      <NavButton fontScale={fontScale} onPress={this._showChaosBag}>
         <View style={styles.padding}>
           <Text style={typography.text}>
             { t`Chaos Bag` }
           </Text>
           <View style={styles.marginTop}>
-            <ChaosBagLine chaosBag={this.props.chaosBag} />
+            <ChaosBagLine fontScale={fontScale} chaosBag={this.props.chaosBag} />
           </View>
         </View>
       </NavButton>

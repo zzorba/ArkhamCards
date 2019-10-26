@@ -13,7 +13,7 @@ import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import Card from '../../data/Card';
 import { isBig } from '../../styles/space';
 
-const FACTION_ICONS = createFactionIcons(55, '#FFF');
+const FACTION_ICONS = createFactionIcons('#FFF');
 const SCALE_FACTOR = isBig ? 1.5 : 1.0;
 
 interface Props {
@@ -65,22 +65,25 @@ export default class PlayerCardImage extends React.Component<Props> {
       card,
     } = this.props;
 
-    return (
-      <View style={[
-        styles.placeholder,
-        { backgroundColor: card.faction2_code ?
-          FACTION_COLORS.dual :
-          FACTION_COLORS[card.factionCode()],
-        },
-      ]}>
-        <Text style={styles.placeholderIcon}>
-          { card.faction2_code ?
-            FACTION_ICONS.dual :
-            FACTION_ICONS[card.factionCode()]
-          }
-        </Text>
-      </View>
-    );
+    const faction_icon = card.faction2_code ?
+      FACTION_ICONS.dual :
+      FACTION_ICONS[card.factionCode()];
+    if (faction_icon) {
+      return (
+        <View style={[
+          styles.placeholder,
+          { backgroundColor: card.faction2_code ?
+            FACTION_COLORS.dual :
+            FACTION_COLORS[card.factionCode()],
+          },
+        ]}>
+          <Text style={styles.placeholderIcon}>
+            { faction_icon(55) }
+          </Text>
+        </View>
+      );
+    }
+    return null;
   }
 
   renderContent() {

@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 interface Props {
   text: string;
+  fontScale: number;
   onPress: (text: string) => void;
   selected: boolean;
   noCapitalize?: boolean;
@@ -26,11 +26,12 @@ export default class DialogOption extends React.Component<Props> {
   render() {
     const {
       text,
+      fontScale,
       selected,
       noCapitalize,
     } = this.props;
     return (
-      <View style={styles.item}>
+      <View style={[styles.item, { height: 50 * fontScale }]}>
         <TouchableOpacity onPress={this._onPress}>
           <Text
             style={[styles.itemText, { fontSize: text.length > 30 ? 14 : 22 }]}
@@ -46,7 +47,6 @@ export default class DialogOption extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   item: {
-    height: 50 * DeviceInfo.getFontScale(),
     width: '100%',
     borderBottomWidth: 1,
     borderColor: '#eeeeee',

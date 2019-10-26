@@ -23,6 +23,7 @@ import typography from '../../styles/typography';
 
 interface Props {
   componentId: string;
+  fontScale: number;
   baseQuery?: string;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -303,6 +304,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       tabooSetOverride,
       investigator,
       storyOnly,
+      fontScale,
     } = this.props;
     const {
       searchTerm,
@@ -313,6 +315,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
         <View style={styles.container}>
           <CardResultList
             componentId={componentId}
+            fontScale={fontScale}
             tabooSetOverride={tabooSetOverride}
             query={this.query()}
             filterQuery={this.filterQueryParts().join(' and ')}

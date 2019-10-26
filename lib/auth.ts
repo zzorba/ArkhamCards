@@ -64,7 +64,7 @@ export function prefetch(): Promise<void> {
   if (Platform.OS === 'android') {
     return prefetchConfiguration({
       warmAndPrefetchChrome: true,
-      ...config
+      ...config,
     });
   }
   return Promise.resolve();

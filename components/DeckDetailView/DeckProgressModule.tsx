@@ -17,6 +17,7 @@ import space, { l, m, s } from '../../styles/space';
 
 interface OwnProps {
   componentId: string;
+  fontScale: number;
   deck: Deck;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
@@ -115,6 +116,7 @@ class DeckProgressModule extends React.PureComponent<Props> {
       cards,
       parsedDeck,
       xpAdjustment,
+      fontScale,
     } = this.props;
 
     if (!deck.previous_deck && !deck.next_deck && !campaign) {
@@ -126,6 +128,7 @@ class DeckProgressModule extends React.PureComponent<Props> {
       <View style={styles.container}>
         <ChangesFromPreviousDeck
           componentId={componentId}
+          fontScale={fontScale}
           cards={cards}
           parsedDeck={parsedDeck}
           xpAdjustment={xpAdjustment}

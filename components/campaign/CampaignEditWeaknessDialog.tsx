@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 import { Campaign, Slots, WeaknessSet } from '../../actions/types';
 import { NavigationProps } from '../types';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaign } from './actions';
 import { getCampaign, AppState } from '../../reducers';
@@ -21,7 +22,11 @@ interface ReduxActionProps {
   updateCampaign: (id: number, campaign: Partial<Campaign>) => void;
 }
 
-type Props = NavigationProps & CampaignEditWeaknessProps & ReduxProps & ReduxActionProps;
+type Props = NavigationProps &
+  CampaignEditWeaknessProps &
+  ReduxProps &
+  ReduxActionProps &
+  DimensionsProps;
 
 class CampaignEditWeaknessDialog extends React.Component<Props> {
   static get options() {
@@ -59,6 +64,7 @@ class CampaignEditWeaknessDialog extends React.Component<Props> {
     const {
       componentId,
       weaknessSet,
+      fontScale,
     } = this.props;
     if (!weaknessSet) {
       return null;
@@ -66,6 +72,7 @@ class CampaignEditWeaknessDialog extends React.Component<Props> {
     return (
       <EditAssignedWeaknessComponent
         componentId={componentId}
+        fontScale={fontScale}
         weaknessSet={weaknessSet}
         updateAssignedCards={this._updateAssignedCards}
       />
@@ -90,5 +97,5 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignE
   mapStateToProps,
   mapDispatchToProps
 )(
-  CampaignEditWeaknessDialog
+  withDimensions(CampaignEditWeaknessDialog)
 );

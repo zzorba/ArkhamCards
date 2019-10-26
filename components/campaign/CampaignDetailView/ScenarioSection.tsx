@@ -18,6 +18,7 @@ import { AddScenarioResultProps } from '../AddScenarioResultView';
 
 interface Props {
   componentId: string;
+  fontScale: number;
   campaign: Campaign;
 }
 export default class ScenarioSection extends React.Component<Props> {
@@ -91,10 +92,11 @@ export default class ScenarioSection extends React.Component<Props> {
   render() {
     const {
       campaign,
+      fontScale,
     } = this.props;
     return (
       <React.Fragment>
-        <NavButton onPress={this._onPress} noBorder>
+        <NavButton fontScale={fontScale} onPress={this._onPress} noBorder>
           <View style={[styles.section, styles.padding, styles.marginTop, styles.marginBottom]}>
             <CampaignSummaryComponent campaign={campaign} />
           </View>

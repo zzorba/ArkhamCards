@@ -10,6 +10,7 @@ import Card from '../../data/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '../navHelper';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 
 interface OwnProps {
   componentId: string;
@@ -20,7 +21,7 @@ interface OwnProps {
   header?: ReactNode;
 }
 
-type Props = OwnProps & PlayerCardProps;
+type Props = OwnProps & PlayerCardProps & DimensionsProps;
 
 class CardSelectorComponent extends React.Component<Props> {
   _onChange = (card: Card, count: number) => {
@@ -42,6 +43,7 @@ class CardSelectorComponent extends React.Component<Props> {
       counts,
       filterCard,
       header,
+      fontScale,
     } = this.props;
     const matchingCards = sortBy(
       filter(
@@ -63,6 +65,7 @@ class CardSelectorComponent extends React.Component<Props> {
         { map(matchingCards, code => (
           <CardToggleRow
             key={code}
+            fontScale={fontScale}
             card={cards[code]}
             onPress={this._onCardPress}
             onChange={this._onChange}
@@ -75,7 +78,9 @@ class CardSelectorComponent extends React.Component<Props> {
   }
 }
 
-export default withPlayerCards<OwnProps>(CardSelectorComponent);
+export default withPlayerCards<OwnProps>(
+  withDimensions(CardSelectorComponent)
+);
 
 
 const styles = StyleSheet.create({

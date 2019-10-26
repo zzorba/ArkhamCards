@@ -33,6 +33,7 @@ interface Props {
   meta: DeckMeta;
   xpAdjustment: number;
   controls?: React.ReactNode;
+  fontScale: number;
 }
 
 export default class DeckNavFooter extends React.Component<Props> {
@@ -80,6 +81,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         investigator,
       },
       meta,
+      fontScale,
     } = this.props;
 
     const validator = new DeckValidation(investigator, meta);
@@ -99,7 +101,12 @@ export default class DeckNavFooter extends React.Component<Props> {
     }
 
     return (
-      <DeckProblemRow problem={problem} color="#FFFFFF" noFontScaling />
+      <DeckProblemRow
+        problem={problem}
+        color="#FFFFFF"
+        noFontScaling
+        fontScale={fontScale}
+      />
     );
   }
 

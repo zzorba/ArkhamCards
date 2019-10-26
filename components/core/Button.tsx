@@ -16,7 +16,7 @@ interface Props {
   onPress?: () => void;
   align?: 'left' | 'center' |'right';
   size?: 'small' | 'normal';
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   width?: number;
   color?: 'default' | 'green' | 'purple' | 'red' | 'yellow' | 'white';
   grow?: boolean;
@@ -64,8 +64,9 @@ export default function Button({
       colors = ['#ffffff', '#d3d3d3'];
       break;
   }
+  const normalizedStyle = Array.isArray(style) ? style : [style];
   return (
-    <View style={[containerStyle, style, grow ? { flex: 1 } : {}]}>
+    <View style={[containerStyle, ...normalizedStyle, grow ? { flex: 1 } : {}]}>
       <TouchableOpacity
         onPress={onPress}
         style={[

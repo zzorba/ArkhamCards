@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import DeviceInfo from 'react-native-device-info';
 import { ngettext, msgid, t } from 'ttag';
 
 import AppIcon from '../../../assets/AppIcon';
@@ -16,6 +15,7 @@ import DeckValidation from '../../../lib/DeckValidation';
 import { parseDeck } from '../../../lib/parseDeck';
 import Card, { CardsMap } from '../../../data/Card';
 import Button from '../../core/Button';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { showDeckModal } from '../../navHelper';
 import DeckProblemRow from '../../DeckProblemRow';
 import EditTraumaComponent from '../EditTraumaComponent';
@@ -25,14 +25,15 @@ import DeckList, { DeckListProps } from '../DeckList';
 import typography from '../../../styles/typography';
 import { iconSizeScale, s, xs } from '../../../styles/space';
 
-interface Props extends DeckListProps {
+interface OwnProps extends DeckListProps {
   deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
 }
+type Props = OwnProps & DimensionsProps;
 
-export default class CampaignDeckList extends React.Component<Props> {
+class CampaignDeckList extends React.Component<Props> {
   viewDeck(deck: Deck, investigator: Card) {
     const {
       componentId,
@@ -68,6 +69,7 @@ export default class CampaignDeckList extends React.Component<Props> {
     const {
       investigatorData = {},
       showTraumaDialog,
+      fontScale,
     } = this.props;
     if (!deck) {
       return null;
@@ -100,7 +102,13 @@ export default class CampaignDeckList extends React.Component<Props> {
         { !eliminated && (
           <View style={styles.section}>
             <Button
-              icon={<MaterialCommunityIcons size={18 * iconSizeScale * DeviceInfo.getFontScale()} color="#222" name="arrow-up-bold" />}
+              icon={(
+                <MaterialCommunityIcons
+                  size={18 * iconSizeScale * fontScale}
+                  color="#222"
+                  name="arrow-up-bold"
+                />
+              )}
               text={t`Upgrade Deck`}
               style={styles.button}
               size="small"
@@ -121,6 +129,7 @@ export default class CampaignDeckList extends React.Component<Props> {
     investigator: Card,
     previousDeck?: Deck
   ) => {
+    const { fontScale } = this.props;
     if (!deck) {
       return null;
     }
@@ -149,14 +158,14 @@ export default class CampaignDeckList extends React.Component<Props> {
       <View style={styles.investigatorNotes}>
         { !!problemObj && (
           <View style={styles.section}>
-            <DeckProblemRow problem={problemObj} color="#222" />
+            <DeckProblemRow problem={problemObj} color="#222" fontScale={fontScale} />
           </View>
         ) }
         <View style={styles.section}>
           <Button
-            icon={<AppIcon name="deck" size={18 * iconSizeScale * DeviceInfo.getFontScale()} color="#222222" />}
+            icon={<AppIcon name="deck" size={18 * iconSizeScale * fontScale} color="#222222" />}
             text={
-              DeviceInfo.getFontScale() > 1.5 ?
+              fontScale > 1.5 ?
                 ngettext(msgid`${parsedDeck.normalCardCount} Card\n(${parsedDeck.totalCardCount} Total`,
                   `${parsedDeck.normalCardCount} Cards\n(${parsedDeck.totalCardCount} Total`,
                   parsedDeck.normalCardCount) :
@@ -184,10 +193,12 @@ export default class CampaignDeckList extends React.Component<Props> {
     const {
       componentId,
       deckRemoved,
+      fontScale,
     } = this.props;
     return (
       <DeckRow
         key={deckId}
+        fontScale={fontScale}
         componentId={componentId}
         id={deckId}
         deckRemoved={deckRemoved}
@@ -208,9 +219,11 @@ export default class CampaignDeckList extends React.Component<Props> {
       deckIds,
       deckAdded,
       campaignId,
+      fontScale,
     } = this.props;
     return (
       <DeckList
+        fontScale={fontScale}
         renderDeck={this._renderDeck}
         componentId={componentId}
         campaignId={campaignId}
@@ -221,6 +234,8 @@ export default class CampaignDeckList extends React.Component<Props> {
     );
   }
 }
+
+export default withDimensions<OwnProps>(CampaignDeckList);
 
 const styles = StyleSheet.create({
   section: {

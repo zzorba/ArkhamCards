@@ -14,6 +14,7 @@ interface Props {
   skillIcons: SkillIconsFilters;
   enabled: boolean;
   onToggleChange: (setting: string, value: boolean) => void;
+  fontScale: number;
 }
 
 export default class SkillIconChooser extends React.Component<Props> {
@@ -41,11 +42,13 @@ export default class SkillIconChooser extends React.Component<Props> {
       },
       enabled,
       onToggleChange,
+      fontScale,
     } = this.props;
     return (
       <AccordionItem
         label={enabled ? t`Skill Icons` : t`Skill Icons: All`}
         height={90}
+        fontScale={fontScale}
         enabled={enabled}
         toggleName="skillEnabled"
         onToggleChange={onToggleChange}

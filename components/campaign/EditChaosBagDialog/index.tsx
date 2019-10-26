@@ -14,6 +14,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 import { iconsMap } from '../../../app/NavIcons';
 import { NavigationProps } from '../../types';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import ChaosTokenRow from './ChaosTokenRow';
 import {
   CHAOS_TOKENS,
@@ -37,9 +38,9 @@ interface State {
   hasPendingEdits: boolean;
 }
 
-type Props = EditChaosBagProps & NavigationProps;
+type Props = EditChaosBagProps & NavigationProps & DimensionsProps;
 
-export default class EditChaosBagDialog extends React.Component<Props, State> {
+class EditChaosBagDialog extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -178,6 +179,7 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
   render() {
     const {
       trackDeltas,
+      fontScale,
     } = this.props;
     const {
       chaosBag,
@@ -194,6 +196,7 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
             return (
               <ChaosTokenRow
                 key={id}
+                fontScale={fontScale}
                 id={id}
                 originalCount={originalCount || 0}
                 count={chaosBag[id] || 0}
@@ -206,6 +209,10 @@ export default class EditChaosBagDialog extends React.Component<Props, State> {
     );
   }
 }
+
+export default withDimensions<EditChaosBagProps & NavigationProps>(
+  EditChaosBagDialog
+);
 
 const styles = StyleSheet.create({
   row: {

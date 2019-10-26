@@ -11,6 +11,7 @@ import { ChaosTokenType } from '../../constants';
 
 interface OwnProps {
   campaignId: number;
+  fontScale: number;
   id: string;
   iconKey: ChaosTokenType;
   sealed?: boolean;
@@ -28,7 +29,6 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 class SealTokenButton extends React.Component<Props> {
-
   public static defaultProps: Partial<Props> = {
     sealed: false,
     canDisable: false,
@@ -67,10 +67,11 @@ class SealTokenButton extends React.Component<Props> {
       iconKey,
       sealed,
       canDisable,
+      fontScale,
     } = this.props;
     return (
       <TouchableHighlight style={sealed && canDisable && { opacity: 0.2 }} onPress={this._toggleSealToken} underlayColor="transparent">
-        <ChaosToken iconKey={iconKey} small />
+        <ChaosToken iconKey={iconKey} fontScale={fontScale} small />
       </TouchableHighlight>
     );
   }

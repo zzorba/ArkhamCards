@@ -16,6 +16,7 @@ import { NavigationProps } from '../../types';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';
 import Card from '../../../data/Card';
 import { Scenario, campaignScenarios } from '../constants';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { getAllDecks, getLatestCampaignDeckIds, getCampaign, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';
 import { iconsMap } from '../../../app/NavIcons';
@@ -36,7 +37,7 @@ interface ReduxProps {
   scenarioByCode: { [code: string]: Scenario };
 }
 
-type Props = NavigationProps & UpgradeDecksProps & ReduxProps;
+type Props = NavigationProps & UpgradeDecksProps & ReduxProps & DimensionsProps;
 
 class UpgradeDecksView extends React.Component<Props> {
   static options(passProps: UpgradeDecksProps) {
@@ -82,7 +83,7 @@ class UpgradeDecksView extends React.Component<Props> {
     Navigation.dismissModal(this.props.componentId);
   };
 
-  _showDeckUpgradeDialog = (deck: Deck, investigator: Card) => {
+  _showDeckUpgradeDialog = (deck: Deck, investigator?: Card) => {
     const {
       componentId,
       id,
@@ -105,11 +106,11 @@ class UpgradeDecksView extends React.Component<Props> {
               color: 'white',
             },
             subtitle: {
-              text: investigator.name,
+              text: investigator ? investigator.name : '',
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator.factionCode()][0],
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
             },
           },
         },
@@ -125,6 +126,7 @@ class UpgradeDecksView extends React.Component<Props> {
       componentId,
       scenarioResult,
       scenarioByCode,
+      fontScale,
     } = this.props;
     if (!campaign) {
       return null;
@@ -145,6 +147,7 @@ class UpgradeDecksView extends React.Component<Props> {
         </View>
         <UpgradeDecksList
           componentId={componentId}
+          fontScale={fontScale}
           campaignId={id}
           investigatorData={campaign.investigatorData}
           deckIds={latestDeckIds}
@@ -180,7 +183,9 @@ function mapStateToPropsFix(
 
 export default connect<ReduxProps, {}, NavigationProps & UpgradeDecksProps, AppState>(
   mapStateToPropsFix
-)(UpgradeDecksView);
+)(
+  withDimensions(UpgradeDecksView)
+);
 
 const styles = StyleSheet.create({
   container: {

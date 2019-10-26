@@ -6,7 +6,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import Switch from '../core/Switch';
 import typography from '../../styles/typography';
@@ -15,6 +14,7 @@ import { isBig, s, xs } from '../../styles/space';
 interface Props {
   label: string;
   height: number;
+  fontScale: number;
   children: ReactNode;
   enabled: boolean;
   toggleName: string;
@@ -24,8 +24,6 @@ interface Props {
 interface State {
   heightAnim: Animated.Value;
 }
-
-const COLLAPSED_HEIGHT = 22 + 18 * DeviceInfo.getFontScale() * (isBig ? 1.5 : 1.0);
 
 export default class AccordionItem extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -85,7 +83,10 @@ export default class AccordionItem extends React.Component<Props, State> {
     const {
       height,
       children,
+      fontScale,
     } = this.props;
+
+    const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.5 : 1.0);
 
     const containerHeight = this.state.heightAnim.interpolate({
       inputRange: [0, 1],

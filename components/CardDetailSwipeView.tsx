@@ -218,6 +218,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     const {
       hasSecondCore,
       onDeckCountChange,
+      fontScale,
     } = this.props;
     const {
       deckCardCounts,
@@ -236,6 +237,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       <View>
         <CardQuantityComponent
           key={card.code}
+          fontScale={fontScale}
           count={deckCardCounts[card.code] || 0}
           countChanged={this._countChanged}
           limit={deck_limit}
@@ -260,6 +262,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       componentId,
       tabooSetId,
       width,
+      fontScale,
     } = this.props;
     return (
       <ScrollView
@@ -270,6 +273,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       >
         <CardDetailComponent
           componentId={componentId}
+          fontScale={fontScale}
           card={card}
           showSpoilers={this.showSpoilers(card)}
           tabooSetId={tabooSetId}

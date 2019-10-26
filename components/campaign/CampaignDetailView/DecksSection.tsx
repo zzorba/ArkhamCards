@@ -17,6 +17,7 @@ import { UpgradeDeckProps } from '../../DeckUpgradeDialog';
 
 interface OwnProps {
   componentId: string;
+  fontScale: number;
   campaignId: number;
   latestDeckIds: number[];
   investigatorData: InvestigatorData;
@@ -100,25 +101,27 @@ class DecksSection extends React.Component<Props> {
     updateLatestDeckIds(newLatestDeckIds);
   }
 
-  _removeDeckPrompt = (removedDeckId: number, deck: Deck, investigator: Card) => {
-    Alert.alert(
-      t`Remove ${investigator.name}?`,
-      t`Are you sure you want to remove ${investigator.name} from this campaign?\n\nCampaign log data associated with them may be lost (but the deck will remain on ArkhamDB).`,
-      [
-        {
-          text: t`Remove`,
-          onPress: () => this.removeDeck(removedDeckId),
-          style: 'destructive',
-        },
-        {
-          text: t`Cancel`,
-          style: 'cancel',
-        },
-      ],
-    );
+  _removeDeckPrompt = (removedDeckId: number, deck?: Deck, investigator?: Card) => {
+    if (investigator) {
+      Alert.alert(
+        t`Remove ${investigator.name}?`,
+        t`Are you sure you want to remove ${investigator.name} from this campaign?\n\nCampaign log data associated with them may be lost (but the deck will remain on ArkhamDB).`,
+        [
+          {
+            text: t`Remove`,
+            onPress: () => this.removeDeck(removedDeckId),
+            style: 'destructive',
+          },
+          {
+            text: t`Cancel`,
+            style: 'cancel',
+          },
+        ],
+      );
+    }
   };
 
-  _showDeckUpgradeDialog = (deck: Deck, investigator: Card) => {
+  _showDeckUpgradeDialog = (deck: Deck, investigator?: Card) => {
     const {
       componentId,
       campaignId,
@@ -141,11 +144,11 @@ class DecksSection extends React.Component<Props> {
               color: 'white',
             },
             subtitle: {
-              text: investigator.name,
+              text: investigator ? investigator.name : '',
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator.factionCode()][0],
+              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
             },
           },
         },
@@ -160,12 +163,14 @@ class DecksSection extends React.Component<Props> {
       latestDeckIds,
       investigatorData,
       showTraumaDialog,
+      fontScale,
     } = this.props;
     return (
       <View>
         <View style={styles.underline}>
           <CampaignDecks
             componentId={componentId}
+            fontScale={fontScale}
             campaignId={campaignId}
             investigatorData={investigatorData}
             deckIds={latestDeckIds}

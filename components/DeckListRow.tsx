@@ -21,6 +21,7 @@ import { s } from '../styles/space';
 
 interface Props {
   deck: Deck;
+  fontScale: number;
   previousDeck?: Deck;
   deckToCampaign?: { [deck_id: number]: Campaign };
   cards: CardsMap;
@@ -64,6 +65,7 @@ export default class DeckListRow extends React.Component<Props> {
       cards,
       details,
       deckToCampaign,
+      fontScale,
     } = this.props;
     if (details) {
       return details;
@@ -102,7 +104,11 @@ export default class DeckListRow extends React.Component<Props> {
           </Text>
         ) }
         { !!deck.problem && (
-          <DeckProblemRow problem={{ reason: deck.problem }} color="#222" />
+          <DeckProblemRow
+            problem={{ reason: deck.problem }}
+            color="#222"
+            fontScale={fontScale}
+          />
         ) }
         { !!dateStr && (
           <Text style={typography.small} >
@@ -120,6 +126,7 @@ export default class DeckListRow extends React.Component<Props> {
       titleButton,
       compact,
       subDetails,
+      fontScale,
     } = this.props;
     if (!deck || !investigator) {
       return (
@@ -139,6 +146,7 @@ export default class DeckListRow extends React.Component<Props> {
             name={compact && investigator ? investigator.name : deck.name}
             investigator={investigator}
             button={titleButton}
+            fontScale={fontScale}
             compact
           />
           <FactionGradient

@@ -13,6 +13,7 @@ import { ChaosBagResults } from '../../../actions/types';
 import typography from '../../../styles/typography';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import ChaosToken from '../ChaosToken';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { updateChaosBagResults } from '../actions';
 import { AppState, getCampaign, getChaosBagResults } from '../../../reducers';
 import { SealTokenDialogProps } from '../SealTokenDialog';
@@ -38,7 +39,11 @@ interface State {
   isChaosBagEmpty: boolean;
 }
 
-type Props = NavigationProps & CampaignChaosBagProps & ReduxProps & ReduxActionProps;
+type Props = NavigationProps &
+  CampaignChaosBagProps &
+  ReduxProps &
+  ReduxActionProps &
+  DimensionsProps;
 
 class CampaignChaosBagView extends React.Component<Props, State> {
   static get options() {
@@ -232,13 +237,14 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   renderChaosToken() {
     const {
       chaosBagResults,
+      fontScale,
     } = this.props;
 
     const iconKey = chaosBagResults.drawnTokens[chaosBagResults.drawnTokens.length - 1] || undefined;
 
     return (
       <TouchableOpacity onPress={this._handleDrawTokenPressed}>
-        <ChaosToken iconKey={iconKey} />
+        <ChaosToken iconKey={iconKey} fontScale={fontScale} />
       </TouchableOpacity>
     );
   }
@@ -246,6 +252,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   renderDrawnTokens() {
     const {
       chaosBagResults,
+      fontScale,
     } = this.props;
 
     const drawnTokens = chaosBagResults.drawnTokens;
@@ -253,7 +260,12 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     if (drawnTokens.length > 1) {
       return drawnTokens.slice(0, drawnTokens.length - 1).map(function(token, index) {
         return (
-          <ChaosToken key={index} iconKey={token} small />
+          <ChaosToken
+            fontScale={fontScale}
+            key={index}
+            iconKey={token}
+            small
+          />
         );
       });
     }
@@ -265,12 +277,22 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       campaignId,
       chaosBagResults,
+      fontScale,
     } = this.props;
 
     const sealedTokens = chaosBagResults.sealedTokens;
 
     return sealedTokens.map(token => {
-      return <SealTokenButton key={token.id} campaignId={campaignId} sealed id={token.id} iconKey={token.icon} />;
+      return (
+        <SealTokenButton
+          key={token.id}
+          campaignId={campaignId}
+          sealed
+          id={token.id}
+          iconKey={token.icon}
+          fontScale={fontScale}
+        />
+      );
     });
   }
 
@@ -366,7 +388,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignChaosBagProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(CampaignChaosBagView);
+)(
+  withDimensions(CampaignChaosBagView)
+);
 
 const styles = StyleSheet.create({
   container: {

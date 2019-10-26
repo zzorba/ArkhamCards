@@ -36,6 +36,7 @@ import NavButton from '../../core/NavButton';
 import ChaosBagLine from '../../core/ChaosBagLine';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import LabeledTextBox from '../../core/LabeledTextBox';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '../../weakness/WeaknessSetPackChooserComponent';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
@@ -66,7 +67,10 @@ interface ReduxActionProps {
   ) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps;
+type Props = OwnProps &
+  ReduxProps &
+  ReduxActionProps &
+  DimensionsProps;
 
 interface State {
   name: string;
@@ -423,6 +427,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBagSection() {
+    const { fontScale } = this.props;
     const chaosBag = this.getChaosBag();
     return (
       <View>
@@ -430,7 +435,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { t`CHAOS BAG` }
         </Text>
         <View style={[styles.topPadding, styles.margin]}>
-          <ChaosBagLine chaosBag={chaosBag} />
+          <ChaosBagLine fontScale={fontScale} chaosBag={chaosBag} />
         </View>
       </View>
     );
@@ -479,16 +484,36 @@ class NewCampaignView extends React.Component<Props, State> {
         </Text>
         <View style={styles.margin}>
           { map(campaignLog.sections || [], section => (
-            <CampaignNoteSectionRow key={section} name={section} onPress={onPress} />
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              onPress={onPress}
+            />
           )) }
           { map(campaignLog.counts || [], section => (
-            <CampaignNoteSectionRow key={section} name={section} isCount onPress={onPress} />
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              isCount
+              onPress={onPress}
+            />
           )) }
           { map(campaignLog.investigatorSections || [], section => (
-            <CampaignNoteSectionRow key={section} name={section} perInvestigator onPress={onPress} />
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              perInvestigator
+              onPress={onPress}
+            />
           )) }
           { map(campaignLog.investigatorCounts || [], section => (
-            <CampaignNoteSectionRow key={section} name={section} perInvestigator isCount onPress={onPress} />
+            <CampaignNoteSectionRow
+              key={section}
+              name={section}
+              perInvestigator
+              isCount
+              onPress={onPress}
+            />
           )) }
         </View>
         { !this.hasDefinedChaosBag() && (
@@ -522,6 +547,7 @@ class NewCampaignView extends React.Component<Props, State> {
       componentId,
       captureViewRef,
       nextId,
+      fontScale,
     } = this.props;
 
     const {
@@ -565,7 +591,7 @@ class NewCampaignView extends React.Component<Props, State> {
               { this.renderChaosBagSection() }
             </View>
           ) : (
-            <NavButton onPress={this._showChaosBagDialog}>
+            <NavButton fontScale={fontScale} onPress={this._showChaosBagDialog}>
               { this.renderChaosBagSection() }
             </NavButton>
           ) }
@@ -578,6 +604,7 @@ class NewCampaignView extends React.Component<Props, State> {
           <View style={styles.underline}>
             <DeckSelector
               componentId={componentId}
+              fontScale={fontScale}
               campaignId={nextId}
               deckIds={deckIds}
               deckAdded={this._deckAdded}
@@ -614,7 +641,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   withWeaknessCards(
-    withDialogs(NewCampaignView)
+    withDialogs(
+      withDimensions(NewCampaignView)
+    )
   )
 );
 

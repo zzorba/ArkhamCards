@@ -6,6 +6,7 @@ import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { NavigationProps } from '../types';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { iconsMap } from '../../app/NavIcons';
 import { COLORS } from '../../styles/colors';
 import { AppState, getCampaign, getChaosBagResults } from '../../reducers';
@@ -22,7 +23,7 @@ interface ReduxProps {
   chaosBagResults: ChaosBagResults;
 }
 
-type Props = NavigationProps & SealTokenDialogProps & ReduxProps;
+type Props = NavigationProps & SealTokenDialogProps & ReduxProps & DimensionsProps;
 
 class SealTokenDialog extends React.Component<Props> {
   static options() {
@@ -71,6 +72,7 @@ class SealTokenDialog extends React.Component<Props> {
       campaignId,
       chaosBag,
       chaosBagResults,
+      fontScale,
     } = this.props;
 
     const unsortedTokens: ChaosTokenType[] = keys(chaosBag) as ChaosTokenType[];
@@ -100,7 +102,17 @@ class SealTokenDialog extends React.Component<Props> {
         sealed = true;
       }
 
-      return <SealTokenButton key={index} id={id} sealed={sealed} campaignId={campaignId} canDisable iconKey={token} />;
+      return (
+        <SealTokenButton
+          key={index}
+          id={id}
+          sealed={sealed}
+          campaignId={campaignId}
+          canDisable
+          iconKey={token}
+          fontScale={fontScale}
+        />
+      );
     });
   }
 
@@ -130,7 +142,9 @@ function mapStateToProps(
 
 export default connect<ReduxProps, {}, NavigationProps & SealTokenDialogProps, AppState>(
   mapStateToProps
-)(SealTokenDialog);
+)(
+  withDimensions(SealTokenDialog)
+);
 
 const styles = StyleSheet.create({
   container: {

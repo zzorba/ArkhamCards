@@ -290,6 +290,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
       customFlippedHeader,
       saving,
       campaignMode,
+      fontScale,
     } = this.props;
     const {
       selectedTraits,
@@ -336,6 +337,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
           values={this.allTraits()}
           selection={selectedTraits}
           onChange={this._onTraitsChange}
+          fontScale={fontScale}
         />
         <View style={styles.toggleRow}>
           <View style={styles.toggleColumn}>
@@ -362,6 +364,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   }
 
   renderCardImage(card: Card, width: number) {
+    const { fontScale } = this.props;
     if (card.imagesrc) {
       return (
         <CachedImage
@@ -378,6 +381,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
         <CardDetailComponent
           card={card}
           width={width}
+          fontScale={fontScale}
           showSpoilers
         />
       </View>

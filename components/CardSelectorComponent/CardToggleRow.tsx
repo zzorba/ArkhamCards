@@ -9,6 +9,7 @@ import Card from '../../data/Card';
 interface Props {
   card: Card;
   count: number;
+  fontScale: number;
   onChange: (card: Card, count: number) => void;
   onPress?: (card: Card) => void;
   limit: number;
@@ -58,6 +59,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
       card,
       limit,
       onPress,
+      fontScale,
     } = this.props;
     const {
       one,
@@ -74,6 +76,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
           onToggleChange={this._onCardOneToggle}
           onPress={onPress}
           toggleValue={one}
+          fontScale={fontScale}
         />
         { (limit > 1) && (
           <CardSearchResult
@@ -81,6 +84,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
             onToggleChange={this._onCardTwoToggle}
             onPress={onPress}
             toggleValue={two}
+            fontScale={fontScale}
           />
         ) }
       </View>

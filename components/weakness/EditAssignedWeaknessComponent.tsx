@@ -13,6 +13,7 @@ import CardSearchResult from '../CardSearchResult';
 
 interface OwnProps {
   componentId: string;
+  fontScale: number;
   weaknessSet: WeaknessSet;
   updateAssignedCards: (assignedCards: Slots) => void;
 }
@@ -53,6 +54,7 @@ class EditAssignedWeaknessComponent extends React.Component<Props> {
     const {
       weaknessSet,
       cards,
+      fontScale,
     } = this.props;
     const packCodes = new Set(weaknessSet.packCodes);
     return (
@@ -64,6 +66,7 @@ class EditAssignedWeaknessComponent extends React.Component<Props> {
           return (
             <CardSearchResult
               key={card.code}
+              fontScale={fontScale}
               card={card}
               count={(card.quantity || 0) - (weaknessSet.assignedCards[card.code] || 0)}
               onPress={this._cardPressed}

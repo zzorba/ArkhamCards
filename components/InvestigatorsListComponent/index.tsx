@@ -20,9 +20,10 @@ import { msgid, ngettext, t } from 'ttag';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '../../actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import Card, { CardsMap } from '../../data/Card';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { searchMatchesText } from '../searchHelpers';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
-import ShowNonCollectionFooter, { ROW_NON_COLLECTION_HEIGHT } from '../CardSearchResultsComponent/ShowNonCollectionFooter';
+import ShowNonCollectionFooter, { rowNonCollectionHeight } from '../CardSearchResultsComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import { getTabooSet, getPacksInCollection, AppState } from '../../reducers';
@@ -47,7 +48,7 @@ interface RealmProps {
   cards: CardsMap;
 }
 
-type Props = OwnProps & ReduxProps & RealmProps;
+type Props = OwnProps & ReduxProps & RealmProps & DimensionsProps;
 
 interface State {
   showNonCollection: { [key: string]: boolean };
@@ -280,6 +281,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<Section> }) => {
+    const { fontScale } = this.props;
     const {
       showNonCollection,
     } = this.state;
@@ -289,7 +291,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={styles.sectionFooterButton}>
+        <View style={[styles.sectionFooterButton, { height: rowNonCollectionHeight(fontScale) }]}>
           <Button
             title={t`Edit Collection`}
             onPress={this._editCollection}
@@ -306,6 +308,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
           section.nonCollectionCount
         )}
         onPress={this._showNonCollectionCards}
+        fontScale={fontScale}
       />
     );
   };
@@ -397,7 +400,7 @@ function mapStateToProps(state: AppState): ReduxProps {
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
 )(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
-  InvestigatorsListComponent,
+  withDimensions(InvestigatorsListComponent),
   {
     schemas: ['Card'],
     mapToProps(
@@ -443,7 +446,6 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   sectionFooterButton: {
-    height: ROW_NON_COLLECTION_HEIGHT,
     margin: 8,
   },
 });

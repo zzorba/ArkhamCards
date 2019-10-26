@@ -11,6 +11,7 @@ import {
 import { t } from 'ttag';
 import { Slots } from '../../actions/types';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import CardSearchResult from '../CardSearchResult';
 import { xs } from '../../styles/space';
 
@@ -18,7 +19,9 @@ export interface DrawSimulatorProps {
   slots: Slots;
 }
 
-type Props = DrawSimulatorProps & PlayerCardProps;
+type Props = DrawSimulatorProps &
+  PlayerCardProps &
+  DimensionsProps;
 
 interface State {
   shuffledDeck: string[];
@@ -204,6 +207,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
   };
 
   _renderCardItem = ({ item }: { item: Item }) => {
+    const { fontScale } = this.props;
     const card = this.props.cards[item.code];
     return (
       <View style={item.selected ? styles.selected : {}}>
@@ -211,6 +215,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
           id={item.key}
           card={card}
           onPressId={this._toggleSelection}
+          fontScale={fontScale}
         />
       </View>
     );
@@ -242,7 +247,9 @@ class DrawSimulatorView extends React.Component<Props, State> {
   }
 }
 
-export default withPlayerCards(DrawSimulatorView);
+export default withPlayerCards<DrawSimulatorProps>(
+  withDimensions(DrawSimulatorView)
+);
 
 const styles = StyleSheet.create({
   container: {

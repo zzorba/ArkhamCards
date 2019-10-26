@@ -33,6 +33,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
         hauntedEnabled,
       },
       width,
+      fontScale,
       onToggleChange,
       onFilterChange,
     } = this.props;
@@ -41,6 +42,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
         <SliderChooser
           label={t`Shroud`}
           width={width}
+          fontScale={fontScale}
           max={defaultFilterState.shroud[1]}
           values={shroud}
           setting="shroud"
@@ -52,6 +54,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
         <SliderChooser
           label={t`Clues`}
           width={width}
+          fontScale={fontScale}
           max={defaultFilterState.clues[1]}
           values={clues}
           setting="clues"

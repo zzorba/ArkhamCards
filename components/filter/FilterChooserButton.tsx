@@ -4,6 +4,7 @@ import ChooserButton from '../core/ChooserButton';
 
 interface Props {
   componentId: string;
+  fontScale: number;
   title: string;
   values: string[];
   selection?: string[];
@@ -28,10 +29,12 @@ export default class FilterChooserButton extends React.Component<Props> {
       values,
       selection,
       indent,
+      fontScale,
     } = this.props;
     return (
       <ChooserButton
         componentId={componentId}
+        fontScale={fontScale}
         title={title}
         values={values}
         selection={selection}

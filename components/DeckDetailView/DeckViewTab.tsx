@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { head, find, forEach, keys, map, sum, sumBy } from 'lodash';
+import { find, forEach, keys, map, sum, sumBy } from 'lodash';
 import {
   Alert,
   AlertButton,
@@ -15,10 +15,8 @@ import {
 } from 'react-native';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
-import DeviceInfo from 'react-native-device-info';
 import { msgid, ngettext, t } from 'ttag';
 
-import AppIcon from '../../assets/AppIcon';
 import { Campaign, CardId, Deck, DeckMeta, DeckProblem, InvestigatorData, ParsedDeck, SplitCards, Slots, Trauma } from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
 import InvestigatorImage from '../core/InvestigatorImage';
@@ -32,10 +30,7 @@ import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import { s, sizeScale } from '../../styles/space';
-import DeckProblemRow from "../DeckProblemRow";
-
-const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * DeviceInfo.getFontScale();
-const TINY_EDIT_ICON_SIZE = 14 * sizeScale * DeviceInfo.getFontScale();
+import DeckProblemRow from '../DeckProblemRow';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -156,17 +151,9 @@ function bondedSections(
   }];
 }
 
-const DECK_PROBLEM_MESSAGES = {
-  too_few_cards: t`Not enough cards.`,
-  too_many_cards: t`Too many cards.`,
-  too_many_copies: t`Too many copies of a card with the same name.`,
-  invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
-  deck_options_limit: t`Contains too many limited cards.`,
-  investigator: t`Doesn't comply with the Investigator requirements.`,
-};
-
 interface Props {
   componentId: string;
+  fontScale: number;
   deck: Deck;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
@@ -383,12 +370,14 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         investigator,
       },
+      fontScale,
     } = this.props;
     return (
       <CardSectionHeader
         key={section.id}
         section={section as CardSectionHeaderData}
         investigator={investigator}
+        fontScale={fontScale}
       />
     );
   }
@@ -407,6 +396,7 @@ export default class DeckViewTab extends React.Component<Props> {
         },
       },
       showCardUpgradeDialog,
+      fontScale,
     } = this.props;
     const card = this.props.cards[item.id];
     if (!card) {
@@ -425,6 +415,7 @@ export default class DeckViewTab extends React.Component<Props> {
         onUpgrade={upgradeEnabled ? showCardUpgradeDialog : undefined}
         onPressId={this._showSwipeCard}
         count={count}
+        fontScale={fontScale}
       />
     );
   };
@@ -435,6 +426,7 @@ export default class DeckViewTab extends React.Component<Props> {
         investigator,
       },
       problem,
+      fontScale,
     } = this.props;
 
     if (!problem) {
@@ -445,7 +437,12 @@ export default class DeckViewTab extends React.Component<Props> {
       <View style={[styles.problemBox,
         { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
       ]}>
-        <DeckProblemRow problem={problem} color={isSurvivor ? COLORS.black : COLORS.white} fontSize={14}/>
+        <DeckProblemRow
+          problem={problem}
+          color={isSurvivor ? COLORS.black : COLORS.white}
+          fontSize={14}
+          fontScale={fontScale}
+        />
       </View>
     );
   }
@@ -509,7 +506,9 @@ export default class DeckViewTab extends React.Component<Props> {
         normalCardCount,
         totalCardCount,
       },
+      fontScale,
     } = this.props;
+    const TINY_EDIT_ICON_SIZE = 14 * sizeScale * fontScale;
     const xpLines = this.xpLines();
     return (
       <View style={styles.metadata}>
@@ -570,10 +569,12 @@ export default class DeckViewTab extends React.Component<Props> {
       showEditNameDialog,
       showTraumaDialog,
       xpAdjustment,
+      fontScale,
     } = this.props;
 
     const sections = this.data();
     const detailsEditable = (isPrivate && !deck.next_deck);
+    const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * fontScale;
     return (
       <ScrollView>
         <View>
@@ -591,8 +592,15 @@ export default class DeckViewTab extends React.Component<Props> {
                       { deckName }
                     </Text>
                   </View>
-                  <View style={styles.editIcon}>
-                    <MaterialIcons name="edit" color="#222222" size={SMALL_EDIT_ICON_SIZE} />
+                  <View style={{
+                    width: SMALL_EDIT_ICON_SIZE,
+                    height: SMALL_EDIT_ICON_SIZE,
+                  }}>
+                    <MaterialIcons
+                      name="edit"
+                      color="#222222"
+                      size={SMALL_EDIT_ICON_SIZE}
+                    />
                   </View>
                 </View>
               </TouchableOpacity>
@@ -635,6 +643,7 @@ export default class DeckViewTab extends React.Component<Props> {
           </View>
           <DeckProgressModule
             componentId={componentId}
+            fontScale={fontScale}
             cards={cards}
             deck={deck}
             parsedDeck={this.props.parsedDeck}
@@ -715,9 +724,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  editIcon: {
-    width: SMALL_EDIT_ICON_SIZE,
-    height: SMALL_EDIT_ICON_SIZE,
   },
 });

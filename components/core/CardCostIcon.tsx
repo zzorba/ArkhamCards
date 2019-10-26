@@ -4,7 +4,6 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 
 import AppIcon from '../../assets/AppIcon';
 import ArkhamIcon from '../../assets/ArkhamIcon';
@@ -12,12 +11,14 @@ import { FACTION_COLORS } from '../../constants';
 import Card from '../../data/Card';
 import { isBig } from '../../styles/space';
 
-const scaleFactor = ((DeviceInfo.getFontScale() - 1) / 2 + 1);
-export const COST_ICON_SIZE = (isBig ? 48 : 36) * scaleFactor;
-export const ICON_SIZE = (isBig ? 46 : 32) * scaleFactor;
+export function costIconSize(fontScale: number) {
+  const scaleFactor = ((fontScale - 1) / 2 + 1);
+  return (isBig ? 48 : 36) * scaleFactor;
+}
 
 interface Props {
   card: Card;
+  fontScale: number;
   inverted?: boolean;
   linked?: boolean;
 }
@@ -77,23 +78,28 @@ export default class CardCostIcon extends React.Component<Props> {
   render() {
     const {
       card,
+      fontScale,
       inverted,
     } = this.props;
     const color = this.color();
     const level = (card.xp === null || card.xp === undefined) ?
       'none' : `${card.xp}`;
+
+    const scaleFactor = ((fontScale - 1) / 2 + 1);
+    const ICON_SIZE = (isBig ? 46 : 32) * scaleFactor;
+    const style = { width: costIconSize(fontScale), height: costIconSize(fontScale) };
     return (
-      <View style={styles.level}>
-        <View style={styles.levelIcon}>
+      <View style={[styles.level, style]}>
+        <View style={[styles.levelIcon, style]}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}
             size={ICON_SIZE}
             color={inverted ? '#FFF' : color}
           />
         </View>
-        <View style={[styles.levelIcon, styles.cost]}>
+        <View style={[styles.levelIcon, style, styles.cost]}>
           { card.type_code === 'skill' ? (
-            <View style={styles.factionIcon}>
+            <View>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
                 color="#FFF"
@@ -101,7 +107,10 @@ export default class CardCostIcon extends React.Component<Props> {
               />
             </View>
           ) : (
-            <Text style={styles.costNumber} allowFontScaling={false}>
+            <Text style={[
+              styles.costNumber,
+              { fontSize: (isBig ? 32 : 23) * scaleFactor },
+            ]} allowFontScaling={false}>
               { this.cardCost() }
             </Text>
           ) }
@@ -114,15 +123,11 @@ export default class CardCostIcon extends React.Component<Props> {
 const styles = StyleSheet.create({
   level: {
     position: 'relative',
-    width: COST_ICON_SIZE,
-    height: COST_ICON_SIZE,
   },
   levelIcon: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: COST_ICON_SIZE,
-    height: COST_ICON_SIZE,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -133,9 +138,6 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    fontSize: (isBig ? 32 : 23) * scaleFactor,
     color: '#FFF',
-  },
-  factionIcon: {
   },
 });

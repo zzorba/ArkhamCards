@@ -13,6 +13,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { CUSTOM, ALL_CAMPAIGNS, CampaignCycleCode } from '../../../actions/types';
 import CycleItem from './CycleItem';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { campaignName } from '../constants';
 import { NavigationProps } from '../../types';
 import { getPacksInCollection, AppState } from '../../../reducers';
@@ -28,7 +29,10 @@ interface ReduxProps {
   };
 }
 
-type Props = NavigationProps & SelectCampagaignProps & ReduxProps;
+type Props = NavigationProps &
+  SelectCampagaignProps &
+  ReduxProps &
+  DimensionsProps;
 
 class SelectCampaignDialog extends React.Component<Props> {
   static get options() {
@@ -60,9 +64,11 @@ class SelectCampaignDialog extends React.Component<Props> {
   };
 
   renderCampaign(packCode: CampaignCycleCode) {
+    const { fontScale } = this.props;
     return (
       <CycleItem
         key={packCode}
+        fontScale={fontScale}
         packCode={packCode}
         onPress={this._onPress}
         text={campaignName(packCode) || t`Custom`}
@@ -113,7 +119,9 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default connect(mapStateToProps)(SelectCampaignDialog);
+export default connect(mapStateToProps)(
+  withDimensions(SelectCampaignDialog)
+);
 
 const styles = StyleSheet.create({
   flex: {

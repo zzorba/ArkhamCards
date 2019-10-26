@@ -5,6 +5,7 @@ import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, DeckMeta, Slots } from '../actions/types';
 import { VERSATILE_CODE } from '../constants';
+import withDimensions, { DimensionsProps } from './core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from '../lib/InvestigatorRequirements';
 import { filterToQuery, defaultFilterState } from '../lib/filters';
 import { STORY_CARDS_QUERY } from '../data/query';
@@ -32,7 +33,7 @@ interface RealmProps {
   cards: Results<Card>;
 }
 
-type Props = NavigationProps & EditDeckProps & RealmProps;
+type Props = NavigationProps & EditDeckProps & RealmProps & DimensionsProps;
 
 interface State {
   deckCardCounts: Slots;
@@ -88,6 +89,7 @@ class DeckEditView extends React.Component<Props, State> {
       cards,
       xpAdjustment,
       meta,
+      fontScale,
     } = this.props;
     const deckCardCounts = updatedDeckCardCounts || this.state.deckCardCounts;
     const cardsInDeck: CardsMap = {};
@@ -107,6 +109,7 @@ class DeckEditView extends React.Component<Props, State> {
     return (
       <DeckNavFooter
         componentId={componentId}
+        fontScale={fontScale}
         meta={meta}
         parsedDeck={pDeck}
         cards={cardsInDeck}
@@ -177,7 +180,7 @@ class DeckEditView extends React.Component<Props, State> {
 }
 
 export default connectRealm<NavigationProps & EditDeckProps, RealmProps, Card>(
-  DeckEditView,
+  withDimensions(DeckEditView),
   {
     schemas: ['Card'],
     mapToProps(

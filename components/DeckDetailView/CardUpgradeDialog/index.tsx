@@ -1,8 +1,7 @@
 import React from 'react';
-import { Button, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { filter, find, reverse, sortBy, sumBy } from 'lodash';
-import { t } from 'ttag';
 
 import CardUpgradeOption from './CardUpgradeOption';
 import { Deck, DeckMeta, ParsedDeck, Slots } from '../../../actions/types';
@@ -170,6 +169,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       componentId,
       tabooSetId,
       width,
+      fontScale,
     } = this.props;
     const {
       slots,
@@ -186,6 +186,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         />
         <CardDetailComponent
           componentId={componentId}
+          fontScale={fontScale}
           card={card}
           showSpoilers
           tabooSetId={tabooSetId}
@@ -207,6 +208,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       cards,
       meta,
       xpAdjustment,
+      fontScale,
     } = this.props;
     const {
       parsedDeck,
@@ -223,6 +225,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         meta={meta}
         cards={cards}
         xpAdjustment={xpAdjustment}
+        fontScale={fontScale}
         controls={controls}
       />
     );
@@ -231,6 +234,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
   render() {
     const {
       investigator,
+      fontScale,
     } = this.props;
     const {
       slots,
@@ -250,7 +254,12 @@ class CardUpgradeDialog extends React.Component<Props, State> {
             <View style={[styles.problemBox,
               { backgroundColor: isSurvivor ? COLORS.yellow : COLORS.red },
             ]}>
-              <DeckProblemRow problem={{ reason: 'too_many_copies' }} color={isSurvivor ? COLORS.black : COLORS.white} fontSize={14} />
+              <DeckProblemRow
+                problem={{ reason: 'too_many_copies' }}
+                color={isSurvivor ? COLORS.black : COLORS.white}
+                fontSize={14}
+                fontScale={fontScale}
+              />
             </View>
           ) }
           { this.renderCards() }

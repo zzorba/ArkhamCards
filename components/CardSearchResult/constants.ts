@@ -1,19 +1,29 @@
-import DeviceInfo from 'react-native-device-info';
-
 import { isBig } from '../../styles/space';
 import { TINY_PHONE } from '../../styles/sizes';
 
-export const HALF_FONT_SCALE = (DeviceInfo.getFontScale() - 1) / 2 + 1;
-export const ROW_HEIGHT = (isBig ? 72 : 48) * DeviceInfo.getFontScale();
-export const ICON_SIZE = (isBig ? 46 : 32) * HALF_FONT_SCALE;
+function halfFontScale(fontScale: number) {
+  return (fontScale - 1) / 2 + 1;
+}
+export function rowHeight(fontScale: number) {
+  return (isBig ? 72 : 48) * fontScale;
+}
+export function iconSize(fontScale: number) {
+  return (isBig ? 46 : 32) * halfFontScale(fontScale);
+}
+
 export const BUTTON_PADDING = 12;
-export const BUTTON_WIDTH = 18 * DeviceInfo.getFontScale() + 22;
-export const TOGGLE_BUTTON_MODE = TINY_PHONE || DeviceInfo.getFontScale() > 1.3;
+export function buttonWidth(fontScale: number) {
+  return 18 * fontScale + 22;
+}
+
+export function toggleButtonMode(fontScale: number) {
+  return TINY_PHONE || fontScale > 1.3;
+}
 
 export default {
-  ROW_HEIGHT,
-  ICON_SIZE,
-  BUTTON_WIDTH,
+  rowHeight,
+  iconSize,
+  buttonWidth,
   BUTTON_PADDING,
-  TOGGLE_BUTTON_MODE,
+  toggleButtonMode,
 };
