@@ -89,6 +89,7 @@
     "eslint-plugin-react": "7.10.0",
     "eslint-plugin-react-native": "3.2.1",
     "jest": "24.8.0",
+    "jetifier": "^1.6.4",
     "metro-react-native-babel-preset": "0.54.1",
     "react-native-typescript-transformer": "1.2.12",
     "react-test-renderer": "16.8.3",
