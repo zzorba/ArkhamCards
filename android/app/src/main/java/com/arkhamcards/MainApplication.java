@@ -1,11 +1,11 @@
 package com.arkhamcards;
 
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
-import com.RNFetchBlob.RNFetchBlobPackage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +40,7 @@ public class MainApplication extends NavigationApplication {
   @Nullable
   @Override
   public List<ReactPackage> createAdditionalReactPackages() {
-    List<ReactPackage> packages = new ArrayList<>();
-    packages.add(new RNFetchBlobPackage());
+    List<ReactPackage> packages = new PackageList(this).getPackages();
     return packages;
   }
 }
