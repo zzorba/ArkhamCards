@@ -81,7 +81,7 @@ PODS:
     - React
   - react-native-config (0.11.7):
     - React
-  - react-native-in-app-browser (3.1.2):
+  - react-native-in-app-browser (3.0.0):
     - React
   - react-native-netinfo (4.4.0):
     - React
@@ -275,7 +275,7 @@ SPEC CHECKSUMS:
   React-jsinspector: a58b86545a0185f69768e78ac96ca9fe43fa3694
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-config: 8f6b2b9e017f6a5e92a97353c768e19e67294bb1
-  react-native-in-app-browser: 7c73fc7e8389c9d5a7db2c23a8ffca93f79a883a
+  react-native-in-app-browser: fdccbaecac4e1e0adbcfa0eecd78686bbaf6a42d
   react-native-netinfo: 6bb847e64f45a2d69c6173741111cfd95c669301
   react-native-webview: 82d6456dfae1b3ef70c3939135536342afc96373
   React-RCTActionSheet: 49f6a67a7efa6688f637296383d453b97ef13645

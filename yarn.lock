@@ -1662,7 +1662,7 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
-"@react-native-community/netinfo@4.4.0", "@react-native-community/netinfo@^4.1.3":
+"@react-native-community/netinfo@4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-4.4.0.tgz#a18eb9ba082b6aca6add004b4a918250ad7d13bc"
   integrity sha512-qqNWMOsrDjj/daqV21ID2T8mNUjZD4pdx3PuWyE65gzKh2w+oMnzKb+J0NbLyZPn3wwLwU1+Cpf58A0ff5szjQ==
@@ -5654,7 +5654,7 @@ jest@24.9.0:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
 
-jetifier@^1.6.2, jetifier@^1.6.4:
+jetifier@^1.6.2:
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/jetifier/-/jetifier-1.6.4.tgz#6159db8e275d97980d26162897a0648b6d4a3222"
   integrity sha512-+f/4OLeqY8RAmXnonI1ffeY1DR8kMNJPhv5WMFehchf7U71cjMQVKkOz1n6asz6kfVoAqKNWJz1A/18i18AcXA==
@@ -7524,9 +7524,9 @@ react-native-app-auth@4.4.0:
   resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-4.4.0.tgz#fb8ea89095b49e8bd9205d78dbfb7c71cc40f5b3"
   integrity sha512-rNGjhyK2oR4/dLGyauCJT3UOZn29BG14QfrZwlVBf/Bh941UZOe/0QH9KrtjEfMK6GQg6Tg2pslH6guVpvpW5A==
 
-react-native-blur@3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/react-native-blur/-/react-native-blur-3.2.2.tgz#5bfb50638d148982c9560436554ed01d77d6d07d"
+react-native-blur@thedeepanshujain/react-native-blur#rn-0.60.0:
+  version "3.3.1"
+  resolved "https://codeload.github.com/thedeepanshujain/react-native-blur/tar.gz/7dc337ab1ba5cc973cb762e5b81939e72907f1e2"
   dependencies:
     prop-types "^15.5.10"
 
@@ -7534,12 +7534,11 @@ react-native-cached-image@fungilation/react-native-cached-image#2916f3515ff71ae1
   version "1.4.3"
   resolved "https://codeload.github.com/fungilation/react-native-cached-image/tar.gz/2916f3515ff71ae1e1a2ee53184d4fd15499eac5"
   dependencies:
-    "@react-native-community/netinfo" "^4.1.3"
     crypto-js "3.1.9-1"
     lodash "^4.17.10"
     prop-types "15.5.10"
     react-native-clcasher "1.0.0"
-    rn-fetch-blob "^0.11.2"
+    rn-fetch-blob "^0.10.11"
     url-parse "^1.4.1"
 
 react-native-clcasher@1.0.0:
@@ -7556,10 +7555,10 @@ react-native-deep-linking@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-deep-linking/-/react-native-deep-linking-2.2.0.tgz#45451c4ebcbe7307e094b8df38979d0bd745bb54"
 
-react-native-device-info@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-5.0.1.tgz#e941424f9ab18688fb343dc1542b2cfaaabb330a"
-  integrity sha512-wK1D+kpgDW4J4KipOblU8kKtqU090YUWWydvb4r530BlUqtmU5l/Prq46ej6lYuagsQnoOurrBn+nNSWltwjwg==
+react-native-device-info@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-5.1.0.tgz#1ad2078334c61417e0b2c8e7e0a41ae8983e8b92"
+  integrity sha512-buyKwGvxN2pTIa23uXqX+HtzINg9KSatosc73um4sAg+wsI6L0dShQTZx0vcKwkbAE0NYbjmq6hIZk+XmuC4uA==
 
 react-native-dialog@zzorba/react-native-dialog#add_label_style_prop:
   version "5.6.0"
@@ -8199,10 +8198,18 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
 
-rn-fetch-blob@0.11.2, rn-fetch-blob@^0.11.2:
+rn-fetch-blob@0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/rn-fetch-blob/-/rn-fetch-blob-0.11.2.tgz#bdc483bf1b0c3810d457983494a11fbada446679"
   integrity sha512-oKszdNtA7vZ56d0Rfr+RDEUexwlZxu/HOqwULa36PRHhQsTO5ia7uKk+va3WzuwYxzhF9e0bY8n3k+GC6Df14A==
+  dependencies:
+    base-64 "0.1.0"
+    glob "7.0.6"
+
+rn-fetch-blob@^0.10.11:
+  version "0.10.16"
+  resolved "https://registry.yarnpkg.com/rn-fetch-blob/-/rn-fetch-blob-0.10.16.tgz#bd54f66c94f7a8e06c213077483646478ae8d230"
+  integrity sha512-hZV+nF0HK4CWmspXGMw7/G8Q8qugpS/wbKiNLsFpdBZR8XYzjFZNvBWgGyC0F5JWQn3sjmK2w/FJjBlwdQWNQg==
   dependencies:
     base-64 "0.1.0"
     glob "7.0.6"
