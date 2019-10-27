@@ -13,8 +13,8 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		28D4AE2A700D315518487C07 /* libPods-ArkhamCardsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E75DC565A1EBEB5ED887610 /* libPods-ArkhamCardsTests.a */; };
 		31D495278C154F3F8F3C04EF /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CAB040D549E643C0A271ADCC /* MaterialIcons.ttf */; };
-		340897BFA7F34FF38E1C5884 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ED147EAE84244D3987FA3C67 /* libc++.tbd */; };
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
@@ -23,20 +23,17 @@
 		652EB73E226BAF9300F6D790 /* es.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73D226BAF9200F6D790 /* es.po.json */; };
 		652EB740226BAF9C00F6D790 /* fr.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB73F226BAF9C00F6D790 /* fr.po.json */; };
 		652EB742226BAFA800F6D790 /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB741226BAFA800F6D790 /* it.po.json */; };
-		654276582364EE9600D394B1 /* libPods-ArkhamCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 654276572364EE9600D394B1 /* libPods-ArkhamCards.a */; };
+		654277272365FE7200D394B1 /* libPods-ArkhamCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 654277262365FE7200D394B1 /* libPods-ArkhamCards.a */; };
 		6543AB8821C1989C0098803A /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6520D0C1206F2F1600440C6C /* libRealmReact.a */; };
 		6543AB8A21C198A20098803A /* libRealmJS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6543AB8921C198A20098803A /* libRealmJS.a */; };
 		6543ABA921C19C580098803A /* EmptySwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543ABA821C19C580098803A /* EmptySwiftFile.swift */; };
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
-		65B73EDB223023CF00495217 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B73E9D223023CF00495217 /* JavaScriptCore.framework */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
 		65CF51E0220386F400A1D2FA /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CF51DF220386F400A1D2FA /* circle.ttf */; };
 		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
 		65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65EB59142047B67600CC5820 /* arkhamicons.ttf */; };
-		7DCAB803E7324E09B69FC4B6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 839831AFE839428A83ADD39D /* libz.tbd */; };
-		C33F4E33E74FD219A8D543EB /* libPods-ArkhamCardsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C85A29E985570113CD069AC0 /* libPods-ArkhamCardsTests.a */; };
 		F607A526C444481AAEA01704 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +59,7 @@
 		00E356EE1AD99517003FC87E /* ArkhamCardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArkhamCardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ArkhamCardsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArkhamCardsTests.m; sourceTree = "<group>"; };
-		0CB5CEB60BC1FB6619AB764A /* Pods-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		05473A831C53C7FA3DC2E1A2 /* Pods-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ArkhamCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArkhamCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ArkhamCards/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ArkhamCards/AppDelegate.m; sourceTree = "<group>"; };
@@ -70,10 +67,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ArkhamCards/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ArkhamCards/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ArkhamCards/main.m; sourceTree = "<group>"; };
-		174FC7D37A76FBA41A6B7574 /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
-		2AA651289777DDE13A44E021 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		33B90015036581741341A1D8 /* libPods-ArkhamCards-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B0BDDE31E78DE8A3A314744 /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
@@ -82,8 +76,7 @@
 		652EB73D226BAF9200F6D790 /* es.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = es.po.json; path = ../assets/i18n/es.po.json; sourceTree = "<group>"; };
 		652EB73F226BAF9C00F6D790 /* fr.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fr.po.json; path = ../assets/i18n/fr.po.json; sourceTree = "<group>"; };
 		652EB741226BAFA800F6D790 /* it.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = it.po.json; path = ../assets/i18n/it.po.json; sourceTree = "<group>"; };
-		654276572364EE9600D394B1 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6543AB8321C198820098803A /* libAppAuth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAppAuth.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		654277262365FE7200D394B1 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543AB8921C198A20098803A /* libRealmJS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRealmJS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
 		6543ABA821C19C580098803A /* EmptySwiftFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmptySwiftFile.swift; path = ArkhamCards/EmptySwiftFile.swift; sourceTree = "<group>"; };
@@ -91,7 +84,6 @@
 		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
 		6556782820BA144600C18EC4 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
 		65A43C65233EE33F00A79EA3 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
-		65B73E9D223023CF00495217 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEB2128932A0084A1CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEC2128932F0084A1CE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -99,16 +91,13 @@
 		65CF51DF220386F400A1D2FA /* circle.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = circle.ttf; path = ../assets/circle.ttf; sourceTree = "<group>"; };
 		65D3FA05210FF315000F8B9D /* Teutonic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Teutonic.ttf; path = ../assets/Teutonic.ttf; sourceTree = "<group>"; };
 		65EB59142047B67600CC5820 /* arkhamicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arkhamicons.ttf; path = ../assets/arkhamicons.ttf; sourceTree = "<group>"; };
-		7154BCF031D9209D6BB2099B /* libPods-ArkhamCards-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		839831AFE839428A83ADD39D /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		77826D98D567F5BAA673BAA1 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
+		7E75DC565A1EBEB5ED887610 /* libPods-ArkhamCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		854759EB8FA749819C23C041 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
-		AAE0E19FE0454906FD27FD1A /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
-		BBADE6F1E59CD42C7103C26B /* Pods-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
-		C85A29E985570113CD069AC0 /* libPods-ArkhamCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF212649A356FC508AC5DF85 /* Pods-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CAB040D549E643C0A271ADCC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		EA9558AF96C7453B9D642AC9 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "ArkhamCards/AppCenter-Config.plist"; sourceTree = "<group>"; };
-		ED147EAE84244D3987FA3C67 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C33F4E33E74FD219A8D543EB /* libPods-ArkhamCardsTests.a in Frameworks */,
+				28D4AE2A700D315518487C07 /* libPods-ArkhamCardsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,12 +113,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				654276582364EE9600D394B1 /* libPods-ArkhamCards.a in Frameworks */,
-				65B73EDB223023CF00495217 /* JavaScriptCore.framework in Frameworks */,
+				654277272365FE7200D394B1 /* libPods-ArkhamCards.a in Frameworks */,
 				6543AB8A21C198A20098803A /* libRealmJS.a in Frameworks */,
 				6543AB8821C1989C0098803A /* libRealmReact.a in Frameworks */,
-				340897BFA7F34FF38E1C5884 /* libc++.tbd in Frameworks */,
-				7DCAB803E7324E09B69FC4B6 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,17 +173,9 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				654276572364EE9600D394B1 /* libPods-ArkhamCards.a */,
-				65B73E9D223023CF00495217 /* JavaScriptCore.framework */,
+				654277262365FE7200D394B1 /* libPods-ArkhamCards.a */,
 				6543AB8921C198A20098803A /* libRealmJS.a */,
-				6543AB8321C198820098803A /* libAppAuth.a */,
-				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				ED147EAE84244D3987FA3C67 /* libc++.tbd */,
-				839831AFE839428A83ADD39D /* libz.tbd */,
-				2AA651289777DDE13A44E021 /* libPods-ArkhamCards.a */,
-				33B90015036581741341A1D8 /* libPods-ArkhamCards-tvOS.a */,
-				7154BCF031D9209D6BB2099B /* libPods-ArkhamCards-tvOSTests.a */,
-				C85A29E985570113CD069AC0 /* libPods-ArkhamCardsTests.a */,
+				7E75DC565A1EBEB5ED887610 /* libPods-ArkhamCardsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -247,10 +225,10 @@
 		B695F53172B5785163154255 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AAE0E19FE0454906FD27FD1A /* Pods-ArkhamCards.debug.xcconfig */,
-				174FC7D37A76FBA41A6B7574 /* Pods-ArkhamCards.release.xcconfig */,
-				0CB5CEB60BC1FB6619AB764A /* Pods-ArkhamCardsTests.debug.xcconfig */,
-				BBADE6F1E59CD42C7103C26B /* Pods-ArkhamCardsTests.release.xcconfig */,
+				77826D98D567F5BAA673BAA1 /* Pods-ArkhamCards.debug.xcconfig */,
+				3B0BDDE31E78DE8A3A314744 /* Pods-ArkhamCards.release.xcconfig */,
+				AF212649A356FC508AC5DF85 /* Pods-ArkhamCardsTests.debug.xcconfig */,
+				05473A831C53C7FA3DC2E1A2 /* Pods-ArkhamCardsTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -553,7 +531,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CB5CEB60BC1FB6619AB764A /* Pods-ArkhamCardsTests.debug.xcconfig */;
+			baseConfigurationReference = AF212649A356FC508AC5DF85 /* Pods-ArkhamCardsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -601,7 +579,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBADE6F1E59CD42C7103C26B /* Pods-ArkhamCardsTests.release.xcconfig */;
+			baseConfigurationReference = 05473A831C53C7FA3DC2E1A2 /* Pods-ArkhamCardsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -646,7 +624,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAE0E19FE0454906FD27FD1A /* Pods-ArkhamCards.debug.xcconfig */;
+			baseConfigurationReference = 77826D98D567F5BAA673BAA1 /* Pods-ArkhamCards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -688,7 +666,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 174FC7D37A76FBA41A6B7574 /* Pods-ArkhamCards.release.xcconfig */;
+			baseConfigurationReference = 3B0BDDE31E78DE8A3A314744 /* Pods-ArkhamCards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
