@@ -5,6 +5,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
+import com.RNFetchBlob.RNFetchBlobPackage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,7 @@ public class MainApplication extends NavigationApplication {
   @Override
   public List<ReactPackage> createAdditionalReactPackages() {
     List<ReactPackage> packages = new ArrayList<>();
+    packages.add(new RNFetchBlobPackage());
     return packages;
   }
 }
