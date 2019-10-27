@@ -95,6 +95,7 @@ class WeaknessSetPackChooserComponent extends React.Component<Props, State> {
         baseQuery={BASIC_WEAKNESS_QUERY}
         compact={compact}
         whiteBackground
+        noFlatList
       />
     );
   }

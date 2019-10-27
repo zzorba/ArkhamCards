@@ -42,6 +42,10 @@ export default class App {
   startApp(lang) {
     changeLocale(lang || 'en');
     YellowBox.ignoreWarnings([
+      'Warning: AsyncStorage has been extracted from react-native core and will be removed in a future release.',
+      'Warning: Failed prop type: DialogSwitch: prop type `labelStyle` is invalid;',
+      'Warning: componentWillMount is deprecated',
+      'Warning: componentWillReceiveProps is deprecated',
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
       'Consider using `numColumns` with `FlatList` instead.',
       'Warning: Failed prop type: Invalid prop `rules.emMarkdown.order` of type `number` supplied to `MarkdownView`, expected `function`.',

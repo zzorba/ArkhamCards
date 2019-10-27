@@ -240,6 +240,7 @@ export default function withFilterFunctions<P>(
     mapStateToProps,
     mapDispatchToProps,
   )(
+    // @ts-ignore TS2345
     connectRealm<NavigationProps & CardFilterProps & P & ReduxProps & ReduxActionProps, RealmProps, Card>(
       withDimensions(WrappedFilterComponent), {
         schemas: ['Card'],

@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter } from 'lodash';
+import { filter, map } from 'lodash';
 import {
   FlatList,
   StyleSheet,
@@ -22,6 +22,7 @@ interface Props {
   whiteBackground?: boolean;
   baseQuery?: string;
   compact?: boolean;
+  noFlatList?: boolean;
 }
 
 export default class PackListComponent extends React.Component<Props> {
@@ -46,6 +47,7 @@ export default class PackListComponent extends React.Component<Props> {
     }) : [];
     return (
       <PackRow
+        key={item.id}
         componentId={this.props.componentId}
         pack={item}
         nameOverride={item.code === 'core' ? coreSetName : undefined}
@@ -66,11 +68,21 @@ export default class PackListComponent extends React.Component<Props> {
       checkState,
       renderHeader,
       renderFooter,
+      noFlatList,
     } = this.props;
     if (!packs.length) {
       return (
         <View>
           <Text>Loading</Text>
+        </View>
+      );
+    }
+    if (noFlatList) {
+      return (
+        <View style={styles.container}>
+          { !!renderHeader && renderHeader() }
+          { map(packs, item => this._renderItem({ item })) }
+          { !!renderFooter && renderFooter() }
         </View>
       );
     }

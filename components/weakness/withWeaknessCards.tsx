@@ -25,6 +25,7 @@ export default function withWeaknessCards<Props>(
     };
   };
   const result = connect<ReduxProps, {}, Props, AppState>(mapStateToProps)(
+    // @ts-ignore TS2345
     connectRealm<Props & ReduxProps, WeaknessCardProps, Card>(
       WrappedComponent, {
         schemas: ['Card'],

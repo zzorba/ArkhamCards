@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-settings-components/src/picker/picker.jsx b/node_modules/react-native-settings-components/src/picker/picker.jsx
+index b2fdd7d..f7095a1 100644
+--- a/node_modules/react-native-settings-components/src/picker/picker.jsx
++++ b/node_modules/react-native-settings-components/src/picker/picker.jsx
+@@ -123,7 +123,7 @@ class SettingsPicker extends Component {
+     });
+   }
+ 
+-  componentWillReceiveProps(nextProps) {
++  UNSAFE_componentWillReceiveProps(nextProps) {
+     this.setState({
+       pickerValue: nextProps.multi && isArray(nextProps.value)
+         ? nextProps.value : [nextProps.value],

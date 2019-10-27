@@ -3,6 +3,7 @@ import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, so
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { createSelector } from 'reselect';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import signedIn from './signedIn';
 import campaigns from './campaigns';
@@ -17,31 +18,31 @@ import Card, { CardsMap } from '../data/Card';
 
 const packsPersistConfig = {
   key: 'packs',
-  storage,
+  storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
 
 const cardsPersistConfig = {
   key: 'cards',
-  storage,
+  storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
 
 const decksPersistConfig = {
   key: 'decks',
-  storage,
+  storage: AsyncStorage,
   blacklist: ['refreshing', 'error'],
 };
 
 const settingsPeristConfig = {
   key: 'settings',
-  storage,
+  storage: AsyncStorage,
   blacklist: [],
 };
 
 const signedInPersistConfig = {
   key: 'signedIn',
-  storage,
+  storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
 

@@ -39,7 +39,10 @@ export interface CardDetailSwipeProps {
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode;
 }
 
-type Props = NavigationProps & DimensionsProps & CardDetailSwipeProps & ReduxProps;
+type Props = NavigationProps &
+  CardDetailSwipeProps &
+  ReduxProps &
+  DimensionsProps;
 
 interface State {
   deckCardCounts?: Slots;
@@ -331,7 +334,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
   }
 }
 
-const EMPTY_SPOILERS = {};
+const EMPTY_SPOILERS: { [code: string]: boolean } = {};
 function mapStateToProps(
   state: AppState,
   props: NavigationProps & CardDetailSwipeProps
@@ -343,9 +346,11 @@ function mapStateToProps(
   };
 }
 
-export default
-connect<ReduxProps, {}, NavigationProps & CardDetailSwipeProps, AppState>(mapStateToProps)(
-  withDimensions(CardDetailSwipeView)
+export default withDimensions<NavigationProps & CardDetailSwipeProps>(
+  connect<ReduxProps, {}, NavigationProps & CardDetailSwipeProps & DimensionsProps, AppState>(mapStateToProps)(
+    // @ts-ignore TS2345
+    CardDetailSwipeView
+  )
 );
 
 const styles = StyleSheet.create({

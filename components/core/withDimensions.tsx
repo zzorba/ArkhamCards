@@ -9,6 +9,8 @@ export interface DimensionsProps {
   fontScale: number;
 }
 
+let RECENT_FONT_SCALE = 1.0;
+
 export default function withDimensions<P>(
   WrappedComponent: React.ComponentType<P & DimensionsProps>
 ): React.ComponentType<P> {
@@ -26,7 +28,7 @@ export default function withDimensions<P>(
       this.state = {
         width,
         height,
-        fontScale: 1.0,
+        fontScale: RECENT_FONT_SCALE,
       };
     }
 
@@ -34,6 +36,7 @@ export default function withDimensions<P>(
       Dimensions.addEventListener('change', this._onChange);
       DeviceInfo.getFontScale().then(fontScale => {
         if (fontScale !== 'unknown') {
+          RECENT_FONT_SCALE = fontScale;
           this.setState({
             fontScale,
           });
