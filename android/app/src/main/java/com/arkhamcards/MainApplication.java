@@ -1,27 +1,33 @@
 package com.arkhamcards;
 
-import com.facebook.react.PackageList;
+import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import io.realm.react.RealmReactPackage;
+import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
-import com.reactnativenavigation.react.ReactGateway;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 
 public class MainApplication extends NavigationApplication {
 
   @Override
-  protected ReactGateway createReactGateway() {
-    ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
-        @Override
-        protected String getJSMainModuleName() {
-            return "index";
-        }
+  public void onCreate() {
+    super.onCreate();
+    // registerExternalComponent("RNNCustomComponent", new FragmentCreator());
+  }
+
+  @Override
+  protected ReactNativeHost createReactNativeHost() {
+    return new NavigationReactNativeHost(this) {
+      @Override
+      protected String getJSMainModuleName() {
+        return "index";
+      }
     };
-    return new ReactGateway(this, isDebug(), host);
   }
 
   @Override
@@ -29,17 +35,11 @@ public class MainApplication extends NavigationApplication {
     // Make sure you are using BuildConfig from your own application
     return BuildConfig.DEBUG;
   }
-    
-  protected List<ReactPackage> getPackages() {
-    return Arrays.<ReactPackage>asList(
-        new RealmReactPackage()
-    );
-  }
 
+  @Nullable
   @Override
   public List<ReactPackage> createAdditionalReactPackages() {
-    @SuppressWarnings("UnnecessaryLocalVariable")
-    List<ReactPackage> packages = new PackageList(this).getPackages();
+    List<ReactPackage> packages = new ArrayList<>();
     return packages;
   }
 }
