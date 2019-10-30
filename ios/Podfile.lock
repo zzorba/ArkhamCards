@@ -248,7 +248,7 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
     - ReactCommon/jscallinvoker (= 0.61.2)
-  - ReactNativeNavigation (3.2.0-snapshot.537):
+  - ReactNativeNavigation (3.3.0):
     - React
   - rn-fetch-blob (0.11.2):
     - React-Core
@@ -257,7 +257,7 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNDeviceInfo (5.1.0):
+  - RNDeviceInfo (5.2.1):
     - React
   - RNKeychain (4.0.1):
     - React
@@ -445,11 +445,11 @@ SPEC CHECKSUMS:
   React-RCTText: e3ef6191cdb627855ff7fe8fa0c1e14094967fb8
   React-RCTVibration: fb54c732fd20405a76598e431aa2f8c2bf527de9
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
-  ReactNativeNavigation: 9b90693aa278bc0de8369732c04c6ddcb1cd6a09
+  ReactNativeNavigation: 05727adb34871fdc9293858dd26b4caa8995aa35
   rn-fetch-blob: f525a73a78df9ed5d35e67ea65e79d53c15255bc
   RNAppAuth: eac16a338ed1117d8b7729b36de3b1a58b5e96f2
   RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
-  RNDeviceInfo: 08e3b13929118e56c9f5e99d525cb15f4a795dc8
+  RNDeviceInfo: 086e9644cc00dbe9bcf26de2fbcb1d9f475c84d0
   RNKeychain: 45dbd50d1ac4bd42c3740f76ffb135abf05746d0
   RNSVG: f6177f8d7c095fada7cfee2e4bb7388ba426064c
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
