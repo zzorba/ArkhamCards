@@ -2838,4 +2838,4 @@ msgstr "Expérience disponible: ${adjustedExperience} "
 
 #: components/DeckDetailView/DeckViewTab.tsx:510
 msgid "Spent experience: ${ changes.spentXp }"
-msgstr "Expérience passée: ${spentXp}"
+msgstr "Expérience passée: ${ changes.spentXp }"

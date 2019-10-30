@@ -976,7 +976,7 @@ msgstr "La era olvidada"
 
 #: components/campaign/constants.ts:44 components/campaign/constants.ts:214
 msgid "The Circle Undone"
-msgstr "El círculo deshecho"
+msgstr "El Círculo Roto"
 
 #: components/campaign/constants.ts:77
 msgid "The Gathering"
@@ -1077,7 +1077,7 @@ msgstr "Prólogo"
 
 #: components/campaign/constants.ts:109
 msgid "Curtain Call"
-msgstr "Se cierra el telón"
+msgstr "Se Cierra el Telón"
 
 #: components/campaign/constants.ts:110
 msgid "The Last King"
@@ -1085,31 +1085,31 @@ msgstr "El Último Rey"
 
 #: components/campaign/constants.ts:111 components/campaign/constants.ts:125
 msgid "Lunacy’s Reward"
-msgstr "Recompensa de la demencia"
+msgstr "Recompensa de la Demencia"
 
 #: components/campaign/constants.ts:112
 msgid "Echoes of the Past"
-msgstr "Ecos del pasado"
+msgstr "Ecos del Pasado"
 
 #: components/campaign/constants.ts:113
 msgid "The Unspeakable Oath"
-msgstr "El juramento inconfesable"
+msgstr "El Juramento Inconfesable"
 
 #: components/campaign/constants.ts:114 components/campaign/constants.ts:128
 msgid "Lost Soul"
-msgstr "Alma perdida"
+msgstr "Alma Perdida"
 
 #: components/campaign/constants.ts:115
 msgid "A Phantom of Truth"
-msgstr "El fantasma de la verdad"
+msgstr "El Fantasma de la Verdad"
 
 #: components/campaign/constants.ts:116
 msgid "The Pallid Mask"
-msgstr "La máscara pálida"
+msgstr "La Máscara Pálida"
 
 #: components/campaign/constants.ts:117
 msgid "Black Stars Rise"
-msgstr "Surgen estrellas negras"
+msgstr "Surgen Estrellas Negras"
 
 #: components/campaign/constants.ts:118
 msgid "Dim Carcosa"
@@ -1117,7 +1117,7 @@ msgstr "Penumbrosa Carcosa"
 
 #: components/campaign/constants.ts:137
 msgid "The Untamed Wilds"
-msgstr "Naturaleza salvaje"
+msgstr "Naturaleza Salvaje"
 
 #: components/campaign/constants.ts:138
 msgid "Restless Nights"
@@ -1125,27 +1125,27 @@ msgstr "Noches inquietas"
 
 #: components/campaign/constants.ts:139
 msgid "The Doom of Eztli"
-msgstr "La perdición de Eztli"
+msgstr "La Perdición de Eztli"
 
 #: components/campaign/constants.ts:140
 msgid "Expedition’s End"
-msgstr "Fin de la expedición"
+msgstr "Fin de la Expedición"
 
 #: components/campaign/constants.ts:141
 msgid "Threads of Fate"
-msgstr "Los hilos del destino"
+msgstr "Los Hilos del Destino"
 
 #: components/campaign/constants.ts:142
 msgid "The Boundary Beyond"
-msgstr "El límite del otro lado"
+msgstr "El Límite del Otro Lado"
 
 #: components/campaign/constants.ts:143
 msgid "The Jungle Beckons"
-msgstr "La atracción de la jungla"
+msgstr "La Atracción de la Jungla"
 
 #: components/campaign/constants.ts:144
 msgid "Heart of the Elders"
-msgstr "El corazón de los ancianos"
+msgstr "El Corazón de los Ancianos"
 
 #: components/campaign/constants.ts:145
 msgid "The City of Archives"
@@ -1153,19 +1153,19 @@ msgstr "La Ciudad de los Archivos"
 
 #: components/campaign/constants.ts:146
 msgid "Those Held Captive"
-msgstr "Los que son prisioneros"
+msgstr "Los que son Prisioneros"
 
 #: components/campaign/constants.ts:147
 msgid "The Depths of Yoth"
-msgstr "Las profundidades de Yoth"
+msgstr "Las Profundidades de Yoth"
 
 #: components/campaign/constants.ts:148
 msgid "The Darkness"
-msgstr "La oscuridad"
+msgstr "La Oscuridad"
 
 #: components/campaign/constants.ts:149
 msgid "Shattered Aeons"
-msgstr "Eones destrozados"
+msgstr "Eones Destrozados"
 
 #: components/campaign/constants.ts:153
 msgid "Prologue: Disappearance at the Twilight Estate"
@@ -1173,43 +1173,43 @@ msgstr "Prólogo: desaparición en Twilight Estate"
 
 #: components/campaign/constants.ts:154
 msgid "The Witching Hour"
-msgstr "La hora de los Witching"
+msgstr "La Hora de los Witching"
 
 #: components/campaign/constants.ts:156
 msgid "The Price of Progress"
-msgstr "El precio del progreso"
+msgstr "El Precio del Progreso"
 
 #: components/campaign/constants.ts:157
 msgid "The Secret Name"
-msgstr "El nombre secreto"
+msgstr "El Nombre Secreto"
 
 #: components/campaign/constants.ts:158
 msgid "The Wages of Sin"
-msgstr "La paga del pecado"
+msgstr "La Paga del Pecado"
 
 #: components/campaign/constants.ts:159
 msgid "For the Greater Good"
-msgstr "Por el bien común"
+msgstr "Por el Bien Común"
 
 #: components/campaign/constants.ts:160
 msgid "The Inner Circle"
-msgstr "El círculo interior"
+msgstr "El Círculo Interior"
 
 #: components/campaign/constants.ts:161
 msgid "Union and Disillusion"
-msgstr "Unión y desilusión"
+msgstr "Unión y Desilusión"
 
 #: components/campaign/constants.ts:162
 msgid "In the Clutches of Chaos"
-msgstr "En las garras del caos"
+msgstr "En las Garras del Caos"
 
 #: components/campaign/constants.ts:163
 msgid "Twist of Fate"
-msgstr "Giro del destino"
+msgstr "Giro del Destino"
 
 #: components/campaign/constants.ts:164
 msgid "Before the Black Throne"
-msgstr "Ante el trono negro"
+msgstr "Ante el Trono Negro"
 
 #: components/campaign/constants.ts:168
 msgid "Return to The Gathering"
@@ -2589,8 +2589,8 @@ msgid ""
 "Available experience: ${ adjustedExperience }\n"
 "Spent experience: ${ changes.spentXp }"
 msgstr ""
-"Experiencia disponible: ${adjustedExperience}\n"
-"Experiencia gastada: ${changes.spentXp}"
+"Experiencia disponible: ${ adjustedExperience }\n"
+"Experiencia gastada: ${ changes.spentXp }"
 
 #: components/DeckDetailView/FactionSelectPicker.tsx:35
 #: components/DeckDetailView/InvestigatorOption.tsx:44
@@ -2598,118 +2598,146 @@ msgid "Select Faction"
 msgstr "Seleccionar facción"
 
 #: data/DeckOption.ts:49
+#, fuzzy
 msgid "Deck Size"
-msgstr ""
+msgstr "Tamaño de la cubierta"
 
 #: components/MyDecksComponent.tsx:99
+#, fuzzy
 msgid "Unable to update: you appear to be offline."
-msgstr ""
+msgstr "No se puede actualizar: parece que está sin conexión."
 
 #: components/MyDecksComponent.tsx:108
+#, fuzzy
 msgid ""
 "We're having trouble updating your decks at this time. If the problem persists tap here "
 "to reauthorize."
 msgstr ""
+"Tenemos problemas para actualizar sus mazos en este momento. Si el problema persiste, "
+"toque aquí para volver a autorizar."
 
 #: components/weakness/WeaknessDrawComponent.tsx:343
+#, fuzzy
 msgid "Multiplayer"
-msgstr ""
+msgstr "Multijugador"
 
 #: components/weakness/WeaknessDrawComponent.tsx:352
+#, fuzzy
 msgid "Standalone"
-msgstr ""
+msgstr "Único"
 
 #: components/settings/DiagnosticsView.tsx:196
+#, fuzzy
 msgid "Debug Card Json"
-msgstr ""
+msgstr "Tarjeta de depuración Json"
 
 #: components/settings/DiagnosticsView.tsx:214
+#, fuzzy
 msgid "Debug"
-msgstr ""
+msgstr "Depurar"
 
 #: components/settings/DiagnosticsView.tsx:217
+#, fuzzy
 msgid "Add Debug Card"
-msgstr ""
+msgstr "Agregar tarjeta de depuración"
 
 #: components/filter/CardEnemyFilterView.tsx:120
+#, fuzzy
 msgid "Swarm"
-msgstr ""
+msgstr "Enjambre"
 
 #: components/filter/CardFilterView/index.tsx:583
+#, fuzzy
 msgid "Seal"
-msgstr ""
+msgstr "Foca"
 
 #: components/filter/CardFilterView/index.tsx:595
+#, fuzzy
 msgid "Investigate"
-msgstr ""
+msgstr "Investigar"
 
 #: components/filter/CardFilterView/index.tsx:621
+#, fuzzy
 msgid "Myriad"
-msgstr ""
+msgstr "Miríada"
 
 #: components/campaign/constants.ts:42 components/campaign/constants.ts:210
+#, fuzzy
 msgid "Return to The Path to Carcosa"
-msgstr ""
+msgstr "Regreso al Camino a Carcosa"
 
 #: components/campaign/constants.ts:45 components/campaign/constants.ts:212
+#, fuzzy
 msgid "The Dream-Quest"
-msgstr ""
+msgstr "The Dream-Quest"
 
 #: components/campaign/constants.ts:46 components/campaign/constants.ts:213
+#, fuzzy
 msgid "The Web of Dreams"
-msgstr ""
+msgstr "La red de los sueños"
 
 #: components/campaign/constants.ts:123
+#, fuzzy
 msgid "Return to Curtain Call"
-msgstr ""
+msgstr "Llamada de regreso a la cortina"
 
 #: components/campaign/constants.ts:124
+#, fuzzy
 msgid "Return to The Last King"
-msgstr ""
+msgstr "Regreso al último rey"
 
 #: components/campaign/constants.ts:126
+#, fuzzy
 msgid "Return to Echoes of the Past"
-msgstr ""
+msgstr "Regreso a Ecos del pasado"
 
 #: components/campaign/constants.ts:127
+#, fuzzy
 msgid "Return to The Unspeakable Oath"
-msgstr ""
+msgstr "Regreso al juramento indescriptible"
 
 #: components/campaign/constants.ts:129
+#, fuzzy
 msgid "Return to A Phantom of Truth"
-msgstr ""
+msgstr "Regreso a un fantasma de la verdad"
 
 #: components/campaign/constants.ts:130
+#, fuzzy
 msgid "Return to The Pallid Mask"
-msgstr ""
+msgstr "Regreso a la máscara de pallid"
 
 #: components/campaign/constants.ts:131
+#, fuzzy
 msgid "Return to Black Stars Rise"
-msgstr ""
+msgstr "Regreso a Black Stars Rise"
 
 #: components/campaign/constants.ts:132
+#, fuzzy
 msgid "Return to Dim Carcosa"
-msgstr ""
+msgstr "Regreso a Dim Carcosa"
 
 #: components/campaign/constants.ts:174
+#, fuzzy
 msgid "Beyond the Gates of Sleep"
-msgstr ""
+msgstr "Más allá de las puertas del sueño"
 
 #: components/campaign/constants.ts:175 components/campaign/constants.ts:186
+#, fuzzy
 msgid "The Black Cat"
-msgstr ""
+msgstr "El Gato Negro"
 
 #: components/campaign/constants.ts:176
 msgid "The Search for Kadath"
-msgstr ""
+msgstr "La Búsqueda de Kadath"
 
 #: components/campaign/constants.ts:177 components/campaign/constants.ts:188
+#, fuzzy
 msgid "The Oneironauts"
-msgstr ""
+msgstr "The Oneironauts"
 
 #: components/campaign/constants.ts:178
 msgid "Dark Side of the Moon"
-msgstr ""
+msgstr "El Lado Oscuro de la Luna"
 
 #: components/campaign/constants.ts:179 components/campaign/constants.ts:190
 msgid "The Great Ones"
@@ -2717,122 +2745,144 @@ msgstr ""
 
 #: components/campaign/constants.ts:180
 msgid "Where Gods Dwell"
-msgstr ""
+msgstr "Donde Moran los Dioses"
 
 #: components/campaign/constants.ts:185
+#, fuzzy
 msgid "Waking Nightmare"
-msgstr ""
+msgstr "Pesadilla de despertar"
 
 #: components/campaign/constants.ts:187
 msgid "A Thousand Shapes of Horror"
-msgstr ""
+msgstr "Mil Formas de Horror"
 
 #: components/campaign/constants.ts:189
 msgid "Point of No Return"
-msgstr ""
+msgstr "Punto sin Retorno"
 
 #: components/campaign/constants.ts:191
 msgid "Weaver of the Cosmos"
-msgstr ""
+msgstr "Tejedora del Cosmos"
 
 #: components/campaign/constants.ts:290
+#, fuzzy
 msgid "Evidence of Kadath"
-msgstr ""
+msgstr "Evidencia de Kadath"
 
 #: components/campaign/constants.ts:299
+#, fuzzy
 msgid "Steps of the Bridge"
-msgstr ""
+msgstr "Pasos del puente"
 
 #: components/CopyDeckDialog/index.tsx:292
 #: components/NewDeckView/NewDeckOptionsDialog.tsx:335
 msgid "Deck Type"
-msgstr ""
+msgstr "Tip de Mazo"
 
 #: components/InvestigatorsListComponent/InvestigatorRow.tsx:56
 msgid "${ investigator.deck_requirements.size } Cards"
-msgstr ""
+msgstr "${investigator.deck_requirements.size } Tarjetas"
 
 #: components/InvestigatorsListComponent/InvestigatorRow.tsx:63
 msgid "Unknown card: ${ req.code }"
-msgstr ""
+msgstr "Tarjeta desconocida: ${ req.code }"
 
 #: components/DeckDetailView/DeckSizeSelectPicker.tsx:34
 #: components/DeckDetailView/InvestigatorOption.tsx:59
+#, fuzzy
 msgid "Select Deck Size"
-msgstr ""
+msgstr "Seleccione Tamaño de la cubierta"
 
 #: components/DeckDetailView/DeckViewTab.tsx:146
 msgid "Bonded Cards (${ count })"
-msgstr ""
+msgstr "Tarjetas de Bonded (${ count })"
 
 #: components/CopyDeckDialog/index.tsx:281
 msgid "New Name"
-msgstr ""
+msgstr "Nuevo Nombre"
 
 #: components/CardSearchResultsComponent/CardSearchBox.tsx:78
+#, fuzzy
 msgid "Game Text"
 msgstr ""
+"Texto\n"
+"De Juego"
 
 #: components/CardSearchResultsComponent/CardSearchBox.tsx:85
+#, fuzzy
 msgid "Flavor Text"
 msgstr ""
+"Texto\n"
+"De Adorno"
 
 #: components/CardSearchResultsComponent/CardSearchBox.tsx:92
+#, fuzzy
 msgid "Card Backs"
 msgstr ""
+"Dorsos\n"
+"De Cartas"
 
 #: components/CardSearchComponent/index.tsx:192
+#, fuzzy
 msgid "Encounter Cards"
-msgstr ""
+msgstr "Cartas de Encuentro"
 
 #: components/CardTabooView.tsx:58
 msgid "XP Discount: ${ taboo.extra_xp }."
-msgstr ""
+msgstr "Descuento de XP: ${ taboo.extra_xp }."
 
 #: components/campaign/SealTokenDialog.tsx:32
+#, fuzzy
 msgid "Choose Tokens to Seal"
-msgstr ""
+msgstr "Elija Tokens para sellar"
 
 #: components/campaign/constants.ts:155
+#, fuzzy
 msgid "At Death's Doorstep"
-msgstr ""
+msgstr "En la puerta de la muerte (Acto 1)"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:261
+#, fuzzy
 msgid "Tap token to draw"
-msgstr ""
+msgstr "Toque token para dibujar"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:287
+#, fuzzy
 msgid "Set aside and draw another"
-msgstr ""
+msgstr "Dejar a un lado y dibujar otro"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:299
+#, fuzzy
 msgid "Clear Tokens"
-msgstr ""
+msgstr "Fichas claras"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:322
+#, fuzzy
 msgid "Drawn"
-msgstr ""
+msgstr "Dibujar"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:323
 msgid "Total"
 msgstr ""
 
 #: components/campaign/CampaignChaosBagView/index.tsx:334
+#, fuzzy
 msgid "Sealed Tokens"
-msgstr ""
+msgstr "Fichas selladas"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:341
+#, fuzzy
 msgid "Seal Tokens"
-msgstr ""
+msgstr "Fichas de sello"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:686
 msgid "XP Discount: ${ card.extra_xp }."
-msgstr ""
+msgstr "Descuento de XP: ${ card.extra_xp }."
 
 #: components/DeckDetailView/DeckViewTab.tsx:509
 msgid "Available experience: ${ adjustedExperience } "
-msgstr "Experiencia disponible: ${adjustedExperience} "
+msgstr "Experiencia disponible: ${ adjustedExperience } "
 
 #: components/DeckDetailView/DeckViewTab.tsx:510
 msgid "Spent experience: ${ changes.spentXp }"
-msgstr "Experiencia gastada: ${spentXp}"
+msgstr "Experiencia gastada: ${ changes.spentXp }"
