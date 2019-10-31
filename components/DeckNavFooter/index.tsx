@@ -9,18 +9,16 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
-import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
 import { DeckMeta, ParsedDeck } from '../../actions/types';
 import AppIcon from '../../assets/AppIcon';
 import DeckProblemRow from '../DeckProblemRow';
-import { DrawSimulatorProps } from '../DrawSimulatorView';
 import { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 import { TINY_PHONE } from '../../styles/sizes';
 import DeckValidation from '../../lib/DeckValidation';
-import { getDeckOptions } from '../navHelper';
+import { showCardCharts, showDrawSimulator } from '../navHelper';
 import { FOOTER_HEIGHT } from './constants';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 
@@ -42,34 +40,15 @@ export default class DeckNavFooter extends React.Component<Props> {
       componentId,
       parsedDeck,
     } = this.props;
-    Navigation.push(componentId, {
-      component: {
-        name: 'Deck.Charts',
-        passProps: {
-          parsedDeck,
-        },
-        options: getDeckOptions(parsedDeck.investigator, false, t`Charts`),
-      },
-    });
+    showCardCharts(componentId, parsedDeck);
   };
 
   _showCardSimulator = () => {
     const {
       componentId,
-      parsedDeck: {
-        slots,
-        investigator,
-      },
+      parsedDeck,
     } = this.props;
-    Navigation.push<DrawSimulatorProps>(componentId, {
-      component: {
-        name: 'Deck.DrawSimulator',
-        passProps: {
-          slots,
-        },
-        options: getDeckOptions(investigator, false, t`Draw`),
-      },
-    });
+    showDrawSimulator(componentId, parsedDeck);
   };
 
   renderProblem() {

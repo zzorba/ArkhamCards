@@ -11,9 +11,12 @@ import {
 } from 'lodash';
 import {
   Alert,
+  AlertButton,
   ActivityIndicator,
   BackHandler,
+  Linking,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -25,10 +28,15 @@ import { connect } from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, OptionsTopBarButton } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
 import deepDiff from 'deep-diff';
-import { t } from 'ttag';
+import { ngettext, msgid, t } from 'ttag';
+import SideMenu from 'react-native-side-menu';
+import {
+  SettingsButton,
+  SettingsCategoryHeader,
+} from 'react-native-settings-components';
 
 import withLoginState, { LoginStateProps } from '../withLoginState';
 import CopyDeckDialog from '../CopyDeckDialog';
@@ -52,6 +60,7 @@ import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '../withPlaye
 import DeckValidation from '../../lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
 import Card from '../../data/Card';
+import TabooSet from '../../data/TabooSet';
 import { parseDeck } from '../../lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCards';
@@ -71,7 +80,8 @@ import {
 } from '../../reducers';
 import { m, s, iconSizeScale } from '../../styles/space';
 import typography from '../../styles/typography';
-import { getDeckOptions } from '../navHelper';
+import { COLORS } from '../../styles/colors';
+import { getDeckOptions, showCardCharts, showDrawSimulator } from '../navHelper';
 
 export interface DeckDetailProps {
   id: number;
@@ -135,6 +145,7 @@ interface State {
   visible: boolean;
   editDetailsVisible: boolean;
   upgradeCard?: Card;
+  menuOpen: boolean;
 }
 
 class DeckDetailView extends React.Component<Props, State> {
@@ -158,7 +169,9 @@ class DeckDetailView extends React.Component<Props, State> {
       hasPendingEdits: false,
       visible: true,
       editDetailsVisible: false,
+      menuOpen: false,
     };
+
     this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
     this._saveEditsAndDismiss = throttle(this.saveEdits.bind(this, true), 200);
     this._saveEdits = throttle(this.saveEdits.bind(this, false), 200);
@@ -296,7 +309,15 @@ class DeckDetailView extends React.Component<Props, State> {
     }
   }
 
-  _deleteDeck = (deleteAllVersions: boolean) => {
+  _deleteAllDecks = () => {
+    this.deleteDeck(true);
+  };
+
+  _deleteSingleDeck = () => {
+    this.deleteDeck(false);
+  };
+
+  deleteDeck(deleteAllVersions: boolean) {
     const {
       id,
       removeDeck,
@@ -308,53 +329,30 @@ class DeckDetailView extends React.Component<Props, State> {
       Navigation.dismissAllModals();
       removeDeck(id, deleteAllVersions);
     });
-  };
+  }
 
   _toggleCopyDialog = () => {
     this.setState({
+      menuOpen: false,
       copying: !this.state.copying,
     });
   };
 
   getRightButtons() {
     const {
-      isPrivate,
-      deck,
-    } = this.props;
-    const {
       hasPendingEdits,
     } = this.state;
-    const rightButtons = [];
-    const editable = isPrivate && deck && !deck.next_deck;
+    const rightButtons: OptionsTopBarButton[] = [{
+      id: 'menu',
+      icon: iconsMap.menu,
+      color: 'white',
+    }];
     if (hasPendingEdits) {
       rightButtons.push({
         text: t`Save`,
         id: 'save',
         color: 'white',
         testID: t`Save`,
-      });
-    } else {
-      rightButtons.push({
-        id: 'copy',
-        icon: iconsMap['content-copy'],
-        color: 'white',
-        testID: t`Clone Deck`,
-      });
-      if (editable) {
-        rightButtons.push({
-          id: 'upgrade',
-          icon: iconsMap['arrow-up-bold'],
-          color: 'white',
-          testID: t`Upgrade Deck`,
-        });
-      }
-    }
-    if (editable) {
-      rightButtons.push({
-        id: 'edit',
-        icon: iconsMap.edit,
-        color: 'white',
-        testID: t`Edit Deck`,
       });
     }
     return rightButtons;
@@ -403,16 +401,14 @@ class DeckDetailView extends React.Component<Props, State> {
   };
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'edit') {
-      this._onEditPressed();
-    } else if (buttonId === 'back' || buttonId === 'androidBack') {
+    if (buttonId === 'back' || buttonId === 'androidBack') {
       this._handleBackPress();
     } else if (buttonId === 'save') {
       this._saveEdits();
-    } else if (buttonId === 'upgrade') {
-      this._onUpgradePressed();
-    } else if (buttonId === 'copy') {
-      this._toggleCopyDialog();
+    } else if (buttonId === 'menu') {
+      this.setState({
+        menuOpen: !this.state.menuOpen,
+      });
     }
   }
 
@@ -433,6 +429,9 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return;
     }
+    this.setState({
+      menuOpen: false,
+    });
     const investigator = cards[deck.investigator_code];
     const addedWeaknesses = this.addedBasicWeaknesses(
       deck,
@@ -486,6 +485,9 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return;
     }
+    this.setState({
+      menuOpen: false,
+    });
     const investigator = cards[deck.investigator_code];
     const {
       slots,
@@ -541,6 +543,9 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return;
     }
+    this.setState({
+      menuOpen: false,
+    });
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -923,11 +928,14 @@ class DeckDetailView extends React.Component<Props, State> {
       />
     );
   }
+
   _showEditDetailsVisible = () => {
     this.setState({
       editDetailsVisible: true,
+      menuOpen: false,
     });
   };
+
   _toggleEditDetailsVisible = () => {
     this.setState({
       editDetailsVisible: !this.state.editDetailsVisible,
@@ -1196,9 +1204,266 @@ class DeckDetailView extends React.Component<Props, State> {
     );
   };
 
-  render() {
+  _menuOpenChange = (menuOpen: boolean) => {
+    this.setState({
+      menuOpen,
+    });
+  };
+
+  _doLocalDeckUpload = () => {
+    this._uploadLocalDeck();
+  };
+
+  _uploadToArkhamDB = () => {
+    const {
+      signedIn,
+      login,
+      deck,
+    } = this.props;
+    const { hasPendingEdits } = this.state;
+    if (!deck) {
+      return;
+    }
+    this.setState({
+      menuOpen: false,
+    });
+    if (hasPendingEdits) {
+      Alert.alert(
+        t`Save Local Changes`,
+        t`Please save any local edits to this deck before sharing to ArkhamDB`
+      );
+    } else if (deck.next_deck || deck.previous_deck) {
+      Alert.alert(
+        t`Unsupported Operation`,
+        t`This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time.\n\nIf you would like to upload it, you can use Clone to upload a clone of the current deck.`
+      );
+    } else if (!signedIn) {
+      Alert.alert(
+        t`Sign in to ArkhamDB`,
+        t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.`,
+        [
+          { text: 'Sign In', onPress: login },
+          { text: 'Cancel', style: 'cancel' },
+        ],
+      );
+    } else {
+      Alert.alert(
+        t`Upload to ArkhamDB`,
+        t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
+        [
+          { text: 'Upload', onPress: this._doLocalDeckUpload },
+          { text: 'Cancel', style: 'cancel' },
+        ],
+      );
+    }
+  };
+
+  _viewDeck = () => {
+    const { deck } = this.props;
+    if (deck) {
+      Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+    }
+  };
+
+  _deleteDeckPrompt = () => {
     const {
       deck,
+    } = this.props;
+    if (!deck) {
+      return;
+    }
+    this.setState({
+      menuOpen: false,
+    });
+    if (deck.local) {
+      const options: AlertButton[] = [];
+      const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
+      if (isLatestUpgrade) {
+        options.push({
+          text: t`Delete this upgrade (${deck.version})`,
+          onPress: this._deleteSingleDeck,
+          style: 'destructive',
+        });
+        options.push({
+          text: t`Delete all versions`,
+          onPress: this._deleteAllDecks,
+          style: 'destructive',
+        });
+      } else {
+        const isUpgraded = !!deck.next_deck;
+        options.push({
+          text: isUpgraded ? t`Delete all versions` : t`Delete`,
+          onPress: this._deleteAllDecks,
+          style: 'destructive',
+        });
+      }
+      options.push({
+        text: t`Cancel`,
+        style: 'cancel',
+      });
+
+      Alert.alert(
+        t`Delete deck`,
+        t`Are you sure you want to delete this deck?`,
+        options,
+      );
+    } else {
+      Alert.alert(
+        t`Visit ArkhamDB to delete?`,
+        t`Unfortunately to delete decks you have to visit ArkhamDB at this time.`,
+        [
+          {
+            text: t`Visit ArkhamDB`,
+            onPress: () => {
+              Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
+            },
+          },
+          {
+            text: t`Cancel`,
+            style: 'cancel',
+          },
+        ],
+      );
+    }
+  };
+
+  _showCardCharts = () => {
+    const { componentId } = this.props;
+    const { parsedDeck } = this.state;
+    this.setState({
+      menuOpen: false,
+    });
+    if (parsedDeck) {
+      showCardCharts(componentId, parsedDeck);
+    }
+  };
+
+  _showDrawSimulator = () => {
+    const { componentId } = this.props;
+    const { parsedDeck } = this.state;
+    this.setState({
+      menuOpen: false,
+    });
+    if (parsedDeck) {
+      showDrawSimulator(componentId, parsedDeck);
+    }
+  };
+
+  renderSideMenu(
+    deck: Deck,
+    parsedDeck: ParsedDeck,
+    tabooSet?: TabooSet
+  ) {
+    const {
+      isPrivate,
+    } = this.props;
+    const {
+      nameChange,
+      hasPendingEdits,
+      xpAdjustment,
+    } = this.state;
+    const {
+      normalCardCount,
+      totalCardCount,
+    } = parsedDeck;
+
+    const editable = isPrivate && deck && !deck.next_deck;
+    const xp = (deck.xp || 0) + xpAdjustment;
+    const adjustment = xpAdjustment >= 0 ? `+${xpAdjustment}` : `${xpAdjustment}`;
+    const xpString = t`${xp} (${adjustment}) XP`;
+    return (
+      <ScrollView style={styles.menu}>
+        <SettingsCategoryHeader title={t`Cards`} />
+        <SettingsButton
+          onPress={this._onEditPressed}
+          title={t`Edit Cards`}
+          description={ngettext(
+            msgid`${normalCardCount} Card (${totalCardCount} Total)`,
+            `${normalCardCount} Cards (${totalCardCount} Total)`,
+            normalCardCount
+          )}
+        />
+        <SettingsButton
+          onPress={this._onEditSpecialPressed}
+          title={t`Story Assets`}
+        />
+        <SettingsButton
+          onPress={this._onEditSpecialPressed}
+          title={t`Weaknesses`}
+        />
+        <SettingsButton
+          onPress={this._showCardCharts}
+          title={t`Charts`}
+        />
+        <SettingsButton
+          onPress={this._showDrawSimulator}
+          title={t`Draw Simulator`}
+        />
+        { editable && (
+          <>
+            <SettingsCategoryHeader title={t`Campaign`} />
+            <SettingsButton
+              onPress={this._onUpgradePressed}
+              title={t`Upgrade Deck`}
+              disabled={!!hasPendingEdits}
+            />
+            { !!deck.previous_deck && (
+              <SettingsButton
+                onPress={this._showEditDetailsVisible}
+                title={t`Available XP`}
+                description={xpString}
+              />
+            ) }
+          </>
+        ) }
+        <SettingsCategoryHeader title={t`Deck`} />
+        { editable && (
+          <>
+            <SettingsButton
+              onPress={this._showEditDetailsVisible}
+              title={t`Name`}
+              description={nameChange || deck.name}
+            />
+            <SettingsButton
+              onPress={this._showEditDetailsVisible}
+              title={t`Taboo List`}
+              description={tabooSet ? tabooSet.date_start : t`None`}
+            />
+          </>
+        ) }
+        <SettingsButton
+          onPress={this._toggleCopyDialog}
+          title={t`Clone`}
+        />
+        { deck.local ? (
+          <SettingsButton
+            onPress={this._uploadToArkhamDB}
+            title={t`Upload to ArkhamDB`}
+          />
+        ) : (
+          <SettingsButton
+            title={t`View on ArkhamDB`}
+            onPress={this._viewDeck}
+          />
+        ) }
+        { !!isPrivate && (
+          <SettingsButton
+            title={t`Delete`}
+            titleStyle={styles.destructive}
+            onPress={this._deleteDeckPrompt}
+          />
+        ) }
+      </ScrollView>
+    );
+  }
+
+  renderDeck(
+    deck: Deck,
+    parsedDeck: ParsedDeck,
+    selectedTabooSetId?: number,
+    tabooSet?: TabooSet
+  ) {
+    const {
       componentId,
       fontScale,
       isPrivate,
@@ -1209,37 +1474,17 @@ class DeckDetailView extends React.Component<Props, State> {
       login,
       showTraumaDialog,
       investigatorDataUpdates,
-      tabooSets,
       cardsByName,
       singleCardView,
       bondedCardsByName,
     } = this.props;
     const {
-      loaded,
-      parsedDeck,
       nameChange,
       hasPendingEdits,
       xpAdjustment,
-      tabooSetId,
       meta,
     } = this.state;
 
-    if (!deck || !loaded || !parsedDeck) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <ActivityIndicator
-            style={styles.spinner}
-            size="small"
-            animating
-          />
-        </View>
-      );
-    }
-    const selectedTabooSetId = tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || 0);
-    const tabooSet = selectedTabooSetId ? find(
-      tabooSets,
-      tabooSet => tabooSet.id === selectedTabooSetId
-    ) : undefined;
     return (
       <View>
         <View style={styles.container} ref={captureViewRef}>
@@ -1267,8 +1512,6 @@ class DeckDetailView extends React.Component<Props, State> {
             showEditSpecial={deck.next_deck ? undefined : this._onEditSpecialPressed}
             signedIn={signedIn}
             login={login}
-            deleteDeck={this._deleteDeck}
-            uploadLocalDeck={this._uploadLocalDeck}
             campaign={campaign}
             showTraumaDialog={showTraumaDialog}
             investigatorDataUpdates={investigatorDataUpdates}
@@ -1278,6 +1521,50 @@ class DeckDetailView extends React.Component<Props, State> {
           { this._renderFooter() }
         </View>
         { this.renderEditDetailsDialog(deck, parsedDeck) }
+      </View>
+    );
+  }
+
+  render() {
+    const {
+      width,
+      captureViewRef,
+      deck,
+      tabooSets,
+    } = this.props;
+    const {
+      loaded,
+      parsedDeck,
+      tabooSetId,
+    } = this.state;
+    if (!deck || !loaded || !parsedDeck) {
+      return (
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator
+            style={styles.spinner}
+            size="small"
+            animating
+          />
+        </View>
+      );
+    }
+    const selectedTabooSetId = tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || 0);
+    const tabooSet = selectedTabooSetId ? find(
+      tabooSets,
+      tabooSet => tabooSet.id === selectedTabooSetId
+    ) : undefined;
+    return (
+      <View style={styles.flex} ref={captureViewRef}>
+        <SideMenu
+          isOpen={this.state.menuOpen}
+          onChange={this._menuOpenChange}
+          menu={this.renderSideMenu(deck, parsedDeck, tabooSet)}
+          openMenuOffset={width * 0.60}
+          autoClosing
+          menuPosition="right"
+        >
+          { this.renderDeck(deck, parsedDeck, selectedTabooSetId, tabooSet) }
+        </SideMenu>
         { this.renderSavingDialog() }
         { this.renderCopyDialog() }
       </View>
@@ -1363,6 +1650,10 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
 );
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+  },
   container: {
     position: 'relative',
     height: '100%',
@@ -1397,5 +1688,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+  },
+  menu: {
+    borderLeftWidth: 2,
+    borderColor: COLORS.darkGray,
+    backgroundColor: COLORS.white,
+  },
+  destructive: {
+    color: COLORS.red,
   },
 });

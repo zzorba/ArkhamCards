@@ -189,8 +189,8 @@ class CardSearchComponent extends React.Component<Props, State> {
   };
 
   componentDidUpdate(prevProps: Props) {
-    const { mythosMode, componentId } = this.props;
-    if (mythosMode !== prevProps.mythosMode) {
+    const { mythosMode, mythosToggle, componentId } = this.props;
+    if (mythosToggle && mythosMode !== prevProps.mythosMode) {
       Navigation.mergeOptions(componentId, {
         topBar: {
           title: {

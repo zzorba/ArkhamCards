@@ -1,8 +1,6 @@
 import React from 'react';
-import { throttle } from 'lodash';
 import {
   Alert,
-  Button,
   ScrollView,
   Share,
   StyleSheet,
@@ -11,6 +9,10 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
+import SideMenu from 'react-native-side-menu';
+import {
+  SettingsButton,
+} from 'react-native-settings-components';
 
 import { t } from 'ttag';
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '../../../actions/types';
@@ -61,9 +63,24 @@ type Props = NavigationProps &
 interface State {
   addSectionVisible: boolean;
   addSectionFunction?: AddSectionFunction;
+  menuOpen: boolean;
 }
 
 class CampaignDetailView extends React.Component<Props, State> {
+  static options(passProps: Props) {
+    return {
+      topBar: {
+        title: {
+          text: passProps.campaign ? passProps.campaign.name : t`Campaign`,
+        },
+        rightButtons: [{
+          icon: iconsMap.menu,
+          id: 'menu',
+          color: COLORS.navButton,
+        }],
+      },
+    };
+  }
   _navEventListener?: EventSubscription;
   _onCampaignNameChange!: (name: string) => void;
   _updateLatestDeckIds!: (latestDeckIds: number[]) => void;
@@ -71,13 +88,13 @@ class CampaignDetailView extends React.Component<Props, State> {
   _updateInvestigatorData!: (investigatorData: InvestigatorData) => void;
   _updateChaosBag!: (chaosBag: ChaosBag) => void;
   _updateWeaknessSet!: (weaknessSet: WeaknessSet) => void;
-  _showShareSheet!: () => void;
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
       addSectionVisible: false,
+      menuOpen: false,
     };
 
     this._onCampaignNameChange = this.applyCampaignUpdate.bind(this, 'name');
@@ -87,27 +104,7 @@ class CampaignDetailView extends React.Component<Props, State> {
     this._updateChaosBag = this.applyCampaignUpdate.bind(this, 'chaosBag');
     this._updateWeaknessSet = this.applyCampaignUpdate.bind(this, 'weaknessSet');
 
-    this._showShareSheet = throttle(this.showShareSheet.bind(this), 200);
     this._navEventListener = Navigation.events().bindComponent(this);
-
-    Navigation.mergeOptions(props.componentId, {
-      topBar: {
-        title: {
-          text: props.campaign ? props.campaign.name : t`Campaign`,
-        },
-        rightButtons: [{
-          icon: iconsMap.share,
-          id: 'share',
-          color: COLORS.navButton,
-          testID: t`Share Campaign`,
-        }, {
-          icon: iconsMap.edit,
-          id: 'edit',
-          color: COLORS.navButton,
-          testID: t`Edit Campaign`,
-        }],
-      },
-    });
   }
 
   componentWillUnmount() {
@@ -127,13 +124,16 @@ class CampaignDetailView extends React.Component<Props, State> {
     });
   };
 
-  showShareSheet() {
+  _showShareSheet = () => {
     const {
       campaign,
       latestDeckIds,
       decks,
       investigators,
     } = this.props;
+    this.setState({
+      menuOpen: false,
+    });
     if (campaign) {
       Share.share({
         title: campaign.name,
@@ -143,23 +143,13 @@ class CampaignDetailView extends React.Component<Props, State> {
         subject: campaign.name,
       });
     }
-  }
+  };
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const {
-      showTextEditDialog,
-      campaign,
-    } = this.props;
-    if (buttonId === 'share') {
-      this._showShareSheet();
-    } else if (buttonId === 'edit') {
-      if (campaign) {
-        showTextEditDialog(
-          t`Campaign Name`,
-          campaign.name,
-          this._onCampaignNameChange
-        );
-      }
+    if (buttonId === 'menu') {
+      this.setState({
+        menuOpen: !this.state.menuOpen,
+      });
     }
   }
 
@@ -198,10 +188,30 @@ class CampaignDetailView extends React.Component<Props, State> {
     }
   }
 
+  _editNamePressed = () => {
+    const {
+      campaign,
+      showTextEditDialog,
+    } = this.props;
+    this.setState({
+      menuOpen: false,
+    });
+    if (campaign) {
+      showTextEditDialog(
+        t`Campaign Name`,
+        campaign.name,
+        this._onCampaignNameChange
+      );
+    }
+  };
+
   _deletePressed = () => {
     const {
       campaign,
     } = this.props;
+    this.setState({
+      menuOpen: false,
+    });
     if (campaign) {
       Alert.alert(
         t`Delete`,
@@ -243,71 +253,109 @@ class CampaignDetailView extends React.Component<Props, State> {
     );
   }
 
-  render() {
+  _menuOpenChange = (menuOpen: boolean) => {
+    this.setState({
+      menuOpen,
+    });
+  };
+
+  renderSideMenu(campaign: Campaign) {
+    return (
+      <ScrollView style={styles.menu}>
+        <SettingsButton
+          onPress={this._editNamePressed}
+          title={t`Name`}
+          description={campaign.name}
+        />
+        <SettingsButton
+          onPress={this._showShareSheet}
+          title={t`Share`}
+        />
+        <SettingsButton
+          title={t`Delete`}
+          titleStyle={styles.destructive}
+          onPress={this._deletePressed}
+        />
+      </ScrollView>
+    );
+  }
+
+  renderCampaignDetails(campaign: Campaign) {
     const {
       componentId,
-      campaign,
       latestDeckIds,
       showTraumaDialog,
-      captureViewRef,
       showTextEditDialog,
       allInvestigators,
       fontScale,
     } = this.props;
+    return (
+      <ScrollView style={styles.flex}>
+        <ScenarioSection
+          componentId={componentId}
+          campaign={campaign}
+          fontScale={fontScale}
+        />
+        <ChaosBagSection
+          componentId={componentId}
+          fontScale={fontScale}
+          campaignId={campaign.id}
+          chaosBag={campaign.chaosBag}
+          updateChaosBag={this._updateChaosBag}
+        />
+        <DecksSection
+          componentId={componentId}
+          fontScale={fontScale}
+          campaignId={campaign.id}
+          weaknessSet={campaign.weaknessSet}
+          latestDeckIds={latestDeckIds || []}
+          investigatorData={campaign.investigatorData || {}}
+          showTraumaDialog={showTraumaDialog}
+          updateLatestDeckIds={this._updateLatestDeckIds}
+          updateWeaknessSet={this._updateWeaknessSet}
+        />
+        <WeaknessSetSection
+          componentId={componentId}
+          fontScale={fontScale}
+          campaignId={campaign.id}
+          weaknessSet={campaign.weaknessSet}
+        />
+        <CampaignLogSection
+          componentId={componentId}
+          fontScale={fontScale}
+          campaignNotes={campaign.campaignNotes}
+          scenarioCount={(campaign.scenarioResults || []).length}
+          allInvestigators={allInvestigators}
+          updateCampaignNotes={this._updateCampaignNotes}
+          showTextEditDialog={showTextEditDialog}
+          showAddSectionDialog={this._showAddSectionDialog}
+        />
+      </ScrollView>
+    );
+  }
+
+  render() {
+    const {
+      campaign,
+      captureViewRef,
+      width,
+    } = this.props;
+
     if (!campaign) {
       return null;
     }
     return (
       <View style={styles.flex} ref={captureViewRef}>
-        <ScrollView style={styles.flex}>
-          <ScenarioSection
-            componentId={componentId}
-            campaign={campaign}
-            fontScale={fontScale}
-          />
-          <ChaosBagSection
-            componentId={componentId}
-            fontScale={fontScale}
-            campaignId={campaign.id}
-            chaosBag={campaign.chaosBag}
-            updateChaosBag={this._updateChaosBag}
-          />
-          <DecksSection
-            componentId={componentId}
-            fontScale={fontScale}
-            campaignId={campaign.id}
-            weaknessSet={campaign.weaknessSet}
-            latestDeckIds={latestDeckIds || []}
-            investigatorData={campaign.investigatorData || {}}
-            showTraumaDialog={showTraumaDialog}
-            updateLatestDeckIds={this._updateLatestDeckIds}
-            updateWeaknessSet={this._updateWeaknessSet}
-          />
-          <WeaknessSetSection
-            componentId={componentId}
-            fontScale={fontScale}
-            campaignId={campaign.id}
-            weaknessSet={campaign.weaknessSet}
-          />
-          <CampaignLogSection
-            componentId={componentId}
-            fontScale={fontScale}
-            campaignNotes={campaign.campaignNotes}
-            scenarioCount={(campaign.scenarioResults || []).length}
-            allInvestigators={allInvestigators}
-            updateCampaignNotes={this._updateCampaignNotes}
-            showTextEditDialog={showTextEditDialog}
-            showAddSectionDialog={this._showAddSectionDialog}
-          />
-          <View style={styles.margin}>
-            <Button
-              title={t`Delete Campaign`}
-              color={COLORS.red}
-              onPress={this._deletePressed}
-            />
-          </View>
-          <View style={styles.footer} />
-        </ScrollView>
+        <SideMenu
+          isOpen={this.state.menuOpen}
+          onChange={this._menuOpenChange}
+          menu={this.renderSideMenu(campaign)}
+          openMenuOffset={width * 0.60}
+          autoClosing
+          menuPosition="right"
+        >
+          { this.renderCampaignDetails(campaign) }
+        </SideMenu>
         { this.renderAddSectionDialog() }
       </View>
     );
@@ -350,11 +398,14 @@ export default withPlayerCards<NavigationProps & CampaignDetailProps>(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
+    backgroundColor: 'white',
   },
-  margin: {
-    margin: 8,
+  menu: {
+    borderLeftWidth: 2,
+    borderColor: COLORS.darkGray,
+    backgroundColor: COLORS.white,
   },
-  footer: {
-    height: 40,
+  destructive: {
+    color: COLORS.red,
   },
 });

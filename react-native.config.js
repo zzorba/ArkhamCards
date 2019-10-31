@@ -1,10 +1,10 @@
 module.exports = {
-    dependencies: {
-        'realm': {
-            platforms: {
-                ios: null,
-            },
-        },
+  dependencies: {
+    'realm': {
+      platforms: {
+        ios: null,
+      },
     },
-}
+  },
+};
 

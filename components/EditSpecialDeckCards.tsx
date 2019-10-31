@@ -16,13 +16,11 @@ import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
 import withDimensions, { DimensionsProps } from './core/withDimensions';
 import { NavigationProps } from './types';
 import CardSearchResult from './CardSearchResult';
-import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS } from '../constants';
+import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS } from '../constants';
 import { getCampaign, AppState } from '../reducers';
 import { COLORS } from '../styles/colors';
 import typography from '../styles/typography';
 import { l, s } from '../styles/space';
-
-const ACE_OF_RODS = '05040';
 
 export interface EditSpecialCardsProps {
   deck: Deck;
@@ -371,11 +369,11 @@ class EditSpecialDeckCards extends React.Component<Props, State> {
   renderIgnoreCardsSection() {
     const {
       componentId,
-      slots,
     } = this.props;
 
     const {
       ignoreDeckLimitSlots,
+      slots,
     } = this.state;
 
     const header = (

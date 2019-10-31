@@ -28,6 +28,7 @@ const icons: {
   'chevron-left': [40, COLORS.button, MaterialCommunityIcons],
   'chevron-right': [40, COLORS.button, MaterialCommunityIcons],
   'sort-by-alpha': [28, COLORS.button],
+  menu: [28, COLORS.button, MaterialCommunityIcons],
   cards: [28, COLORS.button, AppIcon],
   settings: [28, COLORS.button, MaterialCommunityIcons],
   add: [28, COLORS.button],

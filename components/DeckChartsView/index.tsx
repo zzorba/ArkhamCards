@@ -12,11 +12,11 @@ import SkillIconChart from './SkillIconChart';
 
 const INCLUDE_SLOTS_CHART = false;
 
-interface Props {
+export interface DeckChartsProps {
   parsedDeck?: ParsedDeck;
 }
 
-export default class DeckChartsView extends React.Component<Props> {
+export default class DeckChartsView extends React.Component<DeckChartsProps> {
   render() {
     const {
       parsedDeck,

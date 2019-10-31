@@ -1,10 +1,6 @@
 import React, { ReactNode } from 'react';
 import { find, forEach, keys, map, sum, sumBy } from 'lodash';
 import {
-  Alert,
-  AlertButton,
-  Button,
-  Linking,
   StyleSheet,
   SectionList,
   View,
@@ -180,8 +176,6 @@ interface Props {
   xpAdjustment: number;
   signedIn: boolean;
   login: () => void;
-  deleteDeck: (allVersions: boolean) => void;
-  uploadLocalDeck: () => void;
   problem?: DeckProblem;
   renderFooter: (slots?: Slots) => React.ReactNode;
   onDeckCountChange: (code: string, count: number) => void;
@@ -191,112 +185,6 @@ interface Props {
 export default class DeckViewTab extends React.Component<Props> {
   _keyForCard = (item: SectionCardId) => {
     return item.id;
-  };
-
-  _deleteDeckPrompt = () => {
-    const {
-      deck,
-      deleteDeck,
-    } = this.props;
-    if (deck.local) {
-      const options: AlertButton[] = [];
-      const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
-      if (isLatestUpgrade) {
-        options.push({
-          text: t`Delete this upgrade (${deck.version})`,
-          onPress: () => {
-            deleteDeck(false);
-          },
-          style: 'destructive',
-        });
-        options.push({
-          text: t`Delete all versions`,
-          onPress: () => {
-            deleteDeck(true);
-          },
-          style: 'destructive',
-        });
-      } else {
-        const isUpgraded = !!deck.next_deck;
-        options.push({
-          text: isUpgraded ? t`Delete all versions` : t`Delete`,
-          onPress: () => {
-            deleteDeck(true);
-          },
-          style: 'destructive',
-        });
-      }
-      options.push({
-        text: t`Cancel`,
-        style: 'cancel',
-      });
-
-      Alert.alert(
-        t`Delete deck`,
-        t`Are you sure you want to delete this deck?`,
-        options,
-      );
-    } else {
-      Alert.alert(
-        t`Visit ArkhamDB to delete?`,
-        t`Unfortunately to delete decks you have to visit ArkhamDB at this time.`,
-        [
-          {
-            text: t`Visit ArkhamDB`,
-            onPress: () => {
-              Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
-            },
-          },
-          {
-            text: t`Cancel`,
-            style: 'cancel',
-          },
-        ],
-      );
-    }
-  };
-
-  _uploadToArkhamDB = () => {
-    const {
-      signedIn,
-      login,
-      deck,
-      hasPendingEdits,
-      uploadLocalDeck,
-    } = this.props;
-    if (hasPendingEdits) {
-      Alert.alert(
-        t`Save Local Changes`,
-        t`Please save any local edits to this deck before sharing to ArkhamDB`
-      );
-    } else if (deck.next_deck || deck.previous_deck) {
-      Alert.alert(
-        t`Unsupported Operation`,
-        t`This deck contains next/previous versions with upgrades, so we cannot upload it to ArkhamDB at this time. If you would like to upload it, you can use Copy to upload a clone of the current deck.`
-      );
-    } else if (!signedIn) {
-      Alert.alert(
-        t`Sign in to ArkhamDB`,
-        t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.`,
-        [
-          { text: 'Sign In', onPress: login },
-          { text: 'Cancel', style: 'cancel' },
-        ],
-      );
-    } else {
-      Alert.alert(
-        t`Upload to ArkhamDB`,
-        t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
-        [
-          { text: 'Upload', onPress: uploadLocalDeck },
-          { text: 'Cancel', style: 'cancel' },
-        ],
-      );
-    }
-  };
-
-  _viewDeck = () => {
-    Linking.openURL(`https://arkhamdb.com/deck/view/${this.props.deck.id}`);
   };
 
   _showInvestigator = () => {
@@ -653,30 +541,6 @@ export default class DeckViewTab extends React.Component<Props> {
             investigatorDataUpdates={investigatorDataUpdates}
             xpAdjustment={xpAdjustment}
           />
-          { deck.local ? (
-            <View style={styles.button}>
-              <Button
-                title={t`Upload to ArkhamDB`}
-                onPress={this._uploadToArkhamDB}
-              />
-            </View>
-          ) : (
-            <View style={styles.button}>
-              <Button
-                title={t`View on ArkhamDB`}
-                onPress={this._viewDeck}
-              />
-            </View>
-          ) }
-          { !!isPrivate && (
-            <View style={styles.button}>
-              <Button
-                title={t`Delete Deck`}
-                color={COLORS.red}
-                onPress={this._deleteDeckPrompt}
-              />
-            </View>
-          ) }
         </View>
       </ScrollView>
     );
@@ -688,9 +552,6 @@ const styles = StyleSheet.create({
     marginTop: s,
     flexDirection: 'row',
     alignItems: 'flex-start',
-  },
-  button: {
-    margin: s,
   },
   metadata: {
     flexDirection: 'column',

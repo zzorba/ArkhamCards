@@ -1,14 +1,16 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Navigation, Options } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import { Deck, Slots } from '../actions/types';
-import { FACTION_DARK_GRADIENTS } from '../constants';
-import Card from '../data/Card';
+
+import { DeckChartsProps } from './DeckChartsView';
+import { DrawSimulatorProps } from './DrawSimulatorView';
 import { CardDetailProps } from './CardDetailView';
 import { CardDetailSwipeProps } from './CardDetailSwipeView';
 import { DeckDetailProps } from './DeckDetailView';
+import { Deck, ParsedDeck, Slots } from '../actions/types';
+import { FACTION_DARK_GRADIENTS } from '../constants';
+import Card from '../data/Card';
 import { iconsMap } from '../app/NavIcons';
 import { COLORS } from '../styles/colors';
 
@@ -178,6 +180,40 @@ export function showCard(
           },
         },
       },
+    },
+  });
+}
+
+export function showCardCharts(
+  componentId: string,
+  parsedDeck: ParsedDeck
+) {
+  Navigation.push<DeckChartsProps>(componentId, {
+    component: {
+      name: 'Deck.Charts',
+      passProps: {
+        parsedDeck,
+      },
+      options: getDeckOptions(parsedDeck.investigator, false, t`Charts`),
+    },
+  });
+}
+
+export function showDrawSimulator(
+  componentId: string,
+  parsedDeck: ParsedDeck
+) {
+  const {
+    slots,
+    investigator,
+  } = parsedDeck;
+  Navigation.push<DrawSimulatorProps>(componentId, {
+    component: {
+      name: 'Deck.DrawSimulator',
+      passProps: {
+        slots,
+      },
+      options: getDeckOptions(investigator, false, t`Draw`),
     },
   });
 }

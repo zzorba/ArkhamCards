@@ -208,6 +208,7 @@ export function createFactionIcons(
 ): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
   return mapValues(FACTION_COLORS, (color, faction) => {
     return (size: number) => (
+      /* eslint-disable react/display-name */
       <ArkhamIcon
         name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
         size={size}
@@ -219,3 +220,4 @@ export function createFactionIcons(
 
 export const RANDOM_BASIC_WEAKNESS = '01000';
 export const VERSATILE_CODE = '06167';
+export const ACE_OF_RODS = '05040';
