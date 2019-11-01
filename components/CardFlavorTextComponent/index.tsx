@@ -7,6 +7,7 @@ import {
 
 import { WithText, State } from '../CardTextComponent/types';
 import { isBig } from '../../styles/space';
+import { COLORS } from '../../styles/colors';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
 
@@ -60,8 +61,9 @@ export default function CardFlavorTextComponent(
       styles={{
         paragraph: {
           fontSize: isBig ? 24 : 14,
-          fontWeight: isBig ? '300' : '100',
+          fontWeight: '400',
           fontStyle: 'italic',
+          color: COLORS.darkGray,
         },
       }}
     >

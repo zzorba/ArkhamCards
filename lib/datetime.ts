@@ -63,7 +63,7 @@ export function toRelativeDateString(date: Date) {
   if (isAfter(date, addDays(startOfNowDate, -7))) {
     return format(date, 'dddd');
   }
-  return format(date, 'MMMM D, YYYY');
+  return format(date, 'MMMM d, yyyy');
 }
 
 /**

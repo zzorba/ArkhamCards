@@ -6,7 +6,6 @@ import {
   View,
   TouchableOpacity,
   Text,
-  ScrollView,
   SectionListData,
 } from 'react-native';
 // @ts-ignore
@@ -588,13 +587,8 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingLeft: s,
   },
-  cards: {
-    marginTop: s,
-    borderTopWidth: 1,
-    borderColor: '#bdbdbd',
-  },
   headerBlock: {
-    marginBottom: s,
+    paddingBottom: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
