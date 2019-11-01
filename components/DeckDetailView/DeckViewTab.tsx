@@ -441,108 +441,122 @@ export default class DeckViewTab extends React.Component<Props> {
     );
   }
 
-  render() {
+  _renderHeader = () => {
     const {
-      campaign,
-      investigatorDataUpdates,
       componentId,
       deck,
       deckName,
-      cards,
       parsedDeck: {
         investigator,
       },
       isPrivate,
       buttons,
       showEditNameDialog,
+      fontScale,
+    } = this.props;
+
+    const detailsEditable = (isPrivate && !deck.next_deck);
+    const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * fontScale;
+    return (
+      <View style={styles.headerBlock}>
+        { this.renderProblem() }
+        <View style={styles.container}>
+          { detailsEditable ? (
+            <TouchableOpacity onPress={showEditNameDialog}>
+              <View style={styles.nameRow}>
+                <View style={styles.investigatorWrapper}>
+                  <Text
+                    style={[typography.text, typography.bold]}
+                    numberOfLines={2}
+                    ellipsizeMode="tail"
+                  >
+                    { deckName }
+                  </Text>
+                </View>
+                <View style={{
+                  width: SMALL_EDIT_ICON_SIZE,
+                  height: SMALL_EDIT_ICON_SIZE,
+                }}>
+                  <MaterialIcons
+                    name="edit"
+                    color="#222222"
+                    size={SMALL_EDIT_ICON_SIZE}
+                  />
+                </View>
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <Text style={[typography.text, typography.bold]}>
+              { `${deckName}  ` }
+            </Text>
+          ) }
+          <View style={styles.header}>
+            <TouchableOpacity onPress={this._showInvestigator}>
+              <View style={styles.image}>
+                <InvestigatorImage card={investigator} componentId={componentId} />
+              </View>
+            </TouchableOpacity>
+            <View style={styles.metadata}>
+              { detailsEditable ? (
+                <TouchableOpacity onPress={showEditNameDialog}>
+                  { this.renderMetadata() }
+                </TouchableOpacity>
+              ) : (
+                this.renderMetadata()
+              ) }
+            </View>
+          </View>
+        </View>
+        { this.renderInvestigatorOptions() }
+        <View style={styles.container}>
+          { buttons }
+        </View>
+      </View>
+    );
+  };
+
+  _renderFooter = () => {
+    const {
+      campaign,
+      investigatorDataUpdates,
+      componentId,
+      deck,
+      cards,
+      isPrivate,
       showTraumaDialog,
       xpAdjustment,
       fontScale,
     } = this.props;
-
-    const sections = this.data();
-    const detailsEditable = (isPrivate && !deck.next_deck);
-    const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * fontScale;
     return (
-      <ScrollView>
-        <View>
-          { this.renderProblem() }
-          <View style={styles.container}>
-            { detailsEditable ? (
-              <TouchableOpacity onPress={showEditNameDialog}>
-                <View style={styles.nameRow}>
-                  <View style={styles.investigatorWrapper}>
-                    <Text
-                      style={[typography.text, typography.bold]}
-                      numberOfLines={2}
-                      ellipsizeMode="tail"
-                    >
-                      { deckName }
-                    </Text>
-                  </View>
-                  <View style={{
-                    width: SMALL_EDIT_ICON_SIZE,
-                    height: SMALL_EDIT_ICON_SIZE,
-                  }}>
-                    <MaterialIcons
-                      name="edit"
-                      color="#222222"
-                      size={SMALL_EDIT_ICON_SIZE}
-                    />
-                  </View>
-                </View>
-              </TouchableOpacity>
-            ) : (
-              <Text style={[typography.text, typography.bold]}>
-                { `${deckName}  ` }
-              </Text>
-            ) }
-            <View style={styles.header}>
-              <TouchableOpacity onPress={this._showInvestigator}>
-                <View style={styles.image}>
-                  <InvestigatorImage card={investigator} componentId={componentId} />
-                </View>
-              </TouchableOpacity>
-              <View style={styles.metadata}>
-                { detailsEditable ? (
-                  <TouchableOpacity onPress={showEditNameDialog}>
-                    { this.renderMetadata() }
-                  </TouchableOpacity>
-                ) : (
-                  this.renderMetadata()
-                ) }
-              </View>
-            </View>
-          </View>
-          { this.renderInvestigatorOptions() }
-          <View style={styles.container}>
-            { buttons }
-          </View>
-          <View style={styles.cards}>
-            <SectionList
-              keyboardShouldPersistTaps="always"
-              keyboardDismissMode="on-drag"
-              initialNumToRender={25}
-              renderItem={this._renderCard}
-              keyExtractor={this._keyForCard}
-              renderSectionHeader={this._renderSectionHeader}
-              sections={sections}
-            />
-          </View>
-          <DeckProgressModule
-            componentId={componentId}
-            fontScale={fontScale}
-            cards={cards}
-            deck={deck}
-            parsedDeck={this.props.parsedDeck}
-            isPrivate={isPrivate}
-            campaign={campaign}
-            showTraumaDialog={showTraumaDialog}
-            investigatorDataUpdates={investigatorDataUpdates}
-            xpAdjustment={xpAdjustment}
-          />
-        </View>
-      </ScrollView>
+      <DeckProgressModule
+        componentId={componentId}
+        fontScale={fontScale}
+        cards={cards}
+        deck={deck}
+        parsedDeck={this.props.parsedDeck}
+        isPrivate={isPrivate}
+        campaign={campaign}
+        showTraumaDialog={showTraumaDialog}
+        investigatorDataUpdates={investigatorDataUpdates}
+        xpAdjustment={xpAdjustment}
+      />
+    );
+  };
+
+  render() {
+    const sections = this.data();
+    return (
+      <SectionList
+        ListHeaderComponent={this._renderHeader}
+        ListFooterComponent={this._renderFooter}
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag"
+        initialNumToRender={25}
+        renderItem={this._renderCard}
+        keyExtractor={this._keyForCard}
+        renderSectionHeader={this._renderSectionHeader}
+        sections={sections}
+      />
     );
   }
 }
@@ -577,6 +591,11 @@ const styles = StyleSheet.create({
   cards: {
     marginTop: s,
     borderTopWidth: 1,
+    borderColor: '#bdbdbd',
+  },
+  headerBlock: {
+    marginBottom: s,
+    borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
   nameRow: {
