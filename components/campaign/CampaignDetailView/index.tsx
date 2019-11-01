@@ -344,13 +344,14 @@ class CampaignDetailView extends React.Component<Props, State> {
     if (!campaign) {
       return null;
     }
+    const menuWidth = Math.min(width * 0.60, 240);
     return (
       <View style={styles.flex} ref={captureViewRef}>
         <SideMenu
           isOpen={this.state.menuOpen}
           onChange={this._menuOpenChange}
           menu={this.renderSideMenu(campaign)}
-          openMenuOffset={width * 0.60}
+          openMenuOffset={menuWidth}
           autoClosing
           menuPosition="right"
         >

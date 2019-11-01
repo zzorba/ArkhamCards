@@ -1553,13 +1553,14 @@ class DeckDetailView extends React.Component<Props, State> {
       tabooSets,
       tabooSet => tabooSet.id === selectedTabooSetId
     ) : undefined;
+    const menuWidth = Math.min(width * 0.60, 240);
     return (
       <View style={styles.flex} ref={captureViewRef}>
         <SideMenu
           isOpen={this.state.menuOpen}
           onChange={this._menuOpenChange}
           menu={this.renderSideMenu(deck, parsedDeck, tabooSet)}
-          openMenuOffset={width * 0.60}
+          openMenuOffset={menuWidth}
           autoClosing
           menuPosition="right"
         >
