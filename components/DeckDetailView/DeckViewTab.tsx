@@ -438,7 +438,7 @@ export default class DeckViewTab extends React.Component<Props> {
       setTabooSet,
       showTaboo,
       tabooOpen,
-      editable
+      editable,
     } = this.props;
     return (
       <View>
