@@ -8,23 +8,24 @@ import {
   Text,
   SectionListData,
 } from 'react-native';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
-import { msgid, ngettext, t } from 'ttag';
+import { t } from 'ttag';
 
 import { Campaign, CardId, Deck, DeckMeta, DeckProblem, InvestigatorData, ParsedDeck, SplitCards, Slots, Trauma } from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
+import ArkhamIcon from '../../assets/ArkhamIcon';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import InvestigatorOptionsModule from './InvestigatorOptionsModule';
 import CardSectionHeader, { CardSectionHeaderData } from './CardSectionHeader';
 import CardSearchResult from '../CardSearchResult';
+import TabooSetPicker from '../TabooSetPicker';
+import { FACTION_DARK_GRADIENTS } from '../../constants';
 import DeckValidation from '../../lib/DeckValidation';
 import Card, { CardsMap } from '../../data/Card';
 import TabooSet from '../../data/TabooSet';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
-import { s, sizeScale } from '../../styles/space';
+import { isBig, s } from '../../styles/space';
 import DeckProblemRow from '../DeckProblemRow';
 
 interface SectionCardId extends CardId {
@@ -170,8 +171,11 @@ interface Props {
   investigatorDataUpdates?: InvestigatorData;
   deckName: string;
   tabooSet?: TabooSet;
+  tabooOpen: boolean;
   singleCardView: boolean;
   tabooSetId?: number;
+  showTaboo: boolean;
+  setTabooSet: (tabooSetId?: number) => void;
   xpAdjustment: number;
   signedIn: boolean;
   login: () => void;
@@ -364,61 +368,58 @@ export default class DeckViewTab extends React.Component<Props> {
     ];
   }
 
-  xpLines() {
-    const {
-      parsedDeck: {
-        deck: {
-          xp,
-        },
-        changes,
-        experience,
-      },
-      xpAdjustment,
-    } = this.props;
-    if (!changes) {
-      return [t`Experience required: ${experience}`];
-    }
-    const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    t`Available experience: ${adjustedExperience}\nSpent experience: ${changes.spentXp}`;
-    return [
-      t`Available experience: ${adjustedExperience} `,
-      t`Spent experience: ${changes.spentXp}`,
-    ];
-  }
-
   renderMetadata() {
     const {
       tabooSet,
-      parsedDeck: {
-        normalCardCount,
-        totalCardCount,
-      },
-      fontScale,
     } = this.props;
-    const TINY_EDIT_ICON_SIZE = 14 * sizeScale * fontScale;
-    const xpLines = this.xpLines();
     return (
       <View style={styles.metadata}>
-        <Text style={typography.small}>
-          { ngettext(
-            msgid`${normalCardCount} card (${totalCardCount} total)`,
-            `${normalCardCount} cards (${totalCardCount} total)`,
-            normalCardCount
-          ) }
-        </Text>
-        { map(xpLines, (line, idx) => (
-          <Text key={idx} style={typography.small}>
-            { line }
-            { (idx === 0 && xpLines.length > 1) && (
-              <MaterialIcons name="edit" color="#222" size={TINY_EDIT_ICON_SIZE} />
-            ) }
-          </Text>
-        )) }
         { !!tabooSet && (
           <Text style={typography.small}>
             { t`Taboo List: ${tabooSet.date_start}.` }
           </Text>
         ) }
+      </View>
+    );
+  }
+
+  renderInvestigatorStats() {
+    const {
+      parsedDeck: {
+        investigator,
+      },
+      fontScale,
+    } = this.props;
+
+    const ICON_SIZE = fontScale * (isBig ? 1.5 : 1.0) * 18;
+    return (
+      <View>
+        <View style={styles.skillRow}>
+          <Text style={typography.gameFont}>
+            { investigator.skill_willpower || 0 }
+            <ArkhamIcon name="willpower" size={ICON_SIZE} color="#222" />
+          </Text>
+          <Text style={typography.gameFont}>
+            { investigator.skill_intellect || 0 }
+            <ArkhamIcon name="intellect" size={ICON_SIZE} color="#222" />
+          </Text>
+          <Text style={typography.gameFont}>
+            { investigator.skill_combat || 0 }
+            <ArkhamIcon name="combat" size={ICON_SIZE} color="#222" />
+          </Text>
+          <Text style={typography.gameFont}>
+            { investigator.skill_agility || 0 }
+            <ArkhamIcon name="agility" size={ICON_SIZE} color="#222" />
+          </Text>
+        </View>
+        <View style={styles.skillRow}>
+          <Text style={typography.gameFont}>
+            { t`Health: ${investigator.health || 0}` }
+          </Text>
+          <Text style={typography.gameFont}>
+            { t`Sanity: ${investigator.sanity || 0}` }
+          </Text>
+        </View>
       </View>
     );
   }
@@ -430,79 +431,57 @@ export default class DeckViewTab extends React.Component<Props> {
       },
       meta,
       setMeta,
+      tabooSet,
+      tabooSetId,
+      setTabooSet,
+      showTaboo,
+      tabooOpen,
     } = this.props;
     return (
-      <InvestigatorOptionsModule
-        investigator={investigator}
-        meta={meta}
-        setMeta={setMeta}
-      />
+      <View>
+        { (tabooOpen || showTaboo || !!tabooSet) && (
+          <TabooSetPicker
+            open={tabooOpen}
+            tabooSetId={tabooSetId}
+            setTabooSet={setTabooSet}
+            color={FACTION_DARK_GRADIENTS[
+              (investigator ? investigator.faction_code : null) || 'neutral'
+            ][0]}
+          />
+        ) }
+        <InvestigatorOptionsModule
+          investigator={investigator}
+          meta={meta}
+          setMeta={setMeta}
+        />
+      </View>
     );
   }
 
   _renderHeader = () => {
     const {
       componentId,
-      deck,
-      deckName,
       parsedDeck: {
         investigator,
       },
-      isPrivate,
       buttons,
-      showEditNameDialog,
-      fontScale,
     } = this.props;
 
-    const detailsEditable = (isPrivate && !deck.next_deck);
-    const SMALL_EDIT_ICON_SIZE = 18 * sizeScale * fontScale;
     return (
       <View style={styles.headerBlock}>
         { this.renderProblem() }
         <View style={styles.container}>
-          { detailsEditable ? (
-            <TouchableOpacity onPress={showEditNameDialog}>
-              <View style={styles.nameRow}>
-                <View style={styles.investigatorWrapper}>
-                  <Text
-                    style={[typography.text, typography.bold]}
-                    numberOfLines={2}
-                    ellipsizeMode="tail"
-                  >
-                    { deckName }
-                  </Text>
-                </View>
-                <View style={{
-                  width: SMALL_EDIT_ICON_SIZE,
-                  height: SMALL_EDIT_ICON_SIZE,
-                }}>
-                  <MaterialIcons
-                    name="edit"
-                    color="#222222"
-                    size={SMALL_EDIT_ICON_SIZE}
-                  />
-                </View>
-              </View>
-            </TouchableOpacity>
-          ) : (
-            <Text style={[typography.text, typography.bold]}>
-              { `${deckName}  ` }
-            </Text>
-          ) }
           <View style={styles.header}>
             <TouchableOpacity onPress={this._showInvestigator}>
               <View style={styles.image}>
-                <InvestigatorImage card={investigator} componentId={componentId} />
+                <InvestigatorImage
+                  card={investigator}
+                  componentId={componentId}
+                />
               </View>
             </TouchableOpacity>
             <View style={styles.metadata}>
-              { detailsEditable ? (
-                <TouchableOpacity onPress={showEditNameDialog}>
-                  { this.renderMetadata() }
-                </TouchableOpacity>
-              ) : (
-                this.renderMetadata()
-              ) }
+              { this.renderInvestigatorStats() }
             </View>
           </View>
         </View>
@@ -573,9 +552,6 @@ const styles = StyleSheet.create({
   image: {
     marginRight: s,
   },
-  investigatorWrapper: {
-    flex: 1,
-  },
   container: {
     marginLeft: s,
     marginRight: s,
@@ -592,11 +568,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
-  nameRow: {
-    marginTop: s,
+  skillRow: {
     flexDirection: 'row',
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    maxWidth: 300,
   },
 });

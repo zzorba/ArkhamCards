@@ -146,6 +146,7 @@ interface State {
   editDetailsVisible: boolean;
   upgradeCard?: Card;
   menuOpen: boolean;
+  tabooOpen: boolean;
 }
 
 class DeckDetailView extends React.Component<Props, State> {
@@ -170,6 +171,7 @@ class DeckDetailView extends React.Component<Props, State> {
       visible: true,
       editDetailsVisible: false,
       menuOpen: false,
+      tabooOpen: false,
     };
 
     this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
@@ -929,6 +931,13 @@ class DeckDetailView extends React.Component<Props, State> {
     );
   }
 
+  _showTabooPicker = () => {
+    this.setState({
+      tabooOpen: true,
+      menuOpen: false,
+    });
+  }
+
   _showEditDetailsVisible = () => {
     this.setState({
       editDetailsVisible: true,
@@ -940,6 +949,31 @@ class DeckDetailView extends React.Component<Props, State> {
     this.setState({
       editDetailsVisible: !this.state.editDetailsVisible,
     });
+  };
+
+  _setTabooSetId = (tabooSetId?: number) => {
+    const {
+      slots,
+      ignoreDeckLimitSlots,
+      meta,
+      nameChange,
+      xpAdjustment,
+    } = this.state;
+    const pendingEdits = this.hasPendingEdits(
+      slots,
+      ignoreDeckLimitSlots,
+      meta,
+      xpAdjustment,
+      nameChange,
+      tabooSetId || 0,
+    );
+    this.props.setTabooSet(tabooSetId);
+    this.setState({
+      tabooSetId: tabooSetId || 0,
+      hasPendingEdits: pendingEdits,
+      editDetailsVisible: false,
+      tabooOpen: false,
+    }, this._syncNavigationButtons);
   };
 
   _updateDeckDetails = (name: string, tabooSetId: number, xpAdjustment: number) => {
@@ -1373,6 +1407,43 @@ class DeckDetailView extends React.Component<Props, State> {
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
       <ScrollView style={styles.menu}>
+        <SettingsCategoryHeader title={t`Deck`} />
+        { editable && (
+          <>
+            <SettingsButton
+              onPress={this._showEditDetailsVisible}
+              title={t`Name`}
+              description={nameChange || deck.name}
+            />
+            <SettingsButton
+              onPress={this._showTabooPicker}
+              title={t`Taboo List`}
+              description={tabooSet ? tabooSet.date_start : t`None`}
+            />
+          </>
+        ) }
+        <SettingsButton
+          onPress={this._toggleCopyDialog}
+          title={t`Clone`}
+        />
+        { deck.local ? (
+          <SettingsButton
+            onPress={this._uploadToArkhamDB}
+            title={t`Upload to ArkhamDB`}
+          />
+        ) : (
+          <SettingsButton
+            title={t`View on ArkhamDB`}
+            onPress={this._viewDeck}
+          />
+        ) }
+        { !!isPrivate && (
+          <SettingsButton
+            title={t`Delete`}
+            titleStyle={styles.destructive}
+            onPress={this._deleteDeckPrompt}
+          />
+        ) }
         <SettingsCategoryHeader title={t`Cards`} />
         <SettingsButton
           onPress={this._onEditPressed}
@@ -1416,43 +1487,6 @@ class DeckDetailView extends React.Component<Props, State> {
             ) }
           </>
         ) }
-        <SettingsCategoryHeader title={t`Deck`} />
-        { editable && (
-          <>
-            <SettingsButton
-              onPress={this._showEditDetailsVisible}
-              title={t`Name`}
-              description={nameChange || deck.name}
-            />
-            <SettingsButton
-              onPress={this._showEditDetailsVisible}
-              title={t`Taboo List`}
-              description={tabooSet ? tabooSet.date_start : t`None`}
-            />
-          </>
-        ) }
-        <SettingsButton
-          onPress={this._toggleCopyDialog}
-          title={t`Clone`}
-        />
-        { deck.local ? (
-          <SettingsButton
-            onPress={this._uploadToArkhamDB}
-            title={t`Upload to ArkhamDB`}
-          />
-        ) : (
-          <SettingsButton
-            title={t`View on ArkhamDB`}
-            onPress={this._viewDeck}
-          />
-        ) }
-        { !!isPrivate && (
-          <SettingsButton
-            title={t`Delete`}
-            titleStyle={styles.destructive}
-            onPress={this._deleteDeckPrompt}
-          />
-        ) }
       </ScrollView>
     );
   }
@@ -1483,6 +1517,7 @@ class DeckDetailView extends React.Component<Props, State> {
       hasPendingEdits,
       xpAdjustment,
       meta,
+      tabooOpen,
     } = this.state;
 
     return (
@@ -1497,6 +1532,9 @@ class DeckDetailView extends React.Component<Props, State> {
             deckName={nameChange || deck.name}
             tabooSet={tabooSet}
             tabooSetId={selectedTabooSetId}
+            showTaboo={selectedTabooSetId !== deck.taboo_id}
+            tabooOpen={tabooOpen}
+            setTabooSet={this._setTabooSetId}
             singleCardView={singleCardView}
             xpAdjustment={xpAdjustment}
             parsedDeck={parsedDeck}

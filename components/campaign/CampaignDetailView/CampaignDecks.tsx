@@ -14,10 +14,10 @@ import { Deck, InvestigatorData, ParsedDeck, Trauma } from '../../../actions/typ
 import DeckValidation from '../../../lib/DeckValidation';
 import { parseDeck } from '../../../lib/parseDeck';
 import Card, { CardsMap } from '../../../data/Card';
-import Button from '../../core/Button';
 import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { showDeckModal } from '../../navHelper';
 import DeckProblemRow from '../../DeckProblemRow';
+import DeckRowButton from '../../DeckRowButton';
 import EditTraumaComponent from '../EditTraumaComponent';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
 import DeckRow from '../DeckRow';
@@ -34,19 +34,19 @@ interface OwnProps extends DeckListProps {
 type Props = OwnProps & DimensionsProps;
 
 class CampaignDeckList extends React.Component<Props> {
-  viewDeck(deck: Deck, investigator: Card) {
+  _viewDeck = (deck: Deck, investigator: Card) => {
     const {
       componentId,
     } = this.props;
     showDeckModal(componentId, deck, investigator);
-  }
+  };
 
-  upgradeDeckPressed(deck: Deck, investigator: Card) {
+  _upgradeDeckPressed = (deck: Deck, investigator: Card) => {
     const {
       showDeckUpgradeDialog,
     } = this.props;
     showDeckUpgradeDialog(deck, investigator);
-  }
+  };
 
   experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
     const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
@@ -101,7 +101,7 @@ class CampaignDeckList extends React.Component<Props> {
         ) }
         { !eliminated && (
           <View style={styles.section}>
-            <Button
+            <DeckRowButton
               icon={(
                 <MaterialCommunityIcons
                   size={18 * iconSizeScale * fontScale}
@@ -110,12 +110,9 @@ class CampaignDeckList extends React.Component<Props> {
                 />
               )}
               text={t`Upgrade Deck`}
-              style={styles.button}
-              size="small"
-              align="left"
-              color="white"
-              onPress={() => this.upgradeDeckPressed(deck, investigator)}
-              grow
+              deck={deck}
+              investigator={investigator}
+              onPress={this._upgradeDeckPressed}
             />
           </View>
         ) }
@@ -162,7 +159,7 @@ class CampaignDeckList extends React.Component<Props> {
           </View>
         ) }
         <View style={styles.section}>
-          <Button
+          <DeckRowButton
             icon={<AppIcon name="deck" size={18 * iconSizeScale * fontScale} color="#222222" />}
             text={
               fontScale > 1.5 ?
@@ -173,12 +170,9 @@ class CampaignDeckList extends React.Component<Props> {
                   `${parsedDeck.normalCardCount} Cards (${parsedDeck.totalCardCount} Total)`,
                   parsedDeck.normalCardCount)
             }
-            style={styles.button}
-            size="small"
-            align="left"
-            color="white"
-            onPress={() => this.viewDeck(deck, investigator)}
-            grow
+            deck={deck}
+            investigator={investigator}
+            onPress={this._viewDeck}
           />
         </View>
       </View>
@@ -251,9 +245,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: xs,
     marginLeft: s,
-  },
-  button: {
-    marginLeft: 0,
   },
   column: {
     flexDirection: 'column',

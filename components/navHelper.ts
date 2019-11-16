@@ -14,14 +14,11 @@ import Card from '../data/Card';
 import { iconsMap } from '../app/NavIcons';
 import { COLORS } from '../styles/colors';
 
-const DECK_MENU = false;
-
 export function getDeckOptions(
   investigator?: Card,
   modal?: boolean,
   title?: string
 ): Options {
-  const investigatorDeckName = investigator ? investigator.name : t`Deck`;
   return {
     statusBar: {
       style: 'light',
@@ -43,10 +40,12 @@ export function getDeckOptions(
         },
       ] : [],
       title: {
-        text: (title !== undefined ? title : investigatorDeckName),
+        fontWeight: 'bold',
+        text: (investigator ? investigator.name : t`Deck`),
         color: '#FFFFFF',
       },
       subtitle: {
+        text: title,
         color: '#FFFFFF',
       },
       background: {
@@ -119,42 +118,17 @@ export function showDeckModal(
     title: investigator ? investigator.name : t`Deck`,
   };
 
-  if (DECK_MENU) {
-    Navigation.showModal({
-      sideMenu: {
-        center: {
-          stack: {
-            options: getDeckOptions(investigator, true),
-            children: [{
-              component: {
-                name: 'Deck',
-                passProps,
-              },
-            }],
-          },
+  Navigation.showModal({
+    stack: {
+      children: [{
+        component: {
+          name: 'Deck',
+          passProps,
+          options: getDeckOptions(investigator, true, deck.name),
         },
-        left: {
-          component: {
-            name: 'Deck.Menu',
-            passProps,
-            options: getDeckOptions(investigator, true),
-          },
-        },
-      },
-    });
-  } else {
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Deck',
-            passProps,
-            options: getDeckOptions(investigator, true),
-          },
-        }],
-      },
-    });
-  }
+      }],
+    },
+  });
 }
 
 export function showCard(
@@ -255,7 +229,6 @@ export function showCardSwipe(
     },
   });
 }
-
 
 export default {
   showDeckModal,

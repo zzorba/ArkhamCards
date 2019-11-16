@@ -1,25 +1,20 @@
 import React from 'react';
 import { find, map } from 'lodash';
 import Realm, { Results } from 'realm';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
 import { connectRealm, TabooSetResults } from 'react-native-realm';
 import { SettingsPicker } from 'react-native-settings-components';
-
 import { t } from 'ttag';
-import { setTabooSet } from './actions';
-import Card from '../../data/Card';
-import TabooSet from '../../data/TabooSet';
-import { AppState, getTabooSet } from '../../reducers';
-import { COLORS } from '../../styles/colors';
 
-interface ReduxProps {
-  cardsLoading?: boolean;
+import Card from '../data/Card';
+import TabooSet from '../data/TabooSet';
+
+interface OwnProps {
+  color: string;
   tabooSetId?: number;
-}
-
-interface ReduxActionProps {
-  setTabooSet: (id?: number) => void;
+  setTabooSet: (tabooSet?: number) => void;
+  disabled?: boolean;
+  description?: string;
+  open?: boolean;
 }
 
 interface RealmProps {
@@ -27,13 +22,22 @@ interface RealmProps {
   tabooSets: Results<TabooSet>;
 }
 
-type Props = ReduxProps & ReduxActionProps & RealmProps;
+type Props = OwnProps & RealmProps;
 
-class TabooPicker extends React.Component<Props> {
+class TabooSetPicker extends React.Component<Props> {
   tabooPickerRef?: SettingsPicker<number>;
+
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.open && !prevProps.open) {
+      this.tabooPickerRef && this.tabooPickerRef.openModal();
+    }
+  }
 
   _captureTabooPickerRef = (ref: SettingsPicker<number>) => {
     this.tabooPickerRef = ref;
+    if (this.props.open && this.tabooPickerRef) {
+      this.tabooPickerRef.openModal();
+    }
   }
 
   _onTabooChange = (tabooId: number) => {
@@ -57,9 +61,11 @@ class TabooPicker extends React.Component<Props> {
 
   render() {
     const {
-      cardsLoading,
+      disabled,
       tabooSets,
       tabooSetId,
+      color,
+      description,
     } = this.props;
     const options = [
       { value: -1, label: t`None` },
@@ -74,7 +80,7 @@ class TabooPicker extends React.Component<Props> {
       <SettingsPicker
         ref={this._captureTabooPickerRef}
         title={t`Taboo List`}
-        dialogDescription={t`Changes the default taboo list for newly created decks and search.`}
+        dialogDescription={description}
         value={tabooSetId || -1}
         valuePlaceholder={t`None`}
         valueFormat={this._tabooSetToLabel}
@@ -82,44 +88,30 @@ class TabooPicker extends React.Component<Props> {
         modalStyle={{
           header: {
             wrapper: {
-              backgroundColor: COLORS.lightBlue,
+              backgroundColor: color,
             },
             description: {
               paddingTop: 8,
             },
           },
           list: {
-            itemColor: COLORS.lightBlue,
+            itemColor: color,
           },
         }}
         options={options}
-        disabled={cardsLoading}
+        disabled={disabled}
       />
     );
   }
 }
 
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    tabooSetId: getTabooSet(state),
-    cardsLoading: state.cards.loading,
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    setTabooSet,
-  }, dispatch);
-}
-
-export default connectRealm<{}, RealmProps, Card, {}, TabooSet>(
-  connect<ReduxProps, ReduxActionProps, RealmProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(TabooPicker), {
+export default connectRealm<OwnProps, RealmProps, Card, {}, TabooSet>(
+  TabooSetPicker, {
     schemas: ['TabooSet'],
-    mapToProps(results: TabooSetResults<TabooSet>, realm: Realm): RealmProps {
+    mapToProps(
+      results: TabooSetResults<TabooSet>,
+      realm: Realm
+    ): RealmProps {
       return {
         realm,
         tabooSets: results.tabooSets,

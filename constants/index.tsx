@@ -207,14 +207,15 @@ export function createFactionIcons(
   defaultColor?: string
 ): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
   return mapValues(FACTION_COLORS, (color, faction) => {
-    return (size: number) => (
-      /* eslint-disable react/display-name */
-      <ArkhamIcon
-        name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
-        size={size}
-        color={defaultColor || color}
-      />
-    );
+    return function factionIcon(size: number) {
+      return (
+        <ArkhamIcon
+          name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
+          size={size}
+          color={defaultColor || color}
+        />
+      );
+    };
   });
 }
 

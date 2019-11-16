@@ -12,7 +12,7 @@ import { Deck, InvestigatorData, ParsedDeck } from '../../../actions/types';
 import Card, { CardsMap } from '../../../data/Card';
 import { parseDeck } from '../../../lib/parseDeck';
 import typography from '../../../styles/typography';
-import Button from '../../core/Button';
+import DeckRowButton from '../../DeckRowButton';
 import { showDeckModal } from '../../navHelper';
 import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
 import DeckList, { DeckListProps } from '../DeckList';
@@ -34,12 +34,12 @@ export default class UpgradeDecksList extends React.Component<Props> {
     showDeckModal(componentId, deck, investigator, campaignId);
   }
 
-  upgradeDeckPressed(deck: Deck, investigator: Card) {
+  _upgradeDeckPressed = (deck: Deck, investigator: Card) => {
     const {
       showDeckUpgradeDialog,
     } = this.props;
     showDeckUpgradeDialog(deck, investigator);
-  }
+  };
 
   experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
     const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
@@ -90,15 +90,12 @@ export default class UpgradeDecksList extends React.Component<Props> {
     }
 
     return (
-      <Button
+      <DeckRowButton
         icon={<MaterialCommunityIcons size={18 * fontScale} color="#222" name="arrow-up-bold" />}
         text={t`Upgrade deck`}
-        style={styles.button}
-        size="small"
-        align="left"
-        color="white"
-        onPress={() => this.upgradeDeckPressed(deck, investigator)}
-        grow
+        deck={deck}
+        investigator={investigator}
+        onPress={this._upgradeDeckPressed}
       />
     );
   }
@@ -178,9 +175,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 4,
     flexDirection: 'column',
-  },
-  button: {
-    marginLeft: 0,
   },
   column: {
     flexDirection: 'column',

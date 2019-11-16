@@ -21,7 +21,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
       return <View style={styles.placeholder} />;
     }
     return (
-      <View style={styles.container}>
+      <View>
         { map(options, (option, idx) => {
           return (
             <InvestigatorOption
@@ -39,10 +39,6 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginLeft: s,
-    marginRight: s,
-  },
   placeholder: {
     marginBottom: s,
   },

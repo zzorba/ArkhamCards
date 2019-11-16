@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
@@ -58,9 +57,6 @@ export default class FactionSelectPicker extends React.Component<Props> {
         value={selection}
         valueFormat={this._codeToLabel}
         onValueChange={this._onChange}
-        containerStyle={styles.container}
-        titleStyle={styles.title}
-        valueStyle={styles.value}
         modalStyle={{
           header: {
             wrapper: {
@@ -79,18 +75,3 @@ export default class FactionSelectPicker extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-  title: {
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-  value: {
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-});
