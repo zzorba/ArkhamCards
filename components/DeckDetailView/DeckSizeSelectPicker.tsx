@@ -12,6 +12,8 @@ interface Props {
   selection?: string;
   onChange: (selection: string) => void;
   investigatorFaction?: FactionCodeType;
+  disabled?: boolean;
+  editWarning: boolean;
 }
 
 export default class DeckSizeSelectPicker extends React.Component<Props> {
@@ -39,6 +41,8 @@ export default class DeckSizeSelectPicker extends React.Component<Props> {
       selection,
       name,
       investigatorFaction,
+      disabled,
+      editWarning,
     } = this.props;
     const options = map(sizes, size => {
       return {
@@ -52,6 +56,14 @@ export default class DeckSizeSelectPicker extends React.Component<Props> {
     return (
       <SettingsPicker
         ref={this._captureRef}
+        disabled={disabled}
+        dialogDescription={editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined}
+        disabledOverlayStyle={{
+          backgroundColor: 'rgba(255,255,255,0.0)',
+        }}
+        valueStyle={{
+          color: COLORS.darkGray,
+        }}
         title={name}
         value={selection}
         valueFormat={this._codeToLabel}

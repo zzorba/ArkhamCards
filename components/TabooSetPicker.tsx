@@ -7,6 +7,7 @@ import { t } from 'ttag';
 
 import Card from '../data/Card';
 import TabooSet from '../data/TabooSet';
+import { COLORS } from '../styles/colors';
 
 interface OwnProps {
   color: string;
@@ -100,6 +101,12 @@ class TabooSetPicker extends React.Component<Props> {
         }}
         options={options}
         disabled={disabled}
+        disabledOverlayStyle={{
+          backgroundColor: 'rgba(255,255,255,0.0)',
+        }}
+        valueStyle={{
+          color: COLORS.darkGray,
+        }}
       />
     );
   }

@@ -1520,6 +1520,11 @@ class DeckDetailView extends React.Component<Props, State> {
       tabooOpen,
     } = this.state;
 
+    const editable = !!isPrivate && !!deck && !deck.next_deck;
+    const showTaboo: boolean = !!(
+      selectedTabooSetId !== deck.taboo_id && (
+        selectedTabooSetId || deck.taboo_id
+      ));
     return (
       <View>
         <View style={styles.container} ref={captureViewRef}>
@@ -1527,12 +1532,13 @@ class DeckDetailView extends React.Component<Props, State> {
             componentId={componentId}
             fontScale={fontScale}
             deck={deck}
+            editable={editable}
             meta={meta}
             setMeta={this._setMeta}
             deckName={nameChange || deck.name}
             tabooSet={tabooSet}
             tabooSetId={selectedTabooSetId}
-            showTaboo={selectedTabooSetId !== deck.taboo_id}
+            showTaboo={showTaboo}
             tabooOpen={tabooOpen}
             setTabooSet={this._setTabooSetId}
             singleCardView={singleCardView}

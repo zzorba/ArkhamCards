@@ -13,6 +13,8 @@ interface Props {
   option: DeckOption;
   meta: DeckMeta;
   setMeta: (key: string, value: string) => void;
+  editWarning: boolean;
+  disabled?: boolean;
 }
 
 export default class InvestigatorOption extends React.Component<Props> {
@@ -33,6 +35,8 @@ export default class InvestigatorOption extends React.Component<Props> {
       investigator,
       option,
       meta,
+      disabled,
+      editWarning,
     } = this.props;
     if (option.faction_select && option.faction_select.length) {
       const selection = (
@@ -46,6 +50,8 @@ export default class InvestigatorOption extends React.Component<Props> {
           onChange={this._onChange}
           selection={selection}
           investigatorFaction={investigator.faction_code}
+          disabled={disabled}
+          editWarning={editWarning}
         />
       );
     }
@@ -61,6 +67,8 @@ export default class InvestigatorOption extends React.Component<Props> {
           onChange={this._onChange}
           selection={selection}
           investigatorFaction={investigator.faction_code}
+          disabled={disabled}
+          editWarning={editWarning}
         />
       );
     }

@@ -162,6 +162,7 @@ interface Props {
   bondedCardsByName: {
     [name: string]: Card[];
   };
+  editable: boolean;
   isPrivate: boolean;
   buttons?: ReactNode;
   showEditSpecial?: () => void;
@@ -429,6 +430,7 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         investigator,
       },
+      deck,
       meta,
       setMeta,
       tabooSet,
@@ -436,12 +438,14 @@ export default class DeckViewTab extends React.Component<Props> {
       setTabooSet,
       showTaboo,
       tabooOpen,
+      editable
     } = this.props;
     return (
       <View>
         { (tabooOpen || showTaboo || !!tabooSet) && (
           <TabooSetPicker
             open={tabooOpen}
+            disabled={!editable}
             tabooSetId={tabooSetId}
             setTabooSet={setTabooSet}
             color={FACTION_DARK_GRADIENTS[
@@ -453,6 +457,8 @@ export default class DeckViewTab extends React.Component<Props> {
           investigator={investigator}
           meta={meta}
           setMeta={setMeta}
+          editWarning={!!deck.previous_deck}
+          disabled={!editable}
         />
       </View>
     );
@@ -483,6 +489,7 @@ export default class DeckViewTab extends React.Component<Props> {
             <View style={styles.metadata}>
               { this.renderInvestigatorStats() }
             </View>
+
           </View>
         </View>
         { this.renderInvestigatorOptions() }

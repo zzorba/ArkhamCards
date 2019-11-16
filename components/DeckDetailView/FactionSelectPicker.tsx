@@ -13,6 +13,8 @@ interface Props {
   selection?: FactionCodeType;
   onChange: (faction: FactionCodeType) => void;
   investigatorFaction?: FactionCodeType;
+  disabled?: boolean;
+  editWarning: boolean;
 }
 
 export default class FactionSelectPicker extends React.Component<Props> {
@@ -40,6 +42,8 @@ export default class FactionSelectPicker extends React.Component<Props> {
       selection,
       name,
       investigatorFaction,
+      disabled,
+      editWarning,
     } = this.props;
     const options = map(factions, faction => {
       return {
@@ -53,6 +57,14 @@ export default class FactionSelectPicker extends React.Component<Props> {
     return (
       <SettingsPicker
         ref={this._captureRef}
+        dialogDescription={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
+        disabled={disabled}
+        disabledOverlayStyle={{
+          backgroundColor: 'rgba(255,255,255,0.0)',
+        }}
+        valueStyle={{
+          color: COLORS.darkGray,
+        }}
         title={name}
         value={selection}
         valueFormat={this._codeToLabel}
