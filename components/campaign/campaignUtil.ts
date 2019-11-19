@@ -1,9 +1,9 @@
-import { capitalize, flatMap, forEach, keys, map, range, sortBy } from 'lodash';
+import { capitalize, flatMap, forEach, keys, map, range, sortBy, values } from 'lodash';
 
 import { CUSTOM, Campaign, DecksMap } from '../../actions/types';
 import { campaignNames } from './constants';
 import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
-import { CHAOS_TOKEN_ORDER, ChaosTokenType } from '../../constants';
+import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '../../constants';
 import { CardsMap } from '../../data/Card';
 
 export function campaignToText(
@@ -83,6 +83,22 @@ export function campaignToText(
   return lines.join('\n');
 }
 
+export function flattenChaosBag(chaosBag: ChaosBag): ChaosTokenType[] {
+  const list = keys(chaosBag);
+  const weight = values(chaosBag);
+  const weightedList: ChaosTokenType[] = [];
+  for (let i = 0; i < weight.length; i++) {
+    const multiples = weight[i];
+    if (multiples) {
+      for (let j = 0; j < multiples; j++) {
+        weightedList.push(list[i] as ChaosTokenType);
+      }
+    }
+  }
+  return weightedList;
+}
+
 export default {
   campaignToText,
+  flattenChaosBag,
 };

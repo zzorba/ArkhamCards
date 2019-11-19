@@ -1,16 +1,14 @@
 import React from 'react';
 import { last } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-
-import { campaignNames, CAMPAIGN_COLORS, difficultyString } from './constants';
+import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
-import { CUSTOM, Campaign } from '../../actions/types';
-import EncounterIcon from '../../assets/EncounterIcon';
+
+import { CAMPAIGN_COLORS, campaignNames } from './constants';
+import { Campaign, CUSTOM } from '../../actions/types';
 import typography from '../../styles/typography';
+import Difficulty from './Difficulty';
+import GameHeader from './GameHeader';
+import BackgroundIcon from './BackgroundIcon';
 
 interface Props {
   campaign: Campaign;
@@ -21,23 +19,6 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     return last(this.props.campaign.scenarioResults);
   }
 
-  renderDifficulty() {
-    const {
-      campaign: {
-        difficulty,
-      },
-    } = this.props;
-    return (
-      <View style={styles.difficultyRow}>
-        <View style={styles.difficulty}>
-          <Text style={typography.smallLabel}>
-            { difficultyString(difficulty).toUpperCase() }
-          </Text>
-        </View>
-      </View>
-    );
-  }
-
   renderCampaign() {
     const {
       campaign: {
@@ -45,13 +26,8 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
         name,
       },
     } = this.props;
-    return (
-      <View style={styles.marginTop}>
-        <Text style={typography.bigGameFont}>
-          { cycleCode === CUSTOM ? name : campaignNames()[cycleCode] }
-        </Text>
-      </View>
-    );
+    const text = cycleCode === CUSTOM ? name : campaignNames()[cycleCode];
+    return <GameHeader text={text} />;
   }
 
   renderLastScenario() {
@@ -91,16 +67,10 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     return (
       <View style={styles.row}>
         { campaign.cycleCode !== CUSTOM && (
-          <View style={styles.backgroundIcon}>
-            <EncounterIcon
-              encounter_code={campaign.cycleCode}
-              size={84}
-              color={CAMPAIGN_COLORS[campaign.cycleCode]}
-            />
-          </View>
+          <BackgroundIcon code={campaign.cycleCode} color={CAMPAIGN_COLORS[campaign.cycleCode]} />
         ) }
         <View>
-          { this.renderDifficulty() }
+          <Difficulty difficulty={campaign.difficulty} />
           { this.renderCampaign() }
           { this.renderLastScenario() }
         </View>
@@ -113,26 +83,9 @@ const styles = StyleSheet.create({
   marginTop: {
     marginTop: 4,
   },
-  backgroundIcon: {
-    position: 'absolute',
-    right: 22,
-    top: 0,
-    width: 110,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
   row: {
     flexDirection: 'row',
     width: '100%',
     position: 'relative',
-  },
-  difficultyRow: {
-    flexDirection: 'row',
-  },
-  difficulty: {
-    backgroundColor: '#dedede',
-    borderRadius: 4,
-    paddingLeft: 4,
-    paddingRight: 4,
   },
 });

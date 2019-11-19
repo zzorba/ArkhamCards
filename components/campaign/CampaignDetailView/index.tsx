@@ -13,8 +13,8 @@ import SideMenu from 'react-native-side-menu';
 import {
   SettingsButton,
 } from 'react-native-settings-components';
-
 import { t } from 'ttag';
+
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '../../../actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
@@ -34,6 +34,7 @@ import { updateCampaign, deleteCampaign } from '../actions';
 import { NavigationProps } from '../../types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
+import { OddsCalculatorProps } from '../../OddsCalculatorDialog';
 
 export interface CampaignDetailProps {
   id: number;
@@ -205,6 +206,28 @@ class CampaignDetailView extends React.Component<Props, State> {
     }
   };
 
+  _oddsCalculatorPressed = () => {
+    const {
+      componentId,
+      campaign,
+      allInvestigators,
+    } = this.props;
+    this.setState({
+      menuOpen: false,
+    });
+    if (campaign) {
+      Navigation.push<OddsCalculatorProps>(componentId, {
+        component: {
+          name: 'OddsCalculator',
+          passProps: {
+            campaign,
+            allInvestigators,
+          },
+        },
+      });
+    }
+  };
+
   _deletePressed = () => {
     const {
       campaign,
@@ -266,6 +289,10 @@ class CampaignDetailView extends React.Component<Props, State> {
           onPress={this._editNamePressed}
           title={t`Name`}
           description={campaign.name}
+        />
+        <SettingsButton
+          title={t`Odds Calculator`}
+          onPress={this._oddsCalculatorPressed}
         />
         <SettingsButton
           onPress={this._showShareSheet}
