@@ -220,6 +220,11 @@ class OddsCalculatorDialog extends React.Component<Props, State> {
             />
           </View>
           { this.renderInvestigatorRows() }
+          <View style={styles.finePrint}>
+            <Text style={typography.small}>
+              { t`Currently, this does not take into account the Elder Sign effects and tokens that have a value of "-X" and those tokens are considered to have a value of 0. In addition to that, it doesn't yet handle tokens that make you draw additional tokens.` }
+            </Text>
+          </View>
         </ScrollView>
       );
     }
@@ -272,5 +277,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  finePrint: {
+    padding: s,
   },
 });
