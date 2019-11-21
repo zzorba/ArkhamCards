@@ -35,6 +35,7 @@ import NewDeckView from '../components/NewDeckView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
 import DeckChartsView from '../components/DeckChartsView';
 import DeckUpgradeDialog from '../components/DeckUpgradeDialog';
+import OddsCalculatorDialog from '../components/OddsCalculatorDialog';
 import CardFilterView from '../components/filter/CardFilterView';
 import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
 import CardLocationFilterView from '../components/filter/CardLocationFilterView';
@@ -80,6 +81,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Campaign.EditResult', () => EditScenarioResultView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.Scenarios', () => CampaignScenarioView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.ChaosBag', () => CampaignChaosBagView, Provider, store);
+  Navigation.registerComponentWithRedux('OddsCalculator', () => OddsCalculatorDialog, Provider, store);
   Navigation.registerComponentWithRedux('Settings', () => SettingsView, Provider, store);
   Navigation.registerComponentWithRedux('Settings.Diagnostics', () => DiagnosticsView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters', () => CardFilterView, Provider, store);

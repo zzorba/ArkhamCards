@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button , ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { cloneDeep, keys, values, shuffle } from 'lodash';
+import { cloneDeep, shuffle } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -18,6 +18,7 @@ import { updateChaosBagResults } from '../actions';
 import { AppState, getCampaign, getChaosBagResults } from '../../../reducers';
 import { SealTokenDialogProps } from '../SealTokenDialog';
 import SealTokenButton from '../SealTokenButton';
+import { flattenChaosBag } from '../campaignUtil';
 
 export interface CampaignChaosBagProps {
   componentId: string;
@@ -154,30 +155,14 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     });
   };
 
-  getWeighedChaosBag(list: any[], weight: any[]) {
-    const weighedList = [];
-
-    for (let i = 0; i < weight.length; i++) {
-      const multiples = weight[i];
-
-      for (let j = 0; j < multiples; j++) {
-        weighedList.push(list[i]);
-      }
-    }
-
-    return weighedList;
-  }
-
   getRandomChaosToken(chaosBag: ChaosBag) {
-    const list = keys(chaosBag);
-    const weight = values(chaosBag);
-    const weighedList = this.getWeighedChaosBag(list, weight);
+    const weightedList = flattenChaosBag(chaosBag);
 
     this.setState({
-      isChaosBagEmpty: weighedList.length <= 1,
+      isChaosBagEmpty: weightedList.length <= 1,
     });
 
-    return shuffle(weighedList)[0];
+    return shuffle(weightedList)[0];
   }
 
   drawToken() {

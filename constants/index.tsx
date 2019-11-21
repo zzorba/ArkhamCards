@@ -102,6 +102,14 @@ export const SKILL_COLORS: { [skill: string]: string } = {
   wild: '#635120',
 };
 
+export const SKILL_COLORS_LIGHT: { [skill: string]: string } = {
+  willpower: '#506A85',
+  intellect: '#7B5373',
+  combat: '#8D5648',
+  agility: '#417F6C',
+  wild: '#8A7D5A',
+};
+
 
 export const FACTION_COLORS: { [faction_code: string]: string } = {
   mystic: '#4331b9',
@@ -148,6 +156,10 @@ export type ChaosTokenType =
   'skull' | 'cultist' | 'tablet' | 'elder_thing' |
   'auto_fail' | 'elder_sign';
 
+export type SpecialChaosTokenType =
+  'skull' | 'cultist' | 'tablet' | 'elder_thing' |
+  'auto_fail' | 'elder_sign';
+
 export const CHAOS_TOKENS: ChaosTokenType[] = [
   '+1', '0', '-1', '-2', '-3',
   '-4', '-5', '-6', '-7', '-8',
@@ -183,6 +195,8 @@ export const SPECIAL_TOKENS: ChaosTokenType[] = [
   'auto_fail',
   'elder_sign',
 ];
+
+export type SpecialTokenValues = { token: ChaosTokenType; value: number; raw_value: string | null }[]
 
 export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '+1': 3,
