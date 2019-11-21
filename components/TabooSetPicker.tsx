@@ -16,6 +16,7 @@ interface OwnProps {
   disabled?: boolean;
   description?: string;
   open?: boolean;
+  transparent?: boolean;
 }
 
 interface RealmProps {
@@ -67,6 +68,7 @@ class TabooSetPicker extends React.Component<Props> {
       tabooSetId,
       color,
       description,
+      transparent,
     } = this.props;
     const options = [
       { value: -1, label: t`None` },
@@ -107,6 +109,9 @@ class TabooSetPicker extends React.Component<Props> {
         valueStyle={{
           color: COLORS.darkGray,
         }}
+        containerStyle={transparent ? {
+          backgroundColor: 'transparent',
+        } : undefined}
       />
     );
   }

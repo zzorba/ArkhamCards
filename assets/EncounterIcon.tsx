@@ -315,7 +315,27 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'waking_nightmare':
       case 'whispers_of_hypnos':
       case 'zoogs':
+      case 'descent_into_the_pitch':
+      case 'terror_of_the_vale':
         return this.dreamIcon(encounter_code, size, color);
+      case 'sfk':
+      case 'the_search_for_kadath':
+        return this.dreamIcon('the_search_for_kadath', size, color);
+      case 'wgd':
+      case 'where_gods_dwell':
+        return this.dreamIcon('where_gods_dwell', size, color);
+      case 'woc':
+      case 'weaver_of_the_cosmos':
+        return this.dreamIcon('weaver_of_the_cosmos', size, color);
+      case 'dsm':
+      case 'dark_side_of_the_moon':
+        return this.dreamIcon('dark_side_of_the_moon', size, color);
+      case 'tsh':
+      case 'a_thousand_shapes_of_horror':
+        return this.dreamIcon('a_thousand_shapes_of_horror', size, color);
+      case 'pnr':
+      case 'point_of_no_return':
+        return this.dreamIcon('point_of_no_return', size, color);
       default:
         return this.coreIcon('core', size, color);
     }

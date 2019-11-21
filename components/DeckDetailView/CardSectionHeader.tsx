@@ -37,24 +37,26 @@ export default class CardSectionHeader extends React.Component<Props> {
       if (section.onPress) {
         const SMALL_EDIT_ICON_SIZE = 18 * iconSizeScale * fontScale;
         return (
-          <TouchableOpacity onPress={section.onPress} style={[
-            styles.superHeaderRow,
-            { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
-          ]}>
-            <Text style={[typography.text, styles.superHeaderText]}>
-              { section.superTitle }
-            </Text>
-            <View style={{
-              width: SMALL_EDIT_ICON_SIZE,
-              height: SMALL_EDIT_ICON_SIZE,
-            }}>
-              <MaterialIcons
-                name="edit"
-                color="#FFF"
-                size={SMALL_EDIT_ICON_SIZE}
-              />
-            </View>
-          </TouchableOpacity>
+          <View style={styles.superHeaderWrapper}>
+            <TouchableOpacity onPress={section.onPress} style={[
+              styles.superHeaderRow,
+              { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
+            ]}>
+              <Text style={[typography.text, styles.superHeaderText]}>
+                { section.superTitle }
+              </Text>
+              <View style={{
+                width: SMALL_EDIT_ICON_SIZE,
+                height: SMALL_EDIT_ICON_SIZE,
+              }}>
+                <MaterialIcons
+                  name="edit"
+                  color="#FFF"
+                  size={SMALL_EDIT_ICON_SIZE}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
         );
       }
       return (
@@ -94,6 +96,9 @@ export default class CardSectionHeader extends React.Component<Props> {
 const styles = StyleSheet.create({
   superHeaderText: {
     color: '#FFF',
+  },
+  superHeaderWrapper: {
+    backgroundColor: '#FFF',
   },
   superHeaderRow: {
     marginTop: l,

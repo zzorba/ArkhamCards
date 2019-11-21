@@ -17,6 +17,7 @@ import DeckProblemRow from '../DeckProblemRow';
 import { CardsMap } from '../../data/Card';
 import typography from '../../styles/typography';
 import { TINY_PHONE } from '../../styles/sizes';
+import { COLORS } from '../../styles/colors';
 import DeckValidation from '../../lib/DeckValidation';
 import { showCardCharts, showDrawSimulator } from '../navHelper';
 import { FOOTER_HEIGHT } from './constants';
@@ -147,33 +148,41 @@ export default class DeckNavFooter extends React.Component<Props> {
     );
     const xpString = this.xpString();
     return (
-      <LinearGradient
-        style={styles.wrapper}
-        colors={FACTION_DARK_GRADIENTS[investigator.factionCode()]}
-      >
-        <View style={styles.left}>
-          <View style={styles.row}>
-            <Text style={[
-              TINY_PHONE ? typography.small : typography.text,
-              styles.whiteText,
-            ]} allowFontScaling={false}>
-              { `${cardCountString} - ${xpString}` }
-            </Text>
+      <View style={styles.borderWrapper}>
+        <LinearGradient
+          style={styles.wrapper}
+          colors={FACTION_DARK_GRADIENTS[investigator.factionCode()]}
+        >
+          <View style={styles.left}>
+            <View style={styles.row}>
+              <Text style={[
+                TINY_PHONE ? typography.small : typography.text,
+                styles.whiteText,
+              ]} allowFontScaling={false}>
+                { `${cardCountString} - ${xpString}` }
+              </Text>
+            </View>
+            <View style={styles.row}>
+              { this.renderProblem() }
+            </View>
           </View>
-          <View style={styles.row}>
-            { this.renderProblem() }
+          <View style={styles.right}>
+            { this.renderControls() }
           </View>
-        </View>
-        <View style={styles.right}>
-          { this.renderControls() }
-        </View>
-      </LinearGradient>
+        </LinearGradient>
+      </View>
     );
   }
 }
 
 const BUTTON_SIZE = 44;
 const styles = StyleSheet.create({
+  borderWrapper: {
+    width: '100%',
+    height: FOOTER_HEIGHT,
+    borderTopWidth: 1,
+    borderColor: COLORS.white,
+  },
   wrapper: {
     width: '100%',
     height: FOOTER_HEIGHT,

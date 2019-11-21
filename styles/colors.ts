@@ -8,6 +8,7 @@ export const COLORS = {
   white: 'rgb(247, 247, 255)',
   red: '#D84144',
   lightGray: 'rgb(230, 230, 230)',
+  veryLightGray: 'rgb(245, 245, 245)',
   gray: 'rgb(201, 201, 201)',
   darkGray: 'rgb(120, 120, 120)',
   lightGreen: 'rgb(114, 221, 82)',

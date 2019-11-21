@@ -83,6 +83,9 @@ export default class FactionSelectPicker extends React.Component<Props> {
           },
         }}
         options={options}
+        containerStyle={{
+          backgroundColor: 'transparent',
+        }}
       />
     );
   }

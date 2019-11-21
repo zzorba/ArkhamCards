@@ -1,9 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import CardSectionHeader from './CardSectionHeader';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import DeckDelta from './DeckDelta';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
@@ -22,10 +28,12 @@ interface OwnProps {
   cards: CardsMap;
   parsedDeck: ParsedDeck;
   isPrivate: boolean;
+  editable: boolean;
   campaign?: Campaign;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   investigatorDataUpdates: any;
   xpAdjustment: number;
+  showDeckUpgrade: () => void;
 }
 
 interface ReduxProps {
@@ -80,30 +88,40 @@ class DeckProgressModule extends React.PureComponent<Props> {
         investigator,
       },
       showTraumaDialog,
+      showDeckUpgrade,
+      editable,
+      fontScale,
     } = this.props;
-    if (!campaign) {
-      return null;
-    }
     return (
       <React.Fragment>
-        <View style={styles.title}>
-          <Text style={typography.smallLabel}>
-            { t`CAMPAIGN PROGRESS` }
-          </Text>
-        </View>
-        <View style={styles.campaign}>
-          <Text style={[typography.text, space.marginBottomS]}>
-            { campaign.name }
-          </Text>
-          <View style={space.marginBottomM}>
-            <CampaignSummaryComponent campaign={campaign} hideScenario />
+        <CardSectionHeader
+          investigator={investigator}
+          section={{ superTitle: t`Campaign` }}
+          fontScale={fontScale}
+        />
+        { !!campaign && (
+          <View style={styles.campaign}>
+            <Text style={[typography.text, space.marginBottomS]}>
+              { campaign.name }
+            </Text>
+            <View style={space.marginBottomM}>
+              <CampaignSummaryComponent campaign={campaign} hideScenario />
+            </View>
+            <EditTraumaComponent
+              investigator={investigator}
+              investigatorData={this.investigatorData()}
+              showTraumaDialog={showTraumaDialog}
+            />
           </View>
-          <EditTraumaComponent
-            investigator={investigator}
-            investigatorData={this.investigatorData()}
-            showTraumaDialog={showTraumaDialog}
-          />
-        </View>
+        ) }
+        { editable && (
+          <View style={styles.buttonWrapper}>
+            <Button
+              title={t`Upgrade Deck with XP`}
+              onPress={showDeckUpgrade}
+            />
+          </View>
+        ) }
       </React.Fragment>
     );
   }
@@ -117,15 +135,17 @@ class DeckProgressModule extends React.PureComponent<Props> {
       parsedDeck,
       xpAdjustment,
       fontScale,
+      editable,
     } = this.props;
 
-    if (!deck.previous_deck && !deck.next_deck && !campaign) {
+    if (!deck.previous_deck && !deck.next_deck && !campaign && !editable) {
       return null;
     }
 
     // Actually compute the diffs.
     return (
       <View style={styles.container}>
+        { this.renderCampaignSection() }
         <ChangesFromPreviousDeck
           componentId={componentId}
           fontScale={fontScale}
@@ -140,7 +160,6 @@ class DeckProgressModule extends React.PureComponent<Props> {
             xpAdjustment={xpAdjustment}
           />
         ) }
-        { this.renderCampaignSection() }
       </View>
     );
   }
@@ -175,11 +194,7 @@ const styles = StyleSheet.create({
     marginLeft: s,
     marginRight: s,
   },
-  title: {
-    marginTop: m,
-    paddingLeft: s,
-    paddingRight: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+  buttonWrapper: {
+    marginTop: s,
   },
 });

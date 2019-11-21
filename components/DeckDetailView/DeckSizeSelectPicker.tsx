@@ -82,6 +82,9 @@ export default class DeckSizeSelectPicker extends React.Component<Props> {
           },
         }}
         options={options}
+        containerStyle={{
+          backgroundColor: 'transparent',
+        }}
       />
     );
   }

@@ -421,7 +421,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   rowContainer: {
-    backgroundColor: 'transparent',
+    backgroundColor: '#FFF',
     position: 'relative',
     width: '100%',
     flexDirection: 'row',

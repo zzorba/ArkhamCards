@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { find, forEach, keys, map, sum, sumBy } from 'lodash';
 import {
+  Button,
   StyleSheet,
   SectionList,
   View,
@@ -13,6 +14,7 @@ import { t } from 'ttag';
 import { Campaign, CardId, Deck, DeckMeta, DeckProblem, InvestigatorData, ParsedDeck, SplitCards, Slots, Trauma } from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
 import ArkhamIcon from '../../assets/ArkhamIcon';
+import AppIcon from '../../assets/AppIcon';
 import InvestigatorImage from '../core/InvestigatorImage';
 import DeckProgressModule from './DeckProgressModule';
 import InvestigatorOptionsModule from './InvestigatorOptionsModule';
@@ -184,6 +186,9 @@ interface Props {
   renderFooter: (slots?: Slots) => React.ReactNode;
   onDeckCountChange: (code: string, count: number) => void;
   setMeta: (key: string, value: string) => void;
+  showEditCards: () => void;
+  showDeckUpgrade: () => void;
+  width: number;
 }
 
 export default class DeckViewTab extends React.Component<Props> {
@@ -348,6 +353,7 @@ export default class DeckViewTab extends React.Component<Props> {
         slots,
       },
       meta,
+      showEditCards,
       showEditSpecial,
       cards,
       cardsByName,
@@ -357,6 +363,12 @@ export default class DeckViewTab extends React.Component<Props> {
     const validation = new DeckValidation(investigator, meta);
 
     return [
+      {
+        id: 'cards',
+        superTitle: t`Cards`,
+        data: [],
+        onPress: showEditCards,
+      },
       ...deckToSections(normalCards, cards, cardsByName, validation, false),
       {
         id: 'special',
@@ -451,6 +463,7 @@ export default class DeckViewTab extends React.Component<Props> {
             color={FACTION_DARK_GRADIENTS[
               (investigator ? investigator.faction_code : null) || 'neutral'
             ][0]}
+            transparent
           />
         ) }
         <InvestigatorOptionsModule
@@ -471,29 +484,47 @@ export default class DeckViewTab extends React.Component<Props> {
         investigator,
       },
       buttons,
+      editable,
+      showEditCards,
+      width,
     } = this.props;
 
     return (
-      <View style={styles.headerBlock}>
-        { this.renderProblem() }
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={this._showInvestigator}>
-              <View style={styles.image}>
-                <InvestigatorImage
-                  card={investigator}
-                  componentId={componentId}
-                />
-              </View>
-            </TouchableOpacity>
-            <View style={styles.metadata}>
-              { this.renderInvestigatorStats() }
-            </View>
-
-          </View>
+      <View style={styles.headerWrapper}>
+        <View style={[styles.kraken, { width: width * 2, top: -width / 3, left: -width * 0.75 }]}>
+          <AppIcon
+            name="kraken"
+            size={width}
+            color={COLORS.veryLightGray}
+          />
         </View>
-        { this.renderInvestigatorOptions() }
-        <View style={styles.container}>
+        <View style={styles.headerBlock}>
+
+          { this.renderProblem() }
+          <View style={styles.container}>
+            <View style={styles.header}>
+              <TouchableOpacity onPress={this._showInvestigator}>
+                <View style={styles.image}>
+                  <InvestigatorImage
+                    card={investigator}
+                    componentId={componentId}
+                  />
+                </View>
+              </TouchableOpacity>
+              <View style={styles.metadata}>
+                { this.renderInvestigatorStats() }
+                { editable && (
+                  <View style={styles.buttonContainer}>
+                    <Button
+                      title={t`Edit Cards`}
+                      onPress={showEditCards}
+                    />
+                  </View>
+                ) }
+              </View>
+            </View>
+          </View>
+          { this.renderInvestigatorOptions() }
           { buttons }
         </View>
       </View>
@@ -511,6 +542,8 @@ export default class DeckViewTab extends React.Component<Props> {
       showTraumaDialog,
       xpAdjustment,
       fontScale,
+      showDeckUpgrade,
+      editable,
     } = this.props;
     return (
       <DeckProgressModule
@@ -519,9 +552,11 @@ export default class DeckViewTab extends React.Component<Props> {
         cards={cards}
         deck={deck}
         parsedDeck={this.props.parsedDeck}
+        editable={editable}
         isPrivate={isPrivate}
         campaign={campaign}
         showTraumaDialog={showTraumaDialog}
+        showDeckUpgrade={showDeckUpgrade}
         investigatorDataUpdates={investigatorDataUpdates}
         xpAdjustment={xpAdjustment}
       />
@@ -552,9 +587,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
+  headerWrapper: {
+    position: 'relative',
+  },
+  kraken: {
+    position: 'absolute',
+    top: -50,
+  },
   metadata: {
     flexDirection: 'column',
     flex: 1,
+    maxWidth: 300,
   },
   image: {
     marginRight: s,
@@ -562,6 +605,9 @@ const styles = StyleSheet.create({
   container: {
     marginLeft: s,
     marginRight: s,
+  },
+  buttonContainer: {
+    marginTop: s,
   },
   problemBox: {
     flex: 1,
@@ -574,12 +620,12 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
+    position: 'relative',
   },
   skillRow: {
     flexDirection: 'row',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    maxWidth: 300,
   },
 });

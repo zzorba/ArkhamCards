@@ -19,15 +19,12 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { Results } from 'realm';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { Navigation, EventSubscription, OptionsTopBarButton } from 'react-native-navigation';
 import DialogComponent from 'react-native-dialog';
 import deepDiff from 'deep-diff';
@@ -43,7 +40,6 @@ import CopyDeckDialog from '../CopyDeckDialog';
 import withTraumaDialog, { TraumaProps } from '../campaign/withTraumaDialog';
 import Dialog from '../core/Dialog';
 import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
-import Button from '../core/Button';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { iconsMap } from '../../app/NavIcons';
 import {
@@ -78,7 +74,7 @@ import {
   getCampaignForDeck,
   AppState,
 } from '../../reducers';
-import { m, s, iconSizeScale } from '../../styles/space';
+import { m, s } from '../../styles/space';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '../navHelper';
@@ -338,6 +334,10 @@ class DeckDetailView extends React.Component<Props, State> {
       menuOpen: false,
       copying: !this.state.copying,
     });
+  };
+
+  _savePressed = () => {
+    this._saveEdits();
   };
 
   getRightButtons() {
@@ -976,11 +976,12 @@ class DeckDetailView extends React.Component<Props, State> {
     }, this._syncNavigationButtons);
   };
 
-  _updateDeckDetails = (name: string, tabooSetId: number, xpAdjustment: number) => {
+  _updateDeckDetails = (name: string, xpAdjustment: number) => {
     const {
       slots,
       ignoreDeckLimitSlots,
       meta,
+      tabooSetId,
     } = this.state;
     const pendingEdits = this.hasPendingEdits(
       slots,
@@ -990,10 +991,8 @@ class DeckDetailView extends React.Component<Props, State> {
       name,
       tabooSetId,
     );
-    this.props.setTabooSet(tabooSetId);
     this.setState({
       nameChange: name,
-      tabooSetId,
       xpAdjustment,
       hasPendingEdits: pendingEdits,
       editDetailsVisible: false,
@@ -1002,13 +1001,11 @@ class DeckDetailView extends React.Component<Props, State> {
 
   renderEditDetailsDialog(deck: Deck, parsedDeck: ParsedDeck) {
     const {
-      tabooSets,
       viewRef,
     } = this.props;
     const {
       editDetailsVisible,
       nameChange,
-      tabooSetId,
       xpAdjustment,
     } = this.state;
     const {
@@ -1016,7 +1013,6 @@ class DeckDetailView extends React.Component<Props, State> {
     } = parsedDeck;
     return (
       <EditDeckDetailsDialog
-        tabooSets={tabooSets}
         viewRef={viewRef}
         visible={editDetailsVisible}
         xp={deck.xp || 0}
@@ -1025,7 +1021,6 @@ class DeckDetailView extends React.Component<Props, State> {
         xpAdjustmentEnabled={!!deck.previous_deck && !deck.next_deck}
         toggleVisible={this._toggleEditDetailsVisible}
         name={nameChange || deck.name}
-        tabooSetId={tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || undefined)}
         updateDetails={this._updateDeckDetails}
       />
     );
@@ -1067,65 +1062,34 @@ class DeckDetailView extends React.Component<Props, State> {
   renderButtons() {
     const {
       deck,
-      fontScale,
     } = this.props;
     const {
       hasPendingEdits,
     } = this.state;
-    if (!deck || deck.next_deck) {
+    if (!deck || deck.next_deck || !hasPendingEdits) {
       return null;
     }
     return (
-      <React.Fragment>
-        <View style={styles.twoColumn}>
-          <View style={styles.halfColumn}>
-            <Button
-              style={styles.button}
-              grow
-              text={t`Edit`}
-              color="purple"
-              size="small"
-              icon={<MaterialIcons size={20 * iconSizeScale * fontScale} color="#FFFFFF" name="edit" />}
-              onPress={this._onEditPressed}
-            />
-          </View>
-          { !hasPendingEdits && (
-            <View style={styles.halfColumn}>
-              <Button
-                text={t`Upgrade Deck`}
-                color="yellow"
-                grow
-                size="small"
-                icon={<MaterialCommunityIcons size={20 * iconSizeScale * fontScale} color="#FFFFFF" name="arrow-up-bold" />}
-                onPress={this._onUpgradePressed}
-              />
-            </View>
-          ) }
-        </View>
-        { !!hasPendingEdits && (
-          <View style={[styles.twoColumn, styles.topSpace]}>
-            <View style={styles.halfColumn}>
-              <Button
-                style={styles.button}
-                text={t`Save`}
-                color="green"
-                size="small"
-                grow
-                onPress={this._saveEdits}
-              />
-            </View>
-            <View style={styles.halfColumn}>
-              <Button
-                text={t`Discard Edits`}
-                color="red"
-                grow
-                size="small"
-                onPress={this._clearEdits}
-              />
+      <View style={[styles.twoColumn, styles.topSpace]}>
+        <TouchableOpacity style={styles.grow} onPress={this._clearEdits}>
+          <View style={[styles.halfColumn, styles.clearButton]}>
+            <View style={styles.button} >
+              <Text style={[typography.text, styles.clearButtonText]}>
+                { t`Discard Edits` }
+              </Text>
             </View>
           </View>
-        ) }
-      </React.Fragment>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.grow} onPress={this._savePressed}>
+          <View style={[styles.halfColumn, styles.saveButton]}>
+            <View style={styles.button}>
+              <Text style={[typography.text, styles.saveButtonText]}>
+                { t`Save` }
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   }
 
@@ -1511,6 +1475,7 @@ class DeckDetailView extends React.Component<Props, State> {
       cardsByName,
       singleCardView,
       bondedCardsByName,
+      width,
     } = this.props;
     const {
       nameChange,
@@ -1551,6 +1516,8 @@ class DeckDetailView extends React.Component<Props, State> {
             bondedCardsByName={bondedCardsByName}
             isPrivate={!!isPrivate}
             buttons={this.renderButtons()}
+            showEditCards={this._onEditPressed}
+            showDeckUpgrade={this._onUpgradePressed}
             showEditNameDialog={this._showEditDetailsVisible}
             showCardUpgradeDialog={this._showCardUpgradeDialog}
             showEditSpecial={deck.next_deck ? undefined : this._onEditSpecialPressed}
@@ -1561,6 +1528,7 @@ class DeckDetailView extends React.Component<Props, State> {
             investigatorDataUpdates={investigatorDataUpdates}
             renderFooter={this._renderFooter}
             onDeckCountChange={this._onDeckCountChange}
+            width={width}
           />
           { this._renderFooter() }
         </View>
@@ -1714,9 +1682,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  button: {
-    marginRight: s,
-  },
   errorMargin: {
     padding: m,
   },
@@ -1729,10 +1694,30 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   halfColumn: {
-    width: '50%',
     flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: COLORS.darkGray,
+    backgroundColor: COLORS.white,
+  },
+  clearButton: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+  },
+  clearButtonText: {
+    color: COLORS.red,
+  },
+  saveButton: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderLeftWidth: 1,
+  },
+  saveButtonText: {
+    color: COLORS.lightBlue,
+  },
+  button: {
+    paddingTop: m,
+    paddingBottom: m,
   },
   menu: {
     borderLeftWidth: 2,
@@ -1741,5 +1726,8 @@ const styles = StyleSheet.create({
   },
   destructive: {
     color: COLORS.red,
+  },
+  grow: {
+    flex: 1,
   },
 });

@@ -6,22 +6,17 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { Results } from 'realm';
 import { t } from 'ttag';
 import DialogComponent from 'react-native-dialog';
 
-import TabooSetDialogOptions from '../TabooSetDialogOptions';
 import Dialog from '../core/Dialog';
 import PlusMinusButtons from '../core/PlusMinusButtons';
-import TabooSet from '../../data/TabooSet';
 import { COLORS } from '../../styles/colors';
 import space, { m } from '../../styles/space';
 import typography from '../../styles/typography';
 
 interface Props {
-  tabooSets: Results<TabooSet>;
   name: string;
-  tabooSetId?: number;
   xp: number;
   spentXp: number;
   xpAdjustment: number;
@@ -29,12 +24,11 @@ interface Props {
   visible: boolean;
   viewRef?: View;
   toggleVisible: () => void;
-  updateDetails: (name: string, tabooSetId: number, xpAdjustment: number) => void;
+  updateDetails: (name: string, xpAdjustment: number) => void;
 }
 
 interface State {
   name: string;
-  tabooSetId?: number;
   xpAdjustment: number;
   saving: boolean;
 }
@@ -51,14 +45,12 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
     const {
       visible,
       name,
-      tabooSetId,
       xpAdjustment,
     } = this.props;
     if (visible && !prevProps.visible) {
       /* eslint-disable react/no-did-update-set-state */
       this.setState({
         name,
-        tabooSetId,
         xpAdjustment,
       });
     }
@@ -93,16 +85,9 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
   _onOkayPress = () => {
     const {
       name,
-      tabooSetId,
       xpAdjustment,
     } = this.state;
-    this.props.updateDetails(name, tabooSetId || 0, xpAdjustment);
-  }
-
-  _setTabooSetId = (tabooSetId?: number) => {
-    this.setState({
-      tabooSetId,
-    });
+    this.props.updateDetails(name, xpAdjustment);
   }
 
   xpString() {
@@ -126,12 +111,10 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
       toggleVisible,
       visible,
       viewRef,
-      tabooSets,
       xpAdjustmentEnabled,
     } = this.props;
     const {
       name,
-      tabooSetId,
       xpAdjustment,
     } = this.state;
     const okDisabled = !name.length;
@@ -174,11 +157,6 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
             </View>
           </View>
         ) }
-        <TabooSetDialogOptions
-          tabooSets={tabooSets}
-          tabooSetId={tabooSetId}
-          setTabooSetId={this._setTabooSetId}
-        />
         <DialogComponent.Button
           label={t`Cancel`}
           onPress={toggleVisible}

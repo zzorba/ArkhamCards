@@ -1,12 +1,9 @@
 import React from 'react';
 import {
-  ImageStyle,
   StyleSheet,
   Text,
-  TextStyle,
   TouchableOpacity,
   View,
-  ViewStyle,
 } from 'react-native';
 import { CachedImage } from 'react-native-cached-image';
 
@@ -41,7 +38,7 @@ export default class InvestigatorImage extends React.Component<Props> {
       card,
       small,
     } = this.props;
-    const size = (small ? 65 : 80) * scaleFactor;
+    const size = (small ? 65 : 100) * scaleFactor;
     const faction_icon = FACTION_ICONS[card.factionCode()];
     return (
       <View style={[styles.container, { width: size, height: size }]}>
@@ -64,7 +61,7 @@ export default class InvestigatorImage extends React.Component<Props> {
         { !!card.imagesrc && (
           <View style={styles.relative}>
             <CachedImage
-              style={styles.image}
+              style={small ? styles.image : styles.bigImage}
               source={{
                 uri: `https://arkhamdb.com/${card.imagesrc}`,
               }}
@@ -88,15 +85,7 @@ export default class InvestigatorImage extends React.Component<Props> {
   }
 }
 
-interface Styles {
-  container: ViewStyle;
-  relative: ViewStyle;
-  image: ImageStyle;
-  placeholder: ViewStyle;
-  placeholderIcon: TextStyle;
-}
-
-const styles = StyleSheet.create<Styles>({
+const styles = StyleSheet.create({
   container: {
     position: 'relative',
     overflow: 'hidden',
@@ -108,9 +97,16 @@ const styles = StyleSheet.create<Styles>({
   image: {
     position: 'absolute',
     top: -17 * scaleFactor,
-    left: -10 * scaleFactor,
+    left: -14 * scaleFactor,
     width: (166 + 44) * scaleFactor,
     height: (136 + 34) * scaleFactor,
+  },
+  bigImage: {
+    position: 'absolute',
+    top: -22 * scaleFactor,
+    left: -10 * scaleFactor,
+    width: (166 + 44) * 1.25 * scaleFactor,
+    height: (136 + 34) * 1.25 * scaleFactor,
   },
   placeholder: {
     position: 'absolute',
