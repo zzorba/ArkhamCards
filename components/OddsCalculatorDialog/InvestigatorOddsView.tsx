@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Card from '../../data/Card';
 import typography from '../../styles/typography';
-import { ChaosBag, ChaosTokenType, SPECIAL_TOKENS } from '../../constants';
+import { ChaosBag, ChaosTokenType, SPECIAL_TOKENS, SpecialTokenValues } from '../../constants';
 import { COLORS } from '../../styles/colors';
 import SkillOddsRow from './SkillOddsRow';
 import { CampaignDifficulty } from '../../actions/types';
@@ -19,7 +19,7 @@ export interface InvestigatorOddsProps {
 type Props = InvestigatorOddsProps;
 
 interface State {
-  specialTokenValues: { token: ChaosTokenType; value: number; raw_value: string | null }[];
+  specialTokenValues: SpecialTokenValues;
 }
 
 export default class InvestigatorOddsView extends React.Component<Props, State> {

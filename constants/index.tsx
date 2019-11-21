@@ -196,6 +196,8 @@ export const SPECIAL_TOKENS: ChaosTokenType[] = [
   'elder_sign',
 ];
 
+export type SpecialTokenValues = { token: ChaosTokenType; value: number; raw_value: string | null }[]
+
 export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '+1': 3,
   '0': 4,

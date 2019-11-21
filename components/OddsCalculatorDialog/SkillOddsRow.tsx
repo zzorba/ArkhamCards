@@ -5,7 +5,7 @@ import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
 import typography from '../../styles/typography';
-import { ChaosBag, ChaosTokenType, SKILL_COLORS, SKILL_COLORS_LIGHT, SkillCodeType } from '../../constants';
+import { ChaosBag, ChaosTokenType, SKILL_COLORS, SKILL_COLORS_LIGHT, SkillCodeType, SpecialTokenValues } from '../../constants';
 import { flattenChaosBag } from '../campaign/campaignUtil';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import PlusMinusButtons from '../core/PlusMinusButtons';
@@ -16,7 +16,7 @@ import { s } from '../../styles/space';
 export interface SkillOddsRowProps {
   chaosBag: ChaosBag;
   stat: number;
-  specialTokenValues: { token: ChaosTokenType; value: number; raw_value: string | null }[];
+  specialTokenValues: SpecialTokenValues;
   type: SkillCodeType;
   testDifficulty: number;
 }
@@ -24,7 +24,7 @@ export interface SkillOddsRowProps {
 type Props = SkillOddsRowProps;
 
 interface State {
-  boosts: {[skill in SkillCodeType]: number};
+  boosts: { [skill in SkillCodeType]: number };
   collapsed: boolean;
   totalTokens: number;
 }
