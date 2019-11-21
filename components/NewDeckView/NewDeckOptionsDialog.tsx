@@ -338,7 +338,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             <RequiredCardSwitch
               key={`${investigatorId}-${index}`}
               index={index}
-              disabled={index === 0 && cardOptions.length === 1 || starterDeck}
+              disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
               label={map(requiredCards, card => card.name).join('\n')}
               value={optionSelected[index] || false}
               onValueChange={this._toggleOptionsSelected}
