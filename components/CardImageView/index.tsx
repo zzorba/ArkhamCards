@@ -100,7 +100,7 @@ class CardImageView extends React.Component<Props, State> {
       return null;
     }
 
-    const cardRatio = 68.0 / 88;
+    const cardRatio = 68 / 95;
     const cardHeight = (height - HEADER_HEIGHT) * cardRatio;
     const cardWidth = width - 16;
     if (card.double_sided || (card.linked_card && card.linked_card.imagesrc)) {

@@ -29,6 +29,7 @@ import { t } from 'ttag';
 import typography from '../../styles/typography';
 import space from '../../styles/space';
 import { COLORS } from '../../styles/colors';
+import starterDecks from '../../assets/starter-decks';
 
 interface OwnProps {
   componentId: string;
@@ -55,6 +56,7 @@ interface State {
   deckName?: string;
   offlineDeck: boolean;
   tabooSetId?: number;
+  starterDeck: boolean;
   optionSelected: boolean[];
 }
 
@@ -70,6 +72,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       offlineDeck: !props.signedIn || !props.isConnected || props.networkType === NetInfoStateType.none,
       optionSelected: [true],
       tabooSetId: props.defaultTabooSetId,
+      starterDeck: false,
     };
 
     this._onOkayPress = throttle(this.onOkayPress.bind(this), 200);
@@ -89,6 +92,12 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       offlineDeck: !value,
     });
   };
+
+  _onStarterDeckChange = (value: boolean) => {
+    this.setState({
+      starterDeck: value,
+    });
+  }
 
   _onDeckNameChange = (value: string) => {
     this.setState({
@@ -187,11 +196,16 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       deckName,
       offlineDeck,
       saving,
+      starterDeck,
       tabooSetId,
     } = this.state;
     const investigator = this.investigator();
     if (investigator && (!saving || isRetry)) {
       const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
+      let slots = this.getSlots();
+      if (starterDeck && starterDecks[investigator.code]) {
+        slots = starterDecks[investigator.code];
+      }
       this.setState({
         saving: true,
       });
@@ -199,7 +213,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         local,
         deckName: deckName || t`New Deck`,
         investigatorCode: investigator.code,
-        slots: this.getSlots(),
+        slots: slots,
         tabooSetId,
       }).then(
         this._showNewDeck,
@@ -288,6 +302,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       deckName,
       offlineDeck,
       optionSelected,
+      starterDeck,
       tabooSetId,
     } = this.state;
     if (saving) {
@@ -300,6 +315,10 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       );
     }
     const cardOptions = this.requiredCardOptions();
+    let hasStarterDeck = false;
+    if (investigatorId) {
+      hasStarterDeck = starterDecks[investigatorId] !== undefined;
+    }
     return (
       <React.Fragment>
         <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
@@ -319,7 +338,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             <RequiredCardSwitch
               key={`${investigatorId}-${index}`}
               index={index}
-              disabled={index === 0 && cardOptions.length === 1}
+              disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
               label={map(requiredCards, card => card.name).join('\n')}
               value={optionSelected[index] || false}
               onValueChange={this._toggleOptionsSelected}
@@ -352,6 +371,14 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
               { t`You seem to be offline. Refresh Network?` }
             </DialogComponent.Description>
           </TouchableOpacity>
+        ) }
+        { hasStarterDeck && (
+          <DialogComponent.Switch
+            label={t`Use Starter Deck?`}
+            value={starterDeck}
+            onValueChange={this._onStarterDeckChange}
+            trackColor={COLORS.switchTrackColor}
+          />
         ) }
       </React.Fragment>
     );
