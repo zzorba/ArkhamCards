@@ -74,7 +74,7 @@ import {
   getCampaignForDeck,
   AppState,
 } from '../../reducers';
-import { m, s } from '../../styles/space';
+import { m } from '../../styles/space';
 import typography from '../../styles/typography';
 import { COLORS } from '../../styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '../navHelper';

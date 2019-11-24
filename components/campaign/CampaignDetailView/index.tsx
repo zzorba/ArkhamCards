@@ -516,9 +516,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           updateWeaknessSet={this._updateWeaknessSet}
         />
         <WeaknessSetSection
-          componentId={componentId}
           fontScale={fontScale}
-          campaignId={campaign.id}
           weaknessSet={campaign.weaknessSet}
           showDrawDialog={this._showDrawWeakness}
         />

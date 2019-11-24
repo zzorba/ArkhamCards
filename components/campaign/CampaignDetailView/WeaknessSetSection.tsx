@@ -5,21 +5,17 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import { Results } from 'realm';
 
 import { t } from 'ttag';
 import { WeaknessSet } from '../../../actions/types';
 import typography from '../../../styles/typography';
-import { COLORS } from '../../../styles/colors';
 import Card from '../../../data/Card';
 import NavButton from '../../core/NavButton';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
 
 interface OwnProps {
-  componentId: string;
   fontScale: number;
-  campaignId: number;
   weaknessSet: WeaknessSet;
   showDrawDialog: () => void;
 }
