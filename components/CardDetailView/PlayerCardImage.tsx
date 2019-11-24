@@ -14,7 +14,7 @@ import Card from '../../data/Card';
 import { isBig } from '../../styles/space';
 
 const FACTION_ICONS = createFactionIcons('#FFF');
-const SCALE_FACTOR = isBig ? 1.5 : 1.0;
+const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 
 interface Props {
   componentId?: string;

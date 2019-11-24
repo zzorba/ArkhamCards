@@ -1,7 +1,7 @@
 import { Platform, StyleSheet } from 'react-native';
 
 import { isBig } from './space';
-const sizeScale = isBig ? 1.5 : 1;
+const sizeScale = isBig ? 1.2 : 1;
 
 export const SMALL_FONT_SIZE = 12 * sizeScale;
 

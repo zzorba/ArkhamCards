@@ -14,12 +14,12 @@ import {
   AlertButton,
   ActivityIndicator,
   BackHandler,
+  Button,
   Linking,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { Results } from 'realm';
@@ -360,18 +360,6 @@ class DeckDetailView extends React.Component<Props, State> {
     return rightButtons;
   }
 
-  _syncNavigationButtons = () => {
-    const {
-      componentId,
-    } = this.props;
-
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons: this.getRightButtons(),
-      },
-    });
-  };
-
   _handleBackPress = () => {
     if (!this.state.visible) {
       return false;
@@ -599,7 +587,7 @@ class DeckDetailView extends React.Component<Props, State> {
           saving: false,
           tabooSetId: newDeck.taboo_id,
           hasPendingEdits: false,
-        }, this._syncNavigationButtons);
+        });
       }, () => {
         this.setState({
           saving: false,
@@ -699,7 +687,7 @@ class DeckDetailView extends React.Component<Props, State> {
             saving: false,
             nameChange: undefined,
             hasPendingEdits: false,
-          }, this._syncNavigationButtons);
+          });
         }
       }, this._handleSaveError);
     }
@@ -818,7 +806,7 @@ class DeckDetailView extends React.Component<Props, State> {
         this.state.xpAdjustment,
         this.state.nameChange,
         this.state.tabooSetId),
-    }, this._syncNavigationButtons);
+    });
   };
 
   _updateIgnoreDeckLimitSlots = (newIgnoreDeckLimitSlots: Slots) => {
@@ -844,7 +832,7 @@ class DeckDetailView extends React.Component<Props, State> {
         this.state.xpAdjustment,
         this.state.nameChange,
         this.state.tabooSetId),
-    }, this._syncNavigationButtons);
+    });
   };
 
   _onDeckCountChange = (code: string, count: number) => {
@@ -885,7 +873,7 @@ class DeckDetailView extends React.Component<Props, State> {
         this.state.xpAdjustment,
         this.state.nameChange,
         this.state.tabooSetId),
-    }, this._syncNavigationButtons);
+    });
   };
 
   loadCards(deck: Deck, previousDeck?: Deck) {
@@ -906,7 +894,7 @@ class DeckDetailView extends React.Component<Props, State> {
         parsedDeck,
         hasPendingEdits: false,
         loaded: true,
-      }, this._syncNavigationButtons);
+      });
     }
   }
 
@@ -973,7 +961,7 @@ class DeckDetailView extends React.Component<Props, State> {
       hasPendingEdits: pendingEdits,
       editDetailsVisible: false,
       tabooOpen: false,
-    }, this._syncNavigationButtons);
+    });
   };
 
   _updateDeckDetails = (name: string, xpAdjustment: number) => {
@@ -996,7 +984,7 @@ class DeckDetailView extends React.Component<Props, State> {
       xpAdjustment,
       hasPendingEdits: pendingEdits,
       editDetailsVisible: false,
-    }, this._syncNavigationButtons);
+    });
   };
 
   renderEditDetailsDialog(deck: Deck, parsedDeck: ParsedDeck) {
@@ -1070,26 +1058,21 @@ class DeckDetailView extends React.Component<Props, State> {
       return null;
     }
     return (
-      <View style={[styles.twoColumn, styles.topSpace]}>
-        <TouchableOpacity style={styles.grow} onPress={this._clearEdits}>
-          <View style={[styles.halfColumn, styles.clearButton]}>
-            <View style={styles.button} >
-              <Text style={[typography.text, styles.clearButtonText]}>
-                { t`Discard Edits` }
-              </Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.grow} onPress={this._savePressed}>
-          <View style={[styles.halfColumn, styles.saveButton]}>
-            <View style={styles.button}>
-              <Text style={[typography.text, styles.saveButtonText]}>
-                { t`Save` }
-              </Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <>
+        <View style={styles.button}>
+          <Button
+            title={t`Save Changes`}
+            onPress={this._savePressed}
+          />
+        </View>
+        <View style={styles.button}>
+          <Button
+            title={t`Discard Changes`}
+            color={COLORS.red}
+            onPress={this._clearEdits}
+          />
+        </View>
+      </>
     );
   }
 
@@ -1386,28 +1369,6 @@ class DeckDetailView extends React.Component<Props, State> {
             />
           </>
         ) }
-        <SettingsButton
-          onPress={this._toggleCopyDialog}
-          title={t`Clone`}
-        />
-        { deck.local ? (
-          <SettingsButton
-            onPress={this._uploadToArkhamDB}
-            title={t`Upload to ArkhamDB`}
-          />
-        ) : (
-          <SettingsButton
-            title={t`View on ArkhamDB`}
-            onPress={this._viewDeck}
-          />
-        ) }
-        { !!isPrivate && (
-          <SettingsButton
-            title={t`Delete`}
-            titleStyle={styles.destructive}
-            onPress={this._deleteDeckPrompt}
-          />
-        ) }
         <SettingsCategoryHeader title={t`Cards`} />
         <SettingsButton
           onPress={this._onEditPressed}
@@ -1450,6 +1411,29 @@ class DeckDetailView extends React.Component<Props, State> {
               />
             ) }
           </>
+        ) }
+        <SettingsCategoryHeader title={t`Options`} />
+        <SettingsButton
+          onPress={this._toggleCopyDialog}
+          title={t`Clone`}
+        />
+        { deck.local ? (
+          <SettingsButton
+            onPress={this._uploadToArkhamDB}
+            title={t`Upload to ArkhamDB`}
+          />
+        ) : (
+          <SettingsButton
+            title={t`View on ArkhamDB`}
+            onPress={this._viewDeck}
+          />
+        ) }
+        { !!isPrivate && (
+          <SettingsButton
+            title={t`Delete`}
+            titleStyle={styles.destructive}
+            onPress={this._deleteDeckPrompt}
+          />
         ) }
       </ScrollView>
     );
@@ -1685,39 +1669,8 @@ const styles = StyleSheet.create({
   errorMargin: {
     padding: m,
   },
-  topSpace: {
-    marginTop: s,
-  },
-  twoColumn: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  },
-  halfColumn: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: COLORS.darkGray,
-    backgroundColor: COLORS.white,
-  },
-  clearButton: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-  },
-  clearButtonText: {
-    color: COLORS.red,
-  },
-  saveButton: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderLeftWidth: 1,
-  },
-  saveButtonText: {
-    color: COLORS.lightBlue,
-  },
   button: {
-    paddingTop: m,
-    paddingBottom: m,
+    margin: 8,
   },
   menu: {
     borderLeftWidth: 2,
@@ -1726,8 +1679,5 @@ const styles = StyleSheet.create({
   },
   destructive: {
     color: COLORS.red,
-  },
-  grow: {
-    flex: 1,
   },
 });

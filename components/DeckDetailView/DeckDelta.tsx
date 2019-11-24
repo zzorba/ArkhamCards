@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Button,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
@@ -11,13 +10,13 @@ import { t } from 'ttag';
 import { getDeckOptions } from '../navHelper';
 import { DeckDetailProps } from '../DeckDetailView';
 import { ParsedDeck } from '../../actions/types';
-import typography from '../../styles/typography';
 import { s } from '../../styles/space';
 
 interface Props {
   componentId: string;
   parsedDeck: ParsedDeck;
   xpAdjustment: number;
+  showXpAdjustment: () => void;
 }
 
 export default class DeckDelta extends React.Component<Props> {
@@ -80,7 +79,7 @@ export default class DeckDelta extends React.Component<Props> {
     } = this.props;
     const spentXp = changes ? changes.spentXp : 0;
     const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    return t`Available experience: ${adjustedExperience}\nSpent experience: ${spentXp}`;
+    return t`Available Experience: ${adjustedExperience} (${spentXp} Spent)`;
   }
 
   render() {
@@ -88,13 +87,14 @@ export default class DeckDelta extends React.Component<Props> {
       parsedDeck: {
         deck,
       },
+      showXpAdjustment,
     } = this.props;
     return (
       <React.Fragment>
         { !!deck.previous_deck && (
-          <Text style={[typography.text, styles.text]}>
-            { this.xpString() }
-          </Text>
+          <View style={styles.button}>
+            <Button title={this.xpString()} onPress={showXpAdjustment} />
+          </View>
         ) }
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
@@ -120,9 +120,6 @@ export default class DeckDelta extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    margin: s,
-  },
   buttonContainer: {
     flexDirection: 'column',
     marginLeft: s,

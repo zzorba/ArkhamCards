@@ -86,7 +86,7 @@ export default class AccordionItem extends React.Component<Props, State> {
       fontScale,
     } = this.props;
 
-    const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.5 : 1.0);
+    const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
 
     const containerHeight = this.state.heightAnim.interpolate({
       inputRange: [0, 1],

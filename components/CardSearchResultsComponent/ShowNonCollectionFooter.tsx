@@ -40,6 +40,6 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   row: {
-    padding: 8 * (isBig ? 1.5 : 1.0),
+    padding: 8 * (isBig ? 1.2 : 1.0),
   },
 });

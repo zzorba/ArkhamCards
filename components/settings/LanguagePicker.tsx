@@ -89,6 +89,9 @@ class LanguagePicker extends React.Component<Props> {
             itemColor: COLORS.lightBlue,
           },
         }}
+        valueStyle={{
+          color: COLORS.darkGray,
+        }}
         options={LANGUAGES}
         disabled={cardsLoading}
       />

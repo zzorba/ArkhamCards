@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { find, forEach, keys, map, sum, sumBy } from 'lodash';
 import {
-  Button,
   StyleSheet,
   SectionList,
   View,
@@ -110,6 +109,13 @@ function deckToSections(
       });
     }
   });
+  if (!special && result.length === 0) {
+    result.push({
+      id: 'cards-placeholder',
+      placeholder: true,
+      data: [],
+    });
+  }
   return result;
 }
 
@@ -365,7 +371,7 @@ export default class DeckViewTab extends React.Component<Props> {
     return [
       {
         id: 'cards',
-        superTitle: t`Cards`,
+        superTitle: t`Deck Cards`,
         data: [],
         onPress: showEditCards,
       },
@@ -404,33 +410,35 @@ export default class DeckViewTab extends React.Component<Props> {
       fontScale,
     } = this.props;
 
-    const ICON_SIZE = fontScale * (isBig ? 1.5 : 1.0) * 18;
+    const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 24;
+    const health = investigator.health || 0;
+    const sanity = investigator.sanity || 0;
     return (
       <View>
         <View style={styles.skillRow}>
-          <Text style={typography.gameFont}>
+          <Text style={typography.bigGameFont}>
             { investigator.skill_willpower || 0 }
             <ArkhamIcon name="willpower" size={ICON_SIZE} color="#222" />
           </Text>
-          <Text style={typography.gameFont}>
+          <Text style={typography.bigGameFont}>
             { investigator.skill_intellect || 0 }
             <ArkhamIcon name="intellect" size={ICON_SIZE} color="#222" />
           </Text>
-          <Text style={typography.gameFont}>
+          <Text style={typography.bigGameFont}>
             { investigator.skill_combat || 0 }
             <ArkhamIcon name="combat" size={ICON_SIZE} color="#222" />
           </Text>
-          <Text style={typography.gameFont}>
+          <Text style={typography.bigGameFont}>
             { investigator.skill_agility || 0 }
             <ArkhamIcon name="agility" size={ICON_SIZE} color="#222" />
           </Text>
         </View>
         <View style={styles.skillRow}>
-          <Text style={typography.gameFont}>
-            { t`Health: ${investigator.health || 0}` }
+          <Text style={typography.bigGameFont}>
+            { t`Health: ${health}` }
           </Text>
-          <Text style={typography.gameFont}>
-            { t`Sanity: ${investigator.sanity || 0}` }
+          <Text style={typography.bigGameFont}>
+            { t`Sanity: ${sanity}` }
           </Text>
         </View>
       </View>
@@ -477,15 +485,36 @@ export default class DeckViewTab extends React.Component<Props> {
     );
   }
 
-  _renderHeader = () => {
+  renderInvestigatorBlock() {
     const {
       componentId,
       parsedDeck: {
         investigator,
       },
+    } = this.props;
+
+    return (
+      <View style={styles.column}>
+        <TouchableOpacity onPress={this._showInvestigator}>
+          <View style={styles.header}>
+            <View style={styles.image}>
+              <InvestigatorImage
+                card={investigator}
+                componentId={componentId}
+              />
+            </View>
+            <View style={styles.metadata}>
+              { this.renderInvestigatorStats() }
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  _renderHeader = () => {
+    const {
       buttons,
-      editable,
-      showEditCards,
       width,
     } = this.props;
 
@@ -499,33 +528,17 @@ export default class DeckViewTab extends React.Component<Props> {
           />
         </View>
         <View style={styles.headerBlock}>
-
           { this.renderProblem() }
           <View style={styles.container}>
-            <View style={styles.header}>
-              <TouchableOpacity onPress={this._showInvestigator}>
-                <View style={styles.image}>
-                  <InvestigatorImage
-                    card={investigator}
-                    componentId={componentId}
-                  />
-                </View>
-              </TouchableOpacity>
-              <View style={styles.metadata}>
-                { this.renderInvestigatorStats() }
-                { editable && (
-                  <View style={styles.buttonContainer}>
-                    <Button
-                      title={t`Edit Cards`}
-                      onPress={showEditCards}
-                    />
-                  </View>
-                ) }
+            { this.renderInvestigatorBlock() }
+            { isBig && (
+              <View style={[styles.column, styles.buttonColumn]}>
+                { buttons }
               </View>
-            </View>
+            ) }
           </View>
           { this.renderInvestigatorOptions() }
-          { buttons }
+          { !isBig && buttons }
         </View>
       </View>
     );
@@ -543,6 +556,7 @@ export default class DeckViewTab extends React.Component<Props> {
       xpAdjustment,
       fontScale,
       showDeckUpgrade,
+      showEditNameDialog,
       editable,
     } = this.props;
     return (
@@ -557,6 +571,7 @@ export default class DeckViewTab extends React.Component<Props> {
         campaign={campaign}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={showDeckUpgrade}
+        showXpAdjustment={showEditNameDialog}
         investigatorDataUpdates={investigatorDataUpdates}
         xpAdjustment={xpAdjustment}
       />
@@ -594,6 +609,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -50,
   },
+  column: {
+    flex: 1,
+  },
+  buttonColumn: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   metadata: {
     flexDirection: 'column',
     flex: 1,
@@ -605,9 +628,7 @@ const styles = StyleSheet.create({
   container: {
     marginLeft: s,
     marginRight: s,
-  },
-  buttonContainer: {
-    marginTop: s,
+    flexDirection: 'row',
   },
   problemBox: {
     flex: 1,

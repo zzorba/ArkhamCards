@@ -34,6 +34,7 @@ interface OwnProps {
   investigatorDataUpdates: any;
   xpAdjustment: number;
   showDeckUpgrade: () => void;
+  showXpAdjustment: () => void;
 }
 
 interface ReduxProps {
@@ -136,6 +137,7 @@ class DeckProgressModule extends React.PureComponent<Props> {
       xpAdjustment,
       fontScale,
       editable,
+      showXpAdjustment,
     } = this.props;
 
     if (!deck.previous_deck && !deck.next_deck && !campaign && !editable) {
@@ -158,6 +160,7 @@ class DeckProgressModule extends React.PureComponent<Props> {
             componentId={componentId}
             parsedDeck={parsedDeck}
             xpAdjustment={xpAdjustment}
+            showXpAdjustment={showXpAdjustment}
           />
         ) }
       </View>
@@ -196,5 +199,6 @@ const styles = StyleSheet.create({
   },
   buttonWrapper: {
     marginTop: s,
+    marginBottom: s,
   },
 });

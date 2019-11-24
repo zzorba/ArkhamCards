@@ -5,7 +5,7 @@ function halfFontScale(fontScale: number) {
   return (fontScale - 1) / 2 + 1;
 }
 export function rowHeight(fontScale: number) {
-  return (isBig ? 72 : 48) * fontScale;
+  return (isBig ? 58 : 48) * fontScale;
 }
 export function iconSize(fontScale: number) {
   return (isBig ? 46 : 32) * halfFontScale(fontScale);

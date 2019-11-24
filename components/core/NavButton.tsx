@@ -30,7 +30,7 @@ export default function NavButton({ text, fontScale, onPress, indent, children, 
         { text ? (
           <View style={[
             styles.text,
-            { minHeight: 22 + 18 * fontScale * (isBig ? 1.5 : 1.0) },
+            { minHeight: 22 + 18 * fontScale * (isBig ? 1.2 : 1.0) },
           ]}>
             <Text style={typography.text} numberOfLines={1}>
               { text }

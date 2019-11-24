@@ -14,7 +14,7 @@ import { isBig } from '../../styles/space';
 
 const FACTION_ICONS = createFactionIcons('#FFF');
 
-const scaleFactor = isBig ? 1.5 : 1.0;
+const scaleFactor = isBig ? 1.2 : 1.0;
 
 interface Props {
   card: Card;
