@@ -12,6 +12,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import SideMenu from 'react-native-side-menu';
 import {
   SettingsButton,
+  SettingsCategoryHeader,
 } from 'react-native-settings-components';
 import { t } from 'ttag';
 
@@ -21,6 +22,11 @@ import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
 import WeaknessSetSection from './WeaknessSetSection';
+import { AddScenarioResultProps } from '../AddScenarioResultView';
+import { CampaignScenarioProps } from '../CampaignScenarioView';
+import { CampaignChaosBagProps } from '../CampaignChaosBagView';
+import { EditChaosBagProps } from '../EditChaosBagDialog';
+import { CampaignDrawWeaknessProps } from '../CampaignDrawWeaknessDialog';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { campaignToText } from '../campaignUtil';
 import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
@@ -282,18 +288,186 @@ class CampaignDetailView extends React.Component<Props, State> {
     });
   };
 
+  _viewScenarios = () => {
+    const {
+      campaign,
+      componentId,
+    } = this.props;
+    if (campaign) {
+      this.setState({
+        menuOpen: false,
+      });
+      Navigation.push<CampaignScenarioProps>(componentId, {
+        component: {
+          name: 'Campaign.Scenarios',
+          passProps: {
+            id: campaign.id,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Scenarios`,
+              },
+              backButton: {
+                title: t`Back`,
+              },
+            },
+          },
+        },
+      });
+    }
+  };
+
+  _addScenarioResult = () => {
+    const {
+      campaign,
+      componentId,
+    } = this.props;
+    if (campaign) {
+      this.setState({
+        menuOpen: false,
+      });
+      Navigation.push<AddScenarioResultProps>(componentId, {
+        component: {
+          name: 'Campaign.AddResult',
+          passProps: {
+            id: campaign.id,
+          },
+        },
+      });
+    }
+  };
+
+  _drawChaosBag = () => {
+    const {
+      componentId,
+      campaign,
+    } = this.props;
+    if (campaign) {
+      this.setState({
+        menuOpen: false,
+      });
+      Navigation.push<CampaignChaosBagProps>(componentId, {
+        component: {
+          name: 'Campaign.ChaosBag',
+          passProps: {
+            componentId,
+            campaignId: campaign.id,
+            updateChaosBag: this._updateChaosBag,
+            trackDeltas: true,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Chaos Bag`,
+              },
+              backButton: {
+                title: t`Back`,
+              },
+            },
+          },
+        },
+      });
+    }
+  };
+
+  _editChaosBag = () => {
+    const {
+      componentId,
+      campaign,
+    } = this.props;
+    if (campaign) {
+      this.setState({
+        menuOpen: false,
+      });
+      Navigation.push<EditChaosBagProps>(componentId, {
+        component: {
+          name: 'Dialog.EditChaosBag',
+          passProps: {
+            chaosBag: campaign.chaosBag,
+            updateChaosBag: this._updateChaosBag,
+            trackDeltas: true,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Chaos Bag`,
+                color: COLORS.black,
+              },
+            },
+          },
+        },
+      });
+    }
+  };
+
+  _showDrawWeakness = () => {
+    const {
+      componentId,
+      campaign,
+    } = this.props;
+    this.setState({
+      menuOpen: false,
+    });
+    if (campaign) {
+      Navigation.push<CampaignDrawWeaknessProps>(componentId, {
+        component: {
+          name: 'Dialog.CampaignDrawWeakness',
+          passProps: {
+            campaignId: campaign.id,
+          },
+          options: {
+            topBar: {
+              title: {
+                text: t`Draw Weaknesses`,
+                color: COLORS.black,
+              },
+              backButton: {
+                title: t`Back`,
+              },
+            },
+          },
+        },
+      });
+    }
+  };
+
   renderSideMenu(campaign: Campaign) {
     return (
       <ScrollView style={styles.menu}>
+        <SettingsCategoryHeader title={t`Campaign`} />
         <SettingsButton
           onPress={this._editNamePressed}
           title={t`Name`}
           description={campaign.name}
         />
         <SettingsButton
+          onPress={this._viewScenarios}
+          title={t`Scenario History`}
+        />
+        <SettingsButton
+          onPress={this._addScenarioResult}
+          title={t`Record Scenario Results`}
+        />
+        <SettingsCategoryHeader title={t`Chaos Bag`} />
+        <SettingsButton
+          title={t`Edit Tokens`}
+          onPress={this._editChaosBag}
+        />
+        <SettingsButton
+          title={t`Draw Tokens`}
+          onPress={this._drawChaosBag}
+        />
+        <SettingsButton
           title={t`Odds Calculator`}
           onPress={this._oddsCalculatorPressed}
         />
+        <SettingsCategoryHeader title={t`Weakness Set`} />
+        <SettingsButton
+          title={t`Draw Basic Weakness`}
+          onPress={this._showDrawWeakness}
+        />
+        <SettingsCategoryHeader title={t`Options`} />
         <SettingsButton
           onPress={this._showShareSheet}
           title={t`Share`}
@@ -319,16 +493,15 @@ class CampaignDetailView extends React.Component<Props, State> {
     return (
       <ScrollView style={styles.flex}>
         <ScenarioSection
-          componentId={componentId}
           campaign={campaign}
           fontScale={fontScale}
+          addScenarioResult={this._addScenarioResult}
+          viewScenarios={this._viewScenarios}
         />
         <ChaosBagSection
-          componentId={componentId}
           fontScale={fontScale}
-          campaignId={campaign.id}
           chaosBag={campaign.chaosBag}
-          updateChaosBag={this._updateChaosBag}
+          showChaosBag={this._drawChaosBag}
         />
         <DecksSection
           componentId={componentId}
@@ -346,6 +519,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           fontScale={fontScale}
           campaignId={campaign.id}
           weaknessSet={campaign.weaknessSet}
+          showDrawDialog={this._showDrawWeakness}
         />
         <CampaignLogSection
           componentId={componentId}

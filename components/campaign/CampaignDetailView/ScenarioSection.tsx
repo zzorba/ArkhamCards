@@ -6,62 +6,20 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import { Campaign } from '../../../actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import NavButton from '../../core/NavButton';
 import typography from '../../../styles/typography';
-import { CampaignScenarioProps } from '../CampaignScenarioView';
-import { AddScenarioResultProps } from '../AddScenarioResultView';
 
 interface Props {
-  componentId: string;
   fontScale: number;
   campaign: Campaign;
+  viewScenarios: () => void;
+  addScenarioResult: () => void;
 }
 export default class ScenarioSection extends React.Component<Props> {
-  _onPress = () => {
-    const {
-      campaign,
-      componentId,
-    } = this.props;
-    Navigation.push<CampaignScenarioProps>(componentId, {
-      component: {
-        name: 'Campaign.Scenarios',
-        passProps: {
-          id: campaign.id,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Scenarios`,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  };
-
-  _addScenarioResult = () => {
-    const {
-      campaign,
-      componentId,
-    } = this.props;
-    Navigation.push<AddScenarioResultProps>(componentId, {
-      component: {
-        name: 'Campaign.AddResult',
-        passProps: {
-          id: campaign.id,
-        },
-      },
-    });
-  };
-
   renderCompletedScenarios() {
     const {
       campaign: {
@@ -93,10 +51,12 @@ export default class ScenarioSection extends React.Component<Props> {
     const {
       campaign,
       fontScale,
+      addScenarioResult,
+      viewScenarios,
     } = this.props;
     return (
       <React.Fragment>
-        <NavButton fontScale={fontScale} onPress={this._onPress} noBorder>
+        <NavButton fontScale={fontScale} onPress={viewScenarios} noBorder>
           <View style={[styles.section, styles.padding, styles.marginTop, styles.marginBottom]}>
             <CampaignSummaryComponent campaign={campaign} />
           </View>
@@ -104,7 +64,7 @@ export default class ScenarioSection extends React.Component<Props> {
         <View style={[styles.button, styles.bottomBorder]}>
           <Button
             title={t`Record Scenario Results`}
-            onPress={this._addScenarioResult}
+            onPress={addScenarioResult}
           />
         </View>
       </React.Fragment>

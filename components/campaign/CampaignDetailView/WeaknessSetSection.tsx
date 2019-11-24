@@ -15,13 +15,13 @@ import { COLORS } from '../../../styles/colors';
 import Card from '../../../data/Card';
 import NavButton from '../../core/NavButton';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
-import { CampaignDrawWeaknessProps } from '../CampaignDrawWeaknessDialog';
 
 interface OwnProps {
   componentId: string;
   fontScale: number;
   campaignId: number;
   weaknessSet: WeaknessSet;
+  showDrawDialog: () => void;
 }
 
 type Props = OwnProps & WeaknessCardProps;
@@ -42,44 +42,19 @@ class WeaknessSetSection extends React.Component<Props> {
     };
   }
 
-  _showDrawDialog = () => {
-    const {
-      componentId,
-      campaignId,
-    } = this.props;
-    Navigation.push<CampaignDrawWeaknessProps>(componentId, {
-      component: {
-        name: 'Dialog.CampaignDrawWeakness',
-        passProps: {
-          campaignId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Draw Weaknesses`,
-              color: COLORS.black,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
-  };
-
   render() {
     const {
       weaknessSet,
       cards,
       fontScale,
+      showDrawDialog,
     } = this.props;
     const counts = WeaknessSetSection.computeCount(weaknessSet, cards);
     if (counts.total === 0) {
       return null;
     }
     return (
-      <NavButton fontScale={fontScale} onPress={this._showDrawDialog}>
+      <NavButton fontScale={fontScale} onPress={showDrawDialog}>
         <View style={styles.padding}>
           <Text style={typography.text}>
             { t`Basic Weakness Set` }
