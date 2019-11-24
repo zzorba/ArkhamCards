@@ -502,6 +502,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           fontScale={fontScale}
           chaosBag={campaign.chaosBag}
           showChaosBag={this._drawChaosBag}
+          showOddsCalculator={this._oddsCalculatorPressed}
         />
         <DecksSection
           componentId={componentId}

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   StyleSheet,
   Text,
   View,
@@ -15,6 +16,7 @@ interface Props {
   fontScale: number;
   chaosBag: ChaosBag;
   showChaosBag: () => void;
+  showOddsCalculator: () => void;
 }
 
 export default function ChaosBagSection(props: Props) {
@@ -22,24 +24,34 @@ export default function ChaosBagSection(props: Props) {
     fontScale,
     showChaosBag,
     chaosBag,
+    showOddsCalculator,
   } = props;
   return (
-    <NavButton
-      fontScale={fontScale}
-      onPress={showChaosBag}
-    >
-      <View style={styles.padding}>
-        <Text style={typography.text}>
-          { t`Chaos Bag` }
-        </Text>
-        <View style={styles.marginTop}>
-          <ChaosBagLine
-            fontScale={fontScale}
-            chaosBag={chaosBag}
-          />
+    <>
+      <NavButton
+        fontScale={fontScale}
+        onPress={showChaosBag}
+        noBorder
+      >
+        <View style={styles.padding}>
+          <Text style={typography.text}>
+            { t`Chaos Bag` }
+          </Text>
+          <View style={styles.marginTop}>
+            <ChaosBagLine
+              fontScale={fontScale}
+              chaosBag={chaosBag}
+            />
+          </View>
         </View>
+      </NavButton>
+      <View style={[styles.button, styles.bottomBorder]}>
+        <Button
+          title={t`Odds Calculator`}
+          onPress={showOddsCalculator}
+        />
       </View>
-    </NavButton>
+    </>
   );
 }
 
@@ -49,5 +61,12 @@ const styles = StyleSheet.create({
   },
   marginTop: {
     marginTop: 8,
+  },
+  button: {
+    padding: 8,
+  },
+  bottomBorder: {
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
   },
 });
