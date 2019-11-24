@@ -198,7 +198,6 @@ const styles = StyleSheet.create({
     marginRight: s,
   },
   buttonWrapper: {
-    marginTop: s,
-    marginBottom: s,
+    margin: s,
   },
 });

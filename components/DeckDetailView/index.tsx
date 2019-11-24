@@ -1402,6 +1402,7 @@ class DeckDetailView extends React.Component<Props, State> {
               onPress={this._onUpgradePressed}
               title={t`Upgrade Deck`}
               disabled={!!hasPendingEdits}
+              description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
             />
             { !!deck.previous_deck && (
               <SettingsButton
