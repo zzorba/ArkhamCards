@@ -410,38 +410,43 @@ export default class DeckViewTab extends React.Component<Props> {
       fontScale,
     } = this.props;
 
-    const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 24;
+    const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 20;
     const health = investigator.health || 0;
     const sanity = investigator.sanity || 0;
     return (
-      <View>
+      <>
         <View style={styles.skillRow}>
-          <Text style={typography.bigGameFont}>
+          <Text style={typography.mediumGameFont}>
+            { investigator.name }
+          </Text>
+        </View>
+        <View style={styles.skillRow}>
+          <Text style={typography.mediumGameFont}>
             { investigator.skill_willpower || 0 }
             <ArkhamIcon name="willpower" size={ICON_SIZE} color="#222" />
           </Text>
-          <Text style={typography.bigGameFont}>
+          <Text style={typography.mediumGameFont}>
             { investigator.skill_intellect || 0 }
             <ArkhamIcon name="intellect" size={ICON_SIZE} color="#222" />
           </Text>
-          <Text style={typography.bigGameFont}>
+          <Text style={typography.mediumGameFont}>
             { investigator.skill_combat || 0 }
             <ArkhamIcon name="combat" size={ICON_SIZE} color="#222" />
           </Text>
-          <Text style={typography.bigGameFont}>
+          <Text style={typography.mediumGameFont}>
             { investigator.skill_agility || 0 }
             <ArkhamIcon name="agility" size={ICON_SIZE} color="#222" />
           </Text>
         </View>
         <View style={styles.skillRow}>
-          <Text style={typography.bigGameFont}>
+          <Text style={typography.mediumGameFont}>
             { t`Health: ${health}` }
           </Text>
-          <Text style={typography.bigGameFont}>
+          <Text style={typography.mediumGameFont}>
             { t`Sanity: ${sanity}` }
           </Text>
         </View>
-      </View>
+      </>
     );
   }
 
@@ -619,6 +624,7 @@ const styles = StyleSheet.create({
   },
   metadata: {
     flexDirection: 'column',
+    justifyContent: 'center',
     flex: 1,
     maxWidth: 300,
   },
@@ -639,8 +645,6 @@ const styles = StyleSheet.create({
   },
   headerBlock: {
     paddingBottom: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
     position: 'relative',
   },
   skillRow: {

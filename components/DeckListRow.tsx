@@ -1,8 +1,10 @@
 import React, { ReactNode } from 'react';
 import {
   ActivityIndicator,
+  Platform,
   StyleSheet,
   Text,
+  TouchableNativeFeedback,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -140,7 +142,7 @@ export default class DeckListRow extends React.Component<Props> {
       );
     }
     return (
-      <React.Fragment>
+      <View>
         <View style={styles.column}>
           <DeckTitleBarComponent
             name={compact && investigator ? investigator.name : deck.name}
@@ -175,7 +177,7 @@ export default class DeckListRow extends React.Component<Props> {
           style={styles.footer}
           dark
         />
-      </React.Fragment>
+      </View>
     );
   }
 
@@ -196,11 +198,21 @@ export default class DeckListRow extends React.Component<Props> {
         </View>
       );
     }
+    if (viewDeckButton) {
+      return this.renderContents();
+    }
+    if (Platform.OS === 'ios') {
+      return (
+        <TouchableOpacity onPress={this._onPress}>
+          { this.renderContents() }
+        </TouchableOpacity>
+      );
+    }
     return (
-      <TouchableOpacity onPress={this._onPress} disabled={viewDeckButton}>
+      <TouchableNativeFeedback useForeground onPress={this._onPress}>
         { this.renderContents() }
-      </TouchableOpacity>
-    );
+      </TouchableNativeFeedback>
+    )
   }
 }
 

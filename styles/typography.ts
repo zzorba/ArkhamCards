@@ -59,6 +59,12 @@ export default StyleSheet.create({
     lineHeight: 26 * sizeScale,
     color: '#222',
   },
+  mediumGameFont: {
+    fontFamily: 'Teutonic',
+    fontSize: 24 * sizeScale,
+    lineHeight: 30 * sizeScale,
+    color: '#222',
+  },
   bigGameFont: {
     fontFamily: 'Teutonic',
     fontSize: 28 * sizeScale,
