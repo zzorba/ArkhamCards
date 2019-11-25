@@ -7862,10 +7862,10 @@ react-native-animatable@^1.3.1:
   dependencies:
     prop-types "^15.7.2"
 
-react-native-app-auth@4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-4.4.0.tgz#fb8ea89095b49e8bd9205d78dbfb7c71cc40f5b3"
-  integrity sha512-rNGjhyK2oR4/dLGyauCJT3UOZn29BG14QfrZwlVBf/Bh941UZOe/0QH9KrtjEfMK6GQg6Tg2pslH6guVpvpW5A==
+react-native-app-auth@5.0.0-rc3:
+  version "5.0.0-rc3"
+  resolved "https://registry.yarnpkg.com/react-native-app-auth/-/react-native-app-auth-5.0.0-rc3.tgz#5504b7721dfaa702eee5aaa1ac5df274cc34f09c"
+  integrity sha512-ixOOnA/yw/Cens6MYV2VFXhBb7iPGHFMoz0N5KPB5ujPr111w+ZrMJfhxaTIJtZLXKM7WVB40+rr1EvXFK4I6Q==
 
 react-native-blur@thedeepanshujain/react-native-blur#rn-0.60.0:
   version "3.3.1"

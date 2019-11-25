@@ -32,7 +32,7 @@
     "lodash": "4.17.15",
     "react": "16.9.0",
     "react-native": "0.61.2",
-    "react-native-app-auth": "4.4.0",
+    "react-native-app-auth": "5.0.0-rc3",
     "react-native-blur": "thedeepanshujain/react-native-blur#rn-0.60.0",
     "react-native-cached-image": "https://github.com/zzorba/react-native-cached-image.git#4e9e49c",
     "react-native-collapsible": "1.5.1",

@@ -1,5 +1,9 @@
 PODS:
-  - AppAuth (0.94.0)
+  - AppAuth (1.2.0):
+    - AppAuth/Core (= 1.2.0)
+    - AppAuth/ExternalUserAgent (= 1.2.0)
+  - AppAuth/Core (1.2.0)
+  - AppAuth/ExternalUserAgent (1.2.0)
   - appcenter (2.5.0):
     - AppCenterReactNativeShared
     - React
@@ -203,6 +207,9 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
   - React-jsinspector (0.61.2)
+  - react-native-app-auth (5.0.0-rc3):
+    - AppAuth (= 1.2.0)
+    - React
   - react-native-blur (0.8.0):
     - React
   - react-native-config (0.11.7):
@@ -252,9 +259,6 @@ PODS:
     - React
   - rn-fetch-blob (0.11.2):
     - React-Core
-  - RNAppAuth (1.0.0):
-    - AppAuth (= 0.94.0)
-    - React
   - RNCAsyncStorage (1.6.2):
     - React
   - RNDeviceInfo (5.2.1):
@@ -288,6 +292,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-app-auth (from `../node_modules/react-native-app-auth`)
   - react-native-blur (from `../node_modules/react-native-blur`)
   - react-native-config (from `../node_modules/react-native-config`)
   - "react-native-in-app-browser (from `../node_modules/@matt-block/react-native-in-app-browser/ios`)"
@@ -306,7 +311,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
-  - RNAppAuth (from `../node_modules/react-native-app-auth/ios`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
@@ -358,6 +362,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-app-auth:
+    :path: "../node_modules/react-native-app-auth"
   react-native-blur:
     :path: "../node_modules/react-native-blur"
   react-native-config:
@@ -392,8 +398,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-navigation"
   rn-fetch-blob:
     :path: "../node_modules/rn-fetch-blob"
-  RNAppAuth:
-    :path: "../node_modules/react-native-app-auth/ios"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
@@ -408,7 +412,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppAuth: 0f099c2286a1a9754e5bd27211c43d307dc4f778
+  AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
   AppCenter: 637f180deefc61e8ab3f94223869ee50f61dabea
   appcenter: bde9923b687332a25607fc1aa9577c9361cfed85
   appcenter-analytics: 0ee7a35def715d4bce58ec435f54161770195166
@@ -430,6 +434,7 @@ SPEC CHECKSUMS:
   React-jsi: 32285a21b1b24c36060493ed3057a34677d58d09
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
+  react-native-app-auth: 58097d76ad30560a82bb62d96e57ac3d183a105b
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-config: 8f6b2b9e017f6a5e92a97353c768e19e67294bb1
   react-native-in-app-browser: 7c73fc7e8389c9d5a7db2c23a8ffca93f79a883a
@@ -447,7 +452,6 @@ SPEC CHECKSUMS:
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
   ReactNativeNavigation: 05727adb34871fdc9293858dd26b4caa8995aa35
   rn-fetch-blob: f525a73a78df9ed5d35e67ea65e79d53c15255bc
-  RNAppAuth: eac16a338ed1117d8b7729b36de3b1a58b5e96f2
   RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
   RNDeviceInfo: 086e9644cc00dbe9bcf26de2fbcb1d9f475c84d0
   RNKeychain: 45dbd50d1ac4bd42c3740f76ffb135abf05746d0
