@@ -4,6 +4,7 @@ import * as Keychain from 'react-native-keychain';
 import { authorize, refresh, revoke, prefetchConfiguration, AuthorizeResult, RefreshResult } from 'react-native-app-auth';
 
 const config: any = {
+  issuer: Config.OAUTH_SITE,
   clientId: Config.OAUTH_CLIENT_ID,
   clientSecret: Config.OAUTH_CLIENT_SECRET,
   redirectUrl: 'arkhamcards://auth/redirect',
