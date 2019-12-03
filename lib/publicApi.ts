@@ -154,7 +154,11 @@ export const syncCards = function(
             if (cards.length > 1) {
               const maxXpCard = head(sortBy(cards, card => -(card.xp || 0)));
               forEach(cards, card => {
-                if (maxXpCard && card.code !== maxXpCard.code) {
+                const xp = card.xp || 0;
+                if (maxXpCard &&
+                  card.code !== maxXpCard.code &&
+                  xp < (maxXpCard.xp || 0)
+                ) {
                   card.has_upgrades = true;
                 }
               });

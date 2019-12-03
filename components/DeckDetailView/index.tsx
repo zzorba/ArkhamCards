@@ -72,6 +72,7 @@ import {
   getDeck,
   getEffectiveDeckId,
   getCampaignForDeck,
+  getPacksInCollection,
   AppState,
 } from '../../reducers';
 import { m } from '../../styles/space';
@@ -92,6 +93,9 @@ interface ReduxProps {
   deck?: Deck;
   previousDeck?: Deck;
   campaign?: Campaign;
+  inCollection: {
+    [pack_code: string]: boolean;
+  };
 }
 
 interface UpgradeCardProps {
@@ -1461,6 +1465,7 @@ class DeckDetailView extends React.Component<Props, State> {
       singleCardView,
       bondedCardsByName,
       width,
+      inCollection,
     } = this.props;
     const {
       nameChange,
@@ -1481,6 +1486,7 @@ class DeckDetailView extends React.Component<Props, State> {
           <DeckViewTab
             componentId={componentId}
             fontScale={fontScale}
+            inCollection={inCollection}
             deck={deck}
             editable={editable}
             meta={meta}
@@ -1587,6 +1593,7 @@ function mapStateToProps(
     deck,
     previousDeck,
     tabooSetOverride,
+    inCollection: getPacksInCollection(state),
     campaign: (props.campaignId ?
       getCampaign(state, props.campaignId) :
       getCampaignForDeck(state, id)) || undefined,

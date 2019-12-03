@@ -212,7 +212,7 @@ export default class DeckListRow extends React.Component<Props> {
       <TouchableNativeFeedback useForeground onPress={this._onPress}>
         { this.renderContents() }
       </TouchableNativeFeedback>
-    )
+    );
   }
 }
 

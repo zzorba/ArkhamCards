@@ -1,7 +1,9 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, View } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
-import { filter, find, reverse, sortBy, sumBy } from 'lodash';
+import { filter, find, reverse, partition, sortBy, sumBy } from 'lodash';
+import { connect } from 'react-redux';
+import { ngettext, msgid } from 'ttag';
 
 import CardUpgradeOption from './CardUpgradeOption';
 import { Deck, DeckMeta, ParsedDeck, Slots } from '../../../actions/types';
@@ -15,6 +17,10 @@ import DeckProblemRow from '../../DeckProblemRow';
 import { m, s } from '../../../styles/space';
 import DeckNavFooter from '../../DeckNavFooter';
 import { parseDeck } from '../../../lib/parseDeck';
+import {
+  getPacksInCollection,
+  AppState,
+} from '../../../reducers';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -34,12 +40,19 @@ export interface CardUpgradeDialogProps {
   xpAdjustment: number;
 }
 
+interface ReduxProps {
+  inCollection: {
+    [pack_code: string]: boolean;
+  };
+}
+
 interface State {
   parsedDeck: ParsedDeck;
   slots: Slots;
+  showNonCollection: boolean;
 }
 
-type Props = CardUpgradeDialogProps & NavigationProps & DimensionsProps;
+type Props = CardUpgradeDialogProps & ReduxProps & NavigationProps & DimensionsProps;
 
 class CardUpgradeDialog extends React.Component<Props, State> {
 
@@ -51,6 +64,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     this.state = {
       parsedDeck: props.parsedDeck,
       slots: props.slots || {},
+      showNonCollection: false,
     };
 
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -164,7 +178,23 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     return parseDeck(deck, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
   }
 
-  renderCard(card: Card, itemIndex: number) {
+  _showNonCollection = () => {
+    this.setState({
+      showNonCollection: true,
+    });
+  };
+
+  inCollection(card: Card) {
+    const { inCollection } = this.props;
+    const { showNonCollection } = this.state;
+    return (
+      card.code === 'core' ||
+      inCollection[card.pack_code] ||
+      showNonCollection
+    );
+  }
+
+  renderCard(card: Card) {
     const {
       componentId,
       tabooSetId,
@@ -174,8 +204,9 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     const {
       slots,
     } = this.state;
+
     return (
-      <View style={styles.column} key={itemIndex}>
+      <View style={styles.column} key={card.code}>
         <CardUpgradeOption
           key={card.code}
           card={card}
@@ -199,7 +230,25 @@ class CardUpgradeDialog extends React.Component<Props, State> {
 
   renderCards() {
     const namedCards = this.namedCards();
-    return namedCards.map((card, index) => this.renderCard(card, index));
+    const [inCollection, nonCollection] = partition(namedCards, card => this.inCollection(card));
+    return (
+      <>
+        { inCollection.map(card => this.renderCard(card)) }
+        { nonCollection.length > 0 ? (
+          <View style={styles.button}>
+            <Button
+              key="non-collection"
+              title={ngettext(
+                msgid`Show ${nonCollection.length} Non-Collection Card`,
+                `Show ${nonCollection.length} Non-Collection Cards`,
+                nonCollection.length
+              )}
+              onPress={this._showNonCollection}
+            />
+          </View>
+        ) : null }
+      </>
+    );
   }
 
   renderFooter(slots?: Slots, controls?: React.ReactNode) {
@@ -263,6 +312,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
             </View>
           ) }
           { this.renderCards() }
+          <View style={styles.footerPadding} />
         </ScrollView>
         { this.renderFooter() }
       </View>
@@ -270,7 +320,15 @@ class CardUpgradeDialog extends React.Component<Props, State> {
   }
 }
 
-export default withDimensions(CardUpgradeDialog);
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    inCollection: getPacksInCollection(state),
+  };
+}
+
+export default connect(mapStateToProps)(
+  withDimensions(CardUpgradeDialog)
+);
 
 const styles = StyleSheet.create({
   column: {
@@ -290,5 +348,11 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
     paddingRight: s,
     paddingLeft: s,
+  },
+  footerPadding: {
+    height: m,
+  },
+  button: {
+    padding: s,
   },
 });

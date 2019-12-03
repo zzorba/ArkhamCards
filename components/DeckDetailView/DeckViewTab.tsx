@@ -43,7 +43,10 @@ function hasUpgrades(
   code: string,
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
-  validation: DeckValidation
+  validation: DeckValidation,
+  inCollection: {
+    [pack_code: string]: boolean;
+  }
 ) {
   const card = cards[code];
   return !!(
@@ -53,7 +56,7 @@ function hasUpgrades(
       upgradeCard &&
       upgradeCard.code !== code &&
       validation.canIncludeCard(upgradeCard, false) &&
-      (card.xp || 0) < (upgradeCard.xp || 0)
+      (upgradeCard.pack_code === 'core' || inCollection[upgradeCard.pack_code])
     )));
 
 }
@@ -63,7 +66,8 @@ function deckToSections(
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
-  special: boolean
+  special: boolean,
+  inCollection: { [pack_code: string]: boolean }
 ): CardSection[] {
   const result: CardSection[] = [];
   if (halfDeck.Assets) {
@@ -82,7 +86,13 @@ function deckToSections(
           return {
             ...c,
             special,
-            hasUpgrades: hasUpgrades(c.id, cards, cardsByName, validation),
+            hasUpgrades: hasUpgrades(
+              c.id,
+              cards,
+              cardsByName,
+              validation,
+              inCollection
+            ),
           };
         }),
       });
@@ -103,7 +113,13 @@ function deckToSections(
           return {
             ...c,
             special,
-            hasUpgrades: hasUpgrades(c.id, cards, cardsByName, validation),
+            hasUpgrades: hasUpgrades(
+              c.id,
+              cards,
+              cardsByName,
+              validation,
+              inCollection
+            ),
           };
         }),
       });
@@ -195,6 +211,9 @@ interface Props {
   showEditCards: () => void;
   showDeckUpgrade: () => void;
   width: number;
+  inCollection: {
+    [pack_code: string]: boolean;
+  };
 }
 
 export default class DeckViewTab extends React.Component<Props> {
@@ -364,6 +383,7 @@ export default class DeckViewTab extends React.Component<Props> {
       cards,
       cardsByName,
       bondedCardsByName,
+      inCollection,
     } = this.props;
 
     const validation = new DeckValidation(investigator, meta);
@@ -375,14 +395,27 @@ export default class DeckViewTab extends React.Component<Props> {
         data: [],
         onPress: showEditCards,
       },
-      ...deckToSections(normalCards, cards, cardsByName, validation, false),
-      {
+      ...deckToSections(
+        normalCards,
+        cards,
+        cardsByName,
+        validation,
+        false,
+        inCollection
+      ), {
         id: 'special',
         superTitle: t`Special Cards`,
         data: [],
         onPress: showEditSpecial,
       },
-      ...deckToSections(specialCards, cards, cardsByName, validation, true),
+      ...deckToSections(
+        specialCards,
+        cards,
+        cardsByName,
+        validation,
+        true,
+        inCollection
+      ),
       ...bondedSections(slots, cards, bondedCardsByName),
     ];
   }

@@ -61,7 +61,6 @@ export default class CardSectionHeader extends React.Component<Props> {
     const {
       investigator,
       section,
-      fontScale,
     } = this.props;
     if (section.placeholder) {
       return (
@@ -69,7 +68,6 @@ export default class CardSectionHeader extends React.Component<Props> {
       );
     }
     if (section.superTitle) {
-      const SMALL_EDIT_ICON_SIZE = 24 * iconSizeScale * fontScale;
       if (section.onPress) {
         if (Platform.OS === 'ios') {
           return (

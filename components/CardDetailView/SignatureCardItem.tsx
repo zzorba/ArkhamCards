@@ -4,7 +4,7 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from '../../data/Card';
 
 interface Props {
-  componentId: string;
+  componentId?: string;
   card: Card;
   width: number;
   fontScale: number;
