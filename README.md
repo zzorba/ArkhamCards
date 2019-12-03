@@ -4,7 +4,7 @@
 
 # Arkham Cards
 
-Create and edit decks for all of your investigators -- it will even check the deck-building rules to keep you honest. You can also group together decks into campaigns to track your progress combatting evils. The app can be used with local decks, or you can link your ArkhamDB accountto sync changes on the go.
+Create and edit decks for all of your investigators -- it will even check the deck-building rules to keep you honest. You can also group together decks into campaigns to track your progress combatting evils. The app can be used with local decks, or you can link your ArkhamDB account to sync changes on the go.
 
 * Edit and upgrade your investigator's decks, either offline or by linking your ArkhamDB account.
 * Track scenario results and keep the campaign log up to date.
