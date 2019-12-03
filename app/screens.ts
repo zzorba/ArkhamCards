@@ -39,7 +39,6 @@ import CardFilterView from '../components/filter/CardFilterView';
 import CardEnemyFilterView from '../components/filter/CardEnemyFilterView';
 import CardLocationFilterView from '../components/filter/CardLocationFilterView';
 import PackFilterView from '../components/filter/PackFilterView';
-import WebViewWrapper from '../components/WebViewWrapper';
 import SettingsView from '../components/settings/SettingsView';
 import DiagnosticsView from '../components/settings/DiagnosticsView';
 import PackCardsView from '../components/PackCardsView';
@@ -90,7 +89,6 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('My.Collection', () => CollectionEditView, Provider, store);
   Navigation.registerComponentWithRedux('Pack', () => PackCardsView, Provider, store);
   Navigation.registerComponentWithRedux('My.Spoilers', () => SpoilersView, Provider, store);
-  Navigation.registerComponentWithRedux('WebView', () => WebViewWrapper, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CardUpgrade', () => CardUpgradeDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.DeckSelector', () => MyDecksSelectorDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.EditChaosBag', () => EditChaosBagDialog, Provider, store);

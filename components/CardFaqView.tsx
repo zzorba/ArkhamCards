@@ -2,6 +2,7 @@ import React from 'react';
 import { head, startsWith } from 'lodash';
 import { connect } from 'react-redux';
 import {
+  Linking,
   RefreshControl,
   ScrollView,
   StyleSheet,
@@ -18,7 +19,6 @@ import FaqEntry from '../data/FaqEntry';
 import CardTextComponent from './CardTextComponent';
 import { showCard } from './navHelper';
 import { NavigationProps } from './types';
-import { WebViewProps } from './WebViewWrapper';
 import { getFaqEntry } from '../lib/publicApi';
 import { getTabooSet, AppState } from '../reducers';
 import typography from '../styles/typography';
@@ -61,25 +61,8 @@ class CardFaqView extends React.Component<Props, State> {
   }
 
   openUrl(url: string) {
-    const {
-      componentId,
-    } = this.props;
     InAppBrowser.open(url).catch(() => {
-      Navigation.push<WebViewProps>(componentId, {
-        component: {
-          name: 'WebView',
-          passProps: {
-            uri: url,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: 'ArkhamDB',
-              },
-            },
-          },
-        },
-      });
+      Linking.openURL(url);
     });
   }
 
