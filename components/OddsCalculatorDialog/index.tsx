@@ -69,9 +69,10 @@ class OddsCalculatorDialog extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     const finishedScenarios = props.campaign && new Set(map(props.campaign.scenarioResults, result => result.scenarioCode)) || new Set;
-    const currentScenario = filter(props.cycleScenarios, scenario => (!finishedScenarios.has(scenario.code)))[0];
+    const currentScenario = filter(props.cycleScenarios, scenario => !scenario.interlude && !finishedScenarios.has(scenario.code))[0] || head(props.cycleScenarios);
+
     this.state = {
-      currentScenario: currentScenario || undefined,
+      currentScenario: currentScenario,
       currentScenarioCard: props.scenarioCards && head(props.scenarioCards.filter(card => card.encounter_code === currentScenario.code)),
       difficulty: props.campaign ? props.campaign.difficulty : undefined,
       testDifficulty: 0,
