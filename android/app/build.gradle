@@ -142,7 +142,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
-        versionCode 93
+        versionCode 94
         versionName "2.0.0"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'

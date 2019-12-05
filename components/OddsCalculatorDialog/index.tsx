@@ -13,7 +13,7 @@ import { AppState } from '../../reducers';
 import typography from '../../styles/typography';
 import { ChaosBag } from '../../constants';
 import { Results } from 'realm';
-import { CAMPAIGN_COLORS, campaignScenarios, Scenario } from '../campaign/constants';
+import { CAMPAIGN_COLORS, campaignScenarios, Scenario, completedScenario } from '../campaign/constants';
 import { s } from '../../styles/space';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import Difficulty from '../campaign/Difficulty';
@@ -68,12 +68,21 @@ class OddsCalculatorDialog extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    const finishedScenarios = props.campaign && new Set(map(props.campaign.scenarioResults, result => result.scenarioCode)) || new Set;
-    const currentScenario = filter(props.cycleScenarios, scenario => !scenario.interlude && !finishedScenarios.has(scenario.code))[0] || head(props.cycleScenarios);
+
+    const hasCompletedScenario = completedScenario(props.campaign ? props.campaign.scenarioResults : []);
+    const currentScenario = head(
+      filter(props.cycleScenarios, scenario =>
+        !scenario.interlude &&
+        !hasCompletedScenario(scenario)
+      )
+    ) || undefined;
 
     this.state = {
-      currentScenario: currentScenario,
-      currentScenarioCard: props.scenarioCards && head(props.scenarioCards.filter(card => card.encounter_code === currentScenario.code)),
+      currentScenario,
+      currentScenarioCard: (props.scenarioCards &&
+        currentScenario &&
+        find(props.scenarioCards, card => card.encounter_code === currentScenario.code)
+      ),
       difficulty: props.campaign ? props.campaign.difficulty : undefined,
       testDifficulty: 0,
     };
@@ -134,7 +143,10 @@ class OddsCalculatorDialog extends React.Component<Props, State> {
       cycleScenarios,
     } = this.props;
     return map(
-      filter(cycleScenarios, scenario => !scenario.interlude),
+      filter(
+        cycleScenarios,
+        scenario => !scenario.interlude
+      ),
       card => card.name
     );
   }
@@ -176,7 +188,7 @@ class OddsCalculatorDialog extends React.Component<Props, State> {
     });
   }
 
-  render() {
+  renderContent() {
     const {
       campaign,
     } = this.props;
@@ -186,49 +198,62 @@ class OddsCalculatorDialog extends React.Component<Props, State> {
       currentScenario,
       currentScenarioCard,
     } = this.state;
-    if (currentScenario && currentScenarioCard) {
-      let scenarioText = currentScenarioCard.text;
-      if (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) {
-        scenarioText = currentScenarioCard.back_text;
-      }
-      return (
-        <ScrollView style={styles.container}>
-          <View style={styles.sectionRow}>
-            { campaign.cycleCode !== CUSTOM && (
-              <BackgroundIcon code={currentScenario.code} color={CAMPAIGN_COLORS[campaign.cycleCode]} />
+    const scenarioText = currentScenarioCard && (
+      (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
+        currentScenarioCard.back_text :
+        currentScenarioCard.text
+    );
+    return (
+      <>
+        <View style={styles.sectionRow}>
+          { campaign.cycleCode !== CUSTOM && !!currentScenario && (
+            <BackgroundIcon
+              code={currentScenario.code}
+              color={CAMPAIGN_COLORS[campaign.cycleCode]}
+            />
+          ) }
+          <View>
+            <Difficulty difficulty={campaign.difficulty} />
+            { !!currentScenario && <GameHeader text={currentScenario.name} /> }
+            { !!scenarioText && (
+              <CardTextComponent text={scenarioText} />
             ) }
-            <View>
-              <Difficulty difficulty={campaign.difficulty} />
-              <GameHeader text={currentScenario.name} />
-              { scenarioText && (
-                <CardTextComponent text={scenarioText} />
-              ) }
-              <Button title={t`Change Scenario`} onPress={this._showScenarioDialog} />
-            </View>
-          </View>
-          <View style={[styles.sectionRow, styles.countRow]}>
-            <Text style={typography.text}>{ t`Difficulty` }</Text>
-            <Text style={[{ color: 'black', fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
-              { testDifficulty }
-            </Text>
-            <PlusMinusButtons
-              count={testDifficulty}
-              size={36}
-              onIncrement={this._increment}
-              onDecrement={this._decrement}
-              allowNegative
-              color="dark"
+            <Button
+              title={t`Change Scenario`}
+              onPress={this._showScenarioDialog}
             />
           </View>
-          { this.renderInvestigatorRows() }
-          <View style={styles.finePrint}>
-            <Text style={typography.small}>
-              { t`Currently, this does not take into account the Elder Sign effects and tokens that have a value of "-X" and those tokens are considered to have a value of 0. In addition to that, it doesn't yet handle tokens that make you draw additional tokens.` }
-            </Text>
-          </View>
-        </ScrollView>
-      );
-    }
+        </View>
+        <View style={[styles.sectionRow, styles.countRow]}>
+          <Text style={typography.text}>{ t`Difficulty` }</Text>
+          <Text style={[{ color: 'black', fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
+            { testDifficulty }
+          </Text>
+          <PlusMinusButtons
+            count={testDifficulty}
+            size={36}
+            onIncrement={this._increment}
+            onDecrement={this._decrement}
+            allowNegative
+            color="dark"
+          />
+        </View>
+        { this.renderInvestigatorRows() }
+      </>
+    );
+  }
+
+  render() {
+    return (
+      <ScrollView style={styles.container}>
+        { this.renderContent() }
+        <View style={styles.finePrint}>
+          <Text style={typography.small}>
+            { t`Currently, this does not take into account the Elder Sign effects and tokens that have a value of "-X" and those tokens are considered to have a value of 0. In addition to that, it doesn't yet handle tokens that make you draw additional tokens.` }
+          </Text>
+        </View>
+      </ScrollView>
+    );
   }
 }
 

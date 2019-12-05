@@ -1,4 +1,6 @@
+import { find, map } from 'lodash';
 import { t } from 'ttag';
+
 import {
   CUSTOM,
   CORE,
@@ -14,6 +16,7 @@ import {
   CampaignDifficulty,
   CampaignCycleCode,
   CustomCampaignLog,
+  ScenarioResult,
 } from '../../actions/types';
 import { ChaosBag } from '../../constants';
 import Card from '../../data/Card';
@@ -58,6 +61,7 @@ export interface Scenario {
   code: string;
   pack_code?: string;
   interlude?: boolean;
+  legacy_codes?: string[];
 }
 
 export function scenarioFromCard(card: Card): Scenario | null {
@@ -69,6 +73,24 @@ export function scenarioFromCard(card: Card): Scenario | null {
     code: card.encounter_code,
     pack_code: card.pack_code,
   };
+}
+
+export function completedScenario(
+  scenarioResults?: ScenarioResult[]
+): (scenario: Scenario) => boolean {
+  const finishedScenarios = new Set(
+    map(scenarioResults || [], result => result.scenarioCode)
+  );
+  const finishedScenarioNames = new Set(
+    map(scenarioResults || [], result => result.scenario)
+  );
+  return (scenario: Scenario) => (
+    finishedScenarioNames.has(scenario.name) ||
+    finishedScenarios.has(scenario.code) ||
+    !!find(scenario.legacy_codes || [],
+      code => finishedScenarios.has(code)
+    )
+  );
 }
 
 export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
@@ -150,9 +172,19 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Epilogue`, code: 'tfa_epilogue', interlude: true },
     ];
     case TCU: return [
-      { name: t`Prologue: Disappearance at the Twilight Estate`, code: 'tcu_prologue', pack_code: 'tcu' },
+      {
+        name: t`Prologue: Disappearance at the Twilight Estate`,
+        code: 'disappearance_at_the_twilight_estate',
+        legacy_codes: ['tcu_prologue'],
+        pack_code: 'tcu',
+      },
       { name: t`The Witching Hour`, code: 'the_witching_hour', pack_code: 'tcu' },
-      { name: t`At Death's Doorstep`, code: 'at_deaths_doorstep_23', pack_code: 'tcu' },
+      {
+        name: t`At Death's Doorstep`,
+        legacy_codes: ['at_deaths_doorstep_23', 'at_deaths_doorstep_1'],
+        code: 'at_deaths_doorstep',
+        pack_code: 'tcu',
+      },
       { name: t`The Price of Progress`, code: 'tcu_interlude_2', interlude: true },
       { name: t`The Secret Name`, code: 'the_secret_name', pack_code: 'tsn' },
       { name: t`The Wages of Sin`, code: 'the_wages_of_sin', pack_code: 'tws' },
