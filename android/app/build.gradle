@@ -132,7 +132,8 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-      compileOptions {
+
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -148,10 +149,6 @@ android {
             appAuthRedirectScheme: 'arkhamcards'
         ]
         multiDexEnabled true
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
     splits {
         abi {
@@ -197,8 +194,10 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.multidex:multidex:2.0.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-navigation')
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -206,7 +205,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }    
-    implementation project(':react-native-navigation')
 }
 
 // Run this once to be able to run the application with BUCK
