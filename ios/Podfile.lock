@@ -221,8 +221,6 @@ PODS:
     - React
   - react-native-netinfo (4.6.1):
     - React
-  - react-native-webview (7.5.2):
-    - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
   - React-RCTAnimation (0.61.5):
@@ -258,7 +256,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (3.3.0):
+  - ReactNativeNavigation (4.0.3):
     - React
   - RealmJS (3.5.0):
     - GCDWebServer
@@ -303,7 +301,6 @@ DEPENDENCIES:
   - react-native-config (from `../node_modules/react-native-config`)
   - "react-native-in-app-browser (from `../node_modules/@matt-block/react-native-in-app-browser/ios`)"
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
-  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -380,8 +377,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@matt-block/react-native-in-app-browser/ios"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
-  react-native-webview:
-    :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -450,7 +445,6 @@ SPEC CHECKSUMS:
   react-native-config: 8f6b2b9e017f6a5e92a97353c768e19e67294bb1
   react-native-in-app-browser: 7c73fc7e8389c9d5a7db2c23a8ffca93f79a883a
   react-native-netinfo: a59d8426a8484f739fe3a95dd6ad5af1435db05f
-  react-native-webview: d1b30cc9128256ec1a9c6d10fb572231bd371337
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -461,7 +455,7 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: 05727adb34871fdc9293858dd26b4caa8995aa35
+  ReactNativeNavigation: 9fa8b88ee4c1e7da3f0faa9653430457c649f069
   RealmJS: 0cf0b60758beb3c6d7d0ca57f5c15e0c4cde36bb
   rn-fetch-blob: f525a73a78df9ed5d35e67ea65e79d53c15255bc
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
