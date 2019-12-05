@@ -201,7 +201,7 @@ export default class DeckListRow extends React.Component<Props> {
     if (viewDeckButton) {
       return this.renderContents();
     }
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === 'ios' || !TouchableNativeFeedback.canUseNativeForeground()) {
       return (
         <TouchableOpacity onPress={this._onPress}>
           { this.renderContents() }
