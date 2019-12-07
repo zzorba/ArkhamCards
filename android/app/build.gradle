@@ -143,7 +143,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
-        versionCode 94
+        versionCode 95
         versionName "2.0.0"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
@@ -194,7 +194,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-navigation')

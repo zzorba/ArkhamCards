@@ -256,7 +256,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (4.0.3):
+  - ReactNativeNavigation (4.0.4):
     - React
   - RealmJS (3.5.0):
     - GCDWebServer
@@ -455,7 +455,7 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: 9fa8b88ee4c1e7da3f0faa9653430457c649f069
+  ReactNativeNavigation: bf2951e30fb873b3ed1e736419c38ed1efe0f6c2
   RealmJS: 0cf0b60758beb3c6d7d0ca57f5c15e0c4cde36bb
   rn-fetch-blob: f525a73a78df9ed5d35e67ea65e79d53c15255bc
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0

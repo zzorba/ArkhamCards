@@ -1,5 +1,5 @@
 diff --git a/node_modules/react-native-navigation/lib/ios/RNNUIBarButtonItem.m b/node_modules/react-native-navigation/lib/ios/RNNUIBarButtonItem.m
-index 0245c31..a1dec65 100644
+index 0245c31..7760675 100644
 --- a/node_modules/react-native-navigation/lib/ios/RNNUIBarButtonItem.m
 +++ b/node_modules/react-native-navigation/lib/ios/RNNUIBarButtonItem.m
 @@ -34,9 +34,10 @@ -(instancetype)init:(NSString*)buttonId withCustomView:(RCTRootView *)reactView
@@ -8,8 +8,8 @@ index 0245c31..a1dec65 100644
  	reactView.backgroundColor = [UIColor clearColor];
 -    reactView.hidden = CGRectEqualToRect(reactView.frame, CGRectZero);
 +  reactView.hidden = CGRectEqualToRect(reactView.frame, CGRectZero);
-+  reactView.translatesAutoresizingMaskIntoConstraints = NO; 
- 	
++  reactView.translatesAutoresizingMaskIntoConstraints = NO;
+     
 -	[NSLayoutConstraint deactivateConstraints:reactView.constraints];
 +  [NSLayoutConstraint deactivateConstraints:reactView.constraints];
  	self.widthConstraint = [NSLayoutConstraint constraintWithItem:reactView
