@@ -38,10 +38,15 @@ export default class CardCostIcon extends React.Component<Props> {
       card.code === '03012' ||
       card.code === '03306' ||
       card.code === '51031' ||
+      card.code === '06023' ||
+      card.code === '06028' ||
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness')
     ) {
       return '-';
+    }
+    if (card.cost === -2) {
+      return 'X';
     }
     return `${card.cost !== null ? card.cost : 'X'}`;
   }

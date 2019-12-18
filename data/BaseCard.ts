@@ -230,6 +230,8 @@ export default class BaseCard {
         this.code === '03012' ||
         this.code === '03306' ||
         this.code === '51031' ||
+        this.code === '06023' ||
+        this.code === '06028' ||
         this.subtype_code === 'weakness' ||
         this.subtype_code === 'basicweakness'))) {
       return t`Cost: -`;
