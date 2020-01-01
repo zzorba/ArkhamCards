@@ -1,4 +1,3 @@
-
 export function formatPercentageText(value: number) {
   value = value * 100;
   return `${Math.round(value)}%`;
