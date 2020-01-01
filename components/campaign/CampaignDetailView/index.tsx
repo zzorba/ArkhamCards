@@ -40,7 +40,7 @@ import { updateCampaign, deleteCampaign } from '../actions';
 import { NavigationProps } from '../../types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
-import { OddsCalculatorProps } from '../../OddsCalculatorDialog';
+import { OddsCalculatorProps } from '../../OddsCalculatorView';
 
 export interface CampaignDetailProps {
   id: number;

@@ -8,7 +8,7 @@ import {
 import { SPECIAL_TOKENS, ChaosTokenType } from '../../constants';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 
-const SPECIAL_TOKENS_SET = new Set(SPECIAL_TOKENS);
+const SPECIAL_TOKENS_SET: Set<ChaosTokenType> = new Set(SPECIAL_TOKENS);
 
 interface Props {
   icon: ChaosTokenType;
@@ -19,9 +19,19 @@ interface Props {
 
 export default function ChaosTokenIcon({ icon, size, color, fontFamily }: Props) {
   if (SPECIAL_TOKENS_SET.has(icon)) {
-    return <ArkhamIcon name={icon} size={size} color={color || '#000'} />;
+    return (
+      <ArkhamIcon
+        name={icon}
+        size={size}
+        color={color || '#000'}
+      />
+    );
   }
-  const textStyle: TextStyle = { fontSize: size, color: color || '#000', fontFamily: fontFamily || 'System' };
+  const textStyle: TextStyle = {
+    fontSize: size,
+    color: color || '#000',
+    fontFamily: fontFamily || 'System',
+  };
   return (
     <Text
       style={[styles.label, textStyle]}

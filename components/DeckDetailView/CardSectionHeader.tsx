@@ -69,7 +69,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     }
     if (section.superTitle) {
       if (section.onPress) {
-        if (Platform.OS === 'ios'|| !TouchableNativeFeedback.canUseNativeForeground()) {
+        if (Platform.OS === 'ios' || !TouchableNativeFeedback.canUseNativeForeground()) {
           return (
             <TouchableOpacity onPress={section.onPress}>
               { this.renderSuperTitle(investigator, section.superTitle) }

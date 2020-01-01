@@ -205,22 +205,22 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Prologue`, code: 'prologue', pack_code: 'tde', interlude: true },
       { name: t`Beyond the Gates of Sleep`, code: 'beyond_the_gates_of_sleep', pack_code: 'tde' },
       { name: t`The Black Cat`, code: 'black_cat', pack_code: 'tde', interlude: true },
-      { name: t`The Search for Kadath`, code: 'sfk', pack_code: 'sfk' },
+      { name: t`The Search for Kadath`, code: 'the_search_for_kadath', pack_code: 'sfk', legacy_codes: ['sfk'] },
       { name: t`The Oneironauts`, code: 'oneironauts', pack_code: 'sfk', interlude: true },
-      { name: t`Dark Side of the Moon`, code: 'dsm', pack_code: 'dsm' },
+      { name: t`Dark Side of the Moon`, code: 'dark_side_of_the_moon', pack_code: 'dsm', legacy_codes: ['dsm'] },
       { name: t`The Great Ones`, code: 'great_ones', pack_code: 'dsm', interlude: true },
-      { name: t`Where Gods Dwell`, code: 'wgd', pack_code: 'wgd' },
+      { name: t`Where Gods Dwell`, code: 'where_godes_dwell', pack_code: 'wgd', legacy_codes: ['wgd'] },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
     case TDEB: return [
       { name: t`Prologue`, code: 'prologue', pack_code: 'tde', interlude: true },
       { name: t`Waking Nightmare`, code: 'waking_nightmare', pack_code: 'tde' },
       { name: t`The Black Cat`, code: 'black_cat', pack_code: 'tde', interlude: true },
-      { name: t`A Thousand Shapes of Horror`, code: 'tsh', pack_code: 'tsh' },
+      { name: t`A Thousand Shapes of Horror`, code: 'a_thousand_shapes_of_horror', pack_code: 'tsh', legacy_codes: ['tsh'] },
       { name: t`The Oneironauts`, code: 'oneironauts', pack_code: 'sfk', interlude: true },
-      { name: t`Point of No Return`, code: 'pnr', pack_code: 'pnr' },
+      { name: t`Point of No Return`, code: 'point_of_no_return', pack_code: 'pnr', legacy_codes: ['pnr'] },
       { name: t`The Great Ones`, code: 'great_ones', pack_code: 'dsm', interlude: true },
-      { name: t`Weaver of the Cosmos`, code: 'woc', pack_code: 'woc' },
+      { name: t`Weaver of the Cosmos`, code: 'weaver_of_the_cosmos', pack_code: 'woc' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
     case CUSTOM: return [];

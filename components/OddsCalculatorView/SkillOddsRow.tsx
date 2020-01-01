@@ -1,11 +1,11 @@
 import React from 'react';
-import { clone, find } from 'lodash';
+import { clone, find, filter, map } from 'lodash';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
 import typography from '../../styles/typography';
-import { ChaosBag, ChaosTokenType, SKILL_COLORS, SKILL_COLORS_LIGHT, SkillCodeType, SpecialTokenValues } from '../../constants';
+import { ChaosBag, ChaosTokenType, SKILL_COLORS, SKILL_COLORS_LIGHT, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from '../../constants';
 import { flattenChaosBag } from '../campaign/campaignUtil';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import PlusMinusButtons from '../core/PlusMinusButtons';
@@ -16,7 +16,7 @@ import { s } from '../../styles/space';
 export interface SkillOddsRowProps {
   chaosBag: ChaosBag;
   stat: number;
-  specialTokenValues: SpecialTokenValues;
+  specialTokenValues: SpecialTokenValue[];
   type: SkillCodeType;
   testDifficulty: number;
 }
@@ -24,9 +24,10 @@ export interface SkillOddsRowProps {
 type Props = SkillOddsRowProps;
 
 interface State {
-  boosts: { [skill in SkillCodeType]: number };
+  boosts: {
+    [skill in SkillCodeType]: number;
+  };
   collapsed: boolean;
-  totalTokens: number;
 }
 
 export default class SkillOddsRow extends React.Component<Props, State> {
@@ -41,7 +42,6 @@ export default class SkillOddsRow extends React.Component<Props, State> {
         wild: 0,
       },
       collapsed: true,
-      totalTokens: flattenChaosBag(this.props.chaosBag).length,
     };
   }
 
@@ -59,30 +59,69 @@ export default class SkillOddsRow extends React.Component<Props, State> {
     });
   };
 
-  getNumberOfSuccessfulTokens(committed: number, successBreakpoint = -1) {
+  totalTokens(keepRevealAnother?: boolean) {
+    return filter(
+      this.modifiedChaosBag(),
+      value => value !== 'reveal_another' || !!keepRevealAnother
+    ).length;
+  }
+
+  modifiedChaosBag(): ChaosTokenValue[] {
     const {
       chaosBag,
       specialTokenValues,
-      testDifficulty,
     } = this.props;
     const flatChaosBag = flattenChaosBag(chaosBag);
-    const successNumber = flatChaosBag.filter((token: ChaosTokenType) => {
-      let tokenValue = parseFloat(token);
-      const specialToken = find(specialTokenValues, t => t.token === token);
-      if (specialToken) {
-        tokenValue = specialToken.value;
+    return map(flatChaosBag, (token: ChaosTokenType) => {
+      if (isSpecialToken(token)) {
+        const specialToken = find(specialTokenValues, t => t.token === token);
+        if (specialToken) {
+          return specialToken.value;
+        }
       }
-      const breakpoint = (committed - testDifficulty) + tokenValue;
-      return breakpoint > successBreakpoint;
+      return parseFloat(token);
     });
-    return successNumber.length;
   }
 
-  calculate(baseStat: number, skill: SkillCodeType, successBreakpoint = -1, calculateFailure = false) {
+  getNumberOfSuccessfulTokens(
+    committed: number,
+    successBreakpoint = -1
+  ) {
+    const {
+      testDifficulty,
+    } = this.props;
+    const chaosBag = this.modifiedChaosBag();
+    const successTokens = filter(chaosBag, (value: ChaosTokenValue) => {
+      switch (value) {
+        case 'auto_fail':
+          return false;
+        case 'auto_succeed':
+          // Auto succeed means succeed by 0.
+          return (successBreakpoint < 0);
+        case 'reveal_another':
+          // Skip this token, it will be skipped on denominator as well.
+          return false;
+        case 'X':
+          return false;
+        default: {
+          const breakpoint = (committed - testDifficulty) + value;
+          return breakpoint > successBreakpoint;
+        }
+      }
+    });
+    return successTokens.length;
+  }
+
+  calculate(
+    baseStat: number,
+    skill: SkillCodeType,
+    successBreakpoint = -1,
+    calculateFailure = false
+  ) {
     const {
       boosts,
-      totalTokens,
     } = this.state;
+    const totalTokens = this.totalTokens();
     baseStat = baseStat || 0;
     const assets = 0;
     const boost = boosts[skill];
@@ -92,7 +131,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
     if (calculateFailure) {
       successNumber = successNumber - successTokens;
     }
-    if (successNumber) {
+    if (successNumber && totalTokens > 0) {
       return (successNumber / totalTokens) || 0;
     }
     return 0;
@@ -114,16 +153,20 @@ export default class SkillOddsRow extends React.Component<Props, State> {
   }
 
   getAutoSuccessPercentage() {
-    const {
-      totalTokens,
-    } = this.state;
-    return (totalTokens - 1) / totalTokens;
+    const tokens = this.modifiedChaosBag();
+    if (!tokens.length) {
+      return 1;
+    }
+    return (
+      tokens.length - filter(tokens, token => token === 'auto_succeed').length
+    ) / tokens.length;
   }
 
-  calculateDrawTwoPickOne(committed: number, type: SkillCodeType) {
-    const {
-      totalTokens,
-    } = this.state;
+  calculateDrawTwoPickOne(
+    committed: number,
+    type: SkillCodeType
+  ) {
+    const totalTokens = this.totalTokens();
     const success = this.calculate(committed, type);
     const autoSuccess = this.getAutoSuccessPercentage();
     const successTokens = this.getNumberOfSuccessfulTokens(committed);
@@ -134,7 +177,11 @@ export default class SkillOddsRow extends React.Component<Props, State> {
     return 1 - (1 - success) * (1 - drawTwo);
   }
 
-  renderAdditionalRow(title: string, value: number, light?: boolean) {
+  renderAdditionalRow(
+    title: string,
+    value: number,
+    light?: boolean
+  ) {
     const {
       type,
     } = this.props;

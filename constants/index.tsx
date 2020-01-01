@@ -150,15 +150,28 @@ export const FACTION_BACKGROUND_COLORS: { [faction_code: string]: string } = Obj
   },
 );
 
-export type ChaosTokenType =
-  '+1' | '0' | '-1' | '-2' | '-3' |
-  '-4' | '-5' | '-6' | '-7' | '-8' |
-  'skull' | 'cultist' | 'tablet' | 'elder_thing' |
-  'auto_fail' | 'elder_sign';
-
 export type SpecialChaosTokenType =
   'skull' | 'cultist' | 'tablet' | 'elder_thing' |
   'auto_fail' | 'elder_sign';
+
+export type ChaosTokenType =
+  '+1' | '0' | '-1' | '-2' | '-3' |
+  '-4' | '-5' | '-6' | '-7' | '-8' |
+  SpecialChaosTokenType;
+
+export function isSpecialToken(token: ChaosTokenType) {
+  switch (token) {
+    case 'skull':
+    case 'cultist':
+    case 'tablet':
+    case 'elder_thing':
+    case 'auto_fail':
+    case 'elder_sign':
+      return true;
+    default:
+      return false;
+  }
+}
 
 export const CHAOS_TOKENS: ChaosTokenType[] = [
   '+1', '0', '-1', '-2', '-3',
@@ -166,7 +179,10 @@ export const CHAOS_TOKENS: ChaosTokenType[] = [
   'skull', 'cultist', 'tablet', 'elder_thing',
   'auto_fail', 'elder_sign',
 ];
-export type ChaosBag = { [chaosToken in ChaosTokenType]?: number; };
+
+export type ChaosBag = {
+  [chaosToken in ChaosTokenType]?: number;
+};
 
 export const CHAOS_TOKEN_ORDER: ChaosBag = {
   '+1': 0,
@@ -187,7 +203,7 @@ export const CHAOS_TOKEN_ORDER: ChaosBag = {
   'elder_sign': 15,
 };
 
-export const SPECIAL_TOKENS: ChaosTokenType[] = [
+export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'skull',
   'cultist',
   'tablet',
@@ -196,7 +212,25 @@ export const SPECIAL_TOKENS: ChaosTokenType[] = [
   'elder_sign',
 ];
 
-export type SpecialTokenValues = { token: ChaosTokenType; value: number; raw_value: string | null }[]
+export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
+  tablet: '#003961',
+  elder_thing: '#4e1a45',
+  skull: '#661e09',
+  cultist: '#00543a',
+};
+
+export type ChaosTokenValue =
+  number |
+  'auto_succeed' |
+  'auto_fail' |
+  'reveal_another' |
+  'X';
+
+export interface SpecialTokenValue {
+  token: ChaosTokenType;
+  value: ChaosTokenValue;
+  xText?: string;
+}
 
 export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   '+1': 3,
