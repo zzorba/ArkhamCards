@@ -209,7 +209,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`The Oneironauts`, code: 'oneironauts', pack_code: 'sfk', interlude: true },
       { name: t`Dark Side of the Moon`, code: 'dark_side_of_the_moon', pack_code: 'dsm', legacy_codes: ['dsm'] },
       { name: t`The Great Ones`, code: 'great_ones', pack_code: 'dsm', interlude: true },
-      { name: t`Where Gods Dwell`, code: 'where_godes_dwell', pack_code: 'wgd', legacy_codes: ['wgd'] },
+      { name: t`Where Gods Dwell`, code: 'where_the_gods_dwell', pack_code: 'wgd', legacy_codes: ['wgd'] },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
     case TDEB: return [
