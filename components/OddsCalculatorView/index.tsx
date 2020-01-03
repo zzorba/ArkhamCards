@@ -1,26 +1,18 @@
 import React from 'react';
-<<<<<<< Updated upstream
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
-=======
-import { filter, find, forEach, head, map } from 'lodash';
->>>>>>> Stashed changes
 import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { CardResults, connectRealm } from 'react-native-realm';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { Results } from 'realm';
-<<<<<<< Updated upstream
 import LinearGradient from 'react-native-linear-gradient';
-=======
->>>>>>> Stashed changes
 
 import { Campaign, CampaignDifficulty, CUSTOM, Deck } from '../../actions/types';
 import { NavigationProps } from '../types';
 import Card from '../../data/Card';
 import { AppState } from '../../reducers';
 import typography from '../../styles/typography';
-<<<<<<< Updated upstream
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '../../constants';
 import VariableTokenInput from './VariableTokenInput';
 import { CAMPAIGN_COLORS, campaignScenarios, Scenario, completedScenario } from '../campaign/constants';
@@ -28,12 +20,6 @@ import { s } from '../../styles/space';
 import ChaosBagLine from '../core/ChaosBagLine';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
-=======
-import { ChaosBag, ChaosTokenValue, SPECIAL_TOKENS, SpecialTokenValue } from '../../constants';
-import { CAMPAIGN_COLORS, campaignScenarios, Scenario, completedScenario } from '../campaign/constants';
-import { s } from '../../styles/space';
-import PlusMinusButtons from '../core/PlusMinusButtons';
->>>>>>> Stashed changes
 import Difficulty from '../campaign/Difficulty';
 import GameHeader from '../campaign/GameHeader';
 import BackgroundIcon from '../campaign/BackgroundIcon';
@@ -58,11 +44,7 @@ interface RealmProps {
   scenarioCards?: Results<Card>;
 }
 
-<<<<<<< Updated upstream
 type Props = NavigationProps & OddsCalculatorProps & ReduxProps & RealmProps & DimensionsProps;
-=======
-type Props = NavigationProps & OddsCalculatorProps & ReduxProps & RealmProps;
->>>>>>> Stashed changes
 
 interface State {
   currentScenario?: Scenario;
@@ -70,10 +52,7 @@ interface State {
   difficulty?: string;
   testDifficulty: number;
   specialTokenValues: SpecialTokenValue[];
-<<<<<<< Updated upstream
   xValue: { [token: string]: number };
-=======
->>>>>>> Stashed changes
 }
 
 class OddsCalculatorView extends React.Component<Props, State> {
@@ -114,7 +93,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
       currentScenarioCard,
       difficulty,
       testDifficulty: 0,
-<<<<<<< Updated upstream
       specialTokenValues: OddsCalculatorView.parseSpecialTokenValues(currentScenarioCard, difficulty),
       xValue: {
         skull: 0,
@@ -122,9 +100,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
         tablet: 0,
         elder_thing: 0,
       },
-=======
-      specialTokenValues: OddsCalculatorView.getSpecialTokenValues(currentScenarioCard, difficulty),
->>>>>>> Stashed changes
     };
 
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -162,7 +137,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
     const {
       scenarioCards,
       cycleScenarios,
-<<<<<<< Updated upstream
       campaign,
     } = this.props;
     const difficulty = campaign ? campaign.difficulty : undefined;
@@ -182,23 +156,11 @@ class OddsCalculatorView extends React.Component<Props, State> {
   };
 
   static parseSpecialTokenValues(
-=======
-    } = this.props;
-    const scenario = find(cycleScenarios, scenario => scenario.name === value);
-    this.setState({
-      currentScenario: scenario,
-      currentScenarioCard: scenarioCards && scenario && head(scenarioCards.filter(card => card.encounter_code === scenario.code)),
-    });
-  };
-
-  static getSpecialTokenValues(
->>>>>>> Stashed changes
     currentScenarioCard?: Card,
     difficulty?: string
   ): SpecialTokenValue[] {
     const scenarioTokens: SpecialTokenValue[] = [];
     if (currentScenarioCard) {
-<<<<<<< Updated upstream
       let scenarioText = currentScenarioCard.text;
       if (difficulty === CampaignDifficulty.HARD ||
         difficulty === CampaignDifficulty.EXPERT) {
@@ -263,46 +225,10 @@ class OddsCalculatorView extends React.Component<Props, State> {
           }
         });
       }
-=======
-      SPECIAL_TOKENS.forEach(token => {
-        const valueRegex = new RegExp(`\\[(${token})\\]:?\\s([-+][0-9X])`);
-        if (token === 'elder_sign') {
-          scenarioTokens.push({
-            token,
-            value: 0,
-            raw_value: '0',
-          });
-        }
-        if (token === 'auto_fail') {
-          scenarioTokens.push({
-            token,
-            value: 'auto_fail',
-            raw_value: '-666',
-          });
-        }
-        let scenarioText = currentScenarioCard.real_text;
-        if (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) {
-          scenarioText = currentScenarioCard.back_text;
-        }
-        if (scenarioText) {
-          if (valueRegex.test(scenarioText)) {
-            const match = scenarioText.match(valueRegex);
-            if (match) {
-              scenarioTokens.push({
-                token,
-                value: parseFloat(match[2]) || 0,
-                raw_value: match[2],
-              });
-            }
-          }
-        }
-      });
->>>>>>> Stashed changes
     }
     return scenarioTokens;
   }
 
-<<<<<<< Updated upstream
   _incrementToken = (token: string) => {
     const { xValue } = this.state;
     this.setState({
@@ -328,13 +254,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
   };
 
   _decrementDifficulty = () => {
-=======
-  _increment = () => {
-    this.modifyTestDifficulty(add);
-  };
-
-  _decrement = () => {
->>>>>>> Stashed changes
     this.modifyTestDifficulty(subtract);
   };
 
@@ -360,7 +279,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
     });
   }
 
-<<<<<<< Updated upstream
   getSpecialTokenValues() {
     const {
       specialTokenValues,
@@ -377,8 +295,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
     });
   }
 
-=======
->>>>>>> Stashed changes
   renderInvestigatorRows() {
     const {
       allInvestigators,
@@ -388,15 +304,10 @@ class OddsCalculatorView extends React.Component<Props, State> {
       difficulty,
       currentScenarioCard,
       testDifficulty,
-<<<<<<< Updated upstream
-=======
-      specialTokenValues,
->>>>>>> Stashed changes
     } = this.state;
     if (!chaosBag || !currentScenarioCard) {
       return;
     }
-<<<<<<< Updated upstream
     const specialTokenValues = this.getSpecialTokenValues();
     return allInvestigators.map((investigator) => (
       <InvestigatorOddsComponent
@@ -435,37 +346,15 @@ class OddsCalculatorView extends React.Component<Props, State> {
         })}
       </>
     );
-=======
-    return allInvestigators.map((investigator) => {
-      return (
-        <InvestigatorOddsComponent
-          key={investigator.real_name}
-          investigator={investigator}
-          difficulty={difficulty}
-          testDifficulty={testDifficulty}
-          chaosBag={chaosBag}
-          specialTokenValues={specialTokenValues}
-        />
-      );
-
-    });
->>>>>>> Stashed changes
   }
 
   renderContent() {
     const {
       campaign,
-<<<<<<< Updated upstream
       fontScale,
     } = this.props;
     const {
       difficulty,
-=======
-    } = this.props;
-    const {
-      difficulty,
-      testDifficulty,
->>>>>>> Stashed changes
       currentScenario,
       currentScenarioCard,
     } = this.state;
@@ -483,11 +372,7 @@ class OddsCalculatorView extends React.Component<Props, State> {
               color={CAMPAIGN_COLORS[campaign.cycleCode]}
             />
           ) }
-<<<<<<< Updated upstream
           <View style={styles.button}>
-=======
-          <View>
->>>>>>> Stashed changes
             <Difficulty difficulty={campaign.difficulty} />
             { !!currentScenario && <GameHeader text={currentScenario.name} /> }
             { !!scenarioText && (
@@ -499,27 +384,12 @@ class OddsCalculatorView extends React.Component<Props, State> {
             />
           </View>
         </View>
-<<<<<<< Updated upstream
         { this.renderSpecialTokenInputs() }
         <View style={styles.sectionRow}>
           <Text style={typography.label}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
             chaosBag={campaign.chaosBag}
             fontScale={fontScale}
-=======
-        <View style={[styles.sectionRow, styles.countRow]}>
-          <Text style={typography.text}>{ t`Difficulty` }</Text>
-          <Text style={[{ color: 'black', fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
-            { testDifficulty }
-          </Text>
-          <PlusMinusButtons
-            count={testDifficulty}
-            size={36}
-            onIncrement={this._increment}
-            onDecrement={this._decrement}
-            allowNegative
-            color="dark"
->>>>>>> Stashed changes
           />
         </View>
         { this.renderInvestigatorRows() }
@@ -528,7 +398,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
   }
 
   render() {
-<<<<<<< Updated upstream
     const {
       testDifficulty,
     } = this.state;
@@ -562,17 +431,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
           </LinearGradient>
         </View>
       </View>
-=======
-    return (
-      <ScrollView style={styles.container}>
-        { this.renderContent() }
-        <View style={styles.finePrint}>
-          <Text style={typography.small}>
-            { t`Currently, this does not take into account scenario tokens that have a value of "-X" or tokens that make you draw additional tokens.` }
-          </Text>
-        </View>
-      </ScrollView>
->>>>>>> Stashed changes
     );
   }
 }
@@ -595,11 +453,7 @@ function mapStateToProps(
 
 export default connect(mapStateToProps)(
   connectRealm<NavigationProps & OddsCalculatorProps & ReduxProps, RealmProps, Card>(
-<<<<<<< Updated upstream
     withDimensions(OddsCalculatorView),
-=======
-    OddsCalculatorView,
->>>>>>> Stashed changes
     {
       schemas: ['Card'],
       mapToProps(
@@ -623,7 +477,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
-<<<<<<< Updated upstream
   footer: {
     borderTopWidth: 1,
     borderColor: '#444',
@@ -631,8 +484,6 @@ const styles = StyleSheet.create({
   footerRow: {
     padding: s,
   },
-=======
->>>>>>> Stashed changes
   countRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -641,10 +492,7 @@ const styles = StyleSheet.create({
   finePrint: {
     padding: s,
   },
-<<<<<<< Updated upstream
   button: {
     padding: s,
   },
-=======
->>>>>>> Stashed changes
 });
