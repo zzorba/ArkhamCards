@@ -1,4 +1,6 @@
+import { find, map } from 'lodash';
 import { t } from 'ttag';
+
 import {
   CUSTOM,
   CORE,
@@ -14,6 +16,7 @@ import {
   CampaignDifficulty,
   CampaignCycleCode,
   CustomCampaignLog,
+  ScenarioResult,
 } from '../../actions/types';
 import { ChaosBag } from '../../constants';
 import Card from '../../data/Card';
@@ -58,6 +61,7 @@ export interface Scenario {
   code: string;
   pack_code?: string;
   interlude?: boolean;
+  legacy_codes?: string[];
 }
 
 export function scenarioFromCard(card: Card): Scenario | null {
@@ -69,6 +73,24 @@ export function scenarioFromCard(card: Card): Scenario | null {
     code: card.encounter_code,
     pack_code: card.pack_code,
   };
+}
+
+export function completedScenario(
+  scenarioResults?: ScenarioResult[]
+): (scenario: Scenario) => boolean {
+  const finishedScenarios = new Set(
+    map(scenarioResults || [], result => result.scenarioCode)
+  );
+  const finishedScenarioNames = new Set(
+    map(scenarioResults || [], result => result.scenario)
+  );
+  return (scenario: Scenario) => (
+    finishedScenarioNames.has(scenario.name) ||
+    finishedScenarios.has(scenario.code) ||
+    !!find(scenario.legacy_codes || [],
+      code => finishedScenarios.has(code)
+    )
+  );
 }
 
 export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
@@ -150,9 +172,19 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Epilogue`, code: 'tfa_epilogue', interlude: true },
     ];
     case TCU: return [
-      { name: t`Prologue: Disappearance at the Twilight Estate`, code: 'tcu_prologue', pack_code: 'tcu' },
+      {
+        name: t`Prologue: Disappearance at the Twilight Estate`,
+        code: 'disappearance_at_the_twilight_estate',
+        legacy_codes: ['tcu_prologue'],
+        pack_code: 'tcu',
+      },
       { name: t`The Witching Hour`, code: 'the_witching_hour', pack_code: 'tcu' },
-      { name: t`At Death's Doorstep`, code: 'at_deaths_doorstep_23', pack_code: 'tcu' },
+      {
+        name: t`At Death's Doorstep`,
+        legacy_codes: ['at_deaths_doorstep_23', 'at_deaths_doorstep_1'],
+        code: 'at_deaths_doorstep',
+        pack_code: 'tcu',
+      },
       { name: t`The Price of Progress`, code: 'tcu_interlude_2', interlude: true },
       { name: t`The Secret Name`, code: 'the_secret_name', pack_code: 'tsn' },
       { name: t`The Wages of Sin`, code: 'the_wages_of_sin', pack_code: 'tws' },
@@ -173,22 +205,22 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Prologue`, code: 'prologue', pack_code: 'tde', interlude: true },
       { name: t`Beyond the Gates of Sleep`, code: 'beyond_the_gates_of_sleep', pack_code: 'tde' },
       { name: t`The Black Cat`, code: 'black_cat', pack_code: 'tde', interlude: true },
-      { name: t`The Search for Kadath`, code: 'sfk', pack_code: 'sfk' },
+      { name: t`The Search for Kadath`, code: 'the_search_for_kadath', pack_code: 'sfk', legacy_codes: ['sfk'] },
       { name: t`The Oneironauts`, code: 'oneironauts', pack_code: 'sfk', interlude: true },
-      { name: t`Dark Side of the Moon`, code: 'dsm', pack_code: 'dsm' },
+      { name: t`Dark Side of the Moon`, code: 'dark_side_of_the_moon', pack_code: 'dsm', legacy_codes: ['dsm'] },
       { name: t`The Great Ones`, code: 'great_ones', pack_code: 'dsm', interlude: true },
-      { name: t`Where Gods Dwell`, code: 'wgd', pack_code: 'wgd' },
+      { name: t`Where Gods Dwell`, code: 'where_the_gods_dwell', pack_code: 'wgd', legacy_codes: ['wgd'] },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
     case TDEB: return [
       { name: t`Prologue`, code: 'prologue', pack_code: 'tde', interlude: true },
       { name: t`Waking Nightmare`, code: 'waking_nightmare', pack_code: 'tde' },
       { name: t`The Black Cat`, code: 'black_cat', pack_code: 'tde', interlude: true },
-      { name: t`A Thousand Shapes of Horror`, code: 'tsh', pack_code: 'tsh' },
+      { name: t`A Thousand Shapes of Horror`, code: 'a_thousand_shapes_of_horror', pack_code: 'tsh', legacy_codes: ['tsh'] },
       { name: t`The Oneironauts`, code: 'oneironauts', pack_code: 'sfk', interlude: true },
-      { name: t`Point of No Return`, code: 'pnr', pack_code: 'pnr' },
+      { name: t`Point of No Return`, code: 'point_of_no_return', pack_code: 'pnr', legacy_codes: ['pnr'] },
       { name: t`The Great Ones`, code: 'great_ones', pack_code: 'dsm', interlude: true },
-      { name: t`Weaver of the Cosmos`, code: 'woc', pack_code: 'woc' },
+      { name: t`Weaver of the Cosmos`, code: 'weaver_of_the_cosmos', pack_code: 'woc' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
     case CUSTOM: return [];

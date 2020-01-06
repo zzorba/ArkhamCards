@@ -31,6 +31,10 @@ Build App
 
 `npm run ios` or `npm run andriod`
 
+## Translations
+The app is currently translated into English, Spanish, German, Italian, and French. Translation data for all of the cards comes from ArkhamDB.com, and is community managed. You can submit edits for cards in the [arkhamdb-json-data](https://github.com/kamalisk/arkhamdb-json-data/) project with a pull request.
+
+For all the text of the app itself, the translation files are extracted using the unix program `gettext`, an i18n standard. There are many programs that are capable of editing them, but I've found that a program called [PoEdit](https://poedit.net/), which has a free version that is totally serviceable. Using this program, you can edit the .po files in the [assets/i18n](https://github.com/zzorba/ArkhamCards/tree/master/assets/i18n) folder and submit the changes via Pull Request (or by opening an issue and I will provide contact information on how to submit changes). 
 
 ## Authors
 

@@ -1,7 +1,6 @@
-
 export function formatPercentageText(value: number) {
   value = value * 100;
-  return `${Math.floor(value)}%`;
+  return `${Math.round(value)}%`;
 }
 
 export function binomdist(events: number, success: number, probability: number) {

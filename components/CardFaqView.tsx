@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import Realm, { Results } from 'realm';
 import { connectRealm, CardAndFaqResults } from 'react-native-realm';
-import { Navigation } from 'react-native-navigation';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 
 import Card from '../data/Card';

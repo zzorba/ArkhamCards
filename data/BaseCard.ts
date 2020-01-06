@@ -223,19 +223,26 @@ export default class BaseCard {
     if (this.type_code !== 'asset' && this.type_code !== 'event') {
       return '';
     }
+    if (
+      this.code === '03016'
+    ) {
+      return t`Cost - 0`;
+    }
+    if (
+      this.code === '02010' ||
+      this.code === '03238' ||
+      this.cost === -2
+    ) {
+      return t`Cost: X`;
+    }
     if (this.permanent ||
       this.double_sided ||
       linked ||
-      (this.cost === null && (
-        this.code === '03012' ||
-        this.code === '03306' ||
-        this.code === '51031' ||
-        this.subtype_code === 'weakness' ||
-        this.subtype_code === 'basicweakness'))) {
+      this.cost === null
+    ) {
       return t`Cost: -`;
     }
-    const costString = this.cost !== null ? this.cost : 'X';
-    return t`Cost: ${costString}`;
+    return t`Cost: ${this.cost}`;
   }
 
   skillCount(skill: SkillCodeType): number {

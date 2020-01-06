@@ -7,9 +7,10 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { t } from 'ttag';
 
 import ScenarioResultRow from './ScenarioResultRow';
-import { campaignScenarios, Scenario } from '../constants';
+import { campaignScenarios, Scenario, completedScenario } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import { NavigationProps } from '../../types';
 import { Campaign, ScenarioResult } from '../../../actions/types';
@@ -64,19 +65,16 @@ class CampaignScenarioView extends React.Component<Props> {
     if (!campaign) {
       return null;
     }
-    const finishedScenarios = new Set(map(campaign.scenarioResults, result => result.scenarioCode));
-    const finishedScenarioNames = new Set(map(campaign.scenarioResults, result => result.scenario));
+    const hasCompletedScenario = completedScenario(campaign.scenarioResults);
     return (
       <ScrollView style={styles.container}>
         <CampaignSummaryComponent campaign={campaign} hideScenario />
         <Text style={typography.smallLabel}>
-          SCENARIOS
+          { t`SCENARIOS` }
         </Text>
         { map(campaign.scenarioResults, this._renderScenarioResult) }
         { map(
-          filter(cycleScenarios, scenario => (
-            !finishedScenarioNames.has(scenario.name) &&
-            !finishedScenarios.has(scenario.code))),
+          filter(cycleScenarios, scenario => !hasCompletedScenario(scenario)),
           (scenario, idx) => this.renderPendingScenario(scenario, idx))
         }
         <View style={styles.footer} />

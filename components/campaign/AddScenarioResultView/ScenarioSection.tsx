@@ -15,7 +15,7 @@ import { t } from 'ttag';
 import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '../../../actions/types';
 import Card from '../../../data/Card';
 import { updateCampaign } from '../actions';
-import { campaignScenarios, scenarioFromCard, Scenario } from '../constants';
+import { completedScenario, campaignScenarios, scenarioFromCard, Scenario } from '../constants';
 import LabeledTextBox from '../../core/LabeledTextBox';
 import Switch from '../../core/Switch';
 import { ShowTextEditDialog } from '../../core/withDialogs';
@@ -257,6 +257,7 @@ export default connect(mapStateToPropsFix, mapDispatchToProps)(
         realm: Realm,
         props: OwnProps & ReduxProps & ReduxActionProps
       ): RealmProps {
+        const hasCompletedScenario = completedScenario(props.campaign.scenarioResults);
         const finishedScenarios = new Set(props.campaign.finishedScenarios);
         const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));
         const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
@@ -285,7 +286,7 @@ export default connect(mapStateToPropsFix, mapDispatchToProps)(
           allScenarios: concat(
             filter(
               props.cycleScenarios || cycleScenarios,
-              scenario => !finishedScenarios.has(scenario.name)),
+              scenario => !finishedScenarios.has(scenario.name) && !hasCompletedScenario(scenario)),
             standaloneScenarios
           ),
         };
