@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { Navigation, Options } from 'react-native-navigation';
+import { Navigation, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { DeckChartsProps } from './DeckChartsView';
@@ -23,6 +23,9 @@ export function getDeckOptions(
     statusBar: {
       style: 'light',
     },
+    modalPresentationStyle: Platform.OS === 'ios' ?
+      OptionsModalPresentationStyle.overFullScreen :
+      OptionsModalPresentationStyle.overCurrentContext,
     topBar: {
       backButton: {
         title: t`Back`,
