@@ -618,7 +618,7 @@ class DeckDetailView extends React.Component<Props, State> {
       deleteError: undefined,
       deleting: false,
     });
-  }
+  };
 
   _dismissSaveError = () => {
     this.setState({
