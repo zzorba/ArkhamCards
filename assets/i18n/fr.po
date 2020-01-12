@@ -358,7 +358,7 @@ msgstr "HISTOIRE"
 
 #: components/EditSpecialDeckCards.tsx:382
 msgid "DO NOT COUNT TOWARDS DECK SIZE"
-msgstr "NE COMPTEZ PAS DANS LA TAILLE DU DECK"
+msgstr "NE COMPTE PAS DANS LA TAILLE DU DECK"
 
 #: components/DeckDetailView/index.tsx:358
 #: components/DeckDetailView/index.tsx:361
@@ -657,7 +657,7 @@ msgstr "Distant"
 #: components/filter/CardEnemyFilterView.tsx:82
 #: components/filter/CardFilterView/index.tsx:309
 msgid "Massive"
-msgstr "Massive"
+msgstr "Massif"
 
 #: components/filter/CardEnemyFilterView.tsx:90
 #: components/filter/CardFilterView/index.tsx:282
@@ -952,7 +952,7 @@ msgstr "Difficulté choisie"
 #: components/campaign/CampaignDrawWeaknessDialog.tsx:283
 #, javascript-format
 msgid "Investigator: ${ investigatorName }"
-msgstr "Chercheur: ${investigatorName}"
+msgstr "Investigateur : ${investigatorName}"
 
 #: components/campaign/CampaignDrawWeaknessDialog.tsx:298
 msgid "Replace Random Weakness"
@@ -1472,7 +1472,7 @@ msgstr "Nom de la Campagne"
 #: components/campaign/CampaignDetailView/DecksSection.tsx:42
 #: components/campaign/NewCampaignView/index.tsx:203
 msgid "Adjust Weakness Set"
-msgstr "Régler la collection des faiblesses"
+msgstr "Ajuster la collection des faiblesses"
 
 #: components/campaign/CampaignDetailView/DecksSection.tsx:45
 #: components/campaign/NewCampaignView/index.tsx:206
@@ -1561,7 +1561,7 @@ msgstr "Campagnes"
 #: components/campaign/MyCampaignsView/index.tsx:176
 #, javascript-format
 msgid "No matching campaigns for \"${ search }\"."
-msgstr "Aucune campagne correspondance pour “${search}\"."
+msgstr "Aucune campagne correspondante pour “${search}\"."
 
 #: components/campaign/MyCampaignsView/index.tsx:206
 msgid "Search campaigns"
@@ -2291,7 +2291,7 @@ msgid ""
 "\n"
 "Use the + button to create a new one."
 msgstr ""
-"Pas encore de ponts.\n"
+"Pas encore de decks.\n"
 "\n"
 "Utilisez le bouton + pour en créer un nouveau."
 
@@ -2306,10 +2306,10 @@ msgid ""
 msgstr ""
 "Ce deck ne semble pas encore faire partie d’une campagne.\n"
 "\n"
-"Si vous ajoutez cette plate-forme à une campagne, l’application peut suivre "
+"Si vous ajoutez ce deck à une campagne, l’application peut suivre "
 "les faiblesses disponibles entre plusieurs Decks.\n"
 "\n"
-"Sinon, vous pouvez dessiner des faiblesses aléatoires de votre collection "
+"Sinon, vous pouvez tirer des faiblesses aléatoires de votre collection "
 "entière."
 
 #: components/DeckDetailView/index.tsx:1228
@@ -2342,8 +2342,7 @@ msgid ""
 "\n"
 "Please adjust the trait filter."
 msgstr ""
-"Il n’y a pas de faiblesses qui correspondent à ces filtres de traits "
-"laissés dans l’ensemble.\n"
+"Il n’y a pas de faiblesses qui correspondent à ces filtres de traits\n"
 "\n"
 "Veuillez régler le filtre de traits."
 
@@ -2412,7 +2411,7 @@ msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
 msgstr ""
-"Il a été plus d’une semaine depuis que vous avez vérifié les nouvelles "
+"Cela fait plus d’une semaine depuis que vous avez vérifié les nouvelles "
 "cartes.\n"
 "Rechercher de nouvelles cartes de ArkhamDB?"
 
@@ -2435,8 +2434,8 @@ msgstr ""
 "Utilisez le bouton + pour en créer un nouveau.\n"
 "\n"
 "Vous pouvez utiliser cette application pour garder une trace des campagnes, "
-"y compris le traumatisme de l’enquêteur, le sac de chaos, les faiblesses de "
-"base, les notes de campagne et les valeurs d’expérience pour tous les ponts."
+"y compris le traumatisme de l’investigateur, la reserve du de chaos, les faiblesses de "
+"base, les notes de campagne et les valeurs d’expérience pour tous les decks."
 
 #: components/campaign/CampaignDetailView/CampaignDecks.tsx:166
 #, javascript-format
@@ -2476,7 +2475,7 @@ msgstr ""
 "d’autres personnes.\n"
 "\n"
 "Après avoir fait cela, vous aurez besoin d’un accès réseau pour apporter "
-"des modifications à la plate-forme."
+"des modifications au deck."
 
 #: components/DeckDetailView/index.tsx:275
 msgid ""
@@ -2488,7 +2487,7 @@ msgstr ""
 "Il semble que vous avez supprimé ce deck de ArkhamDB.\n"
 "\n"
 "Si elle faisait partie d’une campagne, vous pouvez ajouter le même "
-"enquêteur pour restaurer vos données de campagne."
+"investigateur pour restaurer vos données de campagne."
 
 #: components/CopyDeckDialog/index.tsx:231
 #, javascript-format
@@ -2596,12 +2595,12 @@ msgstr "Voir le deck suivant"
 
 #: components/CardImageView/index.tsx:66
 msgid "Flip Card"
-msgstr "Carte flip"
+msgstr "Retourner la Carte"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:281
 #, javascript-format
 msgid "Doom: ${ doom }"
-msgstr "Doom: ${doom}"
+msgstr "Chaos: ${doom}"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:286
 #, javascript-format
@@ -2610,7 +2609,7 @@ msgstr "Indices: ${clues} ${perInvestigatorClues}"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:294
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
-msgstr "Suaire: ${shroud}. Indices: ${clues} ${perInvestigatorClues}."
+msgstr "Occulte: ${shroud}. Indices: ${clues} ${perInvestigatorClues}."
 
 #: components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:79
 msgid "Deck upgrade saved."
@@ -2618,7 +2617,7 @@ msgstr "Mise à niveau du deck enregistrée."
 
 #: components/campaign/UpgradeDecksView/index.tsx:50
 msgid "Update investigator decks"
-msgstr "Mise à jour des ponts investigateurs"
+msgstr "Mise à jour des decks investigateurs"
 
 #: components/campaign/UpgradeDecksView/index.tsx:145
 msgid ""
@@ -2655,7 +2654,7 @@ msgstr "Niveau ${level}"
 
 #: components/CardSearchResultsComponent/CardResultList.tsx:748
 msgid "In Deck"
-msgstr "À Deck"
+msgstr "dans le Deck"
 
 #: components/CardSearchResultsComponent/CardResultList.tsx:755
 msgid "All Eligible Cards"
@@ -2674,7 +2673,7 @@ msgstr ""
 
 #: components/filter/PackFilterView.tsx:119
 msgid "Pack Filters"
-msgstr "Filtres Pack"
+msgstr "Filtres par Pack"
 
 #: components/filter/withFilterFunctions.tsx:121
 #, javascript-format
@@ -2730,11 +2729,11 @@ msgstr "Cartes supprimées"
 #: components/DeckDetailView/FactionSelectPicker.tsx:36
 #: components/DeckDetailView/InvestigatorOption.tsx:48
 msgid "Select Faction"
-msgstr "Sélectionnez Faction"
+msgstr "Sélectionnez une Faction"
 
 #: data/DeckOption.ts:49
 msgid "Deck Size"
-msgstr "Taille du pont"
+msgstr "Taille du deck"
 
 #: components/MyDecksComponent.tsx:99
 msgid "Unable to update: you appear to be offline."
@@ -2754,7 +2753,7 @@ msgstr "Multijoueur"
 
 #: components/weakness/WeaknessDrawComponent.tsx:354
 msgid "Standalone"
-msgstr "Mode autonome"
+msgstr "Mode standalone"
 
 #: components/settings/DiagnosticsView.tsx:196
 msgid "Debug Card Json"
@@ -2774,11 +2773,11 @@ msgstr "Essaim"
 
 #: components/filter/CardFilterView/index.tsx:600
 msgid "Seal"
-msgstr "Joint"
+msgstr "Sceller"
 
 #: components/filter/CardFilterView/index.tsx:612
 msgid "Investigate"
-msgstr "examiner"
+msgstr "Enquéter"
 
 #: components/filter/CardFilterView/index.tsx:638
 msgid "Myriad"
@@ -2787,88 +2786,88 @@ msgstr "Myriade"
 #: components/campaign/constants.ts:45
 #: components/campaign/constants.ts:242
 msgid "Return to The Path to Carcosa"
-msgstr "Retour à The Path to Carcosa"
+msgstr "Renouveau Le Chemin de Carcosa"
 
 #: components/campaign/constants.ts:48
 #: components/campaign/constants.ts:244
 msgid "The Dream-Quest"
-msgstr "La quête de rêve"
+msgstr "La Quête Onirique"
 
 #: components/campaign/constants.ts:49
 #: components/campaign/constants.ts:245
 msgid "The Web of Dreams"
-msgstr "Le Web des rêves"
+msgstr "La Toile des Songes"
 
 #: components/campaign/constants.ts:145
 msgid "Return to Curtain Call"
-msgstr "Retour à l'appel de rideau"
+msgstr "Renouveau Baisser de Rideau"
 
 #: components/campaign/constants.ts:146
 msgid "Return to The Last King"
-msgstr "Retour à The Last King"
+msgstr "Renouveau Le Dernier Roi"
 
 #: components/campaign/constants.ts:148
 msgid "Return to Echoes of the Past"
-msgstr "Retour aux échos du passé"
+msgstr "Renouveau Les Échos du Passé"
 
 #: components/campaign/constants.ts:149
 msgid "Return to The Unspeakable Oath"
-msgstr "Retour à L'Indicible Serment"
+msgstr "Renouveau Le Serment Indicible"
 
 #: components/campaign/constants.ts:151
 msgid "Return to A Phantom of Truth"
-msgstr "Retour à Un fantôme de la vérité"
+msgstr "Renouveau Le Spectre de la Vérité"
 
 #: components/campaign/constants.ts:152
 msgid "Return to The Pallid Mask"
-msgstr "Retour à The Pallid Mask"
+msgstr "Renouveau Le Masque Blême"
 
 #: components/campaign/constants.ts:153
 msgid "Return to Black Stars Rise"
-msgstr "Retour à Black Stars Rise"
+msgstr "Renouveau Sous les Étoiles Noires"
 
 #: components/campaign/constants.ts:154
 msgid "Return to Dim Carcosa"
-msgstr "Retour à Dim Carcosa"
+msgstr "Renouveau La Pâle Carcosa"
 
 #: components/campaign/constants.ts:206
 msgid "Beyond the Gates of Sleep"
-msgstr "Au-delà des portes du sommeil"
+msgstr "Par-delà le Mur du Sommeil"
 
 #: components/campaign/constants.ts:207
 #: components/campaign/constants.ts:218
 msgid "The Black Cat"
-msgstr "Le chat noir"
+msgstr "Le Chat Noir"
 
 #: components/campaign/constants.ts:208
 msgid "The Search for Kadath"
-msgstr "La recherche de Kadath"
+msgstr "À la Recherche de Kadath"
 
 #: components/campaign/constants.ts:209
 #: components/campaign/constants.ts:220
 msgid "The Oneironauts"
-msgstr "Les Oneironauts"
+msgstr "Les Onironautes"
 
 #: components/campaign/constants.ts:210
 msgid "Dark Side of the Moon"
-msgstr "Côté obscur de la lune"
+msgstr "La Face Cachée la Lune"
 
 #: components/campaign/constants.ts:211
 #: components/campaign/constants.ts:222
 msgid "The Great Ones"
-msgstr "Les Grands"
+msgstr "Les Grands Anciens"
 
 #: components/campaign/constants.ts:212
 msgid "Where Gods Dwell"
-msgstr "Où les dieux habitent"
+msgstr "La demeure des Dieux"
 
 #: components/campaign/constants.ts:217
 msgid "Waking Nightmare"
-msgstr "Cauchemar de réveil"
+msgstr "Cauchemar Eveillé"
 
 #: components/campaign/constants.ts:219
 msgid "A Thousand Shapes of Horror"
-msgstr "Mille formes d'horreur"
+msgstr "Mille Nuances d'horreur"
 
 #: components/campaign/constants.ts:221
 msgid "Point of No Return"
@@ -2876,7 +2875,7 @@ msgstr "Point de non-retour"
 
 #: components/campaign/constants.ts:223
 msgid "Weaver of the Cosmos"
-msgstr "Tisserand du Cosmos"
+msgstr "Tisseuse du Cosmos"
 
 #: components/campaign/constants.ts:322
 msgid "Evidence of Kadath"
@@ -2884,7 +2883,7 @@ msgstr "Preuve de Kadath"
 
 #: components/campaign/constants.ts:331
 msgid "Steps of the Bridge"
-msgstr "Étapes du pont"
+msgstr "Marches du pont"
 
 #: components/CopyDeckDialog/index.tsx:292
 #: components/NewDeckView/NewDeckOptionsDialog.tsx:354
@@ -2903,12 +2902,12 @@ msgstr "Carte inconnue : ${ req.code }"
 #: components/DeckDetailView/DeckSizeSelectPicker.tsx:35
 #: components/DeckDetailView/InvestigatorOption.tsx:65
 msgid "Select Deck Size"
-msgstr "Sélectionnez La taille du pont"
+msgstr "Sélectionnez La taille du deck"
 
 #: components/DeckDetailView/DeckViewTab.tsx:162
 #, javascript-format
 msgid "Bonded Cards (${ count })"
-msgstr "Cartes bonded (${ count })"
+msgstr "Cartes liées (${ count })"
 
 #: components/CopyDeckDialog/index.tsx:281
 msgid "New Name"
@@ -2942,7 +2941,7 @@ msgstr "Rabais XP: ${ taboo.extra_xp }."
 
 #: components/campaign/SealTokenDialog.tsx:33
 msgid "Choose Tokens to Seal"
-msgstr "Choisissez des jetons pour sceller"
+msgstr "Choisissez des jetons à sceller"
 
 #: components/campaign/constants.ts:183
 msgid "At Death's Doorstep"
@@ -2950,7 +2949,7 @@ msgstr "Aux Portes de la Mort (acte 1)"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:258
 msgid "Tap token to draw"
-msgstr "Appuyez sur jeton pour dessiner"
+msgstr "Appuyez pour tirer un jeton"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:294
 msgid "Set aside and draw another"
@@ -2958,11 +2957,11 @@ msgstr "Réserver et tirer un autre"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:306
 msgid "Clear Tokens"
-msgstr "Jetons clairs"
+msgstr "Effacer les Jetons"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:329
 msgid "Drawn"
-msgstr "Tiré"
+msgstr "Tirer"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:330
 msgid "Total"
@@ -2974,7 +2973,7 @@ msgstr "Jetons scellés"
 
 #: components/campaign/CampaignChaosBagView/index.tsx:348
 msgid "Seal Tokens"
-msgstr "Jetons de sceau"
+msgstr "Sceller des Jetons"
 
 #: components/CardDetailView/TwoSidedCardComponent.tsx:703
 msgid "XP Discount: ${ card.extra_xp }."
@@ -2997,8 +2996,8 @@ msgid ""
 "Note: Deck size should only be selected at deck creation time, not between "
 "scenarios."
 msgstr ""
-"Remarque : La taille du pont ne doit être sélectionnée qu'au moment de la "
-"création du pont, et non entre les scénarios."
+"Remarque : La taille du deck ne doit être sélectionnée qu'au moment de la "
+"création du deck, et non entre les scénarios."
 
 #: components/DeckDetailView/index.tsx:1379
 msgid "Edit Cards"
@@ -3011,7 +3010,7 @@ msgstr "Santé : ${ health }"
 #: components/DeckDetailView/DeckViewTab.tsx:479
 #, javascript-format
 msgid "Sanity: ${ sanity }"
-msgstr "Sanity: ${ sanity }"
+msgstr "Santé Mentale: ${ sanity }"
 
 #: components/DeckDetailView/FactionSelectPicker.tsx:60
 msgid ""
@@ -3043,11 +3042,11 @@ msgstr "${ xp } (${ adjustment }) XP"
 
 #: components/DeckDetailView/index.tsx:1423
 msgid "Clone"
-msgstr "Dupliquer"
+msgstr "Clôner"
 
 #: components/DeckDetailView/index.tsx:1388
 msgid "Story Assets"
-msgstr "Patrimoines de l'histoire"
+msgstr "Soutiens d'histoire"
 
 #: components/DeckDetailView/index.tsx:1392
 msgid "Weaknesses"
@@ -3065,43 +3064,43 @@ msgstr "XP disponible"
 #: components/campaign/CampaignDetailView/ChaosBagSection.tsx:50
 #: components/campaign/CampaignDetailView/index.tsx:462
 msgid "Odds Calculator"
-msgstr ""
+msgstr "Calculateur de probabilités"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:169
 msgid "Twice In A Row"
-msgstr ""
+msgstr "Deux fois à la suite"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:170
 msgid "Draw Two Pick One"
-msgstr ""
+msgstr "Tirer deux, choisisez-en un"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:171
 msgid "Re-Roll On Fail"
-msgstr ""
+msgstr "Relancer sur un échec"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:172
 msgid "Fail By 2 or Less"
-msgstr ""
+msgstr "Echec par 2 ou moins"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:173
 msgid "Fail By 1 or Less"
-msgstr ""
+msgstr "Echec par 1 ou moins"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:174
 msgid "Succeed By 1 or More"
-msgstr ""
+msgstr "Succés par 1 ou plus"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:175
 msgid "Succeed By 2 or More"
-msgstr ""
+msgstr "Succés par 2 ou plus"
 
 #: components/OddsCalculatorDialog/SkillOddsRow.tsx:176
 msgid "Succeed By 3 or More"
-msgstr ""
+msgstr "Succés par 3 ou plus"
 
 #: components/OddsCalculatorDialog/index.tsx:222
 msgid "Change Scenario"
-msgstr ""
+msgstr "Changer de scénario"
 
 #: components/OddsCalculatorDialog/index.tsx:252
 msgid ""
@@ -3110,60 +3109,64 @@ msgid ""
 "a value of 0. In addition to that, it doesn't yet handle tokens that make "
 "you draw additional tokens."
 msgstr ""
+"Actuellement, Cela ne prend pas en compte les effets des jetons Signe "
+"des anciens et jetons ayant une valeur de \"-X\" et ces jetons sont "
+"considérés comme ayant une valeur de 0. De plus, cela ne prend pas "
+"en compte les jetons qui font tirer des jetons additionels."
 
 #: data/BaseCard.ts:229
 msgid "Cost - 0"
-msgstr ""
+msgstr "Coût - 0"
 
 #: data/BaseCard.ts:236
 msgid "Cost: X"
-msgstr ""
+msgstr "Coût: X"
 
 #: data/BaseCard.ts:245
 #, javascript-format
 msgid "Cost: ${ this.cost }"
-msgstr ""
+msgstr "Coût: ${ this.cost }"
 
 #: components/campaign/CampaignScenarioView/index.tsx:73
 msgid "SCENARIOS"
-msgstr ""
+msgstr "SCENARIOS"
 
 #: components/campaign/CampaignDetailView/index.tsx:446
 msgid "Scenario History"
-msgstr ""
+msgstr "Historique du Scénario"
 
 #: components/campaign/CampaignDetailView/index.tsx:454
 msgid "Edit Tokens"
-msgstr ""
+msgstr "Mettre à jour les Jetons"
 
 #: components/campaign/CampaignDetailView/index.tsx:458
 msgid "Draw Tokens"
-msgstr ""
+msgstr "Tirer des jetons"
 
 #: components/campaign/CampaignDetailView/index.tsx:465
 msgid "Weakness Set"
-msgstr ""
+msgstr "Ensemble des Faiblesses"
 
 #: components/DeckDetailView/index.tsx:1420
 #: components/campaign/CampaignDetailView/index.tsx:470
 msgid "Options"
-msgstr ""
+msgstr "Options"
 
 #: components/DeckDetailView/DeckDelta.tsx:82
 #, javascript-format
 msgid "Available Experience: ${ adjustedExperience } (${ spentXp } Spent)"
-msgstr ""
+msgstr "Experience Disponible: ${ adjustedExperience } (${ spentXp } dépensées)"
 
 #: components/DeckDetailView/DeckViewTab.tsx:394
 msgid "Deck Cards"
-msgstr ""
+msgstr "Cartes du Deck"
 
 #: components/DeckDetailView/index.tsx:1409
 msgid "Save changes before upgrading"
-msgstr ""
+msgstr "Sauvegarder les modifications avant d'améliorer"
 
 #: components/DeckDetailView/CardUpgradeDialog/index.tsx:241
 msgid "Show ${ nonCollection.length } Non-Collection Card"
 msgid_plural "Show ${ nonCollection.length } Non-Collection Cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Montrer ${ nonCollection.length } carte hors collection"
+msgstr[1] "Montrer ${ nonCollection.length } cartes hors collection"
