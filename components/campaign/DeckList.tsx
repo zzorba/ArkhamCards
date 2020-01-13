@@ -2,10 +2,11 @@ import React, { ReactNode } from 'react';
 import { map } from 'lodash';
 import {
   Button,
+  Platform,
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import { Deck } from '../../actions/types';
@@ -49,6 +50,11 @@ class DeckList extends React.Component<OwnProps & PlayerCardProps> {
             component: {
               name: 'Dialog.DeckSelector',
               passProps,
+              options: {
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.overFullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+              },
             },
           }],
         },

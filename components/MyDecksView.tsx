@@ -1,7 +1,7 @@
 import React from 'react';
 import { find, filter, throttle } from 'lodash';
-import { Button, Text, StyleSheet, Switch, View } from 'react-native';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Button, Platform, Text, StyleSheet, Switch, View } from 'react-native';
+import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import { t } from 'ttag';
@@ -70,6 +70,11 @@ class MyDecksView extends React.Component<Props, State> {
         children: [{
           component: {
             name: 'Deck.New',
+            options: {
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
           },
         }],
       },

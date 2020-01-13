@@ -1,9 +1,9 @@
 import React from 'react';
 import { head, flatMap, forEach, keys, map, range, sum, throttle } from 'lodash';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, Platform, StyleSheet, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import { Campaign, Deck, DecksMap, Slots, WeaknessSet } from '../../actions/types';
@@ -149,6 +149,11 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
           component: {
             name: 'Dialog.DeckSelector',
             passProps,
+            options: {
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
           },
         }],
       },

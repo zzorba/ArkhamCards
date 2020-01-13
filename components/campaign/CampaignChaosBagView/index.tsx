@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { cloneDeep, shuffle } from 'lodash';
-import { EventSubscription, Navigation } from 'react-native-navigation';
+import { EventSubscription, Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { NavigationProps } from '../../types';
@@ -120,6 +120,11 @@ class CampaignChaosBagView extends React.Component<Props, State> {
           component: {
             name: 'Dialog.SealToken',
             passProps,
+            options: {
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
           },
         }],
       },

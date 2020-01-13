@@ -2,13 +2,14 @@ import React from 'react';
 import { throttle } from 'lodash';
 import {
   Button,
+  Platform,
   ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { CampaignNotes, SingleCampaign, ScenarioResult } from '../../../actions/types';
@@ -155,6 +156,11 @@ class AddScenarioResultView extends React.Component<Props, State> {
               component: {
                 name: 'Campaign.UpgradeDecks',
                 passProps,
+                options: {
+                  modalPresentationStyle: Platform.OS === 'ios' ?
+                    OptionsModalPresentationStyle.overFullScreen :
+                    OptionsModalPresentationStyle.overCurrentContext,
+                },
               },
             }],
           },
