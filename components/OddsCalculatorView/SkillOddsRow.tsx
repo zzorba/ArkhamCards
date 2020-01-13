@@ -153,13 +153,11 @@ export default class SkillOddsRow extends React.Component<Props, State> {
   }
 
   getAutoSuccessPercentage() {
-    const tokens = this.modifiedChaosBag();
-    if (!tokens.length) {
-      return 1;
+    const totalTokens = this.totalTokens(true);
+    if (totalTokens > 0) {
+      return (totalTokens - 1) / totalTokens;
     }
-    return (
-      tokens.length - filter(tokens, token => token === 'auto_succeed').length
-    ) / tokens.length;
+    return 1;
   }
 
   calculateDrawTwoPickOne(
@@ -236,7 +234,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
           </View>
           <View style={[styles.row, { paddingRight: s }]}>
             <Text style={[typography.text, { color: 'black', fontSize: 22, paddingRight: s }]}>
-              { boosts[type] }
+              { boosts[type] >= 0 ? `+${boosts[type]}` : boosts[type] }
             </Text>
             <PlusMinusButtons
               count={boosts[type]}

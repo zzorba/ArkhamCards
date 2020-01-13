@@ -212,7 +212,7 @@ class OddsCalculatorView extends React.Component<Props, State> {
                     }
                   }
                 } else {
-                  const revealAnotherRegex = new RegExp(`\\[(${token})\\]:?\\sReveal another (chaos )? token.`);
+                  const revealAnotherRegex = new RegExp(`\\[(${token})\\]:?\\sReveal another (chaos )?token.`);
                   if (revealAnotherRegex.test(line)) {
                     scenarioTokens.push({
                       token,
@@ -407,13 +407,13 @@ class OddsCalculatorView extends React.Component<Props, State> {
           { this.renderContent() }
           <View style={styles.finePrint}>
             <Text style={typography.small}>
-              { t`Currently, this does not take into account scenario tokens that have a value of "-X" or tokens that make you draw additional tokens.` }
+              { t`Note: chaos tokens that cause additional tokens to be revealed does not show correct odds for the "Draw Two Pick One" and similar multi-draw situations.` }
             </Text>
           </View>
         </ScrollView>
         <View style={styles.footer}>
           <LinearGradient
-            colors={['#bdbdbd', '#ededed']}
+            colors={['#ededed', '#f0f0f0']}
             style={[styles.countRow, styles.footerRow]}
           >
             <Text style={typography.text}>{ t`Difficulty` }</Text>
