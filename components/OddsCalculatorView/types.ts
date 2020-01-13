@@ -11,11 +11,7 @@ interface InvestigatorElderSignCounter {
 }
 
 interface InvestigatorElderSignSwitch {
-<<<<<<< Updated upstream
   type: 'switch';
-=======
-  type: 'switch',
->>>>>>> Stashed changes
   text: string;
   values: ChaosTokenValue[];
 }
