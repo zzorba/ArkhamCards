@@ -45,7 +45,7 @@ import { iconsMap } from '../../app/NavIcons';
 import {
   fetchPrivateDeck,
   fetchPublicDeck,
-  removeDeck,
+  deleteDeckAction,
   uploadLocalDeck,
   saveDeckChanges,
   DeckChanges,
@@ -110,7 +110,7 @@ interface UpgradeCardProps {
 interface ReduxActionProps {
   fetchPrivateDeck: (id: number) => void;
   fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
-  removeDeck: (id: number, deleteAllVersions?: boolean) => void;
+  deleteDeckAction: (id: number, deleteAllVersions?: boolean, local?: boolean) => Promise<boolean>;
   uploadLocalDeck: (deck: Deck) => Promise<Deck>;
   updateCampaign: (id: number, campaign: Partial<Campaign>) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
@@ -139,6 +139,7 @@ interface State {
   saveError?: string;
   copying: boolean;
   deleting: boolean;
+  deleteError?: string;
   nameChange?: string;
   tabooSetId?: number;
   hasPendingEdits: boolean;
@@ -322,15 +323,27 @@ class DeckDetailView extends React.Component<Props, State> {
   deleteDeck(deleteAllVersions: boolean) {
     const {
       id,
-      removeDeck,
+      deck,
+      deleteDeckAction,
     } = this.props;
+    const {
+      deleting,
+    } = this.state;
+    if (!deck) {
+      return;
+    }
+    if (!deleting) {
+      this.setState({
+        deleting: true,
+      });
 
-    this.setState({
-      deleting: true,
-    }, () => {
-      Navigation.dismissAllModals();
-      removeDeck(id, deleteAllVersions);
-    });
+      deleteDeckAction(id, deleteAllVersions, deck.local).then(success => {
+        Navigation.dismissAllModals();
+        this.setState({
+          deleting: false,
+        });
+      });
+    }
   }
 
   _toggleCopyDialog = () => {
@@ -599,6 +612,13 @@ class DeckDetailView extends React.Component<Props, State> {
       });
     }
   }
+
+  _dismissDeleteError = () => {
+    this.setState({
+      deleteError: undefined,
+      deleting: false,
+    });
+  };
 
   _dismissSaveError = () => {
     this.setState({
@@ -1018,6 +1038,39 @@ class DeckDetailView extends React.Component<Props, State> {
     );
   }
 
+  renderDeletingDialog() {
+    const {
+      viewRef,
+    } = this.props;
+    const {
+      deleting,
+      deleteError,
+    } = this.state;
+    if (deleteError) {
+      return (
+        <Dialog title={t`Error`} visible={deleting} viewRef={viewRef}>
+          <Text style={[styles.errorMargin, typography.small]}>
+            { deleteError }
+          </Text>
+          <DialogComponent.Button
+            label={t`Okay`}
+            onPress={this._dismissDeleteError}
+          />
+        </Dialog>
+      );
+
+    }
+    return (
+      <Dialog title={t`Deleting`} visible={deleting} viewRef={viewRef}>
+        <ActivityIndicator
+          style={styles.spinner}
+          size="large"
+          animating
+        />
+      </Dialog>
+    );
+  }
+
   renderSavingDialog() {
     const {
       viewRef,
@@ -1260,56 +1313,37 @@ class DeckDetailView extends React.Component<Props, State> {
     this.setState({
       menuOpen: false,
     });
-    if (deck.local) {
-      const options: AlertButton[] = [];
-      const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
-      if (isLatestUpgrade) {
-        options.push({
-          text: t`Delete this upgrade (${deck.version})`,
-          onPress: this._deleteSingleDeck,
-          style: 'destructive',
-        });
-        options.push({
-          text: t`Delete all versions`,
-          onPress: this._deleteAllDecks,
-          style: 'destructive',
-        });
-      } else {
-        const isUpgraded = !!deck.next_deck;
-        options.push({
-          text: isUpgraded ? t`Delete all versions` : t`Delete`,
-          onPress: this._deleteAllDecks,
-          style: 'destructive',
-        });
-      }
+    const options: AlertButton[] = [];
+    const isLatestUpgrade = deck.previous_deck && !deck.next_deck;
+    if (isLatestUpgrade) {
       options.push({
-        text: t`Cancel`,
-        style: 'cancel',
+        text: t`Delete this upgrade (${deck.version})`,
+        onPress: this._deleteSingleDeck,
+        style: 'destructive',
       });
-
-      Alert.alert(
-        t`Delete deck`,
-        t`Are you sure you want to delete this deck?`,
-        options,
-      );
+      options.push({
+        text: t`Delete all versions`,
+        onPress: this._deleteAllDecks,
+        style: 'destructive',
+      });
     } else {
-      Alert.alert(
-        t`Visit ArkhamDB to delete?`,
-        t`Unfortunately to delete decks you have to visit ArkhamDB at this time.`,
-        [
-          {
-            text: t`Visit ArkhamDB`,
-            onPress: () => {
-              Linking.openURL(`https://arkhamdb.com/deck/view/${deck.id}`);
-            },
-          },
-          {
-            text: t`Cancel`,
-            style: 'cancel',
-          },
-        ],
-      );
+      const isUpgraded = !!deck.next_deck;
+      options.push({
+        text: isUpgraded ? t`Delete all versions` : t`Delete`,
+        onPress: this._deleteAllDecks,
+        style: 'destructive',
+      });
     }
+    options.push({
+      text: t`Cancel`,
+      style: 'cancel',
+    });
+
+    Alert.alert(
+      t`Delete deck`,
+      t`Are you sure you want to delete this deck?`,
+      options,
+    );
   };
 
   _showCardCharts = () => {
@@ -1570,6 +1604,7 @@ class DeckDetailView extends React.Component<Props, State> {
           { this.renderDeck(deck, parsedDeck, selectedTabooSetId, tabooSet) }
         </SideMenu>
         { this.renderSavingDialog() }
+        { this.renderDeletingDialog() }
         { this.renderCopyDialog() }
       </View>
     );
@@ -1604,7 +1639,7 @@ function mapDispatchToProps(dispatch: Dispatch): ReduxActionProps {
   return bindActionCreators({
     fetchPrivateDeck,
     fetchPublicDeck,
-    removeDeck,
+    deleteDeckAction,
     uploadLocalDeck,
     updateCampaign,
     saveDeckChanges,

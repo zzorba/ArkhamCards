@@ -89,6 +89,31 @@ export function loadDeck(id: number): Promise<Deck> {
   });
 }
 
+export function deleteDeck(id: number, deleteAllVersion: boolean): Promise<boolean> {
+  return getAccessToken().then(accessToken => {
+    if (!accessToken) {
+      throw new Error('badAccessToken');
+    }
+    let uri = `${Config.OAUTH_SITE}api/oauth2/deck/delete/${id}?access_token=${accessToken}`;
+    if (deleteAllVersion) {
+      uri += '&all';
+    }
+    return fetch(uri, {
+      method: 'DELETE',
+    }).then(response => {
+      if (response.status === 500) {
+        throw new Error('Not Found');
+      }
+      if (response.status !== 200) {
+        throw new Error('Invalid Deck Status');
+      }
+      return response.json().then(status => {
+        return status;
+      });
+    });
+  });
+}
+
 function encodeParams(params: { [key: string]: string | number }) {
   return map(keys(params), key => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(`${params[key]}`)}`;
@@ -263,6 +288,7 @@ export function upgradeDeck(
 export default {
   decks,
   loadDeck,
+  deleteDeck,
   saveDeck,
   upgradeDeck,
   newDeck,

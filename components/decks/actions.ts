@@ -19,7 +19,7 @@ import {
   Slots,
 } from '../../actions/types';
 import { login } from '../../actions';
-import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult } from '../../lib/authApi';
+import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '../../lib/authApi';
 import { AppState, getNextLocalDeckId } from '../../reducers/index';
 
 function setNewDeck(
@@ -124,6 +124,35 @@ function handleUpgradeDeckResult(
   dispatch(updateDeck(result.deck.id, result.deck, false));
   dispatch(setNewDeck(result.upgradedDeck.id, result.upgradedDeck));
 }
+
+export const deleteDeckAction: ActionCreator<
+  ThunkAction<Promise<boolean>, AppState, {}, Action>
+> = (id: number, deleteAllVersion: boolean, local: boolean) => {
+  return (
+    dispatch: ThunkDispatch<AppState, {}, Action>,
+  ) => {
+    return new Promise<boolean>((resolve, reject) => {
+      if (local) {
+        dispatch(removeDeck(id, deleteAllVersion));
+        resolve();
+      } else {
+        const deleteDeckPromise = deleteDeck(id, deleteAllVersion);
+        handleAuthErrors(
+          deleteDeckPromise,
+          () => {
+            dispatch(removeDeck(id, deleteAllVersion));
+            resolve();
+          },
+          reject,
+          () => null,
+          () => {
+            dispatch(login());
+          }
+        );
+      }
+    });
+  };
+};
 
 export const saveDeckUpgrade: ActionCreator<
   ThunkAction<Promise<Deck>, AppState, {}, Action>
