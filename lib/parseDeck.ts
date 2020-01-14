@@ -327,15 +327,20 @@ function getDeckChanges(
           // Couldn't find a 0 cost card to remove, it's weird that you
           // chose to take away an XP card -- or maybe you are just adding cards.
         }
-        // But if there's no slots it costs you a
-        // minimum of 1 xp to swap 0 for 0.
         incSlot(added, addedCard);
-        let minimumSwapCost = 1;
-        if (extraDeckSize > 0) {
-          extraDeckSize--;
-          minimumSwapCost = 0;
+        const tabooCost = addedCard.extra_xp || 0;
+        if (tabooCost > 0) {
+          // If a card has taboo, you don't pay 1 for the swap of 0 -> 0.
+          // Also doesn't eat a slot in case of versatile, since you are paying
+          // full cost for it.
+          return tabooCost;
         }
-        return minimumSwapCost + (addedCard.extra_xp || 0);
+        if (extraDeckSize > 0) {
+          // If your deck grew in size you can swap in extra cards for free.
+          extraDeckSize--;
+          return 0;
+        }
+        return 1;
       }
 
       // XP higher than 0.
