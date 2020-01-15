@@ -337,7 +337,7 @@ class DeckDetailView extends React.Component<Props, State> {
         deleting: true,
       });
 
-      deleteDeckAction(id, deleteAllVersions, deck.local).then(success => {
+      deleteDeckAction(id, deleteAllVersions, deck.local).then(() => {
         Navigation.dismissAllModals();
         this.setState({
           deleting: false,

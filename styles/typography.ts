@@ -1,6 +1,7 @@
 import { Platform, StyleSheet } from 'react-native';
 
 import { isBig } from './space';
+import { COLORS } from './colors';
 const sizeScale = isBig ? 1.2 : 1;
 
 export const SMALL_FONT_SIZE = 12 * sizeScale;
@@ -86,5 +87,18 @@ export default StyleSheet.create({
   },
   center: {
     textAlign: 'center',
+  },
+  settingsLabel: {
+    flex: 1,
+    paddingLeft: 16,
+    paddingRight: 8,
+    fontSize: 16,
+  },
+  settingsValue: {
+    color: COLORS.darkGray,
+    fontSize: 14,
+    flex: 0,
+    paddingLeft: 8,
+    paddingRight: 16,
   },
 });

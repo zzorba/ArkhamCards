@@ -139,10 +139,10 @@ class OddsCalculatorView extends React.Component<Props, State> {
       campaign,
     } = this.props;
     const difficulty = campaign ? campaign.difficulty : undefined;
-    const encounterCode = currentScenario &&
-      (currentScenario.code.startsWith('return_to_') ?
-      currentScenario.code.substring('return_to_'.length) :
-      currentScenario.code);
+    const encounterCode = currentScenario && (
+      currentScenario.code.startsWith('return_to_') ?
+        currentScenario.code.substring('return_to_'.length) :
+        currentScenario.code);
     const currentScenarioCard = (scenarioCards && encounterCode) ?
       find(scenarioCards, card => card.encounter_code === encounterCode) :
       undefined;

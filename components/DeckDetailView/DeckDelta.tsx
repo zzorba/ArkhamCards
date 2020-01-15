@@ -16,7 +16,6 @@ interface Props {
   componentId: string;
   parsedDeck: ParsedDeck;
   xpAdjustment: number;
-  showXpAdjustment: () => void;
 }
 
 export default class DeckDelta extends React.Component<Props> {
@@ -67,35 +66,14 @@ export default class DeckDelta extends React.Component<Props> {
     });
   };
 
-  xpString() {
-    const {
-      parsedDeck: {
-        deck: {
-          xp,
-        },
-        changes,
-      },
-      xpAdjustment,
-    } = this.props;
-    const spentXp = changes ? changes.spentXp : 0;
-    const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
-    return t`Available Experience: ${adjustedExperience} (${spentXp} Spent)`;
-  }
-
   render() {
     const {
       parsedDeck: {
         deck,
       },
-      showXpAdjustment,
     } = this.props;
     return (
       <React.Fragment>
-        { !!deck.previous_deck && (
-          <View style={styles.button}>
-            <Button title={this.xpString()} onPress={showXpAdjustment} />
-          </View>
-        ) }
         <View style={styles.buttonContainer}>
           { !!deck.previous_deck && (
             <View style={styles.button}>

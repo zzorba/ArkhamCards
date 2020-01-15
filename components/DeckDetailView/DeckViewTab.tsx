@@ -420,21 +420,6 @@ export default class DeckViewTab extends React.Component<Props> {
     ];
   }
 
-  renderMetadata() {
-    const {
-      tabooSet,
-    } = this.props;
-    return (
-      <View style={styles.metadata}>
-        { !!tabooSet && (
-          <Text style={typography.small}>
-            { t`Taboo List: ${tabooSet.date_start}.` }
-          </Text>
-        ) }
-      </View>
-    );
-  }
-
   renderInvestigatorStats() {
     const {
       parsedDeck: {
@@ -483,6 +468,33 @@ export default class DeckViewTab extends React.Component<Props> {
     );
   }
 
+  renderAvailableExperienceButton() {
+    const {
+      parsedDeck: {
+        changes,
+      },
+      deck,
+      showEditNameDialog,
+      xpAdjustment,
+    } = this.props;
+    if (!changes) {
+      return null;
+    }
+    const adjustedXp = (deck.xp || 0) + xpAdjustment;
+    return (
+      <TouchableOpacity onPress={showEditNameDialog}>
+        <View style={styles.rowBetween}>
+          <Text style={typography.settingsLabel}>
+            { t`Experience` }
+          </Text>
+          <Text style={typography.settingsValue}>
+            { t`${changes.spentXp} of ${adjustedXp}` }
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   renderInvestigatorOptions() {
     const {
       parsedDeck: {
@@ -519,6 +531,7 @@ export default class DeckViewTab extends React.Component<Props> {
           editWarning={!!deck.previous_deck}
           disabled={!editable}
         />
+        { this.renderAvailableExperienceButton() }
       </View>
     );
   }
@@ -594,7 +607,6 @@ export default class DeckViewTab extends React.Component<Props> {
       xpAdjustment,
       fontScale,
       showDeckUpgrade,
-      showEditNameDialog,
       editable,
     } = this.props;
     return (
@@ -609,7 +621,6 @@ export default class DeckViewTab extends React.Component<Props> {
         campaign={campaign}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={showDeckUpgrade}
-        showXpAdjustment={showEditNameDialog}
         investigatorDataUpdates={investigatorDataUpdates}
         xpAdjustment={xpAdjustment}
       />
@@ -685,5 +696,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  rowBetween: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: s,
+    paddingBottom: s,
   },
 });
