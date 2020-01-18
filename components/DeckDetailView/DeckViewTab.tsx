@@ -511,7 +511,7 @@ export default class DeckViewTab extends React.Component<Props> {
       editable,
     } = this.props;
     return (
-      <View>
+      <View style={styles.optionsContainer}>
         { (tabooOpen || showTaboo || !!tabooSet) && (
           <TabooSetPicker
             open={tabooOpen}
@@ -580,16 +580,13 @@ export default class DeckViewTab extends React.Component<Props> {
         </View>
         <View style={styles.headerBlock}>
           { this.renderProblem() }
-          <View style={styles.container}>
-            { this.renderInvestigatorBlock() }
-            { isBig && (
-              <View style={[styles.column, styles.buttonColumn]}>
-                { buttons }
-              </View>
-            ) }
+          <View style={styles.containerWrapper}>
+            <View style={styles.container}>
+              { this.renderInvestigatorBlock() }
+            </View>
+            { this.renderInvestigatorOptions() }
           </View>
-          { this.renderInvestigatorOptions() }
-          { !isBig && buttons }
+          { buttons }
         </View>
       </View>
     );
@@ -675,10 +672,20 @@ const styles = StyleSheet.create({
   image: {
     marginRight: s,
   },
+  containerWrapper: {
+    flexDirection: isBig ? 'row' : 'column',
+  },
   container: {
     marginLeft: s,
     marginRight: s,
     flexDirection: 'row',
+    flex: 1,
+  },
+  optionsContainer: {
+    marginLeft: s,
+    marginRight: s,
+    flexDirection: 'column',
+    flex: 1,
   },
   problemBox: {
     flex: 1,
