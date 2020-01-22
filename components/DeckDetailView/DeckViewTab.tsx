@@ -658,11 +658,6 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
   },
-  buttonColumn: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   metadata: {
     flexDirection: 'column',
     justifyContent: 'center',

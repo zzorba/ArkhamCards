@@ -35,12 +35,10 @@ export default function withDimensions<P>(
     componentDidMount() {
       Dimensions.addEventListener('change', this._onChange);
       DeviceInfo.getFontScale().then(fontScale => {
-        if (fontScale !== 'unknown') {
-          RECENT_FONT_SCALE = fontScale;
-          this.setState({
-            fontScale,
-          });
-        }
+        RECENT_FONT_SCALE = fontScale;
+        this.setState({
+          fontScale,
+        });
       });
     }
 

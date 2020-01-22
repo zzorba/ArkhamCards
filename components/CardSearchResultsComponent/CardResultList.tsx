@@ -1,5 +1,18 @@
 import React, { ReactNode } from 'react';
-import { concat, debounce, flatMap, filter, forEach, keys, isEqual, map, partition, random, sortBy, throttle, uniq } from 'lodash';
+import {
+  concat,
+  debounce,
+  flatMap,
+  filter,
+  forEach,
+  keys,
+  isEqual,
+  map,
+  partition,
+  random,
+  throttle,
+  uniq,
+} from 'lodash';
 import {
   ActivityIndicator,
   Animated,
@@ -34,7 +47,6 @@ import {
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '../../reducers';
 import Card from '../../data/Card';
 import { showCard, showCardSwipe } from '../navHelper';
-import { isSpecialCard } from '../../lib/parseDeck';
 import CardSearchResult from '../CardSearchResult';
 import { rowHeight } from '../CardSearchResult/constants';
 import CardSectionHeader, { rowHeaderHeight } from './CardSectionHeader';
@@ -457,7 +469,7 @@ class CardResultList extends React.Component<Props, State> {
       uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
       code => originalDeckSlots[code] > 0 ||
         (deckCardCounts && deckCardCounts[code] > 0));
-        const deckQuery = map(codes, code => ` (code == '${code}')`).join(' OR ');
+    const deckQuery = map(codes, code => ` (code == '${code}')`).join(' OR ');
     const queryParts = [`(${deckQuery})`, Card.tabooSetQuery(tabooSetId)];
     if (storyOnly && query) {
       queryParts.push(query);

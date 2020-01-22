@@ -17,7 +17,7 @@
     "postinstall": "patch-package && node node_modules/realm/scripts/download-realm.js ios --sync"
   },
   "dependencies": {
-    "@matt-block/react-native-in-app-browser": "3.1.4",
+    "@matt-block/react-native-in-app-browser": "3.1.2",
     "@ptomasroos/react-native-multi-slider": "1.0.0",
     "@react-native-community/async-storage": "1.6.3",
     "@react-native-community/netinfo": "4.6.1",
@@ -80,7 +80,7 @@
     "@types/hoist-non-react-statics": "3.3.1",
     "@types/lodash": "4.14.149",
     "@types/react": "16.9.0",
-    "@types/react-native": "0.60.31",
+    "@types/react-native": "0.60.23",
     "@types/react-native-flip-card": "3.5.0",
     "@types/react-native-svg-charts": "5.0.3",
     "@types/react-native-vector-icons": "6.4.5",
