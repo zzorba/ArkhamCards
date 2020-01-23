@@ -56,20 +56,6 @@ interface State {
 }
 
 class OddsCalculatorView extends React.Component<Props, State> {
-  static get options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Odds Calculator`,
-        },
-        backButton: {
-          title: t`Back`,
-          testID: t`Back`,
-        },
-      },
-    };
-  }
-
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {

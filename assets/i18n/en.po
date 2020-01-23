@@ -1806,10 +1806,6 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: components/navHelper.ts:193
-msgid "Draw"
-msgstr ""
-
 #: components/DeckNavFooter/index.tsx:105
 #, javascript-format
 msgid "XP: ${ experience }"
@@ -2908,6 +2904,7 @@ msgid "Weaknesses"
 msgstr ""
 
 #: components/DeckDetailView/index.tsx:1434
+#: components/navHelper.ts:193
 msgid "Draw Simulator"
 msgstr ""
 

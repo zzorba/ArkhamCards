@@ -111,7 +111,7 @@ class NewCampaignView extends React.Component<Props, State> {
       weaknessPacks: [],
       weaknessAssignedCards: {},
       customChaosBag: Object.assign({}, getChaosBag(CORE, CampaignDifficulty.STANDARD)),
-      customCampaignLog: { sections: ['Campaign Notes'] },
+      customCampaignLog: { sections: [t`Campaign Notes`] },
       campaignLogDialogVisible: false,
     };
 

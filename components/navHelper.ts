@@ -190,7 +190,7 @@ export function showDrawSimulator(
       passProps: {
         slots,
       },
-      options: getDeckOptions(investigator, false, t`Draw`),
+      options: getDeckOptions(investigator, false, t`Draw Simulator`),
     },
   });
 }

@@ -229,6 +229,16 @@ class CampaignDetailView extends React.Component<Props, State> {
             campaign,
             allInvestigators,
           },
+          options: {
+            topBar: {
+              title: {
+                text: t`Odds Calculator`,
+              },
+              backButton: {
+                title: t`Back`,
+              },
+            },
+          }
         },
       });
     }

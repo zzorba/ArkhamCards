@@ -1815,10 +1815,6 @@ msgstr "Remélanger"
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: components/navHelper.ts:193
-msgid "Draw"
-msgstr "Tirer"
-
 #: components/DeckNavFooter/index.tsx:105
 #, javascript-format
 msgid "XP: ${ experience }"
@@ -3038,6 +3034,7 @@ msgid "Weaknesses"
 msgstr "Modifier les faiblesses affectées"
 
 #: components/DeckDetailView/index.tsx:1434
+#: components/navHelper.ts:193
 msgid "Draw Simulator"
 msgstr "Simulateur de tirage"
 

@@ -557,7 +557,7 @@ msgstr "Informazioni Carta"
 
 #: components/settings/SettingsView.tsx:155
 msgid "Card Collection"
-msgstr "Collezione delle Carte"
+msgstr "Collezione"
 
 #: components/CardSearchResultsComponent/CardResultList.tsx:324
 #: components/settings/SettingsView.tsx:156
@@ -1553,7 +1553,7 @@ msgstr "Risultati Scenario"
 #: components/campaign/CampaignDetailView/ScenarioSection.tsx:66
 #: components/campaign/CampaignDetailView/index.tsx:450
 msgid "Record Scenario Results"
-msgstr "Trascrivi i Risultati dello Scenario"
+msgstr "Risultati dello Scenario"
 
 #: components/campaign/CampaignDetailView/WeaknessSetSection.tsx:56
 msgid "Basic Weakness Set"
@@ -1735,8 +1735,8 @@ msgstr "PE: ${ spentXp } di ${ adjustedExperience } (${ adjustment })"
 #: components/DeckDetailView/index.tsx:1414 components/DeckNavFooter/index.tsx:144
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
-msgstr[0] "${ normalCardCount } Carta (${ totalCardCount } Total)"
-msgstr[1] "${ normalCardCount } Carte (${ totalCardCount } Total)"
+msgstr[0] "${ normalCardCount } Carta (${ totalCardCount } Totale)"
+msgstr[1] "${ normalCardCount } Carte (${ totalCardCount } Totale)"
 
 #: components/DeckDetailView/DeckViewTab.tsx:89
 #, javascript-format
@@ -2886,7 +2886,7 @@ msgstr "Debolezze"
 
 #: components/DeckDetailView/index.tsx:1434
 msgid "Draw Simulator"
-msgstr "Simula Pescata"
+msgstr "Simulatore Di Pescata"
 
 #: components/DeckDetailView/index.tsx:1448
 msgid "Available XP"

@@ -11,15 +11,6 @@ import { t } from 'ttag';
 import AppIcon from '../assets/AppIcon';
 import typography, { SMALL_FONT_SIZE } from '../styles/typography';
 
-const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
-  too_few_cards: t`Not enough cards.`,
-  too_many_cards: t`Too many cards.`,
-  too_many_copies: t`Too many copies of a card with the same name.`,
-  invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
-  deck_options_limit: t`Contains too many limited cards.`,
-  investigator: t`Doesn't comply with the Investigator requirements.`,
-};
-
 interface Props {
   problem: DeckProblem;
   color: string;
@@ -34,7 +25,14 @@ export default function DeckProblemRow({
   fontSize,
   fontScale,
 }: Props) {
-
+  const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
+    too_few_cards: t`Not enough cards.`,
+    too_many_cards: t`Too many cards.`,
+    too_many_copies: t`Too many copies of a card with the same name.`,
+    invalid_cards: t`Contains forbidden cards (cards not permitted by Faction)`,
+    deck_options_limit: t`Contains too many limited cards.`,
+    investigator: t`Doesn't comply with the Investigator requirements.`,
+  };
   return (
     <View style={styles.problemRow}>
       <View style={styles.warningIcon}>

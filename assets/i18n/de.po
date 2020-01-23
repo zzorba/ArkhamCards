@@ -1818,10 +1818,6 @@ msgstr "Umbildung"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: components/navHelper.ts:193
-msgid "Draw"
-msgstr "Unentschieden"
-
 #: components/DeckNavFooter/index.tsx:105
 #, javascript-format
 msgid "XP: ${ experience }"
@@ -3030,6 +3026,7 @@ msgid "Weaknesses"
 msgstr "Bearbeiten Sie die Schwächen"
 
 #: components/DeckDetailView/index.tsx:1434
+#: components/navHelper.ts:193
 msgid "Draw Simulator"
 msgstr "Zeichnen Simulator"
 
