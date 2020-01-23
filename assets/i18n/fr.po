@@ -147,13 +147,13 @@ msgstr "Soutien: Tarot"
 msgid "Asset: Other"
 msgstr "Soutien: Autre"
 
-#: components/DeckDetailView/DeckViewTab.tsx:102
+#: components/DeckDetailView/DeckViewTab.tsx:113
 #: data/Card.ts:109
 #: data/Card.ts:167
 msgid "Event"
 msgstr "Événement"
 
-#: components/DeckDetailView/DeckViewTab.tsx:103
+#: components/DeckDetailView/DeckViewTab.tsx:114
 #: data/Card.ts:110
 #: data/Card.ts:172
 msgid "Skill"
@@ -204,8 +204,8 @@ msgstr "Agenda ${linked_card.stage}"
 msgid "Second Core Set"
 msgstr "Deuxième Boite de base"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:296
-#: components/CardSearchResultsComponent/CardResultList.tsx:622
+#: components/CardSearchResultsComponent/CardResultList.tsx:308
+#: components/CardSearchResultsComponent/CardResultList.tsx:626
 #: components/CollectionEditView.tsx:32
 #: components/EditSpecialDeckCards.tsx:185
 #: components/InvestigatorsListComponent/index.tsx:296
@@ -623,7 +623,7 @@ msgstr "Données des cartes"
 msgid "Card Collection"
 msgstr "Collection de cartes"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:312
+#: components/CardSearchResultsComponent/CardResultList.tsx:324
 #: components/settings/SettingsView.tsx:156
 msgid "Spoiler Settings"
 msgstr "Paramètres du spoiler"
@@ -1018,6 +1018,7 @@ msgstr "Masquer les investigateurs tués et déments"
 msgid "Only Show Previous Campaign Members"
 msgstr "Afficher uniquement les membres de la campagne précédente"
 
+#: components/DeckDetailView/DeckViewTab.tsx:499
 #: components/campaign/XpComponent.tsx:31
 msgid "Experience"
 msgstr "Expérience"
@@ -1437,7 +1438,7 @@ msgstr "Autres campagnes"
 msgid "Select Campaign"
 msgstr "Sélectionnez une Campagne"
 
-#: components/DeckDetailView/DeckProgressModule.tsx:100
+#: components/DeckDetailView/DeckProgressModule.tsx:99
 #: components/DeckDetailView/index.tsx:1438
 #: components/campaign/CampaignDetailView/index.tsx:81
 #: components/campaign/CampaignDetailView/index.tsx:438
@@ -1788,7 +1789,7 @@ msgstr[1] "Afficher ${section.nonCollectionCount} investigateurs hors collection
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "Aucun investigateur correspondant pour \"${searchTerm}\"."
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:357
+#: components/CardSearchResultsComponent/CardResultList.tsx:369
 #: components/InvestigatorsListComponent/index.tsx:184
 #: components/InvestigatorsListComponent/index.tsx:190
 msgid "N/A"
@@ -1835,16 +1836,16 @@ msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
 msgstr[0] "${normalCardCount} carte (${totalCardCount} total)"
 msgstr[1] "${normalCardCount} cartes (${totalCardCount} total)"
 
-#: components/DeckDetailView/DeckViewTab.tsx:78
+#: components/DeckDetailView/DeckViewTab.tsx:89
 #, javascript-format
 msgid "Assets (${ assetCount })"
 msgstr "Actifs (${assetCount})"
 
-#: components/DeckDetailView/DeckViewTab.tsx:104
+#: components/DeckDetailView/DeckViewTab.tsx:115
 msgid "Enemy"
 msgstr "Ennemi"
 
-#: components/DeckDetailView/DeckViewTab.tsx:105
+#: components/DeckDetailView/DeckViewTab.tsx:116
 msgid "Treachery"
 msgstr "Traitrise"
 
@@ -1885,7 +1886,7 @@ msgstr "Opération non supportée"
 msgid "Upload to ArkhamDB"
 msgstr "Télécharger vers ArkhamDB"
 
-#: components/DeckDetailView/DeckViewTab.tsx:407
+#: components/DeckDetailView/DeckViewTab.tsx:418
 msgid "Special Cards"
 msgstr "Cartes spéciales"
 
@@ -1951,73 +1952,73 @@ msgstr "Type"
 msgid "Encounter Set"
 msgstr "Ensemble de rencontre"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:49
+#: components/CardSearchResultsComponent/CardResultList.tsx:61
 msgid "Investigating for clues"
 msgstr "Enquêter sur les indices"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:50
+#: components/CardSearchResultsComponent/CardResultList.tsx:62
 msgid "Cursing at the tentacle token"
 msgstr "Maudit avec le jeton de tentacule"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:51
+#: components/CardSearchResultsComponent/CardResultList.tsx:63
 msgid "Drawing a mythos card with surge"
 msgstr "Tirer une carte de Mythe avec Renfort"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:52
+#: components/CardSearchResultsComponent/CardResultList.tsx:64
 msgid "Placing doom on the agenda"
 msgstr "Placer une Fatalité sur l'Agenda"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:53
+#: components/CardSearchResultsComponent/CardResultList.tsx:65
 msgid "Reticulating spines"
 msgstr "Reticulating spines"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:54
+#: components/CardSearchResultsComponent/CardResultList.tsx:66
 msgid "Trying to make sense of the Time Warp FAQ"
 msgstr "Essayer de donner un sens à la FAQ Time Warp"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:55
+#: components/CardSearchResultsComponent/CardResultList.tsx:67
 msgid "Taking three damage and three horror"
 msgstr "Subbissez Trois dégâts et trois horreurs"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:632
+#: components/CardSearchResultsComponent/CardResultList.tsx:636
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
 msgstr[0] "Afficher ${section.nonCollectionCount} carte hors collection"
 msgstr[1] "Afficher ${section.nonCollectionCount} cartes hors collection"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:711
-#: components/CardSearchResultsComponent/CardResultList.tsx:730
+#: components/CardSearchResultsComponent/CardResultList.tsx:715
+#: components/CardSearchResultsComponent/CardResultList.tsx:734
 msgid "Edit Spoiler Settings"
 msgstr "Modifier les paramètres du spoiler"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:718
+#: components/CardSearchResultsComponent/CardResultList.tsx:722
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } Spoiler"
 msgid_plural "Show ${ spoilerCardsCount } Spoilers"
 msgstr[0] "Afficher ${spoilerCardsCount} spoiler"
 msgstr[1] "Afficher ${spoilerCardsCount} spoilers"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:682
+#: components/CardSearchResultsComponent/CardResultList.tsx:686
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Pas de cartes correspondantes pour \"${searchTerm}\""
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:683
+#: components/CardSearchResultsComponent/CardResultList.tsx:687
 msgid "No matching cards"
 msgstr "Pas de cartes correspondantes"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:347
+#: components/CardSearchResultsComponent/CardResultList.tsx:359
 msgid "Cost: None"
 msgstr "Coût: aucun"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:349
+#: components/CardSearchResultsComponent/CardResultList.tsx:361
 #, javascript-format
 msgid "Cost: ${ card.cost }"
 msgstr "Coût: ${card.cost}"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:353
-#: components/CardSearchResultsComponent/CardResultList.tsx:359
+#: components/CardSearchResultsComponent/CardResultList.tsx:365
+#: components/CardSearchResultsComponent/CardResultList.tsx:371
 msgid "All Cards"
 msgstr "Toutes les cartes"
 
@@ -2144,7 +2145,7 @@ msgstr "Fureur de YIG"
 msgid "Doesn't comply with the Investigator requirements."
 msgstr "Ne respecte pas les exigences de construction de l’Investigateur."
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:56
+#: components/CardSearchResultsComponent/CardResultList.tsx:68
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Jusqu’à 5, j’espère que je ne tire pas le tentacule"
 
@@ -2225,11 +2226,6 @@ msgstr "Chargement des dernières cartes..."
 #: components/navHelper.ts:174
 msgid "Charts"
 msgstr "Graphiques"
-
-#: components/DeckDetailView/DeckViewTab.tsx:431
-#, javascript-format
-msgid "Taboo List: ${ tabooSet.date_start }."
-msgstr "Liste de tabou: ${tabooSet.date_start}."
 
 #: components/DeckDetailView/EditDeckDetailsDialog.tsx:106
 msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
@@ -2574,11 +2570,11 @@ msgstr "Sauvegarde…"
 msgid "Earned experience"
 msgstr "Expérience acquise"
 
-#: components/DeckDetailView/DeckDelta.tsx:104
+#: components/DeckDetailView/DeckDelta.tsx:82
 msgid "View Previous Deck"
 msgstr "Voir le deck précédent"
 
-#: components/DeckDetailView/DeckDelta.tsx:112
+#: components/DeckDetailView/DeckDelta.tsx:90
 msgid "View Next Deck"
 msgstr "Voir le deck suivant"
 
@@ -2641,11 +2637,11 @@ msgstr ""
 msgid "Level ${ level }"
 msgstr "Niveau ${level}"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:748
+#: components/CardSearchResultsComponent/CardResultList.tsx:752
 msgid "In Deck"
 msgstr "dans le Deck"
 
-#: components/CardSearchResultsComponent/CardResultList.tsx:755
+#: components/CardSearchResultsComponent/CardResultList.tsx:759
 msgid "All Eligible Cards"
 msgstr "Toutes les cartes admissibles"
 
@@ -2893,7 +2889,7 @@ msgstr "Carte inconnue : ${ req.code }"
 msgid "Select Deck Size"
 msgstr "Sélectionnez La taille du deck"
 
-#: components/DeckDetailView/DeckViewTab.tsx:162
+#: components/DeckDetailView/DeckViewTab.tsx:173
 #, javascript-format
 msgid "Bonded Cards (${ count })"
 msgstr "Cartes liées (${ count })"
@@ -2976,7 +2972,7 @@ msgstr "Ajouter le deck de l'enquêteur"
 msgid "Use Starter Deck?"
 msgstr "Utilisez Starter Deck?"
 
-#: components/DeckDetailView/DeckProgressModule.tsx:121
+#: components/DeckDetailView/DeckProgressModule.tsx:120
 msgid "Upgrade Deck with XP"
 msgstr "Mise à niveau Deck avec XP"
 
@@ -2992,12 +2988,12 @@ msgstr ""
 msgid "Edit Cards"
 msgstr "Modifier les cartes"
 
-#: components/DeckDetailView/DeckViewTab.tsx:476
+#: components/DeckDetailView/DeckViewTab.tsx:472
+#, javascript-format
 msgid "Health: ${ health }"
 msgstr "Santé : ${ health }"
 
-#: components/DeckDetailView/DeckViewTab.tsx:479
-#, javascript-format
+#: components/DeckDetailView/DeckViewTab.tsx:475
 msgid "Sanity: ${ sanity }"
 msgstr "Santé Mentale: ${ sanity }"
 
@@ -3129,12 +3125,7 @@ msgstr "Ensemble des Faiblesses"
 msgid "Options"
 msgstr "Options"
 
-#: components/DeckDetailView/DeckDelta.tsx:82
-#, javascript-format
-msgid "Available Experience: ${ adjustedExperience } (${ spentXp } Spent)"
-msgstr "Experience Disponible: ${ adjustedExperience } (${ spentXp } dépensées)"
-
-#: components/DeckDetailView/DeckViewTab.tsx:394
+#: components/DeckDetailView/DeckViewTab.tsx:405
 msgid "Deck Cards"
 msgstr "Cartes du Deck"
 
@@ -3189,4 +3180,69 @@ msgstr ""
 
 #: components/DeckDetailView/index.tsx:1064
 msgid "Deleting"
+msgstr ""
+
+#: lib/parseDeck.ts:46
+#: lib/parseDeck.ts:61
+msgid "Hand"
+msgstr ""
+
+#: lib/parseDeck.ts:47
+#: lib/parseDeck.ts:63
+msgid "Hand. Arcane"
+msgstr ""
+
+#: lib/parseDeck.ts:48
+#: lib/parseDeck.ts:62
+msgid "Hand x2"
+msgstr ""
+
+#: lib/parseDeck.ts:49
+#: lib/parseDeck.ts:65
+msgid "Arcane"
+msgstr ""
+
+#: lib/parseDeck.ts:50
+#: lib/parseDeck.ts:66
+msgid "Accessory"
+msgstr ""
+
+#: lib/parseDeck.ts:51
+#: lib/parseDeck.ts:67
+msgid "Body"
+msgstr ""
+
+#: lib/parseDeck.ts:52
+#: lib/parseDeck.ts:64
+msgid "Body. Hand x2"
+msgstr ""
+
+#: lib/parseDeck.ts:53
+#: lib/parseDeck.ts:68
+msgid "Ally"
+msgstr ""
+
+#: lib/parseDeck.ts:54
+#: lib/parseDeck.ts:69
+msgid "Tarot"
+msgstr ""
+
+#: lib/parseDeck.ts:55
+#: lib/parseDeck.ts:70
+msgid "Other"
+msgstr ""
+
+#: components/filter/CardFilterView/XpChooser.tsx:78
+#, javascript-format
+msgid "Level ${ startXp }"
+msgstr ""
+
+#: components/filter/CardFilterView/XpChooser.tsx:79
+#, javascript-format
+msgid "Level ${ startXp } - ${ endXp }"
+msgstr ""
+
+#: components/DeckDetailView/DeckViewTab.tsx:502
+#, javascript-format
+msgid "${ changes.spentXp } of ${ adjustedXp }"
 msgstr ""

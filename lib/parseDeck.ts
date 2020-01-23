@@ -36,7 +36,10 @@ function filterBy(
   return cardIds.filter(c => cards[c.id] && cards[c.id][field] === value);
 }
 
-function groupAssets(cardIds: CardId[], cards: CardsMap): AssetGroup[] {
+function groupAssets(
+  cardIds: CardId[],
+  cards: CardsMap
+): AssetGroup[] {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, c => {
     switch (cards[c.id].slot) {

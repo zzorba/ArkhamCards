@@ -10,7 +10,18 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import { Campaign, CardId, Deck, DeckMeta, DeckProblem, InvestigatorData, ParsedDeck, SplitCards, Slots, Trauma } from '../../actions/types';
+import {
+  Campaign,
+  CardId,
+  Deck,
+  DeckMeta,
+  DeckProblem,
+  InvestigatorData,
+  ParsedDeck,
+  SplitCards,
+  Slots,
+  Trauma,
+} from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import AppIcon from '../../assets/AppIcon';

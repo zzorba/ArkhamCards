@@ -5,6 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
+import { t } from 'ttag';
 
 interface Props {
   onFilterChange: (setting: string, value: any) => void;
@@ -71,9 +72,11 @@ export default class XpChooser extends React.Component<Props> {
       return [];
     });
     const buttons = map(this.levelRanges(), xyz => {
-      const xp = xyz[0] === xyz[1] ?
-        `Level ${xyz[0]}` :
-        `Level ${xyz[0]} - ${xyz[1]}`;
+      const startXp = xyz[0];
+      const endXp = xyz[0];
+      const xp = startXp === endXp ?
+        t`Level ${startXp}` :
+        t`Level ${startXp} - ${endXp}`;
       return {
         element: () => (<Text>{ xp }</Text>),
       };
