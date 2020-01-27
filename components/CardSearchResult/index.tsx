@@ -40,6 +40,7 @@ interface Props {
   deltaCountMode?: boolean;
   hasSecondCore?: boolean;
   showZeroCount?: boolean;
+  backgroundColor?: string;
 }
 
 export default class CardSearchResult extends React.PureComponent<Props> {
@@ -358,9 +359,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       onPressId,
       onDeckCountChange,
       fontScale,
+      backgroundColor,
     } = this.props;
     return (
-      <View style={[styles.rowContainer, { minHeight: rowHeight(fontScale) }]}>
+      <View style={[
+        styles.rowContainer,
+        { minHeight: rowHeight(fontScale) },
+        backgroundColor ? { backgroundColor } : {},
+      ]}>
         <TouchableOpacity
           onPress={this._onPress}
           disabled={!onPress && !onPressId}
@@ -393,10 +399,15 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     const {
       card,
       fontScale,
+      backgroundColor,
     } = this.props;
     if (!card) {
       return (
-        <View style={[styles.rowContainer, { minHeight: rowHeight(fontScale) }]}>
+        <View style={[
+          styles.rowContainer,
+          { minHeight: rowHeight(fontScale) },
+          backgroundColor ? { backgroundColor } : {},
+        ]}>
           <View style={styles.cardNameBlock}>
             <View style={styles.row}>
               <Text style={typography.text}>
@@ -409,7 +420,11 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     }
     if (!card.name) {
       return (
-        <View style={[styles.rowContainer, { minHeight: rowHeight(fontScale) }]}>
+        <View style={[
+          styles.rowContainer,
+          { minHeight: rowHeight(fontScale) },
+          backgroundColor ? { backgroundColor } : {},
+        ]}>
           <Text>No Text</Text>;
         </View>
       );

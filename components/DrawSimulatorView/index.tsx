@@ -210,14 +210,14 @@ class DrawSimulatorView extends React.Component<Props, State> {
     const { fontScale } = this.props;
     const card = this.props.cards[item.code];
     return (
-      <View style={item.selected ? styles.selected : {}}>
-        <CardSearchResult
-          id={item.key}
-          card={card}
-          onPressId={this._toggleSelection}
-          fontScale={fontScale}
-        />
-      </View>
+      <CardSearchResult
+        key={item.key}
+        id={item.key}
+        card={card}
+        onPressId={this._toggleSelection}
+        fontScale={fontScale}
+        backgroundColor={item.selected ? '#ddd' : undefined}
+      />
     );
   };
 
