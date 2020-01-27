@@ -418,6 +418,10 @@ function calculateTotalXp(
     const card = cards[code];
     const xp = computeXp(card);
     const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
+    if (card.myriad) {
+      // Pay the cost only once for myriad.
+      return xp;
+    }
     return xp * count;
   }));
 }
