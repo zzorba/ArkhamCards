@@ -10,6 +10,7 @@ import typography from '../../styles/typography';
 
 interface Props {
   parsedDeck: ParsedDeck;
+  width: number;
 }
 
 interface Item {

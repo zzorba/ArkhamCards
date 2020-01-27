@@ -219,30 +219,33 @@ export default class BaseCard {
     return this.faction_code || 'neutral';
   }
 
-  costString(linked?: boolean) {
+  realCost(linked?: boolean) {
     if (this.type_code !== 'asset' && this.type_code !== 'event') {
-      return '';
-    }
-    if (
-      this.code === '03016'
-    ) {
-      return t`Cost - 0`;
+      return null;
     }
     if (
       this.code === '02010' ||
       this.code === '03238' ||
       this.cost === -2
     ) {
-      return t`Cost: X`;
+      return 'X';
     }
     if (this.permanent ||
       this.double_sided ||
       linked ||
       this.cost === null
     ) {
-      return t`Cost: -`;
+      return '-';
     }
-    return t`Cost: ${this.cost}`;
+    return `${this.cost}`;
+  }
+
+  costString(linked?: boolean) {
+    const actualCost = this.realCost(linked);
+    if (actualCost === null) {
+      return '';
+    }
+    return t`Cost: ${actualCost}`;
   }
 
   skillCount(skill: SkillCodeType): number {

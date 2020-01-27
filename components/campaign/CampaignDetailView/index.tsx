@@ -238,7 +238,7 @@ class CampaignDetailView extends React.Component<Props, State> {
                 title: t`Back`,
               },
             },
-          }
+          },
         },
       });
     }

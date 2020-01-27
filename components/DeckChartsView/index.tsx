@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import { ParsedDeck } from '../../actions/types';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import FactionChart from './FactionChart';
 import CostChart from './CostChart';
 import SlotsChart from './SlotsChart';
@@ -16,24 +17,29 @@ export interface DeckChartsProps {
   parsedDeck?: ParsedDeck;
 }
 
-export default class DeckChartsView extends React.Component<DeckChartsProps> {
+type Props = DeckChartsProps & DimensionsProps;
+
+class DeckChartsView extends React.Component<Props> {
   render() {
     const {
       parsedDeck,
+      width,
     } = this.props;
     if (!parsedDeck) {
       return null;
     }
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <SkillIconChart parsedDeck={parsedDeck} />
-        <CostChart parsedDeck={parsedDeck} />
-        { INCLUDE_SLOTS_CHART && <SlotsChart parsedDeck={parsedDeck} /> }
-        <FactionChart parsedDeck={parsedDeck} />
+        <SkillIconChart parsedDeck={parsedDeck} width={width - 16} />
+        <CostChart parsedDeck={parsedDeck} width={width - 16} />
+        { INCLUDE_SLOTS_CHART && <SlotsChart parsedDeck={parsedDeck} width={width - 16} /> }
+        <FactionChart parsedDeck={parsedDeck} width={width - 16} />
       </ScrollView>
     );
   }
 }
+
+export default withDimensions(DeckChartsView);
 
 const styles = StyleSheet.create({
   container: {

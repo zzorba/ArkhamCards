@@ -1,4 +1,17 @@
-import { filter, forEach, keys, map, mapValues, range, groupBy, pullAt, sortBy, sum, uniqBy, union } from 'lodash';
+import {
+  filter,
+  forEach,
+  keys,
+  map,
+  mapValues,
+  range,
+  groupBy,
+  pullAt,
+  sortBy,
+  sum,
+  uniqBy,
+  union,
+} from 'lodash';
 
 import { t } from 'ttag';
 import {
@@ -155,26 +168,29 @@ function factionCount(
   ];
 }
 
-function costHistogram(cardIds: CardId[], cards: CardsMap): number[] {
+function costHistogram(
+  cardIds: CardId[],
+  cards: CardsMap
+): number[] {
   const costHisto = mapValues(
     groupBy(
       cardIds.filter(c => {
         const card = cards[c.id];
-        return card &&
-          !card.permanent &&
-          !card.double_sided &&
-          card.code !== '02014' && (
-          card.type_code === 'asset' || card.type_code === 'event');
+        return card && card.realCost() !== null;
       }),
       c => {
         const card = cards[c.id];
         if (!card) {
           return 0;
         }
-        if (card.cost === null) {
+        const realCost = card.realCost();
+        if (realCost === 'X') {
           return -2;
         }
-        return card.cost;
+        if (realCost === '-') {
+          return -1;
+        }
+        return realCost;
       }),
     cs => sum(cs.map(c => c.quantity))
   );

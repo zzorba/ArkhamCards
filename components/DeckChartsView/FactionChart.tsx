@@ -1,16 +1,23 @@
 import React from 'react';
-import { filter, map, maxBy } from 'lodash';
-import { StackedBarChart } from 'react-native-svg-charts';
+import { filter } from 'lodash';
 import { View, Text, StyleSheet } from 'react-native';
+import {
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryStack,
+} from 'victory-native';
 import { t } from 'ttag';
 
+import ChartLabel from './ChartLabel';
+import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '../../actions/types';
-import ArkhamIcon from '../../assets/ArkhamIcon';
 import { PLAYER_FACTION_CODES, FACTION_COLORS, FactionCodeType } from '../../constants';
 import typography from '../../styles/typography';
 
 interface Props {
   parsedDeck: ParsedDeck;
+  width: number;
 }
 
 interface Item {
@@ -22,15 +29,10 @@ interface Item {
   survivor: number;
   neutral: number;
   mythos: number;
-  dual: number;
-  total: number;
-}
 
-interface LabelData {
-  x: (idx: number) => number;
-  y: (idx: number) => number;
-  width: number;
-  data: Item[];
+  dual: number;
+  count: number;
+  total: number;
 }
 
 const DEFAULT_ITEM = {
@@ -51,98 +53,93 @@ export default class FactionChart extends React.PureComponent<Props> {
       faction,
       dual: counts[0],
       [faction]: counts[1],
+      count: counts[1] || 0,
       total: counts[0] + counts[1],
     };
   }
 
-  _getValue = ({ item }: { item: Item }) => {
-    return item.total;
+  _getDualValue = ({ datum }: { datum: Item}) => {
+    return datum.dual;
+  };
+
+  _getTotalValue = ({ datum }: { datum: Item}) => {
+    return datum.total;
   };
 
   render() {
+    const { width } = this.props;
     const barData = filter(
       PLAYER_FACTION_CODES.map(code => this.getFactionData(code)),
-      data => data.total > 0
+      data => data.count > 0 || data.dual > 0
     );
-    const contentInset = { top: 10, bottom: 10 };
     if (barData.length === 0) {
       return null;
     }
-    const CUT_OFF = Math.min(
-      4,
-      (maxBy(map(barData, barData => barData.total)) || 0)
-    );
-    const Labels = ({ x, y, width, data }: LabelData) => (
-      data.map((value, index) => (
-        <View key={index}>
-          <View style={[styles.label, {
-            left: x(index),
-            top: y(0) + 4,
-            width: width / barData.length,
-          }]}>
-            { value.faction === 'neutral' ? (
-              <ArkhamIcon
-                name="elder_sign"
-                size={32}
-                color="#444"
-              />
-            ) : (
-              <ArkhamIcon
-                name={value.faction}
-                size={32}
-                color={FACTION_COLORS[value.faction]}
-              />
-            ) }
-          </View>
-          { value.total > 0 && (
-            <Text
-              style={[
-                styles.label, {
-                  left: x(index),
-                  top: value.total < CUT_OFF ? y(value.total) - 20 : y(value.total) + 8,
-                  width: width / barData.length,
-                  color: value.total >= CUT_OFF ? 'white' : 'black',
-                },
-                styles.count,
-              ]}
-            >
-              { value.total }
-            </Text>
-          ) }
-        </View>
-      ))
-    );
-    const keys: (FactionCodeType | 'dual')[] = [
-      'mystic',
-      'seeker',
-      'guardian',
-      'rogue',
-      'survivor',
-      'neutral',
-      'dual',
-    ];
-    const colors = map(keys, key => key === 'neutral' ? '#444' : FACTION_COLORS[key]);
     return (
       <View style={styles.wrapper}>
         <Text style={[typography.bigLabel, typography.center]}>
           { t`Card Factions` }
         </Text>
-        <View style={styles.chart}>
-          <StackedBarChart
-            style={styles.barChart}
-            gridMin={0}
-            numberOfTicks={4}
-            contentInset={contentInset}
-            keys={keys}
-            colors={colors}
-            data={barData}
-          >
-            {
+        <VictoryChart width={width}>
+          <VictoryAxis
+            style={{
+              axis: { stroke: 'none' },
+              tickLabels: {
+                fontSize: 18,
+                fontFamily: 'System',
+                fontWeight: '400',
+              },
+            }}
+            tickLabelComponent={
               // @ts-ignore TS2739
-              <Labels />
+              <ChartIconComponent />
             }
-          </StackedBarChart>
-        </View>
+          />
+          <VictoryStack width={width}>
+            <VictoryBar
+              data={barData}
+              x="faction"
+              y="dual"
+              barRatio={1.6}
+              // @ts-ignore TS2769
+              labels={this._getDualValue}
+              style={{
+                data: {
+                  fill: FACTION_COLORS.dual,
+                },
+                labels: {
+                  fill: 'white',
+                  fontSize: 14,
+                  fontFamily: 'System',
+                  fontWeight: '700',
+                },
+              }}
+              // @ts-ignore TS2769
+              labelComponent={<ChartLabel field="dual" />}
+            />
+            <VictoryBar
+              data={barData}
+              x="faction"
+              y="count"
+              barRatio={1.6}
+              // @ts-ignore TS2769
+              labels={this._getTotalValue}
+              style={{
+                data: {
+                  fill: ({ datum }: { datum: Item }) => FACTION_COLORS[datum.faction],
+                },
+                labels: {
+                  fill: 'white',
+                  fontSize: 14,
+                  fontFamily: 'System',
+                  fontWeight: '700',
+                },
+              }}
+              // @ts-ignore TS2769
+              labelComponent={<ChartLabel field="count" />}
+            />
+          </VictoryStack>
+        </VictoryChart>
       </View>
     );
   }
@@ -153,22 +150,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     position: 'relative',
     marginBottom: 64,
-  },
-  chart: {
-    flexDirection: 'row',
-    height: 200,
-  },
-  label: {
-    position: 'absolute',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  barChart: {
-    flex: 1,
-  },
-  count: {
-    fontSize: 14,
-    fontWeight: '700',
-    textAlign: 'center',
   },
 });
