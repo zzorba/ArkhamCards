@@ -414,14 +414,23 @@ function calculateTotalXp(
   slots: Slots,
   ignoreDeckLimitSlots: Slots
 ): number {
+  const myriadBuys: {
+    [name: string]: boolean;
+  } = {};
+
   return sum(map(keys(slots), code => {
     const card = cards[code];
     const xp = computeXp(card);
-    const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
     if (card.myriad) {
-      // Pay the cost only once for myriad.
-      return xp;
+      const myriadKey = `${card.real_text}_${card.xp}`;
+      if (!myriadBuys[myriadKey]) {
+        // Pay the cost only once for myriad.
+        myriadBuys[myriadKey] = true;
+        return xp;
+      }
+      return 0;
     }
+    const count = (slots[code] || 0) - (ignoreDeckLimitSlots[code] || 0);
     return xp * count;
   }));
 }
