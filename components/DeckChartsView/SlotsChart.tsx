@@ -1,9 +1,15 @@
 import React from 'react';
-import { filter, map, maxBy } from 'lodash';
-import { BarChart } from 'react-native-svg-charts';
+import { filter, map } from 'lodash';
+import {
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+} from 'victory-native';
 import { View, Text, StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
+import ChartLabel from './ChartLabel';
+import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '../../actions/types';
 import { SLOTS, SlotCodeType } from '../../constants';
 import typography from '../../styles/typography';
@@ -18,92 +24,65 @@ interface Item {
   value: number;
 }
 
-interface LabelData {
-  x: (idx: number) => number;
-  y: (idx: number) => number;
-  bandwidth: number;
-  data: Item[];
-}
-
-export default class SlotsChart extends React.PureComponent<Props> {
+export default class SlotIconChart extends React.PureComponent<Props> {
   getSlotData(slot: SlotCodeType): Item {
     return {
-      slot,
+      slot: slot.replace(' ', '-'),
       value: this.props.parsedDeck.slotCounts[slot] || 0,
     };
   }
 
-  _getValue = ({ item }: { item: Item }) => {
-    return item.value;
+  _getValue = ({ datum }: { datum: Item }) => {
+    return datum.value;
   };
 
   render() {
+    const { width } = this.props;
     const barData = filter(
       map(SLOTS, slot => this.getSlotData(slot)),
-      slot => slot.value > 0
-    );
-    const CUT_OFF = Math.min(
-      4,
-      (maxBy(map(barData, barData => barData.value)) || 0)
-    );
-
-    const contentInset = { top: 10, bottom: 10 };
-    const TEXT_LENGTH = 100;
-
-    const Labels = ({ x, y, bandwidth, data }: LabelData) => (
-      data.map((value, index) => (
-        <View key={index}>
-          <View style={[styles.label, {
-            left: x(index) - bandwidth / 3,
-            top: y(0) + 8,
-          }]}>
-            <Text style={{
-              height: bandwidth,
-              width: TEXT_LENGTH,
-              transform: [
-                { rotate: '90deg' },
-                { translateX: -(TEXT_LENGTH / 2 - bandwidth / 2) },
-                { translateY: (TEXT_LENGTH / 2 - bandwidth / 2) },
-              ],
-            }}>{ value.slot }</Text>
-          </View>
-          { value.value > 0 && (
-            <Text style={[
-              styles.label, {
-                left: x(index),
-                top: value.value < CUT_OFF ? y(value.value) - 20 : y(value.value) + 8,
-                width: bandwidth,
-                color: value.value >= CUT_OFF ? 'white' : 'black',
-              },
-              styles.count,
-            ]}>
-              { value.value }
-            </Text>
-          ) }
-        </View>
-      ))
+      data => data.value > 0
     );
 
     return (
-      <View style={styles.wrapper}>
+      <View style={[styles.wrapper, { width }]}>
         <Text style={[typography.bigLabel, typography.center]}>
           { t`Slots` }
         </Text>
-        <View style={styles.chart}>
-          <BarChart
-            style={styles.barChart}
-            gridMin={0}
-            numberOfTicks={4}
-            contentInset={contentInset}
-            yAccessor={this._getValue}
+        <VictoryChart width={width}>
+          <VictoryAxis
+            style={{
+              axis: { stroke: 'none' },
+              tickLabels: {
+                fontSize: 18,
+                fontFamily: 'System',
+                fontWeight: '400',
+              },
+            }}
+            // @ts-ignore TS2739
+            tickLabelComponent={<ChartIconComponent />}
+          />
+          <VictoryBar
             data={barData}
-          >
-            {
-              // @ts-ignore TS2739
-              <Labels />
-            }
-          </BarChart>
-        </View>
+            x="slot"
+            y="value"
+            barRatio={1.6}
+            // @ts-ignore TS2769
+            labels={this._getValue}
+            style={{
+              data: {
+                fill: '#444',
+              },
+              labels: {
+                fill: 'white',
+                fontSize: 14,
+                fontFamily: 'System',
+                fontWeight: '700',
+              },
+            }}
+            // @ts-ignore TS2769
+            labelComponent={<ChartLabel field="value" />}
+          />
+        </VictoryChart>
       </View>
     );
   }
@@ -113,23 +92,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'column',
     position: 'relative',
-    marginBottom: 128,
-  },
-  chart: {
-    flexDirection: 'row',
-    height: 200,
-  },
-  label: {
-    position: 'absolute',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  barChart: {
-    flex: 1,
-  },
-  count: {
-    fontSize: 14,
-    fontWeight: '700',
-    textAlign: 'center',
+    marginBottom: 64,
   },
 });

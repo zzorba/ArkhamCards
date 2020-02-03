@@ -27,7 +27,7 @@ export default class ChartIconComponent extends React.Component<Props> {
         x={x - SIZE / 2} y={y + SIZE / 2 + 3}
         fontSize={SIZE}
         fontFamily="arkhamicons"
-        fill={FACTION_COLORS[text] || SKILL_COLORS[text]}
+        fill={FACTION_COLORS[text] || SKILL_COLORS[text] || '#444'}
       >
         { String.fromCharCode(this.iconGlyphs[text === 'neutral' ? 'elder_sign' : text]) }
       </SVGText>
