@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { CachedImage } from 'react-native-cached-image';
+import FastImage from 'react-native-fast-image'
 import { Navigation } from 'react-native-navigation';
 
 import { CardImageProps } from '../CardImageView';
@@ -56,6 +56,7 @@ export default class PlayerCardImage extends React.Component<Props> {
       case 'agenda': return styles.agendaImage;
       case 'act': return styles.actImage;
       case 'location': return styles.locationImage;
+      case 'treachery': return styles.treacheryImage;
       default: return {};
     }
   }
@@ -101,13 +102,12 @@ export default class PlayerCardImage extends React.Component<Props> {
     if (isBig && !horizontal) {
       return (
         <View style={styles.verticalContainer}>
-          <CachedImage
+          <FastImage
             style={styles.verticalContainer}
             source={{
               uri: `https://arkhamdb.com${filename}`,
             }}
             resizeMode="contain"
-            loadingIndicator={null}
           />
         </View>
       );
@@ -116,13 +116,12 @@ export default class PlayerCardImage extends React.Component<Props> {
       <View style={styles.container}>
         { this.renderPlaceholder() }
         <View style={styles.container}>
-          <CachedImage
+          <FastImage
             style={[styles.image, this.imageStyle()]}
             source={{
               uri: `https://arkhamdb.com${filename}`,
             }}
             resizeMode="contain"
-            loadingIndicator={null}
           />
         </View>
       </View>
@@ -167,22 +166,29 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    top: -14 * SCALE_FACTOR,
-    left: -18 * SCALE_FACTOR,
+    top: -25 * SCALE_FACTOR,
+    left: -25 * SCALE_FACTOR,
+    width: 142 * 1.1 * SCALE_FACTOR,
+    height: 198 * 1.1 * SCALE_FACTOR,
+  },
+  treacheryImage: {
+    position: 'absolute',
+    top: -10 * SCALE_FACTOR,
+    left: -40 * SCALE_FACTOR,
     width: 142 * 1.1 * SCALE_FACTOR,
     height: 198 * 1.1 * SCALE_FACTOR,
   },
   enemyImage: {
     position: 'absolute',
-    top: -90 * SCALE_FACTOR,
-    left: -25 * SCALE_FACTOR,
+    top: -175 * SCALE_FACTOR,
+    left: -50 * SCALE_FACTOR,
     width: 142 * 1.4 * SCALE_FACTOR,
     height: 198 * 1.4 * SCALE_FACTOR,
   },
   locationImage: {
     position: 'absolute',
-    top: -17 * SCALE_FACTOR,
-    left: -25 * SCALE_FACTOR,
+    top: -35 * SCALE_FACTOR,
+    left: -40 * SCALE_FACTOR,
     width: 142 * 1.4 * SCALE_FACTOR,
     height: 198 * 1.4 * SCALE_FACTOR,
   },
@@ -199,8 +205,8 @@ const styles = StyleSheet.create({
     width: 166 * 1.35 * SCALE_FACTOR,
   },
   actImage: {
-    top: -17 * SCALE_FACTOR,
-    left: -65 * SCALE_FACTOR,
+    top: -25 * SCALE_FACTOR,
+    left: -130 * SCALE_FACTOR,
     height: 136 * 1.35 * SCALE_FACTOR,
     width: 166 * 1.35 * SCALE_FACTOR,
   },

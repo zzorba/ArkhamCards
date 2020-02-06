@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { CachedImage, ImageCacheManager } from 'react-native-cached-image';
+import FastImage from 'react-native-fast-image'
 import FlipCard from 'react-native-flip-card';
 
 import { t } from 'ttag';
@@ -23,8 +23,6 @@ import CardDetailComponent from '../CardDetailView/CardDetailComponent';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '../../styles/sizes';
 import typography from '../../styles/typography';
 const PLAYER_BACK = require('../../assets/player-back.png');
-
-const defaultImageCacheManager = ImageCacheManager();
 
 const PADDING = 32;
 
@@ -209,7 +207,11 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
 
     const card = head(cards);
     if (card && card.imagesrc) {
-      defaultImageCacheManager.downloadAndCacheUrl(`https://arkhamdb.com/${card.imagesrc}`);
+      FastImage.preload([
+        {
+          uri: `https://arkhamdb.com/${card.imagesrc}`,
+        }
+      ]);
     }
     return card;
   }
@@ -367,7 +369,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     const { fontScale } = this.props;
     if (card.imagesrc) {
       return (
-        <CachedImage
+        <FastImage
           style={styles.verticalCardImage}
           source={{
             uri: `https://arkhamdb.com/${card.imagesrc}`,
@@ -415,7 +417,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
               clickable={false}
               onFlipEnd={this._onFlipEnd}
             >
-              <CachedImage
+              <FastImage
                 style={styles.verticalCardImage}
                 source={PLAYER_BACK}
                 resizeMode="contain"

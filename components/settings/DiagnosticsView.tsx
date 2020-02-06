@@ -12,7 +12,6 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
-import { ImageCacheManager } from 'react-native-cached-image';
 import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
@@ -27,8 +26,6 @@ import { fetchCards } from '../cards/actions';
 import { setAllCampaigns } from '../campaign/actions';
 import SettingsItem from './SettingsItem';
 import { COLORS } from '../../styles/colors';
-
-const defaultImageCacheManager = ImageCacheManager();
 
 interface RealmProps {
   realm: Realm;
@@ -128,10 +125,6 @@ class DiagnosticsView extends React.Component<Props> {
         },
       }],
     );
-  };
-
-  _clearImageCache = () => {
-    defaultImageCacheManager.clearCache({});
   };
 
   _clearCache = () => {
@@ -234,7 +227,6 @@ class DiagnosticsView extends React.Component<Props> {
             title={t`Caches`}
             titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
-          <SettingsItem onPress={this._clearImageCache} text={t`Clear image cache`} />
           <SettingsItem onPress={this._clearCache} text={t`Clear cache`} />
           { this.renderDebugSection() }
         </ScrollView>

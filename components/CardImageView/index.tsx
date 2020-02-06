@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { CachedImage } from 'react-native-cached-image';
+import FastImage from 'react-native-fast-image'
 import { connectRealm, CardResults } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';
@@ -113,7 +113,7 @@ class CardImageView extends React.Component<Props, State> {
             imageHeight={cardHeight}
             style={styles.pinchZoom}
           >
-            <CachedImage
+            <FastImage
               style={{ height: cardHeight, width: cardWidth }}
               resizeMode="contain"
               source={{
@@ -131,7 +131,7 @@ class CardImageView extends React.Component<Props, State> {
           imageHeight={cardHeight}
           style={styles.pinchZoom}
         >
-          <CachedImage
+          <FastImage
             style={{ height: cardHeight, width: cardWidth }}
             resizeMode="contain"
             source={{
@@ -151,7 +151,7 @@ class CardImageView extends React.Component<Props, State> {
         imageHeight={cardHeight}
         style={styles.pinchZoom}
       >
-        <CachedImage
+        <FastImage
           style={{ height: cardHeight, width: cardWidth }}
           resizeMode="contain"
           source={{

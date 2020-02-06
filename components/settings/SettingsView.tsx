@@ -12,7 +12,6 @@ import Realm, { Results } from 'realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
-import { ImageCacheManager } from 'react-native-cached-image';
 import { Navigation } from 'react-native-navigation';
 import { SettingsCategoryHeader, SettingsSwitch } from 'react-native-settings-components';
 import { t } from 'ttag';
@@ -28,8 +27,6 @@ import { getAllDecks, AppState } from '../../reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
 import { COLORS } from '../../styles/colors';
-
-const defaultImageCacheManager = ImageCacheManager();
 
 interface OwnProps {
   componentId: string;
@@ -94,22 +91,6 @@ class SettingsView extends React.Component<Props> {
 
   _aboutPressed = () => {
     this.navButtonPressed('About', t`About Arkham Cards`);
-  };
-
-  _clearImageCache = () => {
-    defaultImageCacheManager.clearCache({});
-  };
-
-  _clearCache = () => {
-    const {
-      realm,
-      clearDecks,
-    } = this.props;
-    clearDecks();
-    realm.write(() => {
-      realm.delete(realm.objects('Card'));
-    });
-    this._doSyncCards();
   };
 
   _doSyncCards = () => {

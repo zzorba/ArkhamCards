@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { CachedImage } from 'react-native-cached-image';
+import FastImage from 'react-native-fast-image'
 
 import { showCard } from '../navHelper';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
@@ -60,7 +60,7 @@ export default class InvestigatorImage extends React.Component<Props> {
         ) }
         { !!card.imagesrc && (
           <View style={styles.relative}>
-            <CachedImage
+            <FastImage
               style={small ? styles.image : styles.bigImage}
               source={{
                 uri: `https://arkhamdb.com/${card.imagesrc}`,
@@ -96,15 +96,15 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'absolute',
-    top: -17 * scaleFactor,
-    left: -14 * scaleFactor,
+    top: -36 * scaleFactor,
+    left: -20 * scaleFactor,
     width: (166 + 44) * scaleFactor,
     height: (136 + 34) * scaleFactor,
   },
   bigImage: {
     position: 'absolute',
-    top: -22 * scaleFactor,
-    left: -10 * scaleFactor,
+    top: -44 * scaleFactor,
+    left: -20 * scaleFactor,
     width: (166 + 44) * 1.25 * scaleFactor,
     height: (136 + 34) * 1.25 * scaleFactor,
   },
