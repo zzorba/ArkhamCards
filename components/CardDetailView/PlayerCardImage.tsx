@@ -8,6 +8,7 @@ import {
 import FastImage from 'react-native-fast-image'
 import { Navigation } from 'react-native-navigation';
 
+import EncounterIcon from '../../assets/EncounterIcon';
 import { CardImageProps } from '../CardImageView';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
 import Card from '../../data/Card';
@@ -80,6 +81,18 @@ export default class PlayerCardImage extends React.Component<Props> {
         ]}>
           <Text style={styles.placeholderIcon}>
             { faction_icon(55) }
+          </Text>
+        </View>
+      );
+    }
+    if (card.encounter_code) {
+      return (
+        <View style={[
+          styles.placeholder,
+          { backgroundColor: '#444' },
+        ]}>
+          <Text style={styles.placeholderIcon}>
+            <EncounterIcon encounter_code={card.encounter_code} size={55} color='#FFF' />
           </Text>
         </View>
       );
@@ -173,17 +186,17 @@ const styles = StyleSheet.create({
   },
   treacheryImage: {
     position: 'absolute',
-    top: -10 * SCALE_FACTOR,
-    left: -40 * SCALE_FACTOR,
+    top: -0 * SCALE_FACTOR,
+    left: -30 * SCALE_FACTOR,
     width: 142 * 1.1 * SCALE_FACTOR,
     height: 198 * 1.1 * SCALE_FACTOR,
   },
   enemyImage: {
     position: 'absolute',
-    top: -175 * SCALE_FACTOR,
-    left: -50 * SCALE_FACTOR,
-    width: 142 * 1.4 * SCALE_FACTOR,
-    height: 198 * 1.4 * SCALE_FACTOR,
+    top: -160 * SCALE_FACTOR,
+    left: -35 * SCALE_FACTOR,
+    width: 142 * 1.3 * SCALE_FACTOR,
+    height: 198 * 1.3 * SCALE_FACTOR,
   },
   locationImage: {
     position: 'absolute',
