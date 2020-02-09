@@ -15,7 +15,7 @@ import DeckDelta from './DeckDelta';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
 import { fetchPublicDeck, fetchPrivateDeck } from '../decks/actions';
-import { Campaign, Deck, ParsedDeck, Trauma } from '../../actions/types';
+import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '../../actions/types';
 import Card, { CardsMap } from '../../data/Card';
 import { getDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';
@@ -34,6 +34,10 @@ interface OwnProps {
   investigatorDataUpdates: any;
   xpAdjustment: number;
   showDeckUpgrade: () => void;
+  tabooSetId?: number;
+  renderFooter: (slots?: Slots) => React.ReactNode;
+  onDeckCountChange: (code: string, count: number) => void;
+  singleCardView: boolean;
 }
 
 interface ReduxProps {
@@ -136,6 +140,10 @@ class DeckProgressModule extends React.PureComponent<Props> {
       xpAdjustment,
       fontScale,
       editable,
+      tabooSetId,
+      renderFooter,
+      onDeckCountChange,
+      singleCardView,
     } = this.props;
 
     if (!deck.previous_deck && !deck.next_deck && !campaign && !editable) {
@@ -152,6 +160,10 @@ class DeckProgressModule extends React.PureComponent<Props> {
           cards={cards}
           parsedDeck={parsedDeck}
           xpAdjustment={xpAdjustment}
+          tabooSetId={tabooSetId}
+          renderFooter={renderFooter}
+          onDeckCountChange={onDeckCountChange}
+          singleCardView={singleCardView}
         />
         { (!!deck.previous_deck || !!deck.next_deck) && (
           <DeckDelta

@@ -55,9 +55,7 @@ function hasUpgrades(
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
-  inCollection: {
-    [pack_code: string]: boolean;
-  }
+  inCollection: { [pack_code: string]: boolean }
 ) {
   const card = cards[code];
   return !!(
@@ -69,7 +67,6 @@ function hasUpgrades(
       validation.canIncludeCard(upgradeCard, false) &&
       (upgradeCard.pack_code === 'core' || inCollection[upgradeCard.pack_code])
     )));
-
 }
 
 function deckToSections(
@@ -616,6 +613,11 @@ export default class DeckViewTab extends React.Component<Props> {
       fontScale,
       showDeckUpgrade,
       editable,
+      parsedDeck,
+      tabooSetId,
+      renderFooter,
+      onDeckCountChange,
+      singleCardView,
     } = this.props;
     return (
       <DeckProgressModule
@@ -623,7 +625,7 @@ export default class DeckViewTab extends React.Component<Props> {
         fontScale={fontScale}
         cards={cards}
         deck={deck}
-        parsedDeck={this.props.parsedDeck}
+        parsedDeck={parsedDeck}
         editable={editable}
         isPrivate={isPrivate}
         campaign={campaign}
@@ -631,6 +633,10 @@ export default class DeckViewTab extends React.Component<Props> {
         showDeckUpgrade={showDeckUpgrade}
         investigatorDataUpdates={investigatorDataUpdates}
         xpAdjustment={xpAdjustment}
+        tabooSetId={tabooSetId}
+        renderFooter={renderFooter}
+        onDeckCountChange={onDeckCountChange}
+        singleCardView={singleCardView}
       />
     );
   };

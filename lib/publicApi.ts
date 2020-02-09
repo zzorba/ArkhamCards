@@ -149,19 +149,16 @@ export const syncCards = function(
           groupBy(
             realm.objects<Card>('Card')
               .filtered(`deck_limit > 0 and spoiler != true and (taboo_set_id == null or taboo_set_id == 0)`),
-            card => card.name
+            card => card.real_name
           ), (cards) => {
             if (cards.length > 1) {
               const maxXpCard = head(sortBy(cards, card => -(card.xp || 0)));
-              forEach(cards, card => {
-                const xp = card.xp || 0;
-                if (maxXpCard &&
-                  card.code !== maxXpCard.code &&
-                  xp < (maxXpCard.xp || 0)
-                ) {
-                  card.has_upgrades = true;
-                }
-              });
+              if (maxXpCard) {
+                forEach(cards, card => {
+                  const xp = card.xp || 0;
+                  card.has_upgrades = xp < (maxXpCard.xp || 0)
+                });
+              }
             }
           });
       });

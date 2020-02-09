@@ -154,7 +154,7 @@ class DeckListComponent extends React.Component<Props, State> {
     }
     if (searchTerm && this.getItems().length === 0) {
       return (
-        <View style={styles.footer}>
+        <View style={[styles.footer, styles.emptyStateText]}>
           <Text style={[typography.text, typography.center, space.marginBottomM]}>
             { t`No matching decks for "${searchTerm}".` }
           </Text>

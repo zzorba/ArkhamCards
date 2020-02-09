@@ -1,9 +1,9 @@
 import React from 'react';
-import { keys, map, sortBy } from 'lodash';
+import { concat, findIndex, keys, map, sortBy } from 'lodash';
 
 import { t } from 'ttag';
 import { ParsedDeck, Slots } from '../../actions/types';
-import { showCard } from '../navHelper';
+import { showCard, showCardSwipe } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
 import CardSectionHeader from './CardSectionHeader';
 import Card, { CardsMap } from '../../data/Card';
@@ -14,30 +14,89 @@ interface Props {
   cards: CardsMap;
   parsedDeck: ParsedDeck;
   xpAdjustment: number;
+  tabooSetId?: number;
+  renderFooter: (slots?: Slots) => React.ReactNode;
+  onDeckCountChange: (code: string, count: number) => void;
+  singleCardView: boolean;
 }
 
 export default class ChangesFromPreviousDeck extends React.Component<Props> {
-  _showCard = (card: Card) => {
-    showCard(this.props.componentId, card.code, card, true);
-  };
-
-  renderSection(slots: Slots, id: string, title: string) {
+  cards(slots: Slots): Card[] {
     const {
       cards,
-      parsedDeck: {
-        investigator,
-      },
-      fontScale,
     } = this.props;
     if (!keys(slots).length) {
-      return null;
+      return [];
     }
-    const sortedCards = sortBy(
+    return sortBy(
       sortBy(
         map(keys(slots), code => cards[code]),
         card => card.xp || 0),
       card => card.name
     );
+  }
+
+  allCards(): Card[] {
+    const {
+      parsedDeck: {
+        changes,
+      },
+    } = this.props;
+    if (!changes) {
+      return [];
+    }
+    return concat(
+      this.cards(changes.upgraded),
+      this.cards(changes.added),
+      this.cards(changes.removed),
+      this.cards(changes.exiled)
+    );
+  }
+
+  _showCard = (card: Card) => {
+    const {
+      componentId,
+      parsedDeck: {
+        investigator,
+        deck: {
+          slots,
+        },
+      },
+      tabooSetId,
+      renderFooter,
+      onDeckCountChange,
+      singleCardView,
+    } = this.props;
+    if (singleCardView) {
+      showCard(componentId, card.code, card, true);  
+    } else {
+      const allCards = this.allCards();
+      showCardSwipe(
+        componentId,
+        this.allCards(),
+        findIndex(allCards, c => c.code === card.code),
+        true,
+        tabooSetId,
+        slots,
+        onDeckCountChange,
+        investigator,
+        renderFooter
+      );
+    }
+  };
+
+  renderSection(slots: Slots, id: string, title: string) {
+    const {
+      parsedDeck: {
+        investigator,
+      },
+      fontScale,
+    } = this.props;
+    const cards = this.cards(slots);
+    if (!cards.length) {
+      return null;
+    }
+
     return (
       <React.Fragment>
         <CardSectionHeader
@@ -45,7 +104,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
           section={{ title }}
           fontScale={fontScale}
         />
-        { map(sortedCards, card => (
+        { map(cards, card => (
           <CardSearchResult
             key={`${id}-${card.code}`}
             onPress={this._showCard}
