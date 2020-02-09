@@ -9,7 +9,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import CardSectionHeader from './CardSectionHeader';
+import CardSectionHeader from '../CardSectionHeader';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import DeckDelta from './DeckDelta';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';

@@ -20,7 +20,7 @@ interface Props {
 }
 
 interface Item {
-  slot: SlotCodeType;
+  slot: string;
   value: number;
 }
 

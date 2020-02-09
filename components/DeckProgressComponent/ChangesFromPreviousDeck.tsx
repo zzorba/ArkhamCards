@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import { ParsedDeck, Slots } from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
-import CardSectionHeader from './CardSectionHeader';
+import CardSectionHeader from '../CardSectionHeader';
 import Card, { CardsMap } from '../../data/Card';
 
 interface Props {
@@ -68,7 +68,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       singleCardView,
     } = this.props;
     if (singleCardView) {
-      showCard(componentId, card.code, card, true);  
+      showCard(componentId, card.code, card, true);
     } else {
       const allCards = this.allCards();
       showCardSwipe(

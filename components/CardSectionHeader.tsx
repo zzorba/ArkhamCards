@@ -10,10 +10,10 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { FACTION_DARK_GRADIENTS } from '../../constants';
-import Card from '../../data/Card';
-import typography from '../../styles/typography';
-import { m, s, xs, iconSizeScale } from '../../styles/space';
+import { FACTION_DARK_GRADIENTS } from '../constants';
+import Card from '../data/Card';
+import typography from '../styles/typography';
+import { m, s, xs, iconSizeScale } from '../styles/space';
 
 export interface CardSectionHeaderData {
   superTitle?: string;

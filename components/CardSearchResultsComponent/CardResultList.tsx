@@ -49,7 +49,7 @@ import Card from '../../data/Card';
 import { showCard, showCardSwipe } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
 import { rowHeight } from '../CardSearchResult/constants';
-import CardSectionHeader, { rowHeaderHeight } from './CardSectionHeader';
+import CardSectionHeader, { rowHeaderHeight } from '../CardSearchResultsComponent/CardSectionHeader';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
 import typography from '../../styles/typography';
 import { s, m } from '../../styles/space';

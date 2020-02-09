@@ -26,9 +26,9 @@ import { showCard, showCardSwipe } from '../navHelper';
 import ArkhamIcon from '../../assets/ArkhamIcon';
 import AppIcon from '../../assets/AppIcon';
 import InvestigatorImage from '../core/InvestigatorImage';
-import DeckProgressModule from './DeckProgressModule';
+import DeckProgressComponent from '../DeckProgressComponent';
 import InvestigatorOptionsModule from './InvestigatorOptionsModule';
-import CardSectionHeader, { CardSectionHeaderData } from './CardSectionHeader';
+import CardSectionHeader, { CardSectionHeaderData } from '../CardSectionHeader';
 import CardSearchResult from '../CardSearchResult';
 import TabooSetPicker from '../TabooSetPicker';
 import { FACTION_DARK_GRADIENTS } from '../../constants';
@@ -620,7 +620,7 @@ export default class DeckViewTab extends React.Component<Props> {
       singleCardView,
     } = this.props;
     return (
-      <DeckProgressModule
+      <DeckProgressComponent
         componentId={componentId}
         fontScale={fontScale}
         cards={cards}
