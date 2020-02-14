@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image';
 
 import { showCard } from '../navHelper';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';

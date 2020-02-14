@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image';
 import { connectRealm, CardResults } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';

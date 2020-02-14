@@ -156,7 +156,7 @@ export const syncCards = function(
               if (maxXpCard) {
                 forEach(cards, card => {
                   const xp = card.xp || 0;
-                  card.has_upgrades = xp < (maxXpCard.xp || 0)
+                  card.has_upgrades = xp < (maxXpCard.xp || 0);
                 });
               }
             }

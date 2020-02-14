@@ -33,6 +33,7 @@ import MyDecksView from '../components/MyDecksView';
 import NewDeckView from '../components/NewDeckView';
 import DrawSimulatorView from '../components/DrawSimulatorView';
 import DeckChartsView from '../components/DeckChartsView';
+import DeckHistoryView from '../components/DeckHistoryView';
 import DeckUpgradeDialog from '../components/DeckUpgradeDialog';
 import OddsCalculatorView from '../components/OddsCalculatorView';
 import CardFilterView from '../components/filter/CardFilterView';
@@ -59,6 +60,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Browse.InvestigatorCards', () => InvestigatorCardsView, Provider, store);
   Navigation.registerComponentWithRedux('Deck', () => DeckDetailView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Charts', () => DeckChartsView, Provider, store);
+  Navigation.registerComponentWithRedux('Deck.History', () => DeckHistoryView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.DrawSimulator', () => DrawSimulatorView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Edit', () => DeckEditView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.EditSpecial', () => EditSpecialDeckCards, Provider, store);

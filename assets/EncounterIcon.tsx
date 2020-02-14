@@ -207,6 +207,12 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'abyssal_tribute':
       case 'brotherhood_of_the_beast':
       case 'sands_of_egypt':
+      case 'murder_at_the_excelsior_hotel':
+      case 'alien_interference':
+      case 'dark_rituals':
+      case 'excelsior_management':
+      case 'sins_of_the_past':
+      case 'vile_experiments':
         return this.standaloneIcon(encounter_code, size, color);
       case 'the_eternal_slumber':
         return this.standaloneIcon('eternal_slumber', size, color);

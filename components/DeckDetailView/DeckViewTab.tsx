@@ -649,7 +649,7 @@ export default class DeckViewTab extends React.Component<Props> {
         ListFooterComponent={this._renderFooter}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
-        initialNumToRender={25}
+        initialNumToRender={50}
         renderItem={this._renderCard}
         keyExtractor={this._keyForCard}
         renderSectionHeader={this._renderSectionHeader}

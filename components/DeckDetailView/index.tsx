@@ -1357,6 +1357,27 @@ class DeckDetailView extends React.Component<Props, State> {
     }
   };
 
+  _showUpgradeHistory = () => {
+    const { componentId } = this.props;
+    const { parsedDeck } = this.state;
+    this.setState({
+      menuOpen: false,
+    });
+    if (parsedDeck) {
+      const options = getDeckOptions(parsedDeck.investigator, false, t`Upgrade History`);
+
+      Navigation.push(componentId, {
+        component: {
+          name: 'Deck.History',
+          passProps: {
+            id: parsedDeck.deck.id,
+          },
+          options: options,
+        },
+      });
+    }
+  };
+
   _showDrawSimulator = () => {
     const { componentId } = this.props;
     const { parsedDeck } = this.state;
@@ -1447,6 +1468,12 @@ class DeckDetailView extends React.Component<Props, State> {
                 onPress={this._showEditDetailsVisible}
                 title={t`Available XP`}
                 description={xpString}
+              />
+            ) }
+            { !!deck.previous_deck && !deck.next_deck && (
+              <SettingsButton
+                onPress={this._showUpgradeHistory}
+                title={t`Upgrade History`}
               />
             ) }
           </>

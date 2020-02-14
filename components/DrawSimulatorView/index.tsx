@@ -281,9 +281,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 22,
   },
-  selected: {
-    backgroundColor: '#ddd',
-  },
   button: {
     flex: 1,
     marginLeft: xs,

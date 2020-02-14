@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image';
 import FlipCard from 'react-native-flip-card';
 
 import { t } from 'ttag';
@@ -210,7 +210,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
       FastImage.preload([
         {
           uri: `https://arkhamdb.com/${card.imagesrc}`,
-        }
+        },
       ]);
     }
     return card;

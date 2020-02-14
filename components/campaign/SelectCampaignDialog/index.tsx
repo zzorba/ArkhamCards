@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
 import { t } from 'ttag';
-import { CUSTOM, ALL_CAMPAIGNS, CampaignCycleCode } from '../../../actions/types';
+import { CUSTOM, ALL_CAMPAIGNS, TDEA, TDEB, CampaignCycleCode } from '../../../actions/types';
 import CycleItem from './CycleItem';
 import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { campaignName } from '../constants';
@@ -82,7 +82,9 @@ class SelectCampaignDialog extends React.Component<Props> {
     } = this.props;
     const partitionedCampaigns = partition(
       ALL_CAMPAIGNS,
-      pack_code => in_collection[pack_code]);
+      pack_code => (in_collection[pack_code] || (
+        in_collection.tde && (pack_code === TDEA || pack_code === TDEB)))
+    );
     const myCampaigns = partitionedCampaigns[0];
     const otherCampaigns = partitionedCampaigns[1];
 

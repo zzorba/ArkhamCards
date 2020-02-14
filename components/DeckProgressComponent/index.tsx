@@ -8,16 +8,16 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
+import { Navigation } from 'react-native-navigation';
 
 import CardSectionHeader from '../CardSectionHeader';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
-import DeckDelta from './DeckDelta';
+import { getDeckOptions } from '../navHelper';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
 import { fetchPublicDeck, fetchPrivateDeck } from '../decks/actions';
 import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '../../actions/types';
 import Card, { CardsMap } from '../../data/Card';
-import { getDeck, AppState } from '../../reducers';
 import typography from '../../styles/typography';
 import space, { l, m, s } from '../../styles/space';
 
@@ -30,18 +30,16 @@ interface OwnProps {
   isPrivate: boolean;
   editable: boolean;
   campaign?: Campaign;
-  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  investigatorDataUpdates: any;
+  title?: string;
+  onTitlePress?: (deck: ParsedDeck) => void;
+  showTraumaDialog?: (investigator: Card, traumaData: Trauma) => void;
+  investigatorDataUpdates?: any;
   xpAdjustment: number;
-  showDeckUpgrade: () => void;
+  showDeckUpgrade?: () => void;
   tabooSetId?: number;
-  renderFooter: (slots?: Slots) => React.ReactNode;
-  onDeckCountChange: (code: string, count: number) => void;
-  singleCardView: boolean;
-}
-
-interface ReduxProps {
-  previousDeck?: Deck;
+  renderFooter?: (slots?: Slots) => React.ReactNode;
+  onDeckCountChange?: (code: string, count: number) => void;
+  singleCardView?: boolean;
 }
 
 interface ReduxActionProps {
@@ -49,26 +47,9 @@ interface ReduxActionProps {
   fetchPublicDeck: (deckId: number, useDeckEndpoint: boolean) => void;
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps;
+type Props = OwnProps & ReduxActionProps;
 
-class DeckProgressModule extends React.PureComponent<Props> {
-  componentDidMount() {
-    const {
-      deck,
-      previousDeck,
-      fetchPublicDeck,
-      fetchPrivateDeck,
-      isPrivate,
-    } = this.props;
-    if (deck.previous_deck && !previousDeck) {
-      if (isPrivate) {
-        fetchPrivateDeck(deck.previous_deck);
-      } else {
-        fetchPublicDeck(deck.previous_deck, true);
-      }
-    }
-  }
-
+class DeckProgressComponent extends React.PureComponent<Props> {
   investigatorData() {
     const {
       campaign,
@@ -96,6 +77,9 @@ class DeckProgressModule extends React.PureComponent<Props> {
       editable,
       fontScale,
     } = this.props;
+    if (!editable) {
+      return null;
+    }
     return (
       <React.Fragment>
         <CardSectionHeader
@@ -111,14 +95,16 @@ class DeckProgressModule extends React.PureComponent<Props> {
             <View style={space.marginBottomM}>
               <CampaignSummaryComponent campaign={campaign} hideScenario />
             </View>
-            <EditTraumaComponent
-              investigator={investigator}
-              investigatorData={this.investigatorData()}
-              showTraumaDialog={showTraumaDialog}
-            />
+            { !!showTraumaDialog && (
+              <EditTraumaComponent
+                investigator={investigator}
+                investigatorData={this.investigatorData()}
+                showTraumaDialog={showTraumaDialog}
+              />
+            ) }
           </View>
         ) }
-        { editable && (
+        { !!showDeckUpgrade && (
           <View style={styles.buttonWrapper}>
             <Button
               title={t`Upgrade Deck with XP`}
@@ -129,6 +115,19 @@ class DeckProgressModule extends React.PureComponent<Props> {
       </React.Fragment>
     );
   }
+
+  _showUpgradeHistory = () => {
+    const { componentId, parsedDeck } = this.props;
+    Navigation.push(componentId, {
+      component: {
+        name: 'Deck.History',
+        passProps: {
+          id: parsedDeck.deck.id,
+        },
+        options: getDeckOptions(parsedDeck.investigator, false, t`Upgrade History`),
+      },
+    });
+  };
 
   render() {
     const {
@@ -144,9 +143,11 @@ class DeckProgressModule extends React.PureComponent<Props> {
       renderFooter,
       onDeckCountChange,
       singleCardView,
+      title,
+      onTitlePress,
     } = this.props;
 
-    if (!deck.previous_deck && !deck.next_deck && !campaign && !editable) {
+    if (!deck.previous_deck && !deck.next_deck && !campaign && !editable && !title) {
       return null;
     }
 
@@ -157,6 +158,7 @@ class DeckProgressModule extends React.PureComponent<Props> {
         <ChangesFromPreviousDeck
           componentId={componentId}
           fontScale={fontScale}
+          title={title}
           cards={cards}
           parsedDeck={parsedDeck}
           xpAdjustment={xpAdjustment}
@@ -164,25 +166,23 @@ class DeckProgressModule extends React.PureComponent<Props> {
           renderFooter={renderFooter}
           onDeckCountChange={onDeckCountChange}
           singleCardView={singleCardView}
+          editable={editable}
+          onTitlePress={onTitlePress}
         />
-        { (!!deck.previous_deck || !!deck.next_deck) && (
-          <DeckDelta
-            componentId={componentId}
-            parsedDeck={parsedDeck}
-            xpAdjustment={xpAdjustment}
-          />
+        { !!editable && (
+          <View style={styles.buttonWrapper}>
+            <Button
+              title={t`Upgrade History`}
+              onPress={this._showUpgradeHistory}
+            />
+          </View>
         ) }
       </View>
     );
   }
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  if (props.deck && props.deck.previous_deck) {
-    return {
-      previousDeck: getDeck(state, props.deck.previous_deck) || undefined,
-    };
-  }
+function mapStateToProps(): {} {
   return {};
 }
 
@@ -193,7 +193,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckProgressModule);
+export default connect(mapStateToProps, mapDispatchToProps)(DeckProgressComponent);
 
 
 const styles = StyleSheet.create({

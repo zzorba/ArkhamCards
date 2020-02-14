@@ -1,7 +1,7 @@
 import React from 'react';
 import { concat, findIndex, keys, map, sortBy } from 'lodash';
-
 import { t } from 'ttag';
+
 import { ParsedDeck, Slots } from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
@@ -15,9 +15,12 @@ interface Props {
   parsedDeck: ParsedDeck;
   xpAdjustment: number;
   tabooSetId?: number;
-  renderFooter: (slots?: Slots) => React.ReactNode;
-  onDeckCountChange: (code: string, count: number) => void;
-  singleCardView: boolean;
+  onTitlePress?: (deck: ParsedDeck) => void;
+  renderFooter?: (slots?: Slots) => React.ReactNode;
+  onDeckCountChange?: (code: string, count: number) => void;
+  singleCardView?: boolean;
+  title?: string;
+  editable: boolean;
 }
 
 export default class ChangesFromPreviousDeck extends React.Component<Props> {
@@ -118,30 +121,74 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
     );
   }
 
-  render() {
+  _onTitlePress = () => {
+    const { onTitlePress, parsedDeck } = this.props;
+    if (onTitlePress) {
+      onTitlePress(parsedDeck);
+    }
+  };
+
+  renderEdits() {
     const {
       parsedDeck: {
         investigator,
         changes,
       },
       fontScale,
+      editable,
     } = this.props;
+
+    if (changes && (
+      keys(changes.upgraded).length ||
+      keys(changes.added).length ||
+      keys(changes.removed).length ||
+      keys(changes.exiled).length
+    )) {
+      return (
+        <>
+          { this.renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
+          { this.renderSection(changes.added, 'added', t`Added cards`) }
+          { this.renderSection(changes.removed, 'removed', t`Removed cards`) }
+          { this.renderSection(changes.exiled, 'exiled', t`Exiled cards`) }
+        </>
+      );
+    }
     if (!changes) {
       return null;
     }
-
-    return (
-      <React.Fragment>
+    if (!editable) {
+      return (
         <CardSectionHeader
           investigator={investigator}
-          section={{ superTitle: t`Changes from previous deck` }}
+          section={{ title: t`No Changes` }}
           fontScale={fontScale}
         />
-        { this.renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
-        { this.renderSection(changes.added, 'added', t`Added cards`) }
-        { this.renderSection(changes.removed, 'removed', t`Removed cards`) }
-        { this.renderSection(changes.exiled, 'exiled', t`Exiled cards`) }
-      </React.Fragment>
+      );
+    }
+  }
+
+  render() {
+    const {
+      parsedDeck: {
+        investigator,
+      },
+      fontScale,
+      title,
+      onTitlePress,
+    } = this.props;
+
+    return (
+      <>
+        <CardSectionHeader
+          investigator={investigator}
+          section={{
+            superTitle: title || t`Card changes`,
+            onPress: onTitlePress ? this._onTitlePress : undefined,
+          }}
+          fontScale={fontScale}
+        />
+        {this.renderEdits()}
+      </>
     );
   }
 }

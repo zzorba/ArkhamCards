@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image';
 import { Navigation } from 'react-native-navigation';
 
 import EncounterIcon from '../../assets/EncounterIcon';
@@ -92,7 +92,7 @@ export default class PlayerCardImage extends React.Component<Props> {
           { backgroundColor: '#444' },
         ]}>
           <Text style={styles.placeholderIcon}>
-            <EncounterIcon encounter_code={card.encounter_code} size={55} color='#FFF' />
+            <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
           </Text>
         </View>
       );
