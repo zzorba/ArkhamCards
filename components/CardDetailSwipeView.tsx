@@ -32,6 +32,7 @@ interface ReduxProps {
 export interface CardDetailSwipeProps {
   cards: Card[];
   initialIndex: number;
+  whiteNav: boolean;
   showSpoilers?: boolean;
   tabooSetId?: number;
   deckCardCounts?: Slots;
@@ -57,7 +58,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: passProps.onDeckCountChange ? 'white' : COLORS.navButton,
+          color: passProps.whiteNav ? 'white' : COLORS.navButton,
         },
       },
     };
@@ -91,10 +92,14 @@ class CardDetailSwipeView extends React.Component<Props, State> {
   }
 
   _syncNavigationButtons = () => {
+    const {
+      componentId,
+      whiteNav,
+    } = this.props;
     const card = this.currentCard();
-    const buttonColor = this.props.onDeckCountChange ? 'white' : COLORS.navButton;
+    const buttonColor = whiteNav ? 'white' : COLORS.navButton;
     const rightButtons = rightButtonsForCard(card, buttonColor);
-    Navigation.mergeOptions(this.props.componentId, {
+    Navigation.mergeOptions(componentId, {
       topBar: {
         rightButtons,
         backButton: {

@@ -2,7 +2,7 @@ import React from 'react';
 import { concat, findIndex, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
-import { ParsedDeck, Slots } from '../../actions/types';
+import { DeckChanges, ParsedDeck, Slots } from '../../actions/types';
 import { showCard, showCardSwipe } from '../navHelper';
 import CardSearchResult from '../CardSearchResult';
 import CardSectionHeader from '../CardSectionHeader';
@@ -128,6 +128,15 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
     }
   };
 
+  static hasChanges(changes?: DeckChanges): boolean {
+    return !!(changes && (
+      keys(changes.upgraded).length ||
+      keys(changes.added).length ||
+      keys(changes.removed).length ||
+      keys(changes.exiled).length
+    ));
+  }
+
   renderEdits() {
     const {
       parsedDeck: {
@@ -138,12 +147,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       editable,
     } = this.props;
 
-    if (changes && (
-      keys(changes.upgraded).length ||
-      keys(changes.added).length ||
-      keys(changes.removed).length ||
-      keys(changes.exiled).length
-    )) {
+    if (changes && ChangesFromPreviousDeck.hasChanges(changes)) {
       return (
         <>
           { this.renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
@@ -171,11 +175,15 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
     const {
       parsedDeck: {
         investigator,
+        changes,
       },
       fontScale,
       title,
       onTitlePress,
     } = this.props;
+    if (!ChangesFromPreviousDeck.hasChanges(changes) && !title) {
+      return null;
+    }
 
     return (
       <>

@@ -61,6 +61,7 @@ import { parseDeck } from '../../lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCards';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
+import { DeckHistoryProps } from '../DeckHistoryView';
 import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
 import { CardUpgradeDialogProps } from './CardUpgradeDialog';
@@ -1359,18 +1360,26 @@ class DeckDetailView extends React.Component<Props, State> {
 
   _showUpgradeHistory = () => {
     const { componentId } = this.props;
-    const { parsedDeck } = this.state;
+    const {
+      parsedDeck,
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment,
+    } = this.state;
     this.setState({
       menuOpen: false,
     });
     if (parsedDeck) {
       const options = getDeckOptions(parsedDeck.investigator, false, t`Upgrade History`);
 
-      Navigation.push(componentId, {
+      Navigation.push<DeckHistoryProps>(componentId, {
         component: {
           name: 'Deck.History',
           passProps: {
             id: parsedDeck.deck.id,
+            slots,
+            ignoreDeckLimitSlots,
+            xpAdjustment,
           },
           options: options,
         },
@@ -1470,7 +1479,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 description={xpString}
               />
             ) }
-            { !!deck.previous_deck && !deck.next_deck && (
+            { !!deck.previous_deck && (
               <SettingsButton
                 onPress={this._showUpgradeHistory}
                 title={t`Upgrade History`}
@@ -1570,6 +1579,7 @@ class DeckDetailView extends React.Component<Props, State> {
             buttons={this.renderButtons()}
             showEditCards={this._onEditPressed}
             showDeckUpgrade={this._onUpgradePressed}
+            showDeckHistory={this._showUpgradeHistory}
             showEditNameDialog={this._showEditDetailsVisible}
             showCardUpgradeDialog={this._showCardUpgradeDialog}
             showEditSpecial={deck.next_deck ? undefined : this._onEditSpecialPressed}

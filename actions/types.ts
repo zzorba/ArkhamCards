@@ -116,6 +116,7 @@ export interface ParsedDeck {
   normalCardCount: number;
   totalCardCount: number;
   experience: number;
+  availableExperience: number;
   packs: number;
   factionCounts: FactionCounts;
   costHistogram: number[];

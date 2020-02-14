@@ -218,6 +218,7 @@ interface Props {
   setMeta: (key: string, value: string) => void;
   showEditCards: () => void;
   showDeckUpgrade: () => void;
+  showDeckHistory: () => void;
   width: number;
   inCollection: {
     [pack_code: string]: boolean;
@@ -612,6 +613,7 @@ export default class DeckViewTab extends React.Component<Props> {
       xpAdjustment,
       fontScale,
       showDeckUpgrade,
+      showDeckHistory,
       editable,
       parsedDeck,
       tabooSetId,
@@ -631,6 +633,7 @@ export default class DeckViewTab extends React.Component<Props> {
         campaign={campaign}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={showDeckUpgrade}
+        showDeckHistory={showDeckHistory}
         investigatorDataUpdates={investigatorDataUpdates}
         xpAdjustment={xpAdjustment}
         tabooSetId={tabooSetId}

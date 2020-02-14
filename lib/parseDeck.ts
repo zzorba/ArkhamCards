@@ -442,6 +442,7 @@ export function parseDeck(
   ignoreDeckLimitSlots: Slots,
   cards: CardsMap,
   previousDeck?: Deck,
+  xpAdjustment?: number
 ): ParsedDeck {
   if (!deck) {
     // @ts-ignore
@@ -493,6 +494,7 @@ export function parseDeck(
       c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,
+    availableExperience: (deck.xp || 0) + (xpAdjustment || 0),
     packs: uniqBy(cardIds, c => cards[c.id].pack_code).length,
     factionCounts: factionCounts,
     costHistogram: costHistogram(cardIds, cards),

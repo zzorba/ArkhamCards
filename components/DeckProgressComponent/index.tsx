@@ -8,11 +8,9 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
-import { Navigation } from 'react-native-navigation';
 
 import CardSectionHeader from '../CardSectionHeader';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
-import { getDeckOptions } from '../navHelper';
 import EditTraumaComponent from '../campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
 import { fetchPublicDeck, fetchPrivateDeck } from '../decks/actions';
@@ -33,6 +31,7 @@ interface OwnProps {
   title?: string;
   onTitlePress?: (deck: ParsedDeck) => void;
   showTraumaDialog?: (investigator: Card, traumaData: Trauma) => void;
+  showDeckHistory?: () => void;
   investigatorDataUpdates?: any;
   xpAdjustment: number;
   showDeckUpgrade?: () => void;
@@ -116,19 +115,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
     );
   }
 
-  _showUpgradeHistory = () => {
-    const { componentId, parsedDeck } = this.props;
-    Navigation.push(componentId, {
-      component: {
-        name: 'Deck.History',
-        passProps: {
-          id: parsedDeck.deck.id,
-        },
-        options: getDeckOptions(parsedDeck.investigator, false, t`Upgrade History`),
-      },
-    });
-  };
-
   render() {
     const {
       campaign,
@@ -145,6 +131,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
       singleCardView,
       title,
       onTitlePress,
+      showDeckHistory,
     } = this.props;
 
     if (!deck.previous_deck && !deck.next_deck && !campaign && !editable && !title) {
@@ -169,11 +156,11 @@ class DeckProgressComponent extends React.PureComponent<Props> {
           editable={editable}
           onTitlePress={onTitlePress}
         />
-        { !!editable && (
+        { !!editable && !!deck.previous_deck && !!showDeckHistory && (
           <View style={styles.buttonWrapper}>
             <Button
               title={t`Upgrade History`}
-              onPress={this._showUpgradeHistory}
+              onPress={showDeckHistory}
             />
           </View>
         ) }

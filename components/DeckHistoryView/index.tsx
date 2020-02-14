@@ -1,5 +1,5 @@
 import React from 'react';
-import { map, reverse } from 'lodash';
+import { map } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -14,12 +14,15 @@ import { getDeckOptions } from '../navHelper';
 import { NavigationProps } from '../types';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
-import { Deck, DecksMap, ParsedDeck } from '../../actions/types';
+import { Deck, DecksMap, ParsedDeck, Slots } from '../../actions/types';
 import { AppState, getAllDecks } from '../../reducers';
 import { parseDeck } from '../../lib/parseDeck';
 
-interface DeckHistoryProps {
+export interface DeckHistoryProps {
   id: number;
+  slots: Slots;
+  ignoreDeckLimitSlots: Slots;
+  xpAdjustment: number;
 }
 
 interface ReduxProps {
@@ -31,25 +34,34 @@ type Props = NavigationProps & DimensionsProps & DeckHistoryProps & PlayerCardPr
 class DeckHistoryView extends React.Component<Props> {
 
   historicDecks(): ParsedDeck [] {
-    const { id, decks, cards } = this.props;
+    const {
+      id,
+      decks,
+      cards,
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment,
+    } = this.props;
     const decksResult: ParsedDeck[] = [];
     let deck: Deck | undefined = decks[id];
     while (deck) {
+      const currentDeck = deck.id === id;
       const previousDeck: Deck | undefined = (
         deck.previous_deck ? decks[deck.previous_deck] : undefined
       );
       decksResult.push(
         parseDeck(
           deck,
-          deck.slots,
-          deck.ignoreDeckLimitSlots,
+          currentDeck ? slots : deck.slots,
+          currentDeck ? ignoreDeckLimitSlots : deck.ignoreDeckLimitSlots,
           cards,
-          previousDeck
+          previousDeck,
+          currentDeck ? xpAdjustment : undefined
         )
       );
       deck = previousDeck;
     }
-    return reverse(decksResult);
+    return decksResult;
   }
 
   deckTitle(deck: ParsedDeck): string {
@@ -58,14 +70,14 @@ class DeckHistoryView extends React.Component<Props> {
     }
     if (deck.deck.id === this.props.id) {
       if (deck.changes) {
-        return t`Latest Deck: ${deck.changes.spentXp} of ${deck.experience} XP`;
+        return t`Latest Deck: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
       }
-      return t`Latest Version ${deck.deck.version}: ${deck.experience} XP`;
+      return t`Latest Version ${deck.deck.version}: ${deck.availableExperience} XP`;
     }
     if (deck.changes) {
-      return t`Version ${deck.deck.version}: ${deck.changes.spentXp} of ${deck.experience} XP`;
+      return t`Version ${deck.deck.version}: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
     }
-    return t`Version ${deck.deck.version}: ${deck.experience} XP`;
+    return t`Version ${deck.deck.version}: ${deck.availableExperience} XP`;
   }
 
   _onDeckPress = (parsedDeck: ParsedDeck) => {

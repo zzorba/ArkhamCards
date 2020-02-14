@@ -227,6 +227,7 @@ export function showCardSwipe(
         deckCardCounts,
         onDeckCountChange,
         renderFooter,
+        whiteNav: !!investigator,
       },
       options,
     },
