@@ -326,7 +326,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     }
     if (count !== 0) {
       return (
-        <View style={styles.countText}>
+        <View style={styles.countWrapper}>
           { !!onUpgrade && (
             <Button
               style={styles.upgradeButton}
@@ -341,9 +341,11 @@ export default class CardSearchResult extends React.PureComponent<Props> {
               }
             />
           ) }
-          <Text style={typography.text}>
-            { this.countText(count) }
-          </Text>
+          <View style={styles.count}>
+            <Text style={typography.text}>
+              { this.countText(count) }
+            </Text>
+          </View>
         </View>
       );
     }
@@ -488,11 +490,17 @@ const styles = StyleSheet.create({
     marginTop: 6,
     marginRight: 6,
   },
-  countText: {
+  countWrapper: {
     marginRight: s,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  count: {
+    marginLeft: 4,
+    minWidth: 25,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   tabooBlock: {
     marginLeft: s,
