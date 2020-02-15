@@ -9232,10 +9232,10 @@ readline-sync@^1.4.7:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/readline-sync/-/readline-sync-1.4.9.tgz#3eda8e65f23cd2a17e61301b1f0003396af5ecda"
 
-realm@3.6.3:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/realm/-/realm-3.6.3.tgz#8a035888bb85198b7690c548c9ac39caed3035af"
-  integrity sha512-HF+ETpC9EFth3AKkN2WOorY8SpN9nPQEovWPsNXqAaNFu3jsN9TKV1opZanNRNR2KEmMinCx2W34sCKZH+Wp8Q==
+realm@3.6.4:
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/realm/-/realm-3.6.4.tgz#efbe85c25fb9b358b1a1bde38da1f1c8bd49bccb"
+  integrity sha512-0nkeGAK3wWSn7uXcrBjT/25TYO8n1ylnnQjGbLbfivj3v7c+sGO/Q/AXWcvwjeAFLwYI0S1ema0o21L5JVmt0A==
   dependencies:
     command-line-args "^4.0.6"
     decompress "^4.2.0"

@@ -267,7 +267,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - ReactNativeNavigation (4.8.1):
     - React
-  - RealmJS (3.6.3):
+  - RealmJS (3.6.4):
     - GCDWebServer
     - React
   - rn-fetch-blob (0.12.0):
@@ -482,7 +482,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   ReactNativeNavigation: dd001e289d2828340579521adc054f21330d18b1
-  RealmJS: c19d60dbe21606dade0f6217f4dd0d1fb8bb4e3a
+  RealmJS: efc6149c80687ae64c040148f7c2ade335a97416
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   RNDeviceInfo: 017aa2fd29a437fba26807cbe2fa51a149da70cd

@@ -56,7 +56,7 @@ class DeckHistoryView extends React.Component<Props> {
           currentDeck ? ignoreDeckLimitSlots : deck.ignoreDeckLimitSlots,
           cards,
           previousDeck,
-          currentDeck ? xpAdjustment : undefined
+          currentDeck ? xpAdjustment : (deck.xp_adjustment || 0),
         )
       );
       deck = previousDeck;
@@ -64,7 +64,7 @@ class DeckHistoryView extends React.Component<Props> {
     return decksResult;
   }
 
-  deckTitle(deck: ParsedDeck): string {
+  deckTitle(deck: ParsedDeck, versionNumber: number): string {
     if (!deck.changes) {
       return t`Original Deck`;
     }
@@ -72,12 +72,12 @@ class DeckHistoryView extends React.Component<Props> {
       if (deck.changes) {
         return t`Latest Deck: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
       }
-      return t`Latest Version ${deck.deck.version}: ${deck.availableExperience} XP`;
+      return t`Latest Deck: ${deck.availableExperience} XP`;
     }
     if (deck.changes) {
-      return t`Version ${deck.deck.version}: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
+      return t`Upgrade ${versionNumber}: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
     }
-    return t`Version ${deck.deck.version}: ${deck.availableExperience} XP`;
+    return t`Upgrade ${versionNumber}: ${deck.availableExperience} XP`;
   }
 
   _onDeckPress = (parsedDeck: ParsedDeck) => {
@@ -102,10 +102,10 @@ class DeckHistoryView extends React.Component<Props> {
 
     return (
       <ScrollView style={styles.wrapper}>
-        { map(decks, deck => (
+        { map(decks, (deck, idx) => (
           <DeckProgressComponent
             key={deck.deck.id}
-            title={this.deckTitle(deck)}
+            title={this.deckTitle(deck, decks.length - idx)}
             onTitlePress={this._onDeckPress}
             fontScale={fontScale}
             componentId={componentId}

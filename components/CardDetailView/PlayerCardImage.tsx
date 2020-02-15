@@ -206,10 +206,10 @@ const styles = StyleSheet.create({
     height: 198 * 1.4 * SCALE_FACTOR,
   },
   investigatorImage: {
-    top: -17 * SCALE_FACTOR,
-    left: -10 * SCALE_FACTOR,
-    width: (166 + 44) * SCALE_FACTOR,
-    height: (136 + 34) * SCALE_FACTOR,
+    top: -40 * SCALE_FACTOR,
+    left: -15 * SCALE_FACTOR,
+    width: (166 + 64) * SCALE_FACTOR,
+    height: (136 + 54) * SCALE_FACTOR,
   },
   agendaImage: {
     top: -35 * SCALE_FACTOR,
