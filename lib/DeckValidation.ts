@@ -5,14 +5,21 @@ import {
   find,
   findKey,
   filter,
+  minBy,
   indexOf,
 } from 'lodash';
+import { t } from 'ttag';
 
-import { DeckMeta, DeckProblem, DeckProblemType } from '../actions/types';
-import { VERSATILE_CODE } from '../constants';
+import { DeckMeta, DeckProblem, DeckProblemType, Slots } from '../actions/types';
+import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from '../constants';
 import Card from '../data/Card';
 import DeckOption from '../data/DeckOption';
 
+
+interface SpecialCardCounts {
+  versatile: number;
+  onYourOwn: number;
+}
 
 // Code taken from:
 // https://github.com/Kamalisk/arkhamdb/blob/4c194c54fcbc381e45b93f0f1bcb65a37ae581a9/src/AppBundle/Resources/public/js/app.deck.js
@@ -27,16 +34,26 @@ interface DeckOptionsCount {
 
 export default class DeckValidation {
   investigator: Card;
+  slots: Slots;
   meta?: DeckMeta;
   problem_list: string[] = [];
   deck_options_counts: DeckOptionsCount[] = [];
 
-  constructor(investigator: Card, meta?: DeckMeta) {
+  constructor(investigator: Card, slots: Slots, meta?: DeckMeta) {
     this.investigator = investigator;
+    this.slots = slots;
     this.meta = meta;
   }
 
-  getDeckSize(versatileCount: number): number {
+  specialCardCounts(): SpecialCardCounts {
+    return {
+      versatile: this.slots[VERSATILE_CODE] || 0,
+      onYourOwn: this.slots[ON_YOUR_OWN_CODE] || 0,
+    };
+  }
+
+  getDeckSize(): number {
+    const specialCards = this.specialCardCounts();
     var size: number = 30;
   	if (this.investigator.deck_requirements) {
       if (this.meta && this.meta.deck_size_selected) {
@@ -45,7 +62,7 @@ export default class DeckValidation {
   			size = this.investigator.deck_requirements.size;
   		}
     }
-    return size + (versatileCount * 5);
+    return size + (specialCards.versatile * 5);
   }
 
   getPhysicalDrawDeck(cards: Card[]) {
@@ -68,9 +85,16 @@ export default class DeckValidation {
     return mapValues(
       groupBy(this.getDrawDeck(cards), card => card ? card.real_name : 'Unknown Card'),
       group => {
+        const card = group[0];
+        const smallestDeckLimitCard = minBy(group, g => g.deck_limit || 0);
+        // Let's assume if one is myriad, then they all are.
+        const deck_limit = (card && card.myriad) ? 3 : (
+          // Otherwise take the smallest limit found, to make OYO(3*2) work.
+          (smallestDeckLimitCard && smallestDeckLimitCard.deck_limit) || 0
+        );
         return {
           nb_copies: group.length,
-          deck_limit: group[0].deck_limit || 0,
+          deck_limit,
         };
       });
   }
@@ -112,8 +136,7 @@ export default class DeckValidation {
   	} else {
 
   	}
-    const versatileCount = filter(cards, card => card.code === VERSATILE_CODE).length;
-    const size = this.getDeckSize(versatileCount);
+    const size = this.getDeckSize();
 
   	// too many copies of one card
   	if(findKey(
@@ -123,11 +146,11 @@ export default class DeckValidation {
     }
 
   	// no invalid card
-  	if(this.getInvalidCards(cards, versatileCount).length > 0) {
+  	if(this.getInvalidCards(cards).length > 0) {
   		return 'invalid_cards';
   	}
 
-    const deck_options = this.deckOptions(versatileCount);
+    const deck_options = this.deckOptions();
   	for (var i = 0; i < deck_options.length; i++) {
       const option = deck_options[i];
       if (!option) {
@@ -173,7 +196,8 @@ export default class DeckValidation {
     return null;
   }
 
-  getInvalidCards(cards: Card[], versatileCount: number) {
+  getInvalidCards(cards: Card[]) {
+    const specialCards = this.specialCardCounts();
     this.deck_options_counts = [];
   	if (this.investigator) {
   		for (var i = 0; i < this.investigator.deck_options.length; i++){
@@ -183,30 +207,38 @@ export default class DeckValidation {
         });
   		}
   	}
-    if (versatileCount > 0) {
+    if (specialCards.versatile > 0) {
       this.deck_options_counts.push({
         limit: 0,
         atleast: {},
       });
     }
-  	return filter(cards, card => !this.canIncludeCard(card, true, versatileCount));
+  	return filter(cards, card => !this.canIncludeCard(card, true));
   }
 
-  deckOptions(versatileCount: number): DeckOption[] {
+  deckOptions(): DeckOption[] {
+    const specialCards = this.specialCardCounts();
     var deck_options: DeckOption[] = [];
   	if (this.investigator &&
         this.investigator.deck_options &&
         this.investigator.deck_options.length) {
       forEach(this.investigator.deck_options, deck_option => deck_options.push(deck_option));
     }
-    if (versatileCount > 0) {
+    if (specialCards.versatile > 0) {
       deck_options.push(DeckOption.parse({
         level: {
           min: 0,
           max: 0
         },
-        limit: versatileCount,
-        error: 'Too many off-class cards for Versatile'
+        limit: specialCards.versatile * 5,
+        error: t`Too many off-class cards for Versatile`,
+      }));
+    }
+    if (specialCards.onYourOwn > 0) {
+      deck_options.push(DeckOption.parse({
+        not: true,
+        slot: ['Ally'],
+        error: t`No assets that take up the ally slot are allowed by On Your Own.`,
       }));
     }
     return deck_options;
@@ -214,8 +246,7 @@ export default class DeckValidation {
 
   canIncludeCard(
     card: Card,
-    processDeckCounts: boolean,
-    versatileCount?: number
+    processDeckCounts: boolean
   ): boolean {
     const investigator = this.investigator;
 
@@ -235,7 +266,7 @@ export default class DeckValidation {
   	}
 
   	//var investigator = app.data.cards.findById(investigator_code);
-    const deck_options: DeckOption[] = this.deckOptions(versatileCount || 0);
+    const deck_options: DeckOption[] = this.deckOptions();
     if (deck_options.length) {
   		//console.log(card);
   		for (var i = 0; i < deck_options.length; i++) {
@@ -287,6 +318,21 @@ export default class DeckValidation {
   				}
   				//console.log("faction valid");
   			}
+
+        if (option.slot && option.slot.length) {
+          // needs to match at least one trait
+          var slot_valid = false;
+          for(var j = 0; j < option.slot.length; j++){
+  					var slot = option.slot[j];
+  					if (card.slot && card.slot.toUpperCase().indexOf(slot.toUpperCase()) !== -1){
+  						slot_valid = true;
+  					}
+  				}
+
+  				if (!slot_valid){
+  					continue;
+  				}
+        }
 
   			if (option.trait && option.trait.length){
   				// needs to match at least one trait

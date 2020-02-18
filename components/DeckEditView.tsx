@@ -4,7 +4,7 @@ import { find, head } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, DeckMeta, Slots } from '../actions/types';
-import { VERSATILE_CODE } from '../constants';
+import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '../constants';
 import withDimensions, { DimensionsProps } from './core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from '../lib/InvestigatorRequirements';
 import { filterToQuery, defaultFilterState } from '../lib/filters';
@@ -146,7 +146,12 @@ class DeckEditView extends React.Component<Props, State> {
         negativeQueryForInvestigator(investigator, meta) : '';
       parts.push(`(${invertedClause}${versatileQuery})`);
     }
-    return `(${parts.join(' or ')})`;
+    const joinedQuery = `(${parts.join(' or ')})`;
+    if (deckCardCounts[ON_YOUR_OWN_CODE] > 0) {
+      const onYourOwnQuery = `(slot != 'Ally')`;
+      return `(${onYourOwnQuery} and ${joinedQuery})`;
+    }
+    return joinedQuery;
   }
 
   render() {

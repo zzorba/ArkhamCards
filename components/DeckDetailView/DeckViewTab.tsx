@@ -395,7 +395,7 @@ export default class DeckViewTab extends React.Component<Props> {
       inCollection,
     } = this.props;
 
-    const validation = new DeckValidation(investigator, meta);
+    const validation = new DeckValidation(investigator, slots, meta);
 
     return [
       {

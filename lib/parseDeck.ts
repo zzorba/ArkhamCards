@@ -33,7 +33,6 @@ import {
   SKILLS,
   SLOTS,
   RANDOM_BASIC_WEAKNESS,
-  VERSATILE_CODE,
   FactionCodeType,
   SlotCodeType,
   SkillCodeType,
@@ -233,9 +232,16 @@ function getDeckChanges(
   if (!deck.previous_deck || !previousDeck || !investigator) {
     return undefined;
   }
-  const deckValidation = new DeckValidation(investigator, deck.meta);
-  const oldDeckSize = deckValidation.getDeckSize(previousDeck.slots[VERSATILE_CODE] || 0);
-  const newDeckSize = deckValidation.getDeckSize(slots[VERSATILE_CODE] || 0);
+  const oldDeckSize = new DeckValidation(
+    investigator,
+    previousDeck.slots,
+    previousDeck.meta
+  ).getDeckSize();
+  const newDeckSize = new DeckValidation(
+    investigator,
+    slots,
+    deck.meta
+  ).getDeckSize();
   let extraDeckSize = newDeckSize - oldDeckSize;
 
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};

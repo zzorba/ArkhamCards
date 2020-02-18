@@ -269,4 +269,5 @@ export function createFactionIcons(
 
 export const RANDOM_BASIC_WEAKNESS = '01000';
 export const VERSATILE_CODE = '06167';
+export const ON_YOUR_OWN_CODE = '53010';
 export const ACE_OF_RODS = '05040';

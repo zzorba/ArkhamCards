@@ -15,6 +15,7 @@ export default class DeckOption {
       uses: 'string[]',
       trait: 'string[]',
       text: 'string[]',
+      slot: 'string[]',
       type_code: 'string[]',
       atleast: 'DeckAtLeastOption?',
       level: 'DeckOptionLevel?',
@@ -32,6 +33,7 @@ export default class DeckOption {
   public uses?: string[];
   public trait?: string[];
   public text?: string[];
+  public slot?: string[];
   public atleast?: DeckAtLeastOption;
   public level?: DeckOptionLevel;
   public limit?: number;
@@ -88,6 +90,15 @@ export default class DeckOption {
           .join(' OR');
       query += ' )';
 
+      dirty = true;
+    }
+    if (this.slot && this.slot.length) {
+      if (dirty) {
+        query += ' AND';
+      }
+      query += ' (';
+      query += map(this.slot, slot => ` slot == '${slot}'`).join(' OR');
+      query += ' )';
       dirty = true;
     }
     if (this.uses && this.uses.length) {
@@ -158,6 +169,7 @@ export default class DeckOption {
     deck_option.deck_size_select = json.deck_size_select || [];
     deck_option.uses = json.uses || [];
     deck_option.text = json.text || [];
+    deck_option.slot = json.slot || [];
     deck_option.trait = json.trait || [];
     deck_option.type_code = json.type || [];
     deck_option.limit = json.limit;

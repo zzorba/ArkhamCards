@@ -149,7 +149,10 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       investigator,
       meta,
     } = this.props;
-    const validation = new DeckValidation(investigator, meta);
+    const {
+      slots,
+    } = this.state;
+    const validation = new DeckValidation(investigator, slots, meta);
     return sortBy(
       filter((card && cardsByName[card.real_name]) || [],
         card => validation.canIncludeCard(card, false)),
@@ -184,7 +187,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     });
   };
 
-  inCollection(card: Card) {
+  inCollection(card: Card): boolean {
     const { inCollection } = this.props;
     const { showNonCollection } = this.state;
     return (
@@ -230,7 +233,9 @@ class CardUpgradeDialog extends React.Component<Props, State> {
 
   renderCards() {
     const namedCards = this.namedCards();
-    const [inCollection, nonCollection] = partition(namedCards, card => this.inCollection(card));
+    const [inCollection, nonCollection] = partition(
+      namedCards,
+      card => this.inCollection(card));
     return (
       <>
         { inCollection.map(card => this.renderCard(card)) }

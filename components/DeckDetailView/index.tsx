@@ -1154,7 +1154,7 @@ class DeckDetailView extends React.Component<Props, State> {
       investigator,
     } = parsedDeck;
 
-    const validator = new DeckValidation(investigator, meta);
+    const validator = new DeckValidation(investigator, slots, meta);
     return validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       if (!card) {

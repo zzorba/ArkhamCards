@@ -64,7 +64,7 @@ export default class DeckNavFooter extends React.Component<Props> {
       fontScale,
     } = this.props;
 
-    const validator = new DeckValidation(investigator, meta);
+    const validator = new DeckValidation(investigator, slots, meta);
     const problem = validator.getProblem(flatMap(keys(slots), code => {
       const card = cards[code];
       if (!card) {
