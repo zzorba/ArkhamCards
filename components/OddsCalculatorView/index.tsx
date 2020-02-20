@@ -422,7 +422,6 @@ class OddsCalculatorView extends React.Component<Props, State> {
               size={36}
               onIncrement={this._incrementDifficulty}
               onDecrement={this._decrementDifficulty}
-              allowNegative
               color="dark"
             />
           </LinearGradient>

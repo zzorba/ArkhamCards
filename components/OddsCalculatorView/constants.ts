@@ -4,7 +4,7 @@ import { ChaosTokenType } from '../../constants';
 import { InvestigatorElderSign } from './types';
 import Card from '../../data/Card';
 
-const ELDER_SIGN_REGEX = new RegExp('.*[elder_sign] effect: (\\d+)\\..*');
+const ELDER_SIGN_REGEX = new RegExp('.*\\[elder_sign\\] effect: (.\\d+)\\..*');
 
 export function modifiers(card: Card): {
   token: ChaosTokenType;
