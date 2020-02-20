@@ -1,5 +1,6 @@
 import {
   filter,
+  flatMap,
   forEach,
   keys,
   map,
@@ -237,11 +238,25 @@ function getDeckChanges(
     previousDeck.slots,
     previousDeck.meta
   ).getDeckSize();
-  const newDeckSize = new DeckValidation(
+  const validation = new DeckValidation(
     investigator,
     slots,
     deck.meta
-  ).getDeckSize();
+  );
+  const allCards: Card[] = [];
+  forEach(
+    keys(previousDeck.slots),
+    code => {
+      const card = cards[code];
+      if (card) {
+        forEach(range(0, previousDeck.slots[code]), () => {
+          allCards.push(card);
+        });
+      }
+    }
+  );
+  const invalidCards = validation.getInvalidCards(allCards);
+  const newDeckSize = validation.getDeckSize();
   let extraDeckSize = newDeckSize - oldDeckSize;
 
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
@@ -266,6 +281,9 @@ function getDeckChanges(
         forEach(range(0, exileCount), () => exiledSlots.push(card));
       }
     }
+  });
+  forEach(invalidCards, invalidCard => {
+    exiledSlots.push(invalidCard);
   });
   let adaptableUses = (slots[ADAPTABLE_CODE] || 0) * 2;
   let arcaneResearchUses = (slots[ARCANE_RESEARCH_CODE] || 0);

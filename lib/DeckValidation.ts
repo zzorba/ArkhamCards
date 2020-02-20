@@ -65,18 +65,21 @@ export default class DeckValidation {
     return size + (specialCards.versatile * 5);
   }
 
-  getPhysicalDrawDeck(cards: Card[]) {
-    return filter(cards, card => card && !card.permanent && !card.double_sided);
+  getPhysicalDrawDeck(cards: Card[]): Card[] {
+    return filter(
+      cards,
+      card => card && !card.permanent && !card.double_sided
+    );
   }
 
-  getDrawDeck(cards: Card[]) {
+  getDrawDeck(cards: Card[]): Card[] {
     return filter(
       this.getPhysicalDrawDeck(cards),
       card => card && card.xp !== null
     );
   }
 
-  getDrawDeckSize(cards: Card[]) {
+  getDrawDeckSize(cards: Card[]): number {
     var draw_deck = this.getDrawDeck(cards);
 	  return draw_deck.length;
   }
@@ -196,9 +199,15 @@ export default class DeckValidation {
     return null;
   }
 
-  getInvalidCards(cards: Card[]) {
+  getInvalidCards(cards: Card[]): Card[] {
     const specialCards = this.specialCardCounts();
     this.deck_options_counts = [];
+    if (specialCards.onYourOwn > 0) {
+      this.deck_options_counts.push({
+        limit: 0,
+        atleast: {},
+      });
+    }
   	if (this.investigator) {
   		for (var i = 0; i < this.investigator.deck_options.length; i++){
   			this.deck_options_counts.push({
@@ -219,10 +228,19 @@ export default class DeckValidation {
   deckOptions(): DeckOption[] {
     const specialCards = this.specialCardCounts();
     var deck_options: DeckOption[] = [];
+    if (specialCards.onYourOwn > 0) {
+      deck_options.push(DeckOption.parse({
+        not: true,
+        slot: ['Ally'],
+        error: t`No assets that take up the ally slot are allowed by On Your Own.`,
+      }));
+    }
   	if (this.investigator &&
         this.investigator.deck_options &&
         this.investigator.deck_options.length) {
-      forEach(this.investigator.deck_options, deck_option => deck_options.push(deck_option));
+      forEach(this.investigator.deck_options, deck_option => {
+        deck_options.push(deck_option);
+      });
     }
     if (specialCards.versatile > 0) {
       deck_options.push(DeckOption.parse({
@@ -232,13 +250,6 @@ export default class DeckValidation {
         },
         limit: specialCards.versatile * 5,
         error: t`Too many off-class cards for Versatile`,
-      }));
-    }
-    if (specialCards.onYourOwn > 0) {
-      deck_options.push(DeckOption.parse({
-        not: true,
-        slot: ['Ally'],
-        error: t`No assets that take up the ally slot are allowed by On Your Own.`,
       }));
     }
     return deck_options;
@@ -269,15 +280,13 @@ export default class DeckValidation {
     const deck_options: DeckOption[] = this.deckOptions();
     if (deck_options.length) {
   		//console.log(card);
-  		for (var i = 0; i < deck_options.length; i++) {
+  		for (let i = 0; i < deck_options.length; i++) {
         const finalOption = (i === deck_options.length - 1);
   			var option = deck_options[i];
-  			//console.log(option);
-
   			if (option.faction && option.faction.length){
   				// needs to match at least one faction
   				var faction_valid = false;
-  				for(var j = 0; j < option.faction.length; j++){
+  				for (var j = 0; j < option.faction.length; j++) {
   					var faction = option.faction[j];
   					if (card.faction_code == faction || card.faction2_code == faction){
   						faction_valid = true;
@@ -302,7 +311,6 @@ export default class DeckValidation {
             continue;
           }
         }
-
   			if (option.type_code && option.type_code.length){
   				// needs to match at least one faction
   				var type_valid = false;
@@ -328,7 +336,6 @@ export default class DeckValidation {
   						slot_valid = true;
   					}
   				}
-
   				if (!slot_valid){
   					continue;
   				}
@@ -340,8 +347,6 @@ export default class DeckValidation {
 
   				for(var j = 0; j < option.trait.length; j++){
   					var trait = option.trait[j];
-  					//console.log(card.traits, trait.toUpperCase()+".");
-
   					if (card.real_traits && card.real_traits.toUpperCase().indexOf(trait.toUpperCase()+".") !== -1){
   						trait_valid = true;
   					}
@@ -350,7 +355,6 @@ export default class DeckValidation {
   				if (!trait_valid){
   					continue;
   				}
-  				//console.log("faction valid");
   			}
 
   			if (option.uses && option.uses.length){
@@ -359,8 +363,6 @@ export default class DeckValidation {
 
   				for(var j = 0; j < option.uses.length; j++){
   					var uses = option.uses[j];
-  					//console.log(card.traits, trait.toUpperCase()+".");
-
   					if (card.real_text && card.real_text.toUpperCase().indexOf(""+uses.toUpperCase()+").") !== -1){
   						uses_valid = true;
   					}
@@ -369,7 +371,6 @@ export default class DeckValidation {
   				if (!uses_valid){
   					continue;
   				}
-  				//console.log("faction valid");
   			}
 
         if (option.text && option.text.length) {
@@ -386,10 +387,7 @@ export default class DeckValidation {
         }
 
   			if (option.level){
-  				// needs to match at least one faction
   				var level_valid = false;
-  				//console.log(option.level, card.xp, card.xp >= option.level.min, card.xp <= option.level.max);
-
   				if (card.xp !== null && option.level){
   					if (card.xp >= option.level.min && card.xp <= option.level.max){
   						level_valid = true;
@@ -397,7 +395,6 @@ export default class DeckValidation {
   						continue;
   					}
   				}
-  				//console.log("level valid");
   			}
 
   			if (option.not){
