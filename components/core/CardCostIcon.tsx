@@ -22,7 +22,7 @@ interface Props {
   inverted?: boolean;
   linked?: boolean;
 }
-export default class CardCostIcon extends React.Component<Props> {
+export default class CardCostIcon extends React.PureComponent<Props> {
   cardCost() {
     const {
       card,

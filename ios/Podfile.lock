@@ -219,7 +219,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-app-auth (5.0.0):
+  - react-native-app-auth (5.0.2):
     - AppAuth (= 1.2.0)
     - React
   - react-native-blur (0.8.0):
@@ -228,7 +228,7 @@ PODS:
     - React
   - react-native-in-app-browser (3.1.4):
     - React
-  - react-native-netinfo (5.3.3):
+  - react-native-netinfo (5.5.0):
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -265,8 +265,10 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (4.8.1):
+  - ReactNativeNavigation (6.0.0):
     - React
+    - React-RCTImage
+    - React-RCTText
   - RealmJS (3.6.4):
     - GCDWebServer
     - React
@@ -274,7 +276,7 @@ PODS:
     - React-Core
   - RNCAsyncStorage (1.6.3):
     - React
-  - RNDeviceInfo (5.5.1):
+  - RNDeviceInfo (5.5.3):
     - React
   - RNFastImage (7.0.2):
     - React
@@ -466,11 +468,11 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-app-auth: 8c449657316913fc6b0a83c2bda80e3737eea1bc
+  react-native-app-auth: 4c68449fc2134de4db18b0247844770a7a958146
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-config: 8f6b2b9e017f6a5e92a97353c768e19e67294bb1
   react-native-in-app-browser: c5ff7e659bbec8358d4b27ec691ed563fff79212
-  react-native-netinfo: 8884d510fe67349940b4399c01db3e3591c922aa
+  react-native-netinfo: b84ff0cae1147315b5dc1daf0f65c0cc6ee71fb3
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -481,11 +483,11 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: dd001e289d2828340579521adc054f21330d18b1
+  ReactNativeNavigation: 3539767af785cd7c40a5980d237623d1f298f279
   RealmJS: efc6149c80687ae64c040148f7c2ade335a97416
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
-  RNDeviceInfo: 017aa2fd29a437fba26807cbe2fa51a149da70cd
+  RNDeviceInfo: 310c1f43d418d950a193c7650de2f9559c906048
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNKeychain: 840f8e6f13be0576202aefcdffd26a4f54bfe7b5
   RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46

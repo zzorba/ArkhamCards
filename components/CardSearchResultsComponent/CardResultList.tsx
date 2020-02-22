@@ -470,15 +470,22 @@ class CardResultList extends React.Component<Props, State> {
       code => originalDeckSlots[code] > 0 ||
         (deckCardCounts && deckCardCounts[code] > 0));
     const deckQuery = map(codes, code => ` (code == '${code}')`).join(' OR ');
-    const queryParts = [`(${deckQuery})`, Card.tabooSetQuery(tabooSetId)];
+    if (!deckQuery) {
+      return this.bucketCards([], 'deck');
+    }
+    const queryParts: string[] = [
+      `(${deckQuery})`,
+      Card.tabooSetQuery(tabooSetId),
+    ];
     if (storyOnly && query) {
       queryParts.push(query);
     }
     if (filterQuery) {
       queryParts.push(filterQuery);
     }
+    const finalQuery = queryParts.join(' AND ');
     const possibleDeckCards: Results<Card> = realm.objects<Card>('Card')
-      .filtered(queryParts.join(' and '));
+      .filtered(finalQuery);
     const deckCards: Results<Card> = (termQuery ?
       possibleDeckCards.filtered(termQuery, searchTerm) :
       possibleDeckCards).sorted(this.getSort());
@@ -651,6 +658,7 @@ class CardResultList extends React.Component<Props, State> {
       limits,
       hasSecondCore,
       fontScale,
+      onDeckCountChange,
     } = this.props;
     const {
       deckCardCounts,
@@ -660,7 +668,7 @@ class CardResultList extends React.Component<Props, State> {
         card={item}
         fontScale={fontScale}
         count={deckCardCounts && deckCardCounts[item.code]}
-        onDeckCountChange={this.props.onDeckCountChange}
+        onDeckCountChange={onDeckCountChange}
         id={`${section.id}.${index}`}
         onPressId={this._cardPressed}
         limit={limits ? limits[item.code] : undefined}

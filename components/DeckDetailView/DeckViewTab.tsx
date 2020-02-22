@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { find, forEach, keys, map, sum, sumBy } from 'lodash';
+import { find, forEach, keys, map, sum, sumBy, uniqBy } from 'lodash';
 import {
   StyleSheet,
   SectionList,
@@ -164,11 +164,12 @@ function bondedSections(
   if (!bondedCards.length) {
     return [];
   }
-  const count = sumBy(bondedCards, card => card.quantity || 0);
+  const uniqBondedCards = uniqBy(bondedCards, c => c.code);
+  const count = sumBy(uniqBondedCards, card => card.quantity || 0);
   return [{
     id: 'bonded-cards',
     title: t`Bonded Cards (${count})`,
-    data: map(bondedCards, c => {
+    data: map(uniqBondedCards, c => {
       return {
         id: c.code,
         quantity: c.quantity || 0,

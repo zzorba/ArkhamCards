@@ -907,9 +907,11 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.props;
     const {
       slots,
+      loaded,
     } = this.state;
     if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1 ||
-      findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1) {
+      findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1 ||
+    (!loaded && keys(slots).length === 0 && keys(deck.slots).length === 0)) {
       const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
       this.setState({
         slots: deck.slots,
