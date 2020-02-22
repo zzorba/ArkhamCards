@@ -24,27 +24,28 @@ public class MainApplication extends NavigationApplication {
     // registerExternalComponent("RNNCustomComponent", new FragmentCreator());
   }
 
-  @Override
-  protected ReactNativeHost createReactNativeHost() {
-    return new NavigationReactNativeHost(this) {
+  private final ReactNativeHost mReactNativeHost =
+    new NavigationReactNativeHost(this) {
       @Override
       protected String getJSMainModuleName() {
         return "index";
       }
+
+      @Override
+      public boolean getUseDeveloperSupport() {
+        return BuildConfig.DEBUG;
+      }
+
+      @Override
+      public List<ReactPackage> getPackages() {
+        ArrayList<ReactPackage> packages = new PackageList(this).getPackages();
+        return packages;
+      }
     };
-  }
 
   @Override
-  public boolean isDebug() {
-    // Make sure you are using BuildConfig from your own application
-    return BuildConfig.DEBUG;
-  }
-
-  @Nullable
-  @Override
-  public List<ReactPackage> createAdditionalReactPackages() {
-    List<ReactPackage> packages = new PackageList(this).getPackages();
-    return packages;
+  public ReactNativeHost getReactNativeHost() {
+    return mReactNativeHost;
   }
 
   @Override

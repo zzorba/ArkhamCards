@@ -59,9 +59,11 @@ function groupAssets(
       case 'Hand. Arcane': return t`Hand. Arcane`;
       case 'Hand x2': return t`Hand x2`;
       case 'Arcane': return t`Arcane`;
+      case 'Arcane x2': return t`Arcane x2`;
       case 'Accessory': return t`Accessory`;
       case 'Body': return t`Body`;
       case 'Body. Hand x2': return t`Body. Hand x2`;
+      case 'Ally. Arcane': return t`Ally. Arcane`;
       case 'Ally': return t`Ally`;
       case 'Tarot': return t`Tarot`;
       default: return t`Other`;
@@ -72,13 +74,14 @@ function groupAssets(
       [
         t`Hand`,
         t`Hand x2`,
-        t`Hand. Arcane`,
-        t`Body. Hand x2`,
         t`Arcane`,
         t`Accessory`,
         t`Body`,
         t`Ally`,
         t`Tarot`,
+        t`Hand. Arcane`,
+        t`Body. Hand x2`,
+        t`Ally. Arcane`,
         t`Other`,
       ],
       t => {

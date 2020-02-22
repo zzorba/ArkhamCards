@@ -96,8 +96,6 @@ export default class Card extends BaseCard {
       t`Investigator`,
       t`Asset: Hand`,
       t`Asset: Hand x2`,
-      t`Asset: Hand. Arcane`,
-      t`Asset: Body. Hand x2`,
       t`Asset: Accessory`,
       t`Asset: Ally`,
       t`Asset: Arcane`,
@@ -105,6 +103,9 @@ export default class Card extends BaseCard {
       t`Asset: Body`,
       t`Asset: Permanent`,
       t`Asset: Tarot`,
+      t`Asset: Ally. Arcane`,
+      t`Asset: Hand. Arcane`,
+      t`Asset: Body. Hand x2`,
       t`Asset: Other`,
       t`Event`,
       t`Skill`,
@@ -157,6 +158,8 @@ export default class Card extends BaseCard {
                 return t`Asset: Body. Hand x2`;
               case 'Hand. Arcane':
                 return t`Asset: Hand. Arcane`;
+              case 'Ally. Arcane':
+                return t`Asset: Ally. Arcane`;
               default:
                 return t`Asset: Other`;
             }

@@ -142,7 +142,6 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
         versionCode 103
         versionName "2.0.7"
         manifestPlaceholders = [
