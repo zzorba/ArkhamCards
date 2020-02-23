@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { map } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
@@ -226,8 +227,8 @@ class CampaignDetailView extends React.Component<Props, State> {
         component: {
           name: 'OddsCalculator',
           passProps: {
-            campaign,
-            allInvestigators,
+            campaignId: campaign.id,
+            investigatorIds: map(allInvestigators, card => card.code),
           },
           options: {
             topBar: {

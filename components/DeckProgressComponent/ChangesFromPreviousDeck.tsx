@@ -195,7 +195,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
           }}
           fontScale={fontScale}
         />
-        {this.renderEdits()}
+        { this.renderEdits() }
       </>
     );
   }

@@ -274,7 +274,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
           <View style={styles.row}>
             <View style={[styles.skillBox, { backgroundColor: SKILL_COLORS[type] }]}>
               <Text style={styles.skillValue}>
-                { `${stat}` }<ArkhamIcon name={type} size={28} color={COLORS.white} />
+                { type !== 'wild' ? `${stat}` : '' }<ArkhamIcon name={type} size={28} color={COLORS.white} />
               </Text>
             </View>
             <Text style={typography.text}>{ formatPercentageText(success) }</Text>

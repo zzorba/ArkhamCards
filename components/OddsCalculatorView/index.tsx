@@ -8,31 +8,33 @@ import { t } from 'ttag';
 import { Results } from 'realm';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { Campaign, CampaignDifficulty, CUSTOM, Deck } from '../../actions/types';
-import { NavigationProps } from '../types';
-import Card from '../../data/Card';
-import { AppState } from '../../reducers';
-import typography from '../../styles/typography';
-import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '../../constants';
+import InvestigatorOddsComponent from './InvestigatorOddsComponent';
+import SkillOddsRow from './SkillOddsRow';
 import VariableTokenInput from './VariableTokenInput';
-import { CAMPAIGN_COLORS, campaignScenarios, Scenario, completedScenario } from '../campaign/constants';
-import { s } from '../../styles/space';
+import { add, subtract } from './oddsHelper';
+import CardTextComponent from '../CardTextComponent';
+import { NavigationProps } from '../types';
 import ChaosBagLine from '../core/ChaosBagLine';
 import PlusMinusButtons from '../core/PlusMinusButtons';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
+import { CAMPAIGN_COLORS, campaignScenarios, Scenario, completedScenario } from '../campaign/constants';
 import Difficulty from '../campaign/Difficulty';
 import GameHeader from '../campaign/GameHeader';
 import BackgroundIcon from '../campaign/BackgroundIcon';
-import CardTextComponent from '../CardTextComponent';
-import InvestigatorOddsComponent from './InvestigatorOddsComponent';
-import { add, subtract } from './oddsHelper';
+import { Campaign, CampaignDifficulty, CUSTOM, Deck } from '../../actions/types';
+import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '../../constants';
+import Card from '../../data/Card';
+import { AppState, getCampaign } from '../../reducers';
+import typography from '../../styles/typography';
+import { s } from '../../styles/space';
 
 export interface OddsCalculatorProps {
-  campaign: Campaign;
-  allInvestigators: Card[];
+  campaignId: number;
+  investigatorIds: string[];
 }
 
 interface ReduxProps {
+  campaign?: Campaign;
   chaosBag?: ChaosBag;
   deck?: Deck;
   tabooSetId?: number;
@@ -41,6 +43,7 @@ interface ReduxProps {
 }
 
 interface RealmProps {
+  allInvestigators: Card[];
   scenarioCards?: Results<Card>;
 }
 
@@ -306,16 +309,27 @@ class OddsCalculatorView extends React.Component<Props, State> {
       return;
     }
     const specialTokenValues = this.getSpecialTokenValues();
-    return allInvestigators.map((investigator) => (
-      <InvestigatorOddsComponent
-        key={investigator.real_name}
-        investigator={investigator}
-        difficulty={difficulty}
-        testDifficulty={testDifficulty}
-        chaosBag={chaosBag}
-        specialTokenValues={specialTokenValues}
-      />
-    ));
+    return (
+      <>
+        <SkillOddsRow
+          chaosBag={chaosBag}
+          stat={0}
+          specialTokenValues={specialTokenValues}
+          type="wild"
+          testDifficulty={testDifficulty}
+        />
+        { map(allInvestigators, investigator => (
+          <InvestigatorOddsComponent
+            key={investigator.real_name}
+            investigator={investigator}
+            difficulty={difficulty}
+            testDifficulty={testDifficulty}
+            chaosBag={chaosBag}
+            specialTokenValues={specialTokenValues}
+          />))
+        }
+      </>
+    );
   }
 
   renderSpecialTokenInputs() {
@@ -340,14 +354,13 @@ class OddsCalculatorView extends React.Component<Props, State> {
               decrement={this._decrementToken}
             />
           );
-        })}
+        }) }
       </>
     );
   }
 
-  renderContent() {
+  renderContent(campaign: Campaign) {
     const {
-      campaign,
       fontScale,
     } = this.props;
     const {
@@ -395,13 +408,17 @@ class OddsCalculatorView extends React.Component<Props, State> {
   }
 
   render() {
+    const { campaign } = this.props;
     const {
       testDifficulty,
     } = this.state;
+    if (!campaign) {
+      return null;
+    }
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
-          { this.renderContent() }
+          { this.renderContent(campaign) }
           <View style={styles.finePrint}>
             <Text style={typography.small}>
               { t`Note: chaos tokens that cause additional tokens to be revealed does not show correct odds for the "Draw Two Pick One" and similar multi-draw situations.` }
@@ -435,13 +452,22 @@ function mapStateToProps(
   state: AppState,
   props: OddsCalculatorProps
 ): ReduxProps {
-  const cycleScenarios = campaignScenarios(props.campaign.cycleCode);
+  const campaign = getCampaign(state, props.campaignId);
+  if (!campaign) {
+    return {
+      chaosBag: {},
+      cycleScenarios: [],
+      scenarioByCode: {},
+    };
+  }
+  const cycleScenarios = campaignScenarios(campaign.cycleCode);
   const scenarioByCode: { [code: string]: Scenario } = {};
   forEach(cycleScenarios, scenario => {
     scenarioByCode[scenario.code] = scenario;
   });
   return {
-    chaosBag: props.campaign.chaosBag || {},
+    campaign,
+    chaosBag: campaign.chaosBag || {},
     cycleScenarios,
     scenarioByCode,
   };
@@ -454,9 +480,23 @@ export default connect(mapStateToProps)(
       schemas: ['Card'],
       mapToProps(
         results: CardResults<Card>,
+        realm: Realm,
+        props: OddsCalculatorProps
       ): RealmProps {
+        const allInvestigators: Card[] = [];
+        if (props.investigatorIds.length) {
+          forEach(
+            results.cards.filtered(
+              map(
+                props.investigatorIds,
+                id => `(code == '${id}')`
+              ).join(' OR ')),
+            card => allInvestigators.push(card)
+          );
+        }
         return {
           scenarioCards: results.cards.filtered(`(type_code == 'scenario')`),
+          allInvestigators,
         };
       },
     })

@@ -84,6 +84,7 @@ import { getDeckOptions, showCardCharts, showDrawSimulator } from '../navHelper'
 export interface DeckDetailProps {
   id: number;
   title?: string;
+  subtitle?: string;
   campaignId?: number;
   isPrivate?: boolean;
   modal?: boolean;
@@ -197,6 +198,10 @@ class DeckDetailView extends React.Component<Props, State> {
         topBar: {
           title: {
             text: props.title,
+            color: '#FFFFFF',
+          },
+          subtitle: {
+            text: props.subtitle,
             color: '#FFFFFF',
           },
           leftButtons,
