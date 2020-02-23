@@ -12,7 +12,6 @@ export default class App {
     this.started = false;
     this.currentLang = 'en';
     store.subscribe(this.onStoreUpdate.bind(this, store));
-    this._handleUrl = this.handleUrl.bind(this);
 
     this.onStoreUpdate(store);
   }
@@ -31,13 +30,13 @@ export default class App {
     }
   }
 
-  handleUrl({ url }) {
+  _handleUrl = ({ url }) => {
     Linking.canOpenURL(url).then((supported) => {
       if (supported) {
         DeepLinking.evaluateUrl(url);
       }
     });
-  }
+  };
 
   startApp(lang) {
     changeLocale(lang || 'en');
@@ -186,7 +185,7 @@ export default class App {
 
     Linking.getInitialURL().then((url) => {
       if (url) {
-        this.handleUrl({ url });
+        this._handleUrl({ url });
       }
     });
   }

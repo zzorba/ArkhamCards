@@ -1,9 +1,9 @@
-import { Platform } from 'react-native';
 import Config from 'react-native-config';
 import * as Keychain from 'react-native-keychain';
-import { authorize, refresh, revoke, prefetchConfiguration, AuthorizeResult, RefreshResult } from 'react-native-app-auth';
 
-const config: any = {
+import { authorize, refresh, revoke, AppAuthConfig } from './OAuthWrapper';
+
+const config: AppAuthConfig = {
   issuer: Config.OAUTH_SITE,
   clientId: Config.OAUTH_CLIENT_ID,
   clientSecret: Config.OAUTH_CLIENT_SECRET,
@@ -15,7 +15,9 @@ const config: any = {
   },
 };
 
-function saveAuthResponse(response: AuthorizeResult | RefreshResult) {
+function saveAuthResponse(
+  response: any
+) {
   const serialized = JSON.stringify(response);
   return Keychain.setGenericPassword('arkhamdb', serialized)
     .then(() => {
@@ -39,10 +41,12 @@ export function getAccessToken() {
     .then(creds => {
       if (creds) {
         const data = JSON.parse(creds.password);
-        const nowSeconds = (new Date()).getTime() / 1000;
-        const expiration = new Date(data.accessTokenExpirationDate).getTime() / 1000;
+        const nowSeconds = new Date().getTime() / 1000;
+        const expiration = new Date(
+          data.accessTokenExpirationDate
+        ).getTime() / 1000;
         if (data.refreshToken && expiration < nowSeconds) {
-          return refresh(config, { refreshToken: data.refreshToken })
+          return refresh(config, data.refreshToken)
             .then(
               saveAuthResponse,
               () => {
@@ -62,12 +66,6 @@ interface SignInResult {
 }
 
 export function prefetch(): Promise<void> {
-  if (Platform.OS === 'android') {
-    return prefetchConfiguration({
-      warmAndPrefetchChrome: true,
-      ...config,
-    });
-  }
   return Promise.resolve();
 }
 
@@ -89,14 +87,14 @@ export function signInFlow(): Promise<SignInResult> {
 export function signOutFlow() {
   return getAccessToken().then(accessToken => {
     if (accessToken) {
-      revoke(config, { tokenToRevoke: accessToken });
+      revoke(config, accessToken);
     }
   }, () => {
     // Ignore error.
   }).then(() => {
     return getRefreshToken().then(refreshToken => {
       if (refreshToken) {
-        revoke(config, { tokenToRevoke: refreshToken });
+        revoke(config, refreshToken);
       }
     });
   }, () => {
