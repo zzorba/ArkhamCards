@@ -19,7 +19,6 @@ import { showDeckModal } from '../../navHelper';
 import DeckProblemRow from '../../DeckProblemRow';
 import DeckRowButton from '../../DeckRowButton';
 import EditTraumaComponent from '../EditTraumaComponent';
-import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
 import DeckRow from '../DeckRow';
 import DeckList, { DeckListProps } from '../DeckList';
 import typography from '../../../styles/typography';
@@ -27,13 +26,14 @@ import { iconSizeScale, s, xs } from '../../../styles/space';
 
 interface OwnProps extends DeckListProps {
   deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
-  showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
+  showDeckUpgradeDialog?: (deck: Deck, investigator?: Card) => void;
   investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  killedOrInsane?: boolean;
 }
 type Props = OwnProps & DimensionsProps;
 
-class CampaignDeckList extends React.Component<Props> {
+class CampaignDecks extends React.Component<Props> {
   _viewDeck = (deck: Deck, investigator: Card) => {
     const {
       componentId,
@@ -45,7 +45,9 @@ class CampaignDeckList extends React.Component<Props> {
     const {
       showDeckUpgradeDialog,
     } = this.props;
-    showDeckUpgradeDialog(deck, investigator);
+    if (showDeckUpgradeDialog) {
+      showDeckUpgradeDialog(deck, investigator);
+    }
   };
 
   experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
@@ -70,13 +72,13 @@ class CampaignDeckList extends React.Component<Props> {
       investigatorData = {},
       showTraumaDialog,
       fontScale,
+      showDeckUpgradeDialog,
+      killedOrInsane,
     } = this.props;
-    if (!deck) {
+    if (!deck || killedOrInsane) {
       return null;
     }
-    const eliminated = isEliminated(
-      investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
-      investigator);
+    const eliminated = investigator.eliminated(investigatorData[investigator.code]);
     const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
     return (
       <View style={styles.investigatorSubNotes}>
@@ -99,7 +101,7 @@ class CampaignDeckList extends React.Component<Props> {
             </View>
           </View>
         ) }
-        { !eliminated && (
+        { !eliminated && !!showDeckUpgradeDialog && (
           <View style={styles.section}>
             <DeckRowButton
               icon={(
@@ -126,7 +128,12 @@ class CampaignDeckList extends React.Component<Props> {
     investigator: Card,
     previousDeck?: Deck
   ) => {
-    const { fontScale } = this.props;
+    const {
+      fontScale,
+      killedOrInsane,
+      investigatorData,
+      showTraumaDialog,
+    } = this.props;
     if (!deck) {
       return null;
     }
@@ -153,7 +160,7 @@ class CampaignDeckList extends React.Component<Props> {
     }));
     return (
       <View style={styles.investigatorNotes}>
-        { !!problemObj && (
+        { !!problemObj && !killedOrInsane && (
           <View style={styles.section}>
             <DeckProblemRow problem={problemObj} color="#222" fontScale={fontScale} />
           </View>
@@ -175,6 +182,15 @@ class CampaignDeckList extends React.Component<Props> {
             onPress={this._viewDeck}
           />
         </View>
+        { !!killedOrInsane && (
+          <View style={styles.killedTrauma}>
+            <EditTraumaComponent
+              investigator={investigator}
+              investigatorData={investigatorData}
+              showTraumaDialog={showTraumaDialog}
+            />
+          </View>
+        ) }
       </View>
     );
   }
@@ -188,6 +204,7 @@ class CampaignDeckList extends React.Component<Props> {
       componentId,
       deckRemoved,
       fontScale,
+      killedOrInsane,
     } = this.props;
     return (
       <DeckRow
@@ -203,6 +220,7 @@ class CampaignDeckList extends React.Component<Props> {
         otherProps={this.props}
         compact
         viewDeckButton
+        killedOrInsane={killedOrInsane}
       />
     );
   };
@@ -229,13 +247,16 @@ class CampaignDeckList extends React.Component<Props> {
   }
 }
 
-export default withDimensions<OwnProps>(CampaignDeckList);
+export default withDimensions<OwnProps>(CampaignDecks);
 
 const styles = StyleSheet.create({
   section: {
     marginBottom: s,
     marginRight: s,
     flexDirection: 'row',
+  },
+  killedTrauma: {
+    marginRight: s,
   },
   investigatorNotes: {
     flex: 1,

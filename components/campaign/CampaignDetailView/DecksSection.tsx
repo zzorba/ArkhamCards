@@ -1,25 +1,29 @@
 import React from 'react';
-import { filter, forEach, keys, map, sumBy } from 'lodash';
+import { filter, forEach, keys, map, partition, sumBy } from 'lodash';
 import {
   Alert,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import { Deck, InvestigatorData, Trauma, WeaknessSet } from '../../../actions/types';
-import Card from '../../../data/Card';
+
+import { Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from '../../../actions/types';
 import CampaignDecks from './CampaignDecks';
-import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
-import { FACTION_DARK_GRADIENTS } from '../../../constants';
 import { UpgradeDeckProps } from '../../DeckUpgradeDialog';
+import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
+import Card, { CardsMap } from '../../../data/Card';
+import { FACTION_DARK_GRADIENTS } from '../../../constants';
+import typography from '../../../styles/typography';
 
 interface OwnProps {
   componentId: string;
   fontScale: number;
   campaignId: number;
   latestDeckIds: number[];
+  decks: DecksMap;
+  allInvestigators: Card[];
   investigatorData: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
   weaknessSet: WeaknessSet;
@@ -97,11 +101,18 @@ class DecksSection extends React.Component<Props> {
       latestDeckIds,
       updateLatestDeckIds,
     } = this.props;
-    const newLatestDeckIds = filter(latestDeckIds, deckId => deckId !== removedDeckId);
+    const newLatestDeckIds = filter(
+      latestDeckIds,
+      deckId => deckId !== removedDeckId
+    );
     updateLatestDeckIds(newLatestDeckIds);
   }
 
-  _removeDeckPrompt = (removedDeckId: number, deck?: Deck, investigator?: Card) => {
+  _removeDeckPrompt = (
+    removedDeckId: number,
+    deck?: Deck,
+    investigator?: Card
+  ) => {
     if (investigator) {
       Alert.alert(
         t`Remove ${investigator.name}?`,
@@ -121,7 +132,10 @@ class DecksSection extends React.Component<Props> {
     }
   };
 
-  _showDeckUpgradeDialog = (deck: Deck, investigator?: Card) => {
+  _showDeckUpgradeDialog = (
+    deck: Deck,
+    investigator?: Card
+  ) => {
     const {
       componentId,
       campaignId,
@@ -131,7 +145,7 @@ class DecksSection extends React.Component<Props> {
         name: 'Deck.Upgrade',
         passProps: {
           id: deck.id,
-          campaignId: campaignId,
+          campaignId,
           showNewDeck: false,
         },
         options: {
@@ -164,23 +178,58 @@ class DecksSection extends React.Component<Props> {
       investigatorData,
       showTraumaDialog,
       fontScale,
+      decks,
+      allInvestigators,
     } = this.props;
+    const cards: CardsMap = {};
+    forEach(allInvestigators, card => {
+      cards[card.code] = card;
+    });
+    const [killedDeckIds, aliveDeckIds] = partition(latestDeckIds, deckId => {
+      const deck = decks[deckId];
+      if (!deck) {
+        return false;
+      }
+      const investigator = cards[deck.investigator_code];
+      if (!investigator) {
+        return false;
+      }
+      return investigator.eliminated(investigatorData[deck.investigator_code]);
+    });
     return (
-      <View>
+      <>
         <View style={styles.underline}>
           <CampaignDecks
             componentId={componentId}
             fontScale={fontScale}
             campaignId={campaignId}
             investigatorData={investigatorData}
-            deckIds={latestDeckIds}
+            deckIds={aliveDeckIds}
             deckAdded={this._addDeck}
             deckRemoved={this._removeDeckPrompt}
             showTraumaDialog={showTraumaDialog}
             showDeckUpgradeDialog={this._showDeckUpgradeDialog}
           />
         </View>
-      </View>
+        { killedDeckIds.length > 0 && (
+          <View style={styles.underline}>
+            <View style={styles.padding}>
+              <Text style={typography.text}>
+                { t`Killed and Insane Investigators` }
+              </Text>
+            </View>
+            <CampaignDecks
+              componentId={componentId}
+              fontScale={fontScale}
+              campaignId={campaignId}
+              investigatorData={investigatorData}
+              deckIds={killedDeckIds}
+              showTraumaDialog={showTraumaDialog}
+              killedOrInsane
+            />
+          </View>
+        ) }
+      </>
     );
   }
 }
@@ -191,5 +240,8 @@ const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
+  },
+  padding: {
+    padding: 8,
   },
 });

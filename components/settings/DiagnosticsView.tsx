@@ -202,14 +202,16 @@ class DiagnosticsView extends React.Component<Props> {
       return null;
     }
     return (
-      <React.Fragment>
+      <>
         <SettingsCategoryHeader
           title={t`Debug`}
           titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
         />
-        <SettingsItem onPress={this._addDebugCard} text={t`Add Debug Card`} />
-
-      </React.Fragment>
+        <SettingsItem
+          onPress={this._addDebugCard}
+          text={t`Add Debug Card`}
+        />
+      </>
     );
   }
 
@@ -221,13 +223,22 @@ class DiagnosticsView extends React.Component<Props> {
             title={t`Backup`}
             titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
-          <SettingsItem onPress={this._exportCampaignData} text={t`Backup Campaign Data`} />
-          <SettingsItem onPress={this._importCampaignData} text={t`Restore Campaign Data`} />
+          <SettingsItem
+            onPress={this._exportCampaignData}
+            text={t`Backup Campaign Data`}
+          />
+          <SettingsItem
+            onPress={this._importCampaignData}
+            text={t`Restore Campaign Data`}
+          />
           <SettingsCategoryHeader
             title={t`Caches`}
             titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
-          <SettingsItem onPress={this._clearCache} text={t`Clear cache`} />
+          <SettingsItem
+            onPress={this._clearCache}
+            text={t`Clear cache`}
+          />
           { this.renderDebugSection() }
         </ScrollView>
       </SafeAreaView>

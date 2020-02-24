@@ -1,7 +1,6 @@
-import { forEach, keys } from 'lodash';
-import SafariWebAuth from 'react-native-safari-web-auth';
+import { forEach } from 'lodash';
 import { parse } from 'query-string';
-import { Linking, Platform } from 'react-native';
+import { AppState, AppStateStatus, Linking, Platform } from 'react-native';
 
 export interface AppAuthConfig {
   issuer: string;
@@ -22,12 +21,36 @@ export interface AuthorizeResponse {
 }
 
 export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
+  if (Platform.OS === 'ios') {
+    const { authorize } = require('react-native-app-auth');
+    return authorize(config);
+  }
   if (!config.serviceConfiguration) {
     return Promise.reject();
   }
   const originalState: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
   return new Promise<AuthorizeResponse>((resolve, reject) => {
+    let cleanup: () => void = () => {};
+    let abandoned = true;
+    let currentAppState: AppStateStatus = AppState.currentState;
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (
+        (currentAppState === 'inactive' || currentAppState === 'background') &&
+        nextAppState === 'active'
+      ) {
+        if (abandoned) {
+          abandoned = true;
+          reject(new Error('Abandoned by user'));
+          cleanup();
+        }
+      }
+      currentAppState = nextAppState;
+    };
+    AppState.addEventListener('change', handleAppStateChange);
+
     const handleUrl = (event: { url: string }) => {
+      abandoned = false;
       const {
         state,
         code,
@@ -43,21 +66,19 @@ export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
           client_id: config.clientId,
           client_secret: config.clientSecret,
           redirect_uri: config.redirectUrl,
-          grant_type: 'authorization_code'
+          grant_type: 'authorization_code',
         };
         const s: string[] = [];
         forEach(tokenRequest, (value, key) => {
-          if (tokenRequest.hasOwnProperty(key)) {
-            s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-          }
+          s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
         });
         fetch(config.serviceConfiguration.tokenEndpoint, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: s.join('&')
+          body: s.join('&'),
         }).then(response => response.json().then(jsonResponse => {
           const accessTokenExpirationDate = new Date().getTime() + jsonResponse.expires_in * 1000;
           resolve({
@@ -65,18 +86,19 @@ export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
             accessTokenExpirationDate,
             refreshToken: jsonResponse.refresh_token,
           });
-        }))
-        .catch(error => reject(error));
+        })).catch(reject);
       }
-      Linking.removeEventListener('url', handleUrl)
+      cleanup();
     };
-    Linking.addEventListener('url', handleUrl)
+    Linking.addEventListener('url', handleUrl);
+
+    cleanup = () => {
+      Linking.removeEventListener('url', handleUrl);
+      AppState.removeEventListener('change', handleAppStateChange);
+    };
+
     const authUrl = `${config.serviceConfiguration.authorizationEndpoint}?redirect_uri=${encodeURIComponent(config.redirectUrl)}&client_id=${encodeURIComponent(config.clientId)}&response_type=code&state=${encodeURIComponent(originalState)}`;
-    if (Platform.OS === 'ios') {
-      SafariWebAuth.requestAuth(authUrl);
-    } else {
-      Linking.openURL(authUrl);
-    }
+    Linking.openURL(authUrl);
   });
 }
 
@@ -84,35 +106,37 @@ export function refresh(
   config: AppAuthConfig,
   refreshToken: string
 ): Promise<AuthorizeResponse> {
+  if (Platform.OS === 'ios') {
+    const { refresh } = require('react-native-app-auth');
+    return refresh(config, { refreshToken });
+  }
+
   return new Promise<AuthorizeResponse>((resolve, reject) => {
     const tokenRequest = {
       refresh_token: refreshToken,
       client_id: config.clientId,
       client_secret: config.clientSecret,
-      grant_type: 'refresh_token'
+      grant_type: 'refresh_token',
     };
     const s: string[] = [];
     forEach(tokenRequest, (value, key) => {
-      if (tokenRequest.hasOwnProperty(key)) {
-        s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-      }
+      s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
     });
 
     fetch(config.serviceConfiguration.tokenEndpoint, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: s.join('&')
+      body: s.join('&'),
     }).then(response => response.json().then(jsonResponse => {
       resolve({
         accessToken: jsonResponse.access_token,
         accessTokenExpirationDate: new Date().getTime() + jsonResponse.expires_in * 1000,
         refreshToken: jsonResponse.refresh_token,
       });
-    }))
-    .catch(error => reject(error));
+    })).catch(reject);
   });
 }
 
@@ -121,6 +145,10 @@ export function revoke(
   config: AppAuthConfig,
   tokenToRevoke: string
 ): Promise<{}> {
+  if (Platform.OS === 'ios') {
+    const { revoke } = require('react-native-app-auth');
+    return revoke(config, { tokenToRevoke });
+  }
   return new Promise<AuthorizeResponse>((resolve, reject) => {
     const tokenRequest = {
       token: tokenToRevoke,
@@ -128,19 +156,16 @@ export function revoke(
     };
     const s: string[] = [];
     forEach(tokenRequest, (value, key) => {
-      if (tokenRequest.hasOwnProperty(key)) {
-        s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-      }
+      s.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
     });
 
     fetch(config.serviceConfiguration.revocationEndpoint, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: s.join('&')
-    }).then(() => resolve())
-    .catch(error => reject(error));
+      body: s.join('&'),
+    }).then(() => resolve()).catch(reject);
   });
 }

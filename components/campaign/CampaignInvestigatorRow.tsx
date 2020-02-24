@@ -27,13 +27,24 @@ class CampaignInvestigatorRow extends React.Component<Props> {
   _renderDeck = (deck: Deck) => {
     const {
       investigators,
+      campaign: {
+        investigatorData = {},
+      },
     } = this.props;
     if (deck && deck.investigator_code) {
       const card = investigators[deck.investigator_code];
       if (card) {
+        const killedOrInsane = card.eliminated(investigatorData[deck.investigator_code]);
+        if (killedOrInsane) {
+          return null;
+        }
         return (
           <View key={card.code} style={styles.investigator}>
-            <InvestigatorImage card={card} small />
+            <InvestigatorImage
+              card={card}
+              killedOrInsane={killedOrInsane}
+              small
+            />
           </View>
         );
       }

@@ -33,6 +33,8 @@ export interface DeckRowProps {
   cards: CardsMap;
   renderSubDetails?: RenderDeckDetails;
   renderDetails?: RenderDeckDetails;
+  killedOrInsane?: boolean;
+  skipRender?: (deck: Deck, investigator: Card) => boolean;
 }
 
 interface OwnProps extends DeckRowProps {
@@ -135,7 +137,11 @@ class DeckRow extends React.Component<Props> {
       return (
         <View style={styles.row}>
           <TouchableOpacity onPress={this._onRemove}>
-            <MaterialCommunityIcons name="close" size={32} color="#FFFFFF" />
+            <MaterialCommunityIcons
+              name="close"
+              size={32}
+              color="#FFFFFF"
+            />
           </TouchableOpacity>
         </View>
       );
@@ -144,7 +150,11 @@ class DeckRow extends React.Component<Props> {
     if (!viewDeckButton) {
       return (
         <TouchableOpacity onPress={this._onDeckPress}>
-          <AppIcon name="deck" size={28} color="#FFFFFF" />
+          <AppIcon
+            name="deck"
+            size={28}
+            color="#FFFFFF"
+          />
         </TouchableOpacity>
       );
     }
@@ -159,8 +169,17 @@ class DeckRow extends React.Component<Props> {
       compact,
       viewDeckButton,
       fontScale,
+      killedOrInsane,
+      skipRender,
     } = this.props;
     if (!theDeck) {
+      return null;
+    }
+    const investigator = cards[theDeck.investigator_code];
+    if (!investigator) {
+      return null;
+    }
+    if (skipRender && skipRender(theDeck, investigator)) {
       return null;
     }
     return (
@@ -170,12 +189,13 @@ class DeckRow extends React.Component<Props> {
         previousDeck={thePreviousDeck}
         cards={cards}
         onPress={this._onDeckPress}
-        investigator={cards[theDeck.investigator_code]}
+        investigator={investigator}
         titleButton={this.titleButton()}
         details={this.renderDetails()}
         subDetails={this.renderSubDetails()}
         compact={compact}
         viewDeckButton={viewDeckButton}
+        killedOrInsane={killedOrInsane}
       />
     );
   }
@@ -183,7 +203,9 @@ class DeckRow extends React.Component<Props> {
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const deck = getDeck(state, props.id);
-  const previousDeck = deck && deck.previous_deck && getDeck(state, deck.previous_deck);
+  const previousDeck = deck &&
+    deck.previous_deck &&
+    getDeck(state, deck.previous_deck);
   return {
     theDeck: deck || undefined,
     thePreviousDeck: previousDeck || undefined,

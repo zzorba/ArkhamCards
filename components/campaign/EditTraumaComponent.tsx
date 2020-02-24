@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 
-import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
+import { DEFAULT_TRAUMA_DATA } from './trauma';
 import LabeledTextBox from '../core/LabeledTextBox';
 import { t } from 'ttag';
 import { InvestigatorData, Trauma } from '../../actions/types';
@@ -45,7 +45,7 @@ export default class EditTraumaComponent extends React.Component<Props> {
           column
           label={t`Trauma`}
           onPress={this._editTraumaPressed}
-          value={traumaString(this.traumaData(), investigator)}
+          value={investigator.traumaString(this.traumaData())}
         />
       </View>
     );

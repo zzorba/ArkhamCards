@@ -2,7 +2,6 @@ import { capitalize, flatMap, forEach, keys, map, range, sortBy, values } from '
 
 import { CUSTOM, Campaign, DecksMap } from '../../actions/types';
 import { campaignNames } from './constants';
-import { traumaString, DEFAULT_TRAUMA_DATA } from './trauma';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '../../constants';
 import { CardsMap } from '../../data/Card';
 
@@ -49,8 +48,7 @@ export function campaignToText(
     const investigator = investigators[deck.investigator_code];
     lines.push(`${investigator.name}:`);
     lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
-    const traumaData = campaign.investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA;
-    lines.push(`Trauma: ${traumaString(traumaData, investigator)}`);
+    lines.push(`Trauma: ${investigator.traumaString(campaign.investigatorData[investigator.code])}`);
     forEach(campaignNotes.investigatorNotes.sections || [], section => {
       lines.push(`${section.title}:`);
       const notes = section.notes[investigator.code] || [];

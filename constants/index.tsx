@@ -119,6 +119,7 @@ export const FACTION_COLORS: { [faction_code: string]: string } = {
   survivor: '#cc3038',
   neutral: '#000000',
   dual: '#868600',
+  dead: '#704214',
 };
 
 export const FACTION_LIGHT_GRADIENTS: { [faction_code: string]: string[] } = {
@@ -129,6 +130,7 @@ export const FACTION_LIGHT_GRADIENTS: { [faction_code: string]: string[] } = {
   survivor: ['#f5d6d7', '#ebacaf'],
   neutral: ['#e6e6e6', '#cccccc'],
   dual: ['#f2f2cc', '#e6e699'],
+  dead: ['#d4c6b9', '#b8a18a'],
 };
 
 export const FACTION_DARK_GRADIENTS: { [faction_code: string]: string[] } = {
@@ -139,6 +141,7 @@ export const FACTION_DARK_GRADIENTS: { [faction_code: string]: string[] } = {
   survivor: ['#cc3038', '#a3262d'],
   neutral: ['#444444', '#222222'],
   dual: ['#c0c000', '#868600'],
+  dead: ['#5a3510', '#38210a'],
 };
 
 export const FACTION_BACKGROUND_COLORS: { [faction_code: string]: string } = Object.assign(

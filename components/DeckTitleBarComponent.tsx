@@ -16,6 +16,7 @@ interface Props {
   investigator?: Card;
   compact?: boolean;
   button?: ReactNode;
+  killedOrInsane?: boolean;
 }
 
 export default function DeckTitleBarComponent({
@@ -24,6 +25,7 @@ export default function DeckTitleBarComponent({
   compact,
   button,
   fontScale,
+  killedOrInsane,
 }: Props) {
   const hasFactionColor = !!(investigator && investigator.faction_code);
   const faction_code = (investigator && investigator.faction_code) || 'neutral';
@@ -31,7 +33,7 @@ export default function DeckTitleBarComponent({
     (investigator.faction_code === 'neutral' ? 'elder_sign' : investigator.faction_code);
   return (
     <FactionGradient
-      faction_code={faction_code}
+      faction_code={killedOrInsane ? 'dead' : faction_code}
       style={styles.titleBar}
       dark
     >

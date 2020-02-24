@@ -34,6 +34,7 @@ interface Props {
   titleButton?: ReactNode;
   compact?: boolean;
   viewDeckButton?: boolean;
+  killedOrInsane?: boolean;
 }
 
 export default class DeckListRow extends React.Component<Props> {
@@ -60,13 +61,30 @@ export default class DeckListRow extends React.Component<Props> {
     return null;
   }
 
-  renderDeckDetails() {
+  killedOrInsane(): boolean {
+    const {
+      killedOrInsane,
+      investigator,
+      deckToCampaign,
+      deck,
+    } = this.props;
+    if (killedOrInsane) {
+      return true;
+    }
+    if (!investigator) {
+      return false;
+    }
+    const campaign = deckToCampaign && deckToCampaign[deck.id];
+    const traumaData = campaign && campaign.investigatorData[deck.id];
+    return investigator.eliminated(traumaData);
+  }
+
+  renderDeckDetails(investigator: Card, campaign?: Campaign) {
     const {
       deck,
       previousDeck,
       cards,
       details,
-      deckToCampaign,
       fontScale,
     } = this.props;
     if (details) {
@@ -88,11 +106,11 @@ export default class DeckListRow extends React.Component<Props> {
     const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
     const scenarioCount = deck.scenarioCount || 0;
     const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate)) : undefined;
+    const traumaData = campaign && campaign.investigatorData[investigator.code];
     return (
       <View>
         <Text style={typography.small}>
-          { deckToCampaign && deckToCampaign[deck.id] ?
-            deckToCampaign[deck.id].name :
+          { campaign ? campaign.name :
             ngettext(
               msgid`${scenarioCount} scenario completed`,
               `${scenarioCount} scenarios completed`,
@@ -100,6 +118,11 @@ export default class DeckListRow extends React.Component<Props> {
             )
           }
         </Text>
+        { this.killedOrInsane() && (
+          <Text style={typography.small}>
+            { investigator.traumaString(traumaData) }
+          </Text>
+        ) }
         { !!xpString && (
           <Text style={typography.small}>
             { xpString }
@@ -121,9 +144,21 @@ export default class DeckListRow extends React.Component<Props> {
     );
   }
 
+  renderInvestigatorImage(investigator: Card) {
+    return (
+      <View style={styles.image}>
+        <InvestigatorImage
+          card={investigator}
+          killedOrInsane={this.killedOrInsane()}
+        />
+      </View>
+    );
+  }
+
   renderContents() {
     const {
       deck,
+      deckToCampaign,
       investigator,
       titleButton,
       compact,
@@ -141,6 +176,8 @@ export default class DeckListRow extends React.Component<Props> {
         </View>
       );
     }
+    const campaign = deckToCampaign && deckToCampaign[deck.id];
+    const killedOrInsane = this.killedOrInsane();
     return (
       <View>
         <View style={styles.column}>
@@ -149,23 +186,20 @@ export default class DeckListRow extends React.Component<Props> {
             investigator={investigator}
             button={titleButton}
             fontScale={fontScale}
+            killedOrInsane={killedOrInsane}
             compact
           />
-          <FactionGradient
-            faction_code={investigator.factionCode()}
-          >
+          <FactionGradient faction_code={killedOrInsane ? 'dead' : investigator.factionCode()}>
             <View style={styles.investigatorBlock}>
               <View style={styles.investigatorBlockRow}>
-                <View style={styles.image}>
-                  { !!investigator && <InvestigatorImage card={investigator} /> }
-                </View>
+                { this.renderInvestigatorImage(investigator) }
                 <View style={[styles.column, styles.titleColumn]}>
                   { !compact && (
                     <Text style={typography.label}>
                       { investigator.name }
                     </Text>
                   ) }
-                  { this.renderDeckDetails() }
+                  { this.renderDeckDetails(investigator, campaign) }
                 </View>
               </View>
               { subDetails }
@@ -173,7 +207,7 @@ export default class DeckListRow extends React.Component<Props> {
           </FactionGradient>
         </View>
         <FactionGradient
-          faction_code={investigator.factionCode()}
+          faction_code={killedOrInsane ? 'dead' : investigator.factionCode()}
           style={styles.footer}
           dark
         />

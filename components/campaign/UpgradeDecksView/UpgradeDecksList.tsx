@@ -14,7 +14,6 @@ import { parseDeck } from '../../../lib/parseDeck';
 import typography from '../../../styles/typography';
 import DeckRowButton from '../../DeckRowButton';
 import { showDeckModal } from '../../navHelper';
-import { DEFAULT_TRAUMA_DATA, isEliminated } from '../trauma';
 import DeckList, { DeckListProps } from '../DeckList';
 import DeckRow from '../DeckRow';
 
@@ -64,9 +63,7 @@ export default class UpgradeDecksList extends React.Component<Props> {
       originalDeckIds,
       fontScale,
     } = this.props;
-    const eliminated = isEliminated(
-      investigatorData[investigator.code] || DEFAULT_TRAUMA_DATA,
-      investigator);
+    const eliminated = investigator.eliminated(investigatorData[investigator.code]);
     if (eliminated) {
       return null;
     }
@@ -118,6 +115,14 @@ export default class UpgradeDecksList extends React.Component<Props> {
     );
   };
 
+  _skipRender = (
+    deck: Deck,
+    investigator: Card,
+  ) => {
+    const { investigatorData } = this.props;
+    return investigator.eliminated(investigatorData[investigator.code]);
+  };
+
   _renderDeck = (
     deckId: number,
     cards: CardsMap,
@@ -127,6 +132,7 @@ export default class UpgradeDecksList extends React.Component<Props> {
       componentId,
       fontScale,
     } = this.props;
+
     return (
       <DeckRow
         key={deckId}
@@ -136,6 +142,7 @@ export default class UpgradeDecksList extends React.Component<Props> {
         cards={cards}
         investigators={investigators}
         renderDetails={this._renderDetails}
+        skipRender={this._skipRender}
         otherProps={this.props}
         compact
         viewDeckButton

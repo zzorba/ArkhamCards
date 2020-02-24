@@ -1,6 +1,7 @@
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
+import { TraumaAndCardData } from '../actions/types';
 import { FactionCodeType, TypeCodeType, SkillCodeType } from '../constants';
 import CardRestrictions from './CardRestrictions';
 import DeckRequirement from './DeckRequirement';
@@ -217,6 +218,50 @@ export default class BaseCard {
 
   factionCode(): FactionCodeType {
     return this.faction_code || 'neutral';
+  }
+
+  eliminated(traumaData?: TraumaAndCardData) {
+    if (!traumaData) {
+      return false;
+    }
+    if (traumaData.killed || traumaData.insane) {
+      return true;
+    }
+    if ((this.health || 0) <= (traumaData.physical || 0) ||
+      (this.sanity || 0) <= (traumaData.mental || 0)) {
+      return true;
+    }
+    return false;
+  }
+
+  hasTrauma(traumaData?: TraumaAndCardData) {
+    return this.eliminated(traumaData) || (traumaData && (
+      (traumaData.physical || 0) > 0 ||
+      (traumaData.mental || 0) > 0
+    ));
+  }
+
+  traumaString(traumaData?: TraumaAndCardData) {
+    if (!traumaData) {
+      return t`None`;
+    }
+    const parts = [];
+    if (traumaData.killed || (this.health || 0) <= (traumaData.physical || 0)) {
+      return t`Killed`;
+    }
+    if (traumaData.insane || (this.sanity || 0) <= (traumaData.mental || 0)) {
+      return t`Insane`;
+    }
+    if (traumaData.physical !== 0) {
+      parts.push(t`${traumaData.physical} Physical`);
+    }
+    if (traumaData.mental !== 0) {
+      parts.push(t`${traumaData.mental} Mental`);
+    }
+    if (!parts.length) {
+      return t`None`;
+    }
+    return parts.join(', ');
   }
 
   realCost(linked?: boolean) {

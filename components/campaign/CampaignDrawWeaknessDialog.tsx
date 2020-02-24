@@ -9,7 +9,6 @@ import { t } from 'ttag';
 import { Campaign, Deck, DecksMap, Slots, WeaknessSet } from '../../actions/types';
 import { updateCampaign } from './actions';
 import { NavigationProps } from '../types';
-import { DEFAULT_TRAUMA_DATA, isEliminated } from './trauma';
 import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
@@ -389,8 +388,7 @@ function mapStateToProps(
     const deck = decks[deckId];
     if (deck) {
       const investigator = props.cards[deck.investigator_code];
-      const traumaData = campaign.investigatorData[deck.investigator_code] || DEFAULT_TRAUMA_DATA;
-      if (!isEliminated(traumaData, investigator)) {
+      if (!investigator.eliminated(campaign.investigatorData[deck.investigator_code])) {
         return 1;
       }
     }

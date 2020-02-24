@@ -500,6 +500,7 @@ class CampaignDetailView extends React.Component<Props, State> {
       showTextEditDialog,
       allInvestigators,
       fontScale,
+      decks,
     } = this.props;
     return (
       <ScrollView style={styles.flex}>
@@ -521,6 +522,8 @@ class CampaignDetailView extends React.Component<Props, State> {
           campaignId={campaign.id}
           weaknessSet={campaign.weaknessSet}
           latestDeckIds={latestDeckIds || []}
+          decks={decks}
+          allInvestigators={allInvestigators}
           investigatorData={campaign.investigatorData || {}}
           showTraumaDialog={showTraumaDialog}
           updateLatestDeckIds={this._updateLatestDeckIds}

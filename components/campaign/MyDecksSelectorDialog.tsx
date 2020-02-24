@@ -10,7 +10,6 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import { Deck, DecksMap, Campaign } from '../../actions/types';
-import { isEliminated } from './trauma';
 import Switch from '../core/Switch';
 import { iconsMap } from '../../app/NavIcons';
 import MyDecksComponent from '../MyDecksComponent';
@@ -206,7 +205,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     const eliminatedInvestigators: string[] = !campaign ? [] :
       filter(
         keys(campaign.investigatorData || {}),
-        code => isEliminated(campaign.investigatorData[code], investigators[code]));
+        code => investigators[code].eliminated(campaign.investigatorData[code]));
     return uniqBy(
       [
         ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),

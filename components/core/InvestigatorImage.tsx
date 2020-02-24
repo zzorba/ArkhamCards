@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { Sepia } from 'react-native-color-matrix-image-filters';
 
 import { showCard } from '../navHelper';
 import { createFactionIcons, FACTION_COLORS } from '../../constants';
@@ -20,6 +21,7 @@ interface Props {
   card: Card;
   componentId?: string;
   small?: boolean;
+  killedOrInsane?: boolean;
 }
 
 export default class InvestigatorImage extends React.Component<Props> {
@@ -31,14 +33,31 @@ export default class InvestigatorImage extends React.Component<Props> {
     if (componentId) {
       showCard(componentId, card.code, card, true);
     }
+  };
+
+  renderInvestigatorImage() {
+    const {
+      card,
+      small,
+    } = this.props;
+    return (
+      <FastImage
+        style={small ? styles.image : styles.bigImage}
+        source={{
+          uri: `https://arkhamdb.com/${card.imagesrc}`,
+        }}
+        resizeMode="contain"
+      />
+    );
   }
 
   renderImage() {
     const {
       card,
       small,
+      killedOrInsane,
     } = this.props;
-    const size = (small ? 65 : 100) * scaleFactor;
+    const size = (small ? 65 : 110) * scaleFactor;
     const faction_icon = FACTION_ICONS[card.factionCode()];
     return (
       <View style={[styles.container, { width: size, height: size }]}>
@@ -49,7 +68,7 @@ export default class InvestigatorImage extends React.Component<Props> {
               {
                 width: size,
                 height: size,
-                backgroundColor: FACTION_COLORS[card.factionCode()],
+                backgroundColor: FACTION_COLORS[killedOrInsane ? 'dead' : card.factionCode()],
               },
             ]}>
               <Text style={styles.placeholderIcon} allowFontScaling={false}>
@@ -60,13 +79,11 @@ export default class InvestigatorImage extends React.Component<Props> {
         ) }
         { !!card.imagesrc && (
           <View style={styles.relative}>
-            <FastImage
-              style={small ? styles.image : styles.bigImage}
-              source={{
-                uri: `https://arkhamdb.com/${card.imagesrc}`,
-              }}
-              resizeMode="contain"
-            />
+            { killedOrInsane ? (
+              <Sepia>
+                { this.renderInvestigatorImage() }
+              </Sepia>
+            ) : this.renderInvestigatorImage() }
           </View>
         ) }
       </View>
