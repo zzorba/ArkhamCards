@@ -9,7 +9,6 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 
 import android.content.Context;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -38,8 +37,7 @@ public class MainApplication extends NavigationApplication {
 
       @Override
       public List<ReactPackage> getPackages() {
-        ArrayList<ReactPackage> packages = new PackageList(this).getPackages();
-        return packages;
+        return new PackageList(this).getPackages();
       }
     };
 
