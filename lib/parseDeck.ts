@@ -247,11 +247,11 @@ function getDeckChanges(
   );
   const allCards: Card[] = [];
   forEach(
-    keys(previousDeck.slots),
-    code => {
+    previousDeck.slots,
+    (count, code) => {
       const card = cards[code];
       if (card) {
-        forEach(range(0, previousDeck.slots[code]), () => {
+        forEach(range(0, count), () => {
           allCards.push(card);
         });
       }
@@ -276,14 +276,15 @@ function getDeckChanges(
       }
     });
   const exiledSlots: Card[] = [];
-  forEach(exiledCards, (exileCount, code) => {
-    if (exileCount > 0) {
-      const card = cards[code];
-      if (card) {
-        forEach(range(0, exileCount), () => exiledSlots.push(card));
+  forEach(exiledCards,
+    (exileCount, code) => {
+      if (exileCount > 0) {
+        const card = cards[code];
+        if (card) {
+          forEach(range(0, exileCount), () => exiledSlots.push(card));
+        }
       }
-    }
-  });
+    });
   forEach(invalidCards, invalidCard => {
     exiledSlots.push(invalidCard);
   });
@@ -447,7 +448,7 @@ function calculateTotalXp(
   return sum(map(keys(slots), code => {
     const card = cards[code];
     const xp = computeXp(card);
-    if (card.myriad) {
+    if (card && card.myriad) {
       const myriadKey = `${card.real_text}_${card.xp}`;
       if (!myriadBuys[myriadKey]) {
         // Pay the cost only once for myriad.
