@@ -54,6 +54,10 @@ export default class DeckOption {
     }
   }
 
+  deckSizeOnly(): boolean {
+    return !!(this.deck_size_select && this.deck_size_select.length > 0);
+  }
+
   toQuery(meta?: DeckMeta) {
     let query = this.not ? 'NOT (' : '(';
     let dirty = false;
