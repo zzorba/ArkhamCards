@@ -32,6 +32,7 @@ import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaign
 import { campaignToText } from '../campaignUtil';
 import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
+import { OddsCalculatorProps } from '../../campaign/OddsCalculatorView';
 import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
 import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import { iconsMap } from '../../../app/NavIcons';
@@ -41,7 +42,6 @@ import { updateCampaign, deleteCampaign } from '../actions';
 import { NavigationProps } from '../../types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
-import { OddsCalculatorProps } from '../../OddsCalculatorView';
 
 export interface CampaignDetailProps {
   id: number;

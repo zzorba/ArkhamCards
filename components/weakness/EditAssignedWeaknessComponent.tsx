@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import { Slots, WeaknessSet } from '../../actions/types';
 import Card from '../../data/Card';
 import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
-import CardSearchResult from '../CardSearchResult';
+import CardSearchResult from '../cardlist/CardSearchResult';
 
 interface OwnProps {
   componentId: string;

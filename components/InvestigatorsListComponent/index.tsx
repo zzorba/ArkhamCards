@@ -23,7 +23,7 @@ import Card, { CardsMap } from '../../data/Card';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
 import { searchMatchesText } from '../searchHelpers';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
-import ShowNonCollectionFooter, { rowNonCollectionHeight } from '../CardSearchResultsComponent/ShowNonCollectionFooter';
+import ShowNonCollectionFooter, { rowNonCollectionHeight } from '../cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import InvestigatorRow from './InvestigatorRow';
 import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import { getTabooSet, getPacksInCollection, AppState } from '../../reducers';

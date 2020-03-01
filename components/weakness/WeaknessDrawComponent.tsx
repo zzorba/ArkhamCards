@@ -19,7 +19,7 @@ import Button from '../core/Button';
 import ChooserButton from '../core/ChooserButton';
 import ToggleFilter from '../core/ToggleFilter';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
-import CardDetailComponent from '../CardDetailView/CardDetailComponent';
+import CardDetailComponent from '../card/CardDetailView/CardDetailComponent';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '../../styles/sizes';
 import typography from '../../styles/typography';
 const PLAYER_BACK = require('../../assets/player-back.png');

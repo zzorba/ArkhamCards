@@ -10,11 +10,11 @@ import { connect } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import { showDeckModal } from '../navHelper';
-import DeckListRow from '../DeckListRow';
+import DeckListRow from '../decklist/DeckListRow';
 import { Deck } from '../../actions/types';
 import AppIcon from '../../assets/AppIcon';
 import Card, { CardsMap } from '../../data/Card';
-import { fetchPrivateDeck } from '../decks/actions';
+import { fetchPrivateDeck } from '../deck/actions';
 import { getDeck, AppState } from '../../reducers';
 
 type RenderDeckDetails = (

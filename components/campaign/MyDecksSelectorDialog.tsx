@@ -7,17 +7,17 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import { Deck, DecksMap, Campaign } from '../../actions/types';
+
+import { NewDeckProps } from '../NewDeckView';
 import Switch from '../core/Switch';
-import { iconsMap } from '../../app/NavIcons';
-import MyDecksComponent from '../MyDecksComponent';
+import MyDecksComponent from '../decklist/MyDecksComponent';
 import { NavigationProps } from '../types';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
+import { Deck, DecksMap, Campaign } from '../../actions/types';
+import { iconsMap } from '../../app/NavIcons';
 import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';
-import { NewDeckProps } from '../NewDeckView';
 
 export interface MyDecksSelectorProps {
   campaignId: number;

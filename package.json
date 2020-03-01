@@ -22,6 +22,7 @@
     "@react-native-community/async-storage": "1.6.3",
     "@react-native-community/netinfo": "5.5.1",
     "@redux-offline/redux-offline": "2.5.2-native.3",
+    "@types/react-native-zss-rich-text-editor": "1.0.0",
     "date-fns": "2.9.0",
     "deep-diff": "1.0.2",
     "events": "3.1.0",

@@ -20,7 +20,7 @@ import Dialog from '../core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '../core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '../withLoginState';
 import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
-import { saveNewDeck, NewDeckParams } from '../decks/actions';
+import { saveNewDeck, NewDeckParams } from '../deck/actions';
 import { Deck, Slots } from '../../actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import Card from '../../data/Card';

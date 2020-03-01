@@ -11,7 +11,7 @@ import { t } from 'ttag';
 
 import { Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from '../../../actions/types';
 import CampaignDecks from './CampaignDecks';
-import { UpgradeDeckProps } from '../../decks/DeckUpgradeDialog';
+import { UpgradeDeckProps } from '../../deck/DeckUpgradeDialog';
 import withWeaknessCards, { WeaknessCardProps } from '../../weakness/withWeaknessCards';
 import Card, { CardsMap } from '../../../data/Card';
 import { FACTION_DARK_GRADIENTS } from '../../../constants';

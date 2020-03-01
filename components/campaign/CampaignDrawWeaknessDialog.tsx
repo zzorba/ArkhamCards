@@ -13,7 +13,7 @@ import Button from '../core/Button';
 import NavButton from '../core/NavButton';
 import ToggleFilter from '../core/ToggleFilter';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';
-import { saveDeckChanges, DeckChanges } from '../decks/actions';
+import { saveDeckChanges, DeckChanges } from '../deck/actions';
 import { RANDOM_BASIC_WEAKNESS } from '../../constants';
 import { iconsMap } from '../../app/NavIcons';
 import DeckValidation from '../../lib/DeckValidation';

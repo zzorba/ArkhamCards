@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import NavButton from './NavButton';
-import { SearchSelectProps } from '../SearchMultiSelectView';
+import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
 import { COLORS } from '../../styles/colors';
 
 interface Props {

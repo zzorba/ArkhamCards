@@ -22,7 +22,7 @@ import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
 import { clearDecks } from '../../actions';
 import Card from '../../data/Card';
 import { getCampaigns, getAllPacks, AppState } from '../../reducers';
-import { fetchCards } from '../cards/actions';
+import { fetchCards } from '../card/actions';
 import { setAllCampaigns } from '../campaign/actions';
 import SettingsItem from './SettingsItem';
 import { COLORS } from '../../styles/colors';

@@ -7,7 +7,7 @@ import { connectRealm } from 'react-native-realm';
 import { SettingsPicker } from 'react-native-settings-components';
 
 import { t } from 'ttag';
-import { fetchCards } from '../cards/actions';
+import { fetchCards } from '../card/actions';
 import Card from '../../data/Card';
 import { AppState } from '../../reducers';
 import { COLORS } from '../../styles/colors';

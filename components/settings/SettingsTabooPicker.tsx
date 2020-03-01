@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import { setTabooSet } from './actions';
-import TabooSetPicker from '../TabooSetPicker';
+import TabooSetPicker from '../core/TabooSetPicker';
 import { AppState, getTabooSet } from '../../reducers';
 import { COLORS } from '../../styles/colors';
 

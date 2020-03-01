@@ -19,7 +19,7 @@ import { campaignNames } from '../constants';
 import SearchBox from '../../SearchBox';
 import withPlayerCards, { PlayerCardProps } from '../../withPlayerCards';
 import { searchMatchesText } from '../../searchHelpers';
-import withFetchCardsGate from '../../cards/withFetchCardsGate';
+import withFetchCardsGate from '../../card/withFetchCardsGate';
 import { iconsMap } from '../../../app/NavIcons';
 import { getAllDecks, getCampaigns, AppState } from '../../../reducers';
 import typography from '../../../styles/typography';

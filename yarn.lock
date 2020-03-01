@@ -2682,6 +2682,14 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
+"@types/react-native-zss-rich-text-editor@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-zss-rich-text-editor/-/react-native-zss-rich-text-editor-1.0.0.tgz#f1d0054d3815abfafe9a78f3d037ce3184475a16"
+  integrity sha512-tcbDtz0RYFUvv2KHr7Q3RUeJUXhxdFnNd6i8+SWZX1Ywrc2iwng84LKOH/3J8Uq1UUEwmK1apcaUWTEon/mkiw==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native@*":
   version "0.57.41"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.57.41.tgz#bf355f38d8cfe5eac68de977e210ae0805cd053a"

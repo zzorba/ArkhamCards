@@ -19,7 +19,7 @@ import { t } from 'ttag';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { clearDecks } from '../../actions';
-import { fetchCards } from '../cards/actions';
+import { fetchCards } from '../card/actions';
 import { setSingleCardView } from './actions';
 import { prefetch } from '../../lib/auth';
 import Card from '../../data/Card';

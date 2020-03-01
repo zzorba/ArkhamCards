@@ -12,7 +12,7 @@ import { t } from 'ttag';
 import { Pack } from '../../actions/types';
 import EncounterIcon from '../../assets/EncounterIcon';
 import Switch from '../core/Switch';
-import { PackCardsProps } from '../PackCardsView';
+import { PackCardsProps } from '../settings/PackCardsView';
 
 interface Props {
   componentId: string;
