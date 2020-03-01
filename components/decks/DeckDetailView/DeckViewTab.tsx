@@ -21,24 +21,24 @@ import {
   SplitCards,
   Slots,
   Trauma,
-} from '../../actions/types';
-import { showCard, showCardSwipe } from '../navHelper';
-import ArkhamIcon from '../../assets/ArkhamIcon';
-import AppIcon from '../../assets/AppIcon';
-import InvestigatorImage from '../core/InvestigatorImage';
+} from '../../../actions/types';
+import { showCard, showCardSwipe } from '../../navHelper';
+import ArkhamIcon from '../../../assets/ArkhamIcon';
+import AppIcon from '../../../assets/AppIcon';
+import InvestigatorImage from '../../core/InvestigatorImage';
 import DeckProgressComponent from '../DeckProgressComponent';
 import InvestigatorOptionsModule from './InvestigatorOptionsModule';
-import CardSectionHeader, { CardSectionHeaderData } from '../CardSectionHeader';
-import CardSearchResult from '../CardSearchResult';
-import TabooSetPicker from '../TabooSetPicker';
-import { FACTION_DARK_GRADIENTS } from '../../constants';
-import DeckValidation from '../../lib/DeckValidation';
-import Card, { CardsMap } from '../../data/Card';
-import TabooSet from '../../data/TabooSet';
-import typography from '../../styles/typography';
-import { COLORS } from '../../styles/colors';
-import { isBig, s } from '../../styles/space';
-import DeckProblemRow from '../DeckProblemRow';
+import CardSectionHeader, { CardSectionHeaderData } from '../../CardSectionHeader';
+import CardSearchResult from '../../CardSearchResult';
+import TabooSetPicker from '../../TabooSetPicker';
+import { FACTION_DARK_GRADIENTS } from '../../../constants';
+import DeckValidation from '../../../lib/DeckValidation';
+import Card, { CardsMap } from '../../../data/Card';
+import TabooSet from '../../../data/TabooSet';
+import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
+import { isBig, s } from '../../../styles/space';
+import DeckProblemRow from '../../DeckProblemRow';
 
 interface SectionCardId extends CardId {
   special: boolean;

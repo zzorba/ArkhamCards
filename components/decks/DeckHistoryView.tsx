@@ -8,8 +8,8 @@ import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import DeckProgressComponent from '../DeckProgressComponent';
-import { DeckDetailProps } from '../DeckDetailView';
+import DeckProgressComponent from './DeckProgressComponent';
+import { DeckDetailProps } from './DeckDetailView';
 import { getDeckOptions } from '../navHelper';
 import { NavigationProps } from '../types';
 import withDimensions, { DimensionsProps } from '../core/withDimensions';

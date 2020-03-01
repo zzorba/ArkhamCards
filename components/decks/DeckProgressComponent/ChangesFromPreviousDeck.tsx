@@ -2,11 +2,11 @@ import React from 'react';
 import { concat, findIndex, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
-import { DeckChanges, ParsedDeck, Slots } from '../../actions/types';
-import { showCard, showCardSwipe } from '../navHelper';
-import CardSearchResult from '../CardSearchResult';
-import CardSectionHeader from '../CardSectionHeader';
-import Card, { CardsMap } from '../../data/Card';
+import { DeckChanges, ParsedDeck, Slots } from '../../../actions/types';
+import { showCard, showCardSwipe } from '../../navHelper';
+import CardSearchResult from '../../CardSearchResult';
+import CardSectionHeader from '../../CardSectionHeader';
+import Card, { CardsMap } from '../../../data/Card';
 
 interface Props {
   componentId: string;

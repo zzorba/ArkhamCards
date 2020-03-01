@@ -3,11 +3,11 @@ import { Platform } from 'react-native';
 import { Navigation, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { DeckChartsProps } from './DeckChartsView';
-import { DrawSimulatorProps } from './DrawSimulatorView';
+import { DeckChartsProps } from './decks/DeckChartsView';
+import { DrawSimulatorProps } from './decks/DrawSimulatorView';
+import { DeckDetailProps } from './decks/DeckDetailView';
 import { CardDetailProps } from './CardDetailView';
 import { CardDetailSwipeProps } from './CardDetailSwipeView';
-import { DeckDetailProps } from './DeckDetailView';
 import { Deck, ParsedDeck, Slots } from '../actions/types';
 import { FACTION_DARK_GRADIENTS } from '../constants';
 import Card from '../data/Card';

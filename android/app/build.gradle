@@ -214,3 +214,13 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 
+project.afterEvaluate {
+    apply from: '../../node_modules/react-native-draftjs-editor/copyHtml.gradle';
+    copyEditorHtmlToAppAssets(file('../../node_modules/react-native-draftjs-editor'))
+}
+
+project.afterEvaluate {
+    apply from: '../../node_modules/react-native-zss-rich-text-editor/htmlCopy.gradle';
+    copyEditorHtmlToAppAssets(file('../../node_modules/react-native-zss-rich-text-editor'))
+}
+

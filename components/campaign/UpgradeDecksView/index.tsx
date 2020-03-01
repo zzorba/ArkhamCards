@@ -22,7 +22,7 @@ import typography from '../../../styles/typography';
 import { iconsMap } from '../../../app/NavIcons';
 import { COLORS } from '../../../styles/colors';
 import UpgradeDecksList from './UpgradeDecksList';
-import { UpgradeDeckProps } from '../../DeckUpgradeDialog';
+import { UpgradeDeckProps } from '../../decks/DeckUpgradeDialog';
 import ScenarioResultRow from '../CampaignScenarioView/ScenarioResultRow';
 
 export interface UpgradeDecksProps {

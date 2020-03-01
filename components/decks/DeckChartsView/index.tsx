@@ -4,8 +4,8 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { ParsedDeck } from '../../actions/types';
-import withDimensions, { DimensionsProps } from '../core/withDimensions';
+import { ParsedDeck } from '../../../actions/types';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
 import FactionChart from './FactionChart';
 import CostChart from './CostChart';
 import SlotsChart from './SlotsChart';

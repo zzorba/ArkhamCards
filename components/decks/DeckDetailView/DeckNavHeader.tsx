@@ -11,8 +11,8 @@ import {
 import { Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 
-import AppIcon from '../../assets/AppIcon';
-import { COLORS } from '../../styles/colors';
+import AppIcon from '../../../assets/AppIcon';
+import { COLORS } from '../../../styles/colors';
 
 interface Props {
   componentId: string;

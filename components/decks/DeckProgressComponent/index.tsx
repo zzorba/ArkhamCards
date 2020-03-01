@@ -9,15 +9,15 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import CardSectionHeader from '../CardSectionHeader';
+import CardSectionHeader from '../../CardSectionHeader';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
-import EditTraumaComponent from '../campaign/EditTraumaComponent';
-import CampaignSummaryComponent from '../campaign/CampaignSummaryComponent';
-import { fetchPublicDeck, fetchPrivateDeck } from '../decks/actions';
-import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '../../actions/types';
-import Card, { CardsMap } from '../../data/Card';
-import typography from '../../styles/typography';
-import space, { l, m, s } from '../../styles/space';
+import EditTraumaComponent from '../../campaign/EditTraumaComponent';
+import CampaignSummaryComponent from '../../campaign/CampaignSummaryComponent';
+import { fetchPublicDeck, fetchPrivateDeck } from '../../decks/actions';
+import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '../../../actions/types';
+import Card, { CardsMap } from '../../../data/Card';
+import typography from '../../../styles/typography';
+import space, { l, m, s } from '../../../styles/space';
 
 interface OwnProps {
   componentId: string;

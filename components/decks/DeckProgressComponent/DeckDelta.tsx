@@ -5,12 +5,12 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import { getDeckOptions } from '../navHelper';
+
+import { getDeckOptions } from '../../navHelper';
 import { DeckDetailProps } from '../DeckDetailView';
-import { ParsedDeck } from '../../actions/types';
-import { s } from '../../styles/space';
+import { ParsedDeck } from '../../../actions/types';
+import { s } from '../../../styles/space';
 
 interface Props {
   componentId: string;

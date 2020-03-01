@@ -3,17 +3,17 @@ import Realm, { Results } from 'realm';
 import { find, head } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 
-import { Deck, DeckMeta, Slots } from '../actions/types';
-import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '../constants';
-import withDimensions, { DimensionsProps } from './core/withDimensions';
-import { queryForInvestigator, negativeQueryForInvestigator } from '../lib/InvestigatorRequirements';
-import { filterToQuery, defaultFilterState } from '../lib/filters';
-import { STORY_CARDS_QUERY } from '../data/query';
-import Card, { CardsMap } from '../data/Card';
-import { parseDeck } from '../lib/parseDeck';
-import CardSearchComponent from './CardSearchComponent';
-import DeckNavFooter from './DeckNavFooter';
-import { NavigationProps } from './types';
+import { Deck, DeckMeta, Slots } from '../../actions/types';
+import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '../../constants';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
+import { queryForInvestigator, negativeQueryForInvestigator } from '../../lib/InvestigatorRequirements';
+import { filterToQuery, defaultFilterState } from '../../lib/filters';
+import { STORY_CARDS_QUERY } from '../../data/query';
+import Card, { CardsMap } from '../../data/Card';
+import { parseDeck } from '../../lib/parseDeck';
+import CardSearchComponent from '../CardSearchComponent';
+import DeckNavFooter from '../DeckNavFooter';
+import { NavigationProps } from '../types';
 
 export interface EditDeckProps {
   deck: Deck;

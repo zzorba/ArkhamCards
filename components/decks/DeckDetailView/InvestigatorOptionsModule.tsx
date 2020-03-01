@@ -3,9 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
 import InvestigatorOption from './InvestigatorOption';
-import { DeckMeta } from '../../actions/types';
-import Card from '../../data/Card';
-import { s } from '../../styles/space';
+import { DeckMeta } from '../../../actions/types';
+import Card from '../../../data/Card';
+import { s } from '../../../styles/space';
 
 interface Props {
   investigator: Card;

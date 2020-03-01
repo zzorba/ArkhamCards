@@ -35,13 +35,13 @@ import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
 
-import withLoginState, { LoginStateProps } from '../withLoginState';
-import CopyDeckDialog from '../CopyDeckDialog';
-import withTraumaDialog, { TraumaProps } from '../campaign/withTraumaDialog';
-import Dialog from '../core/Dialog';
-import withDialogs, { InjectedDialogProps } from '../core/withDialogs';
-import withDimensions, { DimensionsProps } from '../core/withDimensions';
-import { iconsMap } from '../../app/NavIcons';
+import withLoginState, { LoginStateProps } from '../../withLoginState';
+import CopyDeckDialog from '../../CopyDeckDialog';
+import withTraumaDialog, { TraumaProps } from '../../campaign/withTraumaDialog';
+import Dialog from '../../core/Dialog';
+import withDialogs, { InjectedDialogProps } from '../../core/withDialogs';
+import withDimensions, { DimensionsProps } from '../../core/withDimensions';
+import { iconsMap } from '../../../app/NavIcons';
 import {
   fetchPrivateDeck,
   fetchPublicDeck,
@@ -49,25 +49,26 @@ import {
   uploadLocalDeck,
   saveDeckChanges,
   DeckChanges,
-} from '../decks/actions';
-import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '../../actions/types';
-import { updateCampaign } from '../campaign/actions';
-import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '../withPlayerCards';
-import DeckValidation from '../../lib/DeckValidation';
-import { FACTION_DARK_GRADIENTS } from '../../constants';
-import Card from '../../data/Card';
-import TabooSet from '../../data/TabooSet';
-import { parseDeck } from '../../lib/parseDeck';
+} from '../../decks/actions';
+import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '../../../actions/types';
+import { updateCampaign } from '../../campaign/actions';
+import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '../../withPlayerCards';
+import DeckValidation from '../../../lib/DeckValidation';
+import { FACTION_DARK_GRADIENTS } from '../../../constants';
+import Card from '../../../data/Card';
+import TabooSet from '../../../data/TabooSet';
+import { parseDeck } from '../../../lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
-import { EditSpecialCardsProps } from '../EditSpecialDeckCards';
+import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
+import { DeckDescriptionProps } from '../DeckDescriptionView';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
+import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
-import { CardUpgradeDialogProps } from './CardUpgradeDialog';
-import DeckNavFooter from '../DeckNavFooter';
-import withTabooSetOverride, { TabooSetOverrideProps } from '../withTabooSetOverride';
-import { NavigationProps } from '../types';
+import DeckNavFooter from '../../DeckNavFooter';
+import withTabooSetOverride, { TabooSetOverrideProps } from '../../withTabooSetOverride';
+import { NavigationProps } from '../../types';
 import {
   getCampaign,
   getDeck,
@@ -75,11 +76,13 @@ import {
   getCampaignForDeck,
   getPacksInCollection,
   AppState,
-} from '../../reducers';
-import { m } from '../../styles/space';
-import typography from '../../styles/typography';
-import { COLORS } from '../../styles/colors';
-import { getDeckOptions, showCardCharts, showDrawSimulator } from '../navHelper';
+} from '../../../reducers';
+import { m } from '../../../styles/space';
+import typography from '../../../styles/typography';
+import { COLORS } from '../../../styles/colors';
+import { getDeckOptions, showCardCharts, showDrawSimulator } from '../../navHelper';
+
+const SHOW_DESCRIPTION_EDITOR = false;
 
 export interface DeckDetailProps {
   id: number;
@@ -143,6 +146,7 @@ interface State {
   deleting: boolean;
   deleteError?: string;
   nameChange?: string;
+  descriptionChange?: string;
   tabooSetId?: number;
   hasPendingEdits: boolean;
   visible: boolean;
@@ -965,6 +969,44 @@ class DeckDetailView extends React.Component<Props, State> {
     });
   };
 
+  _updateDescription = (description: string) => {
+    const { deck } = this.props;
+    if (!deck) {
+      return;
+    }
+    const descriptionChange = deck.description_md !== description ?
+      description :
+      undefined;
+    this.setState({
+      descriptionChange,
+    });
+  };
+
+  _showEditDescription = () => {
+    this.setState({
+      menuOpen: false,
+    });
+    const {
+      componentId,
+    } = this.props;
+    const { parsedDeck } = this.state;
+    if (!parsedDeck) {
+      return;
+    }
+    const options = getDeckOptions(parsedDeck.investigator, false);
+
+    Navigation.push<DeckDescriptionProps>(componentId, {
+      component: {
+        name: 'Deck.Description',
+        passProps: {
+          description: '',
+          update: this._updateDescription,
+        },
+        options: options,
+      },
+    });
+  };
+
   _toggleEditDetailsVisible = () => {
     this.setState({
       editDetailsVisible: !this.state.editDetailsVisible,
@@ -1437,6 +1479,12 @@ class DeckDetailView extends React.Component<Props, State> {
               title={t`Name`}
               description={nameChange || deck.name}
             />
+            { SHOW_DESCRIPTION_EDITOR && (
+              <SettingsButton
+                onPress={this._showEditDescription}
+                title={t`Description`}
+              />
+            ) }
             <SettingsButton
               onPress={this._showTabooPicker}
               title={t`Taboo List`}

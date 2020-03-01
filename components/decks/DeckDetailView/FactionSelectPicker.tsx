@@ -3,9 +3,9 @@ import { map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
 
-import { FactionCodeType, FACTION_COLORS } from '../../constants';
-import Card from '../../data/Card';
-import { COLORS } from '../../styles/colors';
+import { FactionCodeType, FACTION_COLORS } from '../../../constants';
+import Card from '../../../data/Card';
+import { COLORS } from '../../../styles/colors';
 
 interface Props {
   name: string;

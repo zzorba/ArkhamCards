@@ -5,22 +5,22 @@ import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import { t } from 'ttag';
-import { Campaign, Deck, DeckMeta, Slots } from '../actions/types';
-import Card from '../data/Card';
-import { CardDetailProps } from './CardDetailView';
+import { Campaign, Deck, DeckMeta, Slots } from '../../actions/types';
+import Card from '../../data/Card';
+import { CardDetailProps } from '../CardDetailView';
 import { EditDeckProps } from './DeckEditView';
-import { CampaignDrawWeaknessProps } from './campaign/CampaignDrawWeaknessDialog';
-import CardSelectorComponent from './CardSelectorComponent';
-import { DrawWeaknessProps } from './weakness/WeaknessDrawDialog';
-import withPlayerCards, { PlayerCardProps } from './withPlayerCards';
-import withDimensions, { DimensionsProps } from './core/withDimensions';
-import { NavigationProps } from './types';
-import CardSearchResult from './CardSearchResult';
-import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS } from '../constants';
-import { getCampaign, AppState } from '../reducers';
-import { COLORS } from '../styles/colors';
-import typography from '../styles/typography';
-import { l, s } from '../styles/space';
+import { CampaignDrawWeaknessProps } from '../campaign/CampaignDrawWeaknessDialog';
+import CardSelectorComponent from '../CardSelectorComponent';
+import { DrawWeaknessProps } from '../weakness/WeaknessDrawDialog';
+import withPlayerCards, { PlayerCardProps } from '../withPlayerCards';
+import withDimensions, { DimensionsProps } from '../core/withDimensions';
+import { NavigationProps } from '../types';
+import CardSearchResult from '../CardSearchResult';
+import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS } from '../../constants';
+import { getCampaign, AppState } from '../../reducers';
+import { COLORS } from '../../styles/colors';
+import typography from '../../styles/typography';
+import { l, s } from '../../styles/space';
 
 export interface EditSpecialCardsProps {
   deck: Deck;
@@ -47,7 +47,7 @@ interface State {
   unsavedAssignedWeaknesses: string[];
 }
 
-class EditSpecialDeckCards extends React.Component<Props, State> {
+class EditSpecialDeckCardsView extends React.Component<Props, State> {
   static get options() {
     return {
       topBar: {
@@ -419,7 +419,7 @@ export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
   connect<ReduxProps, {}, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
     mapStateToProps
   )(
-    withDimensions(EditSpecialDeckCards)
+    withDimensions(EditSpecialDeckCardsView)
   )
 );
 

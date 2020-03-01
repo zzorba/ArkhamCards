@@ -47,6 +47,7 @@ export interface DeckMeta {
 export interface Deck {
   id: number;
   name: string;
+  description_md?: string;
   taboo_id?: number;
   investigator_code: string;
   next_deck?: number;
