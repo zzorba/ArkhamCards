@@ -91,6 +91,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const storyEncounterCodes = latestScenario && latestScenario.scenarioCode ?
       [latestScenario.scenarioCode] :
       [];
+
     this.state = {
       xp,
       exileCounts: {},
@@ -134,14 +135,14 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const {
       storyCounts,
     } = this.state;
-    const hasStoryChange = !!find(keys(storyCounts), code =>
-      upgradedDeck.slots[code] !== storyCounts[code]
+    const hasStoryChange = !!find(storyCounts, (count, code) =>
+      upgradedDeck.slots[code] !== count
     );
     if (hasStoryChange) {
       const newSlots: Slots = { ...upgradedDeck.slots };
-      forEach(keys(storyCounts), code => {
-        if (storyCounts[code] > 0) {
-          newSlots[code] = storyCounts[code];
+      forEach(storyCounts, (count, code) => {
+        if (count > 0) {
+          newSlots[code] = count;
         } else {
           delete newSlots[code];
         }
