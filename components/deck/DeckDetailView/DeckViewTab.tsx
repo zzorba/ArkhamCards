@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { find, forEach, keys, map, sum, sumBy, uniqBy } from 'lodash';
+import { find, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import {
   StyleSheet,
   SectionList,
@@ -150,9 +150,9 @@ function bondedSections(
   bondedCardsByName: { [name: string]: Card[] }
 ): CardSection[] {
   const bondedCards: Card[] = [];
-  forEach(keys(slots), code => {
+  forEach(slots, (count, code) => {
     const card = cards[code];
-    if (slots[code] > 0 && card) {
+    if (count > 0 && card) {
       const possibleBondedCards = bondedCardsByName[card.real_name];
       if (possibleBondedCards && possibleBondedCards.length) {
         forEach(possibleBondedCards, bonded => {

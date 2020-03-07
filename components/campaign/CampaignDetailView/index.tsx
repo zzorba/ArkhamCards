@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Alert,
+  Button,
   ScrollView,
   Share,
   StyleSheet,
@@ -19,6 +20,7 @@ import { t } from 'ttag';
 
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '../../../actions/types';
 import CampaignLogSection from './CampaignLogSection';
+import { CampaignGuideProps } from '../CampaignGuideView';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
@@ -42,6 +44,8 @@ import { updateCampaign, deleteCampaign } from '../actions';
 import { NavigationProps } from '../../types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
+
+const SHOW_GUIDE = false;
 
 export interface CampaignDetailProps {
   id: number;
@@ -210,6 +214,23 @@ class CampaignDetailView extends React.Component<Props, State> {
         campaign.name,
         this._onCampaignNameChange
       );
+    }
+  };
+
+  _guidePressed = () => {
+    const {
+      componentId,
+      campaign,
+    } = this.props;
+    if (campaign) {
+      Navigation.push<CampaignGuideProps>(componentId, {
+        component: {
+          name: 'Campaign.Guide',
+          passProps: {
+            campaignId: campaign.id,
+          },
+        },
+      });
     }
   };
 
@@ -504,6 +525,7 @@ class CampaignDetailView extends React.Component<Props, State> {
     } = this.props;
     return (
       <ScrollView style={styles.flex}>
+        { SHOW_GUIDE && <Button onPress={this._guidePressed} title={t`Guide`} /> }
         <ScenarioSection
           campaign={campaign}
           fontScale={fontScale}

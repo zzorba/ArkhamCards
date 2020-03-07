@@ -1,5 +1,5 @@
 import React from 'react';
-import { forEach, find, head, keys, last, throttle } from 'lodash';
+import { forEach, find, head, last, throttle } from 'lodash';
 import {
   ActivityIndicator,
   View,

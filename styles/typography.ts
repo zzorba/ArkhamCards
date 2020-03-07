@@ -31,6 +31,10 @@ export default StyleSheet.create({
     lineHeight: 18 * sizeScale,
     color: '#222',
   },
+  italic: {
+    fontWeight: '300',
+    fontStyle: 'italic',
+  },
   smallLabel: {
     fontFamily: 'System',
     fontSize: 12 * sizeScale,

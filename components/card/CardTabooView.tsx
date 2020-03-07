@@ -89,7 +89,7 @@ class CardTabooView extends React.Component<Props> {
   }
 }
 
-export default connectRealm<NavigationProps & CardTabooProps, RealmProps, Card, FaqEntry, TabooSet>(CardTabooView, {
+export default connectRealm<NavigationProps & CardTabooProps, RealmProps, Card, TabooSet>(CardTabooView, {
   schemas: ['Card', 'TabooSet'],
   mapToProps(
     results: CardAndTabooSetResults<Card, TabooSet>,

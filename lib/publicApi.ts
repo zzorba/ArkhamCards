@@ -4,6 +4,7 @@ import { Alert } from 'react-native';
 
 import { CardCache, TabooCache, Pack } from '../actions/types';
 import Card from '../data/Card';
+import EncounterSet from '../data/EncounterSet';
 import TabooSet from '../data/TabooSet';
 import FaqEntry from '../data/FaqEntry';
 
@@ -134,11 +135,12 @@ export const syncCards = function(
       realm.write(() => {
         forEach(json, cardJson => {
           try {
-            realm.create(
-              'Card',
-              Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en'),
-              true
-            );
+            const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
+            realm.create('Card', card, true);
+            const encounterSet = EncounterSet.fromCard(card);
+            if (encounterSet) {
+              realm.create('EncounterSet', encounterSet, true);
+            }
           } catch (e) {
             Alert.alert(`${e}`);
             console.log(e);

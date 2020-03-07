@@ -117,7 +117,7 @@ class TabooSetPicker extends React.Component<Props> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, Card, {}, TabooSet>(
+export default connectRealm<OwnProps, RealmProps, TabooSet>(
   TabooSetPicker, {
     schemas: ['TabooSet'],
     mapToProps(
