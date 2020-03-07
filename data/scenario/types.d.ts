@@ -34,7 +34,7 @@ export type ChaosToken =
   | "tablet"
   | "elder_thing"
   | "elder_sign"
-  | "autofail";
+  | "auto_fail";
 export type Option = EffectOption | StepsOption | ResolutionOption;
 export type Effect =
   | EarnXpEffect

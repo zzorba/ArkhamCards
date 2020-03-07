@@ -17,7 +17,7 @@
   ],
   "scenarios": [
     "prologue",
-    "extracurricular_activities",
+    "extracurricular_activity",
     "the_house_always_wins",
     "armitages_fate",
     "the_miskatonic_museum",
@@ -510,7 +510,7 @@
 }
 ,
 {
-  "id": "epilogue",
+  "id": "dwl_epilogue",
   "scenarioName": "Epilogue",
   "interlude": true,
   "setup": [
@@ -845,8 +845,8 @@
 }
 ,
 {
-  "id": "extracurricular_activities",
-  "scenarioName": "Extracurricular Activities",
+  "id": "extracurricular_activity",
+  "scenarioName": "Extracurricular Activity",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -1371,7 +1371,7 @@
               {
                 "type": "campaign_data",
                 "setting": "next_scenario",
-                "scenario": "extracurricular_activities"
+                "scenario": "extracurricular_activity"
               }
             ]
           },
@@ -1393,7 +1393,7 @@
 }
 ,
 {
-  "id": "survivors",
+  "id": "dwl_interlude2",
   "scenarioName": "The Survivors",
   "interlude": true,
   "setup": [

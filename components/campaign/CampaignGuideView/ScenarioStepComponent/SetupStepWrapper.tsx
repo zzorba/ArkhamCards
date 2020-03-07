@@ -7,14 +7,21 @@ import {
 import ArkhamIcon from '../../../../assets/ArkhamIcon';
 
 interface Props {
+  noBullet?: boolean;
   children: React.ReactNode[];
 }
 
-export default function SetupStepWrapper({ children }: Props) {
+export default function SetupStepWrapper({ noBullet, children }: Props) {
   return (
     <View style={styles.step}>
       <View style={styles.bullet}>
-        <ArkhamIcon name="guide_bullet" size={24} color="#2E5344" />
+        { !noBullet && (
+          <ArkhamIcon
+            name="guide_bullet"
+            size={24}
+            color="#2E5344"
+          />
+        ) }
       </View>
       <View style={styles.mainText}>
         { children }
@@ -27,11 +34,13 @@ export default function SetupStepWrapper({ children }: Props) {
 const styles = StyleSheet.create({
   step: {
     flexDirection: 'row',
+    marginLeft: 16,
     marginRight: 16,
     marginBottom: 16,
   },
   bullet: {
     marginRight: 8,
+    marginTop: 4,
   },
   mainText: {
     flex: 1,

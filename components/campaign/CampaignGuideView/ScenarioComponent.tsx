@@ -7,7 +7,7 @@ import {
   View,
   Text,
 } from 'react-native';
-import { find, map } from 'lodash';
+import { find, flatMap, map } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
@@ -39,15 +39,28 @@ export default class ScenarioComponent extends React.Component<Props, State> {
       currentStep: props.scenario.scenario.setup[0],
     };
   }
-  render() {
+
+  renderSteps() {
     const { scenario, guide} = this.props;
-    const { currentStep } = this.state;
-    const step = find(scenario.scenario.steps, step => step.id === currentStep);
+    return flatMap(scenario.scenario.setup, stepId => {
+      const step = scenario.step(stepId);
+      if (!step) {
+        return null;
+      }
+      return (
+        <ScenarioStepComponent
+          key={step.id}
+          step={step}
+          guide={guide}
+        />
+      );
+    });
+  }
+
+  render() {
     return (
       <View>
-        {map(scenario.scenario.steps, step => (
-          <ScenarioStepComponent key={step.id} step={step} guide={guide} />
-        )) }
+        { this.renderSteps() }
       </View>
     );
   }

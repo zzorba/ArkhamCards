@@ -14,6 +14,20 @@ export interface CampaignLog {
   }[];
 }
 
+interface LogEntryCard {
+  type: 'card';
+  section: string;
+  code: string;
+}
+
+interface LogEntryText {
+  type: 'text';
+  section: string;
+  text: string;
+}
+
+type LogEntry = LogEntryCard | LogEntryText;
+const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 /**
  * Wrapper utility to provide structured access to campaigns.
  */
@@ -32,15 +46,35 @@ export default class CampaignGuide {
     return find(this.scenarios, scenario => scenario.scenario.id === id);
   }
 
-  logEntryText(sectionId: string, id: string): string | undefined {
+  logEntry(sectionId: string, id: string): LogEntry | undefined {
     const section = find(
-      this.log.sections,
-      s => s.section === sectionId
+      this.campaign.campaign.campaign_log,
+      logSection => logSection.id === sectionId
     );
     if (!section) {
       return undefined;
     }
-    const entry = find(section.entries, entry => entry.id === id);
-    return entry && entry.text;
+    const textSection = find(
+      this.log.sections,
+      s => s.section === sectionId
+    );
+    if (textSection) {
+      const entry = find(textSection.entries, entry => entry.id === id);
+      if (entry) {
+        return {
+          type: 'text',
+          section: section.title,
+          text: entry.text,
+        };
+      }
+    }
+    if (id.match(CARD_REGEX)) {
+      return {
+        type: 'card',
+        section: section.title,
+        code: id,
+      };
+    }
+    return undefined;
   }
 }

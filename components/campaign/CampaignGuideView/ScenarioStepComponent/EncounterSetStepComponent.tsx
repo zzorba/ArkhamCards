@@ -12,6 +12,7 @@ import SetupStepWrapper from './SetupStepWrapper';
 import { EncounterSetsStep } from '../../../../data/scenario/types';
 import EncounterSet from '../../../../data/EncounterSet';
 import EncounterIcon from '../../../../assets/EncounterIcon';
+import CardTextComponent from '../../../card/CardTextComponent';
 import typography from '../../../../styles/typography';
 
 interface OwnProps {
@@ -26,14 +27,12 @@ type Props = OwnProps & RealmProps;
 class EncounterSetStepComponent extends React.Component<Props> {
   render() {
     const { step, encounterSets } = this.props;
-    const encounterSetString = map(encounterSets, set => set.name).join(', ');
+    const encounterSetString = map(encounterSets, set => `<i>${set.name}</i>`).join(', ');
+    const leadText = step.text || t`Gather all cards from the following encounter sets:`;
+    const text = `${leadText} ${encounterSetString}. These sets are indicated by the following icons:`;
     return (
       <SetupStepWrapper>
-        <Text style={typography.text}>
-          { step.text || t`Gather all cards from the following encounter sets:`}
-          <Text style={typography.italic}>{` ${encounterSetString}.`} </Text>
-          {t`These sets are indicated by the following icons:`}
-        </Text>
+        <CardTextComponent text={text} />
         <View style={styles.iconPile}>
           {map(encounterSets, set => (
             <View style={styles.icon} key={set.code}>
