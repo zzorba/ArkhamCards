@@ -43,7 +43,9 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      storyCounts: { ...props.deckStorySlots },
+      storyCounts: {
+        ...props.deckStorySlots,
+      },
     };
   }
 
