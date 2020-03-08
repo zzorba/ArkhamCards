@@ -45,7 +45,7 @@ import { NavigationProps } from '../../types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '../../../reducers';
 import { COLORS } from '../../../styles/colors';
 
-const SHOW_GUIDE = true;
+const SHOW_GUIDE = false;
 
 export interface CampaignDetailProps {
   id: number;
