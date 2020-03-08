@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   ScrollView,
+  StyleSheet,
   View,
-  Text,
 } from 'react-native';
 import { find, map } from 'lodash';
 import { connect } from 'react-redux';
@@ -128,14 +128,16 @@ class CampaignGuideView extends React.Component<Props, State> {
     }
     return (
       <ScrollView>
-        { !!selectedScenario && (
-          <LabeledTextBox
-            label={selectedScenario.interlude ? t`Interlude` : t`Scenario`}
-            onPress={this._showScenarioDialog}
-            value={selectedScenario.name}
-            column
-          />
-        )}
+        <View style={styles.margin}>
+          { !!selectedScenario && (
+            <LabeledTextBox
+              label={selectedScenario.interlude ? t`Interlude` : t`Scenario`}
+              onPress={this._showScenarioDialog}
+              value={selectedScenario.name}
+              column
+            />
+          )}
+        </View>
         { this.renderScenario(guide) }
       </ScrollView>
     )
@@ -153,6 +155,12 @@ function mapStateToProps(
   };
 }
 
-export default connect<ReduxProps, {}, NavigationProps & OwnProps, AppState>(
+export default connect<ReduxProps, {}, NavigationProps & CampaignGuideProps, AppState>(
   mapStateToProps
 )(CampaignGuideView);
+
+const styles = StyleSheet.create({
+  margin: {
+    margin: 16,
+  },
+});

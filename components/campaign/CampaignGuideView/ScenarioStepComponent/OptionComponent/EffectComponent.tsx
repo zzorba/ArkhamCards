@@ -37,6 +37,13 @@ export default class EffectComponent extends React.Component<Props> {
           <CardTextComponent text={text} />
         );
       }
+      case 'earn_xp':
+      case 'add_card':
+      case 'remove_card':
+      case 'replace_card':
+      case 'trauma':
+      case 'campaign_log':
+      case 'campaign_data':
       default:
         return <Text>{effect.type}</Text>;
     }

@@ -3777,18 +3777,18 @@
     }
   ],
   "scenarios": [
-    "prologue",
+    "ptc_prologue",
     "curtain_call",
     "the_last_king",
-    "lunacys_reward",
+    "ptc_interlude1",
     "echoes_of_the_past",
     "unspeakable_oath",
-    "lost_soul",
+    "ptc_interlude2",
     "phantom_of_truth",
     "the_pallid_mask",
     "black_stars_rise",
     "dim_carcosa",
-    "epilogue"
+    "ptc_epilogue"
   ],
   "setup": [
     "prologue",
@@ -5352,7 +5352,7 @@
 }
 ,
 {
-  "id": "epilogue",
+  "id": "ptc_epilogue",
   "scenarioName": "Epilogue",
   "interlude": true,
   "setup": [
@@ -5373,7 +5373,7 @@
 }
 ,
 {
-  "id": "lost_soul",
+  "id": "ptc_interlude2",
   "scenarioName": "Lunacy's Reward",
   "interlude": true,
   "setup": [
@@ -5528,7 +5528,7 @@
 }
 ,
 {
-  "id": "lunacys_reward",
+  "id": "ptc_interlude1",
   "scenarioName": "Lunacy's Reward",
   "interlude": true,
   "setup": [
@@ -6303,7 +6303,7 @@
 }
 ,
 {
-  "id": "prologue",
+  "id": "ptc_prologue",
   "scenarioName": "Prologue",
   "interlude": true,
   "setup": [
@@ -8043,20 +8043,20 @@
     }
   ],
   "scenarios": [
-    "prologue",
+    "tfa_prologue",
     "wilds",
-    "restless_nights",
+    "tfa_interlude1",
     "eztli",
-    "expeditions_end",
+    "tfa_interlude2",
     "threads_of_fate",
     "the_boundary_beyond",
-    "jungle_beckons",
+    "tfa_interlude3",
     "heart_of_the_elders_part_1",
     "heart_of_the_elders_part_2",
     "the_city_of_archives",
-    "those_held_captive",
+    "tfa_interlude4",
     "the_depths_of_yoth",
-    "the_darkness",
+    "tfa_interlude5",
     "shattered_aeons"
   ],
   "chaos_bags": {
@@ -9174,7 +9174,7 @@
 }
 ,
 {
-  "id": "jungle_beckons",
+  "id": "tfa_interlude3",
   "scenarioName": "The Jungle Beckons",
   "interlude": true,
   "setup": [
@@ -9472,7 +9472,7 @@
 }
 ,
 {
-  "id": "prologue",
+  "id": "tfa_prologue",
   "scenarioName": "Prologue",
   "interlude": true,
   "setup": [

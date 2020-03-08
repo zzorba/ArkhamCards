@@ -49,7 +49,7 @@ export type Effect =
   | CampaignDataChooseInvestigatorsEffect
   | AddRemoveChaosTokenEffect;
 export type Input =
-  | CardChocieInput
+  | CardChoiceInput
   | SuppliesInput
   | UseSuppliesInput
   | InvestigatorChoiceInput
@@ -236,7 +236,7 @@ export interface InputStep {
   subtext?: string;
   input: Input;
 }
-export interface CardChocieInput {
+export interface CardChoiceInput {
   type: "card_choice";
   query: CardQuery[];
   choices: Choice[];
@@ -251,16 +251,22 @@ export interface StepsChoice {
   text: string;
   description?: string;
   steps: string[];
+  effects?: null;
+  resolution?: null;
 }
 export interface EffectsChoice {
   text: string;
   description?: string;
   effects: Effect[];
+  steps?: null;
+  resolution?: null;
 }
 export interface ResolutionChoice {
   text: string;
   description?: string;
   resolution: string;
+  steps?: null;
+  effects?: null;
 }
 export interface SuppliesInput {
   type: "supplies";

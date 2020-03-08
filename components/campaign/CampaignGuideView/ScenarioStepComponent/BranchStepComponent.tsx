@@ -41,9 +41,13 @@ export default class BranchStepComponent extends React.Component<Props> {
           <CardTextComponent text={step.text} />
         ) }
         <Text>Options:</Text>
-        { map(step.options, (option, idx) =>
-          <OptionComponent key={idx} option={option} guide={guide} />
-        ) }
+        { map(step.options, (option, idx) => (
+          <OptionComponent
+            key={idx}
+            option={option}
+            guide={guide}
+          />
+        )) }
       </SetupStepWrapper>
     );
   }

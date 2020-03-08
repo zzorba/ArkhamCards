@@ -4,14 +4,12 @@ import {
   Text,
 } from 'react-native';
 import { connectRealm, CardResults } from 'react-native-realm';
-import { t } from 'ttag';
 
 import Card from '../../../../../data/Card';
-import typography from '../../../../../styles/typography';
 
 interface OwnProps {
-  section: string;
   code: string;
+  render: (card: Card) => React.ReactNode;
 }
 
 interface RealmProps {
@@ -19,19 +17,19 @@ interface RealmProps {
 }
 
 type Props = OwnProps & RealmProps;
-class CampaignLogCardCondition extends React.Component<Props> {
+
+class CardConditionWrapper extends React.Component<Props> {
   render() {
-    const { section, card, code } = this.props;
-    return (
-      <Text style={typography.text}>
-        { t`If ${card ? card.name : code} is listed under ${section}. `}
-      </Text>
-    );
+    const { render, card, code} = this.props;
+    if (!card) {
+      return <Text>Unknown {code}</Text>;
+    }
+    return render(card);
   }
 }
 
 export default connectRealm<OwnProps, RealmProps, Card>(
-  CampaignLogCardCondition,
+  CardConditionWrapper,
   {
     schemas: ['Card'],
     mapToProps(

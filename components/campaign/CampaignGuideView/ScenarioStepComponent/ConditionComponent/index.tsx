@@ -5,13 +5,15 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import CampaignLogCardCondition from './CampaignLogCardCondition';
+import CardConditionWrapper from './CardConditionWrapper';
 import {
   Condition,
   CampaignDataCondition,
   CampaignDataScenarioCondition,
   CampaignDataChaosBagCondition,
+  ScenarioDataCondition,
 } from '../../../../../data/scenario/types';
+import Card from '../../../../../data/Card';
 import CampaignGuide from '../../../../../data/scenario/CampaignGuide';
 import typography from '../../../../../styles/typography';
 
@@ -22,7 +24,7 @@ interface Props {
 
 export default class ConditionComponent extends React.Component<Props> {
 
-  renderScenarioData(condition:
+  renderCampaignData(condition:
     CampaignDataCondition
     | CampaignDataScenarioCondition
     | CampaignDataChaosBagCondition
@@ -52,6 +54,13 @@ export default class ConditionComponent extends React.Component<Props> {
         );
     }
   }
+
+  renderScenarioData(condition: ScenarioDataCondition) {
+    return (
+      <Text>Scenario Data: {condition.scenario_data}</Text>
+    );
+  }
+
   render() {
     const { condition, guide } = this.props;
     switch (condition.type) {
@@ -70,22 +79,31 @@ export default class ConditionComponent extends React.Component<Props> {
               <Text style={typography.text}>
                 { t`Check ${logEntry.section}. `}
                 <Text style={typography.italic}>
-                  { t`If ${logEntry}` }
+                  { t`If ${logEntry.text}` }
                 </Text>
               </Text>
             );
           }
           return (
-            <CampaignLogCardCondition
+            <CardConditionWrapper
               code={logEntry.code}
-              section={logEntry.section}
+              render={(card: Card) => (
+                <Text style={typography.text}>
+                  { t`If ${card.name} is listed under ${logEntry.section}. `}
+                </Text>
+              )}
             />
           );
         }
         return (
-          <Text>Check Campaign Log: {condition.section} {condition.id}</Text>
+          <Text>
+            Check Campaign Log: {condition.section} {condition.id}
+          </Text>
         );
       case 'campaign_data': {
+        return this.renderCampaignData(condition);
+      }
+      case 'scenario_data': {
         return this.renderScenarioData(condition);
       }
       default: return <Text>{condition.type}</Text>;
