@@ -8,7 +8,7 @@ import {
 import { t } from 'ttag';
 
 import Switch from 'components/core/Switch';
-import SearchBox, { SEARCH_BAR_HEIGHT } from '../../SearchBox';
+import SearchBox, { SEARCH_BAR_HEIGHT } from 'components/core/SearchBox';
 import { isBig, s, xs } from 'styles/space';
 import typography from 'styles/typography';
 

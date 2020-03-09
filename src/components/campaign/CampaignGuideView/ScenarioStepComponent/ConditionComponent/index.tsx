@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import CardConditionWrapper from './CardConditionWrapper';
+import CardWrapper from '../CardWrapper';
 import {
   Condition,
   CampaignDataCondition,
@@ -85,7 +85,7 @@ export default class ConditionComponent extends React.Component<Props> {
             );
           }
           return (
-            <CardConditionWrapper
+            <CardWrapper
               code={logEntry.code}
               render={(card: Card) => (
                 <Text style={typography.text}>

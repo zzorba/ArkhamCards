@@ -15,13 +15,14 @@ import { Step } from 'data/scenario/types';
 interface Props {
   guide: CampaignGuide;
   step: Step;
+  advance: (step: ) => void;
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {
   render() {
     const { guide, step } = this.props;
     if (!step.type) {
-      return <GenericStepComponent step={step} />;
+      return <GenericStepComponent step={step} guide={guide} />;
     }
     switch (step.type) {
       case 'branch':

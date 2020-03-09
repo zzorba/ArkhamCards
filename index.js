@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import { RealmProvider } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 
-import { registerScreens } from './app/screens';
-import configureStore from './app/store';
-import App from './app/App';
-import realm from './data';
+import { registerScreens } from './src/app/screens';
+import configureStore from './src/app/store';
+import App from './src/app/App';
+import realm from './src/data';
 
 class MyProvider extends React.Component {
   static propTypes = {

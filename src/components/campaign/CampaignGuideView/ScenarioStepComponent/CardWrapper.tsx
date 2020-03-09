@@ -18,7 +18,7 @@ interface RealmProps {
 
 type Props = OwnProps & RealmProps;
 
-class CardConditionWrapper extends React.Component<Props> {
+class CardWrapper extends React.Component<Props> {
   render() {
     const { render, card, code} = this.props;
     if (!card) {
@@ -29,7 +29,7 @@ class CardConditionWrapper extends React.Component<Props> {
 }
 
 export default connectRealm<OwnProps, RealmProps, Card>(
-  CardConditionWrapper,
+  CardWrapper,
   {
     schemas: ['Card'],
     mapToProps(

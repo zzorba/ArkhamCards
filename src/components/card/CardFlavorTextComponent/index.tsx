@@ -8,6 +8,7 @@ import {
 import { WithText, State } from '../CardTextComponent/types';
 import { isBig } from 'styles/space';
 import { COLORS } from 'styles/colors';
+import FlavorBoldNode from './FlavorBoldNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
 
@@ -38,6 +39,15 @@ const UnderlineHtmlTagRule: MarkdownRule<WithText, State> = {
   render: FlavorUnderlineNode,
 };
 
+const BoldHtmlTagRule: MarkdownRule<WithText, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: FlavorBoldNode,
+};
+
 interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
@@ -53,6 +63,7 @@ export default function CardFlavorTextComponent(
         marginBottom: 4,
       }}
       rules={{
+        bTag: BoldHtmlTagRule,
         uTag: UnderlineHtmlTagRule,
         brTag: BreakTagRule,
         citeTag: CiteTagRule,

@@ -49,7 +49,7 @@ import PackCardsView from 'components/settings/PackCardsView';
 import SpoilersView from 'components/settings/SpoilersView';
 import CardSortDialog from 'components/cardlist/CardSortDialog';
 import InvestigatorSortDialog from 'components/cardlist/InvestigatorSortDialog';
-import ScenarioDialog from 'components/ScenarioDialog';
+import ScenarioDialog from 'components/campaign/ScenarioDialog';
 import ExileCardDialog from 'components/campaign/ExileCardDialog';
 import AboutView from 'components/settings/AboutView';
 import WeaknessDrawDialog from 'components/weakness/WeaknessDrawDialog';

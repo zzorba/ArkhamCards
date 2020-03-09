@@ -16,7 +16,7 @@ import { CUSTOM, Campaign, DecksMap } from 'actions/types';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '../CampaignDetailView';
 import { campaignNames } from 'components/campaign/constants';
-import SearchBox from 'components/SearchBox';
+import SearchBox from 'components/core/SearchBox';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { searchMatchesText } from 'components/core/searchHelpers';
 import withFetchCardsGate from 'components/card/withFetchCardsGate';

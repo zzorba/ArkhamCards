@@ -18,9 +18,11 @@ import {
 } from 'react-native-settings-components';
 import { t } from 'ttag';
 
+import ScenarioResolutionComponent from './ScenarioResolutionComponent';
 import ScenarioStepComponent from './ScenarioStepComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
+import typography from 'styles/typography';
 
 interface Props {
   guide: CampaignGuide;
@@ -57,11 +59,48 @@ export default class ScenarioComponent extends React.Component<Props, State> {
     });
   }
 
+  renderResolutions() {
+    const { scenario, guide } = this.props;
+    if (!scenario.scenario.resolutions) {
+      return null;
+    }
+    return (
+      <View style={styles.resolution}>
+        <View style={styles.wrapper}>
+          <Text style={[typography.bigGameFont, typography.center]}>
+            {t`Resolutions`}
+          </Text>
+          <Text style={[typography.gameFont, typography.center]}>
+            {t`DO NOT READ until the end of the scenario`}
+          </Text>
+        </View>
+        { map(scenario.scenario.resolutions, (resolution, idx) => (
+          <ScenarioResolutionComponent
+            key={idx}
+            resolution={resolution}
+            guide={guide}
+            scenario={scenario}
+          />
+        )) }
+      </View>
+    );
+  }
+
   render() {
     return (
       <View>
         { this.renderSteps() }
+        { this.renderResolutions() }
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
+  resolution: {
+  },
+});

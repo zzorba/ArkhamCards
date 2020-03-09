@@ -25,6 +25,8 @@
 		652EB742226BAFA800F6D790 /* it.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 652EB741226BAFA800F6D790 /* it.po.json */; };
 		654277272365FE7200D394B1 /* libPods-ArkhamCards.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 654277262365FE7200D394B1 /* libPods-ArkhamCards.a */; };
 		6543ABA921C19C580098803A /* EmptySwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543ABA821C19C580098803A /* EmptySwiftFile.swift */; };
+		65447A8724154F2600961717 /* allCampaigns.json in Resources */ = {isa = PBXBuildFile; fileRef = 65447A8624154F2600961717 /* allCampaigns.json */; };
+		65447A8924154F3200961717 /* campaignLogs.json in Resources */ = {isa = PBXBuildFile; fileRef = 65447A8824154F3200961717 /* campaignLogs.json */; };
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
@@ -70,6 +72,8 @@
 		654277262365FE7200D394B1 /* libPods-ArkhamCards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-ArkhamCards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArkhamCards-Bridging-Header.h"; sourceTree = "<group>"; };
 		6543ABA821C19C580098803A /* EmptySwiftFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EmptySwiftFile.swift; path = ArkhamCards/EmptySwiftFile.swift; sourceTree = "<group>"; };
+		65447A8624154F2600961717 /* allCampaigns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = allCampaigns.json; path = ../assets/allCampaigns.json; sourceTree = "<group>"; };
+		65447A8824154F3200961717 /* campaignLogs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = campaignLogs.json; path = ../assets/campaignLogs.json; sourceTree = "<group>"; };
 		65522688205D68D70065A1F7 /* standalone.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = standalone.ttf; path = ../assets/standalone.ttf; sourceTree = "<group>"; };
 		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
 		6556782820BA144600C18EC4 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65447A8824154F3200961717 /* campaignLogs.json */,
+				65447A8624154F2600961717 /* allCampaigns.json */,
 				652EB741226BAFA800F6D790 /* it.po.json */,
 				652EB73F226BAF9C00F6D790 /* fr.po.json */,
 				652EB73D226BAF9200F6D790 /* es.po.json */,
@@ -320,11 +326,13 @@
 				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
 				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
 				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
+				65447A8724154F2600961717 /* allCampaigns.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
 				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,
 				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
 				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
+				65447A8924154F3200961717 /* campaignLogs.json in Resources */,
 				F607A526C444481AAEA01704 /* MaterialCommunityIcons.ttf in Resources */,
 				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
 				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,

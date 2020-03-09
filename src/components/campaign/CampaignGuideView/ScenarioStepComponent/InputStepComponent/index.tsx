@@ -1,10 +1,12 @@
 import React from 'react';
 import {
+  Button,
   Text,
 } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
+import InputCounter from './InputCounter';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { InputStep } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -26,15 +28,38 @@ export default class InputStepComponent extends React.Component<Props> {
         );
       }
       case 'choose_one':
+        if (step.input.choices.length === 1) {
+          return (
+            <>
+              <CardTextComponent
+                text={step.input.choices[0].text}
+              />
+              <Button title="Yes" />
+              <Button title="No" />
+            </>
+          );
+        }
         return (
-          <Text style={typography.text}>
-            { t`The investigators must decide (choose one):` }
-          </Text>
+          <>
+            <CardTextComponent text={t`The investigators must decide (choose one):`} />
+            { map(step.input.choices, (choice, idx) => (
+              <CardTextComponent
+                key={idx}
+                text={`- ${choice.text}`}
+              />
+            )) }
+          </>
         );
+        return null;
       case 'choose_many':
         return <Text>Choose Many</Text>;
       case 'counter':
-        return <Text>Counter</Text>;
+        return (
+          <InputCounter
+            input={step.input}
+            onCountChange={this._countChange}
+          />
+        );
       case 'investigator_counter':
         return <Text>Investigator Counter</Text>;
       case 'supplies':
@@ -49,16 +74,11 @@ export default class InputStepComponent extends React.Component<Props> {
   renderChoices() {
     const { step } = this.props;
     switch (step.input.type) {
+      case 'counter':
+        return null;
       case 'choose_one':
-        return map(step.input.choices, (choice, idx) => (
-          <CardTextComponent
-            key={idx}
-            text={`- ${choice.text}`}
-          />
-        ));
       case 'card_choice':
       case 'choose_many':
-      case 'counter':
       case 'investigator_counter':
       case 'supplies':
       case 'use_supplies':
@@ -76,7 +96,6 @@ export default class InputStepComponent extends React.Component<Props> {
         { !!step.text && (
           <CardTextComponent text={step.text} />
         ) }
-        { this.renderChoices() }
       </SetupStepWrapper>
     );
   }

@@ -9,7 +9,7 @@ import {
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import SearchBox from '../../SearchBox';
+import SearchBox from 'components/core/SearchBox';
 import { NavigationProps } from 'components/nav/types';
 import SelectRow from './SelectRow';
 import { COLORS } from 'styles/colors';

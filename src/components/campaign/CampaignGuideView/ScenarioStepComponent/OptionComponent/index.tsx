@@ -6,7 +6,7 @@ import {
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import EffectComponent from './EffectComponent';
+import EffectsComponent from '../EffectsComponent';
 import { Option } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import typography from 'styles/typography';
@@ -20,9 +20,12 @@ export default class OptionComponent extends React.Component<Props> {
   renderResults() {
     const { option, guide } = this.props;
     if (option.effects) {
-      return map(option.effects, (effect, idx) => (
-        <EffectComponent key={idx} effect={effect} guide={guide} />
-      ));
+      return (
+        <EffectsComponent
+          effects={option.effects}
+          guide={guide}
+        />
+      );
     }
     if (option.steps) {
       return <Text>Steps: { JSON.stringify(option.steps) }</Text>;

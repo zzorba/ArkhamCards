@@ -4,9 +4,9 @@ import {
   Easing,
   StyleSheet,
 } from 'react-native';
-
 import { t } from 'ttag';
-import SearchBox, { SEARCH_BAR_HEIGHT } from '../SearchBox';
+
+import SearchBox, { SEARCH_BAR_HEIGHT } from 'components/core/SearchBox';
 
 export const SEARCH_OPTIONS_HEIGHT = 44;
 
