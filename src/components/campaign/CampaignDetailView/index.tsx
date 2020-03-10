@@ -20,7 +20,7 @@ import { t } from 'ttag';
 
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from 'actions/types';
 import CampaignLogSection from './CampaignLogSection';
-import { CampaignGuideProps } from '../CampaignGuideView';
+import { CampaignGuideProps } from 'components/campaignguide/CampaignGuideView';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';

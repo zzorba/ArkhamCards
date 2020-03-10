@@ -9,14 +9,16 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import ScenarioComponent from './ScenarioComponent';
-import { campaignScenarios, Scenario } from '../constants';
+import { campaignScenarios, Scenario } from 'components/campaign/constants';
 import LabeledTextBox from 'components/core/LabeledTextBox';
 import { NavigationProps } from 'components/nav/types';
 import { Campaign, CUSTOM } from 'actions/types';
-import { getCampaign, AppState } from 'reducers';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import { getCampaignGuide } from 'data/scenario';
+import { getCampaign, AppState } from 'reducers';
+
+import ScenarioComponent from './ScenarioComponent';
+import ScenarioStateHelper, { ScenarioState, DEFAULT_SCENARIO_STATE } from './ScenarioStateHelper';
 
 export interface CampaignGuideProps {
   campaignId: number;
@@ -30,6 +32,7 @@ type Props = CampaignGuideProps & NavigationProps & ReduxProps;
 
 interface State {
   selectedScenario?: Scenario;
+  scenarioState: ScenarioState;
 }
 
 class CampaignGuideView extends React.Component<Props, State> {
@@ -40,6 +43,7 @@ class CampaignGuideView extends React.Component<Props, State> {
       selectedScenario: props.campaign ?
         campaignScenarios(props.campaign.cycleCode)[0] :
         undefined,
+      scenarioState: DEFAULT_SCENARIO_STATE,
     };
   }
 
@@ -100,6 +104,12 @@ class CampaignGuideView extends React.Component<Props, State> {
     return campaignScenarios(campaign.cycleCode);
   }
 
+  _updateScenarioState = (scenarioState: ScenarioState) => {
+    this.setState({
+      scenarioState,
+    });
+  };
+
   renderScenario(guide: CampaignGuide) {
     const { selectedScenario } = this.state;
     if (!selectedScenario) {
@@ -113,6 +123,10 @@ class CampaignGuideView extends React.Component<Props, State> {
       <ScenarioComponent
         scenario={scenario}
         guide={guide}
+        scenarioState={new ScenarioStateHelper(
+          this.state.scenarioState,
+          this._updateScenarioState
+        )}
       />
     );
   }

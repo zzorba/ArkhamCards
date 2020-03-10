@@ -3782,7 +3782,7 @@
     "the_last_king",
     "ptc_interlude1",
     "echoes_of_the_past",
-    "unspeakable_oath",
+    "the_unspeakable_oath",
     "ptc_interlude2",
     "phantom_of_truth",
     "the_pallid_mask",
@@ -4415,7 +4415,7 @@
     {
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator was defeated)",
-      "text": " Once again you are startled awake, this time by the cold, clammy fingers of a hand on your shoulder. “Are you alright?” an elderly man asks, helping you to your feet. Your mind is a flurry of memories. Last you remember, the Ward Theatre had become a place of nightmares, filled with dangerous fanatics and strange terrors. Worried, you glance at your surroundings, only to find yourself on the rain-slicked curb outside the theatre. Despite the events from earlier, the city seems normal to your eyes—or at least, what passes as normal for Arkham. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. The old man wears an expression of concern, noting the terror in your eyes. “Were you mugged? Damn those trouble boys!” he exclaims. “Dry-gulching folk on a night out to the the-a-tre! Not a single street those hooligans haven’t staked a claim on, I tell you.”\nYou stand and walk over to the front window of the Ward Theatre to tentatively peer through, but it is too dark to see anything inside. The elderly man eyes you curiously for a moment, then shrugs and continues walking. “Well, I’d best be on my way. I would do the same, if I were you,” he says, rounding the street corner. You quickly follow, hoping to warn him to stay away from the theatre. But when you turn the corner, it is not the elderly man you see, but the familiar sight of the Stranger in his featureless, pallid mask. His unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, but instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty— save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, frustrated and lost.",
+      "text": "Once again you are startled awake, this time by the cold, clammy fingers of a hand on your shoulder. “Are you alright?” an elderly man asks, helping you to your feet. Your mind is a flurry of memories. Last you remember, the Ward Theatre had become a place of nightmares, filled with dangerous fanatics and strange terrors. Worried, you glance at your surroundings, only to find yourself on the rain-slicked curb outside the theatre. Despite the events from earlier, the city seems normal to your eyes—or at least, what passes as normal for Arkham. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. The old man wears an expression of concern, noting the terror in your eyes. “Were you mugged? Damn those trouble boys!” he exclaims. “Dry-gulching folk on a night out to the the-a-tre! Not a single street those hooligans haven’t staked a claim on, I tell you.”\nYou stand and walk over to the front window of the Ward Theatre to tentatively peer through, but it is too dark to see anything inside. The elderly man eyes you curiously for a moment, then shrugs and continues walking. “Well, I’d best be on my way. I would do the same, if I were you,” he says, rounding the street corner. You quickly follow, hoping to warn him to stay away from the theatre. But when you turn the corner, it is not the elderly man you see, but the familiar sight of the Stranger in his featureless, pallid mask. His unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, but instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty— save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, frustrated and lost.",
       "steps": ["stranger_is_on_to_you", "chasing_the_stranger", "earn_xp"]
     },
     {
@@ -4801,7 +4801,7 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as he or she has learned the truth behind <i>The King in Yellow</i>.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as he or she has learned the truth behind <u>The King in Yellow</u>.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -5031,7 +5031,7 @@
         "locked_doors",
         "pentagram"
       ],
-      "text": "When gathering The Midnight Masks encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the location, act, agenda, or scenario reference cards from that set."
+      "subtext": "When gathering The Midnight Masks encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the location, act, agenda, or scenario reference cards from that set."
     },
     {
       "id": "choose_locations",
@@ -5175,7 +5175,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": " Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 bonus experience as he or she gains insight into the machinations of <i>The King in Yellow</i>.",
+      "text": " Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 bonus experience as he or she gains insight into the machinations of <u>The King in Yellow</u>.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -5367,7 +5367,7 @@
     {
       "id": "possessed",
       "type": "story",
-      "text": "It has taken months of preparation, but you are finally ready to unveil your latest work to the world. Gathering financial investments was your first task, of course. That hadn’t taken too long given the connections you’d made during your stay in Paris. You have been assured that the cast assembled is the finest that money could afford, but still you strive to make everything perfect. It must be perfect. The story must be told, so that the world knows. You’ve heard the troupe whisper behind your back: the remarks about your bizarre passion, the concern about your piercing yellow eyes. It matters not to you. All you care about is the performance. The pronunciation of the words. The melody of Cassilda’s song. The design of the Stranger’s mask.\nThis would be the greatest performance of <i>The King in Yellow</i> ever."
+      "text": "It has taken months of preparation, but you are finally ready to unveil your latest work to the world. Gathering financial investments was your first task, of course. That hadn’t taken too long given the connections you’d made during your stay in Paris. You have been assured that the cast assembled is the finest that money could afford, but still you strive to make everything perfect. It must be perfect. The story must be told, so that the world knows. You’ve heard the troupe whisper behind your back: the remarks about your bizarre passion, the concern about your piercing yellow eyes. It matters not to you. All you care about is the performance. The pronunciation of the words. The melody of Cassilda’s song. The design of the Stranger’s mask.\nThis would be the greatest performance of <u>The King in Yellow</u> ever."
     }
   ]
 }
@@ -5521,7 +5521,7 @@
     {
       "id": "heed_the_warning",
       "title": "Heed the Warning",
-      "text": "For hours, you struggle with this insight into <i>The King in Yellow</i>. What is true? What is real? Only you can sort through this madness.",
+      "text": "For hours, you struggle with this insight into <u>The King in Yellow</u>. What is true? What is real? Only you can sort through this madness.",
       "steps": ["heeded_daniels_warning", "mark_2_conviction", "earn_1_xp", "forbidden_name"]
     }
   ]
@@ -5544,15 +5544,15 @@
         "choices": [
           {
             "text": "Things seem to have calmed down. Perhaps we should go back inside and investigate further.",
-            "resolution": "reward_1"
+            "steps": ["reward_1", "why_go_back", "intruded_on_secret_meeting", "add_elder_things"]
           },
           {
             "text": "I don’t trust this place one bit. Let’s block the door and get the hell out of here!",
-            "resolution": "reward_2"
+            "steps": ["reward_2", "door_wont_stop_them", "fled_dinner_party", "add_tablets"]
           },
           {
             "text": "If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <i>kill them.</i>",
-            "resolution": "reward_3"
+            "steps": ["reward_3", "did_what_had_to_be_done", "slayed_the_monsters", "slay_vips", "add_cultists"]
           }
         ]
       }
@@ -5715,26 +5715,21 @@
           "card": "03069b"
         }
       ]
-    }
-  ],
-  "resolutions": [
+    },
     {
       "id": "reward_1",
-      "title": "Lunacy's Reward 1",
-      "text": "The change in the atmosphere has you curious. What if it was all a trick of your mind? What if the hauntings that follow The King in Yellow are but transitory? The answers to all of your questions might lie inside. Cautiously, you open the front door to the manor once again. Reassuring jazz and the clamor of casual conversation grow louder as you step inside. The enticing smell of roasted pork wafts through the air. As you suspected, the signs of struggle and oddities you noticed before have vanished without explanation. Then, as you turn the corner into the dining room, you find the Stranger speaking with another man—tall, mustached, wearing a fine black suit, and holding a silver-handled cane. The Stranger turns to you, his gaze drills through your mind, and your vision swims with agony. Before you realize it, you are running as fast as you can, toppling through the front doorway in a haze of pain and disorientation. Without time to catch your breath, you race to your vehicle and speed away, hands trembling upon the steering wheel.",
-      "steps": ["why_go_back", "intruded_on_secret_meeting", "add_elder_things"]
+      "type": "story",
+      "text": "The change in the atmosphere has you curious. What if it was all a trick of your mind? What if the hauntings that follow The King in Yellow are but transitory? The answers to all of your questions might lie inside. Cautiously, you open the front door to the manor once again. Reassuring jazz and the clamor of casual conversation grow louder as you step inside. The enticing smell of roasted pork wafts through the air. As you suspected, the signs of struggle and oddities you noticed before have vanished without explanation. Then, as you turn the corner into the dining room, you find the Stranger speaking with another man—tall, mustached, wearing a fine black suit, and holding a silver-handled cane. The Stranger turns to you, his gaze drills through your mind, and your vision swims with agony. Before you realize it, you are running as fast as you can, toppling through the front doorway in a haze of pain and disorientation. Without time to catch your breath, you race to your vehicle and speed away, hands trembling upon the steering wheel."
     },
     {
       "id": "reward_2",
-      "title": "Lunacy's Reward 2",
-      "text": "You can’t trust your senses. This is all a trick, an attempt to lure you back inside. You’re no safer now than you were before. Swallowing your fear, you set to work barricading the front door of the manor using several of the heavy stone benches lining the cobblestone path in the front yard. You hope it’s enough, but you aren’t willing to stick around to find out. As soon as you’re done, you head back to your vehicle and drive toward Southside, where you hope to find answers.",
-      "steps": ["door_wont_stop_them", "fled_dinner_party", "add_tablets"]
+      "type": "story",
+      "text": "You can’t trust your senses. This is all a trick, an attempt to lure you back inside. You’re no safer now than you were before. Swallowing your fear, you set to work barricading the front door of the manor using several of the heavy stone benches lining the cobblestone path in the front yard. You hope it’s enough, but you aren’t willing to stick around to find out. As soon as you’re done, you head back to your vehicle and drive toward Southside, where you hope to find answers."
     },
     {
       "id": "reward_3",
-      "title": "Lunacy's Reward 3",
-      "text": "You dare not risk stepping back inside that madhouse. But you can’t let the monstrosities run amok, either. You root through the open garage for a few supplies, finding an old hose, an empty gasoline canister, and some matches. Knowing what you must do, you first siphon some gas from Mrs. Dumaine’s Oakland 6-54A. You spread the gasoline across the front porch, inside the garage, and around the manor’s outer walls. From there, all it takes is several matches to start the blaze. You watch from the front yard as the manor is eventually consumed by the flames. The sounds of crackling fire and snapping wood and the screeching of dying horrors fills the street. Satisfied, you head back to your vehicle and tear off toward Southside, full of grim determination.",
-      "steps": ["did_what_had_to_be_done", "slayed_the_monsters", "slay_vips", "add_cultists"]
+      "type": "story",
+      "text": "You dare not risk stepping back inside that madhouse. But you can’t let the monstrosities run amok, either. You root through the open garage for a few supplies, finding an old hose, an empty gasoline canister, and some matches. Knowing what you must do, you first siphon some gas from Mrs. Dumaine’s Oakland 6-54A. You spread the gasoline across the front porch, inside the garage, and around the manor’s outer walls. From there, all it takes is several matches to start the blaze. You watch from the front yard as the manor is eventually consumed by the flames. The sounds of crackling fire and snapping wood and the screeching of dying horrors fills the street. Satisfied, you head back to your vehicle and tear off toward Southside, full of grim determination."
     }
   ]
 }
@@ -6560,7 +6555,7 @@
     {
       "id": "R3",
       "title": "Resolution 3",
-      "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <i>The King in Yellow</i> play...",
+      "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <u>The King in Yellow</u> play...",
       "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens"]
     }
   ]
@@ -6918,7 +6913,7 @@
 }
 ,
 {
-  "id": "unspeakable_oath",
+  "id": "the_unspeakable_oath",
   "scenarioName": "The Unspeakable Oath",
   "setup": [
     "check_followers_of_the_sign_found_way",
@@ -6981,7 +6976,7 @@
     {
       "id": "constance_information",
       "type": "story",
-      "text": "You recall what Constance had told you when you spoke with her during her hellish dinner party. She and the other members of the cast and crew had been told by the director, Nigel Engram, to take some kind of oath. At first, she’d written it off as the whim of an eccentric artist; something Mr. Engram did as a strange formality to unite and strengthen the bonds of the cast and crew. And to his credit, she claimed that it had worked; ever since they’d taken his strange oath, she and the other members of the troupe felt much more confident and full of spirit. Perhaps Daniel had a similar experience during the last production of <i>The King in Yellow</i>. You must speak with him about this."
+      "text": "You recall what Constance had told you when you spoke with her during her hellish dinner party. She and the other members of the cast and crew had been told by the director, Nigel Engram, to take some kind of oath. At first, she’d written it off as the whim of an eccentric artist; something Mr. Engram did as a strange formality to unite and strengthen the bonds of the cast and crew. And to his credit, she claimed that it had worked; ever since they’d taken his strange oath, she and the other members of the troupe felt much more confident and full of spirit. Perhaps Daniel had a similar experience during the last production of <u>The King in Yellow</u>. You must speak with him about this."
     },
     {
       "id": "gain_courage",
@@ -6991,7 +6986,7 @@
       "id": "gather_encounter_sets",
       "type": "encounter_sets",
       "encounter_sets": [
-        "unspeakable_oath",
+        "the_unspeakable_oath",
         "hasturs_gift",
         "inhabitants_of_carcosa",
         "delusions",
@@ -7263,7 +7258,7 @@
   "resolutions": [{
       "id": "investigator_defeat",
       "title": "Investigator Defeat",
-      "text": "“Doctor Mintz, the patient has been medicated and is ready to see you now.” Nurse Heather opened the file on the desk nearby, taking a moment to review the patient’s records.\n“Any changes in the patient’s condition?” Doctor Mintz asked in a monotone voice. A formality. Both knew the patient was beyond repair.\n“None. The patient’s delusions remain. Demanding to speak with the Warden, claiming they are only guests, and rambling about that play that aired the other night, <i>The King in Yellow</i>.”\n“And their other crimes? The incident in the theatre? What about 1452 Atlantic Ave?”\n“They believe they were attacked, and were defending themselves.” Her voice was thick with pity. What could have caused somebody to snap like this so quickly? None of the patient’s records showed any prior history of mental instability. “Can you make any sense of it, Doctor?”\n“Who could?” Doctor Mintz sighed and stood, grabbing the file from his desk. “My job is not to understand. It is to cure. Perhaps my experimental procedures will prove fruitful on this one.” The nurse winced and felt goosebumps on her arm. She knew how his procedures would turn out, and she doubted it would prove anything.",
+      "text": "“Doctor Mintz, the patient has been medicated and is ready to see you now.” Nurse Heather opened the file on the desk nearby, taking a moment to review the patient’s records.\n“Any changes in the patient’s condition?” Doctor Mintz asked in a monotone voice. A formality. Both knew the patient was beyond repair.\n“None. The patient’s delusions remain. Demanding to speak with the Warden, claiming they are only guests, and rambling about that play that aired the other night, <u>The King in Yellow</u>.”\n“And their other crimes? The incident in the theatre? What about 1452 Atlantic Ave?”\n“They believe they were attacked, and were defending themselves.” Her voice was thick with pity. What could have caused somebody to snap like this so quickly? None of the patient’s records showed any prior history of mental instability. “Can you make any sense of it, Doctor?”\n“Who could?” Doctor Mintz sighed and stood, grabbing the file from his desk. “My job is not to understand. It is to cure. Perhaps my experimental procedures will prove fruitful on this one.” The nurse winced and felt goosebumps on her arm. She knew how his procedures would turn out, and she doubted it would prove anything.",
       "steps": ["defeated_insane"]
     },
     {

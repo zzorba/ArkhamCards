@@ -42,16 +42,17 @@ export default class EffectsComponent extends React.Component<Props> {
             return (
               <CardTextComponent text={text} />
             );
-          } else {
+          }
+          return (
             <CardWrapper
               code={logEntry.code}
               render={(card: Card) => (
-                <Text style={typography.text}>
-                  { t`In your ${logEntry.section}, record that ${card.name}. `}
-                </Text>
+                <CardTextComponent
+                  text={t`In your Campaign Log, under "${logEntry.section}", record ${card.name}. `}
+                />
               )}
             />
-          }
+          );
         }
         return
       }

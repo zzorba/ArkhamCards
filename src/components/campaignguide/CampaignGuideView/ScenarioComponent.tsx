@@ -18,6 +18,8 @@ import {
 } from 'react-native-settings-components';
 import { t } from 'ttag';
 
+import StepsComponent from './StepsComponent';
+import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioResolutionComponent from './ScenarioResolutionComponent';
 import ScenarioStepComponent from './ScenarioStepComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
@@ -27,6 +29,7 @@ import typography from 'styles/typography';
 interface Props {
   guide: CampaignGuide;
   scenario: ScenarioGuide;
+  scenarioState: ScenarioStateHelper;
 }
 
 interface State {
@@ -42,25 +45,20 @@ export default class ScenarioComponent extends React.Component<Props, State> {
     };
   }
 
-  renderSteps() {
-    const { scenario, guide} = this.props;
-    return flatMap(scenario.scenario.setup, stepId => {
-      const step = scenario.step(stepId);
-      if (!step) {
-        return null;
-      }
-      return (
-        <ScenarioStepComponent
-          key={step.id}
-          step={step}
-          guide={guide}
-        />
-      );
-    });
+  renderSetupSteps() {
+    const { scenario, guide, scenarioState} = this.props;
+    return (
+      <StepsComponent
+        steps={scenario.scenario.setup}
+        scenario={scenario}
+        guide={guide}
+        scenarioState={scenarioState}
+      />
+    );
   }
 
   renderResolutions() {
-    const { scenario, guide } = this.props;
+    const { scenario, guide, scenarioState } = this.props;
     if (!scenario.scenario.resolutions) {
       return null;
     }
@@ -80,6 +78,7 @@ export default class ScenarioComponent extends React.Component<Props, State> {
             resolution={resolution}
             guide={guide}
             scenario={scenario}
+            scenarioState={scenarioState}
           />
         )) }
       </View>
@@ -89,7 +88,7 @@ export default class ScenarioComponent extends React.Component<Props, State> {
   render() {
     return (
       <View>
-        { this.renderSteps() }
+        { this.renderSetupSteps() }
         { this.renderResolutions() }
       </View>
     );

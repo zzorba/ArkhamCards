@@ -8,7 +8,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 
 interface Props {
   noBullet?: boolean;
-  children: React.ReactNode[];
+  children: React.ReactNode | React.ReactNode[];
 }
 
 export default function SetupStepWrapper({ noBullet, children }: Props) {

@@ -9,18 +9,11 @@ import {
   Text,
 } from 'react-native';
 import { find, flatMap, map } from 'lodash';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
-import SideMenu from 'react-native-side-menu';
-import {
-  SettingsButton,
-  SettingsCategoryHeader,
-} from 'react-native-settings-components';
-import { t } from 'ttag';
 
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
+import StepsComponent from './StepsComponent';
 import ScenarioStepComponent from './ScenarioStepComponent';
+import ScenarioStateHelper from './ScenarioStateHelper';
+import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import { Resolution } from 'data/scenario/types';
@@ -29,6 +22,7 @@ interface Props {
   guide: CampaignGuide;
   scenario: ScenarioGuide;
   resolution: Resolution;
+  scenarioState: ScenarioStateHelper;
 }
 
 interface State {
@@ -41,20 +35,25 @@ export default class ScenarioResolutionComponent extends React.Component<Props, 
   };
 
   renderSteps() {
-    const { scenario, guide, resolution } = this.props;
-    return flatMap(resolution.steps, stepId => {
-      const step = scenario.step(stepId);
-      if (!step) {
-        return null;
-      }
+    const { scenario, guide, resolution, scenarioState } = this.props;
+    if (resolution.steps) {
       return (
-        <ScenarioStepComponent
-          key={step.id}
-          step={step}
+        <StepsComponent
+          steps={resolution.steps}
+          scenario={scenario}
           guide={guide}
+          scenarioState={scenarioState}
         />
       );
-    });
+    }
+    if (resolution.resolution) {
+      return (
+        <Text>
+          Proceed to Resolution {resolution.resolution}
+        </Text>
+      );
+    }
+    return <Text>Unknown Resolution</Text>
   }
 
   _show = () => {

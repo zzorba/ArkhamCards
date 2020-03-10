@@ -13,7 +13,7 @@ import CardTabooView from 'components/card/CardTabooView';
 import CardImageView from 'components/card/CardImageView';
 import InvestigatorCardsView from 'components/cardlist/InvestigatorCardsView';
 import AddScenarioResultView from 'components/campaign/AddScenarioResultView';
-import CampaignGuideView from 'components/campaign/CampaignGuideView';
+import CampaignGuideView from 'components/campaignguide/CampaignGuideView';
 import UpgradeDecksView from 'components/campaign/UpgradeDecksView';
 import EditScenarioResultView from 'components/campaign/EditScenarioResultView';
 import CampaignDetailView from 'components/campaign/CampaignDetailView';

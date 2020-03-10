@@ -29,7 +29,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
     const { step, encounterSets } = this.props;
     const encounterSetString = map(encounterSets, set => `<i>${set.name}</i>`).join(', ');
     const leadText = step.text || t`Gather all cards from the following encounter sets:`;
-    const text = `${leadText} ${encounterSetString}. These sets are indicated by the following icons:`;
+    const text = t`${leadText} ${encounterSetString}. These sets are indicated by the following icons:`;
     return (
       <SetupStepWrapper>
         <CardTextComponent text={text} />
@@ -45,9 +45,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
           )) }
         </View>
         { !!step.subtext && (
-          <Text style={typography.text}>
-            {step.subtext}
-          </Text>
+          <CardTextComponent text={step.subtext} />
         ) }
       </SetupStepWrapper>
     );
