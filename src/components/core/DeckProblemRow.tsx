@@ -5,9 +5,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
 import { DeckProblem, DeckProblemType } from 'actions/types';
-import { t } from 'ttag';
 import AppIcon from 'icons/AppIcon';
 import typography, { SMALL_FONT_SIZE } from 'styles/typography';
 
@@ -18,6 +18,7 @@ interface Props {
   fontSize?: number;
   fontScale: number;
 }
+
 export default function DeckProblemRow({
   problem,
   color,

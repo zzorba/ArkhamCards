@@ -2,10 +2,10 @@ import React from 'react';
 import { map } from 'lodash';
 import { Results } from 'realm';
 import DialogComponent from 'react-native-dialog';
+import { t } from 'ttag';
 
 import TabooSetSwitch from './TabooSetSwitch';
 import TabooSet from 'data/TabooSet';
-import { t } from 'ttag';
 import typography from 'styles/typography';
 import space from 'styles/space';
 

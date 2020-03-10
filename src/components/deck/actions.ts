@@ -4,7 +4,7 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { Action, ActionCreator } from 'redux';
 
 import { newLocalDeck, updateLocalDeck, upgradeLocalDeck } from './localHelper';
-import { handleAuthErrors } from '../authHelper';
+import { handleAuthErrors } from './authHelper';
 import {
   NEW_DECK_AVAILABLE,
   UPDATE_DECK,

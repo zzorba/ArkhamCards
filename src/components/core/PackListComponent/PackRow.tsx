@@ -7,12 +7,12 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
 import { Pack } from 'actions/types';
 import EncounterIcon from 'icons/EncounterIcon';
 import Switch from 'components/core/Switch';
-import { PackCardsProps } from '../settings/PackCardsView';
+import { PackCardsProps } from 'components/settings/PackCardsView';
 
 interface Props {
   componentId: string;

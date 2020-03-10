@@ -17,15 +17,15 @@ import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import InvestigatorSearchBox from './InvestigatorSearchBox';
+import InvestigatorRow from './InvestigatorRow';
+import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
 import { RANDOM_BASIC_WEAKNESS } from 'constants';
 import Card, { CardsMap } from 'data/Card';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { searchMatchesText } from 'components/core/searchHelpers';
-import InvestigatorSearchBox from './InvestigatorSearchBox';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from 'components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
-import InvestigatorRow from './InvestigatorRow';
-import InvestigatorSectionHeader from './InvestigatorSectionHeader';
 import { getTabooSet, getPacksInCollection, AppState } from 'reducers';
 import typography from 'styles/typography';
 

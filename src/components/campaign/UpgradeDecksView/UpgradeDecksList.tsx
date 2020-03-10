@@ -12,7 +12,7 @@ import { Deck, InvestigatorData, ParsedDeck } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
 import { parseDeck } from 'lib/parseDeck';
 import typography from 'styles/typography';
-import DeckRowButton from '../../DeckRowButton';
+import DeckRowButton from 'components/core/DeckRowButton';
 import { showDeckModal } from 'components/nav/helper';
 import DeckList, { DeckListProps } from '../DeckList';
 import DeckRow from '../DeckRow';

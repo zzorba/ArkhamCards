@@ -14,7 +14,7 @@ import DialogComponent from 'react-native-dialog';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
-import TabooSetDialogOptions from '../TabooSetDialogOptions';
+import TabooSetDialogOptions from './TabooSetDialogOptions';
 import { showDeckModal } from 'components/nav/helper';
 import Dialog from 'components/core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from 'components/core/withNetworkStatus';

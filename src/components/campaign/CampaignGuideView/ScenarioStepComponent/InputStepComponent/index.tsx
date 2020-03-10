@@ -17,6 +17,19 @@ interface Props {
 }
 
 export default class InputStepComponent extends React.Component<Props> {
+
+  _yes = () => {
+
+  };
+
+  _proceed = () => {
+
+  };
+
+  _countChange = (count: number) => {
+
+  };
+
   renderPrompt() {
     const { step } = this.props;
     switch (step.input.type) {
@@ -34,8 +47,8 @@ export default class InputStepComponent extends React.Component<Props> {
               <CardTextComponent
                 text={step.input.choices[0].text}
               />
-              <Button title="Yes" />
-              <Button title="No" />
+              <Button title="Yes" onPress={this._yes} />
+              <Button title="No" onPress={this._proceed} />
             </>
           );
         }

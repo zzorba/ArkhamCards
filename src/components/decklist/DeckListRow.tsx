@@ -14,12 +14,12 @@ import { Campaign, Deck, ParsedDeck } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import FactionGradient from 'components/core/FactionGradient';
-import DeckTitleBarComponent from '../DeckTitleBarComponent';
-import DeckProblemRow from '../DeckProblemRow';
+import DeckProblemRow from 'components/core/DeckProblemRow';
 import { toRelativeDateString } from 'lib/datetime';
 import { parseDeck } from 'lib/parseDeck';
 import typography from 'styles/typography';
 import { s } from 'styles/space';
+import DeckTitleBarComponent from './DeckTitleBarComponent';
 
 interface Props {
   deck: Deck;

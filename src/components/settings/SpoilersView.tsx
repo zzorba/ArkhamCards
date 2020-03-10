@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import { Pack } from 'actions/types';
 import { setPackSpoiler, setCyclePackSpoiler } from 'actions';
-import PackListComponent from '../PackListComponent';
+import PackListComponent from 'components/core/PackListComponent';
 import { NavigationProps } from 'components/nav/types';
 import { getAllPacks, getPackSpoilers, AppState } from 'reducers';
 

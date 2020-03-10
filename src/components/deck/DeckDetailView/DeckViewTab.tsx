@@ -38,7 +38,7 @@ import TabooSet from 'data/TabooSet';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
 import { isBig, s } from 'styles/space';
-import DeckProblemRow from '../../DeckProblemRow';
+import DeckProblemRow from 'components/core/DeckProblemRow';
 
 interface SectionCardId extends CardId {
   special: boolean;

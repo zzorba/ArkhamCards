@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { ngettext, msgid } from 'ttag';
 
 import CardUpgradeOption from './CardUpgradeOption';
-import DeckProblemRow from '../../DeckProblemRow';
+import DeckProblemRow from 'components/core/DeckProblemRow';
 import CardDetailComponent from 'components/card/CardDetailView/CardDetailComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';

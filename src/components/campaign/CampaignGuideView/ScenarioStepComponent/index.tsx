@@ -15,7 +15,6 @@ import { Step } from 'data/scenario/types';
 interface Props {
   guide: CampaignGuide;
   step: Step;
-  advance: (step: ) => void;
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {

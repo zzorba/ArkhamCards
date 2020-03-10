@@ -7,7 +7,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import PackListComponent from '../PackListComponent';
+import PackListComponent from 'components/core/PackListComponent';
 import { NavigationProps } from 'components/nav/types';
 import { Pack } from 'actions/types';
 import { setInCollection, setCycleInCollection } from 'actions';

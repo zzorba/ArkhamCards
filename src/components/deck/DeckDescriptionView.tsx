@@ -28,6 +28,7 @@ export default class DeckDescriptionView extends React.Component<Props> {
       <SafeAreaView style={styles.wrapper}>
         <RichTextEditor
           ref={this._captureRef}
+          // @ts-ignore TS2769
           initialContentHtml=""
           enableOnChange
           hiddenTitle

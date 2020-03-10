@@ -13,7 +13,7 @@ import { msgid, ngettext, t } from 'ttag';
 
 import { DeckMeta, ParsedDeck } from 'actions/types';
 import AppIcon from 'icons/AppIcon';
-import DeckProblemRow from '../DeckProblemRow';
+import DeckProblemRow from 'components/core/DeckProblemRow';
 import { CardsMap } from 'data/Card';
 import typography from 'styles/typography';
 import { TINY_PHONE } from 'styles/sizes';

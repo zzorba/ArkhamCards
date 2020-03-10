@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import Card from 'data/Card';
-import FactionGradient from './core/FactionGradient';
+import FactionGradient from 'components/core/FactionGradient';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import typography from 'styles/typography';
 import { s, iconSizeScale } from 'styles/space';
