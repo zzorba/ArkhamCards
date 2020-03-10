@@ -15,11 +15,23 @@ interface Props {
 
 export default class StepsComponent extends React.Component<Props> {
   render() {
-    const { guide, scenario, scenarioState, steps } = this.props;
+    const {
+      guide,
+      scenario,
+      scenarioState,
+      steps,
+    } = this.props;
+    var reachedBranch = false;
     return flatMap(steps, stepId => {
       const step = scenario.step(stepId);
       if (!step) {
         return null;
+      }
+      if (reachedBranch) {
+        return null;
+      }
+      if (step.type === 'input' || step.type === 'branch') {
+        reachedBranch = !scenarioState.hasDecision(step.id);
       }
       return (
         <ScenarioStepComponent

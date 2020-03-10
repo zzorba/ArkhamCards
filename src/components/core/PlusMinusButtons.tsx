@@ -15,6 +15,7 @@ interface Props {
   onIncrement: () => void;
   onDecrement: () => void;
   limit?: number;
+  min?: number;
   style?: ViewStyle;
   size?: number;
   disabled?: boolean;
@@ -93,10 +94,11 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       onDecrement,
       allowNegative,
       color,
+      min,
       hideDisabledMinus,
     } = this.props;
     const size = (this.props.size || 36) * iconSizeScale;
-    if ((count > 0 || allowNegative) && !disabled) {
+    if ((count > (min || 0) || allowNegative) && !disabled) {
       return (
         <TouchableOpacity onPress={onDecrement}>
           <MaterialCommunityIcons

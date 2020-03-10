@@ -6,7 +6,7 @@ import {
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryPrompt from '../BinaryPrompt';
+import BinaryPrompt from '../prompts/BinaryPrompt';
 import InputCounter from './InputCounter';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioStateHelper from '../../ScenarioStateHelper';

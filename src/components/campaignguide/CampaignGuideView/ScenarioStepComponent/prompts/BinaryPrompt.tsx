@@ -3,20 +3,17 @@ import {
   Button,
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
-import { map } from 'lodash';
 import { t } from 'ttag';
 
-import EffectsComponent from './EffectsComponent';
-import SetupStepWrapper from './SetupStepWrapper';
-import ScenarioStateHelper from '../ScenarioStateHelper';
-import StepsComponent from '../StepsComponent';
+import EffectsComponent from '../EffectsComponent';
+import SetupStepWrapper from '../SetupStepWrapper';
+import ScenarioStateHelper from '../../ScenarioStateHelper';
+import StepsComponent from '../../StepsComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import { Choice, Option } from 'data/scenario/types';
-import typography from 'styles/typography';
 
 interface Props {
   id: string;
@@ -99,7 +96,7 @@ export default class BinaryPrompt extends React.Component<Props> {
     }
     if (choice.resolution) {
       return stepsOnly ? null : (
-        <Text>Resolution!</Text>
+        <Text>Resolution {choice.resolution}</Text>
       )
     }
     return <Text>Unknown!</Text>;

@@ -8,7 +8,8 @@ import { every, find, map } from 'lodash';
 import { t } from 'ttag';
 
 import CardWrapper from './CardWrapper';
-import BinaryPrompt from './BinaryPrompt';
+import BinaryPrompt from './prompts/BinaryPrompt';
+import NumberPrompt from './prompts/NumberPrompt';
 import ScenarioStateHelper from '../ScenarioStateHelper';
 import Card from 'data/Card';
 import {
@@ -22,7 +23,6 @@ import {
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import CardTextComponent from 'components/card/CardTextComponent';
-import typography from 'styles/typography';
 
 interface Props {
   scenarioState: ScenarioStateHelper;
@@ -73,6 +73,22 @@ export default class BranchStepComponent extends React.Component<Props> {
   }
 
   renderScenarioData(condition: ScenarioDataCondition) {
+    const { guide, step, scenario, scenarioState } = this.props;
+
+    if (condition.scenario_data === 'player_count') {
+      return (
+        <NumberPrompt
+          id={step.id}
+          text={t`How many players?`}
+          min={1}
+          max={4}
+          guide={guide}
+          scenario={scenario}
+          scenarioState={scenarioState}
+          options={step.options}
+        />
+      );
+    }
     return (
       <Text>Scenario Data: {condition.scenario_data}</Text>
     );
