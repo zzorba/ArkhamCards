@@ -14,10 +14,12 @@ import ScenarioStateHelper from '../ScenarioStateHelper';
 import Card from 'data/Card';
 import {
   BranchStep,
+  CardCondition,
   CampaignDataCondition,
   CampaignDataScenarioCondition,
   CampaignDataChaosBagCondition,
   CampaignLogCondition,
+  InvestigatorSelector,
   ScenarioDataCondition,
 } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
@@ -79,13 +81,32 @@ export default class BranchStepComponent extends React.Component<Props> {
       return (
         <NumberPrompt
           id={step.id}
-          text={t`How many players?`}
+          prompt={t`How many players?`}
           min={1}
           max={4}
           guide={guide}
           scenario={scenario}
           scenarioState={scenarioState}
           options={step.options}
+        />
+      );
+    }
+    if (condition.scenario_data === 'investigator' &&
+      step.options.length === 1 && step.options[0].condition)  {
+      return (
+        <CardWrapper
+          code={step.options[0].condition}
+          render={(card: Card) => (
+            <BinaryPrompt
+              id={step.id}
+              text={t`If ${card.name} was chosen as an investigator for this campaign`}
+              trueResult={find(step.options, option => option.condition === card.code)}
+              falseResult={find(step.options, option => !!option.default)}
+              guide={guide}
+              scenario={scenario}
+              scenarioState={scenarioState}
+            />
+          )}
         />
       );
     }
@@ -161,6 +182,45 @@ export default class BranchStepComponent extends React.Component<Props> {
     );*/
   }
 
+  investigatorCardCondition(card: Card, investigator?: InvestigatorSelector) {
+    const cardName = card.cardName();
+    switch (investigator) {
+      case 'any':
+        return t`Does any investigator have ${cardName} in their deck?`;
+      case 'lead_investigator':
+        return t`Does the lead investigator have ${cardName} in their deck?`;
+      case 'defeated':
+        return t`Was an investigator with ${cardName} in their deck defeated?`;
+      case 'all':
+      case 'choice':
+      case 'input_value':
+      default:
+        // Doesn't makes sense for investigator card
+        return '';
+    }
+  }
+
+  hasCardCondition(condition: CardCondition) {
+    const { step, guide, scenario, scenarioState } = this.props;
+    return (
+      <CardWrapper
+        code={condition.card}
+        render={(card: Card) => (
+          <BinaryPrompt
+            id={step.id}
+            text={this.investigatorCardCondition(card, condition.investigator)}
+            trueResult={find(step.options, option => option.boolCondition === true)}
+            falseResult={find(step.options, option => option.boolCondition === false)}
+            guide={guide}
+            scenario={scenario}
+            scenarioState={scenarioState}
+          />
+        )}
+      />
+    );
+    return null;
+  }
+
   render() {
     const { step, guide } = this.props;
     const condition = step.condition;
@@ -172,6 +232,9 @@ export default class BranchStepComponent extends React.Component<Props> {
       }
       case 'scenario_data': {
         return this.renderScenarioData(condition);
+      }
+      case 'has_card': {
+        return this.hasCardCondition(condition);
       }
       default: return <Text>{condition.type}</Text>;
     }

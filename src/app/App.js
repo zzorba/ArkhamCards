@@ -49,6 +49,7 @@ export default class App {
       'Consider using `numColumns` with `FlatList` instead.',
       'Warning: Failed prop type: Invalid prop `rules.emMarkdown.order` of type `number` supplied to `MarkdownView`, expected `function`.',
       'Warning: Failed prop type: Invalid prop `rules.uTag.order` of type `number` supplied to `MarkdownView`, expected `function`.',
+      'Warning: Failed prop type: Invalid prop `rules.bTag.order` of type `number` supplied to `MarkdownView`, expected `function`.',
       'Warning: isMounted(...) is deprecated',
     ]);
 

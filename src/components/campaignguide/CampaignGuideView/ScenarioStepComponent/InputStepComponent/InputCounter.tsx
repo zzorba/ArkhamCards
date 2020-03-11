@@ -8,7 +8,10 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import SetupStepWrapper from '../SetupStepWrapper';
+import ScenarioStateHelper from '../../ScenarioStateHelper';
 import { CounterInput } from 'data/scenario/types';
+import CampaignGuide from 'data/scenario/CampaignGuide';
+import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import CardTextComponent from 'components/card/CardTextComponent';
 import typography from 'styles/typography';
@@ -16,6 +19,9 @@ import typography from 'styles/typography';
 interface Props {
   input: CounterInput;
   onCountChange: (count: number) => void;
+  scenarioState: ScenarioStateHelper;
+  guide: CampaignGuide;
+  scenario: ScenarioGuide;
 }
 
 interface State {

@@ -16,15 +16,17 @@ import CardTextComponent from 'components/card/CardTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
-import { Choice, Option } from 'data/scenario/types';
+import { Effect, Option } from 'data/scenario/types';
 import typography from 'styles/typography';
 
 interface Props {
   id: string;
-  text: string;
+  prompt: string;
   min?: number;
   max?: number;
-  options: Option[];
+  options?: Option[];
+  effects?: Effect[];
+  text?: string;
   guide: CampaignGuide,
   scenario: ScenarioGuide;
   scenarioState: ScenarioStateHelper;
@@ -79,10 +81,10 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
   renderPrompt() {
-    const { id, text, scenarioState } = this.props;
+    const { id, prompt, scenarioState } = this.props;
     return (
       <>
-        <CardTextComponent text={text} />
+        <CardTextComponent text={prompt} />
         { scenarioState.hasCount(id) ? (
           <Text>
             { scenarioState.count(id) }
@@ -106,22 +108,41 @@ export default class NumberPrompt extends React.Component<Props, State> {
 
 
   renderCorrectResults(stepsOnly: boolean) {
-    const { id, scenarioState, options  } = this.props;
-    if (!scenarioState.hasCount(id)) {
-      return null;
+    const {
+      id,
+      scenarioState,
+      options,
+      effects,
+      text,
+      guide,
+    } = this.props;
+    if (options) {
+      if (!scenarioState.hasCount(id)) {
+        return null;
+      }
+      const count = scenarioState.count(id);
+      const theOption = find(options, option => option.numCondition === count);
+      if (!theOption) {
+        return null;
+      }
+      return this.renderResult(stepsOnly, theOption);
     }
-    const count = scenarioState.count(id);
-    const theOption = find(options, option => option.numCondition === count);
-    if (!theOption) {
-      return null;
+    if (effects && !stepsOnly) {
+      return (
+        <>
+          <EffectsComponent
+            effects={effects}
+            guide={guide}
+          />
+        </>
+      );
     }
-    return this.renderResult(stepsOnly, theOption);
+    return null;
   }
 
   renderResult(stepsOnly: boolean, choice: Option) {
     const { scenario, scenarioState, guide } = this.props;
     if (choice.steps) {
-
       return stepsOnly ? (
         <StepsComponent
           steps={choice.steps}
@@ -148,9 +169,11 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
   render() {
+    const { text } = this.props;
     return (
       <>
         <SetupStepWrapper>
+          { !!text && <CardTextComponent text={text} /> }
           { this.renderPrompt() }
           { this.renderCorrectResults(false) }
         </SetupStepWrapper>

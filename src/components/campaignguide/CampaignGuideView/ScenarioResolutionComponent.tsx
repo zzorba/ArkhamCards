@@ -17,6 +17,7 @@ import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import { Resolution } from 'data/scenario/types';
+import typography from 'styles/typography';
 
 interface Props {
   guide: CampaignGuide;
@@ -71,6 +72,11 @@ export default class ScenarioResolutionComponent extends React.Component<Props, 
     }
     return (
       <View>
+        <View style={styles.wrapper}>
+          <Text style={typography.mediumGameFont}>
+            {resolution.title}
+          </Text>
+        </View>
         { !!resolution.text && (
           <View style={styles.wrapper}>
             <CardFlavorTextComponent

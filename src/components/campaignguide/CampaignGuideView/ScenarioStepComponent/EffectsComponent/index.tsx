@@ -10,7 +10,7 @@ import CardWrapper from '../CardWrapper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { isSpecialToken } from 'constants';
 import Card from 'data/Card';
-import { Effect } from 'data/scenario/types';
+import { AddCardEffect, RemoveCardEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect, InvestigatorSelector } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import CardTextComponent from 'components/card/CardTextComponent';
 import typography from 'styles/typography';
@@ -18,64 +18,75 @@ import typography from 'styles/typography';
 interface Props {
   effects?: Effect[];
   guide: CampaignGuide;
+  input?: {
+    card?: string;
+  };
 }
 
 export default class EffectsComponent extends React.Component<Props> {
+  renderChaosTokenEffect(effect: AddRemoveChaosTokenEffect) {
+    const tokenString = map(effect.tokens, token =>
+      isSpecialToken(token) ? `[${token}]` : `${token}`
+    ).join(' ');
+    const text = effect.type === 'add_chaos_token' ?
+      t`Add ${tokenString} to the Chaos Bag` :
+      t`Remove ${tokenString} from the Chaos Bag`;
+    return (
+      <CardTextComponent text={text} />
+    );
+  }
 
-  renderEffect(effect: Effect) {
+  renderCampaignLogEffect(effect: CampaignLogEffect) {
     const { guide } = this.props;
-    switch (effect.type) {
-      case 'campaign_log': {
-        if (effect.id) {
-          const logEntry = guide.logEntry(effect.section, effect.id);
-          if (!logEntry) {
-            return (
-              <Text>
-                Unknown campaign log {effect.section}.
-              </Text>
-            );
-          }
-          if (logEntry.type === 'text') {
-            const text = (effect.section === 'campaign_notes') ?
-              t`In your Campaign Log, record that <i>${logEntry.text}</i>` :
-              t`In your Campaign Log, under "${logEntry.section}", record that <i>${logEntry.text}</i>`;
-            return (
-              <CardTextComponent text={text} />
-            );
-          }
-          return (
-            <CardWrapper
-              code={logEntry.code}
-              render={(card: Card) => (
-                <CardTextComponent
-                  text={t`In your Campaign Log, under "${logEntry.section}", record ${card.name}. `}
-                />
-              )}
-            />
-          );
-        }
-        return
+    if (effect.id) {
+      const logEntry = guide.logEntry(effect.section, effect.id);
+      if (!logEntry) {
+        return (
+          <Text>
+            Unknown campaign log {effect.section}.
+          </Text>
+        );
       }
-      case 'add_chaos_token':
-      case 'remove_chaos_token': {
-        const tokenString = map(effect.tokens, token =>
-          isSpecialToken(token) ? `[${token}]` : `${token}`
-        ).join(' ');
-        const text = effect.type === 'add_chaos_token' ?
-          t`Add ${tokenString} to the Chaos Bag` :
-          t`Remove ${tokenString} from the Chaos Bag`;
+      if (logEntry.type === 'text') {
+        const text = (effect.section === 'campaign_notes') ?
+          t`In your Campaign Log, record that <i>${logEntry.text}</i>` :
+          t`In your Campaign Log, under "${logEntry.section}", record that <i>${logEntry.text}</i>`;
         return (
           <CardTextComponent text={text} />
         );
+      }
+      return (
+        <CardWrapper
+          code={logEntry.code}
+          render={(card: Card) => (
+            <CardTextComponent
+              text={t`In your Campaign Log, under "${logEntry.section}", record ${card.name}. `}
+            />
+          )}
+        />
+      );
+    }
+    return <Text>Unknown Campaign Log Effect</Text>
+  }
+
+  renderEffect(effect: Effect) {
+    const { input } = this.props;
+    switch (effect.type) {
+      case 'campaign_log': {
+        return this.renderCampaignLogEffect(effect);
+      }
+      case 'add_chaos_token':
+      case 'remove_chaos_token': {
+        return this.renderChaosTokenEffect(effect);
       }
       case 'earn_xp':
       case 'campaign_data':
         return <Text>Effect: {effect.type}</Text>;
       case 'remove_card':
-      case 'replace_card':
       case 'add_card':
+      case 'replace_card':
       case 'trauma': {
-        // We always write this one out.
+        // We always write these out.
         return null;
       }
     }

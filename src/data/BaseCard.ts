@@ -215,6 +215,9 @@ export default class BaseCard {
   public sort_by_faction!: number;
   public sort_by_pack!: number;
 
+  public cardName(): string {
+    return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
+  }
 
   factionCode(): FactionCodeType {
     return this.faction_code || 'neutral';
