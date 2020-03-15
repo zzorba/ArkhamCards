@@ -6,13 +6,26 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import signedIn from './signedIn';
 import campaigns from './campaigns';
+import guides from './guides';
 import filters from './filters';
 import cards from './cards';
 import decks from './decks';
 import packs from './packs';
 import settings from './settings';
 import { FilterState } from 'lib/filters';
-import { Campaign, ChaosBagResults, SingleCampaign, Deck, DecksMap, Pack, SortType, NEW_CHAOS_BAG_RESULTS } from 'actions/types';
+import {
+  Campaign,
+  ChaosBagResults,
+  SingleCampaign,
+  Deck,
+  DecksMap,
+  Pack,
+  SortType,
+  GuideState,
+  ScenarioState,
+  DEFAULT_SCENARIO_STATE,
+  NEW_CHAOS_BAG_RESULTS,
+} from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
 
 const packsPersistConfig = {
@@ -25,6 +38,11 @@ const cardsPersistConfig = {
   key: 'cards',
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
+};
+
+const guidesPersistConfig = {
+  key: 'guides',
+  storage: AsyncStorage,
 };
 
 const decksPersistConfig = {
@@ -50,6 +68,7 @@ const rootReducer = combineReducers({
   packs: persistReducer(packsPersistConfig, packs),
   cards: persistReducer(cardsPersistConfig, cards),
   decks: persistReducer(decksPersistConfig, decks),
+  guides: persistReducer(guidesPersistConfig, guides),
   campaigns,
   signedIn: persistReducer(signedInPersistConfig, signedIn),
   settings: persistReducer(settingsPeristConfig, settings),
@@ -399,4 +418,19 @@ export function getDefaultFilterState(
   filterId: string
 ): FilterState {
   return state.filters.defaults[filterId];
+}
+
+export function getGuideState(state: AppState, campaignId: number): GuideState {
+  return state.guides.all[campaignId] || {
+    scenarios: {},
+  };
+}
+
+export function getScenarioGuideState(
+  state: AppState,
+  campaignId: number,
+  scenarioCode: string
+): ScenarioState {
+  const guide = getGuideState(state, campaignId);
+  return guide.scenarios[scenarioCode] || DEFAULT_SCENARIO_STATE;
 }

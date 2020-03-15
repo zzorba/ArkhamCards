@@ -7,7 +7,7 @@ import { flatMap, forEach, map } from 'lodash';
 import { connectRealm, EncounterSetResults } from 'react-native-realm';
 import { t } from 'ttag';
 
-import SetupStepWrapper from './SetupStepWrapper';
+import SetupStepWrapper from '../SetupStepWrapper';
 import { EncounterSetsStep } from 'data/scenario/types';
 import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
@@ -22,6 +22,7 @@ interface RealmProps {
 }
 
 type Props = OwnProps & RealmProps;
+
 class EncounterSetStepComponent extends React.Component<Props> {
   render() {
     const { step, encounterSets } = this.props;

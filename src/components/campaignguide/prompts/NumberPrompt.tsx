@@ -10,12 +10,11 @@ import { t } from 'ttag';
 
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
-import ScenarioStateHelper from '../../ScenarioStateHelper';
-import StepsComponent from '../../StepsComponent';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import ScenarioStateHelper from '../ScenarioStateHelper';
+import StepsComponent from '../StepsComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import { Effect, Option } from 'data/scenario/types';
 import typography from 'styles/typography';
 
@@ -27,9 +26,6 @@ interface Props {
   options?: Option[];
   effects?: Effect[];
   text?: string;
-  guide: CampaignGuide,
-  scenario: ScenarioGuide;
-  scenarioState: ScenarioStateHelper;
 }
 
 interface State {
@@ -37,6 +33,8 @@ interface State {
 }
 
 export default class NumberPrompt extends React.Component<Props, State> {
+  static contextType = ScenarioGuideContext;
+
   constructor(props: Props) {
     super(props);
 
@@ -65,9 +63,8 @@ export default class NumberPrompt extends React.Component<Props, State> {
   _submit = () => {
     const {
       id,
-      scenarioState,
     } = this.props;
-    scenarioState.setCount(id, this.state.value);
+    this.context.scenarioState.setCount(id, this.state.value);
   };
 
   renderCount() {
@@ -80,8 +77,8 @@ export default class NumberPrompt extends React.Component<Props, State> {
     );
   }
 
-  renderPrompt() {
-    const { id, prompt, scenarioState } = this.props;
+  renderPrompt(scenarioState: ScenarioStateHelper) {
+    const { id, prompt } = this.props;
     return (
       <>
         <CardTextComponent text={prompt} />
@@ -107,14 +104,12 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
 
-  renderCorrectResults(stepsOnly: boolean) {
+  renderCorrectResults(scenarioState: ScenarioStateHelper, stepsOnly: boolean) {
     const {
       id,
-      scenarioState,
       options,
       effects,
       text,
-      guide,
     } = this.props;
     if (options) {
       if (!scenarioState.hasCount(id)) {
@@ -129,35 +124,23 @@ export default class NumberPrompt extends React.Component<Props, State> {
     }
     if (effects && !stepsOnly) {
       return (
-        <>
-          <EffectsComponent
-            effects={effects}
-            guide={guide}
-          />
-        </>
+        <EffectsComponent effects={effects} />
       );
     }
     return null;
   }
 
   renderResult(stepsOnly: boolean, choice: Option) {
-    const { scenario, scenarioState, guide } = this.props;
     if (choice.steps) {
       return stepsOnly ? (
         <StepsComponent
           steps={choice.steps}
-          guide={guide}
-          scenario={scenario}
-          scenarioState={scenarioState}
         />
       ) : null;
     }
     if (choice.effects) {
       return stepsOnly ? null : (
-        <EffectsComponent
-          effects={choice.effects}
-          guide={guide}
-        />
+        <EffectsComponent effects={choice.effects} />
       );
     }
     if (choice.resolution) {
@@ -171,14 +154,18 @@ export default class NumberPrompt extends React.Component<Props, State> {
   render() {
     const { text } = this.props;
     return (
-      <>
-        <SetupStepWrapper>
-          { !!text && <CardTextComponent text={text} /> }
-          { this.renderPrompt() }
-          { this.renderCorrectResults(false) }
-        </SetupStepWrapper>
-        { this.renderCorrectResults(true) }
-      </>
+      <ScenarioGuideContext.Consumer>
+        { ({ scenarioState }: ScenarioGuideContextType) => (
+          <>
+            <SetupStepWrapper>
+              { !!text && <CardTextComponent text={text} /> }
+              { this.renderPrompt(scenarioState) }
+              { this.renderCorrectResults(scenarioState, false) }
+            </SetupStepWrapper>
+            { this.renderCorrectResults(scenarioState, true) }
+          </>
+        ) }
+      </ScenarioGuideContext.Consumer>
     );
   }
 }

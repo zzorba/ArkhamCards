@@ -7,6 +7,7 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import CardWrapper from './CardWrapper';
+import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import { isSpecialToken } from 'constants';
 import Card from 'data/Card';
 import { EarnXpEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect, InvestigatorSelector } from 'data/scenario/types';
@@ -15,7 +16,6 @@ import CardTextComponent from 'components/card/CardTextComponent';
 
 interface Props {
   effects?: Effect[];
-  guide: CampaignGuide;
   input?: {
     card?: string;
   };
@@ -34,10 +34,9 @@ export default class EffectsComponent extends React.Component<Props> {
     );
   }
 
-  renderCampaignLogEffect(effect: CampaignLogEffect) {
-    const { guide } = this.props;
+  renderCampaignLogEffect(campaignGuide: CampaignGuide, effect: CampaignLogEffect) {
     if (effect.id) {
-      const logEntry = guide.logEntry(effect.section, effect.id);
+      const logEntry = campaignGuide.logEntry(effect.section, effect.id);
       if (!logEntry) {
         return (
           <Text>
@@ -71,10 +70,10 @@ export default class EffectsComponent extends React.Component<Props> {
     return null;
   }
 
-  renderEffect(effect: Effect) {
+  renderEffect(campaignGuide: CampaignGuide, effect: Effect) {
     switch (effect.type) {
       case 'campaign_log': {
-        return this.renderCampaignLogEffect(effect);
+        return this.renderCampaignLogEffect(campaignGuide, effect);
       }
       case 'add_chaos_token':
       case 'remove_chaos_token': {
@@ -99,13 +98,15 @@ export default class EffectsComponent extends React.Component<Props> {
       return null;
     }
     return (
-      <>
-        {map(effects, (effect, idx) => (
-          <View key={idx}>
-            { this.renderEffect(effect) }
-          </View>
-        ))}
-      </>
+      <ScenarioGuideContext.Consumer>
+        { ({ campaignGuide }: ScenarioGuideContextType) => (
+          map(effects, (effect, idx) => (
+            <View key={idx}>
+              { this.renderEffect(campaignGuide, effect) }
+            </View>
+          ))
+        ) }
+      </ScenarioGuideContext.Consumer>
     );
   }
 }

@@ -3,23 +3,18 @@ import {
   Text,
 } from 'react-native';
 
-import BinaryPrompt from './prompts/BinaryPrompt';
-import NumberPrompt from './prompts/NumberPrompt';
+import BinaryPrompt from '../prompts/BinaryPrompt';
+import NumberPrompt from '../prompts/NumberPrompt';
+import InvestigatorChoicePrompt from '../prompts/InvestigatorChoicePrompt';
 import { InputStep } from 'data/scenario/types';
-import ScenarioStateHelper from '../ScenarioStateHelper';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
 
 interface Props {
   step: InputStep;
-  scenarioState: ScenarioStateHelper;
-  guide: CampaignGuide,
-  scenario: ScenarioGuide;
 }
 
 export default class InputStepComponent extends React.Component<Props> {
   render() {
-    const { step, scenarioState, guide, scenario } = this.props;
+    const { step } = this.props;
     switch (step.input.type) {
       case 'choose_one':
         if (step.input.choices.length === 1) {
@@ -28,9 +23,6 @@ export default class InputStepComponent extends React.Component<Props> {
               id={step.id}
               text={step.input.choices[0].text}
               trueResult={step.input.choices[0]}
-              guide={guide}
-              scenario={scenario}
-              scenarioState={scenarioState}
             />
           );
         }
@@ -42,9 +34,6 @@ export default class InputStepComponent extends React.Component<Props> {
               id={step.id}
               prompt={step.input.text}
               effects={step.input.effects}
-              guide={guide}
-              scenario={scenario}
-              scenarioState={scenarioState}
               text={step.text}
             />
           </>
@@ -58,7 +47,13 @@ export default class InputStepComponent extends React.Component<Props> {
       case 'use_supplies':
         return <Text>Use Supplies</Text>;
       case 'investigator_choice':
-        return <Text>Choose an investigator</Text>;
+        return (
+          <InvestigatorChoicePrompt
+            id={step.id}
+            text={step.text}
+            choices={step.input.choices}
+          />
+        );
       default:
         return (
           <Text>{step.input.type}</Text>

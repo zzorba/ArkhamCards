@@ -20,13 +20,13 @@ export interface TabooSetOverride {
   tabooSetOverride?: number;
 }
 
+interface ReduxProps {
+  tabooSetId?: number;
+}
 export default function withPlayerCards<Props, ExtraProps={}>(
   WrappedComponent: React.ComponentType<Props & PlayerCardProps & ExtraProps>,
   computeExtraProps?: (cards: Results<Card>) => ExtraProps
 ): React.ComponentType<Props & TabooSetOverride> {
-  interface ReduxProps {
-    tabooSetId?: number;
-  }
   const mapStateToProps = (
     state: AppState,
     props: Props & TabooSetOverride

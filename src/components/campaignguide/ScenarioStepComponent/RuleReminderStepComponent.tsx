@@ -3,7 +3,7 @@ import {
   Text,
 } from 'react-native';
 
-import SetupStepWrapper from './SetupStepWrapper';
+import SetupStepWrapper from '../SetupStepWrapper';
 import { RuleReminderStep } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
 import typography from 'styles/typography';

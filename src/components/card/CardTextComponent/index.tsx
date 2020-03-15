@@ -175,23 +175,22 @@ export default function CardText({ text, onLinkPress }: Props) {
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
-      rules={
-        Object.assign({
-          emMarkdown: EmphasisMarkdownTagRule,
-          arkhamIconSpan: ArkahmIconSpanRule,
-          hrTag: HrTagRule,
-          blockquoteTag: BlockquoteHtmlTagRule,
-          delTag: DelHtmlTagRule,
-          brTag: BreakTagRule,
-          biTag: BoldItalicHtmlTagRule,
-          badBiTag: MalformedBoldItalicHtmlTagRule,
-          bTag: BoldHtmlTagRule,
-          pTag: ParagraphTagRule,
-          uTag: UnderlineHtmlTagRule,
-          emTag: EmphasisHtmlTagRule,
-          iTag: ItalicHtmlTagRule,
-        }, onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })
-      }
+      rules={{
+        emMarkdown: EmphasisMarkdownTagRule,
+        arkhamIconSpan: ArkahmIconSpanRule,
+        hrTag: HrTagRule,
+        blockquoteTag: BlockquoteHtmlTagRule,
+        delTag: DelHtmlTagRule,
+        brTag: BreakTagRule,
+        biTag: BoldItalicHtmlTagRule,
+        badBiTag: MalformedBoldItalicHtmlTagRule,
+        bTag: BoldHtmlTagRule,
+        pTag: ParagraphTagRule,
+        uTag: UnderlineHtmlTagRule,
+        emTag: EmphasisHtmlTagRule,
+        iTag: ItalicHtmlTagRule,
+        ...(onLinkPress ? {} : { arkhamIcon: ArkhamIconRule })
+      }}
       styles={{
         list: {
           marginLeft: 4,

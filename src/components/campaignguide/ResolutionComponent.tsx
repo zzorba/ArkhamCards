@@ -7,20 +7,16 @@ import {
 } from 'react-native';
 import { t} from 'ttag';
 
+import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import ScenarioStateHelper from './ScenarioStateHelper';
-import BinaryPrompt from './ScenarioStepComponent/prompts/BinaryPrompt';
+import BinaryPrompt from './prompts/BinaryPrompt';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import { Resolution } from 'data/scenario/types';
 import typography from 'styles/typography';
 
 interface Props {
-  guide: CampaignGuide;
-  scenario: ScenarioGuide;
   resolution: Resolution;
-  scenarioState: ScenarioStateHelper;
   secondary?: boolean;
 }
 
@@ -34,38 +30,35 @@ export default class ResolutionComponent extends React.Component<Props, State> {
   };
 
   renderSteps() {
-    const { scenario, guide, resolution, scenarioState } = this.props;
+    const { resolution } = this.props;
     if (resolution.steps) {
       return (
-        <StepsComponent
-          steps={resolution.steps}
-          scenario={scenario}
-          guide={guide}
-          scenarioState={scenarioState}
-        />
+        <StepsComponent steps={resolution.steps} />
       );
     }
-    if (resolution.resolution) {
-      const nextResolution = scenario.resolution(resolution.resolution);
-      if (nextResolution) {
-        return (
-          <ResolutionComponent
-            resolution={nextResolution}
-            guide={guide}
-            scenario={scenario}
-            scenarioState={scenarioState}
-            secondary
-          />
-        );
-      }
-
-      return (
-        <Text>
-          Proceed to Resolution {resolution.resolution}
-        </Text>
-      );
-    }
-    return <Text>Unknown Resolution</Text>
+    return (
+      <ScenarioGuideContext.Consumer>
+        { ({ scenarioGuide }: ScenarioGuideContextType) => {
+          if (resolution.resolution) {
+          const nextResolution = scenarioGuide.resolution(resolution.resolution);
+          if (nextResolution) {
+            return (
+              <ResolutionComponent
+                resolution={nextResolution}
+                secondary
+              />
+            );
+          }
+          return (
+            <Text>
+              Proceed to Resolution {resolution.resolution}
+            </Text>
+          );
+        }
+        return <Text>Unknown Resolution</Text>
+      }}
+      </ScenarioGuideContext.Consumer>
+    );
   }
 
   _show = () => {
@@ -75,7 +68,7 @@ export default class ResolutionComponent extends React.Component<Props, State> {
   };
 
   render() {
-    const { resolution, guide, scenario, scenarioState, secondary } = this.props;
+    const { resolution, secondary } = this.props;
     if (!this.state.expanded && !secondary) {
       return (
         <Button title={resolution.title} onPress={this._show} />
@@ -88,7 +81,7 @@ export default class ResolutionComponent extends React.Component<Props, State> {
             {resolution.title}
           </Text>
         </View>
-        { !secondary && !!defeatResolution && (
+        { !secondary && false && !!defeatResolution && (
           <BinaryPrompt
             id="investigator_defeat_resolution"
             text={t`Were any investigators defeated?`}
@@ -96,9 +89,6 @@ export default class ResolutionComponent extends React.Component<Props, State> {
               text: t`The defeated investigators must read <b>Investigator Defeat</b> first`,
               resolution: 'investigator_defeat',
             }}
-            guide={guide}
-            scenario={scenario}
-            scenarioState={scenarioState}
           />
         ) }
         { !!resolution.text && (

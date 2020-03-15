@@ -8,11 +8,11 @@ import { t } from 'ttag';
 
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
-import ScenarioStateHelper from '../../ScenarioStateHelper';
-import StepsComponent from '../../StepsComponent';
-import ResolutionComponent from '../../ResolutionComponent';
+import ScenarioStateHelper from '../ScenarioStateHelper';
+import StepsComponent from '../StepsComponent';
+import ResolutionComponent from '../ResolutionComponent';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardTextComponent from 'components/card/CardTextComponent';
-import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import { Choice, Option } from 'data/scenario/types';
 
@@ -21,30 +21,26 @@ interface Props {
   text: string;
   trueResult?: Choice | Option;
   falseResult?: Choice | Option;
-  guide: CampaignGuide,
-  scenario: ScenarioGuide;
-  scenarioState: ScenarioStateHelper;
 }
 
 export default class BinaryPrompt extends React.Component<Props> {
+  static contextType = ScenarioGuideContext;
   _yes = () => {
     const {
       id,
-      scenarioState,
     } = this.props;
-    scenarioState.setDecision(id, true);
+    this.context.scenarioState.setDecision(id, true);
   };
 
   _no = () => {
     const {
       id,
-      scenarioState,
     } = this.props;
-    scenarioState.setDecision(id, false);
+    this.context.scenarioState.setDecision(id, false);
   };
 
-  renderPrompt() {
-    const { id, text, scenarioState } = this.props;
+  renderPrompt(scenarioState: ScenarioStateHelper) {
+    const { id, text } = this.props;
     return (
       <>
         <CardTextComponent text={text} />
@@ -58,26 +54,30 @@ export default class BinaryPrompt extends React.Component<Props> {
   }
 
 
-  renderCorrectResults(stepsOnly: boolean) {
-    const { id, scenarioState, trueResult, falseResult } = this.props;
+  renderCorrectResults(
+    scenarioGuide: ScenarioGuide,
+    scenarioState: ScenarioStateHelper,
+    stepsOnly: boolean
+  ) {
+    const { id, trueResult, falseResult } = this.props;
     if (!scenarioState.hasDecision(id)) {
       return null;
     }
     if (scenarioState.decision(id)) {
-      return !!trueResult && this.renderResult(stepsOnly, trueResult);
+      return !!trueResult && this.renderResult(scenarioGuide, stepsOnly, trueResult);
     }
-    return !!falseResult && this.renderResult(stepsOnly, falseResult);
+    return !!falseResult && this.renderResult(scenarioGuide, stepsOnly, falseResult);
   }
 
-  renderResult(stepsOnly: boolean, choice: Option | Choice) {
-    const { scenario, scenarioState, guide } = this.props;
+  renderResult(
+    scenarioGuide: ScenarioGuide,
+    stepsOnly: boolean,
+    choice: Option | Choice
+  ) {
     if (choice.steps) {
       return stepsOnly ? (
         <StepsComponent
           steps={choice.steps}
-          guide={guide}
-          scenario={scenario}
-          scenarioState={scenarioState}
         />
       ) : null;
     }
@@ -85,7 +85,6 @@ export default class BinaryPrompt extends React.Component<Props> {
       return stepsOnly ? null : (
         <EffectsComponent
           effects={choice.effects}
-          guide={guide}
         />
       );
     }
@@ -93,14 +92,11 @@ export default class BinaryPrompt extends React.Component<Props> {
       if (!stepsOnly) {
         return null;
       }
-      const nextResolution = scenario.resolution(choice.resolution);
+      const nextResolution = scenarioGuide.resolution(choice.resolution);
       if (nextResolution) {
         return (
           <ResolutionComponent
             resolution={nextResolution}
-            guide={guide}
-            scenario={scenario}
-            scenarioState={scenarioState}
             secondary
           />
         );
@@ -113,21 +109,25 @@ export default class BinaryPrompt extends React.Component<Props> {
   }
 
   render() {
-    const { id, scenarioState } = this.props;
+    const { id } = this.props;
     return (
-      <>
-        <SetupStepWrapper>
-          { this.renderPrompt() }
-          { this.renderCorrectResults(false) }
-        </SetupStepWrapper>
-        { this.renderCorrectResults(true) }
-        { !scenarioState.hasDecision(id) && (
-         <>
-           <Button title="Yes" onPress={this._yes} />
-           <Button title="No" onPress={this._no} />
-         </>
-        ) }
-      </>
+      <ScenarioGuideContext.Consumer>
+        { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => (
+          <>
+            <SetupStepWrapper>
+              { this.renderPrompt(scenarioState) }
+              { this.renderCorrectResults(scenarioGuide, scenarioState, false) }
+            </SetupStepWrapper>
+            { this.renderCorrectResults(scenarioGuide, scenarioState, true) }
+            { !scenarioState.hasDecision(id) && (
+             <>
+               <Button title="Yes" onPress={this._yes} />
+               <Button title="No" onPress={this._no} />
+             </>
+            ) }
+          </>
+        )}
+      </ScenarioGuideContext.Consumer>
     );
   }
 }

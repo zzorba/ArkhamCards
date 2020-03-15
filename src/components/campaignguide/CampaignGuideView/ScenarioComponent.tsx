@@ -1,8 +1,5 @@
 import React from 'react';
 import {
-  Alert,
-  ScrollView,
-  Share,
   StyleSheet,
   View,
   Text,
@@ -10,47 +7,32 @@ import {
 import { flatMap } from 'lodash';
 import { t } from 'ttag';
 
+import withCampaignDataContext from '../withCampaignDataContext';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import StepsComponent from '../StepsComponent';
 import ScenarioStateHelper from '../ScenarioStateHelper';
 import ResolutionComponent from '../ResolutionComponent';
-import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import typography from 'styles/typography';
-
-interface Props {
-  guide: CampaignGuide;
-  scenario: ScenarioGuide;
-  scenarioState: ScenarioStateHelper;
-}
 
 interface State {
   currentStep: string;
 }
 
-export default class ScenarioComponent extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
+type Props = {};
+class ScenarioComponent extends React.Component<Props, State> {
+  static contextType = ScenarioGuideContext;
+
+  constructor(props: Props, context: ScenarioGuideContextType) {
+    super(props, context);
 
     this.state = {
-      currentStep: props.scenario.scenario.setup[0],
+      currentStep: context.scenarioGuide.scenario.setup[0],
     };
   }
 
-  renderSetupSteps() {
-    const { scenario, guide, scenarioState} = this.props;
-    return (
-      <StepsComponent
-        steps={scenario.scenario.setup}
-        scenario={scenario}
-        guide={guide}
-        scenarioState={scenarioState}
-      />
-    );
-  }
-
-  renderResolutions() {
-    const { scenario, guide, scenarioState } = this.props;
-    if (!scenario.scenario.resolutions) {
+  renderResolutions(scenarioGuide: ScenarioGuide) {
+    if (!scenarioGuide.scenario.resolutions) {
       return null;
     }
     return (
@@ -63,14 +45,11 @@ export default class ScenarioComponent extends React.Component<Props, State> {
             {t`DO NOT READ until the end of the scenario`}
           </Text>
         </View>
-        { flatMap(scenario.scenario.resolutions, (resolution, idx) => (
+        { flatMap(scenarioGuide.scenario.resolutions, (resolution, idx) => (
           resolution.id === 'investigator_defeat' ? null : (
           <ResolutionComponent
             key={idx}
             resolution={resolution}
-            guide={guide}
-            scenario={scenario}
-            scenarioState={scenarioState}
           />
         ))) }
       </View>
@@ -79,13 +58,21 @@ export default class ScenarioComponent extends React.Component<Props, State> {
 
   render() {
     return (
-      <View>
-        { this.renderSetupSteps() }
-        { this.renderResolutions() }
-      </View>
+      <ScenarioGuideContext.Consumer>
+        {({ scenarioGuide }: ScenarioGuideContextType) => (
+          <View>
+            <StepsComponent
+              steps={scenarioGuide.scenario.setup}
+            />
+            { this.renderResolutions(scenarioGuide) }
+          </View>
+        )}
+      </ScenarioGuideContext.Consumer>
     );
   }
 }
+
+export default withCampaignDataContext<Props>(ScenarioComponent);
 
 const styles = StyleSheet.create({
   wrapper: {

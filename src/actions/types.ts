@@ -615,23 +615,77 @@ export interface GuideResetScenarioAction {
   scenarioId: string;
 }
 
-export interface ScenarioDecision {
-  type: 'decision';
+export interface ScenarioChooseOneInput {
+  type: 'choose_one';
   step: string;
-  decision: boolean;
+  index: number | null;
 }
 
-export interface ScenarioCampaignLogEntry {
+export interface ScenarioChooseManyInput {
+  type: 'choose_many';
+  step: string;
+  indexes: number[];
+}
 
+export interface ScenarioCounterInput {
+  type: 'counter';
+  step: string;
+  count: number;
+}
+
+export interface ScenarioInvestigatorCounterInput {
+  type: 'investigator_counter';
+  step: string;
+  investigatorCount: {
+    [code: string]: number;
+  };
+}
+
+export interface ScenarioInvestigatorChoiceInput {
+  type: 'investigator_choice';
+  step: string;
+  investigator: {
+    [code: string]: number;
+  };
+}
+
+export interface ScenarioSuppliesInput {
+  type: 'supplies';
+  investigatorSupplies: {
+    [code: string]: {
+      [id: string]: number;
+    };
+  };
+}
+
+export interface ScenarioUseSuppliesInput {
+  type: 'use_supplies';
+  suppliesUsed: {
+    [code: string]: {
+      [id: string]: number;
+    };
+  };
+  investigators?: string[];
 }
 
 export interface ScenarioState {
-
+  decisions: {
+    [key: string]: boolean;
+  };
+  counts: {
+    [key: string]: number;
+  };
 }
+
+export const DEFAULT_SCENARIO_STATE: ScenarioState = {
+  decisions: {},
+  counts: {},
+};
+
 
 export interface GuideState {
   scenarios: {
-    [scenarioId: string]: ScenarioState;
+    [scenarioId: string]: ScenarioState | undefined;
   };
 }
 

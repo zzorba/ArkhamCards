@@ -2,15 +2,14 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
-import { every, find, map } from 'lodash';
+import { every, find } from 'lodash';
 import { t } from 'ttag';
 
-import CardWrapper from './CardWrapper';
-import BinaryPrompt from './prompts/BinaryPrompt';
-import NumberPrompt from './prompts/NumberPrompt';
-import ScenarioStateHelper from '../ScenarioStateHelper';
+import CardWrapper from '../CardWrapper';
+import BinaryPrompt from '../prompts/BinaryPrompt';
+import NumberPrompt from '../prompts/NumberPrompt';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import Card from 'data/Card';
 import {
   BranchStep,
@@ -23,12 +22,8 @@ import {
   ScenarioDataCondition,
 } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
 
 interface Props {
-  scenarioState: ScenarioStateHelper;
-  guide: CampaignGuide,
-  scenario: ScenarioGuide;
   step: BranchStep;
 }
 
@@ -43,12 +38,11 @@ interface Props {
 */
 export default class BranchStepComponent extends React.Component<Props> {
 
-  renderCampaignData(condition:
-    CampaignDataCondition
-    | CampaignDataScenarioCondition
-    | CampaignDataChaosBagCondition
+  renderCampaignData(
+    campaignGuide: CampaignGuide,
+    condition: CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition
   ) {
-    const { step, guide, scenario, scenarioState } = this.props;
+    const { step } = this.props;
     switch (condition.campaign_data) {
       case 'difficulty':
         return (
@@ -57,7 +51,7 @@ export default class BranchStepComponent extends React.Component<Props> {
           </Text>
         );
       case 'scenario_completed': {
-        const chosenScenario = guide.getScenario(condition.scenario);
+        const chosenScenario = campaignGuide.getScenario(condition.scenario);
         const scenarioName =
           chosenScenario && chosenScenario.scenario.scenarioName || condition.scenario;
         return (
@@ -66,9 +60,6 @@ export default class BranchStepComponent extends React.Component<Props> {
             text={t`Have you have already completed ${scenarioName}?`}
             trueResult={find(step.options, option => option.boolCondition === true)}
             falseResult={find(step.options, option => option.boolCondition === false)}
-            guide={guide}
-            scenario={scenario}
-            scenarioState={scenarioState}
           />
         );
       }
@@ -80,7 +71,7 @@ export default class BranchStepComponent extends React.Component<Props> {
   }
 
   renderScenarioData(condition: ScenarioDataCondition) {
-    const { guide, step, scenario, scenarioState } = this.props;
+    const { step } = this.props;
 
     if (condition.scenario_data === 'player_count') {
       return (
@@ -89,9 +80,6 @@ export default class BranchStepComponent extends React.Component<Props> {
           prompt={t`How many players?`}
           min={1}
           max={4}
-          guide={guide}
-          scenario={scenario}
-          scenarioState={scenarioState}
           options={step.options}
         />
       );
@@ -107,9 +95,6 @@ export default class BranchStepComponent extends React.Component<Props> {
               text={t`If ${card.name} was chosen as an investigator for this campaign`}
               trueResult={find(step.options, option => option.condition === card.code)}
               falseResult={find(step.options, option => !!option.default)}
-              guide={guide}
-              scenario={scenario}
-              scenarioState={scenarioState}
             />
           )}
         />
@@ -120,12 +105,12 @@ export default class BranchStepComponent extends React.Component<Props> {
     );
   }
 
-  renderCampaignLog(condition: CampaignLogCondition) {
-    const { guide, step, scenario, scenarioState } = this.props;
+  renderCampaignLog(campaignGuide: CampaignGuide, condition: CampaignLogCondition) {
+    const { step } = this.props;
     if (every(step.options, option => option.boolCondition !== undefined)) {
       // It's a binary prompt.
       if (condition.id) {
-        const logEntry = guide.logEntry(condition.section, condition.id);
+        const logEntry = campaignGuide.logEntry(condition.section, condition.id);
         if (!logEntry) {
           return (
             <Text>
@@ -142,9 +127,6 @@ export default class BranchStepComponent extends React.Component<Props> {
               text={prompt}
               trueResult={find(step.options, option => option.boolCondition === true)}
               falseResult={find(step.options, option => option.boolCondition === false)}
-              guide={guide}
-              scenario={scenario}
-              scenarioState={scenarioState}
             />
           );
         }
@@ -161,9 +143,6 @@ export default class BranchStepComponent extends React.Component<Props> {
                   text={prompt}
                   trueResult={find(step.options, option => option.boolCondition === true)}
                   falseResult={find(step.options, option => option.boolCondition === false)}
-                  guide={guide}
-                  scenario={scenario}
-                  scenarioState={scenarioState}
                 />
               );
             }}
@@ -206,7 +185,7 @@ export default class BranchStepComponent extends React.Component<Props> {
   }
 
   hasCardCondition(condition: CardCondition) {
-    const { step, guide, scenario, scenarioState } = this.props;
+    const { step } = this.props;
     return (
       <CardWrapper
         code={condition.card}
@@ -216,9 +195,6 @@ export default class BranchStepComponent extends React.Component<Props> {
             text={this.investigatorCardCondition(card, condition.investigator)}
             trueResult={find(step.options, option => option.boolCondition === true)}
             falseResult={find(step.options, option => option.boolCondition === false)}
-            guide={guide}
-            scenario={scenario}
-            scenarioState={scenarioState}
           />
         )}
       />
@@ -227,22 +203,28 @@ export default class BranchStepComponent extends React.Component<Props> {
   }
 
   render() {
-    const { step, guide } = this.props;
+    const { step } = this.props;
     const condition = step.condition;
-    switch (condition.type) {
-      case 'campaign_log':
-        return this.renderCampaignLog(condition);
-      case 'campaign_data': {
-        return this.renderCampaignData(condition);
-      }
-      case 'scenario_data': {
-        return this.renderScenarioData(condition);
-      }
-      case 'has_card': {
-        return this.hasCardCondition(condition);
-      }
-      default: return <Text>{condition.type}</Text>;
-    }
+    return (
+      <ScenarioGuideContext.Consumer>
+        { ({ campaignGuide }: ScenarioGuideContextType) => {
+          switch (condition.type) {
+            case 'campaign_log':
+              return this.renderCampaignLog(campaignGuide, condition);
+            case 'campaign_data': {
+              return this.renderCampaignData(campaignGuide, condition);
+            }
+            case 'scenario_data': {
+              return this.renderScenarioData(condition);
+            }
+            case 'has_card': {
+              return this.hasCardCondition(condition);
+            }
+            default: return <Text>{condition.type}</Text>;
+          }
+        }}
+      </ScenarioGuideContext.Consumer>
+    );
   }
 }
 

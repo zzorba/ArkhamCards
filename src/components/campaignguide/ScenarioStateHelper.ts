@@ -1,37 +1,24 @@
-export interface ScenarioState {
-  decisions: {
-    [key: string]: boolean;
-  };
-  counts: {
-    [key: string]: number;
-  };
-}
+import { ScenarioState } from 'actions/types';
 
-export const DEFAULT_SCENARIO_STATE: ScenarioState = {
-  decisions: {},
-  counts: {},
-};
+export interface ScenarioStateActions {
+  setDecision: (id: string, value: boolean) => void;
+  setCount: (id: string, value: number) => void;
+}
 
 export default class ScenarioStateHelper {
   state: ScenarioState;
-  updateState: (state: ScenarioState) => void;
+  actions: ScenarioStateActions;
 
   constructor(
     state: ScenarioState,
-    updateState: (state: ScenarioState) => void
+    actions: ScenarioStateActions
   ) {
     this.state = state;
-    this.updateState = updateState;
+    this.actions = actions;
   }
 
   setDecision(id: string, value: boolean) {
-    this.updateState({
-      ...this.state,
-      decisions: {
-        ...this.state.decisions,
-        [id]: value,
-      },
-    });
+    this.actions.setDecision(id, value);
   }
 
   hasDecision(id: string) {
@@ -43,13 +30,7 @@ export default class ScenarioStateHelper {
   }
 
   setCount(id: string, value: number) {
-    this.updateState({
-      ...this.state,
-      counts: {
-        ...this.state.counts,
-        [id]: value,
-      },
-    });
+    this.actions.setCount(id, value);
   }
 
   hasCount(id: string) {

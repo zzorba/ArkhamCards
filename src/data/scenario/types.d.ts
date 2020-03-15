@@ -16,7 +16,14 @@ export type Condition =
   | CampaignDataChaosBagCondition
   | ScenarioDataCondition
   | TraumaCondition;
-export type InvestigatorSelector = "lead_investigator" | "all" | "any" | "choice" | "defeated" | "input_value";
+export type InvestigatorSelector =
+  | "lead_investigator"
+  | "all"
+  | "any"
+  | "choice"
+  | "defeated"
+  | "not_resigned"
+  | "input_value";
 export type Operand = CampaignLogOperand | ChaosBagOperand;
 export type ChaosToken =
   | "+1"
@@ -287,6 +294,7 @@ export interface UseSuppliesInput {
 }
 export interface InvestigatorChoiceInput {
   type: "investigator_choice";
+  investigator: InvestigatorSelector;
   choices: Choice[];
 }
 export interface ChooseInput {

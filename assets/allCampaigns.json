@@ -3334,7 +3334,7 @@
     },
     {
       "id": "earn_lita",
-      "text": "The lead investigator earns the Lita Chantler card and may include it in his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "The lead investigator earns the Lita Chantler card and may include it in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -3345,7 +3345,7 @@
     },
     {
       "id": "lead_investigator_xp",
-      "text": "The lead investigator earns 1 experience, as he or she refuses to let the night’s events destroy his or her life",
+      "text": "The lead investigator earns 1 experience, as he or she refuses to let the night’s events destroy their life",
       "effects": [
         {
           "type": "earn_xp",
@@ -3372,7 +3372,7 @@
     },
     {
       "id": "mental_trauma",
-      "text": "The lead investigator suffers 1 mental trauma from watching his or her home become a smoldering ruin.",
+      "text": "The lead investigator suffers 1 mental trauma from watching their home become a smoldering ruin.",
       "effects": [
         {
           "type": "trauma",
@@ -3384,25 +3384,13 @@
     {
       "id": "killed",
       "text": "Each investigator who has not resigned is killed. If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, advance to the next scenario. (Each player whose investigator has been killed must choose a new investigator from the pool of available investigators. Refer to page 13 of the Rules Reference for the full rules on killed investigators.)",
-      "type": "input",
-      "input": {
-        "type": "investigator_choice",
-        "choices": [
-          {
-            "text": "Resigned",
-            "effects": []
-          },
-          {
-            "text": "Killed",
-            "effects": [
-              {
-                "type": "trauma",
-                "killed": true
-              }
-            ]
-          }
-        ]
-      }
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "not_resigned",
+          "killed": true
+        }
+      ]
     },
     {
       "id": "check_lead_investigator_killed",
@@ -3419,7 +3407,7 @@
     },
     {
       "id": "lead_investigator_killed",
-      "text": "Because the lead investigator was killed, choose an investigator to earn the Lita Chantler card. That investigator may include this card in his or her deck. It does not count toward that investigator’s deck size.",
+      "text": "Because the lead investigator was killed, choose an investigator to earn the Lita Chantler card. That investigator may include this card in their deck. It does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -6984,11 +6972,11 @@
     {
       "id": "constance_information",
       "type": "story",
-      "text": "You recall what Constance had told you when you spoke with her during her hellish dinner party. She and the other members of the cast and crew had been told by the director, Nigel Engram, to take some kind of oath. At first, she’d written it off as the whim of an eccentric artist; something Mr. Engram did as a strange formality to unite and strengthen the bonds of the cast and crew. And to his credit, she claimed that it had worked; ever since they’d taken his strange oath, she and the other members of the troupe felt much more confident and full of spirit. Perhaps Daniel had a similar experience during the last production of <i>The King in Yellow</i>. You must speak with him about this."
+      "text": "You recall what Constance had told you when you spoke with her during her hellish dinner party. She and the other members of the cast and crew had been told by the director, Nigel Engram, to take some kind of oath. At first, she’d written it off as the whim of an eccentric artist; something Mr. Engram did as a strange formality to unite and strengthen the bonds of the cast and crew. And to his credit, she claimed that it had worked; ever since they’d taken his strange oath, she and the other members of the troupe felt much more confident and full of spirit. Perhaps Daniel had a similar experience during the last production of <u>The King in Yellow</u>. You must speak with him about this."
     },
     {
       "id": "gain_courage",
-      "text": "Each investigator places the top card of his or her deck facedown in his or her play area, without looking at it. Treat this card as a [[Courage]] asset with 0 cost, no icons, and 2 sanity. Discard this card if it leaves play for any reason."
+      "text": "Each investigator places the top card of their deck facedown in their play area, without looking at it. Treat this card as a [[Courage]] asset with 0 cost, no icons, and 2 sanity. Discard this card if it leaves play for any reason."
     },
     {
       "id": "gather_encounter_sets",
@@ -7004,7 +6992,7 @@
     },
     {
       "id": "choose_locations",
-      "text": "Randomly choose 1 copy of Asylum Halls <i>(Eastern Patient Wing)</i> and 1 copy of Asylum Halls <i>(Western Patient Wing)</i>. Remove those copies from the game. Put the remaining Asylum Halls into play. Each investigator begins play at an Asylum Halls of his or her choice."
+      "text": "Randomly choose 1 copy of Asylum Halls <i>(Eastern Patient Wing)</i> and 1 copy of Asylum Halls <i>(Western Patient Wing)</i>. Remove those copies from the game. Put the remaining Asylum Halls into play. Each investigator begins play at an Asylum Halls of their choice."
     },
     {
       "id": "set_aside_cards",
@@ -7114,7 +7102,7 @@
     },
     {
       "id": "take_onyx_clasp",
-      "text": "Choose a new investigator to take the onyx clasp. That investigator must include the Clasp of Black Onyx weakness in his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Choose a new investigator to take the onyx clasp. That investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [{
         "type": "add_card",
         "investigator": "choice",
@@ -7266,7 +7254,7 @@
   "resolutions": [{
       "id": "investigator_defeat",
       "title": "Investigator Defeat",
-      "text": "“Doctor Mintz, the patient has been medicated and is ready to see you now.” Nurse Heather opened the file on the desk nearby, taking a moment to review the patient’s records.\n“Any changes in the patient’s condition?” Doctor Mintz asked in a monotone voice. A formality. Both knew the patient was beyond repair.\n“None. The patient’s delusions remain. Demanding to speak with the Warden, claiming they are only guests, and rambling about that play that aired the other night, <i>The King in Yellow</i>.”\n“And their other crimes? The incident in the theatre? What about 1452 Atlantic Ave?”\n“They believe they were attacked, and were defending themselves.” Her voice was thick with pity. What could have caused somebody to snap like this so quickly? None of the patient’s records showed any prior history of mental instability. “Can you make any sense of it, Doctor?”\n“Who could?” Doctor Mintz sighed and stood, grabbing the file from his desk. “My job is not to understand. It is to cure. Perhaps my experimental procedures will prove fruitful on this one.” The nurse winced and felt goosebumps on her arm. She knew how his procedures would turn out, and she doubted it would prove anything.",
+      "text": "“Doctor Mintz, the patient has been medicated and is ready to see you now.” Nurse Heather opened the file on the desk nearby, taking a moment to review the patient’s records.\n“Any changes in the patient’s condition?” Doctor Mintz asked in a monotone voice. A formality. Both knew the patient was beyond repair.\n“None. The patient’s delusions remain. Demanding to speak with the Warden, claiming they are only guests, and rambling about that play that aired the other night, <u>The King in Yellow</u>.”\n“And their other crimes? The incident in the theatre? What about 1452 Atlantic Ave?”\n“They believe they were attacked, and were defending themselves.” Her voice was thick with pity. What could have caused somebody to snap like this so quickly? None of the patient’s records showed any prior history of mental instability. “Can you make any sense of it, Doctor?”\n“Who could?” Doctor Mintz sighed and stood, grabbing the file from his desk. “My job is not to understand. It is to cure. Perhaps my experimental procedures will prove fruitful on this one.” The nurse winced and felt goosebumps on her arm. She knew how his procedures would turn out, and she doubted it would prove anything.",
       "steps": ["defeated_insane"]
     },
     {
@@ -12114,7 +12102,7 @@
 }
 ,
 {
-  "id": "those_held_captive",
+  "id": "tfa_interlude4",
   "scenarioName": "Those Held Captive",
   "interlude": true,
   "setup": [
@@ -12167,6 +12155,7 @@
       "type": "input",
       "input": {
         "type": "investigator_choice",
+        "investigator": "all",
         "choices": [
           {
             "text": "[elder_sign] or +1 token.",
@@ -12175,7 +12164,7 @@
           },
           {
             "text": "[skull] token or any number other than +1",
-            "description": "Gain the Out of Body Experience weakness, and must add it to his or her deck.",
+            "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
             "effects": [
               {
                 "type": "add_card",
@@ -12186,7 +12175,7 @@
           },
           {
             "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
-            "description": "You must use the Body of a Yithian investigator card as his or her investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to his or her deck.",
+            "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
             "effects": [
               {
                 "type": "add_card",
@@ -12409,7 +12398,7 @@
     },
     {
       "id": "use_medicine",
-      "text": "Check your supplies. Each investigator with medicine may cross it off from their supplies to choose and remove a Poisoned weakness from any investigator’s deck. Each investigator who still has a Poisoned weakness in his or her deck reads <b>The Poison Spreads</b>.",
+      "text": "Check your supplies. Each investigator with medicine may cross it off from their supplies to choose and remove a Poisoned weakness from any investigator’s deck. Each investigator who still has a Poisoned weakness in their deck reads <b>The Poison Spreads</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -12677,7 +12666,7 @@
         "choices": [
           {
             "text": "“We should be wary of them.”",
-            "description": "Remove all [cultist] and [tablet] tokens from the chaos bag and replace them with 1 [elder_thing] token. In your Campaign Log, record that <i>you are forging your own path.</i>\nFor the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in his or her deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead. Proceed to Setup.",
+            "description": "Remove all [cultist] and [tablet] tokens from the chaos bag and replace them with 1 [elder_thing] token. In your Campaign Log, record that <i>you are forging your own path.</i>\nFor the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead. Proceed to Setup.",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -12840,7 +12829,7 @@
     },
     {
       "id": "earn_relic_of_ages",
-      "text": "Any one investigator must choose to include it in his or her deck. This card does not count toward that investigator’s deck size. For the remainder of the campaign, anytime the owner of the Relic of Ages leaves the campaign for any reason, choose another investigator and add it to that investigator’s deck.",
+      "text": "Any one investigator must choose to include it in their deck. This card does not count toward that investigator’s deck size. For the remainder of the campaign, anytime the owner of the Relic of Ages leaves the campaign for any reason, choose another investigator and add it to that investigator’s deck.",
       "effects": [
         {
           "type": "add_card",
@@ -12910,7 +12899,7 @@
     },
     {
       "id": "earn_alejandro",
-      "text": "Any one investigator may choose to include him in his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to include him in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -13010,7 +12999,7 @@
     },
     {
       "id": "earn_ichtaca",
-      "text": "Any one investigator may choose to include Ichtaca <i>(The Forgotten Guardian)</i> in his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to include Ichtaca <i>(The Forgotten Guardian)</i> in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -13032,7 +13021,7 @@
     },
     {
       "id": "earn_expedition_journal",
-      "text": "The lead investigator earns the Expedition Journal card and may include it in his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "The lead investigator earns the Expedition Journal card and may include it in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -13140,7 +13129,7 @@
     {
       "id": "resupply_point",
       "title": "Resupply Point",
-      "text": "It is clear now that you will have to venture once more into the wilds before the mystery behind the Relic of Ages is solved. Each investigator has the option to choose additional supplies to add to his or her current list of supplies. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chooses to bring. <i>(Note: Provisions, Medicine and Gasoline can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>"
+      "text": "It is clear now that you will have to venture once more into the wilds before the mystery behind the Relic of Ages is solved. Each investigator has the option to choose additional supplies to add to their current list of supplies. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chooses to bring. <i>(Note: Provisions, Medicine and Gasoline can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>"
     },
     {
       "id": "visit_hospital",
@@ -13148,10 +13137,11 @@
     },
     {
       "id": "choose_to_heal_poison",
-      "text": "Each investigator who has a Poisoned weakness in his or her deck may spend 3 experience points to remove that weakness from his or her deck.",
+      "text": "Each investigator who has a Poisoned weakness in their deck may spend 3 experience points to remove that weakness from their deck.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
+        "investigator": "choice",
         "choices": [
           {
             "text": "Remove Poison Weakness",
@@ -13173,10 +13163,11 @@
     },
     {
       "id": "choose_to_heal_trauma",
-      "text": "Each investigator may spend 5 experience points to remove a single point of physical or mental trauma from his or her investigator.",
+      "text": "Each investigator may spend 5 experience points to remove a single point of physical or mental trauma from their investigator.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
+        "investigator": "choice",
         "choices": [
           {
             "text": "Remove Physical Trauma",

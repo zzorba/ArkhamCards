@@ -18,7 +18,7 @@ import { getCampaignGuide } from 'data/scenario';
 import { getCampaign, AppState } from 'reducers';
 
 import ScenarioComponent from './ScenarioComponent';
-import ScenarioStateHelper, { ScenarioState, DEFAULT_SCENARIO_STATE } from '../ScenarioStateHelper';
+import { ScenarioState, DEFAULT_SCENARIO_STATE } from 'actions/types';
 
 export interface CampaignGuideProps {
   campaignId: number;
@@ -32,7 +32,6 @@ type Props = CampaignGuideProps & NavigationProps & ReduxProps;
 
 interface State {
   selectedScenario?: Scenario;
-  scenarioState: ScenarioState;
 }
 
 class CampaignGuideView extends React.Component<Props, State> {
@@ -43,7 +42,6 @@ class CampaignGuideView extends React.Component<Props, State> {
       selectedScenario: props.campaign ?
         campaignScenarios(props.campaign.cycleCode)[0] :
         undefined,
-      scenarioState: DEFAULT_SCENARIO_STATE,
     };
   }
 
@@ -104,29 +102,16 @@ class CampaignGuideView extends React.Component<Props, State> {
     return campaignScenarios(campaign.cycleCode);
   }
 
-  _updateScenarioState = (scenarioState: ScenarioState) => {
-    this.setState({
-      scenarioState,
-    });
-  };
-
-  renderScenario(guide: CampaignGuide) {
+  renderSelectedScenario() {
+    const { campaignId } = this.props;
     const { selectedScenario } = this.state;
     if (!selectedScenario) {
       return null;
     }
-    const scenario = guide.getScenario(selectedScenario.code);
-    if (!scenario) {
-      return null;
-    }
     return (
       <ScenarioComponent
-        scenario={scenario}
-        guide={guide}
-        scenarioState={new ScenarioStateHelper(
-          this.state.scenarioState,
-          this._updateScenarioState
-        )}
+        campaignId={campaignId}
+        scenarioId={selectedScenario.code}
       />
     );
   }
@@ -153,7 +138,7 @@ class CampaignGuideView extends React.Component<Props, State> {
             />
           ) }
         </View>
-        { this.renderScenario(guide) }
+        { this.renderSelectedScenario() }
       </ScrollView>
     );
   }
