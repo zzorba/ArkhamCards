@@ -52,6 +52,7 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             text={step.text}
             choices={step.input.choices}
+            optional={step.input.investigator === 'choice'}
           />
         );
       default:

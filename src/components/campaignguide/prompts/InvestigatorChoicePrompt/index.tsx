@@ -23,6 +23,7 @@ interface Props {
   id: string;
   text?: string;
   choices: Choice[];
+  optional: boolean;
 }
 
 interface State {
@@ -50,24 +51,28 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   };
 
   render() {
-    const { choices } = this.props;
+    const { choices, text, optional } = this.props;
     const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks }: ScenarioGuideContextType) => (
-          <SetupStepWrapper>
+          <>
+            <SetupStepWrapper>
+              { !!text && <CardTextComponent text={text} /> }
+            </SetupStepWrapper>
             { map(investigatorDecks, (investigator, idx) => {
               return (
                 <InvestigatorChoiceComponent
                   key={idx}
                   choices={choices}
-                  choice={selectedChoice[investigator.investigator.code] || -1}
+                  choice={selectedChoice[investigator.investigator.code] || (optional ? -1 : 0)}
                   investigator={investigator.investigator}
                   onChoiceChange={this._onChoiceChange}
+                  optional={optional}
                 />
-              )
+              );
             }) }
-          </SetupStepWrapper>
+          </>
         ) }
       </ScenarioGuideContext.Consumer>
     );

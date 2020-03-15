@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { find, map } from 'lodash';
 import Realm, { Results } from 'realm';
 import { connectRealm, TabooSetResults } from 'react-native-realm';
@@ -15,6 +16,7 @@ interface Props {
   investigator: Card;
   choices: Choice[];
   choice: number;
+  optional: boolean;
   onChoiceChange: (code: string, index: number) => void;
 }
 
@@ -54,9 +56,9 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
       investigator,
       choices,
       choice,
+      optional,
     } = this.props;
-    const options = [
-      { value: -1, label: '' },
+    const passedOptions = [
       ...map(choices, (choice, idx) => {
         return {
           label: choice.text,
@@ -64,6 +66,10 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
         };
       }),
     ];
+    const options = optional ? [
+      { value: -1, label: '' },
+      ...passedOptions
+    ] : passedOptions;
     const color = FACTION_COLORS[investigator.factionCode()];
     return (
       <SettingsPicker

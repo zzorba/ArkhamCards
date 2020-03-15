@@ -3784,7 +3784,7 @@
     "echoes_of_the_past",
     "the_unspeakable_oath",
     "ptc_interlude2",
-    "phantom_of_truth",
+    "a_phantom_of_truth",
     "the_pallid_mask",
     "black_stars_rise",
     "dim_carcosa",
@@ -5719,7 +5719,7 @@
 }
 ,
 {
-  "id": "phantom_of_truth",
+  "id": "a_phantom_of_truth",
   "scenarioName": "A Phantom of Truth",
   "setup": [
     "check_king_claimed_victims",
@@ -6707,7 +6707,7 @@
     },
     {
       "id": "set_aside_pallid_mask",
-      "text": "The bearer of The Man in the Pallid Mask weakness searches his or her deck for it and sets it aside, out of play."
+      "text": "The bearer of The Man in the Pallid Mask weakness searches their deck for it and sets it aside, out of play."
     },
     {
       "id": "encounter_deck",
@@ -6749,11 +6749,16 @@
     },
     {
       "id": "read_act_2_choice",
-      "text": "Each investigator must choose whether or not to read Act II of The King in Yellow. At least one investigator must read Act II. In your Campaign Log, record the names of each investigator who chose to read Act II. Each investigator who read Act II searches the collection for a random basic [[Madness]] or [[Pact]] weakness, and adds it to his or her deck (does not count toward deck size). Each investigator who read Act II earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Each investigator must choose whether or not to read Act II of The King in Yellow. At least one investigator must read Act II.\nIn your Campaign Log, record the names of each investigator who chose to read Act II. Each investigator who read Act II searches the collection for a random basic [[Madness]] or [[Pact]] weakness, and adds it to their deck (does not count toward deck size). Each investigator who read Act II earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
+        "investigator": "all",
         "choices": [
+          {
+            "text": "Do not read",
+            "effects": []
+          },
           {
             "text": "Read Act II",
             "effects": [

@@ -45,7 +45,7 @@ interface ReduxActionProps {
   ) => void;
 }
 
-export default function withCampaignData<Props>(
+export default function withCampaignDataContext<Props>(
   WrappedComponent: React.ComponentType<Props>
 ): React.ComponentType<Props & TabooSetOverride & CampaignDataInputProps> {
   const mapStateToProps = (
@@ -122,7 +122,7 @@ export default function withCampaignData<Props>(
       }
       const scenarioGuide = campaignGuide.getScenario(scenarioId);
       if (!scenarioGuide) {
-        return <Text>Unknown scenario</Text>;
+        return <Text>Unknown scenario: {scenarioId}</Text>;
       }
       const investigatorDecks = flatMap(decks, deck => {
         const investigator = investigators[deck.investigator_code];

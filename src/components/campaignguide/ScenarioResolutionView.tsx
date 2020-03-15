@@ -2,7 +2,7 @@ import React from 'react';
 import {
   StyleSheet,
 } from 'react-native';
-import { t} from 'ttag';
+import { t } from 'ttag';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import ResolutionComponent from './ResolutionComponent';
@@ -25,14 +25,14 @@ class ScenarioResolutionView extends React.Component<Props> {
   render() {
     return (
       <ScenarioGuideContext.Consumer>
-      { ({ scenarioGuide }: ScenarioGuideContextType) => {
-        const { resolutionId } = this.props;
-        const resolution = scenarioGuide.resolution(resolutionId);
-        if (!resolution) {
-          return null;
-        }
-        return this.renderResolution(resolution);
-      }}
+        { ({ scenarioGuide }: ScenarioGuideContextType) => {
+          const { resolutionId } = this.props;
+          const resolution = scenarioGuide.resolution(resolutionId);
+          if (!resolution) {
+            return null;
+          }
+          return this.renderResolution(resolution);
+        }}
       </ScenarioGuideContext.Consumer>
     )
   }
