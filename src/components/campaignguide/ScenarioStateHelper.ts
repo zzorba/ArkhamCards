@@ -51,7 +51,7 @@ export default class ScenarioStateHelper {
       },
     });
   }
-  
+
   hasCount(id: string) {
     return this.state.counts[id] !== undefined;
   }
@@ -59,6 +59,4 @@ export default class ScenarioStateHelper {
   count(id: string): number {
     return this.state.counts[id];
   }
-
-
 }

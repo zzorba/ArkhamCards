@@ -18,7 +18,7 @@ import { getCampaignGuide } from 'data/scenario';
 import { getCampaign, AppState } from 'reducers';
 
 import ScenarioComponent from './ScenarioComponent';
-import ScenarioStateHelper, { ScenarioState, DEFAULT_SCENARIO_STATE } from './ScenarioStateHelper';
+import ScenarioStateHelper, { ScenarioState, DEFAULT_SCENARIO_STATE } from '../ScenarioStateHelper';
 
 export interface CampaignGuideProps {
   campaignId: number;

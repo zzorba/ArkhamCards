@@ -7,21 +7,12 @@ import {
   View,
   Text,
 } from 'react-native';
-import { find, flatMap, map } from 'lodash';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
-import SideMenu from 'react-native-side-menu';
-import {
-  SettingsButton,
-  SettingsCategoryHeader,
-} from 'react-native-settings-components';
+import { flatMap } from 'lodash';
 import { t } from 'ttag';
 
-import StepsComponent from './StepsComponent';
-import ScenarioStateHelper from './ScenarioStateHelper';
-import ScenarioResolutionComponent from './ScenarioResolutionComponent';
-import ScenarioStepComponent from './ScenarioStepComponent';
+import StepsComponent from '../StepsComponent';
+import ScenarioStateHelper from '../ScenarioStateHelper';
+import ResolutionComponent from '../ResolutionComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import typography from 'styles/typography';
@@ -72,15 +63,16 @@ export default class ScenarioComponent extends React.Component<Props, State> {
             {t`DO NOT READ until the end of the scenario`}
           </Text>
         </View>
-        { map(scenario.scenario.resolutions, (resolution, idx) => (
-          <ScenarioResolutionComponent
+        { flatMap(scenario.scenario.resolutions, (resolution, idx) => (
+          resolution.id === 'investigator_defeat' ? null : (
+          <ResolutionComponent
             key={idx}
             resolution={resolution}
             guide={guide}
             scenario={scenario}
             scenarioState={scenarioState}
           />
-        )) }
+        ))) }
       </View>
     );
   }

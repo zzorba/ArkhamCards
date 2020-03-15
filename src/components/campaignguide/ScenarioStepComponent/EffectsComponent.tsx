@@ -6,14 +6,12 @@ import {
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import CardWrapper from '../CardWrapper';
-import SetupStepWrapper from '../SetupStepWrapper';
+import CardWrapper from './CardWrapper';
 import { isSpecialToken } from 'constants';
 import Card from 'data/Card';
-import { AddCardEffect, RemoveCardEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect, InvestigatorSelector } from 'data/scenario/types';
+import { EarnXpEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect, InvestigatorSelector } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import CardTextComponent from 'components/card/CardTextComponent';
-import typography from 'styles/typography';
 
 interface Props {
   effects?: Effect[];
@@ -69,8 +67,11 @@ export default class EffectsComponent extends React.Component<Props> {
     return <Text>Unknown Campaign Log Effect</Text>
   }
 
+  renderEarnXpEffect(effect: EarnXpEffect) {
+    return null;
+  }
+
   renderEffect(effect: Effect) {
-    const { input } = this.props;
     switch (effect.type) {
       case 'campaign_log': {
         return this.renderCampaignLogEffect(effect);
@@ -80,8 +81,8 @@ export default class EffectsComponent extends React.Component<Props> {
         return this.renderChaosTokenEffect(effect);
       }
       case 'earn_xp':
+        return this.renderEarnXpEffect(effect);
       case 'campaign_data':
-        return <Text>Effect: {effect.type}</Text>;
       case 'remove_card':
       case 'add_card':
       case 'replace_card':

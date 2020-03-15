@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { map } from 'lodash';
 
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 
 interface Props {

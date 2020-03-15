@@ -574,6 +574,67 @@ export interface RemoveFilterSetAction {
   id: string;
 }
 
+export const GUIDE_SET_DECISION = 'GUIDE_SET_DECISION';
+export interface GuideSetDecisionAction {
+  type: typeof GUIDE_SET_DECISION;
+  campaignId: number;
+  scenarioId: string;
+  stepId: string;
+  decision: boolean;
+}
+
+export const GUIDE_CLEAR_DECISION = 'GUIDE_CLEAR_DECISION';
+export interface GuideClearDecisionAction {
+  type: typeof GUIDE_CLEAR_DECISION;
+  campaignId: number;
+  scenarioId: string;
+  stepId: string;
+}
+
+export const GUIDE_SET_COUNT = 'GUIDE_SET_COUNT';
+export interface GuideSetCountAction {
+  type: typeof GUIDE_SET_COUNT;
+  campaignId: number;
+  scenarioId: string;
+  stepId: string;
+  count: number;
+}
+
+export const GUIDE_CLEAR_COUNT = 'GUIDE_CLEAR_COUNT';
+export interface GuideClearCountAction {
+  type: typeof GUIDE_CLEAR_COUNT;
+  campaignId: number;
+  scenarioId: string;
+  stepId: string;
+}
+
+export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
+export interface GuideResetScenarioAction {
+  type: typeof GUIDE_RESET_SCENARIO;
+  campaignId: number;
+  scenarioId: string;
+}
+
+export interface ScenarioDecision {
+  type: 'decision';
+  step: string;
+  decision: boolean;
+}
+
+export interface ScenarioCampaignLogEntry {
+
+}
+
+export interface ScenarioState {
+
+}
+
+export interface GuideState {
+  scenarios: {
+    [scenarioId: string]: ScenarioState;
+  };
+}
+
 export type FilterActions =
   ClearFilterAction |
   ToggleFilterAction |
@@ -621,3 +682,11 @@ export type CampaignActions =
   EditCampaignScenarioResultAction |
   SetAllCampaignsAction |
   UpdateChaosBagResultsAction;
+
+export type GuideActions =
+  LogoutAction |
+  GuideSetDecisionAction |
+  GuideClearDecisionAction |
+  GuideSetCountAction |
+  GuideClearCountAction |
+  GuideResetScenarioAction;

@@ -2,7 +2,6 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Text,
 } from 'react-native';
 import { flatMap, forEach, map } from 'lodash';
 import { connectRealm, EncounterSetResults } from 'react-native-realm';
@@ -13,7 +12,6 @@ import { EncounterSetsStep } from 'data/scenario/types';
 import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
 import CardTextComponent from 'components/card/CardTextComponent';
-import typography from 'styles/typography';
 
 interface OwnProps {
   step: EncounterSetsStep;

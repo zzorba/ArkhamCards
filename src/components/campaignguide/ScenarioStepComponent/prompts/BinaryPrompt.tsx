@@ -10,6 +10,7 @@ import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioStateHelper from '../../ScenarioStateHelper';
 import StepsComponent from '../../StepsComponent';
+import ResolutionComponent from '../../ResolutionComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
@@ -47,15 +48,10 @@ export default class BinaryPrompt extends React.Component<Props> {
     return (
       <>
         <CardTextComponent text={text} />
-        { scenarioState.hasDecision(id) ? (
+        { scenarioState.hasDecision(id) && (
           <Text>
             { scenarioState.decision(id) ? t`Yes` : t`No` }
           </Text>
-        ) : (
-          <>
-            <Button title="Yes" onPress={this._yes} />
-            <Button title="No" onPress={this._no} />
-          </>
         ) }
       </>
     );
@@ -76,7 +72,6 @@ export default class BinaryPrompt extends React.Component<Props> {
   renderResult(stepsOnly: boolean, choice: Option | Choice) {
     const { scenario, scenarioState, guide } = this.props;
     if (choice.steps) {
-
       return stepsOnly ? (
         <StepsComponent
           steps={choice.steps}
@@ -95,6 +90,21 @@ export default class BinaryPrompt extends React.Component<Props> {
       );
     }
     if (choice.resolution) {
+      if (!stepsOnly) {
+        return null;
+      }
+      const nextResolution = scenario.resolution(choice.resolution);
+      if (nextResolution) {
+        return (
+          <ResolutionComponent
+            resolution={nextResolution}
+            guide={guide}
+            scenario={scenario}
+            scenarioState={scenarioState}
+            secondary
+          />
+        );
+      }
       return stepsOnly ? null : (
         <Text>Resolution {choice.resolution}</Text>
       )
@@ -103,6 +113,7 @@ export default class BinaryPrompt extends React.Component<Props> {
   }
 
   render() {
+    const { id, scenarioState } = this.props;
     return (
       <>
         <SetupStepWrapper>
@@ -110,6 +121,12 @@ export default class BinaryPrompt extends React.Component<Props> {
           { this.renderCorrectResults(false) }
         </SetupStepWrapper>
         { this.renderCorrectResults(true) }
+        { !scenarioState.hasDecision(id) && (
+         <>
+           <Button title="Yes" onPress={this._yes} />
+           <Button title="No" onPress={this._no} />
+         </>
+        ) }
       </>
     );
   }

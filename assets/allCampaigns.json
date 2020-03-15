@@ -440,23 +440,18 @@
     },
     {
       "id": "proceed_undimensioned_and_unseen",
+      "text": "Proceed to <b>Scenario V: Undimensioned and Unseen.</b>",
       "effects": [
         {
           "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "undimensioned_and_unseen"
+          "setting": "skip_scenario",
+          "scenario": "survivors"
         }
       ]
     },
     {
       "id": "proceed_survivors",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "survivors"
-        }
-      ]
+      "text": "Proceed to <b>Interlude II: The Survivors.</b>"
     },
     {
       "id": "check_henry_armitage",
@@ -1005,7 +1000,7 @@
     },
     {
       "id": "earn_warren_rice",
-      "text": "Any one investigator may choose to add Professor Warren Rice to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1081,23 +1076,11 @@
     },
     {
       "id": "proceed_house_always_wins",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "the_house_always_wins"
-        }
-      ]
+      "text": "Proceed to <b>Scenario I–B: The House Always Wins</b>."
     },
     {
       "id": "proceed_armitages_fate",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "armitages_fate"
-        }
-      ]
+      "text": "Proceed to <b>Interlude I: Armitage’s Fate</b>."
     }
   ],
   "resolutions": [
@@ -1215,7 +1198,7 @@
     },
     {
       "id": "trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as he or she never fully recovers from his or her time spent outside the realm of reality.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as he or she never fully recovers from their time spent outside the realm of reality.",
       "effects": [
         {
           "type": "trauma",
@@ -1255,6 +1238,11 @@
           "type": "campaign_data",
           "setting": "result",
           "value": "lose"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "epilogue"
         }
       ]
     },
@@ -1266,11 +1254,6 @@
           "type": "campaign_data",
           "setting": "result",
           "value": "win"
-        },
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "epilogue"
         }
       ]
     },
@@ -1282,11 +1265,6 @@
           "type": "campaign_data",
           "setting": "result",
           "value": "win"
-        },
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "epilogue"
         }
       ]
     },
@@ -1884,7 +1862,7 @@
     },
     {
       "id": "earn_francis_morgan",
-      "text": "Any one investigator may choose to add Dr. Francis Morgan to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1945,23 +1923,11 @@
     },
     {
       "id": "proceed_extracurricular_activity",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "extracurricular_activity"
-        }
-      ]
+      "text": "Proceed to <b>Scenario I–A: Extracurricular Activity</b>."
     },
     {
       "id": "proceed_armitages_fate",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "armitages_fate"
-        }
-      ]
+      "text": "Proceed to <b>Interlude I: Armitage’s Fate</b>."
     }
   ],
   "resolutions": [
@@ -4668,7 +4634,7 @@
     },
     {
       "id": "set_aside_man_in_pallid_mask",
-      "text": "The bearer of The Man in the Pallid Mask weakness searches his or her deck for it and sets it aside, out of play."
+      "text": "The bearer of The Man in the Pallid Mask weakness searches their deck for it and sets it aside, out of play."
     },
     {
       "id": "set_aside_cards",
@@ -4742,7 +4708,7 @@
     },
     {
       "id": "take_horror",
-      "text": "Each investigator takes direct horror equal to half his or her sanity, rounded down (<i>cannot be prevented</i>). This horror cannot cause you to become defeated (see “Sanity in the Realm of Carcosa,” below)."
+      "text": "Each investigator takes direct horror equal to half their sanity, rounded down (<i>cannot be prevented</i>). This horror cannot cause you to become defeated (see “Sanity in the Realm of Carcosa,” below)."
     },
     {
       "id": "encounter_deck",
@@ -4772,7 +4738,7 @@
     },
     {
       "id": "record_possessed_investigators",
-      "text": " In your Campaign Log, record the names of each investigator who ended the game with at least 1 copy of the Possession treachery in his or her hand.",
+      "text": " In your Campaign Log, record the names of each investigator who ended the game with at least 1 copy of the Possession treachery in their hand.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -4797,7 +4763,7 @@
     },
     {
       "id": "take_mental_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as he or she never fully recovers from his or her time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 mental trauma, as he or she never fully recovers from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -4808,7 +4774,7 @@
     },
     {
       "id": "take_physical_trauma",
-      "text": "Each investigator suffers 2 physical trauma, as he or she never fully recovers from his or her time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 physical trauma, as he or she never fully recovers from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -4819,7 +4785,7 @@
     },
     {
       "id": "take_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as he or she never fully recovers from his or her time spent in Carcosa, the realm of madness.",
+      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as he or she never fully recovers from their time spent in Carcosa, the realm of madness.",
       "effects": [
         {
           "type": "trauma",
@@ -4831,7 +4797,7 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as he or she has truimphed over his or her own self—the most dangerous of foes.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as he or she has truimphed over their own self—the most dangerous of foes.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -4847,7 +4813,7 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as he or she has learned the truth behind <i>The King in Yellow</i>.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as he or she has learned the truth behind <u>The King in Yellow</u>.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -4910,6 +4876,11 @@
           "type": "campaign_data",
           "setting": "result",
           "value": "lose"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "epilogue"
         }
       ]
     },
@@ -4953,35 +4924,6 @@
           "resolution": "R5"
         }
       ]
-    },
-    {
-      "id": "proceed_epilogue",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "possessed"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": []
-        },
-        {
-          "default": true,
-          "steps": ["epilogue"]
-        }
-      ]
-    },
-    {
-      "id": "epilogue",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "epilogue"
-        }
-      ]
     }
   ],
   "resolutions": [
@@ -4994,19 +4936,19 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You stand atop the balcony of the abbey tower in Mont Saint-Michel, wet wind coursing through your hair. The Pallid Mask lies in your hands, devoid of warmth. You can scarcely bring yourself to look at it. You remember everything now—how it all began, how it ended, and everything in between. There is only one thing left to do. You hurl the mask into the air with all of your strength and watch as it flies into the tempest-tossed waves below.",
-      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_and_mental_trauma", "earn_xp_triumph", "win", "proceed_epilogue"]
+      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_and_mental_trauma", "earn_xp_triumph", "win"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "A roar of applause startles you awake. The crowd of the theatre rises to their feet, cheering endlessly. Several patrons in the front row are throwing roses to the actors on stage, who are bowing with wide smiles across their faces. A searing headache crawls through your temples. How did you get back here? Were you in the theatre all along? What about the dinner party? The asylum? The catacombs?... Carcosa? Was it all just a terrible dream?\nYou exit the auditorium before the crowd rushes to do the same. Dizziness and exhaustion harries your senses. The weight of your lengthy investigation is crushing your mind. By the time you finally reach the lobby, you are clawing your way across the ground. Just then, a man in an elegant suit reaches down and grabs you by your arm, pulling you to your feet. You are about to thank him when you realize who he is. The sight of him causes you to stagger backward in horror momentarily. The actor who plays the role of the Stranger is still wearing his pale, featureless mask. He gives you a wordless bow, then turns and leaves through the Ward Theatre’s front entrance.",
-      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_mental_trauma", "earn_xp_truth", "win", "proceed_epilogue"]
+      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_mental_trauma", "earn_xp_truth", "win"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you have escaped. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of the sun. You stand overlooking beautiful Mont Saint-Michel. Seagulls fly over the abbey under a backdrop of cloudless sky. The waters around the abbey are calm and azure-blue.\n“I’ve been looking all over for you!” You hear a voice exclaim behind you. You turn with a startle. For a moment you expect to see the Stranger and his Pallid Mask, but instead, the boat captain you’d hired to take you to Mont Saint-Michel stands at the edge of the steps, smiling at you. “Are you ready to head back?”",
-      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_trauma", "earn_xp_truth", "win", "proceed_epilogue"]
+      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_trauma", "earn_xp_truth", "win"]
     },
     {
       "id": "R4",
@@ -5403,7 +5345,7 @@
   "interlude": true,
   "setup": [
     "possessed_warning",
-    "possessed"
+    "check_epilogue"
   ],
   "steps": [
     {
@@ -5411,9 +5353,28 @@
       "text": "Check Campaign Log. If at least one investigator was possessed, <b>only those investigators</b> read this epilogue. Do not read it out loud unless all investigators were possessed."
     },
     {
+      "id": "check_epilogue",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "possessed"
+      },
+      "options": [
+        {
+          "numCondition": 0,
+          "steps": []
+        },
+        {
+          "default": true,
+          "steps": ["possessed"]
+        }
+      ]
+    },
+    {
       "id": "possessed",
       "type": "story",
-      "text": "It has taken months of preparation, but you are finally ready to unveil your latest work to the world. Gathering financial investments was your first task, of course. That hadn’t taken too long given the connections you’d made during your stay in Paris. You have been assured that the cast assembled is the finest that money could afford, but still you strive to make everything perfect. It must be perfect. The story must be told, so that the world knows. You’ve heard the troupe whisper behind your back: the remarks about your bizarre passion, the concern about your piercing yellow eyes. It matters not to you. All you care about is the performance. The pronunciation of the words. The melody of Cassilda’s song. The design of the Stranger’s mask.\nThis would be the greatest performance of <i>The King in Yellow</i> ever."
+      "text": "It has taken months of preparation, but you are finally ready to unveil your latest work to the world. Gathering financial investments was your first task, of course. That hadn’t taken too long given the connections you’d made during your stay in Paris. You have been assured that the cast assembled is the finest that money could afford, but still you strive to make everything perfect. It must be perfect. The story must be told, so that the world knows. You’ve heard the troupe whisper behind your back: the remarks about your bizarre passion, the concern about your piercing yellow eyes. It matters not to you. All you care about is the performance. The pronunciation of the words. The melody of Cassilda’s song. The design of the Stranger’s mask.\nThis would be the greatest performance of <u>The King in Yellow</u> ever."
     }
   ]
 }

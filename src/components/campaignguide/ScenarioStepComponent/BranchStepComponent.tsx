@@ -24,7 +24,6 @@ import {
 } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
-import CardTextComponent from 'components/card/CardTextComponent';
 
 interface Props {
   scenarioState: ScenarioStateHelper;
@@ -49,7 +48,7 @@ export default class BranchStepComponent extends React.Component<Props> {
     | CampaignDataScenarioCondition
     | CampaignDataChaosBagCondition
   ) {
-    const { guide } = this.props;
+    const { step, guide, scenario, scenarioState } = this.props;
     switch (condition.campaign_data) {
       case 'difficulty':
         return (
@@ -58,12 +57,18 @@ export default class BranchStepComponent extends React.Component<Props> {
           </Text>
         );
       case 'scenario_completed': {
-        const scenario = guide.getScenario(condition.scenario);
+        const chosenScenario = guide.getScenario(condition.scenario);
         const scenarioName =
-          scenario && scenario.scenario.scenarioName || condition.scenario;
+          chosenScenario && chosenScenario.scenario.scenarioName || condition.scenario;
         return (
-          <CardTextComponent
-            text={t`If you have already completed ${scenarioName}`}
+          <BinaryPrompt
+            id={step.id}
+            text={t`Have you have already completed ${scenarioName}?`}
+            trueResult={find(step.options, option => option.boolCondition === true)}
+            falseResult={find(step.options, option => option.boolCondition === false)}
+            guide={guide}
+            scenario={scenario}
+            scenarioState={scenarioState}
           />
         );
       }

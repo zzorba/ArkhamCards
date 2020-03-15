@@ -1,21 +1,14 @@
 import React from 'react';
 import {
-  Button,
   Text,
 } from 'react-native';
-import { map } from 'lodash';
-import { t } from 'ttag';
 
-import BinaryPrompt from '../prompts/BinaryPrompt';
-import NumberPrompt from '../prompts/NumberPrompt';
-import InputCounter from './InputCounter';
-import SetupStepWrapper from '../SetupStepWrapper';
+import BinaryPrompt from './prompts/BinaryPrompt';
+import NumberPrompt from './prompts/NumberPrompt';
 import { InputStep } from 'data/scenario/types';
-import ScenarioStateHelper from '../../ScenarioStateHelper';
+import ScenarioStateHelper from '../ScenarioStateHelper';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
-import CardTextComponent from 'components/card/CardTextComponent';
-import typography from 'styles/typography';
 
 interface Props {
   step: InputStep;

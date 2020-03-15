@@ -1,18 +1,15 @@
 import React from 'react';
 import {
-  Alert,
   Button,
-  ScrollView,
-  Share,
   StyleSheet,
   View,
   Text,
 } from 'react-native';
-import { find, flatMap, map } from 'lodash';
+import { t} from 'ttag';
 
 import StepsComponent from './StepsComponent';
-import ScenarioStepComponent from './ScenarioStepComponent';
 import ScenarioStateHelper from './ScenarioStateHelper';
+import BinaryPrompt from './ScenarioStepComponent/prompts/BinaryPrompt';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
@@ -24,13 +21,14 @@ interface Props {
   scenario: ScenarioGuide;
   resolution: Resolution;
   scenarioState: ScenarioStateHelper;
+  secondary?: boolean;
 }
 
 interface State {
   expanded: boolean;
 }
 
-export default class ScenarioResolutionComponent extends React.Component<Props, State> {
+export default class ResolutionComponent extends React.Component<Props, State> {
   state: State = {
     expanded: false,
   };
@@ -48,6 +46,19 @@ export default class ScenarioResolutionComponent extends React.Component<Props, 
       );
     }
     if (resolution.resolution) {
+      const nextResolution = scenario.resolution(resolution.resolution);
+      if (nextResolution) {
+        return (
+          <ResolutionComponent
+            resolution={nextResolution}
+            guide={guide}
+            scenario={scenario}
+            scenarioState={scenarioState}
+            secondary
+          />
+        );
+      }
+
       return (
         <Text>
           Proceed to Resolution {resolution.resolution}
@@ -64,8 +75,8 @@ export default class ScenarioResolutionComponent extends React.Component<Props, 
   };
 
   render() {
-    const { resolution } = this.props;
-    if (!this.state.expanded) {
+    const { resolution, guide, scenario, scenarioState, secondary } = this.props;
+    if (!this.state.expanded && !secondary) {
       return (
         <Button title={resolution.title} onPress={this._show} />
       );
@@ -77,6 +88,19 @@ export default class ScenarioResolutionComponent extends React.Component<Props, 
             {resolution.title}
           </Text>
         </View>
+        { !secondary && !!defeatResolution && (
+          <BinaryPrompt
+            id="investigator_defeat_resolution"
+            text={t`Were any investigators defeated?`}
+            trueResult={{
+              text: t`The defeated investigators must read <b>Investigator Defeat</b> first`,
+              resolution: 'investigator_defeat',
+            }}
+            guide={guide}
+            scenario={scenario}
+            scenarioState={scenarioState}
+          />
+        ) }
         { !!resolution.text && (
           <View style={styles.wrapper}>
             <CardFlavorTextComponent

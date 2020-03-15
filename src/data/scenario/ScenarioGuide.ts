@@ -1,6 +1,6 @@
 import { find } from 'lodash';
 
-import { Step, Scenario } from './types';
+import { Step, Scenario, Resolution } from './types';
 
 
 /**
@@ -14,5 +14,9 @@ export default class ScenarioGuide {
 
   step(id: string): Step | undefined {
     return find(this.scenario.steps, step => step.id === id);
+  }
+
+  resolution(id: string): Resolution | undefined {
+    return find(this.scenario.resolutions || [], resolution => resolution.id === id);
   }
 }

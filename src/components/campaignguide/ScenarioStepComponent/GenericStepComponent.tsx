@@ -1,8 +1,6 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 
 import BulletsComponent from './BulletsComponent';
@@ -11,7 +9,6 @@ import SetupStepWrapper from './SetupStepWrapper';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import { GenericStep } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
-import typography from 'styles/typography';
 
 interface Props {
   step: GenericStep;
