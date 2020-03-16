@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import ScenarioGuideContext from './ScenarioGuideContext';
-import ScenarioStateHelper, { ScenarioStateActions } from './ScenarioStateHelper';
+import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
+import ScenarioStateHelper from './ScenarioStateHelper';
 import { setScenarioCount, setScenarioDecision } from './actions';
+import { InvestigatorDeck } from './types';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
 import { SingleCampaign, Deck, ScenarioState } from 'actions/types';
 import { getCampaignGuide } from 'data/scenario';
@@ -122,29 +123,30 @@ export default function withCampaignDataContext<Props>(
       }
       const scenarioGuide = campaignGuide.getScenario(scenarioId);
       if (!scenarioGuide) {
-        return <Text>Unknown scenario: {scenarioId}</Text>;
+        return <Text>Unknown scenario: { scenarioId }</Text>;
       }
-      const investigatorDecks = flatMap(decks, deck => {
+      const investigatorDecks: InvestigatorDeck[] = flatMap(decks, deck => {
         const investigator = investigators[deck.investigator_code];
         if (!investigator) {
-          return null;
+          return [];
         }
         return {
           deck,
           investigator,
         };
       });
-
+      const context: ScenarioGuideContextType = {
+        campaign,
+        campaignGuide,
+        scenarioGuide,
+        investigatorDecks,
+        scenarioState: new ScenarioStateHelper(scenarioState, {
+          setCount: this._setScenarioCount,
+          setDecision: this._setScenarioDecision,
+        }),
+      };
       return (
-        <ScenarioGuideContext.Provider value={{
-          campaignGuide,
-          scenarioGuide,
-          investigatorDecks,
-          scenarioState: new ScenarioStateHelper(scenarioState, {
-            setCount: this._setScenarioCount,
-            setDecision: this._setScenarioDecision,
-          }),
-        }}>
+        <ScenarioGuideContext.Provider value={context}>
           <WrappedComponent {...this.props as Props} />
         </ScenarioGuideContext.Provider>
       );

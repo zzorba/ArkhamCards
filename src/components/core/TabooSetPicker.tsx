@@ -4,8 +4,9 @@ import Realm, { Results } from 'realm';
 import { connectRealm, TabooSetResults } from 'react-native-realm';
 import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
+// @ts-ignore
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import Card from 'data/Card';
 import TabooSet from 'data/TabooSet';
 import { COLORS } from 'styles/colors';
 
@@ -112,6 +113,13 @@ class TabooSetPicker extends React.Component<Props> {
         containerStyle={transparent ? {
           backgroundColor: 'transparent',
         } : undefined}
+        widget={transparent ? (
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={30}
+            color={COLORS.darkGray}
+          />
+        ) : undefined}
       />
     );
   }

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Button,
-  StyleSheet,
   Text,
 } from 'react-native';
 import { t } from 'ttag';
@@ -25,6 +24,8 @@ interface Props {
 
 export default class BinaryPrompt extends React.Component<Props> {
   static contextType = ScenarioGuideContext;
+  context!: ScenarioGuideContextType;
+
   _yes = () => {
     const {
       id,
@@ -102,8 +103,8 @@ export default class BinaryPrompt extends React.Component<Props> {
         );
       }
       return stepsOnly ? null : (
-        <Text>Resolution {choice.resolution}</Text>
-      )
+        <Text>Resolution { choice.resolution }</Text>
+      );
     }
     return <Text>Unknown!</Text>;
   }
@@ -120,21 +121,14 @@ export default class BinaryPrompt extends React.Component<Props> {
             </SetupStepWrapper>
             { this.renderCorrectResults(scenarioGuide, scenarioState, true) }
             { !scenarioState.hasDecision(id) && (
-             <>
-               <Button title="Yes" onPress={this._yes} />
-               <Button title="No" onPress={this._no} />
-             </>
+              <>
+                <Button title="Yes" onPress={this._yes} />
+                <Button title="No" onPress={this._no} />
+              </>
             ) }
           </>
-        )}
+        ) }
       </ScenarioGuideContext.Consumer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  margin: {
-    marginLeft: 32,
-    marginRight :32,
-  },
-})

@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native';
 import { find } from 'lodash';
-import { t } from 'ttag';
 
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
@@ -34,6 +33,7 @@ interface State {
 
 export default class NumberPrompt extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
+  context!: ScenarioGuideContextType;
 
   constructor(props: Props) {
     super(props);
@@ -71,21 +71,24 @@ export default class NumberPrompt extends React.Component<Props, State> {
     return (
       <View style={styles.count}>
         <Text style={[typography.bigGameFont, typography.center]}>
-          {this.state.value}
+          { this.state.value }
         </Text>
       </View>
     );
   }
 
   renderPrompt(scenarioState: ScenarioStateHelper) {
-    const { id, prompt } = this.props;
+    const { id, prompt, text } = this.props;
     return (
       <>
         <CardTextComponent text={prompt} />
         { scenarioState.hasCount(id) ? (
-          <Text>
-            { scenarioState.count(id) }
-          </Text>
+          <>
+            <Text>
+              { scenarioState.count(id) }
+            </Text>
+            { !!text && <CardTextComponent text={text} /> }
+          </>
         ) : (
           <>
             <PlusMinusButtons
@@ -109,7 +112,6 @@ export default class NumberPrompt extends React.Component<Props, State> {
       id,
       options,
       effects,
-      text,
     } = this.props;
     if (options) {
       if (!scenarioState.hasCount(id)) {
@@ -123,8 +125,10 @@ export default class NumberPrompt extends React.Component<Props, State> {
       return this.renderResult(stepsOnly, theOption);
     }
     if (effects && !stepsOnly) {
+      // We summarize the text of the effects in the guide text for number
+      // inputs.
       return (
-        <EffectsComponent effects={effects} />
+        <EffectsComponent effects={effects} skipCampaignLog />
       );
     }
     return null;
@@ -145,20 +149,18 @@ export default class NumberPrompt extends React.Component<Props, State> {
     }
     if (choice.resolution) {
       return stepsOnly ? null : (
-        <Text>Resolution {choice.resolution}</Text>
-      )
+        <Text>Resolution { choice.resolution }</Text>
+      );
     }
     return <Text>Unknown!</Text>;
   }
 
   render() {
-    const { text } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => (
           <>
             <SetupStepWrapper>
-              { !!text && <CardTextComponent text={text} /> }
               { this.renderPrompt(scenarioState) }
               { this.renderCorrectResults(scenarioState, false) }
             </SetupStepWrapper>
@@ -171,10 +173,6 @@ export default class NumberPrompt extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-  margin: {
-    marginLeft: 32,
-    marginRight :32,
-  },
   count: {
     paddingLeft: 4,
     paddingRight: 4,

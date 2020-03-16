@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 import { every, find } from 'lodash';
@@ -65,7 +64,9 @@ export default class BranchStepComponent extends React.Component<Props> {
       }
       case 'chaos_bag':
         return (
-          <Text>Check Chaos Bag: {condition.campaign_data}</Text>
+          <Text>
+            Check Chaos Bag: { condition.campaign_data }
+          </Text>
         );
     }
   }
@@ -85,7 +86,9 @@ export default class BranchStepComponent extends React.Component<Props> {
       );
     }
     if (condition.scenario_data === 'investigator' &&
-      step.options.length === 1 && step.options[0].condition)  {
+      step.options.length === 1 &&
+      step.options[0].condition
+    ) {
       return (
         <CardWrapper
           code={step.options[0].condition}
@@ -101,7 +104,7 @@ export default class BranchStepComponent extends React.Component<Props> {
       );
     }
     return (
-      <Text>Scenario Data: {condition.scenario_data}</Text>
+      <Text>Scenario Data: { condition.scenario_data }</Text>
     );
   }
 
@@ -114,7 +117,7 @@ export default class BranchStepComponent extends React.Component<Props> {
         if (!logEntry) {
           return (
             <Text>
-              Unknown campaign log {condition.section}.{condition.id}
+              Unknown campaign log { condition.section }.{ condition.id }
             </Text>
           );
         }
@@ -152,18 +155,10 @@ export default class BranchStepComponent extends React.Component<Props> {
     }
     // Not a binary condition.
     return (
-      <Text>A more complex Campaign Log branch of some sort</Text>
-    );
-    /*
-
-    if (condition.section) {
-      // Just a section.
-    }
-    return (
       <Text>
-        Check Campaign Log: {condition.section} {condition.id}
+        A more complex Campaign Log branch of some sort
       </Text>
-    );*/
+    );
   }
 
   investigatorCardCondition(card: Card, investigator?: InvestigatorSelector) {
@@ -199,7 +194,6 @@ export default class BranchStepComponent extends React.Component<Props> {
         )}
       />
     );
-    return null;
   }
 
   render() {
@@ -220,18 +214,15 @@ export default class BranchStepComponent extends React.Component<Props> {
             case 'has_card': {
               return this.hasCardCondition(condition);
             }
-            default: return <Text>{condition.type}</Text>;
+            default:
+              return (
+                <Text>
+                  { condition.type }
+                </Text>
+              );
           }
-        }}
+        } }
       </ScenarioGuideContext.Consumer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  step: {
-    flexDirection: 'row',
-    marginLeft: 16,
-    marginRight: 16,
-  },
-})

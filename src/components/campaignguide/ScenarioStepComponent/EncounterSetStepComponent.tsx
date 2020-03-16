@@ -33,7 +33,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
       <SetupStepWrapper>
         <CardTextComponent text={text} />
         <View style={styles.iconPile}>
-          {map(encounterSets, set => (
+          { map(encounterSets, set => (
             <View style={styles.icon} key={set.code}>
               <EncounterIcon
                 encounter_code={set.code}
@@ -80,7 +80,7 @@ export default connectRealm<OwnProps, RealmProps, EncounterSet>(
       };
     },
   }
-)
+);
 
 const styles = StyleSheet.create({
   iconPile: {
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
     marginRight: 16,
     marginBottom: 16,
   },
-})
+});

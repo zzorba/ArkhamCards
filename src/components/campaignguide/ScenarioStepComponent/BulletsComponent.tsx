@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   View,
 } from 'react-native';
 import { map } from 'lodash';
@@ -23,11 +22,3 @@ export default function BulletsComponent({ bullets }: Props) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  step: {
-    flexDirection: 'row',
-    marginLeft: 16,
-    marginRight: 16,
-  },
-})

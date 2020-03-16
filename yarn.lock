@@ -9598,9 +9598,9 @@ react-native-ratings@^6.3.0:
     pluralize "5.0.0"
     prop-types "15.5.10"
 
-"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#item_color_and_programmatic_open":
+"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#add_tap_widget":
   version "0.0.2"
-  resolved "https://github.com/zzorba/react-native-settings-components#0ca4140966018f055dc27c68a0e1134e39b55420"
+  resolved "https://github.com/zzorba/react-native-settings-components#91f6baeebaec357252c090cde50db40daf48c657"
   dependencies:
     lodash "^4.17.11"
     react-native-dialogs "^1.0.2"

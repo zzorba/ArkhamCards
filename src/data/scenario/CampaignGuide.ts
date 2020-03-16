@@ -14,15 +14,17 @@ export interface CampaignLog {
   }[];
 }
 
-interface LogEntryCard {
-  type: 'card';
+interface LogSection {
   section: string;
+}
+
+interface LogEntryCard extends LogSection {
+  type: 'card';
   code: string;
 }
 
-interface LogEntryText {
+interface LogEntryText extends LogSection {
   type: 'text';
-  section: string;
   text: string;
 }
 
@@ -44,6 +46,19 @@ export default class CampaignGuide {
 
   getScenario(id: string): ScenarioGuide | undefined {
     return find(this.scenarios, scenario => scenario.scenario.id === id);
+  }
+
+  logSection(sectionId: string): LogSection | undefined {
+    const section = find(
+      this.campaign.campaign.campaign_log,
+      logSection => logSection.id === sectionId
+    );
+    if (!section) {
+      return undefined;
+    }
+    return {
+      section: section.title,
+    };
   }
 
   logEntry(sectionId: string, id: string): LogEntry | undefined {

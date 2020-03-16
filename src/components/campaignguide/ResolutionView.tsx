@@ -1,19 +1,20 @@
 import React from 'react';
 import {
-  StyleSheet,
+  ScrollView,
 } from 'react-native';
-import { t } from 'ttag';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import ResolutionComponent from './ResolutionComponent';
-import withCampaignDataContext from './withCampaignDataContext';
+import withCampaignDataContext, { CampaignDataInputProps } from './withCampaignDataContext';
 import { Resolution } from 'data/scenario/types';
 
 interface Props {
   resolutionId: string;
 }
 
-class ScenarioResolutionView extends React.Component<Props> {
+export type ResolutionProps = Props & CampaignDataInputProps;
+
+class ResolutionView extends React.Component<Props> {
   renderResolution(resolution: Resolution) {
     return (
       <ResolutionComponent
@@ -31,20 +32,17 @@ class ScenarioResolutionView extends React.Component<Props> {
           if (!resolution) {
             return null;
           }
-          return this.renderResolution(resolution);
-        }}
+          return (
+            <ScrollView>
+              { this.renderResolution(resolution) }
+            </ScrollView>
+          );
+        } }
       </ScenarioGuideContext.Consumer>
-    )
+    );
   }
 }
 
 export default withCampaignDataContext<Props>(
-  ScenarioResolutionView
+  ResolutionView
 );
-
-const styles = StyleSheet.create({
-  wrapper: {
-    marginLeft: 16,
-    marginRight: 16,
-  },
-})

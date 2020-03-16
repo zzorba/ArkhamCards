@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 import { connectRealm, CardResults } from 'react-native-realm';
@@ -20,9 +19,9 @@ type Props = OwnProps & RealmProps;
 
 class CardWrapper extends React.Component<Props> {
   render() {
-    const { render, card, code} = this.props;
+    const { render, card, code } = this.props;
     if (!card) {
-      return <Text>Unknown {code}</Text>;
+      return <Text>Unknown { code }</Text>;
     }
     return render(card);
   }
@@ -47,18 +46,4 @@ export default connectRealm<OwnProps, RealmProps, Card>(
       return {};
     },
   }
-)
-
-const styles = StyleSheet.create({
-  iconPile: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
-    marginTop: 16,
-  },
-  icon: {
-    marginLeft: 16,
-    marginRight: 16,
-    marginBottom: 16,
-  },
-})
+);

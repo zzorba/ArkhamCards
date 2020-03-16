@@ -12,7 +12,6 @@ import { t } from 'ttag';
 
 import Card from 'data/Card';
 import TabooSet from 'data/TabooSet';
-import FaqEntry from 'data/FaqEntry';
 import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from 'components/nav/types';
 import { l, m, xs, s } from 'styles/space';

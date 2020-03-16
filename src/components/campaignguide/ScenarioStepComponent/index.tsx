@@ -3,7 +3,6 @@ import {
   Text,
 } from 'react-native';
 
-import ScenarioStateHelper from '../ScenarioStateHelper';
 import BranchStepComponent from './BranchStepComponent';
 import EncounterSetStepComponent from './EncounterSetStepComponent';
 import GenericStepComponent from './GenericStepComponent';

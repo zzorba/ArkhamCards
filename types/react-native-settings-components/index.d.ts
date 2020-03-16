@@ -69,7 +69,9 @@ declare module 'react-native-settings-components' {
     multi?: boolean;
     renderCloseButton?: () => React.Component;
     singleRadio?: boolean;
+    widget?: React.ReactNode;
   }
+
   class SettingsPicker<T> extends React.Component<SettingsPickerProps<T>> {
     openModal: () => void;
     closeModal: () => void;

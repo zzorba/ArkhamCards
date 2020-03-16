@@ -2,6 +2,8 @@ import React from 'react';
 import { map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
+// @ts-ignore
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { FactionCodeType, FACTION_COLORS } from 'constants';
 import Card from 'data/Card';
@@ -86,6 +88,13 @@ export default class FactionSelectPicker extends React.Component<Props> {
         containerStyle={{
           backgroundColor: 'transparent',
         }}
+        widget={
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={30}
+            color={COLORS.darkGray}
+          />
+        }
       />
     );
   }

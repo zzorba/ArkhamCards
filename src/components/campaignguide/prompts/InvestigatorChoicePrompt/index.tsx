@@ -1,23 +1,13 @@
 import React from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import { Button } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
 import InvestigatorChoiceComponent from './InvestigatorChoiceComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import EffectsComponent from '../../EffectsComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import ScenarioStateHelper from '../../ScenarioStateHelper';
-import StepsComponent from '../../StepsComponent';
-import ResolutionComponent from '../../ResolutionComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
-import { Choice, Option } from 'data/scenario/types';
+import { Choice } from 'data/scenario/types';
 
 interface Props {
   id: string;
@@ -50,6 +40,10 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     });
   };
 
+  _save = () => {
+
+  };
+
   render() {
     const { choices, text, optional } = this.props;
     const { selectedChoice } = this.state;
@@ -72,16 +66,10 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
                 />
               );
             }) }
+            <Button title={t`Save`} onPress={this._save} />
           </>
         ) }
       </ScenarioGuideContext.Consumer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  margin: {
-    marginLeft: 32,
-    marginRight :32,
-  },
-})

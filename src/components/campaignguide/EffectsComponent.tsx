@@ -10,7 +10,7 @@ import CardWrapper from './CardWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import { isSpecialToken } from 'constants';
 import Card from 'data/Card';
-import { EarnXpEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect, InvestigatorSelector } from 'data/scenario/types';
+import { EarnXpEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import CardTextComponent from 'components/card/CardTextComponent';
 
@@ -19,6 +19,7 @@ interface Props {
   input?: {
     card?: string;
   };
+  skipCampaignLog?: boolean;
 }
 
 export default class EffectsComponent extends React.Component<Props> {
@@ -35,12 +36,15 @@ export default class EffectsComponent extends React.Component<Props> {
   }
 
   renderCampaignLogEffect(campaignGuide: CampaignGuide, effect: CampaignLogEffect) {
+    if (this.props.skipCampaignLog) {
+      return null;
+    }
     if (effect.id) {
       const logEntry = campaignGuide.logEntry(effect.section, effect.id);
       if (!logEntry) {
         return (
           <Text>
-            Unknown campaign log {effect.section}.
+            Unknown campaign log { effect.section }.
           </Text>
         );
       }
@@ -63,11 +67,16 @@ export default class EffectsComponent extends React.Component<Props> {
         />
       );
     }
-    return <Text>Unknown Campaign Log Effect</Text>
-  }
-
-  renderEarnXpEffect(effect: EarnXpEffect) {
-    return null;
+    // No id, just a section / count
+    const logSection = campaignGuide.logSection(effect.section);
+    if (!logSection) {
+      return (
+        <Text>
+          Unknown campaign log section { effect.section }.
+        </Text>
+      );
+    }
+    return <Text>Campaign Log Section: { logSection.section }</Text>;
   }
 
   renderEffect(campaignGuide: CampaignGuide, effect: Effect) {
@@ -80,7 +89,6 @@ export default class EffectsComponent extends React.Component<Props> {
         return this.renderChaosTokenEffect(effect);
       }
       case 'earn_xp':
-        return this.renderEarnXpEffect(effect);
       case 'campaign_data':
       case 'remove_card':
       case 'add_card':

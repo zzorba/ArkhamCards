@@ -49,7 +49,7 @@
     "react-native-modal": "11.5.4",
     "react-native-navigation": "6.0.1",
     "react-native-realm": "https://github.com/zzorba/react-native-realm.git#02e1952",
-    "react-native-settings-components": "https://github.com/zzorba/react-native-settings-components#item_color_and_programmatic_open",
+    "react-native-settings-components": "https://github.com/zzorba/react-native-settings-components#add_tap_widget",
     "react-native-side-menu": "1.1.3",
     "react-native-svg": "11.0.1",
     "react-native-svg-charts": "5.3.0",

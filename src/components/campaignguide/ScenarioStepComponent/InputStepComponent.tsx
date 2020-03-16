@@ -26,7 +26,7 @@ export default class InputStepComponent extends React.Component<Props> {
             />
           );
         }
-        return <Text>Choose One with {step.input.choices.length}</Text>;
+        return <Text>Choose One with { step.input.choices.length }</Text>;
       case 'counter':
         return (
           <>
@@ -57,8 +57,8 @@ export default class InputStepComponent extends React.Component<Props> {
         );
       default:
         return (
-          <Text>{step.input.type}</Text>
+          <Text>{ step.input.type }</Text>
         );
-      }
+    }
   }
 }

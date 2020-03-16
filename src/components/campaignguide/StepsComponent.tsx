@@ -2,7 +2,6 @@ import React from 'react';
 import { flatMap } from 'lodash';
 
 import ScenarioStepComponent from './ScenarioStepComponent';
-import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 
 interface Props {
@@ -14,7 +13,7 @@ export default class StepsComponent extends React.Component<Props> {
     const {
       steps,
     } = this.props;
-    var reachedBranch = false;
+    let reachedBranch = false;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => {
@@ -36,7 +35,7 @@ export default class StepsComponent extends React.Component<Props> {
               />
             );
           });
-        }}
+        } }
       </ScenarioGuideContext.Consumer>
     );
   }

@@ -9,6 +9,8 @@ import {
   SectionListData,
 } from 'react-native';
 import { t } from 'ttag';
+// @ts-ignore
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import {
   Campaign,
@@ -497,9 +499,16 @@ export default class DeckViewTab extends React.Component<Props> {
           <Text style={typography.settingsLabel}>
             { t`Experience` }
           </Text>
-          <Text style={typography.settingsValue}>
-            { t`${changes.spentXp} of ${adjustedXp}` }
-          </Text>
+          <View style={styles.row}>
+            <Text style={typography.settingsValue}>
+              { t`${changes.spentXp} of ${adjustedXp}` }
+            </Text>
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={30}
+              color={COLORS.darkGray}
+            />
+          </View>
         </View>
       </TouchableOpacity>
     );
@@ -723,7 +732,12 @@ const styles = StyleSheet.create({
   rowBetween: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     paddingTop: s,
     paddingBottom: s,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
