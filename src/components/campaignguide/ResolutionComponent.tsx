@@ -65,6 +65,7 @@ export default class ResolutionComponent extends React.Component<Props> {
           <View style={styles.wrapper}>
             <CardFlavorTextComponent
               text={resolution.text.replace(/\n/g, '\n\n')}
+              color="#222"
             />
           </View>
         ) }

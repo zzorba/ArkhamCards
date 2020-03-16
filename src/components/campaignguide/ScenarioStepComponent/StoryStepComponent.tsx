@@ -19,6 +19,7 @@ export default class StoreStepComponent extends React.Component<Props> {
         { !!step.text && (
           <CardFlavorTextComponent
             text={step.text.replace(/\n/g, '\n\n')}
+            color="#222"
           />
         ) }
       </View>

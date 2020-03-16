@@ -31,6 +31,7 @@
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
+		65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */; };
 		65CF51E0220386F400A1D2FA /* circle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CF51DF220386F400A1D2FA /* circle.ttf */; };
 		65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65D3FA05210FF315000F8B9D /* Teutonic.ttf */; };
 		65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65EB59142047B67600CC5820 /* arkhamicons.ttf */; };
@@ -78,6 +79,7 @@
 		655226C7205EEAF00065A1F7 /* app.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = app.ttf; path = ../assets/app.ttf; sourceTree = "<group>"; };
 		6556782820BA144600C18EC4 /* forgotten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = forgotten.ttf; path = ../assets/forgotten.ttf; sourceTree = "<group>"; };
 		65A43C65233EE33F00A79EA3 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
+		65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AnkeCalligraphicFG.ttf; path = ../assets/AnkeCalligraphicFG.ttf; sourceTree = "<group>"; };
 		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEB2128932A0084A1CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65CA4CEC2128932F0084A1CE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */,
 				65447A8824154F3200961717 /* campaignLogs.json */,
 				65447A8624154F2600961717 /* allCampaigns.json */,
 				652EB741226BAFA800F6D790 /* it.po.json */,
@@ -326,6 +329,7 @@
 				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
 				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
 				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
+				65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */,
 				65447A8724154F2600961717 /* allCampaigns.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,

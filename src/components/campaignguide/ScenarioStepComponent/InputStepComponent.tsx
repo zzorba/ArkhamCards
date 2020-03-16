@@ -5,6 +5,7 @@ import {
 
 import BinaryPrompt from '../prompts/BinaryPrompt';
 import NumberPrompt from '../prompts/NumberPrompt';
+import SuppliesPrompt from '../prompts/SuppliesPrompt';
 import InvestigatorChoicePrompt from '../prompts/InvestigatorChoicePrompt';
 import { InputStep } from 'data/scenario/types';
 
@@ -43,7 +44,13 @@ export default class InputStepComponent extends React.Component<Props> {
       case 'investigator_counter':
         return <Text>Investigator Counter</Text>;
       case 'supplies':
-        return <Text>Supplies</Text>;
+        return (
+          <SuppliesPrompt
+            id={step.id}
+            text={step.text}
+            input={step.input}
+          />
+        );
       case 'use_supplies':
         return <Text>Use Supplies</Text>;
       case 'investigator_choice':

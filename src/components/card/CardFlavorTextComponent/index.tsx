@@ -9,6 +9,7 @@ import { WithText, State } from '../CardTextComponent/types';
 import { isBig } from 'styles/space';
 import { COLORS } from 'styles/colors';
 import FlavorBoldNode from './FlavorBoldNode';
+import FlavorFancyNode from './FlavorFancyNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
 
@@ -48,13 +49,23 @@ const BoldHtmlTagRule: MarkdownRule<WithText, State> = {
   render: FlavorBoldNode,
 };
 
+const FancyHtmlTagRule: MarkdownRule<WithText, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy>(.+?)<\\/fancy>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: FlavorFancyNode,
+};
+
 interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
+  color?: string;
 }
 
 export default function CardFlavorTextComponent(
-  { text, onLinkPress }: Props
+  { text, onLinkPress, color }: Props
 ) {
   // Text that has hyperlinks uses a different style for the icons.
   return (
@@ -67,6 +78,7 @@ export default function CardFlavorTextComponent(
         uTag: UnderlineHtmlTagRule,
         brTag: BreakTagRule,
         citeTag: CiteTagRule,
+        fancyTag: FancyHtmlTagRule,
       }}
       onLinkPress={onLinkPress}
       styles={{
@@ -74,7 +86,7 @@ export default function CardFlavorTextComponent(
           fontSize: isBig ? 24 : 14,
           fontWeight: '400',
           fontStyle: 'italic',
-          color: COLORS.darkGray,
+          color: color || COLORS.darkGray,
         },
       }}
     >
