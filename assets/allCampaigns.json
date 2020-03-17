@@ -10193,11 +10193,8 @@
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
-    "check_ichtaca_in_the_dark",
     "check_found_missing_relic",
-    "check_relic_is_missing",
     "check_rescued_alejandro",
-    "check_alejandro_is_missing",
     "use_gasoline",
     "intro_2",
     "gather_encounter_sets",
@@ -10227,13 +10224,16 @@
           {
             "boolCondition": true,
             "steps": ["ichtacas_quest", "no_ill_effects"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_ichtaca_in_the_dark"]
           }
         ]
       }
     },
     {
       "id": "ichtacas_quest",
-      "title": "Ichtaca's Quest",
       "type": "story",
       "text": "“How close are we?” Ichtaca asks for the hundredth time since departing from Arkham. “We have to get to Anahuac as fast as we can. The longer we take, the more time the Brotherhood has to reach the Nexus.” You recognize the old Aztec name for the Valley of Mexico, and inform Ichtaca that you will be crossing the border into Mexico within the hour. She crosses her arms and grits her teeth."
     },
@@ -10258,7 +10258,6 @@
     },
     {
       "id": "silent_journey",
-      "title": "Silent Journey",
       "type": "story",
       "text": "Ichtaca is quiet and pensive for the majority of your journey. Your questions are met with a wall of silence and a steely glare. Whatever she has planned, you are being left in the dark."
     },
@@ -10277,6 +10276,10 @@
           {
             "boolCondition": true,
             "steps": ["arcane_thrumming", "replace_relic_of_ages"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_relic_is_missing"]
           }
         ]
       }
@@ -10284,7 +10287,6 @@
     {
       "id": "arcane_thrumming",
       "type": "story",
-      "title": "Arcane Thrumming",
       "text": "Throughout the journey south, the device you recovered from the clutches of the Brotherhood continues its endless humming, wrapped in a thin bedsheet on the back seat of your car. Your understanding of the relic’s nature is deepening."
     },
     {
@@ -10316,7 +10318,6 @@
     {
       "id": "growing_concern",
       "type": "story",
-      "title": "Growing Concern",
       "text": "The loss of the Eztli relic weighs heavily on your mind. Clearly, its value is more than simply academic. It holds a power within it that you cannot yet begin to fathom. You are certain that the shadowy Brotherhood is behind its disappearance, but for what purpose?"
     },
     {
@@ -10334,6 +10335,10 @@
           {
             "boolCondition": true,
             "steps": ["alejandros_thoughts", "two_extra_resources"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_alejandro_is_missing"]
           }
         ]
       }
@@ -10341,7 +10346,6 @@
     {
       "id": "alejandros_thoughts",
       "type": "story",
-      "title": "Alejandro's Thoughts",
       "text": "Throughout your journey, Alejandro scribbles endlessly in his journal, the sound of pencil scratching against paper a constant reminder of his presence. He remains huddled in the back seat of the car, his knees keeping the journal still, his brows furrowed in thought. “This ‘Brotherhood’ is the least of our concerns,” he says with an air of finality. “I’ve been trying to decrypt the glyphs the device bears. The symbols are clearly not Aztec, nor Mayan, nor are they from any other Mesoamerican civilization, for that matter. I believe there is some other place the relic belongs. Somewhere it was taken from. Wouldn’t you agree, Miss Ichtaca?”\nIchtaca’s already-grim expression grows darker, her eyes narrowing. She doesn’t bother to turn around in her seat before addressing Alejandro. “It belongs somewhere meddlesome scholars cannot abuse its power,” she replies in a cold tone, and that is the end of the discussion.\nCrossing the border into Mexico is a less stressful endeavor than you imagined it to be, due to Alejandro’s connections. You are waved through customs with nary a stray glance, and soon enough, you are on your way to Mexico City."
     },
     {
@@ -10366,7 +10370,6 @@
     {
       "id": "an_empty_seat",
       "type": "story",
-      "title": "An Empty Seat",
       "text": "Somewhere just north of the border, you stop to rest for the night. Your eyes are drawn to the empty seat behind you, and you wonder where Alejandro is right now."
     },
     {
@@ -10387,7 +10390,6 @@
     },
     {
       "id": "out_of_gas",
-      "title": "Out of Gas",
       "type": "story",
       "text": "Fuel is a constant concern throughout your journey south. You are able to refuel several times along the way at general and hardware stores, but eventually your car putters out along the side of the road, just north of the southern border. You and Ichtaca are forced to walk several miles to the nearest town to refuel, setting you back several hours."
     },
