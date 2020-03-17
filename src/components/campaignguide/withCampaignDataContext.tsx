@@ -7,10 +7,10 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import ScenarioStateHelper from './ScenarioStateHelper';
-import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioSupplies } from './actions';
+import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioSupplies, setScenarioInvestigatorChoice } from './actions';
 import { InvestigatorDeck } from './types';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
-import { SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
+import { InvestigatorChoices, SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
 import { getCampaignGuide } from 'data/scenario';
 import {
   AppState,
@@ -50,6 +50,12 @@ interface ReduxActionProps {
     stepId: string,
     supplyCounts: SupplyCounts
   ) => void;
+  setScenarioInvestigatorChoice: (
+    campaignId: number,
+    scenarioId: string,
+    stepId: string,
+    supplyCounts: InvestigatorChoices
+  ) => void;
   resetScenario: (campaignId: number, scenarioId: string) => void;
 }
 
@@ -77,6 +83,7 @@ export default function withCampaignDataContext<Props>(
       setScenarioCount,
       setScenarioDecision,
       setScenarioSupplies,
+      setScenarioInvestigatorChoice,
       resetScenario,
     }, dispatch);
   };
@@ -132,6 +139,24 @@ export default function withCampaignDataContext<Props>(
       );
     };
 
+
+      _setInvestigatorChoice = (
+        stepId: string,
+        choices: InvestigatorChoices
+      ) => {
+        const {
+          setScenarioInvestigatorChoice,
+          campaignId,
+          scenarioId,
+        } = this.props;
+        setScenarioInvestigatorChoice(
+          campaignId,
+          scenarioId,
+          stepId,
+          choices
+        );
+      };
+
     _resetScenario = () => {
       const {
         resetScenario,
@@ -180,6 +205,7 @@ export default function withCampaignDataContext<Props>(
           setCount: this._setScenarioCount,
           setDecision: this._setScenarioDecision,
           setSupplies: this._setSupplies,
+          setInvestigatorChoice: this._setInvestigatorChoice,
           resetScenario: this._resetScenario,
         }),
       };

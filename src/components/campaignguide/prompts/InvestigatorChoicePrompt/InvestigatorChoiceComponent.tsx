@@ -14,6 +14,7 @@ interface Props {
   choice: number;
   optional: boolean;
   onChoiceChange: (code: string, index: number) => void;
+  editable: boolean;
 }
 
 export default class InvestigatorChoiceComponent extends React.Component<Props> {
@@ -53,6 +54,7 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
       choices,
       choice,
       optional,
+      editable,
     } = this.props;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
@@ -75,6 +77,7 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
         valuePlaceholder={''}
         valueFormat={this._choiceToLabel}
         onValueChange={this._onChoiceChange}
+        disabled={!editable}
         modalStyle={{
           header: {
             wrapper: {
@@ -104,11 +107,13 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
           backgroundColor: color,
         }}
         widget={
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={30}
-            color="#FFF"
-          />
+          editable ? (
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={30}
+              color="#FFF"
+            />
+          ): undefined
         }
       />
     );

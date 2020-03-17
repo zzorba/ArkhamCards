@@ -574,53 +574,45 @@ export interface RemoveFilterSetAction {
   id: string;
 }
 
-export interface SupplyCounts {
-  [code: string]: {
-    [id: string]: number;
-  };
-}
-
-export const GUIDE_SET_SUPPLIES = 'GUIDE_SET_SUPPLIES';
-export interface GuideSetSuppliesAction {
-  type: typeof GUIDE_SET_SUPPLIES;
+interface GuideStepAction {
   campaignId: number;
   scenarioId: string;
   stepId: string;
+}
+
+
+export const GUIDE_SET_SUPPLIES = 'GUIDE_SET_SUPPLIES';
+export interface GuideSetSuppliesAction extends GuideStepAction {
+  type: typeof GUIDE_SET_SUPPLIES;
   supplyCounts: SupplyCounts;
 }
 
+export const GUIDE_SET_INVESTIGATOR_CHOICE = 'GUIDE_SET_INVESTIGATOR_CHOICE';
+export interface GuideSetInvestigatorChoiceAction extends GuideStepAction {
+  type: typeof GUIDE_SET_INVESTIGATOR_CHOICE;
+  choices: InvestigatorChoices;
+}
+
 export const GUIDE_SET_DECISION = 'GUIDE_SET_DECISION';
-export interface GuideSetDecisionAction {
+export interface GuideSetDecisionAction extends GuideStepAction {
   type: typeof GUIDE_SET_DECISION;
-  campaignId: number;
-  scenarioId: string;
-  stepId: string;
   decision: boolean;
 }
 
 export const GUIDE_CLEAR_DECISION = 'GUIDE_CLEAR_DECISION';
-export interface GuideClearDecisionAction {
+export interface GuideClearDecisionAction extends GuideStepAction {
   type: typeof GUIDE_CLEAR_DECISION;
-  campaignId: number;
-  scenarioId: string;
-  stepId: string;
 }
 
 export const GUIDE_SET_COUNT = 'GUIDE_SET_COUNT';
-export interface GuideSetCountAction {
+export interface GuideSetCountAction extends GuideStepAction {
   type: typeof GUIDE_SET_COUNT;
-  campaignId: number;
-  scenarioId: string;
-  stepId: string;
   count: number;
 }
 
 export const GUIDE_CLEAR_COUNT = 'GUIDE_CLEAR_COUNT';
-export interface GuideClearCountAction {
+export interface GuideClearCountAction extends GuideStepAction {
   type: typeof GUIDE_CLEAR_COUNT;
-  campaignId: number;
-  scenarioId: string;
-  stepId: string;
 }
 
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
@@ -683,6 +675,15 @@ export interface ScenarioUseSuppliesInput {
   investigators?: string[];
 }
 
+export interface SupplyCounts {
+  [code: string]: {
+    [id: string]: number;
+  };
+}
+
+export interface InvestigatorChoices {
+  [code: string]: number[];
+}
 export interface ScenarioState {
   decisions: {
     [key: string]: boolean;
@@ -693,12 +694,16 @@ export interface ScenarioState {
   supplyCounts: {
     [key: string]: SupplyCounts;
   }
+  investigatorChoices: {
+    [key: string]: InvestigatorChoices;
+  }
 }
 
 export const DEFAULT_SCENARIO_STATE: ScenarioState = {
   decisions: {},
   counts: {},
   supplyCounts: {},
+  investigatorChoices: {},
 };
 
 
@@ -763,4 +768,5 @@ export type GuideActions =
   GuideSetCountAction |
   GuideClearCountAction |
   GuideResetScenarioAction |
-  GuideSetSuppliesAction;
+  GuideSetSuppliesAction |
+  GuideSetInvestigatorChoiceAction;

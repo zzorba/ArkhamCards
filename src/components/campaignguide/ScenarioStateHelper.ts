@@ -1,9 +1,10 @@
-import { ScenarioState, SupplyCounts } from 'actions/types';
+import { InvestigatorChoices, ScenarioState, SupplyCounts } from 'actions/types';
 
 export interface ScenarioStateActions {
   setDecision: (id: string, value: boolean) => void;
   setCount: (id: string, value: number) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts) => void;
+  setInvestigatorChoice: (id: string, choices: InvestigatorChoices) => void;
   resetScenario: () => void;
 }
 
@@ -21,6 +22,18 @@ export default class ScenarioStateHelper {
 
   resetScenario() {
     this.actions.resetScenario();
+  }
+
+  setInvestigatorChoice(id: string, value: InvestigatorChoices) {
+    this.actions.setInvestigatorChoice(id, value);
+  }
+
+  hasInvestigatorChoice(id: string): boolean {
+    return this.state.investigatorChoices[id] !== undefined;
+  }
+
+  investigatorChoice(id: string): InvestigatorChoices {
+    return this.state.investigatorChoices[id];
   }
 
   setSupplies(id: string, value: SupplyCounts) {
