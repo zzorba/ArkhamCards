@@ -10,11 +10,11 @@ import { find } from 'lodash';
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import ScenarioStateHelper from '../ScenarioStateHelper';
 import StepsComponent from '../StepsComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { Effect, Option } from 'data/scenario/types';
+import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import typography from 'styles/typography';
 
 interface Props {

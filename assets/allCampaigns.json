@@ -16,7 +16,7 @@
     }
   ],
   "scenarios": [
-    "prologue",
+    "dwl_prologue",
     "extracurricular_activity",
     "the_house_always_wins",
     "armitages_fate",
@@ -42,6 +42,7 @@
     },
     {
       "id": "difficulty_choice",
+      "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -130,19 +131,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-
-        "id": "unconscious_for_several_hours"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["fate_1", "henry_armitage_kidnapped", "bonus_xp"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["fate_2", "henry_armitage_rescued", "earn_henry_armitage"]
-        }
-      ]
+        "id": "unconscious_for_several_hours",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["fate_1", "henry_armitage_kidnapped", "bonus_xp"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["fate_2", "henry_armitage_rescued", "earn_henry_armitage"]
+          }
+        ]
+      }
     },
     {
       "id": "fate_1",
@@ -256,14 +256,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "investigators_delayed"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["add_1_doom"]
-        }
-      ]
+        "id": "investigators_delayed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["add_1_doom"]
+          }
+        ]
+      }
     },
     {
       "id": "add_1_doom",
@@ -279,14 +279,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "bone_to_pick"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["gather_naomis_crew"]
-        }
-      ]
+        "id": "bone_to_pick",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["gather_naomis_crew"]
+          }
+        ]
+      }
     },
     {
       "id": "gather_naomis_crew",
@@ -392,14 +392,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "defeated",
-        "card": "02140"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["necronomicon_stolen", "remove_necronomicon"]
-        }
-      ]
+        "card": "02140",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["necronomicon_stolen", "remove_necronomicon"]
+          }
+        ]
+      }
     },
     {
       "id": "necronomicon_stolen",
@@ -459,20 +459,19 @@
       "condition": {
         "type": "campaign_log",
         "section": "sacrificed",
-        "id": "02040"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["henry_armitage_not_sacrificed"]
-        }
-      ]
+        "id": "02040",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["henry_armitage_not_sacrificed", "henry_armitage_survived"]
+          }
+        ]
+      }
     },
     {
       "id": "henry_armitage_not_sacrificed",
       "type": "story",
-      "text": "“It is far worse than we had thought,” Dr. Armitage says, pale and trembling. “Wilbur Whateley was only the beginning. There were more, many more in Dunwich, who knew of the ‘Great Old Ones’ and who desired power and knowledge above all else, the Earth be damned. I knew I should have burned that wretch’s journal. But thanks to its contents, I know how we can stop them. We are the only ones who can! Now quickly, help me with this solution—the powder is the key, yes, the powder is the only way...”",
-      "steps": ["henry_armitage_survived"]
+      "text": "“It is far worse than we had thought,” Dr. Armitage says, pale and trembling. “Wilbur Whateley was only the beginning. There were more, many more in Dunwich, who knew of the ‘Great Old Ones’ and who desired power and knowledge above all else, the Earth be damned. I knew I should have burned that wretch’s journal. But thanks to its contents, I know how we can stop them. We are the only ones who can! Now quickly, help me with this solution—the powder is the key, yes, the powder is the only way...”"
     },
     {
       "id": "henry_armitage_survived",
@@ -528,18 +527,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "calmed_townsfolk"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["epilogue_1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["epilogue_2"]
-        }
-      ]
+        "id": "calmed_townsfolk",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["epilogue_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["epilogue_2"]
+          }
+        ]
+      }
     },
     {
       "id": "epilogue_1",
@@ -601,46 +600,46 @@
       "type": "branch",
       "condition": {
         "type": "campaign_data",
-        "campaign_data": "difficulty"
-      },
-      "options": [
-        {
-          "condition": "easy",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-2"]
-            }
-          ]
-        },
-        {
-          "condition": "standard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-3"]
-            }
-          ]
-        },
-        {
-          "condition": "hard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-4"]
-            }
-          ]
-        },
-        {
-          "condition": "expert",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-5"]
-            }
-          ]
-        }
-      ]
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-2"]
+              }
+            ]
+          },
+          {
+            "condition": "standard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-3"]
+              }
+            ]
+          },
+          {
+            "condition": "hard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-4"]
+              }
+            ]
+          },
+          {
+            "condition": "expert",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-5"]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "encounter_deck",
@@ -665,7 +664,7 @@
     },
     {
       "id": "across_space_and_time",
-      "text": "Each investigator who was defeated has acquired the Across Space and Time weakness and must add 1 copy of it to his or her deck. This card does not count toward that investigator’s deck size",
+      "text": "Each investigator who was defeated has acquired the Across Space and Time weakness and must add 1 copy of it to their deck. This card does not count toward that investigator’s deck size",
       "effects": [
         {
           "type": "add_card",
@@ -676,7 +675,7 @@
     },
     {
       "id": "bonus_xp",
-      "text": "Each investigator who was defeated earns 1 bonus experience as his or her experience beyond the gate grants them insight into the cosmos.",
+      "text": "Each investigator who was defeated earns 1 bonus experience as their experience beyond the gate grants them insight into the cosmos.",
       "effects": [
         {
           "type": "earn_xp",
@@ -691,14 +690,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "defeated",
-        "card": "02140"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["necronomicon_stolen", "remove_necronomicon"]
-        }
-      ]
+        "card": "02140",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["necronomicon_stolen", "remove_necronomicon"]
+          }
+        ]
+      }
     },
     {
       "id": "necronomicon_stolen",
@@ -727,14 +726,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "defeated",
-        "card": "02040"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["henry_armitage_kidnapped", "remove_henry_armitage"]
-        }
-      ]
+        "card": "02040",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["henry_armitage_kidnapped", "remove_henry_armitage"]
+          }
+        ]
+      }
     },
     {
       "id": "henry_armitage_kidnapped",
@@ -763,14 +762,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "defeated",
-        "card": "02080"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["francis_morgan_kidnapped", "remove_francis_morgan"]
-        }
-      ]
+        "card": "02080",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["francis_morgan_kidnapped", "remove_francis_morgan"]
+          }
+        ]
+      }
     },
     {
       "id": "francis_morgan_kidnapped",
@@ -799,14 +798,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "defeated",
-        "card": "02061"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["warren_rice_kidnapped", "remove_warren_rice"]
-        }
-      ]
+        "card": "02061",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["warren_rice_kidnapped", "remove_warren_rice"]
+          }
+        ]
+      }
     },
     {
       "id": "warren_rice_kidnapped",
@@ -910,18 +909,18 @@
       "condition": {
         "type": "campaign_data",
         "campaign_data": "scenario_completed",
-        "scenario": "the_house_always_wins"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["faculty_office_night_is_young"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["faculty_office_hour_is_late"]
-        }
-      ]
+        "scenario": "the_house_always_wins",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["faculty_office_night_is_young"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["faculty_office_hour_is_late"]
+          }
+        ]
+      }
     },
     {
       "id": "faculty_office_night_is_young",
@@ -1061,18 +1060,18 @@
       "condition": {
         "type": "campaign_data",
         "campaign_data": "scenario_completed",
-        "scenario": "the_house_always_wins"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["proceed_house_always_wins"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["proceed_armitages_fate"]
-        }
-      ]
+        "scenario": "the_house_always_wins",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["proceed_house_always_wins"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["proceed_armitages_fate"]
+          }
+        ]
+      }
     },
     {
       "id": "proceed_house_always_wins",
@@ -1362,7 +1361,7 @@
 }
 ,
 {
-  "id": "prologue",
+  "id": "dwl_prologue",
   "scenarioName": "Prologue",
   "interlude": true,
   "setup": [
@@ -1383,8 +1382,8 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Professor Warren Rice was last seen working late at night in the humanities department of Miskatonic University. Let’s search for him there.",
-            "description": "Proceed with “Scenario I–A: Extracurricular Activity” if you wish to find Professor Warren Rice first.",
+            "flavor": "Professor Warren Rice was last seen working late at night in the humanities department of Miskatonic University. Let’s search for him there.",
+            "text": "Proceed with “Scenario I–A: Extracurricular Activity” if you wish to find Professor Warren Rice first.",
             "effects": [
               {
                 "type": "campaign_data",
@@ -1394,8 +1393,8 @@
             ]
           },
           {
-            "text": "Dr. Francis Morgan was last seen gambling at the Clover Club, an upscale speakeasy and gambling joint located downtown. Let’s go talk to him.",
-            "description": "Proceed with “Scenario I–B: The House Always Wins” if you wish to find Dr. Francis Morgan first.",
+            "flavor": "Dr. Francis Morgan was last seen gambling at the Clover Club, an upscale speakeasy and gambling joint located downtown. Let’s go talk to him.",
+            "text": "Proceed with “Scenario I–B: The House Always Wins” if you wish to find Dr. Francis Morgan first.",
             "effects": [
               {
                 "type": "campaign_data",
@@ -1434,20 +1433,19 @@
       "condition": {
         "type": "campaign_log",
         "section": "sacrificed",
-        "id": "02040"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["henry_armitage_not_sacrificed"]
-        }
-      ]
+        "id": "02040",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["henry_armitage_not_sacrificed", "henry_armitage_survived", "maybe_earn_henry_armitage", "maybe_earn_powder"]
+          }
+        ]
+      }
     },
     {
       "id": "henry_armitage_not_sacrificed",
       "type": "story",
-      "text": "“It is far worse than we had thought,” Dr. Armitage says, pale and trembling. “Wilbur Whateley was only the beginning. There were more, many more in Dunwich, who knew of the ‘Great Old Ones’ and who desired power and knowledge above all else, the Earth be damned. I knew I should have burned that wretch’s journal. But thanks to its contents, I know how we can stop them. We are the only ones who can! Now quickly, help me with this solution—the powder is the key, yes, the powder is the only way...”",
-      "steps": ["henry_armitage_survived", "maybe_earn_henry_armitage", "maybe_earn_powder"]
+      "text": "“It is far worse than we had thought,” Dr. Armitage says, pale and trembling. “Wilbur Whateley was only the beginning. There were more, many more in Dunwich, who knew of the ‘Great Old Ones’ and who desired power and knowledge above all else, the Earth be damned. I knew I should have burned that wretch’s journal. But thanks to its contents, I know how we can stop them. We are the only ones who can! Now quickly, help me with this solution—the powder is the key, yes, the powder is the only way...”"
     },
     {
       "id": "henry_armitage_survived",
@@ -1466,18 +1464,18 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "02040"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_henry_armitage"]
-        }
-      ]
+        "card": "02040",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_henry_armitage"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_henry_armitage",
-      "text": "Any one investigator may choose to add Dr. Henry Armitage to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Dr. Henry Armitage to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1492,20 +1490,19 @@
       "condition": {
         "type": "campaign_log",
         "section": "sacrificed",
-        "id": "02061"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["warren_rice_not_sacrificed"]
-        }
-      ]
+        "id": "02061",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["warren_rice_not_sacrificed", "warren_rice_survived", "maybe_earn_warren_rice", "maybe_earn_powder"]
+          }
+        ]
+      }
     },
     {
       "id": "warren_rice_not_sacrificed",
       "type": "story",
-      "text": "Professor Rice adjusts his glasses and studies the documents and arcane manuscripts left in the chamber. “I thought this nightmare was over and done with,” he sighs. “But we have a duty to see this through. We have to stop these creatures, or it won’t be just Dunwich in trouble. The powder mixture Armitage created to see the creatures will be our saving grace,” he explains, and sets off to the task of recreating the powder.",
-      "steps": ["warren_rice_survived", "maybe_earn_warren_rice", "maybe_earn_powder"]
+      "text": "Professor Rice adjusts his glasses and studies the documents and arcane manuscripts left in the chamber. “I thought this nightmare was over and done with,” he sighs. “But we have a duty to see this through. We have to stop these creatures, or it won’t be just Dunwich in trouble. The powder mixture Armitage created to see the creatures will be our saving grace,” he explains, and sets off to the task of recreating the powder."
     },
     {
       "id": "warren_rice_survived",
@@ -1524,18 +1521,18 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "02061"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_warren_rice"]
-        }
-      ]
+        "card": "02061",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_warren_rice"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_warren_rice",
-      "text": "Any one investigator may choose to add Professor Warren Rice to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1550,20 +1547,19 @@
       "condition": {
         "type": "campaign_log",
         "section": "sacrificed",
-        "id": "02080"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["francis_morgan_not_sacrificed"]
-        }
-      ]
+        "id": "02080",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["francis_morgan_not_sacrificed", "francis_morgan_survived", "maybe_earn_francis_morgan", "maybe_earn_powder"]
+          }
+        ]
+      }
     },
     {
       "id": "francis_morgan_not_sacrificed",
       "type": "story",
-      "text": "“Thank you for everything you’ve done,” Dr. Morgan says, taking count of your provisions and ammunition. “Last time, we needed some of that strange powder Armitage concocted to even see the beast that terrorized Dunwich. If there’s more of those things out there, we’re going to need that powder. I think I remember how he made it...”",
-      "steps": ["francis_morgan_survived", "maybe_earn_francis_morgan", "maybe_earn_powder"]
+      "text": "“Thank you for everything you’ve done,” Dr. Morgan says, taking count of your provisions and ammunition. “Last time, we needed some of that strange powder Armitage concocted to even see the beast that terrorized Dunwich. If there’s more of those things out there, we’re going to need that powder. I think I remember how he made it...”"
     },
     {
       "id": "francis_morgan_survived",
@@ -1582,18 +1578,18 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "02080"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_francis_morgan"]
-        }
-      ]
+        "card": "02080",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_francis_morgan"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_francis_morgan",
-      "text": "Any one investigator may choose to add Professor Warren Rice to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1608,20 +1604,19 @@
       "condition": {
         "type": "campaign_log",
         "section": "sacrificed",
-        "id": "02217"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["zebulon_whateley_not_sacrificed"]
-        }
-      ]
+        "id": "02217",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["zebulon_whateley_not_sacrificed", "zebulon_whateley_survived", "earn_zebulon_whateley"]
+          }
+        ]
+      }
     },
     {
       "id": "zebulon_whateley_not_sacrificed",
       "type": "story",
-      "text": "“Dunwich’s had its fair share of oddities,” Zebulon explains to you with a quavering voice, “but I ain’t ever seen anything as sick and twisted as this...this...<b>thing</b>.” He gives the creature’s remains one last sickened glance before closing the door to the chamber behind him, shuddering. He locks eyes with you, his expression grim. “Whoever dun this gotta pay. I’ll do all I can to help.”",
-      "steps": ["zebulon_whateley_survived", "earn_zebulon_whateley"]
+      "text": "“Dunwich’s had its fair share of oddities,” Zebulon explains to you with a quavering voice, “but I ain’t ever seen anything as sick and twisted as this...this...<b>thing</b>.” He gives the creature’s remains one last sickened glance before closing the door to the chamber behind him, shuddering. He locks eyes with you, his expression grim. “Whoever dun this gotta pay. I’ll do all I can to help.”"
     },
     {
       "id": "zebulon_whateley_survived",
@@ -1636,7 +1631,7 @@
     },
     {
       "id": "earn_zebulon_whateley",
-      "text": "Any one investigator may choose to add Zebulon Whateley to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Zebulon Whateley to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1651,20 +1646,19 @@
       "condition": {
         "type": "campaign_log",
         "section": "sacrificed",
-        "id": "02218"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earl_sawyer_not_sacrificed"]
-        }
-      ]
+        "id": "02218",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earl_sawyer_not_sacrificed", "earl_sawyer_survived", "earn_earl_sawyer"]
+          }
+        ]
+      }
     },
     {
       "id": "earl_sawyer_not_sacrificed",
       "type": "story",
-      "text": "“I never could’a made it if it weren’t for you,” Earl says with a stammer, shaking your hand repeatedly. “If ’n there’s anything I can do to repay yeh, just ask away. I ain’t much of a fighter or anythin’, but I’ll do all I can. Jus’...don’t make me look at anythin’ like that beast again, a’right?”",
-      "steps": ["earl_sawyer_survived", "earn_earl_sawyer"]
+      "text": "“I never could’a made it if it weren’t for you,” Earl says with a stammer, shaking your hand repeatedly. “If ’n there’s anything I can do to repay yeh, just ask away. I ain’t much of a fighter or anythin’, but I’ll do all I can. Jus’...don’t make me look at anythin’ like that beast again, a’right?”"
     },
     {
       "id": "earl_sawyer_survived",
@@ -1679,7 +1673,7 @@
     },
     {
       "id": "earn_earl_sawyer",
-      "text": "Any one investigator may choose to add Earl Sawyer to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Earl Sawyer to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1694,18 +1688,18 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "02219"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_powder"]
-        }
-      ]
+        "card": "02219",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_powder"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_powder",
-      "text": "Any one investigator may choose to add the Powder of Ibn‐Ghazi card to his or her deck. It does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add the Powder of Ibn‐Ghazi card to their deck. It does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1908,18 +1902,18 @@
       "condition": {
         "type": "campaign_data",
         "campaign_data": "scenario_completed",
-        "scenario": "extracurricular_activity"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["proceed_extracurricular_activity"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["proceed_armitages_fate"]
-        }
-      ]
+        "scenario": "extracurricular_activity",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["proceed_extracurricular_activity"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["proceed_armitages_fate"]
+          }
+        ]
+      }
     },
     {
       "id": "proceed_extracurricular_activity",
@@ -1989,18 +1983,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "henry_armitage_kidnapped"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["part_1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["part_2"]
-        }
-      ]
+        "id": "henry_armitage_kidnapped",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["part_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["part_2"]
+          }
+        ]
+      }
     },
     {
       "id": "part_1",
@@ -2087,7 +2081,7 @@
     },
     {
       "id": "earned_necronomicon",
-      "text": "The investigators have earned The Necronomicon <i>(Olaus Wormius Translation)</i> card. Any one investigator may choose to add The Necronomicon <i>(Olaus Wormius Translation)</i> to his or her deck. This card does not count towards that investigator’s deck size.",
+      "text": "The investigators have earned The Necronomicon <i>(Olaus Wormius Translation)</i> card. Any one investigator may choose to add The Necronomicon <i>(Olaus Wormius Translation)</i> to their deck. This card does not count towards that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -2173,11 +2167,11 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "You try to calm down the townsfolk in order to learn more.",
+            "flavor": "You try to calm down the townsfolk in order to learn more.",
             "steps": [ "part1", "calmed_townsfolk" ]
           },
           {
-            "text": "You try to warn the townsfolk and convince them to evacuate.",
+            "flavor": "You try to warn the townsfolk and convince them to evacuate.",
             "steps": [ "part2", "warned_townsfolk" ]
           }
         ]
@@ -2190,7 +2184,6 @@
     },
     {
       "id": "calmed_townsfolk",
-      "text": "In your Campaign Log, record that <i>you calmed the townsfolk</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -2207,7 +2200,6 @@
     },
     {
       "id": "warned_townsfolk",
-      "text": "In your Campaign Log, record that <i>you warned the townsfolk</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -2238,30 +2230,30 @@
       "condition": {
         "type": "campaign_log",
         "section": "sacrificed",
-        "id": "$num_entries"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": ["spawn_two_brood"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["spawn_two_brood"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["spawn_one_remove_one_brood"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["spawn_one_remove_two_brood"]
-        },
-        {
-          "default": true,
-          "steps": ["spawn_zero_remove_three_brood"]
-        }
-      ]
+        "id": "$num_entries",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["spawn_two_brood"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["spawn_two_brood"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["spawn_one_remove_one_brood"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["spawn_one_remove_two_brood"]
+          },
+          {
+            "default": true,
+            "steps": ["spawn_zero_remove_three_brood"]
+          }
+        ]
+      }
     },
     {
       "id": "spawn_two_brood",
@@ -2285,11 +2277,11 @@
     },
     {
       "id": "play_powder",
-      "text": "An investigator with the Powder of Ibn‐Ghazi in his or her deck may search his or her deck for it and put it into play."
+      "text": "An investigator with the Powder of Ibn‐Ghazi in their deck may search their deck for it and put it into play."
     },
     {
       "id": "add_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Pact]] weakness and adds it to his or her deck for the remainder of the campaign.",
+      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Pact]] weakness and adds it to their deck for the remainder of the campaign.",
       "effects": [
         {
           "type": "add_card",
@@ -2415,14 +2407,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "naomi_has_back"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["part1", "gain_clues"]
-        }
-      ]
+        "id": "naomi_has_back",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["part1", "gain_clues"]
+          }
+        ]
+      }
     },
     {
       "id": "part1",
@@ -2434,26 +2426,26 @@
        "type": "branch",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "player_count"
-      },
-      "options": [
-        {
-          "numCondition": 1,
-          "steps": ["one_clue"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["one_clue"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["two_clues"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["two_clues"]
-        }
-      ]
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["one_clue"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["one_clue"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["two_clues"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["two_clues"]
+          }
+        ]
+      }
     },
     {
       "id": "one_clue",
@@ -2497,46 +2489,46 @@
       "type": "branch",
       "condition": {
         "type": "campaign_data",
-        "campaign_data": "difficulty"
-      },
-      "options": [
-        {
-          "condition": "easy",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-3"]
-            }
-          ]
-        },
-        {
-          "condition": "standard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-5"]
-            }
-          ]
-        },
-        {
-          "condition": "hard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-6"]
-            }
-          ]
-        },
-        {
-          "condition": "expert",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-7"]
-            }
-          ]
-        }
-      ]
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-3"]
+              }
+            ]
+          },
+          {
+            "condition": "standard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-5"]
+              }
+            ]
+          },
+          {
+            "condition": "hard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-6"]
+              }
+            ]
+          },
+          {
+            "condition": "expert",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-7"]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "select_act_2",
@@ -2545,18 +2537,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "restored_silas_bishop"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_necronomicon"]
-        }
-      ]
+        "id": "restored_silas_bishop",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_necronomicon"]
+          }
+        ]
+      }
     },
     {
       "id": "act_2_v1",
@@ -2576,18 +2568,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "failed_to_recover_necronomicon"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["act_2_v2"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_necronomicon_lost"]
-        }
-      ]
+        "id": "failed_to_recover_necronomicon",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["act_2_v2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_necronomicon_lost"]
+          }
+        ]
+      }
     },
     {
       "id": "check_necronomicon_lost",
@@ -2595,18 +2587,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "necronomicon_stolen"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["act_2_v2"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["act_2_v3"]
-        }
-      ]
+        "id": "necronomicon_stolen",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["act_2_v2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["act_2_v3"]
+          }
+        ]
+      }
     },
     {
       "id": "check_escaped_brood",
@@ -2614,30 +2606,30 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "brood_escaped"
-      },
-      "options": [
-        {
-          "numCondition": 1,
-          "steps": ["add_1_doom"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["add_2_doom"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["add_3_doom"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["add_4_doom"]
-        },
-        {
-          "numCondition": 5,
-          "steps": ["add_5_doom"]
-        }
-      ]
+        "id": "brood_escaped",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["add_1_doom"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["add_2_doom"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["add_3_doom"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["add_4_doom"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["add_5_doom"]
+          }
+        ]
+      }
     },
     {
       "id": "add_1_doom",
@@ -2665,14 +2657,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "killed_silas_bishop"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["killed_silas_bishop"]
-        }
-      ]
+        "id": "killed_silas_bishop",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["killed_silas_bishop"]
+          }
+        ]
+      }
     },
     {
       "id": "killed_silas_bishop",
@@ -2794,20 +2786,6 @@
     "midnight_masks",
     "devourer_below"
   ],
-  "chaos_bags": {
-    "easy": [
-      "+1", "+1", "0", "0", "0", "-1", "-1", "-1", "-2", "-2", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-    ],
-    "standard": [
-      "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-    ],
-    "hard": [
-      "0", "0", "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-5", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-    ],
-    "expert": [
-      "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-5", "-6", "-8", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-    ]
-  },
   "setup": [
     "prologue",
     "difficulty_choice"
@@ -2820,6 +2798,7 @@
     },
     {
       "id": "difficulty_choice",
+      "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -2951,38 +2930,38 @@
       "condition": {
         "type": "campaign_log",
         "section": "cultists_escaped",
-        "id": "$num_entries"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "effects": []
-        },
-        {
-          "numCondition": 1,
-          "steps": ["place_one_doom"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["place_one_doom"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["place_two_doom"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["place_two_doom"]
-        },
-        {
-          "numCondition": 5,
-          "steps": ["place_three_doom"]
-        },
-        {
-          "numCondition": 6,
-          "steps": ["place_three_doom"]
-        }
-      ]
+        "id": "$num_entries",
+        "options": [
+          {
+            "numCondition": 0,
+            "effects": []
+          },
+          {
+            "numCondition": 1,
+            "steps": ["place_one_doom"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["place_one_doom"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["place_two_doom"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["place_two_doom"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["place_three_doom"]
+          },
+          {
+            "numCondition": 6,
+            "steps": ["place_three_doom"]
+          }
+        ]
+      }
     },
     {
     	"id": "place_one_doom",
@@ -3012,18 +2991,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "past_midnight"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["randomly_discard_2_cards"]
-        }
-      ]
+        "id": "past_midnight",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["randomly_discard_2_cards"]
+          }
+        ]
+      }
     },
     {
     	"id": "randomly_discard_2_cards",
-      "text": "Each player discards 2 random cards from his or her starting hand."
+      "text": "Each player discards 2 random cards from their starting hand."
     },
     {
     	"id": "check_ghoul_priest",
@@ -3031,14 +3010,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "ghoul_priest_alive"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["add_ghoul_priest"]
-        }
-      ]
+        "id": "ghoul_priest_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["add_ghoul_priest"]
+          }
+        ]
+      }
     },
     {
     	"id": "add_ghoul_priest",
@@ -3112,7 +3091,7 @@
     },
     {
     	"id": "ritual_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as he or she never fully recovers from his or her ordeal.",
+      "text": "Each investigator suffers 2 mental trauma, as he or she never fully recovers from their ordeal.",
       "effects": [
         {
           "type": "trauma",
@@ -3123,7 +3102,7 @@
     },
     {
     	"id": "fight_trauma",
-      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the fight against Umôrdhoth has taken its toll on his or her body and mind.",
+      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the fight against Umôrdhoth has taken its toll on their body and mind.",
       "effects": [
         {
           "type": "trauma",
@@ -3135,7 +3114,7 @@
     },
     {
     	"id": "lita_trauma",
-      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the mere sight of Umôrdhoth has taken its toll on his or her body and mind.",
+      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the mere sight of Umôrdhoth has taken its toll on their body and mind.",
       "effects": [
         {
           "type": "trauma",
@@ -3147,7 +3126,7 @@
     },
     {
     	"id": "madness_weakness",
-      "text": "The guilt over sacrificing Lita forever haunts your memory. Each investigator must search the collection for a random [[Madness]] weakness and add it to his or her deck.",
+      "text": "The guilt over sacrificing Lita forever haunts your memory. Each investigator must search the collection for a random [[Madness]] weakness and add it to their deck.",
       "effects": [
         {
           "type": "add_card",
@@ -3398,12 +3377,12 @@
       "condition": {
         "type": "trauma",
         "investigator": "lead_investigator",
-        "trauma": "killed"
-      },
-      "options": [{
-        "boolCondition": true,
-        "steps": ["lead_investigator_killed"]
-      }]
+        "trauma": "killed",
+        "options": [{
+          "boolCondition": true,
+          "steps": ["lead_investigator_killed"]
+        }]
+      }
     },
     {
       "id": "lead_investigator_killed",
@@ -3468,18 +3447,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "lita_finds_others"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["intro_2"]
-        }
-      ]
+        "id": "lita_finds_others",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",
@@ -3524,22 +3503,22 @@
       "type": "branch",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "player_count"
-      },
-      "options": [
-        {
-          "numCondition": 2,
-          "steps": ["one_cultist"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["two_cultists"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["three_cultists"]
-        }
-      ]
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": ["one_cultist"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["two_cultists"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["three_cultists"]
+          }
+        ]
+      }
     },
     {
       "id": "one_cultist",
@@ -3559,14 +3538,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "house_burned"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["remove_house"]
-        }
-      ]
+        "id": "house_burned",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["remove_house"]
+          }
+        ]
+      }
     },
     {
       "id": "check_house_standing",
@@ -3574,14 +3553,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "house_standing"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["start_at_house"]
-        }
-      ]
+        "id": "house_standing",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["start_at_house"]
+          }
+        ]
+      }
     },
     {
       "id": "remove_house",
@@ -3601,14 +3580,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "ghoul_priest_alive"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["add_ghoul_priest"]
-        }
-      ]
+        "id": "ghoul_priest_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["add_ghoul_priest"]
+          }
+        ]
+      }
     },
     {
       "id": "add_ghoul_priest",
@@ -3662,14 +3641,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "ghoul_priest_alive"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["ask_ghoul_priest_defeated"]
-        }
-      ]
+        "id": "ghoul_priest_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ask_ghoul_priest_defeated"]
+          }
+        ]
+      }
     },
     {
       "id": "ask_ghoul_priest_defeated",
@@ -3824,6 +3803,7 @@
     },
     {
       "id": "difficulty_choice",
+      "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [{
@@ -3925,14 +3905,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "vips_interviewed",
-        "id": "03080"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["ashleighs_information", "remove_doom_ability"]
-        }
-      ]
+        "id": "03080",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ashleighs_information", "remove_doom_ability"]
+          }
+        ]
+      }
     },
     {
       "id": "ashleighs_information",
@@ -3962,46 +3942,46 @@
       "type": "branch",
       "condition": {
         "type": "campaign_data",
-        "campaign_data": "difficulty"
-      },
-      "options": [
-        {
-          "condition": "easy",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-3"]
-            }
-          ]
-        },
-        {
-          "condition": "standard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-5"]
-            }
-          ]
-        },
-        {
-          "condition": "hard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-6"]
-            }
-          ]
-        },
-        {
-          "condition": "expert",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-7"]
-            }
-          ]
-        }
-      ]
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-3"]
+              }
+            ]
+          },
+          {
+            "condition": "standard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-5"]
+              }
+            ]
+          },
+          {
+            "condition": "hard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-6"]
+              }
+            ]
+          },
+          {
+            "condition": "expert",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-7"]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "agenda_setup",
@@ -4036,7 +4016,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to his or her deck.",
+      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
       "effects": [
         {
           "type": "add_card",
@@ -4458,18 +4438,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "opened_path_below"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["intro_2"]
-        }
-      ]
+        "id": "opened_path_below",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",
@@ -4506,38 +4486,38 @@
           "type": "campaign_log",
           "section": "conviction"
         },
-        "operation": "sum"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "numCondition": 5,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "default": true,
-          "steps": ["compare_conviction_and_doubt"]
-        }
-      ]
+        "operation": "sum",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "default": true,
+            "steps": ["compare_conviction_and_doubt"]
+          }
+        ]
+      }
     },
     {
       "id": "compare_conviction_and_doubt",
@@ -4552,22 +4532,22 @@
           "type": "campaign_log",
           "section": "conviction"
         },
-        "operation": "compare"
-      },
-      "options": [
-        {
-          "numCondition": -1,
-          "steps": ["act_2_v3"]
-        },
-        {
-          "numCondition": 0,
-          "steps": ["act_2_choice"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["act_2_v2"]
-        }
-      ]
+        "operation": "compare",
+        "options": [
+          {
+            "numCondition": -1,
+            "steps": ["act_2_v3"]
+          },
+          {
+            "numCondition": 0,
+            "steps": ["act_2_choice"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["act_2_v2"]
+          }
+        ]
+      }
     },
     {
       "id": "act_2_v1",
@@ -4599,18 +4579,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "opened_path_below"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["start_at_shores"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["start_at_spires"]
-        }
-      ]
+        "id": "opened_path_below",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["start_at_shores"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["start_at_spires"]
+          }
+        ]
+      }
     },
     {
       "id": "start_at_shores",
@@ -4633,50 +4613,50 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "chasing_the_stranger"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": ["add_3_doom"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["add_3_doom"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["add_3_doom"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["add_2_doom"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["add_2_doom"]
-        },
-        {
-          "numCondition": 5,
-          "steps": ["add_2_doom"]
-        },
-        {
-          "numCondition": 6,
-          "steps": ["add_1_doom"]
-        },
-        {
-          "numCondition": 7,
-          "steps": ["add_1_doom"]
-        },
-        {
-          "numCondition": 8,
-          "steps": ["add_1_doom"]
-        },
-        {
-          "default": true,
-          "steps": ["add_no_doom"]
-        }
-      ]
+        "section": "chasing_the_stranger",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["add_3_doom"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["add_3_doom"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["add_3_doom"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["add_2_doom"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["add_2_doom"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["add_2_doom"]
+          },
+          {
+            "numCondition": 6,
+            "steps": ["add_1_doom"]
+          },
+          {
+            "numCondition": 7,
+            "steps": ["add_1_doom"]
+          },
+          {
+            "numCondition": 8,
+            "steps": ["add_1_doom"]
+          },
+          {
+            "default": true,
+            "steps": ["add_no_doom"]
+          }
+        ]
+      }
     },
     {
       "id": "add_3_doom",
@@ -4730,6 +4710,7 @@
       "type": "input",
       "input": {
         "type": "investigator_choice",
+        "investigator": "all",
         "choices": [
           {
             "text": "No Possessions treacheries",
@@ -4896,22 +4877,22 @@
           "type": "campaign_log",
           "section": "conviction"
         },
-        "operation": "compare"
-      },
-      "options": [
-        {
-          "numCondition": -1,
-          "resolution": "R4"
-        },
-        {
-          "numCondition": 0,
-          "resolution": "R4"
-        },
-        {
-          "numCondition": 1,
-          "resolution": "R5"
-        }
-      ]
+        "operation": "compare",
+        "options": [
+          {
+            "numCondition": -1,
+            "resolution": "R4"
+          },
+          {
+            "numCondition": 0,
+            "resolution": "R4"
+          },
+          {
+            "numCondition": 1,
+            "resolution": "R5"
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -4979,14 +4960,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "vips_interviewed",
-        "id": "03079"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["sebastiens_information", "clues_on_entry_hall"]
-        }
-      ]
+        "id": "03079",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["sebastiens_information", "clues_on_entry_hall"]
+          }
+        ]
+      }
     },
     {
       "id": "sebastiens_information",
@@ -5026,22 +5007,22 @@
       "type": "branch",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "player_count"
-      },
-      "options": [
-        {
-          "numCondition": 2,
-          "steps": ["one_cultist"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["two_cultists"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["three_cultists"]
-        }
-      ]
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": ["one_cultist"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["two_cultists"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["three_cultists"]
+          }
+        ]
+      }
     },
     {
       "id": "one_cultist",
@@ -5061,14 +5042,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "fled_dinner_party"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["arrive_early"]
-        }
-      ]
+        "id": "fled_dinner_party",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["arrive_early"]
+          }
+        ]
+      }
     },
     {
       "id": "arrive_early",
@@ -5080,7 +5061,7 @@
     },
     {
       "id": "took_onyx_clasp",
-      "text": "Mark one Conviction in your Campaign Log. For the remainder of the campaign, one investigator must include the Clasp of Black Onyx weakness in his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Mark one Conviction in your Campaign Log. For the remainder of the campaign, one investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5102,7 +5083,7 @@
     },
     {
       "id": "destroyed_the_oathspeaker",
-      "text": "Any one investigator may choose to add The Tattered Cloak to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add The Tattered Cloak to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5151,7 +5132,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": " Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 bonus experience as he or she gains insight into the machinations of <i>The King in Yellow</i>.",
+      "text": " Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 bonus experience as he or she gains insight into the machinations of <u>The King in Yellow</u>.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -5346,18 +5327,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "possessed"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": []
-        },
-        {
-          "default": true,
-          "steps": ["possessed"]
-        }
-      ]
+        "id": "possessed",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": []
+          },
+          {
+            "default": true,
+            "steps": ["possessed"]
+          }
+        ]
+      }
     },
     {
       "id": "possessed",
@@ -5382,7 +5363,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "If an investigator resigned with the asset version of Daniel Chesterfield under his or her control.",
+            "text": "If an investigator resigned with the asset version of Daniel Chesterfield under their control.",
             "steps": ["daniel_survived","earn_2_xp", "warning_choice"]
           },
           {
@@ -5425,11 +5406,11 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Possession? Oaths? There must be another explanation for all of this",
+            "flavor": "Possession? Oaths? There must be another explanation for all of this",
             "steps": ["ignore_the_warning", "ignored_daniels_warning", "mark_2_doubt"]
           },
           {
-            "text": "We must heed Daniel’s warning. We must not speak the name of the King in Yellow.",
+            "flavor": "We must heed Daniel’s warning. We must not speak the name of the King in Yellow.",
             "steps": ["heed_the_warning", "heeded_daniels_warning", "mark_2_conviction", "earn_1_xp", "forbidden_name"]
           }
         ]
@@ -5527,15 +5508,15 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Things seem to have calmed down. Perhaps we should go back inside and investigate further.",
+            "flavor": "Things seem to have calmed down. Perhaps we should go back inside and investigate further.",
             "steps": ["reward_1", "why_go_back", "intruded_on_secret_meeting", "add_elder_things"]
           },
           {
-            "text": "I don’t trust this place one bit. Let’s block the door and get the hell out of here!",
+            "flavor": "I don’t trust this place one bit. Let’s block the door and get the hell out of here!",
             "steps": ["reward_2", "door_wont_stop_them", "fled_dinner_party", "add_tablets"]
           },
           {
-            "text": "If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <i>kill them.</i>",
+            "flavor": "If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <i>kill them.</i>",
             "steps": ["reward_3", "did_what_had_to_be_done", "slayed_the_monsters", "slay_vips", "add_cultists"]
           }
         ]
@@ -5745,18 +5726,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "king_claimed_victims"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["intro_2"]
-        }
-      ]
+        "id": "king_claimed_victims",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",
@@ -5790,30 +5771,30 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "chasing_the_stranger"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": ["dream_9"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["dream_9"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["dream_9"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["dream_9"]
-        },
-        {
-          "default": true,
-          "steps": ["dream_10", "dream_10_choice"]
-        }
-      ]
+        "section": "chasing_the_stranger",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["dream_9"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["dream_9"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["dream_9"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["dream_9"]
+          },
+          {
+            "default": true,
+            "steps": ["dream_10", "dream_10_choice"]
+          }
+        ]
+      }
     },
     {
       "id": "dream_1",
@@ -5854,18 +5835,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "king_claimed_victims"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["dream_8", "dream_8_test"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_secret_meeting"]
-        }
-      ]
+        "id": "king_claimed_victims",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["dream_8", "dream_8_test"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_secret_meeting"]
+          }
+        ]
+      }
     },
     {
       "id": "check_secret_meeting",
@@ -5873,18 +5854,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "intruded_on_secret_meeting"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["dream_3", "dream_6", "dream_6_test"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_slayed_monsters"]
-        }
-      ]
+        "id": "intruded_on_secret_meeting",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["dream_3", "dream_6", "dream_6_test"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_slayed_monsters"]
+          }
+        ]
+      }
     },
     {
       "id": "check_slayed_monsters",
@@ -5892,18 +5873,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "slayed_the_monsters"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["dream_4", "dream_6", "dream_6_test"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["dream_6", "dream_6_test"]
-        }
-      ]
+        "id": "slayed_the_monsters",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["dream_4", "dream_6", "dream_6_test"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["dream_6", "dream_6_test"]
+          }
+        ]
+      }
     },
     {
       "id": "dream_9",
@@ -5938,11 +5919,11 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "“How could any of this be beautiful to you?”",
+            "flavor": "“How could any of this be beautiful to you?”",
             "steps": ["dream_11"]
           },
           {
-            "text": "“What exactly am I looking at?”",
+            "flavor": "“What exactly am I looking at?”",
             "steps": ["dream_12"]
           }
         ]
@@ -5981,18 +5962,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "police_are_suspicious"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["dream_7", "earn_paranoia", "dream_8", "dream_8_test"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["dream_8", "dream_8_test"]
-        }
-      ]
+        "id": "police_are_suspicious",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["dream_7", "earn_paranoia", "dream_8", "dream_8_test"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["dream_8", "dream_8_test"]
+          }
+        ]
+      }
     },
     {
       "id": "awakening",
@@ -6005,14 +5986,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "vips_interviewed",
-        "id": "03077"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["jordan_information", "gain_resources"]
-        }
-      ]
+        "id": "03077",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["jordan_information", "gain_resources"]
+          }
+        ]
+      }
     },
     {
       "id": "jordan_information",
@@ -6049,22 +6030,22 @@
           "type": "campaign_log",
           "section": "conviction"
         },
-        "operation": "compare"
-      },
-      "options": [
-        {
-          "condition": "-1",
-          "steps": ["gather_doubt", "act_1_v1"]
-        },
-        {
-          "condition": "0",
-          "steps": ["gather_doubt", "act_1_v1"]
-        },
-        {
-          "condition": "1",
-          "steps": ["gather_conviction", "act_1_v2"]
-        }
-      ]
+        "operation": "compare",
+        "options": [
+          {
+            "condition": "-1",
+            "steps": ["gather_doubt", "act_1_v1"]
+          },
+          {
+            "condition": "0",
+            "steps": ["gather_doubt", "act_1_v1"]
+          },
+          {
+            "condition": "1",
+            "steps": ["gather_conviction", "act_1_v2"]
+          }
+        ]
+      }
     },
     {
       "id": "gather_doubt",
@@ -6301,14 +6282,14 @@
       "type": "branch",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "investigator"
-      },
-      "options": [
-        {
-          "condition": "03006",
-          "steps": ["lola_prologue"]
-        }
-      ]
+        "scenario_data": "investigator",
+        "options": [
+          {
+            "condition": "03006",
+            "steps": ["lola_prologue"]
+          }
+        ]
+      }
     },
     {
       "id": "lola_prologue",
@@ -6423,18 +6404,18 @@
       "type": "branch",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "any_resigned"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "resolution": "R1"
-        },
-        {
-          "boolCondition": false,
-          "resolution": "R2"
-        }
-      ]
+        "scenario_data": "any_resigned",
+        "options": [
+          {
+            "boolCondition": true,
+            "resolution": "R1"
+          },
+          {
+            "boolCondition": false,
+            "resolution": "R2"
+          }
+        ]
+      }
     },
     {
       "id": "vips_interviewed",
@@ -6551,7 +6532,7 @@
     {
       "id": "R3",
       "title": "Resolution 3",
-      "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <i>The King in Yellow</i> play...",
+      "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <u>The King in Yellow</u> play...",
       "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens"]
     }
   ]
@@ -6579,18 +6560,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "did_not_escape_gaze"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_1", "awoke_inside_catacombs"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["intro_2", "entered_catacombs"]
-        }
-      ]
+        "id": "did_not_escape_gaze",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1", "awoke_inside_catacombs"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2", "entered_catacombs"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",
@@ -6630,14 +6611,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "vips_interviewed",
-        "id": "03078"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["harukos_information", "opened_a_secret_passageway"]
-        }
-      ]
+        "id": "03078",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["harukos_information", "opened_a_secret_passageway"]
+          }
+        ]
+      }
     },
     {
       "id": "harukos_information",
@@ -6668,18 +6649,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "awoke_inside_catacombs"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["start_random_location"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["start_gate_to_hell"]
-        }
-      ]
+        "id": "awoke_inside_catacombs",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["start_random_location"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["start_gate_to_hell"]
+          }
+        ]
+      }
     },
     {
       "id": "start_random_location",
@@ -6934,17 +6915,17 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "followers_of_sign_found_way"
-      },
-      "options": [{
-          "boolCondition": true,
-          "steps": ["intro_1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["intro_2"]
-        }
-      ]
+        "id": "followers_of_sign_found_way",
+        "options": [{
+            "boolCondition": true,
+            "steps": ["intro_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",
@@ -6967,12 +6948,12 @@
       "condition": {
         "type": "campaign_log",
         "section": "vips_interviewed",
-        "id": "03076a"
-      },
-      "options": [{
-        "boolCondition": true,
-        "steps": ["constance_information", "gain_courage"]
-      }]
+        "id": "03076a",
+        "options": [{
+          "boolCondition": true,
+          "steps": ["constance_information", "gain_courage"]
+        }]
+      }
     },
     {
       "id": "constance_information",
@@ -7012,37 +6993,37 @@
       "type": "branch",
       "condition": {
         "type": "campaign_data",
-        "campaign_data": "difficulty"
-      },
-      "options": [{
-          "condition": "easy",
-          "effects": [{
-            "type": "add_chaos_token",
-            "tokens": ["-2"]
-          }]
-        },
-        {
-          "condition": "standard",
-          "effects": [{
-            "type": "add_chaos_token",
-            "tokens": ["-3"]
-          }]
-        },
-        {
-          "condition": "hard",
-          "effects": [{
-            "type": "add_chaos_token",
-            "tokens": ["-4"]
-          }]
-        },
-        {
-          "condition": "expert",
-          "effects": [{
-            "type": "add_chaos_token",
-            "tokens": ["-5"]
-          }]
-        }
-      ]
+        "campaign_data": "difficulty",
+        "options": [{
+            "condition": "easy",
+            "effects": [{
+              "type": "add_chaos_token",
+              "tokens": ["-2"]
+            }]
+          },
+          {
+            "condition": "standard",
+            "effects": [{
+              "type": "add_chaos_token",
+              "tokens": ["-3"]
+            }]
+          },
+          {
+            "condition": "hard",
+            "effects": [{
+              "type": "add_chaos_token",
+              "tokens": ["-4"]
+            }]
+          },
+          {
+            "condition": "expert",
+            "effects": [{
+              "type": "add_chaos_token",
+              "tokens": ["-5"]
+            }]
+          }
+        ]
+      }
     },
     {
       "id": "select_act_2",
@@ -7051,17 +7032,17 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "took_onyx_clasp"
-      },
-      "options": [{
-          "boolCondition": true,
-          "steps": ["act_2_v1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["act_2_v2"]
-        }
-      ]
+        "id": "took_onyx_clasp",
+        "options": [{
+            "boolCondition": true,
+            "steps": ["act_2_v1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["act_2_v2"]
+          }
+        ]
+      }
     },
     {
       "id": "act_2_v1",
@@ -7098,12 +7079,12 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "took_onyx_clasp"
-      },
-      "options": [{
-        "boolCondition": true,
-        "steps": ["take_onyx_clasp"]
-      }]
+        "id": "took_onyx_clasp",
+        "options": [{
+          "boolCondition": true,
+          "steps": ["take_onyx_clasp"]
+        }]
+      }
     },
     {
       "id": "take_onyx_clasp",
@@ -7356,6 +7337,7 @@
     },
     {
       "id": "difficulty_choice",
+      "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [{
@@ -7456,7 +7438,7 @@
     },
     {
       "id": "choose_neutral_investigators",
-      "text": "Each player must choose one of the following neutral investigators to control for the duration of this prologue: Gavriella Mizrah, Jerome Davids, Penny White, or Valentino Rivas. Throughout this prologue, you will play through this character’s story and make choices that will determine his or her fate. Your choice of investigator has no direct effect on your standard investigator deck, though the results of the prologue will influence the story."
+      "text": "Each player must choose one of the following neutral investigators to control for the duration of this prologue: Gavriella Mizrah, Jerome Davids, Penny White, or Valentino Rivas. Throughout this prologue, you will play through this character’s story and make choices that will determine their fate. Your choice of investigator has no direct effect on your standard investigator deck, though the results of the prologue will influence the story."
     },
     {
       "id": "no_decks",
@@ -7468,26 +7450,26 @@
       "text": "If there are 3 or fewer players in the campaign, in the “Missing Persons” section of your Campaign Log, cross off the profiles of any of the neutral investigators who were not chosen.",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "player_count"
-      },
-      "options": [
-        {
-          "numCondition": 1,
-          "steps": ["record_missing_investigators"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["record_missing_investigators"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["record_missing_investigators"]
-        },
-        {
-          "numCondition": 4,
-          "steps": []
-        }
-      ]
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["record_missing_investigators"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["record_missing_investigators"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["record_missing_investigators"]
+          },
+          {
+            "numCondition": 4,
+            "steps": []
+          }
+        ]
+      }
     },
     {
       "id": "record_missing_investigators",
@@ -7528,14 +7510,14 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "05046"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["gavriella_intro"]
-        }
-      ]
+        "section": "05046",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["gavriella_intro"]
+          }
+        ]
+      }
     },
     {
       "id": "gavriella_intro",
@@ -7548,14 +7530,14 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "05047"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["jerome_intro"]
-        }
-      ]
+        "section": "05047",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["jerome_intro"]
+          }
+        ]
+      }
     },
     {
       "id": "jerome_intro",
@@ -7568,14 +7550,14 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "05048"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["penny_intro"]
-        }
-      ]
+        "section": "05048",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["penny_intro"]
+          }
+        ]
+      }
     },
     {
       "id": "penny_intro",
@@ -7588,14 +7570,14 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "05049"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["valentino_intro"]
-        }
-      ]
+        "section": "05049",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["valentino_intro"]
+          }
+        ]
+      }
     },
     {
       "id": "valentino_intro",
@@ -7628,7 +7610,7 @@
     },
     {
       "id": "setup_investigators",
-      "text": "Each player follows the setup instructions on the back of his or her investigator card."
+      "text": "Each player follows the setup instructions on the back of their investigator card."
     },
     {
       "id": "encounter_deck",
@@ -7666,7 +7648,7 @@
     },
     {
       "id": "choose_investigators",
-      "text": "Each player chooses an investigator from the standard pool of investigators and assembles his or her investigator deck, as usual.",
+      "text": "Each player chooses an investigator from the standard pool of investigators and assembles their investigator deck, as usual.",
       "effects": [
         {
           "type": "campaign_data",
@@ -7707,16 +7689,17 @@
     },
     {
       "id": "choose_fate",
+      "type": "input",
       "text": "The lead investigator must decide",
       "input": {
         "type": "choose_one",
         "choices": [
           {
-            "text": "“What can I do to avoid this fate?”",
+            "flavor": "“What can I do to avoid this fate?”",
             "steps": ["intro_2", "accepted_fate", "add_tarot"]
           },
           {
-            "text": "“This is bullshit.”",
+            "flavor": "“This is bullshit.”",
             "steps": ["intro_3", "rejected_fate"]
           }
         ]
@@ -7745,7 +7728,7 @@
     },
     {
       "id": "add_tarot",
-      "text": "Before drawing his or her opening hand for this scenario, the lead investigator searches the collection for 1 copy of The Tower · XVI and 1 copy of Ace of Rods and adds each of them to his or her deck, if able. The lead investigator has earned these cards. They do not count toward his or her deck size. (If one or both of these cards are not available, skip this step.)",
+      "text": "Before drawing their opening hand for this scenario, the lead investigator searches the collection for 1 copy of The Tower · XVI and 1 copy of Ace of Rods and adds each of them to their deck, if able. The lead investigator has earned these cards. They do not count toward their deck size. (If one or both of these cards are not available, skip this step.)",
       "effects": [
         {
           "type": "add_card",
@@ -7840,6 +7823,7 @@
     },
     {
       "id": "check_final_act",
+      "type": "input",
       "text": "What act was in play when the scenario ended?",
       "input": {
         "type": "choose_one",
@@ -7903,6 +7887,7 @@
         },
         {
           "type": "earn_xp",
+          "investigator": "all",
           "bonus": 1
         }
       ]
@@ -7940,12 +7925,14 @@
         },
         {
           "type": "earn_xp",
+          "investigator": "all",
           "bonus": 1
         }
       ]
     },
     {
       "id": "mementos_check_act",
+      "type": "input",
       "text": "Check the act deck",
       "input": {
         "type": "choose_one",
@@ -7973,6 +7960,7 @@
         },
         {
           "type": "earn_xp",
+          "investigator": "all",
           "bonus": 1
         }
       ]
@@ -8055,20 +8043,6 @@
     "tfa_interlude5",
     "shattered_aeons"
   ],
-  "chaos_bags": {
-    "easy": [
-      "+1", "+1", "0", "0", "0", "-1", "-1", "-2", "-3", "skull", "skull", "elder_thing", "auto_fail", "elder_sign"
-    ],
-    "standard": [
-      "+1", "0", "0",  "0", "-1", "-2", "-2", "-3", "-5", "skull", "skull", "elder_thing", "auto_fail", "elder_sign"
-    ],
-    "hard": [
-      "+1", "0", "0", "-1", "-2", "-3", "-3", "-4", "-6", "skull", "skull", "elder_thing", "auto_fail", "elder_sign"
-    ],
-    "expert": [
-      "0", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-6", "-8", "skull", "skull", "elder_thing", "auto_fail", "elder_sign"
-    ]
-  },
   "setup": [
     "prologue",
     "supplies",
@@ -8094,7 +8068,7 @@
       "type": "rule_reminder",
       "title": "Vengeance X",
       "text": "Some encounter cards are worth vengeance points. The text <b>Vengeance X</b> indicates that a card is worth X vengeance points.\nLike <b>Victory X</b>, when an encounter card with <b>Vengeance X</b> is overcome by the investigators, it is stored in the victory display until the end of the scenario. However, unlike victory points, vengeance represents the awareness and animosity of the Father of Serpents, and it is generally a good idea to avoid accruing vengeance points whenever possible.\nVengeance points in the victory display have no impact upon the game unless specifically referenced by another encounter card.",
-      "subbullets": [
+      "bullets": [
         {
           "text": "As an enemy with <b>Vengeance X</b> is defeated, place the card in the victory display instead of in the discard pile."
         },
@@ -8113,7 +8087,7 @@
       "type": "rule_reminder",
       "title": "Explore",
       "text": "Some abilities in this campaign are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.",
-      "subbullets": [
+      "bullets": [
         {
           "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
         },
@@ -8126,10 +8100,11 @@
         {
           "text": "As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
         }],
-      "subtext": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
     },
     {
       "id": "difficulty_choice",
+      "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [{
@@ -8203,7 +8178,7 @@
 }
 , "scenarios": [
 {
-  "id": "epilogue",
+  "id": "tfa_epilogue",
   "scenarioName": "Epilogue",
   "interlude": true,
   "setup": [
@@ -8217,14 +8192,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "turned_back_time"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["turned_back_time", "proceed_secret_scenario"]
-        }
-      ]
+        "id": "turned_back_time",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["turned_back_time", "proceed_secret_scenario"]
+          }
+        ]
+      }
     },
     {
       "id": "turned_back_time",
@@ -8259,18 +8234,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "investigators_recovered_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["ee_1", "choose_where_relic_goes"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_alejandro_recovered_relic"]
-        }
-      ]
+        "id": "investigators_recovered_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ee_1", "choose_where_relic_goes"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_alejandro_recovered_relic"]
+          }
+        ]
+      }
     },
     {
       "id": "check_alejandro_recovered_relic",
@@ -8278,14 +8253,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "alejandro_recovered_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["ee_5"]
-        }
-      ]
+        "id": "alejandro_recovered_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ee_5"]
+          }
+        ]
+      }
     },
     {
       "id": "ee_1",
@@ -8300,11 +8275,11 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.",
+            "flavor": "It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.",
             "steps": ["ee_2", "maybe_earn_alejandro", "add_tablet", "ee_4"]
           },
           {
-            "text": "It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.",
+            "flavor": "It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.",
             "steps": ["ee_3", "remove_alejandro", "ee_4"]
           }
         ]
@@ -8335,18 +8310,18 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04051"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_alejandro"]
-        }
-      ]
+        "card": "04051",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_alejandro"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_alejandro",
-      "text": "Any one investigator may choose to add Alejandro Vela to his or her deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -8425,18 +8400,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "wait_for_additional_supplies"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_1"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_cleared_path_to_temple"]
-        }
-      ]
+        "id": "wait_for_additional_supplies",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_cleared_path_to_temple"]
+          }
+        ]
+      }
     },
     {
       "id": "check_cleared_path_to_temple",
@@ -8444,14 +8419,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "cleared_path_to_temple"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_2"]
-        }
-      ]
+        "id": "cleared_path_to_temple",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",
@@ -8503,30 +8478,30 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "yigs_fury"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
-        },
-        {
-          "default": true,
-          "steps": ["yigs_fury_bad", "check_no_resolution_fury_bad"]
-        }
-      ]
+        "section": "yigs_fury",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["yigs_fury_okay", "check_no_resolution_fury_okay"]
+          },
+          {
+            "default": true,
+            "steps": ["yigs_fury_bad", "check_no_resolution_fury_bad"]
+          }
+        ]
+      }
     },
     {
       "id": "yigs_fury_bad",
@@ -8545,14 +8520,14 @@
       "type": "branch",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "resolution"
-      },
-      "options": [
-        {
-          "condition": "no_resolution",
-          "resolution": "R2"
-        }
-      ]
+        "scenario_data": "resolution",
+        "options": [
+          {
+            "condition": "no_resolution",
+            "resolution": "R2"
+          }
+        ]
+      }
     },
     {
       "id": "yigs_fury_okay",
@@ -8571,14 +8546,14 @@
       "type": "branch",
       "condition": {
         "type": "scenario_data",
-        "scenario_data": "resolution"
-      },
-      "options": [
-        {
-          "condition": "no_resolution",
-          "resolution": "R3"
-        }
-      ]
+        "scenario_data": "resolution",
+        "options": [
+          {
+            "condition": "no_resolution",
+            "resolution": "R3"
+          }
+        ]
+      }
     },
     {
       "id": "choose_to_continue",
@@ -8588,11 +8563,11 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "“We can’t stop now—we have to go back inside!”",
+            "flavor": "“We can’t stop now—we have to go back inside!”",
             "resolution": "R4"
           },
           {
-            "text": "“It’s too dangerous. This place must be destroyed.”",
+            "flavor": "“It’s too dangerous. This place must be destroyed.”",
             "resolution": "R5"
           }
         ]
@@ -8629,6 +8604,7 @@
     },
     {
       "id": "record_harbinger",
+      "text": "Record in your Campaign Log that <i>the Harbinger is still alive</i>. Next to this, in parentheses, record how much damage is on the Harbinger of Valusia.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -8638,7 +8614,7 @@
             "type": "campaign_log",
             "section": "campaign_notes",
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
       }
@@ -8798,17 +8774,17 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Let’s consult with Ichtaca.",
+            "flavor": "Let’s consult with Ichtaca.",
             "description": "Choose this option only if Ichtaca is in an investigator’s deck.",
             "steps": ["intro_2", "start_with_ichtaca"]
           },
           {
-            "text": "Let’s consult with Alejandro.",
+            "flavor": "Let’s consult with Alejandro.",
             "description": "Choose this option only if Alejandro is in an investigator’s deck.",
             "steps": ["intro_3", "start_with_alejandro"]
           },
           {
-            "text": "Let’s consult the expedition journal.",
+            "flavor": "Let’s consult the expedition journal.",
             "description": "Choose this option only if the Expedition Journal is in an investigator’s deck.",
             "steps": ["intro_4", "start_with_expedition_journal"]
           },
@@ -8853,14 +8829,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "paths_known"
-      },
-      "options": [
-        {
-          "numCondition": 6,
-          "resolution": "R1"
-        }
-      ]
+        "id": "paths_known",
+        "options": [
+          {
+            "numCondition": 6,
+            "resolution": "R1"
+          }
+        ]
+      }
     },
     {
       "id": "gather_encounter_sets",
@@ -8896,18 +8872,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "mapped_way_forward"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["choose_ruins"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["choose_ruins_and_start_in_play"]
-        }
-      ]
+        "id": "mapped_way_forward",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["choose_ruins"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["choose_ruins_and_start_in_play"]
+          }
+        ]
+      }
     },
     {
       "id": "choose_ruins",
@@ -8927,6 +8903,7 @@
     },
     {
       "id": "record_paths_known",
+      "text": "If there are more pillar tokens on the Mouth of K’nyan than there were when the scenario began, in your Campaign Log, cross out how many paths are known to you. Then, record that X paths are known to you. X is the number of pillar tokens on the Mouth of K’n-yan.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -8936,7 +8913,7 @@
             "type": "campaign_log",
             "section": "campaign_notes",
             "id": "paths_known",
-            "text": "#X# paths are known"
+            "text": "#X# paths are known to you."
           }
         ]
       }
@@ -9100,6 +9077,7 @@
     },
     {
       "id": "record_harbinger",
+      "text": "Record in your campaign log next to <i>“the Harbinger is still alive”</i>, record in parentheses how much damage is on the Harbinger of Valusia, replacing the number that was previously in parentheses.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -9109,7 +9087,7 @@
             "type": "campaign_log",
             "section": "campaign_notes",
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
       }
@@ -9150,18 +9128,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "rescued_alejandro"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "resolution": "R1"
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_alejandro_is_missing"]
-        }
-      ]
+        "id": "rescued_alejandro",
+        "options": [
+          {
+            "boolCondition": true,
+            "resolution": "R1"
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_alejandro_is_missing"]
+          }
+        ]
+      }
     },
     {
       "id": "check_alejandro_is_missing",
@@ -9169,14 +9147,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "alejandro_is_missing"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "resolution": "R2"
-        }
-      ]
+        "id": "alejandro_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "resolution": "R2"
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -9224,7 +9202,7 @@
     },
     {
       "id": "use_gasoline",
-      "text": "Check your supplies. Any one investigator must cross off one gasoline from his or her supplies. If no gasoline was crossed off, read <b>Out of Gas</b>.",
+      "text": "Check your supplies. Any one investigator must cross off one gasoline from their supplies. If no gasoline was crossed off, read <b>Out of Gas</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -9255,14 +9233,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "map"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["path_discovered", "mapped_way_forward"]
-        }
-      ]
+        "id": "map",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["path_discovered", "mapped_way_forward"]
+          }
+        ]
+      }
     },
     {
       "id": "path_discovered",
@@ -9309,7 +9287,7 @@
     },
     {
       "id": "use_medicine",
-      "text": "Check your supplies. Each investigator with medicine may cross it off from their supplies to choose and remove a Poisoned weakness from any investigator’s deck. Each investigator who still has a Poisoned weakness in his or her deck reads <b>The Poison Spreads</b>.",
+      "text": "Check your supplies. Each investigator with medicine may cross it off from their supplies to choose and remove a Poisoned weakness from any investigator’s deck. Each investigator who still has a Poisoned weakness in their deck reads <b>The Poison Spreads</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -9334,14 +9312,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04102"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["poison_spreads", "physical_trauma"]
-        }
-      ]
+        "card": "04102",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["poison_spreads", "physical_trauma"]
+          }
+        ]
+      }
     },
     {
       "id": "poison_spreads",
@@ -9355,19 +9333,19 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04102"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "effects": [
-            {
-              "type": "trauma",
-              "physical": 1
-            }
-          ]
-        }
-      ]
+        "card": "04102",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "trauma",
+                "physical": 1
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "find_stone_carvings",
@@ -9381,18 +9359,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "canteen"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["patterns_in_the_stone", "start_with_clue"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["secrets_in_the_stone", "no_ill_effects"]
-        }
-      ]
+        "id": "canteen",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["patterns_in_the_stone", "start_with_clue"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["secrets_in_the_stone", "no_ill_effects"]
+          }
+        ]
+      }
     },
     {
       "id": "patterns_in_the_stone",
@@ -9420,22 +9398,22 @@
       "condition": {
         "type": "campaign_data",
         "campaign_data": "chaos_bag",
-        "token": "cultist"
-      },
-      "options": [
-        {
-          "numCondition": 2,
-          "steps": ["check_forged_bond_with_ichtaca"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["check_forged_bond_with_ichtaca"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["check_forged_bond_with_ichtaca"]
-        }
-      ]
+        "token": "cultist",
+        "options": [
+          {
+            "numCondition": 2,
+            "steps": ["check_forged_bond_with_ichtaca"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["check_forged_bond_with_ichtaca"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["check_forged_bond_with_ichtaca"]
+          }
+        ]
+      }
     },
     {
       "id": "check_forged_bond_with_ichtaca",
@@ -9443,14 +9421,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "forged_bond_with_ichtaca"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["check_ichtaca_has_confidence"]
-        }
-      ]
+        "id": "forged_bond_with_ichtaca",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_ichtaca_has_confidence"]
+          }
+        ]
+      }
     },
     {
       "id": "check_ichtaca_has_confidence",
@@ -9458,14 +9436,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "ichtaca_has_confidence"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["faith_restored", "ichtacas_faith_restored", "add_cultist_token"]
-        }
-      ]
+        "id": "ichtaca_has_confidence",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["faith_restored", "ichtacas_faith_restored", "add_cultist_token"]
+          }
+        ]
+      }
     },
     {
       "id": "faith_restored",
@@ -9601,7 +9579,7 @@
 }
 ,
 {
-  "id": "restless_nights",
+  "id": "tfa_interlude1",
   "scenarioName": "Restless Nights",
   "interlude": true,
   "setup": [
@@ -9625,18 +9603,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "blanket"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["tossing_and_turning"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["restless_sleep", "no_ill_effects"]
-        }
-      ]
+        "id": "blanket",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["tossing_and_turning"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["restless_sleep", "no_ill_effects"]
+          }
+        ]
+      }
     },
     {
       "id": "tossing_and_turning",
@@ -9687,24 +9665,24 @@
     },
     {
       "id": "choose_lookout",
-      "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks his or her supplies. If he or she has binoculars, he or she reads <b>Shapes in the Trees</b>. Otherwise, he or she reads <b>Eyes in the Dark</b>.",
+      "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks their supplies. If he or she has binoculars, he or she reads <b>Shapes in the Trees</b>. Otherwise, he or she reads <b>Eyes in the Dark</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
         "id": "binoculars",
-        "investigator": "choice"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["eyes_in_the_dark"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["shapes_in_the_tress", "bonus_xp"]
-        }
-      ]
+        "investigator": "choice",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["eyes_in_the_dark"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["shapes_in_the_tress", "bonus_xp"]
+          }
+        ]
+      }
     },
     {
       "id": "eyes_in_the_dark",
@@ -9738,7 +9716,7 @@
     },
     {
       "id": "use_medicine",
-      "text": "Check your supplies. Each investigator with medicine may cross it off from their supplies to choose and remove a Poisoned weakness from any investigator’s deck. Each investigator who still has a Poisoned weakness in his or her deck reads <b>The Poison Spreads</b>.",
+      "text": "Check your supplies. Each investigator with medicine may cross it off from their supplies to choose and remove a Poisoned weakness from any investigator’s deck. Each investigator who still has a Poisoned weakness in their deck reads <b>The Poison Spreads</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -9762,14 +9740,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04102"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["poison_spreads", "physical_trauma"]
-        }
-      ]
+        "card": "04102",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["poison_spreads", "physical_trauma"]
+          }
+        ]
+      }
     },
     {
       "id": "poison_spreads",
@@ -9784,19 +9762,19 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04102"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "effects": [
-            {
-              "type": "trauma",
-              "physical": 1
-            }
-          ]
-        }
-      ]
+        "card": "04102",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "trauma",
+                "physical": 1
+              }
+            ]
+          }
+        ]
+      }
     }
   ]
 }
@@ -9823,18 +9801,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "braziers_are_lit"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_1", "intro_3"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_braziers_remain_unlit"]
-        }
-      ]
+        "id": "braziers_are_lit",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1", "intro_3"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_braziers_remain_unlit"]
+          }
+        ]
+      }
     },
     {
       "id": "check_braziers_remain_unlit",
@@ -9842,14 +9820,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "braziers_remain_unlit"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_2", "two_fewer_cards", "intro_3"]
-        }
-      ]
+        "id": "braziers_remain_unlit",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2", "two_fewer_cards", "intro_3"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",
@@ -9863,7 +9841,7 @@
     },
     {
       "id": "two_fewer_cards",
-      "text": "Each investigator begins this scenario with 2 fewer cards in his or her opening hand."
+      "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
     },
     {
       "id": "intro_3",
@@ -9876,18 +9854,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "found_missing_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_4"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_relic_is_missing"]
-        }
-      ]
+        "id": "found_missing_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_4"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_relic_is_missing"]
+          }
+        ]
+      }
     },
     {
       "id": "check_relic_is_missing",
@@ -9895,14 +9873,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "relic_is_missing"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_5"]
-        }
-      ]
+        "id": "relic_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_5"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_4",
@@ -9937,22 +9915,22 @@
           "type": "chaos_bag",
           "token": "tablet"
         },
-        "operation": "compare"
-      },
-      "options": [
-        {
-          "numCondition": -1,
-          "steps": ["more_tablets"]
-        },
-        {
-          "numCondition": 0,
-          "steps": ["equal_tablets_and_cultists"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["more_cultists"]
-        }
-      ]
+        "operation": "compare",
+        "options": [
+          {
+            "numCondition": -1,
+            "steps": ["more_tablets"]
+          },
+          {
+            "numCondition": 0,
+            "steps": ["equal_tablets_and_cultists"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["more_cultists"]
+          }
+        ]
+      }
     },
     {
       "id": "more_tablets",
@@ -10244,14 +10222,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "forged_bond_with_ichtaca"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["ichtacas_quest", "no_ill_effects"]
-        }
-      ]
+        "id": "forged_bond_with_ichtaca",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ichtacas_quest", "no_ill_effects"]
+          }
+        ]
+      }
     },
     {
       "id": "ichtacas_quest",
@@ -10269,14 +10247,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "ichtaca_in_the_dark"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["silent_journey", "two_fewer_cards"]
-        }
-      ]
+        "id": "ichtaca_in_the_dark",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["silent_journey", "two_fewer_cards"]
+          }
+        ]
+      }
     },
     {
       "id": "silent_journey",
@@ -10286,7 +10264,7 @@
     },
     {
       "id": "two_fewer_cards",
-      "text": "Each investigator begins this scenario with 2 fewer cards in his or her opening hand."
+      "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
     },
     {
       "id": "check_found_missing_relic",
@@ -10294,14 +10272,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "found_missing_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["arcane_thrumming", "replace_relic_of_ages"]
-        }
-      ]
+        "id": "found_missing_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["arcane_thrumming", "replace_relic_of_ages"]
+          }
+        ]
+      }
     },
     {
       "id": "arcane_thrumming",
@@ -10311,7 +10289,7 @@
     },
     {
       "id": "replace_relic_of_ages",
-      "text": "The investigator with Relic of Ages <i>(...A Device, of Some Sort)</i> in his or her deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages <i>(Forestalling the Future)</i>.",
+      "text": "The investigator with Relic of Ages <i>(...A Device, of Some Sort)</i> in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages <i>(Forestalling the Future)</i>.",
       "effects": [
         {
           "type": "replace_card",
@@ -10326,14 +10304,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "relic_is_missing"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["growing_concern", "remove_relic_of_ages_from_game"]
-        }
-      ]
+        "id": "relic_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["growing_concern", "remove_relic_of_ages_from_game"]
+          }
+        ]
+      }
     },
     {
       "id": "growing_concern",
@@ -10351,14 +10329,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "rescued_alejandro"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["alejandros_thoughts", "two_extra_resources"]
-        }
-      ]
+        "id": "rescued_alejandro",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["alejandros_thoughts", "two_extra_resources"]
+          }
+        ]
+      }
     },
     {
       "id": "alejandros_thoughts",
@@ -10376,14 +10354,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "alejandro_is_missing"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["an_empty_seat", "no_ill_effects"]
-        }
-      ]
+        "id": "alejandro_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["an_empty_seat", "no_ill_effects"]
+          }
+        ]
+      }
     },
     {
       "id": "an_empty_seat",
@@ -10393,7 +10371,7 @@
     },
     {
       "id": "use_gasoline",
-      "text": "Check your supplies. Any one investigator must cross off one gasoline from his or her supplies. If no gasoline was crossed off, read <b>Out of Gas</b>.",
+      "text": "Check your supplies. Any one investigator must cross off one gasoline from their supplies. If no gasoline was crossed off, read <b>Out of Gas</b>.",
       "type": "input",
       "input": {
         "type": "use_supplies",
@@ -10437,30 +10415,30 @@
       "condition": {
         "type": "campaign_data",
         "campaign_data": "chaos_bag",
-        "token": "cultist"
-      },
-       "options": [
-        {
-          "numCondition": 0,
-          "steps": ["check_tablet_tokens"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["check_tablet_tokens"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["brotherhood_and_dark_cult"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["brotherhood_and_dark_cult"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["brotherhood_and_dark_cult"]
-        }
-      ]
+        "token": "cultist",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["check_tablet_tokens"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["check_tablet_tokens"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["brotherhood_and_dark_cult"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["brotherhood_and_dark_cult"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["brotherhood_and_dark_cult"]
+          }
+        ]
+      }
     },
     {
       "id": "check_tablet_tokens",
@@ -10468,30 +10446,30 @@
       "condition": {
         "type": "campaign_data",
         "campaign_data": "chaos_bag",
-        "token": "tablet"
-      },
-       "options": [
-        {
-          "numCondition": 0,
-          "steps": ["brotherhood_and_guardians"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["brotherhood_and_guardians"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["yigs_venom_and_guadians"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["yigs_venom_and_guadians"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["yigs_venom_and_guadians"]
-        }
-      ]
+        "token": "tablet",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["brotherhood_and_guardians"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["brotherhood_and_guardians"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["yigs_venom_and_guadians"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["yigs_venom_and_guadians"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["yigs_venom_and_guadians"]
+          }
+        ]
+      }
     },
     {
       "id": "brotherhood_and_dark_cult",
@@ -10522,7 +10500,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Metropolitan Cathedral, Zócalo, Temple Ruins, Xochimilco, Chapultepec Park, and Coyoacán into play. Each investigator begins play in either Zócalo or Coyoacán (his or her choice)."
+      "text": "Put Metropolitan Cathedral, Zócalo, Temple Ruins, Xochimilco, Chapultepec Park, and Coyoacán into play. Each investigator begins play in either Zócalo or Coyoacán (their choice)."
     },
     {
       "id": "create_exploration_deck",
@@ -10556,6 +10534,7 @@
     },
     {
       "id": "record_x_paths_known",
+      "text": "In your Campaign Log, record that X paths are known to you. X is the number of Tenochtitlán locations in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -10576,38 +10555,38 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "paths_known"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": []
-        },
-        {
-          "numCondition": 1,
-          "steps": []
-        },
-        {
-          "numCondition": 2,
-          "steps": []
-        },
-        {
-          "numCondition": 3,
-          "steps": ["ichtaca_has_confidence"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["ichtaca_has_confidence"]
-        },
-        {
-          "numCondition": 5,
-          "steps": ["ichtaca_has_confidence"]
-        },
-        {
-          "numCondition": 6,
-          "steps": ["ichtaca_has_confidence"]
-        }
-      ]
+        "id": "paths_known",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": []
+          },
+          {
+            "numCondition": 1,
+            "steps": []
+          },
+          {
+            "numCondition": 2,
+            "steps": []
+          },
+          {
+            "numCondition": 3,
+            "steps": ["ichtaca_has_confidence"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["ichtaca_has_confidence"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["ichtaca_has_confidence"]
+          },
+          {
+            "numCondition": 6,
+            "steps": ["ichtaca_has_confidence"]
+          }
+        ]
+      }
     },
     {
       "id": "ichtaca_has_confidence",
@@ -10650,6 +10629,7 @@
     },
     {
       "id": "record_harbinger",
+      "text": "Record in your campaign log next to <i>“the Harbinger is still alive”</i>, record in parentheses how much damage is on the Harbinger of Valusia, replacing the number that was previously in parentheses.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -10659,7 +10639,7 @@
             "type": "campaign_log",
             "section": "campaign_notes",
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
       }
@@ -10747,11 +10727,11 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Cooperate and tell the creatures everything you know.",
+            "flavor": "Cooperate and tell the creatures everything you know.",
             "steps": [ "intro_2" ]
           },
           {
-            "text": "Refuse and resist captivity.",
+            "flavor": "Refuse and resist captivity.",
             "steps": [ "intro_3" ]
           }
         ]
@@ -10796,11 +10776,11 @@
     },
     {
       "id": "set_aside_unique_assets",
-      "text": "Before drawing opening hands, each investigator searches his or her deck and play area for all unique [[Item]] assets. Set each of those assets aside, out of play. They do not exist in this time period."
+      "text": "Before drawing opening hands, each investigator searches their deck and play area for all unique [[Item]] assets. Set each of those assets aside, out of play. They do not exist in this time period."
     },
     {
       "id": "set_aside_alejandro",
-      "text": "Before drawing opening hands, if a player has Alejandro Vela in his or her deck, search that investigator’s deck for Alejandro Vela and set him aside, out of play."
+      "text": "Before drawing opening hands, if a player has Alejandro Vela in their deck, search that investigator’s deck for Alejandro Vela and set him aside, out of play."
     },
     {
       "id": "body_of_yithian",
@@ -10812,18 +10792,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "cooperated_with_yithians"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["setup_locations_cooperated", "yithian_observer_cooperated"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_resisted"]
-        }
-      ]
+        "id": "cooperated_with_yithians",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["setup_locations_cooperated", "yithian_observer_cooperated"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_resisted"]
+          }
+        ]
+      }
     },
     {
       "id": "setup_locations_cooperated",
@@ -10839,14 +10819,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "resisted_captivity"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["setup_locations_resisted", "yithian_observer_resisted"]
-        }
-      ]
+        "id": "resisted_captivity",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["setup_locations_resisted", "yithian_observer_resisted"]
+          }
+        ]
+      }
     },
     {
       "id": "setup_locations_resisted",
@@ -10872,10 +10852,10 @@
       "id": "body_of_yithian_rule",
       "type": "rule_reminder",
       "title": "Replacing Locations",
-      "text": "During the setup for this scenario, each investigator is instructed to replace his or her investigator card with one of the Body of a Yithian investigator cards provided in this Mythos Pack.",
+      "text": "During the setup for this scenario, each investigator is instructed to replace their investigator card with one of the Body of a Yithian investigator cards provided in this Mythos Pack.",
       "bullets": [
         {
-          "text": "Each investigator’s deck remains the same, but for the duration of this scenario, he or she must use a Body of a Yithian investigator card, and therefore cannot use any of his or her investigator’s abilities. Each investigator should still use their investigator mini- card so they can tell who is who."
+          "text": "Each investigator’s deck remains the same, but for the duration of this scenario, he or she must use a Body of a Yithian investigator card, and therefore cannot use any of their investigator’s abilities. Each investigator should still use their investigator mini- card so they can tell who is who."
         },
         {
           "text": "Any trauma that would normally be placed on your investigator is transferred to your Body of a Yithian investigator card."
@@ -10946,26 +10926,26 @@
       "condition": {
         "type": "campaign_log",
         "section": "hidden",
-        "id": "tasks_completed"
-      },
-      "options": [
-        {
-          "numCondition": 6,
-          "steps": ["process_was_perfected"]
-        },
-        {
-          "numCondition": 5,
-          "steps": ["process_was_successful"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["process_backfired"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["process_backfired_spectacularly"]
-        }
-      ]
+        "id": "tasks_completed",
+        "options": [
+          {
+            "numCondition": 6,
+            "steps": ["process_was_perfected"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["process_was_successful"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["process_backfired"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["process_backfired_spectacularly"]
+          }
+        ]
+      }
     },
     {
       "id": "process_was_perfected",
@@ -11056,7 +11036,7 @@
 }
 ,
 {
-  "id": "the_darkness",
+  "id": "tfa_interlude5",
   "scenarioName": "The Darkness",
   "interlude": true,
   "setup": [
@@ -11074,18 +11054,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "fell_into_depths"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["darkness_1", "darkness_2"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_nexus_is_near"]
-        }
-      ]
+        "id": "fell_into_depths",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["darkness_1", "darkness_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_nexus_is_near"]
+          }
+        ]
+      }
     },
     {
       "id": "check_nexus_is_near",
@@ -11093,14 +11073,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "nexus_is_near"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["darkness_2"]
-        }
-      ]
+        "id": "nexus_is_near",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["darkness_2"]
+          }
+        ]
+      }
     },
     {
       "id": "darkness_1",
@@ -11118,18 +11098,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "found_missing_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["arcane_thrumming", "check_investigators_recovered_relic"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_relic_is_missing"]
-        }
-      ]
+        "id": "found_missing_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["arcane_thrumming", "check_investigators_recovered_relic"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_relic_is_missing"]
+          }
+        ]
+      }
     },
     {
       "id": "check_relic_is_missing",
@@ -11137,14 +11117,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "relic_is_missing"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["growing_concern", "add_chaos_token"]
-        }
-      ]
+        "id": "relic_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["growing_concern", "add_chaos_token"]
+          }
+        ]
+      }
     },
     {
       "id": "arcane_thrumming",
@@ -11158,18 +11138,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "investigators_recovered_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["check_forging_own_path"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["no_ill_effects"]
-        }
-      ]
+        "id": "investigators_recovered_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_forging_own_path"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["no_ill_effects"]
+          }
+        ]
+      }
     },
     {
       "id": "no_ill_effects",
@@ -11181,18 +11161,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "forging_own_path"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["final_dawning", "swap_relic"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["no_ill_effects"]
-        }
-      ]
+        "id": "forging_own_path",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["final_dawning", "swap_relic"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["no_ill_effects"]
+          }
+        ]
+      }
     },
     {
       "id": "final_dawning",
@@ -11202,7 +11182,7 @@
     },
     {
       "id": "swap_relic",
-      "text": "The investigator with Relic of Ages in his or her deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages (<i>Repossess the Past</i>).",
+      "text": "The investigator with Relic of Ages in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages (<i>Repossess the Past</i>).",
       "effects": [
         {
           "type": "replace_card",
@@ -11222,46 +11202,46 @@
       "type": "branch",
       "condition": {
         "type": "campaign_data",
-        "campaign_data": "difficulty"
-      },
-      "options": [
-        {
-          "condition": "easy",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-3"]
-            }
-          ]
-        },
-        {
-          "condition": "standard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-4"]
-            }
-          ]
-        },
-        {
-          "condition": "hard",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-5"]
-            }
-          ]
-        },
-        {
-          "condition": "expert",
-          "effects": [
-            {
-              "type": "add_chaos_token",
-              "tokens": ["-7"]
-            }
-          ]
-        }
-      ]
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-3"]
+              }
+            ]
+          },
+          {
+            "condition": "standard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-4"]
+              }
+            ]
+          },
+          {
+            "condition": "hard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-5"]
+              }
+            ]
+          },
+          {
+            "condition": "expert",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-7"]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "find_brazier",
@@ -11275,18 +11255,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "torches"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["torchlight", "braziers_are_lit", "check_map"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["the_abyss", "braziers_remain_unlit"]
-        }
-      ]
+        "id": "torches",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["torchlight", "braziers_are_lit", "check_map"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["the_abyss", "braziers_remain_unlit"]
+          }
+        ]
+      }
     },
     {
       "id": "torchlight",
@@ -11330,14 +11310,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "map"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["reading_signs", "extra_map_xp"]
-        }
-      ]
+        "id": "map",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["reading_signs", "extra_map_xp"]
+          }
+        ]
+      }
     },
     {
       "id": "reading_signs",
@@ -11352,19 +11332,19 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "map"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "effects": [
-            {
-              "type": "earn_xp",
-              "investigator": "input_value"
-            }
-          ]
-        }
-      ]
+        "id": "map",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "input_value"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "time_passes",
@@ -11423,18 +11403,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "forging_own_path"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_2", "ichtaca_set_against_forging_own_path"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_ichtacas_faith"]
-        }
-      ]
+        "id": "forging_own_path",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2", "ichtaca_set_against_forging_own_path"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_ichtacas_faith"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_2",
@@ -11471,18 +11451,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "ichtacas_faith_restored"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_3"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["intro_4", "ichtaca_set_against", "maybe_lose_ichtaca", "check_relic_missing"]
-        }
-      ]
+        "id": "ichtacas_faith_restored",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_3"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_4", "ichtaca_set_against", "maybe_lose_ichtaca", "check_relic_missing"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_3",
@@ -11511,14 +11491,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04147"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["lose_ichtaca"]
-        }
-      ]
+        "card": "04147",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["lose_ichtaca"]
+          }
+        ]
+      }
     },
     {
       "id": "lose_ichtaca",
@@ -11537,18 +11517,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "relic_is_missing"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_5"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_found_missing_relic"]
-        }
-      ]
+        "id": "relic_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_5"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_found_missing_relic"]
+          }
+        ]
+      }
     },
     {
       "id": "check_found_missing_relic",
@@ -11556,14 +11536,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "found_missing_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_6", "check_pocketknife"]
-        }
-      ]
+        "id": "found_missing_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_6", "check_pocketknife"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_5",
@@ -11582,18 +11562,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "pocketknife"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_7"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["intro_8", "lost_relic", "maybe_remove_relic"]
-        }
-      ]
+        "id": "pocketknife",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_7"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_8", "lost_relic", "maybe_remove_relic"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_7",
@@ -11629,14 +11609,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04191"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["remove_relic"]
-        }
-      ]
+        "card": "04191",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["remove_relic"]
+          }
+        ]
+      }
     },
     {
       "id": "remove_relic",
@@ -11666,98 +11646,98 @@
       "type": "branch",
       "condition": {
         "type": "campaign_log",
-        "section": "yigs_fury"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": ["fury_0"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["fury_1_to_5"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["fury_1_to_5"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["fury_1_to_5"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["fury_1_to_5"]
-        },
-        {
-          "numCondition": 5,
-          "steps": ["fury_1_to_5"]
-        },
-        {
-          "numCondition": 6,
-          "steps": ["fury_6_to_10"]
-        },
-        {
-          "numCondition": 7,
-          "steps": ["fury_6_to_10"]
-        },
-        {
-          "numCondition": 8,
-          "steps": ["fury_6_to_10"]
-        },
-        {
-          "numCondition": 9,
-          "steps": ["fury_6_to_10"]
-        },
-        {
-          "numCondition": 10,
-          "steps": ["fury_6_to_10"]
-        },
-        {
-          "numCondition": 11,
-          "steps": ["fury_11_to_14"]
-        },
-        {
-          "numCondition": 12,
-          "steps": ["fury_11_to_14"]
-        },
-        {
-          "numCondition": 13,
-          "steps": ["fury_11_to_14"]
-        },
-        {
-          "numCondition": 14,
-          "steps": ["fury_11_to_14"]
-        },
-        {
-          "numCondition": 15,
-          "steps": ["fury_15_to_17"]
-        },
-        {
-          "numCondition": 16,
-          "steps": ["fury_15_to_17"]
-        },
-        {
-          "numCondition": 17,
-          "steps": ["fury_15_to_17"]
-        },
-        {
-          "numCondition": 18,
-          "steps": ["fury_18_to_20"]
-        },
-        {
-          "numCondition": 19,
-          "steps": ["fury_18_to_20"]
-        },
-        {
-          "numCondition": 20,
-          "steps": ["fury_18_to_20"]
-        },
-        {
-          "default": true,
-          "steps": ["fury_21"]
-        }
-      ]
+        "section": "yigs_fury",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["fury_0"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["fury_1_to_5"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["fury_1_to_5"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["fury_1_to_5"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["fury_1_to_5"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["fury_1_to_5"]
+          },
+          {
+            "numCondition": 6,
+            "steps": ["fury_6_to_10"]
+          },
+          {
+            "numCondition": 7,
+            "steps": ["fury_6_to_10"]
+          },
+          {
+            "numCondition": 8,
+            "steps": ["fury_6_to_10"]
+          },
+          {
+            "numCondition": 9,
+            "steps": ["fury_6_to_10"]
+          },
+          {
+            "numCondition": 10,
+            "steps": ["fury_6_to_10"]
+          },
+          {
+            "numCondition": 11,
+            "steps": ["fury_11_to_14"]
+          },
+          {
+            "numCondition": 12,
+            "steps": ["fury_11_to_14"]
+          },
+          {
+            "numCondition": 13,
+            "steps": ["fury_11_to_14"]
+          },
+          {
+            "numCondition": 14,
+            "steps": ["fury_11_to_14"]
+          },
+          {
+            "numCondition": 15,
+            "steps": ["fury_15_to_17"]
+          },
+          {
+            "numCondition": 16,
+            "steps": ["fury_15_to_17"]
+          },
+          {
+            "numCondition": 17,
+            "steps": ["fury_15_to_17"]
+          },
+          {
+            "numCondition": 18,
+            "steps": ["fury_18_to_20"]
+          },
+          {
+            "numCondition": 19,
+            "steps": ["fury_18_to_20"]
+          },
+          {
+            "numCondition": 20,
+            "steps": ["fury_18_to_20"]
+          },
+          {
+            "default": true,
+            "steps": ["fury_21"]
+          }
+        ]
+      }
     },
     {
       "id": "fury_0",
@@ -11797,14 +11777,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "harbinger_alive"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["setup_harbinger"]
-        }
-      ]
+        "id": "harbinger_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["setup_harbinger"]
+          }
+        ]
+      }
     },
     {
       "id": "setup_harbinger",
@@ -11889,26 +11869,26 @@
       "condition": {
         "type": "campaign_log",
         "section": "hidden",
-        "id": "final_depth"
-      },
-      "options": [
-        {
-          "numCondition": 1,
-          "steps": ["depth_1_fall"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["depth_2_fall", "check_all_killed"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["depth_3_fall", "check_all_killed"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["depth_4_fall"]
-        }
-      ]
+        "id": "final_depth",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["depth_1_fall"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["depth_2_fall", "check_all_killed"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["depth_3_fall", "check_all_killed"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["depth_4_fall"]
+          }
+        ]
+      }
     },
     {
       "id": "depth_1_fall",
@@ -11928,7 +11908,7 @@
     },
     {
       "id": "depth_2_fall",
-      "text": "Because the current depth level is 2, each investigator suffers 2 physical trauma and searches the collection for a random basic Injury weakness, adding it to his or her deck.",
+      "text": "Because the current depth level is 2, each investigator suffers 2 physical trauma and searches the collection for a random basic Injury weakness, adding it to their deck.",
       "effects": [
         {
           "type": "trauma",
@@ -11949,14 +11929,14 @@
       "condition": {
         "type": "trauma",
         "trauma": "killed",
-        "investigator": "all"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["lose"]
-        }
-      ]
+        "investigator": "all",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["lose"]
+          }
+        ]
+      }
     },
     {
       "id": "lose",
@@ -12014,6 +11994,7 @@
     },
     {
       "id": "record_harbinger",
+      "text": "Record in your campaign log next to <i>“the Harbinger is still alive”</i>, record in parentheses how much damage is on the Harbinger of Valusia, replacing the number that was previously in parentheses.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -12023,7 +12004,7 @@
             "type": "campaign_log",
             "section": "campaign_notes",
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
       }
@@ -12112,7 +12093,6 @@
   "interlude": true,
   "setup": [
     "check_process_backfired",
-    "check_process_backfired_spectacularly",
     "check_mind_recovered",
     "find_stone_gate",
     "check_chalk",
@@ -12126,41 +12106,91 @@
     {
       "id": "check_process_backfired",
       "type": "branch",
-      "text": "Check Campaign Log. If <i>the process backfired</i>, each investigator reveals a random chaos token from the chaos bag. Consult the list below to see what side effects result from your mishap.",
+      "text": "Check Campaign Log. If <i>the process backfired</i>...",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "process_backfired"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["reveal_tokens"]
-        }
-      ]
+        "id": "process_backfired",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["reveal_one_token"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_process_backfired_spectacularly"]
+          }
+        ]
+      }
     },
     {
       "id": "check_process_backfired_spectacularly",
       "type": "branch",
-      "text": "Check Campaign Log. If <i>the process backfired spectacularly</i>, each investigator reveals two random chaos token from the chaos bag, choosing the token that is lower on the list to resolve, and ignoring the other. Consult the list below to see what side effects result from your mishap.",
+      "text": "Check Campaign Log. If <i>the process backfired spectacularly</i>...",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "process_backfired_spectacularly"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["reveal_tokens"]
-        }
-      ]
+        "id": "process_backfired_spectacularly",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["reveal_two_tokens"]
+          }
+        ]
+      }
     },
     {
-      "id": "reveal_tokens",
+      "id": "reveal_one_token",
       "type": "input",
+      "text": "Each investigator reveals a random chaos token from the chaos bag. Consult the list below to see what side effects result from your mishap.",
       "input": {
         "type": "investigator_choice",
         "investigator": "all",
+        "detailed": true,
+        "choices": [
+          {
+            "text": "[elder_sign] or +1 token.",
+            "description": "Suffer no ill efects.",
+            "effects": []
+          },
+          {
+            "text": "[skull] token or any number other than +1",
+            "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
+            "effects": [
+              {
+                "type": "add_card",
+                "card": "04264",
+                "investigator": "input_value"
+              }
+            ]
+          },
+          {
+            "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
+            "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
+            "effects": [
+              {
+                "type": "add_card",
+                "card": "04264",
+                "investigator": "input_value"
+              },
+              {
+                "type": "add_card",
+                "card": "04244",
+                "investigator": "input_value"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "reveal_two_tokens",
+      "type": "input",
+      "text": "Each investigator reveals two random chaos token from the chaos bag, choosing the token that is lower on the list to resolve, and ignoring the other. Consult the list below to see what side effects result from your mishap.",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "detailed": true,
         "choices": [
           {
             "text": "[elder_sign] or +1 token.",
@@ -12203,30 +12233,30 @@
       "condition": {
         "type": "campaign_data",
         "campaign_data": "chaos_bag",
-        "token": "tablet"
-      },
-      "options": [
-        {
-          "numCondition": 0,
-          "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
-        },
-        {
-          "numCondition": 1,
-          "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
-        },
-        {
-          "numCondition": 2,
-          "steps": ["check_mind_recovered_rescued_alejandro"]
-        },
-        {
-          "numCondition": 3,
-          "steps": ["check_mind_recovered_rescued_alejandro"]
-        },
-        {
-          "numCondition": 4,
-          "steps": ["check_mind_recovered_rescued_alejandro"]
-        }
-      ]
+        "token": "tablet",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["check_mind_recovered_rescued_alejandro"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["check_mind_recovered_rescued_alejandro"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["check_mind_recovered_rescued_alejandro"]
+          }
+        ]
+      }
     },
     {
       "id": "check_mind_recovered_rescued_alejandro",
@@ -12234,18 +12264,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "rescued_alejandro"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["check_mind_recovered_had_custodian"]
-        }
-      ]
+        "id": "rescued_alejandro",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["check_mind_recovered_had_custodian"]
+          }
+        ]
+      }
     },
     {
       "id": "check_mind_recovered_had_custodian",
@@ -12310,14 +12340,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04326"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["lose_alejandro"]
-        }
-      ]
+        "card": "04326",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["lose_alejandro"]
+          }
+        ]
+      }
     },
     {
       "id": "lose_alejandro",
@@ -12342,18 +12372,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "chalk"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["the_way_is_open", "no_ill_effects"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["the_way_is_shut", "no_mulligan"]
-        }
-      ]
+        "id": "chalk",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["the_way_is_open", "no_ill_effects"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["the_way_is_shut", "no_mulligan"]
+          }
+        ]
+      }
     },
     {
       "id": "the_way_is_open",
@@ -12427,14 +12457,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04102"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["poison_spreads", "physical_trauma"]
-        }
-      ]
+        "card": "04102",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["poison_spreads", "physical_trauma"]
+          }
+        ]
+      }
     },
     {
       "id": "poison_spreads",
@@ -12449,19 +12479,19 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04102"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "effects": [
-            {
-              "type": "trauma",
-              "physical": 1
-            }
-          ]
-        }
-      ]
+        "card": "04102",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "trauma",
+                "physical": 1
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "stop_and_rest",
@@ -12475,18 +12505,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "supplies",
-        "id": "blanket"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["tossing_and_turning"]
-        },
-        {
-          "boolCondition": true,
-          "steps": ["restless_sleep", "no_ill_effects"]
-        }
-      ]
+        "id": "blanket",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["tossing_and_turning"]
+          },
+          {
+            "boolCondition": true,
+            "steps": ["restless_sleep", "no_ill_effects"]
+          }
+        ]
+      }
     },
     {
       "id": "tossing_and_turning",
@@ -12537,18 +12567,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "gave_relic_to_alejandro"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_2"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_alejandro_recovered_relic"]
-        }
-      ]
+        "id": "gave_relic_to_alejandro",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_alejandro_recovered_relic"]
+          }
+        ]
+      }
     },
     {
       "id": "check_alejandro_recovered_relic",
@@ -12556,18 +12586,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "alejandro_recovered_relic"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_2"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_gave_relic_to_harlan"]
-        }
-      ]
+        "id": "alejandro_recovered_relic",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_gave_relic_to_harlan"]
+          }
+        ]
+      }
     },
     {
       "id": "check_gave_relic_to_harlan",
@@ -12575,14 +12605,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "gave_relic_to_harlan"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_3"]
-        }
-      ]
+        "id": "gave_relic_to_harlan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_3"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_2",
@@ -12597,11 +12627,11 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "“You’re not going anywhere until you tell me what is going on.”",
+            "flavor": "“You’re not going anywhere until you tell me what is going on.”",
             "steps": ["intro_4", "listened_to_ichtaca", "add_cultist"]
           },
           {
-            "text": "“Have it your way.”",
+            "flavor": "“Have it your way.”",
             "steps": ["intro_5", "ichtaca_left_without_you", "check_ignored_ichtaca_and_gave_relic_to_harlan"]
           }
         ]
@@ -12648,14 +12678,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "gave_relic_to_harlan"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_6", "choose_forging_own_path"]
-        }
-      ]
+        "id": "gave_relic_to_harlan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_6", "choose_forging_own_path"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_6",
@@ -12723,6 +12753,7 @@
     },
     {
       "id": "setup_act_deck",
+      "type": "rule_reminder",
       "title": "Three Acts, Three Threads.",
       "text": "This scenario contains three different act decks —an “a/b” deck, a “c/d” deck, and an “e/f” deck. Each of these act decks is constructed separately, in numerical order, as usual. During the course of this scenario, all three of these act decks will be in play, and players may choose which acts to pursue and which to ignore. The text of all three acts is considered active at all times. You might not have time to accomplish all three tasks, so choose which leads you wish to pursue wisely!\nThe contents of each of these act decks is altered depending on the circumstances below."
     },
@@ -12733,18 +12764,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "gave_relic_to_harlan"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["act_ab_harlan_in_trouble"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["act_ab_relic_is_missing"]
-        }
-      ]
+        "id": "gave_relic_to_harlan",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["act_ab_harlan_in_trouble"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["act_ab_relic_is_missing"]
+          }
+        ]
+      }
     },
     {
       "id": "act_ab_harlan_in_trouble",
@@ -12823,14 +12854,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04061"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_relic_of_ages"]
-        }
-      ]
+        "card": "04061",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_relic_of_ages"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_relic_of_ages",
@@ -12849,14 +12880,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "defeated",
-        "card": "04061"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["remove_relic_of_ages"]
-        }
-      ]
+        "card": "04061",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["remove_relic_of_ages"]
+          }
+        ]
+      }
     },
     {
       "id": "remove_relic_of_ages",
@@ -12874,14 +12905,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04051"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["check_forging_own_path_earn_alejandro"]
-        }
-      ]
+        "card": "04051",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["check_forging_own_path_earn_alejandro"]
+          }
+        ]
+      }
     },
     {
       "id": "check_forging_own_path_earn_alejandro",
@@ -12889,18 +12920,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "forging_own_path"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_alejandro"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["earn_alejandro_xp"]
-        }
-      ]
+        "id": "forging_own_path",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_alejandro"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["earn_alejandro_xp"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_alejandro",
@@ -12930,14 +12961,14 @@
       "condition": {
         "type": "has_card",
         "investigator": "defeated",
-        "card": "04051"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["remove_alejandro"]
-        }
-      ]
+        "card": "04051",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["remove_alejandro"]
+          }
+        ]
+      }
     },
     {
       "id": "remove_alejandro",
@@ -12989,18 +13020,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "forging_own_path"
-      },
-      "options": [
-        {
-          "boolCondition": false,
-          "steps": ["earn_ichtaca"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["earn_ichtaca_xp"]
-        }
-      ]
+        "id": "forging_own_path",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["earn_ichtaca"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["earn_ichtaca_xp"]
+          }
+        ]
+      }
     },
     {
       "id": "earn_ichtaca",
@@ -13318,18 +13349,18 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "wait_for_additional_supplies"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_1", "cross_off_entries"]
-        },
-        {
-          "boolCondition": false,
-          "steps": ["check_cleared_path_to_temple"]
-        }
-      ]
+        "id": "wait_for_additional_supplies",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1", "cross_off_entries"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_cleared_path_to_temple"]
+          }
+        ]
+      }
     },
     {
       "id": "check_cleared_path_to_temple",
@@ -13337,14 +13368,14 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "cleared_path_to_temple"
-      },
-      "options": [
-        {
-          "boolCondition": true,
-          "steps": ["intro_2", "cross_off_entries"]
-        }
-      ]
+        "id": "cleared_path_to_temple",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2", "cross_off_entries"]
+          }
+        ]
+      }
     },
     {
       "id": "intro_1",

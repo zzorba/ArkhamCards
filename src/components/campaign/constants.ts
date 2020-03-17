@@ -101,6 +101,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`The Devourer Below`, code: 'tentacles', pack_code: 'core' },
     ];
     case DWL: return [
+      { name: t`Prologue`, code: 'dwl_prologue', interlude: true },
       { name: t`Extracurricular Activity`, code: 'extracurricular_activity', pack_code: 'dwl' },
       { name: t`The House Always Wins`, code: 'the_house_always_wins', pack_code: 'dwl' },
       { name: t`Armitage’s Fate`, code: 'armitages_fate', interlude: true },
@@ -114,6 +115,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Epilogue`, code: 'dwl_epilogue', interlude: true },
     ];
     case RTDWL: return [
+      { name: t`Prologue`, code: 'dwl_prologue', interlude: true },
       { name: t`Return to Extracurricular Activity`, code: 'return_to_extracurricular_activity', pack_code: 'rtdwl' },
       { name: t`Return to The House Always Wins`, code: 'return_to_the_house_always_wins', pack_code: 'rtdwl' },
       { name: t`Armitage’s Fate`, code: 'armitages_fate', interlude: true },

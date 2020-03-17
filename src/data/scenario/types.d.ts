@@ -25,7 +25,19 @@ export type InvestigatorSelector =
   | "defeated"
   | "not_resigned"
   | "input_value";
-export type Operand = CampaignLogOperand | ChaosBagOperand;
+export type Option = EffectOption | StepsOption | ResolutionOption;
+export type Effect =
+  | EarnXpEffect
+  | AddCardEffect
+  | RemoveCardEffect
+  | ReplaceCardEffect
+  | TraumaEffect
+  | CampaignLogEffect
+  | CampaignDataResultEffect
+  | CampaignDataDifficultyEffect
+  | CampaignDataNextScenarioEffect
+  | CampaignDataChooseInvestigatorsEffect
+  | AddRemoveChaosTokenEffect;
 export type ChaosToken =
   | "+1"
   | "0"
@@ -43,19 +55,7 @@ export type ChaosToken =
   | "elder_thing"
   | "elder_sign"
   | "auto_fail";
-export type Option = EffectOption | StepsOption | ResolutionOption;
-export type Effect =
-  | EarnXpEffect
-  | AddCardEffect
-  | RemoveCardEffect
-  | ReplaceCardEffect
-  | TraumaEffect
-  | CampaignLogEffect
-  | CampaignDataResultEffect
-  | CampaignDataDifficultyEffect
-  | CampaignDataNextScenarioEffect
-  | CampaignDataChooseInvestigatorsEffect
-  | AddRemoveChaosTokenEffect;
+export type Operand = CampaignLogOperand | ChaosBagOperand;
 export type Input =
   | CardChoiceInput
   | SuppliesInput
@@ -85,6 +85,7 @@ export interface Campaign {
   campaign_log: {
     id: string;
     title: string;
+    type?: "count" | "investigator";
   }[];
   scenarios: string[];
   setup: string[];
@@ -95,57 +96,13 @@ export interface BranchStep {
   type: "branch";
   text?: string;
   condition: Condition;
-  options: Option[];
 }
 export interface CampaignLogCondition {
   type: "campaign_log";
   section: string;
   id?: string;
   investigator?: InvestigatorSelector;
-}
-export interface Math {
-  type: "math";
-  opA: Operand;
-  opB: Operand;
-  operation: "compare" | "sum";
-}
-export interface CampaignLogOperand {
-  type: "campaign_log";
-  section: string;
-  id?: string;
-}
-export interface ChaosBagOperand {
-  type: "chaos_bag";
-  token: ChaosToken;
-}
-export interface CardCondition {
-  type: "has_card";
-  investigator?: InvestigatorSelector;
-  card: string;
-}
-export interface CampaignDataCondition {
-  type: "campaign_data";
-  campaign_data: "difficulty";
-  scenario?: string;
-}
-export interface CampaignDataScenarioCondition {
-  type: "campaign_data";
-  campaign_data: "scenario_completed";
-  scenario: string;
-}
-export interface CampaignDataChaosBagCondition {
-  type: "campaign_data";
-  campaign_data: "chaos_bag";
-  token: ChaosToken;
-}
-export interface ScenarioDataCondition {
-  type: "scenario_data";
-  scenario_data: "player_count" | "investigator" | "any_resigned" | "resolution";
-}
-export interface TraumaCondition {
-  type: "trauma";
-  investigator: InvestigatorSelector;
-  trauma: "killed";
+  options: Option[];
 }
 export interface EffectOption {
   boolCondition?: boolean;
@@ -208,7 +165,7 @@ export interface CampaignDataDifficultyEffect {
 }
 export interface CampaignDataNextScenarioEffect {
   type: "campaign_data";
-  setting: "next_scenario";
+  setting: "next_scenario" | "skip_scenario";
   scenario: string;
 }
 export interface CampaignDataChooseInvestigatorsEffect {
@@ -237,6 +194,57 @@ export interface ResolutionOption {
   effects?: null;
   steps?: null;
 }
+export interface Math {
+  type: "math";
+  opA: Operand;
+  opB: Operand;
+  operation: "compare" | "sum";
+  options: Option[];
+}
+export interface CampaignLogOperand {
+  type: "campaign_log";
+  section: string;
+  id?: string;
+}
+export interface ChaosBagOperand {
+  type: "chaos_bag";
+  token: ChaosToken;
+}
+export interface CardCondition {
+  type: "has_card";
+  investigator?: InvestigatorSelector;
+  card: string;
+  options: Option[];
+}
+export interface CampaignDataCondition {
+  type: "campaign_data";
+  campaign_data: "difficulty";
+  scenario?: string;
+  options: Option[];
+}
+export interface CampaignDataScenarioCondition {
+  type: "campaign_data";
+  campaign_data: "scenario_completed";
+  scenario: string;
+  options: StepsOption[];
+}
+export interface CampaignDataChaosBagCondition {
+  type: "campaign_data";
+  campaign_data: "chaos_bag";
+  token: ChaosToken;
+  options: StepsOption[];
+}
+export interface ScenarioDataCondition {
+  type: "scenario_data";
+  scenario_data: "player_count" | "investigator" | "any_resigned" | "resolution";
+  options: Option[];
+}
+export interface TraumaCondition {
+  type: "trauma";
+  investigator: InvestigatorSelector;
+  trauma: "killed";
+  options: StepsOption[];
+}
 export interface InputStep {
   id: string;
   type: "input";
@@ -247,7 +255,7 @@ export interface InputStep {
 export interface CardChoiceInput {
   type: "card_choice";
   query: CardQuery[];
-  choices: Choice[];
+  choices: EffectsChoice[];
 }
 export interface CardQuery {
   trait?: string;
@@ -255,26 +263,13 @@ export interface CardQuery {
   vengeance?: boolean;
   code?: string[];
 }
-export interface StepsChoice {
-  text: string;
-  description?: string;
-  steps: string[];
-  effects?: null;
-  resolution?: null;
-}
 export interface EffectsChoice {
+  flavor?: string;
   text: string;
   description?: string;
   effects: Effect[];
   steps?: null;
   resolution?: null;
-}
-export interface ResolutionChoice {
-  text: string;
-  description?: string;
-  resolution: string;
-  steps?: null;
-  effects?: null;
 }
 export interface SuppliesInput {
   type: "supplies";
@@ -297,11 +292,28 @@ export interface UseSuppliesInput {
 export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   investigator: InvestigatorSelector;
-  choices: Choice[];
+  detailed?: boolean;
+  choices: EffectsChoice[];
 }
 export interface ChooseInput {
   type: "choose_one" | "choose_many";
   choices: Choice[];
+}
+export interface StepsChoice {
+  text?: string;
+  flavor?: string;
+  description?: string;
+  steps: string[];
+  effects?: null;
+  resolution?: null;
+}
+export interface ResolutionChoice {
+  text?: string;
+  flavor?: string;
+  description?: string;
+  resolution: string;
+  steps?: null;
+  effects?: null;
 }
 export interface CounterInput {
   type: "counter";
@@ -323,6 +335,7 @@ export interface EncounterSetsStep {
 export interface GenericStep {
   id: string;
   type?: null;
+  title?: string;
   text?: string;
   steps?: string[];
   effects?: Effect[];
@@ -335,10 +348,15 @@ export interface RuleReminderStep {
   type: "rule_reminder";
   text: string;
   title?: string;
+  bullets?: {
+    text: string;
+  }[];
+  example?: string;
 }
 export interface StoryStep {
   id: string;
   type: "story";
+  title?: string;
   text: string;
   effects?: Effect[];
   bullets?: {

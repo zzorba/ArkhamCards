@@ -3,6 +3,7 @@ import {
   Text,
 } from 'react-native';
 
+import ChooseOnePrompt from '../prompts/ChooseOnePrompt';
 import BinaryPrompt from '../prompts/BinaryPrompt';
 import NumberPrompt from '../prompts/NumberPrompt';
 import SuppliesPrompt from '../prompts/SuppliesPrompt';
@@ -27,7 +28,13 @@ export default class InputStepComponent extends React.Component<Props> {
             />
           );
         }
-        return <Text>Choose One with { step.input.choices.length }</Text>;
+        return (
+          <ChooseOnePrompt
+            id={step.id}
+            text={step.text}
+            choices={step.input.choices}
+          />
+        );
       case 'counter':
         return (
           <>
@@ -59,6 +66,7 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             text={step.text}
             choices={step.input.choices}
+            detailed={step.input.detailed}
             optional={step.input.investigator === 'choice'}
           />
         );

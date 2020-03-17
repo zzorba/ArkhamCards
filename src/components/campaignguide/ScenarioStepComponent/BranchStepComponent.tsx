@@ -57,8 +57,8 @@ export default class BranchStepComponent extends React.Component<Props> {
           <BinaryPrompt
             id={step.id}
             text={t`Have you have already completed ${scenarioName}?`}
-            trueResult={find(step.options, option => option.boolCondition === true)}
-            falseResult={find(step.options, option => option.boolCondition === false)}
+            trueResult={find(condition.options, option => option.boolCondition === true)}
+            falseResult={find(condition.options, option => option.boolCondition === false)}
           />
         );
       }
@@ -81,23 +81,23 @@ export default class BranchStepComponent extends React.Component<Props> {
           prompt={t`How many players?`}
           min={1}
           max={4}
-          options={step.options}
+          options={condition.options}
         />
       );
     }
     if (condition.scenario_data === 'investigator' &&
-      step.options.length === 1 &&
-      step.options[0].condition
+      condition.options.length === 1 &&
+      condition.options[0].condition
     ) {
       return (
         <CardWrapper
-          code={step.options[0].condition}
+          code={condition.options[0].condition}
           render={(card: Card) => (
             <BinaryPrompt
               id={step.id}
               text={t`If ${card.name} was chosen as an investigator for this campaign`}
-              trueResult={find(step.options, option => option.condition === card.code)}
-              falseResult={find(step.options, option => !!option.default)}
+              trueResult={find(condition.options, option => option.condition === card.code)}
+              falseResult={find(condition.options, option => !!option.default)}
             />
           )}
         />
@@ -110,7 +110,7 @@ export default class BranchStepComponent extends React.Component<Props> {
 
   renderCampaignLog(campaignGuide: CampaignGuide, condition: CampaignLogCondition) {
     const { step } = this.props;
-    if (every(step.options, option => option.boolCondition !== undefined)) {
+    if (every(condition.options, option => option.boolCondition !== undefined)) {
       // It's a binary prompt.
       if (condition.id) {
         const logEntry = campaignGuide.logEntry(condition.section, condition.id);
@@ -128,8 +128,8 @@ export default class BranchStepComponent extends React.Component<Props> {
             <BinaryPrompt
               id={step.id}
               text={prompt}
-              trueResult={find(step.options, option => option.boolCondition === true)}
-              falseResult={find(step.options, option => option.boolCondition === false)}
+              trueResult={find(condition.options, option => option.boolCondition === true)}
+              falseResult={find(condition.options, option => option.boolCondition === false)}
             />
           );
         }
@@ -144,8 +144,8 @@ export default class BranchStepComponent extends React.Component<Props> {
                 <BinaryPrompt
                   id={step.id}
                   text={prompt}
-                  trueResult={find(step.options, option => option.boolCondition === true)}
-                  falseResult={find(step.options, option => option.boolCondition === false)}
+                  trueResult={find(condition.options, option => option.boolCondition === true)}
+                  falseResult={find(condition.options, option => option.boolCondition === false)}
                 />
               );
             }}
@@ -188,8 +188,8 @@ export default class BranchStepComponent extends React.Component<Props> {
           <BinaryPrompt
             id={step.id}
             text={this.investigatorCardCondition(card, condition.investigator)}
-            trueResult={find(step.options, option => option.boolCondition === true)}
-            falseResult={find(step.options, option => option.boolCondition === false)}
+            trueResult={find(condition.options, option => option.boolCondition === true)}
+            falseResult={find(condition.options, option => option.boolCondition === false)}
           />
         )}
       />

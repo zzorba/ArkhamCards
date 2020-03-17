@@ -5,6 +5,7 @@ export interface ScenarioStateActions {
   setCount: (id: string, value: number) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts) => void;
   setInvestigatorChoice: (id: string, choices: InvestigatorChoices) => void;
+  setChoice: (id: string, choice: number) => void;
   resetScenario: () => void;
 }
 
@@ -22,6 +23,29 @@ export default class ScenarioStateHelper {
 
   resetScenario() {
     this.actions.resetScenario();
+  }
+
+  hasStepInput(id: string) {
+    return (
+      this.hasChoice(id) ||
+      this.hasDecision(id) ||
+      this.hasInvestigatorChoice(id) ||
+      this.hasSupplies(id) ||
+      this.hasDecision(id) ||
+      this.hasCount(id)
+    );
+  }
+
+  setChoice(id: string, value: number) {
+    this.actions.setChoice(id, value);
+  }
+
+  hasChoice(id: string): boolean {
+    return this.state.choices[id] !== undefined;
+  }
+
+  choice(id: string): number {
+    return this.state.choices[id];
   }
 
   setInvestigatorChoice(id: string, value: InvestigatorChoices) {

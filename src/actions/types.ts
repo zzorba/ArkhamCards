@@ -610,6 +610,12 @@ export interface GuideSetCountAction extends GuideStepAction {
   count: number;
 }
 
+export const GUIDE_SET_CHOICE = 'GUIDE_SET_CHOICE';
+export interface GuideSetChoiceAction extends GuideStepAction {
+  type: typeof GUIDE_SET_CHOICE;
+  choice: number;
+}
+
 export const GUIDE_CLEAR_COUNT = 'GUIDE_CLEAR_COUNT';
 export interface GuideClearCountAction extends GuideStepAction {
   type: typeof GUIDE_CLEAR_COUNT;
@@ -688,6 +694,9 @@ export interface ScenarioState {
   decisions: {
     [key: string]: boolean;
   };
+  choices: {
+    [key: string]: number;
+  };
   counts: {
     [key: string]: number;
   };
@@ -701,6 +710,7 @@ export interface ScenarioState {
 
 export const DEFAULT_SCENARIO_STATE: ScenarioState = {
   decisions: {},
+  choices: {},
   counts: {},
   supplyCounts: {},
   investigatorChoices: {},
@@ -766,6 +776,7 @@ export type GuideActions =
   GuideSetDecisionAction |
   GuideClearDecisionAction |
   GuideSetCountAction |
+  GuideSetChoiceAction | 
   GuideClearCountAction |
   GuideResetScenarioAction |
   GuideSetSuppliesAction |

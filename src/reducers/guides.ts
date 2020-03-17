@@ -2,6 +2,7 @@ import {
   GUIDE_SET_COUNT,
   GUIDE_SET_DECISION,
   GUIDE_SET_INVESTIGATOR_CHOICE,
+  GUIDE_SET_CHOICE,
   GUIDE_CLEAR_COUNT,
   GUIDE_CLEAR_DECISION,
   GUIDE_RESET_SCENARIO,
@@ -67,6 +68,15 @@ export default function(
           investigatorChoices: {
             ...scenario.investigatorChoices,
             [action.stepId]: action.choices,
+          },
+        };
+      }
+      if (action.type === GUIDE_SET_CHOICE) {
+        return {
+          ...scenario,
+          choices: {
+            ...scenario.choices,
+            [action.stepId]: action.choice,
           },
         };
       }

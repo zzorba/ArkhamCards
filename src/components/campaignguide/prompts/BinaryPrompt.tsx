@@ -7,17 +7,17 @@ import { t } from 'ttag';
 
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
-import ScenarioStateHelper from '../ScenarioStateHelper';
 import StepsComponent from '../StepsComponent';
 import ResolutionComponent from '../ResolutionComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardTextComponent from 'components/card/CardTextComponent';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
+import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { Choice, Option } from 'data/scenario/types';
 
 interface Props {
   id: string;
-  text: string;
+  text?: string;
   trueResult?: Choice | Option;
   falseResult?: Choice | Option;
 }
@@ -44,7 +44,7 @@ export default class BinaryPrompt extends React.Component<Props> {
     const { id, text } = this.props;
     return (
       <>
-        <CardTextComponent text={text} />
+        { !!text && <CardTextComponent text={text} /> }
         { scenarioState.hasDecision(id) && (
           <Text>
             { scenarioState.decision(id) ? t`Yes` : t`No` }

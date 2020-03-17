@@ -1,31 +1,24 @@
 import React from 'react';
-import { map } from 'lodash';
-import { SettingsPicker } from 'react-native-settings-components';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import InvestigatorNameRow from '../InvestigatorNameRow';
 import Card from 'data/Card';
-import { FACTION_COLORS } from 'constants';
-import { Choice } from 'data/scenario/types';
+import { FACTION_COLORS, FACTION_LIGHT_GRADIENTS } from 'constants';
+import ChoiceListComponent from '../ChooseOnePrompt/ChoiceListComponent';
+import PickerComponent from '../PickerComponent';
+import { EffectsChoice } from 'data/scenario/types';
 
 interface Props {
   investigator: Card;
-  choices: Choice[];
-  choice: number;
+  choices: EffectsChoice[];
+  choice?: number;
   optional: boolean;
   onChoiceChange: (code: string, index: number) => void;
   editable: boolean;
+  detailed?: boolean;
 }
 
 export default class InvestigatorChoiceComponent extends React.Component<Props> {
-  pickerRef?: SettingsPicker<number>;
-
-  _capturePickerRef = (ref: SettingsPicker<number>) => {
-    this.pickerRef = ref;
-  }
-
   _onChoiceChange = (idx: number) => {
-    this.pickerRef && this.pickerRef.closeModal();
     const {
       onChoiceChange,
       investigator,
@@ -36,85 +29,45 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
     );
   };
 
-  _choiceToLabel = (idx: number) => {
-    if (idx === -1) {
-      return '';
-    }
-    const { choices } = this.props;
-    const choice = choices[idx];
-    if (choice) {
-      return choice.text;
-    }
-    return '';
-  };
-
   render() {
     const {
       investigator,
+      detailed,
       choices,
       choice,
-      optional,
       editable,
+      optional
     } = this.props;
-    const passedOptions = [
-      ...map(choices, (choice, idx) => {
-        return {
-          label: choice.text,
-          value: idx,
-        };
-      }),
-    ];
-    const options = optional ? [
-      { value: -1, label: '' },
-      ...passedOptions,
-    ] : passedOptions;
-    const color = FACTION_COLORS[investigator.factionCode()];
+    if (detailed) {
+      return (
+        <>
+          <InvestigatorNameRow
+            investigator={investigator}
+          />
+          <ChoiceListComponent
+            choices={choices}
+            selectedIndex={choice}
+            editable={editable}
+            onSelect={this._onChoiceChange}
+            tintColor={FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0]}
+            buttonColor={FACTION_COLORS[investigator.factionCode()]}
+            noBullet
+          />
+        </>
+      )
+    }
     return (
-      <SettingsPicker
-        ref={this._capturePickerRef}
+      <PickerComponent
+        choices={choices}
+        choice={choice || -1}
+        editable={editable}
+        optional={optional}
         title={investigator.name}
-        value={choice}
-        valuePlaceholder={''}
-        valueFormat={this._choiceToLabel}
-        onValueChange={this._onChoiceChange}
-        disabled={!editable}
-        modalStyle={{
-          header: {
-            wrapper: {
-              backgroundColor: color,
-            },
-            description: {
-              paddingTop: 8,
-            },
-          },
-          list: {
-            itemColor: color,
-          },
+        onChoiceChange={this._onChoiceChange}
+        colors={{
+          backgroundColor: FACTION_COLORS[investigator.factionCode()],
+          textColor: '#FFF'
         }}
-        options={options}
-        disabledOverlayStyle={{
-          backgroundColor: 'rgba(255,255,255,0.0)',
-        }}
-        titleStyle={{
-          color: '#FFF',
-          fontWeight: '700',
-        }}
-        valueStyle={{
-          color: '#FFF',
-          fontWeight: '400',
-        }}
-        containerStyle={{
-          backgroundColor: color,
-        }}
-        widget={
-          editable ? (
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={30}
-              color="#FFF"
-            />
-          ): undefined
-        }
       />
     );
   }

@@ -4,10 +4,11 @@ import { FullCampaign } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
 
 
-const allLogEntries: CampaignLog[] = require('../../../assets/campaignLogs.json');
-const allCampaigns: FullCampaign[] = require('../../../assets/allCampaigns.json');
 
 export function getCampaignGuide(id: string): CampaignGuide | undefined {
+  const allLogEntries: CampaignLog[] = require('../../../assets/campaignLogs.json');
+  const allCampaigns: FullCampaign[] = require('../../../assets/allCampaigns.json');
+
   const theId = (id === 'core' ? 'notz' : id);
   const campaign = find(allCampaigns, campaign =>
     campaign.campaign.id === theId

@@ -440,7 +440,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           },
           {
             "id": "alejandro_recovered_relic",
@@ -448,7 +448,7 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known"
+            "text": "#X# paths are known to you."
           },
           {
             "id": "jungle_watches",
@@ -456,7 +456,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           },
           {
             "id": "mapped_way_forward",
@@ -496,7 +496,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           },
           {
             "id": "cooperated_with_yithians",
@@ -556,7 +556,7 @@
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive."
+            "text": "the Harbinger is still alive (#X# damage)."
           },
           {
             "id": "nexus_is_near",

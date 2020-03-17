@@ -6,11 +6,11 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
-import ScenarioStateHelper from './ScenarioStateHelper';
-import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioSupplies, setScenarioInvestigatorChoice } from './actions';
+import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioChoice, setScenarioSupplies, setScenarioInvestigatorChoice } from './actions';
 import { InvestigatorDeck } from './types';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
 import { InvestigatorChoices, SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
+import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { getCampaignGuide } from 'data/scenario';
 import {
   AppState,
@@ -56,6 +56,12 @@ interface ReduxActionProps {
     stepId: string,
     supplyCounts: InvestigatorChoices
   ) => void;
+  setScenarioChoice: (
+    campaignId: number,
+    scenarioId: string,
+    stepId: string,
+    choice: number
+  ) => void;
   resetScenario: (campaignId: number, scenarioId: string) => void;
 }
 
@@ -85,6 +91,7 @@ export default function withCampaignDataContext<Props>(
       setScenarioSupplies,
       setScenarioInvestigatorChoice,
       resetScenario,
+      setScenarioChoice,
     }, dispatch);
   };
   class CampaignDataComponent extends React.Component<Props & CampaignDataInputProps & ReduxProps & ReduxActionProps & PlayerCardProps> {
@@ -139,23 +146,39 @@ export default function withCampaignDataContext<Props>(
       );
     };
 
+    _setInvestigatorChoice = (
+      stepId: string,
+      choices: InvestigatorChoices
+    ) => {
+      const {
+        setScenarioInvestigatorChoice,
+        campaignId,
+        scenarioId,
+      } = this.props;
+      setScenarioInvestigatorChoice(
+        campaignId,
+        scenarioId,
+        stepId,
+        choices
+      );
+    };
 
-      _setInvestigatorChoice = (
-        stepId: string,
-        choices: InvestigatorChoices
-      ) => {
-        const {
-          setScenarioInvestigatorChoice,
-          campaignId,
-          scenarioId,
-        } = this.props;
-        setScenarioInvestigatorChoice(
-          campaignId,
-          scenarioId,
-          stepId,
-          choices
-        );
-      };
+    _setChoice = (
+      stepId: string,
+      choice: number
+    ) => {
+      const {
+        setScenarioChoice,
+        campaignId,
+        scenarioId,
+      } = this.props;
+      setScenarioChoice(
+        campaignId,
+        scenarioId,
+        stepId,
+        choice
+      );
+    };
 
     _resetScenario = () => {
       const {
@@ -206,6 +229,7 @@ export default function withCampaignDataContext<Props>(
           setDecision: this._setScenarioDecision,
           setSupplies: this._setSupplies,
           setInvestigatorChoice: this._setInvestigatorChoice,
+          setChoice: this._setChoice,
           resetScenario: this._resetScenario,
         }),
       };

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { find, forEach, keys, map, sumBy } from 'lodash';
+import { forEach, keys, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
+import InvestigatorNameRow from '../InvestigatorNameRow';
 import SupplyComponent from './SupplyComponent';
 import { FACTION_COLORS } from 'constants';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -70,26 +71,6 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
     });
   };
 
-  renderInvestigator(investigator: Card, spent: number, total: number) {
-    const { input } = this.props;
-    const counts = this.state.counts[investigator.code] || {};
-    const backgroundColor = FACTION_COLORS[investigator.factionCode()];
-    return (
-      <View style={[styles.investigatorRow, { backgroundColor }]}>
-        <View>
-          <Text style={[typography.text, styles.investigatorText]}>
-            { investigator.name }
-          </Text>
-        </View>
-        <View>
-          <Text style={[typography.text, styles.investigatorText]}>
-            { t`${spent} of ${total}` }
-          </Text>
-        </View>
-      </View>
-    );
-  }
-
   _save = () => {
     const { id } = this.props;
     const { counts } = this.state;
@@ -128,7 +109,10 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
                 });
                 return (
                   <View key={idx}>
-                    { this.renderInvestigator(investigator, spent, total) }
+                    <InvestigatorNameRow
+                      investigator={investigator}
+                      detail={t`${spent} of ${total}`}
+                    />
                     { map(input.supplies, (supply, idx2) => {
                       const count = counts[supply.id] || 0;
                       return (!hasDecision || count > 0) && (

@@ -26,7 +26,7 @@ export default class StepsComponent extends React.Component<Props> {
               return null;
             }
             if (step.type === 'input' || step.type === 'branch') {
-              reachedBranch = !scenarioState.hasDecision(step.id);
+              reachedBranch = !scenarioState.hasStepInput(step.id);
             }
             return (
               <ScenarioStepComponent
