@@ -26,7 +26,7 @@ interface ReduxProps {
 type Props = NavigationProps & SealTokenDialogProps & ReduxProps & DimensionsProps;
 
 class SealTokenDialog extends React.Component<Props> {
-  static options() {
+  static get options() {
     return {
       topBar: {
         title: {

@@ -4,6 +4,7 @@ import {
   GUIDE_CLEAR_COUNT,
   GUIDE_CLEAR_DECISION,
   GUIDE_RESET_SCENARIO,
+  GUIDE_SET_SUPPLIES,
   LOGOUT,
   GuideActions,
   GuideState,
@@ -59,6 +60,15 @@ export default function(
   }
   return updateScenario(state, action.campaignId, action.scenarioId,
     (scenario: ScenarioState) => {
+      if (action.type === GUIDE_SET_SUPPLIES) {
+        return {
+          ...scenario,
+          supplyCounts: {
+            ...scenario.supplyCounts,
+            [action.stepId]: action.supplyCounts,
+          },
+        };
+      }
       if (action.type === GUIDE_SET_COUNT) {
         return {
           ...scenario,

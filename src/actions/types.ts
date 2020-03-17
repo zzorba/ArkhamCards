@@ -574,6 +574,21 @@ export interface RemoveFilterSetAction {
   id: string;
 }
 
+export interface SupplyCounts {
+  [code: string]: {
+    [id: string]: number;
+  };
+}
+
+export const GUIDE_SET_SUPPLIES = 'GUIDE_SET_SUPPLIES';
+export interface GuideSetSuppliesAction {
+  type: typeof GUIDE_SET_SUPPLIES;
+  campaignId: number;
+  scenarioId: string;
+  stepId: string;
+  supplyCounts: SupplyCounts;
+}
+
 export const GUIDE_SET_DECISION = 'GUIDE_SET_DECISION';
 export interface GuideSetDecisionAction {
   type: typeof GUIDE_SET_DECISION;
@@ -675,11 +690,15 @@ export interface ScenarioState {
   counts: {
     [key: string]: number;
   };
+  supplyCounts: {
+    [key: string]: SupplyCounts;
+  }
 }
 
 export const DEFAULT_SCENARIO_STATE: ScenarioState = {
   decisions: {},
   counts: {},
+  supplyCounts: {},
 };
 
 
@@ -743,4 +762,5 @@ export type GuideActions =
   GuideClearDecisionAction |
   GuideSetCountAction |
   GuideClearCountAction |
-  GuideResetScenarioAction;
+  GuideResetScenarioAction |
+  GuideSetSuppliesAction;

@@ -233,7 +233,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           options: {
             topBar: {
               title: {
-                text: campaignName(campaign.cycleCode),
+                text: campaignName(campaign.cycleCode) || undefined,
               },
               backButton: {
                 title: t`Back`,

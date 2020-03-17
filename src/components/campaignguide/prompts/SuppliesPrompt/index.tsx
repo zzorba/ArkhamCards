@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { find, keys, map, sumBy } from 'lodash';
+import { find, forEach, keys, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
 import SupplyComponent from './SupplyComponent';
@@ -8,7 +8,7 @@ import { FACTION_COLORS } from 'constants';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { SuppliesInput } from 'data/scenario/types';
+import { Supply, SuppliesInput } from 'data/scenario/types';
 import Card from 'data/Card';
 import typography from 'styles/typography';
 
@@ -27,6 +27,9 @@ interface State {
 }
 
 export default class SuppliesPrompt extends React.Component<Props, State> {
+  static contextType = ScenarioGuideContext;
+  context!: ScenarioGuideContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -67,17 +70,9 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
     });
   };
 
-  renderInvestigator(investigator: Card, investigatorCount: number) {
+  renderInvestigator(investigator: Card, spent: number, total: number) {
     const { input } = this.props;
     const counts = this.state.counts[investigator.code] || {};
-    const playerCount = Math.max(Math.min(investigatorCount, 4), 1);
-    const total = input.points[playerCount - 1];
-
-    const spent = sumBy(keys(counts), id => {
-      const count = counts[id];
-      const supply = find(input.supplies, supply => supply.id === id);
-      return count * (supply ? supply.cost : 1);
-    });
     const backgroundColor = FACTION_COLORS[investigator.factionCode()];
     return (
       <View style={[styles.investigatorRow, { backgroundColor }]}>
@@ -95,36 +90,64 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
     );
   }
 
+  _save = () => {
+    const { id } = this.props;
+    const { counts } = this.state;
+    this.context.scenarioState.setSupplies(id, counts);
+  };
+
   render() {
-    const { text, input } = this.props;
+    const { id, text, input } = this.props;
+    const supplies: {
+      [id: string]: Supply;
+    } = {};
+    forEach(input.supplies, supply => {
+      supplies[supply.id] = supply;
+    });
+
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ investigatorDecks }: ScenarioGuideContextType) => {
-          const investigatorCount = investigatorDecks.length;
+        { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
+          const playerCount = Math.max(Math.min(investigatorDecks.length, 4), 1);
+          const total = input.points[playerCount - 1];
+          const hasDecision = scenarioState.hasSupplies(id);
+          const supplyCounts = hasDecision ?
+            scenarioState.supplies(id) :
+            this.state.counts;
           return (
             <>
               <SetupStepWrapper>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
               { map(investigatorDecks, ({ investigator }, idx) => {
-                const counts = this.state.counts[investigator.code] || {};
+                const counts = supplyCounts[investigator.code] || {};
+                const spent = sumBy(keys(counts), id => {
+                  const count = counts[id];
+                  const supply = supplies[id];
+                  return count * (supply ? supply.cost : 1);
+                });
                 return (
                   <View key={idx}>
-                    { this.renderInvestigator(investigator, investigatorCount) }
-                    { map(input.supplies, (supply, idx2) => (
-                      <SupplyComponent
-                        key={idx2}
-                        investigator={investigator}
-                        supply={supply}
-                        count={counts[supply.id] || 0}
-                        inc={this._incrementSupply}
-                        dec={this._decrementSupply}
-                      />
-                    )) }
+                    { this.renderInvestigator(investigator, spent, total) }
+                    { map(input.supplies, (supply, idx2) => {
+                      const count = counts[supply.id] || 0;
+                      return (!hasDecision || count > 0) && (
+                        <SupplyComponent
+                          key={idx2}
+                          investigator={investigator}
+                          supply={supply}
+                          count={count}
+                          inc={this._incrementSupply}
+                          dec={this._decrementSupply}
+                          remainingPoints={Math.max(total - spent, 0)}
+                          editable={!hasDecision}
+                        />
+                      );
+                    }) }
                   </View>
                 );
               }) }
-              <Button title={t`Save`} onPress={this._save} />
+              { !hasDecision && <Button title={t`Save`} onPress={this._save} /> }
             </>
           );
         } }

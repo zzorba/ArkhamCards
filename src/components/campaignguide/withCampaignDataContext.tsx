@@ -7,10 +7,10 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import ScenarioStateHelper from './ScenarioStateHelper';
-import { setScenarioCount, setScenarioDecision } from './actions';
+import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioSupplies } from './actions';
 import { InvestigatorDeck } from './types';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
-import { SingleCampaign, Deck, ScenarioState } from 'actions/types';
+import { SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
 import { getCampaignGuide } from 'data/scenario';
 import {
   AppState,
@@ -44,6 +44,13 @@ interface ReduxActionProps {
     stepId: string,
     value: number
   ) => void;
+  setScenarioSupplies: (
+    campaignId: number,
+    scenarioId: string,
+    stepId: string,
+    supplyCounts: SupplyCounts
+  ) => void;
+  resetScenario: (campaignId: number, scenarioId: string) => void;
 }
 
 export default function withCampaignDataContext<Props>(
@@ -69,6 +76,8 @@ export default function withCampaignDataContext<Props>(
     return bindActionCreators({
       setScenarioCount,
       setScenarioDecision,
+      setScenarioSupplies,
+      resetScenario,
     }, dispatch);
   };
   class CampaignDataComponent extends React.Component<Props & CampaignDataInputProps & ReduxProps & ReduxActionProps & PlayerCardProps> {
@@ -106,6 +115,32 @@ export default function withCampaignDataContext<Props>(
       );
     };
 
+    _setSupplies = (
+      stepId: string,
+      supplyCounts: SupplyCounts
+    ) => {
+      const {
+        setScenarioSupplies,
+        campaignId,
+        scenarioId,
+      } = this.props;
+      setScenarioSupplies(
+        campaignId,
+        scenarioId,
+        stepId,
+        supplyCounts
+      );
+    };
+
+    _resetScenario = () => {
+      const {
+        resetScenario,
+        campaignId,
+        scenarioId,
+      } = this.props;
+      resetScenario(campaignId, scenarioId);
+    }
+
     render() {
       const {
         campaign,
@@ -136,6 +171,7 @@ export default function withCampaignDataContext<Props>(
         };
       });
       const context: ScenarioGuideContextType = {
+        // @ts-ignore TS2322
         campaign,
         campaignGuide,
         scenarioGuide,
@@ -143,6 +179,8 @@ export default function withCampaignDataContext<Props>(
         scenarioState: new ScenarioStateHelper(scenarioState, {
           setCount: this._setScenarioCount,
           setDecision: this._setScenarioDecision,
+          setSupplies: this._setSupplies,
+          resetScenario: this._resetScenario,
         }),
       };
       return (
@@ -161,7 +199,6 @@ export default function withCampaignDataContext<Props>(
       CampaignDataComponent
     )
   );
-
   hoistNonReactStatic(result, WrappedComponent);
   return result as React.ComponentType<Props & CampaignDataInputProps>;
 }

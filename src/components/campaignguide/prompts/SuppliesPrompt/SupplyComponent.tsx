@@ -12,8 +12,10 @@ interface Props {
   investigator: Card;
   supply: Supply;
   count: number;
+  remainingPoints: number;
   inc: (code: string, id: string) => void;
   dec: (code: string, id: string) => void;
+  editable: boolean;
 }
 
 export default class SupplyComponent extends React.Component<Props> {
@@ -40,6 +42,8 @@ export default class SupplyComponent extends React.Component<Props> {
       investigator,
       supply,
       count,
+      remainingPoints,
+      editable,
     } = this.props;
     const costString = supply.multiple ?
       ngettext(msgid`(${supply.cost} supply point each)`,
@@ -69,19 +73,26 @@ export default class SupplyComponent extends React.Component<Props> {
           </Text>
         </View>
         <View style={styles.buttons}>
-          <PlusMinusButtons
-            count={count}
-            onIncrement={this._inc}
-            onDecrement={this._dec}
-            limit={supply.multiple ? undefined : 1}
-            countRender={(
-              <Text style={[styles.count, typography.text, typography.bold, typography.center]}>
-                { count }
-              </Text>
-            )}
-            hideDisabledMinus
-            color="dark"
-          />
+          { editable ? (
+            <PlusMinusButtons
+              count={count}
+              onIncrement={this._inc}
+              onDecrement={this._dec}
+              limit={supply.multiple ? undefined : 1}
+              countRender={(
+                <Text style={[styles.count, typography.text, typography.bold, typography.center]}>
+                  { count }
+                </Text>
+              )}
+              disablePlus={remainingPoints < supply.cost}
+              hideDisabledMinus
+              color="dark"
+            />
+          ) : (
+            <Text style={[styles.count, typography.text, typography.bold, typography.center]}>
+              +{ count }
+            </Text>
+          ) }
         </View>
       </View>
     );
