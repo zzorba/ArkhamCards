@@ -10,6 +10,7 @@ import { EventSubscription, Navigation } from 'react-native-navigation';
 import { flatMap } from 'lodash';
 import { t } from 'ttag';
 
+import ChooseInvestigatorPrompt from '../prompts/ChooseInvestigatorPrompt';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import StepsComponent from '../StepsComponent';
 import ResolutionButton from './ResolutionButton';
@@ -107,6 +108,13 @@ class ScenarioView extends React.Component<Props> {
         { ({ scenarioGuide }: ScenarioGuideContextType) => {
           return (
             <ScrollView>
+              { !scenarioGuide.scenario.interlude && (
+                <ChooseInvestigatorPrompt
+                  id={scenarioGuide.scenario.id}
+                  title={t`Lead Investigator`}
+                  required
+                />
+              ) }
               <StepsComponent
                 steps={scenarioGuide.scenario.setup}
               />

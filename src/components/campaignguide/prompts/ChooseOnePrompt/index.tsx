@@ -7,10 +7,11 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGu
 import SetupStepWrapper from '../../SetupStepWrapper';
 import StepsComponent from '../../StepsComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { Choice } from 'data/scenario/types';
+import { BulletType, Choice } from 'data/scenario/types';
 
 interface Props {
   id: string;
+  bulletType?: BulletType;
   text?: string;
   choices: Choice[];
   optional?: boolean;
@@ -53,7 +54,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, choices, text } = this.props;
+    const { id, choices, text, bulletType } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
@@ -63,7 +64,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
             this.state.selectedChoice;
           return (
             <>
-              <SetupStepWrapper>
+              <SetupStepWrapper bulletType={bulletType}>
                 <CardTextComponent
                   text={text || t`The investigators must decide (choose one)`}
                 />

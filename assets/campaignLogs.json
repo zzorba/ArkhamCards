@@ -361,11 +361,187 @@
     "campaignId": "tcu",
     "sections": [
       {
+        "section": "05046",
+        "entries": [
+          {
+            "id": "on_gavriellas_trail",
+            "text": "the investigators are on Gavriella’s trail."
+          },
+          {
+            "id": "dead",
+            "text": "Gavriella is dead."
+          }
+        ]
+      },
+      {
+        "section": "05047",
+        "entries": [
+          {
+            "id": "on_jeromes_trail",
+            "text": "the investigators are on Jerome’s trail."
+          },
+          {
+            "id": "dead",
+            "text": "Jerome is dead."
+          }
+        ]
+      },
+      {
+        "section": "05048",
+        "entries": [
+          {
+            "id": "on_pennys_trail",
+            "text": "the investigators are on Penny's trail."
+          },
+          {
+            "id": "dead",
+            "text": "Penny is dead."
+          }
+        ]
+      },
+      {
+        "section": "05049",
+        "entries": [
+          {
+            "id": "on_valentinos_trail",
+            "text": "the investigators are on Valentino's trail."
+          },
+          {
+            "id": "dead",
+            "text": "Valentino is dead."
+          }
+        ]
+      },
+      {
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "the investigators escaped the spectral realm."
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "the investigators learned nothing of the Lodge’s schemes."
+          },
+          {
+            "id": "never_seen_again",
+            "text": "the investigators are never seen or heard from again."
+          },
+          {
+            "id": "azathoth_devoured_the_universe",
+            "text": "Azathoth devoured the universe."
+          },
+          {
+            "id": "lead_investigator_joins_pipers",
+            "text": "#name# joins the pipers of Azathoth."
+          },
+          {
+            "id": "azathoth_slumbers",
+            "text": "Azathoth slumbers… for now."
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "the investigators signed the Black Book of Azathoth."
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "the guardian of the trap emerged."
+          },
+          {
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "the investigators discovered how to open the puzzle box.."
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "the guardian of the trap emerged and was defeated."
+          },
+          {
+            "id": "continued_alone",
+            "text": "the investigators continued alone."
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "the investigators asked Anette for assistance."
+          },
+          {
+            "id": "arrested_anette",
+            "text": "the investigators arrested Anette."
+          },
+          {
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "Anette taught you the spells of old."
+          },
+          {
+            "id": "continued_alone",
+            "text": "the investigators continued alone."
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "the investigators asked Sanford for assistance."
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "the investigators arrested Sanford."
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "the investigators assumed control of the Silver Twilight Lodge."
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "doom draws ever closer."
+          },
+          {
             "id": "pieces_of_evidence",
             "text": "#X# pieces of evidence were left behind"
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "the investigators kept their mementos hidden."
+          },
+          {
+            "id": "inducted_into_the_inner_circle",
+            "text": "the investigators were inducted into the Inner Circle."
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "Josef disappeared into the mist."
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "the investigators are enemies of the Lodge."
+          },
+          {
+            "id": "rescued_josef",
+            "text": "the investigators rescued Josef"
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "Josef is alive and well."
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "the investigators are enemies of the Lodge."
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "the investigators are members of the Lodge."
+          },
+          {
+            "id": "deceiving_the_lodge",
+            "text": "the investigators are deceiving the Lodge."
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "the investigators told the Lodge about the coven."
+          },
+          {
+            "id": "hid_their_knowledge",
+            "text": "the investigators hid their knowledge of the coven."
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "the investigators survived the watcher’s embrace."
           },
           {
             "id": "accepted_fate",
@@ -382,12 +558,73 @@
           {
             "id": "witches_spell_cast",
             "text": "the witches' spell was cast."
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "the investigators sided with the Lodge."
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "the investigators sided with the coven."
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "the true work of the Silver Twilight Lodge has begun."
+          },
+          {
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "Carl Sanford possesses the secrets of the universe."
+          },
+          {
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "Anette Mason is possessed by evil."
+          }
+        ]
+      },
+      {
+        "section": "inputValue",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "#name# was taken by the Watcher."
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "#name# was claimed by specters."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "alive",
+            "text": "#name# is alive."
           }
         ]
       },
       {
         "section": "mementos",
         "entries": [
+          {
+            "id": "gilmans_journal",
+            "text": "Gilman's Journal"
+          },
+          {
+            "id": "keziahs_formulae",
+            "text": "Keziah's Formulae"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "Worn Crucifix"
+          },
+          {
+            "id": "wisp_of_spectral_mist",
+            "text": "Wisp of Spectral Mist"
+          },
           {
             "id": "mesmerizing_flute",
             "text": "Mesmerizing Flute"
@@ -447,10 +684,6 @@
             "text": "Alejandro recovered the Relic of Ages."
           },
           {
-            "id": "paths_known",
-            "text": "#X# paths are known to you."
-          },
-          {
             "id": "jungle_watches",
             "text": "the jungle watches."
           },
@@ -485,10 +718,6 @@
           {
             "id": "turned_back_time",
             "text": "the investigarors turned back time."
-          },
-          {
-            "id": "paths_known",
-            "text": "#X# paths are known"
           },
           {
             "id": "ichtaca_has_confidence",

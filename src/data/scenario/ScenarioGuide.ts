@@ -67,6 +67,7 @@ export default class ScenarioGuide {
     remainingStepIds: string[]
   ): Step[] {
     switch (step.condition.type) {
+      case 'campaign_log_count':
       case 'campaign_log':
         if (scenarioState.hasDecision(step.id)) {
         }
@@ -80,7 +81,8 @@ export default class ScenarioGuide {
           case 'difficulty':
           case 'scenario_completed':
           case 'chaos_bag':
-          return [];
+          case 'investigator':
+            return [];
         }
       }
       case 'scenario_data': {
@@ -88,8 +90,7 @@ export default class ScenarioGuide {
            case 'player_count':
            case 'investigator':
            case 'any_resigned':
-           case 'resolution':
-           return [];
+            return [];
         }
       }
       case 'trauma': {

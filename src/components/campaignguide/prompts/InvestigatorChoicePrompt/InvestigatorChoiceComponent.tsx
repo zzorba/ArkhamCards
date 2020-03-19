@@ -5,10 +5,11 @@ import Card from 'data/Card';
 import { FACTION_COLORS, FACTION_LIGHT_GRADIENTS } from 'constants';
 import ChoiceListComponent from '../ChooseOnePrompt/ChoiceListComponent';
 import PickerComponent from '../PickerComponent';
-import { EffectsChoice } from 'data/scenario/types';
+import { BulletType, EffectsChoice } from 'data/scenario/types';
 
 interface Props {
   investigator: Card;
+  bulletType?: BulletType;
   choices: EffectsChoice[];
   choice?: number;
   optional: boolean;
@@ -36,7 +37,8 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
       choices,
       choice,
       editable,
-      optional
+      optional,
+      bulletType,
     } = this.props;
     if (detailed) {
       return (
@@ -59,7 +61,7 @@ export default class InvestigatorChoiceComponent extends React.Component<Props> 
     return (
       <PickerComponent
         choices={choices}
-        choice={choice || -1}
+        selectedIndex={choice === undefined ? -1 : choice}
         editable={editable}
         optional={optional}
         title={investigator.name}

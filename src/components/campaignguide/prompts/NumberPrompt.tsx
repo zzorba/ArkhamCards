@@ -13,12 +13,13 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 import StepsComponent from '../StepsComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { Effect, Option } from 'data/scenario/types';
+import { BulletType, Effect, Option } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import typography from 'styles/typography';
 
 interface Props {
   id: string;
+  bulletType?: BulletType;
   prompt: string;
   min?: number;
   max?: number;
@@ -128,13 +129,14 @@ export default class NumberPrompt extends React.Component<Props, State> {
       // We summarize the text of the effects in the guide text for number
       // inputs.
       return (
-        <EffectsComponent effects={effects} skipCampaignLog />
+        <EffectsComponent id={id} effects={effects} skipCampaignLog />
       );
     }
     return null;
   }
 
   renderResult(stepsOnly: boolean, choice: Option) {
+    const { id } = this.props;
     if (choice.steps) {
       return stepsOnly ? (
         <StepsComponent
@@ -144,7 +146,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
     }
     if (choice.effects) {
       return stepsOnly ? null : (
-        <EffectsComponent effects={choice.effects} />
+        <EffectsComponent id={id} effects={choice.effects} />
       );
     }
     if (choice.resolution) {
@@ -156,11 +158,12 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
   render() {
+    const { bulletType } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => (
           <>
-            <SetupStepWrapper>
+            <SetupStepWrapper bulletType={bulletType}>
               { this.renderPrompt(scenarioState) }
               { this.renderCorrectResults(scenarioState, false) }
             </SetupStepWrapper>

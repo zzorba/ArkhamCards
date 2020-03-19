@@ -10,11 +10,18 @@ interface Props {
   editable: boolean;
   onSelect: (index: number) => void;
   noBullet?: boolean;
-  tintColor?: string;
-  buttonColor?: string;
+  tintColor?: string | string[];
+  buttonColor?: string | string[];
 }
 
 export default class ChoiceListPrompt extends React.Component<Props> {
+
+  static getColor(idx: number, color?: string | string[]): string | undefined {
+    if (Array.isArray(color)) {
+      return color.length >= idx ? color[idx] : undefined;
+    }
+    return color;
+  }
   render() {
     const {
       selectedIndex,
@@ -37,8 +44,8 @@ export default class ChoiceListPrompt extends React.Component<Props> {
           choice={choice}
           selected={selectedIndex === idx}
           editable={editable}
-          tintColor={tintColor}
-          buttonColor={buttonColor}
+          tintColor={ChoiceListPrompt.getColor(idx, tintColor)}
+          buttonColor={ChoiceListPrompt.getColor(idx, buttonColor)}
           noBullet={noBullet}
         />
       );

@@ -13,10 +13,11 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 import CardTextComponent from 'components/card/CardTextComponent';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { Choice, Option } from 'data/scenario/types';
+import { BulletType, Choice, Option } from 'data/scenario/types';
 
 interface Props {
   id: string;
+  bulletType?: BulletType;
   text?: string;
   trueResult?: Choice | Option;
   falseResult?: Choice | Option;
@@ -75,6 +76,7 @@ export default class BinaryPrompt extends React.Component<Props> {
     stepsOnly: boolean,
     choice: Option | Choice
   ) {
+    const { id } = this.props;
     if (choice.steps) {
       return stepsOnly ? (
         <StepsComponent
@@ -85,6 +87,7 @@ export default class BinaryPrompt extends React.Component<Props> {
     if (choice.effects) {
       return stepsOnly ? null : (
         <EffectsComponent
+          id={id}
           effects={choice.effects}
         />
       );
@@ -110,12 +113,12 @@ export default class BinaryPrompt extends React.Component<Props> {
   }
 
   render() {
-    const { id } = this.props;
+    const { id, bulletType } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => (
           <>
-            <SetupStepWrapper>
+            <SetupStepWrapper bulletType={bulletType}>
               { this.renderPrompt(scenarioState) }
               { this.renderCorrectResults(scenarioGuide, scenarioState, false) }
             </SetupStepWrapper>

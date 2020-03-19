@@ -9,7 +9,7 @@ import { COLORS } from 'styles/colors';
 
 interface Props {
   choices: EffectsChoice[];
-  choice: number;
+  selectedIndex?: number;
   onChoiceChange: (index: number) => void;
   title: string;
   optional?: boolean;
@@ -39,7 +39,7 @@ export default class PickerComponent extends React.Component<Props> {
     const { choices } = this.props;
     const choice = choices[idx];
     if (choice) {
-      return choice.text;
+      return choice.text || choice.flavor || 'Unknown text';
     }
     return '';
   };
@@ -47,7 +47,7 @@ export default class PickerComponent extends React.Component<Props> {
   render() {
     const {
       choices,
-      choice,
+      selectedIndex,
       optional,
       editable,
       title,
@@ -72,9 +72,9 @@ export default class PickerComponent extends React.Component<Props> {
       <SettingsPicker
         ref={this._capturePickerRef}
         title={title}
-        value={choice}
+        value={selectedIndex}
         valuePlaceholder={''}
-        formatVal={this._choiceToLabel}
+        valueFormat={this._choiceToLabel}
         onValueChange={this._onChoiceChange}
         disabled={!editable}
         modalStyle={{

@@ -101,5 +101,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 30,
+    minHeight: 30,
   },
 })

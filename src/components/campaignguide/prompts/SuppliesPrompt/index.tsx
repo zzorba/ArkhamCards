@@ -5,16 +5,14 @@ import { t } from 'ttag';
 
 import InvestigatorNameRow from '../InvestigatorNameRow';
 import SupplyComponent from './SupplyComponent';
-import { FACTION_COLORS } from 'constants';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { Supply, SuppliesInput } from 'data/scenario/types';
-import Card from 'data/Card';
-import typography from 'styles/typography';
+import { BulletType, Supply, SuppliesInput } from 'data/scenario/types';
 
 interface Props {
   id: string;
+  bulletType?: BulletType;
   text?: string;
   input: SuppliesInput;
 }
@@ -78,7 +76,7 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
   };
 
   render() {
-    const { id, text, input } = this.props;
+    const { id, text, input, bulletType } = this.props;
     const supplies: {
       [id: string]: Supply;
     } = {};
@@ -97,7 +95,7 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
             this.state.counts;
           return (
             <>
-              <SetupStepWrapper>
+              <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
               { map(investigatorDecks, ({ investigator }, idx) => {

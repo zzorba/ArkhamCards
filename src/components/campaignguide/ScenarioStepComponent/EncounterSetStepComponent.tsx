@@ -24,11 +24,15 @@ interface RealmProps {
 type Props = OwnProps & RealmProps;
 
 class EncounterSetStepComponent extends React.Component<Props> {
+
   render() {
     const { step, encounterSets } = this.props;
     const encounterSetString = map(encounterSets, set => `<i>${set.name}</i>`).join(', ');
-    const leadText = step.text || t`Gather all cards from the following encounter sets:`;
-    const text = t`${leadText} ${encounterSetString}. These sets are indicated by the following icons:`;
+    const leadText = step.aside ?
+      t`Set the following encounter sets aside, out of play: ` :
+      t`Gather all cards from the following encounter sets:`
+    const startText = step.text || leadText;
+    const text = t`${startText} ${encounterSetString}. These sets are indicated by the following icons:`;
     return (
       <SetupStepWrapper>
         <CardTextComponent text={text} />

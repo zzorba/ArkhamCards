@@ -9,13 +9,14 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import { InvestigatorChoices } from 'actions/types';
 import { InvestigatorDeck } from 'components/campaignguide/types';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { EffectsChoice } from 'data/scenario/types';
+import { BulletType, EffectsChoice } from 'data/scenario/types';
 
 interface Props {
   id: string;
+  bulletType?: BulletType;
   text?: string;
   choices: EffectsChoice[];
-  optional: boolean;
+  optional?: boolean;
   detailed?: boolean
 }
 
@@ -37,11 +38,14 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     };
   }
 
-  _onChoiceChange = (code: string, choice: number) => {
+  _onChoiceChange = (
+    code: string,
+    choice: number
+  ) => {
     this.setState({
       selectedChoice: {
         ...this.state.selectedChoice,
-        [code]: choice,
+        [code]: choice === -1 ? undefined : choice,
       },
     });
   };
@@ -78,7 +82,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   }
 
   render() {
-    const { id, detailed, choices, text, optional } = this.props;
+    const { id, bulletType, detailed, choices, text, optional } = this.props;
     const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
@@ -87,7 +91,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           const defaultChoice = detailed ? undefined : (optional ? -1 : 0);
           return (
             <>
-              <SetupStepWrapper>
+              <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
               { map(investigatorDecks, (investigator, idx) => {
@@ -99,7 +103,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
                     choice={choice === undefined ? defaultChoice : choice}
                     investigator={investigator.investigator}
                     onChoiceChange={this._onChoiceChange}
-                    optional={optional}
+                    optional={!!optional}
                     editable={!hasDecision}
                     detailed={detailed}
                   />

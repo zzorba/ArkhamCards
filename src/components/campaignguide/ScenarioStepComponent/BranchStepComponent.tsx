@@ -9,6 +9,7 @@ import CardWrapper from '../CardWrapper';
 import BinaryPrompt from '../prompts/BinaryPrompt';
 import NumberPrompt from '../prompts/NumberPrompt';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import { InvestigatorDeck } from '../types';
 import Card from 'data/Card';
 import {
   BranchStep,
@@ -16,7 +17,9 @@ import {
   CampaignDataCondition,
   CampaignDataScenarioCondition,
   CampaignDataChaosBagCondition,
+  CampaignDataInvestigatorCondition,
   CampaignLogCondition,
+  TraumaCondition,
   InvestigatorSelector,
   ScenarioDataCondition,
 } from 'data/scenario/types';
@@ -39,10 +42,16 @@ export default class BranchStepComponent extends React.Component<Props> {
 
   renderCampaignData(
     campaignGuide: CampaignGuide,
-    condition: CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition
+    condition: CampaignDataInvestigatorCondition | CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition
   ) {
     const { step } = this.props;
     switch (condition.campaign_data) {
+      case 'investigator':
+        return (
+          <Text>
+            Some condition of an investigator.
+          </Text>
+        );
       case 'difficulty':
         return (
           <Text>
@@ -196,12 +205,35 @@ export default class BranchStepComponent extends React.Component<Props> {
     );
   }
 
+  traumaCondition(condition: TraumaCondition, investigatorDecks: InvestigatorDeck[]) {
+    switch (condition.trauma) {
+      case 'killed':
+        switch (condition.investigator) {
+          case 'lead_investigator':
+          case 'all':
+          default:
+            return (
+              <Text>
+                Unknown Trauma Condition investigator: { condition.investigator }
+              </Text>
+            );
+        }
+      default:
+        return (
+          <Text>
+            Unknown Trauma Condition: { condition.trauma }
+          </Text>
+        );
+    }
+    return null;
+  }
+
   render() {
     const { step } = this.props;
     const condition = step.condition;
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+        { ({ campaignGuide, investigatorDecks }: ScenarioGuideContextType) => {
           switch (condition.type) {
             case 'campaign_log':
               return this.renderCampaignLog(campaignGuide, condition);
@@ -214,10 +246,13 @@ export default class BranchStepComponent extends React.Component<Props> {
             case 'has_card': {
               return this.hasCardCondition(condition);
             }
+            case 'trauma': {
+              return this.traumaCondition(condition, investigatorDecks);
+            }
             default:
               return (
                 <Text>
-                  { condition.type }
+                  Other Branch: { condition.type }
                 </Text>
               );
           }

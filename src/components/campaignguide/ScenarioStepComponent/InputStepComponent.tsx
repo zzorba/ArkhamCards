@@ -23,6 +23,7 @@ export default class InputStepComponent extends React.Component<Props> {
           return (
             <BinaryPrompt
               id={step.id}
+              bulletType={step.bullet_type}
               text={step.input.choices[0].text}
               trueResult={step.input.choices[0]}
             />
@@ -31,6 +32,7 @@ export default class InputStepComponent extends React.Component<Props> {
         return (
           <ChooseOnePrompt
             id={step.id}
+            bulletType={step.bullet_type}
             text={step.text}
             choices={step.input.choices}
           />
@@ -40,6 +42,7 @@ export default class InputStepComponent extends React.Component<Props> {
           <>
             <NumberPrompt
               id={step.id}
+              bulletType={step.bullet_type}
               prompt={step.input.text}
               effects={step.input.effects}
               text={step.text}
@@ -54,6 +57,7 @@ export default class InputStepComponent extends React.Component<Props> {
         return (
           <SuppliesPrompt
             id={step.id}
+            bulletType={step.bullet_type}
             text={step.text}
             input={step.input}
           />
@@ -65,6 +69,7 @@ export default class InputStepComponent extends React.Component<Props> {
           <InvestigatorChoicePrompt
             id={step.id}
             text={step.text}
+            bulletType={step.bullet_type}
             choices={step.input.choices}
             detailed={step.input.detailed}
             optional={step.input.investigator === 'choice'}

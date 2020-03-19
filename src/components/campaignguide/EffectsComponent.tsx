@@ -8,6 +8,7 @@ import { t } from 'ttag';
 
 import CardWrapper from './CardWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
+import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
 import { isSpecialToken } from 'constants';
 import Card from 'data/Card';
 import { EarnXpEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect } from 'data/scenario/types';
@@ -15,6 +16,7 @@ import CampaignGuide from 'data/scenario/CampaignGuide';
 import CardTextComponent from 'components/card/CardTextComponent';
 
 interface Props {
+  id: string;
   effects?: Effect[];
   input?: {
     card?: string;
@@ -88,10 +90,20 @@ export default class EffectsComponent extends React.Component<Props> {
       case 'remove_chaos_token': {
         return this.renderChaosTokenEffect(effect);
       }
+      case 'add_card':
+        if (effect.investigator === 'choice') {
+          return (
+            <ChooseInvestigatorPrompt
+              id={this.props.id}
+              title={t`Investigator`}
+            />
+          )
+        }
+        // otherwise we have written it out
+        return null;
       case 'earn_xp':
       case 'campaign_data':
       case 'remove_card':
-      case 'add_card':
       case 'replace_card':
       case 'trauma': {
         // We always write these out.
