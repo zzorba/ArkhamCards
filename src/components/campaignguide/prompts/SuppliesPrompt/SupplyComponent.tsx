@@ -63,7 +63,7 @@ export default class SupplyComponent extends React.Component<Props> {
               { supply.name }
             </Text>
             { ' ' }
-            <Text style={[styles.cost, styles.blackText]}>{ costString }</Text>
+            { editable && <Text style={[styles.cost, styles.blackText]}>{ costString }</Text> }
           </Text>
           <Text
             numberOfLines={2}
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     paddingLeft: 16,
+    paddingRight: 16,
   },
   row: {
     flexDirection: 'row',

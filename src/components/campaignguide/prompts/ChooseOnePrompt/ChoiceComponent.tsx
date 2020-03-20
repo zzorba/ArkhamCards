@@ -39,7 +39,7 @@ export default class ChoiceComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.row,
-        index === 0 ? { borderTopWidth: 1 } : {},
+        (index === 0 || !editable) ? { borderTopWidth: 1 } : {},
         selected && editable ? {
           backgroundColor: tintColor || COLORS.veryLightBlue,
         } : {},

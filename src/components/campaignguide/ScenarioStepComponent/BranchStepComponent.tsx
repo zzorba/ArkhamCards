@@ -130,36 +130,39 @@ export default class BranchStepComponent extends React.Component<Props> {
             </Text>
           );
         }
-        if (logEntry.type === 'text') {
-          const prompt = step.text ||
-            t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`;
-          return (
-            <BinaryPrompt
-              id={step.id}
-              text={prompt}
-              trueResult={find(condition.options, option => option.boolCondition === true)}
-              falseResult={find(condition.options, option => option.boolCondition === false)}
-            />
-          );
+        switch (logEntry.type) {
+          case 'text': {
+            const prompt = step.text ||
+              t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`;
+            return (
+              <BinaryPrompt
+                id={step.id}
+                text={prompt}
+                trueResult={find(condition.options, option => option.boolCondition === true)}
+                falseResult={find(condition.options, option => option.boolCondition === false)}
+              />
+            );
+          }
+          case 'card': {
+            return (
+              <CardWrapper
+                code={logEntry.code}
+                render={(card: Card) => {
+                  const prompt = step.text ||
+                    t`Is ${card.name} is listed under ${logEntry.section}?`;
+                  return (
+                    <BinaryPrompt
+                      id={step.id}
+                      text={prompt}
+                      trueResult={find(condition.options, option => option.boolCondition === true)}
+                      falseResult={find(condition.options, option => option.boolCondition === false)}
+                    />
+                  );
+                }}
+              />
+            );
+          }
         }
-
-        return (
-          <CardWrapper
-            code={logEntry.code}
-            render={(card: Card) => {
-              const prompt = step.text ||
-                t`Is ${card.name} is listed under ${logEntry.section}?`;
-              return (
-                <BinaryPrompt
-                  id={step.id}
-                  text={prompt}
-                  trueResult={find(condition.options, option => option.boolCondition === true)}
-                  falseResult={find(condition.options, option => option.boolCondition === false)}
-                />
-              );
-            }}
-          />
-        );
       }
     }
     // Not a binary condition.
@@ -181,7 +184,7 @@ export default class BranchStepComponent extends React.Component<Props> {
         return t`Was an investigator with ${cardName} in their deck defeated?`;
       case 'all':
       case 'choice':
-      case 'input_value':
+      case '$input_value':
       default:
         // Doesn't makes sense for investigator card
         return '';
@@ -205,27 +208,34 @@ export default class BranchStepComponent extends React.Component<Props> {
     );
   }
 
-  traumaCondition(condition: TraumaCondition, investigatorDecks: InvestigatorDeck[]) {
+  traumaCondition(
+    condition: TraumaCondition,
+    investigatorDecks: InvestigatorDeck[]
+  ): React.ReactNode {
+    const { step } = this.props;
     switch (condition.trauma) {
       case 'killed':
         switch (condition.investigator) {
           case 'lead_investigator':
-          case 'all':
-          default:
             return (
-              <Text>
-                Unknown Trauma Condition investigator: { condition.investigator }
-              </Text>
+              <BinaryPrompt
+                id={step.id}
+                text={t`Was the lead investigator <b>killed</b>?`}
+                trueResult={find(condition.options, option => option.boolCondition === true)}
+                falseResult={find(condition.options, option => option.boolCondition === false)}
+              />
+            );
+          case 'all':
+            return (
+              <BinaryPrompt
+                id={step.id}
+                text={t`Were all investigators <b>killed</b>?`}
+                trueResult={find(condition.options, option => option.boolCondition === true)}
+                falseResult={find(condition.options, option => option.boolCondition === false)}
+              />
             );
         }
-      default:
-        return (
-          <Text>
-            Unknown Trauma Condition: { condition.trauma }
-          </Text>
-        );
     }
-    return null;
   }
 
   render() {

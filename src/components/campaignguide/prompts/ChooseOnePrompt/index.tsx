@@ -44,11 +44,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
     const { choices } = this.props;
     const choice = choices[selectedChoice];
     if (choice.steps) {
-      return (
-        <StepsComponent
-          steps={choice.steps}
-        />
-      );
+      return null;
     }
     return <Text>Unknown results for choice</Text>;
   }

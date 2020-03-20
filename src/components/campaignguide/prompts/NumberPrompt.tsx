@@ -68,47 +68,43 @@ export default class NumberPrompt extends React.Component<Props, State> {
     this.context.scenarioState.setCount(id, this.state.value);
   };
 
-  renderCount() {
+  renderCount(count: number) {
     return (
       <View style={styles.count}>
         <Text style={[typography.bigGameFont, typography.center]}>
-          { this.state.value }
+          { count }
         </Text>
       </View>
     );
   }
 
   renderPrompt(scenarioState: ScenarioStateHelper) {
-    const { id, prompt, text } = this.props;
+    const { id, prompt } = this.props;
+    const hasDecision = scenarioState.hasCount(id);
     return (
       <>
-        <CardTextComponent text={prompt} />
-        { scenarioState.hasCount(id) ? (
-          <>
-            <Text>
-              { scenarioState.count(id) }
-            </Text>
-            { !!text && <CardTextComponent text={text} /> }
-          </>
-        ) : (
-          <>
+        <View style={styles.promptRow}>
+          <CardTextComponent text={prompt} />
+          { hasDecision ? (
+            this.renderCount(scenarioState.count(id))
+          ) : (
             <PlusMinusButtons
               count={this.state.value}
               limit={this.props.max}
               min={this.props.min}
               onIncrement={this._inc}
               onDecrement={this._dec}
-              countRender={this.renderCount()}
+              countRender={this.renderCount(this.state.value)}
             />
-            <Button title="Done" onPress={this._submit} />
-          </>
-        ) }
+          ) }
+        </View>
+        { !hasDecision && <Button title="Done" onPress={this._submit} /> }
       </>
     );
   }
 
 
-  renderCorrectResults(scenarioState: ScenarioStateHelper, stepsOnly: boolean) {
+  renderCorrectResults(scenarioState: ScenarioStateHelper) {
     const {
       id,
       options,
@@ -123,9 +119,9 @@ export default class NumberPrompt extends React.Component<Props, State> {
       if (!theOption) {
         return null;
       }
-      return this.renderResult(stepsOnly, theOption);
+      return this.renderResult(theOption);
     }
-    if (effects && !stepsOnly) {
+    if (effects) {
       // We summarize the text of the effects in the guide text for number
       // inputs.
       return (
@@ -135,22 +131,18 @@ export default class NumberPrompt extends React.Component<Props, State> {
     return null;
   }
 
-  renderResult(stepsOnly: boolean, choice: Option) {
+  renderResult(choice: Option) {
     const { id } = this.props;
-    if (choice.steps) {
-      return stepsOnly ? (
-        <StepsComponent
-          steps={choice.steps}
-        />
-      ) : null;
-    }
     if (choice.effects) {
-      return stepsOnly ? null : (
+      return (
         <EffectsComponent id={id} effects={choice.effects} />
       );
     }
+    if (choice.steps) {
+      return null;
+    }
     if (choice.resolution) {
-      return stepsOnly ? null : (
+      return (
         <Text>Resolution { choice.resolution }</Text>
       );
     }
@@ -158,16 +150,18 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
   render() {
-    const { bulletType } = this.props;
+    const { bulletType, text } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => (
           <>
             <SetupStepWrapper bulletType={bulletType}>
-              { this.renderPrompt(scenarioState) }
-              { this.renderCorrectResults(scenarioState, false) }
+              { !!text && <CardTextComponent text={text} /> }
             </SetupStepWrapper>
-            { this.renderCorrectResults(scenarioState, true) }
+            { this.renderPrompt(scenarioState) }
+            <SetupStepWrapper bulletType="none">
+              { this.renderCorrectResults(scenarioState) }
+            </SetupStepWrapper>
           </>
         ) }
       </ScenarioGuideContext.Consumer>
@@ -180,5 +174,16 @@ const styles = StyleSheet.create({
     paddingLeft: 4,
     paddingRight: 4,
     minWidth: 40,
+  },
+  promptRow: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#888',
+    padding: 16,
+    paddingTop: 8,
+    paddingBottom: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

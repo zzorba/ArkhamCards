@@ -18,6 +18,7 @@ interface Props {
     backgroundColor: string;
     textColor: string;
   },
+  defaultLabel?: string;
 }
 
 export default class PickerComponent extends React.Component<Props> {
@@ -33,10 +34,10 @@ export default class PickerComponent extends React.Component<Props> {
   };
 
   _choiceToLabel = (idx: number): string => {
+    const { choices, defaultLabel } = this.props;
     if (idx === -1) {
-      return '';
+      return defaultLabel || '';
     }
-    const { choices } = this.props;
     const choice = choices[idx];
     if (choice) {
       return choice.text || choice.flavor || 'Unknown text';

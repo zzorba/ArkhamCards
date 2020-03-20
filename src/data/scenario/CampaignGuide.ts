@@ -23,12 +23,21 @@ interface LogEntryCard extends LogSection {
   code: string;
 }
 
+interface LogEntrySectionCount extends LogSection {
+  type: 'section_count';
+}
+
 interface LogEntryText extends LogSection {
   type: 'text';
   text: string;
 }
 
-type LogEntry = LogEntryCard | LogEntryText;
+interface LogEntryPerInvestigator extends LogSection {
+  type: 'investigator';
+  text?: string;
+}
+
+type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntryPerInvestigator;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 /**
  * Wrapper utility to provide structured access to campaigns.
@@ -40,7 +49,10 @@ export default class CampaignGuide {
 
   constructor(campaign: FullCampaign, log: CampaignLog) {
     this.campaign = campaign;
-    this.scenarios = map(campaign.scenarios, scenario => new ScenarioGuide(scenario));
+    this.scenarios = map(
+      campaign.scenarios,
+      scenario => new ScenarioGuide(scenario, this)
+    );
     this.log = log;
   }
 
@@ -74,14 +86,26 @@ export default class CampaignGuide {
       s => s.section === sectionId
     );
     if (textSection) {
+      if (id === '$num_entries') {
+        return {
+          type: 'section_count',
+          section: section.title,
+        };
+      }
       const entry = find(textSection.entries, entry => entry.id === id);
       if (entry) {
         return {
-          type: 'text',
+          type: section.type === 'investigator' ? 'investigator' : 'text',
           section: section.title,
           text: entry.text,
         };
       }
+    }
+    if (section.type === 'investigator') {
+      return {
+        type: 'investigator',
+        section: section.title,
+      };
     }
     if (id.match(CARD_REGEX)) {
       return {

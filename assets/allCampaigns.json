@@ -428,7 +428,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -834,7 +834,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1014,7 +1014,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1029,7 +1029,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1273,7 +1273,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1871,7 +1871,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -1886,7 +1886,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2106,7 +2106,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2228,7 +2228,7 @@
       "id": "check_sacrificed",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_count",
         "section": "sacrificed",
         "id": "$num_entries",
         "options": [
@@ -2247,12 +2247,12 @@
           {
             "numCondition": 3,
             "steps": ["spawn_one_remove_two_brood"]
-          },
-          {
-            "default": true,
-            "steps": ["spawn_zero_remove_three_brood"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["spawn_zero_remove_three_brood"]
+        }
       }
     },
     {
@@ -2307,7 +2307,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Brood of Yog-Sothoth in play or set aside",
+        "text": "Brood of Yog-Sothoth in play or set aside:",
         "effects": [
           {
             "type": "campaign_log",
@@ -2320,7 +2320,6 @@
     },
     {
       "id": "no_brood_escaped",
-      "text": "In your Campaign Log, record that <i>no brood escaped into the wild</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -2346,7 +2345,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2604,7 +2603,7 @@
       "id": "check_escaped_brood",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "brood_escaped",
         "options": [
@@ -2628,8 +2627,16 @@
             "numCondition": 5,
             "steps": ["add_5_doom"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["add_0_doom"]
+        }
       }
+    },
+    {
+      "id": "add_0_doom",
+      "text": "Because no Broods escaped, no doom is added to agenda 1a."
     },
     {
       "id": "add_1_doom",
@@ -2728,7 +2735,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -2928,14 +2935,10 @@
     	"id": "check_escaped_cultists",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_count",
         "section": "cultists_escaped",
         "id": "$num_entries",
         "options": [
-          {
-            "numCondition": 0,
-            "effects": []
-          },
           {
             "numCondition": 1,
             "steps": ["place_one_doom"]
@@ -2960,7 +2963,11 @@
             "numCondition": 6,
             "steps": ["place_three_doom"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -3142,7 +3149,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3158,7 +3165,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3174,7 +3181,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3339,7 +3346,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -3659,7 +3666,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Is the Ghoul Priest in the Victory Display?",
+            "text": "Is the Ghoul Priest in the victory display?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -3689,7 +3696,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4080,7 +4087,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4096,7 +4103,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the Victory Display?",
+            "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the victory display?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -4273,7 +4280,7 @@
     },
     {
       "id": "stranger_is_on_to_you",
-      "text": "Add The Man in the Pallid Mask weakness to the lead investigator’s deck (does not count towards deck size). For the remainder of this campaign, any time the bearer of The Man in the Pallid Mask leaves the campaign for any reason, choose a new investigator to become the bearer of The Man in the Pallid Mask weakness, and add it to that investigator’s deck.",
+      "text": "In your Campaign Log, record <i>the Stranger is on to you</i>. Add The Man in the Pallid Mask weakness to the lead investigator’s deck (does not count towards deck size). For the remainder of this campaign, any time the bearer of The Man in the Pallid Mask leaves the campaign for any reason, choose a new investigator to become the bearer of The Man in the Pallid Mask weakness, and add it to that investigator’s deck.",
       "effects": [
         {
           "type": "campaign_log",
@@ -4295,7 +4302,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "How many times was The Man in the Pallid Mask defeated?",
+        "text": "Number of times The Man in the Pallid Mask was defeated:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -4321,7 +4328,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4336,7 +4343,7 @@
     },
     {
       "id": "tried_to_warn_police",
-      "text": "Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "In your Campaign Log, record that <i>you tried to warn the police</i>. Mark one <b>Conviction</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log",
@@ -4377,7 +4384,7 @@
     },
     {
       "id": "chose_not_to_warn_police",
-      "text": "Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "In your Campaign Log, record that <i>you chose not to go to the police</i>. Mark one <b>Doubt</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log",
@@ -4513,12 +4520,12 @@
           {
             "numCondition": 5,
             "steps": ["act_2_v1"]
-          },
-          {
-            "default": true,
-            "steps": ["compare_conviction_and_doubt"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["compare_conviction_and_doubt"]
+        }
       }
     },
     {
@@ -4548,7 +4555,11 @@
             "numCondition": 1,
             "steps": ["act_2_v2"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -4616,6 +4627,7 @@
       "condition": {
         "type": "campaign_log_count",
         "section": "chasing_the_stranger",
+        "id": "$count",
         "options": [
           {
             "numCondition": 0,
@@ -4652,12 +4664,12 @@
           {
             "numCondition": 8,
             "steps": ["add_1_doom"]
-          },
-          {
-            "default": true,
-            "steps": ["add_no_doom"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["add_no_doom"]
+        }
       }
     },
     {
@@ -4772,7 +4784,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4788,7 +4800,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -4893,7 +4905,11 @@
             "numCondition": 1,
             "resolution": "R5"
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     }
   ],
@@ -5063,7 +5079,7 @@
     },
     {
       "id": "took_onyx_clasp",
-      "text": "Mark one Conviction in your Campaign Log. For the remainder of the campaign, one investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
+      "text": "In your Campaign Log, record that <i>you took the onyx clasp</i>. Mark one Conviction in your Campaign Log. For the remainder of the campaign, one investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5086,7 +5102,7 @@
     },
     {
       "id": "destroyed_the_oathspeaker",
-      "text": "Any one investigator may choose to add The Tattered Cloak to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "In your Campaign Log, record that <i>you destroyed the oathspeaker</i>. Any one investigator may choose to add The Tattered Cloak to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5103,7 +5119,7 @@
     },
     {
       "id": "left_onyx_clasp",
-      "text": "Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "In your Campaign Log, record that <i>you left the onyx clasp behind</i>. Mark one <b>Doubt</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5124,7 +5140,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -5139,7 +5155,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -5156,7 +5172,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Is Sebastien Moreau <i>(Savage Hysteria)</i> in the Victory Display?",
+            "text": "Is Sebastien Moreau <i>(Savage Hysteria)</i> in the victory display?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -5328,19 +5344,19 @@
       "id": "check_epilogue",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "possessed",
         "options": [
           {
             "numCondition": 0,
             "steps": []
-          },
-          {
-            "default": true,
-            "steps": ["possessed"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["possessed"]
+        }
       }
     },
     {
@@ -5550,7 +5566,7 @@
     },
     {
       "id": "intruded_on_secret_meeting",
-      "text": "Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "In your Campaign Log, record that <i>you intruded on a secret meeting</i>. Mark one <b>Doubt</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5567,7 +5583,7 @@
     },
     {
       "id": "slayed_the_monsters",
-      "text": "Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "In your Campaign Log, record that <i>you sayed the monsters at the dinner party</i>. Mark one <b>Conviction</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5755,7 +5771,10 @@
     {
       "id": "dream_4",
       "type": "story",
-      "text": "Smoke and embers float upwards into the starless night sky. The screams of burning creatures fill you with a horrid sense of accomplishment. They almost sound human, you consider. But you know that isn’t true.",
+      "text": "Smoke and embers float upwards into the starless night sky. The screams of burning creatures fill you with a horrid sense of accomplishment. They almost sound human, you consider. But you know that isn’t true."
+    },
+    {
+      "id": "one_mental_trauma",
       "effects": [
         {
           "type": "trauma",
@@ -5775,6 +5794,7 @@
       "condition": {
         "type": "campaign_log_count",
         "section": "chasing_the_stranger",
+        "id": "$count",
         "options": [
           {
             "numCondition": 0,
@@ -5791,12 +5811,12 @@
           {
             "numCondition": 3,
             "steps": ["dream_9"]
-          },
-          {
-            "default": true,
-            "steps": ["dream_10", "dream_10_choice"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["dream_10", "dream_10_choice"]
+        }
       }
     },
     {
@@ -5818,7 +5838,11 @@
     {
       "id": "dream_12",
       "type": "story",
-      "text": "You peer up at the stained glass, curious. What is the shape of the shadow along the window? What is the meaning behind this strange design?",
+      "text": "You peer up at the stained glass, curious. What is the shape of the shadow along the window? What is the meaning behind this strange design?"
+    },
+    {
+      "id": "mark_one_doubt",
+      "text": "Mark one <b>Doubt</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -5880,7 +5904,7 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["dream_4", "dream_6", "dream_6_test"]
+            "steps": ["dream_4", "one_mental_trauma", "dream_6", "dream_6_test"]
           },
           {
             "boolCondition": false,
@@ -5924,11 +5948,11 @@
         "choices": [
           {
             "flavor": "“How could any of this be beautiful to you?”",
-            "steps": ["dream_11"]
+            "steps": ["dream_11", "mark_one_conviction"]
           },
           {
             "flavor": "“What exactly am I looking at?”",
-            "steps": ["dream_12"]
+            "steps": ["dream_12", "mark_one_doubt"]
           }
         ]
       }
@@ -5936,7 +5960,11 @@
     {
       "id": "dream_11",
       "type": "story",
-      "text": "You avoid looking at the stained glass. If this vile man considers it to be beautiful, it is probably some trap meant to ensnare your mind. You clench your fist until your knuckles are white and step forward to confront the Stranger.",
+      "text": "You avoid looking at the stained glass. If this vile man considers it to be beautiful, it is probably some trap meant to ensnare your mind. You clench your fist until your knuckles are white and step forward to confront the Stranger."
+    },
+    {
+      "id": "mark_one_conviction",
+      "text": "Mark one <b>Conviction</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -6037,18 +6065,22 @@
         "operation": "compare",
         "options": [
           {
-            "condition": "-1",
+            "numCondition": -1,
             "steps": ["gather_doubt", "act_1_v1"]
           },
           {
-            "condition": "0",
+            "numCondition": 0,
             "steps": ["gather_doubt", "act_1_v1"]
           },
           {
-            "condition": "1",
+            "numCondition": 1,
             "steps": ["gather_conviction", "act_1_v2"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -6137,7 +6169,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -6153,7 +6185,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Is Jordan Perry Dumaine <i>(An Imposing Presence)</i> in the Victory Display?",
+            "text": "Is Jordan Perry Dumaine <i>(An Imposing Presence)</i> in the victory display?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -6367,7 +6399,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -6386,25 +6418,7 @@
         "effects": [
           {
             "type": "earn_xp",
-            "investigator": "input_value"
-          }
-        ]
-      }
-    },
-    {
-      "id": "check_resigned",
-      "type": "branch",
-      "condition": {
-        "type": "scenario_data",
-        "scenario_data": "any_resigned",
-        "options": [
-          {
-            "boolCondition": true,
-            "resolution": "R1"
-          },
-          {
-            "boolCondition": false,
-            "resolution": "R2"
+            "investigator": "$input_value"
           }
         ]
       }
@@ -6456,7 +6470,7 @@
         ],
         "choices": [
           {
-            "text": "In the Victory Display?",
+            "text": "In the victory display?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -6505,9 +6519,14 @@
   ],
   "resolutions": [
     {
-      "id": "no_resolution",
-      "title": "No Resolution",
-      "steps": ["check_resigned"]
+      "id": "no_resolution_resigned",
+      "title": "No Resolution (at least one investigator resigned)",
+      "resolution": "R1"
+    },
+    {
+      "id": "no_resolution_defeated",
+      "title": "No Resolution (all investigators defeated)",
+      "resolution": "R2"
     },
     {
       "id": "R1",
@@ -6705,7 +6724,7 @@
     },
     {
       "id": "know_site_of_gate_chasing_stranger",
-      "text": "Add two tally marks under “Chasing the Stranger.”",
+      "text": "In your Campaign Log, record that <i>you know the site of the gate</i>. Add two tally marks under “Chasing the Stranger.”",
       "effects": [
         {
           "type": "campaign_log",
@@ -6744,12 +6763,12 @@
               {
                 "type": "add_card",
                 "card": "01000",
-                "investigator": "input_value",
+                "investigator": "$input_value",
                 "weakness_traits": ["Madness", "Pact"]
               },
               {
                 "type": "earn_xp",
-                "investigator": "input_value",
+                "investigator": "$input_value",
                 "bonus": 2
               }
             ]
@@ -6763,7 +6782,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -6779,7 +6798,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the Victory Display?",
+            "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the victory display?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -7112,7 +7131,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [{
           "type": "earn_xp",
           "investigator": "all"
@@ -7125,7 +7144,7 @@
       "input": {
         "type": "choose_one",
         "choices": [{
-          "text": "Is Constance Dumaine <i>(A Little Too Sociable)</i> in the Victory Display?",
+          "text": "Is Constance Dumaine <i>(A Little Too Sociable)</i> in the victory display?",
           "effects": [{
             "type": "campaign_log",
             "section": "vips_slain",
@@ -7421,7 +7440,7 @@
       "id": "check_gavriella_fate",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05046",
         "options": [
           {
@@ -7435,7 +7454,7 @@
       "id": "check_jerome_fate",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05047",
         "options": [
           {
@@ -7449,7 +7468,7 @@
       "id": "check_penny_fate",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05048",
         "options": [
           {
@@ -7463,7 +7482,7 @@
       "id": "check_valentino_fate",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05049",
         "options": [
           {
@@ -7667,7 +7686,7 @@
       "id": "check_gavriella_clues",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05046",
         "options": [
           {
@@ -7681,7 +7700,7 @@
       "id": "check_jerome_clues",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05047",
         "options": [
           {
@@ -7695,7 +7714,7 @@
       "id": "check_penny_clues",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05048",
         "options": [
           {
@@ -7709,7 +7728,7 @@
       "id": "check_valentino_clues",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05049",
         "options": [
           {
@@ -7815,7 +7834,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8072,7 +8091,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8147,7 +8166,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8316,7 +8335,6 @@
     },
     {
       "id": "cross_out_survived_the_watchers_embrace",
-      "text": "Cross out <i>“the investigators survived the watcher’s embrace”</i> in your Campaign Log",
       "effects": [
         {
           "type": "campaign_log",
@@ -8612,7 +8630,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -8861,7 +8879,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "flavor": "<i>“You’ve done enough harm. We’ll handle this from here.”</i>",
+            "text": "<i>“You’ve done enough harm. We’ll handle this from here.”</i>",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8872,7 +8890,7 @@
             ]
           },
           {
-            "flavor": "“We will need your help to fix this.”",
+            "text": "<i>“We will need your help to fix this.”</i>",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8883,8 +8901,8 @@
             ]
           },
           {
-            "flavor": "“You are under arrest.”",
-            "text": " You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
+            "text": "<i>“You are under arrest.”</i>",
+            "description": "You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8895,8 +8913,8 @@
             ]
           },
           {
-            "flavor": "“Then teach me how to be stronger.”",
-            "text": "You may only choose this option if at least one of the investigators has the [[Sorcerer]], [[Miskatonic]], or [[Scholar]] trait.",
+            "text": "<i>“Then teach me how to be stronger.”</i>",
+            "description": "You may only choose this option if at least one of the investigators has the [[Sorcerer]], [[Miskatonic]], or [[Scholar]] trait.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8916,7 +8934,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "flavor": "“You’ve done enough harm. We’ll handle this from here.”",
+            "text": "<i>“You’ve done enough harm. We’ll handle this from here.”</i>",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8927,7 +8945,7 @@
             ]
           },
           {
-            "flavor": "“We will need your help to fix this.”",
+            "text": "<i>“We will need your help to fix this.”</i>",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8938,8 +8956,8 @@
             ]
           },
           {
-            "flavor": "“You are under arrest.”",
-            "text": " You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
+            "text": "<i>“You are under arrest.”</i>",
+            "description": " You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8950,8 +8968,8 @@
             ]
           },
           {
-            "flavor": "“You don't deserve to lead us.”",
-            "text": "You may only choose this option if at least one of the investigators has the [[Sorcerer]], [[Silver Twilight]], or [[Cultist]] trait.",
+            "text": "<i>“You don't deserve to lead us.”</i>",
+            "description": "You may only choose this option if at least one of the investigators has the [[Sorcerer]], [[Silver Twilight]], or [[Cultist]] trait.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -8970,7 +8988,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -9140,7 +9158,7 @@
             "effects": [
               {
                 "type": "campaign_log",
-                "section": "inputValue",
+                "section": "$input_value",
                 "cross_out": true
               }
             ]
@@ -9157,7 +9175,7 @@
       "id": "check_gavriella_intro",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05046",
         "options": [
           {
@@ -9177,7 +9195,7 @@
       "id": "check_jerome_intro",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05047",
         "options": [
           {
@@ -9197,7 +9215,7 @@
       "id": "check_penny_intro",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05048",
         "options": [
           {
@@ -9217,7 +9235,7 @@
       "id": "check_valentino_intro",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05049",
         "options": [
           {
@@ -9279,7 +9297,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "How many clues are on Act 1a—“The Disappearance.”?",
+        "text": "Clues are on Act 1a—“The Disappearance.”:",
         "effects": [
           {
             "type": "campaign_log",
@@ -9330,7 +9348,7 @@
             "effects": [
               {
                 "type": "campaign_log",
-                "section": "inputValue",
+                "section": "$input_value",
                 "id": "taken_by_the_watcher",
                 "text": "#name# was taken by the Watcher."
               }
@@ -9341,7 +9359,7 @@
             "effects": [
               {
                 "type": "campaign_log",
-                "section": "inputValue",
+                "section": "$input_value",
                 "id": "claimed_by_specters",
                 "text": "#name# was claimed by specters."
               }
@@ -9352,7 +9370,7 @@
             "effects": [
               {
                 "type": "campaign_log",
-                "section": "inputValue",
+                "section": "$input_value",
                 "id": "disappeared_into_the_mist",
                 "text": "#name# disappeared into the mist."
               }
@@ -9363,7 +9381,7 @@
             "effects": [
               {
                 "type": "campaign_log",
-                "section": "inputValue",
+                "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
                 "text": "#name# was pulled into the spectral realm."
               }
@@ -9426,12 +9444,6 @@
         {
           "type": "campaign_log",
           "section": "mementos",
-          "id": "ghoul_priest_alive",
-          "cross_out": true
-        },
-        {
-          "type": "campaign_log",
-          "section": "mementos",
           "id": "gilmans_journal",
           "cross_out": true
         },
@@ -9468,19 +9480,7 @@
         {
           "type": "campaign_log",
           "section": "mementos",
-          "id": "mesmerizing_flute",
-          "cross_out": true
-        },
-        {
-          "type": "campaign_log",
-          "section": "mementos",
           "id": "scrap_of_torn_shadow",
-          "cross_out": true
-        },
-        {
-          "type": "campaign_log",
-          "section": "mementos",
-          "id": "mesmerizing_flute",
           "cross_out": true
         }
       ]
@@ -9737,7 +9737,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Victory display",
+            "text": "Victory display:",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
@@ -10157,7 +10157,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -10289,7 +10289,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -10404,7 +10404,7 @@
       "text": "In your Campaign Log, record <i>X heretics were unleashed unto Arkham</i>. X is the number of Heretic enemies in play. (If it is act 1, instead record <i>4 heretics were unleashed unto Arkham</i>.)",
       "input": {
         "type": "counter",
-        "text": "How many Heretic enemies in play?",
+        "text": "Heretic enemies in play:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -10440,12 +10440,12 @@
           {
             "numCondition": 3,
             "steps": ["record_wisp_of_spectral_mist"]
-          },
-          {
-            "numCondition": 4,
-            "steps": []
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -10476,7 +10476,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -10557,7 +10557,7 @@
     },
     {
       "id": "accepted_fate",
-      "text": "Add 2 [tablet] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "In your Campaign Log, record that <i>you have accepted your fate</i>. Add 2 [tablet] tokens to the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -10595,7 +10595,7 @@
     },
     {
       "id": "rejected_fate",
-      "text": "Add 2 [elder_thing] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "In your Campaign Log, record that <i>you have rejected your fate</i>. Add 2 [elder_thing] tokens to the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -10716,7 +10716,7 @@
     },
     {
       "id": "mementos_flute_and_ritual_components",
-      "text": "Each investigator earns 1 bonus experience, as he or she gains insight into Arkham’s mysterious past.",
+      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Ritual Components</i>. Each investigator earns 1 bonus experience, as he or she gains insight into Arkham’s mysterious past.",
       "effects": [
         {
           "type": "campaign_log",
@@ -10743,7 +10743,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -10754,7 +10754,7 @@
     },
     {
       "id": "mementos_flute_and_scrap_of_torn_shadow",
-      "text": "Each investigator earns 1 bonus experience, as he or she gains insight into Arkham’s mysterious past.",
+      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Scrap of Torn Shadow</i>. Each investigator earns 1 bonus experience, as he or she gains insight into Arkham’s mysterious past.",
       "effects": [
         {
           "type": "campaign_log",
@@ -10795,7 +10795,7 @@
     },
     {
       "id": "mementos_flute",
-      "text": "Each investigator earns 1 bonus experience, as he or she gains insight into Arkham’s mysterious past.",
+      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i>. Each investigator earns 1 bonus experience, as he or she gains insight into Arkham’s mysterious past.",
       "effects": [
         {
           "type": "campaign_log",
@@ -11013,7 +11013,7 @@
       "id": "check_mementos",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_count",
         "section": "mementos",
         "id": "$num_entries",
         "options": [
@@ -11040,12 +11040,12 @@
           {
             "numCondition": 5,
             "steps": ["three_to_five_mementos"]
-          },
-          {
-            "default": true,
-            "steps": ["six_or_more_mementos"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["six_or_more_mementos"]
+        }
       }
     },
     {
@@ -11264,7 +11264,7 @@
       "id": "check_gavriella",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05046",
         "options": [
           {
@@ -11290,7 +11290,7 @@
       "id": "check_jerome",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05047",
         "options": [
           {
@@ -11316,7 +11316,7 @@
       "id": "check_penny",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05048",
         "options": [
           {
@@ -11342,7 +11342,7 @@
       "id": "check_valentino",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_section_exists",
         "section": "05049",
         "options": [
           {
@@ -11526,12 +11526,12 @@
           {
             "numCondition": 3,
             "steps": ["add_3_doom"]
-          },
-          {
-            "numCondition": 4,
-            "steps": ["add_4_doom"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["add_4_doom"]
+        }
       }
     },
     {
@@ -11627,7 +11627,7 @@
             "effects": [
               {
                 "type": "campaign_log",
-                "section": "inputValue",
+                "section": "$input_value",
                 "id": "alive",
                 "text": "#name# is alive."
               }
@@ -11770,12 +11770,12 @@
           {
             "numCondition": 1,
             "resolution": "R6"
-          },
-          {
-            "default": true,
-            "resolution": "R7"
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "resolution": "R7"
+        }
       }
     },
     {
@@ -11784,7 +11784,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -12299,11 +12299,11 @@
         "choices": [
           {
             "flavor": "It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.",
-            "steps": ["ee_2", "maybe_earn_alejandro", "add_tablet", "ee_4"]
+            "steps": ["ee_2", "gave_relic_to_alejandro", "earned_alejandros_trust", "maybe_earn_alejandro", "add_tablet", "ee_4"]
           },
           {
             "flavor": "It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.",
-            "steps": ["ee_3", "remove_alejandro", "ee_4"]
+            "steps": ["ee_3", "gave_relic_to_harlan", "alejandro_on_his_own", "remove_alejandro", "ee_4"]
           }
         ]
       }
@@ -12311,14 +12311,22 @@
     {
       "id": "ee_2",
       "type": "story",
-      "text": "<fancy>Sunday, July 19th, 1925</fancy>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)",
+      "text": "<fancy>Sunday, July 19th, 1925</fancy>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+    },
+    {
+      "id": "gave_relic_to_alejandro",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_alejandro",
           "text": "the investigators gave custody of the relic to Alejandro."
-        },
+        }
+      ]
+    },
+    {
+      "id": "earned_alejandros_trust",
+      "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
@@ -12365,14 +12373,22 @@
     {
       "id": "ee_3",
       "type": "story",
-      "text": "<fancy>Sunday, July 19th, 1925</fancy>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)",
+      "text": "<fancy>Sunday, July 19th, 1925</fancy>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+    },
+    {
+      "id": "gave_relic_to_harlan",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "gave_relic_to_harlan",
           "text": "the investigators gave custody of the relic to Harlan Earnstone."
-        },
+        }
+      ]
+    },
+    {
+      "id": "alejandro_on_his_own",
+      "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
@@ -12501,28 +12517,29 @@
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
+        "id": "$count",
         "options": [
           {
             "numCondition": 0,
-            "steps": ["yigs_fury_okay"]
+            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
           },
           {
             "numCondition": 1,
-            "steps": ["yigs_fury_okay"]
+            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
           },
           {
             "numCondition": 2,
-            "steps": ["yigs_fury_okay"]
+            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
           },
           {
             "numCondition": 3,
-            "steps": ["yigs_fury_okay"]
-          },
-          {
-            "default": true,
-            "steps": ["yigs_fury_bad"]
+            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["yigs_fury_bad", "defeated_investigators_killed"]
+        }
       }
     },
     {
@@ -12531,6 +12548,7 @@
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
+        "id": "$count",
         "options": [
           {
             "numCondition": 0,
@@ -12547,18 +12565,22 @@
           {
             "numCondition": 3,
             "resolution": "R3"
-          },
-          {
-            "default": true,
-            "resolution": "R2"
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "resolution": "R2"
+        }
       }
     },
     {
       "id": "yigs_fury_bad",
       "type": "story",
-      "text": "The creatures are upon you before you have time to react. You scream in agony as you are skewered by razor-sharp spears.",
+      "text": "The creatures are upon you before you have time to react. You scream in agony as you are skewered by razor-sharp spears."
+    },
+    {
+      "id": "defeated_investigators_killed",
+      "text": "Each investigator who was defeated is <b>killed</b>. (If there are not enough investigators to continue the campaign, the campaign is over and the players lose.)",
       "effects": [
         {
           "type": "trauma",
@@ -12570,7 +12592,11 @@
     {
       "id": "yigs_fury_okay",
       "type": "story",
-      "text": "Suddenly, a distant voice hisses to the others, and the serpents tentatively retreat into the darkness. You run for your life, not taking any chances.",
+      "text": "Suddenly, a distant voice hisses to the others, and the serpents tentatively retreat into the darkness. You run for your life, not taking any chances."
+    },
+    {
+      "id": "mark_3_yigs_fury",
+      "text": "Record three tally marks under “Yig’s Fury.”",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -12633,7 +12659,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia",
+        "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
             "type": "campaign_log",
@@ -12650,7 +12676,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengeance points in the victory display",
+        "text": "Vengeance points in the victory display:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -12665,7 +12691,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
       "input": {
         "type": "counter",
-        "text": "Vengeance points in the victory display",
+        "text": "Vengeance points in the victory display:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -12715,7 +12741,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -12865,7 +12891,11 @@
             "numCondition": 6,
             "resolution": "R1"
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -12937,7 +12967,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "How many pillar tokens are on the Mouth of K'n-yan?",
+        "text": "Pillar tokens are on the Mouth of K'n-yan:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -12992,7 +13022,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13112,7 +13142,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia",
+        "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
             "type": "campaign_log",
@@ -13129,7 +13159,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengeance points in the victory display",
+        "text": "Vengeance points in the victory display:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -13144,7 +13174,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -13262,8 +13292,8 @@
       "text": "Check your supplies. If any investigator has a map, he or she reads <b>A Path Discovered</b>.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "any",
         "id": "map",
         "options": [
           {
@@ -13347,7 +13377,14 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["poison_spreads", "physical_trauma"]
+            "steps": ["poison_spreads", "one_physical_trauma"],
+            "effects": [
+              {
+                "type": "trauma",
+                "investigator": "$input_value",
+                "physical": 1
+              }
+            ]
           }
         ]
       }
@@ -13359,24 +13396,8 @@
       "text": "The poison continues to work its way through your body, wreacking havoc on your internal organs. A terrible fever burns through you, growing stronger with each passing day. You can hardly keep down your food. Your body feels as though it has been drained of all of its strength."
     },
     {
-      "id": "physical_trauma",
-      "type": "branch",
-      "condition": {
-        "type": "has_card",
-        "investigator": "any",
-        "card": "04102",
-        "options": [
-          {
-            "boolCondition": true,
-            "effects": [
-              {
-                "type": "trauma",
-                "physical": 1
-              }
-            ]
-          }
-        ]
-      }
+      "id": "one_physical_trauma",
+      "text": "You suffer 1 physical trauma"
     },
     {
       "id": "find_stone_carvings",
@@ -13388,8 +13409,8 @@
       "type": "branch",
       "text": "Check your supplies. If any investigator has a canteen, he or she reads <b>Patterns in the Stone</b>. Otherwise, read <b>Secrets in the Stone</b>.",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "any",
         "id": "canteen",
         "options": [
           {
@@ -13614,7 +13635,7 @@
   "scenarioName": "Restless Nights",
   "interlude": true,
   "setup": [
-    "prologue",
+    "prompt",
     "check_blanket",
     "eat_provisions",
     "choose_lookout",
@@ -13623,22 +13644,28 @@
   ],
   "steps": [
     {
-      "id": "prologue",
-      "type": "story",
-      "text": "Inside the chamber that contained the terrible beast, you find the missing townsfolk and the others from Arkham; they are bound and shackled. You also find several documents that suggest the creature you found isn’t the only one of its kind in Dunwich. You free the creature’s victims from their bonds, and they offer you their thanks. You begin to plan your next move."
+      "id": "prompt",
+      "text": "In order, read each of the following sections:"
     },
     {
       "id": "check_blanket",
       "type": "branch",
       "text": "Check your supplies. Each investigator with a blanket reads <b>Restful Sleep</b>. The rest read <b>Tossing and Turning</b>.",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "all",
         "id": "blanket",
         "options": [
           {
             "boolCondition": false,
-            "steps": ["tossing_and_turning"]
+            "steps": ["tossing_and_turning", "choice_of_trauma"],
+            "effects": [
+              {
+                "type": "trauma",
+                "investigator": "$input_value",
+                "mental_or_physical": 1
+              }
+            ]
           },
           {
             "boolCondition": true,
@@ -13651,13 +13678,11 @@
       "id": "tossing_and_turning",
       "type": "story",
       "title": "Tossing and Turning",
-      "text": "Those nights in the jungle, I barely slept. A strange fog rolled through the camp each night, plunging the area in an intense and peculiar cold. My bedroll offered some protection against the elements, but we hadn’t been prepared for this unnatural weather. Flies and mosquitoes buzzed in my ears every time I began to drift off. Even when I finally slept, I would soon be startled awake by the crawling of an insect or lizard across my face. I wager I’ll get very little sleep on this journey...",
-      "effects": [
-        {
-          "type": "trauma",
-          "mental_or_physical": 1
-        }
-      ]
+      "text": "Those nights in the jungle, I barely slept. A strange fog rolled through the camp each night, plunging the area in an intense and peculiar cold. My bedroll offered some protection against the elements, but we hadn’t been prepared for this unnatural weather. Flies and mosquitoes buzzed in my ears every time I began to drift off. Even when I finally slept, I would soon be startled awake by the crawling of an insect or lizard across my face. I wager I’ll get very little sleep on this journey..."
+    },
+    {
+      "id": "choice_of_trauma",
+      "text": "You suffer 1 physical or mental trauma <i>(your choice)</i>."
     },
     {
       "id": "restless_sleep",
@@ -13699,18 +13724,31 @@
       "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks their supplies. If he or she has binoculars, he or she reads <b>Shapes in the Trees</b>. Otherwise, he or she reads <b>Eyes in the Dark</b>.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
         "id": "binoculars",
         "investigator": "choice",
         "options": [
           {
             "boolCondition": false,
-            "steps": ["eyes_in_the_dark"]
+            "steps": ["eyes_in_the_dark", "one_mental_trauma"],
+            "effects": [
+              {
+                "type": "trauma",
+                "investigator": "$input_value",
+                "mental": 1
+              }
+            ]
           },
           {
             "boolCondition": true,
-            "steps": ["shapes_in_the_tress", "bonus_xp"]
+            "steps": ["shapes_in_the_tress", "bonus_xp"],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "$input_value",
+                "bonus": 2
+              }
+            ]
           }
         ]
       }
@@ -13719,14 +13757,11 @@
       "id": "eyes_in_the_dark",
       "type": "story",
       "title": "Eyes in the Dark",
-      "text": "Each night, I was watched. I didn’t just feel watched: I saw the eyes peering out from the inky darkness that surrounded our camp. They knew we were there. The yellow eyes watched me, alert, my weapons drawn, ready to defend the camp if the need arose. Our eyes met, and a darkness seized my heart.",
-      "effects": [
-        {
-          "type": "trauma",
-          "investigator": "input_value",
-          "mental": 1
-        }
-      ]
+      "text": "Each night, I was watched. I didn’t just feel watched: I saw the eyes peering out from the inky darkness that surrounded our camp. They knew we were there. The yellow eyes watched me, alert, my weapons drawn, ready to defend the camp if the need arose. Our eyes met, and a darkness seized my heart."
+    },
+    {
+      "id": "one_mental_trauma",
+      "text": "You suffer 1 mental trauma"
     },
     {
       "id": "shapes_in_the_tress",
@@ -13736,14 +13771,7 @@
     },
     {
       "id": "bonus_xp",
-      "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "input_value",
-          "bonus": 2
-        }
-      ]
+      "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
     },
     {
       "id": "use_medicine",
@@ -13800,6 +13828,7 @@
             "effects": [
               {
                 "type": "trauma",
+                "investigator": "$input_value",
                 "physical": 1
               }
             ]
@@ -13960,7 +13989,11 @@
             "numCondition": 1,
             "steps": ["more_cultists"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -14153,7 +14186,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14169,7 +14202,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14571,7 +14604,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "How many [[Tenochtitlán]] locations are in the victory display?",
+        "text": "[[Tenochtitlán]] locations are in the victory display:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -14592,18 +14625,6 @@
         "id": "paths_known",
         "options": [
           {
-            "numCondition": 0,
-            "steps": []
-          },
-          {
-            "numCondition": 1,
-            "steps": []
-          },
-          {
-            "numCondition": 2,
-            "steps": []
-          },
-          {
             "numCondition": 3,
             "steps": ["ichtaca_has_confidence"]
           },
@@ -14619,7 +14640,11 @@
             "numCondition": 6,
             "steps": ["ichtaca_has_confidence"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -14667,7 +14692,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia",
+        "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
             "type": "campaign_log",
@@ -14684,7 +14709,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengeance points in the victory display",
+        "text": "Vengeance points in the victory display:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -14699,7 +14724,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -14762,11 +14787,11 @@
         "choices": [
           {
             "flavor": "Cooperate and tell the creatures everything you know.",
-            "steps": [ "intro_2" ]
+            "steps": ["intro_2", "cooperated_with_yithians"]
           },
           {
             "flavor": "Refuse and resist captivity.",
-            "steps": [ "intro_3" ]
+            "steps": ["intro_3", "resisted_captivity"]
           }
         ]
       }
@@ -14774,7 +14799,10 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You cooperate with the creatures, hoping to earn your freedom. You are sick of captivity, and perhaps you will be able to find a way home if you are able to roam the city at will. The creatures seem pleased that you are answering their questions, though their mannerisms are still completely alien to you. Days turn to weeks, perhaps even longer. It is difficult to tell. Finally, one of the creatures informs you that you are free to roam the halls of the city, with several restrictions: You are not allowed to do harm to your new body, for it belongs to another of their race, and you are not allowed to leave the city. Your restraints are lifted, and the creature watches with keen interest as you get used to your conical body.",
+      "text": "You cooperate with the creatures, hoping to earn your freedom. You are sick of captivity, and perhaps you will be able to find a way home if you are able to roam the city at will. The creatures seem pleased that you are answering their questions, though their mannerisms are still completely alien to you. Days turn to weeks, perhaps even longer. It is difficult to tell. Finally, one of the creatures informs you that you are free to roam the halls of the city, with several restrictions: You are not allowed to do harm to your new body, for it belongs to another of their race, and you are not allowed to leave the city. Your restraints are lifted, and the creature watches with keen interest as you get used to your conical body."
+    },
+    {
+      "id": "cooperated_with_yithians",
       "effects": [
         {
           "type": "campaign_log",
@@ -14787,7 +14815,10 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "These creatures abducted you and even stole you from your own body. You refuse to give your captors even a single answer. You’d spit in their faces if you could—if you knew how to spit with such body, and if you knew which one of the creatures’ four distensible appendages was a face. Breaking free of your restrains is a hopeless endeavor, but you struggle to escape regardless. Your efforts do not go unnoticed, and one of the creatures is assigned to watch you. It seems more concerned with preventing you from harming your body than preventing you from escaping. After many days of captivity, you find a way to use this to your advantage. You struggle so hard against your restraints that they pierce into your leathery, cold flesh, drawing out a bit of viscous slime-blood. Your guard quickly apporoaches, clicking its claws together repeatedly. It undoes your restraints, and the moment it does, your claw appendages strike at what you believe to be the creature’s throat. It collapses to the floor, writhing in pain.",
+      "text": "These creatures abducted you and even stole you from your own body. You refuse to give your captors even a single answer. You’d spit in their faces if you could—if you knew how to spit with such body, and if you knew which one of the creatures’ four distensible appendages was a face. Breaking free of your restrains is a hopeless endeavor, but you struggle to escape regardless. Your efforts do not go unnoticed, and one of the creatures is assigned to watch you. It seems more concerned with preventing you from harming your body than preventing you from escaping. After many days of captivity, you find a way to use this to your advantage. You struggle so hard against your restraints that they pierce into your leathery, cold flesh, drawing out a bit of viscous slime-blood. Your guard quickly apporoaches, clicking its claws together repeatedly. It undoes your restraints, and the moment it does, your claw appendages strike at what you believe to be the creature’s throat. It collapses to the floor, writhing in pain."
+    },
+    {
+      "id": "resisted_captivity",
       "effects": [
         {
           "type": "campaign_log",
@@ -14943,7 +14974,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "How many of the tasks on act 2b were completed?",
+        "text": "Tasks on act 2b that were completed:",
         "effects": [
           {
             "type": "campaign_log",
@@ -14958,7 +14989,7 @@
       "id": "check_number_of_tasks",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_count",
         "section": "hidden",
         "id": "tasks_completed",
         "options": [
@@ -14978,12 +15009,16 @@
             "numCondition": 3,
             "steps": ["process_backfired_spectacularly"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
       "id": "process_was_perfected",
-      "text": "Each investigator earns 4 bonus experience as he or she gains insight into the secrets of the Earth.",
+      "text": "In your Campaign Log, record that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as he or she gains insight into the secrets of the Earth.",
       "effects": [
         {
           "type": "campaign_log",
@@ -15000,7 +15035,7 @@
     },
     {
       "id": "process_was_successful",
-      "text": "Each investigator earns 2 bonus experience as he or she gains insight into the secrets of the Earth.",
+      "text": "In your Campaign Log, record that <i>the process was successful</i>.Each investigator earns 2 bonus experience as he or she gains insight into the secrets of the Earth.",
       "effects": [
         {
           "type": "campaign_log",
@@ -15043,7 +15078,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -15287,8 +15322,8 @@
       "type": "branch",
       "text": "Check your supplies. If any investigator has torches, he or she reads <b>Torchlight</b>. Otherwise, read <b>The Abyss</b>.",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "any",
         "id": "torches",
         "options": [
           {
@@ -15342,13 +15377,19 @@
       "type": "branch",
       "text": "Check your supplies. If any investigator has a map, he or she reads <b>Reading Signs</b>.",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "any",
         "id": "map",
         "options": [
           {
             "boolCondition": true,
-            "steps": ["reading_signs", "extra_map_xp"]
+            "steps": ["reading_signs"],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "$input_value"
+              }
+            ]
           }
         ]
       }
@@ -15358,27 +15399,6 @@
       "type": "story",
       "title": "Reading Signs",
       "text": "As you traverse the caverns, something catches your attention: streams of cold, gentle water that drip down the walls of the cavern. Curious, you unfold the previous expedition’s map and sit by one of the lit braziers, mentally retracing your steps. If your calculations are correct, you have traveled much farther south than you could have possibly guessed. Could it be these caverns extend all the way to the coastline? Do the caverns never end?"
-    },
-    {
-      "id": "extra_map_xp",
-      "type": "branch",
-      "text": "Each investigator with a map earns 2 additional experience as he or she gains insight into the caverns that dwell beneath the surface of the Earth.",
-      "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
-        "id": "map",
-        "options": [
-          {
-            "boolCondition": true,
-            "effects": [
-              {
-                "type": "earn_xp",
-                "investigator": "input_value"
-              }
-            ]
-          }
-        ]
-      }
     },
     {
       "id": "time_passes",
@@ -15453,19 +15473,11 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below.",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "cooperated_with_yithians",
-          "text": "the investigators cooperated with the Yithians."
-        }
-      ]
+      "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below."
     },
     {
       "id": "ichtaca_set_against_forging_own_path",
-      "text": "Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "In your Campaign Log, record that <i>Ichtaca is set against you</i>.\nAdd 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -15592,10 +15604,9 @@
     {
       "id": "check_pocketknife",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has a pocketknife, that investigator reads <b>Intro 7</b>. Otherwise, read <b>Intro 8</b>.",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "any",
         "id": "pocketknife",
         "options": [
           {
@@ -15681,6 +15692,7 @@
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
+        "id": "$count",
         "options": [
           {
             "numCondition": 0,
@@ -15765,12 +15777,12 @@
           {
             "numCondition": 20,
             "steps": ["fury_18_to_20"]
-          },
-          {
-            "default": true,
-            "steps": ["fury_21"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": ["fury_21"]
+        }
       }
     },
     {
@@ -15886,7 +15898,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "What was the depth level when scenario ended?",
+        "text": "Depth level when the scenario ended:",
         "effects": [
           {
             "type": "campaign_log",
@@ -15901,7 +15913,7 @@
       "id": "check_final_depth",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
+        "type": "campaign_log_count",
         "section": "hidden",
         "id": "final_depth",
         "options": [
@@ -15921,7 +15933,11 @@
             "numCondition": 4,
             "steps": ["depth_4_fall"]
           }
-        ]
+        ],
+        "defaultOption": {
+          "default": true,
+          "steps": []
+        }
       }
     },
     {
@@ -16032,7 +16048,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage on Harbinger of Valusia",
+        "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
             "type": "campaign_log",
@@ -16049,7 +16065,7 @@
       "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
-        "text": "Vengeance points in the victory display",
+        "text": "Vengeance points in the victory display:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -16064,7 +16080,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -16079,7 +16095,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Current Depth Level",
+        "text": "Depth level when the scenario ended:",
         "effects": [
           {
             "type": "earn_xp",
@@ -16194,7 +16210,7 @@
               {
                 "type": "add_card",
                 "card": "04264",
-                "investigator": "input_value"
+                "investigator": "$input_value"
               }
             ]
           },
@@ -16205,12 +16221,12 @@
               {
                 "type": "add_card",
                 "card": "04264",
-                "investigator": "input_value"
+                "investigator": "$input_value"
               },
               {
                 "type": "add_card",
                 "card": "04244",
-                "investigator": "input_value"
+                "investigator": "$input_value"
               }
             ]
           }
@@ -16238,7 +16254,7 @@
               {
                 "type": "add_card",
                 "card": "04264",
-                "investigator": "input_value"
+                "investigator": "$input_value"
               }
             ]
           },
@@ -16249,12 +16265,12 @@
               {
                 "type": "add_card",
                 "card": "04264",
-                "investigator": "input_value"
+                "investigator": "$input_value"
               },
               {
                 "type": "add_card",
                 "card": "04244",
-                "investigator": "input_value"
+                "investigator": "$input_value"
               }
             ]
           }
@@ -16337,7 +16353,7 @@
     },
     {
       "id": "alejandro_remembers_everything",
-      "text": "Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+      "text": "In your Campaign Log, record that <i>Alejandro remembers everything</i>. Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -16402,10 +16418,9 @@
     {
       "id": "check_chalk",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has chalk, he or she reads <b>The Way is Open</b>. Otherwise, read <b>The Way is Shut</b>.",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "any",
         "id": "chalk",
         "options": [
           {
@@ -16495,7 +16510,14 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["poison_spreads", "physical_trauma"]
+            "steps": ["poison_spreads", "one_physical_trauma"],
+            "effects": [
+              {
+                "type": "trauma",
+                "investigator": "$input_value",
+                "physical": 1
+              }
+            ]
           }
         ]
       }
@@ -16507,25 +16529,8 @@
       "text": "The poison has spread to nearly every part of your body. Your skin pales, and you are covered in cold feverish sweat. Simply rising to your feet requires a tremendous effort, and you get no rest at night despite your exhaustion. It won’t be long now before the poison claims your life."
     },
     {
-      "id": "physical_trauma",
-      "text": "You suffer 1 physical trauma",
-      "type": "branch",
-      "condition": {
-        "type": "has_card",
-        "investigator": "any",
-        "card": "04102",
-        "options": [
-          {
-            "boolCondition": true,
-            "effects": [
-              {
-                "type": "trauma",
-                "physical": 1
-              }
-            ]
-          }
-        ]
-      }
+      "id": "one_physical_trauma",
+      "text": "You suffer 1 physical trauma"
     },
     {
       "id": "stop_and_rest",
@@ -16535,15 +16540,21 @@
     {
       "id": "check_blanket",
       "type": "branch",
-      "text": "Check your supplies. Each investigator with a blanket reads <b>Restful Sleep</b>. The rest read <b>Tossing and Turning</b>.",
       "condition": {
-        "type": "campaign_log",
-        "section": "supplies",
+        "type": "check_supplies",
+        "investigator": "all",
         "id": "blanket",
         "options": [
           {
             "boolCondition": false,
-            "steps": ["tossing_and_turning"]
+            "steps": ["tossing_and_turning"],
+            "effects": [
+              {
+                "type": "trauma",
+                "investigator": "$input_value",
+                "mental_or_physical": 1
+              }
+            ]
           },
           {
             "boolCondition": true,
@@ -16556,13 +16567,7 @@
       "id": "tossing_and_turning",
       "type": "story",
       "title": "Tossing and Turning",
-      "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night.",
-      "effects": [
-        {
-          "type": "trauma",
-          "mental_or_physical": 1
-        }
-      ]
+      "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
     },
     {
       "id": "restless_sleep",
@@ -17107,7 +17112,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17122,7 +17127,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Completed Act 1 Cards",
+        "text": "Completed act 1 Cards:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17220,13 +17225,13 @@
             "effects": [
               {
                 "type": "earn_xp",
-                "investigator": "input_value",
+                "investigator": "$input_value",
                 "bonus": -3
               },
               {
                 "type": "remove_card",
                 "card": "04102",
-                "investigator": "input_value"
+                "investigator": "$input_value"
               }
             ]
           }
@@ -17247,11 +17252,12 @@
             "effects": [
               {
                 "type": "earn_xp",
-                "investigator": "input_value",
+                "investigator": "$input_value",
                 "bonus": -5
               },
               {
                 "type": "trauma",
+                "investigator": "$input_value",
                 "physical": -1
               }
             ]
@@ -17261,11 +17267,12 @@
             "effects": [
               {
                 "type": "earn_xp",
-                "investigator": "input_value",
+                "investigator": "$input_value",
                 "bonus": -5
               },
               {
                 "type": "trauma",
+                "investigator": "$input_value",
                 "physical": -1
               }
             ]
@@ -17531,7 +17538,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17668,19 +17675,14 @@
     },
     {
       "id": "alejandro_followed_to_ruins",
+      "text": "In your Campaign Log, record that <i>Alejandro followed the investigators into the ruins</i>. Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_followed_to_ruins",
           "text": "Alejandro followed the investigators into the ruins."
-        }
-      ]
-    },
-    {
-      "id": "earn_alejandro",
-      "text": "Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
-      "effects": [
+        },
         {
           "type": "add_card",
           "investigator": "choice",
@@ -17701,7 +17703,7 @@
     },
     {
       "id": "alejandro_remained_at_camp",
-      "text": "Do not add Alejandro Vela to any investigator’s deck.",
+      "text": "In your Campaign Log, record that <i>Alejandro chose to remain at camp</i>. Do not add Alejandro Vela to any investigator’s deck.",
       "effects": [
         {
           "type": "campaign_log",
@@ -17731,11 +17733,11 @@
         "choices": [
           {
             "text": "It was Act 1 or 2 when the scenario ended",
-            "steps": ["ichtaca_observed_progress", "alejandro_followed_to_ruins", "earn_alejandro"]
+            "steps": ["ichtaca_observed_progress", "alejandro_followed_to_ruins"]
           },
           {
             "text": "“You fought with Ichtaca”",
-            "steps": ["ichtaca_is_wary", "alejandro_followed_to_ruins", "earn_alejandro"]
+            "steps": ["ichtaca_is_wary", "alejandro_followed_to_ruins"]
           },
           {
             "text": "“Ichtaca is leading the way”",
@@ -17750,7 +17752,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Vengeance in Victory Display",
+        "text": "Vengeance points in the victory display:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -17765,7 +17767,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Victory Display",
+        "text": "Victory display:",
         "effects": [
           {
             "type": "earn_xp",
@@ -17792,7 +17794,7 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "<fancy>Thursday, July 2nd, 1925</fancy>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
-      "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "earn_alejandro", "ichtaca_is_wary", "record_vengeance", "earn_xp"]
+      "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp"]
     }
   ]
 }

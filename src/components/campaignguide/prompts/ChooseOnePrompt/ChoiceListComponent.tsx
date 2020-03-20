@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { flatMap } from 'lodash';
 
 import ChoiceComponent from './ChoiceComponent';
@@ -32,23 +33,33 @@ export default class ChoiceListPrompt extends React.Component<Props> {
       buttonColor,
       noBullet,
     } = this.props;
-    return flatMap(choices, (choice, idx) => {
-      if (!editable && idx !== selectedIndex) {
-        return null;
-      }
-      return (
-        <ChoiceComponent
-          key={idx}
-          index={idx}
-          onSelect={onSelect}
-          choice={choice}
-          selected={selectedIndex === idx}
-          editable={editable}
-          tintColor={ChoiceListPrompt.getColor(idx, tintColor)}
-          buttonColor={ChoiceListPrompt.getColor(idx, buttonColor)}
-          noBullet={noBullet}
-        />
-      );
-    });
+    return (
+      <View style={styles.list}>
+        { flatMap(choices, (choice, idx) => {
+          if (!editable && idx !== selectedIndex) {
+            return null;
+          }
+          return (
+            <ChoiceComponent
+              key={idx}
+              index={idx}
+              onSelect={onSelect}
+              choice={choice}
+              selected={selectedIndex === idx}
+              editable={editable}
+              tintColor={ChoiceListPrompt.getColor(idx, tintColor)}
+              buttonColor={ChoiceListPrompt.getColor(idx, buttonColor)}
+              noBullet={noBullet}
+            />
+          );
+        }) }
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  list: {
+    marginBottom: 8,
+  },
+});

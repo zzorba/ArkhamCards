@@ -24,7 +24,7 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
       {
         type: 'scenario_data',
         setting: 'investigator_status',
-        investigator: 'input_value',
+        investigator: '$input_value',
         investigator_status: 'alive',
       }
     ],
@@ -35,7 +35,7 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
       {
         type: 'scenario_data',
         setting: 'investigator_status',
-        investigator: 'input_value',
+        investigator: '$input_value',
         investigator_status: 'resigned',
       }
     ],
@@ -46,12 +46,12 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
       {
         type: 'scenario_data',
         setting: 'investigator_status',
-        investigator: 'input_value',
+        investigator: '$input_value',
         investigator_status: 'physical',
       },
       {
         type: 'trauma',
-        investigator: 'input_value',
+        investigator: '$input_value',
         physical: 1,
       }
     ],
@@ -62,12 +62,12 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
       {
         type: 'scenario_data',
         setting: 'investigator_status',
-        investigator: 'input_value',
+        investigator: '$input_value',
         investigator_status: 'mental',
       },
       {
         type: 'trauma',
-        investigator: 'input_value',
+        investigator: '$input_value',
         mental: 1,
       }
     ],
@@ -78,7 +78,7 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
       {
         type: 'scenario_data',
         setting: 'investigator_status',
-        investigator: 'input_value',
+        investigator: '$input_value',
         investigator_status: 'eliminated',
       }
     ],
@@ -109,6 +109,7 @@ class ResolutionView extends React.Component<Props> {
                 id={INVESTIGATOR_STATUS_ID}
                 text={t`Investigator status at end of scenario:`}
                 choices={INVESTIGATOR_STATUS_CHOICES}
+                bulletType="none"
               />
               { scenarioState.hasInvestigatorChoice(INVESTIGATOR_STATUS_ID) && (
                 this.renderResolution(resolution)

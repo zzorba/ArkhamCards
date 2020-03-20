@@ -1,11 +1,11 @@
 import React from 'react';
-import { flatMap } from 'lodash';
+import { map } from 'lodash';
 
 import ScenarioStepComponent from './ScenarioStepComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
+import { Step } from 'data/scenario/types';
 
 interface Props {
-  steps: string[];
+  steps: Step[];
 }
 
 export default class StepsComponent extends React.Component<Props> {
@@ -13,30 +13,11 @@ export default class StepsComponent extends React.Component<Props> {
     const {
       steps,
     } = this.props;
-    let reachedBranch = false;
-    return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => {
-          return flatMap(steps, stepId => {
-            const step = scenarioGuide.step(stepId);
-            if (!step) {
-              return null;
-            }
-            if (reachedBranch) {
-              return null;
-            }
-            if (step.type === 'input' || step.type === 'branch') {
-              reachedBranch = !scenarioState.hasStepInput(step.id);
-            }
-            return (
-              <ScenarioStepComponent
-                key={step.id}
-                step={step}
-              />
-            );
-          });
-        } }
-      </ScenarioGuideContext.Consumer>
-    );
+    return map(steps, step => (
+      <ScenarioStepComponent
+        key={step.id}
+        step={step}
+      />
+    ));
   }
 }

@@ -19,15 +19,15 @@ interface Props {
 
 export default class ResolutionComponent extends React.Component<Props> {
   renderSteps() {
-    const { resolution } = this.props;
-    if (resolution.steps) {
-      return (
-        <StepsComponent steps={resolution.steps} />
-      );
-    }
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ scenarioGuide }: ScenarioGuideContextType) => {
+        { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => {
+          const { resolution } = this.props;
+          if (resolution.steps) {
+            return (
+              <StepsComponent steps={scenarioGuide.expandSteps(resolution.steps, scenarioState, [])} />
+            );
+          }
           if (resolution.resolution) {
             const nextResolution = scenarioGuide.resolution(resolution.resolution);
             if (nextResolution) {

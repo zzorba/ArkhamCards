@@ -14,6 +14,7 @@ import { Effect } from 'data/scenario/types';
 interface Props {
   id: string;
   title: string;
+  defaultLabel?: string;
   required?: boolean;
   renderResults?: (investigator: InvestigatorDeck) => React.ReactNode;
 }
@@ -57,7 +58,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   }
 
   render() {
-    const { title, renderResults } = this.props;
+    const { title, renderResults, defaultLabel } = this.props;
     const id = this.id();
     return (
       <ScenarioGuideContext.Consumer>
@@ -70,6 +71,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
             <>
               <PickerComponent
                 title={title}
+                defaultLabel={defaultLabel}
                 choices={
                   map(investigatorDecks, ({ investigator }) => {
                     return {

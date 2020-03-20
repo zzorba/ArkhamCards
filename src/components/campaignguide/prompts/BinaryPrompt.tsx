@@ -7,7 +7,6 @@ import { t } from 'ttag';
 
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
-import StepsComponent from '../StepsComponent';
 import ResolutionComponent from '../ResolutionComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -78,11 +77,7 @@ export default class BinaryPrompt extends React.Component<Props> {
   ) {
     const { id } = this.props;
     if (choice.steps) {
-      return stepsOnly ? (
-        <StepsComponent
-          steps={choice.steps}
-        />
-      ) : null;
+      return null;
     }
     if (choice.effects) {
       return stepsOnly ? null : (

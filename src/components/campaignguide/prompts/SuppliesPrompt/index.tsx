@@ -109,7 +109,7 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
                   <View key={idx}>
                     <InvestigatorNameRow
                       investigator={investigator}
-                      detail={t`${spent} of ${total}`}
+                      detail={hasDecision ? undefined : t`${spent} of ${total}`}
                     />
                     { map(input.supplies, (supply, idx2) => {
                       const count = counts[supply.id] || 0;

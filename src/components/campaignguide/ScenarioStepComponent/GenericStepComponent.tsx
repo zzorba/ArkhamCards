@@ -26,7 +26,11 @@ export default class GenericStepComponent extends React.Component<Props> {
           <CardTextComponent text={step.text} />
         ) }
         <BulletsComponent bullets={step.bullets} />
-        <EffectsComponent id={step.id} effects={step.effects} />
+        <EffectsComponent
+          id={step.id}
+          effects={step.effects}
+          skipCampaignLog={!!step.text}
+        />
       </SetupStepWrapper>
     );
   }

@@ -14,6 +14,7 @@ import { BulletType, EffectsChoice } from 'data/scenario/types';
 interface Props {
   id: string;
   bulletType?: BulletType;
+  title?: string;
   text?: string;
   choices: EffectsChoice[];
   optional?: boolean;

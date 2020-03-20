@@ -361,6 +361,31 @@
     "campaignId": "tcu",
     "sections": [
       {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "taken_by_the_watcher",
+            "text": "#name# was taken by the Watcher."
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "#name# was claimed by specters."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "alive",
+            "text": "#name# is alive."
+          }
+        ]
+      },
+      {
         "section": "05046",
         "entries": [
           {
@@ -582,31 +607,6 @@
         ]
       },
       {
-        "section": "inputValue",
-        "entries": [
-          {
-            "id": "taken_by_the_watcher",
-            "text": "#name# was taken by the Watcher."
-          },
-          {
-            "id": "claimed_by_specters",
-            "text": "#name# was claimed by specters."
-          },
-          {
-            "id": "disappeared_into_the_mist",
-            "text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "alive",
-            "text": "#name# is alive."
-          }
-        ]
-      },
-      {
         "section": "mementos",
         "entries": [
           {
@@ -762,10 +762,6 @@
           {
             "id": "braziers_remain_unlit",
             "text": "the braziers remain unlit."
-          },
-          {
-            "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
           },
           {
             "id": "ichtaca_set_against",

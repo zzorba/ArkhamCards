@@ -37,7 +37,10 @@ export default class EffectsComponent extends React.Component<Props> {
     );
   }
 
-  renderCampaignLogEffect(campaignGuide: CampaignGuide, effect: CampaignLogEffect) {
+  renderCampaignLogEffect(
+    campaignGuide: CampaignGuide,
+    effect: CampaignLogEffect
+  ): React.ReactNode {
     if (this.props.skipCampaignLog) {
       return null;
     }
@@ -50,25 +53,38 @@ export default class EffectsComponent extends React.Component<Props> {
           </Text>
         );
       }
-      if (logEntry.type === 'text') {
-        const text = (effect.section === 'campaign_notes') ?
-          t`In your Campaign Log, record that <i>${logEntry.text}</i>` :
-          t`In your Campaign Log, under "${logEntry.section}", record that <i>${logEntry.text}</i>`;
-        return (
-          <CardTextComponent text={text} />
-        );
-      }
-      return (
-        <CardWrapper
-          code={logEntry.code}
-          render={(card: Card) => (
-            <CardTextComponent
-              text={t`In your Campaign Log, under "${logEntry.section}", record ${card.name}. `}
+      switch (logEntry.type) {
+        case 'text': {
+          const text = (effect.section === 'campaign_notes') ?
+            t`In your Campaign Log, record that <i>${logEntry.text}</i>` :
+            t`In your Campaign Log, under "${logEntry.section}", record that <i>${logEntry.text}</i>`;
+          return (
+            <CardTextComponent text={text} />
+          );
+        }
+        case 'card': {
+          return (
+            <CardWrapper
+              code={logEntry.code}
+              render={(card: Card) => (
+                <CardTextComponent
+                  text={t`In your Campaign Log, under "${logEntry.section}", record ${card.name}. `}
+                />
+              )}
             />
-          )}
-        />
-      );
+          );
+        }
+        case 'section_count': {
+          // Not possible as a record
+          return null;
+        }
+        case 'investigator': {
+          // Not possible as a record?
+          return null;
+        }
+      }
     }
+
     // No id, just a section / count
     const logSection = campaignGuide.logSection(effect.section);
     if (!logSection) {
@@ -81,7 +97,11 @@ export default class EffectsComponent extends React.Component<Props> {
     return <Text>Campaign Log Section: { logSection.section }</Text>;
   }
 
-  renderEffect(campaignGuide: CampaignGuide, effect: Effect) {
+  renderEffect(
+    campaignGuide: CampaignGuide,
+    effect: Effect
+  ) {
+    const { effects } = this.props;
     switch (effect.type) {
       case 'campaign_log': {
         return this.renderCampaignLogEffect(campaignGuide, effect);
@@ -96,6 +116,7 @@ export default class EffectsComponent extends React.Component<Props> {
             <ChooseInvestigatorPrompt
               id={this.props.id}
               title={t`Investigator`}
+              defaultLabel={t`None`}
             />
           )
         }

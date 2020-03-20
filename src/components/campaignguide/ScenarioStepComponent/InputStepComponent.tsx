@@ -39,15 +39,13 @@ export default class InputStepComponent extends React.Component<Props> {
         );
       case 'counter':
         return (
-          <>
-            <NumberPrompt
-              id={step.id}
-              bulletType={step.bullet_type}
-              prompt={step.input.text}
-              effects={step.input.effects}
-              text={step.text}
-            />
-          </>
+          <NumberPrompt
+            id={step.id}
+            bulletType={step.bullet_type}
+            prompt={step.input.text}
+            effects={step.input.effects}
+            text={step.text}
+          />
         );
       case 'choose_many':
         return <Text>Choose Many</Text>;
