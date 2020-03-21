@@ -478,6 +478,10 @@
             "text": "the investigators signed the Black Book of Azathoth."
           },
           {
+            "id": "pieces_of_evidence",
+            "text": "#X# pieces of evidence were left behind"
+          },
+          {
             "id": "guardian_of_the_trap_emerged",
             "text": "the guardian of the trap emerged."
           },
@@ -524,10 +528,6 @@
           {
             "id": "doom_draws_ever_closer",
             "text": "doom draws ever closer."
-          },
-          {
-            "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind"
           },
           {
             "id": "kept_mementos_hidden",

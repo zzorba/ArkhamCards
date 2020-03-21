@@ -3,13 +3,9 @@ import { Button } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import PickerComponent from '../PickerComponent';
-import SetupStepWrapper from '../../SetupStepWrapper';
-import { InvestigatorDeck } from '../../types';
-import { FACTION_COLORS, FACTION_LIGHT_GRADIENTS } from 'constants';
-import CardTextComponent from 'components/card/CardTextComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import { Effect } from 'data/scenario/types';
+import PickerComponent from './PickerComponent';
+import { InvestigatorDeck } from '../types';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 
 interface Props {
   id: string;

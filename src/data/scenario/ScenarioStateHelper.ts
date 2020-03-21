@@ -1,3 +1,5 @@
+import { keys } from 'lodash';
+
 import { ListChoices, ScenarioState, SupplyCounts } from 'actions/types';
 
 export interface ScenarioStateActions {
@@ -10,19 +12,32 @@ export interface ScenarioStateActions {
 }
 
 export default class ScenarioStateHelper {
+  scenarioId: string;
   state: ScenarioState;
   actions: ScenarioStateActions;
 
   constructor(
+    scenarioId: string,
     state: ScenarioState,
     actions: ScenarioStateActions
   ) {
+    this.scenarioId = scenarioId;
     this.state = state;
     this.actions = actions;
   }
 
   resetScenario() {
     this.actions.resetScenario();
+  }
+
+  leadInvestigatorChoice(): number {
+    return this.choice(`${this.scenarioId}_investigator`);
+  }
+
+  playerCount(): number {
+    return (
+      keys(this.choiceList(`${this.scenarioId}_players`) || {}).length
+    );
   }
 
   hasStepInput(id: string) {
@@ -53,11 +68,11 @@ export default class ScenarioStateHelper {
   }
 
   hasChoiceList(id: string): boolean {
-    return this.state.ListChoices[id] !== undefined;
+    return this.state.listChoices[id] !== undefined;
   }
 
-  investigatorChoice(id: string): ListChoices {
-    return this.state.ListChoices[id];
+  choiceList(id: string): ListChoices {
+    return this.state.listChoices[id];
   }
 
   setSupplies(id: string, value: SupplyCounts) {

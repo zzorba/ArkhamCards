@@ -178,7 +178,6 @@ export default class ScenarioGuide {
         }
       }
       case 'scenario_data': {
-        // TODO: handle scenario_data
         switch (step.condition.scenario_data) {
            case 'player_count':
            case 'investigator':

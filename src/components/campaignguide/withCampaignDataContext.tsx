@@ -224,14 +224,18 @@ export default function withCampaignDataContext<Props>(
         campaignGuide,
         scenarioGuide,
         investigatorDecks,
-        scenarioState: new ScenarioStateHelper(scenarioState, {
-          setCount: this._setScenarioCount,
-          setDecision: this._setScenarioDecision,
-          setSupplies: this._setSupplies,
-          setChoiceList: this._setChoiceList,
-          setChoice: this._setChoice,
-          resetScenario: this._resetScenario,
-        }),
+        scenarioState: new ScenarioStateHelper(
+          scenarioGuide.scenario.id,
+          scenarioState,
+          {
+            setCount: this._setScenarioCount,
+            setDecision: this._setScenarioDecision,
+            setSupplies: this._setSupplies,
+            setChoiceList: this._setChoiceList,
+            setChoice: this._setChoice,
+            resetScenario: this._resetScenario,
+          }
+        ),
       };
       return (
         <ScenarioGuideContext.Provider value={context}>

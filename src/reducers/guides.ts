@@ -66,7 +66,7 @@ export default function(
         return {
           ...scenario,
           ListChoices: {
-            ...scenario.ListChoices,
+            ...scenario.listChoices,
             [action.stepId]: action.choices,
           },
         };

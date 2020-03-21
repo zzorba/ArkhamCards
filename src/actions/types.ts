@@ -703,7 +703,7 @@ export interface ScenarioState {
   supplyCounts: {
     [key: string]: SupplyCounts;
   }
-  ListChoices: {
+  listChoices: {
     [key: string]: ListChoices;
   }
 }
@@ -713,7 +713,7 @@ export const DEFAULT_SCENARIO_STATE: ScenarioState = {
   choices: {},
   counts: {},
   supplyCounts: {},
-  ListChoices: {},
+  listChoices: {},
 };
 
 
