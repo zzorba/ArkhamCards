@@ -216,6 +216,15 @@
             "text": "it is past midnight."
           }
         ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "past_midnight",
+            "text": "it is past midnight."
+          }
+        ]
       }
     ]
   },

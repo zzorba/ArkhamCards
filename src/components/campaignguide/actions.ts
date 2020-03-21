@@ -3,16 +3,16 @@ import {
   GUIDE_SET_COUNT,
   GUIDE_SET_SUPPLIES,
   GUIDE_SET_CHOICE,
-  GUIDE_SET_INVESTIGATOR_CHOICE,
+  GUIDE_SET_CHOICE_LIST,
   GUIDE_RESET_SCENARIO,
   GuideSetDecisionAction,
   GuideSetCountAction,
   GuideSetSuppliesAction,
   GuideSetChoiceAction,
-  GuideSetInvestigatorChoiceAction,
+  GuideSetChoiceListAction,
   GuideResetScenarioAction,
   SupplyCounts,
-  InvestigatorChoices,
+  ListChoices,
 } from 'actions/types';
 
 export function resetScenario(
@@ -71,14 +71,14 @@ export function setScenarioSupplies(
   };
 }
 
-export function setScenarioInvestigatorChoice(
+export function setScenarioChoiceList(
   campaignId: number,
   scenarioId: string,
   stepId: string,
-  choices: InvestigatorChoices
-): GuideSetInvestigatorChoiceAction {
+  choices: ListChoices
+): GuideSetChoiceListAction {
   return {
-    type: GUIDE_SET_INVESTIGATOR_CHOICE,
+    type: GUIDE_SET_CHOICE_LIST,
     campaignId,
     scenarioId,
     stepId,

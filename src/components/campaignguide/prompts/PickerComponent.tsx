@@ -4,11 +4,11 @@ import { SettingsPicker } from 'react-native-settings-components';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { EffectsChoice } from 'data/scenario/types';
+import { EffectsChoice, SimpleEffectsChoice } from 'data/scenario/types';
 import { COLORS } from 'styles/colors';
 
 interface Props {
-  choices: EffectsChoice[];
+  choices: (EffectsChoice | SimpleEffectsChoice)[];
   selectedIndex?: number;
   onChoiceChange: (index: number) => void;
   title: string;

@@ -379,7 +379,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
       );
     }
     return (
-      <View style={styles.cardWrapper}>
+      <View style={styles.SingleCardWrapper}>
         <CardDetailComponent
           card={card}
           width={width}
@@ -402,7 +402,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     } = this.calculateCardDimensions();
     if (nextCard) {
       return (
-        <View style={styles.cardWrapper}>
+        <View style={styles.SingleCardWrapper}>
           <TouchableWithoutFeedback onPress={this._flipCard}>
             <FlipCard
               style={[styles.flipCard, {
@@ -490,7 +490,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  cardWrapper: {
+  SingleCardWrapper: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',

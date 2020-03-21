@@ -81,6 +81,7 @@ export type Input =
   | ChooseManyInput
   | CounterInput
   | InvestigatorCounterInput;
+export type CardQuery = CardSearchQuery | CardCodeList;
 export type Choice = StepsChoice | EffectsChoice | ResolutionChoice;
 export type BulletType = "none" | "small";
 export type AllCampaigns = FullCampaign[];
@@ -315,15 +316,19 @@ export interface CardChoiceInput {
   query: CardQuery[];
   choices: SimpleEffectsChoice[];
 }
-export interface CardQuery {
+export interface CardSearchQuery {
+  source: "scenario" | "deck";
   trait?: string;
   unique?: boolean;
   vengeance?: boolean;
-  code?: string[];
+  code?: null;
+}
+export interface CardCodeList {
+  code: string[];
 }
 export interface SimpleEffectsChoice {
   flavor?: string;
-  text?: string;
+  text: string;
   description?: string;
   effects: (CampaignLogEffect | RemoveCardEffect)[];
   steps?: null;
@@ -344,7 +349,7 @@ export interface Supply {
 export interface UseSuppliesInput {
   type: "use_supplies";
   supply: string;
-  investigator: InvestigatorSelector;
+  investigator: "all" | "any" | "choice";
   choices: Option[];
 }
 export interface InvestigatorChoiceInput {

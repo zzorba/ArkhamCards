@@ -1,7 +1,7 @@
 import {
   GUIDE_SET_COUNT,
   GUIDE_SET_DECISION,
-  GUIDE_SET_INVESTIGATOR_CHOICE,
+  GUIDE_SET_CHOICE_LIST,
   GUIDE_SET_CHOICE,
   GUIDE_CLEAR_COUNT,
   GUIDE_CLEAR_DECISION,
@@ -62,11 +62,11 @@ export default function(
   }
   return updateScenario(state, action.campaignId, action.scenarioId,
     (scenario: ScenarioState) => {
-      if (action.type === GUIDE_SET_INVESTIGATOR_CHOICE) {
+      if (action.type === GUIDE_SET_CHOICE_LIST) {
         return {
           ...scenario,
-          investigatorChoices: {
-            ...scenario.investigatorChoices,
+          ListChoices: {
+            ...scenario.ListChoices,
             [action.stepId]: action.choices,
           },
         };

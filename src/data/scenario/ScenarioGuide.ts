@@ -1,4 +1,4 @@
-import { find, tail } from 'lodash';
+import { find, flatMap, tail } from 'lodash';
 
 import { BranchStep, Effect, InputStep, Step, Scenario, Resolution } from './types';
 import ScenarioStateHelper from './ScenarioStateHelper';
@@ -22,6 +22,18 @@ export default class ScenarioGuide {
 
   resolution(id: string): Resolution | undefined {
     return find(this.scenario.resolutions || [], resolution => resolution.id === id);
+  }
+
+  encounterSets(scenarioState: ScenarioStateHelper): string[] {
+    return flatMap(
+      this.setupSteps(scenarioState),
+      step => {
+        if (step.type === 'encounter_sets') {
+          return step.encounter_sets;
+        }
+        return []
+      }
+    );
   }
 
   setupSteps(scenarioState: ScenarioStateHelper): Step[] {
@@ -158,7 +170,7 @@ export default class ScenarioGuide {
       case 'campaign_data': {
         // TODO: handle campaign_data
         switch (step.condition.campaign_data) {
-          case 'difficulty':            
+          case 'difficulty':
           case 'scenario_completed':
           case 'chaos_bag':
           case 'investigator':
@@ -170,7 +182,7 @@ export default class ScenarioGuide {
         switch (step.condition.scenario_data) {
            case 'player_count':
            case 'investigator':
-            return [];
+            return [...result, step];
         }
       }
       case 'has_card': {
@@ -222,7 +234,7 @@ export default class ScenarioGuide {
         }
         return [...result, step];
       case 'investigator_choice':
-        if (scenarioState.hasInvestigatorChoice(step.id)) {
+        if (scenarioState.hasChoiceList(step.id)) {
           // TODO: need to handle random basic weakness effects for the investigator.
           return this.expandSteps(
             remainingStepIds,
@@ -242,18 +254,19 @@ export default class ScenarioGuide {
         }
         return [...result, step];
       case 'investigator_counter':
-        // TODO: add investigator_counter
-        return [...result, step];
       case 'card_choice':
-        // Only simple effects here, nothing with branches
-        return this.expandSteps(
-          remainingStepIds,
-          scenarioState,
-          [...result, step]
-        );
+        if (scenarioState.hasChoiceList(step.id)) {
+          // Only simple effects here, nothing with branches
+          return this.expandSteps(
+            remainingStepIds,
+            scenarioState,
+            [...result, step]
+          );
+        }
+        return [...result, step];
       case 'choose_many':
         // TODO: used by inner-circle, needs to iterate until # of choices = 3
-        return [];
+        return [...result, step];
       case 'choose_one': {
         if (step.input.choices.length === 1) {
           const choice = step.input.choices[0];
@@ -283,7 +296,7 @@ export default class ScenarioGuide {
       }
       case 'use_supplies':
         // TODO: guide
-        return [];
+        return [...result, step];
     }
   }
 
@@ -320,10 +333,10 @@ export default class ScenarioGuide {
     effects: Effect[]
   ): Step[] {
     if (effects && effects.length) {
-      const hasInvestigatorChoice = !!find(effects, effect => (
+      const hasChoiceList = !!find(effects, effect => (
         effect.type === 'add_card' && effect.investigator === 'choice'
       ));
-      if (hasInvestigatorChoice && !scenarioState.hasChoice(`${id}_investigator`)) {
+      if (hasChoiceList && !scenarioState.hasChoice(`${id}_investigator`)) {
         return result;
       }
     }

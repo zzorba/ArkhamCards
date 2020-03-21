@@ -5,7 +5,7 @@ import {
 import { every, find } from 'lodash';
 import { t } from 'ttag';
 
-import CardWrapper from '../CardWrapper';
+import SingleCardWrapper from '../SingleCardWrapper';
 import BinaryPrompt from '../prompts/BinaryPrompt';
 import NumberPrompt from '../prompts/NumberPrompt';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -99,7 +99,7 @@ export default class BranchStepComponent extends React.Component<Props> {
       condition.options[0].condition
     ) {
       return (
-        <CardWrapper
+        <SingleCardWrapper
           code={condition.options[0].condition}
           render={(card: Card) => (
             <BinaryPrompt
@@ -145,7 +145,7 @@ export default class BranchStepComponent extends React.Component<Props> {
           }
           case 'card': {
             return (
-              <CardWrapper
+              <SingleCardWrapper
                 code={logEntry.code}
                 render={(card: Card) => {
                   const prompt = step.text ||
@@ -194,7 +194,7 @@ export default class BranchStepComponent extends React.Component<Props> {
   hasCardCondition(condition: CardCondition) {
     const { step } = this.props;
     return (
-      <CardWrapper
+      <SingleCardWrapper
         code={condition.card}
         render={(card: Card) => (
           <BinaryPrompt

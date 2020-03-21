@@ -3,10 +3,10 @@ import { StyleSheet, View } from 'react-native';
 import { flatMap } from 'lodash';
 
 import ChoiceComponent from './ChoiceComponent';
-import { Choice } from 'data/scenario/types';
+import { Choice, SimpleEffectsChoice } from 'data/scenario/types';
 
 interface Props {
-  choices: Choice[];
+  choices: (Choice | SimpleEffectsChoice)[];
   selectedIndex?: number;
   editable: boolean;
   onSelect: (index: number) => void;

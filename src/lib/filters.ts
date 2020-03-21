@@ -149,7 +149,7 @@ export const defaultFilterState: FilterState = {
   enemyEvade: [0, 6],
 };
 
-function safeValue(value: any) {
+export function safeValue(value: any) {
   return value;
 }
 
@@ -335,10 +335,10 @@ function applyMiscFilter(filters: FilterState, query: string[]) {
     vengeance,
   } = filters;
   if (victory) {
-    query.push('victory >= 0 or linked_card.victory >=0');
+    query.push('victory >= 0 or linked_card.victory >= 0');
   }
   if (vengeance) {
-    query.push('vengeance >= 0 or linked_card.vengeance >=0');
+    query.push('vengeance >= 0 or linked_card.vengeance >= 0');
   }
 }
 

@@ -1,10 +1,10 @@
-import { InvestigatorChoices, ScenarioState, SupplyCounts } from 'actions/types';
+import { ListChoices, ScenarioState, SupplyCounts } from 'actions/types';
 
 export interface ScenarioStateActions {
   setDecision: (id: string, value: boolean) => void;
   setCount: (id: string, value: number) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts) => void;
-  setInvestigatorChoice: (id: string, choices: InvestigatorChoices) => void;
+  setChoiceList: (id: string, choices: ListChoices) => void;
   setChoice: (id: string, choice: number) => void;
   resetScenario: () => void;
 }
@@ -29,7 +29,7 @@ export default class ScenarioStateHelper {
     return (
       this.hasChoice(id) ||
       this.hasDecision(id) ||
-      this.hasInvestigatorChoice(id) ||
+      this.hasChoiceList(id) ||
       this.hasSupplies(id) ||
       this.hasDecision(id) ||
       this.hasCount(id)
@@ -48,16 +48,16 @@ export default class ScenarioStateHelper {
     return this.state.choices[id];
   }
 
-  setInvestigatorChoice(id: string, value: InvestigatorChoices) {
-    this.actions.setInvestigatorChoice(id, value);
+  setChoiceList(id: string, value: ListChoices) {
+    this.actions.setChoiceList(id, value);
   }
 
-  hasInvestigatorChoice(id: string): boolean {
-    return this.state.investigatorChoices[id] !== undefined;
+  hasChoiceList(id: string): boolean {
+    return this.state.ListChoices[id] !== undefined;
   }
 
-  investigatorChoice(id: string): InvestigatorChoices {
-    return this.state.investigatorChoices[id];
+  investigatorChoice(id: string): ListChoices {
+    return this.state.ListChoices[id];
   }
 
   setSupplies(id: string, value: SupplyCounts) {

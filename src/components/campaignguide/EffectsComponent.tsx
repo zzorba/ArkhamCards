@@ -6,7 +6,7 @@ import {
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import CardWrapper from './CardWrapper';
+import SingleCardWrapper from './SingleCardWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
 import { isSpecialToken } from 'constants';
@@ -64,7 +64,7 @@ export default class EffectsComponent extends React.Component<Props> {
         }
         case 'card': {
           return (
-            <CardWrapper
+            <SingleCardWrapper
               code={logEntry.code}
               render={(card: Card) => (
                 <CardTextComponent

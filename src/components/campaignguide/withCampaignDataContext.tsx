@@ -6,10 +6,10 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
-import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioChoice, setScenarioSupplies, setScenarioInvestigatorChoice } from './actions';
+import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioChoice, setScenarioSupplies, setScenarioChoiceList } from './actions';
 import { InvestigatorDeck } from './types';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
-import { InvestigatorChoices, SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
+import { ListChoices, SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { getCampaignGuide } from 'data/scenario';
 import {
@@ -50,11 +50,11 @@ interface ReduxActionProps {
     stepId: string,
     supplyCounts: SupplyCounts
   ) => void;
-  setScenarioInvestigatorChoice: (
+  setScenarioChoiceList: (
     campaignId: number,
     scenarioId: string,
     stepId: string,
-    supplyCounts: InvestigatorChoices
+    supplyCounts: ListChoices
   ) => void;
   setScenarioChoice: (
     campaignId: number,
@@ -89,7 +89,7 @@ export default function withCampaignDataContext<Props>(
       setScenarioCount,
       setScenarioDecision,
       setScenarioSupplies,
-      setScenarioInvestigatorChoice,
+      setScenarioChoiceList,
       resetScenario,
       setScenarioChoice,
     }, dispatch);
@@ -146,16 +146,16 @@ export default function withCampaignDataContext<Props>(
       );
     };
 
-    _setInvestigatorChoice = (
+    _setChoiceList = (
       stepId: string,
-      choices: InvestigatorChoices
+      choices: ListChoices
     ) => {
       const {
-        setScenarioInvestigatorChoice,
+        setScenarioChoiceList,
         campaignId,
         scenarioId,
       } = this.props;
-      setScenarioInvestigatorChoice(
+      setScenarioChoiceList(
         campaignId,
         scenarioId,
         stepId,
@@ -228,7 +228,7 @@ export default function withCampaignDataContext<Props>(
           setCount: this._setScenarioCount,
           setDecision: this._setScenarioDecision,
           setSupplies: this._setSupplies,
-          setInvestigatorChoice: this._setInvestigatorChoice,
+          setChoiceList: this._setChoiceList,
           setChoice: this._setChoice,
           resetScenario: this._resetScenario,
         }),

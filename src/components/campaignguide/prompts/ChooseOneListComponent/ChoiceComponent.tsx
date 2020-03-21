@@ -6,11 +6,11 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { Choice } from 'data/scenario/types';
+import { Choice, SimpleEffectsChoice } from 'data/scenario/types';
 import { COLORS } from 'styles/colors';
 
 interface Props {
-  choice: Choice;
+  choice: Choice | SimpleEffectsChoice;
   index: number;
   selected: boolean;
   editable: boolean;

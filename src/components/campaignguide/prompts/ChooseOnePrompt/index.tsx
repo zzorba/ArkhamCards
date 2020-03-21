@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Text } from 'react-native';
 import { t } from 'ttag';
 
-import ChoiceListComponent from './ChoiceListComponent';
+import ChooseOneListComponent from '../ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import StepsComponent from '../../StepsComponent';
@@ -65,7 +65,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                   text={text || t`The investigators must decide (choose one)`}
                 />
               </SetupStepWrapper>
-              <ChoiceListComponent
+              <ChooseOneListComponent
                 choices={choices}
                 selectedIndex={selectedChoice}
                 onSelect={this._onChoiceChange}

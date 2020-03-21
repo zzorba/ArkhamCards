@@ -3,6 +3,10 @@ import {
   Text,
 } from 'react-native';
 
+import CardTextComponent from 'components/card/CardTextComponent';
+import SetupStepWrapper from '../SetupStepWrapper';
+import CardChoicePrompt from '../prompts/CardChoicePrompt';
+import InvestigatorCounterComponent from '../prompts/InvestigatorCounterComponent';
 import ChooseOnePrompt from '../prompts/ChooseOnePrompt';
 import BinaryPrompt from '../prompts/BinaryPrompt';
 import NumberPrompt from '../prompts/NumberPrompt';
@@ -50,12 +54,29 @@ export default class InputStepComponent extends React.Component<Props> {
       case 'choose_many':
         return <Text>Choose Many</Text>;
       case 'investigator_counter':
-        return <Text>Investigator Counter</Text>;
+        return (
+          <>
+            <SetupStepWrapper bulletType={step.bullet_type}>
+              { !!step.text && <CardTextComponent text={step.text} /> }
+            </SetupStepWrapper>
+            <InvestigatorCounterComponent
+              id={step.id}
+            />
+          </>
+        );
       case 'supplies':
         return (
           <SuppliesPrompt
             id={step.id}
             bulletType={step.bullet_type}
+            text={step.text}
+            input={step.input}
+          />
+        );
+      case 'card_choice':
+        return (
+          <CardChoicePrompt
+            id={step.id}
             text={step.text}
             input={step.input}
           />
@@ -72,10 +93,6 @@ export default class InputStepComponent extends React.Component<Props> {
             detailed={step.input.detailed}
             optional={step.input.investigator === 'choice'}
           />
-        );
-      default:
-        return (
-          <Text>{ step.input.type }</Text>
         );
     }
   }

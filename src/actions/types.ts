@@ -587,10 +587,10 @@ export interface GuideSetSuppliesAction extends GuideStepAction {
   supplyCounts: SupplyCounts;
 }
 
-export const GUIDE_SET_INVESTIGATOR_CHOICE = 'GUIDE_SET_INVESTIGATOR_CHOICE';
-export interface GuideSetInvestigatorChoiceAction extends GuideStepAction {
-  type: typeof GUIDE_SET_INVESTIGATOR_CHOICE;
-  choices: InvestigatorChoices;
+export const GUIDE_SET_CHOICE_LIST = 'GUIDE_SET_CHOICE_LIST';
+export interface GuideSetChoiceListAction extends GuideStepAction {
+  type: typeof GUIDE_SET_CHOICE_LIST;
+  choices: ListChoices;
 }
 
 export const GUIDE_SET_DECISION = 'GUIDE_SET_DECISION';
@@ -687,7 +687,7 @@ export interface SupplyCounts {
   };
 }
 
-export interface InvestigatorChoices {
+export interface ListChoices {
   [code: string]: number[];
 }
 export interface ScenarioState {
@@ -703,8 +703,8 @@ export interface ScenarioState {
   supplyCounts: {
     [key: string]: SupplyCounts;
   }
-  investigatorChoices: {
-    [key: string]: InvestigatorChoices;
+  ListChoices: {
+    [key: string]: ListChoices;
   }
 }
 
@@ -713,7 +713,7 @@ export const DEFAULT_SCENARIO_STATE: ScenarioState = {
   choices: {},
   counts: {},
   supplyCounts: {},
-  investigatorChoices: {},
+  ListChoices: {},
 };
 
 
@@ -776,8 +776,8 @@ export type GuideActions =
   GuideSetDecisionAction |
   GuideClearDecisionAction |
   GuideSetCountAction |
-  GuideSetChoiceAction | 
+  GuideSetChoiceAction |
   GuideClearCountAction |
   GuideResetScenarioAction |
   GuideSetSuppliesAction |
-  GuideSetInvestigatorChoiceAction;
+  GuideSetChoiceListAction;

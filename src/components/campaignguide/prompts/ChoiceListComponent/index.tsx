@@ -3,22 +3,31 @@ import { Button } from 'react-native';
 import { every, forEach, map } from 'lodash';
 import { t } from 'ttag';
 
-import InvestigatorChoiceComponent from './InvestigatorChoiceComponent';
+import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import { InvestigatorChoices } from 'actions/types';
+import { ListChoices } from 'actions/types';
 import { InvestigatorDeck } from 'components/campaignguide/types';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { BulletType, EffectsChoice } from 'data/scenario/types';
+import { BulletType, EffectsChoice, SimpleEffectsChoice } from 'data/scenario/types';
 
-interface Props {
+export interface ListItem {
+  code: string;
+  name: string;
+  tintColor?: string;
+  primaryColor?: string;
+}
+export interface ChoiceListComponentProps {
   id: string;
   bulletType?: BulletType;
   title?: string;
   text?: string;
-  choices: EffectsChoice[];
   optional?: boolean;
-  detailed?: boolean
+  detailed?: boolean;
+  choices: (EffectsChoice | SimpleEffectsChoice)[];
+}
+interface Props extends ChoiceListComponentProps {
+  items: ListItem[];
 }
 
 interface State {
@@ -54,17 +63,17 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   _save = () => {
     const { id } = this.props;
     const { selectedChoice } = this.state;
-    const choices: InvestigatorChoices = {};
+    const choices: ListChoices = {};
     forEach(selectedChoice, (idx, code) => {
       if (idx !== undefined && idx !== -1) {
         choices[code] = [idx];
       }
     })
-    this.context.scenarioState.setInvestigatorChoice(id, choices);
+    this.context.scenarioState.setChoiceList(id, choices);
   };
 
-  renderSaveButton(hasDecision: boolean, investigatorDecks: InvestigatorDeck[]) {
-    const { detailed } = this.props;
+  renderSaveButton(hasDecision: boolean) {
+    const { items, detailed } = this.props;
     const { selectedChoice } = this.state;
     if (hasDecision) {
       return null;
@@ -74,8 +83,8 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
         title={t`Save`}
         onPress={this._save}
         disabled={detailed && !every(
-          investigatorDecks,
-          ({ investigator }) => selectedChoice[investigator.code] !== undefined)
+          items,
+          item => selectedChoice[item.code] !== undefined)
         }
       />
     );
@@ -83,26 +92,26 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   }
 
   render() {
-    const { id, bulletType, detailed, choices, text, optional } = this.props;
+    const { id, items, bulletType, detailed, choices, text, optional } = this.props;
     const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.hasInvestigatorChoice(id);
+        { ({ scenarioState }: ScenarioGuideContextType) => {
+          const hasDecision = scenarioState.hasChoiceList(id);
           const defaultChoice = detailed ? undefined : (optional ? -1 : 0);
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
-              { map(investigatorDecks, (investigator, idx) => {
-                const choice = selectedChoice[investigator.investigator.code];
+              { map(items, (item, idx) => {
+                const choice = selectedChoice[item.code];
                 return (
-                  <InvestigatorChoiceComponent
+                  <ChoiceListItemComponent
                     key={idx}
+                    {...item}
                     choices={choices}
                     choice={choice === undefined ? defaultChoice : choice}
-                    investigator={investigator.investigator}
                     onChoiceChange={this._onChoiceChange}
                     optional={!!optional}
                     editable={!hasDecision}
@@ -110,7 +119,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
                   />
                 );
               }) }
-              { this.renderSaveButton(hasDecision, investigatorDecks) }
+              { this.renderSaveButton(hasDecision) }
             </>
           );
         } }
