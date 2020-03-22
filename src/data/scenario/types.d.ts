@@ -156,7 +156,7 @@ export interface ReplaceCardEffect {
 }
 export interface TraumaEffect {
   type: "trauma";
-  investigator: InvestigatorSelector;
+  investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value";
   mental?: number;
   physical?: number;
   mental_or_physical?: number;
@@ -233,6 +233,7 @@ export interface CampaignLogCountCondition {
   section: string;
   id: string;
   options: NumOption[];
+  max?: number;
   defaultOption: DefaultOption;
 }
 export interface Math {
@@ -420,6 +421,7 @@ export interface GenericStep {
   bullets?: {
     text: string;
   }[];
+  bullet_type?: BulletType;
 }
 export interface RuleReminderStep {
   id: string;

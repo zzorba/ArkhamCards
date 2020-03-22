@@ -168,8 +168,31 @@ export default class ScenarioGuide {
   ): Step[] {
     switch (condition.scenario_data) {
       case 'player_count':
+        const playerCount = scenarioState.playerCount();
+        const option = find(condition.options, option => option.numCondition === playerCount) ||
+          find(condition.options, option => !!option.default);
+        const extraSteps = (option && option.steps) || [];
+        return this.handleEffects(
+          step.id,
+          [
+            ...extraSteps,
+            ...remainingStepIds,
+          ],
+          scenarioState,
+          [...result, step],
+          (option && option.effects) || []
+        );
       case 'investigator':
-        // TODO: handle scenario data
+        if (condition.options.length === 1 && condition.options[0].condition) {
+          return this.decisionTest(
+            step,
+            scenarioState,
+            remainingStepIds,
+            result,
+            condition.options[0]
+          );
+        }
+        // TODO: shouldn't actually happen.
         return [...result, step];
     }
   }

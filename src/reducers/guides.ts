@@ -65,7 +65,7 @@ export default function(
       if (action.type === GUIDE_SET_CHOICE_LIST) {
         return {
           ...scenario,
-          ListChoices: {
+          listChoices: {
             ...scenario.listChoices,
             [action.stepId]: action.choices,
           },

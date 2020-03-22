@@ -2232,6 +2232,7 @@
         "type": "campaign_log_count",
         "section": "sacrificed",
         "id": "$num_entries",
+        "max": 5,
         "options": [
           {
             "numCondition": 0,
@@ -2423,7 +2424,7 @@
     },
     {
       "id": "gain_clues",
-       "type": "branch",
+      "type": "branch",
       "condition": {
         "type": "scenario_data",
         "scenario_data": "player_count",
@@ -2449,11 +2450,13 @@
     },
     {
       "id": "one_clue",
-      "text": "The lead investigator gains a clue from the token bank"
+      "text": "The lead investigator gains a clue from the token bank",
+      "bullet_type": "small"
     },
     {
       "id": "two_clues",
-      "text": "The lead investigator gains 2 clues from the token bank"
+      "text": "The lead investigator gains 2 clues from the token bank",
+      "bullet_type": "small"
     },
     {
       "id": "gather_encounter_sets",
@@ -2607,6 +2610,7 @@
         "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "brood_escaped",
+        "max": 5,
         "options": [
           {
             "numCondition": 1,
@@ -2939,6 +2943,7 @@
         "type": "campaign_log_count",
         "section": "cultists_escaped",
         "id": "$num_entries",
+        "max": 6,
         "options": [
           {
             "numCondition": 1,
@@ -3516,6 +3521,10 @@
         "scenario_data": "player_count",
         "options": [
           {
+            "numCondition": 1,
+            "steps": ["no_cultists"]
+          },
+          {
             "numCondition": 2,
             "steps": ["one_cultist"]
           },
@@ -3531,16 +3540,24 @@
       }
     },
     {
+      "id": "no_cultists",
+      "text": "No changes are made.",
+      "bullet_type": "small"
+    },
+    {
       "id": "one_cultist",
-      "text": "Search the gathered encounter sets for 1 copy of Acolyte and spawn it at Southside."
+      "text": "Search the gathered encounter sets for 1 copy of Acolyte and spawn it at Southside.",
+      "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "Search the gathered encounter sets for 2 copies of Acolyte. Spawn 1 at Southside and 1 at Downtown."
+      "text": "Search the gathered encounter sets for 2 copies of Acolyte. Spawn 1 at Southside and 1 at Downtown.",
+      "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "Search the gathered encounter sets for 3 copies of Acolyte. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard."
+      "text": "Search the gathered encounter sets for 3 copies of Acolyte. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
+      "bullet_type": "small"
     },
     {
       "id": "check_house_burned",
@@ -3623,11 +3640,20 @@
         ],
         "choices": [
           {
-            "text": "Victory display",
+            "text": "Interrogated",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "cultists_interrogated"
+              }
+            ]
+          },
+          {
+            "text": "Got away",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "cultists_escaped"
               }
             ]
           }
@@ -3649,11 +3675,20 @@
         ],
         "choices": [
           {
-            "text": "Victory display",
+            "text": "Interrogated",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "cultists_interrogated"
+              }
+            ]
+          },
+          {
+            "text": "Got away",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "cultists_escaped"
               }
             ]
           }
@@ -5044,6 +5079,10 @@
         "scenario_data": "player_count",
         "options": [
           {
+            "numCondition": 1,
+            "steps": ["no_cultists"]
+          },
+          {
             "numCondition": 2,
             "steps": ["one_cultist"]
           },
@@ -5059,16 +5098,24 @@
       }
     },
     {
+      "id": "no_cultists",
+      "text": "No changes are made.",
+      "bullet_type": "small"
+    },
+    {
       "id": "one_cultist",
-      "text": "Search the gathered encounter sets for 1 copy of Seeker of Carcosa. Spawn it at a [[Third Floor]] Historical Society location."
+      "text": "Search the gathered encounter sets for 1 copy of Seeker of Carcosa. Spawn it at a [[Third Floor]] Historical Society location.",
+      "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "Search the gathered encounter sets for 2 copies of Seeker of Carcosa. Spawn each at a different [[Third Floor]] Historical Society location."
+      "text": "Search the gathered encounter sets for 2 copies of Seeker of Carcosa. Spawn each at a different [[Third Floor]] Historical Society location.",
+      "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "Search the gathered encounter sets for 3 copies of Seeker of Carcosa. Spawn each at different [[Second Floor]] or [[Third Floor]] Historical Society locations."
+      "text": "Search the gathered encounter sets for 3 copies of Seeker of Carcosa. Spawn each at different [[Second Floor]] or [[Third Floor]] Historical Society locations.",
+      "bullet_type": "small"
     },
     {
       "id": "check_fled_dinner_party",
@@ -5363,6 +5410,7 @@
         "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "possessed",
+        "max": 4,
         "options": [
           {
             "numCondition": 0,
@@ -7499,6 +7547,10 @@
         "scenario_data": "player_count",
         "options": [
           {
+            "numCondition": 1,
+            "steps": ["no_cultists"]
+          },
+          {
             "numCondition": 2,
             "steps": ["one_cultist"]
           },
@@ -7514,16 +7566,24 @@
       }
     },
     {
+      "id": "no_cultists",
+      "text": "No changes are made.",
+      "bullet_type": "small"
+    },
+    {
       "id": "one_cultist",
-      "text": "Search the gathered encounter sets for 1 copy of Acolyte and spawn it at Southside."
+      "text": "Search the gathered encounter sets for 1 copy of Acolyte and spawn it at Southside.",
+      "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "Search the gathered encounter sets for 2 copies of Acolyte. Spawn 1 at Southside and 1 at Downtown."
+      "text": "Search the gathered encounter sets for 2 copies of Acolyte. Spawn 1 at Southside and 1 at Downtown.",
+      "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "Search the gathered encounter sets for 3 copies of Acolyte. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard."
+      "text": "Search the gathered encounter sets for 3 copies of Acolyte. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
+      "bullet_type": "small"
     },
     {
       "id": "check_house_burned",
@@ -10888,27 +10948,16 @@
         "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "heretics_released",
+        "max": 4,
         "options": [
           {
-            "numCondition": 0,
-            "steps": ["record_wisp_of_spectral_mist"]
-          },
-          {
-            "numCondition": 1,
-            "steps": ["record_wisp_of_spectral_mist"]
-          },
-          {
-            "numCondition": 2,
-            "steps": ["record_wisp_of_spectral_mist"]
-          },
-          {
-            "numCondition": 3,
-            "steps": ["record_wisp_of_spectral_mist"]
+            "numCondition": 4,
+            "steps": []
           }
         ],
         "defaultOption": {
           "default": true,
-          "steps": []
+          "steps": ["record_wisp_of_spectral_mist"]
         }
       }
     },
@@ -10952,14 +11001,14 @@
   ],
   "resolutions": [
     {
-      "id": "no_resolution_resigned",
-      "title": "No Resolution (each investigator resigned)",
-      "resolution": "R1"
-    },
-    {
       "id": "no_resolution_defeated",
       "title": "No Resolution (each investigator defeated)",
       "resolution": "R2"
+    },
+    {
+      "id": "no_resolution_resigned",
+      "title": "No Resolution (at least one investigator resigned)",
+      "resolution": "R1"
     },
     {
       "id": "R1",
@@ -11974,6 +12023,7 @@
         "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "heretics_released",
+        "max": 4,
         "options": [
           {
             "numCondition": 0,
@@ -12222,6 +12272,7 @@
         "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "heretics_released",
+        "max": 4,
         "options": [
           {
             "numCondition": 0,
@@ -13346,6 +13397,7 @@
         "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "paths_known",
+        "max": 6,
         "options": [
           {
             "numCondition": 6,
@@ -13827,7 +13879,6 @@
         ]
       }
     },
-
     {
       "id": "check_poison_spreads",
       "type": "branch",
@@ -15084,6 +15135,7 @@
         "type": "campaign_log_count",
         "section": "campaign_notes",
         "id": "paths_known",
+        "max": 6,
         "options": [
           {
             "numCondition": 3,
@@ -15453,6 +15505,7 @@
         "type": "campaign_log_count",
         "section": "hidden",
         "id": "tasks_completed",
+        "max": 6,
         "options": [
           {
             "numCondition": 6,
@@ -16377,6 +16430,7 @@
         "type": "campaign_log_count",
         "section": "hidden",
         "id": "final_depth",
+        "max": 4,
         "options": [
           {
             "numCondition": 1,

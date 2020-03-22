@@ -4,7 +4,7 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import PickerComponent from './PickerComponent';
-import { InvestigatorDeck } from '../types';
+import { InvestigatorDeck } from 'data/scenario';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 
 interface Props {

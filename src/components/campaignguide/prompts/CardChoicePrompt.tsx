@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
-import { InvestigatorDeck } from '../types';
+import { InvestigatorDeck } from 'data/scenario';
 import CardQueryWrapper from '../CardQueryWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import { CardChoiceInput } from 'data/scenario/types';

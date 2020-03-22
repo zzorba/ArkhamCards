@@ -7,11 +7,10 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioChoice, setScenarioSupplies, setScenarioChoiceList } from './actions';
-import { InvestigatorDeck } from './types';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
 import { ListChoices, SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { getCampaignGuide } from 'data/scenario';
+import { getCampaignGuide, InvestigatorDeck } from 'data/scenario';
 import {
   AppState,
   getCampaign,
@@ -234,7 +233,8 @@ export default function withCampaignDataContext<Props>(
             setChoiceList: this._setChoiceList,
             setChoice: this._setChoice,
             resetScenario: this._resetScenario,
-          }
+          },
+          investigatorDecks.length
         ),
       };
       return (

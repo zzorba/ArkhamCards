@@ -10,7 +10,6 @@ type Props = ChoiceListComponentProps;
 export default class InvestigatorChoicePrompt extends React.Component<Props> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
-
   render() {
     return (
       <ScenarioGuideContext.Consumer>

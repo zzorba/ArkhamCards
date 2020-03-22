@@ -6,9 +6,11 @@ import {
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import SingleCardWrapper from './SingleCardWrapper';
-import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
-import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
+import AddCardEffectComponent from './AddCardEffectComponent';
+import TraumaEffectComponent from './TraumaEffectComponent';
+import SingleCardWrapper from '../SingleCardWrapper';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import ChooseInvestigatorPrompt from '../prompts/ChooseInvestigatorPrompt';
 import { isSpecialToken } from 'constants';
 import Card from 'data/Card';
 import { Effect, CampaignLogEffect, AddRemoveChaosTokenEffect } from 'data/scenario/types';
@@ -20,6 +22,7 @@ interface Props {
   effects?: Effect[];
   input?: {
     card?: string;
+    investigators?: number[]
   };
   skipCampaignLog?: boolean;
 }
@@ -110,22 +113,23 @@ export default class EffectsComponent extends React.Component<Props> {
         return this.renderChaosTokenEffect(effect);
       }
       case 'add_card':
-        if (effect.investigator === 'choice') {
-          return (
-            <ChooseInvestigatorPrompt
-              id={this.props.id}
-              title={t`Investigator`}
-              defaultLabel={t`None`}
-            />
-          );
-        }
-        // otherwise we have written it out
-        return null;
+        return (
+          <AddCardEffectComponent
+            id={this.props.id}
+            effect={effect}
+          />
+        );
+      case 'trauma':
+        return (
+          <TraumaEffectComponent
+            id={this.props.id}
+            effect={effect}
+          />
+        )
       case 'earn_xp':
       case 'campaign_data':
       case 'remove_card':
-      case 'replace_card':
-      case 'trauma': {
+      case 'replace_card': {
         // We always write these out.
         return null;
       }

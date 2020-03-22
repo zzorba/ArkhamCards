@@ -16,7 +16,7 @@ export default class GenericStepComponent extends React.Component<Props> {
   render() {
     const { step } = this.props;
     return (
-      <SetupStepWrapper bulletType={step.title ? 'none' : undefined}>
+      <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
         { !!step.title && (
           <Text style={[typography.bigGameFont, { color: '#2E5344' }]}>
             { step.title }

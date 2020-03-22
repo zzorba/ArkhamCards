@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InvestigatorDeck } from './types';
+import { InvestigatorDeck } from 'data/scenario';
 import { SingleCampaign } from 'actions/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';

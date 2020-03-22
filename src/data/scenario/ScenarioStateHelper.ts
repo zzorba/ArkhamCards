@@ -1,6 +1,7 @@
-import { keys } from 'lodash';
+import { forEach } from 'lodash';
 
 import { ListChoices, ScenarioState, SupplyCounts } from 'actions/types';
+import { INVESTIGATOR_STATUS_ID, ORDERED_INVESTIGATOR_STATUS, InvestigatorResolutionStatus } from 'data/scenario';
 
 export interface ScenarioStateActions {
   setDecision: (id: string, value: boolean) => void;
@@ -15,15 +16,19 @@ export default class ScenarioStateHelper {
   scenarioId: string;
   state: ScenarioState;
   actions: ScenarioStateActions;
+  numPlayers: number;
 
   constructor(
     scenarioId: string,
     state: ScenarioState,
-    actions: ScenarioStateActions
+    actions: ScenarioStateActions,
+    // TODO: maybe break this out to be a choice?
+    numPlayers: number
   ) {
     this.scenarioId = scenarioId;
     this.state = state;
     this.actions = actions;
+    this.numPlayers = numPlayers;
   }
 
   resetScenario() {
@@ -35,9 +40,23 @@ export default class ScenarioStateHelper {
   }
 
   playerCount(): number {
-    return (
-      keys(this.choiceList(`${this.scenarioId}_players`) || {}).length
+    return this.numPlayers;
+  }
+
+  investigatorResolutionStatus(): {
+    [code: string]: InvestigatorResolutionStatus;
+  } {
+    const result: {
+      [code: string]: InvestigatorResolutionStatus;
+    } = {};
+
+   forEach(
+      this.choiceList(INVESTIGATOR_STATUS_ID),
+      (choices, code) => {
+        result[code] = ORDERED_INVESTIGATOR_STATUS[choices[0]];
+      }
     );
+    return result;
   }
 
   hasStepInput(id: string) {
