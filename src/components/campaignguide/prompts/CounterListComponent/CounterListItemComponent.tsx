@@ -2,9 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import Card from 'data/Card';
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
-import { BulletType, EffectsChoice } from 'data/scenario/types';
+import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
 
 interface Props {
@@ -49,7 +47,6 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
 
   render() {
     const {
-      code,
       name,
       limit,
       tintColor,

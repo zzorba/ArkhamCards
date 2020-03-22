@@ -1,13 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { forEach, keys, map, sumBy } from 'lodash';
-import { t } from 'ttag';
+import { StyleSheet } from 'react-native';
 
-import InvestigatorNameRow from '../InvestigatorNameRow';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import SetupStepWrapper from '../../SetupStepWrapper';
-import CardTextComponent from 'components/card/CardTextComponent';
-import { BulletType, Supply, UseSuppliesInput } from 'data/scenario/types';
+import { BulletType, UseSuppliesInput } from 'data/scenario/types';
 
 interface Props {
   id: string;

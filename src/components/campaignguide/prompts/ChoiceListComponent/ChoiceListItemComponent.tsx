@@ -71,7 +71,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
             noBullet
           />
         </>
-      )
+      );
     }
     return (
       <PickerComponent
@@ -83,7 +83,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
         onChoiceChange={this._onChoiceChange}
         colors={primaryColor ? {
           backgroundColor: primaryColor,
-          textColor: '#FFF'
+          textColor: '#FFF',
         } : undefined}
       />
     );

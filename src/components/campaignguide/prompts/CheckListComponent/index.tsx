@@ -67,7 +67,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
       if (idx !== undefined && idx !== -1) {
         choices[code] = [idx];
       }
-    })
+    });
     this.context.scenarioState.setChoiceList(id, choices);
   };
 
@@ -131,4 +131,4 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#888',
   },
-})
+});

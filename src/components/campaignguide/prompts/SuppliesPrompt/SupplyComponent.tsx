@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext } from 'ttag';
 
 import Card from 'data/Card';
 import { FACTION_LIGHT_GRADIENTS } from 'constants';
@@ -51,7 +51,7 @@ export default class SupplyComponent extends React.Component<Props> {
         supply.cost) :
       ngettext(msgid`(${supply.cost} supply point)`,
         `(${supply.cost} supply points)`,
-        supply.cost)
+        supply.cost);
     return (
       <View style={[
         styles.row,
@@ -115,10 +115,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#bbb',
   },
-  description: {
-    flex: 1,
-    flexWrap: 'wrap',
-  },
   buttons: {
     padding: 8,
     justifyContent: 'center',
@@ -132,4 +128,4 @@ const styles = StyleSheet.create({
   blackText: {
     color: '#000',
   },
-})
+});

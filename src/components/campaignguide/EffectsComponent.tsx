@@ -11,7 +11,7 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideC
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
 import { isSpecialToken } from 'constants';
 import Card from 'data/Card';
-import { EarnXpEffect, Effect, CampaignLogEffect, AddRemoveChaosTokenEffect } from 'data/scenario/types';
+import { Effect, CampaignLogEffect, AddRemoveChaosTokenEffect } from 'data/scenario/types';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import CardTextComponent from 'components/card/CardTextComponent';
 
@@ -101,7 +101,6 @@ export default class EffectsComponent extends React.Component<Props> {
     campaignGuide: CampaignGuide,
     effect: Effect
   ) {
-    const { effects } = this.props;
     switch (effect.type) {
       case 'campaign_log': {
         return this.renderCampaignLogEffect(campaignGuide, effect);
@@ -118,7 +117,7 @@ export default class EffectsComponent extends React.Component<Props> {
               title={t`Investigator`}
               defaultLabel={t`None`}
             />
-          )
+          );
         }
         // otherwise we have written it out
         return null;

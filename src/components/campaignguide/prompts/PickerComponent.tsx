@@ -17,7 +17,7 @@ interface Props {
   colors?: {
     backgroundColor: string;
     textColor: string;
-  },
+  };
   defaultLabel?: string;
 }
 
@@ -113,7 +113,7 @@ export default class PickerComponent extends React.Component<Props> {
               size={30}
               color={colors.textColor}
             />
-          ): undefined
+          ) : undefined
         }
       />
     );

@@ -3,8 +3,6 @@ import { find } from 'lodash';
 import { FullCampaign } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
 
-
-
 export function getCampaignGuide(id: string): CampaignGuide | undefined {
   const allLogEntries: CampaignLog[] = require('../../../assets/campaignLogs.json');
   const allCampaigns: FullCampaign[] = require('../../../assets/allCampaigns.json');

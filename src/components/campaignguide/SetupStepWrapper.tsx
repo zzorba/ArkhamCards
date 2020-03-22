@@ -28,20 +28,19 @@ export default class SetupStepWrapper extends React.Component<Props> {
           </View>
         );
       default:
-      return (
-        <View style={styles.bullet}>
-          <ArkhamIcon
-            name="guide_bullet"
-            size={24}
-            color="#2E5344"
-          />
-        </View>
-      );
+        return (
+          <View style={styles.bullet}>
+            <ArkhamIcon
+              name="guide_bullet"
+              size={24}
+              color="#2E5344"
+            />
+          </View>
+        );
     }
   }
   render() {
     const {
-      bulletType,
       children,
     } = this.props;
 

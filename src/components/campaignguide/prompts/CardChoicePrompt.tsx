@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { flatMap, keys, map, uniq } from 'lodash';
 import { t } from 'ttag';
 
@@ -93,13 +92,17 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
       }
       const queryParts: string[] = [];
       switch (q.source) {
-        case 'scenario':
+        case 'scenario': {
           const encounterSets = scenarioGuide.encounterSets(scenarioState);
           if (encounterSets) {
-            const encounterQuery = map(encounterSets, encounterCode => `(encounter_code == '${encounterCode}')`).join(' OR ')
+            const encounterQuery = map(
+              encounterSets,
+              encounterCode => `(encounter_code == '${encounterCode}')`
+            ).join(' OR ');
             queryParts.push(`(${encounterQuery})`);
           }
           break;
+        }
         case 'deck': {
           const codeQuery = map(
             uniq(
@@ -115,7 +118,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
         queryParts.push([
           '(',
           `traits_normalized CONTAINS[c] "${safeValue(q.trait)}"`,
-          ')'
+          ')',
         ].join(''));
       }
       if (q.unique) {

@@ -72,7 +72,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
     const choices: ListChoices = {};
     forEach(counts, (value, code) => {
       choices[code] = [value];
-    })
+    });
     this.context.scenarioState.setChoiceList(id, choices);
   };
 

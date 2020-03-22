@@ -1,6 +1,20 @@
 import { find, flatMap, tail } from 'lodash';
 
-import { BranchStep, Effect, InputStep, Step, Scenario, Resolution } from './types';
+import {
+  BranchStep,
+  CampaignDataCondition,
+  CampaignDataScenarioCondition,
+  CampaignDataChaosBagCondition,
+  CampaignDataInvestigatorCondition,
+  CheckSuppliesCondition,
+  CardCondition,
+  ScenarioDataCondition,
+  Effect,
+  InputStep,
+  Step,
+  Scenario,
+  Resolution,
+} from './types';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
 
@@ -31,7 +45,7 @@ export default class ScenarioGuide {
         if (step.type === 'encounter_sets') {
           return step.encounter_sets;
         }
-        return []
+        return [];
       }
     );
   }
@@ -112,6 +126,78 @@ export default class ScenarioGuide {
     }
   }
 
+  handleCampaignData(
+    step: BranchStep,
+    condition: CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition | CampaignDataInvestigatorCondition,
+    scenarioState: ScenarioStateHelper,
+    remainingStepIds: string[],
+    result: Step[]
+  ): Step[] {
+    switch (condition.campaign_data) {
+      case 'difficulty':
+      case 'scenario_completed':
+      case 'chaos_bag':
+      case 'investigator':
+        return [...result, step];
+    }
+  }
+
+
+  handleCheckSupplies(
+    step: BranchStep,
+    condition: CheckSuppliesCondition,
+    scenarioState: ScenarioStateHelper,
+    remainingStepIds: string[],
+    result: Step[]
+  ): Step[] {
+    switch (condition.investigator) {
+      case 'any':
+      case 'all':
+      case 'choice':
+        // TODO: check supplies, needs an investigator AND a has supplies test.
+        return [...result, step];
+    }
+  }
+
+  handleScenarioDataCondition(
+    step: BranchStep,
+    condition: ScenarioDataCondition,
+    scenarioState: ScenarioStateHelper,
+    remainingStepIds: string[],
+    result: Step[]
+  ): Step[] {
+    switch (condition.scenario_data) {
+      case 'player_count':
+      case 'investigator':
+        // TODO: handle scenario data
+        return [...result, step];
+    }
+  }
+
+  handleCardCondition(
+    step: BranchStep,
+    condition: CardCondition,
+    scenarioState: ScenarioStateHelper,
+    remainingStepIds: string[],
+    result: Step[]
+  ): Step[] {
+    // Generally only has steps.
+    // Occasionally will have a trauma effect.
+    switch (condition.investigator) {
+      case 'defeated':
+      case 'any':
+        // For now we'll just ask the question.
+        return this.decisionTest(
+          step,
+          scenarioState,
+          remainingStepIds,
+          result,
+          find(step.condition.options, option => option.boolCondition === true),
+          find(step.condition.options, option => option.boolCondition === false || !!option.default)
+        );
+    }
+  }
+
   expandBranchStep(
     step: BranchStep,
     scenarioState: ScenarioStateHelper,
@@ -120,11 +206,13 @@ export default class ScenarioGuide {
   ): Step[] {
     switch (step.condition.type) {
       case 'check_supplies': {
-        switch (step.condition.investigator) {
-          case 'choice':
-            // TODO: check supplies, needs an investigator AND a has supplies test.
-            return result;
-        }
+        return this.handleCheckSupplies(
+          step,
+          step.condition,
+          scenarioState,
+          remainingStepIds,
+          result
+        );
       }
       case 'campaign_log_section_exists':
         return this.decisionTest(
@@ -168,38 +256,31 @@ export default class ScenarioGuide {
         // TODO: handle math
         return [...result, step];
       case 'campaign_data': {
-        // TODO: handle campaign_data
-        switch (step.condition.campaign_data) {
-          case 'difficulty':
-          case 'scenario_completed':
-          case 'chaos_bag':
-          case 'investigator':
-            return [...result, step];
-        }
+        return this.handleCampaignData(
+          step,
+          step.condition,
+          scenarioState,
+          remainingStepIds,
+          result
+        );
       }
       case 'scenario_data': {
-        switch (step.condition.scenario_data) {
-           case 'player_count':
-           case 'investigator':
-            return [...result, step];
-        }
+        return this.handleScenarioDataCondition(
+          step,
+          step.condition,
+          scenarioState,
+          remainingStepIds,
+          result
+        );
       }
       case 'has_card': {
-        // Generally only has steps.
-        // Occasionally wil have a trauma effect.
-        switch (step.condition.investigator) {
-          case 'defeated':
-          case 'any':
-            // For now we'll just ask the question.
-            return this.decisionTest(
-              step,
-              scenarioState,
-              remainingStepIds,
-              result,
-              find(step.condition.options, option => option.boolCondition === true),
-              find(step.condition.options, option => option.boolCondition === false || !!option.default)
-            );
-        }
+        return this.handleCardCondition(
+          step,
+          step.condition,
+          scenarioState,
+          remainingStepIds,
+          result
+        );
       }
       case 'trauma': {
         return this.decisionTest(
@@ -304,8 +385,14 @@ export default class ScenarioGuide {
     scenarioState: ScenarioStateHelper,
     remainingStepIds: string[],
     result: Step[],
-    ifTrue?: { steps?: null | string[], effects?: null | Effect[] },
-    ifFalse?: { steps?: null| string[], effects?: null | Effect[] }
+    ifTrue?: {
+      steps?: null | string[];
+      effects?: null | Effect[];
+    },
+    ifFalse?: {
+      steps?: null | string[];
+      effects?: null | Effect[];
+    }
   ): Step[] {
     if (scenarioState.hasDecision(step.id)) {
       const resultCondition = scenarioState.decision(step.id) ? ifTrue : ifFalse;

@@ -9,7 +9,6 @@ import SingleCardWrapper from '../SingleCardWrapper';
 import BinaryPrompt from '../prompts/BinaryPrompt';
 import NumberPrompt from '../prompts/NumberPrompt';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import { InvestigatorDeck } from '../types';
 import Card from 'data/Card';
 import {
   BranchStep,
@@ -209,8 +208,7 @@ export default class BranchStepComponent extends React.Component<Props> {
   }
 
   traumaCondition(
-    condition: TraumaCondition,
-    investigatorDecks: InvestigatorDeck[]
+    condition: TraumaCondition
   ): React.ReactNode {
     const { step } = this.props;
     switch (condition.trauma) {
@@ -243,7 +241,7 @@ export default class BranchStepComponent extends React.Component<Props> {
     const condition = step.condition;
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide, investigatorDecks }: ScenarioGuideContextType) => {
+        { ({ campaignGuide }: ScenarioGuideContextType) => {
           switch (condition.type) {
             case 'campaign_log':
               return this.renderCampaignLog(campaignGuide, condition);
@@ -257,7 +255,7 @@ export default class BranchStepComponent extends React.Component<Props> {
               return this.hasCardCondition(condition);
             }
             case 'trauma': {
-              return this.traumaCondition(condition, investigatorDecks);
+              return this.traumaCondition(condition);
             }
             default:
               return (

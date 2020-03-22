@@ -10,7 +10,6 @@ import { find } from 'lodash';
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import StepsComponent from '../StepsComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { BulletType, Effect, Option } from 'data/scenario/types';

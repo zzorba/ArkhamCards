@@ -702,10 +702,10 @@ export interface ScenarioState {
   };
   supplyCounts: {
     [key: string]: SupplyCounts;
-  }
+  };
   listChoices: {
     [key: string]: ListChoices;
-  }
+  };
 }
 
 export const DEFAULT_SCENARIO_STATE: ScenarioState = {

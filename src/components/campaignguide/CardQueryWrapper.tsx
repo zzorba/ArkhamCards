@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
 import { forEach } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 

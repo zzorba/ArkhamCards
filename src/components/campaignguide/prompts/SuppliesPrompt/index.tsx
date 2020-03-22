@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, View } from 'react-native';
 import { forEach, keys, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
@@ -137,16 +137,3 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  investigatorText: {
-    color: '#FFF',
-    fontWeight: '700',
-  },
-  investigatorRow: {
-    padding: 8,
-    paddingLeft: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});

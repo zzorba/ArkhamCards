@@ -59,7 +59,7 @@ export default class ChoiceComponent extends React.Component<Props> {
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={buttonColor || "rgb(0, 122,255)"}
+              color={buttonColor || 'rgb(0, 122,255)'}
             />
           ) }
         </View>
@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
     minWidth: 30,
     minHeight: 30,
   },
-})
+});

@@ -7,7 +7,6 @@ import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { ListChoices } from 'actions/types';
-import { InvestigatorDeck } from 'components/campaignguide/types';
 import CardTextComponent from 'components/card/CardTextComponent';
 import { BulletType, EffectsChoice, SimpleEffectsChoice } from 'data/scenario/types';
 
@@ -68,7 +67,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
       if (idx !== undefined && idx !== -1) {
         choices[code] = [idx];
       }
-    })
+    });
     this.context.scenarioState.setChoiceList(id, choices);
   };
 
@@ -98,7 +97,8 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
           const hasDecision = scenarioState.hasChoiceList(id);
-          const defaultChoice = detailed ? undefined : (optional ? -1 : 0);
+          const nonDetailedDefaultChoice = (optional ? -1 : 0);
+          const defaultChoice = detailed ? undefined : nonDetailedDefaultChoice;
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>

@@ -26,7 +26,7 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
         setting: 'investigator_status',
         investigator: '$input_value',
         investigator_status: 'alive',
-      }
+      },
     ],
   },
   {
@@ -37,7 +37,7 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
         setting: 'investigator_status',
         investigator: '$input_value',
         investigator_status: 'resigned',
-      }
+      },
     ],
   },
   {
@@ -53,7 +53,7 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
         type: 'trauma',
         investigator: '$input_value',
         physical: 1,
-      }
+      },
     ],
   },
   {
@@ -69,7 +69,7 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
         type: 'trauma',
         investigator: '$input_value',
         mental: 1,
-      }
+      },
     ],
   },
   {
@@ -80,9 +80,9 @@ const INVESTIGATOR_STATUS_CHOICES: EffectsChoice[] = [
         setting: 'investigator_status',
         investigator: '$input_value',
         investigator_status: 'eliminated',
-      }
+      },
     ],
-  }
+  },
 ];
 
 class ResolutionView extends React.Component<Props> {

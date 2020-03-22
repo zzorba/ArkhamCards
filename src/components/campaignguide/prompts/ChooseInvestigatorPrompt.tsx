@@ -80,8 +80,8 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
                 onChoiceChange={this._onChoiceChange}
               />
               { hasDecision ?
-                  (!!renderResults && renderResults(investigatorDecks[scenarioState.choice(id)])) :
-                  this.renderSaveButton()
+                (!!renderResults && renderResults(investigatorDecks[scenarioState.choice(id)])) :
+                this.renderSaveButton()
               }
             </>
           );

@@ -25,7 +25,7 @@ export default class GenericStepComponent extends React.Component<Props> {
         ) }
         <CardTextComponent text={step.text.replace(/\n/g, '\n\n')} />
         <BulletsComponent bullets={step.bullets} />
-        { !!step.example &&<CardTextComponent text={step.example} /> }
+        { !!step.example && <CardTextComponent text={step.example} /> }
       </SetupStepWrapper>
     );
   }

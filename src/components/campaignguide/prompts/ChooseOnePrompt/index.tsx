@@ -5,7 +5,6 @@ import { t } from 'ttag';
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import StepsComponent from '../../StepsComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import { BulletType, Choice } from 'data/scenario/types';
 
