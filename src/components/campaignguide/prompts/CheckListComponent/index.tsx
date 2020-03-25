@@ -90,7 +90,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.hasChoiceList(id);
+          const hasDecision = scenarioState.choiceList(id) !== undefined;
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>

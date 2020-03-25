@@ -1,22 +1,18 @@
+import { dropRight, filter } from 'lodash';
+
 import {
-  GUIDE_SET_COUNT,
-  GUIDE_SET_DECISION,
-  GUIDE_SET_CHOICE_LIST,
-  GUIDE_SET_CHOICE,
-  GUIDE_CLEAR_COUNT,
-  GUIDE_CLEAR_DECISION,
+  GUIDE_SET_INPUT,
+  GUIDE_UNDO_INPUT,
   GUIDE_RESET_SCENARIO,
-  GUIDE_SET_SUPPLIES,
   LOGOUT,
   GuideActions,
-  GuideState,
-  ScenarioState,
-  DEFAULT_SCENARIO_STATE,
+  CampaignGuideState,
+  DEFAULT_CAMPAIGN_GUIDE_STATE
 } from 'actions/types';
 
 export interface GuidesState {
   all: {
-    [campaignId: string]: GuideState;
+    [campaignId: string]: CampaignGuideState | undefined;
   };
 }
 
@@ -24,31 +20,17 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
   all: {},
 };
 
-function getGuide(id: number, state: GuidesState): GuideState {
-  return state.all[id] || {
-    scenarios: {},
-  };
-}
-
-function updateScenario(
+function updateCampaign(
   state: GuidesState,
   campaignId: number,
-  scenarioId: string,
-  update: (scenario: ScenarioState) => ScenarioState
+  update: (campaign: CampaignGuideState) => CampaignGuideState
 ): GuidesState {
-  const guide = getGuide(campaignId, state);
-  const scenario = guide.scenarios[scenarioId] || DEFAULT_SCENARIO_STATE;
+  const campaign: CampaignGuideState = state.all[campaignId] || DEFAULT_CAMPAIGN_GUIDE_STATE;
   return {
     ...state,
     all: {
       ...state.all,
-      [campaignId]: {
-        ...guide,
-        scenarios: {
-          ...guide.scenarios,
-          [scenarioId]: update(scenario),
-        },
-      },
+      [campaignId]: update(campaign),
     },
   };
 }
@@ -60,78 +42,42 @@ export default function(
   if (action.type === LOGOUT) {
     return state;
   }
-  return updateScenario(state, action.campaignId, action.scenarioId,
-    (scenario: ScenarioState) => {
-      if (action.type === GUIDE_SET_CHOICE_LIST) {
+  if (action.type === GUIDE_SET_INPUT) {
+    return updateCampaign(
+      state,
+      action.campaignId,
+      campaign => {
         return {
-          ...scenario,
-          listChoices: {
-            ...scenario.listChoices,
-            [action.stepId]: action.choices,
-          },
+          ...campaign,
+          inputs: [...campaign.inputs, action.input],
         };
-      }
-      if (action.type === GUIDE_SET_CHOICE) {
+      });
+  }
+  if (action.type === GUIDE_UNDO_INPUT) {
+    return updateCampaign(
+      state,
+      action.campaignId,
+      campaign => {
+        if (!campaign.inputs.length) {
+          return campaign;
+        }
         return {
-          ...scenario,
-          choices: {
-            ...scenario.choices,
-            [action.stepId]: action.choice,
-          },
+          ...campaign,
+          inputs: dropRight(campaign.inputs),
         };
-      }
-      if (action.type === GUIDE_SET_SUPPLIES) {
+      });
+  }
+  if (action.type === GUIDE_RESET_SCENARIO) {
+    return updateCampaign(
+      state,
+      action.campaignId,
+      campaign => {
         return {
-          ...scenario,
-          supplyCounts: {
-            ...scenario.supplyCounts,
-            [action.stepId]: action.supplyCounts,
-          },
+          ...campaign,
+          inputs: filter(campaign.inputs, input => input.scenario !== action.scenarioId),
         };
-      }
-      if (action.type === GUIDE_SET_COUNT) {
-        return {
-          ...scenario,
-          counts: {
-            ...scenario.counts,
-            [action.stepId]: action.count,
-          },
-        };
-      }
-      if (action.type === GUIDE_CLEAR_COUNT) {
-        const newCounts = {
-          ...scenario.counts,
-        };
-        delete newCounts[action.stepId];
-        return {
-          ...scenario,
-          counts: newCounts,
-        };
-      }
+      });
+  }
 
-      if (action.type === GUIDE_SET_DECISION) {
-        return {
-          ...scenario,
-          decisions: {
-            ...scenario.decisions,
-            [action.stepId]: action.decision,
-          },
-        };
-      }
-      if (action.type === GUIDE_CLEAR_DECISION) {
-        const newDecisions = {
-          ...scenario.decisions,
-        };
-        delete newDecisions[action.stepId];
-        return {
-          ...scenario,
-          decisions: newDecisions,
-        };
-      }
-      if (action.type === GUIDE_RESET_SCENARIO) {
-        return DEFAULT_SCENARIO_STATE;
-      }
-      return scenario;
-    }
-  );
+  return state;
 }

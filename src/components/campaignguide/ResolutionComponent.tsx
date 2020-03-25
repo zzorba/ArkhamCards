@@ -25,7 +25,7 @@ export default class ResolutionComponent extends React.Component<Props> {
           const { resolution } = this.props;
           if (resolution.steps) {
             return (
-              <StepsComponent steps={scenarioGuide.expandSteps(resolution.steps, scenarioState, [])} />
+              <StepsComponent steps={scenarioGuide.expandSteps(resolution.steps, scenarioState)} />
             );
           }
           if (resolution.resolution) {

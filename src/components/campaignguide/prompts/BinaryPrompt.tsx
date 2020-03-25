@@ -42,12 +42,13 @@ export default class BinaryPrompt extends React.Component<Props> {
 
   renderPrompt(scenarioState: ScenarioStateHelper) {
     const { id, text } = this.props;
+    const decision = scenarioState.decision(id)
     return (
       <>
         { !!text && <CardTextComponent text={text} /> }
-        { scenarioState.hasDecision(id) && (
+        { (decision !== undefined) && (
           <Text>
-            { scenarioState.decision(id) ? t`Yes` : t`No` }
+            { decision ? t`Yes` : t`No` }
           </Text>
         ) }
       </>
@@ -61,10 +62,11 @@ export default class BinaryPrompt extends React.Component<Props> {
     stepsOnly: boolean
   ) {
     const { id, trueResult, falseResult } = this.props;
-    if (!scenarioState.hasDecision(id)) {
+    const decision = scenarioState.decision(id);
+    if (decision == undefined) {
       return null;
     }
-    if (scenarioState.decision(id)) {
+    if (decision) {
       return !!trueResult && this.renderResult(scenarioGuide, stepsOnly, trueResult);
     }
     return !!falseResult && this.renderResult(scenarioGuide, stepsOnly, falseResult);
@@ -118,7 +120,7 @@ export default class BinaryPrompt extends React.Component<Props> {
               { this.renderCorrectResults(scenarioGuide, scenarioState, false) }
             </SetupStepWrapper>
             { this.renderCorrectResults(scenarioGuide, scenarioState, true) }
-            { !scenarioState.hasDecision(id) && (
+            { (scenarioState.decision(id) === undefined) && (
               <>
                 <Button title="Yes" onPress={this._yes} />
                 <Button title="No" onPress={this._no} />

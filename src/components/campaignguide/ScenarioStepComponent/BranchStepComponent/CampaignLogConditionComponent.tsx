@@ -13,10 +13,12 @@ import {
   BranchStep,
   CampaignLogCondition,
 } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
   condition: CampaignLogCondition;
+  campaignLog: GuidedCampaignLog;
 }
 
 export default class CampaignLogConditionComponent extends React.Component<Props> {

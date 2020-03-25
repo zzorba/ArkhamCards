@@ -13,12 +13,15 @@ import {
   BranchStep,
   CampaignLogCountCondition,
 } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
   condition: CampaignLogCountCondition;
+  campaignLog: GuidedCampaignLog;
 }
 
+// TODO: fix this.
 export default class CampaignLogCountConditionComponent extends React.Component<Props> {
   render(): React.ReactNode {
     const { step, condition } = this.props;

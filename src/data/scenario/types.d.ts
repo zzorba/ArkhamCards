@@ -18,7 +18,7 @@ export type Step =
 export type Condition =
   | CampaignLogCondition
   | CampaignLogCountCondition
-  | Math
+  | MathCondition
   | CardCondition
   | CampaignDataCondition
   | CampaignDataScenarioCondition
@@ -30,12 +30,14 @@ export type Condition =
   | CheckSuppliesCondition;
 export type BoolOption = EffectOption | StepsOption | ResolutionOption;
 export type Effect =
+  | StoryStepEffect
   | EarnXpEffect
   | AddCardEffect
   | RemoveCardEffect
   | ReplaceCardEffect
   | TraumaEffect
   | CampaignLogEffect
+  | CampaignLogCardsEffect
   | CampaignLogCountEffect
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
@@ -70,7 +72,7 @@ export type ChaosToken =
   | "auto_fail";
 export type NumOption = EffectOption | StepsOption | ResolutionOption;
 export type DefaultOption = StepsOption | ResolutionOption;
-export type Operand = CampaignLogOperand | ChaosBagOperand;
+export type Operand = CampaignLogCountOperand | ChaosBagOperand;
 export type Option = EffectOption | StepsOption | ResolutionOption;
 export type Input =
   | CardChoiceInput
@@ -131,6 +133,10 @@ export interface EffectOption {
   steps?: null;
   resolution?: null;
 }
+export interface StoryStepEffect {
+  type: "story_step";
+  steps: string[];
+}
 export interface EarnXpEffect {
   type: "earn_xp";
   investigator: InvestigatorSelector;
@@ -146,8 +152,8 @@ export interface AddCardEffect {
 }
 export interface RemoveCardEffect {
   type: "remove_card";
-  investigator?: InvestigatorSelector;
-  card?: string;
+  investigator?: "choice" | "$input_value";
+  card: string;
 }
 export interface ReplaceCardEffect {
   type: "replace_card";
@@ -166,20 +172,25 @@ export interface TraumaEffect {
 export interface CampaignLogEffect {
   type: "campaign_log";
   section: string;
-  id?: string;
-  card?: string;
+  id: string;
   text?: string;
+  cross_out?: boolean;
+}
+export interface CampaignLogCardsEffect {
+  type: "campaign_log_cards";
+  section: string;
+  id?: string;
+  text?: string;
+  cards?: "$lead_investigator" | "$input_value";
   cross_out?: boolean;
 }
 export interface CampaignLogCountEffect {
   type: "campaign_log_count";
   section: string;
   id?: string;
-  set_count?: number;
-  setInput?: boolean;
-  add_count?: number;
+  operation: "set_input" | "set" | "add_input" | "add";
+  value?: number;
   text?: string;
-  cross_out?: boolean;
 }
 export interface CampaignDataResultEffect {
   type: "campaign_data";
@@ -216,7 +227,7 @@ export interface StepsOption {
   condition?: string;
   default?: boolean;
   steps: string[];
-  effects?: Effect[];
+  effects?: null;
   resolution?: null;
 }
 export interface ResolutionOption {
@@ -236,7 +247,7 @@ export interface CampaignLogCountCondition {
   max?: number;
   defaultOption: DefaultOption;
 }
-export interface Math {
+export interface MathCondition {
   type: "math";
   opA: Operand;
   opB: Operand;
@@ -244,10 +255,9 @@ export interface Math {
   options: NumOption[];
   defaultOption: DefaultOption;
 }
-export interface CampaignLogOperand {
-  type: "campaign_log";
+export interface CampaignLogCountOperand {
+  type: "campaign_log_count";
   section: string;
-  id?: string;
 }
 export interface ChaosBagOperand {
   type: "chaos_bag";
@@ -331,7 +341,7 @@ export interface SimpleEffectsChoice {
   flavor?: string;
   text: string;
   description?: string;
-  effects: (CampaignLogEffect | RemoveCardEffect)[];
+  effects: (CampaignLogCardsEffect | RemoveCardEffect)[];
   steps?: null;
   resolution?: null;
 }

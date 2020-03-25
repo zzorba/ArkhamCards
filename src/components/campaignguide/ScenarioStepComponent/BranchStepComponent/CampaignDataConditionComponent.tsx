@@ -14,10 +14,12 @@ import {
   CampaignDataChaosBagCondition,
   CampaignDataInvestigatorCondition,
 } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
   condition: CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition | CampaignDataInvestigatorCondition;
+  campaignLog: GuidedCampaignLog;
 }
 
 export default class CampaignDataConditionComponent extends React.Component<Props> {

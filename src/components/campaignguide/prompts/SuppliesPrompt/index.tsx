@@ -89,10 +89,8 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
         { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
           const playerCount = Math.max(Math.min(investigatorDecks.length, 4), 1);
           const total = input.points[playerCount - 1];
-          const hasDecision = scenarioState.hasSupplies(id);
-          const supplyCounts = hasDecision ?
-            scenarioState.supplies(id) :
-            this.state.counts;
+          const suppliesInput = scenarioState.supplies(id);
+          const supplyCounts = suppliesInput !== undefined ? suppliesInput : this.state.counts;
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
@@ -109,11 +107,11 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
                   <View key={idx}>
                     <InvestigatorNameRow
                       investigator={investigator}
-                      detail={hasDecision ? undefined : t`${spent} of ${total}`}
+                      detail={suppliesInput !== undefined ? undefined : t`${spent} of ${total}`}
                     />
                     { map(input.supplies, (supply, idx2) => {
                       const count = counts[supply.id] || 0;
-                      return (!hasDecision || count > 0) && (
+                      return (suppliesInput === undefined || count > 0) && (
                         <SupplyComponent
                           key={idx2}
                           investigator={investigator}
@@ -122,14 +120,19 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
                           inc={this._incrementSupply}
                           dec={this._decrementSupply}
                           remainingPoints={Math.max(total - spent, 0)}
-                          editable={!hasDecision}
+                          editable={suppliesInput === undefined}
                         />
                       );
                     }) }
                   </View>
                 );
               }) }
-              { !hasDecision && <Button title={t`Save`} onPress={this._save} /> }
+              { (suppliesInput === undefined) && (
+                <Button
+                  title={t`Save`}
+                  onPress={this._save}
+                />
+              ) }
             </>
           );
         } }

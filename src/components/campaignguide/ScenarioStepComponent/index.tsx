@@ -9,15 +9,15 @@ import GenericStepComponent from './GenericStepComponent';
 import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
-import { Step } from 'data/scenario/types';
+import ScenarioStep from 'data/scenario/ScenarioStep';
 
 interface Props {
-  step: Step;
+  step: ScenarioStep;
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {
   render() {
-    const { step } = this.props;
+    const { step: { step, campaignLog } } = this.props;
     if (!step.type) {
       return <GenericStepComponent step={step} />;
     }
@@ -26,10 +26,15 @@ export default class ScenarioStepComponent extends React.Component<Props> {
         return (
           <BranchStepComponent
             step={step}
+            campaignLog={campaignLog}
           />
         );
       case 'story':
-        return <StoryStepComponent step={step} />;
+        return (
+          <StoryStepComponent
+            step={step}
+          />
+        );
       case 'encounter_sets':
         return <EncounterSetStepComponent step={step} />;
       case 'rule_reminder':

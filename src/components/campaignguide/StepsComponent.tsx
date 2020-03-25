@@ -2,10 +2,10 @@ import React from 'react';
 import { map } from 'lodash';
 
 import ScenarioStepComponent from './ScenarioStepComponent';
-import { Step } from 'data/scenario/types';
+import ScenarioStep from 'data/scenario/ScenarioStep';
 
 interface Props {
-  steps: Step[];
+  steps: ScenarioStep[];
 }
 
 export default class StepsComponent extends React.Component<Props> {
@@ -15,7 +15,7 @@ export default class StepsComponent extends React.Component<Props> {
     } = this.props;
     return map(steps, step => (
       <ScenarioStepComponent
-        key={step.id}
+        key={step.step.id}
         step={step}
       />
     ));

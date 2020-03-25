@@ -7,10 +7,12 @@ import {
   BranchStep,
   TraumaCondition,
 } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
   condition: TraumaCondition;
+  campaignLog: GuidedCampaignLog;
 }
 
 export default class TraumaConditionComponent extends React.Component<Props> {

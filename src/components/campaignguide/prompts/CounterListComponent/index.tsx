@@ -95,7 +95,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.hasChoiceList(id);
+          const hasDecision = scenarioState.choiceList(id) !== undefined;
           return (
             <>
               { map(items, ({ code, name, limit, tintColor }, idx) => {

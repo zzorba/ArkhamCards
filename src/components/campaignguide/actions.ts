@@ -1,15 +1,7 @@
 import {
-  GUIDE_SET_DECISION,
-  GUIDE_SET_COUNT,
-  GUIDE_SET_SUPPLIES,
-  GUIDE_SET_CHOICE,
-  GUIDE_SET_CHOICE_LIST,
+  GUIDE_SET_INPUT,
   GUIDE_RESET_SCENARIO,
-  GuideSetDecisionAction,
-  GuideSetCountAction,
-  GuideSetSuppliesAction,
-  GuideSetChoiceAction,
-  GuideSetChoiceListAction,
+  GuideSetInputAction,
   GuideResetScenarioAction,
   SupplyCounts,
   ListChoices,
@@ -28,75 +20,106 @@ export function resetScenario(
 
 export function setScenarioDecision(
   campaignId: number,
-  scenarioId: string,
-  stepId: string,
+  scenario: string,
+  step: string,
   value: boolean
-): GuideSetDecisionAction {
+): GuideSetInputAction {
   return {
-    type: GUIDE_SET_DECISION,
+    type: GUIDE_SET_INPUT,
     campaignId,
-    scenarioId,
-    stepId,
-    decision: value,
+    input: {
+      type: 'decision',
+      scenario,
+      step,
+      decision: value,
+    },
   };
 }
 
 export function setScenarioCount(
   campaignId: number,
-  scenarioId: string,
-  stepId: string,
+  scenario: string,
+  step: string,
   value: number
-): GuideSetCountAction {
+): GuideSetInputAction {
   return {
-    type: GUIDE_SET_COUNT,
+    type: GUIDE_SET_INPUT,
     campaignId,
-    scenarioId,
-    stepId,
-    count: value,
+    input: {
+      type: 'count',
+      scenario,
+      step,
+      count: value,
+    },
   };
 }
 
 export function setScenarioSupplies(
   campaignId: number,
-  scenarioId: string,
-  stepId: string,
-  supplyCounts: SupplyCounts
-): GuideSetSuppliesAction {
+  scenario: string,
+  step: string,
+  supplies: SupplyCounts
+): GuideSetInputAction {
   return {
-    type: GUIDE_SET_SUPPLIES,
+    type: GUIDE_SET_INPUT,
     campaignId,
-    scenarioId,
-    stepId,
-    supplyCounts,
+    input: {
+      type: 'supplies',
+      scenario,
+      step,
+      supplies,
+    },
   };
 }
 
 export function setScenarioChoiceList(
   campaignId: number,
-  scenarioId: string,
-  stepId: string,
+  scenario: string,
+  step: string,
   choices: ListChoices
-): GuideSetChoiceListAction {
+): GuideSetInputAction {
   return {
-    type: GUIDE_SET_CHOICE_LIST,
+    type: GUIDE_SET_INPUT,
     campaignId,
-    scenarioId,
-    stepId,
-    choices,
+    input: {
+      type: 'choice_list',
+      scenario,
+      step,
+      choices,
+    },
   };
 }
 
 export function setScenarioChoice(
   campaignId: number,
-  scenarioId: string,
-  stepId: string,
+  scenario: string,
+  step: string,
   choice: number
-): GuideSetChoiceAction {
+): GuideSetInputAction {
   return {
-    type: GUIDE_SET_CHOICE,
+    type: GUIDE_SET_INPUT,
     campaignId,
-    scenarioId,
-    stepId,
-    choice,
+    input: {
+      type: 'choice',
+      scenario,
+      step,
+      choice,
+    },
+  };
+}
+
+export function setResolutionChoice(
+  campaignId: number,
+  scenario: string,
+  resolution: string
+): GuideSetInputAction {
+  return {
+    type: GUIDE_SET_INPUT,
+    campaignId,
+    input: {
+      type: 'resolution',
+      scenario,
+      resolution,
+    },
   };
 }

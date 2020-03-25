@@ -370,31 +370,6 @@
     "campaignId": "tcu",
     "sections": [
       {
-        "section": "$input_value",
-        "entries": [
-          {
-            "id": "taken_by_the_watcher",
-            "text": "#name# was taken by the Watcher."
-          },
-          {
-            "id": "claimed_by_specters",
-            "text": "#name# was claimed by specters."
-          },
-          {
-            "id": "disappeared_into_the_mist",
-            "text": "#name# disappeared into the mist."
-          },
-          {
-            "id": "pulled_into_the_spectral_realm",
-            "text": "#name# was pulled into the spectral realm."
-          },
-          {
-            "id": "alive",
-            "text": "#name# is alive."
-          }
-        ]
-      },
-      {
         "section": "05046",
         "entries": [
           {
@@ -464,10 +439,6 @@
           {
             "id": "azathoth_devoured_the_universe",
             "text": "Azathoth devoured the universe."
-          },
-          {
-            "id": "lead_investigator_joins_pipers",
-            "text": "#name# joins the pipers of Azathoth."
           },
           {
             "id": "azathoth_slumbers",
@@ -693,10 +664,6 @@
             "text": "Alejandro recovered the Relic of Ages."
           },
           {
-            "id": "jungle_watches",
-            "text": "the jungle watches."
-          },
-          {
             "id": "harbinger_alive",
             "text": "the Harbinger is still alive (#X# damage)."
           },
@@ -867,19 +834,6 @@
           {
             "id": "cleared_path_to_temple",
             "text": "the investigators cleared a path to the Eztli ruins."
-          }
-        ]
-      },
-      {
-        "section": "hidden",
-        "entries": [
-          {
-            "id": "tasks_completed",
-            "text": "#X# tasks completed"
-          },
-          {
-            "id": "final_depth",
-            "text": "#X# depth"
           }
         ]
       }

@@ -42,8 +42,16 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   constructor(props: Props) {
     super(props);
 
+    const selectedChoice: {
+      [code: string]: number | undefined;
+    } = {};
+    if (!props.optional) {
+      forEach(props.items, item => {
+        selectedChoice[item.code] = 0;
+      });
+    }
     this.state = {
-      selectedChoice: {},
+      selectedChoice,
     };
   }
 
@@ -96,7 +104,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.hasChoiceList(id);
+          const hasDecision = scenarioState.choiceList(id) !== undefined;
           const nonDetailedDefaultChoice = (optional ? -1 : 0);
           const defaultChoice = detailed ? undefined : nonDetailedDefaultChoice;
           return (

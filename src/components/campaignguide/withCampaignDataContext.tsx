@@ -8,7 +8,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioChoice, setScenarioSupplies, setScenarioChoiceList } from './actions';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
-import { ListChoices, SingleCampaign, Deck, ScenarioState, SupplyCounts } from 'actions/types';
+import { ListChoices, SingleCampaign, Deck, CampaignGuideState, SupplyCounts } from 'actions/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { getCampaignGuide, InvestigatorDeck } from 'data/scenario';
 import {
@@ -16,7 +16,7 @@ import {
   getCampaign,
   getDecks,
   getLatestCampaignDeckIds,
-  getScenarioGuideState,
+  getCampaignGuideState,
 } from 'reducers';
 
 export interface CampaignDataInputProps {
@@ -26,7 +26,7 @@ export interface CampaignDataInputProps {
 
 interface ReduxProps {
   campaign?: SingleCampaign;
-  scenarioState: ScenarioState;
+  campaignState: CampaignGuideState;
   decks: Deck[];
 }
 
@@ -77,7 +77,7 @@ export default function withCampaignDataContext<Props>(
     return {
       campaign,
       decks,
-      scenarioState: getScenarioGuideState(state, props.campaignId, props.scenarioId),
+      campaignState: getCampaignGuideState(state, props.campaignId),
     };
   };
 
@@ -191,10 +191,10 @@ export default function withCampaignDataContext<Props>(
     render() {
       const {
         campaign,
+        campaignState,
         investigators,
         decks,
         scenarioId,
-        scenarioState,
       } = this.props;
       if (!campaign) {
         return <Text>Unknown Campaign</Text>;
@@ -225,7 +225,7 @@ export default function withCampaignDataContext<Props>(
         investigatorDecks,
         scenarioState: new ScenarioStateHelper(
           scenarioGuide.scenario.id,
-          scenarioState,
+          campaignState,
           {
             setCount: this._setScenarioCount,
             setDecision: this._setScenarioDecision,

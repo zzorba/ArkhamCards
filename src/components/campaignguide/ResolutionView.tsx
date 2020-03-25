@@ -111,7 +111,7 @@ class ResolutionView extends React.Component<Props> {
                 choices={INVESTIGATOR_STATUS_CHOICES}
                 bulletType="none"
               />
-              { scenarioState.hasChoiceList(INVESTIGATOR_STATUS_ID) && (
+              { scenarioState.choiceList(INVESTIGATOR_STATUS_ID) !== undefined && (
                 this.renderResolution(resolution)
               ) }
             </ScrollView>

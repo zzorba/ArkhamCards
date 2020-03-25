@@ -21,9 +21,7 @@ import {
   DecksMap,
   Pack,
   SortType,
-  GuideState,
-  ScenarioState,
-  DEFAULT_SCENARIO_STATE,
+  CampaignGuideState,
   NEW_CHAOS_BAG_RESULTS,
 } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
@@ -420,17 +418,15 @@ export function getDefaultFilterState(
   return state.filters.defaults[filterId];
 }
 
-export function getGuideState(state: AppState, campaignId: number): GuideState {
+export function getGuideState(state: AppState, campaignId: number): CampaignGuideState {
   return state.guides.all[campaignId] || {
     scenarios: {},
   };
 }
 
-export function getScenarioGuideState(
+export function getCampaignGuideState(
   state: AppState,
-  campaignId: number,
-  scenarioCode: string
-): ScenarioState {
-  const guide = getGuideState(state, campaignId);
-  return guide.scenarios[scenarioCode] || DEFAULT_SCENARIO_STATE;
+  campaignId: number
+): CampaignGuideState {
+  return getGuideState(state, campaignId);
 }

@@ -79,13 +79,13 @@ export default class NumberPrompt extends React.Component<Props, State> {
 
   renderPrompt(scenarioState: ScenarioStateHelper) {
     const { id, prompt } = this.props;
-    const hasDecision = scenarioState.hasCount(id);
+    const count = scenarioState.count(id);
     return (
       <>
         <View style={styles.promptRow}>
           <CardTextComponent text={prompt} />
-          { hasDecision ? (
-            this.renderCount(scenarioState.count(id))
+          { count !== undefined ? (
+            this.renderCount(count)
           ) : (
             <PlusMinusButtons
               count={this.state.value}
@@ -97,7 +97,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
             />
           ) }
         </View>
-        { !hasDecision && <Button title="Done" onPress={this._submit} /> }
+        { (count === undefined) && <Button title="Done" onPress={this._submit} /> }
       </>
     );
   }
@@ -110,10 +110,10 @@ export default class NumberPrompt extends React.Component<Props, State> {
       effects,
     } = this.props;
     if (options) {
-      if (!scenarioState.hasCount(id)) {
+      const count = scenarioState.count(id);
+      if (count === undefined) {
         return null;
       }
-      const count = scenarioState.count(id);
       const theOption = find(options, option => option.numCondition === count);
       if (!theOption) {
         return null;

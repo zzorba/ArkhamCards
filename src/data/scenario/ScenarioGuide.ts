@@ -1,20 +1,12 @@
-import { find, flatMap, tail } from 'lodash';
+import { find, flatMap } from 'lodash';
 
 import {
-  BranchStep,
-  CampaignDataCondition,
-  CampaignDataScenarioCondition,
-  CampaignDataChaosBagCondition,
-  CampaignDataInvestigatorCondition,
-  CheckSuppliesCondition,
-  CardCondition,
-  ScenarioDataCondition,
-  Effect,
-  InputStep,
   Step,
   Scenario,
   Resolution,
 } from './types';
+import GuidedCampaignLog from './GuidedCampaignLog';
+import ScenarioStep from './ScenarioStep';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
 
@@ -25,16 +17,24 @@ export default class ScenarioGuide {
   scenario: Scenario;
   campaignGuide: CampaignGuide;
 
-  constructor(scenario: Scenario, campaignGuide: CampaignGuide) {
+  constructor(
+    scenario: Scenario,
+    campaignGuide: CampaignGuide
+  ) {
     this.scenario = scenario;
     this.campaignGuide = campaignGuide;
   }
 
   step(id: string): Step | undefined {
-    return find(this.scenario.steps, step => step.id === id);
+    return find(
+      this.scenario.steps,
+      step => step.id === id
+    );
   }
 
-  resolution(id: string): Resolution | undefined {
+  resolution(
+    id: string
+  ): Resolution | undefined {
     return find(this.scenario.resolutions || [], resolution => resolution.id === id);
   }
 
@@ -42,413 +42,44 @@ export default class ScenarioGuide {
     return flatMap(
       this.setupSteps(scenarioState),
       step => {
-        if (step.type === 'encounter_sets') {
-          return step.encounter_sets;
+        if (step.step.type === 'encounter_sets') {
+          return step.step.encounter_sets;
         }
         return [];
       }
     );
   }
 
-  setupSteps(scenarioState: ScenarioStateHelper): Step[] {
-    return this.expandSteps(
-      this.scenario.setup,
-      scenarioState,
-      []
-    );
+  setupSteps(
+    scenarioState: ScenarioStateHelper
+  ): ScenarioStep[] {
+    return this.expandSteps(this.scenario.setup, scenarioState);
+
   }
 
   expandSteps(
     stepIds: string[],
-    scenarioState: ScenarioStateHelper,
-    result: Step[]
-  ): Step[] {
+    scenarioState: ScenarioStateHelper
+  ): ScenarioStep[] {
     if (!stepIds.length) {
-      return result;
+      return [];
     }
-    return this.expandStep(
-      stepIds[0],
-      scenarioState,
-      tail(stepIds),
-      result,
-    );
-  }
-
-  expandStep(
-    stepId: string,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[]
-  ): Step[] {
-    const step = this.step(stepId);
+    const [firstStepId, ...remainingStepIds] = stepIds;
+    const step = this.step(firstStepId);
     if (!step) {
-      console.log(`Missing step: ${stepId}`);
-      return this.expandSteps(
-        remainingStepIds,
-        scenarioState,
-        result
-      );
+      return [];
     }
-    switch (step.type) {
-      case 'branch': {
-        return this.expandBranchStep(
-          step,
-          scenarioState,
-          remainingStepIds,
-          result
-        );
-      }
-      case 'input':
-        return this.expandInputStep(
-          step,
-          scenarioState,
-          remainingStepIds,
-          result
-        );
-      case 'story':
-      case 'encounter_sets':
-      case 'rule_reminder':
-      case 'location_setup':
-        // No effects on this one.
-        return this.expandSteps(
-          remainingStepIds,
-          scenarioState,
-          [...result, step]
-        );
-      default:
-        return this.handleEffects(
-          step.id,
-          remainingStepIds,
-          scenarioState,
-          [...result, step],
-          step.effects || []
-        );
+    const result: ScenarioStep[] = [];
+    let scenarioStep: ScenarioStep | undefined = new ScenarioStep(
+      step,
+      this,
+      new GuidedCampaignLog([]),
+      remainingStepIds
+    );
+    while (scenarioStep) {
+      result.push(scenarioStep);
+      scenarioStep = scenarioStep.nextStep(scenarioState);
     }
-  }
-
-  handleCampaignData(
-    step: BranchStep,
-    condition: CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition | CampaignDataInvestigatorCondition,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[]
-  ): Step[] {
-    switch (condition.campaign_data) {
-      case 'difficulty':
-      case 'scenario_completed':
-      case 'chaos_bag':
-      case 'investigator':
-        return [...result, step];
-    }
-  }
-
-
-  handleCheckSupplies(
-    step: BranchStep,
-    condition: CheckSuppliesCondition,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[]
-  ): Step[] {
-    switch (condition.investigator) {
-      case 'any':
-      case 'all':
-      case 'choice':
-        // TODO: check supplies, needs an investigator AND a has supplies test.
-        return [...result, step];
-    }
-  }
-
-  handleScenarioDataCondition(
-    step: BranchStep,
-    condition: ScenarioDataCondition,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[]
-  ): Step[] {
-    switch (condition.scenario_data) {
-      case 'player_count':
-        const playerCount = scenarioState.playerCount();
-        const option = find(condition.options, option => option.numCondition === playerCount) ||
-          find(condition.options, option => !!option.default);
-        const extraSteps = (option && option.steps) || [];
-        return this.handleEffects(
-          step.id,
-          [
-            ...extraSteps,
-            ...remainingStepIds,
-          ],
-          scenarioState,
-          [...result, step],
-          (option && option.effects) || []
-        );
-      case 'investigator':
-        if (condition.options.length === 1 && condition.options[0].condition) {
-          return this.decisionTest(
-            step,
-            scenarioState,
-            remainingStepIds,
-            result,
-            condition.options[0]
-          );
-        }
-        // TODO: shouldn't actually happen.
-        return [...result, step];
-    }
-  }
-
-  handleCardCondition(
-    step: BranchStep,
-    condition: CardCondition,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[]
-  ): Step[] {
-    // Generally only has steps.
-    // Occasionally will have a trauma effect.
-    switch (condition.investigator) {
-      case 'defeated':
-      case 'any':
-        // For now we'll just ask the question.
-        return this.decisionTest(
-          step,
-          scenarioState,
-          remainingStepIds,
-          result,
-          find(step.condition.options, option => option.boolCondition === true),
-          find(step.condition.options, option => option.boolCondition === false || !!option.default)
-        );
-    }
-  }
-
-  expandBranchStep(
-    step: BranchStep,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[]
-  ): Step[] {
-    switch (step.condition.type) {
-      case 'check_supplies': {
-        return this.handleCheckSupplies(
-          step,
-          step.condition,
-          scenarioState,
-          remainingStepIds,
-          result
-        );
-      }
-      case 'campaign_log_section_exists':
-        return this.decisionTest(
-          step,
-          scenarioState,
-          remainingStepIds,
-          result,
-          find(step.condition.options, option => option.boolCondition === true),
-          find(step.condition.options, option => option.boolCondition === false)
-        );
-      case 'campaign_log':
-        return this.decisionTest(
-          step,
-          scenarioState,
-          remainingStepIds,
-          result,
-          find(step.condition.options, option => option.boolCondition === true),
-          find(step.condition.options, option => option.boolCondition === false)
-        );
-      case 'campaign_log_count':
-        if (scenarioState.hasCount(step.id)) {
-          const count = scenarioState.count(step.id);
-          const choice =
-            find(step.condition.options, option => option.numCondition === count) ||
-            step.condition.defaultOption;
-          const extraSteps = choice.steps || [];
-          return this.handleEffects(
-            step.id,
-            [
-              ...extraSteps,
-              ...remainingStepIds,
-            ],
-            scenarioState,
-            [...result, step],
-            choice.effects || []
-          );
-        }
-        // No decision return here.
-        return [...result, step];
-      case 'math':
-        // TODO: handle math
-        return [...result, step];
-      case 'campaign_data': {
-        return this.handleCampaignData(
-          step,
-          step.condition,
-          scenarioState,
-          remainingStepIds,
-          result
-        );
-      }
-      case 'scenario_data': {
-        return this.handleScenarioDataCondition(
-          step,
-          step.condition,
-          scenarioState,
-          remainingStepIds,
-          result
-        );
-      }
-      case 'has_card': {
-        return this.handleCardCondition(
-          step,
-          step.condition,
-          scenarioState,
-          remainingStepIds,
-          result
-        );
-      }
-      case 'trauma': {
-        return this.decisionTest(
-          step,
-          scenarioState,
-          remainingStepIds,
-          result,
-          find(step.condition.options, option => option.boolCondition === true),
-          find(step.condition.options, option => option.boolCondition === false || !!option.default)
-        );
-      }
-    }
-  }
-
-  expandInputStep(
-    step: InputStep,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[]
-  ): Step[] {
-    switch (step.input.type) {
-      case 'counter':
-        if (scenarioState.hasCount(step.id)) {
-          return this.handleEffects(
-            step.id,
-            remainingStepIds,
-            scenarioState,
-            [...result, step],
-            step.input.effects
-          );
-        }
-        return [...result, step];
-      case 'investigator_choice':
-        if (scenarioState.hasChoiceList(step.id)) {
-          // TODO: need to handle random basic weakness effects for the investigator.
-          return this.expandSteps(
-            remainingStepIds,
-            scenarioState,
-            [...result, step]
-          );
-        }
-        return [...result, step];
-      case 'supplies':
-        if (scenarioState.hasSupplies(step.id)) {
-          // No effects for supplies entry.
-          return this.expandSteps(
-            remainingStepIds,
-            scenarioState,
-            [...result, step]
-          );
-        }
-        return [...result, step];
-      case 'investigator_counter':
-      case 'card_choice':
-        if (scenarioState.hasChoiceList(step.id)) {
-          // Only simple effects here, nothing with branches
-          return this.expandSteps(
-            remainingStepIds,
-            scenarioState,
-            [...result, step]
-          );
-        }
-        return [...result, step];
-      case 'choose_many':
-        // TODO: used by inner-circle, needs to iterate until # of choices = 3
-        return [...result, step];
-      case 'choose_one': {
-        if (step.input.choices.length === 1) {
-          const choice = step.input.choices[0];
-          return this.decisionTest(
-            step,
-            scenarioState,
-            remainingStepIds,
-            result,
-            choice
-          );
-        }
-
-        // Multiple choice prompt
-        if (scenarioState.hasChoice(step.id)) {
-          const index = scenarioState.choice(step.id);
-          const choice = step.input.choices[index];
-          return this.handleEffects(
-            step.id,
-            [...(choice.steps || []), ...remainingStepIds],
-            scenarioState,
-            [...result, step],
-            choice.effects || []
-          );
-        }
-        // No decision yet, so stop here
-        return [...result, step];
-      }
-      case 'use_supplies':
-        // TODO: guide
-        return [...result, step];
-    }
-  }
-
-  decisionTest(
-    step: Step,
-    scenarioState: ScenarioStateHelper,
-    remainingStepIds: string[],
-    result: Step[],
-    ifTrue?: {
-      steps?: null | string[];
-      effects?: null | Effect[];
-    },
-    ifFalse?: {
-      steps?: null | string[];
-      effects?: null | Effect[];
-    }
-  ): Step[] {
-    if (scenarioState.hasDecision(step.id)) {
-      const resultCondition = scenarioState.decision(step.id) ? ifTrue : ifFalse;
-      return this.handleEffects(
-        step.id,
-        [
-          ...((resultCondition && resultCondition.steps) || []),
-          ...remainingStepIds,
-        ],
-        scenarioState,
-        [...result, step],
-        (resultCondition && resultCondition.effects) || []
-      );
-    }
-    // No decision, stop here
-    return [...result, step];
-  }
-
-  handleEffects(
-    id: string,
-    remainingStepIds: string[],
-    scenarioState: ScenarioStateHelper,
-    result: Step[],
-    effects: Effect[]
-  ): Step[] {
-    if (effects && effects.length) {
-      const hasChoiceList = !!find(effects, effect => (
-        effect.type === 'add_card' && effect.investigator === 'choice'
-      ));
-      if (hasChoiceList && !scenarioState.hasChoice(`${id}_investigator`)) {
-        return result;
-      }
-    }
-    return this.expandSteps(remainingStepIds, scenarioState, result);
+    return result;
   }
 }

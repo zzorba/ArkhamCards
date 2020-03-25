@@ -18,7 +18,8 @@ interface Props {
 export default class InvestigatorSelectorWrapper extends React.Component<Props> {
   investigators(
     scenarioState: ScenarioStateHelper,
-    investigatorDecks: InvestigatorDeck[]
+    investigatorDecks: InvestigatorDeck[],
+    choice: number | undefined
   ): InvestigatorDeck[] {
     const { investigator, inputValue } = this.props;
     switch (investigator) {
@@ -31,8 +32,7 @@ export default class InvestigatorSelectorWrapper extends React.Component<Props> 
       case 'any':
         return [];
       case 'choice':
-        const choice = scenarioState.choice(`${this.props.id}_investigator`)
-        if (choice === -1) {
+        if (choice === undefined || choice === -1) {
           return [];
         }
         return [investigatorDecks[choice]];
@@ -58,17 +58,25 @@ export default class InvestigatorSelectorWrapper extends React.Component<Props> 
     const { id, render, investigator } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ scenarioState, investigatorDecks }: ScenarioGuideContextType) => (
-          (investigator === 'choice' && !scenarioState.hasChoice(`${id}_investigator`)) ? (
-            <ChooseInvestigatorPrompt
-              id={this.props.id}
-              title={t`Investigator`}
-              defaultLabel={t`None`}
-            />
-          ) : (
-            render(this.investigators(scenarioState, investigatorDecks))
-          )
-        ) }
+        { ({ scenarioState, investigatorDecks }: ScenarioGuideContextType) => {
+          const choice = scenarioState.choice(`${id}_investigator`);
+          if (investigator === 'choice' && choice === undefined) {
+            return (
+              <ChooseInvestigatorPrompt
+                id={this.props.id}
+                title={t`Investigator`}
+                defaultLabel={t`None`}
+              />
+            );
+          }
+          return render(
+            this.investigators(
+              scenarioState,
+              investigatorDecks,
+              choice
+            )
+          );
+        } }
       </ScenarioGuideContext.Consumer>
     )
   }

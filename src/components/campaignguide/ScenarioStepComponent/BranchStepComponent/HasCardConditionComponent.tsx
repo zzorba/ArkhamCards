@@ -9,10 +9,12 @@ import {
   BranchStep,
   CardCondition,
 } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
   condition: CardCondition;
+  campaignLog: GuidedCampaignLog;
 }
 
 export default class HasCardConditionComponent extends React.Component<Props> {

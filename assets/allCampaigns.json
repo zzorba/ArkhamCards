@@ -376,11 +376,14 @@
             "text": "Sacrificed",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "sacrificed"
+                "type": "campaign_log_cards",
+                "section": "sacrificed",
+                "id": "$input_value",
+                "text": "#name#"
               },
               {
-                "type": "remove_card"
+                "type": "remove_card",
+                "card": "$input_value"
               }
             ]
           }
@@ -3643,8 +3646,10 @@
             "text": "Interrogated",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_interrogated"
+                "type": "campaign_log_cards",
+                "section": "cultists_interrogated",
+                "id": "$input_value",
+                "text": "#name#"
               }
             ]
           },
@@ -3652,8 +3657,10 @@
             "text": "Got away",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_escaped"
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           }
@@ -3678,8 +3685,10 @@
             "text": "Interrogated",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_interrogated"
+                "type": "campaign_log_cards",
+                "section": "cultists_interrogated",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           },
@@ -3687,8 +3696,10 @@
             "text": "Got away",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_escaped"
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           }
@@ -4357,7 +4368,8 @@
         "effects": [
           {
             "type": "campaign_log_count",
-            "section": "chasing_the_stranger"
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
           }
         ]
       }
@@ -4369,7 +4381,8 @@
         {
           "type": "campaign_log_count",
           "section": "chasing_the_stranger",
-          "add_count": 2
+          "operation": "add",
+          "value": 2
         }
       ]
     },
@@ -4405,7 +4418,8 @@
         {
           "type": "campaign_log_count",
           "section": "conviction",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -4446,7 +4460,8 @@
         {
           "type": "campaign_log_count",
           "section": "doubt",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     }
@@ -4539,11 +4554,11 @@
       "condition": {
         "type": "math",
         "opA": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "doubt"
         },
         "opB": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "conviction"
         },
         "operation": "sum",
@@ -4585,11 +4600,11 @@
       "condition": {
         "type": "math",
         "opA": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "doubt"
         },
         "opB": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "conviction"
         },
         "operation": "compare",
@@ -4935,11 +4950,11 @@
       "condition": {
         "type": "math",
         "opA": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "doubt"
         },
         "opB": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "conviction"
         },
         "operation": "compare",
@@ -5153,7 +5168,8 @@
         {
           "type": "campaign_log_count",
           "section": "conviction",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         },
         {
           "type": "add_card",
@@ -5193,7 +5209,8 @@
         {
           "type": "campaign_log_count",
           "section": "doubt",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -5521,7 +5538,8 @@
         {
           "type": "campaign_log_count",
           "section": "doubt",
-          "add_count": 2
+          "operation": "add",
+          "value": 2
         }
       ]
     },
@@ -5532,7 +5550,8 @@
         {
           "type": "campaign_log_count",
           "section": "conviction",
-          "add_count": 2
+          "operation": "add",
+          "value": 2
         }
       ]
     },
@@ -5641,7 +5660,8 @@
         {
           "type": "campaign_log_count",
           "section": "doubt",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -5658,7 +5678,8 @@
         {
           "type": "campaign_log_count",
           "section": "conviction",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -5738,29 +5759,34 @@
       "id": "slay_vips",
       "effects": [
         {
-          "type": "campaign_log",
+          "type": "campaign_log_cards",
           "section": "vips_slain",
-          "card": "03065b"
+          "id": "03065b",
+          "text": "#name#"
         },
         {
-          "type": "campaign_log",
+          "type": "campaign_log_cards",
           "section": "vips_slain",
-          "card": "03066b"
+          "id": "03066b",
+          "text": "#name#"
         },
         {
-          "type": "campaign_log",
+          "type": "campaign_log_cards",
           "section": "vips_slain",
-          "card": "03067b"
+          "id": "03067b",
+          "text": "#name#"
         },
         {
-          "type": "campaign_log",
+          "type": "campaign_log_cards",
           "section": "vips_slain",
-          "card": "03068b"
+          "id": "03068b",
+          "text": "#name#"
         },
         {
-          "type": "campaign_log",
+          "type": "campaign_log_cards",
           "section": "vips_slain",
-          "card": "03069b"
+          "id": "03069b",
+          "text": "#name#"
         }
       ]
     },
@@ -5911,7 +5937,8 @@
         {
           "type": "campaign_log_count",
           "section": "doubt",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -6033,7 +6060,8 @@
         {
           "type": "campaign_log_count",
           "section": "conviction",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -6119,11 +6147,11 @@
       "condition": {
         "type": "math",
         "opA": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "doubt"
         },
         "opB": {
-          "type": "campaign_log",
+          "type": "campaign_log_count",
           "section": "conviction"
         },
         "operation": "compare",
@@ -6509,8 +6537,10 @@
             "text": "Interviewed",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "vips_interviewed"
+                "type": "campaign_log_cards",
+                "section": "vips_interviewed",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           }
@@ -6535,8 +6565,10 @@
             "text": "Slain",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "vips_slain"
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           }
@@ -6797,7 +6829,8 @@
         {
           "type": "campaign_log_count",
           "section": "chasing_the_stranger",
-          "add_count": 2
+          "operation": "add",
+          "value": 2
         }
       ]
     },
@@ -7669,8 +7702,10 @@
             "text": "Victory display",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_interrogated"
+                "type": "campaign_log_cards",
+                "section": "cultists_interrogated",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           },
@@ -7678,8 +7713,10 @@
             "text": "In play or in Cultist deck",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_escaped"
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           },
@@ -7708,8 +7745,10 @@
             "text": "Victory display",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_interrogated"
+                "type": "campaign_log_cards",
+                "section": "cultists_interrogated",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           },
@@ -7717,8 +7756,10 @@
             "text": "In play or in Cultist deck",
             "effects": [
               {
-                "type": "campaign_log",
-                "section": "cultists_escaped"
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name"
               }
             ]
           },
@@ -8581,10 +8622,10 @@
       "id": "lead_investigator_joins_pipers",
       "effects": [
         {
-          "type": "campaign_log",
+          "type": "campaign_log_cards",
           "section": "campaign_notes",
           "id": "lead_investigator_joins_pipers",
-          "card": "$lead_investigator",
+          "cards": "$lead_investigator",
           "text": "#name# joins the pipers of Azathoth."
         }
       ]
@@ -8848,7 +8889,7 @@
             "text": "Not Chosen",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "$input_value",
                 "cross_out": true
               }
@@ -9038,7 +9079,7 @@
             "text": "Taken by the Watcher",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
                 "text": "#name# was taken by the Watcher."
@@ -9049,7 +9090,7 @@
             "text": "Claimed by specters",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
                 "text": "#name# was claimed by specters."
@@ -9060,7 +9101,7 @@
             "text": "Disappeared into the mist",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
                 "text": "#name# disappeared into the mist."
@@ -9071,7 +9112,7 @@
             "text": "Pulled into the spectral realm",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
                 "text": "#name# was pulled into the spectral realm."
@@ -10934,7 +10975,7 @@
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "heretics_released",
-            "setInput": true,
+            "operation": "set_input",
             "text": "#X# heretics were unleashed unto Arkham."
           }
         ]
@@ -11391,7 +11432,8 @@
           "section": "campaign_notes",
           "id": "path_winds_before_you",
           "text": "the path winds before you: #num#",
-          "set_count": 0
+          "operation": "set",
+          "value": 0
         }
       ]
     },
@@ -11418,7 +11460,8 @@
           "type": "campaign_log_count",
           "section": "campaign_notes",
           "id": "path_winds_before_you",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -11470,7 +11513,8 @@
           "type": "campaign_log_count",
           "section": "campaign_notes",
           "id": "path_winds_before_you",
-          "add_count": 2
+          "operation": "add",
+          "value": 2
         }
       ]
     },
@@ -11573,7 +11617,8 @@
           "type": "campaign_log_count",
           "section": "campaign_notes",
           "id": "path_winds_before_you",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -11585,7 +11630,8 @@
           "type": "campaign_log_count",
           "section": "campaign_notes",
           "id": "path_winds_before_you",
-          "add_count": 2
+          "operation": "add",
+          "value": 2
         }
       ]
     },
@@ -11612,7 +11658,8 @@
           "type": "campaign_log_count",
           "section": "campaign_notes",
           "id": "path_winds_before_you",
-          "add_count": 1
+          "operation": "add",
+          "value": 1
         }
       ]
     },
@@ -11639,7 +11686,8 @@
           "type": "campaign_log_count",
           "section": "campaign_notes",
           "id": "path_winds_before_you",
-          "add_count": 2
+          "operation": "add",
+          "value": 2
         }
       ]
     },
@@ -12136,7 +12184,7 @@
             "text": "Alive",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "alive",
                 "text": "#name# is alive."
@@ -13112,7 +13160,8 @@
         {
           "type": "campaign_log_count",
           "section": "yigs_fury",
-          "add_count": 3
+          "operation": "add",
+          "value": 3
         }
       ]
     },
@@ -13191,7 +13240,8 @@
         "effects": [
           {
             "type": "campaign_log_count",
-            "section": "yigs_fury"
+            "section": "yigs_fury",
+            "operation": "add_input"
           }
         ]
       }
@@ -13207,7 +13257,8 @@
           {
             "type": "campaign_log_count",
             "section": "yigs_fury",
-            "add_count": 10
+            "operation": "add",
+            "value": 10
           }
         ]
       }
@@ -13483,9 +13534,9 @@
         "effects": [
           {
             "type": "campaign_log_count",
-            "setInput": true,
             "section": "campaign_notes",
             "id": "paths_known",
+            "operation": "set_input",
             "text": "#X# paths are known to you."
           }
         ]
@@ -13519,10 +13570,11 @@
             "text": "Victory display",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "jungle_watches",
-                "text": "the jungle watches."
+                "cards": "$input_value",
+                "text": "the jungle watches (#name#)."
               }
             ]
           }
@@ -13676,7 +13728,8 @@
         "effects": [
           {
             "type": "campaign_log_count",
-            "section": "yigs_fury"
+            "section": "yigs_fury",
+            "operation": "add_input"
           }
         ]
       }
@@ -13802,7 +13855,7 @@
     },
     {
       "id": "check_map",
-      "text": "Check your supplies. If any investigator has a map, he or she reads <b>A Path Discovered</b>.",
+      "text": "Check your supplies to see if any investigator has a map.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -13872,7 +13925,7 @@
             "boolCondition": true,
             "effects": [{
               "type": "remove_card",
-              "investigator": "any",
+              "investigator": "choice",
               "card": "04102"
             }]
           }
@@ -13889,8 +13942,11 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["poison_spreads", "one_physical_trauma"],
             "effects": [
+              {
+                "type": "story_step",
+                "steps": ["poison_spreads"]
+              },
               {
                 "type": "trauma",
                 "investigator": "$input_value",
@@ -13908,10 +13964,6 @@
       "text": "The poison continues to work its way through your body, wreacking havoc on your internal organs. A terrible fever burns through you, growing stronger with each passing day. You can hardly keep down your food. Your body feels as though it has been drained of all of its strength."
     },
     {
-      "id": "one_physical_trauma",
-      "text": "You suffer 1 physical trauma"
-    },
-    {
       "id": "find_stone_carvings",
       "type": "story",
       "text": "As you trudge through the lush jungle and pass a series of familiar overgrown temple ruins, your keen eye spots a pattern along the stone wall of the structure. Upon closer examination, you find that vines and caked dirt has hidden an elaborate carving of hieroglyphs."
@@ -13919,7 +13971,7 @@
     {
       "id": "check_canteen",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has a canteen, he or she reads <b>Patterns in the Stone</b>. Otherwise, read <b>Secrets in the Stone</b>.",
+      "text": "Check your supplies to see if any investigator has a canteen.",
       "condition": {
         "type": "check_supplies",
         "investigator": "any",
@@ -14169,19 +14221,14 @@
         "id": "blanket",
         "options": [
           {
-            "boolCondition": false,
-            "steps": ["tossing_and_turning", "choice_of_trauma"],
-            "effects": [
-              {
-                "type": "trauma",
-                "investigator": "$input_value",
-                "mental_or_physical": 1
-              }
-            ]
+            "boolCondition": true,
+            "condition": "Restful Sleep",
+            "steps": ["restful_sleep", "no_ill_effects"]
           },
           {
-            "boolCondition": true,
-            "steps": ["restless_sleep", "no_ill_effects"]
+            "boolCondition": false,
+            "condition": "Tossing and Turning",
+            "steps": ["tossing_and_turning", "choice_of_trauma"]
           }
         ]
       }
@@ -14194,10 +14241,18 @@
     },
     {
       "id": "choice_of_trauma",
-      "text": "You suffer 1 physical or mental trauma <i>(your choice)</i>."
+      "text": "You suffer 1 physical or mental trauma <i>(your choice)</i>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "$input_value",
+          "mental_or_physical": 1
+        }
+      ]
     },
     {
-      "id": "restless_sleep",
+      "id": "restful_sleep",
+      "title": "Restful Sleep",
       "type": "story",
       "text": "Mercifully, I was able to sleep through each night. However, while my body rested, my mind was plagued by nightmares. A cavern like a gaping maw, bathed in dim red light...the walls slithering with the glimmering scales of a hundred vipers...it might have been better had I not slept at all."
     },
@@ -14242,8 +14297,11 @@
         "options": [
           {
             "boolCondition": false,
-            "steps": ["eyes_in_the_dark", "one_mental_trauma"],
             "effects": [
+              {
+                "type": "story_step",
+                "steps": ["eyes_in_the_dark"]
+              },
               {
                 "type": "trauma",
                 "investigator": "$input_value",
@@ -14253,8 +14311,11 @@
           },
           {
             "boolCondition": true,
-            "steps": ["shapes_in_the_tress", "bonus_xp"],
             "effects": [
+              {
+                "type": "story_step",
+                "steps": ["shapes_in_the_tress", "bonus_binoculars_xp"]
+              },
               {
                 "type": "earn_xp",
                 "investigator": "$input_value",
@@ -14272,17 +14333,13 @@
       "text": "Each night, I was watched. I didn’t just feel watched: I saw the eyes peering out from the inky darkness that surrounded our camp. They knew we were there. The yellow eyes watched me, alert, my weapons drawn, ready to defend the camp if the need arose. Our eyes met, and a darkness seized my heart."
     },
     {
-      "id": "one_mental_trauma",
-      "text": "You suffer 1 mental trauma"
-    },
-    {
       "id": "shapes_in_the_tress",
       "type": "story",
       "title": "Shapes in the Trees",
       "text": "Most of the nights passed without incident, but on this night, I was startled by the rustling of tree branches along the southern border of our camp’s clearing. Despite the darkness, I was able to use my binoculars to see shapes moving in the trees. The shapes appeared human, but...why? Why do they only watch us from afar? What is their purpose?"
     },
     {
-      "id": "bonus_xp",
+      "id": "bonus_binoculars_xp",
       "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
     },
     {
@@ -14298,7 +14355,7 @@
             "boolCondition": true,
             "effects": [{
               "type": "remove_card",
-              "investigator": "any",
+              "investigator": "choice",
               "card": "04102"
             }]
           }
@@ -15122,7 +15179,7 @@
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "paths_known",
-            "setInput": true,
+            "operation": "set_input",
             "text": "#X# paths are known"
           }
         ]
@@ -15226,7 +15283,8 @@
         "effects": [
           {
             "type": "campaign_log_count",
-            "section": "yigs_fury"
+            "section": "yigs_fury",
+            "operation": "add_input"
           }
         ]
       }
@@ -15490,9 +15548,10 @@
         "text": "Tasks on act 2b that were completed:",
         "effects": [
           {
-            "type": "campaign_log",
+            "type": "campaign_log_count",
             "section": "hidden",
             "id": "tasks_completed",
+            "operation": "set",
             "text": "#X# tasks completed"
           }
         ]
@@ -15834,7 +15893,7 @@
     {
       "id": "check_torches",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has torches, he or she reads <b>Torchlight</b>. Otherwise, read <b>The Abyss</b>.",
+      "text": "Check your supplies to see if any investigator has torches.",
       "condition": {
         "type": "check_supplies",
         "investigator": "any",
@@ -15889,7 +15948,7 @@
     {
       "id": "check_map",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has a map, he or she reads <b>Reading Signs</b>.",
+      "text": "Check your supplies to see if any investigator has a map.",
       "condition": {
         "type": "check_supplies",
         "investigator": "any",
@@ -15897,8 +15956,11 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["reading_signs"],
             "effects": [
+              {
+                "type": "story_step",
+                "steps": ["reading_signs"]
+              },
               {
                 "type": "earn_xp",
                 "investigator": "$input_value"
@@ -16066,8 +16128,7 @@
       "effects": [
         {
           "type": "remove_card",
-          "card": "04147",
-          "investigator": "any"
+          "card": "04147"
         }
       ]
     },
@@ -16117,6 +16178,7 @@
     },
     {
       "id": "check_pocketknife",
+      "text": "Check your supplies to see if any investigator has a pocketknife.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -16183,8 +16245,7 @@
       "effects": [
         {
           "type": "remove_card",
-          "card": "04191",
-          "investigator": "any"
+          "card": "04191"
         }
       ]
     },
@@ -16415,9 +16476,10 @@
         "text": "Depth level when the scenario ended:",
         "effects": [
           {
-            "type": "campaign_log",
+            "type": "campaign_log_count",
             "section": "hidden",
             "id": "final_depth",
+            "operation": "set_input",
             "text": "#X# depth"
           }
         ]
@@ -16584,7 +16646,8 @@
         "effects": [
           {
             "type": "campaign_log_count",
-            "section": "yigs_fury"
+            "section": "yigs_fury",
+            "operation": "add_input"
           }
         ]
       }
@@ -16920,8 +16983,7 @@
       "effects": [
         {
           "type": "remove_card",
-          "card": "04326",
-          "investigator": "any"
+          "card": "04326"
         }
       ]
     },
@@ -16932,6 +16994,7 @@
     },
     {
       "id": "check_chalk",
+      "text": "Check your supplies to see if any investigator has chalk.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -17008,7 +17071,7 @@
             "boolCondition": true,
             "effects": [{
               "type": "remove_card",
-              "investigator": "any",
+              "investigator": "choice",
               "card": "04102"
             }]
           }
@@ -17025,8 +17088,11 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["poison_spreads", "one_physical_trauma"],
             "effects": [
+              {
+                "type": "story_step",
+                "steps": ["poison_spreads"]
+              },
               {
                 "type": "trauma",
                 "investigator": "$input_value",
@@ -17044,16 +17110,13 @@
       "text": "The poison has spread to nearly every part of your body. Your skin pales, and you are covered in cold feverish sweat. Simply rising to your feet requires a tremendous effort, and you get no rest at night despite your exhaustion. It won’t be long now before the poison claims your life."
     },
     {
-      "id": "one_physical_trauma",
-      "text": "You suffer 1 physical trauma"
-    },
-    {
       "id": "stop_and_rest",
       "type": "story",
       "text": "After descending hundreds and hundreds of steps, you decide to stop and rest. Though your watch tells you that night has fallen, the lack of natural sky is starting to affect your internal clock. With no flat ledge in sight, each member of your party claims one of the many narrow steps to sleep on."
     },
     {
       "id": "check_blanket",
+      "text": "Check your supplies. Each investigator with a blanket reads <b>Restful Sleep</b>. The rest read <b>Tossing and Turning</b>.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -17061,19 +17124,24 @@
         "id": "blanket",
         "options": [
           {
+            "boolCondition": true,
+            "condition": "Restful Sleep",
+            "steps": ["restful_sleep", "no_ill_effects"]
+          },
+          {
             "boolCondition": false,
-            "steps": ["tossing_and_turning"],
+            "condition": "Tossing and Turning",
             "effects": [
+              {
+                "type": "story_step",
+                "steps": ["tossing_and_turning"]
+              },
               {
                 "type": "trauma",
                 "investigator": "$input_value",
                 "mental_or_physical": 1
               }
             ]
-          },
-          {
-            "boolCondition": true,
-            "steps": ["restless_sleep", "no_ill_effects"]
           }
         ]
       }
@@ -17085,7 +17153,8 @@
       "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
     },
     {
-      "id": "restless_sleep",
+      "id": "restful_sleep",
+      "title": "Restful Sleep",
       "type": "story",
       "text": "Though you long for a proper bed, at least your blanket protects you from the frigid chill that permeates the cavern. When “morning” arrives, your body longs for more sleep, but you know you must press onward and reach the Nexus as fast as you can..."
     }
@@ -18271,7 +18340,8 @@
         "effects": [
           {
             "type": "campaign_log_count",
-            "section": "yigs_fury"
+            "section": "yigs_fury",
+            "operation": "add_input"
           }
         ]
       }

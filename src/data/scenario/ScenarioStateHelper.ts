@@ -1,6 +1,13 @@
-import { forEach } from 'lodash';
+import { findLast, forEach } from 'lodash';
 
-import { ListChoices, ScenarioState, SupplyCounts } from 'actions/types';
+import {
+  GuideInput,
+  GuideChoiceInput,
+  GuideChoiceListInput,
+  ListChoices,
+  CampaignGuideState,
+  SupplyCounts,
+} from 'actions/types';
 import { INVESTIGATOR_STATUS_ID, ORDERED_INVESTIGATOR_STATUS, InvestigatorResolutionStatus } from 'data/scenario';
 
 export interface ScenarioStateActions {
@@ -14,13 +21,13 @@ export interface ScenarioStateActions {
 
 export default class ScenarioStateHelper {
   scenarioId: string;
-  state: ScenarioState;
+  state: CampaignGuideState;
   actions: ScenarioStateActions;
   numPlayers: number;
 
   constructor(
     scenarioId: string,
-    state: ScenarioState,
+    state: CampaignGuideState,
     actions: ScenarioStateActions,
     // TODO: maybe break this out to be a choice?
     numPlayers: number
@@ -36,7 +43,11 @@ export default class ScenarioStateHelper {
   }
 
   leadInvestigatorChoice(): number {
-    return this.choice(`${this.scenarioId}_investigator`);
+    const choice = this.choice(`${this.scenarioId}_investigator`);
+    if (choice === undefined) {
+      throw new Error('Lead Investigator called before decision');
+    }
+    return choice;
   }
 
   playerCount(): number {
@@ -59,74 +70,74 @@ export default class ScenarioStateHelper {
     return result;
   }
 
-  hasStepInput(id: string) {
-    return (
-      this.hasChoice(id) ||
-      this.hasDecision(id) ||
-      this.hasChoiceList(id) ||
-      this.hasSupplies(id) ||
-      this.hasDecision(id) ||
-      this.hasCount(id)
-    );
-  }
-
   setChoice(id: string, value: number) {
     this.actions.setChoice(id, value);
   }
 
-  hasChoice(id: string): boolean {
-    return this.state.choices[id] !== undefined;
+  private entry(type: string, step?: string): GuideInput | undefined {
+    return findLast(
+      this.state.inputs,
+      input => (
+        input.type === type &&
+        input.scenario === this.scenarioId &&
+        (input.type === 'resolution' || input.step === step)
+      )
+    );
   }
 
-  choice(id: string): number {
-    return this.state.choices[id];
+  choice(id: string): number | undefined {
+    const entry = this.entry('choice', id);
+    if (entry && entry.type === 'choice') {
+      return entry.choice;
+    }
+    return undefined;
   }
 
   setChoiceList(id: string, value: ListChoices) {
     this.actions.setChoiceList(id, value);
   }
 
-  hasChoiceList(id: string): boolean {
-    return this.state.listChoices[id] !== undefined;
-  }
-
-  choiceList(id: string): ListChoices {
-    return this.state.listChoices[id];
+  choiceList(id: string): ListChoices | undefined {
+    const entry = this.entry('choice_list', id);
+    if (entry && entry.type === 'choice_list') {
+      return entry.choices;
+    }
+    return undefined;
   }
 
   setSupplies(id: string, value: SupplyCounts) {
     this.actions.setSupplies(id, value);
   }
 
-  hasSupplies(id: string): boolean {
-    return this.state.supplyCounts[id] !== undefined;
-  }
-
-  supplies(id: string): SupplyCounts {
-    return this.state.supplyCounts[id];
+  supplies(id: string): SupplyCounts | undefined {
+    const entry = this.entry('supplies', id);
+    if (entry && entry.type === 'supplies') {
+      return entry.supplies;
+    }
+    return undefined;
   }
 
   setDecision(id: string, value: boolean) {
     this.actions.setDecision(id, value);
   }
 
-  hasDecision(id: string) {
-    return this.state.decisions[id] !== undefined;
-  }
-
-  decision(id: string): boolean {
-    return this.state.decisions[id];
+  decision(id: string): boolean | undefined {
+    const entry = this.entry('decision', id);
+    if (entry && entry.type === 'decision') {
+      return entry.decision;
+    }
+    return undefined;
   }
 
   setCount(id: string, value: number) {
     this.actions.setCount(id, value);
   }
 
-  hasCount(id: string) {
-    return this.state.counts[id] !== undefined;
-  }
-
-  count(id: string): number {
-    return this.state.counts[id];
+  count(id: string): number | undefined {
+    const entry = this.entry('count', id);
+    if (entry && entry.type === 'count') {
+      return entry.count;
+    }
+    return undefined;
   }
 }

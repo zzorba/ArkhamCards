@@ -59,10 +59,8 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.hasChoice(id);
-          const selectedIndex = hasDecision ?
-            scenarioState.choice(id) :
-            this.state.selectedIndex;
+          const choice = scenarioState.choice(id);
+          const selectedIndex = choice !== undefined ? choice : this.state.selectedIndex;
           return (
             <>
               <PickerComponent
@@ -76,11 +74,12 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
                     };
                   })}
                 selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
-                editable={!hasDecision}
+                editable={choice === undefined}
                 onChoiceChange={this._onChoiceChange}
               />
-              { hasDecision ?
-                (!!renderResults && renderResults(investigatorDecks[scenarioState.choice(id)])) :
+              { choice !== undefined ?
+                // TODO: need to handle no-choice here?
+                (!!renderResults && renderResults(investigatorDecks[choice])) :
                 this.renderSaveButton()
               }
             </>

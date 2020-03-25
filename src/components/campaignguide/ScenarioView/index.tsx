@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
-import { flatMap } from 'lodash';
+import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import ChooseInvestigatorPrompt from '../prompts/ChooseInvestigatorPrompt';
@@ -116,7 +116,8 @@ class ScenarioView extends React.Component<Props> {
                   required
                 />
               ) }
-              { (interlude || scenarioState.hasChoice(`${scenarioGuide.scenario.id}_investigator`)) && (
+              { (interlude ||
+                scenarioState.choice(`${scenarioGuide.scenario.id}_investigator`) !== undefined) && (
                 <>
                   <StepsComponent
                     steps={scenarioGuide.setupSteps(scenarioState)}

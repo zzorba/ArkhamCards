@@ -53,10 +53,8 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.hasChoice(id);
-          const selectedChoice = hasDecision ?
-            scenarioState.choice(id) :
-            this.state.selectedChoice;
+          const decision = scenarioState.choice(id);
+          const selectedChoice = decision !== undefined ? decision : this.state.selectedChoice;
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
@@ -68,10 +66,10 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                 choices={choices}
                 selectedIndex={selectedChoice}
                 onSelect={this._onChoiceChange}
-                editable={!hasDecision}
+                editable={decision === undefined}
               />
-              { hasDecision ? (
-                this.renderResults(scenarioState.choice(id))
+              { decision !== undefined ? (
+                this.renderResults(decision)
               ) : (
                 <Button
                   title={t`Save`}
