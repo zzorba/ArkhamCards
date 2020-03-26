@@ -56,6 +56,15 @@ export default class ScenarioStep {
       case 'rule_reminder':
       case 'location_setup':
         return this.proceedToNextStep(this.remainingStepIds);
+      case 'resolution': {
+        const resolution = this.scenarioGuide.resolution(this.step.resolution);
+        if (!resolution) {
+          throw new Error(`Unknown resolution: ${this.step.resolution}`);
+        }
+        return this.proceedToNextStep(
+          [...resolution.steps, ...this.remainingStepIds]
+        );
+      }
       default:
         return this.handleEffects(
           this.step.id,
@@ -167,7 +176,6 @@ export default class ScenarioStep {
       }
     }
   }
-
 
   private getOperand(op: Operand): number {
     switch (op.type) {

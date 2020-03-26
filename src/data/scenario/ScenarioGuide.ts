@@ -12,6 +12,8 @@ import CampaignGuide from './CampaignGuide';
 import {
   LEAD_INVESTIGATOR_STEP,
   INVESTIGATOR_STATUS_STEP,
+  CHOOSE_RESOLUTION_STEP_ID,
+  chooseResolutionStep,
 } from './fixedSteps';
 
 /**
@@ -35,6 +37,23 @@ export default class ScenarioGuide {
     }
     if (id === LEAD_INVESTIGATOR_STEP.id) {
       return LEAD_INVESTIGATOR_STEP;
+    }
+    if (id === CHOOSE_RESOLUTION_STEP_ID) {
+      return chooseResolutionStep(this.scenario.resolutions || []);
+    }
+    if (id.startsWith('$r_')) {
+      const resolution = id.substring(3);
+      return {
+        id,
+        type: 'resolution',
+        resolution,
+        effects: [{
+          type: 'scenario_data',
+          setting: 'scenario_status',
+          status: 'resolution',
+          resolution,
+        }],
+      };
     }
     return find(
       this.scenario.steps,

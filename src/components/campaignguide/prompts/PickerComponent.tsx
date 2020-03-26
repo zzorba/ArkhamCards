@@ -4,11 +4,11 @@ import { SettingsPicker } from 'react-native-settings-components';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { EffectsChoice, SimpleEffectsChoice } from 'data/scenario/types';
+import { Choice } from 'data/scenario/types';
 import { COLORS } from 'styles/colors';
 
 interface Props {
-  choices: (EffectsChoice | SimpleEffectsChoice)[];
+  choices: Choice[];
   selectedIndex?: number;
   onChoiceChange: (index: number) => void;
   title: string;
@@ -60,7 +60,7 @@ export default class PickerComponent extends React.Component<Props> {
     const passedOptions = [
       ...map(choices, (choice, idx) => {
         return {
-          label: choice.text,
+          label: choice.text || '',
           value: idx,
         };
       }),
@@ -97,7 +97,7 @@ export default class PickerComponent extends React.Component<Props> {
         }}
         titleStyle={{
           color: colors.textColor,
-          fontWeight: '700',
+          fontWeight: '700'
         }}
         valueStyle={{
           color: colors.textColor,

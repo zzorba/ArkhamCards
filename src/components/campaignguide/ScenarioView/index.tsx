@@ -2,23 +2,15 @@ import React from 'react';
 import {
   Alert,
   ScrollView,
-  StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
-import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
-import ChooseInvestigatorPrompt from '../prompts/ChooseInvestigatorPrompt';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import StepsComponent from '../StepsComponent';
-import ResolutionButton from './ResolutionButton';
 import withCampaignDataContext, { CampaignDataInputProps } from '../withCampaignDataContext';
 import { iconsMap } from 'app/NavIcons';
 import { NavigationProps } from 'components/nav/types';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
-import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
 
 type Props = NavigationProps;
@@ -35,6 +27,10 @@ class ScenarioView extends React.Component<Props> {
         rightButtons: [{
           icon: iconsMap.replay,
           id: 'reset',
+          color: COLORS.navButton,
+        }, {
+          icon: iconsMap.undo,
+          id: 'undo',
           color: COLORS.navButton,
         }],
       },
@@ -56,6 +52,13 @@ class ScenarioView extends React.Component<Props> {
     if (buttonId === 'reset') {
       this.resetPressed();
     }
+    if (buttonId === 'undo') {
+      this.undoPressed();
+    }
+  }
+
+  undoPressed() {
+    this.context.scenarioState.undo();
   }
 
   resetPressed() {
@@ -74,34 +77,6 @@ class ScenarioView extends React.Component<Props> {
     );
   }
 
-  renderResolutions(scenarioGuide: ScenarioGuide) {
-    const { componentId } = this.props;
-    if (!scenarioGuide.scenario.resolutions) {
-      return null;
-    }
-    return (
-      <View style={styles.resolution}>
-        <View style={styles.wrapper}>
-          <Text style={[typography.bigGameFont, typography.center]}>
-            { t`Resolutions` }
-          </Text>
-          <Text style={[typography.gameFont, typography.center]}>
-            { t`DO NOT READ until the end of the scenario` }
-          </Text>
-        </View>
-        { flatMap(scenarioGuide.scenario.resolutions, (resolution, idx) => (
-          resolution.id === 'investigator_defeat' ? null : (
-            <ResolutionButton
-              key={idx}
-              componentId={componentId}
-              resolution={resolution}
-            />
-          ))
-        ) }
-      </View>
-    );
-  }
-
   render() {
     return (
       <ScenarioGuideContext.Consumer>
@@ -111,7 +86,6 @@ class ScenarioView extends React.Component<Props> {
               <StepsComponent
                 steps={scenarioGuide.setupSteps(scenarioState)}
               />
-              { this.renderResolutions(scenarioGuide) }
             </ScrollView>
           );
         } }
@@ -123,12 +97,3 @@ class ScenarioView extends React.Component<Props> {
 export default withCampaignDataContext<Props>(
   ScenarioView
 );
-
-const styles = StyleSheet.create({
-  wrapper: {
-    marginLeft: 16,
-    marginRight: 16,
-  },
-  resolution: {
-  },
-});

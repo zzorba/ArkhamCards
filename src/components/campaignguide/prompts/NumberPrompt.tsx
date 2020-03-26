@@ -132,20 +132,9 @@ export default class NumberPrompt extends React.Component<Props, State> {
 
   renderResult(choice: Option) {
     const { id } = this.props;
-    if (choice.effects) {
-      return (
-        <EffectsComponent id={id} effects={choice.effects} />
-      );
-    }
-    if (choice.steps) {
-      return null;
-    }
-    if (choice.resolution) {
-      return (
-        <Text>Resolution { choice.resolution }</Text>
-      );
-    }
-    return <Text>Unknown!</Text>;
+    return (
+      <EffectsComponent id={id} effects={choice.effects || undefined} />
+    );
   }
 
   render() {

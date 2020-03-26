@@ -3,6 +3,7 @@ import {
   Text,
 } from 'react-native';
 
+import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignLogContext from '../CampaignLogContext';
 import BranchStepComponent from './BranchStepComponent';
 import EncounterSetStepComponent from './EncounterSetStepComponent';
@@ -40,6 +41,8 @@ export default class ScenarioStepComponent extends React.Component<Props> {
         return <EncounterSetStepComponent step={step} />;
       case 'rule_reminder':
         return <RuleReminderStepComponent step={step} />;
+      case 'resolution':
+        return <ResolutionStepComponent step={step} />;
       case 'input':
         return (
           <InputStepComponent

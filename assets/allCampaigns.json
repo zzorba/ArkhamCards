@@ -215,7 +215,8 @@
     "encounter_deck",
     "check_bone_to_pick",
     "setup_hidden_cards",
-    "hidden_chamber_note"
+    "hidden_chamber_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -568,7 +569,8 @@
     "set_aside_cards",
     "add_chaos_token",
     "encounter_deck",
-    "train_note"
+    "train_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -846,6 +848,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
     }
   ],
   "resolutions": [
@@ -859,7 +866,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator was defeated)",
       "text": "Go to <b>Resolution 2</b>",
-      "resolution": "R2"
+      "steps": ["resolution_2"]
     },
     {
       "id": "R1",
@@ -885,7 +892,8 @@
     "faculty_offices",
     "set_aside_cards",
     "setup_locations",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -1129,7 +1137,8 @@
     "setup_locations",
     "set_aside_cards",
     "encounter_deck",
-    "locations_note"
+    "locations_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -1296,22 +1305,32 @@
         "choices": [
           {
             "text": "Act 1",
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           },
           {
             "text": "Act 2",
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           },
           {
             "text": "Act 3",
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           },
           {
             "text": "Act 4",
-            "resolution": "R2"
+            "steps": ["resolution_2"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
     },
     {
       "id": "defeated_killed",
@@ -1726,7 +1745,8 @@
     "pit_boss",
     "set_aside_cards",
     "encounter_deck",
-    "criminal_aloof_note"
+    "criminal_aloof_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -1926,6 +1946,11 @@
     {
       "id": "proceed_armitages_fate",
       "text": "Proceed to <b>Interlude I: Armitage’s Fate</b>."
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [
@@ -1933,7 +1958,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
       "text": "You barely made it out of the club alive. Go to <b>Resolution 1</b>",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -1973,7 +1998,8 @@
     "exhibit_halls",
     "set_aside_cards",
     "encounter_deck",
-    "void_note"
+    "void_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -2155,7 +2181,8 @@
     "play_powder",
     "add_weakness",
     "encounter_deck",
-    "random_location_note"
+    "random_location_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -2358,6 +2385,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [
@@ -2365,7 +2397,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 1</b>",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -2397,7 +2429,8 @@
     "select_act_2",
     "check_escaped_brood",
     "check_killed_silas_bishop",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -2751,6 +2784,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
     }
   ],
   "resolutions": [
@@ -2758,7 +2796,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 2</b>",
-      "resolution": "R2"
+      "steps": ["resolution_2"]
     },
     {
       "id": "R1",
@@ -2900,7 +2938,8 @@
     "check_escaped_cultists",
     "add_elder_thing",
     "check_past_midnight",
-    "check_ghoul_priest"
+    "check_ghoul_priest",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -3251,7 +3290,8 @@
     "gather_encounter_sets",
     "setup_locations",
     "set_aside_cards",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -3455,7 +3495,8 @@
     "check_house_standing",
     "encounter_deck",
     "check_ghoul_priest",
-    "doom_note"
+    "doom_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -3766,6 +3807,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [
@@ -3773,7 +3819,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 1</b>",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -3962,7 +4008,8 @@
     "setup_locations",
     "add_weakness",
     "encounter_deck",
-    "dual_agendas_rule"
+    "dual_agendas_rule",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -4265,13 +4312,18 @@
           "value": "lose"
         }
       ]
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
     }
   ],
   "resolutions": [
     {
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator was defeated)",
-      "resolution": "R3"
+      "steps": ["resolution_3"]
     },
     {
       "id": "R1",
@@ -4302,7 +4354,8 @@
     "gather_encounter_sets",
     "set_aside_cards",
     "setup_locations",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -4504,7 +4557,8 @@
     "take_horror",
     "encounter_deck",
     "single_sided_location",
-    "sanity_in_carcosa_rule"
+    "sanity_in_carcosa_rule",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -4961,15 +5015,15 @@
         "options": [
           {
             "numCondition": -1,
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           },
           {
             "numCondition": 0,
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           },
           {
             "numCondition": 1,
-            "resolution": "R5"
+            "steps": ["resolution_5"]
           }
         ],
         "defaultOption": {
@@ -4977,6 +5031,16 @@
           "steps": []
         }
       }
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "resolution_5",
+      "type": "resolution",
+      "resolution": "R5"
     }
   ],
   "resolutions": [
@@ -5030,7 +5094,8 @@
     "set_aside_cards",
     "spawn_cultists",
     "check_fled_dinner_party",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -5371,6 +5436,11 @@
           ]
         }
       ]
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
     }
   ],
   "resolutions": [
@@ -5378,7 +5448,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
       "text": "You barely escape the building with your body and mind intact, and flee to safety.",
-      "resolution": "R4"
+      "steps": ["resolution_4"]
     },
     {
       "id": "R1",
@@ -5826,7 +5896,8 @@
     "setup_locations",
     "set_aside_cards",
     "set_aside_lost_soul",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -6436,7 +6507,8 @@
     "setup_bystanders",
     "set_aside_cards",
     "setup_sickening_reality",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -6609,18 +6681,28 @@
           ]
         }
       ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
     }
   ],
   "resolutions": [
     {
       "id": "no_resolution_resigned",
       "title": "No Resolution (at least one investigator resigned)",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "no_resolution_defeated",
       "title": "No Resolution (all investigators defeated)",
-      "resolution": "R2"
+      "steps": ["resolution_2"]
     },
     {
       "id": "R1",
@@ -6656,7 +6738,8 @@
     "place_investigators",
     "set_aside_pallid_mask",
     "encounter_deck",
-    "location_adjacency_rule"
+    "location_adjacency_rule",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -7013,7 +7096,8 @@
     "setup_locations",
     "add_chaos_token",
     "select_act_2",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [{
       "id": "check_followers_of_the_sign_found_way",
@@ -7342,6 +7426,11 @@
         "setting": "skip_scenario",
         "scenario": "lost_soul"
       }]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [{
@@ -7353,7 +7442,7 @@
     {
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator was defeated)",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -7511,7 +7600,8 @@
     "check_house_standing",
     "encounter_deck",
     "check_ghoul_priest",
-    "doom_note"
+    "doom_note",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -7830,6 +7920,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [
@@ -7837,7 +7932,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 1</b>",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -8196,7 +8291,8 @@
     "check_valentino_clues",
     "remove_pieces_of_evidence",
     "encounter_deck",
-    "replacing_locations"
+    "replacing_locations",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -8342,18 +8438,33 @@
         "choices": [
           {
             "text": "Act 1",
-            "resolution": "R2"
+            "steps": ["resolution_2"]
           },
           {
             "text": "Act 2",
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           },
           {
             "text": "Act 3",
-            "resolution": "R1"
+            "steps": ["resolution_1"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
     },
     {
       "id": "investigators_escaped_the_spectral_realm",
@@ -8476,7 +8587,8 @@
     "empty_space",
     "act_1_locations",
     "act_2_locations",
-    "act_3_locations"
+    "act_3_locations",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -8704,15 +8816,25 @@
           {
             "flavor": "“It must be done.”",
             "description": "This will doom you.",
-            "resolution": "R5"
+            "steps": ["resolution_5"]
           },
           {
             "flavor": "“I refuse!”",
             "description": "This will doom the universe.",
-            "resolution": "R1"
+            "steps": ["resolution_1"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_5",
+      "type": "resolution",
+      "resolution": "R5"
     },
     {
       "id": "signed_the_black_book",
@@ -8767,7 +8889,7 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached (each investigator was defeated)",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "investigator_defeat",
@@ -8810,6 +8932,7 @@
 {
   "id": "disappearance_at_the_twilight_estate",
   "scenarioName": "Prologue: Disappearance at the Twilight Estate",
+  "interlude": true,
   "setup": [
     "pre_intro",
     "choose_neutral_investigators",
@@ -8826,7 +8949,8 @@
     "setup_investigators",
     "encounter_deck",
     "no_way_out",
-    "agenda_1_results"
+    "agenda_1_results",
+    "resolution_1"
   ],
   "steps": [
     {
@@ -9121,6 +9245,19 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "no_resolution",
+      "effects": [
+        {
+          "type": "scenario_data",
+          "setting": "scenario_status",
+          "status": "resolution",
+          "resolution": "no_resolution"
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -9250,7 +9387,8 @@
     "set_aside_cards",
     "set_aside_keys",
     "encounter_deck",
-    "keys"
+    "keys",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -9574,7 +9712,8 @@
     "choosing_a_random_location",
     "breaches_and_incursions",
     "placing_breaches",
-    "resolving_incursions"
+    "resolving_incursions",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -9898,7 +10037,7 @@
         "options": [
           {
             "boolCondition": true,
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           },
           {
             "boolCondition": false,
@@ -9906,6 +10045,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
     },
     {
       "id": "check_carl_sanford_resolution",
@@ -9917,10 +10061,15 @@
         "options": [
           {
             "boolCondition": true,
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
     },
     {
       "id": "doom_draws_ever_closer",
@@ -10493,7 +10642,8 @@
     "setup_locations",
     "create_unknown_place_deck",
     "set_aside_cards",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -10863,6 +11013,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [
@@ -10870,7 +11025,7 @@
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
       "text": "Flashes of vision spark your memory as you are dragged along the dirty wooden floor. A foul ceremony—the house—Nahab—a rhythmic chant—the spiraling black vortex—a dark revelry—the Primal Chaos—a child’s cries—a writhing tunnel inside your chest.",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -10897,7 +11052,8 @@
     "set_aside_spectral_web",
     "shuffle_heretics",
     "create_encounter_decks",
-    "spectral_encounter_deck"
+    "spectral_encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -11038,18 +11194,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
     }
   ],
   "resolutions": [
     {
       "id": "no_resolution_defeated",
       "title": "No Resolution (each investigator defeated)",
-      "resolution": "R2"
+      "steps": ["resolution_2"]
     },
     {
       "id": "no_resolution_resigned",
       "title": "No Resolution (at least one investigator resigned)",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -11078,7 +11244,8 @@
     "setup_locations",
     "set_aside_cards",
     "encounter_deck",
-    "lost_and_separated"
+    "lost_and_separated",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -11229,22 +11396,32 @@
         "choices": [
           {
             "text": "Act 1",
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           },
           {
             "text": "Act 2",
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           },
           {
             "text": "Act 3",
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           },
           {
             "text": "Act 4",
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
     },
     {
       "id": "witches_spell_broken",
@@ -11718,7 +11895,8 @@
     "check_heretics_released",
     "encounter_deck",
     "circle_braziers",
-    "wait_resolve_story_cards"
+    "wait_resolve_story_cards",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -12203,14 +12381,29 @@
           {
             "flavor": "“Yes.”",
             "description": "You may choose this option only if <i>the investigators were inducted into the Inner Circle</i>, and cannot choose this option <i>if the investigators are deceiving the Lodge</i>.",
-            "resolution": "R2"
+            "steps": ["resolution_2"]
           },
           {
             "flavor": "No.”",
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_8",
+      "type": "resolution",
+      "resolution": "R8"
     },
     {
       "id": "true_work_of_silver_twilight_lodge_has_begun",
@@ -12289,10 +12482,25 @@
           },
           {
             "boolCondition": false,
-            "resolution": "R6"
+            "steps": ["resolution_6"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_5",
+      "type": "resolution",
+      "resolution": "R5"
+    },
+    {
+      "id": "resolution_6",
+      "type": "resolution",
+      "resolution": "R6"
+    },
+    {
+      "id": "resolution_7",
+      "type": "resolution",
+      "resolution": "R7"
     },
     {
       "id": "josef_disappeared_1",
@@ -12304,7 +12512,7 @@
         "options": [
           {
             "boolCondition": true,
-            "resolution": "R7"
+            "steps": ["resolution_7"]
           },
           {
             "boolCondition": false,
@@ -12324,16 +12532,16 @@
         "options": [
           {
             "numCondition": 0,
-            "resolution": "R6"
+            "steps": ["resolution_6"]
           },
           {
             "numCondition": 1,
-            "resolution": "R6"
+            "steps": ["resolution_6"]
           }
         ],
         "defaultOption": {
           "default": true,
-          "resolution": "R7"
+          "steps": ["resolution_7"]
         }
       }
     },
@@ -12516,7 +12724,7 @@
       "id": "no_resolution",
       "title": "No resolution was reached (each investigator resigned or was defeated)",
       "text": "You barely remember sprinting back to shore and getting in your rowboat. It is as though you were possessed—by a fit of madness or by a spirit bent only on survival, you cannot say. You are shaken to your senses by the powerful gale which sweeps across the river, almost capsizing your boat. The spectral pillar marking the site of the Lodge’s ritual suddenly bursts outward. Dozens of specters and phantasmal shapes fly across the treetops and glide across the water. You will never forget their shrieks, like hundreds of deathcries sounding at once.",
-      "resolution": "R5"
+      "steps": ["resolution_5"]
     },
     {
       "id": "R1",
@@ -12534,15 +12742,13 @@
       "id": "R3",
       "title": "Resolution 3",
       "text": "Anette is right. Sanford tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. You shake your head.\n“A pity,” Mr. Sanford complains, “I thought you were smarter than this.” You take several steps back, retreating to where the witches are gathered. Sanford turns to the other members of his Order and points to you. “Kill them,” he commands.\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
-      "steps": ["carl_sanford_possesses_the_secrets_of_the_universe"],
-      "resolution": "R8"
+      "steps": ["carl_sanford_possesses_the_secrets_of_the_universe", "resolution_8"]
     },
     {
       "id": "R4",
       "title": "Resolution 4",
       "text": "Anette approaches, confronting the remnant’s ethereal shell. “Sister! We are the ones who have called you here from the great beyond.” The shattered revenant turns its attention to Anette, and the rest of her coven watch in anticipation.\n “What are you doing, you fool? This spirit is no mere witch!” Carl Sanford yells out. But it is too late. Anette ignores Mr. Sanford, continuing to speak with the spectral presence. “For years we have suffered injustice after injustice. Share with me your secrets, sister. Together, as one mind, body, and soul, we can begin anew.”\n The ghost reaches out to her with a long, skeletal arm. Anette’s sisters gasp as their high priestess steps forward and kneels before the being, offering herself. With a sudden rush of energy, the phantom soul is drawn inside Anette. She collapses to the ground, reeling from the spiritual impact. Her body writhes in torment, but none of the other witches step forward to help, instead watching with equal parts terror and fascination. Finally, Anette rises to her feet, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\n Carl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic. \nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
-      "steps": ["anette_mason_is_possessed_by_evil"],
-      "resolution": "R8"
+      "steps": ["anette_mason_is_possessed_by_evil", "resolution_8"]
     },
     {
       "id": "R5",
@@ -12553,15 +12759,13 @@
       "id": "R6",
       "title": "Resolution 6",
       "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Anette and her coven heavily wounded, and the Lodge stands victorious. Carl Sanford holds a thick leather tome in his hands, its pages glowing with arcane power. “What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n “What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\n Anette clenches her jaw and turns toward you. “Listen to me. You cannot even begin to fathom the secrets this monster now possesses. You must stop him, no matter the cost.”\nYou hold your tongue, but in the back of your mind, you suspect Anette is right. Sanford has tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. However, before you can confront Sanford, he turns to the other members of his Order and points to you. “This one is no longer useful,” he explains. “Kill them all.”\n “Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\n Your escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
-      "steps": ["carl_sanford_possesses_the_secrets_of_the_universe"],
-      "resolution": "R8"
+      "steps": ["carl_sanford_possesses_the_secrets_of_the_universe", "resolution_8"]
     },
     {
       "id": "R7",
       "title": "Resolution 7",
       "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Carl Sanford and the other members of his Order heavily wounded, and Anette and her coven stand victorious. Anette stands at the center of the clearing, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\n Carl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\n Anette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic.\n Your escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
-      "steps": ["anette_mason_is_possessed_by_evil"],
-      "resolution": "R8"
+      "steps": ["anette_mason_is_possessed_by_evil", "resolution_8"]
     },
     {
       "id": "R8",
@@ -12989,7 +13193,8 @@
     "create_exploration_deck",
     "set_aside_cards",
     "set_aside_poisoned",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -13111,26 +13316,46 @@
         "options": [
           {
             "numCondition": 0,
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           },
           {
             "numCondition": 1,
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           },
           {
             "numCondition": 2,
-            "resolution": "R3"
+            "steps": ["resolution_3"]
            },
           {
             "numCondition": 3,
-            "resolution": "R3"
+            "steps": ["resolution_3"]
           }
         ],
         "defaultOption": {
           "default": true,
-          "resolution": "R2"
+          "steps": ["resolution_2"]
         }
       }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    },
+    {
+      "id": "resolution_5",
+      "type": "resolution",
+      "resolution": "R5"
     },
     {
       "id": "yigs_fury_bad",
@@ -13174,11 +13399,11 @@
         "choices": [
           {
             "flavor": "“We can’t stop now—we have to go back inside!”",
-            "resolution": "R4"
+            "steps": ["resolution_4"]
           },
           {
             "flavor": "“It’s too dangerous. This place must be destroyed.”",
-            "resolution": "R5"
+            "steps": ["resolution_5"]
           }
         ]
       }
@@ -13328,7 +13553,7 @@
     {
       "id": "no_resolution_resigned",
       "title": "If no resolution was reached because each investigator resigned before act 3",
-      "resolution": "R3"
+      "steps": ["resolution_3"]
     },
     {
       "id": "R1",
@@ -13369,15 +13594,7 @@
   "setup": [
     "intro_1",
     "choose_who_to_consult",
-    "check_paths_known",
-    "gather_encounter_sets",
-    "setup_locations",
-    "setup_paths",
-    "check_replay",
-    "create_exploration_deck",
-    "check_mapped_way_forward",
-    "set_aside_poisoned",
-    "encounter_deck"
+    "check_paths_known"
   ],
   "steps": [
     {
@@ -13452,14 +13669,37 @@
         "options": [
           {
             "numCondition": 6,
-            "resolution": "R1"
+            "steps": ["resolution_1"]
           }
         ],
         "defaultOption": {
           "default": true,
-          "steps": []
+          "steps": [
+            "gather_encounter_sets",
+            "setup_locations",
+            "setup_paths",
+            "check_replay",
+            "create_exploration_deck",
+            "check_mapped_way_forward",
+            "set_aside_poisoned",
+            "encounter_deck",
+            "$choose_resolution"
+          ]
         }
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1",
+      "effects": [
+        {
+          "type": "scenario_data",
+          "setting": "scenario_status",
+          "status": "resolution",
+          "resolution": "resolution_1"
+        }
+      ]
     },
     {
       "id": "gather_encounter_sets",
@@ -13628,7 +13868,8 @@
     "set_aside_cards",
     "create_exploration_deck",
     "set_aside_poisoned",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -13759,7 +14000,7 @@
         "options": [
           {
             "boolCondition": true,
-            "resolution": "R1"
+            "steps": ["resolution_1"]
           },
           {
             "boolCondition": false,
@@ -13778,10 +14019,20 @@
         "options": [
           {
             "boolCondition": true,
-            "resolution": "R2"
+            "steps": ["resolution_2"]
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
     }
   ],
   "resolutions": [
@@ -14421,7 +14672,8 @@
     "set_aside_cards",
     "create_exploration_deck",
     "add_vengeance_cards",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -14782,13 +15034,18 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
     }
   ],
   "resolutions": [
     {
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
-      "resolution": "R4"
+      "steps": ["resolution_4"]
     },
     {
       "id": "R1",
@@ -14841,7 +15098,8 @@
     "set_aside_act_and_agenda",
     "set_aside_poisoned",
     "encounter_deck",
-    "replacing_locations_reminder"
+    "replacing_locations_reminder",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -15344,7 +15602,8 @@
     "setup_locations",
     "set_aside_cards",
     "encounter_deck",
-    "body_of_yithian_rule"
+    "body_of_yithian_rule",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -16022,7 +16281,8 @@
     "set_aside_poison",
     "encounter_deck",
     "depth_level_rule",
-    "pursuit_rule"
+    "pursuit_rule",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -16695,13 +16955,18 @@
           "text": "the nexus is near."
         }
       ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [
     {
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -17179,7 +17444,8 @@
     "setup_act_ab",
     "setup_act_cd",
     "setup_act_ef",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -17940,13 +18206,18 @@
           }
         ]
       }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
     }
   ],
   "resolutions": [
     {
       "id": "no_resolution",
       "title": "If no resolution was reached (each investigator resigned or was defeated)",
-      "resolution": "R1"
+      "steps": ["resolution_1"]
     },
     {
       "id": "R1",
@@ -17971,7 +18242,8 @@
     "set_aside_cards",
     "add_elder_thing_token",
     "set_aside_poison",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -18183,7 +18455,8 @@
     "setup_locations",
     "create_exploration_deck",
     "set_aside_cards",
-    "encounter_deck"
+    "encounter_deck",
+    "$choose_resolution"
   ],
   "steps": [
     {
@@ -18368,7 +18641,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "<fancy>Wednesday, July 1st, 1925</fancy>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
       "steps": ["wait_for_additional_supplies", "check_final_act", "record_vengeance", "earn_xp"]
     },

@@ -612,18 +612,13 @@ export interface GuideChoiceInput extends BasicInput {
   choice: number;
 }
 
-export interface GuideResolutionInput extends BasicInput {
-  type: 'resolution';
-  resolution: string;
-}
 
 export type GuideInput =
   GuideSuppliesInput |
   GuideDecisionInput |
   GuideChoiceListInput |
   GuideCountInput |
-  GuideChoiceInput |
-  GuideResolutionInput;
+  GuideChoiceInput;
 
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {

@@ -14,13 +14,14 @@ import NumberPrompt from '../prompts/NumberPrompt';
 import SuppliesPrompt from '../prompts/SuppliesPrompt';
 import InvestigatorChoicePrompt from '../prompts/InvestigatorChoicePrompt';
 import { InputStep } from 'data/scenario/types';
+import typography from 'styles/typography';
 
 interface Props {
   step: InputStep;
 }
 
 export default class InputStepComponent extends React.Component<Props> {
-  render() {
+  renderPrompt() {
     const { step } = this.props;
     switch (step.input.type) {
       case 'choose_one':
@@ -39,7 +40,7 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             bulletType={step.bullet_type}
             text={step.text}
-            choices={step.input.choices}
+            input={step.input}
           />
         );
       case 'counter':
@@ -105,5 +106,19 @@ export default class InputStepComponent extends React.Component<Props> {
           />
         );
     }
+  }
+
+  render() {
+    const { step } = this.props;
+    return (
+      <>
+        { !!step.title && (
+          <Text style={[typography.bigGameFont, typography.center]}>
+            { step.title }
+          </Text>
+        ) }
+        { this.renderPrompt() }
+      </>
+    );
   }
 }

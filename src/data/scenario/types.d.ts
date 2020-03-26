@@ -12,6 +12,7 @@ export type Step =
   | InputStep
   | EncounterSetsStep
   | GenericStep
+  | ResolutionStep
   | RuleReminderStep
   | StoryStep
   | LocationSetupStep;
@@ -25,7 +26,7 @@ export type Condition =
   | ScenarioDataCondition
   | TraumaCondition
   | CheckSuppliesCondition;
-export type BoolOption = EffectOption | StepsOption | ResolutionOption;
+export type BoolOption = EffectOption | StepsOption;
 export type Effect =
   | StoryStepEffect
   | EarnXpEffect
@@ -58,7 +59,7 @@ export type ScenarioDataEffect =
   | ScenarioDataInvestigatorStatusEffect
   | ScenarioDataStatusEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
-export type ScenarioStatus = "skipped" | "started" | "completed" | "unlocked";
+export type ScenarioStatus = "skipped" | "started" | "resolution" | "completed" | "unlocked";
 export type ChaosToken =
   | "+1"
   | "0"
@@ -76,10 +77,10 @@ export type ChaosToken =
   | "elder_thing"
   | "elder_sign"
   | "auto_fail";
-export type NumOption = EffectOption | StepsOption | ResolutionOption;
-export type DefaultOption = StepsOption | ResolutionOption;
+export type NumOption = EffectOption | StepsOption;
+export type DefaultOption = StepsOption;
 export type Operand = CampaignLogCountOperand | ChaosBagOperand;
-export type Option = EffectOption | StepsOption | ResolutionOption;
+export type Option = EffectOption | StepsOption;
 export type CampaignDataCondition =
   | CampaignDataDifficultyCondition
   | CampaignDataScenarioCondition
@@ -95,7 +96,7 @@ export type Input =
   | CounterInput
   | InvestigatorCounterInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
-export type Choice = StepsChoice | EffectsChoice | ResolutionChoice;
+export type Choice = StepsChoice | EffectsChoice;
 export type BulletType = "none" | "small";
 export type AllCampaigns = FullCampaign[];
 export type Choice1 =
@@ -142,7 +143,6 @@ export interface EffectOption {
   default?: boolean;
   effects: Effect[];
   steps?: null;
-  resolution?: null;
 }
 export interface StoryStepEffect {
   type: "story_step";
@@ -236,7 +236,8 @@ export interface ScenarioDataInvestigatorStatusEffect {
 export interface ScenarioDataStatusEffect {
   type: "scenario_data";
   setting: "scenario_status";
-  status?: ScenarioStatus;
+  status: ScenarioStatus;
+  resolution?: string;
 }
 export interface AddRemoveChaosTokenEffect {
   type: "add_chaos_token" | "remove_chaos_token";
@@ -249,16 +250,6 @@ export interface StepsOption {
   default?: boolean;
   steps: string[];
   effects?: null;
-  resolution?: null;
-}
-export interface ResolutionOption {
-  boolCondition?: boolean;
-  numCondition?: number;
-  condition?: string;
-  default?: boolean;
-  resolution: string;
-  effects?: null;
-  steps?: null;
 }
 export interface CampaignLogCountCondition {
   type: "campaign_log_count";
@@ -338,6 +329,7 @@ export interface CheckSuppliesCondition {
 export interface InputStep {
   id: string;
   type: "input";
+  title?: string;
   text?: string;
   subtext?: string;
   input: Input;
@@ -364,7 +356,6 @@ export interface SimpleEffectsChoice {
   description?: string;
   effects: (CampaignLogCardsEffect | RemoveCardEffect)[];
   steps?: null;
-  resolution?: null;
 }
 export interface SuppliesInput {
   type: "supplies";
@@ -396,10 +387,10 @@ export interface EffectsChoice {
   description?: string;
   effects: Effect[];
   steps?: null;
-  resolution?: null;
 }
 export interface ChooseOneInput {
   type: "choose_one";
+  style?: "picker";
   choices: Choice[];
 }
 export interface StepsChoice {
@@ -407,15 +398,6 @@ export interface StepsChoice {
   flavor?: string;
   description?: string;
   steps: string[];
-  effects?: null;
-  resolution?: null;
-}
-export interface ResolutionChoice {
-  text?: string;
-  flavor?: string;
-  description?: string;
-  resolution: string;
-  steps?: null;
   effects?: null;
 }
 export interface ChooseManyInput {
@@ -454,6 +436,12 @@ export interface GenericStep {
   }[];
   bullet_type?: BulletType;
 }
+export interface ResolutionStep {
+  id: string;
+  type: "resolution";
+  resolution: string;
+  effects?: ScenarioDataStatusEffect[];
+}
 export interface RuleReminderStep {
   id: string;
   type: "rule_reminder";
@@ -491,8 +479,7 @@ export interface Resolution {
   id: string;
   title: string;
   text?: string;
-  resolution?: string;
-  steps?: string[];
+  steps: string[];
 }
 export interface Log {
   campaignName: string;

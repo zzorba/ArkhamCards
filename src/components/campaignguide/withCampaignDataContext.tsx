@@ -6,7 +6,15 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
-import { resetScenario, setScenarioCount, setScenarioDecision, setScenarioChoice, setScenarioSupplies, setScenarioChoiceList } from './actions';
+import {
+  resetScenario,
+  setScenarioCount,
+  setScenarioDecision,
+  setScenarioChoice,
+  setScenarioSupplies,
+  setScenarioChoiceList,
+  undo,
+} from './actions';
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
 import { ListChoices, SingleCampaign, Deck, CampaignGuideState, SupplyCounts } from 'actions/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
@@ -62,6 +70,7 @@ interface ReduxActionProps {
     choice: number
   ) => void;
   resetScenario: (campaignId: number, scenarioId: string) => void;
+  undo: (campaignId: number) => void;
 }
 
 export default function withCampaignDataContext<Props>(
@@ -91,6 +100,7 @@ export default function withCampaignDataContext<Props>(
       setScenarioChoiceList,
       resetScenario,
       setScenarioChoice,
+      undo,
     }, dispatch);
   };
   class CampaignDataComponent extends React.Component<Props & CampaignDataInputProps & ReduxProps & ReduxActionProps & PlayerCardProps> {
@@ -179,6 +189,14 @@ export default function withCampaignDataContext<Props>(
       );
     };
 
+    _undo = () => {
+      const {
+        undo,
+        campaignId,
+      } = this.props;
+      undo(campaignId);
+    };
+
     _resetScenario = () => {
       const {
         resetScenario,
@@ -233,6 +251,7 @@ export default function withCampaignDataContext<Props>(
             setChoiceList: this._setChoiceList,
             setChoice: this._setChoice,
             resetScenario: this._resetScenario,
+            undo: this._undo,
           },
           investigatorDecks.length
         ),

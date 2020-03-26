@@ -14,6 +14,7 @@ export interface ScenarioStateActions {
   setChoiceList: (id: string, choices: ListChoices) => void;
   setChoice: (id: string, choice: number) => void;
   resetScenario: () => void;
+  undo: () => void;
 }
 
 export default class ScenarioStateHelper {
@@ -39,6 +40,10 @@ export default class ScenarioStateHelper {
     this.actions.resetScenario();
   }
 
+  undo() {
+    this.actions.undo();
+  }
+
   playerCount(): number {
     return this.numPlayers;
   }
@@ -53,7 +58,7 @@ export default class ScenarioStateHelper {
       input => (
         input.type === type &&
         input.scenario === this.scenarioId &&
-        (input.type === 'resolution' || input.step === step)
+        input.step === step
       )
     );
   }

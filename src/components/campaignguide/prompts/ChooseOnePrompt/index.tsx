@@ -2,17 +2,18 @@ import React from 'react';
 import { Button, Text } from 'react-native';
 import { t } from 'ttag';
 
+import PickerComponent from '../PickerComponent';
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { BulletType, Choice } from 'data/scenario/types';
+import { BulletType, Choice, ChooseOneInput } from 'data/scenario/types';
 
 interface Props {
   id: string;
   bulletType?: BulletType;
   text?: string;
-  choices: Choice[];
+  input: ChooseOneInput;
   optional?: boolean;
 }
 
@@ -40,7 +41,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
   };
 
   renderResults(selectedChoice: number) {
-    const { choices } = this.props;
+    const { input: { choices } } = this.props;
     const choice = choices[selectedChoice];
     if (choice.steps) {
       return null;
@@ -49,7 +50,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, choices, text, bulletType } = this.props;
+    const { id, input, text, bulletType } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
@@ -57,17 +58,29 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
           const selectedChoice = decision !== undefined ? decision : this.state.selectedChoice;
           return (
             <>
-              <SetupStepWrapper bulletType={bulletType}>
-                <CardTextComponent
-                  text={text || t`The investigators must decide (choose one)`}
+              { input.style === 'picker' ? (
+                <PickerComponent
+                  title={selectedChoice === undefined ? (text || '') : ''}
+                  choices={input.choices}
+                  selectedIndex={selectedChoice}
+                  onChoiceChange={this._onChoiceChange}
+                  editable={decision === undefined}
                 />
-              </SetupStepWrapper>
-              <ChooseOneListComponent
-                choices={choices}
-                selectedIndex={selectedChoice}
-                onSelect={this._onChoiceChange}
-                editable={decision === undefined}
-              />
+              ) : (
+                <>
+                  <SetupStepWrapper bulletType={bulletType}>
+                    <CardTextComponent
+                      text={text || t`The investigators must decide (choose one)`}
+                    />
+                  </SetupStepWrapper>
+                  <ChooseOneListComponent
+                    choices={input.choices}
+                    selectedIndex={selectedChoice}
+                    onSelect={this._onChoiceChange}
+                    editable={decision === undefined}
+                  />
+                </>
+              ) }
               { decision !== undefined ? (
                 this.renderResults(decision)
               ) : (

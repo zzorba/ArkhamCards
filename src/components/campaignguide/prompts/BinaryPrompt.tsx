@@ -7,10 +7,8 @@ import { t } from 'ttag';
 
 import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
-import ResolutionComponent from '../ResolutionComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardTextComponent from 'components/card/CardTextComponent';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { BulletType, Choice, Option } from 'data/scenario/types';
 
@@ -57,9 +55,7 @@ export default class BinaryPrompt extends React.Component<Props> {
 
 
   renderCorrectResults(
-    scenarioGuide: ScenarioGuide,
-    scenarioState: ScenarioStateHelper,
-    stepsOnly: boolean
+    scenarioState: ScenarioStateHelper
   ) {
     const { id, trueResult, falseResult } = this.props;
     const decision = scenarioState.decision(id);
@@ -67,58 +63,31 @@ export default class BinaryPrompt extends React.Component<Props> {
       return null;
     }
     if (decision) {
-      return !!trueResult && this.renderResult(scenarioGuide, stepsOnly, trueResult);
+      return !!trueResult && this.renderResult(trueResult);
     }
-    return !!falseResult && this.renderResult(scenarioGuide, stepsOnly, falseResult);
+    return !!falseResult && this.renderResult(falseResult);
   }
 
-  renderResult(
-    scenarioGuide: ScenarioGuide,
-    stepsOnly: boolean,
-    choice: Option | Choice
-  ) {
+  renderResult(choice: Option | Choice) {
     const { id } = this.props;
-    if (choice.steps) {
-      return null;
-    }
-    if (choice.effects) {
-      return stepsOnly ? null : (
-        <EffectsComponent
-          id={id}
-          effects={choice.effects}
-        />
-      );
-    }
-    if (choice.resolution) {
-      if (!stepsOnly) {
-        return null;
-      }
-      const nextResolution = scenarioGuide.resolution(choice.resolution);
-      if (nextResolution) {
-        return (
-          <ResolutionComponent
-            resolution={nextResolution}
-          />
-        );
-      }
-      return stepsOnly ? null : (
-        <Text>Resolution { choice.resolution }</Text>
-      );
-    }
-    return <Text>Unknown!</Text>;
+    return (
+      <EffectsComponent
+        id={id}
+        effects={choice.effects || undefined}
+      />
+    );
   }
 
   render() {
     const { id, bulletType } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => (
+        { ({ scenarioState }: ScenarioGuideContextType) => (
           <>
             <SetupStepWrapper bulletType={bulletType}>
               { this.renderPrompt(scenarioState) }
-              { this.renderCorrectResults(scenarioGuide, scenarioState, false) }
+              { this.renderCorrectResults(scenarioState) }
             </SetupStepWrapper>
-            { this.renderCorrectResults(scenarioGuide, scenarioState, true) }
             { (scenarioState.decision(id) === undefined) && (
               <>
                 <Button title="Yes" onPress={this._yes} />

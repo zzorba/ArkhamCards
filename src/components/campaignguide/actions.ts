@@ -1,11 +1,22 @@
 import {
   GUIDE_SET_INPUT,
   GUIDE_RESET_SCENARIO,
+  GUIDE_UNDO_INPUT,
   GuideSetInputAction,
   GuideResetScenarioAction,
+  GuideUndoInputAction,
   SupplyCounts,
   ListChoices,
 } from 'actions/types';
+
+export function undo(
+  campaignId: number
+): GuideUndoInputAction {
+  return {
+    type: GUIDE_UNDO_INPUT,
+    campaignId,
+  };
+}
 
 export function resetScenario(
   campaignId: number,
@@ -104,22 +115,6 @@ export function setScenarioChoice(
       scenario,
       step,
       choice,
-    },
-  };
-}
-
-export function setResolutionChoice(
-  campaignId: number,
-  scenario: string,
-  resolution: string
-): GuideSetInputAction {
-  return {
-    type: GUIDE_SET_INPUT,
-    campaignId,
-    input: {
-      type: 'resolution',
-      scenario,
-      resolution,
     },
   };
 }
