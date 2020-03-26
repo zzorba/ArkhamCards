@@ -23,7 +23,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props> {
                   code: investigator.code,
                   name: investigator.name,
                   tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
-                  buttonColor: FACTION_COLORS[investigator.factionCode()],
+                  primaryColor: FACTION_COLORS[investigator.factionCode()],
                 };
               })}
             />

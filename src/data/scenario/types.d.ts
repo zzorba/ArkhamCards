@@ -21,10 +21,7 @@ export type Condition =
   | MathCondition
   | CardCondition
   | CampaignDataCondition
-  | CampaignDataScenarioCondition
   | CampaignLogSectionExistsCondition
-  | CampaignDataChaosBagCondition
-  | CampaignDataInvestigatorCondition
   | ScenarioDataCondition
   | TraumaCondition
   | CheckSuppliesCondition;
@@ -39,10 +36,7 @@ export type Effect =
   | CampaignLogEffect
   | CampaignLogCardsEffect
   | CampaignLogCountEffect
-  | CampaignDataResultEffect
-  | CampaignDataDifficultyEffect
-  | CampaignDataNextScenarioEffect
-  | CampaignDataChooseInvestigatorsEffect
+  | CampaignDataEffect
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect;
 export type InvestigatorSelector =
@@ -53,6 +47,13 @@ export type InvestigatorSelector =
   | "defeated"
   | "not_resigned"
   | "$input_value";
+export type CampaignDataEffect =
+  | CampaignDataResultEffect
+  | CampaignDataDifficultyEffect
+  | CampaignDataNextScenarioEffect
+  | CampaignDataChooseInvestigatorsEffect;
+export type ScenarioDataEffect = ScenarioDataLeadInvestigatorEffect | ScenarioDataInvestigatorStatusEffect;
+export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
 export type ChaosToken =
   | "+1"
   | "0"
@@ -74,6 +75,11 @@ export type NumOption = EffectOption | StepsOption | ResolutionOption;
 export type DefaultOption = StepsOption | ResolutionOption;
 export type Operand = CampaignLogCountOperand | ChaosBagOperand;
 export type Option = EffectOption | StepsOption | ResolutionOption;
+export type CampaignDataCondition =
+  | CampaignDataDifficultyCondition
+  | CampaignDataScenarioCondition
+  | CampaignDataChaosBagCondition
+  | CampaignDataInvestigatorCondition;
 export type Input =
   | CardChoiceInput
   | SuppliesInput
@@ -211,11 +217,16 @@ export interface CampaignDataChooseInvestigatorsEffect {
   type: "campaign_data";
   setting: "choose_investigators";
 }
-export interface ScenarioDataEffect {
+export interface ScenarioDataLeadInvestigatorEffect {
   type: "scenario_data";
-  setting: "investigator_status" | "lead_investigator";
-  investigator: InvestigatorSelector;
-  investigator_status?: "alive" | "resigned" | "physical" | "mental" | "eliminated";
+  setting: "lead_investigator";
+  investigator: "$input_value";
+}
+export interface ScenarioDataInvestigatorStatusEffect {
+  type: "scenario_data";
+  setting: "investigator_status";
+  investigator: "$input_value";
+  investigator_status: InvestigatorStatus;
 }
 export interface AddRemoveChaosTokenEffect {
   type: "add_chaos_token" | "remove_chaos_token";
@@ -269,7 +280,7 @@ export interface CardCondition {
   card: string;
   options: Option[];
 }
-export interface CampaignDataCondition {
+export interface CampaignDataDifficultyCondition {
   type: "campaign_data";
   campaign_data: "difficulty";
   options: Option[];
@@ -279,11 +290,6 @@ export interface CampaignDataScenarioCondition {
   campaign_data: "scenario_completed";
   scenario: string;
   options: StepsOption[];
-}
-export interface CampaignLogSectionExistsCondition {
-  type: "campaign_log_section_exists";
-  section: string;
-  options: BoolOption[];
 }
 export interface CampaignDataChaosBagCondition {
   type: "campaign_data";
@@ -296,6 +302,11 @@ export interface CampaignDataInvestigatorCondition {
   campaign_data: "investigator";
   investigator_data: "trait" | "faction";
   options: StepsOption[];
+}
+export interface CampaignLogSectionExistsCondition {
+  type: "campaign_log_section_exists";
+  section: string;
+  options: BoolOption[];
 }
 export interface ScenarioDataCondition {
   type: "scenario_data";

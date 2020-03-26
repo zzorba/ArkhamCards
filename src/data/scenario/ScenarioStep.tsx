@@ -6,9 +6,6 @@ import {
   CardCondition,
   CheckSuppliesCondition,
   CampaignDataCondition,
-  CampaignDataScenarioCondition,
-  CampaignDataChaosBagCondition,
-  CampaignDataInvestigatorCondition,
   InputStep,
   MathCondition,
   Operand,
@@ -224,7 +221,7 @@ export default class ScenarioStep {
 
   private handleCampaignData(
     step: BranchStep,
-    condition: CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition | CampaignDataInvestigatorCondition,
+    condition: CampaignDataCondition,
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
     switch (condition.campaign_data) {

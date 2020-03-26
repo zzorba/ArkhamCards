@@ -9,6 +9,9 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import ScenarioStep from './ScenarioStep';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
+import {
+  INVESTIGATOR_STATUS_STEP,
+} from './fixedSteps';
 
 /**
  * Wrapper utility to provide structured access to scenarios.
@@ -26,6 +29,9 @@ export default class ScenarioGuide {
   }
 
   step(id: string): Step | undefined {
+    if (id === INVESTIGATOR_STATUS_STEP.id) {
+      return INVESTIGATOR_STATUS_STEP;
+    }
     return find(
       this.scenario.steps,
       step => step.id === id
@@ -36,6 +42,19 @@ export default class ScenarioGuide {
     id: string
   ): Resolution | undefined {
     return find(this.scenario.resolutions || [], resolution => resolution.id === id);
+  }
+
+  mainResolutionSteps(
+    resolution: Resolution,
+    scenarioState: ScenarioStateHelper
+  ): ScenarioStep[] {
+    return this.expandSteps(
+      [
+        INVESTIGATOR_STATUS_STEP.id,
+        ...(resolution.steps || []),
+      ],
+      scenarioState
+    );
   }
 
   encounterSets(scenarioState: ScenarioStateHelper): string[] {

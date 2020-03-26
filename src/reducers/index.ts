@@ -420,7 +420,7 @@ export function getDefaultFilterState(
 
 export function getGuideState(state: AppState, campaignId: number): CampaignGuideState {
   return state.guides.all[campaignId] || {
-    scenarios: {},
+    inputs: [],
   };
 }
 

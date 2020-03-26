@@ -10,15 +10,12 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGu
 import {
   BranchStep,
   CampaignDataCondition,
-  CampaignDataScenarioCondition,
-  CampaignDataChaosBagCondition,
-  CampaignDataInvestigatorCondition,
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
-  condition: CampaignDataCondition | CampaignDataScenarioCondition | CampaignDataChaosBagCondition | CampaignDataInvestigatorCondition;
+  condition: CampaignDataCondition;
   campaignLog: GuidedCampaignLog;
 }
 

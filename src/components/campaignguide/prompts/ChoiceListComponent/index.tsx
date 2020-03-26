@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { every, forEach, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -83,7 +83,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     const { items, detailed } = this.props;
     const { selectedChoice } = this.state;
     if (hasDecision) {
-      return null;
+      return <View style={styles.bottomPadding} />;
     }
     return (
       <Button
@@ -98,36 +98,48 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
 
   }
 
+  getChoice(code: string, choices?: ListChoices): number | undefined {
+    const { detailed } = this.props;
+    if (choices === undefined) {
+      const choice = this.state.selectedChoice[code];
+      if (choice !== undefined) {
+        return choice;
+      }
+    } else {
+      const investigatorChoice = choices[code];
+      if (investigatorChoice && investigatorChoice.length) {
+        return investigatorChoice[0];
+      }
+    }
+    return detailed ? undefined : -1;
+  }
+
   render() {
     const { id, items, bulletType, detailed, choices, text, optional } = this.props;
-    const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.choiceList(id) !== undefined;
-          const nonDetailedDefaultChoice = (optional ? -1 : 0);
-          const defaultChoice = detailed ? undefined : nonDetailedDefaultChoice;
+          const inputChoiceList = scenarioState.choiceList(id);
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
               { map(items, (item, idx) => {
-                const choice = selectedChoice[item.code];
                 return (
                   <ChoiceListItemComponent
                     key={idx}
                     {...item}
                     choices={choices}
-                    choice={choice === undefined ? defaultChoice : choice}
+                    choice={this.getChoice(item.code, inputChoiceList)}
                     onChoiceChange={this._onChoiceChange}
                     optional={!!optional}
-                    editable={!hasDecision}
+                    editable={inputChoiceList === undefined}
                     detailed={detailed}
                   />
                 );
               }) }
-              { this.renderSaveButton(hasDecision) }
+              { this.renderSaveButton(inputChoiceList !== undefined) }
             </>
           );
         } }
@@ -135,3 +147,9 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     );
   }
 }
+
+const styles = StyleSheet.create({
+  bottomPadding: {
+    marginBottom: 16,
+  },
+});

@@ -26,10 +26,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
       onChoiceChange,
       code,
     } = this.props;
-    onChoiceChange(
-      code,
-      idx
-    );
+    onChoiceChange(code, idx);
   };
 
   render() {

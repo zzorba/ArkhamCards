@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { flatMap, forEach, map } from 'lodash';
 import { connectRealm, EncounterSetResults } from 'react-native-realm';
-import { t } from 'ttag';
+import { msgid, ngettext, t } from 'ttag';
 
 import SetupStepWrapper from '../SetupStepWrapper';
 import { EncounterSetsStep } from 'data/scenario/types';
@@ -32,7 +32,10 @@ class EncounterSetStepComponent extends React.Component<Props> {
       t`Set the following encounter sets aside, out of play: ` :
       t`Gather all cards from the following encounter sets:`;
     const startText = step.text || leadText;
-    const text = t`${startText} ${encounterSetString}. These sets are indicated by the following icons:`;
+    const text =
+    ngettext(msgid`${startText} ${encounterSetString}. This set is indicated by the following icon:`,
+      t`${startText} ${encounterSetString}. These sets are indicated by the following icons:`,
+      encounterSets.length);
     return (
       <SetupStepWrapper>
         <CardTextComponent text={text} />
@@ -92,10 +95,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexWrap: 'wrap',
     marginTop: 16,
+    marginRight: 32,
   },
   icon: {
-    marginLeft: 16,
-    marginRight: 16,
+    marginLeft: 8,
+    marginRight: 8,
     marginBottom: 16,
   },
 });

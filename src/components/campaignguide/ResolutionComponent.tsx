@@ -13,7 +13,7 @@ import typography from 'styles/typography';
 
 interface Props {
   resolution: Resolution;
-  secondary?: boolean;
+  mainResolution?: boolean;
 }
 
 
@@ -22,39 +22,49 @@ export default class ResolutionComponent extends React.Component<Props> {
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => {
+          const { resolution, mainResolution } = this.props;
+          const steps = mainResolution ?
+            scenarioGuide.mainResolutionSteps(resolution, scenarioState) :
+            scenarioGuide.expandSteps(resolution.steps || [], scenarioState);
+          return (
+            <StepsComponent steps={steps} />
+          );
+        } }
+      </ScenarioGuideContext.Consumer>
+    );
+  }
+
+  renderResolution() {
+    return (
+      <ScenarioGuideContext.Consumer>
+        { ({ scenarioGuide }: ScenarioGuideContextType) => {
           const { resolution } = this.props;
-          if (resolution.steps) {
+          if (!resolution.resolution) {
+            return null;
+          }
+          const nextResolution = scenarioGuide.resolution(resolution.resolution);
+          if (nextResolution) {
             return (
-              <StepsComponent steps={scenarioGuide.expandSteps(resolution.steps, scenarioState)} />
+              <ResolutionComponent
+                resolution={nextResolution}
+              />
             );
           }
-          if (resolution.resolution) {
-            const nextResolution = scenarioGuide.resolution(resolution.resolution);
-            if (nextResolution) {
-              return (
-                <ResolutionComponent
-                  resolution={nextResolution}
-                  secondary
-                />
-              );
-            }
-            return (
-              <Text>
-                Proceed to Resolution { resolution.resolution }
-              </Text>
-            );
-          }
-          return <Text>Unknown Resolution</Text>;
+          return (
+            <Text>
+              Proceed to Resolution { resolution.resolution }
+            </Text>
+          );
         } }
       </ScenarioGuideContext.Consumer>
     );
   }
 
   render() {
-    const { resolution, secondary } = this.props;
+    const { resolution, mainResolution } = this.props;
     return (
       <View>
-        { !!secondary && (
+        { !mainResolution && (
           <View style={styles.wrapper}>
             <Text style={typography.mediumGameFont}>
               { resolution.title }
@@ -70,6 +80,7 @@ export default class ResolutionComponent extends React.Component<Props> {
           </View>
         ) }
         { this.renderSteps() }
+        { this.renderResolution() }
       </View>
     );
   }

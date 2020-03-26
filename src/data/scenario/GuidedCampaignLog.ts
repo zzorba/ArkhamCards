@@ -1,5 +1,11 @@
 import { cloneDeep, find, forEach, sumBy } from 'lodash';
-import { Effect, CampaignLogEffect, CampaignLogCountEffect, CampaignLogCardsEffect } from './types';
+import {
+  Effect,
+  CampaignLogEffect,
+  CampaignLogCountEffect,
+  CampaignLogCardsEffect,
+  InvestigatorStatus,
+} from './types';
 
 interface BasicEntry {
   id: string;
@@ -41,6 +47,13 @@ export interface EffectsWithInput {
   effects: Effect[];
 }
 
+interface ScenarioData {
+  leadInvestigator?: string;
+  investigatorStatus: {
+    [code: string]: InvestigatorStatus;
+  };
+}
+
 export default class GuidedCampaignLog {
   sections: {
     [section: string]: EntrySection | undefined;
@@ -48,12 +61,16 @@ export default class GuidedCampaignLog {
   countSections: {
     [section: string]: CountSection | undefined;
   };
+  scenarioData: {
+    [scenario: string]: ScenarioData | undefined;
+  };
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
       case 'campaign_log':
       case 'campaign_log_count':
       case 'campaign_log_cards':
+      case 'scenario_data':
         return true;
       default:
         return false;
@@ -75,12 +92,26 @@ export default class GuidedCampaignLog {
       // No relevant effects, so shallow copy will do.
       this.sections = readThrough ? readThrough.sections : {};
       this.countSections = readThrough ? readThrough.countSections : {};
+      this.scenarioData = readThrough ? readThrough.scenarioData : {};
     } else {
       this.sections = readThrough ? cloneDeep(readThrough.sections) : {};
       this.countSections = readThrough ? cloneDeep(readThrough.countSections) : {};
+      this.scenarioData = readThrough ? cloneDeep(readThrough.scenarioData) : {};
       forEach(effectsWithInput, ({ effects, input, counterInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
+            case 'scenario_data':
+              switch (effect.setting) {
+                case 'investigator_status':
+                  if (effect.investigator !== '$input_value') {
+                    throw new Error('investigator_status should always be $input_value');
+                  }
+
+                  break;
+                case 'lead_investigator':
+                  break;
+              }
+              break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
               break;
