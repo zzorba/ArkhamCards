@@ -13548,7 +13548,7 @@
       "effects": [
         {
           "type": "campaign_data",
-          "setting": "next_scenario",
+          "setting": "replay_scenario",
           "scenario": "heart_of_the_elders_part_1"
         }
       ]
@@ -14687,11 +14687,14 @@
     },
     {
       "id": "proceed_epilogue",
-      "text": "Proceed to <b>Epilogue</b>.",
+      "text": "Proceed to <b>Epilogue</b>."
+    },
+    {
+      "id": "skip_epilogue",
       "effects": [
         {
           "type": "campaign_data",
-          "setting": "next_scenario",
+          "setting": "skip_scenario",
           "scenario": "epilogue"
         }
       ]
@@ -14791,25 +14794,25 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "<fancy>Thursday, December 17th, 1925</fancy>]\nIt is difficult for me to convey my unabridged thoughts on the events that occurred during the summer of 1925. Of course, I gave my full account to Harlan—who I suspect is the only person willing to vouch for my story—but I have not sat down to record it on paper until now. Perhaps I would rather these events had been a figment of my imagination.\nIn truth, I have no idea how we made it out of the caverns beneath the jungle alive. Simply reaching the abyssal place was a hellish ordeal. My memory of our return trip is muddled and disarrayed. We scrambled in the dark for what seemed like ages. We were out of food, out of supplies, out of hope—but somehow, we found a way out.\nOur reward for preventing calamity was scorn and ridicule. No upstanding paper or university would publish our findings, and of course we possessed no proof of our expedition save for our scars and nightmares. I wish I could say that my memory of these events has faded with each passing day, but I will never forget the alien city we explored in our conical bodies, the serpents that pursued us in red-litten Yoth, the formless abomination that lived in the depths of the Earth...\nPerhaps that is why I fear making a written account of our findings—because these memories will crystallize and become etched in my mind, forever damning me to a life of terror and dismay. Still, the world needs to know what we saw. What we did.",
-      "steps": ["mended_tear_in_time", "two_physical_and_mental_trauma", "attached_locations_to_victory_display", "earn_xp_plus_5", "win"]
+      "steps": ["mended_tear_in_time", "two_physical_and_mental_trauma", "attached_locations_to_victory_display", "earn_xp_plus_5", "win", "skip_epilogue"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Transposed to a different time, Valusia and the children of Yig live on. Preserved by the new timeline you have created, you and the Serpent People are safe from the events that caused their homeland’s destruction long ago, in another time. All of your past transgressions against serpent-kind are forgiven, and you are given the chance to live in the paradise-kingdom of Valusia, remade in Yig’s image. Although you may have turned your back on humanity, you take comfort in the fact that the Earth has been saved from complete ruin. Due to your actions, you are valued and respected among the Serpents and in the eyes of your new Father. Your new life is cozy and full of wonders you could never have predicted. And yet, from time to time, you look out into the wilds beyond Valusia and wonder if there is something else you could have done...",
-      "steps": ["investigators_saved_serpents", "win_but", "cannot_transfer_characters"]
+      "steps": ["investigators_saved_serpents", "win_but", "cannot_transfer_characters", "skip_epilogue"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "Transposed to a different time, Pnakotus and the Great Race of Yith live on. Preserved by the new timeline you have created, you and the Yithians are safe from the extraterrestrials who ended their kind long ago, in another time. You are brought into the city and given freedoms other captive minds never received. Although at first, you long for your former life, the emotion fades the more time you spend in this strange new Earth. You roam the world on titan airships and delve into the collective knowledge of the Yithians, accumulated in their vast archives from centuries of research. Your studies unveil secrets that no other human will ever know. You experience technological advances that humanity would weep to discover. And you prepare for an accursed future that may still yet come to pass..",
-      "steps": ["investigators_saved_yithians", "win_but", "cannot_transfer_characters"]
+      "steps": ["investigators_saved_yithians", "win_but", "cannot_transfer_characters", "skip_epilogue"]
     },
     {
       "id": "R4",
       "title": "Resolution 4",
       "text": "Reality as you know it will never be the same, but perhaps this is not the end of the world. After all, time is just one dimension: a dimension humanity barely understands. We experience time, but we cannot see it. We can measure it, but we cannot alter it. So what if the fourth dimension has split into hundreds of thousands of planes of existence? Our feeble human minds cannot comprehend the outcome, but the universe still survives, its ever-expanding boundaries no longer limited by the confines of time.",
-      "steps": ["fabric_of_time_unwoven", "all_insane", "lose"]
+      "steps": ["fabric_of_time_unwoven", "all_insane", "lose", "skip_epilogue"]
     },
     {
       "id": "R5",

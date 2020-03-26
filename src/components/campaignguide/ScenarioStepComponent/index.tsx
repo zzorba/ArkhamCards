@@ -3,6 +3,7 @@ import {
   Text,
 } from 'react-native';
 
+import CampaignLogContext from '../CampaignLogContext';
 import BranchStepComponent from './BranchStepComponent';
 import EncounterSetStepComponent from './EncounterSetStepComponent';
 import GenericStepComponent from './GenericStepComponent';
@@ -16,7 +17,7 @@ interface Props {
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {
-  render() {
+  renderContent() {
     const { step: { step, campaignLog } } = this.props;
     if (!step.type) {
       return <GenericStepComponent step={step} />;
@@ -48,5 +49,14 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       default:
         return <Text>Unknown step type</Text>;
     }
+  }
+
+  render() {
+    const { step } = this.props;
+    return (
+      <CampaignLogContext.Provider value={{ campaignLog: step.campaignLog }}>
+        { this.renderContent() }
+      </CampaignLogContext.Provider>
+    )
   }
 }

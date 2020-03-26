@@ -98,7 +98,6 @@ export default class BinaryPrompt extends React.Component<Props> {
         return (
           <ResolutionComponent
             resolution={nextResolution}
-            secondary
           />
         );
       }

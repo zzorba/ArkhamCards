@@ -4,7 +4,11 @@ import {
   CampaignLogEffect,
   CampaignLogCountEffect,
   CampaignLogCardsEffect,
+  ScenarioDataEffect,
+  CampaignDataEffect,
+  ScenarioStatus,
   InvestigatorStatus,
+  Difficulty,
 } from './types';
 
 interface BasicEntry {
@@ -54,7 +58,20 @@ interface ScenarioData {
   };
 }
 
+interface CampaignData {
+  scenarioStatus: {
+    [code: string]: ScenarioStatus | undefined;
+  };
+  scenarioReplayCount: {
+    [code: string]: number | undefined;
+  };
+  result?: 'win' | 'lose';
+  difficulty?: Difficulty;
+  nextScenario?: string;
+}
+
 export default class GuidedCampaignLog {
+  scenarioId: string;
   sections: {
     [section: string]: EntrySection | undefined;
   };
@@ -64,6 +81,7 @@ export default class GuidedCampaignLog {
   scenarioData: {
     [scenario: string]: ScenarioData | undefined;
   };
+  campaignData: CampaignData;
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
@@ -71,6 +89,7 @@ export default class GuidedCampaignLog {
       case 'campaign_log_count':
       case 'campaign_log_cards':
       case 'scenario_data':
+      case 'campaign_data':
         return true;
       default:
         return false;
@@ -78,9 +97,11 @@ export default class GuidedCampaignLog {
   }
 
   constructor(
+    scenarioId: string,
     effectsWithInput: EffectsWithInput[],
     readThrough?: GuidedCampaignLog
   ) {
+    this.scenarioId = scenarioId;
     const hasRelevantEffects = !!find(
       effectsWithInput,
       effects => !!find(
@@ -93,24 +114,51 @@ export default class GuidedCampaignLog {
       this.sections = readThrough ? readThrough.sections : {};
       this.countSections = readThrough ? readThrough.countSections : {};
       this.scenarioData = readThrough ? readThrough.scenarioData : {};
+      this.campaignData = readThrough ? readThrough.campaignData : {
+        scenarioStatus: {},
+        scenarioReplayCount: {},
+      };
     } else {
       this.sections = readThrough ? cloneDeep(readThrough.sections) : {};
       this.countSections = readThrough ? cloneDeep(readThrough.countSections) : {};
       this.scenarioData = readThrough ? cloneDeep(readThrough.scenarioData) : {};
+      this.campaignData = readThrough ? cloneDeep(readThrough.campaignData) : {
+        scenarioStatus: {},
+        scenarioReplayCount: {},
+      };
       forEach(effectsWithInput, ({ effects, input, counterInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
-            case 'scenario_data':
+            case 'campaign_data':
               switch (effect.setting) {
-                case 'investigator_status':
-                  if (effect.investigator !== '$input_value') {
-                    throw new Error('investigator_status should always be $input_value');
-                  }
-
+                case 'result':
+                  this.campaignData.result = effect.value;
                   break;
-                case 'lead_investigator':
+                case 'difficulty':
+                  this.campaignData.difficulty = effect.value;
+                  break;
+                case 'skip_scenario':
+                  this.campaignData.scenarioStatus[effect.scenario] = 'skipped';
+                  break;
+                case 'replay_scenario': {
+                  const replayCount = this.campaignData.scenarioReplayCount[effect.scenario] || 0;
+                  this.campaignData.scenarioReplayCount[effect.scenario] = replayCount + 1;
+                  break;
+                }
+                case 'next_scenario':
+                  this.campaignData.nextScenario = effect.scenario;
+                  break;
+                case 'choose_investigators':
+                  // TODO: choose new investigators?
                   break;
               }
+              break;
+            case 'scenario_data':
+              this.handleScenarioDataEffect(
+                effect,
+                scenarioId,
+                input
+              );
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
@@ -128,6 +176,39 @@ export default class GuidedCampaignLog {
         });
       });
     }
+  }
+
+  private handleScenarioDataEffect(
+    effect: ScenarioDataEffect,
+    scenarioId: string,
+    input: string[] | undefined
+  ) {
+    if (effect.setting === 'scenario_status') {
+      this.campaignData.scenarioStatus[scenarioId] = effect.status;
+      return;
+    }
+    // All investigator status from here on out.
+    const scenario = this.scenarioData[scenarioId] || {
+      investigatorStatus: {},
+    };
+
+    if (effect.investigator !== '$input_value') {
+      throw new Error('investigator_status should always be $input_value');
+    }
+    if (!input) {
+      throw new Error('input required for scenarioData effect');
+    }
+    switch (effect.setting) {
+      case 'investigator_status':
+        forEach(input, code => {
+          scenario.investigatorStatus[code] = effect.investigator_status;
+        });
+        break;
+      case 'lead_investigator':
+        scenario.leadInvestigator = input[0];
+        break;
+    }
+    this.scenarioData[scenarioId] = scenario;
   }
 
   private handleCampaignLogEffect(effect: CampaignLogEffect, input?: string[]) {
@@ -266,6 +347,25 @@ export default class GuidedCampaignLog {
       this.sections[sectionId] = section;
     });
   }
+
+  leadInvestigatorChoice(): string {
+    const scenario = this.scenarioData[this.scenarioId];
+    if (!scenario || !scenario.leadInvestigator) {
+      throw new Error('Lead Investigator called before decision');
+    }
+    return scenario.leadInvestigator;
+  }
+
+  investigatorResolutionStatus(): {
+    [code: string]: InvestigatorStatus;
+  } {
+    const scenario = this.scenarioData[this.scenarioId];
+    if (!scenario) {
+      throw new Error('investigatorResolutionStatus called before decision');
+    }
+    return scenario.investigatorStatus;
+  }
+
 
   sectionExists(sectionId: string): boolean {
     const section = this.sections[sectionId];

@@ -358,10 +358,11 @@ export default class ScenarioStep {
           selectedChoice.steps || [],
           stepId => stepIds.push(stepId)
         );
-        return {
-          inputValue: map(group, item => item.code),
+        const result: EffectsWithInput = {
+          input: map(group, item => item.code),
           effects: selectedChoice.effects || [],
         };
+        return result;
     });
     return {
       effectsWithInput,
@@ -426,9 +427,9 @@ export default class ScenarioStep {
           effectsWithInput
         );
       }
-      case 'card_choice':
-      case 'investigator_choice': {
-        const choices = scenarioState.choiceList(step.id)
+      case 'investigator_choice':
+      case 'card_choice': {
+        const choices = scenarioState.choiceList(step.id);
         if (choices === undefined) {
           return undefined;
         }
@@ -547,10 +548,10 @@ export default class ScenarioStep {
   ): ScenarioStep | undefined {
     const flatEffects = flatMap(effects, effects => effects.effects);
     if (flatEffects.length) {
-      const hasInvestigatorChoice = !!find(flatEffects, effect => (
+      const needsInvestigatorChoice = !!find(flatEffects, effect => (
         effect.type === 'add_card' && effect.investigator === 'choice'
       ));
-      if (hasInvestigatorChoice) {
+      if (needsInvestigatorChoice) {
         const investigatorChoice = scenarioState.choice(`${id}_investigator`);
         if (investigatorChoice === undefined) {
           return undefined;
@@ -559,7 +560,11 @@ export default class ScenarioStep {
     }
     return this.proceedToNextStep(
       remainingStepIds,
-      new GuidedCampaignLog(effects, this.campaignLog)
+      new GuidedCampaignLog(
+        this.scenarioGuide.scenario.id,
+        effects,
+        this.campaignLog
+      )
     );
   }
 

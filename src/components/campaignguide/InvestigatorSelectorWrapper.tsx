@@ -2,11 +2,12 @@ import React from 'react';
 import { filter, map } from 'lodash';
 import { t } from 'ttag';
 
+import CampaignLogContext, { CampaignLogContextType } from './CampaignLogContext';
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { InvestigatorSelector } from 'data/scenario/types';
-import { InvestigatorDeck, InvestigatorResolutionStatus } from 'data/scenario';
+import { InvestigatorDeck } from 'data/scenario';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
@@ -17,16 +18,17 @@ interface Props {
 
 export default class InvestigatorSelectorWrapper extends React.Component<Props> {
   investigators(
-    scenarioState: ScenarioStateHelper,
     investigatorDecks: InvestigatorDeck[],
-    choice: number | undefined
+    campaignLog: GuidedCampaignLog,
+    choice?: number
   ): InvestigatorDeck[] {
     const { investigator, inputValue } = this.props;
     switch (investigator) {
       case 'lead_investigator':
-        return [
-          investigatorDecks[scenarioState.leadInvestigatorChoice()],
-        ];
+        const leadInvestigator = campaignLog.leadInvestigatorChoice();
+        return filter(
+          investigatorDecks,
+          ({ investigator }) => investigator.code === leadInvestigator);
       case 'all':
         return investigatorDecks;
       case 'any':
@@ -38,16 +40,15 @@ export default class InvestigatorSelectorWrapper extends React.Component<Props> 
         return [investigatorDecks[choice]];
       case 'defeated':
       case 'not_resigned': {
-        const allStatus = scenarioState.investigatorResolutionStatus();
+        const allStatus = campaignLog.investigatorResolutionStatus();
         return filter(investigatorDecks, (id) => {
           const status = allStatus[id.investigator.code];
-          if (investigator === 'defeated') {
-            return (
-              status !== InvestigatorResolutionStatus.ALIVE &&
-              status !== InvestigatorResolutionStatus.RESIGNED
-            );
+          switch (investigator) {
+            case 'defeated':
+              return status !== 'alive' && status !== 'resigned';
+            case 'not_resigned':
+              return status !== 'resigned';
           }
-          return status !== InvestigatorResolutionStatus.RESIGNED;
         });
       }
       case '$input_value':
@@ -63,18 +64,19 @@ export default class InvestigatorSelectorWrapper extends React.Component<Props> 
           if (investigator === 'choice' && choice === undefined) {
             return (
               <ChooseInvestigatorPrompt
-                id={this.props.id}
+                id={`${this.props.id}_investigator`}
                 title={t`Investigator`}
                 defaultLabel={t`None`}
               />
             );
           }
-          return render(
-            this.investigators(
-              scenarioState,
-              investigatorDecks,
-              choice
-            )
+          return (
+            <CampaignLogContext.Consumer>
+              { ({ campaignLog }: CampaignLogContextType) => {
+                const investigators = this.investigators(investigatorDecks, campaignLog, choice);
+                return render(investigators);
+              } }
+            </CampaignLogContext.Consumer>
           );
         } }
       </ScenarioGuideContext.Consumer>

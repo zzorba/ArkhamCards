@@ -1,14 +1,11 @@
-import { findLast, forEach } from 'lodash';
+import { findLast } from 'lodash';
 
 import {
   GuideInput,
-  GuideChoiceInput,
-  GuideChoiceListInput,
   ListChoices,
   CampaignGuideState,
   SupplyCounts,
 } from 'actions/types';
-import { INVESTIGATOR_STATUS_ID, ORDERED_INVESTIGATOR_STATUS, InvestigatorResolutionStatus } from 'data/scenario';
 
 export interface ScenarioStateActions {
   setDecision: (id: string, value: boolean) => void;
@@ -42,32 +39,8 @@ export default class ScenarioStateHelper {
     this.actions.resetScenario();
   }
 
-  leadInvestigatorChoice(): number {
-    const choice = this.choice(`${this.scenarioId}_investigator`);
-    if (choice === undefined) {
-      throw new Error('Lead Investigator called before decision');
-    }
-    return choice;
-  }
-
   playerCount(): number {
     return this.numPlayers;
-  }
-
-  investigatorResolutionStatus(): {
-    [code: string]: InvestigatorResolutionStatus;
-  } {
-    const result: {
-      [code: string]: InvestigatorResolutionStatus;
-    } = {};
-
-   forEach(
-      this.choiceList(INVESTIGATOR_STATUS_ID),
-      (choices, code) => {
-        result[code] = ORDERED_INVESTIGATOR_STATUS[choices[0]];
-      }
-    );
-    return result;
   }
 
   setChoice(id: string, value: number) {

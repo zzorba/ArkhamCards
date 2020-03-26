@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button } from 'react-native';
-import { map } from 'lodash';
+import { findIndex, keys, map } from 'lodash';
 import { t } from 'ttag';
 
+import { ListChoices } from 'actions/types';
 import PickerComponent from './PickerComponent';
 import { InvestigatorDeck } from 'data/scenario';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -12,11 +13,11 @@ interface Props {
   title: string;
   defaultLabel?: string;
   required?: boolean;
-  renderResults?: (investigator: InvestigatorDeck) => React.ReactNode;
+  renderResults?: (investigator?: InvestigatorDeck) => React.ReactNode;
 }
 
 interface State {
-  selectedIndex?: number;
+  selectedInvestigator?: string;
 }
 
 export default class ChooseInvestigatorPrompt extends React.Component<Props, State> {
@@ -24,43 +25,68 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   context!: ScenarioGuideContextType;
   state: State = {};
 
-  id() {
-    return `${this.props.id}_investigator`;
-  }
-
   _onChoiceChange = (
     index: number
   ) => {
+    const selectedInvestigator = index === -1 ?
+      undefined :
+      this.context.investigatorDecks[index].investigator.code;
     this.setState({
-      selectedIndex: index,
+      selectedInvestigator,
     });
   };
 
   _save = () => {
-    const { selectedIndex } = this.state;
-    this.context.scenarioState.setChoice(this.id(), selectedIndex === undefined ? -1 : selectedIndex);
+    const { id } = this.props;
+    const { selectedInvestigator } = this.state;
+    this.context.scenarioState.setChoiceList(
+      id,
+      selectedInvestigator === undefined ? {} : {
+        [selectedInvestigator]: [0],
+      }
+    );
   };
 
   renderSaveButton() {
     const { required } = this.props;
-    const { selectedIndex } = this.state;
+    const { selectedInvestigator } = this.state;
     return (
       <Button
         title={t`Save`}
         onPress={this._save}
-        disabled={required && selectedIndex === undefined}
+        disabled={required && selectedInvestigator === undefined}
       />
     );
   }
 
+  getSelectedIndex(
+    investigatorDecks: InvestigatorDeck[],
+    choice?: ListChoices
+  ): number {
+    if (choice !== undefined) {
+      const investigators = keys(choice);
+      if (!investigators.length) {
+        return -1;
+      }
+      const code = investigators[0];
+      return findIndex(
+        investigatorDecks,
+        ({ investigator}) => investigator.code === code
+      );
+    }
+    return findIndex(
+      investigatorDecks,
+      ({ investigator }) => investigator.code === this.state.selectedInvestigator
+    );
+  }
+
   render() {
-    const { title, renderResults, defaultLabel } = this.props;
-    const id = this.id();
+    const { id, title, renderResults, defaultLabel } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
-          const choice = scenarioState.choice(id);
-          const selectedIndex = choice !== undefined ? choice : this.state.selectedIndex;
+          const choice = scenarioState.choiceList(id);
+          const selectedIndex = this.getSelectedIndex(investigatorDecks, choice);
           return (
             <>
               <PickerComponent
@@ -79,7 +105,9 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
               />
               { choice !== undefined ?
                 // TODO: need to handle no-choice here?
-                (!!renderResults && renderResults(investigatorDecks[choice])) :
+                (!!renderResults && renderResults(
+                  selectedIndex === -1 ? undefined : investigatorDecks[selectedIndex]
+                )) :
                 this.renderSaveButton()
               }
             </>

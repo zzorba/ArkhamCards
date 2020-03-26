@@ -1,6 +1,28 @@
 import { t } from 'ttag';
 import { InputStep } from 'data/scenario/types';
 
+export const LEAD_INVESTIGATOR_STEP: InputStep = {
+  id: 'lead_investigator',
+  type: 'input',
+  text: t`Choose lead investigator`,
+  input: {
+    type: 'investigator_choice',
+    investigator: 'any',
+    choices: [
+      {
+        text: t`Lead Investigator`,
+        effects: [
+          {
+            type: 'scenario_data',
+            setting: 'lead_investigator',
+            investigator: '$input_value'
+          },
+        ],
+      },
+    ],
+  },
+};
+
 export const INVESTIGATOR_STATUS_STEP: InputStep = {
   id: 'investigator_status',
   type: 'input',

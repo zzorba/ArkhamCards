@@ -10,23 +10,6 @@ export interface InvestigatorDeck {
   deck: Deck;
 }
 
-export const INVESTIGATOR_STATUS_ID = 'investigator_status';
-
-export enum InvestigatorResolutionStatus {
-  ALIVE = 'alive',
-  RESIGNED = 'resigned',
-  DEFEATED_PHYSICAL = 'physical',
-  DEFEATED_MENTAL = 'mental',
-  DEFEATED_SCENARIO = 'eliminated',
-};
-export const ORDERED_INVESTIGATOR_STATUS = [
-  InvestigatorResolutionStatus.ALIVE,
-  InvestigatorResolutionStatus.RESIGNED,
-  InvestigatorResolutionStatus.DEFEATED_PHYSICAL,
-  InvestigatorResolutionStatus.DEFEATED_MENTAL,
-  InvestigatorResolutionStatus.DEFEATED_SCENARIO,
-];
-
 export function getCampaignGuide(id: string): CampaignGuide | undefined {
   const allLogEntries: CampaignLog[] = require('../../../assets/campaignLogs.json');
   const allCampaigns: FullCampaign[] = require('../../../assets/allCampaigns.json');

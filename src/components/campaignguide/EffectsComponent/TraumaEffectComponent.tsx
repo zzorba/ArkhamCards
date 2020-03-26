@@ -5,6 +5,7 @@ import { t } from 'ttag';
 import InvestigatorSelectorWrapper from '../InvestigatorSelectorWrapper';
 import Card from 'data/Card';
 import { InvestigatorDeck } from 'data/scenario';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { TraumaEffect } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
 

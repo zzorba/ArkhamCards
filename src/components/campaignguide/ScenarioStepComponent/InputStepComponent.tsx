@@ -6,6 +6,7 @@ import {
 import CardTextComponent from 'components/card/CardTextComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CardChoicePrompt from '../prompts/CardChoicePrompt';
+import ChooseInvestigatorPrompt from '../prompts/ChooseInvestigatorPrompt';
 import InvestigatorCounterComponent from '../prompts/InvestigatorCounterComponent';
 import ChooseOnePrompt from '../prompts/ChooseOnePrompt';
 import BinaryPrompt from '../prompts/BinaryPrompt';
@@ -84,6 +85,15 @@ export default class InputStepComponent extends React.Component<Props> {
       case 'use_supplies':
         return <Text>Use Supplies</Text>;
       case 'investigator_choice':
+        if (step.input.investigator === 'any') {
+          return (
+            <ChooseInvestigatorPrompt
+              id={step.id}
+              title={step.input.choices[0].text}
+              required
+            />
+          );
+        }
         return (
           <InvestigatorChoicePrompt
             id={step.id}

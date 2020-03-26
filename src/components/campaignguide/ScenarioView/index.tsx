@@ -106,25 +106,12 @@ class ScenarioView extends React.Component<Props> {
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => {
-          const interlude = !!scenarioGuide.scenario.interlude;
           return (
             <ScrollView>
-              { !interlude && (
-                <ChooseInvestigatorPrompt
-                  id={scenarioGuide.scenario.id}
-                  title={t`Lead Investigator`}
-                  required
-                />
-              ) }
-              { (interlude ||
-                scenarioState.choice(`${scenarioGuide.scenario.id}_investigator`) !== undefined) && (
-                <>
-                  <StepsComponent
-                    steps={scenarioGuide.setupSteps(scenarioState)}
-                  />
-                  { this.renderResolutions(scenarioGuide) }
-                </>
-              ) }
+              <StepsComponent
+                steps={scenarioGuide.setupSteps(scenarioState)}
+              />
+              { this.renderResolutions(scenarioGuide) }
             </ScrollView>
           );
         } }

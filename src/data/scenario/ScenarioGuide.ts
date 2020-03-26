@@ -10,6 +10,7 @@ import ScenarioStep from './ScenarioStep';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
 import {
+  LEAD_INVESTIGATOR_STEP,
   INVESTIGATOR_STATUS_STEP,
 } from './fixedSteps';
 
@@ -31,6 +32,9 @@ export default class ScenarioGuide {
   step(id: string): Step | undefined {
     if (id === INVESTIGATOR_STATUS_STEP.id) {
       return INVESTIGATOR_STATUS_STEP;
+    }
+    if (id === LEAD_INVESTIGATOR_STEP.id) {
+      return LEAD_INVESTIGATOR_STEP;
     }
     return find(
       this.scenario.steps,
@@ -72,8 +76,10 @@ export default class ScenarioGuide {
   setupSteps(
     scenarioState: ScenarioStateHelper
   ): ScenarioStep[] {
-    return this.expandSteps(this.scenario.setup, scenarioState);
-
+    const stepIds = this.scenario.interlude ?
+      this.scenario.setup :
+      [LEAD_INVESTIGATOR_STEP.id, ...this.scenario.setup];
+    return this.expandSteps(stepIds, scenarioState);
   }
 
   expandSteps(
@@ -92,7 +98,7 @@ export default class ScenarioGuide {
     let scenarioStep: ScenarioStep | undefined = new ScenarioStep(
       step,
       this,
-      new GuidedCampaignLog([]),
+      new GuidedCampaignLog(this.scenario.id, []),
       remainingStepIds
     );
     while (scenarioStep) {

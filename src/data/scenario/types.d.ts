@@ -52,8 +52,13 @@ export type CampaignDataEffect =
   | CampaignDataDifficultyEffect
   | CampaignDataNextScenarioEffect
   | CampaignDataChooseInvestigatorsEffect;
-export type ScenarioDataEffect = ScenarioDataLeadInvestigatorEffect | ScenarioDataInvestigatorStatusEffect;
+export type Difficulty = "easy" | "standard" | "hard" | "expert";
+export type ScenarioDataEffect =
+  | ScenarioDataLeadInvestigatorEffect
+  | ScenarioDataInvestigatorStatusEffect
+  | ScenarioDataStatusEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
+export type ScenarioStatus = "skipped" | "started" | "completed" | "unlocked";
 export type ChaosToken =
   | "+1"
   | "0"
@@ -206,7 +211,7 @@ export interface CampaignDataResultEffect {
 export interface CampaignDataDifficultyEffect {
   type: "campaign_data";
   setting: "difficulty";
-  value: "easy" | "standard" | "hard" | "expert";
+  value: Difficulty;
 }
 export interface CampaignDataNextScenarioEffect {
   type: "campaign_data";
@@ -227,6 +232,11 @@ export interface ScenarioDataInvestigatorStatusEffect {
   setting: "investigator_status";
   investigator: "$input_value";
   investigator_status: InvestigatorStatus;
+}
+export interface ScenarioDataStatusEffect {
+  type: "scenario_data";
+  setting: "scenario_status";
+  status?: ScenarioStatus;
 }
 export interface AddRemoveChaosTokenEffect {
   type: "add_chaos_token" | "remove_chaos_token";
@@ -376,7 +386,7 @@ export interface UseSuppliesInput {
 }
 export interface InvestigatorChoiceInput {
   type: "investigator_choice";
-  investigator: InvestigatorSelector;
+  investigator: "all" | "choice" | "any";
   detailed?: boolean;
   choices: EffectsChoice[];
 }

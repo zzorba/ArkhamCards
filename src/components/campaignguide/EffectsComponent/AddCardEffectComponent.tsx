@@ -1,8 +1,10 @@
 import React from 'react';
 import { map } from 'lodash';
 
+import CampaignLogContext, { CampaignLogContextType } from '../CampaignLogContext';
 import InvestigatorSelectorWrapper from '../InvestigatorSelectorWrapper';
 import { InvestigatorDeck } from 'data/scenario';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { AddCardEffect } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
 
