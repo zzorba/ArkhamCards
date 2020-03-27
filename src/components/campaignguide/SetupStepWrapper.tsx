@@ -59,6 +59,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
 const styles = StyleSheet.create({
   step: {
     flexDirection: 'row',
+    alignItems: 'flex-start',
     marginLeft: 16,
     marginRight: 16,
     marginBottom: 16,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   smallBullet: {
     marginLeft: 32,
     marginRight: 8,
-    marginTop: 4,
+    marginTop: 0,
   },
   mainText: {
     flex: 1,

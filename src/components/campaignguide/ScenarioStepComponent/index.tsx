@@ -2,7 +2,9 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
+import { map } from 'lodash';
 
+import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignLogContext from '../CampaignLogContext';
 import BranchStepComponent from './BranchStepComponent';
@@ -49,6 +51,8 @@ export default class ScenarioStepComponent extends React.Component<Props> {
             step={step}
           />
         );
+      case 'effects':
+        return <EffectsStepComponent step={step} />
       default:
         return <Text>Unknown step type</Text>;
     }

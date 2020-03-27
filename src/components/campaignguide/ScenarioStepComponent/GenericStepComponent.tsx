@@ -2,7 +2,6 @@ import React from 'react';
 import { Text } from 'react-native';
 
 import BulletsComponent from './BulletsComponent';
-import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { GenericStep } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -15,6 +14,9 @@ interface Props {
 export default class GenericStepComponent extends React.Component<Props> {
   render() {
     const { step } = this.props;
+    if (!step.title && !step.text && !step.bullets) {
+      return null;
+    }
     return (
       <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
         { !!step.title && (
@@ -26,11 +28,6 @@ export default class GenericStepComponent extends React.Component<Props> {
           <CardTextComponent text={step.text} />
         ) }
         <BulletsComponent bullets={step.bullets} />
-        <EffectsComponent
-          id={step.id}
-          effects={step.effects}
-          skipCampaignLog={!!step.text}
-        />
       </SetupStepWrapper>
     );
   }

@@ -6,7 +6,6 @@ import { find } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 import CardTextComponent from 'components/card/CardTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import EffectsComponent from '../../EffectsComponent';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import BinaryPrompt from '../../prompts/BinaryPrompt';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -42,12 +41,6 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
                       playerCount)
                     }
                   />
-                  { !!option && (
-                    <EffectsComponent
-                      id={step.id}
-                      effects={option.effects || []}
-                    />
-                  ) }
                 </SetupStepWrapper>
               );
             case 'investigator':

@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -53,31 +52,6 @@ export default class BinaryPrompt extends React.Component<Props> {
     );
   }
 
-
-  renderCorrectResults(
-    scenarioState: ScenarioStateHelper
-  ) {
-    const { id, trueResult, falseResult } = this.props;
-    const decision = scenarioState.decision(id);
-    if (decision == undefined) {
-      return null;
-    }
-    if (decision) {
-      return !!trueResult && this.renderResult(trueResult);
-    }
-    return !!falseResult && this.renderResult(falseResult);
-  }
-
-  renderResult(choice: Option | Choice) {
-    const { id } = this.props;
-    return (
-      <EffectsComponent
-        id={id}
-        effects={choice.effects || undefined}
-      />
-    );
-  }
-
   render() {
     const { id, bulletType } = this.props;
     return (
@@ -86,7 +60,6 @@ export default class BinaryPrompt extends React.Component<Props> {
           <>
             <SetupStepWrapper bulletType={bulletType}>
               { this.renderPrompt(scenarioState) }
-              { this.renderCorrectResults(scenarioState) }
             </SetupStepWrapper>
             { (scenarioState.decision(id) === undefined) && (
               <>

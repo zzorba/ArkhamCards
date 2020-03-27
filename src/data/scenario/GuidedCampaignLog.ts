@@ -5,10 +5,10 @@ import {
   CampaignLogCountEffect,
   CampaignLogCardsEffect,
   ScenarioDataEffect,
-  CampaignDataEffect,
   ScenarioStatus,
   InvestigatorStatus,
   Difficulty,
+  EffectsWithInput,
 } from './types';
 
 interface BasicEntry {
@@ -43,12 +43,6 @@ interface EntrySection {
 
 interface CountSection {
   count: number;
-}
-
-export interface EffectsWithInput {
-  input?: string[];
-  counterInput?: number;
-  effects: Effect[];
 }
 
 interface ScenarioData {

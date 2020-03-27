@@ -1,11 +1,12 @@
 import React from 'react';
 import { map } from 'lodash';
 
-import CampaignLogContext, { CampaignLogContextType } from '../CampaignLogContext';
-import InvestigatorSelectorWrapper from '../InvestigatorSelectorWrapper';
+import SetupStepWrapper from '../../SetupStepWrapper';
+import SingleCardWrapper from '../../SingleCardWrapper';
+import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import { InvestigatorDeck } from 'data/scenario';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { AddCardEffect } from 'data/scenario/types';
+import Card from 'data/Card';
 import CardTextComponent from 'components/card/CardTextComponent';
 
 interface Props {
@@ -18,23 +19,38 @@ interface Props {
 }
 
 export default class AddCardEffectComponent extends React.Component<Props> {
-  _renderInvestigators = (investigatorDecks: InvestigatorDeck[]) => {
+  _renderInvestigators = (
+    investigatorDecks: InvestigatorDeck[],
+    card: Card
+  ) => {
     return map(investigatorDecks, ({ investigator }, idx) => (
-      <CardTextComponent
-        key={idx}
-        text={`- ${investigator.name} gets a card`}
-      />
+      <SetupStepWrapper bulletType="small">
+        <CardTextComponent
+          key={idx}
+          text={`${investigator.name} earned ${card.name}`}
+        />
+      </SetupStepWrapper>
     ));
   };
 
-  render() {
+  _renderCard = (card: Card) => {
     const { id, effect } = this.props;
     return (
       <InvestigatorSelectorWrapper
         id={id}
         investigator={effect.investigator}
         render={this._renderInvestigators}
+        extraArgs={card}
       />
     );
+  };
+
+  render() {
+    return (
+      <SingleCardWrapper
+        code={this.props.effect.card}
+        render={this._renderCard}
+      />
+    )
   }
 }

@@ -12,9 +12,10 @@ import {
   ScenarioDataCondition,
   Step,
   Effect,
+  EffectsWithInput,
 } from './types';
 import ScenarioGuide from './ScenarioGuide';
-import GuidedCampaignLog, { EffectsWithInput } from './GuidedCampaignLog';
+import GuidedCampaignLog from './GuidedCampaignLog';
 import ScenarioStateHelper from './ScenarioStateHelper';
 
 export default class ScenarioStep {
@@ -65,11 +66,18 @@ export default class ScenarioStep {
           [...resolution.steps, ...this.remainingStepIds]
         );
       }
-      default:
+      case 'effects': {
         return this.handleEffects(
           this.step.id,
           this.remainingStepIds,
           scenarioState,
+          this.step.effectsWithInput
+        );
+      }
+      default:
+        return this.maybeCreateEffectsStep(
+          this.step.id,
+          this.remainingStepIds,
           [{
             effects: this.step.effects || [],
           }]
@@ -124,13 +132,12 @@ export default class ScenarioStep {
           find(step.condition.options, option => option.numCondition === count) ||
           step.condition.defaultOption;
         const extraSteps = choice.steps || [];
-        return this.handleEffects(
+        return this.maybeCreateEffectsStep(
           step.id,
           [
             ...extraSteps,
             ...this.remainingStepIds,
           ],
-          scenarioState,
           [{
             counterInput: count,
             effects: choice.effects || [],
@@ -217,10 +224,9 @@ export default class ScenarioStep {
     const option = find(condition.options, option => option.numCondition === value) ||
       condition.defaultOption;
     const extraSteps = option.steps || [];
-    return this.handleEffects(
+    return this.maybeCreateEffectsStep(
       step.id,
       [...extraSteps, ...this.remainingStepIds],
-      scenarioState,
       [{
         effects: option.effects || [],
       }]
@@ -274,10 +280,9 @@ export default class ScenarioStep {
         const option = find(condition.options, option => option.numCondition === playerCount) ||
           find(condition.options, option => !!option.default);
         const extraSteps = (option && option.steps) || [];
-        return this.handleEffects(
+        return this.maybeCreateEffectsStep(
           step.id,
           [...extraSteps, ...this.remainingStepIds],
-          scenarioState,
           [{
             effects: (option && option.effects) || [],
           }]
@@ -322,10 +327,9 @@ export default class ScenarioStep {
             effectsWithInput,
             stepIds,
           } = this.processListChoices(choiceList, condition.options);
-          return this.handleEffects(
+          return this.maybeCreateEffectsStep(
             step.id,
             [...stepIds, ...this.remainingStepIds],
-            scenarioState,
             effectsWithInput
           );
         }
@@ -389,10 +393,9 @@ export default class ScenarioStep {
         if (count === undefined) {
           return undefined;
         }
-        return this.handleEffects(
+        return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          scenarioState,
           [{
             counterInput: count,
             effects: input.effects,
@@ -428,10 +431,9 @@ export default class ScenarioStep {
             }
           }
         );
-        return this.handleEffects(
+        return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
-          scenarioState,
           effectsWithInput
         );
       }
@@ -448,10 +450,9 @@ export default class ScenarioStep {
           choices,
           input.choices
         );
-        return this.handleEffects(
+        return this.maybeCreateEffectsStep(
           step.id,
           [...stepIds, ...this.remainingStepIds],
-          scenarioState,
           effectsWithInput
         );
       }
@@ -481,10 +482,9 @@ export default class ScenarioStep {
           return undefined;
         }
         const choice = input.choices[index];
-        return this.handleEffects(
+        return this.maybeCreateEffectsStep(
           step.id,
           [...(choice.steps || []), ...this.remainingStepIds],
-          scenarioState,
           [{
             effects: choice.effects || []
           }]
@@ -535,17 +535,38 @@ export default class ScenarioStep {
     }
   ): ScenarioStep | undefined {
     const resultCondition = condition ? ifTrue : ifFalse;
-    return this.handleEffects(
+    return this.maybeCreateEffectsStep(
       this.step.id,
       [
         ...((resultCondition && resultCondition.steps) || []),
         ...remainingStepIds,
       ],
-      scenarioState,
       [{
         effects: (resultCondition && resultCondition.effects) || [],
       }]
     );
+  }
+
+  private maybeCreateEffectsStep(
+    id: string,
+    remainingStepIds: string[],
+    effectsWithInput: EffectsWithInput[]
+  ): ScenarioStep | undefined {
+    const flatEffects = flatMap(effectsWithInput, effects => effects.effects);
+    if (flatEffects.length) {
+      return new ScenarioStep(
+        {
+          id: `${id}_effects`,
+          type: 'effects',
+          effectsWithInput,
+          stepText: this.step.text !== null,
+        },
+        this.scenarioGuide,
+        this.campaignLog,
+        remainingStepIds
+      );
+    }
+    return this.proceedToNextStep(remainingStepIds, this.campaignLog);
   }
 
   private handleEffects(

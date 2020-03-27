@@ -9,6 +9,7 @@
 export type Schema = AllCampaigns | Log;
 export type Step =
   | BranchStep
+  | EffectsStep
   | InputStep
   | EncounterSetsStep
   | GenericStep
@@ -325,6 +326,17 @@ export interface CheckSuppliesCondition {
   investigator: "any" | "all" | "choice";
   id: string;
   options: BoolOption[];
+}
+export interface EffectsStep {
+  id: string;
+  type: "effects";
+  effectsWithInput: EffectsWithInput[];
+  stepText: boolean;
+}
+export interface EffectsWithInput {
+  effects: Effect[];
+  input?: string[];
+  counterInput?: number;
 }
 export interface InputStep {
   id: string;

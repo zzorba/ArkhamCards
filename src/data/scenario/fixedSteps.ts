@@ -19,7 +19,7 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
         resolution => {
           return {
             text: resolution.title,
-            steps: [`$r_${resolution.id}`],
+            steps: [INVESTIGATOR_STATUS_STEP.id, `$r_${resolution.id}`],
           };
         }
       ),
@@ -41,13 +41,13 @@ export const LEAD_INVESTIGATOR_STEP: InputStep = {
           {
             type: 'scenario_data',
             setting: 'lead_investigator',
-            investigator: '$input_value'
+            investigator: '$input_value',
           },
           {
             type: 'scenario_data',
             setting: 'scenario_status',
             status: 'started',
-          }
+          },
         ],
       },
     ],

@@ -5,9 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { find } from 'lodash';
 
-import EffectsComponent from '../EffectsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -102,41 +100,6 @@ export default class NumberPrompt extends React.Component<Props, State> {
     );
   }
 
-
-  renderCorrectResults(scenarioState: ScenarioStateHelper) {
-    const {
-      id,
-      options,
-      effects,
-    } = this.props;
-    if (options) {
-      const count = scenarioState.count(id);
-      if (count === undefined) {
-        return null;
-      }
-      const theOption = find(options, option => option.numCondition === count);
-      if (!theOption) {
-        return null;
-      }
-      return this.renderResult(theOption);
-    }
-    if (effects) {
-      // We summarize the text of the effects in the guide text for number
-      // inputs.
-      return (
-        <EffectsComponent id={id} effects={effects} skipCampaignLog />
-      );
-    }
-    return null;
-  }
-
-  renderResult(choice: Option) {
-    const { id } = this.props;
-    return (
-      <EffectsComponent id={id} effects={choice.effects || undefined} />
-    );
-  }
-
   render() {
     const { bulletType, text } = this.props;
     return (
@@ -147,9 +110,6 @@ export default class NumberPrompt extends React.Component<Props, State> {
               { !!text && <CardTextComponent text={text} /> }
             </SetupStepWrapper>
             { this.renderPrompt(scenarioState) }
-            <SetupStepWrapper bulletType="none">
-              { this.renderCorrectResults(scenarioState) }
-            </SetupStepWrapper>
           </>
         ) }
       </ScenarioGuideContext.Consumer>
