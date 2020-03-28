@@ -8,13 +8,14 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import Card from 'data/Card';
-import { CampaignLogEffect } from 'data/scenario/types';
+import { CampaignLogEffect, BulletType } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
 
 interface Props {
   effect: CampaignLogEffect;
   input?: string[];
   counterInput?: number;
+  bulletType?: BulletType;
 }
 
 export default class CampaignLogEffectComponent extends React.Component<Props> {
@@ -57,7 +58,7 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
                 // Not possible as a record
                 return null;
               }
-              case 'investigator': {
+              case 'supplies': {
                 // Not possible as a record?
                 return null;
               }
@@ -80,8 +81,9 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
   }
 
   render() {
+    const { bulletType } = this.props;
     return (
-      <SetupStepWrapper>
+      <SetupStepWrapper bulletType={bulletType}>
         { this.renderContent() }
       </SetupStepWrapper>
     );

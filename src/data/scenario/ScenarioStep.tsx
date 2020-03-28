@@ -665,6 +665,7 @@ export default class ScenarioStep {
           type: 'effects',
           effectsWithInput,
           stepText: !!this.step.text,
+          bullet_type: this.step.bullet_type || undefined,
         },
         this.scenarioGuide,
         this.campaignLog,

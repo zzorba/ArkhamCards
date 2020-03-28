@@ -13,9 +13,9 @@ export default class StepsComponent extends React.Component<Props> {
     const {
       steps,
     } = this.props;
-    return map(steps, step => (
+    return map(steps, (step, idx) => (
       <ScenarioStepComponent
-        key={step.step.id}
+        key={`${step.step.id}_${idx}`}
         step={step}
       />
     ));

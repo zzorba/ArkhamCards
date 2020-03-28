@@ -87,6 +87,7 @@ export type CampaignDataCondition =
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataInvestigatorCondition;
+export type BulletType = "none" | "small";
 export type Input =
   | CardChoiceInput
   | SuppliesInput
@@ -98,7 +99,6 @@ export type Input =
   | InvestigatorCounterInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type Choice = StepsChoice | EffectsChoice;
-export type BulletType = "none" | "small";
 export type AllCampaigns = FullCampaign[];
 export type Choice1 =
   | CardChoice
@@ -130,6 +130,7 @@ export interface BranchStep {
   type: "branch";
   text?: string;
   condition: Condition;
+  bullet_type?: null;
 }
 export interface CampaignLogCondition {
   type: "campaign_log";
@@ -335,6 +336,7 @@ export interface EffectsStep {
   text?: null;
   effectsWithInput: EffectsWithInput[];
   stepText: boolean;
+  bullet_type?: BulletType;
 }
 export interface EffectsWithInput {
   effects: Effect[];
@@ -439,6 +441,7 @@ export interface EncounterSetsStep {
   subtext?: string;
   aside?: boolean;
   encounter_sets: string[];
+  bullet_type?: null;
 }
 export interface GenericStep {
   id: string;
@@ -459,6 +462,7 @@ export interface ResolutionStep {
   text?: null;
   generated?: boolean;
   effects?: ScenarioDataStatusEffect[];
+  bullet_type?: null;
 }
 export interface RuleReminderStep {
   id: string;
@@ -469,6 +473,7 @@ export interface RuleReminderStep {
     text: string;
   }[];
   example?: string;
+  bullet_type?: null;
 }
 export interface StoryStep {
   id: string;
@@ -478,6 +483,7 @@ export interface StoryStep {
   bullets?: {
     text: string;
   }[];
+  bullet_type?: null;
 }
 export interface LocationSetupStep {
   id: string;
@@ -485,6 +491,7 @@ export interface LocationSetupStep {
   text?: null;
   title: string;
   locations: string[][];
+  bullet_type?: null;
 }
 export interface Scenario {
   id: string;

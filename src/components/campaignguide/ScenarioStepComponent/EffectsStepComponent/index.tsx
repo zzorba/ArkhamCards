@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { map } from 'lodash';
 
 import ChaosTokenEffectComponent from './ChaosTokenEffectComponent';
@@ -13,12 +14,12 @@ interface Props {
 
 export default class EffectsStepComponent extends React.Component<Props> {
   renderEffect(
-    key: string,
     id: string,
     effect: Effect,
     input?: string[],
     counterInput?: number,
   ): React.ReactNode {
+    const { step } = this.props;
     switch (effect.type) {
       case 'campaign_log':
         if (this.props.step.stepText) {
@@ -26,7 +27,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
         }
         return (
           <CampaignLogEffectComponent
-            key={key}
+            bulletType={step.bullet_type}
             effect={effect}
             input={input}
             counterInput={counterInput}
@@ -39,14 +40,12 @@ export default class EffectsStepComponent extends React.Component<Props> {
         }
         return (
           <ChaosTokenEffectComponent
-            key={key}
             effect={effect}
           />
         );
       case 'add_card':
         return (
           <AddCardEffectComponent
-            key={key}
             id={id}
             effect={effect}
           />
@@ -54,7 +53,6 @@ export default class EffectsStepComponent extends React.Component<Props> {
       case 'trauma':
         return (
           <TraumaEffectComponent
-            key={key}
             id={id}
             effect={effect}
             input={input}
@@ -74,16 +72,20 @@ export default class EffectsStepComponent extends React.Component<Props> {
 
   render() {
     const { step } = this.props;
-    return map(step.effectsWithInput, (effectsWithInput, outerIdx) =>
-      map(effectsWithInput.effects, (effect, innerIdx) =>
-        this.renderEffect(
-          `${step.id}_${outerIdx}_${innerIdx}`,
-          step.id,
-          effect,
-          effectsWithInput.input,
-          effectsWithInput.counterInput
-        )
-      )
-    );
+    return map(step.effectsWithInput, (effectsWithInput, outerIdx) => (
+      <View key={`${step.id}_${outerIdx}`}>
+        { map(effectsWithInput.effects, (effect, innerIdx) => (
+          <View key={`${step.id}_${outerIdx}_${innerIdx}`}>
+            { this.renderEffect(
+                step.id,
+                effect,
+                effectsWithInput.input,
+                effectsWithInput.counterInput
+              )
+            }
+          </View>
+        )) }
+      </View>
+    ));
   }
 }
