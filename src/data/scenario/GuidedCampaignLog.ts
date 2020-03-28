@@ -31,11 +31,11 @@ interface CampaignLogBasicEntry extends BasicEntry {
   type: 'basic';
 }
 
-type CampaignLogEntry = CampaignLogCountEntry |
+export type CampaignLogEntry = CampaignLogCountEntry |
   CampaignLogBasicEntry |
   CampaignLogCardEntry;
 
-interface EntrySection {
+export interface EntrySection {
   entries: CampaignLogEntry[];
   crossedOut: {
     [key: string]: true | undefined;

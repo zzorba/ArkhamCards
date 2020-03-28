@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { map } from 'lodash';
 
+import CampaignLogComponent from './CampaignLogComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { CampaignGuideContextType } from '../CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '../withCampaignGuideContext';
@@ -40,17 +41,19 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     const processedCampaign = campaignGuide.processAllScenarios(campaignState);
     return (
       <ScrollView>
-        <View style={styles.margin}>
-          { map(processedCampaign.scenarios, (scenario, idx) => (
-            <ScenarioButton
-              key={idx}
-              fontScale={fontScale}
-              componentId={componentId}
-              scenario={scenario}
-              campaign={campaign}
-            />
-          )) }
-        </View>
+        { map(processedCampaign.scenarios, (scenario, idx) => (
+          <ScenarioButton
+            key={idx}
+            fontScale={fontScale}
+            componentId={componentId}
+            scenario={scenario}
+            campaign={campaign}
+          />
+        )) }
+        <CampaignLogComponent
+          campaignGuide={campaignGuide}
+          campaignLog={processedCampaign.campaignLog}
+        />
       </ScrollView>
     );
   }
