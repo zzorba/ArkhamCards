@@ -29,11 +29,26 @@ export function resetScenario(
   };
 }
 
+
+export function startScenario(
+  campaignId: number,
+  scenario: string
+): GuideSetInputAction {
+  return {
+    type: GUIDE_SET_INPUT,
+    campaignId,
+    input: {
+      type: 'start_scenario',
+      scenario,
+    },
+  };
+}
+
 export function setScenarioDecision(
   campaignId: number,
-  scenario: string,
   step: string,
-  value: boolean
+  value: boolean,
+  scenario?: string
 ): GuideSetInputAction {
   return {
     type: GUIDE_SET_INPUT,
@@ -49,9 +64,9 @@ export function setScenarioDecision(
 
 export function setScenarioCount(
   campaignId: number,
-  scenario: string,
   step: string,
-  value: number
+  value: number,
+  scenario?: string
 ): GuideSetInputAction {
   return {
     type: GUIDE_SET_INPUT,
@@ -67,9 +82,9 @@ export function setScenarioCount(
 
 export function setScenarioSupplies(
   campaignId: number,
-  scenario: string,
   step: string,
-  supplies: SupplyCounts
+  supplies: SupplyCounts,
+  scenario?: string
 ): GuideSetInputAction {
   return {
     type: GUIDE_SET_INPUT,
@@ -85,9 +100,9 @@ export function setScenarioSupplies(
 
 export function setScenarioChoiceList(
   campaignId: number,
-  scenario: string,
   step: string,
-  choices: ListChoices
+  choices: ListChoices,
+  scenario?: string
 ): GuideSetInputAction {
   return {
     type: GUIDE_SET_INPUT,
@@ -103,9 +118,9 @@ export function setScenarioChoiceList(
 
 export function setScenarioChoice(
   campaignId: number,
-  scenario: string,
   step: string,
-  choice: number
+  choice: number,
+  scenario?: string
 ): GuideSetInputAction {
   return {
     type: GUIDE_SET_INPUT,

@@ -1,14 +1,11 @@
 import React from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
 import { isSpecialToken } from 'constants';
 import { AddRemoveChaosTokenEffect } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
+import SetupStepWrapper from '../../SetupStepWrapper';
 
 interface Props {
   effect: AddRemoveChaosTokenEffect;
@@ -24,7 +21,9 @@ export default class ChaosTokenEffectComponent extends React.Component<Props> {
       t`Add ${tokenString} to the Chaos Bag` :
       t`Remove ${tokenString} from the Chaos Bag`;
     return (
-      <CardTextComponent text={text} />
+      <SetupStepWrapper bulletType="small">
+        <CardTextComponent text={text} />
+      </SetupStepWrapper>
     );
   }
 }

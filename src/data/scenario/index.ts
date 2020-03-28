@@ -10,7 +10,9 @@ export interface InvestigatorDeck {
   deck: Deck;
 }
 
-export function getCampaignGuide(id: string): CampaignGuide | undefined {
+export function getCampaignGuide(
+  id: string
+): CampaignGuide | undefined {
   const allLogEntries: CampaignLog[] = require('../../../assets/campaignLogs.json');
   const allCampaigns: FullCampaign[] = require('../../../assets/allCampaigns.json');
 

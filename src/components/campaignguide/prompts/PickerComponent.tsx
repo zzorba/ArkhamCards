@@ -9,6 +9,7 @@ import { COLORS } from 'styles/colors';
 
 interface Props {
   choices: Choice[];
+  description?: string;
   selectedIndex?: number;
   onChoiceChange: (index: number) => void;
   title: string;
@@ -52,10 +53,9 @@ export default class PickerComponent extends React.Component<Props> {
       optional,
       editable,
       title,
-      colors = {
-        backgroundColor: COLORS.lightBlue,
-        textColor: COLORS.white,
-      },
+      colors,
+      description,
+      defaultLabel,
     } = this.props;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
@@ -66,13 +66,14 @@ export default class PickerComponent extends React.Component<Props> {
       }),
     ];
     const options = optional ? [
-      { value: -1, label: '' },
+      { value: -1, label: defaultLabel || '' },
       ...passedOptions,
     ] : passedOptions;
     return (
       <SettingsPicker
         ref={this._capturePickerRef}
         title={title}
+        dialogDescription={description}
         value={selectedIndex}
         valuePlaceholder={''}
         valueFormat={this._choiceToLabel}
@@ -81,14 +82,14 @@ export default class PickerComponent extends React.Component<Props> {
         modalStyle={{
           header: {
             wrapper: {
-              backgroundColor: colors.backgroundColor,
+              backgroundColor: colors ? colors.backgroundColor : COLORS.lightBlue,
             },
             description: {
               paddingTop: 8,
             },
           },
           list: {
-            itemColor: colors.backgroundColor,
+            itemColor: colors ? colors.backgroundColor : COLORS.lightBlue,
           },
         }}
         options={options}
@@ -96,22 +97,22 @@ export default class PickerComponent extends React.Component<Props> {
           backgroundColor: 'rgba(255,255,255,0.0)',
         }}
         titleStyle={{
-          color: colors.textColor,
-          fontWeight: '700'
+          color: colors ? colors.textColor : COLORS.black,
+          fontWeight: '700',
         }}
         valueStyle={{
-          color: colors.textColor,
+          color: colors ? colors.textColor : COLORS.black,
           fontWeight: '400',
         }}
         containerStyle={{
-          backgroundColor: colors.backgroundColor,
+          backgroundColor: colors ? colors.backgroundColor : COLORS.white,
         }}
         widget={
           editable ? (
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={colors.textColor}
+              color={colors ? colors.textColor : COLORS.lightBlue}
             />
           ) : undefined
         }

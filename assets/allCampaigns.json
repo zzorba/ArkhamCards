@@ -23,11 +23,11 @@
     "the_miskatonic_museum",
     "essex_county_express",
     "blood_on_the_altar",
-    "survivors",
+    "dwl_interlude2",
     "undimensioned_and_unseen",
     "where_doom_awaits",
     "lost_in_time_and_space",
-    "epilogue"
+    "dwl_epilogue"
   ],
   "setup": [
     "prologue",
@@ -493,7 +493,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "The cries of the whippoorwills fade into the distance, and the town of Dunwich is filled with an eerie silence. All that can be heard is the dry whistle of the chill wind and the slow rustling of dead leaves. There is no sign of the missing townsfolk, nor will there be ever again.",
       "steps": ["ritual_completed", "sacrifice_all", "record_sacrificed", "check_henry_armitage", "lose_necronomicon", "earn_2_xp", "proceed_undimensioned_and_unseen"]
     },
@@ -864,7 +864,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "text": "Go to <b>Resolution 2</b>",
       "steps": ["resolution_2"]
     },
@@ -936,10 +936,12 @@
     },
     {
       "id": "faculty_office_night_is_young",
+      "bullet_type": "small",
       "text": "Set Faculty Offices <i>(The Night is Still Young)</i> aside, out of play. Remove Faculty Offices <i>(The Hour is Late)</i> from the game"
     },
     {
       "id": "faculty_office_hour_is_late",
+      "bullet_type": "small",
       "text": "Set Faculty Offices <i>(The Hour is Late)</i> aside, out of play. Remove Faculty Offices <i>(The Night is Still Young)</i> from the game"
     },
     {
@@ -1053,6 +1055,7 @@
     },
     {
       "id": "failed_to_save_students",
+      "text": "In your Campaign Log, record that <i>the investigators failed to save the students</i>. You are haunted by guilt. Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -1097,7 +1100,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "As you flee from the university, you hear screaming from the northern end of the campus. An ambulance passes you by, and you fear the worst. Hours later, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside and many were mauled or killed in the attack.",
       "steps": ["warren_rice_kidnapped", "failed_to_save_students", "earn_1_xp", "proceed_either"]
     },
@@ -1353,7 +1356,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "steps": ["check_final_act"]
     },
     {
@@ -1422,7 +1425,7 @@
               {
                 "type": "campaign_data",
                 "setting": "next_scenario",
-                "scenario": "house_always_wins"
+                "scenario": "the_house_always_wins"
               }
             ]
           }
@@ -1941,10 +1944,12 @@
     },
     {
       "id": "proceed_extracurricular_activity",
+      "bullet_type": "small",
       "text": "Proceed to <b>Scenario I–A: Extracurricular Activity</b>."
     },
     {
       "id": "proceed_armitages_fate",
+      "bullet_type": "small",
       "text": "Proceed to <b>Interlude I: Armitage’s Fate</b>."
     },
     {
@@ -1956,7 +1961,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "You barely made it out of the club alive. Go to <b>Resolution 1</b>",
       "steps": ["resolution_1"]
     },
@@ -1970,13 +1975,13 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "“What in the world…?” Dr. Morgan finally breaks out of his daze as you make your way to safety. You ask him what he remembers, and he sputters and shakes his head. “It’s all a haze,” he explains, visibly exhausted. “I was having the run of my life! Perhaps I had one too many shots. But, those creatures—I haven’t seen anything like that since…” He trails off, and you can tell that his mind is racing. His eyes widen with realization and his face pales. “I may not be in the best shape, but I’ll help with your investigation. Whatever it takes.”",
-      "steps": ["bone_to_pick", "francis_morgan_rescued", "earn_francis_morgan", "cheated", "earn_xp", "proceed_extracurricular_activity"]
+      "steps": ["bone_to_pick", "francis_morgan_rescued", "earn_francis_morgan", "cheated", "earn_xp"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "Although you were unable to find Dr. Morgan in the club, the man you rescued is grateful for your help. He introduces himself as Peter Clover, the owner of the establishment you’d just left. Despite the situation, he maintains an air of quiet professionalism. As you make your way towards the street, a well-polished Chrysler B-70 rolls up to you, and a gorgeous woman with long brown hair and narrow eyes exits. She is flanked by dangerous-looking men who slip their hands under their suit jackets when they see you. “Peter,” she says with a sigh of relief, “Good, you’re okay. I heard there was trouble?” She turns and glares at you with deadly eyes. “Who are they?”\nMr. Clover dusts off his vest, unworried. “Naomi, my dear, these are friends of mine. They…” he clears his throat. “They escorted me off the premises,” he explains after a short pause. “They have earned our gratitude.” The woman crosses her arms and takes a moment to size you up before giving you a smirk.\n“Very well then. I must thank you for taking care of Peter. Run along now; we’ll handle things from here.” She nods to the goons flanking her and they walk past you toward the club’s rear entrance, pulling firearms out from underneath their coats. You’re not sure what ‘handling things’ means, but you’re pretty sure you don’t want to be here when the gunfire starts. You thank Naomi and Peter, and head of",
-      "steps": ["naomi_has_back", "francis_morgan_kidnapped", "cheated", "earn_xp", "proceed_armitages_fate"]
+      "steps": ["naomi_has_back", "francis_morgan_kidnapped", "cheated", "earn_xp"]
     },
     {
       "id": "R4",
@@ -2028,10 +2033,12 @@
     },
     {
       "id": "part_1",
+      "type": "story",
       "text": "The notes written by Dr. Armitage in the journal stress Whateley’s desire to get his hands on the Necronomicon for some terrible purpose. As you read on, it seems that Dr. Armitage brought the university’s copy of the tome to Harold Walsted—the curator of the Miskatonic Museum—for safekeeping in the museum’s Restricted Hall. Although you are worried about your mentor, you are equally worried that Armitage’s kidnappers might get their hands on this Necronomicon. You decide to head to the museum to prevent them from acquiring it."
     },
     {
       "id": "part_2",
+      "type": "story",
       "text": "“My colleagues and I were quick to put the ordeal behind us,” Armitage says with a sigh. “But it seems that things haven’t fully resolved themselves. I’ll tell you the rest later, but for now, it is imperative that we get our hands on that copy of the Necronomicon. If my instincts are correct, the assailants you’ve encountered will be searching for it. After all that transpired, I didn’t feel safe keeping it at the library, so I brought it to my good friend, Harold Walsted. He is the current curator of the Miskatonic Museum. I thought it would be safe in the museum’s Restricted Hall, but now I’m not so sure. You must retrieve it at all costs! I fear terribly what they could do with the rites contained in its pages…”"
     },
     {
@@ -2149,7 +2156,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "Whatever the creature in the museum was, you had neither the will nor the tools to destroy it. It seems you must give up any hope of recovering the Necronomicon. Even so, there are others depending on you. Gathering your courage, you prepare for your next task.",
       "steps": ["failed_to_recover_necronomicon", "earn_xp"]
     },
@@ -2395,7 +2402,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 1</b>",
       "steps": ["resolution_1"]
     },
@@ -2794,7 +2801,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 2</b>",
       "steps": ["resolution_2"]
     },
@@ -3257,7 +3264,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "Too frightened to face her fate, Lita flees into the night. She realizes that she has failed and Umôrdhoth’s vengeance will pursue her wherever she goes. The creature’s tendrils spread throughout the city of Arkham, searching for her. It lurks in the darkness of every corner, tugging at the seams of reality. But Lita is nowhere to be found, so the creature dwells in the shadows to this day, searching… killing.",
       "steps": ["arkham_succumbed", "killed", "lose"]
     },
@@ -3446,8 +3453,7 @@
       "effects": [
         {
           "type": "add_card",
-          "investigator": "choice",
-          "required": true,
+          "investigator": "any",
           "card": "01117"
         }
       ]
@@ -3456,7 +3462,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "You barely manage to escape your house with your lives. The woman from your parlor follows you out the front door, slamming it behind her. “You fools! See what you have done?” She pushes a chair in front of the door, lodging it beneath the doorknob. “We must get out of here. Come with me, and I will tell you what I know. We are the only ones who can stop the threat that lurks beneath from being unleashed throughout the city.” You’re in no state to argue. Nodding, you follow the woman as she runs from your front porch out into the rainy street, toward Rivertown",
       "steps": ["house_standing", "ghoul_priest_alive", "earn_lita", "earn_xp"]
     },
@@ -3817,7 +3823,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 1</b>",
       "steps": ["resolution_1"]
     },
@@ -4322,7 +4328,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "steps": ["resolution_3"]
     },
     {
@@ -4408,7 +4414,6 @@
           "investigator": "lead_investigator",
           "card": "03059"
         }
-
       ]
     },
     {
@@ -4522,7 +4527,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "text": "Once again you are startled awake, this time by the cold, clammy fingers of a hand on your shoulder. “Are you alright?” an elderly man asks, helping you to your feet. Your mind is a flurry of memories. Last you remember, the Ward Theatre had become a place of nightmares, filled with dangerous fanatics and strange terrors. Worried, you glance at your surroundings, only to find yourself on the rain-slicked curb outside the theatre. Despite the events from earlier, the city seems normal to your eyes—or at least, what passes as normal for Arkham. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. The old man wears an expression of concern, noting the terror in your eyes. “Were you mugged? Damn those trouble boys!” he exclaims. “Dry-gulching folk on a night out to the the-a-tre! Not a single street those hooligans haven’t staked a claim on, I tell you.”\nYou stand and walk over to the front window of the Ward Theatre to tentatively peer through, but it is too dark to see anything inside. The elderly man eyes you curiously for a moment, then shrugs and continues walking. “Well, I’d best be on my way. I would do the same, if I were you,” he says, rounding the street corner. You quickly follow, hoping to warn him to stay away from the theatre. But when you turn the corner, it is not the elderly man you see, but the familiar sight of the Stranger in his featureless, pallid mask. His unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, but instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty— save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, frustrated and lost.",
       "steps": ["stranger_is_on_to_you", "chasing_the_stranger", "earn_xp"]
     },
@@ -5046,7 +5051,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "steps": ["no_resolution_check_conviction_and_doubt"]
     },
     {
@@ -5238,8 +5243,7 @@
         },
         {
           "type": "add_card",
-          "investigator": "choice",
-          "required": true,
+          "investigator": "any",
           "card": "03142"
         }
       ]
@@ -5446,7 +5450,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "You barely escape the building with your body and mind intact, and flee to safety.",
       "steps": ["resolution_4"]
     },
@@ -6091,8 +6095,7 @@
       "effects": [
         {
           "type": "add_card",
-          "investigator": "choice",
-          "required": true,
+          "investigator": "any",
           "card": "01097"
         }
       ]
@@ -6436,7 +6439,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "You lose track of yourself within the city as you flee for your life. Your feet move of their own accord. The beating of sinewy wings and screeching of creatures above you spurs you onward. Soon you find yourself running down a narrow avenue, passing a set of heavy iron gates. You are in a dead end—a court with tall, old houses on either side. You turn back toward the entrance to find the shapes of many winged creatures barring your path. They are perched on the gates and on the balconies above, awaiting your doom. Walking with cold, sinister confidence, the man in black opens the iron gate and enters the court. His face gleams in the darkness. His eyes pierce your soul. For a moment, you recognize him for what he truly is. It is the last you remember of that night.",
       "steps": ["did_not_escape_gaze", "add_elder_things", "ask_jordan_perry", "earn_xp"]
     },
@@ -7064,7 +7067,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "text": "You are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Dazed as you are, you find it difficult to answer. He points toward the staircase nearby and pushes you away from the catacombs. You stumble onto the Rue de la Tombe-Issoire and slowly make your way to a hotel where you can stay the night.\nSeveral days of research later, the meaning of the strange diagrams you saw within the catacombs still escapes you. You feel as though you have been led on a wild goose chase. Just as you are about to give up, you see a faded yellow book on the table nearest to you. You are stunned to discover that it is the unabridged script of The King in Yellow. Drawn on the cover in black ink is the very same diagram whose meaning you have been struggling to interpret for several sleepless nights. Who had placed it here? How had it come to your hotel room? Regardless, you know what you must do. The play holds the secrets—it has all along—and yet like a fool you have avoided reading Act II out of superstition. Its words cannot harm you any more than the creatures and fanatics you have already encountered. Trembling, you open to the second part, and begin to read.",
       "steps": ["know_site_of_gate", "read_act_2_choice", "add_elder_things", "ask_ishimaru_haruko", "earn_xp"]
     },
@@ -7281,8 +7284,7 @@
       "text": "Choose a new investigator to take the onyx clasp. That investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [{
         "type": "add_card",
-        "investigator": "choice",
-        "required": true,
+        "investigator": "any",
         "card": "03142"
       }]
     },
@@ -7441,7 +7443,7 @@
     },
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "steps": ["resolution_1"]
     },
     {
@@ -7930,7 +7932,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "Read <b>Resolution 1</b>",
       "steps": ["resolution_1"]
     },
@@ -8545,7 +8547,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "steps": ["check_final_act"]
     },
     {
@@ -8888,7 +8890,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "steps": ["resolution_1"]
     },
     {
@@ -9672,7 +9674,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "You manage to escape the building and flee on foot. As you run, you can hear a thunderous rumble coming from the manor. Several others burst through the front door behind you, too preoccupied to notice you. One yells to her companions: “Get out and gather at the Unvisited Isle! We have to perform the binding rite with or without the device!”\n“What about the guardian?” A man at the gates asks.\n“It’s no use,” she replies. “Just go!”\nThat is when the screaming begins. A spray of blood splatters against the basement window. Those who escaped immediately panic and flee.\nYou don’t stop or look back. You run until the building has faded behind the dense, grey mist, until you can no longer hear the screams of those still inside, until your legs can barely move.\nIs this the kind of “sacrifice” the Silver Twilight Lodge believes in making? And if so, what does this mean for the “binding rite” they seek to complete at the Unvisited Isle?",
       "steps": ["guardian_of_the_trap_emerged", "earn_xp", "skip_inner_circle"]
     },
@@ -10086,7 +10088,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "steps": ["check_anette_mason_resolution"]
     },
     {
@@ -11023,7 +11025,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "Flashes of vision spark your memory as you are dragged along the dirty wooden floor. A foul ceremony—the house—Nahab—a rhythmic chant—the spiraling black vortex—a dark revelry—the Primal Chaos—a child’s cries—a writhing tunnel inside your chest.",
       "steps": ["resolution_1"]
     },
@@ -11549,7 +11551,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "steps": ["check_final_act"]
     },
     {
@@ -12722,7 +12724,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "You barely remember sprinting back to shore and getting in your rowboat. It is as though you were possessed—by a fit of madness or by a spirit bent only on survival, you cannot say. You are shaken to your senses by the powerful gale which sweeps across the river, almost capsizing your boat. The spectral pillar marking the site of the Lodge’s ritual suddenly bursts outward. Dozens of specters and phantasmal shapes fly across the treetops and glide across the water. You will never forget their shrieks, like hundreds of deathcries sounding at once.",
       "steps": ["resolution_5"]
     },
@@ -13420,8 +13422,7 @@
         {
           "type": "add_card",
           "card": "04061",
-          "required": true,
-          "investigator": "choice"
+          "investigator": "any"
         }
       ]
     },
@@ -13547,12 +13548,12 @@
     },
     {
       "id": "no_resolution_defeated",
-      "title": "If no resolution was reached because each investigator was defeated",
+      "title": "No resolution was reached because each investigator was defeated",
       "steps": ["check_yigs_fury_no_resolution"]
     },
     {
       "id": "no_resolution_resigned",
-      "title": "If no resolution was reached because each investigator resigned before act 3",
+      "title": "No resolution was reached because each investigator resigned before act 3",
       "steps": ["resolution_3"]
     },
     {
@@ -13669,7 +13670,7 @@
         "options": [
           {
             "numCondition": 6,
-            "steps": ["resolution_1"]
+            "steps": ["resolution_1", "$proceed"]
           }
         ],
         "defaultOption": {
@@ -13697,7 +13698,7 @@
           "type": "scenario_data",
           "setting": "scenario_status",
           "status": "resolution",
-          "resolution": "resolution_1"
+          "resolution": "R1"
         }
       ]
     },
@@ -13844,7 +13845,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "The hazards of the jungle are too dangerous for you to continue exploring. If you remain any longer, these odd pillars will mark your grave. You decide to flee for now, returning to a familiar clearing several miles away where you can recuperate. You know that you must eventually return to the pillars and figure out the pattern that will open the way forward...but for now, at least you are safe.",
       "steps": ["record_paths_known", "replay_scenario"]
     },
@@ -14038,7 +14039,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "text": "You awaken, lying on rough stone in a place much colder and deeper than before. You stand and take stock of your surroundings, noting the red glow that seems to emanate from the cavern to your left. You follow it for several minutes, until finally it leads you into a well-lit entryway, filled with stone pillars. At the far end of the room lies an ornate and elaborately decorated doorway, a stone disc that has been rolled aside to unveil the hellish realm beyond.",
       "steps": ["check_rescued_alejandro"]
     },
@@ -15044,7 +15045,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "steps": ["resolution_4"]
     },
     {
@@ -15569,7 +15570,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "text": "When you next open your eyes, you are back in the bed of your hotel room. You raise your hand to shield your eyes from the sunlight that pierces through the bedroom’s curtains. The glaring light is akin to a vice crushing your temples. Thin wisps of incense smoke fill the air.\nRising to your feet requires a colossal effort. A small voice in the back of your mind tells you it was all a figment of your imagination, a nightmare fueled by weariness. It is the voice of self-preservation warning you to avoid the path of lunacy you have set upon. You ignore it and rise to your feet, your legs trembling with terror and exhaustion. Quietly, you call out for Ichtaca, wondering if she remembers what happened last night—or if she was even there to begin with. You find her slumped on the floor, her back against the door of the hotel room. She is unconscious and unresponsive, her face ashen. After several worrisome minutes attempting to wake her, you finally succeed. She sputters into consciousness, coughing violently and convulsing as though possessed. “The cave. The maw in the sky, bathed in red. Did you see it?”\nYour head pulses with pain as you attempt to remember the events of last night, and you shake your head. “It must be the path that leads to the Nexus,” she continues, gripping her head tightly with one hand. You attempt to help her to her feet, but she pushes you away. “What was I thinking? The boundary is thinning. Any tension and it could have snapped.” Her gaze shifts toward you. “I should not have involved you in this. But, like it or not, you are involved. It is too late to go back. I know where to find the Nexus, and you must journey with me.”",
       "steps": ["check_act_2", "record_x_paths_known", "check_harbinger", "record_yigs_fury", "earn_xp"]
     },
@@ -15926,7 +15927,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "text": "“Alejandro, what are you—?” You suddenly cry out. A nurse stands over you, peering into your eyes with a small light. You push the nurse away and rise to your feet, suddenly puzzled and disoriented. Despite the nurse’s protests, you wobble feebly out of the room. You are in a hospital, its white halls smelling faintly of disinfectant and other chemicals. Just moments prior, hadn’t you been exploring some kind of underground cavern?... You cannot recall.\n“Excuse me? Come back, you must rest!” The nurse calls out to you, gripping your forearm and pulling you back to your cot. She examines you closely while you recover from the shock of being transported so far in so short a time. “Who is Alejandro?” she asks, and you struggle to recall. The name doesn’t ring a bell.\nYou ask the nurse how you came to be here, wondering why she isn’t surprised at your sudden appearance. “Why, you admitted yourself to St. Mary’s just last night. Do you not remember?” You have no memory of this, and you are starting to grow concerned. “You were acting a little strangely, if I may be so bold. And you spoke in a strange fashion, almost as if English weren’t your first language. But now I see that you probably just drank a little bit too much.” She notices your questioning expression and smiles. “Don’t worry. We get that kind of thing quite often these days, now that all the bars and pubs are on the up-and-up again.”\nYou examine your face in the mirror. You are tired and older than you remember. Something important lies on the very edge of your memory, fuzzy and blurred. It takes about a minute before the significance of the nurse’s last statement catches up to you. Turning back toward the nurse, you ask what year it is, terrified of the answer.\n“Why, 1934 of course. My, you must have had a heck of a night!” She chuckles.",
       "steps": ["had_memories_expunged", "all_insane", "lose_campaign"]
     },
@@ -16965,7 +16966,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "steps": ["resolution_1"]
     },
     {
@@ -17761,8 +17762,7 @@
       "effects": [
         {
           "type": "add_card",
-          "investigator": "choice",
-          "required": true,
+          "investigator": "any",
           "card": "04061"
         }
       ]
@@ -18216,7 +18216,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "steps": ["resolution_1"]
     },
     {
@@ -18433,7 +18433,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "If no resolution was reached (each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "With your failure, the paradox of clashing timelines catches up to you. Despite all you have done, the events of the future cannot be unmade. You will always find the relic. You will always fail to preserve it. And the Nexus will always falter.\nReality as you know it will never be the same, but perhaps this is not the end of the world. After all, time is just one dimension: a dimension humanity barely understands. We experience time, but we cannot see it. We can measure it, but we cannot alter it. So what if the fourth dimension has split into hundreds of thousands of planes of existence? Our feeble human minds cannot comprehend the outcome, but the universe still survives, its ever-expanding boundaries no longer limited by the confines of time.",
       "steps": ["fabric_of_time_unwoven", "all_insane", "lose_campaign"]
     },

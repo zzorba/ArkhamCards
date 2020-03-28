@@ -34,12 +34,15 @@ export default class EffectsStepComponent extends React.Component<Props> {
         );
       case 'add_chaos_token':
       case 'remove_chaos_token':
-      return (
-        <ChaosTokenEffectComponent
-          key={key}
-          effect={effect}
-        />
-      );
+        if (this.props.step.stepText) {
+          return null;
+        }
+        return (
+          <ChaosTokenEffectComponent
+            key={key}
+            effect={effect}
+          />
+        );
       case 'add_card':
         return (
           <AddCardEffectComponent
@@ -56,7 +59,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
             effect={effect}
             input={input}
           />
-        )
+        );
       case 'earn_xp':
       case 'campaign_data':
       case 'remove_card':

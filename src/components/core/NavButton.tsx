@@ -18,10 +18,11 @@ interface Props {
   indent?: boolean;
   children?: ReactNode;
   noBorder?: boolean;
+  disabled?: boolean;
 }
-export default function NavButton({ text, fontScale, onPress, indent, children, noBorder }: Props) {
+export default function NavButton({ disabled, text, fontScale, onPress, indent, children, noBorder }: Props) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} disabled={!!disabled}>
       <View style={[
         styles.container,
         indent ? styles.indentedContainer : {},
@@ -38,11 +39,13 @@ export default function NavButton({ text, fontScale, onPress, indent, children, 
           </View>
         ) : <View style={styles.flex}>{ children }</View> }
         <View style={styles.icon}>
-          <MaterialIcons
-            name="keyboard-arrow-right"
-            size={30}
-            color="rgb(0, 122,255)"
-          />
+          { !disabled && (
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={30}
+              color="rgb(0, 122,255)"
+            />
+          ) }
         </View>
       </View>
     </TouchableOpacity>

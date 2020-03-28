@@ -6,10 +6,12 @@ import {
 
 import ArkhamIcon from 'icons/ArkhamIcon';
 import { BulletType } from 'data/scenario/types';
+import { COLORS } from 'styles/colors';
 
 interface Props {
   bulletType?: BulletType;
   children: React.ReactNode | React.ReactNode[];
+  border?: boolean;
 }
 
 export default class SetupStepWrapper extends React.Component<Props> {
@@ -32,7 +34,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
           <View style={styles.bullet}>
             <ArkhamIcon
               name="guide_bullet"
-              size={24}
+              size={20}
               color="#2E5344"
             />
           </View>
@@ -42,10 +44,11 @@ export default class SetupStepWrapper extends React.Component<Props> {
   render() {
     const {
       children,
+      border,
     } = this.props;
 
     return (
-      <View style={styles.step}>
+      <View style={[styles.step, border ? styles.border : {}]}>
         { this.renderBullet() }
         <View style={styles.mainText}>
           { children }
@@ -57,12 +60,19 @@ export default class SetupStepWrapper extends React.Component<Props> {
 
 
 const styles = StyleSheet.create({
+  border: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#888',
+    backgroundColor: COLORS.white,
+  },
   step: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginLeft: 16,
-    marginRight: 16,
-    marginBottom: 16,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 8,
+    paddingBottom: 8,
   },
   bullet: {
     marginRight: 8,

@@ -1,4 +1,4 @@
-import { groupBy, flatMap, find, forEach, map, sortBy, sortedUniq } from 'lodash';
+import { groupBy, flatMap, find, forEach, map, sortBy } from 'lodash';
 
 import { ListChoices } from 'actions/types';
 import {
@@ -37,6 +37,44 @@ export default class ScenarioStep {
     this.remainingStepIds = remainingStepIds;
   }
 
+  scenarioFinished(scenarioState: ScenarioStateHelper) {
+    return (
+      this.remainingStepIds.length === 0 &&
+      !!this.nextCampaignLog(scenarioState) &&
+      this.step.id === '$proceed_effects'
+    );
+  }
+
+  nextCampaignLog(
+    scenarioState: ScenarioStateHelper
+  ): GuidedCampaignLog | undefined {
+    if (this.step.type === 'effects') {
+      const flatEffects = flatMap(this.step.effectsWithInput, effects => effects.effects);
+      if (flatEffects.length) {
+        const needsInvestigatorChoice = !!find(flatEffects, effect => (
+          effect.type === 'add_card' && (
+            effect.investigator === 'choice' ||
+            effect.investigator === 'any'
+          )
+        ));
+        if (needsInvestigatorChoice) {
+          const investigatorChoice = scenarioState.choiceList(`${this.step.id}_investigator`);
+          if (investigatorChoice === undefined) {
+            return undefined;
+          }
+        }
+      }
+      return new GuidedCampaignLog(
+        this.step.effectsWithInput,
+        this.scenarioGuide.campaignGuide,
+        this.scenarioGuide.scenario.id,
+        this.campaignLog
+      );
+    }
+    // No mutations if no effects.
+    return this.campaignLog;
+  }
+
   nextStep(
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
@@ -63,16 +101,18 @@ export default class ScenarioStep {
           throw new Error(`Unknown resolution: ${this.step.resolution}`);
         }
         return this.proceedToNextStep(
-          [...resolution.steps, ...this.remainingStepIds]
+          [
+            ...(this.step.generated ? [] : resolution.steps),
+            ...this.remainingStepIds,
+          ]
         );
       }
       case 'effects': {
-        return this.handleEffects(
-          this.step.id,
-          this.remainingStepIds,
-          scenarioState,
-          this.step.effectsWithInput
-        );
+        const nextCampaignLog = this.nextCampaignLog(scenarioState);
+        if (!nextCampaignLog) {
+          return undefined;
+        }
+        return this.proceedToNextStep(this.remainingStepIds, nextCampaignLog);
       }
       default:
         return this.maybeCreateEffectsStep(
@@ -99,7 +139,7 @@ export default class ScenarioStep {
         );
       }
       case 'campaign_log_section_exists':
-      case 'campaign_log':
+      case 'campaign_log': {
         const ifTrue = find(step.condition.options, option => option.boolCondition === true);
         const ifFalse = find(step.condition.options, option => option.boolCondition === false);
         if (this.fullyGuided) {
@@ -112,14 +152,14 @@ export default class ScenarioStep {
             ifTrue,
             ifFalse
           );
-        } else {
-          return this.decisionTest(
-            scenarioState,
-            this.remainingStepIds,
-            ifTrue,
-            ifFalse
-          );
         }
+        return this.decisionTest(
+          scenarioState,
+          this.remainingStepIds,
+          ifTrue,
+          ifFalse
+        );
+      }
       case 'campaign_log_count': {
         const inputCount = scenarioState.count(step.id);
         if (!this.fullyGuided && inputCount === undefined) {
@@ -146,11 +186,7 @@ export default class ScenarioStep {
       }
       case 'math':
         // TODO: handle math
-        return this.handleMath(
-          step,
-          step.condition,
-          scenarioState
-        );
+        return this.handleMath(step, step.condition);
       case 'campaign_data': {
         return this.handleCampaignData(
           step,
@@ -215,8 +251,7 @@ export default class ScenarioStep {
 
   private handleMath(
     step: BranchStep,
-    condition: MathCondition,
-    scenarioState: ScenarioStateHelper
+    condition: MathCondition
   ): ScenarioStep | undefined {
     const opA = this.getOperand(condition.opA);
     const opB = this.getOperand(condition.opB);
@@ -239,8 +274,26 @@ export default class ScenarioStep {
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
     switch (condition.campaign_data) {
+      case 'scenario_completed': {
+        const ifTrue = find(step.condition.options, option => option.boolCondition === true);
+        const ifFalse = find(step.condition.options, option => option.boolCondition === false);
+        if (this.fullyGuided) {
+          return this.binaryBranch(
+            this.campaignLog.scenarioStatus(condition.scenario) === 'completed',
+            scenarioState,
+            this.remainingStepIds,
+            ifTrue,
+            ifFalse
+          );
+        }
+        return this.decisionTest(
+          scenarioState,
+          this.remainingStepIds,
+          ifTrue,
+          ifFalse
+        );
+      }
       case 'difficulty':
-      case 'scenario_completed':
       case 'chaos_bag':
       case 'investigator':
         return undefined;
@@ -275,8 +328,8 @@ export default class ScenarioStep {
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
     switch (condition.scenario_data) {
-      case 'player_count':
-        const playerCount = scenarioState.playerCount();
+      case 'player_count': {
+        const playerCount = this.campaignLog.playerCount();
         const option = find(condition.options, option => option.numCondition === playerCount) ||
           find(condition.options, option => !!option.default);
         const extraSteps = (option && option.steps) || [];
@@ -287,7 +340,8 @@ export default class ScenarioStep {
             effects: (option && option.effects) || [],
           }]
         );
-      case 'investigator':
+      }
+      case 'investigator': {
         // TODO: make work in fully guided mode.
         if (condition.options.length === 1 && condition.options[0].condition) {
           return this.decisionTest(
@@ -298,6 +352,7 @@ export default class ScenarioStep {
         }
         // TODO: shouldn't actually happen.
         return undefined;
+      }
     }
   }
 
@@ -309,42 +364,41 @@ export default class ScenarioStep {
     if (this.fullyGuided) {
       // TODO: supplies
       return undefined;
-    } else {
-      switch (condition.investigator) {
-        case 'any':
-          return this.decisionTest(
-            scenarioState,
-            this.remainingStepIds,
-            find(step.condition.options, option => option.boolCondition === true),
-            find(step.condition.options, option => option.boolCondition === false)
-          );
-        case 'all': {
-          const choiceList = scenarioState.choiceList(step.id);
-          if (choiceList === undefined) {
-            return undefined;
-          }
-          const {
-            effectsWithInput,
-            stepIds,
-          } = this.processListChoices(choiceList, condition.options);
-          return this.maybeCreateEffectsStep(
-            step.id,
-            [...stepIds, ...this.remainingStepIds],
-            effectsWithInput
-          );
-        }
-        case 'choice':
-          // TODO: check supplies, needs an investigator AND a has supplies test.
+    }
+    switch (condition.investigator) {
+      case 'any':
+        return this.decisionTest(
+          scenarioState,
+          this.remainingStepIds,
+          find(step.condition.options, option => option.boolCondition === true),
+          find(step.condition.options, option => option.boolCondition === false)
+        );
+      case 'all': {
+        const choiceList = scenarioState.choiceList(step.id);
+        if (choiceList === undefined) {
           return undefined;
+        }
+        const {
+          effectsWithInput,
+          stepIds,
+        } = this.processListChoices(choiceList, condition.options);
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...stepIds, ...this.remainingStepIds],
+          effectsWithInput
+        );
       }
+      case 'choice':
+        // TODO: check supplies, needs an investigator AND a has supplies test.
+        return undefined;
     }
   }
 
   private processListChoices(
     choiceList: ListChoices,
     choicesByIdx: {
-      effects?: Effect[] | null,
-      steps?: string[] | null,
+      effects?: Effect[] | null;
+      steps?: string[] | null;
     }[]
   ) {
     const groupedEffects = groupBy(
@@ -375,7 +429,7 @@ export default class ScenarioStep {
           effects: selectedChoice.effects || [],
         };
         return result;
-    });
+      });
     return {
       effectsWithInput,
       stepIds,
@@ -428,7 +482,7 @@ export default class ScenarioStep {
               inputValue: map(group, item => item.code),
               counterInput: group[0].choice,
               effects: input.effects,
-            }
+            };
           }
         );
         return this.maybeCreateEffectsStep(
@@ -460,7 +514,9 @@ export default class ScenarioStep {
         if (!scenarioState.supplies(step.id)) {
           return undefined;
         }
-        return this.proceedToNextStep(this.remainingStepIds);
+        return this.proceedToNextStep(
+          this.remainingStepIds
+        );
       }
       case 'choose_many':
         // TODO: used by inner-circle, needs to iterate until # of choices = 3
@@ -486,7 +542,7 @@ export default class ScenarioStep {
           step.id,
           [...(choice.steps || []), ...this.remainingStepIds],
           [{
-            effects: choice.effects || []
+            effects: choice.effects || [],
           }]
         );
       }
@@ -508,7 +564,7 @@ export default class ScenarioStep {
       effects?: null | Effect[];
     }
   ): ScenarioStep | undefined {
-    const decision = scenarioState.decision(this.step.id)
+    const decision = scenarioState.decision(this.step.id);
     if (decision !== undefined) {
       return this.binaryBranch(
         decision,
@@ -559,7 +615,7 @@ export default class ScenarioStep {
           id: `${id}_effects`,
           type: 'effects',
           effectsWithInput,
-          stepText: this.step.text !== null,
+          stepText: !!this.step.text,
         },
         this.scenarioGuide,
         this.campaignLog,
@@ -569,41 +625,13 @@ export default class ScenarioStep {
     return this.proceedToNextStep(remainingStepIds, this.campaignLog);
   }
 
-  private handleEffects(
-    id: string,
-    remainingStepIds: string[],
-    scenarioState: ScenarioStateHelper,
-    effects: EffectsWithInput[]
-  ): ScenarioStep | undefined {
-    const flatEffects = flatMap(effects, effects => effects.effects);
-    if (flatEffects.length) {
-      const needsInvestigatorChoice = !!find(flatEffects, effect => (
-        effect.type === 'add_card' && effect.investigator === 'choice'
-      ));
-      if (needsInvestigatorChoice) {
-        const investigatorChoice = scenarioState.choice(`${id}_investigator`);
-        if (investigatorChoice === undefined) {
-          return undefined;
-        }
-      }
-    }
-    return this.proceedToNextStep(
-      remainingStepIds,
-      new GuidedCampaignLog(
-        this.scenarioGuide.scenario.id,
-        effects,
-        this.campaignLog
-      )
-    );
-  }
-
   private proceedToNextStep(
     remainingStepIds: string[],
     campaignLog?: GuidedCampaignLog
   ): ScenarioStep | undefined {
     if (remainingStepIds.length) {
       const [stepId, ...newRemaining] = remainingStepIds;
-      const step = this.scenarioGuide.step(stepId)
+      const step = this.scenarioGuide.step(stepId);
       if (!step) {
         console.log(`Missing step: ${stepId}`);
         return undefined;

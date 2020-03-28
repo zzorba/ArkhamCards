@@ -1,5 +1,8 @@
-import { find, map } from 'lodash';
+import { find, forEach } from 'lodash';
 
+import GuidedCampaignLog from './GuidedCampaignLog';
+import CampaignStateHelper from './CampaignStateHelper';
+import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
 import { FullCampaign } from './types';
 
@@ -37,6 +40,25 @@ interface LogEntryPerInvestigator extends LogSection {
   text?: string;
 }
 
+interface PlayedScenario {
+  type: 'started' | 'completed';
+  scenarioGuide: ScenarioGuide;
+  latestCampaignLog: GuidedCampaignLog;
+}
+
+interface UnplayedScenario {
+  type: 'locked' | 'playable' | 'skipped';
+  scenarioGuide: ScenarioGuide;
+  latestCampaignLog: GuidedCampaignLog;
+}
+
+export type ProcessedScenario = PlayedScenario | UnplayedScenario;
+
+interface ProcessedCampaign {
+  scenarios: ProcessedScenario[];
+  campaignLog: GuidedCampaignLog;
+}
+
 type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntryPerInvestigator;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 /**
@@ -44,20 +66,108 @@ const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
  */
 export default class CampaignGuide {
   campaign: FullCampaign;
-  scenarios: ScenarioGuide[];
   log: CampaignLog;
 
   constructor(campaign: FullCampaign, log: CampaignLog) {
     this.campaign = campaign;
-    this.scenarios = map(
-      campaign.scenarios,
-      scenario => new ScenarioGuide(scenario, this)
-    );
     this.log = log;
   }
 
-  getScenario(id: string): ScenarioGuide | undefined {
-    return find(this.scenarios, scenario => scenario.scenario.id === id);
+  getScenario(
+    id: string,
+    campaignState: CampaignStateHelper
+  ): ScenarioGuide | undefined {
+    const processedScenario = find(
+      this.processAllScenarios(campaignState).scenarios,
+      scenario => scenario.scenarioGuide.scenario.id === id);
+    return processedScenario && processedScenario.scenarioGuide;
+  }
+
+  processAllScenarios(
+    campaignState: CampaignStateHelper,
+  ): ProcessedCampaign {
+    const scenarios: ProcessedScenario[] = [];
+    let campaignLog: GuidedCampaignLog = new GuidedCampaignLog([], this);
+    forEach(this.allScenarioIds(), scenarioId => {
+      if (!find(scenarios, scenario => scenario.scenarioGuide.scenario.id === scenarioId)) {
+        const nextScenarios = this.processScenario(
+          scenarioId,
+          campaignState,
+          campaignLog
+        );
+        forEach(nextScenarios, scenario => {
+          scenarios.push(scenario);
+          campaignLog = scenario.latestCampaignLog;
+        });
+      }
+    });
+    let foundPlayable = false;
+    forEach(scenarios, scenario => {
+      if (scenario.type === 'playable') {
+        if (foundPlayable) {
+          scenario.type = 'locked';
+        } else {
+          foundPlayable = true;
+        }
+      }
+      if (scenario.type === 'started') {
+        foundPlayable = true;
+      }
+    });
+    return {
+      scenarios,
+      campaignLog,
+    };
+  }
+
+  private processScenario(
+    scenarioId: string,
+    campaignState: CampaignStateHelper,
+    campaignLog: GuidedCampaignLog
+  ): ProcessedScenario[] {
+    const scenario = find(this.campaign.scenarios, scenario => scenario.id === scenarioId);
+    if (!scenario) {
+      throw new Error(`Unknown scenario: ${scenarioId}`);
+    }
+    const scenarioGuide = new ScenarioGuide(scenario, this, campaignLog);
+    if (!campaignState.startedScenario(scenarioId)) {
+      if (campaignLog.scenarioStatus(scenarioId) === 'skipped') {
+        return [{
+          type: 'skipped',
+          scenarioGuide,
+          latestCampaignLog: campaignLog,
+        }];
+      }
+      return [{
+        type: 'playable',
+        scenarioGuide,
+        latestCampaignLog: campaignLog,
+      }];
+    }
+    const scenarioState = new ScenarioStateHelper(scenarioId, campaignState);
+    const executedScenario = scenarioGuide.setupSteps(scenarioState);
+    const firstResult: ProcessedScenario = {
+      type: executedScenario.inProgress ? 'started' : 'completed',
+      scenarioGuide,
+      latestCampaignLog: executedScenario.latestCampaignLog,
+    };
+
+    const nextScenario = executedScenario.latestCampaignLog.nextScenario();
+    if (!nextScenario || executedScenario.inProgress) {
+      return [firstResult];
+    }
+    return [
+      firstResult,
+      ...this.processScenario(
+        nextScenario,
+        campaignState,
+        executedScenario.latestCampaignLog
+      ),
+    ];
+  }
+
+  private allScenarioIds() {
+    return this.campaign.campaign.scenarios;
   }
 
   logSection(sectionId: string): LogSection | undefined {

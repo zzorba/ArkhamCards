@@ -1,6 +1,7 @@
-import { cloneDeep, find, forEach, sumBy } from 'lodash';
+import { cloneDeep, find, findIndex, forEach, sumBy } from 'lodash';
 import {
   Effect,
+  CampaignDataEffect,
   CampaignLogEffect,
   CampaignLogCountEffect,
   CampaignLogCardsEffect,
@@ -10,6 +11,7 @@ import {
   Difficulty,
   EffectsWithInput,
 } from './types';
+import CampaignGuide from './CampaignGuide';
 
 interface BasicEntry {
   id: string;
@@ -39,7 +41,7 @@ interface EntrySection {
     [key: string]: true | undefined;
   };
   sectionCrossedOut?: boolean;
-};
+}
 
 interface CountSection {
   count: number;
@@ -65,7 +67,7 @@ interface CampaignData {
 }
 
 export default class GuidedCampaignLog {
-  scenarioId: string;
+  scenarioId?: string;
   sections: {
     [section: string]: EntrySection | undefined;
   };
@@ -76,6 +78,8 @@ export default class GuidedCampaignLog {
     [scenario: string]: ScenarioData | undefined;
   };
   campaignData: CampaignData;
+  campaignGuide: CampaignGuide;
+  fullyGuided: boolean = true;
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
@@ -91,11 +95,14 @@ export default class GuidedCampaignLog {
   }
 
   constructor(
-    scenarioId: string,
     effectsWithInput: EffectsWithInput[],
+    campaignGuide: CampaignGuide,
+    scenarioId?: string,
     readThrough?: GuidedCampaignLog
   ) {
     this.scenarioId = scenarioId;
+    this.campaignGuide = campaignGuide;
+
     const hasRelevantEffects = !!find(
       effectsWithInput,
       effects => !!find(
@@ -124,35 +131,10 @@ export default class GuidedCampaignLog {
         forEach(effects, effect => {
           switch (effect.type) {
             case 'campaign_data':
-              switch (effect.setting) {
-                case 'result':
-                  this.campaignData.result = effect.value;
-                  break;
-                case 'difficulty':
-                  this.campaignData.difficulty = effect.value;
-                  break;
-                case 'skip_scenario':
-                  this.campaignData.scenarioStatus[effect.scenario] = 'skipped';
-                  break;
-                case 'replay_scenario': {
-                  const replayCount = this.campaignData.scenarioReplayCount[effect.scenario] || 0;
-                  this.campaignData.scenarioReplayCount[effect.scenario] = replayCount + 1;
-                  break;
-                }
-                case 'next_scenario':
-                  this.campaignData.nextScenario = effect.scenario;
-                  break;
-                case 'choose_investigators':
-                  // TODO: choose new investigators?
-                  break;
-              }
+              this.handleCampaignDataEffect(effect);
               break;
             case 'scenario_data':
-              this.handleScenarioDataEffect(
-                effect,
-                scenarioId,
-                input
-              );
+              this.handleScenarioDataEffect(effect, scenarioId, input);
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
@@ -172,12 +154,43 @@ export default class GuidedCampaignLog {
     }
   }
 
+  private handleCampaignDataEffect(effect: CampaignDataEffect) {
+    switch (effect.setting) {
+      case 'result':
+        this.campaignData.result = effect.value;
+        break;
+      case 'difficulty':
+        this.campaignData.difficulty = effect.value;
+        break;
+      case 'skip_scenario':
+        this.campaignData.scenarioStatus[effect.scenario] = 'skipped';
+        break;
+      case 'replay_scenario': {
+        const replayCount = this.campaignData.scenarioReplayCount[effect.scenario] || 0;
+        this.campaignData.scenarioReplayCount[effect.scenario] = replayCount + 1;
+        break;
+      }
+      case 'next_scenario':
+        this.campaignData.nextScenario = effect.scenario;
+        break;
+      case 'choose_investigators':
+        // TODO: choose new investigators?
+        break;
+    }
+  }
+
   private handleScenarioDataEffect(
     effect: ScenarioDataEffect,
-    scenarioId: string,
-    input: string[] | undefined
+    scenarioId?: string,
+    input?: string[]
   ) {
+    if (scenarioId === undefined) {
+      throw new Error(`Cannot set scenario_data effects outside of scenarios.`);
+    }
     if (effect.setting === 'scenario_status') {
+      if (this.campaignData.nextScenario === scenarioId && effect.status === 'started') {
+        this.campaignData.nextScenario = undefined;
+      }
       this.campaignData.scenarioStatus[scenarioId] = effect.status;
       return;
     }
@@ -215,10 +228,10 @@ export default class GuidedCampaignLog {
       if (effect.cross_out) {
         section.crossedOut[id] = true;
       } else {
-       section.entries.push({
-         type: 'basic',
-         id,
-       });
+        section.entries.push({
+          type: 'basic',
+          id,
+        });
       }
     });
     this.sections[effect.section] = section;
@@ -226,7 +239,9 @@ export default class GuidedCampaignLog {
 
   private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, counterInput?: number) {
     const value: number = (
-      (effect.operation === 'add_input' || effect.operation == 'set_input') ? counterInput : effect.value
+      (effect.operation === 'add_input' || effect.operation === 'set_input') ?
+        counterInput :
+        effect.value
     ) || 0;
     if (!effect.id) {
       // Section entry
@@ -343,6 +358,9 @@ export default class GuidedCampaignLog {
   }
 
   leadInvestigatorChoice(): string {
+    if (this.scenarioId === undefined) {
+      throw new Error('Lead investigator called outside of a scenario.');
+    }
     const scenario = this.scenarioData[this.scenarioId];
     if (!scenario || !scenario.leadInvestigator) {
       throw new Error('Lead Investigator called before decision');
@@ -350,9 +368,10 @@ export default class GuidedCampaignLog {
     return scenario.leadInvestigator;
   }
 
-  investigatorResolutionStatus(): {
-    [code: string]: InvestigatorStatus;
-  } {
+  investigatorResolutionStatus(): { [code: string]: InvestigatorStatus } {
+    if (this.scenarioId === undefined) {
+      throw new Error('investigatorResolutionStatus called outside of a scenario.');
+    }
     const scenario = this.scenarioData[this.scenarioId];
     if (!scenario) {
       throw new Error('investigatorResolutionStatus called before decision');
@@ -360,6 +379,31 @@ export default class GuidedCampaignLog {
     return scenario.investigatorStatus;
   }
 
+  scenarioStatus(scenarioId: string): ScenarioStatus {
+    return this.campaignData.scenarioStatus[scenarioId] || 'not_started';
+  }
+
+  nextScenario(): string | undefined {
+    if (this.campaignData.nextScenario) {
+      // The campaign told us where to go next!
+      return this.campaignData.nextScenario;
+    }
+    if (this.scenarioId === undefined) {
+      // We haven't started yet, so the prologue/first scenario is first.
+      return this.campaignGuide.campaign.campaign.scenarios[0];
+    }
+    // TODO: handle replays here.
+
+    const scenarios = this.campaignGuide.campaign.campaign.scenarios;
+    const currentIndex = findIndex(
+      scenarios,
+      scenarioId => this.scenarioId === scenarioId
+    );
+    if (currentIndex !== -1 && currentIndex + 1 < scenarios.length) {
+      return scenarios[currentIndex + 1];
+    }
+    return undefined;
+  }
 
   sectionExists(sectionId: string): boolean {
     const section = this.sections[sectionId];
@@ -381,6 +425,11 @@ export default class GuidedCampaignLog {
     return !!entry;
   }
 
+  playerCount(): number {
+    // TODO
+    return 2;
+  }
+
   count(sectionId: string, id: string): number {
     if (id === '$count') {
       const section = this.countSections[sectionId];
@@ -388,22 +437,22 @@ export default class GuidedCampaignLog {
         return section.count;
       }
       return 0;
-    } else {
-      const section = this.sections[sectionId];
-      if (section) {
-        if (id === '$num_entries') {
-          return sumBy(
-            section.entries,
-            entry => section.crossedOut[entry.id] ? 0 : 1
-          );
-        }
-        if (section.crossedOut[id]) {
-          return 0;
-        }
-        const entry = find(section.entries, entry => entry.id === id);
-        if (entry && entry.type === 'count') {
-          return entry.count;
-        }
+    }
+
+    const section = this.sections[sectionId];
+    if (section) {
+      if (id === '$num_entries') {
+        return sumBy(
+          section.entries,
+          entry => section.crossedOut[entry.id] ? 0 : 1
+        );
+      }
+      if (section.crossedOut[id]) {
+        return 0;
+      }
+      const entry = find(section.entries, entry => entry.id === id);
+      if (entry && entry.type === 'count') {
+        return entry.count;
       }
     }
     return 0;

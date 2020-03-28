@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 
 import CheckSuppliesConditionComponent from './CheckSuppliesConditionComponent';
 import MathConditionComponent from './MathConditionComponent';

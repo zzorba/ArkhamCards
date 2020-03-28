@@ -70,7 +70,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
   };
 
   render() {
-    const { id, text, input, bulletType } = this.props;
+    const { input } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {

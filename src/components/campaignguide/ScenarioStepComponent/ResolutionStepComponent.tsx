@@ -22,7 +22,7 @@ export default class ResolutionStepComponent extends React.Component<Props> {
         { ({ scenarioGuide }: ScenarioGuideContextType) => {
           const resolution = scenarioGuide.resolution(step.resolution);
           if (!resolution) {
-            return <Text>Unknown resolution: {step.resolution}</Text>;
+            return <Text>Unknown resolution: { step.resolution }</Text>;
           }
           return (
             <View style={styles.step}>

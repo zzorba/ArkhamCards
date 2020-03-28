@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, View, StyleSheet } from 'react-native';
 import { findIndex, keys, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -11,6 +11,7 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 interface Props {
   id: string;
   title: string;
+  description?: string;
   defaultLabel?: string;
   required?: boolean;
   renderResults?: (investigator?: InvestigatorDeck) => React.ReactNode;
@@ -71,7 +72,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       const code = investigators[0];
       return findIndex(
         investigatorDecks,
-        ({ investigator}) => investigator.code === code
+        ({ investigator }) => investigator.code === code
       );
     }
     return findIndex(
@@ -81,7 +82,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   }
 
   render() {
-    const { id, title, renderResults, defaultLabel } = this.props;
+    const { id, description, title, renderResults, required, defaultLabel } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
@@ -89,20 +90,24 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
           const selectedIndex = this.getSelectedIndex(investigatorDecks, choice);
           return (
             <>
-              <PickerComponent
-                title={title}
-                defaultLabel={defaultLabel}
-                choices={
-                  map(investigatorDecks, ({ investigator }) => {
-                    return {
-                      text: investigator.name,
-                      effects: [],
-                    };
-                  })}
-                selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
-                editable={choice === undefined}
-                onChoiceChange={this._onChoiceChange}
-              />
+              <View style={styles.wrapper}>
+                <PickerComponent
+                  title={title}
+                  description={description}
+                  defaultLabel={defaultLabel}
+                  choices={
+                    map(investigatorDecks, ({ investigator }) => {
+                      return {
+                        text: investigator.name,
+                        effects: [],
+                      };
+                    })}
+                  optional={!required}
+                  selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
+                  editable={choice === undefined}
+                  onChoiceChange={this._onChoiceChange}
+                />
+              </View>
               { choice !== undefined ?
                 // TODO: need to handle no-choice here?
                 (!!renderResults && renderResults(
@@ -117,3 +122,11 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
     );
   }
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#888',
+  },
+});

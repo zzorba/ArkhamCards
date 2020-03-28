@@ -5,9 +5,12 @@ import {
 import { every, find } from 'lodash';
 import { t } from 'ttag';
 
+import BinaryResult from '../../BinaryResult';
+import CardTextComponent from 'components/card/CardTextComponent';
+import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import BinaryPrompt from '../../prompts/BinaryPrompt';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import Card from 'data/Card';
 import {
   BranchStep,
@@ -23,10 +26,10 @@ interface Props {
 
 export default class CampaignLogConditionComponent extends React.Component<Props> {
   render(): React.ReactNode {
-    const { step, condition } = this.props;
+    const { step, condition, campaignLog } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+      <CampaignGuideContext.Consumer>
+        { ({ campaignGuide }: CampaignGuideContextType) => {
           if (every(condition.options, option => option.boolCondition !== undefined)) {
             // It's a binary prompt.
             if (condition.id) {
@@ -42,6 +45,17 @@ export default class CampaignLogConditionComponent extends React.Component<Props
                 case 'text': {
                   const prompt = step.text ||
                     t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`;
+
+                  if (campaignLog.fullyGuided) {
+                    const result = campaignLog.check(condition.section, condition.id);
+                    return (
+                      <BinaryResult
+                        prompt={prompt}
+                        result={result}
+                      />
+                    );
+                  }
+
                   return (
                     <BinaryPrompt
                       id={step.id}
@@ -80,7 +94,7 @@ export default class CampaignLogConditionComponent extends React.Component<Props
             </Text>
           );
         } }
-      </ScenarioGuideContext.Consumer>
+      </CampaignGuideContext.Consumer>
     );
   }
 }

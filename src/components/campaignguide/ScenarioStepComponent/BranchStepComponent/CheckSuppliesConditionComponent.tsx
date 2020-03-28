@@ -4,12 +4,10 @@ import { find, map } from 'lodash';
 
 import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
 import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
-import ScenarioGuideContext, { ScenarioGuideContextType } from 'components/campaignguide/ScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import {
   BranchStep,
   CheckSuppliesCondition,
-  EffectsChoice,
-  Option,
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
@@ -23,8 +21,8 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
   render(): React.ReactNode {
     const { step, condition } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+      <CampaignGuideContext.Consumer>
+        { ({ campaignGuide }: CampaignGuideContextType) => {
           switch (condition.investigator) {
             case 'any':
               return (
@@ -53,7 +51,7 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
               return (<Text>Check Supplies Investigator Choice</Text>);
           }
         } }
-      </ScenarioGuideContext.Consumer>
+      </CampaignGuideContext.Consumer>
     );
   }
 }

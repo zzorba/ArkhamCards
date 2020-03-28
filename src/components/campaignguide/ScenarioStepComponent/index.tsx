@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
-import { map } from 'lodash';
 
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
@@ -52,7 +51,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
           />
         );
       case 'effects':
-        return <EffectsStepComponent step={step} />
+        return <EffectsStepComponent step={step} />;
       default:
         return <Text>Unknown step type</Text>;
     }
@@ -64,6 +63,6 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       <CampaignLogContext.Provider value={{ campaignLog: step.campaignLog }}>
         { this.renderContent() }
       </CampaignLogContext.Provider>
-    )
+    );
   }
 }

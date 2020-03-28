@@ -7,7 +7,7 @@ import { t } from 'ttag';
 
 import SingleCardWrapper from '../../SingleCardWrapper';
 import BinaryPrompt from '../../prompts/BinaryPrompt';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import Card from 'data/Card';
 import {
   BranchStep,
@@ -26,8 +26,8 @@ export default class CampaignLogCountConditionComponent extends React.Component<
   render(): React.ReactNode {
     const { step, condition } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+      <CampaignGuideContext.Consumer>
+        { ({ campaignGuide }: CampaignGuideContextType) => {
           if (every(condition.options, option => option.boolCondition !== undefined)) {
             // It's a binary prompt.
             if (condition.id) {
@@ -81,7 +81,7 @@ export default class CampaignLogCountConditionComponent extends React.Component<
             </Text>
           );
         } }
-      </ScenarioGuideContext.Consumer>
+      </CampaignGuideContext.Consumer>
     );
   }
 }

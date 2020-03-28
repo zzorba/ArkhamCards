@@ -60,7 +60,7 @@ export type ScenarioDataEffect =
   | ScenarioDataInvestigatorStatusEffect
   | ScenarioDataStatusEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
-export type ScenarioStatus = "skipped" | "started" | "resolution" | "completed" | "unlocked";
+export type ScenarioStatus = "not_started" | "skipped" | "started" | "resolution" | "completed" | "unlocked";
 export type ChaosToken =
   | "+1"
   | "0"
@@ -330,6 +330,7 @@ export interface CheckSuppliesCondition {
 export interface EffectsStep {
   id: string;
   type: "effects";
+  text?: null;
   effectsWithInput: EffectsWithInput[];
   stepText: boolean;
 }
@@ -452,6 +453,8 @@ export interface ResolutionStep {
   id: string;
   type: "resolution";
   resolution: string;
+  text?: null;
+  generated?: boolean;
   effects?: ScenarioDataStatusEffect[];
 }
 export interface RuleReminderStep {
@@ -476,6 +479,7 @@ export interface StoryStep {
 export interface LocationSetupStep {
   id: string;
   type: "location_setup";
+  text?: null;
   title: string;
   locations: string[][];
 }

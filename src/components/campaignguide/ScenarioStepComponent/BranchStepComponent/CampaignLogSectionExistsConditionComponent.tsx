@@ -3,7 +3,7 @@ import { find } from 'lodash';
 import { t } from 'ttag';
 
 import BinaryPrompt from '../../prompts/BinaryPrompt';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import {
   BranchStep,
   CampaignLogSectionExistsCondition,
@@ -20,8 +20,8 @@ export default class CampaignLogSectionExistsConditionComponent extends React.Co
   render(): React.ReactNode {
     const { step, condition } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+      <CampaignGuideContext.Consumer>
+        { ({ campaignGuide }: CampaignGuideContextType) => {
           const logEntry = campaignGuide.logSection(condition.section);
           const prompt = logEntry ?
             t`Check Campaign Log, is the <i>${logEntry.section}</i> not crossed off?` :
@@ -35,7 +35,7 @@ export default class CampaignLogSectionExistsConditionComponent extends React.Co
             />
           );
         } }
-      </ScenarioGuideContext.Consumer>
+      </CampaignGuideContext.Consumer>
     );
   }
 }

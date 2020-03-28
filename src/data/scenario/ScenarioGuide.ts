@@ -1,4 +1,4 @@
-import { find, flatMap } from 'lodash';
+import { find, flatMap, last } from 'lodash';
 
 import {
   Step,
@@ -9,12 +9,19 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import ScenarioStep from './ScenarioStep';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
-import {
+import fixedSteps, {
   LEAD_INVESTIGATOR_STEP,
-  INVESTIGATOR_STATUS_STEP,
   CHOOSE_RESOLUTION_STEP_ID,
+  PROCEED_STEP,
   chooseResolutionStep,
+  resolutionStep,
 } from './fixedSteps';
+
+interface ExecutedScenario {
+  steps: ScenarioStep[];
+  inProgress: boolean;
+  latestCampaignLog: GuidedCampaignLog;
+}
 
 /**
  * Wrapper utility to provide structured access to scenarios.
@@ -22,39 +29,30 @@ import {
 export default class ScenarioGuide {
   scenario: Scenario;
   campaignGuide: CampaignGuide;
+  campaignLog: GuidedCampaignLog;
 
   constructor(
     scenario: Scenario,
-    campaignGuide: CampaignGuide
+    campaignGuide: CampaignGuide,
+    campaignLog: GuidedCampaignLog
   ) {
     this.scenario = scenario;
     this.campaignGuide = campaignGuide;
+    this.campaignLog = campaignLog;
   }
 
   step(id: string): Step | undefined {
-    if (id === INVESTIGATOR_STATUS_STEP.id) {
-      return INVESTIGATOR_STATUS_STEP;
-    }
-    if (id === LEAD_INVESTIGATOR_STEP.id) {
-      return LEAD_INVESTIGATOR_STEP;
+    if (fixedSteps[id]) {
+      return fixedSteps[id];
     }
     if (id === CHOOSE_RESOLUTION_STEP_ID) {
       return chooseResolutionStep(this.scenario.resolutions || []);
     }
-    if (id.startsWith('$r_')) {
-      const resolution = id.substring(3);
-      return {
-        id,
-        type: 'resolution',
-        resolution,
-        effects: [{
-          type: 'scenario_data',
-          setting: 'scenario_status',
-          status: 'resolution',
-          resolution,
-        }],
-      };
+    const rStep = resolutionStep(id);
+    if (rStep) {
+      return rStep;
     }
+
     return find(
       this.scenario.steps,
       step => step.id === id
@@ -67,22 +65,9 @@ export default class ScenarioGuide {
     return find(this.scenario.resolutions || [], resolution => resolution.id === id);
   }
 
-  mainResolutionSteps(
-    resolution: Resolution,
-    scenarioState: ScenarioStateHelper
-  ): ScenarioStep[] {
-    return this.expandSteps(
-      [
-        INVESTIGATOR_STATUS_STEP.id,
-        ...(resolution.steps || []),
-      ],
-      scenarioState
-    );
-  }
-
   encounterSets(scenarioState: ScenarioStateHelper): string[] {
     return flatMap(
-      this.setupSteps(scenarioState),
+      this.setupSteps(scenarioState).steps,
       step => {
         if (step.step.type === 'encounter_sets') {
           return step.step.encounter_sets;
@@ -94,14 +79,29 @@ export default class ScenarioGuide {
 
   setupSteps(
     scenarioState: ScenarioStateHelper
-  ): ScenarioStep[] {
+  ): ExecutedScenario {
     const stepIds = this.scenario.interlude ?
-      this.scenario.setup :
+      [...this.scenario.setup, PROCEED_STEP.id] :
       [LEAD_INVESTIGATOR_STEP.id, ...this.scenario.setup];
-    return this.expandSteps(stepIds, scenarioState);
+    const steps = this.expandSteps(stepIds, scenarioState);
+
+    const lastStep = last(steps);
+    if (!lastStep) {
+      return {
+        steps,
+        inProgress: true,
+        latestCampaignLog: this.campaignLog,
+      };
+    }
+    const nextCampaignLog = lastStep.nextCampaignLog(scenarioState);
+    return {
+      steps,
+      inProgress: !!lastStep && !lastStep.scenarioFinished(scenarioState),
+      latestCampaignLog: nextCampaignLog || lastStep.campaignLog,
+    };
   }
 
-  expandSteps(
+  private expandSteps(
     stepIds: string[],
     scenarioState: ScenarioStateHelper
   ): ScenarioStep[] {
@@ -117,7 +117,12 @@ export default class ScenarioGuide {
     let scenarioStep: ScenarioStep | undefined = new ScenarioStep(
       step,
       this,
-      new GuidedCampaignLog(this.scenario.id, []),
+      new GuidedCampaignLog(
+        [],
+        this.campaignGuide,
+        this.scenario.id,
+        this.campaignLog
+      ),
       remainingStepIds
     );
     while (scenarioStep) {

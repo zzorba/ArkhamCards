@@ -6,7 +6,9 @@ import { find } from 'lodash';
 import { t } from 'ttag';
 
 import BinaryPrompt from '../../prompts/BinaryPrompt';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import SetupStepWrapper from '../../SetupStepWrapper';
+import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import {
   BranchStep,
   CampaignDataCondition,
@@ -21,10 +23,10 @@ interface Props {
 
 export default class CampaignDataConditionComponent extends React.Component<Props> {
   render() {
-    const { step, condition } = this.props;
+    const { step, condition, campaignLog } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+      <CampaignGuideContext.Consumer>
+        { ({ campaignGuide, campaignState }: CampaignGuideContextType) => {
           switch (condition.campaign_data) {
             case 'investigator':
               return (
@@ -39,9 +41,20 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
                 </Text>
               );
             case 'scenario_completed': {
-              const chosenScenario = campaignGuide.getScenario(condition.scenario);
+              const chosenScenario = campaignGuide.getScenario(condition.scenario, campaignState);
               const scenarioName =
                 chosenScenario && chosenScenario.scenario.scenarioName || condition.scenario;
+              if (campaignLog.fullyGuided) {
+                const completed = campaignLog.scenarioStatus(condition.scenario) === 'completed';
+                return (
+                  <SetupStepWrapper>
+                    <CardTextComponent text={completed ?
+                      t`Because you have already completed <b>${scenarioName}</b>:` :
+                      t`Because you have not yet completed <b>${scenarioName}</b>:`
+                    } />
+                  </SetupStepWrapper>
+                );
+              }
               return (
                 <BinaryPrompt
                   id={step.id}
@@ -58,8 +71,8 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
                 </Text>
               );
           }
-        }}
-      </ScenarioGuideContext.Consumer>
+        } }
+      </CampaignGuideContext.Consumer>
     );
   }
 }

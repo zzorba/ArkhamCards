@@ -1,7 +1,7 @@
 import { filter, map } from 'lodash';
 import { t } from 'ttag';
 
-import { Resolution, InputStep } from 'data/scenario/types';
+import { GenericStep, Resolution, ResolutionStep, InputStep } from 'data/scenario/types';
 
 export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
 export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
@@ -19,13 +19,52 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
         resolution => {
           return {
             text: resolution.title,
-            steps: [INVESTIGATOR_STATUS_STEP.id, `$r_${resolution.id}`],
+            steps: [
+              `$r_${resolution.id}`,
+              INVESTIGATOR_STATUS_STEP.id,
+              ...resolution.steps,
+              PROCEED_STEP.id,
+            ],
           };
         }
       ),
     },
   };
 }
+
+export function resolutionStep(id: string): ResolutionStep | undefined {
+  if (!id.startsWith('$r_')) {
+    return undefined;
+  }
+  const resolution = id.substring(3);
+  return {
+    id,
+    type: 'resolution',
+    generated: true,
+    resolution,
+    effects: [{
+      type: 'scenario_data',
+      setting: 'scenario_status',
+      status: 'resolution',
+      resolution,
+    }],
+  };
+}
+
+export const PROCEED_STEP: GenericStep = {
+  id: '$proceed',
+  text: t`Proceed to the next scenario`,
+  effects: [
+    {
+      type: 'scenario_data',
+      setting: 'scenario_status',
+      status: 'completed',
+    },
+  ],
+};
+export const DUMMY_STEP: GenericStep = {
+  id: '$dummy',
+};
 
 export const LEAD_INVESTIGATOR_STEP: InputStep = {
   id: '$lead_investigator',
@@ -129,4 +168,12 @@ export const INVESTIGATOR_STATUS_STEP: InputStep = {
       },
     ],
   },
+};
+
+
+export default {
+  [PROCEED_STEP.id]: PROCEED_STEP,
+  [DUMMY_STEP.id]: DUMMY_STEP,
+  [LEAD_INVESTIGATOR_STEP.id]: LEAD_INVESTIGATOR_STEP,
+  [INVESTIGATOR_STATUS_STEP.id]: INVESTIGATOR_STATUS_STEP,
 };

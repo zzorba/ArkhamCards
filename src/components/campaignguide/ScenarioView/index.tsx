@@ -6,20 +6,21 @@ import {
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import StepsComponent from '../StepsComponent';
-import withCampaignDataContext, { CampaignDataInputProps } from '../withCampaignDataContext';
+import withScenarioGuideContext, { ScenarioGuideInputProps } from '../withScenarioGuideContext';
 import { iconsMap } from 'app/NavIcons';
 import { NavigationProps } from 'components/nav/types';
 import { COLORS } from 'styles/colors';
 
-type Props = NavigationProps;
+type Props = NavigationProps & ScenarioGuideInputProps;
 
-export type ScenarioProps = CampaignDataInputProps;
+export type ScenarioProps = ScenarioGuideInputProps;
 
 class ScenarioView extends React.Component<Props> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
+  static contextType = CampaignGuideContext;
+  context!: CampaignGuideContextType;
 
   static get options() {
     return {
@@ -58,7 +59,7 @@ class ScenarioView extends React.Component<Props> {
   }
 
   undoPressed() {
-    this.context.scenarioState.undo();
+    this.context.campaignState.undo();
   }
 
   resetPressed() {
@@ -71,7 +72,7 @@ class ScenarioView extends React.Component<Props> {
         text: t`Reset`,
         style: 'destructive',
         onPress: () => {
-          this.context.scenarioState.resetScenario();
+          this.context.campaignState.resetScenario(this.props.scenarioId);
         },
       }]
     );
@@ -84,7 +85,7 @@ class ScenarioView extends React.Component<Props> {
           return (
             <ScrollView>
               <StepsComponent
-                steps={scenarioGuide.setupSteps(scenarioState)}
+                steps={scenarioGuide.setupSteps(scenarioState).steps}
               />
             </ScrollView>
           );
@@ -94,6 +95,6 @@ class ScenarioView extends React.Component<Props> {
   }
 }
 
-export default withCampaignDataContext<Props>(
+export default withScenarioGuideContext<Props>(
   ScenarioView
 );

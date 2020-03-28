@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import {
   BranchStep,
   MathCondition,
@@ -18,11 +18,11 @@ export default class MathConditionComponent extends React.Component<Props> {
   render(): React.ReactNode {
     const { step, condition } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+      <CampaignGuideContext.Consumer>
+        { ({ campaignGuide }: CampaignGuideContextType) => {
           return (<Text>Math is hard</Text>);
         } }
-      </ScenarioGuideContext.Consumer>
+      </CampaignGuideContext.Consumer>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
+import { Button } from 'react-native';
 import { t } from 'ttag';
 
 import PickerComponent from '../PickerComponent';
@@ -7,7 +7,7 @@ import ChooseOneListComponent from '../ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { BulletType, Choice, ChooseOneInput } from 'data/scenario/types';
+import { BulletType, ChooseOneInput } from 'data/scenario/types';
 
 interface Props {
   id: string;
@@ -39,15 +39,6 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
       this.context.scenarioState.setChoice(id, selectedChoice);
     }
   };
-
-  renderResults(selectedChoice: number) {
-    const { input: { choices } } = this.props;
-    const choice = choices[selectedChoice];
-    if (choice.steps) {
-      return null;
-    }
-    return <Text>Unknown results for choice</Text>;
-  }
 
   render() {
     const { id, input, text, bulletType } = this.props;
@@ -81,9 +72,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                   />
                 </>
               ) }
-              { decision !== undefined ? (
-                this.renderResults(decision)
-              ) : (
+              { decision === undefined && (
                 <Button
                   title={t`Save`}
                   onPress={this._save}

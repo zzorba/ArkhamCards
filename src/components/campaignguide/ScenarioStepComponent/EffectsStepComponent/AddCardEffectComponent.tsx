@@ -1,5 +1,6 @@
 import React from 'react';
 import { map } from 'lodash';
+import { t } from 'ttag';
 
 import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
@@ -24,9 +25,8 @@ export default class AddCardEffectComponent extends React.Component<Props> {
     card: Card
   ) => {
     return map(investigatorDecks, ({ investigator }, idx) => (
-      <SetupStepWrapper bulletType="small">
+      <SetupStepWrapper bulletType="small" key={idx}>
         <CardTextComponent
-          key={idx}
           text={`${investigator.name} earned ${card.name}`}
         />
       </SetupStepWrapper>
@@ -40,6 +40,7 @@ export default class AddCardEffectComponent extends React.Component<Props> {
         id={id}
         investigator={effect.investigator}
         render={this._renderInvestigators}
+        description={t`Who will add ${card.name} to their deck?`}
         extraArgs={card}
       />
     );

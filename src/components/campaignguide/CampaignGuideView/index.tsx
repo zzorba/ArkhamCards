@@ -2,33 +2,24 @@ import React from 'react';
 import {
   ScrollView,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { map } from 'lodash';
-import { connect } from 'react-redux';
 
+import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import { CampaignGuideContextType } from '../CampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps } from '../withCampaignGuideContext';
 import { campaignScenarios, Scenario } from 'components/campaign/constants';
 import { NavigationProps } from 'components/nav/types';
-import { SingleCampaign, CUSTOM } from 'actions/types';
-import { getCampaignGuide } from 'data/scenario';
-import { getCampaign, AppState } from 'reducers';
+import { CUSTOM } from 'actions/types';
 import ScenarioButton from './ScenarioButton';
 
-export interface CampaignGuideProps {
-  campaignId: number;
-}
+export type CampaignGuideProps = CampaignGuideInputProps;
 
-interface ReduxProps {
-  campaign?: SingleCampaign;
-}
+type Props = CampaignGuideProps & NavigationProps & DimensionsProps;
 
-type Props = CampaignGuideProps & NavigationProps & ReduxProps;
-
-class CampaignGuideView extends React.Component<Props> {
-  campaignGuide(campaign: SingleCampaign) {
-    return getCampaignGuide(campaign.cycleCode);
-  }
-
+class CampaignGuideView extends React.Component<Props & CampaignGuideContextType> {
   possibleScenarios(): Scenario[] {
     const {
       campaign,
@@ -40,20 +31,20 @@ class CampaignGuideView extends React.Component<Props> {
   }
 
   render() {
-    const { campaign, componentId } = this.props;
-    if (!campaign || campaign.cycleCode === CUSTOM) {
-      return null;
+    const { campaign, fontScale, campaignGuide, campaignState, componentId } = this.props;
+    if (campaign.cycleCode === CUSTOM) {
+      return (
+        <Text>No custom scenarios</Text>
+      );
     }
-    const guide = this.campaignGuide(campaign);
-    if (!guide) {
-      return null;
-    }
+    const processedCampaign = campaignGuide.processAllScenarios(campaignState);
     return (
       <ScrollView>
         <View style={styles.margin}>
-          { map(this.possibleScenarios(), (scenario, idx) => (
+          { map(processedCampaign.scenarios, (scenario, idx) => (
             <ScenarioButton
               key={idx}
+              fontScale={fontScale}
               componentId={componentId}
               scenario={scenario}
               campaign={campaign}
@@ -65,23 +56,13 @@ class CampaignGuideView extends React.Component<Props> {
   }
 }
 
-
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & CampaignGuideProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
-  return {
-    campaign,
-  };
-}
-
-export default connect<ReduxProps, {}, NavigationProps & CampaignGuideProps, AppState>(
-  mapStateToProps
-)(CampaignGuideView);
+export default withDimensions(
+  withCampaignGuideContext<Props>(
+    CampaignGuideView
+  )
+);
 
 const styles = StyleSheet.create({
   margin: {
-    margin: 16,
   },
 });

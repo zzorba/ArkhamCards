@@ -1,13 +1,12 @@
 import React from 'react';
 import {
   Text,
-  View,
 } from 'react-native';
 import { t } from 'ttag';
 
 import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import Card from 'data/Card';
 import { CampaignLogEffect } from 'data/scenario/types';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -22,8 +21,8 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
   renderContent() {
     const { effect } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ campaignGuide }: ScenarioGuideContextType) => {
+      <CampaignGuideContext.Consumer>
+        { ({ campaignGuide }: CampaignGuideContextType) => {
           if (effect.id) {
             const logEntry = campaignGuide.logEntry(effect.section, effect.id);
             if (!logEntry) {
@@ -76,7 +75,7 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
           }
           return <Text>Campaign Log Section: { logSection.section }</Text>;
         } }
-      </ScenarioGuideContext.Consumer>
+      </CampaignGuideContext.Consumer>
     );
   }
 

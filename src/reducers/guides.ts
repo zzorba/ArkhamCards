@@ -7,7 +7,7 @@ import {
   LOGOUT,
   GuideActions,
   CampaignGuideState,
-  DEFAULT_CAMPAIGN_GUIDE_STATE
+  DEFAULT_CAMPAIGN_GUIDE_STATE,
 } from 'actions/types';
 
 export interface GuidesState {

@@ -11,7 +11,6 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 import CardTextComponent from 'components/card/CardTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { BulletType, Effect, Option } from 'data/scenario/types';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import typography from 'styles/typography';
 
 interface Props {
@@ -75,9 +74,8 @@ export default class NumberPrompt extends React.Component<Props, State> {
     );
   }
 
-  renderPrompt(scenarioState: ScenarioStateHelper) {
-    const { id, prompt } = this.props;
-    const count = scenarioState.count(id);
+  renderPrompt(count?: number) {
+    const { prompt } = this.props;
     return (
       <>
         <View style={styles.promptRow}>
@@ -95,23 +93,28 @@ export default class NumberPrompt extends React.Component<Props, State> {
             />
           ) }
         </View>
-        { (count === undefined) && <Button title="Done" onPress={this._submit} /> }
       </>
     );
   }
 
   render() {
-    const { bulletType, text } = this.props;
+    const { id, bulletType, text } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ scenarioState }: ScenarioGuideContextType) => (
-          <>
-            <SetupStepWrapper bulletType={bulletType}>
-              { !!text && <CardTextComponent text={text} /> }
-            </SetupStepWrapper>
-            { this.renderPrompt(scenarioState) }
-          </>
-        ) }
+        { ({ scenarioState }: ScenarioGuideContextType) => {
+          const count = scenarioState.count(id);
+          return (
+            <View style={styles.wrapper}>
+              <SetupStepWrapper bulletType={bulletType}>
+                { !!text && <CardTextComponent text={text} /> }
+              </SetupStepWrapper>
+              <SetupStepWrapper bulletType="small" border={count === undefined}>
+                { this.renderPrompt(count) }
+                { (count === undefined) && <Button title="Done" onPress={this._submit} /> }
+              </SetupStepWrapper>
+            </View>
+          );
+        } }
       </ScenarioGuideContext.Consumer>
     );
   }
@@ -123,13 +126,10 @@ const styles = StyleSheet.create({
     paddingRight: 4,
     minWidth: 40,
   },
-  promptRow: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#888',
-    padding: 16,
+  wrapper: {
     paddingTop: 8,
-    paddingBottom: 8,
+  },
+  promptRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
