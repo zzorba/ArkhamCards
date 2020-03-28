@@ -12,8 +12,10 @@ import CampaignGuide from './CampaignGuide';
 import fixedSteps, {
   LEAD_INVESTIGATOR_STEP,
   CHOOSE_RESOLUTION_STEP_ID,
+  CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID,
   PROCEED_STEP,
   chooseResolutionStep,
+  checkInvestigatorDefeatStep,
   resolutionStep,
 } from './fixedSteps';
 
@@ -47,6 +49,9 @@ export default class ScenarioGuide {
     }
     if (id === CHOOSE_RESOLUTION_STEP_ID) {
       return chooseResolutionStep(this.scenario.resolutions || []);
+    }
+    if (id === CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID) {
+      return checkInvestigatorDefeatStep(this.scenario.resolutions || []);
     }
     const rStep = resolutionStep(id);
     if (rStep) {

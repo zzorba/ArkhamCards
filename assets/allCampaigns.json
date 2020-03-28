@@ -43,6 +43,7 @@
     {
       "id": "difficulty_choice",
       "type": "input",
+      "text": "Choose difficulty level:",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -2858,6 +2859,7 @@
     },
     {
       "id": "difficulty_choice",
+      "text": "Choose difficulty level:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -3894,10 +3896,10 @@
   ],
   "setup": [
     "prologue",
+    "difficulty_choice",
     "hidden_keyword",
     "doubt_and_conviction",
-    "story_cards",
-    "difficulty_choice"
+    "story_cards"
   ],
   "steps": [
     {
@@ -3926,6 +3928,7 @@
     },
     {
       "id": "difficulty_choice",
+      "text": "Choose difficulty level:",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -7514,6 +7517,7 @@
     {
       "id": "difficulty_choice",
       "type": "input",
+      "text": "Choose difficulty level:",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -8014,6 +8018,7 @@
     {
       "id": "difficulty_choice",
       "type": "input",
+      "text": "Choose difficulty level:",
       "input": {
         "type": "choose_one",
         "choices": [{
@@ -12819,10 +12824,10 @@
   ],
   "setup": [
     "prologue",
+    "difficulty_choice",
     "supplies",
     "vengeance",
-    "explore",
-    "difficulty_choice"
+    "explore"
   ],
   "steps": [
     {
@@ -12878,6 +12883,7 @@
     },
     {
       "id": "difficulty_choice",
+      "text": "Choose difficulty level:",
       "type": "input",
       "input": {
         "type": "choose_one",

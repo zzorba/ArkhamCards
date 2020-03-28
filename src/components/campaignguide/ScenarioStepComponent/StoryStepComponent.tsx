@@ -39,6 +39,7 @@ export default class StoreStepComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   step: {
     flexDirection: 'column',
+    marginTop: 8,
     marginLeft: 16,
     marginRight: 16,
   },

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
-import { find } from 'lodash';
+import { find, upperFirst } from 'lodash';
 import { t } from 'ttag';
 
 import BinaryPrompt from '../../prompts/BinaryPrompt';
@@ -34,12 +34,16 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
                   Some condition of an investigator.
                 </Text>
               );
-            case 'difficulty':
+            case 'difficulty': {
+              const difficulty = upperFirst(campaignLog.campaignData.difficulty);
               return (
-                <Text>
-                  Check campaign difficulty.
-                </Text>
+                <SetupStepWrapper>
+                  <CardTextComponent
+                    text={t`Because you are playing on <b>${difficulty}</b> difficulty:`}
+                  />
+                </SetupStepWrapper>
               );
+            }
             case 'scenario_completed': {
               const chosenScenario = campaignGuide.getScenario(condition.scenario, campaignState);
               const scenarioName =

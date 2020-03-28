@@ -313,7 +313,8 @@ export interface CampaignLogSectionExistsCondition {
 }
 export interface ScenarioDataCondition {
   type: "scenario_data";
-  scenario_data: "player_count" | "investigator";
+  scenario_data: "player_count" | "investigator" | "investigator_status";
+  investigator?: InvestigatorSelector;
   options: Option[];
 }
 export interface TraumaCondition {

@@ -294,6 +294,20 @@ export default class ScenarioStep {
         );
       }
       case 'difficulty':
+        if (this.fullyGuided) {
+          const difficulty = this.campaignLog.campaignData.difficulty;
+          const option = find(condition.options, option => option.condition === difficulty);
+          const extraSteps = (option && option.steps) || [];
+          return this.maybeCreateEffectsStep(
+            step.id,
+            [...extraSteps, ...this.remainingStepIds],
+            [{
+              effects: (option && option.effects) || [],
+            }]
+          );
+        }
+        // TODO: choice based
+        return undefined;
       case 'chaos_bag':
       case 'investigator':
         return undefined;
@@ -352,6 +366,24 @@ export default class ScenarioStep {
         }
         // TODO: shouldn't actually happen.
         return undefined;
+      }
+      case 'investigator_status': {
+        if (condition.investigator !== 'defeated')  {
+          throw new Error('Unexpected investigator_status scenario condition');
+        }
+        const resolutionStatus = this.campaignLog.investigatorResolutionStatus();
+        const decision = !!find(resolutionStatus, status => {
+          return status === 'physical' || status === 'mental' || status === 'eliminated';
+        });
+        const ifTrue = find(step.condition.options, option => option.boolCondition === true);
+        const ifFalse = find(step.condition.options, option => option.boolCondition === false);
+        return this.binaryBranch(
+          decision,
+          scenarioState,
+          this.remainingStepIds,
+          ifTrue,
+          ifFalse
+        );
       }
     }
   }

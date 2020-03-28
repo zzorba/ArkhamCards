@@ -38,6 +38,10 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
           </SetupStepWrapper>
         );
       }
+      case 'investigator_status': {
+        // Only used for control flow right now.
+        return null;
+      }
       case 'investigator': {
         if (condition.options.length === 1 && condition.options[0].condition) {
           return (

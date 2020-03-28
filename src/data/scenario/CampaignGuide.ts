@@ -1,10 +1,11 @@
 import { find, forEach } from 'lodash';
+import { t } from 'ttag';
 
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Supply } from './types';
+import { FullCampaign, Supply, Scenario } from './types';
 
 export interface CampaignLog {
   campaignId: string;
@@ -62,6 +63,8 @@ interface ProcessedCampaign {
 
 type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
+const CAMPAIGN_SETUP_ID = '$campaign_setup';
+
 /**
  * Wrapper utility to provide structured access to campaigns.
  */
@@ -126,7 +129,15 @@ export default class CampaignGuide {
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog
   ): ProcessedScenario[] {
-    const scenario = find(this.campaign.scenarios, scenario => scenario.id === scenarioId);
+    const scenario = (scenarioId === CAMPAIGN_SETUP_ID) ?
+      {
+        id: CAMPAIGN_SETUP_ID,
+        interlude: true,
+        scenarioName: t`Campaign Setup`,
+        setup: this.campaign.campaign.setup,
+        steps: this.campaign.campaign.steps,
+      } :
+      find(this.campaign.scenarios, scenario => scenario.id === scenarioId);
     if (!scenario) {
       throw new Error(`Unknown scenario: ${scenarioId}`);
     }
@@ -168,7 +179,10 @@ export default class CampaignGuide {
   }
 
   private allScenarioIds() {
-    return this.campaign.campaign.scenarios;
+    return [
+      CAMPAIGN_SETUP_ID,
+      ...this.campaign.campaign.scenarios,
+    ];
   }
 
   logSection(sectionId: string): LogSection | undefined {
