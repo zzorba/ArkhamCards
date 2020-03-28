@@ -19,28 +19,9 @@ interface Props {
   input: CardChoiceInput;
 }
 
-interface State {
-  selectedChoice?: number;
-}
-
-export default class CardChoicePrompt extends React.Component<Props, State> {
+export default class CardChoicePrompt extends React.Component<Props> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
-  state: State = {};
-
-  _onChoiceChange = (choice: number) => {
-    this.setState({
-      selectedChoice: choice,
-    });
-  };
-
-  _save = () => {
-    const { id } = this.props;
-    const { selectedChoice } = this.state;
-    if (selectedChoice !== undefined) {
-      this.context.scenarioState.setChoice(id, selectedChoice);
-    }
-  };
 
   _renderCards = (cards: Card[]) => {
     const {
@@ -95,9 +76,12 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
         case 'scenario': {
           const encounterSets = scenarioGuide.encounterSets(scenarioState);
           if (encounterSets) {
-            const encounterQuery = map(
+            const encounterQuery = flatMap(
               encounterSets,
-              encounterCode => `(encounter_code == '${encounterCode}')`
+              encounterCode => [
+                `(encounter_code == '${encounterCode}')`,
+                `(linked_card.encounter_code == '${encounterCode}')`,
+              ]
             ).join(' OR ');
             queryParts.push(`(${encounterQuery})`);
           }

@@ -208,17 +208,13 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#name"
+            "text": "#name#"
           }
         ]
       },
       {
         "section": "cultists_interrogated",
         "entries": [
-          {
-            "id": "$input_value",
-            "text": "#name"
-          },
           {
             "id": "$input_value",
             "text": "#name#"
@@ -239,7 +235,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#name"
+            "text": "#name#"
           }
         ]
       },
@@ -248,7 +244,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#name"
+            "text": "#name#"
           }
         ]
       }
@@ -384,11 +380,20 @@
         ]
       },
       {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "possessed",
+            "text": "one or more investigators was possessed."
+          }
+        ]
+      },
+      {
         "section": "vips_interviewed",
         "entries": [
           {
             "id": "$input_value",
-            "text": "#name"
+            "text": "#name#"
           }
         ]
       },
@@ -397,7 +402,7 @@
         "entries": [
           {
             "id": "$input_value",
-            "text": "#name"
+            "text": "#name#"
           },
           {
             "id": "03065b",
@@ -809,11 +814,11 @@
           },
           {
             "id": "ichtaca_is_wary",
-            "text": " Ichtaca is wary of the investigators."
+            "text": "Alejandro chose to remain at camp."
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Alejandro chose to remain at camp."
+            "text": "Ichtaca is wary of the investigators."
           },
           {
             "id": "ichtaca_observed_progress",

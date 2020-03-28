@@ -43,6 +43,7 @@ export default class CampaignLogCountConditionComponent extends React.Component<
         return 'Some other count condition';
     }
   }
+
   render(): React.ReactNode {
     const { step, condition, campaignLog } = this.props;
     return (

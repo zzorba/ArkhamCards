@@ -119,7 +119,7 @@ export interface Campaign {
   campaign_log: {
     id: string;
     title: string;
-    type?: "count" | "supplies";
+    type?: "count" | "supplies" | "hidden";
   }[];
   scenarios: string[];
   setup: string[];
@@ -252,6 +252,7 @@ export interface StepsOption {
   condition?: string;
   default?: boolean;
   steps: string[];
+  reason?: string;
   effects?: null;
 }
 export interface CampaignLogCountCondition {

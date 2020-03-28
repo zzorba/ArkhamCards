@@ -153,10 +153,7 @@ export default class GuidedCampaignLog {
               break;
             }
             case 'campaign_log_cards':
-              this.handleCampaignLogCardsEffect(
-                effect,
-                input
-              );
+              this.handleCampaignLogCardsEffect(effect, input);
               break;
             default:
               break;
@@ -378,8 +375,11 @@ export default class GuidedCampaignLog {
               case '$input_value':
               case '$lead_investigator':
                 forEach(input || [], card => cards.push(card));
+                console.log(cards);
                 break;
             }
+          } else {
+            cards.push(id);
           }
 
           // Normal entry

@@ -366,7 +366,7 @@
         "type": "card_choice",
         "query": [
           {
-            "trait": "Ally",
+            "trait": "ally",
             "unique": true,
             "source": "deck"
           },
@@ -1170,7 +1170,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": " Set the following cards aside, out of play: The Edge of the Universe, Tear Through Time, and Yog‐Sothoth."
+      "text": "Set the following cards aside, out of play: The Edge of the Universe, Tear Through Time, and Yog‐Sothoth."
     },
     {
       "id": "encounter_deck",
@@ -1990,7 +1990,7 @@
     {
       "id": "R4",
       "title": "Resolution 4",
-      "text": " You are pulled from the debris by several firefighters, one of whom exclaims, “We’ve got a live one!” A few of them patch you up, and the cops ask you what happened. You’re certain they wouldn’t believe your story about horrible monstrosities demolishing the building from within. Unsure of what to say, you give a vague statement about not remembering much. “We’re bringing you to St. Mary’s,” one of the nurses says, pointing to a nearby ambulance. Knowing now how dire the situation is, you slip away while she is distracted by something else in the rubble…",
+      "text": "You are pulled from the debris by several firefighters, one of whom exclaims, “We’ve got a live one!” A few of them patch you up, and the cops ask you what happened. You’re certain they wouldn’t believe your story about horrible monstrosities demolishing the building from within. Unsure of what to say, you give a vague statement about not remembering much. “We’re bringing you to St. Mary’s,” one of the nurses says, pointing to a nearby ambulance. Knowing now how dire the situation is, you slip away while she is distracted by something else in the rubble…",
       "steps": ["bone_to_pick", "francis_morgan_kidnapped", "cheated", "physical_trauma", "unconscious_for_several_hours", "earn_1_xp", "proceed_either"]
     }
   ]
@@ -2167,7 +2167,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": " As long as this translation of the Necronomicon exists, there will be sorcerers and other foul agents like Whateley seeking it. In the end, you know what must be done to protect humanity from the threats you’ve seen. You find a trash bin and fill it with books and documents, throwing the Necronomicon on top. It takes several matches to set the contents of the bin alight. The flames fill the room with heat and the creeping shadows retreat from its light. You watch the book burn for some time, its pages turning to ash. You can only hope you’ve made the right decision.",
+      "text": "As long as this translation of the Necronomicon exists, there will be sorcerers and other foul agents like Whateley seeking it. In the end, you know what must be done to protect humanity from the threats you’ve seen. You find a trash bin and fill it with books and documents, throwing the Necronomicon on top. It takes several matches to set the contents of the bin alight. The flames fill the room with heat and the creeping shadows retreat from its light. You watch the book burn for some time, its pages turning to ash. You can only hope you’ve made the right decision.",
       "steps": ["destroyed_necronomicon", "earn_xp"]
     },
     {
@@ -3709,7 +3709,7 @@
         "type": "card_choice",
         "query": [
           {
-            "trait": "Cultist",
+            "trait": "cultist",
             "unique": true,
             "source": "scenario"
           }
@@ -3733,7 +3733,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           }
@@ -3748,7 +3748,7 @@
         "type": "card_choice",
         "query": [
           {
-            "trait": "Cultist",
+            "trait": "cultist",
             "unique": true,
             "source": "scenario"
           }
@@ -3761,7 +3761,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_interrogated",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           },
@@ -3772,7 +3772,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           }
@@ -3902,6 +3902,11 @@
       "id": "conviction",
       "title": "Conviction",
       "type": "count"
+    },
+    {
+      "id": "hidden",
+      "title": "Campaign Log",
+      "type": "hidden"
     }
   ],
   "scenarios": [
@@ -4246,16 +4251,22 @@
         "choices": [
           {
             "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the victory display?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "vips_slain",
-                "id": "03069b"
-              }
-            ]
+            "steps": ["kill_ashleigh"]
           }
         ]
       }
+    },
+    {
+      "id": "kill_ashleigh",
+      "bullet_type": "small",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ashleigh Clarke</i>",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "vips_slain",
+          "id": "03069b"
+        }
+      ]
     },
     {
       "id": "add_cultists_elder_things",
@@ -4716,19 +4727,39 @@
     },
     {
       "id": "act_2_v1",
-      "text": "Because you have 5 or less total Doubt and Conviction, use Act 2—Search For the Stranger (v. I)"
+      "text": "Because you have 5 or less total <b>Doubt</b> and Conviction:",
+      "bullets": [
+        {
+          "text": "Use Act 2—Search For the Stranger (v. I). Remove each other version of Act 2 from the game."
+        }
+      ]
     },
     {
       "id": "act_2_v2",
-      "text": "Because you have 6 or more total Doubt and Conviction, and have more Doubt than Conviction, use Act 2—Search the Stranger (v. II)"
+      "text": "Because you have 6 or more total <b>Doubt</b> and Conviction, and have more <b>Doubt</b> than Conviction",
+      "bullets": [
+        {
+          "text": "Use Act 2—Search the Stranger (v. II). Remove each other version of Act 2 from the game."
+        }
+      ]
     },
     {
       "id": "act_2_v3",
-      "text": "Because you have 6 or more total Doubt and Conviction, and have more Conviction than Doubt, use Act 2—Search the Stranger (v. III)"
+      "text": "Because you have 6 or more total <b>Doubt</b> and Conviction, and have more <b>Conviction</b> than Doubt:",
+      "bullets": [
+        {
+          "text": "Use Act 2—Search the Stranger (v. III). Remove each other version of Act 2 from the game."
+        }
+      ]
     },
     {
       "id": "act_2_choice",
-      "text": "Because you have 6 or more total Doubt and Conviction, and you have exactly equal Doubt and Conviction, you may choose to use either Act 2—Search For the Stranger (v. II) or Act 2—Search For the Stranger (v. III)"
+      "text": "Because you have 6 or more total <b>Doubt</b> and Conviction, and you have exactly equal <b>Doubt</b> and Conviction:",
+      "bullets": [
+        {
+          "text": "You may choose to use either Act 2—Search For the Stranger (v. II) or Act 2—Search For the Stranger (v. III). Remove each other version of Act 2 from the game."
+        }
+      ]
     },
     {
       "id": "setup_random_locations",
@@ -4826,19 +4857,23 @@
     },
     {
       "id": "add_3_doom",
-      "text": "Because there are 2 or fewer tally marks under <i>Chasing the Stranger</i>, add 3 doom to agenda 1a."
+      "bullet_type": "small",
+      "text": "Add 3 doom to agenda 1a."
     },
     {
       "id": "add_2_doom",
-      "text": "Because there are between 3 and 5 tally marks under <i>Chasing the Stranger</i>, add 2 doom to agenda 1a."
+      "bullet_type": "small",
+      "text": "Add 2 doom to agenda 1a."
     },
     {
       "id": "add_1_doom",
-      "text": "Because there are between 6 and 8 tally marks under <i>Chasing the Stranger</i>, add 1 doom to agenda 1a."
+      "bullet_type": "small",
+      "text": "Add 1 doom to agenda 1a."
     },
     {
       "id": "add_no_doom",
-      "text": "Because there are 9 or more tally marks under <i>Chasing the Stranger</i>, no changes are made."
+      "bullet_type": "small",
+      "text": "No changes are made."
     },
     {
       "id": "take_horror",
@@ -4872,23 +4907,30 @@
     },
     {
       "id": "record_possessed_investigators",
-      "text": " In your Campaign Log, record the names of each investigator who ended the game with at least 1 copy of the Possession treachery in their hand.",
+      "text": "In your Campaign Log, record the names of each investigator who ended the game with at least 1 copy of the Possession treachery in their hand.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
         "investigator": "all",
         "choices": [
           {
-            "text": "No Possessions treacheries",
+            "text": "None",
             "effects": []
           },
           {
-            "text": "One or more Possession treacheries in hand",
+            "text": "Posession treacheries in hand",
             "effects": [
               {
                 "type": "campaign_log",
+                "section": "hidden",
+                "id": "possessed",
+                "text": "one or more investigators was possessed."
+              },
+              {
+                "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "possessed",
+                "cards": "$input_value",
                 "text": "#name# was possessed."
               }
             ]
@@ -5254,7 +5296,7 @@
     },
     {
       "id": "took_onyx_clasp",
-      "text": "In your Campaign Log, record that <i>you took the onyx clasp</i>. Mark one Conviction in your Campaign Log. For the remainder of the campaign, one investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
+      "text": "In your Campaign Log, record that <i>you took the onyx clasp</i>. Mark one <b>Conviction</b> in your Campaign Log. For the remainder of the campaign, one investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
@@ -5327,7 +5369,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": " Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 bonus experience as he or she gains insight into the machinations of <u>The King in Yellow</u>.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 bonus experience as he or she gains insight into the machinations of <u>The King in Yellow</u>.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -5349,16 +5391,22 @@
         "choices": [
           {
             "text": "Is Sebastien Moreau <i>(Savage Hysteria)</i> in the victory display?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "vips_slain",
-                "id": "03068b"
-              }
-            ]
+            "steps": ["kill_sebastien"]
           }
         ]
       }
+    },
+    {
+      "id": "kill_sebastien",
+      "bullet_type": "small",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Sebastien Moreau</i>",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "vips_slain",
+          "id": "03068b"
+        }
+      ]
     },
     {
       "id": "add_tablets",
@@ -5513,32 +5561,23 @@
   "scenarioName": "Epilogue",
   "interlude": true,
   "setup": [
-    "possessed_warning",
     "check_epilogue"
   ],
   "steps": [
     {
-      "id": "possessed_warning",
-      "text": "Check Campaign Log. If at least one investigator was possessed, <b>only those investigators</b> read this epilogue. Do not read it out loud unless all investigators were possessed."
-    },
-    {
       "id": "check_epilogue",
+      "text": "Check Campaign Log. If at least one investigator was possessed, <b>only those investigators</b> read this epilogue. Do not read it out loud unless all investigators were possessed.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "campaign_notes",
+        "type": "campaign_log",
+        "section": "hidden",
         "id": "possessed",
-        "max": 4,
         "options": [
           {
-            "numCondition": 0,
-            "steps": []
+            "boolCondition": true,
+            "steps": ["possessed"]
           }
-        ],
-        "defaultOption": {
-          "default": true,
-          "steps": ["possessed"]
-        }
+        ]
       }
     },
     {
@@ -5607,7 +5646,7 @@
         "type": "choose_one",
         "choices": [
           {
-            "flavor": "Possession? Oaths? There must be another explanation for all of this",
+            "flavor": "Possession? Oaths? There must be another explanation for all of this.",
             "steps": ["ignore_the_warning", "ignored_daniels_warning", "mark_2_doubt"]
           },
           {
@@ -5680,7 +5719,7 @@
     {
       "id": "daniel_possessed",
       "type": "story",
-      "text": "You decide to lay low for some time in Ma’s Boarding House, unsure whether news of the events at the asylum will get out to the general public. You take this time to make extensive notes of the events you’ve experienced thus far, including the brief dialogue between you and Daniel. He’d spoke of The King in Yellow as if it were an actual being, and even named it. “Hastur.” He’d rambled and muttered and screeched other phrases, as well. You doubt you’ll ever forget them. “He made us speak the Oath.” “The price was paid.” “They are opening the path to Carcosa.”\nOn the third night, you return to your room to find the door broken open. You enter cautiously, wondering if the police are onto you. Or worse, the Stranger. You are surprised to find the body of Daniel Chesterfield instead, lying on the ground with a pained, wide-eyed expression on his face. He is dead. His eyes are bloodshot and yellow, and he clutches a copy of The King in Yellow in his stiff hands. You pry the playbook from his deathly grasp and examine it. Daniel has scribbled notes in the margins of each page, mostly incomprehensible, but with a few lucid standouts. The first time the fictional city of Carcosa is mentioned, scrawled next to it Daniel has written:\n<fancy>*Carcosa is real\nDo not let them open the path</fancy>\nWhen Cassilda speaks of the tattered king, Daniel has written:<fancy>Hastur is the king in tatters\nlocked in his prison in the stars\nseal him away and stop this madness!</fancy>Your mind swims with questions. How did he escape the asylum? How did he die? And why does he appear human to your eyes now? With little time to spare, you clean the room of your belongings and flee. Daniel’s words, which he begged you to heed, play out in your mind over and over again."
+      "text": "You decide to lay low for some time in Ma’s Boarding House, unsure whether news of the events at the asylum will get out to the general public. You take this time to make extensive notes of the events you’ve experienced thus far, including the brief dialogue between you and Daniel. He’d spoke of The King in Yellow as if it were an actual being, and even named it. “Hastur.” He’d rambled and muttered and screeched other phrases, as well. You doubt you’ll ever forget them. “He made us speak the Oath.” “The price was paid.” “They are opening the path to Carcosa.”\nOn the third night, you return to your room to find the door broken open. You enter cautiously, wondering if the police are onto you. Or worse, the Stranger. You are surprised to find the body of Daniel Chesterfield instead, lying on the ground with a pained, wide-eyed expression on his face. He is dead. His eyes are bloodshot and yellow, and he clutches a copy of The King in Yellow in his stiff hands. You pry the playbook from his deathly grasp and examine it. Daniel has scribbled notes in the margins of each page, mostly incomprehensible, but with a few lucid standouts. The first time the fictional city of Carcosa is mentioned, scrawled next to it Daniel has written:\n<center><fancy>*Carcosa is real\nDo not let them open the path</fancy></center>\nWhen Cassilda speaks of the tattered king, Daniel has written:<center><fancy>Hastur is the king in tatters\nlocked in his prison in the stars\nseal him away and stop this madness!</fancy></center>\nYour mind swims with questions. How did he escape the asylum? How did he die? And why does he appear human to your eyes now? With little time to spare, you clean the room of your belongings and flee. Daniel’s words, which he begged you to heed, play out in your mind over and over again."
     },
     {
       "id": "ignore_the_warning",
@@ -5719,7 +5758,7 @@
             "steps": ["reward_2", "door_wont_stop_them", "fled_dinner_party", "add_tablets"]
           },
           {
-            "flavor": "If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <i>kill them.</i>",
+            "flavor": "If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <b>kill them.</b>",
             "steps": ["reward_3", "did_what_had_to_be_done", "slayed_the_monsters", "slay_vips", "add_cultists"]
           }
         ]
@@ -6233,7 +6272,7 @@
       "id": "gather_encounter_sets",
       "type": "encounter_sets",
       "encounter_sets": [
-        "phantom_of_truth",
+        "a_phantom_of_truth",
         "evil_portents",
         "byakhee",
         "stranger",
@@ -6259,15 +6298,15 @@
         "options": [
           {
             "numCondition": -1,
-            "steps": ["gather_doubt", "act_1_v1"]
+            "steps": ["more_or_equal_doubt", "gather_doubt", "act_1_v1"]
           },
           {
             "numCondition": 0,
-            "steps": ["gather_doubt", "act_1_v1"]
+            "steps": ["more_or_equal_doubt", "gather_doubt", "act_1_v1"]
           },
           {
             "numCondition": 1,
-            "steps": ["gather_conviction", "act_1_v2"]
+            "steps": ["more_conviction", "gather_conviction", "act_1_v2"]
           }
         ],
         "defaultOption": {
@@ -6277,19 +6316,31 @@
       }
     },
     {
+      "id": "more_or_equal_doubt",
+      "text": "Because you have more (or equal) <b>Doubt</b> than <b>Conviction</b>:"
+    },
+    {
+      "id": "more_conviction",
+      "text": "Because you have more <b>Conviction</b> than <b>Doubt</b>:"
+    },
+    {
       "id": "gather_doubt",
+      "bullet_type": "small",
       "text": "Search the gathered encounter sets for both copies of Twin Suns and all 3 copies of Hunting Shadow, and remove them from the game."
     },
     {
       "id": "gather_conviction",
+      "bullet_type": "small",
       "text": "Search the gathered encounter sets for both copies of Black Stars Rise and both copies of False Lead, and remove them from the game."
     },
     {
       "id": "act_1_v1",
+      "bullet_type": "small",
       "text": "During this scenario, use Act 1—The Parisian Conspiracy (v. I). The other version of Act 1 is removed from the game."
     },
     {
       "id": "act_1_v2",
+      "bullet_type": "small",
       "text": "During this scenario, use Act 1—The Parisian Conspiracy (v. II). The other version of Act 1 is removed from the game."
     },
     {
@@ -6378,17 +6429,23 @@
         "type": "choose_one",
         "choices": [
           {
-            "text": "Is Jordan Perry Dumaine <i>(An Imposing Presence)</i> in the victory display?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "vips_slain",
-                "id": "03066b"
-              }
-            ]
+            "text": "Is Jordan Perry <i>(An Imposing Presence)</i> in the victory display?",
+            "steps": ["kill_jordan"]
           }
         ]
       }
+    },
+    {
+      "id": "kill_jordan",
+      "bullet_type": "small",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Jordan Perry</i>",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "vips_slain",
+          "id": "03066b"
+        }
+      ]
     },
     {
       "id": "add_tablets",
@@ -6473,7 +6530,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. There is no response but a flock of magpies that scatter from the rooftop at the sudden noise. You try the doorknob, hoping you won’t have to resort to more forceful measures. To your surprise, you find the door unlocked.\nInside, Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. The food in his pantry is old and rotten. There is no sign of anyone having lived here for years, and yet the ink upon the living room walls is wet and fresh. Over and over, across nearly every inch of the wallpaper, it reads:\n<fancy>He is already here.</fancy>\n",
+      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. There is no response but a flock of magpies that scatter from the rooftop at the sudden noise. You try the doorknob, hoping you won’t have to resort to more forceful measures. To your surprise, you find the door unlocked.\nInside, Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. The food in his pantry is old and rotten. There is no sign of anyone having lived here for years, and yet the ink upon the living room walls is wet and fresh. Over and over, across nearly every inch of the wallpaper, it reads:\n<center><fancy>He is already here.</fancy></center>\n",
       "steps": ["found_nigels_home", "add_cultists", "ask_jordan_perry", "earn_xp"]
     },
     {
@@ -6563,7 +6620,7 @@
     },
     {
       "id": "setup_bystanders",
-      "text": " Shuffle the 5 Bystander assets (Constance Dumaine, Jordan Perry, Ishimaru Haruko, Sebastien Moreau, and Ashleigh Clarke) and randomly place one in each location except for the Foyer. Place 1 clue on each of these assets, plus 1 additional clue per investigator.",
+      "text": "Shuffle the 5 Bystander assets (Constance Dumaine, Jordan Perry, Ishimaru Haruko, Sebastien Moreau, and Ashleigh Clarke) and randomly place one in each location except for the Foyer. Place 1 clue on each of these assets, plus 1 additional clue per investigator.",
       "bullets": [
         {
           "text": "<i>Note: These cards are double-sided and have story cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
@@ -6642,7 +6699,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_interviewed",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           }
@@ -6657,7 +6714,7 @@
         "type": "card_choice",
         "query": [
           {
-            "trait": "Lunatic",
+            "trait": "lunatic",
             "unique": true,
             "source": "scenario"
           }
@@ -6670,7 +6727,7 @@
                 "type": "campaign_log_cards",
                 "section": "vips_slain",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           }
@@ -7007,16 +7064,22 @@
         "choices": [
           {
             "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the victory display?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "vips_slain",
-                "id": "03067b"
-              }
-            ]
+            "steps": ["kill_haruko"]
           }
         ]
       }
+    },
+    {
+      "id": "kill_haruko",
+      "bullet_type": "small",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ishimaru Haruko</i>",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "vips_slain",
+          "id": "03067b"
+        }
+      ]
     },
     {
       "id": "add_tablets",
@@ -7126,6 +7189,7 @@
     "setup_locations",
     "add_chaos_token",
     "select_act_2",
+    "select_act_2_onyx_clasp",
     "encounter_deck",
     "$choose_resolution"
   ],
@@ -7247,8 +7311,12 @@
     },
     {
       "id": "select_act_2",
-      "text": "Depending on the following circumstances, a different version of Act 2 should be used in this scenario. Each other version of Act 2 is removed from the game.",
+      "text": "Depending on the following circumstances, a different version of Act 2 should be used in this scenario. Each other version of Act 2 is removed from the game."
+    },
+    {
+      "id": "select_act_2_onyx_clasp",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -7266,10 +7334,12 @@
     },
     {
       "id": "act_2_v1",
+      "bullet_type": "small",
       "text": "Use Act 2—”The Really Bad Ones” (v. I)."
     },
     {
       "id": "act_2_v2",
+      "bullet_type": "small",
       "text": "Use Act 2—”The Really Bad Ones” (v. II)."
     },
     {
@@ -7353,13 +7423,21 @@
         "type": "choose_one",
         "choices": [{
           "text": "Is Constance Dumaine <i>(A Little Too Sociable)</i> in the victory display?",
-          "effects": [{
-            "type": "campaign_log",
-            "section": "vips_slain",
-            "id": "03065b"
-          }]
+          "steps": ["kill_constance"]
         }]
       }
+    },
+    {
+      "id": "kill_constance",
+      "bullet_type": "small",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Constance Dumaine</i>",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "vips_slain",
+          "id": "03065b"
+        }
+      ]
     },
     {
       "id": "add_tablets",
@@ -7812,7 +7890,7 @@
         "type": "card_choice",
         "query": [
           {
-            "trait": "Cultist",
+            "trait": "cultist",
             "unique": true,
             "source": "scenario"
           }
@@ -7825,7 +7903,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_interrogated",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           },
@@ -7836,7 +7914,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           },
@@ -7855,7 +7933,7 @@
         "type": "card_choice",
         "query": [
           {
-            "trait": "Cultist",
+            "trait": "cultist",
             "unique": true,
             "source": "scenario"
           }
@@ -7868,7 +7946,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_interrogated",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           },
@@ -7879,7 +7957,7 @@
                 "type": "campaign_log_cards",
                 "section": "cultists_escaped",
                 "id": "$input_value",
-                "text": "#name"
+                "text": "#name#"
               }
             ]
           },
@@ -8937,7 +9015,7 @@
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": " It was not until recently that you understood the purpose of the awful piping which you have heard constantly throughout your investigation. It is a lullaby of sorts, meant to keep the oblivious god from waking. For just a brief moment, the pipers’ song was interrupted, and Azathoth began to stir. Now you understand why Anna came to you that fateful night and begged to read your fortune. She knew the part you would have to play when you arrived here.\nSitting down at the edge of the creature’s nighted throne, you take out your flute, and begin to play.\nIn this place where time and hunger and age and weariness are mortal aspects of no concern to you, it is your duty to continue to play. Without fail. Without end. ",
+      "text": "It was not until recently that you understood the purpose of the awful piping which you have heard constantly throughout your investigation. It is a lullaby of sorts, meant to keep the oblivious god from waking. For just a brief moment, the pipers’ song was interrupted, and Azathoth began to stir. Now you understand why Anna came to you that fateful night and begged to read your fortune. She knew the part you would have to play when you arrived here.\nSitting down at the edge of the creature’s nighted throne, you take out your flute, and begin to play.\nIn this place where time and hunger and age and weariness are mortal aspects of no concern to you, it is your duty to continue to play. Without fail. Without end. ",
       "steps": ["lead_investigator_joins_pipers", "azathoth_slumbers", "lead_investigator_insane", "earn_xp_bonus_5", "two_mental_trauma", "win"]
     },
     {
@@ -10018,7 +10096,7 @@
           },
           {
             "text": "<i>“You are under arrest.”</i>",
-            "description": " You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
+            "description": "You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -12827,6 +12905,11 @@
       "id": "supplies",
       "title": "Supplies",
       "type": "supplies"
+    },
+    {
+      "id": "hidden",
+      "title": "hidden",
+      "type": "hidden"
     }
   ],
   "scenarios": [
@@ -13083,7 +13166,7 @@
     {
       "id": "ee_1",
       "type": "story",
-      "text": "<fancy>Friday, July 17th, 1925</fancy>\nWe have finally made it back to Arkham, our expedition a “success.” Alejandro is excited to report his findings to the university. How he maintains his starry-eyed idealism after the hell we went through in the jungle is beyond me. His attention is fixated on the strange relic that we discovered in the ruins. I wish we knew a little more about the artifact’s origins. It unsettles me greatly. It hums at all times and pulses with an otherworldly energy I can scarcely describe. As we traveled home with the artifact in tow, our nights were plagued by bizarre nightmares: dreams of other worlds and civilizations.\nAlejandro wants to bring the relic to the Miskatonic Museum, to put on display along with the other Eztli artifacts we discovered. My feelings are mixed. At the museum, it will receive proper care, and historians will be able to study it and perhaps even discern its purpose. However, I fear that the relic may be too dangerous for the public. After all, we still have no idea what the damned thing even is. Alejandro would hate it, but perhaps it would be better to keep the relic somewhere safe, where Harlan and I can study it in private. I’ll have to decide tonight; after tomorrow, there won’t be time to change my mind..."
+      "text": "<right><fancy>Friday, July 17th, 1925</fancy></right>\nWe have finally made it back to Arkham, our expedition a “success.” Alejandro is excited to report his findings to the university. How he maintains his starry-eyed idealism after the hell we went through in the jungle is beyond me. His attention is fixated on the strange relic that we discovered in the ruins. I wish we knew a little more about the artifact’s origins. It unsettles me greatly. It hums at all times and pulses with an otherworldly energy I can scarcely describe. As we traveled home with the artifact in tow, our nights were plagued by bizarre nightmares: dreams of other worlds and civilizations.\nAlejandro wants to bring the relic to the Miskatonic Museum, to put on display along with the other Eztli artifacts we discovered. My feelings are mixed. At the museum, it will receive proper care, and historians will be able to study it and perhaps even discern its purpose. However, I fear that the relic may be too dangerous for the public. After all, we still have no idea what the damned thing even is. Alejandro would hate it, but perhaps it would be better to keep the relic somewhere safe, where Harlan and I can study it in private. I’ll have to decide tonight; after tomorrow, there won’t be time to change my mind..."
     },
     {
       "id": "choose_where_relic_goes",
@@ -13106,7 +13189,7 @@
     {
       "id": "ee_2",
       "type": "story",
-      "text": "<fancy>Sunday, July 19th, 1925</fancy>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
     },
     {
       "id": "gave_relic_to_alejandro",
@@ -13168,7 +13251,7 @@
     {
       "id": "ee_3",
       "type": "story",
-      "text": "<fancy>Sunday, July 19th, 1925</fancy>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to keep the relic hidden for now. Alejandro is not happy with my decision, but until we know what the orb is capable of, it’s important that it stay somewhere safe, where it won’t endanger others. Harlan agrees with me, and has offered to take custody of the relic and keep it in his private office. There, we can study the artifact in secret.\nAlejandro is staying in Arkham for the time being, recording his notes about the expedition and helping the museum put together an exhibit displaying our other, less dangerous discoveries. As for me, I hope to find answers to other mysteries: How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored?\nMy thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. Each time I leave Harlan’s office, I find myself longing to head back and gaze upon the relic once more. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
     },
     {
       "id": "gave_relic_to_harlan",
@@ -13266,12 +13349,12 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<fancy>Wednesday, July 8th, 1925</fancy>\nOur runners, José and Maria, returned several days later. They were fully stocked with food, water, aspirin, and weapons. I am curious how deep Alejandro’s connections are in Mexico. For an outcast historian, he was able to secure guns and ammunition faster than I had anticipated. But perhaps it is better if he keeps his sources undisclosed.\n We ventured once more into the jungle. This time, we were prepared. We had learned from our previous excursion, and we made our way across the river canyon, venturing deeper south than we had dared before. Eventually we reached the ruins Alejandro sought, and soon we will enter what Alejandro believes is the main temple. Strangely, the serpent creatures we encountered earlier didn’t attack in force as we had feared. Could they have fled? Or are they simply lying in wait, preparing to ambush while we sleep at night?"
+      "text": "<right><fancy>Wednesday, July 8th, 1925</fancy></right>\nOur runners, José and Maria, returned several days later. They were fully stocked with food, water, aspirin, and weapons. I am curious how deep Alejandro’s connections are in Mexico. For an outcast historian, he was able to secure guns and ammunition faster than I had anticipated. But perhaps it is better if he keeps his sources undisclosed.\n We ventured once more into the jungle. This time, we were prepared. We had learned from our previous excursion, and we made our way across the river canyon, venturing deeper south than we had dared before. Eventually we reached the ruins Alejandro sought, and soon we will enter what Alejandro believes is the main temple. Strangely, the serpent creatures we encountered earlier didn’t attack in force as we had feared. Could they have fled? Or are they simply lying in wait, preparing to ambush while we sleep at night?"
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "<fancy>Friday, July 3rd, 1925</fancy>\nWe spent most of yesterday moving our camp to the edge of the ruins. With the serpentine creatures still guarding the region, we have decided that a small party will have the best chance of slipping into the main temple unnoticed. I told Maria, the expedition’s naturalist, to take one of the trucks and wait beyond the northern edge of the rainforest. Our cartographer, José, is guarding the camp until we return. We’re on our own, but at least we’ve cleared an escape route in the event things go sour..."
+      "text": "<right><fancy>Friday, July 3rd, 1925</fancy></right>\nWe spent most of yesterday moving our camp to the edge of the ruins. With the serpentine creatures still guarding the region, we have decided that a small party will have the best chance of slipping into the main temple unnoticed. I told Maria, the expedition’s naturalist, to take one of the trucks and wait beyond the northern edge of the rainforest. Our cartographer, José, is guarding the camp until we return. We’re on our own, but at least we’ve cleared an escape route in the event things go sour..."
     },
     {
       "id": "gather_encounter_sets",
@@ -13293,7 +13376,7 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": " Create the exploration deck. This is done by taking the five single-sided [[Ancient]] locations and shuffling them together, along with one copy each of the following treachery cards: Ill Omen, Deep Dark, Final Mistake, Entombed, and Crypt Chill."
+      "text": "Create the exploration deck. This is done by taking the five single-sided [[Ancient]] locations and shuffling them together, along with one copy each of the following treachery cards: Ill Omen, Deep Dark, Final Mistake, Entombed, and Crypt Chill."
     },
     {
       "id": "set_aside_cards",
@@ -14082,7 +14165,7 @@
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": " Before you are able to cross into the next layer of the cavern, a sound like the click-clacking of a claw catches you by surprise. Emerging from the darkness behind you are several alien creatures, the likes of which you have never seen: ten feet tall, with conical bodies that end in four strange appendages of varying lengths. You are stunned to see a human figure standing at the head of the group: none other than Alejandro Vela. “Take their minds,” Alejandro commands the creatures. “We have no further use for them.” It is your last human memory.",
+      "text": "Before you are able to cross into the next layer of the cavern, a sound like the click-clacking of a claw catches you by surprise. Emerging from the darkness behind you are several alien creatures, the likes of which you have never seen: ten feet tall, with conical bodies that end in four strange appendages of varying lengths. You are stunned to see a human figure standing at the head of the group: none other than Alejandro Vela. “Take their minds,” Alejandro commands the creatures. “We have no further use for them.” It is your last human memory.",
       "steps": ["check_harbinger", "record_yigs_fury", "earn_xp"]
     }
   ]
@@ -14388,7 +14471,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "<fancy>Tuesday, June 2nd, 1925</fancy>\nThere will be no rest for us this summer, it seems.\nToday I met with Harlan Earnstone, a historical theorist at Miskatonic University and an old friend of mine. He’d said he had a job offer for me, but frankly, I didn’t know what to expect.\nHarlan introduced me to an associate of his: Alejandro Vela, a distinguished historian from across the southern border. Mr. Vela is a graduate of a prestigious university in Mexico City, and has spent many years researching the Aztec Empire. He claims that he has found evidence regarding the existence of an unheard-of Aztec city-state called Eztli. His strange and unprecedented findings were not accepted by the university, and he’s become a pariah among his peers.\nAlejandro came to Arkham to seek funding for an expedition into the rainforests of southern Mexico, where he believes that the ruins of the Eztli altepetl lie undiscovered. His description of this city-state’s origins defies modern understanding of Mesoamerican history. Despite this— or, knowing my old friend, because of this—Harlan is enthralled by Alejandro’s discoveries. Miskatonic University has agreed to fund the expedition (albeit meagerly), and Harlan wants me to go along.\nThe way I see it, there’s a good chance we’re looking for something that doesn’t even exist. But if there’s even a slight chance these Eztli people existed, the historical significance would be profound. We debated the issue for some time, but in the end, we accepted Alejandro’s offer. Preparations are underway, and we should be setting off by the end of the month. With any luck, we’ll have this journal filled with all manner of interesting discoveries. If not, perhaps it’ll be a nice wedge to place beneath Harlan’s lopsided desk."
+      "text": "<right><fancy>Tuesday, June 2nd, 1925</fancy></right>\nThere will be no rest for us this summer, it seems.\nToday I met with Harlan Earnstone, a historical theorist at Miskatonic University and an old friend of mine. He’d said he had a job offer for me, but frankly, I didn’t know what to expect.\nHarlan introduced me to an associate of his: Alejandro Vela, a distinguished historian from across the southern border. Mr. Vela is a graduate of a prestigious university in Mexico City, and has spent many years researching the Aztec Empire. He claims that he has found evidence regarding the existence of an unheard-of Aztec city-state called Eztli. His strange and unprecedented findings were not accepted by the university, and he’s become a pariah among his peers.\nAlejandro came to Arkham to seek funding for an expedition into the rainforests of southern Mexico, where he believes that the ruins of the Eztli altepetl lie undiscovered. His description of this city-state’s origins defies modern understanding of Mesoamerican history. Despite this— or, knowing my old friend, because of this—Harlan is enthralled by Alejandro’s discoveries. Miskatonic University has agreed to fund the expedition (albeit meagerly), and Harlan wants me to go along.\nThe way I see it, there’s a good chance we’re looking for something that doesn’t even exist. But if there’s even a slight chance these Eztli people existed, the historical significance would be profound. We debated the issue for some time, but in the end, we accepted Alejandro’s offer. Preparations are underway, and we should be setting off by the end of the month. With any luck, we’ll have this journal filled with all manner of interesting discoveries. If not, perhaps it’ll be a nice wedge to place beneath Harlan’s lopsided desk."
     },
     {
       "id": "expedition_leader",
@@ -14832,15 +14915,15 @@
         "options": [
           {
             "numCondition": -1,
-            "steps": ["more_tablets"]
+            "steps": ["more_tablets", "gather_tablets"]
           },
           {
             "numCondition": 0,
-            "steps": ["equal_tablets_and_cultists"]
+            "steps": ["equal_tablets_and_cultists","gather_equal_tablets_and_cultists"]
           },
           {
             "numCondition": 1,
-            "steps": ["more_cultists"]
+            "steps": ["more_cultists", "gather_cultists"]
           }
         ],
         "defaultOption": {
@@ -14851,24 +14934,35 @@
     },
     {
       "id": "more_tablets",
+      "text": "Because there are more [tablet] tokens in the chaos bag than [cultist] tokens:"
+    },
+    {
+      "id": "gather_tablets",
+      "bullet_type": "small",
       "type": "encounter_sets",
-      "text": "Because there are more [tablet] tokens in the chaos bag than [cultist] tokens",
       "encounter_sets": [
         "pentagram"
       ]
     },
     {
       "id": "more_cultists",
+      "text": "Because there are more [cultist] tokens in the chaos bag than [tablet] tokens:"
+    },
+    {
+      "id": "gather_cultists",
       "type": "encounter_sets",
-      "text": "Because there are more [cultist] tokens in the chaos bag than [tablet] tokens",
       "encounter_sets": [
         "agents_of_yig"
       ]
     },
     {
       "id": "equal_tablets_and_cultists",
+      "text": "Because there are an equal number of [cultist] and [tablet] tokens in the chaos bag:"
+    },
+    {
+      "id": "gather_equal_tablets_and_cultists",
       "type": "encounter_sets",
-      "text": "Because there is an equal number of [cultist] and [tablet] tokens in the chaos bag",
+      "bullet_type": "small",
       "encounter_sets": [
         "pentagram",
         "agents_of_yig"
@@ -15082,7 +15176,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "<fancy>Thursday, December 17th, 1925</fancy>]\nIt is difficult for me to convey my unabridged thoughts on the events that occurred during the summer of 1925. Of course, I gave my full account to Harlan—who I suspect is the only person willing to vouch for my story—but I have not sat down to record it on paper until now. Perhaps I would rather these events had been a figment of my imagination.\nIn truth, I have no idea how we made it out of the caverns beneath the jungle alive. Simply reaching the abyssal place was a hellish ordeal. My memory of our return trip is muddled and disarrayed. We scrambled in the dark for what seemed like ages. We were out of food, out of supplies, out of hope—but somehow, we found a way out.\nOur reward for preventing calamity was scorn and ridicule. No upstanding paper or university would publish our findings, and of course we possessed no proof of our expedition save for our scars and nightmares. I wish I could say that my memory of these events has faded with each passing day, but I will never forget the alien city we explored in our conical bodies, the serpents that pursued us in red-litten Yoth, the formless abomination that lived in the depths of the Earth...\nPerhaps that is why I fear making a written account of our findings—because these memories will crystallize and become etched in my mind, forever damning me to a life of terror and dismay. Still, the world needs to know what we saw. What we did.",
+      "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nIt is difficult for me to convey my unabridged thoughts on the events that occurred during the summer of 1925. Of course, I gave my full account to Harlan—who I suspect is the only person willing to vouch for my story—but I have not sat down to record it on paper until now. Perhaps I would rather these events had been a figment of my imagination.\nIn truth, I have no idea how we made it out of the caverns beneath the jungle alive. Simply reaching the abyssal place was a hellish ordeal. My memory of our return trip is muddled and disarrayed. We scrambled in the dark for what seemed like ages. We were out of food, out of supplies, out of hope—but somehow, we found a way out.\nOur reward for preventing calamity was scorn and ridicule. No upstanding paper or university would publish our findings, and of course we possessed no proof of our expedition save for our scars and nightmares. I wish I could say that my memory of these events has faded with each passing day, but I will never forget the alien city we explored in our conical bodies, the serpents that pursued us in red-litten Yoth, the formless abomination that lived in the depths of the Earth...\nPerhaps that is why I fear making a written account of our findings—because these memories will crystallize and become etched in my mind, forever damning me to a life of terror and dismay. Still, the world needs to know what we saw. What we did.",
       "steps": ["mended_tear_in_time", "two_physical_and_mental_trauma", "attached_locations_to_victory_display", "earn_xp_plus_5", "win", "skip_epilogue"]
     },
     {
@@ -18472,7 +18566,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "<fancy>Thursday, December 17th, 1925</fancy>\nNo one else has ever learned of the events that truly occurred during the summer of 1925, and no one ever will, for I intend to keep this journal locked in my safe-deposit box once I have finished writing in it. I seek only to preserve my own record of these events, for I do not wish the passage of time to erase them completely. After all, these are not my memories, but the memories of my other self: the self who ventured through time and space to save humanity.\nIt is difficult to explain how we did what we did. After all that happened—Ichtaca, Alejandro, the city of the Yithians, Yoth—it turns out the true doom of humanity had occurred much, much earlier: when we first left to find the Eztli. We brought all of these events upon ourselves. In order to prevent this calamity, we had to seal the relic away forever. I remember these events as though I myself had experienced them, though for me, the expedition had gone much differently. We reached the central chamber of the Eztli ruins, but it was sealed shut, and nothing—not even the TNT that José had brought from the trucks—could breach the entrance. Although we returned to Arkham with proof that the Eztli existed, no other expedition would ever find them or their ruins again. My other self perished in those ruins—but I remember. Somehow, I remember everything.",
+      "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nNo one else has ever learned of the events that truly occurred during the summer of 1925, and no one ever will, for I intend to keep this journal locked in my safe-deposit box once I have finished writing in it. I seek only to preserve my own record of these events, for I do not wish the passage of time to erase them completely. After all, these are not my memories, but the memories of my other self: the self who ventured through time and space to save humanity.\nIt is difficult to explain how we did what we did. After all that happened—Ichtaca, Alejandro, the city of the Yithians, Yoth—it turns out the true doom of humanity had occurred much, much earlier: when we first left to find the Eztli. We brought all of these events upon ourselves. In order to prevent this calamity, we had to seal the relic away forever. I remember these events as though I myself had experienced them, though for me, the expedition had gone much differently. We reached the central chamber of the Eztli ruins, but it was sealed shut, and nothing—not even the TNT that José had brought from the trucks—could breach the entrance. Although we returned to Arkham with proof that the Eztli existed, no other expedition would ever find them or their ruins again. My other self perished in those ruins—but I remember. Somehow, I remember everything.",
       "steps": ["sealed_relic_of_ages_forever", "earn_xp", "win_campaign"]
     }
   ]
@@ -18494,7 +18588,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "<fancy>Sunday, June 28th, 1925</fancy>\nIt’s been a hell of a day. We’ve just set up camp along the northern border of the rainforest where Alejandro believes the Eztli once dwelled. The jungle here is dense and untamed. The sky hides above the tree cover, but I can tell from the crisp breeze that storm clouds are brewing overhead.\nThe dangers of our expedition have been explained to us many times. We are hundreds of miles away from any sign of civilization. Nobody in modern times has yet to pierce the heart of these wilds. Until now, nobody has had reason to try. After all, it wouldn’t make sense to find Aztec ruins in this region of Mexico. And yet, here we are: looking for ruins that may not exist in a place where, by all accounts, they should not.\nAlready one of our surveyors has fallen ill, and another has been bitten by a viper. I’m starting to think the rainforest doesn’t want us here. If this luck persists, ours will be the shortest expedition in Miskatonic University’s history. Tonight, we rest. Tomorrow, we venture into uncharted wilds."
+      "text": "<right><fancy>Sunday, June 28th, 1925</fancy></right>\nIt’s been a hell of a day. We’ve just set up camp along the northern border of the rainforest where Alejandro believes the Eztli once dwelled. The jungle here is dense and untamed. The sky hides above the tree cover, but I can tell from the crisp breeze that storm clouds are brewing overhead.\nThe dangers of our expedition have been explained to us many times. We are hundreds of miles away from any sign of civilization. Nobody in modern times has yet to pierce the heart of these wilds. Until now, nobody has had reason to try. After all, it wouldn’t make sense to find Aztec ruins in this region of Mexico. And yet, here we are: looking for ruins that may not exist in a place where, by all accounts, they should not.\nAlready one of our surveyors has fallen ill, and another has been bitten by a viper. I’m starting to think the rainforest doesn’t want us here. If this luck persists, ours will be the shortest expedition in Miskatonic University’s history. Tonight, we rest. Tomorrow, we venture into uncharted wilds."
     },
     {
       "id": "gather_encounter_sets",
@@ -18589,7 +18683,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_is_wary",
-          "text": " Ichtaca is wary of the investigators."
+          "text": "Ichtaca is wary of the investigators."
         }
       ]
     },
@@ -18674,19 +18768,19 @@
     {
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
-      "text": "<fancy>Wednesday, July 1st, 1925</fancy>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
+      "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
       "steps": ["wait_for_additional_supplies", "check_final_act", "record_vengeance", "earn_xp"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "<fancy>Thursday, July 2nd, 1925</fancy>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
       "steps": ["cleared_path_to_temple", "alejandro_remained_at_camp", "earned_ichtacas_trust", "record_vengeance", "earn_xp"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "<fancy>Thursday, July 2nd, 1925</fancy>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
       "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp"]
     }
   ]

@@ -168,6 +168,7 @@ export default class ScenarioStep {
         const count = this.fullyGuided ?
           this.campaignLog.count(step.condition.section, step.condition.id) :
           inputCount;
+        console.log({section: step.condition.section, id: step.condition.id, count });
         const choice =
           find(step.condition.options, option => option.numCondition === count) ||
           step.condition.defaultOption;

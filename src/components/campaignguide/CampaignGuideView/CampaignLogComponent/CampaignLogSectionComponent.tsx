@@ -46,6 +46,17 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
         );
       }
       case 'text':
+        if (entry.type === 'card') {
+          return map(entry.cards, (card, idx) => (
+            <CampaignLogCardEntryComponent
+              key={idx}
+              code={card}
+              entry={entry}
+              text={logEntry.text}
+              crossedOut={crossedOut}
+            />
+          ));
+        }
         return (
           <TextEntryComponent
             text={logEntry.text}

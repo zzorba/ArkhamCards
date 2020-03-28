@@ -27,7 +27,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
 
   render() {
     const { step, encounterSets } = this.props;
-    const encounterSetString = map(encounterSets, set => `<i>${set.name}</i>`).join(', ');
+    const encounterSetString = map(encounterSets, set => set ? `<i>${set.name}</i>` : 'Missing Set Name').join(', ');
     const leadText = step.aside ?
       t`Set the following encounter sets aside, out of play: ` :
       t`Gather all cards from the following encounter sets:`;
@@ -40,7 +40,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
       <SetupStepWrapper bulletType={step.bullet_type}>
         <CardTextComponent text={text} />
         <View style={styles.iconPile}>
-          { map(encounterSets, set => (
+          { map(encounterSets, set => !!set && (
             <View style={styles.icon} key={set.code}>
               <EncounterIcon
                 encounter_code={set.code}

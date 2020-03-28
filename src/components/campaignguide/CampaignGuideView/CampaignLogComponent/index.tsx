@@ -52,7 +52,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
         const section = campaignLog.sections[id];
         return (
           <View style={styles.container}>
-            <Text style={[typography.bigGameFont, styles.underline]}>
+            <Text style={[typography.bigGameFont, styles.underline, styles.right]}>
               { title }
             </Text>
             { !!section && (
@@ -89,5 +89,8 @@ const styles = StyleSheet.create({
   },
   underline: {
     textDecorationLine: 'underline',
+  },
+  right: {
+    textAlign: 'center',
   },
 });

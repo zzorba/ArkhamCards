@@ -10,14 +10,15 @@ interface Props {
   crossedOut?: boolean;
   code: string;
   entry: CampaignLogEntry;
+  text?: string;
 }
 
 export default class CampaignLogCardEntryComponent extends React.Component<Props> {
   _renderCard = (card: Card) => {
-    const { crossedOut, entry } = this.props;
+    const { crossedOut, entry, text } = this.props;
     return (
       <TextEntryComponent
-        text={card.name}
+        text={(text || '#name#').replace('#name#', card.name)}
         crossedOut={crossedOut}
         entry={entry}
       />

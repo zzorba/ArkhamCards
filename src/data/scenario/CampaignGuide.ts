@@ -217,6 +217,12 @@ export default class CampaignGuide {
         supply,
       };
     }
+    if (id === '$count') {
+      return {
+        type: 'section_count',
+        section: section.title,
+      };
+    }
     const textSection = find(
       this.log.sections,
       s => s.section === sectionId

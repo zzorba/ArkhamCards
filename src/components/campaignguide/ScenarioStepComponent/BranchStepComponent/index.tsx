@@ -1,7 +1,6 @@
 import React from 'react';
 
 import CheckSuppliesConditionComponent from './CheckSuppliesConditionComponent';
-import MathConditionComponent from './MathConditionComponent';
 import CampaignLogSectionExistsConditionComponent from './CampaignLogSectionExistsConditionComponent';
 import CampaignLogCountConditionComponent from './CampaignLogCountConditionComponent';
 import ScenarioDataConditionComponent from './ScenarioDataConditionComponent';
@@ -37,13 +36,8 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
         />
       );
     case 'math':
-      return (
-        <MathConditionComponent
-          step={step}
-          campaignLog={campaignLog}
-          condition={condition}
-        />
-      );
+      // We always write out the rational on the following steps.
+      return null;
     case 'check_supplies':
       return (
         <CheckSuppliesConditionComponent

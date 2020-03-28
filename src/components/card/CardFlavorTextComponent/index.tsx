@@ -10,6 +10,8 @@ import { isBig } from 'styles/space';
 import { COLORS } from 'styles/colors';
 import FlavorBoldNode from './FlavorBoldNode';
 import FlavorFancyNode from './FlavorFancyNode';
+import FlavorFancyCenterNode from './FlavorFancyCenterNode';
+import FlavorFancyRightNode from './FlavorFancyRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
 
@@ -58,6 +60,24 @@ const FancyHtmlTagRule: MarkdownRule<WithText, State> = {
   render: FlavorFancyNode,
 };
 
+const CenterHtmlTagRule: MarkdownRule<WithText, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<center><fancy>(.+?)<\\/fancy><\\/center>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: FlavorFancyCenterNode,
+};
+
+const RightHtmlTagRule: MarkdownRule<WithText, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<right><fancy>(.+?)<\\/fancy><\\/right>')),
+  order: 1,
+  parse: (capture) => {
+    return { text: capture[1] };
+  },
+  render: FlavorFancyRightNode,
+};
+
 interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
@@ -79,6 +99,8 @@ export default function CardFlavorTextComponent(
         brTag: BreakTagRule,
         citeTag: CiteTagRule,
         fancyTag: FancyHtmlTagRule,
+        centerTag: CenterHtmlTagRule,
+        rightTag: RightHtmlTagRule,
       }}
       onLinkPress={onLinkPress}
       styles={{
