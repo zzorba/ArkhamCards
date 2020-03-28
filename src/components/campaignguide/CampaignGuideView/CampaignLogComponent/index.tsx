@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
 import { map } from 'lodash';
 
+import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
@@ -14,55 +15,68 @@ interface Props {
 
 export default class CampaignLogComponent extends React.Component<Props> {
 
-  renderLogEntryContent(id: string, type?: 'count' | 'investigator') {
+  renderLogEntryContent(id: string, title: string, type?: 'count' | 'supplies') {
     const { campaignLog, campaignGuide } = this.props;
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
-          <Text style={typography.gameFont}>
-            { count }
-          </Text>
+          <View style={styles.container}>
+            <Text style={typography.bigGameFont}>
+              { title }: { count }
+            </Text>
+          </View>
         );
       };
-      case 'investigator':
-        return <Text>???</Text>;
-      default: {
-        const section = campaignLog.sections[id];
+      case 'supplies': {
+        const section = campaignLog.investigatorSections[id];
         if (!section) {
-          return null;
+          return (
+            <View style={styles.container}>
+              <Text style={[typography.bigGameFont, styles.underline]}>
+                { title }
+              </Text>
+            </View>
+          );
         }
         return (
-          <CampaignLogSectionComponent
+          <CampaignLogSuppliesComponent
             sectionId={id}
-            campaignGuide={campaignGuide}
             section={section}
+            campaignGuide={campaignGuide}
+            title={title}
           />
+        );
+      }
+      default: {
+        const section = campaignLog.sections[id];
+        return (
+          <View style={styles.container}>
+            <Text style={[typography.bigGameFont, styles.underline]}>
+              { title }
+            </Text>
+            { !!section && (
+              <CampaignLogSectionComponent
+                sectionId={id}
+                campaignGuide={campaignGuide}
+                section={section}
+              />
+            ) }
+          </View>
         );
       }
     }
   }
 
-  renderContent() {
-    const { campaignLog, campaignGuide } = this.props;
+  render() {
+    const { campaignGuide } = this.props;
     return map(campaignGuide.campaign.campaign.campaign_log, log => {
       return (
         <View key={log.id}>
-          <Text style={[typography.bigGameFont, styles.underline]}>
-            { log.title }
-          </Text>
-          {this.renderLogEntryContent(log.id, log.type) }
+          { this.renderLogEntryContent(log.id, log.title, log.type) }
         </View>
       );
     });
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        { this.renderContent() }
-      </View>
-    );
   }
 }
 
@@ -70,6 +84,8 @@ const styles = StyleSheet.create({
   container: {
     marginLeft: 16,
     marginRight: 32,
+    paddingTop: 8,
+    paddingBottom: 8,
   },
   underline: {
     textDecorationLine: 'underline',

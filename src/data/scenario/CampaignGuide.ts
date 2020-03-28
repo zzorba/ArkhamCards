@@ -4,7 +4,7 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign } from './types';
+import { FullCampaign, Supply } from './types';
 
 export interface CampaignLog {
   campaignId: string;
@@ -15,6 +15,7 @@ export interface CampaignLog {
       text: string;
     }[];
   }[];
+  supplies: Supply[];
 }
 
 interface LogSection {
@@ -35,9 +36,9 @@ interface LogEntryText extends LogSection {
   text: string;
 }
 
-interface LogEntryPerInvestigator extends LogSection {
-  type: 'investigator';
-  text?: string;
+interface LogEntrySupplies extends LogSection {
+  type: 'supplies';
+  supply: Supply;
 }
 
 interface PlayedScenario {
@@ -59,7 +60,7 @@ interface ProcessedCampaign {
   campaignLog: GuidedCampaignLog;
 }
 
-type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntryPerInvestigator;
+type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 /**
  * Wrapper utility to provide structured access to campaigns.
@@ -183,13 +184,24 @@ export default class CampaignGuide {
     };
   }
 
-  logEntry(sectionId: string, id: string): LogEntry | undefined {
+  logEntry(sectionId: string, id: string): LogEntry {
     const section = find(
       this.campaign.campaign.campaign_log,
       logSection => logSection.id === sectionId
     );
     if (!section) {
-      return undefined;
+      throw new Error(`Could not find section: ${sectionId}`);
+    }
+    if (section.type === 'supplies') {
+      const supply = find(this.log.supplies, s => s.id === id);
+      if (!supply) {
+        throw new Error(`Could not find Supply: ${id}`);
+      }
+      return {
+        type: 'supplies',
+        section: section.title,
+        supply,
+      };
     }
     const textSection = find(
       this.log.sections,
@@ -205,18 +217,13 @@ export default class CampaignGuide {
       const entry = find(textSection.entries, entry => entry.id === id);
       if (entry) {
         return {
-          type: section.type === 'investigator' ? 'investigator' : 'text',
+          type: 'text',
           section: section.title,
           text: entry.text,
         };
       }
     }
-    if (section.type === 'investigator') {
-      return {
-        type: 'investigator',
-        section: section.title,
-      };
-    }
+
     if (id.match(CARD_REGEX)) {
       return {
         type: 'card',
@@ -224,6 +231,6 @@ export default class CampaignGuide {
         code: id,
       };
     }
-    return undefined;
+    throw new Error(`Could not find section(${sectionId}), id(${id})`);
   }
 }

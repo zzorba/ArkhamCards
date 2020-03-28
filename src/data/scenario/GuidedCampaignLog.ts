@@ -43,6 +43,10 @@ export interface EntrySection {
   sectionCrossedOut?: boolean;
 }
 
+export interface InvestigatorSection {
+  [code: string]: EntrySection;
+}
+
 interface CountSection {
   count: number;
 }
@@ -73,6 +77,9 @@ export default class GuidedCampaignLog {
   };
   countSections: {
     [section: string]: CountSection | undefined;
+  };
+  investigatorSections: {
+    [section: string]: InvestigatorSection | undefined;
   };
   scenarioData: {
     [scenario: string]: ScenarioData | undefined;
@@ -114,6 +121,7 @@ export default class GuidedCampaignLog {
       // No relevant effects, so shallow copy will do.
       this.sections = readThrough ? readThrough.sections : {};
       this.countSections = readThrough ? readThrough.countSections : {};
+      this.investigatorSections = readThrough ? readThrough.investigatorSections : {};
       this.scenarioData = readThrough ? readThrough.scenarioData : {};
       this.campaignData = readThrough ? readThrough.campaignData : {
         scenarioStatus: {},
@@ -122,6 +130,7 @@ export default class GuidedCampaignLog {
     } else {
       this.sections = readThrough ? cloneDeep(readThrough.sections) : {};
       this.countSections = readThrough ? cloneDeep(readThrough.countSections) : {};
+      this.investigatorSections = readThrough ? cloneDeep(readThrough.investigatorSections) : {};
       this.scenarioData = readThrough ? cloneDeep(readThrough.scenarioData) : {};
       this.campaignData = readThrough ? cloneDeep(readThrough.campaignData) : {
         scenarioStatus: {},
@@ -237,6 +246,44 @@ export default class GuidedCampaignLog {
     this.sections[effect.section] = section;
   }
 
+  private updateSectionWithCount(
+    section: EntrySection,
+    id: string,
+    effect: CampaignLogCountEffect,
+    value: number
+  ): EntrySection {
+    // Normal entry
+    const entry = find(section.entries, entry => entry.id === effect.id);
+    const count = (entry && entry.type === 'count') ? entry.count : 0;
+    switch (effect.operation) {
+      case 'add':
+      case 'add_input':
+        if (entry && entry.type === 'count') {
+          entry.count = count + value;
+        } else {
+          section.entries.push({
+            type: 'count',
+            id,
+            count: count + value,
+          });
+        }
+        break;
+      case 'set':
+      case 'set_input':
+        if (entry && entry.type === 'count') {
+          entry.count = value;
+        } else {
+          section.entries.push({
+            type: 'count',
+            id,
+            count: value,
+          });
+        }
+        break;
+    }
+    return section;
+  }
+
   private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, counterInput?: number) {
     const value: number = (
       (effect.operation === 'add_input' || effect.operation === 'set_input') ?
@@ -260,41 +307,31 @@ export default class GuidedCampaignLog {
           break;
       }
       this.countSections[effect.section] = section;
+    } else if (effect.investigator) {
+      const investigatorSection = this.investigatorSections[effect.section] || {};
+      const section = investigatorSection[effect.investigator] || {
+        entries: [],
+        crossedOut: {},
+      };
+      investigatorSection[effect.investigator] = this.updateSectionWithCount(
+        section,
+        effect.id,
+        effect,
+        value
+      );
+      this.investigatorSections[effect.section] = investigatorSection;
     } else {
       const section = this.sections[effect.section] || {
         entries: [],
         crossedOut: {},
       };
-      // Normal entry
-      const entry = find(section.entries, entry => entry.id === effect.id);
-      const count = entry && entry.type === 'count' ? entry.count : 0;
-      switch (effect.operation) {
-        case 'add':
-        case 'add_input':
-          if (entry && entry.type === 'count') {
-            entry.count = count + value;
-          } else {
-            section.entries.push({
-              type: 'count',
-              id: effect.id,
-              count: count + value,
-            });
-          }
-          break;
-        case 'set':
-        case 'set_input':
-          if (entry && entry.type === 'count') {
-            entry.count = value;
-          } else {
-            section.entries.push({
-              type: 'count',
-              id: effect.id,
-              count: value,
-            });
-          }
-          break;
-      }
-      this.sections[effect.section] = section;
+
+      this.sections[effect.section] = this.updateSectionWithCount(
+        section,
+        effect.id,
+        effect,
+        value
+      );
     }
   }
 

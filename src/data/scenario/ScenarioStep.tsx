@@ -511,11 +511,28 @@ export default class ScenarioStep {
         );
       }
       case 'supplies': {
-        if (!scenarioState.supplies(step.id)) {
+        const supplies = scenarioState.supplies(step.id);
+        if (supplies === undefined) {
           return undefined;
         }
-        return this.proceedToNextStep(
-          this.remainingStepIds
+        const effects: Effect[] = flatMap(supplies, (investigatorSupplies, code) =>
+          flatMap(investigatorSupplies, (count, supplyId) => {
+            return {
+              type: 'campaign_log_count',
+              section: 'supplies',
+              investigator: code,
+              operation: 'add',
+              id: supplyId,
+              value: count,
+            };
+          })
+        );
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          [{
+            effects,
+          }]
         );
       }
       case 'choose_many':

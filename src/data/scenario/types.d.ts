@@ -119,7 +119,7 @@ export interface Campaign {
   campaign_log: {
     id: string;
     title: string;
-    type?: "count" | "investigator";
+    type?: "count" | "supplies";
   }[];
   scenarios: string[];
   setup: string[];
@@ -199,6 +199,7 @@ export interface CampaignLogCardsEffect {
 export interface CampaignLogCountEffect {
   type: "campaign_log_count";
   section: string;
+  investigator?: string;
   id?: string;
   operation: "set_input" | "set" | "add_input" | "add";
   value?: number;
@@ -374,6 +375,7 @@ export interface SuppliesInput {
   type: "supplies";
   points: number[];
   supplies: Supply[];
+  section: string;
 }
 export interface Supply {
   id: string;

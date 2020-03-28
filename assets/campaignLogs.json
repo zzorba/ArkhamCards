@@ -6,32 +6,68 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "banished_silas_bishop",
+            "text": "the investigators banished Silas Bishop."
+          },
+          {
+            "id": "bone_to_pick",
+            "text": "the O'Bannion gang has a bone to pick with the investigators."
+          },
+          {
+            "id": "brood_escaped",
+            "text": "#X# brood escaped into the wild."
+          },
+          {
+            "id": "calmed_townsfolk",
+            "text": "You calmed the townsfolk."
+          },
+          {
+            "id": "closed_tear",
+            "text": "the investigators closed the tear in reality."
+          },
+          {
+            "id": "destroyed_necronomicon",
+            "text": "the investigators destroyed the Necronomicon."
+          },
+          {
+            "id": "earl_sawyer_survived",
+            "text": "Earl Sawyer survived The Dunwich Legacy."
+          },
+          {
+            "id": "entered_the_gate",
+            "text": "the investigators entered the gate."
+          },
+          {
+            "id": "experiment_defeated",
+            "text": "the Experiment was defeated."
+          },
+          {
+            "id": "failed_to_recover_necronomicon",
+            "text": "the investigators failed to recover the Necronomicon."
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "the investigators failed to save the students."
+          },
+          {
+            "id": "francis_morgan_kidnapped",
+            "text": "Dr. Francis Morgan was kidnapped."
+          },
+          {
+            "id": "francis_morgan_rescued",
+            "text": "the investigators rescued Dr. Francis Morgan."
+          },
+          {
+            "id": "francis_morgan_survived",
+            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+          },
+          {
             "id": "henry_armitage_kidnapped",
             "text": "Dr. Henry Armitage was kidnapped."
           },
           {
             "id": "henry_armitage_rescued",
             "text": "the investigators rescued Dr. Henry Armitage."
-          },
-          {
-            "id": "ritual_completed",
-            "text": "the ritual was completed."
-          },
-          {
-            "id": "killed_silas_bishop",
-            "text": "the investigators put Silas Bishop out of his misery."
-          },
-          {
-            "id": "restored_silas_bishop",
-            "text": "the investigators restored Silas Bishop."
-          },
-          {
-            "id": "banished_silas_bishop",
-            "text": "the investigators banished Silas Bishop."
-          },
-          {
-            "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
           },
           {
             "id": "henry_armitage_survived",
@@ -42,136 +78,86 @@
             "text": "the investigators were delayed on their way to Dunwich."
           },
           {
-            "id": "necronomicon_stolen",
-            "text": "the Necronomicon was stolen."
-          },
-          {
-            "id": "henry_armitage_kidnapped",
-            "text": "Dr. Henry Armitage was kidnapped."
-          },
-          {
-            "id": "francis_morgan_kidnapped",
-            "text": "Dr. Francis Morgan was kidnapped."
-          },
-          {
-            "id": "warren_rice_kidnapped",
-            "text": "Professor Warren Rice was kidnapped."
-          },
-          {
-            "id": "warren_rice_kidnapped",
-            "text": "Professor Warren Rice was kidnapped."
-          },
-          {
-            "id": "students_rescued",
-            "text": "the students were rescued."
-          },
-          {
-            "id": "experiment_defeated",
-            "text": "the Experiment was defeated."
-          },
-          {
-            "id": "unconscious_for_several_hours",
-            "text": "the investigators were unconscious for several hours."
-          },
-          {
-            "id": "warren_rice_rescued",
-            "text": "the investigators rescued Professor Warren Rice."
-          },
-          {
-            "id": "failed_to_save_students",
-            "text": "the investigators failed to save the students."
-          },
-          {
-            "id": "closed_tear",
-            "text": "the investigators closed the tear in reality."
-          },
-          {
-            "id": "yog_sothoth_fled",
-            "text": "Yog-Sothoth has fled to another dimension."
-          },
-          {
-            "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth tore apart the barriers between worlds, and became one with all reality."
-          },
-          {
-            "id": "henry_armitage_survived",
-            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
-          },
-          {
-            "id": "warren_rice_survived",
-            "text": "Professor Warren Rice survived The Dunwich Legacy."
-          },
-          {
-            "id": "francis_morgan_survived",
-            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
-          },
-          {
-            "id": "zebulon_whateley_survived",
-            "text": "Zebulon Whateley survived The Dunwich Legacy."
-          },
-          {
-            "id": "earl_sawyer_survived",
-            "text": "Earl Sawyer survived The Dunwich Legacy."
-          },
-          {
-            "id": "bone_to_pick",
-            "text": "the O'Bannion gang has a bone to pick with the investigators."
-          },
-          {
-            "id": "francis_morgan_kidnapped",
-            "text": "Dr. Francis Morgan was kidnapped."
+            "id": "killed_silas_bishop",
+            "text": "the investigators put Silas Bishop out of his misery."
           },
           {
             "id": "naomi_has_back",
             "text": "Naomi has the investigators' back."
           },
           {
-            "id": "unconscious_for_several_hours",
-            "text": "the investigators were unconscious for several hours."
-          },
-          {
-            "id": "francis_morgan_rescued",
-            "text": "the investigators rescued Dr. Francis Morgan."
-          },
-          {
-            "id": "failed_to_recover_necronomicon",
-            "text": "the investigators failed to recover the Necronomicon."
-          },
-          {
-            "id": "destroyed_necronomicon",
-            "text": "the investigators destroyed the Necronomicon."
-          },
-          {
-            "id": "took_necronomicon",
-            "text": "the investigators took custody of the Necronomicon."
-          },
-          {
-            "id": "calmed_townsfolk",
-            "text": "You calmed the townsfolk."
-          },
-          {
-            "id": "warned_townsfolk",
-            "text": "You warned the townsfolk."
-          },
-          {
-            "id": "brood_escaped",
-            "text": "#X# brood escaped into the wild."
+            "id": "necronomicon_stolen",
+            "text": "the Necronomicon was stolen."
           },
           {
             "id": "no_brood_escaped",
             "text": "No brood escaped into the wild."
           },
           {
-            "id": "entered_the_gate",
-            "text": "the investigators entered the gate."
+            "id": "restored_silas_bishop",
+            "text": "the investigators restored Silas Bishop."
+          },
+          {
+            "id": "ritual_completed",
+            "text": "the ritual was completed."
+          },
+          {
+            "id": "students_rescued",
+            "text": "the students were rescued."
+          },
+          {
+            "id": "took_necronomicon",
+            "text": "the investigators took custody of the Necronomicon."
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "the investigators were unconscious for several hours."
+          },
+          {
+            "id": "warned_townsfolk",
+            "text": "You warned the townsfolk."
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "Professor Warren Rice was kidnapped."
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "the investigators rescued Professor Warren Rice."
+          },
+          {
+            "id": "warren_rice_survived",
+            "text": "Professor Warren Rice survived The Dunwich Legacy."
+          },
+          {
+            "id": "yog_sothoth_became_one_with_reality",
+            "text": "Yog-Sothoth tore apart the barriers between worlds, and became one with all reality."
           },
           {
             "id": "yog_sothoth_escaped",
             "text": "Yog-Sothoth tore apart the barrier between worlds, and became one with all reality."
+          },
+          {
+            "id": "yog_sothoth_fled",
+            "text": "Yog-Sothoth has fled to another dimension."
+          },
+          {
+            "id": "zebulon_whateley_survived",
+            "text": "Zebulon Whateley survived The Dunwich Legacy."
+          }
+        ]
+      },
+      {
+        "section": "sacrificed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
           }
         ]
       }
-    ]
+    ],
+    "supplies": []
   },
   {
     "campaignId": "notz",
@@ -184,36 +170,58 @@
             "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
           },
           {
-            "id": "ritual_broken",
-            "text": "the ritual to summon Umôrdhoth was broken."
-          },
-          {
-            "id": "umordhoth_repelled",
-            "text": "the investigators repelled Umôrdhoth."
-          },
-          {
-            "id": "lita_sacrificed",
-            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
-          },
-          {
-            "id": "house_standing",
-            "text": "your house is still standing."
+            "id": "ghoul_priest_alive",
+            "text": "the Ghoul Priest is still alive."
           },
           {
             "id": "house_burned",
             "text": "your house has burned to the ground."
           },
           {
-            "id": "ghoul_priest_alive",
-            "text": "the Ghoul Priest is still alive."
+            "id": "house_standing",
+            "text": "your house is still standing."
           },
           {
             "id": "lita_finds_others",
             "text": "Lita was forced to find others to help her cause."
           },
           {
+            "id": "lita_sacrificed",
+            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+          },
+          {
             "id": "past_midnight",
             "text": "it is past midnight."
+          },
+          {
+            "id": "ritual_broken",
+            "text": "the ritual to summon Umôrdhoth was broken."
+          },
+          {
+            "id": "umordhoth_repelled",
+            "text": "the investigators repelled Umôrdhoth."
+          }
+        ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name"
+          },
+          {
+            "id": "$input_value",
+            "text": "#name#"
           }
         ]
       },
@@ -225,8 +233,27 @@
             "text": "it is past midnight."
           }
         ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name"
+          }
+        ]
       }
-    ]
+    ],
+    "supplies": []
   },
   {
     "campaignId": "ptc",
@@ -235,150 +262,206 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "opened_path_below",
-            "text": "you opened the path below."
-          },
-          {
-            "id": "opened_path_above",
-            "text": "you opened the path above."
-          },
-          {
-            "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
-          },
-          {
-            "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
-          },
-          {
-            "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
-          },
-          {
-            "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
-          },
-          {
-            "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
-          },
-          {
-            "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
-          },
-          {
-            "id": "possessed",
-            "text": "#name# was possessed."
-          },
-          {
-            "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
-          },
-          {
-            "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
-          },
-          {
-            "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
-          },
-          {
-            "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
-          },
-          {
-            "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
-          },
-          {
-            "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
-          },
-          {
-            "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
-          },
-          {
-            "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
-          },
-          {
-            "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
-          },
-          {
-            "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
-          },
-          {
-            "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
-          },
-          {
-            "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
-          },
-          {
-            "id": "found_nigels_home",
-            "text": "you found Nigel's home."
-          },
-          {
-            "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
-          },
-          {
-            "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
-          },
-          {
-            "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "the investigators were attacked as they escaped the Asylum."
           },
           {
             "id": "awoke_inside_catacombs",
             "text": "you awoke inside the catacombs."
           },
           {
-            "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "id": "carcosa_merged",
+            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
           },
           {
-            "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "id": "chose_not_to_warn_police",
+            "text": "you chose not to go to the police."
           },
           {
-            "id": "read_act_2",
-            "text": "#name# read Act 2 of The King in Yellow."
+            "id": "destroyed_the_oathspeaker",
+            "text": "you destroyed the oathspeaker."
           },
           {
-            "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "id": "did_not_escape_gaze",
+            "text": "you did not escape the gaze of the phantom."
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "you entered the catacombs on your own."
           },
           {
             "id": "escaped_the_asylum",
             "text": "the investigators escaped the Asylum."
           },
           {
+            "id": "fled_dinner_party",
+            "text": "you fled the dinner party."
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "the followers of the sign have found the way forward."
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "you found Nigel Engram."
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "you found Nigel's home."
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "Hastur has you in his grasp."
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "you heeded Daniel’s warning."
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "you ignored Daniel’s warning."
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "you intruded on a secret meeting."
+          },
+          {
             "id": "king_claimed_victims",
             "text": "the King claimed its victims."
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "you know the site of the gate."
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "you left the onyx clasp behind."
+          },
+          {
+            "id": "opened_path_above",
+            "text": "you opened the path above."
+          },
+          {
+            "id": "opened_path_below",
+            "text": "you opened the path below."
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "the police are suspicious of you."
+          },
+          {
+            "id": "possessed",
+            "text": "#name# was possessed."
+          },
+          {
+            "id": "prevented_hasturs_escape",
+            "text": "the investigators prevented Hastur from escaping his prison."
+          },
+          {
+            "id": "read_act_2",
+            "text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "slayed_the_monsters",
+            "text": "you slayed the monsters at the dinner party."
+          },
+          {
+            "id": "stranger_is_on_to_you",
+            "text": "the Stranger is on to you."
+          },
+          {
+            "id": "took_onyx_clasp",
+            "text": "you took the onyx clasp."
+          },
+          {
+            "id": "tried_to_warn_police",
+            "text": "you tried to warn the police."
+          },
+          {
+            "id": "unable_to_find_nigel",
+            "text": "you were unable to find Nigel."
+          }
+        ]
+      },
+      {
+        "section": "vips_interviewed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name"
+          }
+        ]
+      },
+      {
+        "section": "vips_slain",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name"
+          },
+          {
+            "id": "03065b",
+            "text": "#name#"
+          },
+          {
+            "id": "03066b",
+            "text": "#name#"
+          },
+          {
+            "id": "03067b",
+            "text": "#name#"
+          },
+          {
+            "id": "03068b",
+            "text": "#name#"
+          },
+          {
+            "id": "03069b",
+            "text": "#name#"
           }
         ]
       }
-    ]
+    ],
+    "supplies": []
   },
   {
     "campaignId": "tcu",
     "sections": [
       {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "alive",
+            "text": "#name# is alive."
+          },
+          {
+            "id": "claimed_by_specters",
+            "text": "#name# was claimed by specters."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "text": "#name# was taken by the Watcher."
+          }
+        ]
+      },
+      {
         "section": "05046",
         "entries": [
           {
-            "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
-          },
-          {
             "id": "dead",
             "text": "Gavriella is dead."
+          },
+          {
+            "id": "on_gavriellas_trail",
+            "text": "the investigators are on Gavriella’s trail."
           }
         ]
       },
@@ -386,12 +469,12 @@
         "section": "05047",
         "entries": [
           {
-            "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
-          },
-          {
             "id": "dead",
             "text": "Jerome is dead."
+          },
+          {
+            "id": "on_jeromes_trail",
+            "text": "the investigators are on Jerome’s trail."
           }
         ]
       },
@@ -399,12 +482,12 @@
         "section": "05048",
         "entries": [
           {
-            "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
-          },
-          {
             "id": "dead",
             "text": "Penny is dead."
+          },
+          {
+            "id": "on_pennys_trail",
+            "text": "the investigators are on Penny's trail."
           }
         ]
       },
@@ -412,12 +495,12 @@
         "section": "05049",
         "entries": [
           {
-            "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
-          },
-          {
             "id": "dead",
             "text": "Valentino is dead."
+          },
+          {
+            "id": "on_valentinos_trail",
+            "text": "the investigators are on Valentino's trail."
           }
         ]
       },
@@ -425,16 +508,36 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "id": "accepted_fate",
+            "text": "you have accepted your fate."
           },
           {
-            "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "Anette Mason is possessed by evil."
           },
           {
-            "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "Anette taught you the spells of old."
+          },
+          {
+            "id": "arrested_anette",
+            "text": "the investigators arrested Anette."
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "the investigators arrested Sanford."
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "the investigators asked Anette for assistance."
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "the investigators asked Sanford for assistance."
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "the investigators assumed control of the Silver Twilight Lodge."
           },
           {
             "id": "azathoth_devoured_the_universe",
@@ -445,116 +548,120 @@
             "text": "Azathoth slumbers… for now."
           },
           {
-            "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
-          },
-          {
-            "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind"
-          },
-          {
-            "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
-          },
-          {
-            "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
-          },
-          {
-            "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "Carl Sanford possesses the secrets of the universe."
           },
           {
             "id": "continued_alone",
             "text": "the investigators continued alone."
-          },
-          {
-            "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
-          },
-          {
-            "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
-          },
-          {
-            "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
-          },
-          {
-            "id": "continued_alone",
-            "text": "the investigators continued alone."
-          },
-          {
-            "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
-          },
-          {
-            "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
-          },
-          {
-            "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
-          },
-          {
-            "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
-          },
-          {
-            "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
-          },
-          {
-            "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
-          },
-          {
-            "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
-          },
-          {
-            "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
-          },
-          {
-            "id": "rescued_josef",
-            "text": "the investigators rescued Josef"
-          },
-          {
-            "id": "josef_is_alive",
-            "text": "Josef is alive and well."
-          },
-          {
-            "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
-          },
-          {
-            "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
           },
           {
             "id": "deceiving_the_lodge",
             "text": "the investigators are deceiving the Lodge."
           },
           {
-            "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "the investigators discovered how to open the puzzle box.."
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "doom draws ever closer."
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "the investigators are enemies of the Lodge."
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "the guardian of the trap emerged and was defeated."
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "the guardian of the trap emerged."
+          },
+          {
+            "id": "heretics_released",
+            "text": "#X# heretics were unleashed unto Arkham."
           },
           {
             "id": "hid_their_knowledge",
             "text": "the investigators hid their knowledge of the coven."
           },
           {
-            "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "id": "inducted_into_the_inner_circle",
+            "text": "the investigators were inducted into the Inner Circle."
           },
           {
-            "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "the investigators escaped the spectral realm."
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "Josef disappeared into the mist."
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "Josef is alive and well."
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "the investigators kept their mementos hidden."
+          },
+          {
+            "id": "lead_investigator_joins_pipers",
+            "text": "#name# joins the pipers of Azathoth."
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "the investigators learned nothing of the Lodge’s schemes."
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "the investigators are members of the Lodge."
+          },
+          {
+            "id": "never_seen_again",
+            "text": "the investigators are never seen or heard from again."
+          },
+          {
+            "id": "path_winds_before_you",
+            "text": "the path winds before you: #num#"
+          },
+          {
+            "id": "pieces_of_evidence",
+            "text": "#X# pieces of evidence were left behind"
           },
           {
             "id": "rejected_fate",
             "text": "you have rejected your fate."
+          },
+          {
+            "id": "rescued_josef",
+            "text": "the investigators rescued Josef"
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "the investigators sided with the coven."
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "the investigators sided with the Lodge."
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "the investigators signed the Black Book of Azathoth."
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "the investigators survived the watcher’s embrace."
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "the investigators told the Lodge about the coven."
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "the true work of the Silver Twilight Lodge has begun."
           },
           {
             "id": "witches_spell_broken",
@@ -563,26 +670,6 @@
           {
             "id": "witches_spell_cast",
             "text": "the witches' spell was cast."
-          },
-          {
-            "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
-          },
-          {
-            "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
-          },
-          {
-            "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
-          },
-          {
-            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
-          },
-          {
-            "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
           }
         ]
       },
@@ -598,14 +685,6 @@
             "text": "Keziah's Formulae"
           },
           {
-            "id": "worn_crucific",
-            "text": "Worn Crucifix"
-          },
-          {
-            "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
-          },
-          {
             "id": "mesmerizing_flute",
             "text": "Mesmerizing Flute"
           },
@@ -614,20 +693,21 @@
             "text": "Ritual Components"
           },
           {
-            "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
-          },
-          {
             "id": "scrap_of_torn_shadow",
             "text": "Scrap of Torn Shadow"
           },
           {
-            "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "id": "wisp_of_spectral_mist",
+            "text": "Wisp of Spectral Mist"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "Worn Crucifix"
           }
         ]
       }
-    ]
+    ],
+    "supplies": []
   },
   {
     "campaignId": "tfa",
@@ -636,132 +716,20 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "id": "alejandro_followed_to_ruins",
+            "text": "Alejandro followed the investigators into the ruins."
           },
           {
-            "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
-          },
-          {
-            "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "id": "alejandro_is_missing",
+            "text": "Alejandro is missing."
           },
           {
             "id": "alejandro_on_his_own",
             "text": "Alejandro is continuing his research on his own."
           },
           {
-            "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
-          },
-          {
-            "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
-          },
-          {
             "id": "alejandro_recovered_relic",
             "text": "Alejandro recovered the Relic of Ages."
-          },
-          {
-            "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
-          },
-          {
-            "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
-          },
-          {
-            "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored"
-          },
-          {
-            "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
-          },
-          {
-            "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
-          },
-          {
-            "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
-          },
-          {
-            "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
-          },
-          {
-            "id": "turned_back_time",
-            "text": "the investigarors turned back time."
-          },
-          {
-            "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
-          },
-          {
-            "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
-          },
-          {
-            "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
-          },
-          {
-            "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
-          },
-          {
-            "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
-          },
-          {
-            "id": "process_was_perfected",
-            "text": "the process was perfected."
-          },
-          {
-            "id": "process_was_successful",
-            "text": "the process was successful."
-          },
-          {
-            "id": "process_backfired",
-            "text": "the process backfired."
-          },
-          {
-            "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
-          },
-          {
-            "id": "braziers_are_lit",
-            "text": "the braziers are lit."
-          },
-          {
-            "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
-          },
-          {
-            "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
-          },
-          {
-            "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
-          },
-          {
-            "id": "relic_is_missing",
-            "text": "the relic is missing."
-          },
-          {
-            "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
-          },
-          {
-            "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
-          },
-          {
-            "id": "nexus_is_near",
-            "text": "the nexus is near."
           },
           {
             "id": "alejandro_remembers_everything",
@@ -772,6 +740,42 @@
             "text": "Alejandro is set against you."
           },
           {
+            "id": "braziers_are_lit",
+            "text": "the braziers are lit."
+          },
+          {
+            "id": "braziers_remain_unlit",
+            "text": "the braziers remain unlit."
+          },
+          {
+            "id": "cleared_path_to_temple",
+            "text": "the investigators cleared a path to the Eztli ruins."
+          },
+          {
+            "id": "cooperated_with_yithians",
+            "text": "the investigators cooperated with the Yithians."
+          },
+          {
+            "id": "earned_alejandros_trust",
+            "text": "the investigators have earned Alejandro’s trust."
+          },
+          {
+            "id": "earned_ichtacas_trust",
+            "text": "the investigators have earned Ichtaca’s trust."
+          },
+          {
+            "id": "fabric_of_time_unwoven",
+            "text": "the fabric of time is unwoven."
+          },
+          {
+            "id": "fell_into_depths",
+            "text": "the investigators fell into the depths."
+          },
+          {
+            "id": "forged_bond_with_ichtaca",
+            "text": "the investigators forged a bond with Ichtaca."
+          },
+          {
             "id": "forging_own_path",
             "text": "you are forging your own path."
           },
@@ -780,48 +784,28 @@
             "text": "the investigators found the missing relic."
           },
           {
-            "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "id": "gave_relic_to_alejandro",
+            "text": "the investigators gave custody of the relic to Alejandro."
           },
           {
-            "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "id": "gave_relic_to_harlan",
+            "text": "the investigators gave custody of the relic to Harlan Earnstone."
           },
           {
-            "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "id": "had_memories_expunged",
+            "text": "the investigators had their memories expunged."
           },
           {
-            "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "id": "harbinger_alive",
+            "text": "the Harbinger is still alive (#X# damage)."
+          },
+          {
+            "id": "ichtaca_has_confidence",
+            "text": "Ichtaca has confidence in you."
           },
           {
             "id": "ichtaca_in_the_dark",
             "text": "Ichtaca is in the dark."
-          },
-          {
-            "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
-          },
-          {
-            "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
-          },
-          {
-            "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
-          },
-          {
-            "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
-          },
-          {
-            "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
-          },
-          {
-            "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
           },
           {
             "id": "ichtaca_is_wary",
@@ -832,10 +816,196 @@
             "text": "Alejandro chose to remain at camp."
           },
           {
-            "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "id": "ichtaca_observed_progress",
+            "text": "Ichtaca observed your progress with keen interest."
+          },
+          {
+            "id": "ichtaca_set_against",
+            "text": "Ichtaca is set against you."
+          },
+          {
+            "id": "ichtacas_faith_restored",
+            "text": "Ichtaca’s faith is restored"
+          },
+          {
+            "id": "investigators_recovered_relic",
+            "text": "the investigators recovered the Relic of Ages."
+          },
+          {
+            "id": "investigators_saved_serpents",
+            "text": "the investigators saved the civilization of the Serpents."
+          },
+          {
+            "id": "investigators_saved_yithians",
+            "text": "the investigators saved the civilization of the Yithians."
+          },
+          {
+            "id": "jungle_watches",
+            "text": "the jungle watches (#name#)."
+          },
+          {
+            "id": "mapped_way_forward",
+            "text": "the investigators mapped out the way forward."
+          },
+          {
+            "id": "mended_tear_in_time",
+            "text": "the investigators mended the tear in time."
+          },
+          {
+            "id": "nexus_is_near",
+            "text": "the nexus is near."
+          },
+          {
+            "id": "paths_known",
+            "text": "#X# paths are known"
+          },
+          {
+            "id": "paths_known",
+            "text": "#X# paths are known to you."
+          },
+          {
+            "id": "process_backfired",
+            "text": "the process backfired."
+          },
+          {
+            "id": "process_backfired_spectacularly",
+            "text": "the process backfired spectacularly."
+          },
+          {
+            "id": "process_was_perfected",
+            "text": "the process was perfected."
+          },
+          {
+            "id": "process_was_successful",
+            "text": "the process was successful."
+          },
+          {
+            "id": "relic_is_missing",
+            "text": "the relic is missing."
+          },
+          {
+            "id": "rescued_alejandro",
+            "text": "the investigators rescued Alejandro."
+          },
+          {
+            "id": "resisted_captivity",
+            "text": "the investigators resisted captivity."
+          },
+          {
+            "id": "sealed_relic_of_ages_forever",
+            "text": "the investigators sealed the Relic of Ages forever."
+          },
+          {
+            "id": "turned_back_time",
+            "text": "the investigarors turned back time."
+          },
+          {
+            "id": "wait_for_additional_supplies",
+            "text": "the investigators were forced to wait for additional supplies."
           }
         ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "final_depth",
+            "text": "#X# depth"
+          },
+          {
+            "id": "tasks_completed",
+            "text": "#X# tasks completed"
+          }
+        ]
+      }
+    ],
+    "supplies": [
+      {
+        "id": "gasoline",
+        "name": "Gasoline",
+        "description": "Enough for a long journey bycar.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Food and water for one person. A must-have for any journey.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Medicine",
+        "description": "To stave off disease, infection, or venom.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "pendant",
+        "name": "Pendant",
+        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "cost": 1
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Can be refilled at streams and rivers.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Compass",
+        "description": "Can guide you when you are hopelessly lost.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Pickaxe",
+        "description": "For breaking apart rocky surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "Blanket",
+        "description": "For warmth at night.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Chalk",
+        "description": "For writing on rough stone surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "Binoculars",
+        "description": "To help you see faraway places.",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "Pocketknife",
+        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "cost": 2
+      },
+      {
+        "id": "torches",
+        "name": "Torches",
+        "description": "Can light up dark areas, or set sconces alight.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Rope",
+        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "cost": 3
+      },
+      {
+        "id": "map",
+        "name": "Map",
+        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "cost": 3
       }
     ]
   }

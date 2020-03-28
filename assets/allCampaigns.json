@@ -12797,7 +12797,7 @@
     {
       "id": "supplies",
       "title": "Supplies",
-      "type": "investigator"
+      "type": "supplies"
     }
   ],
   "scenarios": [
@@ -14370,6 +14370,7 @@
       "text": "As an outcast from academia, funding for Alejandro’s expedition is limited. Each investigator must choose supplies to bring for the expedition. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chose to bring. <i>(Note: Provisions and Medicine can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>",
       "input": {
         "type": "supplies",
+        "section": "supplies",
         "points": [10, 7, 5, 4],
         "supplies": [
           {
@@ -18139,6 +18140,7 @@
       "text": "Each investigator may spend supply points to purchase one or more of the supplies listed below. The number of supply points available to each investigator is based on the number of investigators in the campaign",
       "input": {
         "type": "supplies",
+        "section": "supplies",
         "points": [8, 5, 4, 3],
         "supplies": [
           {
