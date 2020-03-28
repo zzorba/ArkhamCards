@@ -25,6 +25,7 @@ export default class TraumaConditionComponent extends React.Component<Props> {
             return (
               <BinaryPrompt
                 id={step.id}
+                bulletType={step.bullet_type}
                 text={t`Was the lead investigator <b>killed</b>?`}
                 trueResult={find(condition.options, option => option.boolCondition === true)}
                 falseResult={find(condition.options, option => option.boolCondition === false)}
@@ -34,6 +35,7 @@ export default class TraumaConditionComponent extends React.Component<Props> {
             return (
               <BinaryPrompt
                 id={step.id}
+                bulletType={step.bullet_type}
                 text={t`Were all investigators <b>killed</b>?`}
                 trueResult={find(condition.options, option => option.boolCondition === true)}
                 falseResult={find(condition.options, option => option.boolCondition === false)}

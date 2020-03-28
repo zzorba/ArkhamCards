@@ -108,7 +108,10 @@ export default class NumberPrompt extends React.Component<Props, State> {
               <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
-              <SetupStepWrapper bulletType="small" border={count === undefined}>
+              <SetupStepWrapper
+                bulletType={count === undefined ? 'none' : 'small'}
+                border={count === undefined}
+              >
                 { this.renderPrompt(count) }
                 { (count === undefined) && <Button title="Done" onPress={this._submit} /> }
               </SetupStepWrapper>

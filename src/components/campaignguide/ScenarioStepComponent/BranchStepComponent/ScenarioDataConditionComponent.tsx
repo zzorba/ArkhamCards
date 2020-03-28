@@ -28,7 +28,7 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
       case 'player_count': {
         const playerCount = campaignLog.playerCount();
         return (
-          <SetupStepWrapper>
+          <SetupStepWrapper bulletType={step.bullet_type}>
             <CardTextComponent text={step.text ||
               ngettext(msgid`Because there is ${playerCount} player in the game:`,
                 `Because there are ${playerCount} players in the game:`,
@@ -50,6 +50,7 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
               render={(card: Card) => (
                 <BinaryPrompt
                   id={step.id}
+                  bulletType={step.bullet_type}
                   text={t`If ${card.name} was chosen as an investigator for this campaign`}
                   trueResult={find(condition.options, option => option.condition === card.code)}
                   falseResult={find(condition.options, option => !!option.default)}

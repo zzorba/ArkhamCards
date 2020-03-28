@@ -2231,7 +2231,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "calmed_townsfolk",
-          "text": "You calmed the townsfolk."
+          "text": "you calmed the townsfolk."
         }
       ]
     },
@@ -2247,7 +2247,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "warned_townsfolk",
-          "text": "You warned the townsfolk."
+          "text": "you warned the townsfolk."
         }
       ]
     },
@@ -2273,7 +2273,7 @@
         "type": "campaign_log_count",
         "section": "sacrificed",
         "id": "$num_entries",
-        "max": 5,
+        "max": 10,
         "options": [
           {
             "numCondition": 0,
@@ -2300,18 +2300,22 @@
     },
     {
       "id": "spawn_two_brood",
+      "bullet_type": "small",
       "text": "Put 1 copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, put 1 copy of Brood of Yog‐Sothoth into play in Blasted Heath. Then, set the final 3 copies of Brood of Yog‐Sothoth aside, out of play."
     },
     {
       "id": "spawn_one_remove_one_brood",
+      "bullet_type": "small",
       "text": "Put 1 copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 3 copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final copy of Brood of Yog‐Sothoth from the game."
     },
     {
       "id": "spawn_one_remove_two_brood",
+      "bullet_type": "small",
       "text": "Put 1 copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 2 copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 2 copies of Brood of Yog‐Sothoth from the game."
     },
     {
       "id": "spawn_zero_remove_three_brood",
+      "bullet_type": "small",
       "text": "Set 2 copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 3 copies of Brood of Yog‐Sothoth from the game."
     },
     {
@@ -2353,9 +2357,10 @@
         "text": "Brood of Yog-Sothoth in play or set aside:",
         "effects": [
           {
-            "type": "campaign_log",
+            "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "brood_escaped",
+            "operation": "set_input",
             "text": "#X# brood escaped into the wild."
           }
         ]
@@ -2438,6 +2443,7 @@
     "set_aside_cards",
     "add_chaos_token",
     "select_act_2",
+    "check_restored_silas_bishop",
     "check_escaped_brood",
     "check_killed_silas_bishop",
     "encounter_deck",
@@ -2582,8 +2588,12 @@
     },
     {
       "id": "select_act_2",
-      "text": "Depending on the following circumstances, a different version of Act 2 should be used in this scenario. Each other version of Act 2 is removed from the game.",
+      "text": "Depending on the following circumstances, a different version of Act 2 should be used in this scenario. Each other version of Act 2 is removed from the game."
+    },
+    {
+      "id": "check_restored_silas_bishop",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -2602,19 +2612,23 @@
     },
     {
       "id": "act_2_v1",
+      "bullet_type": "small",
       "text": "Use Act 2—Ascending the Hill (v. I). Remove each other version of Act 2 from the game."
     },
     {
       "id": "act_2_v2",
+      "bullet_type": "small",
       "text": "Use Act 2—Ascending the Hill (v. II). Remove each other version of Act 2 from the game."
     },
     {
       "id": "act_2_v3",
+      "bullet_type": "small",
       "text": "Use Act 2—Ascending the Hill (v. III). Remove each other version of Act 2 from the game."
     },
     {
       "id": "check_necronomicon",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -2634,6 +2648,7 @@
     {
       "id": "check_necronomicon_lost",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -2688,26 +2703,32 @@
     },
     {
       "id": "add_0_doom",
+      "bullet_type": "small",
       "text": "Because no Broods escaped, no doom is added to agenda 1a."
     },
     {
       "id": "add_1_doom",
+      "bullet_type": "small",
       "text": "Add 1 doom to agenda 1a."
     },
     {
       "id": "add_2_doom",
+      "bullet_type": "small",
       "text": "Add 2 doom to agenda 1a."
     },
     {
       "id": "add_3_doom",
+      "bullet_type": "small",
       "text": "Add 2 doom to agenda 1a."
     },
     {
       "id": "add_4_doom",
+      "bullet_type": "small",
       "text": "Add 2 doom to agenda 1a."
     },
     {
       "id": "add_5_doom",
+      "bullet_type": "small",
       "text": "Add 2 doom to agenda 1a."
     },
     {

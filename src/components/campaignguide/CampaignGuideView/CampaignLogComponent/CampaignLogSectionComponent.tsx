@@ -32,7 +32,8 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
           }
           return (
             <TextEntryComponent
-              text={`${logEntry.supply.name}: ${entry.count}`}
+              text={`${logEntry.supply.name}: #X#`}
+              entry={entry}
             />
           );
         }
@@ -40,6 +41,7 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
           <TextEntryComponent
             text={logEntry.supply.name}
             crossedOut={crossedOut}
+            entry={entry}
           />
         );
       }
@@ -48,6 +50,7 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
           <TextEntryComponent
             text={logEntry.text}
             crossedOut={crossedOut}
+            entry={entry}
           />
         );
       case 'section_count':
@@ -57,7 +60,8 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
       case 'card':
         return (
           <CampaignLogCardEntryComponent
-            entry={logEntry}
+            code={logEntry.code}
+            entry={entry}
             crossedOut={crossedOut}
           />
         );

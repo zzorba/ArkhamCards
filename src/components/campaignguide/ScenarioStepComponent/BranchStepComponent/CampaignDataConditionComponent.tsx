@@ -37,7 +37,7 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
             case 'difficulty': {
               const difficulty = upperFirst(campaignLog.campaignData.difficulty);
               return (
-                <SetupStepWrapper>
+                <SetupStepWrapper bulletType={step.bullet_type}>
                   <CardTextComponent
                     text={t`Because you are playing on <b>${difficulty}</b> difficulty:`}
                   />
@@ -51,7 +51,7 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
               if (campaignLog.fullyGuided) {
                 const completed = campaignLog.scenarioStatus(condition.scenario) === 'completed';
                 return (
-                  <SetupStepWrapper>
+                  <SetupStepWrapper bulletType={step.bullet_type}>
                     <CardTextComponent text={completed ?
                       t`Because you have already completed <b>${scenarioName}</b>:` :
                       t`Because you have not yet completed <b>${scenarioName}</b>:`

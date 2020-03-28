@@ -49,6 +49,7 @@ export default class CampaignLogConditionComponent extends React.Component<Props
                       <BinaryResult
                         prompt={prompt}
                         result={result}
+                        bulletType={step.bullet_type}
                       />
                     );
                   }
@@ -56,6 +57,7 @@ export default class CampaignLogConditionComponent extends React.Component<Props
                   return (
                     <BinaryPrompt
                       id={step.id}
+                      bulletType={step.bullet_type}
                       text={prompt}
                       trueResult={find(condition.options, option => option.boolCondition === true)}
                       falseResult={find(condition.options, option => option.boolCondition === false)}
@@ -65,6 +67,7 @@ export default class CampaignLogConditionComponent extends React.Component<Props
                 case 'card': {
                   return (
                     <CampaignLogCardConditionComponent
+                      step={step}
                       entry={logEntry}
                       condition={condition}
                       campaignLog={campaignLog}

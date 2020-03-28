@@ -19,7 +19,7 @@
           },
           {
             "id": "calmed_townsfolk",
-            "text": "You calmed the townsfolk."
+            "text": "you calmed the townsfolk."
           },
           {
             "id": "closed_tear",
@@ -115,7 +115,7 @@
           },
           {
             "id": "warned_townsfolk",
-            "text": "You warned the townsfolk."
+            "text": "you warned the townsfolk."
           },
           {
             "id": "warren_rice_kidnapped",

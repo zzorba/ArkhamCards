@@ -7,12 +7,12 @@ import BinaryPrompt from '../../../prompts/BinaryPrompt';
 import BinaryResult from '../../../BinaryResult';
 import SingleCardWrapper from '../../../SingleCardWrapper';
 import { LogEntryCard } from 'data/scenario/CampaignGuide';
-import { CampaignLogCondition } from 'data/scenario/types';
+import { BranchStep, CampaignLogCondition } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import Card from 'data/Card';
 
 interface Props {
-  id: string;
+  step: BranchStep;
   entry: LogEntryCard;
   condition: CampaignLogCondition;
   campaignLog: GuidedCampaignLog;
@@ -20,7 +20,7 @@ interface Props {
 
 export default class CampaignLogCardConditionComponent extends React.Component<Props> {
   _renderCard = (card: Card) => {
-    const { id, condition, campaignLog, entry } = this.props;
+    const { step, condition, campaignLog, entry } = this.props;
     const prompt = t`If <i>${card.name}</i> is listed under Check ‘${entry.section}’ in your Campaign Log.`;
     const trueResult = find(condition.options, option => option.boolCondition === true);
     const falseResult = find(condition.options, option => option.boolCondition === false);
@@ -34,13 +34,15 @@ export default class CampaignLogCardConditionComponent extends React.Component<P
       return (
         <BinaryResult
           prompt={prompt}
+          bulletType={step.bullet_type}
           result={negated ? !result : result}
         />
       );
     }
     return (
       <BinaryPrompt
-        id={id}
+        id={step.id}
+        bulletType={step.bullet_type}
         text={prompt}
         trueResult={trueResult}
         falseResult={falseResult}

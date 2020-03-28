@@ -29,6 +29,7 @@ export default class CampaignLogSectionExistsConditionComponent extends React.Co
           return (
             <BinaryPrompt
               id={step.id}
+              bulletType={step.bullet_type}
               text={prompt}
               trueResult={find(condition.options, option => option.boolCondition === true)}
               falseResult={find(condition.options, option => option.boolCondition === false)}

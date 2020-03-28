@@ -36,6 +36,7 @@ export default class HasCardConditionComponent extends React.Component<Props> {
     return (
       <BinaryPrompt
         id={step.id}
+        bulletType={step.bullet_type}
         text={this.investigatorCardPrompt(card, condition.investigator)}
         trueResult={find(condition.options, option => option.boolCondition === true)}
         falseResult={find(condition.options, option => option.boolCondition === false)}

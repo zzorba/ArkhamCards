@@ -130,7 +130,7 @@ export interface BranchStep {
   type: "branch";
   text?: string;
   condition: Condition;
-  bullet_type?: null;
+  bullet_type?: BulletType;
 }
 export interface CampaignLogCondition {
   type: "campaign_log";

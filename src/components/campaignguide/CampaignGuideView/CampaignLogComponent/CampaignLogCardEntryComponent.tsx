@@ -3,29 +3,32 @@ import { StyleSheet } from 'react-native'
 
 import TextEntryComponent from './TextEntryComponent';
 import SingleCardWrapper from '../../SingleCardWrapper';
-import { LogEntryCard } from 'data/scenario/CampaignGuide';
+import { CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
 import Card from 'data/Card';
 
 interface Props {
   crossedOut?: boolean;
-  entry: LogEntryCard;
+  code: string;
+  entry: CampaignLogEntry;
 }
 
 export default class CampaignLogCardEntryComponent extends React.Component<Props> {
   _renderCard = (card: Card) => {
+    const { crossedOut, entry } = this.props;
     return (
       <TextEntryComponent
         text={card.name}
-        crossedOut={this.props.crossedOut}
+        crossedOut={crossedOut}
+        entry={entry}
       />
     );
   };
 
   render() {
-    const { entry } = this.props;
+    const { code } = this.props;
     return (
       <SingleCardWrapper
-        code={entry.code}
+        code={code}
         render={this._renderCard}
       />
     );

@@ -28,6 +28,7 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
               return (
                 <BinaryPrompt
                   id={step.id}
+                  bulletType={step.bullet_type}
                   text={step.text}
                   trueResult={find(condition.options, option => option.boolCondition === true)}
                   falseResult={find(condition.options, option => option.boolCondition === false)}
@@ -38,6 +39,7 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
                 <InvestigatorChoicePrompt
                   id={step.id}
                   text={step.text}
+                  bulletType={step.bullet_type}
                   choices={map(condition.options, option => {
                     return {
                       text: option.condition || 'Missing fake text',
