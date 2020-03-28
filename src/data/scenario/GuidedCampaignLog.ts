@@ -153,7 +153,10 @@ export default class GuidedCampaignLog {
               break;
             }
             case 'campaign_log_cards':
-              this.handleCampaignLogCardsEffect(effect);
+              this.handleCampaignLogCardsEffect(
+                effect,
+                input
+              );
               break;
             default:
               break;
@@ -337,6 +340,9 @@ export default class GuidedCampaignLog {
 
   private cardsIds(effect: CampaignLogCardsEffect, input?: string[]): string[] | undefined {
     if (effect.id === '$input_value') {
+      if (input === undefined) {
+        throw new Error(`Cannot read unset $input_value: ${effect.id}`);
+      }
       return input;
     }
     if (effect.id) {
@@ -346,7 +352,9 @@ export default class GuidedCampaignLog {
   }
 
   private handleCampaignLogCardsEffect(effect: CampaignLogCardsEffect, input?: string[]) {
-    const sectionIds: string[] = effect.section === '$input_value' ? (input || []) : [effect.section];
+    const sectionIds: string[] = effect.section === '$input_value' ? (
+      input || []
+    ) : [effect.section];
     const ids: string[] | undefined = this.cardsIds(effect, input);
     forEach(sectionIds, sectionId => {
       const section: EntrySection = this.sections[sectionId] || {

@@ -90,19 +90,24 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.choiceList(id) !== undefined;
+          const choiceList = scenarioState.choiceList(id)
+          const hasDecision = choiceList !== undefined;
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
               <View style={styles.prompt}>
-                <Text style={typography.gameFont}>
+                <Text style={typography.mediumGameFont}>
                   { choice.text }
                 </Text>
               </View>
               { map(items, (item, idx) => {
-                const selected = selectedChoice[item.code] !== undefined;
+                const selected = choiceList !== undefined ? (
+                  choiceList[item.code] !== undefined
+                ) : (
+                  selectedChoice[item.code] !== undefined
+                );
                 return (
                   <CheckListItemComponent
                     key={idx}

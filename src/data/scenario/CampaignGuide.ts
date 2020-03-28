@@ -23,7 +23,7 @@ interface LogSection {
   section: string;
 }
 
-interface LogEntryCard extends LogSection {
+export interface LogEntryCard extends LogSection {
   type: 'card';
   code: string;
 }

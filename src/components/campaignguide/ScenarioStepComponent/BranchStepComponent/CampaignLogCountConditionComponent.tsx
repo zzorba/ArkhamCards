@@ -58,7 +58,7 @@ export default class CampaignLogCountConditionComponent extends React.Component<
                       code={logEntry.code}
                       render={(card: Card) => {
                         const prompt = step.text ||
-                          t`Is ${card.name} is listed under ${logEntry.section}?`;
+                          t`Is ${card.name} listed under ${logEntry.section}?`;
                         return (
                           <BinaryPrompt
                             id={step.id}

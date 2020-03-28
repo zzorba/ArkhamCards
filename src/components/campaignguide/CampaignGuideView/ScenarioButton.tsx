@@ -94,9 +94,9 @@ export default class ScenarioButton extends React.Component<Props, State> {
       case 'skipped':
         return (
           <MaterialCommunityIcons
-            name="checkbox-blank-off-outline"
+            name="close-box-outline"
             size={iconSize}
-            color={COLORS.lightGray}
+            color={COLORS.darkGray}
           />
         );
     }

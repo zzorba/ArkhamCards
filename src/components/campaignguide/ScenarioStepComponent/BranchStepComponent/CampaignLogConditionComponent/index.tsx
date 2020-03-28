@@ -5,13 +5,10 @@ import {
 import { every, find } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryResult from '../../BinaryResult';
-import CardTextComponent from 'components/card/CardTextComponent';
-import SetupStepWrapper from '../../SetupStepWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
-import BinaryPrompt from '../../prompts/BinaryPrompt';
-import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
-import Card from 'data/Card';
+import CampaignLogCardConditionComponent from './CampaignLogCardConditionComponent';
+import BinaryResult from '../../../BinaryResult';
+import BinaryPrompt from '../../../prompts/BinaryPrompt';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../../CampaignGuideContext';
 import {
   BranchStep,
   CampaignLogCondition,
@@ -67,20 +64,10 @@ export default class CampaignLogConditionComponent extends React.Component<Props
                 }
                 case 'card': {
                   return (
-                    <SingleCardWrapper
-                      code={logEntry.code}
-                      render={(card: Card) => {
-                        const prompt = step.text ||
-                          t`Is ${card.name} is listed under ${logEntry.section}?`;
-                        return (
-                          <BinaryPrompt
-                            id={step.id}
-                            text={prompt}
-                            trueResult={find(condition.options, option => option.boolCondition === true)}
-                            falseResult={find(condition.options, option => option.boolCondition === false)}
-                          />
-                        );
-                      }}
+                    <CampaignLogCardConditionComponent
+                      entry={logEntry}
+                      condition={condition}
+                      campaignLog={campaignLog}
                     />
                   );
                 }

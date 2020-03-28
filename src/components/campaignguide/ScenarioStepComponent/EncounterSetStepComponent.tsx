@@ -37,7 +37,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
       t`${startText} ${encounterSetString}. These sets are indicated by the following icons:`,
       encounterSets.length);
     return (
-      <SetupStepWrapper>
+      <SetupStepWrapper bulletType={step.bullet_type}>
         <CardTextComponent text={text} />
         <View style={styles.iconPile}>
           { map(encounterSets, set => (

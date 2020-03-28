@@ -269,6 +269,7 @@
     },
     {
       "id": "add_1_doom",
+      "bullet_type": "small",
       "text": "Add 1 doom to agenda 1a."
     },
     {
@@ -292,6 +293,7 @@
     },
     {
       "id": "gather_naomis_crew",
+      "bullet_type": "small",
       "text": "Seeking vengeance, the gang from the Clover Club has followed you to Dunwich. Gather all cards from the Naomi’s Crew encounter set and shuffle them into the encounter deck.",
       "type": "encounter_sets",
       "encounter_sets": [
@@ -358,8 +360,7 @@
     },
     {
       "id": "record_sacrificed",
-      "text": "In your Campaign Log, under “Sacrificed to Yog‐Sothoth,” record the names of each unique card that is underneath the agenda deck.",
-      "subtext": "Each of these cards are removed from all players’ decks and can no longer be included in any players’ decks for the remainder of the campaign.",
+      "text": "In your Campaign Log, under “Sacrificed to Yog‐Sothoth,” record the names of each unique card that is underneath the agenda deck.\nEach of these cards are removed from all players’ decks and can no longer be included in any players’ decks for the remainder of the campaign.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -451,7 +452,7 @@
         {
           "type": "campaign_data",
           "setting": "skip_scenario",
-          "scenario": "survivors"
+          "scenario": "dwl_interlude2"
         }
       ]
     },
@@ -469,18 +470,14 @@
         "options": [
           {
             "boolCondition": false,
-            "steps": ["henry_armitage_not_sacrificed", "henry_armitage_survived"]
+            "steps": ["henry_armitage_survived"]
           }
         ]
       }
     },
     {
-      "id": "henry_armitage_not_sacrificed",
-      "type": "story",
-      "text": "“It is far worse than we had thought,” Dr. Armitage says, pale and trembling. “Wilbur Whateley was only the beginning. There were more, many more in Dunwich, who knew of the ‘Great Old Ones’ and who desired power and knowledge above all else, the Earth be damned. I knew I should have burned that wretch’s journal. But thanks to its contents, I know how we can stop them. We are the only ones who can! Now quickly, help me with this solution—the powder is the key, yes, the powder is the only way...”"
-    },
-    {
       "id": "henry_armitage_survived",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",

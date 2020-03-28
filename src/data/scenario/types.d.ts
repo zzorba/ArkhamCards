@@ -348,7 +348,6 @@ export interface InputStep {
   type: "input";
   title?: string;
   text?: string;
-  subtext?: string;
   input: Input;
   bullet_type?: BulletType;
 }
@@ -441,7 +440,7 @@ export interface EncounterSetsStep {
   subtext?: string;
   aside?: boolean;
   encounter_sets: string[];
-  bullet_type?: null;
+  bullet_type?: BulletType;
 }
 export interface GenericStep {
   id: string;
