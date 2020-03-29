@@ -89,8 +89,14 @@ export default StyleSheet.create({
   left: {
     textAlign: 'left',
   },
+  right: {
+    textAlign: 'right',
+  },
   center: {
     textAlign: 'center',
+  },
+  underline: {
+    textDecorationLine: 'underline',
   },
   settingsLabel: {
     flex: 1,

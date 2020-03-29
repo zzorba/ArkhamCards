@@ -1,6 +1,9 @@
 import { cloneDeep, find, findIndex, forEach, sumBy } from 'lodash';
+
+import { ChaosBag } from 'constants';
 import {
   Effect,
+  AddRemoveChaosTokenEffect,
   CampaignDataEffect,
   CampaignLogEffect,
   CampaignLogCountEffect,
@@ -87,6 +90,7 @@ export default class GuidedCampaignLog {
   campaignData: CampaignData;
   campaignGuide: CampaignGuide;
   fullyGuided: boolean = true;
+  chaosBag: ChaosBag;
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
@@ -95,6 +99,8 @@ export default class GuidedCampaignLog {
       case 'campaign_log_cards':
       case 'scenario_data':
       case 'campaign_data':
+      case 'add_chaos_token':
+      case 'remove_chaos_token':
         return true;
       default:
         return false;
@@ -127,11 +133,13 @@ export default class GuidedCampaignLog {
         scenarioStatus: {},
         scenarioReplayCount: {},
       };
+      this.chaosBag = readThrough ? readThrough.chaosBag : {};
     } else {
       this.sections = readThrough ? cloneDeep(readThrough.sections) : {};
       this.countSections = readThrough ? cloneDeep(readThrough.countSections) : {};
       this.investigatorSections = readThrough ? cloneDeep(readThrough.investigatorSections) : {};
       this.scenarioData = readThrough ? cloneDeep(readThrough.scenarioData) : {};
+      this.chaosBag = readThrough ? cloneDeep(readThrough.chaosBag) : {};
       this.campaignData = readThrough ? cloneDeep(readThrough.campaignData) : {
         scenarioStatus: {},
         scenarioReplayCount: {},
@@ -155,12 +163,30 @@ export default class GuidedCampaignLog {
             case 'campaign_log_cards':
               this.handleCampaignLogCardsEffect(effect, input);
               break;
+            case 'add_chaos_token':
+            case 'remove_chaos_token':
+              this.handleAddRemoveChaosTokenEffect(effect);
+              break;
             default:
               break;
           }
         });
       });
     }
+  }
+
+  private handleAddRemoveChaosTokenEffect(effect: AddRemoveChaosTokenEffect) {
+    forEach(effect.tokens, token => {
+      const currentCount = this.chaosBag[token] || 0;
+      if (effect.type === 'add_chaos_token') {
+        this.chaosBag[token] = currentCount + 1;
+      } else {
+        this.chaosBag[token] = Math.max(0, currentCount - 1);
+      }
+      if (this.chaosBag[token] === 0) {
+        delete this.chaosBag[token];
+      }      
+    });
   }
 
   private handleCampaignDataEffect(effect: CampaignDataEffect) {

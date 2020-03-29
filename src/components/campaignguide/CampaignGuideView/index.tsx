@@ -53,6 +53,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         <CampaignLogComponent
           campaignGuide={campaignGuide}
           campaignLog={processedCampaign.campaignLog}
+          fontScale={fontScale}
         />
       </ScrollView>
     );

@@ -1,4 +1,4 @@
-import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from '../constants';
+import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from 'constants';
 import { FilterState } from 'lib/filters';
 import Card from 'data/Card';
 
@@ -199,7 +199,10 @@ export const NEW_CHAOS_BAG_RESULTS = {
 
 export interface ChaosBagResults {
   drawnTokens: ChaosTokenType[];
-  sealedTokens: {id: string; icon: ChaosTokenType}[];
+  sealedTokens: {
+    id: string;
+    icon: ChaosTokenType;
+  }[];
   totalDrawnTokens: number;
 }
 

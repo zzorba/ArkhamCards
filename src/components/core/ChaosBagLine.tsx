@@ -30,10 +30,10 @@ export default function ChaosBagLine({ chaosBag, fontScale }: Props) {
             <View key={`${token}-${idx}`} style={styles.commaView}>
               <ChaosTokenIcon
                 icon={token}
-                size={18 * iconSizeScale * fontScale}
+                size={24 * iconSizeScale * fontScale}
                 color="#222"
               />
-              { !isLast && <Text style={typography.text}>, </Text> }
+              { !isLast && <Text style={typography.header}>, </Text> }
             </View>
           );
         })
