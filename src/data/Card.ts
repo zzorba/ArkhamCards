@@ -12,7 +12,7 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?(all )?(\\d+ damage (and|or) )?(\\d+ )?horror');
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror');
 
 export default class Card extends BaseCard {
   public static schema: Realm.ObjectSchema = {
