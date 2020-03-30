@@ -9,6 +9,7 @@ import typography from 'styles/typography';
 interface Props {
   code: string;
   name: string;
+  tintColor?: string;
   selected: boolean;
   onChoiceToggle: (code: string) => void;
   editable: boolean;
@@ -27,14 +28,18 @@ export default class CheckListItemComponent extends React.Component<Props> {
     const {
       name,
       editable,
+      tintColor,
       selected,
     } = this.props;
     if (!editable && !selected) {
       return null;
     }
     return (
-      <View style={styles.row}>
-        <Text style={[typography.gameFont, styles.nameText]}>
+      <View style={[
+        styles.row,
+        tintColor ? { backgroundColor: tintColor } : {},
+      ]}>
+        <Text style={[typography.mediumGameFont, styles.nameText]}>
           { name }
         </Text>
         { editable ? (

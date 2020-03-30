@@ -10,6 +10,7 @@ import ScenarioStep from './ScenarioStep';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
 import fixedSteps, {
+  CHOOSE_INVESTIGATORS_STEP,
   LEAD_INVESTIGATOR_STEP,
   CHOOSE_RESOLUTION_STEP_ID,
   CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID,
@@ -87,7 +88,7 @@ export default class ScenarioGuide {
   ): ExecutedScenario {
     const stepIds = this.scenario.interlude ?
       [...this.scenario.setup, PROCEED_STEP.id] :
-      [LEAD_INVESTIGATOR_STEP.id, ...this.scenario.setup];
+      [CHOOSE_INVESTIGATORS_STEP.id, LEAD_INVESTIGATOR_STEP.id, ...this.scenario.setup];
     const steps = this.expandSteps(stepIds, scenarioState);
 
     const lastStep = last(steps);
@@ -106,9 +107,10 @@ export default class ScenarioGuide {
     };
   }
 
-  private expandSteps(
+  expandSteps(
     stepIds: string[],
-    scenarioState: ScenarioStateHelper
+    scenarioState: ScenarioStateHelper,
+    campaignLog?: GuidedCampaignLog
   ): ScenarioStep[] {
     if (!stepIds.length) {
       return [];
@@ -126,7 +128,7 @@ export default class ScenarioGuide {
         [],
         this.campaignGuide,
         this.scenario.id,
-        this.campaignLog
+        campaignLog || this.campaignLog
       ),
       remainingStepIds
     );

@@ -1,18 +1,21 @@
 import { cloneDeep, find, findIndex, forEach, sumBy } from 'lodash';
 
+import { Trauma } from 'actions/types';
 import { ChaosBag } from 'constants';
 import {
-  Effect,
   AddRemoveChaosTokenEffect,
   CampaignDataEffect,
   CampaignLogEffect,
   CampaignLogCountEffect,
   CampaignLogCardsEffect,
+  Difficulty,
+  Effect,
+  EffectsWithInput,
+  InvestigatorStatus,
+  InvestigatorSelector,
   ScenarioDataEffect,
   ScenarioStatus,
-  InvestigatorStatus,
-  Difficulty,
-  EffectsWithInput,
+  TraumaEffect,
 } from './types';
 import CampaignGuide from './CampaignGuide';
 
@@ -56,6 +59,7 @@ interface CountSection {
 
 interface ScenarioData {
   leadInvestigator?: string;
+  playingScenario?: string[];
   investigatorStatus: {
     [code: string]: InvestigatorStatus;
   };
@@ -71,6 +75,9 @@ interface CampaignData {
   result?: 'win' | 'lose';
   difficulty?: Difficulty;
   nextScenario?: string;
+  trauma: {
+    [code: string]: Trauma | undefined;
+  };
 }
 
 export default class GuidedCampaignLog {
@@ -87,6 +94,7 @@ export default class GuidedCampaignLog {
   scenarioData: {
     [scenario: string]: ScenarioData | undefined;
   };
+  latestScenarioData: ScenarioData;
   campaignData: CampaignData;
   campaignGuide: CampaignGuide;
   fullyGuided: boolean = true;
@@ -101,6 +109,7 @@ export default class GuidedCampaignLog {
       case 'campaign_data':
       case 'add_chaos_token':
       case 'remove_chaos_token':
+      case 'trauma':
         return true;
       default:
         return false;
@@ -130,10 +139,12 @@ export default class GuidedCampaignLog {
       this.investigatorSections = readThrough ? readThrough.investigatorSections : {};
       this.scenarioData = readThrough ? readThrough.scenarioData : {};
       this.campaignData = readThrough ? readThrough.campaignData : {
+        trauma: {},
         scenarioStatus: {},
         scenarioReplayCount: {},
       };
       this.chaosBag = readThrough ? readThrough.chaosBag : {};
+      this.latestScenarioData = readThrough ? readThrough.latestScenarioData : { investigatorStatus: {} };
     } else {
       this.sections = readThrough ? cloneDeep(readThrough.sections) : {};
       this.countSections = readThrough ? cloneDeep(readThrough.countSections) : {};
@@ -141,9 +152,11 @@ export default class GuidedCampaignLog {
       this.scenarioData = readThrough ? cloneDeep(readThrough.scenarioData) : {};
       this.chaosBag = readThrough ? cloneDeep(readThrough.chaosBag) : {};
       this.campaignData = readThrough ? cloneDeep(readThrough.campaignData) : {
+        trauma: {},
         scenarioStatus: {},
         scenarioReplayCount: {},
       };
+      this.latestScenarioData = readThrough ? cloneDeep(readThrough.latestScenarioData) : { investigatorStatus: {} };
       forEach(effectsWithInput, ({ effects, input, counterInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
@@ -167,12 +180,82 @@ export default class GuidedCampaignLog {
             case 'remove_chaos_token':
               this.handleAddRemoveChaosTokenEffect(effect);
               break;
+            case 'trauma':
+              this.handleTraumaEffect(effect, input);
+              break;
             default:
               break;
           }
         });
       });
     }
+  }
+
+  private getInvestigators(
+    investigator: InvestigatorSelector,
+    input?: string[]
+  ): string[] {
+    switch (investigator) {
+      case 'lead_investigator':
+        return [this.leadInvestigatorChoice()];
+      case 'all':
+        // TODO: select all.
+        return [];
+      case 'defeated':
+      case 'not_resigned': {
+        const result: string[] = [];
+        forEach(this.investigatorResolutionStatus(), (status, code) => {
+          switch (status) {
+            case 'alive':
+              if (investigator === 'not_resigned') {
+                result.push(code);
+              }
+              break;
+            case 'physical':
+            case 'mental':
+            case 'eliminated':
+              result.push(code);
+              break;
+            case 'resigned':
+              break;
+          }
+        });
+        return result;
+      }
+      case '$input_value':
+        return input || [];
+      case 'any':
+      case 'choice':
+        // TODO: pull from scenarioStateHelper;
+        return [];
+    }
+  }
+
+  private handleTraumaEffect(
+    effect: TraumaEffect,
+    input?: string[]
+  ) {
+    const investigators = this.getInvestigators(effect.investigator, input);
+    forEach(investigators, code => {
+      const trauma: Trauma = this.campaignData.trauma[code] || {};
+      if (effect.killed) {
+        trauma.killed = true;
+      }
+      if (effect.insane) {
+        trauma.insane = true;
+      }
+      if (effect.physical) {
+        trauma.physical = (trauma.physical || 0) + effect.physical;
+      }
+      if (effect.mental) {
+        trauma.mental = (trauma.mental || 0) + effect.mental;
+      }
+      if (effect.mental_or_physical) {
+        throw new Error('These should be filtered out before it reaches campaign log');
+      }
+
+      this.campaignData.trauma[code] = trauma;
+    });
   }
 
   private handleAddRemoveChaosTokenEffect(effect: AddRemoveChaosTokenEffect) {
@@ -185,7 +268,7 @@ export default class GuidedCampaignLog {
       }
       if (this.chaosBag[token] === 0) {
         delete this.chaosBag[token];
-      }      
+      }
     });
   }
 
@@ -246,11 +329,15 @@ export default class GuidedCampaignLog {
           scenario.investigatorStatus[code] = effect.investigator_status;
         });
         break;
+      case 'playing_scenario':
+        scenario.playingScenario = input;
+        break;
       case 'lead_investigator':
         scenario.leadInvestigator = input[0];
         break;
     }
     this.scenarioData[scenarioId] = scenario;
+    this.latestScenarioData = scenario;
   }
 
   private handleCampaignLogEffect(effect: CampaignLogEffect, input?: string[]) {
@@ -497,8 +584,7 @@ export default class GuidedCampaignLog {
   }
 
   playerCount(): number {
-    // TODO
-    return 2;
+    return (this.latestScenarioData.playingScenario || []).length;
   }
 
   count(sectionId: string, id: string): number {

@@ -95,6 +95,9 @@ export default StyleSheet.create({
   center: {
     textAlign: 'center',
   },
+  error: {
+    color: COLORS.red,
+  },
   underline: {
     textDecorationLine: 'underline',
   },

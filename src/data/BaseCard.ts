@@ -255,10 +255,10 @@ export default class BaseCard {
     if (traumaData.insane || (this.sanity || 0) <= (traumaData.mental || 0)) {
       return t`Insane`;
     }
-    if (traumaData.physical !== 0) {
+    if (traumaData.physical && traumaData.physical !== 0) {
       parts.push(t`${traumaData.physical} Physical`);
     }
-    if (traumaData.mental !== 0) {
+    if (traumaData.mental && traumaData.mental !== 0) {
       parts.push(t`${traumaData.mental} Mental`);
     }
     if (!parts.length) {

@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native'
-import { flatMap } from 'lodash';
+import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
+import SingleCardWrapper from '../../SingleCardWrapper';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import Card from 'data/Card';
 import typography from 'styles/typography';
 
 interface Props {
@@ -70,6 +72,15 @@ export default class CampaignLogComponent extends React.Component<Props> {
     }
   }
 
+  _renderTrauma = (card: Card) => {
+    const { campaignLog } = this.props;
+    return (
+      <Text>
+        { card.name }: { card.traumaString(campaignLog.campaignData.trauma[card.code]) }
+      </Text>
+    );
+  };
+
   render() {
     const { campaignGuide, campaignLog, fontScale } = this.props;
     return (
@@ -83,6 +94,9 @@ export default class CampaignLogComponent extends React.Component<Props> {
             fontScale={fontScale}
           />
         </View>
+        { map(campaignLog.campaignData.trauma, (trauma, code) => (
+          <SingleCardWrapper key={code} code={code} render={this._renderTrauma} />
+        )) }
         { flatMap(campaignGuide.campaign.campaign.campaign_log, log => {
           if (log.type === 'hidden') {
             return null;

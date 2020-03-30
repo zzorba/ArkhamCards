@@ -1,4 +1,4 @@
-import { groupBy, flatMap, find, forEach, map, sortBy } from 'lodash';
+import { groupBy, flatMap, find, findIndex, forEach, keys, partition, map, sortBy, sum } from 'lodash';
 
 import { ListChoices } from 'actions/types';
 import {
@@ -45,27 +45,104 @@ export default class ScenarioStep {
     );
   }
 
+  private getSpecialEffectChoiceList(effect: Effect): string | undefined {
+    if (effect.type === 'add_card' && (
+      effect.investigator === 'choice' ||
+      effect.investigator === 'any'
+    )) {
+      return `${this.step.id}_investigator`;
+    }
+    if (effect.type === 'trauma' && effect.mental_or_physical) {
+      return `${this.step.id}_trauma`;
+    }
+    return undefined;
+  }
+
   nextCampaignLog(
     scenarioState: ScenarioStateHelper
   ): GuidedCampaignLog | undefined {
     if (this.step.type === 'effects') {
       const flatEffects = flatMap(this.step.effectsWithInput, effects => effects.effects);
-      if (flatEffects.length) {
-        const needsInvestigatorChoice = !!find(flatEffects, effect => (
-          effect.type === 'add_card' && (
-            effect.investigator === 'choice' ||
-            effect.investigator === 'any'
-          )
-        ));
-        if (needsInvestigatorChoice) {
-          const investigatorChoice = scenarioState.choiceList(`${this.step.id}_investigator`);
-          if (investigatorChoice === undefined) {
-            return undefined;
-          }
+      const specialInputs = flatMap(flatEffects, effect => {
+        const specialInput = this.getSpecialEffectChoiceList(effect);
+        if (specialInput) {
+          return [specialInput];
         }
+        return [];
+      })
+      if (find(specialInputs, specialInput => scenarioState.choiceList(specialInput) === undefined)) {
+        // No input yet, stop for now.
+        return undefined;
       }
       return new GuidedCampaignLog(
-        this.step.effectsWithInput,
+        flatMap(this.step.effectsWithInput, effects => {
+          const result: EffectsWithInput[] = [];
+          const [specialEffects, normalEffects] = partition(
+            effects.effects,
+            effect => this.getSpecialEffectChoiceList(effect)
+          );
+          if (normalEffects.length) {
+            result.push({
+              ...effects,
+              effects: normalEffects,
+            });
+          }
+          forEach(specialEffects, specialEffect => {
+            const input = this.getSpecialEffectChoiceList(specialEffect);
+            if (!input) {
+              // Impossible
+              return;
+            }
+            const choiceList = scenarioState.choiceList(input);
+            if (choiceList === undefined) {
+              // Also impossible
+              return;
+            }
+            switch (specialEffect.type) {
+              case 'add_card':
+                result.push({
+                  input: keys(choiceList),
+                  effects: [{
+                    ...specialEffect,
+                    investigator: '$input_value',
+                  }],
+                });
+                break;
+              case 'trauma': {
+                const physical: string[] = [];
+                const mental: string[] = [];
+                forEach(choiceList, (choice, code) => {
+                  if (choice[0] === 0) {
+                    physical.push(code);
+                  } else {
+                    mental.push(code);
+                  }
+                });
+                if (physical.length) {
+                  result.push({
+                    input: physical,
+                    effects: [{
+                      type: 'trauma',
+                      physical: 1,
+                      investigator: '$input_value',
+                    }],
+                  });
+                }
+                if (mental.length) {
+                  result.push({
+                    input: mental,
+                    effects: [{
+                      type: 'trauma',
+                      mental: 1,
+                      investigator: '$input_value',
+                    }],
+                  });
+                }
+              }
+            }
+          });
+          return result;
+        }),
         this.scenarioGuide.campaignGuide,
         this.scenarioGuide.scenario.id,
         this.campaignLog
@@ -394,36 +471,88 @@ export default class ScenarioStep {
     condition: CheckSuppliesCondition,
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
-    if (this.fullyGuided) {
-      // TODO: supplies
-      return undefined;
-    }
     switch (condition.investigator) {
-      case 'any':
+      case 'any': {
+        const ifTrue = find(step.condition.options, option => option.boolCondition === true);
+        const ifFalse = find(step.condition.options, option => option.boolCondition === false);
+        if (this.fullyGuided) {
+          const investigatorSupplies = this.campaignLog.investigatorSections[condition.section] || {};
+          const decision = !!find(investigatorSupplies,
+            supplies => !!find(supplies.entries,
+              entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
+            )
+          );
+          return this.binaryBranch(
+            decision,
+            scenarioState,
+            this.remainingStepIds,
+            ifTrue,
+            ifFalse
+          );
+        }
         return this.decisionTest(
           scenarioState,
           this.remainingStepIds,
-          find(step.condition.options, option => option.boolCondition === true),
-          find(step.condition.options, option => option.boolCondition === false)
+          ifTrue,
+          ifFalse
         );
+      }
       case 'all': {
-        const choiceList = scenarioState.choiceList(step.id);
+        let choiceList: ListChoices | undefined  ;
+        if (this.campaignLog.fullyGuided) {
+          const investigatorSupplies = this.campaignLog.investigatorSections[condition.section] || {};
+          const newChoiceList: ListChoices = {};
+          forEach(investigatorSupplies, (supplies, investigatorCode) => {
+            const hasSupply = !!find(supplies.entries,
+              entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
+            );
+            const matchingOption = findIndex(condition.options, option => option.boolCondition === hasSupply);
+            if (matchingOption !== -1) {
+              newChoiceList[investigatorCode] = [matchingOption];
+            }
+          });
+          choiceList = newChoiceList;
+        } else {
+          choiceList = scenarioState.choiceList(step.id);
+        }
         if (choiceList === undefined) {
           return undefined;
         }
         const {
           effectsWithInput,
           stepIds,
-        } = this.processListChoices(choiceList, condition.options);
+        } = this.processListChoices(
+          choiceList,
+          condition.options
+        );
         return this.maybeCreateEffectsStep(
           step.id,
           [...stepIds, ...this.remainingStepIds],
           effectsWithInput
         );
       }
-      case 'choice':
-        // TODO: check supplies, needs an investigator AND a has supplies test.
-        return undefined;
+      case 'choice': {
+        const choice = scenarioState.choiceList(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        const investigator = keys(choice)[0];
+        const investigatorSupplies = this.campaignLog.investigatorSections[condition.section] || {};
+        const supplies = investigatorSupplies[investigator];
+        const hasSupply = !!(
+          supplies &&
+          !supplies.crossedOut[condition.id] &&
+          find(supplies.entries, entry => entry.id === condition.id && entry.type === 'count' && entry.count > 0)
+        );
+        return this.binaryBranch(
+          hasSupply,
+          scenarioState,
+          this.remainingStepIds,
+          find(condition.options, option => option.boolCondition === true),
+          find(condition.options, option => option.boolCondition === false),
+          [investigator]
+        );
+      }
     }
   }
 
@@ -552,7 +681,7 @@ export default class ScenarioStep {
           flatMap(investigatorSupplies, (count, supplyId) => {
             return {
               type: 'campaign_log_count',
-              section: 'supplies',
+              section: input.section,
               investigator: code,
               operation: 'add',
               id: supplyId,
@@ -596,9 +725,60 @@ export default class ScenarioStep {
           }]
         );
       }
-      case 'use_supplies':
+      case 'use_supplies': {
+        switch (input.investigator) {
+          case 'all': {
+            const firstChoice = scenarioState.choiceList(`${this.step.id}_used`);
+            if (firstChoice === undefined) {
+              return undefined;
+            }
+            const consumeSuppliesEffects: Effect[] = map(firstChoice, ([count], code) => {
+              return {
+                type: 'campaign_log_count',
+                section: input.section,
+                investigator: code,
+                operation: 'add',
+                id: input.id,
+                value: -count,
+              };
+            });
+            const useCount = sum(map(firstChoice, count => count));
+            if (useCount === this.campaignLog.playerCount()) {
+              // We got what we needed.
+              // And we know there are only 'false' conditions right now.
+              return this.maybeCreateEffectsStep(
+                this.step.id,
+                this.remainingStepIds,
+                [{
+                  effects: consumeSuppliesEffects,
+                }],
+              );
+            }
+            const secondChoice = scenarioState.choiceList(this.step.id);
+            if (secondChoice === undefined) {
+              return undefined;
+            }
+            const theBadThing = find(input.choices, choice => choice.boolCondition === false);
+            return this.maybeCreateEffectsStep(
+              this.step.id,
+              [
+                ...(theBadThing && theBadThing.steps) || [],
+                ...this.remainingStepIds,
+              ],
+              [{
+                effects: consumeSuppliesEffects,
+              },
+              {
+                input: keys(secondChoice),
+                effects: (theBadThing && theBadThing.effects) || [],
+              }],
+            );
+          }
+        }
         // TODO: guide
         return undefined;
+
+      }
     }
   }
 
@@ -638,7 +818,8 @@ export default class ScenarioStep {
     ifFalse?: {
       steps?: null | string[];
       effects?: null | Effect[];
-    }
+    },
+    input?: string[]
   ): ScenarioStep | undefined {
     const resultCondition = condition ? ifTrue : ifFalse;
     return this.maybeCreateEffectsStep(
@@ -648,6 +829,7 @@ export default class ScenarioStep {
         ...remainingStepIds,
       ],
       [{
+        input,
         effects: (resultCondition && resultCondition.effects) || [],
       }]
     );

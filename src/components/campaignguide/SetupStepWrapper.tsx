@@ -18,7 +18,9 @@ export default class SetupStepWrapper extends React.Component<Props> {
   renderBullet() {
     const { bulletType } = this.props;
     switch (bulletType) {
-      case 'none': return <View style={styles.bullet} />;
+      case 'right':
+      case 'none':
+        return <View style={styles.bullet} />;
       case 'small':
         return (
           <View style={styles.smallBullet}>
@@ -45,12 +47,19 @@ export default class SetupStepWrapper extends React.Component<Props> {
     const {
       children,
       border,
+      bulletType,
     } = this.props;
 
     return (
-      <View style={[styles.step, border ? styles.border : {}]}>
+      <View style={[
+        styles.step,
+        border ? styles.border : {},
+      ]}>
         { this.renderBullet() }
-        <View style={styles.mainText}>
+        <View style={[
+          styles.mainText,
+          bulletType === 'right' ? styles.right : {}
+        ]}>
           { children }
         </View>
       </View>
@@ -74,6 +83,10 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
   },
+  right: {
+    alignItems: 'flex-end',
+    paddingLeft: 48,
+  },
   bullet: {
     marginRight: 8,
     marginTop: 4,
@@ -85,5 +98,6 @@ const styles = StyleSheet.create({
   },
   mainText: {
     flex: 1,
+    flexDirection: 'column',
   },
 });

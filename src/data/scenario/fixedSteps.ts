@@ -91,6 +91,30 @@ export const PROCEED_STEP: GenericStep = {
   ],
 };
 
+export const CHOOSE_INVESTIGATORS_STEP: InputStep = {
+  id: '$choose_investigators',
+  type: 'input',
+  input: {
+    type: 'investigator_choice',
+    investigator: 'all',
+    source: 'campaign',
+    defaultChoice: 0,
+    choices: [
+      {
+        text: t`Playing this scenario`,
+        effects: [
+          {
+            type: 'scenario_data',
+            setting: 'playing_scenario',
+            investigator: '$input_value',
+          },
+        ],
+      },
+    ],
+  },
+};
+
+
 export const LEAD_INVESTIGATOR_STEP: InputStep = {
   id: '$lead_investigator',
   type: 'input',
@@ -198,6 +222,7 @@ export const INVESTIGATOR_STATUS_STEP: InputStep = {
 
 export default {
   [PROCEED_STEP.id]: PROCEED_STEP,
+  [CHOOSE_INVESTIGATORS_STEP.id]: CHOOSE_INVESTIGATORS_STEP,
   [LEAD_INVESTIGATOR_STEP.id]: LEAD_INVESTIGATOR_STEP,
   [INVESTIGATOR_STATUS_STEP.id]: INVESTIGATOR_STATUS_STEP,
 };

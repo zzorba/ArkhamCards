@@ -58,7 +58,9 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
         styles.promptRow,
         tintColor ? { backgroundColor: tintColor } : {},
       ]}>
-        <Text>{ name }</Text>
+        <Text style={typography.mediumGameFont}>
+          { name }
+        </Text>
         { editable ? (
           <PlusMinusButtons
             count={value}
@@ -84,7 +86,6 @@ const styles = StyleSheet.create({
     minWidth: 40,
   },
   promptRow: {
-    borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#888',
     padding: 16,

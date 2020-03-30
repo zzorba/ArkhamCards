@@ -2,6 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { map } from 'lodash';
 
+import ScenarioStepComponent from 'components/campaignguide/ScenarioStepComponent';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import ChaosTokenEffectComponent from './ChaosTokenEffectComponent';
 import CampaignLogEffectComponent from './CampaignLogEffectComponent';
 import AddCardEffectComponent from './AddCardEffectComponent';
@@ -10,6 +13,7 @@ import { EffectsStep, Effect } from 'data/scenario/types';
 
 interface Props {
   step: EffectsStep;
+  campaignLog: GuidedCampaignLog;
 }
 
 export default class EffectsStepComponent extends React.Component<Props> {
@@ -58,6 +62,17 @@ export default class EffectsStepComponent extends React.Component<Props> {
             input={input}
           />
         );
+      case 'story_step': {
+        return (
+          <ScenarioGuideContext.Consumer>
+            { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => (
+            map(
+              scenarioGuide.expandSteps(effect.steps, scenarioState, this.props.campaignLog),
+              step => <ScenarioStepComponent key={step.step.id} step={step} />
+            )) }
+          </ScenarioGuideContext.Consumer>
+        );
+      }
       case 'earn_xp':
       case 'campaign_data':
       case 'remove_card':

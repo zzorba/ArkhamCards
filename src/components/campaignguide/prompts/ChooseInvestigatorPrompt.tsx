@@ -6,6 +6,7 @@ import { t } from 'ttag';
 import { ListChoices } from 'actions/types';
 import PickerComponent from './PickerComponent';
 import { InvestigatorDeck } from 'data/scenario';
+import Card from 'data/Card';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
   description?: string;
   defaultLabel?: string;
   required?: boolean;
+  investigatorToValue?: (card: Card) => string;
   renderResults?: (investigator?: InvestigatorDeck) => React.ReactNode;
 }
 
@@ -82,7 +84,15 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   }
 
   render() {
-    const { id, description, title, renderResults, required, defaultLabel } = this.props;
+    const {
+      id,
+      description,
+      title,
+      renderResults,
+      required,
+      defaultLabel,
+      investigatorToValue,
+    } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
@@ -98,7 +108,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
                   choices={
                     map(investigatorDecks, ({ investigator }) => {
                       return {
-                        text: investigator.name,
+                        text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
                         effects: [],
                       };
                     })}

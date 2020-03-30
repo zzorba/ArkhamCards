@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text,View, StyleSheet } from 'react-native';
-import { forEach, map } from 'lodash';
+import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import CheckListItemComponent from './CheckListItemComponent';
@@ -18,11 +18,14 @@ export interface ListItem {
 
 export interface CheckListComponentProps {
   id: string;
+  defaultState?: boolean;
   bulletType?: BulletType;
   title?: string;
   text?: string;
-  choice: EffectsChoice | SimpleEffectsChoice;
+  checkText: string;
+  requiredTotal?: number;
 }
+
 interface Props extends CheckListComponentProps {
   items: ListItem[];
 }
@@ -33,15 +36,22 @@ interface State {
   };
 }
 
-export default class InvestigatorChoicePrompt extends React.Component<Props, State> {
+export default class CheckListComponent extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
   constructor(props: Props) {
     super(props);
 
+    const selectedChoice: {
+      [code: string]: number | undefined;
+    } = {};
+    forEach(props.items, item => {
+      selectedChoice[item.code] = props.defaultState ? 0 : undefined;
+    });
+
     this.state = {
-      selectedChoice: {},
+      selectedChoice,
     };
   }
 
@@ -75,17 +85,26 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     if (hasDecision) {
       return null;
     }
-    return (
+    const { requiredTotal } = this.props;
+    const { selectedChoice } = this.state;
+    const currentTotal = sum(map(selectedChoice, choice => (choice !== undefined && choice !== -1) ? 1 : 0))
+    const disabled = (requiredTotal !== undefined) && currentTotal !== requiredTotal;
+    return disabled && requiredTotal !== undefined ? (
+      <Button
+        title={currentTotal > requiredTotal ? t`Too many` : `Not enough`}
+        onPress={this._save}
+        disabled
+      />
+    ) : (
       <Button
         title={t`Save`}
         onPress={this._save}
       />
     );
-
   }
 
   render() {
-    const { id, items, bulletType, text, choice } = this.props;
+    const { id, items, bulletType, text, checkText } = this.props;
     const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
@@ -94,12 +113,14 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           const hasDecision = choiceList !== undefined;
           return (
             <>
-              <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CardTextComponent text={text} /> }
-              </SetupStepWrapper>
+              { !!text && (
+                <SetupStepWrapper bulletType={bulletType}>
+                  <CardTextComponent text={text} />
+                </SetupStepWrapper>
+              ) }
               <View style={styles.prompt}>
                 <Text style={typography.mediumGameFont}>
-                  { choice.text }
+                  { checkText }
                 </Text>
               </View>
               { map(items, (item, idx) => {

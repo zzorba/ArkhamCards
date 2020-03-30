@@ -55,7 +55,7 @@ export default class CardChoicePrompt extends React.Component<Props> {
             name: card.name,
           };
         })}
-        choice={choices[0]}
+        checkText={choices[0].text}
       />
     );
   };

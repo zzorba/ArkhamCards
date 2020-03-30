@@ -56,7 +56,7 @@ export type CampaignDataEffect =
   | CampaignDataChooseInvestigatorsEffect;
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
-  | ScenarioDataLeadInvestigatorEffect
+  | ScenarioDataInvestigatorEffect
   | ScenarioDataInvestigatorStatusEffect
   | ScenarioDataStatusEffect;
 export type InvestigatorStatus = "alive" | "resigned" | "physical" | "mental" | "eliminated";
@@ -87,7 +87,7 @@ export type CampaignDataCondition =
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataInvestigatorCondition;
-export type BulletType = "none" | "small";
+export type BulletType = "none" | "small" | "right";
 export type Input =
   | CardChoiceInput
   | SuppliesInput
@@ -225,9 +225,9 @@ export interface CampaignDataChooseInvestigatorsEffect {
   type: "campaign_data";
   setting: "choose_investigators";
 }
-export interface ScenarioDataLeadInvestigatorEffect {
+export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
-  setting: "lead_investigator";
+  setting: "lead_investigator" | "playing_scenario";
   investigator: "$input_value";
 }
 export interface ScenarioDataInvestigatorStatusEffect {
@@ -328,7 +328,9 @@ export interface TraumaCondition {
 export interface CheckSuppliesCondition {
   type: "check_supplies";
   investigator: "any" | "all" | "choice";
+  section: string;
   id: string;
+  prompt?: string;
   options: BoolOption[];
 }
 export interface EffectsStep {
@@ -389,12 +391,15 @@ export interface Supply {
 }
 export interface UseSuppliesInput {
   type: "use_supplies";
-  supply: string;
+  section: string;
+  id: string;
   investigator: "all" | "any" | "choice";
   choices: Option[];
 }
 export interface InvestigatorChoiceInput {
   type: "investigator_choice";
+  defaultChoice?: number;
+  source: "campaign" | "scenario";
   investigator: "all" | "choice" | "any";
   detailed?: boolean;
   choices: EffectsChoice[];

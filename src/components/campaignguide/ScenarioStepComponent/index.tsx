@@ -48,10 +48,16 @@ export default class ScenarioStepComponent extends React.Component<Props> {
         return (
           <InputStepComponent
             step={step}
+            campaignLog={campaignLog}
           />
         );
       case 'effects':
-        return <EffectsStepComponent step={step} />;
+        return (
+          <EffectsStepComponent
+            step={step}
+            campaignLog={campaignLog}
+          />
+        );
       default:
         return <Text>Unknown step type</Text>;
     }

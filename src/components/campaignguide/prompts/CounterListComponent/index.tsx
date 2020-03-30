@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { forEach, map } from 'lodash';
+import { Button, Text, View, StyleSheet } from 'react-native';
+import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import { ListChoices } from 'actions/types';
-
+import typography from 'styles/typography';
 export interface CounterItem {
   code: string;
   name: string;
@@ -17,6 +17,7 @@ export interface CounterItem {
 interface Props {
   id: string;
   items: CounterItem[];
+  requiredTotal?: number;
 }
 
 interface State {
@@ -73,33 +74,58 @@ export default class CounterListComponent extends React.Component<Props, State> 
     forEach(counts, (value, code) => {
       choices[code] = [value];
     });
-    this.context.scenarioState.setChoiceList(id, choices);
+    this.context.scenarioState.setChoiceList(
+      id,
+      choices
+    );
   };
 
   renderSaveButton(hasDecision: boolean) {
+    const { requiredTotal } = this.props;
+    const { counts } = this.state;
     if (hasDecision) {
       return null;
     }
-    return (
+    const currentTotal = sum(map(counts));
+    const disabled = (requiredTotal !== undefined) && currentTotal !== requiredTotal;
+    return disabled && requiredTotal !== undefined ? (
+      <Button
+        title={ currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
+        onPress={this._save}
+        disabled
+      />
+    ) : (
       <Button
         title={t`Save`}
         onPress={this._save}
+        disabled={disabled}
       />
     );
+  }
 
+  getValue(code: string, choiceList?: ListChoices): number {
+    const { counts } = this.state;
+    if (choiceList === undefined) {
+      return counts[code] || 0;
+    }
+    const investigatorCount = choiceList[code];
+    if (!investigatorCount || !investigatorCount.length) {
+      return 0;
+    }
+    return investigatorCount[0] || 0;
   }
 
   render() {
     const { id, items } = this.props;
-    const { counts } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const hasDecision = scenarioState.choiceList(id) !== undefined;
+          const choiceList = scenarioState.choiceList(id);
+          const hasDecision = choiceList !== undefined;
           return (
-            <>
+            <View style={styles.border}>
               { map(items, ({ code, name, limit, tintColor }, idx) => {
-                const value = counts[code] || 0;
+                const value = this.getValue(code, choiceList);
                 return (
                   <CounterListItemComponent
                     key={idx}
@@ -115,10 +141,17 @@ export default class CounterListComponent extends React.Component<Props, State> 
                 );
               }) }
               { this.renderSaveButton(hasDecision) }
-            </>
+            </View>
           );
         } }
       </ScenarioGuideContext.Consumer>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  border: {
+    borderTopWidth: 1,
+    borderColor: '#888',
+  },
+});

@@ -3,6 +3,8 @@ import {
   Text,
 } from 'react-native';
 
+import InvestigatorCheckListComponent from '../prompts/InvestigatorCheckListComponent';
+import UseSuppliesPrompt from '../prompts/UseSuppliesPrompt';
 import CardTextComponent from 'components/card/CardTextComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CardChoicePrompt from '../prompts/CardChoicePrompt';
@@ -14,15 +16,17 @@ import NumberPrompt from '../prompts/NumberPrompt';
 import SuppliesPrompt from '../prompts/SuppliesPrompt';
 import InvestigatorChoicePrompt from '../prompts/InvestigatorChoicePrompt';
 import { InputStep } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
 
 interface Props {
   step: InputStep;
+  campaignLog: GuidedCampaignLog;
 }
 
 export default class InputStepComponent extends React.Component<Props> {
   renderPrompt() {
-    const { step } = this.props;
+    const { step, campaignLog } = this.props;
     switch (step.input.type) {
       case 'choose_one':
         if (step.input.choices.length === 1) {
@@ -84,7 +88,14 @@ export default class InputStepComponent extends React.Component<Props> {
           />
         );
       case 'use_supplies':
-        return <Text>Use Supplies</Text>;
+        return (
+          <UseSuppliesPrompt
+            id={step.id}
+            text={step.text}
+            input={step.input}
+            campaignLog={campaignLog}
+          />
+        );
       case 'investigator_choice':
         if (step.input.investigator === 'any') {
           return (
@@ -92,6 +103,15 @@ export default class InputStepComponent extends React.Component<Props> {
               id={step.id}
               title={step.input.choices[0].text}
               required
+            />
+          );
+        }
+        if (step.input.investigator === 'all' && step.input.choices.length === 1) {
+          return (
+            <InvestigatorCheckListComponent
+              id={step.id}
+              checkText={step.input.choices[0].text}
+              defaultState={step.input.defaultChoice === 0}
             />
           );
         }
