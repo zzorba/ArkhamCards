@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text,View, StyleSheet } from 'react-native';
-import { forEach, map, sum } from 'lodash';
+import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import CheckListItemComponent from './CheckListItemComponent';
@@ -8,12 +8,14 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGu
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { ListChoices } from 'actions/types';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { BulletType, EffectsChoice, SimpleEffectsChoice } from 'data/scenario/types';
+import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
 
 export interface ListItem {
   code: string;
   name: string;
+  value?: number;
+  tintColor?: string;
 }
 
 export interface CheckListComponentProps {
@@ -23,7 +25,8 @@ export interface CheckListComponentProps {
   title?: string;
   text?: string;
   checkText: string;
-  requiredTotal?: number;
+  min?: number;
+  max?: number;
 }
 
 interface Props extends CheckListComponentProps {
@@ -47,7 +50,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
       [code: string]: number | undefined;
     } = {};
     forEach(props.items, item => {
-      selectedChoice[item.code] = props.defaultState ? 0 : undefined;
+      selectedChoice[item.code] = props.defaultState ? (item.value || 0) : undefined;
     });
 
     this.state = {
@@ -58,12 +61,14 @@ export default class CheckListComponent extends React.Component<Props, State> {
   _onChoiceToggle = (
     code: string
   ) => {
+    const { items } = this.props;
     this.setState(state => {
+      const item = find(items, i => i.code === code);
       const selected = state.selectedChoice[code] !== undefined;
       return {
         selectedChoice: {
           ...this.state.selectedChoice,
-          [code]: selected ? undefined : 0,
+          [code]: selected ? undefined : ((item && item.value) || 0),
         },
       };
     });
@@ -78,20 +83,33 @@ export default class CheckListComponent extends React.Component<Props, State> {
         choices[code] = [idx];
       }
     });
-    this.context.scenarioState.setChoiceList(id, choices);
+    this.context.scenarioState.setChoiceList(
+      id,
+      choices
+    );
   };
 
   renderSaveButton(hasDecision: boolean) {
     if (hasDecision) {
       return null;
     }
-    const { requiredTotal } = this.props;
+    const { min, max } = this.props;
+    if (min === undefined && max === undefined) {
+      return (
+        <Button
+          title={t`Save`}
+          onPress={this._save}
+        />
+      );
+    }
     const { selectedChoice } = this.state;
     const currentTotal = sum(map(selectedChoice, choice => (choice !== undefined && choice !== -1) ? 1 : 0))
-    const disabled = (requiredTotal !== undefined) && currentTotal !== requiredTotal;
-    return disabled && requiredTotal !== undefined ? (
+    const hasMin = (min === undefined || currentTotal >= min);
+    const hasMax = (max === undefined || currentTotal <= max);
+    const enabled = hasMin && hasMax;
+    return !enabled ? (
       <Button
-        title={currentTotal > requiredTotal ? t`Too many` : `Not enough`}
+        title={hasMin ? t`Too many` : `Not enough`}
         onPress={this._save}
         disabled
       />
@@ -139,6 +157,13 @@ export default class CheckListComponent extends React.Component<Props, State> {
                   />
                 );
               }) }
+              { choiceList !== undefined && keys(choiceList).length === 0 && (
+                <View style={styles.row}>
+                  <Text style={[typography.mediumGameFont, styles.nameText]}>
+                    { t`None` }
+                  </Text>
+                </View>
+              )}
               { this.renderSaveButton(hasDecision) }
             </>
           );
@@ -156,5 +181,18 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     borderBottomWidth: 1,
     borderColor: '#888',
+  },
+  row: {
+    borderBottomWidth: 1,
+    borderColor: '#888',
+    padding: 8,
+    paddingLeft: 16,
+    paddingRight: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  nameText: {
+    fontWeight: '700',
   },
 });

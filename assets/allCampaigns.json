@@ -4718,11 +4718,7 @@
             "numCondition": 1,
             "steps": ["act_2_v2"]
           }
-        ],
-        "defaultOption": {
-          "default": true,
-          "steps": []
-        }
+        ]
       }
     },
     {
@@ -5096,11 +5092,7 @@
             "numCondition": 1,
             "steps": ["resolution_5"]
           }
-        ],
-        "defaultOption": {
-          "default": true,
-          "steps": []
-        }
+        ]
       }
     },
     {
@@ -6276,7 +6268,7 @@
         "agents_of_hastur",
         "arkham"
       ],
-      "text": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the location, act, agenda, or scenario reference cards from that set"
+      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the location, act, agenda, or scenario reference cards from that set"
     },
     {
       "id": "check_doubt_and_conviction",
@@ -6305,11 +6297,7 @@
             "numCondition": 1,
             "steps": ["more_conviction", "gather_conviction", "act_1_v2"]
           }
-        ],
-        "defaultOption": {
-          "default": true,
-          "steps": []
-        }
+        ]
       }
     },
     {
@@ -7007,7 +6995,7 @@
       "type": "input",
       "input": {
         "type": "investigator_choice",
-        "investigator": "all",
+        "investigator": "choice",
         "source": "scenario",
         "choices": [
           {
@@ -7352,10 +7340,10 @@
     {
       "id": "choose_new_investigators",
       "text": "If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, the campaign continues. (Each player whose investigator has been driven insane must choose a new investigator from the pool of available investigators.)",
-      "effects": [{
-        "type": "campaign_data",
-        "setting": "choose_investigators"
-      }]
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
     },
     {
       "id": "check_took_onyx_clasp",
@@ -8418,7 +8406,7 @@
         "inexorable_fate",
         "chilling_cold"
       ],
-      "text": "When gathering The Devourer Below encounter set, only gather the 6 Arkham Woods locations. Do not gather any of the other cards from that encounter set."
+      "subtext": "When gathering <i>The Devourer Below</i> encounter set, only gather the 6 Arkham Woods locations. Do not gather any of the other cards from that encounter set."
     },
     {
       "id": "gather_set_aside",
@@ -9223,7 +9211,7 @@
         "the_watcher",
         "chilling_cold"
       ],
-      "text": "When gathering the At Death’s Doorstep encounter set, only gather the seven [[Spectral]] locations from that encounter set. Do not gather any of the other cards from that encounter set."
+      "subtext": "When gathering the <i>At Death’s Doorstep</i> encounter set, only gather the seven [[Spectral]] locations from that encounter set. Do not gather any of the other cards from that encounter set."
     },
     {
       "id": "setup_locations",
@@ -9273,13 +9261,7 @@
     },
     {
       "id": "choose_investigators",
-      "text": "Each player chooses an investigator from the standard pool of investigators and assembles their investigator deck, as usual.",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "choose_investigators"
-        }
-      ]
+      "text": "Each player chooses an investigator from the standard pool of investigators and assembles their investigator deck, as usual."
     },
     {
       "id": "agenda_1_results",
@@ -11450,7 +11432,7 @@
         "striking_fear",
         "tentacles"
       ],
-      "text": "When gathering The Devourer Below encounter set, only gather the 6 Arkham Woods locations. Do not gather any of the other cards from that encounter set."
+      "subtext": "When gathering <i>The Devourer Below</i> encounter set, only gather the 6 Arkham Woods locations. Do not gather any of the other cards from that encounter set."
     },
     {
       "id": "gather_agents",
@@ -13287,7 +13269,7 @@
     {
       "id": "ee_5",
       "type": "story",
-      "text": "YHarlan Earnstone paces across your living room, dabbing his wrinkled forehead with his handkerchief. “It’s my fault. I should never have encouraged them to go on that dreadful expedition.” Though your paths have only crossed a few times before, Mr. Earnstone has become a valuable contact of yours within Miskatonic University. When the University’s latest expedition returned with only a few survivors and a handful of strange, archaic artifacts, he came to you for advice.\n“I know, I know. I should at least take solace in the fact that the expedition was successful, despite its heavy losses. Alejandro was right all along. The Eztli people are real. And yet...I am concerned about some of these findings.” Harlan pulls a small leather-bound journal from his suitcase and hands it to you. “Before the expedition leader’s tragic death, the leader recorded many of the group’s discoveries in this journal. One of the surviving members of the expedition managed to grab it from the camp before fleeing the jungle. I think if you read these entries, you’ll understand what I mean. The things they experienced, the creatures they encountered...” Harlan shudders and adjusts his glasses with too-shaky hands. “I am concerned not only for Alejandro, but for all of us. Read this journal, and if you can, please keep an eye on my colleague.” You agree to help, but his worry does not fade. “I only hope that I am not damning you to a similar fate by asking for your aid.”\nYou spend the remainder of that night studying the expedition journal, your mind swimming with thoughts of strange serpent-creatures and Aztec warriors. Long after Harlan has left, a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? You open the front door warily. On the other side is a woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. She wears a long coat and a Bollman-style hat, visibly uncomfortable in her shoes. Her jaw is set in anger. A sudden flash of insight crosses your mind, and you realize at once who she must be. After all, you’ve read and re-read the journal’s description of Ichtaca, the Eztli warrior. She lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever they did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
+      "text": "Harlan Earnstone paces across your living room, dabbing his wrinkled forehead with his handkerchief. “It’s my fault. I should never have encouraged them to go on that dreadful expedition.” Though your paths have only crossed a few times before, Mr. Earnstone has become a valuable contact of yours within Miskatonic University. When the University’s latest expedition returned with only a few survivors and a handful of strange, archaic artifacts, he came to you for advice.\n“I know, I know. I should at least take solace in the fact that the expedition was successful, despite its heavy losses. Alejandro was right all along. The Eztli people are real. And yet...I am concerned about some of these findings.” Harlan pulls a small leather-bound journal from his suitcase and hands it to you. “Before the expedition leader’s tragic death, the leader recorded many of the group’s discoveries in this journal. One of the surviving members of the expedition managed to grab it from the camp before fleeing the jungle. I think if you read these entries, you’ll understand what I mean. The things they experienced, the creatures they encountered...” Harlan shudders and adjusts his glasses with too-shaky hands. “I am concerned not only for Alejandro, but for all of us. Read this journal, and if you can, please keep an eye on my colleague.” You agree to help, but his worry does not fade. “I only hope that I am not damning you to a similar fate by asking for your aid.”\nYou spend the remainder of that night studying the expedition journal, your mind swimming with thoughts of strange serpent-creatures and Aztec warriors. Long after Harlan has left, a loud knocking at the door startles you, and you jump to your feet. It is almost 2:30 in the morning. Who could possibly be at your door at this hour? You open the front door warily. On the other side is a woman with brown skin, long brown hair, and piercing yellow eyes set in a hard glare. She wears a long coat and a Bollman-style hat, visibly uncomfortable in her shoes. Her jaw is set in anger. A sudden flash of insight crosses your mind, and you realize at once who she must be. After all, you’ve read and re-read the journal’s description of Ichtaca, the Eztli warrior. She lets out a heavy sigh and walks slowly over the threshold of your home, shutting your front door behind her. “Whatever they did, you have to reverse it,” she intones darkly. “Or we will all cease to exist.”"
     }
   ]
 }
@@ -13388,71 +13370,77 @@
       "id": "check_yigs_fury",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "yigs_fury",
-        "id": "$count",
+        "type": "math",
+        "opA": {
+          "type": "campaign_log_count",
+          "section": "yigs_fury"
+        },
+        "opB": {
+          "type": "constant",
+          "value": 4
+        },
+        "operation": "compare",
         "options": [
           {
+            "numCondition": -1,
+            "steps": ["three_or_fewer_fury", "yigs_fury_okay", "mark_3_yigs_fury", "check_no_resolution_to_3"]
+          },
+          {
             "numCondition": 0,
-            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
+            "steps": ["four_or_more_fury", "yigs_fury_bad", "defeated_investigators_killed", "check_no_resolution_to_2"]
           },
           {
             "numCondition": 1,
-            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
-          },
-          {
-            "numCondition": 2,
-            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
-          },
-          {
-            "numCondition": 3,
-            "steps": ["yigs_fury_okay", "mark_3_yigs_fury"]
+            "steps": ["four_or_more_fury", "yigs_fury_bad", "defeated_investigators_killed", "check_no_resolution_to_2"]
           }
-        ],
-        "defaultOption": {
-          "default": true,
-          "steps": ["yigs_fury_bad", "defeated_investigators_killed"]
-        }
+        ]
       }
     },
     {
-      "id": "check_yigs_fury_no_resolution",
+      "id": "check_no_resolution_to_3",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "yigs_fury",
-        "id": "$count",
+        "type": "scenario_data",
+        "scenario_data": "resolution",
         "options": [
           {
-            "numCondition": 0,
-            "steps": ["resolution_3"]
-          },
-          {
-            "numCondition": 1,
-            "steps": ["resolution_3"]
-          },
-          {
-            "numCondition": 2,
-            "steps": ["resolution_3"]
-           },
-          {
-            "numCondition": 3,
+            "condition": "no_resolution_defeated",
             "steps": ["resolution_3"]
           }
-        ],
-        "defaultOption": {
-          "default": true,
-          "steps": ["resolution_2"]
-        }
+        ]
       }
+    },
+    {
+      "id": "check_no_resolution_to_2",
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "resolution",
+        "options": [
+          {
+            "condition": "no_resolution_defeated",
+            "steps": ["resolution_2"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "three_or_fewer_fury",
+      "text": "Check Campaign Log. Because there are three or fewer tally marks under “Yig’s Fury”"
+    },
+    {
+      "id": "four_or_more_fury",
+      "text": "Check Campaign Log. Because there are four or more tally marks under “Yig’s Fury”"
     },
     {
       "id": "resolution_2",
+      "text": "Proceed to <b>Resolution 2</b>.",
       "type": "resolution",
       "resolution": "R2"
     },
     {
       "id": "resolution_3",
+      "text": "Proceed to <b>Resolution 3</b>.",
       "type": "resolution",
       "resolution": "R3"
     },
@@ -13519,6 +13507,7 @@
     },
     {
       "id": "investigators_recovered_relic",
+      "text": "In your Campaign Log, record that <i>the investigators recovered the Relic of Ages</i>. One investigator must add the Relic of Ages to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
@@ -13620,11 +13609,7 @@
     },
     {
       "id": "choose_new_investigators",
-      "text": "Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal.",
-      "effects": [{
-        "type": "campaign_data",
-        "setting": "choose_investigators"
-      }]
+      "text": "Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal."
     },
     {
       "id": "extra_doom_on_entryway",
@@ -13644,6 +13629,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "check_investigators_poisoned",
+      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "source": "scenario",
+        "choices": [
+          {
+            "text": "Poisoned",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -13656,7 +13663,7 @@
     {
       "id": "no_resolution_defeated",
       "title": "No resolution was reached because each investigator was defeated",
-      "steps": ["check_yigs_fury_no_resolution"]
+      "steps": []
     },
     {
       "id": "no_resolution_resigned",
@@ -13667,13 +13674,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "(The following is scrawled below the previous journal entry.)\nThe outside of the temple ruins appeared Aztec in origin, but once we breached the interior, it became clear that these buildings had a very different and inhuman origin. The ruins were alive. The grooves in the walls were illuminated as though powered by electricity, and a faint hum of energy reverberated throughout the halls. In spite of the serpent creatures, we were able to reach a hidden passage that led deeper underground.\nIn the central chamber of these underground halls, we found our prize: a steel orb of unknown origin, gently humming and glowing with a dim blue light. It was attached delicately to a bronze frame, appearing almost religious in its significance, and we knew it could not have been made by the Aztecs.\nWith the artifact in tow, we fled the ruins. The building had started to crumble around us, as though the orb was the only thing keeping it standing. Had it been powering the ruins, like a battery? What exactly was this device that the serpents guarded so fervently?\nMaria was waiting for us with the trucks when we finally reached the northern edge of the rainforest. We’re getting the hell out of this serpent-infested jungle while we still can.",
-      "steps": ["investigators_recovered_relic", "check_harbinger", "record_yigs_fury", "earn_xp"]
+      "steps": ["investigators_recovered_relic", "check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "(The following is scrawled below the previous journal entry.)\nIt is not in my nature to leave a thing unfinished. For the sake of my fallen comrades, I have taken it upon myself to record the remainder of our expedition in this journal.\nThe others never made it out of the temple. I convinced two of the other members of the expedition, José and Andrea, to venture in after the others...But now I fear a terrible fate has befallen them, as well.\nThankfully, my gambit was worthwhile. While José and Andrea searched for the others, I snuck into the temple and took a different route. Having seen what we have seen, knowing what we know now, I couldn’t have returned to the university without evidence of our discovery. While the serpent creatures were distracted, I was able to reach a hidden passageway that led deeper underground.\nIn the central chamber of these underground halls, I found the device. The orb was made of an unnatural steel, attached delicately to its bronze frame. It pulsed with power in my hands and glowed with a dim blue light. Any fool could tell that it was not made by the Aztecs, but the other members of the expedition could not even begin to understand its true significance. The ruins started to crumble around me as I left, but it mattered not. The relic was all that mattered now.\nWith the artifact in tow, I returned to camp and told the others it was time to depart. Maria was waiting for us with the trucks when we finally reached the northern edge of the jungle. Now we are headed to Texas, where we will cross the border into the United States.\nIt is a shame what happened to the others. Their sacrifice will not be in vain. Now, my work can continue.\n– Alejandro Vela",
-      "steps": ["alejandro_recovered_relic", "check_harbinger", "record_yigs_fury", "earn_xp"]
+      "steps": ["alejandro_recovered_relic", "check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R3",
@@ -13685,13 +13692,13 @@
       "id": "R4",
       "title": "Resolution 4",
       "text": "(The following is scrawled below the previous journal entry.)\nWe’ve made our decision. Alejandro is right: we’ve come too far to back down now. Our plan is to regroup and head back into the temple once more. Even from here, we can tell that the layout of the temple has warped and changed. The ruins seem to have reset to their dormant state. With any luck, we’ll make it out this time...",
-      "steps": ["replay_scenario", "choose_new_investigators", "extra_doom_on_entryway"]
+      "steps": ["replay_scenario", "choose_new_investigators", "extra_doom_on_entryway", "check_investigators_poisoned"]
     },
     {
       "id": "R5",
       "title": "Resolution 5",
       "text": "(The following is scrawled below the previous journal entry.)\nWe made our decision. There was no way we were going back into that deathtrap. Thankfully, there was another way. José had brought some TNT from the trucks, and there was more than enough to level the damned place.\nThat night, we put on a hell of a fireworks show. The jungle protested. Birds scattered into the sky, the ground rumbled, and hateful snarls surrounded our camp. But the dynamite did its job. Once the dust settled, we began sifting through the debris in search of anything with historical or cultural significance we could bring back to Arkham.\nJosé was the first to notice the blue light peeking out from underneath the remains of the temple. The rays grew in intensity with each passing moment. As we started clearing the rubble in order to discover the source of the light, there was a sudden flash, and the debris at the center of the ruins scattered. A steel orb of unknown origin lay on top of the rubble, gently humming. It was attached delicately to a bronze frame, appearing almost religious in its significance. The blue glow emanating from the device dimmed as I touched it. There was no way a device like this was built by the Aztecs.\nWith the artifact in tow, we left the smoldering temple behind us. We had outstayed our welcome in this rainforest, and we knew it. Around us, the jungle hissed. The ground slithered and crawled with snakes. In the darkness, we heard shouts in a language we could not understand. There was no time to pack up camp; we ran as soon as we had the chance. Andrea was struck in her throat by a black-feathered arrow, her startled scream captured in grim perpetuity. José was grabbed by a giant boa as we fled north into the river canyon. His neck snapped before we could reach him.\nMaria was waiting for us with the trucks when we finally reached the northern edge of the jungle. We didn’t stop until we crossed into Mexico City. Even now I do not feel safe: who could, after seeing what we have seen?\nTo hell with the Eztli and to hell with this forsaken place.",
-      "steps": ["investigators_recovered_relic", "check_harbinger", "record_yigs_fury_plus_10", "earn_xp"]
+      "steps": ["investigators_recovered_relic", "check_harbinger", "record_yigs_fury_plus_10", "earn_xp", "check_investigators_poisoned"]
     }
   ]
 }
@@ -13947,6 +13954,28 @@
     {
       "id": "proceed_scenario_2",
       "text": "Investigators may not spend experience or alter their decks in between Scenarios V-A and V-B. Proceed immediately to <b>Scenario V-B: Heart of the Elders, Part 2</b>."
+    },
+    {
+      "id": "check_investigators_poisoned",
+      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "source": "scenario",
+        "choices": [
+          {
+            "text": "Poisoned",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -13954,13 +13983,13 @@
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "The hazards of the jungle are too dangerous for you to continue exploring. If you remain any longer, these odd pillars will mark your grave. You decide to flee for now, returning to a familiar clearing several miles away where you can recuperate. You know that you must eventually return to the pillars and figure out the pattern that will open the way forward...but for now, at least you are safe.",
-      "steps": ["record_paths_known", "replay_scenario"]
+      "steps": ["record_paths_known", "check_investigators_poisoned", "replay_scenario"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "Swallowing your fear, you enter the cavern...",
-      "steps": ["record_jungle_watches", "earn_xp", "proceed_scenario_2"]
+      "steps": ["record_jungle_watches", "earn_xp", "check_investigators_poisoned", "proceed_scenario_2"]
     }
   ]
 }
@@ -14141,6 +14170,28 @@
       "id": "resolution_2",
       "type": "resolution",
       "resolution": "R2"
+    },
+    {
+      "id": "check_investigators_poisoned",
+      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "source": "scenario",
+        "choices": [
+          {
+            "text": "Poisoned",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -14154,13 +14205,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "“Finally! Yoth, cavern of the serpents! The cursed ones, who fled the destruction of Valusia!” Alejandro examines the entryway with wonder in his eyes, arms raised in exultation. You know not of what he speaks, and you are beginning to grow worried. Just then, something scutters behind you, and a sound like the click-clacking of a claw catches you by surprise. Emerging from the darkness behind you are several alien creatures, the likes of which you have never seen: ten feet tall, with conical bodies that end in four strange appendages of varying lengths. “There you are,” Alejandro says calmly. One of the creatures responds by clicking its claws against one another in a deliberate pattern. “Take their minds,” Alejandro commands the creatures. “We have no further use for them.” It is your last human memory.",
-      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp"]
+      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Before you are able to cross into the next layer of the cavern, a sound like the click-clacking of a claw catches you by surprise. Emerging from the darkness behind you are several alien creatures, the likes of which you have never seen: ten feet tall, with conical bodies that end in four strange appendages of varying lengths. You are stunned to see a human figure standing at the head of the group: none other than Alejandro Vela. “Take their minds,” Alejandro commands the creatures. “We have no further use for them.” It is your last human memory.",
-      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp"]
+      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     }
   ]
 }
@@ -14195,6 +14246,8 @@
         "section": "supplies",
         "id": "gasoline",
         "investigator": "choice",
+        "min": 1,
+        "max": 1,
         "choices": [
           {
             "boolCondition": false,
@@ -14286,7 +14339,9 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "investigator": "any",
+        "investigator": "choice",
+        "min": 0,
+        "max": 4,
         "choices": [
           {
             "boolCondition": true,
@@ -14304,11 +14359,12 @@
       "type": "branch",
       "condition": {
         "type": "has_card",
-        "investigator": "any",
+        "investigator": "each",
         "card": "04102",
         "options": [
           {
             "boolCondition": true,
+            "condition": "The Poison Spreads",
             "effects": [
               {
                 "type": "story_step",
@@ -14734,7 +14790,9 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "investigator": "any",
+        "investigator": "choice",
+        "min": 0,
+        "max": 4,
         "choices": [
           {
             "boolCondition": true,
@@ -14752,34 +14810,17 @@
       "type": "branch",
       "condition": {
         "type": "has_card",
-        "investigator": "any",
+        "investigator": "each",
         "card": "04102",
         "options": [
           {
             "boolCondition": true,
-            "steps": ["poison_spreads", "physical_trauma"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "poison_spreads",
-      "type": "story",
-      "title": "The Poison Spreads",
-      "text": "As the days went by, the poison continued to spread through my body. By the second night, my skin was drenched in sweat. I started having difficutly breathing, and I began every morning by retching up most of the previous night’s dinner."
-    },
-    {
-      "id": "physical_trauma",
-      "text": "You suffer 1 physical trauma",
-      "type": "branch",
-      "condition": {
-        "type": "has_card",
-        "investigator": "any",
-        "card": "04102",
-        "options": [
-          {
-            "boolCondition": true,
+            "condition": "The Poison Spreads",
             "effects": [
+              {
+                "type": "story_step",
+                "steps": ["poison_spreads"]
+              },
               {
                 "type": "trauma",
                 "investigator": "$input_value",
@@ -14789,6 +14830,12 @@
           }
         ]
       }
+    },
+    {
+      "id": "poison_spreads",
+      "type": "story",
+      "title": "The Poison Spreads",
+      "text": "As the days went by, the poison continued to spread through my body. By the second night, my skin was drenched in sweat. I started having difficutly breathing, and I began every morning by retching up most of the previous night’s dinner."
     }
   ]
 }
@@ -14944,11 +14991,7 @@
             "numCondition": 1,
             "steps": ["more_cultists", "gather_cultists"]
           }
-        ],
-        "defaultOption": {
-          "default": true,
-          "steps": []
-        }
+        ]
       }
     },
     {
@@ -15420,6 +15463,8 @@
         "section": "supplies",
         "id": "gasoline",
         "investigator": "choice",
+        "min": 1,
+        "max": 1,
         "choices": [
           {
             "boolCondition": false,
@@ -15711,6 +15756,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "check_investigators_poisoned",
+      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "source": "scenario",
+        "choices": [
+          {
+            "text": "Poisoned",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -15718,19 +15785,19 @@
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator was defeated)",
       "text": "When you next open your eyes, you are back in the bed of your hotel room. You raise your hand to shield your eyes from the sunlight that pierces through the bedroom’s curtains. The glaring light is akin to a vice crushing your temples. Thin wisps of incense smoke fill the air.\nRising to your feet requires a colossal effort. A small voice in the back of your mind tells you it was all a figment of your imagination, a nightmare fueled by weariness. It is the voice of self-preservation warning you to avoid the path of lunacy you have set upon. You ignore it and rise to your feet, your legs trembling with terror and exhaustion. Quietly, you call out for Ichtaca, wondering if she remembers what happened last night—or if she was even there to begin with. You find her slumped on the floor, her back against the door of the hotel room. She is unconscious and unresponsive, her face ashen. After several worrisome minutes attempting to wake her, you finally succeed. She sputters into consciousness, coughing violently and convulsing as though possessed. “The cave. The maw in the sky, bathed in red. Did you see it?”\nYour head pulses with pain as you attempt to remember the events of last night, and you shake your head. “It must be the path that leads to the Nexus,” she continues, gripping her head tightly with one hand. You attempt to help her to her feet, but she pushes you away. “What was I thinking? The boundary is thinning. Any tension and it could have snapped.” Her gaze shifts toward you. “I should not have involved you in this. But, like it or not, you are involved. It is too late to go back. I know where to find the Nexus, and you must journey with me.”",
-      "steps": ["check_act_2", "record_x_paths_known", "check_harbinger", "record_yigs_fury", "earn_xp"]
+      "steps": ["check_act_2", "record_x_paths_known", "check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "You are assailed by a prismatic assortment of colors and lights as your mind hurtles back into place. When you next open your eyes, you are lying in the city’s central plaza, your head still spinning from the sensation of plummeting. A small voice in the back of your mind tells you it was all a figment of your imagination, a daydream. It is the voice of self-preservation warning you to avoid the path of lunacy you have set upon. You ignore it and rise to your feet, your legs trembling with terror and exhaustion.\n“That woman...She must have realized who I am and followed through the breach I made. Perhaps she wished to know the location of the Nexus, as well,” Ichtaca says cryptically. Your head pulses with pain as you attempt to remember the events of the past few hours. “You saw it, did you not? The cave. The maw in the sky, bathed in red,” she continues, searching the sky in contemplation. “It must be the path that leads to the Nexus.”\nIt is difficult for you to recall with precision what happened on the other side, but the image of the red cavern flickers across your memory. You confirm with Ichtaca that you saw the cavern as well, and ask her how she knows it leads to the Nexus. Her bloodshot gaze meets yours, and you think you spot the hint of a smirk tugging on her lips. “It is a difficult thing...Peering across the boundary, into the very threads of time. Perhaps you are more than you seem,” she responds, the irony of her statement lost on her. Though she departs without answering your question, you understand the answer that remains unspoken: In the haze of broken timelines and unexplainable phenomena, the path you saw was “one future.” A future you intend to fulfill.",
-      "steps": ["record_x_paths_known", "check_if_ichtaca_has_confidence", "check_harbinger", "record_yigs_fury", "earn_xp"]
+      "steps": ["record_x_paths_known", "check_if_ichtaca_has_confidence", "check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "The boundary along the horizon shimmers as your path home closes before your eyes. The surreal haze and the weightlessness you have experienced throughout this vision fades, and you are left with the sudden understanding that this is not a dream. You are trapped in a time that is not your own, and Ichtaca is nowhere to be found.\nYou wander for what seems like hours. Days. Weeks. Your mind cannot take any more. The realization that you may be trapped here forever is terrifying. Desperation and despair take hold of your mind, a bout of madness and loneliness that you cannot escape.You no longer remember how long it has been since you arrived here. You have not slept or eaten.\nSuddenly, after an eternity of waiting, the boundary cracks, and the sky is flooded with a blinding white light. When you next open your eyes, you are lying in the city’s central plaza, your head still spinning from the sensation of plummeting. Ichtaca helps you to your feet, your legs trembling with terror and exhaustion. You ask her how long you were out, and she shakes her head. “It doesn’t matter. You’re here now.” You ignore her evasive answer, but resentment boils to the surface. Did she leave you behind on purpose, or by accident? “You saw it, did you not?” she asks. “The cave. The maw in the sky, bathed in red.” You stare blankly, your memory suddenly hazy. “It matters not,” she continues. “I know now where to find the Nexus, and you must journey with me.”",
-      "steps": ["check_act_2", "record_x_paths_known", "check_harbinger", "record_yigs_fury", "earn_xp"]
+      "steps": ["check_act_2", "record_x_paths_known", "check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     }
   ]
 }
@@ -17113,6 +17180,28 @@
       "id": "resolution_1",
       "type": "resolution",
       "resolution": "R1"
+    },
+    {
+      "id": "check_investigators_poisoned",
+      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "source": "scenario",
+        "choices": [
+          {
+            "text": "Poisoned",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -17125,13 +17214,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "After hours and hours of travel, you’ve only just scratched the surface of this boundless subterranean world. Humanity could spend centuries mapping out these tunnels and never complete the task. No matter how quickly you plumb the depths, the serpents chasing you are hot on your tail. You are intruders in their home, and they know these hellish tunnels better than you. With your wounds slowing you down and panic seeping into every one of your decisions, your death at the hands of these creatures is inevitable. Despair worms its way into your mind. When the serpents inevitably catch up to you, you are crossing one of the cavern’s many long bridges of stone that span a wide, dark chasm. Serpent creatures on both sides of the chasm flank you, spear tips corralling you against the precarious edge of the bridge. A small hunk of stone cracks at your heel and detaches, falling into the inky void below. You do not hear it strike the floor of the chasm. There is no hope to escape or flee this time—you have no choice but to accept your fate. The spear tips press you closer to the edge. You close your eyes and fall.",
-      "steps": ["fell_into_depths", "record_final_depth", "check_final_depth", "check_harbinger", "record_yigs_fury", "earn_xp", "earn_depth_xp"]
+      "steps": ["fell_into_depths", "record_final_depth", "check_final_depth", "check_harbinger", "record_yigs_fury", "earn_xp", "earn_depth_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Somehow, despite the odds stacked against you, you’ve reached your destination. The telltale red glow that has enveloped you since you entered Yoth recedes, replaced with an unpierceable inky darkness. The Nexus must be close... You can feel it.",
-      "steps": ["nexus_is_near", "check_harbinger", "record_yigs_fury", "earn_xp", "earn_depth_xp"]
+      "steps": ["nexus_is_near", "check_harbinger", "record_yigs_fury", "earn_xp", "earn_depth_xp", "check_investigators_poisoned"]
     }
   ]
 }
@@ -17494,7 +17583,9 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
-        "investigator": "any",
+        "investigator": "choice",
+        "min": 0,
+        "max": 4,
         "choices": [
           {
             "boolCondition": true,
@@ -17512,11 +17603,12 @@
       "type": "branch",
       "condition": {
         "type": "has_card",
-        "investigator": "any",
+        "investigator": "each",
         "card": "04102",
         "options": [
           {
             "boolCondition": true,
+            "condition": "The Poison Spreads",
             "effects": [
               {
                 "type": "story_step",
@@ -17796,7 +17888,7 @@
         "nightgaunts",
         "pentagram"
       ],
-      "text": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown (First Bank of Arkham), Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
+      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow) and the following locations: Northside, Downtown (First Bank of Arkham), Easttown, Miskatonic University, and Rivertown. Do not gather the rest of the locations or the act, agenda, and scenario reference cards from that set."
     },
     {
       "id": "set_aside_alejandro_and_relic",
@@ -17838,10 +17930,12 @@
     },
     {
       "id": "act_ab_harlan_in_trouble",
-      "text": "Because <i>the investigators gave custody of the relic to Harlan Earnstone</i>, remove the following act cards from the “a/b” deck, instead: The Relic Is Missing!, both copies of At the Exhibit, and one of the two copies of Harlan’s Curse, at random."
+      "bullet_type": "small",
+      "text": "Because <i>the investigators gave custody of the relic to Harlan Earnstone</i>, remove the following act cards from the “a/b” deck: The Relic Is Missing!, both copies of At the Exhibit, and one of the two copies of Harlan’s Curse, at random."
     },
     {
       "id": "act_ab_relic_is_missing",
+      "bullet_type": "small",
       "text": "Because <i>Alejandro recovered the Relic of Ages</i> or <i>the investigators gave custody of the relic to Alejandro</i>, remove the following act cards from the “a/b” deck: Harlan Is in Danger!, both copies of Harlan’s Curse, and one of the two copies of At the Exhibit, at random."
     },
     {
@@ -17853,16 +17947,24 @@
         "choices": [
           {
             "text": "If you wish to go to the police to inform them about Alejandro’s disappearance",
-            "description": "Remove the following act cards from the “c/d” deck: Search for Alejandro, both copies of Friends in High Places, and one of the two copies of At the Station, at random.",
-            "effects": []
+            "steps": ["go_to_police"]
           },
           {
             "text": "If you wish to look for Alejandro on your own",
-            "description": "Remove the following act cards from the “c/d” deck, instead: Missing Persons, both copies of At the Station, and one of the two copies of Friends in High Places, at random.",
-            "effects": []
+            "steps": ["search_for_alejandro_alone"]
           }
         ]
       }
+    },
+    {
+      "id": "go_to_police",
+      "bullet_type": "small",
+      "text": "Remove the following act cards from the “c/d” deck: Search for Alejandro, both copies of Friends in High Places, and one of the two copies of At the Station, at random."
+    },
+    {
+      "id": "search_for_alejandro_alone",
+      "bullet_type": "small",
+      "text": "Remove the following act cards from the “c/d” deck: Missing Persons, both copies of At the Station, and one of the two copies of Friends in High Places, at random."
     },
     {
       "id": "setup_act_ef",
@@ -17873,16 +17975,24 @@
         "choices": [
           {
             "text": "If “you listened to Ichtaca’s tale”",
-            "description": "If you wish to go to the police to inform them about Alejandro’s disappearance, remove the following act cards from the “c/d” deck: Search for Alejandro, both copies of Friends in High Places, and one of the two copies of At the Station, at random.",
-            "effects": []
+            "steps": ["act_listened_to_ichtaca"]
           },
           {
             "text": "If “Ichtaca left without you”",
-            "description": "Remove the following act cards from the “e/f” deck, instead: The Guardian’s Inquiry, both copies of Strange Relics, and one of the two copies of The Cave of Darkness, at random.",
-            "effects": []
+            "steps": ["act_ichtaca_left_without_you"]
           }
         ]
       }
+    },
+    {
+      "id": "act_listened_to_ichtaca",
+      "bullet_type": "small",
+      "text": "Remove the following act cards from the “e/f ” deck: Trial of the Huntress, both copies of The Cave of Darkness, and one of the two copies of Strange Relics, at random."
+    },
+    {
+      "id": "act_ichtaca_left_without_you",
+      "bullet_type": "small",
+      "text": "Remove the following act cards from the “e/f” deck: The Guardian’s Inquiry, both copies of Strange Relics, and one of the two copies of The Cave of Darkness, at random."
     },
     {
       "id": "encounter_deck",
@@ -17892,6 +18002,7 @@
     {
       "id": "check_act_ab",
       "type": "input",
+      "text": "Which of the following is true?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -17908,7 +18019,7 @@
     },
     {
       "id": "maybe_earn_relic_of_ages",
-      "text": "If the Relic of Ages is not already part of an investigator’s deck...",
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -17924,6 +18035,7 @@
     },
     {
       "id": "earn_relic_of_ages",
+      "bullet_type": "small",
       "text": "Any one investigator must choose to include it in their deck. This card does not count toward that investigator’s deck size. For the remainder of the campaign, anytime the owner of the Relic of Ages leaves the campaign for any reason, choose another investigator and add it to that investigator’s deck.",
       "effects": [
         {
@@ -17936,9 +18048,10 @@
     {
       "id": "maybe_remove_relic_of_ages",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "has_card",
-        "investigator": "defeated",
+        "investigator": "any",
         "card": "04061",
         "options": [
           {
@@ -17950,6 +18063,7 @@
     },
     {
       "id": "remove_relic_of_ages",
+      "bullet_type": "small",
       "text": "Remove The Relic of Ages from that investigator’s deck for the remainder of the campaign.",
       "effects": [
         {
@@ -17961,6 +18075,7 @@
     {
       "id": "maybe_earn_alejandro",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "has_card",
         "investigator": "any",
@@ -17976,6 +18091,7 @@
     {
       "id": "check_forging_own_path_earn_alejandro",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -17994,6 +18110,7 @@
     },
     {
       "id": "earn_alejandro",
+      "bullet_type": "small",
       "text": "Any one investigator may choose to include him in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
@@ -18005,6 +18122,7 @@
     },
     {
       "id": "earn_alejandro_xp",
+      "bullet_type": "small",
       "text": "Because you are <i>forging your own path</i>, instead of earning Alejandro Vela you earn 2 bonus XP.",
       "effects": [
         {
@@ -18016,10 +18134,11 @@
     },
     {
       "id": "maybe_remove_alejandro",
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "has_card",
-        "investigator": "defeated",
+        "investigator": "any",
         "card": "04051",
         "options": [
           {
@@ -18031,6 +18150,7 @@
     },
     {
       "id": "remove_alejandro",
+      "bullet_type": "small",
       "text": "Remove Alejandro Vela from the investigator’s deck for the remainder of the campaign.",
       "effects": [
         {
@@ -18041,6 +18161,7 @@
     },
     {
       "id": "check_act_cd",
+      "text": "Which of the following is true?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -18058,6 +18179,7 @@
     },
     {
       "id": "check_act_ef",
+      "text": "Which of the following is true?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -18076,6 +18198,7 @@
     {
       "id": "maybe_earn_ichtaca",
       "type": "branch",
+      "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -18094,6 +18217,7 @@
     },
     {
       "id": "earn_ichtaca",
+      "bullet_type": "small",
       "text": "Any one investigator may choose to include Ichtaca <i>(The Forgotten Guardian)</i> in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
@@ -18105,6 +18229,7 @@
     },
     {
       "id": "earn_ichtaca_xp",
+      "bullet_type": "small",
       "text": "Because you are <i>forging your own path</i>, instead of earning Ichtaca <i>(The Forgotten Guardian)</i> you earn 2 bonus XP.",
       "effects": [
         {
@@ -18147,6 +18272,7 @@
       "input": {
         "type": "counter",
         "text": "Completed act 1 Cards:",
+        "max": 3,
         "effects": [
           {
             "type": "earn_xp",
@@ -18157,6 +18283,7 @@
     },
     {
       "id": "found_missing_relic",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -18168,6 +18295,7 @@
     },
     {
       "id": "relic_is_missing",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -18179,6 +18307,7 @@
     },
     {
       "id": "rescued_alejandro",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -18190,6 +18319,7 @@
     },
     {
       "id": "alejandro_is_missing",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -18201,6 +18331,7 @@
     },
     {
       "id": "forged_bond_with_ichtaca",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -18212,6 +18343,7 @@
     },
     {
       "id": "ichtaca_in_the_dark",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -18237,7 +18369,7 @@
       "type": "input",
       "input": {
         "type": "investigator_choice",
-        "investigator": "choice",
+        "investigator": "all",
         "source": "scenario",
         "choices": [
           {
@@ -18265,7 +18397,7 @@
       "type": "input",
       "input": {
         "type": "investigator_choice",
-        "investigator": "choice",
+        "investigator": "all",
         "source": "scenario",
         "choices": [
           {
@@ -18805,6 +18937,28 @@
           }
         ]
       }
+    },
+    {
+      "id": "check_investigators_poisoned",
+      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "source": "scenario",
+        "choices": [
+          {
+            "text": "Poisoned",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -18812,19 +18966,19 @@
       "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
-      "steps": ["wait_for_additional_supplies", "check_final_act", "record_vengeance", "earn_xp"]
+      "steps": ["wait_for_additional_supplies", "check_final_act", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
-      "steps": ["cleared_path_to_temple", "alejandro_remained_at_camp", "earned_ichtacas_trust", "record_vengeance", "earn_xp"]
+      "steps": ["cleared_path_to_temple", "alejandro_remained_at_camp", "earned_ichtacas_trust", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
-      "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp"]
+      "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
     }
   ]
 }

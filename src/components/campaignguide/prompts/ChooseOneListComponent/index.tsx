@@ -15,7 +15,7 @@ interface Props {
   buttonColor?: string | string[];
 }
 
-export default class ChoiceListPrompt extends React.Component<Props> {
+export default class ChooseOneListComponent extends React.Component<Props> {
   static getColor(idx: number, color?: string | string[]): string | undefined {
     if (Array.isArray(color)) {
       return color.length >= idx ? color[idx] : undefined;
@@ -46,8 +46,8 @@ export default class ChoiceListPrompt extends React.Component<Props> {
               choice={choice}
               selected={selectedIndex === idx}
               editable={editable}
-              tintColor={ChoiceListPrompt.getColor(idx, tintColor)}
-              buttonColor={ChoiceListPrompt.getColor(idx, buttonColor)}
+              tintColor={ChooseOneListComponent.getColor(idx, tintColor)}
+              buttonColor={ChooseOneListComponent.getColor(idx, buttonColor)}
               noBullet={noBullet}
             />
           );

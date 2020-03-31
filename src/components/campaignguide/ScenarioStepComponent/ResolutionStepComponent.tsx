@@ -5,8 +5,10 @@ import {
   Text,
 } from 'react-native';
 
+import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
+import CardTextComponent from 'components/card/CardTextComponent';
 import { ResolutionStep } from 'data/scenario/types';
 import typography from 'styles/typography';
 
@@ -25,21 +27,30 @@ export default class ResolutionStepComponent extends React.Component<Props> {
             return <Text>Unknown resolution: { step.resolution }</Text>;
           }
           return (
-            <View style={styles.step}>
-              <View style={styles.wrapper}>
-                <Text style={typography.mediumGameFont}>
-                  { resolution.title }
-                </Text>
-              </View>
-              { !!resolution.text && (
-                <View style={styles.wrapper}>
-                  <CardFlavorTextComponent
-                    text={resolution.text.replace(/\n/g, '\n\n')}
-                    color="#222"
-                  />
+            <>
+              { !!step.text && (
+                <SetupStepWrapper>
+                  <CardTextComponent text={step.text} />
+                </SetupStepWrapper>
+              )}
+              { (!!resolution.text || resolution.steps.length > 0) && (
+                <View style={styles.step}>
+                  <View style={styles.wrapper}>
+                    <Text style={typography.mediumGameFont}>
+                      { resolution.title }
+                    </Text>
+                  </View>
+                  { !!resolution.text && (
+                    <View style={styles.wrapper}>
+                      <CardFlavorTextComponent
+                        text={resolution.text.replace(/\n/g, '\n\n')}
+                        color="#222"
+                      />
+                    </View>
+                  ) }
                 </View>
               ) }
-            </View>
+            </>
           );
         } }
       </ScenarioGuideContext.Consumer>

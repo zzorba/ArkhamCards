@@ -32,9 +32,17 @@ export default class ScenarioButton extends React.Component<Props, State> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
 
+  name() {
+    const { scenario } = this.props;
+    if (scenario.attempt > 0) {
+      return t`${scenario.scenarioGuide.scenario.scenarioName} (Attempt ${scenario.attempt + 1})`;
+    }
+    return scenario.scenarioGuide.scenario.scenarioName;
+  }
+
   _onPress = () => {
     const { componentId, scenario, campaign } = this.props;
-    const scenarioId = scenario.scenarioGuide.scenario.id;
+    const scenarioId = scenario.scenarioGuide.id;
     if (scenario.type === 'playable') {
       this.context.campaignState.startScenario(scenarioId);
     }
@@ -48,7 +56,7 @@ export default class ScenarioButton extends React.Component<Props, State> {
         options: {
           topBar: {
             title: {
-              text: scenario.scenarioGuide.scenario.scenarioName,
+              text: this.name(),
             },
             backButton: {
               title: t`Back`,
@@ -104,12 +112,11 @@ export default class ScenarioButton extends React.Component<Props, State> {
 
   renderContent() {
     const { scenario } = this.props;
-    const scenarioName = scenario.scenarioGuide.scenario.scenarioName;
     switch (scenario.type) {
       case 'locked':
         return (
           <Text style={[typography.gameFont]}>
-            { scenarioName }
+            { this.name() }
           </Text>
         );
       case 'started':
@@ -118,14 +125,14 @@ export default class ScenarioButton extends React.Component<Props, State> {
         return (
           <>
             <Text style={[typography.gameFont, styles.playable]}>
-              { scenarioName }
+              { this.name() }
             </Text>
           </>
         );
       case 'skipped':
         return (
           <Text style={[typography.gameFont, styles.skipped]}>
-            { scenarioName }
+            { this.name() }
           </Text>
         );
     }

@@ -8,6 +8,7 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGu
 import ChaosTokenEffectComponent from './ChaosTokenEffectComponent';
 import CampaignLogEffectComponent from './CampaignLogEffectComponent';
 import AddCardEffectComponent from './AddCardEffectComponent';
+import RemoveCardEffectComponent from './RemoveCardEffectComponent';
 import TraumaEffectComponent from './TraumaEffectComponent';
 import { EffectsStep, Effect } from 'data/scenario/types';
 
@@ -21,9 +22,9 @@ export default class EffectsStepComponent extends React.Component<Props> {
     id: string,
     effect: Effect,
     input?: string[],
-    counterInput?: number,
+    numberInput?: number[],
   ): React.ReactNode {
-    const { step } = this.props;
+    const { step, campaignLog } = this.props;
     switch (effect.type) {
       case 'campaign_log':
         if (this.props.step.stepText) {
@@ -34,7 +35,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
             bulletType={step.bullet_type}
             effect={effect}
             input={input}
-            counterInput={counterInput}
+            numberInput={numberInput}
           />
         );
       case 'add_chaos_token':
@@ -52,6 +53,16 @@ export default class EffectsStepComponent extends React.Component<Props> {
           <AddCardEffectComponent
             id={id}
             effect={effect}
+            input={input}
+          />
+        );
+      case 'remove_card':
+        return (
+          <RemoveCardEffectComponent
+            id={id}
+            effect={effect}
+            input={input}
+            campaignLog={campaignLog}
           />
         );
       case 'trauma':
@@ -95,7 +106,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
                 step.id,
                 effect,
                 effectsWithInput.input,
-                effectsWithInput.counterInput
+                effectsWithInput.numberInput
               )
             }
           </View>

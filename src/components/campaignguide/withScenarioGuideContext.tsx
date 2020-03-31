@@ -67,7 +67,7 @@ export default function withScenarioGuideContext<Props>(
         scenarioGuide,
         investigatorDecks,
         scenarioState: new ScenarioStateHelper(
-          scenarioGuide.scenario.id,
+          scenarioGuide.id,
           campaignState
         ),
       };

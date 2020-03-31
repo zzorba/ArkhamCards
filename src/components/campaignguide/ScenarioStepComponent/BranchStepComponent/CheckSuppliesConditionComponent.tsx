@@ -77,8 +77,12 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
     return card.name;
   };
 
-  _renderInvestigatorChoiceResults = ({ investigator }: InvestigatorDeck) => {
+  _renderInvestigatorChoiceResults = (investigatorDeck?: InvestigatorDeck) => {
+    if (!investigatorDeck) {
+      return null;
+    }
     const { condition } = this.props;
+    const investigator = investigatorDeck.investigator;
     const decision = this.investigatorHasSupply(investigator.code);
     const option = find(condition.options, option => option.boolCondition === decision);
     return (

@@ -1,23 +1,27 @@
 import React from 'react';
-import { map } from 'lodash';
+import { map, filter } from 'lodash';
 
 import CheckListComponent from './CheckListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import { InvestigatorDeck } from 'data/scenario';
 import { FACTION_LIGHT_GRADIENTS } from 'constants';
 
 interface Props {
   id: string;
   checkText: string;
   defaultState?: boolean;
-  requiredTotal?: number;
+  min: number;
+  max: number;
+  deckMode?: boolean;
+  filter?: (investigatorDeck: InvestigatorDeck) => boolean;
 }
 
-export default class InvestigatorCounterComponent extends React.Component<Props> {
+export default class InvestigatorCheckListComponent extends React.Component<Props> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
   render() {
-    const { id, checkText, requiredTotal, defaultState } = this.props;
+    const { id, checkText, min, max, deckMode, defaultState } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks }: ScenarioGuideContextType) => {
@@ -26,14 +30,19 @@ export default class InvestigatorCounterComponent extends React.Component<Props>
               id={id}
               checkText={checkText}
               defaultState={defaultState}
-              items={map(investigatorDecks, ({ investigator }) => {
-                return {
-                  code: investigator.code,
-                  name: investigator.name,
-                  tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
-                };
-              })}
-              requiredTotal={requiredTotal}
+              items={map(
+                filter(investigatorDecks, deck => !this.props.filter || this.props.filter(deck)),
+                ({ investigator, deck }) => {
+                  return {
+                    code: investigator.code,
+                    name: investigator.name,
+                    value: deckMode ? deck.id : undefined,
+                    tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+                  };
+                })
+              }
+              min={min}
+              max={max}
             />
           );
         } }

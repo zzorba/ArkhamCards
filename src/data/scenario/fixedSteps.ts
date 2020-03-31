@@ -1,7 +1,7 @@
 import { filter, find, map } from 'lodash';
 import { t } from 'ttag';
 
-import { GenericStep, BranchStep, Resolution, ResolutionStep, InputStep } from 'data/scenario/types';
+import { Choice, GenericStep, BranchStep, Resolution, ResolutionStep, InputStep } from 'data/scenario/types';
 
 export const CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID = '$check_investigator_defeat';
 export function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
@@ -44,7 +44,7 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
       choices: map(
         filter(resolutions, resolution => resolution.id !== 'investigator_defeat'),
         resolution => {
-          return {
+          const choice: Choice = {
             text: resolution.title,
             steps: [
               INVESTIGATOR_STATUS_STEP.id,
@@ -53,7 +53,14 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
               ...resolution.steps,
               PROCEED_STEP.id,
             ],
+            effects: [{
+              type: 'scenario_data',
+              setting: 'scenario_status',
+              status: 'resolution',
+              resolution: resolution.id,
+            }],
           };
+          return choice;
         }
       ),
     },
@@ -70,12 +77,6 @@ export function resolutionStep(id: string): ResolutionStep | undefined {
     type: 'resolution',
     generated: true,
     resolution,
-    effects: [{
-      type: 'scenario_data',
-      setting: 'scenario_status',
-      status: 'resolution',
-      resolution,
-    }],
   };
 }
 
@@ -95,25 +96,9 @@ export const CHOOSE_INVESTIGATORS_STEP: InputStep = {
   id: '$choose_investigators',
   type: 'input',
   input: {
-    type: 'investigator_choice',
-    investigator: 'all',
-    source: 'campaign',
-    defaultChoice: 0,
-    choices: [
-      {
-        text: t`Playing this scenario`,
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'playing_scenario',
-            investigator: '$input_value',
-          },
-        ],
-      },
-    ],
+    type: 'scenario_investigators',
   },
 };
-
 
 export const LEAD_INVESTIGATOR_STEP: InputStep = {
   id: '$lead_investigator',
@@ -122,6 +107,7 @@ export const LEAD_INVESTIGATOR_STEP: InputStep = {
   input: {
     type: 'investigator_choice',
     investigator: 'any',
+    source: 'scenario',
     choices: [
       {
         text: t`Lead Investigator`,
@@ -149,6 +135,7 @@ export const INVESTIGATOR_STATUS_STEP: InputStep = {
   input: {
     type: 'investigator_choice',
     investigator: 'all',
+    source: 'scenario',
     choices: [
       {
         text: t`Alive`,

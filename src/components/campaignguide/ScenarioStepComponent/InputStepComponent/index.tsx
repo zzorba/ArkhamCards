@@ -2,19 +2,21 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
+import { t } from 'ttag';
 
-import InvestigatorCheckListComponent from '../prompts/InvestigatorCheckListComponent';
-import UseSuppliesPrompt from '../prompts/UseSuppliesPrompt';
+import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
+import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
+import UseSuppliesPrompt from 'components/campaignguide/prompts/UseSuppliesPrompt';
 import CardTextComponent from 'components/card/CardTextComponent';
-import SetupStepWrapper from '../SetupStepWrapper';
-import CardChoicePrompt from '../prompts/CardChoicePrompt';
-import ChooseInvestigatorPrompt from '../prompts/ChooseInvestigatorPrompt';
-import InvestigatorCounterComponent from '../prompts/InvestigatorCounterComponent';
-import ChooseOnePrompt from '../prompts/ChooseOnePrompt';
-import BinaryPrompt from '../prompts/BinaryPrompt';
-import NumberPrompt from '../prompts/NumberPrompt';
-import SuppliesPrompt from '../prompts/SuppliesPrompt';
-import InvestigatorChoicePrompt from '../prompts/InvestigatorChoicePrompt';
+import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
+import CardChoicePrompt from 'components/campaignguide/prompts/CardChoicePrompt';
+import ChooseInvestigatorPrompt from 'components/campaignguide/prompts/ChooseInvestigatorPrompt';
+import InvestigatorCounterComponent from 'components/campaignguide/prompts/InvestigatorCounterComponent';
+import ChooseOnePrompt from 'components/campaignguide/prompts/ChooseOnePrompt';
+import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
+import NumberPrompt from 'components/campaignguide/prompts/NumberPrompt';
+import SuppliesPrompt from 'components/campaignguide/prompts/SuppliesPrompt';
+import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
 import { InputStep } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
@@ -25,7 +27,7 @@ interface Props {
 }
 
 export default class InputStepComponent extends React.Component<Props> {
-  renderPrompt() {
+  renderPrompt(): React.ReactNode {
     const { step, campaignLog } = this.props;
     switch (step.input.type) {
       case 'choose_one':
@@ -54,6 +56,7 @@ export default class InputStepComponent extends React.Component<Props> {
             bulletType={step.bullet_type}
             prompt={step.input.text}
             effects={step.input.effects}
+            max={step.input.max}
             text={step.text}
           />
         );
@@ -97,35 +100,32 @@ export default class InputStepComponent extends React.Component<Props> {
           />
         );
       case 'investigator_choice':
-        if (step.input.investigator === 'any') {
-          return (
-            <ChooseInvestigatorPrompt
-              id={step.id}
-              title={step.input.choices[0].text}
-              required
-            />
-          );
-        }
-        if (step.input.investigator === 'all' && step.input.choices.length === 1) {
-          return (
-            <InvestigatorCheckListComponent
-              id={step.id}
-              checkText={step.input.choices[0].text}
-              defaultState={step.input.defaultChoice === 0}
-            />
-          );
-        }
         return (
-          <InvestigatorChoicePrompt
-            id={step.id}
-            text={step.text}
-            bulletType={step.bullet_type}
-            choices={step.input.choices}
-            detailed={step.input.detailed}
-            optional={step.input.investigator === 'choice'}
+          <InvestigatorChoiceInputComponent
+            step={step}
+            input={step.input}
+            campaignLog={campaignLog}
           />
         );
-    }
+      case 'scenario_investigators':
+        return (
+          <>
+            { !!step.text && (
+              <SetupStepWrapper>
+                <CardTextComponent text={step.text} />
+              </SetupStepWrapper>
+            ) }
+            <InvestigatorCheckListComponent
+              id={step.id}
+              checkText={t`Choose Investigators`}
+              defaultState
+              min={1}
+              max={4}
+              allowNewDecks
+            />
+          </>
+        );
+      }
   }
 
   render() {

@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   smallBullet: {
-    marginLeft: 32,
+    marginLeft: 8,
     marginRight: 8,
     marginTop: 0,
   },

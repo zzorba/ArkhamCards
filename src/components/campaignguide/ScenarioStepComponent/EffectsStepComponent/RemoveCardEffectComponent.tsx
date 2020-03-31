@@ -5,19 +5,22 @@ import { t } from 'ttag';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
+import InvestigatorCheckListComponent from '../../prompts/InvestigatorCheckListComponent';
 import { InvestigatorDeck } from 'data/scenario';
-import { AddCardEffect } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import { RemoveCardEffect } from 'data/scenario/types';
 import Card from 'data/Card';
 import CardTextComponent from 'components/card/CardTextComponent';
 
 interface Props {
   id: string;
-  effect: AddCardEffect;
+  effect: RemoveCardEffect;
   input?: string[];
   skipCampaignLog?: boolean;
+  campaignLog: GuidedCampaignLog;
 }
 
-export default class AddCardEffectComponent extends React.Component<Props> {
+export default class RemoveCardEffectComponent extends React.Component<Props> {
   _renderInvestigators = (
     investigatorDecks: InvestigatorDeck[],
     card: Card
@@ -31,8 +34,28 @@ export default class AddCardEffectComponent extends React.Component<Props> {
     ));
   };
 
+  _investigatorHasCard = ({ investigator }: InvestigatorDeck) => {
+    const { effect, campaignLog } = this.props;
+    return campaignLog.hasCard(investigator.code, effect.card);
+  };
+
   _renderCard = (card: Card) => {
-    const { id, effect } = this.props;
+    const { id, effect, input } = this.props;
+    if (!effect.investigator) {
+      // These are always spelled out.
+      return null;
+    }
+    if (effect.investigator === 'choice' && input) {
+      return (
+        <InvestigatorCheckListComponent
+          id={`${id}_investigator`}
+          min={input.length}
+          max={input.length}
+          checkText={t`Remove ${card.name} (${input.length})`}
+          filter={this._investigatorHasCard}
+        />
+      );
+    }
     return (
       <InvestigatorSelectorWrapper
         id={id}
@@ -45,6 +68,11 @@ export default class AddCardEffectComponent extends React.Component<Props> {
   };
 
   render() {
+    const { effect } = this.props;
+    if (effect.card === '$input_value') {
+      // We always write these out.
+      return null;
+    }
     return (
       <SingleCardWrapper
         code={this.props.effect.card}

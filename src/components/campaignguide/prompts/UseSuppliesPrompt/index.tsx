@@ -8,10 +8,10 @@ import InvestigatorCheckListComponent from '../InvestigatorCheckListComponent';
 import InvestigatorCounterComponent from '../InvestigatorCounterComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import { BulletType, UseSuppliesInput } from 'data/scenario/types';
+import { BulletType, UseSuppliesInput, UseSuppliesAllInput, UseSuppliesChoiceInput } from 'data/scenario/types';
+import { InvestigatorDeck } from 'data/scenario';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { InvestigatorDeck } from 'data/scenario';
 import typography from 'styles/typography';
 
 interface Props {
@@ -48,9 +48,8 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     this.context.scenarioState.setSupplies(id, counts);
   };
 
-  renderFirstAllPrompt() {
-    const { id, input, campaignLog } = this.props;
-
+  supplyLimits() {
+    const { input, campaignLog } = this.props;
     const investigagorSupplies = campaignLog.investigatorSections[input.section] || {};
     const limits: { [code: string]: number } = {};
     forEach(investigagorSupplies, (supplies, code) => {
@@ -61,6 +60,12 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
       );
       limits[code] = (entry && entry.type === 'count') ? entry.count : 0;
     });
+    return limits;
+  }
+
+  renderFirstAllPrompt(input: UseSuppliesAllInput) {
+    const { id, campaignLog } = this.props;
+    const limits = this.supplyLimits();
 
     // Basically 2 sequential choices.
     // 1) How many "supply" to consume
@@ -84,15 +89,14 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     );
   }
 
-  renderSecondAllPrompt(scenarioState: ScenarioStateHelper) {
-    const { id, input, campaignLog } = this.props;
+  renderSecondAllPrompt(input: UseSuppliesAllInput, scenarioState: ScenarioStateHelper) {
+    const { id, campaignLog } = this.props;
     const choiceList = scenarioState.choiceList(`${id}_used`);
     if (choiceList === undefined) {
       return null;
     }
 
     const usedCount = sum(map(choiceList, choices => choices[0]));
-    console.log(usedCount);
     const desiredCount = campaignLog.playerCount();
     if (usedCount >= desiredCount) {
       // No secondary prompt is needed/
@@ -105,7 +109,27 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
       <InvestigatorCheckListComponent
         id={id}
         checkText={badThing ? t`Reads "${badThing.condition}"` : `Doesn't get any`}
-        requiredTotal={target}
+        min={target}
+        max={target}
+      />
+    );
+  }
+
+  _filterInvestigatorChoice = ({ investigator }: InvestigatorDeck) => {
+    const limits = this.supplyLimits();
+    const count = limits[investigator.code] || 0;
+    return count > 0;
+  };
+
+  renderChoicePrompt(input: UseSuppliesChoiceInput) {
+    const { id } = this.props;
+    return (
+      <InvestigatorCheckListComponent
+        id={id}
+        checkText={`Use ${input.id}`}
+        min={input.min}
+        max={input.min}
+        filter={this._filterInvestigatorChoice}
       />
     );
   }
@@ -122,19 +146,8 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
                   <SetupStepWrapper>
                     { !!text && <CardTextComponent text={text} /> }
                   </SetupStepWrapper>
-                  { this.renderFirstAllPrompt() }
-                  { this.renderSecondAllPrompt(scenarioState) }
-                </>
-              );
-            case 'any':
-              // Basically 2 sequential choices.
-              // 1) Players who have supply can choose to use it.
-              // 2) If so, they resolve the effect (which is an investigator choice).
-              return (
-                <>
-                  <SetupStepWrapper>
-                    { !!text && <CardTextComponent text={text} /> }
-                  </SetupStepWrapper>
+                  { this.renderFirstAllPrompt(input) }
+                  { this.renderSecondAllPrompt(input, scenarioState) }
                 </>
               );
             case 'choice':
@@ -144,6 +157,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
                   <SetupStepWrapper>
                     { !!text && <CardTextComponent text={text} /> }
                   </SetupStepWrapper>
+                  { this.renderChoicePrompt(input) }
                 </>
               );
           }

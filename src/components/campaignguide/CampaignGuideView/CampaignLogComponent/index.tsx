@@ -72,12 +72,31 @@ export default class CampaignLogComponent extends React.Component<Props> {
     }
   }
 
+  _renderStoryAsset = (card: Card) => {
+    return (
+      <Text>{card.name}</Text>
+    );
+  };
+
   _renderTrauma = (card: Card) => {
     const { campaignLog } = this.props;
+    const investigatorData = campaignLog.campaignData.investigatorData[card.code];
     return (
-      <Text>
-        { card.name }: { card.traumaString(campaignLog.campaignData.trauma[card.code]) }
-      </Text>
+      <>
+        <Text>
+          { card.name }:{ card.traumaString(investigatorData) }
+        </Text>
+        <Text>
+          Story Assets:
+        </Text>
+        {map(investigatorData && investigatorData.storyAssets || [], asset => (
+          <SingleCardWrapper
+            key={`${card.code}_${asset}`}
+            code={asset}
+            render={this._renderStoryAsset}
+          />
+        )) }
+      </>
     );
   };
 
@@ -94,8 +113,12 @@ export default class CampaignLogComponent extends React.Component<Props> {
             fontScale={fontScale}
           />
         </View>
-        { map(campaignLog.campaignData.trauma, (trauma, code) => (
-          <SingleCardWrapper key={code} code={code} render={this._renderTrauma} />
+        { map(campaignLog.campaignData.investigatorData, (investigatorData, code) => (
+          <SingleCardWrapper
+            key={code}
+            code={code}
+            render={this._renderTrauma}
+          />
         )) }
         { flatMap(campaignGuide.campaign.campaign.campaign_log, log => {
           if (log.type === 'hidden') {

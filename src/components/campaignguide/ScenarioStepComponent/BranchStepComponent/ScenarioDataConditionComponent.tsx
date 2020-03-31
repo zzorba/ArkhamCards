@@ -38,7 +38,8 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
           </SetupStepWrapper>
         );
       }
-      case 'investigator_status': {
+      case 'investigator_status':
+      case 'resolution': {
         // Only used for control flow right now.
         return null;
       }

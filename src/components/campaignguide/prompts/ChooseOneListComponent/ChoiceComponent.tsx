@@ -1,8 +1,9 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 // @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import ResultIndicatorIcon from '../../ResultIndicatorIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -41,28 +42,33 @@ export default class ChoiceComponent extends React.Component<Props> {
         styles.row,
         (index === 0 || !editable) ? { borderTopWidth: 1 } : {},
         selected && editable ? {
-          backgroundColor: tintColor || COLORS.veryLightBlue,
+          backgroundColor: tintColor,
         } : {},
       ]}>
-        { !noBullet && (
-          <View style={styles.bullet}>
-            <ArkhamIcon name="bullet" color="#2E5344" size={24} />
+        <View style={styles.padding}>
+          { !noBullet && (
+            <View style={styles.bullet}>
+              <ArkhamIcon name="bullet" color="#2E5344" size={24} />
+            </View>
+          ) }
+          <View style={styles.textBlock}>
+            { choice.flavor && <CardFlavorTextComponent text={choice.flavor} color="#222" /> }
+            { choice.text && <CardTextComponent text={choice.text} /> }
+            { choice.description && <CardTextComponent text={choice.description} /> }
           </View>
-        ) }
-        <View style={styles.textBlock}>
-          { choice.flavor && <CardFlavorTextComponent text={choice.flavor} color="#222" /> }
-          { choice.text && <CardTextComponent text={choice.text} /> }
-          { choice.description && <CardTextComponent text={choice.description} /> }
-        </View>
-        <View style={styles.arrow}>
-          { !selected && editable && (
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={30}
-              color={buttonColor || 'rgb(0, 122,255)'}
-            />
+          { editable && (
+            <View style={styles.arrow}>
+              <MaterialCommunityIcons
+                name={ selected ? 'radiobox-marked' : 'radiobox-blank'}
+                size={30}
+                color={buttonColor || 'rgb(0, 122,255)'}
+              />
+            </View>
           ) }
         </View>
+        { !editable && (
+          <ResultIndicatorIcon result={selected} noBorder />
+        ) }
       </View>
     );
   }
@@ -88,10 +94,14 @@ const styles = StyleSheet.create({
   row: {
     borderBottomWidth: 1,
     flexDirection: 'row',
+  },
+  padding: {
     paddingLeft: 24,
     paddingRight: 16,
     paddingTop: 8,
     paddingBottom: 8,
+    flexDirection: 'row',
+    flex: 1,
   },
   bullet: {
     marginRight: 4,

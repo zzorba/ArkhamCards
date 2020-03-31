@@ -46,12 +46,14 @@ interface PlayedScenario {
   type: 'started' | 'completed';
   scenarioGuide: ScenarioGuide;
   latestCampaignLog: GuidedCampaignLog;
+  attempt: number;
 }
 
 interface UnplayedScenario {
   type: 'locked' | 'playable' | 'skipped';
   scenarioGuide: ScenarioGuide;
   latestCampaignLog: GuidedCampaignLog;
+  attempt: number;
 }
 
 export type ProcessedScenario = PlayedScenario | UnplayedScenario;
@@ -83,7 +85,7 @@ export default class CampaignGuide {
   ): ScenarioGuide | undefined {
     const processedScenario = find(
       this.processAllScenarios(campaignState).scenarios,
-      scenario => scenario.scenarioGuide.scenario.id === id);
+      scenario => scenario.scenarioGuide.id === id);
     return processedScenario && processedScenario.scenarioGuide;
   }
 
@@ -93,7 +95,7 @@ export default class CampaignGuide {
     const scenarios: ProcessedScenario[] = [];
     let campaignLog: GuidedCampaignLog = new GuidedCampaignLog([], this);
     forEach(this.allScenarioIds(), scenarioId => {
-      if (!find(scenarios, scenario => scenario.scenarioGuide.scenario.id === scenarioId)) {
+      if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
         const nextScenarios = this.processScenario(
           scenarioId,
           campaignState,
@@ -124,11 +126,29 @@ export default class CampaignGuide {
     };
   }
 
+  private parseScenarioId(scenarioId: string) {
+    if (scenarioId.indexOf('#') === -1) {
+      return {
+        scenarioId,
+        replayCount: undefined,
+      };
+    }
+    const [actualScenarioId, replayCount] = scenarioId.split('#');
+    return {
+      scenarioId: actualScenarioId,
+      replayCount: parseInt(replayCount),
+    };
+  }
+
   private processScenario(
-    scenarioId: string,
+    rawScenarioId: string,
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog
   ): ProcessedScenario[] {
+    const {
+      scenarioId,
+      replayCount,
+    } = this.parseScenarioId(rawScenarioId);
     const scenario = (scenarioId === CAMPAIGN_SETUP_ID) ?
       {
         id: CAMPAIGN_SETUP_ID,
@@ -141,31 +161,53 @@ export default class CampaignGuide {
     if (!scenario) {
       throw new Error(`Unknown scenario: ${scenarioId}`);
     }
-    const scenarioGuide = new ScenarioGuide(scenario, this, campaignLog);
-    if (!campaignState.startedScenario(scenarioId)) {
-      if (campaignLog.scenarioStatus(scenarioId) === 'skipped') {
+    const scenarioGuide = new ScenarioGuide(
+      rawScenarioId,
+      scenario,
+      this,
+      campaignLog
+    );
+    if (!campaignState.startedScenario(rawScenarioId)) {
+      if (campaignLog.scenarioStatus(rawScenarioId) === 'skipped') {
         return [{
           type: 'skipped',
           scenarioGuide,
           latestCampaignLog: campaignLog,
+          attempt: replayCount || 0,
         }];
       }
       return [{
         type: 'playable',
         scenarioGuide,
         latestCampaignLog: campaignLog,
+        attempt: replayCount || 0,
       }];
     }
-    const scenarioState = new ScenarioStateHelper(scenarioId, campaignState);
+    const scenarioState = new ScenarioStateHelper(rawScenarioId, campaignState);
     const executedScenario = scenarioGuide.setupSteps(scenarioState);
     const firstResult: ProcessedScenario = {
       type: executedScenario.inProgress ? 'started' : 'completed',
       scenarioGuide,
       latestCampaignLog: executedScenario.latestCampaignLog,
+      attempt: replayCount || 0,
     };
+    if (executedScenario.inProgress) {
+      return [firstResult];
+    }
+    const newReplayCount = firstResult.latestCampaignLog.campaignData.scenarioReplayCount[scenarioId];
+    if (newReplayCount && (!replayCount || replayCount < newReplayCount)) {
+      return [
+        firstResult,
+        ...this.processScenario(
+          `${scenarioId}#${newReplayCount}`,
+          campaignState,
+          executedScenario.latestCampaignLog
+        ),
+      ];
+    }
 
     const nextScenario = executedScenario.latestCampaignLog.nextScenario();
-    if (!nextScenario || executedScenario.inProgress) {
+    if (!nextScenario) {
       return [firstResult];
     }
     return [

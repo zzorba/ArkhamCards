@@ -14,7 +14,7 @@ import CardTextComponent from 'components/card/CardTextComponent';
 interface Props {
   effect: CampaignLogEffect;
   input?: string[];
-  counterInput?: number;
+  numberInput?: number[];
   bulletType?: BulletType;
 }
 

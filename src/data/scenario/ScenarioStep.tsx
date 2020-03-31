@@ -1,4 +1,16 @@
-import { groupBy, flatMap, find, findIndex, forEach, keys, partition, map, sortBy, sum } from 'lodash';
+import {
+  filter,
+  flatMap,
+  find,
+  findIndex,
+  forEach,
+  groupBy,
+  keys,
+  map,
+  partition,
+  sortBy,
+  sum,
+} from 'lodash';
 
 import { ListChoices } from 'actions/types';
 import {
@@ -46,7 +58,10 @@ export default class ScenarioStep {
   }
 
   private getSpecialEffectChoiceList(effect: Effect): string | undefined {
-    if (effect.type === 'add_card' && (
+    if ((
+      effect.type === 'add_card' ||
+      effect.type === 'remove_card'
+    ) && (
       effect.investigator === 'choice' ||
       effect.investigator === 'any'
     )) {
@@ -99,6 +114,7 @@ export default class ScenarioStep {
               return;
             }
             switch (specialEffect.type) {
+              case 'remove_card':
               case 'add_card':
                 result.push({
                   input: keys(choiceList),
@@ -144,7 +160,7 @@ export default class ScenarioStep {
           return result;
         }),
         this.scenarioGuide.campaignGuide,
-        this.scenarioGuide.scenario.id,
+        this.scenarioGuide.id,
         this.campaignLog
       );
     }
@@ -177,11 +193,15 @@ export default class ScenarioStep {
         if (!resolution) {
           throw new Error(`Unknown resolution: ${this.step.resolution}`);
         }
-        return this.proceedToNextStep(
+        return this.maybeCreateEffectsStep(
+          this.step.id,
           [
             ...(this.step.generated ? [] : resolution.steps),
             ...this.remainingStepIds,
-          ]
+          ],
+          [{
+            effects: this.step.effects || [],
+          }]
         );
       }
       case 'effects': {
@@ -245,11 +265,10 @@ export default class ScenarioStep {
         const count = this.fullyGuided ?
           this.campaignLog.count(step.condition.section, step.condition.id) :
           inputCount;
-        console.log({section: step.condition.section, id: step.condition.id, count });
         const choice =
           find(step.condition.options, option => option.numCondition === count) ||
           step.condition.defaultOption;
-        const extraSteps = choice.steps || [];
+        const extraSteps = (choice && choice.steps) || [];
         return this.maybeCreateEffectsStep(
           step.id,
           [
@@ -257,13 +276,12 @@ export default class ScenarioStep {
             ...this.remainingStepIds,
           ],
           [{
-            counterInput: count,
-            effects: choice.effects || [],
+            numberInput: count !== undefined ? [count] : undefined,
+            effects: (choice && choice.effects) || [],
           }]
         );
       }
       case 'math':
-        // TODO: handle math
         return this.handleMath(step, step.condition);
       case 'campaign_data': {
         return this.handleCampaignData(
@@ -303,8 +321,9 @@ export default class ScenarioStep {
       case 'campaign_log_count':
         return this.campaignLog.count(op.section, '$count');
       case 'chaos_bag':
-        // TODO: chaos bag
-        return 0;
+        return this.campaignLog.chaosBag[op.token] || 0;
+      case 'constant':
+        return op.value;
     }
   }
 
@@ -335,13 +354,13 @@ export default class ScenarioStep {
     const opB = this.getOperand(condition.opB);
     const value = this.performOp(opA, opB, condition.operation);
     const option = find(condition.options, option => option.numCondition === value) ||
-      condition.defaultOption;
-    const extraSteps = option.steps || [];
+      (condition.operation === 'sum' ? condition.defaultOption : undefined);
+    const extraSteps = (option && option.steps) || [];
     return this.maybeCreateEffectsStep(
       step.id,
       [...extraSteps, ...this.remainingStepIds],
       [{
-        effects: option.effects || [],
+        effects: (option && option.effects) || [],
       }]
     );
   }
@@ -398,9 +417,28 @@ export default class ScenarioStep {
     condition: CardCondition,
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
-    // TODO: fullyGuided
-    // Generally only has steps.
-    // Occasionally will have a trauma effect.
+    if (this.campaignLog.fullyGuided) {
+      const investigators = this.campaignLog.investigatorCodes();
+      const hasCard = filter(investigators, code => {
+        if (condition.investigator === 'defeated' &&
+          !this.campaignLog.isDefeated(code)) {
+          return false;
+        }
+        return this.campaignLog.hasCard(
+          code,
+          condition.card
+        );
+      });
+
+      return this.binaryBranch(
+        hasCard.length > 0,
+        scenarioState,
+        this.remainingStepIds,
+        find(condition.options, option => option.boolCondition === true),
+        find(condition.options, option => option.boolCondition === false),
+        hasCard
+      );
+    }
     switch (condition.investigator) {
       case 'defeated':
       case 'any':
@@ -433,6 +471,19 @@ export default class ScenarioStep {
           }]
         );
       }
+      case 'resolution': {
+        const resolution = this.campaignLog.resolution();
+        console.log(resolution);
+        const option = find(condition.options, option => option.condition === resolution);
+        const extraSteps = (option && option.steps) || [];
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...extraSteps, ...this.remainingStepIds],
+          [{
+            effects: (option && option.effects) || [],
+          }]
+        );
+      }
       case 'investigator': {
         // TODO: make work in fully guided mode.
         if (condition.options.length === 1 && condition.options[0].condition) {
@@ -449,9 +500,9 @@ export default class ScenarioStep {
         if (condition.investigator !== 'defeated')  {
           throw new Error('Unexpected investigator_status scenario condition');
         }
-        const resolutionStatus = this.campaignLog.investigatorResolutionStatus();
-        const decision = !!find(resolutionStatus, status => {
-          return status === 'physical' || status === 'mental' || status === 'eliminated';
+        const investigators = this.campaignLog.investigatorCodes();
+        const decision = !!find(investigators, code => {
+          return this.campaignLog.isDefeated(code);
         });
         const ifTrue = find(step.condition.options, option => option.boolCondition === true);
         const ifFalse = find(step.condition.options, option => option.boolCondition === false);
@@ -583,12 +634,12 @@ export default class ScenarioStep {
         }
         const selectedChoice = choicesByIdx[group[0].choice];
         forEach(
-          selectedChoice.steps || [],
+          (selectedChoice && selectedChoice.steps) || [],
           stepId => stepIds.push(stepId)
         );
         const result: EffectsWithInput = {
           input: map(group, item => item.code),
-          effects: selectedChoice.effects || [],
+          effects: (selectedChoice && selectedChoice.effects) || [],
         };
         return result;
       });
@@ -613,7 +664,7 @@ export default class ScenarioStep {
           step.id,
           this.remainingStepIds,
           [{
-            counterInput: count,
+            numberInput: [count],
             effects: input.effects,
           }]
         );
@@ -653,6 +704,33 @@ export default class ScenarioStep {
           effectsWithInput
         );
       }
+      case 'scenario_investigators':
+        const choices = scenarioState.choiceList(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+        const investigators: string[] = [];
+        const decks: number[] = [];
+        forEach(choices, (deck, investigator) => {
+          investigators.push(investigator);
+          decks.push(deck[0]);
+        });
+        const effectsWithInput: EffectsWithInput = {
+          input: investigators,
+          numberInput: decks,
+          effects: [
+            {
+              type: 'scenario_data',
+              setting: 'playing_scenario',
+              investigator: '$input_value',
+            },
+          ],
+        };
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          [effectsWithInput]
+        );
       case 'investigator_choice':
       case 'card_choice': {
         const choices = scenarioState.choiceList(step.id);
@@ -726,23 +804,25 @@ export default class ScenarioStep {
         );
       }
       case 'use_supplies': {
+        const choice = scenarioState.choiceList(
+          input.investigator === 'all' ? `${this.step.id}_used` : this.step.id
+        );
+        if (choice === undefined) {
+          return undefined;
+        }
+        const consumeSuppliesEffects: Effect[] = map(choice, ([count], code) => {
+          return {
+            type: 'campaign_log_count',
+            section: input.section,
+            investigator: code,
+            operation: 'add',
+            id: input.id,
+            value: -(input.investigator === 'all' ? count : 1),
+          };
+        });
         switch (input.investigator) {
           case 'all': {
-            const firstChoice = scenarioState.choiceList(`${this.step.id}_used`);
-            if (firstChoice === undefined) {
-              return undefined;
-            }
-            const consumeSuppliesEffects: Effect[] = map(firstChoice, ([count], code) => {
-              return {
-                type: 'campaign_log_count',
-                section: input.section,
-                investigator: code,
-                operation: 'add',
-                id: input.id,
-                value: -count,
-              };
-            });
-            const useCount = sum(map(firstChoice, count => count));
+            const useCount = sum(map(choice, count => count));
             if (useCount === this.campaignLog.playerCount()) {
               // We got what we needed.
               // And we know there are only 'false' conditions right now.
@@ -774,10 +854,40 @@ export default class ScenarioStep {
               }],
             );
           }
+          case 'choice': {
+            const hasAny = keys(choice).length > 0;
+            const branchChoice = find(
+              input.choices,
+              option => option.boolCondition === hasAny
+            );
+            console.log(JSON.stringify(branchChoice));
+            if (!branchChoice) {
+              return this.maybeCreateEffectsStep(
+                this.step.id,
+                this.remainingStepIds,
+                [{
+                  effects: consumeSuppliesEffects,
+                }],
+              );
+            }
+            return this.maybeCreateEffectsStep(
+              this.step.id,
+              [
+                ...(branchChoice && branchChoice.steps) || [],
+                ...this.remainingStepIds,
+              ],
+              [
+                {
+                  effects: consumeSuppliesEffects,
+                },
+                {
+                  input: keys(choice),
+                  effects: (branchChoice && branchChoice.effects) || [],
+                },
+              ],
+            );
+          }
         }
-        // TODO: guide
-        return undefined;
-
       }
     }
   }

@@ -1,9 +1,10 @@
-import { cloneDeep, find, findIndex, forEach, sumBy } from 'lodash';
+import { cloneDeep, find, findIndex, filter, forEach, keys, map, sumBy, uniq } from 'lodash';
 
-import { Trauma } from 'actions/types';
+import { DecksMap, TraumaAndCardData } from 'actions/types';
 import { ChaosBag } from 'constants';
 import {
   AddRemoveChaosTokenEffect,
+  AddCardEffect,
   CampaignDataEffect,
   CampaignLogEffect,
   CampaignLogCountEffect,
@@ -13,11 +14,14 @@ import {
   EffectsWithInput,
   InvestigatorStatus,
   InvestigatorSelector,
+  RemoveCardEffect,
   ScenarioDataEffect,
   ScenarioStatus,
   TraumaEffect,
 } from './types';
 import CampaignGuide from './CampaignGuide';
+import { CardsMap } from 'data/Card';
+import { InvestigatorDeck } from 'data/scenario';
 
 interface BasicEntry {
   id: string;
@@ -57,9 +61,14 @@ interface CountSection {
   count: number;
 }
 
+interface PlayingScenarioItem {
+  investigator: string,
+  deckId: number
+}
 interface ScenarioData {
+  resolution?: string;
   leadInvestigator?: string;
-  playingScenario?: string[];
+  playingScenario?: PlayingScenarioItem[];
   investigatorStatus: {
     [code: string]: InvestigatorStatus;
   };
@@ -75,8 +84,8 @@ interface CampaignData {
   result?: 'win' | 'lose';
   difficulty?: Difficulty;
   nextScenario?: string;
-  trauma: {
-    [code: string]: Trauma | undefined;
+  investigatorData: {
+    [code: string]: TraumaAndCardData | undefined;
   };
 }
 
@@ -110,6 +119,8 @@ export default class GuidedCampaignLog {
       case 'add_chaos_token':
       case 'remove_chaos_token':
       case 'trauma':
+      case 'add_card':
+      case 'remove_card':
         return true;
       default:
         return false;
@@ -139,7 +150,7 @@ export default class GuidedCampaignLog {
       this.investigatorSections = readThrough ? readThrough.investigatorSections : {};
       this.scenarioData = readThrough ? readThrough.scenarioData : {};
       this.campaignData = readThrough ? readThrough.campaignData : {
-        trauma: {},
+        investigatorData: {},
         scenarioStatus: {},
         scenarioReplayCount: {},
       };
@@ -152,25 +163,28 @@ export default class GuidedCampaignLog {
       this.scenarioData = readThrough ? cloneDeep(readThrough.scenarioData) : {};
       this.chaosBag = readThrough ? cloneDeep(readThrough.chaosBag) : {};
       this.campaignData = readThrough ? cloneDeep(readThrough.campaignData) : {
-        trauma: {},
+        investigatorData: {},
         scenarioStatus: {},
         scenarioReplayCount: {},
       };
       this.latestScenarioData = readThrough ? cloneDeep(readThrough.latestScenarioData) : { investigatorStatus: {} };
-      forEach(effectsWithInput, ({ effects, input, counterInput }) => {
+      forEach(effectsWithInput, ({ effects, input, numberInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
             case 'campaign_data':
               this.handleCampaignDataEffect(effect);
               break;
             case 'scenario_data':
-              this.handleScenarioDataEffect(effect, scenarioId, input);
+              this.handleScenarioDataEffect(effect, scenarioId, input, numberInput);
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
               break;
             case 'campaign_log_count': {
-              this.handleCampaignLogCountEffect(effect, counterInput);
+              this.handleCampaignLogCountEffect(
+                effect,
+                numberInput && numberInput.length ? numberInput[0] : undefined
+              );
               break;
             }
             case 'campaign_log_cards':
@@ -182,6 +196,12 @@ export default class GuidedCampaignLog {
               break;
             case 'trauma':
               this.handleTraumaEffect(effect, input);
+              break;
+            case 'add_card':
+              this.handleAddCardEffect(effect, input);
+              break;
+            case 'remove_card':
+              this.handleRemoveCardEffect(effect, input);
               break;
             default:
               break;
@@ -199,8 +219,10 @@ export default class GuidedCampaignLog {
       case 'lead_investigator':
         return [this.leadInvestigatorChoice()];
       case 'all':
-        // TODO: select all.
-        return [];
+        if (!this.latestScenarioData) {
+          throw new Error('All investigators called before being set');
+        }
+        return map(this.latestScenarioData.playingScenario, playing => playing.investigator);
       case 'defeated':
       case 'not_resigned': {
         const result: string[] = [];
@@ -226,9 +248,49 @@ export default class GuidedCampaignLog {
         return input || [];
       case 'any':
       case 'choice':
-        // TODO: pull from scenarioStateHelper;
-        return [];
+        // These are rewritten in ScenarioStep
+        throw new Error('should not happen');
     }
+  }
+
+  private handleAddCardEffect(
+    effect: AddCardEffect,
+    input?: string[]
+  ) {
+    const investigators = this.getInvestigators(
+      effect.investigator,
+      input
+    );
+    forEach(investigators, investigator => {
+      const data = this.campaignData.investigatorData[investigator] || {};
+      const assets = data.storyAssets || [];
+      assets.push(effect.card);
+      data.storyAssets = uniq(assets);
+      this.campaignData.investigatorData[investigator] = data;
+    });
+  }
+
+  private handleRemoveCardEffect(
+    effect: RemoveCardEffect,
+    input?: string[]
+  ) {
+    const cards = new Set(effect.card === '$input_value' ? input : [effect.card]);
+    const investigatorRestriction = effect.investigator ?
+      new Set(this.getInvestigators(effect.investigator, input)) :
+      undefined;
+    forEach(
+      keys(this.campaignData.investigatorData),
+      investigator => {
+        const data = this.campaignData.investigatorData[investigator];
+        if (data) {
+          if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
+            this.campaignData.investigatorData[investigator] = {
+              ...data,
+              storyAssets: filter(data.storyAssets || [], card => !cards.has(card)),
+            };
+          }
+        }
+    });
   }
 
   private handleTraumaEffect(
@@ -237,7 +299,7 @@ export default class GuidedCampaignLog {
   ) {
     const investigators = this.getInvestigators(effect.investigator, input);
     forEach(investigators, code => {
-      const trauma: Trauma = this.campaignData.trauma[code] || {};
+      const trauma: TraumaAndCardData = this.campaignData.investigatorData[code] || {};
       if (effect.killed) {
         trauma.killed = true;
       }
@@ -254,7 +316,7 @@ export default class GuidedCampaignLog {
         throw new Error('These should be filtered out before it reaches campaign log');
       }
 
-      this.campaignData.trauma[code] = trauma;
+      this.campaignData.investigatorData[code] = trauma;
     });
   }
 
@@ -291,16 +353,14 @@ export default class GuidedCampaignLog {
       case 'next_scenario':
         this.campaignData.nextScenario = effect.scenario;
         break;
-      case 'choose_investigators':
-        // TODO: choose new investigators?
-        break;
     }
   }
 
   private handleScenarioDataEffect(
     effect: ScenarioDataEffect,
     scenarioId?: string,
-    input?: string[]
+    input?: string[],
+    numberInput?: number[]
   ) {
     if (scenarioId === undefined) {
       throw new Error(`Cannot set scenario_data effects outside of scenarios.`);
@@ -310,6 +370,15 @@ export default class GuidedCampaignLog {
         this.campaignData.nextScenario = undefined;
       }
       this.campaignData.scenarioStatus[scenarioId] = effect.status;
+
+      if (effect.status === 'resolution') {
+        const scenario = this.scenarioData[scenarioId] || {
+          investigatorStatus: {},
+        };
+        scenario.resolution = effect.resolution;
+        this.scenarioData[scenarioId] = scenario;
+        this.latestScenarioData = scenario;
+      }
       return;
     }
     // All investigator status from here on out.
@@ -329,9 +398,22 @@ export default class GuidedCampaignLog {
           scenario.investigatorStatus[code] = effect.investigator_status;
         });
         break;
-      case 'playing_scenario':
-        scenario.playingScenario = input;
+      case 'playing_scenario': {
+        const playing: PlayingScenarioItem[] = [];
+        const investigators = input || [];
+        const decks = numberInput || [];
+        for (let i = 0; i < investigators.length; i++) {
+          if (i >= decks.length) {
+            throw new Error('inputs should be same length');
+          }
+          playing.push({
+            investigator: investigators[i],
+            deckId: decks[i],
+          });
+        }
+        scenario.playingScenario = playing;
         break;
+      }
       case 'lead_investigator':
         scenario.leadInvestigator = input[0];
         break;
@@ -397,10 +479,10 @@ export default class GuidedCampaignLog {
     return section;
   }
 
-  private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, counterInput?: number) {
+  private handleCampaignLogCountEffect(effect: CampaignLogCountEffect, numberInput?: number) {
     const value: number = (
       (effect.operation === 'add_input' || effect.operation === 'set_input') ?
-        counterInput :
+        numberInput :
         effect.value
     ) || 0;
     if (!effect.id) {
@@ -526,6 +608,19 @@ export default class GuidedCampaignLog {
     return scenario.leadInvestigator;
   }
 
+  isDefeated(investigator: string): boolean {
+    const status = this.investigatorResolutionStatus()[investigator];
+    return status === 'physical' || status === 'mental' || status == 'eliminated';
+  }
+
+  hasCard(investigator: string, card: string): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    return !!(
+      investigatorData &&
+      find(investigatorData.storyAssets || [], asset => asset === card)
+    );
+  }
+
   investigatorResolutionStatus(): { [code: string]: InvestigatorStatus } {
     if (this.scenarioId === undefined) {
       throw new Error('investigatorResolutionStatus called outside of a scenario.');
@@ -583,8 +678,44 @@ export default class GuidedCampaignLog {
     return !!entry;
   }
 
+  resolution(): string | undefined {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('Resolution accessed before it was set.');
+    }
+    return this.latestScenarioData.resolution;
+  }
+
   playerCount(): number {
-    return (this.latestScenarioData.playingScenario || []).length;
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('Player count accessed before it was set.');
+    }
+    return playing.length;
+  }
+
+  investigatorCodes() {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('Player count accessed before it was set.');
+    }
+    return map(playing, ({ investigator }) => investigator);
+  }
+
+  investigators(
+    allInvestigators: CardsMap,
+    allDecks: DecksMap
+  ): InvestigatorDeck[] {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('Player count accessed before it was set.');
+    }
+    return map(playing, ({ investigator, deckId }) => {
+      return {
+        investigator: allInvestigators[investigator],
+        deck: allDecks[deckId] || undefined,
+      };
+    })
   }
 
   count(sectionId: string, id: string): number {

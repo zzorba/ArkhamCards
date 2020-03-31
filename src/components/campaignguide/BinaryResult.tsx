@@ -3,15 +3,11 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import { every, find } from 'lodash';
-import { t } from 'ttag';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import ResultIndicatorIcon from './ResultIndicatorIcon';
 import CardTextComponent from 'components/card/CardTextComponent';
 import SetupStepWrapper from './SetupStepWrapper';
 import { BulletType } from 'data/scenario/types';
-import { COLORS } from 'styles/colors';
 
 interface Props {
   bulletType?: BulletType;
@@ -27,13 +23,7 @@ export default function BinaryResult({ bulletType, prompt, result }: Props) {
           { !!prompt && <CardTextComponent text={prompt} /> }
         </SetupStepWrapper>
       </View>
-      <View style={styles.icon}>
-        <MaterialCommunityIcons
-          name={result ? 'thumb-up-outline' : 'thumb-down-outline'}
-          size={24}
-          color={COLORS.white}
-        />
-      </View>
+      <ResultIndicatorIcon result={result} />
     </View>
   )
 }
@@ -44,14 +34,5 @@ const styles = StyleSheet.create({
   },
   step: {
     flex: 1,
-  },
-  icon: {
-    padding: 4,
-    paddingLeft: 16,
-    paddingRight: 16,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: COLORS.darkGray,
   },
 });

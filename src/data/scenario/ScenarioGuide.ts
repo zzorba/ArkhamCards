@@ -30,15 +30,18 @@ interface ExecutedScenario {
  * Wrapper utility to provide structured access to scenarios.
  */
 export default class ScenarioGuide {
+  id: string;
   scenario: Scenario;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
 
   constructor(
+    id: string,
     scenario: Scenario,
     campaignGuide: CampaignGuide,
     campaignLog: GuidedCampaignLog
   ) {
+    this.id = id;
     this.scenario = scenario;
     this.campaignGuide = campaignGuide;
     this.campaignLog = campaignLog;
@@ -127,7 +130,7 @@ export default class ScenarioGuide {
       new GuidedCampaignLog(
         [],
         this.campaignGuide,
-        this.scenario.id,
+        this.id,
         campaignLog || this.campaignLog
       ),
       remainingStepIds

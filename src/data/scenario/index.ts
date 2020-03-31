@@ -7,7 +7,7 @@ import { Deck } from 'actions/types';
 
 export interface InvestigatorDeck {
   investigator: Card;
-  deck: Deck;
+  deck?: Deck;
 }
 
 export function getCampaignGuide(

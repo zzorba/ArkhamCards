@@ -52,8 +52,7 @@ export type InvestigatorSelector =
 export type CampaignDataEffect =
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
-  | CampaignDataNextScenarioEffect
-  | CampaignDataChooseInvestigatorsEffect;
+  | CampaignDataNextScenarioEffect;
 export type Difficulty = "easy" | "standard" | "hard" | "expert";
 export type ScenarioDataEffect =
   | ScenarioDataInvestigatorEffect
@@ -80,7 +79,8 @@ export type ChaosToken =
   | "auto_fail";
 export type NumOption = EffectOption | StepsOption;
 export type DefaultOption = StepsOption;
-export type Operand = CampaignLogCountOperand | ChaosBagOperand;
+export type MathCondition = MathCompareCondition | MathSumCondition;
+export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand;
 export type Option = EffectOption | StepsOption;
 export type CampaignDataCondition =
   | CampaignDataDifficultyCondition
@@ -96,8 +96,10 @@ export type Input =
   | ChooseOneInput
   | ChooseManyInput
   | CounterInput
-  | InvestigatorCounterInput;
+  | InvestigatorCounterInput
+  | ScenarioInvestigatorsInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
+export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type Choice = StepsChoice | EffectsChoice;
 export type AllCampaigns = FullCampaign[];
 export type Choice1 =
@@ -221,10 +223,6 @@ export interface CampaignDataNextScenarioEffect {
   setting: "next_scenario" | "skip_scenario" | "replay_scenario";
   scenario: string;
 }
-export interface CampaignDataChooseInvestigatorsEffect {
-  type: "campaign_data";
-  setting: "choose_investigators";
-}
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
   setting: "lead_investigator" | "playing_scenario";
@@ -263,13 +261,12 @@ export interface CampaignLogCountCondition {
   max?: number;
   defaultOption: DefaultOption;
 }
-export interface MathCondition {
+export interface MathCompareCondition {
   type: "math";
   opA: Operand;
   opB: Operand;
-  operation: "compare" | "sum";
+  operation: "compare";
   options: NumOption[];
-  defaultOption: DefaultOption;
 }
 export interface CampaignLogCountOperand {
   type: "campaign_log_count";
@@ -279,9 +276,21 @@ export interface ChaosBagOperand {
   type: "chaos_bag";
   token: ChaosToken;
 }
+export interface ConstantOperand {
+  type: "constant";
+  value: number;
+}
+export interface MathSumCondition {
+  type: "math";
+  opA: Operand;
+  opB: Operand;
+  operation: "sum";
+  options: NumOption[];
+  defaultOption: DefaultOption;
+}
 export interface CardCondition {
   type: "has_card";
-  investigator: "defeated" | "any";
+  investigator: "defeated" | "any" | "each";
   card: string;
   options: Option[];
 }
@@ -315,7 +324,7 @@ export interface CampaignLogSectionExistsCondition {
 }
 export interface ScenarioDataCondition {
   type: "scenario_data";
-  scenario_data: "player_count" | "investigator" | "investigator_status";
+  scenario_data: "player_count" | "resolution" | "investigator" | "investigator_status";
   investigator?: InvestigatorSelector;
   options: Option[];
 }
@@ -344,7 +353,7 @@ export interface EffectsStep {
 export interface EffectsWithInput {
   effects: Effect[];
   input?: string[];
-  counterInput?: number;
+  numberInput?: number[];
 }
 export interface InputStep {
   id: string;
@@ -389,11 +398,20 @@ export interface Supply {
   cost: number;
   multiple?: boolean;
 }
-export interface UseSuppliesInput {
+export interface UseSuppliesChoiceInput {
   type: "use_supplies";
   section: string;
   id: string;
-  investigator: "all" | "any" | "choice";
+  investigator: "choice";
+  min: number;
+  max: number;
+  choices: Option[];
+}
+export interface UseSuppliesAllInput {
+  type: "use_supplies";
+  section: string;
+  id: string;
+  investigator: "all";
   choices: Option[];
 }
 export interface InvestigatorChoiceInput {
@@ -409,7 +427,7 @@ export interface EffectsChoice {
   text: string;
   description?: string;
   effects: Effect[];
-  steps?: null;
+  steps?: string[];
 }
 export interface ChooseOneInput {
   type: "choose_one";
@@ -432,12 +450,16 @@ export interface ChooseManyInput {
 export interface CounterInput {
   type: "counter";
   text: string;
+  max?: number;
   effects: Effect[];
 }
 export interface InvestigatorCounterInput {
   type: "investigator_counter";
   text: string;
   effects: Effect[];
+}
+export interface ScenarioInvestigatorsInput {
+  type: "scenario_investigators";
 }
 export interface EncounterSetsStep {
   id: string;
@@ -464,7 +486,7 @@ export interface ResolutionStep {
   id: string;
   type: "resolution";
   resolution: string;
-  text?: null;
+  text?: string;
   generated?: boolean;
   effects?: ScenarioDataStatusEffect[];
   bullet_type?: null;
