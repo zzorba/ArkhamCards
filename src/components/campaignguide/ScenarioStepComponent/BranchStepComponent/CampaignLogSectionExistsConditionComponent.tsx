@@ -2,13 +2,14 @@ import React from 'react';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryPrompt from '../../prompts/BinaryPrompt';
+import BinaryResult from '../../BinaryResult';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import {
   BranchStep,
   CampaignLogSectionExistsCondition,
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import { campaignLogConditionResult } from 'data/scenario/conditionHelper';
 
 interface Props {
   step: BranchStep;
@@ -18,7 +19,7 @@ interface Props {
 
 export default class CampaignLogSectionExistsConditionComponent extends React.Component<Props> {
   render(): React.ReactNode {
-    const { step, condition } = this.props;
+    const { step, condition, campaignLog } = this.props;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignGuide }: CampaignGuideContextType) => {
@@ -26,13 +27,12 @@ export default class CampaignLogSectionExistsConditionComponent extends React.Co
           const prompt = logEntry ?
             t`Check Campaign Log, is the <i>${logEntry.section}</i> not crossed off?` :
             `Unknown campaign section: ${condition.section}`;
+          const result = campaignLogConditionResult(condition, campaignLog);
           return (
-            <BinaryPrompt
-              id={step.id}
+            <BinaryResult
               bulletType={step.bullet_type}
-              text={prompt}
-              trueResult={find(condition.options, option => option.boolCondition === true)}
-              falseResult={find(condition.options, option => option.boolCondition === false)}
+              prompt={prompt}
+              result={result.decision}
             />
           );
         } }

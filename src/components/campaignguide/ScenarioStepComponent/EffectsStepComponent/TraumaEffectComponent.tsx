@@ -58,21 +58,10 @@ export default class TraumaEffectComponent extends React.Component<Props> {
             id={`${id}_trauma`}
             investigatorDecks={investigatorDecks}
             bulletType="none"
-            choices={[{
-              text: 'Physical Trauma',
-              effects: [{
-                type: 'trauma',
-                physical: 1,
-                investigator: '$input_value',
-              }],
-            },{
-              text: 'Mental Trauma',
-              effects: [{
-                type: 'trauma',
-                mental: 1,
-                investigator: '$input_value',
-              }],
-            }]}
+            choices={[
+              { text: t`Physical Trauma` },
+              { text: t`Mental Trauma` },
+            ]}
           />
         </>
       );

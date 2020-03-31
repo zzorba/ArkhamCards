@@ -7,11 +7,10 @@ import ResultIndicatorIcon from '../../ResultIndicatorIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { Choice, SimpleEffectsChoice } from 'data/scenario/types';
-import { COLORS } from 'styles/colors';
+import { DisplayChoice } from 'data/scenario';
 
 interface Props {
-  choice: Choice | SimpleEffectsChoice;
+  choice: DisplayChoice;
   index: number;
   selected: boolean;
   editable: boolean;

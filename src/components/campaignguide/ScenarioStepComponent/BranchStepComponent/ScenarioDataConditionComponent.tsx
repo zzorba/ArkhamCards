@@ -54,7 +54,6 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
                   bulletType={step.bullet_type}
                   text={t`If ${card.name} was chosen as an investigator for this campaign`}
                   trueResult={find(condition.options, option => option.condition === card.code)}
-                  falseResult={find(condition.options, option => !!option.default)}
                 />
               )}
             />

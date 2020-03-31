@@ -1,9 +1,6 @@
 import {
-  every,
-  filter,
   flatMap,
   find,
-  findIndex,
   forEach,
   groupBy,
   keys,
@@ -216,7 +213,6 @@ export default class ScenarioStep {
       case 'string':
       case 'number':
       case 'binary':
-      case 'binary_investigator':
         return this.maybeCreateEffectsStep(
           this.step.id,
           [
@@ -225,7 +221,6 @@ export default class ScenarioStep {
           ],
           [{
             numberInput: result.type === 'number' ? [result.number] : undefined,
-            input: result.type === 'binary_investigator' ? result.investigators : undefined,
             effects: (result.option && result.option.effects) || [],
           }]
         );

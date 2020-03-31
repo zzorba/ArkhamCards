@@ -3,7 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import PickerComponent from '../PickerComponent';
-import { BulletType, EffectsChoice, SimpleEffectsChoice } from 'data/scenario/types';
+import { DisplayChoice } from 'data/scenario';
+import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
   primaryColor?: string;
   tintColor?: string;
   bulletType?: BulletType;
-  choices: (EffectsChoice | SimpleEffectsChoice)[];
+  choices: DisplayChoice[];
   choice?: number;
   optional: boolean;
   onChoiceChange: (code: string, index: number) => void;

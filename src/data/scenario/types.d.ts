@@ -416,17 +416,17 @@ export interface UseSuppliesAllInput {
 export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
-  investigatorConditions?: CardCondition[];
   investigator: "all" | "choice" | "any";
   detailed?: boolean;
-  choices: EffectsChoice[];
+  choices: ConditionalEffectsChoice[];
 }
-export interface EffectsChoice {
+export interface ConditionalEffectsChoice {
   flavor?: string;
   text: string;
   description?: string;
+  condition?: CardCondition;
   effects: Effect[];
-  steps?: string[];
+  steps?: null;
 }
 export interface ChooseOneInput {
   type: "choose_one";
@@ -439,6 +439,13 @@ export interface StepsChoice {
   description?: string;
   steps: string[];
   effects?: null;
+}
+export interface EffectsChoice {
+  flavor?: string;
+  text: string;
+  description?: string;
+  effects: Effect[];
+  steps?: string[];
 }
 export interface ChooseManyInput {
   type: "choose_many";

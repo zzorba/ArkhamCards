@@ -2,11 +2,12 @@ import React from 'react';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryPrompt from '../../prompts/BinaryPrompt';
+import BinaryResult from '../../BinaryResult';
 import {
   BranchStep,
   TraumaCondition,
 } from 'data/scenario/types';
+import { traumaConditionResult } from 'data/scenario/conditionHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
@@ -16,32 +17,28 @@ interface Props {
 }
 
 export default class TraumaConditionComponent extends React.Component<Props> {
-  render(): React.ReactNode {
-    const { step, condition } = this.props;
+  prompt(): string {
+    const { condition } = this.props;
     switch (condition.trauma) {
       case 'killed':
         switch (condition.investigator) {
           case 'lead_investigator':
-            return (
-              <BinaryPrompt
-                id={step.id}
-                bulletType={step.bullet_type}
-                text={t`Was the lead investigator <b>killed</b>?`}
-                trueResult={find(condition.options, option => option.boolCondition === true)}
-                falseResult={find(condition.options, option => option.boolCondition === false)}
-              />
-            );
+            return t`If the lead investigator was <b>killed</b>.`;
           case 'all':
-            return (
-              <BinaryPrompt
-                id={step.id}
-                bulletType={step.bullet_type}
-                text={t`Were all investigators <b>killed</b>?`}
-                trueResult={find(condition.options, option => option.boolCondition === true)}
-                falseResult={find(condition.options, option => option.boolCondition === false)}
-              />
-            );
+            return t`If all investigators were <b>killed</b>`;
         }
     }
+  }
+
+  render(): React.ReactNode {
+    const { step, condition, campaignLog } = this.props;
+    const result = traumaConditionResult(condition, campaignLog);
+    return (
+      <BinaryResult
+        bulletType={step.bullet_type}
+        prompt={this.prompt()}
+        result={result.decision}
+      />
+    );
   }
 }

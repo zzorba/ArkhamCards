@@ -10,6 +10,12 @@ export interface InvestigatorDeck {
   deck?: Deck;
 }
 
+export interface DisplayChoice {
+  text?: string;
+  flavor?: string;
+  description?: string;
+}
+
 export function getCampaignGuide(
   id: string
 ): CampaignGuide | undefined {

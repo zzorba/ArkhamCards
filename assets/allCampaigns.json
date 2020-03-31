@@ -18353,6 +18353,17 @@
         "choices": [
           {
             "text": "Remove Poison Weakness",
+            "condition": {
+              "type": "has_card",
+              "card": "04102",
+              "investigator": "any",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "earn_xp",

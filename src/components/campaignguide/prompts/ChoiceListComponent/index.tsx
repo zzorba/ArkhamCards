@@ -8,7 +8,8 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGu
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { ListChoices } from 'actions/types';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { BulletType, EffectsChoice, SimpleEffectsChoice } from 'data/scenario/types';
+import { BulletType } from 'data/scenario/types';
+import { DisplayChoice } from 'data/scenario';
 
 export interface ListItem {
   code: string;
@@ -23,7 +24,7 @@ export interface ChoiceListComponentProps {
   text?: string;
   optional?: boolean;
   detailed?: boolean;
-  choices: (EffectsChoice | SimpleEffectsChoice)[];
+  choices: DisplayChoice[];
 }
 interface Props extends ChoiceListComponentProps {
   items: ListItem[];
