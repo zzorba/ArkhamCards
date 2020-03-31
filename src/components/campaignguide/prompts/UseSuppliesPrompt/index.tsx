@@ -121,21 +121,8 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     return count > 0;
   };
 
-  renderChoicePrompt(input: UseSuppliesChoiceInput) {
-    const { id } = this.props;
-    return (
-      <InvestigatorCheckListComponent
-        id={id}
-        checkText={`Use ${input.id}`}
-        min={input.min}
-        max={input.min}
-        filter={this._filterInvestigatorChoice}
-      />
-    );
-  }
-
   render() {
-    const { input, text } = this.props;
+    const { id, input, text } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
@@ -157,7 +144,13 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
                   <SetupStepWrapper>
                     { !!text && <CardTextComponent text={text} /> }
                   </SetupStepWrapper>
-                  { this.renderChoicePrompt(input) }
+                  <InvestigatorCheckListComponent
+                    id={id}
+                    checkText={`Use ${input.id}`}
+                    min={input.min}
+                    max={input.max}
+                    filter={this._filterInvestigatorChoice}
+                  />
                 </>
               );
           }

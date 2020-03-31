@@ -3,12 +3,10 @@ import { Text } from 'react-native';
 import { find, forEach, map, upperFirst } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
-import ChooseInvestigatorPrompt from '../../prompts/ChooseInvestigatorPrompt';
 import { stringList } from 'lib/stringHelper';
 import CardQueryWrapper from '../../CardQueryWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CardTextComponent from 'components/card/CardTextComponent';
-import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
 import { InvestigatorDeck } from 'data/scenario';
 import Card from 'data/Card';
 import {
@@ -69,29 +67,6 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
     );
   }
 
-  _investigatorToString = (card: Card) => {
-    const { condition } = this.props;
-    if (this.investigatorHasSupply(card.code)) {
-      return t`${card.name} (has ${condition.id})`;
-    }
-    return card.name;
-  };
-
-  _renderInvestigatorChoiceResults = (investigatorDeck?: InvestigatorDeck) => {
-    if (!investigatorDeck) {
-      return null;
-    }
-    const { condition } = this.props;
-    const investigator = investigatorDeck.investigator;
-    const decision = this.investigatorHasSupply(investigator.code);
-    const option = find(condition.options, option => option.boolCondition === decision);
-    return (
-      <SetupStepWrapper bulletType="small">
-        <CardTextComponent text={`${investigator.name} reads <b>${option ? option.condition : ''}</b>`} />
-      </SetupStepWrapper>
-    );
-  };
-
   render(): React.ReactNode {
     const { step, condition, campaignLog } = this.props;
     switch (condition.investigator) {
@@ -128,22 +103,6 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
                 render={this._renderFalse}
               />
             )}
-          </>
-        );
-      }
-      case 'choice': {
-        return (
-          <>
-            <SetupStepWrapper>
-              { !!step.text && <CardTextComponent text={step.text} /> }
-            </SetupStepWrapper>
-            <ChooseInvestigatorPrompt
-              id={step.id}
-              title={condition.prompt || t`Lookout`}
-              investigatorToValue={this._investigatorToString}
-              renderResults={this._renderInvestigatorChoiceResults}
-              required
-            />
           </>
         );
       }

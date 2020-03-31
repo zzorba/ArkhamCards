@@ -47,7 +47,6 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
           <InvestigatorCheckListComponent
             id={step.id}
             checkText={input.choices[0].text}
-            defaultState={input.defaultChoice === 0}
             filter={this._filterInvestigator}
             min={input.investigator === 'choice' ? 1 : 0}
             max={4}

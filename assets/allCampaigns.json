@@ -2293,7 +2293,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["spawn_zero_remove_three_brood"]
         }
       }
@@ -2696,7 +2695,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["add_0_doom"]
         }
       }
@@ -3046,7 +3044,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": []
         }
       }
@@ -4686,7 +4683,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["compare_conviction_and_doubt"]
         }
       }
@@ -4846,7 +4842,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["add_no_doom"]
         }
       }
@@ -6034,7 +6029,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["dream_10", "dream_10_choice"]
         }
       }
@@ -10507,7 +10501,6 @@
             "steps": ["progress_1"]
           },
           {
-            "default": true,
             "steps": ["progress_2"]
           }
         ]
@@ -10869,7 +10862,6 @@
             "steps": ["read_mystic_text"]
           },
           {
-            "default": true,
             "steps": ["read_gibberish"]
           }
         ]
@@ -11238,7 +11230,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["record_wisp_of_spectral_mist"]
         }
       }
@@ -11862,7 +11853,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["six_or_more_mementos"]
         }
       }
@@ -12354,7 +12344,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["add_4_doom"]
         }
       }
@@ -12625,7 +12614,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["resolution_7"]
         }
       }
@@ -13788,7 +13776,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": [
             "gather_encounter_sets",
             "setup_locations",
@@ -14725,45 +14712,40 @@
     {
       "id": "choose_lookout",
       "text": "The lead investigator must choose one investigator to be the group’s lookout. Then, that investigator checks their supplies to see if they have binoculars.",
-      "type": "branch",
-      "condition": {
-        "type": "check_supplies",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
         "prompt": "Group's lookout",
-        "investigator": "choice",
-        "options": [
-          {
-            "boolCondition": false,
-            "condition": "Eyes in the Dark",
-            "effects": [
-              {
-                "type": "story_step",
-                "steps": ["eyes_in_the_dark"]
-              },
-              {
-                "type": "trauma",
-                "investigator": "$input_value",
-                "mental": 1
-              }
-            ]
-          },
-          {
-            "boolCondition": true,
-            "condition": "Shapes in the Trees",
-            "effects": [
-              {
-                "type": "story_step",
-                "steps": ["shapes_in_the_tress", "bonus_binoculars_xp"]
-              },
-              {
-                "type": "earn_xp",
-                "investigator": "$input_value",
-                "bonus": 2
-              }
-            ]
-          }
-        ]
+        "positiveChoice": {
+          "text": "Shapes in the Trees",
+          "effects": [
+            {
+              "type": "story_step",
+              "steps": ["shapes_in_the_tress", "bonus_binoculars_xp"]
+            },
+            {
+              "type": "earn_xp",
+              "investigator": "$input_value",
+              "bonus": 2
+            }
+          ]
+        },
+        "negativeChoice": {
+          "text": "Eyes in the Dark",
+          "effects": [
+            {
+              "type": "story_step",
+              "steps": ["eyes_in_the_dark"]
+            },
+            {
+              "type": "trauma",
+              "investigator": "$input_value",
+              "mental": 1
+            }
+          ]
+        }
       }
     },
     {
@@ -14780,6 +14762,7 @@
     },
     {
       "id": "bonus_binoculars_xp",
+      "bullet_type": "right",
       "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
     },
     {
@@ -15665,7 +15648,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": []
         }
       }
@@ -16060,7 +16042,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": []
         }
       }
@@ -16838,7 +16819,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": ["fury_21"]
         }
       }
@@ -16995,7 +16975,6 @@
           }
         ],
         "defaultOption": {
-          "default": true,
           "steps": []
         }
       }

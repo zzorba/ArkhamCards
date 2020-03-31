@@ -607,6 +607,12 @@ export default class GuidedCampaignLog {
     return scenario.leadInvestigator;
   }
 
+  isKilled(investigator: string): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    // TODO: handle physical-trauma == health.
+    return !!(investigatorData &&  investigatorData.killed);
+  }
+
   isDefeated(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
     return status === 'physical' || status === 'mental' || status == 'eliminated';
@@ -677,9 +683,9 @@ export default class GuidedCampaignLog {
     return !!entry;
   }
 
-  resolution(): string | undefined {
+  resolution(): string {
     const playing = this.latestScenarioData.playingScenario;
-    if (!playing) {
+    if (!playing || !this.latestScenarioData.resolution) {
       throw new Error('Resolution accessed before it was set.');
     }
     return this.latestScenarioData.resolution;

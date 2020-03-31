@@ -4,13 +4,13 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
+import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWithSuppliesInputComponent';
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
 import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
 import UseSuppliesPrompt from 'components/campaignguide/prompts/UseSuppliesPrompt';
 import CardTextComponent from 'components/card/CardTextComponent';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
 import CardChoicePrompt from 'components/campaignguide/prompts/CardChoicePrompt';
-import ChooseInvestigatorPrompt from 'components/campaignguide/prompts/ChooseInvestigatorPrompt';
 import InvestigatorCounterComponent from 'components/campaignguide/prompts/InvestigatorCounterComponent';
 import ChooseOnePrompt from 'components/campaignguide/prompts/ChooseOnePrompt';
 import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
@@ -102,6 +102,14 @@ export default class InputStepComponent extends React.Component<Props> {
       case 'investigator_choice':
         return (
           <InvestigatorChoiceInputComponent
+            step={step}
+            input={step.input}
+            campaignLog={campaignLog}
+          />
+        );
+      case 'investigator_choice_supplies':
+        return (
+          <InvestigatorChoiceWithSuppliesInputComponent
             step={step}
             input={step.input}
             campaignLog={campaignLog}
