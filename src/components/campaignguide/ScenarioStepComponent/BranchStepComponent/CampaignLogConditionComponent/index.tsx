@@ -2,12 +2,11 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
-import { every, find } from 'lodash';
+import { every } from 'lodash';
 import { t } from 'ttag';
 
 import CampaignLogCardConditionComponent from './CampaignLogCardConditionComponent';
 import BinaryResult from '../../../BinaryResult';
-import BinaryPrompt from '../../../prompts/BinaryPrompt';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../../CampaignGuideContext';
 import {
   BranchStep,
@@ -43,24 +42,12 @@ export default class CampaignLogConditionComponent extends React.Component<Props
                   const prompt = step.text ||
                     t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`;
 
-                  if (campaignLog.fullyGuided) {
-                    const result = campaignLog.check(condition.section, condition.id);
-                    return (
-                      <BinaryResult
-                        prompt={prompt}
-                        result={result}
-                        bulletType={step.bullet_type}
-                      />
-                    );
-                  }
-
+                  const result = campaignLog.check(condition.section, condition.id);
                   return (
-                    <BinaryPrompt
-                      id={step.id}
+                    <BinaryResult
+                      prompt={prompt}
+                      result={result}
                       bulletType={step.bullet_type}
-                      text={prompt}
-                      trueResult={find(condition.options, option => option.boolCondition === true)}
-                      falseResult={find(condition.options, option => option.boolCondition === false)}
                     />
                   );
                 }

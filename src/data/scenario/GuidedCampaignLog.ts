@@ -106,7 +106,6 @@ export default class GuidedCampaignLog {
   latestScenarioData: ScenarioData;
   campaignData: CampaignData;
   campaignGuide: CampaignGuide;
-  fullyGuided: boolean = true;
   chaosBag: ChaosBag;
 
   static isCampaignLogEffect(effect: Effect): boolean {

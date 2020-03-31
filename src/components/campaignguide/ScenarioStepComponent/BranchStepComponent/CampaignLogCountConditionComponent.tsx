@@ -56,69 +56,13 @@ export default class CampaignLogCountConditionComponent extends React.Component<
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignGuide }: CampaignGuideContextType) => {
-          if (campaignLog.fullyGuided) {
-            const count = campaignLog.count(condition.section, condition.id);
-            return (
-              <SetupStepWrapper bulletType={step.bullet_type}>
-                <CardTextComponent
-                  text={this.getPrompt(campaignGuide, count)}
-                />
-              </SetupStepWrapper>
-            );
-          }
-          if (every(condition.options, option => option.boolCondition !== undefined)) {
-            // It's a binary prompt.
-            if (condition.id) {
-              const logEntry = campaignGuide.logEntry(condition.section, condition.id);
-              if (!logEntry) {
-                return (
-                  <Text>
-                    Unknown campaign log { condition.section }.{ condition.id }
-                  </Text>
-                );
-              }
-              switch (logEntry.type) {
-                case 'text': {
-                  const prompt = step.text ||
-                    t`Check ${logEntry.section}. <i>If ${logEntry.text}</i>`;
-                  return (
-                    <BinaryPrompt
-                      id={step.id}
-                      bulletType={step.bullet_type}
-                      text={prompt}
-                      trueResult={find(condition.options, option => option.boolCondition === true)}
-                      falseResult={find(condition.options, option => option.boolCondition === false)}
-                    />
-                  );
-                }
-                case 'card': {
-                  return (
-                    <SingleCardWrapper
-                      code={logEntry.code}
-                      render={(card: Card) => {
-                        const prompt = step.text ||
-                          t`Is ${card.name} listed under ${logEntry.section}?`;
-                        return (
-                          <BinaryPrompt
-                            id={step.id}
-                            bulletType={step.bullet_type}
-                            text={prompt}
-                            trueResult={find(condition.options, option => option.boolCondition === true)}
-                            falseResult={find(condition.options, option => option.boolCondition === false)}
-                          />
-                        );
-                      }}
-                    />
-                  );
-                }
-              }
-            }
-          }
-          // Not a binary condition.
+          const count = campaignLog.count(condition.section, condition.id);
           return (
-            <Text>
-              A more complex Campaign Log branch of some sort
-            </Text>
+            <SetupStepWrapper bulletType={step.bullet_type}>
+              <CardTextComponent
+                text={this.getPrompt(campaignGuide, count)}
+              />
+            </SetupStepWrapper>
           );
         } }
       </CampaignGuideContext.Consumer>

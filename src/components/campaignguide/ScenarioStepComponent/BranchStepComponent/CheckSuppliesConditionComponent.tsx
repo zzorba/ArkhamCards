@@ -95,58 +95,39 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
   render(): React.ReactNode {
     const { step, condition, campaignLog } = this.props;
     switch (condition.investigator) {
-      case 'any':
-        if (campaignLog.fullyGuided) {
-          const investigatorSection = campaignLog.investigatorSections[condition.section];
-        }
-        return (
-          <BinaryPrompt
-            id={step.id}
-            bulletType={step.bullet_type}
-            text={step.text}
-            trueResult={find(condition.options, option => option.boolCondition === true)}
-            falseResult={find(condition.options, option => option.boolCondition === false)}
-          />
-        );
+      case 'any': {
+        const investigatorSection = campaignLog.investigatorSections[condition.section];
+        // TODO
+        return <Text>{step.text}</Text>;
+      }
       case 'all': {
-        if (campaignLog.fullyGuided) {
-          const investigatorSection = campaignLog.investigatorSections[condition.section] || {};
-          const haves: string[] = [];
-          const haveNots: string[] = [];
-          forEach(investigatorSection, (section, code) => {
-            if (find(section.entries, entry => entry.id === condition.id) && !section.crossedOut[condition.id]) {
-              haves.push(code);
-            } else {
-              haveNots.push(code);
-            }
-          });
-          return (
-            <>
-              <SetupStepWrapper>
-                { !!step.text && <CardTextComponent text={step.text} /> }
-              </SetupStepWrapper>
-              { (haves.length > 0) && (
-                <CardQueryWrapper
-                  query={`(${map(haves, code => `(code == '${code}')`).join(' OR ')})`}
-                  render={this._renderTrue}
-                />
-              )}
-              { (haveNots.length > 0) && (
-                <CardQueryWrapper
-                  query={`(${map(haveNots, code => `(code == '${code}')`).join(' OR ')})`}
-                  render={this._renderFalse}
-                />
-              )}
-            </>
-          );
-
-        }
+        const investigatorSection = campaignLog.investigatorSections[condition.section] || {};
+        const haves: string[] = [];
+        const haveNots: string[] = [];
+        forEach(investigatorSection, (section, code) => {
+          if (find(section.entries, entry => entry.id === condition.id) && !section.crossedOut[condition.id]) {
+            haves.push(code);
+          } else {
+            haveNots.push(code);
+          }
+        });
         return (
           <>
             <SetupStepWrapper>
               { !!step.text && <CardTextComponent text={step.text} /> }
             </SetupStepWrapper>
-
+            { (haves.length > 0) && (
+              <CardQueryWrapper
+                query={`(${map(haves, code => `(code == '${code}')`).join(' OR ')})`}
+                render={this._renderTrue}
+              />
+            )}
+            { (haveNots.length > 0) && (
+              <CardQueryWrapper
+                query={`(${map(haveNots, code => `(code == '${code}')`).join(' OR ')})`}
+                render={this._renderFalse}
+              />
+            )}
           </>
         );
       }

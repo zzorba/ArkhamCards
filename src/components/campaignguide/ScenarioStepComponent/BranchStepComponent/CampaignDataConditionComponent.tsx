@@ -48,24 +48,14 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
               const chosenScenario = campaignGuide.getScenario(condition.scenario, campaignState);
               const scenarioName =
                 chosenScenario && chosenScenario.scenario.scenarioName || condition.scenario;
-              if (campaignLog.fullyGuided) {
-                const completed = campaignLog.scenarioStatus(condition.scenario) === 'completed';
-                return (
-                  <SetupStepWrapper bulletType={step.bullet_type}>
-                    <CardTextComponent text={completed ?
-                      t`Because you have already completed <b>${scenarioName}</b>:` :
-                      t`Because you have not yet completed <b>${scenarioName}</b>:`
-                    } />
-                  </SetupStepWrapper>
-                );
-              }
+              const completed = campaignLog.scenarioStatus(condition.scenario) === 'completed';
               return (
-                <BinaryPrompt
-                  id={step.id}
-                  text={t`Have you have already completed ${scenarioName}?`}
-                  trueResult={find(condition.options, option => option.boolCondition === true)}
-                  falseResult={find(condition.options, option => option.boolCondition === false)}
-                />
+                <SetupStepWrapper bulletType={step.bullet_type}>
+                  <CardTextComponent text={completed ?
+                    t`Because you have already completed <b>${scenarioName}</b>:` :
+                    t`Because you have not yet completed <b>${scenarioName}</b>:`
+                  } />
+                </SetupStepWrapper>
               );
             }
             case 'chaos_bag':

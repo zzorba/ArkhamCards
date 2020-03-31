@@ -35,7 +35,6 @@ export default class ScenarioStep {
   scenarioGuide: ScenarioGuide;
   campaignLog: GuidedCampaignLog;
   remainingStepIds: string[];
-  fullyGuided: boolean = true;
 
   constructor(
     step: Step,
@@ -239,18 +238,10 @@ export default class ScenarioStep {
       case 'campaign_log': {
         const ifTrue = find(step.condition.options, option => option.boolCondition === true);
         const ifFalse = find(step.condition.options, option => option.boolCondition === false);
-        if (this.fullyGuided) {
-          return this.binaryBranch(
-            step.condition.type === 'campaign_log' ?
-              this.campaignLog.check(step.condition.section, step.condition.id) :
-              this.campaignLog.sectionExists(step.condition.section),
-            scenarioState,
-            this.remainingStepIds,
-            ifTrue,
-            ifFalse
-          );
-        }
-        return this.decisionTest(
+        return this.binaryBranch(
+          step.condition.type === 'campaign_log' ?
+            this.campaignLog.check(step.condition.section, step.condition.id) :
+            this.campaignLog.sectionExists(step.condition.section),
           scenarioState,
           this.remainingStepIds,
           ifTrue,
@@ -258,13 +249,7 @@ export default class ScenarioStep {
         );
       }
       case 'campaign_log_count': {
-        const inputCount = scenarioState.count(step.id);
-        if (!this.fullyGuided && inputCount === undefined) {
-          return undefined;
-        }
-        const count = this.fullyGuided ?
-          this.campaignLog.count(step.condition.section, step.condition.id) :
-          inputCount;
+        const count = this.campaignLog.count(step.condition.section, step.condition.id);
         const choice =
           find(step.condition.options, option => option.numCondition === count) ||
           step.condition.defaultOption;
@@ -374,16 +359,8 @@ export default class ScenarioStep {
       case 'scenario_completed': {
         const ifTrue = find(step.condition.options, option => option.boolCondition === true);
         const ifFalse = find(step.condition.options, option => option.boolCondition === false);
-        if (this.fullyGuided) {
-          return this.binaryBranch(
-            this.campaignLog.scenarioStatus(condition.scenario) === 'completed',
-            scenarioState,
-            this.remainingStepIds,
-            ifTrue,
-            ifFalse
-          );
-        }
-        return this.decisionTest(
+        return this.binaryBranch(
+          this.campaignLog.scenarioStatus(condition.scenario) === 'completed',
           scenarioState,
           this.remainingStepIds,
           ifTrue,
@@ -391,20 +368,16 @@ export default class ScenarioStep {
         );
       }
       case 'difficulty':
-        if (this.fullyGuided) {
-          const difficulty = this.campaignLog.campaignData.difficulty;
-          const option = find(condition.options, option => option.condition === difficulty);
-          const extraSteps = (option && option.steps) || [];
-          return this.maybeCreateEffectsStep(
-            step.id,
-            [...extraSteps, ...this.remainingStepIds],
-            [{
-              effects: (option && option.effects) || [],
-            }]
-          );
-        }
-        // TODO: choice based
-        return undefined;
+        const difficulty = this.campaignLog.campaignData.difficulty;
+        const option = find(condition.options, option => option.condition === difficulty);
+        const extraSteps = (option && option.steps) || [];
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...extraSteps, ...this.remainingStepIds],
+          [{
+            effects: (option && option.effects) || [],
+          }]
+        );
       case 'chaos_bag':
       case 'investigator':
         return undefined;
@@ -417,39 +390,26 @@ export default class ScenarioStep {
     condition: CardCondition,
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
-    if (this.campaignLog.fullyGuided) {
-      const investigators = this.campaignLog.investigatorCodes();
-      const hasCard = filter(investigators, code => {
-        if (condition.investigator === 'defeated' &&
-          !this.campaignLog.isDefeated(code)) {
-          return false;
-        }
-        return this.campaignLog.hasCard(
-          code,
-          condition.card
-        );
-      });
-
-      return this.binaryBranch(
-        hasCard.length > 0,
-        scenarioState,
-        this.remainingStepIds,
-        find(condition.options, option => option.boolCondition === true),
-        find(condition.options, option => option.boolCondition === false),
-        hasCard
+    const investigators = this.campaignLog.investigatorCodes();
+    const hasCard = filter(investigators, code => {
+      if (condition.investigator === 'defeated' &&
+        !this.campaignLog.isDefeated(code)) {
+        return false;
+      }
+      return this.campaignLog.hasCard(
+        code,
+        condition.card
       );
-    }
-    switch (condition.investigator) {
-      case 'defeated':
-      case 'any':
-        // For now we'll just ask the question.
-        return this.decisionTest(
-          scenarioState,
-          this.remainingStepIds,
-          find(step.condition.options, option => option.boolCondition === true),
-          find(step.condition.options, option => option.boolCondition === false || !!option.default)
-        );
-    }
+    });
+
+    return this.binaryBranch(
+      hasCard.length > 0,
+      scenarioState,
+      this.remainingStepIds,
+      find(condition.options, option => option.boolCondition === true),
+      find(condition.options, option => option.boolCondition === false),
+      hasCard
+    );
   }
 
   private handleScenarioDataCondition(
@@ -526,22 +486,14 @@ export default class ScenarioStep {
       case 'any': {
         const ifTrue = find(step.condition.options, option => option.boolCondition === true);
         const ifFalse = find(step.condition.options, option => option.boolCondition === false);
-        if (this.fullyGuided) {
-          const investigatorSupplies = this.campaignLog.investigatorSections[condition.section] || {};
-          const decision = !!find(investigatorSupplies,
-            supplies => !!find(supplies.entries,
-              entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
-            )
-          );
-          return this.binaryBranch(
-            decision,
-            scenarioState,
-            this.remainingStepIds,
-            ifTrue,
-            ifFalse
-          );
-        }
-        return this.decisionTest(
+        const investigatorSupplies = this.campaignLog.investigatorSections[condition.section] || {};
+        const decision = !!find(investigatorSupplies,
+          supplies => !!find(supplies.entries,
+            entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
+          )
+        );
+        return this.binaryBranch(
+          decision,
           scenarioState,
           this.remainingStepIds,
           ifTrue,
@@ -549,26 +501,17 @@ export default class ScenarioStep {
         );
       }
       case 'all': {
-        let choiceList: ListChoices | undefined  ;
-        if (this.campaignLog.fullyGuided) {
-          const investigatorSupplies = this.campaignLog.investigatorSections[condition.section] || {};
-          const newChoiceList: ListChoices = {};
-          forEach(investigatorSupplies, (supplies, investigatorCode) => {
-            const hasSupply = !!find(supplies.entries,
-              entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
-            );
-            const matchingOption = findIndex(condition.options, option => option.boolCondition === hasSupply);
-            if (matchingOption !== -1) {
-              newChoiceList[investigatorCode] = [matchingOption];
-            }
-          });
-          choiceList = newChoiceList;
-        } else {
-          choiceList = scenarioState.choiceList(step.id);
-        }
-        if (choiceList === undefined) {
-          return undefined;
-        }
+        const investigatorSupplies = this.campaignLog.investigatorSections[condition.section] || {};
+        const choiceList: ListChoices = {};
+        forEach(investigatorSupplies, (supplies, investigatorCode) => {
+          const hasSupply = !!find(supplies.entries,
+            entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
+          );
+          const matchingOption = findIndex(condition.options, option => option.boolCondition === hasSupply);
+          if (matchingOption !== -1) {
+            choiceList[investigatorCode] = [matchingOption];
+          }
+        });
         const {
           effectsWithInput,
           stepIds,
