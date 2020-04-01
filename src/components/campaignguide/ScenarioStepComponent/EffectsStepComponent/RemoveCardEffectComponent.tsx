@@ -1,5 +1,5 @@
 import React from 'react';
-import { map } from 'lodash';
+import { map, keys } from 'lodash';
 import { t } from 'ttag';
 
 import SetupStepWrapper from '../../SetupStepWrapper';
@@ -11,6 +11,7 @@ import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { RemoveCardEffect } from 'data/scenario/types';
 import Card from 'data/Card';
 import CardTextComponent from 'components/card/CardTextComponent';
+import { hasCardConditionResult } from 'data/scenario/conditionHelper';
 
 interface Props {
   id: string;
@@ -34,25 +35,32 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
     ));
   };
 
-  _investigatorHasCard = ({ investigator }: InvestigatorDeck) => {
-    const { effect, campaignLog } = this.props;
-    return campaignLog.hasCard(investigator.code, effect.card);
-  };
-
   _renderCard = (card: Card) => {
-    const { id, effect, input } = this.props;
+    const { id, effect, input, campaignLog } = this.props;
     if (!effect.investigator) {
       // These are always spelled out.
       return null;
     }
     if (effect.investigator === 'choice' && input) {
+      const investigatorResult = hasCardConditionResult(
+        {
+          type: 'has_card',
+          card: card.code,
+          investigator: 'each',
+          options: [{
+            boolCondition: true,
+            effects: []
+          }]
+        },
+        campaignLog
+      );
       return (
         <InvestigatorCheckListComponent
           id={`${id}_investigator`}
           min={input.length}
           max={input.length}
           checkText={t`Remove ${card.name} (${input.length})`}
-          filter={this._investigatorHasCard}
+          investigators={keys(investigatorResult.investigatorChoices)}
         />
       );
     }
@@ -61,7 +69,7 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
         id={id}
         investigator={effect.investigator}
         render={this._renderInvestigators}
-        description={t`Who will add ${card.name} to their deck?`}
+        description={t`Who will remove ${card.name} from their deck?`}
         extraArgs={card}
       />
     );

@@ -846,7 +846,7 @@
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name#)."
+            "text": "the jungle watches (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
@@ -862,7 +862,7 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known"
+            "text": "#X# paths are known to you"
           },
           {
             "id": "paths_known",
@@ -919,7 +919,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks completed"
+            "text": "#X# tasks were completed"
           }
         ]
       }

@@ -7,6 +7,7 @@ import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import { ListChoices } from 'actions/types';
 import typography from 'styles/typography';
+
 export interface CounterItem {
   code: string;
   name: string;
@@ -17,6 +18,7 @@ export interface CounterItem {
 interface Props {
   id: string;
   items: CounterItem[];
+  countText?: string;
   requiredTotal?: number;
 }
 
@@ -116,7 +118,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
   }
 
   render() {
-    const { id, items } = this.props;
+    const { id, items, countText } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
@@ -124,6 +126,11 @@ export default class CounterListComponent extends React.Component<Props, State> 
           const hasDecision = choiceList !== undefined;
           return (
             <View style={styles.border}>
+              <View style={styles.prompt}>
+                <Text style={typography.mediumGameFont}>
+                  { countText }
+                </Text>
+              </View>
               { map(items, ({ code, name, limit, tintColor }, idx) => {
                 const value = this.getValue(code, choiceList);
                 return (
@@ -152,6 +159,14 @@ export default class CounterListComponent extends React.Component<Props, State> 
 const styles = StyleSheet.create({
   border: {
     borderTopWidth: 1,
+    borderColor: '#888',
+  },
+  prompt: {
+    flexDirection: 'row',
+    padding: 8,
+    paddingRight: 16,
+    justifyContent: 'flex-end',
+    borderBottomWidth: 1,
     borderColor: '#888',
   },
 });

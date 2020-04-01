@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-import { every, forEach, map } from 'lodash';
+import { every, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import ChoiceListItemComponent from './ChoiceListItemComponent';
@@ -9,7 +9,7 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import { ListChoices } from 'actions/types';
 import CardTextComponent from 'components/card/CardTextComponent';
 import { BulletType } from 'data/scenario/types';
-import { DisplayChoice } from 'data/scenario';
+import { DisplayChoice, Choices } from 'data/scenario';
 
 export interface ListItem {
   code: string;
@@ -17,6 +17,7 @@ export interface ListItem {
   tintColor?: string;
   primaryColor?: string;
 }
+
 export interface ChoiceListComponentProps {
   id: string;
   bulletType?: BulletType;
@@ -24,7 +25,7 @@ export interface ChoiceListComponentProps {
   text?: string;
   optional?: boolean;
   detailed?: boolean;
-  choices: DisplayChoice[];
+  options: Choices;
 }
 interface Props extends ChoiceListComponentProps {
   items: ListItem[];
@@ -48,7 +49,14 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     } = {};
     if (!props.optional) {
       forEach(props.items, item => {
-        selectedChoice[item.code] = 0;
+        if (props.options.type === 'universal') {
+          selectedChoice[item.code] = 0;
+        } else {
+          const personalized = props.options.perCode[item.code];
+          if (personalized && personalized.length) {
+            selectedChoice[item.code] = personalized[0];
+          }
+        }
       });
     }
     this.state = {
@@ -115,8 +123,46 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     return detailed ? undefined : -1;
   }
 
+  renderChoices(inputChoiceList?: ListChoices) {
+    const { items, detailed, options, optional } = this.props;
+    const results = flatMap(items, (item, idx) => {
+      const choices = options.type === 'universal' ?
+        options.choices :
+        map(options.perCode[item.code] || [], index => options.choices[index]);
+      if (choices.length === 0) {
+        return null;
+      }
+      return (
+        <ChoiceListItemComponent
+          key={idx}
+          {...item}
+          choices={choices}
+          choice={this.getChoice(item.code, inputChoiceList)}
+          onChoiceChange={this._onChoiceChange}
+          optional={!!optional}
+          editable={inputChoiceList === undefined}
+          detailed={detailed}
+        />
+      );
+    });
+
+    if (results.length === 0) {
+      return (
+        <ChoiceListItemComponent
+          code="dummy"
+          name={t`None`}
+          choices={[]}
+          editable={false}
+          optional={false}
+          onChoiceChange={this._onChoiceChange}
+        />
+      );
+    }
+    return results;
+  }
+
   render() {
-    const { id, items, bulletType, detailed, choices, text, optional } = this.props;
+    const { id, bulletType, text } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
@@ -126,20 +172,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
               <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CardTextComponent text={text} /> }
               </SetupStepWrapper>
-              { map(items, (item, idx) => {
-                return (
-                  <ChoiceListItemComponent
-                    key={idx}
-                    {...item}
-                    choices={choices}
-                    choice={this.getChoice(item.code, inputChoiceList)}
-                    onChoiceChange={this._onChoiceChange}
-                    optional={!!optional}
-                    editable={inputChoiceList === undefined}
-                    detailed={detailed}
-                  />
-                );
-              }) }
+              { this.renderChoices(inputChoiceList) }
               { this.renderSaveButton(inputChoiceList !== undefined) }
             </>
           );

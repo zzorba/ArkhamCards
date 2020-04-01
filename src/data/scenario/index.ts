@@ -1,6 +1,7 @@
 import { find } from 'lodash';
 
-import { FullCampaign } from './types';
+import { ListChoices } from 'actions/types';
+import { FullCampaign, Effect } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
 import Card from 'data/Card';
 import { Deck } from 'actions/types';
@@ -14,7 +15,23 @@ export interface DisplayChoice {
   text?: string;
   flavor?: string;
   description?: string;
+  steps?: string[] | null;
+  effects?: Effect[] | null;
 }
+
+
+export interface UniversalChoices {
+  type: 'universal';
+  choices: DisplayChoice[];
+}
+
+export interface PersonalizedChoices {
+  type: 'personalized';
+  choices: DisplayChoice[];
+  perCode: ListChoices;
+}
+
+export type Choices = PersonalizedChoices | UniversalChoices;
 
 export function getCampaignGuide(
   id: string

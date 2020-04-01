@@ -33,10 +33,18 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       return t`${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`;
     }
     if (effect.mental) {
+      if (effect.mental < 0) {
+        const mental = Math.abs(effect.mental);
+        return t`${investigator.name} heals ${mental} mental trauma.`;
+      }
       return t`${investigator.name} suffers ${effect.mental} mental trauma.`;
     }
     if (effect.physical) {
-      return t`${investigator.name} took ${effect.physical} physical trauma.`;
+      if (effect.physical < 0) {
+        const physical = Math.abs(effect.physical);
+        return t`${investigator.name} heals ${physical} physical trauma.`;
+      }
+      return t`${investigator.name} suffers ${effect.physical} physical trauma.`;
     }
     return 'Unknown trauma type';
   }
@@ -58,10 +66,13 @@ export default class TraumaEffectComponent extends React.Component<Props> {
             id={`${id}_trauma`}
             investigatorDecks={investigatorDecks}
             bulletType="none"
-            choices={[
-              { text: t`Physical Trauma` },
-              { text: t`Mental Trauma` },
-            ]}
+            options={{
+              type: 'universal',
+              choices: [
+                { text: t`Physical Trauma` },
+                { text: t`Mental Trauma` },
+              ],
+            }}
           />
         </>
       );

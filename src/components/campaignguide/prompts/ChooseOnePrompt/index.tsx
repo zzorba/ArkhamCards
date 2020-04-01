@@ -8,9 +8,12 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGu
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CardTextComponent from 'components/card/CardTextComponent';
 import { BulletType, ChooseOneInput } from 'data/scenario/types';
+import { chooseOneInputChoices } from 'data/scenario/inputHelper';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;
+  campaignLog: GuidedCampaignLog;
   bulletType?: BulletType;
   text?: string;
   input: ChooseOneInput;
@@ -41,18 +44,19 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
   };
 
   render() {
-    const { id, input, text, bulletType } = this.props;
+    const { id, input, text, bulletType, campaignLog } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
           const decision = scenarioState.choice(id);
           const selectedChoice = decision !== undefined ? decision : this.state.selectedChoice;
+          const choices = chooseOneInputChoices(input, campaignLog);
           return (
             <>
               { input.style === 'picker' ? (
                 <PickerComponent
                   title={selectedChoice === undefined ? (text || '') : ''}
-                  choices={input.choices}
+                  choices={choices}
                   selectedIndex={selectedChoice}
                   onChoiceChange={this._onChoiceChange}
                   editable={decision === undefined}
@@ -65,7 +69,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                     />
                   </SetupStepWrapper>
                   <ChooseOneListComponent
-                    choices={input.choices}
+                    choices={choices}
                     selectedIndex={selectedChoice}
                     onSelect={this._onChoiceChange}
                     editable={decision === undefined}

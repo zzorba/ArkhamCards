@@ -13,9 +13,10 @@ interface Props {
   bulletType?: BulletType;
   prompt?: string;
   result: boolean;
+  noBorder?: boolean
 }
 
-export default function BinaryResult({ bulletType, prompt, result }: Props) {
+export default function BinaryResult({ bulletType, prompt, result, noBorder }: Props) {
   return (
     <View style={styles.row}>
       <View style={styles.step}>
@@ -23,7 +24,7 @@ export default function BinaryResult({ bulletType, prompt, result }: Props) {
           { !!prompt && <CardTextComponent text={prompt} /> }
         </SetupStepWrapper>
       </View>
-      <ResultIndicatorIcon result={result} />
+      <ResultIndicatorIcon result={result} noBorder={noBorder} />
     </View>
   )
 }

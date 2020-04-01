@@ -1,5 +1,5 @@
 import React from 'react';
-import { map, filter } from 'lodash';
+import { map, filter, findIndex } from 'lodash';
 
 import CheckListComponent from './CheckListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -13,6 +13,7 @@ interface Props {
   min: number;
   max: number;
   deckMode?: boolean;
+  investigators?: string[];
   filter?: (investigatorDeck: InvestigatorDeck) => boolean;
 }
 
@@ -20,18 +21,40 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
+  _filterInvestigator = (investigator: InvestigatorDeck): boolean => {
+    const { investigators, filter } = this.props;
+    if (investigators) {
+      return findIndex(
+        investigators,
+        code => code === investigator.investigator.code
+      ) !== -1;
+    }
+    if (filter) {
+      return filter(investigator);
+    }
+    return true;
+  };
+
   render() {
-    const { id, checkText, min, max, deckMode, defaultState } = this.props;
+    const {
+      id,
+      checkText,
+      min,
+      max,
+      deckMode,
+      defaultState,
+    } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ investigatorDecks }: ScenarioGuideContextType) => {
+          const investigators = filter(investigatorDecks, this._filterInvestigator);
           return (
             <CheckListComponent
               id={id}
               checkText={checkText}
               defaultState={defaultState}
               items={map(
-                filter(investigatorDecks, deck => !this.props.filter || this.props.filter(deck)),
+                investigators,
                 ({ investigator, deck }) => {
                   return {
                     code: investigator.code,

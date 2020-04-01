@@ -17,6 +17,7 @@ interface Props {
   id: string;
   bulletType?: BulletType;
   prompt: string;
+  confirmText?: string;
   min?: number;
   max?: number;
   options?: Option[];
@@ -77,44 +78,55 @@ export default class NumberPrompt extends React.Component<Props, State> {
   renderPrompt(count?: number) {
     const { prompt } = this.props;
     return (
-      <>
-        <View style={styles.promptRow}>
+      <View style={styles.promptRow}>
+        <View style={styles.text}>
           <CardTextComponent text={prompt} />
-          { count !== undefined ? (
-            this.renderCount(count)
-          ) : (
-            <PlusMinusButtons
-              count={this.state.value}
-              limit={this.props.max}
-              min={this.props.min}
-              onIncrement={this._inc}
-              onDecrement={this._dec}
-              countRender={this.renderCount(this.state.value)}
-            />
-          ) }
         </View>
-      </>
+        { count !== undefined ? (
+          this.renderCount(count)
+        ) : (
+          <PlusMinusButtons
+            count={this.state.value}
+            limit={this.props.max}
+            min={this.props.min}
+            onIncrement={this._inc}
+            onDecrement={this._dec}
+            countRender={this.renderCount(this.state.value)}
+          />
+        ) }
+      </View>
     );
   }
 
   render() {
-    const { id, bulletType, text } = this.props;
+    const { id, bulletType, text, confirmText } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
           const count = scenarioState.count(id);
           return (
             <View style={styles.wrapper}>
-              <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CardTextComponent text={text} /> }
-              </SetupStepWrapper>
+              { !!text && (
+                <SetupStepWrapper bulletType={bulletType}>
+                  <CardTextComponent text={text} />
+                </SetupStepWrapper>
+              ) }
               <SetupStepWrapper
                 bulletType={count === undefined ? 'none' : 'small'}
                 border={count === undefined}
               >
-                { this.renderPrompt(count) }
-                { (count === undefined) && <Button title="Done" onPress={this._submit} /> }
+                <View style={styles.content}>
+                  { this.renderPrompt(count) }
+                  { (count === undefined) && (
+                    <Button title="Done" onPress={this._submit} />
+                  ) }
+                </View>
               </SetupStepWrapper>
+              { count !== undefined && !!confirmText && (
+                <SetupStepWrapper bulletType="small">
+                  <CardTextComponent text={confirmText} />
+                </SetupStepWrapper>
+              ) }
             </View>
           );
         } }
@@ -132,9 +144,15 @@ const styles = StyleSheet.create({
   wrapper: {
     paddingTop: 8,
   },
+  content: {
+    flexDirection: 'column',
+  },
   promptRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  text: {
+    flex: 1,
   },
 });

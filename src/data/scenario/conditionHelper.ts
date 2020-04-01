@@ -1,6 +1,6 @@
 import {
   every,
-  filter,
+  keys,
   find,
   findIndex,
   forEach,
@@ -8,11 +8,17 @@ import {
 
 import { ListChoices } from 'actions/types';
 import {
+  BinaryCardCondition,
   CardCondition,
   CampaignLogCondition,
   CampaignLogSectionExistsCondition,
   CheckSuppliesCondition,
-  TraumaCondition,
+  CheckSuppliesAllCondition,
+  CheckSuppliesAnyCondition,
+  InvestigatorCardCondition,
+  KilledTraumaCondition,
+  MathEqualsCondition,
+  BasicTraumaCondition,
   Condition,
   BoolOption,
   NumOption,
@@ -40,7 +46,7 @@ interface StringResult {
   option?: Option;
 }
 
-interface InvestigatorResult {
+export interface InvestigatorResult {
   type: 'investigator',
   investigatorChoices: ListChoices;
   options: Option[];
@@ -112,7 +118,7 @@ function getOperand(
 ): number {
   switch (op.type) {
     case 'campaign_log_count':
-      return campaignLog.count(op.section, '$count');
+      return campaignLog.count(op.section, op.id || '$count');
     case 'chaos_bag':
       return campaignLog.chaosBag[op.token] || 0;
     case 'constant':
@@ -143,33 +149,49 @@ export function checkSuppliesConditionResult(
   condition: CheckSuppliesCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult | InvestigatorResult {
-  const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
   switch (condition.investigator) {
-    case 'any': {
-      return binaryConditionResult(
-        !!find(investigatorSupplies, supplies =>
-          !!find(supplies.entries, entry => entry.id === condition.id && !supplies.crossedOut[condition.id])
-        ),
-        condition.options
-      );
-    }
-    case 'all': {
-      const choices: ListChoices = {};
-      forEach(investigatorSupplies, (supplies, investigatorCode) => {
-        const hasSupply = !!find(supplies.entries,
-          entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
-        );
-        const index = findIndex(condition.options, option => option.boolCondition === hasSupply);
-        if (index !== -1) {
-          choices[investigatorCode] = [index];
-        }
-      });
-      return investigatorConditionResult(
-        choices,
-        condition.options
-      );
-    }
+    case 'any':
+      return checkSuppliesAnyConditionResult(condition, campaignLog);
+    case 'all':
+      return checkSuppliesAllConditionResult(condition, campaignLog);
   }
+}
+
+export function checkSuppliesAnyConditionResult(
+  condition: CheckSuppliesAnyCondition,
+  campaignLog: GuidedCampaignLog
+): BinaryResult {
+  const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
+  return binaryConditionResult(
+    !!find(investigatorSupplies, supplies =>
+      !!find(supplies.entries, entry => entry.id === condition.id && !supplies.crossedOut[condition.id])
+    ),
+    condition.options
+  );
+}
+
+export function checkSuppliesAllConditionResult(
+  condition: CheckSuppliesAllCondition,
+  campaignLog: GuidedCampaignLog
+): InvestigatorResult {
+  const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
+  const choices: ListChoices = {};
+  forEach(investigatorSupplies, (supplies, investigatorCode) => {
+    const hasSupply = !!find(supplies.entries,
+      entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
+    );
+    const index = findIndex(
+      condition.options,
+      option => option.boolCondition === hasSupply
+    );
+    if (index !== -1) {
+      choices[investigatorCode] = [index];
+    }
+  });
+  return investigatorConditionResult(
+    choices,
+    condition.options
+  );
 }
 
 export function campaignLogConditionResult(
@@ -184,13 +206,10 @@ export function campaignLogConditionResult(
   );
 }
 
-export function traumaConditionResult(
-  condition: TraumaCondition,
+export function killedTraumaConditionResult(
+  condition: KilledTraumaCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
-  if (condition.trauma !== 'killed') {
-    throw new Error('Trauma should always be killed');
-  }
   switch (condition.investigator) {
     case 'lead_investigator': {
       const investigator = campaignLog.leadInvestigatorChoice();
@@ -209,17 +228,77 @@ export function traumaConditionResult(
   }
 }
 
+export function mathEqualsConditionResult(
+  condition: MathEqualsCondition,
+  campaignLog: GuidedCampaignLog
+) {
+  const opA = getOperand(condition.opA, campaignLog);
+  const opB = getOperand(condition.opB, campaignLog);
+  return binaryConditionResult(
+    opA === opB,
+    condition.options
+  );
+}
+
+export function basicTraumaConditionResult(
+  condition: BasicTraumaCondition,
+  campaignLog: GuidedCampaignLog
+): InvestigatorResult {
+  switch (condition.investigator) {
+    case 'each': {
+      const choices: ListChoices = {};
+      const investigators = campaignLog.investigatorCodes();
+      forEach(investigators, investigator => {
+        const decision = condition.trauma === 'mental' ?
+          campaignLog.hasMentalTrauma(investigator) :
+          campaignLog.hasPhysicalTrauma(investigator);
+        const index = findIndex(condition.options, option => option.boolCondition === decision);
+        if (index !== -1) {
+          choices[investigator] = [index];
+        }
+      });
+      return investigatorConditionResult(
+        choices,
+        condition.options
+      );
+    }
+  }
+}
+
 export function hasCardConditionResult(
   condition: CardCondition,
+  campaignLog: GuidedCampaignLog
+): InvestigatorResult | BinaryResult {
+  if (condition.investigator === 'each') {
+    return investigatorCardConditionResult(condition, campaignLog);
+  }
+  return binaryCardConditionResult(condition, campaignLog);
+}
+
+export function binaryCardConditionResult(
+  condition: BinaryCardCondition,
+  campaignLog: GuidedCampaignLog
+): BinaryResult {
+  const investigators = campaignLog.investigatorCodes();
+  return binaryConditionResult(
+    !!find(investigators, code => {
+      return (
+        condition.investigator !== 'defeated' ||
+        campaignLog.isDefeated(code)
+      ) && campaignLog.hasCard(code, condition.card);
+    }),
+    condition.options
+  );
+}
+
+export function investigatorCardConditionResult(
+  condition: InvestigatorCardCondition,
   campaignLog: GuidedCampaignLog
 ): InvestigatorResult {
   const investigators = campaignLog.investigatorCodes();
   const choices: ListChoices = {};
   forEach(investigators, code => {
-    const decision = (
-      condition.investigator !== 'defeated' ||
-      campaignLog.isDefeated(code)
-    ) && campaignLog.hasCard(
+    const decision = campaignLog.hasCard(
       code,
       condition.card
     );
@@ -228,7 +307,10 @@ export function hasCardConditionResult(
       choices[code] = [index];
     }
   });
-  return investigatorConditionResult(choices, condition.options);
+  return investigatorConditionResult(
+    choices,
+    condition.options
+  );
 }
 
 export function conditionResult(
@@ -243,6 +325,10 @@ export function conditionResult(
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
     case 'campaign_log_count': {
+      console.log({
+        section: condition.section,
+        count: campaignLog.count(condition.section, condition.id),
+      });
       return numberConditionResult(
         campaignLog.count(condition.section, condition.id),
         condition.options,
@@ -250,6 +336,9 @@ export function conditionResult(
       );
     }
     case 'math': {
+      if (condition.operation === 'equals') {
+        return mathEqualsConditionResult(condition, campaignLog);
+      }
       const opA = getOperand(condition.opA, campaignLog);
       const opB = getOperand(condition.opB, campaignLog);
       const value = performOp(opA, opB, condition.operation);
@@ -332,7 +421,7 @@ export function conditionResult(
       return hasCardConditionResult(condition, campaignLog);
     }
     case 'trauma':
-      return traumaConditionResult(condition, campaignLog);
+      return killedTraumaConditionResult(condition, campaignLog);
   }
 }
 

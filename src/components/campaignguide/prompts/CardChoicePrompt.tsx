@@ -2,8 +2,11 @@ import React from 'react';
 import { flatMap, keys, map, uniq } from 'lodash';
 import { t } from 'ttag';
 
+import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
+import SetupStepWrapper from '../SetupStepWrapper';
+import CardTextComponent from 'components/card/CardTextComponent';
 import { InvestigatorDeck } from 'data/scenario';
 import CardQueryWrapper from '../CardQueryWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -27,9 +30,29 @@ export default class CardChoicePrompt extends React.Component<Props> {
     const {
       id,
       text,
-      input: { choices },
+      input,
     } = this.props;
-    if (choices.length > 1) {
+    if (input.include_counts) {
+      return (
+        <>
+          <SetupStepWrapper>
+            { !!text && <CardTextComponent text={text} /> }
+          </SetupStepWrapper>
+          <CounterListComponent
+            id={id}
+            countText={input.choices[0].text}
+            items={map(cards, card => {
+              return {
+                code: card.code,
+                name: card.name,
+                limit: card.quantity || 1,
+              };
+            })}
+          />
+        </>
+      );
+    }
+    if (input.choices.length > 1) {
       return (
         <ChoiceListComponent
           id={id}
@@ -40,7 +63,10 @@ export default class CardChoicePrompt extends React.Component<Props> {
               name: card.name,
             };
           })}
-          choices={choices}
+          options={{
+            type: 'universal',
+            choices: input.choices,
+          }}
         />
       );
     }
@@ -55,7 +81,7 @@ export default class CardChoicePrompt extends React.Component<Props> {
             name: card.name,
           };
         })}
-        checkText={choices[0].text}
+        checkText={input.choices[0].text}
       />
     );
   };

@@ -26,7 +26,12 @@ interface State {
 export default class ChooseInvestigatorPrompt extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
-  state: State = {};
+  constructor(props: Props, context: ScenarioGuideContextType) {
+    super(props);
+    this.state = {
+      selectedInvestigator: props.required ? context.investigatorDecks[0].investigator.code : undefined,
+    };
+  }
 
   _onChoiceChange = (
     index: number

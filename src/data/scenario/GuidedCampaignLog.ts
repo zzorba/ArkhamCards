@@ -1,4 +1,16 @@
-import { cloneDeep, find, findIndex, filter, forEach, keys, map, sumBy, uniq } from 'lodash';
+import {
+  cloneDeep,
+  find,
+  findIndex,
+  filter,
+  forEach,
+  keys,
+  map,
+  range,
+  sumBy,
+  uniq,
+  zip,
+} from 'lodash';
 
 import { DecksMap, TraumaAndCardData } from 'actions/types';
 import { ChaosBag } from 'constants';
@@ -15,6 +27,7 @@ import {
   InvestigatorStatus,
   InvestigatorSelector,
   RemoveCardEffect,
+  ReplaceCardEffect,
   ScenarioDataEffect,
   ScenarioStatus,
   TraumaEffect,
@@ -27,9 +40,13 @@ interface BasicEntry {
   id: string;
 }
 
+interface CampaignLogCard {
+  card: string;
+  count: number;
+}
 interface CampaignLogCardEntry extends BasicEntry {
   type: 'card';
-  cards: string[];
+  cards: CampaignLogCard[];
 }
 
 interface CampaignLogCountEntry extends BasicEntry {
@@ -120,6 +137,7 @@ export default class GuidedCampaignLog {
       case 'trauma':
       case 'add_card':
       case 'remove_card':
+      case 'replace_card':
         return true;
       default:
         return false;
@@ -187,7 +205,7 @@ export default class GuidedCampaignLog {
               break;
             }
             case 'campaign_log_cards':
-              this.handleCampaignLogCardsEffect(effect, input);
+              this.handleCampaignLogCardsEffect(effect, input, numberInput);
               break;
             case 'add_chaos_token':
             case 'remove_chaos_token':
@@ -201,6 +219,9 @@ export default class GuidedCampaignLog {
               break;
             case 'remove_card':
               this.handleRemoveCardEffect(effect, input);
+              break;
+            case 'replace_card':
+              this.handleReplaceCardEffect(effect);
               break;
             default:
               break;
@@ -266,6 +287,25 @@ export default class GuidedCampaignLog {
       assets.push(effect.card);
       data.storyAssets = uniq(assets);
       this.campaignData.investigatorData[investigator] = data;
+    });
+  }
+
+  private handleReplaceCardEffect(
+    effect: ReplaceCardEffect
+  ) {
+    forEach(
+      keys(this.campaignData.investigatorData),
+      investigator => {
+        const data = this.campaignData.investigatorData[investigator];
+        if (data) {
+          this.campaignData.investigatorData[investigator] = {
+            ...data,
+            storyAssets: map(
+              data.storyAssets || [],
+              card => card === effect.old_card ? effect.new_card : card
+            ),
+          };
+        }
     });
   }
 
@@ -542,7 +582,11 @@ export default class GuidedCampaignLog {
     return undefined;
   }
 
-  private handleCampaignLogCardsEffect(effect: CampaignLogCardsEffect, input?: string[]) {
+  private handleCampaignLogCardsEffect(
+    effect: CampaignLogCardsEffect,
+    input?: string[],
+    numberInput?: number[]
+  ) {
     const sectionIds: string[] = effect.section === '$input_value' ? (
       input || []
     ) : [effect.section];
@@ -559,21 +603,51 @@ export default class GuidedCampaignLog {
         }
       } else {
         forEach(ids, id => {
-          const cards: string[] = [];
+          const cards: CampaignLogCard[] = [];
           if (effect.section === '$input_value') {
-            cards.push(sectionId);
+            cards.push({
+              card: sectionId,
+              count: 1,
+            });
           } else if (effect.id === '$input_value') {
-            cards.push(id);
+            cards.push({
+              card: id,
+              count: 1,
+            });
           } else if (effect.cards) {
             switch (effect.cards) {
               case '$input_value':
+                if (input && numberInput) {
+                  forEach(zip(input, numberInput),
+                    ([card, number]) => {
+                      if (card && number) {
+                        cards.push({
+                          card,
+                          count: number,
+                        })
+                      }
+                    });
+                } else {
+                  forEach(input || [],
+                    card => cards.push({
+                      card,
+                      count: 1,
+                    }));
+                }
+                break;
               case '$lead_investigator':
-                forEach(input || [], card => cards.push(card));
-                console.log(cards);
+                forEach(input || [],
+                  card => cards.push({
+                    card,
+                    count: 1,
+                  }));
                 break;
             }
           } else {
-            cards.push(id);
+            cards.push({
+              card: id,
+              count: 1,
+            });
           }
 
           // Normal entry
@@ -610,7 +684,21 @@ export default class GuidedCampaignLog {
   isKilled(investigator: string): boolean {
     const investigatorData = this.campaignData.investigatorData[investigator];
     // TODO: handle physical-trauma == health.
-    return !!(investigatorData &&  investigatorData.killed);
+    return !!(investigatorData && investigatorData.killed);
+  }
+
+  hasPhysicalTrauma(investigator: string): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    return !!(investigatorData &&
+      (investigatorData.physical || 0 > 0)
+    );
+  }
+
+  hasMentalTrauma(investigator: string): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    return !!(investigatorData &&
+      (investigatorData.mental || 0 > 0)
+    );
   }
 
   isDefeated(investigator: string): boolean {

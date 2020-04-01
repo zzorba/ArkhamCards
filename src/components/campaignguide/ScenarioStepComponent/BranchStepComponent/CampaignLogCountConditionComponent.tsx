@@ -53,6 +53,9 @@ export default class CampaignLogCountConditionComponent extends React.Component<
 
   render(): React.ReactNode {
     const { step, condition, campaignLog } = this.props;
+    if (condition.section === 'hidden') {
+      return null;
+    }
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignGuide }: CampaignGuideContextType) => {
@@ -60,7 +63,7 @@ export default class CampaignLogCountConditionComponent extends React.Component<
           return (
             <SetupStepWrapper bulletType={step.bullet_type}>
               <CardTextComponent
-                text={this.getPrompt(campaignGuide, count)}
+                text={step.text || this.getPrompt(campaignGuide, count)}
               />
             </SetupStepWrapper>
           );

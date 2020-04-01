@@ -58,12 +58,10 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
                 </SetupStepWrapper>
               );
             }
-            case 'chaos_bag':
-              return (
-                <Text>
-                  Check Chaos Bag: { condition.campaign_data }
-                </Text>
-              );
+            case 'chaos_bag': {
+              // We always write these out.
+              return null;
+            }
           }
         } }
       </CampaignGuideContext.Consumer>

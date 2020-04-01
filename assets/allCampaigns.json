@@ -13629,6 +13629,17 @@
         "choices": [
           {
             "text": "Poisoned",
+            "condition": {
+              "type": "has_card",
+              "card": "04102",
+              "investigator": "each",
+              "options": [
+                {
+                  "boolCondition": false,
+                  "effects": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_card",
@@ -13713,17 +13724,41 @@
         "choices": [
           {
             "flavor": "Let’s consult with Ichtaca.",
-            "description": "Choose this option only if Ichtaca is in an investigator’s deck.",
+            "condition": {
+              "type": "has_card",
+              "card": "04147",
+              "investigator": "any",
+              "options": [{
+                "boolCondition": true,
+                "effects": []
+              }]
+            },
             "steps": ["intro_2", "start_with_ichtaca"]
           },
           {
             "flavor": "Let’s consult with Alejandro.",
-            "description": "Choose this option only if Alejandro is in an investigator’s deck.",
+            "condition": {
+              "type": "has_card",
+              "card": "04051",
+              "investigator": "any",
+              "options": [{
+                "boolCondition": true,
+                "effects": []
+              }]
+            },
             "steps": ["intro_3", "start_with_alejandro"]
           },
           {
             "flavor": "Let’s consult the expedition journal.",
-            "description": "Choose this option only if the Expedition Journal is in an investigator’s deck.",
+            "condition": {
+              "type": "has_card",
+              "card": "04148",
+              "investigator": "any",
+              "options": [{
+                "boolCondition": true,
+                "effects": []
+              }]
+            },
             "steps": ["intro_4", "start_with_expedition_journal"]
           },
           {
@@ -13765,29 +13800,37 @@
       "text": "If 6 paths are known to you, skip this scenario and proceed immediately to <b>Resolution 1</b>.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "campaign_notes",
-        "id": "paths_known",
-        "max": 6,
+        "type": "math",
+        "opA": {
+          "type": "campaign_log_count",
+          "section": "campaign_notes",
+          "id": "paths_known"
+        },
+        "opB": {
+          "type": "constant",
+          "value": 6
+        },
+        "operation": "equals",
         "options": [
           {
-            "numCondition": 6,
+            "boolCondition": true,
             "steps": ["resolution_1", "$proceed"]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "gather_encounter_sets",
+              "setup_locations",
+              "setup_paths",
+              "check_replay",
+              "create_exploration_deck",
+              "check_mapped_way_forward",
+              "set_aside_poisoned",
+              "encounter_deck",
+              "$choose_resolution"
+            ]
           }
-        ],
-        "defaultOption": {
-          "steps": [
-            "gather_encounter_sets",
-            "setup_locations",
-            "setup_paths",
-            "check_replay",
-            "create_exploration_deck",
-            "check_mapped_way_forward",
-            "set_aside_poisoned",
-            "encounter_deck",
-            "$choose_resolution"
-          ]
-        }
+        ]
       }
     },
     {
@@ -13856,7 +13899,8 @@
     },
     {
       "id": "choose_ruins_and_start_in_play",
-      "text": "Randomly choose one of the following 3 [[Ruins]] locations: Overgrown Ruins, Temple of the Fang, and Stone Altar. Because <i>the investigators mapped out the way forward</i>, put this location into play. Remove the other 2 from the game."
+      "bullet_type": "small",
+      "text": "Randomly choose one of the following 3 [[Ruins]] locations: Overgrown Ruins, Temple of the Fang, and Stone Altar. Put this location into play. Remove the other 2 from the game."
     },
     {
       "id": "set_aside_poisoned",
@@ -13872,7 +13916,8 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Pillar tokens are on the Mouth of K'n-yan:",
+        "text": "Pillar tokens on the Mouth of K'n-yan:",
+        "max": 6,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -13896,11 +13941,35 @@
       ]
     },
     {
+      "id": "check_paths_known_jungle_watches",
+      "type": "branch",
+      "condition": {
+        "type": "math",
+        "opA": {
+          "type": "campaign_log_count",
+          "section": "campaign_notes",
+          "id": "paths_known"
+        },
+        "opB": {
+          "type": "constant",
+          "value": 6
+        },
+        "operation": "equals",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["record_jungle_watches"]
+          }
+        ]
+      }
+    },
+    {
       "id": "record_jungle_watches",
       "text": "In your Campaign Log, record that <i>the jungle watches</i>. Next to this, in parentheses, record the names of each card with Vengeance X in the victory display. Do not record any tally marks under “Yig’s Fury.”",
       "type": "input",
       "input": {
         "type": "card_choice",
+        "include_counts": true,
         "query": [
           {
             "vengeance": true,
@@ -13916,7 +13985,7 @@
                 "section": "campaign_notes",
                 "id": "jungle_watches",
                 "cards": "$input_value",
-                "text": "the jungle watches (#name#)."
+                "text": "the jungle watches (#name# x#X#)."
               }
             ]
           }
@@ -13953,6 +14022,17 @@
         "choices": [
           {
             "text": "Poisoned",
+            "condition": {
+              "type": "has_card",
+              "card": "04102",
+              "investigator": "each",
+              "options": [
+                {
+                  "boolCondition": false,
+                  "effects": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_card",
@@ -13976,7 +14056,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "Swallowing your fear, you enter the cavern...",
-      "steps": ["record_jungle_watches", "earn_xp", "check_investigators_poisoned", "proceed_scenario_2"]
+      "steps": ["check_paths_known_jungle_watches", "earn_xp", "check_investigators_poisoned", "proceed_scenario_2"]
     }
   ]
 }
@@ -14041,6 +14121,7 @@
     {
       "id": "check_harbinger",
       "type": "input",
+      "text": "Which of the following is true?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -14169,6 +14250,17 @@
         "choices": [
           {
             "text": "Poisoned",
+            "condition": {
+              "type": "has_card",
+              "card": "04102",
+              "investigator": "each",
+              "options": [
+                {
+                  "boolCondition": false,
+                  "effects": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_card",
@@ -14252,6 +14344,7 @@
     },
     {
       "id": "no_mulligan",
+      "bullet_type": "right",
       "text": "When drawing opening hands during this scenario, investigators cannot take a mulligan."
     },
     {
@@ -14280,6 +14373,7 @@
     },
     {
       "id": "mapped_way_forward",
+      "bullet_type": "right",
       "effects": [
         {
           "type": "campaign_log",
@@ -14409,6 +14503,7 @@
     },
     {
       "id": "start_with_clue",
+      "bullet_type": "right",
       "text": "Each investigator who has a canteen begins the next scenario with 1 clue <i>(from the token bank)</i>."
     },
     {
@@ -14419,6 +14514,7 @@
     },
     {
       "id": "no_ill_effects",
+      "bullet_type": "right",
       "text": "You suffer no ill effects."
     },
     {
@@ -15304,6 +15400,7 @@
     },
     {
       "id": "no_ill_effects",
+      "bullet_type": "right",
       "text": "You suffer no ill effects."
     },
     {
@@ -15328,6 +15425,7 @@
     },
     {
       "id": "two_fewer_cards",
+      "bullet_type": "right",
       "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
     },
     {
@@ -15356,6 +15454,7 @@
     },
     {
       "id": "replace_relic_of_ages",
+      "bullet_type": "right",
       "text": "The investigator with Relic of Ages <i>(...A Device, of Some Sort)</i> in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages <i>(Forestalling the Future)</i>.",
       "effects": [
         {
@@ -15387,6 +15486,7 @@
     },
     {
       "id": "remove_relic_of_ages_from_game",
+      "bullet_type": "right",
       "text": "Remove Relic of Ages <i>(Forestalling the Future)</i> from the game."
     },
     {
@@ -15415,6 +15515,7 @@
     },
     {
       "id": "two_extra_resources",
+      "bullet_type": "right",
       "text": "Each investigator begins this scenario with 2 additional resources."
     },
     {
@@ -15498,15 +15599,15 @@
           },
           {
             "numCondition": 2,
-            "steps": ["brotherhood_and_dark_cult"]
+            "steps": ["cultist_token_choice", "brotherhood_and_dark_cult"]
           },
           {
             "numCondition": 3,
-            "steps": ["brotherhood_and_dark_cult"]
+            "steps": ["cultist_token_choice", "brotherhood_and_dark_cult"]
           },
           {
             "numCondition": 4,
-            "steps": ["brotherhood_and_dark_cult"]
+            "steps": ["cultist_token_choice", "brotherhood_and_dark_cult"]
           }
         ]
       }
@@ -15521,49 +15622,61 @@
         "options": [
           {
             "numCondition": 0,
-            "steps": ["brotherhood_and_guardians"]
+            "steps": ["both_tokens_choice", "brotherhood_and_guardians"]
           },
           {
             "numCondition": 1,
-            "steps": ["brotherhood_and_guardians"]
+            "steps": ["both_tokens_choice", "brotherhood_and_guardians"]
           },
           {
             "numCondition": 2,
-            "steps": ["yigs_venom_and_guadians"]
+            "steps": ["tablet_token_choice", "yigs_venom_and_guadians"]
           },
           {
             "numCondition": 3,
-            "steps": ["yigs_venom_and_guadians"]
+            "steps": ["tablet_token_choice", "yigs_venom_and_guadians"]
           },
           {
             "numCondition": 4,
-            "steps": ["yigs_venom_and_guadians"]
+            "steps": ["tablet_token_choice", "yigs_venom_and_guadians"]
           }
         ]
       }
     },
     {
+      "id": "cultist_token_choice",
+      "text": "Because there are 2 or more [cultist] tokens in the chaos bag:"
+    },
+    {
       "id": "brotherhood_and_dark_cult",
+      "bullet_type": "small",
       "type": "encounter_sets",
-      "text": "Because there are 2 or more [cultist] tokens in the chaos bag:",
       "encounter_sets": [
         "pnakotic_brotherhood",
         "pentagram"
       ]
     },
     {
+      "id": "tablet_token_choice",
+      "text": "Because there are 2 or more [tablet] tokens in the chaos bag:"
+    },
+    {
       "id": "yigs_venom_and_guadians",
+      "bullet_type": "small",
       "type": "encounter_sets",
-      "text": "Because there are 2 or more [tablet] tokens in the chaos bag:",
       "encounter_sets": [
         "yigs_venom",
         "guardians_of_time"
       ]
     },
     {
+      "id": "both_tokens_choice",
+      "text": "Because there are fewer than 2 [cultist] and fewer than 2 [tablet] tokens in the chaos bag:"
+    },
+    {
       "id": "brotherhood_and_guardians",
+      "bullet_type": "small",
       "type": "encounter_sets",
-      "text": "Because there are fewer than 2 [cultist] and fewer than 2 [tablet] tokens:",
       "encounter_sets": [
         "pnakotic_brotherhood",
         "guardians_of_time"
@@ -15605,18 +15718,24 @@
     },
     {
       "id": "record_x_paths_known",
-      "text": "In your Campaign Log, record that X paths are known to you. X is the number of Tenochtitlán locations in the victory display.",
+      "text": "In your Campaign Log, record that <i>X paths are known to you</i>. X is the number of Tenochtitlán locations in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "[[Tenochtitlán]] locations are in the victory display:",
+        "text": "[[Tenochtitlán]] locations in victory display:",
+        "max": 6,
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "paths_known",
             "operation": "set_input",
-            "text": "#X# paths are known"
+            "text": "#X# paths are known to you"
+          },
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "bonus": "$input_value"
           }
         ]
       }
@@ -15625,35 +15744,37 @@
       "id": "check_if_ichtaca_has_confidence",
       "type": "branch",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "campaign_notes",
-        "id": "paths_known",
-        "max": 6,
+        "type": "math",
+        "opA": {
+          "type": "campaign_log_count",
+          "section": "campaign_notes",
+          "id": "paths_known"
+        },
+        "opB": {
+          "type": "constant",
+          "value": 3
+        },
+        "operation": "compare",
         "options": [
           {
-            "numCondition": 3,
+            "numCondition": -1,
+            "steps": []
+          },
+          {
+            "numCondition": 0,
             "steps": ["ichtaca_has_confidence"]
           },
           {
-            "numCondition": 4,
-            "steps": ["ichtaca_has_confidence"]
-          },
-          {
-            "numCondition": 5,
-            "steps": ["ichtaca_has_confidence"]
-          },
-          {
-            "numCondition": 6,
+            "numCondition": 1,
             "steps": ["ichtaca_has_confidence"]
           }
-        ],
-        "defaultOption": {
-          "steps": []
-        }
+        ]
       }
     },
     {
       "id": "ichtaca_has_confidence",
+      "bullet_type": "small",
+      "text": "Because at least <i>3 paths are known to you</i>, record that <i>Ichtaca has confidence in you.</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -15666,6 +15787,7 @@
     {
       "id": "check_harbinger",
       "type": "input",
+      "text": "Which of the following is true?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -15730,6 +15852,7 @@
       "type": "input",
       "input": {
         "type": "counter",
+        "confirm_text": "Each investigator earns 1 additional experience for each [[Tenochtitlán]] location in the victory display.",
         "text": "Victory display:",
         "effects": [
           {
@@ -15750,6 +15873,17 @@
         "choices": [
           {
             "text": "Poisoned",
+            "condition": {
+              "type": "has_card",
+              "card": "04102",
+              "investigator": "each",
+              "options": [
+                {
+                  "boolCondition": false,
+                  "effects": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_card",
@@ -15901,11 +16035,13 @@
     },
     {
       "id": "setup_locations_cooperated",
-      "text": "Because <i>the investigators cooperated with the Yithians</i>, put the Interview Room (<i>Arrival Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Arrival Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
+      "bullet_type": "small",
+      "text": "Put the Interview Room (<i>Arrival Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Arrival Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
     },
     {
       "id": "yithian_observer_cooperated",
-      "text": "Because <i>the investigators cooperated with the Yithians</i>, search the gathered encounter sets for a Yithian Observer and spawn it unengaged in the lead investigator’s location (note that it gains aloof due to the text on act 1a). Then, each investigator gains 1 clue from the token pool."
+      "bullet_type": "small",
+      "text": "Search the gathered encounter sets for a Yithian Observer and spawn it unengaged in the lead investigator’s location (note that it gains aloof due to the text on act 1a). Then, each investigator gains 1 clue from the token pool."
     },
     {
       "id": "check_resisted",
@@ -15945,7 +16081,7 @@
     {
       "id": "body_of_yithian_rule",
       "type": "rule_reminder",
-      "title": "Replacing Locations",
+      "title": "Body of a Yithian",
       "text": "During the setup for this scenario, each investigator is instructed to replace their investigator card with one of the Body of a Yithian investigator cards provided in this Mythos Pack.",
       "bullets": [
         {
@@ -16004,13 +16140,15 @@
       "input": {
         "type": "counter",
         "text": "Tasks on act 2b that were completed:",
+        "min": 3,
+        "max": 6,
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "hidden",
             "id": "tasks_completed",
-            "operation": "set",
-            "text": "#X# tasks completed"
+            "operation": "set_input",
+            "text": "#X# tasks were completed"
           }
         ]
       }
@@ -16048,7 +16186,7 @@
     },
     {
       "id": "process_was_perfected",
-      "text": "In your Campaign Log, record that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gains insight into the secrets of the Earth.",
+      "text": "Because all 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gains insight into the secrets of the Earth.",
       "effects": [
         {
           "type": "campaign_log",
@@ -16065,7 +16203,7 @@
     },
     {
       "id": "process_was_successful",
-      "text": "In your Campaign Log, record that <i>the process was successful</i>.Each investigator earns 2 bonus experience as they gains insight into the secrets of the Earth.",
+      "text": "Because 5 tasks were completed, record in your Campaign Log that <i>the process was successful</i>. Each investigator earns 2 bonus experience as they gains insight into the secrets of the Earth.",
       "effects": [
         {
           "type": "campaign_log",
@@ -16082,6 +16220,7 @@
     },
     {
       "id": "process_backfired",
+      "text": "Because 4 tasks were completed, record in your Campaign Log that <i>the process backfired</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -16093,6 +16232,7 @@
     },
     {
       "id": "process_backfired_spectacularly",
+      "text": "Because only 3 tasks were completed, record in your Campaign Log that <i>the process backfired spectacularly</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -16587,6 +16727,7 @@
     },
     {
       "id": "lose_ichtaca",
+      "bullet_type": "small",
       "text": "Remove Ichtaca from all investigator’s deck for the remainder of the campaign.",
       "effects": [
         {
@@ -16728,6 +16869,7 @@
     {
       "id": "check_yigs_fury",
       "type": "branch",
+      "text": "Check Campaign Log to see how many marks are under 'Yig's Fury'",
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
@@ -16825,30 +16967,37 @@
     },
     {
       "id": "fury_0",
+      "bullet_type": "small",
       "text": "Because Yig's Fury is 0, search the gathered encounter cards for Yig and each copy of Pit Warden. Remove those cards from the game."
     },
     {
       "id": "fury_1_to_5",
+      "bullet_type": "small",
       "text": "Because Yig's Fury is 1-5, no changes are made."
     },
     {
       "id": "fury_6_to_10",
+      "bullet_type": "small",
       "text": "Because Yig's Fury is 6-10, remove agenda 1a from the game. The game begins at agenda 2a."
     },
     {
       "id": "fury_11_to_14",
+      "bullet_type": "small",
       "text": "Because Yig's Fury is 11-14, remove agendas 1a and 2a from the game. The game begins at agenda 3a."
     },
     {
       "id": "fury_15_to_17",
+      "bullet_type": "small",
       "text": "Because Yig's Fury is 15-17, remove agendas 1a, 2a, and 3a from the game. The game begins at agenda 4a."
     },
     {
       "id": "fury_18_to_20",
+      "bullet_type": "small",
       "text": "Because Yig's Fury is 18-20, remove agendas 1a, 2a, 3a, and 4a from the game. The game begins at agenda 5a."
     },
     {
       "id": "fury_21",
+      "bullet_type": "small",
       "text": "Because Yig's Fury is 21 or higher, remove agendas 1a, 2a, 3a, 4a, and 5a from the game. The game begins at agenda 6a."
     },
     {
@@ -16857,6 +17006,7 @@
     },
     {
       "id": "maybe_setup_harbinger",
+      "text": "Check Campaign Notes. If <i>the Harbinger is still alive.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -16872,6 +17022,7 @@
     },
     {
       "id": "setup_harbinger",
+      "bullet_type": "small",
       "text": "Search the collection for the Harbinger of Valusia and set it aside. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log.",
       "bullets": [
         {
@@ -17009,6 +17160,11 @@
           "card": "01000",
           "investigator": "all",
           "weakness_traits": ["Injury"]
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 2
         }
       ]
     },
@@ -17046,15 +17202,28 @@
           "type": "trauma",
           "physical": 1,
           "investigator": "all"
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 3
         }
       ]
     },
     {
       "id": "depth_4_fall",
-      "text": "Because the current depth level is 4, you suffer no ill effects."
+      "text": "Because the current depth level is 4, you suffer no ill effects.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 4
+        }
+      ]
     },
     {
       "id": "check_harbinger",
+      "text": "Which of the following is true?",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -17121,6 +17290,7 @@
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
             "type": "earn_xp",
@@ -17130,16 +17300,18 @@
       }
     },
     {
-      "id": "earn_depth_xp",
-      "text": "Each investigator earns additional experience equal to the current depth level.",
+      "id": "earn_xp_full_depth",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Depth level when the scenario ended:",
+        "text": "Victory display:",
+        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
         "effects": [
           {
             "type": "earn_xp",
-            "investigator": "all"
+            "investigator": "all",
+            "bonus": 5
           }
         ]
       }
@@ -17171,6 +17343,17 @@
         "choices": [
           {
             "text": "Poisoned",
+            "condition": {
+              "type": "has_card",
+              "card": "04102",
+              "investigator": "each",
+              "options": [
+                {
+                  "boolCondition": false,
+                  "effects": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "add_card",
@@ -17193,13 +17376,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "After hours and hours of travel, you’ve only just scratched the surface of this boundless subterranean world. Humanity could spend centuries mapping out these tunnels and never complete the task. No matter how quickly you plumb the depths, the serpents chasing you are hot on your tail. You are intruders in their home, and they know these hellish tunnels better than you. With your wounds slowing you down and panic seeping into every one of your decisions, your death at the hands of these creatures is inevitable. Despair worms its way into your mind. When the serpents inevitably catch up to you, you are crossing one of the cavern’s many long bridges of stone that span a wide, dark chasm. Serpent creatures on both sides of the chasm flank you, spear tips corralling you against the precarious edge of the bridge. A small hunk of stone cracks at your heel and detaches, falling into the inky void below. You do not hear it strike the floor of the chasm. There is no hope to escape or flee this time—you have no choice but to accept your fate. The spear tips press you closer to the edge. You close your eyes and fall.",
-      "steps": ["fell_into_depths", "record_final_depth", "check_final_depth", "check_harbinger", "record_yigs_fury", "earn_xp", "earn_depth_xp", "check_investigators_poisoned"]
+      "steps": ["fell_into_depths", "record_final_depth", "check_final_depth", "check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Somehow, despite the odds stacked against you, you’ve reached your destination. The telltale red glow that has enveloped you since you entered Yoth recedes, replaced with an unpierceable inky darkness. The Nexus must be close... You can feel it.",
-      "steps": ["nexus_is_near", "check_harbinger", "record_yigs_fury", "earn_xp", "earn_depth_xp", "check_investigators_poisoned"]
+      "steps": ["nexus_is_near", "check_harbinger", "record_yigs_fury", "earn_xp_full_depth", "check_investigators_poisoned"]
     }
   ]
 }
@@ -17459,7 +17642,7 @@
       "condition": {
         "type": "has_card",
         "investigator": "any",
-        "card": "04326",
+        "card": "04051",
         "options": [
           {
             "boolCondition": true,
@@ -17470,11 +17653,12 @@
     },
     {
       "id": "lose_alejandro",
+      "bullet_type": "small",
       "text": "Remove Alejandro Vela from all investigator’s deck for the remainder of the campaign.",
       "effects": [
         {
           "type": "remove_card",
-          "card": "04326"
+          "card": "04051"
         }
       ]
     },
@@ -17514,6 +17698,7 @@
     },
     {
       "id": "no_ill_effects",
+      "bullet_type": "right",
       "text": "You suffer no ill effects."
     },
     {
@@ -17524,6 +17709,7 @@
     },
     {
       "id": "no_mulligan",
+      "bullet_type": "right",
       "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan.."
     },
     {
@@ -17538,6 +17724,7 @@
         "choices": [
           {
             "boolCondition": false,
+            "condition": "Low on Rations",
             "steps": ["low_on_rations", "fewer_resources"]
           }
         ]
@@ -18387,11 +18574,22 @@
       "type": "input",
       "input": {
         "type": "investigator_choice",
-        "investigator": "all",
+        "investigator": "choice",
         "source": "scenario",
         "choices": [
           {
             "text": "Remove Physical Trauma",
+            "condition": {
+              "type": "trauma",
+              "investigator": "each",
+              "trauma": "physical",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "earn_xp",
@@ -18407,6 +18605,17 @@
           },
           {
             "text": "Remove Mental Trauma",
+            "condition": {
+              "type": "trauma",
+              "investigator": "each",
+              "trauma": "mental",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "steps": []
+                }
+              ]
+            },
             "effects": [
               {
                 "type": "earn_xp",

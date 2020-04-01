@@ -93,7 +93,8 @@ export default class CheckListComponent extends React.Component<Props, State> {
     if (hasDecision) {
       return null;
     }
-    const { min, max } = this.props;
+    const { items, max } = this.props;
+    const min = this.props.min ? Math.min(this.props.min, items.length) : undefined;
     if (min === undefined && max === undefined) {
       return (
         <Button
@@ -157,7 +158,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
                   />
                 );
               }) }
-              { choiceList !== undefined && keys(choiceList).length === 0 && (
+              { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
                 <View style={styles.row}>
                   <Text style={[typography.mediumGameFont, styles.nameText]}>
                     { t`None` }

@@ -7,15 +7,16 @@ import { t } from 'ttag';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { BulletType, Choice, Option } from 'data/scenario/types';
+import { DisplayChoice } from 'data/scenario';
+import { BulletType } from 'data/scenario/types';
 import BinaryResult from '../BinaryResult';
 
 interface Props {
   id: string;
   bulletType?: BulletType;
   text?: string;
-  trueResult?: Choice | Option;
-  falseResult?: Choice | Option;
+  trueResult?: DisplayChoice;
+  falseResult?: DisplayChoice;
 }
 
 export default class BinaryPrompt extends React.Component<Props> {

@@ -5,34 +5,33 @@ import { t } from 'ttag';
 import BinaryResult from '../../BinaryResult';
 import {
   BranchStep,
-  TraumaCondition,
+  KilledTraumaCondition,
 } from 'data/scenario/types';
-import { traumaConditionResult } from 'data/scenario/conditionHelper';
+import { killedTraumaConditionResult } from 'data/scenario/conditionHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
-  condition: TraumaCondition;
+  condition: KilledTraumaCondition;
   campaignLog: GuidedCampaignLog;
 }
+
 
 export default class TraumaConditionComponent extends React.Component<Props> {
   prompt(): string {
     const { condition } = this.props;
-    switch (condition.trauma) {
-      case 'killed':
-        switch (condition.investigator) {
-          case 'lead_investigator':
-            return t`If the lead investigator was <b>killed</b>.`;
-          case 'all':
-            return t`If all investigators were <b>killed</b>`;
-        }
-    }
+    const messages = {
+      killed: {
+        lead_investigator: t`If the lead investigator was <b>killed</b>.`,
+        all: t`If all investigators were <b>killed</b>.`,
+      },
+    };
+    return messages[condition.trauma][condition.investigator];
   }
 
   render(): React.ReactNode {
     const { step, condition, campaignLog } = this.props;
-    const result = traumaConditionResult(condition, campaignLog);
+    const result = killedTraumaConditionResult(condition, campaignLog);
     return (
       <BinaryResult
         bulletType={step.bullet_type}

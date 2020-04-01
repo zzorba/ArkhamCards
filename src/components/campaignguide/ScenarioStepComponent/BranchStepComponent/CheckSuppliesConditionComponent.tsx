@@ -1,19 +1,21 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { find, forEach, map, upperFirst } from 'lodash';
-import { msgid, ngettext, t } from 'ttag';
+import { find, forEach, map } from 'lodash';
+import { msgid, ngettext } from 'ttag';
 
 import { stringList } from 'lib/stringHelper';
 import CardQueryWrapper from '../../CardQueryWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
+import BinaryResult from '../../BinaryResult';
+import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
 import CardTextComponent from 'components/card/CardTextComponent';
-import { InvestigatorDeck } from 'data/scenario';
 import Card from 'data/Card';
 import {
   BranchStep,
   CheckSuppliesCondition,
+  Option,
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import { checkSuppliesAnyConditionResult, checkSuppliesAllConditionResult } from 'data/scenario/conditionHelper';
 
 interface Props {
   step: BranchStep;
@@ -49,12 +51,11 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
     );
   }
 
-  _renderTrue = (cards: Card[]) => {
-    return this.renderCondition(cards, true);
-  };
-
-  _renderFalse = (cards: Card[]) => {
-    return this.renderCondition(cards, false);
+  _renderAllOption = (cards: Card[], option: Option) => {
+    return this.renderCondition(
+      cards,
+      option.boolCondition === true
+    );
   };
 
   investigatorHasSupply(code: string) {
@@ -71,38 +72,25 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
     const { step, condition, campaignLog } = this.props;
     switch (condition.investigator) {
       case 'any': {
-        const investigatorSection = campaignLog.investigatorSections[condition.section];
-        // TODO
-        return <Text>{step.text}</Text>;
+        return (
+          <BinaryResult
+            bulletType={step.bullet_type}
+            prompt={step.text}
+            result={checkSuppliesAnyConditionResult(condition, campaignLog).decision}
+          />
+        );
       }
       case 'all': {
-        const investigatorSection = campaignLog.investigatorSections[condition.section] || {};
-        const haves: string[] = [];
-        const haveNots: string[] = [];
-        forEach(investigatorSection, (section, code) => {
-          if (find(section.entries, entry => entry.id === condition.id) && !section.crossedOut[condition.id]) {
-            haves.push(code);
-          } else {
-            haveNots.push(code);
-          }
-        });
+        const result = checkSuppliesAllConditionResult(condition, campaignLog);
         return (
           <>
             <SetupStepWrapper>
               { !!step.text && <CardTextComponent text={step.text} /> }
             </SetupStepWrapper>
-            { (haves.length > 0) && (
-              <CardQueryWrapper
-                query={`(${map(haves, code => `(code == '${code}')`).join(' OR ')})`}
-                render={this._renderTrue}
-              />
-            )}
-            { (haveNots.length > 0) && (
-              <CardQueryWrapper
-                query={`(${map(haveNots, code => `(code == '${code}')`).join(' OR ')})`}
-                render={this._renderFalse}
-              />
-            )}
+            <InvestigatorResultConditionWrapper
+              result={result}
+              renderOption={this._renderAllOption}
+            />
           </>
         );
       }

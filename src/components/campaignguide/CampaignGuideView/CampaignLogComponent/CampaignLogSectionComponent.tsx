@@ -50,7 +50,8 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
           return map(entry.cards, (card, idx) => (
             <CampaignLogCardEntryComponent
               key={idx}
-              code={card}
+              code={card.card}
+              count={card.count}
               entry={entry}
               text={logEntry.text}
               crossedOut={crossedOut}

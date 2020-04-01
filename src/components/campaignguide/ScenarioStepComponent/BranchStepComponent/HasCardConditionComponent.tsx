@@ -1,8 +1,8 @@
 import React from 'react';
-import { find, filter, map } from 'lodash';
+import { every, map } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
@@ -11,9 +11,10 @@ import Card from 'data/Card';
 import {
   BranchStep,
   CardCondition,
+  Option,
 } from 'data/scenario/types';
-import { InvestigatorDeck } from 'data/scenario';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import { hasCardConditionResult } from 'data/scenario/conditionHelper';
 import { stringList } from 'lib/stringHelper';
 
 interface Props {
@@ -25,7 +26,7 @@ interface Props {
 export default class HasCardConditionComponent extends React.Component<Props> {
   investigatorCardPrompt(
     card: Card,
-    investigator: 'defeated' | 'any'
+    investigator: 'defeated' | 'any' | 'each'
   ): string {
     const cardName = card.cardName();
     switch (investigator) {
@@ -33,50 +34,53 @@ export default class HasCardConditionComponent extends React.Component<Props> {
         return t`Does any investigator have \"${cardName}\" in their deck?`;
       case 'defeated':
         return t`Was an investigator with \"${cardName}\" in their deck defeated?`;
+      case 'each':
+        return t`For each investigator with \"${cardName}\" in their deck:`;
     }
   }
 
+  _renderInvestigators = (
+    investigatorCards: Card[],
+    option: Option,
+    card: Card
+  ): React.ReactNode => {
+    const investigators = stringList(map(investigatorCards, card => card.name));
+    const prompt = option && option.condition;
+    return (
+      <SetupStepWrapper>
+        <CardTextComponent
+          text={ngettext(
+            msgid`${investigators} must read <b>${prompt}</b>.`,
+            `${investigators} must read <b>${prompt}</b>.`,
+            investigators.length
+          )}
+        />
+      </SetupStepWrapper>
+    );
+  };
+
   _renderCard = (card: Card): React.ReactNode => {
     const { step, condition, campaignLog } = this.props;
-    const investigatorsWithCards: string[] = filter(
-      campaignLog.investigatorCodes(),
-      code => {
-        const hasIt = campaignLog.hasCard(code, condition.card);
-        return hasIt && (
-          condition.investigator !== 'defeated' ||
-          campaignLog.isDefeated(code)
-        );
-      }
-    );
-    const positiveCondition = find(condition.options, option => option.boolCondition === true);
-    if (condition.investigator === 'each') {
-      // TODO: investigator lookup.
-      const investigators = stringList(investigatorsWithCards);
-      if (!investigatorsWithCards.length) {
-        return null;
-      }
-      const prompt = positiveCondition && positiveCondition.condition;
+    const result = hasCardConditionResult(condition, campaignLog);
+    if (result.type === 'investigator') {
       return (
-        <SetupStepWrapper>
-          <CardTextComponent
-            text={ngettext(
-              msgid`${investigators} must read <b>${prompt}</b>.`,
-              `${investigators} must read <b>${prompt}</b>.`,
-              investigatorsWithCards.length
-            )}
-          />
-        </SetupStepWrapper>
+        <InvestigatorResultConditionWrapper
+          result={result}
+          renderOption={this._renderInvestigators}
+          extraArg={card}
+        />
       );
     }
     const prompt = this.investigatorCardPrompt(
       card,
       condition.investigator
     );
+
     return (
       <BinaryResult
         bulletType={step.bullet_type}
         prompt={prompt}
-        result={investigatorsWithCards.length > 0}
+        result={result.decision}
       />
     );
   };

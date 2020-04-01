@@ -66,7 +66,10 @@ export default class ChoiceComponent extends React.Component<Props> {
           ) }
         </View>
         { !editable && (
-          <ResultIndicatorIcon result={selected} noBorder />
+          <ResultIndicatorIcon
+            result={selected}
+            noBorder 
+          />
         ) }
       </View>
     );

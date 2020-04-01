@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingLeft: 16,
     paddingRight: 16,
+    width: 56,
+    maxHeight: 56,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

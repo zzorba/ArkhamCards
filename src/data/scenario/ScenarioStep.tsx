@@ -11,17 +11,19 @@ import {
 } from 'lodash';
 
 import { ListChoices } from 'actions/types';
+import { Choices } from 'data/scenario';
 import {
   BranchStep,
   InputStep,
   Step,
   Effect,
   EffectsWithInput,
-} from './types';
-import { conditionResult } from './conditionHelper';
-import ScenarioGuide from './ScenarioGuide';
-import GuidedCampaignLog from './GuidedCampaignLog';
-import ScenarioStateHelper from './ScenarioStateHelper';
+} from 'data/scenario/types';
+import { investigatorChoiceInputChoices, chooseOneInputChoices } from 'data/scenario/inputHelper';
+import { conditionResult } from 'data/scenario/conditionHelper';
+import ScenarioGuide from 'data/scenario/ScenarioGuide';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 
 export default class ScenarioStep {
   step: Step;
@@ -230,7 +232,10 @@ export default class ScenarioStep {
           stepIds,
         } = this.processListChoices(
           result.investigatorChoices,
-          result.options
+          {
+            type: 'universal',
+            choices: result.options
+          }
         );
         return this.maybeCreateEffectsStep(
           step.id,
@@ -243,14 +248,14 @@ export default class ScenarioStep {
 
   private processListChoices(
     choiceList: ListChoices,
-    choicesByIdx: {
-      effects?: Effect[] | null;
-      steps?: string[] | null;
-    }[]
+    theChoices: Choices
   ) {
     const groupedEffects = groupBy(
       flatMap(choiceList, (choices, code) => {
-        return choices.map(choice => {
+        return choices.map(originalIndex => {
+          const choice = theChoices.type === 'universal' ?
+            originalIndex :
+            theChoices.perCode[code][originalIndex];
           return {
             code,
             choice,
@@ -266,7 +271,7 @@ export default class ScenarioStep {
         if (group[0].choice === -1) {
           return [];
         }
-        const selectedChoice = choicesByIdx[group[0].choice];
+        const selectedChoice = theChoices.choices[group[0].choice];
         forEach(
           (selectedChoice && selectedChoice.steps) || [],
           stepId => stepIds.push(stepId)
@@ -387,8 +392,7 @@ export default class ScenarioStep {
           [investigator]
         );
       }
-      case 'investigator_choice':
-      case 'card_choice': {
+      case 'investigator_choice': {
         const choices = scenarioState.choiceList(step.id);
         if (choices === undefined) {
           return undefined;
@@ -398,7 +402,48 @@ export default class ScenarioStep {
           stepIds,
         } = this.processListChoices(
           choices,
-          input.choices
+          investigatorChoiceInputChoices(input, this.campaignLog)
+        );
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...stepIds, ...this.remainingStepIds],
+          effectsWithInput
+        );
+      }
+      case 'card_choice': {
+        const choices = scenarioState.choiceList(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+        if (input.include_counts) {
+          const choice = input.choices[0];
+          const cards: string[] = [];
+          const cardCounts: number[] = [];
+          forEach(choices, (count, card) => {
+            cards.push(card);
+            cardCounts.push(count[0]);
+          });
+          return this.maybeCreateEffectsStep(
+            step.id,
+            [...(choice.steps || []), ...this.remainingStepIds],
+            [
+              {
+                input: cards,
+                numberInput: cardCounts,
+                effects: choice.effects || [],
+              },
+            ]
+          );
+        }
+        const {
+          effectsWithInput,
+          stepIds,
+        } = this.processListChoices(
+          choices,
+          {
+            type: 'universal',
+            choices: input.choices
+          }
         );
         return this.maybeCreateEffectsStep(
           step.id,
@@ -450,7 +495,8 @@ export default class ScenarioStep {
         if (index === undefined) {
           return undefined;
         }
-        const choice = input.choices[index];
+        const choices = chooseOneInputChoices(input, this.campaignLog);
+        const choice = choices[index];
         return this.maybeCreateEffectsStep(
           step.id,
           [...(choice.steps || []), ...this.remainingStepIds],
@@ -478,7 +524,7 @@ export default class ScenarioStep {
         });
         switch (input.investigator) {
           case 'all': {
-            const useCount = sum(map(choice, count => count));
+            const useCount = sum(map(choice, count => count[0]));
             if (useCount === this.campaignLog.playerCount()) {
               // We got what we needed.
               // And we know there are only 'false' conditions right now.
@@ -489,7 +535,7 @@ export default class ScenarioStep {
                   effects: consumeSuppliesEffects,
                 }],
               );
-            }
+            } 
             const secondChoice = scenarioState.choiceList(this.step.id);
             if (secondChoice === undefined) {
               return undefined;
@@ -516,7 +562,6 @@ export default class ScenarioStep {
               input.choices,
               option => option.boolCondition === hasAny
             );
-            console.log(JSON.stringify(branchChoice));
             if (!branchChoice) {
               return this.maybeCreateEffectsStep(
                 this.step.id,

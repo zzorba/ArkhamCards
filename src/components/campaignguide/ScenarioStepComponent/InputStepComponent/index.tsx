@@ -47,6 +47,7 @@ export default class InputStepComponent extends React.Component<Props> {
             bulletType={step.bullet_type}
             text={step.text}
             input={step.input}
+            campaignLog={campaignLog}
           />
         );
       case 'counter':
@@ -55,7 +56,9 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             bulletType={step.bullet_type}
             prompt={step.input.text}
+            confirmText={step.input.confirm_text}
             effects={step.input.effects}
+            min={step.input.min}
             max={step.input.max}
             text={step.text}
           />
