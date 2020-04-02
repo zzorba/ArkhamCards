@@ -3,6 +3,7 @@ import {
 } from 'react-native';
 
 export const COLORS = {
+  scenarioGreen: '#2E5344',
   veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
   darkBlue: 'rgb(0, 78, 100)',

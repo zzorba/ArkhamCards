@@ -2,7 +2,7 @@ import React from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
-import InvestigatorsListComponent from './InvestigatorsListComponent';
+import InvestigatorsListComponent from 'components/cardlist/InvestigatorsListComponent';
 import NewDeckOptionsDialog from './NewDeckOptionsDialog';
 import { NavigationProps } from 'components/nav/types';
 import { t } from 'ttag';
@@ -87,7 +87,6 @@ export default class NewDeckView extends React.Component<Props, State> {
       },
     });
   };
-
 
   _captureViewRef = (ref: View) => {
     this.setState({

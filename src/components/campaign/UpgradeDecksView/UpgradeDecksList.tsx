@@ -165,6 +165,7 @@ export default class UpgradeDecksList extends React.Component<Props> {
         componentId={componentId}
         campaignId={campaignId}
         deckIds={deckIds}
+        investigatorIds={[]}
         deckAdded={deckAdded}
         otherProps={this.props}
       />

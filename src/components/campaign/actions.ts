@@ -57,12 +57,14 @@ export function newCampaign(
   pack_code: CampaignCycleCode,
   difficulty: CampaignDifficulty,
   deckIds: number[],
+  investigatorIds: string[],
   chaosBag: ChaosBag,
   campaignLog: CustomCampaignLog,
   weaknessSet: WeaknessSet,
+  guided: boolean
 ): ThunkAction<void, AppState, null, NewCampaignAction> {
   return (dispatch, getState: () => AppState) => {
-    dispatch({
+    const action: NewCampaignAction = {
       type: NEW_CAMPAIGN,
       id,
       name: name,
@@ -72,8 +74,11 @@ export function newCampaign(
       campaignLog,
       weaknessSet,
       baseDeckIds: getBaseDeckIds(getState(), deckIds),
+      investigatorIds,
+      guided,
       now: new Date(),
-    });
+    };
+    dispatch(action);
   };
 }
 

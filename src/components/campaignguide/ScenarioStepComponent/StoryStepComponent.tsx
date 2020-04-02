@@ -9,6 +9,7 @@ import BulletsComponent from './BulletsComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { StoryStep } from 'data/scenario/types';
 import typography from 'styles/typography';
+import { COLORS } from 'styles/colors';
 
 interface Props {
   step: StoryStep;
@@ -20,7 +21,7 @@ export default class StoreStepComponent extends React.Component<Props> {
     return (
       <View style={styles.step}>
         { !!step.title && (
-          <Text style={[typography.bigGameFont, { color: '#2E5344' }]}>
+          <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
             { step.title }
           </Text>
         ) }

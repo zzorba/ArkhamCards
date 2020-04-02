@@ -25,6 +25,7 @@ export interface CheckListComponentProps {
   title?: string;
   text?: string;
   checkText: string;
+  fixedMin?: boolean;
   min?: number;
   max?: number;
 }
@@ -93,8 +94,8 @@ export default class CheckListComponent extends React.Component<Props, State> {
     if (hasDecision) {
       return null;
     }
-    const { items, max } = this.props;
-    const min = this.props.min ? Math.min(this.props.min, items.length) : undefined;
+    const { items, max, fixedMin } = this.props;
+    const min = (!fixedMin && this.props.min) ? Math.min(this.props.min, items.length) : this.props.min;
     if (min === undefined && max === undefined) {
       return (
         <Button
@@ -104,7 +105,12 @@ export default class CheckListComponent extends React.Component<Props, State> {
       );
     }
     const { selectedChoice } = this.state;
-    const currentTotal = sum(map(selectedChoice, choice => (choice !== undefined && choice !== -1) ? 1 : 0));
+    const currentTotal = sum(
+      map(
+        selectedChoice,
+        choice => (choice !== undefined && choice !== -1) ? 1 : 0
+      )
+    );
     const hasMin = (min === undefined || currentTotal >= min);
     const hasMax = (max === undefined || currentTotal <= max);
     const enabled = hasMin && hasMax;

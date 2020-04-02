@@ -18,8 +18,9 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
 import InvestigatorSearchBox from './InvestigatorSearchBox';
-import InvestigatorRow from './InvestigatorRow';
-import InvestigatorSectionHeader from './InvestigatorSectionHeader';
+import NewInvestigatorRow from './NewInvestigatorRow';
+import InvestigatorRow from 'components/core/InvestigatorRow';
+import BasicSectionHeader from 'components/core/BasicSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
 import { RANDOM_BASIC_WEAKNESS } from 'constants';
 import Card, { CardsMap } from 'data/Card';
@@ -33,9 +34,12 @@ const SCROLL_DISTANCE_BUFFER = 50;
 
 interface OwnProps {
   componentId: string;
+  hideDeckbuildingRules?: boolean;
   sort: SortType;
   onPress: (investigator: Card) => void;
   filterInvestigators?: string[];
+  customHeader?: React.ReactNode;
+  customFooter?: React.ReactNode;
 }
 
 interface ReduxProps {
@@ -165,11 +169,17 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   };
 
   _renderItem = ({ item }: { item: Card }) => {
-    return (
+    return this.props.hideDeckbuildingRules ? (
       <InvestigatorRow
         key={item.code}
         investigator={item}
+        onPress={this._onPress}
+      />
+    ) : (
+      <NewInvestigatorRow
+        key={item.code}
         cards={this.props.cards}
+        investigator={item}
         onPress={this._onPress}
       />
     );
@@ -277,7 +287,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderSectionHeader = ({ section }: { section: SectionListData<Section> }) => {
-    return <InvestigatorSectionHeader title={section.title} />;
+    return <BasicSectionHeader title={section.title} />;
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<Section> }) => {
@@ -349,18 +359,41 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
 
   _renderFooter = () => {
     const {
+      customFooter,
+    } = this.props;
+    const {
       searchTerm,
     } = this.state;
     if (searchTerm && this.groupedInvestigators().length === 0) {
       return (
-        <View style={styles.footer}>
-          <Text style={[typography.text, typography.center]}>
-            { t`No matching investigators for "${searchTerm}".` }
-          </Text>
-        </View>
+        <>
+          { !!customFooter && customFooter }
+          <View style={styles.footer}>
+            <Text style={[typography.text, typography.center]}>
+              { t`No matching investigators for "${searchTerm}".` }
+            </Text>
+          </View>
+        </>
       );
     }
-    return <View style={styles.footer} />;
+    return (
+      <>
+        { !!customFooter && customFooter }
+        <View style={styles.footer} />
+      </>
+    );
+  };
+
+  _renderCustomHeader = (): React.ReactElement | null => {
+    const { customHeader } = this.props;
+    if (!customHeader) {
+      return null;
+    }
+    return (
+      <>
+        { customHeader }
+      </>
+    );
   };
 
   render() {
@@ -376,6 +409,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
           sections={this.groupedInvestigators()}
           renderSectionHeader={this._renderSectionHeader}
           renderSectionFooter={this._renderSectionFooter}
+          ListHeaderComponent={this._renderCustomHeader}
           ListFooterComponent={this._renderFooter}
           renderItem={this._renderItem}
           initialNumToRender={24}

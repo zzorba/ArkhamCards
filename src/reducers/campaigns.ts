@@ -86,9 +86,11 @@ export default function(
       campaignNotes,
       weaknessSet: action.weaknessSet,
       baseDeckIds: action.baseDeckIds,
+      nonDeckInvestigators: action.investigatorIds,
       lastUpdated: action.now,
       investigatorData: {},
       scenarioResults: [],
+      guided: action.guided,
     };
     return {
       ...state,

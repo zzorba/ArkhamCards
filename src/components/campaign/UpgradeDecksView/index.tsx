@@ -151,6 +151,7 @@ class UpgradeDecksView extends React.Component<Props> {
           campaignId={id}
           investigatorData={campaign.investigatorData}
           deckIds={latestDeckIds}
+          investigatorIds={[]}
           originalDeckIds={this._originalDeckIds}
           showDeckUpgradeDialog={this._showDeckUpgradeDialog}
         />

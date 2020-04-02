@@ -1,56 +1,69 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
-import { map } from 'lodash';
+import { Text } from 'react-native';
+import { t } from 'ttag';
 
-import CampaignLogComponent from './CampaignLogComponent';
+import TabView from 'components/core/TabView';
+import CampaignLogTab from './CampaignLogTab';
+import ScenarioListTab from './ScenarioListTab';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { CampaignGuideContextType } from '../CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '../withCampaignGuideContext';
-import { campaignScenarios, Scenario } from 'components/campaign/constants';
 import { NavigationProps } from 'components/nav/types';
 import { CUSTOM } from 'actions/types';
-import ScenarioButton from './ScenarioButton';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
 type Props = CampaignGuideProps & NavigationProps & DimensionsProps;
 
 class CampaignGuideView extends React.Component<Props & CampaignGuideContextType> {
-  possibleScenarios(): Scenario[] {
-    const {
-      campaign,
-    } = this.props;
-    if (!campaign) {
-      return [];
-    }
-    return campaignScenarios(campaign.cycleCode);
-  }
+  _onTabChange = (tab: string) => {
+  };
 
   render() {
-    const { campaign, fontScale, campaignGuide, campaignState, componentId } = this.props;
+    const {
+      campaign,
+      campaignGuide,
+      campaignState,
+      fontScale,
+      componentId,
+    } = this.props;
     if (campaign.cycleCode === CUSTOM) {
       return (
         <Text>No custom scenarios</Text>
       );
     }
     const processedCampaign = campaignGuide.processAllScenarios(campaignState);
-    return (
-      <ScrollView>
-        { map(processedCampaign.scenarios, (scenario, idx) => (
-          <ScenarioButton
-            key={idx}
+    const tabs = [
+      {
+        key: 'log',
+        title: t`Campaign Log`,
+        node: (
+          <CampaignLogTab
+            campaignGuide={campaignGuide}
+            campaignLog={processedCampaign.campaignLog}
+            fontScale={fontScale}
+          />
+        ),
+      },
+      {
+        key: 'scenarios',
+        title: t`Scenarios`,
+        node: (
+          <ScenarioListTab
+            campaign={campaign}
+            processedCampaign={processedCampaign}
             fontScale={fontScale}
             componentId={componentId}
-            scenario={scenario}
-            campaign={campaign}
           />
-        )) }
-        <CampaignLogComponent
-          campaignGuide={campaignGuide}
-          campaignLog={processedCampaign.campaignLog}
-          fontScale={fontScale}
-        />
-      </ScrollView>
+        )
+      },
+    ];
+
+    return (
+      <TabView
+        tabs={tabs}
+        onTabChange={this._onTabChange}
+      />
     );
   }
 }

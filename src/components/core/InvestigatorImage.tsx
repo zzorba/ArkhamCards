@@ -20,6 +20,7 @@ const scaleFactor = isBig ? 1.2 : 1.0;
 interface Props {
   card: Card;
   componentId?: string;
+  border?: boolean;
   small?: boolean;
   killedOrInsane?: boolean;
 }
@@ -39,6 +40,7 @@ export default class InvestigatorImage extends React.Component<Props> {
     const {
       card,
       small,
+      border,
     } = this.props;
     return (
       <FastImage
@@ -56,6 +58,7 @@ export default class InvestigatorImage extends React.Component<Props> {
       card,
       small,
       killedOrInsane,
+      border,
     } = this.props;
     const size = (small ? 65 : 110) * scaleFactor;
     const faction_icon = FACTION_ICONS[card.factionCode()];
@@ -86,6 +89,18 @@ export default class InvestigatorImage extends React.Component<Props> {
             ) : this.renderInvestigatorImage() }
           </View>
         ) }
+        <View style={styles.relative}>
+          { !!border && (
+            <View style={[
+              styles.border,
+              {
+                borderColor: FACTION_COLORS[killedOrInsane ? 'dead' : card.factionCode()],
+                width: size,
+                height: size,
+              }
+            ]} />
+          ) }
+        </View>
       </View>
     );
   }
@@ -133,6 +148,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  border: {
+    borderRadius: 6,
+    borderWidth: 2,
+    backgroundColor: 'transparent',
   },
   placeholderIcon: {
     textAlign: 'center',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { map, partition } from 'lodash';
+import { filter, map, partition } from 'lodash';
 import {
   Button,
   ScrollView,
@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
-import { CUSTOM, ALL_CAMPAIGNS, TDEA, TDEB, CampaignCycleCode } from 'actions/types';
+
+import BasicSectionHeader from 'components/core/BasicSectionHeader';
+import { CUSTOM, GUIDED_CAMPAIGNS, COMING_SOON_GUIDED_CAMPAIGNS, ALL_CAMPAIGNS, TDEA, TDEB, CampaignCycleCode } from 'actions/types';
 import CycleItem from './CycleItem';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { campaignName } from '../constants';
@@ -20,6 +21,7 @@ import { getPacksInCollection, AppState } from 'reducers';
 import { s } from 'styles/space';
 
 export interface SelectCampagaignProps {
+  guided: boolean;
   campaignChanged: (packCode: CampaignCycleCode, text: string) => void;
 }
 
@@ -63,7 +65,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     });
   };
 
-  renderCampaign(packCode: CampaignCycleCode) {
+  renderCampaign(packCode: CampaignCycleCode, available: boolean) {
     const { fontScale } = this.props;
     return (
       <CycleItem
@@ -72,6 +74,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         packCode={packCode}
         onPress={this._onPress}
         text={campaignName(packCode) || t`Custom`}
+        disabled={!available}
       />
     );
   }
@@ -79,9 +82,10 @@ class SelectCampaignDialog extends React.Component<Props> {
   render() {
     const {
       in_collection,
+      guided,
     } = this.props;
     const partitionedCampaigns = partition(
-      ALL_CAMPAIGNS,
+      guided ? GUIDED_CAMPAIGNS : ALL_CAMPAIGNS,
       pack_code => (in_collection[pack_code] || (
         in_collection.tde && (pack_code === TDEA || pack_code === TDEB)))
     );
@@ -91,25 +95,27 @@ class SelectCampaignDialog extends React.Component<Props> {
     return (
       <ScrollView style={styles.flex}>
         { myCampaigns.length > 0 && (
-          <View style={styles.headerRow}>
-            <Text style={styles.header}>
-              { t`My Campaigns` }
-            </Text>
-          </View>
+          <BasicSectionHeader
+            title={t`My Campaigns` }
+          />
         ) }
-        { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
-        { this.renderCampaign(CUSTOM) }
+        { map(myCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
+        { !guided && this.renderCampaign(CUSTOM, true) }
+        <BasicSectionHeader
+          title={t`Other Campaigns` }
+        />
+        { map(otherCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
         <View style={styles.button}>
           <Button onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
-        { otherCampaigns.length > 0 && (
-          <View style={styles.headerRow}>
-            <Text style={styles.header}>
-              { t`Other Campaigns` }
-            </Text>
-          </View>
+        { guided && (
+          <>
+            <BasicSectionHeader
+              title={t`Coming Soon` }
+            />
+            { map(COMING_SOON_GUIDED_CAMPAIGNS, pack_code => this.renderCampaign(pack_code, false)) }
+          </>
         ) }
-        { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
       </ScrollView>
     );
   }
@@ -134,17 +140,9 @@ const styles = StyleSheet.create({
     fontSize: 22,
     marginLeft: s,
   },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderBottomWidth: 2,
-    borderColor: '#222',
-    height: 50,
-  },
   button: {
     padding: s,
-    borderBottomWidth: 2,
-    borderColor: '#222',
+    borderBottomWidth: 1,
+    borderColor: '#888',
   },
 });

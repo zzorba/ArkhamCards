@@ -26,6 +26,7 @@ export default class SingleCardWrapper extends React.Component<Props> {
       <CardQueryWrapper
         query={`(code == '${code}')`}
         render={this._render}
+        extraArg={undefined}
       />
     );
   }

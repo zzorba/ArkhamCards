@@ -19,7 +19,7 @@ export default function ResultIndicatorIcon({ result, noBorder }: Props) {
       <MaterialCommunityIcons
         name={result ? 'thumb-up-outline' : 'thumb-down-outline'}
         size={24}
-        color={COLORS.white}
+        color={COLORS.scenarioGreen}
       />
     </View>
   );
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.darkGray,
   },
   iconBorder: {
     borderBottomWidth: 1,

@@ -12,7 +12,7 @@ interface Props {
   defaultState?: boolean;
   min: number;
   max: number;
-  deckMode?: boolean;
+  allowNewDecks?: boolean;
   investigators?: string[];
   filter?: (investigatorDeck: InvestigatorDeck) => boolean;
 }
@@ -41,7 +41,7 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
       checkText,
       min,
       max,
-      deckMode,
+      allowNewDecks,
       defaultState,
     } = this.props;
     return (
@@ -59,11 +59,12 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
                   return {
                     code: investigator.code,
                     name: investigator.name,
-                    value: deckMode ? deck.id : undefined,
+                    value: allowNewDecks ? deck.id : undefined,
                     tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
                   };
                 })
               }
+              fixedMin={allowNewDecks}
               min={min}
               max={max}
             />

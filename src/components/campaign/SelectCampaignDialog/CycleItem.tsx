@@ -5,16 +5,18 @@ import {
   View,
   Text,
 } from 'react-native';
+import { t } from 'ttag';
 
 import { CampaignCycleCode } from 'actions/types';
 import EncounterIcon from 'icons/EncounterIcon';
-import { s, xs, iconSizeScale } from 'styles/space';
+import { s, iconSizeScale } from 'styles/space';
 import typography from 'styles/typography';
 
 interface Props {
   fontScale: number;
   packCode: CampaignCycleCode;
   text: string;
+  disabled: boolean;
   onPress: (packCode: CampaignCycleCode, text: string) => void;
 }
 
@@ -23,36 +25,58 @@ export default class CycleItem extends React.Component<Props> {
     this.props.onPress(this.props.packCode, this.props.text);
   };
 
-  render() {
+  renderContent() {
     const {
       packCode,
       text,
       fontScale,
+      disabled,
     } = this.props;
     return (
-      <TouchableOpacity onPress={this._onPress} key={packCode}>
-        <View style={styles.campaignRow}>
-          <View style={styles.campaignIcon}>
-            <EncounterIcon
-              encounter_code={packCode}
-              size={18 * iconSizeScale * fontScale}
-              color="#000000"
-            />
-          </View>
-          <Text style={[typography.text, styles.campaignText]}>
+      <View style={[styles.campaignRow, disabled ? styles.disabled : {}]}>
+        <View style={styles.campaignIcon}>
+          <EncounterIcon
+            encounter_code={packCode}
+            size={36 * iconSizeScale * fontScale}
+            color="#000000"
+          />
+        </View>
+        <View style={styles.column}>
+          <Text style={[typography.mediumGameFont, styles.campaignText]}>
             { text }
           </Text>
+          { disabled && (
+            <Text style={[typography.text, styles.campaignText]}>
+              { t`Guide not yet available` }
+            </Text>
+          )}
         </View>
-      </TouchableOpacity>
+      </View>
     );
+  }
+
+  render() {
+    const {
+      disabled,
+      packCode,
+    } = this.props;
+    if (!disabled) {
+      return (
+        <TouchableOpacity onPress={this._onPress} key={packCode}>
+          { this.renderContent() }
+        </TouchableOpacity>
+      );
+    }
+    return this.renderContent();
   }
 }
 
 const styles = StyleSheet.create({
   campaignRow: {
-    paddingTop: xs,
-    paddingBottom: xs,
+    paddingTop: s,
+    paddingBottom: s,
     borderBottomWidth: 1,
+    borderColor: '#888',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -64,6 +88,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: s,
+    margin: s,
+  },
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    flex: 1,
+  },
+  disabled: {
+    backgroundColor: '#f8f8f8',
   },
 });

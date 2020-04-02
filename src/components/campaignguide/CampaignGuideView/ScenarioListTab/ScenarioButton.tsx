@@ -11,8 +11,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import NavButton from 'components/core/NavButton';
 import { ProcessedScenario } from 'data/scenario/CampaignGuide';
-import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
-import { ScenarioProps } from '../ScenarioView';
+import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
+import { ScenarioProps } from '../../ScenarioView';
 import { SingleCampaign } from 'actions/types';
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';

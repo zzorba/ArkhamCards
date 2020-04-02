@@ -1,7 +1,16 @@
 import { filter, find, map } from 'lodash';
 import { t } from 'ttag';
 
-import { Choice, GenericStep, BranchStep, Resolution, ResolutionStep, InputStep } from 'data/scenario/types';
+import {
+  ConditionalEffectsChoice,
+  InvestigatorStatus,
+  Choice,
+  GenericStep,
+  BranchStep,
+  Resolution,
+  InputStep,
+  Step,
+} from 'data/scenario/types';
 
 export const CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID = '$check_investigator_defeat';
 export function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
@@ -47,7 +56,7 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
           const choice: Choice = {
             text: resolution.title,
             steps: [
-              INVESTIGATOR_STATUS_STEP.id,
+              investigatorStatusStepId(resolution),
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
               `$r_${resolution.id}`,
               ...resolution.steps,
@@ -64,19 +73,6 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
         }
       ),
     },
-  };
-}
-
-export function resolutionStep(id: string): ResolutionStep | undefined {
-  if (!id.startsWith('$r_')) {
-    return undefined;
-  }
-  const resolution = id.substring(3);
-  return {
-    id,
-    type: 'resolution',
-    generated: true,
-    resolution,
   };
 }
 
@@ -128,88 +124,98 @@ export const LEAD_INVESTIGATOR_STEP: InputStep = {
   },
 };
 
-export const INVESTIGATOR_STATUS_STEP: InputStep = {
-  id: '$investigator_status',
-  type: 'input',
-  text: t`Investigator status at end of scenario:`,
-  input: {
-    type: 'investigator_choice',
-    investigator: 'all',
-    source: 'scenario',
-    choices: [
-      {
-        text: t`Alive`,
+
+export function resolutionStep(
+  id: string,
+  resolutions: Resolution[]
+): Step | undefined {
+  if (!id.startsWith('$r_')) {
+    return undefined;
+  }
+  const statusStep = investigatorStatusStep(id, resolutions);
+  if (statusStep) {
+    return statusStep;
+  }
+  const resolution = id.substring(3);
+  return {
+    id,
+    type: 'resolution',
+    generated: true,
+    resolution,
+  };
+}
+
+const INVESTIGATOR_STATUS_STEP_SUFFIX = 'investigator_status';
+function investigatorStatusStepId(resolution: Resolution) {
+  return `$r_${resolution.id}#${INVESTIGATOR_STATUS_STEP_SUFFIX}`;
+}
+
+function statusToString(
+  status: InvestigatorStatus
+): string {
+  switch (status) {
+    case 'alive': return t`Alive`;
+    case 'resigned': return t`Resigned`;
+    case 'physical':  return t`Eliminated by damage`;
+    case 'mental': return t`Eliminated by horror`;
+    case 'eliminated': return t`Eliminated by scenario`;
+  }
+}
+
+function investigatorStatusStep(
+  id: string,
+  resolutions: Resolution[]
+): InputStep | undefined {
+  if (!id.startsWith('$r_') || id.indexOf('#') === -1) {
+    return undefined;
+  }
+  const [resolutionId, stepType] = id.substring(3).split('#');
+  if (stepType !== INVESTIGATOR_STATUS_STEP_SUFFIX) {
+    return undefined;
+  }
+  const resolution = find(resolutions, r => r.id === resolutionId);
+  if (!resolution) {
+    return undefined;
+  }
+  const defaultStatuses: InvestigatorStatus[] = [
+    'alive',
+    'resigned',
+    'physical',
+    'mental',
+    'eliminated',
+  ];
+  const choices: ConditionalEffectsChoice[] = map(
+    resolution.investigator_status || defaultStatuses,
+    status => {
+      return {
+        text: statusToString(status),
         effects: [
           {
             type: 'scenario_data',
             setting: 'investigator_status',
             investigator: '$input_value',
-            investigator_status: 'alive',
+            investigator_status: status,
           },
         ],
-      },
-      {
-        text: t`Resigned`,
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'investigator_status',
-            investigator: '$input_value',
-            investigator_status: 'resigned',
-          },
-        ],
-      },
-      {
-        text: t`Eliminated by Damage`,
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'investigator_status',
-            investigator: '$input_value',
-            investigator_status: 'physical',
-          },
-          {
-            type: 'trauma',
-            investigator: '$input_value',
-            physical: 1,
-          },
-        ],
-      },
-      {
-        text: t`Eliminated by Horror`,
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'investigator_status',
-            investigator: '$input_value',
-            investigator_status: 'mental',
-          },
-          {
-            type: 'trauma',
-            investigator: '$input_value',
-            mental: 1,
-          },
-        ],
-      },
-      {
-        text: t`Eliminated by Scenario`,
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'investigator_status',
-            investigator: '$input_value',
-            investigator_status: 'eliminated',
-          },
-        ],
-      },
-    ],
-  },
-};
+      };
+    }
+  );
+  return {
+    id,
+    type: 'input',
+    text: t`Investigator status at end of scenario:`,
+    input: {
+      type: 'investigator_choice',
+      investigator: 'all',
+      source: 'scenario',
+      choices,
+    },
+  };
+}
 
 
 export default {
   [PROCEED_STEP.id]: PROCEED_STEP,
   [CHOOSE_INVESTIGATORS_STEP.id]: CHOOSE_INVESTIGATORS_STEP,
   [LEAD_INVESTIGATOR_STEP.id]: LEAD_INVESTIGATOR_STEP,
-  [INVESTIGATOR_STATUS_STEP.id]: INVESTIGATOR_STATUS_STEP,
 };

@@ -9,10 +9,11 @@ import { t } from 'ttag';
 import { SelectCampagaignProps } from '../SelectCampaignDialog';
 import LabeledTextBox from 'components/core/LabeledTextBox';
 import { CUSTOM, CORE, CampaignCycleCode } from 'actions/types';
-import { s } from 'styles/space';
+import { s, m } from 'styles/space';
 
 interface Props {
   componentId: string;
+  guided: boolean;
   campaignChanged: (
     cycleCode: CampaignCycleCode,
     campaignName: string
@@ -62,12 +63,14 @@ export default class CampaignSelector extends React.Component<Props, State> {
   _campaignPressed = () => {
     const {
       componentId,
+      guided,
     } = this.props;
     Navigation.push<SelectCampagaignProps>(componentId, {
       component: {
         name: 'Dialog.Campaign',
         passProps: {
           campaignChanged: this._campaignChanged,
+          guided,
         },
         options: {
           topBar: {

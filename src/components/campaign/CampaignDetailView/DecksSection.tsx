@@ -205,6 +205,7 @@ class DecksSection extends React.Component<Props> {
             campaignId={campaignId}
             investigatorData={investigatorData}
             deckIds={aliveDeckIds}
+            investigatorIds={[]}
             deckAdded={this._addDeck}
             deckRemoved={this._removeDeckPrompt}
             showTraumaDialog={showTraumaDialog}
@@ -224,6 +225,7 @@ class DecksSection extends React.Component<Props> {
               campaignId={campaignId}
               investigatorData={investigatorData}
               deckIds={killedDeckIds}
+              investigatorIds={[]}
               showTraumaDialog={showTraumaDialog}
               killedOrInsane
             />

@@ -140,7 +140,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       campaignId: campaignId,
       onDeckSelect: this._selectDeck,
       selectedDeckIds: latestDeckIds,
-      showOnlySelectedDeckIds: true,
+      onlyShowSelected: true,
     };
     Navigation.showModal({
       stack: {

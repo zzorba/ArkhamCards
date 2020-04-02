@@ -60,7 +60,11 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
           min={input.length}
           max={input.length}
           checkText={t`Remove ${card.name} (${input.length})`}
-          investigators={keys(investigatorResult.investigatorChoices)}
+          investigators={
+            investigatorResult.type === 'investigator' ?
+              keys(investigatorResult.investigatorChoices) :
+              undefined
+          }
         />
       );
     }

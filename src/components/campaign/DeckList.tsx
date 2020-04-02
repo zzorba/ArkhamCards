@@ -12,20 +12,26 @@ import { t } from 'ttag';
 import { Deck } from 'actions/types';
 import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import { CardsMap } from 'data/Card';
+import Card, { CardsMap } from 'data/Card';
 
 export interface DeckListProps {
   componentId: string;
   fontScale: number;
   campaignId: number;
   deckIds: number[];
+  investigatorIds: string[];
   deckAdded?: (deck: Deck) => void;
+  investigatorAdded?: (investigator: Card) => void;
 }
 
 interface OwnProps extends DeckListProps {
   renderDeck: (
     deckId: number,
     cards: CardsMap,
+    investigators: CardsMap
+  ) => ReactNode;
+  renderInvestigator?: (
+    investigator: string,
     investigators: CardsMap
   ) => ReactNode;
   otherProps?: any;
@@ -35,14 +41,18 @@ class DeckList extends React.Component<OwnProps & PlayerCardProps> {
   _showDeckSelector = () => {
     const {
       deckIds,
+      investigatorIds,
       deckAdded,
+      investigatorAdded,
       campaignId,
     } = this.props;
     if (deckAdded) {
       const passProps: MyDecksSelectorProps = {
         campaignId: campaignId,
         onDeckSelect: deckAdded,
+        onInvestigatorSelect: investigatorAdded,
         selectedDeckIds: deckIds,
+        selectedInvestigatorIds: investigatorIds,
       };
       Navigation.showModal({
         stack: {
@@ -66,19 +76,25 @@ class DeckList extends React.Component<OwnProps & PlayerCardProps> {
     const {
       deckIds,
       deckAdded,
+      investigatorAdded,
+      investigatorIds,
       cards,
       investigators,
       renderDeck,
+      renderInvestigator,
     } = this.props;
     return (
       <View>
         { map(deckIds, deckId => (
           renderDeck(deckId, cards, investigators)
         )) }
+        { !!renderInvestigator && map(investigatorIds, investigator => (
+          renderInvestigator(investigator, investigators)
+        )) }
         { !!deckAdded && (
           <View style={styles.button}>
             <Button
-              title={t`Add Investigator Deck`}
+              title={investigatorAdded ? t`Add Investigator` : t`Add Investigator Deck`}
               onPress={this._showDeckSelector}
             />
           </View>

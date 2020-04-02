@@ -452,7 +452,7 @@ export interface ConditionalEffectsChoice {
   description?: string;
   condition?: CardCondition | BasicTraumaCondition;
   effects: Effect[];
-  steps?: null;
+  steps?: string[];
 }
 export interface BasicTraumaCondition {
   type: "trauma";
@@ -589,6 +589,7 @@ export interface Resolution {
   id: string;
   title: string;
   text?: string;
+  investigator_status?: InvestigatorStatus[];
   steps: string[];
 }
 export interface Log {

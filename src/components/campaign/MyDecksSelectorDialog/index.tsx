@@ -1,6 +1,8 @@
 import React from 'react';
 import { concat, filter, flatMap, keys, throttle, uniqBy } from 'lodash';
 import {
+  Keyboard,
+  Dimensions,
   StyleSheet,
   Text,
   View,
@@ -9,21 +11,28 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { NewDeckProps } from '../NewDeckView';
+import TabView from 'components/core/TabView';
+import InvestigatorSelectorTab from './InvestigatorSelectorTab';
+import DeckSelectorTab from './DeckSelectorTab';
+import { NewDeckProps } from 'components/NewDeckView';
 import Switch from 'components/core/Switch';
-import MyDecksComponent from '../decklist/MyDecksComponent';
 import { NavigationProps } from 'components/nav/types';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import { Deck, DecksMap, Campaign } from 'actions/types';
+import { Deck, DecksMap, Campaign, SortType, SORT_BY_PACK } from 'actions/types';
 import { iconsMap } from 'app/NavIcons';
+import Card from 'data/Card';
 import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from 'reducers';
 import { COLORS } from 'styles/colors';
 
 export interface MyDecksSelectorProps {
   campaignId: number;
   onDeckSelect: (deck: Deck) => void;
+  onInvestigatorSelect?: (card: Card) => void;
+
   selectedDeckIds: number[];
-  showOnlySelectedDeckIds?: boolean;
+  selectedInvestigatorIds?: string[];
+
+  onlyShowSelected?: boolean;
 }
 
 interface ReduxProps {
@@ -36,17 +45,19 @@ interface ReduxProps {
 type Props = NavigationProps & MyDecksSelectorProps & ReduxProps & PlayerCardProps;
 
 interface State {
-  hideOtherCampaignInvestigators: boolean;
+  hideOtherCampaignDecks: boolean;
   onlyShowPreviousCampaignMembers: boolean;
   hideEliminatedInvestigators: boolean;
+  selectedTab: string;
+  selectedSort: SortType;
 }
 
 class MyDecksSelectorDialog extends React.Component<Props, State> {
-  static options(passProps: Props) {
+  static deckOptions(passProps: Props) {
     return {
       topBar: {
         title: {
-          text: t`Choose a Deck`,
+          text: t`Choose an Investigator`,
         },
         leftButtons: [{
           icon: iconsMap.close,
@@ -54,7 +65,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
           color: COLORS.navButton,
           testID: t`Cancel`,
         }],
-        rightButtons: passProps.showOnlySelectedDeckIds ? [] : [{
+        rightButtons: passProps.onlyShowSelected ? [] : [{
           icon: iconsMap.add,
           id: 'add',
           color: COLORS.navButton,
@@ -63,6 +74,30 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       },
     };
   }
+  static investigatorOptions(passProps: Props) {
+    return {
+      topBar: {
+        title: {
+          text: t`Choose an Investigator`,
+        },
+        leftButtons: [{
+          icon: iconsMap.close,
+          id: 'close',
+          color: COLORS.navButton,
+          testID: t`Cancel`,
+        }],
+        rightButtons: [{
+          icon: iconsMap['sort-by-alpha'],
+          id: 'sort',
+          color: COLORS.navButton,
+          testID: t`Sort`,
+        }],
+      },
+    };
+  }
+  static options(passProps: Props) {
+    return MyDecksSelectorDialog.deckOptions(passProps);
+  }
   _navEventListener: EventSubscription;
   _showNewDeckDialog!: () => void;
 
@@ -70,9 +105,11 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      hideOtherCampaignInvestigators: true,
+      hideOtherCampaignDecks: true,
       onlyShowPreviousCampaignMembers: false,
       hideEliminatedInvestigators: true,
+      selectedTab: 'decks',
+      selectedSort: SORT_BY_PACK,
     };
 
     this._showNewDeckDialog = throttle(this.showNewDeckDialog.bind(this), 200);
@@ -83,9 +120,33 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     this._navEventListener.remove();
   }
 
+  _sortChanged = (sort: SortType) => {
+    this.setState({
+      selectedSort: sort,
+    });
+  };
+
+  _showSortDialog = () => {
+    Keyboard.dismiss();
+    Navigation.showOverlay({
+      component: {
+        name: 'Dialog.InvestigatorSort',
+        passProps: {
+          sortChanged: this._sortChanged,
+          selectedSort: this.state.selectedSort,
+        },
+        options: {
+          layout: {
+            backgroundColor: 'rgba(128,128,128,.75)',
+          },
+        },
+      },
+    });
+  };
+
   _toggleHideOtherCampaignInvestigators = () => {
     this.setState({
-      hideOtherCampaignInvestigators: !this.state.hideOtherCampaignInvestigators,
+      hideOtherCampaignDecks: !this.state.hideOtherCampaignDecks,
     });
   };
 
@@ -125,42 +186,37 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       this._showNewDeckDialog();
     } else if (buttonId === 'close') {
       Navigation.dismissModal(componentId);
+    } else if (buttonId === 'sort') {
+      this._showSortDialog();
     }
   }
 
-  _deckSelected = (deck: Deck) => {
-    const {
-      onDeckSelect,
-      componentId,
-    } = this.props;
-    onDeckSelect(deck);
-    Navigation.dismissModal(componentId);
-  }
-
-  renderCustomHeader() {
+  renderCustomHeader(forDecks: boolean) {
     const {
       campaign,
-      showOnlySelectedDeckIds,
+      onlyShowSelected,
     } = this.props;
     const {
-      hideOtherCampaignInvestigators,
+      hideOtherCampaignDecks,
       hideEliminatedInvestigators,
       onlyShowPreviousCampaignMembers,
     } = this.state;
-    if (showOnlySelectedDeckIds) {
+    if (onlyShowSelected) {
       return null;
     }
     return (
       <View>
-        <View style={styles.row}>
-          <Text style={styles.searchOption}>
-            { t`Hide Decks From Other Campaigns` }
-          </Text>
-          <Switch
-            value={hideOtherCampaignInvestigators}
-            onValueChange={this._toggleHideOtherCampaignInvestigators}
-          />
-        </View>
+        { forDecks && (
+          <View style={styles.row}>
+            <Text style={styles.searchOption}>
+              { t`Hide Decks From Other Campaigns` }
+            </Text>
+            <Switch
+              value={hideOtherCampaignDecks}
+              onValueChange={this._toggleHideOtherCampaignInvestigators}
+            />
+          </View>
+        ) }
         { !!campaign && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
@@ -189,16 +245,17 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
 
   filterInvestigators() {
     const {
+      selectedInvestigatorIds,
       selectedDeckIds,
       decks,
       campaign,
       investigators,
-      showOnlySelectedDeckIds,
+      onlyShowSelected,
     } = this.props;
     const {
       hideEliminatedInvestigators,
     } = this.state;
-    if (showOnlySelectedDeckIds) {
+    if (onlyShowSelected) {
       return [];
     }
 
@@ -216,6 +273,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
           }
           return [];
         }),
+        ...(selectedInvestigatorIds || [])
       ],
       x => x
     );
@@ -226,12 +284,12 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       selectedDeckIds,
       campaign,
       campaignLatestDeckIds,
-      showOnlySelectedDeckIds,
+      onlyShowSelected,
     } = this.props;
     const {
       onlyShowPreviousCampaignMembers,
     } = this.state;
-    if (showOnlySelectedDeckIds) {
+    if (onlyShowSelected) {
       return selectedDeckIds;
     }
     if (onlyShowPreviousCampaignMembers && campaign) {
@@ -244,35 +302,81 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     const {
       selectedDeckIds,
       otherCampaignDeckIds,
-      showOnlySelectedDeckIds,
+      onlyShowSelected,
     } = this.props;
     const {
-      hideOtherCampaignInvestigators,
+      hideOtherCampaignDecks,
     } = this.state;
-    if (showOnlySelectedDeckIds) {
+    if (onlyShowSelected) {
       return [];
     }
-    if (hideOtherCampaignInvestigators) {
+    if (hideOtherCampaignDecks) {
       return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds), x => x);
     }
     return selectedDeckIds;
   }
 
+  _onTabChange = (tab: string) => {
+    const { componentId } = this.props;
+    this.setState({
+      selectedTab: tab,
+    });
+    Navigation.mergeOptions(
+      componentId,
+      tab === 'decks' ?
+        MyDecksSelectorDialog.deckOptions(this.props) :
+        MyDecksSelectorDialog.investigatorOptions(this.props)
+    );
+  };
+
   render() {
     const {
       componentId,
+      onDeckSelect,
+      onInvestigatorSelect,
     } = this.props;
-
-    return (
-      <MyDecksComponent
+    const deckTab = (
+      <DeckSelectorTab
         componentId={componentId}
-        customHeader={this.renderCustomHeader()}
-        deckClicked={this._deckSelected}
-        onlyDeckIds={this.onlyDeckIds()}
+        onDeckSelect={onDeckSelect}
+        customHeader={this.renderCustomHeader(true)}
         filterDeckIds={this.filterDeckIds()}
+        onlyDeckIds={this.onlyDeckIds()}
         filterInvestigators={this.filterInvestigators()}
       />
     );
+    if (onInvestigatorSelect) {
+      const tabs = [
+        {
+          key: 'decks',
+          title: t`Decks`,
+          node: deckTab,
+        },
+        {
+          key: 'investigators',
+          title: t`Investigator`,
+          node: (
+            <InvestigatorSelectorTab
+              componentId={componentId}
+              sort={this.state.selectedSort}
+              onInvestigatorSelect={onInvestigatorSelect}
+              customHeader={this.renderCustomHeader(true)}
+              filterDeckIds={this.filterDeckIds()}
+              onlyDeckIds={this.onlyDeckIds()}
+              filterInvestigators={this.filterInvestigators()}
+            />
+          ),
+        },
+      ];
+
+      return (
+        <TabView
+          tabs={tabs}
+          onTabChange={this._onTabChange}
+        />
+      );
+    }
+    return deckTab;
   }
 }
 

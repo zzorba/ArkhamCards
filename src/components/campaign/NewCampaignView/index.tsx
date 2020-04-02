@@ -43,12 +43,17 @@ import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWe
 import { getNextCampaignId, AppState } from 'reducers';
 import { newCampaign } from '../actions';
 import { NavigationProps } from 'components/nav/types';
+import Card from 'data/Card';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
 import { s, xs } from 'styles/space';
 
-type OwnProps = NavigationProps & WeaknessCardProps & InjectedDialogProps;
+export interface NewCampaignProps {
+  guided: boolean;
+}
+
+type OwnProps = NavigationProps & NewCampaignProps & WeaknessCardProps & InjectedDialogProps;
 
 interface ReduxProps {
   nextId: number;
@@ -61,9 +66,11 @@ interface ReduxActionProps {
     pack_code: CampaignCycleCode,
     difficulty: CampaignDifficulty,
     deckIds: number[],
+    investigatorIds: string[],
     chaosBag: ChaosBag,
     campaignLog: CustomCampaignLog,
     weaknessSet: WeaknessSet,
+    guided: boolean
   ) => void;
 }
 
@@ -78,6 +85,7 @@ interface State {
   campaignCode: CampaignCycleCode;
   difficulty: CampaignDifficulty;
   deckIds: number[];
+  investigatorIds: string[];
   weaknessPacks: string[];
   weaknessAssignedCards: Slots;
   customChaosBag: ChaosBag;
@@ -108,6 +116,7 @@ class NewCampaignView extends React.Component<Props, State> {
       campaignCode: CORE,
       difficulty: CampaignDifficulty.STANDARD,
       deckIds: [],
+      investigatorIds: [],
       weaknessPacks: [],
       weaknessAssignedCards: {},
       customChaosBag: Object.assign({}, getChaosBag(CORE, CampaignDifficulty.STANDARD)),
@@ -243,14 +252,26 @@ class NewCampaignView extends React.Component<Props, State> {
     }
   }
 
-  _deckAdded = (deck: Deck) => {
+  _investigatorAdded = (card: Card) => {
+    this.setState({
+      investigatorIds: [...this.state.investigatorIds, card.code],
+    });
+  };
+
+  _investigatorRemoved = (card: Card) => {
+    this.setState({
+      investigatorIds: filter(this.state.investigatorIds, id => id !== card.code),
+    });
+  };
+
+  _deckAdded = (deck: Deck, investigator?: Card) => {
     this.setState({
       deckIds: [...this.state.deckIds, deck.id],
     });
     this.maybeShowWeaknessPrompt(deck);
   };
 
-  _deckRemoved = (id: number) => {
+  _deckRemoved = (id: number, deck?: Deck, investigator?: Card) => {
     this.setState({
       deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
     });
@@ -299,12 +320,14 @@ class NewCampaignView extends React.Component<Props, State> {
       nextId,
       newCampaign,
       componentId,
+      guided,
     } = this.props;
     const {
       name,
       campaignCode,
       difficulty,
       deckIds,
+      investigatorIds,
       weaknessPacks,
       weaknessAssignedCards,
     } = this.state;
@@ -315,12 +338,14 @@ class NewCampaignView extends React.Component<Props, State> {
       campaignCode,
       difficulty,
       deckIds,
+      investigatorIds,
       this.getChaosBag(),
       this.getCampaignLog(),
       {
         packCodes: weaknessPacks,
         assignedCards: weaknessAssignedCards,
-      }
+      },
+      guided
     );
     Navigation.pop(componentId);
   }
@@ -471,14 +496,51 @@ class NewCampaignView extends React.Component<Props, State> {
     );
   }
 
+  renderCampaignSectionDialog() {
+    const {
+      viewRef,
+    } = this.props;
+    const {
+      campaignLogDialogVisible,
+    } = this.state;
+    return (
+      <AddCampaignNoteSectionDialog
+        viewRef={viewRef}
+        visible={campaignLogDialogVisible}
+        addSection={this._addCampaignNoteSection}
+        toggleVisible={this._toggleCampaignLogDialog}
+      />
+    );
+  }
+
+  renderChaosBag() {
+    const { guided, fontScale } = this.props;
+    if (guided) {
+      return null;
+    }
+    const hasDefinedChaosBag = this.hasDefinedChaosBag();
+    return hasDefinedChaosBag ? (
+      <View style={styles.underline}>
+        { this.renderChaosBagSection() }
+      </View>
+    ) : (
+      <NavButton fontScale={fontScale} onPress={this._showChaosBagDialog}>
+        { this.renderChaosBagSection() }
+      </NavButton>
+    );
+  }
+
   renderCampaignLogSection() {
+    const { guided } = this.props;
+    if (guided) {
+      return null;
+    }
     const campaignLog = this.getCampaignLog();
     const onPress = this.hasDefinedCampaignLog() ?
       undefined :
       this._deleteCampaignNoteSection;
-
     return (
-      <View>
+      <View style={styles.underline}>
         <Text style={[typography.small, styles.margin]}>
           { t`CAMPAIGN LOG` }
         </Text>
@@ -525,38 +587,22 @@ class NewCampaignView extends React.Component<Props, State> {
     );
   }
 
-  renderCampaignSectionDialog() {
-    const {
-      viewRef,
-    } = this.props;
-    const {
-      campaignLogDialogVisible,
-    } = this.state;
-    return (
-      <AddCampaignNoteSectionDialog
-        viewRef={viewRef}
-        visible={campaignLogDialogVisible}
-        addSection={this._addCampaignNoteSection}
-        toggleVisible={this._toggleCampaignLogDialog}
-      />
-    );
-  }
-
   render() {
     const {
       componentId,
       captureViewRef,
       nextId,
       fontScale,
+      guided,
     } = this.props;
 
     const {
       deckIds,
+      investigatorIds,
       campaignCode,
       name,
       difficulty,
     } = this.state;
-    const hasDefinedChaosBag = this.hasDefinedChaosBag();
 
     return (
       <View ref={captureViewRef}>
@@ -565,6 +611,7 @@ class NewCampaignView extends React.Component<Props, State> {
             <View style={styles.topPadding}>
               <CampaignSelector
                 componentId={componentId}
+                guided={guided}
                 campaignChanged={this._campaignChanged}
               />
             </View>
@@ -577,38 +624,36 @@ class NewCampaignView extends React.Component<Props, State> {
                 value={name}
               />
             </View>
-            <View style={[styles.topPadding, styles.margin]}>
-              <LabeledTextBox
-                column
-                label={t`Difficulty`}
-                onPress={this._showDifficultyDialog}
-                value={difficultyString(difficulty)}
-              />
-            </View>
+            { !guided && (
+              <View style={[styles.topPadding, styles.margin]}>
+                <LabeledTextBox
+                  column
+                  label={t`Difficulty`}
+                  onPress={this._showDifficultyDialog}
+                  value={difficultyString(difficulty)}
+                />
+              </View>
+            ) }
           </View>
-          { hasDefinedChaosBag ? (
-            <View style={styles.underline}>
-              { this.renderChaosBagSection() }
-            </View>
-          ) : (
-            <NavButton fontScale={fontScale} onPress={this._showChaosBagDialog}>
-              { this.renderChaosBagSection() }
-            </NavButton>
-          ) }
+          { this.renderChaosBag() }
           <View style={styles.underline}>
             { this.renderWeaknessSetSection() }
           </View>
+          { this.renderCampaignLogSection() }
           <View style={styles.underline}>
-            { this.renderCampaignLogSection() }
-          </View>
-          <View style={styles.underline}>
+            <Text style={[typography.small, styles.margin]}>
+              { t`INVESTIGATORS` }
+            </Text>
             <DeckSelector
               componentId={componentId}
               fontScale={fontScale}
               campaignId={nextId}
               deckIds={deckIds}
+              investigatorIds={investigatorIds}
               deckAdded={this._deckAdded}
               deckRemoved={this._deckRemoved}
+              investigatorAdded={guided ? this._investigatorAdded : undefined}
+              investigatorRemoved={guided ? this._investigatorRemoved : undefined}
             />
           </View>
           <View style={styles.button}>

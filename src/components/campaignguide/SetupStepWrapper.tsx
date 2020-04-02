@@ -27,7 +27,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
             <ArkhamIcon
               name="bullet"
               size={24}
-              color="#2E5344"
+              color={COLORS.scenarioGreen}
             />
           </View>
         );
@@ -37,7 +37,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
             <ArkhamIcon
               name="guide_bullet"
               size={20}
-              color="#2E5344"
+              color={COLORS.scenarioGreen}
             />
           </View>
         );

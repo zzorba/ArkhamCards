@@ -24,30 +24,35 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class CampaignInvestigatorRow extends React.Component<Props> {
-  _renderDeck = (deck: Deck) => {
+  _renderInvestigator = (code: string) => {
     const {
       investigators,
       campaign: {
         investigatorData = {},
       },
     } = this.props;
-    if (deck && deck.investigator_code) {
-      const card = investigators[deck.investigator_code];
-      if (card) {
-        const killedOrInsane = card.eliminated(investigatorData[deck.investigator_code]);
-        if (killedOrInsane) {
-          return null;
-        }
-        return (
-          <View key={card.code} style={styles.investigator}>
-            <InvestigatorImage
-              card={card}
-              killedOrInsane={killedOrInsane}
-              small
-            />
-          </View>
-        );
+    const card = investigators[code];
+    if (card) {
+      const killedOrInsane = card.eliminated(investigatorData[code]);
+      if (killedOrInsane) {
+        return null;
       }
+      return (
+        <View key={card.code} style={styles.investigator}>
+          <InvestigatorImage
+            card={card}
+            killedOrInsane={killedOrInsane}
+            small
+          />
+        </View>
+      );
+    }
+    return null;
+  };
+
+  _renderDeck = (deck: Deck) => {
+    if (deck && deck.investigator_code) {
+      return this._renderInvestigator(deck.investigator_code);
     }
     return null;
   };
@@ -55,10 +60,12 @@ class CampaignInvestigatorRow extends React.Component<Props> {
   render() {
     const {
       decks,
+      campaign,
     } = this.props;
     return (
       <View style={styles.row}>
         { map(decks, this._renderDeck) }
+        { map(campaign.nonDeckInvestigators || [], this._renderInvestigator)}
       </View>
     );
   }

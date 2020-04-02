@@ -14,7 +14,7 @@ interface Props {
   bold?: boolean;
 }
 
-export default function InvestigatorSectionHeader({ title, bold }: Props) {
+export default function BasicSectionHeader({ title, bold }: Props) {
   return (
     <View style={[styles.row, bold ? styles.boldRow : {}]}>
       <Text style={[typography.text, styles.headerText]}>

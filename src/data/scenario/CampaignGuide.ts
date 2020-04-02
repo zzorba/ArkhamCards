@@ -58,7 +58,7 @@ interface UnplayedScenario {
 
 export type ProcessedScenario = PlayedScenario | UnplayedScenario;
 
-interface ProcessedCampaign {
+export interface ProcessedCampaign {
   scenarios: ProcessedScenario[];
   campaignLog: GuidedCampaignLog;
 }

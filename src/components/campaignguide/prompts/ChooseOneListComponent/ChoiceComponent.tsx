@@ -7,6 +7,7 @@ import ResultIndicatorIcon from '../../ResultIndicatorIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from 'data/scenario';
+import { COLORS } from 'styles/colors';
 
 interface Props {
   choice: DisplayChoice;
@@ -44,25 +45,24 @@ export default class ChoiceComponent extends React.Component<Props> {
         } : {},
       ]}>
         <View style={styles.padding}>
-          { !noBullet && (
-            <View style={styles.bullet}>
-              <ArkhamIcon name="bullet" color="#2E5344" size={24} />
-            </View>
-          ) }
-          <View style={styles.textBlock}>
-            { choice.flavor && <CampaignGuideTextComponent flavor text={choice.flavor} /> }
-            { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
-            { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
-          </View>
-          { editable && (
-            <View style={styles.arrow}>
+          { editable ? (
+            <View style={[styles.bullet, styles.radioButton]}>
               <MaterialCommunityIcons
                 name={selected ? 'radiobox-marked' : 'radiobox-blank'}
                 size={30}
                 color={buttonColor || 'rgb(0, 122,255)'}
               />
             </View>
-          ) }
+          ) : (!noBullet && (
+            <View style={styles.bullet}>
+              <ArkhamIcon name="bullet" color={COLORS.scenarioGreen} size={24} />
+            </View>
+          )) }
+          <View style={styles.textBlock}>
+            { choice.flavor && <CampaignGuideTextComponent flavor text={choice.flavor} /> }
+            { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
+            { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
+          </View>
         </View>
         { !editable && (
           <ResultIndicatorIcon
@@ -98,21 +98,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   padding: {
-    paddingLeft: 24,
-    paddingRight: 16,
+    paddingLeft: 16,
+    paddingRight: 24,
     paddingTop: 8,
     paddingBottom: 8,
     flexDirection: 'row',
     flex: 1,
   },
   bullet: {
-    marginRight: 4,
+    marginRight: 16,
+    minWidth: 24,
   },
   arrow: {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: 16,
     minWidth: 30,
     minHeight: 30,
+  },
+  radioButton: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

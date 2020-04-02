@@ -1,6 +1,7 @@
 import React from 'react';
 import { filter, map, throttle } from 'lodash';
 import {
+  Alert,
   Button,
   Keyboard,
   ScrollView,
@@ -14,6 +15,7 @@ import { t } from 'ttag';
 
 import { CUSTOM, Campaign, DecksMap } from 'actions/types';
 import CampaignItem from './CampaignItem';
+import { NewCampaignProps } from '../NewCampaignView';
 import { CampaignDetailProps } from '../CampaignDetailView';
 import { campaignNames } from 'components/campaign/constants';
 import SearchBox from 'components/core/SearchBox';
@@ -111,22 +113,51 @@ class MyCampaignsView extends React.Component<Props, State> {
     const {
       componentId,
     } = this.props;
-    Navigation.push<{}>(componentId, {
-      component: {
-        name: 'Campaign.New',
-        options: {
-          topBar: {
-            title: {
-              text: t`New Campaign`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
+    const options = {
+      topBar: {
+        title: {
+          text: t`New Campaign`,
+        },
+        backButton: {
+          title: t`Cancel`,
         },
       },
-    });
+    };
+    Alert.alert(
+      t`New Campaign`,
+      t`The app can now walk you through campaign guides, keeping track of the Campaign Log, story assets, and trauma automatically.\nThis feature is still in beta and you might encounter some bugs with it, if you do please send them to arkhamcards@gmail.com`,
+      [{
+        text: t`Guided Campaign`,
+        onPress: () => {
+          Navigation.push<NewCampaignProps>(componentId, {
+            component: {
+              name: 'Campaign.New',
+              passProps: {
+                guided: true,
+              },
+              options,
+            },
+          });
+        },
+      }, {
+        text: t`Manual Campaign`,
+        onPress: () => {
+          Navigation.push<NewCampaignProps>(componentId, {
+            component: {
+              name: 'Campaign.New',
+              passProps: {
+                guided: false,
+              },
+              options,
+            },
+          });
+        },
+      }, {
+        text: t`Cancel`,
+      }]
+    );
   }
+
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'add') {
       this._showNewCampaignDialog();
@@ -208,7 +239,10 @@ class MyCampaignsView extends React.Component<Props, State> {
         { map(campaigns, campaign => this.renderItem(campaign)) }
         { this.renderFooter(campaigns) }
         <View style={styles.button}>
-          <Button title={t`New Campaign`} onPress={this._showNewCampaignDialog} />
+          <Button
+            title={t`New Campaign`}
+            onPress={this._showNewCampaignDialog}
+          />
         </View>
         <View style={styles.gutter} />
       </ScrollView>

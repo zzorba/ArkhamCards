@@ -266,6 +266,23 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEA,
   TDEB,
 ];
+
+export const GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
+  CORE,
+  DWL,
+  PTC,
+  TFA,
+  TCU,
+];
+
+export const COMING_SOON_GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
+  RTNOTZ,
+  RTDWL,
+  RTPTC,
+  TDEA,
+  TDEB,
+];
+
 export interface CustomCampaignLog {
   sections?: string[];
   counts?: string[];
@@ -293,8 +310,9 @@ export interface Campaign {
   showInterludes?: boolean;
   baseDeckIds?: number[];
   latestDeckIds?: number[]; // deprecated
-  investigatorData: InvestigatorData;
   nonDeckInvestigators?: string[];
+  guided?: boolean;
+  investigatorData: InvestigatorData;
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
@@ -451,9 +469,11 @@ export interface NewCampaignAction {
   difficulty: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
   baseDeckIds: number[];
+  investigatorIds: string[];
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
+  guided: boolean;
 }
 export const SET_ALL_CAMPAIGNS = 'SET_ALL_CAMPAIGNS';
 export interface SetAllCampaignsAction {

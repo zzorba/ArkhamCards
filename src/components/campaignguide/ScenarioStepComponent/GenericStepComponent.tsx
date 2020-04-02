@@ -6,6 +6,7 @@ import SetupStepWrapper from '../SetupStepWrapper';
 import { GenericStep } from 'data/scenario/types';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import typography from 'styles/typography';
+import { COLORS } from 'styles/colors';
 
 interface Props {
   step: GenericStep;
@@ -20,7 +21,7 @@ export default class GenericStepComponent extends React.Component<Props> {
     return (
       <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
         { !!step.title && (
-          <Text style={[typography.bigGameFont, { color: '#2E5344' }]}>
+          <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
             { step.title }
           </Text>
         ) }

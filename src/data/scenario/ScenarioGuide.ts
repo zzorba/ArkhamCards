@@ -57,7 +57,7 @@ export default class ScenarioGuide {
     if (id === CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID) {
       return checkInvestigatorDefeatStep(this.scenario.resolutions || []);
     }
-    const rStep = resolutionStep(id);
+    const rStep = resolutionStep(id, this.scenario.resolutions || []);
     if (rStep) {
       return rStep;
     }
