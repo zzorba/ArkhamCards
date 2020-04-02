@@ -250,12 +250,17 @@ export default class ScenarioStep {
     choiceList: ListChoices,
     theChoices: Choices
   ) {
+    console.log(`${this.step.id} - ${choiceList}`);
     const groupedEffects = groupBy(
       flatMap(choiceList, (choices, code) => {
         return choices.map(originalIndex => {
-          const choice = theChoices.type === 'universal' ?
-            originalIndex :
-            theChoices.perCode[code][originalIndex];
+          if (theChoices.type === 'universal') {
+            return {
+              code,
+              choice: originalIndex,
+            };
+          }
+          const choice = theChoices.perCode[code][originalIndex];
           return {
             code,
             choice,
@@ -535,7 +540,7 @@ export default class ScenarioStep {
                   effects: consumeSuppliesEffects,
                 }],
               );
-            } 
+            }
             const secondChoice = scenarioState.choiceList(this.step.id);
             if (secondChoice === undefined) {
               return undefined;

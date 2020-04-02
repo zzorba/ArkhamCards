@@ -168,7 +168,7 @@ export default class CampaignGuide {
       campaignLog
     );
     if (!campaignState.startedScenario(rawScenarioId)) {
-      if (campaignLog.scenarioStatus(rawScenarioId) === 'skipped') {
+      if (campaignLog.campaignData.result || campaignLog.scenarioStatus(rawScenarioId) === 'skipped') {
         return [{
           type: 'skipped',
           scenarioGuide,

@@ -790,7 +790,7 @@ export default class GuidedCampaignLog {
   investigatorCodes() {
     const playing = this.latestScenarioData.playingScenario;
     if (!playing) {
-      throw new Error('Player count accessed before it was set.');
+      throw new Error('Investigator codes accessed before they were set.');
     }
     return map(playing, ({ investigator }) => investigator);
   }

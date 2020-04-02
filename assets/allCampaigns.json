@@ -6533,7 +6533,8 @@
   "interlude": true,
   "setup": [
     "intro",
-    "check_lola_hayes"
+    "check_lola_hayes",
+    "proceed"
   ],
   "steps": [
     {
@@ -6543,13 +6544,12 @@
     },
     {
       "id": "check_lola_hayes",
-      "type": "branch",
-      "condition": {
-        "type": "scenario_data",
-        "scenario_data": "investigator",
-        "options": [
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
           {
-            "condition": "03006",
+            "text": "Was Lola Hayes  chosen as an investigator for this campaign?",
             "steps": ["lola_prologue"]
           }
         ]
@@ -6559,6 +6559,17 @@
       "id": "lola_prologue",
       "type": "story",
       "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black\n"
+    },
+    {
+      "id": "proceed",
+      "text": "Proceed to <b>Scenario I: Curtain Call</b>.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "next_scenario",
+          "scenario": "curtain_call"
+        }
+      ]
     }
   ]
 }
@@ -16392,6 +16403,7 @@
     },
     {
       "id": "no_ill_effects",
+      "bullet_type": "small",
       "text": "You suffer no ill effects."
     },
     {
@@ -16421,6 +16433,7 @@
     },
     {
       "id": "swap_relic",
+      "bullet_type": "right",
       "text": "The investigator with Relic of Ages in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages (<i>Repossess the Past</i>).",
       "effects": [
         {

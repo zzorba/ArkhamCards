@@ -1,4 +1,4 @@
-import { filter, forEach, keys } from 'lodash';
+import { filter, find, forEach, keys } from 'lodash';
 
 import { ListChoices } from 'actions/types';
 import {
@@ -9,7 +9,7 @@ import {
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { hasCardConditionResult, basicTraumaConditionResult } from 'data/scenario/conditionHelper';
-import { PersonalizedChoices, DisplayChoice } from 'data/scenario';
+import { PersonalizedChoices, UniversalChoices, DisplayChoice } from 'data/scenario';
 
 export function chooseOneInputChoices(
   input: ChooseOneInput,
@@ -33,7 +33,13 @@ export function chooseOneInputChoices(
 export function investigatorChoiceInputChoices(
   input: InvestigatorChoiceInput,
   campaignLog: GuidedCampaignLog
-): PersonalizedChoices {
+): PersonalizedChoices | UniversalChoices {
+  if (!find(input.choices, choice => !!choice.condition)) {
+    return {
+      type: 'universal',
+      choices: input.choices,
+    };
+  }
   const codes = campaignLog.investigatorCodes();
   const result: ListChoices = {};
   forEach(
@@ -45,17 +51,19 @@ export function investigatorChoiceInputChoices(
         });
       } else {
         const conditionResult = calculateConditionResult(choice.condition, campaignLog);
-        forEach(conditionResult.investigatorChoices,
-          (indexes, code) => {
-            // If we got one or more matches, that means this 'choice' is good.
-            if (indexes.length) {
-              result[code] = [
-                ...(result[code] || []),
-                idx
-              ];
+        if (conditionResult.type === 'investigator') {
+          forEach(conditionResult.investigatorChoices,
+            (indexes, code) => {
+              // If we got one or more matches, that means this 'choice' is good.
+              if (indexes.length) {
+                result[code] = [
+                  ...(result[code] || []),
+                  idx
+                ];
+              }
             }
-          }
-        );
+          );
+        }
       }
     }
   );

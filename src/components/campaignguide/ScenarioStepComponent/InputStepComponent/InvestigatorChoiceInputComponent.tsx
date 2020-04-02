@@ -33,6 +33,8 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
       (input.investigator === 'all' || input.investigator === 'choice') &&
       input.choices.length === 1
     ) {
+      const choices = investigatorChoiceInputChoices(input, campaignLog);
+
       return (
         <>
           { !!step.text && (
@@ -43,9 +45,7 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
           <InvestigatorCheckListComponent
             id={step.id}
             checkText={input.choices[0].text}
-            investigators={keys(
-              investigatorChoiceInputChoices(input, campaignLog).perCode
-            )}
+            investigators={choices.type === 'personalized' ? keys(choices.perCode) : undefined }
             min={input.investigator === 'choice' ? 1 : 0}
             max={4}
           />
