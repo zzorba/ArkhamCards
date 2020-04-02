@@ -35,17 +35,6 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     const processedCampaign = campaignGuide.processAllScenarios(campaignState);
     const tabs = [
       {
-        key: 'log',
-        title: t`Campaign Log`,
-        node: (
-          <CampaignLogTab
-            campaignGuide={campaignGuide}
-            campaignLog={processedCampaign.campaignLog}
-            fontScale={fontScale}
-          />
-        ),
-      },
-      {
         key: 'scenarios',
         title: t`Scenarios`,
         node: (
@@ -56,6 +45,17 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
             componentId={componentId}
           />
         )
+      },
+      {
+        key: 'log',
+        title: t`Campaign Log`,
+        node: (
+          <CampaignLogTab
+            campaignGuide={campaignGuide}
+            campaignLog={processedCampaign.campaignLog}
+            fontScale={fontScale}
+          />
+        ),
       },
     ];
 

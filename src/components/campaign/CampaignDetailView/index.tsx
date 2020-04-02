@@ -46,8 +46,6 @@ import { NavigationProps } from 'components/nav/types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
 import { COLORS } from 'styles/colors';
 
-const SHOW_GUIDE = true;
-
 export interface CampaignDetailProps {
   id: number;
 }
@@ -536,7 +534,6 @@ class CampaignDetailView extends React.Component<Props, State> {
     } = this.props;
     return (
       <ScrollView style={styles.flex}>
-        { SHOW_GUIDE && <Button onPress={this._guidePressed} title={t`Guide`} /> }
         <ScenarioSection
           campaign={campaign}
           fontScale={fontScale}

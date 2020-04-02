@@ -211,16 +211,32 @@ const getLatestDeckIdsForCampaignInvestigators = (
   campaign?: Campaign
 ) => getLatestCampaignDeckIds(state, campaign);
 
+const EMPTY_INVESTIGATOR_IDS: string[] = [];
+const getNonDeckInvestigatorsForCampaignInvestigators = (
+  state: AppState,
+  investigators: CardsMap,
+  campaign?: Campaign
+) => {
+  if (!campaign || !campaign.nonDeckInvestigators) {
+    return EMPTY_INVESTIGATOR_IDS;
+  }
+  return campaign.nonDeckInvestigators;
+};
+
 export const getLatestCampaignInvestigators = createSelector(
   getAllDecksForCampaignInvestigators,
   getInvestigatorsForCampaignInvestigators,
   getLatestDeckIdsForCampaignInvestigators,
-  (decks, investigators, latestDeckIds): Card[] => {
+  getNonDeckInvestigatorsForCampaignInvestigators,
+  (decks, investigators, latestDeckIds, nonDeckInvestigators): Card[] => {
     const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
-    return flatMap(
-      filter(latestDecks, deck => !!(deck && deck.investigator_code)),
-      deck => investigators[deck.investigator_code]
-    );
+    return [
+      ...flatMap(
+        filter(latestDecks, deck => !!(deck && deck.investigator_code)),
+        deck => investigators[deck.investigator_code]
+      ),
+      ...map(nonDeckInvestigators, code => investigators[code])
+    ];
   }
 );
 

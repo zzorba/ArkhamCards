@@ -17,6 +17,7 @@ import { CUSTOM, Campaign, DecksMap } from 'actions/types';
 import CampaignItem from './CampaignItem';
 import { NewCampaignProps } from '../NewCampaignView';
 import { CampaignDetailProps } from '../CampaignDetailView';
+import { CampaignGuideProps } from 'components/campaignguide/CampaignGuideView';
 import { campaignNames } from 'components/campaign/constants';
 import SearchBox from 'components/core/SearchBox';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
@@ -89,24 +90,37 @@ class MyCampaignsView extends React.Component<Props, State> {
       componentId,
     } = this.props;
     Keyboard.dismiss();
-    Navigation.push<CampaignDetailProps>(componentId, {
-      component: {
-        name: 'Campaign',
-        passProps: {
-          id,
+    const options = {
+      topBar: {
+        title: {
+          text: campaign.name,
         },
-        options: {
-          topBar: {
-            title: {
-              text: campaign.name,
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
+        backButton: {
+          title: t`Back`,
         },
       },
-    });
+    };
+    if (campaign.guided) {
+      Navigation.push<CampaignGuideProps>(componentId, {
+        component: {
+          name: 'Guide.Campaign',
+          passProps: {
+            campaignId: campaign.id,
+          },
+          options,
+        },
+      });
+    } else {
+      Navigation.push<CampaignDetailProps>(componentId, {
+        component: {
+          name: 'Campaign',
+          passProps: {
+            id,
+          },
+          options,
+        },
+      });
+    }
   };
 
   showNewCampaignDialog() {
