@@ -6,7 +6,7 @@ import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { InvestigatorDeck } from 'data/scenario';
 import CardQueryWrapper from '../CardQueryWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -36,7 +36,7 @@ export default class CardChoicePrompt extends React.Component<Props> {
       return (
         <>
           <SetupStepWrapper>
-            { !!text && <CardTextComponent text={text} /> }
+            { !!text && <CampaignGuideTextComponent text={text} /> }
           </SetupStepWrapper>
           <CounterListComponent
             id={id}
@@ -154,6 +154,7 @@ export default class CardChoicePrompt extends React.Component<Props> {
             <CardQueryWrapper
               query={this.query(scenarioGuide, scenarioState, investigatorDecks)}
               render={this._renderCards}
+              extraArg={undefined}
             />
           );
         } }

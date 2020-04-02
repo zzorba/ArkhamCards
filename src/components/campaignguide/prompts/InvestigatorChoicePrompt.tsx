@@ -8,7 +8,7 @@ import { InvestigatorDeck } from 'data/scenario';
 
 interface Props extends ChoiceListComponentProps {
   investigatorDecks?: InvestigatorDeck[];
-};
+}
 
 export default class InvestigatorChoicePrompt extends React.Component<Props> {
   static contextType = ScenarioGuideContext;

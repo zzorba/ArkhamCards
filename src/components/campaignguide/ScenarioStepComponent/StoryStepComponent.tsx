@@ -6,8 +6,8 @@ import {
 } from 'react-native';
 
 import BulletsComponent from './BulletsComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { StoryStep } from 'data/scenario/types';
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import typography from 'styles/typography';
 
 interface Props {
@@ -25,9 +25,9 @@ export default class StoreStepComponent extends React.Component<Props> {
           </Text>
         ) }
         { !!step.text && (
-          <CardFlavorTextComponent
+          <CampaignGuideTextComponent
             text={step.text.replace(/\n/g, '\n\n')}
-            color="#222"
+            flavor
           />
         ) }
         <BulletsComponent bullets={step.bullets} />

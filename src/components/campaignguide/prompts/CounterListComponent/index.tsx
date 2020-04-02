@@ -92,7 +92,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
     const disabled = (requiredTotal !== undefined) && currentTotal !== requiredTotal;
     return disabled && requiredTotal !== undefined ? (
       <Button
-        title={ currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
+        title={currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
         onPress={this._save}
         disabled
       />

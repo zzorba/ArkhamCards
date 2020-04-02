@@ -11,7 +11,7 @@ import SetupStepWrapper from '../SetupStepWrapper';
 import { EncounterSetsStep } from 'data/scenario/types';
 import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 
 interface OwnProps {
   step: EncounterSetsStep;
@@ -38,7 +38,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
       encounterSets.length);
     return (
       <SetupStepWrapper bulletType={step.bullet_type}>
-        <CardTextComponent text={text} />
+        <CampaignGuideTextComponent text={text} />
         <View style={styles.iconPile}>
           { map(encounterSets, set => !!set && (
             <View style={styles.icon} key={set.code}>
@@ -51,7 +51,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
           )) }
         </View>
         { !!step.subtext && (
-          <CardTextComponent text={step.subtext} />
+          <CampaignGuideTextComponent text={step.subtext} />
         ) }
       </SetupStepWrapper>
     );

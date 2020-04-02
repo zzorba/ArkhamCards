@@ -78,7 +78,7 @@ export default class ScenarioStep {
           return [specialInput];
         }
         return [];
-      })
+      });
       if (find(specialInputs, specialInput => scenarioState.choiceList(specialInput) === undefined)) {
         // No input yet, stop for now.
         return undefined;
@@ -234,7 +234,7 @@ export default class ScenarioStep {
           result.investigatorChoices,
           {
             type: 'universal',
-            choices: result.options
+            choices: result.options,
           }
         );
         return this.maybeCreateEffectsStep(
@@ -348,7 +348,7 @@ export default class ScenarioStep {
           effectsWithInput
         );
       }
-      case 'scenario_investigators':
+      case 'scenario_investigators': {
         const choices = scenarioState.choiceList(step.id);
         if (choices === undefined) {
           return undefined;
@@ -375,6 +375,7 @@ export default class ScenarioStep {
           this.remainingStepIds,
           [effectsWithInput]
         );
+      }
       case 'investigator_choice_supplies': {
         const choice = scenarioState.choiceList(this.step.id);
         if (choice === undefined) {
@@ -447,7 +448,7 @@ export default class ScenarioStep {
           choices,
           {
             type: 'universal',
-            choices: input.choices
+            choices: input.choices,
           }
         );
         return this.maybeCreateEffectsStep(

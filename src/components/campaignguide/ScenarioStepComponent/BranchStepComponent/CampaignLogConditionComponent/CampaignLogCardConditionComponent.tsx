@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet } from 'react-native'
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryPrompt from '../../../prompts/BinaryPrompt';
 import BinaryResult from '../../../BinaryResult';
 import SingleCardWrapper from '../../../SingleCardWrapper';
 import { LogEntryCard } from 'data/scenario/CampaignGuide';
@@ -48,14 +46,3 @@ export default class CampaignLogCardConditionComponent extends React.Component<P
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 8,
-    paddingLeft: 16,
-    paddingRight: 32,
-  },
-  underline: {
-    textDecorationLine: 'underline',
-  },
-});

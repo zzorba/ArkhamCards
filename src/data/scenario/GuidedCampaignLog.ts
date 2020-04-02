@@ -6,7 +6,6 @@ import {
   forEach,
   keys,
   map,
-  range,
   sumBy,
   uniq,
   zip,
@@ -79,8 +78,8 @@ interface CountSection {
 }
 
 interface PlayingScenarioItem {
-  investigator: string,
-  deckId: number
+  investigator: string;
+  deckId: number;
 }
 interface ScenarioData {
   resolution?: string;
@@ -306,7 +305,8 @@ export default class GuidedCampaignLog {
             ),
           };
         }
-    });
+      }
+    );
   }
 
   private handleRemoveCardEffect(
@@ -329,7 +329,8 @@ export default class GuidedCampaignLog {
             };
           }
         }
-    });
+      }
+    );
   }
 
   private handleTraumaEffect(
@@ -624,9 +625,10 @@ export default class GuidedCampaignLog {
                         cards.push({
                           card,
                           count: number,
-                        })
+                        });
                       }
-                    });
+                    }
+                  );
                 } else {
                   forEach(input || [],
                     card => cards.push({
@@ -689,21 +691,17 @@ export default class GuidedCampaignLog {
 
   hasPhysicalTrauma(investigator: string): boolean {
     const investigatorData = this.campaignData.investigatorData[investigator];
-    return !!(investigatorData &&
-      (investigatorData.physical || 0 > 0)
-    );
+    return !!(investigatorData && (investigatorData.physical || 0) > 0);
   }
 
   hasMentalTrauma(investigator: string): boolean {
     const investigatorData = this.campaignData.investigatorData[investigator];
-    return !!(investigatorData &&
-      (investigatorData.mental || 0 > 0)
-    );
+    return !!(investigatorData && (investigatorData.mental || 0) > 0);
   }
 
   isDefeated(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
-    return status === 'physical' || status === 'mental' || status == 'eliminated';
+    return status === 'physical' || status === 'mental' || status === 'eliminated';
   }
 
   hasCard(investigator: string, card: string): boolean {
@@ -808,7 +806,7 @@ export default class GuidedCampaignLog {
         investigator: allInvestigators[investigator],
         deck: allDecks[deckId] || undefined,
       };
-    })
+    });
   }
 
   count(sectionId: string, id: string): number {

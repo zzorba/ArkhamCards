@@ -2,13 +2,12 @@ import React from 'react';
 import { keys } from 'lodash';
 
 import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
 import ChooseInvestigatorPrompt from 'components/campaignguide/prompts/ChooseInvestigatorPrompt';
 import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
 import { InputStep, InvestigatorChoiceInput } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { InvestigatorDeck } from 'data/scenario';
 import { investigatorChoiceInputChoices } from 'data/scenario/inputHelper';
 
 interface Props {
@@ -39,13 +38,13 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
         <>
           { !!step.text && (
             <SetupStepWrapper>
-              <CardTextComponent text={step.text} />
+              <CampaignGuideTextComponent text={step.text} />
             </SetupStepWrapper>
           ) }
           <InvestigatorCheckListComponent
             id={step.id}
             checkText={input.choices[0].text}
-            investigators={choices.type === 'personalized' ? keys(choices.perCode) : undefined }
+            investigators={choices.type === 'personalized' ? keys(choices.perCode) : undefined}
             min={input.investigator === 'choice' ? 1 : 0}
             max={4}
           />

@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
-import { every, find } from 'lodash';
 import { msgid, ngettext, t } from 'ttag';
 
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
-import BinaryPrompt from '../../prompts/BinaryPrompt';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
-import Card from 'data/Card';
 import {
   BranchStep,
   CampaignLogCountCondition,
@@ -62,7 +55,7 @@ export default class CampaignLogCountConditionComponent extends React.Component<
           const count = campaignLog.count(condition.section, condition.id);
           return (
             <SetupStepWrapper bulletType={step.bullet_type}>
-              <CardTextComponent
+              <CampaignGuideTextComponent
                 text={step.text || this.getPrompt(campaignGuide, count)}
               />
             </SetupStepWrapper>

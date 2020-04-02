@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { findIndex, flatMap, forEach, map } from 'lodash';
 
 import CardQueryWrapper from './CardQueryWrapper';
@@ -29,7 +29,7 @@ export default class InvestigatorResultConditionWrapper<T> extends React.Compone
             if (findIndex(choices, idx => idx === index) !== -1) {
               investigators.push(code);
             }
-          })
+          });
           if (!investigators.length) {
             return null;
           }

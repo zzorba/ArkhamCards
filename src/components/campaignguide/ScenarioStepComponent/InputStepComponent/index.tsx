@@ -8,7 +8,7 @@ import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWi
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
 import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
 import UseSuppliesPrompt from 'components/campaignguide/prompts/UseSuppliesPrompt';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
 import CardChoicePrompt from 'components/campaignguide/prompts/CardChoicePrompt';
 import InvestigatorCounterComponent from 'components/campaignguide/prompts/InvestigatorCounterComponent';
@@ -16,7 +16,6 @@ import ChooseOnePrompt from 'components/campaignguide/prompts/ChooseOnePrompt';
 import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
 import NumberPrompt from 'components/campaignguide/prompts/NumberPrompt';
 import SuppliesPrompt from 'components/campaignguide/prompts/SuppliesPrompt';
-import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
 import { InputStep } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
@@ -69,7 +68,7 @@ export default class InputStepComponent extends React.Component<Props> {
         return (
           <>
             <SetupStepWrapper bulletType={step.bullet_type}>
-              { !!step.text && <CardTextComponent text={step.text} /> }
+              { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
             </SetupStepWrapper>
             <InvestigatorCounterComponent
               id={step.id}
@@ -123,7 +122,7 @@ export default class InputStepComponent extends React.Component<Props> {
           <>
             { !!step.text && (
               <SetupStepWrapper>
-                <CardTextComponent text={step.text} />
+                <CampaignGuideTextComponent text={step.text} />
               </SetupStepWrapper>
             ) }
             <InvestigatorCheckListComponent
@@ -136,7 +135,7 @@ export default class InputStepComponent extends React.Component<Props> {
             />
           </>
         );
-      }
+    }
   }
 
   render() {

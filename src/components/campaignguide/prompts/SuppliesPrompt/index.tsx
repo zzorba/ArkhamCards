@@ -7,7 +7,7 @@ import InvestigatorNameRow from '../InvestigatorNameRow';
 import SupplyComponent from './SupplyComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType, Supply, SuppliesInput } from 'data/scenario/types';
 
 interface Props {
@@ -94,7 +94,7 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CardTextComponent text={text} /> }
+                { !!text && <CampaignGuideTextComponent text={text} /> }
               </SetupStepWrapper>
               { map(investigatorDecks, ({ investigator }, idx) => {
                 const counts = supplyCounts[investigator.code] || {};

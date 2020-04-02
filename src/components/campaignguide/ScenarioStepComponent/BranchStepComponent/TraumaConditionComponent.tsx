@@ -1,5 +1,4 @@
 import React from 'react';
-import { find } from 'lodash';
 import { t } from 'ttag';
 
 import BinaryResult from '../../BinaryResult';

@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { find } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import BinaryPrompt from '../../prompts/BinaryPrompt';
@@ -29,10 +29,11 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
         const playerCount = campaignLog.playerCount();
         return (
           <SetupStepWrapper bulletType={step.bullet_type}>
-            <CardTextComponent text={step.text ||
-              ngettext(msgid`Because there is ${playerCount} player in the game:`,
-                `Because there are ${playerCount} players in the game:`,
-                playerCount)
+            <CampaignGuideTextComponent
+              text={step.text ||
+                ngettext(msgid`Because there is ${playerCount} player in the game:`,
+                  `Because there are ${playerCount} players in the game:`,
+                  playerCount)
               }
             />
           </SetupStepWrapper>

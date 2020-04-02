@@ -77,16 +77,16 @@ export default class EffectsStepComponent extends React.Component<Props> {
         return (
           <ScenarioGuideContext.Consumer>
             { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => (
-            map(
-              scenarioGuide.expandSteps(effect.steps, scenarioState, this.props.campaignLog),
-              step => <ScenarioStepComponent key={step.step.id} step={step} />
-            )) }
+              map(
+                scenarioGuide.expandSteps(effect.steps, scenarioState, this.props.campaignLog),
+                step => <ScenarioStepComponent key={step.step.id} step={step} />
+              ))
+            }
           </ScenarioGuideContext.Consumer>
         );
       }
       case 'earn_xp':
       case 'campaign_data':
-      case 'remove_card':
       case 'replace_card':
       case 'scenario_data':
       default: {
@@ -103,12 +103,11 @@ export default class EffectsStepComponent extends React.Component<Props> {
         { map(effectsWithInput.effects, (effect, innerIdx) => (
           <View key={`${step.id}_${outerIdx}_${innerIdx}`}>
             { this.renderEffect(
-                step.id,
-                effect,
-                effectsWithInput.input,
-                effectsWithInput.numberInput
-              )
-            }
+              step.id,
+              effect,
+              effectsWithInput.input,
+              effectsWithInput.numberInput
+            ) }
           </View>
         )) }
       </View>

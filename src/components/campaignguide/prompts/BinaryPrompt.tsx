@@ -6,7 +6,7 @@ import { t } from 'ttag';
 
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { DisplayChoice } from 'data/scenario';
 import { BulletType } from 'data/scenario/types';
 import BinaryResult from '../BinaryResult';
@@ -46,7 +46,7 @@ export default class BinaryPrompt extends React.Component<Props> {
           return decision === undefined ? (
             <>
               <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CardTextComponent text={text} /> }
+                { !!text && <CampaignGuideTextComponent text={text} /> }
               </SetupStepWrapper>
               <Button title={t`Yes`} onPress={this._yes} />
               <Button title={t`No`} onPress={this._no} />

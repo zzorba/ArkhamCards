@@ -6,9 +6,9 @@ import { t } from 'ttag';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorCheckListComponent from '../InvestigatorCheckListComponent';
 import InvestigatorCounterComponent from '../InvestigatorCounterComponent';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import { BulletType, UseSuppliesInput, UseSuppliesAllInput, UseSuppliesChoiceInput } from 'data/scenario/types';
+import { BulletType, UseSuppliesInput, UseSuppliesAllInput } from 'data/scenario/types';
 import { InvestigatorDeck } from 'data/scenario';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
@@ -131,7 +131,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
               return (
                 <>
                   <SetupStepWrapper>
-                    { !!text && <CardTextComponent text={text} /> }
+                    { !!text && <CampaignGuideTextComponent text={text} /> }
                   </SetupStepWrapper>
                   { this.renderFirstAllPrompt(input) }
                   { this.renderSecondAllPrompt(input, scenarioState) }
@@ -142,7 +142,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
               return (
                 <>
                   <SetupStepWrapper>
-                    { !!text && <CardTextComponent text={text} /> }
+                    { !!text && <CampaignGuideTextComponent text={text} /> }
                   </SetupStepWrapper>
                   <InvestigatorCheckListComponent
                     id={id}
@@ -161,16 +161,6 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-  investigatorText: {
-    color: '#FFF',
-    fontWeight: '700',
-  },
-  investigatorRow: {
-    padding: 8,
-    paddingLeft: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   rightPadding: {
     paddingRight: 16,
   },

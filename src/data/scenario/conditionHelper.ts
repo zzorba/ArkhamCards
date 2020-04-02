@@ -1,6 +1,5 @@
 import {
   every,
-  keys,
   find,
   findIndex,
   forEach,
@@ -29,25 +28,25 @@ import {
 import GuidedCampaignLog from './GuidedCampaignLog';
 
 interface BinaryResult {
-  type: 'binary',
+  type: 'binary';
   decision: boolean;
   option?: Option;
 }
 
 interface NumberResult {
-  type: 'number',
+  type: 'number';
   number: number;
   option?: Option;
 }
 
 interface StringResult {
-  type: 'string',
+  type: 'string';
   string: string;
   option?: Option;
 }
 
 export interface InvestigatorResult {
-  type: 'investigator',
+  type: 'investigator';
   investigatorChoices: ListChoices;
   options: Option[];
 }
@@ -200,8 +199,8 @@ export function campaignLogConditionResult(
 ): BinaryResult {
   return binaryConditionResult(
     condition.type === 'campaign_log' ?
-        campaignLog.check(condition.section, condition.id) :
-        campaignLog.sectionExists(condition.section),
+      campaignLog.check(condition.section, condition.id) :
+      campaignLog.sectionExists(condition.section),
     condition.options
   );
 }
@@ -319,7 +318,7 @@ export function conditionResult(
 ): ConditionResult {
   switch (condition.type) {
     case 'check_supplies': {
-      return checkSuppliesConditionResult(condition, campaignLog)
+      return checkSuppliesConditionResult(condition, campaignLog);
     }
     case 'campaign_log_section_exists':
     case 'campaign_log':
@@ -403,7 +402,7 @@ export function conditionResult(
           );
         }
         case 'investigator_status': {
-          if (condition.investigator !== 'defeated')  {
+          if (condition.investigator !== 'defeated') {
             throw new Error('Unexpected investigator_status scenario condition');
           }
           const investigators = campaignLog.investigatorCodes();
@@ -417,9 +416,8 @@ export function conditionResult(
         }
       }
     }
-    case 'has_card': {
+    case 'has_card':
       return hasCardConditionResult(condition, campaignLog);
-    }
     case 'trauma':
       return killedTraumaConditionResult(condition, campaignLog);
   }

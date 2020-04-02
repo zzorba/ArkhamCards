@@ -58,7 +58,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
         { this.renderBullet() }
         <View style={[
           styles.mainText,
-          bulletType === 'right' ? styles.right : {}
+          bulletType === 'right' ? styles.right : {},
         ]}>
           { children }
         </View>

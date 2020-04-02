@@ -5,8 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import ResultIndicatorIcon from '../../ResultIndicatorIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from 'data/scenario';
 
 interface Props {
@@ -51,14 +50,14 @@ export default class ChoiceComponent extends React.Component<Props> {
             </View>
           ) }
           <View style={styles.textBlock}>
-            { choice.flavor && <CardFlavorTextComponent text={choice.flavor} color="#222" /> }
-            { choice.text && <CardTextComponent text={choice.text} /> }
-            { choice.description && <CardTextComponent text={choice.description} /> }
+            { choice.flavor && <CampaignGuideTextComponent flavor text={choice.flavor} /> }
+            { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
+            { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
           </View>
           { editable && (
             <View style={styles.arrow}>
               <MaterialCommunityIcons
-                name={ selected ? 'radiobox-marked' : 'radiobox-blank'}
+                name={selected ? 'radiobox-marked' : 'radiobox-blank'}
                 size={30}
                 color={buttonColor || 'rgb(0, 122,255)'}
               />
@@ -68,7 +67,7 @@ export default class ChoiceComponent extends React.Component<Props> {
         { !editable && (
           <ResultIndicatorIcon
             result={selected}
-            noBorder 
+            noBorder
           />
         ) }
       </View>
@@ -95,6 +94,7 @@ const styles = StyleSheet.create({
   },
   row: {
     borderBottomWidth: 1,
+    borderColor: '#888',
     flexDirection: 'row',
   },
   padding: {

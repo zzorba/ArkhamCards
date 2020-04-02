@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
 import SingleCardWrapper from '../../SingleCardWrapper';
@@ -59,8 +59,5 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingLeft: 16,
     paddingRight: 32,
-  },
-  underline: {
-    textDecorationLine: 'underline',
   },
 });

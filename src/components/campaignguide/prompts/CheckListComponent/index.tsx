@@ -7,7 +7,7 @@ import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { ListChoices } from 'actions/types';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
 
@@ -104,7 +104,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
       );
     }
     const { selectedChoice } = this.state;
-    const currentTotal = sum(map(selectedChoice, choice => (choice !== undefined && choice !== -1) ? 1 : 0))
+    const currentTotal = sum(map(selectedChoice, choice => (choice !== undefined && choice !== -1) ? 1 : 0));
     const hasMin = (min === undefined || currentTotal >= min);
     const hasMax = (max === undefined || currentTotal <= max);
     const enabled = hasMin && hasMax;
@@ -128,13 +128,13 @@ export default class CheckListComponent extends React.Component<Props, State> {
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const choiceList = scenarioState.choiceList(id)
+          const choiceList = scenarioState.choiceList(id);
           const hasDecision = choiceList !== undefined;
           return (
             <>
               { !!text && (
                 <SetupStepWrapper bulletType={bulletType}>
-                  <CardTextComponent text={text} />
+                  <CampaignGuideTextComponent text={text} />
                 </SetupStepWrapper>
               ) }
               <View style={styles.prompt}>
@@ -164,7 +164,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
                     { t`None` }
                   </Text>
                 </View>
-              )}
+              ) }
               { this.renderSaveButton(hasDecision) }
             </>
           );

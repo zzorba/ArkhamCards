@@ -8,7 +8,7 @@ import {
 
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { BulletType, Effect, Option } from 'data/scenario/types';
 import typography from 'styles/typography';
@@ -80,7 +80,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
     return (
       <View style={styles.promptRow}>
         <View style={styles.text}>
-          <CardTextComponent text={prompt} />
+          <CampaignGuideTextComponent text={prompt} />
         </View>
         { count !== undefined ? (
           this.renderCount(count)
@@ -108,7 +108,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
             <View style={styles.wrapper}>
               { !!text && (
                 <SetupStepWrapper bulletType={bulletType}>
-                  <CardTextComponent text={text} />
+                  <CampaignGuideTextComponent text={text} />
                 </SetupStepWrapper>
               ) }
               <SetupStepWrapper
@@ -124,7 +124,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
               </SetupStepWrapper>
               { count !== undefined && !!confirmText && (
                 <SetupStepWrapper bulletType="small">
-                  <CardTextComponent text={confirmText} />
+                  <CampaignGuideTextComponent text={confirmText} />
                 </SetupStepWrapper>
               ) }
             </View>

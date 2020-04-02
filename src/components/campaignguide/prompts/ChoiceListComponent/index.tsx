@@ -7,9 +7,9 @@ import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { ListChoices } from 'actions/types';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
-import { DisplayChoice, Choices } from 'data/scenario';
+import { Choices } from 'data/scenario';
 
 export interface ListItem {
   code: string;
@@ -170,7 +170,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CardTextComponent text={text} /> }
+                { !!text && <CampaignGuideTextComponent text={text} /> }
               </SetupStepWrapper>
               { this.renderChoices(inputChoiceList) }
               { this.renderSaveButton(inputChoiceList !== undefined) }

@@ -9,7 +9,7 @@ import SingleCardWrapper from '../../SingleCardWrapper';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import Card from 'data/Card';
 import { CampaignLogEffect, BulletType } from 'data/scenario/types';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 
 interface Props {
   effect: CampaignLogEffect;
@@ -39,7 +39,7 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
                   t`In your Campaign Log, record that <i>${logEntry.text}</i>` :
                   t`In your Campaign Log, under "${logEntry.section}", record that <i>${logEntry.text}</i>`;
                 return (
-                  <CardTextComponent text={text} />
+                  <CampaignGuideTextComponent text={text} />
                 );
               }
               case 'card': {
@@ -47,7 +47,7 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
                   <SingleCardWrapper
                     code={logEntry.code}
                     render={(card: Card) => (
-                      <CardTextComponent
+                      <CampaignGuideTextComponent
                         text={t`In your Campaign Log, under "${logEntry.section}", record ${card.name}. `}
                       />
                     )}

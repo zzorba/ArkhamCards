@@ -8,7 +8,7 @@ import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import { InvestigatorDeck } from 'data/scenario';
 import { AddCardEffect } from 'data/scenario/types';
 import Card from 'data/Card';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 
 interface Props {
   id: string;
@@ -24,7 +24,7 @@ export default class AddCardEffectComponent extends React.Component<Props> {
   ) => {
     return map(investigatorDecks, ({ investigator }, idx) => (
       <SetupStepWrapper bulletType="small" key={idx}>
-        <CardTextComponent
+        <CampaignGuideTextComponent
           text={`${investigator.name} earned ${card.name}`}
         />
       </SetupStepWrapper>
@@ -50,6 +50,6 @@ export default class AddCardEffectComponent extends React.Component<Props> {
         code={this.props.effect.card}
         render={this._renderCard}
       />
-    )
+    );
   }
 }

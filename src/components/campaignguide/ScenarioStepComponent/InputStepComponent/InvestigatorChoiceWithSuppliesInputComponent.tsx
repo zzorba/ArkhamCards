@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { find, forEach, map, upperFirst } from 'lodash';
-import { msgid, ngettext, t } from 'ttag';
+import { View } from 'react-native';
+import { find } from 'lodash';
+import { t } from 'ttag';
 
 import ChooseInvestigatorPrompt from '../../prompts/ChooseInvestigatorPrompt';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { InvestigatorDeck } from 'data/scenario';
 import Card from 'data/Card';
 import {
@@ -49,7 +49,7 @@ export default class InvestigatorChoiceWithSuppliesInputComponent extends React.
     const option = decision ? input.positiveChoice : input.negativeChoice;
     return (
       <SetupStepWrapper bulletType="small">
-        <CardTextComponent text={`${investigator.name} reads <b>${option.text}</b>`} />
+        <CampaignGuideTextComponent text={`${investigator.name} reads <b>${option.text}</b>`} />
       </SetupStepWrapper>
     );
   };
@@ -59,7 +59,7 @@ export default class InvestigatorChoiceWithSuppliesInputComponent extends React.
     return (
       <View>
         <SetupStepWrapper>
-          { !!step.text && <CardTextComponent text={step.text} /> }
+          { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
         </SetupStepWrapper>
         <ChooseInvestigatorPrompt
           id={step.id}

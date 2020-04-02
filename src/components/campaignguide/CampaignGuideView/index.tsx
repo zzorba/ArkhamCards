@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { map } from 'lodash';
 
 import CampaignLogComponent from './CampaignLogComponent';
@@ -65,8 +60,3 @@ export default withDimensions(
     CampaignGuideView
   )
 );
-
-const styles = StyleSheet.create({
-  margin: {
-  },
-});

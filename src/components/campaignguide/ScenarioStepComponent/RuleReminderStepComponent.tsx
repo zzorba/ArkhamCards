@@ -6,7 +6,7 @@ import {
 import SetupStepWrapper from '../SetupStepWrapper';
 import BulletsComponent from './BulletsComponent';
 import { RuleReminderStep } from 'data/scenario/types';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import typography from 'styles/typography';
 
 interface Props {
@@ -23,9 +23,9 @@ export default class GenericStepComponent extends React.Component<Props> {
             { step.title }
           </Text>
         ) }
-        <CardTextComponent text={step.text.replace(/\n/g, '\n\n')} />
+        <CampaignGuideTextComponent text={step.text.replace(/\n/g, '\n\n')} />
         <BulletsComponent bullets={step.bullets} />
-        { !!step.example && <CardTextComponent text={step.example} /> }
+        { !!step.example && <CampaignGuideTextComponent text={step.example} /> }
       </SetupStepWrapper>
     );
   }

@@ -1,12 +1,12 @@
 import React from 'react';
-import { every, map } from 'lodash';
+import { map } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import Card from 'data/Card';
 import {
   BranchStep,
@@ -41,14 +41,13 @@ export default class HasCardConditionComponent extends React.Component<Props> {
 
   _renderInvestigators = (
     investigatorCards: Card[],
-    option: Option,
-    card: Card
+    option: Option
   ): React.ReactNode => {
     const investigators = stringList(map(investigatorCards, card => card.name));
     const prompt = option && option.condition;
     return (
       <SetupStepWrapper>
-        <CardTextComponent
+        <CampaignGuideTextComponent
           text={ngettext(
             msgid`${investigators} must read <b>${prompt}</b>.`,
             `${investigators} must read <b>${prompt}</b>.`,

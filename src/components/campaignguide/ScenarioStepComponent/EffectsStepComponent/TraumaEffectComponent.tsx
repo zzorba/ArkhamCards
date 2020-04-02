@@ -8,7 +8,7 @@ import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
 import Card from 'data/Card';
 import { InvestigatorDeck } from 'data/scenario';
 import { TraumaEffect } from 'data/scenario/types';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 
 interface Props {
   id: string;
@@ -60,7 +60,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       return (
         <>
           <SetupStepWrapper bulletType="right">
-            <CardTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
+            <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
           </SetupStepWrapper>
           <InvestigatorChoicePrompt
             id={`${id}_trauma`}
@@ -80,7 +80,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
     return (
       <SetupStepWrapper bulletType="small">
         { map(investigatorDecks, ({ investigator }, idx) => (
-          <CardTextComponent
+          <CampaignGuideTextComponent
             key={idx}
             text={this.message(investigator)}
           />

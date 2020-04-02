@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import ResultIndicatorIcon from './ResultIndicatorIcon';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import SetupStepWrapper from './SetupStepWrapper';
 import { BulletType } from 'data/scenario/types';
 
@@ -13,7 +13,7 @@ interface Props {
   bulletType?: BulletType;
   prompt?: string;
   result: boolean;
-  noBorder?: boolean
+  noBorder?: boolean;
 }
 
 export default function BinaryResult({ bulletType, prompt, result, noBorder }: Props) {
@@ -21,12 +21,12 @@ export default function BinaryResult({ bulletType, prompt, result, noBorder }: P
     <View style={styles.row}>
       <View style={styles.step}>
         <SetupStepWrapper bulletType={bulletType}>
-          { !!prompt && <CardTextComponent text={prompt} /> }
+          { !!prompt && <CampaignGuideTextComponent text={prompt} /> }
         </SetupStepWrapper>
       </View>
       <ResultIndicatorIcon result={result} noBorder={noBorder} />
     </View>
-  )
+  );
 }
 const styles = StyleSheet.create({
   row: {

@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import { isSpecialToken } from 'constants';
 import { AddRemoveChaosTokenEffect } from 'data/scenario/types';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
 
 interface Props {
@@ -22,7 +22,7 @@ export default class ChaosTokenEffectComponent extends React.Component<Props> {
       t`Remove ${tokenString} from the Chaos Bag`;
     return (
       <SetupStepWrapper bulletType="small">
-        <CardTextComponent text={text} />
+        <CampaignGuideTextComponent text={text} />
       </SetupStepWrapper>
     );
   }

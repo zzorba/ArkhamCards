@@ -1,13 +1,11 @@
-
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
-import { upperFirst, map } from 'lodash';
+import { Text, View } from 'react-native';
+import { map } from 'lodash';
 
 import CampaignLogCardEntryComponent from './CampaignLogCardEntryComponent';
 import TextEntryComponent from './TextEntryComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import { EntrySection, CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
-import typography from 'styles/typography';
 
 interface Props {
   sectionId: string;
@@ -73,6 +71,7 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
         return (
           <CampaignLogCardEntryComponent
             code={logEntry.code}
+            count={1}
             entry={entry}
             crossedOut={crossedOut}
           />
@@ -86,15 +85,6 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
       <View key={`${entry.id}_${idx}`}>
         { this.renderEntry(entry) }
       </View>
-    ))
+    ));
   }
 }
-
-const styles = StyleSheet.create({
-  text: {
-    marginBottom: 8,
-  },
-  crossedOut: {
-    textDecorationLine: 'line-through',
-  },
-});

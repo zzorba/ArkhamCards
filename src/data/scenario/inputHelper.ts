@@ -58,7 +58,7 @@ export function investigatorChoiceInputChoices(
               if (indexes.length) {
                 result[code] = [
                   ...(result[code] || []),
-                  idx
+                  idx,
                 ];
               }
             }

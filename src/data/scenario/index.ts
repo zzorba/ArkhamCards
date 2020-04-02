@@ -1,10 +1,9 @@
 import { find } from 'lodash';
 
-import { ListChoices } from 'actions/types';
+import { Deck, ListChoices } from 'actions/types';
 import { FullCampaign, Effect } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
 import Card from 'data/Card';
-import { Deck } from 'actions/types';
 
 export interface InvestigatorDeck {
   investigator: Card;

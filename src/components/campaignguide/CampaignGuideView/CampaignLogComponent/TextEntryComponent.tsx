@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
-import { upperFirst, map } from 'lodash';
+import { StyleSheet, Text } from 'react-native';
+import { upperFirst } from 'lodash';
 
 import { CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';

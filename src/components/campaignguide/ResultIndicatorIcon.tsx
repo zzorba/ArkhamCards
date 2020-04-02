@@ -10,7 +10,7 @@ import { COLORS } from 'styles/colors';
 
 interface Props {
   result: boolean;
-  noBorder?: boolean
+  noBorder?: boolean;
 }
 
 export default function ResultIndicatorIcon({ result, noBorder }: Props) {
@@ -22,12 +22,9 @@ export default function ResultIndicatorIcon({ result, noBorder }: Props) {
         color={COLORS.white}
       />
     </View>
-  )
+  );
 }
 const styles = StyleSheet.create({
-  step: {
-    flex: 1,
-  },
   icon: {
     padding: 4,
     paddingLeft: 16,

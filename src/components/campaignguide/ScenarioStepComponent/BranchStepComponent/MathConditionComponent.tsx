@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
-import { find } from 'lodash';
-import { ngettext, msgid, t } from 'ttag';
 
 import BinaryResult from '../../BinaryResult';
-import CardTextComponent from 'components/card/CardTextComponent';
-import SetupStepWrapper from '../../SetupStepWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
-import BinaryPrompt from '../../prompts/BinaryPrompt';
-import Card from 'data/Card';
 import {
   BranchStep,
   MathCondition,

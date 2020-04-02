@@ -7,8 +7,7 @@ import {
 
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from 'data/scenario/types';
 import typography from 'styles/typography';
 
@@ -30,9 +29,9 @@ export default class ResolutionStepComponent extends React.Component<Props> {
             <>
               { !!step.text && (
                 <SetupStepWrapper>
-                  <CardTextComponent text={step.text} />
+                  <CampaignGuideTextComponent text={step.text} />
                 </SetupStepWrapper>
-              )}
+              ) }
               { (!!resolution.text || resolution.steps.length > 0) && (
                 <View style={styles.step}>
                   <View style={styles.wrapper}>
@@ -42,9 +41,9 @@ export default class ResolutionStepComponent extends React.Component<Props> {
                   </View>
                   { !!resolution.text && (
                     <View style={styles.wrapper}>
-                      <CardFlavorTextComponent
+                      <CampaignGuideTextComponent
                         text={resolution.text.replace(/\n/g, '\n\n')}
-                        color="#222"
+                        flavor
                       />
                     </View>
                   ) }

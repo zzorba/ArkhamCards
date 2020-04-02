@@ -2,12 +2,11 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
-import { find, upperFirst } from 'lodash';
+import { upperFirst } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryPrompt from '../../prompts/BinaryPrompt';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import {
   BranchStep,
@@ -38,7 +37,7 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
               const difficulty = upperFirst(campaignLog.campaignData.difficulty);
               return (
                 <SetupStepWrapper bulletType={step.bullet_type}>
-                  <CardTextComponent
+                  <CampaignGuideTextComponent
                     text={t`Because you are playing on <b>${difficulty}</b> difficulty:`}
                   />
                 </SetupStepWrapper>
@@ -51,7 +50,7 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
               const completed = campaignLog.scenarioStatus(condition.scenario) === 'completed';
               return (
                 <SetupStepWrapper bulletType={step.bullet_type}>
-                  <CardTextComponent text={completed ?
+                  <CampaignGuideTextComponent text={completed ?
                     t`Because you have already completed <b>${scenarioName}</b>:` :
                     t`Because you have not yet completed <b>${scenarioName}</b>:`
                   } />

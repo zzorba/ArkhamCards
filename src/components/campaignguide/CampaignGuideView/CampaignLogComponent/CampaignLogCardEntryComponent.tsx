@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native'
 
 import TextEntryComponent from './TextEntryComponent';
 import SingleCardWrapper from '../../SingleCardWrapper';
@@ -36,14 +35,3 @@ export default class CampaignLogCardEntryComponent extends React.Component<Props
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 8,
-    paddingLeft: 16,
-    paddingRight: 32,
-  },
-  underline: {
-    textDecorationLine: 'underline',
-  },
-});

@@ -6,7 +6,7 @@ import PickerComponent from '../PickerComponent';
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType, ChooseOneInput } from 'data/scenario/types';
 import { chooseOneInputChoices } from 'data/scenario/inputHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
@@ -64,7 +64,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
               ) : (
                 <>
                   <SetupStepWrapper bulletType={bulletType}>
-                    <CardTextComponent
+                    <CampaignGuideTextComponent
                       text={text || t`The investigators must decide (choose one)`}
                     />
                   </SetupStepWrapper>

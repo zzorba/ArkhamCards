@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { forEach } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 
@@ -8,7 +7,7 @@ import Card from 'data/Card';
 interface OwnProps<T> {
   query: string;
   render: (cards: Card[], extraArg: T) => React.ReactNode;
-  extraArg: T
+  extraArg: T;
 }
 
 interface RealmProps {

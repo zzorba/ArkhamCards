@@ -1,13 +1,12 @@
 import React from 'react';
-import { find, forEach, map } from 'lodash';
+import { find, map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
 import { stringList } from 'lib/stringHelper';
-import CardQueryWrapper from '../../CardQueryWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import Card from 'data/Card';
 import {
   BranchStep,
@@ -35,7 +34,7 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
     const list = stringList(map(cards, card => card.name));
     return (
       <SetupStepWrapper bulletType="small">
-        <CardTextComponent
+        <CampaignGuideTextComponent
           text={positive ?
             ngettext(
               msgid`Since ${list} has a ${supplyName}, they must read <b>${sectionName}</b>.`,
@@ -85,11 +84,12 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
         return (
           <>
             <SetupStepWrapper>
-              { !!step.text && <CardTextComponent text={step.text} /> }
+              { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
             </SetupStepWrapper>
             <InvestigatorResultConditionWrapper
               result={result}
               renderOption={this._renderAllOption}
+              extraArg={undefined}
             />
           </>
         );

@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 import BulletsComponent from './BulletsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { GenericStep } from 'data/scenario/types';
-import CardTextComponent from 'components/card/CardTextComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import typography from 'styles/typography';
 
 interface Props {
@@ -25,7 +25,7 @@ export default class GenericStepComponent extends React.Component<Props> {
           </Text>
         ) }
         { !!step.text && (
-          <CardTextComponent text={step.text} />
+          <CampaignGuideTextComponent text={step.text} />
         ) }
         <BulletsComponent bullets={step.bullets} />
       </SetupStepWrapper>

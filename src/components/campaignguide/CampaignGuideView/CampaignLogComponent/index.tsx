@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -31,7 +31,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
             </Text>
           </View>
         );
-      };
+      }
       case 'supplies': {
         const section = campaignLog.investigatorSections[id];
         if (!section) {
@@ -74,7 +74,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
 
   _renderStoryAsset = (card: Card) => {
     return (
-      <Text>{card.name}</Text>
+      <Text>{ card.name }</Text>
     );
   };
 
@@ -89,7 +89,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
         <Text>
           Story Assets:
         </Text>
-        {map(investigatorData && investigatorData.storyAssets || [], asset => (
+        { map(investigatorData && investigatorData.storyAssets || [], asset => (
           <SingleCardWrapper
             key={`${card.code}_${asset}`}
             code={asset}
