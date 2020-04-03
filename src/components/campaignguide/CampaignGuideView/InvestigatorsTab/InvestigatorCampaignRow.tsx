@@ -63,7 +63,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         <CardSectionHeader
           investigator={investigator}
           fontScale={fontScale}
-          section={{ superTitle: t`Story Cards`}}
+          section={{ superTitle: t`Campaign cards`}}
         />
         { map(traumaAndCardData.storyAssets, asset => (
           <SingleCardWrapper
