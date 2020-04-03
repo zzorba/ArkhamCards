@@ -2,9 +2,10 @@ import React from 'react';
 import { Text } from 'react-native';
 import { t } from 'ttag';
 
-import TabView from 'components/core/TabView';
+import InvestigatorsTab from './InvestigatorsTab';
 import CampaignLogTab from './CampaignLogTab';
 import ScenarioListTab from './ScenarioListTab';
+import TabView from 'components/core/TabView';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { CampaignGuideContextType } from '../CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '../withCampaignGuideContext';
@@ -34,6 +35,17 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     }
     const processedCampaign = campaignGuide.processAllScenarios(campaignState);
     const tabs = [
+      {
+        key: 'investigators',
+        title: t`Investigators`,
+        node: (
+          <InvestigatorsTab
+            fontScale={fontScale}
+            campaign={campaign}
+            campaignLog={processedCampaign.campaignLog}
+          />
+        ),
+      },
       {
         key: 'scenarios',
         title: t`Scenarios`,

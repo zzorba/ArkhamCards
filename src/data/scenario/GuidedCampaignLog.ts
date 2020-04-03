@@ -683,6 +683,10 @@ export default class GuidedCampaignLog {
     return scenario.leadInvestigator;
   }
 
+  traumaAndCardData(investigator: string): TraumaAndCardData {
+    return this.campaignData.investigatorData[investigator] || {};
+  }
+
   isKilled(investigator: string): boolean {
     const investigatorData = this.campaignData.investigatorData[investigator];
     // TODO: handle physical-trauma == health.

@@ -96,6 +96,7 @@ export default class ScenarioGuide {
 
     const lastStep = last(steps);
     if (!lastStep) {
+      // Every scenario has at least one step.
       return {
         steps,
         inProgress: true,

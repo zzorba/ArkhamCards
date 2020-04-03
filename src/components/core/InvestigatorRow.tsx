@@ -17,6 +17,8 @@ import typography from 'styles/typography';
 
 interface Props {
   investigator: Card;
+  eliminated?: boolean;
+  detail?: React.ReactNode;
   onPress?: (card: Card) => void;
   onRemove?: (card: Card) => void;
 }
@@ -43,12 +45,15 @@ export default class InvestigatorRow extends React.Component<Props> {
     const {
       investigator,
       onRemove,
+      detail,
+      eliminated,
     } = this.props;
     return (
       <View style={styles.row}>
         <View style={styles.image}>
           <InvestigatorImage
             card={investigator}
+            killedOrInsane={eliminated}
             small
             border
           />
@@ -57,6 +62,7 @@ export default class InvestigatorRow extends React.Component<Props> {
           <Text style={[typography.bigGameFont, { color: '#222' }]}>
             { investigator.name }
           </Text>
+          { !!detail && detail }
         </View>
         <View style={styles.icon}>
           { !onRemove && (

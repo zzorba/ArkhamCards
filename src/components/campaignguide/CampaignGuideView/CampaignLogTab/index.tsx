@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -103,7 +103,7 @@ export default class CampaignLogTab extends React.Component<Props> {
   render() {
     const { campaignGuide, campaignLog, fontScale } = this.props;
     return (
-      <View>
+      <ScrollView>
         <View style={styles.section}>
           <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
             { t`Chaos Bag` }
@@ -130,7 +130,7 @@ export default class CampaignLogTab extends React.Component<Props> {
             </View>
           );
         }) }
-      </View>
+      </ScrollView>
     );
   }
 }
