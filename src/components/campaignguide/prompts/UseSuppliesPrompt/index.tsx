@@ -9,7 +9,7 @@ import InvestigatorCounterComponent from '../InvestigatorCounterComponent';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import { BulletType, UseSuppliesInput, UseSuppliesAllInput } from 'data/scenario/types';
-import { InvestigatorDeck } from 'data/scenario';
+import Card from 'data/Card';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import typography from 'styles/typography';
@@ -115,7 +115,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     );
   }
 
-  _filterInvestigatorChoice = ({ investigator }: InvestigatorDeck) => {
+  _filterInvestigatorChoice = (investigator: Card) => {
     const limits = this.supplyLimits();
     const count = limits[investigator.code] || 0;
     return count > 0;

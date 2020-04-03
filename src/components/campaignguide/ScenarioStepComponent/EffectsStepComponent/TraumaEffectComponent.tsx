@@ -50,7 +50,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
   }
 
   _renderInvestigators = (
-    investigatorDecks: InvestigatorDeck[]
+    investigators: Card[]
   ) => {
     const { id, effect } = this.props;
     if (effect.mental_or_physical) {
@@ -64,7 +64,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
           </SetupStepWrapper>
           <InvestigatorChoicePrompt
             id={`${id}_trauma`}
-            investigatorDecks={investigatorDecks}
+            investigators={investigators}
             bulletType="none"
             options={{
               type: 'universal',
@@ -79,7 +79,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
     }
     return (
       <SetupStepWrapper bulletType="small">
-        { map(investigatorDecks, ({ investigator }, idx) => (
+        { map(investigators, (investigator, idx) => (
           <CampaignGuideTextComponent
             key={idx}
             text={this.message(investigator)}

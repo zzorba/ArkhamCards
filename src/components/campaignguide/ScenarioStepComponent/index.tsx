@@ -2,10 +2,13 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
+import { filter } from 'lodash';
 
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
-import CampaignLogContext from '../CampaignLogContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import BranchStepComponent from './BranchStepComponent';
 import EncounterSetStepComponent from './EncounterSetStepComponent';
 import GenericStepComponent from './GenericStepComponent';
@@ -66,9 +69,26 @@ export default class ScenarioStepComponent extends React.Component<Props> {
   render() {
     const { step } = this.props;
     return (
-      <CampaignLogContext.Provider value={{ campaignLog: step.campaignLog }}>
-        { this.renderContent() }
-      </CampaignLogContext.Provider>
+      <CampaignGuideContext.Consumer>
+        { ({ campaignInvestigators }: CampaignGuideContextType) => (
+          <ScenarioGuideContext.Consumer>
+            { (scenarioGuideContext: ScenarioGuideContextType) => {
+              const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
+              const investigators = filter(campaignInvestigators, investigator => safeCodes.has(investigator.code));
+              const context: ScenarioStepContextType = {
+                ...scenarioGuideContext,
+                campaignLog: step.campaignLog,
+                scenarioInvestigators: investigators,
+              }
+              return (
+                <ScenarioStepContext.Provider value={context}>
+                  { this.renderContent() }
+                </ScenarioStepContext.Provider>
+              );
+            } }
+          </ScenarioGuideContext.Consumer>
+        ) }
+      </CampaignGuideContext.Consumer>
     );
   }
 }

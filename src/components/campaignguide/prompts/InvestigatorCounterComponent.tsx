@@ -2,7 +2,7 @@ import React from 'react';
 import { map } from 'lodash';
 
 import CounterListComponent from './CounterListComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import { FACTION_LIGHT_GRADIENTS } from 'constants';
 
 interface Props {
@@ -14,18 +14,15 @@ interface Props {
 }
 
 export default class InvestigatorCounterComponent extends React.Component<Props> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
   render() {
     const { id, limits, requiredTotal } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ investigatorDecks }: ScenarioGuideContextType) => {
+      <ScenarioStepContext.Consumer>
+        { ({ scenarioInvestigators }: ScenarioStepContextType) => {
           return (
             <CounterListComponent
               id={id}
-              items={map(investigatorDecks, ({ investigator }) => {
+              items={map(scenarioInvestigators, investigator => {
                 return {
                   code: investigator.code,
                   name: investigator.name,
@@ -37,7 +34,7 @@ export default class InvestigatorCounterComponent extends React.Component<Props>
             />
           );
         } }
-      </ScenarioGuideContext.Consumer>
+      </ScenarioStepContext.Consumer>
     );
   }
 }

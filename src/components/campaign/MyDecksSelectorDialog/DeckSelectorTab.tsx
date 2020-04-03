@@ -10,6 +10,7 @@ interface Props {
   customHeader: React.ReactNode;
 
   onlyDeckIds?: number[];
+  onlyInvestigators?: string[];
   filterDeckIds: number[];
   filterInvestigators: string[];
 }
@@ -31,6 +32,7 @@ export default class DeckSelectorTab extends React.Component<Props> {
       filterInvestigators,
       filterDeckIds,
       onlyDeckIds,
+      onlyInvestigators,
     } = this.props;
 
     return (
@@ -39,6 +41,7 @@ export default class DeckSelectorTab extends React.Component<Props> {
         customHeader={customHeader}
         deckClicked={this._deckSelected}
         onlyDeckIds={onlyDeckIds}
+        onlyInvestigators={onlyInvestigators}
         filterDeckIds={filterDeckIds}
         filterInvestigators={filterInvestigators}
       />

@@ -789,6 +789,14 @@ export default class GuidedCampaignLog {
     return playing.length;
   }
 
+  investigatorCodesSafe() {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      return [];
+    }
+    return map(playing, ({ investigator }) => investigator);
+  }
+
   investigatorCodes() {
     const playing = this.latestScenarioData.playingScenario;
     if (!playing) {

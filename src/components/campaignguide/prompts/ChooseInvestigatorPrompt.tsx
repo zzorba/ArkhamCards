@@ -5,9 +5,10 @@ import { t } from 'ttag';
 
 import { ListChoices } from 'actions/types';
 import PickerComponent from './PickerComponent';
-import { InvestigatorDeck } from 'data/scenario';
 import Card from 'data/Card';
+import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 
 interface Props {
   id: string;
@@ -16,7 +17,7 @@ interface Props {
   defaultLabel?: string;
   required?: boolean;
   investigatorToValue?: (card: Card) => string;
-  renderResults?: (investigator?: InvestigatorDeck) => React.ReactNode;
+  renderResults?: (investigator?: Card) => React.ReactNode;
 }
 
 interface State {
@@ -24,12 +25,17 @@ interface State {
 }
 
 export default class ChooseInvestigatorPrompt extends React.Component<Props, State> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-  constructor(props: Props, context: ScenarioGuideContextType) {
+  static contextType = ScenarioStepContext;
+  context!: ScenarioStepContextType;
+
+  constructor(props: Props, context: ScenarioStepContextType) {
     super(props);
+
+    const selectedInvestigator = props.required && context.scenarioInvestigators.length > 0 ?
+      context.scenarioInvestigators[0].code :
+      undefined;
     this.state = {
-      selectedInvestigator: props.required ? context.investigatorDecks[0].investigator.code : undefined,
+      selectedInvestigator,
     };
   }
 
@@ -38,7 +44,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   ) => {
     const selectedInvestigator = index === -1 ?
       undefined :
-      this.context.investigatorDecks[index].investigator.code;
+      this.context.scenarioInvestigators[index].code;
     this.setState({
       selectedInvestigator,
     });
@@ -68,7 +74,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   }
 
   getSelectedIndex(
-    investigatorDecks: InvestigatorDeck[],
+    scenarioInvestigators: Card[],
     choice?: ListChoices
   ): number {
     if (choice !== undefined) {
@@ -78,17 +84,20 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       }
       const code = investigators[0];
       return findIndex(
-        investigatorDecks,
-        ({ investigator }) => investigator.code === code
+        scenarioInvestigators,
+        investigator => investigator.code === code
       );
     }
     return findIndex(
-      investigatorDecks,
-      ({ investigator }) => investigator.code === this.state.selectedInvestigator
+      scenarioInvestigators,
+      investigator => investigator.code === this.state.selectedInvestigator
     );
   }
 
-  render() {
+  renderContent(
+    scenarioState: ScenarioStateHelper,
+    scenarioInvestigators: Card[]
+  ) {
     const {
       id,
       description,
@@ -98,42 +107,46 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       defaultLabel,
       investigatorToValue,
     } = this.props;
+    const choice = scenarioState.choiceList(id);
+    const selectedIndex = this.getSelectedIndex(scenarioInvestigators, choice);
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
-          const choice = scenarioState.choiceList(id);
-          const selectedIndex = this.getSelectedIndex(investigatorDecks, choice);
-          return (
-            <>
-              <View style={styles.wrapper}>
-                <PickerComponent
-                  title={title}
-                  description={description}
-                  defaultLabel={defaultLabel}
-                  choices={
-                    map(investigatorDecks, ({ investigator }) => {
-                      return {
-                        text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
-                        effects: [],
-                      };
-                    })}
-                  optional={!required}
-                  selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
-                  editable={choice === undefined}
-                  onChoiceChange={this._onChoiceChange}
-                />
-              </View>
-              { choice !== undefined ?
-                // TODO: need to handle no-choice here?
-                (!!renderResults && renderResults(
-                  selectedIndex === -1 ? undefined : investigatorDecks[selectedIndex]
-                )) :
-                this.renderSaveButton()
-              }
-            </>
-          );
+      <>
+        <View style={styles.wrapper}>
+          <PickerComponent
+            title={title}
+            description={description}
+            defaultLabel={defaultLabel}
+            choices={
+              map(scenarioInvestigators, investigator => {
+                return {
+                  text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
+                  effects: [],
+                };
+              })}
+            optional={!required}
+            selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
+            editable={choice === undefined}
+            onChoiceChange={this._onChoiceChange}
+          />
+        </View>
+        { choice !== undefined ?
+          // TODO: need to handle no-choice here?
+          (!!renderResults && renderResults(
+            selectedIndex === -1 ? undefined : scenarioInvestigators[selectedIndex]
+          )) :
+          this.renderSaveButton()
+        }
+      </>
+    );
+  }
+
+  render() {
+    return (
+      <ScenarioStepContext.Consumer>
+        { ({ scenarioState, scenarioInvestigators }: ScenarioStepContextType) => {
+          return this.renderContent(scenarioState, scenarioInvestigators);
         } }
-      </ScenarioGuideContext.Consumer>
+      </ScenarioStepContext.Consumer>
     );
   }
 }

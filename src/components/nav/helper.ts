@@ -69,7 +69,8 @@ export function showDeckModal(
   componentId: string,
   deck: Deck,
   investigator?: Card,
-  campaignId?: number
+  campaignId?: number,
+  hideCampaign?: boolean,
 ) {
   const passProps: DeckDetailProps = {
     id: deck.id,
@@ -78,6 +79,7 @@ export function showDeckModal(
     campaignId,
     title: investigator ? investigator.name : t`Deck`,
     subtitle: deck.name,
+    hideCampaign,
   };
 
   Navigation.showModal({

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { flatMap, forEach } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
@@ -15,13 +16,18 @@ import {
   setScenarioChoiceList,
   undo,
 } from './actions';
-import { ListChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
+import { Deck, ListChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import { getCampaignGuide } from 'data/scenario';
+import Card from 'data/Card';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import {
   AppState,
   getCampaign,
   getCampaignGuideState,
+  getLatestCampaignInvestigators,
+  getAllDecks,
+  getLatestCampaignDeckIds,
 } from 'reducers';
 
 export interface CampaignGuideInputProps {
@@ -31,6 +37,8 @@ export interface CampaignGuideInputProps {
 interface ReduxProps {
   campaign?: SingleCampaign;
   campaignState: CampaignGuideState;
+  allInvestigators: Card[];
+  latestDecks: Deck[];
 }
 
 interface ReduxActionProps {
@@ -77,12 +85,18 @@ export default function withCampaignGuideContext<Props>(
 ): React.ComponentType<Props & CampaignGuideInputProps> {
   const mapStateToProps = (
     state: AppState,
-    props: Props & CampaignGuideInputProps
+    props: Props & CampaignGuideInputProps & PlayerCardProps
   ): ReduxProps => {
     const campaign = getCampaign(state, props.campaignId);
+    const allInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
+    const decks = getAllDecks(state);
+    const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
+
     return {
       campaign,
       campaignState: getCampaignGuideState(state, props.campaignId),
+      latestDecks: flatMap(latestDeckIds, deckId => decks[deckId]),
+      allInvestigators,
     };
   };
 
@@ -220,10 +234,20 @@ export default function withCampaignGuideContext<Props>(
       const {
         campaign,
         campaignState,
+        allInvestigators,
+        latestDecks,
       } = this.props;
       if (campaign === undefined) {
         return <Text>Unknown Campaign</Text>;
       }
+      const decksByInvestigator: {
+        [code: string]: Deck | undefined;
+      } = {};
+      forEach(latestDecks, deck => {
+        if (deck && deck.investigator_code) {
+          decksByInvestigator[deck.investigator_code] = deck
+        }
+      });
       const campaignStateHelper = new CampaignStateHelper(
         campaignState,
         {
@@ -246,6 +270,8 @@ export default function withCampaignGuideContext<Props>(
         campaign,
         campaignGuide,
         campaignState: campaignStateHelper,
+        campaignInvestigators: allInvestigators,
+        latestDecks: decksByInvestigator,
       };
       return (
         <CampaignGuideContext.Provider value={context}>
@@ -254,17 +280,22 @@ export default function withCampaignGuideContext<Props>(
             campaign={campaign as SingleCampaign}
             campaignGuide={campaignGuide}
             campaignState={campaignStateHelper}
+            campaignInvestigators={allInvestigators}
+            latestDecks={decksByInvestigator}
           />
         </CampaignGuideContext.Provider>
       );
     }
   }
-  const result = connect<ReduxProps, ReduxActionProps, Props & CampaignGuideInputProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(
-    // @ts-ignore TS2345
-    CampaignDataComponent
+  const result =
+  withPlayerCards<Props & CampaignGuideContextType & CampaignGuideInputProps>(
+    connect<ReduxProps, ReduxActionProps, Props & CampaignGuideInputProps & PlayerCardProps, AppState>(
+      mapStateToProps,
+      mapDispatchToProps
+    )(
+      // @ts-ignore TS2345
+      CampaignDataComponent
+    )
   );
   hoistNonReactStatic(result, WrappedComponent);
   return result as React.ComponentType<Props & CampaignGuideInputProps>;

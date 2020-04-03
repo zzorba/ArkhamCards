@@ -18,6 +18,7 @@ import typography from 'styles/typography';
 interface Props {
   investigator: Card;
   eliminated?: boolean;
+  button?: React.ReactNode;
   detail?: React.ReactNode;
   onPress?: (card: Card) => void;
   onRemove?: (card: Card) => void;
@@ -47,43 +48,47 @@ export default class InvestigatorRow extends React.Component<Props> {
       onRemove,
       detail,
       eliminated,
+      button,
     } = this.props;
     return (
-      <View style={styles.row}>
-        <View style={styles.image}>
-          <InvestigatorImage
-            card={investigator}
-            killedOrInsane={eliminated}
-            small
-            border
-          />
-        </View>
-        <View style={styles.titleColumn}>
-          <Text style={[typography.bigGameFont, { color: '#222' }]}>
-            { investigator.name }
-          </Text>
-          { !!detail && detail }
-        </View>
-        <View style={styles.icon}>
-          { !onRemove && (
-            <ArkhamIcon
-              name={CardCostIcon.factionIcon(investigator)}
-              size={ICON_SIZE}
-              color={FACTION_COLORS[investigator.factionCode()]}
+      <View style={styles.wrapper}>
+        <View style={styles.row}>
+          <View style={styles.image}>
+            <InvestigatorImage
+              card={investigator}
+              killedOrInsane={eliminated}
+              small
+              border
             />
+          </View>
+          <View style={[styles.titleColumn, button ? styles.buttonColumn : {}]}>
+            <Text style={[typography.bigGameFont, styles.title]}>
+              { investigator.name }
+            </Text>
+            { !!button && button }
+          </View>
+          <View style={styles.icon}>
+            { !onRemove && (
+              <ArkhamIcon
+                name={CardCostIcon.factionIcon(investigator)}
+                size={ICON_SIZE}
+                color={FACTION_COLORS[investigator.factionCode()]}
+              />
+            ) }
+          </View>
+          { !!onRemove && (
+            <View style={styles.closeIcon}>
+             <TouchableOpacity onPress={this._onRemove}>
+               <MaterialCommunityIcons
+                 name="close"
+                 size={36}
+                 color="#222"
+               />
+             </TouchableOpacity>
+           </View>
           ) }
         </View>
-        { !!onRemove && (
-          <View style={styles.closeIcon}>
-           <TouchableOpacity onPress={this._onRemove}>
-             <MaterialCommunityIcons
-               name="close"
-               size={36}
-               color="#222"
-             />
-           </TouchableOpacity>
-         </View>
-        ) }
+        { !!detail && detail }
       </View>
     );
   }
@@ -104,12 +109,15 @@ export default class InvestigatorRow extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flexDirection: 'column',
+    borderBottomWidth: 1,
+    borderColor: '#bbb',
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    borderBottomWidth: 1,
-    borderColor: '#bbb',
     position: 'relative',
   },
   closeIcon: {
@@ -132,7 +140,13 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginBottom: 4,
   },
+  buttonColumn: {
+    alignSelf: 'flex-start',
+  },
   whiteText: {
     color: '#FFF',
+  },
+  title: {
+    color: '#222',
   },
 });

@@ -38,6 +38,7 @@ interface OwnProps {
   sort: SortType;
   onPress: (investigator: Card) => void;
   filterInvestigators?: string[];
+  onlyInvestigators?: string[];
   customHeader?: React.ReactNode;
   customFooter?: React.ReactNode;
 }
@@ -206,18 +207,23 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       investigators,
       in_collection,
       filterInvestigators = [],
+      onlyInvestigators,
       sort,
     } = this.props;
     const {
       showNonCollection,
       searchTerm,
     } = this.state;
+    const onlyInvestigatorsSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterInvestigatorsSet = new Set(filterInvestigators);
     const allInvestigators = sortBy(
       filter(
         investigators,
         i => {
           if (filterInvestigatorsSet.has(i.code)) {
+            return false;
+          }
+          if (onlyInvestigatorsSet && !onlyInvestigatorsSet.has(i.code)) {
             return false;
           }
           return searchMatchesText(

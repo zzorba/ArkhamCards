@@ -28,6 +28,7 @@ interface OwnProps {
   isPrivate: boolean;
   editable: boolean;
   campaign?: Campaign;
+  hideCampaign?: boolean;
   title?: string;
   onTitlePress?: (deck: ParsedDeck) => void;
   showTraumaDialog?: (investigator: Card, traumaData: Trauma) => void;
@@ -75,6 +76,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
       showDeckUpgrade,
       editable,
       fontScale,
+      hideCampaign,
     } = this.props;
     if (!editable) {
       return null;
@@ -86,7 +88,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
           section={{ superTitle: t`Campaign` }}
           fontScale={fontScale}
         />
-        { !!campaign && (
+        { !!campaign && !hideCampaign && (
           <View style={styles.campaign}>
             <Text style={[typography.text, space.marginBottomS]}>
               { campaign.name }

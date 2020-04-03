@@ -186,6 +186,7 @@ interface Props {
   componentId: string;
   fontScale: number;
   deck: Deck;
+  hideCampaign?: boolean;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
   meta: DeckMeta;
@@ -630,6 +631,7 @@ export default class DeckViewTab extends React.Component<Props> {
       renderFooter,
       onDeckCountChange,
       singleCardView,
+      hideCampaign,
     } = this.props;
     return (
       <DeckProgressComponent
@@ -641,6 +643,7 @@ export default class DeckViewTab extends React.Component<Props> {
         editable={editable}
         isPrivate={isPrivate}
         campaign={campaign}
+        hideCampaign={hideCampaign}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={showDeckUpgrade}
         showDeckHistory={showDeckHistory}

@@ -7,9 +7,9 @@ import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { InvestigatorDeck } from 'data/scenario';
 import CardQueryWrapper from '../CardQueryWrapper';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import CampaignGuideContext, { LatestDecks, CampaignGuideContextType } from '../CampaignGuideContext';
+import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import { CardChoiceInput } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
@@ -23,9 +23,6 @@ interface Props {
 }
 
 export default class CardChoicePrompt extends React.Component<Props> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
   _renderCards = (cards: Card[]) => {
     const {
       id,
@@ -89,7 +86,8 @@ export default class CardChoicePrompt extends React.Component<Props> {
   query(
     scenarioGuide: ScenarioGuide,
     scenarioState: ScenarioStateHelper,
-    investigatorDecks: InvestigatorDeck[]
+    investigators: Card[],
+    latestDecks: LatestDecks,
   ): string {
     const { input: { query } } = this.props;
     const mainQuery = map(query, q => {
@@ -116,7 +114,14 @@ export default class CardChoicePrompt extends React.Component<Props> {
         case 'deck': {
           const codeQuery = map(
             uniq(
-              flatMap(investigatorDecks, investigator => keys(investigator.deck.slots))
+              flatMap(investigators, investigator => {
+                const deck = latestDecks[investigator.code];
+                if (!deck) {
+                  // Do something else in this case?
+                  return [];
+                }
+                return keys(deck.slots);
+              })
             ),
             code => `(code == '${code}')`
           ).join(' OR ');
@@ -148,17 +153,19 @@ export default class CardChoicePrompt extends React.Component<Props> {
 
   render() {
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ investigatorDecks, scenarioState, scenarioGuide }: ScenarioGuideContextType) => {
-          return (
-            <CardQueryWrapper
-              query={this.query(scenarioGuide, scenarioState, investigatorDecks)}
-              render={this._renderCards}
-              extraArg={undefined}
-            />
-          );
-        } }
-      </ScenarioGuideContext.Consumer>
+      <CampaignGuideContext.Consumer>
+        { ({ latestDecks }: CampaignGuideContextType) => (
+          <ScenarioStepContext.Consumer>
+            { ({ scenarioState, scenarioGuide, scenarioInvestigators }: ScenarioStepContextType) => (
+              <CardQueryWrapper
+                query={this.query(scenarioGuide, scenarioState, scenarioInvestigators, latestDecks)}
+                render={this._renderCards}
+                extraArg={undefined}
+              />
+            ) }
+          </ScenarioStepContext.Consumer>
+        ) }
+      </CampaignGuideContext.Consumer>
     );
   }
 }

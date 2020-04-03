@@ -14,6 +14,7 @@ import { COLORS } from 'styles/colors';
 export interface NewDeckProps {
   onCreateDeck: (deck: Deck) => void;
   filterInvestigators?: string[];
+  onlyInvestigators?: string[];
 }
 
 type Props = NewDeckProps & NavigationProps;
@@ -124,6 +125,7 @@ export default class NewDeckView extends React.Component<Props, State> {
       componentId,
       onCreateDeck,
       filterInvestigators,
+      onlyInvestigators,
     } = this.props;
     const {
       viewRef,
@@ -136,6 +138,7 @@ export default class NewDeckView extends React.Component<Props, State> {
           <InvestigatorsListComponent
             componentId={componentId}
             filterInvestigators={filterInvestigators}
+            onlyInvestigators={onlyInvestigators}
             sort={selectedSort}
             onPress={this._onPress}
           />

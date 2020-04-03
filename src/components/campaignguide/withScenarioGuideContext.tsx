@@ -44,28 +44,15 @@ export default function withScenarioGuideContext<Props>(
       const {
         campaignState,
         campaignGuide,
-        investigators,
-        decks,
         scenarioId,
       } = this.props;
       const scenarioGuide = campaignGuide.getScenario(scenarioId, campaignState);
       if (!scenarioGuide) {
         return <Text>Unknown scenario: { scenarioId }</Text>;
       }
-      const investigatorDecks: InvestigatorDeck[] = flatMap(decks, deck => {
-        const investigator = investigators[deck.investigator_code];
-        if (!investigator) {
-          return [];
-        }
-        return {
-          deck,
-          investigator,
-        };
-      });
       const context: ScenarioGuideContextType = {
         // @ts-ignore TS2322
         scenarioGuide,
-        investigatorDecks,
         scenarioState: new ScenarioStateHelper(
           scenarioGuide.id,
           campaignState

@@ -39,12 +39,11 @@ export default class InvestigatorChoiceWithSuppliesInputComponent extends React.
     return card.name;
   };
 
-  _renderInvestigatorChoiceResults = (investigatorDeck?: InvestigatorDeck) => {
-    if (!investigatorDeck) {
+  _renderInvestigatorChoiceResults = (investigator?: Card) => {
+    if (!investigator) {
       return null;
     }
     const { input } = this.props;
-    const investigator = investigatorDeck.investigator;
     const decision = this.investigatorHasSupply(investigator.code);
     const option = decision ? input.positiveChoice : input.negativeChoice;
     return (

@@ -23,10 +23,10 @@ interface Props {
 
 export default class RemoveCardEffectComponent extends React.Component<Props> {
   _renderInvestigators = (
-    investigatorDecks: InvestigatorDeck[],
+    investigators: Card[],
     card: Card
   ) => {
-    return map(investigatorDecks, ({ investigator }, idx) => (
+    return map(investigators, (investigator, idx) => (
       <SetupStepWrapper bulletType="small" key={idx}>
         <CampaignGuideTextComponent
           text={`${investigator.name} earned ${card.name}`}

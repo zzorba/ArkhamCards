@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { InvestigatorDeck } from 'data/scenario';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 
 export interface ScenarioGuideContextType {
   scenarioGuide: ScenarioGuide;
-  investigatorDecks: InvestigatorDeck[];
   scenarioState: ScenarioStateHelper;
 }
 

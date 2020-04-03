@@ -9,7 +9,8 @@ export function campaignToText(
   campaign: Campaign,
   latestDeckIds: number[],
   decks: DecksMap,
-  investigators: CardsMap) {
+  investigators: CardsMap
+) {
   const lines: string[] = [];
   lines.push(campaign.name);
   lines.push('');

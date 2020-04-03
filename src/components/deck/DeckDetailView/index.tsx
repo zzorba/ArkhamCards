@@ -89,6 +89,7 @@ export interface DeckDetailProps {
   title?: string;
   subtitle?: string;
   campaignId?: number;
+  hideCampaign?: boolean;
   isPrivate?: boolean;
   modal?: boolean;
 }
@@ -1591,6 +1592,7 @@ class DeckDetailView extends React.Component<Props, State> {
       bondedCardsByName,
       width,
       inCollection,
+      hideCampaign,
     } = this.props;
     const {
       nameChange,
@@ -1641,6 +1643,7 @@ class DeckDetailView extends React.Component<Props, State> {
             signedIn={signedIn}
             login={login}
             campaign={campaign}
+            hideCampaign={hideCampaign}
             showTraumaDialog={showTraumaDialog}
             investigatorDataUpdates={investigatorDataUpdates}
             renderFooter={this._renderFooter}

@@ -29,7 +29,8 @@ export interface MyDecksSelectorProps {
   onDeckSelect: (deck: Deck) => void;
   onInvestigatorSelect?: (card: Card) => void;
 
-  selectedDeckIds: number[];
+  singleInvestigator?: string;
+  selectedDeckIds?: number[];
   selectedInvestigatorIds?: string[];
 
   onlyShowSelected?: boolean;
@@ -173,6 +174,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         passProps: {
           onCreateDeck: onDeckSelect,
           filterInvestigators: this.filterInvestigators(),
+          onlyInvestigators: this.onlyInvestigators(),
         },
       },
     });
@@ -195,6 +197,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     const {
       campaign,
       onlyShowSelected,
+      singleInvestigator,
     } = this.props;
     const {
       hideOtherCampaignDecks,
@@ -217,7 +220,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             />
           </View>
         ) }
-        { !!campaign && (
+        { !!campaign && !singleInvestigator && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
               { t`Hide Killed and Insane Investigators` }
@@ -228,7 +231,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             />
           </View>
         ) }
-        { !!campaign && (
+        { !!campaign && !singleInvestigator && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
               { t`Only Show Previous Campaign Members` }
@@ -279,6 +282,16 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     );
   }
 
+  onlyInvestigators() {
+    const {
+      singleInvestigator,
+    } = this.props;
+    if (singleInvestigator) {
+      return [singleInvestigator];
+    }
+    return undefined;
+  }
+
   onlyDeckIds() {
     const {
       selectedDeckIds,
@@ -298,7 +311,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     return undefined;
   }
 
-  filterDeckIds() {
+  filterDeckIds(): number[] {
     const {
       selectedDeckIds,
       otherCampaignDeckIds,
@@ -311,9 +324,9 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       return [];
     }
     if (hideOtherCampaignDecks) {
-      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds), x => x);
+      return uniqBy(concat(otherCampaignDeckIds, selectedDeckIds || []), x => x);
     }
-    return selectedDeckIds;
+    return selectedDeckIds || [];
   }
 
   _onTabChange = (tab: string) => {
@@ -343,6 +356,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         filterDeckIds={this.filterDeckIds()}
         onlyDeckIds={this.onlyDeckIds()}
         filterInvestigators={this.filterInvestigators()}
+        onlyInvestigators={this.onlyInvestigators()}
       />
     );
     if (onInvestigatorSelect) {

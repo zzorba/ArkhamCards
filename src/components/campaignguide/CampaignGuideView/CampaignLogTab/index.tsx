@@ -3,13 +3,11 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
-import SingleCardWrapper from '../../SingleCardWrapper';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import Card from 'data/Card';
 import typography from 'styles/typography';
 
 interface Props {
@@ -72,34 +70,6 @@ export default class CampaignLogTab extends React.Component<Props> {
     }
   }
 
-  _renderStoryAsset = (card: Card) => {
-    return (
-      <Text>{ card.name }</Text>
-    );
-  };
-
-  _renderTrauma = (card: Card) => {
-    const { campaignLog } = this.props;
-    const investigatorData = campaignLog.campaignData.investigatorData[card.code];
-    return (
-      <>
-        <Text>
-          { card.name }:{ card.traumaString(investigatorData) }
-        </Text>
-        <Text>
-          Story Assets:
-        </Text>
-        { map(investigatorData && investigatorData.storyAssets || [], asset => (
-          <SingleCardWrapper
-            key={`${card.code}_${asset}`}
-            code={asset}
-            render={this._renderStoryAsset}
-          />
-        )) }
-      </>
-    );
-  };
-
   render() {
     const { campaignGuide, campaignLog, fontScale } = this.props;
     return (
@@ -113,13 +83,6 @@ export default class CampaignLogTab extends React.Component<Props> {
             fontScale={fontScale}
           />
         </View>
-        { map(campaignLog.campaignData.investigatorData, (investigatorData, code) => (
-          <SingleCardWrapper
-            key={code}
-            code={code}
-            render={this._renderTrauma}
-          />
-        )) }
         { flatMap(campaignGuide.campaign.campaign.campaign_log, log => {
           if (log.type === 'hidden') {
             return null;

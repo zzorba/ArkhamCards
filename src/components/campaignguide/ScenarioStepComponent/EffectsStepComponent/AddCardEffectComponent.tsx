@@ -5,7 +5,6 @@ import { t } from 'ttag';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
-import { InvestigatorDeck } from 'data/scenario';
 import { AddCardEffect } from 'data/scenario/types';
 import Card from 'data/Card';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
@@ -19,10 +18,10 @@ interface Props {
 
 export default class AddCardEffectComponent extends React.Component<Props> {
   _renderInvestigators = (
-    investigatorDecks: InvestigatorDeck[],
+    investigators: Card[],
     card: Card
   ) => {
-    return map(investigatorDecks, ({ investigator }, idx) => (
+    return map(investigators, (investigator, idx) => (
       <SetupStepWrapper bulletType="small" key={idx}>
         <CampaignGuideTextComponent
           text={`${investigator.name} earned ${card.name}`}

@@ -250,7 +250,6 @@ export default class ScenarioStep {
     choiceList: ListChoices,
     theChoices: Choices
   ) {
-    console.log(`${this.step.id} - ${choiceList}`);
     const groupedEffects = groupBy(
       flatMap(choiceList, (choices, code) => {
         return choices.map(originalIndex => {

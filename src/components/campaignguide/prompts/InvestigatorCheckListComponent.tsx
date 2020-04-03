@@ -2,8 +2,10 @@ import React from 'react';
 import { map, filter, findIndex } from 'lodash';
 
 import CheckListComponent from './CheckListComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
+import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import { InvestigatorDeck } from 'data/scenario';
+import Card from 'data/Card';
 import { FACTION_LIGHT_GRADIENTS } from 'constants';
 
 interface Props {
@@ -14,19 +16,16 @@ interface Props {
   max: number;
   allowNewDecks?: boolean;
   investigators?: string[];
-  filter?: (investigatorDeck: InvestigatorDeck) => boolean;
+  filter?: (investigator: Card) => boolean;
 }
 
 export default class InvestigatorCheckListComponent extends React.Component<Props> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
-  _filterInvestigator = (investigator: InvestigatorDeck): boolean => {
+  _filterInvestigator = (investigator: Card): boolean => {
     const { investigators, filter } = this.props;
     if (investigators) {
       return findIndex(
         investigators,
-        code => code === investigator.investigator.code
+        code => code === investigator.code
       ) !== -1;
     }
     if (filter) {
@@ -35,7 +34,7 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
     return true;
   };
 
-  render() {
+  renderContent(allInvestigators: Card[]) {
     const {
       id,
       checkText,
@@ -44,33 +43,43 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
       allowNewDecks,
       defaultState,
     } = this.props;
+    const investigators = filter(allInvestigators, this._filterInvestigator);
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ investigatorDecks }: ScenarioGuideContextType) => {
-          const investigators = filter(investigatorDecks, this._filterInvestigator);
+      <CheckListComponent
+        id={id}
+        checkText={checkText}
+        defaultState={defaultState}
+        items={map(
+          investigators,
+          investigator => {
+            return {
+              code: investigator.code,
+              name: investigator.name,
+              tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+            };
+          })
+        }
+        fixedMin={allowNewDecks}
+        min={min}
+        max={max}
+      />
+    );
+  }
+
+  render() {
+    const { allowNewDecks } = this.props;
+    return (
+      <CampaignGuideContext.Consumer>
+        { ({ campaignInvestigators }: CampaignGuideContextType) => {
           return (
-            <CheckListComponent
-              id={id}
-              checkText={checkText}
-              defaultState={defaultState}
-              items={map(
-                investigators,
-                ({ investigator, deck }) => {
-                  return {
-                    code: investigator.code,
-                    name: investigator.name,
-                    value: allowNewDecks ? deck.id : undefined,
-                    tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
-                  };
-                })
-              }
-              fixedMin={allowNewDecks}
-              min={min}
-              max={max}
-            />
+            <ScenarioStepContext.Consumer>
+              { ({ scenarioInvestigators }: ScenarioStepContextType) => {
+                return this.renderContent(allowNewDecks ? campaignInvestigators: scenarioInvestigators);
+              } }
+            </ScenarioStepContext.Consumer>
           );
         } }
-      </ScenarioGuideContext.Consumer>
+      </CampaignGuideContext.Consumer>
     );
   }
 }

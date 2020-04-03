@@ -6,9 +6,13 @@ import { t } from 'ttag';
 import InvestigatorNameRow from '../InvestigatorNameRow';
 import SupplyComponent from './SupplyComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import ScenarioStepContext, { ScenarioStepContextType } from '../../ScenarioStepContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType, Supply, SuppliesInput } from 'data/scenario/types';
+import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import Card from 'data/Card';
 
 interface Props {
   id: string;
@@ -75,7 +79,11 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
     this.context.scenarioState.setSupplies(id, counts);
   };
 
-  render() {
+  renderContent(
+    scenarioState: ScenarioStateHelper,
+    campaignLog: GuidedCampaignLog,
+    scenarioInvestigators: Card[]
+  ) {
     const { id, text, input, bulletType } = this.props;
     const supplies: {
       [id: string]: Supply;
@@ -84,59 +92,63 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
       supplies[supply.id] = supply;
     });
 
+    const playerCount = campaignLog.playerCount();
+    const total = input.points[playerCount - 1];
+    const suppliesInput = scenarioState.supplies(id);
+    const supplyCounts = suppliesInput !== undefined ? suppliesInput : this.state.counts;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ investigatorDecks, scenarioState }: ScenarioGuideContextType) => {
-          const playerCount = Math.max(Math.min(investigatorDecks.length, 4), 1);
-          const total = input.points[playerCount - 1];
-          const suppliesInput = scenarioState.supplies(id);
-          const supplyCounts = suppliesInput !== undefined ? suppliesInput : this.state.counts;
+      <>
+        <SetupStepWrapper bulletType={bulletType}>
+          { !!text && <CampaignGuideTextComponent text={text} /> }
+        </SetupStepWrapper>
+        { map(scenarioInvestigators, (investigator, idx) => {
+          const counts = supplyCounts[investigator.code] || {};
+          const spent = sumBy(keys(counts), id => {
+            const count = counts[id];
+            const supply = supplies[id];
+            return count * (supply ? supply.cost : 1);
+          });
           return (
-            <>
-              <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CampaignGuideTextComponent text={text} /> }
-              </SetupStepWrapper>
-              { map(investigatorDecks, ({ investigator }, idx) => {
-                const counts = supplyCounts[investigator.code] || {};
-                const spent = sumBy(keys(counts), id => {
-                  const count = counts[id];
-                  const supply = supplies[id];
-                  return count * (supply ? supply.cost : 1);
-                });
-                return (
-                  <View key={idx}>
-                    <InvestigatorNameRow
-                      investigator={investigator}
-                      detail={suppliesInput !== undefined ? undefined : t`${spent} of ${total}`}
-                    />
-                    { map(input.supplies, (supply, idx2) => {
-                      const count = counts[supply.id] || 0;
-                      return (suppliesInput === undefined || count > 0) && (
-                        <SupplyComponent
-                          key={idx2}
-                          investigator={investigator}
-                          supply={supply}
-                          count={count}
-                          inc={this._incrementSupply}
-                          dec={this._decrementSupply}
-                          remainingPoints={Math.max(total - spent, 0)}
-                          editable={suppliesInput === undefined}
-                        />
-                      );
-                    }) }
-                  </View>
+            <View key={idx}>
+              <InvestigatorNameRow
+                investigator={investigator}
+                detail={suppliesInput !== undefined ? undefined : t`${spent} of ${total}`}
+              />
+              { map(input.supplies, (supply, idx2) => {
+                const count = counts[supply.id] || 0;
+                return (suppliesInput === undefined || count > 0) && (
+                  <SupplyComponent
+                    key={idx2}
+                    investigator={investigator}
+                    supply={supply}
+                    count={count}
+                    inc={this._incrementSupply}
+                    dec={this._decrementSupply}
+                    remainingPoints={Math.max(total - spent, 0)}
+                    editable={suppliesInput === undefined}
+                  />
                 );
               }) }
-              { (suppliesInput === undefined) && (
-                <Button
-                  title={t`Save`}
-                  onPress={this._save}
-                />
-              ) }
-            </>
+            </View>
           );
+        }) }
+        { (suppliesInput === undefined) && (
+          <Button
+            title={t`Save`}
+            onPress={this._save}
+          />
+        ) }
+      </>
+    );
+  }
+
+  render() {
+    return (
+      <ScenarioStepContext.Consumer>
+        { ({ scenarioState, campaignLog, scenarioInvestigators }: ScenarioStepContextType) => {
+          return this.renderContent(scenarioState, campaignLog, scenarioInvestigators);
         } }
-      </ScenarioGuideContext.Consumer>
+      </ScenarioStepContext.Consumer>
     );
   }
 }

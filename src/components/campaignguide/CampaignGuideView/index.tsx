@@ -1,16 +1,19 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Platform, Text } from 'react-native';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import InvestigatorsTab from './InvestigatorsTab';
 import CampaignLogTab from './CampaignLogTab';
 import ScenarioListTab from './ScenarioListTab';
+import { Deck, CUSTOM } from 'actions/types';
 import TabView from 'components/core/TabView';
+import Card from 'data/Card';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { CampaignGuideContextType } from '../CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '../withCampaignGuideContext';
 import { NavigationProps } from 'components/nav/types';
-import { CUSTOM } from 'actions/types';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -20,6 +23,36 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
   _onTabChange = (tab: string) => {
   };
 
+  _deckAdded = (deck: Deck) => {
+
+  };
+
+  _showChooseDeckDialog = (card: Card) => {
+    const {
+      campaign,
+    } = this.props;
+    const passProps: MyDecksSelectorProps = {
+      campaignId: campaign.id,
+      singleInvestigator: card.code,
+      onDeckSelect: this._deckAdded,
+    };
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.DeckSelector',
+            passProps,
+            options: {
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
+          },
+        }],
+      },
+    });
+  };
+
   render() {
     const {
       campaign,
@@ -27,6 +60,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
       campaignState,
       fontScale,
       componentId,
+      latestDecks,
     } = this.props;
     if (campaign.cycleCode === CUSTOM) {
       return (
@@ -40,9 +74,12 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         title: t`Investigators`,
         node: (
           <InvestigatorsTab
+            componentId={componentId}
+            chooseDeckForInvestigator={this._showChooseDeckDialog}
             fontScale={fontScale}
             campaign={campaign}
             campaignLog={processedCampaign.campaignLog}
+            latestDecks={latestDecks}
           />
         ),
       },
@@ -56,7 +93,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
             fontScale={fontScale}
             componentId={componentId}
           />
-        )
+        ),
       },
       {
         key: 'log',
