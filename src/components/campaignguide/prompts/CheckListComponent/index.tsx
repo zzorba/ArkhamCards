@@ -28,6 +28,7 @@ export interface CheckListComponentProps {
   fixedMin?: boolean;
   min?: number;
   max?: number;
+  button?: React.ReactNode;
 }
 
 interface Props extends CheckListComponentProps {
@@ -129,7 +130,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, items, bulletType, text, checkText } = this.props;
+    const { id, items, bulletType, text, checkText, button } = this.props;
     const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
@@ -171,6 +172,11 @@ export default class CheckListComponent extends React.Component<Props, State> {
                   </Text>
                 </View>
               ) }
+              { !hasDecision && !!button && (
+                <View style={[styles.row, styles.center]}>
+                  { button }
+                </View>
+              ) }
               { this.renderSaveButton(hasDecision) }
             </>
           );
@@ -201,5 +207,8 @@ const styles = StyleSheet.create({
   },
   nameText: {
     fontWeight: '700',
+  },
+  center: {
+    justifyContent: 'center',
   },
 });

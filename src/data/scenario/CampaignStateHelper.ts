@@ -8,6 +8,7 @@ import {
 } from 'actions/types';
 
 export interface CampaignGuideActions {
+  showChooseDeck: () => void;
   addInvestigator: (code: string, deckId?: number) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
@@ -16,7 +17,7 @@ export interface CampaignGuideActions {
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   startScenario: (scenarioId: string) => void;
   resetScenario: (scenarioId: string) => void;
-  undo: () => void;
+  undo: (scenarioId: string) => void;
 }
 
 export default class CampaignStateHelper {
@@ -33,6 +34,10 @@ export default class CampaignStateHelper {
 
   addInvestigator(code: string, deckId?: number) {
     this.actions.addInvestigator(code, deckId);
+  }
+
+  showChooseDeck() {
+    this.actions.showChooseDeck();
   }
 
   startScenario(scenarioId: string) {
@@ -63,8 +68,8 @@ export default class CampaignStateHelper {
     this.actions.setCount(id, value, scenarioId);
   }
 
-  undo() {
-    this.actions.undo();
+  undo(scenarioId: string) {
+    this.actions.undo(scenarioId);
   }
 
   private entry(type: string, step?: string, scenario?: string): GuideInput | undefined {

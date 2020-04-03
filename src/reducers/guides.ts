@@ -1,4 +1,4 @@
-import { dropRight, filter } from 'lodash';
+import { dropRight, findLastIndex, filter } from 'lodash';
 
 import {
   GUIDE_SET_INPUT,
@@ -61,9 +61,16 @@ export default function(
         if (!campaign.inputs.length) {
           return campaign;
         }
+        const latestInputIndex = findLastIndex(campaign.inputs, input =>
+          input.scenario === action.scenarioId &&
+            input.type !== 'start_scenario'
+        );
+        if (latestInputIndex === -1) {
+          return campaign;
+        }
         return {
           ...campaign,
-          inputs: dropRight(campaign.inputs),
+          inputs: filter(campaign.inputs, (item, idx) => idx !== latestInputIndex),
         };
       });
   }

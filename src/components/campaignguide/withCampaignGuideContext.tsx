@@ -1,10 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { flatMap, forEach } from 'lodash';
+import { Platform, Text } from 'react-native';
+import { flatMap, forEach, map } from 'lodash';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
+import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
 import {
   addInvestigator,
@@ -81,7 +83,10 @@ interface ReduxActionProps {
     campaignId: number,
     scenarioId: string
   ) => void;
-  undo: (campaignId: number) => void;
+  undo: (
+    campaignId: number,
+    scenarioId: string
+  ) => void;
 }
 
 export default function withCampaignGuideContext<Props>(
@@ -125,6 +130,43 @@ export default function withCampaignGuideContext<Props>(
     ReduxProps &
     ReduxActionProps
   > {
+    _deckAdded = (deck: Deck) => {
+      this._addInvestigator(deck.investigator_code, deck.id);
+    };
+
+    _investigatorAdded = (card: Card) => {
+      this._addInvestigator(card.code);
+    };
+
+    _showChooseDeck = () => {
+      const {
+        campaignId,
+        allInvestigators,
+      } = this.props;
+      const passProps: MyDecksSelectorProps = {
+        campaignId: campaignId,
+        selectedInvestigatorIds: map(allInvestigators, investigator => investigator.code),
+        onDeckSelect: this._deckAdded,
+        onInvestigatorSelect: this._investigatorAdded,
+        simpleOptions: true,
+      };
+      Navigation.showModal({
+        stack: {
+          children: [{
+            component: {
+              name: 'Dialog.DeckSelector',
+              passProps,
+              options: {
+                modalPresentationStyle: Platform.OS === 'ios' ?
+                  OptionsModalPresentationStyle.overFullScreen :
+                  OptionsModalPresentationStyle.overCurrentContext,
+              },
+            },
+          }],
+        },
+      });
+    };
+
     _addInvestigator = (
       code: string,
       deckId?: number
@@ -230,12 +272,12 @@ export default function withCampaignGuideContext<Props>(
       );
     };
 
-    _undo = () => {
+    _undo = (scenarioId: string) => {
       const {
         undo,
         campaignId,
       } = this.props;
-      undo(campaignId);
+      undo(campaignId, scenarioId);
     };
 
     _resetScenario = (scenarioId: string) => {
@@ -267,6 +309,7 @@ export default function withCampaignGuideContext<Props>(
       const campaignStateHelper = new CampaignStateHelper(
         campaignState,
         {
+          showChooseDeck: this._showChooseDeck,
           addInvestigator: this._addInvestigator,
           startScenario: this._startScenario,
           setCount: this._setScenarioCount,

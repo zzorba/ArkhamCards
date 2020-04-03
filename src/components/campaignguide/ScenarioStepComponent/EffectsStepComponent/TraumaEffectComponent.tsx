@@ -77,16 +77,13 @@ export default class TraumaEffectComponent extends React.Component<Props> {
         </>
       );
     }
-    return (
-      <SetupStepWrapper bulletType="small">
-        { map(investigators, (investigator, idx) => (
-          <CampaignGuideTextComponent
-            key={idx}
-            text={this.message(investigator)}
-          />
-        )) }
+    return map(investigators, (investigator, idx) => (
+      <SetupStepWrapper key={idx} bulletType="small">
+        <CampaignGuideTextComponent
+          text={this.message(investigator)}
+        />
       </SetupStepWrapper>
-    );
+    ));
   };
 
   render() {

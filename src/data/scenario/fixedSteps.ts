@@ -96,6 +96,14 @@ export const CHOOSE_INVESTIGATORS_STEP: InputStep = {
   },
 };
 
+export const UPGRADE_DECKS_STEP: InputStep = {
+  id: '$upgrade_decks',
+  type: 'input',
+  input: {
+    type: 'upgrade_decks',
+  },
+};
+
 export const LEAD_INVESTIGATOR_STEP: InputStep = {
   id: '$lead_investigator',
   type: 'input',
@@ -217,5 +225,6 @@ function investigatorStatusStep(
 export default {
   [PROCEED_STEP.id]: PROCEED_STEP,
   [CHOOSE_INVESTIGATORS_STEP.id]: CHOOSE_INVESTIGATORS_STEP,
+  [UPGRADE_DECKS_STEP.id]: UPGRADE_DECKS_STEP,
   [LEAD_INVESTIGATOR_STEP.id]: LEAD_INVESTIGATOR_STEP,
 };

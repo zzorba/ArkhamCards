@@ -3147,7 +3147,8 @@
       }
     },
     {
-    	"id": "randomly_discard_2_cards",
+      "id": "randomly_discard_2_cards",
+      "bullet_type": "small",
       "text": "Each player discards 2 random cards from their starting hand."
     },
     {
@@ -3166,7 +3167,8 @@
       }
     },
     {
-    	"id": "add_ghoul_priest",
+      "id": "add_ghoul_priest",
+      "bullet_type": "small",
       "text": "Shuffle the Ghoul Priest into the encounter deck."
     },
     {
@@ -3525,6 +3527,14 @@
       ]
     },
     {
+      "id": "choose_new_investigators",
+      "text": "Each player whose investigator has been killed must choose a new investigator from the pool of available investigators.",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
+    {
       "id": "check_lead_investigator_killed",
       "type": "branch",
       "condition": {
@@ -3561,25 +3571,29 @@
         "mental"
       ],
       "text": "You barely manage to escape your house with your lives. The woman from your parlor follows you out the front door, slamming it behind her. “You fools! See what you have done?” She pushes a chair in front of the door, lodging it beneath the doorknob. “We must get out of here. Come with me, and I will tell you what I know. We are the only ones who can stop the threat that lurks beneath from being unleashed throughout the city.” You’re in no state to argue. Nodding, you follow the woman as she runs from your front porch out into the rainy street, toward Rivertown",
-      "steps": ["house_standing", "ghoul_priest_alive", "earn_lita", "earn_xp"]
+      "steps": ["house_standing", "ghoul_priest_alive", "earn_lita", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "You nod and allow the red-haired woman to set the walls and floor of your house ablaze. The fire spreads quickly, and you run out the front door to avoid being caught in the inferno. From the sidewalk, you watch as everything you own is consumed by the flames. “Come with me,” the woman says. “You must be told of the threat that lurks below. Alone, we are surely doomed…but together, we can stop it.”",
-      "steps": ["house_burned", "earn_lita", "mental_trauma", "earn_xp"]
+      "steps": ["house_burned", "earn_lita", "mental_trauma", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You refuse to follow the overzealous woman’s order and kick her out of your home for fear that she will set it ablaze without your permission. “Fools! You are making a grave mistake!” she warns. “You do not understand the threat that lurks below… the grave danger we are all in!” Still shaken by the night’s events, you decide to hear the woman out. Perhaps she can shed some light on these bizarre events…but she doesn’t seem to trust you very much.",
-      "steps": ["house_standing", "lead_investigator_xp", "earn_xp"]
+      "steps": ["house_standing", "lead_investigator_xp", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
+      "investigator_status": [
+        "physical",
+        "mental"
+      ],
       "text": "You run to the hallway to try to find a way to escape the house, but the burning-hot barrier still blocks your path. Trapped, the horde of feral creatures that have invaded your home close in, and you have nowhere to run.",
-      "steps": ["lita_finds_others", "house_standing", "ghoul_priest_alive", "killed", "check_lead_investigator_killed"]
+      "steps": ["lita_finds_others", "house_standing", "ghoul_priest_alive", "killed", "choose_new_investigators", "check_lead_investigator_killed"]
     }
   ]
 }
@@ -3876,17 +3890,22 @@
         "choices": [
           {
             "text": "Is the Ghoul Priest in the victory display?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "ghoul_priest_alive",
-                "cross_out": true
-              }
-            ]
+            "steps": ["cross_out_ghoul_priest_alive"]
           }
         ]
       }
+    },
+    {
+      "id": "cross_out_ghoul_priest_alive",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "ghoul_priest_alive",
+          "cross_out": true
+        }
+      ]
     },
     {
       "id": "past_midnight",
@@ -3937,13 +3956,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
-      "steps": ["cultists_interrogated_r1", "ghoul_priest_defeated", "earn_xp"]
+      "steps": ["cultists_interrogated_r1", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Twelve bells ring out, signaling midnight. You’re out of time; the cult’s ritual will begin shortly. You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
-      "steps": ["cultists_interrogated_r2", "past_midnight", "ghoul_priest_defeated", "earn_xp"]
+      "steps": ["cultists_interrogated_r2", "past_midnight", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
     }
   ]
 }

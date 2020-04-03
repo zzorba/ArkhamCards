@@ -12,11 +12,13 @@ import {
 } from 'actions/types';
 
 export function undo(
-  campaignId: number
+  campaignId: number,
+  scenarioId: string
 ): GuideUndoInputAction {
   return {
     type: GUIDE_UNDO_INPUT,
     campaignId,
+    scenarioId,
   };
 }
 

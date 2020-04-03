@@ -60,35 +60,6 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     });
   };
 
-  _showChooseDeck = () => {
-    const {
-      campaign,
-      campaignInvestigators,
-    } = this.props;
-    const passProps: MyDecksSelectorProps = {
-      campaignId: campaign.id,
-      selectedInvestigatorIds: map(campaignInvestigators, investigator => investigator.code),
-      onDeckSelect: this._deckAdded,
-      onInvestigatorSelect: this._investigatorAdded,
-      simpleOptions: true,
-    };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
-  };
-
   render() {
     const {
       campaign,
@@ -112,10 +83,10 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
           <InvestigatorsTab
             componentId={componentId}
             chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
-            addInvestigator={this._showChooseDeck}
             fontScale={fontScale}
             campaign={campaign}
             campaignLog={processedCampaign.campaignLog}
+            campaignState={campaignState}
             latestDecks={latestDecks}
           />
         ),

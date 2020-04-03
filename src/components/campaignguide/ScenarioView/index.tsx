@@ -59,7 +59,8 @@ class ScenarioView extends React.Component<Props> {
   }
 
   undoPressed() {
-    this.context.campaignState.undo();
+    const { scenarioId } = this.props;
+    this.context.campaignState.undo(scenarioId);
   }
 
   resetPressed() {

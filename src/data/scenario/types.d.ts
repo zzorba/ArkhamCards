@@ -91,6 +91,7 @@ export type CampaignDataCondition =
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
 export type BulletType = "none" | "small" | "right";
 export type Input =
+  | UpgradeDecksInput
   | CardChoiceInput
   | SuppliesInput
   | UseSuppliesInput
@@ -386,6 +387,9 @@ export interface InputStep {
   text?: string;
   input: Input;
   bullet_type?: BulletType;
+}
+export interface UpgradeDecksInput {
+  type: "upgrade_decks";
 }
 export interface CardChoiceInput {
   type: "card_choice";

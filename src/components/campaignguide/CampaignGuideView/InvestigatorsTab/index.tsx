@@ -7,6 +7,7 @@ import { t } from 'ttag';
 import { Campaign, DecksMap } from 'actions/types';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import { LatestDecks } from '../../CampaignGuideContext';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
@@ -17,10 +18,10 @@ interface OwnProps {
   componentId: string;
   campaign: Campaign;
   campaignLog: GuidedCampaignLog;
+  campaignState: CampaignStateHelper;
   fontScale: number;
   latestDecks: LatestDecks;
   chooseDeckForInvestigator: (investigator: Card) => void;
-  addInvestigator: () => void;
 }
 
 interface ReduxProps {
@@ -31,6 +32,10 @@ interface ReduxProps {
 
 type Props = OwnProps & PlayerCardProps & ReduxProps;
 class InvestigatorsTab extends React.Component<Props> {
+  _addInvestigator = () => {
+    this.props.campaignState.showChooseDeck();
+  };
+
   render() {
     const {
       allInvestigators,
@@ -40,7 +45,6 @@ class InvestigatorsTab extends React.Component<Props> {
       componentId,
       latestDecks,
       chooseDeckForInvestigator,
-      addInvestigator,
     } = this.props;
     const [killedInvestigators, aliveInvestigators] = partition(allInvestigators,
       investigator => {
@@ -63,7 +67,7 @@ class InvestigatorsTab extends React.Component<Props> {
           />
         )) }
         <View style={styles.button}>
-          <Button title={t`Add Investigator`} onPress={addInvestigator} />
+          <Button title={t`Add Investigator`} onPress={this._addInvestigator} />
         </View>
         { killedInvestigators.length > 0 && (
           <View style={styles.header}>

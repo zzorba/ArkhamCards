@@ -675,6 +675,7 @@ export const GUIDE_UNDO_INPUT = 'GUIDE_UNDO_INPUT';
 export interface GuideUndoInputAction {
   type: typeof GUIDE_UNDO_INPUT;
   campaignId: number;
+  scenarioId: string;
 }
 
 export interface SupplyCounts {

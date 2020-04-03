@@ -1,5 +1,7 @@
 import React from 'react';
+import { Button } from 'react-native';
 import { map, filter, findIndex } from 'lodash';
+import { t } from 'ttag';
 
 import CheckListComponent from './CheckListComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
@@ -19,6 +21,13 @@ interface Props {
 }
 
 export default class InvestigatorCheckListComponent extends React.Component<Props> {
+  static contextType = CampaignGuideContext;
+  context!: CampaignGuideContextType;
+
+  _showAddDeckDialog = () => {
+    this.context.campaignState.showChooseDeck();
+  };
+
   _filterInvestigator = (investigator: Card): boolean => {
     const { investigators, filter } = this.props;
     if (investigators) {
@@ -32,6 +41,21 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
     }
     return true;
   };
+
+  addDeckButton() {
+    const {
+      allowNewDecks,
+    } = this.props;
+    if (!allowNewDecks) {
+      return null;
+    }
+    return (
+      <Button
+        onPress={this._showAddDeckDialog}
+        title={t`Add new investigator`}
+      />
+    );
+  }
 
   renderContent(allInvestigators: Card[]) {
     const {
@@ -58,6 +82,7 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
             };
           })
         }
+        button={this.addDeckButton()}
         fixedMin={allowNewDecks}
         min={min}
         max={max}

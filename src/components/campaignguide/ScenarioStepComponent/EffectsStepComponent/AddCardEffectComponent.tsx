@@ -2,6 +2,8 @@ import React from 'react';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
+import AddWeaknessCardEffectComponent from './AddWeaknessCardEffectComponent';
+import { RANDOM_BASIC_WEAKNESS } from 'constants';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
@@ -21,12 +23,22 @@ export default class AddCardEffectComponent extends React.Component<Props> {
     investigators: Card[],
     card: Card
   ) => {
+    const { id, effect } = this.props;
     return map(investigators, (investigator, idx) => (
-      <SetupStepWrapper bulletType="small" key={idx}>
-        <CampaignGuideTextComponent
-          text={`${investigator.name} earned ${card.name}`}
+      card.code === RANDOM_BASIC_WEAKNESS ? (
+        <AddWeaknessCardEffectComponent
+          key={idx}
+          id={id}
+          investigator={investigator}
+          traits={effect.weakness_traits || []}
         />
-      </SetupStepWrapper>
+      ) : (
+        <SetupStepWrapper bulletType="small" key={idx}>
+          <CampaignGuideTextComponent
+            text={`${investigator.name} earned ${card.name}`}
+          />
+        </SetupStepWrapper>
+      )
     ));
   };
 
