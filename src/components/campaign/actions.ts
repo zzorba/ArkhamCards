@@ -9,6 +9,8 @@ import {
   UPDATE_CHAOS_BAG_RESULTS,
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
+  CAMPAIGN_ADD_INVESTIGATOR,
+  CampaignAddInvestigatorAction,
   Campaign,
   CampaignNotes,
   CampaignCycleCode,
@@ -50,6 +52,27 @@ export function setAllCampaigns(
     campaigns,
   };
 }
+
+export function addInvestigator(
+  campaignId: number,
+  investigator: string,
+  deckId?: number
+): ThunkAction<void, AppState, null, CampaignAddInvestigatorAction> {
+  return (dispatch, getState: () => AppState) => {
+    const baseDeckId = deckId ?
+      getBaseDeckIds(getState(), [deckId])[0] :
+      undefined;
+    const action: CampaignAddInvestigatorAction = {
+      type: CAMPAIGN_ADD_INVESTIGATOR,
+      id: campaignId,
+      investigator,
+      baseDeckId,
+      now: new Date(),
+    };
+    dispatch(action);
+  };
+}
+
 
 export function newCampaign(
   id: number,

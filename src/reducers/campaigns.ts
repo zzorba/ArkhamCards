@@ -1,9 +1,10 @@
-import { find, forEach, map } from 'lodash';
+import { find, filter, forEach, map } from 'lodash';
 
 import {
   LOGOUT,
   NEW_CAMPAIGN,
   UPDATE_CAMPAIGN,
+  CAMPAIGN_ADD_INVESTIGATOR,
   UPDATE_CHAOS_BAG_RESULTS,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
@@ -101,6 +102,34 @@ export default function(
       chaosBagResults: {
         ...state.chaosBagResults || {},
         [action.id]: NEW_CHAOS_BAG_RESULTS,
+      },
+    };
+  }
+  if (action.type === CAMPAIGN_ADD_INVESTIGATOR) {
+    const campaign: Campaign = {
+      ...state.all[action.id],
+      lastUpdated: action.now,
+    };
+    if (action.baseDeckId) {
+      campaign.baseDeckIds = [
+        ...(campaign.baseDeckIds || []),
+        action.baseDeckId,
+      ];
+      campaign.nonDeckInvestigators = filter(
+        campaign.nonDeckInvestigators || [],
+        investigator => investigator !== action.investigator
+      );
+    } else {
+      campaign.nonDeckInvestigators = [
+        ...campaign.nonDeckInvestigators || [],
+        action.investigator
+      ];
+    }
+    return {
+      ...state,
+      all: {
+        ...state.all,
+        [action.id]: campaign,
       },
     };
   }

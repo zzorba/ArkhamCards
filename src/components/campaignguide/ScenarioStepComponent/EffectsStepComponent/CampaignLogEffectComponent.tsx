@@ -35,6 +35,14 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
             }
             switch (logEntry.type) {
               case 'text': {
+                if (effect.cross_out) {
+                  const text = (effect.section === 'campaign_notes') ?
+                    t`In your Campaign Log, cross out <i>${logEntry.text}</i>` :
+                    t`In your Campaign Log, under "${logEntry.section}", cross out <i>${logEntry.text}</i>`;
+                  return (
+                    <CampaignGuideTextComponent text={text} />
+                  );
+                }
                 const text = (effect.section === 'campaign_notes') ?
                   t`In your Campaign Log, record that <i>${logEntry.text}</i>` :
                   t`In your Campaign Log, under "${logEntry.section}", record that <i>${logEntry.text}</i>`;

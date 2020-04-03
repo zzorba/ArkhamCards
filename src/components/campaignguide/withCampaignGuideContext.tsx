@@ -7,6 +7,9 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
 import {
+  addInvestigator,
+} from 'components/campaign/actions';
+import {
   startScenario,
   resetScenario,
   setScenarioCount,
@@ -42,6 +45,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
+  addInvestigator: (campaignId: number, investigator: string, deckId?: number) => void;
   startScenario: (campaignId: number, scenarioId: string) => void;
   setScenarioDecision: (
     campaignId: number,
@@ -104,6 +108,7 @@ export default function withCampaignGuideContext<Props>(
     dispatch: Dispatch<Action>
   ): ReduxActionProps => {
     return bindActionCreators({
+      addInvestigator,
       startScenario,
       setScenarioCount,
       setScenarioDecision,
@@ -120,6 +125,17 @@ export default function withCampaignGuideContext<Props>(
     ReduxProps &
     ReduxActionProps
   > {
+    _addInvestigator = (
+      code: string,
+      deckId?: number
+    ) => {
+      const {
+        addInvestigator,
+        campaignId,
+      } = this.props;
+      addInvestigator(campaignId, code, deckId);
+    };
+
     _startScenario = (
       scenarioId: string
     ) => {
@@ -251,6 +267,7 @@ export default function withCampaignGuideContext<Props>(
       const campaignStateHelper = new CampaignStateHelper(
         campaignState,
         {
+          addInvestigator: this._addInvestigator,
           startScenario: this._startScenario,
           setCount: this._setScenarioCount,
           setDecision: this._setScenarioDecision,

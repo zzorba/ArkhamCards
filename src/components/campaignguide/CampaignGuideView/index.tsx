@@ -1,5 +1,6 @@
 import React from 'react';
 import { Platform, Text } from 'react-native';
+import { map } from 'lodash';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -24,10 +25,16 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
   };
 
   _deckAdded = (deck: Deck) => {
-
+    const { campaignState } = this.props;
+    campaignState.addInvestigator(deck.investigator_code, deck.id);
   };
 
-  _showChooseDeckDialog = (card: Card) => {
+  _investigatorAdded = (card: Card) => {
+    const { campaignState } = this.props;
+    campaignState.addInvestigator(card.code);
+  };
+
+  _showChooseDeckForInvestigator = (card: Card) => {
     const {
       campaign,
     } = this.props;
@@ -35,6 +42,35 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
       campaignId: campaign.id,
       singleInvestigator: card.code,
       onDeckSelect: this._deckAdded,
+    };
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Dialog.DeckSelector',
+            passProps,
+            options: {
+              modalPresentationStyle: Platform.OS === 'ios' ?
+                OptionsModalPresentationStyle.overFullScreen :
+                OptionsModalPresentationStyle.overCurrentContext,
+            },
+          },
+        }],
+      },
+    });
+  };
+
+  _showChooseDeck = () => {
+    const {
+      campaign,
+      campaignInvestigators,
+    } = this.props;
+    const passProps: MyDecksSelectorProps = {
+      campaignId: campaign.id,
+      selectedInvestigatorIds: map(campaignInvestigators, investigator => investigator.code),
+      onDeckSelect: this._deckAdded,
+      onInvestigatorSelect: this._investigatorAdded,
+      simpleOptions: true,
     };
     Navigation.showModal({
       stack: {
@@ -75,7 +111,8 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         node: (
           <InvestigatorsTab
             componentId={componentId}
-            chooseDeckForInvestigator={this._showChooseDeckDialog}
+            chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
+            addInvestigator={this._showChooseDeck}
             fontScale={fontScale}
             campaign={campaign}
             campaignLog={processedCampaign.campaignLog}

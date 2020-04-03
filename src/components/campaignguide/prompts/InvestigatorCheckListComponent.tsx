@@ -4,7 +4,6 @@ import { map, filter, findIndex } from 'lodash';
 import CheckListComponent from './CheckListComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import { InvestigatorDeck } from 'data/scenario';
 import Card from 'data/Card';
 import { FACTION_LIGHT_GRADIENTS } from 'constants';
 
@@ -73,8 +72,12 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
         { ({ campaignInvestigators }: CampaignGuideContextType) => {
           return (
             <ScenarioStepContext.Consumer>
-              { ({ scenarioInvestigators }: ScenarioStepContextType) => {
-                return this.renderContent(allowNewDecks ? campaignInvestigators: scenarioInvestigators);
+              { ({ scenarioInvestigators, campaignLog }: ScenarioStepContextType) => {
+                return this.renderContent(
+                  allowNewDecks ?
+                    filter(campaignInvestigators,
+                      investigator => !investigator.eliminated(campaignLog.traumaAndCardData(investigator.code))) :
+                    scenarioInvestigators);
               } }
             </ScenarioStepContext.Consumer>
           );

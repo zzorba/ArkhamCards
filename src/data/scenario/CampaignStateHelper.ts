@@ -8,6 +8,7 @@ import {
 } from 'actions/types';
 
 export interface CampaignGuideActions {
+  addInvestigator: (code: string, deckId?: number) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts, scenarioId?: string) => void;
@@ -28,6 +29,10 @@ export default class CampaignStateHelper {
   ) {
     this.state = state;
     this.actions = actions;
+  }
+
+  addInvestigator(code: string, deckId?: number) {
+    this.actions.addInvestigator(code, deckId);
   }
 
   startScenario(scenarioId: string) {

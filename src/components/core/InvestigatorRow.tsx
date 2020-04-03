@@ -17,6 +17,7 @@ import typography from 'styles/typography';
 
 interface Props {
   investigator: Card;
+  description?: string;
   eliminated?: boolean;
   button?: React.ReactNode;
   detail?: React.ReactNode;
@@ -49,6 +50,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       detail,
       eliminated,
       button,
+      description,
     } = this.props;
     return (
       <View style={styles.wrapper}>
@@ -63,7 +65,7 @@ export default class InvestigatorRow extends React.Component<Props> {
           </View>
           <View style={[styles.titleColumn, button ? styles.buttonColumn : {}]}>
             <Text style={[typography.bigGameFont, styles.title]}>
-              { investigator.name }
+              { description ? `${investigator.name}: ${description}` : investigator.name }
             </Text>
             { !!button && button }
           </View>
@@ -72,7 +74,7 @@ export default class InvestigatorRow extends React.Component<Props> {
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(investigator)}
                 size={ICON_SIZE}
-                color={FACTION_COLORS[investigator.factionCode()]}
+                color={FACTION_COLORS[eliminated ? 'dead' : investigator.factionCode()]}
               />
             ) }
           </View>

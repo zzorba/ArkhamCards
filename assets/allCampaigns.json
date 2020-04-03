@@ -3107,15 +3107,18 @@
       }
     },
     {
-    	"id": "place_one_doom",
+      "id": "place_one_doom",
+      "bullet_type": "small",
       "text": "Place 1 doom on Agenda 1a."
     },
     {
     	"id": "place_two_doom",
+      "bullet_type": "small",
       "text": "Place 2 doom on Agenda 1a."
     },
     {
     	"id": "place_three_doom",
+      "bullet_type": "small",
       "text": "Place 3 doom on Agenda 1a."
     },
     {
@@ -3536,6 +3539,7 @@
     },
     {
       "id": "lead_investigator_killed",
+      "bullet_type": "small",
       "text": "Because the lead investigator was killed, choose an investigator to earn the Lita Chantler card. That investigator may include this card in their deck. It does not count toward that investigator’s deck size.",
       "effects": [
         {
@@ -3734,10 +3738,12 @@
     },
     {
       "id": "remove_house",
+      "bullet_type": "small",
       "text": "Remove Your House from the game. Each investigator begins play at Rivertown."
     },
     {
       "id": "start_at_house",
+      "bullet_type": "small",
       "text": "Each investigator begins play at Your House."
     },
     {
@@ -3761,6 +3767,7 @@
     },
     {
       "id": "add_ghoul_priest",
+      "bullet_type": "small",
       "text": "Shuffle the Ghoul Priest into the encounter deck."
     },
     {

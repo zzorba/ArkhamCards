@@ -501,6 +501,16 @@ export interface DeleteCampaignAction {
   type: typeof DELETE_CAMPAIGN;
   id: number;
 }
+
+export const CAMPAIGN_ADD_INVESTIGATOR = 'CAMPAIGN_ADD_INVESTIGATOR';
+export interface CampaignAddInvestigatorAction {
+  type: typeof CAMPAIGN_ADD_INVESTIGATOR;
+  id: number;
+  investigator: string;
+  baseDeckId?: number;
+  now: Date;
+}
+
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 export interface AddCampaignScenarioResultAction {
   type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
@@ -731,7 +741,8 @@ export type CampaignActions =
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |
   SetAllCampaignsAction |
-  UpdateChaosBagResultsAction;
+  UpdateChaosBagResultsAction |
+  CampaignAddInvestigatorAction;
 
 export type GuideActions =
   LogoutAction |

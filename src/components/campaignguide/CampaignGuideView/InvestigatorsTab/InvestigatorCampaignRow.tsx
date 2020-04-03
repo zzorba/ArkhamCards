@@ -149,12 +149,14 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       investigator,
       traumaAndCardData,
     } = this.props;
+    const eliminated = investigator.eliminated(traumaAndCardData);
     return (
       <InvestigatorRow
         investigator={investigator}
+        description={eliminated ? investigator.traumaString(traumaAndCardData) : undefined}
         button={this.renderButton()}
-        eliminated={investigator.eliminated(traumaAndCardData)}
-        detail={this.renderDetail()}
+        eliminated={eliminated}
+        detail={eliminated ? undefined : this.renderDetail()}
       />
     );
   }

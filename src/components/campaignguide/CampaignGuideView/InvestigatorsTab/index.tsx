@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { Button, Text, ScrollView, StyleSheet, View } from 'react-native';
 import { map, partition } from 'lodash';
 import { connect } from 'react-redux';
+import { t } from 'ttag';
 
 import { Campaign, DecksMap } from 'actions/types';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
@@ -10,6 +11,7 @@ import { LatestDecks } from '../../CampaignGuideContext';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
 import Card from 'data/Card';
+import typography from 'styles/typography';
 
 interface OwnProps {
   componentId: string;
@@ -18,6 +20,7 @@ interface OwnProps {
   fontScale: number;
   latestDecks: LatestDecks;
   chooseDeckForInvestigator: (investigator: Card) => void;
+  addInvestigator: () => void;
 }
 
 interface ReduxProps {
@@ -37,6 +40,7 @@ class InvestigatorsTab extends React.Component<Props> {
       componentId,
       latestDecks,
       chooseDeckForInvestigator,
+      addInvestigator,
     } = this.props;
     const [killedInvestigators, aliveInvestigators] = partition(allInvestigators,
       investigator => {
@@ -58,6 +62,16 @@ class InvestigatorsTab extends React.Component<Props> {
             chooseDeckForInvestigator={chooseDeckForInvestigator}
           />
         )) }
+        <View style={styles.button}>
+          <Button title={t`Add Investigator`} onPress={addInvestigator} />
+        </View>
+        { killedInvestigators.length > 0 && (
+          <View style={styles.header}>
+            <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
+              { t`Killed and Insane Investigators` }
+            </Text>
+          </View>
+        )}
         { map(killedInvestigators, investigator => (
          <InvestigatorCampaignRow
            key={investigator.code}
@@ -92,3 +106,13 @@ function mapStateToProps(
 export default withPlayerCards<OwnProps>(
   connect(mapStateToProps)(InvestigatorsTab)
 );
+
+const styles = StyleSheet.create({
+  button: {
+    padding: 8,
+  },
+  header: {
+    padding: 8,
+    paddingTop: 32,
+  },
+});

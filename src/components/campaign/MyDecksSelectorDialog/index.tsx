@@ -34,6 +34,7 @@ export interface MyDecksSelectorProps {
   selectedInvestigatorIds?: string[];
 
   onlyShowSelected?: boolean;
+  simpleOptions?: boolean;
 }
 
 interface ReduxProps {
@@ -75,6 +76,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       },
     };
   }
+
   static investigatorOptions(passProps: Props) {
     return {
       topBar: {
@@ -198,6 +200,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       campaign,
       onlyShowSelected,
       singleInvestigator,
+      simpleOptions,
     } = this.props;
     const {
       hideOtherCampaignDecks,
@@ -220,7 +223,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             />
           </View>
         ) }
-        { !!campaign && !singleInvestigator && (
+        { !!campaign && !singleInvestigator && !simpleOptions && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
               { t`Hide Killed and Insane Investigators` }
@@ -231,7 +234,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             />
           </View>
         ) }
-        { !!campaign && !singleInvestigator && (
+        { !!campaign && !singleInvestigator && !simpleOptions && (
           <View style={styles.row}>
             <Text style={styles.searchOption}>
               { t`Only Show Previous Campaign Members` }
@@ -374,7 +377,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
               componentId={componentId}
               sort={this.state.selectedSort}
               onInvestigatorSelect={onInvestigatorSelect}
-              customHeader={this.renderCustomHeader(true)}
+              customHeader={this.renderCustomHeader(false)}
               filterDeckIds={this.filterDeckIds()}
               onlyDeckIds={this.onlyDeckIds()}
               filterInvestigators={this.filterInvestigators()}
