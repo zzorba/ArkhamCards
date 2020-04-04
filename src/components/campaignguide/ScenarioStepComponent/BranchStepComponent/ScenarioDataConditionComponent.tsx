@@ -62,6 +62,7 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
             <SingleCardWrapper
               code={condition.options[0].condition}
               render={this._renderInvestigatorCard}
+              extraArg={undefined}
             />
           );
         }

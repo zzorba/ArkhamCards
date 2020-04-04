@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import { showCard, showDeckModal } from 'components/nav/helper';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
-import { Campaign, Deck, TraumaAndCardData } from 'actions/types';
+import { Deck, TraumaAndCardData } from 'actions/types';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import Card from 'data/Card';
@@ -14,7 +14,7 @@ import typography from 'styles/typography';
 
 interface Props {
   componentId: string;
-  campaign: Campaign;
+  campaignId: number;
   investigator: Card;
   traumaAndCardData: TraumaAndCardData;
   fontScale: number;
@@ -70,6 +70,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
             key={asset}
             code={asset}
             render={this._renderStoryAsset}
+            extraArg={undefined}
           />
         )) }
       </>
@@ -96,7 +97,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
 
   _viewDeck = () => {
     const {
-      campaign,
+      campaignId,
       componentId,
       investigator,
       deck,
@@ -106,7 +107,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         componentId,
         deck,
         investigator,
-        campaign.id,
+        campaignId,
         true
       );
     }

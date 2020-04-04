@@ -330,8 +330,7 @@ export default function withCampaignGuideContext<Props>(
         return <Text>Unknown Campaign Guide</Text>;
       }
       const context: CampaignGuideContextType = {
-        // @ts-ignore TS2322
-        campaign,
+        campaignId: campaign.id,
         campaignGuide,
         campaignState: campaignStateHelper,
         campaignInvestigators: allInvestigators,
@@ -341,7 +340,7 @@ export default function withCampaignGuideContext<Props>(
         <CampaignGuideContext.Provider value={context}>
           <WrappedComponent
             {...this.props as Props}
-            campaign={campaign as SingleCampaign}
+            campaignId={campaign.id}
             campaignGuide={campaignGuide}
             campaignState={campaignStateHelper}
             campaignInvestigators={allInvestigators}

@@ -13,7 +13,6 @@ import NavButton from 'components/core/NavButton';
 import { ProcessedScenario } from 'data/scenario/CampaignGuide';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import { ScenarioProps } from '../../ScenarioView';
-import { SingleCampaign } from 'actions/types';
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
 
@@ -23,7 +22,7 @@ interface State {
 
 interface Props {
   componentId: string;
-  campaign: SingleCampaign;
+  campaignId: number;
   scenario: ProcessedScenario;
   fontScale: number;
 }
@@ -41,7 +40,7 @@ export default class ScenarioButton extends React.Component<Props, State> {
   }
 
   _onPress = () => {
-    const { componentId, scenario, campaign } = this.props;
+    const { componentId, scenario, campaignId } = this.props;
     const scenarioId = scenario.scenarioGuide.id;
     if (scenario.type === 'playable') {
       this.context.campaignState.startScenario(scenarioId);
@@ -50,7 +49,7 @@ export default class ScenarioButton extends React.Component<Props, State> {
       component: {
         name: 'Guide.Scenario',
         passProps: {
-          campaignId: campaign.id,
+          campaignId,
           scenarioId,
         },
         options: {

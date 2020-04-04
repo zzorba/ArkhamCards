@@ -88,6 +88,7 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
       <SingleCardWrapper
         code={this.props.effect.card}
         render={this._renderCard}
+        extraArg={undefined}
       />
     );
   }

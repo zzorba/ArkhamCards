@@ -90,6 +90,7 @@ export default class HasCardConditionComponent extends React.Component<Props> {
       <SingleCardWrapper
         code={condition.card}
         render={this._renderCard}
+        extraArg={undefined}
       />
     );
   }

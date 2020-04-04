@@ -6,7 +6,7 @@ import {
 import CardListWrapper from './CardListWrapper';
 import Card from 'data/Card';
 
-interface Props<T> {
+interface Props<T = undefined> {
   code: string;
   render: (card: Card, extraArg: T) => React.ReactNode;
   extraArg: T;

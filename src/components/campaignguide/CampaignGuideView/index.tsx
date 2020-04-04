@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import InvestigatorsTab from './InvestigatorsTab';
 import CampaignLogTab from './CampaignLogTab';
 import ScenarioListTab from './ScenarioListTab';
-import { CUSTOM } from 'actions/types';
 import TabView from 'components/core/TabView';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { CampaignGuideContextType } from '../CampaignGuideContext';
@@ -17,23 +16,35 @@ export type CampaignGuideProps = CampaignGuideInputProps;
 type Props = CampaignGuideProps & NavigationProps & DimensionsProps;
 
 class CampaignGuideView extends React.Component<Props & CampaignGuideContextType> {
+  _navEventListener: EventSubscription;
+
+  constructor(props: Props & CampaignGuideContextType) {
+    super(props);
+
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidDisappear() {
+    console.log('vanished');
+  }
+
+  componentWillUnmount() {
+    console.log('dismissed');
+    this._navEventListener && this._navEventListener.remove();
+  }
+
   _onTabChange = () => {
   };
 
   render() {
     const {
-      campaign,
+      campaignId,
       campaignGuide,
       campaignState,
       fontScale,
       componentId,
       latestDecks,
     } = this.props;
-    if (campaign.cycleCode === CUSTOM) {
-      return (
-        <Text>No custom scenarios</Text>
-      );
-    }
     const processedCampaign = campaignGuide.processAllScenarios(campaignState);
     const tabs = [
       {
@@ -43,9 +54,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
           <InvestigatorsTab
             componentId={componentId}
             fontScale={fontScale}
-            campaign={campaign}
             campaignLog={processedCampaign.campaignLog}
-            campaignState={campaignState}
             latestDecks={latestDecks}
           />
         ),
@@ -55,7 +64,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         title: t`Scenarios`,
         node: (
           <ScenarioListTab
-            campaign={campaign}
+            campaignId={campaignId}
             processedCampaign={processedCampaign}
             fontScale={fontScale}
             componentId={componentId}

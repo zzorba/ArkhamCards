@@ -31,6 +31,7 @@ export default class CampaignLogCardEntryComponent extends React.Component<Props
       <SingleCardWrapper
         code={code}
         render={this._renderCard}
+        extraArg={undefined}
       />
     );
   }

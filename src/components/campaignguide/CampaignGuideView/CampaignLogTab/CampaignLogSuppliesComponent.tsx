@@ -48,6 +48,7 @@ export default class CampaignLogSuppliesComponent extends React.Component<Props>
           key={code}
           code={code}
           render={this._renderInvestigator}
+          extraArg={undefined}
         />
       );
     });

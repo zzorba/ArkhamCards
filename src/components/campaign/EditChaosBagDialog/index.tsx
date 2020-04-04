@@ -52,7 +52,7 @@ class EditChaosBagDialog extends React.Component<Props, State> {
             color: COLORS.navButton,
             testID: t`Cancel`,
           } : {
-            icon: iconsMap['arrow-left'],
+            icon: iconsMap['arrow-back'],
             id: 'androidBack',
             color: COLORS.navButton,
             testID: t`Back`,

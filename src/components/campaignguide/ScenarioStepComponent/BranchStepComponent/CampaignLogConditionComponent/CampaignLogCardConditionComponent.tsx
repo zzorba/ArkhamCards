@@ -42,6 +42,7 @@ export default class CampaignLogCardConditionComponent extends React.Component<P
       <SingleCardWrapper
         code={entry.code}
         render={this._renderCard}
+        extraArg={undefined}
       />
     );
   }
