@@ -1,15 +1,12 @@
 import React from 'react';
-import { Platform, Text } from 'react-native';
-import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Text } from 'react-native';
 import { t } from 'ttag';
 
-import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import InvestigatorsTab from './InvestigatorsTab';
 import CampaignLogTab from './CampaignLogTab';
 import ScenarioListTab from './ScenarioListTab';
-import { Deck, CUSTOM } from 'actions/types';
+import { CUSTOM } from 'actions/types';
 import TabView from 'components/core/TabView';
-import Card from 'data/Card';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { CampaignGuideContextType } from '../CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '../withCampaignGuideContext';

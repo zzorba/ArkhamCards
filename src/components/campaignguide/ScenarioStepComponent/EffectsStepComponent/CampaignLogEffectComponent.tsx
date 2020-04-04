@@ -19,6 +19,14 @@ interface Props {
 }
 
 export default class CampaignLogEffectComponent extends React.Component<Props> {
+  _renderCard = (card: Card, section: string) => {
+    return (
+      <CampaignGuideTextComponent
+        text={t`In your Campaign Log, under "${section}", record ${card.name}. `}
+      />
+    );
+  };
+
   renderContent() {
     const { effect } = this.props;
     return (
@@ -54,11 +62,8 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
                 return (
                   <SingleCardWrapper
                     code={logEntry.code}
-                    render={(card: Card) => (
-                      <CampaignGuideTextComponent
-                        text={t`In your Campaign Log, under "${logEntry.section}", record ${card.name}. `}
-                      />
-                    )}
+                    render={this._renderCard}
+                    extraArg={logEntry.section}
                   />
                 );
               }

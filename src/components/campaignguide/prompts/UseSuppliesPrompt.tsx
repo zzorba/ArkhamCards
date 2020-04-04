@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { find, forEach, map, upperFirst, sum } from 'lodash';
 import { t } from 'ttag';
 
@@ -152,9 +151,3 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  rightPadding: {
-    paddingRight: 16,
-  },
-});

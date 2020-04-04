@@ -187,7 +187,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
 const styles = StyleSheet.create({
   bottomPadding: {
     marginBottom: 16,
-  },  
+  },
   buttonWrapper: {
     padding: 8,
   },

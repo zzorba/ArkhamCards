@@ -521,7 +521,7 @@ export default class ScenarioStep {
           [{
             effects: [{
               type: 'upgrade_decks',
-            }]
+            }],
           }],
         );
       }

@@ -123,7 +123,8 @@
   "scenarioName": "Armitage's Fate",
   "interlude": true,
   "setup": [
-    "check_unconscious"
+    "check_unconscious",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -499,7 +500,7 @@
         "mental"
       ],
       "text": "The cries of the whippoorwills fade into the distance, and the town of Dunwich is filled with an eerie silence. All that can be heard is the dry whistle of the chill wind and the slow rustling of dead leaves. There is no sign of the missing townsfolk, nor will there be ever again.",
-      "steps": ["ritual_completed", "sacrifice_all", "record_sacrificed", "check_henry_armitage", "lose_necronomicon", "earn_2_xp", "proceed_undimensioned_and_unseen"]
+      "steps": ["ritual_completed", "sacrifice_all", "record_sacrificed", "check_henry_armitage", "lose_necronomicon", "earn_2_xp", "$upgrade_decks", "proceed_undimensioned_and_unseen"]
     },
     {
       "id": "R1",
@@ -881,7 +882,7 @@
         "mental"
       ],
       "text": "Go to <b>Resolution 2</b>",
-      "steps": ["resolution_2"]
+      "steps": ["resolution_2", "$upgrade_decks"]
     },
     {
       "id": "R1",
@@ -893,7 +894,7 @@
       ],
       "title": "Resolution 1",
       "text": "You breathe a sigh of relief as the gate behind the train collapses harmlessly upon itself. The few passengers who survived the ordeal seem unable to comprehend what just happened. One passenger mentions “a pipe bursting in the rear car,” and that quickly becomes the explanation for the innocent and ignorant, those who either cannot or choose not to delve further into the mystery. You, on the other hand, know better… although in hindsight, you wish you didn’t.",
-      "steps": ["earn_xp"]
+      "steps": ["earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
@@ -905,7 +906,7 @@
       ],
       "title": "Resolution 2",
       "text": "Rattled, you begin walking alongside the train tracks, making your way towards Dunwich.",
-      "steps": ["investigators_delayed", "earn_xp"]
+      "steps": ["investigators_delayed", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -1106,7 +1107,7 @@
         "options": [
           {
             "boolCondition": false,
-            "steps": ["proceed_house_always_wins"]
+            "steps": ["$upgrade_decks", "proceed_house_always_wins"]
           },
           {
             "boolCondition": true,
@@ -1141,7 +1142,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You find Professor Rice bound and gagged in the closet of his office. When you free him, he informs you that the strange men and women wandering around the campus had been stalking him for hours. They cornered him in his office and tied him up, although for what purpose, Rice isn’t sure. You inform him that Dr. Armitage sent you, and Rice looks relieved, although he suspects that Dr. Morgan might be in danger as well. Because the strangers on campus seem to have been targeting Professor Rice, you decide that the best course of action is to escort him away from the campus as quickly as possible. As you leave the university, you hear screaming from the northern end of the campus. An ambulance passes you by, and you fear the worst. Hours later, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside, and many were mauled or killed in the attack.",
-      "steps": ["warren_rice_rescued", "earn_warren_rice", "failed_to_save_students", "earn_xp", "proceed_house_always_wins"]
+      "steps": ["warren_rice_rescued", "earn_warren_rice", "failed_to_save_students", "earn_xp", "$upgrade_decks", "proceed_house_always_wins"]
     },
     {
       "id": "R2",
@@ -1401,7 +1402,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "Lying on your back in a patch of wet grass, you find yourself staring longingly at the night sky. Somehow, you are once again atop Sentinel Hill, unable to recall exactly how you got here. You are mesmerized by the night sky. Seconds become minutes, and minutes become hours. Eventually, you are found and lifted to your feet by a group of Dunwich citizens. “What happened? What are ya doin’ here?” they ask you, frightened but curious. You can’t seem to find the right words to describe the events that occurred beyond the gate...if they ever truly occurred. There doesn’t appear to be any trace of Seth Bishop, of the creatures you fought earlier, or of the phantasmal and otherworldly gate. But every time you sleep, you dream—and when you dream, it all comes rushing back.",
-      "steps": ["closed_tear", "trauma", "earn_xp", "win_campaign"]
+      "steps": ["closed_tear", "trauma", "earn_xp", "$upgrade_decks", "win_campaign"]
     },
     {
       "id": "R2",
@@ -1483,7 +1484,8 @@
     "check_warren_rice",
     "check_francis_morgan",
     "check_zebulon_whateley",
-    "check_earl_sawyer"
+    "check_earl_sawyer",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -1971,7 +1973,7 @@
         "options": [
           {
             "boolCondition": false,
-            "steps": ["proceed_extracurricular_activity"]
+            "steps": ["$upgrade_decks", "proceed_extracurricular_activity"]
           },
           {
             "boolCondition": true,
@@ -2019,13 +2021,13 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "“What in the world…?” Dr. Morgan finally breaks out of his daze as you make your way to safety. You ask him what he remembers, and he sputters and shakes his head. “It’s all a haze,” he explains, visibly exhausted. “I was having the run of my life! Perhaps I had one too many shots. But, those creatures—I haven’t seen anything like that since…” He trails off, and you can tell that his mind is racing. His eyes widen with realization and his face pales. “I may not be in the best shape, but I’ll help with your investigation. Whatever it takes.”",
-      "steps": ["bone_to_pick", "francis_morgan_rescued", "earn_francis_morgan", "cheated", "earn_xp"]
+      "steps": ["bone_to_pick", "francis_morgan_rescued", "earn_francis_morgan", "cheated", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "Although you were unable to find Dr. Morgan in the club, the man you rescued is grateful for your help. He introduces himself as Peter Clover, the owner of the establishment you’d just left. Despite the situation, he maintains an air of quiet professionalism. As you make your way towards the street, a well-polished Chrysler B-70 rolls up to you, and a gorgeous woman with long brown hair and narrow eyes exits. She is flanked by dangerous-looking men who slip their hands under their suit jackets when they see you. “Peter,” she says with a sigh of relief, “Good, you’re okay. I heard there was trouble?” She turns and glares at you with deadly eyes. “Who are they?”\nMr. Clover dusts off his vest, unworried. “Naomi, my dear, these are friends of mine. They…” he clears his throat. “They escorted me off the premises,” he explains after a short pause. “They have earned our gratitude.” The woman crosses her arms and takes a moment to size you up before giving you a smirk.\n“Very well then. I must thank you for taking care of Peter. Run along now; we’ll handle things from here.” She nods to the goons flanking her and they walk past you toward the club’s rear entrance, pulling firearms out from underneath their coats. You’re not sure what ‘handling things’ means, but you’re pretty sure you don’t want to be here when the gunfire starts. You thank Naomi and Peter, and head of",
-      "steps": ["naomi_has_back", "francis_morgan_kidnapped", "cheated", "earn_xp"]
+      "steps": ["naomi_has_back", "francis_morgan_kidnapped", "cheated", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R4",
@@ -2208,19 +2210,19 @@
         "mental"
       ],
       "text": "Whatever the creature in the museum was, you had neither the will nor the tools to destroy it. It seems you must give up any hope of recovering the Necronomicon. Even so, there are others depending on you. Gathering your courage, you prepare for your next task.",
-      "steps": ["failed_to_recover_necronomicon", "earn_xp"]
+      "steps": ["failed_to_recover_necronomicon", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "As long as this translation of the Necronomicon exists, there will be sorcerers and other foul agents like Whateley seeking it. In the end, you know what must be done to protect humanity from the threats you’ve seen. You find a trash bin and fill it with books and documents, throwing the Necronomicon on top. It takes several matches to set the contents of the bin alight. The flames fill the room with heat and the creeping shadows retreat from its light. You watch the book burn for some time, its pages turning to ash. You can only hope you’ve made the right decision.",
-      "steps": ["destroyed_necronomicon", "earn_xp"]
+      "steps": ["destroyed_necronomicon", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "The Necronomicon is more than just a book; it is a tool. Within its pages is a wealth of information about the forces and creatures you have encountered. Knowing how useful it could be in your endeavors, how could you possibly bring yourself to destroy it? Besides, as long as you keep the book safely in your possession, you will still be foiling those who wish to use it for nefarious purposes.",
-      "steps": ["took_necronomicon", "earned_necronomicon",  "add_elder_thing", "earn_xp"]
+      "steps": ["took_necronomicon", "earned_necronomicon",  "add_elder_thing", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -2470,13 +2472,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You did all you could to stop the rampaging monsters, but there were more of them than you realized and you weren’t able to slay them all. Exhausted and terrified, you retreat to Zebulon’s home and hope to survive the night.",
-      "steps": ["brood_escaped", "remove_powder", "earn_xp"]
+      "steps": ["brood_escaped", "remove_powder", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "After slaying what seems to be the last of the rampaging monsters you retreat to Zebulon’s home, exhausted and rattled by your experience.",
-      "steps": ["no_brood_escaped", "remove_powder", "earn_xp"]
+      "steps": ["no_brood_escaped", "remove_powder", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -2890,7 +2892,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "The poorly bound tome appears to be the written records of Old Whateley, the man who taught Wilbur the ancient secrets of sorcery. You find a passage describing a place outside of time and space, where worlds converge and Yog-Sothoth dwells. Only by reaching this nexus at the edge of reality can you unmake the tear that has split open the world. Feeling as if you may be going to your doom, you muster a final ounce of courage and step into the gate.",
-      "steps": ["entered_the_gate", "earn_xp"]
+      "steps": ["entered_the_gate", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
@@ -3234,6 +3236,10 @@
           "section": "campaign_notes",
           "id": "lita_sacrificed",
           "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+        },
+        {
+          "type": "remove_card",
+          "card": "01117"
         }
       ]
     },
@@ -3364,19 +3370,19 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You have managed to prevent the cult from summoning its master. Although you’re unsure what would have happened had the cult succeeded, you’re relieved that—at least for the time being—Arkham is safe. You capture as many cultists as you can find, but very few townspeople believe your tale. Perhaps it was all in your head, after all.",
-      "steps": ["ritual_broken", "ritual_trauma", "earn_5_xp", "win"]
+      "steps": ["ritual_broken", "ritual_trauma", "earn_5_xp", "$upgrade_decks", "win"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Through force of arms and strength of will, you are somehow able to harm Umôrdhoth enough to send it reeling back to the dimension from which it emerged. Warmth and light return to the woods as the void-like mass is sucked in upon itself, vanishing in an instant. You aren’t sure if a being such as this can be killed, but for the time being it seems to have retreated. As their master vanishes, the ghouls nearby climb into the open pit below, fleeing with terrible cries and shrieks. You have stopped an evil plot, but the fight has taken its toll on your body and mind. Worse, you can’t help but feel insignificant in the face of the world’s mysteries. What other terrors exist in the deep, dark corners of reality?",
-      "steps": ["umordhoth_repelled", "fight_trauma", "earn_10_xp", "win"]
+      "steps": ["umordhoth_repelled", "fight_trauma", "earn_10_xp", "$upgrade_decks", "win"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "In the face of this horror, you don’t believe there is anything you can do to stop it. You have but one hope if you are to survive. You turn on Lita and throw her at the terrible monstrosity, watching in dread as its swirling void-like mass consumes her. She cries out in torment as the life is sucked from her body. “Umôrdhoth…Umôrdhoth…” the cultists chant. Lita Chantler vanishes without a trace. For a moment, you fear that the creature will now turn on you, but you hear one of the cultists say, “Umôrdhoth is a just god who claims only the guilty and the dead. Go, and you shall be spared.” The swirling mass vanishes, and warmth and light return to the woods. The cultists slink away, leaving you alive. Lita’s last moments are forever etched upon your memory.",
-      "steps": ["lita_sacrificed", "lita_trauma", "madness_weakness", "earn_xp", "survived"]
+      "steps": ["lita_sacrificed", "lita_trauma", "madness_weakness", "earn_xp", "$upgrade_decks", "survived"]
     }
   ]
 }
@@ -4483,7 +4489,7 @@
         "mental"
       ],
       "text": "You hold your breath as you swim through freezing water toward the spires below. As you get closer, you see ripples throughout the water, as though you are peering into a reflection upon the sea’s surface. You break through the surface and gasp as air fills your lungs.",
-      "steps": ["opened_path_below", "add_cultists_tablets", "ask_ashleigh_clarke", "earn_xp"]
+      "steps": ["opened_path_below", "add_cultists_tablets", "ask_ashleigh_clarke", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
@@ -4495,7 +4501,7 @@
         "mental"
       ],
       "text": "You marvel at the cloud-waves encircling you and fly toward the spires above. The desolate and inscrutable city of Carcosa towers before you. You suddenly realize you are falling—not floating—and a pulling force takes hold of your body.",
-      "steps": ["opened_path_above", "add_cultists_elder_things", "ask_ashleigh_clarke", "earn_xp"]
+      "steps": ["opened_path_above", "add_cultists_elder_things", "ask_ashleigh_clarke", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R3",
@@ -4694,19 +4700,19 @@
         "mental"
       ],
       "text": "Once again you are startled awake, this time by the cold, clammy fingers of a hand on your shoulder. “Are you alright?” an elderly man asks, helping you to your feet. Your mind is a flurry of memories. Last you remember, the Ward Theatre had become a place of nightmares, filled with dangerous fanatics and strange terrors. Worried, you glance at your surroundings, only to find yourself on the rain-slicked curb outside the theatre. Despite the events from earlier, the city seems normal to your eyes—or at least, what passes as normal for Arkham. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. The old man wears an expression of concern, noting the terror in your eyes. “Were you mugged? Damn those trouble boys!” he exclaims. “Dry-gulching folk on a night out to the the-a-tre! Not a single street those hooligans haven’t staked a claim on, I tell you.”\nYou stand and walk over to the front window of the Ward Theatre to tentatively peer through, but it is too dark to see anything inside. The elderly man eyes you curiously for a moment, then shrugs and continues walking. “Well, I’d best be on my way. I would do the same, if I were you,” he says, rounding the street corner. You quickly follow, hoping to warn him to stay away from the theatre. But when you turn the corner, it is not the elderly man you see, but the familiar sight of the Stranger in his featureless, pallid mask. His unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, but instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty— save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, frustrated and lost.",
-      "steps": ["stranger_is_on_to_you", "chasing_the_stranger", "earn_xp"]
+      "steps": ["stranger_is_on_to_you", "chasing_the_stranger", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "Fleeing from the theatre, you head straight to the police station in Easttown. Bursting through the door, to the stares of onlookers and police officers alike, you demand to see Sheriff Engle, stressing the importance of your visit. The desk sergeant, who is lazily working through a stack of paperwork, shakes his head and raises a finger in silence, then points to a nearby chair. The wait is excruciating. Every moment is an eternity. The hands of the nearby clock crawl. You drum your fingers on the desk. You tap your feet. You constantly peer over your shoulder to make sure the pallid mask of the Stranger is not watching you through the front window. Finally, the desk sergeant puts his pen down and sits up, beckoning you. “Alright, what’s so important now?” You are only halfway through your explanation of the night’s events when he sighs and shakes his head. “Look, if this is some kind of joke, it ain’t funny,” he says. “We had officers downtown all night. Don’t try to feed me some hooey straight to my face.” You insist, but the desk sergeant rises to his feet and opens the door, motioning for you to leave. He raises his voice. “What, you think we’re not busy enough or something? Beat it!” He mumbles about “blind birds” behind your back as he escorts you out of the station.\nYou <b>know</b> what you saw earlier that night. Frustrated, you head back to the Ward Theatre to find some kind of proof you can take to the police. You are surprised to find that the front door of the theatre is locked. You are about to decide whether or not to break down the door when you see a notice on the wall near the entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and fold it into your coat pocket, hoping it will lead you to the answers you seek.",
-      "steps": ["police_unhelpful", "tried_to_warn_police", "stole_from_box_office", "stranger_is_on_to_you", "chasing_the_stranger_2", "earn_xp"]
+      "steps": ["police_unhelpful", "tried_to_warn_police", "stole_from_box_office", "stranger_is_on_to_you", "chasing_the_stranger_2", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You think about going to the police, but considering the horrors in the theatre, they’re more likely to think you’re mad than to believe your story. A small part of you wonders if this is still some kind of prank, but that can’t be the case—it was all too real, too terrifying to forget. Wondering what course of action to take, you find yourself backtracking over your escape route, returning to the theatre with cautious steps. The bright glare of headlights drills into your eyes as cars pass on the street, splashing dirty rainwater onto the sidewalk beside you. Soon the Ward Theatre comes into sight, its bright lights dominating the streets of Downtown. You expected the theatre to be in ruins, but its exterior looks the same as it did when you arrived to see The King in Yellow earlier that night. You walk to the front window of the Ward Theatre and tentatively peer through, but it is too dark to see anything inside.\nJust then, a chill brushes the nape of your neck, and you feel that you are being watched. You turn, and spot a shadow fleeing around the corner. A swarm of roaches skitters across the sidewalk, following in the shadow’s wake. Your muscles tense with uncertainty, and you round the corner in pursuit. Standing unconcerned on the sidewalk is a familiar-looking man in a featureless pallid mask.\nHis unwavering gaze bears down upon you. “Who <b>are</b> you?” you call out. The Stranger does not respond, and instead turns and disappears into the alleyway behind the theatre. You give chase, hoping for answers, but by the time you reach the alleyway, it is empty—save for a notice on the wall near the theatre’s employee entrance. “Don’t be a wet blanket! Come to The King in Yellow cast party. 8pm, at the home of Constance Dumaine, 1452 Atlantic Avenue. Formal dress only.” You tear the notice from the wall and take it with you, hoping it will lead you to the answers you seek.",
-      "steps": ["wise_not_to_warn", "chose_not_to_warn_police", "stranger_is_on_to_you", "chasing_the_stranger_2", "earn_xp"]
+      "steps": ["wise_not_to_warn", "chose_not_to_warn_police", "stranger_is_on_to_you", "chasing_the_stranger_2", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -5246,19 +5252,19 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You stand atop the balcony of the abbey tower in Mont Saint-Michel, wet wind coursing through your hair. The Pallid Mask lies in your hands, devoid of warmth. You can scarcely bring yourself to look at it. You remember everything now—how it all began, how it ended, and everything in between. There is only one thing left to do. You hurl the mask into the air with all of your strength and watch as it flies into the tempest-tossed waves below.",
-      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_and_mental_trauma", "earn_xp_triumph", "win"]
+      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_and_mental_trauma", "earn_xp_triumph", "$upgrade_decks", "win"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "A roar of applause startles you awake. The crowd of the theatre rises to their feet, cheering endlessly. Several patrons in the front row are throwing roses to the actors on stage, who are bowing with wide smiles across their faces. A searing headache crawls through your temples. How did you get back here? Were you in the theatre all along? What about the dinner party? The asylum? The catacombs?... Carcosa? Was it all just a terrible dream?\nYou exit the auditorium before the crowd rushes to do the same. Dizziness and exhaustion harries your senses. The weight of your lengthy investigation is crushing your mind. By the time you finally reach the lobby, you are clawing your way across the ground. Just then, a man in an elegant suit reaches down and grabs you by your arm, pulling you to your feet. You are about to thank him when you realize who he is. The sight of him causes you to stagger backward in horror momentarily. The actor who plays the role of the Stranger is still wearing his pale, featureless mask. He gives you a wordless bow, then turns and leaves through the Ward Theatre’s front entrance.",
-      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_mental_trauma", "earn_xp_truth", "win"]
+      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_mental_trauma", "earn_xp_truth", "$upgrade_decks", "win"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you have escaped. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of the sun. You stand overlooking beautiful Mont Saint-Michel. Seagulls fly over the abbey under a backdrop of cloudless sky. The waters around the abbey are calm and azure-blue.\n“I’ve been looking all over for you!” You hear a voice exclaim behind you. You turn with a startle. For a moment you expect to see the Stranger and his Pallid Mask, but instead, the boat captain you’d hired to take you to Mont Saint-Michel stands at the edge of the steps, smiling at you. “Are you ready to head back?”",
-      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_trauma", "earn_xp_truth", "win"]
+      "steps": ["prevented_hasturs_escape", "record_possessed_investigators", "take_physical_trauma", "earn_xp_truth", "$upgrade_decks", "win"]
     },
     {
       "id": "R4",
@@ -5658,25 +5664,25 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "There are no coincidences when it comes to The King in Yellow. There is no doubt in your mind that the object you’ve found is important. You decide to take it with you before continuing your investigation. The last record you find related to the original production of The King in Yellow is a psychiatric evaluation of one Daniel Chesterfield, a stagehand who lost his wits after the final show. It seems he was admitted to the asylum after the production ended. Perhaps he’s still there...",
-      "steps": ["took_onyx_clasp", "earn_xp", "ask_sebastien_moreau", "add_cultists"]
+      "steps": ["took_onyx_clasp", "earn_xp", "ask_sebastien_moreau", "add_cultists", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "This investigation would make anybody paranoid. Attributing some greater meaning to everything you find can be a dangerous proposition. You’re sure that this clasp is meaningless, perhaps even a prop from the original play. You leave it behind and continue your investigation. The last record you find related to the original production of The King in Yellow is a psychiatric evaluation of one Daniel Chesterfield, a stagehand who lost his wits after the final show. It seems he was admitted to the asylum after the production ended. Perhaps he’s still there...",
-      "steps": ["left_onyx_clasp", "earn_xp", "ask_sebastien_moreau", "add_elder_things"]
+      "steps": ["left_onyx_clasp", "earn_xp", "ask_sebastien_moreau", "add_elder_things", "$upgrade_decks"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "The figure collapses to the ground, its warped, melting body writhing in agony. It wheezes and cries out, a yellow glow emanating from inside its mouth and behind its eyes. “Daniel,” the thing says in its cracking voice. “Seek Daniel... Daniel Chesterfield, the stagehand, he remembers!” Deep inside the man’s words, there is another voice behind it, whispering faintly in a melodic language. “Find him... He too has spoken the oath... The oath that doomed us all...!” With those final words, the skin melts off the man’s bones, and he rattles to the floor.",
-      "steps": ["destroyed_the_oathspeaker", "earn_xp", "ask_sebastien_moreau", "add_tablets"]
+      "steps": ["destroyed_the_oathspeaker", "earn_xp", "ask_sebastien_moreau", "add_tablets", "$upgrade_decks"]
     },
     {
       "id": "R4",
       "title": "Resolution 4",
       "text": "The night’s events have left you exhausted. You were unable to learn anything at the Historical Society’s manor that could drive your investigation forward. Whoever those intruders were, they must have been looking for the same information you were. Distraught, you find your way to the closest bed you can find—in Ma’s Boarding House, not too far from the Historical Society. Dawn breaks as you reach the boarding house, the front doorknob and ferns on the porch covered in dew. You are lucky enough to get a vacant room for the day, and soon you are fast asleep.\nSuddenly, you are falling. Above and all around you, a blinding radiance flares like an inferno. Your head twinges with pain and your vision swims with brilliant colors. Your skin is singed by the flames. Below you, the abyss opens and swallows you whole. You then find yourself in a dank, windowless cell, filled with a putrid stench. A man is huddled in a corner of the room, shivering from the cold, or from the hopelessness of his situation, or perhaps both. “No mask,” he mutters over and over, “no mask, no mask...” You take a few tentative steps forward, but before you can reach him, the metal slot on his cell door slides open, and you hear an orderly call to him. “Daniel, it’s time,” he says. “Daniel, wake up. Wake up, Daniel.” Then, you awaken.",
-      "steps": ["followers_of_sign_found_way", "earn_1_xp", "ask_sebastien_moreau", "add_mixed_tokens"]
+      "steps": ["followers_of_sign_found_way", "earn_1_xp", "ask_sebastien_moreau", "add_mixed_tokens", "$upgrade_decks"]
     }
   ]
 }
@@ -5718,7 +5724,9 @@
   "scenarioName": "Lunacy's Reward",
   "interlude": true,
   "setup": [
-    "daniel_choice"
+    "daniel_choice",
+    "warning_choice",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -5729,15 +5737,15 @@
         "choices": [
           {
             "text": "If an investigator resigned with the asset version of Daniel Chesterfield under their control.",
-            "steps": ["daniel_survived","earn_2_xp", "warning_choice"]
+            "steps": ["daniel_survived","earn_2_xp"]
           },
           {
             "text": "If the enemy version of Daniel Chesterfield was in play when the scenario ended.",
-            "steps": ["daniel_possessed", "warning_choice"]
+            "steps": ["daniel_possessed"]
           },
           {
             "text": "If neither of the above are true.",
-            "steps": ["daniel_did_not_survive", "warning_choice"]
+            "steps": ["daniel_did_not_survive"]
           }
         ]
       }
@@ -5864,9 +5872,9 @@
   "scenarioName": "Lunacy's Reward",
   "interlude": true,
   "setup": [
-    "house_choice"
+    "house_choice",
+    "$upgrade_decks"
   ],
-
   "steps": [
     {
       "id": "house_choice",
@@ -6651,25 +6659,29 @@
         "mental"
       ],
       "text": "You lose track of yourself within the city as you flee for your life. Your feet move of their own accord. The beating of sinewy wings and screeching of creatures above you spurs you onward. Soon you find yourself running down a narrow avenue, passing a set of heavy iron gates. You are in a dead end—a court with tall, old houses on either side. You turn back toward the entrance to find the shapes of many winged creatures barring your path. They are perched on the gates and on the balconies above, awaiting your doom. Walking with cold, sinister confidence, the man in black opens the iron gate and enters the court. His face gleams in the darkness. His eyes pierce your soul. For a moment, you recognize him for what he truly is. It is the last you remember of that night.",
-      "steps": ["did_not_escape_gaze", "add_elder_things", "ask_jordan_perry", "earn_xp"]
+      "steps": ["did_not_escape_gaze", "add_elder_things", "ask_jordan_perry", "earn_xp",
+        "$upgrade_decks"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. There is no response but a flock of magpies that scatter from the rooftop at the sudden noise. You try the doorknob, hoping you won’t have to resort to more forceful measures. To your surprise, you find the door unlocked.\nInside, Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. The food in his pantry is old and rotten. There is no sign of anyone having lived here for years, and yet the ink upon the living room walls is wet and fresh. Over and over, across nearly every inch of the wallpaper, it reads:\n<center><fancy>He is already here.</fancy></center>\n",
-      "steps": ["found_nigels_home", "add_cultists", "ask_jordan_perry", "earn_xp"]
+      "steps": ["found_nigels_home", "add_cultists", "ask_jordan_perry", "earn_xp",
+        "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. A flock of magpies scatters from the rooftop at the sudden noise. Then, to your surprise, the door opens.\nAcross the threshold of the doorway stands a tall man with a thick, brown mustache. A familiar silver-handled cane leans against the wall next to his coat hanger. “So it’s you,” he says. “Come in. I have expected you for some time now.” He turns away and walks toward his kitchen. You can hear a teapot whistling, as though he’d been preparing for your arrival.\nYou enter his home, unsure of what to do next. This gentle, unassuming man is not quite what you had expected. Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. Mr. Engram returns moments later with hot tea and a plate of cheese and crackers. “I assume you are here to find the path to Carcosa?” he asks, wearing an excited grin. You shake your head in response, but he doesn’t seem to notice. He paces back and forth around the room as he speaks rapidly. “He told me that you would be arriving soon. That I should... Prepare.” Nigel turns toward you as he reaches the wooden door across from you, his eyes flashing. “Don’t worry. All is ready. The way is paved.” He opens the door to his study and steps inside, leaving you behind to interpret his cryptic comments. You wait a few minutes for him to return, but when he does not, you begin to worry. Then you notice that mold has already begun to grow over the cheese he’d brought you. “Mr. Engram?” you call out, and you hesitantly knock on the door to his study. There is no response. When you enter the room, you find him hanging from the ceiling fan, his body rotting from weeks of decomposition.",
-      "steps": ["found_nigel_engram", "add_tablets", "ask_jordan_perry", "earn_xp"]
+      "steps": ["found_nigel_engram", "add_tablets", "ask_jordan_perry", "earn_xp",
+        "$upgrade_decks"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "As the sun rises once more over the skyline of Paris, you lose sight of the mysterious figure. Frustrated at your failure, you return to your hotel to sleep and recover from the horrors of the past few nights. Your fitful dreams return— dreams of Carcosa, of the King in Tatters, and of the shadowy figure whom you had pursued through the streets of Paris. When you awaken, you are no longer in your hotel room.",
-      "steps": ["unable_to_find_nigel", "add_elder_things", "ask_jordan_perry", "earn_xp"]
+      "steps": ["unable_to_find_nigel", "add_elder_things", "ask_jordan_perry", "earn_xp",
+        "$upgrade_decks"]
     }
   ]
 }
@@ -6949,13 +6961,13 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "“Excuse me, but it’s very late,” you hear a server say as he gently taps you on your shoulder. You realize that you are sitting on a couch in the manor’s living room, and that you have been asleep for some time. The party appears to be winding down. No music fills the halls, the food is all but gone, and only a few guests remain. “Perhaps you would like for me to get your coat?” the server asks with a trained smile. You wobble as you rise to your feet, leaning against the couch’s armrest. Your head pounds with a dizzying intensity, and your vision is spotted. You insist that you are fine, and begin walking toward the foyer.\nYou no longer see any of the guests you were searching for earlier, not even the hostess, Mrs. Dumaine. All traces of the madness and horror you’ve experienced are gone. Even the oddities you witnessed upon entering the manor have vanished—the signs of struggle, the broken windows, the blood trail on the porch... Every piece of evidence has been erased. But you still remember the night’s events, and in your memory you will find your answers.",
-      "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens", "skip_lunacys_reward"]
+      "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens", "$upgrade_decks", "skip_lunacys_reward"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "Several days later, you find yourself reminiscing about the party you attended at 1452 Atlantic Avenue. What a roaring good time you had! And yet, your memory is hazy. You can’t help but feel you are forgetting something important. Something about the play you’d watched earlier that night—The King in Yellow. That nagging sensation pursues you in every waking moment. Try as you might to recall the night’s events in full, there remains a gaping hole in your memory. As you strain to remember, your concern grows, almost to the point of obsession. Deciding that you absolutely must know what occurred that night, you head toward the manor of the Historical Society in Southside. Perhaps there you can learn more about <u>The King in Yellow</u> play...",
-      "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens", "skip_lunacys_reward"]
+      "steps": ["vips_interviewed", "vips_slain", "earn_xp", "earn_clue_xp", "adjust_chaos_tokens", "$upgrade_decks", "skip_lunacys_reward"]
     }
   ]
 }
@@ -7309,19 +7321,20 @@
         "mental"
       ],
       "text": "You are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Dazed as you are, you find it difficult to answer. He points toward the staircase nearby and pushes you away from the catacombs. You stumble onto the Rue de la Tombe-Issoire and slowly make your way to a hotel where you can stay the night.\nSeveral days of research later, the meaning of the strange diagrams you saw within the catacombs still escapes you. You feel as though you have been led on a wild goose chase. Just as you are about to give up, you see a faded yellow book on the table nearest to you. You are stunned to discover that it is the unabridged script of The King in Yellow. Drawn on the cover in black ink is the very same diagram whose meaning you have been struggling to interpret for several sleepless nights. Who had placed it here? How had it come to your hotel room? Regardless, you know what you must do. The play holds the secrets—it has all along—and yet like a fool you have avoided reading Act II out of superstition. Its words cannot harm you any more than the creatures and fanatics you have already encountered. Trembling, you open to the second part, and begin to read.",
-      "steps": ["know_site_of_gate", "read_act_2_choice", "add_elder_things", "ask_ishimaru_haruko", "earn_xp"]
+      "steps": ["know_site_of_gate", "read_act_2_choice", "add_elder_things", "ask_ishimaru_haruko", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "The burned skull holds the key to everything. You are sure of it. You have tried every method available to you in studying the diagram it bears, but the answer eludes you still. You have brought the skull to experts, occultists, and professors. You have even tried speaking with the skull on more than one occasion. Exasperated, you place the skull on your night table and try to get some sleep for the first time since escaping the catacombs. As you fall asleep, you cannot shake the sight of the diagram etched in the skull’s forehead.\nYou awaken with a spark of inspiration and rush to the Musée du Louvre, a famous Parisian museum housing tens of thousands of paintings, drawings, and archaeological finds. You spend days exploring the museum—every display, every collection, every single object of art that might hold a clue to the diagram’s meaning. Finally, you see it: a painting depicting a beautiful island town weathering a torrential storm. Waves crash against the stone of the outer wall, the tide threatening to swallow the island whole. Lightning flashes around the tower of the abbey above the village. A whirlwind of black clouds churns in the sky above. The diagram from the burned skull you hold in your hands is recreated perfectly in the stained glass of the abbey. The title of the piece is “The Path Is Open.”",
-      "steps": ["know_site_of_gate", "add_cultists", "ask_ishimaru_haruko", "earn_xp"]
+      "steps": ["know_site_of_gate", "add_cultists", "ask_ishimaru_haruko", "earn_xp",
+        "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You fall ceaselessly through the empty abyss. No air slows your descent or courses through your hair. It is a passageway devoid of reality. Finally, you pass through an invisible gateway and enter another realm. Looming above and below you are two skylines, one a warped reflection of the other. A vortex of swirling black clouds and crashing waves lies in between them. You study both sides—the familiar city and its strange mirror. Could this be the path to Carcosa? A passageway between realities, where realms converge? If so, all that is left is to find where this gate appears on Earth. You fall into the vortex below.\nYou are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Your eyes widen with realization and you wrest your arm free from the confused man’s grip. “I have to go at once!”",
-      "steps": ["know_site_of_gate_chasing_stranger", "add_tablets", "ask_ishimaru_haruko", "earn_xp"]
+      "steps": ["know_site_of_gate_chasing_stranger", "add_tablets", "ask_ishimaru_haruko", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -7717,6 +7730,7 @@
         "earn_xp",
         "ask_constance_dumaine",
         "add_cultists",
+        "$upgrade_decks",
         "skip_lost_soul"
       ]
     },
@@ -8833,13 +8847,13 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "You head out of the manor and are embraced by the brisk evening air. Your investigation has left you exhausted and strangely paranoid. Something about that event felt peculiar to you, though you aren’t sure why. Although the guests seemed oblivious, you noticed that the staff was sweaty and jittery, and the Lodge members seemed tense as well. More than once, you noticed their gaze drawn to you, watching your every move. If you didn’t know any better, you’d think the Silver Twilight Lodge was having you tailed for some reason. Regardless, you weren’t able to find much information about the four disappearances, and you doubt you ever will. Perhaps it was nothing, after all.",
-      "steps": ["learned_nothing_of_the_lodges_schemes", "earn_xp", "skip_price_of_progress"]
+      "steps": ["learned_nothing_of_the_lodges_schemes", "earn_xp", "$upgrade_decks", "skip_price_of_progress"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "You flee toward the manor’s entry hall, but the wall of spectral mist still blocks your way. Emerging from the mist are several ghostly faces and arms, writhing and screaming in torment. You turn and are confronted by the empty visage of the hooded Watcher. Before you even realize your doom, the creature’s ethereal body is swirling and swooping through the air as though composed of mist itself. The creature reconstitutes before you, and its charred hand grips your throat, holding you aloft with tremendous strength. You kick and dig your nails into the creature’s hand, struggling with the ferocity of a cornered animal, but it is no use. The last thing you see is the red glare of the thing’s eyes as it drills into your mind.",
-      "steps": ["never_seen_again", "earn_xp", "kill_not_resigned", "skip_price_of_progress"]
+      "steps": ["never_seen_again", "earn_xp", "kill_not_resigned", "$upgrade_decks", "skip_price_of_progress"]
     }
   ]
 }
@@ -9187,13 +9201,13 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "It was not until recently that you understood the purpose of the awful piping which you have heard constantly throughout your investigation. It is a lullaby of sorts, meant to keep the oblivious god from waking. For just a brief moment, the pipers’ song was interrupted, and Azathoth began to stir. Now you understand why Anna came to you that fateful night and begged to read your fortune. She knew the part you would have to play when you arrived here.\nSitting down at the edge of the creature’s nighted throne, you take out your flute, and begin to play.\nIn this place where time and hunger and age and weariness are mortal aspects of no concern to you, it is your duty to continue to play. Without fail. Without end. ",
-      "steps": ["lead_investigator_joins_pipers", "azathoth_slumbers", "lead_investigator_insane", "earn_xp_bonus_5", "two_mental_trauma", "win"]
+      "steps": ["lead_investigator_joins_pipers", "azathoth_slumbers", "lead_investigator_insane", "earn_xp_bonus_5", "two_mental_trauma", "$upgrade_decks", "win"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "You refuse to allow this creature to destroy everything you have ever loved. You gather together what you need for your ritual—a bit of shadowy essence from the witches’ cloaks, a fragment of spectral mist from the wraiths you banished, and the knowledge you’ve gained from delving into Arkham’s past. Slowly, quietly, you weave your wall together, stitching darkness with blood, blood with souls, souls with onyx stone. It takes ages to complete. When you are done, your reward is oblivion. A stillness and silence so pure, so perfect, no disturbance can penetrate it. The barrier cannot hold Azathoth—nothing truly can—but perhaps now it will not stir when fools on Earth call forth its name or draw from its power. With your task complete, you turn and face the darkness, summoning your steed. It is time to go home.",
-      "steps": ["azathoth_slumbers", "earn_xp_bonus_5", "two_physical_trauma", "win"]
+      "steps": ["azathoth_slumbers", "earn_xp_bonus_5", "two_physical_trauma", "$upgrade_decks", "win"]
     },
     {
       "id": "R4",
@@ -9205,7 +9219,7 @@
       "id": "R5",
       "title": "Resolution 5",
       "text": "Pricking your arm with the quill, you sign in blood.",
-      "steps": ["azathoth_slumbers", "signed_the_black_book", "earn_xp_bonus_10", "two_physical_and_mental_trauma", "win_question_mark"]
+      "steps": ["azathoth_slumbers", "signed_the_black_book", "earn_xp_bonus_10", "two_physical_and_mental_trauma", "$upgrade_decks", "win_question_mark"]
     }
   ]
 },
@@ -9959,7 +9973,7 @@
         "mental"
       ],
       "text": "You manage to escape the building and flee on foot. As you run, you can hear a thunderous rumble coming from the manor. Several others burst through the front door behind you, too preoccupied to notice you. One yells to her companions: “Get out and gather at the Unvisited Isle! We have to perform the binding rite with or without the device!”\n“What about the guardian?” A man at the gates asks.\n“It’s no use,” she replies. “Just go!”\nThat is when the screaming begins. A spray of blood splatters against the basement window. Those who escaped immediately panic and flee.\nYou don’t stop or look back. You run until the building has faded behind the dense, grey mist, until you can no longer hear the screams of those still inside, until your legs can barely move.\nIs this the kind of “sacrifice” the Silver Twilight Lodge believes in making? And if so, what does this mean for the “binding rite” they seek to complete at the Unvisited Isle?",
-      "steps": ["guardian_of_the_trap_emerged", "earn_xp", "skip_inner_circle"]
+      "steps": ["guardian_of_the_trap_emerged", "earn_xp", "$upgrade_decks", "skip_inner_circle"]
     },
     {
       "id": "R1",
@@ -9971,13 +9985,13 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "Every fiber of your being is stretched as the box pulls you in. However, before it can accomplish its task, you manage to reach out and slam the lid shut. You shudder uncontrollably as your senses slowly return to you. This box is more dangerous than you could have imagined. In the hands of the Lodge, it could have been a powerful weapon, though you’re not sure what they intended to do with it. Just then, you hear several Lodge members approaching. You quickly shift one of the room’s bookcases aside and hide behind it before they enter the room. “You’re sure you heard something in here? I don’t see anybody,” one of them says.\n“Hm…” the other pauses, presumably inspecting the room for signs of intruders. “Must have been nothing.”\n“It’s all right. We’re all a bit on edge since the trap box went missing. Come, we don’t want to be late for the ceremony. Tonight is an important night.” Their footfalls become softer as they depart. The man’s words linger in your thoughts momentarily. What did he mean by tonight being an important night? This could be just as important as the puzzle box they had been attempting to open. You quietly follow the two men as they head deep into the tunnels beneath the Lodge. You struggle to keep up with them while trying to keep your footsteps silent on the stone floor of the passageway. Finally, they enter a large door with the familiar three arrows of Silver Twilight emblazoned along its surface. Ritualistic chanting fills the hall from the other side. You approach softly, placing your ear against the door to listen in.\n“Brothers and sisters,” an elderly voice announces, “thank you for coming to this hallowed gathering. The time we have long waited for approaches.” You recognize the man’s voice – it is Carl Sanford, president of the Silver Twilight Lodge. “For many decades, the Order of the Silver Twilight has pursued knowledge that can elevate humanity. We have defended against threats to our very existence. We have sacrificed everything for this sacred cause. Now, one of these threats terrorizes our city, and once again we must do what has to be done in order to protect it.” The crowd responds with solemn approval. “Tonight, we will complete the ritual we began many nights ago at the center of the Unvisited Isle. Tonight, we will finally bind the revenant and learn what it knows. We must not allow the secrets of AZATHOTH to be lost to those who would do humanity harm.”\nThe cult replies with a monotone hymn, and you take this opportunity to flee the Lodge before you are discovered. The conspiracy you have unveiled leaves you with even more questions. If the revenant Mr. Sanford speaks of is what you think it is, binding it will surely protect Arkham, as he claims. But what knowledge do they seek to learn from it?…and what in the hell is an “AZATHOTH?”",
-      "steps": ["discovered_how_to_open_the_puzzle_box", "earn_xp", "skip_inner_circle"]
+      "steps": ["discovered_how_to_open_the_puzzle_box", "earn_xp", "$upgrade_decks", "skip_inner_circle"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "The beast that had emerged from the box was a vicious guardian, slaughtering anyone in its path. Somehow you were able to slay the creature, but the consequences were dire. Many Lodge members were gruesomely killed by the creature’s rampage before you were able to put it down. Worse, the device it emerged from was destroyed beyond recognition. You’re not sure whether it broke as a result of the beast’s emergence or as a result of its death, but either way, it is a regretful outcome. “This didn’t work as planned,” one of the robed members of the Order states matter-of-factly as you examine the crushed puzzle box.\n“That’s a hell of an understatement,” another adds. She places a hand on your shoulder and gently pulls you away from the remains of the device. “Come on, that’s a lost cause,” she says.\nHer partner ignores your presence and stoically addresses her. “We’ll have to get to the Unvisited Isle and complete the binding rite without the trap.” She nods and takes one last look at you before the remaining Lodge members flee the building. Is this the kind of “sacrifice” the Silver Twilight Lodge believes in making? And if so, what does this mean for the “binding rite” they seek to complete at the Unvisited Isle?",
-      "steps": ["guardian_of_the_trap_defeated", "earn_xp", "skip_inner_circle"]
+      "steps": ["guardian_of_the_trap_defeated", "earn_xp", "$upgrade_decks", "skip_inner_circle"]
     }
   ]
 },
@@ -10412,7 +10426,8 @@
   "scenarioName": "The Inner Circle",
   "setup": [
     "ic_1",
-    "choose_to_share_info"
+    "choose_to_share_info",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -10697,7 +10712,8 @@
   "setup": [
     "check_silver_twilight_investigator",
     "progress_3",
-    "check_josef_meiger"
+    "check_josef_meiger",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -11326,13 +11342,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house",
-      "steps": ["earn_xp", "check_brown_jenkin_xp", "check_nahab_xp", "check_act_deck"]
+      "steps": ["earn_xp", "check_brown_jenkin_xp", "check_nahab_xp", "check_act_deck", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "When you come to, you are lying on the wooden floor of Walter Gilman’s room. The trappings of Keziah’s foul practices are nowhere to be found, nor is the fanged, bearded rat – Keziah’s “ familiar,” as you now understand. Just as you are about to rise to your feet, you spot something glinting in a corner of the room. Crawling underneath Gilman’s bed, you reach out and grab the trinket. It is a worn nickel crucifix, similar to the ones you saw in the loomfixer’s room. You shove it into your pocket before leaving the troubling room and its strange angles behind. You’ve learned as much as you care to uncover about Keziah Mason, the witch who once inhabited this old and forsaken house. As you step out into the chilly November air, you turn and take one last look at the decrepit Witch House. You fear that though you may never enter this place again, in your thoughts and your dreams, you will never truly leave it behind.",
-      "steps": ["earn_xp_bonus_2", "record_gilmans_journal", "record_keziahs_formulae", "record_worn_crucifix", "choose_black_book"]
+      "steps": ["earn_xp_bonus_2", "record_gilmans_journal", "record_keziahs_formulae", "record_worn_crucifix", "choose_black_book", "$upgrade_decks"]
     }
   ]
 },
@@ -11526,13 +11542,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "Rays of faded sunlight stream through the haze, and the unnatural mist finally recedes. As it does, Hangman’s Hill returns to its original state. No other spiteful ghosts emerge to haunt you, and the witches who summoned them have retreated into the shadows once more. You hope that you have done enough to prevent the rest of Arkham to succumbing to this horror.",
-      "steps": ["record_heretics_released", "check_earned_wisp", "earn_xp"]
+      "steps": ["record_heretics_released", "check_earned_wisp", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Resigned to your fate, you fall to your knees. The mist parts. Time slows to a crawl as the watcher emerges. Its spectral form glides along the ground, approaching with the slow surety of a ticking clock. You close your eyes, unwilling to look upon your killer. Your fingers dig into your palm, and you brace yourself.\nThe moment passes.\nWhen you open your eyes again, the creature is gone, along with the spectral mist.\n…Have you been spared?",
-      "steps": ["survived_the_watchers_embrace", "record_heretics_released", "check_earned_wisp", "earn_xp"]
+      "steps": ["survived_the_watchers_embrace", "record_heretics_released", "check_earned_wisp", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -11866,25 +11882,25 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "Despite her wounds, the leader of the coven rises to her feet. More of the hooded figures emerge from the tree line, eager to defend their leader. “Interloper!” one calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “They’re the ones from before, High Priestess: the ones who interfered with our great work.”\nThe “High Priestess” holds up a single hand, and a hush falls over the other witches. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies to the red-haired accuser. You lower your weapons as several of the hooded figures approach and surround their leader. They begin chanting in a soft tone as they examine her wounds. The red-haired witch crosses her arms and watches you with a hard glare, her gaze never straying far from you. “I am Anette,” says the leader of the coven, “and these are my sisters. Tell me: Who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
-      "steps": ["witches_spell_broken", "mementos_flute_and_ritual_components", "earn_xp"]
+      "steps": ["witches_spell_broken", "mementos_flute_and_ritual_components", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "With the spell broken, the hooded figures turn their attention to you. More of them emerge from the tree line, eager to take vengeance upon you for destroying their plans. “Interloper!” one of them calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “You will not escape this time!” she cries, prepared to strike you down.\n“Stop!” the leader of the coven yells in a commanding voice, holding up her hand. The red-haired accuser stops in her tracks, and there is a sudden stillness in the clearing around the circle.\n“But High Priestess,” the witch persists, “they’re the ones from before. The ones who interfered with our great work.”\nThe High Priestess places a hand on the red-haired witch’s shoulder. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies.\nThe red-haired witch lowers her rod as the High Priestess approaches you, her arms crossed. She watches you with a hard glare, her gaze never straying far from you. “I am Anette, and these are my sisters,” she says. “Tell me: who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
-      "steps": ["witches_spell_broken", "mementos_flute_and_scrap_of_torn_shadow", "earn_xp"]
+      "steps": ["witches_spell_broken", "mementos_flute_and_scrap_of_torn_shadow", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high- pitched piping of a hundred discordant flutes. Your entire body rattles with the sensation. Blood trickles from your ears, and tears well in your eyes. You try to crawl to safety, but it is to no avail. The piping only grows in volume, the discordant cacophony shattering your eardrums and turning your thoughts to sludge. Eventually, after what feels like hours, weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
-      "steps": ["witches_spell_cast", "mementos_check_act", "earn_xp"]
+      "steps": ["witches_spell_cast", "mementos_check_act", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R4",
       "title": "Resolution 4",
       "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high-pitched piping of a hundred discordant flutes. The sensation fades as the circle’s leader approaches, her powerful form looming over you. “We cannot allow the spell to fail. Take them to the edge of the woods and make sure we are not interrupted,” she commands several of the other hooded women. They grab you by the arms and hoist you up, dragging you away from the central clearing. You try to resist, but your limbs are numb and sluggish, and the cacophony of sound and sensations assaulting your mind has turned your thoughts to sludge. Eventually, after what feels like hours, you are hurled to the ground, and weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
-      "steps": ["witches_spell_cast", "mementos_flute", "earn_xp"]
+      "steps": ["witches_spell_cast", "mementos_flute", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -11902,7 +11918,8 @@
     "check_mementos",
     "check_black_book",
     "check_doom_draws_ever_closer",
-    "tof_2"
+    "tof_2",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -13084,7 +13101,7 @@
       "id": "R8",
       "title": "Resolution 8",
       "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
-      "steps": ["remove_puzzle_box", "check_gavriella_alive", "check_jerome_alive", "check_penny_alive", "check_valentino_alive", "earn_xp"]
+      "steps": ["remove_puzzle_box", "check_gavriella_alive", "check_jerome_alive", "check_penny_alive", "check_valentino_alive", "earn_xp", "$upgrade_decks"]
     }
   ]
 }]}
@@ -13330,7 +13347,8 @@
   "scenarioName": "Expeditions End",
   "interlude": true,
   "setup": [
-    "check_investigators_recovered_relic"
+    "check_investigators_recovered_relic",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -14546,13 +14564,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "“Finally! Yoth, cavern of the serpents! The cursed ones, who fled the destruction of Valusia!” Alejandro examines the entryway with wonder in his eyes, arms raised in exultation. You know not of what he speaks, and you are beginning to grow worried. Just then, something scutters behind you, and a sound like the click-clacking of a claw catches you by surprise. Emerging from the darkness behind you are several alien creatures, the likes of which you have never seen: ten feet tall, with conical bodies that end in four strange appendages of varying lengths. “There you are,” Alejandro says calmly. One of the creatures responds by clicking its claws against one another in a deliberate pattern. “Take their minds,” Alejandro commands the creatures. “We have no further use for them.” It is your last human memory.",
-      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
+      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Before you are able to cross into the next layer of the cavern, a sound like the click-clacking of a claw catches you by surprise. Emerging from the darkness behind you are several alien creatures, the likes of which you have never seen: ten feet tall, with conical bodies that end in four strange appendages of varying lengths. You are stunned to see a human figure standing at the head of the group: none other than Alejandro Vela. “Take their minds,” Alejandro commands the creatures. “We have no further use for them.” It is your last human memory.",
-      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned"]
+      "steps": ["check_harbinger", "record_yigs_fury", "earn_xp", "check_investigators_poisoned", "$upgrade_decks"]
     }
   ]
 }
@@ -14570,7 +14588,8 @@
     "check_poison_spreads",
     "find_stone_carvings",
     "check_canteen",
-    "check_faith_restored"
+    "check_faith_restored",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -15588,7 +15607,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nIt is difficult for me to convey my unabridged thoughts on the events that occurred during the summer of 1925. Of course, I gave my full account to Harlan—who I suspect is the only person willing to vouch for my story—but I have not sat down to record it on paper until now. Perhaps I would rather these events had been a figment of my imagination.\nIn truth, I have no idea how we made it out of the caverns beneath the jungle alive. Simply reaching the abyssal place was a hellish ordeal. My memory of our return trip is muddled and disarrayed. We scrambled in the dark for what seemed like ages. We were out of food, out of supplies, out of hope—but somehow, we found a way out.\nOur reward for preventing calamity was scorn and ridicule. No upstanding paper or university would publish our findings, and of course we possessed no proof of our expedition save for our scars and nightmares. I wish I could say that my memory of these events has faded with each passing day, but I will never forget the alien city we explored in our conical bodies, the serpents that pursued us in red-litten Yoth, the formless abomination that lived in the depths of the Earth...\nPerhaps that is why I fear making a written account of our findings—because these memories will crystallize and become etched in my mind, forever damning me to a life of terror and dismay. Still, the world needs to know what we saw. What we did.",
-      "steps": ["mended_tear_in_time", "two_physical_and_mental_trauma", "attached_locations_to_victory_display", "earn_xp_plus_5", "win", "skip_epilogue"]
+      "steps": ["mended_tear_in_time", "two_physical_and_mental_trauma", "attached_locations_to_victory_display", "earn_xp_plus_5", "$upgrade_decks", "win", "skip_epilogue"]
     },
     {
       "id": "R2",
@@ -15612,7 +15631,7 @@
       "id": "R5",
       "title": "Resolution 5",
       "text": "All of this was set into motion when the Eztli ruins were first intruded upon. Ichtaca’s original warning was her last vestige of humanity speaking to you. She wanted you and the other explorers to turn back, but curiosity and greed got the better of you. Until that day, balance had been kept. Alejandro sought the relic for his own devices. Ichtaca heard the call of her master and obeyed. However, humanity is the true cause of this chaos. You know now what you must do. You know now how you can save everyone.",
-      "steps": ["turned_back_time", "attached_locations_to_victory_display", "earn_xp", "proceed_epilogue"]
+      "steps": ["turned_back_time", "attached_locations_to_victory_display", "earn_xp", "$upgrade_decks", "proceed_epilogue"]
     }
   ]
 }
@@ -16004,7 +16023,8 @@
           },
           {
             "type": "earn_xp",
-            "investigator": "all"
+            "investigator": "all",
+            "bonus": "$input_value"
           }
         ]
       }
@@ -16563,7 +16583,8 @@
     "find_brazier",
     "check_torches",
     "time_passes",
-    "provisions_and_medicine_gone"
+    "provisions_and_medicine_gone",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -17687,7 +17708,8 @@
     "use_medicine",
     "check_poison_spreads",
     "stop_and_rest",
-    "check_blanket"
+    "check_blanket",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -19016,7 +19038,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You arrive back at your house and take stock of the situation. Your investigation throughout the city has uncovered the existence of a secret cabal within Arkham. From what you can tell, they call themselves the Brotherhood, and they seem to know more about the Eztli relic and Alejandro’s previous expedition than even you do. Their methods are secret and furtive, and their motives elude you still. However, one piece of vital information has come to light.\n“They seek a place known as the Nexus of N’kai,” Ichtaca claims. A map of Central America lies on the table before you, marked with the previous expedition’s trail. “I have heard of this place, but its exact location is not known to me.” Once again, your mysterious guide appears to know more than she lets on.\nWith no other leads to follow, you are left with no choice. Once more you must journey into uncharted territory in search of answers...but will anyone return this time?",
-      "steps": ["check_act_ab", "check_act_cd", "check_act_ef", "earn_expedition_journal", "earn_xp", "earn_act_xp", "resupply_point", "visit_hospital", "choose_to_heal_poison", "choose_to_heal_trauma", "buy_supplies"]
+      "steps": ["check_act_ab", "check_act_cd", "check_act_ef", "earn_expedition_journal", "earn_xp", "earn_act_xp", "resupply_point", "visit_hospital", "choose_to_heal_poison", "choose_to_heal_trauma", "buy_supplies", "$upgrade_decks"]
     }
   ]
 }
@@ -19240,7 +19262,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nNo one else has ever learned of the events that truly occurred during the summer of 1925, and no one ever will, for I intend to keep this journal locked in my safe-deposit box once I have finished writing in it. I seek only to preserve my own record of these events, for I do not wish the passage of time to erase them completely. After all, these are not my memories, but the memories of my other self: the self who ventured through time and space to save humanity.\nIt is difficult to explain how we did what we did. After all that happened—Ichtaca, Alejandro, the city of the Yithians, Yoth—it turns out the true doom of humanity had occurred much, much earlier: when we first left to find the Eztli. We brought all of these events upon ourselves. In order to prevent this calamity, we had to seal the relic away forever. I remember these events as though I myself had experienced them, though for me, the expedition had gone much differently. We reached the central chamber of the Eztli ruins, but it was sealed shut, and nothing—not even the TNT that José had brought from the trucks—could breach the entrance. Although we returned to Arkham with proof that the Eztli existed, no other expedition would ever find them or their ruins again. My other self perished in those ruins—but I remember. Somehow, I remember everything.",
-      "steps": ["sealed_relic_of_ages_forever", "earn_xp", "win_campaign"]
+      "steps": ["sealed_relic_of_ages_forever", "earn_xp", "$upgrade_decks", "win_campaign"]
     }
   ]
 }

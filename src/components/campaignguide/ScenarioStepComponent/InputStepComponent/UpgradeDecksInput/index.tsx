@@ -86,23 +86,21 @@ class UpgradeDecksInput extends React.Component<Props> {
         }) }
         { !hasDecision && (
           <View style={styles.buttonWrapper}>
-            <Button title={t`Proceed`} onPress={this._save} />
+            <Button title={t`Finished upgrading decks`} onPress={this._save} />
           </View>
-        )}
+        ) }
       </View>
     );
   }
 
   render() {
-    const {
-    } = this.props;
     return (
       <CampaignGuideContext.Consumer>
         { ({ latestDecks, campaignState }: CampaignGuideContextType) => (
           <ScenarioStepContext.Consumer>
             { ({ scenarioInvestigators, campaignLog, scenarioState }: ScenarioStepContextType) => (
               this.renderContent(scenarioInvestigators, latestDecks, campaignLog, campaignState, scenarioState)
-            )}
+            ) }
           </ScenarioStepContext.Consumer>
         ) }
       </CampaignGuideContext.Consumer>
@@ -130,19 +128,6 @@ export default connect<{}, ReduxActionProps, OwnProps, AppState>(
 );
 
 const styles = StyleSheet.create({
-  section: {
-    marginBottom: 8,
-    marginRight: 8,
-    flexDirection: 'row',
-  },
-  investigatorNotes: {
-    flex: 1,
-    marginTop: 4,
-    flexDirection: 'column',
-  },
-  column: {
-    flexDirection: 'column',
-  },
   header: {
     paddingRight: 16,
     paddingBottom: 4,

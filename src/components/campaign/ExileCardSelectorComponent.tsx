@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-  Text,
-  StyleSheet,
-} from 'react-native';
 import { connect } from 'react-redux';
-import { t } from 'ttag';
 
 import { Deck, Slots } from 'actions/types';
 import Card from 'data/Card';
-import CardSectionHeader from 'components/core/CardSectionHeader';
 import { getDeck, AppState } from 'reducers';
-import typography from 'styles/typography';
 import CardSelectorComponent from '../cardlist/CardSelectorComponent';
 
 interface OwnProps {
@@ -66,10 +59,3 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
 )(ExileCardSelectorComponent);
-
-const styles = StyleSheet.create({
-  exileText: {
-    paddingLeft: 8,
-    textTransform: 'uppercase',
-  },
-});

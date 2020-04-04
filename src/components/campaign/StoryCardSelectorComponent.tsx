@@ -1,8 +1,4 @@
 import React from 'react';
-import {
-  Text,
-  StyleSheet,
-} from 'react-native';
 import { flatMap, forEach } from 'lodash';
 import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
@@ -13,7 +9,6 @@ import { scenarioRewards } from 'components/campaign/constants';
 import { Deck, Slots } from 'actions/types';
 import Card from 'data/Card';
 import { getDeck, getTabooSet, AppState } from 'reducers';
-import typography from 'styles/typography';
 import CardSelectorComponent from '../cardlist/CardSelectorComponent';
 
 interface OwnProps {
@@ -201,10 +196,3 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
       },
     })
 );
-
-const styles = StyleSheet.create({
-  titleText: {
-    paddingLeft: 8,
-    textTransform: 'uppercase',
-  },
-});

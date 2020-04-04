@@ -41,7 +41,6 @@ interface Props {
   hasSecondCore?: boolean;
   showZeroCount?: boolean;
   backgroundColor?: string;
-  noBorder?: boolean;
 }
 
 export default class CardSearchResult extends React.PureComponent<Props> {
@@ -363,12 +362,11 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       onDeckCountChange,
       fontScale,
       backgroundColor,
-      noBorder,
     } = this.props;
     return (
       <View style={[
         styles.rowContainer,
-        noBorder ? {} : styles.rowBorder,
+        styles.rowBorder,
         { minHeight: rowHeight(fontScale) },
         backgroundColor ? { backgroundColor } : {},
       ]}>
@@ -405,13 +403,12 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       card,
       fontScale,
       backgroundColor,
-      noBorder,
     } = this.props;
     if (!card) {
       return (
         <View style={[
           styles.rowContainer,
-          noBorder ? {} : styles.rowBorder,
+          styles.rowBorder,
           { minHeight: rowHeight(fontScale) },
           backgroundColor ? { backgroundColor } : {},
         ]}>
@@ -429,7 +426,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       return (
         <View style={[
           styles.rowContainer,
-          noBorder ? {} : styles.rowBorder,
+          styles.rowBorder,
           { minHeight: rowHeight(fontScale) },
           backgroundColor ? { backgroundColor } : {},
         ]}>
@@ -450,7 +447,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   rowBorder: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.gray,
   },
   cardNameBlock: {

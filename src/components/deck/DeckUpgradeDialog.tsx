@@ -287,12 +287,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white',
   },
-  labeledRow: {
-    flexDirection: 'column',
-    padding: 8,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
-  },
   headerText: {
     padding: 16,
   },

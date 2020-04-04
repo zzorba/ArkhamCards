@@ -31,7 +31,6 @@ import {
   ScenarioDataEffect,
   ScenarioStatus,
   TraumaEffect,
-  UpgradeDecksEffect,
 } from './types';
 import CampaignGuide from './CampaignGuide';
 import { CardsMap } from 'data/Card';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { findIndex, flatMap, forEach, map } from 'lodash';
+import { findIndex, flatMap, forEach } from 'lodash';
 
 import CardListWrapper from './CardListWrapper';
 import { InvestigatorResult } from 'data/scenario/conditionHelper';

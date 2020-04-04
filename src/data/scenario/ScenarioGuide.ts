@@ -139,6 +139,9 @@ export default class ScenarioGuide {
     while (scenarioStep) {
       result.push(scenarioStep);
       scenarioStep = scenarioStep.nextStep(scenarioState);
+      if (scenarioStep && scenarioStep.campaignLog.campaignData.result) {
+        break;
+      }
     }
     return result;
   }

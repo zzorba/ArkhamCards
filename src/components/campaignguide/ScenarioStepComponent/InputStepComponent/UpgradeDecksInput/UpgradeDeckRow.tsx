@@ -12,7 +12,6 @@ import { Deck, Slots } from 'actions/types';
 import DeckUpgradeComponent from 'components/deck/DeckUpgradeComponent';
 import { DeckChanges } from 'components/deck/actions';
 import Card from 'data/Card';
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
@@ -82,7 +81,6 @@ export default class UpgradeDeckRow extends React.Component<Props> {
           fontScale={fontScale}
           deltaCountMode
           backgroundColor="transparent"
-          noBorder
         />
       )
     );
@@ -121,7 +119,7 @@ export default class UpgradeDeckRow extends React.Component<Props> {
         { this.renderStoryAssetDeltas() }
         <View style={styles.buttonWrapper}>
           <Button
-            title={t`Save Upgrade`}
+            title={t`Save upgrade`}
             onPress={this._save}
           />
         </View>
@@ -169,11 +167,11 @@ export default class UpgradeDeckRow extends React.Component<Props> {
     }
     if (!deck) {
       return (
-        <Button title={t`Select Deck`} onPress={this._selectDeck} />
-      )
+        <Button title={t`Select deck`} onPress={this._selectDeck} />
+      );
     }
     return (
-      <Button title={t`View Deck`} onPress={this._viewDeck} />
+      <Button title={t`View deck`} onPress={this._viewDeck} />
     );
   }
 
@@ -214,7 +212,6 @@ export default class UpgradeDeckRow extends React.Component<Props> {
         componentId={componentId}
         ref={this.deckUpgradeComponent}
         deck={deck}
-        noBorder
         fontScale={fontScale}
         investigator={investigator}
         campaignSection={this.renderCampaignSection()}
@@ -233,13 +230,11 @@ export default class UpgradeDeckRow extends React.Component<Props> {
     } = this.props;
     const saved = this.saved();
     return (
-      //<View style={{ backgroundColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0] }}>
-        <InvestigatorRow
-          investigator={investigator}
-          button={this.deckButton(saved)}
-          detail={this.renderDetails(saved)}
-        />
-      //</View>
+      <InvestigatorRow
+        investigator={investigator}
+        button={this.deckButton(saved)}
+        detail={this.renderDetails(saved)}
+      />
     );
   }
 }

@@ -54,13 +54,13 @@ export default class EditTraumaComponent extends React.Component<Props> {
             fontScale={fontScale}
             section={{ superTitle: t`Trauma` }}
           />
-          <NavButton 
+          <NavButton
             text={traumaString}
             fontScale={fontScale}
             onPress={this._editTraumaPressed}
           />
         </>
-      )
+      );
     }
     return (
       <View style={styles.traumaBlock}>

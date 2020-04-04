@@ -25,7 +25,6 @@ interface OwnProps {
   startingXp?: number;
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
-  noBorder?: boolean;
   upgradeCompleted: (deck: Deck) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
@@ -152,7 +151,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       investigator,
       componentId,
       campaignSection,
-      noBorder,
       fontScale,
     } = this.props;
     const {
@@ -186,7 +184,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
           fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
-        <View style={[styles.labeledRow, noBorder ? {} : styles.border]}>
+        <View style={[styles.labeledRow, styles.border]}>
           <View style={styles.row}>
             <Text style={typography.text}>
               { xp }
@@ -236,15 +234,12 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   border: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  header: {
-    textTransform: 'uppercase',
   },
 });
