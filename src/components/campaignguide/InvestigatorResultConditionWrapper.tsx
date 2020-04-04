@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { findIndex, flatMap, forEach, map } from 'lodash';
 
-import CardQueryWrapper from './CardQueryWrapper';
+import CardListWrapper from './CardListWrapper';
 import { InvestigatorResult } from 'data/scenario/conditionHelper';
 import Card from 'data/Card';
 import { Option } from 'data/scenario/types';
@@ -33,11 +33,10 @@ export default class InvestigatorResultConditionWrapper<T> extends React.Compone
           if (!investigators.length) {
             return null;
           }
-          const query = `(${map(investigators, code => `(code == '${code}')`).join(' OR ')})`;
           return (
             <View key={index}>
-              <CardQueryWrapper
-                query={query}
+              <CardListWrapper
+                cards={investigators}
                 render={this._renderCards}
                 extraArg={option}
               />

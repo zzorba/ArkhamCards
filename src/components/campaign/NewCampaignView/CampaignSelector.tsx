@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import { SelectCampagaignProps } from '../SelectCampaignDialog';
 import LabeledTextBox from 'components/core/LabeledTextBox';
 import { CUSTOM, CORE, CampaignCycleCode } from 'actions/types';
-import { s, m } from 'styles/space';
+import { s } from 'styles/space';
 
 interface Props {
   componentId: string;

@@ -1,0 +1,250 @@
+import React from 'react';
+import { forEach, find, throttle } from 'lodash';
+import {
+  ActivityIndicator,
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
+import { t } from 'ttag';
+
+import { Deck, Slots } from 'actions/types';
+import CardSectionHeader from 'components/core/CardSectionHeader';
+import { NavigationProps } from 'components/nav/types';
+import { showCard } from 'components/nav/helper';
+import ExileCardSelectorComponent from 'components/campaign/ExileCardSelectorComponent';
+import Card from 'data/Card';
+import { DeckChanges } from 'components/deck/actions';
+import PlusMinusButtons from 'components/core/PlusMinusButtons';
+import typography from 'styles/typography';
+
+interface OwnProps {
+  investigator: Card;
+  deck: Deck;
+  fontScale: number;
+  startingXp?: number;
+  campaignSection?: React.ReactNode;
+  storyCounts: Slots;
+  noBorder?: boolean;
+  upgradeCompleted: (deck: Deck) => void;
+  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
+  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
+}
+
+type Props = NavigationProps & OwnProps;
+
+interface State {
+  xp: number;
+  exileCounts: Slots;
+  saving: boolean;
+  error?: string;
+}
+
+export default class DeckUpgradeComponent extends React.Component<Props, State> {
+  _saveUpgrade!: (isRetry?: boolean) => void;
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      xp: props.startingXp || 0,
+      exileCounts: {},
+      saving: false,
+    };
+
+    this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
+  }
+
+  save = () => {
+    this._saveUpgrade();
+  };
+
+  _deckUpgradeComplete = (deck: Deck) => {
+    this.setState({
+      saving: false,
+    });
+    this.props.upgradeCompleted(deck);
+  };
+
+  _handleStoryCardChanges = (upgradedDeck: Deck) => {
+    const {
+      saveDeckChanges,
+      storyCounts,
+    } = this.props;
+    const hasStoryChange = !!find(storyCounts, (count, code) =>
+      upgradedDeck.slots[code] !== count
+    );
+    if (hasStoryChange) {
+      const newSlots: Slots = { ...upgradedDeck.slots };
+      forEach(storyCounts, (count, code) => {
+        if (count > 0) {
+          newSlots[code] = count;
+        } else {
+          delete newSlots[code];
+        }
+      });
+      saveDeckChanges(upgradedDeck, { slots: newSlots }).then(
+        this._deckUpgradeComplete,
+        (e: Error) => {
+          this.setState({
+            error: e.message,
+            saving: false,
+          });
+        }
+      );
+    } else {
+      this._deckUpgradeComplete(upgradedDeck);
+    }
+  };
+
+  saveUpgrade(isRetry?: boolean) {
+    const {
+      deck,
+      saveDeckUpgrade,
+    } = this.props;
+    if (!deck) {
+      return;
+    }
+    if (!this.state.saving || isRetry) {
+      this.setState({
+        saving: true,
+      });
+      const {
+        xp,
+        exileCounts,
+      } = this.state;
+      saveDeckUpgrade(deck, xp, exileCounts).then(
+        this._handleStoryCardChanges,
+        (e: Error) => {
+          this.setState({
+            error: e.message,
+            saving: false,
+          });
+        }
+      );
+    }
+  }
+
+  _onCardPress = (card: Card) => {
+    showCard(this.props.componentId, card.code, card);
+  };
+
+  _onExileCountsChange = (exileCounts: Slots) => {
+    this.setState({
+      exileCounts,
+    });
+  };
+
+  _incXp = () => {
+    this.setState(state => {
+      return { xp: (state.xp || 0) + 1 };
+    });
+  };
+
+  _decXp = () => {
+    this.setState(state => {
+      return { xp: Math.max((state.xp || 0) - 1, 0) };
+    });
+  };
+
+  render() {
+    const {
+      deck,
+      investigator,
+      componentId,
+      campaignSection,
+      noBorder,
+      fontScale,
+    } = this.props;
+    const {
+      xp,
+      exileCounts,
+      saving,
+      error,
+    } = this.state;
+    if (!deck) {
+      return null;
+    }
+    if (saving) {
+      return (
+        <View style={[styles.container, styles.saving]}>
+          <Text style={typography.text}>
+            { t`Saving...` }
+          </Text>
+          <ActivityIndicator
+            style={styles.savingSpinner}
+            size="large"
+            animating
+          />
+        </View>
+      );
+    }
+    return (
+      <View style={styles.container}>
+        { !!error && <Text>{ error }</Text> }
+        <CardSectionHeader
+          investigator={investigator}
+          fontScale={fontScale}
+          section={{ superTitle: t`Experience points` }}
+        />
+        <View style={[styles.labeledRow, noBorder ? {} : styles.border]}>
+          <View style={styles.row}>
+            <Text style={typography.text}>
+              { xp }
+            </Text>
+            <PlusMinusButtons
+              count={xp}
+              onIncrement={this._incXp}
+              onDecrement={this._decXp}
+            />
+          </View>
+        </View>
+        <ExileCardSelectorComponent
+          componentId={componentId}
+          id={deck.id}
+          label={(
+            <CardSectionHeader
+              section={{ superTitle: t`Exiled cards` }}
+              investigator={investigator}
+              fontScale={fontScale}
+            />
+          )}
+          exileCounts={exileCounts}
+          updateExileCounts={this._onExileCountsChange}
+        />
+        { !!campaignSection && campaignSection }
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  saving: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 16,
+    paddingBottom: 16,
+  },
+  savingSpinner: {
+    marginTop: 16,
+  },
+  labeledRow: {
+    flexDirection: 'column',
+    padding: 8,
+  },
+  border: {
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  header: {
+    textTransform: 'uppercase',
+  },
+});

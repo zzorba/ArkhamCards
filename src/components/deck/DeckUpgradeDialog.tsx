@@ -1,11 +1,10 @@
 import React from 'react';
-import { forEach, find, head, last, throttle } from 'lodash';
+import { head, last } from 'lodash';
 import {
-  ActivityIndicator,
   View,
   ScrollView,
-  Text,
   StyleSheet,
+  Text,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -13,17 +12,17 @@ import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import DeckUpgradeComponent from './DeckUpgradeComponent';
 import { Campaign, Deck, Slots } from 'actions/types';
+import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { NavigationProps } from 'components/nav/types';
 import { showDeckModal, showCard } from 'components/nav/helper';
-import ExileCardSelectorComponent from 'components/campaign/ExileCardSelectorComponent';
 import StoryCardSelectorComponent from 'components/campaign/StoryCardSelectorComponent';
 import { updateCampaign } from 'components/campaign/actions';
 import withTraumaDialog, { TraumaProps } from 'components/campaign/withTraumaDialog';
 import EditTraumaComponent from 'components/campaign/EditTraumaComponent';
 import Card from 'data/Card';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from 'components/deck/actions';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { getDeck, getCampaign, getTabooSet, AppState } from 'reducers';
 import typography from 'styles/typography';
 
@@ -49,15 +48,12 @@ interface RealmProps {
   investigator?: Card;
 }
 
-type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps & TraumaProps;
+type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps & TraumaProps & DimensionsProps;
 
 interface State {
-  xp: number;
-  exileCounts: Slots;
   storyEncounterCodes: string[];
   storyCounts: Slots;
   scenarioName?: string;
-  saving: boolean;
 }
 
 class DeckUpgradeDialog extends React.Component<Props, State> {
@@ -81,27 +77,23 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     };
   }
 
+  deckUpgradeComponent: React.RefObject<DeckUpgradeComponent> = React.createRef<DeckUpgradeComponent>();
+
   _navEventListener?: EventSubscription;
-  _saveUpgrade!: (isRetry?: boolean) => void;
   constructor(props: Props) {
     super(props);
 
     const latestScenario = props.campaign && last(props.campaign.scenarioResults || []);
-    const xp = latestScenario ? (latestScenario.xp || 0) : 0;
     const storyEncounterCodes = latestScenario && latestScenario.scenarioCode ?
       [latestScenario.scenarioCode] :
       [];
 
     this.state = {
-      xp,
-      exileCounts: {},
-      saving: false,
       scenarioName: latestScenario ? latestScenario.scenario : undefined,
       storyEncounterCodes,
       storyCounts: {},
     };
 
-    this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -111,7 +103,9 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'save') {
-      this._saveUpgrade();
+      if (this.deckUpgradeComponent.current) {
+        this.deckUpgradeComponent.current.save();
+      }
     }
   }
 
@@ -120,7 +114,18 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       showNewDeck,
       componentId,
       investigator,
+      campaign,
+      updateCampaign,
     } = this.props;
+    if (campaign) {
+      const investigatorData = this.investigatorData();
+      if (investigatorData) {
+        updateCampaign(
+          campaign.id,
+          { investigatorData }
+        );
+      }
+    }
     if (showNewDeck) {
       showDeckModal(componentId, deck, investigator);
     } else {
@@ -128,103 +133,13 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     }
   }
 
-  _handleStoryCardChanges = (upgradedDeck: Deck) => {
-    const {
-      saveDeckChanges,
-    } = this.props;
-    const {
-      storyCounts,
-    } = this.state;
-    const hasStoryChange = !!find(storyCounts, (count, code) =>
-      upgradedDeck.slots[code] !== count
-    );
-    if (hasStoryChange) {
-      const newSlots: Slots = { ...upgradedDeck.slots };
-      forEach(storyCounts, (count, code) => {
-        if (count > 0) {
-          newSlots[code] = count;
-        } else {
-          delete newSlots[code];
-        }
-      });
-      saveDeckChanges(upgradedDeck, { slots: newSlots }).then(
-        this._deckUpgradeComplete,
-        () => {
-          this._deckUpgradeComplete(upgradedDeck);
-        }
-      );
-    } else {
-      this._deckUpgradeComplete(upgradedDeck);
-    }
-  };
-
-  saveUpgrade(isRetry?: boolean) {
-    const {
-      deck,
-      campaign,
-      updateCampaign,
-      saveDeckUpgrade,
-    } = this.props;
-    if (!deck) {
-      return;
-    }
-    if (!this.state.saving || isRetry) {
-      this.setState({
-        saving: true,
-      });
-      if (campaign) {
-        const investigatorData = this.investigatorData();
-        if (investigatorData) {
-          updateCampaign(
-            campaign.id,
-            { investigatorData }
-          );
-        }
-      }
-      const {
-        xp,
-        exileCounts,
-      } = this.state;
-      this.setState({
-        saving: true,
-      });
-      saveDeckUpgrade(deck, xp, exileCounts).then(
-        this._handleStoryCardChanges,
-        () => {
-          // TODO: handle errors
-          this.setState({
-            saving: false,
-          });
-        }
-      );
-    }
-  }
-
   _onCardPress = (card: Card) => {
     showCard(this.props.componentId, card.code, card);
-  };
-
-  _onExileCountsChange = (exileCounts: Slots) => {
-    this.setState({
-      exileCounts,
-    });
   };
 
   _onStoryCountsChange = (storyCounts: Slots) => {
     this.setState({
       storyCounts,
-    });
-  };
-
-  _incXp = () => {
-    this.setState(state => {
-      return { xp: (state.xp || 0) + 1 };
-    });
-  };
-
-  _decXp = () => {
-    this.setState(state => {
-      return { xp: Math.max((state.xp || 0) - 1, 0) };
     });
   };
 
@@ -243,23 +158,40 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     );
   }
 
-  renderCampaignSection() {
+  renderCampaignSection(deck: Deck) {
     const {
+      componentId,
       campaign,
       investigator,
       showTraumaDialog,
+      fontScale,
     } = this.props;
+    const {
+      storyEncounterCodes,
+      scenarioName,
+    } = this.state;
     if (!campaign || !investigator) {
       return null;
     }
     return (
-      <View style={styles.labeledRow}>
+      <>
         <EditTraumaComponent
           investigator={investigator}
           investigatorData={this.investigatorData()}
           showTraumaDialog={showTraumaDialog}
+          fontScale={fontScale}
+          sectionHeader
         />
-      </View>
+        <StoryCardSelectorComponent
+          componentId={componentId}
+          investigator={investigator}
+          fontScale={fontScale}
+          deckId={deck.id}
+          updateStoryCounts={this._onStoryCountsChange}
+          encounterCodes={storyEncounterCodes}
+          scenarioName={scenarioName}
+        />
+      </>
     );
   }
 
@@ -267,62 +199,41 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const {
       deck,
       componentId,
+      investigator,
+      campaign,
+      saveDeckChanges,
+      saveDeckUpgrade,
+      fontScale,
     } = this.props;
     const {
-      xp,
-      exileCounts,
-      saving,
-      storyEncounterCodes,
-      scenarioName,
+      storyCounts,
     } = this.state;
-    if (!deck) {
+
+    if (!deck || !investigator) {
       return null;
     }
-    if (saving) {
-      return (
-        <View style={[styles.container, styles.saving]}>
-          <Text style={typography.text}>
-            { t`Saving...` }
-          </Text>
-          <ActivityIndicator
-            style={styles.savingSpinner}
-            size="large"
-            animating
-          />
-        </View>
-      );
-    }
+    const latestScenario = campaign && last(campaign.scenarioResults || []);
+    const xp = latestScenario ? (latestScenario.xp || 0) : 0;
+
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.labeledRow}>
-          <Text style={[typography.small, styles.header]}>
-            { t`Earned experience` }
+        <View style={styles.headerText}>
+          <Text style={typography.text}>
+            { t`Upgrading your deck allows changes and experience to be tracked over the course of a campaign.` }
           </Text>
-          <View style={styles.row}>
-            <Text style={typography.text}>
-              { xp }
-            </Text>
-            <PlusMinusButtons
-              count={xp}
-              onIncrement={this._incXp}
-              onDecrement={this._decXp}
-            />
-          </View>
         </View>
-        <ExileCardSelectorComponent
+        <DeckUpgradeComponent
+          ref={this.deckUpgradeComponent}
+          saveDeckChanges={saveDeckChanges}
+          saveDeckUpgrade={saveDeckUpgrade}
           componentId={componentId}
-          id={deck.id}
-          showLabel
-          exileCounts={exileCounts}
-          updateExileCounts={this._onExileCountsChange}
-        />
-        { this.renderCampaignSection() }
-        <StoryCardSelectorComponent
-          componentId={componentId}
-          deckId={deck.id}
-          updateStoryCounts={this._onStoryCountsChange}
-          encounterCodes={storyEncounterCodes}
-          scenarioName={scenarioName}
+          deck={deck}
+          investigator={investigator}
+          startingXp={xp}
+          fontScale={fontScale}
+          storyCounts={storyCounts}
+          upgradeCompleted={this._deckUpgradeComplete}
+          campaignSection={this.renderCampaignSection(deck)}
         />
       </ScrollView>
     );
@@ -351,7 +262,9 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDe
   mapDispatchToProps
 )(
   connectRealm<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-    withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps>(DeckUpgradeDialog), {
+    withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps>(
+      withDimensions(DeckUpgradeDialog)
+    ), {
       schemas: ['Card'],
       mapToProps(
         results: CardResults<Card>,
@@ -374,25 +287,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white',
   },
-  saving: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  savingSpinner: {
-    marginTop: 16,
-  },
   labeledRow: {
     flexDirection: 'column',
     padding: 8,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  header: {
-    textTransform: 'uppercase',
+  headerText: {
+    padding: 16,
   },
 });

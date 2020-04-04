@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
 
-import PickerComponent from '../PickerComponent';
-import ChooseOneListComponent from '../ChooseOneListComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import SetupStepWrapper from '../../SetupStepWrapper';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
+import PickerComponent from './PickerComponent';
+import ChooseOneListComponent from './ChooseOneListComponent';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import SetupStepWrapper from '../SetupStepWrapper';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType, ChooseOneInput } from 'data/scenario/types';
 import { chooseOneInputChoices } from 'data/scenario/inputHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
@@ -77,11 +77,13 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                 </>
               ) }
               { decision === undefined && (
-                <Button
-                  title={t`Save`}
-                  onPress={this._save}
-                  disabled={selectedChoice === undefined}
-                />
+                <View style={styles.buttonWrapper}>
+                  <Button
+                    title={t`Proceed`}
+                    onPress={this._save}
+                    disabled={selectedChoice === undefined}
+                  />
+                </View>
               ) }
             </>
           );
@@ -90,3 +92,9 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  buttonWrapper: {
+    padding: 8,
+  },
+});

@@ -2,6 +2,8 @@ import React from 'react';
 import {
   Alert,
   ScrollView,
+  StyleSheet,
+  View,
 } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -11,10 +13,11 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 import StepsComponent from '../StepsComponent';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from '../withScenarioGuideContext';
 import { iconsMap } from 'app/NavIcons';
+import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { NavigationProps } from 'components/nav/types';
 import { COLORS } from 'styles/colors';
 
-type Props = NavigationProps & ScenarioGuideInputProps;
+type Props = NavigationProps & ScenarioGuideInputProps & DimensionsProps;
 
 export type ScenarioProps = ScenarioGuideInputProps;
 
@@ -80,14 +83,18 @@ class ScenarioView extends React.Component<Props> {
   }
 
   render() {
+    const { componentId, fontScale } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => {
           return (
             <ScrollView>
               <StepsComponent
+                componentId={componentId}
+                fontScale={fontScale}
                 steps={scenarioGuide.setupSteps(scenarioState).steps}
               />
+              <View style={styles.footer} />
             </ScrollView>
           );
         } }
@@ -97,5 +104,11 @@ class ScenarioView extends React.Component<Props> {
 }
 
 export default withScenarioGuideContext<Props>(
-  ScenarioView
+  withDimensions<Props>(ScenarioView)
 );
+
+const styles = StyleSheet.create({
+  footer: {
+    marginTop: 64,
+  },
+});

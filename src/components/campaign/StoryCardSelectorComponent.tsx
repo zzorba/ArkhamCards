@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { connectRealm, CardResults } from 'react-native-realm';
 import { t } from 'ttag';
 
+import CardSectionHeader from 'components/core/CardSectionHeader';
 import { scenarioRewards } from 'components/campaign/constants';
 import { Deck, Slots } from 'actions/types';
 import Card from 'data/Card';
@@ -17,6 +18,8 @@ import CardSelectorComponent from '../cardlist/CardSelectorComponent';
 
 interface OwnProps {
   componentId: string;
+  investigator: Card;
+  fontScale: number;
   deckId: number;
   encounterCodes: string[];
   scenarioName?: string;
@@ -64,6 +67,8 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
       componentId,
       storyCards,
       scenarioName,
+      investigator,
+      fontScale,
     } = this.props;
     const {
       storyCounts,
@@ -73,9 +78,11 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     }
 
     const header = (
-      <Text style={[typography.small, styles.titleText]}>
-        { scenarioName ? t`Story cards to add - ${scenarioName}` : t`Story cards to add` }
-      </Text>
+      <CardSectionHeader
+        investigator={investigator}
+        section={{ superTitle: scenarioName ? t`Story cards to add - ${scenarioName}` : t`Story cards to add` }}
+        fontScale={fontScale}
+      />
     );
     const slots: Slots = {};
     forEach(storyCards, card => {
@@ -84,15 +91,13 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
       }
     });
     return (
-      <React.Fragment>
-        <CardSelectorComponent
-          componentId={componentId}
-          slots={slots}
-          counts={storyCounts}
-          updateCounts={this._updateStoryCounts}
-          header={header}
-        />
-      </React.Fragment>
+      <CardSelectorComponent
+        componentId={componentId}
+        slots={slots}
+        counts={storyCounts}
+        updateCounts={this._updateStoryCounts}
+        header={header}
+      />
     );
   }
 
@@ -101,6 +106,8 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     const {
       componentId,
       deckStoryCards,
+      investigator,
+      fontScale,
     } = this.props;
     const {
       storyCounts,
@@ -110,9 +117,11 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     }
 
     const header = (
-      <Text style={[typography.small, styles.titleText]}>
-        { t`Story Cards - Existing` }
-      </Text>
+      <CardSectionHeader
+        investigator={investigator}
+        section={{ superTitle: t`Story Cards - Existing` }}
+        fontScale={fontScale}
+      />
     );
     const slots: Slots = {};
     forEach(deckStoryCards, card => {
@@ -121,24 +130,22 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
       }
     });
     return (
-      <React.Fragment>
-        <CardSelectorComponent
-          componentId={componentId}
-          slots={slots}
-          counts={storyCounts}
-          updateCounts={this._updateStoryCounts}
-          header={header}
-        />
-      </React.Fragment>
+      <CardSelectorComponent
+        componentId={componentId}
+        slots={slots}
+        counts={storyCounts}
+        updateCounts={this._updateStoryCounts}
+        header={header}
+      />
     );
   }
 
   render() {
     return (
-      <React.Fragment>
+      <>
         { this.renderScenarioStoryCards() }
         { this.renderDeckStoryCards() }
-      </React.Fragment>
+      </>
     );
   }
 }

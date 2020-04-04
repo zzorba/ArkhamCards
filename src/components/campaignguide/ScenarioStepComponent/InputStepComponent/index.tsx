@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
+import UpgradeDecksInput from './UpgradeDecksInput';
 import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWithSuppliesInputComponent';
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
 import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
@@ -22,12 +23,19 @@ import typography from 'styles/typography';
 
 interface Props {
   step: InputStep;
+  componentId: string;
   campaignLog: GuidedCampaignLog;
+  fontScale: number;
 }
 
 export default class InputStepComponent extends React.Component<Props> {
   renderPrompt(): React.ReactNode {
-    const { step, campaignLog } = this.props;
+    const {
+      step,
+      campaignLog,
+      componentId,
+      fontScale,
+    } = this.props;
     switch (step.input.type) {
       case 'choose_one':
         if (step.input.choices.length === 1) {
@@ -115,6 +123,14 @@ export default class InputStepComponent extends React.Component<Props> {
             step={step}
             input={step.input}
             campaignLog={campaignLog}
+          />
+        );
+      case 'upgrade_decks':
+        return (
+          <UpgradeDecksInput
+            id={step.id}
+            componentId={componentId}
+            fontScale={fontScale}
           />
         );
       case 'scenario_investigators':

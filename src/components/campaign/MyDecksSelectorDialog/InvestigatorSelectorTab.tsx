@@ -31,8 +31,6 @@ export default class InvestigatorSelectorTab extends React.Component<Props> {
       componentId,
       customHeader,
       filterInvestigators,
-      filterDeckIds,
-      onlyDeckIds,
       sort,
     } = this.props;
 

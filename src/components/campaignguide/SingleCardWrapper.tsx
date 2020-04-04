@@ -3,7 +3,7 @@ import {
   Text,
 } from 'react-native';
 
-import CardQueryWrapper from './CardQueryWrapper';
+import CardListWrapper from './CardListWrapper';
 import Card from 'data/Card';
 
 interface Props {
@@ -23,8 +23,8 @@ export default class SingleCardWrapper extends React.Component<Props> {
   render() {
     const { code } = this.props;
     return (
-      <CardQueryWrapper
-        query={`(code == '${code}')`}
+      <CardListWrapper
+        cards={[code]}
         render={this._render}
         extraArg={undefined}
       />

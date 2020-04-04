@@ -510,6 +510,21 @@ export default class ScenarioStep {
           }]
         );
       }
+      case 'upgrade_decks': {
+        const choice = scenarioState.decision(this.step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        return this.maybeCreateEffectsStep(
+          this.step.id,
+          this.remainingStepIds,
+          [{
+            effects: [{
+              type: 'upgrade_decks',
+            }]
+          }],
+        );
+      }
       case 'use_supplies': {
         const choice = scenarioState.choiceList(
           input.investigator === 'all' ? `${this.step.id}_used` : this.step.id

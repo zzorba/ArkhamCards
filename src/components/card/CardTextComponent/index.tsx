@@ -161,10 +161,11 @@ const ItalicHtmlTagRule: MarkdownRule<WithChildren, State> = {
 
 interface Props {
   text: string;
+  fontAdjustment?: number;
   onLinkPress?: (url: string) => void;
 }
 
-export default function CardText({ text, onLinkPress }: Props) {
+export default function CardText({ text, onLinkPress, fontAdjustment }: Props) {
   const cleanText = text
     .replace(/&rarr;/g, '→')
     .replace(/\/n/g, '\n')
@@ -200,7 +201,7 @@ export default function CardText({ text, onLinkPress }: Props) {
           marginRight: 4,
         },
         paragraph: {
-          fontSize: isBig ? 24 : 14,
+          fontSize: (fontAdjustment || 1) * (isBig ? 24 : 14),
           marginTop: 4,
           marginBottom: 4,
         },

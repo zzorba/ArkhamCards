@@ -18,12 +18,17 @@ import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from 'data/scenario/ScenarioStep';
 
 interface Props {
+  componentId: string;
   step: ScenarioStep;
+  fontScale: number;
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {
   renderContent() {
-    const { step: { step, campaignLog } } = this.props;
+    const {
+      step: { step, campaignLog },
+      fontScale,
+    } = this.props;
     if (!step.type) {
       return <GenericStepComponent step={step} />;
     }
@@ -50,6 +55,8 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       case 'input':
         return (
           <InputStepComponent
+            componentId={this.props.componentId}
+            fontScale={fontScale}
             step={step}
             campaignLog={campaignLog}
           />
@@ -57,6 +64,8 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       case 'effects':
         return (
           <EffectsStepComponent
+            componentId={this.props.componentId}
+            fontScale={fontScale}
             step={step}
             campaignLog={campaignLog}
           />
@@ -79,7 +88,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
                 ...scenarioGuideContext,
                 campaignLog: step.campaignLog,
                 scenarioInvestigators: investigators,
-              }
+              };
               return (
                 <ScenarioStepContext.Provider value={context}>
                   { this.renderContent() }

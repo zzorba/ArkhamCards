@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { flatMap } from 'lodash';
 import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
@@ -10,7 +9,6 @@ import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaig
 import withPlayerCards, { PlayerCardProps, TabooSetOverride } from 'components/core/withPlayerCards';
 import { Deck } from 'actions/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { InvestigatorDeck } from 'data/scenario';
 import {
   AppState,
   getDecks,

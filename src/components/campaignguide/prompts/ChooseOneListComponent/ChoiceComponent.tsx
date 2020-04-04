@@ -109,14 +109,6 @@ const styles = StyleSheet.create({
     marginRight: 16,
     minWidth: 24,
   },
-  arrow: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 16,
-    minWidth: 30,
-    minHeight: 30,
-  },
   radioButton: {
     flexDirection: 'column',
     alignItems: 'center',

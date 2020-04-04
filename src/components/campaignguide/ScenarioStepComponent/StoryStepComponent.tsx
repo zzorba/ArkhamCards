@@ -27,7 +27,7 @@ export default class StoreStepComponent extends React.Component<Props> {
         ) }
         { !!step.text && (
           <CampaignGuideTextComponent
-            text={step.text.replace(/\n/g, '\n\n')}
+            text={step.text}
             flavor
           />
         ) }

@@ -11,7 +11,7 @@ import {
   zip,
 } from 'lodash';
 
-import { DecksMap, TraumaAndCardData } from 'actions/types';
+import { DecksMap, Slots, TraumaAndCardData } from 'actions/types';
 import { ChaosBag } from 'constants';
 import {
   AddRemoveChaosTokenEffect,
@@ -21,6 +21,7 @@ import {
   CampaignLogCountEffect,
   CampaignLogCardsEffect,
   Difficulty,
+  EarnXpEffect,
   Effect,
   EffectsWithInput,
   InvestigatorStatus,
@@ -30,6 +31,7 @@ import {
   ScenarioDataEffect,
   ScenarioStatus,
   TraumaEffect,
+  UpgradeDecksEffect,
 } from './types';
 import CampaignGuide from './CampaignGuide';
 import { CardsMap } from 'data/Card';
@@ -103,6 +105,9 @@ interface CampaignData {
   investigatorData: {
     [code: string]: TraumaAndCardData | undefined;
   };
+  lastSavedInvestigatorData: {
+    [code: string]: TraumaAndCardData | undefined;
+  };
 }
 
 export default class GuidedCampaignLog {
@@ -137,6 +142,8 @@ export default class GuidedCampaignLog {
       case 'add_card':
       case 'remove_card':
       case 'replace_card':
+      case 'earn_xp':
+      case 'upgrade_decks':
         return true;
       default:
         return false;
@@ -167,6 +174,7 @@ export default class GuidedCampaignLog {
       this.scenarioData = readThrough ? readThrough.scenarioData : {};
       this.campaignData = readThrough ? readThrough.campaignData : {
         investigatorData: {},
+        lastSavedInvestigatorData: {},
         scenarioStatus: {},
         scenarioReplayCount: {},
       };
@@ -180,6 +188,7 @@ export default class GuidedCampaignLog {
       this.chaosBag = readThrough ? cloneDeep(readThrough.chaosBag) : {};
       this.campaignData = readThrough ? cloneDeep(readThrough.campaignData) : {
         investigatorData: {},
+        lastSavedInvestigatorData: {},
         scenarioStatus: {},
         scenarioReplayCount: {},
       };
@@ -221,6 +230,12 @@ export default class GuidedCampaignLog {
               break;
             case 'replace_card':
               this.handleReplaceCardEffect(effect);
+              break;
+            case 'earn_xp':
+              this.handleEarnXpEffect(effect, input, numberInput);
+              break;
+            case 'upgrade_decks':
+              this.handleUpgradeDecksEffect();
               break;
             default:
               break;
@@ -270,6 +285,69 @@ export default class GuidedCampaignLog {
         // These are rewritten in ScenarioStep
         throw new Error('should not happen');
     }
+  }
+
+  earnedXp(code: string): number {
+    const data = this.campaignData.investigatorData[code] || {};
+    const lastSavedData = this.campaignData.lastSavedInvestigatorData[code] || {};
+    return (data.availableXp || 0) - (lastSavedData.availableXp || 0);
+  }
+
+  private storyAssetSlots(data: TraumaAndCardData): Slots {
+    const slots: Slots = {};
+    forEach(data.storyAssets || {}, asset => {
+      if (!slots[asset]) {
+        slots[asset] = 0;
+      }
+      slots[asset] = slots[asset] + 1;
+    });
+    return slots;
+  }
+
+  storyAssets(code: string): Slots {
+    return this.storyAssetSlots(this.campaignData.investigatorData[code] || {});
+  }
+
+  storyAssetChanges(code: string): Slots {
+    const currentSlots = this.storyAssets(code);
+    const previousSlots = this.storyAssetSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
+
+    const slotDelta: Slots = {};
+    forEach(
+      uniq([...keys(currentSlots), ...keys(previousSlots)]),
+      code => {
+        const previousCount = previousSlots[code] || 0;
+        const newCount = currentSlots[code] || 0;
+        const delta = (newCount - previousCount);
+        if (delta !== 0) {
+          slotDelta[code] = delta;
+        }
+      }
+    );
+    return slotDelta;
+  }
+
+  private handleUpgradeDecksEffect() {
+    this.campaignData.lastSavedInvestigatorData = cloneDeep(this.campaignData.investigatorData);
+  }
+
+  private handleEarnXpEffect(
+    effect: EarnXpEffect,
+    input?: string[],
+    numberInput?: number[]
+  ) {
+    const baseXp = numberInput ? numberInput[0] : 0;
+    const totalXp = baseXp + (effect.bonus || 0);
+    forEach(
+      this.getInvestigators(effect.investigator, input),
+      investigator => {
+        const data = this.campaignData.investigatorData[investigator] || {};
+        this.campaignData.investigatorData[investigator] = {
+          ...data,
+          availableXp: (data.availableXp || 0) + totalXp,
+        };
+      }
+    );
   }
 
   private handleAddCardEffect(

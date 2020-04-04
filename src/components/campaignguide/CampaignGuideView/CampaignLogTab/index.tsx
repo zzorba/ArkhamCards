@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { flatMap, map } from 'lodash';
+import { flatMap } from 'lodash';
 import { t } from 'ttag';
 
 import ChaosBagLine from 'components/core/ChaosBagLine';

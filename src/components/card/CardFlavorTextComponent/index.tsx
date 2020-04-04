@@ -82,10 +82,11 @@ interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
   color?: string;
+  fontAdjustment?: number;
 }
 
 export default function CardFlavorTextComponent(
-  { text, onLinkPress, color }: Props
+  { text, onLinkPress, color, fontAdjustment }: Props
 ) {
   // Text that has hyperlinks uses a different style for the icons.
   return (
@@ -105,7 +106,7 @@ export default function CardFlavorTextComponent(
       onLinkPress={onLinkPress}
       styles={{
         paragraph: {
-          fontSize: isBig ? 24 : 14,
+          fontSize: (fontAdjustment || 1) * (isBig ? 24 : 14),
           fontWeight: '400',
           fontStyle: 'italic',
           color: color || COLORS.darkGray,

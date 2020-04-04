@@ -90,18 +90,22 @@ export default class CounterListComponent extends React.Component<Props, State> 
     }
     const currentTotal = sum(map(counts));
     const disabled = (requiredTotal !== undefined) && currentTotal !== requiredTotal;
-    return disabled && requiredTotal !== undefined ? (
-      <Button
-        title={currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
-        onPress={this._save}
-        disabled
-      />
-    ) : (
-      <Button
-        title={t`Save`}
-        onPress={this._save}
-        disabled={disabled}
-      />
+    return (
+      <View style={styles.buttonWrapper}>
+        { disabled && requiredTotal !== undefined ? (
+          <Button
+            title={currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
+            onPress={this._save}
+            disabled
+          />
+        ) : (
+          <Button
+            title={t`Proceed`}
+            onPress={this._save}
+            disabled={disabled}
+          />
+        ) }
+      </View>
     );
   }
 
@@ -125,7 +129,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
           const choiceList = scenarioState.choiceList(id);
           const hasDecision = choiceList !== undefined;
           return (
-            <View style={styles.border}>
+            <View>
               <View style={styles.prompt}>
                 <Text style={typography.mediumGameFont}>
                   { countText }
@@ -157,16 +161,15 @@ export default class CounterListComponent extends React.Component<Props, State> 
 }
 
 const styles = StyleSheet.create({
-  border: {
-    borderTopWidth: 1,
-    borderColor: '#888',
-  },
   prompt: {
     flexDirection: 'row',
-    padding: 8,
+    paddingTop: 8,
     paddingRight: 16,
     justifyContent: 'flex-end',
     borderBottomWidth: 1,
     borderColor: '#888',
+  },
+  buttonWrapper: {
+    padding: 8,
   },
 });

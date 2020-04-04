@@ -65,7 +65,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
     );
   }
 
-
   renderCampaignSection() {
     const {
       campaign,
@@ -101,6 +100,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
                 investigator={investigator}
                 investigatorData={this.investigatorData()}
                 showTraumaDialog={showTraumaDialog}
+                fontScale={fontScale}
               />
             ) }
           </View>

@@ -24,7 +24,7 @@ export default class GenericStepComponent extends React.Component<Props> {
             { step.title }
           </Text>
         ) }
-        <CampaignGuideTextComponent text={step.text.replace(/\n/g, '\n\n')} />
+        <CampaignGuideTextComponent text={step.text} />
         <BulletsComponent bullets={step.bullets} />
         { !!step.example && <CampaignGuideTextComponent text={step.example} /> }
       </SetupStepWrapper>

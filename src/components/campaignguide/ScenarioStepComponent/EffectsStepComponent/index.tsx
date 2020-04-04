@@ -13,6 +13,8 @@ import TraumaEffectComponent from './TraumaEffectComponent';
 import { EffectsStep, Effect } from 'data/scenario/types';
 
 interface Props {
+  componentId: string;
+  fontScale: number;
   step: EffectsStep;
   campaignLog: GuidedCampaignLog;
 }
@@ -24,7 +26,12 @@ export default class EffectsStepComponent extends React.Component<Props> {
     input?: string[],
     numberInput?: number[],
   ): React.ReactNode {
-    const { step, campaignLog } = this.props;
+    const {
+      step,
+      campaignLog,
+      componentId,
+      fontScale,
+    } = this.props;
     switch (effect.type) {
       case 'campaign_log':
         if (this.props.step.stepText) {
@@ -79,7 +86,14 @@ export default class EffectsStepComponent extends React.Component<Props> {
             { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => (
               map(
                 scenarioGuide.expandSteps(effect.steps, scenarioState, this.props.campaignLog),
-                step => <ScenarioStepComponent key={step.step.id} step={step} />
+                step => (
+                  <ScenarioStepComponent
+                    key={step.step.id}
+                    componentId={componentId}
+                    fontScale={fontScale}
+                    step={step}
+                  />
+                )
               ))
             }
           </ScenarioGuideContext.Consumer>

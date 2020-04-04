@@ -10,12 +10,13 @@ interface Props {
   limits?: {
     [code: string]: number;
   };
+  countText?: string;
   requiredTotal?: number;
 }
 
 export default class InvestigatorCounterComponent extends React.Component<Props> {
   render() {
-    const { id, limits, requiredTotal } = this.props;
+    const { id, limits, requiredTotal, countText } = this.props;
     return (
       <ScenarioStepContext.Consumer>
         { ({ scenarioInvestigators }: ScenarioStepContextType) => {
@@ -30,6 +31,7 @@ export default class InvestigatorCounterComponent extends React.Component<Props>
                   limit: limits ? limits[investigator.code] : undefined,
                 };
               })}
+              countText={countText}
               requiredTotal={requiredTotal}
             />
           );

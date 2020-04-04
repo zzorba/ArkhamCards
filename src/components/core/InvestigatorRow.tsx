@@ -80,14 +80,14 @@ export default class InvestigatorRow extends React.Component<Props> {
           </View>
           { !!onRemove && (
             <View style={styles.closeIcon}>
-             <TouchableOpacity onPress={this._onRemove}>
-               <MaterialCommunityIcons
-                 name="close"
-                 size={36}
-                 color="#222"
-               />
-             </TouchableOpacity>
-           </View>
+              <TouchableOpacity onPress={this._onRemove}>
+                <MaterialCommunityIcons
+                  name="close"
+                  size={36}
+                  color="#222"
+                />
+              </TouchableOpacity>
+            </View>
           ) }
         </View>
         { !!detail && detail }
@@ -144,9 +144,6 @@ const styles = StyleSheet.create({
   },
   buttonColumn: {
     alignSelf: 'flex-start',
-  },
-  whiteText: {
-    color: '#FFF',
   },
   title: {
     color: '#222',

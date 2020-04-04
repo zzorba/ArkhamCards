@@ -1,18 +1,17 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { find, forEach, map, upperFirst, sum } from 'lodash';
 import { t } from 'ttag';
 
-import SetupStepWrapper from '../../SetupStepWrapper';
-import InvestigatorCheckListComponent from '../InvestigatorCheckListComponent';
-import InvestigatorCounterComponent from '../InvestigatorCounterComponent';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import SetupStepWrapper from '../SetupStepWrapper';
+import InvestigatorCheckListComponent from './InvestigatorCheckListComponent';
+import InvestigatorCounterComponent from './InvestigatorCounterComponent';
+import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
+import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import { BulletType, UseSuppliesInput, UseSuppliesAllInput } from 'data/scenario/types';
 import Card from 'data/Card';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import typography from 'styles/typography';
 
 interface Props {
   id: string;
@@ -74,18 +73,12 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     const desiredCount = campaignLog.playerCount();
     const totalProvisionCount = sum(map(limits, count => count));
     return (
-      <>
-        <View style={styles.rightPadding}>
-          <Text style={[typography.mediumGameFont, typography.right]}>
-            { t`${supplyName} to use (${desiredCount})` }
-          </Text>
-        </View>
-        <InvestigatorCounterComponent
-          id={`${id}_used`}
-          limits={limits}
-          requiredTotal={Math.min(totalProvisionCount, desiredCount)}
-        />
-      </>
+      <InvestigatorCounterComponent
+        id={`${id}_used`}
+        countText={t`${supplyName} to use (${desiredCount})`}
+        limits={limits}
+        requiredTotal={Math.min(totalProvisionCount, desiredCount)}
+      />
     );
   }
 

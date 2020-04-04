@@ -6,7 +6,6 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorCheckListComponent from '../../prompts/InvestigatorCheckListComponent';
-import { InvestigatorDeck } from 'data/scenario';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { RemoveCardEffect } from 'data/scenario/types';
 import Card from 'data/Card';
@@ -29,7 +28,7 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
     return map(investigators, (investigator, idx) => (
       <SetupStepWrapper bulletType="small" key={idx}>
         <CampaignGuideTextComponent
-          text={`${investigator.name} earned ${card.name}`}
+          text={`${investigator.name} earns ${card.name}`}
         />
       </SetupStepWrapper>
     ));

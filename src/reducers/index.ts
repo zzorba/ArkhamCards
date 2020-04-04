@@ -235,7 +235,7 @@ export const getLatestCampaignInvestigators = createSelector(
         filter(latestDecks, deck => !!(deck && deck.investigator_code)),
         deck => investigators[deck.investigator_code]
       ),
-      ...map(nonDeckInvestigators, code => investigators[code])
+      ...map(nonDeckInvestigators, code => investigators[code]),
     ];
   }
 );

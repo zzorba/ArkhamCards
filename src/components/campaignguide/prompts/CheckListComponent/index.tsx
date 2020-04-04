@@ -99,10 +99,12 @@ export default class CheckListComponent extends React.Component<Props, State> {
     const min = (!fixedMin && this.props.min) ? Math.min(this.props.min, items.length) : this.props.min;
     if (min === undefined && max === undefined) {
       return (
-        <Button
-          title={t`Save`}
-          onPress={this._save}
-        />
+        <View style={styles.buttonWrapper}>
+          <Button
+            title={t`Proceed`}
+            onPress={this._save}
+          />
+        </View>
       );
     }
     const { selectedChoice } = this.state;
@@ -115,17 +117,21 @@ export default class CheckListComponent extends React.Component<Props, State> {
     const hasMin = (min === undefined || currentTotal >= min);
     const hasMax = (max === undefined || currentTotal <= max);
     const enabled = hasMin && hasMax;
-    return !enabled ? (
-      <Button
-        title={hasMin ? t`Too many` : `Not enough`}
-        onPress={this._save}
-        disabled
-      />
-    ) : (
-      <Button
-        title={t`Save`}
-        onPress={this._save}
-      />
+    return (
+      <View style={styles.buttonWrapper}>
+        { !enabled ? (
+          <Button
+            title={hasMin ? t`Too many` : `Not enough`}
+            onPress={this._save}
+            disabled
+          />
+        ) : (
+          <Button
+            title={t`Proceed`}
+            onPress={this._save}
+          />
+        ) }
+      </View>
     );
   }
 
@@ -189,7 +195,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   prompt: {
     flexDirection: 'row',
-    padding: 8,
+    paddingTop: 16,
     paddingRight: 16,
     justifyContent: 'flex-end',
     borderBottomWidth: 1,
@@ -210,5 +216,8 @@ const styles = StyleSheet.create({
   },
   center: {
     justifyContent: 'center',
+  },
+  buttonWrapper: {
+    padding: 8,
   },
 });

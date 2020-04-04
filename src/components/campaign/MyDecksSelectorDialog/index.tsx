@@ -1,8 +1,7 @@
 import React from 'react';
-import { concat, filter, flatMap, keys, throttle, uniqBy } from 'lodash';
+import { concat, filter, flatMap, keys, throttle, uniqBy, uniq } from 'lodash';
 import {
   Keyboard,
-  Dimensions,
   StyleSheet,
   Text,
   View,
@@ -77,7 +76,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     };
   }
 
-  static investigatorOptions(passProps: Props) {
+  static investigatorOptions() {
     return {
       topBar: {
         title: {
@@ -269,20 +268,17 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       filter(
         keys(campaign.investigatorData || {}),
         code => investigators[code].eliminated(campaign.investigatorData[code]));
-    return uniqBy(
-      [
-        ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),
-        ...flatMap(selectedDeckIds, deckId => {
-          const deck = decks[deckId];
-          if (deck) {
-            return [deck.investigator_code];
-          }
-          return [];
-        }),
-        ...(selectedInvestigatorIds || [])
-      ],
-      x => x
-    );
+    return uniq([
+      ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),
+      ...flatMap(selectedDeckIds, deckId => {
+        const deck = decks[deckId];
+        if (deck) {
+          return [deck.investigator_code];
+        }
+        return [];
+      }),
+      ...(selectedInvestigatorIds || []),
+    ]);
   }
 
   onlyInvestigators() {
@@ -341,7 +337,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       componentId,
       tab === 'decks' ?
         MyDecksSelectorDialog.deckOptions(this.props) :
-        MyDecksSelectorDialog.investigatorOptions(this.props)
+        MyDecksSelectorDialog.investigatorOptions()
     );
   };
 

@@ -23,7 +23,7 @@ interface State {
 interface TabRoute extends Route {
   key: string;
   title: string;
-};
+}
 
 const initialLayout = { width: Dimensions.get('window').width };
 
@@ -41,24 +41,24 @@ export default class ArkhamTabView extends React.Component<Props, State> {
   };
 
   _renderTabBar = (props: SceneRendererProps & {
-     navigationState: NavigationState<TabRoute>;
-   }) => {
+    navigationState: NavigationState<TabRoute>;
+  }) => {
     return (
-     <TabBar
-       {...props}
-       activeColor={COLORS.lightBlue}
-       inactiveColor={COLORS.darkGray}
-       indicatorStyle={{ backgroundColor: COLORS.lightBlue }}
-       style={{ backgroundColor: 'white' }}
-     />
-   );
- };
+      <TabBar
+        {...props}
+        activeColor={COLORS.lightBlue}
+        inactiveColor={COLORS.darkGray}
+        indicatorStyle={{ backgroundColor: COLORS.lightBlue }}
+        style={{ backgroundColor: 'white' }}
+      />
+    );
+  };
 
- _renderTab = ({ route }: { route: { key: string } }) => {
-   const { tabs } = this.props;
-   const tab = find(tabs, t => t.key === route.key);
-   return tab && tab.node;
- };
+  _renderTab = ({ route }: { route: { key: string } }) => {
+    const { tabs } = this.props;
+    const tab = find(tabs, t => t.key === route.key);
+    return tab && tab.node;
+  };
 
   render() {
     const { tabs } = this.props;

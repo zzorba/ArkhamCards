@@ -1,9 +1,5 @@
 import React, { ReactNode } from 'react';
 import { filter, keys, map, sortBy } from 'lodash';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
 
 import { Slots } from 'actions/types';
 import Card from 'data/Card';
@@ -60,7 +56,7 @@ class CardSelectorComponent extends React.Component<Props> {
     }
 
     return (
-      <View style={styles.block}>
+      <>
         { header }
         { map(matchingCards, code => (
           <CardToggleRow
@@ -73,7 +69,7 @@ class CardSelectorComponent extends React.Component<Props> {
             limit={slots[code]}
           />
         )) }
-      </View>
+      </>
     );
   }
 }
@@ -81,10 +77,3 @@ class CardSelectorComponent extends React.Component<Props> {
 export default withPlayerCards<OwnProps>(
   withDimensions(CardSelectorComponent)
 );
-
-
-const styles = StyleSheet.create({
-  block: {
-    paddingTop: 8,
-  },
-});

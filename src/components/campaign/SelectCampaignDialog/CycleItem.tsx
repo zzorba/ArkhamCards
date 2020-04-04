@@ -49,7 +49,7 @@ export default class CycleItem extends React.Component<Props> {
             <Text style={[typography.text, styles.campaignText]}>
               { t`Guide not yet available` }
             </Text>
-          )}
+          ) }
         </View>
       </View>
     );

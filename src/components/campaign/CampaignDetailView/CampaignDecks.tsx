@@ -87,6 +87,7 @@ class CampaignDecks extends React.Component<Props> {
             investigator={investigator}
             investigatorData={investigatorData}
             showTraumaDialog={showTraumaDialog}
+            fontScale={fontScale}
           />
         </View>
         { !eliminated && (
@@ -185,6 +186,7 @@ class CampaignDecks extends React.Component<Props> {
         { !!killedOrInsane && (
           <View style={styles.killedTrauma}>
             <EditTraumaComponent
+              fontScale={fontScale}
               investigator={investigator}
               investigatorData={investigatorData}
               showTraumaDialog={showTraumaDialog}

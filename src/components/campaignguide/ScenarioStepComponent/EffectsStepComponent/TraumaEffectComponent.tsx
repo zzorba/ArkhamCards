@@ -6,7 +6,6 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
 import Card from 'data/Card';
-import { InvestigatorDeck } from 'data/scenario';
 import { TraumaEffect } from 'data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 

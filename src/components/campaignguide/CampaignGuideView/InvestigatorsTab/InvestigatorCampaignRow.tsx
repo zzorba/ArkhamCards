@@ -43,7 +43,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
   };
 
   renderTrauma() {
-    const { traumaAndCardData, investigator, fontScale } =  this.props;
+    const { traumaAndCardData, investigator } = this.props;
     return (
       <View style={styles.trauma}>
         <Text style={typography.text}>
@@ -54,7 +54,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
   }
 
   renderStoryAssets() {
-    const { traumaAndCardData, investigator, fontScale } =  this.props;
+    const { traumaAndCardData, investigator, fontScale } = this.props;
     if (!traumaAndCardData.storyAssets || !traumaAndCardData.storyAssets.length) {
       return null;
     }
@@ -63,7 +63,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         <CardSectionHeader
           investigator={investigator}
           fontScale={fontScale}
-          section={{ superTitle: t`Campaign cards`}}
+          section={{ superTitle: t`Campaign cards` }}
         />
         { map(traumaAndCardData.storyAssets, asset => (
           <SingleCardWrapper
@@ -86,7 +86,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         <CardSectionHeader
           investigator={investigator}
           fontScale={fontScale}
-          section={{ superTitle: t`Trauma`}}
+          section={{ superTitle: t`Trauma` }}
         />
         { this.renderTrauma() }
         { this.renderStoryAssets() }
@@ -142,7 +142,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         onPress={this._selectDeck}
       />
     );
-  };
+  }
 
   render() {
     const {
@@ -166,8 +166,5 @@ const styles = StyleSheet.create({
   trauma: {
     padding: 8,
     paddingLeft: 16,
-  },
-  buttonPlaceholder: {
-    minHeight: 24,
   },
 });

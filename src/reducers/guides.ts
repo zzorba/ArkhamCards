@@ -1,4 +1,4 @@
-import { dropRight, findLastIndex, filter } from 'lodash';
+import { findLastIndex, filter } from 'lodash';
 
 import {
   GUIDE_SET_INPUT,

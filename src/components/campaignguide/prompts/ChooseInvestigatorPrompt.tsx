@@ -7,7 +7,6 @@ import { ListChoices } from 'actions/types';
 import PickerComponent from './PickerComponent';
 import Card from 'data/Card';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 
 interface Props {
@@ -65,11 +64,13 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
     const { required } = this.props;
     const { selectedInvestigator } = this.state;
     return (
-      <Button
-        title={t`Save`}
-        onPress={this._save}
-        disabled={required && selectedInvestigator === undefined}
-      />
+      <View style={styles.buttonWrapper}>
+        <Button
+          title={t`Proceed`}
+          onPress={this._save}
+          disabled={required && selectedInvestigator === undefined}
+        />
+      </View>
     );
   }
 
@@ -156,5 +157,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#888',
+  },
+  buttonWrapper: {
+    padding: 8,
   },
 });

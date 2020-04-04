@@ -1,13 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { map } from 'lodash';
-import { t } from 'ttag';
 
-import SetupStepWrapper from '../../SetupStepWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
-import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import Card from 'data/Card';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 
 interface Props {
   id: string;
@@ -20,7 +14,7 @@ export default class AddWeaknessCardEffectComponent extends React.Component<Prop
   render() {
     const { investigator } = this.props;
     return (
-      <Text>{investigator.name} got a random basic weakness</Text>
+      <Text>{ investigator.name } got a random basic weakness</Text>
     );
   }
 }

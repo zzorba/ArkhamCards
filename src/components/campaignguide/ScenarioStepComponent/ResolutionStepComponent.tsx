@@ -42,7 +42,7 @@ export default class ResolutionStepComponent extends React.Component<Props> {
                   { !!resolution.text && (
                     <View style={styles.wrapper}>
                       <CampaignGuideTextComponent
-                        text={resolution.text.replace(/\n/g, '\n\n')}
+                        text={resolution.text}
                         flavor
                       />
                     </View>

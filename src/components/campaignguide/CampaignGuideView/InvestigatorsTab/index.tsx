@@ -21,7 +21,6 @@ interface OwnProps {
   campaignState: CampaignStateHelper;
   fontScale: number;
   latestDecks: LatestDecks;
-  chooseDeckForInvestigator: (investigator: Card) => void;
 }
 
 interface ReduxProps {
@@ -36,6 +35,13 @@ class InvestigatorsTab extends React.Component<Props> {
     this.props.campaignState.showChooseDeck();
   };
 
+  _showChooseDeckForInvestigator = (investigator: Card) =>{
+    const {
+      campaignState,
+    } = this.props;
+    campaignState.showChooseDeck(investigator);
+  };
+
   render() {
     const {
       allInvestigators,
@@ -44,7 +50,6 @@ class InvestigatorsTab extends React.Component<Props> {
       fontScale,
       componentId,
       latestDecks,
-      chooseDeckForInvestigator,
     } = this.props;
     const [killedInvestigators, aliveInvestigators] = partition(allInvestigators,
       investigator => {
@@ -63,7 +68,7 @@ class InvestigatorsTab extends React.Component<Props> {
             fontScale={fontScale}
             investigator={investigator}
             traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
-            chooseDeckForInvestigator={chooseDeckForInvestigator}
+            chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
           />
         )) }
         <View style={styles.button}>
@@ -75,20 +80,20 @@ class InvestigatorsTab extends React.Component<Props> {
               { t`Killed and Insane Investigators` }
             </Text>
           </View>
-        )}
+        ) }
         { map(killedInvestigators, investigator => (
-         <InvestigatorCampaignRow
-           key={investigator.code}
-           campaign={campaign}
-           deck={latestDecks[investigator.code]}
-           componentId={componentId}
-           fontScale={fontScale}
-           investigator={investigator}
-           traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
-         />
-       )) }
+          <InvestigatorCampaignRow
+            key={investigator.code}
+            campaign={campaign}
+            deck={latestDecks[investigator.code]}
+            componentId={componentId}
+            fontScale={fontScale}
+            investigator={investigator}
+            traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
+          />
+        )) }
       </ScrollView>
-    )
+    );
   }
 }
 

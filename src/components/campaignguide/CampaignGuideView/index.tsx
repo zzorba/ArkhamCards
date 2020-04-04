@@ -1,6 +1,5 @@
 import React from 'react';
 import { Platform, Text } from 'react-native';
-import { map } from 'lodash';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -21,43 +20,7 @@ export type CampaignGuideProps = CampaignGuideInputProps;
 type Props = CampaignGuideProps & NavigationProps & DimensionsProps;
 
 class CampaignGuideView extends React.Component<Props & CampaignGuideContextType> {
-  _onTabChange = (tab: string) => {
-  };
-
-  _deckAdded = (deck: Deck) => {
-    const { campaignState } = this.props;
-    campaignState.addInvestigator(deck.investigator_code, deck.id);
-  };
-
-  _investigatorAdded = (card: Card) => {
-    const { campaignState } = this.props;
-    campaignState.addInvestigator(card.code);
-  };
-
-  _showChooseDeckForInvestigator = (card: Card) => {
-    const {
-      campaign,
-    } = this.props;
-    const passProps: MyDecksSelectorProps = {
-      campaignId: campaign.id,
-      singleInvestigator: card.code,
-      onDeckSelect: this._deckAdded,
-    };
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Dialog.DeckSelector',
-            passProps,
-            options: {
-              modalPresentationStyle: Platform.OS === 'ios' ?
-                OptionsModalPresentationStyle.overFullScreen :
-                OptionsModalPresentationStyle.overCurrentContext,
-            },
-          },
-        }],
-      },
-    });
+  _onTabChange = () => {
   };
 
   render() {
@@ -82,7 +45,6 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         node: (
           <InvestigatorsTab
             componentId={componentId}
-            chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
             fontScale={fontScale}
             campaign={campaign}
             campaignLog={processedCampaign.campaignLog}

@@ -1,9 +1,7 @@
 import {
-  CAMPAIGN_ADD_INVESTIGATOR,
   GUIDE_SET_INPUT,
   GUIDE_RESET_SCENARIO,
   GUIDE_UNDO_INPUT,
-  CampaignAddInvestigatorAction,
   GuideSetInputAction,
   GuideResetScenarioAction,
   GuideUndoInputAction,

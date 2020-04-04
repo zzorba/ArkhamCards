@@ -4,9 +4,7 @@ import { t } from 'ttag';
 
 import ScenarioStepContext, { ScenarioStepContextType } from './ScenarioStepContext';
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
-import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import { InvestigatorSelector } from 'data/scenario/types';
-import { InvestigatorDeck } from 'data/scenario';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import Card from 'data/Card';

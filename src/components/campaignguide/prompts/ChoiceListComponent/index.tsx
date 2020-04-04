@@ -95,14 +95,16 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
       return <View style={styles.bottomPadding} />;
     }
     return (
-      <Button
-        title={t`Save`}
-        onPress={this._save}
-        disabled={detailed && !every(
-          items,
-          item => selectedChoice[item.code] !== undefined)
-        }
-      />
+      <View style={styles.buttonWrapper}>
+        <Button
+          title={t`Proceed`}
+          onPress={this._save}
+          disabled={detailed && !every(
+            items,
+            item => selectedChoice[item.code] !== undefined)
+          }
+        />
+      </View>
     );
 
   }
@@ -185,5 +187,8 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
 const styles = StyleSheet.create({
   bottomPadding: {
     marginBottom: 16,
+  },  
+  buttonWrapper: {
+    padding: 8,
   },
 });

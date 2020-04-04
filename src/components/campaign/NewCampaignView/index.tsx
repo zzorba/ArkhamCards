@@ -264,14 +264,14 @@ class NewCampaignView extends React.Component<Props, State> {
     });
   };
 
-  _deckAdded = (deck: Deck, investigator?: Card) => {
+  _deckAdded = (deck: Deck) => {
     this.setState({
       deckIds: [...this.state.deckIds, deck.id],
     });
     this.maybeShowWeaknessPrompt(deck);
   };
 
-  _deckRemoved = (id: number, deck?: Deck, investigator?: Card) => {
+  _deckRemoved = (id: number) => {
     this.setState({
       deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
     });

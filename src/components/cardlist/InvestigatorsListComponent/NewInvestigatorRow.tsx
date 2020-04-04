@@ -110,9 +110,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'white',
   },
-  icon: {
-    marginRight: 16,
-  },
   image: {
     margin: 8,
   },
@@ -124,8 +121,5 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 4,
     marginBottom: 4,
-  },
-  whiteText: {
-    color: '#FFF',
   },
 });

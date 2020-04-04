@@ -1,10 +1,9 @@
 import React from 'react';
-import { filter, map, partition } from 'lodash';
+import { map, partition } from 'lodash';
 import {
   Button,
   ScrollView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -96,13 +95,13 @@ class SelectCampaignDialog extends React.Component<Props> {
       <ScrollView style={styles.flex}>
         { myCampaigns.length > 0 && (
           <BasicSectionHeader
-            title={t`My Campaigns` }
+            title={t`My Campaigns`}
           />
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
         { !guided && this.renderCampaign(CUSTOM, true) }
         <BasicSectionHeader
-          title={t`Other Campaigns` }
+          title={t`Other Campaigns`}
         />
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
         <View style={styles.button}>
@@ -110,9 +109,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         </View>
         { guided && (
           <>
-            <BasicSectionHeader
-              title={t`Coming Soon` }
-            />
+            <BasicSectionHeader title={t`Coming Soon`} />
             { map(COMING_SOON_GUIDED_CAMPAIGNS, pack_code => this.renderCampaign(pack_code, false)) }
           </>
         ) }
@@ -134,11 +131,6 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-  },
-  header: {
-    fontFamily: 'System',
-    fontSize: 22,
-    marginLeft: s,
   },
   button: {
     padding: s,

@@ -35,7 +35,7 @@ export default class AddCardEffectComponent extends React.Component<Props> {
       ) : (
         <SetupStepWrapper bulletType="small" key={idx}>
           <CampaignGuideTextComponent
-            text={`${investigator.name} earned ${card.name}`}
+            text={`${investigator.name} earns ${card.name}`}
           />
         </SetupStepWrapper>
       )

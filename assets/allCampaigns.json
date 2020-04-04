@@ -14870,6 +14870,7 @@
   "interlude": true,
   "setup": [
     "intro",
+    "$choose_investigators",
     "expedition_leader",
     "supplies"
   ],
@@ -14976,7 +14977,8 @@
     "eat_provisions",
     "choose_lookout",
     "use_medicine",
-    "check_poison_spreads"
+    "check_poison_spreads",
+    "$upgrade_decks"
   ],
   "steps": [
     {
@@ -16002,8 +16004,7 @@
           },
           {
             "type": "earn_xp",
-            "investigator": "all",
-            "bonus": "$input_value"
+            "investigator": "all"
           }
         ]
       }

@@ -65,7 +65,7 @@ class CampaignInvestigatorRow extends React.Component<Props> {
     return (
       <View style={styles.row}>
         { map(decks, this._renderDeck) }
-        { map(campaign.nonDeckInvestigators || [], this._renderInvestigator)}
+        { map(campaign.nonDeckInvestigators || [], this._renderInvestigator) }
       </View>
     );
   }

@@ -6,9 +6,10 @@ import {
   CampaignGuideState,
   SupplyCounts,
 } from 'actions/types';
+import Card from 'data/Card';
 
 export interface CampaignGuideActions {
-  showChooseDeck: () => void;
+  showChooseDeck: (singleInvestigator?: Card) => void;
   addInvestigator: (code: string, deckId?: number) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
@@ -36,8 +37,8 @@ export default class CampaignStateHelper {
     this.actions.addInvestigator(code, deckId);
   }
 
-  showChooseDeck() {
-    this.actions.showChooseDeck();
+  showChooseDeck(singleInvestigator?: Card) {
+    this.actions.showChooseDeck(singleInvestigator);
   }
 
   startScenario(scenarioId: string) {

@@ -77,6 +77,8 @@ export default class CardToggleRow extends React.Component<Props, State> {
           onPress={onPress}
           toggleValue={one}
           fontScale={fontScale}
+          backgroundColor="transparent"
+          noBorder
         />
         { (limit > 1) && (
           <CardSearchResult
@@ -85,6 +87,8 @@ export default class CardToggleRow extends React.Component<Props, State> {
             onPress={onPress}
             toggleValue={two}
             fontScale={fontScale}
+            backgroundColor="transparent"
+            noBorder
           />
         ) }
       </View>

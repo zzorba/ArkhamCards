@@ -40,7 +40,6 @@ export default class InvestigatorImage extends React.Component<Props> {
     const {
       card,
       small,
-      border,
     } = this.props;
     return (
       <FastImage
@@ -97,7 +96,7 @@ export default class InvestigatorImage extends React.Component<Props> {
                 borderColor: FACTION_COLORS[killedOrInsane ? 'dead' : card.factionCode()],
                 width: size,
                 height: size,
-              }
+              },
             ]} />
           ) }
         </View>

@@ -8,6 +8,7 @@ import { t } from 'ttag';
 
 import { Deck, Slots } from 'actions/types';
 import Card from 'data/Card';
+import CardSectionHeader from 'components/core/CardSectionHeader';
 import { getDeck, AppState } from 'reducers';
 import typography from 'styles/typography';
 import CardSelectorComponent from '../cardlist/CardSelectorComponent';
@@ -17,7 +18,7 @@ interface OwnProps {
   id: number;
   exileCounts: Slots;
   updateExileCounts: (exileCounts: Slots) => void;
-  showLabel?: boolean;
+  label?: React.ReactNode;
 }
 
 interface ReduxProps {
@@ -37,17 +38,11 @@ class ExileCardSelectorComponent extends React.Component<Props> {
       deck,
       exileCounts,
       updateExileCounts,
-      showLabel,
+      label,
     } = this.props;
     if (!deck) {
       return null;
     }
-
-    const header = !!showLabel && (
-      <Text style={[typography.small, styles.exileText]}>
-        { t`Exiled cards` }
-      </Text>
-    );
     return (
       <CardSelectorComponent
         componentId={componentId}
@@ -55,7 +50,7 @@ class ExileCardSelectorComponent extends React.Component<Props> {
         counts={exileCounts}
         updateCounts={updateExileCounts}
         filterCard={this._isExile}
-        header={header}
+        header={label}
       />
     );
   }

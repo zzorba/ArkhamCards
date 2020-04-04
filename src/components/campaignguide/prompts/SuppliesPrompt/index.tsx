@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { forEach, keys, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
@@ -133,10 +133,12 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
           );
         }) }
         { (suppliesInput === undefined) && (
-          <Button
-            title={t`Save`}
-            onPress={this._save}
-          />
+          <View style={styles.buttonWrapper}>
+            <Button
+              title={t`Proceed`}
+              onPress={this._save}
+            />
+          </View>
         ) }
       </>
     );
@@ -152,3 +154,9 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  buttonWrapper: {
+    padding: 8,
+  },
+});

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import { map } from 'lodash';
 
 import { SingleCampaign } from 'actions/types';

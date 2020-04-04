@@ -122,7 +122,7 @@ export default function(
     } else {
       campaign.nonDeckInvestigators = [
         ...campaign.nonDeckInvestigators || [],
-        action.investigator
+        action.investigator,
       ];
     }
     return {

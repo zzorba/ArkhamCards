@@ -4,7 +4,6 @@ import { map } from 'lodash';
 import ChoiceListComponent, { ChoiceListComponentProps } from './ChoiceListComponent';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import { FACTION_COLORS, FACTION_LIGHT_GRADIENTS } from 'constants';
-import { InvestigatorDeck } from 'data/scenario';
 import Card from 'data/Card';
 
 interface Props extends ChoiceListComponentProps {

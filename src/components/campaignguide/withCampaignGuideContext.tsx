@@ -138,12 +138,16 @@ export default function withCampaignGuideContext<Props>(
       this._addInvestigator(card.code);
     };
 
-    _showChooseDeck = () => {
+    _showChooseDeck = (singleInvestigator?: Card) => {
       const {
         campaignId,
         allInvestigators,
       } = this.props;
-      const passProps: MyDecksSelectorProps = {
+      const passProps: MyDecksSelectorProps = singleInvestigator ? {
+        campaignId: campaignId,
+        singleInvestigator: singleInvestigator.code,
+        onDeckSelect: this._deckAdded,
+      } : {
         campaignId: campaignId,
         selectedInvestigatorIds: map(allInvestigators, investigator => investigator.code),
         onDeckSelect: this._deckAdded,
@@ -303,7 +307,7 @@ export default function withCampaignGuideContext<Props>(
       } = {};
       forEach(latestDecks, deck => {
         if (deck && deck.investigator_code) {
-          decksByInvestigator[deck.investigator_code] = deck
+          decksByInvestigator[deck.investigator_code] = deck;
         }
       });
       const campaignStateHelper = new CampaignStateHelper(

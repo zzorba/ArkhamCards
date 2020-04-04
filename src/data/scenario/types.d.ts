@@ -40,7 +40,8 @@ export type Effect =
   | CampaignLogCountEffect
   | CampaignDataEffect
   | ScenarioDataEffect
-  | AddRemoveChaosTokenEffect;
+  | AddRemoveChaosTokenEffect
+  | UpgradeDecksEffect;
 export type InvestigatorSelector =
   | "lead_investigator"
   | "all"
@@ -158,8 +159,8 @@ export interface StoryStepEffect {
 }
 export interface EarnXpEffect {
   type: "earn_xp";
-  investigator: InvestigatorSelector;
-  bonus?: number | "$input_value";
+  investigator: "all" | "defeated" | "$input_value" | "lead_investigator";
+  bonus?: number;
 }
 export interface AddCardEffect {
   type: "add_card";
@@ -247,6 +248,9 @@ export interface ScenarioDataStatusEffect {
 export interface AddRemoveChaosTokenEffect {
   type: "add_chaos_token" | "remove_chaos_token";
   tokens: ChaosToken[];
+}
+export interface UpgradeDecksEffect {
+  type: "upgrade_decks";
 }
 export interface StepsOption {
   boolCondition?: boolean;
