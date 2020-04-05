@@ -143,6 +143,7 @@ export default class InputStepComponent extends React.Component<Props> {
             ) }
             <InvestigatorCheckListComponent
               id={step.id}
+              choiceId="chosen"
               checkText={t`Choose Investigators`}
               defaultState
               min={1}

@@ -1,6 +1,6 @@
 import { filter, find, forEach, keys } from 'lodash';
 
-import { ListChoices } from 'actions/types';
+import { NumberChoices } from 'actions/types';
 import {
   InvestigatorChoiceInput,
   ChooseOneInput,
@@ -41,7 +41,7 @@ export function investigatorChoiceInputChoices(
     };
   }
   const codes = campaignLog.investigatorCodes();
-  const result: ListChoices = {};
+  const result: NumberChoices = {};
   forEach(
     input.choices,
     (choice, idx) => {

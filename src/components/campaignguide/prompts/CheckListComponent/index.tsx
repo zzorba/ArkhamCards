@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import { ListChoices } from 'actions/types';
+import { StringChoices } from 'actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
@@ -14,12 +14,12 @@ import typography from 'styles/typography';
 export interface ListItem {
   code: string;
   name: string;
-  value?: number;
   tintColor?: string;
 }
 
 export interface CheckListComponentProps {
   id: string;
+  choiceId: string;
   defaultState?: boolean;
   bulletType?: BulletType;
   title?: string;
@@ -52,7 +52,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
       [code: string]: number | undefined;
     } = {};
     forEach(props.items, item => {
-      selectedChoice[item.code] = props.defaultState ? (item.value || 0) : undefined;
+      selectedChoice[item.code] = props.defaultState ? 0 : undefined;
     });
 
     this.state = {
@@ -70,22 +70,22 @@ export default class CheckListComponent extends React.Component<Props, State> {
       return {
         selectedChoice: {
           ...this.state.selectedChoice,
-          [code]: selected ? undefined : ((item && item.value) || 0),
+          [code]: selected ? undefined : 0,
         },
       };
     });
   };
 
   _save = () => {
-    const { id } = this.props;
+    const { id, choiceId } = this.props;
     const { selectedChoice } = this.state;
-    const choices: ListChoices = {};
+    const choices: StringChoices = {};
     forEach(selectedChoice, (idx, code) => {
       if (idx !== undefined && idx !== -1) {
-        choices[code] = [idx];
+        choices[code] = [choiceId];
       }
     });
-    this.context.scenarioState.setChoiceList(
+    this.context.scenarioState.setStringChoices(
       id,
       choices
     );
@@ -141,7 +141,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const choiceList = scenarioState.choiceList(id);
+          const choiceList = scenarioState.stringChoices(id);
           const hasDecision = choiceList !== undefined;
           return (
             <>

@@ -62,6 +62,7 @@ export default class InvestigatorChoiceWithSuppliesInputComponent extends React.
         <ChooseInvestigatorPrompt
           id={step.id}
           title={input.prompt}
+          choiceId="investigator_choice"
           investigatorToValue={this._investigatorToString}
           renderResults={this._renderInvestigatorChoiceResults}
           required

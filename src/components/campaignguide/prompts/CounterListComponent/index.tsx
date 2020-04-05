@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import { ListChoices } from 'actions/types';
+import { NumberChoices } from 'actions/types';
 import typography from 'styles/typography';
 
 export interface CounterItem {
@@ -72,11 +72,11 @@ export default class CounterListComponent extends React.Component<Props, State> 
   _save = () => {
     const { id } = this.props;
     const { counts } = this.state;
-    const choices: ListChoices = {};
+    const choices: NumberChoices = {};
     forEach(counts, (value, code) => {
       choices[code] = [value];
     });
-    this.context.scenarioState.setChoiceList(
+    this.context.scenarioState.setNumberChoices(
       id,
       choices
     );
@@ -109,7 +109,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
     );
   }
 
-  getValue(code: string, choiceList?: ListChoices): number {
+  getValue(code: string, choiceList?: NumberChoices): number {
     const { counts } = this.state;
     if (choiceList === undefined) {
       return counts[code] || 0;
@@ -126,7 +126,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const choiceList = scenarioState.choiceList(id);
+          const choiceList = scenarioState.numberChoices(id);
           const hasDecision = choiceList !== undefined;
           return (
             <View>

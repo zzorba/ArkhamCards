@@ -2,7 +2,8 @@ import { findLast } from 'lodash';
 
 import {
   GuideInput,
-  ListChoices,
+  NumberChoices,
+  StringChoices,
   CampaignGuideState,
   SupplyCounts,
 } from 'actions/types';
@@ -14,7 +15,8 @@ export interface CampaignGuideActions {
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts, scenarioId?: string) => void;
-  setChoiceList: (id: string, choices: ListChoices, scenarioId?: string) => void;
+  setNumberChoices: (id: string, choices: NumberChoices, scenarioId?: string) => void;
+  setStringChoices: (id: string, choices: StringChoices, scenarioId?: string) => void;
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   startScenario: (scenarioId: string) => void;
   resetScenario: (scenarioId: string) => void;
@@ -53,8 +55,12 @@ export default class CampaignStateHelper {
     this.actions.setChoice(id, value, scenarioId);
   }
 
-  setChoiceList(id: string, value: ListChoices, scenarioId?: string) {
-    this.actions.setChoiceList(id, value, scenarioId);
+  setNumberChoices(id: string, value: NumberChoices, scenarioId?: string) {
+    this.actions.setNumberChoices(id, value, scenarioId);
+  }
+
+  setStringChoices(id: string, value: StringChoices, scenarioId?: string) {
+    this.actions.setStringChoices(id, value, scenarioId);
   }
 
   setSupplies(id: string, value: SupplyCounts, scenarioId?: string) {
@@ -96,9 +102,17 @@ export default class CampaignStateHelper {
     return undefined;
   }
 
-  choiceList(id: string, scenario?: string): ListChoices | undefined {
+  numberChoices(id: string, scenario?: string): NumberChoices | undefined {
     const entry = this.entry('choice_list', id, scenario);
     if (entry && entry.type === 'choice_list') {
+      return entry.choices;
+    }
+    return undefined;
+  }
+
+  stringChoices(id: string, scenario?: string): StringChoices | undefined {
+    const entry = this.entry('string_choices', id, scenario);
+    if (entry && entry.type === 'string_choices') {
       return entry.choices;
     }
     return undefined;

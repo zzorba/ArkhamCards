@@ -26,7 +26,7 @@ export default class InvestigatorResultConditionWrapper<T> extends React.Compone
         { flatMap(result.options, (option, index) => {
           const investigators: string[] = [];
           forEach(result.investigatorChoices, (choices, code) => {
-            if (findIndex(choices, idx => idx === index) !== -1) {
+            if (findIndex(choices, choice => option.id === choice) !== -1) {
               investigators.push(code);
             }
           });

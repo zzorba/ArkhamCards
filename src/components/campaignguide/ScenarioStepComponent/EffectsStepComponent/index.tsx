@@ -7,6 +7,7 @@ import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import ChaosTokenEffectComponent from './ChaosTokenEffectComponent';
 import CampaignLogEffectComponent from './CampaignLogEffectComponent';
+import AddWeaknessEffectComponent from './AddWeaknessEffectComponent';
 import AddCardEffectComponent from './AddCardEffectComponent';
 import RemoveCardEffectComponent from './RemoveCardEffectComponent';
 import TraumaEffectComponent from './TraumaEffectComponent';
@@ -52,6 +53,13 @@ export default class EffectsStepComponent extends React.Component<Props> {
         }
         return (
           <ChaosTokenEffectComponent
+            effect={effect}
+          />
+        );
+      case 'add_weakness':
+        return (
+          <AddWeaknessEffectComponent
+            id={id}
             effect={effect}
           />
         );

@@ -1,14 +1,9 @@
 import { find } from 'lodash';
 
-import { Deck, ListChoices } from 'actions/types';
+import { Deck, NumberChoices } from 'actions/types';
 import { FullCampaign, Effect } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
 import Card from 'data/Card';
-
-export interface InvestigatorDeck {
-  investigator: Card;
-  deck?: Deck;
-}
 
 export interface DisplayChoice {
   text?: string;
@@ -18,16 +13,19 @@ export interface DisplayChoice {
   effects?: Effect[] | null;
 }
 
+export interface DisplayChoiceWithId extends DisplayChoice {
+  id: string;
+}
 
 export interface UniversalChoices {
   type: 'universal';
-  choices: DisplayChoice[];
+  choices: DisplayChoiceWithId[];
 }
 
 export interface PersonalizedChoices {
   type: 'personalized';
-  choices: DisplayChoice[];
-  perCode: ListChoices;
+  choices: DisplayChoiceWithId[];
+  perCode: NumberChoices;
 }
 
 export type Choices = PersonalizedChoices | UniversalChoices;

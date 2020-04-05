@@ -20,10 +20,12 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
   render() {
     const { step, input, campaignLog } = this.props;
     if (input.investigator === 'any') {
+      const choice = input.choices[0];
       return (
         <ChooseInvestigatorPrompt
           id={step.id}
-          title={input.choices[0].text}
+          title={choice.text}
+          choiceId={choice.id}
           required
         />
       );
@@ -33,7 +35,7 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
       input.choices.length === 1
     ) {
       const choices = investigatorChoiceInputChoices(input, campaignLog);
-
+      const choice = input.choices[0];
       return (
         <>
           { !!step.text && (
@@ -43,7 +45,8 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
           ) }
           <InvestigatorCheckListComponent
             id={step.id}
-            checkText={input.choices[0].text}
+            choiceId={choice.id}
+            checkText={choice.text}
             investigators={choices.type === 'personalized' ? keys(choices.perCode) : undefined}
             min={input.investigator === 'choice' ? 1 : 0}
             max={4}

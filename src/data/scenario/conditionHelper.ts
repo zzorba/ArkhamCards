@@ -3,9 +3,10 @@ import {
   find,
   findIndex,
   forEach,
+  map,
 } from 'lodash';
 
-import { ListChoices } from 'actions/types';
+import { NumberChoices, StringChoices } from 'actions/types';
 import {
   BinaryCardCondition,
   CardCondition,
@@ -45,10 +46,12 @@ interface StringResult {
   option?: Option;
 }
 
+type OptionWithId = Option & { id : string };
+
 export interface InvestigatorResult {
   type: 'investigator';
-  investigatorChoices: ListChoices;
-  options: Option[];
+  investigatorChoices: StringChoices;
+  options: OptionWithId[];
 }
 
 export type ConditionResult =
@@ -101,8 +104,8 @@ function stringConditionResult(
 }
 
 function investigatorConditionResult(
-  investigatorChoices: ListChoices,
-  options: Option[]
+  investigatorChoices: StringChoices,
+  options: OptionWithId[]
 ): InvestigatorResult {
   return {
     type: 'investigator',
@@ -174,7 +177,7 @@ export function checkSuppliesAllConditionResult(
   campaignLog: GuidedCampaignLog
 ): InvestigatorResult {
   const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
-  const choices: ListChoices = {};
+  const choices: StringChoices = {};
   forEach(investigatorSupplies, (supplies, investigatorCode) => {
     const hasSupply = !!find(supplies.entries,
       entry => entry.id === condition.id && !supplies.crossedOut[condition.id]
@@ -184,12 +187,17 @@ export function checkSuppliesAllConditionResult(
       option => option.boolCondition === hasSupply
     );
     if (index !== -1) {
-      choices[investigatorCode] = [index];
+      choices[investigatorCode] = [hasSupply ? 'true' : 'false'];
     }
   });
   return investigatorConditionResult(
     choices,
-    condition.options
+    map(condition.options, option => {
+      return {
+        ...option,
+        id: option.boolCondition ? 'true' : 'false'
+      };
+    }),
   );
 }
 
@@ -245,7 +253,7 @@ export function basicTraumaConditionResult(
 ): InvestigatorResult {
   switch (condition.investigator) {
     case 'each': {
-      const choices: ListChoices = {};
+      const choices: StringChoices = {};
       const investigators = campaignLog.investigatorCodes();
       forEach(investigators, investigator => {
         const decision = condition.trauma === 'mental' ?
@@ -253,12 +261,17 @@ export function basicTraumaConditionResult(
           campaignLog.hasPhysicalTrauma(investigator);
         const index = findIndex(condition.options, option => option.boolCondition === decision);
         if (index !== -1) {
-          choices[investigator] = [index];
+          choices[investigator] = [decision ? 'true' : 'false'];
         }
       });
       return investigatorConditionResult(
         choices,
-        condition.options
+        map(condition.options, option => {
+          return {
+            ...option,
+            id: option.boolCondition ? 'true' : 'false',
+          }
+        })
       );
     }
   }
@@ -295,7 +308,7 @@ export function investigatorCardConditionResult(
   campaignLog: GuidedCampaignLog
 ): InvestigatorResult {
   const investigators = campaignLog.investigatorCodes();
-  const choices: ListChoices = {};
+  const choices: StringChoices = {};
   forEach(investigators, code => {
     const decision = campaignLog.hasCard(
       code,
@@ -303,12 +316,20 @@ export function investigatorCardConditionResult(
     );
     const index = findIndex(condition.options, option => option.boolCondition === decision);
     if (index !== -1) {
-      choices[code] = [index];
+      choices[code] = [decision ? 'true' : 'false'];
     }
   });
   return investigatorConditionResult(
     choices,
-    condition.options
+    map(
+      condition.options,
+      option => {
+        return {
+          ...option,
+          id: option.boolCondition ? 'true' : 'false',
+        };
+      }
+    )
   );
 }
 
@@ -389,16 +410,24 @@ export function conditionResult(
           );
         }
         case 'investigator': {
-          const choices: ListChoices = {};
+          const choices: StringChoices = {};
           forEach(campaignLog.investigatorCodes(), code => {
             const index = findIndex(condition.options, option => option.condition === code);
             if (index !== -1) {
-              choices[code] = [index];
+              choices[code] = [code];
             }
           });
           return investigatorConditionResult(
             choices,
-            condition.options
+            map(
+              condition.options,
+              option => {
+                return {
+                  ...option,
+                  id: option.condition || 'dummy',
+                };
+              }
+            )
           );
         }
         case 'investigator_status': {

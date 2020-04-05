@@ -68,8 +68,14 @@ export default class TraumaEffectComponent extends React.Component<Props> {
             options={{
               type: 'universal',
               choices: [
-                { text: t`Physical Trauma` },
-                { text: t`Mental Trauma` },
+                {
+                  id: 'physical',
+                  text: t`Physical Trauma`,
+                },
+                {
+                  id: 'mental',
+                  text: t`Mental Trauma`,
+                },
               ],
             }}
           />

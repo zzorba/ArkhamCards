@@ -11,6 +11,7 @@ import { FACTION_LIGHT_GRADIENTS } from 'constants';
 
 interface Props {
   id: string;
+  choiceId: string;
   checkText: string;
   defaultState?: boolean;
   min: number;
@@ -60,6 +61,7 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
   renderContent(allInvestigators: Card[]) {
     const {
       id,
+      choiceId,
       checkText,
       min,
       max,
@@ -70,6 +72,7 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
     return (
       <CheckListComponent
         id={id}
+        choiceId={choiceId}
         checkText={checkText}
         defaultState={defaultState}
         items={map(

@@ -18,10 +18,11 @@ import {
   setScenarioDecision,
   setScenarioChoice,
   setScenarioSupplies,
-  setScenarioChoiceList,
+  setScenarioNumberChoices,
+  setScenarioStringChoices,
   undo,
 } from './actions';
-import { Deck, ListChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
+import { Deck, NumberChoices, StringChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import { getCampaignGuide } from 'data/scenario';
 import Card from 'data/Card';
@@ -67,10 +68,16 @@ interface ReduxActionProps {
     supplyCounts: SupplyCounts,
     scenarioId?: string
   ) => void;
-  setScenarioChoiceList: (
+  setScenarioStringChoices: (
     campaignId: number,
     stepId: string,
-    supplyCounts: ListChoices,
+    choices: StringChoices,
+    scenarioId?: string
+  ) => void;
+  setScenarioNumberChoices: (
+    campaignId: number,
+    stepId: string,
+    supplyCounts: NumberChoices,
     scenarioId?: string
   ) => void;
   setScenarioChoice: (
@@ -118,7 +125,8 @@ export default function withCampaignGuideContext<Props>(
       setScenarioCount,
       setScenarioDecision,
       setScenarioSupplies,
-      setScenarioChoiceList,
+      setScenarioNumberChoices,
+      setScenarioStringChoices,
       resetScenario,
       setScenarioChoice,
       undo,
@@ -191,6 +199,7 @@ export default function withCampaignGuideContext<Props>(
       } = this.props;
       startScenario(campaignId, scenarioId);
     };
+
     _setScenarioDecision = (
       stepId: string,
       value: boolean,
@@ -242,16 +251,33 @@ export default function withCampaignGuideContext<Props>(
       );
     };
 
-    _setChoiceList = (
+    _setStringChoices = (
       stepId: string,
-      choices: ListChoices,
+      choices: StringChoices,
       scenarioId?: string
     ) => {
       const {
-        setScenarioChoiceList,
+        setScenarioStringChoices,
         campaignId,
       } = this.props;
-      setScenarioChoiceList(
+      setScenarioStringChoices(
+        campaignId,
+        stepId,
+        choices,
+        scenarioId
+      );
+    };
+
+    _setNumberChoices = (
+      stepId: string,
+      choices: NumberChoices,
+      scenarioId?: string
+    ) => {
+      const {
+        setScenarioNumberChoices,
+        campaignId,
+      } = this.props;
+      setScenarioNumberChoices(
         campaignId,
         stepId,
         choices,
@@ -319,7 +345,8 @@ export default function withCampaignGuideContext<Props>(
           setCount: this._setScenarioCount,
           setDecision: this._setScenarioDecision,
           setSupplies: this._setSupplies,
-          setChoiceList: this._setChoiceList,
+          setNumberChoices: this._setNumberChoices,
+          setStringChoices: this._setStringChoices,
           setChoice: this._setChoice,
           resetScenario: this._resetScenario,
           undo: this._undo,

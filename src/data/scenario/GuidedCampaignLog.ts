@@ -33,8 +33,6 @@ import {
   TraumaEffect,
 } from './types';
 import CampaignGuide from './CampaignGuide';
-import { CardsMap } from 'data/Card';
-import { InvestigatorDeck } from 'data/scenario';
 
 interface BasicEntry {
   id: string;
@@ -80,7 +78,6 @@ interface CountSection {
 
 interface PlayingScenarioItem {
   investigator: string;
-  deckId: number;
 }
 interface ScenarioData {
   resolution?: string;
@@ -516,18 +513,14 @@ export default class GuidedCampaignLog {
         });
         break;
       case 'playing_scenario': {
-        const playing: PlayingScenarioItem[] = [];
-        const investigators = input || [];
-        const decks = numberInput || [];
-        for (let i = 0; i < investigators.length; i++) {
-          if (i >= decks.length) {
-            throw new Error('inputs should be same length');
+        const playing: PlayingScenarioItem[] = map(
+          input || [],
+          investigator => {
+            return {
+              investigator,
+            };
           }
-          playing.push({
-            investigator: investigators[i],
-            deckId: decks[i],
-          });
-        }
+        );
         scenario.playingScenario = playing;
         break;
       }
@@ -880,22 +873,6 @@ export default class GuidedCampaignLog {
       throw new Error('Investigator codes accessed before they were set.');
     }
     return map(playing, ({ investigator }) => investigator);
-  }
-
-  investigators(
-    allInvestigators: CardsMap,
-    allDecks: DecksMap
-  ): InvestigatorDeck[] {
-    const playing = this.latestScenarioData.playingScenario;
-    if (!playing) {
-      throw new Error('Player count accessed before it was set.');
-    }
-    return map(playing, ({ investigator, deckId }) => {
-      return {
-        investigator: allInvestigators[investigator],
-        deck: allDecks[deckId] || undefined,
-      };
-    });
   }
 
   count(sectionId: string, id: string): number {

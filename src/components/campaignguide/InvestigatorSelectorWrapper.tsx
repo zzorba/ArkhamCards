@@ -65,13 +65,14 @@ export default class InvestigatorSelectorWrapper<T> extends React.Component<Prop
       }
     }
   }
+
   renderContent(
     scenarioState: ScenarioStateHelper,
     campaignLog: GuidedCampaignLog,
     scenarioInvestigators: Card[]
   ) {
     const { id, render, investigator, description, extraArgs } = this.props;
-    const choice = scenarioState.choiceList(`${id}_investigator`);
+    const choice = scenarioState.stringChoices(`${id}_investigator`);
     if (choice === undefined && (
       investigator === 'choice' ||
       investigator === 'any'
@@ -80,6 +81,7 @@ export default class InvestigatorSelectorWrapper<T> extends React.Component<Prop
         <ChooseInvestigatorPrompt
           id={`${id}_investigator`}
           title={t`Choose Investigator`}
+          choiceId="chosen_investigator"
           description={description}
           defaultLabel={t`No one`}
           required={investigator === 'any'}

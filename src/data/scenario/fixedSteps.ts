@@ -53,7 +53,8 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
       choices: map(
         filter(resolutions, resolution => resolution.id !== 'investigator_defeat'),
         resolution => {
-          const choice: Choice = {
+          const choice: ConditionalEffectsChoice = {
+            id: resolution.id,
             text: resolution.title,
             steps: [
               investigatorStatusStepId(resolution),
@@ -114,6 +115,7 @@ export const LEAD_INVESTIGATOR_STEP: InputStep = {
     source: 'scenario',
     choices: [
       {
+        id: 'lead',
         text: t`Lead Investigator`,
         effects: [
           {
@@ -196,6 +198,7 @@ function investigatorStatusStep(
     resolution.investigator_status || defaultStatuses,
     status => {
       return {
+        id: status,
         text: statusToString(status),
         effects: [
           {

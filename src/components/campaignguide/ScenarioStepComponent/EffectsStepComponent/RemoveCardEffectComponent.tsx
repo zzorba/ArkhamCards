@@ -56,6 +56,7 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
       return (
         <InvestigatorCheckListComponent
           id={`${id}_investigator`}
+          choiceId="remove_card"
           min={input.length}
           max={input.length}
           checkText={t`Remove ${card.name} (${input.length})`}

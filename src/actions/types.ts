@@ -627,10 +627,16 @@ export interface GuideDecisionInput extends BasicInput {
   decision: boolean;
 }
 
-export interface GuideChoiceListInput extends BasicInput {
+export interface GuideNumberChoicesInput extends BasicInput {
   type: 'choice_list';
   step: string;
-  choices: ListChoices;
+  choices: NumberChoices;
+}
+
+export interface GuideStringChoicesInput extends BasicInput {
+  type: 'string_choices';
+  step: string;
+  choices: StringChoices;
 }
 
 export interface GuideCountInput extends BasicInput {
@@ -652,7 +658,8 @@ export interface GuideStartScenarioInput extends BasicInput {
 export type GuideInput =
   GuideSuppliesInput |
   GuideDecisionInput |
-  GuideChoiceListInput |
+  GuideNumberChoicesInput |
+  GuideStringChoicesInput |
   GuideCountInput |
   GuideChoiceInput |
   GuideStartScenarioInput;
@@ -684,8 +691,12 @@ export interface SupplyCounts {
   };
 }
 
-export interface ListChoices {
+export interface NumberChoices {
   [code: string]: number[];
+}
+
+export interface StringChoices {
+  [code: string]: string[];
 }
 
 export interface CampaignGuideState {

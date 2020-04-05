@@ -48,6 +48,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "easy",
             "text": "Easy <i>(I want to experience the story)</i>",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
             "effects": [
@@ -64,6 +65,7 @@
               }
             ]
           },{
+            "id": "standard",
             "text": "Standard <i>(I want a challenge)</i>",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
             "effects": [
@@ -80,6 +82,7 @@
               }
             ]
           },{
+            "id": "hard",
             "text": "Hard <i>(I want a true nightmare)</i>",
             "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
             "effects": [
@@ -96,6 +99,7 @@
               }
             ]
           },{
+            "id": "expert",
             "text": "Expert <i>(I want Arkham Horror)</i>",
             "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
             "effects": [
@@ -377,6 +381,7 @@
         ],
         "choices": [
           {
+            "id": "sacrificed",
             "text": "Sacrificed",
             "effects": [
               {
@@ -1341,18 +1346,22 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "act_1",
             "text": "Act 1",
             "steps": ["resolution_4"]
           },
           {
+            "id": "act_2",
             "text": "Act 2",
             "steps": ["resolution_4"]
           },
           {
+            "id": "act_3",
             "text": "Act 3",
             "steps": ["resolution_4"]
           },
           {
+            "id": "act_4",
             "text": "Act 4",
             "steps": ["resolution_2"]
           }
@@ -1447,6 +1456,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "1a",
             "flavor": "Professor Warren Rice was last seen working late at night in the humanities department of Miskatonic University. Let’s search for him there.",
             "text": "Proceed with “Scenario I–A: Extracurricular Activity” if you wish to find Professor Warren Rice first.",
             "effects": [
@@ -1458,6 +1468,7 @@
             ]
           },
           {
+            "id": "1b",
             "flavor": "Dr. Francis Morgan was last seen gambling at the Clover Club, an upscale speakeasy and gambling joint located downtown. Let’s go talk to him.",
             "text": "Proceed with “Scenario I–B: The House Always Wins” if you wish to find Dr. Francis Morgan first.",
             "effects": [
@@ -1877,6 +1888,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "cheat",
             "text": "Did any player “cheat”?",
             "effects": [
               {
@@ -2257,10 +2269,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "calmed",
             "flavor": "You try to calm down the townsfolk in order to learn more.",
             "steps": [ "part1", "calmed_townsfolk" ]
           },
           {
+            "id": "warned",
             "flavor": "You try to warn the townsfolk and convince them to evacuate.",
             "steps": [ "part2", "warned_townsfolk" ]
           }
@@ -2378,9 +2392,8 @@
       "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Pact]] weakness and adds it to their deck for the remainder of the campaign.",
       "effects": [
         {
-          "type": "add_card",
+          "type": "add_weakness",
           "investigator": "all",
-          "card": "01000",
           "weakness_traits": ["Madness", "Injury", "Pact"]
         }
       ]
@@ -2947,6 +2960,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "easy",
             "text": "Easy <i>(I want to experience the story)</i>",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -2963,6 +2977,7 @@
               }
             ]
           },{
+            "id": "standard",
             "text": "Standard <i>(I want a challenge)</i>",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -2979,6 +2994,7 @@
               }
             ]
           },{
+            "id": "hard",
             "text": "Hard <i>(I want a true nightmare)</i>",
             "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -2995,6 +3011,7 @@
               }
             ]
           },{
+            "id": "expert",
             "text": "Expert <i>(I want Arkham Horror)</i>",
             "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -3283,9 +3300,8 @@
       "text": "The guilt over sacrificing Lita forever haunts your memory. Each investigator must search the collection for a random [[Madness]] weakness and add it to their deck.",
       "effects": [
         {
-          "type": "add_card",
+          "type": "add_weakness",
           "investigator": "all",
-          "card": "01000",
           "weakness_traits": ["Madness"]
         }
       ]
@@ -3810,6 +3826,7 @@
         ],
         "choices": [
           {
+            "id": "interrogated",
             "text": "Interrogated",
             "effects": [
               {
@@ -3821,6 +3838,7 @@
             ]
           },
           {
+            "id": "got_away",
             "text": "Got away",
             "effects": [
               {
@@ -3849,6 +3867,7 @@
         ],
         "choices": [
           {
+            "id": "interrogated",
             "text": "Interrogated",
             "effects": [
               {
@@ -3860,6 +3879,7 @@
             ]
           },
           {
+            "id": "got_away",
             "text": "Got away",
             "effects": [
               {
@@ -3895,6 +3915,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "ghoul_priest_killed",
             "text": "Is the Ghoul Priest in the victory display?",
             "steps": ["cross_out_ghoul_priest_alive"]
           }
@@ -4067,6 +4088,7 @@
       "input": {
         "type": "choose_one",
         "choices": [{
+          "id": "easy",
           "text": "Easy <i>(I want to watch the play)</i>",
           "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -4083,6 +4105,7 @@
             }
           ]
         },{
+          "id": "standard",
           "text": "Standard <i>(I want to read the signs)</i>",
           "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -4099,6 +4122,7 @@
             }
           ]
         },{
+          "id": "hard",
           "text": "Hard <i>(I want to speak the oath)</i>",
           "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -4115,6 +4139,7 @@
             }
           ]
         },{
+          "id": "expert",
           "text": "Expert <i>(I want <u>The King in Yellow</u>)</i>",
           "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -4280,9 +4305,8 @@
       "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
       "effects": [
         {
-          "type": "add_card",
+          "type": "add_weakness",
           "investigator": "all",
-          "card": "01000",
           "weakness_traits": ["Madness", "Pact", "Cultist", "Detective"]
         }
       ]
@@ -4355,6 +4379,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "ashleigh_killed",
             "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the victory display?",
             "steps": ["kill_ashleigh"]
           }
@@ -4654,6 +4679,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "steal",
             "text": "Did anyone “steal from the box office?”",
             "effects": [
               {
@@ -5042,6 +5068,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "possessed",
             "text": "At least 1 Posession treachery in hand",
             "effects": [
               {
@@ -5515,6 +5542,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "sebastien_killed",
             "text": "Is Sebastien Moreau <i>(Savage Hysteria)</i> in the victory display?",
             "steps": ["kill_sebastien"]
           }
@@ -5736,14 +5764,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "survived",
             "text": "If an investigator resigned with the asset version of Daniel Chesterfield under their control.",
             "steps": ["daniel_survived","earn_2_xp"]
           },
           {
+            "id": "possessed",
             "text": "If the enemy version of Daniel Chesterfield was in play when the scenario ended.",
             "steps": ["daniel_possessed"]
           },
           {
+            "id": "neither",
             "text": "If neither of the above are true.",
             "steps": ["daniel_did_not_survive"]
           }
@@ -5779,10 +5810,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "ignore",
             "flavor": "Possession? Oaths? There must be another explanation for all of this.",
             "steps": ["ignore_the_warning", "ignored_daniels_warning", "mark_2_doubt"]
           },
           {
+            "id": "heed",
             "flavor": "We must heed Daniel’s warning. We must not speak the name of the King in Yellow.",
             "steps": ["heed_the_warning", "heeded_daniels_warning", "mark_2_conviction", "earn_1_xp", "forbidden_name"]
           }
@@ -5883,14 +5916,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "go_back_in",
             "flavor": "Things seem to have calmed down. Perhaps we should go back inside and investigate further.",
             "steps": ["reward_1", "why_go_back", "intruded_on_secret_meeting", "add_elder_things"]
           },
           {
+            "id": "block_door",
             "flavor": "I don’t trust this place one bit. Let’s block the door and get the hell out of here!",
             "steps": ["reward_2", "door_wont_stop_them", "fled_dinner_party", "add_tablets"]
           },
           {
+            "id": "burn_house",
             "flavor": "If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <b>kill them.</b>",
             "steps": ["reward_3", "did_what_had_to_be_done", "slayed_the_monsters", "slay_vips", "add_cultists"]
           }
@@ -6310,10 +6346,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "beautiful",
             "flavor": "“How could any of this be beautiful to you?”",
             "steps": ["dream_11", "mark_one_conviction"]
           },
           {
+            "id": "confused",
             "flavor": "“What exactly am I looking at?”",
             "steps": ["dream_12", "mark_one_doubt"]
           }
@@ -6557,6 +6595,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "jordan_killed",
             "text": "Is Jordan Perry <i>(An Imposing Presence)</i> in the victory display?",
             "steps": ["kill_jordan"]
           }
@@ -6708,6 +6747,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "lola",
             "text": "Was Lola Hayes  chosen as an investigator for this campaign?",
             "steps": ["lola_prologue"]
           }
@@ -6842,6 +6882,7 @@
         ],
         "choices": [
           {
+            "id": "interviewed",
             "text": "Interviewed",
             "effects": [
               {
@@ -6870,6 +6911,7 @@
         ],
         "choices": [
           {
+            "id": "slain",
             "text": "Slain",
             "effects": [
               {
@@ -7174,6 +7216,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "read_act_2",
             "text": "Read Act II",
             "effects": [
               {
@@ -7183,8 +7226,7 @@
                 "text": "#name# read Act 2 of The King in Yellow."
               },
               {
-                "type": "add_card",
-                "card": "01000",
+                "type": "add_weakness",
                 "investigator": "$input_value",
                 "weakness_traits": ["Madness", "Pact"]
               },
@@ -7220,6 +7262,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "haruko_killed",
             "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the victory display?",
             "steps": ["kill_haruko"]
           }
@@ -7585,6 +7628,7 @@
       "input": {
         "type": "choose_one",
         "choices": [{
+          "id": "constance_killed",
           "text": "Is Constance Dumaine <i>(A Little Too Sociable)</i> in the victory display?",
           "steps": ["kill_constance"]
         }]
@@ -7793,6 +7837,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "easy",
             "text": "Easy <i>(I want to experience the story)</i>",
             "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -7809,6 +7854,7 @@
               }
             ]
           },{
+            "id": "standard",
             "text": "Standard <i>(I want a challenge)</i>",
             "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -7825,6 +7871,7 @@
               }
             ]
           },{
+            "id": "hard",
             "text": "Hard <i>(I want a true nightmare)</i>",
             "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -7841,6 +7888,7 @@
               }
             ]
           },{
+            "id": "expert",
             "text": "Expert <i>(I want Arkham Horror)</i>",
             "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
             "effects": [
@@ -8066,6 +8114,7 @@
         ],
         "choices": [
           {
+            "id": "victory_display",
             "text": "Victory display",
             "effects": [
               {
@@ -8077,6 +8126,7 @@
             ]
           },
           {
+            "id": "in_play",
             "text": "In play or in Cultist deck",
             "effects": [
               {
@@ -8088,6 +8138,7 @@
             ]
           },
           {
+            "id": "out_of_play",
             "text": "Not in play",
             "effects": []
           }
@@ -8109,6 +8160,7 @@
         ],
         "choices": [
           {
+            "id": "victory_display",
             "text": "Victory display",
             "effects": [
               {
@@ -8120,6 +8172,7 @@
             ]
           },
           {
+            "id": "in_play",
             "text": "In play or in Cultist deck",
             "effects": [
               {
@@ -8131,6 +8184,7 @@
             ]
           },
           {
+            "id": "out_of_play",
             "text": "Not in play",
             "effects": []
           }
@@ -8159,6 +8213,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "ghoul_priest_killed",
             "text": "Is the Ghoul Priest in the victory display?",
             "effects": [
               {
@@ -8299,6 +8354,7 @@
       "input": {
         "type": "choose_one",
         "choices": [{
+          "id": "easy",
           "text": "Easy <i>(I want to experience the story)</i>",
           "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -8315,6 +8371,7 @@
             }
           ]
         },{
+          "id": "standard",
           "text": "Standard <i>(I want a challenge)</i>",
           "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -8331,6 +8388,7 @@
             }
           ]
         },{
+          "id": "hard",
           "text": "Hard <i>(I want a true nightmare)</i>",
           "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -8347,6 +8405,7 @@
             }
           ]
         },{
+          "id": "expert",
           "text": "Expert <i>(I want Arkham Horror)</i>",
           "description": "0, -1, -1, -2, -2, -3, -4, -6, -8, [skull], [skull], [auto_fail], [elder_sign]",
           "effects": [
@@ -8443,6 +8502,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "no_clues",
             "text": "Are there no clues on the Entry Hall?",
             "steps": ["gavriella_fate", "on_gavriellas_trail"]
           }
@@ -8472,6 +8532,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "no_clues",
             "text": "Are there no clues on the Office?",
             "steps": ["jerome_fate", "on_jeromes_trail"]
           }
@@ -8501,6 +8562,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "no_clues",
             "text": "Are there no clues on the Balcony?",
             "steps": ["penny_fate", "on_pennys_trail"]
           }
@@ -8530,6 +8592,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "no_clues",
             "text": "Are there no clues on the Billiards Room?",
             "steps": ["valentino_fate", "on_valentinos_trail"]
           }
@@ -8721,14 +8784,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "act_1",
             "text": "Act 1",
             "steps": ["resolution_2"]
           },
           {
+            "id": "act_2",
             "text": "Act 2",
             "steps": ["resolution_3"]
           },
           {
+            "id": "act_3",
             "text": "Act 3",
             "steps": ["resolution_1"]
           }
@@ -9103,11 +9169,13 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "doom_self",
             "flavor": "“It must be done.”",
             "description": "This will doom you.",
             "steps": ["resolution_5"]
           },
           {
+            "id": "doom_all",
             "flavor": "“I refuse!”",
             "description": "This will doom the universe.",
             "steps": ["resolution_1"]
@@ -9304,6 +9372,7 @@
         ],
         "choices": [
           {
+            "id": "not_chosen",
             "text": "Not Chosen",
             "effects": [
               {
@@ -9484,10 +9553,12 @@
         ],
         "choices": [
           {
+            "id": "not_chosen",
             "text": "Not chosen",
             "effects": []
           },
           {
+            "id": "taken_by_the_watcher",
             "text": "Taken by the Watcher",
             "effects": [
               {
@@ -9499,6 +9570,7 @@
             ]
           },
           {
+            "id": "claimed_by_specters",
             "text": "Claimed by specters",
             "effects": [
               {
@@ -9510,6 +9582,7 @@
             ]
           },
           {
+            "id": "disappeared_into_the_mist",
             "text": "Disappeared into the mist",
             "effects": [
               {
@@ -9521,6 +9594,7 @@
             ]
           },
           {
+            "id": "pulled_into_spectral_realm",
             "text": "Pulled into the spectral realm",
             "effects": [
               {
@@ -10208,6 +10282,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "alone",
             "text": "<i>“You’ve done enough harm. We’ll handle this from here.”</i>",
             "effects": [
               {
@@ -10219,6 +10294,7 @@
             ]
           },
           {
+            "id": "ask_for_help",
             "text": "<i>“We will need your help to fix this.”</i>",
             "effects": [
               {
@@ -10230,6 +10306,7 @@
             ]
           },
           {
+            "id": "under_arrest",
             "text": "<i>“You are under arrest.”</i>",
             "description": "You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
             "effects": [
@@ -10242,6 +10319,7 @@
             ]
           },
           {
+            "id": "learn_spells",
             "text": "<i>“Then teach me how to be stronger.”</i>",
             "description": "You may only choose this option if at least one of the investigators has the [[Sorcerer]], [[Miskatonic]], or [[Scholar]] trait.",
             "effects": [
@@ -10263,6 +10341,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "alone",
             "text": "<i>“You’ve done enough harm. We’ll handle this from here.”</i>",
             "effects": [
               {
@@ -10274,6 +10353,7 @@
             ]
           },
           {
+            "id": "ask_for_help",
             "text": "<i>“We will need your help to fix this.”</i>",
             "effects": [
               {
@@ -10285,6 +10365,7 @@
             ]
           },
           {
+            "id": "under_arrest",
             "text": "<i>“You are under arrest.”</i>",
             "description": "You may only choose this option if at least one of the investigators has the [[Detective]], [[Police]], or [[Agency]] trait.",
             "effects": [
@@ -10297,6 +10378,7 @@
             ]
           },
           {
+            "id": "seize_control",
             "text": "<i>“You don't deserve to lead us.”</i>",
             "description": "You may only choose this option if at least one of the investigators has the [[Sorcerer]], [[Silver Twilight]], or [[Cultist]] trait.",
             "effects": [
@@ -10442,10 +10524,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "give_mementos",
             "text": "Give Mr. Sanford everything you have found.",
             "steps": ["ic_2", "lose_all_mementos", "check_rescued_josef"]
           },
           {
+            "id": "hide_mementos",
             "text": "Tell him you have nothing to show. (You are lying.)",
             "steps": ["ic_3", "kept_mementos_hidden"]
           }
@@ -10757,14 +10841,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "victory_display",
             "text": "Victory display:",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
+            "id": "entry_hall",
             "text": "Beneath the Entry Hall",
             "steps": ["progress_5", "rescued_josef", "bonus_xp", "choose_lodge"]
           },
           {
+            "id": "neither",
             "text": "Neither",
             "steps": ["check_silver_twilight"]
           }
@@ -10779,14 +10866,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "victory_display",
             "text": "More in the victory display",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
+            "id": "equal",
             "text": "Equal number in each",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
+            "id": "entry_hall",
             "text": "More beneath the Entry Hall",
             "steps": ["progress_6", "josef_is_alive", "choose_lodge"]
           }
@@ -10849,14 +10939,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "refuse",
             "flavor": "“I refuse to be a part of this.”",
             "steps": ["progress_7", "enemies_of_the_lodge"]
           },
           {
+            "id": "agree",
             "text": "“I agree.”",
             "steps": ["progress_8", "members_of_the_lodge", "add_cultist_token"]
           },
           {
+            "id": "lie",
             "text": "“I agree.” (You are lying.)",
             "steps": ["progress_9", "members_of_the_lodge", "add_cultist_token", "deceiving_the_lodge"]
           }
@@ -11036,10 +11129,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "tell_lodge",
             "text": "Tell the Lodge of the witches in the woods.",
             "steps": ["intro_2", "told_lodge_about_coven", "add_cultist_token"]
           },
           {
+            "id": "lie",
             "text": "Tell him you know of no possible connection. (You are lying.)",
             "steps": ["intro_3", "check_mystic_investigator", "intro_3_continued", "hid_their_knowledge"]
           }
@@ -11193,6 +11288,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "brown_jenkin_defeated",
             "text": "Was Brown Jenkin defeated at least once?",
             "effects": [
               {
@@ -11212,6 +11308,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "nehab_defeated",
             "text": "Was Nahab defeated at least once?",
             "effects": [
               {
@@ -11232,14 +11329,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "act_1",
             "text": "Act 1",
             "steps": []
           },
           {
+            "id": "act_2",
             "text": "Act 2",
             "steps": ["record_gilmans_journal", "choose_black_book"]
           },
           {
+            "id": "act_3",
             "text": "Act 3",
             "steps": ["record_gilmans_journal", "record_keziahs_formulae", "choose_black_book"]
           }
@@ -11287,6 +11387,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "keep_book",
             "text": "Keep the Black Book?",
             "effects": [
               {
@@ -11582,10 +11683,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "accept_fate",
             "flavor": "“What can I do to avoid this fate?”",
             "steps": ["intro_2", "accepted_fate", "add_tarot"]
           },
           {
+            "id": "reject_fate",
             "flavor": "“This is bullshit.”",
             "steps": ["intro_3", "rejected_fate"]
           }
@@ -11716,18 +11819,22 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "act_1",
             "text": "Act 1",
             "steps": ["resolution_3"]
           },
           {
+            "id": "act_2",
             "text": "Act 2",
             "steps": ["resolution_3"]
           },
           {
+            "id": "act_3",
             "text": "Act 3",
             "steps": ["resolution_3"]
           },
           {
+            "id": "act_4",
             "text": "Act 4",
             "steps": ["resolution_4"]
           }
@@ -11835,10 +11942,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "act_1_or_2",
             "text": "It was act 1 or 2 when the scenario ended",
             "steps": ["no_record"]
           },
           {
+            "id": "act_3",
             "text": "It was act 3 when the scenario ended",
             "steps": ["mementos_flute"]
           }
@@ -12238,11 +12347,13 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "help_ritual",
             "flavor": "“We have to help complete the Lodge’s ritual.”",
             "text": "Completing the ritual should bind the Spectral Watcher and prevent it from doing any more harm.",
             "steps": ["sided_with_the_lodge"]
           },
           {
+            "id": "thwart_ritual",
             "flavor": "“We have to stop the Lodge’s ritual.”",
             "text": "Disrupting the ritual should release the Spectral Watcher’s tether to the mortal realm.",
             "steps": ["sided_with_the_coven"]
@@ -12657,10 +12768,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "resolve_story_cards",
             "text": "Resolve the story cards",
             "steps": ["resolve_story_cards"]
           },
           {
+            "id": "scenario_ended",
             "text": "Scenario ended without instruction",
             "steps": []
           }
@@ -12684,6 +12797,7 @@
         ],
         "choices": [
           {
+            "id": "alive",
             "text": "Alive",
             "effects": [
               {
@@ -12704,11 +12818,13 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "yes",
             "flavor": "“Yes.”",
             "description": "You may choose this option only if <i>the investigators were inducted into the Inner Circle</i>, and cannot choose this option <i>if the investigators are deceiving the Lodge</i>.",
             "steps": ["resolution_2"]
           },
           {
+            "id": "no",
             "flavor": "No.”",
             "steps": ["resolution_3"]
           }
@@ -13216,6 +13332,7 @@
       "input": {
         "type": "choose_one",
         "choices": [{
+          "id": "easy",
           "text": "Easy <i>(I want to experience the story)</i>",
           "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
           "effects": [
@@ -13232,6 +13349,7 @@
             }
           ]
         },{
+          "id": "standard",
           "text": "Standard <i>(I want a challenge)</i>",
           "description": "+1, 0, 0, 0, -1, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
           "effects": [
@@ -13248,6 +13366,7 @@
             }
           ]
         },{
+          "id": "hard",
           "text": "Hard <i>(I want a true nightmare)</i>",
           "description": "+1, 0, 0, -1, -2, -3, -3, -4, -6, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
           "effects": [
@@ -13264,6 +13383,7 @@
             }
           ]
         },{
+          "id": "expert",
           "text": "Expert <i>(I want Arkham Horror)</i>",
           "description": "0, -1, -2, -2, -3, -3, -4, -4, -6, -8, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
           "effects": [
@@ -13398,10 +13518,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "museum",
             "flavor": "It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.",
             "steps": ["ee_2", "gave_relic_to_alejandro", "earned_alejandros_trust", "maybe_earn_alejandro", "add_tablet", "ee_4"]
           },
           {
+            "id": "hide",
             "flavor": "It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.",
             "steps": ["ee_3", "gave_relic_to_harlan", "alejandro_on_his_own", "remove_alejandro", "ee_4"]
           }
@@ -13741,10 +13863,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "go_back_in",
             "flavor": "“We can’t stop now—we have to go back inside!”",
             "steps": ["resolution_4"]
           },
           {
+            "id": "destroy",
             "flavor": "“It’s too dangerous. This place must be destroyed.”",
             "steps": ["resolution_5"]
           }
@@ -13775,6 +13899,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "harbinger_alive",
             "text": "Is the Harbinger of Valusia still in play or set aside?",
             "steps": ["record_harbinger"]
           }
@@ -13886,6 +14011,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "poisoned",
             "text": "Poisoned",
             "condition": {
               "type": "has_card",
@@ -13992,6 +14118,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "ichtaca",
             "flavor": "Let’s consult with Ichtaca.",
             "condition": {
               "type": "has_card",
@@ -14005,6 +14132,7 @@
             "steps": ["intro_2", "start_with_ichtaca"]
           },
           {
+            "id": "alejandro",
             "flavor": "Let’s consult with Alejandro.",
             "condition": {
               "type": "has_card",
@@ -14018,6 +14146,7 @@
             "steps": ["intro_3", "start_with_alejandro"]
           },
           {
+            "id": "journal",
             "flavor": "Let’s consult the expedition journal.",
             "condition": {
               "type": "has_card",
@@ -14031,6 +14160,7 @@
             "steps": ["intro_4", "start_with_expedition_journal"]
           },
           {
+            "id": "nothing",
             "text": "I wish we knew more about this...",
             "steps": []
           }
@@ -14247,6 +14377,7 @@
         ],
         "choices": [
           {
+            "id": "victory_display",
             "text": "Victory display",
             "effects": [
               {
@@ -14290,6 +14421,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "poisoned",
             "text": "Poisoned",
             "condition": {
               "type": "has_card",
@@ -14401,10 +14533,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "no_harbinger",
             "text": "Harbinger did not enter play.",
             "steps": []
           },
           {
+            "id": "victory_display",
             "text": "Harbinger is in the victory display.",
             "effects": [
               {
@@ -14416,6 +14550,7 @@
             ]
           },
           {
+            "id": "alive",
             "text": "Haringer is still in play or set aside.",
             "steps": ["record_harbinger"]
           }
@@ -14524,6 +14659,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "poisoned",
             "text": "Poisoned",
             "condition": {
               "type": "has_card",
@@ -16023,8 +16159,7 @@
           },
           {
             "type": "earn_xp",
-            "investigator": "all",
-            "bonus": "$input_value"
+            "investigator": "all"
           }
         ]
       }
@@ -16081,10 +16216,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "no_harbinger",
             "text": "Harbinger did not enter play.",
             "steps": []
           },
           {
+            "id": "victory_display",
             "text": "Harbinger is in the victory display.",
             "effects": [
               {
@@ -16096,6 +16233,7 @@
             ]
           },
           {
+            "id": "alive",
             "text": "Haringer is still in play or set aside.",
             "steps": ["record_harbinger"]
           }
@@ -16161,6 +16299,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "poisoned",
             "text": "Poisoned",
             "condition": {
               "type": "has_card",
@@ -16243,10 +16382,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "cooperate",
             "flavor": "Cooperate and tell the creatures everything you know.",
             "steps": ["intro_2", "cooperated_with_yithians"]
           },
           {
+            "id": "resist",
             "flavor": "Refuse and resist captivity.",
             "steps": ["intro_3", "resisted_captivity"]
           }
@@ -17458,8 +17599,7 @@
           "investigator": "all"
         },
         {
-          "type": "add_card",
-          "card": "01000",
+          "type": "add_weakness",
           "investigator": "all",
           "weakness_traits": ["Injury"]
         },
@@ -17531,10 +17671,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "no_harbinger",
             "text": "Harbinger did not enter play.",
             "steps": []
           },
           {
+            "id": "victory_display",
             "text": "Harbinger is in the victory display.",
             "effects": [
               {
@@ -17546,6 +17688,7 @@
             ]
           },
           {
+            "id": "alive",
             "text": "Haringer is still in play or set aside.",
             "steps": ["record_harbinger"]
           }
@@ -17644,6 +17787,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "poisoned",
             "text": "Poisoned",
             "condition": {
               "type": "has_card",
@@ -17759,11 +17903,13 @@
         "detailed": true,
         "choices": [
           {
+            "id": "elder_sign",
             "text": "[elder_sign] or +1 token.",
             "description": "Suffer no ill efects.",
             "effects": []
           },
           {
+            "id": "skull_or_number",
             "text": "[skull] token or any number other than +1",
             "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
             "effects": [
@@ -17775,6 +17921,7 @@
             ]
           },
           {
+            "id": "bad_stuff",
             "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
             "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
             "effects": [
@@ -17804,11 +17951,13 @@
         "detailed": true,
         "choices": [
           {
+            "id": "elder_sign",
             "text": "[elder_sign] or +1 token.",
             "description": "Suffer no ill efects.",
             "effects": []
           },
           {
+            "id": "skull_or_number",
             "text": "[skull] token or any number other than +1",
             "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
             "effects": [
@@ -17820,6 +17969,7 @@
             ]
           },
           {
+            "id": "bad_stuff",
             "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
             "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
             "effects": [
@@ -17896,10 +18046,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "yes",
             "text": "Yes",
             "steps": ["mind_recovered", "alejandro_remembers_everything"]
           },
           {
+            "id": "no",
             "text": "No",
             "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
           }
@@ -18253,10 +18405,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "stop_her",
             "flavor": "“You’re not going anywhere until you tell me what is going on.”",
             "steps": ["intro_4", "listened_to_ichtaca", "add_cultist"]
           },
           {
+            "id": "let_her_leave",
             "flavor": "“Have it your way.”",
             "steps": ["intro_5", "ichtaca_left_without_you", "check_ignored_ichtaca_and_gave_relic_to_harlan"]
           }
@@ -18326,6 +18480,7 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "on_your_own",
             "text": "“We should be wary of them.”",
             "description": "Remove all [cultist] and [tablet] tokens from the chaos bag and replace them with 1 [elder_thing] token. In your Campaign Log, record that <i>you are forging your own path.</i>\nFor the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead. Proceed to Setup.",
             "effects": [
@@ -18346,6 +18501,7 @@
             ]
           },
           {
+            "id": "listen",
             "text": "“Maybe I should listen to them after all...”",
             "effects": []
           }
@@ -18421,10 +18577,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "police",
             "text": "If you wish to go to the police to inform them about Alejandro’s disappearance",
             "steps": ["go_to_police"]
           },
           {
+            "id": "search_alone",
             "text": "If you wish to look for Alejandro on your own",
             "steps": ["search_for_alejandro_alone"]
           }
@@ -18449,10 +18607,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "listened_to_ichtaca",
             "text": "If “you listened to Ichtaca’s tale”",
             "steps": ["act_listened_to_ichtaca"]
           },
           {
+            "id": "ichtaca_left",
             "text": "If “Ichtaca left without you”",
             "steps": ["act_ichtaca_left_without_you"]
           }
@@ -18482,10 +18642,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "completed",
             "text": "Act 3b was completed",
             "steps": ["found_missing_relic", "maybe_earn_relic_of_ages"]
           },
           {
+            "id": "in_play",
             "text": "The “a/b” act deck is still in play",
             "steps": ["relic_is_missing", "maybe_remove_relic_of_ages"]
           }
@@ -18642,10 +18804,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "completed",
             "text": "Act 3d was completed",
             "steps": ["rescued_alejandro", "maybe_earn_alejandro"]
           },
           {
+            "id": "in_play",
             "text": "The “c/d” act deck is still in play",
             "steps": ["alejandro_is_missing", "maybe_remove_alejandro"]
           }
@@ -18660,10 +18824,12 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "completed",
             "text": "Act 3f was completed",
             "steps": ["forged_bond_with_ichtaca", "maybe_earn_ichtaca"]
           },
           {
+            "id": "in_play",
             "text": "The “e/f” act deck is still in play",
             "steps": ["ichtaca_in_the_dark"]
           }
@@ -18848,6 +19014,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "remove_poison",
             "text": "Remove Poison Weakness",
             "condition": {
               "type": "has_card",
@@ -18887,6 +19054,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "remove_physical",
             "text": "Remove Physical Trauma",
             "condition": {
               "type": "trauma",
@@ -18913,6 +19081,7 @@
             ]
           },
           {
+            "id": "remove_mental",
             "text": "Remove Mental Trauma",
             "condition": {
               "type": "trauma",
@@ -19413,14 +19582,17 @@
         "type": "choose_one",
         "choices": [
           {
+            "id": "act_1_or_2",
             "text": "It was Act 1 or 2 when the scenario ended",
             "steps": ["ichtaca_observed_progress", "alejandro_followed_to_ruins"]
           },
           {
+            "id": "fought_ichtaca",
             "text": "“You fought with Ichtaca”",
             "steps": ["ichtaca_is_wary", "alejandro_followed_to_ruins"]
           },
           {
+            "id": "talked_to_ichtaca",
             "text": "“Ichtaca is leading the way”",
             "steps": ["earned_ichtacas_trust", "alejandro_remained_at_camp"]
           }
@@ -19468,6 +19640,7 @@
         "source": "scenario",
         "choices": [
           {
+            "id": "poisoned",
             "text": "Poisoned",
             "effects": [
               {

@@ -6,7 +6,8 @@ import {
   GuideResetScenarioAction,
   GuideUndoInputAction,
   SupplyCounts,
-  ListChoices,
+  NumberChoices,
+  StringChoices,
 } from 'actions/types';
 
 export function undo(
@@ -99,10 +100,10 @@ export function setScenarioSupplies(
   };
 }
 
-export function setScenarioChoiceList(
+export function setScenarioNumberChoices(
   campaignId: number,
   step: string,
-  choices: ListChoices,
+  choices: NumberChoices,
   scenario?: string
 ): GuideSetInputAction {
   return {
@@ -110,6 +111,24 @@ export function setScenarioChoiceList(
     campaignId,
     input: {
       type: 'choice_list',
+      scenario,
+      step,
+      choices,
+    },
+  };
+}
+
+export function setScenarioStringChoices(
+  campaignId: number,
+  step: string,
+  choices: StringChoices,
+  scenario?: string
+): GuideSetInputAction {
+  return {
+    type: GUIDE_SET_INPUT,
+    campaignId,
+    input: {
+      type: 'string_choices',
       scenario,
       step,
       choices,

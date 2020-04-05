@@ -1,6 +1,7 @@
 import {
   flatMap,
   find,
+  findIndex,
   forEach,
   groupBy,
   keys,
@@ -10,7 +11,7 @@ import {
   sum,
 } from 'lodash';
 
-import { ListChoices } from 'actions/types';
+import { NumberChoices, StringChoices } from 'actions/types';
 import { Choices } from 'data/scenario';
 import {
   BranchStep,
@@ -64,6 +65,9 @@ export default class ScenarioStep {
     if (effect.type === 'trauma' && effect.mental_or_physical) {
       return `${this.step.id}_trauma`;
     }
+    if (effect.type === 'add_weakness') {
+      return `${this.step.id}_weakness`;
+    }
     return undefined;
   }
 
@@ -79,16 +83,20 @@ export default class ScenarioStep {
         }
         return [];
       });
-      if (find(specialInputs, specialInput => scenarioState.choiceList(specialInput) === undefined)) {
+      const stillNeedsInput = find(specialInputs, id =>
+        scenarioState.stringChoices(id) === undefined
+      );
+      if (stillNeedsInput) {
         // No input yet, stop for now.
         return undefined;
       }
+
       return new GuidedCampaignLog(
         flatMap(this.step.effectsWithInput, effects => {
           const result: EffectsWithInput[] = [];
           const [specialEffects, normalEffects] = partition(
             effects.effects,
-            effect => this.getSpecialEffectChoiceList(effect)
+            effect => !!this.getSpecialEffectChoiceList(effect)
           );
           if (normalEffects.length) {
             result.push({
@@ -102,12 +110,27 @@ export default class ScenarioStep {
               // Impossible
               return;
             }
-            const choiceList = scenarioState.choiceList(input);
+            const choiceList = scenarioState.stringChoices(input);
             if (choiceList === undefined) {
               // Also impossible
               return;
             }
             switch (specialEffect.type) {
+              case 'add_weakness': {
+                forEach(choiceList, (choices, code) => {
+                  result.push({
+                    input: [code],
+                    effects: map(choices, card => {
+                      return {
+                        type: 'add_card',
+                        investigator: '$input_value',
+                        card,
+                      };
+                    }),
+                  });
+                });
+                break;
+              }
               case 'remove_card':
               case 'add_card':
                 result.push({
@@ -122,10 +145,13 @@ export default class ScenarioStep {
                 const physical: string[] = [];
                 const mental: string[] = [];
                 forEach(choiceList, (choice, code) => {
-                  if (choice[0] === 0) {
-                    physical.push(code);
-                  } else {
-                    mental.push(code);
+                  switch (choice[0]) {
+                    case 'physical':
+                      physical.push(code);
+                      break;
+                    case 'mental':
+                      mental.push(code);
+                      break;
                   }
                 });
                 if (physical.length) {
@@ -148,6 +174,7 @@ export default class ScenarioStep {
                     }],
                   });
                 }
+                break;
               }
             }
           });
@@ -247,22 +274,15 @@ export default class ScenarioStep {
   }
 
   private processListChoices(
-    choiceList: ListChoices,
+    choiceList: StringChoices,
     theChoices: Choices
   ) {
     const groupedEffects = groupBy(
       flatMap(choiceList, (choices, code) => {
-        return choices.map(originalIndex => {
-          if (theChoices.type === 'universal') {
-            return {
-              code,
-              choice: originalIndex,
-            };
-          }
-          const choice = theChoices.perCode[code][originalIndex];
+        return choices.map(choiceId => {
           return {
             code,
-            choice,
+            choice: findIndex(theChoices.choices, choice => choice.id === choiceId),
           };
         });
       }),
@@ -313,7 +333,7 @@ export default class ScenarioStep {
         );
       }
       case 'investigator_counter': {
-        const choiceList = scenarioState.choiceList(step.id);
+        const choiceList = scenarioState.numberChoices(step.id);
         if (choiceList === undefined) {
           return undefined;
         }
@@ -348,19 +368,13 @@ export default class ScenarioStep {
         );
       }
       case 'scenario_investigators': {
-        const choices = scenarioState.choiceList(step.id);
+        const choices = scenarioState.stringChoices(step.id);
         if (choices === undefined) {
           return undefined;
         }
-        const investigators: string[] = [];
-        const decks: number[] = [];
-        forEach(choices, (deck, investigator) => {
-          investigators.push(investigator);
-          decks.push(deck[0]);
-        });
+        const investigators: string[] = keys(choices);
         const effectsWithInput: EffectsWithInput = {
           input: investigators,
-          numberInput: decks,
           effects: [
             {
               type: 'scenario_data',
@@ -376,7 +390,7 @@ export default class ScenarioStep {
         );
       }
       case 'investigator_choice_supplies': {
-        const choice = scenarioState.choiceList(this.step.id);
+        const choice = scenarioState.stringChoices(this.step.id);
         if (choice === undefined) {
           return undefined;
         }
@@ -390,7 +404,6 @@ export default class ScenarioStep {
         );
         return this.binaryBranch(
           hasSupply,
-          scenarioState,
           this.remainingStepIds,
           input.positiveChoice,
           input.negativeChoice,
@@ -398,7 +411,7 @@ export default class ScenarioStep {
         );
       }
       case 'investigator_choice': {
-        const choices = scenarioState.choiceList(step.id);
+        const choices = scenarioState.stringChoices(step.id);
         if (choices === undefined) {
           return undefined;
         }
@@ -416,11 +429,11 @@ export default class ScenarioStep {
         );
       }
       case 'card_choice': {
-        const choices = scenarioState.choiceList(step.id);
-        if (choices === undefined) {
-          return undefined;
-        }
         if (input.include_counts) {
+          const choices = scenarioState.numberChoices(step.id);
+          if (choices === undefined) {
+            return undefined;
+          }
           const choice = input.choices[0];
           const cards: string[] = [];
           const cardCounts: number[] = [];
@@ -440,6 +453,11 @@ export default class ScenarioStep {
             ]
           );
         }
+        const choices = scenarioState.stringChoices(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+
         const {
           effectsWithInput,
           stepIds,
@@ -526,24 +544,22 @@ export default class ScenarioStep {
         );
       }
       case 'use_supplies': {
-        const choice = scenarioState.choiceList(
-          input.investigator === 'all' ? `${this.step.id}_used` : this.step.id
-        );
-        if (choice === undefined) {
-          return undefined;
-        }
-        const consumeSuppliesEffects: Effect[] = map(choice, ([count], code) => {
-          return {
-            type: 'campaign_log_count',
-            section: input.section,
-            investigator: code,
-            operation: 'add',
-            id: input.id,
-            value: -(input.investigator === 'all' ? count : 1),
-          };
-        });
         switch (input.investigator) {
           case 'all': {
+            const choice = scenarioState.numberChoices(`${this.step.id}_used`);
+            if (choice === undefined) {
+              return undefined;
+            }
+            const consumeSuppliesEffects: Effect[] = map(choice, ([count], code) => {
+              return {
+                type: 'campaign_log_count',
+                section: input.section,
+                investigator: code,
+                operation: 'add',
+                id: input.id,
+                value: -(input.investigator === 'all' ? count : 1),
+              };
+            });
             const useCount = sum(map(choice, count => count[0]));
             if (useCount === this.campaignLog.playerCount()) {
               // We got what we needed.
@@ -556,7 +572,7 @@ export default class ScenarioStep {
                 }],
               );
             }
-            const secondChoice = scenarioState.choiceList(this.step.id);
+            const secondChoice = scenarioState.stringChoices(this.step.id);
             if (secondChoice === undefined) {
               return undefined;
             }
@@ -577,6 +593,20 @@ export default class ScenarioStep {
             );
           }
           case 'choice': {
+            const choice = scenarioState.stringChoices(this.step.id);
+            if (choice === undefined) {
+              return undefined;
+            }
+            const consumeSuppliesEffects: Effect[] = map(keys(choice), code => {
+              return {
+                type: 'campaign_log_count',
+                section: input.section,
+                investigator: code,
+                operation: 'add',
+                id: input.id,
+                value: -1,
+              };
+            });
             const hasAny = keys(choice).length > 0;
             const branchChoice = find(
               input.choices,
@@ -629,7 +659,6 @@ export default class ScenarioStep {
     if (decision !== undefined) {
       return this.binaryBranch(
         decision,
-        scenarioState,
         remainingStepIds,
         ifTrue,
         ifFalse
@@ -640,7 +669,6 @@ export default class ScenarioStep {
 
   private binaryBranch(
     condition: boolean,
-    scenarioState: ScenarioStateHelper,
     remainingStepIds: string[],
     ifTrue?: {
       steps?: null | string[];

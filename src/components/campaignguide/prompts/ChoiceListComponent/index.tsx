@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-import { every, forEach, flatMap, map } from 'lodash';
+import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import { ListChoices } from 'actions/types';
+import { StringChoices } from 'actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
 import { Choices } from 'data/scenario';
@@ -77,15 +77,18 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   };
 
   _save = () => {
-    const { id } = this.props;
+    const { id, options } = this.props;
     const { selectedChoice } = this.state;
-    const choices: ListChoices = {};
+    const choices: StringChoices = {};
     forEach(selectedChoice, (idx, code) => {
       if (idx !== undefined && idx !== -1) {
-        choices[code] = [idx];
+        choices[code] = [options.choices[idx].id];
       }
     });
-    this.context.scenarioState.setChoiceList(id, choices);
+    this.context.scenarioState.setStringChoices(
+      id,
+      choices
+    );
   };
 
   renderSaveButton(hasDecision: boolean) {
@@ -109,8 +112,8 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
 
   }
 
-  getChoice(code: string, choices?: ListChoices): number | undefined {
-    const { detailed } = this.props;
+  getChoice(code: string, choices?: StringChoices): number | undefined {
+    const { detailed, options } = this.props;
     if (choices === undefined) {
       const choice = this.state.selectedChoice[code];
       if (choice !== undefined) {
@@ -119,13 +122,13 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     } else {
       const investigatorChoice = choices[code];
       if (investigatorChoice && investigatorChoice.length) {
-        return investigatorChoice[0];
+        return findIndex(options.choices, option => option.id === investigatorChoice[0]);
       }
     }
     return detailed ? undefined : -1;
   }
 
-  renderChoices(inputChoiceList?: ListChoices) {
+  renderChoices(inputChoiceList?: StringChoices) {
     const { items, detailed, options, optional } = this.props;
     const results = flatMap(items, (item, idx) => {
       const choices = options.type === 'universal' ?
@@ -168,14 +171,14 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
-          const inputChoiceList = scenarioState.choiceList(id);
+          const inputChoices = scenarioState.stringChoices(id);
           return (
             <>
               <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CampaignGuideTextComponent text={text} /> }
               </SetupStepWrapper>
-              { this.renderChoices(inputChoiceList) }
-              { this.renderSaveButton(inputChoiceList !== undefined) }
+              { this.renderChoices(inputChoices) }
+              { this.renderSaveButton(inputChoices !== undefined) }
             </>
           );
         } }

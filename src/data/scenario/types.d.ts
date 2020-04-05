@@ -32,6 +32,7 @@ export type Effect =
   | StoryStepEffect
   | EarnXpEffect
   | AddCardEffect
+  | AddWeaknessEffect
   | RemoveCardEffect
   | ReplaceCardEffect
   | TraumaEffect
@@ -167,8 +168,12 @@ export interface AddCardEffect {
   investigator: InvestigatorSelector;
   card: string;
   required?: boolean;
-  weakness_traits?: string[];
   ignore_deck_limit?: boolean;
+}
+export interface AddWeaknessEffect {
+  type: "add_weakness";
+  investigator: "all" | "$input_value";
+  weakness_traits: string[];
 }
 export interface RemoveCardEffect {
   type: "remove_card";
@@ -412,6 +417,7 @@ export interface CardCodeList {
   code: string[];
 }
 export interface SimpleEffectsChoice {
+  id: string;
   flavor?: string;
   text: string;
   description?: string;
@@ -455,6 +461,7 @@ export interface InvestigatorChoiceInput {
   choices: ConditionalEffectsChoice[];
 }
 export interface ConditionalEffectsChoice {
+  id: string;
   flavor?: string;
   text: string;
   description?: string;
@@ -474,6 +481,7 @@ export interface ChooseOneInput {
   choices: ConditionalChoice[];
 }
 export interface ConditionalStepsChoice {
+  id: string;
   text?: string;
   flavor?: string;
   description?: string;

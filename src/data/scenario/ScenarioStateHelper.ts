@@ -1,5 +1,6 @@
 import {
-  ListChoices,
+  NumberChoices,
+  StringChoices,
   SupplyCounts,
 } from 'actions/types';
 import CampaignStateHelper from './CampaignStateHelper';
@@ -21,12 +22,20 @@ export default class ScenarioStateHelper {
     return this.campaignState.choice(id, this.scenarioId);
   }
 
-  setChoiceList(id: string, value: ListChoices) {
-    this.campaignState.setChoiceList(id, value, this.scenarioId);
+  setNumberChoices(id: string, value: NumberChoices) {
+    this.campaignState.setNumberChoices(id, value, this.scenarioId);
   }
 
-  choiceList(id: string): ListChoices | undefined {
-    return this.campaignState.choiceList(id, this.scenarioId);
+  numberChoices(id: string): NumberChoices | undefined {
+    return this.campaignState.numberChoices(id, this.scenarioId);
+  }
+
+  setStringChoices(id: string, value: StringChoices) {
+    this.campaignState.setStringChoices(id, value, this.scenarioId);
+  }
+
+  stringChoices(id: string): StringChoices | undefined {
+    return this.campaignState.stringChoices(id, this.scenarioId);
   }
 
   setSupplies(id: string, value: SupplyCounts) {

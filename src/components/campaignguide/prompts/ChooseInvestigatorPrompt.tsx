@@ -3,7 +3,7 @@ import { Button, View, StyleSheet } from 'react-native';
 import { findIndex, keys, map } from 'lodash';
 import { t } from 'ttag';
 
-import { ListChoices } from 'actions/types';
+import { StringChoices } from 'actions/types';
 import PickerComponent from './PickerComponent';
 import Card from 'data/Card';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
@@ -12,6 +12,7 @@ import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepCon
 interface Props {
   id: string;
   title: string;
+  choiceId: string;
   description?: string;
   defaultLabel?: string;
   required?: boolean;
@@ -50,12 +51,12 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   };
 
   _save = () => {
-    const { id } = this.props;
+    const { id, choiceId } = this.props;
     const { selectedInvestigator } = this.state;
-    this.context.scenarioState.setChoiceList(
+    this.context.scenarioState.setStringChoices(
       id,
       selectedInvestigator === undefined ? {} : {
-        [selectedInvestigator]: [0],
+        [selectedInvestigator]: [choiceId],
       }
     );
   };
@@ -76,7 +77,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
 
   getSelectedIndex(
     scenarioInvestigators: Card[],
-    choice?: ListChoices
+    choice?: StringChoices
   ): number {
     if (choice !== undefined) {
       const investigators = keys(choice);
@@ -108,7 +109,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       defaultLabel,
       investigatorToValue,
     } = this.props;
-    const choice = scenarioState.choiceList(id);
+    const choice = scenarioState.stringChoices(id);
     const selectedIndex = this.getSelectedIndex(scenarioInvestigators, choice);
     return (
       <>

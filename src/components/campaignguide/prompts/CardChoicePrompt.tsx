@@ -68,9 +68,11 @@ export default class CardChoicePrompt extends React.Component<Props> {
       );
     }
 
+    const choice = input.choices[0];
     return (
       <CheckListComponent
         id={id}
+        choiceId={choice.id}
         text={text}
         items={map(cards, card => {
           return {
@@ -78,7 +80,7 @@ export default class CardChoicePrompt extends React.Component<Props> {
             name: card.name,
           };
         })}
-        checkText={input.choices[0].text}
+        checkText={choice.text}
       />
     );
   };

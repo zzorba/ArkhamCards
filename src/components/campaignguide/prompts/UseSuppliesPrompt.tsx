@@ -83,7 +83,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
 
   renderSecondAllPrompt(input: UseSuppliesAllInput, scenarioState: ScenarioStateHelper) {
     const { id, campaignLog } = this.props;
-    const choiceList = scenarioState.choiceList(`${id}_used`);
+    const choiceList = scenarioState.numberChoices(`${id}_used`);
     if (choiceList === undefined) {
       return null;
     }
@@ -100,6 +100,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     return (
       <InvestigatorCheckListComponent
         id={id}
+        choiceId="bad_thing"
         checkText={badThing ? t`Reads "${badThing.condition}"` : `Doesn't get any`}
         min={target}
         max={target}
@@ -138,6 +139,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
                   </SetupStepWrapper>
                   <InvestigatorCheckListComponent
                     id={id}
+                    choiceId="use_supply"
                     checkText={`Use ${input.id}`}
                     min={input.min}
                     max={input.max}
