@@ -45,9 +45,13 @@ export default class ScenarioStep {
   }
 
   scenarioFinished(scenarioState: ScenarioStateHelper) {
+    const nextCampaignLog = this.nextCampaignLog(scenarioState);
+    if (nextCampaignLog && nextCampaignLog.campaignData.result) {
+      // Actually campaign is finished.
+      return true;
+    }
     return (
       this.remainingStepIds.length === 0 &&
-      !!this.nextCampaignLog(scenarioState) &&
       this.step.id === '$proceed_effects'
     );
   }

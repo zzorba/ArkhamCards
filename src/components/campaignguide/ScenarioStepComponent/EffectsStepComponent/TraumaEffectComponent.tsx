@@ -99,7 +99,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
         investigator={effect.investigator}
         input={input}
         render={this._renderInvestigators}
-        extraArgs={undefined}
+        extraArg={undefined}
       />
     );
   }

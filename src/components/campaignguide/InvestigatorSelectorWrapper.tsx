@@ -14,11 +14,11 @@ interface Props<T> {
   investigator: InvestigatorSelector;
   description?: string;
   input?: string[];
-  render: (investigators: Card[], extraArgs: T) => React.ReactNode;
-  extraArgs: T;
+  render: (investigators: Card[], extraArg: T) => React.ReactNode;
+  extraArg: T;
 }
 
-export default class InvestigatorSelectorWrapper<T> extends React.Component<Props<T>> {
+export default class InvestigatorSelectorWrapper<T = undefined> extends React.Component<Props<T>> {
   investigators(
     investigators: Card[],
     campaignLog: GuidedCampaignLog,
@@ -71,7 +71,7 @@ export default class InvestigatorSelectorWrapper<T> extends React.Component<Prop
     campaignLog: GuidedCampaignLog,
     scenarioInvestigators: Card[]
   ) {
-    const { id, render, investigator, description, extraArgs } = this.props;
+    const { id, render, investigator, description, extraArg } = this.props;
     const choice = scenarioState.stringChoices(`${id}_investigator`);
     if (choice === undefined && (
       investigator === 'choice' ||
@@ -93,7 +93,7 @@ export default class InvestigatorSelectorWrapper<T> extends React.Component<Prop
       campaignLog,
       head(keys(choice))
     );
-    return render(investigators, extraArgs);
+    return render(investigators, extraArg);
   }
 
   render() {

@@ -221,7 +221,7 @@ export interface CampaignLogCountEffect {
 export interface CampaignDataResultEffect {
   type: "campaign_data";
   setting: "result";
-  value: "win" | "lose";
+  value: "win" | "lose" | "survived";
 }
 export interface CampaignDataDifficultyEffect {
   type: "campaign_data";

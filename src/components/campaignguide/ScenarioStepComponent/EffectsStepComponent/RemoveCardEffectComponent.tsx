@@ -74,7 +74,7 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
         investigator={effect.investigator}
         render={this._renderInvestigators}
         description={t`Who will remove ${card.name} from their deck?`}
-        extraArgs={card}
+        extraArg={card}
       />
     );
   };

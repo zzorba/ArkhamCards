@@ -95,7 +95,7 @@ interface CampaignData {
   scenarioReplayCount: {
     [code: string]: number | undefined;
   };
-  result?: 'win' | 'lose';
+  result?: 'win' | 'lose' | 'survived';
   difficulty?: Difficulty;
   nextScenario?: string;
   investigatorData: {

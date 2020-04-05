@@ -1,23 +1,25 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { map } from 'lodash';
+import { map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import Card from 'data/Card';
 import { BASIC_WEAKNESS_QUERY } from 'data/query';
+import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
+import InvestigatorSelectorWrapper from 'components/campaignguide/InvestigatorSelectorWrapper';
 import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
 import { AddWeaknessEffect } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
 import ScenarioStepContext, { ScenarioStepContextType } from '../../ScenarioStepContext';
 import CardQueryWrapper from 'components/campaignguide/CardQueryWrapper';
-import InvestigatorSelectorWrapper from 'components/campaignguide/InvestigatorSelectorWrapper';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { safeValue } from 'lib/filters';
 
 interface Props {
   id: string;
   effect: AddWeaknessEffect;
+  input?: string[];
 }
 
 export default class AddWeaknessEffectComponent extends React.Component<Props> {
@@ -48,8 +50,36 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
     );
   }
 
-  renderSecondPrompt(scenarioState: ScenarioStateHelper) {
-    const { id, effect } = this.props;
+  _renderCardChoice = (cards: Card[], investigators: Card[]) => {
+    const { id } = this.props;
+    console.log(map(cards, card => card.name));
+    return (
+      <InvestigatorChoicePrompt
+        bulletType="none"
+        investigators={investigators}
+        id={`${id}_weakness`}
+        options={{
+          type: 'universal',
+          choices: map(
+            sortBy(cards, card => card.name),
+            card => {
+              return {
+                id: card.code,
+                code: card.code,
+                text: card.name,
+              };
+            }
+          ),
+        }}
+      />
+    );
+  };
+
+  _renderSecondPrompt = (
+    investigators: Card[],
+    scenarioState: ScenarioStateHelper
+  ) => {
+    const { effect } = this.props;
     const useAppDecision = scenarioState.decision(this.firstDecisionId());
     if (useAppDecision === undefined) {
       return null;
@@ -66,19 +96,26 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
     return (
       <CardQueryWrapper
         query={query}
-        render={this._renderInvestigatorChoice}
-        extraArg={undefined}
+        render={this._renderCardChoice}
+        extraArg={investigators}
       />
     );
   }
 
   render() {
+    const { id, effect, input } = this.props;
     return (
       <ScenarioStepContext.Consumer>
         { ({ scenarioState }: ScenarioStepContextType) => (
           <>
             { this.renderFirstPrompt() }
-            { this.renderSecondPrompt(scenarioState) }
+            <InvestigatorSelectorWrapper
+              id={id}
+              investigator={effect.investigator}
+              input={input}
+              render={this._renderSecondPrompt}
+              extraArg={scenarioState}
+            />
           </>
         ) }
       </ScenarioStepContext.Consumer>

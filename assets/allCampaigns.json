@@ -3366,7 +3366,14 @@
     },
     {
       "id": "survived",
-      "text": "The investigators have survived, but their actions weigh heavily on their consciences"
+      "text": "The investigators have survived, but their actions weigh heavily on their consciences",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "survived"
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -3565,7 +3572,7 @@
         "trauma": "killed",
         "options": [{
           "boolCondition": true,
-          "steps": ["lead_investigator_killed"]
+          "steps": ["lead_investigator_killed", "$upgrade_decks"]
         }]
       }
     },
@@ -3588,7 +3595,6 @@
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "investigator_status": [
         "resigned",
-        "eliminated",
         "physical",
         "mental"
       ],
@@ -3611,6 +3617,7 @@
       "id": "R3",
       "title": "Resolution 3",
       "investigator_status": [
+        "alive",
         "physical",
         "mental"
       ],
@@ -3910,6 +3917,7 @@
     },
     {
       "id": "ask_ghoul_priest_defeated",
+      "bullet_type": "small",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -8208,6 +8216,7 @@
     },
     {
       "id": "ask_ghoul_priest_defeated",
+      "bullet_type": "small",
       "type": "input",
       "input": {
         "type": "choose_one",

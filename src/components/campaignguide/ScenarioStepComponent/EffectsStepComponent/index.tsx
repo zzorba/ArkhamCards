@@ -61,6 +61,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
           <AddWeaknessEffectComponent
             id={id}
             effect={effect}
+            input={input}
           />
         );
       case 'add_card':

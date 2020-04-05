@@ -106,7 +106,7 @@ export default class ScenarioGuide {
     const nextCampaignLog = lastStep.nextCampaignLog(scenarioState);
     return {
       steps,
-      inProgress: !!lastStep && !lastStep.scenarioFinished(scenarioState),
+      inProgress: lastStep.scenarioFinished(scenarioState),
       latestCampaignLog: nextCampaignLog || lastStep.campaignLog,
     };
   }
@@ -138,10 +138,10 @@ export default class ScenarioGuide {
     );
     while (scenarioStep) {
       result.push(scenarioStep);
-      scenarioStep = scenarioStep.nextStep(scenarioState);
-      if (scenarioStep && scenarioStep.campaignLog.campaignData.result) {
+      if (scenarioStep.scenarioFinished(scenarioState)) {
         break;
       }
+      scenarioStep = scenarioStep.nextStep(scenarioState);
     }
     return result;
   }
