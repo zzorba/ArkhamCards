@@ -1,5 +1,6 @@
 import {
   cloneDeep,
+  flatMap,
   find,
   findIndex,
   filter,
@@ -11,7 +12,7 @@ import {
   zip,
 } from 'lodash';
 
-import { DecksMap, Slots, TraumaAndCardData } from 'actions/types';
+import { Slots, TraumaAndCardData } from 'actions/types';
 import { ChaosBag } from 'constants';
 import {
   AddRemoveChaosTokenEffect,
@@ -33,6 +34,7 @@ import {
   TraumaEffect,
 } from './types';
 import CampaignGuide from './CampaignGuide';
+import Card, { CardsMap } from 'data/Card';
 
 interface BasicEntry {
   id: string;
@@ -124,6 +126,7 @@ export default class GuidedCampaignLog {
   campaignData: CampaignData;
   campaignGuide: CampaignGuide;
   chaosBag: ChaosBag;
+  investigatorCards: CardsMap;
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
@@ -149,11 +152,13 @@ export default class GuidedCampaignLog {
   constructor(
     effectsWithInput: EffectsWithInput[],
     campaignGuide: CampaignGuide,
-    scenarioId?: string,
-    readThrough?: GuidedCampaignLog
+    investigatorCards: CardsMap,
+    readThrough?: GuidedCampaignLog,
+    scenarioId?: string
   ) {
     this.scenarioId = scenarioId;
     this.campaignGuide = campaignGuide;
+    this.investigatorCards = investigatorCards;
 
     const hasRelevantEffects = !!find(
       effectsWithInput,
@@ -162,33 +167,58 @@ export default class GuidedCampaignLog {
         effect => GuidedCampaignLog.isCampaignLogEffect(effect)
       )
     );
-    if (!hasRelevantEffects) {
+    if (!readThrough) {
+      this.sections = {};
+      this.countSections = {};
+      this.investigatorSections = {};
+      this.scenarioData = {};
+      this.campaignData = {
+        scenarioStatus: {},
+        scenarioReplayCount: {},
+        investigatorData: {},
+        lastSavedInvestigatorData: {},
+      };
+      this.chaosBag = {};
+      this.latestScenarioData = {
+        investigatorStatus: {},
+      };
+      forEach(campaignGuide.campaign.campaign.campaign_log, log => {
+        switch (log.type) {
+          case 'count':
+            this.countSections[log.id] = { count: 0 };
+            break;
+          case 'supplies':
+            this.investigatorSections[log.id] = {};
+            break;
+          case 'hidden':
+            break;
+          default:
+            this.sections[log.id] = {
+              entries: [],
+              crossedOut: {},
+            };
+            break;
+        }
+      });
+    } else if (!hasRelevantEffects) {
       // No relevant effects, so shallow copy will do.
-      this.sections = readThrough ? readThrough.sections : {};
-      this.countSections = readThrough ? readThrough.countSections : {};
-      this.investigatorSections = readThrough ? readThrough.investigatorSections : {};
-      this.scenarioData = readThrough ? readThrough.scenarioData : {};
-      this.campaignData = readThrough ? readThrough.campaignData : {
-        investigatorData: {},
-        lastSavedInvestigatorData: {},
-        scenarioStatus: {},
-        scenarioReplayCount: {},
-      };
-      this.chaosBag = readThrough ? readThrough.chaosBag : {};
-      this.latestScenarioData = readThrough ? readThrough.latestScenarioData : { investigatorStatus: {} };
+      this.sections = readThrough.sections
+      this.countSections = readThrough.countSections;
+      this.investigatorSections = readThrough.investigatorSections;
+      this.scenarioData = readThrough.scenarioData ;
+      this.campaignData = readThrough.campaignData;
+      this.chaosBag = readThrough.chaosBag;
+      this.latestScenarioData = readThrough.latestScenarioData;
     } else {
-      this.sections = readThrough ? cloneDeep(readThrough.sections) : {};
-      this.countSections = readThrough ? cloneDeep(readThrough.countSections) : {};
-      this.investigatorSections = readThrough ? cloneDeep(readThrough.investigatorSections) : {};
-      this.scenarioData = readThrough ? cloneDeep(readThrough.scenarioData) : {};
-      this.chaosBag = readThrough ? cloneDeep(readThrough.chaosBag) : {};
-      this.campaignData = readThrough ? cloneDeep(readThrough.campaignData) : {
-        investigatorData: {},
-        lastSavedInvestigatorData: {},
-        scenarioStatus: {},
-        scenarioReplayCount: {},
-      };
-      this.latestScenarioData = readThrough ? cloneDeep(readThrough.latestScenarioData) : { investigatorStatus: {} };
+      this.sections = cloneDeep(readThrough.sections);
+      this.countSections = cloneDeep(readThrough.countSections);
+      this.investigatorSections = cloneDeep(readThrough.investigatorSections);
+      this.scenarioData = cloneDeep(readThrough.scenarioData);
+      this.chaosBag = cloneDeep(readThrough.chaosBag);
+      this.campaignData = cloneDeep(readThrough.campaignData);
+      this.latestScenarioData = cloneDeep(readThrough.latestScenarioData);
+    }
+    if (hasRelevantEffects) {
       forEach(effectsWithInput, ({ effects, input, numberInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
@@ -241,6 +271,193 @@ export default class GuidedCampaignLog {
     }
   }
 
+  leadInvestigatorChoice(): string {
+    if (this.scenarioId === undefined) {
+      throw new Error('Lead investigator called outside of a scenario.');
+    }
+    const scenario = this.scenarioData[this.scenarioId];
+    if (!scenario || !scenario.leadInvestigator) {
+      throw new Error('Lead Investigator called before decision');
+    }
+    return scenario.leadInvestigator;
+  }
+
+  traumaAndCardData(investigator: string): TraumaAndCardData {
+    return this.campaignData.investigatorData[investigator] || {};
+  }
+
+  isEliminated(investigator: Card) {
+    const investigatorData = this.campaignData.investigatorData[investigator.code];
+    return investigator.eliminated(investigatorData);
+  }
+
+  isKilled(
+    investigator: string
+  ): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    const card = this.investigatorCards[investigator];
+    if (card) {
+      return card.killed(investigatorData);
+    }
+    return !!(investigatorData && investigatorData.killed);
+  }
+
+  hasPhysicalTrauma(investigator: string): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    return !!(investigatorData && (investigatorData.physical || 0) > 0);
+  }
+
+  hasMentalTrauma(investigator: string): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    return !!(investigatorData && (investigatorData.mental || 0) > 0);
+  }
+
+  isDefeated(investigator: string): boolean {
+    const status = this.investigatorResolutionStatus()[investigator];
+    return status === 'physical' || status === 'mental' || status === 'eliminated';
+  }
+
+  hasCard(investigator: string, card: string): boolean {
+    const investigatorData = this.campaignData.investigatorData[investigator];
+    return !!(
+      investigatorData &&
+      find(investigatorData.storyAssets || [], asset => asset === card)
+    );
+  }
+
+  investigatorResolutionStatus(): { [code: string]: InvestigatorStatus } {
+    if (this.scenarioId === undefined) {
+      throw new Error('investigatorResolutionStatus called outside of a scenario.');
+    }
+    const scenario = this.scenarioData[this.scenarioId];
+    if (!scenario) {
+      throw new Error('investigatorResolutionStatus called before decision');
+    }
+    return scenario.investigatorStatus;
+  }
+
+  scenarioStatus(scenarioId: string): ScenarioStatus {
+    return this.campaignData.scenarioStatus[scenarioId] || 'not_started';
+  }
+
+  nextScenario(): string | undefined {
+    if (this.campaignData.nextScenario) {
+      // The campaign told us where to go next!
+      return this.campaignData.nextScenario;
+    }
+    if (this.scenarioId === undefined) {
+      // We haven't started yet, so the prologue/first scenario is first.
+      return this.campaignGuide.campaign.campaign.scenarios[0];
+    }
+    const scenarios = this.campaignGuide.campaign.campaign.scenarios;
+    const currentIndex = findIndex(
+      scenarios,
+      scenarioId => this.scenarioId === scenarioId
+    );
+    if (currentIndex !== -1 && currentIndex + 1 < scenarios.length) {
+      return scenarios[currentIndex + 1];
+    }
+    return undefined;
+  }
+
+  sectionExists(sectionId: string): boolean {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return false;
+    }
+    return !section.sectionCrossedOut;
+  }
+
+  check(sectionId: string, id: string): boolean {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return false;
+    }
+    if (section.crossedOut[id]) {
+      return false;
+    }
+    const entry = find(section.entries, entry => entry.id === id);
+    return !!entry;
+  }
+
+  resolution(): string {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing || !this.latestScenarioData.resolution) {
+      throw new Error('Resolution accessed before it was set.');
+    }
+    return this.latestScenarioData.resolution;
+  }
+
+  playerCount(): number {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('Player count accessed before it was set.');
+    }
+    return playing.length;
+  }
+
+  investigatorCodesSafe() {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      return [];
+    }
+    return map(playing, ({ investigator }) => investigator);
+  }
+
+  investigatorCodes(
+    includeEliminated: boolean
+  ): string[] {
+    const playing = this.latestScenarioData.playingScenario;
+    if (!playing) {
+      throw new Error('Investigator codes accessed before they were set.');
+    }
+    return filter(
+      map(playing, ({ investigator }) => investigator),
+      code => {
+        if (includeEliminated) {
+          return true;
+        }
+        const card = this.investigatorCards[code];
+        return !!card && !this.isEliminated(card)
+      }
+    );
+  }
+
+  investigators(includeEliminated: boolean): Card[] {
+    return flatMap(
+      this.investigatorCodes(includeEliminated),
+      code => this.investigatorCards[code]
+    );
+  }
+
+  count(sectionId: string, id: string): number {
+    if (id === '$count') {
+      const section = this.countSections[sectionId];
+      if (section) {
+        return section.count;
+      }
+      return 0;
+    }
+
+    const section = this.sections[sectionId];
+    if (section) {
+      if (id === '$num_entries') {
+        return sumBy(
+          section.entries,
+          entry => section.crossedOut[entry.id] ? 0 : 1
+        );
+      }
+      if (section.crossedOut[id]) {
+        return 0;
+      }
+      const entry = find(section.entries, entry => entry.id === id);
+      if (entry && entry.type === 'count') {
+        return entry.count;
+      }
+    }
+    return 0;
+  }
+
   private getInvestigators(
     investigator: InvestigatorSelector,
     input?: string[]
@@ -252,7 +469,7 @@ export default class GuidedCampaignLog {
         if (!this.latestScenarioData) {
           throw new Error('All investigators called before being set');
         }
-        return map(this.latestScenarioData.playingScenario, playing => playing.investigator);
+        return this.investigatorCodes(false);
       case 'defeated':
       case 'not_resigned': {
         const result: string[] = [];
@@ -740,166 +957,5 @@ export default class GuidedCampaignLog {
       // Update the section
       this.sections[sectionId] = section;
     });
-  }
-
-  leadInvestigatorChoice(): string {
-    if (this.scenarioId === undefined) {
-      throw new Error('Lead investigator called outside of a scenario.');
-    }
-    const scenario = this.scenarioData[this.scenarioId];
-    if (!scenario || !scenario.leadInvestigator) {
-      throw new Error('Lead Investigator called before decision');
-    }
-    return scenario.leadInvestigator;
-  }
-
-  traumaAndCardData(investigator: string): TraumaAndCardData {
-    return this.campaignData.investigatorData[investigator] || {};
-  }
-
-  isKilled(investigator: string): boolean {
-    const investigatorData = this.campaignData.investigatorData[investigator];
-    // TODO: handle physical-trauma == health.
-    return !!(investigatorData && investigatorData.killed);
-  }
-
-  hasPhysicalTrauma(investigator: string): boolean {
-    const investigatorData = this.campaignData.investigatorData[investigator];
-    return !!(investigatorData && (investigatorData.physical || 0) > 0);
-  }
-
-  hasMentalTrauma(investigator: string): boolean {
-    const investigatorData = this.campaignData.investigatorData[investigator];
-    return !!(investigatorData && (investigatorData.mental || 0) > 0);
-  }
-
-  isDefeated(investigator: string): boolean {
-    const status = this.investigatorResolutionStatus()[investigator];
-    return status === 'physical' || status === 'mental' || status === 'eliminated';
-  }
-
-  hasCard(investigator: string, card: string): boolean {
-    const investigatorData = this.campaignData.investigatorData[investigator];
-    return !!(
-      investigatorData &&
-      find(investigatorData.storyAssets || [], asset => asset === card)
-    );
-  }
-
-  investigatorResolutionStatus(): { [code: string]: InvestigatorStatus } {
-    if (this.scenarioId === undefined) {
-      throw new Error('investigatorResolutionStatus called outside of a scenario.');
-    }
-    const scenario = this.scenarioData[this.scenarioId];
-    if (!scenario) {
-      throw new Error('investigatorResolutionStatus called before decision');
-    }
-    return scenario.investigatorStatus;
-  }
-
-  scenarioStatus(scenarioId: string): ScenarioStatus {
-    return this.campaignData.scenarioStatus[scenarioId] || 'not_started';
-  }
-
-  nextScenario(): string | undefined {
-    if (this.campaignData.nextScenario) {
-      // The campaign told us where to go next!
-      return this.campaignData.nextScenario;
-    }
-    if (this.scenarioId === undefined) {
-      // We haven't started yet, so the prologue/first scenario is first.
-      return this.campaignGuide.campaign.campaign.scenarios[0];
-    }
-    // TODO: handle replays here.
-
-    const scenarios = this.campaignGuide.campaign.campaign.scenarios;
-    const currentIndex = findIndex(
-      scenarios,
-      scenarioId => this.scenarioId === scenarioId
-    );
-    if (currentIndex !== -1 && currentIndex + 1 < scenarios.length) {
-      return scenarios[currentIndex + 1];
-    }
-    return undefined;
-  }
-
-  sectionExists(sectionId: string): boolean {
-    const section = this.sections[sectionId];
-    if (!section) {
-      return false;
-    }
-    return !section.sectionCrossedOut;
-  }
-
-  check(sectionId: string, id: string): boolean {
-    const section = this.sections[sectionId];
-    if (!section) {
-      return false;
-    }
-    if (section.crossedOut[id]) {
-      return false;
-    }
-    const entry = find(section.entries, entry => entry.id === id);
-    return !!entry;
-  }
-
-  resolution(): string {
-    const playing = this.latestScenarioData.playingScenario;
-    if (!playing || !this.latestScenarioData.resolution) {
-      throw new Error('Resolution accessed before it was set.');
-    }
-    return this.latestScenarioData.resolution;
-  }
-
-  playerCount(): number {
-    const playing = this.latestScenarioData.playingScenario;
-    if (!playing) {
-      throw new Error('Player count accessed before it was set.');
-    }
-    return playing.length;
-  }
-
-  investigatorCodesSafe() {
-    const playing = this.latestScenarioData.playingScenario;
-    if (!playing) {
-      return [];
-    }
-    return map(playing, ({ investigator }) => investigator);
-  }
-
-  investigatorCodes() {
-    const playing = this.latestScenarioData.playingScenario;
-    if (!playing) {
-      throw new Error('Investigator codes accessed before they were set.');
-    }
-    return map(playing, ({ investigator }) => investigator);
-  }
-
-  count(sectionId: string, id: string): number {
-    if (id === '$count') {
-      const section = this.countSections[sectionId];
-      if (section) {
-        return section.count;
-      }
-      return 0;
-    }
-
-    const section = this.sections[sectionId];
-    if (section) {
-      if (id === '$num_entries') {
-        return sumBy(
-          section.entries,
-          entry => section.crossedOut[entry.id] ? 0 : 1
-        );
-      }
-      if (section.crossedOut[id]) {
-        return 0;
-      }
-      const entry = find(section.entries, entry => entry.id === id);
-      if (entry && entry.type === 'count') {
-        return entry.count;
-      }
-    }
-    return 0;
   }
 }

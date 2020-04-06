@@ -7,7 +7,7 @@ import {
   CampaignGuideState,
   SupplyCounts,
 } from 'actions/types';
-import Card from 'data/Card';
+import Card, { CardsMap } from 'data/Card';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: Card) => void;
@@ -25,13 +25,16 @@ export interface CampaignGuideActions {
 
 export default class CampaignStateHelper {
   state: CampaignGuideState;
+  investigators: CardsMap;
   actions: CampaignGuideActions;
 
   constructor(
     state: CampaignGuideState,
+    investigators: CardsMap,
     actions: CampaignGuideActions
   ) {
     this.state = state;
+    this.investigators = investigators;
     this.actions = actions;
   }
 

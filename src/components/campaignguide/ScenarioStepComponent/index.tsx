@@ -3,7 +3,9 @@ import {
   Text,
 } from 'react-native';
 import { filter } from 'lodash';
+import { t } from 'ttag';
 
+import LocationSetupButton from './LocationSetupButton';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
@@ -26,6 +28,7 @@ interface Props {
 export default class ScenarioStepComponent extends React.Component<Props> {
   renderContent() {
     const {
+      componentId,
       step: { step, campaignLog },
       fontScale,
     } = this.props;
@@ -55,7 +58,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       case 'input':
         return (
           <InputStepComponent
-            componentId={this.props.componentId}
+            componentId={componentId}
             fontScale={fontScale}
             step={step}
             campaignLog={campaignLog}
@@ -64,10 +67,17 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       case 'effects':
         return (
           <EffectsStepComponent
-            componentId={this.props.componentId}
+            componentId={componentId}
             fontScale={fontScale}
             step={step}
             campaignLog={campaignLog}
+          />
+        );
+      case 'location_setup':
+        return (
+          <LocationSetupButton
+            step={step}
+            componentId={componentId}
           />
         );
       default:
@@ -83,7 +93,10 @@ export default class ScenarioStepComponent extends React.Component<Props> {
           <ScenarioGuideContext.Consumer>
             { (scenarioGuideContext: ScenarioGuideContextType) => {
               const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
-              const investigators = filter(campaignInvestigators, investigator => safeCodes.has(investigator.code));
+              const investigators = filter(
+                campaignInvestigators,
+                investigator => safeCodes.has(investigator.code)
+              );
               const context: ScenarioStepContextType = {
                 ...scenarioGuideContext,
                 campaignLog: step.campaignLog,

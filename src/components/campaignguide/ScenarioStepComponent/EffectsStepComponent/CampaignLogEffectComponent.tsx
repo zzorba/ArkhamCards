@@ -94,7 +94,10 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
   }
 
   render() {
-    const { bulletType } = this.props;
+    const { bulletType, effect } = this.props;
+    if (effect.section === 'hidden') {
+      return null;
+    }
     return (
       <SetupStepWrapper bulletType={bulletType}>
         { this.renderContent() }

@@ -103,9 +103,11 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
               { ({ scenarioInvestigators, campaignLog }: ScenarioStepContextType) => {
                 return this.renderContent(
                   allowNewDecks ?
-                    filter(campaignInvestigators,
-                      investigator => !investigator.eliminated(campaignLog.traumaAndCardData(investigator.code))) :
-                    scenarioInvestigators);
+                    filter(
+                      campaignInvestigators,
+                      investigator => !campaignLog.isEliminated(investigator)
+                    ) : scenarioInvestigators
+                  );
               } }
             </ScenarioStepContext.Consumer>
           );

@@ -56,18 +56,6 @@ export default class ScenarioDataConditionComponent extends React.Component<Prop
         // Only used for control flow right now.
         return null;
       }
-      case 'investigator': {
-        if (condition.options.length === 1 && condition.options[0].condition) {
-          return (
-            <SingleCardWrapper
-              code={condition.options[0].condition}
-              render={this._renderInvestigatorCard}
-              extraArg={undefined}
-            />
-          );
-        }
-        return <Text>More complex investigator</Text>;
-      }
     }
   }
 }

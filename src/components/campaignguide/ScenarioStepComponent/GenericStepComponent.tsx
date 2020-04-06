@@ -19,17 +19,19 @@ export default class GenericStepComponent extends React.Component<Props> {
       return null;
     }
     return (
-      <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
-        { !!step.title && (
-          <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
-            { step.title }
-          </Text>
-        ) }
-        { !!step.text && (
-          <CampaignGuideTextComponent text={step.text} />
-        ) }
+      <>
+        <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
+          { !!step.title && (
+            <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
+              { step.title }
+            </Text>
+          ) }
+          { !!step.text && (
+            <CampaignGuideTextComponent text={step.text} />
+          ) }
+        </SetupStepWrapper>
         <BulletsComponent bullets={step.bullets} />
-      </SetupStepWrapper>
+      </>
     );
   }
 }

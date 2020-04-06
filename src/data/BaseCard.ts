@@ -223,18 +223,28 @@ export default class BaseCard {
     return this.faction_code || 'neutral';
   }
 
-  eliminated(traumaData?: TraumaAndCardData) {
+  killed(traumaData?: TraumaAndCardData) {
     if (!traumaData) {
       return false;
     }
-    if (traumaData.killed || traumaData.insane) {
+    if (traumaData.killed) {
       return true;
     }
-    if ((this.health || 0) <= (traumaData.physical || 0) ||
-      (this.sanity || 0) <= (traumaData.mental || 0)) {
+    return (this.health || 0) <= (traumaData.physical || 0);
+  }
+
+  insane(traumaData?: TraumaAndCardData) {
+    if (!traumaData) {
+      return false;
+    }
+    if (traumaData.insane) {
       return true;
     }
-    return false;
+    return (this.sanity || 0) <= (traumaData.mental || 0);
+  }
+
+  eliminated(traumaData?: TraumaAndCardData) {
+    return this.killed(traumaData) || this.insane(traumaData);
   }
 
   hasTrauma(traumaData?: TraumaAndCardData) {

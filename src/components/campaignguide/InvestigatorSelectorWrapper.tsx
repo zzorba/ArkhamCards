@@ -99,8 +99,8 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
   render() {
     return (
       <ScenarioStepContext.Consumer>
-        { ({ scenarioState, campaignLog, scenarioInvestigators }: ScenarioStepContextType) => {
-          return this.renderContent(scenarioState, campaignLog, scenarioInvestigators);
+        { ({ scenarioState, campaignLog }: ScenarioStepContextType) => {
+          return this.renderContent(scenarioState, campaignLog, campaignLog.investigators(false));
         } }
       </ScenarioStepContext.Consumer>
     );

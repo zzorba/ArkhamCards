@@ -21,7 +21,10 @@ export default function withScenarioGuideContext<Props>(
         campaignGuide,
         scenarioId,
       } = this.props;
-      const scenarioGuide = campaignGuide.getScenario(scenarioId, campaignState);
+      const scenarioGuide = campaignGuide.getScenario(
+        scenarioId,
+        campaignState
+      );
       if (!scenarioGuide) {
         return <Text>Unknown scenario: { scenarioId }</Text>;
       }

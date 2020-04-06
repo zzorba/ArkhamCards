@@ -1,5 +1,6 @@
 import React from 'react';
 
+import MultiConditionComponent from './MultiConditionComponent';
 import MathConditionComponent from './MathConditionComponent';
 import CheckSuppliesConditionComponent from './CheckSuppliesConditionComponent';
 import CampaignLogSectionExistsConditionComponent from './CampaignLogSectionExistsConditionComponent';
@@ -18,8 +19,19 @@ interface Props {
 }
 
 export default function BranchStepComponent({ step, campaignLog }: Props) {
+  if (step.hidden) {
+    return null;
+  }
   const condition = step.condition;
   switch (condition.type) {
+    case 'multi':
+      return (
+        <MultiConditionComponent
+          step={step}
+          campaignLog={campaignLog}
+          condition={condition}
+        />
+      );
     case 'campaign_log_count':
       return (
         <CampaignLogCountConditionComponent

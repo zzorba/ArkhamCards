@@ -12,6 +12,7 @@ import {
   BranchStep,
   CampaignDataCondition,
 } from 'data/scenario/types';
+import { campaignDataInvestigatorConditionResult, campaignDataScenarioConditionResult } from 'data/scenario/conditionHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
@@ -27,12 +28,6 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
       <CampaignGuideContext.Consumer>
         { ({ campaignGuide, campaignState }: CampaignGuideContextType) => {
           switch (condition.campaign_data) {
-            case 'investigator':
-              return (
-                <Text>
-                  Some condition of an investigator.
-                </Text>
-              );
             case 'difficulty': {
               const difficulty = upperFirst(campaignLog.campaignData.difficulty);
               return (
@@ -44,23 +39,23 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
               );
             }
             case 'scenario_completed': {
+              const result = campaignDataScenarioConditionResult(condition, campaignLog);
               const chosenScenario = campaignGuide.getScenario(condition.scenario, campaignState);
               const scenarioName =
                 chosenScenario && chosenScenario.scenario.scenarioName || condition.scenario;
-              const completed = campaignLog.scenarioStatus(condition.scenario) === 'completed';
               return (
                 <SetupStepWrapper bulletType={step.bullet_type}>
-                  <CampaignGuideTextComponent text={completed ?
+                  <CampaignGuideTextComponent text={result.decision ?
                     t`Because you have already completed <b>${scenarioName}</b>:` :
                     t`Because you have not yet completed <b>${scenarioName}</b>:`
                   } />
                 </SetupStepWrapper>
               );
             }
-            case 'chaos_bag': {
+            case 'chaos_bag':
+            case 'investigator':
               // We always write these out.
               return null;
-            }
           }
         } }
       </CampaignGuideContext.Consumer>

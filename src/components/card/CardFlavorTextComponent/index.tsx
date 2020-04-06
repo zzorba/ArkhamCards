@@ -3,14 +3,18 @@ import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
   MarkdownRule,
+  RegexComponents,
+  NestedParseFunction,
+  ParseState,
 } from 'react-native-markdown-view';
 
-import { WithText, State } from '../CardTextComponent/types';
+import { WithChildren, WithText, State } from '../CardTextComponent/types';
 import { isBig } from 'styles/space';
 import { COLORS } from 'styles/colors';
+import FlavorItalicNode from './FlavorItalicNode';
 import FlavorBoldNode from './FlavorBoldNode';
 import FlavorFancyNode from './FlavorFancyNode';
-import FlavorFancyCenterNode from './FlavorFancyCenterNode';
+import FlavorCenterNode from './FlavorCenterNode';
 import FlavorFancyRightNode from './FlavorFancyRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
@@ -42,6 +46,17 @@ const UnderlineHtmlTagRule: MarkdownRule<WithText, State> = {
   render: FlavorUnderlineNode,
 };
 
+const ItalicHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
+  order: 2,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: FlavorItalicNode,
+};
+
 const BoldHtmlTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
   order: 1,
@@ -60,13 +75,16 @@ const FancyHtmlTagRule: MarkdownRule<WithText, State> = {
   render: FlavorFancyNode,
 };
 
-const CenterHtmlTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<center><fancy>(.+?)<\\/fancy><\\/center>')),
-  order: 1,
-  parse: (capture) => {
-    return { text: capture[1] };
+
+const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),
+  order: 2,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
-  render: FlavorFancyCenterNode,
+  render: FlavorCenterNode,
 };
 
 const RightHtmlTagRule: MarkdownRule<WithText, State> = {
@@ -102,6 +120,7 @@ export default function CardFlavorTextComponent(
         fancyTag: FancyHtmlTagRule,
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
+        iTag: ItalicHtmlTagRule,
       }}
       onLinkPress={onLinkPress}
       styles={{

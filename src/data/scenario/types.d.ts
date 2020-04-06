@@ -18,6 +18,7 @@ export type Step =
   | StoryStep
   | LocationSetupStep;
 export type Condition =
+  | MultiCondition
   | CampaignLogCondition
   | CampaignLogCountCondition
   | MathCondition
@@ -80,7 +81,7 @@ export type ChaosToken =
   | "elder_sign"
   | "auto_fail";
 export type NumOption = EffectOption | StepsOption;
-export type DefaultOption = StepsOption;
+export type DefaultOption = EffectOption | StepsOption;
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
 export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand;
 export type CardCondition = InvestigatorCardCondition | BinaryCardCondition;
@@ -90,6 +91,7 @@ export type CampaignDataCondition =
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataInvestigatorCondition;
+export type StringOption = EffectOption | StepsOption;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
 export type BulletType = "none" | "small" | "right";
 export type Input =
@@ -137,9 +139,16 @@ export interface Campaign {
 export interface BranchStep {
   id: string;
   type: "branch";
+  hidden?: boolean;
   text?: string;
   condition: Condition;
   bullet_type?: BulletType;
+}
+export interface MultiCondition {
+  type: "multi";
+  conditions: CampaignLogCondition[];
+  count: number;
+  options: BoolOption[];
 }
 export interface CampaignLogCondition {
   type: "campaign_log";
@@ -340,8 +349,9 @@ export interface CampaignDataChaosBagCondition {
 export interface CampaignDataInvestigatorCondition {
   type: "campaign_data";
   campaign_data: "investigator";
-  investigator_data: "trait" | "faction";
-  options: StepsOption[];
+  investigator_data: "trait" | "faction" | "code";
+  options: StringOption[];
+  defaultOption?: Option;
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
@@ -350,7 +360,7 @@ export interface CampaignLogSectionExistsCondition {
 }
 export interface ScenarioDataCondition {
   type: "scenario_data";
-  scenario_data: "player_count" | "resolution" | "investigator" | "investigator_status";
+  scenario_data: "player_count" | "resolution" | "investigator_status";
   investigator?: InvestigatorSelector;
   options: Option[];
 }
@@ -465,7 +475,7 @@ export interface ConditionalEffectsChoice {
   flavor?: string;
   text: string;
   description?: string;
-  condition?: CardCondition | BasicTraumaCondition;
+  condition?: CardCondition | CampaignDataInvestigatorCondition | BasicTraumaCondition;
   effects: Effect[];
   steps?: string[];
 }
@@ -485,15 +495,16 @@ export interface ConditionalStepsChoice {
   text?: string;
   flavor?: string;
   description?: string;
-  condition?: CardCondition | BasicTraumaCondition;
+  condition?: CardCondition | CampaignDataInvestigatorCondition | BasicTraumaCondition;
   steps: string[];
   effects?: null;
 }
 export interface ChooseManyInput {
   type: "choose_many";
   choices: Choice[];
-  count: number;
-  progressive?: boolean;
+  min?: number;
+  max: number;
+  continue_prompt: string;
 }
 export interface StepsChoice {
   text?: string;
@@ -599,7 +610,7 @@ export interface Scenario {
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];
-  interlude?: boolean;
+  type?: "interlude" | "epilogue";
 }
 export interface Resolution {
   id: string;

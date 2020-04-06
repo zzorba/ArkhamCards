@@ -30,7 +30,7 @@ export default class CampaignLogSectionExistsConditionComponent extends React.Co
           return (
             <BinaryResult
               bulletType={step.bullet_type}
-              prompt={prompt}
+              prompt={step.text || prompt}
               result={result.decision}
             />
           );

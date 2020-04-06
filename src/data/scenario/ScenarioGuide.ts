@@ -89,7 +89,10 @@ export default class ScenarioGuide {
   setupSteps(
     scenarioState: ScenarioStateHelper
   ): ExecutedScenario {
-    const stepIds = this.scenario.interlude ?
+    const stepIds = (
+      this.scenario.type === 'interlude' ||
+      this.scenario.type === 'epilogue'
+    ) ?
       [...this.scenario.setup, PROCEED_STEP.id] :
       [CHOOSE_INVESTIGATORS_STEP.id, LEAD_INVESTIGATOR_STEP.id, ...this.scenario.setup];
     const steps = this.expandSteps(stepIds, scenarioState);
@@ -106,7 +109,7 @@ export default class ScenarioGuide {
     const nextCampaignLog = lastStep.nextCampaignLog(scenarioState);
     return {
       steps,
-      inProgress: lastStep.scenarioFinished(scenarioState),
+      inProgress: !lastStep.scenarioFinished(scenarioState),
       latestCampaignLog: nextCampaignLog || lastStep.campaignLog,
     };
   }
@@ -131,8 +134,9 @@ export default class ScenarioGuide {
       new GuidedCampaignLog(
         [],
         this.campaignGuide,
-        this.id,
-        campaignLog || this.campaignLog
+        scenarioState.campaignState.investigators,
+        campaignLog || this.campaignLog,
+        this.id
       ),
       remainingStepIds
     );

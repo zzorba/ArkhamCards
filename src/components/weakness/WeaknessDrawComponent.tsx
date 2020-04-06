@@ -10,8 +10,9 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import FlipCard from 'react-native-flip-card';
-
 import { t } from 'ttag';
+
+import { drawWeakness, availableWeaknesses } from 'lib/weaknessHelper';
 import { Slots, WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
 import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
@@ -193,19 +194,18 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     standalone: boolean
   ) {
     const {
-      weaknessSet: {
-        assignedCards,
-      },
+      weaknessSet,
+      cards,
     } = this.props;
-    const cards = shuffle(
-      flatMap(this.selectedCards(selectedTraits, multiplayer, standalone),
-        card => {
-          return map(
-            range(0, (card.quantity || 0) - (assignedCards[card.code] || 0)),
-            () => card);
-        }));
-
-    const card = head(cards);
+    const card = drawWeakness(
+      weaknessSet,
+      cards,
+      {
+        traits: selectedTraits,
+        multiplayer,
+        standalone,
+      }
+    );
     if (card && card.imagesrc) {
       FastImage.preload([
         {
@@ -216,49 +216,18 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     return card;
   }
 
-  selectedCards(
-    selectedTraits: string[],
-    multiplayer: boolean,
-    standalone: boolean
-  ): Card[] {
-    return filter(this.cards(), card => {
-      const matchesTrait = !selectedTraits.length ||
-        !!find(selectedTraits, trait => (
-          card.traits_normalized &&
-          card.traits_normalized.indexOf(`#${trait.toLowerCase()}#`) !== -1)
-        );
-      const matchesMultiplayerOnly = multiplayer || !!(
-        card.real_text && card.real_text.indexOf('Multiplayer only.') === -1
-      );
-      const matchesCampaignModeOnly = !standalone || !!(
-        card.real_text && card.real_text.indexOf('Campaign Mode only.') === -1
-      );
-
-      return matchesTrait && matchesMultiplayerOnly && matchesCampaignModeOnly;
-    });
-  }
-
-  cards() {
+  allTraits() {
     const {
-      weaknessSet: {
-        packCodes,
-        assignedCards,
-      },
+      weaknessSet,
       cards,
     } = this.props;
-    const packSet = new Set(packCodes);
-    return filter(cards, card => (
-      packSet.has(card.pack_code) &&
-      (assignedCards[card.code] || 0) < (card.quantity || 0)
-    ));
-  }
-
-  allTraits() {
     const {
       selectedTraits,
     } = this.state;
     const traitsMap: { [trait: string]: number } = {};
-    forEach(this.cards(), card => {
+    forEach(
+      availableWeaknesses(weaknessSet, cards),
+      card => {
       if (card.traits) {
         forEach(
           filter<string>(map(card.traits.split('.'), t => t.trim()), t => !!t),
@@ -379,7 +348,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
       );
     }
     return (
-      <View style={styles.SingleCardWrapper}>
+      <View style={styles.singleCardWrapper}>
         <CardDetailComponent
           card={card}
           width={width}
@@ -402,7 +371,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     } = this.calculateCardDimensions();
     if (nextCard) {
       return (
-        <View style={styles.SingleCardWrapper}>
+        <View style={styles.singleCardWrapper}>
           <TouchableWithoutFeedback onPress={this._flipCard}>
             <FlipCard
               style={[styles.flipCard, {
@@ -490,7 +459,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  SingleCardWrapper: {
+  singleCardWrapper: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',

@@ -15,24 +15,26 @@ interface Props {
   step: StoryStep;
 }
 
-export default class StoreStepComponent extends React.Component<Props> {
+export default class StoryStepComponent extends React.Component<Props> {
   render() {
     const { step } = this.props;
     return (
-      <View style={styles.step}>
-        { !!step.title && (
-          <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
-            { step.title }
-          </Text>
-        ) }
-        { !!step.text && (
-          <CampaignGuideTextComponent
-            text={step.text}
-            flavor
-          />
-        ) }
+      <>
+        <View style={styles.step}>
+          { !!step.title && (
+            <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
+              { step.title }
+            </Text>
+          ) }
+          { !!step.text && (
+            <CampaignGuideTextComponent
+              text={step.text}
+              flavor
+            />
+          ) }
+        </View>
         <BulletsComponent bullets={step.bullets} />
-      </View>
+      </>
     );
   }
 }

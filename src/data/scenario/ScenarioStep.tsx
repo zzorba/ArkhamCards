@@ -14,6 +14,7 @@ import {
 import { NumberChoices, StringChoices } from 'actions/types';
 import { Choices } from 'data/scenario';
 import {
+  BulletType,
   BranchStep,
   InputStep,
   Step,
@@ -46,11 +47,15 @@ export default class ScenarioStep {
 
   scenarioFinished(scenarioState: ScenarioStateHelper) {
     const nextCampaignLog = this.nextCampaignLog(scenarioState);
-    if (nextCampaignLog && nextCampaignLog.campaignData.result) {
+    if (nextCampaignLog &&
+      nextCampaignLog.campaignData.result &&
+      this.scenarioGuide.scenario.type !== 'epilogue'
+    ) {
       // Actually campaign is finished.
       return true;
     }
     return (
+      nextCampaignLog &&
       this.remainingStepIds.length === 0 &&
       this.step.id === '$proceed_effects'
     );
@@ -95,98 +100,101 @@ export default class ScenarioStep {
         return undefined;
       }
 
-      return new GuidedCampaignLog(
-        flatMap(this.step.effectsWithInput, effects => {
-          const result: EffectsWithInput[] = [];
-          const [specialEffects, normalEffects] = partition(
-            effects.effects,
-            effect => !!this.getSpecialEffectChoiceList(effect)
-          );
-          if (normalEffects.length) {
-            result.push({
-              ...effects,
-              effects: normalEffects,
-            });
+      const effects = flatMap(this.step.effectsWithInput, effects => {
+        const result: EffectsWithInput[] = [];
+        const [specialEffects, normalEffects] = partition(
+          effects.effects,
+          effect => !!this.getSpecialEffectChoiceList(effect)
+        );
+        if (normalEffects.length) {
+          result.push({
+            ...effects,
+            effects: normalEffects,
+          });
+        }
+        forEach(specialEffects, specialEffect => {
+          const input = this.getSpecialEffectChoiceList(specialEffect);
+          if (!input) {
+            // Impossible
+            return;
           }
-          forEach(specialEffects, specialEffect => {
-            const input = this.getSpecialEffectChoiceList(specialEffect);
-            if (!input) {
-              // Impossible
-              return;
-            }
-            const choiceList = scenarioState.stringChoices(input);
-            if (choiceList === undefined) {
-              // Also impossible
-              return;
-            }
-            switch (specialEffect.type) {
-              case 'add_weakness': {
-                forEach(choiceList, (choices, code) => {
-                  result.push({
-                    input: [code],
-                    effects: map(choices, card => {
-                      return {
-                        type: 'add_card',
-                        investigator: '$input_value',
-                        card,
-                      };
-                    }),
-                  });
-                });
-                break;
-              }
-              case 'remove_card':
-              case 'add_card':
+          const choiceList = scenarioState.stringChoices(input);
+          if (choiceList === undefined) {
+            // Also impossible
+            return;
+          }
+          switch (specialEffect.type) {
+            case 'add_weakness': {
+              forEach(choiceList, (choices, code) => {
                 result.push({
-                  input: keys(choiceList),
+                  input: [code],
+                  effects: map(choices, card => {
+                    return {
+                      type: 'add_card',
+                      investigator: '$input_value',
+                      card,
+                    };
+                  }),
+                });
+              });
+              break;
+            }
+            case 'remove_card':
+            case 'add_card':
+              result.push({
+                input: keys(choiceList),
+                effects: [{
+                  ...specialEffect,
+                  investigator: '$input_value',
+                }],
+              });
+              break;
+            case 'trauma': {
+              const physical: string[] = [];
+              const mental: string[] = [];
+              forEach(choiceList, (choice, code) => {
+                switch (choice[0]) {
+                  case 'physical':
+                    physical.push(code);
+                    break;
+                  case 'mental':
+                    mental.push(code);
+                    break;
+                }
+              });
+              if (physical.length) {
+                result.push({
+                  input: physical,
                   effects: [{
-                    ...specialEffect,
+                    type: 'trauma',
+                    physical: 1,
                     investigator: '$input_value',
                   }],
                 });
-                break;
-              case 'trauma': {
-                const physical: string[] = [];
-                const mental: string[] = [];
-                forEach(choiceList, (choice, code) => {
-                  switch (choice[0]) {
-                    case 'physical':
-                      physical.push(code);
-                      break;
-                    case 'mental':
-                      mental.push(code);
-                      break;
-                  }
-                });
-                if (physical.length) {
-                  result.push({
-                    input: physical,
-                    effects: [{
-                      type: 'trauma',
-                      physical: 1,
-                      investigator: '$input_value',
-                    }],
-                  });
-                }
-                if (mental.length) {
-                  result.push({
-                    input: mental,
-                    effects: [{
-                      type: 'trauma',
-                      mental: 1,
-                      investigator: '$input_value',
-                    }],
-                  });
-                }
-                break;
               }
+              if (mental.length) {
+                result.push({
+                  input: mental,
+                  effects: [{
+                    type: 'trauma',
+                    mental: 1,
+                    investigator: '$input_value',
+                  }],
+                });
+              }
+              break;
             }
-          });
-          return result;
-        }),
+          }
+        });
+        return result;
+      });
+
+      return new GuidedCampaignLog(
+        effects,
         this.scenarioGuide.campaignGuide,
-        this.scenarioGuide.id,
-        this.campaignLog
+        scenarioState.campaignState.investigators,
+        this.campaignLog,
+        this.scenarioGuide.id
       );
     }
     // No mutations if no effects.
@@ -529,7 +537,8 @@ export default class ScenarioStep {
           [...(choice.steps || []), ...this.remainingStepIds],
           [{
             effects: choice.effects || [],
-          }]
+          }],
+          'small'
         );
       }
       case 'upgrade_decks': {
@@ -701,7 +710,8 @@ export default class ScenarioStep {
   private maybeCreateEffectsStep(
     id: string,
     remainingStepIds: string[],
-    effectsWithInput: EffectsWithInput[]
+    effectsWithInput: EffectsWithInput[],
+    bulletType?: BulletType
   ): ScenarioStep | undefined {
     const flatEffects = flatMap(effectsWithInput, effects => effects.effects);
     if (flatEffects.length) {
@@ -711,7 +721,7 @@ export default class ScenarioStep {
           type: 'effects',
           effectsWithInput,
           stepText: !!this.step.text,
-          bullet_type: this.step.bullet_type || undefined,
+          bullet_type: this.step.bullet_type || bulletType,
         },
         this.scenarioGuide,
         this.campaignLog,

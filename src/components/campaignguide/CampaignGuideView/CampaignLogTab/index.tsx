@@ -54,7 +54,12 @@ export default class CampaignLogTab extends React.Component<Props> {
         const section = campaignLog.sections[id];
         return (
           <View style={styles.container}>
-            <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
+            <Text style={[
+              typography.bigGameFont,
+              typography.underline,
+              typography.center,
+              section?.sectionCrossedOut ? styles.crossedOut : {},
+            ]}>
               { title }
             </Text>
             { !!section && (
@@ -109,5 +114,8 @@ const styles = StyleSheet.create({
     margin: 16,
     marginLeft: 32,
     marginRight: 32,
+  },
+  crossedOut: {
+    textDecorationLine: 'line-through',
   },
 });

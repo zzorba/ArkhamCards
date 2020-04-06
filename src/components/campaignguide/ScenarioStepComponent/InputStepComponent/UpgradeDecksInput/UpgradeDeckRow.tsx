@@ -112,17 +112,19 @@ export default class UpgradeDeckRow extends React.Component<Props> {
     );
   }
 
-  renderCampaignSection() {
+  renderCampaignSection(hasDeck: boolean) {
     // Render the story assets changes.
     return (
       <>
         { this.renderStoryAssetDeltas() }
-        <View style={styles.buttonWrapper}>
-          <Button
-            title={t`Save upgrade`}
-            onPress={this._save}
-          />
-        </View>
+        { hasDeck && (
+          <View style={styles.buttonWrapper}>
+            <Button
+              title={t`Save upgrade`}
+              onPress={this._save}
+            />
+          </View>
+        ) }
       </>
     );
   }
@@ -187,7 +189,7 @@ export default class UpgradeDeckRow extends React.Component<Props> {
       fontScale,
     } = this.props;
     if (!deck) {
-      return null;
+      return (this.renderCampaignSection(false));
     }
     if (saved) {
       return (
@@ -214,7 +216,7 @@ export default class UpgradeDeckRow extends React.Component<Props> {
         deck={deck}
         fontScale={fontScale}
         investigator={investigator}
-        campaignSection={this.renderCampaignSection()}
+        campaignSection={this.renderCampaignSection(true)}
         startingXp={campaignLog.earnedXp(investigator.code)}
         storyCounts={campaignLog.storyAssets(investigator.code)}
         upgradeCompleted={this._onUpgrade}

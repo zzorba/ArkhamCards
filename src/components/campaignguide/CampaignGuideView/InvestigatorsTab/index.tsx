@@ -40,10 +40,7 @@ export default class InvestigatorsTab extends React.Component<Props> {
         { ({ campaignInvestigators, campaignId, latestDecks }: CampaignGuideContextType) => {
           const [killedInvestigators, aliveInvestigators] = partition(
             campaignInvestigators,
-            investigator => {
-              const trauma = campaignLog.traumaAndCardData(investigator.code);
-              return investigator.eliminated(trauma);
-            }
+            investigator => campaignLog.isEliminated(investigator)
           );
           return (
             <ScrollView>

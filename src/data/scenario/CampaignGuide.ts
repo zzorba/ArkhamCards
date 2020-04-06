@@ -1,4 +1,4 @@
-import { find, forEach } from 'lodash';
+import { find, forEach, map } from 'lodash';
 import { t } from 'ttag';
 
 import GuidedCampaignLog from './GuidedCampaignLog';
@@ -93,7 +93,11 @@ export default class CampaignGuide {
     campaignState: CampaignStateHelper,
   ): ProcessedCampaign {
     const scenarios: ProcessedScenario[] = [];
-    let campaignLog: GuidedCampaignLog = new GuidedCampaignLog([], this);
+    let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
+      [],
+      this,
+      campaignState.investigators
+    );
     forEach(this.allScenarioIds(), scenarioId => {
       if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
         const nextScenarios = this.processScenario(
@@ -152,7 +156,7 @@ export default class CampaignGuide {
     const scenario = (scenarioId === CAMPAIGN_SETUP_ID) ?
       {
         id: CAMPAIGN_SETUP_ID,
-        interlude: true,
+        type: 'interlude',
         scenarioName: t`Campaign Setup`,
         setup: this.campaign.campaign.setup,
         steps: this.campaign.campaign.steps,
@@ -168,7 +172,10 @@ export default class CampaignGuide {
       campaignLog
     );
     if (!campaignState.startedScenario(rawScenarioId)) {
-      if (campaignLog.campaignData.result || campaignLog.scenarioStatus(rawScenarioId) === 'skipped') {
+      if (
+        (campaignLog.campaignData.result && scenarioGuide.scenario.type !== 'epilogue') ||
+        campaignLog.scenarioStatus(rawScenarioId) === 'skipped'
+      ) {
         return [{
           type: 'skipped',
           scenarioGuide,
@@ -246,6 +253,9 @@ export default class CampaignGuide {
       logSection => logSection.id === sectionId
     );
     if (!section) {
+      console.log(
+        map(this.campaign.campaign.campaign_log, section => section.id)
+      );
       throw new Error(`Could not find section: ${sectionId}`);
     }
     if (section.type === 'supplies') {
@@ -276,7 +286,10 @@ export default class CampaignGuide {
           section: section.title,
         };
       }
-      const entry = find(textSection.entries, entry => entry.id === id);
+      const entry = find(
+        textSection.entries,
+        entry => entry.id === id
+      );
       if (entry) {
         return {
           type: 'text',
@@ -293,6 +306,16 @@ export default class CampaignGuide {
         code: id,
       };
     }
-    throw new Error(`Could not find section(${sectionId}), id(${id})`);
+    // Try input value?
+    if (sectionId !== '$input_value') {
+      const entry = this.logEntry('$input_value', id);
+      if (entry) {
+        return {
+          ...entry,
+          section: sectionId,
+        };
+      }
+    }
+    throw new Error(`Could not find section(${sectionId}), id(${id}), textSection(${JSON.stringify(textSection)})`);
   }
 }

@@ -462,7 +462,7 @@
         "entries": [
           {
             "id": "dead",
-            "text": "Gavriella is dead."
+            "text": "Gavriella Mizrah is dead."
           },
           {
             "id": "on_gavriellas_trail",
@@ -475,7 +475,7 @@
         "entries": [
           {
             "id": "dead",
-            "text": "Jerome is dead."
+            "text": "Jerome Davids is dead."
           },
           {
             "id": "on_jeromes_trail",
@@ -488,11 +488,11 @@
         "entries": [
           {
             "id": "dead",
-            "text": "Penny is dead."
+            "text": "Valentino Rivas is dead."
           },
           {
-            "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "id": "on_valentinos_trail",
+            "text": "the investigators are on Valentino's trail."
           }
         ]
       },
@@ -501,11 +501,11 @@
         "entries": [
           {
             "id": "dead",
-            "text": "Valentino is dead."
+            "text": "Penny White is dead."
           },
           {
-            "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "id": "on_pennys_trail",
+            "text": "the investigators are on Penny's trail."
           }
         ]
       },
@@ -589,7 +589,7 @@
             "text": "#X# heretics were unleashed unto Arkham."
           },
           {
-            "id": "hid_their_knowledge",
+            "id": "hid_knowledge_of_coven",
             "text": "the investigators hid their knowledge of the coven."
           },
           {
@@ -630,7 +630,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #num#"
+            "text": "the path winds before you: #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -675,6 +675,19 @@
           {
             "id": "witches_spell_cast",
             "text": "the witches' spell was cast."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "left_column",
+            "text": "dummy"
+          },
+          {
+            "id": "right_column",
+            "text": "dummy"
           }
         ]
       },

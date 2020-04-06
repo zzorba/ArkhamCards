@@ -52,7 +52,6 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
 
   _renderCardChoice = (cards: Card[], investigators: Card[]) => {
     const { id } = this.props;
-    console.log(map(cards, card => card.name));
     return (
       <InvestigatorChoicePrompt
         bulletType="none"

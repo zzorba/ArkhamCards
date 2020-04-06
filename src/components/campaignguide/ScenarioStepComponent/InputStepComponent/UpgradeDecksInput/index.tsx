@@ -12,6 +12,7 @@ import { t } from 'ttag';
 
 import UpgradeDeckRow from './UpgradeDeckRow';
 import { Deck, Slots } from 'actions/types';
+import InvestigatorRow from 'components/core/InvestigatorRow';
 import CampaignGuideContext, { CampaignGuideContextType, LatestDecks } from 'components/campaignguide/CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
 import Card from 'data/Card';
@@ -67,6 +68,16 @@ class UpgradeDecksInput extends React.Component<Props> {
           </Text>
         </View>
         { map(scenarioInvestigators, investigator => {
+          if (campaignLog.isEliminated(investigator)) {
+            return (
+              <InvestigatorRow
+                key={investigator.code}
+                investigator={investigator}
+                description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
+                eliminated
+              />
+            );
+          }
           return (
             <UpgradeDeckRow
               key={investigator.code}

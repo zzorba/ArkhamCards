@@ -43,7 +43,7 @@ export interface CampaignGuideInputProps {
 interface ReduxProps {
   campaign?: SingleCampaign;
   campaignState: CampaignGuideState;
-  allInvestigators: Card[];
+  campaignInvestigators: Card[];
   latestDecks: Deck[];
 }
 
@@ -104,7 +104,7 @@ export default function withCampaignGuideContext<Props>(
     props: Props & CampaignGuideInputProps & PlayerCardProps
   ): ReduxProps => {
     const campaign = getCampaign(state, props.campaignId);
-    const allInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
+    const campaignInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
     const decks = getAllDecks(state);
     const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
 
@@ -112,7 +112,7 @@ export default function withCampaignGuideContext<Props>(
       campaign,
       campaignState: getCampaignGuideState(state, props.campaignId),
       latestDecks: flatMap(latestDeckIds, deckId => decks[deckId]),
-      allInvestigators,
+      campaignInvestigators,
     };
   };
 
@@ -135,6 +135,7 @@ export default function withCampaignGuideContext<Props>(
   class CampaignDataComponent extends React.Component<
     Props &
     CampaignGuideInputProps &
+    PlayerCardProps &
     ReduxProps &
     ReduxActionProps
   > {
@@ -149,7 +150,7 @@ export default function withCampaignGuideContext<Props>(
     _showChooseDeck = (singleInvestigator?: Card) => {
       const {
         campaignId,
-        allInvestigators,
+        campaignInvestigators,
       } = this.props;
       const passProps: MyDecksSelectorProps = singleInvestigator ? {
         campaignId: campaignId,
@@ -157,7 +158,7 @@ export default function withCampaignGuideContext<Props>(
         onDeckSelect: this._deckAdded,
       } : {
         campaignId: campaignId,
-        selectedInvestigatorIds: map(allInvestigators, investigator => investigator.code),
+        selectedInvestigatorIds: map(campaignInvestigators, investigator => investigator.code),
         onDeckSelect: this._deckAdded,
         onInvestigatorSelect: this._investigatorAdded,
         simpleOptions: true,
@@ -322,7 +323,8 @@ export default function withCampaignGuideContext<Props>(
       const {
         campaign,
         campaignState,
-        allInvestigators,
+        campaignInvestigators,
+        investigators,
         latestDecks,
       } = this.props;
       if (campaign === undefined) {
@@ -338,6 +340,7 @@ export default function withCampaignGuideContext<Props>(
       });
       const campaignStateHelper = new CampaignStateHelper(
         campaignState,
+        investigators,
         {
           showChooseDeck: this._showChooseDeck,
           addInvestigator: this._addInvestigator,
@@ -360,7 +363,7 @@ export default function withCampaignGuideContext<Props>(
         campaignId: campaign.id,
         campaignGuide,
         campaignState: campaignStateHelper,
-        campaignInvestigators: allInvestigators,
+        campaignInvestigators,
         latestDecks: decksByInvestigator,
       };
       return (
@@ -370,16 +373,15 @@ export default function withCampaignGuideContext<Props>(
             campaignId={campaign.id}
             campaignGuide={campaignGuide}
             campaignState={campaignStateHelper}
-            campaignInvestigators={allInvestigators}
+            campaignInvestigators={campaignInvestigators}
             latestDecks={decksByInvestigator}
           />
         </CampaignGuideContext.Provider>
       );
     }
   }
-  const result =
-  withPlayerCards<Props & CampaignGuideContextType & CampaignGuideInputProps>(
-    connect<ReduxProps, ReduxActionProps, Props & CampaignGuideInputProps & PlayerCardProps, AppState>(
+  const result = withPlayerCards<Props & CampaignGuideContextType & CampaignGuideInputProps>(
+    connect<ReduxProps, ReduxActionProps, Props & PlayerCardProps & CampaignGuideInputProps & PlayerCardProps, AppState>(
       mapStateToProps,
       mapDispatchToProps
     )(

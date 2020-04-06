@@ -158,7 +158,6 @@ const ItalicHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: ItalicHtmlTagNode,
 };
 
-
 interface Props {
   text: string;
   fontAdjustment?: number;
