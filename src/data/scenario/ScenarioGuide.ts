@@ -9,15 +9,9 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import ScenarioStep from './ScenarioStep';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
-import fixedSteps, {
-  CHOOSE_INVESTIGATORS_STEP,
-  LEAD_INVESTIGATOR_STEP,
-  CHOOSE_RESOLUTION_STEP_ID,
-  CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID,
-  PROCEED_STEP,
-  chooseResolutionStep,
-  checkInvestigatorDefeatStep,
-  resolutionStep,
+import {
+  getFixedStep,
+  scenarioStepIds,
 } from './fixedSteps';
 
 interface ExecutedScenario {
@@ -31,7 +25,7 @@ interface ExecutedScenario {
  */
 export default class ScenarioGuide {
   id: string;
-  scenario: Scenario;
+  private scenario: Scenario;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
 
@@ -47,19 +41,18 @@ export default class ScenarioGuide {
     this.campaignLog = campaignLog;
   }
 
+  scenarioName(): string {
+    return this.scenario.scenario_name;
+  }
+
+  scenarioType(): 'scenario' | 'epilogue' | 'interlude' {
+    return this.scenario.type || 'scenario';
+  }
+
   step(id: string): Step | undefined {
-    if (fixedSteps[id]) {
-      return fixedSteps[id];
-    }
-    if (id === CHOOSE_RESOLUTION_STEP_ID) {
-      return chooseResolutionStep(this.scenario.resolutions || []);
-    }
-    if (id === CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID) {
-      return checkInvestigatorDefeatStep(this.scenario.resolutions || []);
-    }
-    const rStep = resolutionStep(id, this.scenario.resolutions || []);
-    if (rStep) {
-      return rStep;
+    const fixedStep = getFixedStep(id, this.scenario, this.campaignLog);
+    if (fixedStep) {
+      return fixedStep;
     }
 
     return find(
@@ -89,12 +82,7 @@ export default class ScenarioGuide {
   setupSteps(
     scenarioState: ScenarioStateHelper
   ): ExecutedScenario {
-    const stepIds = (
-      this.scenario.type === 'interlude' ||
-      this.scenario.type === 'epilogue'
-    ) ?
-      [...this.scenario.setup, PROCEED_STEP.id] :
-      [CHOOSE_INVESTIGATORS_STEP.id, LEAD_INVESTIGATOR_STEP.id, ...this.scenario.setup];
+    const stepIds = scenarioStepIds(this.scenario);
     const steps = this.expandSteps(stepIds, scenarioState);
 
     const lastStep = last(steps);

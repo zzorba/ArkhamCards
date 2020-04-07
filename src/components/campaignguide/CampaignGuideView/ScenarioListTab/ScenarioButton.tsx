@@ -34,9 +34,9 @@ export default class ScenarioButton extends React.Component<Props, State> {
   name() {
     const { scenario } = this.props;
     if (scenario.attempt > 0) {
-      return t`${scenario.scenarioGuide.scenario.scenarioName} (Attempt ${scenario.attempt + 1})`;
+      return t`${scenario.scenarioGuide.scenarioName()} (Attempt ${scenario.attempt + 1})`;
     }
-    return scenario.scenarioGuide.scenario.scenarioName;
+    return scenario.scenarioGuide.scenarioName();
   }
 
   _onPress = () => {

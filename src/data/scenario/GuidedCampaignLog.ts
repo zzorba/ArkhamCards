@@ -226,7 +226,7 @@ export default class GuidedCampaignLog {
               this.handleCampaignDataEffect(effect);
               break;
             case 'scenario_data':
-              this.handleScenarioDataEffect(effect, scenarioId, input, numberInput);
+              this.handleScenarioDataEffect(effect, scenarioId, input);
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);

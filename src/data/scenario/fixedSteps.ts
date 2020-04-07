@@ -9,10 +9,12 @@ import {
   Resolution,
   InputStep,
   Step,
+  Scenario,
 } from 'data/scenario/types';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
-export const CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID = '$check_investigator_defeat';
-export function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
+const CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID = '$check_investigator_defeat';
+function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
   const investigatorDefeat = find(resolutions, resolution => resolution.id === 'investigator_defeat');
   return {
     id: CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID,
@@ -34,8 +36,8 @@ export function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchSt
   };
 }
 
-export const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
-export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
+const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
+function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const hasInvestigatorDefeat = !!find(
     resolutions,
     resolution => resolution.id === 'investigator_defeat');
@@ -60,7 +62,7 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
               `$r_${resolution.id}`,
               ...resolution.steps,
-              PROCEED_STEP.id,
+              PROCEED_STEP_ID,
             ],
             effects: [{
               type: 'scenario_data',
@@ -76,19 +78,9 @@ export function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   };
 }
 
-export const PROCEED_STEP: GenericStep = {
-  id: '$proceed',
-  text: t`Proceed to the next scenario`,
-  effects: [
-    {
-      type: 'scenario_data',
-      setting: 'scenario_status',
-      status: 'completed',
-    },
-  ],
-};
+const PROCEED_STEP_ID = '$proceed';
 
-export const CHOOSE_INVESTIGATORS_STEP: InputStep = {
+const CHOOSE_INVESTIGATORS_STEP: InputStep = {
   id: '$choose_investigators',
   type: 'input',
   input: {
@@ -96,7 +88,7 @@ export const CHOOSE_INVESTIGATORS_STEP: InputStep = {
   },
 };
 
-export const UPGRADE_DECKS_STEP: InputStep = {
+const UPGRADE_DECKS_STEP: InputStep = {
   id: '$upgrade_decks',
   type: 'input',
   input: {
@@ -104,7 +96,7 @@ export const UPGRADE_DECKS_STEP: InputStep = {
   },
 };
 
-export const LEAD_INVESTIGATOR_STEP: InputStep = {
+const LEAD_INVESTIGATOR_STEP: InputStep = {
   id: '$lead_investigator',
   type: 'input',
   text: t`Choose lead investigator`,
@@ -134,7 +126,7 @@ export const LEAD_INVESTIGATOR_STEP: InputStep = {
 };
 
 
-export function resolutionStep(
+function resolutionStep(
   id: string,
   resolutions: Resolution[]
 ): Step | undefined {
@@ -223,10 +215,47 @@ function investigatorStatusStep(
   };
 }
 
+export function getFixedStep(
+  id: string,
+  scenario: Scenario,
+  campaignLog: GuidedCampaignLog
+): Step | undefined {
+  switch (id) {
+    case CHOOSE_RESOLUTION_STEP_ID:
+      return chooseResolutionStep(scenario.resolutions || []);
+    case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
+      return checkInvestigatorDefeatStep(scenario.resolutions || []);
+    case PROCEED_STEP_ID:
+      return {
+        id: PROCEED_STEP_ID,
+        text: t`Proceed to the next scenario`,
+        effects: [
+          {
+            type: 'scenario_data',
+            setting: 'scenario_status',
+            status: 'completed',
+          },
+        ],
+      };
+    case CHOOSE_INVESTIGATORS_STEP.id:
+      return CHOOSE_INVESTIGATORS_STEP;
+    case UPGRADE_DECKS_STEP.id:
+      return UPGRADE_DECKS_STEP;
+    case LEAD_INVESTIGATOR_STEP.id:
+      return LEAD_INVESTIGATOR_STEP;
+    default:
+      return resolutionStep(id, scenario.resolutions || []);
+  }
+}
 
-export default {
-  [PROCEED_STEP.id]: PROCEED_STEP,
-  [CHOOSE_INVESTIGATORS_STEP.id]: CHOOSE_INVESTIGATORS_STEP,
-  [UPGRADE_DECKS_STEP.id]: UPGRADE_DECKS_STEP,
-  [LEAD_INVESTIGATOR_STEP.id]: LEAD_INVESTIGATOR_STEP,
-};
+export function scenarioStepIds(scenario: Scenario) {
+  return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
+    [
+      ...scenario.setup,
+      PROCEED_STEP_ID,
+    ] : [
+      CHOOSE_INVESTIGATORS_STEP.id,
+      LEAD_INVESTIGATOR_STEP.id,
+      ...scenario.setup,
+    ];
+}

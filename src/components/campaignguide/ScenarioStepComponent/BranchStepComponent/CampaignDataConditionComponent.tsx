@@ -38,8 +38,8 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
             case 'scenario_completed': {
               const result = campaignDataScenarioConditionResult(condition, campaignLog);
               const chosenScenario = campaignGuide.getScenario(condition.scenario, campaignState);
-              const scenarioName =
-                chosenScenario && chosenScenario.scenario.scenarioName || condition.scenario;
+              const scenarioName = (chosenScenario && chosenScenario.scenarioName()) ||
+                condition.scenario;
               return (
                 <SetupStepWrapper bulletType={step.bullet_type}>
                   <CampaignGuideTextComponent text={result.decision ?

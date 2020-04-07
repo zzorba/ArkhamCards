@@ -157,7 +157,8 @@ export default class CampaignGuide {
       {
         id: CAMPAIGN_SETUP_ID,
         type: 'interlude',
-        scenarioName: t`Campaign Setup`,
+        scenario_name: t`Campaign Setup`,
+        full_name: t`Campaign Setup`,
         setup: this.campaign.campaign.setup,
         steps: this.campaign.campaign.steps,
       } :
@@ -173,7 +174,7 @@ export default class CampaignGuide {
     );
     if (!campaignState.startedScenario(rawScenarioId)) {
       if (
-        (campaignLog.campaignData.result && scenarioGuide.scenario.type !== 'epilogue') ||
+        (campaignLog.campaignData.result && scenarioGuide.scenarioType() !== 'epilogue') ||
         campaignLog.scenarioStatus(rawScenarioId) === 'skipped'
       ) {
         return [{

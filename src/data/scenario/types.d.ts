@@ -596,7 +596,8 @@ export interface LocationSetupStep {
 }
 export interface Scenario {
   id: string;
-  scenarioName: string;
+  scenario_name: string;
+  full_name: string;
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];
