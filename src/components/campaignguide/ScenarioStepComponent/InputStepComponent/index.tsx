@@ -70,8 +70,6 @@ export default class InputStepComponent extends React.Component<Props> {
             text={step.text}
           />
         );
-      case 'choose_many':
-        return <Text>Choose Many</Text>;
       case 'investigator_counter':
         return (
           <>

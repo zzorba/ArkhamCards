@@ -3,7 +3,6 @@ import {
   Text,
 } from 'react-native';
 import { filter } from 'lodash';
-import { t } from 'ttag';
 
 import LocationSetupButton from './LocationSetupButton';
 import EffectsStepComponent from './EffectsStepComponent';

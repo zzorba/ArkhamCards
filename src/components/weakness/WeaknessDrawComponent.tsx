@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { filter, find, flatMap, forEach, head, keys, map, range, shuffle } from 'lodash';
+import { filter, forEach, keys, map } from 'lodash';
 import {
   ActivityIndicator,
   LayoutChangeEvent,
@@ -228,14 +228,15 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     forEach(
       availableWeaknesses(weaknessSet, cards),
       card => {
-      if (card.traits) {
-        forEach(
-          filter<string>(map(card.traits.split('.'), t => t.trim()), t => !!t),
-          t => {
-            traitsMap[t] = 1;
-          });
+        if (card.traits) {
+          forEach(
+            filter<string>(map(card.traits.split('.'), t => t.trim()), t => !!t),
+            t => {
+              traitsMap[t] = 1;
+            });
+        }
       }
-    });
+    );
     forEach(selectedTraits, trait => {
       traitsMap[trait] = 1;
     });

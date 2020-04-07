@@ -1,9 +1,8 @@
 import { find } from 'lodash';
 
-import { Deck, NumberChoices } from 'actions/types';
+import { NumberChoices } from 'actions/types';
 import { FullCampaign, Effect } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
-import Card from 'data/Card';
 
 export interface DisplayChoice {
   text?: string;

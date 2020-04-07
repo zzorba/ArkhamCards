@@ -4,7 +4,6 @@ import { t } from 'ttag';
 import {
   ConditionalEffectsChoice,
   InvestigatorStatus,
-  Choice,
   GenericStep,
   BranchStep,
   Resolution,

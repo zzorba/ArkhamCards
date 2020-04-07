@@ -34,7 +34,7 @@ export default class LocationSetupButton extends React.Component<Props> {
           },
         },
       },
-    })
+    });
   };
 
   render() {

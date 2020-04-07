@@ -107,7 +107,7 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
                       campaignInvestigators,
                       investigator => !campaignLog.isEliminated(investigator)
                     ) : scenarioInvestigators
-                  );
+                );
               } }
             </ScenarioStepContext.Consumer>
           );

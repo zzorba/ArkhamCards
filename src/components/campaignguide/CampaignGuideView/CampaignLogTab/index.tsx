@@ -58,7 +58,7 @@ export default class CampaignLogTab extends React.Component<Props> {
               typography.bigGameFont,
               typography.underline,
               typography.center,
-              section?.sectionCrossedOut ? styles.crossedOut : {},
+              (section && section.sectionCrossedOut) ? styles.crossedOut : {},
             ]}>
               { title }
             </Text>

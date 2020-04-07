@@ -8,7 +8,6 @@ import { CARD_RATIO } from 'styles/sizes';
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 
 const SIDE_PADDING = 16;
-const INTERCARD_PADDING = 8;
 
 interface Props {
   code: string;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Deck } from 'actions/types';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import CampaignGuide from 'data/scenario/CampaignGuide';
-import Card, { CardsMap } from 'data/Card';
+import Card from 'data/Card';
 
 export interface LatestDecks {
   [code: string]: Deck | undefined;

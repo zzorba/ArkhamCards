@@ -202,10 +202,10 @@ export default class GuidedCampaignLog {
       });
     } else if (!hasRelevantEffects) {
       // No relevant effects, so shallow copy will do.
-      this.sections = readThrough.sections
+      this.sections = readThrough.sections;
       this.countSections = readThrough.countSections;
       this.investigatorSections = readThrough.investigatorSections;
-      this.scenarioData = readThrough.scenarioData ;
+      this.scenarioData = readThrough.scenarioData;
       this.campaignData = readThrough.campaignData;
       this.chaosBag = readThrough.chaosBag;
       this.latestScenarioData = readThrough.latestScenarioData;
@@ -418,7 +418,7 @@ export default class GuidedCampaignLog {
           return true;
         }
         const card = this.investigatorCards[code];
-        return !!card && !this.isEliminated(card)
+        return !!card && !this.isEliminated(card);
       }
     );
   }
@@ -690,8 +690,7 @@ export default class GuidedCampaignLog {
   private handleScenarioDataEffect(
     effect: ScenarioDataEffect,
     scenarioId?: string,
-    input?: string[],
-    numberInput?: number[]
+    input?: string[]
   ) {
     if (scenarioId === undefined) {
       throw new Error(`Cannot set scenario_data effects outside of scenarios.`);

@@ -5,7 +5,7 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
-import { FullCampaign, Supply } from './types';
+import { FullCampaign, Scenario, Supply } from './types';
 
 export interface CampaignLog {
   campaignId: string;
@@ -153,7 +153,7 @@ export default class CampaignGuide {
       scenarioId,
       replayCount,
     } = this.parseScenarioId(rawScenarioId);
-    const scenario = (scenarioId === CAMPAIGN_SETUP_ID) ?
+    const scenario: Scenario | undefined = (scenarioId === CAMPAIGN_SETUP_ID) ?
       {
         id: CAMPAIGN_SETUP_ID,
         type: 'interlude',

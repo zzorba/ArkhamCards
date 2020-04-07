@@ -10772,7 +10772,7 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["ic_4", "check_survived_the_watchers_embrace"]
+            "steps": ["ic_4", "ask_questions_intro", "ask_first_question", "ic_6", "inducted_into_the_inner_circle"]
           },
           {
             "boolCondition": false,
@@ -10803,100 +10803,360 @@
       "text": "Carl Sanford grins and rises to his feet. “You have proven yourself a loyal asset to our Order. I believe it is time that you ascended to our Inner Circle.” You approach and kneel before Mr. Sanford. He spreads his arms wide and declares, “I hereby appoint to you the rank of Knight of the Inner Circle. Arise once more, knight, and stand tall. You are now one of the elite guardians of humanity, keepers of the truth, and stewards of the Silver Twilight Order.” Another member of the Order offers you a folded blue robe, and you don it solemnly. “Now, I am sure you have many questions for me. We do not have a lot of time to dawdle, but you deserve answers. What do you wish to know?”"
     },
     {
-      "id": "check_survived_the_watchers_embrace",
-      "type": "branch",
-      "hidden": true,
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "survived_the_watchers_embrace",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["ask_questions_intro", "ask_all_questions", "ic_6", "inducted_into_the_inner_circle"]
-          },
-          {
-            "boolCondition": false,
-            "steps": ["ask_questions_intro", "ask_most_questions", "ic_6", "inducted_into_the_inner_circle"]
-          }
-        ]
-      }
-    },
-    {
       "id": "ask_questions_intro",
       "text": "You may ask up to three questions of Carl Sanford before his patience wears thin.",
       "bullet_type": "none"
     },
     {
-      "id": "ask_all_questions",
-      "text": "You may ask up to three questions of Carl Sanford before his patience wears thin.",
+      "id": "ask_first_question",
+      "text": "Choose a question to ask Card Sanford.",
       "type": "input",
       "input": {
-        "type": "choose_many",
-        "min": 0,
-        "max": 3,
-        "continue_prompt": "Finished asking questions.",
+        "type": "choose_one",
         "choices": [
           {
+            "id": "q1",
             "flavor": "“What is the creature?”",
-            "steps": ["answer_1"]
+            "steps": ["answer_1", "record_answer_1", "ask_second_question"]
           },
           {
+            "id": "q2",
             "flavor": "“What do you want with the creature?”",
-            "steps": ["answer_2"]
+            "steps": ["answer_2", "record_answer_2", "ask_second_question"]
           },
           {
+            "id": "q3",
             "flavor": "“What do the witches want with the creature?”",
-            "steps": ["answer_3"]
+            "steps": ["answer_3", "record_answer_3", "ask_second_question"]
           },
           {
+            "id": "q4",
             "flavor": "“Did you know about the creature before the charity gala?”",
-            "steps": ["answer_4"]
+            "steps": ["answer_4", "record_answer_4", "ask_second_question"]
           },
           {
+            "id": "q5",
             "flavor": "“Where are the four missing people from the charity gala?”",
-            "steps": ["answer_5"]
+            "steps": ["answer_5", "record_answer_5", "ask_second_question"]
           },
           {
+            "id": "q6",
             "flavor": "“…Why are you looking at me like that?”",
             "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>",
-            "steps": ["answer_6"]
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "survived_the_watchers_embrace",
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": []
+                }
+              ]
+            },
+            "steps": ["answer_6", "record_answer_6", "ask_second_question"]
+          },
+          {
+            "id": "finished",
+            "text": "Finished asking questions.",
+            "steps": []
           }
         ]
       }
     },
     {
-      "id": "ask_most_questions",
-      "text": "You may ask up to three questions of Carl Sanford before his patience wears thin.",
+      "id": "ask_second_question",
+      "text": "Choose a question to ask Card Sanford.",
       "type": "input",
       "input": {
-        "type": "choose_many",
-        "min": 0,
-        "max": 3,
-        "continue_prompt": "Finished asking questions.",
+        "type": "choose_one",
         "choices": [
           {
+            "id": "q1",
             "flavor": "“What is the creature?”",
-            "steps": ["answer_1"]
+            "steps": ["answer_1", "record_answer_1", "ask_third_question"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_1",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
           },
           {
+            "id": "q2",
             "flavor": "“What do you want with the creature?”",
-            "steps": ["answer_2"]
+            "steps": ["answer_2", "record_answer_2", "ask_third_question"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_2",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
           },
           {
+            "id": "q3",
             "flavor": "“What do the witches want with the creature?”",
-            "steps": ["answer_3"]
+            "steps": ["answer_3", "record_answer_3", "ask_third_question"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_3",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
           },
           {
+            "id": "q4",
             "flavor": "“Did you know about the creature before the charity gala?”",
-            "steps": ["answer_4"]
+            "steps": ["answer_4", "record_answer_4", "ask_third_question"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_4",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
           },
           {
+            "id": "q5",
             "flavor": "“Where are the four missing people from the charity gala?”",
-            "steps": ["answer_5"]
+            "steps": ["answer_5", "record_answer_5", "ask_third_question"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_5",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
+          },
+          {
+            "id": "q6",
+            "flavor": "“…Why are you looking at me like that?”",
+            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>",
+            "condition": {
+              "type": "multi",
+              "count": 2,
+              "conditions": [
+                {
+                  "type": "campaign_log",
+                  "section": "campaign_notes",
+                  "id": "survived_the_watchers_embrace",
+                  "options": [
+                    {
+                      "boolCondition": true,
+                      "effects": []
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "answer_6",
+                  "options": [
+                    {
+                      "boolCondition": false,
+                      "effects": []
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": []
+                }
+              ]
+            },
+            "steps": ["answer_6", "record_answer_6", "ask_third_question"]
+          },
+          {
+            "id": "finished",
+            "text": "Finished asking questions.",
+            "steps": []
           }
         ]
       }
+    },
+    {
+      "id": "ask_third_question",
+      "text": "Choose a question to ask Card Sanford.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "q1",
+            "flavor": "“What is the creature?”",
+            "steps": ["answer_1", "record_answer_1"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_1",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
+          },
+          {
+            "id": "q2",
+            "flavor": "“What do you want with the creature?”",
+            "steps": ["answer_2", "record_answer_2"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_2",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
+          },
+          {
+            "id": "q3",
+            "flavor": "“What do the witches want with the creature?”",
+            "steps": ["answer_3", "record_answer_3"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_3",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
+          },
+          {
+            "id": "q4",
+            "flavor": "“Did you know about the creature before the charity gala?”",
+            "steps": ["answer_4", "record_answer_4"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_4",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
+          },
+          {
+            "id": "q5",
+            "flavor": "“Where are the four missing people from the charity gala?”",
+            "steps": ["answer_5", "record_answer_5"],
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "answer_5",
+              "options": [{
+                "boolCondition": false,
+                "effects": []
+              }]
+            }
+          },
+          {
+            "id": "q6",
+            "flavor": "“…Why are you looking at me like that?”",
+            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>",
+            "condition": {
+              "type": "multi",
+              "count": 2,
+              "conditions": [
+                {
+                  "type": "campaign_log",
+                  "section": "campaign_notes",
+                  "id": "survived_the_watchers_embrace",
+                  "options": [
+                    {
+                      "boolCondition": true,
+                      "effects": []
+                    }
+                  ]
+                }, {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "answer_6",
+                  "options": [{
+                    "boolCondition": false,
+                    "effects": []
+                  }]
+                }
+              ],
+              "options": [
+                {
+                  "boolCondition": true,
+                  "effects": []
+                }
+              ]
+            },
+            "steps": ["answer_6", "record_answer_6"]
+          },
+          {
+            "id": "finished",
+            "text": "Finished asking questions.",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_answer_1",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "answer_1"
+      }]
+    },
+    {
+      "id": "record_answer_2",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "answer_2"
+      }]
+    },    {
+      "id": "record_answer_3",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "answer_3"
+      }]
+    },
+    {
+      "id": "record_answer_4",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "answer_4"
+      }]
+    },
+    {
+      "id": "record_answer_5",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "answer_5"
+      }]
+    },
+    {
+      "id": "record_answer_6",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "answer_6"
+      }]
     },
     {
       "id": "answer_1",

@@ -11,7 +11,7 @@ import {
   sum,
 } from 'lodash';
 
-import { NumberChoices, StringChoices } from 'actions/types';
+import { StringChoices } from 'actions/types';
 import { Choices } from 'data/scenario';
 import {
   BulletType,
@@ -511,10 +511,6 @@ export default class ScenarioStep {
           }]
         );
       }
-      case 'choose_many':
-        // TODO: used by inner-circle, needs to iterate until # of choices = 3
-        console.log('Missing choose_many effect resolution');
-        return undefined;
       case 'choose_one': {
         if (input.choices.length === 1) {
           const choice = input.choices[0];

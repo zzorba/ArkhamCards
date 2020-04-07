@@ -34,7 +34,7 @@ import {
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from 'data/Card';
 
-interface BinaryResult {
+export interface BinaryResult {
   type: 'binary';
   decision: boolean;
   option?: Option;
@@ -52,7 +52,7 @@ interface StringResult {
   option?: Option;
 }
 
-type OptionWithId = Option & { id : string };
+type OptionWithId = Option & { id: string };
 
 export interface InvestigatorResult {
   type: 'investigator';
@@ -201,7 +201,7 @@ export function checkSuppliesAllConditionResult(
     map(condition.options, option => {
       return {
         ...option,
-        id: option.boolCondition ? 'true' : 'false'
+        id: option.boolCondition ? 'true' : 'false',
       };
     }),
   );
@@ -278,7 +278,7 @@ export function basicTraumaConditionResult(
           return {
             ...option,
             id: option.boolCondition ? 'true' : 'false',
-          }
+          };
         })
       );
     }
@@ -373,7 +373,7 @@ export function campaignDataInvestigatorConditionResult(
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
   const investigators = campaignLog.investigators(false);
-  for (let i = 0; i< investigators.length; i++) {
+  for (let i = 0; i < investigators.length; i++) {
     const card = investigators[i];
     const index = findIndex(
       condition.options,
@@ -395,7 +395,7 @@ export function campaignDataInvestigatorConditionResult(
   return {
     type: 'binary',
     decision: false,
-    option: condition.defaultOption
+    option: condition.defaultOption,
   };
 }
 
@@ -474,6 +474,10 @@ export function conditionResult(
     case 'campaign_data': {
       return campaignDataConditionResult(condition, campaignLog);
     }
+    case 'has_card':
+      return hasCardConditionResult(condition, campaignLog);
+    case 'trauma':
+      return killedTraumaConditionResult(condition, campaignLog);
     case 'scenario_data': {
       switch (condition.scenario_data) {
         case 'player_count': {
@@ -504,10 +508,6 @@ export function conditionResult(
         }
       }
     }
-    case 'has_card':
-      return hasCardConditionResult(condition, campaignLog);
-    case 'trauma':
-      return killedTraumaConditionResult(condition, campaignLog);
   }
 }
 

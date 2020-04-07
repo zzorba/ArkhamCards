@@ -41,7 +41,6 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
   };
 
   renderFirstPrompt() {
-    const { id } = this.props;
     return (
       <BinaryPrompt
         id={this.firstDecisionId()}

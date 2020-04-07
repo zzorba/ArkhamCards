@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
 import { upperFirst } from 'lodash';
 import { t } from 'ttag';
 
@@ -12,7 +9,7 @@ import {
   BranchStep,
   CampaignDataCondition,
 } from 'data/scenario/types';
-import { campaignDataInvestigatorConditionResult, campaignDataScenarioConditionResult } from 'data/scenario/conditionHelper';
+import { campaignDataScenarioConditionResult } from 'data/scenario/conditionHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {

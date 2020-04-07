@@ -101,17 +101,21 @@ export type Input =
   | UseSuppliesInput
   | InvestigatorChoiceInput
   | ChooseOneInput
-  | ChooseManyInput
   | CounterInput
   | InvestigatorCounterInput
   | InvestigatorChoiceWithSuppliesInput
   | ScenarioInvestigatorsInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
+export type ChoiceCondition =
+  | CardCondition
+  | CampaignDataInvestigatorCondition
+  | CampaignLogCondition
+  | BasicTraumaCondition
+  | MultiCondition;
 export type ConditionalChoice = ConditionalStepsChoice | ConditionalEffectsChoice;
-export type Choice = StepsChoice | EffectsChoice;
 export type AllCampaigns = FullCampaign[];
-export type Choice1 =
+export type Choice =
   | CardChoice
   | SuppliesChoice
   | SelectChoice
@@ -475,7 +479,7 @@ export interface ConditionalEffectsChoice {
   flavor?: string;
   text: string;
   description?: string;
-  condition?: CardCondition | CampaignDataInvestigatorCondition | BasicTraumaCondition;
+  condition?: ChoiceCondition;
   effects: Effect[];
   steps?: string[];
 }
@@ -495,30 +499,9 @@ export interface ConditionalStepsChoice {
   text?: string;
   flavor?: string;
   description?: string;
-  condition?: CardCondition | CampaignDataInvestigatorCondition | BasicTraumaCondition;
+  condition?: ChoiceCondition;
   steps: string[];
   effects?: null;
-}
-export interface ChooseManyInput {
-  type: "choose_many";
-  choices: Choice[];
-  min?: number;
-  max: number;
-  continue_prompt: string;
-}
-export interface StepsChoice {
-  text?: string;
-  flavor?: string;
-  description?: string;
-  steps: string[];
-  effects?: null;
-}
-export interface EffectsChoice {
-  flavor?: string;
-  text: string;
-  description?: string;
-  effects: Effect[];
-  steps?: string[];
 }
 export interface CounterInput {
   type: "counter";
@@ -541,6 +524,13 @@ export interface InvestigatorChoiceWithSuppliesInput {
   investigator?: "choice";
   positiveChoice: EffectsChoice;
   negativeChoice: EffectsChoice;
+}
+export interface EffectsChoice {
+  flavor?: string;
+  text: string;
+  description?: string;
+  effects: Effect[];
+  steps?: string[];
 }
 export interface ScenarioInvestigatorsInput {
   type: "scenario_investigators";
@@ -626,7 +616,7 @@ export interface Log {
 }
 export interface LogEntry {
   id: string;
-  choice?: Choice1;
+  choice?: Choice;
 }
 export interface CardChoice {
   cards: string[];

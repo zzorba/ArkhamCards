@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
 import { NavigationProps } from 'components/nav/types';
-import { LocationSetupStep } from 'data/scenario/types'
+import { LocationSetupStep } from 'data/scenario/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import LocationCard from './LocationCard';
 
@@ -32,7 +32,7 @@ class LocationSetupView extends React.Component<Props> {
                 rowSize={locationsRow.length}
                 width={width}
               />
-            ))}
+            )) }
           </View>
         ))
         }
@@ -44,11 +44,6 @@ class LocationSetupView extends React.Component<Props> {
 export default withDimensions(LocationSetupView);
 
 const styles = StyleSheet.create({
-  column: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    flex: 1,
-  },
   row: {
     flexDirection: 'row',
     justifyContent: 'center',

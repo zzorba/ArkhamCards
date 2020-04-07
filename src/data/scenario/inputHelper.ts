@@ -2,14 +2,20 @@ import { filter, find, forEach, keys } from 'lodash';
 
 import { NumberChoices } from 'actions/types';
 import {
-  CampaignDataInvestigatorCondition,
+  ChoiceCondition,
   InvestigatorChoiceInput,
   ChooseOneInput,
-  CardCondition,
-  BasicTraumaCondition,
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { campaignDataInvestigatorConditionResult,  hasCardConditionResult, basicTraumaConditionResult } from 'data/scenario/conditionHelper';
+import {
+  basicTraumaConditionResult,
+  campaignDataInvestigatorConditionResult,
+  campaignLogConditionResult,
+  hasCardConditionResult,
+  multiConditionResult,
+  BinaryResult,
+  InvestigatorResult,
+} from 'data/scenario/conditionHelper';
 import { PersonalizedChoices, UniversalChoices, DisplayChoice } from 'data/scenario';
 
 export function chooseOneInputChoices(
@@ -76,9 +82,9 @@ export function investigatorChoiceInputChoices(
 }
 
 function calculateConditionResult(
-  condition: CardCondition | BasicTraumaCondition | CampaignDataInvestigatorCondition,
+  condition: ChoiceCondition,
   campaignLog: GuidedCampaignLog
-) {
+): BinaryResult | InvestigatorResult {
   switch (condition.type) {
     case 'has_card':
       return hasCardConditionResult(condition, campaignLog);
@@ -86,5 +92,9 @@ function calculateConditionResult(
       return basicTraumaConditionResult(condition, campaignLog);
     case 'campaign_data':
       return campaignDataInvestigatorConditionResult(condition, campaignLog);
+    case 'campaign_log':
+      return campaignLogConditionResult(condition, campaignLog);
+    case 'multi':
+      return multiConditionResult(condition, campaignLog);
   }
 }

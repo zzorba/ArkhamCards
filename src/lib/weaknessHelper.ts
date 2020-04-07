@@ -2,7 +2,7 @@ import { filter, find, flatMap, head, map, range, shuffle } from 'lodash';
 import Realm from 'realm';
 
 import { WeaknessSet } from 'actions/types';
-import Card from 'data/Card'
+import Card from 'data/Card';
 
 export interface WeaknessCriteria {
   traits: string[];

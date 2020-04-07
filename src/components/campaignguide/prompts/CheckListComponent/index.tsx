@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text,View, StyleSheet } from 'react-native';
-import { find, forEach, keys, map, sum } from 'lodash';
+import { forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import CheckListItemComponent from './CheckListItemComponent';
@@ -63,9 +63,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
   _onChoiceToggle = (
     code: string
   ) => {
-    const { items } = this.props;
     this.setState(state => {
-      const item = find(items, i => i.code === code);
       const selected = state.selectedChoice[code] !== undefined;
       return {
         selectedChoice: {

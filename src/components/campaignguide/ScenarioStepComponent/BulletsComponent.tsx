@@ -19,7 +19,10 @@ export default function BulletsComponent({ bullets, normalBulletType }: Props) {
   return (
     <View>
       { map(bullets, (bullet, idx) => (
-        <SetupStepWrapper key={idx} bulletType={normalBulletType ? undefined : "small"}>
+        <SetupStepWrapper
+          key={idx}
+          bulletType={normalBulletType ? undefined : 'small'}
+        >
           <CampaignGuideTextComponent text={bullet.text} />
         </SetupStepWrapper>
       )) }
