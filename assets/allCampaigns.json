@@ -2083,6 +2083,7 @@
     "set_aside_cards",
     "encounter_deck",
     "void_note",
+    "wait_for_chaos_tokens",
     "$choose_resolution"
   ],
   "steps": [
@@ -2228,6 +2229,57 @@
           {
             "type": "earn_xp",
             "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wait_for_chaos_tokens",
+      "type": "input",
+      "text": "If instructed to add chaos tokens to the bag:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "chaos_tokens",
+            "text": "Add chaos tokens",
+            "steps": ["chaos_token_choice"]
+          },
+          {
+            "id": "no_chaos_tokens",
+            "text": "Scenario ended without instruction",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "chaos_token_choice",
+      "type": "input",
+      "text": "Which ally left play?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "harold",
+            "text": "Harold Walsted",
+            "description": "Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet"]
+              }
+            ]
+          },          {
+            "id": "adam",
+            "text": "Adam Lynch",
+            "description": "Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet"]
+              }
+            ]
           }
         ]
       }
@@ -4590,6 +4642,7 @@
     "set_aside_cards",
     "setup_locations",
     "encounter_deck",
+    "wait_for_chaos_tokens",
     "$choose_resolution"
   ],
   "steps": [
@@ -4753,6 +4806,70 @@
           "value": 1
         }
       ]
+    },
+
+    {
+      "id": "wait_for_chaos_tokens",
+      "type": "input",
+      "text": "If instructed to add chaos tokens to the bag:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "chaos_tokens",
+            "text": "Add chaos tokens",
+            "steps": ["chaos_token_choice"]
+          },
+          {
+            "id": "no_chaos_tokens",
+            "text": "Scenario ended without instruction",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "chaos_token_choice",
+      "type": "input",
+      "text": "Which version of Act 2b was resolved?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "a_city_aflame",
+            "text": "A City Aflame",
+            "description": "Add 2 [cultist] tokens to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist", "cultist"]
+              }
+            ]
+          },
+          {
+            "id": "the_path_is_mine",
+            "text": "The Path is Mine",
+            "description": "Add 2 [tablet] tokens to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet", "tablet"]
+              }
+            ]
+          },
+          {
+            "id": "the_shores_of_hali",
+            "text": "The Shores of Hali",
+            "description": "Add 2 [elder_thing] tokens to the chaos bag.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["elder_thing", "elder_thing"]
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -13266,7 +13383,15 @@
     {
       "id": "act_3_v2",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. II)” and Act 4—“The Broken Rite.”"
+      "text": "Use Act 3—“Beyond the Mist (v. II)” and Act 4—“The Broken Rite.”",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "act_3_v2",
+          "text": "dummy"
+        }
+      ]
     },
     {
       "id": "act_3_v3",
@@ -13367,18 +13492,79 @@
     {
       "id": "wait_resolve_story_cards",
       "type": "input",
-      "text": "When instructed to resolve the story cards during the scenario...",
+      "text": "If instructed to resolve the set-aside story cards during the scenario:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "resolve_story_cards",
             "text": "Resolve the story cards",
-            "steps": ["resolve_story_cards"]
+            "steps": ["resolve_story_cards", "check_for_chaos_tokens"]
           },
           {
             "id": "scenario_ended",
             "text": "Scenario ended without instruction",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_for_chaos_tokens",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "act_3_v2",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["wait_for_chaos_tokens"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "wait_for_chaos_tokens",
+      "type": "input",
+      "text": "If instructed to change chaos tokens in the bag:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "resolve_chaos_tokens",
+            "text": "Adjust chaos tokens",
+            "steps": ["resolve_chaos_tokens"]
+          },
+          {
+            "id": "scenario_ended",
+            "text": "Scenario ended without instruction",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolve_chaos_tokens",
+      "type": "input",
+      "text": "If instructed to change chaos tokens in the bag:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "remove_cultists",
+            "text": "Remove all [cultist] tokens",
+            "effects": [
+              {
+                "type": "remove_chaos_token",
+                "tokens": ["cultist", "cultist", "cultist", "cultist"]
+              }
+            ]
+          },
+          {
+            "id": "none",
+            "text": "Nevermind",
             "steps": []
           }
         ]
@@ -17840,6 +18026,7 @@
     "encounter_deck",
     "depth_level_rule",
     "pursuit_rule",
+    "check_has_rope",
     "$choose_resolution"
   ],
   "steps": [
@@ -18641,6 +18828,56 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "id": "check_has_rope",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "check_supplies",
+        "section": "supplies",
+        "investigator": "any",
+        "id": "rope",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["cross_out_supplies"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_out_supplies",
+      "type": "input",
+      "text": "If instructed to cross out any Supplies:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "chaos_tokens",
+            "text": "Cross out Supplies",
+            "steps": ["cross_out_rope"]
+          },
+          {
+            "id": "no_chaos_tokens",
+            "text": "Scenario ended without instruction",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_out_rope",
+      "type": "input",
+      "input": {
+        "type": "use_supplies",
+        "section": "supplies",
+        "id": "rope",
+        "investigator": "choice",
+        "min": 0,
+        "max": 1,
+        "choices": []
       }
     }
   ],
@@ -20537,6 +20774,7 @@
     "create_exploration_deck",
     "set_aside_cards",
     "encounter_deck",
+    "check_for_chaos_bag_additions",
     "$choose_resolution"
   ],
   "steps": [
@@ -20739,6 +20977,58 @@
                 "type": "add_card",
                 "investigator": "$input_value",
                 "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_for_chaos_bag_additions",
+      "type": "input",
+      "text": "If instructed to add chaos tokens to the bag:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "chaos_tokens",
+            "text": "Choose chaos tokens",
+            "steps": ["chaos_token_choice"]
+          },
+          {
+            "id": "no_chaos_tokens",
+            "text": "Scenario ended without instruction",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "chaos_token_choice",
+      "type": "input",
+      "text": "Which of the following is true:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "<i>Ichtaca is leading the way.</i>",
+            "description": "Add 1 [cultist] token.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist"]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "<i>You fought with Icthaca.</i>",
+            "description": "Add 1 [tablet] token.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet"]
               }
             ]
           }

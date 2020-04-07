@@ -682,6 +682,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "act_3_v2",
+            "text": "dummy"
+          },
+          {
             "id": "left_column",
             "text": "dummy"
           },

@@ -123,9 +123,11 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
             case 'all':
               return (
                 <>
-                  <SetupStepWrapper>
-                    { !!text && <CampaignGuideTextComponent text={text} /> }
-                  </SetupStepWrapper>
+                  { !!text && (
+                    <SetupStepWrapper>
+                      <CampaignGuideTextComponent text={text} />
+                    </SetupStepWrapper>
+                  ) }
                   { this.renderFirstAllPrompt(input) }
                   { this.renderSecondAllPrompt(input, scenarioState) }
                 </>
@@ -134,9 +136,11 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
               // Single choice, of players with Gasoline, must choose one.
               return (
                 <>
-                  <SetupStepWrapper>
-                    { !!text && <CampaignGuideTextComponent text={text} /> }
-                  </SetupStepWrapper>
+                  { !!text && (
+                    <SetupStepWrapper>
+                      <CampaignGuideTextComponent text={text} />
+                    </SetupStepWrapper>
+                  ) }
                   <InvestigatorCheckListComponent
                     id={id}
                     choiceId="use_supply"
