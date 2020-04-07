@@ -88,7 +88,7 @@ export default class CampaignLogTab extends React.Component<Props> {
             fontScale={fontScale}
           />
         </View>
-        { flatMap(campaignGuide.campaign.campaign.campaign_log, log => {
+        { flatMap(campaignGuide.campaignLogSections(), log => {
           if (log.type === 'hidden') {
             return null;
           }

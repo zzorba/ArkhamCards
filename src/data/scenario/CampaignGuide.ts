@@ -71,8 +71,8 @@ const CAMPAIGN_SETUP_ID = '$campaign_setup';
  * Wrapper utility to provide structured access to campaigns.
  */
 export default class CampaignGuide {
-  campaign: FullCampaign;
-  log: CampaignLog;
+  private campaign: FullCampaign;
+  private log: CampaignLog;
 
   constructor(campaign: FullCampaign, log: CampaignLog) {
     this.campaign = campaign;
@@ -87,6 +87,18 @@ export default class CampaignGuide {
       this.processAllScenarios(campaignState).scenarios,
       scenario => scenario.scenarioGuide.id === id);
     return processedScenario && processedScenario.scenarioGuide;
+  }
+
+  campaignLogSections() {
+    return this.campaign.campaign.campaign_log;
+  }
+
+  prologueScenarioId(): string {
+    return this.campaign.campaign.scenarios[0];
+  }
+
+  scenarioIds() {
+    return this.campaign.campaign.scenarios
   }
 
   processAllScenarios(
@@ -214,14 +226,14 @@ export default class CampaignGuide {
       ];
     }
 
-    const nextScenario = executedScenario.latestCampaignLog.nextScenario();
-    if (!nextScenario) {
+    const nextScenarioId = executedScenario.latestCampaignLog.nextScenarioId();
+    if (!nextScenarioId) {
       return [firstResult];
     }
     return [
       firstResult,
       ...this.processScenario(
-        nextScenario,
+        nextScenarioId,
         campaignState,
         executedScenario.latestCampaignLog
       ),

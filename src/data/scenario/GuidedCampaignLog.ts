@@ -182,7 +182,7 @@ export default class GuidedCampaignLog {
       this.latestScenarioData = {
         investigatorStatus: {},
       };
-      forEach(campaignGuide.campaign.campaign.campaign_log, log => {
+      forEach(campaignGuide.campaignLogSections(), log => {
         switch (log.type) {
           case 'count':
             this.countSections[log.id] = { count: 0 };
@@ -340,16 +340,16 @@ export default class GuidedCampaignLog {
     return this.campaignData.scenarioStatus[scenarioId] || 'not_started';
   }
 
-  nextScenario(): string | undefined {
+  nextScenarioId(): string | undefined {
     if (this.campaignData.nextScenario) {
       // The campaign told us where to go next!
       return this.campaignData.nextScenario;
     }
     if (this.scenarioId === undefined) {
       // We haven't started yet, so the prologue/first scenario is first.
-      return this.campaignGuide.campaign.campaign.scenarios[0];
+      return this.campaignGuide.prologueScenarioId();
     }
-    const scenarios = this.campaignGuide.campaign.campaign.scenarios;
+    const scenarios = this.campaignGuide.scenarioIds();
     const currentIndex = findIndex(
       scenarios,
       scenarioId => this.scenarioId === scenarioId

@@ -29,9 +29,9 @@ import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 
 export default class ScenarioStep {
   step: Step;
-  scenarioGuide: ScenarioGuide;
   campaignLog: GuidedCampaignLog;
-  remainingStepIds: string[];
+  private scenarioGuide: ScenarioGuide;
+  private remainingStepIds: string[];
 
   constructor(
     step: Step,

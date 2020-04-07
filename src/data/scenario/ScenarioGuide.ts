@@ -25,9 +25,9 @@ interface ExecutedScenario {
  */
 export default class ScenarioGuide {
   id: string;
-  private scenario: Scenario;
   campaignGuide: CampaignGuide;
-  campaignLog: GuidedCampaignLog;
+  private scenario: Scenario;
+  private campaignLog: GuidedCampaignLog;
 
   constructor(
     id: string,
