@@ -213,7 +213,10 @@ export default class ScenarioStep {
       case 'encounter_sets':
       case 'rule_reminder':
       case 'location_setup':
-        return this.proceedToNextStep(this.remainingStepIds);
+        return this.proceedToNextStep(
+          this.remainingStepIds,
+          this.campaignLog
+        );
       case 'resolution': {
         const resolution = this.scenarioGuide.resolution(this.step.resolution);
         if (!resolution) {
@@ -729,11 +732,11 @@ export default class ScenarioStep {
 
   private proceedToNextStep(
     remainingStepIds: string[],
-    campaignLog?: GuidedCampaignLog
+    campaignLog: GuidedCampaignLog
   ): ScenarioStep | undefined {
     if (remainingStepIds.length) {
       const [stepId, ...newRemaining] = remainingStepIds;
-      const step = this.scenarioGuide.step(stepId);
+      const step = this.scenarioGuide.step(stepId, campaignLog);
       if (!step) {
         console.log(`Missing step: ${stepId}`);
         return undefined;
@@ -741,7 +744,7 @@ export default class ScenarioStep {
       return new ScenarioStep(
         step,
         this.scenarioGuide,
-        campaignLog || this.campaignLog,
+        campaignLog,
         newRemaining
       );
     }

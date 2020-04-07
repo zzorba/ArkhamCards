@@ -9,7 +9,7 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from 'actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
-import { Choices } from 'data/scenario';
+import { Choices, DisplayChoiceWithId } from 'data/scenario';
 
 export interface ListItem {
   code: string;
@@ -68,6 +68,9 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     code: string,
     choice: number
   ) => {
+    const {
+      options,
+    } = this.props;
     this.setState({
       selectedChoice: {
         ...this.state.selectedChoice,
@@ -82,7 +85,14 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     const choices: StringChoices = {};
     forEach(selectedChoice, (idx, code) => {
       if (idx !== undefined && idx !== -1) {
-        choices[code] = [options.choices[idx].id];
+        if (options.type === 'universal') {
+          choices[code] = [options.choices[idx].id];
+        } else {
+          const realIdx = options.perCode[code][idx];
+          console.log(`${code} = ${options.perCode[code]}[${idx}]`);
+          choices[code] = [options.choices[realIdx].id];
+          console.log(choices[code]);
+        }
       }
     });
     this.context.scenarioState.setStringChoices(
@@ -112,17 +122,21 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
 
   }
 
-  getChoice(code: string, choices?: StringChoices): number | undefined {
-    const { detailed, options } = this.props;
-    if (choices === undefined) {
+  getChoice(
+    code: string,
+    choices: DisplayChoiceWithId[],
+    inputChoices?: StringChoices
+  ): number | undefined {
+    const { detailed } = this.props;
+    if (inputChoices === undefined) {
       const choice = this.state.selectedChoice[code];
       if (choice !== undefined) {
         return choice;
       }
     } else {
-      const investigatorChoice = choices[code];
+      const investigatorChoice = inputChoices[code];
       if (investigatorChoice && investigatorChoice.length) {
-        return findIndex(options.choices, option => option.id === investigatorChoice[0]);
+        return findIndex(choices, option => option.id === investigatorChoice[0]);
       }
     }
     return detailed ? undefined : -1;
@@ -142,7 +156,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           key={idx}
           {...item}
           choices={choices}
-          choice={this.getChoice(item.code, inputChoiceList)}
+          choice={this.getChoice(item.code, choices, inputChoiceList)}
           onChoiceChange={this._onChoiceChange}
           optional={!!optional}
           editable={inputChoiceList === undefined}

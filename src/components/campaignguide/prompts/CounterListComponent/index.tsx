@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingRight: 16,
     justifyContent: 'flex-end',
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
   },
   buttonWrapper: {

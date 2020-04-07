@@ -155,8 +155,8 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
 
 const styles = StyleSheet.create({
   wrapper: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
   },
   buttonWrapper: {

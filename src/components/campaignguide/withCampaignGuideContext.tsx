@@ -139,28 +139,30 @@ export default function withCampaignGuideContext<Props>(
     ReduxProps &
     ReduxActionProps
   > {
-    _deckAdded = (deck: Deck) => {
-      this._addInvestigator(deck.investigator_code, deck.id);
-    };
-
-    _investigatorAdded = (card: Card) => {
-      this._addInvestigator(card.code);
-    };
-
-    _showChooseDeck = (singleInvestigator?: Card) => {
+    _showChooseDeck = (
+      singleInvestigator?: Card,
+      callback?: (code: string) => void
+    ) => {
       const {
         campaignId,
         campaignInvestigators,
       } = this.props;
+      const onDeckSelect = (deck: Deck) => {
+        this._addInvestigator(deck.investigator_code, deck.id);
+        callback && callback(deck.investigator_code);
+      };
       const passProps: MyDecksSelectorProps = singleInvestigator ? {
         campaignId: campaignId,
         singleInvestigator: singleInvestigator.code,
-        onDeckSelect: this._deckAdded,
+        onDeckSelect,
       } : {
         campaignId: campaignId,
         selectedInvestigatorIds: map(campaignInvestigators, investigator => investigator.code),
-        onDeckSelect: this._deckAdded,
-        onInvestigatorSelect: this._investigatorAdded,
+        onDeckSelect,
+        onInvestigatorSelect: (card: Card) => {
+          this._addInvestigator(card.code);
+          callback && callback(card.code);
+        },
         simpleOptions: true,
       };
       Navigation.showModal({
@@ -343,7 +345,6 @@ export default function withCampaignGuideContext<Props>(
         investigators,
         {
           showChooseDeck: this._showChooseDeck,
-          addInvestigator: this._addInvestigator,
           startScenario: this._startScenario,
           setCount: this._setScenarioCount,
           setDecision: this._setScenarioDecision,

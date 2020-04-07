@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
 import { flatMap, forEach, map } from 'lodash';
@@ -12,6 +13,8 @@ import { EncounterSetsStep } from 'data/scenario/types';
 import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
+import typography from 'styles/typography';
+import { COLORS } from 'styles/colors';
 
 interface OwnProps {
   step: EncounterSetsStep;

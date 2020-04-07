@@ -39,7 +39,7 @@ export default class ChoiceComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.row,
-        (index === 0 || !editable) ? { borderTopWidth: 1 } : {},
+        (index === 0 || !editable) ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
         selected && editable ? {
           backgroundColor: tintColor,
         } : {},
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   row: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
     flexDirection: 'row',
   },

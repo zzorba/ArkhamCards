@@ -340,24 +340,40 @@ export default class GuidedCampaignLog {
     return this.campaignData.scenarioStatus[scenarioId] || 'not_started';
   }
 
+  nextScenarioName(): string | undefined {
+    const scenarioId = this.nextScenarioId();
+    if (!scenarioId) {
+      return undefined;
+    }
+    return this.campaignGuide.getFullScenarioName(scenarioId);
+  }
+
   nextScenarioId(): string | undefined {
-    if (this.campaignData.nextScenario) {
+    // console.log(`Looking for next scenario for ${this.scenarioId}`);
+    if (this.campaignData.nextScenario &&
+      this.scenarioId !== this.campaignData.nextScenario
+    ) {
       // The campaign told us where to go next!
       return this.campaignData.nextScenario;
     }
-    if (this.scenarioId === undefined) {
+    if (!this.scenarioId) {
+      return '$campaign_setup';
+    }
+    if (this.scenarioId === '$campaign_setup') {
       // We haven't started yet, so the prologue/first scenario is first.
       return this.campaignGuide.prologueScenarioId();
     }
-    const scenarios = this.campaignGuide.scenarioIds();
-    const currentIndex = findIndex(
-      scenarios,
-      scenarioId => this.scenarioId === scenarioId
-    );
-    if (currentIndex !== -1 && currentIndex + 1 < scenarios.length) {
-      return scenarios[currentIndex + 1];
+
+    const {
+      scenarioId,
+      replayCount,
+    } = this.campaignGuide.parseScenarioId(this.scenarioId);
+
+    const newReplayCount = this.campaignData.scenarioReplayCount[scenarioId];
+    if (newReplayCount && (!replayCount || replayCount < newReplayCount)) {
+      return `${scenarioId}#${newReplayCount}`;
     }
-    return undefined;
+    return this.campaignGuide.nextScenarioId(this.scenarioId);
   }
 
   sectionExists(sectionId: string): boolean {
@@ -391,7 +407,7 @@ export default class GuidedCampaignLog {
   playerCount(): number {
     const playing = this.latestScenarioData.playingScenario;
     if (!playing) {
-      throw new Error('Player count accessed before it was set.');
+      throw new Error(`Player count accessed before it was set: ${this.scenarioId}`);
     }
     return playing.length;
   }

@@ -225,10 +225,18 @@ export function getFixedStep(
       return chooseResolutionStep(scenario.resolutions || []);
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
       return checkInvestigatorDefeatStep(scenario.resolutions || []);
-    case PROCEED_STEP_ID:
+    case PROCEED_STEP_ID: {
+      const nextScenarioName = campaignLog.nextScenarioName();
+      if (!nextScenarioName) {
+        console.log(`Hidden proceed step for ${campaignLog.scenarioId}, nextScenarioId=${campaignLog.nextScenarioId()}`);
+        return {
+          id: PROCEED_STEP_ID,
+          hidden: true,
+        };
+      }
       return {
         id: PROCEED_STEP_ID,
-        text: t`Proceed to the next scenario`,
+        text: t`Proceed to <b>${nextScenarioName}</b>.`,
         effects: [
           {
             type: 'scenario_data',
@@ -237,6 +245,7 @@ export function getFixedStep(
           },
         ],
       };
+    }
     case CHOOSE_INVESTIGATORS_STEP.id:
       return CHOOSE_INVESTIGATORS_STEP;
     case UPGRADE_DECKS_STEP.id:

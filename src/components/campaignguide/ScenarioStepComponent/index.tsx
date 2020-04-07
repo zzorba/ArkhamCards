@@ -1,9 +1,13 @@
 import React from 'react';
 import {
+  Button,
   Text,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
+import { t } from 'ttag';
 
+import SetupStepWrapper from '../SetupStepWrapper';
 import LocationSetupButton from './LocationSetupButton';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
@@ -17,6 +21,8 @@ import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from 'data/scenario/ScenarioStep';
+import typography from 'styles/typography';
+import { COLORS } from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -84,6 +90,10 @@ export default class ScenarioStepComponent extends React.Component<Props> {
     }
   }
 
+  _proceed = () => {
+    Navigation.pop(this.props.componentId);
+  }
+
   render() {
     const { step } = this.props;
     return (
@@ -103,7 +113,20 @@ export default class ScenarioStepComponent extends React.Component<Props> {
               };
               return (
                 <ScenarioStepContext.Provider value={context}>
+                  { !!step.step.title && (
+                    <SetupStepWrapper bulletType="none">
+                      <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
+                        { step.step.title }
+                      </Text>
+                    </SetupStepWrapper>
+                  ) }
                   { this.renderContent() }
+                  { (step.step.id === '$proceed') && (
+                    <Button
+                      onPress={this._proceed}
+                      title={t`Done`}
+                    />
+                  ) }
                 </ScenarioStepContext.Provider>
               );
             } }

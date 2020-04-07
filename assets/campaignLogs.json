@@ -750,6 +750,10 @@
             "text": "Alejandro recovered the Relic of Ages."
           },
           {
+            "id": "alejandro_remained_at_camp",
+            "text": "Alejandro chose to remain at camp."
+          },
+          {
             "id": "alejandro_remembers_everything",
             "text": "Alejandro remembers everything."
           },
@@ -824,10 +828,6 @@
           {
             "id": "ichtaca_in_the_dark",
             "text": "Ichtaca is in the dark."
-          },
-          {
-            "id": "ichtaca_is_wary",
-            "text": "Alejandro chose to remain at camp."
           },
           {
             "id": "ichtaca_is_wary",
@@ -927,8 +927,24 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "agenda_5",
+            "text": "hidden"
+          },
+          {
+            "id": "agenda_6",
+            "text": "hidden"
+          },
+          {
             "id": "final_depth",
             "text": "#X# depth"
+          },
+          {
+            "id": "ichtaca_left_without_you",
+            "text": "Ichtaca left without you."
+          },
+          {
+            "id": "listened_to_ichtaca",
+            "text": "listened to Ichtaca's tale."
           },
           {
             "id": "tasks_completed",

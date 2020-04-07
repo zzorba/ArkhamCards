@@ -10,8 +10,7 @@ import {
 import Card, { CardsMap } from 'data/Card';
 
 export interface CampaignGuideActions {
-  showChooseDeck: (singleInvestigator?: Card) => void;
-  addInvestigator: (code: string, deckId?: number) => void;
+  showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts, scenarioId?: string) => void;
@@ -38,12 +37,8 @@ export default class CampaignStateHelper {
     this.actions = actions;
   }
 
-  addInvestigator(code: string, deckId?: number) {
-    this.actions.addInvestigator(code, deckId);
-  }
-
-  showChooseDeck(singleInvestigator?: Card) {
-    this.actions.showChooseDeck(singleInvestigator);
+  showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => void) {
+    this.actions.showChooseDeck(singleInvestigator, callback);
   }
 
   startScenario(scenarioId: string) {

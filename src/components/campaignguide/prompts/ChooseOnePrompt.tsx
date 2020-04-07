@@ -65,7 +65,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                 <>
                   <SetupStepWrapper bulletType={bulletType}>
                     <CampaignGuideTextComponent
-                      text={text || t`The investigators must decide (choose one)`}
+                      text={text || t`The investigators must decide (choose one):`}
                     />
                   </SetupStepWrapper>
                   <ChooseOneListComponent

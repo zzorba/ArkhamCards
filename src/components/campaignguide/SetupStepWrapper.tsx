@@ -70,8 +70,8 @@ export default class SetupStepWrapper extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   border: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
     backgroundColor: COLORS.white,
   },

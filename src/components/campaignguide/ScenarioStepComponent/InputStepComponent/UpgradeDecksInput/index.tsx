@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingBottom: 4,
     paddingTop: 24,
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
   },
   buttonWrapper: {

@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Text,
-} from 'react-native';
 import { t } from 'ttag';
 
 import UpgradeDecksInput from './UpgradeDecksInput';
@@ -19,7 +16,6 @@ import NumberPrompt from 'components/campaignguide/prompts/NumberPrompt';
 import SuppliesPrompt from 'components/campaignguide/prompts/SuppliesPrompt';
 import { InputStep } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import typography from 'styles/typography';
 
 interface Props {
   step: InputStep;
@@ -29,7 +25,7 @@ interface Props {
 }
 
 export default class InputStepComponent extends React.Component<Props> {
-  renderPrompt(): React.ReactNode {
+  render(): React.ReactNode {
     const {
       step,
       campaignLog,
@@ -151,19 +147,5 @@ export default class InputStepComponent extends React.Component<Props> {
           </>
         );
     }
-  }
-
-  render() {
-    const { step } = this.props;
-    return (
-      <>
-        { !!step.title && (
-          <Text style={[typography.bigGameFont, typography.center]}>
-            { step.title }
-          </Text>
-        ) }
-        { this.renderPrompt() }
-      </>
-    );
   }
 }

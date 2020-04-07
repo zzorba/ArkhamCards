@@ -234,6 +234,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "blood_on_the_altar",
@@ -594,6 +595,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "essex_county_express",
@@ -942,6 +944,7 @@
     {
       "id": "gather_encounter_sets",
       "type": "encounter_sets",
+      "title": "Setup",
       "encounter_sets": [
         "extracurricular_activity",
         "sorcery",
@@ -1196,6 +1199,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "lost_in_time_and_space",
@@ -1819,6 +1823,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_house_always_wins",
@@ -2117,6 +2122,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_miskatonic_museum",
@@ -2332,6 +2338,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "undimensioned_and_unseen",
@@ -2597,6 +2604,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "where_doom_awaits",
@@ -3076,6 +3084,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "tentacles",
@@ -3449,6 +3458,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "torch",
@@ -3702,6 +3712,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "arkham",
@@ -4236,6 +4247,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "black_stars_rise",
@@ -4588,6 +4600,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "curtain_call",
@@ -4821,6 +4834,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "dim_carcosa",
@@ -5383,6 +5397,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "echoes_of_the_past",
@@ -6472,6 +6487,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "a_phantom_of_truth",
@@ -6828,6 +6844,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_last_king",
@@ -7143,6 +7160,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_pallid_mask",
@@ -7492,6 +7510,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_unspeakable_oath",
@@ -8002,6 +8021,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "arkham",
@@ -8510,6 +8530,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "at_deaths_doorstep",
@@ -9050,6 +9071,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "before_the_black_throne",
@@ -9567,6 +9589,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "disappearance_at_the_twilight_estate",
@@ -9630,7 +9653,11 @@
     },
     {
       "id": "choose_investigators",
-      "text": "Each player chooses an investigator from the standard pool of investigators and assembles their investigator deck, as usual."
+      "text": "Each player chooses an investigator from the standard pool of investigators and assembles their investigator deck, as usual.",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
     },
     {
       "id": "agenda_1_results",
@@ -9976,6 +10003,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "for_the_greater_good",
@@ -10230,6 +10258,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "in_the_clutches_of_chaos",
@@ -11703,6 +11732,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_secret_name",
@@ -12007,6 +12037,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_wages_of_sin",
@@ -12295,6 +12326,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_witching_hour",
@@ -12932,6 +12964,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "union_and_disillusion",
@@ -13980,7 +14013,8 @@
     "tfa_interlude4",
     "the_depths_of_yoth",
     "tfa_interlude5",
-    "shattered_aeons"
+    "shattered_aeons",
+    "tfa_epilogue"
   ],
   "setup": [
     "prologue",
@@ -14133,7 +14167,7 @@
     {
       "id": "check_turned_back_time",
       "type": "branch",
-      "text": "Check Campaign Log.\nRead the following only if the investigators turned back time.",
+      "text": "Check Campaign Log. Read the following only <i>if the investigators turned back time</i>.",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -14157,7 +14191,7 @@
     },
     {
       "id": "proceed_secret_scenario",
-      "text": "Proceed to Scenario IX: Turn Back Time.",
+      "hidden": true,
       "effects": [
         {
           "type": "campaign_data",
@@ -14243,7 +14277,7 @@
           {
             "id": "hide",
             "flavor": "It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.",
-            "steps": ["ee_3", "gave_relic_to_harlan", "alejandro_on_his_own", "remove_alejandro", "ee_4"]
+            "steps": ["ee_3", "gave_relic_to_harlan", "alejandro_on_his_own", "ee_4"]
           }
         ]
       }
@@ -14328,19 +14362,14 @@
     },
     {
       "id": "alejandro_on_his_own",
+      "text": "In your Campaign Log, record that <i>Alejandro is continuing his research on his own</i>. If Alejandro Vela is currently in an investigator’s deck, remove him from that investigator’s deck.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "alejandro_on_his_own",
           "text": "Alejandro is continuing his research on his own."
-        }
-      ]
-    },
-    {
-      "id": "remove_alejandro",
-      "text": "If Alejandro Vela is currently in an investigator’s deck, remove him from that investigator’s deck.",
-      "effects": [
+        },
         {
           "type": "remove_card",
           "card": "04051"
@@ -14421,6 +14450,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "eztli",
@@ -14722,7 +14752,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "text": "Did any investigator gain the Poisoned weakness?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -14881,7 +14911,7 @@
           },
           {
             "id": "nothing",
-            "text": "I wish we knew more about this...",
+            "flavor": "I wish we knew more about this...",
             "steps": []
           }
         ]
@@ -14894,6 +14924,7 @@
     },
     {
       "id": "start_with_ichtaca",
+      "bullet_type": "right",
       "text": "Begin this scenario with Ichtaca in play. "
     },
     {
@@ -14903,6 +14934,7 @@
     },
     {
       "id": "start_with_alejandro",
+      "bullet_type": "right",
       "text": "Begin this scenario with Alejandro Vela in play."
     },
     {
@@ -14912,6 +14944,7 @@
     },
     {
       "id": "start_with_expedition_journal",
+      "bullet_type": "right",
       "text": "Begin this scenario with Expedition Journal in play."
     },
     {
@@ -14967,6 +15000,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "pillars_of_judgment",
@@ -15036,7 +15070,7 @@
       "input": {
         "type": "counter",
         "text": "Pillar tokens on the Mouth of K'n-yan:",
-        "max": 6,
+        "max": 5,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -15129,11 +15163,11 @@
     },
     {
       "id": "proceed_scenario_2",
-      "text": "Investigators may not spend experience or alter their decks in between Scenarios V-A and V-B. Proceed immediately to <b>Scenario V-B: Heart of the Elders, Part 2</b>."
+      "text": "Investigators may not spend experience or alter their decks in between Scenarios V-A and V-B."
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "text": "Did any investigator gain the Poisoned weakness?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -15211,6 +15245,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "knyan",
@@ -15372,7 +15407,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "text": "Did any investigator gain the Poisoned weakness?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -15748,7 +15783,7 @@
   "type": "interlude",
   "setup": [
     "intro",
-    "$choose_investigators",
+    "choose_investigators",
     "expedition_leader",
     "supplies"
   ],
@@ -15761,6 +15796,13 @@
     {
       "id": "expedition_leader",
       "text": "If Ursula Downs, Leo Anderson, or Monterey Jack was chosen as an investigator for this campaign: Choose one of those investigators to be the expedition leader. That investigator begins Scenarios I and II as the lead investigator."
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
     },
     {
       "id": "supplies",
@@ -16179,6 +16221,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "shattered_aeons",
@@ -16349,10 +16392,6 @@
       ]
     },
     {
-      "id": "proceed_epilogue",
-      "text": "Proceed to <b>Epilogue</b>."
-    },
-    {
       "id": "skip_epilogue",
       "effects": [
         {
@@ -16492,7 +16531,7 @@
       "id": "R5",
       "title": "Resolution 5",
       "text": "All of this was set into motion when the Eztli ruins were first intruded upon. Ichtaca’s original warning was her last vestige of humanity speaking to you. She wanted you and the other explorers to turn back, but curiosity and greed got the better of you. Until that day, balance had been kept. Alejandro sought the relic for his own devices. Ichtaca heard the call of her master and obeyed. However, humanity is the true cause of this chaos. You know now what you must do. You know now how you can save everyone.",
-      "steps": ["turned_back_time", "attached_locations_to_victory_display", "earn_xp", "$upgrade_decks", "proceed_epilogue"]
+      "steps": ["turned_back_time", "attached_locations_to_victory_display", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -16725,6 +16764,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_boundary_beyond",
@@ -17017,7 +17057,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "text": "Did any investigator gain the Poisoned weakness?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -17155,6 +17195,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_city_of_archives",
@@ -17542,15 +17583,39 @@
     },
     {
       "id": "check_investigators_recovered_relic",
+      "text": "Check Campaign Log. <i>If the investigators recovered the Relic of Ages</i>, and <i>if you are forging your own path</i>.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "investigators_recovered_relic",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "investigators_recovered_relic",
+            "options": [
+              {
+                "boolCondition": true,
+                "effects": []
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "forging_own_path",
+            "options": [
+              {
+                "boolCondition": true,
+                "effects": []
+              }
+            ]
+          }
+        ],
+        "count": 2,
         "options": [
           {
             "boolCondition": true,
-            "steps": ["check_forging_own_path"]
+            "steps": ["final_dawning", "swap_relic"]
           },
           {
             "boolCondition": false,
@@ -17563,25 +17628,6 @@
       "id": "no_ill_effects",
       "bullet_type": "small",
       "text": "You suffer no ill effects."
-    },
-    {
-      "id": "check_forging_own_path",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "forging_own_path",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["final_dawning", "swap_relic"]
-          },
-          {
-            "boolCondition": false,
-            "steps": ["no_ill_effects"]
-          }
-        ]
-      }
     },
     {
       "id": "final_dawning",
@@ -17786,7 +17832,7 @@
     "check_yigs_fury",
     "set_aside_locations",
     "maybe_setup_harbinger",
-    "set_aside_yig",
+    "check_agenda_6",
     "create_exploration_deck",
     "setup_depth",
     "set_aside_relic",
@@ -17828,7 +17874,7 @@
     },
     {
       "id": "ichtaca_set_against_forging_own_path",
-      "text": "In your Campaign Log, record that <i>Ichtaca is set against you</i>.\nAdd 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "In your Campaign Log, record that <i>Ichtaca is set against you</i>. Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -18028,6 +18074,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "the_depths_of_yoth",
@@ -18145,32 +18192,49 @@
     {
       "id": "fury_1_to_5",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 1-5, no changes are made."
+      "text": "Because Yig's Fury is between 1 and 5, no changes are made."
     },
     {
       "id": "fury_6_to_10",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 6-10, remove agenda 1a from the game. The game begins at agenda 2a."
+      "text": "Because Yig's Fury is between 6 and 10, remove agenda 1a from the game. The game begins at agenda 2a."
     },
     {
       "id": "fury_11_to_14",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 11-14, remove agendas 1a and 2a from the game. The game begins at agenda 3a."
+      "text": "Because Yig's Fury is between 11 and 14, remove agendas 1a and 2a from the game. The game begins at agenda 3a."
     },
     {
       "id": "fury_15_to_17",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 15-17, remove agendas 1a, 2a, and 3a from the game. The game begins at agenda 4a."
+      "text": "Because Yig's Fury is between 15 and 17, remove agendas 1a, 2a, and 3a from the game. The game begins at agenda 4a."
     },
     {
       "id": "fury_18_to_20",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 18-20, remove agendas 1a, 2a, 3a, and 4a from the game. The game begins at agenda 5a."
+      "text": "Because Yig's Fury is between 18 and 20, remove agendas 1a, 2a, 3a, and 4a from the game. The game begins at agenda 5a.",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "agenda_5",
+        "text": "hidden"
+      }]
     },
     {
       "id": "fury_21",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 21 or higher, remove agendas 1a, 2a, 3a, 4a, and 5a from the game. The game begins at agenda 6a."
+      "text": "Because Yig's Fury is 21 or higher, remove agendas 1a, 2a, 3a, 4a, and 5a from the game. The game begins at agenda 6a.",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "agenda_5",
+        "text": "hidden"
+      },{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "agenda_6",
+        "text": "hidden"
+      }]
     },
     {
       "id": "set_aside_locations",
@@ -18187,29 +18251,68 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["setup_harbinger"]
+            "steps": ["check_agenda_5"]
           }
         ]
       }
     },
     {
-      "id": "setup_harbinger",
+      "id": "check_agenda_5",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "agenda_5",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["put_harbinger_in_pursuit"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["set_aside_harbinger"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "put_harbinger_in_pursuit",
       "bullet_type": "small",
-      "text": "Search the collection for the Harbinger of Valusia and set it aside. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log.",
-      "bullets": [
-        {
-          "text": "If it is agenda 5a or 6a, move that the set-aside Harbinger of Valusia enemy to the pursuit area. (See “Pursuit,” below.)"
-        }
-      ]
+      "text": "Search the collection for the Harbinger of Valusia and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+    },
+    {
+      "id": "set_aside_harbinger",
+      "bullet_type": "small",
+      "text": "Search the collection for the Harbinger of Valusia and set it aside. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log."
+    },
+    {
+      "id": "check_agenda_6",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "agenda_6",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["put_yig_in_pursuit"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["set_aside_yig"]
+          }
+        ]
+      }
     },
     {
       "id": "set_aside_yig",
-      "text": "Set the Yig enemy aside, out of play.",
-      "bullets": [
-        {
-          "text": "If it is agenda 6a, move that the set-aside Yig enemy to the pursuit area."
-        }
-      ]
+      "text": "Set the Yig enemy aside, out of play."
+    },
+    {
+      "id": "put_yig_in_pursuit",
+      "text": "Because it is agenda 6a, put the set-aside Yig enemy in the pursuit area."
     },
     {
       "id": "create_exploration_deck",
@@ -18508,7 +18611,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "text": "Did any investigator gain the Poisoned weakness?",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -19060,6 +19163,7 @@
     "setup_act_deck",
     "setup_act_ab",
     "setup_act_cd",
+    "setup_act_ef_prompt",
     "setup_act_ef",
     "encounter_deck",
     "$choose_resolution"
@@ -19160,7 +19264,13 @@
     },
     {
       "id": "listened_to_ichtaca",
-      "text": "Remember that “you listened to Ichtaca’s tale.”"
+      "text": "Remember that “you listened to Ichtaca’s tale.”",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "listened_to_ichtaca",
+        "text": "listened to Ichtaca's tale."
+      }]
     },
     {
       "id": "add_cultist",
@@ -19181,7 +19291,13 @@
     },
     {
       "id": "ichtaca_left_without_you",
-      "text": "Remember that “Ichtaca left without you.”"
+      "text": "Remember that “Ichtaca left without you.”",
+      "effects": [{
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "ichtaca_left_without_you",
+        "text": "Ichtaca left without you."
+      }]
     },
     {
       "id": "check_ignored_ichtaca_and_gave_relic_to_harlan",
@@ -19213,7 +19329,7 @@
           {
             "id": "on_your_own",
             "text": "“We should be wary of them.”",
-            "description": "Remove all [cultist] and [tablet] tokens from the chaos bag and replace them with 1 [elder_thing] token. In your Campaign Log, record that <i>you are forging your own path.</i>\nFor the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead. Proceed to Setup.",
+            "description": "Remove all [cultist] and [tablet] tokens from the chaos bag and replace them with 1 [elder_thing] token. In your Campaign Log, record that <i>you are forging your own path.</i>\nFor the remainder of the campaign, each investigator cannot include Alejandro Vela or Ichtaca in their deck. Anytime an investigator would be given the option to include either of them, each investigator earns 2 experience instead.",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -19241,6 +19357,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "threads_of_fate",
@@ -19331,20 +19448,24 @@
       "text": "Remove the following act cards from the “c/d” deck: Missing Persons, both copies of At the Station, and one of the two copies of Friends in High Places, at random."
     },
     {
+      "id": "setup_act_ef_prompt",
+      "text": "Adjust the contents of the “e/f ” deck as follows:"
+    },
+    {
       "id": "setup_act_ef",
-      "text": "Adjust the contents of the “e/f ” deck as follows:",
-      "type": "input",
-      "input": {
-        "type": "choose_one",
-        "choices": [
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "listened_to_ichtaca",
+        "options": [
           {
-            "id": "listened_to_ichtaca",
-            "text": "If “you listened to Ichtaca’s tale”",
+            "boolCondition": true,
             "steps": ["act_listened_to_ichtaca"]
           },
           {
-            "id": "ichtaca_left",
-            "text": "If “Ichtaca left without you”",
+            "boolCondition": false,
             "steps": ["act_ichtaca_left_without_you"]
           }
         ]
@@ -19353,12 +19474,12 @@
     {
       "id": "act_listened_to_ichtaca",
       "bullet_type": "small",
-      "text": "Remove the following act cards from the “e/f ” deck: Trial of the Huntress, both copies of The Cave of Darkness, and one of the two copies of Strange Relics, at random."
+      "text": "Because “you listened to Ichtaca’s tale”, remove the following act cards from the “e/f ” deck: Trial of the Huntress, both copies of The Cave of Darkness, and one of the two copies of Strange Relics, at random."
     },
     {
       "id": "act_ichtaca_left_without_you",
       "bullet_type": "small",
-      "text": "Remove the following act cards from the “e/f” deck: The Guardian’s Inquiry, both copies of Strange Relics, and one of the two copies of The Cave of Darkness, at random."
+      "text": "Because “Ichtaca left without you”, remove the following act cards from the “e/f” deck: The Guardian’s Inquiry, both copies of Strange Relics, and one of the two copies of The Cave of Darkness, at random."
     },
     {
       "id": "encounter_deck",
@@ -19388,6 +19509,7 @@
     {
       "id": "maybe_earn_relic_of_ages",
       "bullet_type": "small",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -19443,6 +19565,7 @@
     {
       "id": "maybe_earn_alejandro",
       "type": "branch",
+      "hidden": true,
       "bullet_type": "small",
       "condition": {
         "type": "has_card",
@@ -19459,6 +19582,7 @@
     {
       "id": "check_forging_own_path_earn_alejandro",
       "type": "branch",
+      "hidden": true,
       "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
@@ -19466,12 +19590,12 @@
         "id": "forging_own_path",
         "options": [
           {
-            "boolCondition": false,
-            "steps": ["earn_alejandro"]
+            "boolCondition": true,
+            "steps": ["earn_alejandro_xp"]
           },
           {
             "boolCondition": false,
-            "steps": ["earn_alejandro_xp"]
+            "steps": ["earn_alejandro"]
           }
         ]
       }
@@ -19491,7 +19615,7 @@
     {
       "id": "earn_alejandro_xp",
       "bullet_type": "small",
-      "text": "Because you are <i>forging your own path</i>, instead of earning Alejandro Vela you earn 2 bonus XP.",
+      "text": "Because you are <i>forging your own path</i>, instead of earning Alejandro Vela each investigator earns 2 bonus XP.",
       "effects": [
         {
           "type": "earn_xp",
@@ -19503,6 +19627,7 @@
     {
       "id": "maybe_remove_alejandro",
       "bullet_type": "small",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -19570,6 +19695,7 @@
     {
       "id": "maybe_earn_ichtaca",
       "type": "branch",
+      "hidden": true,
       "bullet_type": "small",
       "condition": {
         "type": "campaign_log",
@@ -19581,7 +19707,7 @@
             "steps": ["earn_ichtaca"]
           },
           {
-            "boolCondition": false,
+            "boolCondition": true,
             "steps": ["earn_ichtaca_xp"]
           }
         ]
@@ -19602,7 +19728,7 @@
     {
       "id": "earn_ichtaca_xp",
       "bullet_type": "small",
-      "text": "Because you are <i>forging your own path</i>, instead of earning Ichtaca <i>(The Forgotten Guardian)</i> you earn 2 bonus XP.",
+      "text": "Because you are <i>forging your own path</i>, instead of earning Ichtaca <i>(The Forgotten Guardian)</i> each investigator earns 2 bonus XP.",
       "effects": [
         {
           "type": "earn_xp",
@@ -19834,7 +19960,7 @@
               {
                 "type": "trauma",
                 "investigator": "$input_value",
-                "physical": -1
+                "mental": -1
               }
             ]
           }
@@ -19946,7 +20072,7 @@
 {
   "id": "turn_back_time",
   "scenario_name": "Turn Back Time",
-  "full_name": "Interlude IX: Turn Back Time",
+  "full_name": "Scenario IX: Turn Back Time",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -19972,7 +20098,7 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["intro_1", "cross_off_entries"]
+            "steps": ["intro_1", "cross_off_everything"]
           },
           {
             "boolCondition": false,
@@ -19991,7 +20117,7 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["intro_2", "cross_off_entries"]
+            "steps": ["intro_2", "cross_off_everything"]
           }
         ]
       }
@@ -20002,8 +20128,239 @@
       "text": "You stand in front of the main temple of the Eztli, sweat pouring down your skin due to the hot, damp jungle air. Stunned, you examine your surroundings. José and Maria stand next to you, gaping in wonder at the temple’s sophisticated architecture. Their packs are bulging with the extra supplies they were able to acquire from Alejandro’s contacts in Mexico City. Alejandro himself stands at the rear of the group, grinning.\nYour consciousness has been snapped so far back that your mind aches from the force of it. Your body shudders, and you struggle to resist collapsing out of exhaustion. Though you have altered fate, your true task still remains ahead of you. As the rest of the expedition sets up camp and prepares to explore the ruins, you sneak off to fulfill your purpose, leaving Alejandro and the rest of your group behind. They wouldn’t understand. They haven’t seen what you have seen."
     },
     {
-      "id": "cross_off_entries",
-      "text": "In your Campaign Log, cross off all entries after the first three entries.\nThe crossed-off entries have been undone by your actions."
+      "id": "cross_off_everything",
+      "bullet_type": "right",
+      "text": "In your Campaign Log, cross off all entries after the first three entries.\nThe crossed-off entries have been undone by your actions.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "turned_back_time",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "alejandro_is_missing",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "alejandro_on_his_own",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "alejandro_recovered_relic",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "alejandro_remembers_everything",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "alejandro_set_against",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "braziers_are_lit",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "braziers_remain_unlit",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "cooperated_with_yithians",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "earned_alejandros_trust",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "fabric_of_time_unwoven",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "fell_into_depths",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "forged_bond_with_ichtaca",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "forging_own_path",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "found_missing_relic",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "gave_relic_to_alejandro",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "gave_relic_to_harlan",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "had_memories_expunged",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "harbinger_alive",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "ichtaca_has_confidence",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "ichtaca_in_the_dark",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "ichtaca_set_against",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "ichtacas_faith_restored",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "investigators_recovered_relic",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "investigators_saved_serpents",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "investigators_saved_yithians",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "jungle_watches",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "mapped_way_forward",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "mended_tear_in_time",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "nexus_is_near",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "paths_known",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "process_backfired",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "process_backfired_spectacularly",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "process_was_perfected",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "process_was_successful",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "relic_is_missing",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "rescued_alejandro",
+          "section": "campaign_notes",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "id": "resisted_captivity",
+          "section": "campaign_notes",
+          "cross_out": true
+        }
+      ]
     },
     {
       "id": "intro_2",
@@ -20012,6 +20369,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "turn_back_time",
@@ -20189,6 +20547,7 @@
     },
     {
       "id": "gather_encounter_sets",
+      "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
         "wilds",
@@ -20291,7 +20650,7 @@
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "ichtaca_is_wary",
+          "id": "alejandro_remained_at_camp",
           "text": "Alejandro chose to remain at camp."
         }
       ]
@@ -20365,7 +20724,7 @@
     },
     {
       "id": "check_investigators_poisoned",
-      "text": "Which investigators gained the Poisoned weakness during this scenario?",
+      "text": "Did any investigator gain the Poisoned weakness?",
       "type": "input",
       "input": {
         "type": "investigator_choice",

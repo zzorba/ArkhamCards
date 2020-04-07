@@ -20,11 +20,6 @@ export default class GenericStepComponent extends React.Component<Props> {
     return (
       <>
         <SetupStepWrapper bulletType="none">
-          { !!step.title && (
-            <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
-              { step.title }
-            </Text>
-          ) }
           <CampaignGuideTextComponent text={step.text} />
         </SetupStepWrapper>
         <BulletsComponent bullets={step.bullets} normalBulletType />

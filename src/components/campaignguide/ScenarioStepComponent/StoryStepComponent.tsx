@@ -21,11 +21,6 @@ export default class StoryStepComponent extends React.Component<Props> {
     return (
       <>
         <View style={styles.step}>
-          { !!step.title && (
-            <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
-              { step.title }
-            </Text>
-          ) }
           { !!step.text && (
             <CampaignGuideTextComponent
               text={step.text}

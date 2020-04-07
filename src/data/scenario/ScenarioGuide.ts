@@ -27,7 +27,7 @@ export default class ScenarioGuide {
   id: string;
   campaignGuide: CampaignGuide;
   private scenario: Scenario;
-  private campaignLog: GuidedCampaignLog;
+  private scenarioStartCampaignLog: GuidedCampaignLog;
 
   constructor(
     id: string,
@@ -38,7 +38,7 @@ export default class ScenarioGuide {
     this.id = id;
     this.scenario = scenario;
     this.campaignGuide = campaignGuide;
-    this.campaignLog = campaignLog;
+    this.scenarioStartCampaignLog = campaignLog;
   }
 
   scenarioName(): string {
@@ -49,8 +49,15 @@ export default class ScenarioGuide {
     return this.scenario.type || 'scenario';
   }
 
-  step(id: string): Step | undefined {
-    const fixedStep = getFixedStep(id, this.scenario, this.campaignLog);
+  step(
+    id: string,
+    campaignLog: GuidedCampaignLog
+  ): Step | undefined {
+    const fixedStep = getFixedStep(
+      id,
+      this.scenario,
+      campaignLog
+    );
     if (fixedStep) {
       return fixedStep;
     }
@@ -83,7 +90,7 @@ export default class ScenarioGuide {
     scenarioState: ScenarioStateHelper
   ): ExecutedScenario {
     const stepIds = scenarioStepIds(this.scenario);
-    const steps = this.expandSteps(stepIds, scenarioState);
+    const steps = this.expandSteps(stepIds, scenarioState, this.scenarioStartCampaignLog);
 
     const lastStep = last(steps);
     if (!lastStep) {
@@ -91,7 +98,7 @@ export default class ScenarioGuide {
       return {
         steps,
         inProgress: true,
-        latestCampaignLog: this.campaignLog,
+        latestCampaignLog: this.scenarioStartCampaignLog,
       };
     }
     const nextCampaignLog = lastStep.nextCampaignLog(scenarioState);
@@ -105,13 +112,13 @@ export default class ScenarioGuide {
   expandSteps(
     stepIds: string[],
     scenarioState: ScenarioStateHelper,
-    campaignLog?: GuidedCampaignLog
+    campaignLog: GuidedCampaignLog
   ): ScenarioStep[] {
     if (!stepIds.length) {
       return [];
     }
     const [firstStepId, ...remainingStepIds] = stepIds;
-    const step = this.step(firstStepId);
+    const step = this.step(firstStepId, campaignLog);
     if (!step) {
       return [];
     }
@@ -123,7 +130,7 @@ export default class ScenarioGuide {
         [],
         this.campaignGuide,
         scenarioState.campaignState.investigators,
-        campaignLog || this.campaignLog,
+        campaignLog,
         this.id
       ),
       remainingStepIds

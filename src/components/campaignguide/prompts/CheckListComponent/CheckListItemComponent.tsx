@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   row: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
     padding: 8,
     paddingLeft: 16,

@@ -1,4 +1,4 @@
-import { find, forEach, map } from 'lodash';
+import { find, findIndex, forEach, map } from 'lodash';
 import { t } from 'ttag';
 
 import GuidedCampaignLog from './GuidedCampaignLog';
@@ -79,6 +79,17 @@ export default class CampaignGuide {
     this.log = log;
   }
 
+  getFullScenarioName(
+    rawScenarioId: string
+  ): string | undefined {
+    const scenarioId = this.parseScenarioId(rawScenarioId);
+    const scenario = find(
+      this.campaign.scenarios,
+      scenario => scenario.id === scenarioId.scenarioId
+    );
+    return scenario && scenario.full_name;
+  }
+
   getScenario(
     id: string,
     campaignState: CampaignStateHelper
@@ -142,7 +153,20 @@ export default class CampaignGuide {
     };
   }
 
-  private parseScenarioId(scenarioId: string) {
+  nextScenarioId(rawScenarioId: string) {
+    const parsedId = this.parseScenarioId(rawScenarioId);
+    const scenarios = this.allScenarioIds();
+    const currentIndex = findIndex(
+      scenarios,
+      scenarioId => scenarioId === parsedId.scenarioId
+    );
+    if (currentIndex !== -1 && currentIndex + 1 < scenarios.length) {
+      return scenarios[currentIndex + 1];
+    }
+    return undefined;
+  }
+
+  parseScenarioId(scenarioId: string) {
     if (scenarioId.indexOf('#') === -1) {
       return {
         scenarioId,

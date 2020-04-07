@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     minWidth: 40,
   },
   promptRow: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
     padding: 16,
     paddingTop: 8,

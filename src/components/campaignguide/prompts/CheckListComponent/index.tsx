@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text,View, StyleSheet } from 'react-native';
-import { forEach, keys, map, sum } from 'lodash';
+import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import CheckListItemComponent from './CheckListItemComponent';
@@ -58,6 +58,21 @@ export default class CheckListComponent extends React.Component<Props, State> {
     this.state = {
       selectedChoice,
     };
+  }
+
+  componentDidUpdate(previousProps: Props) {
+    if (this.props.items !== previousProps.items) {
+      forEach(this.props.items, item => {
+        if (!find(previousProps.items, oldItem => item.code === oldItem.code)) {
+          this.setState({
+            selectedChoice: {
+              ...this.state.selectedChoice,
+              [item.code]: 0,
+            },
+          });
+        }
+      })
+    }
   }
 
   _onChoiceToggle = (
@@ -196,11 +211,11 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingRight: 16,
     justifyContent: 'flex-end',
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
   },
   row: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
     padding: 8,
     paddingLeft: 16,

@@ -145,6 +145,7 @@ export interface BranchStep {
   type: "branch";
   hidden?: boolean;
   text?: string;
+  title?: string;
   condition: Condition;
   bullet_type?: BulletType;
 }
@@ -394,6 +395,7 @@ export interface EffectsStep {
   id: string;
   type: "effects";
   text?: null;
+  title?: null;
   effectsWithInput: EffectsWithInput[];
   stepText: boolean;
   bullet_type?: BulletType;
@@ -538,6 +540,7 @@ export interface ScenarioInvestigatorsInput {
 export interface EncounterSetsStep {
   id: string;
   type: "encounter_sets";
+  title?: string;
   text?: string;
   subtext?: string;
   aside?: boolean;
@@ -548,6 +551,7 @@ export interface GenericStep {
   id: string;
   type?: null;
   title?: string;
+  hidden?: boolean;
   text?: string;
   steps?: string[];
   effects?: Effect[];
@@ -561,6 +565,7 @@ export interface ResolutionStep {
   type: "resolution";
   resolution: string;
   text?: string;
+  title?: null;
   generated?: boolean;
   effects?: ScenarioDataStatusEffect[];
   bullet_type?: null;

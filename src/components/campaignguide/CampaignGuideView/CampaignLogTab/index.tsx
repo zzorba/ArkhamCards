@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default class CampaignLogTab extends React.Component<Props> {
-  renderLogEntryContent(id: string, title: string, type?: 'count' | 'supplies') {
+  renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
     const { campaignLog, campaignGuide } = this.props;
     switch (type) {
       case 'count': {
@@ -94,7 +94,7 @@ export default class CampaignLogTab extends React.Component<Props> {
           }
           return (
             <View key={log.id}>
-              { this.renderLogEntryContent(log.id, log.title, log.type) }
+              { this.renderLogEntrySectionContent(log.id, log.title, log.type) }
             </View>
           );
         }) }
