@@ -1,20 +1,18 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { flatMap, forEach, map } from 'lodash';
 import { connectRealm, EncounterSetResults } from 'react-native-realm';
 import { msgid, ngettext, t } from 'ttag';
 
+import { stringList } from 'lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { EncounterSetsStep } from 'data/scenario/types';
 import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
 
 interface OwnProps {
   step: EncounterSetsStep;
@@ -30,14 +28,22 @@ class EncounterSetStepComponent extends React.Component<Props> {
 
   render() {
     const { step, encounterSets } = this.props;
-    const encounterSetString = map(encounterSets, set => set ? `<i>${set.name}</i>` : 'Missing Set Name').join(', ');
+    const encounterSetString = stringList(map(encounterSets, set => set ? `<i>${set.name}</i>` : 'Missing Set Name'));
     const leadText = step.aside ?
-      t`Set the following encounter sets aside, out of play: ` :
-      t`Gather all cards from the following encounter sets:`;
-    const startText = step.text || leadText;
+      ngettext(
+        msgid`Set the ${encounterSetString} encounter set aside, out of play`,
+        t`Set the ${encounterSetString} encounter sets aside, out of play`,
+        encounterSets.length
+      ) :
+      ngettext(
+        msgid`Gather all cards from the ${encounterSetString} encounter set`,
+        t`Gather all cards from the following encounter sets: ${encounterSetString}`,
+        encounterSets.length
+      );
+    const startText = step.text ? `${step.text} ${encounterSetString}` : leadText;
     const text =
-    ngettext(msgid`${startText} ${encounterSetString}. This set is indicated by the following icon:`,
-      t`${startText} ${encounterSetString}. These sets are indicated by the following icons:`,
+    ngettext(msgid`${startText}. This set is indicated by the following icon:`,
+      t`${startText}. These sets are indicated by the following icons:`,
       encounterSets.length);
     return (
       <SetupStepWrapper bulletType={step.bullet_type}>

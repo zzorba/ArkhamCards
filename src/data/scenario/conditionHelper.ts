@@ -303,10 +303,16 @@ export function binaryCardConditionResult(
   const investigators = campaignLog.investigatorCodes(true);
   return binaryConditionResult(
     !!find(investigators, code => {
-      return (
-        condition.investigator !== 'defeated' ||
-        campaignLog.isDefeated(code)
-      ) && campaignLog.hasCard(code, condition.card);
+      switch (condition.investigator) {
+        case 'defeated':
+          if (!campaignLog.isDefeated(code)) {
+            return false;
+          }
+          break;
+        case 'any':
+          break;
+      }
+      return campaignLog.hasCard(code, condition.card);
     }),
     condition.options
   );

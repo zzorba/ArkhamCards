@@ -152,10 +152,11 @@ export interface TraumaAndCardData extends Trauma {
   availableXp?: number;
   spentXp?: number;
   storyAssets?: string[];
+  ignoreStoryAssets?: string[];
 }
 
 export interface InvestigatorData {
-  [code: string]: TraumaAndCardData;
+  [code: string]: TraumaAndCardData | undefined;
 }
 
 export interface WeaknessSet {
@@ -304,7 +305,7 @@ export interface CampaignNotes {
 export interface Campaign {
   id: number;
   name: string;
-  difficulty: CampaignDifficulty;
+  difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
   lastUpdated: Date;
   showInterludes?: boolean;
@@ -466,7 +467,7 @@ export interface NewCampaignAction {
   now: Date;
   id: number;
   name: string;
-  difficulty: CampaignDifficulty;
+  difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
   baseDeckIds: number[];
   investigatorIds: string[];

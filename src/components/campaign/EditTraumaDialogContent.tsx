@@ -91,7 +91,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
             </Text>
             <PlusMinusButtons
               count={physical || 0}
-              limit={health}
+              max={health}
               onIncrement={this._incPhysical}
               onDecrement={this._decPhysical}
               size={36}
@@ -110,7 +110,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
             </Text>
             <PlusMinusButtons
               count={mental || 0}
-              limit={sanity}
+              max={sanity}
               onIncrement={this._incMental}
               onDecrement={this._decMental}
               size={36}

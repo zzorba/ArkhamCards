@@ -1,12 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
 
 import BulletsComponent from './BulletsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import { GenericStep } from 'data/scenario/types';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
 
 interface Props {
   step: GenericStep;

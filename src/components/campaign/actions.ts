@@ -78,7 +78,7 @@ export function newCampaign(
   id: number,
   name: string,
   pack_code: CampaignCycleCode,
-  difficulty: CampaignDifficulty,
+  difficulty: CampaignDifficulty | undefined,
   deckIds: number[],
   investigatorIds: string[],
   chaosBag: ChaosBag,

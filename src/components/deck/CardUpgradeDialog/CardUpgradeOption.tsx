@@ -54,7 +54,7 @@ export default class CardUpgradeOption extends React.Component<Props> {
           </Text>
           <PlusMinusButtons
             count={count}
-            limit={card.deck_limit || 2}
+            max={card.deck_limit || 2}
             onIncrement={this._inc}
             onDecrement={this._dec}
             size={36}

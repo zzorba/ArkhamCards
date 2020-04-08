@@ -78,7 +78,7 @@ export default class SupplyComponent extends React.Component<Props> {
               count={count}
               onIncrement={this._inc}
               onDecrement={this._dec}
-              limit={supply.multiple ? undefined : 1}
+              max={supply.multiple ? undefined : 1}
               countRender={(
                 <Text style={[styles.count, typography.text, typography.bold, typography.center]}>
                   { count }

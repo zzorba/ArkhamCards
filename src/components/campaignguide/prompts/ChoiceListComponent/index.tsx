@@ -68,9 +68,6 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     code: string,
     choice: number
   ) => {
-    const {
-      options,
-    } = this.props;
     this.setState({
       selectedChoice: {
         ...this.state.selectedChoice,

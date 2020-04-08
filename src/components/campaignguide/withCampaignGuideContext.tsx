@@ -366,12 +366,14 @@ export default function withCampaignGuideContext<Props>(
         campaignState: campaignStateHelper,
         campaignInvestigators,
         latestDecks: decksByInvestigator,
+        weaknessSet: campaign.weaknessSet,
       };
       return (
         <CampaignGuideContext.Provider value={context}>
           <WrappedComponent
             {...this.props as Props}
             campaignId={campaign.id}
+            weaknessSet={campaign.weaknessSet}
             campaignGuide={campaignGuide}
             campaignState={campaignStateHelper}
             campaignInvestigators={campaignInvestigators}

@@ -87,8 +87,8 @@ export default class NumberPrompt extends React.Component<Props, State> {
         ) : (
           <PlusMinusButtons
             count={this.state.value}
-            limit={this.props.max}
             min={this.props.min}
+            max={this.props.max}
             onIncrement={this._inc}
             onDecrement={this._dec}
             countRender={this.renderCount(this.state.value)}

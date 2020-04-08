@@ -25,6 +25,7 @@ interface OwnProps {
   startingXp?: number;
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
+  ignoreStoryCounts: Slots;
   upgradeCompleted: (deck: Deck) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
@@ -68,9 +69,12 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
     const {
       saveDeckChanges,
       storyCounts,
+      ignoreStoryCounts,
     } = this.props;
     const hasStoryChange = !!find(storyCounts, (count, code) =>
-      upgradedDeck.slots[code] !== count
+      (upgradedDeck.slots[code] || 0) !== count
+    ) || !!find(ignoreStoryCounts, (count, code) =>
+      (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== count
     );
     if (hasStoryChange) {
       const newSlots: Slots = { ...upgradedDeck.slots };
@@ -81,7 +85,18 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
           delete newSlots[code];
         }
       });
-      saveDeckChanges(upgradedDeck, { slots: newSlots }).then(
+      const newIgnoreSlots: Slots = { ...upgradedDeck.ignoreDeckLimitSlots };
+      forEach(ignoreStoryCounts, (count, code) => {
+        if (count > 0){
+          newIgnoreSlots[code] = count;
+        } else {
+          delete newSlots[code];
+        }
+      });
+      saveDeckChanges(upgradedDeck, {
+        slots: newSlots,
+        ignoreDeckLimitSlots: newIgnoreSlots,
+      }).then(
         this._deckUpgradeComplete,
         (e: Error) => {
           this.setState({

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { keys, map, sortBy } from 'lodash';
+import { flatMap, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
+import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import CardListWrapper from 'components/campaignguide/CardListWrapper';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
@@ -31,8 +32,23 @@ interface Props {
   editable: boolean;
 }
 
-export default class UpgradeDeckRow extends React.Component<Props> {
+interface State {
+  xp: number;
+  physicalAdjust: number;
+  mentalAdjust: number;
+}
+
+export default class UpgradeDeckRow extends React.Component<Props, State> {
   deckUpgradeComponent: React.RefObject<DeckUpgradeComponent> = React.createRef<DeckUpgradeComponent>();
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      xp: props.campaignLog.earnedXp(props.investigator.code),
+      physicalAdjust: 0,
+      mentalAdjust: 0,
+    };
+  }
 
   choiceId() {
     const {
@@ -93,7 +109,8 @@ export default class UpgradeDeckRow extends React.Component<Props> {
       fontScale,
     } = this.props;
     const deltas = campaignLog.storyAssetChanges(investigator.code);
-    if (keys(deltas).length === 0) {
+    const cards: string[] = flatMap(deltas, (count, code) => count !== 0 ? code : []);
+    if (!cards.length) {
       return null;
     }
     return (
@@ -104,7 +121,7 @@ export default class UpgradeDeckRow extends React.Component<Props> {
           fontScale={fontScale}
         />
         <CardListWrapper
-          cards={keys(deltas)}
+          cards={cards}
           render={this._renderDeltas}
           extraArg={deltas}
         />
@@ -112,10 +129,118 @@ export default class UpgradeDeckRow extends React.Component<Props> {
     );
   }
 
-  renderCampaignSection(hasDeck: boolean) {
-    // Render the story assets changes.
+
+  _incPhysical = () => {
+    this.setState(state => {
+      return { physicalAdjust: (state.physicalAdjust || 0) + 1 };
+    });
+  };
+
+  _decPhysical = () => {
+    this.setState(state => {
+      return { physicalAdjust: Math.max((state.physicalAdjust || 0) - 1, 0) };
+    });
+  };
+
+  _incMental = () => {
+    this.setState(state => {
+      return { mentalAdjust: (state.mentalAdjust || 0) + 1 };
+    });
+  };
+
+  _decMental = () => {
+    this.setState(state => {
+      return { mentalAdjust: Math.max((state.mentalAdjust || 0) - 1, 0) };
+    });
+  };
+
+  _incXp = () => {
+    this.setState(state => {
+      return { xp: (state.xp || 0) + 1 };
+    });
+  };
+
+  _decXp = () => {
+    this.setState(state => {
+      return { xp: Math.max((state.xp || 0) - 1, 0) };
+    });
+  };
+
+  renderXpSection() {
+    const { investigator, fontScale } = this.props;
     return (
       <>
+        <CardSectionHeader
+          investigator={investigator}
+          fontScale={fontScale}
+          section={{ superTitle: t`Experience points` }}
+        />
+        <View style={[styles.labeledRow, styles.border]}>
+          <View style={styles.row}>
+            <Text style={typography.text}>
+              { this.state.xp }
+            </Text>
+            <PlusMinusButtons
+              count={this.state.xp}
+              onIncrement={this._incXp}
+              onDecrement={this._decXp}
+            />
+          </View>
+        </View>
+      </>
+    );
+  }
+
+  renderTraumaDetails() {
+    const { investigator, campaignLog, fontScale } = this.props;
+    const { physicalAdjust, mentalAdjust } = this.state;
+    const traumaDelta = campaignLog.traumaChanges(investigator.code);
+    const physical = (traumaDelta.physical || 0) + physicalAdjust;
+    const mental = (traumaDelta.mental || 0) + mentalAdjust;
+    const physicalString = physical >= 0 ? `+${physical}` : `${physical}`;
+    const mentalString = mental >= 0 ? `+${mental}` : `${mental}`;
+    return (
+      <>
+        <CardSectionHeader
+          investigator={investigator}
+          fontScale={fontScale}
+          section={{ superTitle: t`Trauma` }}
+        />
+        <View style={[styles.labeledRow, styles.border]}>
+          <View style={styles.row}>
+            <Text style={typography.text}>
+              { t`Physical: ${physicalString}` }
+            </Text>
+            <PlusMinusButtons
+              count={this.state.physicalAdjust + (traumaDelta.physical || 0)}
+              onIncrement={this._incPhysical}
+              onDecrement={this._decPhysical}
+              allowNegative
+            />
+          </View>
+        </View>
+        <View style={[styles.labeledRow, styles.border]}>
+          <View style={styles.row}>
+            <Text style={typography.text}>
+              { t`Mental: ${mentalString}` }
+            </Text>
+            <PlusMinusButtons
+              count={this.state.mentalAdjust + (traumaDelta.mental || 0)}
+              onIncrement={this._incMental}
+              onDecrement={this._decMental}
+              allowNegative
+            />
+          </View>
+        </View>
+      </>
+    );
+  }
+
+  renderCampaignSection(hasDeck: boolean) {
+    return (
+      <>
+        { !hasDeck && this.renderXpSection() }
+        { this.renderTraumaDetails() }
         { this.renderStoryAssetDeltas() }
         { hasDeck && (
           <View style={styles.buttonWrapper}>
@@ -219,6 +344,7 @@ export default class UpgradeDeckRow extends React.Component<Props> {
         campaignSection={this.renderCampaignSection(true)}
         startingXp={campaignLog.earnedXp(investigator.code)}
         storyCounts={campaignLog.storyAssets(investigator.code)}
+        ignoreStoryCounts={campaignLog.ignoreStoryAssets(investigator.code)}
         upgradeCompleted={this._onUpgrade}
         saveDeckChanges={saveDeckChanges}
         saveDeckUpgrade={saveDeckUpgrade}
@@ -247,5 +373,18 @@ const styles = StyleSheet.create({
   },
   message: {
     padding: 16,
+  },
+  labeledRow: {
+    flexDirection: 'column',
+    padding: 8,
+  },
+  border: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#bdbdbd',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

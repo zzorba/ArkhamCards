@@ -109,7 +109,7 @@ export default class CampaignGuide {
   }
 
   scenarioIds() {
-    return this.campaign.campaign.scenarios
+    return this.campaign.campaign.scenarios;
   }
 
   processAllScenarios(

@@ -846,9 +846,9 @@ class CardResultList extends React.Component<Props, State> {
         sections={data}
         renderSectionHeader={this._renderSectionHeader}
         renderSectionFooter={this._renderSectionFooter}
+        renderItem={this._renderCard}
         initialNumToRender={30}
         keyExtractor={this._cardToKey}
-        renderItem={this._renderCard}
         extraData={this.state.deckCardCounts}
         getItemLayout={getItemLayout}
         ListFooterComponent={this._renderFooter}

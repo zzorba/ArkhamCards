@@ -1,15 +1,12 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
 import BulletsComponent from './BulletsComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { StoryStep } from 'data/scenario/types';
-import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
 
 interface Props {
   step: StoryStep;

@@ -1,19 +1,17 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import Card from 'data/Card';
 import { BASIC_WEAKNESS_QUERY } from 'data/query';
+import DrawRandomWeaknessComponent from './DrawRandomWeaknessComponent';
 import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
 import InvestigatorSelectorWrapper from 'components/campaignguide/InvestigatorSelectorWrapper';
 import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
 import { AddWeaknessEffect } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import ScenarioStepContext, { ScenarioStepContextType } from '../../ScenarioStepContext';
+import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
 import CardQueryWrapper from 'components/campaignguide/CardQueryWrapper';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { safeValue } from 'lib/filters';
 
 interface Props {
@@ -23,22 +21,12 @@ interface Props {
 }
 
 export default class AddWeaknessEffectComponent extends React.Component<Props> {
+  static contextType = ScenarioStepContext;
+  context!: ScenarioStepContextType;
+
   firstDecisionId() {
     return `${this.props.id}_use_app`;
   }
-
-  _renderInvestigators = (
-    investigators: Card[],
-    card: Card
-  ) => {
-    return map(investigators, (investigator, idx) => (
-      <SetupStepWrapper bulletType="small" key={idx}>
-        <CampaignGuideTextComponent
-          text={`${investigator.name} earns ${card.name}`}
-        />
-      </SetupStepWrapper>
-    ));
-  };
 
   renderFirstPrompt() {
     return (
@@ -77,14 +65,21 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
     investigators: Card[],
     scenarioState: ScenarioStateHelper
   ) => {
-    const { effect } = this.props;
+    const { id, effect } = this.props;
     const useAppDecision = scenarioState.decision(this.firstDecisionId());
     if (useAppDecision === undefined) {
       return null;
     }
     if (useAppDecision) {
-      // randomize it;
-      return <Text>Randomize weaknesses</Text>;
+      return (
+        <DrawRandomWeaknessComponent
+          id={id}
+          traits={effect.weakness_traits}
+          investigators={investigators}
+          campaignLog={this.context.campaignLog}
+          scenarioState={this.context.scenarioState}
+        />
+      );
     }
 
     const traitPart = map(effect.weakness_traits,

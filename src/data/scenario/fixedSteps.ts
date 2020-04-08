@@ -4,8 +4,8 @@ import { t } from 'ttag';
 import {
   ConditionalEffectsChoice,
   InvestigatorStatus,
-  GenericStep,
   BranchStep,
+  Effect,
   Resolution,
   InputStep,
   Step,
@@ -188,17 +188,26 @@ function investigatorStatusStep(
   const choices: ConditionalEffectsChoice[] = map(
     resolution.investigator_status || defaultStatuses,
     status => {
+      const effects: Effect[] = [
+        {
+          type: 'scenario_data',
+          setting: 'investigator_status',
+          investigator: '$input_value',
+          investigator_status: status,
+        },
+      ];
+      if (status === 'physical' || status === 'mental') {
+        effects.push({
+          type: 'trauma',
+          investigator: '$input_value',
+          physical: status === 'physical' ? 1 : 0,
+          mental: status === 'mental' ? 1 : 0,
+        });
+      }
       return {
         id: status,
         text: statusToString(status),
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'investigator_status',
-            investigator: '$input_value',
-            investigator_status: status,
-          },
-        ],
+        effects,
       };
     }
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Deck } from 'actions/types';
+import { Deck, WeaknessSet } from 'actions/types';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import Card from 'data/Card';
@@ -14,6 +14,7 @@ export interface CampaignGuideContextType {
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
   campaignInvestigators: Card[];
+  weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
 }
 

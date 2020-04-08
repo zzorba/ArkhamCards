@@ -14,7 +14,7 @@ interface Props {
   count: number;
   onIncrement: () => void;
   onDecrement: () => void;
-  limit?: number;
+  max?: number;
   min?: number;
   style?: ViewStyle;
   size?: number;
@@ -53,7 +53,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
   renderPlusButton() {
     const {
       count,
-      limit,
+      max,
       disabled,
       disablePlus,
       noFill,
@@ -61,8 +61,8 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       color,
     } = this.props;
     const size = (this.props.size || 36) * iconSizeScale;
-    const atLimit = limit && (count === limit);
-    if (count === null || atLimit || disabled || disablePlus || limit === 0) {
+    const atMax = max && (count === max);
+    if (count === null || atMax || disabled || disablePlus || max === 0) {
       return (
         <TouchableOpacity disabled>
           { color === 'light' ? (

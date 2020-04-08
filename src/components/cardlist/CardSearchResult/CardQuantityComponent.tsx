@@ -217,7 +217,7 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
           size={36}
           onIncrement={this._increment}
           onDecrement={this._decrement}
-          limit={limit}
+          max={limit}
           color={light ? 'light' : undefined}
           hideDisabledMinus
           countRender={

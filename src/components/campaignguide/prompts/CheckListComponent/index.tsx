@@ -71,7 +71,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
             },
           });
         }
-      })
+      });
     }
   }
 

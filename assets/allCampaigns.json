@@ -1468,8 +1468,7 @@
         "choices": [
           {
             "id": "1a",
-            "flavor": "Professor Warren Rice was last seen working late at night in the humanities department of Miskatonic University. Let’s search for him there.",
-            "text": "Proceed with “Scenario I–A: Extracurricular Activity” if you wish to find Professor Warren Rice first.",
+            "text": "<i>Professor Warren Rice was last seen working late at night in the humanities department of Miskatonic University. Let’s search for him there.</i>",
             "effects": [
               {
                 "type": "campaign_data",
@@ -1480,8 +1479,7 @@
           },
           {
             "id": "1b",
-            "flavor": "Dr. Francis Morgan was last seen gambling at the Clover Club, an upscale speakeasy and gambling joint located downtown. Let’s go talk to him.",
-            "text": "Proceed with “Scenario I–B: The House Always Wins” if you wish to find Dr. Francis Morgan first.",
+            "text": "<i>Dr. Francis Morgan was last seen gambling at the Clover Club, an upscale speakeasy and gambling joint located downtown. Let’s go talk to him.</i>",
             "effects": [
               {
                 "type": "campaign_data",
@@ -1944,19 +1942,14 @@
     },
     {
       "id": "francis_morgan_rescued",
+      "text": "In your Campaign Log, record that <i>the investigators rescued Dr. Francis Morgan</i>. Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "francis_morgan_rescued",
           "text": "the investigators rescued Dr. Francis Morgan."
-        }
-      ]
-    },
-    {
-      "id": "earn_francis_morgan",
-      "text": "Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
-      "effects": [
+        },
         {
           "type": "add_card",
           "investigator": "choice",
@@ -2033,7 +2026,7 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator resigned before Act 3 or was defeated)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -2053,7 +2046,7 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "“What in the world…?” Dr. Morgan finally breaks out of his daze as you make your way to safety. You ask him what he remembers, and he sputters and shakes his head. “It’s all a haze,” he explains, visibly exhausted. “I was having the run of my life! Perhaps I had one too many shots. But, those creatures—I haven’t seen anything like that since…” He trails off, and you can tell that his mind is racing. His eyes widen with realization and his face pales. “I may not be in the best shape, but I’ll help with your investigation. Whatever it takes.”",
-      "steps": ["bone_to_pick", "francis_morgan_rescued", "earn_francis_morgan", "cheated", "earn_xp", "$upgrade_decks"]
+      "steps": ["bone_to_pick", "francis_morgan_rescued", "cheated", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R3",
@@ -4264,6 +4257,8 @@
     "setup_locations",
     "add_weakness",
     "encounter_deck",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
     "dual_agendas_rule",
     "$choose_resolution"
   ],
@@ -4403,6 +4398,84 @@
     {
       "id": "encounter_deck",
       "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "check_for_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "took_onyx_clasp",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_missing_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_missing_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03142",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["transfer_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_onyx_clasp",
+      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03142"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03142"
+        }
+      ]
+    },
+    {
+      "id": "check_for_mitpm",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03059",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["transfer_mitpm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_mitpm",
+      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03059"
+        }
+      ]
     },
     {
       "id": "dual_agendas_rule",
@@ -4910,6 +4983,8 @@
     "setup_random_locations",
     "setup_locations",
     "choose_starting_location",
+    "check_for_onyx_clasp",
+    "check_for_mitpm",
     "set_aside_man_in_pallid_mask",
     "set_aside_cards",
     "add_doom",
@@ -5107,6 +5182,84 @@
     {
       "id": "start_at_spires",
       "text": "Because <i>you opened the path above</i>, each investigator begins play at Dark Spires."
+    },
+    {
+      "id": "check_for_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "took_onyx_clasp",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_missing_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_missing_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03142",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["transfer_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_onyx_clasp",
+      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03142"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03142"
+        }
+      ]
+    },
+    {
+      "id": "check_for_mitpm",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03059",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["transfer_mitpm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_mitpm",
+      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03059"
+        }
+      ]
     },
     {
       "id": "set_aside_man_in_pallid_mask",
@@ -5480,6 +5633,7 @@
     "spawn_cultists",
     "check_fled_dinner_party",
     "encounter_deck",
+    "check_for_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -5605,6 +5759,37 @@
     {
       "id": "encounter_deck",
       "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "check_for_mitpm",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03059",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["transfer_mitpm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_mitpm",
+      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03059"
+        }
+      ]
     },
     {
       "id": "took_onyx_clasp",
@@ -6300,6 +6485,8 @@
     "set_aside_cards",
     "set_aside_lost_soul",
     "encounter_deck",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
     "$choose_resolution"
   ],
   "steps": [
@@ -6695,6 +6882,84 @@
       "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
     },
     {
+      "id": "check_for_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "took_onyx_clasp",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_missing_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_missing_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03142",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["transfer_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_onyx_clasp",
+      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03142"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03142"
+        }
+      ]
+    },
+    {
+      "id": "check_for_mitpm",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03059",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["transfer_mitpm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_mitpm",
+      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03059"
+        }
+      ]
+    },
+    {
       "id": "did_not_escape_gaze",
       "effects": [
         {
@@ -6951,6 +7216,7 @@
     "set_aside_cards",
     "setup_sickening_reality",
     "encounter_deck",
+    "check_for_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -7000,6 +7266,37 @@
     {
       "id": "encounter_deck",
       "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+    },
+    {
+      "id": "check_for_mitpm",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03059",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["transfer_mitpm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_mitpm",
+      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03059"
+        }
+      ]
     },
     {
       "id": "earn_xp",
@@ -7194,6 +7491,8 @@
     "check_catacomb_entry",
     "create_catacombs_deck",
     "place_investigators",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
     "set_aside_pallid_mask",
     "encounter_deck",
     "location_adjacency_rule",
@@ -7340,6 +7639,84 @@
     {
       "id": "encounter_deck",
       "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "check_for_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "took_onyx_clasp",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_missing_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_missing_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03142",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["transfer_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_onyx_clasp",
+      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03142"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03142"
+        }
+      ]
+    },
+    {
+      "id": "check_for_mitpm",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03059",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["transfer_mitpm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_mitpm",
+      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03059"
+        }
+      ]
     },
     {
       "id": "location_adjacency_rule",
@@ -7568,6 +7945,8 @@
     "select_act_2",
     "select_act_2_onyx_clasp",
     "encounter_deck",
+    "check_for_mitpm",
+    "check_for_onyx_clasp",
     "$choose_resolution"
   ],
   "steps": [{
@@ -7723,6 +8102,84 @@
     {
       "id": "encounter_deck",
       "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "check_for_mitpm",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03059",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["transfer_mitpm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_mitpm",
+      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03059"
+        }
+      ]
+    },
+    {
+      "id": "check_for_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "took_onyx_clasp",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["check_missing_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_missing_onyx_clasp",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "card": "03142",
+        "investigator": "any",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["transfer_onyx_clasp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_onyx_clasp",
+      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "03142"
+        },
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "03142"
+        }
+      ]
     },
     {
       "id": "defeated_insane",

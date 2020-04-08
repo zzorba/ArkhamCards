@@ -383,7 +383,7 @@ class OddsCalculatorView extends React.Component<Props, State> {
             />
           ) }
           <View style={styles.button}>
-            <Difficulty difficulty={campaign.difficulty} />
+            { !!campaign.difficulty && <Difficulty difficulty={campaign.difficulty} /> }
             { !!currentScenario && <GameHeader text={currentScenario.name} /> }
             { !!scenarioText && (
               <CardTextComponent text={scenarioText} />

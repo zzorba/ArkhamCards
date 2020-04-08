@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native';
 
-import { DEFAULT_TRAUMA_DATA } from './trauma';
+import { DEFAULT_TRAUMA_DATA } from 'lib/trauma';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import NavButton from 'components/core/NavButton';
 import LabeledTextBox from 'components/core/LabeledTextBox';

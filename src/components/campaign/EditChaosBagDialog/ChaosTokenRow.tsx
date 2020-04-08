@@ -95,7 +95,7 @@ export default class ChaosTokenRow extends React.PureComponent<Props> {
             onIncrement={this._increment}
             onDecrement={this._decrement}
             size={36}
-            limit={limit}
+            max={limit}
           />
         </View>
         { this.renderTokens() }

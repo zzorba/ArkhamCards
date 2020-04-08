@@ -38,15 +38,13 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     if (latestScenario && latestScenario.scenario) {
       const resolution = latestScenario.resolution ?
         `: ${latestScenario.resolution}` : '';
-      const xp = ((latestScenario.xp || 0) > 0 || !latestScenario.interlude) ?
-        ` (${latestScenario.xp} XP)` : '';
       return (
         <View style={styles.marginTop}>
           <Text style={typography.smallLabel}>
             { latestScenario.interlude ? t`LATEST INTERLUDE` : t`LATEST SCENARIO` }
           </Text>
           <Text style={typography.gameFont}>
-            { `${latestScenario.scenario}${resolution}${xp}` }
+            { `${latestScenario.scenario}${resolution}` }
           </Text>
         </View>
       );
@@ -70,7 +68,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
           <BackgroundIcon code={campaign.cycleCode} color={CAMPAIGN_COLORS[campaign.cycleCode]} />
         ) }
         <View>
-          <Difficulty difficulty={campaign.difficulty} />
+          { !!campaign.difficulty && <Difficulty difficulty={campaign.difficulty} /> }
           { this.renderCampaign() }
           { this.renderLastScenario() }
         </View>

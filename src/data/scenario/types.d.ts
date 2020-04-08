@@ -181,7 +181,6 @@ export interface AddCardEffect {
   type: "add_card";
   investigator: InvestigatorSelector;
   card: string;
-  required?: boolean;
   ignore_deck_limit?: boolean;
 }
 export interface AddWeaknessEffect {

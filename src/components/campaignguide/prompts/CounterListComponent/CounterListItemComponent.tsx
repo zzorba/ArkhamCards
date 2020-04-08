@@ -64,7 +64,7 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
         { editable ? (
           <PlusMinusButtons
             count={value}
-            limit={limit}
+            max={limit}
             onIncrement={this._inc}
             onDecrement={this._dec}
             countRender={this.renderCount()}

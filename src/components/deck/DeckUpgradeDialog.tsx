@@ -232,6 +232,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           startingXp={xp}
           fontScale={fontScale}
           storyCounts={storyCounts}
+          ignoreStoryCounts={{}}
           upgradeCompleted={this._deckUpgradeComplete}
           campaignSection={this.renderCampaignSection(deck)}
         />

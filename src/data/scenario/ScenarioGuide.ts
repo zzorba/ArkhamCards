@@ -41,6 +41,10 @@ export default class ScenarioGuide {
     this.scenarioStartCampaignLog = campaignLog;
   }
 
+  scenarioId(): string {
+    return this.scenario.id;
+  }
+
   scenarioName(): string {
     return this.scenario.scenario_name;
   }

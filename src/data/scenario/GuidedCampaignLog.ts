@@ -2,7 +2,6 @@ import {
   cloneDeep,
   flatMap,
   find,
-  findIndex,
   filter,
   forEach,
   keys,
@@ -12,8 +11,9 @@ import {
   zip,
 } from 'lodash';
 
-import { Slots, TraumaAndCardData } from 'actions/types';
+import { CampaignDifficulty, InvestigatorData, Slots, TraumaAndCardData } from 'actions/types';
 import { ChaosBag } from 'constants';
+import { traumaDelta } from 'lib/trauma';
 import {
   AddRemoveChaosTokenEffect,
   AddCardEffect,
@@ -21,7 +21,6 @@ import {
   CampaignLogEffect,
   CampaignLogCountEffect,
   CampaignLogCardsEffect,
-  Difficulty,
   EarnXpEffect,
   Effect,
   EffectsWithInput,
@@ -98,11 +97,10 @@ interface CampaignData {
     [code: string]: number | undefined;
   };
   result?: 'win' | 'lose' | 'survived';
-  difficulty?: Difficulty;
+  difficulty?: CampaignDifficulty;
   nextScenario?: string;
-  investigatorData: {
-    [code: string]: TraumaAndCardData | undefined;
-  };
+  investigatorData: InvestigatorData;
+  everyStoryAsset: string[];
   lastSavedInvestigatorData: {
     [code: string]: TraumaAndCardData | undefined;
   };
@@ -177,6 +175,7 @@ export default class GuidedCampaignLog {
         scenarioReplayCount: {},
         investigatorData: {},
         lastSavedInvestigatorData: {},
+        everyStoryAsset: [],
       };
       this.chaosBag = {};
       this.latestScenarioData = {
@@ -396,6 +395,11 @@ export default class GuidedCampaignLog {
     return !!entry;
   }
 
+  scenarioResolution(scenarioId: string): string | undefined {
+    const data = this.scenarioData[scenarioId];
+    return data && data.resolution;
+  }
+
   resolution(): string {
     const playing = this.latestScenarioData.playingScenario;
     if (!playing || !this.latestScenarioData.resolution) {
@@ -522,8 +526,16 @@ export default class GuidedCampaignLog {
     return (data.availableXp || 0) - (lastSavedData.availableXp || 0);
   }
 
-  private storyAssetSlots(data: TraumaAndCardData): Slots {
+  private baseSlots(): Slots {
     const slots: Slots = {};
+    forEach(this.campaignData.everyStoryAsset, asset => {
+      slots[asset] = 0;
+    });
+    return slots;
+  }
+
+  private storyAssetSlots(data: TraumaAndCardData): Slots {
+    const slots: Slots = this.baseSlots();
     forEach(data.storyAssets || {}, asset => {
       if (!slots[asset]) {
         slots[asset] = 0;
@@ -531,6 +543,27 @@ export default class GuidedCampaignLog {
       slots[asset] = slots[asset] + 1;
     });
     return slots;
+  }
+
+  private ignoreStoryAssetSlots(data: TraumaAndCardData): Slots {
+    const slots: Slots = this.baseSlots();
+    forEach(data.ignoreStoryAssets || {}, asset => {
+      if (!slots[asset]) {
+        slots[asset] = 0;
+      }
+      slots[asset] = slots[asset] + 1;
+    });
+    return slots;
+  }
+
+  traumaChanges(code: string): TraumaAndCardData {
+    const currentTrauma = this.traumaAndCardData(code);
+    const previousTrauma = this.campaignData.lastSavedInvestigatorData[code] || {};
+    return traumaDelta(currentTrauma, previousTrauma);
+  }
+
+  ignoreStoryAssets(code: string): Slots {
+    return this.ignoreStoryAssetSlots(this.campaignData.investigatorData[code] || {});
   }
 
   storyAssets(code: string): Slots {
@@ -547,6 +580,19 @@ export default class GuidedCampaignLog {
       code => {
         const previousCount = previousSlots[code] || 0;
         const newCount = currentSlots[code] || 0;
+        const delta = (newCount - previousCount);
+        if (delta !== 0) {
+          slotDelta[code] = delta;
+        }
+      }
+    );
+    const currentIgnoreSlots = this.ignoreStoryAssets(code);
+    const previousIgnoreSlots = this.ignoreStoryAssetSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
+    forEach(
+      uniq([...keys(currentIgnoreSlots), ...keys(previousIgnoreSlots)]),
+      code => {
+        const previousCount = previousIgnoreSlots[code] || 0;
+        const newCount = currentIgnoreSlots[code] || 0;
         const delta = (newCount - previousCount);
         if (delta !== 0) {
           slotDelta[code] = delta;
@@ -583,15 +629,25 @@ export default class GuidedCampaignLog {
     effect: AddCardEffect,
     input?: string[]
   ) {
+    this.campaignData.everyStoryAsset = uniq([
+      ...this.campaignData.everyStoryAsset,
+      effect.card,
+    ]);
     const investigators = this.getInvestigators(
       effect.investigator,
       input
     );
     forEach(investigators, investigator => {
       const data = this.campaignData.investigatorData[investigator] || {};
-      const assets = data.storyAssets || [];
-      assets.push(effect.card);
-      data.storyAssets = uniq(assets);
+      if (effect.ignore_deck_limit) {
+        const assets = data.ignoreStoryAssets || [];
+        assets.push(effect.card);
+        data.ignoreStoryAssets = uniq(assets);
+      } else {
+        const assets = data.storyAssets || [];
+        assets.push(effect.card);
+        data.storyAssets = uniq(assets);
+      }
       this.campaignData.investigatorData[investigator] = data;
     });
   }
@@ -599,6 +655,10 @@ export default class GuidedCampaignLog {
   private handleReplaceCardEffect(
     effect: ReplaceCardEffect
   ) {
+    this.campaignData.everyStoryAsset = uniq([
+      ...this.campaignData.everyStoryAsset,
+      effect.new_card,
+    ]);
     forEach(
       keys(this.campaignData.investigatorData),
       investigator => {
@@ -687,7 +747,20 @@ export default class GuidedCampaignLog {
         this.campaignData.result = effect.value;
         break;
       case 'difficulty':
-        this.campaignData.difficulty = effect.value;
+        switch (effect.value) {
+          case 'easy':
+            this.campaignData.difficulty = CampaignDifficulty.EASY;
+            break;
+          case 'standard':
+            this.campaignData.difficulty = CampaignDifficulty.STANDARD;
+            break;
+          case 'hard':
+            this.campaignData.difficulty = CampaignDifficulty.HARD;
+            break;
+          case 'expert':
+            this.campaignData.difficulty = CampaignDifficulty.EXPERT;
+            break;
+        }
         break;
       case 'skip_scenario':
         this.campaignData.scenarioStatus[effect.scenario] = 'skipped';
