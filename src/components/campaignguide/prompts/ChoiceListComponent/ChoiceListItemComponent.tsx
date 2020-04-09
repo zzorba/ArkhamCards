@@ -66,8 +66,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
             selectedIndex={choice}
             editable={editable}
             onSelect={this._onChoiceChange}
-            tintColor={color && color.tint}
-            buttonColor={color && color.primary}
+            color={color}
             noBullet
           />
         </>
@@ -95,7 +94,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   nameText: {
-    fontWeight: '700',
+    fontWeight: '600',
     color: '#000',
   },
   headerRow: {

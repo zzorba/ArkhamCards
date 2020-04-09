@@ -3,6 +3,7 @@ import { Button, Text, View, StyleSheet } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
+import { CustomColor } from 'components/campaignguide/prompts/types';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import { NumberChoices } from 'actions/types';
@@ -11,7 +12,7 @@ import typography from 'styles/typography';
 export interface CounterItem {
   code: string;
   name: string;
-  tintColor?: string;
+  color?: CustomColor;
   limit?: number;
 }
 
@@ -135,7 +136,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
                   { countText }
                 </Text>
               </View>
-              { map(items, ({ code, name, limit, tintColor }, idx) => {
+              { map(items, ({ code, name, limit, color }, idx) => {
                 const value = this.getValue(code, choiceList);
                 return (
                   <CounterListItemComponent
@@ -147,7 +148,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
                     onDec={this._onDec}
                     limit={limit}
                     editable={!hasDecision}
-                    tintColor={tintColor}
+                    color={color}
                   />
                 );
               }) }

@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   Button,
+  StyleSheet,
   Text,
+  View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
@@ -122,10 +124,12 @@ export default class ScenarioStepComponent extends React.Component<Props> {
                   ) }
                   { this.renderContent() }
                   { (step.step.id === '$proceed') && (
-                    <Button
-                      onPress={this._proceed}
-                      title={t`Done`}
-                    />
+                    <View style={styles.buttonWrapper}>
+                      <Button
+                        onPress={this._proceed}
+                        title={t`Done`}
+                      />
+                    </View>
                   ) }
                 </ScenarioStepContext.Provider>
               );
@@ -136,3 +140,9 @@ export default class ScenarioStepComponent extends React.Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  buttonWrapper: {
+    padding: 8,
+  },
+});

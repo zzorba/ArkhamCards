@@ -3,6 +3,7 @@ import { Button, StyleSheet, View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
+import { CustomColor } from 'components/campaignguide/prompts/types';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
@@ -14,8 +15,7 @@ import { Choices, DisplayChoiceWithId } from 'data/scenario';
 export interface ListItem {
   code: string;
   name: string;
-  tintColor?: string;
-  primaryColor?: string;
+  color?: CustomColor;
 }
 
 export interface ChoiceListComponentProps {

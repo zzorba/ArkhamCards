@@ -7,13 +7,29 @@ import {
 
 import { COLORS } from 'styles/colors';
 
-export default function CustomSwitch(props: SwitchProps) {
+interface Props extends SwitchProps {
+  customColor?: string;
+  customTrackColor?: string;
+}
+
+export default function CustomSwitch({ customColor, customTrackColor, ...otherProps}: Props) {
+  if (Platform.OS === 'android') {
+    return (
+      <Switch
+        thumbColor={customColor || COLORS.lightBlue}
+        trackColor={customTrackColor ? {
+          false: customTrackColor,
+          true: customTrackColor,
+        } : undefined}
+        {...otherProps}
+      />
+    );
+  }
   return (
     <Switch
-      thumbColor={Platform.OS === 'android' ? COLORS.lightBlue : undefined}
       trackColor={COLORS.switchTrackColor}
       ios_backgroundColor="#FFF"
-      {...props}
+      {...otherProps}
     />
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
+import { CustomColor } from 'components/campaignguide/prompts/types';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
@@ -8,7 +9,7 @@ import typography from 'styles/typography';
 interface Props {
   code: string;
   name: string;
-  tintColor?: string;
+  color?: CustomColor;
   bulletType?: BulletType;
   value: number;
   limit?: number;
@@ -49,14 +50,14 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
     const {
       name,
       limit,
-      tintColor,
+      color,
       value,
       editable,
     } = this.props;
     return (
       <View style={[
         styles.promptRow,
-        tintColor ? { backgroundColor: tintColor } : {},
+        color ? { backgroundColor: color.tint } : {},
       ]}>
         <Text style={typography.mediumGameFont}>
           { name }

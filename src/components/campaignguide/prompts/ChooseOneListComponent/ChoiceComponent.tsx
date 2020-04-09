@@ -16,8 +16,10 @@ interface Props {
   editable: boolean;
   onSelect: (index: number) => void;
   noBullet?: boolean;
-  tintColor?: string;
-  buttonColor?: string;
+  color?: {
+    tint: string;
+    primary: string;
+  };
 }
 
 export default class ChoiceComponent extends React.Component<Props> {
@@ -32,8 +34,7 @@ export default class ChoiceComponent extends React.Component<Props> {
       selected,
       editable,
       index,
-      tintColor,
-      buttonColor,
+      color,
       noBullet,
     } = this.props;
     return (
@@ -41,7 +42,7 @@ export default class ChoiceComponent extends React.Component<Props> {
         styles.row,
         (index === 0 || !editable) ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
         selected && editable ? {
-          backgroundColor: tintColor,
+          backgroundColor: color ? color.tint : undefined,
         } : {},
       ]}>
         <View style={styles.padding}>
@@ -50,7 +51,7 @@ export default class ChoiceComponent extends React.Component<Props> {
               <MaterialCommunityIcons
                 name={selected ? 'radiobox-marked' : 'radiobox-blank'}
                 size={30}
-                color={buttonColor || 'rgb(0, 122,255)'}
+                color={color ? color.primary : 'rgb(0, 122,255)'}
               />
             </View>
           ) : (!noBullet && (

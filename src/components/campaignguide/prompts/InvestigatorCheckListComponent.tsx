@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { map, filter, findIndex } from 'lodash';
 import { t } from 'ttag';
 
@@ -7,7 +7,7 @@ import CheckListComponent from './CheckListComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import Card from 'data/Card';
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
+import { FACTION_LIGHT_GRADIENTS, FACTION_COLORS } from 'constants';
 
 interface Props {
   id: string;
@@ -51,10 +51,12 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
       return null;
     }
     return (
-      <Button
-        onPress={this._showAddDeckDialog}
-        title={t`Add new investigator`}
-      />
+      <View style={styles.buttonWrapper}>
+        <Button
+          onPress={this._showAddDeckDialog}
+          title={t`Add new investigator`}
+        />
+      </View>
     );
   }
 
@@ -81,7 +83,10 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
             return {
               code: investigator.code,
               name: investigator.name,
-              tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+              color: {
+                tint: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+                primary: FACTION_COLORS[investigator.factionCode()],
+              },
             };
           })
         }
@@ -116,3 +121,9 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
     );
   }
 }
+
+const styles = StyleSheet.create({
+  buttonWrapper: {
+    padding: 8,
+  },
+});

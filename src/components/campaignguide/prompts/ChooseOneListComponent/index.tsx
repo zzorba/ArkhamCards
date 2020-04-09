@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { flatMap } from 'lodash';
 
 import ChoiceComponent from './ChoiceComponent';
+import { CustomColor } from 'components/campaignguide/prompts/types';
 import { DisplayChoice } from 'data/scenario';
 
 interface Props {
@@ -11,12 +12,11 @@ interface Props {
   editable: boolean;
   onSelect: (index: number) => void;
   noBullet?: boolean;
-  tintColor?: string | string[];
-  buttonColor?: string | string[];
+  color?: CustomColor | CustomColor[];
 }
 
 export default class ChooseOneListComponent extends React.Component<Props> {
-  static getColor(idx: number, color?: string | string[]): string | undefined {
+  static getColor(idx: number, color?: CustomColor | CustomColor[]): CustomColor | undefined {
     if (Array.isArray(color)) {
       return color.length >= idx ? color[idx] : undefined;
     }
@@ -28,8 +28,7 @@ export default class ChooseOneListComponent extends React.Component<Props> {
       choices,
       editable,
       onSelect,
-      tintColor,
-      buttonColor,
+      color,
       noBullet,
     } = this.props;
     return (
@@ -46,8 +45,7 @@ export default class ChooseOneListComponent extends React.Component<Props> {
               choice={choice}
               selected={selectedIndex === idx}
               editable={editable}
-              tintColor={ChooseOneListComponent.getColor(idx, tintColor)}
-              buttonColor={ChooseOneListComponent.getColor(idx, buttonColor)}
+              color={ChooseOneListComponent.getColor(idx, color)}
               noBullet={noBullet}
             />
           );

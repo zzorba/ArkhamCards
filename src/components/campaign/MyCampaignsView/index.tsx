@@ -27,7 +27,7 @@ import { iconsMap } from 'app/NavIcons';
 import { getAllDecks, getCampaigns, AppState } from 'reducers';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
-import { s } from 'styles/space';
+import { m, s } from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footer: {
-    margin: s,
+    margin: m,
     alignItems: 'center',
   },
   gutter: {

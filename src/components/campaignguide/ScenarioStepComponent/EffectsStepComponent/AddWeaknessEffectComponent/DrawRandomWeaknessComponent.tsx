@@ -124,11 +124,13 @@ class DrawRandomWeaknessComponent extends React.Component<Props, State> {
       return null;
     }
     return (
-      <Button
-        disabled={keys(this.state.choices).length !== investigators.length}
-        onPress={this._save}
-        title={t`Proceed`}
-      />
+      <View style={styles.buttonWrapper}>
+        <Button
+          disabled={keys(this.state.choices).length !== investigators.length}
+          onPress={this._save}
+          title={t`Proceed`}
+        />
+      </View>
     );
   }
 
@@ -155,7 +157,7 @@ class DrawRandomWeaknessComponent extends React.Component<Props, State> {
                   <MaterialCommunityIcons
                     name="shuffle-variant"
                     size={24}
-                    color="#FFF"
+                    color="#000"
                   />
                 </View>
               )}
@@ -175,5 +177,8 @@ export default withWeaknessCards<OwnProps>(
 const styles = StyleSheet.create({
   shuffleIcon: {
     marginRight: 8,
+  },
+  buttonWrapper: {
+    padding: 8,
   },
 });

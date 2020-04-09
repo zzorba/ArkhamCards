@@ -33,7 +33,7 @@ export default function InvestigatorNameRow({ investigator, detail }: Props) {
 const styles = StyleSheet.create({
   investigatorText: {
     color: '#FFF',
-    fontWeight: '700',
+    fontWeight: '600',
   },
   investigatorRow: {
     padding: 8,

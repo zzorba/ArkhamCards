@@ -9,7 +9,10 @@ import typography from 'styles/typography';
 interface Props {
   code: string;
   name: string;
-  tintColor?: string;
+  color?: {
+    tint: string;
+    primary: string;
+  }
   selected: boolean;
   onChoiceToggle: (code: string) => void;
   editable: boolean;
@@ -28,7 +31,7 @@ export default class CheckListItemComponent extends React.Component<Props> {
     const {
       name,
       editable,
-      tintColor,
+      color,
       selected,
     } = this.props;
     if (!editable && !selected) {
@@ -37,18 +40,27 @@ export default class CheckListItemComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.row,
-        tintColor ? { backgroundColor: tintColor } : {},
+        color ? { backgroundColor: color.tint } : {},
       ]}>
-        <Text style={[typography.mediumGameFont, styles.nameText]}>
+        <Text style={[
+          typography.mediumGameFont,
+          styles.nameText,
+        ]}>
           { name }
         </Text>
         { editable ? (
           <Switch
             onValueChange={this._toggle}
+            customColor={color && color.primary}
+            customTrackColor={color ? '#bbb' : undefined}
             value={selected}
           />
         ) : (
-          <MaterialCommunityIcons name="check" size={18} color="#222" />
+          <MaterialCommunityIcons
+            name="check"
+            size={18}
+            color={color ? '#000' : '#222'}
+          />
         ) }
       </View>
     );
@@ -57,7 +69,7 @@ export default class CheckListItemComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   nameText: {
-    fontWeight: '700',
+    fontWeight: '600',
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,

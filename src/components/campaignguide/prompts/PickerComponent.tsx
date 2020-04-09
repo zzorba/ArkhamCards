@@ -111,7 +111,7 @@ export default class PickerComponent extends React.Component<Props> {
         titleStyle={{
           ...typography.mediumGameFont,
           color: colors ? colors.textColor : COLORS.black,
-          fontWeight: '700',
+          fontWeight: '600',
         }}
         valueStyle={{
           ...typography.label,
@@ -119,7 +119,8 @@ export default class PickerComponent extends React.Component<Props> {
           fontWeight: '400',
         }}
         containerStyle={{
-          padding: 8,
+          padding: 4,
+          paddingLeft: 0,
           backgroundColor: colors ? colors.backgroundColor : COLORS.white,
           borderBottomWidth: StyleSheet.hairlineWidth,
           borderColor: '#888',

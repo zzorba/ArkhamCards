@@ -3,7 +3,7 @@ import { map } from 'lodash';
 
 import CounterListComponent from './CounterListComponent';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
+import { FACTION_LIGHT_GRADIENTS, FACTION_COLORS } from 'constants';
 
 interface Props {
   id: string;
@@ -27,7 +27,10 @@ export default class InvestigatorCounterComponent extends React.Component<Props>
                 return {
                   code: investigator.code,
                   name: investigator.name,
-                  tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+                  color: {
+                    tint: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+                    primary: FACTION_COLORS[investigator.factionCode()],
+                  },
                   limit: limits ? limits[investigator.code] : undefined,
                 };
               })}

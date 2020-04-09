@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -117,11 +118,13 @@ export default class NumberPrompt extends React.Component<Props, State> {
               >
                 <View style={styles.content}>
                   { this.renderPrompt(count) }
-                  { (count === undefined) && (
-                    <Button title="Done" onPress={this._submit} />
-                  ) }
                 </View>
               </SetupStepWrapper>
+              { (count === undefined) && (
+                <View style={styles.buttonWrapper}>
+                  <Button title={t`Proceed`} onPress={this._submit} />
+                </View>
+              ) }
               { count !== undefined && !!confirmText && (
                 <SetupStepWrapper bulletType="small">
                   <CampaignGuideTextComponent text={confirmText} />
@@ -154,5 +157,8 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+  },
+  buttonWrapper: {
+    padding: 8,
   },
 });

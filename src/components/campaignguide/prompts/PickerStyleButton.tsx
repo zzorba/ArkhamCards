@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { COLORS } from 'styles/colors';
+import typography from 'styles/typography';
 
 interface Props {
   title: string;
@@ -23,17 +24,25 @@ export default class PickerStyleButton extends React.Component<Props> {
       <View style={[style.defaultContainerStyle, {
         backgroundColor: colors ? colors.backgroundColor : COLORS.white,
       }]}>
-        <Text style={[style.defaultTitleStyle, {
-          color: colors ? colors.textColor : COLORS.black,
-          fontWeight: '700',
-        }]}>
+        <Text style={[
+          style.defaultTitleStyle,
+          typography.mediumGameFont,
+          {
+            color: colors ? colors.textColor : COLORS.black,
+            fontWeight: '600',
+          },
+        ]}>
           { title }
         </Text>
         <Text
-          style={[style.defaultValueStyle, {
-            color: colors ? colors.textColor : COLORS.black,
-            fontWeight: '400',
-          }]}
+          style={[
+            style.defaultValueStyle,
+            typography.label,
+            {
+              color: colors ? colors.textColor : COLORS.black,
+              fontWeight: '400',
+            },
+          ]}
         >
           { value }
         </Text>

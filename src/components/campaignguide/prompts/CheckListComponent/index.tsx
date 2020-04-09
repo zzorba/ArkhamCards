@@ -3,6 +3,7 @@ import { Button, Text,View, StyleSheet } from 'react-native';
 import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
+import { CustomColor } from 'components/campaignguide/prompts/types';
 import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
@@ -14,7 +15,7 @@ import typography from 'styles/typography';
 export interface ListItem {
   code: string;
   name: string;
-  tintColor?: string;
+  color?: CustomColor;
 }
 
 export interface CheckListComponentProps {
@@ -192,7 +193,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
                 </View>
               ) }
               { !hasDecision && !!button && (
-                <View style={[styles.row, styles.center]}>
+                <View style={styles.bottomBorder}>
                   { button }
                 </View>
               ) }
@@ -224,8 +225,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  bottomBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
+  },
   nameText: {
-    fontWeight: '700',
+    fontWeight: '600',
   },
   center: {
     justifyContent: 'center',
