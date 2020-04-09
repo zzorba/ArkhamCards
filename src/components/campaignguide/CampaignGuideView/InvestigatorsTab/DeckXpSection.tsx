@@ -79,4 +79,5 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
     previousDeck,
   };
 }
+
 export default connect(mapStateToProps)(DeckXpSection);

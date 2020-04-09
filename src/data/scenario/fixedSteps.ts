@@ -241,6 +241,13 @@ export function getFixedStep(
         return {
           id: PROCEED_STEP_ID,
           hidden: true,
+          effects: [
+            {
+              type: 'scenario_data',
+              setting: 'scenario_status',
+              status: 'completed',
+            },
+          ],
         };
       }
       return {

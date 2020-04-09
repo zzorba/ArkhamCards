@@ -47,12 +47,23 @@ export default class CampaignLogTab extends React.Component<Props> {
           );
         }
         return (
-          <CampaignLogSuppliesComponent
-            sectionId={id}
-            section={section}
-            campaignGuide={campaignGuide}
-            title={title}
-          />
+          <View style={styles.topPadding}>
+            <View style={styles.sectionHeader}>
+              <Text style={[
+                typography.bigGameFont,
+                typography.underline,
+                typography.center,
+              ]}>
+                { title }
+              </Text>
+            </View>
+            <CampaignLogSuppliesComponent
+              sectionId={id}
+              section={section}
+              campaignGuide={campaignGuide}
+              title={title}
+            />
+          </View>
         );
       }
       default: {
@@ -164,6 +175,9 @@ const styles = StyleSheet.create({
     paddingRight: 24,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
+  },
+  topPadding: {
+    paddingTop: 16,
   },
   crossedOut: {
     textDecorationLine: 'line-through',

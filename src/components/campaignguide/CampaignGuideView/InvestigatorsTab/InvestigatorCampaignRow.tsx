@@ -118,7 +118,9 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
 
   renderStoryAssets() {
     const { traumaAndCardData, investigator, fontScale } = this.props;
-    if (!traumaAndCardData.storyAssets || !traumaAndCardData.storyAssets.length) {
+    const storyAssets = traumaAndCardData.storyAssets || [];
+    const ignoreStoryAssets = traumaAndCardData.ignoreStoryAssets || [];
+    if (!storyAssets.length && !ignoreStoryAssets.length) {
       return null;
     }
     return (
@@ -128,7 +130,15 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
           fontScale={fontScale}
           section={{ superTitle: t`Campaign cards` }}
         />
-        { map(traumaAndCardData.storyAssets, asset => (
+        { map(storyAssets, asset => (
+          <SingleCardWrapper
+            key={asset}
+            code={asset}
+            render={this._renderStoryAsset}
+            extraArg={undefined}
+          />
+        )) }
+        { map(ignoreStoryAssets, asset => (
           <SingleCardWrapper
             key={asset}
             code={asset}

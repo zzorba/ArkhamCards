@@ -12,6 +12,7 @@ interface Props {
   campaignGuide: CampaignGuide;
   difficulty?: CampaignDifficulty;
 }
+
 export default class CampaignSummaryComponent extends React.Component<Props> {
   render() {
     const {
@@ -22,7 +23,6 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     return (
       <View style={styles.row}>
         <BackgroundIcon
-          style={{ top: -12 }}
           code={campaignGuide.campaignCycleCode()}
           color={CAMPAIGN_COLORS[campaignGuide.campaignCycleCode() as CampaignCycleCode]}
         />
@@ -44,5 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     position: 'relative',
+    paddingTop: 24,
+    paddingBottom: 24,
   },
 });

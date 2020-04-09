@@ -23,11 +23,8 @@ export default class CampaignLogSuppliesComponent extends React.Component<Props>
     const investigatorSection = section[investigator.code];
     return (
       <View key={investigator.code}>
-        <InvestigatorNameRow investigator={investigator} detail={title} />
-        <View style={[
-          styles.container,
-          { backgroundColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0] },
-        ]}>
+        <InvestigatorNameRow investigator={investigator} />
+        <View style={styles.container}>
           { !!investigatorSection && (
             <CampaignLogSectionComponent
               sectionId={sectionId}

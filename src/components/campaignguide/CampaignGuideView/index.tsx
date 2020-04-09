@@ -102,9 +102,6 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         adjustedInvestigatorData,
       }
     );
-    this.setState({
-      dirty: false,
-    });
   };
 
   _onTabChange = () => {
