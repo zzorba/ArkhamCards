@@ -11,6 +11,7 @@ export interface LatestDecks {
 
 export interface CampaignGuideContextType {
   campaignId: number;
+  campaignName: string;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;
   campaignInvestigators: Card[];

@@ -98,6 +98,18 @@ class MyCampaignsView extends React.Component<Props, State> {
         backButton: {
           title: t`Back`,
         },
+        rightButtons: [
+          campaign.guided ? {
+            icon: iconsMap.edit,
+            id: 'edit',
+            color: COLORS.navButton,
+            testID: t`Edit name`,
+          } : {
+            icon: iconsMap.menu,
+            id: 'menu',
+            color: COLORS.navButton,
+          },
+        ],
       },
     };
     if (campaign.guided) {

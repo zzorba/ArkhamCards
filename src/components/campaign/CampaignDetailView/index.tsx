@@ -17,10 +17,8 @@ import {
 } from 'react-native-settings-components';
 import { t } from 'ttag';
 
-import { campaignName } from '../constants';
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from 'actions/types';
 import CampaignLogSection from './CampaignLogSection';
-import { CampaignGuideProps } from 'components/campaignguide/CampaignGuideView';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
@@ -212,33 +210,6 @@ class CampaignDetailView extends React.Component<Props, State> {
         campaign.name,
         this._onCampaignNameChange
       );
-    }
-  };
-
-  _guidePressed = () => {
-    const {
-      componentId,
-      campaign,
-    } = this.props;
-    if (campaign) {
-      Navigation.push<CampaignGuideProps>(componentId, {
-        component: {
-          name: 'Guide.Campaign',
-          passProps: {
-            campaignId: campaign.id,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: campaignName(campaign.cycleCode) || undefined,
-              },
-              backButton: {
-                title: t`Back`,
-              },
-            },
-          },
-        },
-      });
     }
   };
 

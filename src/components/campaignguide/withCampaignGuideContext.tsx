@@ -365,6 +365,7 @@ export default function withCampaignGuideContext<Props>(
       }
       const context: CampaignGuideContextType = {
         campaignId: campaign.id,
+        campaignName: campaign.name,
         campaignGuide,
         campaignState: campaignStateHelper,
         campaignInvestigators,
@@ -378,6 +379,7 @@ export default function withCampaignGuideContext<Props>(
           <WrappedComponent
             {...this.props as Props}
             campaignId={campaign.id}
+            campaignName={campaign.name}
             weaknessSet={campaign.weaknessSet}
             campaignGuide={campaignGuide}
             playerCards={cards}

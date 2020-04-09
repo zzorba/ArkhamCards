@@ -6,6 +6,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import { Campaign, InvestigatorData } from 'actions/types';
 import InvestigatorsTab from './InvestigatorsTab';
 import CampaignLogTab from './CampaignLogTab';
@@ -25,7 +26,8 @@ interface ReduxActionProps {
     sparseCampaign: Partial<Campaign>
   ) => void;
 }
-type Props = CampaignGuideProps & ReduxActionProps & NavigationProps & DimensionsProps;
+type Props = CampaignGuideProps & ReduxActionProps & NavigationProps & DimensionsProps & InjectedDialogProps;
+
 interface State {
   firstAppearance: boolean;
   spentXp: {
@@ -60,6 +62,33 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     InteractionManager.runAfterInteractions(() => {
       this._syncCampaignData();
     });
+  }
+
+  _showEditNameDialog = () => {
+    const { showTextEditDialog, campaignName } = this.props;
+    showTextEditDialog(
+      t`Name`,
+      campaignName,
+      this._updateCampaignName
+    );
+  }
+
+  _updateCampaignName = (name: string) => {
+    const { campaignId, componentId, updateCampaign } = this.props;
+    updateCampaign(campaignId, { name, lastUpdated: new Date() });
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        title: {
+          text: name,
+        },
+      },
+    })
+  };
+
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+    if (buttonId === 'edit') {
+      this._showEditNameDialog();
+    }
   }
 
   _syncCampaignData = () => {
@@ -201,6 +230,8 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 
 export default withDimensions(
   withCampaignGuideContext<Props>(
-    connect(null, mapDispatchToProps)(CampaignGuideView)
+    connect(null, mapDispatchToProps)(
+      withDialogs(CampaignGuideView)
+    )
   )
 );

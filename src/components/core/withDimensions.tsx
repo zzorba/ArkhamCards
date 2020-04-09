@@ -9,7 +9,7 @@ export interface DimensionsProps {
   fontScale: number;
 }
 
-let RECENT_FONT_SCALE = 1.0;
+export let RECENT_FONT_SCALE = 1.0;
 
 export default function withDimensions<P>(
   WrappedComponent: React.ComponentType<P & DimensionsProps>

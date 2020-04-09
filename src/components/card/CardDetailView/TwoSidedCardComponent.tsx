@@ -350,7 +350,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     ) {
       return (
         <View style={styles.factionIcon}>
-          <ArkhamIcon name="weakness" size={ICON_SIZE} color={color} />
+          <ArkhamIcon
+            name="weakness"
+            size={ICON_SIZE}
+            color={color}
+          />
         </View>
       );
     }
@@ -362,13 +366,23 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           <React.Fragment>
             <View style={styles.factionIcon}>
               { !!card.faction_code &&
-                (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-                <ArkhamIcon name={card.faction_code} size={ICON_SIZE + 4} color="#FFF" /> }
+                (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) && (
+                <ArkhamIcon
+                  name={card.faction_code}
+                  size={ICON_SIZE + 4}
+                  color="#FFF"
+                />
+              ) }
             </View>
             <View style={styles.factionIcon}>
               { !!card.faction2_code &&
-                (CORE_FACTION_CODES.indexOf(card.faction2_code) !== -1) &&
-                <ArkhamIcon name={card.faction2_code} size={ICON_SIZE + 4} color="#FFF" /> }
+                (CORE_FACTION_CODES.indexOf(card.faction2_code) !== -1) && (
+                <ArkhamIcon
+                  name={card.faction2_code}
+                  size={ICON_SIZE + 4}
+                  color="#FFF"
+                />
+              ) }
             </View>
           </React.Fragment>
         );
