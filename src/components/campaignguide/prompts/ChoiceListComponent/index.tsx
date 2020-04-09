@@ -158,6 +158,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           optional={!!optional}
           editable={inputChoiceList === undefined}
           detailed={detailed}
+          firstItem={idx === 0}
         />
       );
     });
@@ -171,6 +172,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           editable={false}
           optional={false}
           onChoiceChange={this._onChoiceChange}
+          firstItem
         />
       );
     }

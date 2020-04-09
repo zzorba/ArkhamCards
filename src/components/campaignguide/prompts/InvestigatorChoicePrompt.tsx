@@ -23,8 +23,10 @@ export default function InvestigatorChoicePrompt(
               return {
                 code: investigator.code,
                 name: investigator.name,
-                tintColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
-                primaryColor: FACTION_COLORS[investigator.factionCode()],
+                color: {
+                  tint: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+                  primary: FACTION_COLORS[investigator.factionCode()],
+                },
               };
             })}
           />

@@ -132,6 +132,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
             selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
             editable={choice === undefined}
             onChoiceChange={this._onChoiceChange}
+            topBorder
           />
         </View>
         { choice !== undefined ?

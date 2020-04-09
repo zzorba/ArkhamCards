@@ -10,8 +10,10 @@ import typography from 'styles/typography';
 interface Props {
   code: string;
   name: string;
-  primaryColor?: string;
-  tintColor?: string;
+  color?: {
+    primary: string;
+    tint: string;
+  };
   bulletType?: BulletType;
   choices: DisplayChoice[];
   choice?: number;
@@ -19,6 +21,7 @@ interface Props {
   onChoiceChange: (code: string, index: number) => void;
   editable: boolean;
   detailed?: boolean;
+  firstItem: boolean;
 }
 
 export default class ChoiceListItemComponent extends React.Component<Props> {
@@ -33,26 +36,25 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
   render() {
     const {
       name,
-      tintColor,
-      primaryColor,
+      color,
       detailed,
       choices,
       choice,
       editable,
       optional,
+      firstItem,
     } = this.props;
     if (detailed) {
       return (
         <>
           <View style={[
             styles.headerRow,
-            primaryColor ? { backgroundColor: primaryColor } : {},
+            color ? { backgroundColor: color.tint } : {},
           ]}>
             <View>
               <Text style={[
                 typography.text,
                 styles.nameText,
-                primaryColor ? { color: '#FFF' } : { color: '#222' },
               ]}>
                 { name }
               </Text>
@@ -64,8 +66,8 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
             selectedIndex={choice}
             editable={editable}
             onSelect={this._onChoiceChange}
-            tintColor={tintColor}
-            buttonColor={primaryColor}
+            tintColor={color && color.tint}
+            buttonColor={color && color.primary}
             noBullet
           />
         </>
@@ -79,10 +81,13 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
         optional={optional}
         title={name}
         onChoiceChange={this._onChoiceChange}
-        colors={primaryColor ? {
-          backgroundColor: primaryColor,
-          textColor: '#FFF',
+        colors={color ? {
+          backgroundColor: color.tint,
+          textColor: '#000',
+          modalColor: color.primary,
+          modalTextColor: '#FFF',
         } : undefined}
+        topBorder={firstItem}
       />
     );
   }
@@ -91,6 +96,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   nameText: {
     fontWeight: '700',
+    color: '#000',
   },
   headerRow: {
     padding: 8,

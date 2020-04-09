@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 // @ts-ignore
@@ -6,6 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { DisplayChoice } from 'data/scenario';
 import { COLORS } from 'styles/colors';
+import typography from 'styles/typography';
 
 interface Props {
   choices: DisplayChoice[];
@@ -16,10 +18,13 @@ interface Props {
   optional?: boolean;
   editable: boolean;
   colors?: {
+    modalColor: string;
+    modalTextColor: string;
     backgroundColor: string;
     textColor: string;
   };
   defaultLabel?: string;
+  topBorder: boolean;
 }
 
 export default class PickerComponent extends React.Component<Props> {
@@ -56,6 +61,7 @@ export default class PickerComponent extends React.Component<Props> {
       colors,
       description,
       defaultLabel,
+      topBorder,
     } = this.props;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
@@ -82,14 +88,20 @@ export default class PickerComponent extends React.Component<Props> {
         modalStyle={{
           header: {
             wrapper: {
-              backgroundColor: colors ? colors.backgroundColor : COLORS.lightBlue,
+              backgroundColor: colors ? colors.modalColor : COLORS.lightBlue,
+            },
+            title: {
+              ...typography.mediumGameFont,
+              color: colors ? colors.modalTextColor : COLORS.white,
             },
             description: {
               paddingTop: 8,
+              color: colors ? colors.modalTextColor : COLORS.white,
             },
           },
           list: {
-            itemColor: colors ? colors.backgroundColor : COLORS.lightBlue,
+            itemText: typography.label,
+            itemColor: colors ? colors.modalColor : COLORS.lightBlue,
           },
         }}
         options={options}
@@ -97,15 +109,21 @@ export default class PickerComponent extends React.Component<Props> {
           backgroundColor: 'rgba(255,255,255,0.0)',
         }}
         titleStyle={{
+          ...typography.mediumGameFont,
           color: colors ? colors.textColor : COLORS.black,
           fontWeight: '700',
         }}
         valueStyle={{
+          ...typography.label,
           color: colors ? colors.textColor : COLORS.black,
           fontWeight: '400',
         }}
         containerStyle={{
+          padding: 8,
           backgroundColor: colors ? colors.backgroundColor : COLORS.white,
+          borderBottomWidth: StyleSheet.hairlineWidth,
+          borderColor: '#888',
+          borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,
         }}
         widget={
           editable ? (

@@ -45,6 +45,7 @@ declare module 'react-native-settings-components' {
       wrapper?: ViewStyle;
       scrollView?: ViewStyle;
       innerWrapper?: ViewStyle;
+      itemText?: TextStyle;
       itemColor?: string;
     };
   }

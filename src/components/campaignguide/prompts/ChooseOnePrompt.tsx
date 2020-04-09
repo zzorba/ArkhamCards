@@ -60,6 +60,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                   selectedIndex={selectedChoice}
                   onChoiceChange={this._onChoiceChange}
                   editable={decision === undefined}
+                  topBorder
                 />
               ) : (
                 <>
