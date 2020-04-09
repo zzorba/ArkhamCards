@@ -83,6 +83,9 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       );
     }
     const xp = campaignLog.totalXp(investigator.code);
+    if (xp === 0) {
+      return null;
+    }
     return (
       <>
         <CardSectionHeader
@@ -95,7 +98,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
             { t`${spentXp} of ${xp} spent` }
           </Text>
           <PlusMinusButtons
-            count={5}
+            count={spentXp}
             max={xp}
             onIncrement={this._incXp}
             onDecrement={this._decXp}

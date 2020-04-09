@@ -261,55 +261,63 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
 
     const physicalDeltaString = physical >= 0 ? `+${physical}` : `${physical}`;
     const mentalDeltaString = mental >= 0 ? `+${mental}` : `${mental}`;
-    const locked = choices !== undefined || !editable;
+    const locked = (choices !== undefined) || !editable;
     return (
       <>
-        <CardSectionHeader
-          investigator={investigator}
-          fontScale={fontScale}
-          section={{ superTitle: t`Physical trauma` }}
-        />
-        <BasicListRow>
-          <Text style={[typography.text]}>
-            { physicalDeltaString }
-            { !locked && (
-              <Text style={[typography.text, { color: COLORS.darkGray }]}>
-                { t` (New Total: ${totalPhysical})` }
-              </Text>
-            ) }
-          </Text>
-          { !locked && (
-            <PlusMinusButtons
-              count={totalPhysical}
-              onIncrement={this._incPhysical}
-              onDecrement={this._decPhysical}
-              max={investigator.health || 0}
+        { (!locked || physical !== 0) && (
+          <>
+            <CardSectionHeader
+              investigator={investigator}
+              fontScale={fontScale}
+              section={{ superTitle: t`Physical trauma` }}
             />
-          ) }
-        </BasicListRow>
-        <CardSectionHeader
-          investigator={investigator}
-          fontScale={fontScale}
-          section={{ superTitle: t`Mental trauma` }}
-        />
-        <BasicListRow>
-          <Text style={typography.text}>
-            { mentalDeltaString }
-            { !locked && (
-              <Text style={[typography.text, { color: COLORS.darkGray }]}>
-                { t` (New Total: ${totalMental})` }
+            <BasicListRow>
+              <Text style={[typography.text]}>
+                { physicalDeltaString }
+                { !locked && (
+                  <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                    { t` (New Total: ${totalPhysical})` }
+                  </Text>
+                ) }
               </Text>
-            ) }
-          </Text>
-          { !locked && (
-            <PlusMinusButtons
-              count={totalMental}
-              onIncrement={this._incMental}
-              onDecrement={this._decMental}
-              max={(investigator.sanity || 0)}
+              { !locked && (
+                <PlusMinusButtons
+                  count={totalPhysical}
+                  onIncrement={this._incPhysical}
+                  onDecrement={this._decPhysical}
+                  max={investigator.health || 0}
+                />
+              ) }
+            </BasicListRow>
+          </>
+        ) }
+        { (!locked || mental !== 0) && (
+          <>
+            <CardSectionHeader
+              investigator={investigator}
+              fontScale={fontScale}
+              section={{ superTitle: t`Mental trauma` }}
             />
-          ) }
-        </BasicListRow>
+            <BasicListRow>
+              <Text style={typography.text}>
+                { mentalDeltaString }
+                { !locked && (
+                  <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                    { t` (New Total: ${totalMental})` }
+                  </Text>
+                ) }
+              </Text>
+              { !locked && (
+                <PlusMinusButtons
+                  count={totalMental}
+                  onIncrement={this._incMental}
+                  onDecrement={this._decMental}
+                  max={(investigator.sanity || 0)}
+                />
+              ) }
+            </BasicListRow>
+          </>
+        ) }
       </>
     );
   }
