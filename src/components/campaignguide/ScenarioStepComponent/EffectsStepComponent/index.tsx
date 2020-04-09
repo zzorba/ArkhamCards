@@ -92,9 +92,9 @@ export default class EffectsStepComponent extends React.Component<Props> {
       case 'story_step': {
         return (
           <ScenarioGuideContext.Consumer>
-            { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => (
+            { ({ processedScenario, scenarioState }: ScenarioGuideContextType) => (
               map(
-                scenarioGuide.expandSteps(effect.steps, scenarioState, this.props.campaignLog),
+                processedScenario.scenarioGuide.expandSteps(effect.steps, scenarioState, this.props.campaignLog),
                 step => (
                   <ScenarioStepComponent
                     key={step.step.id}

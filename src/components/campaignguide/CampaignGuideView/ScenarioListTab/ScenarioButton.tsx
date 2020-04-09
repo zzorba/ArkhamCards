@@ -10,9 +10,9 @@ import { t } from 'ttag';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import NavButton from 'components/core/NavButton';
-import { ProcessedScenario } from 'data/scenario/CampaignGuide';
-import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
-import { ScenarioProps } from '../../ScenarioView';
+import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
+import { ScenarioProps } from 'components/campaignguide/ScenarioView';
+import { ProcessedScenario } from 'data/scenario';
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
 

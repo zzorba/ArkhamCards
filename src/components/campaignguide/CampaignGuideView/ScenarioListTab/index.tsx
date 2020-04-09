@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { map } from 'lodash';
 
-import { ProcessedCampaign } from 'data/scenario/CampaignGuide';
+import { ProcessedCampaign } from 'data/scenario';
 import ScenarioButton from './ScenarioButton';
 
 interface Props {

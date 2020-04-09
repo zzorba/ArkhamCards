@@ -6,7 +6,6 @@ import SingleCardWrapper from '../../SingleCardWrapper';
 import InvestigatorNameRow from '../../prompts/InvestigatorNameRow';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
 import { InvestigatorSection } from 'data/scenario/GuidedCampaignLog';
 import Card from 'data/Card';
 
@@ -14,12 +13,11 @@ interface Props {
   sectionId: string;
   campaignGuide: CampaignGuide;
   section: InvestigatorSection;
-  title: string;
 }
 
 export default class CampaignLogSuppliesComponent extends React.Component<Props> {
   _renderInvestigator = (investigator: Card) => {
-    const { sectionId, section, campaignGuide, title } = this.props;
+    const { sectionId, section, campaignGuide } = this.props;
     const investigatorSection = section[investigator.code];
     return (
       <View key={investigator.code}>

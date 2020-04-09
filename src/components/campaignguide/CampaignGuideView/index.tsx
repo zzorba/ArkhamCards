@@ -148,6 +148,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
             componentId={componentId}
             fontScale={fontScale}
             campaignLog={processedCampaign.campaignLog}
+            campaignGuide={campaignGuide}
             latestDecks={latestDecks}
             spentXp={spentXp}
             incSpentXp={this._incXp}

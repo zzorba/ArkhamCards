@@ -9,7 +9,7 @@ import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import StepsComponent from '../StepsComponent';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from '../withScenarioGuideContext';
 import { iconsMap } from 'app/NavIcons';
@@ -17,26 +17,40 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { NavigationProps } from 'components/nav/types';
 import { COLORS } from 'styles/colors';
 
-type Props = NavigationProps & ScenarioGuideInputProps & DimensionsProps;
+type InputProps = NavigationProps & ScenarioGuideInputProps;
+
+type Props = InputProps & DimensionsProps & ScenarioGuideContextType;
 
 export type ScenarioProps = ScenarioGuideInputProps;
 
-class ScenarioView extends React.Component<Props> {
+interface State {
+  undoEnabled: boolean;
+}
+
+class ScenarioView extends React.Component<Props, State> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
 
   static get options() {
+    return ScenarioView.dynamicOptions(false);
+  }
+
+  static dynamicOptions(undo: boolean) {
+    const rightButtons = [{
+      icon: iconsMap.replay,
+      id: 'reset',
+      color: COLORS.navButton,
+    }];
+    if (undo) {
+      rightButtons.push({
+        icon: iconsMap.undo,
+        id: 'undo',
+        color: COLORS.navButton,
+      });
+    }
     return {
       topBar: {
-        rightButtons: [{
-          icon: iconsMap.replay,
-          id: 'reset',
-          color: COLORS.navButton,
-        }, {
-          icon: iconsMap.undo,
-          id: 'undo',
-          color: COLORS.navButton,
-        }],
+        rightButtons,
       },
     };
   }
@@ -45,7 +59,29 @@ class ScenarioView extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
 
+    const undoEnabled = props.processedScenario.canUndo;
+    Navigation.mergeOptions(props.componentId, ScenarioView.dynamicOptions(undoEnabled));
+    this.state = {
+      undoEnabled,
+    };
     this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidUpdate() {
+    const {
+      processedScenario: { type, canUndo },
+      componentId,
+    } = this.props;
+    if (canUndo !== this.state.undoEnabled) {
+      Navigation.mergeOptions(componentId, ScenarioView.dynamicOptions(canUndo));
+      this.setState({
+        undoEnabled: canUndo,
+      });
+    }
+    if (type !== 'started' && type !== 'completed') {
+      // Get out of here
+      Navigation.pop(componentId);
+    }
   }
 
   componentWillUnmount() {
@@ -83,28 +119,22 @@ class ScenarioView extends React.Component<Props> {
   }
 
   render() {
-    const { componentId, fontScale } = this.props;
+    const { componentId, fontScale, processedScenario } = this.props;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioGuide, scenarioState }: ScenarioGuideContextType) => {
-          return (
-            <ScrollView>
-              <StepsComponent
-                componentId={componentId}
-                fontScale={fontScale}
-                steps={scenarioGuide.setupSteps(scenarioState).steps}
-              />
-              <View style={styles.footer} />
-            </ScrollView>
-          );
-        } }
-      </ScenarioGuideContext.Consumer>
+      <ScrollView>
+        <StepsComponent
+          componentId={componentId}
+          fontScale={fontScale}
+          steps={processedScenario.steps}
+        />
+        <View style={styles.footer} />
+      </ScrollView>
     );
   }
 }
 
-export default withScenarioGuideContext<Props>(
-  withDimensions<Props>(ScenarioView)
+export default withScenarioGuideContext<InputProps>(
+  withDimensions<InputProps & ScenarioGuideContextType>(ScenarioView)
 );
 
 const styles = StyleSheet.create({

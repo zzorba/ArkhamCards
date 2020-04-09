@@ -62,8 +62,7 @@ export default function(
           return campaign;
         }
         const latestInputIndex = findLastIndex(campaign.inputs, input =>
-          input.scenario === action.scenarioId &&
-            input.type !== 'start_scenario'
+          input.scenario === action.scenarioId
         );
         if (latestInputIndex === -1) {
           return campaign;

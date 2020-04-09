@@ -1,10 +1,10 @@
 import React from 'react';
 
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
+import { ProcessedScenario } from 'data/scenario';
 
 export interface ScenarioGuideContextType {
-  scenarioGuide: ScenarioGuide;
+  processedScenario: ProcessedScenario;
   scenarioState: ScenarioStateHelper;
 }
 

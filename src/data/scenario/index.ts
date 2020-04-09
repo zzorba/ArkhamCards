@@ -3,6 +3,34 @@ import { find } from 'lodash';
 import { NumberChoices } from 'actions/types';
 import { FullCampaign, Effect } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
+import ScenarioGuide from './ScenarioGuide';
+import ScenarioStep from './ScenarioStep';
+import GuidedCampaignLog from './GuidedCampaignLog';
+
+interface BasicScenario {
+  scenarioGuide: ScenarioGuide;
+  latestCampaignLog: GuidedCampaignLog;
+  attempt: number;
+}
+
+interface PlayedScenario extends BasicScenario {
+  type: 'started' | 'completed';
+  canUndo: boolean;
+  steps: ScenarioStep[];
+}
+
+interface UnplayedScenario extends BasicScenario {
+  type: 'locked' | 'playable' | 'skipped';
+  canUndo: false;
+  steps: ScenarioStep[];
+}
+
+export type ProcessedScenario = PlayedScenario | UnplayedScenario;
+
+export interface ProcessedCampaign {
+  scenarios: ProcessedScenario[];
+  campaignLog: GuidedCampaignLog;
+}
 
 export interface DisplayChoice {
   text?: string;

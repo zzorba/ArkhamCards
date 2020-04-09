@@ -23,7 +23,7 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
     const { step, condition, campaignLog } = this.props;
     return (
       <CampaignGuideContext.Consumer>
-        { ({ campaignGuide, campaignState }: CampaignGuideContextType) => {
+        { ({ campaignGuide }: CampaignGuideContextType) => {
           switch (condition.campaign_data) {
             case 'difficulty': {
               const difficulty = upperFirst(campaignLog.campaignData.difficulty);
@@ -37,8 +37,8 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
             }
             case 'scenario_completed': {
               const result = campaignDataScenarioConditionResult(condition, campaignLog);
-              const chosenScenario = campaignGuide.getScenario(condition.scenario, campaignState);
-              const scenarioName = (chosenScenario && chosenScenario.scenarioName()) ||
+              const scenarioName: string =
+                campaignGuide.scenarioName(condition.scenario) ||
                 condition.scenario;
               return (
                 <SetupStepWrapper bulletType={step.bullet_type}>

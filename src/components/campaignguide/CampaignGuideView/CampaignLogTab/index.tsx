@@ -4,7 +4,6 @@ import { flatMap, keys } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import CampaignGuideSummary from './CampaignGuideSummary';
 import { OddsCalculatorProps } from 'components/campaign/OddsCalculatorView';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
@@ -61,7 +60,6 @@ export default class CampaignLogTab extends React.Component<Props> {
               sectionId={id}
               section={section}
               campaignGuide={campaignGuide}
-              title={title}
             />
           </View>
         );
@@ -125,15 +123,8 @@ export default class CampaignLogTab extends React.Component<Props> {
 
   render() {
     const { campaignGuide, campaignLog, fontScale } = this.props;
-    const difficulty = campaignLog.campaignData.difficulty;
     return (
       <ScrollView>
-        <View style={styles.section}>
-          <CampaignGuideSummary
-            difficulty={difficulty}
-            campaignGuide={campaignGuide}
-          />
-        </View>
         { keys(campaignLog.chaosBag).length > 0 && (
           <View style={styles.section}>
             <View style={styles.sectionHeader}>

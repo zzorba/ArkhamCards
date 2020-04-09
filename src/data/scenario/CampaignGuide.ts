@@ -1,6 +1,7 @@
-import { find, findIndex, forEach, map } from 'lodash';
+import { find, findIndex, forEach, map, reverse, slice } from 'lodash';
 import { t } from 'ttag';
 
+import { ProcessedCampaign, ProcessedScenario } from 'data/scenario';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
@@ -42,27 +43,6 @@ interface LogEntrySupplies extends LogSection {
   supply: Supply;
 }
 
-interface PlayedScenario {
-  type: 'started' | 'completed';
-  scenarioGuide: ScenarioGuide;
-  latestCampaignLog: GuidedCampaignLog;
-  attempt: number;
-}
-
-interface UnplayedScenario {
-  type: 'locked' | 'playable' | 'skipped';
-  scenarioGuide: ScenarioGuide;
-  latestCampaignLog: GuidedCampaignLog;
-  attempt: number;
-}
-
-export type ProcessedScenario = PlayedScenario | UnplayedScenario;
-
-export interface ProcessedCampaign {
-  scenarios: ProcessedScenario[];
-  campaignLog: GuidedCampaignLog;
-}
-
 type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
 const CAMPAIGN_SETUP_ID = '$campaign_setup';
@@ -101,11 +81,11 @@ export default class CampaignGuide {
   getScenario(
     id: string,
     campaignState: CampaignStateHelper
-  ): ScenarioGuide | undefined {
-    const processedScenario = find(
+  ): ProcessedScenario | undefined {
+    return find(
       this.processAllScenarios(campaignState).scenarios,
-      scenario => scenario.scenarioGuide.id === id);
-    return processedScenario && processedScenario.scenarioGuide;
+      scenario => scenario.scenarioGuide.id === id
+    );
   }
 
   campaignLogSections() {
@@ -153,6 +133,16 @@ export default class CampaignGuide {
       }
       if (scenario.type === 'started') {
         foundPlayable = true;
+      }
+    });
+    let foundUndoable = false;
+    forEach(reverse(slice(scenarios)), scenario => {
+      if (scenario.canUndo) {
+        if (foundUndoable) {
+          scenario.canUndo = false;
+        } else {
+          foundUndoable = true;
+        }
       }
     });
     return {
@@ -226,6 +216,8 @@ export default class CampaignGuide {
           scenarioGuide,
           latestCampaignLog: campaignLog,
           attempt: replayCount || 0,
+          canUndo: false,
+          steps: [],
         }];
       }
       return [{
@@ -233,6 +225,8 @@ export default class CampaignGuide {
         scenarioGuide,
         latestCampaignLog: campaignLog,
         attempt: replayCount || 0,
+        canUndo: false,
+        steps: [],
       }];
     }
     const scenarioState = new ScenarioStateHelper(rawScenarioId, campaignState);
@@ -242,6 +236,8 @@ export default class CampaignGuide {
       scenarioGuide,
       latestCampaignLog: executedScenario.latestCampaignLog,
       attempt: replayCount || 0,
+      canUndo: true,
+      steps: executedScenario.steps,
     };
     if (executedScenario.inProgress) {
       return [firstResult];
@@ -277,6 +273,11 @@ export default class CampaignGuide {
       CAMPAIGN_SETUP_ID,
       ...this.campaign.campaign.scenarios,
     ];
+  }
+
+  scenarioName(scenarioId: string): string | undefined {
+    const scenario = find(this.campaign.scenarios, scenario => scenario.id === scenarioId);
+    return scenario && scenario.scenario_name;
   }
 
   logSection(sectionId: string): LogSection | undefined {

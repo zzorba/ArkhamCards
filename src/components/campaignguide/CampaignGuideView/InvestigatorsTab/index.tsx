@@ -3,14 +3,17 @@ import { Button, Text, ScrollView, StyleSheet, View } from 'react-native';
 import { map, partition } from 'lodash';
 import { t } from 'ttag';
 
+import CampaignGuideSummary from './CampaignGuideSummary';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import CampaignGuide from 'data/scenario/CampaignGuide';
 import CampaignGuideContext, { CampaignGuideContextType, LatestDecks } from '../../CampaignGuideContext';
 import Card, { CardsMap } from 'data/Card';
 import typography from 'styles/typography';
 
 interface Props {
   componentId: string;
+  campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   fontScale: number;
   latestDecks: LatestDecks;
@@ -37,6 +40,7 @@ export default class InvestigatorsTab extends React.Component<Props> {
   render() {
     const {
       campaignLog,
+      campaignGuide,
       fontScale,
       componentId,
       playerCards,
@@ -44,6 +48,7 @@ export default class InvestigatorsTab extends React.Component<Props> {
       incSpentXp,
       decSpentXp,
     } = this.props;
+    const difficulty = campaignLog.campaignData.difficulty;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignId, latestDecks }: CampaignGuideContextType) => {
@@ -53,6 +58,12 @@ export default class InvestigatorsTab extends React.Component<Props> {
           );
           return (
             <ScrollView>
+              <View style={styles.section}>
+                <CampaignGuideSummary
+                  difficulty={difficulty}
+                  campaignGuide={campaignGuide}
+                />
+              </View>
               { map(aliveInvestigators, investigator => (
                 <InvestigatorCampaignRow
                   key={investigator.code}
@@ -111,5 +122,12 @@ const styles = StyleSheet.create({
   header: {
     padding: 8,
     paddingTop: 32,
+  },
+  section: {
+    padding: 16,
+    paddingLeft: 24,
+    paddingRight: 24,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
   },
 });

@@ -12,7 +12,7 @@ export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
 }
 
 export default function withScenarioGuideContext<Props>(
-  WrappedComponent: React.ComponentType<Props>
+  WrappedComponent: React.ComponentType<Props & ScenarioGuideContextType>
 ): React.ComponentType<Props & ScenarioGuideInputProps> {
   class ScenarioDataComponent extends React.Component<Props & CampaignGuideContextType & ScenarioGuideInputProps> {
     render() {
@@ -21,23 +21,28 @@ export default function withScenarioGuideContext<Props>(
         campaignGuide,
         scenarioId,
       } = this.props;
-      const scenarioGuide = campaignGuide.getScenario(
+      const processedScenario = campaignGuide.getScenario(
         scenarioId,
         campaignState
       );
-      if (!scenarioGuide) {
+      if (!processedScenario) {
         return <Text>Unknown scenario: { scenarioId }</Text>;
       }
+      const scenarioState = new ScenarioStateHelper(
+        processedScenario.scenarioGuide.id,
+        campaignState
+      );
       const context: ScenarioGuideContextType = {
-        scenarioGuide,
-        scenarioState: new ScenarioStateHelper(
-          scenarioGuide.id,
-          campaignState
-        ),
+        processedScenario,
+        scenarioState,
       };
       return (
         <ScenarioGuideContext.Provider value={context}>
-          <WrappedComponent {...this.props as Props} />
+          <WrappedComponent
+            {...this.props as Props}
+            processedScenario={processedScenario}
+            scenarioState={scenarioState}
+          />
         </ScenarioGuideContext.Provider>
       );
     }

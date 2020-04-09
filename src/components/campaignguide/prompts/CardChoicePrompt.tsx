@@ -12,7 +12,7 @@ import CampaignGuideContext, { LatestDecks, CampaignGuideContextType } from '../
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import { CardChoiceInput } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
+import { ProcessedScenario } from 'data/scenario';
 import { safeValue } from 'lib/filters';
 import Card from 'data/Card';
 
@@ -86,7 +86,7 @@ export default class CardChoicePrompt extends React.Component<Props> {
   };
 
   query(
-    scenarioGuide: ScenarioGuide,
+    processedScenario: ProcessedScenario,
     scenarioState: ScenarioStateHelper,
     investigators: Card[],
     latestDecks: LatestDecks,
@@ -100,7 +100,12 @@ export default class CardChoicePrompt extends React.Component<Props> {
       const queryParts: string[] = [];
       switch (q.source) {
         case 'scenario': {
-          const encounterSets = scenarioGuide.encounterSets(scenarioState);
+          const encounterSets = flatMap(processedScenario.steps, step => {
+            if (step.step.type === 'encounter_sets') {
+              return step.step.encounter_sets;
+            }
+            return [];
+          });
           if (encounterSets) {
             const encounterQuery = flatMap(
               encounterSets,
@@ -158,9 +163,9 @@ export default class CardChoicePrompt extends React.Component<Props> {
       <CampaignGuideContext.Consumer>
         { ({ latestDecks }: CampaignGuideContextType) => (
           <ScenarioStepContext.Consumer>
-            { ({ scenarioState, scenarioGuide, scenarioInvestigators }: ScenarioStepContextType) => (
+            { ({ scenarioState, processedScenario, scenarioInvestigators }: ScenarioStepContextType) => (
               <CardQueryWrapper
-                query={this.query(scenarioGuide, scenarioState, scenarioInvestigators, latestDecks)}
+                query={this.query(processedScenario, scenarioState, scenarioInvestigators, latestDecks)}
                 render={this._renderCards}
                 extraArg={undefined}
               />

@@ -20,8 +20,8 @@ export default class ResolutionStepComponent extends React.Component<Props> {
     const { step } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
-        { ({ scenarioGuide }: ScenarioGuideContextType) => {
-          const resolution = scenarioGuide.resolution(step.resolution);
+        { ({ processedScenario }: ScenarioGuideContextType) => {
+          const resolution = processedScenario.scenarioGuide.resolution(step.resolution);
           if (!resolution) {
             return <Text>Unknown resolution: { step.resolution }</Text>;
           }
