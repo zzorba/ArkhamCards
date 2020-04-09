@@ -1,5 +1,5 @@
 import React from 'react';
-import { map } from 'lodash';
+import { filter, map } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -62,10 +62,17 @@ class CampaignInvestigatorRow extends React.Component<Props> {
       decks,
       campaign,
     } = this.props;
+    const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
     return (
       <View style={styles.row}>
         { map(decks, this._renderDeck) }
-        { map(campaign.nonDeckInvestigators || [], this._renderInvestigator) }
+        { map(
+            filter(
+              campaign.nonDeckInvestigators || [],
+              code => !deckInvestigators.has(code)
+            ),
+            this._renderInvestigator
+          ) }
       </View>
     );
   }

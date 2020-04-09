@@ -86,6 +86,9 @@ interface State {
   difficulty: CampaignDifficulty;
   deckIds: number[];
   investigatorIds: string[];
+  investigatorToDeck: {
+     [code: string]: number;
+  };
   weaknessPacks: string[];
   weaknessAssignedCards: Slots;
   customChaosBag: ChaosBag;
@@ -117,6 +120,7 @@ class NewCampaignView extends React.Component<Props, State> {
       difficulty: CampaignDifficulty.STANDARD,
       deckIds: [],
       investigatorIds: [],
+      investigatorToDeck: {},
       weaknessPacks: [],
       weaknessAssignedCards: {},
       customChaosBag: Object.assign({}, getChaosBag(CORE, CampaignDifficulty.STANDARD)),
@@ -267,13 +271,29 @@ class NewCampaignView extends React.Component<Props, State> {
   _deckAdded = (deck: Deck) => {
     this.setState({
       deckIds: [...this.state.deckIds, deck.id],
+      investigatorIds: [...this.state.investigatorIds, deck.investigator_code],
+      investigatorToDeck: {
+        ...this.state.investigatorToDeck,
+        [deck.investigator_code]: deck.id,
+      },
     });
     this.maybeShowWeaknessPrompt(deck);
   };
 
-  _deckRemoved = (id: number) => {
+  _deckRemoved = (
+    id: number,
+    deck?: Deck
+  ) => {
+    const investigatorToDeck: { [code: string]: number } = {};
+    forEach(this.state.investigatorToDeck, (deckId, code) => {
+      if (deckId !== id) {
+        investigatorToDeck[code] = deckId;
+      }
+    });
     this.setState({
       deckIds: filter([...this.state.deckIds], deckId => deckId !== id),
+      investigatorIds: !deck ? this.state.investigatorIds : filter([...this.state.investigatorIds], code => deck.investigator_code !== code),
+      investigatorToDeck,
     });
   };
 
@@ -599,6 +619,7 @@ class NewCampaignView extends React.Component<Props, State> {
     const {
       deckIds,
       investigatorIds,
+      investigatorToDeck,
       campaignCode,
       name,
       difficulty,
@@ -649,7 +670,7 @@ class NewCampaignView extends React.Component<Props, State> {
               fontScale={fontScale}
               campaignId={nextId}
               deckIds={deckIds}
-              investigatorIds={investigatorIds}
+              investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
               deckAdded={this._deckAdded}
               deckRemoved={this._deckRemoved}
               investigatorAdded={guided ? this._investigatorAdded : undefined}

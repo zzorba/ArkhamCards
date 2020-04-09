@@ -1,4 +1,4 @@
-import { find, filter, forEach, map } from 'lodash';
+import { find, forEach, map, uniq } from 'lodash';
 
 import {
   LOGOUT,
@@ -115,16 +115,11 @@ export default function(
         ...(campaign.baseDeckIds || []),
         action.baseDeckId,
       ];
-      campaign.nonDeckInvestigators = filter(
-        campaign.nonDeckInvestigators || [],
-        investigator => investigator !== action.investigator
-      );
-    } else {
-      campaign.nonDeckInvestigators = [
-        ...campaign.nonDeckInvestigators || [],
-        action.investigator,
-      ];
     }
+    campaign.nonDeckInvestigators = uniq([
+      ...campaign.nonDeckInvestigators || [],
+      action.investigator,
+    ]);
     return {
       ...state,
       all: {

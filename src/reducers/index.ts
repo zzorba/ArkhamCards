@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, values } from 'lodash';
+import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, uniq, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -230,13 +230,13 @@ export const getLatestCampaignInvestigators = createSelector(
   getNonDeckInvestigatorsForCampaignInvestigators,
   (decks, investigators, latestDeckIds, nonDeckInvestigators): Card[] => {
     const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId]);
-    return [
+    return uniq([
       ...flatMap(
         filter(latestDecks, deck => !!(deck && deck.investigator_code)),
         deck => investigators[deck.investigator_code]
       ),
       ...map(nonDeckInvestigators, code => investigators[code]),
-    ];
+    ]);
   }
 );
 
