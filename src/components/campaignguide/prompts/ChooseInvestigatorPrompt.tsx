@@ -115,7 +115,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       <>
         <View style={[
           styles.wrapper,
-          id !== '$lead_investigator' ? styles.topBorder : {}
+          id !== '$lead_investigator' ? styles.topBorder : {},
         ]}>
           <PickerComponent
             title={title}

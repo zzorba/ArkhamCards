@@ -8,7 +8,6 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import CardSectionHeader from 'components/core/CardSectionHeader';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import CardCostIcon from 'components/core/CardCostIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';

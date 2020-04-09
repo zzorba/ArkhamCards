@@ -53,12 +53,12 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
 
   _incXp = () => {
     const { investigator, incSpentXp } = this.props;
-    incSpentXp(investigator.code)
+    incSpentXp(investigator.code);
   };
 
   _decXp = () => {
     const { investigator, decSpentXp } = this.props;
-    decSpentXp(investigator.code)
+    decSpentXp(investigator.code);
   };
 
   renderXp() {
@@ -88,7 +88,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         <CardSectionHeader
           fontScale={fontScale}
           investigator={investigator}
-          section={{ superTitle: t`Experience points`}}
+          section={{ superTitle: t`Experience points` }}
         />
         <BasicListRow>
           <Text style={typography.text}>
@@ -102,7 +102,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
           />
         </BasicListRow>
       </>
-    )
+    );
   }
 
   renderTrauma() {

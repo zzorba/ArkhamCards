@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { flatMap, keys, map } from 'lodash';
+import { flatMap, keys } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 

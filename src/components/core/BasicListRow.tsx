@@ -17,12 +17,6 @@ export default function BasicListRow({ children }: Props) {
 
 
 const styles = StyleSheet.create({
-  buttonWrapper: {
-    padding: 8,
-  },
-  message: {
-    padding: 16,
-  },
   labeledRow: {
     flexDirection: 'column',
     padding: 8,

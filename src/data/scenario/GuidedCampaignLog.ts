@@ -568,7 +568,7 @@ export default class GuidedCampaignLog {
   traumaChanges(code: string): TraumaAndCardData {
     const currentTrauma = this.traumaAndCardData(code);
     const previousTrauma = this.baseTrauma(code);
-      return traumaDelta(currentTrauma, previousTrauma);
+    return traumaDelta(currentTrauma, previousTrauma);
   }
 
   ignoreStoryAssets(code: string): Slots {

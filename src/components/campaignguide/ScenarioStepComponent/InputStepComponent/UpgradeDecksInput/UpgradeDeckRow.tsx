@@ -4,7 +4,7 @@ import { flatMap, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import ShowDeckButton from './ShowDeckButton';
-import { NumberChoices } from 'actions/types';
+import { Deck, Slots, NumberChoices } from 'actions/types';
 import BasicListRow from 'components/core/BasicListRow';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import CardListWrapper from 'components/campaignguide/CardListWrapper';
@@ -12,7 +12,6 @@ import CardSectionHeader from 'components/core/CardSectionHeader';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from 'components/nav/helper';
 import InvestigatorRow from 'components/core/InvestigatorRow';
-import { Deck, Slots } from 'actions/types';
 import DeckUpgradeComponent from 'components/deck/DeckUpgradeComponent';
 import { DeckChanges } from 'components/deck/actions';
 import Card from 'data/Card';
@@ -441,21 +440,5 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   buttonWrapper: {
     padding: 8,
-  },
-  message: {
-    padding: 16,
-  },
-  labeledRow: {
-    flexDirection: 'column',
-    padding: 8,
-  },
-  border: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
 });

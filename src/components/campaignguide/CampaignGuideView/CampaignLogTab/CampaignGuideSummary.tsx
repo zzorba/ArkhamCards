@@ -40,9 +40,6 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  marginTop: {
-    marginTop: 4,
-  },
   row: {
     flexDirection: 'row',
     width: '100%',

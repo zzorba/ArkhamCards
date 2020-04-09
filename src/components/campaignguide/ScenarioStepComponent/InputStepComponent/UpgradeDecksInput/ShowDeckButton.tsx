@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Button } from 'react-native';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -54,6 +54,6 @@ class ShowDeckButton extends React.Component<Props> {
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
     deck: getDeck(state, props.deckId) || undefined,
-  };;
+  };
 }
 export default connect(mapStateToProps)(ShowDeckButton);

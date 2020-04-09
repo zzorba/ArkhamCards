@@ -1,5 +1,4 @@
-import React from 'react'
-import { Button } from 'react-native';
+import React from 'react';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
@@ -59,7 +58,7 @@ class DeckXpSection extends React.Component<Props> {
         <CardSectionHeader
           fontScale={fontScale}
           investigator={investigator}
-          section={{ superTitle: t`Experience points`}}
+          section={{ superTitle: t`Experience points` }}
         />
         <NavButton
           fontScale={fontScale}

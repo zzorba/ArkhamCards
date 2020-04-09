@@ -73,8 +73,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       ignoreStoryCounts,
     } = this.props;
     const hasStoryChange = !!find(storyCounts,
-      (count, code) =>
-      (upgradedDeck.slots[code] || 0) !== count
+      (count, code) => (upgradedDeck.slots[code] || 0) !== count
     ) || !!find(ignoreStoryCounts, (count, code) =>
       (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== count
     );
@@ -245,18 +244,5 @@ const styles = StyleSheet.create({
   },
   savingSpinner: {
     marginTop: 16,
-  },
-  labeledRow: {
-    flexDirection: 'column',
-    padding: 8,
-  },
-  border: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
 });

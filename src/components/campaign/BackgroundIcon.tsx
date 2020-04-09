@@ -6,7 +6,7 @@ import EncounterIcon from 'icons/EncounterIcon';
 interface Props {
   code: string;
   color: string;
-  style?: ViewStyle,
+  style?: ViewStyle;
 }
 
 export default class BackgroundIcon extends React.Component<Props> {

@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import { InvestigatorData } from 'actions/types';
 import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
 import {
@@ -23,7 +22,7 @@ import {
   setScenarioStringChoices,
   undo,
 } from './actions';
-import { Deck, NumberChoices, StringChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
+import { Deck, InvestigatorData, NumberChoices, StringChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import { getCampaignGuide } from 'data/scenario';
 import Card from 'data/Card';
