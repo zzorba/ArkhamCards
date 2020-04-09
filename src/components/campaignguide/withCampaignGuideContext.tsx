@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
+import { InvestigatorData } from 'actions/types';
 import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
 import {
@@ -95,6 +96,8 @@ interface ReduxActionProps {
     scenarioId: string
   ) => void;
 }
+
+const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
 export default function withCampaignGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & CampaignGuideContextType>
@@ -328,6 +331,7 @@ export default function withCampaignGuideContext<Props>(
         campaignInvestigators,
         investigators,
         latestDecks,
+        cards,
       } = this.props;
       if (campaign === undefined) {
         return <Text>Unknown Campaign</Text>;
@@ -367,6 +371,8 @@ export default function withCampaignGuideContext<Props>(
         campaignInvestigators,
         latestDecks: decksByInvestigator,
         weaknessSet: campaign.weaknessSet,
+        adjustedInvestigatorData: campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA,
+        playerCards: cards,
       };
       return (
         <CampaignGuideContext.Provider value={context}>
@@ -375,9 +381,11 @@ export default function withCampaignGuideContext<Props>(
             campaignId={campaign.id}
             weaknessSet={campaign.weaknessSet}
             campaignGuide={campaignGuide}
+            playerCards={cards}
             campaignState={campaignStateHelper}
             campaignInvestigators={campaignInvestigators}
             latestDecks={decksByInvestigator}
+            adjustedInvestigatorData={campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA}
           />
         </CampaignGuideContext.Provider>
       );

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Deck, WeaknessSet } from 'actions/types';
+import { Deck, WeaknessSet, InvestigatorData } from 'actions/types';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import CampaignGuide from 'data/scenario/CampaignGuide';
-import Card from 'data/Card';
+import Card, { CardsMap } from 'data/Card';
 
 export interface LatestDecks {
   [code: string]: Deck | undefined;
@@ -16,6 +16,8 @@ export interface CampaignGuideContextType {
   campaignInvestigators: Card[];
   weaknessSet: WeaknessSet;
   latestDecks: LatestDecks;
+  adjustedInvestigatorData: InvestigatorData;
+  playerCards: CardsMap;
 }
 
 export const CampaignGuideContext = React.createContext<CampaignGuideContextType>(

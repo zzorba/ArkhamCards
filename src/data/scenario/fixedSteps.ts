@@ -202,6 +202,7 @@ function investigatorStatusStep(
           investigator: '$input_value',
           physical: status === 'physical' ? 1 : 0,
           mental: status === 'mental' ? 1 : 0,
+          hidden: true,
         });
       }
       return {
@@ -237,7 +238,6 @@ export function getFixedStep(
     case PROCEED_STEP_ID: {
       const nextScenarioName = campaignLog.nextScenarioName();
       if (!nextScenarioName) {
-        console.log(`Hidden proceed step for ${campaignLog.scenarioId}, nextScenarioId=${campaignLog.nextScenarioId()}`);
         return {
           id: PROCEED_STEP_ID,
           hidden: true,

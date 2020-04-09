@@ -123,6 +123,8 @@ const styles = StyleSheet.create({
   },
   superHeaderRow: {
     borderBottomWidth: 1,
+    paddingLeft: s,
+    paddingRight: s,
     borderColor: '#bdbdbd',
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -397,6 +397,7 @@ export default class DeckViewTab extends React.Component<Props> {
       cardsByName,
       bondedCardsByName,
       inCollection,
+      editable,
     } = this.props;
 
     const validation = new DeckValidation(investigator, slots, meta);
@@ -406,7 +407,7 @@ export default class DeckViewTab extends React.Component<Props> {
         id: 'cards',
         superTitle: t`Deck Cards`,
         data: [],
-        onPress: showEditCards,
+        onPress: editable ? showEditCards : undefined,
       },
       ...deckToSections(
         normalCards,
@@ -489,13 +490,14 @@ export default class DeckViewTab extends React.Component<Props> {
       deck,
       showEditNameDialog,
       xpAdjustment,
+      editable,
     } = this.props;
     if (!changes) {
       return null;
     }
     const adjustedXp = (deck.xp || 0) + xpAdjustment;
     return (
-      <TouchableOpacity onPress={showEditNameDialog}>
+      <TouchableOpacity disabled={!editable} onPress={showEditNameDialog}>
         <View style={styles.rowBetween}>
           <Text style={typography.settingsLabel}>
             { t`Experience` }
@@ -504,11 +506,13 @@ export default class DeckViewTab extends React.Component<Props> {
             <Text style={typography.settingsValue}>
               { t`${changes.spentXp} of ${adjustedXp}` }
             </Text>
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={30}
-              color={COLORS.darkGray}
-            />
+            { editable && (
+              <MaterialIcons
+                name="keyboard-arrow-right"
+                size={30}
+                color={COLORS.darkGray}
+              />
+            ) }
           </View>
         </View>
       </TouchableOpacity>

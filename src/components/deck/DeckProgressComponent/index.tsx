@@ -95,7 +95,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
             <View style={space.marginBottomM}>
               <CampaignSummaryComponent campaign={campaign} hideScenario />
             </View>
-            { !!showTraumaDialog && (
+            { !!showTraumaDialog && !campaign.guided && (
               <EditTraumaComponent
                 investigator={investigator}
                 investigatorData={this.investigatorData()}

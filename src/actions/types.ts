@@ -314,6 +314,7 @@ export interface Campaign {
   nonDeckInvestigators?: string[];
   guided?: boolean;
   investigatorData: InvestigatorData;
+  adjustedInvestigatorData?: InvestigatorData;
   chaosBag: ChaosBag;
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;

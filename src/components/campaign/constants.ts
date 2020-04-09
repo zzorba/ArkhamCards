@@ -260,6 +260,7 @@ export const CAMPAIGN_COLORS = {
   tcu: '#00006622',
   tdea: '#00006622',
   tdeb: '#00006622',
+  custom: '#00006622',
 };
 
 export function getCampaignLog(

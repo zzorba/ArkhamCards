@@ -17,7 +17,7 @@ export default function TextEntryComponent({ text, crossedOut, entry }: Props) {
     text;
   return (
     <Text style={[
-      typography.mediumGameFont,
+      typography.bigLabel,
       styles.text,
       crossedOut ? styles.crossedOut : {},
     ]}>

@@ -1494,23 +1494,27 @@ class DeckDetailView extends React.Component<Props, State> {
           </>
         ) }
         <SettingsCategoryHeader title={t`Cards`} />
-        <SettingsButton
-          onPress={this._onEditPressed}
-          title={t`Edit Cards`}
-          description={ngettext(
-            msgid`${normalCardCount} Card (${totalCardCount} Total)`,
-            `${normalCardCount} Cards (${totalCardCount} Total)`,
-            normalCardCount
-          )}
-        />
-        <SettingsButton
-          onPress={this._onEditSpecialPressed}
-          title={t`Story Assets`}
-        />
-        <SettingsButton
-          onPress={this._onEditSpecialPressed}
-          title={t`Weaknesses`}
-        />
+        { editable && (
+          <>
+            <SettingsButton
+              onPress={this._onEditPressed}
+              title={t`Edit Cards`}
+              description={ngettext(
+                msgid`${normalCardCount} Card (${totalCardCount} Total)`,
+                `${normalCardCount} Cards (${totalCardCount} Total)`,
+                normalCardCount
+              )}
+            />
+            <SettingsButton
+              onPress={this._onEditSpecialPressed}
+              title={t`Story Assets`}
+            />
+            <SettingsButton
+              onPress={this._onEditSpecialPressed}
+              title={t`Weaknesses`}
+            />
+          </>
+        ) }
         <SettingsButton
           onPress={this._showCardCharts}
           title={t`Charts`}

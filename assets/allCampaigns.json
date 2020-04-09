@@ -2,6 +2,1096 @@
 {
   "campaign":
 {
+  "id": "core",
+  "name": "The Night of the Zealot",
+  "position": 0,
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Campaign Notes"
+    },
+    {
+      "id": "cultists_interrogated",
+      "title": "Cultists We Interrogated"
+    },
+    {
+      "id": "cultists_escaped",
+      "title": "Cultists Who Got Away"
+    }
+  ],
+  "scenarios": [
+    "torch",
+    "arkham",
+    "tentacles"
+  ],
+  "setup": [
+    "prologue",
+    "difficulty_choice"
+  ],
+  "steps": [
+    {
+      "id": "prologue",
+      "type": "story",
+      "text": "Friday, September 18, 1925. Arkham, Massachusetts. It is the end of a long and abnormally hot summer. The first hints of autumn beckon, but a heavy heat persists, relentless. A silent, unspoken anger grips the town. Tempers are short, and in the last week alone there have been numerous reports of townspeople coming to heated, violent blows with one another over simple misunderstandings.\nAnd now, a call from James Hankerson. He claims to have found a dismembered body in his barn.\nBlaming the weather would be too easy. There is something wrong with this town, and not a whole lot this old soothsayer can do to stop the slide. My auguries indicate a small group of investigators will soon take note of these strange happenings and set forth to make things right. I’ll be watching their progress… but I won’t be holding my breath."
+    },
+    {
+      "id": "difficulty_choice",
+      "text": "Choose difficulty level:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Easy <i>(I want to experience the story)</i>",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1", "+1", "0", "0", "0", "-1", "-1", "-1", "-2", "-2", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "standard",
+            "text": "Standard <i>(I want a challenge)</i>",
+            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "hard",
+            "text": "Hard <i>(I want a true nightmare)</i>",
+            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0", "0", "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-5", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "expert",
+            "text": "Expert <i>(I want Arkham Horror)</i>",
+            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-5", "-6", "-8", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+, "scenarios": [
+{
+  "id": "tentacles",
+  "scenario_name": "The Devourer Below",
+  "full_name": "Scenario III: The Devourer Below",
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_cards",
+    "gather_agents",
+    "check_escaped_cultists",
+    "add_elder_thing",
+    "check_past_midnight",
+    "check_ghoul_priest",
+    "$choose_resolution"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "After a frantic nighttime search throughout Arkham, you have tracked down and questioned several members of the cult. Your findings are disturbing: they claim to worship a being known as Umôrdhoth, a monstrous entity from another realm.\nYou are able to confirm much of Lita’s story: the cult is agitated over the destruction of a ghoul lair. However, a surprising detail also turns up: the one who invaded the lair and set this night’s events in motion was none other than Lita Chantler herself! You are not sure why this important detail was omitted from Lita’s story—did she tell you only as much as was necessary to draw you into her conflict? But in another light, she seems to be fighting to protect the city of Arkham from a terrible menace.\nThe final piece of the puzzle was found written in a journal possessed by one of the cultists. It describes a dark ritual to be performed deep within the woods south of Arkham, this very night. According to the journal, the ritual’s completion will open a gate and bring forth the cult’s dark master into this world. “If the cult is not stopped,” Lita warns, “there is a possibility that Umôrdhoth’s vengeance will consume all in its path.” Frightened but determined to stop the ritual, you head into the woods…"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "tentacles",
+        "ancient_evils",
+        "striking_fear",
+        "ghouls",
+        "pentagram"
+      ]
+    },
+    {
+      "id": "gather_agents",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "agents_of_yog",
+        "agents_of_shub",
+        "agents_of_cthulhu",
+        "agents_of_hastur"
+      ],
+      "text": "Randomly choose one of following 4 encounter sets: <i>Agents of Yog-Sothoth</i>, <i>Agents of Shub-Niggurath</i>, <i>Agents of Cthulhu</i>, or <i>Agents of Hastur</i>.",
+      "subtext": "Without looking at the chosen encounter set, shuffle it and the remainder of the encounter cards together to form the encounter deck. Remove the other 3 encounter sets from the game."
+    },
+    {
+    	"id": "setup_locations",
+      "text": "Put the Main Path location into play. Shuffle the 6 copies of Arkham Woods, choose 4 of them at random, and put them into play without looking at their revealed sides. Remove the other 2 from the game. Each investigator begins play at the Main Path."
+    },
+    {
+    	"id": "set_aside_cards",
+      "text": "Set the Ritual Site and Umôrdhoth cards aside, out of play."
+    },
+    {
+    	"id": "check_escaped_cultists",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "cultists_escaped",
+        "id": "$num_entries",
+        "max": 6,
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["place_one_doom"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["place_one_doom"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["place_two_doom"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["place_two_doom"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["place_three_doom"]
+          },
+          {
+            "numCondition": 6,
+            "steps": ["place_three_doom"]
+          }
+        ],
+        "defaultOption": {
+          "steps": []
+        }
+      }
+    },
+    {
+      "id": "place_one_doom",
+      "bullet_type": "small",
+      "text": "Place 1 doom on Agenda 1a."
+    },
+    {
+    	"id": "place_two_doom",
+      "bullet_type": "small",
+      "text": "Place 2 doom on Agenda 1a."
+    },
+    {
+    	"id": "place_three_doom",
+      "bullet_type": "small",
+      "text": "Place 3 doom on Agenda 1a."
+    },
+    {
+    	"id": "add_elder_thing",
+      "text": "Add 1 [elder_thing] chaos token to the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": ["elder_thing"]
+        }
+      ]
+    },
+    {
+    	"id": "check_past_midnight",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "past_midnight",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["randomly_discard_2_cards"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "randomly_discard_2_cards",
+      "bullet_type": "small",
+      "text": "Each player discards 2 random cards from their starting hand."
+    },
+    {
+    	"id": "check_ghoul_priest",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "ghoul_priest_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["add_ghoul_priest"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_ghoul_priest",
+      "bullet_type": "small",
+      "text": "Shuffle the Ghoul Priest into the encounter deck."
+    },
+    {
+    	"id": "arkham_succumbed",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "arkham_succumbed",
+          "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
+        }
+      ]
+    },
+    {
+    	"id": "killed",
+      "text": "Each surviving investigator is <b>killed</b>.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "killed": true
+        }
+      ]
+    },
+    {
+    	"id": "lose",
+      "text": "The investigators lose.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+    	"id": "ritual_broken",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "ritual_broken",
+          "text": "the ritual to summon Umôrdhoth was broken."
+        }
+      ]
+    },
+    {
+    	"id": "umordhoth_repelled",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "umordhoth_repelled",
+          "text": "the investigators repelled Umôrdhoth."
+        }
+      ]
+    },
+    {
+    	"id": "lita_sacrificed",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "lita_sacrificed",
+          "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+        },
+        {
+          "type": "remove_card",
+          "card": "01117"
+        }
+      ]
+    },
+    {
+    	"id": "ritual_trauma",
+      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their ordeal.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 2
+        }
+      ]
+    },
+    {
+    	"id": "fight_trauma",
+      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the fight against Umôrdhoth has taken its toll on their body and mind.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 2,
+          "physical": 2
+        }
+      ]
+    },
+    {
+    	"id": "lita_trauma",
+      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the mere sight of Umôrdhoth has taken its toll on their body and mind.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 2,
+          "physical": 2
+        }
+      ]
+    },
+    {
+    	"id": "madness_weakness",
+      "text": "The guilt over sacrificing Lita forever haunts your memory. Each investigator must search the collection for a random [[Madness]] weakness and add it to their deck.",
+      "effects": [
+        {
+          "type": "add_weakness",
+          "investigator": "all",
+          "weakness_traits": ["Madness"]
+        }
+      ]
+    },
+    {
+    	"id": "earn_5_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "confirm_text": "Each investigator earns 5 bonus experience, as they has saved Arkham from a terrible fate.",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "bonus": 5
+          }
+        ]
+      }
+    },
+    {
+    	"id": "earn_10_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "confirm_text": "Each investigator earns 10 bonus experience, as they has triumphed in battle against a truly terrible foe.",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "bonus": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "win",
+      "text": "The investigators win!",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "win"
+        }
+      ]
+    },
+    {
+      "id": "survived",
+      "text": "The investigators have survived, but their actions weigh heavily on their consciences",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "survived"
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "Too frightened to face her fate, Lita flees into the night. She realizes that she has failed and Umôrdhoth’s vengeance will pursue her wherever she goes. The creature’s tendrils spread throughout the city of Arkham, searching for her. It lurks in the darkness of every corner, tugging at the seams of reality. But Lita is nowhere to be found, so the creature dwells in the shadows to this day, searching… killing.",
+      "steps": ["arkham_succumbed", "killed", "lose"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "You have managed to prevent the cult from summoning its master. Although you’re unsure what would have happened had the cult succeeded, you’re relieved that—at least for the time being—Arkham is safe. You capture as many cultists as you can find, but very few townspeople believe your tale. Perhaps it was all in your head, after all.",
+      "steps": ["ritual_broken", "ritual_trauma", "earn_5_xp", "$upgrade_decks", "win"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "Through force of arms and strength of will, you are somehow able to harm Umôrdhoth enough to send it reeling back to the dimension from which it emerged. Warmth and light return to the woods as the void-like mass is sucked in upon itself, vanishing in an instant. You aren’t sure if a being such as this can be killed, but for the time being it seems to have retreated. As their master vanishes, the ghouls nearby climb into the open pit below, fleeing with terrible cries and shrieks. You have stopped an evil plot, but the fight has taken its toll on your body and mind. Worse, you can’t help but feel insignificant in the face of the world’s mysteries. What other terrors exist in the deep, dark corners of reality?",
+      "steps": ["umordhoth_repelled", "fight_trauma", "earn_10_xp", "$upgrade_decks", "win"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "In the face of this horror, you don’t believe there is anything you can do to stop it. You have but one hope if you are to survive. You turn on Lita and throw her at the terrible monstrosity, watching in dread as its swirling void-like mass consumes her. She cries out in torment as the life is sucked from her body. “Umôrdhoth…Umôrdhoth…” the cultists chant. Lita Chantler vanishes without a trace. For a moment, you fear that the creature will now turn on you, but you hear one of the cultists say, “Umôrdhoth is a just god who claims only the guilty and the dead. Go, and you shall be spared.” The swirling mass vanishes, and warmth and light return to the woods. The cultists slink away, leaving you alive. Lita’s last moments are forever etched upon your memory.",
+      "steps": ["lita_sacrificed", "lita_trauma", "madness_weakness", "earn_xp", "$upgrade_decks", "survived"]
+    }
+  ]
+}
+,
+{
+  "id": "torch",
+  "scenario_name": "The Gathering",
+  "full_name": "Scenario I: The Gathering",
+  "setup": [
+    "prologue",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_cards",
+    "encounter_deck",
+    "$choose_resolution"
+  ],
+  "steps": [
+    {
+      "id": "prologue",
+      "type": "story",
+      "text": "You and your partners have been investigating strange events taking place in your home city of Arkham, Massachusetts. Over the past few weeks, several townspeople have mysteriously gone missing. Recently, their corpses turned up in the woods, savaged and half-eaten. The police and newspapers have stated that wild animals are responsible, but you believe there is something else going on. You are gathered together at the lead investigator’s home to discuss these bizarre events."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "torch",
+        "rats",
+        "ghouls",
+        "striking_fear",
+        "ancient_evils",
+        "chilling_cold"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the Study location into play. Set each other location aside, out of play. Each investigator begins play in the Study."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the Ghoul Priest and Lita Chantler cards aside, out of play."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+    },
+    {
+      "id": "house_standing",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "house_standing",
+          "text": "your house is still standing."
+        }
+      ]
+    },
+    {
+      "id": "house_burned",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "house_burned",
+          "text": "your house has burned to the ground."
+        }
+      ]
+    },
+    {
+      "id": "ghoul_priest_alive",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "ghoul_priest_alive",
+          "text": "the Ghoul Priest is still alive."
+        }
+      ]
+    },
+    {
+      "id": "lita_finds_others",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "lita_finds_others",
+          "text": "Lita was forced to find others to help her cause."
+        }
+      ]
+    },
+    {
+      "id": "earn_lita",
+      "text": "The lead investigator earns the Lita Chantler card and may include it in their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "01117"
+        }
+      ]
+    },
+    {
+      "id": "lead_investigator_xp",
+      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "lead_investigator",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display (remember to add eligible locations to the victory display).",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "bonus": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "mental_trauma",
+      "text": "The lead investigator suffers 1 mental trauma from watching their home become a smoldering ruin.",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "lead_investigator",
+          "mental": 1
+        }
+      ]
+    },
+    {
+      "id": "killed",
+      "text": "Each investigator who has not resigned is <b>killed</b>. If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, advance to the next scenario. (Each player whose investigator has been killed must choose a new investigator from the pool of available investigators. Refer to page 13 of the Rules Reference for the full rules on killed investigators.)",
+      "effects": [
+        {
+          "type": "trauma",
+          "investigator": "not_resigned",
+          "killed": true
+        }
+      ]
+    },
+    {
+      "id": "choose_new_investigators",
+      "text": "Each player whose investigator has been killed must choose a new investigator from the pool of available investigators.",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
+    {
+      "id": "check_lead_investigator_killed",
+      "type": "branch",
+      "condition": {
+        "type": "trauma",
+        "investigator": "lead_investigator",
+        "trauma": "killed",
+        "options": [{
+          "boolCondition": true,
+          "steps": ["lead_investigator_killed", "$upgrade_decks"]
+        }]
+      }
+    },
+    {
+      "id": "lead_investigator_killed",
+      "bullet_type": "small",
+      "text": "Because the lead investigator was killed, choose an investigator to earn the Lita Chantler card. That investigator may include this card in their deck. It does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "any",
+          "card": "01117"
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "physical",
+        "mental"
+      ],
+      "text": "You barely manage to escape your house with your lives. The woman from your parlor follows you out the front door, slamming it behind her. “You fools! See what you have done?” She pushes a chair in front of the door, lodging it beneath the doorknob. “We must get out of here. Come with me, and I will tell you what I know. We are the only ones who can stop the threat that lurks beneath from being unleashed throughout the city.” You’re in no state to argue. Nodding, you follow the woman as she runs from your front porch out into the rainy street, toward Rivertown",
+      "steps": ["house_standing", "ghoul_priest_alive", "earn_lita", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "You nod and allow the red-haired woman to set the walls and floor of your house ablaze. The fire spreads quickly, and you run out the front door to avoid being caught in the inferno. From the sidewalk, you watch as everything you own is consumed by the flames. “Come with me,” the woman says. “You must be told of the threat that lurks below. Alone, we are surely doomed…but together, we can stop it.”",
+      "steps": ["house_burned", "earn_lita", "mental_trauma", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "You refuse to follow the overzealous woman’s order and kick her out of your home for fear that she will set it ablaze without your permission. “Fools! You are making a grave mistake!” she warns. “You do not understand the threat that lurks below… the grave danger we are all in!” Still shaken by the night’s events, you decide to hear the woman out. Perhaps she can shed some light on these bizarre events…but she doesn’t seem to trust you very much.",
+      "steps": ["house_standing", "lead_investigator_xp", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "investigator_status": [
+        "alive",
+        "physical",
+        "mental"
+      ],
+      "text": "You run to the hallway to try to find a way to escape the house, but the burning-hot barrier still blocks your path. Trapped, the horde of feral creatures that have invaded your home close in, and you have nowhere to run.",
+      "steps": ["lita_finds_others", "house_standing", "ghoul_priest_alive", "killed", "choose_new_investigators", "check_lead_investigator_killed"]
+    }
+  ]
+}
+,
+{
+  "id": "arkham",
+  "scenario_name": "The Midnight Masks",
+  "full_name": "Scenario II: The Midnight Masks",
+  "setup": [
+    "lita_condition",
+    "intro_3",
+    "gather_encounter_sets",
+    "gather_cult",
+    "setup_locations",
+    "spawn_cultists",
+    "check_house_burned",
+    "check_house_standing",
+    "encounter_deck",
+    "check_ghoul_priest",
+    "doom_note",
+    "$choose_resolution"
+  ],
+  "steps": [
+    {
+      "id": "lita_condition",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "lita_finds_others",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "The woman came to you in a panic, raving about monsters emerging from the ground in a home near Rivertown. “I managed to trap them,” she explains, “but there are others. Other pits. Other domains.” Only last week, you would have thought she was a lunatic. Recent events, however, have challenged your preconceptions of normality. You decide to hear her out. She introduces herself as Lita Chantler and lays out a tale that strains the limits of your belief. “The creatures I speak of ,” she claims, “are called ghouls—cruel beings who plague the crypts, caverns, and tunnels beneath the city of Arkham…”"
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "In the wake of the disaster at your home, Lita Chantler, the red-haired woman from your parlor, lays out a tale that—even in light of what you have just witnessed—strains the limits of your belief. “The creatures in your home,” she claims, “are called ghouls—cruel beings who plague the crypts, caverns, and tunnels beneath the city of Arkham…”"
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "“These creatures feed on the corpses of humans, and they are served by a dark cult within Arkham whose members have inexplicably come to worship the ancient master of the ghouls. This cult has been killing innocent people and feeding them to the ghouls, satiating a monstrous hunger. A dark balance was maintained. Until now. Recently,” Lita continues, “one of their lairs, where the corpses were stored, was destroyed. Since then, the ghouls have been more active than usual. I have tracked their movements and tried my best to stop them from running amok throughout the city. But I think there is something worse going on. The cult has been planning something darker, and more ominous, than anything I have yet observed. Indications are that this plan shall come to fruition tonight, shortly after midnight. Beyond that, I cannot fathom what to expect.\n“Many of the cultists,” Lita continues, “will seem like everyday people, despite their foul intentions. Whenever the cult meets, its members don masks shaped like the skulls of various animals to protect their identities from one another. These masks are our mark. Symbols of death and decay. We must unmask the cultists to expose and derail their plans. We have but a few hours. The more cultists we find before midnight, the better.”"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "arkham",
+        "chilling_cold",
+        "nightgaunts",
+        "pentagram",
+        "locked_doors"
+      ]
+    },
+    {
+      "id": "gather_cult",
+      "type": "encounter_sets",
+      "aside": true,
+      "encounter_sets": [
+        "cultists"
+      ],
+      "text": "Set the <i>Cult of Umôrdhoth</i> encounter set aside as a separate “Cultist deck,” and shuffle it."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Choose one of the two Downtown locations and one of the two Southside locations at random and put them into play. Remove the other versions of Downtown and Southside from the game. Then, put the Northside, Easttown, Rivertown, St. Mary’s Hospital, Graveyard, Miskatonic University, and Your House locations into play."
+    },
+    {
+      "id": "spawn_cultists",
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["no_cultists"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["one_cultist"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["two_cultists"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["three_cultists"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_cultists",
+      "text": "No changes are made.",
+      "bullet_type": "small"
+    },
+    {
+      "id": "one_cultist",
+      "text": "Search the gathered encounter sets for 1 copy of Acolyte and spawn it at Southside.",
+      "bullet_type": "small"
+    },
+    {
+      "id": "two_cultists",
+      "text": "Search the gathered encounter sets for 2 copies of Acolyte. Spawn 1 at Southside and 1 at Downtown.",
+      "bullet_type": "small"
+    },
+    {
+      "id": "three_cultists",
+      "text": "Search the gathered encounter sets for 3 copies of Acolyte. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
+      "bullet_type": "small"
+    },
+    {
+      "id": "check_house_burned",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "house_burned",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["remove_house"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_house_standing",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "house_standing",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["start_at_house"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "remove_house",
+      "bullet_type": "small",
+      "text": "Remove Your House from the game. Each investigator begins play at Rivertown."
+    },
+    {
+      "id": "start_at_house",
+      "bullet_type": "small",
+      "text": "Each investigator begins play at Your House."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+    },
+    {
+      "id": "check_ghoul_priest",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "ghoul_priest_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["add_ghoul_priest"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_ghoul_priest",
+      "bullet_type": "small",
+      "text": "Shuffle the Ghoul Priest into the encounter deck."
+    },
+    {
+      "id": "doom_note",
+      "type": "rule_reminder",
+      "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda"
+    },
+    {
+      "id": "cultists_interrogated_r1",
+      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play. If it is Agenda 1, record “The Masked Hunter” here as well.",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "cultist",
+            "unique": true,
+            "source": "scenario"
+          }
+        ],
+        "choices": [
+          {
+            "id": "interrogated",
+            "text": "Interrogated",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "cultists_interrogated",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          },
+          {
+            "id": "got_away",
+            "text": "Got away",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cultists_interrogated_r2",
+      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play.",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "cultist",
+            "unique": true,
+            "source": "scenario"
+          }
+        ],
+        "choices": [
+          {
+            "id": "interrogated",
+            "text": "Interrogated",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "cultists_interrogated",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          },
+          {
+            "id": "got_away",
+            "text": "Got away",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ghoul_priest_defeated",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "ghoul_priest_alive",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ask_ghoul_priest_defeated"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_ghoul_priest_defeated",
+      "bullet_type": "small",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "ghoul_priest_killed",
+            "text": "Is the Ghoul Priest in the victory display?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "ghoul_priest_alive",
+                "cross_out": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "past_midnight",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "past_midnight",
+          "text": "it is past midnight."
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "Read <b>Resolution 1</b>",
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
+      "steps": ["cultists_interrogated_r1", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "Twelve bells ring out, signaling midnight. You’re out of time; the cult’s ritual will begin shortly. You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
+      "steps": ["cultists_interrogated_r2", "past_midnight", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
+    }
+  ]
+}
+]}
+,
+{
+  "campaign":
+{
   "id": "dwl",
   "position": 1,
   "name": "The Dunwich Legacy",
@@ -302,7 +1392,7 @@
     {
       "id": "gather_naomis_crew",
       "bullet_type": "small",
-      "text": "Seeking vengeance, the gang from the Clover Club has followed you to Dunwich. Gather all cards from the Naomi’s Crew encounter set and shuffle them into the encounter deck.",
+      "text": "Seeking vengeance, the gang from the Clover Club has followed you to Dunwich. Gather all cards from the <i>Naomi’s Crew</i> encounter set and shuffle them into the encounter deck.",
       "type": "encounter_sets",
       "encounter_sets": [
         "naomis_crew"
@@ -440,11 +1530,12 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 2 bonus experience as they gains insight into the hidden world of the Mythos.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into the hidden world of the Mythos.",
         "effects": [
           {
             "type": "earn_xp",
@@ -455,8 +1546,8 @@
       }
     },
     {
-      "id": "proceed_undimensioned_and_unseen",
-      "text": "Proceed to <b>Scenario V: Undimensioned and Unseen.</b>",
+      "id": "skip_survivors",
+      "hidden": true,
       "effects": [
         {
           "type": "campaign_data",
@@ -464,10 +1555,6 @@
           "scenario": "dwl_interlude2"
         }
       ]
-    },
-    {
-      "id": "proceed_survivors",
-      "text": "Proceed to <b>Interlude II: The Survivors.</b>"
     },
     {
       "id": "check_henry_armitage",
@@ -508,25 +1595,25 @@
         "mental"
       ],
       "text": "The cries of the whippoorwills fade into the distance, and the town of Dunwich is filled with an eerie silence. All that can be heard is the dry whistle of the chill wind and the slow rustling of dead leaves. There is no sign of the missing townsfolk, nor will there be ever again.",
-      "steps": ["ritual_completed", "sacrifice_all", "record_sacrificed", "check_henry_armitage", "lose_necronomicon", "earn_2_xp", "$upgrade_decks", "proceed_undimensioned_and_unseen"]
+      "steps": ["ritual_completed", "sacrifice_all", "record_sacrificed", "check_henry_armitage", "lose_necronomicon", "earn_2_xp", "$upgrade_decks", "skip_survivors"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "As you land the finishing blow, the creature’s body explodes into hundreds of squirming ropelike appendages, wriggling across the ground and climbing up the walls. You’re so startled that you aren’t fast enough to prevent them from escaping the room. Even so, whatever that creature was, you’re glad it’s now dead.",
-      "steps": ["killed_silas_bishop", "record_sacrificed", "lose_necronomicon", "earn_2_xp", "proceed_survivors"]
+      "steps": ["killed_silas_bishop", "record_sacrificed", "lose_necronomicon", "earn_2_xp"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "With the creature that once was Silas lashing out at you from its chains, you have little time to react. Knowing that the Necronomicon might have a spell or incantation that could subdue Silas, you fend off the abomination long enough to find a passage that can help. With no time to spare, you recite the Latin incantation, and find that the words come effortlessly to your tongue, as though recalled from an earlier memory. The creature’s body begins to shrink and melt away as the incantation builds, its cries terrifying and haunting. In the end, all that is left is the disfigured corpse of a man—Silas Bishop. You find a silver pendant emblazoned with an odd constellation tucked into his shirt. You take it with you, hoping to find a use for it.",
-      "steps": ["restored_silas_bishop", "record_sacrificed", "earn_2_xp", "proceed_survivors"]
+      "steps": ["restored_silas_bishop", "record_sacrificed", "earn_2_xp"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "With the creature that once was Silas lashing out at you from its chains, you have little time to react. Hoping there is something in the chamber you can use to your advantage, you fend off the abomination long enough to find a journal; many of its passages are written in Latin. It appears to be a handwritten excerpt from the Necronomicon, its purpose unknown. With no time to spare, you recite the incantation, stumbling over the words and feeling your throat tighten with each sentence. The creature’s body begins to shrink and melt away as the incantation continues, its cries terrifying and haunting. In the end, all that is left is a pile of wet and sticky ichor, and a rotten stench.",
-      "steps": ["banished_silas_bishop", "record_sacrificed", "lose_necronomicon", "earn_2_xp", "proceed_survivors"]
+      "steps": ["banished_silas_bishop", "record_sacrificed", "lose_necronomicon", "earn_2_xp"]
     }
   ]
 }
@@ -1112,6 +2199,7 @@
     },
     {
       "id": "proceed_either",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -1120,22 +2208,10 @@
         "options": [
           {
             "boolCondition": false,
-            "steps": ["$upgrade_decks", "proceed_house_always_wins"]
-          },
-          {
-            "boolCondition": true,
-            "steps": ["proceed_armitages_fate"]
+            "steps": ["$upgrade_decks"]
           }
         ]
       }
-    },
-    {
-      "id": "proceed_house_always_wins",
-      "text": "Proceed to <b>Scenario I–B: The House Always Wins</b>."
-    },
-    {
-      "id": "proceed_armitages_fate",
-      "text": "Proceed to <b>Interlude I: Armitage’s Fate</b>."
     }
   ],
   "resolutions": [
@@ -1155,7 +2231,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You find Professor Rice bound and gagged in the closet of his office. When you free him, he informs you that the strange men and women wandering around the campus had been stalking him for hours. They cornered him in his office and tied him up, although for what purpose, Rice isn’t sure. You inform him that Dr. Armitage sent you, and Rice looks relieved, although he suspects that Dr. Morgan might be in danger as well. Because the strangers on campus seem to have been targeting Professor Rice, you decide that the best course of action is to escort him away from the campus as quickly as possible. As you leave the university, you hear screaming from the northern end of the campus. An ambulance passes you by, and you fear the worst. Hours later, you learn that a ‘rabid dog of some sort’ found its way into the university dormitories. The creature attacked the students inside, and many were mauled or killed in the attack.",
-      "steps": ["warren_rice_rescued", "earn_warren_rice", "failed_to_save_students", "earn_xp", "$upgrade_decks", "proceed_house_always_wins"]
+      "steps": ["warren_rice_rescued", "earn_warren_rice", "failed_to_save_students", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
@@ -1334,10 +2410,11 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as they saved the world from being torn apart.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
+        "confirm_text": "Each investigator earns 5 bonus experience, as they saved the world from being torn apart.",
         "text": "Victory display:",
         "effects": [
           {
@@ -1547,6 +2624,7 @@
     },
     {
       "id": "maybe_earn_henry_armitage",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -1604,6 +2682,7 @@
     },
     {
       "id": "maybe_earn_warren_rice",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -1661,6 +2740,7 @@
     },
     {
       "id": "maybe_earn_francis_morgan",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -1771,6 +2851,7 @@
     },
     {
       "id": "maybe_earn_powder",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "has_card",
@@ -1974,11 +3055,12 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 experience as they reflects on the night’s events.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 1 bonus experience as they reflect on the night’s events.",
         "effects": [
           {
             "type": "earn_xp",
@@ -1990,6 +3072,7 @@
     },
     {
       "id": "proceed_either",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -1998,24 +3081,10 @@
         "options": [
           {
             "boolCondition": false,
-            "steps": ["$upgrade_decks", "proceed_extracurricular_activity"]
-          },
-          {
-            "boolCondition": true,
-            "steps": ["proceed_armitages_fate"]
+            "steps": ["$upgrade_decks"]
           }
         ]
       }
-    },
-    {
-      "id": "proceed_extracurricular_activity",
-      "bullet_type": "small",
-      "text": "Proceed to <b>Scenario I–A: Extracurricular Activity</b>."
-    },
-    {
-      "id": "proceed_armitages_fate",
-      "bullet_type": "small",
-      "text": "Proceed to <b>Interlude I: Armitage’s Fate</b>."
     },
     {
       "id": "resolution_1",
@@ -2805,6 +3874,7 @@
     {
       "id": "check_escaped_brood",
       "type": "branch",
+      "hidden": true,
       "condition": {
         "type": "campaign_log_count",
         "section": "campaign_notes",
@@ -2839,33 +3909,27 @@
     },
     {
       "id": "add_0_doom",
-      "bullet_type": "small",
-      "text": "Because no Broods escaped, no doom is added to agenda 1a."
+      "text": "Check Campaign Log. Because <i>no brood escaped into the wild</i>, no doom is added to agenda 1a."
     },
     {
       "id": "add_1_doom",
-      "bullet_type": "small",
-      "text": "Add 1 doom to agenda 1a."
+      "text": "Check Campaign Log. Because <i>1 brood escaped into the wild</i>, add 1 doom to agenda 1a."
     },
     {
       "id": "add_2_doom",
-      "bullet_type": "small",
-      "text": "Add 2 doom to agenda 1a."
+      "text": "Check Campaign Log. Because <i>2 brood escaped into the wild</i>, add 2 doom to agenda 1a."
     },
     {
       "id": "add_3_doom",
-      "bullet_type": "small",
-      "text": "Add 2 doom to agenda 1a."
+      "text": "Check Campaign Log. Because <i>3 brood escaped into the wild</i>, add 3 doom to agenda 1a."
     },
     {
       "id": "add_4_doom",
-      "bullet_type": "small",
-      "text": "Add 2 doom to agenda 1a."
+      "text": "Check Campaign Log. Because <i>4 brood escaped into the wild</i>, add 4 doom to agenda 1a."
     },
     {
       "id": "add_5_doom",
-      "bullet_type": "small",
-      "text": "Add 2 doom to agenda 1a."
+      "text": "Check Campaign Log. Because <i>5 brood escaped into the wild</i>, add 5 doom to agenda 1a."
     },
     {
       "id": "check_killed_silas_bishop",
@@ -2884,6 +3948,7 @@
     },
     {
       "id": "killed_silas_bishop",
+      "bullet_type": "small",
       "text": "The remnants of the creature's body have mutated and grown at Sentinel Hill. Put 1 “Conglomeration of Spheres” enemy from the <i>Hideous Abominations</i> encounter set into play at Ascending Path. Shuffle the rest of that set into the encounter deck.",
       "type": "encounter_sets",
       "encounter_sets": [
@@ -2983,1093 +4048,6 @@
       "title": "Resolution 2",
       "text": "The sorcerers from Dunwich, seeking arcane power from beyond this realm, have accomplished what Wilbur and Old Whateley could not. Through blood sacrifice and indescribable experiments, the dark power the sorcerers sought is now within their reach. However, they will never get the chance to truly wield this power. In beseeching Wilbur’s father for knowledge, they have drawn the creature forth from its extradimensional realm. Yog-Sothoth emerges from the open rift above Sentinel Hill, blotting out the sky and enveloping the world. Now it has come to Earth, and it rules where humanity once tread.",
       "steps": ["yog_sothoth_escaped", "all_insane", "lose_campaign"]
-    }
-  ]
-}
-]}
-,
-{
-  "campaign":
-{
-  "id": "notz",
-  "name": "The Night of the Zealot",
-  "position": 0,
-  "campaign_log": [
-    {
-      "id": "campaign_notes",
-      "title": "Campaign Notes"
-    },
-    {
-      "id": "cultists_interrogated",
-      "title": "Cultists We Interrogated"
-    },
-    {
-      "id": "cultists_escaped",
-      "title": "Cultists Who Got Away"
-    }
-  ],
-  "scenarios": [
-    "torch",
-    "arkham",
-    "tentacles"
-  ],
-  "setup": [
-    "prologue",
-    "difficulty_choice"
-  ],
-  "steps": [
-    {
-      "id": "prologue",
-      "type": "story",
-      "text": "Friday, September 18, 1925. Arkham, Massachusetts. It is the end of a long and abnormally hot summer. The first hints of autumn beckon, but a heavy heat persists, relentless. A silent, unspoken anger grips the town. Tempers are short, and in the last week alone there have been numerous reports of townspeople coming to heated, violent blows with one another over simple misunderstandings.\nAnd now, a call from James Hankerson. He claims to have found a dismembered body in his barn.\nBlaming the weather would be too easy. There is something wrong with this town, and not a whole lot this old soothsayer can do to stop the slide. My auguries indicate a small group of investigators will soon take note of these strange happenings and set forth to make things right. I’ll be watching their progress… but I won’t be holding my breath."
-    },
-    {
-      "id": "difficulty_choice",
-      "text": "Choose difficulty level:",
-      "type": "input",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "easy",
-            "text": "Easy <i>(I want to experience the story)</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
-            "effects": [
-              {
-                "type": "campaign_data",
-                "setting": "difficulty",
-                "value": "easy"
-              },
-              {
-                "type": "add_chaos_token",
-                "tokens": [
-                  "+1", "+1", "0", "0", "0", "-1", "-1", "-1", "-2", "-2", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-                ]
-              }
-            ]
-          },{
-            "id": "standard",
-            "text": "Standard <i>(I want a challenge)</i>",
-            "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist],  [tablet], [auto_fail], [elder_sign]",
-            "effects": [
-              {
-                "type": "campaign_data",
-                "setting": "difficulty",
-                "value": "standard"
-              },
-              {
-                "type": "add_chaos_token",
-                "tokens": [
-                  "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-                ]
-              }
-            ]
-          },{
-            "id": "hard",
-            "text": "Hard <i>(I want a true nightmare)</i>",
-            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
-            "effects": [
-              {
-                "type": "campaign_data",
-                "setting": "difficulty",
-                "value": "hard"
-              },
-              {
-                "type": "add_chaos_token",
-                "tokens": [
-                  "0", "0", "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-5", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-                ]
-              }
-            ]
-          },{
-            "id": "expert",
-            "text": "Expert <i>(I want Arkham Horror)</i>",
-            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [tablet], [auto_fail], [elder_sign]",
-            "effects": [
-              {
-                "type": "campaign_data",
-                "setting": "difficulty",
-                "value": "expert"
-              },
-              {
-                "type": "add_chaos_token",
-                "tokens": [
-                  "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-5", "-6", "-8", "skull", "skull", "cultist", "tablet", "auto_fail", "elder_sign"
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-, "scenarios": [
-{
-  "id": "tentacles",
-  "scenario_name": "The Devourer Below",
-  "full_name": "Scenario III: The Devourer Below",
-  "setup": [
-    "intro",
-    "gather_encounter_sets",
-    "setup_locations",
-    "set_aside_cards",
-    "gather_agents",
-    "check_escaped_cultists",
-    "add_elder_thing",
-    "check_past_midnight",
-    "check_ghoul_priest",
-    "$choose_resolution"
-  ],
-  "steps": [
-    {
-      "id": "intro",
-      "type": "story",
-      "text": "After a frantic nighttime search throughout Arkham, you have tracked down and questioned several members of the cult. Your findings are disturbing: they claim to worship a being known as Umôrdhoth, a monstrous entity from another realm.\nYou are able to confirm much of Lita’s story: the cult is agitated over the destruction of a ghoul lair. However, a surprising detail also turns up: the one who invaded the lair and set this night’s events in motion was none other than Lita Chantler herself! You are not sure why this important detail was omitted from Lita’s story—did she tell you only as much as was necessary to draw you into her conflict? But in another light, she seems to be fighting to protect the city of Arkham from a terrible menace.\nThe final piece of the puzzle was found written in a journal possessed by one of the cultists. It describes a dark ritual to be performed deep within the woods south of Arkham, this very night. According to the journal, the ritual’s completion will open a gate and bring forth the cult’s dark master into this world. “If the cult is not stopped,” Lita warns, “there is a possibility that Umôrdhoth’s vengeance will consume all in its path.” Frightened but determined to stop the ritual, you head into the woods…"
-    },
-    {
-      "id": "gather_encounter_sets",
-      "title": "Setup",
-      "type": "encounter_sets",
-      "encounter_sets": [
-        "tentacles",
-        "ancient_evils",
-        "striking_fear",
-        "ghouls",
-        "pentagram"
-      ]
-    },
-    {
-      "id": "gather_agents",
-      "type": "encounter_sets",
-      "encounter_sets": [
-        "agents_of_yog",
-        "agents_of_shub",
-        "agents_of_cthulhu",
-        "agents_of_hastur"
-      ],
-      "text": "Randomly choose one of following 4 encounter sets:",
-      "subtext": "Without looking at the chosen encounter set, shuffle it and the remainder of the encounter cards together to form the encounter deck. Remove the other 3 encounter sets from the game."
-    },
-    {
-    	"id": "setup_locations",
-      "text": "Put the Main Path location into play. Shuffle the 6 copies of Arkham Woods, choose 4 of them at random, and put them into play without looking at their revealed sides. Remove the other 2 from the game. Each investigator begins play at the Main Path."
-    },
-    {
-    	"id": "set_aside_cards",
-      "text": "Set the Ritual Site and Umôrdhoth cards aside, out of play."
-    },
-    {
-    	"id": "check_escaped_cultists",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log_count",
-        "section": "cultists_escaped",
-        "id": "$num_entries",
-        "max": 6,
-        "options": [
-          {
-            "numCondition": 1,
-            "steps": ["place_one_doom"]
-          },
-          {
-            "numCondition": 2,
-            "steps": ["place_one_doom"]
-          },
-          {
-            "numCondition": 3,
-            "steps": ["place_two_doom"]
-          },
-          {
-            "numCondition": 4,
-            "steps": ["place_two_doom"]
-          },
-          {
-            "numCondition": 5,
-            "steps": ["place_three_doom"]
-          },
-          {
-            "numCondition": 6,
-            "steps": ["place_three_doom"]
-          }
-        ],
-        "defaultOption": {
-          "steps": []
-        }
-      }
-    },
-    {
-      "id": "place_one_doom",
-      "bullet_type": "small",
-      "text": "Place 1 doom on Agenda 1a."
-    },
-    {
-    	"id": "place_two_doom",
-      "bullet_type": "small",
-      "text": "Place 2 doom on Agenda 1a."
-    },
-    {
-    	"id": "place_three_doom",
-      "bullet_type": "small",
-      "text": "Place 3 doom on Agenda 1a."
-    },
-    {
-    	"id": "add_elder_thing",
-      "text": "Add 1 [elder_thing] chaos token to the chaos bag for the remainder of the campaign.",
-      "effects": [
-        {
-          "type": "add_chaos_token",
-          "tokens": ["elder_thing"]
-        }
-      ]
-    },
-    {
-    	"id": "check_past_midnight",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "past_midnight",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["randomly_discard_2_cards"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "randomly_discard_2_cards",
-      "bullet_type": "small",
-      "text": "Each player discards 2 random cards from their starting hand."
-    },
-    {
-    	"id": "check_ghoul_priest",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "ghoul_priest_alive",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["add_ghoul_priest"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "add_ghoul_priest",
-      "bullet_type": "small",
-      "text": "Shuffle the Ghoul Priest into the encounter deck."
-    },
-    {
-    	"id": "arkham_succumbed",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "arkham_succumbed",
-          "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
-        }
-      ]
-    },
-    {
-    	"id": "killed",
-      "text": "Each surviving investigator is <b>killed</b>.",
-      "effects": [
-        {
-          "type": "trauma",
-          "investigator": "all",
-          "killed": true
-        }
-      ]
-    },
-    {
-    	"id": "lose",
-      "text": "The investigators lose.",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "result",
-          "value": "lose"
-        }
-      ]
-    },
-    {
-    	"id": "ritual_broken",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "ritual_broken",
-          "text": "the ritual to summon Umôrdhoth was broken."
-        }
-      ]
-    },
-    {
-    	"id": "umordhoth_repelled",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "umordhoth_repelled",
-          "text": "the investigators repelled Umôrdhoth."
-        }
-      ]
-    },
-    {
-    	"id": "lita_sacrificed",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "lita_sacrificed",
-          "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
-        },
-        {
-          "type": "remove_card",
-          "card": "01117"
-        }
-      ]
-    },
-    {
-    	"id": "ritual_trauma",
-      "text": "Each investigator suffers 2 mental trauma, as they never fully recovers from their ordeal.",
-      "effects": [
-        {
-          "type": "trauma",
-          "investigator": "all",
-          "mental": 2
-        }
-      ]
-    },
-    {
-    	"id": "fight_trauma",
-      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the fight against Umôrdhoth has taken its toll on their body and mind.",
-      "effects": [
-        {
-          "type": "trauma",
-          "investigator": "all",
-          "mental": 2,
-          "physical": 2
-        }
-      ]
-    },
-    {
-    	"id": "lita_trauma",
-      "text": "Each investigator suffers 2 physical and 2 mental trauma, as the mere sight of Umôrdhoth has taken its toll on their body and mind.",
-      "effects": [
-        {
-          "type": "trauma",
-          "investigator": "all",
-          "mental": 2,
-          "physical": 2
-        }
-      ]
-    },
-    {
-    	"id": "madness_weakness",
-      "text": "The guilt over sacrificing Lita forever haunts your memory. Each investigator must search the collection for a random [[Madness]] weakness and add it to their deck.",
-      "effects": [
-        {
-          "type": "add_weakness",
-          "investigator": "all",
-          "weakness_traits": ["Madness"]
-        }
-      ]
-    },
-    {
-    	"id": "earn_5_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as they has saved Arkham from a terrible fate.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Victory display:",
-        "effects": [
-          {
-            "type": "earn_xp",
-            "investigator": "all",
-            "bonus": 5
-          }
-        ]
-      }
-    },
-    {
-    	"id": "earn_10_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 10 bonus experience, as they has triumphed in battle against a truly terrible foe.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Victory display:",
-        "effects": [
-          {
-            "type": "earn_xp",
-            "investigator": "all",
-            "bonus": 10
-          }
-        ]
-      }
-    },
-    {
-      "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Victory display:",
-        "effects": [
-          {
-            "type": "earn_xp",
-            "investigator": "all"
-          }
-        ]
-      }
-    },
-    {
-      "id": "win",
-      "text": "The investigators win!",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "result",
-          "value": "win"
-        }
-      ]
-    },
-    {
-      "id": "survived",
-      "text": "The investigators have survived, but their actions weigh heavily on their consciences",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "result",
-          "value": "survived"
-        }
-      ]
-    }
-  ],
-  "resolutions": [
-    {
-      "id": "no_resolution",
-      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
-      "investigator_status": [
-        "resigned",
-        "eliminated",
-        "physical",
-        "mental"
-      ],
-      "text": "Too frightened to face her fate, Lita flees into the night. She realizes that she has failed and Umôrdhoth’s vengeance will pursue her wherever she goes. The creature’s tendrils spread throughout the city of Arkham, searching for her. It lurks in the darkness of every corner, tugging at the seams of reality. But Lita is nowhere to be found, so the creature dwells in the shadows to this day, searching… killing.",
-      "steps": ["arkham_succumbed", "killed", "lose"]
-    },
-    {
-      "id": "R1",
-      "title": "Resolution 1",
-      "text": "You have managed to prevent the cult from summoning its master. Although you’re unsure what would have happened had the cult succeeded, you’re relieved that—at least for the time being—Arkham is safe. You capture as many cultists as you can find, but very few townspeople believe your tale. Perhaps it was all in your head, after all.",
-      "steps": ["ritual_broken", "ritual_trauma", "earn_5_xp", "$upgrade_decks", "win"]
-    },
-    {
-      "id": "R2",
-      "title": "Resolution 2",
-      "text": "Through force of arms and strength of will, you are somehow able to harm Umôrdhoth enough to send it reeling back to the dimension from which it emerged. Warmth and light return to the woods as the void-like mass is sucked in upon itself, vanishing in an instant. You aren’t sure if a being such as this can be killed, but for the time being it seems to have retreated. As their master vanishes, the ghouls nearby climb into the open pit below, fleeing with terrible cries and shrieks. You have stopped an evil plot, but the fight has taken its toll on your body and mind. Worse, you can’t help but feel insignificant in the face of the world’s mysteries. What other terrors exist in the deep, dark corners of reality?",
-      "steps": ["umordhoth_repelled", "fight_trauma", "earn_10_xp", "$upgrade_decks", "win"]
-    },
-    {
-      "id": "R3",
-      "title": "Resolution 3",
-      "text": "In the face of this horror, you don’t believe there is anything you can do to stop it. You have but one hope if you are to survive. You turn on Lita and throw her at the terrible monstrosity, watching in dread as its swirling void-like mass consumes her. She cries out in torment as the life is sucked from her body. “Umôrdhoth…Umôrdhoth…” the cultists chant. Lita Chantler vanishes without a trace. For a moment, you fear that the creature will now turn on you, but you hear one of the cultists say, “Umôrdhoth is a just god who claims only the guilty and the dead. Go, and you shall be spared.” The swirling mass vanishes, and warmth and light return to the woods. The cultists slink away, leaving you alive. Lita’s last moments are forever etched upon your memory.",
-      "steps": ["lita_sacrificed", "lita_trauma", "madness_weakness", "earn_xp", "$upgrade_decks", "survived"]
-    }
-  ]
-}
-,
-{
-  "id": "torch",
-  "scenario_name": "The Gathering",
-  "full_name": "Scenario I: The Gathering",
-  "setup": [
-    "prologue",
-    "gather_encounter_sets",
-    "setup_locations",
-    "set_aside_cards",
-    "encounter_deck",
-    "$choose_resolution"
-  ],
-  "steps": [
-    {
-      "id": "prologue",
-      "type": "story",
-      "text": "You and your partners have been investigating strange events taking place in your home city of Arkham, Massachusetts. Over the past few weeks, several townspeople have mysteriously gone missing. Recently, their corpses turned up in the woods, savaged and half-eaten. The police and newspapers have stated that wild animals are responsible, but you believe there is something else going on. You are gathered together at the lead investigator’s home to discuss these bizarre events."
-    },
-    {
-      "id": "gather_encounter_sets",
-      "title": "Setup",
-      "type": "encounter_sets",
-      "encounter_sets": [
-        "torch",
-        "rats",
-        "ghouls",
-        "striking_fear",
-        "ancient_evils",
-        "chilling_cold"
-      ]
-    },
-    {
-      "id": "setup_locations",
-      "text": "Put the Study location into play. Set each other location aside, out of play. Each investigator begins play in the Study."
-    },
-    {
-      "id": "set_aside_cards",
-      "text": "Set the Ghoul Priest and Lita Chantler cards aside, out of play."
-    },
-    {
-      "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
-    },
-    {
-      "id": "house_standing",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "house_standing",
-          "text": "your house is still standing."
-        }
-      ]
-    },
-    {
-      "id": "house_burned",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "house_burned",
-          "text": "your house has burned to the ground."
-        }
-      ]
-    },
-    {
-      "id": "ghoul_priest_alive",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "ghoul_priest_alive",
-          "text": "the Ghoul Priest is still alive."
-        }
-      ]
-    },
-    {
-      "id": "lita_finds_others",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "lita_finds_others",
-          "text": "Lita was forced to find others to help her cause."
-        }
-      ]
-    },
-    {
-      "id": "earn_lita",
-      "text": "The lead investigator earns the Lita Chantler card and may include it in their deck. This card does not count toward that investigator’s deck size.",
-      "effects": [
-        {
-          "type": "add_card",
-          "investigator": "lead_investigator",
-          "card": "01117"
-        }
-      ]
-    },
-    {
-      "id": "lead_investigator_xp",
-      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "lead_investigator",
-          "bonus": 1
-        }
-      ]
-    },
-    {
-      "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display (remember to add eligible locations to the victory display). Each investigator earns 2 bonus experience as they gains insight into the hidden world of the Mythos.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Victory display:",
-        "effects": [
-          {
-            "type": "earn_xp",
-            "investigator": "all",
-            "bonus": 2
-          }
-        ]
-      }
-    },
-    {
-      "id": "mental_trauma",
-      "text": "The lead investigator suffers 1 mental trauma from watching their home become a smoldering ruin.",
-      "effects": [
-        {
-          "type": "trauma",
-          "investigator": "lead_investigator",
-          "mental": 1
-        }
-      ]
-    },
-    {
-      "id": "killed",
-      "text": "Each investigator who has not resigned is <b>killed</b>. If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, advance to the next scenario. (Each player whose investigator has been killed must choose a new investigator from the pool of available investigators. Refer to page 13 of the Rules Reference for the full rules on killed investigators.)",
-      "effects": [
-        {
-          "type": "trauma",
-          "investigator": "not_resigned",
-          "killed": true
-        }
-      ]
-    },
-    {
-      "id": "choose_new_investigators",
-      "text": "Each player whose investigator has been killed must choose a new investigator from the pool of available investigators.",
-      "type": "input",
-      "input": {
-        "type": "scenario_investigators"
-      }
-    },
-    {
-      "id": "check_lead_investigator_killed",
-      "type": "branch",
-      "condition": {
-        "type": "trauma",
-        "investigator": "lead_investigator",
-        "trauma": "killed",
-        "options": [{
-          "boolCondition": true,
-          "steps": ["lead_investigator_killed", "$upgrade_decks"]
-        }]
-      }
-    },
-    {
-      "id": "lead_investigator_killed",
-      "bullet_type": "small",
-      "text": "Because the lead investigator was killed, choose an investigator to earn the Lita Chantler card. That investigator may include this card in their deck. It does not count toward that investigator’s deck size.",
-      "effects": [
-        {
-          "type": "add_card",
-          "investigator": "any",
-          "card": "01117"
-        }
-      ]
-    }
-  ],
-  "resolutions": [
-    {
-      "id": "no_resolution",
-      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
-      "investigator_status": [
-        "resigned",
-        "physical",
-        "mental"
-      ],
-      "text": "You barely manage to escape your house with your lives. The woman from your parlor follows you out the front door, slamming it behind her. “You fools! See what you have done?” She pushes a chair in front of the door, lodging it beneath the doorknob. “We must get out of here. Come with me, and I will tell you what I know. We are the only ones who can stop the threat that lurks beneath from being unleashed throughout the city.” You’re in no state to argue. Nodding, you follow the woman as she runs from your front porch out into the rainy street, toward Rivertown",
-      "steps": ["house_standing", "ghoul_priest_alive", "earn_lita", "earn_xp", "$upgrade_decks"]
-    },
-    {
-      "id": "R1",
-      "title": "Resolution 1",
-      "text": "You nod and allow the red-haired woman to set the walls and floor of your house ablaze. The fire spreads quickly, and you run out the front door to avoid being caught in the inferno. From the sidewalk, you watch as everything you own is consumed by the flames. “Come with me,” the woman says. “You must be told of the threat that lurks below. Alone, we are surely doomed…but together, we can stop it.”",
-      "steps": ["house_burned", "earn_lita", "mental_trauma", "earn_xp", "$upgrade_decks"]
-    },
-    {
-      "id": "R2",
-      "title": "Resolution 2",
-      "text": "You refuse to follow the overzealous woman’s order and kick her out of your home for fear that she will set it ablaze without your permission. “Fools! You are making a grave mistake!” she warns. “You do not understand the threat that lurks below… the grave danger we are all in!” Still shaken by the night’s events, you decide to hear the woman out. Perhaps she can shed some light on these bizarre events…but she doesn’t seem to trust you very much.",
-      "steps": ["house_standing", "lead_investigator_xp", "earn_xp", "$upgrade_decks"]
-    },
-    {
-      "id": "R3",
-      "title": "Resolution 3",
-      "investigator_status": [
-        "alive",
-        "physical",
-        "mental"
-      ],
-      "text": "You run to the hallway to try to find a way to escape the house, but the burning-hot barrier still blocks your path. Trapped, the horde of feral creatures that have invaded your home close in, and you have nowhere to run.",
-      "steps": ["lita_finds_others", "house_standing", "ghoul_priest_alive", "killed", "choose_new_investigators", "check_lead_investigator_killed"]
-    }
-  ]
-}
-,
-{
-  "id": "arkham",
-  "scenario_name": "The Midnight Masks",
-  "full_name": "Scenario II: The Midnight Masks",
-  "setup": [
-    "lita_condition",
-    "intro_3",
-    "gather_encounter_sets",
-    "gather_cult",
-    "setup_locations",
-    "spawn_cultists",
-    "check_house_burned",
-    "check_house_standing",
-    "encounter_deck",
-    "check_ghoul_priest",
-    "doom_note",
-    "$choose_resolution"
-  ],
-  "steps": [
-    {
-      "id": "lita_condition",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "lita_finds_others",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["intro_1"]
-          },
-          {
-            "boolCondition": false,
-            "steps": ["intro_2"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "intro_1",
-      "type": "story",
-      "text": "The woman came to you in a panic, raving about monsters emerging from the ground in a home near Rivertown. “I managed to trap them,” she explains, “but there are others. Other pits. Other domains.” Only last week, you would have thought she was a lunatic. Recent events, however, have challenged your preconceptions of normality. You decide to hear her out. She introduces herself as Lita Chantler and lays out a tale that strains the limits of your belief. “The creatures I speak of ,” she claims, “are called ghouls—cruel beings who plague the crypts, caverns, and tunnels beneath the city of Arkham…”"
-    },
-    {
-      "id": "intro_2",
-      "type": "story",
-      "text": "In the wake of the disaster at your home, Lita Chantler, the red-haired woman from your parlor, lays out a tale that—even in light of what you have just witnessed—strains the limits of your belief. “The creatures in your home,” she claims, “are called ghouls—cruel beings who plague the crypts, caverns, and tunnels beneath the city of Arkham…”"
-    },
-    {
-      "id": "intro_3",
-      "type": "story",
-      "text": "“These creatures feed on the corpses of humans, and they are served by a dark cult within Arkham whose members have inexplicably come to worship the ancient master of the ghouls. This cult has been killing innocent people and feeding them to the ghouls, satiating a monstrous hunger. A dark balance was maintained. Until now. Recently,” Lita continues, “one of their lairs, where the corpses were stored, was destroyed. Since then, the ghouls have been more active than usual. I have tracked their movements and tried my best to stop them from running amok throughout the city. But I think there is something worse going on. The cult has been planning something darker, and more ominous, than anything I have yet observed. Indications are that this plan shall come to fruition tonight, shortly after midnight. Beyond that, I cannot fathom what to expect.\n“Many of the cultists,” Lita continues, “will seem like everyday people, despite their foul intentions. Whenever the cult meets, its members don masks shaped like the skulls of various animals to protect their identities from one another. These masks are our mark. Symbols of death and decay. We must unmask the cultists to expose and derail their plans. We have but a few hours. The more cultists we find before midnight, the better.”"
-    },
-    {
-      "id": "gather_encounter_sets",
-      "title": "Setup",
-      "type": "encounter_sets",
-      "encounter_sets": [
-        "arkham",
-        "chilling_cold",
-        "nightgaunts",
-        "pentagram",
-        "locked_doors"
-      ]
-    },
-    {
-      "id": "gather_cult",
-      "type": "encounter_sets",
-      "aside": true,
-      "encounter_sets": [
-        "cultists"
-      ],
-      "text": "Set the Cult of Umôrdhoth encounter set aside as a separate “Cultist deck,” and shuffle it. This set is indicated by the following icon:"
-    },
-    {
-      "id": "setup_locations",
-      "text": "Choose one of the two Downtown locations and one of the two Southside locations at random and put them into play. Remove the other versions of Downtown and Southside from the game. Then, put the Northside, Easttown, Rivertown, St. Mary’s Hospital, Graveyard, Miskatonic University, and Your House locations into play."
-    },
-    {
-      "id": "spawn_cultists",
-      "type": "branch",
-      "condition": {
-        "type": "scenario_data",
-        "scenario_data": "player_count",
-        "options": [
-          {
-            "numCondition": 1,
-            "steps": ["no_cultists"]
-          },
-          {
-            "numCondition": 2,
-            "steps": ["one_cultist"]
-          },
-          {
-            "numCondition": 3,
-            "steps": ["two_cultists"]
-          },
-          {
-            "numCondition": 4,
-            "steps": ["three_cultists"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "no_cultists",
-      "text": "No changes are made.",
-      "bullet_type": "small"
-    },
-    {
-      "id": "one_cultist",
-      "text": "Search the gathered encounter sets for 1 copy of Acolyte and spawn it at Southside.",
-      "bullet_type": "small"
-    },
-    {
-      "id": "two_cultists",
-      "text": "Search the gathered encounter sets for 2 copies of Acolyte. Spawn 1 at Southside and 1 at Downtown.",
-      "bullet_type": "small"
-    },
-    {
-      "id": "three_cultists",
-      "text": "Search the gathered encounter sets for 3 copies of Acolyte. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
-      "bullet_type": "small"
-    },
-    {
-      "id": "check_house_burned",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "house_burned",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["remove_house"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "check_house_standing",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "house_standing",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["start_at_house"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "remove_house",
-      "bullet_type": "small",
-      "text": "Remove Your House from the game. Each investigator begins play at Rivertown."
-    },
-    {
-      "id": "start_at_house",
-      "bullet_type": "small",
-      "text": "Each investigator begins play at Your House."
-    },
-    {
-      "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
-    },
-    {
-      "id": "check_ghoul_priest",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "ghoul_priest_alive",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["add_ghoul_priest"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "add_ghoul_priest",
-      "bullet_type": "small",
-      "text": "Shuffle the Ghoul Priest into the encounter deck."
-    },
-    {
-      "id": "doom_note",
-      "type": "rule_reminder",
-      "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda"
-    },
-    {
-      "id": "cultists_interrogated_r1",
-      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play. If it is Agenda 1, record “The Masked Hunter” here as well.",
-      "type": "input",
-      "input": {
-        "type": "card_choice",
-        "query": [
-          {
-            "trait": "cultist",
-            "unique": true,
-            "source": "scenario"
-          }
-        ],
-        "choices": [
-          {
-            "id": "interrogated",
-            "text": "Interrogated",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_interrogated",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          },
-          {
-            "id": "got_away",
-            "text": "Got away",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_escaped",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "cultists_interrogated_r2",
-      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play.",
-      "type": "input",
-      "input": {
-        "type": "card_choice",
-        "query": [
-          {
-            "trait": "cultist",
-            "unique": true,
-            "source": "scenario"
-          }
-        ],
-        "choices": [
-          {
-            "id": "interrogated",
-            "text": "Interrogated",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_interrogated",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          },
-          {
-            "id": "got_away",
-            "text": "Got away",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_escaped",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "ghoul_priest_defeated",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "ghoul_priest_alive",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["ask_ghoul_priest_defeated"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "ask_ghoul_priest_defeated",
-      "bullet_type": "small",
-      "type": "input",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "ghoul_priest_killed",
-            "text": "Is the Ghoul Priest in the victory display?",
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "campaign_notes",
-                "id": "ghoul_priest_alive",
-                "cross_out": true
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "past_midnight",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "past_midnight",
-          "text": "it is past midnight."
-        }
-      ]
-    },
-    {
-      "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Victory display:",
-        "effects": [
-          {
-            "type": "earn_xp",
-            "investigator": "all"
-          }
-        ]
-      }
-    },
-    {
-      "id": "resolution_1",
-      "type": "resolution",
-      "resolution": "R1"
-    }
-  ],
-  "resolutions": [
-    {
-      "id": "no_resolution",
-      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
-      "investigator_status": [
-        "resigned",
-        "eliminated",
-        "physical",
-        "mental"
-      ],
-      "text": "Read <b>Resolution 1</b>",
-      "steps": ["resolution_1"]
-    },
-    {
-      "id": "R1",
-      "title": "Resolution 1",
-      "text": "You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
-      "steps": ["cultists_interrogated_r1", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
-    },
-    {
-      "id": "R2",
-      "title": "Resolution 2",
-      "text": "Twelve bells ring out, signaling midnight. You’re out of time; the cult’s ritual will begin shortly. You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
-      "steps": ["cultists_interrogated_r2", "past_midnight", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -4249,6 +4227,7 @@
     "intro",
     "check_ashleigh_clarke",
     "gather_encounter_sets",
+    "flood_below",
     "add_chaos_token",
     "agenda_setup",
     "no_act_deck",
@@ -4304,8 +4283,17 @@
         "stranger",
         "pentagram",
         "ancient_evils"
+      ]
+    },
+    {
+      "id": "flood_below",
+      "type": "encounter_sets",
+      "bullet_type": "none",
+      "encounter_sets": [
+        "flood",
+        "vortex"
       ],
-      "text": "Be aware that some cards from the Black Stars Rise encounter set have multiple versions, some with The Flood Below encounter set icon on their reverse side, and some with The Vortex Above encounter set icon on their reverse side."
+      "text": "Be aware that some cards from the <i>Black Stars Rise</i> encounter set have multiple versions, some with <i>The Flood Below</i> encounter set icon on their reverse side, and some with <i>The Vortex Above</i> encounter set icon on their reverse side."
     },
     {
       "id": "add_chaos_token",
@@ -5436,11 +5424,12 @@
     },
     {
       "id": "earn_xp_triumph",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 5 bonus experience, as they has truimphed over their own self—the most dangerous of foes.",
         "effects": [
           {
             "type": "earn_xp",
@@ -5452,11 +5441,12 @@
     },
     {
       "id": "earn_xp_truth",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 5 bonus experience, as they has learned the truth behind <u>The King in Yellow</u>.",
         "effects": [
           {
             "type": "earn_xp",
@@ -5866,11 +5856,12 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 1 bonus experience as they gains insight into the machinations of <u>The King in Yellow</u>.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 1 bonus experience as they gain insight into the machinations of <u>The King in Yellow</u>.",
         "effects": [
           {
             "type": "earn_xp",
@@ -8426,7 +8417,7 @@
 {
   "campaign":
 {
-  "id": "notz",
+  "id": "rtnotz",
   "name": "Return to the Night of the Zealot",
   "position": 0,
   "campaign_log": [
@@ -8612,7 +8603,7 @@
       "encounter_sets": [
         "cultists"
       ],
-      "text": "Set the Cult of Umôrdhoth encounter set aside as a separate “Cultist deck,” and shuffle it. This set is indicated by the following icon:"
+      "text": "Set the <i>Cult of Umôrdhoth</i> encounter set aside as a separate “Cultist deck,” and shuffle it."
     },
     {
       "id": "setup_locations",
@@ -9812,11 +9803,12 @@
     },
     {
       "id": "earn_xp_bonus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as they have saved the universe from being devoured.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 5 bonus experience, as they have saved the universe from being devoured.",
         "effects": [
           {
             "type": "earn_xp",
@@ -9899,11 +9891,12 @@
     },
     {
       "id": "earn_xp_bonus_10",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 10 bonus experience, as they have learned the innermost secrets of the Black Book",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
         "text": "Victory display:",
+        "confirm_text": "Each investigator earns 10 bonus experience, as they have learned the innermost secrets of the Black Book.",
         "effects": [
           {
             "type": "earn_xp",
@@ -11992,7 +11985,7 @@
     },
     {
       "id": "bonus_xp",
-      "text": "Each investigator earns 2 bonus experience, as they gains insight into the inner workings of the Silver Twilight Lodge.",
+      "text": "Each investigator earns 2 bonus experience, as they gain insight into the inner workings of the Silver Twilight Lodge.",
       "effects": [
         {
           "type": "earn_xp",
@@ -12541,10 +12534,11 @@
     },
     {
       "id": "earn_xp_bonus_2",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
+        "confirm_text": "Each investigator earns 2 bonus experience as they gain insight into Arkham’s mysterious past.",
         "text": "Victory display:",
         "effects": [
           {
@@ -13015,7 +13009,7 @@
     },
     {
       "id": "mementos_flute_and_ritual_components",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Ritual Components</i>. Each investigator earns 1 bonus experience, as they gains insight into Arkham’s mysterious past.",
+      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Ritual Components</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
       "effects": [
         {
           "type": "campaign_log",
@@ -13053,7 +13047,7 @@
     },
     {
       "id": "mementos_flute_and_scrap_of_torn_shadow",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Scrap of Torn Shadow</i>. Each investigator earns 1 bonus experience, as they gains insight into Arkham’s mysterious past.",
+      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Scrap of Torn Shadow</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
       "effects": [
         {
           "type": "campaign_log",
@@ -13097,7 +13091,7 @@
     {
       "id": "mementos_flute",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i>. Each investigator earns 1 bonus experience, as they gains insight into Arkham’s mysterious past.",
+      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
       "effects": [
         {
           "type": "campaign_log",
@@ -13985,7 +13979,6 @@
     {
       "id": "wait_for_chaos_tokens",
       "type": "input",
-      "text": "If instructed to change chaos tokens in the bag:",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -15307,9 +15300,10 @@
         "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
-            "type": "campaign_log",
+            "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
+            "operation": "set_input",
             "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
@@ -15965,9 +15959,10 @@
         "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
-            "type": "campaign_log",
+            "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
+            "operation": "set_input",
             "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
@@ -17099,10 +17094,11 @@
     },
     {
       "id": "earn_xp_plus_5",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
       "type": "input",
       "input": {
         "type": "counter",
+        "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
         "text": "Victory display:",
         "effects": [
           {
@@ -17658,9 +17654,10 @@
         "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
-            "type": "campaign_log",
+            "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
+            "operation": "set_input",
             "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
@@ -18032,7 +18029,7 @@
     },
     {
       "id": "process_was_perfected",
-      "text": "Because all 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gains insight into the secrets of the Earth.",
+      "text": "Because all 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gain insight into the secrets of the Earth.",
       "effects": [
         {
           "type": "campaign_log",
@@ -18049,7 +18046,7 @@
     },
     {
       "id": "process_was_successful",
-      "text": "Because 5 tasks were completed, record in your Campaign Log that <i>the process was successful</i>. Each investigator earns 2 bonus experience as they gains insight into the secrets of the Earth.",
+      "text": "Because 5 tasks were completed, record in your Campaign Log that <i>the process was successful</i>. Each investigator earns 2 bonus experience as they gain insight into the secrets of the Earth.",
       "effects": [
         {
           "type": "campaign_log",
@@ -19180,9 +19177,10 @@
         "text": "Damage on Harbinger of Valusia:",
         "effects": [
           {
-            "type": "campaign_log",
+            "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "harbinger_alive",
+            "operation": "set_input",
             "text": "the Harbinger is still alive (#X# damage)."
           }
         ]
@@ -21270,7 +21268,7 @@
       "encounter_sets": [
         "agents_of_yig"
       ],
-      "text": "Set the following cards aside, out of play: The three single-sided [[Ruins]] locations, the Agents of Yig encounter set, the four Poisoned weaknesses, the Alejandro Vela asset, and the Ichtaca enemy."
+      "text": "Set the following cards aside, out of play: The three single-sided [[Ruins]] locations, the <i>Agents of Yig</i> encounter set, the four Poisoned weaknesses, the Alejandro Vela asset, and the Ichtaca enemy."
     },
     {
       "id": "encounter_deck",

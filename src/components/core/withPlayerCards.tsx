@@ -1,3 +1,4 @@
+import React from 'react';
 import { forEach } from 'lodash';
 import { connect } from 'react-redux';
 import { Results } from 'realm';
@@ -35,10 +36,13 @@ export default function withPlayerCards<Props, ExtraProps={}>(
       tabooSetId: getTabooSet(state, props.tabooSetOverride),
     };
   };
+  const WrappingComponent = function(props: Props & PlayerCardProps & ExtraProps) {
+    return <WrappedComponent {...props} />;
+  };
   const result = connect<ReduxProps, {}, Props & TabooSetOverride, AppState>(mapStateToProps)(
     // @ts-ignore TS2345
     connectRealm<Props & ReduxProps, PlayerCardProps & ExtraProps, Card, TabooSet>(
-      WrappedComponent, {
+      WrappingComponent, {
         schemas: ['Card', 'TabooSet'],
         mapToProps(
           results: CardAndTabooSetResults<Card, TabooSet>,

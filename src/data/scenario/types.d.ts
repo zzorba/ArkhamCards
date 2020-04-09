@@ -206,6 +206,7 @@ export interface TraumaEffect {
   mental_or_physical?: number;
   killed?: boolean;
   insane?: boolean;
+  hidden?: boolean;
 }
 export interface CampaignLogEffect {
   type: "campaign_log";

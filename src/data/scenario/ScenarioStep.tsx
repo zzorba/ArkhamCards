@@ -545,14 +545,60 @@ export default class ScenarioStep {
         if (choice === undefined) {
           return undefined;
         }
+        const effects: EffectsWithInput[] = [];
+        const investigators = this.campaignLog.investigators(false);
+        forEach(investigators, investigator => {
+          const choices = scenarioState.numberChoices(`${this.step.id}#${investigator.code}`);
+          if (choices !== undefined) {
+            const investigatorEffects: EffectsWithInput = {
+              input: [investigator.code],
+              effects: [],
+            };
+            const xpAdjust = (choices.xp && choices.xp[0]) || 0;
+            if (xpAdjust !== 0) {
+              investigatorEffects.effects.push({
+                type: 'earn_xp',
+                investigator: '$input_value',
+                bonus: xpAdjust,
+              });
+            }
+            const physicalAdjust = (choices.physical && choices.physical[0]) || 0;
+            if (physicalAdjust !== 0) {
+              investigatorEffects.effects.push({
+                type: 'trauma',
+                investigator: '$input_value',
+                physical: physicalAdjust,
+                hidden: true,
+              });
+            }
+            const mentalAdjust = (choices.mental && choices.mental[0]) || 0;
+            if (mentalAdjust !== 0) {
+              investigatorEffects.effects.push({
+                type: 'trauma',
+                investigator: '$input_value',
+                mental: mentalAdjust,
+                hidden: true,
+              });
+            }
+
+            if (investigatorEffects.effects.length) {
+              effects.push(investigatorEffects);
+            }
+          }
+        });
+
+        // Finally do the deck upgrade to 'bank' it.
+        effects.push({
+          effects: [
+            {
+              type: 'upgrade_decks',
+            },
+          ],
+        });
         return this.maybeCreateEffectsStep(
           this.step.id,
           this.remainingStepIds,
-          [{
-            effects: [{
-              type: 'upgrade_decks',
-            }],
-          }],
+          effects
         );
       }
       case 'use_supplies': {

@@ -3,21 +3,30 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
+import PlusMinusButtons from 'components/core/PlusMinusButtons';
+import DeckXpSection from './DeckXpSection';
+import BasicListRow from 'components/core/BasicListRow';
 import { showCard, showDeckModal } from 'components/nav/helper';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from 'actions/types';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import InvestigatorRow from 'components/core/InvestigatorRow';
-import Card from 'data/Card';
+import Card, { CardsMap } from 'data/Card';
+import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import typography from 'styles/typography';
 
 interface Props {
   componentId: string;
   campaignId: number;
+  campaignLog: GuidedCampaignLog;
   investigator: Card;
+  spentXp: number;
+  incSpentXp: (code: string) => void;
+  decSpentXp: (code: string) => void;
   traumaAndCardData: TraumaAndCardData;
   fontScale: number;
+  playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: Deck;
 }
@@ -41,6 +50,60 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       />
     );
   };
+
+  _incXp = () => {
+    const { investigator, incSpentXp } = this.props;
+    incSpentXp(investigator.code)
+  };
+
+  _decXp = () => {
+    const { investigator, decSpentXp } = this.props;
+    decSpentXp(investigator.code)
+  };
+
+  renderXp() {
+    const {
+      investigator,
+      fontScale,
+      componentId,
+      deck,
+      playerCards,
+      campaignLog,
+      spentXp,
+    } = this.props;
+    if (deck) {
+      return (
+        <DeckXpSection
+          componentId={componentId}
+          deck={deck}
+          cards={playerCards}
+          investigator={investigator}
+          fontScale={fontScale}
+        />
+      );
+    }
+    const xp = campaignLog.totalXp(investigator.code);
+    return (
+      <>
+        <CardSectionHeader
+          fontScale={fontScale}
+          investigator={investigator}
+          section={{ superTitle: t`Experience points`}}
+        />
+        <BasicListRow>
+          <Text style={typography.text}>
+            { t`${spentXp} of ${xp} spent` }
+          </Text>
+          <PlusMinusButtons
+            count={5}
+            max={xp}
+            onIncrement={this._incXp}
+            onDecrement={this._decXp}
+          />
+        </BasicListRow>
+      </>
+    )
+  }
 
   renderTrauma() {
     const { traumaAndCardData, investigator } = this.props;
@@ -84,6 +147,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     } = this.props;
     return (
       <>
+        { this.renderXp() }
         <CardSectionHeader
           investigator={investigator}
           fontScale={fontScale}

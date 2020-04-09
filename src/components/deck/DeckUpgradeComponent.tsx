@@ -9,6 +9,7 @@ import {
 import { t } from 'ttag';
 
 import { Deck, Slots } from 'actions/types';
+import BasicListRow from 'components/core/BasicListRow';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import { NavigationProps } from 'components/nav/types';
 import { showCard } from 'components/nav/helper';
@@ -26,7 +27,7 @@ interface OwnProps {
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
   ignoreStoryCounts: Slots;
-  upgradeCompleted: (deck: Deck) => void;
+  upgradeCompleted: (deck: Deck, xp: number) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
 }
@@ -62,7 +63,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
     this.setState({
       saving: false,
     });
-    this.props.upgradeCompleted(deck);
+    this.props.upgradeCompleted(deck, this.state.xp);
   };
 
   _handleStoryCardChanges = (upgradedDeck: Deck) => {
@@ -71,12 +72,14 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       storyCounts,
       ignoreStoryCounts,
     } = this.props;
-    const hasStoryChange = !!find(storyCounts, (count, code) =>
+    const hasStoryChange = !!find(storyCounts,
+      (count, code) =>
       (upgradedDeck.slots[code] || 0) !== count
     ) || !!find(ignoreStoryCounts, (count, code) =>
       (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== count
     );
     if (hasStoryChange) {
+      console.log(`Saving story changes: ${JSON.stringify(storyCounts)}`);
       const newSlots: Slots = { ...upgradedDeck.slots };
       forEach(storyCounts, (count, code) => {
         if (count > 0) {
@@ -90,7 +93,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
         if (count > 0){
           newIgnoreSlots[code] = count;
         } else {
-          delete newSlots[code];
+          delete newIgnoreSlots[code];
         }
       });
       saveDeckChanges(upgradedDeck, {
@@ -191,6 +194,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
         </View>
       );
     }
+    const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <View style={styles.container}>
         { !!error && <Text>{ error }</Text> }
@@ -199,18 +203,16 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
           fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
-        <View style={[styles.labeledRow, styles.border]}>
-          <View style={styles.row}>
-            <Text style={typography.text}>
-              { xp }
-            </Text>
-            <PlusMinusButtons
-              count={xp}
-              onIncrement={this._incXp}
-              onDecrement={this._decXp}
-            />
-          </View>
-        </View>
+        <BasicListRow>
+          <Text style={typography.text}>
+            { xpString }
+          </Text>
+          <PlusMinusButtons
+            count={xp}
+            onIncrement={this._incXp}
+            onDecrement={this._decXp}
+          />
+        </BasicListRow>
         <ExileCardSelectorComponent
           componentId={componentId}
           id={deck.id}

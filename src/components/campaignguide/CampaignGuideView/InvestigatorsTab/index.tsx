@@ -6,17 +6,22 @@ import { t } from 'ttag';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import CampaignGuideContext, { CampaignGuideContextType, LatestDecks } from '../../CampaignGuideContext';
-import Card from 'data/Card';
+import Card, { CardsMap } from 'data/Card';
 import typography from 'styles/typography';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   campaignLog: GuidedCampaignLog;
   fontScale: number;
   latestDecks: LatestDecks;
+  spentXp: {
+    [code: string]: number;
+  };
+  incSpentXp: (code: string) => void;
+  decSpentXp: (code: string) => void;
+  playerCards: CardsMap;
 }
 
-type Props = OwnProps;
 export default class InvestigatorsTab extends React.Component<Props> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
@@ -34,6 +39,10 @@ export default class InvestigatorsTab extends React.Component<Props> {
       campaignLog,
       fontScale,
       componentId,
+      playerCards,
+      spentXp,
+      incSpentXp,
+      decSpentXp,
     } = this.props;
     return (
       <CampaignGuideContext.Consumer>
@@ -48,8 +57,13 @@ export default class InvestigatorsTab extends React.Component<Props> {
                 <InvestigatorCampaignRow
                   key={investigator.code}
                   campaignId={campaignId}
+                  playerCards={playerCards}
+                  spentXp={spentXp[investigator.code] || 0}
+                  incSpentXp={incSpentXp}
+                  decSpentXp={decSpentXp}
                   deck={latestDecks[investigator.code]}
                   componentId={componentId}
+                  campaignLog={campaignLog}
                   fontScale={fontScale}
                   investigator={investigator}
                   traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
@@ -69,7 +83,12 @@ export default class InvestigatorsTab extends React.Component<Props> {
               { map(killedInvestigators, investigator => (
                 <InvestigatorCampaignRow
                   key={investigator.code}
+                  playerCards={playerCards}
+                  spentXp={spentXp[investigator.code] || 0}
+                  incSpentXp={incSpentXp}
+                  decSpentXp={decSpentXp}
                   campaignId={campaignId}
+                  campaignLog={campaignLog}
                   deck={latestDecks[investigator.code]}
                   componentId={componentId}
                   fontScale={fontScale}

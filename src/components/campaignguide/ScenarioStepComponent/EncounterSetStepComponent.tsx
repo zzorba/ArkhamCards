@@ -31,19 +31,19 @@ class EncounterSetStepComponent extends React.Component<Props> {
     const encounterSetString = stringList(map(encounterSets, set => set ? `<i>${set.name}</i>` : 'Missing Set Name'));
     const leadText = step.aside ?
       ngettext(
-        msgid`Set the ${encounterSetString} encounter set aside, out of play`,
-        t`Set the ${encounterSetString} encounter sets aside, out of play`,
+        msgid`Set the ${encounterSetString} encounter set aside, out of play.`,
+        t`Set the ${encounterSetString} encounter sets aside, out of play.`,
         encounterSets.length
       ) :
       ngettext(
-        msgid`Gather all cards from the ${encounterSetString} encounter set`,
-        t`Gather all cards from the following encounter sets: ${encounterSetString}`,
+        msgid`Gather all cards from the ${encounterSetString} encounter set.`,
+        t`Gather all cards from the following encounter sets: ${encounterSetString}.`,
         encounterSets.length
       );
-    const startText = step.text ? `${step.text} ${encounterSetString}` : leadText;
+    const startText = step.text || leadText;
     const text =
-    ngettext(msgid`${startText}. This set is indicated by the following icon:`,
-      t`${startText}. These sets are indicated by the following icons:`,
+    ngettext(msgid`${startText} This set is indicated by the following icon:`,
+      t`${startText} These sets are indicated by the following icons:`,
       encounterSets.length);
     return (
       <SetupStepWrapper bulletType={step.bullet_type}>

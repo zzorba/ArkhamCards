@@ -79,6 +79,14 @@ export default class CampaignGuide {
     this.log = log;
   }
 
+  campaignCycleCode() {
+    return this.campaign.campaign.id;
+  }
+
+  campaignName() {
+    return this.campaign.campaign.name;
+  }
+
   getFullScenarioName(
     rawScenarioId: string
   ): string | undefined {

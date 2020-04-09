@@ -1,11 +1,12 @@
 import React from 'react';
-import { flatMap } from 'lodash';
+import { InteractionManager } from 'react-native';
+import { flatMap, forEach } from 'lodash';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import { Campaign } from 'actions/types';
+import { Campaign, InvestigatorData } from 'actions/types';
 import InvestigatorsTab from './InvestigatorsTab';
 import CampaignLogTab from './CampaignLogTab';
 import ScenarioListTab from './ScenarioListTab';
@@ -27,41 +28,58 @@ interface ReduxActionProps {
 type Props = CampaignGuideProps & ReduxActionProps & NavigationProps & DimensionsProps;
 interface State {
   firstAppearance: boolean;
+  spentXp: {
+    [code: string]: number;
+  };
+  dirty: boolean;
 }
 
 class CampaignGuideView extends React.Component<Props & CampaignGuideContextType, State> {
   _navEventListener: EventSubscription;
-  state: State = {
-    firstAppearance: true,
-  };
 
   constructor(props: Props & CampaignGuideContextType) {
     super(props);
 
+    const spentXp: {
+      [code: string]: number;
+    } = {};
+    forEach(props.adjustedInvestigatorData, (data, code) => {
+      spentXp[code] = (data && data.spentXp) || 0;
+    });
+
+    this.state = {
+      firstAppearance: true,
+      spentXp,
+      dirty: false,
+    };
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
+    InteractionManager.runAfterInteractions(() => {
+      this._syncCampaignData();
+    });
   }
 
-  componentDidAppear() {
-    if (this.state.firstAppearance) {
-      this.setState({
-        firstAppearance: false,
-      });
-      return;
-    }
+  _syncCampaignData = () => {
     const {
       campaignId,
       campaignGuide,
       campaignState,
       updateCampaign,
     } = this.props;
+    const { spentXp } = this.state;
     const {
       campaignLog,
       scenarios,
     } = campaignGuide.processAllScenarios(campaignState);
+    const adjustedInvestigatorData: InvestigatorData = {};
+    forEach(spentXp, (xp, code) => {
+      adjustedInvestigatorData[code] = {
+        spentXp: xp,
+      };
+    });
     updateCampaign(
       campaignId,
       {
@@ -81,11 +99,35 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
             interlude: scenarioType === 'interlude' || scenarioType === 'epilogue',
           };
         }),
+        adjustedInvestigatorData,
       }
     );
-  }
+    this.setState({
+      dirty: false,
+    });
+  };
 
   _onTabChange = () => {
+  };
+
+  _incXp = (code: string) => {
+    this.setState({
+      spentXp: {
+        ...this.state.spentXp,
+        [code]: (this.state.spentXp[code] || 0) + 1,
+      },
+      dirty: true,
+    });
+  };
+
+  _decXp = (code: string) => {
+    this.setState({
+      spentXp: {
+        ...this.state.spentXp,
+        [code]: Math.max(0, (this.state.spentXp[code] || 0) - 1),
+      },
+      dirty: true,
+    });
   };
 
   render() {
@@ -96,7 +138,9 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
       fontScale,
       componentId,
       latestDecks,
+      playerCards,
     } = this.props;
+    const { spentXp } = this.state;
     const processedCampaign = campaignGuide.processAllScenarios(campaignState);
     const tabs = [
       {
@@ -108,6 +152,10 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
             fontScale={fontScale}
             campaignLog={processedCampaign.campaignLog}
             latestDecks={latestDecks}
+            spentXp={spentXp}
+            incSpentXp={this._incXp}
+            decSpentXp={this._decXp}
+            playerCards={playerCards}
           />
         ),
       },
@@ -128,8 +176,10 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         title: t`Campaign Log`,
         node: (
           <CampaignLogTab
+            campaignId={campaignId}
             campaignGuide={campaignGuide}
             campaignLog={processedCampaign.campaignLog}
+            componentId={componentId}
             fontScale={fontScale}
           />
         ),

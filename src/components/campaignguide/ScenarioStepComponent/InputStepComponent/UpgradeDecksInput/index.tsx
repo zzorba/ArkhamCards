@@ -97,7 +97,7 @@ class UpgradeDecksInput extends React.Component<Props> {
         }) }
         { !hasDecision && (
           <View style={styles.buttonWrapper}>
-            <Button title={t`Finished upgrading decks`} onPress={this._save} />
+            <Button title={t`Proceed`} onPress={this._save} />
           </View>
         ) }
       </View>

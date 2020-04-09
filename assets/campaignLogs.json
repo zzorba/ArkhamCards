@@ -1,5 +1,70 @@
 [
   {
+    "campaignId": "core",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "arkham_succumbed",
+            "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
+          },
+          {
+            "id": "ghoul_priest_alive",
+            "text": "the Ghoul Priest is still alive."
+          },
+          {
+            "id": "house_burned",
+            "text": "your house has burned to the ground."
+          },
+          {
+            "id": "house_standing",
+            "text": "your house is still standing."
+          },
+          {
+            "id": "lita_finds_others",
+            "text": "Lita was forced to find others to help her cause."
+          },
+          {
+            "id": "lita_sacrificed",
+            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+          },
+          {
+            "id": "past_midnight",
+            "text": "it is past midnight."
+          },
+          {
+            "id": "ritual_broken",
+            "text": "the ritual to summon Umôrdhoth was broken."
+          },
+          {
+            "id": "umordhoth_repelled",
+            "text": "the investigators repelled Umôrdhoth."
+          }
+        ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "dwl",
     "sections": [
       {
@@ -149,98 +214,6 @@
       },
       {
         "section": "sacrificed",
-        "entries": [
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          }
-        ]
-      }
-    ],
-    "supplies": []
-  },
-  {
-    "campaignId": "notz",
-    "sections": [
-      {
-        "section": "campaign_notes",
-        "entries": [
-          {
-            "id": "arkham_succumbed",
-            "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
-          },
-          {
-            "id": "ghoul_priest_alive",
-            "text": "the Ghoul Priest is still alive."
-          },
-          {
-            "id": "house_burned",
-            "text": "your house has burned to the ground."
-          },
-          {
-            "id": "house_standing",
-            "text": "your house is still standing."
-          },
-          {
-            "id": "lita_finds_others",
-            "text": "Lita was forced to find others to help her cause."
-          },
-          {
-            "id": "lita_sacrificed",
-            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
-          },
-          {
-            "id": "past_midnight",
-            "text": "it is past midnight."
-          },
-          {
-            "id": "ritual_broken",
-            "text": "the ritual to summon Umôrdhoth was broken."
-          },
-          {
-            "id": "umordhoth_repelled",
-            "text": "the investigators repelled Umôrdhoth."
-          }
-        ]
-      },
-      {
-        "section": "cultists_escaped",
-        "entries": [
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          }
-        ]
-      },
-      {
-        "section": "cultists_interrogated",
-        "entries": [
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          }
-        ]
-      },
-      {
-        "section": "campaign_notes",
-        "entries": [
-          {
-            "id": "past_midnight",
-            "text": "it is past midnight."
-          }
-        ]
-      },
-      {
-        "section": "cultists_escaped",
-        "entries": [
-          {
-            "id": "$input_value",
-            "text": "#name#"
-          }
-        ]
-      },
-      {
-        "section": "cultists_interrogated",
         "entries": [
           {
             "id": "$input_value",
@@ -422,6 +395,39 @@
           },
           {
             "id": "03069b",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtnotz",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "past_midnight",
+            "text": "it is past midnight."
+          }
+        ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
             "text": "#name#"
           }
         ]

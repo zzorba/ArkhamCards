@@ -3,6 +3,9 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import { flatMap, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
+import ShowDeckButton from './ShowDeckButton';
+import { NumberChoices } from 'actions/types';
+import BasicListRow from 'components/core/BasicListRow';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import CardListWrapper from 'components/campaignguide/CardListWrapper';
 import CardSectionHeader from 'components/core/CardSectionHeader';
@@ -17,6 +20,7 @@ import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
+import { COLORS } from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -58,19 +62,62 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     return `${id}#${investigator.code}`;
   }
 
-  _onUpgrade = (deck: Deck) => {
+  _saveCampaignLog = (xp: number, deck?: Deck) => {
     const {
       scenarioState,
+      campaignLog,
+      investigator,
     } = this.props;
-    scenarioState.setChoice(
-      this.choiceId(),
-      deck.id
-    );
+    const {
+      physicalAdjust,
+      mentalAdjust,
+    } = this.state;
+    const choices: NumberChoices = {
+      xp: [xp - campaignLog.earnedXp(investigator.code)],
+      physical: [physicalAdjust],
+      mental: [mentalAdjust],
+    };
+    if (deck) {
+      choices.deckId = [deck.id];
+    }
+    scenarioState.setNumberChoices(this.choiceId(), choices);
+  };
+
+  xp(choices?: NumberChoices): number {
+    const { campaignLog, investigator } = this.props;
+    if (choices === undefined) {
+      return this.state.xp;
+    }
+    return campaignLog.earnedXp(investigator.code) +
+      ((choices.xp && choices.xp[0]) || 0);
+  }
+
+  physicalAdjust(choices?: NumberChoices): number {
+    if (choices === undefined) {
+      return this.state.physicalAdjust;
+    }
+    return (choices.physical && choices.physical[0]) || 0;
+  }
+
+  mentalAdjust(choices?: NumberChoices): number {
+    if (choices === undefined) {
+      return this.state.mentalAdjust;
+    }
+    return (choices.mental && choices.mental[0]) || 0;
+  }
+
+  _onUpgrade = (deck: Deck, xp: number) => {
+    this._saveCampaignLog(xp, deck);
   };
 
   _save = () => {
-    if (this.deckUpgradeComponent.current) {
-      this.deckUpgradeComponent.current.save();
+    const { deck } = this.props;
+    if (deck) {
+      if (this.deckUpgradeComponent.current) {
+        this.deckUpgradeComponent.current.save();
+      }
+    } else {
+      this._saveCampaignLog(this.state.xp);
     }
   };
 
@@ -117,7 +164,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       <>
         <CardSectionHeader
           investigator={investigator}
-          section={{ superTitle: t`Story cards` }}
+          section={{ superTitle: t`Campaign cards` }}
           fontScale={fontScale}
         />
         <CardListWrapper
@@ -138,7 +185,9 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
 
   _decPhysical = () => {
     this.setState(state => {
-      return { physicalAdjust: Math.max((state.physicalAdjust || 0) - 1, 0) };
+      return {
+        physicalAdjust: (state.physicalAdjust || 0) - 1,
+      };
     });
   };
 
@@ -150,7 +199,9 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
 
   _decMental = () => {
     this.setState(state => {
-      return { mentalAdjust: Math.max((state.mentalAdjust || 0) - 1, 0) };
+      return {
+        mentalAdjust: (state.mentalAdjust || 0) - 1,
+      };
     });
   };
 
@@ -166,8 +217,10 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     });
   };
 
-  renderXpSection() {
-    const { investigator, fontScale } = this.props;
+  renderXpSection(choices?: NumberChoices) {
+    const { investigator, fontScale, editable } = this.props;
+    const xp = this.xp(choices);
+    const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <>
         <CardSectionHeader
@@ -175,77 +228,104 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
           fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
-        <View style={[styles.labeledRow, styles.border]}>
-          <View style={styles.row}>
-            <Text style={typography.text}>
-              { this.state.xp }
-            </Text>
+        <BasicListRow>
+          <Text style={typography.text}>
+            { xpString }
+          </Text>
+          { choices === undefined && editable && (
             <PlusMinusButtons
               count={this.state.xp}
               onIncrement={this._incXp}
               onDecrement={this._decXp}
             />
-          </View>
-        </View>
+          ) }
+        </BasicListRow>
       </>
     );
   }
 
-  renderTraumaDetails() {
-    const { investigator, campaignLog, fontScale } = this.props;
-    const { physicalAdjust, mentalAdjust } = this.state;
+  renderTraumaDetails(choices?: NumberChoices) {
+    const {
+      investigator,
+      campaignLog,
+      editable,
+      fontScale,
+    } = this.props;
+    const physicalAdjust = this.physicalAdjust(choices);
+    const mentalAdjust = this.mentalAdjust(choices);
+    const baseTrauma = campaignLog.baseTrauma(investigator.code);
     const traumaDelta = campaignLog.traumaChanges(investigator.code);
     const physical = (traumaDelta.physical || 0) + physicalAdjust;
     const mental = (traumaDelta.mental || 0) + mentalAdjust;
-    const physicalString = physical >= 0 ? `+${physical}` : `${physical}`;
-    const mentalString = mental >= 0 ? `+${mental}` : `${mental}`;
+    const totalPhysical = (baseTrauma.physical || 0) + physical;
+    const totalMental = (baseTrauma.mental || 0) + mental;
+
+    const physicalDeltaString = physical >= 0 ? `+${physical}` : `${physical}`;
+    const mentalDeltaString = mental >= 0 ? `+${mental}` : `${mental}`;
+    const locked = choices !== undefined || !editable;
     return (
       <>
         <CardSectionHeader
           investigator={investigator}
           fontScale={fontScale}
-          section={{ superTitle: t`Trauma` }}
+          section={{ superTitle: t`Physical trauma` }}
         />
-        <View style={[styles.labeledRow, styles.border]}>
-          <View style={styles.row}>
-            <Text style={typography.text}>
-              { t`Physical: ${physicalString}` }
-            </Text>
+        <BasicListRow>
+          <Text style={[typography.text]}>
+            { physicalDeltaString }
+            { !locked && (
+              <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                { t` (New Total: ${totalPhysical})` }
+              </Text>
+            ) }
+          </Text>
+          { !locked && (
             <PlusMinusButtons
-              count={this.state.physicalAdjust + (traumaDelta.physical || 0)}
+              count={totalPhysical}
               onIncrement={this._incPhysical}
               onDecrement={this._decPhysical}
-              allowNegative
+              max={investigator.health || 0}
             />
-          </View>
-        </View>
-        <View style={[styles.labeledRow, styles.border]}>
-          <View style={styles.row}>
-            <Text style={typography.text}>
-              { t`Mental: ${mentalString}` }
-            </Text>
+          ) }
+        </BasicListRow>
+        <CardSectionHeader
+          investigator={investigator}
+          fontScale={fontScale}
+          section={{ superTitle: t`Mental trauma` }}
+        />
+        <BasicListRow>
+          <Text style={typography.text}>
+            { mentalDeltaString }
+            { !locked && (
+              <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                { t` (New Total: ${totalMental})` }
+              </Text>
+            ) }
+          </Text>
+          { !locked && (
             <PlusMinusButtons
-              count={this.state.mentalAdjust + (traumaDelta.mental || 0)}
+              count={totalMental}
               onIncrement={this._incMental}
               onDecrement={this._decMental}
-              allowNegative
+              max={(investigator.sanity || 0)}
             />
-          </View>
-        </View>
+          ) }
+        </BasicListRow>
       </>
     );
   }
 
-  renderCampaignSection(hasDeck: boolean) {
+  renderCampaignSection(choices?: NumberChoices, deck?: Deck) {
+    const { editable } = this.props;
     return (
       <>
-        { !hasDeck && this.renderXpSection() }
-        { this.renderTraumaDetails() }
+        { (choices !== undefined || !deck) && this.renderXpSection(choices) }
+        { this.renderTraumaDetails(choices) }
         { this.renderStoryAssetDeltas() }
-        { hasDeck && (
+        { choices === undefined && editable && (
           <View style={styles.buttonWrapper}>
             <Button
-              title={t`Save upgrade`}
+              title={deck ? t`Save deck upgrade` : t`Save adjustments`}
               onPress={this._save}
             />
           </View>
@@ -279,17 +359,23 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     }
   };
 
-  saved() {
-    const { scenarioState } = this.props;
-    return scenarioState.choice(this.choiceId()) !== undefined;
-  }
-
-  deckButton(saved: boolean) {
+  deckButton(choices?: NumberChoices) {
     const {
+      componentId,
       deck,
       editable,
+      investigator,
     } = this.props;
-    if (saved || !editable) {
+    if (deck && choices !== undefined && choices.deckId) {
+      return (
+        <ShowDeckButton
+          componentId={componentId}
+          deckId={choices.deckId[0]}
+          investigator={investigator}
+        />
+      );
+    }
+    if (!editable) {
       return null;
     }
     if (!deck) {
@@ -302,7 +388,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     );
   }
 
-  renderDetails(saved: boolean) {
+  renderDetails(choices?: NumberChoices) {
     const {
       componentId,
       deck,
@@ -314,25 +400,10 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       fontScale,
     } = this.props;
     if (!deck) {
-      return (this.renderCampaignSection(false));
+      return (this.renderCampaignSection(choices));
     }
-    if (saved) {
-      return (
-        <View style={styles.message}>
-          <Text style={[typography.text, typography.center]}>
-            { t`Deck upgrade saved` }
-          </Text>
-        </View>
-      );
-    }
-    if (!editable) {
-      return (
-        <View style={styles.message}>
-          <Text style={[typography.text, typography.center]}>
-            { t`Deck upgrade skipped` }
-          </Text>
-        </View>
-      );
+    if (choices !== undefined || !editable) {
+      return this.renderCampaignSection(choices, deck);
     }
     return (
       <DeckUpgradeComponent
@@ -341,7 +412,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         deck={deck}
         fontScale={fontScale}
         investigator={investigator}
-        campaignSection={this.renderCampaignSection(true)}
+        campaignSection={this.renderCampaignSection(choices, deck)}
         startingXp={campaignLog.earnedXp(investigator.code)}
         storyCounts={campaignLog.storyAssets(investigator.code)}
         ignoreStoryCounts={campaignLog.ignoreStoryAssets(investigator.code)}
@@ -356,12 +427,12 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     const {
       investigator,
     } = this.props;
-    const saved = this.saved();
+    const choices = this.props.scenarioState.numberChoices(this.choiceId());
     return (
       <InvestigatorRow
         investigator={investigator}
-        button={this.deckButton(saved)}
-        detail={this.renderDetails(saved)}
+        button={this.deckButton(choices)}
+        detail={this.renderDetails(choices)}
       />
     );
   }

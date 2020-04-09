@@ -70,11 +70,11 @@ export default class TraumaEffectComponent extends React.Component<Props> {
               choices: [
                 {
                   id: 'physical',
-                  text: t`Physical Trauma`,
+                  text: t`Physical trauma`,
                 },
                 {
                   id: 'mental',
-                  text: t`Mental Trauma`,
+                  text: t`Mental trauma`,
                 },
               ],
             }}
@@ -93,6 +93,9 @@ export default class TraumaEffectComponent extends React.Component<Props> {
 
   render() {
     const { id, effect, input } = this.props;
+    if (effect.hidden) {
+      return null;
+    }
     return (
       <InvestigatorSelectorWrapper
         id={id}

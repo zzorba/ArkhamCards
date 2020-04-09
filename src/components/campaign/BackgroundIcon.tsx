@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 
 import EncounterIcon from 'icons/EncounterIcon';
 
 interface Props {
   code: string;
   color: string;
+  style?: ViewStyle,
 }
 
 export default class BackgroundIcon extends React.Component<Props> {
@@ -13,9 +14,10 @@ export default class BackgroundIcon extends React.Component<Props> {
     const {
       code,
       color,
+      style,
     } = this.props;
     return (
-      <View style={styles.backgroundIcon}>
+      <View style={[styles.backgroundIcon, style || {}]}>
         <EncounterIcon
           encounter_code={code}
           size={84}

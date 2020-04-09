@@ -35,11 +35,10 @@ export function getCampaignGuide(
   const allLogEntries: CampaignLog[] = require('../../../assets/campaignLogs.json');
   const allCampaigns: FullCampaign[] = require('../../../assets/allCampaigns.json');
 
-  const theId = (id === 'core' ? 'notz' : id);
   const campaign = find(allCampaigns, campaign =>
-    campaign.campaign.id === theId
+    campaign.campaign.id === id
   );
-  const logEntries = find(allLogEntries, log => log.campaignId === theId);
+  const logEntries = find(allLogEntries, log => log.campaignId === id);
   return campaign && logEntries && new CampaignGuide(campaign, logEntries);
 }
 

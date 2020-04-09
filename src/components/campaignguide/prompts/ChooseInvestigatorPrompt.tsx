@@ -113,7 +113,10 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
     const selectedIndex = this.getSelectedIndex(scenarioInvestigators, choice);
     return (
       <>
-        <View style={styles.wrapper}>
+        <View style={[
+          styles.wrapper,
+          id !== '$lead_investigator' ? styles.topBorder : {}
+        ]}>
           <PickerComponent
             title={title}
             description={description}
@@ -155,9 +158,11 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
 
 const styles = StyleSheet.create({
   wrapper: {
-    borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
+  },
+  topBorder: {
+    borderTopWidth: StyleSheet.hairlineWidth,
   },
   buttonWrapper: {
     padding: 8,

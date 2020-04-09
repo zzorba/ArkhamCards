@@ -1,8 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { flatMap } from 'lodash';
+import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { flatMap, keys, map } from 'lodash';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import CampaignGuideSummary from './CampaignGuideSummary';
+import { OddsCalculatorProps } from 'components/campaign/OddsCalculatorView';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
@@ -11,6 +14,8 @@ import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
 
 interface Props {
+  componentId: string;
+  campaignId: number;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
   fontScale: number;
@@ -23,7 +28,7 @@ export default class CampaignLogTab extends React.Component<Props> {
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
-          <View style={styles.container}>
+          <View style={styles.section}>
             <Text style={typography.bigGameFont}>
               { title }: { count }
             </Text>
@@ -34,7 +39,7 @@ export default class CampaignLogTab extends React.Component<Props> {
         const section = campaignLog.investigatorSections[id];
         if (!section) {
           return (
-            <View style={styles.container}>
+            <View style={styles.section}>
               <Text style={[typography.bigGameFont, typography.underline]}>
                 { title }
               </Text>
@@ -53,15 +58,17 @@ export default class CampaignLogTab extends React.Component<Props> {
       default: {
         const section = campaignLog.sections[id];
         return (
-          <View style={styles.container}>
-            <Text style={[
-              typography.bigGameFont,
-              typography.underline,
-              typography.center,
-              (section && section.sectionCrossedOut) ? styles.crossedOut : {},
-            ]}>
-              { title }
-            </Text>
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={[
+                typography.bigGameFont,
+                typography.underline,
+                typography.center,
+                (section && section.sectionCrossedOut) ? styles.crossedOut : {},
+              ]}>
+                { title }
+              </Text>
+            </View>
             { !!section && (
               <CampaignLogSectionComponent
                 sectionId={id}
@@ -75,19 +82,66 @@ export default class CampaignLogTab extends React.Component<Props> {
     }
   }
 
+  _oddsCalculatorPressed = () => {
+    const {
+      componentId,
+      campaignId,
+      campaignLog,
+    } = this.props;
+    this.setState({
+      menuOpen: false,
+    });
+    Navigation.push<OddsCalculatorProps>(componentId, {
+      component: {
+        name: 'OddsCalculator',
+        passProps: {
+          campaignId: campaignId,
+          investigatorIds: campaignLog.investigatorCodesSafe(),
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Odds Calculator`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  };
+
   render() {
     const { campaignGuide, campaignLog, fontScale } = this.props;
+    const difficulty = campaignLog.campaignData.difficulty;
     return (
       <ScrollView>
         <View style={styles.section}>
-          <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
-            { t`Chaos Bag` }
-          </Text>
-          <ChaosBagLine
-            chaosBag={campaignLog.chaosBag}
-            fontScale={fontScale}
+          <CampaignGuideSummary
+            difficulty={difficulty}
+            campaignGuide={campaignGuide}
           />
         </View>
+        { keys(campaignLog.chaosBag).length > 0 && (
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
+                { t`Chaos Bag` }
+              </Text>
+            </View>
+            <ChaosBagLine
+              chaosBag={campaignLog.chaosBag}
+              fontScale={fontScale}
+            />
+            <View style={styles.buttonWrapper}>
+              <Button
+                title={t`Odds Calculator`}
+                onPress={this._oddsCalculatorPressed}
+              />
+            </View>
+          </View>
+        ) }
         { flatMap(campaignGuide.campaignLogSections(), log => {
           if (log.type === 'hidden') {
             return null;
@@ -104,18 +158,20 @@ export default class CampaignLogTab extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginLeft: 16,
-    marginRight: 32,
-    paddingTop: 8,
-    paddingBottom: 8,
-  },
   section: {
-    margin: 16,
-    marginLeft: 32,
-    marginRight: 32,
+    padding: 16,
+    paddingLeft: 24,
+    paddingRight: 24,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
   },
   crossedOut: {
     textDecorationLine: 'line-through',
+  },
+  buttonWrapper: {
+    padding: 8,
+  },
+  sectionHeader: {
+    paddingBottom: 16,
   },
 });

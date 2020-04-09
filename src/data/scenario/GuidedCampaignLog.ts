@@ -520,6 +520,11 @@ export default class GuidedCampaignLog {
     }
   }
 
+  totalXp(code: string): number {
+    const data = this.campaignData.investigatorData[code] || {};
+    return data.availableXp || 0;
+  }
+
   earnedXp(code: string): number {
     const data = this.campaignData.investigatorData[code] || {};
     const lastSavedData = this.campaignData.lastSavedInvestigatorData[code] || {};
@@ -556,10 +561,14 @@ export default class GuidedCampaignLog {
     return slots;
   }
 
+  baseTrauma(code: string): TraumaAndCardData {
+    return this.campaignData.lastSavedInvestigatorData[code] || {};
+  }
+
   traumaChanges(code: string): TraumaAndCardData {
     const currentTrauma = this.traumaAndCardData(code);
-    const previousTrauma = this.campaignData.lastSavedInvestigatorData[code] || {};
-    return traumaDelta(currentTrauma, previousTrauma);
+    const previousTrauma = this.baseTrauma(code);
+      return traumaDelta(currentTrauma, previousTrauma);
   }
 
   ignoreStoryAssets(code: string): Slots {

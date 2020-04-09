@@ -32,6 +32,7 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
     return (
       <BinaryPrompt
         id={this.firstDecisionId()}
+        bulletType="small"
         text={t`Do you want to use the app to randomize weaknesses?`}
       />
     );

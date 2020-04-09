@@ -8,11 +8,12 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import CardSectionHeader from 'components/core/CardSectionHeader';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import CardCostIcon from 'components/core/CardCostIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import Card from 'data/Card';
-import { FACTION_COLORS } from 'constants';
+import { FACTION_COLORS, FACTION_DARK_GRADIENTS } from 'constants';
 import typography from 'styles/typography';
 
 interface Props {
@@ -54,6 +55,10 @@ export default class InvestigatorRow extends React.Component<Props> {
     } = this.props;
     return (
       <View style={styles.wrapper}>
+        <View style={[
+          styles.headerColor,
+          { backgroundColor: FACTION_DARK_GRADIENTS[eliminated ? 'dead' : investigator.factionCode()][0] },
+        ]} />
         <View style={styles.row}>
           <View style={styles.image}>
             <InvestigatorImage
@@ -91,6 +96,10 @@ export default class InvestigatorRow extends React.Component<Props> {
           ) }
         </View>
         { !!detail && detail }
+        <View style={[
+          styles.headerColor,
+          { backgroundColor: FACTION_DARK_GRADIENTS[eliminated ? 'dead' : investigator.factionCode()][0] },
+        ]} />
       </View>
     );
   }
@@ -121,6 +130,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     position: 'relative',
+    paddingTop: 8,
   },
   closeIcon: {
     position: 'absolute',
@@ -132,6 +142,9 @@ const styles = StyleSheet.create({
   },
   image: {
     margin: 8,
+    marginLeft: 16,
+    marginBottom: 16,
+    marginRight: 16,
   },
   titleColumn: {
     flex: 1,
@@ -147,5 +160,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#222',
+  },
+  headerColor: {
+    height: 16,
   },
 });
