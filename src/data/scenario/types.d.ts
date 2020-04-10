@@ -79,7 +79,6 @@ export type ChaosToken =
   | "elder_thing"
   | "elder_sign"
   | "auto_fail";
-export type BulletType = "none" | "small" | "right";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
 export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand;
@@ -94,6 +93,7 @@ export type ScenarioDataCondition =
   | ScenarioDataInvestigatorStatusCondition
   | ScenarioDataPlayerCountCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
+export type BulletType = "none" | "small" | "right";
 export type Input =
   | UpgradeDecksInput
   | CardChoiceInput
@@ -165,7 +165,6 @@ export interface BoolOption {
   condition?: string;
   effects?: Effect[];
   border?: boolean;
-  bullet_type?: BulletType;
   steps?: string[];
 }
 export interface StoryStepEffect {
@@ -296,7 +295,6 @@ export interface Option {
   numCondition?: number;
   condition?: string;
   border?: boolean;
-  bullet_type?: BulletType;
   effects?: Effect[];
   steps?: string[];
 }
@@ -355,7 +353,6 @@ export interface CampaignDataDifficultyCondition {
 export interface StringOption {
   condition: string;
   border?: boolean;
-  bullet_type?: BulletType;
   effects?: Effect[];
   steps?: string[];
 }

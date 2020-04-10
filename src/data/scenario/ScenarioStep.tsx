@@ -277,8 +277,7 @@ export default class ScenarioStep {
             border: (result.option && result.option.border),
             numberInput: result.type === 'number' ? [result.number] : undefined,
             effects: (result.option && result.option.effects) || [],
-          }],
-          result.option
+          }]
         );
       case 'investigator': {
         const {
