@@ -9,7 +9,6 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import SetupStepWrapper from '../SetupStepWrapper';
 import LocationSetupButton from './LocationSetupButton';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
@@ -30,6 +29,8 @@ interface Props {
   componentId: string;
   step: ScenarioStep;
   fontScale: number;
+  width: number;
+  border?: boolean;
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {
@@ -38,6 +39,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       componentId,
       step: { step, campaignLog },
       fontScale,
+      width,
     } = this.props;
     if (!step.type) {
       return <GenericStepComponent step={step} />;
@@ -76,6 +78,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
           <EffectsStepComponent
             componentId={componentId}
             fontScale={fontScale}
+            width={width}
             step={step}
             campaignLog={campaignLog}
           />
@@ -97,7 +100,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
   }
 
   render() {
-    const { step } = this.props;
+    const { step, border } = this.props;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators }: CampaignGuideContextType) => (
@@ -116,11 +119,15 @@ export default class ScenarioStepComponent extends React.Component<Props> {
               return (
                 <ScenarioStepContext.Provider value={context}>
                   { !!step.step.title && (
-                    <SetupStepWrapper bulletType="none">
-                      <Text style={[typography.bigGameFont, { color: COLORS.scenarioGreen }]}>
+                    <View style={styles.titleWrapper}>
+                      <Text style={[
+                        typography.bigGameFont,
+                        styles.title,
+                        border ? typography.center : {},
+                      ]}>
                         { step.step.title }
                       </Text>
-                    </SetupStepWrapper>
+                    </View>
                   ) }
                   { this.renderContent() }
                   { (step.step.id === '$proceed') && (
@@ -144,5 +151,13 @@ export default class ScenarioStepComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   buttonWrapper: {
     padding: 8,
+  },
+  title: {
+    color: COLORS.scenarioGreen,
+    paddingTop: 32,
+  },
+  titleWrapper: {
+    marginLeft: 24,
+    marginRight: 24,
   },
 });

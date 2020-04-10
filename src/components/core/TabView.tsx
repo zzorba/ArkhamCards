@@ -14,6 +14,7 @@ interface Props {
     node: React.ReactNode;
   }[];
   onTabChange: (key: string) => void;
+  scrollEnabled?: boolean;
 }
 
 interface State {
@@ -46,7 +47,7 @@ export default class ArkhamTabView extends React.Component<Props, State> {
     return (
       <TabBar
         {...props}
-        scrollEnabled
+        scrollEnabled={this.props.scrollEnabled}
         activeColor={COLORS.lightBlue}
         inactiveColor={COLORS.darkGray}
         indicatorStyle={{ backgroundColor: COLORS.lightBlue }}

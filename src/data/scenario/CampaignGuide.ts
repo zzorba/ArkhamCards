@@ -354,12 +354,16 @@ export default class CampaignGuide {
     }
     // Try input value?
     if (sectionId !== '$input_value') {
-      const entry = this.logEntry('$input_value', id);
-      if (entry) {
-        return {
-          ...entry,
-          section: sectionId,
-        };
+      try {
+        const entry = this.logEntry('$input_value', id);
+        if (entry) {
+          return {
+            ...entry,
+            section: sectionId,
+          };
+        }
+      } catch (e) {
+        throw new Error(`Could not find section(${sectionId}), id(${id}), textSection(${JSON.stringify(textSection)})`);
       }
     }
     throw new Error(`Could not find section(${sectionId}), id(${id}), textSection(${JSON.stringify(textSection)})`);

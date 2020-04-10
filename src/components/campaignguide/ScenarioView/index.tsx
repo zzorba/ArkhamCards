@@ -112,12 +112,13 @@ class ScenarioView extends React.Component<Props> {
   }
 
   render() {
-    const { componentId, fontScale, processedScenario } = this.props;
+    const { componentId, fontScale, width, processedScenario } = this.props;
     return (
       <ScrollView>
         <StepsComponent
           componentId={componentId}
           fontScale={fontScale}
+          width={width}
           steps={processedScenario.steps}
         />
         <View style={styles.footer} />

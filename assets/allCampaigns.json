@@ -15596,6 +15596,14 @@
       "id": "resolution_4",
       "type": "resolution",
       "resolution": "R4"
+    },
+    {
+      "id": "campaign_a_dreamers_grow_weaker",
+      "text": "TODO"
+    },
+    {
+      "id": "proceed_branch",
+      "text": "TODO"
     }
   ],
   "resolutions": [
@@ -17176,6 +17184,10 @@
     "check_poison_spreads",
     "find_stone_carvings",
     "check_canteen",
+    "explain_faith_restored",
+    "check_cultists",
+    "check_forged_bond_with_ichtaca",
+    "check_has_confidence",
     "check_faith_restored",
     "$upgrade_decks"
   ],
@@ -17200,7 +17212,11 @@
           {
             "boolCondition": false,
             "condition": "Out of Gas",
-            "steps": ["out_of_gas", "no_mulligan"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["out_of_gas", "no_mulligan"]
+            }]
           }
         ]
       }
@@ -17213,7 +17229,6 @@
     },
     {
       "id": "no_mulligan",
-      "bullet_type": "right",
       "text": "When drawing opening hands during this scenario, investigators cannot take a mulligan."
     },
     {
@@ -17229,7 +17244,11 @@
           {
             "boolCondition": true,
             "condition": "A Path Discovered",
-            "steps": ["path_discovered", "mapped_way_forward"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["path_discovered", "mapped_way_forward"]
+            }]
           }
         ]
       }
@@ -17242,7 +17261,6 @@
     },
     {
       "id": "mapped_way_forward",
-      "bullet_type": "right",
       "effects": [
         {
           "type": "campaign_log",
@@ -17265,7 +17283,11 @@
           {
             "boolCondition": false,
             "condition": "Low on Rations",
-            "steps": ["low_on_rations", "fewer_resources"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["low_on_rations", "fewer_resources"]
+            }]
           }
         ]
       }
@@ -17278,7 +17300,6 @@
     },
     {
       "id": "fewer_resources",
-      "bullet_type": "right",
       "text": "You begin the next scenario with 3 fewer resources."
     },
     {
@@ -17315,6 +17336,7 @@
           {
             "boolCondition": true,
             "condition": "The Poison Spreads",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",
@@ -17344,7 +17366,7 @@
     {
       "id": "check_canteen",
       "type": "branch",
-      "text": "Check your supplies to see if any investigator has a canteen.",
+      "text": "Check your supplies. If any investigator has a canteen, they read <b>Patterns in the Stone</b>. Otherwise, read <b>Secrets in the Stone</b>.",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -17354,12 +17376,22 @@
           {
             "boolCondition": true,
             "condition": "Patterns in the Stone",
-            "steps": ["patterns_in_the_stone", "start_with_clue"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["patterns_in_the_stone", "start_with_clue"]
+              }
+            ]
           },
           {
             "boolCondition": false,
             "condition": "Secrets in the Stone",
-            "steps": ["secrets_in_the_stone", "no_ill_effects"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["secrets_in_the_stone", "no_ill_effects"]
+            }]
           }
         ]
       }
@@ -17372,7 +17404,6 @@
     },
     {
       "id": "start_with_clue",
-      "bullet_type": "right",
       "text": "Each investigator who has a canteen begins the next scenario with 1 clue <i>(from the token bank)</i>."
     },
     {
@@ -17383,34 +17414,48 @@
     },
     {
       "id": "no_ill_effects",
-      "bullet_type": "right",
       "text": "You suffer no ill effects."
     },
     {
-      "id": "check_faith_restored",
+      "id": "explain_faith_restored",
+      "text": "Check the chaos bag and the Campaign Log. If all of the following are true, the lead investigator reads <b>Faith Restored</b>."
+    },
+    {
+      "id": "check_cultists",
+      "bullet_type": "small",
+      "text": "There are 2 or more [cultist] tokens in the chaos bag.",
       "type": "branch",
       "condition": {
-        "type": "campaign_data",
-        "campaign_data": "chaos_bag",
-        "token": "cultist",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_data",
+            "campaign_data": "chaos_bag",
+            "token": "cultist",
+            "options": [
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              },
+              {
+                "numCondition": 4
+              }
+            ]
+          }
+        ],
+        "count": 1,
         "options": [
           {
-            "numCondition": 2,
-            "steps": ["check_forged_bond_with_ichtaca"]
-          },
-          {
-            "numCondition": 3,
-            "steps": ["check_forged_bond_with_ichtaca"]
-          },
-          {
-            "numCondition": 4,
-            "steps": ["check_forged_bond_with_ichtaca"]
+            "boolCondition": true
           }
         ]
       }
     },
     {
       "id": "check_forged_bond_with_ichtaca",
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -17418,14 +17463,14 @@
         "id": "forged_bond_with_ichtaca",
         "options": [
           {
-            "boolCondition": true,
-            "steps": ["check_ichtaca_has_confidence"]
+            "boolCondition": true
           }
         ]
       }
     },
     {
-      "id": "check_ichtaca_has_confidence",
+      "id": "check_has_confidence",
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -17433,8 +17478,76 @@
         "id": "ichtaca_has_confidence",
         "options": [
           {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_faith_restored",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_data",
+            "campaign_data": "chaos_bag",
+            "token": "cultist",
+            "options": [
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              },
+              {
+                "numCondition": 4
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "forged_bond_with_ichtaca",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "ichtaca_has_confidence",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
+        "options": [
+          {
             "boolCondition": true,
-            "steps": ["faith_restored", "ichtacas_faith_restored", "add_cultist_token"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["faith_restored", "ichtacas_faith_restored"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "ichtacas_faith_restored",
+                "text": "Ichtaca’s faith is restored"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist"]
+              }
+            ]
           }
         ]
       }
@@ -17447,27 +17560,8 @@
     },
     {
       "id": "ichtacas_faith_restored",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "ichtacas_faith_restored",
-          "text": "Ichtaca’s faith is restored"
-        }
-      ]
-    },
-    {
-      "id": "add_cultist_token",
-      "text": "Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
-      "effects": [
-        {
-          "type": "add_chaos_token",
-          "tokens": ["cultist"]
-        }
-      ]
+      "text": "In your Campaign Log, record that <i>Ichtaca’s faith is restored</i>. Add 1 [cultist] token to the chaos bag for the remainder of the campaign."
     }
-
-
   ]
 }
 ,
@@ -17614,6 +17708,7 @@
           {
             "boolCondition": true,
             "condition": "Restful Sleep",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",
@@ -17624,6 +17719,7 @@
           {
             "boolCondition": false,
             "condition": "Tossing and Turning",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",
@@ -17653,7 +17749,6 @@
     },
     {
       "id": "no_ill_effects",
-      "bullet_type": "right",
       "text": "You suffer no ill effects."
     },
     {
@@ -17668,8 +17763,12 @@
         "choices": [
           {
             "boolCondition": false,
+            "border": true,
             "condition": "Low on Rations",
-            "steps": ["low_on_rations", "fewer_resources"]
+            "effects": [{
+              "type": "story_step",
+              "steps": ["low_on_rations", "fewer_resources"]
+             }]
           }
         ]
       }
@@ -17682,7 +17781,6 @@
     },
     {
       "id": "fewer_resources",
-      "bullet_type": "right",
       "text": "You begin the next scenario with 3 fewer resources."
     },
     {
@@ -17696,8 +17794,9 @@
         "investigator": "choice",
         "prompt": "Group's lookout",
         "positiveChoice": {
-          "id": "shapes_in_the_trees",
+          "id": "positive",
           "text": "Shapes in the Trees",
+          "border": true,
           "effects": [
             {
               "type": "story_step",
@@ -17713,6 +17812,7 @@
         "negativeChoice": {
           "id": "eyes_in_the_dark",
           "text": "Eyes in the Dark",
+          "border": true,
           "effects": [
             {
               "type": "story_step",
@@ -17741,7 +17841,6 @@
     },
     {
       "id": "bonus_binoculars_xp",
-      "bullet_type": "right",
       "text": "You earn 2 additional experience as you gain further insight into the motivations of the Eztli."
     },
     {
@@ -17758,11 +17857,13 @@
         "choices": [
           {
             "boolCondition": true,
-            "effects": [{
-              "type": "remove_card",
-              "investigator": "choice",
-              "card": "04102"
-            }]
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "choice",
+                "card": "04102"
+              }
+            ]
           }
         ]
       }
@@ -17778,6 +17879,7 @@
           {
             "boolCondition": true,
             "condition": "The Poison Spreads",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",
@@ -18265,6 +18367,7 @@
     },
     {
       "id": "check_forged_bond_with_ichtaca",
+      "text": "Check Campaign Log. <i>If the investigators forged a bond with Ichtaca</i>, the lead investigator reads <b>Ichtaca’s Quest</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18273,7 +18376,13 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["ichtacas_quest", "no_ill_effects"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["ichtacas_quest", "no_ill_effects"]
+              }
+            ]
           },
           {
             "boolCondition": false,
@@ -18284,16 +18393,17 @@
     },
     {
       "id": "ichtacas_quest",
+      "title": "Ichtaca’s Quest",
       "type": "story",
       "text": "“How close are we?” Ichtaca asks for the hundredth time since departing from Arkham. “We have to get to Anahuac as fast as we can. The longer we take, the more time the Brotherhood has to reach the Nexus.” You recognize the old Aztec name for the Valley of Mexico, and inform Ichtaca that you will be crossing the border into Mexico within the hour. She crosses her arms and grits her teeth."
     },
     {
       "id": "no_ill_effects",
-      "bullet_type": "right",
       "text": "You suffer no ill effects."
     },
     {
       "id": "check_ichtaca_in_the_dark",
+      "text": "<i>If Ichtaca is in the dark</i>, the lead investigator reads <b>Silent Journey</b> instead.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18302,23 +18412,28 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["silent_journey", "two_fewer_cards"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["silent_journey", "two_fewer_cards"]
+            }]
           }
         ]
       }
     },
     {
       "id": "silent_journey",
+      "title": "Silent Journey",
       "type": "story",
       "text": "Ichtaca is quiet and pensive for the majority of your journey. Your questions are met with a wall of silence and a steely glare. Whatever she has planned, you are being left in the dark."
     },
     {
       "id": "two_fewer_cards",
-      "bullet_type": "right",
       "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
     },
     {
       "id": "check_found_missing_relic",
+      "text": "Check Campaign Log. <i> If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming.</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18327,7 +18442,18 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["arcane_thrumming", "replace_relic_of_ages"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["arcane_thrumming", "replace_relic_of_ages"]
+              },
+              {
+                "type": "replace_card",
+                "old_card": "04061",
+                "new_card": "04191"
+              }
+            ]
           },
           {
             "boolCondition": false,
@@ -18338,23 +18464,17 @@
     },
     {
       "id": "arcane_thrumming",
+      "title": "Arcane Thrumming",
       "type": "story",
       "text": "Throughout the journey south, the device you recovered from the clutches of the Brotherhood continues its endless humming, wrapped in a thin bedsheet on the back seat of your car. Your understanding of the relic’s nature is deepening."
     },
     {
       "id": "replace_relic_of_ages",
-      "bullet_type": "right",
-      "text": "The investigator with Relic of Ages <i>(...A Device, of Some Sort)</i> in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages <i>(Forestalling the Future)</i>.",
-      "effects": [
-        {
-          "type": "replace_card",
-          "old_card": "04061",
-          "new_card": "04191"
-        }
-      ]
+      "text": "The investigator with Relic of Ages <i>(...A Device, of Some Sort)</i> in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages <i>(Forestalling the Future)</i>."
     },
     {
       "id": "check_relic_is_missing",
+      "text": "<i>If the relic is missing<i>, the lead investigator reads <b>Growing Concern</b> instead.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18363,23 +18483,28 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["growing_concern", "remove_relic_of_ages_from_game"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["growing_concern", "remove_relic_of_ages_from_game"]
+            }]
           }
         ]
       }
     },
     {
       "id": "growing_concern",
+      "title": "Growing Concern",
       "type": "story",
       "text": "The loss of the Eztli relic weighs heavily on your mind. Clearly, its value is more than simply academic. It holds a power within it that you cannot yet begin to fathom. You are certain that the shadowy Brotherhood is behind its disappearance, but for what purpose?"
     },
     {
       "id": "remove_relic_of_ages_from_game",
-      "bullet_type": "right",
       "text": "Remove Relic of Ages <i>(Forestalling the Future)</i> from the game."
     },
     {
       "id": "check_rescued_alejandro",
+      "text": "Check Campaign Log. <i>If the investigators rescued Alejandro</i>, the lead investigator reads <b>Alejandro’s Thoughts.</b>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18388,7 +18513,11 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["alejandros_thoughts", "two_extra_resources"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["alejandros_thoughts", "two_extra_resources"]
+            }]
           },
           {
             "boolCondition": false,
@@ -18399,16 +18528,17 @@
     },
     {
       "id": "alejandros_thoughts",
+      "title": "Alejandro's Thoughts",
       "type": "story",
       "text": "Throughout your journey, Alejandro scribbles endlessly in his journal, the sound of pencil scratching against paper a constant reminder of his presence. He remains huddled in the back seat of the car, his knees keeping the journal still, his brows furrowed in thought. “This ‘Brotherhood’ is the least of our concerns,” he says with an air of finality. “I’ve been trying to decrypt the glyphs the device bears. The symbols are clearly not Aztec, nor Mayan, nor are they from any other Mesoamerican civilization, for that matter. I believe there is some other place the relic belongs. Somewhere it was taken from. Wouldn’t you agree, Miss Ichtaca?”\nIchtaca’s already-grim expression grows darker, her eyes narrowing. She doesn’t bother to turn around in her seat before addressing Alejandro. “It belongs somewhere meddlesome scholars cannot abuse its power,” she replies in a cold tone, and that is the end of the discussion.\nCrossing the border into Mexico is a less stressful endeavor than you imagined it to be, due to Alejandro’s connections. You are waved through customs with nary a stray glance, and soon enough, you are on your way to Mexico City."
     },
     {
       "id": "two_extra_resources",
-      "bullet_type": "right",
       "text": "Each investigator begins this scenario with 2 additional resources."
     },
     {
       "id": "check_alejandro_is_missing",
+      "text": "<i>If Alejandro is missing</i>, the lead investigator reads <b>An Empty Seat</b> instead.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18417,13 +18547,18 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["an_empty_seat", "no_ill_effects"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["an_empty_seat", "no_ill_effects"]
+            }]
           }
         ]
       }
     },
     {
       "id": "an_empty_seat",
+      "title": "An Empty Seat",
       "type": "story",
       "text": "Somewhere just north of the border, you stop to rest for the night. Your eyes are drawn to the empty seat behind you, and you wonder where Alejandro is right now."
     },
@@ -18442,13 +18577,18 @@
           {
             "boolCondition": false,
             "condition": "Out of Gas",
-            "steps": ["out_of_gas", "no_mulligan"]
+            "border": true,
+            "effects": [{
+              "type": "story_step",
+              "steps": ["out_of_gas", "no_mulligan"]
+            }]
           }
         ]
       }
     },
     {
       "id": "out_of_gas",
+      "title": "Out of Gas",
       "type": "story",
       "text": "Fuel is a constant concern throughout your journey south. You are able to refuel several times along the way at general and hardware stores, but eventually your car putters out along the side of the road, just north of the southern border. You and Ichtaca are forced to walk several miles to the nearest town to refuel, setting you back several hours."
     },
@@ -19244,6 +19384,7 @@
     },
     {
       "id": "check_found_missing_relic",
+      "text": "Check Campaign Log. <i>If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -19252,17 +19393,52 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["arcane_thrumming", "check_investigators_recovered_relic"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["arcane_thrumming"]
+              }
+            ],
+            "steps": ["check_investigators_recovered_relic"]
           },
           {
             "boolCondition": false,
-            "steps": ["check_relic_is_missing"]
+            "steps": ["check_relic_is_missing_difficulty"]
           }
         ]
       }
     },
     {
-      "id": "check_relic_is_missing",
+      "id": "check_relic_is_missing_difficulty",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "steps": ["check_relic_is_missing_easy"]
+          },
+          {
+            "condition": "standard",
+            "steps": ["check_relic_is_missing_standard"]
+          },
+          {
+            "condition": "hard",
+            "steps": ["check_relic_is_missing_hard"]
+          },
+          {
+            "condition": "expert",
+            "steps": ["check_relic_is_missing_expert"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_relic_is_missing_easy",
+      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -19271,7 +19447,95 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["growing_concern", "add_chaos_token"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["growing_concern", "add_easy_token"]
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-3"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_relic_is_missing_standard",
+      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "relic_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["growing_concern", "add_standard_token"]
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-4"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_relic_is_missing_hard",
+      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "relic_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["growing_concern", "add_hard_token"]
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-5"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_relic_is_missing_expert",
+      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "relic_is_missing",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["growing_concern", "add_expert_token"]
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-7"]
+              }
+            ]
           }
         ]
       }
@@ -19284,7 +19548,7 @@
     },
     {
       "id": "check_investigators_recovered_relic",
-      "text": "Check Campaign Log. <i>If the investigators recovered the Relic of Ages</i>, and <i>if you are forging your own path</i>.",
+      "text": "Check Campaign Log. <i>If the investigators recovered the Relic of Ages</i>, and <i>if you are forging your own path</i>, read <b>Final Dawning</b>. Otherwise, you suffer no ill effects.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -19295,8 +19559,7 @@
             "id": "investigators_recovered_relic",
             "options": [
               {
-                "boolCondition": true,
-                "effects": []
+                "boolCondition": true
               }
             ]
           },
@@ -19306,8 +19569,7 @@
             "id": "forging_own_path",
             "options": [
               {
-                "boolCondition": true,
-                "effects": []
+                "boolCondition": true
               }
             ]
           }
@@ -19316,19 +19578,21 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["final_dawning", "swap_relic"]
-          },
-          {
-            "boolCondition": false,
-            "steps": ["no_ill_effects"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["final_dawning", "swap_relic"]
+              },
+              {
+                "type": "replace_card",
+                "old_card": "04191",
+                "new_card": "04303"
+              }
+            ]
           }
         ]
       }
-    },
-    {
-      "id": "no_ill_effects",
-      "bullet_type": "small",
-      "text": "You suffer no ill effects."
     },
     {
       "id": "final_dawning",
@@ -19338,15 +19602,8 @@
     },
     {
       "id": "swap_relic",
-      "bullet_type": "right",
-      "text": "The investigator with Relic of Ages in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages (<i>Repossess the Past</i>).",
-      "effects": [
-        {
-          "type": "replace_card",
-          "old_card": "04191",
-          "new_card": "04303"
-        }
-      ]
+      "bullet_type": "small",
+      "text": "The investigator with Relic of Ages in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages (<i>Repossess the Past</i>)."
     },
     {
       "id": "growing_concern",
@@ -19355,50 +19612,20 @@
       "text": "As you rise to your feet, the ground rumbles and growls. Something deep below you is moving. Shifting. Mutating."
     },
     {
-      "id": "add_chaos_token",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_data",
-        "campaign_data": "difficulty",
-        "options": [
-          {
-            "condition": "easy",
-            "effects": [
-              {
-                "type": "add_chaos_token",
-                "tokens": ["-3"]
-              }
-            ]
-          },
-          {
-            "condition": "standard",
-            "effects": [
-              {
-                "type": "add_chaos_token",
-                "tokens": ["-4"]
-              }
-            ]
-          },
-          {
-            "condition": "hard",
-            "effects": [
-              {
-                "type": "add_chaos_token",
-                "tokens": ["-5"]
-              }
-            ]
-          },
-          {
-            "condition": "expert",
-            "effects": [
-              {
-                "type": "add_chaos_token",
-                "tokens": ["-7"]
-              }
-            ]
-          }
-        ]
-      }
+      "id": "add_easy_token",
+      "text": "Because you are playing on Easy difficulty, add a -3 token to the chaos bag for the remainder of the campaign."
+    },
+    {
+      "id": "add_standard_token",
+      "text": "Because you are playing on Easy difficulty, add a -4 token to the chaos bag for the remainder of the campaign."
+    },
+    {
+      "id": "add_hard_token",
+      "text": "Because you are playing on Easy difficulty, add a -5 token to the chaos bag for the remainder of the campaign."
+    },
+    {
+      "id": "add_expert_token",
+      "text": "Because you are playing on Easy difficulty, add a -7 token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "find_brazier",
@@ -19408,7 +19635,7 @@
     {
       "id": "check_torches",
       "type": "branch",
-      "text": "Check your supplies to see if any investigator has torches.",
+      "text": "Check your supplies. If any investigator has torches, they read <b>Torchlight</b>. Otherwise, read <b>The Abyss</b>.",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -19418,12 +19645,38 @@
           {
             "boolCondition": true,
             "condition": "Torchlight",
-            "steps": ["torchlight", "braziers_are_lit", "check_map"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["torchlight", "braziers_are_lit"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "braziers_are_lit",
+                "text": "the braziers are lit."
+              }
+            ],
+            "steps": ["check_map_braziers"]
           },
           {
             "boolCondition": false,
             "condition": "The Abyss",
-            "steps": ["the_abyss", "braziers_remain_unlit"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["the_abyss", "braziers_remain_unlit"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "braziers_remain_unlit",
+                "text": "the braziers remain unlit."
+              }
+            ],
+            "steps": ["check_map_no_braziers"]
           }
         ]
       }
@@ -19436,14 +19689,7 @@
     },
     {
       "id": "braziers_are_lit",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "braziers_are_lit",
-          "text": "the braziers are lit."
-        }
-      ]
+      "text": "In your Campaign Log, record that <i>the braziers are lit</i>."
     },
     {
       "id": "the_abyss",
@@ -19453,20 +19699,23 @@
     },
     {
       "id": "braziers_remain_unlit",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "braziers_remain_unlit",
-          "text": "the braziers remain unlit."
-        }
-      ]
+      "text": "In your Campaign Log, record that <i>the braziers remain unlit</i>."
     },
-
     {
-      "id": "check_map",
+      "id": "check_map_no_braziers",
+      "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
       "type": "branch",
-      "text": "Check your supplies to see if any investigator has a map.",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "braziers_are_lit",
+        "options": []
+      }
+    },
+    {
+      "id": "check_map_braziers",
+      "type": "branch",
+      "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -19476,10 +19725,11 @@
           {
             "boolCondition": true,
             "condition": "Reading Signs",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",
-                "steps": ["reading_signs"]
+                "steps": ["reading_signs", "map_xp"]
               },
               {
                 "type": "earn_xp",
@@ -19495,6 +19745,10 @@
       "type": "story",
       "title": "Reading Signs",
       "text": "As you traverse the caverns, something catches your attention: streams of cold, gentle water that drip down the walls of the cavern. Curious, you unfold the previous expedition’s map and sit by one of the lit braziers, mentally retracing your steps. If your calculations are correct, you have traveled much farther south than you could have possibly guessed. Could it be these caverns extend all the way to the coastline? Do the caverns never end?"
+    },
+    {
+      "id": "map_xp",
+      "text": "Each investigator with a map earns 2 additional experience as he or she gains insight into the caverns that dwell beneath the surface of the Earth."
     },
     {
       "id": "time_passes",
@@ -20432,6 +20686,10 @@
   "type": "interlude",
   "setup": [
     "check_process_backfired",
+    "explain_mind_recovered",
+    "check_tablets",
+    "check_rescued_alejandro",
+    "ask_custodian",
     "check_mind_recovered",
     "find_stone_gate",
     "check_chalk",
@@ -20576,38 +20834,45 @@
       }
     },
     {
-      "id": "check_mind_recovered",
+      "id": "explain_mind_recovered",
+      "text": "Check the chaos bag and the Campaign Log. If all of the following are true, the lead investigator reads <b>A Mind Recovered</b>. If any of the following are not true, the lead investigator reads <b>Forever Lost</b> instead."
+    },
+    {
+      "id": "check_tablets",
+      "bullet_type": "small",
+      "text": "There are 2 or more [tablet] tokens in the chaos bag.",
       "type": "branch",
       "condition": {
-        "type": "campaign_data",
-        "campaign_data": "chaos_bag",
-        "token": "tablet",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_data",
+            "campaign_data": "chaos_bag",
+            "token": "tablet",
+            "options": [
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              },
+              {
+                "numCondition": 4
+              }
+            ]
+          }
+        ],
+        "count": 1,
         "options": [
           {
-            "numCondition": 0,
-            "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
-          },
-          {
-            "numCondition": 1,
-            "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
-          },
-          {
-            "numCondition": 2,
-            "steps": ["check_mind_recovered_rescued_alejandro"]
-          },
-          {
-            "numCondition": 3,
-            "steps": ["check_mind_recovered_rescued_alejandro"]
-          },
-          {
-            "numCondition": 4,
-            "steps": ["check_mind_recovered_rescued_alejandro"]
+            "boolCondition": true
           }
         ]
       }
     },
     {
-      "id": "check_mind_recovered_rescued_alejandro",
+      "id": "check_rescued_alejandro",
+      "bullet_type": "small",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -20615,32 +20880,117 @@
         "id": "rescued_alejandro",
         "options": [
           {
-            "boolCondition": false,
-            "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
-          },
-          {
-            "boolCondition": true,
-            "steps": ["check_mind_recovered_had_custodian"]
+            "boolCondition": true
           }
         ]
       }
     },
     {
-      "id": "check_mind_recovered_had_custodian",
+      "id": "ask_custodian",
+      "bullet_type": "small",
       "type": "input",
-      "text": "Was the Custodian was under an investigator’s control when the previous scenario ended?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
-            "id": "yes",
-            "text": "Yes",
-            "steps": ["mind_recovered", "alejandro_remembers_everything"]
+            "id": "rescued_custodian",
+            "text": "Was the Custodian was under an investigator’s control when the previous scenario ended?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "rescued_custodian"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_mind_recovered",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_data",
+            "campaign_data": "chaos_bag",
+            "token": "tablet",
+            "options": [
+              {
+                "numCondition": 2
+              },
+              {
+                "numCondition": 3
+              },
+              {
+                "numCondition": 4
+              }
+            ]
           },
           {
-            "id": "no",
-            "text": "No",
-            "steps": ["forever_lost", "alejandro_set_against", "maybe_lose_alejandro"]
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "rescued_custodian",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "rescued_alejandro",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
+        "options": [
+          {
+            "boolCondition": false,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["forever_lost", "alejandro_set_against"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "alejandro_set_against",
+                "text": "Alejandro is set against you."
+              },
+              {
+                "type": "remove_card",
+                "card": "04051"
+              }
+            ]
+          },
+          {
+            "boolCondition": true,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["mind_recovered", "alejandro_remembers_everything"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "alejandro_remembers_everything",
+                "text": "Alejandro remembers everything."
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet"]
+              }
+            ]
           }
         ]
       }
@@ -20653,19 +21003,8 @@
     },
     {
       "id": "alejandro_remembers_everything",
-      "text": "In your Campaign Log, record that <i>Alejandro remembers everything</i>. Add 1 [tablet] token to the chaos bag for the remainder of the campaign.",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "alejandro_remembers_everything",
-          "text": "Alejandro remembers everything."
-        },
-        {
-          "type": "add_chaos_token",
-          "tokens": ["tablet"]
-        }
-      ]
+      "bullet_type": "small",
+      "text": "In your Campaign Log, record that <i>Alejandro remembers everything</i>. Add 1 [tablet] token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "forever_lost",
@@ -20675,40 +21014,8 @@
     },
     {
       "id": "alejandro_set_against",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "alejandro_set_against",
-          "text": "Alejandro is set against you."
-        }
-      ]
-    },
-    {
-      "id": "maybe_lose_alejandro",
-      "type": "branch",
-      "condition": {
-        "type": "has_card",
-        "investigator": "any",
-        "card": "04051",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["lose_alejandro"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "lose_alejandro",
       "bullet_type": "small",
-      "text": "Remove Alejandro Vela from all investigator’s deck for the remainder of the campaign.",
-      "effects": [
-        {
-          "type": "remove_card",
-          "card": "04051"
-        }
-      ]
+      "text": "In your Campaign Log, record that <i>Alejandro is set against you</i>. If Alejandro Vela is part of an investigator’s deck, remove him from that investigator’s deck for the remainder of the campaign."
     },
     {
       "id": "find_stone_gate",
@@ -20728,12 +21035,24 @@
           {
             "boolCondition": true,
             "condition": "The Way is Open",
-            "steps": ["the_way_is_open", "no_ill_effects"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["the_way_is_open", "no_ill_effects"]
+              }
+            ]
           },
           {
             "boolCondition": false,
             "condition": "The Way is Shut",
-            "steps": ["the_way_is_shut", "no_mulligan"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["the_way_is_shut", "no_mulligan"]
+              }
+            ]
           }
         ]
       }
@@ -20746,7 +21065,7 @@
     },
     {
       "id": "no_ill_effects",
-      "bullet_type": "right",
+      "bullet_type": "small",
       "text": "You suffer no ill effects."
     },
     {
@@ -20757,7 +21076,7 @@
     },
     {
       "id": "no_mulligan",
-      "bullet_type": "right",
+      "bullet_type": "small",
       "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan.."
     },
     {
@@ -20773,7 +21092,13 @@
           {
             "boolCondition": false,
             "condition": "Low on Rations",
-            "steps": ["low_on_rations", "fewer_resources"]
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["low_on_rations", "fewer_resources"]
+              }
+            ]
           }
         ]
       }
@@ -20786,7 +21111,7 @@
     },
     {
       "id": "fewer_resources",
-      "bullet_type": "right",
+      "bullet_type": "small",
       "text": "You begin the next scenario with 3 fewer resources."
     },
     {
@@ -20823,6 +21148,7 @@
           {
             "boolCondition": true,
             "condition": "The Poison Spreads",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",
@@ -20862,6 +21188,7 @@
           {
             "boolCondition": true,
             "condition": "Restful Sleep",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",
@@ -20872,6 +21199,7 @@
           {
             "boolCondition": false,
             "condition": "Tossing and Turning",
+            "border": true,
             "effects": [
               {
                 "type": "story_step",

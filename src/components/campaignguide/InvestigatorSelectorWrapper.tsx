@@ -104,7 +104,7 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
           description={description}
           investigators={investigator === 'lead_investigator' ?
             [campaignLog.leadInvestigatorChoice()] :
-            []
+            undefined
           }
           defaultLabel={t`No one`}
           required={investigator === 'any'}

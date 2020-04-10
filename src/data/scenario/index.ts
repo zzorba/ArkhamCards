@@ -33,6 +33,7 @@ export interface ProcessedCampaign {
 }
 
 export interface DisplayChoice {
+  border?: boolean;
   text?: string;
   flavor?: string;
   description?: string;

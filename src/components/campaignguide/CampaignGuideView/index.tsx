@@ -217,6 +217,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
       <TabView
         tabs={tabs}
         onTabChange={this._onTabChange}
+        scrollEnabled
       />
     );
   }

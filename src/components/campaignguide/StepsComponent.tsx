@@ -8,6 +8,7 @@ interface Props {
   steps: ScenarioStep[];
   componentId: string;
   fontScale: number;
+  width: number;
 }
 
 export default class StepsComponent extends React.Component<Props> {
@@ -16,12 +17,14 @@ export default class StepsComponent extends React.Component<Props> {
       steps,
       componentId,
       fontScale,
+      width,
     } = this.props;
     return map(steps, (step, idx) => (
       <ScenarioStepComponent
         key={`${step.step.id}_${idx}`}
         componentId={componentId}
         fontScale={fontScale}
+        width={width}
         step={step}
       />
     ));

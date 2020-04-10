@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
@@ -12,6 +13,7 @@ import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 interface Props {
   id: string;
   effect: TraumaEffect;
+  border?: boolean;
   input?: string[];
   skipCampaignLog?: boolean;
 }
@@ -51,16 +53,18 @@ export default class TraumaEffectComponent extends React.Component<Props> {
   _renderInvestigators = (
     investigators: Card[]
   ) => {
-    const { id, effect } = this.props;
+    const { id, effect, border } = this.props;
     if (effect.mental_or_physical) {
       if (effect.mental_or_physical !== 1) {
         throw new Error('Always should be 1 mental_or_physical');
       }
       return (
         <>
-          <SetupStepWrapper bulletType="right">
-            <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
-          </SetupStepWrapper>
+          <View style={border ? styles.borderPadding : undefined}>
+            <SetupStepWrapper bulletType="small">
+              <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
+            </SetupStepWrapper>
+          </View>
           <InvestigatorChoicePrompt
             id={`${id}_trauma`}
             investigators={investigators}
@@ -79,11 +83,12 @@ export default class TraumaEffectComponent extends React.Component<Props> {
               ],
             }}
           />
+          { !!border && <View style={styles.footerPadding} /> }
         </>
       );
     }
     return map(investigators, (investigator, idx) => (
-      <SetupStepWrapper key={idx} bulletType="small">
+      <SetupStepWrapper key={idx}>
         <CampaignGuideTextComponent
           text={this.message(investigator)}
         />
@@ -107,3 +112,13 @@ export default class TraumaEffectComponent extends React.Component<Props> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  borderPadding: {
+    paddingLeft: 32,
+    paddingRight: 32,
+  },
+  footerPadding: {
+    paddingBottom: 32,
+  },
+});

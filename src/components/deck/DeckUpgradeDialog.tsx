@@ -175,13 +175,15 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     }
     return (
       <>
-        <EditTraumaComponent
-          investigator={investigator}
-          investigatorData={this.investigatorData()}
-          showTraumaDialog={showTraumaDialog}
-          fontScale={fontScale}
-          sectionHeader
-        />
+        { !campaign.guided && (
+          <EditTraumaComponent
+            investigator={investigator}
+            investigatorData={this.investigatorData()}
+            showTraumaDialog={showTraumaDialog}
+            fontScale={fontScale}
+            sectionHeader
+          />
+        ) }
         <StoryCardSelectorComponent
           componentId={componentId}
           investigator={investigator}

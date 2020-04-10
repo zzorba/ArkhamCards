@@ -69,12 +69,14 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                       text={text || t`The investigators must decide (choose one):`}
                     />
                   </SetupStepWrapper>
-                  <ChooseOneListComponent
-                    choices={choices}
-                    selectedIndex={selectedChoice}
-                    onSelect={this._onChoiceChange}
-                    editable={decision === undefined}
-                  />
+                  <View style={styles.bottomPadding}>
+                    <ChooseOneListComponent
+                      choices={choices}
+                      selectedIndex={selectedChoice}
+                      onSelect={this._onChoiceChange}
+                      editable={decision === undefined}
+                    />
+                  </View>
                 </>
               ) }
               { decision === undefined && (
@@ -96,6 +98,9 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   buttonWrapper: {
+    padding: 8,
+  },
+  bottomPadding: {
     padding: 8,
   },
 });

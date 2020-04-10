@@ -478,8 +478,14 @@ export function multiConditionResult(
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
   const count = sumBy(condition.conditions, subCondition => {
-    return campaignLogConditionResult(subCondition, campaignLog).option ?
-      1 : 0;
+    switch (subCondition.type) {
+      case 'campaign_log':
+        return campaignLogConditionResult(subCondition, campaignLog).option ?
+          1 : 0;
+      case 'campaign_data':
+        return campaignDataConditionResult(subCondition, campaignLog).option ?
+          1 : 0;
+    }
   });
   return binaryConditionResult(
     count >= condition.count,

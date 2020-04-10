@@ -79,6 +79,7 @@ export type ChaosToken =
   | "elder_thing"
   | "elder_sign"
   | "auto_fail";
+export type BulletType = "none" | "small" | "right";
 export type DefaultOption = Option;
 export type MathCondition = MathCompareCondition | MathSumCondition | MathEqualsCondition;
 export type Operand = CampaignLogCountOperand | ChaosBagOperand | ConstantOperand;
@@ -93,7 +94,6 @@ export type ScenarioDataCondition =
   | ScenarioDataInvestigatorStatusCondition
   | ScenarioDataPlayerCountCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
-export type BulletType = "none" | "small" | "right";
 export type Input =
   | UpgradeDecksInput
   | CardChoiceInput
@@ -150,7 +150,7 @@ export interface BranchStep {
 }
 export interface MultiCondition {
   type: "multi";
-  conditions: CampaignLogCondition[];
+  conditions: (CampaignLogCondition | CampaignDataChaosBagCondition)[];
   count: number;
   options: BoolOption[];
 }
@@ -164,6 +164,8 @@ export interface BoolOption {
   boolCondition: boolean;
   condition?: string;
   effects?: Effect[];
+  border?: boolean;
+  bullet_type?: BulletType;
   steps?: string[];
 }
 export interface StoryStepEffect {
@@ -270,6 +272,17 @@ export interface AddRemoveChaosTokenEffect {
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
 }
+export interface CampaignDataChaosBagCondition {
+  type: "campaign_data";
+  campaign_data: "chaos_bag";
+  token: ChaosToken;
+  options: NumOption[];
+}
+export interface NumOption {
+  numCondition: number;
+  effects?: Effect[];
+  steps?: string[];
+}
 export interface CampaignLogCountCondition {
   type: "campaign_log_count";
   section: string;
@@ -278,15 +291,12 @@ export interface CampaignLogCountCondition {
   max?: number;
   defaultOption: DefaultOption;
 }
-export interface NumOption {
-  numCondition: number;
-  effects?: Effect[];
-  steps?: string[];
-}
 export interface Option {
   boolCondition?: boolean;
   numCondition?: number;
   condition?: string;
+  border?: boolean;
+  bullet_type?: BulletType;
   effects?: Effect[];
   steps?: string[];
 }
@@ -329,7 +339,7 @@ export interface InvestigatorCardCondition {
   type: "has_card";
   investigator: "each";
   card: string;
-  options: Option[];
+  options: BoolOption[];
 }
 export interface BinaryCardCondition {
   type: "has_card";
@@ -340,7 +350,14 @@ export interface BinaryCardCondition {
 export interface CampaignDataDifficultyCondition {
   type: "campaign_data";
   campaign_data: "difficulty";
-  options: Option[];
+  options: StringOption[];
+}
+export interface StringOption {
+  condition: string;
+  border?: boolean;
+  bullet_type?: BulletType;
+  effects?: Effect[];
+  steps?: string[];
 }
 export interface CampaignDataScenarioCondition {
   type: "campaign_data";
@@ -348,23 +365,12 @@ export interface CampaignDataScenarioCondition {
   scenario: string;
   options: BoolOption[];
 }
-export interface CampaignDataChaosBagCondition {
-  type: "campaign_data";
-  campaign_data: "chaos_bag";
-  token: ChaosToken;
-  options: NumOption[];
-}
 export interface CampaignDataInvestigatorCondition {
   type: "campaign_data";
   campaign_data: "investigator";
   investigator_data: "trait" | "faction" | "code";
   options: StringOption[];
   defaultOption?: Option;
-}
-export interface StringOption {
-  condition: string;
-  effects?: Effect[];
-  steps?: string[];
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
@@ -419,6 +425,7 @@ export interface EffectsStep {
   bullet_type?: BulletType;
 }
 export interface EffectsWithInput {
+  border?: boolean;
   effects: Effect[];
   input?: string[];
   numberInput?: number[];
@@ -456,6 +463,7 @@ export interface Choice {
   flavor?: string;
   description?: string;
   steps?: string[];
+  border?: boolean;
   effects?: Effect[];
 }
 export interface SuppliesInput {
@@ -478,14 +486,14 @@ export interface UseSuppliesChoiceInput {
   investigator: "choice";
   min: number;
   max: number;
-  choices: Option[];
+  choices: BoolOption[];
 }
 export interface UseSuppliesAllInput {
   type: "use_supplies";
   section: string;
   id: string;
   investigator: "all";
-  choices: Option[];
+  choices: BoolOption[];
 }
 export interface InvestigatorChoiceInput {
   type: "investigator_choice";
@@ -500,6 +508,7 @@ export interface InvestigatorConditionalChoice {
   flavor?: string;
   description?: string;
   condition?: InvestigatorChoiceCondition;
+  border?: boolean;
   steps?: string[];
   effects?: Effect[];
 }
@@ -526,6 +535,7 @@ export interface BinaryConditionalChoice {
   flavor?: string;
   description?: string;
   condition?: BinaryChoiceCondition;
+  border?: boolean;
   steps?: string[];
   effects?: Effect[];
 }

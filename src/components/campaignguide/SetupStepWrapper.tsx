@@ -12,6 +12,7 @@ interface Props {
   bulletType?: BulletType;
   children: React.ReactNode | React.ReactNode[];
   border?: boolean;
+  hasTitle?: boolean;
 }
 
 export default class SetupStepWrapper extends React.Component<Props> {
@@ -26,8 +27,8 @@ export default class SetupStepWrapper extends React.Component<Props> {
           <View style={styles.smallBullet}>
             <ArkhamIcon
               name="bullet"
-              size={24}
-              color={COLORS.scenarioGreen}
+              size={20}
+              color={'#222'}
             />
           </View>
         );
@@ -36,7 +37,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
           <View style={styles.bullet}>
             <ArkhamIcon
               name="guide_bullet"
-              size={20}
+              size={22}
               color={COLORS.scenarioGreen}
             />
           </View>
@@ -48,12 +49,14 @@ export default class SetupStepWrapper extends React.Component<Props> {
       children,
       border,
       bulletType,
+      hasTitle,
     } = this.props;
 
     return (
       <View style={[
         styles.step,
         border ? styles.border : {},
+        hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
       ]}>
         { this.renderBullet() }
         <View style={[
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   smallBullet: {
-    marginLeft: 8,
+    marginLeft: 26,
     marginRight: 8,
     marginTop: 0,
   },

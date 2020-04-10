@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import { flatMap } from 'lodash';
 
 import ChoiceComponent from './ChoiceComponent';
@@ -16,12 +15,16 @@ interface Props {
 }
 
 export default class ChooseOneListComponent extends React.Component<Props> {
-  static getColor(idx: number, color?: CustomColor | CustomColor[]): CustomColor | undefined {
+  static getColor(
+    idx: number,
+    color?: CustomColor | CustomColor[]
+  ): CustomColor | undefined {
     if (Array.isArray(color)) {
       return color.length >= idx ? color[idx] : undefined;
     }
     return color;
   }
+
   render() {
     const {
       selectedIndex,
@@ -31,32 +34,22 @@ export default class ChooseOneListComponent extends React.Component<Props> {
       color,
       noBullet,
     } = this.props;
-    return (
-      <View style={styles.list}>
-        { flatMap(choices, (choice, idx) => {
-          if (!editable && idx !== selectedIndex) {
-            return null;
-          }
-          return (
-            <ChoiceComponent
-              key={idx}
-              index={idx}
-              onSelect={onSelect}
-              choice={choice}
-              selected={selectedIndex === idx}
-              editable={editable}
-              color={ChooseOneListComponent.getColor(idx, color)}
-              noBullet={noBullet}
-            />
-          );
-        }) }
-      </View>
-    );
+    return flatMap(choices, (choice, idx) => {
+      if (!editable && idx !== selectedIndex) {
+        return null;
+      }
+      return (
+        <ChoiceComponent
+          key={idx}
+          index={idx}
+          onSelect={onSelect}
+          choice={choice}
+          selected={selectedIndex === idx}
+          editable={editable}
+          color={ChooseOneListComponent.getColor(idx, color)}
+          noBullet={noBullet}
+        />
+      );
+    });
   }
 }
-
-const styles = StyleSheet.create({
-  list: {
-    marginBottom: 8,
-  },
-});

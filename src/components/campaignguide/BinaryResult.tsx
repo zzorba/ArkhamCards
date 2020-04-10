@@ -16,7 +16,12 @@ interface Props {
   noBorder?: boolean;
 }
 
-export default function BinaryResult({ bulletType, prompt, result, noBorder }: Props) {
+export default function BinaryResult({
+  bulletType,
+  prompt,
+  result,
+  noBorder,
+}: Props) {
   return (
     <View style={styles.row}>
       <View style={styles.step}>

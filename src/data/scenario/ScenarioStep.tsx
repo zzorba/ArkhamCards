@@ -20,6 +20,7 @@ import {
   Step,
   Effect,
   EffectsWithInput,
+  Option,
 } from 'data/scenario/types';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from 'data/scenario/inputHelper';
 import { conditionResult } from 'data/scenario/conditionHelper';
@@ -273,9 +274,11 @@ export default class ScenarioStep {
             ...this.remainingStepIds,
           ],
           [{
+            border: (result.option && result.option.border),
             numberInput: result.type === 'number' ? [result.number] : undefined,
             effects: (result.option && result.option.effects) || [],
-          }]
+          }],
+          result.option
         );
       case 'investigator': {
         const {
@@ -327,6 +330,7 @@ export default class ScenarioStep {
         const result: EffectsWithInput = {
           input: map(group, item => item.code),
           effects: (selectedChoice && selectedChoice.effects) || [],
+          border: (selectedChoice && selectedChoice.border),
         };
         return result;
       });
@@ -654,6 +658,7 @@ export default class ScenarioStep {
                 effects: consumeSuppliesEffects,
               },
               {
+                border: true,
                 input: keys(secondChoice),
                 effects: (theBadThing && theBadThing.effects) || [],
               }],
@@ -699,6 +704,7 @@ export default class ScenarioStep {
                   effects: consumeSuppliesEffects,
                 },
                 {
+                  border: branchChoice && branchChoice.border,
                   input: keys(choice),
                   effects: (branchChoice && branchChoice.effects) || [],
                 },
@@ -738,10 +744,12 @@ export default class ScenarioStep {
     condition: boolean,
     remainingStepIds: string[],
     ifTrue?: {
+      border?: boolean;
       steps?: null | string[];
       effects?: null | Effect[];
     },
     ifFalse?: {
+      border?: boolean;
       steps?: null | string[];
       effects?: null | Effect[];
     },
@@ -755,6 +763,7 @@ export default class ScenarioStep {
         ...remainingStepIds,
       ],
       [{
+        border: (resultCondition && resultCondition.border),
         input,
         effects: (resultCondition && resultCondition.effects) || [],
       }]
