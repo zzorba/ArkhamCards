@@ -1,11 +1,8 @@
 import React from 'react';
-import { find } from 'lodash';
-import { ngettext, msgid, t } from 'ttag';
+import { ngettext, msgid } from 'ttag';
 
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import BinaryPrompt from '../../prompts/BinaryPrompt';
-import Card from 'data/Card';
 import {
   BranchStep,
   ScenarioDataCondition,
@@ -19,18 +16,6 @@ interface Props {
 }
 
 export default class ScenarioDataConditionComponent extends React.Component<Props> {
-  _renderInvestigatorCard = (card: Card) => {
-    const { step, condition } = this.props;
-    return (
-      <BinaryPrompt
-        id={step.id}
-        bulletType={step.bullet_type}
-        text={t`If ${card.name} was chosen as an investigator for this campaign`}
-        trueResult={find(condition.options, option => option.condition === card.code)}
-      />
-    );
-  };
-
   render(): React.ReactNode {
     const { step, condition, campaignLog } = this.props;
     switch (condition.scenario_data) {

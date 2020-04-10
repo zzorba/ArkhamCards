@@ -12,7 +12,7 @@ interface Props extends SwitchProps {
   customTrackColor?: string;
 }
 
-export default function CustomSwitch({ customColor, customTrackColor, ...otherProps}: Props) {
+export default function CustomSwitch({ customColor, customTrackColor, ...otherProps }: Props) {
   if (Platform.OS === 'android') {
     return (
       <Switch

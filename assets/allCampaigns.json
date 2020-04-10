@@ -537,7 +537,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "house_standing",
@@ -590,6 +590,7 @@
         {
           "type": "add_card",
           "investigator": "lead_investigator",
+          "optional": true,
           "card": "01117"
         }
       ]
@@ -672,7 +673,7 @@
       "effects": [
         {
           "type": "add_card",
-          "investigator": "any",
+          "investigator": "choice",
           "card": "01117"
         }
       ]
@@ -882,7 +883,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "check_ghoul_priest",
@@ -1372,7 +1373,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "check_bone_to_pick",
@@ -1752,7 +1753,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "train_note",
@@ -2082,7 +2083,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "warren_rice_kidnapped",
@@ -2295,7 +2296,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "locations_note",
@@ -2934,7 +2935,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "criminal_aloof_note",
@@ -3218,7 +3219,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "void_note",
@@ -3538,7 +3539,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "random_location_note",
@@ -3957,7 +3958,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "entered_the_gate",
@@ -4239,6 +4240,7 @@
     "check_for_mitpm",
     "check_for_onyx_clasp",
     "dual_agendas_rule",
+    "track_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -4486,6 +4488,24 @@
       ]
     },
     {
+      "id": "track_mitpm",
+      "text": "While you are playing this scenario, track each time the Man in the Pallid Mask is defeated.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Chasing the Stranger:",
+        "delta": true,
+        "long_lived": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
       "id": "opened_path_below",
       "effects": [
         {
@@ -4524,6 +4544,22 @@
     },
     {
       "id": "ask_ashleigh_clarke",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "vips_slain",
+        "id": "03069b",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["prompt_ashleigh_clarke"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prompt_ashleigh_clarke",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -4741,7 +4777,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "stranger_is_on_to_you",
@@ -4766,7 +4802,9 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Number of times The Man in the Pallid Mask was defeated:",
+        "text": "Chasing the Stranger:",
+        "delta": true,
+        "max": 2,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -4868,7 +4906,6 @@
         }
       ]
     },
-
     {
       "id": "wait_for_chaos_tokens",
       "type": "input",
@@ -4980,6 +5017,7 @@
     "encounter_deck",
     "single_sided_location",
     "sanity_in_carcosa_rule",
+    "track_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -5347,6 +5385,24 @@
       "text": "In the twisted and madness‐inducing realm of Carcosa, insanity is an inevitability. But even with your mind fractured and broken, your investigation does not end here. <b>During this scenario, investigators are not defeated when they have horror on them equal to or greater than their sanity.</b> Investigators may continue to take horror even in excess of their sanity. While an investigator has more horror on them than sanity, their “remaining sanity” is considered to be 0."
     },
     {
+      "id": "track_mitpm",
+      "text": "While you are playing this scenario, track each time the Man in the Pallid Mask is defeated.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Chasing the Stranger:",
+        "long_lived": true,
+        "delta": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
       "id": "prevented_hasturs_escape",
       "effects": [
         {
@@ -5624,6 +5680,7 @@
     "check_fled_dinner_party",
     "encounter_deck",
     "check_for_mitpm",
+    "track_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -5782,6 +5839,24 @@
       ]
     },
     {
+      "id": "track_mitpm",
+      "text": "While you are playing this scenario, track each time the Man in the Pallid Mask is defeated.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Chasing the Stranger:",
+        "long_lived": true,
+        "delta": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
       "id": "took_onyx_clasp",
       "text": "In your Campaign Log, record that <i>you took the onyx clasp</i>. Mark one <b>Conviction</b> in your Campaign Log. For the remainder of the campaign, one investigator must include the Clasp of Black Onyx weakness in their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
@@ -5873,6 +5948,22 @@
     },
     {
       "id": "ask_sebastien_moreau",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "vips_slain",
+        "id": "03068b",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["prompt_sebastien_moreau"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prompt_sebastien_moreau",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -6315,7 +6406,7 @@
     },
     {
       "id": "slayed_the_monsters",
-      "text": "In your Campaign Log, record that <i>you sayed the monsters at the dinner party</i>. Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "In your Campaign Log, record that <i>you slayed the monsters at the dinner party</i>. Mark one <b>Conviction</b> in your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log",
@@ -6478,6 +6569,7 @@
     "encounter_deck",
     "check_for_mitpm",
     "check_for_onyx_clasp",
+    "track_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -6951,6 +7043,24 @@
       ]
     },
     {
+      "id": "track_mitpm",
+      "text": "While you are playing this scenario, track each time the Man in the Pallid Mask is defeated.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Chasing the Stranger:",
+        "long_lived": true,
+        "delta": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
       "id": "did_not_escape_gaze",
       "effects": [
         {
@@ -7011,6 +7121,22 @@
     },
     {
       "id": "ask_jordan_perry",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "vips_slain",
+        "id": "03066b",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["prompt_jordan_perry"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prompt_jordan_perry",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -7153,8 +7279,7 @@
   "type": "interlude",
   "setup": [
     "intro",
-    "check_lola_hayes",
-    "proceed"
+    "check_lola_hayes"
   ],
   "steps": [
     {
@@ -7180,17 +7305,6 @@
       "id": "lola_prologue",
       "type": "story",
       "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black\n"
-    },
-    {
-      "id": "proceed",
-      "text": "Proceed to <b>Scenario I: Curtain Call</b>.",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "next_scenario",
-          "scenario": "curtain_call"
-        }
-      ]
     }
   ]
 }
@@ -7208,6 +7322,7 @@
     "setup_sickening_reality",
     "encounter_deck",
     "check_for_mitpm",
+    "track_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -7256,7 +7371,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "check_for_mitpm",
@@ -7288,6 +7403,24 @@
           "card": "03059"
         }
       ]
+    },
+    {
+      "id": "track_mitpm",
+      "text": "While you are playing this scenario, track each time the Man in the Pallid Mask is defeated.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Chasing the Stranger:",
+        "long_lived": true,
+        "delta": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
+          }
+        ]
+      }
     },
     {
       "id": "earn_xp",
@@ -7487,6 +7620,7 @@
     "set_aside_pallid_mask",
     "encounter_deck",
     "location_adjacency_rule",
+    "track_mitpm",
     "$choose_resolution"
   ],
   "steps": [
@@ -7716,6 +7850,24 @@
       "text": "During this scenario, locations will be arranged in a set pattern, with new locations from the Catacombs Deck emerging to the left, right, above, or below existing locations, as they are revealed. A location that is put into play to the left, right, above, or below another location should be set next to that location in the manner described, with no other locations in between them.\nA location that is next to another location in this manner is considered <b>adjacent</b>. Locations are only adjacent orthogonally (left, right, above, and below), and are not adjacent diagonally. During this scenario, adjacent locations are considered to be connected to one another.\nYou cannot put a location into play where an existing location already is. If you are given the choice to place a location from the Catacombs Deck in one of multiple spots, and one of those spots is occupied by an existing location, you cannot choose that spot. You must choose a spot unoccupied by a location, if able. If all of the specified spots are occupied by existing locations, the <b>Forced</b> effect fails and no new Catacombs locations are put into play."
     },
     {
+      "id": "track_mitpm",
+      "text": "While you are playing this scenario, track each time the Man in the Pallid Mask is defeated.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Chasing the Stranger:",
+        "long_lived": true,
+        "delta": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
       "id": "know_site_of_gate",
       "effects": [
         {
@@ -7795,6 +7947,22 @@
     },
     {
       "id": "ask_ishimaru_haruko",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "vips_slain",
+        "id": "03067b",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["prompt_ishimaru_haruko"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prompt_ishimaru_haruko",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -7938,6 +8106,7 @@
     "encounter_deck",
     "check_for_mitpm",
     "check_for_onyx_clasp",
+    "track_mitpm",
     "$choose_resolution"
   ],
   "steps": [{
@@ -8173,6 +8342,24 @@
       ]
     },
     {
+      "id": "track_mitpm",
+      "text": "While you are playing this scenario, track each time the Man in the Pallid Mask is defeated.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Chasing the Stranger:",
+        "long_lived": true,
+        "delta": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "chasing_the_stranger",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
       "id": "defeated_insane",
       "text": "Each investigator who was defeated is driven insane. If there are not enough investigators to continue the campaign, the campaign is over and the players lose.",
       "effects": [{
@@ -8244,6 +8431,22 @@
     },
     {
       "id": "ask_constance_dumaine",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "vips_slain",
+        "id": "03065b",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["prompt_constance_dumaine"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prompt_constance_dumaine",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -8695,7 +8898,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck"
+      "text": "Shuffle the remainder of the encounter cards (from the previously gathered encounter sets) to form the encounter deck."
     },
     {
       "id": "check_ghoul_priest",
@@ -9558,7 +9761,7 @@
     },
     {
       "id": "skip_price_of_progress",
-      "text": "Skip <b>Interlude II: The Price of Progress</b>, and proceed directly to <b>Scenario III: The Secret Name</b>.",
+      "text": "Skip <b>Interlude II: The Price of Progress</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -10694,7 +10897,7 @@
     },
     {
       "id": "skip_inner_circle",
-      "text": "Skip <b>Interlude III: The Inner Circle</b>, and proceed directly to <b>Scenario VI: Union and Disillusion</b>.",
+      "text": "Skip <b>Interlude III: The Inner Circle</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -14610,6 +14813,851 @@
 {
   "campaign":
 {
+  "id": "tdea",
+  "position": 1,
+  "name": "The Dream-Quest",
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Campaign Notes"
+    },
+    {
+      "id": "evidence_of_kadath",
+      "title": "Evidence of Kadath",
+      "type": "count"
+    }
+  ],
+  "scenarios": [
+    "tde_prologue",
+    "beyond_the_gates_of_sleep",
+    "the_black_cat",
+    "the_search_for_kadath",
+    "the_oneironauts",
+    "dark_side_of_the_moon",
+    "the_great_ones",
+    "where_gods_dwell",
+    "tde_epilogue"
+  ],
+  "setup": [
+    "prologue",
+    "difficulty_choice",
+    "alert",
+    "story",
+    "swarming",
+    "hidden"
+  ],
+  "steps": [
+    {
+      "id": "prologue",
+      "type": "story",
+      "title": "The Waking World Is Only One Reality",
+      "text": "“In light slumber he descended the seventy steps to the cavern of flame and talked of this design to the bearded priests Nasht and Kaman-Thah. And the priests shook their pshent-bearing heads and vowed it would be the death of his soul.”\n– H. P. Lovecraft, The Dream-Quest of Unknown Kadath"
+    },
+    {
+      "id": "difficulty_choice",
+      "type": "input",
+      "text": "Choose difficulty level:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Easy <i>(I want to experience the story)</i>",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -2, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1", "+1", "0", "0", "0", "-1", "-1", "-2", "-2", "cultist", "tablet", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "standard",
+            "text": "Standard <i>(I want a challenge)</i>",
+            "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [cultist], [tablet], [tablet], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1", "0", "0", "-1", "-1", "-2", "-2", "-3", "-4", "cultist", "tablet", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "hard",
+            "text": "Hard <i>(I want a true nightmare)</i>",
+            "description": "0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0", "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-5", "cultist", "tablet", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          },{
+            "id": "expert",
+            "text": "Expert <i>(I want Arkham Horror)</i>",
+            "description": "0, -1, -1, -2, -2, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0", "-1", "-1", "-2", "-2", "-3", "-4", "-4", "-5", "-6", "-8", "cultist", "tablet", "tablet", "auto_fail", "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "alert",
+      "type": "rule_reminder",
+      "title": "Alert",
+      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+    },
+    {
+      "id": "story",
+      "type": "rule_reminder",
+      "title": "Story Cards",
+      "text": "Story cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text."
+    },
+    {
+      "id": "swarming",
+      "type": "rule_reminder",
+      "title": "Swarming X",
+      "text": "An enemy with the swarming X keyword is actually a pack of enemies operating in unison. After you put an enemy with the swarming X keyword into play, place the top X cards of your deck facedown underneath the enemy as swarm cards, without looking at them. The enemy they are underneath is called the “host enemy.” Some scenario card effects may also instruct a player to add swarm cards to an enemy. This is done using the same process.",
+      "bullets": [
+        {
+          "text": "If it is ever unclear which investigator should add swarm cards, the lead investigator does so."
+        },
+        {
+          "text": "Each swarm card underneath the host enemy acts as a separate instance of that enemy for most purposes. Each swarm card has the same values and text as its host card. <i>(For example, if an investigator is engaged with a host enemy with 2 swarm cards underneath it, that investigator is engaged with 3 enemies in total.)</i>"
+        },
+        {
+          "text": "Each swarm card attacks separately when enemies attack during the enemy phase. Once the host enemy and all of its swarm cards have attacked during this step, exhaust all of them."
+        },
+        {
+          "text": "Each swarm card can be attacked or dealt damage separately, but the host enemy cannot be defeated while it still has swarm cards underneath it. When a swarm card is defeated, any excess damage may be dealt to another swarm card underneath the same host enemy or to the host enemy itself. <i>(For example, Tony Morgan uses a .41 Derringer to attack a Stealthy Zoog with 2 swarm cards. The attack deals 2 damage. The first point of damage defeats 1 of the 2 swarm cards, so the excess point of damage may be dealt to another swarm card, defeating it as well.)</i>"
+        },
+        {
+          "text": "Anytime a swarm card leaves play, place it on the bottom of its owner’s deck. If you are unsure of the owner of the swarm card, you may look at it to determine its owner."
+        },
+        {
+          "text": "The host enemy and all of its swarm cards move, engage, and exhaust as a single entity. (For example, if a host enemy or any of its swarm cards are evaded, all of them exhaust and become disengaged.)"
+        }]
+    },
+    {
+      "id": "hidden",
+      "type": "rule_reminder",
+      "title": "Hidden",
+      "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.",
+      "bullets": [
+        {
+          "text": "While a hidden treachery is in your hand, treat it as if it were in your threat area. Its constant abilities are active, and abilities on it can be triggered, but only by you."
+        },
+        {
+          "text": "While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you."
+        },
+        {
+          "text": "A hidden card counts toward your hand size, but it cannot be discarded from your hand by any means except those described on the card. When discarded, a hidden card is placed in its appropriate discard pile."
+        }
+      ],
+      "example": "For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
+    }
+  ]
+}
+, "scenarios": [
+{
+  "id": "wilds",
+  "scenario_name": "Beyond the Gates of Sleep",
+  "full_name": "Scenario I–A: Beyond the Gates of Sleep",
+  "setup": [
+    "dream_intro",
+    "gather_encounter_sets",
+    "setup_locations",
+    "create_exploration_deck",
+    "set_aside_cards",
+    "encounter_deck",
+    "check_for_chaos_bag_additions",
+    "$choose_resolution"
+  ],
+  "steps": [
+    {
+      "id": "dream_intro",
+      "bullet_type": "none",
+      "text": "In player order, each investigator chooses and reads aloud one of the dream entries below that applies to that investigator. “Neutral” dreams may be chosen by any investigator. Each investigator must choose a different dream, if able."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "wilds",
+        "rainforest",
+        "serpents",
+        "expedition",
+        "guardians_of_time",
+        "agents_of_yig",
+        "poison",
+        "ancient_evils"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the Expedition Camp into play. Each investigator begins play at the Expedition Camp."
+    },
+    {
+      "id": "create_exploration_deck",
+      "text": "Create the exploration deck. This is done by taking the five single-sided [[Jungle]] locations and shuffling them together, along with one copy each of the following treachery cards: Lost in the Wilds, Overgrowth, Snake Bite, Low on Supplies, and Arrows from the Trees."
+    },
+    {
+      "id": "set_aside_cards",
+      "type": "encounter_sets",
+      "aside": true,
+      "encounter_sets": [
+        "agents_of_yig"
+      ],
+      "text": "Set the following cards aside, out of play: The three single-sided [[Ruins]] locations, the <i>Agents of Yig</i> encounter set, the four Poisoned weaknesses, the Alejandro Vela asset, and the Ichtaca enemy."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+
+    {
+      "id": "wait_for_additional_supplies",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "wait_for_additional_supplies",
+          "text": "the investigators were forced to wait for additional supplies."
+        }
+      ]
+    },
+    {
+      "id": "ichtaca_observed_progress",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "ichtaca_observed_progress",
+          "text": "Ichtaca observed your progress with keen interest."
+        }
+      ]
+    },
+    {
+      "id": "earned_ichtacas_trust",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "earned_ichtacas_trust",
+          "text": "the investigators have earned Ichtaca’s trust."
+        }
+      ]
+    },
+    {
+      "id": "alejandro_followed_to_ruins",
+      "text": "In your Campaign Log, record that <i>Alejandro followed the investigators into the ruins</i>. Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "alejandro_followed_to_ruins",
+          "text": "Alejandro followed the investigators into the ruins."
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "04051"
+        }
+      ]
+    },
+    {
+      "id": "ichtaca_is_wary",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "ichtaca_is_wary",
+          "text": "Ichtaca is wary of the investigators."
+        }
+      ]
+    },
+    {
+      "id": "alejandro_remained_at_camp",
+      "text": "In your Campaign Log, record that <i>Alejandro chose to remain at camp</i>. Do not add Alejandro Vela to any investigator’s deck.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "alejandro_remained_at_camp",
+          "text": "Alejandro chose to remain at camp."
+        }
+      ]
+    },
+    {
+      "id": "cleared_path_to_temple",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "cleared_path_to_temple",
+          "text": "the investigators cleared a path to the Eztli ruins."
+        }
+      ]
+    },
+    {
+      "id": "check_final_act",
+      "text": "Which of the following was true?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act_1_or_2",
+            "text": "It was Act 1 or 2 when the scenario ended",
+            "steps": ["ichtaca_observed_progress", "alejandro_followed_to_ruins"]
+          },
+          {
+            "id": "fought_ichtaca",
+            "text": "“You fought with Ichtaca”",
+            "steps": ["ichtaca_is_wary", "alejandro_followed_to_ruins"]
+          },
+          {
+            "id": "talked_to_ichtaca",
+            "text": "“Ichtaca is leading the way”",
+            "steps": ["earned_ichtacas_trust", "alejandro_remained_at_camp"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_vengeance",
+      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Beware the anger of the Father of Serpents, as his fury will haunt you in the future.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Vengeance points in the victory display:",
+        "delta": true,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "yigs_fury",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_investigators_poisoned",
+      "text": "Did any investigator gain the Poisoned weakness?",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "all",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "poisoned",
+            "text": "Poisoned",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "04102"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_for_chaos_bag_additions",
+      "type": "input",
+      "text": "If instructed to add chaos tokens to the bag:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "chaos_tokens",
+            "text": "Choose chaos tokens",
+            "steps": ["chaos_token_choice"]
+          },
+          {
+            "id": "no_chaos_tokens",
+            "text": "Scenario ended without instruction",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "chaos_token_choice",
+      "type": "input",
+      "text": "Which of the following is true:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "<i>Ichtaca is leading the way.</i>",
+            "description": "Add 1 [cultist] token.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["cultist"]
+              }
+            ]
+          },
+          {
+            "id": "tablet",
+            "text": "<i>You fought with Icthaca.</i>",
+            "description": "Add 1 [tablet] token.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["tablet"]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
+      "steps": ["wait_for_additional_supplies", "check_final_act", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "steps": ["cleared_path_to_temple", "alejandro_remained_at_camp", "earned_ichtacas_trust", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
+      "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+    }
+  ]
+}
+,
+{
+  "id": "tdea_prologue",
+  "scenario_name": "Prologue",
+  "full_name": "Prologue",
+  "type": "interlude",
+  "setup": [
+    "intro"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+    }
+  ]
+}
+,
+{
+  "id": "waking_nightmare",
+  "scenario_name": "Waking Nightmare",
+  "full_name": "Scenario I–B: Waking Nightmare",
+  "setup": [
+    "intro_1",
+    "choose_doctor",
+    "gather_encounter_sets",
+    "set_aside_encounter_sets",
+    "setup_locations",
+    "check_doctor",
+    "set_aside_locations",
+    "set_aside_cards",
+    "set_aside_infestation_begins",
+    "encounter_deck",
+    "$choose_resolution"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "It has been more than twenty-four hours since your companions fell asleep. Over the course of the past day, your curiosity has slowly turned to concern and then dread. The problems began when one of your friends started to toss and turn violently in their sleep. You snapped to attention and tried to shake them awake, but it was to no avail. You tried everything. Physical contact was no use, and water did nothing but soak their clothes and bed fruitlessly. Even opening their eyelids did not wake them, and in the process, you noticed that their pupils had fully dilated and their eyes were glazed over with a milky-white fog.\nYou have no idea what this could mean for your friends. Have they managed to find their way to the land Virgil Gray described in his writings? Or has something more sinister taken root within their minds and bodies? Just to be safe, you decide to take your companions to St. Mary’s Hospital. If something ails them physically, perhaps the doctors there can discern what is wrong. Otherwise, you will simply have to watch over them and hope that they return safely to the waking world.\nSt. Mary’s is the only hospital in the town of Arkham, and it is a fixture of its Uptown neighborhood. You explain the situation to Nurse Greenberg, the head nurse at the hospital, who instructs several other nurses to carry your companions into the emergency ward on stretchers. She tells you with a warm, friendly smile that your friends will be examined by Doctor Maheswaran, but other than that, you are left entirely in the dark.\nHours pass. You hear nothing about the status of your companions. You still have not met with Doctor Maheswaran, and you’re starting to grow impatient. You feel something crawling along your arm, and you instinctively brush it away, then wonder if it was an insect or a figment of your imagination. You begin to question whether bringing your friends here was the right choice after all. Eventually, you decide to take matters into your own hands.\nIt is late at night, and the receptionist who instructed you to stay in the waiting room is nowhere to be seen. In fact, there are eerily few people roaming the halls of the hospital. With nobody to stop you, you sneak off into the emergency ward to find your friends. It does not take long for you to find their room. Your companions lie asleep on clean, white cots, their sleep anything but peaceful. They are pale faced and sweaty. One of them tosses and turns in their sleep, their brow furrowed with pain or worry.\nDoctor Maheswaran does not seem surprised by your intrusion. “Shivani Maheswaran,” she introduces herself coldly, without looking up from her clipboard. “You’re the ones who brought them in, right? Before you ask: no, I’ve never seen anything like this before in my life,” she says with a hint of dry impatience. You demand that she tell you everything she knows about their condition and not give you the runaround. With a sigh, she puts her clipboard down and addresses you frankly. “Listen, I may be new to Arkham, but I have seen enough inexplicable maladies in this town to fill entire careers in medicine. I understand why you are concerned. Your friends…” She struggles to find the right words. “They are not simply asleep. It is as if they are hovering somewhere between sleep and unconsciousness, or even death. They are not aware of anything happening around them but appear to be reacting to some kind of internal stimuli.”\nWithout hesitation, you ask if they are dreaming. “Dreaming?” Doctor Maheswaran replies. “It is unlikely, though it might account for their mannerisms. Honestly—and I know this is not exactly reassuring— none of this makes any sense to me, medically speaking.”\nJust then, you see a large, hairy spider crawling on the chest of one of your friends. “Well, that is odd.” Doctor Maheswaran brushes the spider off, and several more emerge from the sheets to take its place. You and the doctor both take several steps back out of pure instinct. You hear heavy footsteps in the hallway outside the emergency ward, and then the lights begin to flicker. “Okay…that is more than simply odd. What in the world is going on out there?” Doctor Maheswaran asks anxiously.\nFor just a moment, you think you hear one of your sleeping companions whisper something. Are they indeed dreaming? And if so, what does their condition have to do with these strange events?"
+    },
+    {
+      "id": "choose_doctor",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "doctor_come",
+            "text": "<i>Convince Doctor Maheswaran to come with you while you investigate, for her safety and yours.</i>",
+            "steps": ["intro_2", "doctor_joined_investigation"]
+          },
+          {
+            "id": "doctor_stay",
+            "text": "<i>Convince Doctor Maheswaran to stay with the patients and keep them safe while you investigate.</i>",
+            "steps": ["intro_3", "doctor_stayed_with_patients"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "“Yes, I suppose that makes sense. There has been no change in their condition for the past few hours, anyway.” Doctor Maheswaran’s gaze shifts nervously to and fro, searching for more spiders. “Also, I’d very much like to get out of this room now, so…lead the way,” she adds. You nod and venture back into the hospital’s waiting room."
+    },
+    {
+      "id": "doctor_joined_investigation",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "doctor_joined_investigation",
+          "text": "Dr. Maheswaran joined the investigation."
+        }
+      ]
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "“Yes, of course. Their safety is paramount. But do come back and tell me what is going on, please.” She shivers. “I really hate this place after dark…” You nod and venture back into the hospital’s waiting room."
+    },
+    {
+      "id": "doctor_stayed_with_patients",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "doctor_stayed_with_patients",
+          "text": "Dr. Maheswaran stayed with her patients."
+        }
+      ]
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "waking_nightmare",
+        "merging_realities",
+        "whispers_of_hypnos",
+        "locked_doors",
+        "striking_fear"
+      ]
+    },
+    {
+      "id": "set_aside_encounter_sets",
+      "aside": true,
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "agents_of_atlach_nacha",
+        "spiders"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the Waiting Room, Emergency Room, Experimental Therapies Ward, and Records Office into play. Each investigator begins in the Waiting Room."
+    },
+    {
+      "id": "check_doctor",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "doctor_joined_investigation",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["doctor_starts_in_play"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["doctor_set_aside"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "doctor_starts_in_play",
+      "text": "Check Campaign Log. Because <i>Dr. Maheswaran joined the investigation</i>, put Dr. Shivani Maheswaran into play, under the lead investigator’s control."
+    },
+
+    {
+      "id": "doctor_set_aside",
+      "text": "Check Campaign Log. Because <i>Dr. Maheswaran stayed with her patients</i>,  set Dr. Shivani Maheswaran aside, out of play."
+    },
+    {
+      "id": "set_aside_locations",
+      "text": "Set each of the remaining locations aside, out of play"
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Randolph Carter <i>(Chained to the Waking World)</i>, all 3 of the Outbreak treacheries, and both of the Corrupted Orderly enemies."
+    },
+    {
+      "id": "set_aside_infestation_begins",
+      "text": "Set the double-sided The Infestation Begins story card aside, out of play. This story card has a different scenario reference card on its other side and will enter play during the natural course of the scenario."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+    },
+    {
+      "id": "doctors_fate_unknown",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "doctors_fate_unknown",
+          "text": "Dr. Maheswaran’s fate is unknown."
+        }
+      ]
+    },
+    {
+      "id": "doctor_is_alive",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "doctor_is_alive",
+          "text": "Dr. Maheswaran is alive."
+        }
+      ]
+    },
+    {
+      "id": "doctor_is_missing",
+      "text": "In your Campaign Log, record <i>Dr. Maheswaran is missing</i>. Perhaps you could have saved her. The lead investigator suffers 1 mental trauma.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "doctor_is_missing",
+          "text": "Dr. Maheswaran is missing."
+        },
+        {
+          "type": "trauma",
+          "investigator": "lead_investigator",
+          "mental": 1
+        }
+      ]
+    },
+    {
+      "id": "randolph_escaped_hospital_alone",
+      "text": "In your Campaign Log, record <i>Randolph escaped the hospital on his own</i>. Any one investigator may choose to add Randolph Carter <i>(Chained to the Waking World)</i> (The Dream-Eaters card #79) to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "randolph_escaped_hospital_alone",
+          "text": "Randolph escaped the hospital on his own."
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "06079"
+        }
+      ]
+    },
+    {
+      "id": "randolph_escaped_hospital_with_investigators",
+      "text": "In your Campaign Log, record <i>Randolph escaped the hospital with the investigators</i>. Any one investigator may choose to add Randolph Carter <i>(Chained to the Waking World)</i> (The Dream-Eaters card #79) to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "randolph_escaped_hospital_with_investigators",
+          "text": "Randolph escaped the hospital with the investigators."
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "06079"
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_steps_of_the_bridge",
+      "text": "For each location that was infested when the game ended, record 1 tally mark next to “Steps of the Bridge” in your Campaign Log.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Infested locations:",
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "steps_of_the_bridge",
+            "operation": "set_input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_record_8_steps_of_bridge",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "resolution",
+        "options": [
+          {
+            "condition": "R4",
+            "steps": ["record_8_steps_of_the_bridge"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_8_steps_of_the_bridge",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "steps_of_the_bridge",
+          "operation": "set",
+          "value": 8
+        }
+      ]
+    },
+    {
+      "id": "remove_infestation_bag",
+      "text": "Remove the infestation bag and all infestation tokens from the game. <i>(There is no need to keep or record them.)</i>"
+    },
+    {
+      "id": "resolution_5",
+      "type": "resolution",
+      "resolution": "R5"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "With panic overtaking your mind, you run through the main exit of St. Mary’s Hospital, putting as much distance as you can between you and this accursed infestation. The moment you get home, you collapse from exhaustion.\nThe next day, you wake and check the morning papers, expecting to see tales of chaos at St. Mary’s and of an infestation of arachnids. However, there is no news regarding the hospital at all. Did last night’s events occur too late for the <i>Arkham Advertiser</i> to report on them? Was it all just a bad dream? You put on your coat and head back to the hospital to confirm that what you saw last night was real.\nWhen you arrive at St. Mary’s, you expect to see the building—or perhaps all of Uptown—covered in spiderwebs. But instead, to your surprise, it is perfectly clean. Patients, nurses, and doctors walk through its halls like none of last night’s events transpired. Before you can find your sleeping companions, however, a blond-haired man with heavy bags under his eyes approaches you and places a hand on your shoulder.\n“Good morning. We should talk.”",
+      "steps": ["record_steps_of_the_bridge", "doctors_fate_unknown", "randolph_escaped_hospital_alone", "resolution_5"]
+    },
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["record_steps_of_the_bridge", "resolution_4"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "Before you depart from the hospital, Doctor Maheswaran announces that she is going to check on her patients, and you decide to join her. You head back to the emergency ward and find that your companions are still unconscious. Doctor Maheswaran checks their eyes, takes their pulses, and shakes her head. “It’s even worse than before. Whatever internal stimuli they are reacting to, they are causing the patients’ minds and bodies a great deal of stress.” She sits down next to one of her patients and shakes her head. “I’ll stay here. You go talk to that patient and get to the bottom of this, okay? Oh, and if you find any more spiders, squash one for me, please.” As you leave, you swear to your sleeping friends that you will get to the bottom of this and save them.",
+      "steps": ["doctor_is_alive", "campaign_a_dreamers_grow_weaker", "randolph_escaped_hospital_with_investigators", "resolution_5"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "Before you depart from the hospital, you search high and low for Doctor Maheswaran, but she is nowhere to be found. You head back to the emergency ward to check on your companions and find that they are still unconscious. In fact, their condition seems to have grown worse. Their foreheads are covered in sweat, and blood drips from their closed eyes. One of them is whispering something in their sleep, a repeated phrase in a language you cannot understand. As you leave, you swear to your sleeping friends that you will get to the bottom of this and save them.",
+      "steps": ["doctor_is_missing", "campaign_a_dreamers_grow_weaker", "randolph_escaped_hospital_with_investigators", "resolution_5"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "Before you depart from the hospital, you go back to the emergency ward to check on Doctor Maheswaran. The door to the room where your companions are staying is sealed shut, so you knock on the door and ask if she is there. On the other side, you hear furniture being shifted aside and knocked over. An exhausted Shivani Maheswaran cracks open the door and peers at you with bloodshot eyes. “Oh, thank goodness it is you.” She lets you in and collapses onto a nearby chair. “Those… <i>things</i> tried to get into the room. I had to barricade myself inside to stop them.” You inform her that the danger has passed and thank her for watching over your friends. “I’ll continue to keep an eye on them,” she says. “Just please, tell me there are no more spiders out there, or I’m taking the first train out of this town.” As you leave, you swear to your sleeping friends that you will get to the bottom of this and save them.",
+      "steps": ["doctor_is_alive", "randolph_escaped_hospital_with_investigators", "resolution_5"]
+    },
+    {
+      "id": "R4",
+      "title": "Resolution 4",
+      "text": "With panic overtaking your mind and no idea how you can escape, you flee anywhere your feet will take you. Hideous monsters begin to close in around you, and you envision yourself wrapped in webs, waiting to be a spider’s meal. Eventually you come to a dead end: a room covered from floor to ceiling in thick, sticky webs. The skittering of spider legs follows close behind, and you realize you have no hope to escape unless there is a path behind the webs. There is no choice remaining for you. You run headlong into the webs, ripping and tearing at them with the ferocity of a cornered animal. It is tough work, but eventually you see a light behind the webs—perhaps an escape route.\nOnce you cross through the webs, you are no longer in the dark, sterile halls of St. Mary’s, but in a narrow, web-covered cavern. You dare not tarry or go back the way you came, so you run through the dark, cramped cave with no idea where it might lead. Glancing through the cobwebs to your left and right, you see not just hard rock, but the glimmering of lights, like a sea of stars looming beyond the silken threads. Eventually, you emerge from another wall of webs, only to find yourself in an alleyway in Arkham’s Merchant District, near the Miskatonic River. You have neither the time nor the desire to analyze this, instead deciding to put as much distance as you can between you and the hospital. The moment you get home, you collapse from exhaustion.\nThe next day, you wake and check the morning papers, expecting to see tales of chaos at St. Mary’s and of an infestation of arachnids. However, there is no news regarding the hospital at all. Did last night’s events occur too late for the Arkham Advertiser to report on them? Was it all just a bad dream? You put on your coat and head back to the hospital to confirm that what you saw last night was real.\nWhen you arrive at St. Mary’s, you expect to see the building—or perhaps all of Uptown—covered in spiderwebs. Instead, to your surprise, it is perfectly clean. Patients, nurses, and doctors walk through its halls like none of last night’s events transpired. You ask the receptionist if you can see Doctor Maheswaran, but he shakes his head. “I’m sorry, but I don’t think she’s here today. She left in the middle of her shift last night, and nobody has seen her since. Is there somebody else I can reach for you?”\nSomething is not right. None of this makes any sense. You are about to demand to see your sleeping companions when a blond-haired man with heavy bags under his eyes approaches you and places a hand on your shoulder.\n“Good morning. We should talk.”",
+      "steps": ["maybe_record_8_steps_of_bridge", "doctor_is_missing", "randolph_escaped_hospital_alone", "resolution_5"]
+    },
+    {
+      "id": "R5",
+      "title": "Resolution 5",
+      "text": "You depart from the hospital with the blond-haired man in tow, and he introduces himself more fully. The man, whose name is Randolph Carter, tells you that he is a “dreamer,” like Virgil Gray and your friends: one with the ability to traverse the divide between the waking world and a parallel dimension that was created by, is sustained by, and dwells within the dreams of all living organisms on Earth—a realm he calls <smallcaps>The Dreamlands</smallcaps>. “It is a place of both dreams and nightmares,” he explains. “And I’m afraid your friends are trapped there as we speak.”\nYou ask if there is anything you can do to aid them. Randolph ponders this for a moment, then replies: “Normally, dreamers can return to the real world simply by willing themselves awake, but for some reason, your friends are unable to do so. If you truly wish to help them, you too must enter the Dreamlands and find them. But forcing your way into the Dreamlands is not easy. Such paths are usually accessible only to experienced dreamers, and only in sleep. Still, there are some places where the Dreamlands touch the waking world, and in those places, with the right tools, you may enter the Dreamlands in your physical body. I know of such a place, not far from here. However—”\nBefore Randolph is able to finish his sentence, he is interrupted by a mysterious voice…",
+      "steps": ["earn_xp", "remove_infestation_bag", "proceed_branch"]
+    }
+  ]
+}
+]}
+,
+{
+  "campaign":
+{
   "id": "tfa",
   "position": 3,
   "name": "The Forgotten Age",
@@ -15316,6 +16364,7 @@
       "input": {
         "type": "counter",
         "text": "Vengeance points in the victory display:",
+        "delta": true,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -15328,11 +16377,18 @@
     {
       "id": "record_yigs_fury_plus_10",
       "type": "input",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
+      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log.",
       "input": {
         "type": "counter",
         "text": "Vengeance points in the victory display:",
+        "confirm_text": "Record an additional ten tally marks, as you have angered Yig with your foolish actions.",
+        "delta": true,
         "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "yigs_fury",
+            "operation": "add_input"
+          },
           {
             "type": "campaign_log_count",
             "section": "yigs_fury",
@@ -15975,6 +17031,7 @@
       "input": {
         "type": "counter",
         "text": "Vengeance points in the victory display:",
+        "delta": true,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -16636,8 +17693,10 @@
         "type": "investigator_choice_supplies",
         "section": "supplies",
         "id": "binoculars",
+        "investigator": "choice",
         "prompt": "Group's lookout",
         "positiveChoice": {
+          "id": "shapes_in_the_trees",
           "text": "Shapes in the Trees",
           "effects": [
             {
@@ -16652,6 +17711,7 @@
           ]
         },
         "negativeChoice": {
+          "id": "eyes_in_the_dark",
           "text": "Eyes in the Dark",
           "effects": [
             {
@@ -17670,6 +18730,7 @@
       "input": {
         "type": "counter",
         "text": "Vengeance points in the victory display:",
+        "delta": true,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -19193,6 +20254,7 @@
       "input": {
         "type": "counter",
         "text": "Vengeance points in the victory display:",
+        "delta": true,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -20568,7 +21630,7 @@
             "condition": {
               "type": "has_card",
               "card": "04102",
-              "investigator": "any",
+              "investigator": "each",
               "options": [
                 {
                   "boolCondition": true,
@@ -21391,6 +22453,7 @@
       "input": {
         "type": "counter",
         "text": "Vengeance points in the victory display:",
+        "delta": true,
         "effects": [
           {
             "type": "campaign_log_count",

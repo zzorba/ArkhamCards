@@ -12,7 +12,7 @@ interface Props {
   color?: {
     tint: string;
     primary: string;
-  }
+  };
   selected: boolean;
   onChoiceToggle: (code: string) => void;
   editable: boolean;

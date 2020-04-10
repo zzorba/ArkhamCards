@@ -738,6 +738,73 @@
     "supplies": []
   },
   {
+    "campaignId": "tdea",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "alejandro_followed_to_ruins",
+            "text": "Alejandro followed the investigators into the ruins."
+          },
+          {
+            "id": "alejandro_remained_at_camp",
+            "text": "Alejandro chose to remain at camp."
+          },
+          {
+            "id": "cleared_path_to_temple",
+            "text": "the investigators cleared a path to the Eztli ruins."
+          },
+          {
+            "id": "doctor_is_alive",
+            "text": "Dr. Maheswaran is alive."
+          },
+          {
+            "id": "doctor_is_missing",
+            "text": "Dr. Maheswaran is missing."
+          },
+          {
+            "id": "doctor_joined_investigation",
+            "text": "Dr. Maheswaran joined the investigation."
+          },
+          {
+            "id": "doctor_stayed_with_patients",
+            "text": "Dr. Maheswaran stayed with her patients."
+          },
+          {
+            "id": "doctors_fate_unknown",
+            "text": "Dr. Maheswaran’s fate is unknown."
+          },
+          {
+            "id": "earned_ichtacas_trust",
+            "text": "the investigators have earned Ichtaca’s trust."
+          },
+          {
+            "id": "ichtaca_is_wary",
+            "text": "Ichtaca is wary of the investigators."
+          },
+          {
+            "id": "ichtaca_observed_progress",
+            "text": "Ichtaca observed your progress with keen interest."
+          },
+          {
+            "id": "randolph_escaped_hospital_alone",
+            "text": "Randolph escaped the hospital on his own."
+          },
+          {
+            "id": "randolph_escaped_hospital_with_investigators",
+            "text": "Randolph escaped the hospital with the investigators."
+          },
+          {
+            "id": "wait_for_additional_supplies",
+            "text": "the investigators were forced to wait for additional supplies."
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "tfa",
     "sections": [
       {

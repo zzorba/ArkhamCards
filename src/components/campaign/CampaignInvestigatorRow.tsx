@@ -67,12 +67,12 @@ class CampaignInvestigatorRow extends React.Component<Props> {
       <View style={styles.row}>
         { map(decks, this._renderDeck) }
         { map(
-            filter(
-              campaign.nonDeckInvestigators || [],
-              code => !deckInvestigators.has(code)
-            ),
-            this._renderInvestigator
-          ) }
+          filter(
+            campaign.nonDeckInvestigators || [],
+            code => !deckInvestigators.has(code)
+          ),
+          this._renderInvestigator
+        ) }
       </View>
     );
   }

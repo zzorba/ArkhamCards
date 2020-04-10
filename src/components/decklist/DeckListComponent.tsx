@@ -145,9 +145,11 @@ class DeckListComponent extends React.Component<Props, State> {
     if (isEmpty && !refreshing) {
       return (
         <View style={styles.footer}>
-          <Text style={[styles.emptyStateText, typography.text, space.marginBottomM]}>
-            { t`No decks yet.\n\nUse the + button to create a new one.` }
-          </Text>
+          <View style={styles.footerText}>
+            <Text style={[styles.emptyStateText, typography.text, space.marginBottomM]}>
+              { t`No decks yet.\n\nUse the + button to create a new one.` }
+            </Text>
+          </View>
           { customFooter }
         </View>
       );
@@ -155,9 +157,11 @@ class DeckListComponent extends React.Component<Props, State> {
     if (searchTerm && this.getItems().length === 0) {
       return (
         <View style={[styles.footer, styles.emptyStateText]}>
-          <Text style={[typography.text, typography.center, space.marginBottomM]}>
-            { t`No matching decks for "${searchTerm}".` }
-          </Text>
+          <View style={styles.footerText}>
+            <Text style={[typography.text, typography.center, space.marginBottomM]}>
+              { t`No matching decks for "${searchTerm}".` }
+            </Text>
+          </View>
           { customFooter }
         </View>
       );
@@ -253,6 +257,9 @@ const styles = StyleSheet.create({
     marginBottom: 60,
     flexDirection: 'column',
     alignItems: 'flex-start',
+  },
+  footerText: {
+    padding: s,
   },
   emptyStateText: {
     marginLeft: s,

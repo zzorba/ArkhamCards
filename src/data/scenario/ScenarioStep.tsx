@@ -62,22 +62,31 @@ export default class ScenarioStep {
   }
 
   private getSpecialEffectChoiceList(effect: Effect): string | undefined {
-    if ((
-      effect.type === 'add_card' ||
-      effect.type === 'remove_card'
-    ) && (
-      effect.investigator === 'choice' ||
-      effect.investigator === 'any'
-    )) {
-      return `${this.step.id}_investigator`;
+    switch (effect.type) {
+      case 'add_card':
+        if (effect.investigator === 'lead_investigator' && effect.optional) {
+          return `${this.step.id}_investigator`;
+        }
+        // Intentional fall-through
+        /* eslint-disable no-fallthrough */
+      case 'remove_card':
+        if (
+          effect.investigator === 'choice' ||
+          effect.investigator === 'any'
+        ) {
+          return `${this.step.id}_investigator`;
+        }
+        return undefined;
+      case 'trauma':
+        if (effect.mental_or_physical) {
+          return `${this.step.id}_trauma`;
+        }
+        return undefined;
+      case 'add_weakness':
+        return `${this.step.id}_weakness`;
+      default:
+        return undefined;
     }
-    if (effect.type === 'trauma' && effect.mental_or_physical) {
-      return `${this.step.id}_trauma`;
-    }
-    if (effect.type === 'add_weakness') {
-      return `${this.step.id}_weakness`;
-    }
-    return undefined;
   }
 
   nextCampaignLog(

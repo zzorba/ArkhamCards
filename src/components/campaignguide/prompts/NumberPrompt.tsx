@@ -18,6 +18,8 @@ interface Props {
   id: string;
   bulletType?: BulletType;
   prompt: string;
+  longLived?: boolean;
+  delta?: boolean;
   confirmText?: string;
   min?: number;
   max?: number;
@@ -42,35 +44,66 @@ export default class NumberPrompt extends React.Component<Props, State> {
     };
   }
 
+  currentValue(): number {
+    const { id, longLived } = this.props;
+
+    if (longLived) {
+      return this.context.scenarioState.count(`${id}#live`) || 0;
+    }
+    return this.state.value;
+  }
+
   _inc = () => {
-    this.setState(state => {
-      const newValue = state.value + 1;
-      return {
-        value: this.props.max ? Math.min(newValue, this.props.max) : newValue,
-      };
-    });
+    const { id, longLived, max } = this.props;
+    if (longLived) {
+      const value = this.context.scenarioState.count(`${id}#live`) || 0;
+      const newValue = value + 1;
+      this.context.scenarioState.setCount(`${id}#live`,
+        max ? Math.min(newValue, max) : newValue
+      );
+    } else {
+      this.setState(state => {
+        const newValue = state.value + 1;
+        return {
+          value: max ? Math.min(newValue, max) : newValue,
+        };
+      });
+    }
   };
 
   _dec = () => {
-    this.setState(state => {
-      return {
-        value: Math.max(state.value - 1, this.props.min || 0),
-      };
-    });
+    const { id, longLived, min } = this.props;
+    if (longLived) {
+      const value = this.context.scenarioState.count(`${id}#live`) || 0;
+      const newValue = value - 1;
+      this.context.scenarioState.setCount(`${id}#live`,
+        Math.max(newValue, min || 0)
+      );
+    } else {
+      this.setState(state => {
+        return {
+          value: Math.max(state.value - 1, min || 0),
+        };
+      });
+    }
   };
 
   _submit = () => {
     const {
       id,
     } = this.props;
-    this.context.scenarioState.setCount(id, this.state.value);
+    this.context.scenarioState.setCount(
+      id,
+      this.currentValue()
+    );
   };
 
   renderCount(count: number) {
+    const { delta } = this.props;
     return (
-      <View style={styles.count}>
+      <View style={[styles.count, delta ? styles.countDelta : {}]}>
         <Text style={[typography.bigGameFont, typography.center]}>
-          { count }
+          { delta && count >= 0 ? '+ ' : '' }{ count }
         </Text>
       </View>
     );
@@ -78,6 +111,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
 
   renderPrompt(count?: number) {
     const { prompt } = this.props;
+    const value = this.currentValue();
     return (
       <View style={styles.promptRow}>
         <View style={styles.text}>
@@ -87,12 +121,12 @@ export default class NumberPrompt extends React.Component<Props, State> {
           this.renderCount(count)
         ) : (
           <PlusMinusButtons
-            count={this.state.value}
+            count={value}
             min={this.props.min}
             max={this.props.max}
             onIncrement={this._inc}
             onDecrement={this._dec}
-            countRender={this.renderCount(this.state.value)}
+            countRender={this.renderCount(value)}
           />
         ) }
       </View>
@@ -143,6 +177,9 @@ const styles = StyleSheet.create({
     paddingLeft: 4,
     paddingRight: 4,
     minWidth: 40,
+  },
+  countDelta: {
+    minWidth: 50,
   },
   wrapper: {
     paddingTop: 8,

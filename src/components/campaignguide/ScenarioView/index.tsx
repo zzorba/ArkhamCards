@@ -23,24 +23,23 @@ type Props = InputProps & DimensionsProps & ScenarioGuideContextType;
 
 export type ScenarioProps = ScenarioGuideInputProps;
 
-interface State {
-  undoEnabled: boolean;
-}
+const RESET_ENABLED = true;
 
-class ScenarioView extends React.Component<Props, State> {
+class ScenarioView extends React.Component<Props> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
+  undoEnabled: boolean;
 
   static get options() {
     return ScenarioView.dynamicOptions(false);
   }
 
   static dynamicOptions(undo: boolean) {
-    const rightButtons = [{
+    const rightButtons = RESET_ENABLED ? [{
       icon: iconsMap.replay,
       id: 'reset',
       color: COLORS.navButton,
-    }];
+    }] : [];
     if (undo) {
       rightButtons.push({
         icon: iconsMap.undo,
@@ -59,11 +58,8 @@ class ScenarioView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    const undoEnabled = props.processedScenario.canUndo;
-    Navigation.mergeOptions(props.componentId, ScenarioView.dynamicOptions(undoEnabled));
-    this.state = {
-      undoEnabled,
-    };
+    this.undoEnabled = props.processedScenario.canUndo;
+    Navigation.mergeOptions(props.componentId, ScenarioView.dynamicOptions(this.undoEnabled));
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -72,11 +68,8 @@ class ScenarioView extends React.Component<Props, State> {
       processedScenario: { type, canUndo },
       componentId,
     } = this.props;
-    if (canUndo !== this.state.undoEnabled) {
+    if (canUndo !== this.undoEnabled) {
       Navigation.mergeOptions(componentId, ScenarioView.dynamicOptions(canUndo));
-      this.setState({
-        undoEnabled: canUndo,
-      });
     }
     if (type !== 'started' && type !== 'completed') {
       // Get out of here

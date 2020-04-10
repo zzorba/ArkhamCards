@@ -59,6 +59,8 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             bulletType={step.bullet_type}
             prompt={step.input.text}
+            longLived={!!step.input.long_lived}
+            delta={!!step.input.delta}
             confirmText={step.input.confirm_text}
             effects={step.input.effects}
             min={step.input.min}

@@ -12,6 +12,7 @@ import Card from 'data/Card';
 interface Props<T> {
   id: string;
   investigator: InvestigatorSelector;
+  optional?: boolean;
   description?: string;
   input?: string[];
   render: (investigators: Card[], extraArg: T) => React.ReactNode;
@@ -24,13 +25,23 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
     campaignLog: GuidedCampaignLog,
     choice?: string
   ): Card[] {
-    const { investigator, input } = this.props;
+    const { investigator, input, optional } = this.props;
     switch (investigator) {
       case 'lead_investigator': {
         const leadInvestigator = campaignLog.leadInvestigatorChoice();
+        if (!optional) {
+          return filter(
+            investigators,
+            investigator => investigator.code === leadInvestigator
+          );
+        }
+        if (choice === undefined) {
+          return [];
+        }
         return filter(
           investigators,
-          investigator => investigator.code === leadInvestigator);
+          investigator => investigator.code === choice
+        );
       }
       case 'all':
         return investigators;
@@ -71,11 +82,19 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
     campaignLog: GuidedCampaignLog,
     scenarioInvestigators: Card[]
   ) {
-    const { id, render, investigator, description, extraArg } = this.props;
+    const {
+      id,
+      render,
+      investigator,
+      description,
+      extraArg,
+      optional,
+    } = this.props;
     const choice = scenarioState.stringChoices(`${id}_investigator`);
     if (choice === undefined && (
       investigator === 'choice' ||
-      investigator === 'any'
+      investigator === 'any' ||
+      (investigator === 'lead_investigator' && optional)
     )) {
       return (
         <ChooseInvestigatorPrompt
@@ -83,6 +102,10 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
           title={t`Choose Investigator`}
           choiceId="chosen_investigator"
           description={description}
+          investigators={investigator === 'lead_investigator' ?
+            [campaignLog.leadInvestigatorChoice()] :
+            []
+          }
           defaultLabel={t`No one`}
           required={investigator === 'any'}
         />

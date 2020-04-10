@@ -37,6 +37,7 @@ export default class AddCardEffectComponent extends React.Component<Props> {
         id={id}
         investigator={effect.investigator}
         render={this._renderInvestigators}
+        optional={effect.optional}
         description={t`Who will add ${card.name} to their deck?`}
         extraArg={card}
       />

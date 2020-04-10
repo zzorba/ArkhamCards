@@ -82,7 +82,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
           text: name,
         },
       },
-    })
+    });
   };
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {

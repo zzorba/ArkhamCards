@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, StyleSheet } from 'react-native';
-import { findIndex, keys, map } from 'lodash';
+import { findIndex, flatMap, keys } from 'lodash';
 import { t } from 'ttag';
 
 import { StringChoices } from 'actions/types';
@@ -16,6 +16,7 @@ interface Props {
   description?: string;
   defaultLabel?: string;
   required?: boolean;
+  investigators?: string[];
   investigatorToValue?: (card: Card) => string;
   renderResults?: (investigator?: Card) => React.ReactNode;
 }
@@ -108,9 +109,11 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       required,
       defaultLabel,
       investigatorToValue,
+      investigators,
     } = this.props;
     const choice = scenarioState.stringChoices(id);
     const selectedIndex = this.getSelectedIndex(scenarioInvestigators, choice);
+    const investigatorSet = investigators && new Set(investigators);
     return (
       <>
         <View style={[
@@ -122,7 +125,10 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
             description={description}
             defaultLabel={defaultLabel}
             choices={
-              map(scenarioInvestigators, investigator => {
+              flatMap(scenarioInvestigators, investigator => {
+                if (investigatorSet && !investigatorSet.has(investigator.code)) {
+                  return [];
+                }
                 return {
                   text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
                   effects: [],

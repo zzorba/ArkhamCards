@@ -31,12 +31,13 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
   }
 
   renderLastScenario() {
-    if (this.props.hideScenario) {
+    const { hideScenario, campaign } = this.props;
+    if (hideScenario) {
       return null;
     }
     const latestScenario = this.latestScenario();
     if (latestScenario && latestScenario.scenario) {
-      const resolution = latestScenario.resolution ?
+      const resolution = latestScenario.resolution && !campaign.guided ?
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={styles.marginTop}>

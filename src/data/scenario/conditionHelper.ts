@@ -1,5 +1,6 @@
 import {
   every,
+  filter,
   find,
   findIndex,
   forEach,
@@ -21,9 +22,11 @@ import {
   CheckSuppliesAllCondition,
   CheckSuppliesAnyCondition,
   InvestigatorCardCondition,
+  InvestigatorCondition,
   KilledTraumaCondition,
   MathEqualsCondition,
   BasicTraumaCondition,
+  StringOption,
   Condition,
   BoolOption,
   NumOption,
@@ -109,7 +112,7 @@ function stringConditionResult(
   };
 }
 
-function investigatorConditionResult(
+function investigatorResult(
   investigatorChoices: StringChoices,
   options: OptionWithId[]
 ): InvestigatorResult {
@@ -196,7 +199,7 @@ export function checkSuppliesAllConditionResult(
       choices[investigatorCode] = [hasSupply ? 'true' : 'false'];
     }
   });
-  return investigatorConditionResult(
+  return investigatorResult(
     choices,
     map(condition.options, option => {
       return {
@@ -272,7 +275,7 @@ export function basicTraumaConditionResult(
           choices[investigator] = [decision ? 'true' : 'false'];
         }
       });
-      return investigatorConditionResult(
+      return investigatorResult(
         choices,
         map(condition.options, option => {
           return {
@@ -334,7 +337,7 @@ export function investigatorCardConditionResult(
       choices[code] = [decision ? 'true' : 'false'];
     }
   });
-  return investigatorConditionResult(
+  return investigatorResult(
     choices,
     map(
       condition.options,
@@ -374,29 +377,67 @@ export function campaignDataScenarioConditionResult(
   );
 }
 
+function investigatorConditionMatches(
+  investigatorData: 'trait' | 'faction' | 'code',
+  options: StringOption[],
+  campaignLog: GuidedCampaignLog
+): InvestigatorResult {
+  const investigators = campaignLog.investigators(false);
+  const investigatorChoices: StringChoices = {};
+
+  for (let i = 0; i < investigators.length; i++) {
+    const card = investigators[i];
+    const matches = filter(
+      options,
+      option => investigatorDataMatches(card, investigatorData, option.condition)
+    );
+    if (matches.length) {
+      investigatorChoices[card.code] = map(matches, match => match.condition);
+    }
+  }
+  return investigatorResult(
+    investigatorChoices,
+    map(options, option => {
+      return {
+        ...option,
+        id: option.condition,
+      };
+    })
+  );
+}
+
+export function investigatorConditionResult(
+  condition: InvestigatorCondition,
+  campaignLog: GuidedCampaignLog
+): InvestigatorResult {
+  return investigatorConditionMatches(
+    condition.investigator_data,
+    condition.options,
+    campaignLog
+  );
+}
+
 export function campaignDataInvestigatorConditionResult(
   condition: CampaignDataInvestigatorCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
-  const investigators = campaignLog.investigators(false);
-  for (let i = 0; i < investigators.length; i++) {
-    const card = investigators[i];
-    const index = findIndex(
-      condition.options,
-      option => investigatorDataMatches(
-        card,
-        condition.investigator_data,
-        // codgen can't handle this, so need a dummy value.
-        option.condition || 'dummy'
-      )
-    );
-    if (index !== -1) {
-      return {
-        type: 'binary',
-        decision: true,
-        option: condition.options[index],
-      };
+  const result = investigatorConditionMatches(
+    condition.investigator_data,
+    condition.options,
+    campaignLog
+  );
+  let match: OptionWithId | undefined = undefined;
+  forEach(result.investigatorChoices, (choices) => {
+    if (choices.length) {
+      match = find(result.options, option => option.id === choices[0]);
     }
+  });
+  if (match) {
+    return {
+      type: 'binary',
+      decision: true,
+      option: match,
+    };
   }
   return {
     type: 'binary',

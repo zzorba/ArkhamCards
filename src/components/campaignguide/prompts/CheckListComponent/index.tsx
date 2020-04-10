@@ -232,9 +232,6 @@ const styles = StyleSheet.create({
   nameText: {
     fontWeight: '600',
   },
-  center: {
-    justifyContent: 'center',
-  },
   buttonWrapper: {
     padding: 8,
   },

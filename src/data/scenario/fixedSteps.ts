@@ -2,7 +2,8 @@ import { filter, find, map } from 'lodash';
 import { t } from 'ttag';
 
 import {
-  ConditionalEffectsChoice,
+  BinaryConditionalChoice,
+  InvestigatorConditionalChoice,
   InvestigatorStatus,
   BranchStep,
   Effect,
@@ -54,7 +55,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
       choices: map(
         filter(resolutions, resolution => resolution.id !== 'investigator_defeat'),
         resolution => {
-          const choice: ConditionalEffectsChoice = {
+          const choice: BinaryConditionalChoice = {
             id: resolution.id,
             text: resolution.title,
             steps: [
@@ -185,7 +186,7 @@ function investigatorStatusStep(
     'mental',
     'eliminated',
   ];
-  const choices: ConditionalEffectsChoice[] = map(
+  const choices: InvestigatorConditionalChoice[] = map(
     resolution.investigator_status || defaultStatuses,
     status => {
       const effects: Effect[] = [

@@ -44,7 +44,9 @@ export default class CampaignItem extends React.Component<Props> {
               { campaign.name }
             </Text>
           ) }
-          <CampaignSummaryComponent campaign={campaign} />
+          <CampaignSummaryComponent
+            campaign={campaign}
+          />
           <CampaignInvestigatorRow
             campaign={campaign}
             investigators={investigators}

@@ -1,8 +1,9 @@
-import { filter, find, forEach, keys } from 'lodash';
+import { filter, find, forEach } from 'lodash';
 
 import { NumberChoices } from 'actions/types';
 import {
-  ChoiceCondition,
+  BinaryChoiceCondition,
+  InvestigatorChoiceCondition,
   InvestigatorChoiceInput,
   ChooseOneInput,
 } from 'data/scenario/types';
@@ -10,8 +11,10 @@ import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import {
   basicTraumaConditionResult,
   campaignDataInvestigatorConditionResult,
+  investigatorCardConditionResult,
   campaignLogConditionResult,
-  hasCardConditionResult,
+  investigatorConditionResult,
+  binaryCardConditionResult,
   multiConditionResult,
   BinaryResult,
   InvestigatorResult,
@@ -28,11 +31,8 @@ export function chooseOneInputChoices(
       if (!choice.condition) {
         return true;
       }
-      const result = calculateConditionResult(choice.condition, campaignLog);
-      if (result.type === 'binary') {
-        return !!result.option;
-      }
-      return keys(result.investigatorChoices).length > 0;
+      const result = calculateBinaryConditionResult(choice.condition, campaignLog);
+      return !!result.option;
     }
   );
 }
@@ -57,20 +57,21 @@ export function investigatorChoiceInputChoices(
           result[code] = [...(result[code] || []), idx];
         });
       } else {
-        const conditionResult = calculateConditionResult(choice.condition, campaignLog);
-        if (conditionResult.type === 'investigator') {
-          forEach(conditionResult.investigatorChoices,
-            (indexes, code) => {
-              // If we got one or more matches, that means this 'choice' is good.
-              if (indexes.length) {
-                result[code] = [
-                  ...(result[code] || []),
-                  idx,
-                ];
-              }
+        const conditionResult = calculateInvestigatorConditionResult(
+          choice.condition,
+          campaignLog
+        );
+        forEach(conditionResult.investigatorChoices,
+          (indexes, code) => {
+            // If we got one or more matches, that means this 'choice' is good.
+            if (indexes.length) {
+              result[code] = [
+                ...(result[code] || []),
+                idx,
+              ];
             }
-          );
-        }
+          }
+        );
       }
     }
   );
@@ -81,20 +82,33 @@ export function investigatorChoiceInputChoices(
   };
 }
 
-function calculateConditionResult(
-  condition: ChoiceCondition,
+function calculateBinaryConditionResult(
+  condition: BinaryChoiceCondition,
   campaignLog: GuidedCampaignLog
-): BinaryResult | InvestigatorResult {
+): BinaryResult {
   switch (condition.type) {
     case 'has_card':
-      return hasCardConditionResult(condition, campaignLog);
-    case 'trauma':
-      return basicTraumaConditionResult(condition, campaignLog);
+      return binaryCardConditionResult(condition, campaignLog);
     case 'campaign_data':
       return campaignDataInvestigatorConditionResult(condition, campaignLog);
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
     case 'multi':
       return multiConditionResult(condition, campaignLog);
+  }
+}
+
+
+function calculateInvestigatorConditionResult(
+  condition: InvestigatorChoiceCondition,
+  campaignLog: GuidedCampaignLog
+): InvestigatorResult {
+  switch (condition.type) {
+    case 'has_card':
+      return investigatorCardConditionResult(condition, campaignLog);
+    case 'trauma':
+      return basicTraumaConditionResult(condition, campaignLog);
+    case 'investigator':
+      return investigatorConditionResult(condition, campaignLog);
   }
 }

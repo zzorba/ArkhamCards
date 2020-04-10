@@ -46,6 +46,7 @@ export default class ArkhamTabView extends React.Component<Props, State> {
     return (
       <TabBar
         {...props}
+        scrollEnabled
         activeColor={COLORS.lightBlue}
         inactiveColor={COLORS.darkGray}
         indicatorStyle={{ backgroundColor: COLORS.lightBlue }}
