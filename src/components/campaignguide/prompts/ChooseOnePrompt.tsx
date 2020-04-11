@@ -71,7 +71,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                       text={text || t`The investigators must decide (choose one):`}
                     />
                   </SetupStepWrapper>
-                  <View style={space.paddingS}>
+                  <View style={[space.paddingTopS, space.paddingBottomS]}>
                     <ChooseOneListComponent
                       choices={choices}
                       selectedIndex={selectedChoice}

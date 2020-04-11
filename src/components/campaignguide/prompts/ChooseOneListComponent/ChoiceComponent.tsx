@@ -3,6 +3,8 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import SetupStepWrapper from '../../SetupStepWrapper';
+import BinaryResult from '../../BinaryResult';
 import ResultIndicatorIcon from '../../ResultIndicatorIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
@@ -29,25 +31,37 @@ export default class ChoiceComponent extends React.Component<Props> {
     onSelect(index);
   };
 
-  renderContent() {
+  renderTextContent() {
     const {
       choice,
+    } = this.props;
+    return (
+      <>
+        { choice.flavor && <CampaignGuideTextComponent flavor text={choice.flavor} /> }
+        { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
+        { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
+      </>
+    );
+  }
+
+  renderContent() {
+    const {
       selected,
       editable,
       index,
       color,
       noBullet,
     } = this.props;
-    return (
-      <View style={[
-        styles.row,
-        (index === 0 || !editable) ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
-        selected && editable ? {
-          backgroundColor: color ? color.tint : undefined,
-        } : {},
-      ]}>
-        <View style={styles.padding}>
-          { editable ? (
+    if (editable) {
+      return (
+        <View style={[
+          styles.row,
+          index === 0 ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
+          selected ? {
+            backgroundColor: color ? color.tint : undefined,
+          } : {},
+        ]}>
+          <View style={styles.padding}>
             <View style={[styles.bullet, styles.radioButton]}>
               <MaterialCommunityIcons
                 name={selected ? 'radiobox-marked' : 'radiobox-blank'}
@@ -55,24 +69,27 @@ export default class ChoiceComponent extends React.Component<Props> {
                 color={color ? color.primary : 'rgb(0, 122,255)'}
               />
             </View>
-          ) : (!noBullet && (
-            <View style={styles.bullet}>
-              <ArkhamIcon name="bullet" color={COLORS.scenarioGreen} size={24} />
+            <View style={styles.textBlock}>
+              { this.renderTextContent() }
             </View>
-          )) }
-          <View style={styles.textBlock}>
-            { choice.flavor && <CampaignGuideTextComponent flavor text={choice.flavor} /> }
-            { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
-            { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
           </View>
         </View>
-        { !editable && (
-          <ResultIndicatorIcon
-            result={selected}
-            noBorder
-          />
-        ) }
-      </View>
+      );
+    }
+    if (noBullet) {
+      return (
+        <SetupStepWrapper bulletType="none">
+          { this.renderTextContent() }
+        </SetupStepWrapper>
+      );
+    }
+    return (
+      <BinaryResult
+        result={selected}
+        bulletType="small"
+      >
+        { this.renderTextContent() }
+      </BinaryResult>
     );
   }
   render() {

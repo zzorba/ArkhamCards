@@ -62,7 +62,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       return (
         <>
           <View style={border ? space.paddingSideL : undefined}>
-            <SetupStepWrapper bulletType="small">
+            <SetupStepWrapper>
               <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
             </SetupStepWrapper>
           </View>

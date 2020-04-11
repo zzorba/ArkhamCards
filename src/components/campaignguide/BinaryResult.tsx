@@ -12,6 +12,7 @@ import { BulletType } from 'data/scenario/types';
 interface Props {
   bulletType?: BulletType;
   prompt?: string;
+  children?: React.ReactNode | React.ReactNode[];
   result: boolean;
   noBorder?: boolean;
 }
@@ -20,6 +21,7 @@ export default function BinaryResult({
   bulletType,
   prompt,
   result,
+  children,
   noBorder,
 }: Props) {
   return (
@@ -27,6 +29,7 @@ export default function BinaryResult({
       <View style={styles.step}>
         <SetupStepWrapper bulletType={bulletType}>
           { !!prompt && <CampaignGuideTextComponent text={prompt} /> }
+          { !!children && children }
         </SetupStepWrapper>
       </View>
       <ResultIndicatorIcon result={result} noBorder={noBorder} />
@@ -40,5 +43,6 @@ const styles = StyleSheet.create({
   },
   step: {
     flex: 1,
+    flexDirection: 'column',
   },
 });

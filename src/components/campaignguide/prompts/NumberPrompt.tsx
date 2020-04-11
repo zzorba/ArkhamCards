@@ -111,16 +111,21 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
   renderPrompt(count?: number) {
-    const { prompt } = this.props;
+    const { prompt, delta } = this.props;
     const value = this.currentValue();
     return (
       <View style={styles.promptRow}>
         <View style={styles.text}>
           <CampaignGuideTextComponent text={prompt} />
+          { count !== undefined && (
+            <View style={space.paddingLeftS}>
+              <Text style={[typography.gameFont, typography.bold]}>
+                { count }
+              </Text>
+            </View>
+          ) }
         </View>
-        { count !== undefined ? (
-          this.renderCount(count)
-        ) : (
+        { count === undefined && (
           <PlusMinusButtons
             count={value}
             min={this.props.min}
@@ -188,5 +193,7 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
