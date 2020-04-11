@@ -311,6 +311,11 @@ export default class GuidedCampaignLog {
     return !!(investigatorData && (investigatorData.mental || 0) > 0);
   }
 
+  resigned(investigator: string): boolean {
+    const status = this.investigatorResolutionStatus()[investigator];
+    return status === 'resigned';
+  }
+
   isDefeated(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
     return status === 'physical' || status === 'mental' || status === 'eliminated';
@@ -1021,13 +1026,25 @@ export default class GuidedCampaignLog {
                     }));
                 }
                 break;
-              case '$lead_investigator':
-                forEach(input || [],
-                  card => cards.push({
-                    card,
-                    count: 1,
-                  }));
+              case '$lead_investigator': {
+                cards.push({
+                  card: this.leadInvestigatorChoice(),
+                  count: 1,
+                });
                 break;
+              }
+              case '$defeated_investigators': {
+                forEach(
+                  this.investigatorCodes(true), code => {
+                    if (this.isDefeated(code)) {
+                      cards.push({
+                        card: code,
+                        count: 1,
+                      });
+                    }
+                  }
+                );
+              }
             }
           } else {
             cards.push({

@@ -220,7 +220,7 @@ export interface CampaignLogCardsEffect {
   section: string;
   id?: string;
   text?: string;
-  cards?: "$lead_investigator" | "$input_value";
+  cards?: "$lead_investigator" | "$defeated_investigators" | "$input_value";
   cross_out?: boolean;
 }
 export interface CampaignLogCountEffect {
@@ -382,7 +382,7 @@ export interface ScenarioDataResolutionCondition {
 export interface ScenarioDataInvestigatorStatusCondition {
   type: "scenario_data";
   scenario_data: "investigator_status";
-  investigator: "defeated";
+  investigator: "defeated" | "resigned";
   options: BoolOption[];
 }
 export interface ScenarioDataPlayerCountCondition {

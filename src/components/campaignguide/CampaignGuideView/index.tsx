@@ -171,7 +171,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     const tabs = [
       {
         key: 'investigators',
-        title: t`Investigators`,
+        title: t`Decks`,
         node: (
           <InvestigatorsTab
             componentId={componentId}
@@ -200,7 +200,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
       },
       {
         key: 'log',
-        title: t`Campaign Log`,
+        title: t`Log`,
         node: (
           <CampaignLogTab
             campaignId={campaignId}
@@ -217,7 +217,6 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
       <TabView
         tabs={tabs}
         onTabChange={this._onTabChange}
-        scrollEnabled
       />
     );
   }

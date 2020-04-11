@@ -20,7 +20,6 @@ import {
   Step,
   Effect,
   EffectsWithInput,
-  Option,
 } from 'data/scenario/types';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from 'data/scenario/inputHelper';
 import { conditionResult } from 'data/scenario/conditionHelper';

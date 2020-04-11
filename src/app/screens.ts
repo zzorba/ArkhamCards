@@ -1,4 +1,5 @@
 import { Navigation } from 'react-native-navigation';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 
 import SearchMultiSelectView from 'components/cardlist/SearchMultiSelectView';
 import EditSpecialDeckCardsView from 'components/deck/EditSpecialDeckCardsView';
@@ -81,7 +82,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Campaign', () => CampaignDetailView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.New', () => NewCampaignView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.AddResult', () => AddScenarioResultView, Provider, store);
-  Navigation.registerComponentWithRedux('Guide.Campaign', () => CampaignGuideView, Provider, store);
+  Navigation.registerComponentWithRedux('Guide.Campaign', () => gestureHandlerRootHOC(CampaignGuideView), Provider, store);
   Navigation.registerComponentWithRedux('Guide.Scenario', () => ScenarioView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.LocationSetup', () => LocationSetupView, Provider, store);
   Navigation.registerComponentWithRedux('Campaign.UpgradeDecks', () => UpgradeDecksView, Provider, store);
@@ -100,7 +101,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Pack', () => PackCardsView, Provider, store);
   Navigation.registerComponentWithRedux('My.Spoilers', () => SpoilersView, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.CardUpgrade', () => CardUpgradeDialog, Provider, store);
-  Navigation.registerComponentWithRedux('Dialog.DeckSelector', () => MyDecksSelectorDialog, Provider, store);
+  Navigation.registerComponentWithRedux('Dialog.DeckSelector', () => gestureHandlerRootHOC(MyDecksSelectorDialog), Provider, store);
   Navigation.registerComponentWithRedux('Dialog.EditChaosBag', () => EditChaosBagDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.ExileCards', () => ExileCardDialog, Provider, store);
   Navigation.registerComponentWithRedux('Dialog.Sort', () => CardSortDialog, Provider, store);

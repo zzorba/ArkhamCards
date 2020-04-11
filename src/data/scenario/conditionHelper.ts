@@ -547,12 +547,14 @@ export function conditionResult(
           );
         }
         case 'investigator_status': {
-          if (condition.investigator !== 'defeated') {
-            throw new Error('Unexpected investigator_status scenario condition');
-          }
           const investigators = campaignLog.investigatorCodes(false);
           const decision = !!find(investigators, code => {
-            return campaignLog.isDefeated(code);
+            switch (condition.investigator) {
+              case 'defeated':
+                return campaignLog.isDefeated(code);
+              case 'resigned':
+                return campaignLog.resigned(code);
+            }
           });
           return binaryConditionResult(
             decision,

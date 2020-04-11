@@ -9974,6 +9974,7 @@
     },
     {
       "id": "lead_investigator_joins_pipers",
+      "text": "In your Campaign Log, record <i>the lead investigator has joined the pipers of Azathoth</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -12841,7 +12842,7 @@
     },
     {
       "id": "set_aside_spectral_web",
-      "text": "Set the four Spectral Web assets aside, out of play"
+      "text": "Set the four Spectral Web assets aside, out of play."
     },
     {
       "id": "shuffle_heretics",
@@ -14991,6 +14992,236 @@
 }
 , "scenarios": [
 {
+  "id": "a_thousand_shapes_of_horror",
+  "scenario_name": "A Thousand Shapes of Horror",
+  "full_name": "Scenario II–B: A Thousand Shapes of Horror",
+  "setup": [
+    "intro_1",
+    "check_black_cat_at_side",
+    "intro_4",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_cards",
+    "encounter_deck",
+    "$choose_resolution"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "To stop the merging between the land of dreams and the waking world, you decide to force your way into the “Dreamlands”—as your new companion Randolph calls the dimension—in your physical body, instead of traveling there in your sleep. “While there are many dangers to this method of travel, I think it is better than the alternative,” Randolph claims. “If we venture there in our sleep, we may become trapped like your companions, unable to wake.” You agree: you can do little good trapped on the other side, especially if you aim to help your dreaming companions.\n “Our first step is to find a key. Even in places where the Dreamlands borders the waking world, one cannot simply walk between them. I once possessed a key to the Gate of Dreams, but I lost it years ago and have been unable to find it since,” he laments."
+    },
+    {
+      "id": "check_black_cat_at_side",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_at_side",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["intro_3"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "The black cat, perched on a nearby park bench, glares at Randolph with narrow, disdainful eyes. “You lost the key to the Dreamlands?”\nYou share in the cat’s skepticism. Randolph sighs and shakes his head. “Let me explain,” he says to you. “It is not a physical key. It never was. The ‘key’ was the sense of wonder, fantasy, and creativity that sparked my imagination when I was young. These are things we do not value in maturity. It is only natural the key to these kinds of dreams should be lost with age.”\n“What foolishness!” the black cat scolds. “It is not ‘maturity’ to leave one’s imagination behind. You have abandoned the best part of you. You are more a mewling kitten now than any child I have ever met.”\n“Perhaps you are right,” Randolph agrees, downcast. “I forced myself to believe that earthly concerns were more important than juvenile fantasies of gilded spires, perfumed jungles, and twilight realms…and now I fear I shall never see such wonders again.” He turns back toward you, his eyes full of regret. “And worse, I will be unable to guide you."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "You go through the usual motions: “When was the last time you saw it?” “Where was the last time you used it?” and the like.\nRandolph sighs and shakes his head. “You do not understand. It is not a physical key. It never was. The key was the sense of wonder, fantasy, and creativity that sparked my imagination when I was young. These are things we do not value in maturity. It is only natural the key to these kinds of dreams should be lost with age.”"
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "You ask what might have turned Randolph’s mind away from the fantastical and toward more practical concerns. He thinks for a brief time, mulling over the possibilities. Then, his eyes go wide as he realizes something important. “There was an incident many years ago. It was the last time I was involved with something supernatural—that is, before today,” he explains. “I met a friend of mine—Joel Manton— in the graveyard next to the old abandoned house in the Merchant District. The one they call the <i>Unnamable</i>. I didn’t want to believe that it was truly haunted, as the stories told, but in merely repeating the legend, I drew the creature’s ire.”\nYou ask of the creature, and Randolph closes his eyes as a violent shudder courses up his spine. “It cannot be described. All I know is that we barely survived. It was my fault Joel was hurt. From that day forth, I have had no desire to delve into the supernatural or the superstitious. Not because I did not believe, but because I was frightened. Is that why the key eludes me? Is that why I can no longer dream?” The realization hits him, clear as day. “I know where we have to go. That is where I lost the key. That must be where it can be regained!” he exclaims, wide-eyed.\nAs Randolph frantically tries to hail a taxicab, you realize where he means to go: to the house without a name, where the indescribable creature that still haunts his memory resides…"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "a_thousand_shapes_of_horror",
+        "creatures_of_the_underworld",
+        "merging_realities",
+        "chilling_cold",
+        "ghouls",
+        "locked_doors",
+        "rats"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Burial Ground, Front Porch, Upstairs Hallway, both Downstairs Doorways, and both Upstairs Doorways (see suggested location placement on next page).",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Burial Ground"
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: the Attic location, the Unmarked Tomb location, all 6 Mysterious Stairs locations, all 4 Endless Descent treacheries, and The Silver Key story asset."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+    },
+
+
+    {
+      "id": "randolph_survived_descent",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "randolph_survived_descent",
+          "text": "Randolph survived the descent."
+        }
+      ]
+    },
+    {
+      "id": "possess_silver_key",
+      "text": "In your Campaign Log, record <i>the investigators possess the Silver Key</i>. Any one investigator may choose to add The Silver Key <i>(Key to the Gate of Dreams)</i> to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "possess_silver_key",
+          "text": "the investigators possess the Silver Key."
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "06189"
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_skull",
+      "text": "Your body now walks within the slumbering Dreamlands. Add 1 [skull] token to the chaos bag, for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": ["skull"]
+        }
+      ]
+    },
+    {
+      "id": "ask_recovered_strange_key",
+      "text": "Did the investigators “recover a strange key”?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Yes",
+            "steps": ["resolution_3"]
+          },
+          {
+            "id": "no",
+            "text": "No",
+            "steps": ["resolution_4"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "randolph_did_not_survive_descent",
+      "text": "In your Campaign Log, record <i>Randolph did not survive the descent</i>. If an investigator’s deck contains Randolph Carter <i>(Chained to the Waking World)</i> (<i>The DreamEaters</i> card #79), remove him from that deck for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "randolph_did_not_survive_descent",
+          "text": "Randolph did not survive the descent."
+        },
+        {
+          "type": "remove_card",
+          "card": "06079"
+        }
+      ]
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "resolution_4",
+      "type": "resolution",
+      "resolution": "R4"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_2"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "This place is nothing like the mystical forests, charming medieval villages, and majestic panoramas of which Virgil Gray wrote in his stories. No, far from it: this cold, bleak gulf eats away your hope and replaces it with a feeling of empty, meaningless dread. You ask Randolph if this is the way to your comatose companions. You almost hope that you are traveling in the wrong direction, so you can leave this awful place behind.\n“I do not know,” he replies, peering out one of the windows along the stairway. “We have traveled beyond the waking world, but this is the lower plane of the Dreamlands, known as the Underworld. It is an inhospitable place. Many of the creatures we have seen crossing over into our world come from this region. Perhaps our key knew this was our true destination?” Your guide examines the arcane key you found in the abandoned house, running his fingers over its arabesques as though recalling its shape, its weight, its texture. His eyes water with the depth of his loss.\nYou offer to hold the key for him, which yanks him from his private thoughts. “Ah. Yes, perhaps that would be best,” he says, handing the delicate artifact to you. It is surprisingly heavy for something that, according to Randolph, is not real.\nWith Randolph and the Silver Key in tow, you continue your descent anew. The Underworld may or may not be where your companions are, but if the creatures invading the world of the waking are indeed from this place, then perhaps here you can find answers.",
+      "steps": ["randolph_survived_descent", "possess_silver_key", "earn_xp", "add_skull"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "Your last waking sensation is the rush of noxious, frigid air as you are knocked to the ground by the thrashing, monolithic abomination with no name. The wind is pulled out of your lungs. You cannot scream. You grasp desperately at the ground as the creature tears at your skin and tramples your bones. Somehow you wrench yourself free, escaping through the vortex of bitter, withering wind surrounding the creature. You hear the scrape of peeling plaster. Debris whips past your head. A loose brick hits your shoulder. You wonder if there will even be a building left to tremble at when this is all over.",
+      "steps": ["ask_recovered_strange_key"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "You barely hear Randolph shouting to you over the maelstrom of ice-cold air that surrounds you. Despite all odds, you somehow reach him, the indescribable monstrosity hot on your heels. Randolph wrenches open your hand, grabs the key you found in the unnamed house, and clutches it tightly. He closes his eyes and whispers something inaudible. As the abominable torrent crashes into you, everything goes black.\nWhen you awaken, you lie on a flat stone platform overlooking a steep, straight staircase that descends into unknown depths. Behind you, the stairway curls upward into a stone spire that ascends into a hazy mist. In both directions, the entirety of the cavern is dimly lit with grey phosphorescence. Randolph pulls you to your feet. “That was a close one,” he admits. “I never wish to take a journey like that again.” You ask where you are, and he bites his lip, looking out over the bleak, desolate scenery.\n“This is the lower plane of the Dreamlands, known as the Underworld. It is an inhospitable place. Many of the creatures we have seen crossing over into our world come from this region. Perhaps our key knew this was our true destination. I think…I think it is gone now,” your guide explains.\nYou are thunderstruck. Randolph grits his teeth at your reaction and looks away in shame. “Forget it. We no longer need it anyway. Let’s go.” His curt reply echoes off the stone steps. With Randolph leading the way, you continue your descent anew. The Underworld may or may not be where your companions are, but if the creatures invading the world of the waking are indeed from this place, then perhaps here you can find answers.",
+      "steps": ["randolph_survived_descent", "earn_xp", "add_skull"]
+    },
+    {
+      "id": "R4",
+      "title": "Resolution 4",
+      "text": " In the debris, you spot it: something glinting within the maelstrom of ice-cold air and dust, something that calls to you, whispers your name. You barely hear Randolph shouting as the indescribable monstrosity crashes into him. Despite all odds, you somehow reach the rubble that was once the attic of the house with no name. You realize now what that elusive glimmer was: the polished reflection of a bright silver key. “Use it!” Randolph screams between cries of agony. The abomination climbs atop his body. “Use it now, while you ca—”\nThe thing cuts Randolph’s cry short as it envelops his body. You clutch the key tightly in your hand and shudder as you watch a thousand shapes of horror devour Randolph whole. You think of your companions, trapped somewhere in a perilous dream far from home, and the key’s glow intensifies, swallowing you as completely as the creature swallowed Randolph. Everything goes white.\nWhen you awaken, you lie on a flat stone platform overlooking a steep, straight staircase that descends into unknown depths. Behind you, the stairway curls upward into a stone spire that ascends into a hazy mist. In both directions, the entirety of the cavern is dimly lit with grey phosphorescence. You search for the Silver Key, but it has vanished. There is no sign of Randolph Carter.\nIt is clear you are no longer in the waking world. Perhaps the key transported your physical body into the Dreamlands, as Randolph claimed it could. But this place is nothing like the mystical forests, charming medieval villages, and majestic panoramas of which Virgil Gray wrote in his stories. No, far from it: this cold, bleak gulf eats away your hope and replaces it with a feeling of empty, meaningless dread. You peer once more up the countless steps behind you. It seems you have no choice now but to move on, deeper into this desolate and perilous realm.",
+      "steps": ["randolph_did_not_survive_descent", "earn_xp"]
+    }
+  ]
+}
+,
+{
   "id": "wilds",
   "scenario_name": "Beyond the Gates of Sleep",
   "full_name": "Scenario I–A: Beyond the Gates of Sleep",
@@ -15046,132 +15277,50 @@
       "id": "encounter_deck",
       "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
     },
-
     {
-      "id": "wait_for_additional_supplies",
+      "id": "saved_by_randolph_carter",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "wait_for_additional_supplies",
-          "text": "the investigators were forced to wait for additional supplies."
+          "id": "saved_by_randolph_carter",
+          "text": "the investigators were saved by Randolph Carter."
         }
       ]
     },
     {
-      "id": "ichtaca_observed_progress",
+      "id": "gain_randolph_carter",
+      "text": "Any one investigator may choose to add Randolph Carter <i>(Expert Dreamer)</i> (<i>The Dream-Eaters</i> card #59) to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "ichtaca_observed_progress",
-          "text": "Ichtaca observed your progress with keen interest."
-        }
-      ]
-    },
-    {
-      "id": "earned_ichtacas_trust",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "earned_ichtacas_trust",
-          "text": "the investigators have earned Ichtaca’s trust."
-        }
-      ]
-    },
-    {
-      "id": "alejandro_followed_to_ruins",
-      "text": "In your Campaign Log, record that <i>Alejandro followed the investigators into the ruins</i>. Any one investigator may choose to add Alejandro Vela to their deck. This card does not count toward that investigator’s deck size.",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "alejandro_followed_to_ruins",
-          "text": "Alejandro followed the investigators into the ruins."
-        },
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "04051"
+          "card": "06059"
         }
       ]
     },
     {
-      "id": "ichtaca_is_wary",
+      "id": "cats_collected_their_tribute",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "ichtaca_is_wary",
-          "text": "Ichtaca is wary of the investigators."
+          "id": "cats_collected_their_tribute",
+          "text": "the cats collected their tribute from the Zoogs."
         }
       ]
     },
+
     {
-      "id": "alejandro_remained_at_camp",
-      "text": "In your Campaign Log, record that <i>Alejandro chose to remain at camp</i>. Do not add Alejandro Vela to any investigator’s deck.",
+      "id": "parleyed_with_zoogs",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "alejandro_remained_at_camp",
-          "text": "Alejandro chose to remain at camp."
+          "id": "parleyed_with_zoogs",
+          "text": "the investigators parleyed with the Zoogs."
         }
       ]
-    },
-    {
-      "id": "cleared_path_to_temple",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "cleared_path_to_temple",
-          "text": "the investigators cleared a path to the Eztli ruins."
-        }
-      ]
-    },
-    {
-      "id": "check_final_act",
-      "text": "Which of the following was true?",
-      "type": "input",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "act_1_or_2",
-            "text": "It was Act 1 or 2 when the scenario ended",
-            "steps": ["ichtaca_observed_progress", "alejandro_followed_to_ruins"]
-          },
-          {
-            "id": "fought_ichtaca",
-            "text": "“You fought with Ichtaca”",
-            "steps": ["ichtaca_is_wary", "alejandro_followed_to_ruins"]
-          },
-          {
-            "id": "talked_to_ichtaca",
-            "text": "“Ichtaca is leading the way”",
-            "steps": ["earned_ichtacas_trust", "alejandro_remained_at_camp"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "record_vengeance",
-      "text": "For each vengeance point in the victory display, record one tally mark under “Yig’s Fury”in your Campaign Log. Beware the anger of the Father of Serpents, as his fury will haunt you in the future.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Vengeance points in the victory display:",
-        "delta": true,
-        "effects": [
-          {
-            "type": "campaign_log_count",
-            "section": "yigs_fury",
-            "operation": "add_input"
-          }
-        ]
-      }
     },
     {
       "id": "earn_xp",
@@ -15184,29 +15333,6 @@
           {
             "type": "earn_xp",
             "investigator": "all"
-          }
-        ]
-      }
-    },
-    {
-      "id": "check_investigators_poisoned",
-      "text": "Did any investigator gain the Poisoned weakness?",
-      "type": "input",
-      "input": {
-        "type": "investigator_choice",
-        "investigator": "all",
-        "source": "scenario",
-        "choices": [
-          {
-            "id": "poisoned",
-            "text": "Poisoned",
-            "effects": [
-              {
-                "type": "add_card",
-                "investigator": "$input_value",
-                "card": "04102"
-              }
-            ]
           }
         ]
       }
@@ -15267,27 +15393,123 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "title": "No resolution was reached\n(each investigator was defeated)",
       "investigator_status": [
-        "resigned",
         "eliminated",
         "physical",
         "mental"
       ],
-      "text": "<right><fancy>Wednesday, July 1st, 1925</fancy></right>\nI still have no idea how we made it back to camp alive.\nThe jungle was more perilous than we could have possibly imagined. This may read like the ravings of a lunatic, but I cannot explain it any other way. Being lost in the jungle was no picnic, but that was the least of our worries. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate, hunting us relentlessly.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he was more disturbed than fascinated. I suppose he has a right to be incredulous. Nothing about this expedition makes sense.\nThe serpent creatures chased us for what seemed like days. Finally we were able to find our way back to camp, but the price was steep. We had lost all progress we had made, and many of us were injured or afflicted by serpent venom. We have no choice but to send runners to the nearest city for additional supplies and to wait and recover from our wounds.",
-      "steps": ["wait_for_additional_supplies", "check_final_act", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+      "text": "You are nudged into consciousness by an old, scarred cat. “Hey. You all right, human?”\nI’m dreaming, you remember, and suddenly the talking cat doesn’t seem quite as weird. Exhausted, you manage to rise to your feet, brushing off the dirt caked on your clothing. “You’re lucky you weren’t harmed before we arrived,” a human voice calls out to you. It belongs to a blond-haired man in a brown traveling coat, who leans against a nearby tree. “These woods are not forgiving to the faint of heart.” The scarred cat walks to the man’s side, and the man leans over to pet its back.\nYou ask the man where you are and how he came to this place, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your ordeals.” He turns to the cat and utters a word in an odd language—a password of sorts, you suspect—but the cat simply wanders off toward a hedge, where you see several other cats banded together. “Do it yerself,” it replies.\n“Don’t mind the cats,” the man says to you quietly as the cats depart. “They are useful allies, but also independent creatures with no need for you or me. When we reach Ulthar, you may get the chance to meet others of their kind. But first things first.” Together, you leave the eaves of the enchanted forest behind.",
+      "steps": ["saved_by_randolph_carter", "gain_randolph_carter", "earn_xp"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
-      "steps": ["cleared_path_to_temple", "alejandro_remained_at_camp", "earned_ichtacas_trust", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+      "text": "The creatures chitter among themselves, and after a moment, a dozen of them retreat in the direction of the great tree beyond the beaten path. They return shortly afterward carrying a variety of grouse, quail, and pheasants in their mouths. You’re almost certain now that you are going crazy. And yet, the spectacle continues. The creatures timidly drop their “tribute” of birds in front of the cats and quietly depart. “My apologies on behalf of the Zoogs,” the man says as he approaches. “They are curious creatures, and not usually so…agitated. It is good that we showed up when we did.” The leader of the cats jumps on a tree stump and adds, “Yes, yes. Them vile Zoogs have done their part, now let’s do ours and leave this forsaken place. What say yeh?”\nYou cannot contain your excitement. Zoogs, talking cats—everything you have read about is real. You begin to ask the man more about this world, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your travels.” He turns to the old, scarred cat and utters a word in an odd language—a password of sorts, you suspect—and the cat replies with a quick nod. The rest of the cats, tribute in mouth, take a protective circular formation around you, and together you escape from the eaves of the enchanted forest.",
+      "steps": ["cats_collected_their_tribute", "gain_randolph_carter", "earn_xp"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
-      "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+      "text": "You hold a hand up to the new visitors, believing that you can defuse this situation on your own. Had you known these rodent-like creatures were intelligent all along, you might have tried to communicate with them much earlier. You inform them that you are just travelers in this faraway land and that you simply wish to pass through peacefully. The creatures chitter among themselves for a moment: “They are kind!” “They are not with the black cat after all!” “Summon the Council of Sages!” After a short while, several more of them appear, each with withering grey fur and a frail, thin body. The eldest one peeks behind you and states that they will aid you if you get the cats to leave.\nSomehow, you contain your disbelief and politely ask the cats to come back another time. “All right,” the scarred cat replies, “but you ain’t seen the last of us.” The cats retreat to the edge of the woods, though their human companion stays behind with you. Once the cats are out of earshot, one of the elders offers you a gourd of what appears to be fermented tree sap, which you accept graciously.\n“It is the wine of the moon-tree,” the man behind you explains quietly, stepping forward. “The Zoogs do not give such gifts lightly. They are curious creatures, but not without wisdom. Now that you may speak freely with their elders, try asking them a question. They know more of the dealings of this land than you might think.”\nYou describe the author Virgil Gray and ask the Zoogs if they have seen a man fitting that description pass through these woods. You add that he would have walked this path many times. A hush falls over the Zoogs, and some of them immediately depart into the deep foliage. “We have met this human,” one of the elders replies with a flutter just louder than a whisper. “He often comes this way. He is kind but foolish. Take the road to Ulthar. You may meet him.” Then it adds with a low growl: “…but beware the cat that follows him. All cats are liars, but the black cat especially.” You thank the ancient Zoog for its wisdom and depart, led by the blond man and his feline escort. The cats eye you suspiciously after your discussion with the Zoogs. The man breaks the tension. “If you are heading to Ulthar to find this friend of yours, allow me to guide you there. It is a safe place, relatively speaking. There you may recover from your travels.”\nZoogs. Talking cats. This can’t all be a figment of your imagination. Somehow, you can see a layer of truth beneath all of this absurdity. For better or for worse, the Zoog council has confirmed the reality of your situation: the Dreamlands are real, and Virgil Gray is here.",
+      "steps": ["parleyed_with_zoogs", "gain_randolph_carter", "earn_xp"]
+    }
+  ]
+}
+,
+{
+  "id": "black_cat",
+  "scenario_name": "The Black Cat",
+  "full_name": "Interlude I: The Black Cat",
+  "type": "interlude",
+  "setup": [
+    "black_cat_1",
+    "black_cat_choice",
+    "black_cat_3"
+  ],
+  "steps": [
+    {
+      "id": "black_cat_1",
+      "type": "story",
+      "text": "<i>Following scenario 1–A, the dreamers travel beyond the Enchanted Woods…</i>\nAs you travel out of the Enchanted Woods, you pass through rolling green meadows under a bright-blue, cloudless sky. You speak with the blond-haired man—who introduces himself as Randolph Carter— for several hours along your journey south. You pass through a town Randolph calls Nir and over a stone bridge spanning a wide river. Since the man seems friendly and knowledgeable about both your world and this one, you explain to him your situation: that you had followed the writings of a man named Virgil Gray to reach this strange land, in order to see for yourself the truth of his story. “There is a place in Ulthar where you may yet meet this man for yourself,” Randolph responds. “When we reach Ulthar, I will show you.”\nThe town of Ulthar is not quite what you had imagined. The border of the town is marked by a cobblestone road separating its quaint cottages from the rolling green meadows beyond. Inside the town, narrow cobbled streets are filled almost to capacity with cats of all kinds and colors, which part as you approach. Old peaked roofs and overhanging upper stories arch over the hilly streets; the entire village seems a haphazard cluster of homes and old-fashioned businesses. As you reach the town square near the center of the village, Randolph stops and addresses you with a youthful smile. “Welcome to Ulthar,” he proclaims. “As I mentioned before, you are quite safe here. There is but one paramount law to keep in mind as you traverse this place: in the town of Ulthar, no one may kill a cat.” Given how utterly packed the streets are with cats, you wonder aloud if this is indeed a town run by cats. “Not quite,” Randolph replies, pondering your words, “though I suppose one might call it the center of cat society here in the Dreamlands. The reason for that law’s existence is a story for another time. First, come—I have a feeling we’ll find this ‘Virgil’ fellow you speak of at Einar’s.”\nRandolph leads you through the town square, which is surrounded by buildings adorned with cat motifs in the form of statues, signs, and even stained-glass windows. You eventually arrive at one such building bearing a sign that reads “Einar’s Place.” Inside is a medieval-style tavern filled with long wooden tables. You spot several patrons and three times as many cats. One such patron at the wooden counter feeds one of the cats small strips of dried meat. He is a handsome man in his early thirties, with short dark hair, a strong jaw, and sharp cheekbones. You recognize him instantly as the writer Virgil Gray. In the back of your mind, you wonder if this chance meeting is merely an act of fortune or something preordained, for good or for ill.\nRegardless, you approach the man and introduce yourself, along with Randolph. Virgil shakes your hand and Randolph’s with a joyful smile. “Well met, fellow dreamers!” the writer says, a hint of boyish excitement in his voice. “It is wonderful to meet more fellow believers. I had become so sick and tired of reading about my supposed ‘illness’ in the papers.”\nYou nod your head in agreement and inform Virgil that you intend to find some proof of this discovery to bring back to the waking world. “Don’t you think I tried that?” he replies, stymied. “Sadly, it is impossible for one who is asleep to bring anything from this realm into the real world. This is all imagination, you see. Ideas, concepts, fantasies. You cannot hold a thought in your hands, can you?”\nRandolph interjects. “There is a place within the Dreamlands that may hold the proof you seek. I have seen it in my dreams. I visited there three times, each time just a fleeting moment before I was snatched away by the rising sun…but try as I might, I cannot find the way again. I have spent many nights searching.”\n“Oh?” Virgil asks, intrigued. “And what is this place?”\n“It is a marvelous city,” he describes, his eyes aglow with wonder, “golden and lovely like nothing I have seen before or since. A city beyond the peaks of the unknown mountain Kadath, where no one has ever set foot before. There, veiled within the clouds and crowned by stars, lies the onyx castle of the Great Ones.”\nVirgil idly pets the cat on the countertop next to him as he is absorbed by Randolph’s tale. It is a slender creature with lustrous black fur, dark as the void of space itself. “Then we must find this place! Even if it does not have the proof we seek, it sounds like the adventure of a lifetime. Enough to fill a hundred pages, or more!”\nYou tell Virgil and Randolph that before you commit to such an adventure, you must return to the waking world and tell your companions about your experiences. Just then, another voice, cryptic and quiet, chimes: “Oh, you can’t wake up. The eye is upon you now.”\nYou and the others spin your heads around, searching for the source of the voice. The barkeeper? Another patron? Then Virgil’s black cat stretches and sits up, its piercing yellow eyes reflecting the light of the sun through the window outside. “I have waited a long time for you to seek Kadath,” it says.\n“You can talk?” Virgil says, nearly toppling over his stool as he jumps in surprise.\n“I’m a cat, you dolt. Of course I can talk,” the black cat replies, licking its paw out of boredom. “You have met a thousand cats from Ulthar, and now you are surprised?”\n“But…I thought…” Virgil wipes his brow with his palm.\n“Never mind him,” the black cat says, addressing you directly. “I assure you, you cannot cross back into the waking world until you find Kadath. It is your only way out. In the meantime, I will return and tell your companions about the quest ahead of you.” It hops off of the countertop and walks confidently toward the exit. “Though I imagine their task will be even more arduous…”"
+    },
+    {
+      "id": "black_cat_choice",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "black_cat_sent_news",
+            "text": "Tell your companions of your quest, your plight, and your  peril. The black cat will return to you once this message is delivered. This may put an undue burden on your companions.",
+            "steps": ["black_cat_sent_news"]
+          },
+          {
+            "id": "black_cat_shared_knowledge",
+            "text": "Tell your companions about your new friends and about the Dreamlands.",
+            "steps": ["black_cat_shared_knowledge"]
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "Tell your companions that they are in danger, and that you are safe. The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
+            "steps": ["black_cat_warned_the_others"]
+          },
+          {
+            "id": "threaten_black_cat",
+            "text": "You don’t trust this creature one bit. You threaten the black cat, warning it not to approach your friends under any circumstance. The black cat yawns and vanishes out the door.",
+            "steps": ["threaten_black_cat"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "black_cat_sent_news",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "black_cat_sent_news",
+          "text": "the black cat delivered news of your plight."
+        }
+      ]
+    },
+    {
+      "id": "black_cat_shared_knowledge",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "black_cat_shared_knowledge",
+          "text": "the black cat shared knowledge of the Dreamlands."
+        }
+      ]
+    },
+    {
+      "id": "black_cat_warned_the_others",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "black_cat_warned_the_others",
+          "text": "the black cat warned the others."
+        }
+      ]
+    },
+    {
+      "id": "threaten_black_cat",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "threaten_black_cat",
+          "text": "okay, fine, have it your way then."
+        }
+      ]
+    },
+    {
+      "id": "black_cat_3",
+      "type": "story",
+      "text": "<i>Following scenario 1–B, the investigators are confronted outside St. Mary’s Hospital…</i>\n“…You must be their friends,” the enigmatic voice says from above. To your surprise, the quiet voice belongs not to a person, but to a black cat that lounges lazily across a tree branch hanging over the path outside the hospital. “Oh, pick your jaws up off the ground and listen.” The cat rises and leaps onto the top of a nearby fence, walking along it with the kind of grace only cats possess.\n“It is one of the cats of Earth’s Dreamlands,” Randolph proclaims, his voice tinged with merriment, like he was meeting an old friend for the first time in ages. “How long it has been since I have spoken with one of your kind!”\nThe cat’s piercing yellow eyes glare at Randolph for a moment before it returns its gaze to you. “…Sure. In any event, I bear a message from your dreaming friends.”"
     }
   ]
 }
@@ -15305,6 +15527,678 @@
       "id": "intro",
       "type": "story",
       "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+    }
+  ]
+}
+,
+{
+  "id": "the_search_for_kadath",
+  "scenario_name": "The Search for Kadath",
+  "full_name": "Scenario II–A: The Search for Kadath",
+  "setup": [
+    "intro_1",
+    "check_black_cat_at_side",
+    "check_luke_robinson",
+    "check_zoogs",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_locations",
+    "set_aside_cards",
+    "spawn_vooniths",
+    "take_virgil_gray",
+    "encounter_deck",
+    "locations_rule",
+    "veiled_rule",
+    "enemies_swarming_victory_rule",
+    "stop_rule",
+    "oriab_setup",
+    "oriab_xp",
+    "oriab_locations",
+    "oriab_enemies",
+    "oriab_act",
+    "minar_setup",
+    "minar_xp",
+    "minar_locations",
+    "minar_enemies",
+    "minar_act",
+    "forbidden_lands_setup",
+    "forbidden_lands_xp",
+    "forbidden_lands_locations",
+    "forbidden_lands_enemies",
+    "forbidden_lands_more_enemies",
+    "forbidden_lands_act",
+    "timeless_realm_setup",
+    "timeless_realm_xp",
+    "timeless_realm_locations",
+    "timeless_realm_encounter_deck",
+    "timeless_realm_enemies",
+    "timeless_realm_act",
+    "$choose_resolution"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": " You stay the night at Einar’s Place. Your rest is anything but peaceful. Even if one could sleep within a dream, you certainly do not. Your mind teems with anxiety over the quest looming ahead. You reflect on the black cat’s warning about danger in the waking world, and you wonder about the others who have followed Virgil Gray down the steps of slumber and through the Enchanted Woods. Are they here now, too? Perhaps if you find this castle and return with proof of the Dreamlands, you can save everyone: yourself, your friends, and the other dreamers as well."
+    },
+    {
+      "id": "check_black_cat_at_side",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_at_side",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_2"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_luke_robinson",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "investigator",
+        "investigator_data": "code",
+        "options": [
+          {
+            "condition": "06004",
+            "steps": ["intro_3"]
+          }
+        ],
+        "defaultOption": {
+          "steps": ["intro_4"]
+        }
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "When day breaks and light peeks through the curtains of your room, you notice a cat-shaped silhouette sitting in front of the window. As your vision adjusts, you are transfixed by its piercing yellow eyes, bright as the dawn light. You recognize the shape as Virgil’s talking cat. You ask the black cat how long it has been sitting there.\n“Long enough to know you are neither waking nor asleep,” it replies paradoxically.\nThe nature of this world still confounds you. Can one even sleep in the Dreamlands? If so, where would their minds go? Curious, you pose this question to the cat.\n“Those here in their physical bodies can, but you are something else entirely. Now, never mind all that. On to business.” The black cat leaps onto your bed. “I gave your friends the warning you wanted me to pass along. They are preparing to enter the Dreamlands as well, it seems. In the meantime, I will stay with you. Somebody has to watch over you and my pet human, anyway.”"
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "In the morning, you find Virgil and Randolph talking in the town square outside of Einar’s Place. You still aren’t quite sure what to think of either of them, but you have a good sense of where you should go next. After all, this is not your first excursion into the fabled land of dreams. Addressing Randolph, you suggest talking to the high priest Atal in the nearby Temple of the Elder Ones. It is a name you heard the last time you visited the city of Ulthar in your sleep, though until now you had no reason to seek the priest’s advice. Randolph gives you a startled glance that transforms quickly into a smirk.\n“How curious,” he says, “I was about to suggest the same. Atal is wise beyond all our measure. He may know where to find the place we seek.”\nVirgil, eager to embark on this adventure, claps his hands. “Well, what are we waiting for? This way, my friends!”\nYou nod and head for the temple, a circular tower of ivoried stone crowning the highest hill in town. A small army of cats patrols its walls. The cat at the head of the formation is none other than the old cat with the scar you encountered in the woods earlier. He steps forward to bar your entry and regards your party with great acrimony.\n“Hello again,” the old cat says with a sharp tone. “I suppose yeh want me to step aside.”"
+    },
+    {
+      "id": "check_zoogs",
+      "text": "<i>If the investigators parleyed with the Zoogs</i>, or <i>if the investigators were saved by Randolph Carter</i>.",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "count": 1,
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "parleyed_with_zoogs",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "saved_by_randolph_carter",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_5", "choose_temple"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_cats_collected_their_tribute"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_cats_collected_their_tribute",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "cats_collected_their_tribute",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_6", "intro_9", "one_evidence_of_kadath", "check_parleyed_with_zoogs"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "The next morning, you find Virgil and Randolph talking in the town square outside of Einar’s Place. Though you aren’t quite sure what to think of either of them just yet, you know that both of them are well versed in the lay of this strange land. You ask them about your next move. “We should speak to the high priest Atal in the Temple of the Elder Ones,” Randolph suggests. “He is wise beyond all our measure and may know where to find the place we seek.” You wonder aloud how far the temple is from here.\n“Not far at all,” Randolph replies. “It stands atop the highest hill within Ulthar. Come, I will lead the way.” With Randolph taking the lead, you make your way to the Temple of the Elder Ones, a circular tower of ivoried stone protected by a small army of cats. The cat at the head of the formation is none other than the old cat with the scar you encountered in the woods earlier. He steps forward to bar your entry and regards your party with great acrimony.\n“Hello again,” the old cat says with a sharp tone. “I suppose yeh want me to step aside.”"
+    },
+    {
+      "id": "intro_5",
+      "type": "story",
+      "text": "“Well, too bad,” the cat says, tail stiff and straight. More cats flank you from the sides, several hissing loudly. Their fur puffs up, and their eyes flare with anger. “It’s our duty to guard this place from impetuous outsiders like yerself. Yeh ain’t wanted here.”\n“Be reasonable,” Randolph implores. “We are only trying to speak with Atal. We mean no harm.”\n“Yeh can mean one thing and do another.” The scarred cat paces. “Now get outta here and don’t come back.”"
+    },
+    {
+      "id": "choose_temple",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "leave_empty_handed",
+            "text": "<i>Leave empty-handed,</i>",
+            "steps": ["intro_7"]
+          },
+          {
+            "id": "forced_way_into_temple",
+            "text": "<i>Force your way into the temple.</i>",
+            "steps": ["intro_8", "forced_way_into_temple", "intro_9", "one_evidence_of_kadath", "check_parleyed_with_zoogs"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_6",
+      "type": "story",
+      "text": "You tell the cat that you are merely here to speak with Atal, and that you mean no harm. “Ah, no worries, human,” the cat says with a gaping yawn—the kind only a cat can perform and still look regal in the act. “You don’t seem the type to make trouble. ’Sides, I ain’t goin’ nowhere.” You see a small lump in front of the cat: a bloodied, half-eaten pheasant. You resist the urge to turn up your nose and count yourself lucky you are on this cat’s good side. “Go on in,” he says, then licks his chops as he prepares to finish his meal."
+    },
+    {
+      "id": "intro_7",
+      "type": "story",
+      "text": "Resigned, you leave the temple on the hilltop behind. “I suppose we shall have to make do without Atal’s wisdom,” Randolph says with a sigh. “In any event, it is likely our destination is far from here—perhaps on another continent altogether. We will need to secure passage by sea. I suggest we travel south, to the port city of Dylath-Leen. We can figure out our next step from there.” You nod and take one last look at the stone temple, wondering at the knowledge you may have left behind."
+    },
+    {
+      "id": "intro_8",
+      "type": "story",
+      "text": "You inform the cat you are entering the temple one way or another, and that a simple cat will not stand in your way. “Wanna bet?” he growls, lowering his body and preparing to pounce. Noticing the commotion, several cats guarding the temple surround you. You don’t wish to harm these cats, but you won’t let them block you from your objective, either. Nodding to your companions, you make a mad dash for the temple gates. A storm of hisses and angry screeches erupts all around you as the cats mount a desperate defense. A wall of tiny claws and teeth meets you, but you push through, defiant. You slam the stone door shut behind you and hear the old cat yelling from the other side: “Fine then, human! See your priest! But do not think this transgression will be forgiven!”"
+    },
+    {
+      "id": "forced_way_into_temple",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "forced_way_into_temple",
+          "text": "the investigators forced their way into the temple."
+        }
+      ]
+    },
+    {
+      "id": "intro_9",
+      "type": "story",
+      "text": "At the top of the temple, seated on an ivory dais, the high priest Atal awaits you. He is a frail, wiry man with a long, wispy black beard, caved-in cheeks, and the pale, milky eyes of one afflicted by blindness. “Do not let your eyes deceive you,” Randolph whispers as you seat yourselves in front of the dais. “Atal is over three centuries old, but his memory is sharp as a tack.”\nYou ask the priest about your quest and about your destination: the castle Randolph described from his dreams. “You speak of the resting place of the Great Ones, high above unknown Kadath. Even I know not its true location. And that is all well and good, for the fruits of attempting to ascend to such a place would be bitter indeed. My companion Barzai once scaled a peak only a fraction as sacred, and he was never seen nor heard from again. The gods of Kadath may seem powerless, but they are protected by the Other Gods from the Outside, whom it is better not to discuss. It would be wiser to let all the gods alone and leave this folly behind.”\nAtal’s use of the word “gods” has you curious. You wonder aloud what kind of god might exist in a place like this.\nThe priest shakes his head. “They are not our gods, but the gods of Earth, for this land is but a reflection of yours.”\nYou attempt to pry deeper into Atal’s wisdom with your questioning, but his advice does not budge. “I have already said more than I should,” he insists. “Please, for your sake, pursue this madness no further.”"
+    },
+    {
+      "id": "one_evidence_of_kadath",
+      "text": "In your Campaign Log, next to “Evidence of Kadath,” record 1 tally mark.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "evidence_of_kadath",
+          "operation": "add",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "check_parleyed_with_zoogs",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "parleyed_with_zoogs",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_10", "one_evidence_of_kadath_and_2_xp"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_cats_or_randolph"]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "check_cats_or_randolph",
+      "type": "branch",
+      "text": "<i>If the cats collected their tribute from the Zoogs</i>, or <i>if the investigators were saved by Randolph Carter</i>.",
+      "condition": {
+        "type": "multi",
+        "count": 1,
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "cats_collected_their_tribute",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "saved_by_randolph_carter",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["intro_11"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_10",
+      "type": "story",
+      "text": "A flash of inspiration strikes you, and you remember the moon-wine given to you by the Zoogs in the Enchanted Woods. You offer some to Atal, and he accepts graciously. You pretend to partake of the wine yourself while offering draught after draught to the priest. Eventually, Atal’s lips loosen, and he speaks of forbidden things he would never discuss were it not for the wine. He tells of an image carved into the face of the mountain Ngranek on the isle of Oriab—the likeness of the gods, or so he claims. He tells of the pillars of Kadatheron wherein the history of Earth’s Dreamlands is recorded. He tells of those slain by the hordes of Night itself and interred in the crypts of Zulan-Thek, the city of the dead. He tells of a baleful star above a forgotten city that appears on no map. “If you absolutely must seek Kadath in the Cold Wastes,” he says drowsily, “there is a city along the coast to the south: Dylath-Leen. You may secure passage there.”"
+    },
+    {
+      "id": "one_evidence_of_kadath_and_2_xp",
+      "text": "In your Campaign Log, next to “Evidence of Kadath,” record 1 tally mark. Each investigator earns 2 experience.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "evidence_of_kadath",
+          "operation": "add",
+          "value": 1
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 2
+        }
+      ]
+    },
+    {
+      "id": "intro_11",
+      "type": "story",
+      "text": "Atal refuses to give you any more advice, so you decide to leave the temple on the hilltop behind. “We have learned much, but we are still no closer to knowing the location of Kadath,” Randolph says with a sigh. “It is likely that our destination is far from here—perhaps on another continent altogether. We shall need to secure passage by sea if we are to travel such great distances. I suggest we begin by traveling south, to the port city of Dylath-Leen. We can figure out our next step from there.”"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_search_for_kadath",
+        "agents_of_atlach_nacha",
+        "corsairs",
+        "dreamlands",
+        "whispers_of_hypnos",
+        "zoogs"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put Ulthar, Skai River, and Dylath-Leen into play.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play in Ulthar."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_locations",
+      "text": "Set each other location aside, out of play."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following enemies aside, out of play: Cats of Ulthar, Stalking Manticore, The Crawling Mist, Horde of Night, Beings of Ib, both copies of Tenebrous Nightgaunt, both copies of Corsair of Leng, and all 3 copies of Priest of a Thousand Masks."
+    },
+    {
+      "id": "spawn_vooniths",
+      "text": "Search the gathered encounter cards for 1 copy of Pack of Vooniths and spawn it at Skai River. If there are 3 or 4 investigators in the game, search the gathered encounter cards for another copy of Pack of Vooniths and spawn it at DylathLeen, as well."
+    },
+    {
+      "id": "take_virgil_gray",
+      "text": "The lead investigator takes control of the Virgil Gray <i>(Writer of Strange Tales)</i> story asset and puts him into play."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+    },
+    {
+      "id": "locations_rule",
+      "type": "rule_reminder",
+      "title": "Locations in The Search for Kadath",
+      "text": "Each of the locations in this scenario have no unrevealed side, and therefore they enter play with their revealed side faceup. Instead of an unrevealed side, these locations have story cards on their reverse sides. Whenever a location in this scenario enters play (including during setup), place clues on that location equal to its clue value, as normal.\nLocations can be flipped over in one of two ways. Most are flipped over by the veiled keyword, as described below. Some locations are instead flipped over by an ability printed on that location.\n<b>Once a location has been flipped over and its story text has been read, it cannot be flipped over again for the remainder of the game unless otherwise noted.</b>"
+    },
+    {
+      "id": "veiled_rule",
+      "type": "rule_reminder",
+      "title": "Veiled",
+      "text": "Many of the locations in this scenario have the veiled keyword. This keyword represents that a location contains unknown lore or assistance that must be sought out by the investigators before it can be of use to them.\nAs a [fast] ability, an investigator at a veiled location with no clues on it may flip that location over, resolving the text on its other side."
+    },
+    {
+      "id": "enemies_swarming_victory_rule",
+      "type": "rule_reminder",
+      "title": "Enemies with Swarming and Victory",
+      "text": "When <b>Victory X</b> appears on a swarming enemy, this text is only active for the host card. Swarm cards cannot enter the victory display and are never worth victory points."
+    },
+    {
+      "id": "stop_rule",
+      "type": "rule_reminder",
+      "title": "Stop!",
+      "text": "At this point, you are ready to begin playing The Search for Kadath. Ignore the four additional sets of setup instructions for now. You will be instructed to resolve them at a later point during the scenario."
+    },
+    {
+      "id": "oriab_setup",
+      "type": "rule_reminder",
+      "title": "Oriab Setup",
+      "text": "Each investigator loses each of their clues."
+    },
+    {
+      "id": "oriab_xp",
+      "text": "Remove each location in play from the game (or place it in the victory display if it has Victory X and no clues on it). Each enemy and attachment at those locations is discarded. Investigators are not defeated during this process."
+    },
+    {
+      "id": "oriab_locations",
+      "text": "Put each set-aside [[Oriab]] location into play (Baharna, Mt. Ngranek, and Nameless Ruins).",
+      "bullets": [
+        {
+          "text": "Place each investigator at Baharna."
+        }
+      ]
+    },
+    {
+      "id": "oriab_enemies",
+      "text": "Search the encounter deck for 1 copy of Nightriders and spawn it at Mt. Ngranek. If there are 3 or 4 investigators in the game, search the encounter deck for another copy of Nightriders and spawn it at Nameless Ruins, as well. Shuffle the encounter deck."
+    },
+    {
+      "id": "oriab_act",
+      "text": "Advance to Act 2a—“The Isle of Oriab.”"
+    },
+    {
+      "id": "minar_setup",
+      "type": "rule_reminder",
+      "title": "Minar Setup",
+      "text": "Each investigator loses each of their clues."
+    },
+    {
+      "id": "minar_xp",
+      "text": "Remove each location in play from the game (or place it in the victory display if it has Victory X and no clues on it). Each enemy and attachment at those locations is discarded. Investigators are not defeated during this process."
+    },
+    {
+      "id": "minar_locations",
+      "text": "Put each set-aside [[Mnar]] location into play (Kadatheron, Sarnath, and Ruins of Ib).",
+      "bullets": [
+        {
+          "text": "Place each investigator at Kadatheron."
+        }
+      ]
+    },
+    {
+      "id": "minar_enemies",
+      "text": "Spawn the set-aside Beings of Ib enemy at Ruins of Ib."
+    },
+    {
+      "id": "minar_act",
+      "text": "Advance to Act 2a—“The Doom That Came Before.”"
+    },
+    {
+      "id": "forbidden_lands_setup",
+      "type": "rule_reminder",
+      "title": "Forbidden Lands Setup",
+      "text": "Each investigator loses each of their clues."
+    },
+    {
+      "id": "forbidden_lands_xp",
+      "text": "Remove each location in play from the game (or place it in the victory display if it has Victory X and no clues on it). Each enemy and attachment at those locations is discarded. Investigators are not defeated during this process."
+    },
+    {
+      "id": "forbidden_lands_locations",
+      "text": "Put each set-aside [[Forbidden]] location into play (Ilek-Vad, Forbidden Lands, and Zulan-Thek).",
+      "bullets": [
+        {
+          "text": "Place each investigator at Ilek-Vad."
+        }
+      ]
+    },
+    {
+      "id": "forbidden_lands_enemies",
+      "text": "Spawn the set-aside Stalking Manticore enemy at Forbidden Lands."
+    },
+    {
+      "id": "forbidden_lands_more_enemies",
+      "text": "Spawn the set-aside Horde of Night enemy at Zulan-Thek."
+    },
+    {
+      "id": "forbidden_lands_act",
+      "text": "Advance to Act 2a—“Seek Out the Night.”"
+    },
+    {
+      "id": "timeless_realm_setup",
+      "type": "rule_reminder",
+      "title": "Timeless Realm Setup",
+      "text": "Each investigator loses each of their clues."
+    },
+    {
+      "id": "timeless_realm_xp",
+      "text": "Remove each location in play from the game (or place it in the victory display if it has Victory X and no clues on it). Each enemy and attachment at those locations is discarded. Investigators are not defeated during this process."
+    },
+    {
+      "id": "timeless_realm_locations",
+      "text": "Put Celephaïs, Serannian, and Hazuth-Kleg into play.",
+      "bullets": [
+        {
+          "text": "Place each investigator at Celephaïs."
+        }
+      ]
+    },
+    {
+      "id": "timeless_realm_encounter_deck",
+      "text": "Shuffle the set-aside The Crawling Mist into the encounter deck."
+    },
+    {
+      "id": "timeless_realm_enemies",
+      "text": "Search the encounter deck for 1 copy of Priest of a Thousand Masks and spawn it at Hazuth-Kleg. If there are 3 or 4 investigators in the game, search the encounter deck for another copy of Priest of a Thousand Masks and spawn it at Celephaïs, as well. Shuffle the encounter deck."
+    },
+    {
+      "id": "timeless_realm_act",
+      "text": "Advance to Act 2a—“The King’s Decree.”"
+    },
+
+
+
+
+    {
+      "id": "virgil_was_captured",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "virgil_was_captured",
+          "text": "Virgil was captured."
+        }
+      ]
+    },
+    {
+      "id": "randolph_eluded_capture",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "randolph_eluded_capture",
+          "text": "Randolph eluded capture."
+        }
+      ]
+    },
+    {
+      "id": "randolph_was_captured",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "randolph_was_captured",
+          "text": "Randolph was captured."
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_evidence_of_kadath",
+      "text": "For each Sign of the Gods the investigators unveiled during this scenario, record 1 tally mark next to “Evidence of Kadath” in your Campaign Log.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Sign of the Gods:",
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "evidence_of_kadath",
+            "operation": "add_input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_transfer_randolph_to_resigned_investigator",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "has_card",
+        "investigator": "defeated",
+        "card": "06059",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["transfer_or_lose_randolph_carter"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "transfer_or_lose_randolph_carter",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "investigator_status",
+        "investigator": "resigned",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["transfer_randolph_carter"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "capture_defeated_investigators",
+      "text": "In your Campaign Log, each defeated investigator records <i>(your investigator name) was captured</i>.",
+      "effects": [
+        {
+          "type": "campaign_log_cards",
+          "section": "campaign_notes",
+          "id": "captured",
+          "cards": "$defeated_investigators",
+          "text": "#name# was captured."
+        }
+      ]
+    },
+    {
+      "id": "transfer_randolph_carter",
+      "text": "Because a defeated investigator’s deck contains Randolph Carter and at least 1 investigator resigned, give ownership of Randolph Carter to an investigator who resigned.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "06059"
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "06059"
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "investigator_defeat",
+      "title": "Investigator Defeat",
+      "text": "You wake to find yourself restrained by thick cords of hempen rope, lying on top of hard, moist wood. The floor rocks steadily back and forth, and you hear ocean waves crashing against the walls. You are captive aboard some kind of galley. But why?",
+      "steps": [
+        "capture_defeated_investigators",
+        "maybe_transfer_randolph_to_resigned_investigator"
+      ]
+    },
+    {
+      "id": "no_resolution_resigned",
+      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "no_resolution_defeated",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_2"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "You have ventured far and wide, from the quaint cobbled villages of the kingdom of the Skai to wondrous lands you could have never in a hundred years imagined. You learned much of the Dreamlands and of the gods who dwell atop unknown Kadath. Though you are closer to your goal, you still don’t know its precise location. In the meantime, your quest grows deadlier with each passing day. No matter where you go, foul, nightmarish creatures pursue you across land and sea. Winged beasts with no faces, horned Corsairs wielding razor-sharp cutlasses and commanding great black galleys—the agents of your demise bear many shapes. You decide to return to your ship, safe from the many dangers of the Dreamlands…or so you thought. Unfortunately, your ship is no safe haven. When you return, the crew and captain are nowhere to be found. There are no signs of struggle, but Virgil, who returned to the ship earlier to prepare for your next departure, is also missing.\n“I fear the worst,” Randolph mourns. “If those fiendish Corsairs captured them, they are in dire trouble. They are agents of the Other Gods from the Outside, whose soul and messenger is the crawling chaos <smallcaps><b>Nyarlathotep</b></smallcaps>.” The mere utterance of the name causes you to shudder, though you do not know why. You ask where they might have been taken. As if discussing any other port of call, he replies: “The beasts who command their black galleys sail from the Moon. If we are to rescue Virgil and our other companions, that is where we must go.”",
+      "steps": ["earn_xp", "record_evidence_of_kadath", "virgil_was_captured", "randolph_eluded_capture"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "As you examine your surroundings, you notice that your other companions, including Virgil and Randolph, have been captured as well. They are unconscious at the moment, but maybe when they awaken you can formulate a plan to free yourselves. After all, despite this setback, you have learned much of the Dreamlands and of the gods who dwell atop unknown Kadath. Though you still don’t know its precise location, if you are able to escape from this wretched galley, perhaps there is hope for your quest. You swallow a ball of despair and hope that this is not the end of your journey…",
+      "steps": ["earn_xp", "record_evidence_of_kadath", "virgil_was_captured", "randolph_was_captured"]
     }
   ]
 }
@@ -15439,7 +16333,7 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each of the remaining locations aside, out of play"
+      "text": "Set each of the remaining locations aside, out of play."
     },
     {
       "id": "set_aside_cards",
@@ -15608,7 +16502,7 @@
   ],
   "resolutions": [
     {
-      "id": "no_resolution",
+      "id": "no_resolution_resigned",
       "title": "No resolution was reached\n(at least one investigator resigned)",
       "investigator_status": [
         "resigned",
@@ -15620,7 +16514,7 @@
       "steps": ["record_steps_of_the_bridge", "doctors_fate_unknown", "randolph_escaped_hospital_alone", "resolution_5"]
     },
     {
-      "id": "no_resolution",
+      "id": "no_resolution_defeated",
       "title": "No resolution was reached\n(each investigator was defeated)",
       "investigator_status": [
         "eliminated",
