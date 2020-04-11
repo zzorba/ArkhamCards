@@ -5,6 +5,8 @@ import FastImage from 'react-native-fast-image';
 import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
 import Card from 'data/Card';
 import { CARD_RATIO } from 'styles/sizes';
+import space from 'styles/space';
+
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 
 const SIDE_PADDING = 16;
@@ -62,6 +64,7 @@ export default class LocationCard extends React.Component<Props> {
       <View
         style={[
           styles.card,
+          space.paddingXs,
           { width: cardWidth, height: cardHeight },
         ]}
       >
@@ -73,7 +76,6 @@ export default class LocationCard extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   card: {
-    padding: 4,
     borderRadius: 4,
   },
   verticalCardImage: {

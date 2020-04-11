@@ -1,10 +1,8 @@
 import React, { ReactNode } from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 import AccordionItem from './AccordionItem';
+import space from 'styles/space';
 
 interface Props {
   label: string;
@@ -69,7 +67,7 @@ export default class SliderChooser extends React.Component<Props> {
           <MultiSlider
             values={values}
             labels={values}
-            containerStyle={styles.slider}
+            containerStyle={space.marginSideL}
             min={0}
             max={max}
             onValuesChange={this._onChange}
@@ -83,10 +81,3 @@ export default class SliderChooser extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  slider: {
-    marginLeft: 32,
-    marginRight: 32,
-  },
-});

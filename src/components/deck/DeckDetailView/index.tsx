@@ -14,7 +14,6 @@ import {
   AlertButton,
   ActivityIndicator,
   BackHandler,
-  Button,
   Linking,
   Platform,
   ScrollView,
@@ -35,6 +34,7 @@ import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
 
+import BasicButton from 'components/core/BasicButton';
 import withLoginState, { LoginStateProps } from 'components/core/withLoginState';
 import withTraumaDialog, { TraumaProps } from 'components/campaign/withTraumaDialog';
 import Dialog from 'components/core/Dialog';
@@ -1167,19 +1167,15 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     return (
       <>
-        <View style={styles.button}>
-          <Button
-            title={t`Save Changes`}
-            onPress={this._savePressed}
-          />
-        </View>
-        <View style={styles.button}>
-          <Button
-            title={t`Discard Changes`}
-            color={COLORS.red}
-            onPress={this._clearEdits}
-          />
-        </View>
+        <BasicButton
+          title={t`Save Changes`}
+          onPress={this._savePressed}
+        />
+        <BasicButton
+          title={t`Discard Changes`}
+          color={COLORS.red}
+          onPress={this._clearEdits}
+        />
       </>
     );
   }
@@ -1810,9 +1806,6 @@ const styles = StyleSheet.create({
   },
   errorMargin: {
     padding: m,
-  },
-  button: {
-    margin: 8,
   },
   menu: {
     borderLeftWidth: 2,

@@ -22,6 +22,7 @@ import DeckValidation from 'lib/DeckValidation';
 import { showCardCharts, showDrawSimulator } from 'components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
 import { FACTION_DARK_GRADIENTS } from 'constants';
+import { m, s, xs } from 'styles/space';
 
 const SHOW_CHARTS_BUTTON = true;
 
@@ -189,9 +190,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingTop: 4,
-    paddingLeft: 8,
-    paddingRight: 4,
+    paddingTop: s,
+    paddingLeft: m,
+    paddingRight: s,
   },
   left: {
     flexDirection: 'column',
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   button: {
-    padding: 4,
+    padding: xs,
     width: BUTTON_SIZE,
   },
   whiteText: {

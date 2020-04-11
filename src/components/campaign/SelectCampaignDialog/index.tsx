@@ -1,7 +1,6 @@
 import React from 'react';
 import { map, partition } from 'lodash';
 import {
-  Button,
   ScrollView,
   StyleSheet,
   View,
@@ -10,6 +9,7 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
 import { CUSTOM, GUIDED_CAMPAIGNS, COMING_SOON_GUIDED_CAMPAIGNS, ALL_CAMPAIGNS, TDEA, TDEB, CampaignCycleCode } from 'actions/types';
 import CycleItem from './CycleItem';
@@ -17,7 +17,6 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { campaignName } from '../constants';
 import { NavigationProps } from 'components/nav/types';
 import { getPacksInCollection, AppState } from 'reducers';
-import { s } from 'styles/space';
 
 export interface SelectCampagaignProps {
   guided: boolean;
@@ -105,7 +104,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         />
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
         <View style={styles.button}>
-          <Button onPress={this._editCollection} title={t`Edit Collection`} />
+          <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
         { guided && (
           <>
@@ -133,8 +132,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   button: {
-    padding: s,
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
   },
 });

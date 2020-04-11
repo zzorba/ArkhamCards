@@ -13,6 +13,7 @@ import { EncounterSetsStep } from 'data/scenario/types';
 import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
+import space from 'styles/space';
 
 interface OwnProps {
   step: EncounterSetsStep;
@@ -48,9 +49,9 @@ class EncounterSetStepComponent extends React.Component<Props> {
     return (
       <SetupStepWrapper bulletType={step.bullet_type}>
         <CampaignGuideTextComponent text={text} />
-        <View style={styles.iconPile}>
+        <View style={[styles.iconPile, space.marginTopM, space.marginBottomL]}>
           { map(encounterSets, set => !!set && (
-            <View style={styles.icon} key={set.code}>
+            <View style={[space.marginSideS, space.marginBottomM]} key={set.code}>
               <EncounterIcon
                 encounter_code={set.code}
                 size={48}
@@ -103,12 +104,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-    marginTop: 16,
-    marginRight: 32,
-  },
-  icon: {
-    marginLeft: 8,
-    marginRight: 8,
-    marginBottom: 16,
   },
 });

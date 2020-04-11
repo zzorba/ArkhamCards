@@ -13,6 +13,7 @@ import { Pack } from 'actions/types';
 import EncounterIcon from 'icons/EncounterIcon';
 import Switch from 'components/core/Switch';
 import { PackCardsProps } from 'components/settings/PackCardsView';
+import { s } from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -169,14 +170,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   icon: {
-    marginLeft: 8,
+    marginLeft: s,
     width: 36,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
-    marginLeft: 8,
+    marginLeft: s,
     fontSize: 20,
     fontFamily: 'System',
     flex: 1,

@@ -7,7 +7,7 @@ import {
 
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
-import { isBig } from 'styles/space';
+import space, { isBig } from 'styles/space';
 
 interface Props {
   title: string;
@@ -21,7 +21,7 @@ export function rowHeaderHeight(fontScale: number) {
 export default function CardSectionHeader({ title, bold, fontScale }: Props) {
   return (
     <View style={[styles.row, { height: rowHeaderHeight(fontScale) }, bold ? styles.boldRow : {}]}>
-      <Text style={[typography.text, styles.headerText]}>
+      <Text style={[typography.text, styles.headerText, space.marginLeftS]}>
         { title }
       </Text>
     </View>
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
   },
   boldRow: {
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     borderColor: '#bdbdbd',
   },
   headerText: {
-    marginLeft: 8,
     color: COLORS.black,
   },
 });

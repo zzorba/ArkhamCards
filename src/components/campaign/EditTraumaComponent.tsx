@@ -1,16 +1,14 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
+import { t } from 'ttag';
 
 import { DEFAULT_TRAUMA_DATA } from 'lib/trauma';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import NavButton from 'components/core/NavButton';
 import LabeledTextBox from 'components/core/LabeledTextBox';
-import { t } from 'ttag';
 import { InvestigatorData, Trauma } from 'actions/types';
 import Card from 'data/Card';
+import space from 'styles/space';
 
 interface Props {
   investigator: Card;
@@ -63,7 +61,7 @@ export default class EditTraumaComponent extends React.Component<Props> {
       );
     }
     return (
-      <View style={styles.traumaBlock}>
+      <View style={space.marginBottomXs}>
         <LabeledTextBox
           column
           label={t`Trauma`}
@@ -74,9 +72,3 @@ export default class EditTraumaComponent extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  traumaBlock: {
-    marginBottom: 4,
-  },
-});

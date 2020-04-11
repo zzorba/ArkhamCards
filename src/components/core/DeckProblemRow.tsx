@@ -10,6 +10,7 @@ import { t } from 'ttag';
 import { DeckProblem, DeckProblemType } from 'actions/types';
 import AppIcon from 'icons/AppIcon';
 import typography, { SMALL_FONT_SIZE } from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   problem: DeckProblem;
@@ -36,7 +37,7 @@ export default function DeckProblemRow({
   };
   return (
     <View style={styles.problemRow}>
-      <View style={styles.warningIcon}>
+      <View style={space.marginRightXs}>
         <AppIcon
           name="warning"
           size={SMALL_FONT_SIZE * (noFontScaling ? 1 : fontScale)}
@@ -64,8 +65,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  warningIcon: {
-    marginRight: 4,
   },
 });

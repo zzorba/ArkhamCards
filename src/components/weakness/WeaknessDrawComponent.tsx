@@ -23,6 +23,8 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import CardDetailComponent from 'components/card/CardDetailView/CardDetailComponent';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from 'styles/sizes';
 import typography from 'styles/typography';
+import space, { s, xs } from 'styles/space';
+
 const PLAYER_BACK = require('../../../assets/player-back.png');
 
 const PADDING = 32;
@@ -400,13 +402,13 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     }
     if (selectedTraits.length) {
       return (
-        <Text style={[typography.text, styles.errorText]}>
+        <Text style={[typography.text, space.marginTopS]}>
           { t`There are no weaknesses that match these trait filters left in the set.\n\nPlease adjust the trait filter.` }
         </Text>
       );
     }
     return (
-      <Text style={[typography.text, styles.errorText]}>
+      <Text style={[typography.text, space.marginTopS]}>
         { t`All weaknesses have been drawn.` }
       </Text>
     );
@@ -437,7 +439,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   toggleRow: {
-    marginTop: 4,
+    marginTop: xs,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
@@ -454,7 +456,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 8,
+    paddingTop: s,
   },
   verticalCardImage: {
     width: '100%',
@@ -470,8 +472,5 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 16,
     overflow: 'hidden',
-  },
-  errorText: {
-    marginTop: 8,
   },
 });

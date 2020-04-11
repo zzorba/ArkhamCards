@@ -22,6 +22,7 @@ import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
 import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from 'reducers';
 import { COLORS } from 'styles/colors';
+import { s, xs } from 'styles/space';
 
 export interface MyDecksSelectorProps {
   campaignId: number;
@@ -421,10 +422,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 4,
-    paddingBottom: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingTop: xs,
+    paddingBottom: xs,
+    paddingLeft: s,
+    paddingRight: s,
   },
   searchOption: {
     fontFamily: 'System',

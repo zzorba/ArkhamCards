@@ -4,6 +4,7 @@ import {
   Text,
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
+import { m } from 'styles/space';
 
 export default function HrTagNode(
   node: Node,
@@ -19,7 +20,7 @@ export default function HrTagNode(
 
 const styles = StyleSheet.create({
   hrTag: {
-    marginTop: 16,
-    marginBottom: 16,
+    marginTop: m,
+    marginBottom: m,
   },
 });

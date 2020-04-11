@@ -1,8 +1,8 @@
 import { Platform, StyleSheet } from 'react-native';
 
-import { isBig } from './space';
+import { isBig, m, s } from './space';
 import { COLORS } from './colors';
-const sizeScale = isBig ? 1.2 : 1;
+const sizeScale = 1;
 
 export const SMALL_FONT_SIZE = 12 * sizeScale;
 
@@ -16,8 +16,8 @@ export default StyleSheet.create({
   },
   cardText: {
     fontFamily: 'System',
-    fontSize: isBig ? 24 : 14,
-    lineHeight: isBig ? 28 : 18,
+    fontSize: isBig ? 18 : 14,
+    lineHeight: isBig ? 22 : 18,
   },
   text: {
     fontFamily: 'System',
@@ -92,6 +92,9 @@ export default StyleSheet.create({
   right: {
     textAlign: 'right',
   },
+  strike: {
+    textDecorationLine: 'line-through',
+  },
   center: {
     textAlign: 'center',
   },
@@ -103,15 +106,15 @@ export default StyleSheet.create({
   },
   settingsLabel: {
     flex: 1,
-    paddingLeft: 16,
-    paddingRight: 8,
+    paddingLeft: m,
+    paddingRight: s,
     fontSize: 16,
   },
   settingsValue: {
     color: COLORS.darkGray,
     fontSize: 14,
     flex: 0,
-    paddingLeft: 8,
-    paddingRight: 16,
+    paddingLeft: s,
+    paddingRight: m,
   },
 });

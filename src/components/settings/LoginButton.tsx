@@ -2,13 +2,13 @@ import React from 'react';
 import {
   ActivityIndicator,
   Alert,
-  Button,
   StyleSheet,
   View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
+import BasicButton from 'components/core/BasicButton';
 import SettingsItem from './SettingsItem';
 import { t } from 'ttag';
 import { logout, login } from 'actions';
@@ -66,7 +66,7 @@ class LoginButton extends React.Component<Props> {
         <SettingsItem onPress={this._logOutPressed} text={t`Sign out of ArkhamDB`} />
       ) : (
         <View style={styles.wrapper}>
-          <Button onPress={this._logOutPressed} title={t`Sign out of ArkhamDB`} />
+          <BasicButton onPress={this._logOutPressed} title={t`Sign out of ArkhamDB`} />
         </View>
       );
     }
@@ -75,7 +75,7 @@ class LoginButton extends React.Component<Props> {
       <SettingsItem onPress={login} text={t`Sign in to ArkhamDB`} />
     ) : (
       <View style={styles.wrapper}>
-        <Button onPress={login} title={t`Sign in to ArkhamDB`} />
+        <BasicButton onPress={login} title={t`Sign in to ArkhamDB`} />
       </View>
     );
   }
@@ -106,6 +106,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     minHeight: 40,
-    padding: 4,
   },
 });

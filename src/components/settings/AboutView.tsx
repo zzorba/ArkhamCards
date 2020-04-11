@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 export default class AboutView extends React.Component {
   _octopusLink = () => {
@@ -17,7 +18,7 @@ export default class AboutView extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={space.paddingM}>
         <Text style={typography.text}>
           The information presented in this app about Arkham Horror: The Card
           Game, both literal and graphical, is copyrighted by Fantasy Flight
@@ -62,9 +63,6 @@ export default class AboutView extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
   footer: {
     height: 100,
   },

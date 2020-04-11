@@ -4,12 +4,13 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-
 import { t } from 'ttag';
+
 import SliderChooser from './SliderChooser';
 import ToggleFilter from 'components/core/ToggleFilter';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import { COLORS } from 'styles/colors';
+import space from 'styles/space';
 
 class CardEnemyFilterView extends React.Component<FilterProps> {
   static get options() {
@@ -46,7 +47,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
     } = this.props;
 
     return (
-      <View style={styles.toggleRow}>
+      <View style={[styles.toggleRow, space.marginTopXs]}>
         <View style={styles.toggleColumn}>
           <ToggleFilter
             label={t`Elite`}
@@ -251,7 +252,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   toggleRow: {
-    marginTop: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },

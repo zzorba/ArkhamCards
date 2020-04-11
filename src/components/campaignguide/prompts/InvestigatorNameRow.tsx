@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { FACTION_COLORS } from 'constants';
 import Card from 'data/Card';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   investigator: Card;
@@ -13,7 +14,12 @@ interface Props {
 export default function InvestigatorNameRow({ investigator, detail }: Props) {
   const backgroundColor = FACTION_COLORS[investigator.factionCode()];
   return (
-    <View style={[styles.investigatorRow, { backgroundColor }]}>
+    <View style={[
+      styles.investigatorRow,
+      space.paddingS,
+      space.paddingLeftM,
+      { backgroundColor },
+    ]}>
       <View>
         <Text style={[typography.text, styles.investigatorText]}>
           { investigator.name }
@@ -36,8 +42,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   investigatorRow: {
-    padding: 8,
-    paddingLeft: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

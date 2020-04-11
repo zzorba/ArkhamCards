@@ -8,7 +8,7 @@ import Card from 'data/Card';
 import FactionGradient from 'components/core/FactionGradient';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import typography from 'styles/typography';
-import { s, iconSizeScale } from 'styles/space';
+import { s, xs, iconSizeScale } from 'styles/space';
 
 interface Props {
   name: string;
@@ -54,10 +54,10 @@ export default function DeckTitleBarComponent({
 const styles = StyleSheet.create({
   titleBar: {
     width: '100%',
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingLeft: s,
+    paddingRight: s,
+    paddingTop: xs,
+    paddingBottom: xs,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

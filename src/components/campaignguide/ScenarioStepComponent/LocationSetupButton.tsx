@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { LocationSetupProps } from '../LocationSetupView';
 import { LocationSetupStep } from 'data/scenario/types';
 
@@ -40,15 +40,7 @@ export default class LocationSetupButton extends React.Component<Props> {
   render() {
     const { step } = this.props;
     return (
-      <View style={styles.buttonWrapper}>
-        <Button title={step.title} onPress={this._press} />
-      </View>
+      <BasicButton title={step.title} onPress={this._press} />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  buttonWrapper: {
-    padding: 8,
-  },
-});

@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import Switch from 'components/core/Switch';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   code: string;
@@ -40,6 +41,8 @@ export default class CheckListItemComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.row,
+        space.paddingS,
+        space.paddingSideM,
         color ? { backgroundColor: color.tint } : {},
       ]}>
         <Text style={[
@@ -74,9 +77,6 @@ const styles = StyleSheet.create({
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
-    padding: 8,
-    paddingLeft: 16,
-    paddingRight: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -15,6 +15,7 @@ import { ScenarioProps } from 'components/campaignguide/ScenarioView';
 import { ProcessedScenario } from 'data/scenario';
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
+import space, { s } from 'styles/space';
 
 interface State {
   currentStep: string;
@@ -146,7 +147,7 @@ export default class ScenarioButton extends React.Component<Props, State> {
         disabled={(scenario.type === 'locked' || scenario.type === 'skipped')}
       >
         <View style={styles.wrapper}>
-          <View style={styles.icon}>
+          <View style={[space.marginLeftS, space.marginRightM]}>
             { this.renderIcon() }
           </View>
           { this.renderContent() }
@@ -158,18 +159,14 @@ export default class ScenarioButton extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: s,
+    paddingBottom: s,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
   skipped: {
     textDecorationLine: 'line-through',
-  },
-  icon: {
-    marginLeft: 8,
-    marginRight: 16,
   },
   playable: {
     color: COLORS.lightBlue,

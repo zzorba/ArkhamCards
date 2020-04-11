@@ -1,17 +1,18 @@
 import React from 'react';
 import { map } from 'lodash';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { Campaign } from 'actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import NavButton from 'components/core/NavButton';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   fontScale: number;
@@ -57,12 +58,17 @@ export default class ScenarioSection extends React.Component<Props> {
     return (
       <React.Fragment>
         <NavButton fontScale={fontScale} onPress={viewScenarios} noBorder>
-          <View style={[styles.section, styles.padding, styles.marginTop, styles.marginBottom]}>
+          <View style={[
+            styles.section,
+            space.paddingBottomS,
+            space.paddingSideS,
+            space.marginTopS,
+            space.marginBottomS]}>
             <CampaignSummaryComponent campaign={campaign} />
           </View>
         </NavButton>
-        <View style={[styles.button, styles.bottomBorder]}>
-          <Button
+        <View style={styles.bottomBorder}>
+          <BasicButton
             title={t`Record Scenario Results`}
             onPress={addScenarioResult}
           />
@@ -73,24 +79,10 @@ export default class ScenarioSection extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  padding: {
-    paddingLeft: 8,
-    paddingRight: 8,
-  },
   section: {
-    paddingBottom: 8,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-  },
-  marginTop: {
-    marginTop: 8,
-  },
-  marginBottom: {
-    marginBottom: 8,
-  },
-  button: {
-    padding: 8,
   },
   bottomBorder: {
     borderBottomWidth: 1,

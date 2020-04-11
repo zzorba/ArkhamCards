@@ -13,6 +13,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   loading?: boolean;
@@ -37,9 +38,9 @@ export default class SettingsItem extends React.Component<Props> {
     const { loading, navigation, text, onPress } = this.props;
     if (loading) {
       return (
-        <View style={styles.wrapper}>
-          <Text style={[typography.text, styles.text]}>{ text }</Text>
-          <ActivityIndicator style={styles.spinner} size="small" animating />
+        <View style={[styles.wrapper, space.paddingXs]}>
+          <Text style={[typography.text, space.marginLeftS]}>{ text }</Text>
+          <ActivityIndicator style={[styles.spinner, space.marginLeftM]} size="small" animating />
         </View>
       );
 
@@ -57,16 +58,11 @@ export default class SettingsItem extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   wrapper: {
-    padding: 4,
     flexDirection: 'row',
     alignItems: 'center',
     height: 40,
   },
-  text: {
-    marginLeft: 8,
-  },
   spinner: {
     height: 20,
-    marginLeft: 16,
   },
 });

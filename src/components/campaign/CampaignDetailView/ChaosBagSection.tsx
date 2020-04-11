@@ -1,16 +1,17 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-
 import { t } from 'ttag';
+
+import BasicButton from 'components/core/BasicButton';
 import { ChaosBag } from 'constants';
 import NavButton from 'components/core/NavButton';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   fontScale: number;
@@ -33,11 +34,11 @@ export default function ChaosBagSection(props: Props) {
         onPress={showChaosBag}
         noBorder
       >
-        <View style={styles.padding}>
+        <View style={space.paddingS}>
           <Text style={typography.text}>
             { t`Chaos Bag` }
           </Text>
-          <View style={styles.marginTop}>
+          <View style={space.marginTopS}>
             <ChaosBagLine
               fontScale={fontScale}
               chaosBag={chaosBag}
@@ -45,8 +46,8 @@ export default function ChaosBagSection(props: Props) {
           </View>
         </View>
       </NavButton>
-      <View style={[styles.button, styles.bottomBorder]}>
-        <Button
+      <View style={styles.bottomBorder}>
+        <BasicButton
           title={t`Odds Calculator`}
           onPress={showOddsCalculator}
         />
@@ -56,15 +57,6 @@ export default function ChaosBagSection(props: Props) {
 }
 
 const styles = StyleSheet.create({
-  padding: {
-    padding: 8,
-  },
-  marginTop: {
-    marginTop: 8,
-  },
-  button: {
-    padding: 8,
-  },
   bottomBorder: {
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',

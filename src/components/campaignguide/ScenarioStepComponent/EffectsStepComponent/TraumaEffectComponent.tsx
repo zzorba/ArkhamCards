@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
@@ -9,6 +9,7 @@ import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
 import Card from 'data/Card';
 import { TraumaEffect } from 'data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
+import space from 'styles/space';
 
 interface Props {
   id: string;
@@ -60,7 +61,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       }
       return (
         <>
-          <View style={border ? styles.borderPadding : undefined}>
+          <View style={border ? space.paddingSideL : undefined}>
             <SetupStepWrapper bulletType="small">
               <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
             </SetupStepWrapper>
@@ -83,7 +84,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
               ],
             }}
           />
-          { !!border && <View style={styles.footerPadding} /> }
+          { !!border && <View style={space.marginBottomL} /> }
         </>
       );
     }
@@ -112,13 +113,3 @@ export default class TraumaEffectComponent extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  borderPadding: {
-    paddingLeft: 32,
-    paddingRight: 32,
-  },
-  footerPadding: {
-    paddingBottom: 32,
-  },
-});

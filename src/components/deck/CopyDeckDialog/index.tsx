@@ -18,8 +18,8 @@ import { Deck } from 'actions/types';
 import { parseDeck } from 'lib/parseDeck';
 import { getDeck, getBaseDeck, getLatestDeck, AppState } from 'reducers';
 import typography from 'styles/typography';
-import space, { s } from 'styles/space';
 import { COLORS } from 'styles/colors';
+import space from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -307,7 +307,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
         ) }
 
         { !!error && (
-          <Text style={[typography.text, typography.center, styles.error]}>
+          <Text style={[typography.text, typography.center, styles.error, space.marginBottomS]}>
             { error }
           </Text>
         ) }
@@ -337,7 +337,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
         viewRef={viewRef}
       >
         <DialogComponent.Description
-          style={[styles.descriptionMargin, saving ? typography.center : typography.left]}
+          style={[space.marginSideS, saving ? typography.center : typography.left]}
         >
           { saving ?
             t`Saving` :
@@ -400,12 +400,7 @@ const styles = StyleSheet.create({
   spinner: {
     height: 80,
   },
-  descriptionMargin: {
-    marginLeft: 8,
-    marginRight: 8,
-  },
   error: {
     color: 'red',
-    marginBottom: s,
   },
 });

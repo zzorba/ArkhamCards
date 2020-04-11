@@ -9,6 +9,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 import typography from 'styles/typography';
+import space, { s, xs } from 'styles/space';
 
 interface Props {
   text?: string;
@@ -82,7 +83,7 @@ export default function Button({
           grow ? { width: '100%' } : {},
         ]}>
           { !!icon && (
-            <View style={[styles.icon, text ? { marginRight: padding / 2 } : {}]}>
+            <View style={[space.marginSideXs, text ? { marginRight: padding / 2 } : {}]}>
               { icon }
             </View>
           ) }
@@ -103,38 +104,25 @@ export default function Button({
   );
 }
 
-interface Styles {
-  icon: ViewStyle;
-  leftContainer: ViewStyle;
-  rightContainer: ViewStyle;
-  centerContainer: ViewStyle;
-  button: ViewStyle;
-  row: ViewStyle;
-}
-
-const styles = StyleSheet.create<Styles>({
-  icon: {
-    marginRight: 4,
-    marginLeft: 4,
-  },
+const styles = StyleSheet.create({
   leftContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    marginLeft: 8,
+    marginLeft: s,
   },
   rightContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginRight: 8,
+    marginRight: s,
   },
   centerContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   button: {
-    paddingTop: 8,
-    paddingBottom: 8,
-    borderRadius: 4,
+    paddingTop: s,
+    paddingBottom: s,
+    borderRadius: xs,
   },
   row: {
     flexDirection: 'row',

@@ -8,7 +8,7 @@ import {
 
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from 'constants';
-import { iconSizeScale } from 'styles/space';
+import space, { iconSizeScale } from 'styles/space';
 import typography from 'styles/typography';
 
 interface Props {
@@ -21,7 +21,7 @@ export default function ChaosBagLine({ chaosBag, fontScale }: Props) {
     keys(chaosBag),
     (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token]);
   return (
-    <View style={styles.row}>
+    <View style={[styles.row, space.marginBottomXs]}>
       { map(bagKeys, (token: ChaosTokenType, tokenIdx: number) => (
         map(range(0, chaosBag[token] || 0), idx => {
           const isLast = (idx === ((chaosBag[token] || 0) - 1)) &&
@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 4,
   },
   commaView: {
     flexDirection: 'row',

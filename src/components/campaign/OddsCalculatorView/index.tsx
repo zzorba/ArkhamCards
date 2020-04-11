@@ -1,6 +1,6 @@
 import React from 'react';
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { CardResults, connectRealm } from 'react-native-realm';
 import { EventSubscription, Navigation } from 'react-native-navigation';
@@ -8,6 +8,7 @@ import { t } from 'ttag';
 import { Results } from 'realm';
 import LinearGradient from 'react-native-linear-gradient';
 
+import BasicButton from 'components/core/BasicButton';
 import InvestigatorOddsComponent from './InvestigatorOddsComponent';
 import SkillOddsRow from './SkillOddsRow';
 import VariableTokenInput from './VariableTokenInput';
@@ -388,11 +389,11 @@ class OddsCalculatorView extends React.Component<Props, State> {
             { !!scenarioText && (
               <CardTextComponent text={scenarioText} />
             ) }
-            <Button
-              title={t`Change Scenario`}
-              onPress={this._showScenarioDialog}
-            />
           </View>
+          <BasicButton
+            title={t`Change Scenario`}
+            onPress={this._showScenarioDialog}
+          />
         </View>
         { this.renderSpecialTokenInputs() }
         <View style={styles.sectionRow}>

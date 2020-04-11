@@ -21,7 +21,7 @@ import Switch from 'components/core/Switch';
 import { ShowTextEditDialog } from 'components/core/withDialogs';
 import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from 'reducers';
 import typography from 'styles/typography';
-
+import { s } from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -296,9 +296,9 @@ export default connect(mapStateToPropsFix, mapDispatchToProps)(
 
 const styles = StyleSheet.create({
   margin: {
-    marginLeft: 8,
-    marginRight: 8,
-    marginBottom: 8,
+    marginLeft: s,
+    marginRight: s,
+    marginBottom: s,
   },
   row: {
     flexDirection: 'row',

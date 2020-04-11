@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { filter, find, reverse, partition, sortBy, sumBy } from 'lodash';
 import { connect } from 'react-redux';
 import { ngettext, msgid } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import CardUpgradeOption from './CardUpgradeOption';
 import DeckProblemRow from 'components/core/DeckProblemRow';
 import CardDetailComponent from 'components/card/CardDetailView/CardDetailComponent';
@@ -14,7 +15,7 @@ import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
 import { COLORS } from 'styles/colors';
 import { NavigationProps } from 'components/nav/types';
-import { m, s } from 'styles/space';
+import { m, s, xs } from 'styles/space';
 import DeckNavFooter from '../../DeckNavFooter';
 import { parseDeck } from 'lib/parseDeck';
 import {
@@ -240,17 +241,15 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       <>
         { inCollection.map(card => this.renderCard(card)) }
         { nonCollection.length > 0 ? (
-          <View style={styles.button}>
-            <Button
-              key="non-collection"
-              title={ngettext(
-                msgid`Show ${nonCollection.length} Non-Collection Card`,
-                `Show ${nonCollection.length} Non-Collection Cards`,
-                nonCollection.length
-              )}
-              onPress={this._showNonCollection}
-            />
-          </View>
+          <BasicButton
+            key="non-collection"
+            title={ngettext(
+              msgid`Show ${nonCollection.length} Non-Collection Card`,
+              `Show ${nonCollection.length} Non-Collection Cards`,
+              nonCollection.length
+            )}
+            onPress={this._showNonCollection}
+          />
         ) : null }
       </>
     );
@@ -349,15 +348,12 @@ const styles = StyleSheet.create({
   },
   problemBox: {
     flex: 1,
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: xs,
+    paddingBottom: xs,
     paddingRight: s,
     paddingLeft: s,
   },
   footerPadding: {
     height: m,
-  },
-  button: {
-    padding: s,
   },
 });

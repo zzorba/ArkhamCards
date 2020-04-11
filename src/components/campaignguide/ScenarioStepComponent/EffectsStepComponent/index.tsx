@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { map } from 'lodash';
 
 import BorderWrapper from 'components/campaignguide/BorderWrapper';
@@ -13,6 +13,7 @@ import AddCardEffectComponent from './AddCardEffectComponent';
 import RemoveCardEffectComponent from './RemoveCardEffectComponent';
 import TraumaEffectComponent from './TraumaEffectComponent';
 import { EffectsStep, Effect } from 'data/scenario/types';
+import space from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -101,7 +102,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
         );
       case 'story_step': {
         return (
-          <View style={border ? styles.borderPadding : undefined}>
+          <View style={border ? space.paddingSideL : undefined}>
             <ScenarioGuideContext.Consumer>
               { ({ processedScenario, scenarioState }: ScenarioGuideContextType) => (
                 map(
@@ -160,10 +161,3 @@ export default class EffectsStepComponent extends React.Component<Props> {
     ));
   }
 }
-
-const styles = StyleSheet.create({
-  borderPadding: {
-    paddingLeft: 32,
-    paddingRight: 32,
-  },
-});

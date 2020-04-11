@@ -13,6 +13,7 @@ import InvestigatorImage from 'components/core/InvestigatorImage';
 import Card, { CardsMap } from 'data/Card';
 import { FACTION_LIGHT_GRADIENTS } from 'constants';
 import typography from 'styles/typography';
+import space, { xs } from 'styles/space';
 
 interface Props {
   investigator: Card;
@@ -74,7 +75,7 @@ export default class NewInvestigatorRow extends React.Component<Props> {
         colors={FACTION_LIGHT_GRADIENTS[investigator.factionCode()]}
         style={styles.row}
       >
-        <View style={styles.image}>
+        <View style={space.marginS}>
           <InvestigatorImage card={investigator} />
         </View>
         <View style={styles.titleColumn}>
@@ -110,16 +111,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'white',
   },
-  image: {
-    margin: 8,
-  },
   titleColumn: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    marginLeft: 5,
-    marginTop: 4,
-    marginBottom: 4,
+    marginLeft: xs,
+    marginTop: xs,
+    marginBottom: xs,
   },
 });

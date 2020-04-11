@@ -8,6 +8,7 @@ import {
 
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import typography from 'styles/typography';
+import { xs, s } from 'styles/space';
 
 interface Props {
   countChanged: (index: number, count: number) => void;
@@ -59,7 +60,10 @@ export default class EditCountComponent extends React.Component<Props, State> {
       count,
     } = this.state;
     return (
-      <View style={[styles.marginTop, isInvestigator ? {} : styles.container]}>
+      <View style={[
+        styles.marginTop,
+        isInvestigator ? {} : styles.container,
+      ]}>
         <View style={styles.row}>
           <View style={styles.textColumn}>
             <Text style={typography.small} ellipsizeMode="tail">
@@ -83,19 +87,19 @@ export default class EditCountComponent extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   marginTop: {
-    marginTop: 4,
+    marginTop: xs,
   },
   container: {
-    paddingTop: 8,
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingTop: s,
+    paddingLeft: s,
+    paddingRight: s,
   },
   margin: {
-    marginBottom: 4,
+    marginBottom: xs,
   },
   textColumn: {
     flex: 1,
-    marginRight: 8,
+    marginRight: s,
   },
   row: {
     alignSelf: 'stretch',

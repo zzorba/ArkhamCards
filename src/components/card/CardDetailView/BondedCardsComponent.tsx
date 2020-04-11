@@ -13,6 +13,7 @@ import { t } from 'ttag';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
+import { m, s } from 'styles/space';
 
 interface OwnProps {
   componentId?: string;
@@ -114,8 +115,8 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 24,
-    paddingLeft: 8,
+    marginTop: m + s,
+    paddingLeft: s,
     fontSize: 24,
     lineHeight: 32,
     fontWeight: '600',

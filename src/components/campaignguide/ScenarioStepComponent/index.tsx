@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
@@ -9,6 +8,7 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
@@ -24,6 +24,7 @@ import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from 'data/scenario/ScenarioStep';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
+import space, { m, s } from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -123,6 +124,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
                       <Text style={[
                         typography.bigGameFont,
                         styles.title,
+                        space.paddingTopL,
                         border ? typography.center : {},
                       ]}>
                         { step.step.title }
@@ -131,12 +133,10 @@ export default class ScenarioStepComponent extends React.Component<Props> {
                   ) }
                   { this.renderContent() }
                   { (step.step.id === '$proceed') && (
-                    <View style={styles.buttonWrapper}>
-                      <Button
-                        onPress={this._proceed}
-                        title={t`Done`}
-                      />
-                    </View>
+                    <BasicButton
+                      onPress={this._proceed}
+                      title={t`Done`}
+                    />
                   ) }
                 </ScenarioStepContext.Provider>
               );
@@ -149,15 +149,11 @@ export default class ScenarioStepComponent extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  buttonWrapper: {
-    padding: 8,
-  },
   title: {
     color: COLORS.scenarioGreen,
-    paddingTop: 32,
   },
   titleWrapper: {
-    marginLeft: 24,
-    marginRight: 24,
+    marginLeft: m + s,
+    marginRight: m + s,
   },
 });

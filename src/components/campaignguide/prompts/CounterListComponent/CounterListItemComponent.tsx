@@ -5,6 +5,7 @@ import { CustomColor } from 'components/campaignguide/prompts/types';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
+import { m, s, xs } from 'styles/space';
 
 interface Props {
   code: string;
@@ -82,16 +83,16 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   count: {
-    paddingLeft: 4,
-    paddingRight: 4,
+    paddingLeft: xs,
+    paddingRight: xs,
     minWidth: 40,
   },
   promptRow: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
-    padding: 16,
-    paddingTop: 8,
-    paddingBottom: 8,
+    padding: m,
+    paddingTop: s,
+    paddingBottom: s,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

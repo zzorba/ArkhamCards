@@ -1,7 +1,6 @@
 import React from 'react';
 import { throttle } from 'lodash';
 import {
-  Button,
   Platform,
   ScrollView,
   StyleSheet,
@@ -12,6 +11,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { CampaignNotes, SingleCampaign, ScenarioResult } from 'actions/types';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
@@ -26,6 +26,7 @@ import { addScenarioResult } from '../actions';
 import Card from 'data/Card';
 import { getCampaign, getLatestCampaignInvestigators, AppState } from 'reducers';
 import { COLORS } from 'styles/colors';
+import { m } from 'styles/space';
 
 export interface AddScenarioResultProps {
   id: number;
@@ -285,16 +286,14 @@ class AddScenarioResultView extends React.Component<Props, State> {
             <XpComponent xp={xp} onChange={this._xpChanged} />
           </View>
           { hasDecks && (
-            <View style={styles.button}>
-              <Button
-                title={t`Save and Upgrade Decks`}
-                onPress={this._saveAndUpgradeDecks}
-                disabled={!this.saveEnabled()}
-              />
-            </View>
+            <BasicButton
+              title={t`Save and Upgrade Decks`}
+              onPress={this._saveAndUpgradeDecks}
+              disabled={!this.saveEnabled()}
+            />
           ) }
-          <View style={[styles.button, styles.bottomBorder]}>
-            <Button
+          <View style={styles.bottomBorder}>
+            <BasicButton
               title={hasDecks ? t`Only Save` : t`Save`}
               onPress={this._saveAndDismiss}
               disabled={!this.saveEnabled()}
@@ -346,19 +345,16 @@ export default withPlayerCards<NavigationProps & AddScenarioResultProps>(
 );
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: m,
+    paddingBottom: m,
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
   footer: {
     height: 100,
   },
-  button: {
-    padding: 8,
-  },
   bottomBorder: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
   },
   flex: {

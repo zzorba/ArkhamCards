@@ -6,7 +6,7 @@ import {
 
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { ChaosTokenType } from 'constants';
-import { iconSizeScale } from 'styles/space';
+import space, { iconSizeScale } from 'styles/space';
 
 interface Props {
   id: ChaosTokenType;
@@ -23,11 +23,15 @@ export default function ChaosToken({ id, status, fontScale }: Props) {
   const SIZE = 36 * SCALE * iconSizeScale;
 
   return (
-    <View style={[styles.button, {
-      width: SIZE,
-      height: SIZE,
-      backgroundColor: color,
-    }]}>
+    <View style={[
+      styles.button,
+      space.marginRightS,
+      {
+        width: SIZE,
+        height: SIZE,
+        backgroundColor: color,
+      },
+    ]}>
       <ChaosTokenIcon icon={id} size={28 * SCALE * iconSizeScale} />
     </View>
   );
@@ -35,7 +39,6 @@ export default function ChaosToken({ id, status, fontScale }: Props) {
 
 const styles = StyleSheet.create({
   button: {
-    marginRight: 8,
     borderRadius: 6,
     flexDirection: 'row',
     justifyContent: 'center',

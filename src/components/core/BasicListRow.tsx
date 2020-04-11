@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import space from 'styles/space';
+
 interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
 
 export default function BasicListRow({ children }: Props) {
   return (
-    <View style={[styles.labeledRow, styles.border]}>
-      <View style={styles.row}>
+    <View style={[styles.labeledRow, space.paddingS, styles.border]}>
+      <View style={[styles.row, space.paddingSideS]}>
         { children }
       </View>
     </View>
@@ -19,7 +21,6 @@ export default function BasicListRow({ children }: Props) {
 const styles = StyleSheet.create({
   labeledRow: {
     flexDirection: 'column',
-    padding: 8,
   },
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
@@ -29,7 +30,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: 8,
-    paddingRight: 8,
   },
 });

@@ -9,6 +9,7 @@ import typography from 'styles/typography';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
+import space from 'styles/space';
 
 interface Props {
   campaign: Campaign;
@@ -40,7 +41,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
       const resolution = latestScenario.resolution && !campaign.guided ?
         `: ${latestScenario.resolution}` : '';
       return (
-        <View style={styles.marginTop}>
+        <View style={space.marginTopXs}>
           <Text style={typography.smallLabel}>
             { latestScenario.interlude ? t`LATEST INTERLUDE` : t`LATEST SCENARIO` }
           </Text>
@@ -51,7 +52,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
       );
     }
     return (
-      <View style={styles.marginTop}>
+      <View style={space.marginTopXs}>
         <Text style={typography.text}>
           { t`Not yet started` }
         </Text>
@@ -79,9 +80,6 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  marginTop: {
-    marginTop: 4,
-  },
   row: {
     flexDirection: 'row',
     width: '100%',

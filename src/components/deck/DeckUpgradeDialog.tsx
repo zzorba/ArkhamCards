@@ -25,6 +25,7 @@ import Card from 'data/Card';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from 'components/deck/actions';
 import { getDeck, getCampaign, getTabooSet, AppState } from 'reducers';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 export interface UpgradeDeckProps {
   id: number;
@@ -219,7 +220,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
 
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.headerText}>
+        <View style={space.paddingM}>
           <Text style={typography.text}>
             { t`Upgrading your deck allows changes and experience to be tracked over the course of a campaign.` }
           </Text>
@@ -289,8 +290,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: 'white',
-  },
-  headerText: {
-    padding: 16,
   },
 });

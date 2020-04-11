@@ -21,6 +21,7 @@ import NavButton from 'components/core/NavButton';
 import { CORE_FACTION_CODES, FactionCodeType } from 'constants';
 import { getAllPacks, AppState } from 'reducers';
 import { COLORS } from 'styles/colors';
+import space from 'styles/space';
 
 const CARD_FACTION_CODES: FactionCodeType[] = [
   ...CORE_FACTION_CODES,
@@ -581,8 +582,8 @@ class CardFilterView extends React.Component<Props, State> {
             fontScale={fontScale}
           />
         ) }
-        <View style={styles.toggleStack}>
-          <View style={styles.toggleRow}>
+        <View style={[styles.toggleStack, space.paddingBottomS]}>
+          <View style={[styles.toggleRow, space.marginTopXs]}>
             <View style={styles.toggleColumn}>
               <ToggleFilter
                 label={t`Fast`}
@@ -714,12 +715,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleStack: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
-    paddingBottom: 8,
   },
   toggleRow: {
-    marginTop: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },

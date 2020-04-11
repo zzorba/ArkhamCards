@@ -1,10 +1,9 @@
 import React from 'react';
 import {
-  Button,
-  StyleSheet,
   View,
 } from 'react-native';
 
+import BasicButton from 'components/core/BasicButton';
 import { isBig } from 'styles/space';
 
 export function rowNonCollectionHeight(fontScale: number) {
@@ -28,8 +27,8 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
       fontScale,
     } = this.props;
     return (
-      <View style={[styles.row, { height: rowNonCollectionHeight(fontScale) }]}>
-        <Button
+      <View style={{ height: rowNonCollectionHeight(fontScale) }}>
+        <BasicButton
           title={title}
           onPress={this._onPress}
         />
@@ -37,9 +36,3 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  row: {
-    padding: 8 * (isBig ? 1.2 : 1.0),
-  },
-});

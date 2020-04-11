@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import StepBorder from './StepBorder';
+import { l, m } from 'styles/space';
 
 interface Props {
   width: number;
@@ -30,11 +31,11 @@ export default function BorderWrapper({ border, children, width }: Props) {
 
 const styles = StyleSheet.create({
   innerWrapper: {
-    paddingBottom: 32,
+    paddingBottom: l,
   },
   wrapper: {
     position: 'relative',
-    marginTop: 16,
-    marginBottom: 16,
+    marginTop: m,
+    marginBottom: m,
   },
 });

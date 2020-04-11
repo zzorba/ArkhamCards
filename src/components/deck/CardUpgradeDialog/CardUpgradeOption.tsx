@@ -9,6 +9,7 @@ import { t } from 'ttag';
 
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import Card from 'data/Card';
+import space from 'styles/space';
 
 interface Props {
   card: Card;
@@ -43,7 +44,7 @@ export default class CardUpgradeOption extends React.Component<Props> {
     const level = card.xp || 0;
     return (
       <View>
-        <View style={styles.buttonsRow}>
+        <View style={[styles.buttonsRow, space.paddingSideS]}>
           <View style={styles.buttonLabel}>
             <Text style={styles.label}>
               { t`Level ${level}` }
@@ -71,8 +72,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingRight: 8,
-    paddingLeft: 8,
   },
   buttonLabel: {
     flex: 1,

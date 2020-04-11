@@ -16,7 +16,6 @@ import {
 import {
   ActivityIndicator,
   Animated,
-  Button,
   Keyboard,
   SectionList,
   StyleSheet,
@@ -24,8 +23,6 @@ import {
   View,
   NativeSyntheticEvent,
   NativeScrollEvent,
-  ViewStyle,
-  TextStyle,
   SectionListData,
 } from 'react-native';
 import Realm, { Results } from 'realm';
@@ -34,6 +31,7 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
 import CardSearchResult from '../CardSearchResult';
 import { rowHeight } from '../CardSearchResult/constants';
@@ -628,8 +626,8 @@ class CardResultList extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={[styles.sectionFooterButton, { height: rowNonCollectionHeight(fontScale) }]}>
-          <Button
+        <View style={{ height: rowNonCollectionHeight(fontScale) }}>
+          <BasicButton
             title={t`Edit Collection`}
             onPress={this._editCollectionSettings}
           />
@@ -717,12 +715,10 @@ class CardResultList extends React.Component<Props, State> {
     if (showSpoilerCards) {
       return (
         <View style={styles.footer}>
-          <View style={styles.button}>
-            <Button
-              onPress={this._editSpoilerSettings}
-              title={t`Edit Spoiler Settings`}
-            />
-          </View>
+          <BasicButton
+            onPress={this._editSpoilerSettings}
+            title={t`Edit Spoiler Settings`}
+          />
           { this.renderEmptyState() }
         </View>
       );
@@ -733,15 +729,11 @@ class CardResultList extends React.Component<Props, State> {
       spoilerCardsCount);
     return (
       <View style={styles.footer}>
-        <View style={styles.button}>
-          <Button onPress={this._enableSpoilers} title={spoilerCount} />
-        </View>
-        <View style={styles.button}>
-          <Button
-            onPress={this._editSpoilerSettings}
-            title={t`Edit Spoiler Settings`}
-          />
-        </View>
+        <BasicButton onPress={this._enableSpoilers} title={spoilerCount} />
+        <BasicButton
+          onPress={this._editSpoilerSettings}
+          title={t`Edit Spoiler Settings`}
+        />
         { this.renderEmptyState() }
       </View>
     );
@@ -885,15 +877,7 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
   })
 );
 
-interface Styles {
-  footer: ViewStyle;
-  loading: ViewStyle;
-  loadingText: TextStyle;
-  button: ViewStyle;
-  emptyText: TextStyle;
-  sectionFooterButton: ViewStyle;
-}
-const styles = StyleSheet.create<Styles>({
+const styles = StyleSheet.create({
   footer: {
     height: 300,
   },
@@ -910,17 +894,11 @@ const styles = StyleSheet.create<Styles>({
     paddingTop: m,
     paddingBottom: s,
   },
-  button: {
-    margin: s,
-  },
   emptyText: {
     padding: m,
     flexDirection: 'row',
     justifyContent: 'center',
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
-  },
-  sectionFooterButton: {
-    margin: 8,
   },
 });

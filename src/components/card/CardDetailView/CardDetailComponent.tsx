@@ -15,6 +15,7 @@ import Card from 'data/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
+import space, { m, s, xs } from 'styles/space';
 
 interface Props {
   componentId?: string;
@@ -78,7 +79,7 @@ export default class CardDetailComponent extends React.Component<Props> {
         <Text style={[typography.header, styles.sectionHeader]}>
           { t`Deckbuilding` }
         </Text>
-        <View style={styles.buttonContainer}>
+        <View style={[styles.buttonContainer, styles.buttonPadding]}>
           <Button
             onPress={this._showInvestigatorCards}
             text={t`Deckbuilding Cards`}
@@ -114,13 +115,13 @@ export default class CardDetailComponent extends React.Component<Props> {
     if (this.shouldBlur()) {
       return (
         <View key={card.code} style={[styles.viewContainer, { width }]}>
-          <Text style={styles.spoilerText}>
+          <Text style={[space.marginS]}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
-          <View style={styles.basicButtonContainer}>
+          <View style={[styles.basicButtonContainer, styles.buttonPadding]}>
             <BasicButton onPress={this._toggleShowSpoilers} title="Show card" />
           </View>
-          <View style={styles.basicButtonContainer}>
+          <View style={[styles.basicButtonContainer, styles.buttonPadding]}>
             <BasicButton onPress={this._editSpoilersPressed} title="Edit my spoiler settings" />
           </View>
         </View>
@@ -153,26 +154,22 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  buttonPadding: {
+    marginLeft: s,
+    marginTop: xs,
+    marginBottom: xs,
+  },
   buttonContainer: {
-    marginLeft: 8,
-    marginTop: 4,
-    marginBottom: 4,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
   basicButtonContainer: {
-    marginLeft: 8,
-    marginTop: 4,
-    marginBottom: 4,
     flexDirection: 'row',
     justifyContent: 'center',
   },
   sectionHeader: {
-    marginTop: 24,
-    paddingLeft: 8,
-  },
-  spoilerText: {
-    margin: 8,
+    marginTop: m + s,
+    paddingLeft: s,
   },
   investigatorContent: {
     width: '100%',

@@ -10,6 +10,7 @@ import FactionChart from './FactionChart';
 import CostChart from './CostChart';
 import SlotsChart from './SlotsChart';
 import SkillIconChart from './SkillIconChart';
+import space from 'styles/space';
 
 const INCLUDE_SLOTS_CHART = false;
 
@@ -29,7 +30,11 @@ class DeckChartsView extends React.Component<Props> {
       return null;
     }
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={[
+        styles.container,
+        space.paddingSideS,
+        space.paddingTopM,
+      ]}>
         <SkillIconChart parsedDeck={parsedDeck} width={width - 16} />
         <CostChart parsedDeck={parsedDeck} width={width - 16} />
         { INCLUDE_SLOTS_CHART && <SlotsChart parsedDeck={parsedDeck} width={width - 16} /> }
@@ -43,10 +48,7 @@ export default withDimensions(DeckChartsView);
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 16,
     paddingBottom: 64,
-    paddingLeft: 8,
-    paddingRight: 8,
     flexDirection: 'column',
   },
 });

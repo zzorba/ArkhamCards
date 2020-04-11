@@ -1,10 +1,11 @@
 import React from 'react';
-import { Alert, Button, StyleSheet, View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { forEach, keys, map } from 'lodash';
 import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import BasicButton from 'components/core/BasicButton';
 import { StringChoices, Slots, WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
 import { drawWeakness } from 'lib/weaknessHelper';
@@ -13,6 +14,7 @@ import InvestigatorButton from 'components/campaignguide/prompts/InvestigatorBut
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import space from 'styles/space';
 
 interface OwnProps {
   id: string;
@@ -124,13 +126,11 @@ class DrawRandomWeaknessComponent extends React.Component<Props, State> {
       return null;
     }
     return (
-      <View style={styles.buttonWrapper}>
-        <Button
-          disabled={keys(this.state.choices).length !== investigators.length}
-          onPress={this._save}
-          title={t`Proceed`}
-        />
-      </View>
+      <BasicButton
+        disabled={keys(this.state.choices).length !== investigators.length}
+        onPress={this._save}
+        title={t`Proceed`}
+      />
     );
   }
 
@@ -153,7 +153,7 @@ class DrawRandomWeaknessComponent extends React.Component<Props, State> {
               onPress={this._drawRandomWeakness}
               disabled={choice !== undefined}
               widget={(
-                <View style={styles.shuffleIcon}>
+                <View style={space.marginRightS}>
                   <MaterialCommunityIcons
                     name="shuffle-variant"
                     size={24}
@@ -173,12 +173,3 @@ class DrawRandomWeaknessComponent extends React.Component<Props, State> {
 export default withWeaknessCards<OwnProps>(
   DrawRandomWeaknessComponent
 );
-
-const styles = StyleSheet.create({
-  shuffleIcon: {
-    marginRight: 8,
-  },
-  buttonWrapper: {
-    padding: 8,
-  },
-});

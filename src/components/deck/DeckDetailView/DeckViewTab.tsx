@@ -39,7 +39,7 @@ import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
-import { isBig, s } from 'styles/space';
+import { isBig, m, s, xs } from 'styles/space';
 import DeckProblemRow from 'components/core/DeckProblemRow';
 
 interface SectionCardId extends CardId {
@@ -681,7 +681,9 @@ export default class DeckViewTab extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: s,
+    marginTop: m,
+    marginLeft: s,
+    marginRight: s,
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
@@ -721,8 +723,8 @@ const styles = StyleSheet.create({
   },
   problemBox: {
     flex: 1,
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: xs,
+    paddingBottom: xs,
     paddingRight: s,
     paddingLeft: s,
   },

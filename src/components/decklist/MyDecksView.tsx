@@ -1,10 +1,11 @@
 import React from 'react';
 import { find, filter, throttle } from 'lodash';
-import { Button, Platform, Text, StyleSheet, Switch, View } from 'react-native';
+import { Platform, Text, StyleSheet, Switch, View } from 'react-native';
 import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { Deck } from 'actions/types';
 import Card from 'data/Card';
 import { iconsMap } from 'app/NavIcons';
@@ -126,9 +127,7 @@ class MyDecksView extends React.Component<Props, State> {
 
   renderCustomFooter() {
     return (
-      <View style={styles.buttonRow}>
-        <Button title={t`New Deck`} onPress={this._showNewDeckDialog} />
-      </View>
+      <BasicButton title={t`New Deck`} onPress={this._showNewDeckDialog} />
     );
   }
 
@@ -174,10 +173,6 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
     paddingLeft: s,
     paddingRight: s,
-  },
-  buttonRow: {
-    padding: s,
-    width: '100%',
   },
   searchOption: {
     marginRight: 2,

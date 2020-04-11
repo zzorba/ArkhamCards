@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Text } from 'react-native';
 import { flatMap, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import ShowDeckButton from './ShowDeckButton';
 import { Deck, Slots, NumberChoices } from 'actions/types';
 import BasicListRow from 'components/core/BasicListRow';
@@ -330,12 +331,10 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         { this.renderTraumaDetails(choices) }
         { this.renderStoryAssetDeltas() }
         { choices === undefined && editable && (
-          <View style={styles.buttonWrapper}>
-            <Button
-              title={deck ? t`Save deck upgrade` : t`Save adjustments`}
-              onPress={this._save}
-            />
-          </View>
+          <BasicButton
+            title={deck ? t`Save deck upgrade` : t`Save adjustments`}
+            onPress={this._save}
+          />
         ) }
       </>
     );
@@ -444,9 +443,3 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  buttonWrapper: {
-    padding: 8,
-  },
-});

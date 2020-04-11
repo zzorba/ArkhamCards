@@ -1,7 +1,6 @@
 import React from 'react';
 import { forEach } from 'lodash';
 import {
-  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,6 +10,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { Deck, DecksMap, SingleCampaign, ScenarioResult } from 'actions/types';
 import { NavigationProps } from 'components/nav/types';
 import { FACTION_DARK_GRADIENTS } from 'constants';
@@ -24,6 +24,7 @@ import { COLORS } from 'styles/colors';
 import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from 'components/deck/DeckUpgradeDialog';
 import ScenarioResultRow from '../CampaignScenarioView/ScenarioResultRow';
+import space, { s } from 'styles/space';
 
 export interface UpgradeDecksProps {
   id: number;
@@ -133,7 +134,7 @@ class UpgradeDecksView extends React.Component<Props> {
     }
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.header}>
+        <View style={space.marginS}>
           <ScenarioResultRow
             componentId={componentId}
             campaignId={id}
@@ -155,9 +156,7 @@ class UpgradeDecksView extends React.Component<Props> {
           originalDeckIds={this._originalDeckIds}
           showDeckUpgradeDialog={this._showDeckUpgradeDialog}
         />
-        <View style={styles.button}>
-          <Button title={t`Done`} onPress={this._close} />
-        </View>
+        <BasicButton title={t`Done`} onPress={this._close} />
         <View style={styles.footer} />
       </ScrollView>
     );
@@ -190,18 +189,12 @@ export default connect<ReduxProps, {}, NavigationProps & UpgradeDecksProps, AppS
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: s,
+    paddingBottom: s,
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
   footer: {
     height: 100,
-  },
-  header: {
-    margin: 8,
-  },
-  button: {
-    margin: 8,
   },
 });

@@ -1,13 +1,15 @@
 import React from 'react';
-import { Button, Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { CustomColor } from 'components/campaignguide/prompts/types';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import { NumberChoices } from 'actions/types';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 export interface CounterItem {
   code: string;
@@ -91,22 +93,18 @@ export default class CounterListComponent extends React.Component<Props, State> 
     }
     const currentTotal = sum(map(counts));
     const disabled = (requiredTotal !== undefined) && currentTotal !== requiredTotal;
-    return (
-      <View style={styles.buttonWrapper}>
-        { disabled && requiredTotal !== undefined ? (
-          <Button
-            title={currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
-            onPress={this._save}
-            disabled
-          />
-        ) : (
-          <Button
-            title={t`Proceed`}
-            onPress={this._save}
-            disabled={disabled}
-          />
-        ) }
-      </View>
+    return disabled && requiredTotal !== undefined ? (
+      <BasicButton
+        title={currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
+        onPress={this._save}
+        disabled
+      />
+    ) : (
+      <BasicButton
+        title={t`Proceed`}
+        onPress={this._save}
+        disabled={disabled}
+      />
     );
   }
 
@@ -131,7 +129,11 @@ export default class CounterListComponent extends React.Component<Props, State> 
           const hasDecision = choiceList !== undefined;
           return (
             <View>
-              <View style={styles.prompt}>
+              <View style={[
+                styles.prompt,
+                space.paddingTopS,
+                space.paddingRightM,
+              ]}>
                 <Text style={typography.mediumGameFont}>
                   { countText }
                 </Text>
@@ -164,13 +166,8 @@ export default class CounterListComponent extends React.Component<Props, State> 
 const styles = StyleSheet.create({
   prompt: {
     flexDirection: 'row',
-    paddingTop: 8,
-    paddingRight: 16,
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
-  },
-  buttonWrapper: {
-    padding: 8,
   },
 });

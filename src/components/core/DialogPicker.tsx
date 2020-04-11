@@ -14,6 +14,7 @@ import { t } from 'ttag';
 import DialogOption from './DialogOption';
 import withDimensions, { DimensionsProps } from './withDimensions';
 import typography from 'styles/typography';
+import { s, xs } from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     paddingTop: 20,
-    paddingBottom: 8,
+    paddingBottom: s,
     borderBottomWidth: 1,
     borderColor: '#eeeeee',
     flexDirection: 'column',
@@ -146,12 +147,12 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
     fontWeight: '700',
-    paddingBottom: 4,
+    paddingBottom: xs,
   },
   descriptionText: {
     textAlign: 'center',
-    marginLeft: 8,
-    marginRight: 8,
+    marginLeft: s,
+    marginRight: s,
   },
   cancel: {
     width: '100%',

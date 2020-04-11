@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Text, ScrollView, StyleSheet, View } from 'react-native';
+import { Text, ScrollView, StyleSheet, View } from 'react-native';
 import { map, partition } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import CampaignGuideSummary from './CampaignGuideSummary';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
@@ -10,6 +11,7 @@ import CampaignGuide from 'data/scenario/CampaignGuide';
 import CampaignGuideContext, { CampaignGuideContextType, LatestDecks } from '../../CampaignGuideContext';
 import Card, { CardsMap } from 'data/Card';
 import typography from 'styles/typography';
+import { s, m, l } from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -81,9 +83,7 @@ export default class InvestigatorsTab extends React.Component<Props> {
                   chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
                 />
               )) }
-              <View style={styles.button}>
-                <Button title={t`Add Investigator`} onPress={this._addInvestigator} />
-              </View>
+              <BasicButton title={t`Add Investigator`} onPress={this._addInvestigator} />
               { killedInvestigators.length > 0 && (
                 <View style={styles.header}>
                   <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
@@ -116,17 +116,14 @@ export default class InvestigatorsTab extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  button: {
-    padding: 8,
-  },
   header: {
-    padding: 8,
-    paddingTop: 32,
+    padding: s,
+    paddingTop: l,
   },
   section: {
-    padding: 16,
-    paddingLeft: 24,
-    paddingRight: 24,
+    padding: m,
+    paddingLeft: s + m,
+    paddingRight: s + m,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
   },

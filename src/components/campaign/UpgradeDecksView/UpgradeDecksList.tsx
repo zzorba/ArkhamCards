@@ -16,6 +16,7 @@ import DeckRowButton from 'components/core/DeckRowButton';
 import { showDeckModal } from 'components/nav/helper';
 import DeckList, { DeckListProps } from '../DeckList';
 import DeckRow from '../DeckRow';
+import { s, xs } from 'styles/space';
 
 interface Props extends DeckListProps {
   campaignId: number;
@@ -175,13 +176,13 @@ export default class UpgradeDecksList extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   section: {
-    marginBottom: 8,
-    marginRight: 8,
+    marginBottom: s,
+    marginRight: s,
     flexDirection: 'row',
   },
   investigatorNotes: {
     flex: 1,
-    marginTop: 4,
+    marginTop: xs,
     flexDirection: 'column',
   },
   column: {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
 import { map, filter, findIndex } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import CheckListComponent from './CheckListComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
@@ -51,12 +51,10 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
       return null;
     }
     return (
-      <View style={styles.buttonWrapper}>
-        <Button
-          onPress={this._showAddDeckDialog}
-          title={t`Add new investigator`}
-        />
-      </View>
+      <BasicButton
+        onPress={this._showAddDeckDialog}
+        title={t`Add new investigator`}
+      />
     );
   }
 
@@ -121,9 +119,3 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
     );
   }
 }
-
-const styles = StyleSheet.create({
-  buttonWrapper: {
-    padding: 8,
-  },
-});

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { CustomColor } from 'components/campaignguide/prompts/types';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -11,6 +12,7 @@ import { StringChoices } from 'actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
 import { Choices, DisplayChoiceWithId } from 'data/scenario';
+import space from 'styles/space';
 
 export interface ListItem {
   code: string;
@@ -102,19 +104,17 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     const { items, detailed } = this.props;
     const { selectedChoice } = this.state;
     if (hasDecision) {
-      return <View style={styles.bottomPadding} />;
+      return <View style={space.marginBottomM} />;
     }
     return (
-      <View style={styles.buttonWrapper}>
-        <Button
-          title={t`Proceed`}
-          onPress={this._save}
-          disabled={detailed && !every(
-            items,
-            item => selectedChoice[item.code] !== undefined)
-          }
-        />
-      </View>
+      <BasicButton
+        title={t`Proceed`}
+        onPress={this._save}
+        disabled={detailed && !every(
+          items,
+          item => selectedChoice[item.code] !== undefined)
+        }
+      />
     );
 
   }
@@ -199,12 +199,3 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
     );
   }
 }
-
-const styles = StyleSheet.create({
-  bottomPadding: {
-    marginBottom: 16,
-  },
-  buttonWrapper: {
-    padding: 8,
-  },
-});

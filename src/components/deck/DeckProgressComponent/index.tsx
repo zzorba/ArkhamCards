@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
@@ -9,6 +8,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import EditTraumaComponent from 'components/campaign/EditTraumaComponent';
 import CampaignSummaryComponent from 'components/campaign/CampaignSummaryComponent';
@@ -106,12 +106,10 @@ class DeckProgressComponent extends React.PureComponent<Props> {
           </View>
         ) }
         { !!showDeckUpgrade && (
-          <View style={styles.buttonWrapper}>
-            <Button
-              title={t`Upgrade Deck with XP`}
-              onPress={showDeckUpgrade}
-            />
-          </View>
+          <BasicButton
+            title={t`Upgrade Deck with XP`}
+            onPress={showDeckUpgrade}
+          />
         ) }
       </React.Fragment>
     );
@@ -159,12 +157,10 @@ class DeckProgressComponent extends React.PureComponent<Props> {
           onTitlePress={onTitlePress}
         />
         { !!editable && !!deck.previous_deck && !!showDeckHistory && (
-          <View style={styles.buttonWrapper}>
-            <Button
-              title={t`Upgrade History`}
-              onPress={showDeckHistory}
-            />
-          </View>
+          <BasicButton
+            title={t`Upgrade History`}
+            onPress={showDeckHistory}
+          />
         ) }
       </View>
     );
@@ -194,8 +190,5 @@ const styles = StyleSheet.create({
     marginTop: s,
     marginLeft: s,
     marginRight: s,
-  },
-  buttonWrapper: {
-    margin: s,
   },
 });

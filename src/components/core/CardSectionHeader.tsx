@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   superHeaderRow: {
     borderBottomWidth: 1,
     paddingLeft: s,
-    paddingRight: s,
+    paddingRight: m,
     borderColor: '#bdbdbd',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -132,14 +132,16 @@ const styles = StyleSheet.create({
   },
   subHeaderRow: {
     backgroundColor: '#eee',
-    paddingLeft: s,
+    paddingLeft: m,
     paddingRight: s,
+    paddingTop: xs,
+    paddingBottom: xs,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },
   headerRow: {
     backgroundColor: '#ccc',
-    paddingLeft: s,
+    paddingLeft: m,
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,

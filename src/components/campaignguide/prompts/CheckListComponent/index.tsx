@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Text,View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { CustomColor } from 'components/campaignguide/prompts/types';
 import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -11,6 +12,7 @@ import { StringChoices } from 'actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
+import { m, s } from 'styles/space';
 
 export interface ListItem {
   code: string;
@@ -113,12 +115,10 @@ export default class CheckListComponent extends React.Component<Props, State> {
     const min = (!fixedMin && this.props.min) ? Math.min(this.props.min, items.length) : this.props.min;
     if (min === undefined && max === undefined) {
       return (
-        <View style={styles.buttonWrapper}>
-          <Button
-            title={t`Proceed`}
-            onPress={this._save}
-          />
-        </View>
+        <BasicButton
+          title={t`Proceed`}
+          onPress={this._save}
+        />
       );
     }
     const { selectedChoice } = this.state;
@@ -131,21 +131,17 @@ export default class CheckListComponent extends React.Component<Props, State> {
     const hasMin = (min === undefined || currentTotal >= min);
     const hasMax = (max === undefined || currentTotal <= max);
     const enabled = hasMin && hasMax;
-    return (
-      <View style={styles.buttonWrapper}>
-        { !enabled ? (
-          <Button
-            title={hasMin ? t`Too many` : `Not enough`}
-            onPress={this._save}
-            disabled
-          />
-        ) : (
-          <Button
-            title={t`Proceed`}
-            onPress={this._save}
-          />
-        ) }
-      </View>
+    return !enabled ? (
+      <BasicButton
+        title={hasMin ? t`Too many` : `Not enough`}
+        onPress={this._save}
+        disabled
+      />
+    ) : (
+      <BasicButton
+        title={t`Proceed`}
+        onPress={this._save}
+      />
     );
   }
 
@@ -209,8 +205,8 @@ export default class CheckListComponent extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   prompt: {
     flexDirection: 'row',
-    paddingTop: 16,
-    paddingRight: 16,
+    paddingTop: m,
+    paddingRight: m,
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
@@ -218,9 +214,9 @@ const styles = StyleSheet.create({
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
-    padding: 8,
-    paddingLeft: 16,
-    paddingRight: 16,
+    padding: s,
+    paddingLeft: m,
+    paddingRight: m,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -231,8 +227,5 @@ const styles = StyleSheet.create({
   },
   nameText: {
     fontWeight: '600',
-  },
-  buttonWrapper: {
-    padding: 8,
   },
 });

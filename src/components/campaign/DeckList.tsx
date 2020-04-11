@@ -1,14 +1,13 @@
 import React, { ReactNode } from 'react';
 import { map } from 'lodash';
 import {
-  Button,
   Platform,
-  StyleSheet,
   View,
 } from 'react-native';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
+import BasicButton from 'components/core/BasicButton';
 import { Deck } from 'actions/types';
 import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
@@ -92,12 +91,10 @@ class DeckList extends React.Component<OwnProps & PlayerCardProps> {
           renderInvestigator(investigator, investigators)
         )) }
         { !!deckAdded && (
-          <View style={styles.button}>
-            <Button
-              title={investigatorAdded ? t`Add Investigator` : t`Add Investigator Deck`}
-              onPress={this._showDeckSelector}
-            />
-          </View>
+          <BasicButton
+            title={investigatorAdded ? t`Add Investigator` : t`Add Investigator Deck`}
+            onPress={this._showDeckSelector}
+          />
         ) }
       </View>
     );
@@ -105,9 +102,3 @@ class DeckList extends React.Component<OwnProps & PlayerCardProps> {
 }
 
 export default withPlayerCards<OwnProps>(DeckList);
-
-const styles = StyleSheet.create({
-  button: {
-    margin: 8,
-  },
-});

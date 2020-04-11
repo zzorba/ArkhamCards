@@ -6,10 +6,11 @@ import {
   View,
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
-
 import { t } from 'ttag';
+
 import Dialog from './Dialog';
 import PlusMinusButtons from './PlusMinusButtons';
+import space from 'styles/space';
 
 interface Props {
   title: string;
@@ -96,7 +97,7 @@ export default class CountEditDialog extends React.Component<Props, State> {
     // const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
     return (
       <Dialog visible={visible} title={title} viewRef={viewRef}>
-        <View style={styles.counterRow}>
+        <View style={[styles.counterRow, space.marginBottomM]}>
           <View style={styles.row}>
             <Text style={[styles.label, styles.countText]}>
               { count || 0 }
@@ -149,6 +150,5 @@ const styles = StyleSheet.create({
     marginLeft: Platform.OS === 'ios' ? 28 : 8,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginBottom: 16,
   },
 });

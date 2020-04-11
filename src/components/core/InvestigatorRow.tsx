@@ -14,6 +14,7 @@ import InvestigatorImage from 'components/core/InvestigatorImage';
 import Card from 'data/Card';
 import { FACTION_COLORS, FACTION_DARK_GRADIENTS } from 'constants';
 import typography from 'styles/typography';
+import space, { m, s, xs } from 'styles/space';
 
 interface Props {
   investigator: Card;
@@ -73,7 +74,7 @@ export default class InvestigatorRow extends React.Component<Props> {
             </Text>
             { !!button && button }
           </View>
-          <View style={styles.icon}>
+          <View style={space.marginRightM}>
             { !onRemove && (
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(investigator)}
@@ -129,30 +130,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     position: 'relative',
-    paddingTop: 8,
+    paddingTop: s,
   },
   closeIcon: {
     position: 'absolute',
-    top: 8,
-    right: 8,
-  },
-  icon: {
-    marginRight: 16,
+    top: s,
+    right: s,
   },
   image: {
-    margin: 8,
-    marginLeft: 16,
-    marginBottom: 16,
-    marginRight: 16,
+    marginTop: s,
+    marginLeft: m,
+    marginBottom: m,
+    marginRight: m,
   },
   titleColumn: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    marginLeft: 5,
-    marginTop: 4,
-    marginBottom: 4,
+    marginLeft: xs,
+    marginTop: xs,
+    marginBottom: xs,
   },
   buttonColumn: {
     alignSelf: 'flex-start',

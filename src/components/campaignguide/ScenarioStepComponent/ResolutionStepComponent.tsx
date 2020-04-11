@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   View,
   Text,
 } from 'react-native';
@@ -10,6 +9,7 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from 'data/scenario/types';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   step: ResolutionStep;
@@ -33,14 +33,14 @@ export default class ResolutionStepComponent extends React.Component<Props> {
                 </SetupStepWrapper>
               ) }
               { (!!resolution.text || resolution.steps.length > 0) && (
-                <View style={styles.step}>
-                  <View style={styles.wrapper}>
+                <View style={space.marginTopM}>
+                  <View style={space.marginSideM}>
                     <Text style={typography.mediumGameFont}>
                       { resolution.title }
                     </Text>
                   </View>
                   { !!resolution.text && (
-                    <View style={styles.wrapper}>
+                    <View style={space.marginSideM}>
                       <CampaignGuideTextComponent
                         text={resolution.text}
                         flavor
@@ -56,13 +56,3 @@ export default class ResolutionStepComponent extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  step: {
-    marginTop: 16,
-  },
-  wrapper: {
-    marginLeft: 16,
-    marginRight: 16,
-  },
-});

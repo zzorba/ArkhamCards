@@ -10,6 +10,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import Button from 'components/core/Button';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface OwnProps {
   name: string;
@@ -54,9 +55,9 @@ class CampaignNoteSectionRow extends React.Component<Props> {
     } = this.props;
     if (onPress) {
       return (
-        <View style={styles.row}>
+        <View style={[styles.row, space.marginTopXs]}>
           <Button
-            style={styles.button}
+            style={space.marginRightXs}
             color="red"
             size="small"
             onPress={this._onPress}
@@ -71,7 +72,7 @@ class CampaignNoteSectionRow extends React.Component<Props> {
       );
     }
     return (
-      <View style={styles.row}>
+      <View style={[styles.row, space.marginTopXs]}>
         <Text style={typography.text}>
           { this.text() }
         </Text>
@@ -86,9 +87,5 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 4,
-  },
-  button: {
-    marginRight: 4,
   },
 });

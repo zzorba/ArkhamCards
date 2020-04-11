@@ -20,6 +20,7 @@ import { editScenarioResult } from './actions';
 import { getCampaign, AppState } from 'reducers';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
+import space, { s } from 'styles/space';
 
 export interface EditScenarioResultProps {
   campaignId: number;
@@ -153,7 +154,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
     } = scenarioResult;
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.margin}>
+        <View style={space.marginSideS}>
           <Text style={typography.smallLabel}>
             { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
           </Text>
@@ -199,16 +200,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: s,
+    paddingBottom: s,
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
   footer: {
     height: 100,
-  },
-  margin: {
-    marginLeft: 8,
-    marginRight: 8,
   },
 });

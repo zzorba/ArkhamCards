@@ -1,12 +1,12 @@
 import React from 'react';
 import { map } from 'lodash';
 import {
-  Button,
   StyleSheet,
   View,
 } from 'react-native';
-
 import { t } from 'ttag';
+
+import BasicButton from 'components/core/BasicButton';
 import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount } from 'actions/types';
 import Card from 'data/Card';
 import { ShowTextEditDialog } from 'components/core/withDialogs';
@@ -162,9 +162,7 @@ export default class EditCampaignNotesComponent extends React.Component<Props> {
         { this.renderSections(sections) }
         { this.renderCounts(counts) }
         { this.renderInvestigatorSection() }
-        <View style={styles.button}>
-          <Button title={t`Add Log Section`} onPress={this._showAddSectionDialog} />
-        </View>
+        <BasicButton title={t`Add Log Section`} onPress={this._showAddSectionDialog} />
       </View>
     );
   }
@@ -179,8 +177,5 @@ const styles = StyleSheet.create({
   },
   investigatorSection: {
     marginTop: s,
-  },
-  button: {
-    margin: s,
   },
 });

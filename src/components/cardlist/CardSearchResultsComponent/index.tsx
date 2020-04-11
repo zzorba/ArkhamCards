@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
 import { forEach } from 'lodash';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-
 import { t } from 'ttag';
+
+import BasicButton from 'components/core/BasicButton';
 import {
   SORT_BY_ENCOUNTER_SET,
   SortType,
@@ -20,6 +20,7 @@ import { FilterState, filterToQuery } from 'lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from 'data/query';
 import Card from 'data/Card';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -231,20 +232,16 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return (
       <View>
         { !!mythosToggle && (
-          <View style={styles.button}>
-            <Button
-              onPress={toggleMythosMode}
-              title={mythosMode ? t`Search Player Cards` : t`Search Encounter Cards`}
-            />
-          </View>
+          <BasicButton
+            onPress={toggleMythosMode}
+            title={mythosMode ? t`Search Player Cards` : t`Search Encounter Cards`}
+          />
         ) }
         { !!hasFilters && (
-          <View style={styles.button}>
-            <Button
-              onPress={clearSearchFilters}
-              title={t`Clear Search Filters`}
-            />
-          </View>
+          <BasicButton
+            onPress={clearSearchFilters}
+            title={t`Clear Search Filters`}
+          />
         ) }
       </View>
     );
@@ -262,15 +259,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return (
       <View>
         { !!searchTerm && (
-          <View style={styles.button}>
-            <Button
-              onPress={this._clearSearchTerm}
-              title={t`Clear "${searchTerm}" search`}
-            />
-          </View>
+          <BasicButton
+            onPress={this._clearSearchTerm}
+            title={t`Clear "${searchTerm}" search`}
+          />
         ) }
         { !searchText && (
-          <View style={styles.toggle}>
+          <View style={[styles.toggle, space.marginS]}>
             <Text style={[typography.text, styles.toggleText]}>
               { t`Search Game Text` }
             </Text>
@@ -278,7 +273,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
           </View>
         ) }
         { !searchBack && (
-          <View style={styles.toggle}>
+          <View style={[styles.toggle, space.marginS]}>
             <Text style={[typography.text, styles.toggleText]}>
               { t`Search Card Backs` }
             </Text>
@@ -355,7 +350,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: '#bbb',
   },
   footer: {
@@ -365,11 +360,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'red',
   },
-  button: {
-    margin: 8,
-  },
   toggle: {
-    margin: 8,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
 import { upperFirst } from 'lodash';
 
 import { CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   text: string;
@@ -18,19 +19,10 @@ export default function TextEntryComponent({ text, crossedOut, entry }: Props) {
   return (
     <Text style={[
       typography.bigLabel,
-      styles.text,
-      crossedOut ? styles.crossedOut : {},
+      space.marginBottomS,
+      crossedOut ? typography.strike : {},
     ]}>
       { upperFirst(actualText) }
     </Text>
   );
 }
-
-const styles = StyleSheet.create({
-  text: {
-    marginBottom: 8,
-  },
-  crossedOut: {
-    textDecorationLine: 'line-through',
-  },
-});

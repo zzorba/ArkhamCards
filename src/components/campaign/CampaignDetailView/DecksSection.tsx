@@ -16,6 +16,7 @@ import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWe
 import Card, { CardsMap } from 'data/Card';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -214,7 +215,7 @@ class DecksSection extends React.Component<Props> {
         </View>
         { killedDeckIds.length > 0 && (
           <View style={styles.underline}>
-            <View style={styles.padding}>
+            <View style={space.paddingS}>
               <Text style={typography.text}>
                 { t`Killed and Insane Investigators` }
               </Text>
@@ -242,8 +243,5 @@ const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
-  },
-  padding: {
-    padding: 8,
   },
 });

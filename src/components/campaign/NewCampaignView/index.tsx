@@ -2,7 +2,6 @@ import React from 'react';
 import { filter, forEach, keys, map, sumBy, throttle } from 'lodash';
 import {
   Alert,
-  Button,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,8 +10,9 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
+import BasicButton from 'components/core/BasicButton';
 import {
   CORE,
   CUSTOM,
@@ -599,8 +599,8 @@ class NewCampaignView extends React.Component<Props, State> {
           )) }
         </View>
         { !this.hasDefinedChaosBag() && (
-          <View style={[styles.topPadding, styles.button]}>
-            <Button title={t`Add Log Section`} onPress={this._toggleCampaignLogDialog} />
+          <View style={styles.topPadding}>
+            <BasicButton title={t`Add Log Section`} onPress={this._toggleCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -677,13 +677,11 @@ class NewCampaignView extends React.Component<Props, State> {
               investigatorRemoved={guided ? this._investigatorRemoved : undefined}
             />
           </View>
-          <View style={styles.button}>
-            <Button
-              disabled={campaignCode === CUSTOM && !name}
-              title={t`Create Campaign`}
-              onPress={this._onSave}
-            />
-          </View>
+          <BasicButton
+            disabled={campaignCode === CUSTOM && !name}
+            title={t`Create Campaign`}
+            onPress={this._onSave}
+          />
           <View style={styles.footer} />
         </ScrollView>
         { this.renderCampaignSectionDialog() }
@@ -729,8 +727,5 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
-  },
-  button: {
-    margin: s,
   },
 });

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
@@ -10,6 +9,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
 import { Deck, Slots } from 'actions/types';
 import InvestigatorRow from 'components/core/InvestigatorRow';
@@ -22,6 +22,7 @@ import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from 'components/deck/actions';
 import { AppState } from 'reducers';
 import typography from 'styles/typography';
+import { m, s, xs } from 'styles/space';
 
 interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
@@ -96,9 +97,7 @@ class UpgradeDecksInput extends React.Component<Props> {
           );
         }) }
         { !hasDecision && (
-          <View style={styles.buttonWrapper}>
-            <Button title={t`Proceed`} onPress={this._save} />
-          </View>
+          <BasicButton title={t`Proceed`} onPress={this._save} />
         ) }
       </View>
     );
@@ -140,13 +139,10 @@ export default connect<{}, ReduxActionProps, OwnProps, AppState>(
 
 const styles = StyleSheet.create({
   header: {
-    paddingRight: 16,
-    paddingBottom: 4,
-    paddingTop: 24,
+    paddingRight: m,
+    paddingBottom: xs,
+    paddingTop: s + m,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
-  },
-  buttonWrapper: {
-    padding: 8,
   },
 });

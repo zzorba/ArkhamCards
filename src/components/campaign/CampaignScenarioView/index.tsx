@@ -16,6 +16,7 @@ import { NavigationProps } from 'components/nav/types';
 import { Campaign, ScenarioResult } from 'actions/types';
 import { getCampaign, AppState } from 'reducers';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 export interface CampaignScenarioProps {
   id: number;
@@ -67,7 +68,7 @@ class CampaignScenarioView extends React.Component<Props> {
     }
     const hasCompletedScenario = completedScenario(campaign.scenarioResults);
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, space.paddingS]}>
         <CampaignSummaryComponent campaign={campaign} hideScenario />
         <Text style={typography.smallLabel}>
           { t`SCENARIOS` }
@@ -108,7 +109,6 @@ export default connect(mapStateToPropsFix)(CampaignScenarioView);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 8,
   },
   disabled: {
     color: '#bdbdbd',

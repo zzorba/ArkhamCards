@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   text: string;
@@ -13,7 +14,7 @@ export default class GameHeader extends React.Component<Props> {
       text,
     } = this.props;
     return (
-      <View style={styles.marginTop}>
+      <View style={space.marginTopXs}>
         <Text style={typography.bigGameFont}>
           { text }
         </Text>
@@ -21,9 +22,3 @@ export default class GameHeader extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  marginTop: {
-    marginTop: 4,
-  },
-});

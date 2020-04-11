@@ -13,6 +13,7 @@ import { t } from 'ttag';
 import SignatureCardItem from './SignatureCardItem';
 import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
+import space, { m, s } from 'styles/space';
 
 interface RealmProps {
   requiredCards?: Results<Card>;
@@ -42,7 +43,7 @@ class SignatureCardsComponent extends React.Component<Props> {
     } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={space.marginBottomS}>
         <Text style={styles.header}>{ t`Required Cards` }</Text>
         { !!(requiredCards && requiredCards.length) && (
           map(requiredCards, card => (
@@ -111,14 +112,11 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 24,
-    paddingLeft: 8,
+    marginTop: m + s,
+    paddingLeft: s,
     fontSize: 24,
     lineHeight: 32,
     fontWeight: '600',
     fontFamily: 'System',
-  },
-  container: {
-    marginBottom: 8,
   },
 });

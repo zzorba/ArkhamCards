@@ -6,6 +6,7 @@ import PickerComponent from '../PickerComponent';
 import { DisplayChoice } from 'data/scenario';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   code: string;
@@ -49,6 +50,8 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
         <>
           <View style={[
             styles.headerRow,
+            space.paddingS,
+            space.paddingLeftM,
             color ? { backgroundColor: color.tint } : {},
           ]}>
             <View>
@@ -98,8 +101,6 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   headerRow: {
-    padding: 8,
-    paddingLeft: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

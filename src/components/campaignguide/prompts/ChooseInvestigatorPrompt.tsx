@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { findIndex, flatMap, keys } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { StringChoices } from 'actions/types';
 import PickerComponent from './PickerComponent';
 import Card from 'data/Card';
@@ -66,13 +67,11 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
     const { required } = this.props;
     const { selectedInvestigator } = this.state;
     return (
-      <View style={styles.buttonWrapper}>
-        <Button
-          title={t`Proceed`}
-          onPress={this._save}
-          disabled={required && selectedInvestigator === undefined}
-        />
-      </View>
+      <BasicButton
+        title={t`Proceed`}
+        onPress={this._save}
+        disabled={required && selectedInvestigator === undefined}
+      />
     );
   }
 
@@ -170,8 +169,5 @@ const styles = StyleSheet.create({
   },
   topBorder: {
     borderTopWidth: StyleSheet.hairlineWidth,
-  },
-  buttonWrapper: {
-    padding: 8,
   },
 });

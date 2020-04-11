@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { cloneDeep, shuffle } from 'lodash';
 import { EventSubscription, Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { NavigationProps } from 'components/nav/types';
 import { ChaosBag } from 'constants';
 import { COLORS } from 'styles/colors';
@@ -19,6 +20,7 @@ import { AppState, getCampaign, getChaosBagResults } from 'reducers';
 import { SealTokenDialogProps } from '../SealTokenDialog';
 import SealTokenButton from '../SealTokenButton';
 import { flattenChaosBag } from '../campaignUtil';
+import { s } from 'styles/space';
 
 export interface CampaignChaosBagProps {
   componentId: string;
@@ -296,7 +298,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     } = this.state;
 
     if (chaosBagResults.drawnTokens.length > 0) {
-      return <Button title={t`Set aside and draw another`} onPress={this._handleAddAndDrawAgainPressed} disabled={isChaosBagEmpty} />;
+      return <BasicButton title={t`Set aside and draw another`} onPress={this._handleAddAndDrawAgainPressed} disabled={isChaosBagEmpty} />;
     }
   }
 
@@ -307,9 +309,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
 
     if (chaosBagResults.drawnTokens.length > 1) {
       return (
-        <View style={styles.buttonContainer}>
-          <Button title={t`Clear Tokens`} onPress={this._handleClearTokensPressed} />
-        </View>
+        <BasicButton title={t`Clear Tokens`} onPress={this._handleClearTokensPressed} />
       );
     }
     return null;
@@ -349,9 +349,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
           { chaosBagResults.sealedTokens.length > 0 && <View style={styles.drawnTokenRow}>
             { this.renderSealedTokens() }
           </View> }
-          <View style={styles.buttonContainer}>
-            <Button title={t`Seal Tokens`} onPress={this._handleSealTokensPressed} />
-          </View>
+          <BasicButton title={t`Seal Tokens`} onPress={this._handleSealTokensPressed} />
         </View>
       </ScrollView>
     );
@@ -399,13 +397,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 8,
+    padding: s,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 6,
+    padding: s,
     backgroundColor: COLORS.gray,
     height: 40,
   },
@@ -417,7 +415,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    padding: 8,
+    padding: s,
   },
   containerBottom: {
     backgroundColor: COLORS.white,
@@ -434,8 +432,5 @@ const styles = StyleSheet.create({
   drawTokenText: {
     flex: 1,
     textAlign: 'center',
-  },
-  buttonContainer: {
-    padding: 8,
   },
 });

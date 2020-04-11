@@ -7,6 +7,7 @@ import {
 import BulletsComponent from './BulletsComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { StoryStep } from 'data/scenario/types';
+import space from 'styles/space';
 
 interface Props {
   step: StoryStep;
@@ -17,7 +18,7 @@ export default class StoryStepComponent extends React.Component<Props> {
     const { step } = this.props;
     return (
       <>
-        <View style={styles.step}>
+        <View style={[styles.step, space.marginTopS, space.paddingSideM]}>
           { !!step.text && (
             <CampaignGuideTextComponent
               text={step.text}
@@ -34,8 +35,5 @@ export default class StoryStepComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   step: {
     flexDirection: 'column',
-    marginTop: 8,
-    marginLeft: 16,
-    marginRight: 16,
   },
 });

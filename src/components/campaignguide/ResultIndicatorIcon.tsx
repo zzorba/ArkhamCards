@@ -7,6 +7,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import { COLORS } from 'styles/colors';
+import space from 'styles/space';
 
 interface Props {
   result: boolean;
@@ -15,7 +16,12 @@ interface Props {
 
 export default function ResultIndicatorIcon({ result, noBorder }: Props) {
   return (
-    <View style={[styles.icon, noBorder ? {} : styles.iconBorder]}>
+    <View style={[
+      styles.icon,
+      space.paddingXs,
+      space.paddingSideM,
+      noBorder ? {} : styles.iconBorder,
+    ]}>
       <MaterialCommunityIcons
         name={result ? 'thumb-up-outline' : 'thumb-down-outline'}
         size={24}
@@ -26,11 +32,6 @@ export default function ResultIndicatorIcon({ result, noBorder }: Props) {
 }
 const styles = StyleSheet.create({
   icon: {
-    padding: 4,
-    paddingLeft: 16,
-    paddingRight: 16,
-    width: 56,
-    maxHeight: 56,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

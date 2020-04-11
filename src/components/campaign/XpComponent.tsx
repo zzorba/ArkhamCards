@@ -1,11 +1,9 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
-
+import { View } from 'react-native';
 import { t } from 'ttag';
+
 import EditCountComponent from './EditCountComponent';
+import space from 'styles/space';
 
 interface Props {
   xp: number;
@@ -24,7 +22,7 @@ export default class XpComponent extends React.Component<Props> {
       isInvestigator,
     } = this.props;
     return (
-      <View style={isInvestigator ? styles.rightMargin : {}}>
+      <View style={isInvestigator ? space.marginRightXs : {}}>
         <EditCountComponent
           countChanged={this._countChanged}
           index={0}
@@ -36,9 +34,3 @@ export default class XpComponent extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  rightMargin: {
-    marginRight: 4,
-  },
-});

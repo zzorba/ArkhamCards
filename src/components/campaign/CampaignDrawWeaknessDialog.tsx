@@ -24,6 +24,7 @@ import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog'
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
+import space, { xs } from 'styles/space';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: number;
@@ -327,7 +328,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       t`Save to ${investigator.name}’s Deck` :
       t`Save to Deck`;
     return (
-      <View style={styles.button}>
+      <View style={space.marginTopS}>
         <Button
           color="green"
           onPress={this._saveDrawnCard}
@@ -420,13 +421,10 @@ export default withPlayerCards<NavigationProps & CampaignDrawWeaknessProps>(
 
 const styles = StyleSheet.create({
   toggleRow: {
-    paddingTop: 4,
+    paddingTop: xs,
     width: '100%',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
-  },
-  button: {
-    marginTop: 8,
   },
 });

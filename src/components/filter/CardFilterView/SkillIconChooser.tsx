@@ -3,11 +3,12 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-
 import { t } from 'ttag';
+
 import AccordionItem from '../AccordionItem';
 import ToggleFilter from 'components/core/ToggleFilter';
 import { SkillIconsFilters } from 'lib/filters';
+import { xs } from 'styles/space';
 
 interface Props {
   onFilterChange: (setting: string, value: any) => void;
@@ -101,7 +102,7 @@ export default class SkillIconChooser extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   toggleRow: {
-    marginTop: 4,
+    marginTop: xs,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },

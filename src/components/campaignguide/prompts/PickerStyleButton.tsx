@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   title: string;
@@ -26,6 +27,8 @@ export default class PickerStyleButton extends React.Component<Props> {
       }]}>
         <Text style={[
           style.defaultTitleStyle,
+          space.paddingLeftM,
+          space.paddingRightS,
           typography.mediumGameFont,
           {
             color: colors ? colors.textColor : COLORS.black,
@@ -37,6 +40,8 @@ export default class PickerStyleButton extends React.Component<Props> {
         <Text
           style={[
             style.defaultValueStyle,
+            space.paddingLeftS,
+            space.paddingRightM,
             typography.label,
             {
               color: colors ? colors.textColor : COLORS.black,
@@ -81,15 +86,11 @@ const style = StyleSheet.create({
   },
   defaultTitleStyle: {
     flex: 1,
-    paddingLeft: 16,
-    paddingRight: 8,
     fontSize: 16,
   },
   defaultValueStyle: {
     color: 'rgb(160,160,160)',
     fontSize: 14,
     flex: 0,
-    paddingLeft: 8,
-    paddingRight: 16,
   },
 });

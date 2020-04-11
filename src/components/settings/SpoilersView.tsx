@@ -6,12 +6,14 @@ import {
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
+import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
 import { setPackSpoiler, setCyclePackSpoiler } from 'actions';
 import PackListComponent from 'components/core/PackListComponent';
 import { NavigationProps } from 'components/nav/types';
 import { getAllPacks, getPackSpoilers, AppState } from 'reducers';
+import space from 'styles/space';
 
 interface ReduxProps {
   packs: Pack[];
@@ -28,10 +30,9 @@ type Props = NavigationProps & ReduxProps & ReduxActionProps;
 class SpoilersView extends React.Component<Props> {
   _renderHeader = (): React.ReactElement => {
     return (
-      <View style={styles.header}>
+      <View style={space.paddingS}>
         <Text style={styles.headerText}>
-          Mark the scenarios you've played through to make the results start
-          showing up in search results.
+          { t`Mark the scenarios you've played through to make the results start showing up in search results.` }
         </Text>
       </View>
     );
@@ -48,7 +49,7 @@ class SpoilersView extends React.Component<Props> {
     if (!packs.length) {
       return (
         <View>
-          <Text>Loading</Text>
+          <Text>{ t`Loading` }</Text>
         </View>
       );
     }
@@ -85,9 +86,6 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps, AppState>(
 )(SpoilersView);
 
 const styles = StyleSheet.create({
-  header: {
-    padding: 8,
-  },
   headerText: {
     fontFamily: 'System',
     fontSize: 14,

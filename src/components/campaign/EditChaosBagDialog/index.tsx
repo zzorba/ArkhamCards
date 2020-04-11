@@ -10,8 +10,8 @@ import {
   View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
 import { iconsMap } from 'app/NavIcons';
 import { NavigationProps } from 'components/nav/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
@@ -25,6 +25,7 @@ import {
 } from 'constants';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
+import space from 'styles/space';
 
 export interface EditChaosBagProps {
   chaosBag: ChaosBag;
@@ -187,7 +188,7 @@ class EditChaosBagDialog extends React.Component<Props, State> {
     const ogChaosBag = this.props.chaosBag;
     return (
       <ScrollView>
-        <View style={styles.row}>
+        <View style={[styles.row, space.paddingS]}>
           <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
         </View>
         { map(sortBy(CHAOS_TOKENS, x => CHAOS_TOKEN_ORDER[x]),
@@ -218,7 +219,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    padding: 8,
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
   },

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import PickerComponent from './PickerComponent';
 import ChooseOneListComponent from './ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -10,6 +11,7 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType, ChooseOneInput } from 'data/scenario/types';
 import { chooseOneInputChoices } from 'data/scenario/inputHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import space from 'styles/space';
 
 interface Props {
   id: string;
@@ -69,7 +71,7 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                       text={text || t`The investigators must decide (choose one):`}
                     />
                   </SetupStepWrapper>
-                  <View style={styles.bottomPadding}>
+                  <View style={space.paddingS}>
                     <ChooseOneListComponent
                       choices={choices}
                       selectedIndex={selectedChoice}
@@ -80,13 +82,11 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
                 </>
               ) }
               { decision === undefined && (
-                <View style={styles.buttonWrapper}>
-                  <Button
-                    title={t`Proceed`}
-                    onPress={this._save}
-                    disabled={selectedChoice === undefined}
-                  />
-                </View>
+                <BasicButton
+                  title={t`Proceed`}
+                  onPress={this._save}
+                  disabled={selectedChoice === undefined}
+                />
               ) }
             </>
           );
@@ -95,12 +95,3 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  buttonWrapper: {
-    padding: 8,
-  },
-  bottomPadding: {
-    padding: 8,
-  },
-});

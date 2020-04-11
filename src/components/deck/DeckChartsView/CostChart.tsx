@@ -11,6 +11,7 @@ import { t } from 'ttag';
 import ChartLabel from './ChartLabel';
 import { ParsedDeck } from 'actions/types';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   parsedDeck: ParsedDeck;
@@ -57,7 +58,7 @@ export default class CostChart extends React.PureComponent<Props> {
       item => item.alwaysShow || item.value > 0
     );
     return (
-      <View style={[styles.wrapper, { width }]}>
+      <View style={[styles.wrapper, space.marginBottomL, { width }]}>
         <Text style={[typography.bigLabel, typography.center]}>
           { t`Card Costs` }
         </Text>
@@ -103,6 +104,5 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'column',
     position: 'relative',
-    marginBottom: 32,
   },
 });

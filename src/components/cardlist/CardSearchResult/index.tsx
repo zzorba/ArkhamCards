@@ -444,6 +444,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     position: 'relative',
     width: '100%',
+    paddingLeft: s,
+    paddingRight: s,
     flexDirection: 'row',
   },
   rowBorder: {
@@ -451,10 +453,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.gray,
   },
   cardNameBlock: {
-    marginLeft: 4,
-    marginTop: 4,
-    marginBottom: 4,
-    marginRight: 2,
+    marginLeft: xs,
+    marginTop: xs,
+    marginBottom: xs,
+    marginRight: xs / 2,
     flexDirection: 'column',
     flex: 1,
   },
@@ -470,11 +472,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   dualFactionIcons: {
-    marginLeft: 8,
+    marginLeft: s,
     flexDirection: 'row',
   },
   skillIcon: {
-    marginRight: 2,
+    marginRight: xs / 2,
   },
   subname: {
     marginRight: s,
@@ -502,7 +504,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   count: {
-    marginLeft: 4,
+    marginLeft: xs,
     minWidth: 25,
     flexDirection: 'row',
     justifyContent: 'flex-start',

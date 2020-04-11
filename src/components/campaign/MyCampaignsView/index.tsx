@@ -2,7 +2,6 @@ import React from 'react';
 import { filter, map, throttle } from 'lodash';
 import {
   Alert,
-  Button,
   Keyboard,
   ScrollView,
   StyleSheet,
@@ -13,6 +12,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { CUSTOM, Campaign, DecksMap } from 'actions/types';
 import CampaignItem from './CampaignItem';
 import { NewCampaignProps } from '../NewCampaignView';
@@ -27,7 +27,7 @@ import { iconsMap } from 'app/NavIcons';
 import { getAllDecks, getCampaigns, AppState } from 'reducers';
 import typography from 'styles/typography';
 import { COLORS } from 'styles/colors';
-import { m, s } from 'styles/space';
+import { m } from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -264,12 +264,10 @@ class MyCampaignsView extends React.Component<Props, State> {
         />
         { map(campaigns, campaign => this.renderItem(campaign)) }
         { this.renderFooter(campaigns) }
-        <View style={styles.button}>
-          <Button
-            title={t`New Campaign`}
-            onPress={this._showNewCampaignDialog}
-          />
-        </View>
+        <BasicButton
+          title={t`New Campaign`}
+          onPress={this._showNewCampaignDialog}
+        />
         <View style={styles.gutter} />
       </ScrollView>
     );
@@ -300,8 +298,5 @@ const styles = StyleSheet.create({
   },
   gutter: {
     marginBottom: 60,
-  },
-  button: {
-    margin: s,
   },
 });

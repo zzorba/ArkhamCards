@@ -8,6 +8,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from 'data/scenario';
 import { COLORS } from 'styles/colors';
+import { m, s } from 'styles/space';
 
 interface Props {
   choice: DisplayChoice;
@@ -99,16 +100,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   padding: {
-    paddingLeft: 16,
-    paddingRight: 24,
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingLeft: m,
+    paddingRight: s + m,
+    paddingTop: s,
+    paddingBottom: s,
     flexDirection: 'row',
     flex: 1,
   },
   bullet: {
-    marginRight: 16,
-    minWidth: 24,
+    marginRight: m,
+    minWidth: s + m,
   },
   radioButton: {
     flexDirection: 'column',

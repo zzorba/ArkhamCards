@@ -1,11 +1,7 @@
 import React from 'react';
-import {
-  Button,
-  StyleSheet,
-  View,
-} from 'react-native';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -50,12 +46,8 @@ export default class BinaryPrompt extends React.Component<Props> {
               <SetupStepWrapper bulletType={bulletType}>
                 { !!text && <CampaignGuideTextComponent text={text} /> }
               </SetupStepWrapper>
-              <View style={styles.buttonWrapper}>
-                <Button title={t`Yes`} onPress={this._yes} />
-              </View>
-              <View style={styles.buttonWrapper}>
-                <Button title={t`No`} onPress={this._no} />
-              </View>
+              <BasicButton title={t`Yes`} onPress={this._yes} />
+              <BasicButton title={t`No`} onPress={this._no} />
             </>
           ) : (
             <BinaryResult
@@ -69,9 +61,3 @@ export default class BinaryPrompt extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  buttonWrapper: {
-    padding: 8,
-  },
-});

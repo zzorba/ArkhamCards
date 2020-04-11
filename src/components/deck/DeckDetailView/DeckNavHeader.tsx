@@ -13,6 +13,7 @@ import { Navigation } from 'react-native-navigation';
 
 import AppIcon from 'icons/AppIcon';
 import { COLORS } from 'styles/colors';
+import { s, xs } from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -93,10 +94,10 @@ const styles = StyleSheet.create<Styles>({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginLeft: 8,
+    marginLeft: s,
   },
   row: {
-    marginLeft: 8,
+    marginLeft: s,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create<Styles>({
     width: 18,
   },
   backButton: {
-    marginLeft: 4,
+    marginLeft: xs,
     color: COLORS.lightBlue,
     fontSize: 18,
     fontFamily: 'System',
@@ -127,7 +128,7 @@ const styles = StyleSheet.create<Styles>({
     fontWeight: '700',
   },
   button: {
-    marginLeft: 8,
+    marginLeft: s,
     height: 32,
     borderRadius: 4,
   },

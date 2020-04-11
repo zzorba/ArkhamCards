@@ -1,18 +1,19 @@
 import React from 'react';
 import {
-  Button,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { BulletType, Effect, Option } from 'data/scenario/types';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   id: string;
@@ -101,7 +102,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
   renderCount(count: number) {
     const { delta } = this.props;
     return (
-      <View style={[styles.count, delta ? styles.countDelta : {}]}>
+      <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
         <Text style={[typography.bigGameFont, typography.center]}>
           { delta && count >= 0 ? '+ ' : '' }{ count }
         </Text>
@@ -140,7 +141,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
         { ({ scenarioState }: ScenarioGuideContextType) => {
           const count = scenarioState.count(id);
           return (
-            <View style={styles.wrapper}>
+            <View style={space.paddingTopS}>
               { !!text && (
                 <SetupStepWrapper bulletType={bulletType}>
                   <CampaignGuideTextComponent text={text} />
@@ -155,9 +156,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
                 </View>
               </SetupStepWrapper>
               { (count === undefined) && (
-                <View style={styles.buttonWrapper}>
-                  <Button title={t`Proceed`} onPress={this._submit} />
-                </View>
+                <BasicButton title={t`Proceed`} onPress={this._submit} />
               ) }
               { count !== undefined && !!confirmText && (
                 <SetupStepWrapper bulletType="small">
@@ -174,15 +173,10 @@ export default class NumberPrompt extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   count: {
-    paddingLeft: 4,
-    paddingRight: 4,
     minWidth: 40,
   },
   countDelta: {
     minWidth: 50,
-  },
-  wrapper: {
-    paddingTop: 8,
   },
   content: {
     flexDirection: 'column',
@@ -194,8 +188,5 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-  },
-  buttonWrapper: {
-    padding: 8,
   },
 });

@@ -7,6 +7,7 @@ import { FACTION_LIGHT_GRADIENTS } from 'constants';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { Supply } from 'data/scenario/types';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   investigator: Card;
@@ -57,7 +58,7 @@ export default class SupplyComponent extends React.Component<Props> {
         styles.row,
         { backgroundColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0] },
       ]}>
-        <View style={styles.textBlock}>
+        <View style={[styles.textBlock, space.paddingS, space.paddingSideM]}>
           <Text style={typography.text}>
             <Text style={[typography.bold, styles.blackText]}>
               { supply.name }
@@ -72,7 +73,7 @@ export default class SupplyComponent extends React.Component<Props> {
             { supply.description }
           </Text>
         </View>
-        <View style={styles.buttons}>
+        <View style={[styles.buttons, space.paddingS]}>
           { editable ? (
             <PlusMinusButtons
               count={count}
@@ -105,9 +106,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     flex: 1,
-    padding: 8,
-    paddingLeft: 16,
-    paddingRight: 16,
   },
   row: {
     flexDirection: 'row',
@@ -116,7 +114,6 @@ const styles = StyleSheet.create({
     borderColor: '#bbb',
   },
   buttons: {
-    padding: 8,
     justifyContent: 'center',
   },
   count: {

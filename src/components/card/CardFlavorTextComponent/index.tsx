@@ -9,7 +9,6 @@ import {
 } from 'react-native-markdown-view';
 
 import { WithChildren, WithText, State } from '../CardTextComponent/types';
-import { isBig } from 'styles/space';
 import { COLORS } from 'styles/colors';
 import FlavorItalicNode from './FlavorItalicNode';
 import FlavorBoldNode from './FlavorBoldNode';
@@ -18,6 +17,7 @@ import FlavorCenterNode from './FlavorCenterNode';
 import FlavorFancyRightNode from './FlavorFancyRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
+import { isBig, xs } from 'styles/space';
 
 const BreakTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),
@@ -110,7 +110,7 @@ export default function CardFlavorTextComponent(
   return (
     <MarkdownView
       style={{
-        marginBottom: 4,
+        marginBottom: xs,
       }}
       rules={{
         bTag: BoldHtmlTagRule,

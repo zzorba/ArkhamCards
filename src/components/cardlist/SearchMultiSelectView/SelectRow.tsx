@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import Switch from 'components/core/Switch';
+import space from 'styles/space';
 
 interface Props {
   value: string;
@@ -30,8 +31,8 @@ export default class SelectRow extends React.Component<Props> {
     } = this.props;
 
     return (
-      <View style={styles.row}>
-        <Text style={styles.title}>
+      <View style={[styles.row, space.paddingRightS]}>
+        <Text style={[styles.title, space.marginLeftS]}>
           { value }
         </Text>
         <Switch
@@ -51,10 +52,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderColor: '#bdbdbd',
-    paddingRight: 8,
   },
   title: {
-    marginLeft: 8,
     fontSize: 20,
     fontFamily: 'System',
     flex: 1,

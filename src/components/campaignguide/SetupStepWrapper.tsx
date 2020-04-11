@@ -7,6 +7,7 @@ import {
 import ArkhamIcon from 'icons/ArkhamIcon';
 import { BulletType } from 'data/scenario/types';
 import { COLORS } from 'styles/colors';
+import space, { s, m, xs } from 'styles/space';
 
 interface Props {
   bulletType?: BulletType;
@@ -55,6 +56,8 @@ export default class SetupStepWrapper extends React.Component<Props> {
     return (
       <View style={[
         styles.step,
+        space.paddingS,
+        space.paddingSideM,
         border ? styles.border : {},
         hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
       ]}>
@@ -81,22 +84,18 @@ const styles = StyleSheet.create({
   step: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 8,
-    paddingBottom: 8,
   },
   right: {
     alignItems: 'flex-end',
     paddingLeft: 48,
   },
   bullet: {
-    marginRight: 8,
-    marginTop: 4,
+    marginRight: s,
+    marginTop: xs,
   },
   smallBullet: {
-    marginLeft: 26,
-    marginRight: 8,
+    marginLeft: s + m,
+    marginRight: s,
     marginTop: 0,
   },
   mainText: {

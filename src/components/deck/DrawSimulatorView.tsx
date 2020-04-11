@@ -13,7 +13,7 @@ import { Slots } from 'actions/types';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import CardSearchResult from '../cardlist/CardSearchResult';
-import { xs } from 'styles/space';
+import { s, xs } from 'styles/space';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -261,10 +261,10 @@ const styles = StyleSheet.create({
   },
   drawButtonRow: {
     width: '100%',
-    paddingTop: 4,
-    paddingBottom: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingTop: xs,
+    paddingBottom: xs,
+    paddingLeft: s,
+    paddingRight: s,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

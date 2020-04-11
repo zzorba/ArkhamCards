@@ -1,6 +1,6 @@
 import React from 'react';
 import { forEach, keys } from 'lodash';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import WeaknessDrawComponent from './WeaknessDrawComponent';
@@ -11,6 +11,7 @@ import Button from 'components/core/Button';
 import { NavigationProps } from 'components/nav/types';
 import { AppState } from 'reducers';
 import { RANDOM_BASIC_WEAKNESS } from 'constants';
+import space from 'styles/space';
 
 export interface DrawWeaknessProps {
   saveWeakness: (code: string, replaceRandomBasicWeakness: boolean) => void;
@@ -91,7 +92,7 @@ class WeaknessDrawDialog extends React.Component<Props, State> {
     }
 
     return (
-      <View style={styles.button}>
+      <View style={space.marginTopS}>
         <Button
           color="green"
           onPress={this._saveDrawnCard}
@@ -156,9 +157,3 @@ function mapStateToProps(state: AppState) {
 export default connect(mapStateToProps)(
   withWeaknessCards(WeaknessDrawDialog)
 );
-
-const styles = StyleSheet.create({
-  button: {
-    marginTop: 8,
-  },
-});

@@ -18,6 +18,7 @@ import Card from 'data/Card';
 import { DeckChanges } from 'components/deck/actions';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import typography from 'styles/typography';
+import space, { m } from 'styles/space';
 
 interface OwnProps {
   investigator: Card;
@@ -186,7 +187,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
             { t`Saving...` }
           </Text>
           <ActivityIndicator
-            style={styles.savingSpinner}
+            style={space.marginTopM}
             size="large"
             animating
           />
@@ -239,10 +240,7 @@ const styles = StyleSheet.create({
   saving: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 16,
-    paddingBottom: 16,
-  },
-  savingSpinner: {
-    marginTop: 16,
+    paddingTop: m,
+    paddingBottom: m,
   },
 });

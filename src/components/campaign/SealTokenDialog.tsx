@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { flatMap, keys, map, range, sortBy } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { NavigationProps } from 'components/nav/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { iconsMap } from 'app/NavIcons';
@@ -120,9 +121,7 @@ class SealTokenDialog extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <View style={styles.drawnTokenRow}>{ this.getAllChaosTokens() }</View>
-        <View style={styles.buttonContainer}>
-          <Button title={t`Done`} onPress={this._close} />
-        </View>
+        <BasicButton title={t`Done`} onPress={this._close} />
       </View>
     );
   }
@@ -158,8 +157,5 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
     minHeight: 89,
-  },
-  buttonContainer: {
-    padding: 8,
   },
 });

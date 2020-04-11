@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
@@ -15,6 +15,7 @@ import Card, { CardsMap } from 'data/Card';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -111,7 +112,10 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
   renderTrauma() {
     const { traumaAndCardData, investigator } = this.props;
     return (
-      <View style={styles.trauma}>
+      <View style={[
+        space.paddingS,
+        space.paddingLeftM,
+      ]}>
         <Text style={typography.text}>
           { investigator.traumaString(traumaAndCardData) }
         </Text>
@@ -239,10 +243,3 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  trauma: {
-    padding: 8,
-    paddingLeft: 16,
-  },
-});

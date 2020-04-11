@@ -2,7 +2,6 @@ import React from 'react';
 import { filter, forEach, sortBy, throttle } from 'lodash';
 import {
   Animated,
-  Button,
   Keyboard,
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -17,6 +16,7 @@ import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import InvestigatorSearchBox from './InvestigatorSearchBox';
 import NewInvestigatorRow from './NewInvestigatorRow';
 import InvestigatorRow from 'components/core/InvestigatorRow';
@@ -29,6 +29,7 @@ import { searchMatchesText } from 'components/core/searchHelpers';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from 'components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getTabooSet, getPacksInCollection, AppState } from 'reducers';
 import typography from 'styles/typography';
+import space from 'styles/space';
 
 const SCROLL_DISTANCE_BUFFER = 50;
 
@@ -307,8 +308,8 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={[styles.sectionFooterButton, { height: rowNonCollectionHeight(fontScale) }]}>
-          <Button
+        <View style={{ height: rowNonCollectionHeight(fontScale) }}>
+          <BasicButton
             title={t`Edit Collection`}
             onPress={this._editCollection}
           />
@@ -374,7 +375,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       return (
         <>
           { !!customFooter && customFooter }
-          <View style={styles.footer}>
+          <View style={[space.marginS, styles.footer]}>
             <Text style={[typography.text, typography.center]}>
               { t`No matching investigators for "${searchTerm}".` }
             </Text>
@@ -480,12 +481,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footer: {
-    marginLeft: 8,
-    marginRight: 8,
-    marginTop: 8,
     marginBottom: 60,
-  },
-  sectionFooterButton: {
-    margin: 8,
   },
 });
