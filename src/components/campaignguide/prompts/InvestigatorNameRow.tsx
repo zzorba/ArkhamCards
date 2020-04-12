@@ -18,7 +18,7 @@ export default function InvestigatorNameRow({
   dark,
 }: Props) {
   const backgroundColor = dark ?
-    FACTION_COLORS[investigator.factionCode()] :
+    FACTION_LIGHT_GRADIENTS[investigator.factionCode()][1] :
     FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0];
   return (
     <View style={[
@@ -32,7 +32,6 @@ export default function InvestigatorNameRow({
         <Text style={[
           typography.mediumGameFont,
           styles.investigatorText,
-          dark ? { color: '#FFF' } : { color: '#000' },
         ]}>
           { investigator.name }
         </Text>
@@ -51,9 +50,11 @@ export default function InvestigatorNameRow({
 const styles = StyleSheet.create({
   investigatorText: {
     fontWeight: '600',
+    color: '#000',
   },
   investigatorRow: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,

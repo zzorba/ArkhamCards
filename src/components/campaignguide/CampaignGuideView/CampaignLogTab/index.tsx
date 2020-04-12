@@ -23,6 +23,10 @@ interface Props {
 }
 
 export default class CampaignLogTab extends React.Component<Props> {
+  _addCampaignLog = () => {
+
+  };
+
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
     const { campaignLog, campaignGuide } = this.props;
     switch (type) {
@@ -85,6 +89,12 @@ export default class CampaignLogTab extends React.Component<Props> {
                 sectionId={id}
                 campaignGuide={campaignGuide}
                 section={section}
+              />
+            ) }
+            { id === 'campaign_notes' && (
+              <BasicButton
+                title={t`Add campaign log entry`}
+                onPress={this._addCampaignLog}
               />
             ) }
           </View>
