@@ -158,8 +158,9 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
   };
 
   _delete = () => {
-    const { campaignId, deleteCampaign } = this.props;
+    const { componentId, campaignId, deleteCampaign } = this.props;
     deleteCampaign(campaignId);
+    Navigation.pop(componentId);
   };
 
   _deleteCampaign = () => {
