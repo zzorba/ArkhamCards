@@ -51,7 +51,7 @@ class DeckXpSection extends React.Component<Props> {
     if (!changes) {
       return null;
     }
-    const availableXp = deck.xp || 0;
+    const availableXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
     const xpLine = `${changes.spentXp} of ${availableXp} spent`;
     return (
       <>
