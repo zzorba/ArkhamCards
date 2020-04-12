@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    padding: 16,
+    padding: 10,
     fontFamily: 'System',
     fontSize: 18,
     color: '#111',
