@@ -1,5 +1,5 @@
 import React from 'react';
-import { InteractionManager } from 'react-native';
+import { Alert, InteractionManager } from 'react-native';
 import { flatMap, forEach } from 'lodash';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -12,7 +12,7 @@ import InvestigatorsTab from './InvestigatorsTab';
 import CampaignLogTab from './CampaignLogTab';
 import ScenarioListTab from './ScenarioListTab';
 import TabView from 'components/core/TabView';
-import { updateCampaign } from 'components/campaign/actions';
+import { deleteCampaign, updateCampaign } from 'components/campaign/actions';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { CampaignGuideContextType } from '../CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps } from '../withCampaignGuideContext';
@@ -25,6 +25,7 @@ interface ReduxActionProps {
     id: number,
     sparseCampaign: Partial<Campaign>
   ) => void;
+  deleteCampaign: (id: number) => void;
 }
 type Props = CampaignGuideProps & ReduxActionProps & NavigationProps & DimensionsProps & InjectedDialogProps;
 
@@ -156,6 +157,23 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     });
   };
 
+  _delete = () => {
+    const { campaignId, deleteCampaign } = this.props;
+    deleteCampaign(campaignId);
+  };
+
+  _deleteCampaign = () => {
+    const { campaignName } = this.props;
+    Alert.alert(
+      t`Delete`,
+      t`Are you sure you want to delete the campaign: ${campaignName}`,
+      [
+        { text: t`Delete`, onPress: this._delete, style: 'destructive' },
+        { text: t`Cancel`, style: 'cancel' },
+      ],
+    );
+  };
+
   render() {
     const {
       campaignId,
@@ -176,6 +194,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
           <InvestigatorsTab
             componentId={componentId}
             fontScale={fontScale}
+            deleteCampaign={this._deleteCampaign}
             campaignLog={processedCampaign.campaignLog}
             campaignGuide={campaignGuide}
             latestDecks={latestDecks}
@@ -225,6 +244,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     updateCampaign,
+    deleteCampaign,
   } as any, dispatch);
 }
 

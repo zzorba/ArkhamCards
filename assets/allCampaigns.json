@@ -452,7 +452,7 @@
     },
     {
       "id": "survived",
-      "text": "The investigators have survived, but their actions weigh heavily on their consciences",
+      "text": "The investigators have survived, but their actions weigh heavily on their consciences.",
       "effects": [
         {
           "type": "campaign_data",
@@ -597,7 +597,7 @@
     },
     {
       "id": "lead_investigator_xp",
-      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life",
+      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life.",
       "effects": [
         {
           "type": "earn_xp",
@@ -688,7 +688,7 @@
         "physical",
         "mental"
       ],
-      "text": "You barely manage to escape your house with your lives. The woman from your parlor follows you out the front door, slamming it behind her. “You fools! See what you have done?” She pushes a chair in front of the door, lodging it beneath the doorknob. “We must get out of here. Come with me, and I will tell you what I know. We are the only ones who can stop the threat that lurks beneath from being unleashed throughout the city.” You’re in no state to argue. Nodding, you follow the woman as she runs from your front porch out into the rainy street, toward Rivertown",
+      "text": "You barely manage to escape your house with your lives. The woman from your parlor follows you out the front door, slamming it behind her. “You fools! See what you have done?” She pushes a chair in front of the door, lodging it beneath the doorknob. “We must get out of here. Come with me, and I will tell you what I know. We are the only ones who can stop the threat that lurks beneath from being unleashed throughout the city.” You’re in no state to argue. Nodding, you follow the woman as she runs from your front porch out into the rainy street, toward Rivertown.",
       "steps": ["house_standing", "ghoul_priest_alive", "earn_lita", "earn_xp", "$upgrade_decks"]
     },
     {
@@ -908,7 +908,7 @@
     {
       "id": "doom_note",
       "type": "rule_reminder",
-      "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda"
+      "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda."
     },
     {
       "id": "cultists_interrogated_r1",
@@ -1341,7 +1341,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Remove one of the two copies of each other location from the game at random. Then, choose one of the six remaining locations at random, and remove it from the game as well. Put the remaining locations into play"
+      "text": "Remove one of the two copies of each other location from the game at random. Then, choose one of the six remaining locations at random, and remove it from the game as well. Put the remaining locations into play."
     },
     {
       "id": "gather_sacrifices",
@@ -1759,7 +1759,7 @@
       "id": "train_note",
       "type": "rule_reminder",
       "title": "Moving on the Train: “Left” and “Right”",
-      "text": "During this scenario, locations are lined up from left to right, with the Engine Car as the rightmost location. Whenever a card effect refers to “the location to the left,” or “the location to the right,” it refers to the location immediately to your location’s left or right.\nAny card effects that reference a direction (left or right) should be interpreted from the perspective of the diagram on the previous page"
+      "text": "During this scenario, locations are lined up from left to right, with the Engine Car as the rightmost location. Whenever a card effect refers to “the location to the left,” or “the location to the right,” it refers to the location immediately to your location’s left or right.\nAny card effects that reference a direction (left or right) should be interpreted from the perspective of the diagram on the previous page."
     },
     {
       "id": "investigators_delayed",
@@ -1774,7 +1774,7 @@
     },
     {
       "id": "across_space_and_time",
-      "text": "Each investigator who was defeated has acquired the Across Space and Time weakness and must add 1 copy of it to their deck. This card does not count toward that investigator’s deck size",
+      "text": "Each investigator who was defeated has acquired the Across Space and Time weakness and must add 1 copy of it to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -1980,7 +1980,6 @@
         "physical",
         "mental"
       ],
-      "text": "Go to <b>Resolution 2</b>",
       "steps": ["resolution_2", "$upgrade_decks"]
     },
     {
@@ -2066,12 +2065,12 @@
     {
       "id": "faculty_office_night_is_young",
       "bullet_type": "small",
-      "text": "Set Faculty Offices <i>(The Night is Still Young)</i> aside, out of play. Remove Faculty Offices <i>(The Hour is Late)</i> from the game"
+      "text": "Set Faculty Offices <i>(The Night is Still Young)</i> aside, out of play. Remove Faculty Offices <i>(The Hour is Late)</i> from the game."
     },
     {
       "id": "faculty_office_hour_is_late",
       "bullet_type": "small",
-      "text": "Set Faculty Offices <i>(The Hour is Late)</i> aside, out of play. Remove Faculty Offices <i>(The Night is Still Young)</i> from the game"
+      "text": "Set Faculty Offices <i>(The Hour is Late)</i> aside, out of play. Remove Faculty Offices <i>(The Night is Still Young)</i> from the game."
     },
     {
       "id": "setup_locations",
@@ -2237,7 +2236,7 @@
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "You pull each of the dormitory’s fire alarms and usher the students out of the building’s north exit, hoping to make your way off campus. Many of the students are confused and exhausted, but you believe an attempt to explain the situation will do more harm than good. Minutes later, a terrible screech echoes across the campus, piercing and shrill. You tell the students to wait and head back to the dormitories to investigate. Oddly, you find no trace of the strange creature—a prospect that worries you more than it relieves you. You hurry to the faculty offices to find Professor Rice, but there is no sign of him anywhere",
+      "text": "You pull each of the dormitory’s fire alarms and usher the students out of the building’s north exit, hoping to make your way off campus. Many of the students are confused and exhausted, but you believe an attempt to explain the situation will do more harm than good. Minutes later, a terrible screech echoes across the campus, piercing and shrill. You tell the students to wait and head back to the dormitories to investigate. Oddly, you find no trace of the strange creature—a prospect that worries you more than it relieves you. You hurry to the faculty offices to find Professor Rice, but there is no sign of him anywhere.",
       "steps": ["warren_rice_kidnapped", "students_rescued", "earn_xp", "proceed_either"]
     },
     {
@@ -3103,7 +3102,7 @@
         "physical",
         "mental"
       ],
-      "text": "You barely made it out of the club alive. Go to <b>Resolution 1</b>",
+      "text": "You barely made it out of the club alive.",
       "steps": ["resolution_1"]
     },
     {
@@ -3121,7 +3120,7 @@
     {
       "id": "R3",
       "title": "Resolution 3",
-      "text": "Although you were unable to find Dr. Morgan in the club, the man you rescued is grateful for your help. He introduces himself as Peter Clover, the owner of the establishment you’d just left. Despite the situation, he maintains an air of quiet professionalism. As you make your way towards the street, a well-polished Chrysler B-70 rolls up to you, and a gorgeous woman with long brown hair and narrow eyes exits. She is flanked by dangerous-looking men who slip their hands under their suit jackets when they see you. “Peter,” she says with a sigh of relief, “Good, you’re okay. I heard there was trouble?” She turns and glares at you with deadly eyes. “Who are they?”\nMr. Clover dusts off his vest, unworried. “Naomi, my dear, these are friends of mine. They…” he clears his throat. “They escorted me off the premises,” he explains after a short pause. “They have earned our gratitude.” The woman crosses her arms and takes a moment to size you up before giving you a smirk.\n“Very well then. I must thank you for taking care of Peter. Run along now; we’ll handle things from here.” She nods to the goons flanking her and they walk past you toward the club’s rear entrance, pulling firearms out from underneath their coats. You’re not sure what ‘handling things’ means, but you’re pretty sure you don’t want to be here when the gunfire starts. You thank Naomi and Peter, and head of",
+      "text": "Although you were unable to find Dr. Morgan in the club, the man you rescued is grateful for your help. He introduces himself as Peter Clover, the owner of the establishment you’d just left. Despite the situation, he maintains an air of quiet professionalism. As you make your way towards the street, a well-polished Chrysler B-70 rolls up to you, and a gorgeous woman with long brown hair and narrow eyes exits. She is flanked by dangerous-looking men who slip their hands under their suit jackets when they see you. “Peter,” she says with a sigh of relief, “Good, you’re okay. I heard there was trouble?” She turns and glares at you with deadly eyes. “Who are they?”\nMr. Clover dusts off his vest, unworried. “Naomi, my dear, these are friends of mine. They…” he clears his throat. “They escorted me off the premises,” he explains after a short pause. “They have earned our gratitude.” The woman crosses her arms and takes a moment to size you up before giving you a smirk.\n“Very well then. I must thank you for taking care of Peter. Run along now; we’ll handle things from here.” She nods to the goons flanking her and they walk past you toward the club’s rear entrance, pulling firearms out from underneath their coats. You’re not sure what ‘handling things’ means, but you’re pretty sure you don’t want to be here when the gunfire starts. You thank Naomi and Peter, and head off.",
       "steps": ["naomi_has_back", "francis_morgan_kidnapped", "cheated", "earn_xp", "$upgrade_decks"]
     },
     {
@@ -3305,12 +3304,12 @@
         "choices": [
           {
             "id": "chaos_tokens",
-            "text": "Add chaos tokens",
+            "text": "Add chaos tokens.",
             "steps": ["chaos_token_choice"]
           },
           {
             "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction",
+            "text": "Scenario ended without instruction.",
             "steps": []
           }
         ]
@@ -3709,12 +3708,12 @@
     },
     {
       "id": "one_clue",
-      "text": "The lead investigator gains a clue from the token bank",
+      "text": "The lead investigator gains a clue from the token bank.",
       "bullet_type": "small"
     },
     {
       "id": "two_clues",
-      "text": "The lead investigator gains 2 clues from the token bank",
+      "text": "The lead investigator gains 2 clues from the token bank.",
       "bullet_type": "small"
     },
     {
@@ -4035,7 +4034,6 @@
         "physical",
         "mental"
       ],
-      "text": "Read <b>Resolution 2</b>",
       "steps": ["resolution_2"]
     },
     {
@@ -4575,7 +4573,7 @@
     {
       "id": "kill_ashleigh",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ashleigh Clarke</i>",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ashleigh Clarke</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -4915,12 +4913,12 @@
         "choices": [
           {
             "id": "chaos_tokens",
-            "text": "Add chaos tokens",
+            "text": "Add chaos tokens.",
             "steps": ["chaos_token_choice"]
           },
           {
             "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction",
+            "text": "Scenario ended without instruction.",
             "steps": []
           }
         ]
@@ -5149,7 +5147,7 @@
     },
     {
       "id": "act_2_v2",
-      "text": "Because you have 6 or more total <b>Doubt</b> and Conviction, and have more <b>Doubt</b> than Conviction",
+      "text": "Because you have 6 or more total <b>Doubt</b> and Conviction, and have more <b>Doubt</b> than <b>Conviction</b>.",
       "bullets": [
         {
           "text": "Use Act 2—Search the Stranger (v. II). Remove each other version of Act 2 from the game."
@@ -5424,7 +5422,7 @@
         "choices": [
           {
             "id": "possessed",
-            "text": "At least 1 Posession treachery in hand",
+            "text": "At least 1 Posession treachery in hand.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -5979,7 +5977,7 @@
     {
       "id": "kill_sebastien",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Sebastien Moreau</i>",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Sebastien Moreau</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -7152,7 +7150,7 @@
     {
       "id": "kill_jordan",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Jordan Perry</i>",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Jordan Perry</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -7251,7 +7249,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. There is no response but a flock of magpies that scatter from the rooftop at the sudden noise. You try the doorknob, hoping you won’t have to resort to more forceful measures. To your surprise, you find the door unlocked.\nInside, Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. The food in his pantry is old and rotten. There is no sign of anyone having lived here for years, and yet the ink upon the living room walls is wet and fresh. Over and over, across nearly every inch of the wallpaper, it reads:\n<center><fancy>He is already here.</fancy></center>\n",
+      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. There is no response but a flock of magpies that scatter from the rooftop at the sudden noise. You try the doorknob, hoping you won’t have to resort to more forceful measures. To your surprise, you find the door unlocked.\nInside, Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. The food in his pantry is old and rotten. There is no sign of anyone having lived here for years, and yet the ink upon the living room walls is wet and fresh. Over and over, across nearly every inch of the wallpaper, it reads:\n<center><fancy>He is already here.</fancy></center>",
       "steps": ["found_nigels_home", "add_cultists", "ask_jordan_perry", "earn_xp",
         "$upgrade_decks"]
     },
@@ -7285,7 +7283,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You turn over the folded program in your hand, reading it for what seems like the hundredth time. “Miskatonic Playhouse presents: The King in Yellow,” it reads. “A special one-night engagement at Arkham’s very own Ward Theatre. An irresistible drama in two acts. Production staged and directed by Nigel Engram.” The cast is a small ensemble, with one unattributed credit at the end: “The Stranger.”\nTo have such a highly anticipated play come to Arkham all the way from Paris is a noteworthy event, even if it is just for one night. For weeks leading up to the show, it was the talk of the town. It seemed so unassuming...and yet, you have evidence something sinister is at work. It started with the disappearance of one of the stagehands at the theatre—a boy of only seventeen who missed rehearsal one night and was never seen again. Then, less than two weeks before the performance, there was the musician whose corpse was found with a gun in its mouth. Perhaps most chilling was the crazed man the coppers had picked up in Independence Square who had been ranting and raving about the “King’s return.” He was brought to Arkham Asylum, and you were surprised to discover that he was not alone in his delusions.\nFinding these events suspicious, you and your companions have delved deeper into the matter. Although no connection can be proven, these weren’t the only strange events surrounding the up-and-coming play. Instances of suicide and madness have followed in its wake, and you are determined to discover why.\nThe lights in the auditorium dim, and a spotlight shines on the stage. What unfolds is not quite what you expected. Slow-paced and monotonous, the first act of The King in Yellow is a tedious bore. The setting and characters are compelling, but the meandering and nonsensical story does little to entertain or inform. You begin to wonder whether the dreadful events surrounding The King in Yellow aren’t connected, after all. Perhaps it was just your overactive imagination; how could such a trivial and unassuming show cause such pandemonium? You are surprised when the first act closes without any rising action or revelation. The lights rise for the intermission, and you consider leaving early, stifling a yawn. Before you are able to decide, however, you find yourself drifting...drifting...to sleep.\n"
+      "text": "You turn over the folded program in your hand, reading it for what seems like the hundredth time. “Miskatonic Playhouse presents: The King in Yellow,” it reads. “A special one-night engagement at Arkham’s very own Ward Theatre. An irresistible drama in two acts. Production staged and directed by Nigel Engram.” The cast is a small ensemble, with one unattributed credit at the end: “The Stranger.”\nTo have such a highly anticipated play come to Arkham all the way from Paris is a noteworthy event, even if it is just for one night. For weeks leading up to the show, it was the talk of the town. It seemed so unassuming...and yet, you have evidence something sinister is at work. It started with the disappearance of one of the stagehands at the theatre—a boy of only seventeen who missed rehearsal one night and was never seen again. Then, less than two weeks before the performance, there was the musician whose corpse was found with a gun in its mouth. Perhaps most chilling was the crazed man the coppers had picked up in Independence Square who had been ranting and raving about the “King’s return.” He was brought to Arkham Asylum, and you were surprised to discover that he was not alone in his delusions.\nFinding these events suspicious, you and your companions have delved deeper into the matter. Although no connection can be proven, these weren’t the only strange events surrounding the up-and-coming play. Instances of suicide and madness have followed in its wake, and you are determined to discover why.\nThe lights in the auditorium dim, and a spotlight shines on the stage. What unfolds is not quite what you expected. Slow-paced and monotonous, the first act of The King in Yellow is a tedious bore. The setting and characters are compelling, but the meandering and nonsensical story does little to entertain or inform. You begin to wonder whether the dreadful events surrounding The King in Yellow aren’t connected, after all. Perhaps it was just your overactive imagination; how could such a trivial and unassuming show cause such pandemonium? You are surprised when the first act closes without any rising action or revelation. The lights rise for the intermission, and you consider leaving early, stifling a yawn. Before you are able to decide, however, you find yourself drifting...drifting...to sleep."
     },
     {
       "id": "check_lola_hayes",
@@ -7304,7 +7302,7 @@
     {
       "id": "lola_prologue",
       "type": "story",
-      "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black\n"
+      "text": "Act I came and went without a hitch, as it often did in rehearsal. You couldn’t help but note the blank, dismissive expressions on many of the audience members’ faces, and you wonder how the audience will react to the play’s disturbing second half. The role of Cassilda is tiresomely boring for the first half of the play, although you enjoy portraying her regal charm. You find yourself missing your previous co-star, Miriam Twain, and suddenly the dread and regret you had felt in Paris comes flooding back. With a sigh, you retreat to a dark corner backstage to escape the sounds of stagehands preparing for the next scene. You try to quell your emotions and replace your thoughts with those of Cassilda’s—her hopes, her fears, her fate.\nJust then, you catch the Stranger staring at you from afar, and you find yourself shaking at the mere sight of him. Even though they continue to replace the actor who plays the Stranger before each show (and indeed many times during rehearsals), you know that this last-minute replacement is the most horrid of them all. Realizing you never caught his name, a shiver of terror courses through your spine. Have you found your way back to the wolves, like a lost lamb? You cannot look away— his gaze is inescapable. Everything goes black."
     }
   ]
 }
@@ -7978,7 +7976,7 @@
     {
       "id": "kill_haruko",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ishimaru Haruko</i>",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ishimaru Haruko</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -8460,7 +8458,7 @@
     {
       "id": "kill_constance",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Constance Dumaine</i>",
+      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Constance Dumaine</i>.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -8922,7 +8920,7 @@
     {
       "id": "doom_note",
       "type": "rule_reminder",
-      "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda"
+      "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda."
     },
     {
       "id": "cultists_interrogated_r1",
@@ -8940,7 +8938,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display",
+            "text": "Victory display:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -8986,7 +8984,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display",
+            "text": "Victory display:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -9421,7 +9419,7 @@
     },
     {
       "id": "remove_pieces_of_evidence",
-      "text": "As evenly as possible, remove a total number of clues from the above locations equal to the number of <i>pieces of evidence that were left behind</i> in your Campaign Log"
+      "text": "As evenly as possible, remove a total number of clues from the above locations equal to the number of <i>pieces of evidence that were left behind</i> in your Campaign Log."
     },
     {
       "id": "encounter_deck",
@@ -10158,7 +10156,7 @@
     {
       "id": "R2",
       "title": "Resolution 2",
-      "text": "It was not until recently that you understood the purpose of the awful piping which you have heard constantly throughout your investigation. It is a lullaby of sorts, meant to keep the oblivious god from waking. For just a brief moment, the pipers’ song was interrupted, and Azathoth began to stir. Now you understand why Anna came to you that fateful night and begged to read your fortune. She knew the part you would have to play when you arrived here.\nSitting down at the edge of the creature’s nighted throne, you take out your flute, and begin to play.\nIn this place where time and hunger and age and weariness are mortal aspects of no concern to you, it is your duty to continue to play. Without fail. Without end. ",
+      "text": "It was not until recently that you understood the purpose of the awful piping which you have heard constantly throughout your investigation. It is a lullaby of sorts, meant to keep the oblivious god from waking. For just a brief moment, the pipers’ song was interrupted, and Azathoth began to stir. Now you understand why Anna came to you that fateful night and begged to read your fortune. She knew the part you would have to play when you arrived here.\nSitting down at the edge of the creature’s nighted throne, you take out your flute, and begin to play.\nIn this place where time and hunger and age and weariness are mortal aspects of no concern to you, it is your duty to continue to play. Without fail. Without end.",
       "steps": ["lead_investigator_joins_pipers", "azathoth_slumbers", "lead_investigator_insane", "earn_xp_bonus_5", "two_mental_trauma", "$upgrade_decks", "win"]
     },
     {
@@ -10413,7 +10411,7 @@
             "section": "campaign_notes",
             "id": "pieces_of_evidence",
             "operation": "set_input",
-            "text": "#X# pieces of evidence were left behind"
+            "text": "#X# pieces of evidence were left behind."
           }
         ]
       }
@@ -10812,7 +10810,7 @@
     {
       "id": "lodge_setup_2",
       "bullet_type": "small",
-      "text": "Put the versions of Lodge Gates, Lobby, and Lodge Cellar with the <i>(We’ve Been Expecting You)</i> subtitle into play. Remove the other versions of those locations from the game"
+      "text": "Put the versions of Lodge Gates, Lobby, and Lodge Cellar with the <i>(We’ve Been Expecting You)</i> subtitle into play. Remove the other versions of those locations from the game."
     },
     {
       "id": "lodge_setup_3",
@@ -11677,7 +11675,7 @@
           {
             "id": "q6",
             "flavor": "“…Why are you looking at me like that?”",
-            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>",
+            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "campaign_log",
               "section": "campaign_notes",
@@ -11779,7 +11777,7 @@
           {
             "id": "q6",
             "flavor": "“…Why are you looking at me like that?”",
-            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>",
+            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -11904,7 +11902,7 @@
           {
             "id": "q6",
             "flavor": "“…Why are you looking at me like that?”",
-            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>",
+            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -12108,7 +12106,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display",
+            "text": "Victory display:",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
@@ -12133,17 +12131,17 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "More in the victory display",
+            "text": "More in the victory display.",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
             "id": "equal",
-            "text": "Equal number in each",
+            "text": "Equal number in each.",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
             "id": "entry_hall",
-            "text": "More beneath the Entry Hall",
+            "text": "More beneath the Entry Hall.",
             "steps": ["progress_6", "josef_is_alive", "choose_lodge"]
           }
         ]
@@ -12183,7 +12181,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rescued_josef",
-          "text": "the investigators rescued Josef"
+          "text": "the investigators rescued Josef."
         }
       ]
     },
@@ -12278,7 +12276,7 @@
     {
       "id": "progress_9",
       "type": "story",
-      "text": "You shake Mr. Sanford’s hand. His grip is cold, but strong. The other members of the Lodge seem to relax around you. “We will do great works together, my friends,” says Sanford. “Great works indeed.” But out of the corner of your eye, you see one of the Lodge’s enforcers gripping his weapon a little tighter"
+      "text": "You shake Mr. Sanford’s hand. His grip is cold, but strong. The other members of the Lodge seem to relax around you. “We will do great works together, my friends,” says Sanford. “Great works indeed.” But out of the corner of your eye, you see one of the Lodge’s enforcers gripping his weapon a little tighter."
     },
     {
       "id": "deceiving_the_lodge",
@@ -12516,7 +12514,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Moldy Halls, Walter Gilman’s Room, and the three Decrepit Door locations into play. Each investigator begins play in the Moldy Halls. "
+      "text": "Put Moldy Halls, Walter Gilman’s Room, and the three Decrepit Door locations into play. Each investigator begins play in the Moldy Halls."
     },
     {
       "id": "create_unknown_place_deck",
@@ -12775,7 +12773,7 @@
     {
       "id": "R1",
       "title": "Resolution 1",
-      "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house",
+      "text": "You awaken in the muddy lawn at the base of some crooked wooden steps, the front door of the Witch House looming above you. Every fiber of your being is filled with regret. You know you have failed to prevent something awful, though you are not sure exactly what. The evidence of your eyes and ears suggests what you saw inside the Witch House was not concurrent with here and now. Regardless, you’ve learned several things about Keziah Mason, the witch who once inhabited this old and forsaken house. With your spirit diminished and your body aching, this information will have to suffice. You dare not venture back into this infernal house.",
       "steps": ["earn_xp", "check_brown_jenkin_xp", "check_nahab_xp", "check_act_deck", "$upgrade_decks"]
     },
     {
@@ -13015,7 +13013,7 @@
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "The lead investigator must decide",
+      "text": "The lead investigator must decide (choose one):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -13281,12 +13279,12 @@
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was act 1 or 2 when the scenario ended",
+            "text": "It was act 1 or 2 when the scenario ended.",
             "steps": ["no_record"]
           },
           {
             "id": "act_3",
-            "text": "It was act 3 when the scenario ended",
+            "text": "It was act 3 when the scenario ended.",
             "steps": ["mementos_flute"]
           }
         ]
@@ -13759,7 +13757,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Miskatonic River and Forbidding Shore into play. Each investigator begins play at the Miskatonic River. Then, shuffle the 6 Unvisited Isle locations and choose 2 at random to put into play. Set the rest aside, out of play. "
+      "text": "Put the Miskatonic River and Forbidding Shore into play. Each investigator begins play at the Miskatonic River. Then, shuffle the 6 Unvisited Isle locations and choose 2 at random to put into play. Set the rest aside, out of play."
     },
     {
       "id": "check_sided_with_the_coven_braziers",
@@ -14158,7 +14156,7 @@
           },
           {
             "id": "scenario_ended",
-            "text": "Scenario ended without instruction",
+            "text": "Scenario ended without instruction.",
             "steps": []
           }
         ]
@@ -14193,7 +14191,7 @@
           },
           {
             "id": "scenario_ended",
-            "text": "Scenario ended without instruction",
+            "text": "Scenario ended without instruction.",
             "steps": []
           }
         ]
@@ -15346,12 +15344,12 @@
         "choices": [
           {
             "id": "chaos_tokens",
-            "text": "Choose chaos tokens",
+            "text": "Choose chaos tokens.",
             "steps": ["chaos_token_choice"]
           },
           {
             "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction",
+            "text": "Scenario ended without instruction.",
             "steps": []
           }
         ]
@@ -17137,13 +17135,11 @@
     },
     {
       "id": "resolution_2",
-      "text": "Proceed to <b>Resolution 2</b>.",
       "type": "resolution",
       "resolution": "R2"
     },
     {
       "id": "resolution_3",
-      "text": "Proceed to <b>Resolution 3</b>.",
       "type": "resolution",
       "resolution": "R3"
     },
@@ -17520,7 +17516,7 @@
     {
       "id": "start_with_ichtaca",
       "bullet_type": "right",
-      "text": "Begin this scenario with Ichtaca in play. "
+      "text": "Begin this scenario with Ichtaca in play."
     },
     {
       "id": "intro_3",
@@ -17727,7 +17723,7 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display",
+            "text": "Victory display:",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -21526,7 +21522,7 @@
           },
           {
             "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction",
+            "text": "Scenario ended without instruction.",
             "steps": []
           }
         ]
@@ -22217,12 +22213,12 @@
         "choices": [
           {
             "id": "stop_her",
-            "flavor": "“You’re not going anywhere until you tell me what is going on.”",
+            "text": "<i>“You’re not going anywhere until you tell me what is going on.”</i>",
             "steps": ["intro_4", "listened_to_ichtaca", "add_cultist"]
           },
           {
             "id": "let_her_leave",
-            "flavor": "“Have it your way.”",
+            "text": "<i>“Have it your way.”</i>",
             "steps": ["intro_5", "ichtaca_left_without_you", "check_ignored_ichtaca_and_gave_relic_to_harlan"]
           }
         ]
@@ -22402,12 +22398,12 @@
         "choices": [
           {
             "id": "police",
-            "text": "If you wish to go to the police to inform them about Alejandro’s disappearance",
+            "text": "If you wish to go to the police to inform them about Alejandro’s disappearance.",
             "steps": ["go_to_police"]
           },
           {
             "id": "search_alone",
-            "text": "If you wish to look for Alejandro on your own",
+            "text": "If you wish to look for Alejandro on your own.",
             "steps": ["search_for_alejandro_alone"]
           }
         ]
@@ -22471,12 +22467,12 @@
         "choices": [
           {
             "id": "completed",
-            "text": "Act 3b was completed",
+            "text": "Act 3b was completed.",
             "steps": ["found_missing_relic", "maybe_earn_relic_of_ages"]
           },
           {
             "id": "in_play",
-            "text": "The “a/b” act deck is still in play",
+            "text": "The “a/b” act deck is still in play.",
             "steps": ["relic_is_missing", "maybe_remove_relic_of_ages"]
           }
         ]
@@ -22637,12 +22633,12 @@
         "choices": [
           {
             "id": "completed",
-            "text": "Act 3d was completed",
+            "text": "Act 3d was completed.",
             "steps": ["rescued_alejandro", "maybe_earn_alejandro"]
           },
           {
             "id": "in_play",
-            "text": "The “c/d” act deck is still in play",
+            "text": "The “c/d” act deck is still in play.",
             "steps": ["alejandro_is_missing", "maybe_remove_alejandro"]
           }
         ]
@@ -22657,12 +22653,12 @@
         "choices": [
           {
             "id": "completed",
-            "text": "Act 3f was completed",
+            "text": "Act 3f was completed.",
             "steps": ["forged_bond_with_ichtaca", "maybe_earn_ichtaca"]
           },
           {
             "id": "in_play",
-            "text": "The “e/f” act deck is still in play",
+            "text": "The “e/f” act deck is still in play.",
             "steps": ["ichtaca_in_the_dark"]
           }
         ]
@@ -22946,7 +22942,7 @@
     {
       "id": "buy_supplies",
       "type": "input",
-      "text": "Each investigator may spend supply points to purchase one or more of the supplies listed below. The number of supply points available to each investigator is based on the number of investigators in the campaign",
+      "text": "Each investigator may spend supply points to purchase one or more of the supplies listed below. The number of supply points available to each investigator is based on the number of investigators in the campaign.",
       "input": {
         "type": "supplies",
         "section": "supplies",
@@ -23652,7 +23648,7 @@
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was Act 1 or 2 when the scenario ended",
+            "text": "It was Act 1 or 2 when the scenario ended.",
             "steps": ["ichtaca_observed_progress", "alejandro_followed_to_ruins"]
           },
           {
@@ -23732,12 +23728,12 @@
         "choices": [
           {
             "id": "chaos_tokens",
-            "text": "Choose chaos tokens",
+            "text": "Choose chaos tokens.",
             "steps": ["chaos_token_choice"]
           },
           {
             "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction",
+            "text": "Scenario ended without instruction.",
             "steps": []
           }
         ]

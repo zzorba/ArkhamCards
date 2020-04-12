@@ -640,7 +640,7 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind"
+            "text": "#X# pieces of evidence were left behind."
           },
           {
             "id": "rejected_fate",
@@ -648,7 +648,7 @@
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef"
+            "text": "the investigators rescued Josef."
           },
           {
             "id": "sided_with_the_coven",
