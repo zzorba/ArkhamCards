@@ -8,11 +8,11 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import SingleCardWrapper from '../../SingleCardWrapper';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import Card from 'data/Card';
-import { CampaignLogEffect, BulletType } from 'data/scenario/types';
+import { CampaignLogEffect, FreeformCampaignLogEffect, BulletType } from 'data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 
 interface Props {
-  effect: CampaignLogEffect;
+  effect: CampaignLogEffect | FreeformCampaignLogEffect;
   input?: string[];
   numberInput?: number[];
   bulletType?: BulletType;
@@ -28,10 +28,19 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
   };
 
   renderContent() {
-    const { effect } = this.props;
+    const { effect, input } = this.props;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignGuide }: CampaignGuideContextType) => {
+          if (effect.type === 'freeform_campaign_log') {
+            const text = input && input.length ?
+              input[0] : 'Missing text entry';
+            return (
+              <CampaignGuideTextComponent
+                text={t`In your Campaign Log, record that <i>${text}</i>`}
+              />
+            );
+          }
           if (effect.id) {
             const logEntry = campaignGuide.logEntry(effect.section, effect.id);
             if (!logEntry) {

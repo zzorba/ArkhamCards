@@ -1,25 +1,26 @@
 import React from 'react';
 import { Alert, View } from 'react-native';
-import { forEach, keys, map } from 'lodash';
+import { forEach, keys, map, values } from 'lodash';
 import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import BasicButton from 'components/core/BasicButton';
-import { StringChoices, Slots, WeaknessSet } from 'actions/types';
+import { StringChoices, WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
 import { drawWeakness } from 'lib/weaknessHelper';
-import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
+import { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import InvestigatorButton from 'components/campaignguide/prompts/InvestigatorButton';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import space from 'styles/space';
 
-interface OwnProps {
+interface OwnProps extends WeaknessCardProps {
   id: string;
   investigators: Card[];
   traits: string[];
+  realTraits: boolean;
   campaignLog: GuidedCampaignLog;
   scenarioState: ScenarioStateHelper;
 }
@@ -32,7 +33,7 @@ interface State {
 
 type Props = WeaknessCardProps & OwnProps;
 
-class DrawRandomWeaknessComponent extends React.Component<Props, State> {
+export default class DrawRandomWeaknessComponent extends React.Component<Props, State> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
 
@@ -48,57 +49,30 @@ class DrawRandomWeaknessComponent extends React.Component<Props, State> {
       weaknessSet,
     } = this.context;
     const { choices } = this.state;
-    const assignedCards: Slots = {};
-    forEach(campaignInvestigators, investigator => {
-      const deck = latestDecks[investigator.code];
-      if (deck) {
-        forEach(deck.slots, (count, code) => {
-          if (cardsMap[code]) {
-            assignedCards[code] = (assignedCards[code] || 0) + count;
-          }
-        });
-        forEach(deck.ignoreDeckLimitSlots, (count, code) => {
-          if (cardsMap[code]) {
-            assignedCards[code] = (assignedCards[code] || 0) + count;
-          }
-        });
-      }
-      const storyAssets = campaignLog.storyAssets(investigator.code);
-      forEach(storyAssets, (count, code) => {
-        if (cardsMap[code]) {
-          assignedCards[code] = (assignedCards[code] || 0) + count;
-        }
-      });
-
-      const ignoreStoryAssets = campaignLog.ignoreStoryAssets(investigator.code);
-      forEach(ignoreStoryAssets, (count, code) => {
-        if (cardsMap[code]) {
-          assignedCards[code] = (assignedCards[code] || 0) + count;
-        }
-      });
-
-      const assignedWeakness = choices[investigator.code];
-      if (assignedWeakness) {
-        assignedCards[assignedWeakness] = (assignedCards[assignedWeakness] || 0) + 1;
-      }
-    });
-
-    return {
-      ...weaknessSet,
-      assignedCards,
-    };
+    return campaignLog.effectiveWeaknessSet(
+      campaignInvestigators,
+      latestDecks,
+      weaknessSet,
+      cardsMap,
+      values(choices)
+    );
   }
 
   _drawRandomWeakness = (
     code: string
   ) => {
-    const { cards, traits, campaignLog } = this.props;
+    const { cards, traits, campaignLog, realTraits } = this.props;
     const weaknessSet = this.effectiveWeaknessSet();
-    const card = drawWeakness(weaknessSet, cards, {
-      traits,
-      multiplayer: campaignLog.playerCount() > 0,
-      standalone: false,
-    });
+    const card = drawWeakness(
+      weaknessSet,
+      cards,
+      {
+        traits,
+        multiplayer: campaignLog.playerCount() > 0,
+        standalone: false,
+      },
+      realTraits
+    );
     if (!card) {
       Alert.alert(t`All weaknesses have been assigned.`);
     } else {
@@ -169,7 +143,3 @@ class DrawRandomWeaknessComponent extends React.Component<Props, State> {
     );
   }
 }
-
-export default withWeaknessCards<OwnProps>(
-  DrawRandomWeaknessComponent
-);

@@ -15,6 +15,7 @@ import {
   CampaignLogCondition,
   CampaignDataCondition,
   CampaignDataScenarioCondition,
+  CampaignDataChaosBagCondition,
   MultiCondition,
   CampaignDataInvestigatorCondition,
   CampaignLogSectionExistsCondition,
@@ -417,6 +418,18 @@ export function investigatorConditionResult(
   );
 }
 
+export function campaignDataChaosBagConditionResult(
+  condition: CampaignDataChaosBagCondition,
+  campaignLog: GuidedCampaignLog
+): NumberResult {
+  const chaosBag = campaignLog.chaosBag;
+  const tokenCount: number = chaosBag[condition.token] || 0;
+  return numberConditionResult(
+    tokenCount,
+    condition.options
+  );
+}
+
 export function campaignDataInvestigatorConditionResult(
   condition: CampaignDataInvestigatorCondition,
   campaignLog: GuidedCampaignLog
@@ -461,12 +474,7 @@ export function campaignDataConditionResult(
       );
     }
     case 'chaos_bag': {
-      const chaosBag = campaignLog.chaosBag;
-      const tokenCount: number = chaosBag[condition.token] || 0;
-      return numberConditionResult(
-        tokenCount,
-        condition.options
-      );
+      return campaignDataChaosBagConditionResult(condition, campaignLog);
     }
     case 'investigator':
       return campaignDataInvestigatorConditionResult(condition, campaignLog);

@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import { t } from 'ttag';
 
 import AccordionItem from './AccordionItem';
 import space from 'styles/space';
@@ -35,7 +36,7 @@ export default class SliderChooser extends React.Component<Props> {
       enabled,
     } = this.props;
     if (!enabled) {
-      return `${label}: All`;
+      return t`${label}: All`;
     }
     const rangeText = values[0] === values[1] ? values[0] : `${values[0]} - ${values[1]}`;
     return `${label}: ${rangeText}`;

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { flatMap, forEach, map } from 'lodash';
 import { connectRealm, EncounterSetResults } from 'react-native-realm';
-import { msgid, ngettext, t } from 'ttag';
+import { msgid, ngettext } from 'ttag';
 
 import { stringList } from 'lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
@@ -33,33 +33,35 @@ class EncounterSetStepComponent extends React.Component<Props> {
     const leadText = step.aside ?
       ngettext(
         msgid`Set the ${encounterSetString} encounter set aside, out of play.`,
-        t`Set the ${encounterSetString} encounter sets aside, out of play.`,
+        `Set the ${encounterSetString} encounter sets aside, out of play.`,
         encounterSets.length
       ) :
       ngettext(
         msgid`Gather all cards from the ${encounterSetString} encounter set.`,
-        t`Gather all cards from the following encounter sets: ${encounterSetString}.`,
+        `Gather all cards from the following encounter sets: ${encounterSetString}.`,
         encounterSets.length
       );
     const startText = step.text || leadText;
     const text =
     ngettext(msgid`${startText} This set is indicated by the following icon:`,
-      t`${startText} These sets are indicated by the following icons:`,
+      `${startText} These sets are indicated by the following icons:`,
       encounterSets.length);
     return (
       <SetupStepWrapper bulletType={step.bullet_type}>
         <CampaignGuideTextComponent text={text} />
-        <View style={[styles.iconPile, space.marginTopM, space.marginBottomL]}>
-          { map(encounterSets, set => !!set && (
-            <View style={[space.marginSideS, space.marginBottomM]} key={set.code}>
-              <EncounterIcon
-                encounter_code={set.code}
-                size={48}
-                color="#222"
-              />
-            </View>
-          )) }
-        </View>
+        <SetupStepWrapper bulletType={step.bullet_type} reverseSpacing>
+          <View style={[styles.iconPile, space.marginTopM, space.marginBottomS]}>
+            { map(encounterSets, set => !!set && (
+              <View style={[space.marginSideS, space.marginBottomM]} key={set.code}>
+                <EncounterIcon
+                  encounter_code={set.code}
+                  size={48}
+                  color="#222"
+                />
+              </View>
+            )) }
+          </View>
+        </SetupStepWrapper>
         { !!step.subtext && (
           <CampaignGuideTextComponent text={step.subtext} />
         ) }

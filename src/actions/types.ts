@@ -498,6 +498,12 @@ export interface UpdateChaosBagResultsAction {
   chaosBagResults: ChaosBagResults;
   now: Date;
 }
+
+export const CLEAN_BROKEN_CAMPAIGNS = 'CLEAN_BROKEN_CAMPAIGNS';
+export interface CleanBrokenCampaignsAction {
+  type: typeof CLEAN_BROKEN_CAMPAIGNS;
+}
+
 export const DELETE_CAMPAIGN = 'DELETE_CAMPAIGN';
 export interface DeleteCampaignAction {
   type: typeof DELETE_CAMPAIGN;
@@ -647,6 +653,12 @@ export interface GuideCountInput extends BasicInput {
   count: number;
 }
 
+export interface GuideStringInput extends BasicInput {
+  type: 'text';
+  step: string;
+  text: string;
+}
+
 export interface GuideChoiceInput extends BasicInput {
   type: 'choice';
   step: string;
@@ -664,6 +676,7 @@ export type GuideInput =
   GuideStringChoicesInput |
   GuideCountInput |
   GuideChoiceInput |
+  GuideStringInput |
   GuideStartScenarioInput;
 
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
@@ -749,6 +762,7 @@ export type DecksActions =
 export type CampaignActions =
   LogoutAction |
   ReplaceLocalDeckAction |
+  CleanBrokenCampaignsAction |
   NewCampaignAction |
   UpdateCampaignAction |
   DeleteCampaignAction |
@@ -759,6 +773,7 @@ export type CampaignActions =
   CampaignAddInvestigatorAction;
 
 export type GuideActions =
+  DeleteCampaignAction |
   LogoutAction |
   GuideSetInputAction |
   GuideUndoInputAction |

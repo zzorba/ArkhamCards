@@ -126,6 +126,8 @@ export default function CardFlavorTextComponent(
       styles={{
         paragraph: {
           fontSize: (fontAdjustment || 1) * (isBig ? 24 : 14),
+          marginTop: 4,
+          marginBottom: 4,
           fontWeight: '400',
           fontStyle: 'italic',
           color: color || COLORS.darkGray,

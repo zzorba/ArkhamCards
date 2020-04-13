@@ -1,4 +1,4 @@
-import { find, findIndex, forEach, map, reverse, slice } from 'lodash';
+import { find, findIndex, filter, forEach, map, reverse, slice } from 'lodash';
 import { t } from 'ttag';
 
 import { ProcessedCampaign, ProcessedScenario } from 'data/scenario';
@@ -151,9 +151,13 @@ export default class CampaignGuide {
     };
   }
 
-  nextScenarioId(rawScenarioId: string) {
+  nextScenarioId(rawScenarioId: string, skippedScenarios: string[]) {
     const parsedId = this.parseScenarioId(rawScenarioId);
-    const scenarios = this.allScenarioIds();
+    const skipped = new Set(skippedScenarios);
+    const scenarios = filter(
+      this.allScenarioIds(),
+      scenarioId => !skipped.has(scenarioId)
+    );
     const currentIndex = findIndex(
       scenarios,
       scenarioId => scenarioId === parsedId.scenarioId
@@ -254,7 +258,7 @@ export default class CampaignGuide {
       ];
     }
 
-    const nextScenarioId = executedScenario.latestCampaignLog.nextScenarioId();
+    const nextScenarioId = executedScenario.latestCampaignLog.nextScenarioId(true);
     if (!nextScenarioId) {
       return [firstResult];
     }

@@ -130,7 +130,7 @@
     "add_elder_thing",
     "check_past_midnight",
     "check_ghoul_priest",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -506,7 +506,7 @@
     "setup_locations",
     "set_aside_cards",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -733,7 +733,7 @@
     "encounter_deck",
     "check_ghoul_priest",
     "doom_note",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -1315,7 +1315,7 @@
     "check_bone_to_pick",
     "setup_hidden_cards",
     "hidden_chamber_note",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -1673,7 +1673,7 @@
     "add_chaos_token",
     "encounter_deck",
     "train_note",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -1825,7 +1825,7 @@
       "id": "remove_necronomicon",
       "bullet_type": "small",
       "text": "The Necronomicon <i>(Olaus Wormius Translation)</i> must be removed from that investigator’s deck.",
-      "effects" :[
+      "effects": [
         {
           "type": "remove_card",
           "card": "02140"
@@ -2020,7 +2020,7 @@
     "set_aside_cards",
     "setup_locations",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -2265,7 +2265,7 @@
     "set_aside_cards",
     "encounter_deck",
     "locations_note",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -2892,7 +2892,7 @@
     "set_aside_cards",
     "encounter_deck",
     "criminal_aloof_note",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -3145,8 +3145,7 @@
     "set_aside_cards",
     "encounter_deck",
     "void_note",
-    "wait_for_chaos_tokens",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -3296,29 +3295,41 @@
       }
     },
     {
-      "id": "wait_for_chaos_tokens",
+      "id": "$play_scenario",
       "type": "input",
-      "text": "If instructed to add chaos tokens to the bag:",
       "input": {
-        "type": "choose_one",
-        "choices": [
+        "type": "play_scenario",
+        "branches": [
           {
-            "id": "chaos_tokens",
-            "text": "Add chaos tokens.",
-            "steps": ["chaos_token_choice"]
-          },
-          {
-            "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction.",
-            "steps": []
+            "id": "add_chaos_token",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "tmm_add_chaos_token",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "tmm_add_chaos_token",
+                "text": "dummy"
+              }
+            ]
           }
         ]
       }
     },
     {
-      "id": "chaos_token_choice",
-      "type": "input",
+      "id": "add_chaos_token",
       "text": "Which ally left play?",
+      "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -3390,7 +3401,7 @@
     "add_weakness",
     "encounter_deck",
     "random_location_note",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -3407,13 +3418,13 @@
         "choices": [
           {
             "id": "calmed",
-            "flavor": "You try to calm down the townsfolk in order to learn more.",
-            "steps": [ "part1", "calmed_townsfolk" ]
+            "text": "<i>You try to calm down the townsfolk in order to learn more.</i>",
+            "steps": ["part1", "calmed_townsfolk"]
           },
           {
             "id": "warned",
-            "flavor": "You try to warn the townsfolk and convince them to evacuate.",
-            "steps": [ "part2", "warned_townsfolk" ]
+            "text": "<i>You try to warn the townsfolk and convince them to evacuate.</i>",
+            "steps": ["part2", "warned_townsfolk"]
           }
         ]
       }
@@ -3652,7 +3663,7 @@
     "check_escaped_brood",
     "check_killed_silas_bishop",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -4239,7 +4250,7 @@
     "check_for_onyx_clasp",
     "dual_agendas_rule",
     "track_mitpm",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -4737,8 +4748,7 @@
     "set_aside_cards",
     "setup_locations",
     "encounter_deck",
-    "wait_for_chaos_tokens",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -4905,29 +4915,41 @@
       ]
     },
     {
-      "id": "wait_for_chaos_tokens",
+      "id": "$play_scenario",
       "type": "input",
-      "text": "If instructed to add chaos tokens to the bag:",
       "input": {
-        "type": "choose_one",
-        "choices": [
+        "type": "play_scenario",
+        "branches": [
           {
-            "id": "chaos_tokens",
-            "text": "Add chaos tokens.",
-            "steps": ["chaos_token_choice"]
-          },
-          {
-            "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction.",
-            "steps": []
+            "id": "add_chaos_token",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "cca_add_chaos_token",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "cca_add_chaos_token",
+                "text": "dummy"
+              }
+            ]
           }
         ]
       }
     },
     {
-      "id": "chaos_token_choice",
+      "id": "add_chaos_token",
+      "text": "Which version of Act 2b was advanced?",
       "type": "input",
-      "text": "Which version of Act 2b was resolved?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -5016,7 +5038,7 @@
     "single_sided_location",
     "sanity_in_carcosa_rule",
     "track_mitpm",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -5679,7 +5701,7 @@
     "encounter_deck",
     "check_for_mitpm",
     "track_mitpm",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -6238,12 +6260,12 @@
         "choices": [
           {
             "id": "ignore",
-            "flavor": "Possession? Oaths? There must be another explanation for all of this.",
+            "text": "<i>Possession? Oaths? There must be another explanation for all of this.</i>",
             "steps": ["ignore_the_warning", "ignored_daniels_warning", "mark_2_doubt"]
           },
           {
             "id": "heed",
-            "flavor": "We must heed Daniel’s warning. We must not speak the name of the King in Yellow.",
+            "text": "<i>We must heed Daniel’s warning. We must not speak the name of the King in Yellow.</i>",
             "steps": ["heed_the_warning", "heeded_daniels_warning", "mark_2_conviction", "earn_1_xp", "forbidden_name"]
           }
         ]
@@ -6345,17 +6367,17 @@
         "choices": [
           {
             "id": "go_back_in",
-            "flavor": "Things seem to have calmed down. Perhaps we should go back inside and investigate further.",
+            "text": "<i>Things seem to have calmed down. Perhaps we should go back inside and investigate further.</i>",
             "steps": ["reward_1", "why_go_back", "intruded_on_secret_meeting", "add_elder_things"]
           },
           {
             "id": "block_door",
-            "flavor": "I don’t trust this place one bit. Let’s block the door and get the hell out of here!",
+            "text": "<i>I don’t trust this place one bit. Let’s block the door and get the hell out of here!</i>",
             "steps": ["reward_2", "door_wont_stop_them", "fled_dinner_party", "add_tablets"]
           },
           {
             "id": "burn_house",
-            "flavor": "If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <b>kill them.</b>",
+            "text": "<i>If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <b>kill them.</b></i>",
             "steps": ["reward_3", "did_what_had_to_be_done", "slayed_the_monsters", "slay_vips", "add_cultists"]
           }
         ]
@@ -6568,7 +6590,7 @@
     "check_for_mitpm",
     "check_for_onyx_clasp",
     "track_mitpm",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -6779,12 +6801,12 @@
         "choices": [
           {
             "id": "beautiful",
-            "flavor": "“How could any of this be beautiful to you?”",
+            "text": "<i>“How could any of this be beautiful to you?”</i>",
             "steps": ["dream_11", "mark_one_conviction"]
           },
           {
             "id": "confused",
-            "flavor": "“What exactly am I looking at?”",
+            "text": "<i>“What exactly am I looking at?”</i>",
             "steps": ["dream_12", "mark_one_doubt"]
           }
         ]
@@ -7321,7 +7343,7 @@
     "encounter_deck",
     "check_for_mitpm",
     "track_mitpm",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -7619,7 +7641,7 @@
     "encounter_deck",
     "location_adjacency_rule",
     "track_mitpm",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -8105,7 +8127,7 @@
     "check_for_mitpm",
     "check_for_onyx_clasp",
     "track_mitpm",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [{
       "id": "check_followers_of_the_sign_found_way",
@@ -8748,7 +8770,7 @@
     "encounter_deck",
     "check_ghoul_priest",
     "doom_note",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -9280,8 +9302,7 @@
     "remove_pieces_of_evidence",
     "encounter_deck",
     "replacing_locations",
-    "wait_for_record_of_those_lost",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -9432,30 +9453,55 @@
       "text": "Throughout this scenario, you may be instructed to swap set-aside locations with existing ones. When a location is swapped with one that is already in play, it takes its place. All tokens, attachments, investigators, enemies, and other cards at the former location are considered to now be at the new location (attached cards remain attached, for example). No game element is considered to have moved during such a swap."
     },
     {
-      "id": "wait_for_record_of_those_lost",
-      "text": "When instructed by the scenario, choose one of the following:",
+      "id": "$play_scenario",
       "type": "input",
       "input": {
-        "type": "choose_one",
-        "choices": [
+        "type": "play_scenario",
+        "branches": [
           {
-            "id": "record_of_those_lost",
-            "text": "Read <b>Interlude I: A Record of Those Lost</b>.",
+            "id": "a_record_of_those_lost",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "a_record_of_those_lost",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Read Interlude I: A Record of Those Lost",
             "steps": [
+              "a_record_of_those_lost",
               "check_gavriella_fate",
               "check_jerome_fate",
               "check_penny_fate",
               "check_valentino_fate",
               "advance_act_1b"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "a_record_of_those_lost",
+                "text": "dummy"
+              }
             ]
-          },
-          {
-            "id": "choose_resolution",
-            "text": "Scenario ended without instruction.",
-            "steps": []
           }
         ]
       }
+    },
+    {
+      "id": "a_record_of_those_lost",
+      "title": "Interlude 1: A Record of Those Lost",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "a_record_of_those_lost",
+          "text": "dummy"
+        }
+      ]
     },
     {
       "id": "check_gavriella_fate",
@@ -9538,7 +9584,7 @@
     },
     {
       "id": "on_gavriellas_trail",
-      "bullet_type": "right",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -9569,7 +9615,7 @@
     },
     {
       "id": "on_jeromes_trail",
-      "bullet_type": "right",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -9600,7 +9646,7 @@
     },
     {
       "id": "on_pennys_trail",
-      "bullet_type": "right",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -9631,7 +9677,7 @@
     },
     {
       "id": "on_valentinos_trail",
-      "bullet_type": "right",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -9704,11 +9750,6 @@
           "section": "campaign_notes",
           "id": "learned_nothing_of_the_lodges_schemes",
           "text": "the investigators learned nothing of the Lodge’s schemes."
-        },
-        {
-          "type": "campaign_data",
-          "setting": "skip_scenario",
-          "scenario": "a_record_of_those_lost"
         }
       ]
     },
@@ -9827,7 +9868,7 @@
     "act_1_locations",
     "act_2_locations",
     "act_3_locations",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -10057,13 +10098,13 @@
         "choices": [
           {
             "id": "doom_self",
-            "flavor": "“It must be done.”",
+            "text": "<i>“It must be done.”</i>",
             "description": "This will doom you.",
             "steps": ["resolution_5"]
           },
           {
             "id": "doom_all",
-            "flavor": "“I refuse!”",
+            "text": "<i>“I refuse!”</i>",
             "description": "This will doom the universe.",
             "steps": ["resolution_1"]
           }
@@ -10650,7 +10691,7 @@
     "set_aside_keys",
     "encounter_deck",
     "keys",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -10983,7 +11024,7 @@
     "breaches_and_incursions",
     "placing_breaches",
     "resolving_incursions",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -11649,33 +11690,33 @@
         "choices": [
           {
             "id": "q1",
-            "flavor": "“What is the creature?”",
+            "text": "<i>“What is the creature?”</i>",
             "steps": ["answer_1", "record_answer_1", "ask_second_question"]
           },
           {
             "id": "q2",
-            "flavor": "“What do you want with the creature?”",
+            "text": "<i>“What do you want with the creature?”</i>",
             "steps": ["answer_2", "record_answer_2", "ask_second_question"]
           },
           {
             "id": "q3",
-            "flavor": "“What do the witches want with the creature?”",
+            "text": "<i>“What do the witches want with the creature?”</i>",
             "steps": ["answer_3", "record_answer_3", "ask_second_question"]
           },
           {
             "id": "q4",
-            "flavor": "“Did you know about the creature before the charity gala?”",
+            "text": "<i>“Did you know about the creature before the charity gala?”</i>",
             "steps": ["answer_4", "record_answer_4", "ask_second_question"]
           },
           {
             "id": "q5",
-            "flavor": "“Where are the four missing people from the charity gala?”",
+            "text": "<i>“Where are the four missing people from the charity gala?”</i>",
             "steps": ["answer_5", "record_answer_5", "ask_second_question"]
           },
           {
             "id": "q6",
-            "flavor": "“…Why are you looking at me like that?”",
-            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "text": "<i>“…Why are you looking at me like that?”</i>",
+            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "campaign_log",
               "section": "campaign_notes",
@@ -11706,7 +11747,7 @@
         "choices": [
           {
             "id": "q1",
-            "flavor": "“What is the creature?”",
+            "text": "<i>“What is the creature?”</i>",
             "steps": ["answer_1", "record_answer_1", "ask_third_question"],
             "condition": {
               "type": "campaign_log",
@@ -11720,7 +11761,7 @@
           },
           {
             "id": "q2",
-            "flavor": "“What do you want with the creature?”",
+            "text": "<i>“What do you want with the creature?”</i>",
             "steps": ["answer_2", "record_answer_2", "ask_third_question"],
             "condition": {
               "type": "campaign_log",
@@ -11734,7 +11775,7 @@
           },
           {
             "id": "q3",
-            "flavor": "“What do the witches want with the creature?”",
+            "text": "<i>“What do the witches want with the creature?”</i>",
             "steps": ["answer_3", "record_answer_3", "ask_third_question"],
             "condition": {
               "type": "campaign_log",
@@ -11748,7 +11789,7 @@
           },
           {
             "id": "q4",
-            "flavor": "“Did you know about the creature before the charity gala?”",
+            "text": "<i>“Did you know about the creature before the charity gala?”</i>",
             "steps": ["answer_4", "record_answer_4", "ask_third_question"],
             "condition": {
               "type": "campaign_log",
@@ -11762,7 +11803,7 @@
           },
           {
             "id": "q5",
-            "flavor": "“Where are the four missing people from the charity gala?”",
+            "text": "<i>“Where are the four missing people from the charity gala?”</i>",
             "steps": ["answer_5", "record_answer_5", "ask_third_question"],
             "condition": {
               "type": "campaign_log",
@@ -11776,8 +11817,8 @@
           },
           {
             "id": "q6",
-            "flavor": "“…Why are you looking at me like that?”",
-            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "text": "<i>“…Why are you looking at me like that?”</i>",
+            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -11831,7 +11872,7 @@
         "choices": [
           {
             "id": "q1",
-            "flavor": "“What is the creature?”",
+            "text": "<i>“What is the creature?”</i>",
             "steps": ["answer_1", "record_answer_1"],
             "condition": {
               "type": "campaign_log",
@@ -11845,7 +11886,7 @@
           },
           {
             "id": "q2",
-            "flavor": "“What do you want with the creature?”",
+            "text": "<i>“What do you want with the creature?”</i>",
             "steps": ["answer_2", "record_answer_2"],
             "condition": {
               "type": "campaign_log",
@@ -11859,7 +11900,7 @@
           },
           {
             "id": "q3",
-            "flavor": "“What do the witches want with the creature?”",
+            "text": "<i>“What do the witches want with the creature?”</i>",
             "steps": ["answer_3", "record_answer_3"],
             "condition": {
               "type": "campaign_log",
@@ -11873,7 +11914,7 @@
           },
           {
             "id": "q4",
-            "flavor": "“Did you know about the creature before the charity gala?”",
+            "text": "<i>“Did you know about the creature before the charity gala?”</i>",
             "steps": ["answer_4", "record_answer_4"],
             "condition": {
               "type": "campaign_log",
@@ -11887,7 +11928,7 @@
           },
           {
             "id": "q5",
-            "flavor": "“Where are the four missing people from the charity gala?”",
+            "text": "<i>“Where are the four missing people from the charity gala?”</i>",
             "steps": ["answer_5", "record_answer_5"],
             "condition": {
               "type": "campaign_log",
@@ -11901,8 +11942,8 @@
           },
           {
             "id": "q6",
-            "flavor": "“…Why are you looking at me like that?”",
-            "text": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
+            "text": "<i>“…Why are you looking at me like that?”</i>",
+            "description": "You may ask this question because <i>the investigators survived the watcher's embrace</i>.",
             "condition": {
               "type": "multi",
               "count": 2,
@@ -12204,17 +12245,17 @@
         "choices": [
           {
             "id": "refuse",
-            "flavor": "“I refuse to be a part of this.”",
+            "text": "<i>“I refuse to be a part of this.”</i>",
             "steps": ["progress_7", "enemies_of_the_lodge"]
           },
           {
             "id": "agree",
-            "text": "“I agree.”",
+            "text": "<i>“I agree.”</i>",
             "steps": ["progress_8", "members_of_the_lodge"]
           },
           {
             "id": "lie",
-            "text": "“I agree.” (You are lying.)",
+            "text": "<i>“I agree.”</i> (You are lying.)",
             "steps": ["progress_9", "members_of_the_lodge", "deceiving_the_lodge"]
           }
         ]
@@ -12302,7 +12343,7 @@
     "create_unknown_place_deck",
     "set_aside_cards",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -12797,7 +12838,7 @@
     "shuffle_heretics",
     "create_encounter_decks",
     "spectral_encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -13002,7 +13043,7 @@
     "set_aside_cards",
     "encounter_deck",
     "lost_and_separated",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -13019,12 +13060,12 @@
         "choices": [
           {
             "id": "accept_fate",
-            "flavor": "“What can I do to avoid this fate?”",
+            "text": "<i>“What can I do to avoid this fate?”</i>",
             "steps": ["intro_2", "accepted_fate", "add_tarot"]
           },
           {
             "id": "reject_fate",
-            "flavor": "“This is bullshit.”",
+            "text": "<i>“This is bullshit.”</i>",
             "steps": ["intro_3", "rejected_fate"]
           }
         ]
@@ -13679,8 +13720,7 @@
     "check_heretics_released",
     "encounter_deck",
     "circle_braziers",
-    "wait_resolve_story_cards",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -13697,14 +13737,14 @@
         "choices": [
           {
             "id": "help_ritual",
-            "flavor": "“We have to help complete the Lodge’s ritual.”",
-            "text": "Completing the ritual should bind the Spectral Watcher and prevent it from doing any more harm.",
+            "text": "<i>“We have to help complete the Lodge’s ritual.”</i>",
+            "description": "Completing the ritual should bind the Spectral Watcher and prevent it from doing any more harm.",
             "steps": ["sided_with_the_lodge"]
           },
           {
             "id": "thwart_ritual",
-            "flavor": "“We have to stop the Lodge’s ritual.”",
-            "text": "Disrupting the ritual should release the Spectral Watcher’s tether to the mortal realm.",
+            "text": "<i>“We have to stop the Lodge’s ritual.”</i>",
+            "description": "Disrupting the ritual should release the Spectral Watcher’s tether to the mortal realm.",
             "steps": ["sided_with_the_coven"]
           }
         ]
@@ -14143,64 +14183,152 @@
       ]
     },
     {
-      "id": "wait_resolve_story_cards",
-      "type": "input",
-      "text": "If instructed to resolve the set-aside story cards during the scenario:",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "resolve_story_cards",
-            "text": "Resolve the story cards",
-            "steps": ["resolve_story_cards", "check_for_chaos_tokens"]
-          },
-          {
-            "id": "scenario_ended",
-            "text": "Scenario ended without instruction.",
-            "steps": []
-          }
-        ]
-      }
-    },
-    {
-      "id": "check_for_chaos_tokens",
-      "hidden": true,
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "hidden",
-        "id": "act_3_v2",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["wait_for_chaos_tokens"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "wait_for_chaos_tokens",
+      "id": "$play_scenario",
       "type": "input",
       "input": {
-        "type": "choose_one",
-        "choices": [
+        "type": "play_scenario",
+        "branches": [
           {
-            "id": "resolve_chaos_tokens",
-            "text": "Adjust chaos tokens",
-            "steps": ["resolve_chaos_tokens"]
+            "id": "add_chaos_token",
+            "condition": {
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "uad_add_chaos_token",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "act_3_v2",
+                  "options": [
+                    {
+                      "boolCondition": true
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "uad_add_chaos_token",
+                "text": "dummy"
+              }
+            ]
+          }
+        ],
+        "campaign_log": [
+          {
+            "id": "gavriella_alive",
+            "condition": {
+              "type": "campaign_log",
+              "section": "05046",
+              "id": "alive",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Gavriella is alive.",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05046",
+                "id": "alive",
+                "text": "Gavriella is alive."
+              }
+            ]
           },
           {
-            "id": "scenario_ended",
-            "text": "Scenario ended without instruction.",
-            "steps": []
+            "id": "jerome_alive",
+            "text": "Jerome is alive.",
+            "condition": {
+              "type": "campaign_log",
+              "section": "05047",
+              "id": "alive",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05047",
+                "id": "alive",
+                "text": "Jerome is alive."
+              }
+            ]
+          },
+          {
+            "id": "penny_alive",
+            "text": "Penny is alive.",
+            "condition": {
+              "type": "campaign_log",
+              "section": "05049",
+              "id": "alive",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05049",
+                "id": "alive",
+                "text": "Penny is alive."
+              }
+            ]
+          },
+          {
+            "id": "valentino_alive",
+            "text": "Valentino is alive.",
+            "condition": {
+              "type": "campaign_log",
+              "section": "05048",
+              "id": "alive",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "05048",
+                "id": "alive",
+                "text": "Valentino is alive."
+              }
+            ]
           }
         ]
       }
     },
     {
-      "id": "resolve_chaos_tokens",
+      "id": "add_chaos_token",
+      "text": "What change should be made to the chaos bag?",
       "type": "input",
-      "text": "If instructed to change chaos tokens in the bag:",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -14211,42 +14339,6 @@
               {
                 "type": "remove_chaos_token",
                 "tokens": ["cultist", "cultist", "cultist", "cultist"]
-              }
-            ]
-          },
-          {
-            "id": "none",
-            "text": "Nevermind",
-            "steps": []
-          }
-        ]
-      }
-    },
-    {
-      "id": "resolve_story_cards",
-      "type": "input",
-      "input": {
-        "type": "card_choice",
-        "query": [
-          {
-            "code": [
-              "05046",
-              "05047",
-              "05048",
-              "05049"
-            ]
-          }
-        ],
-        "choices": [
-          {
-            "id": "alive",
-            "text": "Alive",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "$input_value",
-                "id": "alive",
-                "text": "#name# is alive."
               }
             ]
           }
@@ -14261,13 +14353,13 @@
         "choices": [
           {
             "id": "yes",
-            "flavor": "“Yes.”",
+            "text": "<i>“Yes.”</i>",
             "description": "You may choose this option only if <i>the investigators were inducted into the Inner Circle</i>, and cannot choose this option <i>if the investigators are deceiving the Lodge</i>.",
             "steps": ["resolution_2"]
           },
           {
             "id": "no",
-            "flavor": "No.”",
+            "text": "<i>“No.”</i>",
             "steps": ["resolution_3"]
           }
         ]
@@ -15001,7 +15093,7 @@
     "setup_locations",
     "set_aside_cards",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -15213,7 +15305,7 @@
     {
       "id": "R4",
       "title": "Resolution 4",
-      "text": " In the debris, you spot it: something glinting within the maelstrom of ice-cold air and dust, something that calls to you, whispers your name. You barely hear Randolph shouting as the indescribable monstrosity crashes into him. Despite all odds, you somehow reach the rubble that was once the attic of the house with no name. You realize now what that elusive glimmer was: the polished reflection of a bright silver key. “Use it!” Randolph screams between cries of agony. The abomination climbs atop his body. “Use it now, while you ca—”\nThe thing cuts Randolph’s cry short as it envelops his body. You clutch the key tightly in your hand and shudder as you watch a thousand shapes of horror devour Randolph whole. You think of your companions, trapped somewhere in a perilous dream far from home, and the key’s glow intensifies, swallowing you as completely as the creature swallowed Randolph. Everything goes white.\nWhen you awaken, you lie on a flat stone platform overlooking a steep, straight staircase that descends into unknown depths. Behind you, the stairway curls upward into a stone spire that ascends into a hazy mist. In both directions, the entirety of the cavern is dimly lit with grey phosphorescence. You search for the Silver Key, but it has vanished. There is no sign of Randolph Carter.\nIt is clear you are no longer in the waking world. Perhaps the key transported your physical body into the Dreamlands, as Randolph claimed it could. But this place is nothing like the mystical forests, charming medieval villages, and majestic panoramas of which Virgil Gray wrote in his stories. No, far from it: this cold, bleak gulf eats away your hope and replaces it with a feeling of empty, meaningless dread. You peer once more up the countless steps behind you. It seems you have no choice now but to move on, deeper into this desolate and perilous realm.",
+      "text": "In the debris, you spot it: something glinting within the maelstrom of ice-cold air and dust, something that calls to you, whispers your name. You barely hear Randolph shouting as the indescribable monstrosity crashes into him. Despite all odds, you somehow reach the rubble that was once the attic of the house with no name. You realize now what that elusive glimmer was: the polished reflection of a bright silver key. “Use it!” Randolph screams between cries of agony. The abomination climbs atop his body. “Use it now, while you ca—”\nThe thing cuts Randolph’s cry short as it envelops his body. You clutch the key tightly in your hand and shudder as you watch a thousand shapes of horror devour Randolph whole. You think of your companions, trapped somewhere in a perilous dream far from home, and the key’s glow intensifies, swallowing you as completely as the creature swallowed Randolph. Everything goes white.\nWhen you awaken, you lie on a flat stone platform overlooking a steep, straight staircase that descends into unknown depths. Behind you, the stairway curls upward into a stone spire that ascends into a hazy mist. In both directions, the entirety of the cavern is dimly lit with grey phosphorescence. You search for the Silver Key, but it has vanished. There is no sign of Randolph Carter.\nIt is clear you are no longer in the waking world. Perhaps the key transported your physical body into the Dreamlands, as Randolph claimed it could. But this place is nothing like the mystical forests, charming medieval villages, and majestic panoramas of which Virgil Gray wrote in his stories. No, far from it: this cold, bleak gulf eats away your hope and replaces it with a feeling of empty, meaningless dread. You peer once more up the countless steps behind you. It seems you have no choice now but to move on, deeper into this desolate and perilous realm.",
       "steps": ["randolph_did_not_survive_descent", "earn_xp"]
     }
   ]
@@ -15230,8 +15322,7 @@
     "create_exploration_deck",
     "set_aside_cards",
     "encounter_deck",
-    "check_for_chaos_bag_additions",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -15336,51 +15427,113 @@
       }
     },
     {
-      "id": "check_for_chaos_bag_additions",
+      "id": "$play_scenario",
       "type": "input",
-      "text": "If instructed to add chaos tokens to the bag:",
       "input": {
-        "type": "choose_one",
-        "choices": [
+        "type": "play_scenario",
+        "branches": [
           {
-            "id": "chaos_tokens",
-            "text": "Choose chaos tokens.",
-            "steps": ["chaos_token_choice"]
+            "id": "add_chaos_token",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "skull",
+              "options": [
+                {
+                  "numCondition": 0
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token_0"]
           },
           {
-            "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction.",
-            "steps": []
+            "id": "add_chaos_token",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "skull",
+              "options": [
+                {
+                  "numCondition": 1
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token_1"]
+          },
+          {
+            "id": "add_chaos_token",
+            "condition": {
+              "type": "campaign_data",
+              "campaign_data": "chaos_bag",
+              "token": "skull",
+              "options": [
+                {
+                  "numCondition": 2
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token_2"]
           }
         ]
       }
     },
     {
-      "id": "chaos_token_choice",
+      "id": "add_chaos_token_0",
       "type": "input",
-      "text": "Which of the following is true:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "cultist",
-            "text": "<i>Ichtaca is leading the way.</i>",
-            "description": "Add 1 [cultist] token.",
+            "text": "Does your slumber grow deeper?",
+            "description": "Add 1 [skull] token.",
             "effects": [
               {
                 "type": "add_chaos_token",
-                "tokens": ["cultist"]
+                "tokens": ["skull"]
               }
             ]
-          },
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_chaos_token_1",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
           {
-            "id": "tablet",
-            "text": "<i>You fought with Icthaca.</i>",
-            "description": "Add 1 [tablet] token.",
+            "id": "cultist",
+            "text": "Does your slumber grow deeper?",
+            "description": "Add 1 [skull] token.",
             "effects": [
               {
                 "type": "add_chaos_token",
-                "tokens": ["tablet"]
+                "tokens": ["skull"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_chaos_token_2",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cultist",
+            "text": "Does your slumber grow deeper?",
+            "description": "Add 1 [skull] token.",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["skull"]
               }
             ]
           }
@@ -15549,35 +15702,13 @@
     "veiled_rule",
     "enemies_swarming_victory_rule",
     "stop_rule",
-    "oriab_setup",
-    "oriab_xp",
-    "oriab_locations",
-    "oriab_enemies",
-    "oriab_act",
-    "minar_setup",
-    "minar_xp",
-    "minar_locations",
-    "minar_enemies",
-    "minar_act",
-    "forbidden_lands_setup",
-    "forbidden_lands_xp",
-    "forbidden_lands_locations",
-    "forbidden_lands_enemies",
-    "forbidden_lands_more_enemies",
-    "forbidden_lands_act",
-    "timeless_realm_setup",
-    "timeless_realm_xp",
-    "timeless_realm_locations",
-    "timeless_realm_encounter_deck",
-    "timeless_realm_enemies",
-    "timeless_realm_act",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
       "id": "intro_1",
       "type": "story",
-      "text": " You stay the night at Einar’s Place. Your rest is anything but peaceful. Even if one could sleep within a dream, you certainly do not. Your mind teems with anxiety over the quest looming ahead. You reflect on the black cat’s warning about danger in the waking world, and you wonder about the others who have followed Virgil Gray down the steps of slumber and through the Enchanted Woods. Are they here now, too? Perhaps if you find this castle and return with proof of the Dreamlands, you can save everyone: yourself, your friends, and the other dreamers as well."
+      "text": "You stay the night at Einar’s Place. Your rest is anything but peaceful. Even if one could sleep within a dream, you certainly do not. Your mind teems with anxiety over the quest looming ahead. You reflect on the black cat’s warning about danger in the waking world, and you wonder about the others who have followed Virgil Gray down the steps of slumber and through the Enchanted Woods. Are they here now, too? Perhaps if you find this castle and return with proof of the Dreamlands, you can save everyone: yourself, your friends, and the other dreamers as well."
     },
     {
       "id": "check_black_cat_at_side",
@@ -15898,7 +16029,134 @@
       "id": "stop_rule",
       "type": "rule_reminder",
       "title": "Stop!",
-      "text": "At this point, you are ready to begin playing The Search for Kadath. Ignore the four additional sets of setup instructions for now. You will be instructed to resolve them at a later point during the scenario."
+      "text": "At this point, you are ready to begin playing <b>The Search for Kadath</b>. Ignore the four additional sets of setup instructions for now. You will be instructed to resolve them at a later point during the scenario."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "oriab",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "oriab",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Oriab Setup",
+            "steps": [
+              "oriab_setup",
+              "oriab_xp",
+              "oriab_locations",
+              "oriab_enemies",
+              "oriab_act"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "oriab",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "minar",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "minar",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Minar Setup",
+            "steps": [
+              "minar_setup",
+              "minar_xp",
+              "minar_locations",
+              "minar_enemies",
+              "minar_act"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "minar",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "forbidden_lands",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "forbidden_lands",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Forbidden Lands Setup",
+            "steps": [
+              "forbidden_lands_setup",
+              "forbidden_lands_xp",
+              "forbidden_lands_locations",
+              "forbidden_lands_enemies",
+              "forbidden_lands_more_enemies",
+              "forbidden_lands_act"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "forbidden_lands",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "timeless_realm",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "timeless_realm",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Timeless Realm Setup",
+            "steps": [
+              "timeless_realm_setup",
+              "timeless_realm_xp",
+              "timeless_realm_locations",
+              "timeless_realm_encounter_deck",
+              "timeless_realm_enemies",
+              "timeless_realm_act"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "timeless_realm",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "oriab_setup",
@@ -16216,7 +16474,7 @@
     "set_aside_cards",
     "set_aside_infestation_begins",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -16855,12 +17113,12 @@
         "choices": [
           {
             "id": "museum",
-            "flavor": "It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.",
+            "text": "<i>It belongs in a museum. Alejandro and the museum staff will be able to study it and learn more about its purpose.</i>",
             "steps": ["ee_2", "gave_relic_to_alejandro", "earned_alejandros_trust", "maybe_earn_alejandro", "add_tablet", "ee_4"]
           },
           {
             "id": "hide",
-            "flavor": "It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.",
+            "text": "<i>It is too dangerous to be on display. We should keep it hidden and safe until we know more about it.</i>",
             "steps": ["ee_3", "gave_relic_to_harlan", "alejandro_on_his_own", "ee_4"]
           }
         ]
@@ -16985,7 +17243,7 @@
     "set_aside_cards",
     "set_aside_poisoned",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -17195,12 +17453,12 @@
         "choices": [
           {
             "id": "go_back_in",
-            "flavor": "“We can’t stop now—we have to go back inside!”",
+            "text": "<i>“We can’t stop now—we have to go back inside!”</i>",
             "steps": ["resolution_4"]
           },
           {
             "id": "destroy",
-            "flavor": "“It’s too dangerous. This place must be destroyed.”",
+            "text": "<i>“It’s too dangerous. This place must be destroyed.”</i>",
             "steps": ["resolution_5"]
           }
         ]
@@ -17460,7 +17718,7 @@
         "choices": [
           {
             "id": "ichtaca",
-            "flavor": "Let’s consult with Ichtaca.",
+            "text": "<i>Let’s consult with Ichtaca.</i>",
             "condition": {
               "type": "has_card",
               "card": "04147",
@@ -17474,7 +17732,7 @@
           },
           {
             "id": "alejandro",
-            "flavor": "Let’s consult with Alejandro.",
+            "text": "<i>Let’s consult with Alejandro.</i>",
             "condition": {
               "type": "has_card",
               "card": "04051",
@@ -17488,7 +17746,7 @@
           },
           {
             "id": "journal",
-            "flavor": "Let’s consult the expedition journal.",
+            "text": "<i>Let’s consult the expedition journal.</i>",
             "condition": {
               "type": "has_card",
               "card": "04148",
@@ -17502,7 +17760,7 @@
           },
           {
             "id": "nothing",
-            "flavor": "I wish we knew more about this...",
+            "text": "<i>I wish we knew more about this...</i>",
             "steps": []
           }
         ]
@@ -17515,7 +17773,6 @@
     },
     {
       "id": "start_with_ichtaca",
-      "bullet_type": "right",
       "text": "Begin this scenario with Ichtaca in play."
     },
     {
@@ -17525,7 +17782,6 @@
     },
     {
       "id": "start_with_alejandro",
-      "bullet_type": "right",
       "text": "Begin this scenario with Alejandro Vela in play."
     },
     {
@@ -17535,7 +17791,6 @@
     },
     {
       "id": "start_with_expedition_journal",
-      "bullet_type": "right",
       "text": "Begin this scenario with Expedition Journal in play."
     },
     {
@@ -17570,7 +17825,7 @@
               "check_mapped_way_forward",
               "set_aside_poisoned",
               "encounter_deck",
-              "$choose_resolution"
+              "$play_scenario"
             ]
           }
         ]
@@ -17826,7 +18081,7 @@
     "create_exploration_deck",
     "set_aside_poisoned",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -18809,7 +19064,7 @@
     "create_exploration_deck",
     "add_vengeance_cards",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -19247,7 +19502,7 @@
     "set_aside_poisoned",
     "encounter_deck",
     "replacing_locations_reminder",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -19864,7 +20119,7 @@
     "set_aside_cards",
     "encounter_deck",
     "body_of_yithian_rule",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -19881,12 +20136,12 @@
         "choices": [
           {
             "id": "cooperate",
-            "flavor": "Cooperate and tell the creatures everything you know.",
+            "text": "<i>Cooperate and tell the creatures everything you know.</i>",
             "steps": ["intro_2", "cooperated_with_yithians"]
           },
           {
             "id": "resist",
-            "flavor": "Refuse and resist captivity.",
+            "text": "<i>Refuse and resist captivity.</i>",
             "steps": ["intro_3", "resisted_captivity"]
           }
         ]
@@ -20685,8 +20940,7 @@
     "encounter_deck",
     "depth_level_rule",
     "pursuit_rule",
-    "check_has_rope",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -21492,38 +21746,15 @@
       }
     },
     {
-      "id": "check_has_rope",
-      "hidden": true,
-      "type": "branch",
-      "condition": {
-        "type": "check_supplies",
-        "section": "supplies",
-        "investigator": "any",
-        "id": "rope",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["cross_out_supplies"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "cross_out_supplies",
+      "id": "$play_scenario",
       "type": "input",
-      "text": "If instructed to cross out any Supplies:",
       "input": {
-        "type": "choose_one",
-        "choices": [
+        "type": "play_scenario",
+        "branches": [
           {
-            "id": "chaos_tokens",
-            "text": "Cross out Supplies",
+            "id": "cross_out_supplies",
+            "text": "Adjust supplies",
             "steps": ["cross_out_rope"]
-          },
-          {
-            "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction.",
-            "steps": []
           }
         ]
       }
@@ -22138,7 +22369,7 @@
     "setup_act_ef_prompt",
     "setup_act_ef",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -23057,7 +23288,7 @@
     "add_elder_thing_token",
     "set_aside_poison",
     "encounter_deck",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -23101,7 +23332,6 @@
     },
     {
       "id": "cross_off_everything",
-      "bullet_type": "right",
       "text": "In your Campaign Log, cross off all entries after the first three entries.\nThe crossed-off entries have been undone by your actions.",
       "effects": [
         {
@@ -23509,8 +23739,7 @@
     "create_exploration_deck",
     "set_aside_cards",
     "encounter_deck",
-    "check_for_chaos_bag_additions",
-    "$choose_resolution"
+    "$play_scenario"
   ],
   "steps": [
     {
@@ -23720,29 +23949,41 @@
       }
     },
     {
-      "id": "check_for_chaos_bag_additions",
+      "id": "$play_scenario",
       "type": "input",
-      "text": "If instructed to add chaos tokens to the bag:",
       "input": {
-        "type": "choose_one",
-        "choices": [
+        "type": "play_scenario",
+        "branches": [
           {
-            "id": "chaos_tokens",
-            "text": "Choose chaos tokens.",
-            "steps": ["chaos_token_choice"]
-          },
-          {
-            "id": "no_chaos_tokens",
-            "text": "Scenario ended without instruction.",
-            "steps": []
+            "id": "add_chaos_token",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "wilds_add_chaos_token",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Adjust chaos bag",
+            "steps": ["add_chaos_token"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "wilds_add_chaos_token",
+                "text": "dummy"
+              }
+            ]
           }
         ]
       }
     },
     {
-      "id": "chaos_token_choice",
+      "id": "add_chaos_token",
+      "text": "Which of these is true?",
       "type": "input",
-      "text": "Which of the following is true:",
       "input": {
         "type": "choose_one",
         "choices": [

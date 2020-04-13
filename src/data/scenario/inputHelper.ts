@@ -5,12 +5,13 @@ import {
   BinaryChoiceCondition,
   InvestigatorChoiceCondition,
   InvestigatorChoiceInput,
-  ChooseOneInput,
+  BinaryConditionalChoice,
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import {
   basicTraumaConditionResult,
   campaignDataInvestigatorConditionResult,
+  campaignDataChaosBagConditionResult,
   investigatorCardConditionResult,
   campaignLogConditionResult,
   investigatorConditionResult,
@@ -22,11 +23,11 @@ import {
 import { PersonalizedChoices, UniversalChoices, DisplayChoice } from 'data/scenario';
 
 export function chooseOneInputChoices(
-  input: ChooseOneInput,
+  choices: BinaryConditionalChoice[],
   campaignLog: GuidedCampaignLog
 ): DisplayChoice[] {
   return filter(
-    input.choices,
+    choices,
     choice => {
       if (!choice.condition) {
         return true;
@@ -82,15 +83,24 @@ export function investigatorChoiceInputChoices(
   };
 }
 
-function calculateBinaryConditionResult(
+export function calculateBinaryConditionResult(
   condition: BinaryChoiceCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
   switch (condition.type) {
     case 'has_card':
       return binaryCardConditionResult(condition, campaignLog);
-    case 'campaign_data':
-      return campaignDataInvestigatorConditionResult(condition, campaignLog);
+    case 'campaign_data': {
+      if (condition.campaign_data === 'investigator') {
+        return campaignDataInvestigatorConditionResult(condition, campaignLog);
+      }
+      const numericResult = campaignDataChaosBagConditionResult(condition, campaignLog);
+      return {
+        type: 'binary',
+        decision: !!numericResult.option,
+        option: numericResult.option,
+      };
+    }
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
     case 'multi':

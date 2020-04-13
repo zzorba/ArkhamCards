@@ -213,6 +213,15 @@
         ]
       },
       {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "tmm_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
         "section": "sacrificed",
         "entries": [
           {
@@ -356,6 +365,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "cca_add_chaos_token",
+            "text": "dummy"
+          },
+          {
             "id": "possessed",
             "text": "one or more investigators was possessed."
           }
@@ -442,10 +455,6 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "alive",
-            "text": "#name# is alive."
-          },
-          {
             "id": "claimed_by_specters",
             "text": "#name# was claimed by specters."
           },
@@ -467,6 +476,10 @@
         "section": "05046",
         "entries": [
           {
+            "id": "alive",
+            "text": "Gavriella is alive."
+          },
+          {
             "id": "dead",
             "text": "Gavriella Mizrah is dead."
           },
@@ -479,6 +492,10 @@
       {
         "section": "05047",
         "entries": [
+          {
+            "id": "alive",
+            "text": "Jerome is alive."
+          },
           {
             "id": "dead",
             "text": "Jerome Davids is dead."
@@ -493,6 +510,10 @@
         "section": "05048",
         "entries": [
           {
+            "id": "alive",
+            "text": "Valentino is alive."
+          },
+          {
             "id": "dead",
             "text": "Valentino Rivas is dead."
           },
@@ -505,6 +526,10 @@
       {
         "section": "05049",
         "entries": [
+          {
+            "id": "alive",
+            "text": "Penny is alive."
+          },
           {
             "id": "dead",
             "text": "Penny White is dead."
@@ -688,6 +713,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "a_record_of_those_lost",
+            "text": "dummy"
+          },
+          {
             "id": "act_3_v2",
             "text": "dummy"
           },
@@ -697,6 +726,10 @@
           },
           {
             "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_add_chaos_token",
             "text": "dummy"
           }
         ]
@@ -830,6 +863,27 @@
           {
             "id": "virgil_was_captured",
             "text": "Virgil was captured."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "forbidden_lands",
+            "text": "dummy"
+          },
+          {
+            "id": "minar",
+            "text": "dummy"
+          },
+          {
+            "id": "oriab",
+            "text": "dummy"
+          },
+          {
+            "id": "timeless_realm",
+            "text": "dummy"
           }
         ]
       }
@@ -1058,6 +1112,10 @@
           {
             "id": "tasks_completed",
             "text": "#X# tasks were completed"
+          },
+          {
+            "id": "wilds_add_chaos_token",
+            "text": "dummy"
           }
         ]
       }

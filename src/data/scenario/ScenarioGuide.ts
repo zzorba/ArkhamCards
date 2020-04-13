@@ -57,18 +57,38 @@ export default class ScenarioGuide {
     id: string,
     campaignLog: GuidedCampaignLog
   ): Step | undefined {
-    const fixedStep = getFixedStep(
+    if (id.indexOf('#') !== -1) {
+      const step = this.stepHelper(
+        id.split('#')[0],
+        campaignLog
+      );
+      if (!step) {
+        return undefined;
+      }
+      return {
+        ...step,
+        id,
+      };
+    }
+    return this.stepHelper(id, campaignLog);
+  }
+
+  private stepHelper(
+    id: string,
+    campaignLog: GuidedCampaignLog
+  ) {
+    const existingStep = find(
+      this.scenario.steps,
+      step => step.id === id
+    );
+    if (existingStep) {
+      return existingStep;
+    }
+
+    return getFixedStep(
       id,
       this.scenario,
       campaignLog
-    );
-    if (fixedStep) {
-      return fixedStep;
-    }
-
-    return find(
-      this.scenario.steps,
-      step => step.id === id
     );
   }
 

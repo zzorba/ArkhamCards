@@ -4,6 +4,8 @@ import { t } from 'ttag';
 
 import Card from 'data/Card';
 import { BASIC_WEAKNESS_QUERY } from 'data/query';
+import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
+import SelectWeaknessTraitsComponent from './SelectWeaknessTraitsComponent';
 import DrawRandomWeaknessComponent from './DrawRandomWeaknessComponent';
 import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
 import InvestigatorSelectorWrapper from 'components/campaignguide/InvestigatorSelectorWrapper';
@@ -14,18 +16,24 @@ import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaig
 import CardQueryWrapper from 'components/campaignguide/CardQueryWrapper';
 import { safeValue } from 'lib/filters';
 
-interface Props {
+interface OwnProps {
   id: string;
   effect: AddWeaknessEffect;
   input?: string[];
 }
 
-export default class AddWeaknessEffectComponent extends React.Component<Props> {
+type Props = OwnProps & WeaknessCardProps;
+
+class AddWeaknessEffectComponent extends React.Component<Props> {
   static contextType = ScenarioStepContext;
   context!: ScenarioStepContextType;
 
   firstDecisionId() {
     return `${this.props.id}_use_app`;
+  }
+
+  traitsDecisionId() {
+    return `${this.props.id}_traits`;
   }
 
   renderFirstPrompt() {
@@ -62,37 +70,70 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
     );
   };
 
+  _saveTraits = (traits: string[]) => {
+    this.context.scenarioState.setStringChoices(
+      this.traitsDecisionId(), {
+        traits,
+      });
+  };
+
   _renderSecondPrompt = (
     investigators: Card[],
     scenarioState: ScenarioStateHelper
   ) => {
-    const { id, effect } = this.props;
+    const {
+      id,
+      effect,
+      cards,
+      cardsMap,
+    } = this.props;
     const useAppDecision = scenarioState.decision(this.firstDecisionId());
     if (useAppDecision === undefined) {
       return null;
     }
-    if (useAppDecision) {
+    if (!useAppDecision) {
+      const traitPart = map(effect.weakness_traits,
+        trait => `(real_traits_normalized CONTAINS[c] "${safeValue(trait)}")`
+      ).join(' OR ');
+      const query = traitPart ?
+        `(${BASIC_WEAKNESS_QUERY} AND (${traitPart}))` :
+        BASIC_WEAKNESS_QUERY;
       return (
-        <DrawRandomWeaknessComponent
-          id={id}
-          traits={effect.weakness_traits}
-          investigators={investigators}
-          campaignLog={this.context.campaignLog}
-          scenarioState={this.context.scenarioState}
+        <CardQueryWrapper
+          query={query}
+          render={this._renderCardChoice}
+          extraArg={investigators}
         />
       );
     }
-
-    const traitPart = map(effect.weakness_traits,
-      trait => `(traits_normalized CONTAINS[c] "${safeValue(trait)}")`
-    ).join(' OR ');
-    const query = `(${BASIC_WEAKNESS_QUERY} AND (${traitPart}))`;
+    const traitsChoice = effect.select_traits ?
+      scenarioState.stringChoices(this.traitsDecisionId()) :
+      undefined;
+    const chosenTraits: string[] | undefined = traitsChoice && traitsChoice.traits;
     return (
-      <CardQueryWrapper
-        query={query}
-        render={this._renderCardChoice}
-        extraArg={investigators}
-      />
+      <>
+        { !!effect.select_traits && (
+          <SelectWeaknessTraitsComponent
+            cards={cards}
+            cardsMap={cardsMap}
+            choices={chosenTraits}
+            save={this._saveTraits}
+            scenarioState={scenarioState}
+          />
+        ) }
+        { (!effect.select_traits || chosenTraits !== undefined) && (
+          <DrawRandomWeaknessComponent
+            id={id}
+            traits={chosenTraits || effect.weakness_traits}
+            realTraits={!chosenTraits}
+            investigators={investigators}
+            campaignLog={this.context.campaignLog}
+            scenarioState={this.context.scenarioState}
+            cards={cards}
+            cardsMap={cardsMap}
+          />
+        ) }
+      </>
     );
   }
 
@@ -116,3 +157,7 @@ export default class AddWeaknessEffectComponent extends React.Component<Props> {
     );
   }
 }
+
+export default withWeaknessCards<OwnProps>(
+  AddWeaknessEffectComponent
+);

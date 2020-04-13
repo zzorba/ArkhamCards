@@ -369,6 +369,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         styles.rowBorder,
         { minHeight: rowHeight(fontScale) },
         backgroundColor ? { backgroundColor } : {},
+        !onDeckCountChange ? styles.rowPadding : {},
       ]}>
         <TouchableOpacity
           onPress={this._onPress}
@@ -403,6 +404,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       card,
       fontScale,
       backgroundColor,
+      onDeckCountChange,
     } = this.props;
     if (!card) {
       return (
@@ -411,6 +413,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           styles.rowBorder,
           { minHeight: rowHeight(fontScale) },
           backgroundColor ? { backgroundColor } : {},
+          !onDeckCountChange ? styles.rowPadding : {},
         ]}>
           <View style={styles.cardNameBlock}>
             <View style={styles.row}>
@@ -429,6 +432,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           styles.rowBorder,
           { minHeight: rowHeight(fontScale) },
           backgroundColor ? { backgroundColor } : {},
+          !onDeckCountChange ? styles.rowPadding : {},
         ]}>
           <Text>No Text</Text>;
         </View>
@@ -444,9 +448,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     position: 'relative',
     width: '100%',
+    flexDirection: 'row',
+  },
+  rowPadding: {
     paddingLeft: s,
     paddingRight: s,
-    flexDirection: 'row',
   },
   rowBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,

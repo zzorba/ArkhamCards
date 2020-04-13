@@ -1,10 +1,11 @@
-import { find, forEach, map, uniq } from 'lodash';
+import { find, filter, forEach, map, uniq } from 'lodash';
 
 import {
   LOGOUT,
   NEW_CAMPAIGN,
   UPDATE_CAMPAIGN,
   CAMPAIGN_ADD_INVESTIGATOR,
+  CLEAN_BROKEN_CAMPAIGNS,
   UPDATE_CHAOS_BAG_RESULTS,
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
@@ -36,7 +37,18 @@ export default function(
   action: CampaignActions
 ): CampaignsState {
   if (action.type === LOGOUT) {
-    return DEFAULT_CAMPAIGNS_STATE;
+    const all: { [id: string]: Campaign } = {};
+    forEach(state.all, (campaign, id) => {
+      all[id] = {
+        ...campaign,
+        latestDeckIds: undefined,
+        baseDeckIds: filter(campaign.baseDeckIds, deckId => deckId < 0),
+      };
+    });
+    return {
+      ...state,
+      all,
+    };
   }
   if (action.type === SET_ALL_CAMPAIGNS) {
     const all: { [id: string]: Campaign } = {};
@@ -105,6 +117,20 @@ export default function(
       },
     };
   }
+  if (action.type === CLEAN_BROKEN_CAMPAIGNS) {
+    const all = {
+      ...state.all,
+    };
+    forEach(state.all, (campaign, id) => {
+      if (!campaign.id) {
+        delete all[id];
+      }
+    });
+    return {
+      ...state,
+      all,
+    };
+  }
   if (action.type === CAMPAIGN_ADD_INVESTIGATOR) {
     const campaign: Campaign = {
       ...state.all[action.id],
@@ -138,8 +164,13 @@ export default function(
     };
   }
   if (action.type === UPDATE_CAMPAIGN) {
+    const existingCampaign = state.all[action.id];
+    if (!existingCampaign) {
+      // Can't update a campaign that doesn't exist.
+      return state;
+    }
     const campaign: Campaign = {
-      ...state.all[action.id],
+      ...existingCampaign,
       ...action.campaign,
       lastUpdated: action.now,
     };

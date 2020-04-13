@@ -83,6 +83,8 @@ const style = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     flexDirection: 'row',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
   },
   defaultTitleStyle: {
     flex: 1,

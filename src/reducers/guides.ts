@@ -1,6 +1,7 @@
 import { findLastIndex, filter } from 'lodash';
 
 import {
+  DELETE_CAMPAIGN,
   GUIDE_SET_INPUT,
   GUIDE_UNDO_INPUT,
   GUIDE_RESET_SCENARIO,
@@ -42,6 +43,16 @@ export default function(
   if (action.type === LOGOUT) {
     return state;
   }
+  if (action.type === DELETE_CAMPAIGN) {
+    const newAll = {
+      ...state.all,
+    };
+    delete newAll[action.id];
+    return {
+      ...state,
+      all: newAll,
+    };
+  }
   if (action.type === GUIDE_SET_INPUT) {
     return updateCampaign(
       state,
@@ -69,7 +80,10 @@ export default function(
         }
         return {
           ...campaign,
-          inputs: filter(campaign.inputs, (item, idx) => idx !== latestInputIndex),
+          inputs: filter(
+            campaign.inputs,
+            (item, idx) => idx !== latestInputIndex
+          ),
         };
       });
   }

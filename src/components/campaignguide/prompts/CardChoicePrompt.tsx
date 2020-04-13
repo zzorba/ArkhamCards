@@ -8,11 +8,11 @@ import ChoiceListComponent from './ChoiceListComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import CardQueryWrapper from '../CardQueryWrapper';
-import CampaignGuideContext, { LatestDecks, CampaignGuideContextType } from '../CampaignGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import { CardChoiceInput } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { ProcessedScenario } from 'data/scenario';
+import { LatestDecks, ProcessedScenario } from 'data/scenario';
 import { safeValue } from 'lib/filters';
 import Card from 'data/Card';
 

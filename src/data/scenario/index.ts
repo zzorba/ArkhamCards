@@ -1,6 +1,6 @@
 import { find } from 'lodash';
 
-import { NumberChoices } from 'actions/types';
+import { Deck, NumberChoices } from 'actions/types';
 import { FullCampaign, Effect } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';
@@ -32,10 +32,13 @@ export interface ProcessedCampaign {
   campaignLog: GuidedCampaignLog;
 }
 
+export interface LatestDecks {
+  [code: string]: Deck | undefined;
+}
+
 export interface DisplayChoice {
   border?: boolean;
   text?: string;
-  flavor?: string;
   description?: string;
   steps?: string[] | null;
   effects?: Effect[] | null;

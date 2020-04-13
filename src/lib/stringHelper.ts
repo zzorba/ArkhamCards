@@ -8,7 +8,8 @@ export function stringList(things: string[]): string {
     case 2: return t`${things[0]} and ${things[1]}`;
     default: {
       const listOfThings = slice(things, 0, things.length - 1).join(', ');
-      return t`${listOfThings}, and ${things[things.length - 1]}`;
+      const lastThing = things[things.length - 1];
+      return t`${listOfThings}, and ${lastThing}`;
     }
   }
 }

@@ -35,7 +35,7 @@ interface Props {
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {
-  renderContent() {
+  renderContent(): React.ReactNode {
     const {
       componentId,
       step: { step, campaignLog },
@@ -91,8 +91,6 @@ export default class ScenarioStepComponent extends React.Component<Props> {
             componentId={componentId}
           />
         );
-      default:
-        return <Text>Unknown step type</Text>;
     }
   }
 

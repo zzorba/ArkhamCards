@@ -39,6 +39,14 @@ export default class EffectsStepComponent extends React.Component<Props> {
       width,
     } = this.props;
     switch (effect.type) {
+      case 'freeform_campaign_log':
+        return (
+          <CampaignLogEffectComponent
+            effect={effect}
+            input={input}
+            numberInput={numberInput}
+          />
+        );
       case 'campaign_log':
         if (this.props.step.stepText || border) {
           return null;

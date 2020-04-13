@@ -1,6 +1,8 @@
 import React from 'react';
 import { t } from 'ttag';
 
+import TextBoxInputComponent from './TextBoxInputComponent';
+import PlayScenarioComponent from './PlayScenarioComponent';
 import UpgradeDecksInput from './UpgradeDecksInput';
 import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWithSuppliesInputComponent';
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
@@ -16,6 +18,7 @@ import NumberPrompt from 'components/campaignguide/prompts/NumberPrompt';
 import SuppliesPrompt from 'components/campaignguide/prompts/SuppliesPrompt';
 import { InputStep } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import { chooseOneInputChoices } from 'data/scenario/inputHelper';
 
 interface Props {
   step: InputStep;
@@ -49,8 +52,8 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             bulletType={step.bullet_type}
             text={step.text}
-            input={step.input}
-            campaignLog={campaignLog}
+            choices={chooseOneInputChoices(step.input.choices, campaignLog)}
+            picker={step.input.style === 'picker'}
           />
         );
       case 'counter':
@@ -129,6 +132,14 @@ export default class InputStepComponent extends React.Component<Props> {
             fontScale={fontScale}
           />
         );
+      case 'play_scenario':
+        return (
+          <PlayScenarioComponent
+            id={step.id}
+            componentId={componentId}
+            input={step.input}
+          />
+        );
       case 'scenario_investigators':
         return (
           <>
@@ -147,6 +158,13 @@ export default class InputStepComponent extends React.Component<Props> {
               allowNewDecks
             />
           </>
+        );
+      case 'text_box':
+        return (
+          <TextBoxInputComponent
+            id={step.id}
+            prompt={step.text}
+          />
         );
     }
   }

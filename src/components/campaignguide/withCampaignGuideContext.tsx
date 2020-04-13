@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, Text } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { flatMap, forEach, map } from 'lodash';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog'
 import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
 import {
   addInvestigator,
+  deleteCampaign,
 } from 'components/campaign/actions';
 import {
   startScenario,
@@ -20,6 +21,7 @@ import {
   setScenarioSupplies,
   setScenarioNumberChoices,
   setScenarioStringChoices,
+  setScenarioText,
   undo,
 } from './actions';
 import { Deck, InvestigatorData, NumberChoices, StringChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
@@ -48,6 +50,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
+  deleteCampaign: (campaignId: number) => void;
   addInvestigator: (campaignId: number, investigator: string, deckId?: number) => void;
   startScenario: (campaignId: number, scenarioId: string) => void;
   setScenarioDecision: (
@@ -84,6 +87,12 @@ interface ReduxActionProps {
     campaignId: number,
     stepId: string,
     choice: number,
+    scenarioId?: string
+  ) => void;
+  setScenarioText: (
+    campaignId: number,
+    stepId: string,
+    text: string,
     scenarioId?: string
   ) => void;
   resetScenario: (
@@ -123,6 +132,7 @@ export default function withCampaignGuideContext<Props>(
   ): ReduxActionProps => {
     return bindActionCreators({
       addInvestigator,
+      deleteCampaign,
       startScenario,
       setScenarioCount,
       setScenarioDecision,
@@ -131,6 +141,7 @@ export default function withCampaignGuideContext<Props>(
       setScenarioStringChoices,
       resetScenario,
       setScenarioChoice,
+      setScenarioText,
       undo,
     }, dispatch);
   };
@@ -239,6 +250,24 @@ export default function withCampaignGuideContext<Props>(
       );
     };
 
+    _setScenarioText = (
+      stepId: string,
+      value: string,
+      scenarioId?: string
+    ) => {
+      const {
+        setScenarioText,
+        campaignId,
+      } = this.props;
+      setScenarioText(
+        campaignId,
+        stepId,
+        value,
+        scenarioId
+      );
+    };
+
+
     _setSupplies = (
       stepId: string,
       supplyCounts: SupplyCounts,
@@ -332,8 +361,10 @@ export default function withCampaignGuideContext<Props>(
         latestDecks,
         cards,
       } = this.props;
-      if (campaign === undefined) {
-        return <Text>Unknown Campaign</Text>;
+      if (!campaign) {
+        return (
+          <Text>Unknown Campaign</Text>
+        );
       }
       const decksByInvestigator: {
         [code: string]: Deck | undefined;
@@ -355,13 +386,18 @@ export default function withCampaignGuideContext<Props>(
           setNumberChoices: this._setNumberChoices,
           setStringChoices: this._setStringChoices,
           setChoice: this._setChoice,
+          setText: this._setScenarioText,
           resetScenario: this._resetScenario,
           undo: this._undo,
         }
       );
       const campaignGuide = getCampaignGuide(campaign.cycleCode);
       if (!campaignGuide) {
-        return <Text>Unknown Campaign Guide</Text>;
+        return (
+          <View>
+            <Text>Unknown Campaign Guide</Text>
+          </View>
+        );
       }
       const context: CampaignGuideContextType = {
         campaignId: campaign.id,

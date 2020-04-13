@@ -17,6 +17,7 @@ export interface CampaignGuideActions {
   setNumberChoices: (id: string, choices: NumberChoices, scenarioId?: string) => void;
   setStringChoices: (id: string, choices: StringChoices, scenarioId?: string) => void;
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
+  setText: (id: string, text: string, scenarioId?: string) => void;
   startScenario: (scenarioId: string) => void;
   resetScenario: (scenarioId: string) => void;
   undo: (scenarioId: string) => void;
@@ -51,6 +52,10 @@ export default class CampaignStateHelper {
 
   setChoice(id: string, value: number, scenarioId?: string) {
     this.actions.setChoice(id, value, scenarioId);
+  }
+
+  setText(id: string, value: string, scenarioId?: string) {
+    this.actions.setText(id, value, scenarioId);
   }
 
   setNumberChoices(id: string, value: NumberChoices, scenarioId?: string) {
@@ -96,6 +101,14 @@ export default class CampaignStateHelper {
     const entry = this.entry('choice', id, scenario);
     if (entry && entry.type === 'choice') {
       return entry.choice;
+    }
+    return undefined;
+  }
+
+  text(id: string, scenario?: string): string | undefined {
+    const entry = this.entry('text', id, scenario);
+    if (entry && entry.type === 'text') {
+      return entry.text;
     }
     return undefined;
   }

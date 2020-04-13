@@ -206,7 +206,8 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
         traits: selectedTraits,
         multiplayer,
         standalone,
-      }
+      },
+      false
     );
     if (card && card.imagesrc) {
       FastImage.preload([

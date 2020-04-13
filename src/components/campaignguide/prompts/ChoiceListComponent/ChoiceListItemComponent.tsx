@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
-import PickerComponent from '../PickerComponent';
+import SinglePickerComponent from '../SinglePickerComponent';
 import { DisplayChoice } from 'data/scenario';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
@@ -76,7 +76,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
       );
     }
     return (
-      <PickerComponent
+      <SinglePickerComponent
         choices={choices}
         selectedIndex={choice === undefined ? -1 : choice}
         editable={editable}

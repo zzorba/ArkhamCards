@@ -42,7 +42,8 @@ export type Effect =
   | CampaignDataEffect
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect
-  | UpgradeDecksEffect;
+  | UpgradeDecksEffect
+  | FreeformCampaignLogEffect;
 export type InvestigatorSelector =
   | "lead_investigator"
   | "all"
@@ -93,7 +94,7 @@ export type ScenarioDataCondition =
   | ScenarioDataInvestigatorStatusCondition
   | ScenarioDataPlayerCountCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
-export type BulletType = "none" | "small" | "right";
+export type BulletType = "none" | "small";
 export type Input =
   | UpgradeDecksInput
   | CardChoiceInput
@@ -104,7 +105,9 @@ export type Input =
   | CounterInput
   | InvestigatorCounterInput
   | InvestigatorChoiceWithSuppliesInput
-  | ScenarioInvestigatorsInput;
+  | ScenarioInvestigatorsInput
+  | PlayScenarioInput
+  | TextBoxInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition = InvestigatorCardCondition | BasicTraumaCondition | InvestigatorCondition;
@@ -112,6 +115,7 @@ export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
   | CampaignLogCondition
+  | CampaignDataChaosBagCondition
   | MultiCondition;
 export type AllCampaigns = FullCampaign[];
 export type Choice1 =
@@ -187,6 +191,7 @@ export interface AddWeaknessEffect {
   type: "add_weakness";
   investigator: "all" | "$input_value";
   weakness_traits: string[];
+  select_traits?: boolean;
 }
 export interface RemoveCardEffect {
   type: "remove_card";
@@ -270,6 +275,10 @@ export interface AddRemoveChaosTokenEffect {
 }
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
+}
+export interface FreeformCampaignLogEffect {
+  type: "freeform_campaign_log";
+  section: "campaign_notes";
 }
 export interface CampaignDataChaosBagCondition {
   type: "campaign_data";
@@ -457,7 +466,6 @@ export interface CardCodeList {
 export interface Choice {
   id: string;
   text: string;
-  flavor?: string;
   description?: string;
   steps?: string[];
   border?: boolean;
@@ -502,7 +510,6 @@ export interface InvestigatorChoiceInput {
 export interface InvestigatorConditionalChoice {
   id: string;
   text: string;
-  flavor?: string;
   description?: string;
   condition?: InvestigatorChoiceCondition;
   border?: boolean;
@@ -528,8 +535,7 @@ export interface ChooseOneInput {
 }
 export interface BinaryConditionalChoice {
   id: string;
-  text?: string;
-  flavor?: string;
+  text: string;
   description?: string;
   condition?: BinaryChoiceCondition;
   border?: boolean;
@@ -562,6 +568,15 @@ export interface InvestigatorChoiceWithSuppliesInput {
 }
 export interface ScenarioInvestigatorsInput {
   type: "scenario_investigators";
+}
+export interface PlayScenarioInput {
+  type: "play_scenario";
+  branches?: BinaryConditionalChoice[];
+  campaign_log?: BinaryConditionalChoice[];
+}
+export interface TextBoxInput {
+  type: "text_box";
+  effects: FreeformCampaignLogEffect[];
 }
 export interface EncounterSetsStep {
   id: string;

@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
 import { StringChoices } from 'actions/types';
-import PickerComponent from './PickerComponent';
+import SinglePickerComponent from './SinglePickerComponent';
 import Card from 'data/Card';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
@@ -119,7 +119,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
           styles.wrapper,
           id !== '$lead_investigator' ? styles.topBorder : {},
         ]}>
-          <PickerComponent
+          <SinglePickerComponent
             title={title}
             description={description}
             defaultLabel={defaultLabel}

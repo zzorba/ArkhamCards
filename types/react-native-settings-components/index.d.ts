@@ -59,18 +59,19 @@ declare module 'react-native-settings-components' {
     title: string;
     valueProps?: TextProps;
     valueStyle?: TextStyle;
-    value?: T;
+    value?: T | T[];
     valueFormat?: (value: T) => string;
     valuePlaceholder?: string;
     options: PickerOption<T>[];
     dialogDescription?: string;
-    onValueChange: (value: T) => void;
+    onValueChange: ((value: T) => void) | ((value: T[]) => void);
     disabled?: boolean;
     modalStyle?: ModalStyle;
     multi?: boolean;
     renderCloseButton?: () => React.Component;
     singleRadio?: boolean;
     widget?: React.ReactNode;
+    widgetStyle?: ViewStyle;
   }
 
   class SettingsPicker<T> extends React.Component<SettingsPickerProps<T>> {

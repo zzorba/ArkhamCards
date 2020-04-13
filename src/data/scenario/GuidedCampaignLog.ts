@@ -11,7 +11,13 @@ import {
   zip,
 } from 'lodash';
 
-import { CampaignDifficulty, InvestigatorData, Slots, TraumaAndCardData } from 'actions/types';
+import {
+  CampaignDifficulty,
+  InvestigatorData,
+  Slots,
+  TraumaAndCardData,
+  WeaknessSet,
+} from 'actions/types';
 import { ChaosBag } from 'constants';
 import { traumaDelta } from 'lib/trauma';
 import {
@@ -24,6 +30,7 @@ import {
   EarnXpEffect,
   Effect,
   EffectsWithInput,
+  FreeformCampaignLogEffect,
   InvestigatorStatus,
   InvestigatorSelector,
   RemoveCardEffect,
@@ -34,6 +41,7 @@ import {
 } from './types';
 import CampaignGuide from './CampaignGuide';
 import Card, { CardsMap } from 'data/Card';
+import { LatestDecks } from 'data/scenario';
 
 interface BasicEntry {
   id: string;
@@ -57,9 +65,15 @@ interface CampaignLogBasicEntry extends BasicEntry {
   type: 'basic';
 }
 
+interface CampaignLogFreeformEntry extends BasicEntry {
+  type: 'freeform';
+  text: string;
+}
+
 export type CampaignLogEntry = CampaignLogCountEntry |
   CampaignLogBasicEntry |
-  CampaignLogCardEntry;
+  CampaignLogCardEntry |
+  CampaignLogFreeformEntry;
 
 export interface EntrySection {
   entries: CampaignLogEntry[];
@@ -131,6 +145,7 @@ export default class GuidedCampaignLog {
       case 'campaign_log':
       case 'campaign_log_count':
       case 'campaign_log_cards':
+      case 'freeform_campaign_log':
       case 'scenario_data':
       case 'campaign_data':
       case 'add_chaos_token':
@@ -226,6 +241,9 @@ export default class GuidedCampaignLog {
               break;
             case 'scenario_data':
               this.handleScenarioDataEffect(effect, scenarioId, input);
+              break;
+            case 'freeform_campaign_log':
+              this.handleFreeformCampaignLogEffect(effect, input);
               break;
             case 'campaign_log':
               this.handleCampaignLogEffect(effect, input);
@@ -345,14 +363,14 @@ export default class GuidedCampaignLog {
   }
 
   nextScenarioName(): string | undefined {
-    const scenarioId = this.nextScenarioId();
+    const scenarioId = this.nextScenarioId(false);
     if (!scenarioId) {
       return undefined;
     }
     return this.campaignGuide.getFullScenarioName(scenarioId);
   }
 
-  nextScenarioId(): string | undefined {
+  nextScenarioId(includeSkipped: boolean): string | undefined {
     // console.log(`Looking for next scenario for ${this.scenarioId}`);
     if (this.campaignData.nextScenario &&
       this.scenarioId !== this.campaignData.nextScenario
@@ -377,7 +395,16 @@ export default class GuidedCampaignLog {
     if (newReplayCount && (!replayCount || replayCount < newReplayCount)) {
       return `${scenarioId}#${newReplayCount}`;
     }
-    return this.campaignGuide.nextScenarioId(this.scenarioId);
+    const skippedScenarios: string[] = [];
+    forEach(this.campaignData.scenarioStatus, (status, scenarioId) => {
+      if (status === 'skipped') {
+        skippedScenarios.push(scenarioId);
+      }
+    });
+    return this.campaignGuide.nextScenarioId(
+      this.scenarioId,
+      includeSkipped ? [] : skippedScenarios
+    );
   }
 
   sectionExists(sectionId: string): boolean {
@@ -564,6 +591,62 @@ export default class GuidedCampaignLog {
       slots[asset] = slots[asset] + 1;
     });
     return slots;
+  }
+
+  effectiveWeaknessSet(
+    campaignInvestigators: Card[],
+    latestDecks: LatestDecks,
+    campaignWeaknessSet: WeaknessSet,
+    weaknessCards: CardsMap,
+    unsavedAssignments: string[]
+  ): WeaknessSet {
+    const assignedCards: Slots = {};
+    forEach(campaignInvestigators, investigator => {
+      const investigatorAssignedCards: Slots = {};
+      const deck = latestDecks[investigator.code];
+      if (deck) {
+        forEach(deck.slots, (count, code) => {
+          if (weaknessCards[code]) {
+            investigatorAssignedCards[code] = count;
+          }
+        });
+        forEach(deck.ignoreDeckLimitSlots, (count, code) => {
+          if (weaknessCards[code]) {
+            investigatorAssignedCards[code] = (investigatorAssignedCards[code] || 0) + count;
+          }
+        });
+      }
+
+      const storyAssets = this.storyAssets(investigator.code);
+      forEach(storyAssets, (count, code) => {
+        if (weaknessCards[code]) {
+          if ((investigatorAssignedCards[code] || 0) <= count) {
+            investigatorAssignedCards[code] = count;
+          }
+        }
+      });
+
+      const ignoreStoryAssets = this.ignoreStoryAssets(investigator.code);
+      forEach(ignoreStoryAssets, (count, code) => {
+        if (weaknessCards[code]) {
+          if ((investigatorAssignedCards[code] || 0) <= count) {
+            investigatorAssignedCards[code] = count;
+          }
+        }
+      });
+
+      forEach(investigatorAssignedCards, (count, code) => {
+        assignedCards[code] = (assignedCards[code] || 0) + count;
+      });
+    });
+    forEach(unsavedAssignments, code => {
+      assignedCards[code] = (assignedCards[code] || 0) + 1;
+    });
+
+    return {
+      ...campaignWeaknessSet,
+      assignedCards,
+    };
   }
 
   baseTrauma(code: string): TraumaAndCardData {
@@ -849,6 +932,21 @@ export default class GuidedCampaignLog {
     }
     this.scenarioData[scenarioId] = scenario;
     this.latestScenarioData = scenario;
+  }
+
+  private handleFreeformCampaignLogEffect(effect: FreeformCampaignLogEffect, input?: string[]) {
+    const section: EntrySection = this.sections[effect.section] || {
+      entries: [],
+      crossedOut: {},
+    };
+    if (!input || !input.length) {
+      return;
+    }
+    section.entries.push({
+      type: 'freeform',
+      id: input[0],
+      text: input[0],
+    });
   }
 
   private handleCampaignLogEffect(effect: CampaignLogEffect, input?: string[]) {

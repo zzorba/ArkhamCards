@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Alert,
+  KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
   View,
@@ -114,15 +115,22 @@ class ScenarioView extends React.Component<Props> {
   render() {
     const { componentId, fontScale, width, processedScenario } = this.props;
     return (
-      <ScrollView>
-        <StepsComponent
-          componentId={componentId}
-          fontScale={fontScale}
-          width={width}
-          steps={processedScenario.steps}
-        />
-        <View style={styles.footer} />
-      </ScrollView>
+      <KeyboardAvoidingView
+        style={styles.keyboardView}
+        behavior="position"
+        enabled
+        keyboardVerticalOffset={100}
+      >
+        <ScrollView>
+          <StepsComponent
+            componentId={componentId}
+            fontScale={fontScale}
+            width={width}
+            steps={processedScenario.steps}
+          />
+          <View style={styles.footer} />
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -134,5 +142,11 @@ export default withScenarioGuideContext<InputProps>(
 const styles = StyleSheet.create({
   footer: {
     marginTop: 64,
+  },
+  keyboardView: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    backgroundColor: 'transparent',
   },
 });

@@ -11,21 +11,32 @@ import space, { s, m, xs } from 'styles/space';
 
 interface Props {
   bulletType?: BulletType;
+  reverseSpacing?: boolean;
   children: React.ReactNode | React.ReactNode[];
   border?: boolean;
   hasTitle?: boolean;
 }
 
 export default class SetupStepWrapper extends React.Component<Props> {
+  renderBalancedSpacing() {
+    const { bulletType } = this.props;
+    switch (bulletType) {
+      case 'small':
+        return s + m + 20;
+      case 'none':
+        return s;
+      default:
+        return s + 22;
+    }
+  }
   renderBullet() {
     const { bulletType } = this.props;
     switch (bulletType) {
-      case 'right':
       case 'none':
         return <View style={styles.bullet} />;
       case 'small':
         return (
-          <View style={styles.smallBullet}>
+          <View style={[styles.smallBullet, { width: 20 }]}>
             <ArkhamIcon
               name="bullet"
               size={20}
@@ -45,13 +56,29 @@ export default class SetupStepWrapper extends React.Component<Props> {
         );
     }
   }
+
   render() {
     const {
       children,
       border,
-      bulletType,
       hasTitle,
+      reverseSpacing,
     } = this.props;
+
+    if (reverseSpacing) {
+      return (
+        <View style={[
+          styles.step,
+          {
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingRight: this.renderBalancedSpacing(),
+          },
+        ]}>
+          { children }
+        </View>
+      );
+    }
 
     return (
       <View style={[
@@ -62,10 +89,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
         hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
       ]}>
         { this.renderBullet() }
-        <View style={[
-          styles.mainText,
-          bulletType === 'right' ? styles.right : {},
-        ]}>
+        <View style={styles.mainText}>
           { children }
         </View>
       </View>
@@ -84,10 +108,6 @@ const styles = StyleSheet.create({
   step: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-  },
-  right: {
-    alignItems: 'flex-end',
-    paddingLeft: 48,
   },
   bullet: {
     marginRight: s,

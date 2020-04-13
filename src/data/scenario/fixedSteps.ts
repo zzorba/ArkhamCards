@@ -14,6 +14,12 @@ import {
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
+export enum PlayingScenarioBranch {
+  CAMPAIGN_LOG = -1,
+  RESOLUTION = -2,
+  DRAW_WEAKNESS = -3,
+}
+
 const CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID = '$check_investigator_defeat';
 function checkInvestigatorDefeatStep(resolutions: Resolution[]): BranchStep {
   const investigatorDefeat = find(resolutions, resolution => resolution.id === 'investigator_defeat');
@@ -94,6 +100,53 @@ const UPGRADE_DECKS_STEP: InputStep = {
   type: 'input',
   input: {
     type: 'upgrade_decks',
+  },
+};
+
+const DRAW_WEAKNESS_STEP: InputStep = {
+  id: '$draw_weakness',
+  type: 'input',
+  input: {
+    type: 'investigator_choice',
+    source: 'scenario',
+    investigator: 'all',
+    choices: [
+      {
+        id: 'draw_weakness',
+        text: 'Draw Weakness',
+        effects: [
+          {
+            type: 'add_weakness',
+            investigator: '$input_value',
+            weakness_traits: [],
+            select_traits: true,
+          },
+        ],
+      },
+    ],
+  },
+};
+
+const PLAY_SCENARIO_STEP: InputStep = {
+  id: '$play_scenario',
+  type: 'input',
+  input: {
+    type: 'play_scenario',
+  },
+};
+
+const EDIT_CAMPAIGN_LOG_STEP: InputStep = {
+  id: '$campaign_log',
+  type: 'input',
+  text: t`In your Campaign Log, record that:`,
+  input: {
+    type: 'text_box',
+    effects: [
+      {
+        type: 'freeform_campaign_log',
+        section: 'campaign_notes',
+      },
+    ],
   },
 };
 
@@ -263,6 +316,12 @@ export function getFixedStep(
         ],
       };
     }
+    case EDIT_CAMPAIGN_LOG_STEP.id:
+      return EDIT_CAMPAIGN_LOG_STEP;
+    case DRAW_WEAKNESS_STEP.id:
+      return DRAW_WEAKNESS_STEP;
+    case PLAY_SCENARIO_STEP.id:
+      return PLAY_SCENARIO_STEP;
     case CHOOSE_INVESTIGATORS_STEP.id:
       return CHOOSE_INVESTIGATORS_STEP;
     case UPGRADE_DECKS_STEP.id:

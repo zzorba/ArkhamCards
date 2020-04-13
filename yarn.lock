@@ -9632,9 +9632,9 @@ react-native-reanimated@^1.7.1:
   dependencies:
     fbjs "^1.0.0"
 
-"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#custom_item_text_style":
+"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#adjust-value-style":
   version "0.0.2"
-  resolved "https://github.com/zzorba/react-native-settings-components#3ec2ec8c492e3eb2e7c5586638355466893cca56"
+  resolved "https://github.com/zzorba/react-native-settings-components#aaa2ee51a7982a1ab2ab46d028ddbdfeca544cd0"
   dependencies:
     lodash "^4.17.11"
     react-native-dialogs "^1.0.2"

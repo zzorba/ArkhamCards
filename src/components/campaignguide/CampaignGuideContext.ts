@@ -1,13 +1,10 @@
 import React from 'react';
 
-import { Deck, WeaknessSet, InvestigatorData } from 'actions/types';
+import { WeaknessSet, InvestigatorData } from 'actions/types';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import CampaignGuide from 'data/scenario/CampaignGuide';
+import { LatestDecks } from 'data/scenario';
 import Card, { CardsMap } from 'data/Card';
-
-export interface LatestDecks {
-  [code: string]: Deck | undefined;
-}
 
 export interface CampaignGuideContextType {
   campaignId: number;

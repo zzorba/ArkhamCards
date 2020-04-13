@@ -15,6 +15,15 @@ interface Props {
 
 export default class CampaignLogSectionComponent extends React.Component<Props> {
   renderEntry(entry: CampaignLogEntry) {
+    if (entry.type === 'freeform') {
+      return (
+        <TextEntryComponent
+          text={entry.text}
+          crossedOut={false}
+          entry={entry}
+        />
+      );
+    }
     const { section } = this.props;
     const { campaignGuide, sectionId } = this.props;
     const logEntry = campaignGuide.logEntry(sectionId, entry.id);

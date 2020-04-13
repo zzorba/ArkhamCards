@@ -32,14 +32,20 @@ function matchingWeaknesses(
     traits,
     multiplayer,
     standalone,
-  }: WeaknessCriteria
+  }: WeaknessCriteria,
+  realTraits: boolean
 ) {
   return filter(availableWeaknesses(set, allWeaknesses), card => {
     const matchesTrait = (!traits || !traits.length) ||
-      !!find(traits, trait => (
-        card.traits_normalized &&
-        card.traits_normalized.indexOf(`#${trait.toLowerCase()}#`) !== -1)
-      );
+      !!find(traits, trait => {
+        const traitsToCheck = realTraits ?
+          card.real_traits_normalized :
+          card.traits_normalized;
+        return (
+          traitsToCheck &&
+          traitsToCheck.indexOf(`#${trait.toLowerCase()}#`) !== -1
+        );
+      });
     const matchesMultiplayerOnly = multiplayer || !!(
       card.real_text && card.real_text.indexOf('Multiplayer only.') === -1
     );
@@ -54,10 +60,12 @@ function matchingWeaknesses(
 export function drawWeakness(
   set: WeaknessSet,
   allWeaknesses: Card[] | Realm.Results<Card>,
-  criteria: WeaknessCriteria
+  criteria: WeaknessCriteria,
+  realTraits: boolean
 ): Card | undefined {
   const cards = shuffle(
-    flatMap(matchingWeaknesses(set, allWeaknesses, criteria),
+    flatMap(
+      matchingWeaknesses(set, allWeaknesses, criteria, realTraits),
       card => {
         return map(
           range(0, (card.quantity || 0) - (set.assignedCards[card.code] || 0)),

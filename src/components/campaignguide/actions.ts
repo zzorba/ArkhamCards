@@ -153,3 +153,22 @@ export function setScenarioChoice(
     },
   };
 }
+
+
+export function setScenarioText(
+  campaignId: number,
+  step: string,
+  text: string,
+  scenario?: string
+): GuideSetInputAction {
+  return {
+    type: GUIDE_SET_INPUT,
+    campaignId,
+    input: {
+      type: 'text',
+      scenario,
+      step,
+      text,
+    },
+  };
+}

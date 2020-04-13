@@ -5,11 +5,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
-import ResultIndicatorIcon from '../../ResultIndicatorIcon';
-import ArkhamIcon from 'icons/ArkhamIcon';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from 'data/scenario';
-import { COLORS } from 'styles/colors';
 import { m, s } from 'styles/space';
 
 interface Props {
@@ -37,7 +34,6 @@ export default class ChoiceComponent extends React.Component<Props> {
     } = this.props;
     return (
       <>
-        { choice.flavor && <CampaignGuideTextComponent flavor text={choice.flavor} /> }
         { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
         { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
       </>

@@ -37,7 +37,8 @@ export default class CampaignLogCountConditionComponent extends React.Component<
           count
         );
       case 'text': {
-        return t`Check Campaign Log. Because <i>${logEntry.text.replace('#X#', `${count}`)}</i>`;
+        const entry = logEntry.text.replace('#X#', `${count}`);
+        return t`Check Campaign Log. Because <i>${entry}</i>`;
       }
       default:
         return 'Some other count condition';

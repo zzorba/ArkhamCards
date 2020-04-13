@@ -26,6 +26,7 @@ import { conditionResult } from 'data/scenario/conditionHelper';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import { PlayingScenarioBranch } from 'data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -343,7 +344,109 @@ export default class ScenarioStep {
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
     const input = step.input;
+    const parts = step.id.split('#');
+    const nextIteration = parts.length > 1 ? parseInt(parts[1], 10) + 1 : 1;
     switch (input.type) {
+      case 'text_box': {
+        const text = scenarioState.text(step.id);
+        if (text === undefined) {
+          return undefined;
+        }
+        return this.maybeCreateEffectsStep(
+          step.id,
+          this.remainingStepIds,
+          [{
+            input: [text],
+            effects: input.effects,
+          }]
+        );
+      }
+      case 'play_scenario': {
+        const choice = scenarioState.choice(step.id);
+        if (choice === undefined) {
+          return undefined;
+        }
+        switch (choice) {
+          case PlayingScenarioBranch.DRAW_WEAKNESS:
+            return this.maybeCreateEffectsStep(
+              step.id,
+              [
+                `$draw_weakness#${nextIteration}`,
+                `$play_scenario#${nextIteration}`,
+                ...this.remainingStepIds,
+              ],
+              []
+            );
+          case PlayingScenarioBranch.RESOLUTION:
+            return this.maybeCreateEffectsStep(
+              step.id,
+              [
+                '$choose_resolution',
+                ...this.remainingStepIds,
+              ],
+              []
+            );
+          case PlayingScenarioBranch.CAMPAIGN_LOG: {
+            if (input.campaign_log) {
+              const choices = chooseOneInputChoices(
+                input.campaign_log || [],
+                this.campaignLog
+              );
+              if (choices.length) {
+                const secondInput = scenarioState.choice(`${step.id}_campaign_log`);
+                if (secondInput === undefined) {
+                  return undefined;
+                }
+                if (secondInput < choices.length) {
+                  const campaignLogChoice = choices[secondInput];
+                  return this.maybeCreateEffectsStep(
+                    step.id,
+                    [
+                      ...(campaignLogChoice.steps || []),
+                      `$play_scenario#${nextIteration}`,
+                      ...this.remainingStepIds,
+                    ],
+                    [
+                      {
+                        effects: campaignLogChoice.effects || [],
+                      },
+                    ]
+                  );
+                }
+              }
+
+            }
+            return this.maybeCreateEffectsStep(
+              step.id,
+              [
+                `$campaign_log#${nextIteration}`,
+                `$play_scenario#${nextIteration}`,
+                ...this.remainingStepIds,
+              ],
+              []
+            );
+          }
+          default: {
+            if (!input.branches || choice >= input.branches.length) {
+              return undefined;
+            }
+            const branch = input.branches[choice];
+            return this.maybeCreateEffectsStep(
+              step.id,
+              [
+                ...(branch.steps || []),
+                `$play_scenario#${nextIteration}`,
+                ...this.remainingStepIds,
+              ],
+              [{
+                effects: branch.effects || [],
+              }],
+              'small',
+              true
+            );
+          }
+        }
+      }
       case 'counter': {
         const count = scenarioState.count(step.id);
         if (count === undefined) {
@@ -540,7 +643,7 @@ export default class ScenarioStep {
         if (index === undefined) {
           return undefined;
         }
-        const choices = chooseOneInputChoices(input, this.campaignLog);
+        const choices = chooseOneInputChoices(input.choices, this.campaignLog);
         const choice = choices[index];
         return this.maybeCreateEffectsStep(
           step.id,
@@ -772,7 +875,8 @@ export default class ScenarioStep {
     id: string,
     remainingStepIds: string[],
     effectsWithInput: EffectsWithInput[],
-    bulletType?: BulletType
+    bulletType?: BulletType,
+    hiddenResult?: boolean
   ): ScenarioStep | undefined {
     const flatEffects = flatMap(effectsWithInput, effects => effects.effects);
     if (flatEffects.length) {
@@ -781,7 +885,7 @@ export default class ScenarioStep {
           id: `${id}_effects`,
           type: 'effects',
           effectsWithInput,
-          stepText: !!this.step.text,
+          stepText: !!this.step.text || !!hiddenResult,
           bullet_type: this.step.bullet_type || bulletType,
         },
         this.scenarioGuide,

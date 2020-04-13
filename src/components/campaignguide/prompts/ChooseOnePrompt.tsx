@@ -3,22 +3,21 @@ import { View } from 'react-native';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
-import PickerComponent from './PickerComponent';
+import SinglePickerComponent from './SinglePickerComponent';
 import ChooseOneListComponent from './ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { BulletType, ChooseOneInput } from 'data/scenario/types';
-import { chooseOneInputChoices } from 'data/scenario/inputHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import { BulletType } from 'data/scenario/types';
+import { DisplayChoice } from 'data/scenario';
 import space from 'styles/space';
 
 interface Props {
   id: string;
-  campaignLog: GuidedCampaignLog;
   bulletType?: BulletType;
   text?: string;
-  input: ChooseOneInput;
+  choices: DisplayChoice[];
+  picker?: boolean;
   optional?: boolean;
 }
 
@@ -46,17 +45,16 @@ export default class ChooseOnePrompt extends React.Component<Props, State> {
   };
 
   render() {
-    const { id, input, text, bulletType, campaignLog } = this.props;
+    const { id, choices, picker, text, bulletType } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
           const decision = scenarioState.choice(id);
           const selectedChoice = decision !== undefined ? decision : this.state.selectedChoice;
-          const choices = chooseOneInputChoices(input, campaignLog);
           return (
             <>
-              { input.style === 'picker' ? (
-                <PickerComponent
+              { picker ? (
+                <SinglePickerComponent
                   title={selectedChoice === undefined ? (text || '') : ''}
                   choices={choices}
                   selectedIndex={selectedChoice}

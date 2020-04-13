@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { map } from 'lodash';
+import { isArray, map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
@@ -9,11 +9,9 @@ import { DisplayChoice } from 'data/scenario';
 import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
 
-interface Props {
+export interface PickerProps {
   choices: DisplayChoice[];
   description?: string;
-  selectedIndex?: number;
-  onChoiceChange: (index: number) => void;
   title: string;
   optional?: boolean;
   editable: boolean;
@@ -27,6 +25,22 @@ interface Props {
   topBorder: boolean;
 }
 
+interface SingleConfig {
+  mode: 'single';
+  onChoiceChange: (index: number) => void;
+  selectedIndex?: number;
+}
+
+interface MultiConfig {
+  mode: 'multi';
+  onChoiceChange: (index: number[]) => void;
+  selectedIndex?: number[];
+}
+
+interface Props extends PickerProps {
+  config: SingleConfig | MultiConfig;
+}
+
 export default class PickerComponent extends React.Component<Props> {
   pickerRef?: SettingsPicker<number>;
 
@@ -34,27 +48,48 @@ export default class PickerComponent extends React.Component<Props> {
     this.pickerRef = ref;
   }
 
-  _onChoiceChange = (idx: number) => {
-    this.pickerRef && this.pickerRef.closeModal();
-    this.props.onChoiceChange(idx);
+  _onSingleChoiceChange = (idx: number) => {
+    const { config } = this.props;
+    if (config.mode === 'single') {
+      this.pickerRef && this.pickerRef.closeModal();
+      config.onChoiceChange(idx);
+    }
   };
 
-  _choiceToLabel = (idx: number): string => {
+  _onMultiChoiceChange = (idx: number[]) => {
+    const { config } = this.props;
+    if (config.mode === 'multi') {
+      config.onChoiceChange(idx);
+    }
+  };
+
+  _valueFormat = (idxOrArray: number | number[]): string => {
+    const { defaultLabel } = this.props;
+    if (isArray(idxOrArray)) {
+      if (!idxOrArray.length) {
+        return defaultLabel || '';
+      }
+      return map(idxOrArray, x => this.choiceToLabel(x)).join(', ');
+    }
+    return this.choiceToLabel(idxOrArray);
+  };
+
+  choiceToLabel(idx: number): string {
     const { choices, defaultLabel } = this.props;
     if (idx === -1) {
       return defaultLabel || '';
     }
     const choice = choices[idx];
     if (choice) {
-      return choice.text || choice.flavor || 'Unknown text';
+      return choice.text || 'Unknown text';
     }
     return '';
-  };
+  }
 
   render() {
     const {
       choices,
-      selectedIndex,
+      config,
       optional,
       editable,
       title,
@@ -80,11 +115,16 @@ export default class PickerComponent extends React.Component<Props> {
         ref={this._capturePickerRef}
         title={title}
         dialogDescription={description}
-        value={selectedIndex}
+        value={config.selectedIndex}
         valuePlaceholder={''}
-        valueFormat={this._choiceToLabel}
-        onValueChange={this._onChoiceChange}
+        valueFormat={this._valueFormat}
+        onValueChange={config.mode === 'single' ?
+          this._onSingleChoiceChange :
+          this._onMultiChoiceChange
+        }
         disabled={!editable}
+        multi={config.mode === 'multi'}
+        singleRadio={config.mode === 'single' && !optional}
         modalStyle={{
           header: {
             wrapper: {
@@ -113,19 +153,28 @@ export default class PickerComponent extends React.Component<Props> {
           color: colors ? colors.textColor : COLORS.black,
           fontWeight: '600',
         }}
+        valueProps={{
+          numberOfLines: 3,
+          ellipsizeMode: 'tail',
+        }}
         valueStyle={{
           ...typography.label,
           color: colors ? colors.textColor : COLORS.black,
           fontWeight: '400',
+          flex: config.mode === 'multi' ? 3 : 1,
+          textAlign: 'right',
         }}
         containerStyle={{
           padding: 4,
           paddingLeft: 0,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
           backgroundColor: colors ? colors.backgroundColor : COLORS.white,
           borderBottomWidth: StyleSheet.hairlineWidth,
           borderColor: '#888',
           borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,
         }}
+        widgetStyle={{}}
         widget={
           editable ? (
             <MaterialIcons

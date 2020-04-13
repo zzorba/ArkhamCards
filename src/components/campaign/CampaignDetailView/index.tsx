@@ -17,6 +17,7 @@ import {
 } from 'react-native-settings-components';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from 'actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
@@ -38,7 +39,7 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
 import { ChaosBag } from 'constants';
-import { updateCampaign, deleteCampaign } from '../actions';
+import { updateCampaign, deleteCampaign, cleanBrokenCampaigns } from '../actions';
 import { NavigationProps } from 'components/nav/types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
 import { COLORS } from 'styles/colors';
@@ -57,6 +58,7 @@ interface ReduxProps {
 interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
   deleteCampaign: (id: number) => void;
+  cleanBrokenCampaigns: () => void;
 }
 
 type Props = NavigationProps &
@@ -262,6 +264,15 @@ class CampaignDetailView extends React.Component<Props, State> {
         ],
       );
     }
+  };
+
+  _cleanBrokenCampaigns = () => {
+    const {
+      cleanBrokenCampaigns,
+      componentId,
+    } = this.props;
+    cleanBrokenCampaigns();
+    Navigation.pop(componentId);
   };
 
   _delete = () => {
@@ -556,7 +567,15 @@ class CampaignDetailView extends React.Component<Props, State> {
     } = this.props;
 
     if (!campaign) {
-      return null;
+      return (
+        <View>
+          <BasicButton
+            title={t`Clean up broken campaigns`}
+            color={COLORS.red}
+            onPress={this._cleanBrokenCampaigns}
+          />
+        </View>
+      );
     }
     const menuWidth = Math.min(width * 0.60, 240);
     return (
@@ -597,6 +616,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return bindActionCreators({
     deleteCampaign,
     updateCampaign,
+    cleanBrokenCampaigns,
   }, dispatch);
 }
 

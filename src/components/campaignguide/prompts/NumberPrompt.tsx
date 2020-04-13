@@ -111,7 +111,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
   renderPrompt(count?: number) {
-    const { prompt, delta } = this.props;
+    const { prompt } = this.props;
     const value = this.currentValue();
     return (
       <View style={styles.promptRow}>

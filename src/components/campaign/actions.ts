@@ -10,6 +10,8 @@ import {
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   CAMPAIGN_ADD_INVESTIGATOR,
+  CLEAN_BROKEN_CAMPAIGNS,
+  CleanBrokenCampaignsAction,
   CampaignAddInvestigatorAction,
   Campaign,
   CampaignNotes,
@@ -50,6 +52,12 @@ export function setAllCampaigns(
   return {
     type: SET_ALL_CAMPAIGNS,
     campaigns,
+  };
+}
+
+export function cleanBrokenCampaigns(): CleanBrokenCampaignsAction {
+  return {
+    type: CLEAN_BROKEN_CAMPAIGNS,
   };
 }
 
