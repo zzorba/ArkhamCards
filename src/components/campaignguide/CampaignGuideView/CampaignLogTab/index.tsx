@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { flatMap, keys } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -23,10 +23,6 @@ interface Props {
 }
 
 export default class CampaignLogTab extends React.Component<Props> {
-  _addCampaignLog = () => {
-    Alert.alert('Coming soon!');
-  };
-
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
     const { campaignLog, campaignGuide } = this.props;
     switch (type) {
@@ -89,12 +85,6 @@ export default class CampaignLogTab extends React.Component<Props> {
                 sectionId={id}
                 campaignGuide={campaignGuide}
                 section={section}
-              />
-            ) }
-            { id === 'campaign_notes' && (
-              <BasicButton
-                title={t`Add campaign log entry`}
-                onPress={this._addCampaignLog}
               />
             ) }
           </View>
