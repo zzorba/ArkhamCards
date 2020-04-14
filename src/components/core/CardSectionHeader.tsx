@@ -24,7 +24,7 @@ export interface CardSectionHeaderData {
 }
 
 interface Props {
-  investigator: Card;
+  investigator?: Card;
   fontScale: number;
   section: CardSectionHeaderData;
 }
@@ -57,6 +57,7 @@ export default class CardSectionHeader extends React.Component<Props> {
       </View>
     );
   }
+
   render() {
     const {
       investigator,
@@ -68,6 +69,9 @@ export default class CardSectionHeader extends React.Component<Props> {
       );
     }
     if (section.superTitle) {
+      if (!investigator) {
+        return null;
+      }
       if (section.onPress) {
         if (Platform.OS === 'ios' || !TouchableNativeFeedback.canUseNativeForeground()) {
           return (

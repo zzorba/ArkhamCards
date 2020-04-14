@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { forEach, keys, map, values } from 'lodash';
 import { t } from 'ttag';
 // @ts-ignore
@@ -113,33 +113,42 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
     const choices = scenarioState.stringChoices(`${id}_weakness`);
     return (
       <>
-        { map(investigators, investigator => {
-          const choice = choices !== undefined ? choices[investigator.code][0] :
-            this.state.choices[investigator.code];
-          return (
-            <InvestigatorButton
-              key={investigator.code}
-              investigator={investigator}
-              value={choice === undefined ?
-                t`Draw random weakness` :
-                cardsMap[choice].name
-              }
-              onPress={this._drawRandomWeakness}
-              disabled={choice !== undefined}
-              widget={(
-                <View style={space.marginRightS}>
-                  <MaterialCommunityIcons
-                    name="shuffle-variant"
-                    size={24}
-                    color="#000"
-                  />
-                </View>
-              )}
-            />
-          );
-        }) }
+        <View style={styles.wrapper}>
+          { map(investigators, investigator => {
+            const choice = choices !== undefined ? choices[investigator.code][0] :
+              this.state.choices[investigator.code];
+            return (
+              <InvestigatorButton
+                key={investigator.code}
+                investigator={investigator}
+                value={choice === undefined ?
+                  t`Draw random weakness` :
+                  cardsMap[choice].name
+                }
+                onPress={this._drawRandomWeakness}
+                disabled={choice !== undefined}
+                widget={(
+                  <View style={space.marginRightS}>
+                    <MaterialCommunityIcons
+                      name="shuffle-variant"
+                      size={24}
+                      color="#000"
+                    />
+                  </View>
+                )}
+              />
+            );
+          }) }
+        </View>
         { this.renderSaveButton(choices) }
       </>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
+  },
+});

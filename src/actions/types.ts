@@ -274,12 +274,12 @@ export const GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
   PTC,
   TFA,
   TCU,
-];
-
-export const COMING_SOON_GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
   RTNOTZ,
   RTDWL,
   RTPTC,
+];
+
+export const COMING_SOON_GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
   TDEA,
   TDEB,
 ];

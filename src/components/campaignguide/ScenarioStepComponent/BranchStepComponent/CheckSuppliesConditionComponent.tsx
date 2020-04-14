@@ -50,7 +50,7 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
     );
   }
 
-  _renderAllOption = (cards: Card[], option: Option) => {
+  _renderAllOption = (cards: Card[], option: Option): Element | null => {
     return this.renderCondition(
       cards,
       option.boolCondition === true

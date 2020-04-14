@@ -367,7 +367,8 @@ export default class GuidedCampaignLog {
     if (!scenarioId) {
       return undefined;
     }
-    return this.campaignGuide.getFullScenarioName(scenarioId);
+    const scenarioName = this.campaignGuide.getFullScenarioName(scenarioId);
+    return scenarioName;
   }
 
   nextScenarioId(includeSkipped: boolean): string | undefined {

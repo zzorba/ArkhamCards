@@ -8,12 +8,12 @@ import Card from 'data/Card';
 
 interface Props<T = undefined> {
   code: string;
-  render: (card: Card, extraArg: T) => React.ReactNode;
+  render: (card: Card, extraArg: T) => Element | null;
   extraArg: T;
 }
 
 export default class SingleCardWrapper<T = undefined> extends React.Component<Props<T>> {
-  _render = (cards: Card[]) => {
+  _render = (cards: Card[]): Element | null => {
     const { render, code, extraArg } = this.props;
     if (!cards.length) {
       return <Text>Unknown { code }</Text>;

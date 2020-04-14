@@ -47,9 +47,9 @@ const CHOOSE_RESOLUTION_STEP_ID = '$choose_resolution';
 function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const hasInvestigatorDefeat = !!find(
     resolutions,
-    resolution => resolution.id === 'investigator_defeat');
-
-  return {
+    resolution => resolution.id === 'investigator_defeat'
+  );
+  const step: InputStep = {
     id: CHOOSE_RESOLUTION_STEP_ID,
     type: 'input',
     title: 'Resolutions',
@@ -83,6 +83,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
       ),
     },
   };
+  return step;
 }
 
 const PROCEED_STEP_ID = '$proceed';
@@ -201,8 +202,8 @@ function resolutionStep(
 }
 
 const INVESTIGATOR_STATUS_STEP_SUFFIX = 'investigator_status';
-function investigatorStatusStepId(resolution: Resolution) {
-  return `$r_${resolution.id}#${INVESTIGATOR_STATUS_STEP_SUFFIX}`;
+function investigatorStatusStepId(resolution: Resolution): string {
+  return `$r_${resolution.id}*${INVESTIGATOR_STATUS_STEP_SUFFIX}`;
 }
 
 function statusToString(
@@ -221,10 +222,10 @@ function investigatorStatusStep(
   id: string,
   resolutions: Resolution[]
 ): InputStep | undefined {
-  if (!id.startsWith('$r_') || id.indexOf('#') === -1) {
+  if (!id.startsWith('$r_') || id.indexOf('*') === -1) {
     return undefined;
   }
-  const [resolutionId, stepType] = id.substring(3).split('#');
+  const [resolutionId, stepType] = id.substring(3).split('*');
   if (stepType !== INVESTIGATOR_STATUS_STEP_SUFFIX) {
     return undefined;
   }
@@ -266,6 +267,7 @@ function investigatorStatusStep(
       };
     }
   );
+
   return {
     id,
     type: 'input',

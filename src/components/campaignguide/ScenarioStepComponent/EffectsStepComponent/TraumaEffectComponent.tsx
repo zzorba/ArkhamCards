@@ -89,7 +89,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       );
     }
     return map(investigators, (investigator, idx) => (
-      <SetupStepWrapper key={idx}>
+      <SetupStepWrapper key={idx} bulletType="small">
         <CampaignGuideTextComponent
           text={this.message(investigator)}
         />

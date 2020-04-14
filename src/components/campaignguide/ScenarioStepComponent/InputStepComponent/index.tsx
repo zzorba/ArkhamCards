@@ -94,6 +94,7 @@ export default class InputStepComponent extends React.Component<Props> {
       case 'card_choice':
         return (
           <CardChoicePrompt
+            componentId={componentId}
             id={step.id}
             text={step.text}
             input={step.input}

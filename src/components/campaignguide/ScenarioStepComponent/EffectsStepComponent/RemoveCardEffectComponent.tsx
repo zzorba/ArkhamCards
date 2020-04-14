@@ -34,7 +34,7 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
     ));
   };
 
-  _renderCard = (card: Card) => {
+  _renderCard = (card: Card): Element | null => {
     const { id, effect, input, campaignLog } = this.props;
     if (!effect.investigator) {
       // These are always spelled out.

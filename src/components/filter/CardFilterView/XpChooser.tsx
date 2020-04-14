@@ -73,7 +73,7 @@ export default class XpChooser extends React.Component<Props> {
     });
     const buttons = map(this.levelRanges(), xyz => {
       const startXp = xyz[0];
-      const endXp = xyz[0];
+      const endXp = xyz[1];
       const xp = startXp === endXp ?
         t`Level ${startXp}` :
         t`Level ${startXp} - ${endXp}`;

@@ -458,10 +458,12 @@ export interface CardSearchQuery {
   trait?: string;
   unique?: boolean;
   vengeance?: boolean;
+  exclude_code?: string[];
   code?: null;
 }
 export interface CardCodeList {
   code: string[];
+  source?: null;
 }
 export interface Choice {
   id: string;

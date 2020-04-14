@@ -18,8 +18,8 @@ export default class ChaosTokenEffectComponent extends React.Component<Props> {
       isSpecialToken(token) ? `[${token}]` : `${token}`
     ).join(' ');
     const text = effect.type === 'add_chaos_token' ?
-      t`Add ${tokenString} to the Chaos Bag` :
-      t`Remove ${tokenString} from the Chaos Bag`;
+      t`Add ${tokenString} to the chaos bag.` :
+      t`Remove ${tokenString} from the chaos bag.`;
     return (
       <SetupStepWrapper bulletType="small">
         <CampaignGuideTextComponent text={text} />

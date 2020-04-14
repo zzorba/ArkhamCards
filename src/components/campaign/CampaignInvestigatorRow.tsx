@@ -90,6 +90,7 @@ export default connect(mapStateToProps)(CampaignInvestigatorRow);
 const styles = StyleSheet.create({
   row: {
     marginTop: s,
+    minHeight: 40,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',

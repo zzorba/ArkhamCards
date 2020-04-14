@@ -6,7 +6,7 @@ import Card from 'data/Card';
 
 interface OwnProps<T> {
   query: string;
-  render: (cards: Card[], extraArg: T) => React.ReactNode;
+  render: (cards: Card[], extraArg: T) => Element | null;
   extraArg: T;
 }
 
@@ -32,7 +32,9 @@ export default connectRealm<OwnProps<any>, RealmProps, Card>(
       realm: Realm,
       props: OwnProps<any>
     ) {
-      const cards = results.cards.filtered(props.query);
+      const cards = results.cards.filtered(
+        `((${props.query}) AND (taboo_set_id == 0 or taboo_set_id == null))`,
+      ).sorted([['renderName', false], ['xp', false]]);
       const result: Card[] = [];
       forEach(cards, card => result.push(card));
       return {

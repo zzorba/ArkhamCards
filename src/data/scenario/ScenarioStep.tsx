@@ -483,11 +483,12 @@ export default class ScenarioStep {
             if (group[0].choice === -1) {
               return [];
             }
-            return {
-              inputValue: map(group, item => item.code),
-              counterInput: group[0].choice,
+            const effectWithInput: EffectsWithInput = {
+              input: map(group, item => item.code),
+              numberInput: [group[0].choice],
               effects: input.effects,
             };
+            return effectWithInput;
           }
         );
         return this.maybeCreateEffectsStep(

@@ -161,7 +161,6 @@ export default class PickerComponent extends React.Component<Props> {
           ...typography.label,
           color: colors ? colors.textColor : COLORS.black,
           fontWeight: '400',
-          flex: config.mode === 'multi' ? 3 : 1,
           textAlign: 'right',
         }}
         containerStyle={{

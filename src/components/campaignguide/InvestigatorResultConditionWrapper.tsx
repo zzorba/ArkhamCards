@@ -10,11 +10,11 @@ import { Option } from 'data/scenario/types';
 interface Props<T> {
   result: InvestigatorResult;
   extraArg: T;
-  renderOption: (investigators: Card[], option: Option, extraArg: T) => React.ReactNode;
+  renderOption: (investigators: Card[], option: Option, extraArg: T) => Element | null;
 }
 
 export default class InvestigatorResultConditionWrapper<T> extends React.Component<Props<T>> {
-  _renderCards = (cards: Card[], option: Option) => {
+  _renderCards = (cards: Card[], option: Option): Element | null => {
     const { renderOption, extraArg } = this.props;
     return renderOption(cards, option, extraArg);
   };

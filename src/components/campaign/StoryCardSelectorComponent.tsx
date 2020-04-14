@@ -9,7 +9,7 @@ import { scenarioRewards } from 'components/campaign/constants';
 import { Deck, Slots } from 'actions/types';
 import Card from 'data/Card';
 import { getDeck, getTabooSet, AppState } from 'reducers';
-import CardSelectorComponent from '../cardlist/CardSelectorComponent';
+import CardSelectorComponent from 'components/cardlist/CardSelectorComponent';
 
 interface OwnProps {
   componentId: string;

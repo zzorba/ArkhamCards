@@ -85,11 +85,15 @@ export default class ScenarioGuide {
       return existingStep;
     }
 
-    return getFixedStep(
+    const fixedStep = getFixedStep(
       id,
       this.scenario,
       campaignLog
     );
+    if (fixedStep) {
+      return fixedStep;
+    }
+    throw new Error(`Could not find step: ${id}`);
   }
 
   resolution(

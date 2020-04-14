@@ -42,7 +42,7 @@ export default class HasCardConditionComponent extends React.Component<Props> {
   _renderInvestigators = (
     investigatorCards: Card[],
     option: Option
-  ): React.ReactNode => {
+  ): Element | null => {
     const investigators = stringList(map(investigatorCards, card => card.name));
     const prompt = option && option.condition;
     return (
@@ -58,7 +58,7 @@ export default class HasCardConditionComponent extends React.Component<Props> {
     );
   };
 
-  _renderCard = (card: Card): React.ReactNode => {
+  _renderCard = (card: Card): Element | null => {
     const { step, condition, campaignLog } = this.props;
     const result = hasCardConditionResult(condition, campaignLog);
     if (result.type === 'investigator') {

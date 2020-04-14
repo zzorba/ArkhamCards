@@ -27,12 +27,10 @@ export default class SelectWeaknessTraitsComponent extends React.Component<Props
   };
 
   _onChoiceChange = (selectedIndex: number[]) => {
-    console.log(selectedIndex);
     this.setState({
       selectedIndex,
     });
   };
-
 
   allTraits(): string[] {
     const { cardsMap } = this.props;

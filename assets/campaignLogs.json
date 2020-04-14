@@ -365,12 +365,20 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "bsr_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
             "id": "cca_add_chaos_token",
             "text": "dummy"
           },
           {
             "id": "possessed",
             "text": "one or more investigators was possessed."
+          },
+          {
+            "id": "tpm_conviction_or_doubt",
+            "text": "dummy"
           }
         ]
       },
@@ -416,14 +424,215 @@
     "supplies": []
   },
   {
+    "campaignId": "rtdwl",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "banished_silas_bishop",
+            "text": "the investigators banished Silas Bishop."
+          },
+          {
+            "id": "bone_to_pick",
+            "text": "the O'Bannion gang has a bone to pick with the investigators."
+          },
+          {
+            "id": "brood_escaped",
+            "text": "#X# brood escaped into the wild."
+          },
+          {
+            "id": "calmed_townsfolk",
+            "text": "you calmed the townsfolk."
+          },
+          {
+            "id": "closed_tear",
+            "text": "the investigators closed the tear in reality."
+          },
+          {
+            "id": "destroyed_necronomicon",
+            "text": "the investigators destroyed the Necronomicon."
+          },
+          {
+            "id": "earl_sawyer_survived",
+            "text": "Earl Sawyer survived The Dunwich Legacy."
+          },
+          {
+            "id": "entered_the_gate",
+            "text": "the investigators entered the gate."
+          },
+          {
+            "id": "experiment_defeated",
+            "text": "the Experiment was defeated."
+          },
+          {
+            "id": "failed_to_recover_necronomicon",
+            "text": "the investigators failed to recover the Necronomicon."
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "the investigators failed to save the students."
+          },
+          {
+            "id": "francis_morgan_kidnapped",
+            "text": "Dr. Francis Morgan was kidnapped."
+          },
+          {
+            "id": "francis_morgan_rescued",
+            "text": "the investigators rescued Dr. Francis Morgan."
+          },
+          {
+            "id": "francis_morgan_survived",
+            "text": "Dr. Francis Morgan survived The Dunwich Legacy."
+          },
+          {
+            "id": "henry_armitage_kidnapped",
+            "text": "Dr. Henry Armitage was kidnapped."
+          },
+          {
+            "id": "henry_armitage_rescued",
+            "text": "the investigators rescued Dr. Henry Armitage."
+          },
+          {
+            "id": "henry_armitage_survived",
+            "text": "Dr. Henry Armitage survived The Dunwich Legacy."
+          },
+          {
+            "id": "investigators_delayed",
+            "text": "the investigators were delayed on their way to Dunwich."
+          },
+          {
+            "id": "killed_silas_bishop",
+            "text": "the investigators put Silas Bishop out of his misery."
+          },
+          {
+            "id": "naomi_has_back",
+            "text": "Naomi has the investigators' back."
+          },
+          {
+            "id": "necronomicon_stolen",
+            "text": "the Necronomicon was stolen."
+          },
+          {
+            "id": "no_brood_escaped",
+            "text": "No brood escaped into the wild."
+          },
+          {
+            "id": "restored_silas_bishop",
+            "text": "the investigators restored Silas Bishop."
+          },
+          {
+            "id": "ritual_completed",
+            "text": "the ritual was completed."
+          },
+          {
+            "id": "students_rescued",
+            "text": "the students were rescued."
+          },
+          {
+            "id": "took_necronomicon",
+            "text": "the investigators took custody of the Necronomicon."
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "the investigators were unconscious for several hours."
+          },
+          {
+            "id": "warned_townsfolk",
+            "text": "you warned the townsfolk."
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "Professor Warren Rice was kidnapped."
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "the investigators rescued Professor Warren Rice."
+          },
+          {
+            "id": "warren_rice_survived",
+            "text": "Professor Warren Rice survived The Dunwich Legacy."
+          },
+          {
+            "id": "yog_sothoth_became_one_with_reality",
+            "text": "Yog-Sothoth tore apart the barriers between worlds, and became one with all reality."
+          },
+          {
+            "id": "yog_sothoth_escaped",
+            "text": "Yog-Sothoth tore apart the barrier between worlds, and became one with all reality."
+          },
+          {
+            "id": "yog_sothoth_fled",
+            "text": "Yog-Sothoth has fled to another dimension."
+          },
+          {
+            "id": "zebulon_whateley_survived",
+            "text": "Zebulon Whateley survived The Dunwich Legacy."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "tmm_add_chaos_token",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "sacrificed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "rtnotz",
     "sections": [
       {
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "arkham_succumbed",
+            "text": "Arkham succumbed to Umôrdhoth’s terrible vengeance."
+          },
+          {
+            "id": "ghoul_priest_alive",
+            "text": "the Ghoul Priest is still alive."
+          },
+          {
+            "id": "house_burned",
+            "text": "your house has burned to the ground."
+          },
+          {
+            "id": "house_standing",
+            "text": "your house is still standing."
+          },
+          {
+            "id": "lita_finds_others",
+            "text": "Lita was forced to find others to help her cause."
+          },
+          {
+            "id": "lita_sacrificed",
+            "text": "the investigators sacrificed Lita Chantler to Umôrdhoth."
+          },
+          {
             "id": "past_midnight",
             "text": "it is past midnight."
+          },
+          {
+            "id": "ritual_broken",
+            "text": "the ritual to summon Umôrdhoth was broken."
+          },
+          {
+            "id": "umordhoth_repelled",
+            "text": "the investigators repelled Umôrdhoth."
           }
         ]
       },
@@ -441,6 +650,196 @@
         "entries": [
           {
             "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtptc",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "the investigators were attacked as they escaped the Asylum."
+          },
+          {
+            "id": "awoke_inside_catacombs",
+            "text": "you awoke inside the catacombs."
+          },
+          {
+            "id": "carcosa_merged",
+            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          },
+          {
+            "id": "chose_not_to_warn_police",
+            "text": "you chose not to go to the police."
+          },
+          {
+            "id": "destroyed_the_oathspeaker",
+            "text": "you destroyed the oathspeaker."
+          },
+          {
+            "id": "did_not_escape_gaze",
+            "text": "you did not escape the gaze of the phantom."
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "you entered the catacombs on your own."
+          },
+          {
+            "id": "escaped_the_asylum",
+            "text": "the investigators escaped the Asylum."
+          },
+          {
+            "id": "fled_dinner_party",
+            "text": "you fled the dinner party."
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "the followers of the sign have found the way forward."
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "you found Nigel Engram."
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "you found Nigel's home."
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "Hastur has you in his grasp."
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "you heeded Daniel’s warning."
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "you ignored Daniel’s warning."
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "you intruded on a secret meeting."
+          },
+          {
+            "id": "king_claimed_victims",
+            "text": "the King claimed its victims."
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "you know the site of the gate."
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "you left the onyx clasp behind."
+          },
+          {
+            "id": "opened_path_above",
+            "text": "you opened the path above."
+          },
+          {
+            "id": "opened_path_below",
+            "text": "you opened the path below."
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "the police are suspicious of you."
+          },
+          {
+            "id": "possessed",
+            "text": "#name# was possessed."
+          },
+          {
+            "id": "prevented_hasturs_escape",
+            "text": "the investigators prevented Hastur from escaping his prison."
+          },
+          {
+            "id": "read_act_2",
+            "text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "slayed_the_monsters",
+            "text": "you slayed the monsters at the dinner party."
+          },
+          {
+            "id": "stranger_is_on_to_you",
+            "text": "the Stranger is on to you."
+          },
+          {
+            "id": "took_onyx_clasp",
+            "text": "you took the onyx clasp."
+          },
+          {
+            "id": "tried_to_warn_police",
+            "text": "you tried to warn the police."
+          },
+          {
+            "id": "unable_to_find_nigel",
+            "text": "you were unable to find Nigel."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "bsr_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
+            "id": "cca_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "possessed",
+            "text": "one or more investigators was possessed."
+          },
+          {
+            "id": "tpm_conviction_or_doubt",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "vips_interviewed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          }
+        ]
+      },
+      {
+        "section": "vips_slain",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          },
+          {
+            "id": "03065b",
+            "text": "#name#"
+          },
+          {
+            "id": "03066b",
+            "text": "#name#"
+          },
+          {
+            "id": "03067b",
+            "text": "#name#"
+          },
+          {
+            "id": "03068b",
+            "text": "#name#"
+          },
+          {
+            "id": "03069b",
             "text": "#name#"
           }
         ]
@@ -789,6 +1188,10 @@
             "text": "the black cat warned the others."
           },
           {
+            "id": "broken_the_laws_of_ulthar",
+            "text": "#name# has broken the law of Ulthar."
+          },
+          {
             "id": "captured",
             "text": "#name# was captured."
           },
@@ -857,6 +1260,10 @@
             "text": "the investigators were saved by Randolph Carter."
           },
           {
+            "id": "strayed_from_the_path",
+            "text": "the dreamers strayed from the path."
+          },
+          {
             "id": "threaten_black_cat",
             "text": "okay, fine, have it your way then."
           },
@@ -869,6 +1276,10 @@
       {
         "section": "hidden",
         "entries": [
+          {
+            "id": "broke_cat_law",
+            "text": "dummy"
+          },
           {
             "id": "forbidden_lands",
             "text": "dummy"
