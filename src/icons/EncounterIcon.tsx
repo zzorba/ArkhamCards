@@ -214,6 +214,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'sins_of_the_past':
       case 'vile_experiments':
         return this.standaloneIcon(encounter_code, size, color);
+      case 'hotel':
+        return this.standaloneIcon('excelsior', size, color);
       case 'the_eternal_slumber':
         return this.standaloneIcon('eternal_slumber', size, color);
       case 'the_nights_usurper':
