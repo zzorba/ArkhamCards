@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-flip-card/lib/FlipCard.js b/node_modules/react-native-flip-card/lib/FlipCard.js
+index 48baeb4..169a2a8 100644
+--- a/node_modules/react-native-flip-card/lib/FlipCard.js
++++ b/node_modules/react-native-flip-card/lib/FlipCard.js
+@@ -35,7 +35,7 @@ export default class FlipCard extends Component {
+       back: { width: 0, height: 0 }
+     }
+   }
+-  componentWillReceiveProps (nextProps) {
++  UNSAFE_componentWillReceiveProps (nextProps) {
+     if (this.state.isFlipped !== nextProps.flip) {
+       this._toggleCard()
+     }
