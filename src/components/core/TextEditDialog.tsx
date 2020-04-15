@@ -189,7 +189,9 @@ export default class TextEditDialog extends React.Component<Props, State> {
               textDecorationColor: '#222',
             } : {},
           ]}
-          wrapperStyle={{ minHeight: height + 12 }}
+          wrapperStyle={{
+            minHeight: height + 12,
+          }}
           textInputRef={this._captureTextInputRef}
           value={text}
           editable={!isCrossedOut}
@@ -199,6 +201,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
           numberOfLines={numberOfLines}
           onContentSizeChange={this._updateSize}
           returnKeyType="done"
+          underlineColorAndroid="#888"
         />
         <DialogComponent.Button
           label={t`Cancel`}

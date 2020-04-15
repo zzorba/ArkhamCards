@@ -57,6 +57,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
         return (
           <StoryStepComponent
             step={step}
+            width={width}
           />
         );
       case 'encounter_sets':

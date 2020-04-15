@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text } from 'react-native';
-import { flatMap, map, sortBy } from 'lodash';
+import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -394,6 +394,26 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     );
   }
 
+  computeStoryCountsForDeck(
+    deck: Deck,
+    storyAssets: Slots,
+    storyDeltas: Slots
+  ) {
+    const newSlots: Slots = {};
+    forEach(keys(storyAssets), code => {
+      const delta = storyDeltas[code];
+      if (delta) {
+        newSlots[code] = (deck.slots[code] || 0) + delta;
+      } else {
+        newSlots[code] = deck.slots[code];
+      }
+      if (newSlots[code] < 0) {
+        newSlots[code] = 0;
+      }
+    });
+    return newSlots;
+  }
+
   renderDetails(choices?: NumberChoices) {
     const {
       componentId,
@@ -420,7 +440,11 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         investigator={investigator}
         campaignSection={this.renderCampaignSection(choices, deck)}
         startingXp={campaignLog.earnedXp(investigator.code)}
-        storyCounts={campaignLog.storyAssets(investigator.code)}
+        storyCounts={this.computeStoryCountsForDeck(
+          deck,
+          campaignLog.storyAssets(investigator.code),
+          campaignLog.storyAssetChanges(investigator.code)
+        )}
         ignoreStoryCounts={campaignLog.ignoreStoryAssets(investigator.code)}
         upgradeCompleted={this._onUpgrade}
         saveDeckChanges={saveDeckChanges}

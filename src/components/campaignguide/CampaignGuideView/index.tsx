@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import { Campaign, InvestigatorData } from 'actions/types';
 import InvestigatorsTab from './InvestigatorsTab';
-import CampaignLogTab from './CampaignLogTab';
+import CampaignLogComponent from '../CampaignLogComponent';
 import ScenarioListTab from './ScenarioListTab';
 import TabView from 'components/core/TabView';
 import { deleteCampaign, updateCampaign } from 'components/campaign/actions';
@@ -222,7 +222,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
         key: 'log',
         title: t`Log`,
         node: (
-          <CampaignLogTab
+          <CampaignLogComponent
             campaignId={campaignId}
             campaignGuide={campaignGuide}
             campaignLog={processedCampaign.campaignLog}
@@ -237,6 +237,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
       <TabView
         tabs={tabs}
         onTabChange={this._onTabChange}
+        fontScale={fontScale}
       />
     );
   }

@@ -26,7 +26,7 @@ export default class LocationSetupButton extends React.Component<Props> {
         options: {
           topBar: {
             title: {
-              text: step.title,
+              text: step.text,
             },
             backButton: {
               title: t`Back`,
@@ -40,7 +40,7 @@ export default class LocationSetupButton extends React.Component<Props> {
   render() {
     const { step } = this.props;
     return (
-      <BasicButton title={step.title} onPress={this._press} />
+      <BasicButton title={step.text} onPress={this._press} />
     );
   }
 }

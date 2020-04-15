@@ -611,24 +611,10 @@ export default class GuidedCampaignLog {
             investigatorAssignedCards[code] = count;
           }
         });
-        forEach(deck.ignoreDeckLimitSlots, (count, code) => {
-          if (weaknessCards[code]) {
-            investigatorAssignedCards[code] = (investigatorAssignedCards[code] || 0) + count;
-          }
-        });
       }
 
       const storyAssets = this.storyAssets(investigator.code);
       forEach(storyAssets, (count, code) => {
-        if (weaknessCards[code]) {
-          if ((investigatorAssignedCards[code] || 0) <= count) {
-            investigatorAssignedCards[code] = count;
-          }
-        }
-      });
-
-      const ignoreStoryAssets = this.ignoreStoryAssets(investigator.code);
-      forEach(ignoreStoryAssets, (count, code) => {
         if (weaknessCards[code]) {
           if ((investigatorAssignedCards[code] || 0) <= count) {
             investigatorAssignedCards[code] = count;
@@ -684,19 +670,6 @@ export default class GuidedCampaignLog {
         }
       }
     );
-    const currentIgnoreSlots = this.ignoreStoryAssets(code);
-    const previousIgnoreSlots = this.ignoreStoryAssetSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
-    forEach(
-      uniq([...keys(currentIgnoreSlots), ...keys(previousIgnoreSlots)]),
-      code => {
-        const previousCount = previousIgnoreSlots[code] || 0;
-        const newCount = currentIgnoreSlots[code] || 0;
-        const delta = (newCount - previousCount);
-        if (delta !== 0) {
-          slotDelta[code] = delta;
-        }
-      }
-    );
     return slotDelta;
   }
 
@@ -737,14 +710,13 @@ export default class GuidedCampaignLog {
     );
     forEach(investigators, investigator => {
       const data = this.campaignData.investigatorData[investigator] || {};
+      const assets = data.storyAssets || [];
+      assets.push(effect.card);
+      data.storyAssets = uniq(assets);
       if (effect.ignore_deck_limit) {
         const assets = data.ignoreStoryAssets || [];
         assets.push(effect.card);
         data.ignoreStoryAssets = uniq(assets);
-      } else {
-        const assets = data.storyAssets || [];
-        assets.push(effect.card);
-        data.storyAssets = uniq(assets);
       }
       this.campaignData.investigatorData[investigator] = data;
     });

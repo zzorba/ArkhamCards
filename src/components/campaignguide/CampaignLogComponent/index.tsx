@@ -22,7 +22,7 @@ interface Props {
   fontScale: number;
 }
 
-export default class CampaignLogTab extends React.Component<Props> {
+export default class CampaignLogComponent extends React.Component<Props> {
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
     const { campaignLog, campaignGuide } = this.props;
     switch (type) {

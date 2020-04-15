@@ -16,7 +16,7 @@ export interface CardSelectorProps {
   selection: string[];
   onSelect: (cards: string[]) => void;
   includeStoryToggle: boolean;
-  uniqueName: boolean
+  uniqueName: boolean;
 }
 
 type Props = CardSelectorProps & NavigationProps & DimensionsProps;
@@ -104,7 +104,7 @@ class CardSelectorView extends React.Component<Props, State> {
           extraArg={undefined}
         />
       </>
-    )
+    );
   }
 
   render() {

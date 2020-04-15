@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
+import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { setPackSpoiler, setCyclePackSpoiler } from 'actions';
 import PackListComponent from 'components/core/PackListComponent';
 import { NavigationProps } from 'components/nav/types';
@@ -25,7 +26,7 @@ interface ReduxActionProps {
   setCyclePackSpoiler: (cycle: number, value: boolean) => void;
 }
 
-type Props = NavigationProps & ReduxProps & ReduxActionProps;
+type Props = NavigationProps & ReduxProps & ReduxActionProps & DimensionsProps;
 
 class SpoilersView extends React.Component<Props> {
   _renderHeader = (): React.ReactElement => {
@@ -45,6 +46,7 @@ class SpoilersView extends React.Component<Props> {
       show_spoilers,
       setPackSpoiler,
       setCyclePackSpoiler,
+      fontScale,
     } = this.props;
     if (!packs.length) {
       return (
@@ -57,6 +59,7 @@ class SpoilersView extends React.Component<Props> {
       <PackListComponent
         componentId={componentId}
         packs={packs}
+        fontScale={fontScale}
         renderHeader={this._renderHeader}
         checkState={show_spoilers}
         setChecked={setPackSpoiler}
@@ -83,7 +86,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect<ReduxProps, ReduxActionProps, NavigationProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(SpoilersView);
+)(
+  withDimensions(SpoilersView)
+);
 
 const styles = StyleSheet.create({
   headerText: {

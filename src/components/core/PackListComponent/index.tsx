@@ -1,7 +1,6 @@
 import React from 'react';
 import { filter, groupBy, map } from 'lodash';
 import {
-  FlatList,
   SectionList,
   SectionListData,
   StyleSheet,
@@ -24,6 +23,7 @@ interface Props {
   componentId: string;
   coreSetName?: string;
   packs: Pack[];
+  fontScale: number;
   checkState?: { [pack_code: string]: boolean};
   setChecked: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_number: number, checked: boolean) => void;

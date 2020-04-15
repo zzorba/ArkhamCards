@@ -79,7 +79,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== count
     );
     if (hasStoryChange) {
-      console.log(`Saving story changes: ${JSON.stringify(storyCounts)}`);
       const newSlots: Slots = { ...upgradedDeck.slots };
       forEach(storyCounts, (count, code) => {
         if (count > 0) {

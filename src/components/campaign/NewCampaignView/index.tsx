@@ -500,6 +500,7 @@ class NewCampaignView extends React.Component<Props, State> {
   renderWeaknessSetSection() {
     const {
       componentId,
+      fontScale,
     } = this.props;
     return (
       <View style={styles.margin}>
@@ -509,6 +510,7 @@ class NewCampaignView extends React.Component<Props, State> {
         </Text>
         <WeaknessSetPackChooserComponent
           componentId={componentId}
+          fontScale={fontScale}
           compact
           onSelectedPacksChanged={this._onWeaknessPackChange}
         />

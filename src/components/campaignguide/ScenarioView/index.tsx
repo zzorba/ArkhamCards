@@ -6,12 +6,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { last } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import StepsComponent from '../StepsComponent';
+import { CampaignLogProps } from '../CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from '../withScenarioGuideContext';
 import { iconsMap } from 'app/NavIcons';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
@@ -24,7 +26,7 @@ type Props = InputProps & DimensionsProps & ScenarioGuideContextType;
 
 export type ScenarioProps = ScenarioGuideInputProps;
 
-const RESET_ENABLED = true;
+const RESET_ENABLED = false;
 
 class ScenarioView extends React.Component<Props> {
   static contextType = CampaignGuideContext;
@@ -40,7 +42,11 @@ class ScenarioView extends React.Component<Props> {
       icon: iconsMap.replay,
       id: 'reset',
       color: COLORS.navButton,
-    }] : [];
+    }] : [{
+      icon: iconsMap.menu,
+      id: 'log',
+      color: COLORS.navButton,
+    }];
     if (undo) {
       rightButtons.push({
         icon: iconsMap.undo,
@@ -83,17 +89,53 @@ class ScenarioView extends React.Component<Props> {
   }
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'reset') {
-      this.resetPressed();
-    }
-    if (buttonId === 'undo') {
-      this.undoPressed();
+    switch (buttonId) {
+      case 'reset': {
+        this.resetPressed();
+        break;
+      }
+      case 'log': {
+        this.menuPressed();
+        break;
+      }
+      case 'undo': {
+        this.undoPressed();
+        break;
+      }
     }
   }
 
   undoPressed() {
     const { scenarioId } = this.props;
     this.context.campaignState.undo(scenarioId);
+  }
+
+  menuPressed() {
+    const { componentId, processedScenario, campaignId } = this.props;
+    const log = last(processedScenario.steps);
+    if (!log) {
+      return;
+    }
+    Navigation.push<CampaignLogProps>(componentId, {
+      component: {
+        name: 'Guide.Log',
+        passProps: {
+          campaignId,
+          campaignLog: log.campaignLog,
+          campaignGuide: processedScenario.scenarioGuide.campaignGuide,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Campaign Log`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
   }
 
   resetPressed() {

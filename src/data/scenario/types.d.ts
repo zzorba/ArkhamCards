@@ -627,6 +627,7 @@ export interface RuleReminderStep {
 export interface StoryStep {
   id: string;
   type: "story";
+  border?: boolean;
   title?: string;
   text: string;
   bullets?: {
@@ -637,8 +638,8 @@ export interface StoryStep {
 export interface LocationSetupStep {
   id: string;
   type: "location_setup";
-  text?: null;
-  title: string;
+  text: string;
+  title?: string;
   locations: string[][];
   bullet_type?: null;
 }

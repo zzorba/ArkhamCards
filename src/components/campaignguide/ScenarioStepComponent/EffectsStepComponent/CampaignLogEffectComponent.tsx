@@ -62,7 +62,7 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
                 }
                 const text = (effect.section === 'campaign_notes') ?
                   t`In your Campaign Log, record that <i>${logEntry.text}</i>` :
-                  t`In your Campaign Log, under "${logEntry.section}", record that <i>${logEntry.text}</i>`;
+                  t`In your Campaign Log, under "${logEntry.section}", record <i>${logEntry.text}</i>.`;
                 return (
                   <CampaignGuideTextComponent text={text} />
                 );

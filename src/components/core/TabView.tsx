@@ -13,6 +13,7 @@ interface Props {
     title: string;
     node: React.ReactNode;
   }[];
+  fontScale: number;
   onTabChange: (key: string) => void;
   scrollEnabled?: boolean;
 }
@@ -44,10 +45,11 @@ export default class ArkhamTabView extends React.Component<Props, State> {
   _renderTabBar = (props: SceneRendererProps & {
     navigationState: NavigationState<TabRoute>;
   }) => {
+    const { fontScale } = this.props;
     return (
       <TabBar
         {...props}
-        scrollEnabled={this.props.scrollEnabled}
+        scrollEnabled={this.props.scrollEnabled || (fontScale > 1)}
         activeColor={COLORS.lightBlue}
         inactiveColor={COLORS.darkGray}
         indicatorStyle={{ backgroundColor: COLORS.lightBlue }}

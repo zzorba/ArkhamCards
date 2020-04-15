@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
-import SingleCardWrapper from '../../SingleCardWrapper';
-import InvestigatorNameRow from '../../prompts/InvestigatorNameRow';
+import SingleCardWrapper from '../SingleCardWrapper';
+import InvestigatorNameRow from '../prompts/InvestigatorNameRow';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
 import { InvestigatorSection } from 'data/scenario/GuidedCampaignLog';

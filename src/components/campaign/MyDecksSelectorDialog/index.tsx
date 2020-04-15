@@ -11,6 +11,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import TabView from 'components/core/TabView';
+import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from 'components/NewDeckView';
@@ -44,7 +45,7 @@ interface ReduxProps {
   campaign?: Campaign;
 }
 
-type Props = NavigationProps & MyDecksSelectorProps & ReduxProps & PlayerCardProps;
+type Props = NavigationProps & MyDecksSelectorProps & ReduxProps & PlayerCardProps & DimensionsProps;
 
 interface State {
   hideOtherCampaignDecks: boolean;
@@ -347,6 +348,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       componentId,
       onDeckSelect,
       onInvestigatorSelect,
+      fontScale,
     } = this.props;
     const deckTab = (
       <DeckSelectorTab
@@ -387,6 +389,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         <TabView
           tabs={tabs}
           onTabChange={this._onTabChange}
+          fontScale={fontScale}
         />
       );
     }
@@ -414,7 +417,9 @@ function mapStateToPropsFix(
 export default connect<ReduxProps, {}, NavigationProps & MyDecksSelectorProps, AppState>(
   mapStateToPropsFix
 )(
-  withPlayerCards<NavigationProps & MyDecksSelectorProps & ReduxProps>(MyDecksSelectorDialog)
+  withPlayerCards<NavigationProps & MyDecksSelectorProps & ReduxProps>(
+    withDimensions(MyDecksSelectorDialog)
+  )
 );
 
 const styles = StyleSheet.create({

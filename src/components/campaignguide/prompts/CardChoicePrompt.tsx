@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
-import { forEach, filter, find, flatMap, keys, map, uniq } from 'lodash';
+import { forEach, find, flatMap, keys, map, uniq } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -28,7 +28,7 @@ interface Props {
 }
 
 interface State {
-  extraCards: string[]
+  extraCards: string[];
 }
 
 export default class CardChoicePrompt extends React.Component<Props, State> {
@@ -78,7 +78,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
         if (query.source === 'deck') {
           return this.basicQuery(query);
         }
-        return []
+        return [];
       }
     );
 

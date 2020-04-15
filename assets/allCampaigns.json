@@ -3324,9 +3324,9 @@
       "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda."
     },
     {
-      "id": "cultists_interrogated_r1",
-      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play. If it is Agenda 1, record “The Masked Hunter” under “Cultists Who Got Away” as well.",
+      "id": "cultists_interrogated",
       "type": "input",
+      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.",
       "input": {
         "type": "card_choice",
         "query": [
@@ -3337,18 +3337,6 @@
           }
         ],
         "choices": [
-          {
-            "id": "got_away",
-            "text": "Got away",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_escaped",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          },
           {
             "id": "interrogated",
             "text": "Interrogated",
@@ -3365,8 +3353,8 @@
       }
     },
     {
-      "id": "cultists_interrogated_r2",
-      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play.",
+      "id": "cultists_got_away_r1",
+      "text": "In your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play. If it is Agenda 1, record “The Masked Hunter” under “Cultists Who Got Away” as well.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -3389,14 +3377,31 @@
                 "text": "#name#"
               }
             ]
-          },
+          }
+        ]
+      }
+    },
+    {
+      "id": "cultists_got_away_r2",
+      "text": "In your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play.",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
           {
-            "id": "interrogated",
-            "text": "Interrogated",
+            "trait": "cultist",
+            "unique": true,
+            "source": "scenario"
+          }
+        ],
+        "choices": [
+          {
+            "id": "got_away",
+            "text": "Got away",
             "effects": [
               {
                 "type": "campaign_log_cards",
-                "section": "cultists_interrogated",
+                "section": "cultists_escaped",
                 "id": "$input_value",
                 "text": "#name#"
               }
@@ -3491,13 +3496,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
-      "steps": ["cultists_interrogated_r1", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
+      "steps": ["cultists_interrogated", "cultists_got_away_r1", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "Twelve bells ring out, signaling midnight. You’re out of time; the cult’s ritual will begin shortly. You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
-      "steps": ["cultists_interrogated_r2", "past_midnight", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
+      "steps": ["cultists_interrogated", "cultists_got_away_r2", "past_midnight", "ghoul_priest_defeated", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -13443,6 +13448,93 @@
       "text": "Note: Some effects first encountered in this scenario may cause doom to be placed on enemies. Remember that doom on enemies counts toward the amount of doom that will advance the agenda."
     },
     {
+      "id": "cultists_interrogated",
+      "type": "input",
+      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "cultist",
+            "unique": true,
+            "source": "scenario"
+          }
+        ],
+        "choices": [
+          {
+            "id": "interrogated",
+            "text": "Interrogated",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "cultists_interrogated",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cultists_got_away_r1",
+      "text": "In your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play. If it is Agenda 1, record “The Masked Hunter” under “Cultists Who Got Away” as well.",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "cultist",
+            "unique": true,
+            "source": "scenario"
+          }
+        ],
+        "choices": [
+          {
+            "id": "got_away",
+            "text": "Got away",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cultists_got_away_r2",
+      "text": "In your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play.",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "cultist",
+            "unique": true,
+            "source": "scenario"
+          }
+        ],
+        "choices": [
+          {
+            "id": "got_away",
+            "text": "Got away",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "cultists_escaped",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "ghoul_priest_defeated",
       "type": "branch",
       "condition": {
@@ -13557,96 +13649,6 @@
       "id": "three_cultists",
       "text": "Search the gathered encounter sets for 3 1-health [[Cultist]] enemies. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
       "bullet_type": "small"
-    },
-    {
-      "id": "cultists_interrogated_r1",
-      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play. If it is Agenda 1, record “The Masked Hunter” under “Cultists Who Got Away” as well.",
-      "type": "input",
-      "input": {
-        "type": "card_choice",
-        "query": [
-          {
-            "trait": "cultist",
-            "unique": true,
-            "source": "scenario"
-          }
-        ],
-        "choices": [
-          {
-            "id": "removed_from_game",
-            "text": "Removed from game"
-          },
-          {
-            "id": "interrogated",
-            "text": "Interrogated",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_interrogated",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          },
-          {
-            "id": "got_away",
-            "text": "Got away",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_escaped",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "cultists_interrogated_r2",
-      "text": "In your Campaign Log, under “Cultists We Interrogated,” record the names of each unique Cultist enemy in the victory display.\nIn your Campaign Log, under “Cultists Who Got Away,” record the name of each unique enemy still remaining in the Cultist deck or in play.",
-      "type": "input",
-      "input": {
-        "type": "card_choice",
-        "query": [
-          {
-            "trait": "cultist",
-            "unique": true,
-            "source": "scenario"
-          }
-        ],
-        "choices": [
-          {
-            "id": "removed_from_game",
-            "text": "Removed from game"
-          },
-          {
-            "id": "interrogated",
-            "text": "Interrogated",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_interrogated",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          },
-          {
-            "id": "got_away",
-            "text": "Got away",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "cultists_escaped",
-                "id": "$input_value",
-                "text": "#name#"
-              }
-            ]
-          }
-        ]
-      }
     }
   ],
   "resolutions": [
@@ -13669,7 +13671,8 @@
       "title": "Resolution 1",
       "text": "You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
       "steps": [
-        "cultists_interrogated_r1",
+        "cultists_interrogated",
+        "cultists_got_away_r1",
         "ghoul_priest_defeated",
         "earn_xp",
         "$upgrade_decks"
@@ -13680,7 +13683,8 @@
       "title": "Resolution 2",
       "text": "Twelve bells ring out, signaling midnight. You’re out of time; the cult’s ritual will begin shortly. You’ve managed to obtain some useful information about the cult and its plans. You can only hope it’s enough.",
       "steps": [
-        "cultists_interrogated_r2",
+        "cultists_interrogated",
+        "cultists_got_away_r2",
         "past_midnight",
         "ghoul_priest_defeated",
         "earn_xp",
@@ -19987,7 +19991,8 @@
     {
       "id": "act_1_locations",
       "type": "location_setup",
-      "title": "Location Placement for Setup / Act 1",
+      "title": "Location Placement",
+      "text": "Setup / Act 1",
       "locations": [
         ["player_back", "player_back", "05339_back"],
         ["05332_back", "player_back", "player_back"],
@@ -19997,7 +20002,7 @@
     {
       "id": "act_2_locations",
       "type": "location_setup",
-      "title": "Location Placement for Act 2",
+      "text": "Act 2",
       "locations": [
         ["blank", "05339_back", "blank"],
         ["player_back", "player_back", "player_back"],
@@ -20009,7 +20014,7 @@
     {
       "id": "act_3_locations",
       "type": "location_setup",
-      "title": "Location Placement for Act 3",
+      "text": "Act 3",
       "locations": [
         ["blank", "05339_back", "blank", "blank"],
         ["player_back", "player_back", "player_back", "05339_back"],
@@ -22199,17 +22204,17 @@
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display:",
+            "text": "Victory display.",
             "steps": ["progress_4", "progress_4_effects"]
           },
           {
             "id": "entry_hall",
-            "text": "Beneath the Entry Hall",
+            "text": "Beneath the Entry Hall.",
             "steps": ["progress_5", "rescued_josef", "bonus_xp", "choose_lodge"]
           },
           {
             "id": "neither",
-            "text": "Neither",
+            "text": "Neither.",
             "steps": ["check_silver_twilight"]
           }
         ]
@@ -22553,11 +22558,13 @@
     },
     {
       "id": "read_mystic_text",
+      "border": true,
       "type": "story",
       "text": "The markings on the tome form the basis for some kind of spell or ritual. It involves calling out to the dead – beseeching them for power, for secrets, or perhaps for aid. But who was beseeching whom, and for what purpose?"
     },
     {
       "id": "read_gibberish",
+      "border": true,
       "type": "story",
       "text": "It all looks like gibberish to you."
     },
@@ -22716,7 +22723,7 @@
           {
             "id": "act_3",
             "text": "Act 3",
-            "steps": ["record_gilmans_journal", "choose_black_book_small_prompt", "record_keziahs_formulae", "choose_black_book_small"]
+            "steps": ["record_journal_and_formulae", "choose_black_book_small_prompt", "choose_black_book_small"]
           }
         ]
       }
@@ -22734,9 +22741,15 @@
       ]
     },
     {
-      "id": "record_keziahs_formulae",
-      "bullet_type": "small",
+      "id": "record_journal_and_formulae",
+      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i> and <i>Keziah’s Formulae</i>.",
       "effects": [
+        {
+          "type": "campaign_log",
+          "section": "mementos",
+          "id": "gilmans_journal",
+          "text": "Gilman's Journal"
+        },
         {
           "type": "campaign_log",
           "section": "mementos",
@@ -23216,13 +23229,13 @@
       "text": "Put 5 Witch‐Haunted Woods locations into play as follows:",
       "bullets": [
         {
-          "text": "In player order, each investigator puts 1 random Witch‐ Haunted Woods location into play <i>in front of him or her</i>, until there are exactly 5 Witch‐Haunted Woods locations in play (see “Lost and Separated,” below). <i>For example: In a 1-player game, there should be 5 Witch-Haunted Woods in front of that investigator. In a 2-player game, there should be 3 Witch-Haunted Woods in front of the lead investigator and 2 Witch-Haunted Woods in front of the other investigator. In a 3-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, 2 Witch-Haunted Woods in front of the next investigator, and 1 Witch-Haunted Woods in front of the final investigator. In a 4-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, and 1 Witch-Haunted Woods in front of each other investigator.</i>"
+          "text": "In player order, each investigator puts 1 random Witch‐ Haunted Woods location into play <i>in front of them</i>, until there are exactly 5 Witch‐Haunted Woods locations in play (see “Lost and Separated,” below). <i>For example: In a 1-player game, there should be 5 Witch-Haunted Woods in front of that investigator. In a 2-player game, there should be 3 Witch-Haunted Woods in front of the lead investigator and 2 Witch-Haunted Woods in front of the other investigator. In a 3-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, 2 Witch-Haunted Woods in front of the next investigator, and 1 Witch-Haunted Woods in front of the final investigator. In a 4-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, and 1 Witch-Haunted Woods in front of each other investigator.</i>"
         },
         {
           "text": "Remove each other Witch‐Haunted Woods from the game."
         },
         {
-          "text": "Each investigator begins play at one of the locations in front of him or her, chosen at random."
+          "text": "Each investigator begins play at one of the locations in front of them, chosen at random."
         }
       ]
     },
@@ -24299,14 +24312,7 @@
               ]
             },
             "text": "Gavriella is alive.",
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "05046",
-                "id": "alive",
-                "text": "Gavriella is alive."
-              }
-            ]
+            "steps": ["gavriella_alive"]
           },
           {
             "id": "jerome_alive",
@@ -24321,14 +24327,7 @@
                 }
               ]
             },
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "05047",
-                "id": "alive",
-                "text": "Jerome is alive."
-              }
-            ]
+            "steps": ["jerome_alive"]
           },
           {
             "id": "penny_alive",
@@ -24343,14 +24342,7 @@
                 }
               ]
             },
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "05049",
-                "id": "alive",
-                "text": "Penny is alive."
-              }
-            ]
+            "steps": ["penny_alive"]
           },
           {
             "id": "valentino_alive",
@@ -24365,17 +24357,61 @@
                 }
               ]
             },
-            "effects": [
-              {
-                "type": "campaign_log_cards",
-                "section": "05048",
-                "id": "alive",
-                "text": "Valentino is alive."
-              }
-            ]
+            "steps": ["valentino_alive"]
           }
         ]
       }
+    },
+    {
+      "id": "gavriella_alive",
+      "text": "Next to Gavriella Mizrah's profile, record <i>Gavriella is alive.</i>",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05046",
+          "id": "alive",
+          "text": "Gavriella is alive."
+        }
+      ]
+    },
+    {
+      "id": "jerome_alive",
+      "text": "Next to Jerome Davids's profile, record <i>Jerome is alive.</i>",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05047",
+          "id": "alive",
+          "text": "Jerome is alive."
+        }
+      ]
+    },
+    {
+      "id": "penny_alive",
+      "text": "Next to Penny White's profile, record <i>Penny is alive.</i>",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05049",
+          "id": "alive",
+          "text": "Penny is alive."
+        }
+      ]
+    },
+    {
+      "id": "valentino_alive",
+      "text": "Next to Valentino Rivas's profile, record <i>Valentino is alive.</i>",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "05048",
+          "id": "alive",
+          "text": "Valentino is alive."
+        }
+      ]
     },
     {
       "id": "add_chaos_token",
