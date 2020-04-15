@@ -6,16 +6,16 @@ import {
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { isBig } from 'styles/space';
-import { WithText } from '../CardTextComponent/types';
+import { WithChildren } from '../CardTextComponent/types';
 
 export default function FlavorFancyNode(
-  node: Node & WithText,
+  node: Node & WithChildren,
   output: OutputFunction,
   state: RenderState
 ) {
   return (
     <Text key={state.key} style={styles.text}>
-      { node.text }
+      { output(node.children, state) }
     </Text>
   );
 }

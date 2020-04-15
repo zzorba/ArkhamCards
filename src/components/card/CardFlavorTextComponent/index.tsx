@@ -14,7 +14,7 @@ import FlavorItalicNode from './FlavorItalicNode';
 import FlavorBoldNode from './FlavorBoldNode';
 import FlavorFancyNode from './FlavorFancyNode';
 import FlavorCenterNode from './FlavorCenterNode';
-import FlavorFancyRightNode from './FlavorFancyRightNode';
+import FlavorRightNode from './FlavorRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
 import { isBig, xs } from 'styles/space';
@@ -66,11 +66,13 @@ const BoldHtmlTagRule: MarkdownRule<WithText, State> = {
   render: FlavorBoldNode,
 };
 
-const FancyHtmlTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy>(.+?)<\\/fancy>')),
-  order: 1,
-  parse: (capture) => {
-    return { text: capture[1] };
+const FancyHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy>([\\s\\S]+?)<\\/fancy>')),
+  order: 2,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
   render: FlavorFancyNode,
 };
@@ -87,13 +89,15 @@ const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: FlavorCenterNode,
 };
 
-const RightHtmlTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<right><fancy>(.+?)<\\/fancy><\\/right>')),
-  order: 1,
-  parse: (capture) => {
-    return { text: capture[1] };
+const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<right>([\\s\\S]+?)<\\/right>')),
+  order: 2,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
   },
-  render: FlavorFancyRightNode,
+  render: FlavorRightNode,
 };
 
 interface Props {

@@ -33,7 +33,7 @@ export default class InvestigatorChoiceWithSuppliesInputComponent extends React.
   _investigatorToString = (card: Card) => {
     const { input } = this.props;
     if (this.investigatorHasSupply(card.code)) {
-      return t`${card.name} (has ${input.id})`;
+      return t`${card.name}\n(has ${input.id})`;
     }
     return card.name;
   };

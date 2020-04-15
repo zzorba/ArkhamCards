@@ -4,6 +4,7 @@
 {
   "id": "dwl",
   "position": 1,
+  "version": 1,
   "name": "The Dunwich Legacy",
   "campaign_log": [
     {
@@ -225,6 +226,7 @@
     "gather_encounter_sets",
     "setup_village_commons",
     "setup_locations",
+    "location_layout",
     "gather_sacrifices",
     "set_aside_cards",
     "check_delayed",
@@ -259,6 +261,19 @@
     {
       "id": "setup_locations",
       "text": "Remove one of the two copies of each other location from the game at random. Then, choose one of the six remaining locations at random, and remove it from the game as well. Put the remaining five locations into play."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "02210_back", "blank", "02212_back", "blank", "blank"],
+        ["02208_back", "blank", "02201_back", "blank", "02206_back", "blank"],
+        ["blank", "02204_back", "blank", "02202_back", "blank", "blank"]
+      ]
     },
     {
       "id": "gather_sacrifices",
@@ -636,6 +651,7 @@
     "prologue",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "reveal_location",
     "set_aside_cards",
     "add_chaos_token",
@@ -664,6 +680,16 @@
     {
       "id": "setup_locations",
       "text": "Put one of the three Engine Car locations into play at random. Remove the other versions of Engine Car from the game. Then, put six of the eight Train Car locations into play at random, in a straight line to the left of the Engine Car. Remove the remaining two Train Car locations from the game."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["02167_back", "02167_back", "02167_back", "02167_back", "02167_back", "02167_back", "02177_back"]
+      ]
     },
     {
       "id": "reveal_location",
@@ -987,6 +1013,7 @@
     "faculty_offices",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -1043,6 +1070,17 @@
     {
       "id": "setup_locations",
       "text": "Put the Miskatonic Quad, Orne Library, Humanities Building, Student Union, Science Building, and Administration Building locations into play. Each investigator begins play at the Miskatonic Quad."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["02050_back", "02048_back", "02056_back"],
+        ["02049_back", "02051_back", "02053_back"]
+      ]
     },
     {
       "id": "set_aside_cards",
@@ -1823,6 +1861,7 @@
     "gather_encounter_sets",
     "gather_fear_sets",
     "setup_locations",
+    "location_layout",
     "pit_boss",
     "set_aside_cards",
     "encounter_deck",
@@ -1858,6 +1897,17 @@
     {
       "id": "setup_locations",
       "text": "Put the Clover Club Lounge, Clover Club Bar, Clover Club Cardroom, and La Bella Luna locations into play. Each investigator begins play in La Bella Luna."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "blank", "02073_back", "blank", "blank"],
+        ["02070_back", "blank", "02071_back", "blank", "02072_back", "blank"]
+      ]
     },
     {
       "id": "pit_boss",
@@ -2337,6 +2387,7 @@
     "warn_or_calm_choice",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "check_sacrificed",
     "set_aside_cards",
     "play_powder",
@@ -2418,6 +2469,20 @@
     {
       "id": "setup_locations",
       "text": "Put one of the two versions of the following locations into play at random: Dunwich Village, Cold Spring Glen, Blasted Heath, Ten‐Acre Meadow, Devil’s Hop Yard, and Whateley Ruins. Remove the other versions of each of those locations from the game. Each investigator begins play in Dunwich Village."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        ["blank", "02248_back", "02252_back"],
+        ["blank", "blank", "blank"],
+        ["02242_back", "02246_back", "blank"],
+        ["blank", "blank", "02250_back"],
+        ["blank", "02244_back", "blank"]
+      ]
     },
     {
       "id": "check_sacrificed",
@@ -3011,6 +3076,7 @@
   "id": "core",
   "name": "The Night of the Zealot",
   "position": 0,
+  "version": 1,
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -3140,6 +3206,7 @@
     "gather_encounter_sets",
     "gather_cult",
     "setup_locations",
+    "location_layout",
     "spawn_cultists",
     "check_house_burned",
     "check_house_standing",
@@ -3207,6 +3274,18 @@
     {
       "id": "setup_locations",
       "text": "Choose one of the two Downtown locations and one of the two Southside locations at random and put them into play. Remove the other versions of Downtown and Southside from the game. Then, put the Northside, Easttown, Rivertown, St. Mary’s Hospital, Graveyard, Miskatonic University, and Your House locations into play."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["01134_back", "01131_back", "01132_back"],
+        ["01129_back", "01125_back", "01133_back"],
+        ["01128_back", "01126_back", "01124_back"]
+      ]
     },
     {
       "id": "spawn_cultists",
@@ -4114,6 +4193,7 @@
 {
   "id": "ptc",
   "position": 2,
+  "version": 1,
   "name": "The Path to Carcosa",
   "campaign_log": [
     {
@@ -4300,6 +4380,7 @@
     "check_doubt_and_conviction",
     "choose_locations",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "set_aside_lost_soul",
     "encounter_deck",
@@ -4688,6 +4769,22 @@
       "text": "Put the remaining locations (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint‐Martin, Père Lachaise Cemetery, Notre‐Dame, and Gardens of Luxembourg) into play. Each investigator begins play at Gare d’Orsay."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        ["03211_back", "blank", "03216_back", "blank"],
+        ["blank", "03209_back", "blank", "03215_back"],
+        ["03212_back", "blank", "03217_back", "blank"],
+        ["blank", "blank", "blank", "blank"],
+        ["03214_back", "03220_back", "03219_back", "blank"],
+        ["blank", "blank", "blank", "blank"],
+        ["blank", "03208_back", "blank", "blank"]
+      ]
+    },
+    {
       "id": "set_aside_cards",
       "text": "Set the double‐sided The Organist enemy aside, out of play."
     },
@@ -5030,11 +5127,13 @@
     "set_aside_cards",
     "remove_locations",
     "setup_locations",
+    "location_layout",
     "add_weakness",
     "encounter_deck",
     "check_for_mitpm",
     "check_for_onyx_clasp",
     "dual_agendas_rule",
+    "set_aside_location_layout",
     "$play_scenario"
   ],
   "steps": [
@@ -5169,6 +5268,19 @@
       "text": "Choose one of the two North Tower locations, one of the two Outer Wall locations, and one of the two Broken Steps locations, at random. Put the chosen locations into play. Remove the other versions of those locations from the game. Then, put the remaining locations (Porte de l’Avancée, Grand Rue, and Abbey Church) into play. Each investigator begins play at Porte de l’Avancée."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "03287_back", "blank"],
+        ["03291_back", "03289_back", "blank", "03285_back"],
+        ["blank", "blank", "03284_back", "blank"],
+        ["blank", "blank", "03283_back", "blank"]
+      ]
+    },
+    {
       "id": "add_weakness",
       "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
       "effects": [
@@ -5279,6 +5391,19 @@
         {
           "text": "If the doom thresholds of both agendas are satisfied during the “Check doom threshold” step of the Mythos phase, choose only one agenda to advance. Then, once you have completed advancing that agenda, check the doom threshold of the other agenda and advance it if its doom threshold is still satisfied."
         }
+      ]
+    },
+    {
+      "id": "set_aside_location_layout",
+      "type": "location_setup",
+      "text": "Set-aside Location Layout (spoilers)",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "03298_back", "blank", "blank"],
+        ["blank", "blank", "03292_back", "blank", "blank"],
+        ["03296_back", "blank", "03291_back", "blank", "blank"],
+        ["blank", "03294_back", "blank", "03295_back", "blank"]
       ]
     },
     {
@@ -5601,6 +5726,7 @@
     "gather_encounter_sets",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "encounter_deck",
     "$play_scenario"
   ],
@@ -5635,6 +5761,17 @@
         {
           "text": "If Lola Hayes was chosen as an investigator for this campaign, she begins play at Backstage, instead."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "03051_back", "blank", "blank", "blank", "blank"],
+        ["03050_back", "blank", "03049_back", "blank", "03052_back", "blank"]
       ]
     },
     {
@@ -5881,6 +6018,7 @@
     "select_act_2",
     "setup_random_locations",
     "setup_locations",
+    "location_layout",
     "choose_starting_location",
     "check_for_onyx_clasp",
     "check_for_mitpm",
@@ -6054,6 +6192,20 @@
     {
       "id": "setup_locations",
       "text": "Put Shores of Hali, Dark Spires, and Palace of the King into play."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "03330", "blank"],
+        ["blank", "03329a", "blank"],
+        ["03328a", "03331", "03327a"],
+        ["blank", "03326a", "blank"],
+        ["blank", "03325", "blank"]
+      ]
     },
     {
       "id": "choose_starting_location",
@@ -6556,6 +6708,7 @@
     "gather_encounter_sets",
     "choose_locations",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "spawn_cultists",
     "check_fled_dinner_party",
@@ -6614,6 +6767,18 @@
     {
       "id": "setup_locations",
       "text": "Put the following locations into play: Entry Hall, both copies of Quiet Halls, and the remaining 6 Historical Society locations. Each investigator begins play in the Entry Hall."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["03136_back", "03135_back", "03136_back"],
+        ["03132_back", "03131_back", "03132_back"],
+        ["03128_back", "03127_back", "03128_back"]
+      ]
     },
     {
       "id": "set_aside_cards",
@@ -7494,6 +7659,7 @@
     "intro",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "setup_bystanders",
     "set_aside_cards",
     "setup_sickening_reality",
@@ -7522,6 +7688,18 @@
     {
       "id": "setup_locations",
       "text": "Put all 6 locations into play (Foyer, Courtyard, Living Room, Ballroom, Dining Room, and Gallery). Each investigator begins play in the Foyer."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["03075_back", "blank", "03073_back"],
+        ["03071_back", "03074_back", "03072_back"],
+        ["blank", "03070_back", "blank"]
+      ]
     },
     {
       "id": "setup_bystanders",
@@ -8355,6 +8533,7 @@
     "choose_locations",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "add_chaos_token",
     "select_act_2",
     "select_act_2_onyx_clasp",
@@ -8442,6 +8621,19 @@
     {
       "id": "setup_locations",
       "text": "Put the following locations into play: Mess Hall, Kitchen, Yard, Garden, Infirmary, and Basement Hall."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "03176_back", "blank", "blank"],
+        ["blank", "blank", "03175_back", "blank", "blank"],
+        ["03172_back", "03173_back", "03168_back", "03170_back", "03174_back"],
+        ["blank", "blank", "blank", "03177_back", "blank"]
+      ]
     },
     {
       "id": "add_chaos_token",
@@ -8885,6 +9077,7 @@
 {
   "id": "rtdwl",
   "position": 1,
+  "version": 1,
   "name": "Return to The Dunwich Legacy",
   "campaign_log": [
     {
@@ -9266,6 +9459,7 @@
     "gather_encounter_sets",
     "setup_village_commons",
     "setup_locations",
+    "location_layout",
     "gather_sacrifices",
     "set_aside_cards",
     "check_delayed",
@@ -9536,6 +9730,40 @@
       "text": "Add the new locations to the original locations from the <i>Blood on the Altar</i> encounter set. Remove two of the three copies of each location from the game at random. Then, choose one of the six remaining locations at random, and remove it from the game as well. Put the remaining five locations into play."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "02210_back",
+          "blank",
+          "02212_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "02208_back",
+          "blank",
+          "51033_back",
+          "blank",
+          "02206_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "02204_back",
+          "blank",
+          "02202_back",
+          "blank",
+          "blank"
+        ]
+      ]
+    },
+    {
       "id": "set_aside_cards",
       "text": "Set the following cards aside, out of play: Hired Gun, Silas Bishop, The Hidden Chamber, Key to the Chamber, and Powder of Ibn-Ghazi."
     },
@@ -9648,6 +9876,7 @@
     "gather_encounter_sets",
     "remove_agenda_1a",
     "setup_locations",
+    "location_layout",
     "reveal_location",
     "set_aside_cards",
     "add_chaos_token",
@@ -9660,6 +9889,24 @@
       "id": "prologue",
       "type": "story",
       "text": "Recent events in the Museum have forced you to re-evaluate Armitage’s tale about Dunwich. It cannot be a coincidence—Wilbur Whateley, the Necronomicon, the creature from Dunwich, and the people and creatures who attacked here in Arkham—everything must be connected. You’re certain now where you must head: the lonely and dismal town of Dunwich Village.\nYou consider telling the Massachusetts State Police what you know, but the negative consequences outweigh the potential gain. Given the nature of your story, they would likely write your stories off as an absurd hoax. Worse, they could lock you up. After all, you were present in an illegal speakeasy, and you also trespassed in the museum. Instead, you decide to head to Dunwich yourself, in order to investigate further.\nYou pack everything you think you might need and manage to get some rest for the night. In the morning, you head to the train station in Northside and purchase a last-minute express ticket. Dunwich is several hours by train northwest along the Miskatonic River Valley. There is no train station in Dunwich, but you manage to phone one of Armitage’s acquaintances in the small village: a man by the name of Zebulon Whateley who was present during the events several months ago.\nArmitage’s notes indicate that the Whateley family is spread across many branches, some decadent and unscrupulous, others “undecayed” or otherwise untouched by nefarious and diabolic rites. According to Armitage, Zebulon’s branch of the family lay somewhere between the decayed and undecayed Whateleys, who knew of the traditions of his ancestors, but was not corrupted by them. He agrees to pick you up at the closest station and drive you into town\nAs the train departs from Arkham, you feel the events of the previous night catching up to you, and exhaustion sets in. But before you can safely reach your destination, the train car suddenly rumbles and shakes, startling you out of your reverie. The train loudly skids to a violent halt, and you hear a rattling noise behind you…"
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "02167_back",
+          "02167_back",
+          "02167_back",
+          "02167_back",
+          "02167_back",
+          "02167_back",
+          "02177_back"
+        ]
+      ]
     },
     {
       "id": "reveal_location",
@@ -10040,6 +10287,7 @@
     "faculty_offices",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "maybe_spawn_security_guard",
     "encounter_deck",
     "$play_scenario"
@@ -10059,6 +10307,25 @@
       "id": "faculty_office_hour_is_late",
       "bullet_type": "small",
       "text": "Set Faculty Offices <i>(The Hour is Late)</i> aside, out of play. Remove Faculty Offices <i>(The Night is Still Young)</i> from the game."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "02050_back",
+          "02048_back",
+          "02056_back"
+        ],
+        [
+          "02049_back",
+          "02051_back",
+          "02053_back"
+        ]
+      ]
     },
     {
       "id": "set_aside_cards",
@@ -10687,6 +10954,7 @@
     "gather_encounter_sets",
     "gather_fear_sets",
     "setup_locations",
+    "location_layout",
     "pit_boss",
     "set_aside_cards",
     "encounter_deck",
@@ -10698,6 +10966,31 @@
       "id": "prologue",
       "type": "story",
       "text": "Dr. Armitage suggested you track down his associate Dr. Francis Morgan. He’s not sure whether Dr. Morgan is in trouble, but he’s not particularly happy with his colleague’s present choice of company. He’s in the Clover Club, a notorious gambling joint somewhere downtown. Finding the club’s exact location isn’t easy—you have to grease a few palms just to learn which of the Downtown restaurants operates as the club’s front. That restaurant is La Bella Luna, a somewhat upscale Italian eatery by the theatre. You change into your Sunday best and make your way there.\nIn front of La Bella Luna stands a man in a pinstripe suit who sizes you up as you approach. “Enjoy yourselves,” he says with a snake-like grin as he holds open the restaurant’s front door."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "blank",
+          "02073_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "02070_back",
+          "blank",
+          "02071_back",
+          "blank",
+          "02072_back",
+          "blank"
+        ]
+      ]
     },
     {
       "id": "pit_boss",
@@ -11270,6 +11563,7 @@
     "warn_or_calm_choice",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "remove_old_broods",
     "randomize_broods_note",
     "check_sacrificed",
@@ -11347,6 +11641,40 @@
     {
       "id": "setup_locations",
       "text": "Put one of the two versions of the following locations into play at random: Dunwich Village, Cold Spring Glen, Blasted Heath, Ten‐Acre Meadow, Devil’s Hop Yard, and Whateley Ruins. Remove the other versions of each of those locations from the game. Each investigator begins play in Dunwich Village."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        [
+          "blank",
+          "02248_back",
+          "02252_back"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "02242_back",
+          "02246_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "02250_back"
+        ],
+        [
+          "blank",
+          "02244_back",
+          "blank"
+        ]
+      ]
     },
     {
       "id": "check_sacrificed",
@@ -12385,6 +12713,7 @@
   "id": "rtnotz",
   "name": "Return to The Night of the Zealot",
   "position": 0,
+  "version": 1,
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -13004,6 +13333,7 @@
     "remove_study",
     "remove_hallway",
     "setup_locations",
+    "location_layout",
     "randomize_locations",
     "set_aside_locations",
     "set_aside_cards",
@@ -13206,6 +13536,27 @@
       "text": "Put Guest Hall, Bedroom, Bathroom and the new Study <i>(Aberrant Gateway)</i> into play. Each investigator begins play in the Study <i>(Aberrant Gateway)</i>."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "50015_back"
+        ],
+        [
+          "50013_back",
+          "50014_back"
+        ],
+        [
+          "blank",
+          "50016_back"
+        ]
+      ]
+    },
+    {
       "id": "randomize_locations",
       "text": "Choose one of the two Attic locations and one of the two Cellar locations at random, and set them aside, out of play. Remove the other versions of Attic and Cellar from the game."
     },
@@ -13286,6 +13637,7 @@
     "gather_cult",
     "construct_act_deck",
     "setup_locations",
+    "location_layout",
     "spawn_cultists",
     "check_house_burned",
     "check_house_standing",
@@ -13332,6 +13684,30 @@
       "id": "intro_3",
       "type": "story",
       "text": "“These creatures feed on the corpses of humans, and they are served by a dark cult within Arkham whose members have inexplicably come to worship the ancient master of the ghouls. This cult has been killing innocent people and feeding them to the ghouls, satiating a monstrous hunger. A dark balance was maintained. Until now. Recently,” Lita continues, “one of their lairs, where the corpses were stored, was destroyed. Since then, the ghouls have been more active than usual. I have tracked their movements and tried my best to stop them from running amok throughout the city. But I think there is something worse going on. The cult has been planning something darker, and more ominous, than anything I have yet observed. Indications are that this plan shall come to fruition tonight, shortly after midnight. Beyond that, I cannot fathom what to expect.\n“Many of the cultists,” Lita continues, “will seem like everyday people, despite their foul intentions. Whenever the cult meets, its members don masks shaped like the skulls of various animals to protect their identities from one another. These masks are our mark. Symbols of death and decay. We must unmask the cultists to expose and derail their plans. We have but a few hours. The more cultists we find before midnight, the better.”"
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "01134_back",
+          "01131_back",
+          "01132_back"
+        ],
+        [
+          "01129_back",
+          "01125_back",
+          "01133_back"
+        ],
+        [
+          "01128_back",
+          "01126_back",
+          "01124_back"
+        ]
+      ]
     },
     {
       "id": "spawn_cultists",
@@ -13699,6 +14075,7 @@
 {
   "id": "rtptc",
   "position": 2,
+  "version": 1,
   "name": "Return to The Path to Carcosa",
   "campaign_log": [
     {
@@ -14437,6 +14814,7 @@
     "check_doubt_and_conviction",
     "choose_locations",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "set_aside_lost_soul",
     "attach_scenario_reference",
@@ -14867,6 +15245,57 @@
       "text": "During this scenario, use Act 1—The Parisian Conspiracy (v. II). The other version of Act 1 is removed from the game."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        [
+          "03211_back",
+          "blank",
+          "03216_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "03209_back",
+          "blank",
+          "03215_back"
+        ],
+        [
+          "03212_back",
+          "blank",
+          "03217_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "03214_back",
+          "03220_back",
+          "03219_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "03208_back",
+          "blank",
+          "blank"
+        ]
+      ]
+    },
+    {
       "id": "set_aside_lost_soul",
       "text": "If there are any remaining copies of the Lost Soul weakness, set them aside, out of play."
     },
@@ -15268,11 +15697,13 @@
     "set_aside_cards",
     "remove_locations",
     "setup_locations",
+    "location_layout",
     "add_weakness",
     "encounter_deck",
     "check_for_mitpm",
     "check_for_onyx_clasp",
     "dual_agendas_rule",
+    "set_aside_location_layout",
     "$play_scenario"
   ],
   "steps": [
@@ -15400,6 +15831,39 @@
       "text": "Choose one of the two North Tower locations, one of the two Outer Wall locations, and one of the two Broken Steps locations, at random. Put the chosen locations into play. Remove the other versions of those locations from the game. Then, put the remaining locations (Porte de l’Avancée, Grand Rue, and Abbey Church) into play. Each investigator begins play at Porte de l’Avancée."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "03287_back",
+          "blank"
+        ],
+        [
+          "03291_back",
+          "03289_back",
+          "blank",
+          "03285_back"
+        ],
+        [
+          "blank",
+          "blank",
+          "03284_back",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "03283_back",
+          "blank"
+        ]
+      ]
+    },
+    {
       "id": "add_weakness",
       "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
       "effects": [
@@ -15521,6 +15985,43 @@
         {
           "text": "If the doom thresholds of both agendas are satisfied during the “Check doom threshold” step of the Mythos phase, choose only one agenda to advance. Then, once you have completed advancing that agenda, check the doom threshold of the other agenda and advance it if its doom threshold is still satisfied."
         }
+      ]
+    },
+    {
+      "id": "set_aside_location_layout",
+      "type": "location_setup",
+      "text": "Set-aside Location Layout (spoilers)",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "03298_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "03292_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "03296_back",
+          "blank",
+          "03291_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "03294_back",
+          "blank",
+          "03295_back",
+          "blank"
+        ]
       ]
     },
     {
@@ -15904,6 +16405,7 @@
     "set_aside_cards",
     "attach_to_royal_emissary",
     "setup_locations",
+    "location_layout",
     "construct_act_deck",
     "encounter_deck",
     "$play_scenario"
@@ -15925,6 +16427,31 @@
         {
           "text": "If Lola Hayes was chosen as an investigator for this campaign, she begins play at Backstage, instead."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "03051_back",
+          "blank",
+          "blank",
+          "blank",
+          "blank"
+        ],
+        [
+          "03050_back",
+          "blank",
+          "03049_back",
+          "blank",
+          "03052_back",
+          "blank"
+        ]
       ]
     },
     {
@@ -16266,6 +16793,7 @@
     "select_act_2",
     "setup_random_locations",
     "setup_locations",
+    "location_layout",
     "set_aside_locations",
     "choose_starting_location",
     "check_for_onyx_clasp",
@@ -16952,6 +17480,40 @@
       "text": "Put Shores of Hali, Dark Spires, and Palace of the King <i>(Hastur's Domain)</i> into play. Remove the old copy of Palace of the King from the game."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "03330",
+          "blank"
+        ],
+        [
+          "blank",
+          "03329a",
+          "blank"
+        ],
+        [
+          "03328a",
+          "52060",
+          "03327a"
+        ],
+        [
+          "blank",
+          "03326a",
+          "blank"
+        ],
+        [
+          "blank",
+          "03325",
+          "blank"
+        ]
+      ]
+    },
+    {
       "id": "set_aside_locations",
       "text": "Set the following locations aside, out of play: Recesses of Your Own Mind, The Throne Room, and Stage of the Ward Theatre."
     },
@@ -17046,6 +17608,7 @@
     "gather_encounter_sets",
     "choose_locations",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "spawn_cultists",
     "check_fled_dinner_party",
@@ -17500,6 +18063,35 @@
       "text": "Put the following locations into play: Entry Hall, all three copies of Quiet Halls, and the remaining 8 Historical Society locations. Each investigator begins play in the Entry Hall."
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "03136_back",
+          "03135_back",
+          "03136_back"
+        ],
+        [
+          "03132_back",
+          "03131_back",
+          "03132_back"
+        ],
+        [
+          "03128_back",
+          "03127_back",
+          "03128_back"
+        ],
+        [
+          "52030_back",
+          "52029_back",
+          "52030_back"
+        ]
+      ]
+    },
+    {
       "id": "set_aside_cards",
       "text": "Set the following cards aside, out of play: Hidden Library, Possessed Oathspeaker, Mr. Peabody, The Tattered Cloak, Clasp of Black Onyx, and both Keeper of the Oath enemies."
     },
@@ -17582,6 +18174,7 @@
     "gather_encounter_sets",
     "remove_agenda_1",
     "setup_locations",
+    "location_layout",
     "setup_bystanders",
     "set_aside_cards",
     "setup_sickening_reality",
@@ -17598,6 +18191,30 @@
     {
       "id": "setup_locations",
       "text": "Put all 6 locations into play (Foyer, Courtyard, Living Room, Ballroom, Dining Room, and Gallery). Each investigator begins play in the Foyer."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "03075_back",
+          "blank",
+          "03073_back"
+        ],
+        [
+          "03071_back",
+          "03074_back",
+          "03072_back"
+        ],
+        [
+          "blank",
+          "03070_back",
+          "blank"
+        ]
+      ]
     },
     {
       "id": "setup_bystanders",
@@ -18532,6 +19149,7 @@
     "choose_locations",
     "set_aside_cards",
     "setup_locations",
+    "location_layout",
     "add_chaos_token",
     "select_act_2",
     "select_act_2_compare_doubt_conviction",
@@ -18609,6 +19227,43 @@
     {
       "id": "setup_locations",
       "text": "Put the following locations into play: Mess Hall, Kitchen, Yard, Garden, Infirmary, and Basement Hall."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "blank",
+          "blank",
+          "03176_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "blank",
+          "blank",
+          "03175_back",
+          "blank",
+          "blank"
+        ],
+        [
+          "03172_back",
+          "03173_back",
+          "03168_back",
+          "03170_back",
+          "03174_back"
+        ],
+        [
+          "blank",
+          "blank",
+          "blank",
+          "03177_back",
+          "blank"
+        ]
+      ]
     },
     {
       "id": "add_chaos_token",
@@ -19195,6 +19850,7 @@
 {
   "id": "tcu",
   "position": 4,
+  "version": 1,
   "name": "The Circle Undone",
   "campaign_log": [
     {
@@ -19350,6 +20006,7 @@
     "set_aside_cards",
     "set_aside_josef",
     "setup_locations",
+    "location_layout",
     "check_missing_persons",
     "check_gavriella_clues",
     "check_jerome_clues",
@@ -19409,6 +20066,18 @@
     {
       "id": "setup_locations",
       "text": "Put each of the seven non-[[Spectral]] locations into play (Entry Hall, Victorian Halls, Trophy Room, Billiards Room, Master Bedroom, Balcony, and Office). Each investigator begins play in the Entry Hall."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "05077_back", "blank", "blank"],
+        ["05074_back", "05073_back", "05072_back", "05075_back", "05076_back"],
+        ["blank", "blank", "05071_back", "blank", "blank"]
+      ]
     },
     {
       "id": "check_missing_persons",
@@ -19993,6 +20662,8 @@
       "type": "location_setup",
       "title": "Location Placement",
       "text": "Setup / Act 1",
+      "horizontal": "tight",
+      "vertical": "normal",
       "locations": [
         ["player_back", "player_back", "05339_back"],
         ["05332_back", "player_back", "player_back"],
@@ -20003,6 +20674,8 @@
       "id": "act_2_locations",
       "type": "location_setup",
       "text": "Act 2",
+      "horizontal": "tight",
+      "vertical": "normal",
       "locations": [
         ["blank", "05339_back", "blank"],
         ["player_back", "player_back", "player_back"],
@@ -20015,6 +20688,8 @@
       "id": "act_3_locations",
       "type": "location_setup",
       "text": "Act 3",
+      "horizontal": "tight",
+      "vertical": "normal",
       "locations": [
         ["blank", "05339_back", "blank", "blank"],
         ["player_back", "player_back", "player_back", "05339_back"],
@@ -20295,6 +20970,7 @@
     "check_valentino_intro",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "spectral_watcher",
     "setup_investigators",
     "encounter_deck",
@@ -20473,6 +21149,18 @@
     {
       "id": "setup_locations",
       "text": "Put the seven [[Spectral]] locations into play."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "05084_back", "blank", "blank"],
+        ["05081_back", "05080_back", "05079_back", "05082_back", "05083_back"],
+        ["blank", "blank", "05078_back", "blank", "blank"]
+      ]
     },
     {
       "id": "spectral_watcher",
@@ -20891,11 +21579,11 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["lodge_setup_1", "lodge_setup_2", "lodge_setup_3"]
+            "steps": ["lodge_setup_1", "lodge_setup_2", "lodge_setup_3", "location_layout_lodge"]
           },
           {
             "boolCondition": false,
-            "steps": ["not_lodge_setup_1", "not_lodge_setup_2", "not_lodge_setup_3"]
+            "steps": ["not_lodge_setup_1", "not_lodge_setup_2", "not_lodge_setup_3", "location_layout_not_lodge"]
           }
         ]
       }
@@ -20933,6 +21621,30 @@
     {
       "id": "setup_locations",
       "text": "Put the Lodge Catacombs and the Lounge into play. Each investigator begins play at the Lodge Gates. Set each other remaining location aside, out of play (Library, Vault, Inner Sanctum, and the 2 Sanctum Doorway locations)."
+    },
+    {
+      "id": "location_layout_lodge",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "05204_back", "blank"],
+        ["05206_back", "blank", "05208_back"],
+        ["05210_back", "blank", "05213_back"]
+      ]
+    },
+    {
+      "id": "location_layout_not_lodge",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "05205_back", "blank"],
+        ["05207_back", "blank", "05209_back"],
+        ["05210_back", "blank", "05213_back"]
+      ]
     },
     {
       "id": "set_aside_cards",
@@ -21147,7 +21859,7 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["gather_anette_cards", "use_act1_v1", "use_anette_locations"]
+            "steps": ["gather_anette_cards", "use_act1_v1", "use_anette_locations", "location_layout_anette"]
           },
           {
             "boolCondition": false,
@@ -21162,14 +21874,38 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "anette_mason_is_possessed_by_evil",
+        "id": "carl_sanford_possesses_the_secrets_of_the_universe",
         "options": [
           {
             "boolCondition": true,
-            "steps": ["gather_carl_cards", "use_act1_v2", "use_carl_locations"]
+            "steps": ["gather_carl_cards", "use_act1_v2", "use_carl_locations", "location_layout_carl"]
           }
         ]
       }
+    },
+    {
+      "id": "location_layout_anette",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "blank", "05300_back", "blank", "05292_back", "blank", "blank", "blank", "blank"],
+        ["05302_back", "blank", "05296_back", "blank", "05294_back", "blank", "05290_back", "blank", "05303_back", "blank"],
+        ["blank", "blank", "blank", "blank", "05298_back", "blank", "blank", "blank", "blank", "blank"]
+      ]
+    },
+    {
+      "id": "location_layout_carl",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "blank", "05300_back", "blank", "05292_back", "blank", "blank", "blank", "blank"],
+        ["05304_back", "blank", "05296_back", "blank", "05294_back", "blank", "05290_back", "blank", "05305_back", "blank"],
+        ["blank", "blank", "blank", "blank", "05298_back", "blank", "blank", "blank", "blank", "blank"]
+      ]
     },
     {
       "id": "gather_anette_cards",
@@ -22397,6 +23133,7 @@
     "check_members_of_the_lodge",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "create_unknown_place_deck",
     "set_aside_cards",
     "encounter_deck",
@@ -22615,6 +23352,18 @@
     {
       "id": "setup_locations",
       "text": "Put Moldy Halls, Walter Gilman’s Room, and the three Decrepit Door locations into play. Each investigator begins play in the Moldy Halls."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "05132_back", "blank"],
+        ["05129_back", "05128_back", "05129_back"],
+        ["blank", "05129_back", "blank"]
+      ]
     },
     {
       "id": "create_unknown_place_deck",
@@ -22899,6 +23648,7 @@
     "gather_encounter_sets",
     "set_aside_watcher",
     "setup_locations",
+    "location_layout",
     "set_aside_spectral_web",
     "shuffle_heretics",
     "create_encounter_decks",
@@ -22942,6 +23692,18 @@
         {
           "text": "Each investigator begins play in Hangman’s Brook."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "05169", "blank", "05175", "blank"],
+        ["05171", "05167", "blank", "05168", "05173"],
+        ["blank", "blank", "05166", "blank", "blank"]
       ]
     },
     {
@@ -23772,6 +24534,7 @@
     "gather_encounter_sets",
     "set_aside_encounter_sets",
     "setup_locations",
+    "location_layout",
     "check_sided_with_the_coven_braziers",
     "set_aside_cards",
     "set_aside_bosses",
@@ -23863,6 +24626,18 @@
     {
       "id": "setup_locations",
       "text": "Put the Miskatonic River and Forbidding Shore into play. Each investigator begins play at the Miskatonic River. Then, shuffle the 6 Unvisited Isle locations and choose 2 at random to put into play. Set the rest aside, out of play."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "05249_back", "blank"],
+        ["blank", "05250_back", "blank"],
+        ["05251_back", "blank", "05251_back"]
+      ]
     },
     {
       "id": "check_sided_with_the_coven_braziers",
@@ -24994,6 +25769,7 @@
 {
   "id": "tdea",
   "position": 1,
+  "version": 0,
   "name": "The Dream-Quest",
   "campaign_log": [
     {
@@ -26977,6 +27753,7 @@
 {
   "id": "tfa",
   "position": 3,
+  "version": 1,
   "name": "The Forgotten Age",
   "campaign_log": [
     {
@@ -27294,7 +28071,7 @@
     {
       "id": "ee_2",
       "type": "story",
-      "text": "<right>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
+      "text": "<right><fancy>Sunday, July 19th, 1925</fancy></right>\nI’ve decided to give custody of the relic to Alejandro. This entire expedition was based on his research, after all—he should be the one to study it. If anyone can discover the relic’s secrets, it’s him.\nThe relic is to be the centerpiece of a new exhibit at the museum. Alejandro has already written extensively about our discoveries, but his work has only just begun. Many mysteries about our expedition remain. How have the Eztli people remained undiscovered for so long? Why did they appear to be guarding the jungle, and from what? Who really built the temple ruins we explored? I have no doubt Alejandro will uncover the answers to these questions, given enough time.\nAs for me, my role in this endeavor has ended. However, I have yet to relax. My thoughts are constantly in the jungle—serpentine figures in the shadows, obsidian arrows embedded in skeletal bodies, malformed voices shrieking in the cavernous depths. When I walk through the streets, I find myself drawn toward the museum without realizing it, as though possessed to see the relic once again. There is a nagging sensation in the back of my mind, as though we have forgotten something important. What must I do to rid myself of—\n(The journal entry ends abruptly.)"
     },
     {
       "id": "gave_relic_to_alejandro",
@@ -28264,7 +29041,7 @@
         "knyan",
         "heart_of_the_elders",
         "agents_of_yig",
-        "yigs_venom",
+        "venom",
         "ruins",
         "traps",
         "poison"
@@ -29663,6 +30440,7 @@
     "gather_encounter_sets",
     "check_chaos_bag_tokens",
     "setup_locations",
+    "location_layout",
     "create_exploration_deck",
     "set_aside_cards",
     "set_aside_act_and_agenda",
@@ -30007,7 +30785,7 @@
       "bullet_type": "small",
       "type": "encounter_sets",
       "encounter_sets": [
-        "yigs_venom",
+        "venom",
         "guardians_of_time"
       ]
     },
@@ -30027,6 +30805,18 @@
     {
       "id": "setup_locations",
       "text": "Put Metropolitan Cathedral, Zócalo, Temple Ruins, Xochimilco, Chapultepec Park, and Coyoacán into play. Each investigator begins play in either Zócalo or Coyoacán (their choice)."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "blank", "blank", "04168_back", "blank", "blank", "blank", "blank"],
+        ["04170_back", "blank", "04173_back", "blank", "04171_back", "blank", "04169_back", "blank"],
+        ["blank", "blank", "blank", "04172_back", "blank", "blank", "blank", "blank"]
+      ]
     },
     {
       "id": "create_exploration_deck",
@@ -30283,6 +31073,7 @@
     "body_of_yithian",
     "check_cooperated",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "encounter_deck",
     "body_of_yithian_rule",
@@ -30425,6 +31216,18 @@
     {
       "id": "setup_locations",
       "text": "Put the three Halls of Pnakotus locations into play. Set each remaining location aside, out of play."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "04248_back", "blank", "04245_back"],
+        ["04250_back", "blank", "04249_back", "04245_back"],
+        ["blank", "blank", "blank", "04245_back"]
+      ]
     },
     {
       "id": "set_aside_cards",
@@ -32529,6 +33332,7 @@
     "gather_encounter_sets",
     "set_aside_alejandro_and_relic",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "setup_act_deck",
     "setup_act_ab",
@@ -32746,6 +33550,17 @@
     {
       "id": "setup_locations",
       "text": "Put Northside, Downtown, Easttown, Miskatonic University, Rivertown, Velma’s Diner, and Curiositie Shoppe into play. Each investigator begins play in Rivertown."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "half",
+      "vertical": "normal",
+      "locations": [
+        ["04142_back", "blank", "01134_back", "blank", "01130_back", "blank", "01132_back", "blank", "04141_back"],
+        ["blank", "blank", "blank", "01129_back", "blank", "01125_back", "blank", "blank", "blank"]
+      ]
     },
     {
       "id": "set_aside_cards",

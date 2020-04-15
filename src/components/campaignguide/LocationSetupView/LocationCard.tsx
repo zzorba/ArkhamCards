@@ -13,8 +13,10 @@ const SIDE_PADDING = 16;
 
 interface Props {
   code: string;
-  rowSize: number;
+  height: number;
   width: number;
+  left: number;
+  top: number;
 }
 
 export default class LocationCard extends React.Component<Props> {
@@ -55,17 +57,16 @@ export default class LocationCard extends React.Component<Props> {
 
   render() {
     const {
+      height,
       width,
-      rowSize,
+      left,
+      top,
     } = this.props;
-    const cardWidth = (width - SIDE_PADDING * 2) / rowSize;
-    const cardHeight = cardWidth * CARD_RATIO;
     return (
       <View
         style={[
           styles.card,
-          space.paddingXs,
-          { width: cardWidth, height: cardHeight },
+          { width, height, left, top },
         ]}
       >
         { this.renderImage() }
@@ -76,11 +77,10 @@ export default class LocationCard extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 4,
+    position: 'absolute',
   },
   verticalCardImage: {
     width: '100%',
     height: '100%',
-    borderRadius: 8,
   },
 });

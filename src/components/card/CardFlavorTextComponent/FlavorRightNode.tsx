@@ -5,26 +5,22 @@ import {
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import { isBig } from 'styles/space';
-import { WithText } from '../CardTextComponent/types';
+import { WithChildren } from '../CardTextComponent/types';
 
-export default function FlavorFancyRightNode(
-  node: Node & WithText,
+export default function FlavorRightNode(
+  node: Node & WithChildren,
   output: OutputFunction,
   state: RenderState
 ) {
   return (
     <Text key={state.key} style={styles.text}>
-      { node.text }
+    { output(node.children, state) }
     </Text>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: isBig ? 28 : 18,
-    fontFamily: 'AnkeCalligraphicFG',
     textAlign: 'right',
-    color: '#222',
   },
 });
