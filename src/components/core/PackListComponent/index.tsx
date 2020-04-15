@@ -1,14 +1,24 @@
 import React from 'react';
-import { filter, map } from 'lodash';
+import { filter, groupBy, map } from 'lodash';
 import {
   FlatList,
+  SectionList,
+  SectionListData,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
+import CardSectionHeader from 'components/core/CardSectionHeader';
 import PackRow from './PackRow';
+
+interface PackCycle {
+  title: string;
+  id: string;
+  data: Pack[];
+}
 
 interface Props {
   componentId: string;
@@ -29,6 +39,23 @@ export default class PackListComponent extends React.Component<Props> {
   _keyExtractor = (item: Pack) => {
     return item.code;
   };
+
+  cycleName(position: string): string {
+    switch (position) {
+      case '1': return t`Core Set`;
+      case '2': return t`The Dunwich Legacy`;
+      case '3': return t`The Path to Carcosa`;
+      case '4': return t`The Forgotten Age`;
+      case '5': return t`The Circle Undone`;
+      case '6': return t`The Dream-Eaters`;
+      case '7': return t`The Innsmouth Conspiracy`;
+      case '50': return t`Return to...`;
+      case '60': return t`Investigator Starter Decks`;
+      case '70': return t`Standalone`;
+      case '80': return t`Miscelaneous`;
+      default: return 'Unknown';
+    }
+  }
 
   _renderItem = ({ item }: { item: Pack }) => {
     const {
@@ -62,6 +89,16 @@ export default class PackListComponent extends React.Component<Props> {
     );
   };
 
+  _renderSectionHeader = ({ section }: { section: SectionListData<PackCycle> }) => {
+    const { fontScale } = this.props;
+    return (
+      <CardSectionHeader
+        section={{ title: section.title }}
+        fontScale={fontScale}
+      />
+    );
+  };
+
   render() {
     const {
       packs,
@@ -86,12 +123,23 @@ export default class PackListComponent extends React.Component<Props> {
         </View>
       );
     }
+    const groups: PackCycle[] = map(
+      groupBy(packs, pack => pack.cycle_position),
+      (group, key) => {
+        return {
+          title: this.cycleName(`${key}`),
+          id: key,
+          data: group,
+        };
+      });
+
     return (
       <View style={styles.container}>
-        <FlatList
+        <SectionList
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}
-          data={packs}
+          sections={groups}
+          renderSectionHeader={this._renderSectionHeader}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
           extraData={checkState}

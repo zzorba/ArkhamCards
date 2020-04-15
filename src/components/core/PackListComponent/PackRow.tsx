@@ -103,7 +103,7 @@ export default class PackRow extends React.Component<Props> {
       nameOverride,
     } = this.props;
 
-    const mythosPack = (pack.position > 1 && pack.cycle_position < 70);
+    const mythosPack = true;
     const backgroundColor = (whiteBackground || mythosPack) ? '#FFFFFF' : '#f0f0f0';
     const textColor = '#222222';
     const iconSize = (mythosPack || compact) ? 24 : 28;
@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   bottomBorder: {
-    borderBottomWidth: 1,
-
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
   },
   touchable: {
     height: 50,

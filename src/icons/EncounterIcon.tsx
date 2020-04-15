@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ArkhamIcon from './ArkhamIcon';
 import CarcosaIcon from './CarcosaIcon';
 import CircleIcon from './CircleIcon';
 import CoreSetIcon from './CoreSetIcon';
@@ -15,6 +16,9 @@ interface Props {
 }
 
 export default class EncounterIcon extends React.PureComponent<Props> {
+  arkhamIcon(name: string, size: number, color: string) {
+    return (<ArkhamIcon name={name} size={size} color={color} />);
+  }
   coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
   }
@@ -49,7 +53,17 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       size,
       color,
     } = this.props;
-    switch(encounter_code) {
+    switch (encounter_code) {
+      case 'nat':
+        return this.arkhamIcon('guardian', size, color);
+      case 'har':
+        return this.arkhamIcon('seeker', size, color);
+      case 'win':
+        return this.arkhamIcon('rogue', size, color);
+      case 'jac':
+        return this.arkhamIcon('mystic', size, color);
+      case 'ste':
+        return this.arkhamIcon('survivor', size, color);
       case 'rtnotz':
       case 'core':
       case 'agents_of_hastur':
