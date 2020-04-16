@@ -1,4 +1,6 @@
 import { findLast } from 'lodash';
+import { Alert } from 'react-native';
+import { t } from 'ttag';
 
 import {
   GuideInput,
@@ -79,7 +81,33 @@ export default class CampaignStateHelper {
   }
 
   undo(scenarioId: string) {
-    this.actions.undo(scenarioId);
+    const latestInput = findLast(this.state.inputs,
+      input => input.scenario === scenarioId);
+    if (latestInput &&
+      latestInput.type === 'choice_list' &&
+      latestInput.step.startsWith('$upgrade_decks#') &&
+      !!latestInput.choices.deckId
+    ) {
+      // This is a deck upgrade action.
+      Alert.alert(
+        t`Undo deck upgrade`,
+        t`Looks like you are trying to undo a deck upgrade.\n\nNote that the app will NOT delete your latest deck upgrade from ArkhamDB, so your deck will still have the earlier changes applied.\n\nYou can view the deck and delete the most recent 'upgrade' to put things back the way they were.`,
+        [
+          {
+            text: t`Undo`,
+            onPress: () => {
+              this.actions.undo(scenarioId);
+            },
+          },
+          {
+            text: t`Cancel`,
+            style: 'cancel',
+          },
+        ],
+      );
+    } else {
+      this.actions.undo(scenarioId);
+    }
   }
 
   private entry(type: string, step?: string, scenario?: string): GuideInput | undefined {

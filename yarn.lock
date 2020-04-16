@@ -9609,6 +9609,13 @@ react-native-navigation@6.0.1:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
+react-native-pinch-zoom-view@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-pinch-zoom-view/-/react-native-pinch-zoom-view-0.2.0.tgz#5ff469e7b1b4a69629a8fb31a226d3855e813799"
+  integrity sha512-KPrJCSKX/NZuNjyS9gl4gR1AhV0sWo2KgJOI5tD8+YhzjtSRHnaq9XvOdO4ero3oyU2oFXyFHEVH+DzOfaXqOg==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-native-ratings@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.3.0.tgz#becda9379616776a81d9d90bfc95ea40b76286fb"

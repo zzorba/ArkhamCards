@@ -14,7 +14,7 @@ export default function FlavorRightNode(
 ) {
   return (
     <Text key={state.key} style={styles.text}>
-    { output(node.children, state) }
+      { output(node.children, state) }
     </Text>
   );
 }

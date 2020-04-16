@@ -104,6 +104,7 @@ export default function(
       investigatorData: {},
       scenarioResults: [],
       guided: action.guided,
+      guideVersion: action.guided ? -1 : undefined,
     };
     return {
       ...state,

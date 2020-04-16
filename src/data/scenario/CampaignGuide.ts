@@ -67,6 +67,10 @@ export default class CampaignGuide {
     return this.campaign.campaign.name;
   }
 
+  campaignVersion() {
+    return this.campaign.campaign.version;
+  }
+
   getFullScenarioName(
     rawScenarioId: string
   ): string | undefined {

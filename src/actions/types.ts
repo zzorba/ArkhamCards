@@ -313,6 +313,7 @@ export interface Campaign {
   latestDeckIds?: number[]; // deprecated
   nonDeckInvestigators?: string[];
   guided?: boolean;
+  guideVersion?: number;
   investigatorData: InvestigatorData;
   adjustedInvestigatorData?: InvestigatorData;
   chaosBag: ChaosBag;

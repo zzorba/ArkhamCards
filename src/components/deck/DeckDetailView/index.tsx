@@ -1327,8 +1327,8 @@ class DeckDetailView extends React.Component<Props, State> {
         t`Sign in to ArkhamDB`,
         t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.`,
         [
-          { text: 'Sign In', onPress: login },
-          { text: 'Cancel', style: 'cancel' },
+          { text: t`Sign In`, onPress: login },
+          { text: t`Cancel`, style: 'cancel' },
         ],
       );
     } else {
@@ -1336,8 +1336,8 @@ class DeckDetailView extends React.Component<Props, State> {
         t`Upload to ArkhamDB`,
         t`You can upload your deck to ArkhamDB to share with others.\n\nAfter doing this you will need network access to make changes to the deck.`,
         [
-          { text: 'Upload', onPress: this._doLocalDeckUpload },
-          { text: 'Cancel', style: 'cancel' },
+          { text: t`Upload`, onPress: this._doLocalDeckUpload },
+          { text: t`Cancel`, style: 'cancel' },
         ],
       );
     }

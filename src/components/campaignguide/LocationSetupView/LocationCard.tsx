@@ -4,12 +4,8 @@ import FastImage from 'react-native-fast-image';
 
 import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
 import Card from 'data/Card';
-import { CARD_RATIO } from 'styles/sizes';
-import space from 'styles/space';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
-
-const SIDE_PADDING = 16;
 
 interface Props {
   code: string;

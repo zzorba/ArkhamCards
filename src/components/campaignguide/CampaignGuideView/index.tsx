@@ -113,6 +113,7 @@ class CampaignGuideView extends React.Component<Props & CampaignGuideContextType
     updateCampaign(
       campaignId,
       {
+        guideVersion: campaignGuide.campaignVersion(),
         difficulty: campaignLog.campaignData.difficulty,
         investigatorData: campaignLog.campaignData.investigatorData,
         chaosBag: campaignLog.chaosBag,

@@ -151,7 +151,7 @@ class MyCampaignsView extends React.Component<Props, State> {
     };
     Alert.alert(
       t`New Campaign`,
-      t`The app can now walk you through campaign guides, keeping track of the Campaign Log, story assets, and trauma automatically.\nThis feature is still in beta and you might encounter some bugs with it, if you do please send them to arkhamcards@gmail.com`,
+      t`Introducing: Guided Campaigns!\n\nThe app can now walk you through setup + resolution of each scenario while keeping track of the Campaign Log, story assets, and trauma automatically.\n\nNote that while there was a lot of testing, you might still encounter a bug or an incorrect setup/resolution instruction at times. If you encounter any problems, please reach out to arkhamcards@gmail.com.`,
       [{
         text: t`Guided Campaign`,
         onPress: () => {
