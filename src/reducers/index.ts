@@ -435,7 +435,7 @@ export function getDefaultFilterState(
 }
 
 export function getGuideState(state: AppState, campaignId: number): CampaignGuideState {
-  return state.guides.all[campaignId] || {
+  return (state.guides && state.guides.all[campaignId]) || {
     inputs: [],
   };
 }
