@@ -6,6 +6,7 @@ import PlayScenarioComponent from './PlayScenarioComponent';
 import UpgradeDecksInput from './UpgradeDecksInput';
 import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWithSuppliesInputComponent';
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
+import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
 import UseSuppliesPrompt from 'components/campaignguide/prompts/UseSuppliesPrompt';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
@@ -28,7 +29,7 @@ interface Props {
 }
 
 export default class InputStepComponent extends React.Component<Props> {
-  render(): React.ReactNode {
+  renderContent(campaignId: number): React.ReactNode {
     const {
       step,
       campaignLog,
@@ -137,6 +138,7 @@ export default class InputStepComponent extends React.Component<Props> {
         return (
           <PlayScenarioComponent
             id={step.id}
+            campaignId={campaignId}
             componentId={componentId}
             input={step.input}
           />
@@ -168,5 +170,15 @@ export default class InputStepComponent extends React.Component<Props> {
           />
         );
     }
+  }
+
+  render() {
+    return (
+      <CampaignGuideContext.Consumer>
+        { ({ campaignId }: CampaignGuideContextType) => (
+          this.renderContent(campaignId)
+        ) }
+      </CampaignGuideContext.Consumer>
+    );
   }
 }

@@ -660,18 +660,15 @@ export default class ScenarioStep {
         if (choice === undefined) {
           return undefined;
         }
-        const effects: EffectsWithInput[] = [];
+        const effectsWithInput: EffectsWithInput[] = [];
         const investigators = this.campaignLog.investigators(false);
         forEach(investigators, investigator => {
           const choices = scenarioState.numberChoices(`${this.step.id}#${investigator.code}`);
           if (choices !== undefined) {
-            const investigatorEffects: EffectsWithInput = {
-              input: [investigator.code],
-              effects: [],
-            };
+            const effects: Effect[] = [];
             const xpAdjust = (choices.xp && choices.xp[0]) || 0;
             if (xpAdjust !== 0) {
-              investigatorEffects.effects.push({
+              effects.push({
                 type: 'earn_xp',
                 investigator: '$input_value',
                 bonus: xpAdjust,
@@ -679,7 +676,7 @@ export default class ScenarioStep {
             }
             const physicalAdjust = (choices.physical && choices.physical[0]) || 0;
             if (physicalAdjust !== 0) {
-              investigatorEffects.effects.push({
+              effects.push({
                 type: 'trauma',
                 investigator: '$input_value',
                 physical: physicalAdjust,
@@ -688,7 +685,7 @@ export default class ScenarioStep {
             }
             const mentalAdjust = (choices.mental && choices.mental[0]) || 0;
             if (mentalAdjust !== 0) {
-              investigatorEffects.effects.push({
+              effects.push({
                 type: 'trauma',
                 investigator: '$input_value',
                 mental: mentalAdjust,
@@ -696,14 +693,17 @@ export default class ScenarioStep {
               });
             }
 
-            if (investigatorEffects.effects.length) {
-              effects.push(investigatorEffects);
+            if (effects.length) {
+              effectsWithInput.push({
+                input: [investigator.code],
+                effects,
+              });
             }
           }
         });
 
         // Finally do the deck upgrade to 'bank' it.
-        effects.push({
+        effectsWithInput.push({
           effects: [
             {
               type: 'upgrade_decks',
@@ -713,7 +713,7 @@ export default class ScenarioStep {
         return this.maybeCreateEffectsStep(
           this.step.id,
           this.remainingStepIds,
-          effects
+          effectsWithInput
         );
       }
       case 'use_supplies': {

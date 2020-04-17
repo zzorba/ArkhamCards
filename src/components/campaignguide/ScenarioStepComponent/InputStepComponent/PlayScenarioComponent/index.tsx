@@ -1,8 +1,10 @@
 import React from 'react';
+import { Navigation } from 'react-native-navigation';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';
+import { GuideChaosBagProps } from 'components/campaignguide/GuideChaosBagView';
 import ChooseOnePrompt from 'components/campaignguide/prompts/ChooseOnePrompt';
 import BasicButton from 'components/core/BasicButton';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
@@ -16,6 +18,7 @@ import { chooseOneInputChoices } from 'data/scenario/inputHelper';
 
 interface Props {
   componentId: string;
+  campaignId: number;
   id: string;
   input: PlayScenarioInput;
 }
@@ -39,6 +42,30 @@ export default class PlayScenarioComponent extends React.Component<Props> {
   _branchPress = (index: number) => {
     const { id } = this.props;
     this.context.scenarioState.setChoice(id, index);
+  };
+
+  _chaosBagSimulatorPressed = () => {
+    const { componentId, campaignId } = this.props;
+    Navigation.push<GuideChaosBagProps>(componentId, {
+      component: {
+        name: 'Guide.ChaosBag',
+        passProps: {
+          componentId,
+          campaignId,
+          chaosBag: this.context.campaignLog.chaosBag,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Chaos Bag`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
   };
 
   renderContent(
@@ -82,6 +109,10 @@ export default class PlayScenarioComponent extends React.Component<Props> {
               />
             )
           ) }
+          <BasicButton
+            title={t`Chaos bag simulator`}
+            onPress={this._chaosBagSimulatorPressed}
+          />
           <BasicButton
             title={t`Edit campaign log`}
             onPress={this._campaignLogPressed}

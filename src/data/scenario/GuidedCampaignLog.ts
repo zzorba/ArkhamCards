@@ -231,6 +231,10 @@ export default class GuidedCampaignLog {
       this.chaosBag = cloneDeep(readThrough.chaosBag);
       this.campaignData = cloneDeep(readThrough.campaignData);
       this.latestScenarioData = cloneDeep(readThrough.latestScenarioData);
+
+      if (scenarioId && this.campaignData.nextScenario && this.campaignData.nextScenario === scenarioId) {
+        this.campaignData.nextScenario = undefined;
+      }
     }
     if (hasRelevantEffects) {
       forEach(effectsWithInput, ({ effects, input, numberInput }) => {

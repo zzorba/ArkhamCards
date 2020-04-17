@@ -68,7 +68,7 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
       cards,
       {
         traits,
-        multiplayer: campaignLog.playerCount() > 0,
+        multiplayer: campaignLog.playerCount() > 1,
         standalone: false,
       },
       realTraits

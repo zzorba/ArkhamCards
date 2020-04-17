@@ -10,17 +10,17 @@ import { NavigationProps } from 'components/nav/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { iconsMap } from 'app/NavIcons';
 import { COLORS } from 'styles/colors';
-import { AppState, getCampaign, getChaosBagResults } from 'reducers';
+import { AppState, getChaosBagResults } from 'reducers';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from 'constants';
 import { ChaosBagResults } from 'actions/types';
 import SealTokenButton from './SealTokenButton';
 
 export interface SealTokenDialogProps {
   campaignId: number;
+  chaosBag: ChaosBag;
 }
 
 interface ReduxProps {
-  chaosBag: ChaosBag;
   chaosBagResults: ChaosBagResults;
 }
 
@@ -131,9 +131,7 @@ function mapStateToProps(
   state: AppState,
   props: NavigationProps & SealTokenDialogProps
 ): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
   return {
-    chaosBag: (campaign && campaign.chaosBag) || {},
     chaosBagResults: getChaosBagResults(state, props.campaignId),
   };
 }

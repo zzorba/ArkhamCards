@@ -3,34 +3,31 @@ import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from '
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { cloneDeep, shuffle } from 'lodash';
-import { EventSubscription, Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
-import { NavigationProps } from 'components/nav/types';
 import { ChaosBag } from 'constants';
 import { COLORS } from 'styles/colors';
 import { ChaosBagResults } from 'actions/types';
 import typography from 'styles/typography';
-import { EditChaosBagProps } from '../EditChaosBagDialog';
-import ChaosToken from '../ChaosToken';
+import ChaosToken from './ChaosToken';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { updateChaosBagResults } from '../actions';
-import { AppState, getCampaign, getChaosBagResults } from 'reducers';
-import { SealTokenDialogProps } from '../SealTokenDialog';
-import SealTokenButton from '../SealTokenButton';
-import { flattenChaosBag } from '../campaignUtil';
+import { updateChaosBagResults } from './actions';
+import { AppState, getChaosBagResults } from 'reducers';
+import { SealTokenDialogProps } from './SealTokenDialog';
+import SealTokenButton from './SealTokenButton';
+import { flattenChaosBag } from './campaignUtil';
 import { s } from 'styles/space';
 
-export interface CampaignChaosBagProps {
+interface OwnProps {
   componentId: string;
   campaignId: number;
-  updateChaosBag: (chaosBag: ChaosBag) => void;
+  chaosBag: ChaosBag;
   trackDeltas?: boolean;
 }
 
 interface ReduxProps {
-  chaosBag: ChaosBag;
   chaosBagResults: ChaosBagResults;
 }
 
@@ -42,51 +39,18 @@ interface State {
   isChaosBagEmpty: boolean;
 }
 
-type Props = NavigationProps &
-  CampaignChaosBagProps &
+type Props = OwnProps &
   ReduxProps &
   ReduxActionProps &
   DimensionsProps;
 
 class CampaignChaosBagView extends React.Component<Props, State> {
-  static get options() {
-    return {
-      topBar: {
-        rightButtons: [{
-          systemItem: 'save',
-          text: t`Edit`,
-          id: 'edit',
-          showAsAction: 'ifRoom',
-          color: COLORS.navButton,
-          testID: t`Edit`,
-        }],
-      },
-    };
-  }
-
-  _navEventListener?: EventSubscription;
-
   constructor(props: Props) {
     super(props);
 
     this.state = {
       isChaosBagEmpty: false,
     };
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const { componentId } = this.props;
-    if (buttonId === 'back' || buttonId === 'androidBack') {
-      Navigation.pop(componentId);
-    } else if (buttonId === 'edit') {
-      this._showChaosBagDialog();
-    }
   }
 
   _handleClearTokensPressed = () => {
@@ -112,9 +76,11 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   _handleSealTokensPressed = () => {
     const {
       campaignId,
+      chaosBag,
     } = this.props;
     const passProps: SealTokenDialogProps = {
       campaignId: campaignId,
+      chaosBag,
     };
     Navigation.showModal({
       stack: {
@@ -129,35 +95,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             },
           },
         }],
-      },
-    });
-  };
-
-  _showChaosBagDialog = () => {
-    const {
-      componentId,
-      chaosBag,
-      updateChaosBag,
-    } = this.props;
-
-    Navigation.push<EditChaosBagProps>(componentId, {
-      component: {
-        name: 'Dialog.EditChaosBag',
-        passProps: {
-          chaosBag,
-          updateChaosBag: updateChaosBag,
-          trackDeltas: true,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: t`Chaos Bag`,
-            },
-            backButton: {
-              title: t`Cancel`,
-            },
-          },
-        },
       },
     });
   };
@@ -248,7 +185,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     } = this.props;
 
     const drawnTokens = chaosBagResults.drawnTokens;
-
     if (drawnTokens.length > 1) {
       return drawnTokens.slice(0, drawnTokens.length - 1).map(function(token, index) {
         return (
@@ -358,11 +294,9 @@ class CampaignChaosBagView extends React.Component<Props, State> {
 
 function mapStateToProps(
   state: AppState,
-  props: NavigationProps & CampaignChaosBagProps
+  props: OwnProps
 ): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
   return {
-    chaosBag: (campaign && campaign.chaosBag) || {},
     chaosBagResults: getChaosBagResults(state, props.campaignId),
   };
 }
@@ -373,7 +307,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   } as any, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignChaosBagProps, AppState>(
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(
