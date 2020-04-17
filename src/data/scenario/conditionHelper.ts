@@ -464,6 +464,13 @@ export function campaignDataConditionResult(
   campaignLog: GuidedCampaignLog
 ): BinaryResult | StringResult | NumberResult {
   switch (condition.campaign_data) {
+    case 'linked_campaign': {
+      // TODO: tde
+      return binaryConditionResult(
+        false,
+        condition.options
+      );
+    }
     case 'scenario_completed': {
       return campaignDataScenarioConditionResult(condition, campaignLog);
     }

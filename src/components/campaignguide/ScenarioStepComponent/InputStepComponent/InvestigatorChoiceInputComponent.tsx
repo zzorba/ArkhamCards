@@ -60,7 +60,7 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
         text={step.text}
         bulletType={step.bullet_type}
         options={investigatorChoiceInputChoices(input, campaignLog)}
-        detailed={input.detailed}
+        detailed={input.special_mode === 'detailed'}
         optional={input.investigator === 'choice'}
       />
     );

@@ -43,6 +43,7 @@ export type Effect =
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect
   | UpgradeDecksEffect
+  | CampaignLinkEffect
   | FreeformCampaignLogEffect;
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -88,7 +89,8 @@ export type CampaignDataCondition =
   | CampaignDataDifficultyCondition
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
-  | CampaignDataInvestigatorCondition;
+  | CampaignDataInvestigatorCondition
+  | CampaignDataLinkedCondition;
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataInvestigatorStatusCondition
@@ -107,7 +109,8 @@ export type Input =
   | InvestigatorChoiceWithSuppliesInput
   | ScenarioInvestigatorsInput
   | PlayScenarioInput
-  | TextBoxInput;
+  | TextBoxInput
+  | CampaignLinkInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition = InvestigatorCardCondition | BasicTraumaCondition | InvestigatorCondition;
@@ -277,6 +280,11 @@ export interface AddRemoveChaosTokenEffect {
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
 }
+export interface CampaignLinkEffect {
+  type: "campaign_link";
+  id: string;
+  decision: string;
+}
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
   section: "campaign_notes";
@@ -378,6 +386,11 @@ export interface CampaignDataInvestigatorCondition {
   investigator_data: "trait" | "faction" | "code";
   options: StringOption[];
   defaultOption?: Option;
+}
+export interface CampaignDataLinkedCondition {
+  type: "campaign_data";
+  campaign_data: "linked_campaign";
+  options: BoolOption[];
 }
 export interface CampaignLogSectionExistsCondition {
   type: "campaign_log_section_exists";
@@ -507,7 +520,7 @@ export interface InvestigatorChoiceInput {
   type: "investigator_choice";
   source: "campaign" | "scenario";
   investigator: "all" | "choice" | "any";
-  detailed?: boolean;
+  special_mode?: "detailed" | "sequential";
   choices: InvestigatorConditionalChoice[];
 }
 export interface InvestigatorConditionalChoice {
@@ -527,7 +540,7 @@ export interface BasicTraumaCondition {
 }
 export interface InvestigatorCondition {
   type: "investigator";
-  investigator?: "each";
+  investigator: "each";
   investigator_data: "trait" | "faction" | "code";
   options: StringOption[];
 }
@@ -580,6 +593,11 @@ export interface PlayScenarioInput {
 export interface TextBoxInput {
   type: "text_box";
   effects: FreeformCampaignLogEffect[];
+}
+export interface CampaignLinkInput {
+  type: "campaign_link";
+  id: string;
+  choices: Choice[];
 }
 export interface EncounterSetsStep {
   id: string;

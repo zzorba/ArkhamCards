@@ -19,6 +19,10 @@ interface State {
 }
 
 export default class TextBoxInputComponent extends React.Component<Props, State> {
+  state: State = {
+    text: '',
+  };
+
   static contextType = ScenarioStepContext;
   context!: ScenarioStepContextType;
 
@@ -40,7 +44,9 @@ export default class TextBoxInputComponent extends React.Component<Props, State>
 
   saveText(text: string) {
     const { id } = this.props;
-    this.context.scenarioState.setText(id, text);
+    if (text) {
+      this.context.scenarioState.setText(id, text);
+    }
   }
 
   render() {
@@ -66,6 +72,7 @@ export default class TextBoxInputComponent extends React.Component<Props, State>
               <BasicButton
                 title={t`Proceed`}
                 onPress={this._save}
+                disabled={!this.state.text}
               />
             </>
           );
