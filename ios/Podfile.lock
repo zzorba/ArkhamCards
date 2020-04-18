@@ -201,7 +201,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-app-auth (5.0.2):
+  - react-native-app-auth (5.1.1):
     - AppAuth (= 1.2.0)
     - React
   - react-native-blur (0.8.0):
@@ -210,7 +210,7 @@ PODS:
     - React
   - react-native-in-app-browser (3.1.4):
     - React
-  - react-native-netinfo (5.5.1):
+  - react-native-netinfo (5.7.1):
     - React
   - react-native-webview (8.1.2):
     - React
@@ -249,7 +249,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - ReactNativeNavigation (6.0.1):
+  - ReactNativeNavigation (6.4.0):
     - React
     - React-RCTImage
     - React-RCTText
@@ -262,28 +262,28 @@ PODS:
     - React
   - RNColorMatrixImageFilters (5.2.4):
     - React
-  - RNDeviceInfo (5.5.3):
+  - RNDeviceInfo (5.5.5):
     - React
-  - RNFastImage (7.0.2):
+  - RNFastImage (8.1.5):
     - React
     - SDWebImage (~> 5.0)
-    - SDWebImageWebPCoder (~> 0.2.3)
+    - SDWebImageWebPCoder (~> 0.4.1)
   - RNGestureHandler (1.6.1):
     - React
-  - RNKeychain (4.0.5):
+  - RNKeychain (6.0.0):
     - React
-  - RNReanimated (1.7.1):
+  - RNReanimated (1.8.0):
     - React
-  - RNSVG (11.0.1):
+  - RNSVG (12.1.0):
     - React
   - RNVectorIcons (6.6.0):
     - React
   - SDWebImage (5.5.2):
     - SDWebImage/Core (= 5.5.2)
   - SDWebImage/Core (5.5.2)
-  - SDWebImageWebPCoder (0.2.5):
+  - SDWebImageWebPCoder (0.4.1):
     - libwebp (~> 1.0)
-    - SDWebImage/Core (~> 5.0)
+    - SDWebImage/Core (~> 5.5)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -454,11 +454,11 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-app-auth: 4c68449fc2134de4db18b0247844770a7a958146
+  react-native-app-auth: 33fdb8dbdd61c1c4c6931eb322cb6622b3726401
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-config: 8f6b2b9e017f6a5e92a97353c768e19e67294bb1
   react-native-in-app-browser: c5ff7e659bbec8358d4b27ec691ed563fff79212
-  react-native-netinfo: 3bf235d94cc291cf0673ad9fd9eaae82f84ed8a9
+  react-native-netinfo: 4fa023c153d582aeae8435df95c9a975c5986449
   react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -470,20 +470,20 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  ReactNativeNavigation: 33657becf06c9c3a805ecb50dce8010fb887a1bb
+  ReactNativeNavigation: 667586f6924fbd09512e2933fe70497db914b758
   RealmJS: efc6149c80687ae64c040148f7c2ade335a97416
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   RNColorMatrixImageFilters: c120b5bff0d3c39f0eb3ba1751a4d70ed7f4b56a
-  RNDeviceInfo: 310c1f43d418d950a193c7650de2f9559c906048
-  RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
+  RNDeviceInfo: d2ca97023bb1c2a49cd7adb3f956e14c048ea028
+  RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
-  RNKeychain: 840f8e6f13be0576202aefcdffd26a4f54bfe7b5
-  RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
-  RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46
+  RNKeychain: bf2d7e9a0ae7a073c07770dd2aa6d11c67581733
+  RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
+  RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
-  SDWebImageWebPCoder: 947093edd1349d820c40afbd9f42acb6cdecd987
+  SDWebImageWebPCoder: 36f8f47bd9879a8aea6044765c1351120fd8e3a8
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
 PODFILE CHECKSUM: e0459aa00446185587cb487ddfd3c83a0f698641
