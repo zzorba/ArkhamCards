@@ -18,7 +18,7 @@ import { AppState, getChaosBagResults } from 'reducers';
 import { SealTokenDialogProps } from './SealTokenDialog';
 import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
-import { s } from 'styles/space';
+import space, { s } from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -198,7 +198,11 @@ class CampaignChaosBagView extends React.Component<Props, State> {
       });
     }
 
-    return <Text style={[styles.drawTokenText, typography.text]}>{ t`Tap token to draw` }</Text>;
+    return (
+      <Text style={[styles.drawTokenText, typography.text, space.paddingTopM]}>
+        { t`Tap token to draw` }
+      </Text>
+    );
   }
 
   renderSealedTokens() {
@@ -267,8 +271,12 @@ class CampaignChaosBagView extends React.Component<Props, State> {
           </View>
         </View>
         <View style={styles.header}>
-          <Text style={typography.text}>{ t`Drawn` }</Text>
-          <Text style={typography.small}>{ t`Total` } ({ chaosBagResults.totalDrawnTokens })</Text>
+          <Text style={typography.text}>
+            { t`Drawn` }
+          </Text>
+          <Text style={typography.small}>
+            { t`Total` } ({ chaosBagResults.totalDrawnTokens })
+          </Text>
         </View>
         <View style={styles.container}>
           <View style={styles.drawnTokenRow}>
@@ -279,13 +287,18 @@ class CampaignChaosBagView extends React.Component<Props, State> {
           </View>
         </View>
         <View style={styles.header}>
-          <Text style={typography.text}>{ t`Sealed Tokens` }</Text>
+          <Text style={typography.text}>
+            { t`Sealed Tokens` }
+          </Text>
         </View>
         <View style={styles.container}>
           { chaosBagResults.sealedTokens.length > 0 && <View style={styles.drawnTokenRow}>
             { this.renderSealedTokens() }
           </View> }
-          <BasicButton title={t`Seal Tokens`} onPress={this._handleSealTokensPressed} />
+          <BasicButton
+            title={t`Seal Tokens`}
+            onPress={this._handleSealTokensPressed}
+          />
         </View>
       </ScrollView>
     );
