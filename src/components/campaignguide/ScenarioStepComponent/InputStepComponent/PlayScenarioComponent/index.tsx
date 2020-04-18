@@ -110,12 +110,12 @@ export default class PlayScenarioComponent extends React.Component<Props> {
             )
           ) }
           <BasicButton
-            title={t`Chaos bag simulator`}
-            onPress={this._chaosBagSimulatorPressed}
-          />
-          <BasicButton
             title={t`Edit campaign log`}
             onPress={this._campaignLogPressed}
+          />
+          <BasicButton
+            title={t`Draw chaos tokens`}
+            onPress={this._chaosBagSimulatorPressed}
           />
           <BasicButton
             title={t`Draw random basic weakness`}

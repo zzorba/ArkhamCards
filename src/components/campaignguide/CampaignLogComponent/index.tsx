@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { flatMap, keys } from 'lodash';
+import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
+import { GuideChaosBagProps } from 'components/campaignguide/GuideChaosBagView';
 import { OddsCalculatorProps } from 'components/campaign/OddsCalculatorView';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
@@ -123,27 +124,64 @@ export default class CampaignLogComponent extends React.Component<Props> {
     });
   };
 
+  _chaosBagSimulatorPressed = () => {
+    const { componentId, campaignId, campaignLog } = this.props;
+    Navigation.push<GuideChaosBagProps>(componentId, {
+      component: {
+        name: 'Guide.ChaosBag',
+        passProps: {
+          componentId,
+          campaignId,
+          chaosBag: campaignLog.chaosBag,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Chaos Bag`,
+            },
+            backButton: {
+              title: t`Back`,
+            },
+          },
+        },
+      },
+    });
+  };
+
+  renderChaosBag() {
+    const { campaignLog, fontScale } = this.props;
+    if (!keys(campaignLog.chaosBag).length) {
+      return null;
+    }
+    const tokenCount = sum(values(campaignLog.chaosBag));
+    return (
+      <View style={styles.section}>
+        <View style={space.paddingBottomM}>
+          <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
+            { t`Chaos Bag` }{ ` (${tokenCount})` }
+          </Text>
+        </View>
+        <ChaosBagLine
+          chaosBag={campaignLog.chaosBag}
+          fontScale={fontScale}
+        />
+        <BasicButton
+          title={t`Draw chaos tokens`}
+          onPress={this._chaosBagSimulatorPressed}
+        />
+        <BasicButton
+          title={t`Odds calculator`}
+          onPress={this._oddsCalculatorPressed}
+        />
+      </View>
+    );
+  }
+
   render() {
     const { campaignGuide, campaignLog, fontScale } = this.props;
     return (
       <ScrollView>
-        { keys(campaignLog.chaosBag).length > 0 && (
-          <View style={styles.section}>
-            <View style={space.paddingBottomM}>
-              <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
-                { t`Chaos Bag` }
-              </Text>
-            </View>
-            <ChaosBagLine
-              chaosBag={campaignLog.chaosBag}
-              fontScale={fontScale}
-            />
-            <BasicButton
-              title={t`Odds Calculator`}
-              onPress={this._oddsCalculatorPressed}
-            />
-          </View>
-        ) }
+        { this.renderChaosBag() }
         { flatMap(campaignGuide.campaignLogSections(), log => {
           if (log.type === 'hidden') {
             return null;
