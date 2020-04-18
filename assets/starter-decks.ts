@@ -333,6 +333,7 @@ const starterDecks: { [investigatorId: string]: {} } = {
     '03020': 2,
     '03021': 2,
     '03022': 2,
+    '03009': 1,
   },
   // Mihn Thi Phan
   '03002': {
