@@ -239,6 +239,7 @@ export const PTC = 'ptc';
 export const RTPTC = 'rtptc';
 export const TFA = 'tfa';
 export const TCU = 'tcu';
+export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
 
@@ -252,6 +253,7 @@ export type CampaignCycleCode =
   typeof RTPTC |
   typeof TFA |
   typeof TCU |
+  typeof TDE |
   typeof TDEA |
   typeof TDEB;
 
@@ -264,6 +266,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   RTPTC,
   TFA,
   TCU,
+  TDE,
   TDEA,
   TDEB,
 ];
@@ -280,6 +283,7 @@ export const GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
 ];
 
 export const COMING_SOON_GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
+  TDE,
   TDEA,
   TDEB,
 ];
@@ -320,7 +324,14 @@ export interface Campaign {
   weaknessSet: WeaknessSet;
   campaignNotes: CampaignNotes;
   scenarioResults: ScenarioResult[];
+  // Used for Dream-Eaters and other nonsense.
+  link?: {
+    campaignIdA: number;
+    campaignIdB: number;
+  };
+  linkedCampaign?: boolean;
 }
+
 
 export interface SingleCampaign extends Campaign {
   latestScenario?: ScenarioResult;
@@ -477,6 +488,18 @@ export interface NewCampaignAction {
   weaknessSet: WeaknessSet;
   campaignLog: CustomCampaignLog;
   guided: boolean;
+}
+export const NEW_LINKED_CAMPAIGN = 'NEW_LINKED_CAMPAIGN';
+export interface NewLinkedCampaignAction {
+  type: typeof NEW_LINKED_CAMPAIGN;
+  now: Date;
+  id: number;
+  name: string;
+  weaknessSet: WeaknessSet;
+  cycleCode: CampaignCycleCode;
+  cycleCodeA: CampaignCycleCode;
+  cycleCodeB: CampaignCycleCode;
+  guided: true;
 }
 export const SET_ALL_CAMPAIGNS = 'SET_ALL_CAMPAIGNS';
 export interface SetAllCampaignsAction {
@@ -765,6 +788,7 @@ export type CampaignActions =
   ReplaceLocalDeckAction |
   CleanBrokenCampaignsAction |
   NewCampaignAction |
+  NewLinkedCampaignAction |
   UpdateCampaignAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |

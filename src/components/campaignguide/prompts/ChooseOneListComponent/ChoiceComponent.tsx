@@ -3,7 +3,6 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from 'data/scenario';
@@ -74,9 +73,14 @@ export default class ChoiceComponent extends React.Component<Props> {
     }
     if (noBullet) {
       return (
-        <SetupStepWrapper bulletType="none">
-          { this.renderTextContent() }
-        </SetupStepWrapper>
+        <View style={styles.bottomBorder}>
+          <BinaryResult
+            result={selected}
+            bulletType="none"
+          >
+            { this.renderTextContent() }
+          </BinaryResult>
+        </View>
       );
     }
     return (
@@ -119,6 +123,10 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     flexDirection: 'row',
     flex: 1,
+  },
+  bottomBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
   },
   bullet: {
     marginRight: m,

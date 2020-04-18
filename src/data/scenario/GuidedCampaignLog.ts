@@ -6,6 +6,7 @@ import {
   forEach,
   keys,
   map,
+  sortBy,
   sumBy,
   uniq,
   zip,
@@ -97,6 +98,7 @@ interface PlayingScenarioItem {
 interface ScenarioData {
   resolution?: string;
   leadInvestigator?: string;
+  targetInvestigator?: string;
   playingScenario?: PlayingScenarioItem[];
   investigatorStatus: {
     [code: string]: InvestigatorStatus;
@@ -303,6 +305,28 @@ export default class GuidedCampaignLog {
     return scenario.leadInvestigator;
   }
 
+  targetInvestigator(): string {
+    if (this.scenarioId === undefined) {
+      throw new Error('Target investigator called outside of a scenario.');
+    }
+    const scenario = this.scenarioData[this.scenarioId];
+    if (!scenario || !scenario.targetInvestigator) {
+      throw new Error('TargetInvestigator called before being set');
+    }
+    return scenario.targetInvestigator;
+  }
+
+  private leadInvestigatorChoiceSafe(): string | undefined {
+    if (this.scenarioId === undefined) {
+      return undefined;
+    }
+    const scenario = this.scenarioData[this.scenarioId];
+    if (!scenario || !scenario.leadInvestigator) {
+      return undefined;
+    }
+    return scenario.leadInvestigator;
+  }
+
   traumaAndCardData(investigator: string): TraumaAndCardData {
     return this.campaignData.investigatorData[investigator] || {};
   }
@@ -468,15 +492,19 @@ export default class GuidedCampaignLog {
     if (!playing) {
       throw new Error('Investigator codes accessed before they were set.');
     }
-    return filter(
-      map(playing, ({ investigator }) => investigator),
-      code => {
-        if (includeEliminated) {
-          return true;
+    const leadInvestigatorCode = this.leadInvestigatorChoiceSafe();
+    return sortBy(
+      filter(
+        map(playing, ({ investigator }) => investigator),
+        code => {
+          if (includeEliminated) {
+            return true;
+          }
+          const card = this.investigatorCards[code];
+          return !!card && !this.isEliminated(card);
         }
-        const card = this.investigatorCards[code];
-        return !!card && !this.isEliminated(card);
-      }
+      ),
+      code => code === leadInvestigatorCode ? 0 : 1
     );
   }
 
@@ -520,6 +548,8 @@ export default class GuidedCampaignLog {
     input?: string[]
   ): string[] {
     switch (investigator) {
+      case 'target_investigator':
+        return [this.targetInvestigator()];
       case 'lead_investigator':
         return [this.leadInvestigatorChoice()];
       case 'all':
@@ -905,6 +935,9 @@ export default class GuidedCampaignLog {
       }
       case 'lead_investigator':
         scenario.leadInvestigator = input[0];
+        break;
+      case 'target_investigator':
+        scenario.targetInvestigator = input[0];
         break;
     }
     this.scenarioData[scenarioId] = scenario;

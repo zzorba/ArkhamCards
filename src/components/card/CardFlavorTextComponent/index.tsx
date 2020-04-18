@@ -14,6 +14,7 @@ import FlavorItalicNode from './FlavorItalicNode';
 import FlavorBoldNode from './FlavorBoldNode';
 import FlavorFancyNode from './FlavorFancyNode';
 import FlavorCenterNode from './FlavorCenterNode';
+import FlavorSmallCapsNode from './FlavorSmallCapsNode';
 import FlavorRightNode from './FlavorRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
@@ -100,6 +101,17 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: FlavorRightNode,
 };
 
+const SmallCapsHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
+  order: 2,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: FlavorSmallCapsNode,
+};
+
 interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
@@ -125,6 +137,7 @@ export default function CardFlavorTextComponent(
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule,
+        smallCapsTag: SmallCapsHtmlTagRule,
       }}
       onLinkPress={onLinkPress}
       styles={{

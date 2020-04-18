@@ -1,5 +1,5 @@
 import React from 'react';
-import { keys } from 'lodash';
+import { keys, slice } from 'lodash';
 
 import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
@@ -17,8 +17,35 @@ interface Props {
 }
 
 export default class InvestigatorChoiceInputComponent extends React.Component<Props> {
+  iteration(): number {
+    const { step } = this.props;
+    if (step.id.indexOf('#') === -1) {
+      return 0;
+    }
+    const iteration = parseInt(step.id.split('#')[1], 10);
+    return iteration;
+  }
+
   render() {
     const { step, input, campaignLog } = this.props;
+    if (input.special_mode === 'sequential') {
+      const investigatorOffset = this.iteration();
+      return (
+        <InvestigatorChoicePrompt
+          id={step.id}
+          text={step.text}
+          bulletType={step.bullet_type}
+          options={investigatorChoiceInputChoices(input, campaignLog)}
+          detailed
+          investigators={slice(
+            campaignLog.investigators(false),
+            investigatorOffset,
+            investigatorOffset + 1
+          )}
+          optional={input.investigator === 'choice'}
+        />
+      );
+    }
     if (input.investigator === 'any') {
       const choice = input.choices[0];
       return (
@@ -30,10 +57,10 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
         />
       );
     }
-    if (
-      (input.investigator === 'all' || input.investigator === 'choice') &&
-      input.choices.length === 1
-    ) {
+    if (input.choices.length === 1 && (
+      input.investigator === 'all' ||
+      input.investigator === 'choice'
+    )) {
       const choices = investigatorChoiceInputChoices(input, campaignLog);
       const choice = input.choices[0];
       return (

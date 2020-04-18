@@ -2,14 +2,15 @@ import React from 'react';
 import { upperFirst } from 'lodash';
 import { t } from 'ttag';
 
-import SetupStepWrapper from '../../SetupStepWrapper';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
+import BinaryResult from 'components/campaignguide/BinaryResult';
+import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
+import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
+import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import {
   BranchStep,
   CampaignDataCondition,
 } from 'data/scenario/types';
-import { campaignDataScenarioConditionResult } from 'data/scenario/conditionHelper';
+import { campaignDataScenarioConditionResult, campaignDataInvestigatorConditionResult } from 'data/scenario/conditionHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
@@ -49,8 +50,19 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
                 </SetupStepWrapper>
               );
             }
-            case 'chaos_bag':
             case 'investigator':
+              if (step.text) {
+                const result = campaignDataInvestigatorConditionResult(condition, campaignLog);
+                return (
+                  <BinaryResult
+                    bulletType={step.bullet_type}
+                    prompt={step.text}
+                    result={result.decision}
+                  />
+                );
+              }
+              return null;
+            case 'chaos_bag':
               // We always write these out.
               return null;
           }

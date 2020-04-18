@@ -4,6 +4,7 @@ import { ThunkAction } from 'redux-thunk';
 import {
   SET_ALL_CAMPAIGNS,
   NEW_CAMPAIGN,
+  NEW_LINKED_CAMPAIGN,
   DELETE_CAMPAIGN,
   UPDATE_CAMPAIGN,
   UPDATE_CHAOS_BAG_RESULTS,
@@ -24,6 +25,7 @@ import {
   AddCampaignScenarioResultAction,
   EditCampaignScenarioResultAction,
   NewCampaignAction,
+  NewLinkedCampaignAction,
   UpdateCampaignAction,
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
@@ -81,6 +83,27 @@ export function addInvestigator(
   };
 }
 
+
+export function newLinkedCampaign(
+  id: number,
+  name: string,
+  cycleCode: CampaignCycleCode,
+  cycleCodeA: CampaignCycleCode,
+  cycleCodeB: CampaignCycleCode,
+  weaknessSet: WeaknessSet
+): NewLinkedCampaignAction {
+  return {
+    type: NEW_LINKED_CAMPAIGN,
+    id,
+    name,
+    cycleCode,
+    cycleCodeA,
+    cycleCodeB,
+    weaknessSet,
+    guided: true,
+    now: new Date(),
+  };
+}
 
 export function newCampaign(
   id: number,

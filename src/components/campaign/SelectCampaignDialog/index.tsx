@@ -11,13 +11,23 @@ import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
-import { CUSTOM, GUIDED_CAMPAIGNS, COMING_SOON_GUIDED_CAMPAIGNS, ALL_CAMPAIGNS, TDEA, TDEB, CampaignCycleCode } from 'actions/types';
+import {
+  CUSTOM,
+  GUIDED_CAMPAIGNS,
+  COMING_SOON_GUIDED_CAMPAIGNS,
+  ALL_CAMPAIGNS,
+  TDE,
+  TDEA,
+  TDEB,
+  CampaignCycleCode,
+} from 'actions/types';
 import CycleItem from './CycleItem';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { campaignName } from '../constants';
 import { NavigationProps } from 'components/nav/types';
 import { getPacksInCollection, AppState } from 'reducers';
 
+const INCLUDE_DREAM_EATERS = false;
 export interface SelectCampagaignProps {
   guided: boolean;
   campaignChanged: (packCode: CampaignCycleCode, text: string) => void;
@@ -63,7 +73,23 @@ class SelectCampaignDialog extends React.Component<Props> {
     });
   };
 
-  renderCampaign(packCode: CampaignCycleCode, available: boolean) {
+  campaignDescription(packCode: CampaignCycleCode): string | undefined {
+    switch (packCode) {
+      case TDE:
+        return t`Campaign A and Campaign B\nEight-part campaign`;
+      case TDEA:
+        return t`Campaign A\nFour-part campaign`;
+      case TDEB:
+        return t`Campaign B\nFour-part campaign`;
+      default:
+        return undefined;
+    }
+  }
+
+  renderCampaign(
+    packCode: CampaignCycleCode,
+    available: boolean
+  ) {
     const { fontScale } = this.props;
     return (
       <CycleItem
@@ -72,6 +98,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         packCode={packCode}
         onPress={this._onPress}
         text={campaignName(packCode) || t`Custom`}
+        description={!available ? t`Guide not yet available` : this.campaignDescription(packCode)}
         disabled={!available}
       />
     );
@@ -83,9 +110,12 @@ class SelectCampaignDialog extends React.Component<Props> {
       guided,
     } = this.props;
     const partitionedCampaigns = partition(
-      guided ? GUIDED_CAMPAIGNS : ALL_CAMPAIGNS,
+      guided ? [
+        ...GUIDED_CAMPAIGNS,
+        ...(INCLUDE_DREAM_EATERS ? COMING_SOON_GUIDED_CAMPAIGNS : []),
+      ] : ALL_CAMPAIGNS,
       pack_code => (in_collection[pack_code] || (
-        in_collection.tde && (pack_code === TDEA || pack_code === TDEB)))
+        in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
     );
     const myCampaigns = partitionedCampaigns[0];
     const otherCampaigns = partitionedCampaigns[1];
@@ -106,7 +136,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         <View style={styles.button}>
           <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
-        { guided && (
+        { guided && !INCLUDE_DREAM_EATERS && (
           <>
             <BasicSectionHeader title={t`Coming Soon`} />
             { map(COMING_SOON_GUIDED_CAMPAIGNS, pack_code => this.renderCampaign(pack_code, false)) }

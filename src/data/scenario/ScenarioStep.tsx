@@ -21,6 +21,7 @@ import {
   Effect,
   EffectsWithInput,
 } from 'data/scenario/types';
+import { getSpecialEffectChoiceList } from './effectHelper';
 import { investigatorChoiceInputChoices, chooseOneInputChoices } from 'data/scenario/inputHelper';
 import { conditionResult } from 'data/scenario/conditionHelper';
 import ScenarioGuide from 'data/scenario/ScenarioGuide';
@@ -62,41 +63,13 @@ export default class ScenarioStep {
     );
   }
 
-  private getSpecialEffectChoiceList(effect: Effect): string | undefined {
-    switch (effect.type) {
-      case 'add_card':
-        if (effect.investigator === 'lead_investigator' && effect.optional) {
-          return `${this.step.id}_investigator`;
-        }
-        // Intentional fall-through
-        /* eslint-disable no-fallthrough */
-      case 'remove_card':
-        if (
-          effect.investigator === 'choice' ||
-          effect.investigator === 'any'
-        ) {
-          return `${this.step.id}_investigator`;
-        }
-        return undefined;
-      case 'trauma':
-        if (effect.mental_or_physical) {
-          return `${this.step.id}_trauma`;
-        }
-        return undefined;
-      case 'add_weakness':
-        return `${this.step.id}_weakness`;
-      default:
-        return undefined;
-    }
-  }
-
   nextCampaignLog(
     scenarioState: ScenarioStateHelper
   ): GuidedCampaignLog | undefined {
     if (this.step.type === 'effects') {
       const flatEffects = flatMap(this.step.effectsWithInput, effects => effects.effects);
       const specialInputs = flatMap(flatEffects, effect => {
-        const specialInput = this.getSpecialEffectChoiceList(effect);
+        const specialInput = getSpecialEffectChoiceList(this.step.id, effect);
         if (specialInput) {
           return [specialInput];
         }
@@ -114,7 +87,7 @@ export default class ScenarioStep {
         const result: EffectsWithInput[] = [];
         const [specialEffects, normalEffects] = partition(
           effects.effects,
-          effect => !!this.getSpecialEffectChoiceList(effect)
+          effect => !!getSpecialEffectChoiceList(this.step.id, effect)
         );
         if (normalEffects.length) {
           result.push({
@@ -123,7 +96,7 @@ export default class ScenarioStep {
           });
         }
         forEach(specialEffects, specialEffect => {
-          const input = this.getSpecialEffectChoiceList(specialEffect);
+          const input = getSpecialEffectChoiceList(this.step.id, specialEffect);
           if (!input) {
             // Impossible
             return;
@@ -345,6 +318,7 @@ export default class ScenarioStep {
   ): ScenarioStep | undefined {
     const input = step.input;
     const parts = step.id.split('#');
+    const baseStepId = parts[0];
     const nextIteration = parts.length > 1 ? parseInt(parts[1], 10) + 1 : 1;
     switch (input.type) {
       case 'text_box': {
@@ -545,6 +519,15 @@ export default class ScenarioStep {
         if (choices === undefined) {
           return undefined;
         }
+        let followOnStepIds: string[] = [];
+        if (input.special_mode === 'sequential') {
+          // We might need to repeat the step N times
+          const investigators = this.campaignLog.investigators(false);
+          if (nextIteration < investigators.length) {
+            // Nothing special needed for solo mode.
+            followOnStepIds = [`${baseStepId}#${nextIteration}`];
+          }
+        }
         const {
           effectsWithInput,
           stepIds,
@@ -554,7 +537,7 @@ export default class ScenarioStep {
         );
         return this.maybeCreateEffectsStep(
           step.id,
-          [...stepIds, ...this.remainingStepIds],
+          [...stepIds, ...followOnStepIds, ...this.remainingStepIds],
           effectsWithInput
         );
       }

@@ -201,7 +201,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
       );
     }
     if (q.exclude_code) {
-      const codeParts = map(q.exclude_code, code => t`(code != '${code}')`).join(' AND ');
+      const codeParts = map(q.exclude_code, code => `(code != '${code}')`).join(' AND ');
       queryParts.push(`(${codeParts})`);
     }
     return `(${queryParts.join(' AND ')})`;

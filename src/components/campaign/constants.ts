@@ -11,6 +11,7 @@ import {
   RTPTC,
   TFA,
   TCU,
+  TDE,
   TDEA,
   TDEB,
   CampaignDifficulty,
@@ -45,6 +46,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case RTPTC: return t`Return to The Path to Carcosa`;
     case TFA: return t`The Forgotten Age`;
     case TCU: return t`The Circle Undone`;
+    case TDE: return t`The Dream-Eaters`;
     case TDEA: return t`The Dream-Quest`;
     case TDEB: return t`The Web of Dreams`;
     case CUSTOM: return null;
@@ -225,6 +227,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Weaver of the Cosmos`, code: 'weaver_of_the_cosmos', pack_code: 'woc' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
+    case TDE: return [];
     case CUSTOM: return [];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -243,6 +246,7 @@ export function campaignNames() {
     ptc: t`The Path to Carcosa`,
     rtptc: t`Return to The Path to Carcosa`,
     tfa: t`The Forgotten Age`,
+    tde: t`The Dream-Eaters`,
     tdea: t`The Dream-Quest`,
     tdeb: t`The Web of Dreams`,
     tcu: t`The Circle Undone`,
@@ -258,6 +262,7 @@ export const CAMPAIGN_COLORS = {
   rtptc: '#cc990033',
   tfa: '#33660033',
   tcu: '#00006622',
+  tde: '#00006622',
   tdea: '#00006622',
   tdeb: '#00006622',
   custom: '#00006622',
@@ -316,6 +321,8 @@ export function getCampaignLog(
           t`Missing Persons - Valentino Rivas`,
         ],
       };
+    case TDE:
+      return {};
     case TDEA:
       return {
         sections: [
@@ -458,6 +465,8 @@ export function getChaosBag(
       return TFA_BAG[difficulty];
     case TCU:
       return TCU_BAG[difficulty];
+    case TDE:
+      return {};
     case TDEA:
       return TDEA_BAG[difficulty];
     case TDEB:

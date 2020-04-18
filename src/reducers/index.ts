@@ -87,7 +87,10 @@ const allDecksSelector = (state: AppState) => state.decks.all;
 export const getCampaigns = createSelector(
   allCampaignsSelector,
   allCampaigns => sortBy(
-    values(allCampaigns),
+    filter(
+      values(allCampaigns),
+      campaign => !campaign.linkedCampaign
+    ),
     campaign => campaign.lastUpdated ? -new Date(campaign.lastUpdated).getTime() : 0
   )
 );

@@ -178,7 +178,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
   }
 
   render() {
-    const { campaignGuide, campaignLog, fontScale } = this.props;
+    const { campaignGuide } = this.props;
     return (
       <ScrollView>
         { this.renderChaosBag() }

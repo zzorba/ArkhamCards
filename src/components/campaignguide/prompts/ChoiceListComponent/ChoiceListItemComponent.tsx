@@ -56,7 +56,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
           ]}>
             <View>
               <Text style={[
-                typography.text,
+                typography.mediumGameFont,
                 styles.nameText,
               ]}>
                 { name }
@@ -103,5 +103,8 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
   },
 });

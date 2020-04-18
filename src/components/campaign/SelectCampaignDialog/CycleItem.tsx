@@ -5,7 +5,6 @@ import {
   View,
   Text,
 } from 'react-native';
-import { t } from 'ttag';
 
 import { CampaignCycleCode } from 'actions/types';
 import EncounterIcon from 'icons/EncounterIcon';
@@ -16,6 +15,7 @@ interface Props {
   fontScale: number;
   packCode: CampaignCycleCode;
   text: string;
+  description?: string;
   disabled: boolean;
   onPress: (packCode: CampaignCycleCode, text: string) => void;
 }
@@ -31,6 +31,7 @@ export default class CycleItem extends React.Component<Props> {
       text,
       fontScale,
       disabled,
+      description,
     } = this.props;
     return (
       <View style={[styles.campaignRow, disabled ? styles.disabled : {}]}>
@@ -45,9 +46,9 @@ export default class CycleItem extends React.Component<Props> {
           <Text style={[typography.mediumGameFont, styles.campaignText]}>
             { text }
           </Text>
-          { disabled && (
+          { !!description && (
             <Text style={[typography.text, styles.campaignText]}>
-              { t`Guide not yet available` }
+              { description }
             </Text>
           ) }
         </View>

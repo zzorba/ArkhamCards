@@ -16,6 +16,9 @@ import BasicButton from 'components/core/BasicButton';
 import {
   CORE,
   CUSTOM,
+  TDE,
+  TDEA,
+  TDEB,
   CampaignCycleCode,
   CampaignDifficulty,
   CustomCampaignLog,
@@ -41,7 +44,7 @@ import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from 'components/weakness/WeaknessSetPackChooserComponent';
 import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import { getNextCampaignId, AppState } from 'reducers';
-import { newCampaign } from '../actions';
+import { newCampaign, newLinkedCampaign } from 'components/campaign/actions';
 import { NavigationProps } from 'components/nav/types';
 import Card from 'data/Card';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
@@ -71,6 +74,14 @@ interface ReduxActionProps {
     campaignLog: CustomCampaignLog,
     weaknessSet: WeaknessSet,
     guided: boolean
+  ) => void;
+  newLinkedCampaign: (
+    id: number,
+    name: string,
+    cycleCode: CampaignCycleCode,
+    cycleCodeA: CampaignCycleCode,
+    cycleCodeB: CampaignCycleCode,
+    weaknessSet: WeaknessSet
   ) => void;
 }
 
@@ -339,6 +350,7 @@ class NewCampaignView extends React.Component<Props, State> {
     const {
       nextId,
       newCampaign,
+      newLinkedCampaign,
       componentId,
       guided,
     } = this.props;
@@ -351,6 +363,20 @@ class NewCampaignView extends React.Component<Props, State> {
       weaknessPacks,
       weaknessAssignedCards,
     } = this.state;
+    if (campaignCode === TDE) {
+      newLinkedCampaign(
+        nextId,
+        name || this.placeholderName(),
+        TDE,
+        TDEA,
+        TDEB,
+        {
+          packCodes: weaknessPacks,
+          assignedCards: weaknessAssignedCards,
+        }
+      );
+      return;
+    }
     // Save to redux.
     newCampaign(
       nextId,
@@ -663,22 +689,24 @@ class NewCampaignView extends React.Component<Props, State> {
             { this.renderWeaknessSetSection() }
           </View>
           { this.renderCampaignLogSection() }
-          <View style={styles.underline}>
-            <Text style={[typography.small, styles.margin]}>
-              { t`INVESTIGATORS` }
-            </Text>
-            <DeckSelector
-              componentId={componentId}
-              fontScale={fontScale}
-              campaignId={nextId}
-              deckIds={deckIds}
-              investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
-              deckAdded={this._deckAdded}
-              deckRemoved={this._deckRemoved}
-              investigatorAdded={guided ? this._investigatorAdded : undefined}
-              investigatorRemoved={guided ? this._investigatorRemoved : undefined}
-            />
-          </View>
+          { campaignCode !== TDE && (
+            <View style={styles.underline}>
+              <Text style={[typography.small, styles.margin]}>
+                { t`INVESTIGATORS` }
+              </Text>
+              <DeckSelector
+                componentId={componentId}
+                fontScale={fontScale}
+                campaignId={nextId}
+                deckIds={deckIds}
+                investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
+                deckAdded={this._deckAdded}
+                deckRemoved={this._deckRemoved}
+                investigatorAdded={guided ? this._investigatorAdded : undefined}
+                investigatorRemoved={guided ? this._investigatorRemoved : undefined}
+              />
+            </View>
+          ) }
           <BasicButton
             disabled={campaignCode === CUSTOM && !name}
             title={t`Create Campaign`}
@@ -702,6 +730,7 @@ function mapStateToProps(state: AppState): ReduxProps {
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     newCampaign,
+    newLinkedCampaign,
   }, dispatch);
 }
 

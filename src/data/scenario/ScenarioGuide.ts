@@ -49,7 +49,7 @@ export default class ScenarioGuide {
     return this.scenario.scenario_name;
   }
 
-  scenarioType(): 'scenario' | 'epilogue' | 'interlude' {
+  scenarioType(): 'scenario' | 'epilogue' | 'interlude' | 'placeholder' {
     return this.scenario.type || 'scenario';
   }
 

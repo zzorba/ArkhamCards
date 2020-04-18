@@ -56,7 +56,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
         } else {
           const personalized = props.options.perCode[item.code];
           if (personalized && personalized.length) {
-            selectedChoice[item.code] = personalized[0];
+            selectedChoice[item.code] = 0;
           }
         }
       });

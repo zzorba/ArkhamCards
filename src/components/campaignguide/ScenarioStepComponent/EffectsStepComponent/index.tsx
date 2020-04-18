@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { map } from 'lodash';
+import { flatMap, map } from 'lodash';
 
 import BorderWrapper from 'components/campaignguide/BorderWrapper';
 import ScenarioStepComponent from 'components/campaignguide/ScenarioStepComponent';
@@ -13,6 +13,9 @@ import AddCardEffectComponent from './AddCardEffectComponent';
 import RemoveCardEffectComponent from './RemoveCardEffectComponent';
 import TraumaEffectComponent from './TraumaEffectComponent';
 import { EffectsStep, Effect } from 'data/scenario/types';
+import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import { ProcessedScenario } from 'data/scenario';
+import { getSpecialEffectChoiceList } from 'data/scenario/effectHelper';
 import space from 'styles/space';
 
 interface Props {
@@ -27,6 +30,8 @@ export default class EffectsStepComponent extends React.Component<Props> {
   renderEffect(
     id: string,
     effect: Effect,
+    processedScenario: ProcessedScenario,
+    scenarioState: ScenarioStateHelper,
     border: boolean,
     input?: string[],
     numberInput?: number[],
@@ -111,32 +116,28 @@ export default class EffectsStepComponent extends React.Component<Props> {
       case 'story_step': {
         return (
           <View style={border ? space.paddingSideL : undefined}>
-            <ScenarioGuideContext.Consumer>
-              { ({ processedScenario, scenarioState }: ScenarioGuideContextType) => (
-                map(
-                  processedScenario.scenarioGuide.expandSteps(
-                    effect.steps,
-                    scenarioState,
-                    this.props.campaignLog
-                  ),
-                  step => (
-                    <ScenarioStepComponent
-                      key={step.step.id}
-                      componentId={componentId}
-                      fontScale={fontScale}
-                      width={width}
-                      step={step}
-                      border={border}
-                    />
-                  )
-                ))
-              }
-            </ScenarioGuideContext.Consumer>
+            { map(
+              processedScenario.scenarioGuide.expandSteps(
+                effect.steps,
+                scenarioState,
+                this.props.campaignLog
+              ),
+              step => (
+                <ScenarioStepComponent
+                  key={step.step.id}
+                  componentId={componentId}
+                  fontScale={fontScale}
+                  width={width}
+                  step={step}
+                  border={border}
+                />
+              )
+            ) }
           </View>
         );
       }
-      case 'earn_xp':
       case 'campaign_data':
+      case 'earn_xp':
       case 'replace_card':
       case 'scenario_data':
       default: {
@@ -148,24 +149,47 @@ export default class EffectsStepComponent extends React.Component<Props> {
 
   render() {
     const { step, width } = this.props;
-    return map(step.effectsWithInput, (effectsWithInput, outerIdx) => (
-      <BorderWrapper
-        key={`${step.id}_${outerIdx}`}
-        width={width}
-        border={!!effectsWithInput.border}
-      >
-        { map(effectsWithInput.effects, (effect, innerIdx) => (
-          <View key={`${step.id}_${outerIdx}_${innerIdx}`}>
-            { this.renderEffect(
-              step.id,
-              effect,
-              !!effectsWithInput.border,
-              effectsWithInput.input,
-              effectsWithInput.numberInput
-            ) }
-          </View>
-        )) }
-      </BorderWrapper>
-    ));
+    let foundSpecialEffect = false;
+    return (
+      <ScenarioGuideContext.Consumer>
+        { ({ processedScenario, scenarioState }: ScenarioGuideContextType) => (
+          flatMap(step.effectsWithInput, (effectsWithInput, outerIdx) => {
+            if (foundSpecialEffect) {
+              return null;
+            }
+            return (
+              <BorderWrapper
+                key={`${step.id}_${outerIdx}`}
+                width={width}
+                border={!!effectsWithInput.border}
+              >
+                { flatMap(effectsWithInput.effects, (effect, innerIdx) => {
+                  if (foundSpecialEffect) {
+                    return null;
+                  }
+                  const specialEffectChoice = getSpecialEffectChoiceList(step.id, effect);
+                  if (specialEffectChoice && scenarioState.stringChoices(specialEffectChoice) === undefined) {
+                    foundSpecialEffect = true;
+                  }
+                  return (
+                    <View key={`${step.id}_${outerIdx}_${innerIdx}`}>
+                      { this.renderEffect(
+                        step.id,
+                        effect,
+                        processedScenario,
+                        scenarioState,
+                        !!effectsWithInput.border,
+                        effectsWithInput.input,
+                        effectsWithInput.numberInput
+                      ) }
+                    </View>
+                  );
+                }) }
+              </BorderWrapper>
+            );
+          })
+        ) }
+      </ScenarioGuideContext.Consumer>
+    );
   }
 }

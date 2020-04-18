@@ -47,12 +47,14 @@ export type Effect =
   | FreeformCampaignLogEffect;
 export type InvestigatorSelector =
   | "lead_investigator"
+  | "target_investigator"
   | "all"
   | "any"
   | "choice"
   | "defeated"
   | "not_resigned"
   | "$input_value";
+export type BulletType = "none" | "small";
 export type CampaignDataEffect =
   | CampaignDataResultEffect
   | CampaignDataDifficultyEffect
@@ -96,7 +98,6 @@ export type ScenarioDataCondition =
   | ScenarioDataInvestigatorStatusCondition
   | ScenarioDataPlayerCountCondition;
 export type CheckSuppliesCondition = CheckSuppliesAllCondition | CheckSuppliesAnyCondition;
-export type BulletType = "none" | "small";
 export type Input =
   | UpgradeDecksInput
   | CardChoiceInput
@@ -193,7 +194,7 @@ export interface AddCardEffect {
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
-  investigator: "all" | "$input_value";
+  investigator: "all" | "$input_value" | "target_investigator";
   weakness_traits: string[];
   select_traits?: boolean;
 }
@@ -209,13 +210,14 @@ export interface ReplaceCardEffect {
 }
 export interface TraumaEffect {
   type: "trauma";
-  investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value";
+  investigator: "all" | "lead_investigator" | "target_investigator" | "defeated" | "not_resigned" | "$input_value";
   mental?: number;
   physical?: number;
   mental_or_physical?: number;
   killed?: boolean;
   insane?: boolean;
   hidden?: boolean;
+  bullet_type?: BulletType;
 }
 export interface CampaignLogEffect {
   type: "campaign_log";
@@ -258,7 +260,7 @@ export interface CampaignDataNextScenarioEffect {
 }
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
-  setting: "lead_investigator" | "playing_scenario";
+  setting: "lead_investigator" | "target_investigator" | "playing_scenario";
   investigator: "$input_value";
 }
 export interface ScenarioDataInvestigatorStatusEffect {
@@ -672,7 +674,7 @@ export interface Scenario {
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];
-  type?: "interlude" | "epilogue";
+  type?: "interlude" | "epilogue" | "placeholder";
 }
 export interface Resolution {
   id: string;

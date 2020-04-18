@@ -1170,6 +1170,298 @@
     "supplies": []
   },
   {
+    "campaignId": "tdea",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "black_cat_at_your_side",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_at_your_side_2",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_delivered_news",
+            "text": "the black cat delivered news of your plight."
+          },
+          {
+            "id": "black_cat_has_a_hunch",
+            "text": "the black cat has a hunch."
+          },
+          {
+            "id": "black_cat_is_searching_for_the_truth",
+            "text": "the black cat is searching for the truth."
+          },
+          {
+            "id": "black_cat_shared_knowledge_of_the_dreamlands",
+            "text": "the black cat shared knowledge of the Dreamlands."
+          },
+          {
+            "id": "black_cat_spoke_of_atlach_nacha",
+            "text": "the black cat spoke of Atlach-Nacha."
+          },
+          {
+            "id": "black_cat_spoke_of_nyarlathotep",
+            "text": "the black cat spoke of Nyarlathotep."
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "the black cat warned the others."
+          },
+          {
+            "id": "broken_the_laws_of_ulthar",
+            "text": "#name# has broken the law of Ulthar."
+          },
+          {
+            "id": "captured",
+            "text": "#name# was captured."
+          },
+          {
+            "id": "carried_to_the_cold_wastes",
+            "text": "the investigators were carried to the Cold Wastes."
+          },
+          {
+            "id": "cats_collected_their_tribute",
+            "text": "the cats collected their tribute from the Zoogs."
+          },
+          {
+            "id": "dreamers_awoke",
+            "text": "the dreamers awoke."
+          },
+          {
+            "id": "dreamers_banished_nyarlathotep",
+            "text": "the dreamers banisihed Nyarlathotep."
+          },
+          {
+            "id": "dreamers_escaped_nyarlathoteps_grasp",
+            "text": "the dreamers escaped from Nyarlathotep's grasp."
+          },
+          {
+            "id": "dreamers_know_of_another_path",
+            "text": "the dreamers know of another path."
+          },
+          {
+            "id": "dreamers_stayed_in_dreamlands_forever",
+            "text": "the dreamers stayed in the Dreamlands forever."
+          },
+          {
+            "id": "dreamers_traveled_beneath_the_monastery",
+            "text": "the dreamers traveled beneath the monasteryr."
+          },
+          {
+            "id": "forced_way_into_temple",
+            "text": "the investigators forced their way into the temple."
+          },
+          {
+            "id": "nyarlathoteps_invasion_has_begun",
+            "text": "Nyarlathotep's invasion has begun."
+          },
+          {
+            "id": "parleyed_with_zoogs",
+            "text": "the investigators parleyed with the Zoogs."
+          },
+          {
+            "id": "possess_silver_key",
+            "text": "the investigators possess the Silver Key."
+          },
+          {
+            "id": "randolph_did_not_survive_the_voyage",
+            "text": "Randolph Carter did not survive the voyage."
+          },
+          {
+            "id": "randolph_eluded_capture",
+            "text": "Randolph eluded capture."
+          },
+          {
+            "id": "randolph_survived_the_voyage",
+            "text": "Randolph survived the voyage."
+          },
+          {
+            "id": "randolph_was_captured",
+            "text": "Randolph was captured."
+          },
+          {
+            "id": "saved_by_randolph_carter",
+            "text": "the investigators were saved by Randolph Carter."
+          },
+          {
+            "id": "strayed_from_the_path",
+            "text": "the dreamers strayed from the path."
+          },
+          {
+            "id": "threaten_black_cat",
+            "text": "okay, fine, have it your way then."
+          },
+          {
+            "id": "travelled_to_the_cold_wastes",
+            "text": "the investigators traveled to the Cold Wastes."
+          },
+          {
+            "id": "virgil_was_captured",
+            "text": "Virgil was captured."
+          },
+          {
+            "id": "you_asked_for_it",
+            "text": "you asked for it."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "broke_cat_law",
+            "text": "dummy"
+          },
+          {
+            "id": "everyone_captured",
+            "text": "dummy"
+          },
+          {
+            "id": "forbidden_lands",
+            "text": "dummy"
+          },
+          {
+            "id": "grand_design",
+            "text": "dummy"
+          },
+          {
+            "id": "half_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "interconnected_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "minar",
+            "text": "dummy"
+          },
+          {
+            "id": "oriab",
+            "text": "dummy"
+          },
+          {
+            "id": "someone_escaped",
+            "text": "dummy"
+          },
+          {
+            "id": "timeless_realm",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tdeb",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "black_cat_at_your_side",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_at_your_side_2",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_has_a_hunch",
+            "text": "the black cat has a hunch."
+          },
+          {
+            "id": "black_cat_is_searching_for_the_truth",
+            "text": "the black cat is searching for the truth."
+          },
+          {
+            "id": "black_cat_knows_the_truth",
+            "text": "the black cat knows the truth."
+          },
+          {
+            "id": "black_cat_requested_aid",
+            "text": "the black cat requested aid from the others."
+          },
+          {
+            "id": "black_cat_shared_knowledge_of_the_underworld",
+            "text": "the black cat shared knowledge of the Underworld."
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "the black cat warned the others."
+          },
+          {
+            "id": "doctor_is_alive",
+            "text": "Dr. Maheswaran is alive."
+          },
+          {
+            "id": "doctor_is_missing",
+            "text": "Dr. Maheswaran is missing."
+          },
+          {
+            "id": "doctor_joined_investigation",
+            "text": "Dr. Maheswaran joined the investigation."
+          },
+          {
+            "id": "doctor_stayed_with_patients",
+            "text": "Dr. Maheswaran stayed with her patients."
+          },
+          {
+            "id": "doctors_fate_unknown",
+            "text": "Dr. Maheswaran’s fate is unknown."
+          },
+          {
+            "id": "on_your_own",
+            "text": "you are on your own."
+          },
+          {
+            "id": "possess_silver_key",
+            "text": "the investigators possess the Silver Key."
+          },
+          {
+            "id": "randolph_did_not_survive_descent",
+            "text": "Randolph did not survive the descent."
+          },
+          {
+            "id": "randolph_escaped_hospital_alone",
+            "text": "Randolph escaped the hospital on his own."
+          },
+          {
+            "id": "randolph_escaped_hospital_with_investigators",
+            "text": "Randolph escaped the hospital with the investigators."
+          },
+          {
+            "id": "randolph_survived_descent",
+            "text": "Randolph survived the descent."
+          },
+          {
+            "id": "you_asked_for_it",
+            "text": "you asked for it."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "half_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "interconnected_campaign",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
     "campaignId": "tfa",
     "sections": [
       {

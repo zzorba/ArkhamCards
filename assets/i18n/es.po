@@ -3408,6 +3408,7 @@ msgid "No one"
 msgstr ""
 
 #: src/components/campaignguide/prompts/CardChoicePrompt.tsx:219
+#, javascript-format
 msgid "(code == '${ code }')"
 msgstr ""
 
@@ -3914,11 +3915,6 @@ msgstr ""
 
 #: src/components/campaignguide/prompts/CardChoicePrompt.tsx:174
 msgid "Choose additional card"
-msgstr ""
-
-#: src/components/campaignguide/prompts/CardChoicePrompt.tsx:204
-#, javascript-format
-msgid "(code != '${ code }')"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioView/index.tsx:130

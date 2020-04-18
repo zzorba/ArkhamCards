@@ -1,8 +1,10 @@
 import { find, filter, forEach, map, uniq } from 'lodash';
+import { t } from 'ttag';
 
 import {
   LOGOUT,
   NEW_CAMPAIGN,
+  NEW_LINKED_CAMPAIGN,
   UPDATE_CAMPAIGN,
   CAMPAIGN_ADD_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
@@ -14,6 +16,8 @@ import {
   REPLACE_LOCAL_DECK,
   NEW_CHAOS_BAG_RESULTS,
   Campaign,
+  CampaignCycleCode,
+  WeaknessSet,
   CampaignActions,
   ChaosBagResults,
 } from 'actions/types';
@@ -31,6 +35,38 @@ const DEFAULT_CAMPAIGNS_STATE: CampaignsState = {
   all: {},
   chaosBagResults: {},
 };
+
+function newBlankGuidedCampaign(
+  id: number,
+  name: string,
+  cycleCode: CampaignCycleCode,
+  weaknessSet: WeaknessSet,
+  now: Date
+): Campaign {
+  return {
+    id,
+    name,
+    cycleCode,
+    weaknessSet,
+    lastUpdated: now,
+    guided: true,
+    guideVersion: -1,
+    showInterludes: true,
+    chaosBag: {},
+    campaignNotes: {
+      sections: [],
+      counts: [],
+      investigatorNotes: {
+        sections: [],
+        counts: [],
+      },
+    },
+    baseDeckIds: [],
+    nonDeckInvestigators: [],
+    investigatorData: {},
+    scenarioResults: [],
+  };
+}
 
 export default function(
   state: CampaignsState = DEFAULT_CAMPAIGNS_STATE,
@@ -69,6 +105,50 @@ export default function(
       ...state,
       all: newCampaigns,
       chaosBagResults: newChaosBags,
+    };
+  }
+  if (action.type === NEW_LINKED_CAMPAIGN) {
+    const newCampaignA = newBlankGuidedCampaign(
+      action.id + 1,
+      t`${action.name} (Campaign A)`,
+      action.cycleCodeA,
+      action.weaknessSet,
+      action.now,
+    );
+    newCampaignA.linkedCampaign = true;
+    const newCampaignB = newBlankGuidedCampaign(
+      action.id + 2,
+      t`${action.name} (Campaign B)`,
+      action.cycleCodeB,
+      action.weaknessSet,
+      action.now
+    );
+    newCampaignB.linkedCampaign = true;
+    const newCampaign = newBlankGuidedCampaign(
+      action.id,
+      action.name,
+      action.cycleCode,
+      action.weaknessSet,
+      action.now
+    );
+    newCampaign.link = {
+      campaignIdA: newCampaignA.id,
+      campaignIdB: newCampaignB.id,
+    };
+    return {
+      ...state,
+      all: {
+        ...state.all,
+        [newCampaign.id]: newCampaign,
+        [newCampaignA.id]: newCampaignA,
+        [newCampaignB.id]: newCampaignB,
+      },
+      chaosBagResults: {
+        ...state.chaosBagResults || {},
+        [newCampaign.id]: NEW_CHAOS_BAG_RESULTS,
+        [newCampaignA.id]: NEW_CHAOS_BAG_RESULTS,
+        [newCampaignB.id]: NEW_CHAOS_BAG_RESULTS,
+      },
     };
   }
   if (action.type === NEW_CAMPAIGN) {
