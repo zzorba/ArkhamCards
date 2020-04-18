@@ -1,6 +1,7 @@
 import React from 'react';
 import { map } from 'lodash';
 import {
+  BackHandler,
   Platform,
   Text,
   TouchableOpacity,
@@ -28,6 +29,19 @@ interface OwnProps {
 type Props = OwnProps & DimensionsProps;
 
 class DialogPicker extends React.Component<Props> {
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._handleBackPress);
+  }
+
+  _handleBackPress = () => {
+    this._hide();
+    return true;
+  };
+
   _onPress = (option: string) => {
     const {
       componentId,
