@@ -1,6 +1,6 @@
 declare module 'react-native-settings-components' {
   import React, { ReactNode } from 'react';
-  import { TextProps, TextStyle, SwitchProps, ViewProps, ViewStyle } from 'react-native';
+  import { AlertType, TextProps, TextStyle, SwitchProps, ViewProps, ViewStyle } from 'react-native';
   interface SettingsCategoryHeaderProps {
     container?: React.ReactNode;
     containerStyle?: ViewStyle;
@@ -105,5 +105,32 @@ declare module 'react-native-settings-components' {
 
   }
 
-  export { SettingsButton, SettingsSwitch, SettingsCategoryHeader, SettingsPicker };
+  interface SettingsEditTextProps<T> {
+    containerProps?: ViewProps;
+    containerStyle?: ViewStyle;
+    disabledOverlayStyle?: ViewStyle;
+    titleProps?: TextProps;
+    titleStyle?: TextStyle;
+    title: string;
+    descriptionProps?: TextProps;
+    descriptionStyle?: TextStyle;
+    description?: string;
+    valueProps?: ViewProps;
+    valueStyle?: TextStyle;
+    value?: T;
+    valuePlaceholder?: string;
+    valueFormat?: (value: T) => string;
+    negativeButtonTitle?: string;
+    positiveButtonTitle?: string;
+    dialogDescription?: string;
+    onValueChange: (value: T) => void;
+    disabled?: boolean;
+    iosDialogInputType?: AlertType;
+  }
+
+  class SettingsEditText<T> extends React.Component<SettingsEditTextProps<T>> {
+
+  }
+
+  export { SettingsEditText, SettingsButton, SettingsSwitch, SettingsCategoryHeader, SettingsPicker };
 }

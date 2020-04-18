@@ -108,7 +108,7 @@ class TabooSetPicker extends React.Component<Props> {
           backgroundColor: 'rgba(255,255,255,0.0)',
         }}
         valueStyle={{
-          color: COLORS.darkGray,
+          color: COLORS.black,
         }}
         containerStyle={transparent ? {
           backgroundColor: 'transparent',

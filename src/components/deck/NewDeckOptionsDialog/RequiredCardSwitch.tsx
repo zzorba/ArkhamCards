@@ -1,5 +1,6 @@
 import React from 'react';
-import DialogComponent from 'react-native-dialog';
+import { StyleSheet } from 'react-native';
+import { SettingsSwitch } from 'react-native-settings-components';
 
 import { COLORS } from 'styles/colors';
 
@@ -27,9 +28,11 @@ export default class RequiredCardSwitch extends React.Component<Props> {
       value,
     } = this.props;
     return (
-      <DialogComponent.Switch
+      <SettingsSwitch
         disabled={disabled}
-        label={label}
+        title={label}
+        containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
+        disabledOverlayStyle={{ backgroundColor: 'transparent' }}
         value={value}
         onValueChange={this._onValueChange}
         trackColor={COLORS.switchTrackColor}

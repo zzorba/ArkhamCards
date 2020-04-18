@@ -1,13 +1,14 @@
 import React from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-
-import InvestigatorsListComponent from 'components/cardlist/InvestigatorsListComponent';
-import NewDeckOptionsDialog from './NewDeckOptionsDialog';
-import { NavigationProps } from 'components/nav/types';
 import { t } from 'ttag';
-import { iconsMap } from 'app/NavIcons';
+
 import { SORT_BY_PACK, SortType , Deck } from 'actions/types';
+import { iconsMap } from 'app/NavIcons';
+import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
+import { getDeckOptions } from 'components/nav/helper';
+import InvestigatorsListComponent from 'components/cardlist/InvestigatorsListComponent';
+import { NavigationProps } from 'components/nav/types';
 import Card from 'data/Card';
 import { COLORS } from 'styles/colors';
 
@@ -21,8 +22,6 @@ type Props = NewDeckProps & NavigationProps;
 
 interface State {
   saving: boolean;
-  viewRef?: View;
-  activeInvestigatorId?: string;
   selectedSort: SortType;
 }
 
@@ -89,18 +88,6 @@ export default class NewDeckView extends React.Component<Props, State> {
     });
   };
 
-  _captureViewRef = (ref: View) => {
-    this.setState({
-      viewRef: ref,
-    });
-  };
-
-  _closeDialog = () => {
-    this.setState({
-      activeInvestigatorId: undefined,
-    });
-  };
-
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const {
       componentId,
@@ -113,42 +100,36 @@ export default class NewDeckView extends React.Component<Props, State> {
   }
 
   _onPress = (investigator: Card) => {
-    if (!this.state.activeInvestigatorId) {
-      this.setState({
-        activeInvestigatorId: investigator.code,
-      });
-    }
+    const { componentId, onCreateDeck } = this.props;
+    Navigation.push<NewDeckOptionsProps>(componentId, {
+      component: {
+        name: 'Deck.NewOptions',
+        passProps: {
+          investigatorId: investigator.code,
+          onCreateDeck,
+        },
+        options: getDeckOptions(investigator, false, t`New Deck`),
+      },
+    });
   };
 
   render() {
     const {
       componentId,
-      onCreateDeck,
       filterInvestigators,
       onlyInvestigators,
     } = this.props;
     const {
-      viewRef,
-      activeInvestigatorId,
       selectedSort,
     } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.container} ref={this._captureViewRef}>
-          <InvestigatorsListComponent
-            componentId={componentId}
-            filterInvestigators={filterInvestigators}
-            onlyInvestigators={onlyInvestigators}
-            sort={selectedSort}
-            onPress={this._onPress}
-          />
-        </View>
-        <NewDeckOptionsDialog
+        <InvestigatorsListComponent
           componentId={componentId}
-          viewRef={viewRef}
-          onCreateDeck={onCreateDeck}
-          toggleVisible={this._closeDialog}
-          investigatorId={activeInvestigatorId}
+          filterInvestigators={filterInvestigators}
+          onlyInvestigators={onlyInvestigators}
+          sort={selectedSort}
+          onPress={this._onPress}
         />
       </View>
     );

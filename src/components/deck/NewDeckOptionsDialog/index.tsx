@@ -1,41 +1,42 @@
 import React from 'react';
 import {
   ActivityIndicator,
-  Platform,
-  TextInput,
+  Text,
   TouchableOpacity,
+  ScrollView,
   StyleSheet,
-  View,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import DialogComponent from 'react-native-dialog';
+import { SettingsEditText, SettingsSwitch } from 'react-native-settings-components';
 import { NetInfoStateType } from '@react-native-community/netinfo';
+import { t } from 'ttag';
 
 import RequiredCardSwitch from './RequiredCardSwitch';
-import TabooSetDialogOptions from './TabooSetDialogOptions';
 import { showDeckModal } from 'components/nav/helper';
-import Dialog from 'components/core/Dialog';
+import TabooSetPicker from 'components/core/TabooSetPicker';
+import CardSectionHeader from 'components/core/CardSectionHeader';
+import NavButton from 'components/core/NavButton';
+import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import BasicButton from 'components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from 'components/core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from 'components/core/withLoginState';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { saveNewDeck, NewDeckParams } from 'components/deck/actions';
+import { NavigationProps } from 'components/nav/types';
 import { Deck, Slots } from 'actions/types';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
+import { FACTION_COLORS, RANDOM_BASIC_WEAKNESS } from 'constants';
 import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
-import { t } from 'ttag';
 import typography from 'styles/typography';
 import space from 'styles/space';
 import { COLORS } from 'styles/colors';
-import starterDecks from '../../../assets/starter-decks';
+import starterDecks from '../../../../assets/starter-decks';
 
-interface OwnProps {
-  componentId: string;
-  toggleVisible: () => void;
-  investigatorId?: string;
-  viewRef?: View;
+export interface NewDeckOptionsProps {
+  investigatorId: string;
   onCreateDeck: (deck: Deck) => void;
 }
 
@@ -47,9 +48,14 @@ interface ReduxActionProps {
   saveNewDeck: (params: NewDeckParams) => Promise<Deck>;
 }
 
-type Props = OwnProps &
-  PlayerCardProps & ReduxProps & ReduxActionProps &
-  NetworkStatusProps & LoginStateProps;
+type Props = NavigationProps &
+  NewDeckOptionsProps &
+  PlayerCardProps &
+  ReduxProps &
+  ReduxActionProps &
+  NetworkStatusProps &
+  LoginStateProps &
+  DimensionsProps;
 
 interface State {
   saving: boolean;
@@ -61,7 +67,6 @@ interface State {
 }
 
 class NewDeckOptionsDialog extends React.Component<Props, State> {
-  _textInputRef?: TextInput;
   _onOkayPress!: () => void;
 
   constructor(props: Props) {
@@ -69,6 +74,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
     this.state = {
       saving: false,
+      deckName: this.deckName(),
       offlineDeck: !props.signedIn || !props.isConnected || props.networkType === NetInfoStateType.none,
       optionSelected: [true],
       tabooSetId: props.defaultTabooSetId,
@@ -76,15 +82,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     };
 
     this._onOkayPress = throttle(this.onOkayPress.bind(this), 200);
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const {
-      investigatorId,
-    } = this.props;
-    if (investigatorId && investigatorId !== prevProps.investigatorId) {
-      this.resetForm();
-    }
   }
 
   _onDeckTypeChange = (value: boolean) => {
@@ -114,31 +111,15 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     });
   };
 
-  _captureTextInputRef = (ref: TextInput) => {
-    this._textInputRef = ref;
-  };
-
-  resetForm() {
-    this.setState({
-      deckName: this.deckName(),
-      saving: false,
-      optionSelected: [true],
-    });
-  }
-
   _showNewDeck = (deck: Deck) => {
     const {
       componentId,
       onCreateDeck,
-      toggleVisible,
     } = this.props;
     const investigator = this.investigator();
     this.setState({
       saving: false,
     });
-    if (Platform.OS === 'android') {
-      toggleVisible();
-    }
     // Change the deck options for required cards, if present.
     onCreateDeck && onCreateDeck(deck);
     showDeckModal(componentId, deck, investigator);
@@ -227,12 +208,12 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     }
   }
 
-  investigator() {
+  investigator(): Card | undefined {
     const {
       investigatorId,
       investigators,
     } = this.props;
-    return investigatorId ? investigators[investigatorId] : undefined;
+    return investigators[investigatorId] || undefined;
   }
 
   deckName() {
@@ -288,14 +269,15 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     });
   };
 
-  renderFormContent() {
+  renderFormContent(investigator: Card) {
     const {
       investigatorId,
       signedIn,
+      login,
       refreshNetworkStatus,
       networkType,
       isConnected,
-      tabooSets,
+      fontScale,
     } = this.props;
     const {
       saving,
@@ -320,19 +302,27 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       hasStarterDeck = starterDecks[investigatorId] !== undefined;
     }
     return (
-      <React.Fragment>
-        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-          { t`Name` }
-        </DialogComponent.Description>
-        <DialogComponent.Input
-          textInputRef={this._captureTextInputRef}
+      <>
+        <SettingsEditText
+          title={t`Name`}
+          containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
+          dialogDescription={t`Enter a name for this deck.`}
+          negativeButtonTitle={t`Cancel`}
+          positiveButtonTitle={t`Done`}
+          onValueChange={this._onDeckNameChange}
           value={deckName}
-          onChangeText={this._onDeckNameChange}
-          returnKeyType="done"
+          valueStyle={{ color: COLORS.black, flex: 3 }}
         />
-        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-          { t`Required Cards` }
-        </DialogComponent.Description>
+        <TabooSetPicker
+          color={FACTION_COLORS[investigator.factionCode()]}
+          tabooSetId={tabooSetId}
+          setTabooSet={this._setTabooSetId}
+        />
+        <CardSectionHeader
+          fontScale={fontScale}
+          investigator={investigator}
+          section={{ superTitle: t`Required Cards` }}
+        />
         { map(cardOptions, (requiredCards, index) => {
           return (
             <RequiredCardSwitch
@@ -345,51 +335,54 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             />
           );
         }) }
-        <TabooSetDialogOptions
-          tabooSets={tabooSets}
-          tabooSetId={tabooSetId}
-          setTabooSetId={this._setTabooSetId}
+        <CardSectionHeader
+          fontScale={fontScale}
+          investigator={investigator}
+          section={{ superTitle: t`Deck Type` }}
         />
-        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
-          { t`Deck Type` }
-        </DialogComponent.Description>
-        <DialogComponent.Switch
-          label={t`Create on ArkhamDB`}
-          value={!offlineDeck}
-          disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
-          onValueChange={this._onDeckTypeChange}
-          trackColor={COLORS.switchTrackColor}
-        />
-        { !signedIn && (
-          <DialogComponent.Description style={[typography.small, space.marginBottomS, styles.networkMessage]}>
-            { t`Visit Settings to sign in to ArkhamDB.` }
-          </DialogComponent.Description>
+        { signedIn ? (
+          <SettingsSwitch
+            title={t`Create on ArkhamDB`}
+            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
+            value={!offlineDeck}
+            disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
+            onValueChange={this._onDeckTypeChange}
+            trackColor={COLORS.switchTrackColor}
+          />
+        ) : (
+          <NavButton
+            indent
+            fontScale={fontScale}
+            text={t`Sign in to ArkhamDB`}
+            onPress={login}
+          />
         ) }
         { (!isConnected || networkType === NetInfoStateType.none) && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
-            <DialogComponent.Description style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+            <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
               { t`You seem to be offline. Refresh Network?` }
-            </DialogComponent.Description>
+            </Text>
           </TouchableOpacity>
         ) }
         { hasStarterDeck && (
-          <DialogComponent.Switch
-            label={t`Use Starter Deck?`}
+          <SettingsSwitch
+            title={t`Use Starter Deck`}
             value={starterDeck}
+            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
             onValueChange={this._onStarterDeckChange}
             trackColor={COLORS.switchTrackColor}
           />
         ) }
-      </React.Fragment>
+      </>
     );
   }
 
+  _cancelPressed = () => {
+    const { componentId } = this.props;
+    Navigation.pop(componentId);
+  };
+
   render() {
-    const {
-      toggleVisible,
-      viewRef,
-      investigatorId,
-    } = this.props;
     const {
       saving,
       optionSelected,
@@ -400,23 +393,23 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     }
     const okDisabled = saving || !find(optionSelected, selected => selected);
     return (
-      <Dialog
-        title={t`New Deck`}
-        visible={!!investigatorId}
-        viewRef={viewRef}
-      >
-        { this.renderFormContent() }
-        <DialogComponent.Button
-          label={t`Cancel`}
-          onPress={toggleVisible}
-        />
-        <DialogComponent.Button
-          label={t`Okay`}
-          color={okDisabled ? COLORS.darkGray : COLORS.lightBlue}
-          disabled={okDisabled}
-          onPress={this._onOkayPress}
-        />
-      </Dialog>
+      <ScrollView>
+        { this.renderFormContent(investigator) }
+        { !saving && (
+          <>
+            <BasicButton
+              title={t`Create deck`}
+              disabled={okDisabled}
+              onPress={this._onOkayPress}
+            />
+            <BasicButton
+              title={t`Cancel`}
+              color={COLORS.red}
+              onPress={this._cancelPressed}
+            />
+          </>
+        ) }
+      </ScrollView>
     );
   }
 }
@@ -431,13 +424,17 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({ saveNewDeck } as any, dispatch);
 }
 
-export default withPlayerCards<OwnProps>(
+export default withPlayerCards<NavigationProps & NewDeckOptionsProps>(
   connect(
     mapStateToProps,
     mapDispatchToProps
   )(
-    withLoginState<OwnProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
-      withNetworkStatus(NewDeckOptionsDialog),
+    withLoginState<NavigationProps & NewDeckOptionsProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
+      withDimensions<NavigationProps & NewDeckOptionsProps & ReduxProps & ReduxActionProps & PlayerCardProps & LoginStateProps>(
+        withNetworkStatus<NavigationProps & NewDeckOptionsProps & ReduxProps & ReduxActionProps & PlayerCardProps & LoginStateProps & DimensionsProps>(
+          NewDeckOptionsDialog
+        )
+      ),
       { noWrapper: true }
     )
   )
@@ -446,9 +443,5 @@ export default withPlayerCards<OwnProps>(
 const styles = StyleSheet.create({
   spinner: {
     height: 80,
-  },
-  networkMessage: {
-    marginLeft: Platform.OS === 'ios' ? 28 : 8,
-    marginRight: Platform.OS === 'ios' ? 28 : 8,
   },
 });

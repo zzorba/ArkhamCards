@@ -4274,7 +4274,7 @@
     {
       "id": "doubt_and_conviction",
       "type": "rule_reminder",
-      "title": "New Keyword: Hidden",
+      "title": "Doubt and Conviction",
       "text": "Some story resolutions and interludes in The Path to Carcosa campaign instruct the players to “Mark one <b>Doubt</b>” or “Mark one <b>Conviction</b>” in their Campaign Log. This is done by filling in one of the boxes next to “<b>Doubt</b>” or “<b>Conviction</b>” in the Campaign Log.\nLater in the campaign, some scenarios may be changed or altered depending on whether the investigators “have more <b>Doubt</b> than <b>Conviction</b>” or “have more <b>Conviction</b> than <b>Doubt</b>.” The investigators have more <b>Doubt</b> than <b>Conviction</b> if the number of boxes filled in next to <b>Doubt</b> is greater than the number of boxes filled in next to <b>Conviction</b> (and vice versa). <b>Doubt</b> and <b>Conviction</b> are shared among all of the investigators, and they are not tied to any specific investigator. <b>Doubt</b> and <b>Conviction</b> have no game effect except when explicitly referenced by the Campaign Guide or by a card effect."
     },
     {
@@ -14156,7 +14156,7 @@
     {
       "id": "doubt_and_conviction",
       "type": "rule_reminder",
-      "title": "New Keyword: Hidden",
+      "title": "Doubt and Conviction",
       "text": "Some story resolutions and interludes in The Path to Carcosa campaign instruct the players to “Mark one <b>Doubt</b>” or “Mark one <b>Conviction</b>” in their Campaign Log. This is done by filling in one of the boxes next to “<b>Doubt</b>” or “<b>Conviction</b>” in the Campaign Log.\nLater in the campaign, some scenarios may be changed or altered depending on whether the investigators “have more <b>Doubt</b> than <b>Conviction</b>” or “have more <b>Conviction</b> than <b>Doubt</b>.” The investigators have more <b>Doubt</b> than <b>Conviction</b> if the number of boxes filled in next to <b>Doubt</b> is greater than the number of boxes filled in next to <b>Conviction</b> (and vice versa). <b>Doubt</b> and <b>Conviction</b> are shared among all of the investigators, and they are not tied to any specific investigator. <b>Doubt</b> and <b>Conviction</b> have no game effect except when explicitly referenced by the Campaign Guide or by a card effect."
     },
     {

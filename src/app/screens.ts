@@ -36,7 +36,8 @@ import CampaignScenarioView from 'components/campaign/CampaignScenarioView';
 import CampaignChaosBagView from 'components/campaign/CampaignChaosBagView';
 import OddsCalculatorView from 'components/campaign/OddsCalculatorView';
 import MyDecksView from 'components/decklist/MyDecksView';
-import NewDeckView from 'components/NewDeckView';
+import NewDeckView from 'components/deck/NewDeckView';
+import NewDeckOptionsDialog from 'components/deck/NewDeckOptionsDialog';
 import DeckDetailView from 'components/deck/DeckDetailView';
 import DeckEditView from 'components/deck/DeckEditView';
 import DrawSimulatorView from 'components/deck/DrawSimulatorView';
@@ -75,6 +76,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Deck.EditSpecial', () => EditSpecialDeckCardsView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Upgrade', () => DeckUpgradeDialog, Provider, store);
   Navigation.registerComponentWithRedux('Deck.New', () => NewDeckView, Provider, store);
+  Navigation.registerComponentWithRedux('Deck.NewOptions', () => NewDeckOptionsDialog, Provider, store);
   Navigation.registerComponentWithRedux('Card', () => CardDetailView, Provider, store);
   Navigation.registerComponentWithRedux('Card.Swipe', () => CardDetailSwipeView, Provider, store);
   Navigation.registerComponentWithRedux('Card.Faq', () => CardFaqView, Provider, store);

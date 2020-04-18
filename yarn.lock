@@ -9583,6 +9583,11 @@ react-native-pinch-zoom-view@0.2.0:
   dependencies:
     prop-types "^15.6.0"
 
+react-native-prompt@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-prompt/-/react-native-prompt-1.0.0.tgz#41e0ec2aa7dd8f12f3a3ee83af9d63c4b670f8a1"
+  integrity sha1-QeDsKqfdjxLzo+6Dr51jxLZw+KE=
+
 react-native-ratings@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.3.0.tgz#becda9379616776a81d9d90bfc95ea40b76286fb"
@@ -9606,9 +9611,9 @@ react-native-reanimated@1.8.0:
   dependencies:
     fbjs "^1.0.0"
 
-"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#adjust-value-style":
+"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#fix_alert":
   version "0.0.2"
-  resolved "https://github.com/zzorba/react-native-settings-components#aaa2ee51a7982a1ab2ab46d028ddbdfeca544cd0"
+  resolved "https://github.com/zzorba/react-native-settings-components#5a2d4c141308cb43dc3f07ce7e687ba41ba87121"
   dependencies:
     lodash "^4.17.11"
     react-native-dialogs "^1.0.2"

@@ -9,7 +9,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import typography from 'styles/typography';
-import { s, isBig } from 'styles/space';
+import { xs, s, isBig } from 'styles/space';
 
 interface Props {
   fontScale: number;
@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingLeft: s,
+    paddingTop: xs,
+    paddingBottom: xs,
   },
   bottomBorder: {
     borderBottomWidth: 1,

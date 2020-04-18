@@ -14,7 +14,7 @@ import TabView from 'components/core/TabView';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
-import { NewDeckProps } from 'components/NewDeckView';
+import { NewDeckProps } from 'components/deck/NewDeckView';
 import Switch from 'components/core/Switch';
 import { NavigationProps } from 'components/nav/types';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
