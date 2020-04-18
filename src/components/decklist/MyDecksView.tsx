@@ -127,7 +127,11 @@ class MyDecksView extends React.Component<Props, State> {
 
   renderCustomFooter() {
     return (
-      <BasicButton title={t`New Deck`} onPress={this._showNewDeckDialog} />
+      <BasicButton
+        title={t`New Deck`}
+        onPress={this._showNewDeckDialog}
+        grow
+      />
     );
   }
 

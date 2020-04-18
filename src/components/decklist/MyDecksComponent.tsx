@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import {
   Button,
-  View,
-  Text,
   StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import { filter } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
@@ -125,10 +125,10 @@ class MyDecksComponent extends React.Component<Props> {
       customFooter,
     } = this.props;
     return (
-      <React.Fragment>
-        { customFooter }
+      <View style={styles.footer}>
+        { !!customFooter && <View style={styles.row}>{ customFooter }</View> }
         { this.renderSignInFooter() }
-      </React.Fragment>
+      </View>
     );
   }
 
@@ -251,5 +251,13 @@ const styles = StyleSheet.create({
     padding: m,
     marginTop: s,
     backgroundColor: COLORS.lightGray,
+  },
+  footer: {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  row: {
+    flexDirection: 'row',
   },
 });
