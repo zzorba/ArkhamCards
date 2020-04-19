@@ -357,6 +357,40 @@ class DeckDetailView extends React.Component<Props, State> {
     }
   }
 
+  _deleteBrokenDeck = () => {
+    Alert.alert(
+      t`Delete broken deck`,
+      t`Looks like we are having trouble loading this deck for some reason`,
+      [
+        { text: t`Delete`, style: 'destructive', onPress: this._actuallyDeleteBrokenDeck },
+        { text: t`Cancel`, style: 'cancel' },
+      ]
+    );
+  };
+
+  _actuallyDeleteBrokenDeck = () => {
+    const {
+      id,
+      deleteDeckAction,
+    } = this.props;
+    const {
+      deleting,
+    } = this.state;
+
+    if (!deleting) {
+      this.setState({
+        deleting: true,
+      });
+
+      deleteDeckAction(id, false, id < 0).then(() => {
+        Navigation.dismissAllModals();
+        this.setState({
+          deleting: false,
+        });
+      });
+    }
+  }
+
   _toggleCopyDialog = () => {
     this.setState({
       menuOpen: false,
@@ -1669,7 +1703,23 @@ class DeckDetailView extends React.Component<Props, State> {
       parsedDeck,
       tabooSetId,
     } = this.state;
-    if (!deck || !loaded || !parsedDeck) {
+    if (!deck) {
+      return (
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator
+            style={styles.spinner}
+            size="small"
+            animating
+          />
+          <BasicButton
+            title={t`Delete Deck`}
+            onPress={this._deleteBrokenDeck}
+            color={COLORS.red}
+          />
+        </View>
+      );
+    }
+    if (!loaded || !parsedDeck) {
       return (
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator

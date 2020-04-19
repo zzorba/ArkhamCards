@@ -50,6 +50,9 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     const { input, campaignLog } = this.props;
     const investigagorSupplies = campaignLog.investigatorSections[input.section] || {};
     const limits: { [code: string]: number } = {};
+    forEach(campaignLog.investigators(false), investigator => {
+      limits[investigator.code] = 0;
+    });
     forEach(investigagorSupplies, (supplies, code) => {
       const entry = find(supplies.entries,
         entry => entry.id === input.id &&

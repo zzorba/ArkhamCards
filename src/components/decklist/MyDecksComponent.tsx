@@ -187,7 +187,7 @@ class MyDecksComponent extends React.Component<Props> {
       const deck = decks[deckId];
       return !filterDeckIdsSet.has(deckId) && (
         !deck || !filterInvestigatorsSet.has(deck.investigator_code)
-      ) && (!onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));
+      ) && (!deck || !onlyInvestigatorSet || onlyInvestigatorSet.has(deck.investigator_code));
     });
     return (
       <DeckListComponent

@@ -182,7 +182,6 @@ export default function(
     const toDelete = [action.id];
     if (deck) {
       if (action.deleteAllVersions) {
-        console.log('DELETE: all versions');
         while (deck.previous_deck && all[deck.previous_deck]) {
           const id = deck.previous_deck;
           toDelete.push(id);
@@ -204,7 +203,8 @@ export default function(
     const toDeleteSet = new Set(toDelete);
     const myDecks = (action.deleteAllVersions || !deck || !deck.previous_deck) ?
       filter(state.myDecks, deckId => !toDeleteSet.has(deckId)) :
-      map(state.myDecks, deckId => deckId === action.id ? deck.previous_deck : deckId);
+      map(state.myDecks,
+        deckId => deckId === action.id ? deck.previous_deck : deckId);
 
     return Object.assign({},
       state,
