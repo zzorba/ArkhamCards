@@ -1521,6 +1521,15 @@ class DeckDetailView extends React.Component<Props, State> {
               title={t`Taboo List`}
               description={tabooSet ? tabooSet.date_start : t`None`}
             />
+            { !deck.local && (
+              <SettingsButton
+                title={t`Deck Id`}
+                description={`${deck.id}`}
+                onPress={this._showEditDetailsVisible}
+                disabledOverlayStyle={{ backgroundColor: 'transparent' }}
+                disabled
+              />
+            )}
           </>
         ) }
         <SettingsCategoryHeader title={t`Cards`} />
