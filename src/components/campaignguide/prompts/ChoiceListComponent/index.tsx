@@ -88,9 +88,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           choices[code] = [options.choices[idx].id];
         } else {
           const realIdx = options.perCode[code][idx];
-          console.log(`${code} = ${options.perCode[code]}[${idx}]`);
           choices[code] = [options.choices[realIdx].id];
-          console.log(choices[code]);
         }
       }
     });

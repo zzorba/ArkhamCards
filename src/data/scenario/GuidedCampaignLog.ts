@@ -400,7 +400,6 @@ export default class GuidedCampaignLog {
   }
 
   nextScenarioId(includeSkipped: boolean): string | undefined {
-    // console.log(`Looking for next scenario for ${this.scenarioId}`);
     if (this.campaignData.nextScenario &&
       this.scenarioId !== this.campaignData.nextScenario
     ) {

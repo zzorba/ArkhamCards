@@ -9583,11 +9583,6 @@ react-native-pinch-zoom-view@0.2.0:
   dependencies:
     prop-types "^15.6.0"
 
-react-native-prompt@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-prompt/-/react-native-prompt-1.0.0.tgz#41e0ec2aa7dd8f12f3a3ee83af9d63c4b670f8a1"
-  integrity sha1-QeDsKqfdjxLzo+6Dr51jxLZw+KE=
-
 react-native-ratings@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.3.0.tgz#becda9379616776a81d9d90bfc95ea40b76286fb"
