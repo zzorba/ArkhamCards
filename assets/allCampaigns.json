@@ -7626,6 +7626,7 @@
     },
     {
       "id": "check_lola_hayes",
+      "text": "If Lola Hayes was chosen as an investigator for this campaign:",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -7641,6 +7642,7 @@
     },
     {
       "id": "lola_hayes_reads",
+      "bullet_type": "small",
       "text": "The Lola Hayes player reads the following section (out loud)."
     },
     {
@@ -14770,6 +14772,7 @@
     },
     {
       "id": "check_lola_hayes",
+      "text": "If Lola Hayes was chosen as an investigator for this campaign:",
       "type": "branch",
       "condition": {
         "type": "campaign_data",
@@ -14788,6 +14791,7 @@
     },
     {
       "id": "lola_hayes_reads",
+      "bullet_type": "small",
       "text": "The Lola Hayes player reads the following section (out loud)."
     },
     {
@@ -23534,7 +23538,7 @@
     {
       "id": "choose_black_book_small_prompt",
       "bullet_type": "small",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the haos bag for the remainder of the campaign."
+      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "choose_black_book_small",
@@ -23563,7 +23567,7 @@
     },
     {
       "id": "choose_black_book_prompt",
-      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the haos bag for the remainder of the campaign."
+      "text": "Additionally, any one investigator may choose to add The Black Book story asset to their deck. This card does not count toward that investigator’s deck size. If an investigator chooses to include The Black Book in their deck, add 1 [skull] token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "choose_black_book",
@@ -26084,22 +26088,43 @@
           {
             "id": "black_cat_sent_news",
             "text": "Tell your companions of your quest, your plight, and your  peril. The black cat will return to you once this message is delivered. This may put an undue burden on your companions.",
-            "steps": ["black_cat_delivered_news", "wait_for_other_side", "black_cat_at_your_side", "add_elder_thing_token"]
+            "steps": [
+              "black_cat_delivered_news",
+              "send_black_cat_delivered_news",
+              "wait_for_other_side",
+              "black_cat_at_your_side",
+              "add_elder_thing_token"
+            ]
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
             "text": "Tell your companions about your new friends and about the Dreamlands.",
-            "steps": ["black_cat_shared_knowledge_of_the_dreamlands", "wait_for_other_side", "black_cat_has_a_hunch"]
+            "steps": [
+              "black_cat_shared_knowledge_of_the_dreamlands",
+              "send_black_cat_shared_knowledge_of_the_dreamlands",
+              "wait_for_other_side",
+              "black_cat_has_a_hunch"
+            ]
           },
           {
             "id": "black_cat_warned_the_others",
             "text": "Tell your companions that they are in danger, and that you are safe. The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
-            "steps": ["black_cat_warned_the_others", "wait_for_other_side", "add_tablet_token"]
+            "steps": [
+              "black_cat_warned_the_others",
+              "send_black_cat_warned_the_others",
+              "wait_for_other_side",
+              "add_tablet_token"
+            ]
           },
           {
             "id": "threaten_black_cat",
             "text": "You don’t trust this creature one bit. You threaten the black cat, warning it not to approach your friends under any circumstance. The black cat yawns and vanishes out the door.",
-            "steps": ["threaten_black_cat", "wait_for_other_side", "you_asked_for_it"]
+            "steps": [
+              "threaten_black_cat",
+              "send_threaten_black_cat",
+              "wait_for_other_side",
+              "you_asked_for_it"
+            ]
           }
         ]
       }
@@ -26123,13 +26148,18 @@
           "section": "campaign_notes",
           "id": "black_cat_delivered_news",
           "text": "the black cat delivered news of your plight."
-        },
-        {
-          "type": "campaign_link",
-          "id": "black_cat",
-          "decision": "black_cat_delivered_news"
         }
       ]
+    },
+    {
+      "id": "send_black_cat_delivered_news",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "black_cat",
+        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat delivered news of your plight.</i>",
+        "decision": "black_cat_delivered_news"
+      }
     },
     {
       "id": "black_cat_at_your_side",
@@ -26160,13 +26190,18 @@
           "section": "campaign_notes",
           "id": "black_cat_shared_knowledge_of_the_dreamlands",
           "text": "the black cat shared knowledge of the Dreamlands."
-        },
-        {
-          "type": "campaign_link",
-          "id": "black_cat",
-          "decision": "black_cat_shared_knowledge_of_the_dreamlands"
         }
       ]
+    },
+    {
+      "id": "send_black_cat_shared_knowledge_of_the_dreamlands",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "black_cat",
+        "decision": "black_cat_shared_knowledge_of_the_dreamlands",
+        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat shared knowledge of the Dreamlands.</i>"
+      }
     },
     {
       "id": "black_cat_warned_the_others",
@@ -26176,13 +26211,18 @@
           "section": "campaign_notes",
           "id": "black_cat_warned_the_others",
           "text": "the black cat warned the others."
-        },
-        {
-          "type": "campaign_link",
-          "id": "black_cat",
-          "decision": "black_cat_warned_the_others"
         }
       ]
+    },
+    {
+      "id": "send_black_cat_warned_the_others",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "black_cat",
+        "decision": "black_cat_warned_the_others",
+        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that <i>the black cat warned the others.</i>"
+      }
     },
     {
       "id": "add_tablet_token",
@@ -26202,13 +26242,18 @@
           "section": "campaign_notes",
           "id": "threaten_black_cat",
           "text": "okay, fine, have it your way then."
-        },
-        {
-          "type": "campaign_link",
-          "id": "black_cat",
-          "decision": "threaten_black_cat"
         }
       ]
+    },
+    {
+      "id": "send_threaten_black_cat",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "black_cat",
+        "decision": "threaten_black_cat",
+        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), <i>okay, fine, have it your way then.</i>"
+      }
     },
     {
       "id": "you_asked_for_it",
@@ -26223,10 +26268,9 @@
     },
     {
       "id": "wait_for_other_side",
-      "text": "This interlude continues in <i>The Web of Dreams</i> campaign.",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "black_cat_done",
         "choices": []
       }
@@ -26448,25 +26492,34 @@
                 "section": "campaign_notes",
                 "id": "black_cat_is_searching_for_the_truth",
                 "cross_out": true
-              },
-              {
-                "type": "campaign_link",
-                "id": "great_ones_black_cat_is_searching_for_the_truth",
-                "decision": "cross_out"
               }
-            ]
+            ],
+            "steps": ["send_great_ones_black_cat_is_searching_for_the_truth_cross_out"]
           },
           {
-            "boolCondition": true,
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "great_ones_black_cat_is_searching_for_the_truth",
-                "decision": "keep"
-              }
-            ]
+            "boolCondition": false,
+            "steps": ["send_great_ones_black_cat_is_searching_for_the_truth_keep"]
           }
         ]
+      }
+    },
+    {
+      "id": "send_great_ones_black_cat_is_searching_for_the_truth_cross_out",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_black_cat_is_searching_for_the_truth",
+        "decision": "cross_out"
+      }
+    },
+    {
+      "id": "send_great_ones_black_cat_is_searching_for_the_truth_keep",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_black_cat_is_searching_for_the_truth",
+        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B) to keep <i>the black cat is searching for the truth</i> in their campaign log.",
+        "decision": "keep"
       }
     },
     {
@@ -26529,20 +26582,15 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["black_cat_wanders_off"],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "great_ones_decision",
-                "decision": "black_cat_wanders_off"
-              }
-            ]
+            "steps": ["black_cat_wanders_off", "send_great_ones_black_cat_wanders_off"]
           },
           {
             "boolCondition": false,
             "steps": [
               "black_cat_decision",
-              "check_great_ones_silver_key", "check_black_cat_still_searching_for_the_truth"]
+              "check_great_ones_silver_key",
+              "check_black_cat_still_searching_for_the_truth"
+            ]
           }
         ]
       }
@@ -26551,6 +26599,16 @@
       "id": "black_cat_wanders_off",
       "type": "story",
       "text": "The black cat bounds off into the void of space before you get the chance to ask it anything else."
+    },
+    {
+      "id": "send_great_ones_black_cat_wanders_off",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_decision",
+        "prompt": "Tell the investigators of <i>The Web of Dreams</i> (Campaign B), that the black cat wandered off without taking a message.",
+        "decision": "black_cat_wanders_off"
+      }
     },
     {
       "id": "black_cat_decision",
@@ -26562,28 +26620,32 @@
           {
             "id": "black_cat_spoke_of_nyarlathotep",
             "text": "Tell your companions about the threats that you face. The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
-            "steps": ["black_cat_spoke_of_nyarlathotep"],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "great_ones_decision",
-                "decision": "black_cat_spoke_of_nyarlathotep"
-              }
-            ]
+            "steps": ["black_cat_spoke_of_nyarlathotep", "send_great_ones_black_cat_spoke_of_nyarlathotep"]
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
             "text": "Tell your companions that you will be okay. The black cat will stay with them once this message is delivered. This might make your quest a little more difficult. ",
-            "steps": ["black_cat_spoke_of_atlach_nacha"],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "great_ones_decision",
-                "decision": "black_cat_spoke_of_atlach_nacha"
-              }
-            ]
+            "steps": ["black_cat_spoke_of_atlach_nacha", "send_great_ones_black_cat_spoke_of_atlach_nacha"]
           }
         ]
+      }
+    },
+    {
+      "id": "send_great_ones_black_cat_spoke_of_nyarlathotep",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_decision",
+        "decision": "black_cat_spoke_of_nyarlathotep"
+      }
+    },
+    {
+      "id": "send_great_ones_black_cat_spoke_of_atlach_nacha",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_decision",
+        "decision": "black_cat_spoke_of_atlach_nacha"
       }
     },
     {
@@ -26612,7 +26674,7 @@
       "id": "check_great_ones_silver_key",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "great_ones_silver_key",
         "choices": [
           {
@@ -26873,7 +26935,7 @@
       "id": "check_oneironauts_black_cat_has_a_hunch",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "oneironauts_black_cat_has_a_hunch",
         "choices": [
           {
@@ -26883,7 +26945,7 @@
           },
           {
             "id": "keep",
-            "text": "No change"
+            "text": "Keep <i>the black cat has a hunch.</i>"
           }
         ]
       }
@@ -27034,29 +27096,38 @@
                 "section": "campaign_notes",
                 "id": "black_cat_is_searching_for_the_truth",
                 "text": "the black cat is searching for the truth."
-              },
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_searching_for_the_truth",
-                "decision": "black_cat_is_searching_for_the_truth"
               }
-            ]
+            ],
+            "steps": ["send_oneironauts_searching_for_the_truth_yes"]
           },
           {
             "boolCondition": false,
             "steps": [
+              "send_oneironauts_searching_for_the_truth_no",
               "resume_interlude",
               "check_oneironauts_decision"
-            ],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_searching_for_the_truth",
-                "decision": "no_change"
-              }
             ]
           }
         ]
+      }
+    },
+    {
+      "id": "send_oneironauts_searching_for_the_truth_yes",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_searching_for_the_truth",
+        "decision": "black_cat_is_searching_for_the_truth"
+      }
+    },
+    {
+      "id": "send_oneironauts_searching_for_the_truth_no",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_searching_for_the_truth",
+        "prompt": "If asked by the investigators of <i>The Web of Dreams</i> if <i>the black cat is searching for the truth</i>, tell them no.",
+        "decision": "no_change"
       }
     },
     {
@@ -27083,7 +27154,7 @@
       "id": "check_oneironauts_decision",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "oneironauts_decision",
         "choices": [
           {
@@ -27350,14 +27421,12 @@
     },
     {
       "id": "interlude_done",
-      "hidden": true,
-      "effects": [
-        {
-          "type": "campaign_link",
-          "id": "oneironauts_done",
-          "decision": "proceed"
-        }
-      ]
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_done",
+        "decision": "proceed"
+      }
     }
   ]
 }
@@ -30437,7 +30506,7 @@
       "id": "campaign_link_branch",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "black_cat",
         "choices": [
           {
@@ -30538,14 +30607,12 @@
     },
     {
       "id": "interlude_done",
-      "hidden": true,
-      "effects": [
-        {
-          "type": "campaign_link",
-          "id": "black_cat_done",
-          "decision": "proceed"
-        }
-      ]
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "black_cat_done",
+        "decision": "proceed"
+      }
     }
   ]
 }
@@ -30581,7 +30648,7 @@
       "id": "check_great_ones_black_cat_is_searching_for_the_truth",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "great_ones_black_cat_is_searching_for_the_truth",
         "choices": [
           {
@@ -30667,25 +30734,33 @@
               {
                 "type": "remove_card",
                 "card": "06189"
-              },
-              {
-                "type": "campaign_link",
-                "id": "great_ones_silver_key",
-                "decision": "transfer_key"
               }
-            ]
+            ],
+            "steps": ["send_great_ones_silver_key"]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "great_ones_silver_key",
-                "decision": "no_key"
-              }
-            ]
+            "steps": ["send_great_ones_no_key"]
           }
         ]
+      }
+    },
+    {
+      "id": "send_great_ones_silver_key",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_silver_key",
+        "decision": "transfer_key"
+      }
+    },
+    {
+      "id": "send_great_ones_no_key",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_silver_key",
+        "decision": "no_key"
       }
     },
     {
@@ -30724,11 +30799,6 @@
                 "section": "campaign_notes",
                 "id": "black_cat_knows_the_truth",
                 "text": "the black cat knows the truth."
-              },
-              {
-                "type": "campaign_link",
-                "id": "great_ones_done",
-                "decision": "proceed"
               }
             ]
           },
@@ -30758,18 +30828,22 @@
       "id": "check_great_ones_decision",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "great_ones_decision",
         "choices": [
           {
             "id": "black_cat_spoke_of_nyarlathotep",
             "text": "The black cat spoke of Nyarlathotep.",
-            "steps": ["nyarlathotep_story", "move_cat_to_campaign_a", "interlude_done"]
+            "steps": ["nyarlathotep_story", "move_cat_to_campaign_a"]
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
             "text": "The black cat spoke ot Atlach-Nacha.",
-            "steps": ["atlach_nacha_story", "move_cat_to_campaign_b", "interlude_done"]
+            "steps": ["atlach_nacha_story", "move_cat_to_campaign_b"]
+          },
+          {
+            "id": "black_cat_wanders_off",
+            "text": "The black cat wandered off before taking a message."
           }
         ]
       }
@@ -30931,17 +31005,6 @@
           "tokens": ["elder_thing"]
         }
       ]
-    },
-    {
-      "id": "interlude_done",
-      "hidden": true,
-      "effects": [
-        {
-          "type": "campaign_link",
-          "id": "great_ones_done",
-          "decision": "proceed"
-        }
-      ]
     }
   ]
 }
@@ -31005,25 +31068,34 @@
                 "section": "campaign_notes",
                 "id": "black_cat_has_a_hunch",
                 "cross_out": true
-              },
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_black_cat_has_a_hunch",
-                "decision": "cross_out"
               }
-            ]
+            ],
+            "steps": ["send_oneironauts_black_cat_has_a_hunch_cross_out"]
           },
           {
             "boolCondition": false,
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_black_cat_has_a_hunch",
-                "decision": "keep"
-              }
-            ]
+            "steps": ["send_oneironauts_black_cat_has_a_hunch_keep"]
           }
         ]
+      }
+    },
+    {
+      "id": "send_oneironauts_black_cat_has_a_hunch_cross_out",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_black_cat_has_a_hunch",
+        "decision": "cross_out"
+      }
+    },
+    {
+      "id": "send_oneironauts_black_cat_has_a_hunch_keep",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_black_cat_has_a_hunch",
+        "decision": "keep",
+        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), to keep <i>the black cat has a hunch</i> in their Campaign Log."
       }
     },
     {
@@ -31094,14 +31166,7 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["black_cat_wanders_off"],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_decision",
-                "decision": "black_cat_wanders_off"
-              }
-            ]
+            "steps": ["black_cat_wanders_off"]
           },
           {
             "boolCondition": false,
@@ -31125,38 +31190,17 @@
           {
             "id": "black_cat_requested_aid",
             "text": "Tell your companions that you are in trouble. The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
-            "steps": ["black_cat_requested_aid"],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_decision",
-                "decision": "black_cat_requested_aid"
-              }
-            ]
+            "steps": ["black_cat_requested_aid", "send_black_cat_requested_aid"]
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
             "text": "Tell your companions about the Underworld. The black cat will then go elsewhere.",
-            "steps": ["black_cat_shared_knowledge_of_the_underworld"],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_decision",
-                "decision": "black_cat_shared_knowledge_of_the_underworld"
-              }
-            ]
+            "steps": ["black_cat_shared_knowledge_of_the_underworld", "send_black_cat_shared_knowledge_of_the_underworld"]
           },
           {
             "id": "black_cat_warned_the_others",
             "text": "Tell your companions that you are safe. The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
-            "steps": ["black_cat_warned_the_others"],
-            "effects": [
-              {
-                "type": "campaign_link",
-                "id": "oneironauts_decision",
-                "decision": "black_cat_warned_the_others"
-              }
-            ]
+            "steps": ["black_cat_warned_the_others", "send_black_cat_warned_the_others"]
           }
         ]
       }
@@ -31173,6 +31217,16 @@
       ]
     },
     {
+      "id": "send_black_cat_requested_aid",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_decision",
+        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat requested aid from the others.</i>",
+        "decision": "black_cat_requested_aid"
+      }
+    },
+    {
       "id": "black_cat_shared_knowledge_of_the_underworld",
       "effects": [
         {
@@ -31184,6 +31238,16 @@
       ]
     },
     {
+      "id": "send_black_cat_shared_knowledge_of_the_underworld",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_decision",
+        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat shared knowledge of the Underworld.</i>",
+        "decision": "black_cat_shared_knowledge_of_the_underworld"
+      }
+    },
+    {
       "id": "black_cat_warned_the_others",
       "effects": [
         {
@@ -31193,6 +31257,16 @@
           "text": "the black cat warned the others."
         }
       ]
+    },
+    {
+      "id": "send_black_cat_warned_the_others",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_decision",
+        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the black cat warned the others.</i>",
+        "decision": "black_cat_warned_the_others"
+      }
     },
     {
       "id": "check_has_hunch",
@@ -31218,7 +31292,7 @@
       "id": "wait_for_searching_for_truth",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "oneironauts_searching_for_the_truth",
         "choices": [
           {
@@ -31514,7 +31588,7 @@
       "text": "This interlude continues in <i>The Dream-Quest</i> campaign.",
       "type": "input",
       "input": {
-        "type": "campaign_link",
+        "type": "receive_campaign_link",
         "id": "oneironauts_done",
         "choices": []
       }
@@ -35198,7 +35272,7 @@
       "type": "encounter_sets",
       "encounter_sets": [
         "the_boundary_beyond",
-        "temporal_flux",
+        "flux",
         "poison"
       ]
     },

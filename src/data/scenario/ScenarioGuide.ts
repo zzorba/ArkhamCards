@@ -157,7 +157,7 @@ export default class ScenarioGuide {
       new GuidedCampaignLog(
         [],
         this.campaignGuide,
-        scenarioState.campaignState.investigators,
+        scenarioState.campaignState,
         campaignLog,
         this.id
       ),

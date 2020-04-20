@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -180,7 +180,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
   render() {
     const { campaignGuide } = this.props;
     return (
-      <ScrollView>
+      <>
         { this.renderChaosBag() }
         { flatMap(campaignGuide.campaignLogSections(), log => {
           if (log.type === 'hidden') {
@@ -192,7 +192,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
             </View>
           );
         }) }
-      </ScrollView>
+      </>
     );
   }
 }

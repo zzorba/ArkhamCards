@@ -43,7 +43,6 @@ export type Effect =
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect
   | UpgradeDecksEffect
-  | CampaignLinkEffect
   | FreeformCampaignLogEffect;
 export type InvestigatorSelector =
   | "lead_investigator"
@@ -111,7 +110,8 @@ export type Input =
   | ScenarioInvestigatorsInput
   | PlayScenarioInput
   | TextBoxInput
-  | CampaignLinkInput;
+  | ReceiveCampaignLinkInput
+  | SendCampaignLinkInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition = InvestigatorCardCondition | BasicTraumaCondition | InvestigatorCondition;
@@ -281,11 +281,6 @@ export interface AddRemoveChaosTokenEffect {
 }
 export interface UpgradeDecksEffect {
   type: "upgrade_decks";
-}
-export interface CampaignLinkEffect {
-  type: "campaign_link";
-  id: string;
-  decision: string;
 }
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
@@ -596,10 +591,16 @@ export interface TextBoxInput {
   type: "text_box";
   effects: FreeformCampaignLogEffect[];
 }
-export interface CampaignLinkInput {
-  type: "campaign_link";
+export interface ReceiveCampaignLinkInput {
+  type: "receive_campaign_link";
   id: string;
   choices: Choice[];
+}
+export interface SendCampaignLinkInput {
+  type: "send_campaign_link";
+  id: string;
+  decision: string;
+  prompt?: string;
 }
 export interface EncounterSetsStep {
   id: string;

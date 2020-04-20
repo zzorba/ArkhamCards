@@ -175,7 +175,7 @@ export default class ScenarioStep {
       return new GuidedCampaignLog(
         effects,
         this.scenarioGuide.campaignGuide,
-        scenarioState.campaignState.investigators,
+        scenarioState.campaignState,
         this.campaignLog,
         this.scenarioGuide.id
       );

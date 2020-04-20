@@ -329,7 +329,7 @@ export interface Campaign {
     campaignIdA: number;
     campaignIdB: number;
   };
-  linkedCampaign?: boolean;
+  linkedCampaignId?: number;
 }
 
 

@@ -18,6 +18,7 @@ import CampaignItem from './CampaignItem';
 import { NewCampaignProps } from '../NewCampaignView';
 import { CampaignDetailProps } from '../CampaignDetailView';
 import { CampaignGuideProps } from 'components/campaignguide/CampaignGuideView';
+import { LinkedCampaignGuideProps } from 'components/campaignguide/LinkedCampaignGuideView';
 import { campaignNames } from 'components/campaign/constants';
 import SearchBox from 'components/core/SearchBox';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
@@ -113,6 +114,20 @@ class MyCampaignsView extends React.Component<Props, State> {
       },
     };
     if (campaign.guided) {
+      if (campaign.link) {
+        Navigation.push<LinkedCampaignGuideProps>(componentId, {
+          component: {
+            name: 'Guide.LinkedCampaign',
+            passProps: {
+              campaignId: campaign.id,
+              campaignIdA: campaign.link.campaignIdA,
+              campaignIdB: campaign.link.campaignIdB,
+            },
+            options,
+          },
+        });
+        return;
+      }
       Navigation.push<CampaignGuideProps>(componentId, {
         component: {
           name: 'Guide.Campaign',

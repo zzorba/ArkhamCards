@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { map } from 'lodash';
 
 import { ProcessedCampaign } from 'data/scenario';
@@ -16,7 +15,7 @@ export default class ScenarioListTab extends React.Component<Props> {
   render() {
     const { fontScale, componentId, campaignId, processedCampaign } = this.props;
     return (
-      <ScrollView>
+      <>
         { map(processedCampaign.scenarios, (scenario, idx) => (
           <ScenarioButton
             key={idx}
@@ -26,7 +25,7 @@ export default class ScenarioListTab extends React.Component<Props> {
             campaignId={campaignId}
           />
         )) }
-      </ScrollView>
+      </>
     );
   }
 }

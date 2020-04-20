@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { NavigationProps } from 'components/nav/types';
@@ -24,13 +25,15 @@ class CampaignLogView extends React.Component<Props> {
       componentId,
     } = this.props;
     return (
-      <CampaignLogComponent
-        componentId={componentId}
-        campaignId={campaignId}
-        campaignGuide={campaignGuide}
-        campaignLog={campaignLog}
-        fontScale={fontScale}
-      />
+      <ScrollView>
+        <CampaignLogComponent
+          componentId={componentId}
+          campaignId={campaignId}
+          campaignGuide={campaignGuide}
+          campaignLog={campaignLog}
+          fontScale={fontScale}
+        />
+      </ScrollView>
     );
   }
 }

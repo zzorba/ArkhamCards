@@ -89,7 +89,7 @@ export const getCampaigns = createSelector(
   allCampaigns => sortBy(
     filter(
       values(allCampaigns),
-      campaign => !campaign.linkedCampaign
+      campaign => !campaign.linkedCampaignId
     ),
     campaign => campaign.lastUpdated ? -new Date(campaign.lastUpdated).getTime() : 0
   )

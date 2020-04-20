@@ -3,8 +3,7 @@ import { Text } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
-import { CampaignGuideContextType } from './CampaignGuideContext';
-import withCampaignGuideContext, { CampaignGuideInputProps } from './withCampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideProps, CampaignGuideInputProps } from './withCampaignGuideContext';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
@@ -14,11 +13,13 @@ export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
 export default function withScenarioGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & ScenarioGuideContextType>
 ): React.ComponentType<Props & ScenarioGuideInputProps> {
-  class ScenarioDataComponent extends React.Component<Props & CampaignGuideContextType & ScenarioGuideInputProps> {
+  class ScenarioDataComponent extends React.Component<Props & CampaignGuideProps & ScenarioGuideInputProps> {
     render() {
       const {
-        campaignState,
-        campaignGuide,
+        campaignData: {
+          campaignState,
+          campaignGuide,
+        },
         scenarioId,
       } = this.props;
       const processedScenario = campaignGuide.getScenario(

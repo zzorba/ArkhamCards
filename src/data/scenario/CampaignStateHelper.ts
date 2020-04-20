@@ -30,14 +30,19 @@ export default class CampaignStateHelper {
   investigators: CardsMap;
   actions: CampaignGuideActions;
 
+  linkedState?: CampaignGuideState;
+
   constructor(
     state: CampaignGuideState,
     investigators: CardsMap,
-    actions: CampaignGuideActions
+    actions: CampaignGuideActions,
+    linkedState?: CampaignGuideState
   ) {
     this.state = state;
     this.investigators = investigators;
     this.actions = actions;
+    console.log(`Constructed CampaignStateHelper: ${linkedState}`);
+    this.linkedState = linkedState;
   }
 
   showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => void) {

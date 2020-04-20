@@ -98,8 +98,16 @@ export default function(
   }
   if (action.type === DELETE_CAMPAIGN) {
     const newCampaigns = Object.assign({}, state.all);
-    delete newCampaigns[action.id];
     const newChaosBags = Object.assign({}, state.chaosBagResults || {});
+
+    const campaign = newCampaigns[action.id];
+    if (campaign && campaign.link) {
+      delete newCampaigns[campaign.link.campaignIdA];
+      delete newCampaigns[campaign.link.campaignIdB];
+      delete newChaosBags[campaign.link.campaignIdA];
+      delete newChaosBags[campaign.link.campaignIdB];
+    }
+    delete newCampaigns[action.id];
     delete newChaosBags[action.id];
     return {
       ...state,
@@ -115,7 +123,6 @@ export default function(
       action.weaknessSet,
       action.now,
     );
-    newCampaignA.linkedCampaign = true;
     const newCampaignB = newBlankGuidedCampaign(
       action.id + 2,
       t`${action.name} (Campaign B)`,
@@ -123,7 +130,6 @@ export default function(
       action.weaknessSet,
       action.now
     );
-    newCampaignB.linkedCampaign = true;
     const newCampaign = newBlankGuidedCampaign(
       action.id,
       action.name,
@@ -131,6 +137,8 @@ export default function(
       action.weaknessSet,
       action.now
     );
+    newCampaignA.linkedCampaignId = newCampaignB.id;
+    newCampaignB.linkedCampaignId = newCampaignA.id;
     newCampaign.link = {
       campaignIdA: newCampaignA.id,
       campaignIdB: newCampaignB.id,

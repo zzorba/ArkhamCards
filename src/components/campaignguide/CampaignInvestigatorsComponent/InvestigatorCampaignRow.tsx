@@ -13,7 +13,7 @@ import CardSectionHeader from 'components/core/CardSectionHeader';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import Card, { CardsMap } from 'data/Card';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import SingleCardWrapper from '../../SingleCardWrapper';
+import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
 import typography from 'styles/typography';
 import space from 'styles/space';
 

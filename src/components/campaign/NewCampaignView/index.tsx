@@ -375,6 +375,7 @@ class NewCampaignView extends React.Component<Props, State> {
           assignedCards: weaknessAssignedCards,
         }
       );
+      Navigation.pop(componentId);
       return;
     }
     // Save to redux.

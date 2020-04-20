@@ -43,6 +43,7 @@ import {
 import CampaignGuide from './CampaignGuide';
 import Card, { CardsMap } from 'data/Card';
 import { LatestDecks } from 'data/scenario';
+import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 
 interface BasicEntry {
   id: string;
@@ -141,6 +142,7 @@ export default class GuidedCampaignLog {
   campaignGuide: CampaignGuide;
   chaosBag: ChaosBag;
   investigatorCards: CardsMap;
+  linked: boolean;
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
@@ -167,13 +169,15 @@ export default class GuidedCampaignLog {
   constructor(
     effectsWithInput: EffectsWithInput[],
     campaignGuide: CampaignGuide,
-    investigatorCards: CardsMap,
+    campaignState: CampaignStateHelper,
     readThrough?: GuidedCampaignLog,
     scenarioId?: string
   ) {
     this.scenarioId = scenarioId;
     this.campaignGuide = campaignGuide;
-    this.investigatorCards = investigatorCards;
+    this.investigatorCards = campaignState.investigators;
+    console.log(`Constructed campaign log: ${campaignState.linkedState}`);
+    this.linked = !!campaignState.linkedState;
 
     const hasRelevantEffects = !!find(
       effectsWithInput,

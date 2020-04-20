@@ -111,7 +111,7 @@ export default class CampaignGuide {
     let campaignLog: GuidedCampaignLog = new GuidedCampaignLog(
       [],
       this,
-      campaignState.investigators
+      campaignState
     );
     forEach(this.allScenarioIds(), scenarioId => {
       if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {

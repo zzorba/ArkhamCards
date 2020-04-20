@@ -1,38 +1,108 @@
 import React from 'react';
-import { Text, ScrollView, StyleSheet, View } from 'react-native';
-import { map, partition } from 'lodash';
+import { InteractionManager, Text, StyleSheet, View } from 'react-native';
+import { Navigation, EventSubscription } from 'react-native-navigation';
+import { flatMap, forEach, map, partition } from 'lodash';
 import { t } from 'ttag';
 
+import { Campaign, InvestigatorData } from 'actions/types';
 import BasicButton from 'components/core/BasicButton';
 import CampaignGuideSummary from './CampaignGuideSummary';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
-import { LatestDecks } from 'data/scenario';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
-import Card, { CardsMap } from 'data/Card';
+import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
+import Card from 'data/Card';
 import typography from 'styles/typography';
 import { s, m, l } from 'styles/space';
 import { COLORS } from 'styles/colors';
 
 interface Props {
   componentId: string;
-  campaignGuide: CampaignGuide;
+  campaignData: CampaignGuideContextType;
   campaignLog: GuidedCampaignLog;
   fontScale: number;
-  latestDecks: LatestDecks;
+  updateCampaign: (
+    id: number,
+    sparseCampaign: Partial<Campaign>
+  ) => void;
+  deleteCampaign: () => void;
+}
+
+interface State {
   spentXp: {
     [code: string]: number;
   };
-  deleteCampaign: () => void;
-  incSpentXp: (code: string) => void;
-  decSpentXp: (code: string) => void;
-  playerCards: CardsMap;
 }
 
-export default class InvestigatorsTab extends React.Component<Props> {
+export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
+  _navEventListener: EventSubscription;
+
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
+
+  constructor(props: Props) {
+    super(props);
+    const spentXp: {
+      [code: string]: number;
+    } = {};
+    forEach(props.campaignData.adjustedInvestigatorData, (data, code) => {
+      spentXp[code] = (data && data.spentXp) || 0;
+    });
+
+    this.state = {
+      spentXp,
+    };
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener && this._navEventListener.remove();
+    InteractionManager.runAfterInteractions(this._syncCampaignData);
+  }
+
+  _syncCampaignData = () => {
+    const {
+      campaignData: {
+        campaignId,
+        campaignGuide,
+        campaignState,
+      },
+      updateCampaign,
+    } = this.props;
+    const { spentXp } = this.state;
+    const {
+      campaignLog,
+      scenarios,
+    } = campaignGuide.processAllScenarios(campaignState);
+    const adjustedInvestigatorData: InvestigatorData = {};
+    forEach(spentXp, (xp, code) => {
+      adjustedInvestigatorData[code] = {
+        spentXp: xp,
+      };
+    });
+    updateCampaign(
+      campaignId,
+      {
+        guideVersion: campaignGuide.campaignVersion(),
+        difficulty: campaignLog.campaignData.difficulty,
+        investigatorData: campaignLog.campaignData.investigatorData,
+        chaosBag: campaignLog.chaosBag,
+        lastUpdated: new Date(),
+        scenarioResults: flatMap(scenarios, scenario => {
+          if (scenario.type !== 'completed') {
+            return [];
+          }
+          const scenarioType = scenario.scenarioGuide.scenarioType();
+          return {
+            scenario: scenario.scenarioGuide.scenarioName(),
+            scenarioCode: scenario.scenarioGuide.scenarioId(),
+            resolution: campaignLog.scenarioResolution(scenario.scenarioGuide.scenarioId()) || '',
+            interlude: scenarioType === 'interlude' || scenarioType === 'epilogue',
+          };
+        }),
+        adjustedInvestigatorData,
+      }
+    );
+  };
 
   _addInvestigator = () => {
     this.context.campaignState.showChooseDeck();
@@ -42,18 +112,37 @@ export default class InvestigatorsTab extends React.Component<Props> {
     this.context.campaignState.showChooseDeck(investigator);
   };
 
+
+  _incXp = (code: string) => {
+    this.setState({
+      spentXp: {
+        ...this.state.spentXp,
+        [code]: (this.state.spentXp[code] || 0) + 1,
+      }
+    });
+  };
+
+  _decXp = (code: string) => {
+    this.setState({
+      spentXp: {
+        ...this.state.spentXp,
+        [code]: Math.max(0, (this.state.spentXp[code] || 0) - 1),
+      }
+    });
+  };
+
   render() {
     const {
       campaignLog,
-      campaignGuide,
+      campaignData: {
+        campaignGuide,
+        playerCards,
+      },
       fontScale,
       componentId,
-      playerCards,
-      spentXp,
-      incSpentXp,
-      decSpentXp,
       deleteCampaign,
     } = this.props;
+    const { spentXp } = this.state;
     const difficulty = campaignLog.campaignData.difficulty;
     return (
       <CampaignGuideContext.Consumer>
@@ -63,7 +152,7 @@ export default class InvestigatorsTab extends React.Component<Props> {
             investigator => campaignLog.isEliminated(investigator)
           );
           return (
-            <ScrollView>
+            <>
               <View style={[styles.section, styles.bottomBorder]}>
                 <CampaignGuideSummary
                   difficulty={difficulty}
@@ -76,8 +165,8 @@ export default class InvestigatorsTab extends React.Component<Props> {
                   campaignId={campaignId}
                   playerCards={playerCards}
                   spentXp={spentXp[investigator.code] || 0}
-                  incSpentXp={incSpentXp}
-                  decSpentXp={decSpentXp}
+                  incSpentXp={this._incXp}
+                  decSpentXp={this._decXp}
                   deck={latestDecks[investigator.code]}
                   componentId={componentId}
                   campaignLog={campaignLog}
@@ -101,8 +190,8 @@ export default class InvestigatorsTab extends React.Component<Props> {
                     key={investigator.code}
                     playerCards={playerCards}
                     spentXp={spentXp[investigator.code] || 0}
-                    incSpentXp={incSpentXp}
-                    decSpentXp={decSpentXp}
+                    incSpentXp={this._incXp}
+                    decSpentXp={this._decXp}
                     campaignId={campaignId}
                     campaignLog={campaignLog}
                     deck={latestDecks[investigator.code]}
@@ -118,7 +207,7 @@ export default class InvestigatorsTab extends React.Component<Props> {
                 color={COLORS.red}
                 onPress={deleteCampaign}
               />
-            </ScrollView>
+            </>
           );
         } }
       </CampaignGuideContext.Consumer>
