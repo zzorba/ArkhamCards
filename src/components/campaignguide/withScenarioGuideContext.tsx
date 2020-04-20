@@ -2,9 +2,11 @@ import React from 'react';
 import { Text } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
+import { CampaignGuideState } from 'actions/types';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import withCampaignGuideContext, { CampaignGuideProps, CampaignGuideInputProps } from './withCampaignGuideContext';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import { AppState, getGuideState } from 'reducers';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;

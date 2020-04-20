@@ -1,6 +1,8 @@
 import React from 'react';
 import { t } from 'ttag';
 
+import ReceiveCampaignLinkInputComponent from './ReceiveCampaignLinkInputComponent';
+import SendCampaignLinkInputComponent from './SendCampaignLinkInputComponent';
 import TextBoxInputComponent from './TextBoxInputComponent';
 import PlayScenarioComponent from './PlayScenarioComponent';
 import UpgradeDecksInput from './UpgradeDecksInput';
@@ -29,7 +31,9 @@ interface Props {
 }
 
 export default class InputStepComponent extends React.Component<Props> {
-  renderContent(campaignId: number): React.ReactNode {
+  renderContent(
+    campaignId: number
+  ): React.ReactNode {
     const {
       step,
       campaignLog,
@@ -169,6 +173,29 @@ export default class InputStepComponent extends React.Component<Props> {
             prompt={step.text}
           />
         );
+      case 'send_campaign_link':
+        return (
+          <SendCampaignLinkInputComponent
+            id={step.id}
+            input={step.input}
+            campaignLog={campaignLog}
+            bulletType={step.bullet_type}
+            text={step.text}
+          />
+        );
+      case 'receive_campaign_link':
+        return (
+          <ReceiveCampaignLinkInputComponent
+            componentId={componentId}
+            id={step.id}
+            input={step.input}
+            campaignLog={campaignLog}
+          />
+        );
+      default:
+        /* eslint-disable @typescript-eslint/no-unused-vars */
+        const _exhaustiveCheck: never = step.input;
+        return null;
     }
   }
 

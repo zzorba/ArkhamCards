@@ -99,14 +99,6 @@ export default function(
   if (action.type === DELETE_CAMPAIGN) {
     const newCampaigns = Object.assign({}, state.all);
     const newChaosBags = Object.assign({}, state.chaosBagResults || {});
-
-    const campaign = newCampaigns[action.id];
-    if (campaign && campaign.link) {
-      delete newCampaigns[campaign.link.campaignIdA];
-      delete newCampaigns[campaign.link.campaignIdB];
-      delete newChaosBags[campaign.link.campaignIdA];
-      delete newChaosBags[campaign.link.campaignIdB];
-    }
     delete newCampaigns[action.id];
     delete newChaosBags[action.id];
     return {

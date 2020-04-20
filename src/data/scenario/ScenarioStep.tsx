@@ -321,6 +321,39 @@ export default class ScenarioStep {
     const baseStepId = parts[0];
     const nextIteration = parts.length > 1 ? parseInt(parts[1], 10) + 1 : 1;
     switch (input.type) {
+      case 'send_campaign_link': {
+        if (this.campaignLog.linked) {
+          const decision = scenarioState.campaignLink(
+            'send',
+            input.id
+          );
+          if (decision === undefined) {
+            return undefined;
+          }
+        }
+        return this.proceedToNextStep(
+          this.remainingStepIds,
+          this.campaignLog
+        );
+      }
+      case 'receive_campaign_link': {
+        if (this.campaignLog.linked) {
+          const decision = scenarioState.campaignLink('receive', input.id);
+          if (decision === undefined) {
+            return undefined;
+          }
+          const choice = find(input.choices, choice => choice.id === decision);
+          return this.maybeCreateEffectsStep(
+            step.id,
+            [...((choice && choice.steps) || []), ...this.remainingStepIds],
+            choice ? [{
+              effects: choice.effects || [],
+            }] : []
+          );
+        }
+
+        throw new Error('TODO: manual linked campaign');
+      }
       case 'text_box': {
         const text = scenarioState.text(step.id);
         if (text === undefined) {

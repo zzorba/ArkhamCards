@@ -69,4 +69,16 @@ export default class ScenarioStateHelper {
   count(id: string): number | undefined {
     return this.campaignState.count(id, this.scenarioId);
   }
+
+  campaignLink(sendOrReceive: 'send' | 'receive', id: string): string | undefined {
+    return this.campaignState.campaignLink(sendOrReceive, id, this.scenarioId);
+  }
+
+  setCampaignLink(id: string, decision: string) {
+    this.campaignState.setCampaignLink(
+      id,
+      decision,
+      this.scenarioId
+    );
+  }
 }

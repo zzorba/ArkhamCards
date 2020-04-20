@@ -182,7 +182,9 @@ export default class TextEditDialog extends React.Component<Props, State> {
         ) }
         <DialogComponent.Input
           style={[
-            { minHeight: height + 12 },
+            {
+              height: Math.min(height + 12, 200),
+             },
             isCrossedOut && Platform.OS === 'ios' ? {
               textDecorationLine: 'line-through',
               textDecorationStyle: 'solid',
@@ -190,7 +192,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
             } : {},
           ]}
           wrapperStyle={{
-            minHeight: height + 12,
+            height: Math.min(height + 12, 200),
           }}
           textInputRef={this._captureTextInputRef}
           value={text}

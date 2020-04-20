@@ -20,6 +20,7 @@ export interface CampaignGuideReduxData {
   campaign: SingleCampaign;
   campaignGuide: CampaignGuide;
   campaignState: CampaignGuideState;
+  linkedCampaignState?: CampaignGuideState;
   campaignInvestigators: Card[];
   latestDecks: Deck[];
 }
@@ -47,11 +48,11 @@ export function campaignGuideReduxData(
     campaign,
     campaignGuide,
     campaignState: getCampaignGuideState(state, campaignId),
+    linkedCampaignState: campaign.linkedCampaignId ? getCampaignGuideState(state, campaign.linkedCampaignId) : undefined,
     latestDecks: flatMap(latestDeckIds, deckId => decks[deckId]),
     campaignInvestigators,
   };
 }
-
 
 export function constructCampaignGuideContext(
   {
@@ -60,9 +61,9 @@ export function constructCampaignGuideContext(
     campaignGuide,
     campaignInvestigators,
     latestDecks,
+    linkedCampaignState,
   }: CampaignGuideReduxData,
   universalData: UniversalCampaignProps,
-  linkedCampaignState?: CampaignGuideState
 ): CampaignGuideContextType {
   const showChooseDeck = (
     singleInvestigator?: Card,
@@ -147,6 +148,19 @@ export function constructCampaignGuideContext(
     );
   };
 
+  const setCampaignLink = (
+    stepId: string,
+    value: string,
+    scenarioId?: string
+  ) => {
+    universalData.setCampaignLink(
+      campaign.id,
+      stepId,
+      value,
+      scenarioId
+    );
+  };
+
   const setNumberChoices = (
     stepId: string,
     choices: NumberChoices,
@@ -201,6 +215,7 @@ export function constructCampaignGuideContext(
       setNumberChoices,
       setStringChoices,
       setChoice,
+      setCampaignLink,
       setText,
       resetScenario,
       undo,

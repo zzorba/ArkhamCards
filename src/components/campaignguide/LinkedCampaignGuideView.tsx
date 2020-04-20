@@ -116,13 +116,11 @@ class LinkedCampaignGuideView extends React.Component<Props> {
     }
     const contextA = constructCampaignGuideContext(
       campaignDataA,
-      this.props,
-      campaignDataB.campaignState
+      this.props
     );
     const contextB = constructCampaignGuideContext(
       campaignDataB,
-      this.props,
-      campaignDataA.campaignState
+      this.props
     );
     const processedCampaignA = contextA.campaignGuide.processAllScenarios(
       contextA.campaignState
@@ -148,7 +146,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 componentId={componentId}
                 fontScale={fontScale}
                 updateCampaign={updateCampaign}
-                campaignLog={processedCampaignA.campaignLog}
+                processedCampaign={processedCampaignA}
                 campaignData={contextA}
               />
             </CampaignGuideContext.Provider>
@@ -163,7 +161,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 componentId={componentId}
                 fontScale={fontScale}
                 updateCampaign={updateCampaign}
-                campaignLog={processedCampaignB.campaignLog}
+                processedCampaign={processedCampaignB}
                 campaignData={contextB}
               />
             </CampaignGuideContext.Provider>

@@ -122,7 +122,7 @@ class CampaignGuideView extends React.Component<Props> {
               deleteCampaign={this._deleteCampaign}
               updateCampaign={updateCampaign}
               campaignData={campaignData}
-              campaignLog={processedCampaign.campaignLog}
+              processedCampaign={processedCampaign}
             />
           </ScrollView>
         ),

@@ -154,7 +154,6 @@ export function setScenarioChoice(
   };
 }
 
-
 export function setScenarioText(
   campaignId: number,
   step: string,
@@ -169,6 +168,24 @@ export function setScenarioText(
       scenario,
       step,
       text,
+    },
+  };
+}
+
+export function setCampaignLink(
+  campaignId: number,
+  step: string,
+  decision: string,
+  scenario?: string
+): GuideSetInputAction {
+  return {
+    type: GUIDE_SET_INPUT,
+    campaignId,
+    input: {
+      type: 'campaign_link',
+      scenario,
+      step,
+      decision,
     },
   };
 }

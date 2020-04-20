@@ -21,6 +21,7 @@ import {
   setScenarioNumberChoices,
   setScenarioStringChoices,
   setScenarioText,
+  setCampaignLink,
   undo,
 } from 'components/campaignguide/actions';
 import { Deck, NumberChoices, StringChoices, SupplyCounts } from 'actions/types';
@@ -46,6 +47,12 @@ interface ReduxActionProps {
     campaignId: number,
     stepId: string,
     value: number,
+    scenarioId?: string
+  ) => void;
+  setCampaignLink: (
+    campaignId: number,
+    stepId: string,
+    value: string,
     scenarioId?: string
   ) => void;
   setScenarioSupplies: (
@@ -120,6 +127,7 @@ export default function withUniversalCampaignData<Props>(
       resetScenario,
       setScenarioChoice,
       setScenarioText,
+      setCampaignLink,
       undo,
     }, dispatch);
   };

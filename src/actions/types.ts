@@ -695,6 +695,12 @@ export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
 }
 
+export interface GuideCampaignLinkInput extends BasicInput {
+  type: 'campaign_link';
+  step: string;
+  decision: string;
+}
+
 export type GuideInput =
   GuideSuppliesInput |
   GuideDecisionInput |
@@ -703,7 +709,8 @@ export type GuideInput =
   GuideCountInput |
   GuideChoiceInput |
   GuideStringInput |
-  GuideStartScenarioInput;
+  GuideStartScenarioInput |
+  GuideCampaignLinkInput;
 
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {

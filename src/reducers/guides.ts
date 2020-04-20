@@ -72,9 +72,19 @@ export default function(
       state,
       action.campaignId,
       campaign => {
+        const existingInputs = action.input.type !== 'campaign_link' ?
+          campaign.inputs :
+          filter(campaign.inputs, input => !(
+              input.type === 'campaign_link' &&
+              action.input.type === 'campaign_link' &&
+              input.step === action.input.step &&
+              input.scenario === action.input.scenario
+            )
+          );
+        const inputs = [...existingInputs, action.input];
         return {
           ...campaign,
-          inputs: [...campaign.inputs, action.input],
+          inputs,
         };
       });
   }
@@ -86,18 +96,31 @@ export default function(
         if (!campaign.inputs.length) {
           return campaign;
         }
-        const latestInputIndex = findLastIndex(campaign.inputs, input =>
-          input.scenario === action.scenarioId
+        const latestInputIndex = findLastIndex(
+          campaign.inputs,
+          input => (
+            input.scenario === action.scenarioId &&
+            input.type !== 'campaign_link'
+          )
         );
         if (latestInputIndex === -1) {
           return campaign;
         }
+        const inputs = filter(
+          campaign.inputs,
+          (input, idx) => {
+            if (input.type === 'campaign_link') {
+              return (
+                idx < latestInputIndex ||
+                input.scenario !== action.scenarioId
+              );
+            }
+            return idx !== latestInputIndex;
+          }
+        );
         return {
           ...campaign,
-          inputs: filter(
-            campaign.inputs,
-            (item, idx) => idx !== latestInputIndex
-          ),
+          inputs,
         };
       });
   }

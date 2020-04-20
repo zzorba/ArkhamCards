@@ -7,7 +7,7 @@ import { t } from 'ttag';
 import { Campaign, InvestigatorData } from 'actions/types';
 import BasicButton from 'components/core/BasicButton';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import { ProcessedCampaign } from 'data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import Card from 'data/Card';
 import typography from 'styles/typography';
@@ -17,7 +17,7 @@ import { COLORS } from 'styles/colors';
 interface Props {
   componentId: string;
   campaignData: CampaignGuideContextType;
-  campaignLog: GuidedCampaignLog;
+  processedCampaign: ProcessedCampaign;
   fontScale: number;
   updateCampaign: (
     id: number,
@@ -63,15 +63,14 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       campaignData: {
         campaignId,
         campaignGuide,
-        campaignState,
+      },
+      processedCampaign: {
+        campaignLog,
+        scenarios,
       },
       updateCampaign,
     } = this.props;
     const { spentXp } = this.state;
-    const {
-      campaignLog,
-      scenarios,
-    } = campaignGuide.processAllScenarios(campaignState);
     const adjustedInvestigatorData: InvestigatorData = {};
     forEach(spentXp, (xp, code) => {
       adjustedInvestigatorData[code] = {
@@ -111,7 +110,6 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     this.context.campaignState.showChooseDeck(investigator);
   };
 
-
   _incXp = (code: string) => {
     this.setState({
       spentXp: {
@@ -132,7 +130,9 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
 
   render() {
     const {
-      campaignLog,
+      processedCampaign: {
+        campaignLog,
+      },
       campaignData: {
         playerCards,
       },

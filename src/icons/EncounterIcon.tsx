@@ -320,9 +320,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'in_the_clutches_of_chaos':
       case 'before_the_black_throne':
         return this.circleIcon(encounter_code, size, color);
-      case 'tde':
-      case 'tdea':
       case 'tdeb':
+        return this.dreamIcon('agents_of_atlach_nacha', size, color);
+      case 'tdea':
+        return this.dreamIcon('the_search_for_kadath', size, color);
+      case 'tde':
       case 'the_dream_eaters':
         return this.dreamIcon('dream', size, color);
       case 'agents_of_atlach_nacha':

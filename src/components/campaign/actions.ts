@@ -34,7 +34,7 @@ import {
   RestoreBackupAction,
 } from 'actions/types';
 import { ChaosBag } from 'constants';
-import { AppState } from 'reducers';
+import { AppState, getCampaign } from 'reducers';
 
 function getBaseDeckIds(
   state: AppState,
@@ -156,7 +156,7 @@ export function updateCampaign(
   id: number,
   sparseCampaign: Partial<Campaign>
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
-  return (dispatch, getState) => {
+  return (dispatch, getState: () => AppState) => {
     const campaign: Partial<Campaign> = { ...sparseCampaign };
     if (campaign.latestDeckIds) {
       campaign.baseDeckIds = getBaseDeckIds(getState(), campaign.latestDeckIds);
@@ -185,11 +185,26 @@ export function updateChaosBagResults(
   };
 }
 
-export function deleteCampaign(id: number): DeleteCampaignAction {
-  return {
-    type: DELETE_CAMPAIGN,
-    id,
-  };
+export function deleteCampaign(
+  id: number
+): ThunkAction<void, AppState, null, DeleteCampaignAction> {
+  return (dispatch, getState: () => AppState) => {
+    const campaign = getCampaign(getState(), id);
+    if (campaign && campaign.link) {
+      dispatch({
+        type: DELETE_CAMPAIGN,
+        id: campaign.link.campaignIdA,
+      });
+      dispatch({
+        type: DELETE_CAMPAIGN,
+        id: campaign.link.campaignIdB,
+      });
+    }
+    dispatch({
+      type: DELETE_CAMPAIGN,
+      id,
+    });
+  }
 }
 
 export function addScenarioResult(

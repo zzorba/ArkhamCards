@@ -20,6 +20,7 @@ export interface CampaignGuideActions {
   setStringChoices: (id: string, choices: StringChoices, scenarioId?: string) => void;
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   setText: (id: string, text: string, scenarioId?: string) => void;
+  setCampaignLink: (id: string, value: string, scenarioId?: string) => void;
   startScenario: (scenarioId: string) => void;
   resetScenario: (scenarioId: string) => void;
   undo: (scenarioId: string) => void;
@@ -125,6 +126,19 @@ export default class CampaignStateHelper {
     );
   }
 
+  private linkedEntry(
+    type: string,
+    step?: string
+  ): GuideInput | undefined {
+    return findLast(
+      this.linkedState ? this.linkedState.inputs : [],
+      input => (
+        input.type === type &&
+        (input.type === 'start_scenario' || input.step === step)
+      )
+    );
+  }
+
   startedScenario(scenario: string): boolean {
     return !!this.entry('start_scenario', undefined, scenario);
   }
@@ -183,5 +197,43 @@ export default class CampaignStateHelper {
       return entry.count;
     }
     return undefined;
+  }
+
+  campaignLink(
+    sendOrReceive: 'send' | 'receive',
+    id: string,
+    scenario?: string
+  ): string | undefined {
+    switch (sendOrReceive) {
+      case 'send': {
+        const entry = this.entry('campaign_link', id, scenario);
+        if (entry && entry.type === 'campaign_link') {
+          return entry.decision;
+        }
+        return undefined;
+      }
+      case 'receive': {
+        if (!this.linkedState) {
+          return undefined;
+        }
+        const entry = this.linkedEntry('campaign_link', id);
+        if (entry && entry.type === 'campaign_link') {
+          return entry.decision;
+        }
+        return undefined;
+      }
+    }
+  }
+
+  setCampaignLink(
+    id: string,
+    decision: string,
+    scenarioId?: string
+  ) {
+    this.actions.setCampaignLink(
+      id,
+      decision,
+      scenarioId
+    );
   }
 }

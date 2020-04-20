@@ -593,6 +593,7 @@ export interface TextBoxInput {
 }
 export interface ReceiveCampaignLinkInput {
   type: "receive_campaign_link";
+  linked_prompt: string;
   id: string;
   choices: Choice[];
 }
