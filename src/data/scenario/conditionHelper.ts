@@ -465,7 +465,6 @@ export function campaignDataConditionResult(
 ): BinaryResult | StringResult | NumberResult {
   switch (condition.campaign_data) {
     case 'linked_campaign': {
-      console.log(`Checking linked: ${campaignLog.linked}`);
       return binaryConditionResult(
         campaignLog.linked,
         condition.options

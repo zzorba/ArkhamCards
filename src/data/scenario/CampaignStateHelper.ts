@@ -41,7 +41,6 @@ export default class CampaignStateHelper {
     this.state = state;
     this.investigators = investigators;
     this.actions = actions;
-    console.log(`Constructed CampaignStateHelper: ${linkedState}`);
     this.linkedState = linkedState;
   }
 

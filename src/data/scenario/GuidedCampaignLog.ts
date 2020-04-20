@@ -176,7 +176,6 @@ export default class GuidedCampaignLog {
     this.scenarioId = scenarioId;
     this.campaignGuide = campaignGuide;
     this.investigatorCards = campaignState.investigators;
-    console.log(`Constructed campaign log: ${campaignState.linkedState}`);
     this.linked = !!campaignState.linkedState;
 
     const hasRelevantEffects = !!find(

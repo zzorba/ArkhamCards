@@ -251,10 +251,16 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     if (deck && deck.investigator_code) {
       if (deck && deck.previous_deck && !previousDeck) {
-        if (isPrivate) {
-          fetchPrivateDeck(deck.previous_deck);
+        if (deck.local) {
+          // Something broken with the previous deck so
+          // just load it anyway for now?
+          this.loadCards(deck);
         } else {
-          fetchPublicDeck(deck.previous_deck, false);
+          if (isPrivate) {
+            fetchPrivateDeck(deck.previous_deck);
+          } else {
+            fetchPublicDeck(deck.previous_deck, false);
+          }
         }
       } else {
         this.loadCards(deck, previousDeck);
