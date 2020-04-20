@@ -1,12 +1,14 @@
 import React from 'react';
-import { Alert, InteractionManager, ScrollView } from 'react-native';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import CampaignGuideSummary from './CampaignGuideSummary';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import { Campaign } from 'actions/types';
+import BasicButton from 'components/core/BasicButton';
 import CampaignInvestigatorsComponent from 'components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from 'components/campaignguide/CampaignLogComponent';
 import ScenarioListComponent from 'components/campaignguide/ScenarioListComponent';
@@ -18,6 +20,8 @@ import withUniversalCampaignData, { UniversalCampaignProps } from 'components/ca
 import { campaignGuideReduxData, CampaignGuideReduxData, constructCampaignGuideContext } from 'components/campaignguide/contextHelper';
 import { getCampaign, AppState } from 'reducers';
 import { NavigationProps } from 'components/nav/types';
+import { COLORS } from 'styles/colors';
+import { s, m } from 'styles/space';
 
 export interface LinkedCampaignGuideProps {
   campaignId: number;
@@ -101,7 +105,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
 
   render() {
     const {
-      campaignId,
       campaignDataA,
       campaignDataB,
       fontScale,
@@ -134,26 +137,41 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         title: t`Decks`,
         node: (
           <ScrollView>
+            <View style={[styles.section, styles.bottomBorder]}>
+              <CampaignGuideSummary
+                difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
+                campaignGuide={contextA.campaignGuide}
+              />
+            </View>
             <CampaignGuideContext.Provider value={contextA}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
                 fontScale={fontScale}
-                deleteCampaign={this._deleteCampaign}
                 updateCampaign={updateCampaign}
                 campaignLog={processedCampaignA.campaignLog}
                 campaignData={contextA}
               />
             </CampaignGuideContext.Provider>
+            <View style={[styles.section, styles.bottomBorder]}>
+              <CampaignGuideSummary
+                difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
+                campaignGuide={contextB.campaignGuide}
+              />
+            </View>
             <CampaignGuideContext.Provider value={contextB}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
                 fontScale={fontScale}
-                deleteCampaign={this._deleteCampaign}
                 updateCampaign={updateCampaign}
                 campaignLog={processedCampaignB.campaignLog}
                 campaignData={contextB}
               />
             </CampaignGuideContext.Provider>
+            <BasicButton
+              title={t`Delete Campaign`}
+              onPress={this._deleteCampaign}
+              color={COLORS.red}
+            />
           </ScrollView>
         ),
       },
@@ -162,6 +180,12 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         title: t`Scenarios`,
         node: (
           <ScrollView>
+            <View style={[styles.section, styles.bottomBorder]}>
+              <CampaignGuideSummary
+                difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
+                campaignGuide={contextA.campaignGuide}
+              />
+            </View>
             <CampaignGuideContext.Provider value={contextA}>
               <ScenarioListComponent
                 campaignId={campaignDataA.campaign.id}
@@ -170,6 +194,12 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 componentId={componentId}
               />
             </CampaignGuideContext.Provider>
+            <View style={[styles.section, styles.bottomBorder]}>
+              <CampaignGuideSummary
+                difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
+                campaignGuide={contextB.campaignGuide}
+              />
+            </View>
             <CampaignGuideContext.Provider value={contextB}>
               <ScenarioListComponent
                 campaignId={campaignDataB.campaign.id}
@@ -186,6 +216,12 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         title: t`Log`,
         node: (
           <ScrollView>
+            <View style={[styles.section, styles.bottomBorder]}>
+              <CampaignGuideSummary
+                difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
+                campaignGuide={contextA.campaignGuide}
+              />
+            </View>
             <CampaignGuideContext.Provider value={contextA}>
               <CampaignLogComponent
                 campaignId={contextA.campaignId}
@@ -195,6 +231,12 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 fontScale={fontScale}
               />
             </CampaignGuideContext.Provider>
+            <View style={[styles.section, styles.bottomBorder]}>
+              <CampaignGuideSummary
+                difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
+                campaignGuide={contextB.campaignGuide}
+              />
+            </View>
             <CampaignGuideContext.Provider value={contextB}>
               <CampaignLogComponent
                 campaignId={contextB.campaignId}
@@ -261,3 +303,15 @@ export default withDimensions<LinkedCampaignGuideProps & NavigationProps>(
     )
   )
 );
+
+const styles = StyleSheet.create({
+  section: {
+    padding: m,
+    paddingLeft: s + m,
+    paddingRight: s + m,
+  },
+  bottomBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
+  },
+});

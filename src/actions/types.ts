@@ -501,11 +501,13 @@ export interface NewLinkedCampaignAction {
   cycleCodeB: CampaignCycleCode;
   guided: true;
 }
-export const SET_ALL_CAMPAIGNS = 'SET_ALL_CAMPAIGNS';
-export interface SetAllCampaignsAction {
-  type: typeof SET_ALL_CAMPAIGNS;
-  campaigns: {
-    [id: string]: Campaign;
+export const RESTORE_BACKUP = 'RESTORE_BACKUP';
+export interface RestoreBackupAction {
+  type: typeof RESTORE_BACKUP;
+  campaigns: Campaign[];
+  decks: Deck[];
+  guides: {
+    [id: string]: CampaignGuideState;
   };
 }
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
@@ -773,6 +775,7 @@ export type SignInActions =
 
 export type DecksActions =
   LogoutAction |
+  RestoreBackupAction |
   MyDecksStartRefreshAction |
   MyDecksCacheHitAction |
   MyDecksErrorAction |
@@ -793,12 +796,13 @@ export type CampaignActions =
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |
-  SetAllCampaignsAction |
+  RestoreBackupAction |
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction;
 
 export type GuideActions =
   DeleteCampaignAction |
+  RestoreBackupAction |
   LogoutAction |
   GuideSetInputAction |
   GuideUndoInputAction |

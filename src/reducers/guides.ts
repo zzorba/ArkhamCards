@@ -1,6 +1,7 @@
-import { findLastIndex, filter } from 'lodash';
+import { forEach, findLastIndex, filter } from 'lodash';
 
 import {
+  RESTORE_BACKUP,
   DELETE_CAMPAIGN,
   GUIDE_SET_INPUT,
   GUIDE_UNDO_INPUT,
@@ -42,6 +43,19 @@ export default function(
 ): GuidesState {
   if (action.type === LOGOUT) {
     return state;
+  }
+  if (action.type === RESTORE_BACKUP) {
+    const newAll: { [id: string]: CampaignGuideState } = {};
+    forEach(action.guides, (guide, id) => {
+      if (guide) {
+        newAll[id] = {
+          inputs: guide.inputs || [],
+        };
+      }
+    });
+    return {
+      all: newAll,
+    };
   }
   if (action.type === DELETE_CAMPAIGN) {
     const newAll = {

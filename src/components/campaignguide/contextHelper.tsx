@@ -18,7 +18,7 @@ import {
 
 export interface CampaignGuideReduxData {
   campaign: SingleCampaign;
-  campaignGuide: CampaignGuide,
+  campaignGuide: CampaignGuide;
   campaignState: CampaignGuideState;
   campaignInvestigators: Card[];
   latestDecks: Deck[];
@@ -179,7 +179,7 @@ export function constructCampaignGuideContext(
 
   const resetScenario = (scenarioId: string) => {
     universalData.resetScenario(campaign.id, scenarioId);
-  }
+  };
 
   const decksByInvestigator: {
     [code: string]: Deck | undefined;

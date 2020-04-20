@@ -2,7 +2,7 @@ import { map } from 'lodash';
 import { ThunkAction } from 'redux-thunk';
 
 import {
-  SET_ALL_CAMPAIGNS,
+  RESTORE_BACKUP,
   NEW_CAMPAIGN,
   NEW_LINKED_CAMPAIGN,
   DELETE_CAMPAIGN,
@@ -15,7 +15,9 @@ import {
   CleanBrokenCampaignsAction,
   CampaignAddInvestigatorAction,
   Campaign,
+  Deck,
   CampaignNotes,
+  CampaignGuideState,
   CampaignCycleCode,
   CampaignDifficulty,
   ChaosBagResults,
@@ -29,7 +31,7 @@ import {
   UpdateCampaignAction,
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
-  SetAllCampaignsAction,
+  RestoreBackupAction,
 } from 'actions/types';
 import { ChaosBag } from 'constants';
 import { AppState } from 'reducers';
@@ -48,12 +50,16 @@ function getBaseDeckIds(
   });
 }
 
-export function setAllCampaigns(
-  campaigns: { [id: string]: Campaign }
-): SetAllCampaignsAction {
+export function restoreBackup(
+  campaigns: Campaign[],
+  guides: { [id: string]: CampaignGuideState },
+  decks: Deck[]
+): RestoreBackupAction {
   return {
-    type: SET_ALL_CAMPAIGNS,
+    type: RESTORE_BACKUP,
     campaigns,
+    guides,
+    decks,
   };
 }
 
@@ -215,7 +221,7 @@ export function editScenarioResult(
 }
 
 export default {
-  setAllCampaigns,
+  restoreBackup,
   newCampaign,
   updateCampaign,
   deleteCampaign,

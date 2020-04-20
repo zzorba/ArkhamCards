@@ -1,13 +1,13 @@
 import React from 'react';
-import { Alert, InteractionManager, ScrollView } from 'react-native';
-import { flatMap, forEach } from 'lodash';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import CampaignGuideSummary from './CampaignGuideSummary';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
-import { Campaign, InvestigatorData } from 'actions/types';
+import { Campaign } from 'actions/types';
 import CampaignInvestigatorsComponent from 'components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from 'components/campaignguide/CampaignLogComponent';
 import ScenarioListComponent from 'components/campaignguide/ScenarioListComponent';
@@ -19,6 +19,7 @@ import withCampaignGuideContext, {
   CampaignGuideInputProps,
 } from 'components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from 'components/nav/types';
+import { s, m } from 'styles/space';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -109,6 +110,12 @@ class CampaignGuideView extends React.Component<Props> {
         title: t`Decks`,
         node: (
           <ScrollView>
+            <View style={[styles.section, styles.bottomBorder]}>
+              <CampaignGuideSummary
+                difficulty={processedCampaign.campaignLog.campaignData.difficulty}
+                campaignGuide={campaignGuide}
+              />
+            </View>
             <CampaignInvestigatorsComponent
               componentId={componentId}
               fontScale={fontScale}
@@ -175,3 +182,15 @@ export default withDimensions(
     )
   )
 );
+
+const styles = StyleSheet.create({
+  section: {
+    padding: m,
+    paddingLeft: s + m,
+    paddingRight: s + m,
+  },
+  bottomBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
+  },
+});

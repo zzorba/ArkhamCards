@@ -1,7 +1,8 @@
 import React from 'react';
-import { forEach, map } from 'lodash';
+import { forEach } from 'lodash';
 import {
   Alert,
+  InteractionManager,
   Platform,
   Keyboard,
   SafeAreaView,
@@ -17,13 +18,13 @@ import {
 } from 'react-native-settings-components';
 
 import { t } from 'ttag';
-import { Campaign, Pack } from 'actions/types';
+import { Campaign, CampaignGuideState, Deck, Pack } from 'actions/types';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import { clearDecks } from 'actions';
 import Card from 'data/Card';
-import { getCampaigns, getAllPacks, AppState } from 'reducers';
+import { getBackupData, getAllPacks, AppState } from 'reducers';
 import { fetchCards } from 'components/card/actions';
-import { setAllCampaigns } from 'components/campaign/actions';
+import { restoreBackup } from 'components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import { COLORS } from 'styles/colors';
 
@@ -32,58 +33,58 @@ interface RealmProps {
 }
 
 interface ReduxProps {
-  campaigns: Campaign[];
+  backupData: {
+    campaigns: Campaign[];
+    decks: Deck[];
+    guides: {
+      [id: string]: CampaignGuideState;
+    };
+  };
   packs: Pack[];
   lang: string;
 }
 
 interface ReduxActionProps {
   fetchCards: (realm: Realm, lang: string) => void;
-  setAllCampaigns: (campaigns: { [id: string]: Campaign }) => void;
+  restoreBackup: (
+    campaigns: Campaign[],
+    guides: {
+      [id: string]: CampaignGuideState;
+    },
+    decks: Deck[]
+  ) => void;
   clearDecks: () => void;
 }
 
 type Props = RealmProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
 class DiagnosticsView extends React.Component<Props> {
-  _importCampaignDataJson = (json: any) => {
+  _importBackupDataJson = (json: any) => {
     try {
-      const newCampaigns = JSON.parse(json) || [];
-      if (newCampaigns.length) {
-        const newCampaignNames = map(newCampaigns, campaign => campaign.name).join('\n');
-        Alert.alert(
-          t`Confirm import`,
-          t`We found the following campaigns:\n${newCampaignNames}\nAre you sure you want to import this and erase your current campaigns?`,
-          [{
-            text: t`Nevermind`,
-            style: 'cancel',
-          }, {
-            text: t`Save These Campaigns`,
-            style: 'destructive',
-            onPress: () => {
-              this.props.setAllCampaigns(newCampaigns);
-            },
-          }],
-        );
-        return;
-      }
+      const backupData = JSON.parse(json) || {};
+      const campaigns: Campaign[] = backupData.campaigns || [];
+      const guides: { [id: string]: CampaignGuideState } = backupData.guides || {};
+      const decks: Deck[] = backupData.decks || [];
+      this.props.restoreBackup(
+        campaigns,
+        guides,
+        decks
+      );
+      return;
     } catch (e) {
       console.log(e);
+      Alert.alert(
+        t`Problem with import`,
+        t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
+      );
     }
-    Alert.alert(
-      t`Problem with import`,
-      t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
-    );
   };
 
   _importCampaignData = () => {
     const {
-      campaigns,
       showTextEditDialog,
     } = this.props;
-    const erasedCampaigns = map(campaigns, campaign => campaign.name).join('\n');
-    const erasedCopy = erasedCampaigns ?
-      t`The following campaigns will be ERASED: \n${erasedCampaigns}` : '';
+    const erasedCopy = t`All local decks and campaigns will be overridden`;
     Alert.alert(
       t`Restore campaign data?`,
       t`This feature is intended for advanced diagnostics or to import data from another app.\n\n${erasedCopy}`,
@@ -91,7 +92,7 @@ class DiagnosticsView extends React.Component<Props> {
         text: t`Nevermind`,
         style: 'cancel',
       }, {
-        text: t`Import and Erase Current Campaigns`,
+        text: t`Import data`,
         style: 'destructive',
         onPress: () => {
           showTextEditDialog(
@@ -99,7 +100,9 @@ class DiagnosticsView extends React.Component<Props> {
             '',
             (json) => {
               Keyboard.dismiss();
-              setTimeout(() => this._importCampaignDataJson(json), 1000);
+              InteractionManager.runAfterInteractions(
+                () => this._importBackupDataJson(json)
+              );
             },
             false,
             4
@@ -120,7 +123,7 @@ class DiagnosticsView extends React.Component<Props> {
         text: t`Export Campaign Data`,
         onPress: () => {
           Share.share({
-            message: JSON.stringify(this.props.campaigns),
+            message: JSON.stringify(this.props.backupData),
           });
         },
       }],
@@ -249,7 +252,7 @@ class DiagnosticsView extends React.Component<Props> {
 
 function mapStateToProps(state: AppState): ReduxProps {
   return {
-    campaigns: getCampaigns(state),
+    backupData: getBackupData(state),
     packs: getAllPacks(state),
     lang: state.packs.lang || 'en',
   };
@@ -259,7 +262,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     clearDecks,
     fetchCards,
-    setAllCampaigns,
+    restoreBackup,
   }, dispatch);
 }
 

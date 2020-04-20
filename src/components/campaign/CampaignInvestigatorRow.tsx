@@ -34,9 +34,6 @@ class CampaignInvestigatorRow extends React.Component<Props> {
     const card = investigators[code];
     if (card) {
       const killedOrInsane = card.eliminated(investigatorData[code]);
-      if (killedOrInsane) {
-        return null;
-      }
       return (
         <View key={card.code} style={styles.investigator}>
           <InvestigatorImage

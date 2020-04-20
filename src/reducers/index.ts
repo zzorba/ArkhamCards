@@ -95,6 +95,20 @@ export const getCampaigns = createSelector(
   )
 );
 
+export function getBackupData(state: AppState) {
+  const guides: { [id: string]: CampaignGuideState } = {};
+  forEach(state.guides.all, (guide, id) => {
+    if (guide) {
+      guides[id] = guide;
+    }
+  });
+  return {
+    campaigns: values(state.campaigns.all || {}),
+    decks: filter(values(state.decks.all), deck => !!deck.local),
+    guides,
+  };
+}
+
 export function getShowSpoilers(state: AppState, packCode: string): boolean {
   const show_spoilers = state.packs.show_spoilers || {};
   return !!show_spoilers[packCode];

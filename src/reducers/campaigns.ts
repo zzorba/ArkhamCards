@@ -12,7 +12,7 @@ import {
   DELETE_CAMPAIGN,
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
-  SET_ALL_CAMPAIGNS,
+  RESTORE_BACKUP,
   REPLACE_LOCAL_DECK,
   NEW_CHAOS_BAG_RESULTS,
   Campaign,
@@ -86,7 +86,7 @@ export default function(
       all,
     };
   }
-  if (action.type === SET_ALL_CAMPAIGNS) {
+  if (action.type === RESTORE_BACKUP) {
     const all: { [id: string]: Campaign } = {};
     forEach(action.campaigns, campaign => {
       all[campaign.id] = campaign;

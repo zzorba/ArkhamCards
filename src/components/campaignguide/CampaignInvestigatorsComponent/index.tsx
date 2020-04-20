@@ -6,13 +6,12 @@ import { t } from 'ttag';
 
 import { Campaign, InvestigatorData } from 'actions/types';
 import BasicButton from 'components/core/BasicButton';
-import CampaignGuideSummary from './CampaignGuideSummary';
 import InvestigatorCampaignRow from './InvestigatorCampaignRow';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import Card from 'data/Card';
 import typography from 'styles/typography';
-import { s, m, l } from 'styles/space';
+import { s, l } from 'styles/space';
 import { COLORS } from 'styles/colors';
 
 interface Props {
@@ -24,7 +23,7 @@ interface Props {
     id: number,
     sparseCampaign: Partial<Campaign>
   ) => void;
-  deleteCampaign: () => void;
+  deleteCampaign?: () => void;
 }
 
 interface State {
@@ -118,7 +117,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       spentXp: {
         ...this.state.spentXp,
         [code]: (this.state.spentXp[code] || 0) + 1,
-      }
+      },
     });
   };
 
@@ -127,7 +126,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       spentXp: {
         ...this.state.spentXp,
         [code]: Math.max(0, (this.state.spentXp[code] || 0) - 1),
-      }
+      },
     });
   };
 
@@ -135,7 +134,6 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     const {
       campaignLog,
       campaignData: {
-        campaignGuide,
         playerCards,
       },
       fontScale,
@@ -143,7 +141,6 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       deleteCampaign,
     } = this.props;
     const { spentXp } = this.state;
-    const difficulty = campaignLog.campaignData.difficulty;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignId, latestDecks }: CampaignGuideContextType) => {
@@ -153,12 +150,6 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
           );
           return (
             <>
-              <View style={[styles.section, styles.bottomBorder]}>
-                <CampaignGuideSummary
-                  difficulty={difficulty}
-                  campaignGuide={campaignGuide}
-                />
-              </View>
               { map(aliveInvestigators, investigator => (
                 <InvestigatorCampaignRow
                   key={investigator.code}
@@ -202,11 +193,13 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
                   />
                 )) }
               </View>
-              <BasicButton
-                title={t`Delete Campaign`}
-                color={COLORS.red}
-                onPress={deleteCampaign}
-              />
+              { !!deleteCampaign && (
+                <BasicButton
+                  title={t`Delete Campaign`}
+                  color={COLORS.red}
+                  onPress={deleteCampaign}
+                />
+              ) }
             </>
           );
         } }
@@ -219,11 +212,6 @@ const styles = StyleSheet.create({
   header: {
     padding: s,
     paddingTop: l,
-  },
-  section: {
-    padding: m,
-    paddingLeft: s + m,
-    paddingRight: s + m,
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,

@@ -1529,7 +1529,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 disabledOverlayStyle={{ backgroundColor: 'transparent' }}
                 disabled
               />
-            )}
+            ) }
           </>
         ) }
         <SettingsCategoryHeader title={t`Cards`} />

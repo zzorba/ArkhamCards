@@ -23,7 +23,7 @@ import {
   setScenarioText,
   undo,
 } from 'components/campaignguide/actions';
-import { Deck, NumberChoices, StringChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
+import { Deck, NumberChoices, StringChoices, SupplyCounts } from 'actions/types';
 import Card from 'data/Card';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import {

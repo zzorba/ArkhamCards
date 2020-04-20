@@ -1,7 +1,8 @@
-import { concat, uniq, filter, forEach, map, reverse, sortBy } from 'lodash';
+import { concat, uniq, flatMap, filter, forEach, map, reverse, sortBy, values } from 'lodash';
 
 import {
   LOGOUT,
+  RESTORE_BACKUP,
   MY_DECKS_START_REFRESH,
   MY_DECKS_CACHE_HIT,
   MY_DECKS_ERROR,
@@ -68,7 +69,7 @@ function sortMyDecks(myDecks: number[], allDecks: DecksMap): number[] {
 export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
-) {
+): DecksState {
   if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
     const all: DecksMap = {};
     forEach(state.all, (deck, id: any) => {
@@ -77,43 +78,62 @@ export default function(
       }
     });
     const myDecks = filter(state.myDecks, id => !!all[id]);
-    return Object.assign(
-      {},
-      DEFAULT_DECK_STATE,
-      {
-        all,
-        myDecks,
-      },
+    return {
+      ...DEFAULT_DECK_STATE,
+      all,
+      myDecks,
+    };
+  }
+  if (action.type === RESTORE_BACKUP) {
+    const all: DecksMap = {};
+    forEach(state.all, (deck, id: any) => {
+      if (deck && !deck.local) {
+        all[id] = deck;
+      }
+    });
+    forEach(action.decks, deck => {
+      if (deck) {
+        all[deck.id] = deck;
+      }
+    });
+    const myDecks = flatMap(
+      values(all),
+      deck => {
+        if (deck.previous_deck) {
+          return [];
+        }
+        return [deck.id];
+      }
     );
+    return {
+      ...DEFAULT_DECK_STATE,
+      all,
+      myDecks,
+      replacedLocalIds: [],
+    };
   }
   if (action.type === MY_DECKS_START_REFRESH) {
-    return Object.assign({},
-      state,
-      {
-        refreshing: true,
-        error: null,
-      },
-    );
+    return {
+      ...state,
+      refreshing: true,
+      error: null,
+    };
   }
   if (action.type === MY_DECKS_CACHE_HIT) {
-    return Object.assign({},
-      state,
-      {
-        refreshing: false,
-        dateUpdated: action.timestamp.getTime(),
-        error: null,
-      },
-    );
+    return {
+      ...state,
+      refreshing: false,
+      dateUpdated: action.timestamp.getTime(),
+      error: null,
+    };
   }
   if (action.type === MY_DECKS_ERROR) {
-    return Object.assign({},
-      state,
-      {
-        refreshing: false,
-        error: action.error,
-        lastModified: undefined,
-      },
-    );
+    return {
+      ...state,
+      refreshing: false,
+      error: action.error,
+      lastModified: undefined,
+    };
   }
   if (action.type === SET_MY_DECKS) {
     const allDecks: DecksMap = Object.assign({}, state.all);
@@ -137,17 +157,15 @@ export default function(
       filter(action.decks, (deck: Deck) => !deck.next_deck),
       deck => deck.id
     );
-    return Object.assign({},
-      state,
-      {
-        all: allDecks,
-        myDecks: sortMyDecks(concat(localDeckIds, actionDeckIds), allDecks),
-        dateUpdated: action.timestamp.getTime(),
-        lastModified: action.lastModified,
-        refreshing: false,
-        error: null,
-      },
-    );
+    return {
+      ...state,
+      all: allDecks,
+      myDecks: sortMyDecks(concat(localDeckIds, actionDeckIds), allDecks),
+      dateUpdated: action.timestamp.getTime(),
+      lastModified: action.lastModified,
+      refreshing: false,
+      error: null,
+    };
   }
   if (action.type === REPLACE_LOCAL_DECK) {
     const deck = updateDeck(state, action);
@@ -167,14 +185,12 @@ export default function(
       ...(state.replacedLocalIds || {}),
       [action.localId]: deck.id,
     };
-    return Object.assign({},
-      state,
-      {
-        all,
-        myDecks: sortMyDecks(myDecks, all),
-        replacedLocalIds,
-      },
-    );
+    return {
+      ...state,
+      all,
+      myDecks: sortMyDecks(myDecks, all),
+      replacedLocalIds,
+    };
   }
   if (action.type === DELETE_DECK) {
     const all = Object.assign({}, state.all);
@@ -203,32 +219,36 @@ export default function(
     const toDeleteSet = new Set(toDelete);
     const myDecks = (action.deleteAllVersions || !deck || !deck.previous_deck) ?
       filter(state.myDecks, deckId => !toDeleteSet.has(deckId)) :
-      map(state.myDecks,
-        deckId => deckId === action.id ? deck.previous_deck : deckId);
+      flatMap(state.myDecks,
+        deckId => {
+          if (deckId === action.id) {
+            if (deck.previous_deck) {
+              return deck.previous_deck;
+            }
+            return [];
+          }
+          return deckId;
+        }
+      );
 
-    return Object.assign({},
-      state,
-      {
-        all,
-        myDecks,
-        // There's a bug on ArkhamDB cache around deletes,
-        // so drop lastModified when we detect a delete locally.
-        lastModified: undefined,
-      },
-    );
+    return {
+      ...state,
+      all,
+      myDecks,
+      // There's a bug on ArkhamDB cache around deletes,
+      // so drop lastModified when we detect a delete locally.
+      lastModified: undefined,
+    };
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
-    const newState = Object.assign({},
-      state,
-      {
-        all: Object.assign(
-          {},
-          state.all,
-          { [action.id]: deck },
-        ),
+    const newState = {
+      ...state,
+      all: {
+        ...state.all,
+        [action.id]: deck,
       },
-    );
+    };
     if (action.isWrite) {
       // Writes get moved to the head of the list.
       newState.myDecks = [
@@ -240,19 +260,17 @@ export default function(
   }
   if (action.type === NEW_DECK_AVAILABLE) {
     const deck = updateDeck(state, action);
-    return Object.assign({},
-      state,
-      {
-        all: Object.assign(
-          {},
-          state.all,
-          { [action.id]: deck },
-        ),
-        myDecks: [
-          action.id,
-          ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
-        ],
-      });
+    return {
+      ...state,
+      all: {
+        ...state.all,
+        [action.id]: deck,
+      },
+      myDecks: [
+        action.id,
+        ...filter(state.myDecks, deckId => deck.previous_deck !== deckId),
+      ],
+    };
   }
   return state;
 }
