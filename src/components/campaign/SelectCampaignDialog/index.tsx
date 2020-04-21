@@ -27,7 +27,7 @@ import { campaignName } from '../constants';
 import { NavigationProps } from 'components/nav/types';
 import { getPacksInCollection, AppState } from 'reducers';
 
-const INCLUDE_DREAM_EATERS = true;
+const INCLUDE_DREAM_EATERS = false;
 export interface SelectCampagaignProps {
   guided: boolean;
   campaignChanged: (packCode: CampaignCycleCode, text: string) => void;

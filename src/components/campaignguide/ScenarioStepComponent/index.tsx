@@ -41,6 +41,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       step: { step, campaignLog },
       fontScale,
       width,
+      border,
     } = this.props;
     if (!step.type) {
       return <GenericStepComponent step={step} />;
@@ -55,10 +56,12 @@ export default class ScenarioStepComponent extends React.Component<Props> {
         );
       case 'story':
         return (
-          <StoryStepComponent
-            step={step}
-            width={width}
-          />
+          <View style={border && !step.title ? styles.extraTopPadding : {}}>
+            <StoryStepComponent
+              step={step}
+              width={width}
+            />
+          </View>
         );
       case 'encounter_sets':
         return <EncounterSetStepComponent step={step} />;
@@ -154,5 +157,8 @@ const styles = StyleSheet.create({
   titleWrapper: {
     marginLeft: m + s,
     marginRight: m + s,
+  },
+  extraTopPadding: {
+    paddingTop: m + s,
   },
 });

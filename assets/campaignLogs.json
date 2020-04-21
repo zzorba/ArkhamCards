@@ -1444,6 +1444,10 @@
             "text": "Randolph survived the descent."
           },
           {
+            "id": "trapped_in_atlach_nachas_realm",
+            "text": "the investigators are trapped in Atlach-Nacha's realm."
+          },
+          {
             "id": "you_asked_for_it",
             "text": "you asked for it."
           }
@@ -1452,6 +1456,10 @@
       {
         "section": "hidden",
         "entries": [
+          {
+            "id": "grand_design",
+            "text": "dummy"
+          },
           {
             "id": "half_campaign",
             "text": "dummy"

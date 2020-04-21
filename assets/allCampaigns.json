@@ -26968,10 +26968,32 @@
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
   "setup": [
+    "check_a_thousand_shapes_of_horror",
+    "wait_oneironauts_decision",
     "check_black_cat_has_a_hunch",
     "check_you_asked_for_it"
   ],
   "steps": [
+    {
+      "id": "check_a_thousand_shapes_of_horror",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario II–B: A Thousand Shapes of Horror</b>.",
+        "id": "a_thousand_shapes_of_horror",
+        "choices": []
+      }
+    },
+    {
+      "id": "wait_oneironauts_decision",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "The interlude begins with <i>The Web of Dreams</i> (Campaign B).",
+        "id": "oneironauts_decision",
+        "choices": []
+      }
+    },
     {
       "id": "check_black_cat_has_a_hunch",
       "hidden": true,
@@ -27010,7 +27032,6 @@
     },
     {
       "id": "cross_off_black_cat_had_hunch",
-      "bullet_type": "small",
       "text": "In both Campaign Logs, cross off <i>the black cat has a hunch</i>.",
       "effects": [
         {
@@ -27023,6 +27044,7 @@
     },
     {
       "id": "check_you_asked_for_it",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -29293,8 +29315,21 @@
           {
             "boolCondition": true,
             "steps": ["skip_interlude"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_kadath_done"]
           }
         ]
+      }
+    },
+    {
+      "id": "send_kadath_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "the_search_for_kadath",
+        "decision": "done"
       }
     },
     {
@@ -29486,7 +29521,7 @@
       "id": "stop_rule",
       "type": "rule_reminder",
       "title": "Stop!",
-      "text": "At this point, you are ready to begin playing <i>Where the Gods Dwell</i>. Do not read the interlude or rules text on the next page just yet. You will be instructed to read them at a later point in time, during the course of the scenario."
+      "text": "At this point, you are ready to begin playing <i>Where the Gods Dwell</i>. Do not read the interlude or rules text below just yet. You will be instructed to read them at a later point in time, during the course of the scenario."
     },
     {
       "id": "$play_scenario",
@@ -30455,6 +30490,10 @@
           {
             "boolCondition": true,
             "steps": ["skip_interlude"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_thousand_shapes_done"]
           }
         ]
       }
@@ -30470,6 +30509,15 @@
           "scenario": "the_oneironauts"
         }
       ]
+    },
+    {
+      "id": "send_thousand_shapes_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "a_thousand_shapes_of_horror",
+        "decision": "done"
+      }
     }
   ],
   "resolutions": [
@@ -31104,11 +31152,22 @@
   "full_name": "Interlude II: The Oneironauts",
   "type": "interlude",
   "setup": [
+    "check_the_search_for_kadath",
     "oneironauts_1",
     "check_randolph_did_not_survive_descent",
     "check_you_asked_for_it"
   ],
   "steps": [
+    {
+      "id": "check_the_search_for_kadath",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario II–A: The Search for Kadath</b>.",
+        "id": "the_search_for_kadath",
+        "choices": []
+      }
+    },
     {
       "id": "oneironauts_1",
       "type": "story",
@@ -31194,7 +31253,6 @@
     },
     {
       "id": "cross_off_black_cat_has_a_hunch",
-      "bullet_type": "small",
       "text": "In both Campaign Logs, cross off <i>the black cat has a hunch</i>.",
       "effects": [
         {
@@ -31219,7 +31277,7 @@
             "effects": [
               {
                 "type": "story_step",
-                "steps": ["you_asked_for_it", "skip_rest_of_interlude"]
+                "steps": ["you_asked_for_it", "skip_rest_of_interlude", "send_black_cat_mad"]
               }
             ]
           },
@@ -31237,8 +31295,16 @@
     },
     {
       "id": "skip_rest_of_interlude",
-      "bullet_type": "small",
       "text": "Skip the rest of this interlude."
+    },
+    {
+      "id": "send_black_cat_mad",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_decision",
+        "decision": "black_cat_mad"
+      }
     },
     {
       "id": "resume_interlude",
@@ -31255,7 +31321,7 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["black_cat_wanders_off"]
+            "steps": ["black_cat_wanders_off", "send_black_cat_wanders_off"]
           },
           {
             "boolCondition": false,
@@ -31270,6 +31336,15 @@
       "text": "The black cat wanders off before you can reply, its pitch-black fur melding into the darkness of the Underworld."
     },
     {
+      "id": "send_black_cat_wanders_off",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "oneironauts_decision",
+        "decision": "black_cat_wanders_off"
+      }
+    },
+    {
       "id": "black_cat_decision",
       "text": "The black cat once again offers to pass a message along to your companions. The lead investigator must decide (choose one):",
       "type": "input",
@@ -31278,17 +31353,20 @@
         "choices": [
           {
             "id": "black_cat_requested_aid",
-            "text": "Tell your companions that you are in trouble. The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
+            "text": "<i>Tell your companions that you are in trouble.</i>",
+            "description": "The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
             "steps": ["black_cat_requested_aid", "send_black_cat_requested_aid"]
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "Tell your companions about the Underworld. The black cat will then go elsewhere.",
+            "text": "<i>Tell your companions about the Underworld.</i>",
+            "description": "The black cat will then go elsewhere.",
             "steps": ["black_cat_shared_knowledge_of_the_underworld", "send_black_cat_shared_knowledge_of_the_underworld"]
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "Tell your companions that you are safe. The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
+            "text": "<i>Tell your companions that you are safe.</i>",
+            "description": "The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
             "steps": ["black_cat_warned_the_others", "send_black_cat_warned_the_others"]
           }
         ]
@@ -32463,8 +32541,424 @@
   "scenario_name": "Weaver of the Cosmos",
   "full_name": "Scenario IV: Weaver of the Cosmos",
   "type": "placeholder",
-  "setup": [],
-  "steps": []
+  "setup": [
+    "weaver_intro",
+    "gather_encounter_sets",
+    "shuffle_great_web",
+    "set_aside_cards",
+    "check_steps_of_bridge",
+    "shuffle_encounter_deck",
+    "stop_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "weaver_intro",
+      "type": "story",
+      "text": "Everything has led to this. Virgil's writing, your companions' never-ending sleep, St. Mary's, the black cat, all of it. You have no choice but to press on. This transdimensional space is home to a creature that would obliterate your world and replace it with a new reality, a nightmarescape of pitch-black darkness and creatures that prey on your kind. If you cannot stop its weaving, there will be no Earth left to wake up to. You have to do something, even if it means your end."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "weaver_of_the_cosmos",
+        "agents_of_atlach_nacha",
+        "spiders",
+        "ancient_evils",
+        "chilling_cold"
+      ]
+    },
+    {
+      "id": "shuffle_great_web",
+      "text": "Shuffle each copy of The Great Web and put 4 of them into play at random, in a vertical line.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the topmost The Great Web location."
+        },
+        {
+          "text": "Set each other The Great Web location aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: The double-sided Atlach-Nacha card, the 4 Legs of Atlach-Nacha enemies, and both copies of The Spinner in Darkness."
+    },
+    {
+      "id": "check_steps_of_bridge",
+      "text": "Check the number of tally marks recorded next to \"Steps of the Bridge\" in the Campaign Log.",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "steps_of_the_bridge",
+        "id": "$count",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["nothing_happens"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["nothing_happens"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["nothing_happens"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["place_one_doom"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["place_one_doom"]
+          },
+          {
+            "numCondition": 5,
+            "steps": ["place_one_doom"]
+          },
+          {
+            "numCondition": 6,
+            "steps": ["place_two_doom"]
+          },
+          {
+            "numCondition": 7,
+            "steps": ["place_two_doom"]
+          },
+          {
+            "numCondition": 8,
+            "steps": ["place_two_doom"]
+          },
+          {
+            "numCondition": 9,
+            "steps": ["place_three_doom"]
+          },
+          {
+            "numCondition": 10,
+            "steps": ["place_three_doom"]
+          },
+          {
+            "numCondition": 11,
+            "steps": ["place_three_doom"]
+          }
+        ],
+        "defaultOption": {
+          "steps": ["place_four_doom"]
+        }
+      }
+    },
+    {
+      "id": "nothing_happens",
+      "bullet_type": "small",
+      "text": "Because there are 2 or fewer tally marks recorded, nothing happens."
+    },
+    {
+      "id": "place_one_doom",
+      "bullet_type": "small",
+      "text": "Because there are 3-5 tally marks, place 1 doom on the bottommost location."
+    },
+    {
+      "id": "place_two_doom",
+      "bullet_type": "small",
+      "text": "Because there are 6-8 tally marks, place 2 doom on the bottommost location."
+    },
+    {
+      "id": "place_three_doom",
+      "bullet_type": "small",
+      "text": "Because there are 9-11 tally marks, place 3 doom on the bottommost location."
+    },
+    {
+      "id": "place_four_doom",
+      "bullet_type": "small",
+      "text": "Because there are 12 or more tally marks, place 4 doom on the bottommost location."
+    },
+    {
+      "id": "shuffle_encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+    },
+    {
+      "id": "stop_rule",
+      "type": "rule_reminder",
+      "title": "Stop!",
+      "text": "At this point, you are ready to begin playing <i>Weaver of the Cosmosl</i>. Do not read the interlude or rules text below just yet. You will be instructed to read them at a later point in time, during the course of the scenario."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "spider_queen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "spider_queen",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Scenario Interlude: The Spider Queen",
+            "steps": [
+              "spider_queen_1",
+              "check_campaign_log",
+              "check_randolph_survived_descent_and_black_cat_knows_truth",
+              "spider_queen_4",
+              "remove_each_location",
+              "assemble_atlach_nacha",
+              "layout_atlach_nacha",
+              "shuffle_spinner_of_darkness",
+              "read_atlach_nacha_rules",
+              "atlach_nacha_rule"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "grand_design",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "spider_queen_1",
+      "type": "story",
+      "text": "You climb a precipice of stone and behold the enormity of the spider's bridge and the <i>thing</i> astride it: Atlach-Nacha, god of spiders, accompanied by its horde of weavers. The many-legged monstrosities continuously intertwine strands of cosmic web, toiling endlessly with nightmarish fervor. As the awful creatures weave each thread, you feel reality and dreams distort, collide, and crash together. In the distance, waves of dream break upon the rocks of reality, and reality collapses upon itself into the surging, amorphous dream. You can barely comprehend the strange, shifting vistas. A sticky web hangs off the side of your vantage point, like a silken ladder leading down to your doom."
+    },
+    {
+      "id": "check_campaign_log",
+      "text": "Check Campaign Log."
+    },
+    {
+      "id": "check_randolph_survived_descent_and_black_cat_knows_truth",
+      "bullet_type": "small",
+      "text": "<i>If Randolph survived the descent</i> and <i>the black cat knows the truth.</i>",
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "randolph_survived_descent",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "black_cat_knows_the_truth",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["spider_queen_2", "remove_randolph_carter"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_randolph_survived_the_descent"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_randolph_survived_the_descent",
+      "bullet_type": "small",
+      "type": "branch",
+      "text": "Otherwise, <i>if Randolph survived the descent</i>.",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "randolph_survived_descent",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "spider_queen_3",
+              "trapped_in_atlach_nachas_realm",
+              "remove_randolph_carter",
+              "add_chaos_token"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_randolph_did_not_survive_descent"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_randolph_did_not_survive_descent",
+      "bullet_type": "small",
+      "type": "branch",
+      "text": "<i>If Randolph did not survive the descent</i>.",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "randolph_did_not_survive_descen",
+        "options": [
+          {
+            "boolCondition": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "spider_queen_2",
+      "type": "story",
+      "text": "SPIDER_QUEEN_2"
+    },
+    {
+      "id": "spider_queen_3",
+      "type": "story",
+      "text": "SPIDER_QUEEN_3"
+    },
+    {
+      "id": "spider_queen_4",
+      "type": "story",
+      "text": "SPIDER_QUEEN_4"
+    },
+    {
+      "id": "remove_randolph_carter",
+      "text": "If an investigator’s deck contains Randolph Carter <i>(Chained to the Waking World)</i> <i>(The Dream-Eaters card #79)</i>, remove him from that deck for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "remove_card",
+          "card": "06079"
+        }
+      ]
+    },
+    {
+      "id": "trapped_in_atlach_nachas_realm",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "trapped_in_atlach_nachas_realm",
+          "text": "the investigators are trapped in Atlach-Nacha's realm."
+        }
+      ]
+    },
+    {
+      "id": "add_chaos_token",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "difficulty",
+        "options": [
+          {
+            "condition": "easy",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-3"]
+              }
+            ]
+          },
+          {
+            "condition": "standard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-4"]
+              }
+            ]
+          },
+          {
+            "condition": "hard",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-5"]
+              }
+            ]
+          },
+          {
+            "condition": "expert",
+            "effects": [
+              {
+                "type": "add_chaos_token",
+                "tokens": ["-7"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "remove_each_location",
+      "text": "Remove each location from the game except for the bottommost location. Shift that location upward so it is at the top of the play area. Shuffle the remaining set-aside The Great Web locations and place 7 of them in a circle, along with the investigators' location (as the topmost location in the circle). Until the end of the scenario, each location is connected to each location next to it <i(clockwise or counterclockwise from it)</i>."
+    },
+    {
+      "id": "assemble_atlach_nacha",
+      "text": "Assemble Atlach-Nacha by performing the following steps, in order:",
+      "bullets": [
+        {
+          "text": "Find the double-sided Atlach-Nacha card and flip it to the side that only has art on it."
+        },
+        {
+          "text": "Arrange the 4 Legs of Atlach-Nacha enemies next to it, as depicted in the following diagram"
+        },
+        {
+          "text": "Place the assembled Atlach-Nacha in the center of the play area, between all 8 locations, so one corner of each Legs of Atlach-Nacha enemy touches a different location <i>(see suggested play area)</i>."
+        }
+      ]
+    },
+    {
+      "id": "layout_atlach_nacha",
+      "type": "location_setup",
+      "text": "Atlach-Nacha Diagram",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [],
+      "note": "Coming Soon"
+    },
+    {
+      "id": "shuffle_spinner_of_darkness",
+      "text": "Shuffle each set-aside copy of The Spinner in Darkness into the encounter deck, along with the encounter discard pile."
+    },
+    {
+      "id": "read_atlach_nacha_rules",
+      "text": "Read the rules for \"Atlach-Nacha,\" as follows."
+    },
+    {
+      "id": "atlach_nacha_rule",
+      "type": "rule_reminder",
+      "title": "Atlach-Nacha",
+      "text": "Atlach-Nacha's form comprises multiple Legs of Atlach-Nacha enemies. Each of these enemies operates as a separate enemy with the massive keyword and is considered to be engaged with each investigator at its location, like most massive enemies.",
+      "bullets": [
+        {
+          "text": "Each Legs of Atlach-Nacha enemy is considered to be at the location its corner is physically bordering, as depicted in the diagram below."
+        },
+        {
+          "text": "Atlach-Nacha's center card and each Legs of Atlach-Nacha enemy should remain in the same formation at all times, even if one card is removed from the formation. If one card moves, all cards in the formation must likewise move."
+        },
+        {
+          "text": "<b>As a result, Legs of Atlach-Nacha cards cannot move or be moved except by effects that \"spin\" Atlach-Nacha.</b>"
+        },
+        {
+          "text": "If you are instructed to \"spin\" Atlach-Nacha one or more times, rotate all of the cards in the center (each remaining Legs of Atlach-Nacha card, as well as the center card) in the indicated direction such that each of the Legs of Atlach-Nacha enemies moves clockwise that many locations."
+        }
+      ]
+    }
+
+  ]
 }
 ]}
 ,
