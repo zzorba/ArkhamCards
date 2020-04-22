@@ -17,10 +17,6 @@ import { COLORS } from 'styles/colors';
 import typography from 'styles/typography';
 import space, { s } from 'styles/space';
 
-interface State {
-  currentStep: string;
-}
-
 interface Props {
   componentId: string;
   campaignId: number;
@@ -28,15 +24,15 @@ interface Props {
   fontScale: number;
 }
 
-export default class ScenarioButton extends React.Component<Props, State> {
+export default class ScenarioButton extends React.Component<Props> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
 
   name() {
     const { scenario } = this.props;
-    if (scenario.attempt > 0) {
+    const attempt = (scenario.id.replayAttempt || 0) + 1;
+    if (attempt > 1) {
       const scenarioName = scenario.scenarioGuide.scenarioName();
-      const attempt = scenario.attempt + 1;
       return t`${scenarioName} (Attempt ${attempt})`;
     }
     return scenario.scenarioGuide.scenarioName();

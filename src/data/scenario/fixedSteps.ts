@@ -12,7 +12,9 @@ import {
   Step,
   Scenario,
 } from 'data/scenario/types';
+import ScenarioGuide from 'data/scenario/ScenarioGuide';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 
 export enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
@@ -283,16 +285,20 @@ function investigatorStatusStep(
 
 export function getFixedStep(
   id: string,
-  scenario: Scenario,
+  scenarioGuide: ScenarioGuide,
+  campaignState: CampaignStateHelper,
   campaignLog: GuidedCampaignLog
 ): Step | undefined {
   switch (id) {
     case CHOOSE_RESOLUTION_STEP_ID:
-      return chooseResolutionStep(scenario.resolutions || []);
+      return chooseResolutionStep(scenarioGuide.resolutions());
     case CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID:
-      return checkInvestigatorDefeatStep(scenario.resolutions || []);
+      return checkInvestigatorDefeatStep(scenarioGuide.resolutions());
     case PROCEED_STEP_ID: {
-      const nextScenarioName = campaignLog.nextScenarioName();
+      const nextScenarioName = scenarioGuide.campaignGuide.nextScenarioName(
+        campaignState,
+        campaignLog
+      );
       if (!nextScenarioName) {
         return {
           id: PROCEED_STEP_ID,
@@ -331,7 +337,7 @@ export function getFixedStep(
     case LEAD_INVESTIGATOR_STEP.id:
       return LEAD_INVESTIGATOR_STEP;
     default:
-      return resolutionStep(id, scenario.resolutions || []);
+      return resolutionStep(id, scenarioGuide.resolutions());
   }
 }
 

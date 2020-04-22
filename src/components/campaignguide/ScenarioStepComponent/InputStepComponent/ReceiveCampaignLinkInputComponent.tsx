@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import { ReceiveCampaignLinkInput, BulletType } from 'data/scenario/types';
+import { ReceiveCampaignLinkInput } from 'data/scenario/types';
 import BasicButton from 'components/core/BasicButton';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
@@ -45,7 +45,7 @@ export default class ReceiveCampaignLinkInputComponent extends React.Component<P
                     onPress={this._close}
                   />
                 </>
-              )
+              );
             }
             return null;
           } }

@@ -39,6 +39,7 @@ import CardSectionHeader, { rowHeaderHeight } from '../CardSearchResultsComponen
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
+  SORT_BY_FACTION_PACK,
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
@@ -333,6 +334,8 @@ class CardResultList extends React.Component<Props, State> {
         return [['sort_by_type', false], ['renderName', false], ['xp', false]];
       case SORT_BY_FACTION:
         return [['sort_by_faction', false], ['renderName', false], ['xp', false]];
+      case SORT_BY_FACTION_PACK:
+        return [['sort_by_faction', false], ['code', false]];
       case SORT_BY_COST:
         return [['cost', false], ['renderName', false], ['xp', false]];
       case SORT_BY_PACK:
@@ -351,6 +354,7 @@ class CardResultList extends React.Component<Props, State> {
       case SORT_BY_TYPE:
         return Card.typeSortHeader(card);
       case SORT_BY_FACTION:
+      case SORT_BY_FACTION_PACK:
         return Card.factionSortHeader(card);
       case SORT_BY_COST:
         if (card.cost === null) {

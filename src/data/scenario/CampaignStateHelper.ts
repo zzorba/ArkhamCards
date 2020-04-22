@@ -1,8 +1,10 @@
-import { findLast } from 'lodash';
+import { sumBy, find, findLast } from 'lodash';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 
 import {
+  GuideStartSideScenarioInput,
+  GuideStartCustomSideScenarioInput,
   GuideInput,
   NumberChoices,
   StringChoices,
@@ -22,6 +24,9 @@ export interface CampaignGuideActions {
   setText: (id: string, text: string, scenarioId?: string) => void;
   setCampaignLink: (id: string, value: string, scenarioId?: string) => void;
   startScenario: (scenarioId: string) => void;
+  startSideScenario: (
+    scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
+  ) => void;
   resetScenario: (scenarioId: string) => void;
   undo: (scenarioId: string) => void;
 }
@@ -51,6 +56,54 @@ export default class CampaignStateHelper {
 
   startScenario(scenarioId: string) {
     this.actions.startScenario(scenarioId);
+  }
+
+  closeOnUndo(scenarioId: string) {
+    return sumBy(
+      this.state.inputs,
+      input => input.scenario === scenarioId ? 1 : 0
+    ) === 1;
+  }
+
+  sideScenario(
+    previousScenarioId: string
+  ): GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput | undefined {
+    const matchingEntry = find(
+      this.state.inputs,
+      input => input.type === 'start_side_scenario' && input.previousScenarioId === previousScenarioId
+    );
+    if (matchingEntry && matchingEntry.type === 'start_side_scenario') {
+      return matchingEntry;
+    }
+    return undefined;
+  }
+
+  startOfficialSideScenario(
+    scenarioId: string,
+    previousScenarioId: string
+  ) {
+    this.actions.startSideScenario({
+      type: 'start_side_scenario',
+      previousScenarioId,
+      sideScenarioType: 'official',
+      scenario: scenarioId,
+    });
+  }
+
+  startCustomSideScenario(
+    previousScenarioId: string,
+    name: string,
+    scenarioId: string,
+    xpCost: number
+  ) {
+    this.actions.startSideScenario({
+      type: 'start_side_scenario',
+      previousScenarioId,
+      sideScenarioType: 'custom',
+      scenario: scenarioId,
+      name,
+      xpCost,
+    });
   }
 
   resetScenario(scenarioId: string) {
@@ -120,8 +173,11 @@ export default class CampaignStateHelper {
       this.state.inputs,
       input => (
         input.type === type &&
-        input.scenario === scenario &&
-        (input.type === 'start_scenario' || input.step === step)
+        input.scenario === scenario && (
+          input.type === 'start_scenario' ||
+          input.type === 'start_side_scenario' ||
+          input.step === step
+        )
       )
     );
   }
@@ -133,14 +189,25 @@ export default class CampaignStateHelper {
     return findLast(
       this.linkedState ? this.linkedState.inputs : [],
       input => (
-        input.type === type &&
-        (input.type === 'start_scenario' || input.step === step)
+        input.type === type && (
+          input.type === 'start_scenario' ||
+          input.type === 'start_side_scenario' ||
+          input.step === step
+        )
       )
     );
   }
 
   startedScenario(scenario: string): boolean {
-    return !!this.entry('start_scenario', undefined, scenario);
+    return !!this.entry(
+      'start_scenario',
+      undefined,
+      scenario
+    ) || !!this.entry(
+      'start_side_scenario',
+      undefined,
+      scenario
+    );
   }
 
   choice(id: string, scenario?: string): number | undefined {

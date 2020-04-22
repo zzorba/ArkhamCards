@@ -187,6 +187,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
             <CampaignGuideContext.Provider value={contextA}>
               <ScenarioListComponent
                 campaignId={campaignDataA.campaign.id}
+                campaignData={contextA}
                 processedCampaign={processedCampaignA}
                 fontScale={fontScale}
                 componentId={componentId}
@@ -201,6 +202,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
             <CampaignGuideContext.Provider value={contextB}>
               <ScenarioListComponent
                 campaignId={campaignDataB.campaign.id}
+                campaignData={contextB}
                 processedCampaign={processedCampaignB}
                 fontScale={fontScale}
                 componentId={componentId}

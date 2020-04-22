@@ -117,4 +117,7 @@ export default StyleSheet.create({
     paddingLeft: s,
     paddingRight: m,
   },
+  darkGray: {
+    color: COLORS.darkGray,
+  },
 });

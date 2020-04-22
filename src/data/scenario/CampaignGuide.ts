@@ -1,7 +1,8 @@
-import { find, findIndex, filter, forEach, map, reverse, slice } from 'lodash';
+import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodash';
 import { t } from 'ttag';
 
-import { ProcessedCampaign, ProcessedScenario } from 'data/scenario';
+import { GuideStartCustomSideScenarioInput } from 'actions/types';
+import { ProcessedCampaign, ProcessedScenario, ScenarioId } from 'data/scenario';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
@@ -45,7 +46,7 @@ interface LogEntrySupplies extends LogSection {
 
 type LogEntry = LogEntrySectionCount | LogEntryCard | LogEntryText | LogEntrySupplies;
 const CARD_REGEX = /\d\d\d\d\d[a-z]?/;
-const CAMPAIGN_SETUP_ID = '$campaign_setup';
+export const CAMPAIGN_SETUP_ID = '$campaign_setup';
 
 /**
  * Wrapper utility to provide structured access to campaigns.
@@ -54,9 +55,23 @@ export default class CampaignGuide {
   private campaign: FullCampaign;
   private log: CampaignLog;
 
-  constructor(campaign: FullCampaign, log: CampaignLog) {
+  private sideCampaign: FullCampaign;
+
+  constructor(
+    campaign: FullCampaign,
+    log: CampaignLog,
+    sideCampaign: FullCampaign
+  ) {
     this.campaign = campaign;
     this.log = log;
+    this.sideCampaign = sideCampaign;
+  }
+
+  sideScenarios(): Scenario[] {
+    return flatMap(
+      this.sideCampaign.campaign.scenarios,
+      scenarioId => find(this.sideCampaign.scenarios, scenario => scenario.id === scenarioId) || []
+    );
   }
 
   campaignCycleCode() {
@@ -72,14 +87,23 @@ export default class CampaignGuide {
   }
 
   getFullScenarioName(
-    rawScenarioId: string
+    encodedScenarioId: string
   ): string | undefined {
-    const scenarioId = this.parseScenarioId(rawScenarioId);
+    const scenarioId = this.parseScenarioId(encodedScenarioId);
     const scenario = find(
       this.campaign.scenarios,
       scenario => scenario.id === scenarioId.scenarioId
     );
     return scenario && scenario.full_name;
+  }
+
+  findScenarioData(
+    id: string
+  ): Scenario | undefined {
+    return find(
+      this.campaign.scenarios,
+      scenario => scenario.id === id
+    );
   }
 
   getScenario(
@@ -115,8 +139,10 @@ export default class CampaignGuide {
     );
     forEach(this.allScenarioIds(), scenarioId => {
       if (!find(scenarios, scenario => scenario.scenarioGuide.id === scenarioId)) {
-        const nextScenarios = this.processScenario(
-          scenarioId,
+        const scenario = this.findScenario(scenarioId);
+        const nextScenarios = this.actuallyProcessScenario(
+          scenario.id,
+          scenario.scenario,
           campaignState,
           campaignLog
         );
@@ -155,125 +181,264 @@ export default class CampaignGuide {
     };
   }
 
-  nextScenarioId(rawScenarioId: string, skippedScenarios: string[]) {
-    const parsedId = this.parseScenarioId(rawScenarioId);
-    const skipped = new Set(skippedScenarios);
+  nextScenario(
+    campaignState: CampaignStateHelper,
+    campaignLog: GuidedCampaignLog,
+    includeSkipped: boolean
+  ): {
+    id: ScenarioId;
+    scenario: Scenario;
+  } | undefined {
+    if (!campaignLog.scenarioId) {
+      return this.findScenario(CAMPAIGN_SETUP_ID);
+    }
+    const parsedId = this.parseScenarioId(campaignLog.scenarioId);
+    const entry = campaignState.sideScenario(parsedId.encodedScenarioId);
+    if (entry) {
+      const scenario = (entry.sideScenarioType === 'custom') ?
+        this.getCustomScenario(entry) :
+        find(
+          this.sideCampaign.scenarios,
+          scenario => scenario.id === entry.scenario
+        );
+      if (!scenario) {
+        throw new Error(`Could not find side scenario: ${entry.scenario}`);
+      }
+      return {
+        id: this.parseScenarioId(entry.scenario),
+        scenario: this.insertCustomPlayScenarioStep(scenario),
+      };
+    }
+
+    const campaignNextScenarioId = campaignLog.campaignNextScenarioId();
+    if (campaignNextScenarioId) {
+      return this.findScenario(campaignNextScenarioId);
+    }
+
     const scenarios = filter(
       this.allScenarioIds(),
-      scenarioId => !skipped.has(scenarioId)
+      scenarioId => includeSkipped || campaignLog.scenarioStatus(scenarioId) !== 'skipped'
     );
     const currentIndex = findIndex(
       scenarios,
       scenarioId => scenarioId === parsedId.scenarioId
     );
     if (currentIndex !== -1 && currentIndex + 1 < scenarios.length) {
-      return scenarios[currentIndex + 1];
+      return this.findScenario(scenarios[currentIndex + 1]);
     }
     return undefined;
   }
 
-  parseScenarioId(scenarioId: string) {
-    if (scenarioId.indexOf('#') === -1) {
+  private findScenario(encodedScenarioId: string): {
+    id: ScenarioId;
+    scenario: Scenario;
+  } {
+    if (encodedScenarioId === CAMPAIGN_SETUP_ID) {
       return {
-        scenarioId,
-        replayCount: undefined,
+        id: this.parseScenarioId(CAMPAIGN_SETUP_ID),
+        scenario: {
+          id: CAMPAIGN_SETUP_ID,
+          type: 'interlude',
+          scenario_name: t`Campaign Setup`,
+          full_name: t`Campaign Setup`,
+          setup: this.campaign.campaign.setup,
+          steps: this.campaign.campaign.steps,
+        },
       };
     }
-    const [actualScenarioId, replayCount] = scenarioId.split('#');
+    const id = this.parseScenarioId(encodedScenarioId);
+    const mainScenario = find(this.campaign.scenarios, scenario => scenario.id === id.scenarioId);
+    if (mainScenario) {
+      return {
+        id,
+        scenario: mainScenario,
+      };
+    }
+    const sideScenario = find(this.sideCampaign.scenarios, scenario => scenario.id === id.scenarioId);
+    if (sideScenario) {
+      return {
+        id,
+        scenario: sideScenario,
+      };
+    }
+    throw new Error(`Could not find scenario: ${encodedScenarioId}`);
+  }
+
+  parseScenarioId(encodedScenarioId: string): ScenarioId {
+    if (encodedScenarioId.indexOf('#') === -1) {
+      return {
+        encodedScenarioId,
+        scenarioId: encodedScenarioId,
+        replayAttempt: undefined,
+      };
+    }
+    const [scenarioId, replayCount] = encodedScenarioId.split('#');
     return {
-      scenarioId: actualScenarioId,
-      replayCount: parseInt(replayCount, 10),
+      encodedScenarioId,
+      scenarioId,
+      replayAttempt: parseInt(replayCount, 10),
     };
   }
 
-  private processScenario(
-    rawScenarioId: string,
+  nextScenarioName(
+    campaignState: CampaignStateHelper,
+    campaignLog: GuidedCampaignLog
+  ): string | undefined {
+    const scenario = this.nextScenario(campaignState, campaignLog, false);
+    if (!scenario) {
+      return undefined;
+    }
+    return scenario.scenario.full_name;
+  }
+
+  private actuallyProcessScenario(
+    id: ScenarioId,
+    scenario: Scenario,
     campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog
   ): ProcessedScenario[] {
-    const {
-      scenarioId,
-      replayCount,
-    } = this.parseScenarioId(rawScenarioId);
-    const scenario: Scenario | undefined = (scenarioId === CAMPAIGN_SETUP_ID) ?
-      {
-        id: CAMPAIGN_SETUP_ID,
-        type: 'interlude',
-        scenario_name: t`Campaign Setup`,
-        full_name: t`Campaign Setup`,
-        setup: this.campaign.campaign.setup,
-        steps: this.campaign.campaign.steps,
-      } :
-      find(this.campaign.scenarios, scenario => scenario.id === scenarioId);
-    if (!scenario) {
-      throw new Error(`Unknown scenario: ${scenarioId}`);
-    }
     const scenarioGuide = new ScenarioGuide(
-      rawScenarioId,
+      id.encodedScenarioId,
       scenario,
       this,
       campaignLog
     );
-    if (!campaignState.startedScenario(rawScenarioId)) {
+    if (!campaignState.startedScenario(id.encodedScenarioId)) {
       if (
         (campaignLog.campaignData.result && scenarioGuide.scenarioType() !== 'epilogue') ||
-        campaignLog.scenarioStatus(rawScenarioId) === 'skipped'
+        campaignLog.scenarioStatus(id.encodedScenarioId) === 'skipped'
       ) {
         return [{
           type: 'skipped',
+          id,
           scenarioGuide,
           latestCampaignLog: campaignLog,
-          attempt: replayCount || 0,
           canUndo: false,
+          closeOnUndo: false,
           steps: [],
         }];
       }
       return [{
         type: 'playable',
+        id,
         scenarioGuide,
         latestCampaignLog: campaignLog,
-        attempt: replayCount || 0,
         canUndo: false,
+        closeOnUndo: false,
         steps: [],
       }];
     }
-    const scenarioState = new ScenarioStateHelper(rawScenarioId, campaignState);
+    const scenarioState = new ScenarioStateHelper(id.encodedScenarioId, campaignState);
     const executedScenario = scenarioGuide.setupSteps(scenarioState);
     const firstResult: ProcessedScenario = {
       type: executedScenario.inProgress ? 'started' : 'completed',
+      id,
       scenarioGuide,
       latestCampaignLog: executedScenario.latestCampaignLog,
-      attempt: replayCount || 0,
       canUndo: true,
+      closeOnUndo: campaignState.closeOnUndo(id.encodedScenarioId),
       steps: executedScenario.steps,
     };
     if (executedScenario.inProgress) {
       return [firstResult];
     }
-    const newReplayCount = firstResult.latestCampaignLog.campaignData.scenarioReplayCount[scenarioId];
-    if (newReplayCount && (!replayCount || replayCount < newReplayCount)) {
-      return [
-        firstResult,
-        ...this.processScenario(
-          `${scenarioId}#${newReplayCount}`,
-          campaignState,
-          executedScenario.latestCampaignLog
-        ),
-      ];
-    }
-
-    const nextScenarioId = executedScenario.latestCampaignLog.nextScenarioId(true);
-    if (!nextScenarioId) {
+    const latestCampaignLog = executedScenario.latestCampaignLog;
+    const nextScenario = this.nextScenario(
+      campaignState,
+      latestCampaignLog,
+      true
+    );
+    if (!nextScenario) {
       return [firstResult];
     }
     return [
       firstResult,
-      ...this.processScenario(
-        nextScenarioId,
+      ...this.actuallyProcessScenario(
+        nextScenario.id,
+        nextScenario.scenario,
         campaignState,
-        executedScenario.latestCampaignLog
+        latestCampaignLog
       ),
     ];
+  }
+
+  private getCustomScenario(entry: GuideStartCustomSideScenarioInput): Scenario {
+    return {
+      id: entry.scenario,
+      scenario_name: entry.name,
+      full_name: entry.name,
+      setup: [
+        'spend_xp_cost',
+        '$play_scenario',
+        '$upgrade_decks',
+      ],
+      steps: [
+        {
+          id: 'spend_xp_cost',
+          effects: [
+            {
+              type: 'earn_xp',
+              investigator: 'all',
+              bonus: -entry.xpCost,
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  private insertCustomPlayScenarioStep(
+    scenario: Scenario
+  ): Scenario {
+    const campaignPlayScenarioStep = find(
+      this.campaign.campaign.side_scenario_steps,
+      step => step.id === '$play_scenario'
+    );
+    if (!campaignPlayScenarioStep ||
+      campaignPlayScenarioStep.type !== 'input' ||
+      campaignPlayScenarioStep.input.type !== 'play_scenario'
+    ) {
+      return scenario;
+    }
+    const scenarioPlayScenarioStep = find(
+      scenario.steps,
+      step => step.id === '$play_scenario'
+    );
+    if (!scenarioPlayScenarioStep ||
+      scenarioPlayScenarioStep.type !== 'input' ||
+      scenarioPlayScenarioStep.input.type !== 'play_scenario'
+    ) {
+      return {
+        ...scenario,
+        steps: [
+          ...scenario.steps,
+          ...this.campaign.campaign.side_scenario_steps || [],
+        ],
+      };
+    }
+
+    return {
+      ...scenario,
+      steps: [
+        ...filter(scenario.steps, step => step.id !== '$play_scenario'),
+        ...filter(this.campaign.campaign.side_scenario_steps, step => step.id !== '$play_scenario'),
+        {
+          id: '$play_scenario',
+          type: 'input',
+          input: {
+            type: 'play_scenario',
+            branches: [
+              ...(campaignPlayScenarioStep.input.branches || []),
+              ...(scenarioPlayScenarioStep.input.branches || []),
+            ],
+            campaign_log: [
+              ...(campaignPlayScenarioStep.input.campaign_log || []),
+              ...(scenarioPlayScenarioStep.input.campaign_log || []),
+            ],
+          },
+        },
+      ],
+    };
   }
 
   private allScenarioIds() {
@@ -307,9 +472,6 @@ export default class CampaignGuide {
       logSection => logSection.id === sectionId
     );
     if (!section) {
-      console.log(
-        map(this.campaign.campaign.campaign_log, section => section.id)
-      );
       throw new Error(`Could not find section: ${sectionId}`);
     }
     if (section.type === 'supplies') {
