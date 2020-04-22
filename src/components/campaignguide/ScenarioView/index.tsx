@@ -78,10 +78,6 @@ class ScenarioView extends React.Component<Props> {
     if (canUndo !== this.undoEnabled) {
       Navigation.mergeOptions(componentId, ScenarioView.dynamicOptions(canUndo));
     }
-    if (type !== 'started' && type !== 'completed') {
-      // Get out of here
-      Navigation.pop(componentId);
-    }
   }
 
   componentWillUnmount() {

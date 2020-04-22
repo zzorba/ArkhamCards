@@ -8570,6 +8570,8 @@
     "intro_3",
     "check_constance_dumaine",
     "gather_encounter_sets",
+    "set_aside_monsters",
+    "set_aside_lunatics",
     "choose_locations",
     "set_aside_cards",
     "setup_locations",
@@ -8649,6 +8651,14 @@
         "decay",
         "agents_of_hastur"
       ]
+    },
+    {
+      "id": "set_aside_monsters",
+      "text": "Set each [[Monster]] enemy among the gathered encounter sets aside, in a separate pile. (There should be 7 [[Monster]] enemies, in total.)"
+    },
+    {
+      "id": "set_aside_lunatics",
+      "text": "Set each [[Lunatic]] enemy among the gathered encounter sets aside, in a separate pile. (There should be 7 [[Lunatic]] enemies, in total.)"
     },
     {
       "id": "choose_locations",
@@ -19228,6 +19238,8 @@
     "intro_3",
     "check_constance_dumaine",
     "gather_encounter_sets",
+    "set_aside_monsters",
+    "set_aside_lunatics",
     "choose_locations",
     "set_aside_cards",
     "setup_locations",
@@ -19305,6 +19317,14 @@
     {
       "id": "gain_courage",
       "text": "Each investigator places the top card of their deck facedown in their play area, without looking at it. Treat this card as a [[Courage]] asset with 0 cost, no icons, and 2 sanity. Discard this card if it leaves play for any reason."
+    },
+    {
+      "id": "set_aside_monsters",
+      "text": "Set each [[Monster]] enemy among the gathered encounter sets aside, in a separate pile. (There should be 7 [[Monster]] enemies, in total.)"
+    },
+    {
+      "id": "set_aside_lunatics",
+      "text": "Set each [[Lunatic]] enemy among the gathered encounter sets aside, in a separate pile. (There should be 7 [[Lunatic]] enemies, in total.)"
     },
     {
       "id": "setup_locations",
@@ -20414,9 +20434,6 @@
   "xp_cost": 3,
   "setup": [
     "check_first_play_xp_cost",
-    "intro_1",
-    "check_player_count",
-    "intro_4",
     "gather_encounter_sets",
     "set_aside_encounter_sets",
     "construct_act_deck",
@@ -20424,6 +20441,7 @@
     "take_bloodstained_dagger",
     "create_leads_deck",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "encounter_deck",
     "patrol_rule",
@@ -20442,6 +20460,11 @@
         "options": [
           {
             "boolCondition": false,
+            "steps": [
+              "intro_1",
+              "check_player_count",
+              "intro_4"
+            ],
             "effects": [
               {
                 "type": "earn_xp",
@@ -20568,6 +20591,19 @@
         {
           "text": "Set each other location aside, out of play."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        ["blank", "84012_back", "84010_back", "84011_back"],
+        ["84014_back", "blank", "blank", "blank"],
+        ["blank", "84013_back", "blank", "blank"],
+        ["blank", "blank", "blank", "blank"]
       ]
     },
     {
@@ -21884,6 +21920,7 @@
     "intro_1",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "create_brotherhood_deck",
     "set_strength_of_the_abyss",
@@ -21963,6 +22000,18 @@
     {
       "id": "setup_locations",
       "text": "Put the following locations into play: Streets of Cairo, Outskirts of Cairo, Temple Courtyard, Museum of Egyptian Antiquities, Cairo Bazaar, and Expedition Camp. Each investigator begins play in the Streets of Cairo."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "83012_back", "blank", "blank"],
+        ["83009_back", "83008_back", "83011_back", "83037_back"],
+        ["blank", "83010_back", "blank", "blank"]
+      ]
     },
     {
       "id": "set_aside_cards",
@@ -22877,7 +22926,7 @@
                 }
               ]
             },
-            "text": "Read Interlude I: A Record of Those Lost",
+            "text": "Scenario Interlude: A Record of Those Lost",
             "steps": [
               "a_record_of_those_lost",
               "check_gavriella_fate",

@@ -1,8 +1,9 @@
 import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodash';
-import { t } from 'ttag';
+import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from 'actions/types';
 import { ProcessedCampaign, ProcessedScenario, ScenarioId } from 'data/scenario';
+import { createInvestigatorStatusStep } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
@@ -370,11 +371,43 @@ export default class CampaignGuide {
       setup: [
         'spend_xp_cost',
         '$play_scenario',
+        '$end_of_scenario_status',
+        '$earn_xp',
         '$upgrade_decks',
+        '$proceed',
       ],
       steps: [
+        createInvestigatorStatusStep('$end_of_scenario_status'),
+        {
+          id: '$earn_xp',
+          text: t`Each investigator earns experience equal to the Victory X value of each card in the victory display.`,
+          type: 'input',
+          input: {
+            type: 'counter',
+            text: t`Victory display:`,
+            effects: [
+              {
+                type: 'earn_xp',
+                investigator: 'all',
+              },
+            ],
+          },
+        },
+        {
+          id: '$play_scenario',
+          type: 'input',
+          input: {
+            type: 'play_scenario',
+            no_resolutions: true,
+          },
+        },
         {
           id: 'spend_xp_cost',
+          text: ngettext(
+            msgid`Each investigator pays ${entry.xpCost} experience point to play this scenario.`,
+            msgid`Each investigator pays ${entry.xpCost} experience points to play this scenario.`,
+            entry.xpCost
+          ),
           effects: [
             {
               type: 'earn_xp',

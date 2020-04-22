@@ -1,6 +1,7 @@
 import { sumBy, find, findLast } from 'lodash';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
+import uuid from 'react-native-uuid';
 
 import {
   GuideStartSideScenarioInput,
@@ -11,6 +12,7 @@ import {
   CampaignGuideState,
   SupplyCounts,
 } from 'actions/types';
+import { ScenarioId } from 'data/scenario';
 import Card, { CardsMap } from 'data/Card';
 
 export interface CampaignGuideActions {
@@ -80,27 +82,26 @@ export default class CampaignStateHelper {
 
   startOfficialSideScenario(
     scenarioId: string,
-    previousScenarioId: string
+    previousScenarioId: ScenarioId
   ) {
     this.actions.startSideScenario({
       type: 'start_side_scenario',
-      previousScenarioId,
+      previousScenarioId: previousScenarioId.encodedScenarioId,
       sideScenarioType: 'official',
       scenario: scenarioId,
     });
   }
 
   startCustomSideScenario(
-    previousScenarioId: string,
+    previousScenarioId: ScenarioId,
     name: string,
-    scenarioId: string,
     xpCost: number
   ) {
     this.actions.startSideScenario({
       type: 'start_side_scenario',
-      previousScenarioId,
+      previousScenarioId: previousScenarioId.encodedScenarioId,
       sideScenarioType: 'custom',
-      scenario: scenarioId,
+      scenario: uuid.v4(),
       name,
       xpCost,
     });

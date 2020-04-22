@@ -235,6 +235,13 @@ function investigatorStatusStep(
   if (!resolution) {
     return undefined;
   }
+  return createInvestigatorStatusStep(id, resolution.investigator_status);
+}
+
+export function createInvestigatorStatusStep(
+  id: string,
+  customStatus?: InvestigatorStatus[]
+): InputStep {
   const defaultStatuses: InvestigatorStatus[] = [
     'alive',
     'resigned',
@@ -243,7 +250,7 @@ function investigatorStatusStep(
     'eliminated',
   ];
   const choices: InvestigatorConditionalChoice[] = map(
-    resolution.investigator_status || defaultStatuses,
+    customStatus || defaultStatuses,
     status => {
       const effects: Effect[] = [
         {

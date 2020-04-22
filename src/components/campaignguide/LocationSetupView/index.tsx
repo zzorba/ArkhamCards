@@ -96,6 +96,7 @@ class LocationSetupView extends React.Component<Props> {
         horizontal,
         locations,
       },
+      fontScale,
     } = this.props;
     const rowSize = locationsRow.length;
     const {
@@ -125,12 +126,16 @@ class LocationSetupView extends React.Component<Props> {
 
   render() {
     const {
-      step: {
-        locations,
-        vertical,
-        note,
-      },
+      step,
     } = this.props;
+    if (!step) {
+      return null;
+    }
+    const {
+      locations,
+      vertical,
+      note,
+    } = step;
     const {
       cardHeight,
     } = this.cardDimensions(locations.length, locations[0].length);

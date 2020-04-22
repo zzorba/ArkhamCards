@@ -67,6 +67,9 @@ export default class AddSideScenarioButton extends React.Component<Props> {
       scenarios,
       scenario => scenario.type === 'completed'
     );
+    if (campaignLog.campaignData.result) {
+      return false;
+    }
     // Have to have completed a scenario
     if (lastCompletedScenarioIndex === -1) {
       return false;

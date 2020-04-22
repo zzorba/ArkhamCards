@@ -407,16 +407,21 @@ export default class ScenarioStep {
               [],
               scenarioState
             );
-          case PlayingScenarioBranch.RESOLUTION:
+          case PlayingScenarioBranch.RESOLUTION: {
+            const steps: string[] = [];
+            if (!input.no_resolutions) {
+              steps.push('$choose_resolution');
+            }
             return this.maybeCreateEffectsStep(
               step.id,
               [
-                '$choose_resolution',
+                ...steps,
                 ...this.remainingStepIds,
               ],
               [],
               scenarioState
             );
+          }
           case PlayingScenarioBranch.CAMPAIGN_LOG: {
             if (input.campaign_log) {
               const choices = chooseOneInputChoices(

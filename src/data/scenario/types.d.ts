@@ -591,6 +591,7 @@ export interface PlayScenarioInput {
   type: "play_scenario";
   branches?: BinaryConditionalChoice[];
   campaign_log?: BinaryConditionalChoice[];
+  no_resolutions?: boolean;
 }
 export interface TextBoxInput {
   type: "text_box";

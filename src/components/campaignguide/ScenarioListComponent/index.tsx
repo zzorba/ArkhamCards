@@ -1,11 +1,12 @@
 import React from 'react';
+import { View } from 'react-native';
 import { map } from 'lodash';
 
 import { ProcessedCampaign } from 'data/scenario';
 import ScenarioButton from './ScenarioButton';
 import AddSideScenarioButton from './AddSideScenarioButton';
 import { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-
+import space from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -28,7 +29,7 @@ export default class ScenarioListTab extends React.Component<Props> {
       },
     } = this.props;
     return (
-      <>
+      <View style={space.marginBottomL}>
         { map(processedCampaign.scenarios, (scenario, idx) => (
           <ScenarioButton
             key={idx}
@@ -45,7 +46,7 @@ export default class ScenarioListTab extends React.Component<Props> {
           campaignGuide={campaignGuide}
           campaignState={campaignState}
         />
-      </>
+      </View>
     );
   }
 }
